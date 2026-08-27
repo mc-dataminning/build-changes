@@ -1,23 +1,100 @@
-public class gdz implements gdo<doo> {
-   private final frj a;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public gdz(gdp.a $$0) {
-      this.a = new frj($$0.a(fva.r));
+public class gdz implements gqh {
+   private final drc<ddy, drb> a;
+   private final List<geb> b;
+
+   public gdz(drc<ddy, drb> $$0, List<geb> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(doo $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
-      dqh $$6 = $$0.n();
-      if ($$6.c(dhp.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dhp.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         eyb $$8 = gdx.a.a($$3, gbw::c);
-         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$2.b();
+   public List<geb> a() {
+      return this.b;
+   }
+
+   public Set<gdu> b() {
+      Set<gdu> $$0 = Sets.newHashSet();
+
+      for (geb $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gdz $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<akm> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<akm, gqh> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gpw a(gqa $$0, Function<gpz, gnv> $$1, gqe $$2, akm $$3) {
+      gqf.a $$4 = new gqf.a();
+
+      for (geb $$5 : this.a()) {
+         gpw $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<gdz> {
+      private final gdn.a a;
+
+      public a(gdn.a $$0) {
+         this.a = $$0;
+      }
+
+      public gdz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gdz(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<geb> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<geb> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((geb)$$0.deserialize($$3, geb.class));
+         }
+
+         return $$2;
       }
    }
 }

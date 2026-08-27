@@ -1,57 +1,111 @@
-public class fjq extends fld {
-   private final Runnable c;
-   protected final fjq.a a;
-   private final wu d;
-   private final boolean r;
-   private ffx s = ffx.a;
-   protected int b;
-   private ffg u;
+import java.util.function.Consumer;
 
-   public fjq(Runnable $$0, fjq.a $$1, wu $$2, wu $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.d = $$3;
-      this.r = $$4;
+public class fjq implements fjn {
+   private final fjl a;
+   private final fjq.a b;
+   private int c = 0;
+
+   private fjq(fjq.a $$0) {
+      this(0, 0, $$0);
+   }
+
+   public fjq(int $$0, int $$1, fjq.a $$2) {
+      this.a = new fjl($$0, $$1);
+      this.b = $$2;
+   }
+
+   public fjq a(int $$0) {
+      this.b.a(this.a, $$0);
+      return this;
+   }
+
+   public fjp b() {
+      return this.a.b();
+   }
+
+   public fjp c() {
+      return this.a.c();
+   }
+
+   public <T extends fjo> T a(T $$0, fjp $$1) {
+      return this.b.a(this.a, $$0, this.c++, $$1);
+   }
+
+   public <T extends fjo> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fjo> T a(T $$0, Consumer<fjp> $$1) {
+      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.s = ffx.a(this.p, this.d, this.n - 50);
-      int $$0 = (this.s.a() + 1) * 9;
-      this.c(ffe.a(wu.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(ffe.a(wu.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(ffe.a(wt.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.u = ffg.a(wu.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.r) {
-         this.c(this.u);
+   public void b(Consumer<fjo> $$0) {
+      this.a.b($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public int x() {
+      return this.a.x();
+   }
+
+   @Override
+   public int v() {
+      return this.a.v();
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a.m($$0);
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.a.n($$0);
+   }
+
+   @Override
+   public int C() {
+      return this.a.C();
+   }
+
+   @Override
+   public int D() {
+      return this.a.D();
+   }
+
+   public static fjq d() {
+      return new fjq(fjq.a.b);
+   }
+
+   public static fjq e() {
+      return new fjq(fjq.a.a);
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      void a(fjl $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1);
+               break;
+            case b:
+               $$0.b($$1);
+         }
       }
-   }
 
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.s.a($$0, this.n / 2, 70);
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      public <T extends fjo> T a(fjl $$0, T $$1, int $$2, fjp $$3) {
+         return (T)(switch (this) {
+            case a -> $$0.a($$1, 0, $$2, $$3);
+            case b -> $$0.a($$1, $$2, 0, $$3);
+         });
       }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
    }
 }

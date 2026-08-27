@@ -1,45 +1,68 @@
-public class afm implements zb<abm> {
-   public static final ys<vu, afm> a = zb.a(afm::a, afm::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public afm(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class afm implements ze<abq> {
+   public static final yv<vx, afm> a = ze.a(afm::a, afm::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   @Nullable
+   private final akm d;
+   @Nullable
+   private final avi e;
+
+   public afm(@Nullable akm $$0, @Nullable avi $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private afm(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+   private afm(vx $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(avi.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(vx $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public zd<afm> a() {
-      return afx.aY;
+   public zg<afm> a() {
+      return agb.aU;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
+   @Nullable
+   public akm b() {
       return this.d;
+   }
+
+   @Nullable
+   public avi e() {
+      return this.e;
    }
 }

@@ -1,59 +1,46 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class erh implements erq {
-   protected final List<erq> c;
-   private final Predicate<eol> a;
+public class erh extends eqq {
+   public static final MapCodec<erh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(eth.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, erh::new)
+   );
+   private final etg b;
+   private final boolean c;
 
-   protected erh(List<erq> $$0, Predicate<eol> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends erh> Codec<T> a(Function<List<erq>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(ers.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends erh> Codec<T> b(Function<List<erq>, T> $$0) {
-      return ers.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eol $$0) {
-      return this.a.test($$0);
+   private erh(List<esl> $$0, etg $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(eor $$0) {
-      erq.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public eqs b() {
+      return eqt.e;
    }
 
-   public abstract static class a implements erq.a {
-      private final Builder<erq> a = ImmutableList.builder();
+   @Override
+   public Set<eru<?>> a() {
+      return this.b.a();
+   }
 
-      protected a(erq.a... $$0) {
-         for (erq.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   @Override
+   public cto a(cto $$0, epf $$1) {
+      int $$2 = this.c ? $$0.I() : 0;
+      $$0.e(ayd.a($$2 + this.b.a($$1), 0, $$0.j()));
+      return $$0;
+   }
 
-      public void a(erq.a $$0) {
-         this.a.add($$0.build());
-      }
+   public static eqq.a<?> a(etg $$0) {
+      return a($$1 -> new erh($$1, $$0, false));
+   }
 
-      @Override
-      public erq build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract erq a(List<erq> var1);
+   public static eqq.a<?> a(etg $$0, boolean $$1) {
+      return a($$2 -> new erh($$2, $$0, $$1));
    }
 }

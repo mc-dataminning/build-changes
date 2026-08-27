@@ -1,23 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
 public class eea<P extends edz> {
-   public static final eea<eeb> a = a("trunk_vine", eeb.a);
-   public static final eea<edy> b = a("leave_vine", edy.a);
-   public static final eea<edx> c = a("cocoa", edx.a);
-   public static final eea<edw> d = a("beehive", edw.a);
-   public static final eea<edu> e = a("alter_ground", edu.a);
-   public static final eea<edv> f = a("attached_to_leaves", edv.a);
-   private final Codec<P> g;
+   public static final eea<edy> a = a("mangrove_root_placer", edy.c);
+   private final MapCodec<P> b;
 
-   private static <P extends edz> eea<P> a(String $$0, Codec<P> $$1) {
-      return jj.a(ld.Z, $$0, new eea<>($$1));
+   private static <P extends edz> eea<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.Y, $$0, new eea<>($$1));
    }
 
-   private eea(Codec<P> $$0) {
-      this.g = $$0;
+   private eea(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

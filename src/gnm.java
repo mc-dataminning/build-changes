@@ -1,123 +1,59 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class gnm implements gnc {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gnm> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akh.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               axh.a(gnm.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gnm::new)
-   );
-   private final akh d;
-   private final List<gnm.a> e;
-   private final double f;
-   private final double g;
+public class gnm implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final gni f = new gni(16, 16, false);
 
-   public gnm(akh $$0, List<gnm.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gnm() {
+      ext $$0 = this.f.e();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
+         }
+      }
+
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public void a(atr $$0, gnc.a $$1) {
-      akh $$2 = a.a(this.d);
-      Optional<atp> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gni $$4 = new gni($$2, $$3.get(), this.e.size());
-
-         for (gnm.a $$5 : this.e) {
-            $$1.a($$5.b, new gnm.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public void close() {
+      this.f.close();
    }
 
-   @Override
-   public gne a() {
-      return gnf.d;
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
    }
 
-   static record a(akh b, double c, double d, double e, double f) {
-      public static final Codec<gnm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akh.a.fieldOf("sprite").forGetter(gnm.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gnm.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gnm.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gnm.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gnm.a::e)
-               )
-               .apply($$0, gnm.a::new)
-      );
-
-      public akh a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
    }
 
-   static class b implements gnc.b {
-      private final gni a;
-      private final gnm.a b;
-      private final double c;
-      private final double d;
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
 
-      b(gni $$0, gnm.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
 
-      public gms a(gnb $$0) {
-         try {
-            ewy $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = axz.a(this.b.c * $$2);
-            int $$5 = axz.a(this.b.d * $$3);
-            int $$6 = axz.a(this.b.e * $$2);
-            int $$7 = axz.a(this.b.f * $$3);
-            ewy $$8 = new ewy(ewy.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gms(this.b.b, new gol($$6, $$7), $$8, att.a);
-         } catch (Exception var16) {
-            gnm.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
 
-         return gmo.a();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

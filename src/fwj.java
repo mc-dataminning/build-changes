@@ -1,58 +1,8 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fwj {
-   @Nullable
-   private fwj.a a;
-   @Nullable
-   private fwn b;
-
-   public void a(akg<? extends jj<?>> $$0, List<jn.a> $$1) {
-      if (this.a == null) {
-         this.a = new fwj.a();
-      }
-
-      this.a.a($$0, $$1);
-   }
-
-   public void a(Map<akg<? extends jj<?>>, awj.a> $$0) {
-      if (this.b == null) {
-         this.b = new fwn();
-      }
-
-      $$0.forEach(this.b::a);
-   }
-
-   public jk.b a(atu $$0, jk $$1, boolean $$2) {
-      jd<fvy> $$3 = fvy.a();
-      jk $$6;
-      if (this.a != null) {
-         jk.b $$4 = $$3.b(fvy.b);
-         jk.b $$5 = this.a.a($$0, $$4).d();
-         $$6 = $$3.a(fvy.b, $$5).a();
-      } else {
-         $$6 = $$1;
-      }
-
-      if (this.b != null) {
-         this.b.a($$6, $$2);
-      }
-
-      return $$6.d();
-   }
-
-   static class a {
-      private final Map<akg<? extends jj<?>>, List<jn.a>> a = new HashMap<>();
-
-      public void a(akg<? extends jj<?>> $$0, List<jn.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
-
-      public jk a(atu $$0, jk $$1) {
-         return akc.a(this.a, $$0, $$1, akc.c);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fwj {
 }

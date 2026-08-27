@@ -1,97 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class ni implements ng {
-   private final dde a;
-   private final List<ni.b> b = Lists.newArrayList();
+public class ni implements ll {
+   private final ln.a d;
+   private final ln.a e;
 
-   private ni(dde $$0) {
-      this.a = $$0;
+   public ni(ln $$0) {
+      this.d = $$0.a(ln.b.b, "blockstates");
+      this.e = $$0.a(ln.b.b, "models");
    }
 
    @Override
-   public dde a() {
-      return this.a;
-   }
+   public CompletableFuture<?> a(lj $$0) {
+      Map<ddy, nj> $$1 = Maps.newHashMap();
+      Consumer<nj> $$2 = $$1x -> {
+         ddy $$2x = $$1x.a();
+         nj $$3x = $$1.put($$2x, $$1x);
+         if ($$3x != null) {
+            throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
+         }
+      };
+      Map<akm, Supplier<JsonElement>> $$3 = Maps.newHashMap();
+      Set<ctj> $$4 = Sets.newHashSet();
+      BiConsumer<akm, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
+         Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
+         if ($$3x != null) {
+            throw new IllegalStateException("Duplicate model definition for " + $$1x);
+         }
+      };
+      Consumer<ctj> $$6 = $$4::add;
+      new ng($$2, $$5, $$6).a();
+      new nh($$5).a();
+      List<ddy> $$7 = le.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      if (!$$7.isEmpty()) {
+         throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
+      } else {
+         le.e.forEach($$2x -> {
+            ctj $$3x = ctj.d.get($$2x);
+            if ($$3x != null) {
+               if ($$4.contains($$3x)) {
+                  return;
+               }
 
-   public static ni a(dde $$0) {
-      return new ni($$0);
-   }
-
-   public ni a(List<nm> $$0) {
-      this.b.add(new ni.b($$0));
-      return this;
-   }
-
-   public ni a(nm $$0) {
-      return this.a(ImmutableList.of($$0));
-   }
-
-   public ni a(nh $$0, List<nm> $$1) {
-      this.b.add(new ni.a($$0, $$1));
-      return this;
-   }
-
-   public ni a(nh $$0, nm... $$1) {
-      return this.a($$0, ImmutableList.copyOf($$1));
-   }
-
-   public ni a(nh $$0, nm $$1) {
-      return this.a($$0, ImmutableList.of($$1));
-   }
-
-   public JsonElement b() {
-      dqi<dde, dqh> $$0 = this.a.l();
-      this.b.forEach($$1x -> $$1x.a($$0));
-      JsonArray $$1 = new JsonArray();
-      this.b.stream().map(ni.b::a).forEach($$1::add);
-      JsonObject $$2 = new JsonObject();
-      $$2.add("multipart", $$1);
-      return $$2;
-   }
-
-   static class a extends ni.b {
-      private final nh a;
-
-      a(nh $$0, List<nm> $$1) {
-         super($$1);
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dqi<?, ?> $$0) {
-         this.a.a($$0);
-      }
-
-      @Override
-      public void a(JsonObject $$0) {
-         $$0.add("when", this.a.get());
+               akm $$4x = nu.a($$3x);
+               if (!$$3.containsKey($$4x)) {
+                  $$3.put($$4x, new nt(nu.a($$2x)));
+               }
+            }
+         });
+         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.r().h().a())), this.a($$0, $$3, this.e::a));
       }
    }
 
-   static class b implements Supplier<JsonElement> {
-      private final List<nm> a;
+   private <T> CompletableFuture<?> a(lj $$0, Map<T, ? extends Supplier<JsonElement>> $$1, Function<T, Path> $$2) {
+      return CompletableFuture.allOf($$1.entrySet().stream().map($$2x -> {
+         Path $$3 = $$2.apply((T)$$2x.getKey());
+         JsonElement $$4 = (JsonElement)((Supplier)$$2x.getValue()).get();
+         return ll.a($$0, $$4, $$3);
+      }).toArray(CompletableFuture[]::new));
+   }
 
-      b(List<nm> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(dqi<?, ?> $$0) {
-      }
-
-      public void a(JsonObject $$0) {
-      }
-
-      public JsonElement a() {
-         JsonObject $$0 = new JsonObject();
-         this.a($$0);
-         $$0.add("apply", nm.a(this.a));
-         return $$0;
-      }
+   @Override
+   public final String a() {
+      return "Model Definitions";
    }
 }

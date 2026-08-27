@@ -1,95 +1,108 @@
-public class dwk implements czq {
-   private int a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+public class dwk extends dsy {
+   public static final MapCodec<dwk> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akk.d(dcd.b)).apply($$0, $$0.stable(dwk::new)));
+   private static final int h = 2;
+   private static final List<drb> i = StreamSupport.stream(le.e.spliterator(), false).flatMap($$0 -> $$0.m().a().stream()).collect(Collectors.toList());
+   private static final int j = ayd.f(ayd.c((float)i.size()));
+   private static final int k = ayd.f((float)i.size() / (float)j);
+   protected static final drb d = dea.a.n();
+   protected static final drb e = dea.hW.n();
+   public static final int f = 70;
+   public static final int g = 60;
+
+   public dwk(ix.c<dbw> $$0) {
+      super(new dch($$0));
+   }
 
    @Override
-   public int a(aqh $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.aa().b(czz.K)) {
-         return 0;
-      } else {
-         ayg $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.Z() / 24000L;
-            if ($$4 < 5L || !$$0.Q()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  clh $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.N_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dn(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     in.a $$9 = $$6.dn().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        iw<dbc> $$11 = $$0.t($$9);
-                        if ($$11.a(avq.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+   protected MapCodec<? extends dsy> a() {
+      return c;
+   }
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dvz.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+   @Override
+   public void a(aqt $$0, dbq $$1, dxh $$2, dsx $$3) {
+   }
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
+   @Override
+   public void a(dbs $$0, dsx $$1, dbq $$2) {
+      io.a $$3 = new io.a();
+      dae $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
 
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = jq.a($$5, $$7);
+            int $$10 = jq.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            drb $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
          }
       }
    }
 
-   private boolean a(aqh $$0, in $$1, ayg $$2, boolean $$3) {
-      dqh $$4 = $$0.a_($$1);
-      if (!dao.a($$0, $$1, $$4, $$4.u(), brn.aB)) {
-         return false;
-      } else if (!cio.b(brn.aB, $$0, bse.p, $$1, $$2)) {
-         return false;
-      } else {
-         cio $$5 = brn.aB.a((dad)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gx();
-            }
+   @Override
+   public CompletableFuture<dsx> a(Executor $$0, dxv $$1, dxh $$2, dbq $$3, dsx $$4) {
+      return CompletableFuture.completedFuture($$4);
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bse.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
+   @Override
+   public int a(int $$0, int $$1, dwt.a $$2, daz $$3, dxh $$4) {
+      return 0;
+   }
+
+   @Override
+   public dbj a(int $$0, int $$1, daz $$2, dxh $$3) {
+      return new dbj(0, new drb[0]);
+   }
+
+   @Override
+   public void a(List<String> $$0, dxh $$1, io $$2) {
+   }
+
+   public static drb a(int $$0, int $$1) {
+      drb $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = ayd.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
          }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(aqt $$0, long $$1, dxh $$2, dby $$3, dbq $$4, dsx $$5, dwp.a $$6) {
+   }
+
+   @Override
+   public void a(aqt $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return 63;
    }
 }

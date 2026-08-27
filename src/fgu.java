@@ -1,62 +1,356 @@
-import java.util.Locale;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fgu extends fgt {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public class fgu {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final ffk c;
+   private final List<fgu.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public fgu(fep $$0, bkq $$1) {
-      super($$0, $$1);
+   public fgu(ffk $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   @Override
-   protected void d(fer $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   public int a() {
+      return this.i;
    }
 
-   private void a(fer $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
-   }
-
-   private void a(fer $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(gbw.E(), $$1, $$1 + $$2 - 1, $$3, -1);
-   }
-
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
       } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", axz.a($$0));
+         this.i = $$0;
       }
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   public void a(Runnable $$0) {
+      this.l = $$0;
    }
 
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(ayy.a($$0, true));
+         fgu.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = ayd.a(this.f + $$0, 0, this.e.length());
+      }
+
+      this.b("");
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fgu.a e() {
+      return new fgu.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fgu.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
+         }
+      }
+
+      return -1;
+   }
+
+   public fgu.a c(int $$0) {
+      return this.d.get(ayd.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(fhl $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = ayd.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fgu.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(fhl.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = ayd.a($$0);
+      int $$3 = ayd.a($$1 / 9.0);
+      fgu.a $$4 = this.d.get(ayd.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(fhl.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fly.s();
+      if (fly.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fly.e($$0)) {
+         fdz.Q().o.a(this.j());
+         return true;
+      } else if (fly.d($$0)) {
+         this.b(fdz.Q().o.a());
+         return true;
+      } else if (fly.c($$0)) {
+         fdz.Q().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fly.r()) {
+                  fgu.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
+               }
+
+               return true;
+            case 261:
+               if (fly.r()) {
+                  fgu.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (fly.r()) {
+                  fgu.a $$2 = this.l();
+                  this.a(fhl.a, $$2.a);
+               } else {
+                  this.a(fhl.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fly.r()) {
+                  fgu.a $$1 = this.k();
+                  this.a(fhl.a, $$1.a);
+               } else {
+                  this.a(fhl.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fly.r()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fly.r()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(fhl.a, 0);
+               return true;
+            case 267:
+               this.a(fhl.c, 0);
+               return true;
+            case 268:
+               if (fly.r()) {
+                  this.a(fhl.a, 0);
+               } else {
+                  this.a(fhl.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fly.r()) {
+                  this.a(fhl.c, 0);
+               } else {
+                  this.a(fhl.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   public Iterable<fgu.a> h() {
+      return this.d;
+   }
+
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      fgu.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private fgu.a m() {
+      return this.f(0);
+   }
+
+   private fgu.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(ayd.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public fgu.a k() {
+      if (this.e.isEmpty()) {
+         return fgu.a.c;
+      } else {
+         int $$0 = ayd.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fgu.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fgu.a l() {
+      if (this.e.isEmpty()) {
+         return fgu.a.c;
+      } else {
+         int $$0 = ayd.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fgu.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fgu.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, xu.a, false, ($$0, $$1, $$2) -> this.d.add(new fgu.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fgu.a(this.e.length(), this.e.length()));
+         }
+      }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? ayy.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return ayy.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fgu.a c = new fgu.a(0, 0);
    }
 }

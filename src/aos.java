@@ -3,45 +3,52 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aos {
-   private static final int a = -1;
-
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("weather").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)ee.a("clear").executes($$0x -> a((ed)$$0x.getSource(), -1)))
-                        .then(ee.a("duration", fs.a(1)).executes($$0x -> a((ed)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("set")
+                                    .then(ef.a("day").executes($$0x -> a((ee)$$0x.getSource(), 1000))))
+                                 .then(ef.a("noon").executes($$0x -> a((ee)$$0x.getSource(), 6000))))
+                              .then(ef.a("night").executes($$0x -> a((ee)$$0x.getSource(), 13000))))
+                           .then(ef.a("midnight").executes($$0x -> a((ee)$$0x.getSource(), 18000))))
+                        .then(ef.a("time", ft.a()).executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
                   ))
-               .then(
-                  ((LiteralArgumentBuilder)ee.a("rain").executes($$0x -> b((ed)$$0x.getSource(), -1)))
-                     .then(ee.a("duration", fs.a(1)).executes($$0x -> b((ed)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+               .then(ef.a("add").then(ef.a("time", ft.a()).executes($$0x -> b((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
             .then(
-               ((LiteralArgumentBuilder)ee.a("thunder").executes($$0x -> c((ed)$$0x.getSource(), -1)))
-                  .then(ee.a("duration", fs.a(1)).executes($$0x -> c((ed)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("query")
+                        .then(ef.a("daytime").executes($$0x -> c((ee)$$0x.getSource(), a(((ee)$$0x.getSource()).e())))))
+                     .then(ef.a("gametime").executes($$0x -> c((ee)$$0x.getSource(), (int)(((ee)$$0x.getSource()).e().Y() % 2147483647L)))))
+                  .then(ef.a("day").executes($$0x -> c((ee)$$0x.getSource(), (int)(((ee)$$0x.getSource()).e().Z() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(ed $$0, int $$1, bor $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
+   private static int a(aqm $$0) {
+      return (int)($$0.Z() % 24000L);
    }
 
-   private static int a(ed $$0, int $$1) {
-      $$0.l().I().a(a($$0, $$1, aqh.b), 0, false, false);
-      $$0.a(() -> wu.c("commands.weather.set.clear"), true);
+   private static int c(ee $$0, int $$1) {
+      $$0.a(() -> wx.a("commands.time.query", $$1), false);
       return $$1;
    }
 
-   private static int b(ed $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqh.c), true, false);
-      $$0.a(() -> wu.c("commands.weather.set.rain"), true);
-      return $$1;
+   public static int a(ee $$0, int $$1) {
+      for (aqm $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
+      }
+
+      $$0.a(() -> wx.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int c(ed $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqh.d), true, true);
-      $$0.a(() -> wu.c("commands.weather.set.thunder"), true);
-      return $$1;
+   public static int b(ee $$0, int $$1) {
+      for (aqm $$2 : $$0.l().K()) {
+         $$2.b($$2.Z() + (long)$$1);
+      }
+
+      int $$3 = a($$0.e());
+      $$0.a(() -> wx.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

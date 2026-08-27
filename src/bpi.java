@@ -1,44 +1,425 @@
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Reference2FloatMap;
+import it.unimi.dsi.fastutil.objects.Reference2FloatMaps;
+import it.unimi.dsi.fastutil.objects.Reference2FloatOpenHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ThreadFactory;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class bpi {
-   public static void a(dad $$0, in $$1, bpf $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+   static final Logger a = LogUtils.getLogger();
+   private static final ThreadFactory b = new ThreadFactoryBuilder().setDaemon(true).build();
+   private static final String c = "new_";
+   static final xl d = wx.c("optimizeWorld.stage.upgrading.poi");
+   static final xl e = wx.c("optimizeWorld.stage.finished.poi");
+   static final xl f = wx.c("optimizeWorld.stage.upgrading.entities");
+   static final xl g = wx.c("optimizeWorld.stage.finished.entities");
+   static final xl h = wx.c("optimizeWorld.stage.upgrading.chunks");
+   static final xl i = wx.c("optimizeWorld.stage.finished.chunks");
+   final jk<duu> j;
+   final Set<akl<dax>> k;
+   final boolean l;
+   final boolean m;
+   final eov.c n;
+   private final Thread o;
+   final DataFixer p;
+   volatile boolean q = true;
+   private volatile boolean r;
+   volatile float s;
+   volatile int t;
+   volatile int u;
+   volatile int v;
+   volatile int w;
+   final Reference2FloatMap<akl<dax>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
+   volatile wx y = wx.c("optimizeWorld.stage.counting");
+   static final Pattern z = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
+   final eop A;
+
+   public bpi(eov.c $$0, DataFixer $$1, jl $$2, boolean $$3, boolean $$4) {
+      this.j = $$2.d(lf.aT);
+      this.k = this.j.f().stream().map(lf::a).collect(Collectors.toUnmodifiableSet());
+      this.l = $$3;
+      this.p = $$1;
+      this.n = $$0;
+      this.A = new eop(this.n.a(dax.h).resolve("data").toFile(), $$1, $$2);
+      this.m = $$4;
+      this.o = b.newThread(this::i);
+      this.o.setUncaughtExceptionHandler(($$0x, $$1x) -> {
+         a.error("Error upgrading world", $$1x);
+         this.y = wx.c("optimizeWorld.stage.failed");
+         this.r = true;
+      });
+      this.o.start();
    }
 
-   public static void a(dad $$0, brh $$1, bpf $$2) {
-      a($$0, $$1.ds(), $$1.du(), $$1.dy(), $$2);
-   }
+   public void a() {
+      this.q = false;
 
-   private static void a(dad $$0, double $$1, double $$2, double $$3, bpf $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      try {
+         this.o.join();
+      } catch (InterruptedException var2) {
       }
    }
 
-   public static void a(dad $$0, in $$1, jf<csz> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   private void i() {
+      long $$0 = ac.c();
+      a.info("Upgrading entities");
+      new bpi.d().a();
+      a.info("Upgrading POIs");
+      new bpi.f().a();
+      a.info("Upgrading blocks");
+      new bpi.b().a();
+      this.A.a();
+      $$0 = ac.c() - $$0;
+      a.info("World optimizaton finished after {} seconds", $$0 / 1000L);
+      this.r = true;
    }
 
-   public static void a(dad $$0, double $$1, double $$2, double $$3, csz $$4) {
-      double $$5 = (double)brn.ag.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+   public boolean b() {
+      return this.r;
+   }
 
-      while (!$$4.d()) {
-         chr $$11 = new chr($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+   public Set<akl<dax>> c() {
+      return this.k;
+   }
+
+   public float a(akl<dax> $$0) {
+      return this.x.getFloat($$0);
+   }
+
+   public float d() {
+      return this.s;
+   }
+
+   public int e() {
+      return this.t;
+   }
+
+   public int f() {
+      return this.v;
+   }
+
+   public int g() {
+      return this.w;
+   }
+
+   public wx h() {
+      return this.y;
+   }
+
+   static Path a(Path $$0) {
+      return $$0.resolveSibling("new_" + $$0.getFileName().toString());
+   }
+
+   abstract class a<T extends AutoCloseable> {
+      private final xl d;
+      private final xl e;
+      private final String f;
+      private final String g;
+      @Nullable
+      protected CompletableFuture<Void> a;
+      protected final azj b;
+
+      a(azj $$0, String $$1, String $$2, xl $$3, xl $$4) {
+         this.b = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
-   }
 
-   public static void a(dqh $$0, dqh $$1, dad $$2, in $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bpf $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+      public void a() {
+         bpi.this.u = 0;
+         bpi.this.t = 0;
+         bpi.this.v = 0;
+         bpi.this.w = 0;
+         List<bpi.c<T>> $$0 = this.b();
+         if (bpi.this.t != 0) {
+            float $$1 = (float)bpi.this.u;
+            bpi.this.y = this.d;
+
+            while (bpi.this.q) {
+               boolean $$2 = false;
+               float $$3 = 0.0F;
+
+               for (bpi.c<T> $$4 : $$0) {
+                  akl<dax> $$5 = $$4.a;
+                  ListIterator<bpi.e> $$6 = $$4.c;
+                  T $$7 = $$4.b;
+                  if ($$6.hasNext()) {
+                     bpi.e $$8 = $$6.next();
+                     boolean $$9 = true;
+
+                     for (dae $$10 : $$8.b) {
+                        $$9 = $$9 && this.a($$5, $$7, $$10);
+                        $$2 = true;
+                     }
+
+                     if (bpi.this.m) {
+                        if ($$9) {
+                           this.a($$8.a);
+                        } else {
+                           bpi.a.error("Failed to convert region file {}", $$8.a.a());
+                        }
+                     }
+                  }
+
+                  float $$11 = (float)$$6.nextIndex() / $$1;
+                  bpi.this.x.put($$5, $$11);
+                  $$3 += $$11;
+               }
+
+               bpi.this.s = $$3;
+               if (!$$2) {
+                  break;
+               }
+            }
+
+            bpi.this.y = this.e;
+
+            for (bpi.c<T> $$12 : $$0) {
+               try {
+                  $$12.b.close();
+               } catch (Exception var14) {
+                  bpi.a.error("Error upgrading chunk", var14);
+               }
+            }
          }
       }
+
+      private List<bpi.c<T>> b() {
+         List<bpi.c<T>> $$0 = Lists.newArrayList();
+
+         for (akl<dax> $$1 : bpi.this.k) {
+            dun $$2 = new dun(bpi.this.n.f(), $$1, this.f);
+            Path $$3 = bpi.this.n.a($$1).resolve(this.g);
+            T $$4 = this.a($$2, $$3);
+            ListIterator<bpi.e> $$5 = this.b($$2, $$3);
+            $$0.add(new bpi.c<>($$1, $$4, $$5));
+         }
+
+         return $$0;
+      }
+
+      protected abstract T a(dun var1, Path var2);
+
+      private ListIterator<bpi.e> b(dun $$0, Path $$1) {
+         List<bpi.e> $$2 = c($$0, $$1);
+         bpi.this.u = bpi.this.u + $$2.size();
+         bpi.this.t = bpi.this.t + $$2.stream().mapToInt($$0x -> $$0x.b.size()).sum();
+         return $$2.listIterator();
+      }
+
+      private static List<bpi.e> c(dun $$0, Path $$1) {
+         File[] $$2 = $$1.toFile().listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
+         if ($$2 == null) {
+            return List.of();
+         } else {
+            List<bpi.e> $$3 = Lists.newArrayList();
+
+            for (File $$4 : $$2) {
+               Matcher $$5 = bpi.z.matcher($$4.getName());
+               if ($$5.matches()) {
+                  int $$6 = Integer.parseInt($$5.group(1)) << 5;
+                  int $$7 = Integer.parseInt($$5.group(2)) << 5;
+                  List<dae> $$8 = Lists.newArrayList();
+
+                  try (duk $$9 = new duk($$0, $$4.toPath(), $$1, true)) {
+                     for (int $$10 = 0; $$10 < 32; $$10++) {
+                        for (int $$11 = 0; $$11 < 32; $$11++) {
+                           dae $$12 = new dae($$10 + $$6, $$11 + $$7);
+                           if ($$9.b($$12)) {
+                              $$8.add($$12);
+                           }
+                        }
+                     }
+
+                     if (!$$8.isEmpty()) {
+                        $$3.add(new bpi.e($$9, $$8));
+                     }
+                  } catch (Throwable var18) {
+                     bpi.a.error("Failed to read chunks from region file {}", $$4.toPath(), var18);
+                  }
+               }
+            }
+
+            return $$3;
+         }
+      }
+
+      private boolean a(akl<dax> $$0, T $$1, dae $$2) {
+         boolean $$3 = false;
+
+         try {
+            $$3 = this.a($$1, $$2, $$0);
+         } catch (CompletionException | y var7) {
+            Throwable $$5 = var7.getCause();
+            if (!($$5 instanceof IOException)) {
+               throw var7;
+            }
+
+            bpi.a.error("Error upgrading chunk {}", $$2, $$5);
+         }
+
+         if ($$3) {
+            bpi.this.v++;
+         } else {
+            bpi.this.w++;
+         }
+
+         return $$3;
+      }
+
+      protected abstract boolean a(T var1, dae var2, akl<dax> var3);
+
+      private void a(duk $$0) {
+         if (bpi.this.m) {
+            if (this.a != null) {
+               this.a.join();
+            }
+
+            Path $$1 = $$0.a();
+            Path $$2 = $$1.getParent();
+            Path $$3 = bpi.a($$2).resolve($$1.getFileName().toString());
+
+            try {
+               if ($$3.toFile().exists()) {
+                  Files.delete($$1);
+                  Files.move($$3, $$1);
+               } else {
+                  bpi.a.error("Failed to replace an old region file. New file {} does not exist.", $$3);
+               }
+            } catch (IOException var6) {
+               bpi.a.error("Failed to replace an old region file", var6);
+            }
+         }
+      }
+   }
+
+   class b extends bpi.a<due> {
+      b() {
+         super(azj.c, "chunk", "region", bpi.h, bpi.i);
+      }
+
+      protected boolean a(due $$0, dae $$1, akl<dax> $$2) {
+         ud $$3 = $$0.e($$1).join().orElse(null);
+         if ($$3 != null) {
+            int $$4 = due.a($$3);
+            dsy $$5 = bpi.this.j.f(lf.b($$2)).b();
+            ud $$6 = $$0.a($$2, () -> bpi.this.A, $$3, $$5.b());
+            dae $$7 = new dae($$6.h("xPos"), $$6.h("zPos"));
+            if (!$$7.equals($$1)) {
+               bpi.a.warn("Chunk {} has invalid position {}", $$1, $$7);
+            }
+
+            boolean $$8 = $$4 < aa.b().d().c();
+            if (bpi.this.l) {
+               $$8 = $$8 || $$6.e("Heightmaps");
+               $$6.r("Heightmaps");
+               $$8 = $$8 || $$6.e("isLightOn");
+               $$6.r("isLightOn");
+               uj $$9 = $$6.c("sections", 10);
+
+               for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
+                  ud $$11 = $$9.a($$10);
+                  $$8 = $$8 || $$11.e("BlockLight");
+                  $$11.r("BlockLight");
+                  $$8 = $$8 || $$11.e("SkyLight");
+                  $$11.r("SkyLight");
+               }
+            }
+
+            if ($$8 || bpi.this.m) {
+               if (this.a != null) {
+                  this.a.join();
+               }
+
+               this.a = $$0.a($$1, $$6);
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      protected due b(dun $$0, Path $$1) {
+         return (due)(bpi.this.m ? new duh($$0.a("source"), $$1, $$0.a("target"), bpi.a($$1), bpi.this.p, true) : new due($$0, $$1, bpi.this.p, true));
+      }
+   }
+
+   static record c<T>(akl<dax> a, T b, ListIterator<bpi.e> c) {
+   }
+
+   class d extends bpi.g {
+      d() {
+         super(azj.s, "entities", bpi.f, bpi.g);
+      }
+
+      @Override
+      protected ud a(dup $$0, ud $$1) {
+         return $$0.a($$1, -1);
+      }
+   }
+
+   static record e(duk a, List<dae> b) {
+   }
+
+   class f extends bpi.g {
+      f() {
+         super(azj.q, "poi", bpi.d, bpi.e);
+      }
+
+      @Override
+      protected ud a(dup $$0, ud $$1) {
+         return $$0.a($$1, 1945);
+      }
+   }
+
+   abstract class g extends bpi.a<dup> {
+      g(azj $$0, String $$1, xl $$2, xl $$3) {
+         super($$0, $$1, $$1, $$2, $$3);
+      }
+
+      protected dup b(dun $$0, Path $$1) {
+         return (dup)(bpi.this.m
+            ? new dui($$0.a("source"), $$1, $$0.a("target"), bpi.a($$1), bpi.this.p, true, this.b)
+            : new dup($$0, $$1, bpi.this.p, true, this.b));
+      }
+
+      protected boolean a(dup $$0, dae $$1, akl<dax> $$2) {
+         ud $$3 = $$0.a($$1).join().orElse(null);
+         if ($$3 != null) {
+            int $$4 = due.a($$3);
+            ud $$5 = this.a($$0, $$3);
+            boolean $$6 = $$4 < aa.b().d().c();
+            if ($$6 || bpi.this.m) {
+               if (this.a != null) {
+                  this.a.join();
+               }
+
+               this.a = $$0.a($$1, $$5);
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      protected abstract ud a(dup var1, ud var2);
    }
 }

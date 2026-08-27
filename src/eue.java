@@ -1,20 +1,8 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class eue extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public eue(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
-   }
-
-   public int size() {
-      return this.a.size();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eue {
 }

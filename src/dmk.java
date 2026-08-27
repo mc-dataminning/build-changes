@@ -1,33 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmk extends des implements dmj {
-   public static final MapCodec<dmk> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dmj.a.e.fieldOf("weathering_state").forGetter(dmk::k), u()).apply($$0, dmk::new)
-   );
-   private final dmj.a e;
+public class dmk extends dho {
+   public static final MapCodec<dmk> b = b(dmk::new);
 
-   @Override
-   protected MapCodec<dmk> a() {
-      return d;
-   }
-
-   public dmk(dmj.a $$0, dqg.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dmk(dra.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected MapCodec<? extends dmk> a() {
+      return b;
    }
 
    @Override
-   protected boolean d_(dqh $$0) {
-      return dmj.c($$0.b()).isPresent();
+   protected evd c(drb $$0, dad $$1, io $$2, eup $$3) {
+      return eva.a();
    }
 
-   public dmj.a k() {
-      return this.e;
+   @Override
+   protected float d(drb $$0, dad $$1, io $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean a_(drb $$0, dad $$1, io $$2) {
+      return true;
    }
 }

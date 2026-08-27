@@ -1,78 +1,123 @@
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.Iterables;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public final class dah {
-   private final String a;
-   private final daa b;
-   private final boolean c;
-   private final bpj d;
-   private final boolean e;
-   private final czz f;
-   private final dax g;
+public interface dah extends dad {
+   dss C_();
 
-   public dah(String $$0, daa $$1, boolean $$2, bpj $$3, boolean $$4, czz $$5, dax $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   @Nullable
+   dad c(int var1, int var2);
+
+   default boolean a(@Nullable bru $$0, evd $$1) {
+      return true;
    }
 
-   public static dah a(Dynamic<?> $$0, dax $$1) {
-      daa $$2 = daa.a($$0.get("GameType").asInt(0));
-      return new dah(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bpj.a($$0x.byteValue())).result().orElse(bpj.c),
-         $$0.get("allowCommands").asBoolean($$2 == daa.b),
-         new czz($$0.get("GameRules")),
-         $$1
-      );
+   default boolean a(drb $$0, io $$1, eup $$2) {
+      evd $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public String a() {
-      return this.a;
+   default boolean f(bru $$0) {
+      return this.a($$0, eva.a($$0.cK()));
    }
 
-   public daa b() {
-      return this.b;
+   default boolean b(euf $$0) {
+      return this.a(null, $$0);
    }
 
-   public boolean c() {
-      return this.c;
+   default boolean g(bru $$0) {
+      return this.a($$0, $$0.cK());
    }
 
-   public bpj d() {
-      return this.d;
+   default boolean a(@Nullable bru $$0, euf $$1) {
+      for (evd $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      if (!this.c($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
+      } else {
+         evd $$3 = this.h($$0, $$1);
+         return $$3 == null || !eva.c($$3, eva.a($$1), euo.i);
+      }
    }
 
-   public boolean e() {
-      return this.e;
+   default boolean b(@Nullable bru $$0, euf $$1) {
+      for (evd $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public czz f() {
-      return this.f;
+   List<evd> c(@Nullable bru var1, euf var2);
+
+   default Iterable<evd> d(@Nullable bru $$0, euf $$1) {
+      List<evd> $$2 = this.c($$0, $$1);
+      Iterable<evd> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
    }
 
-   public dax g() {
-      return this.g;
+   default Iterable<evd> e(@Nullable bru $$0, euf $$1) {
+      return () -> new dab<evd>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
    }
 
-   public dah a(daa $$0) {
-      return new dah(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   @Nullable
+   private evd h(bru $$0, euf $$1) {
+      dss $$2 = this.C_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
    }
 
-   public dah a(bpj $$0) {
-      return new dah(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   default boolean f(@Nullable bru $$0, euf $$1) {
+      dab<evd> $$2 = new dab<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((evd)$$2.next()).c()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public dah a(dax $$0) {
-      return new dah(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   default Optional<io> g(bru $$0, euf $$1) {
+      io $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      dab<io> $$4 = new dab<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         io $$5 = (io)$$4.next();
+         double $$6 = $$5.b($$0.dn());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.i();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
    }
 
-   public dah h() {
-      return new dah(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+   default Optional<euk> a(@Nullable bru $$0, evd $$1, euk $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         euf $$6 = $$1.a().c($$3, $$4, $$5);
+         evd $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(eva::a)
+            .reduce(eva.a(), eva::a);
+         evd $$8 = eva.a($$1, $$7, euo.e);
+         return $$8.a($$2);
+      }
    }
 }

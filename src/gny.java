@@ -1,37 +1,44 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gny(akh a, @Nullable String b, @Nullable akh c, @Nullable akh d, gny.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+@FunctionalInterface
+public interface gny {
+   Logger a = LogUtils.getLogger();
 
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      public static gny.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
+   static gny create(Collection<asv<?>> $$0) {
+      return ($$1, $$2) -> {
+         aty $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      public String a() {
-         return this.c;
-      }
+         ext $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ext.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gpg $$11 = $$3.a(gpg.a).orElse(gpg.e);
+         gpi $$12 = $$11.a($$7.a(), $$7.b());
+         if (ayd.c($$7.a(), $$12.a()) && ayd.c($$7.b(), $$12.b())) {
+            return new gnp($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
+
+   @Nullable
+   gnp loadSprite(akm var1, atu var2);
 }

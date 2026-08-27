@@ -1,98 +1,123 @@
-public class cim extends ciw {
-   public cim(brn<? extends cim> $$0, dad $$1) {
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+
+public class cim extends cik implements btf {
+   private static final int c = 50;
+   private static final int d = 70;
+   private static final ajr<Boolean> e = ajv.a(cim.class, ajt.k);
+   public static final String b = "sheared";
+
+   public static btv.a gs() {
+      return cik.s().a(btw.q, 16.0);
+   }
+
+   public cim(bsa<? extends cim> $$0, dax $$1) {
       super($$0, $$1);
    }
 
-   public static btg.a r() {
-      return cin.gv().a(bth.r, 0.2F);
-   }
-
-   public static boolean b(brn<cim> $$0, dae $$1, bse $$2, in $$3, ayg $$4) {
-      return $$1.ak() != bpj.a;
+   @Override
+   protected void a(ajv.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
    }
 
    @Override
-   public boolean a(dag $$0) {
-      return $$0.f(this) && !$$0.d(this.cI());
+   public void b(ud $$0) {
+      super.b($$0);
+      $$0.a("sheared", this.gt());
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.f(bth.a).a((double)($$0 * 3));
+   public void a(ud $$0) {
+      super.a($$0);
+      this.w($$0.q("sheared"));
+   }
+
+   public boolean gt() {
+      return this.ao.a(e);
+   }
+
+   public void w(boolean $$0) {
+      this.ao.a(e, $$0);
    }
 
    @Override
-   public float br() {
-      return 1.0F;
-   }
+   protected bpu b(clw $$0, bpt $$1) {
+      cto $$2 = $$0.b($$1);
+      if ($$2.a(ctr.rV) && this.a()) {
+         this.a(avi.h);
+         this.a(dvu.M, $$0);
+         if (!this.dP().B) {
+            $$2.a(1, $$0, d($$1));
+         }
 
-   @Override
-   protected kv u() {
-      return kx.E;
-   }
-
-   @Override
-   public boolean bO() {
-      return false;
-   }
-
-   @Override
-   protected int y() {
-      return super.y() * 4;
-   }
-
-   @Override
-   protected void gl() {
-      this.d *= 0.9F;
-   }
-
-   @Override
-   protected void fh() {
-      etp $$0 = this.dq();
-      float $$1 = (float)this.gq() * 0.1F;
-      this.o($$0.c, (double)(this.ff() + $$1), $$0.e);
-      this.av = true;
-   }
-
-   @Override
-   protected void c(awg<elz> $$0) {
-      if ($$0 == avw.b) {
-         etp $$1 = this.dq();
-         this.o($$1.c, (double)(0.22F + (float)this.gq() * 0.05F), $$1.e);
-         this.av = true;
+         return bpu.a(this.dP().B);
       } else {
-         super.c($$0);
+         return super.b($$0, $$1);
       }
    }
 
    @Override
-   protected boolean gm() {
-      return this.cZ();
+   protected avg v() {
+      return avh.cn;
    }
 
    @Override
-   protected float gn() {
-      return super.gn() + 2.0F;
+   protected avg d(bqn $$0) {
+      return avh.cp;
    }
 
    @Override
-   protected avb d(bqf $$0) {
-      return this.gr() ? avc.oj : avc.oi;
+   protected avg o_() {
+      return avh.co;
    }
 
    @Override
-   protected avb o_() {
-      return this.gr() ? avc.nX : avc.oh;
+   protected avg u() {
+      return avh.cr;
    }
 
    @Override
-   protected avb go() {
-      return this.gr() ? avc.om : avc.ol;
+   protected cmc b(cto $$0, float $$1) {
+      cmc $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cme $$3) {
+         $$3.a(new brc(bre.s, 100));
+      }
+
+      return $$2;
    }
 
    @Override
-   protected avb gp() {
-      return avc.ok;
+   protected int gp() {
+      return 50;
+   }
+
+   @Override
+   protected int gq() {
+      return 70;
+   }
+
+   @Override
+   public void a(avi $$0) {
+      this.dP().a(null, this, avh.cq, $$0, 1.0F, 1.0F);
+      this.gw();
+      this.w(true);
+   }
+
+   private void gw() {
+      if (this.dP() instanceof aqm $$0 && $$0.aa().b(dat.f)) {
+         epk $$1 = $$0.o().be().b(epd.ba);
+         epi $$2 = new epi.a($$0).a(erx.f, this.dn()).a(erx.a, this).a(erw.s);
+         ObjectListIterator var4 = $$1.a($$2).iterator();
+
+         while (var4.hasNext()) {
+            cto $$3 = (cto)var4.next();
+            this.b($$3);
+         }
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return !this.gt() && this.bD();
    }
 }

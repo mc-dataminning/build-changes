@@ -1,50 +1,66 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface blp {
-   static blj<StringReader> a(String $$0) {
-      return new blp.b($$0);
+public final class blp {
+   private final Object2ObjectMap<bli<?>, Object> a = new Object2ObjectArrayMap();
+
+   public <T> void a(bli<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   static blj<StringReader> a(char $$0) {
-      return new blp.a($$0);
+   @Nullable
+   public <T> T a(bli<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   public static record a(char a) implements blj<StringReader> {
-      @Override
-      public boolean a(blf<StringReader> $$0, blh $$1, blb $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
+   public <T> T b(bli<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bli<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bli<T>... $$0) {
+      for (bli<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
          }
       }
 
-      public char c() {
-         return this.a;
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bli<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(blp $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof blp $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
-   public static record b(String a) implements blj<StringReader> {
-      @Override
-      public boolean a(blf<StringReader> $$0, blh $$1, blb $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      public String c() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

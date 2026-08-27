@@ -1,58 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class bmi {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public interface bmi {
+   String b = "root";
 
-   protected bmi(Runnable $$0) {
-      this.b = $$0;
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   void a(bno var1);
+
+   default void d(String $$0) {
+      this.a($$0, 1);
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
+   void a(String var1, int var2);
 
-         bmq $$1;
-         try {
-            $$1 = bmp.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
+   void a(Supplier<String> var1, int var2);
+
+   static bmi a(final bmi $$0, final bmi $$1) {
+      if ($$0 == bmf.a) {
+         return $$1;
       } else {
-         akj.a($$0.get());
-      }
-   }
+         return $$1 == bmf.a ? $$0 : new bmi() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         akj.a($$0.get());
-         $$1.printStackTrace(akj.a);
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
+
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void a(bno $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
+
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
+
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
       }
    }
 }

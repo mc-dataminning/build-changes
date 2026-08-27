@@ -1,50 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import javax.annotation.Nullable;
+public abstract class gmo<T extends bso, M extends fub<T>> extends gmf<T, M> {
+   public gmo(giu<T, M> $$0) {
+      super($$0);
+   }
 
-public final class gmo {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final akh d = new akh("missingno");
-   private static final att e = new att.a().a(goj.a, new goj(ImmutableList.of(new goi(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static gml f;
+   protected abstract int a(T var1);
 
-   private static ewy a(int $$0, int $$1) {
-      ewy $$2 = new ewy($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   protected abstract void a(eys var1, gck var2, int var3, bru var4, float var5, float var6, float var7, float var8);
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
+   public void a(eys $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      ayk $$11 = ayk.a((long)$$3.al());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fvw $$13 = this.c().a($$11);
+            fvw.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayd.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayd.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayd.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
       }
-
-      return $$2;
-   }
-
-   public static gms a() {
-      ewy $$0 = a(16, 16);
-      return new gms(d, new gol(16, 16), $$0, e);
-   }
-
-   public static akh b() {
-      return d;
-   }
-
-   public static gml c() {
-      if (f == null) {
-         ewy $$0 = a(16, 16);
-         $$0.i();
-         f = new gml($$0);
-         fde.Q().aa().a(d, f);
-      }
-
-      return f;
    }
 }

@@ -1,45 +1,76 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class gfj implements gfa.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fde c;
-   private Collection<in> d = Lists.newArrayList();
+public class gfj {
+   private final Long2ObjectMap<gfj.a> a = new Long2ObjectOpenHashMap();
 
-   public gfj(fde $$0) {
-      this.c = $$0;
-   }
+   @Nullable
+   public gfi a(dax $$0, io $$1, io $$2, int $$3) {
+      int $$4 = jq.a($$1.u() - $$3);
+      int $$5 = jq.a($$1.w() - $$3);
+      int $$6 = jq.a($$2.u() + $$3);
+      int $$7 = jq.a($$2.w() + $$3);
+      gfj.a[][] $$8 = new gfj.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   public void a(Collection<in> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
-      in $$5 = this.b().c();
-
-      for (in $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (gfj.a)this.a.computeIfAbsent(dae.c($$9, $$10), $$1x -> new gfj.a($$0.d(dae.a($$1x), dae.b($$1x))));
          }
+      }
+
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         gfh[][] $$11 = new gfh[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new gfi($$0, $$4, $$5, $$11);
       }
    }
 
-   private static void a(exx $$0, gbo $$1, in $$2) {
-      gfa.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   private static boolean a(io $$0, io $$1, int $$2, int $$3, gfj.a[][] $$4) {
+      int $$5 = jq.a($$0.u());
+      int $$6 = jq.a($$0.w());
+      int $$7 = jq.a($$1.u());
+      int $$8 = jq.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dth $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   private static void a(exx $$0, gbo $$1, String $$2, in $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gfa.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
+   static final class a {
+      private final dth a;
+      @Nullable
+      private gfh b;
 
-   private fcp b() {
-      return this.c.j.m();
+      a(dth $$0) {
+         this.a = $$0;
+      }
+
+      public dth a() {
+         return this.a;
+      }
+
+      public gfh b() {
+         if (this.b == null) {
+            this.b = new gfh(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

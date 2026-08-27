@@ -1,40 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class did extends dde {
-   public static final MapCodec<did> a = b(did::new);
-   protected static final eui b = dde.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public class did extends dhm implements dip {
+   public static final MapCodec<did> c = b(did::new);
 
    @Override
    public MapCodec<did> a() {
-      return a;
+      return c;
    }
 
-   public did(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return b;
+   protected did(dra.d $$0) {
+      super($$0, it.b, eva.b(), true);
    }
 
    @Override
-   protected eui b_(dqh $$0, czj $$1, in $$2) {
-      return euf.b();
+   protected dhn c() {
+      return (dhn)dea.mc;
    }
 
    @Override
-   protected eui c(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return euf.b();
+   protected emu b_(drb $$0) {
+      return emv.c.a(false);
    }
 
    @Override
-   protected boolean a(dqh $$0, emp $$1) {
+   protected boolean m(drb $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable clw $$0, dad $$1, io $$2, drb $$3, emt $$4) {
       return false;
    }
 
    @Override
-   protected float d(dqh $$0, czj $$1, in $$2) {
-      return 0.2F;
+   public boolean a(day $$0, io $$1, drb $$2, emu $$3) {
+      return false;
    }
 }

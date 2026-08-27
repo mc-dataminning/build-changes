@@ -1,69 +1,45 @@
-import java.util.Optional;
+public class acm implements ze<abq> {
+   public static final yv<vx, acm> a = ze.a(acm::a, acm::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record acm(int b, iw<bqh> c, int d, int e, Optional<etp> f) implements zb<abm> {
-   public static final ys<wf, acm> a = zb.a(acm::a, acm::new);
-   private static final ys<wf, iw<bqh>> g = yq.b(le.s);
-
-   public acm(brh $$0, bqf $$1) {
-      this($$0.aj(), $$1.k(), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
+   public acm(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private acm(wf $$0) {
-      this($$0.l(), g.decode($$0), a((vu)$$0), a((vu)$$0), $$0.b($$0x -> new etp($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+   private acm(vx $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private static void a(vu $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int a(vu $$0) {
-      return $$0.l() - 1;
-   }
-
-   private void a(wf $$0) {
-      $$0.c(this.b);
-      g.encode($$0, this.c);
-      a($$0, this.d);
-      a($$0, this.e);
-      $$0.a(this.f, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   private void a(vx $$0) {
+      $$0.k(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zd<acm> a() {
-      return afx.z;
+   public zg<acm> a() {
+      return agb.v;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public bqf a(dad $$0) {
-      if (this.f.isPresent()) {
-         return new bqf(this.c, this.f.get());
-      } else {
-         brh $$1 = $$0.a(this.d);
-         brh $$2 = $$0.a(this.e);
-         return new bqf(this.c, $$2, $$1);
-      }
+   public int b() {
+      return this.b;
    }
 
-   public iw<bqh> e() {
+   public int e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public Optional<etp> h() {
-      return this.f;
    }
 }

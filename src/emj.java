@@ -1,100 +1,154 @@
 import javax.annotation.Nullable;
 
-public class emj extends emw {
-   private final boolean l;
-   private float m;
-   private float n;
+public class emj implements emm {
+   public static final int b = 1;
+   protected final daz c;
+   @Nullable
+   private final eml<?, ?> a;
+   @Nullable
+   private final eml<?, ?> d;
 
-   public emj(boolean $$0) {
-      this.l = $$0;
+   public emj(dtk $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new emc($$0) : null;
+      this.d = $$2 ? new emn($$0) : null;
    }
 
    @Override
-   public void a(daq $$0, bsc $$1) {
-      super.a($$0, $$1);
-      $$1.a(emr.j, 0.0F);
-      this.m = $$1.a(emr.c);
-      $$1.a(emr.c, 6.0F);
-      this.n = $$1.a(emr.k);
-      $$1.a(emr.k, 4.0F);
+   public void a(io $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
    @Override
-   public void b() {
-      this.b.a(emr.c, this.m);
-      this.b.a(emr.k, this.n);
-      super.b();
+   public boolean K_() {
+      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
    }
 
    @Override
-   public emm a() {
-      return !this.b.bc() ? super.a() : this.c(new in(axz.a(this.b.cI().a), axz.a(this.b.cI().b + 0.5), axz.a(this.b.cI().c)));
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
    }
 
    @Override
-   public emv a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
+   public void a(jq $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
    @Override
-   public int a(emm[] $$0, emm $$1) {
-      int $$2 = super.a($$0, $$1);
-      emr $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      emr $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != emr.w) {
-         $$5 = axz.d(Math.max(1.0F, this.b.dH()));
+   public void a(dae $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(dae $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public emh a(dbg $$0) {
+      if ($$0 == dbg.b) {
+         return (emh)(this.a == null ? emh.a.a : this.a);
       } else {
-         $$5 = 0;
+         return (emh)(this.d == null ? emh.a.a : this.d);
       }
+   }
 
-      double $$7 = this.d(new in($$1.a, $$1.b, $$1.c));
-      emm $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, is.b, $$4);
-      emm $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, is.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != emr.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         emm $$11 = $$0[$$10];
-         if ($$11.l == emr.j && this.l && $$11.b < this.b.dN().z_() - 10) {
-            $$11.k++;
+   public String a(dbg $$0, jq $$1) {
+      if ($$0 == dbg.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
       }
 
-      return $$2;
+      return "n/a";
    }
 
-   private boolean b(@Nullable emm $$0, emm $$1) {
-      return this.a($$0, $$1) && $$0.l == emr.j;
-   }
-
-   @Override
-   protected boolean c() {
-      return true;
-   }
-
-   @Override
-   public emr a(emt $$0, int $$1, int $$2, int $$3) {
-      emr $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == emr.j) {
-         in.a $$5 = new in.a();
-
-         for (is $$6 : is.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            emr $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == emr.a) {
-               return emr.k;
-            }
+   public emi.b b(dbg $$0, jq $$1) {
+      if ($$0 == dbg.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
          }
-
-         return emr.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
+
+      return emi.b.a;
+   }
+
+   public void a(dbg $$0, jq $$1, @Nullable dtc $$2) {
+      if ($$0 == dbg.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dae $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(io $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(jq $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.am() + 2;
+   }
+
+   public int d() {
+      return this.c.an() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

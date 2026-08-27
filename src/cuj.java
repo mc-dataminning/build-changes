@@ -1,38 +1,71 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cuj extends csu {
-   public static final int a = 160;
+public class cuj extends ctj {
+   private static final Map<avg, cuj> a = Maps.newHashMap();
+   private final int b;
+   private final avg c;
+   private final int j;
 
-   public cuj(csu.a $$0) {
-      super($$0);
+   protected cuj(int $$0, avg $$1, ctj.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.j = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bqt> $$4 = new ArrayList<>();
-         cwb $$5 = $$0.a(ka.F, cwb.a);
+   public bpu a(cxb $$0) {
+      dax $$1 = $$0.q();
+      io $$2 = $$0.a();
+      drb $$3 = $$1.a_($$2);
+      if ($$3.a(dea.dT) && !$$3.c(dib.b)) {
+         cto $$4 = $$0.n();
+         if (!$$1.B) {
+            clw $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dph $$6) {
+               $$6.b($$4.s());
+               $$1.a(dvu.c, $$2, dvu.a.a($$5, $$3));
+            }
 
-         for (cwb.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(avr.al);
+            }
          }
 
-         cuy.a($$4, $$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
+         return bpu.a($$1.B);
+      } else {
+         return bpu.d;
       }
    }
 
+   public int h() {
+      return this.b;
+   }
+
    @Override
-   public csz a(csz $$0, dad $$1, bsa $$2) {
-      cwb $$3 = $$0.a(ka.F, cwb.a);
+   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
+      $$2.add(this.j().a(n.h));
+   }
 
-      for (cwb.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
+   public xl j() {
+      return wx.c(this.a() + ".desc");
+   }
 
-      super.a($$0, $$1, $$2);
-      return $$2.fN() ? $$0 : new csz(ctc.pq);
+   @Nullable
+   public static cuj a(avg $$0) {
+      return a.get($$0);
+   }
+
+   public avg k() {
+      return this.c;
+   }
+
+   public int l() {
+      return this.j;
    }
 }

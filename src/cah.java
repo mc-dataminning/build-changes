@@ -1,30 +1,42 @@
-public class cah extends byx {
-   private final bsi a;
+import java.util.EnumSet;
 
-   public cah(bsi $$0) {
+public class cah extends bzm {
+   private final bsq a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cah(bsq $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dN().b_(this.a.dn()).a(avw.a);
+      return this.a.el().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      in $$0 = null;
+      double $$0 = (Math.PI * 2) * this.a.el().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.el().a(20);
+   }
 
-      for (in $$2 : in.b(
-         axz.a(this.a.ds() - 2.0), axz.a(this.a.du() - 2.0), axz.a(this.a.dy() - 2.0), axz.a(this.a.ds() + 2.0), this.a.dt(), axz.a(this.a.dy() + 2.0)
-      )) {
-         if (this.a.dN().b_($$2).a(avw.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public boolean R_() {
+      return true;
+   }
 
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
    }
 }

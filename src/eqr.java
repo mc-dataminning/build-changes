@@ -1,28 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eqr extends epw {
-   public static final Codec<eqr> a = RecordCodecBuilder.create($$0 -> a($$0).and(ld.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eqr::new));
-   private final iw<cuw> b;
+public interface eqr extends epg, BiFunction<cto, epf, cto> {
+   eqs b();
 
-   private eqr(List<erq> $$0, iw<cuw> $$1) {
-      super($$0);
-      this.b = $$1;
+   static Consumer<cto> a(BiFunction<cto, epf, cto> $$0, Consumer<cto> $$1, epf $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public epy b() {
-      return epz.C;
-   }
-
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      $$0.a(ka.E, cuy.a, this.b, cuy::b);
-      return $$0;
-   }
-
-   public static epw.a<?> a(iw<cuw> $$0) {
-      return a($$1 -> new eqr($$1, $$0));
+   public interface a {
+      eqr b();
    }
 }

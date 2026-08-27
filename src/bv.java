@@ -3,25 +3,25 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bv extends de<bv.a> {
+public class bv extends df<bv.a> {
    @Override
    public Codec<bv.a> a() {
       return bv.a.a;
    }
 
-   public void a(aqi $$0, etp $$1, @Nullable brh $$2) {
-      etp $$3 = $$0.dl();
-      eol $$4 = $$2 != null ? br.b($$0, $$2) : null;
+   public void a(aqn $$0, euk $$1, @Nullable bru $$2) {
+      euk $$3 = $$0.dn();
+      epf $$4 = $$2 != null ? br.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.z(), $$1, $$3, $$4));
    }
 
-   public static record a(Optional<bc> b, Optional<cr> c, Optional<bi> d, Optional<bc> e) implements de.a {
+   public static record a(Optional<bc> b, Optional<cr> c, Optional<bi> d, Optional<bc> e) implements df.a {
       public static final Codec<bv.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(br.b, "player").forGetter(bv.a::a),
-                  axh.a(cr.a, "start_position").forGetter(bv.a::b),
-                  axh.a(bi.a, "distance").forGetter(bv.a::c),
-                  axh.a(br.b, "cause").forGetter(bv.a::d)
+                  br.b.optionalFieldOf("player").forGetter(bv.a::a),
+                  cr.a.optionalFieldOf("start_position").forGetter(bv.a::b),
+                  bi.a.optionalFieldOf("distance").forGetter(bv.a::c),
+                  br.b.optionalFieldOf("cause").forGetter(bv.a::d)
                )
                .apply($$0, bv.a::new)
       );
@@ -32,11 +32,11 @@ public class bv extends de<bv.a> {
 
       @Override
       public void a(bd $$0) {
-         de.a.super.a($$0);
+         df.a.super.a($$0);
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(aqh $$0, etp $$1, etp $$2, @Nullable eol $$3) {
+      public boolean a(aqm $$0, euk $$1, euk $$2, @Nullable epf $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
             return false;
          } else {

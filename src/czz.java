@@ -1,444 +1,263 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicLike;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class czz {
-   public static final int a = 3;
-   static final Logger aa = LogUtils.getLogger();
-   private static final Map<czz.e<?>, czz.f<?>> ab = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
-   public static final czz.e<czz.a> b = a("doFireTick", czz.b.e, czz.a.a(true));
-   public static final czz.e<czz.a> c = a("mobGriefing", czz.b.b, czz.a.a(true));
-   public static final czz.e<czz.a> d = a("keepInventory", czz.b.a, czz.a.a(false));
-   public static final czz.e<czz.a> e = a("doMobSpawning", czz.b.c, czz.a.a(true));
-   public static final czz.e<czz.a> f = a("doMobLoot", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> g = a("projectilesCanBreakBlocks", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> h = a("doTileDrops", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> i = a("doEntityDrops", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> j = a("commandBlockOutput", czz.b.f, czz.a.a(true));
-   public static final czz.e<czz.a> k = a("naturalRegeneration", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.a> l = a("doDaylightCycle", czz.b.e, czz.a.a(true));
-   public static final czz.e<czz.a> m = a("logAdminCommands", czz.b.f, czz.a.a(true));
-   public static final czz.e<czz.a> n = a("showDeathMessages", czz.b.f, czz.a.a(true));
-   public static final czz.e<czz.d> o = a("randomTickSpeed", czz.b.e, czz.d.a(3));
-   public static final czz.e<czz.a> p = a("sendCommandFeedback", czz.b.f, czz.a.a(true));
-   public static final czz.e<czz.a> q = a("reducedDebugInfo", czz.b.g, czz.a.a(false, ($$0, $$1) -> {
-      byte $$2 = (byte)($$1.a() ? 22 : 23);
+public abstract class czz {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private boe<dbo> e = boe.b();
+   @Nullable
+   private dbo f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private bru l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
 
-      for (aqi $$3 : $$0.ah().t()) {
-         $$3.d.b(new acq($$3, $$2));
-      }
-   }));
-   public static final czz.e<czz.a> r = a("spectatorsGenerateChunks", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.d> s = a("spawnRadius", czz.b.a, czz.d.a(10));
-   public static final czz.e<czz.a> t = a("disableElytraMovementCheck", czz.b.a, czz.a.a(false));
-   public static final czz.e<czz.d> u = a("maxEntityCramming", czz.b.b, czz.d.a(24));
-   public static final czz.e<czz.a> v = a("doWeatherCycle", czz.b.e, czz.a.a(true));
-   public static final czz.e<czz.a> w = a("doLimitedCrafting", czz.b.a, czz.a.a(false, ($$0, $$1) -> {
-      for (aqi $$2 : $$0.ah().t()) {
-         $$2.d.b(new act(act.n, $$1.a() ? 1.0F : 0.0F));
-      }
-   }));
-   public static final czz.e<czz.d> x = a("maxCommandChainLength", czz.b.g, czz.d.a(65536));
-   public static final czz.e<czz.d> y = a("maxCommandForkCount", czz.b.g, czz.d.a(65536));
-   public static final czz.e<czz.d> z = a("commandModificationBlockLimit", czz.b.g, czz.d.a(32768));
-   public static final czz.e<czz.a> A = a("announceAdvancements", czz.b.f, czz.a.a(true));
-   public static final czz.e<czz.a> B = a("disableRaids", czz.b.b, czz.a.a(false));
-   public static final czz.e<czz.a> C = a("doInsomnia", czz.b.c, czz.a.a(true));
-   public static final czz.e<czz.a> D = a("doImmediateRespawn", czz.b.a, czz.a.a(false, ($$0, $$1) -> {
-      for (aqi $$2 : $$0.ah().t()) {
-         $$2.d.b(new act(act.m, $$1.a() ? 1.0F : 0.0F));
-      }
-   }));
-   public static final czz.e<czz.d> E = a("playersNetherPortalDefaultDelay", czz.b.a, czz.d.a(80));
-   public static final czz.e<czz.d> F = a("playersNetherPortalCreativeDelay", czz.b.a, czz.d.a(1));
-   public static final czz.e<czz.a> G = a("drowningDamage", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.a> H = a("fallDamage", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.a> I = a("fireDamage", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.a> J = a("freezeDamage", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.a> K = a("doPatrolSpawning", czz.b.c, czz.a.a(true));
-   public static final czz.e<czz.a> L = a("doTraderSpawning", czz.b.c, czz.a.a(true));
-   public static final czz.e<czz.a> M = a("doWardenSpawning", czz.b.c, czz.a.a(true));
-   public static final czz.e<czz.a> N = a("forgiveDeadPlayers", czz.b.b, czz.a.a(true));
-   public static final czz.e<czz.a> O = a("universalAnger", czz.b.b, czz.a.a(false));
-   public static final czz.e<czz.d> P = a("playersSleepingPercentage", czz.b.a, czz.d.a(100));
-   public static final czz.e<czz.a> Q = a("blockExplosionDropDecay", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> R = a("mobExplosionDropDecay", czz.b.d, czz.a.a(true));
-   public static final czz.e<czz.a> S = a("tntExplosionDropDecay", czz.b.d, czz.a.a(false));
-   public static final czz.e<czz.d> T = a("snowAccumulationHeight", czz.b.e, czz.d.a(1));
-   public static final czz.e<czz.a> U = a("waterSourceConversion", czz.b.e, czz.a.a(true));
-   public static final czz.e<czz.a> V = a("lavaSourceConversion", czz.b.e, czz.a.a(false));
-   public static final czz.e<czz.a> W = a("globalSoundEvents", czz.b.g, czz.a.a(true));
-   public static final czz.e<czz.a> X = a("doVinesSpread", czz.b.e, czz.a.a(true));
-   public static final czz.e<czz.a> Y = a("enderPearlsVanishOnDeath", czz.b.a, czz.a.a(true));
-   public static final czz.e<czz.d> Z = a("spawnChunkRadius", czz.b.g, czz.d.a(2, 0, 32, ($$0, $$1) -> {
-      aqh $$2 = $$0.I();
-      $$2.a($$2.U(), $$2.V());
-   }));
-   private final Map<czz.e<?>, czz.g<?>> ac;
+   public void a(bsa<?> $$0, @Nullable dax $$1, ayk $$2, io $$3) {
+      this.a($$1, $$2, $$3).a().a("id", le.g.b($$0).toString());
+   }
 
-   private static <T extends czz.g<T>> czz.e<T> a(String $$0, czz.b $$1, czz.f<T> $$2) {
-      czz.e<T> $$3 = new czz.e<>($$0, $$1);
-      czz.f<?> $$4 = ab.put($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
+   private boolean c(dax $$0, io $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
+   }
+
+   public void a(dax $$0, io $$1) {
+      if (!this.c($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         ayk $$2 = $$0.E_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(ky.ae, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(ky.F, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
+      }
+   }
+
+   public void a(aqm $$0, io $$1) {
+      if (this.c($$0, $$1)) {
+         if (this.d == -1) {
+            this.d($$0, $$1);
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            ayk $$3 = $$0.E_();
+            dbo $$4 = this.a($$0, $$3, $$1);
+
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               ud $$6 = $$4.a();
+               Optional<bsa<?>> $$7 = bsa.a($$6);
+               if ($$7.isEmpty()) {
+                  this.d($$0, $$1);
+                  return;
+               }
+
+               uj $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  io $$13 = io.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.ak() == bpr.a) {
+                        continue;
+                     }
+
+                     dbo.a $$14 = $$4.b().get();
+                     if (!$$14.a($$13, $$0)) {
+                        continue;
+                     }
+                  } else if (!btk.a($$7.get(), $$0, bss.c, $$13, $$0.E_())) {
+                     continue;
+                  }
+
+                  bru $$15 = bsa.a($$6, $$0, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dF(), $$3x.dH());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        dvi.b($$15.getClass()),
+                        new euf((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o),
+                        brz.f
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.du(), $$15.dw(), $$15.dA(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bsq $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, bss.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
+                     if ($$18) {
+                        ((bsq)$$15).a($$0, $$0.d_($$15.dp()), bss.c, null);
+                     }
+
+                     $$4.c().ifPresent($$17::a);
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, dvu.t, $$13);
+                  if ($$15 instanceof bsq) {
+                     ((bsq)$$15).Q();
+                  }
+
+                  $$2 = true;
+               }
+            }
+
+            if ($$2) {
+               this.d($$0, $$1);
+            }
+         }
+      }
+   }
+
+   private void d(dax $$0, io $$1) {
+      ayk $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
       } else {
-         return $$3;
+         this.d = this.i + $$2.a(this.j - this.i);
       }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (dbo)$$2x.b()));
+      this.a($$0, $$1, 1);
    }
 
-   public czz(DynamicLike<?> $$0) {
-      this();
-      this.a($$0);
+   public void a(@Nullable dax $$0, io $$1, ud $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         dbo $$4 = dbo.b.parse(ur.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(dbo::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         uj $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = dbo.c.parse(ur.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(boe::b);
+      } else {
+         this.e = boe.a(this.f != null ? this.f : new dbo());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
    }
 
-   public czz() {
-      this.ac = ab.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((czz.f)$$0.getValue()).a()));
-   }
+   public ud a(ud $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (va)dbo.b.encodeStart(ur.a, this.f).getOrThrow($$0x -> new IllegalStateException("Invalid SpawnData: " + $$0x)));
+      }
 
-   private czz(Map<czz.e<?>, czz.g<?>> $$0) {
-      this.ac = $$0;
-   }
-
-   public <T extends czz.g<T>> T a(czz.e<T> $$0) {
-      return (T)this.ac.get($$0);
-   }
-
-   public ua a() {
-      ua $$0 = new ua();
-      this.ac.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
+      $$0.a("SpawnPotentials", (va)dbo.c.encodeStart(ur.a, this.e).getOrThrow());
       return $$0;
    }
 
-   private void a(DynamicLike<?> $$0) {
-      this.ac.forEach(($$1, $$2) -> $$0.get($$1.a).asString().result().ifPresent($$2::a));
-   }
+   @Nullable
+   public bru b(dax $$0, io $$1) {
+      if (this.l == null) {
+         ud $$2 = this.a($$0, $$0.E_(), $$1).a();
+         if (!$$2.b("id", 8)) {
+            return null;
+         }
 
-   public czz b() {
-      return new czz(this.ac.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((czz.g)$$0.getValue()).f())));
-   }
-
-   public static void a(czz.c $$0) {
-      ab.forEach(($$1, $$2) -> a($$0, (czz.e<?>)$$1, (czz.f<?>)$$2));
-   }
-
-   private static <T extends czz.g<T>> void a(czz.c $$0, czz.e<?> $$1, czz.f<?> $$2) {
-      $$0.a($$1, $$2);
-      $$2.a($$0, $$1);
-   }
-
-   public void a(czz $$0, @Nullable MinecraftServer $$1) {
-      $$0.ac.keySet().forEach($$2 -> this.a((czz.e<?>)$$2, $$0, $$1));
-   }
-
-   private <T extends czz.g<T>> void a(czz.e<T> $$0, czz $$1, @Nullable MinecraftServer $$2) {
-      T $$3 = $$1.a($$0);
-      this.<T>a($$0).a($$3, $$2);
-   }
-
-   public boolean b(czz.e<czz.a> $$0) {
-      return this.a($$0).a();
-   }
-
-   public int c(czz.e<czz.d> $$0) {
-      return this.a($$0).a();
-   }
-
-   public static class a extends czz.g<czz.a> {
-      private boolean b;
-
-      static czz.f<czz.a> a(boolean $$0, BiConsumer<MinecraftServer, czz.a> $$1) {
-         return new czz.f<>(BoolArgumentType::bool, $$1x -> new czz.a($$1x, $$0), $$1, czz.c::b);
-      }
-
-      static czz.f<czz.a> a(boolean $$0) {
-         return a($$0, ($$0x, $$1) -> {
-         });
-      }
-
-      public a(czz.f<czz.a> $$0, boolean $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      protected void a(CommandContext<ed> $$0, String $$1) {
-         this.b = BoolArgumentType.getBool($$0, $$1);
-      }
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0;
-         this.a($$1);
-      }
-
-      @Override
-      public String b() {
-         return Boolean.toString(this.b);
-      }
-
-      @Override
-      protected void a(String $$0) {
-         this.b = Boolean.parseBoolean($$0);
-      }
-
-      @Override
-      public int c() {
-         return this.b ? 1 : 0;
-      }
-
-      protected czz.a d() {
-         return this;
-      }
-
-      protected czz.a e() {
-         return new czz.a(this.a, this.b);
-      }
-
-      public void a(czz.a $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0.b;
-         this.a($$1);
-      }
-   }
-
-   public static enum b {
-      a("gamerule.category.player"),
-      b("gamerule.category.mobs"),
-      c("gamerule.category.spawning"),
-      d("gamerule.category.drops"),
-      e("gamerule.category.updates"),
-      f("gamerule.category.chat"),
-      g("gamerule.category.misc");
-
-      private final String h;
-
-      private b(String $$0) {
-         this.h = $$0;
-      }
-
-      public String a() {
-         return this.h;
-      }
-   }
-
-   public interface c {
-      default <T extends czz.g<T>> void a(czz.e<T> $$0, czz.f<T> $$1) {
-      }
-
-      default void b(czz.e<czz.a> $$0, czz.f<czz.a> $$1) {
-      }
-
-      default void c(czz.e<czz.d> $$0, czz.f<czz.d> $$1) {
-      }
-   }
-
-   public static class d extends czz.g<czz.d> {
-      private int b;
-
-      private static czz.f<czz.d> a(int $$0, BiConsumer<MinecraftServer, czz.d> $$1) {
-         return new czz.f<>(IntegerArgumentType::integer, $$1x -> new czz.d($$1x, $$0), $$1, czz.c::c);
-      }
-
-      static czz.f<czz.d> a(int $$0, int $$1, int $$2, BiConsumer<MinecraftServer, czz.d> $$3) {
-         return new czz.f<>(() -> IntegerArgumentType.integer($$1, $$2), $$1x -> new czz.d($$1x, $$0), $$3, czz.c::c);
-      }
-
-      static czz.f<czz.d> a(int $$0) {
-         return a($$0, ($$0x, $$1) -> {
-         });
-      }
-
-      public d(czz.f<czz.d> $$0, int $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      protected void a(CommandContext<ed> $$0, String $$1) {
-         this.b = IntegerArgumentType.getInteger($$0, $$1);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public void a(int $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0;
-         this.a($$1);
-      }
-
-      @Override
-      public String b() {
-         return Integer.toString(this.b);
-      }
-
-      @Override
-      protected void a(String $$0) {
-         this.b = c($$0);
-      }
-
-      public boolean b(String $$0) {
-         try {
-            StringReader $$1 = new StringReader($$0);
-            this.b = (Integer)this.a.a.get().parse($$1);
-            return !$$1.canRead();
-         } catch (CommandSyntaxException var3) {
-            return false;
+         this.l = bsa.a($$2, $$0, Function.identity());
+         if ($$2.f() == 1 && this.l instanceof bsq) {
          }
       }
 
-      private static int c(String $$0) {
-         if (!$$0.isEmpty()) {
-            try {
-               return Integer.parseInt($$0);
-            } catch (NumberFormatException var2) {
-               czz.aa.warn("Failed to parse integer {}", $$0);
-            }
+      return this.l;
+   }
+
+   public boolean a(dax $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
          }
 
-         return 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b;
-      }
-
-      protected czz.d d() {
-         return this;
-      }
-
-      protected czz.d e() {
-         return new czz.d(this.a, this.b);
-      }
-
-      public void a(czz.d $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0.b;
-         this.a($$1);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static final class e<T extends czz.g<T>> {
-      final String a;
-      private final czz.b b;
+   protected void a(@Nullable dax $$0, io $$1, dbo $$2) {
+      this.f = $$2;
+   }
 
-      public e(String $$0, czz.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.a;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return this == $$0 ? true : $$0 instanceof czz.e && ((czz.e)$$0).a.equals(this.a);
-      }
-
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
-      }
-
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return "gamerule." + this.a;
-      }
-
-      public czz.b c() {
-         return this.b;
+   private dbo a(@Nullable dax $$0, ayk $$1, io $$2) {
+      if (this.f != null) {
+         return this.f;
+      } else {
+         this.a($$0, $$2, this.e.b($$1).map(bog.b::b).orElseGet(dbo::new));
+         return this.f;
       }
    }
 
-   public static class f<T extends czz.g<T>> {
-      final Supplier<ArgumentType<?>> a;
-      private final Function<czz.f<T>, T> b;
-      final BiConsumer<MinecraftServer, T> c;
-      private final czz.h<T> d;
+   public abstract void a(dax var1, io var2, int var3);
 
-      f(Supplier<ArgumentType<?>> $$0, Function<czz.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, czz.h<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public RequiredArgumentBuilder<ed, ?> a(String $$0) {
-         return ee.a($$0, (ArgumentType<T>)this.a.get());
-      }
-
-      public T a() {
-         return this.b.apply(this);
-      }
-
-      public void a(czz.c $$0, czz.e<T> $$1) {
-         this.d.call($$0, $$1, this);
-      }
+   public double a() {
+      return this.g;
    }
 
-   public abstract static class g<T extends czz.g<T>> {
-      protected final czz.f<T> a;
-
-      public g(czz.f<T> $$0) {
-         this.a = $$0;
-      }
-
-      protected abstract void a(CommandContext<ed> var1, String var2);
-
-      public void b(CommandContext<ed> $$0, String $$1) {
-         this.a($$0, $$1);
-         this.a(((ed)$$0.getSource()).l());
-      }
-
-      protected void a(@Nullable MinecraftServer $$0) {
-         if ($$0 != null) {
-            this.a.c.accept($$0, this.g());
-         }
-      }
-
-      protected abstract void a(String var1);
-
-      public abstract String b();
-
-      @Override
-      public String toString() {
-         return this.b();
-      }
-
-      public abstract int c();
-
-      protected abstract T g();
-
-      protected abstract T f();
-
-      public abstract void a(T var1, @Nullable MinecraftServer var2);
-   }
-
-   interface h<T extends czz.g<T>> {
-      void call(czz.c var1, czz.e<T> var2, czz.f<T> var3);
+   public double b() {
+      return this.h;
    }
 }

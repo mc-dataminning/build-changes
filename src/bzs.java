@@ -1,42 +1,48 @@
 import java.util.EnumSet;
 
-public class bzs extends byx {
-   private final bsc a;
-   private double b;
-   private double c;
-   private int d;
+public class bzs extends bzm {
+   private final bsq a;
+   private bso b;
+   private final float c;
 
-   public bzs(bsc $$0) {
+   public bzs(bsq $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(byx.a.a, byx.a.b));
+      this.c = $$1;
+      this.a(EnumSet.of(bzm.a.c, bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.ej().i() < 0.02F;
+      if (this.a.cR()) {
+         return false;
+      } else {
+         this.b = this.a.p();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aE() ? false : this.a.el().a(b(5)) == 0;
+            }
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return !this.a.aE();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ej().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ej().a(20);
-   }
+      euk $$0 = this.a.ds();
+      euk $$1 = new euk(this.b.du() - this.a.du(), 0.0, this.b.dA() - this.a.dA());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      }
 
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.G().a(this.a.ds() + this.b, this.a.dw(), this.a.dy() + this.c);
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

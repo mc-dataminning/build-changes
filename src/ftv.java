@@ -1,67 +1,110 @@
-import java.util.Arrays;
+public class ftv<T extends cet> extends fug<T> {
+   private float j;
+   private float k;
+   private float l;
 
-public class ftv<T extends brh> extends fsk<T> {
-   private static final int a = 7;
-   private final fvb b;
-   private final fvb[] f = new fvb[7];
-   private final fvb[] g = new fvb[3];
-   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public ftv(fvb $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
+   public ftv(fvw $$0) {
+      super($$0, true, 23.0F, 4.8F, 2.7F, 3.0F, 49);
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static fwc c() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fwb.c()
+            .a(0, 6)
+            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
+            .a(45, 16)
+            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
+            .a(52, 25)
+            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
+            .a(52, 25)
+            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
+         fvy.a(0.0F, 11.5F, -17.0F)
+      );
+      $$1.a("body", fwb.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), fvy.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 9;
+      int $$3 = 6;
+      fwb $$4 = fwb.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
+      $$1.a("right_hind_leg", $$4, fvy.a(-5.5F, 15.0F, 9.0F));
+      $$1.a("left_hind_leg", $$4, fvy.a(5.5F, 15.0F, 9.0F));
+      $$1.a("right_front_leg", $$4, fvy.a(-5.5F, 15.0F, -9.0F));
+      $$1.a("left_front_leg", $$4, fvy.a(5.5F, 15.0F, -9.0F));
+      return fwc.a($$0, 64, 64);
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.j = $$0.G($$3);
+      this.k = $$0.H($$3);
+      this.l = $$0.p_() ? 0.0F : $$0.I($$3);
    }
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      boolean $$6 = $$0.s() > 0;
+      boolean $$7 = $$0.u();
+      int $$8 = $$0.gw();
+      boolean $$9 = $$0.gv();
+      boolean $$10 = $$0.gH();
+      if ($$6) {
+         this.a.f = 0.35F * ayd.a(0.6F * $$3);
+         this.a.g = 0.35F * ayd.a(0.6F * $$3);
+         this.h.e = -0.75F * ayd.a(0.3F * $$3);
+         this.i.e = 0.75F * ayd.a(0.3F * $$3);
+      } else {
+         this.a.g = 0.0F;
+      }
 
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            fvg.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
-            fvd.a(0.0F, (float)(24 - h[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+      if ($$7) {
+         if ($$8 < 15) {
+            this.a.e = (float) (-Math.PI / 4) * (float)$$8 / 14.0F;
+         } else if ($$8 < 20) {
+            float $$11 = (float)(($$8 - 15) / 5);
+            this.a.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$11;
          }
       }
 
-      $$1.a(a(0), fvg.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fvd.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), fvg.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fvd.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), fvg.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fvd.a(0.0F, 19.0F, $$2[1]));
-      return fvh.a($$0, 64, 32);
-   }
+      if (this.j > 0.0F) {
+         this.b.e = ftt.a(this.b.e, 1.7407963F, this.j);
+         this.a.e = ftt.a(this.a.e, (float) (Math.PI / 2), this.j);
+         this.h.g = -0.27079642F;
+         this.i.g = 0.27079642F;
+         this.f.g = 0.5707964F;
+         this.g.g = -0.5707964F;
+         if ($$9) {
+            this.a.e = (float) (Math.PI / 2) + 0.2F * ayd.a($$3 * 0.6F);
+            this.h.e = -0.4F - 0.2F * ayd.a($$3 * 0.6F);
+            this.i.e = -0.4F - 0.2F * ayd.a($$3 * 0.6F);
+         }
 
-   @Override
-   public fvb a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         this.f[$$6].f = axz.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
-         this.f[$$6].b = axz.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+         if ($$10) {
+            this.a.e = 2.1707964F;
+            this.h.e = -0.9F;
+            this.i.e = -0.9F;
+         }
+      } else {
+         this.f.g = 0.0F;
+         this.g.g = 0.0F;
+         this.h.g = 0.0F;
+         this.i.g = 0.0F;
       }
 
-      this.g[0].f = this.f[2].f;
-      this.g[1].f = this.f[4].f;
-      this.g[1].b = this.f[4].b;
-      this.g[2].f = this.f[1].f;
-      this.g[2].b = this.f[1].b;
+      if (this.k > 0.0F) {
+         this.f.e = -0.6F * ayd.a($$3 * 0.15F);
+         this.g.e = 0.6F * ayd.a($$3 * 0.15F);
+         this.h.e = 0.3F * ayd.a($$3 * 0.25F);
+         this.i.e = -0.3F * ayd.a($$3 * 0.25F);
+         this.a.e = ftt.a(this.a.e, (float) (Math.PI / 2), this.k);
+      }
+
+      if (this.l > 0.0F) {
+         this.a.e = ftt.a(this.a.e, 2.0561945F, this.l);
+         this.f.e = -0.5F * ayd.a($$3 * 0.5F);
+         this.g.e = 0.5F * ayd.a($$3 * 0.5F);
+         this.h.e = 0.5F * ayd.a($$3 * 0.5F);
+         this.i.e = -0.5F * ayd.a($$3 * 0.5F);
+      }
    }
 }

@@ -1,3 +1,18 @@
+import javax.annotation.Nullable;
+
 public interface bpz {
-   bpy a(dqh var1, dae var2, in var3);
+   wx af();
+
+   default boolean ag() {
+      return this.ah() != null;
+   }
+
+   default wx O_() {
+      return this.af();
+   }
+
+   @Nullable
+   default wx ah() {
+      return null;
+   }
 }

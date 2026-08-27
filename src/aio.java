@@ -1,27 +1,29 @@
-import java.util.UUID;
+public class aio implements ze<aij> {
+   public static final yv<vx, aio> a = ze.a(aio::a, aio::new);
+   private final wx b;
 
-public record aio(String b, UUID c) implements zb<aim> {
-   public static final ys<vu, aio> a = zb.a(aio::a, aio::new);
-
-   private aio(vu $$0) {
-      this($$0.d(16), $$0.n());
+   public aio(wx $$0) {
+      this.b = $$0;
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private aio(vx $$0) {
+      this.b = wx.a.b($$0.d(262144), jl.b);
+   }
+
+   private void a(vx $$0) {
+      $$0.a(wx.a.a(this.b, jl.b));
    }
 
    @Override
-   public zd<aio> a() {
-      return aik.g;
+   public zg<aio> a() {
+      return aip.e;
    }
 
-   public void a(aim $$0) {
+   public void a(aij $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
-      return this.c;
+   public wx b() {
+      return this.b;
    }
 }

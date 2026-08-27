@@ -1,181 +1,183 @@
-import com.google.common.base.Splitter;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.WatchService;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.HashMap;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class asn extends FileSystem {
-   private static final Set<String> b = Set.of("basic");
-   public static final String a = "/";
-   private static final Splitter c = Splitter.on('/');
-   private final FileStore d;
-   private final FileSystemProvider e = new asm();
-   private final asl f;
+public class asn {
+   private static final Logger b = LogUtils.getLogger();
+   public static Consumer<asn> a = $$0 -> {
+   };
+   private static final Map<ask, Path> c = ac.a(() -> {
+      synchronized (asm.class) {
+         Builder<ask, Path> $$0 = ImmutableMap.builder();
 
-   asn(String $$0, asn.b $$1) {
-      this.d = new ask($$0);
-      this.f = a($$1, this, "", null);
-   }
+         for (ask $$1 : ask.values()) {
+            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
+            URL $$3 = asm.class.getResource($$2);
+            if ($$3 == null) {
+               b.error("File {} does not exist in classpath", $$2);
+            } else {
+               try {
+                  URI $$4 = $$3.toURI();
+                  String $$5 = $$4.getScheme();
+                  if (!"jar".equals($$5) && !"file".equals($$5)) {
+                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
+                  }
 
-   private static asl a(asn.b $$0, asn $$1, String $$2, @Nullable asl $$3) {
-      Object2ObjectOpenHashMap<String, asl> $$4 = new Object2ObjectOpenHashMap();
-      asl $$5 = new asl($$1, $$2, $$3, new aso.a($$4));
-      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new asl($$1, $$3x, $$5, new aso.b($$4x))));
-      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
-      $$4.trim();
-      return $$5;
-   }
-
-   @Override
-   public FileSystemProvider provider() {
-      return this.e;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   @Override
-   public boolean isOpen() {
-      return true;
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public String getSeparator() {
-      return "/";
-   }
-
-   @Override
-   public Iterable<Path> getRootDirectories() {
-      return List.of(this.f);
-   }
-
-   @Override
-   public Iterable<FileStore> getFileStores() {
-      return List.of(this.d);
-   }
-
-   @Override
-   public Set<String> supportedFileAttributeViews() {
-      return b;
-   }
-
-   @Override
-   public Path getPath(String $$0, String... $$1) {
-      Stream<String> $$2 = Stream.of($$0);
-      if ($$1.length > 0) {
-         $$2 = Stream.concat($$2, Stream.of($$1));
-      }
-
-      String $$3 = $$2.collect(Collectors.joining("/"));
-      if ($$3.equals("/")) {
-         return this.f;
-      } else if ($$3.startsWith("/")) {
-         asl $$4 = this.f;
-
-         for (String $$5 : c.split($$3.substring(1))) {
-            if ($$5.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
+                  Path $$6 = a($$4);
+                  $$0.put($$1, $$6.getParent());
+               } catch (Exception var12) {
+                  b.error("Couldn't resolve path to vanilla assets", var12);
+               }
             }
-
-            $$4 = $$4.a($$5);
          }
 
-         return $$4;
+         return $$0.build();
+      }
+   });
+   private final Set<Path> d = new LinkedHashSet<>();
+   private final Map<ask, Set<Path>> e = new EnumMap<>(ask.class);
+   private asa f = asa.a();
+   private final Set<String> g = new HashSet<>();
+
+   private static Path a(URI $$0) throws IOException {
+      try {
+         return Paths.get($$0);
+      } catch (FileSystemNotFoundException var3) {
+      } catch (Throwable var4) {
+         b.warn("Unable to get path for: {}", $$0, var4);
+      }
+
+      try {
+         FileSystems.newFileSystem($$0, Collections.emptyMap());
+      } catch (FileSystemAlreadyExistsException var2) {
+      }
+
+      return Paths.get($$0);
+   }
+
+   private boolean b(Path $$0) {
+      if (!Files.exists($$0)) {
+         return false;
+      } else if (!Files.isDirectory($$0)) {
+         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
       } else {
-         asl $$6 = null;
+         return true;
+      }
+   }
 
-         for (String $$7 : c.split($$3)) {
-            if ($$7.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
+   private void c(Path $$0) {
+      if (this.b($$0)) {
+         this.d.add($$0);
+      }
+   }
+
+   private void b(ask $$0, Path $$1) {
+      if (this.b($$1)) {
+         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
+      }
+   }
+
+   public asn a() {
+      c.forEach(($$0, $$1) -> {
+         this.c($$1.getParent());
+         this.b($$0, $$1);
+      });
+      return this;
+   }
+
+   public asn a(ask $$0, Class<?> $$1) {
+      Enumeration<URL> $$2 = null;
+
+      try {
+         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
+      } catch (IOException var8) {
+      }
+
+      while ($$2 != null && $$2.hasMoreElements()) {
+         URL $$3 = $$2.nextElement();
+
+         try {
+            URI $$4 = $$3.toURI();
+            if ("file".equals($$4.getScheme())) {
+               Path $$5 = Paths.get($$4);
+               this.c($$5.getParent());
+               this.b($$0, $$5);
             }
-
-            $$6 = new asl(this, $$7, $$6, aso.b);
-         }
-
-         if ($$6 == null) {
-            throw new IllegalArgumentException("Empty paths not allowed");
-         } else {
-            return $$6;
-         }
-      }
-   }
-
-   @Override
-   public PathMatcher getPathMatcher(String $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public UserPrincipalLookupService getUserPrincipalLookupService() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public WatchService newWatchService() {
-      throw new UnsupportedOperationException();
-   }
-
-   public FileStore a() {
-      return this.d;
-   }
-
-   public asl b() {
-      return this.f;
-   }
-
-   public static asn.a c() {
-      return new asn.a();
-   }
-
-   public static class a {
-      private final asn.b a = new asn.b();
-
-      public asn.a a(List<String> $$0, String $$1, Path $$2) {
-         asn.b $$3 = this.a;
-
-         for (String $$4 : $$0) {
-            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new asn.b());
-         }
-
-         $$3.b.put($$1, $$2);
-         return this;
-      }
-
-      public asn.a a(List<String> $$0, Path $$1) {
-         if ($$0.isEmpty()) {
-            throw new IllegalArgumentException("Path can't be empty");
-         } else {
-            int $$2 = $$0.size() - 1;
-            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
+         } catch (Exception var7) {
+            b.error("Failed to extract path from {}", $$3, var7);
          }
       }
 
-      public FileSystem a(String $$0) {
-         return new asn($$0, this.a);
-      }
+      return this;
    }
 
-   static record b(Map<String, asn.b> a, Map<String, Path> b) {
+   public asn b() {
+      a.accept(this);
+      return this;
+   }
 
-      public b() {
-         this(new HashMap<>(), new HashMap<>());
+   public asn a(Path $$0) {
+      this.c($$0);
+
+      for (ask $$1 : ask.values()) {
+         this.b($$1, $$0.resolve($$1.a()));
       }
+
+      return this;
+   }
+
+   public asn a(ask $$0, Path $$1) {
+      this.c($$1);
+      this.b($$0, $$1);
+      return this;
+   }
+
+   public asn a(asa $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public asn a(String... $$0) {
+      this.g.addAll(Arrays.asList($$0));
+      return this;
+   }
+
+   public asm a(ash $$0) {
+      Map<ask, List<Path>> $$1 = new EnumMap<>(ask.class);
+
+      for (ask $$2 : ask.values()) {
+         List<Path> $$3 = a(this.e.getOrDefault($$2, Set.of()));
+         $$1.put($$2, $$3);
+      }
+
+      return new asm($$0, this.f, Set.copyOf(this.g), a(this.d), $$1);
+   }
+
+   private static List<Path> a(Collection<Path> $$0) {
+      List<Path> $$1 = new ArrayList<>($$0);
+      Collections.reverse($$1);
+      return List.copyOf($$1);
    }
 }

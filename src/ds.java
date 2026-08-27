@@ -2,31 +2,27 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ds extends de<ds.a> {
+public class ds extends df<ds.a> {
    @Override
    public Codec<ds.a> a() {
       return ds.a.a;
    }
 
-   public void a(aqi $$0, csz $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aqn $$0, io $$1) {
+      double $$2 = $$0.du() - (double)$$1.u();
+      double $$3 = $$0.dA() - (double)$$1.w();
+      double $$4 = $$2 * $$2 + $$3 * $$3;
+      this.a($$0, $$1x -> $$1x.a($$4));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c) implements de.a {
+   public static record a(Optional<bc> b, ct.c c) implements df.a {
       public static final Codec<ds.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axh.a(br.b, "player").forGetter(ds.a::a), axh.a(ch.a, "item").forGetter(ds.a::b)).apply($$0, ds.a::new)
+         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(ds.a::a), ct.c.d.optionalFieldOf("distance", ct.c.c).forGetter(ds.a::b))
+               .apply($$0, ds.a::new)
       );
 
-      public static an<ds.a> a(ch $$0) {
-         return am.C.a(new ds.a(Optional.empty(), Optional.of($$0)));
-      }
-
-      public static an<ds.a> a(dac $$0) {
-         return am.C.a(new ds.a(Optional.empty(), Optional.of(ch.a.a().a($$0).b())));
-      }
-
-      public boolean a(csz $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      public boolean a(double $$0) {
+         return this.c.e($$0);
       }
 
       @Override
@@ -34,7 +30,7 @@ public class ds extends de<ds.a> {
          return this.b;
       }
 
-      public Optional<ch> b() {
+      public ct.c b() {
          return this.c;
       }
    }

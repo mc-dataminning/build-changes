@@ -1,82 +1,108 @@
-import java.util.List;
-
-public abstract class dnz {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(dad var1, in var2, dqh var3);
-
-   protected abstract void b(dad var1, in var2, dqh var3);
-
-   protected abstract void a(dad var1, in var2, dqh var3, int var4, int var5);
-
-   protected abstract boolean a(clh var1);
-
-   public void a(clh $$0, dad $$1, in $$2, dqh $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dva.k, $$2);
-         d($$1, $$2, $$3);
+public class dnz extends dpl {
+   private jg<cto> d = jg.a(27, cto.i);
+   private final dot e = new dot() {
+      @Override
+      protected void a(dax $$0, io $$1, drb $$2) {
+         dnz.this.a($$2, avh.bz);
+         dnz.this.a($$2, true);
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gA(), this.c);
-   }
-
-   public void b(clh $$0, dad $$1, in $$2, dqh $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dva.j, $$2);
-         this.c = 0.0;
+      @Override
+      protected void b(dax $$0, io $$1, drb $$2) {
+         dnz.this.a($$2, avh.by);
+         dnz.this.a($$2, false);
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private List<clh> a(dad $$0, in $$1) {
-      double $$2 = this.c + 4.0;
-      etk $$3 = new etk($$1).g($$2);
-      return $$0.a(duo.a(clh.class), $$3, this::a);
-   }
-
-   public void c(dad $$0, in $$1, dqh $$2) {
-      List<clh> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (clh $$4 : $$3) {
-         this.c = Math.max($$4.gA(), this.c);
+      @Override
+      protected void a(dax $$0, io $$1, drb $$2, int $$3, int $$4) {
       }
 
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dva.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dva.j, $$1);
+      @Override
+      protected boolean a(clw $$0) {
+         if ($$0.cc instanceof cpa) {
+            bpn $$1 = ((cpa)$$0.cc).l();
+            return $$1 == dnz.this;
+         } else {
+            return false;
          }
-
-         this.b = $$5;
       }
+   };
 
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+   public dnz(io $$0, drb $$1) {
+      super(doi.A, $$0, $$1);
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bpo.a($$0, this.d, $$1);
       }
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.d = jg.a(this.b(), cto.i);
+      if (!this.a_($$0)) {
+         bpo.b($$0, this.d, $$1);
+      }
    }
 
-   private static void d(dad $$0, in $$1, dqh $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected jg<cto> j() {
+      return this.d;
+   }
+
+   @Override
+   protected void a(jg<cto> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   protected wx k() {
+      return wx.c("container.barrel");
+   }
+
+   @Override
+   protected cot a(int $$0, clv $$1) {
+      return cpa.a($$0, $$1, this);
+   }
+
+   @Override
+   public void d_(clw $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.e.a($$0, this.i(), this.az_(), this.n());
+      }
+   }
+
+   @Override
+   public void c(clw $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.e.b($$0, this.i(), this.az_(), this.n());
+      }
+   }
+
+   public void l() {
+      if (!this.p) {
+         this.e.c(this.i(), this.az_(), this.n());
+      }
+   }
+
+   void a(drb $$0, boolean $$1) {
+      this.n.a(this.az_(), $$0.a(dde.c, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(drb $$0, avg $$1) {
+      js $$2 = $$0.c(dde.b).q();
+      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.n.a(null, $$3, $$4, $$5, $$1, avi.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
    }
 }

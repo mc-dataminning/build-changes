@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ui extends uq {
-   private static final int b = 16;
-   public static final uz<ui> a = new uz.a<ui>() {
-      public ui a(DataInput $$0, uj $$1) throws IOException {
+public class ui extends ut {
+   private static final int b = 12;
+   public static final vc<ui> a = new vc.a<ui>() {
+      public ui a(DataInput $$0, um $$1) throws IOException {
          return ui.a(d($$0, $$1));
       }
 
       @Override
-      public uu.b a(DataInput $$0, uu $$1, uj $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long d(DataInput $$0, uj $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readLong();
+      private static int d(DataInput $$0, um $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readInt();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_Int";
       }
 
       @Override
@@ -39,33 +39,33 @@ public class ui extends uq {
          return true;
       }
    };
-   private final long c;
+   private final int c;
 
-   ui(long $$0) {
+   ui(int $$0) {
       this.c = $$0;
    }
 
-   public static ui a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? ui.a.a[(int)$$0 - -128] : new ui($$0);
+   public static ui a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ui.a.a[$$0 - -128] : new ui($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 3;
    }
 
    @Override
-   public uz<ui> c() {
+   public vc<ui> c() {
       return a;
    }
 
@@ -80,32 +80,32 @@ public class ui extends uq {
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return this.c;
    }
 
    @Override
-   public void a(vb $$0) {
+   public void a(ve $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return this.c;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return (int)(this.c & -1L);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)((int)(this.c & 65535L));
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)((int)(this.c & 255L));
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
@@ -124,7 +124,7 @@ public class ui extends uq {
    }
 
    @Override
-   public uu.b a(uu $$0) {
+   public ux.b a(ux $$0) {
       return $$0.a(this.c);
    }
 
@@ -138,7 +138,7 @@ public class ui extends uq {
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ui((long)(-128 + $$0));
+            a[$$0] = new ui(-128 + $$0);
          }
       }
    }

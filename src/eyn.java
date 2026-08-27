@@ -1,425 +1,492 @@
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class eyn {
-   public static final eyn.b a = Optional.ofNullable(System.getenv("realms.environment"))
-      .or(() -> Optional.ofNullable(System.getProperty("realms.environment")))
-      .flatMap(eyn.b::a)
-      .orElse(eyn.b.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final String c;
-   private final String d;
-   private final fde e;
-   private static final String f = "worlds";
-   private static final String g = "invites";
-   private static final String h = "mco";
-   private static final String i = "subscriptions";
-   private static final String j = "activities";
-   private static final String k = "ops";
-   private static final String l = "regions/ping/stat";
-   private static final String m = "trial";
-   private static final String n = "notifications";
-   private static final String o = "/listUserWorldsOfType/any";
-   private static final String p = "/$PARENT_WORLD_ID/createPrereleaseRealm";
-   private static final String q = "/listPrereleaseEligibleWorlds";
-   private static final String r = "/$WORLD_ID/initialize";
-   private static final String s = "/$WORLD_ID";
-   private static final String t = "/liveplayerlist";
-   private static final String u = "/$WORLD_ID";
-   private static final String v = "/$WORLD_ID/$PROFILE_UUID";
-   private static final String w = "/minigames/$MINIGAME_ID/$WORLD_ID";
-   private static final String x = "/available";
-   private static final String y = "/templates/$WORLD_TYPE";
-   private static final String z = "/v1/$ID/join/pc";
-   private static final String A = "/$ID";
-   private static final String B = "/$WORLD_ID";
-   private static final String C = "/$WORLD_ID/invite/$UUID";
-   private static final String D = "/count/pending";
-   private static final String E = "/pending";
-   private static final String F = "/accept/$INVITATION_ID";
-   private static final String G = "/reject/$INVITATION_ID";
-   private static final String H = "/$WORLD_ID";
-   private static final String I = "/$WORLD_ID";
-   private static final String J = "/$WORLD_ID/slot/$SLOT_ID";
-   private static final String K = "/$WORLD_ID/open";
-   private static final String L = "/$WORLD_ID/close";
-   private static final String M = "/$WORLD_ID/reset";
-   private static final String N = "/$WORLD_ID";
-   private static final String O = "/$WORLD_ID/backups";
-   private static final String P = "/$WORLD_ID/slot/$SLOT_ID/download";
-   private static final String Q = "/$WORLD_ID/backups/upload";
-   private static final String R = "/client/compatible";
-   private static final String S = "/tos/agreed";
-   private static final String T = "/v1/news";
-   private static final String U = "/seen";
-   private static final String V = "/dismiss";
-   private static final eyv W = new eyv();
+public class eyn extends eyr implements eyp {
+   private static final int f = 2097152;
+   private static final Logger g = LogUtils.getLogger();
+   private ByteBuffer h;
+   private boolean i;
+   private int j;
+   private int k;
+   private int l;
+   private int m;
+   @Nullable
+   private eyy n;
+   private int o;
+   private eyx p;
+   private eyx.b q;
+   private boolean r;
+   private boolean s;
+   private boolean t;
+   @Nullable
+   private Vector3f[] u;
+   @Nullable
+   private eza v;
+   private boolean w;
 
-   public static eyn a() {
-      fde $$0 = fde.Q();
-      return a($$0);
+   public eyn(int $$0) {
+      this.h = exq.a($$0);
    }
 
-   public static eyn a(fde $$0) {
-      String $$1 = $$0.X().c();
-      String $$2 = $$0.X().a();
-      return new eyn($$2, $$1, $$0);
+   private void m() {
+      this.d(this.p.b());
    }
 
-   public eyn(String $$0, String $$1, fde $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      eyo.a($$2.Z());
-   }
-
-   public ezg b() throws faa {
-      String $$0 = this.c("worlds");
-      if (eyi.b()) {
-         $$0 = $$0 + "/listUserWorldsOfType/any";
+   private void d(int $$0) {
+      if (this.l + $$0 > this.h.capacity()) {
+         int $$1 = this.h.capacity();
+         int $$2 = Math.min($$1, 2097152);
+         int $$3 = $$1 + $$0;
+         int $$4 = Math.max($$1 + $$2, $$3);
+         g.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", $$1, $$4);
+         ByteBuffer $$5 = exq.a(this.h, $$4);
+         $$5.rewind();
+         this.h = $$5;
       }
-
-      String $$1 = this.a(eyq.a($$0));
-      return ezg.a($$1);
    }
 
-   public List<eze> c() throws faa {
-      String $$0 = this.c("worlds/listPrereleaseEligibleWorlds");
-      String $$1 = this.a(eyq.a($$0));
-      return ezg.a($$1).a;
-   }
-
-   public eze a(Long $$0) throws faa {
-      String $$1 = String.valueOf($$0);
-      String $$2 = this.c("worlds" + "/$PARENT_WORLD_ID/createPrereleaseRealm".replace("$PARENT_WORLD_ID", $$1));
-      return eze.c(this.a(eyq.b($$2, $$1)));
-   }
-
-   public List<ezd> d() throws faa {
-      String $$0 = this.c("notifications");
-      String $$1 = this.a(eyq.a($$0));
-      return ezd.a($$1);
-   }
-
-   private static JsonArray c(List<UUID> $$0) {
-      JsonArray $$1 = new JsonArray();
-
-      for (UUID $$2 : $$0) {
-         if ($$2 != null) {
-            $$1.add($$2.toString());
+   public void a(eza $$0) {
+      if (this.q == eyx.b.h) {
+         this.v = $$0;
+         if (this.u == null) {
+            this.u = this.o();
          }
       }
-
-      return $$1;
    }
 
-   public void a(List<UUID> $$0) throws faa {
-      String $$1 = this.c("notifications/seen");
-      this.a(eyq.b($$1, W.a(c($$0))));
+   public eyn.c a() {
+      return new eyn.c(this.q, this.m, this.u, this.v);
    }
 
-   public void b(List<UUID> $$0) throws faa {
-      String $$1 = this.c("notifications/dismiss");
-      this.a(eyq.b($$1, W.a(c($$0))));
-   }
-
-   public eze a(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/$ID".replace("$ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.a($$1));
-      return eze.c($$2);
-   }
-
-   public ezq b(long $$0) throws faa {
-      String $$1 = this.c("activities" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.a($$1));
-      return ezq.a($$2);
-   }
-
-   public ezj e() throws faa {
-      String $$0 = this.c("activities/liveplayerlist");
-      String $$1 = this.a(eyq.a($$0));
-      return ezj.a($$1);
-   }
-
-   public ezf c(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/v1/$ID/join/pc".replace("$ID", $$0 + ""));
-      String $$2 = this.a(eyq.a($$1, 5000, 30000));
-      return ezf.a($$2);
-   }
-
-   public void a(long $$0, String $$1, String $$2) throws faa {
-      ezb $$3 = new ezb($$1, $$2);
-      String $$4 = this.c("worlds" + "/$WORLD_ID/initialize".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$5 = W.a($$3);
-      this.a(eyq.a($$4, $$5, 5000, 10000));
-   }
-
-   public boolean f() throws faa {
-      String $$0 = this.c("mco/available");
-      String $$1 = this.a(eyq.a($$0));
-      return Boolean.parseBoolean($$1);
-   }
-
-   public eyn.a g() throws faa {
-      String $$0 = this.c("mco/client/compatible");
-      String $$1 = this.a(eyq.a($$0));
-
-      try {
-         return eyn.a.valueOf($$1);
-      } catch (IllegalArgumentException var5) {
-         throw new faa(eyp.b.a($$1));
+   private void n() {
+      if (this.i) {
+         throw new IllegalStateException("This BufferBuilder has been closed");
       }
    }
 
-   public void a(long $$0, UUID $$1) throws faa {
-      String $$2 = this.c("invites" + "/$WORLD_ID/invite/$UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$UUID", UndashedUuid.toString($$1)));
-      this.a(eyq.b($$2));
+   public void a(eyn.c $$0) {
+      this.n();
+      this.h.rewind();
+      this.q = $$0.a;
+      this.m = $$0.b;
+      this.l = this.k;
+      this.u = $$0.c;
+      this.v = $$0.d;
+      this.w = true;
    }
 
-   public void d(long $$0) throws faa {
-      String $$1 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(eyq.b($$1));
+   public void a(eyx.b $$0, eyx $$1) {
+      if (this.t) {
+         throw new IllegalStateException("Already building!");
+      } else {
+         this.n();
+         this.t = true;
+         this.q = $$0;
+         this.a($$1);
+         this.n = (eyy)$$1.c().get(0);
+         this.o = 0;
+         this.h.rewind();
+      }
    }
 
-   public eze a(long $$0, String $$1) throws faa {
-      eza $$2 = new eza();
-      $$2.a($$1);
-      String $$3 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(eyq.b($$3, W.a($$2)));
-      return eze.c($$4);
+   private void a(eyx $$0) {
+      if (this.p != $$0) {
+         this.p = $$0;
+         boolean $$1 = $$0 == eyq.k;
+         boolean $$2 = $$0 == eyq.j;
+         this.r = $$1 || $$2;
+         this.s = $$1;
+      }
    }
 
-   public eyu e(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.a($$1));
-      return eyu.a($$2);
+   private IntConsumer a(int $$0, eyx.a $$1) {
+      MutableInt $$2 = new MutableInt($$0);
+
+      return switch ($$1) {
+         case a -> $$1x -> this.h.putShort($$2.getAndAdd(2), (short)$$1x);
+         case b -> $$1x -> this.h.putInt($$2.getAndAdd(4), $$1x);
+      };
    }
 
-   public void b(long $$0, String $$1, String $$2) throws faa {
-      ezb $$3 = new ezb($$1, $$2);
-      String $$4 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(eyq.b($$4, W.a($$3)));
+   private Vector3f[] o() {
+      FloatBuffer $$0 = this.h.asFloatBuffer();
+      int $$1 = this.k / 4;
+      int $$2 = this.p.a();
+      int $$3 = $$2 * this.q.k;
+      int $$4 = this.m / this.q.k;
+      Vector3f[] $$5 = new Vector3f[$$4];
+
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         float $$7 = $$0.get($$1 + $$6 * $$3 + 0);
+         float $$8 = $$0.get($$1 + $$6 * $$3 + 1);
+         float $$9 = $$0.get($$1 + $$6 * $$3 + 2);
+         float $$10 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 0);
+         float $$11 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 1);
+         float $$12 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 2);
+         float $$13 = ($$7 + $$10) / 2.0F;
+         float $$14 = ($$8 + $$11) / 2.0F;
+         float $$15 = ($$9 + $$12) / 2.0F;
+         $$5[$$6] = new Vector3f($$13, $$14, $$15);
+      }
+
+      return $$5;
    }
 
-   public void a(long $$0, int $$1, ezl $$2) throws faa {
-      String $$3 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$4 = $$2.c();
-      this.a(eyq.b($$3, $$4));
+   private void a(eyx.a $$0) {
+      if (this.u != null && this.v != null) {
+         int[] $$1 = this.v.sort(this.u);
+         IntConsumer $$2 = this.a(this.l, $$0);
+
+         for (int $$3 : $$1) {
+            $$2.accept($$3 * this.q.k + 0);
+            $$2.accept($$3 * this.q.k + 1);
+            $$2.accept($$3 * this.q.k + 2);
+            $$2.accept($$3 * this.q.k + 2);
+            $$2.accept($$3 * this.q.k + 3);
+            $$2.accept($$3 * this.q.k + 0);
+         }
+      } else {
+         throw new IllegalStateException("Sorting state uninitialized");
+      }
    }
 
-   public boolean a(long $$0, int $$1) throws faa {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$3 = this.a(eyq.c($$2, ""));
-      return Boolean.valueOf($$3);
-   }
-
-   public void b(long $$0, String $$1) throws faa {
-      String $$2 = this.a("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)), "backupId=" + $$1);
-      this.a(eyq.b($$2, "", 40000, 600000));
-   }
-
-   public ezw a(int $$0, int $$1, eze.d $$2) throws faa {
-      String $$3 = this.a(
-         "worlds" + "/templates/$WORLD_TYPE".replace("$WORLD_TYPE", $$2.toString()), String.format(Locale.ROOT, "page=%d&pageSize=%d", $$0, $$1)
-      );
-      String $$4 = this.a(eyq.a($$3));
-      return ezw.a($$4);
-   }
-
-   public Boolean c(long $$0, String $$1) throws faa {
-      String $$2 = "/minigames/$MINIGAME_ID/$WORLD_ID".replace("$MINIGAME_ID", $$1).replace("$WORLD_ID", String.valueOf($$0));
-      String $$3 = this.c("worlds" + $$2);
-      return Boolean.valueOf(this.a(eyq.c($$3, "")));
-   }
-
-   public eyw b(long $$0, UUID $$1) throws faa {
-      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
-      String $$3 = this.c("ops" + $$2);
-      return eyw.a(this.a(eyq.b($$3, "")));
-   }
-
-   public eyw c(long $$0, UUID $$1) throws faa {
-      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
-      String $$3 = this.c("ops" + $$2);
-      return eyw.a(this.a(eyq.b($$3)));
-   }
-
-   public Boolean f(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/open".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.c($$1, ""));
-      return Boolean.valueOf($$2);
-   }
-
-   public Boolean g(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/close".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.c($$1, ""));
-      return Boolean.valueOf($$2);
-   }
-
-   public Boolean a(long $$0, fbx $$1) throws faa {
-      ezm $$2 = new ezm($$1.a(), -1L, $$1.b().b(), $$1.c(), $$1.d());
-      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(eyq.a($$3, W.a($$2), 30000, 80000));
-      return Boolean.valueOf($$4);
-   }
-
-   public Boolean d(long $$0, String $$1) throws faa {
-      ezm $$2 = new ezm(null, Long.valueOf($$1), -1, false, Set.of());
-      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(eyq.a($$3, W.a($$2), 30000, 80000));
-      return Boolean.valueOf($$4);
-   }
-
-   public ezr h(long $$0) throws faa {
-      String $$1 = this.c("subscriptions" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(eyq.a($$1));
-      return ezr.a($$2);
-   }
-
-   public int h() throws faa {
-      return this.i().a.size();
-   }
-
-   public eyy i() throws faa {
-      String $$0 = this.c("invites/pending");
-      String $$1 = this.a(eyq.a($$0));
-      eyy $$2 = eyy.a($$1);
-      $$2.a.removeIf(this::a);
-      return $$2;
-   }
-
-   private boolean a(eyx $$0) {
-      return this.e.aN().e($$0.d);
-   }
-
-   public void a(String $$0) throws faa {
-      String $$1 = this.c("invites" + "/accept/$INVITATION_ID".replace("$INVITATION_ID", $$0));
-      this.a(eyq.c($$1, ""));
-   }
-
-   public ezu b(long $$0, int $$1) throws faa {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID/download".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$3 = this.a(eyq.a($$2));
-      return ezu.a($$3);
+   public boolean b() {
+      return this.m == 0;
    }
 
    @Nullable
-   public ezs e(long $$0, @Nullable String $$1) throws faa {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/backups/upload".replace("$WORLD_ID", String.valueOf($$0)));
-      return ezs.a(this.a(eyq.c($$2, ezs.b($$1))));
-   }
-
-   public void b(String $$0) throws faa {
-      String $$1 = this.c("invites" + "/reject/$INVITATION_ID".replace("$INVITATION_ID", $$0));
-      this.a(eyq.c($$1, ""));
-   }
-
-   public void j() throws faa {
-      String $$0 = this.c("mco/tos/agreed");
-      this.a(eyq.b($$0, ""));
-   }
-
-   public ezc k() throws faa {
-      String $$0 = this.c("mco/v1/news");
-      String $$1 = this.a(eyq.a($$0, 5000, 10000));
-      return ezc.a($$1);
-   }
-
-   public void a(eyz $$0) throws faa {
-      String $$1 = this.c("regions/ping/stat");
-      this.a(eyq.b($$1, W.a($$0)));
-   }
-
-   public Boolean l() throws faa {
-      String $$0 = this.c("trial");
-      String $$1 = this.a(eyq.a($$0));
-      return Boolean.valueOf($$1);
-   }
-
-   public void i(long $$0) throws faa {
-      String $$1 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(eyq.b($$1));
-   }
-
-   private String c(String $$0) {
-      return this.a($$0, null);
-   }
-
-   private String a(String $$0, @Nullable String $$1) {
-      try {
-         return new URI(a.e, a.d, "/" + $$0, $$1, null).toASCIIString();
-      } catch (URISyntaxException var4) {
-         throw new IllegalArgumentException($$0, var4);
+   public eyn.b c() {
+      this.p();
+      if (this.b()) {
+         this.r();
+         return null;
+      } else {
+         eyn.b $$0 = this.q();
+         this.r();
+         return $$0;
       }
    }
 
-   private String a(eyq<?> $$0) throws faa {
-      $$0.a("sid", this.c);
-      $$0.a("user", this.d);
-      $$0.a("version", aa.b().c());
-      $$0.a(eyi.b());
+   public eyn.b d() {
+      this.p();
+      eyn.b $$0 = this.q();
+      this.r();
+      return $$0;
+   }
 
-      try {
-         int $$1 = $$0.b();
-         if ($$1 != 503 && $$1 != 277) {
-            String $$3 = $$0.c();
-            if ($$1 >= 200 && $$1 < 300) {
-               return $$3;
-            } else if ($$1 == 401) {
-               String $$4 = $$0.c("WWW-Authenticate");
-               b.info("Could not authorize you against Realms server: {}", $$4);
-               throw new faa(new eyp.a($$4));
-            } else {
-               eyp $$5 = eyp.a($$1, $$3);
-               throw new faa($$5);
-            }
-         } else {
-            int $$2 = $$0.a();
-            throw new fab($$2, $$1);
+   private void p() {
+      if (!this.t) {
+         throw new IllegalStateException("Not building!");
+      }
+   }
+
+   private eyn.b q() {
+      int $$0 = this.q.a(this.m);
+      int $$1 = !this.w ? this.m * this.p.b() : 0;
+      eyx.a $$2 = eyx.a.a(this.m);
+      boolean $$4;
+      int $$5;
+      if (this.u != null) {
+         int $$3 = ayd.d($$0 * $$2.d, 4);
+         this.d($$3);
+         this.a($$2);
+         $$4 = false;
+         this.l += $$3;
+         $$5 = $$1 + $$3;
+      } else {
+         $$4 = true;
+         $$5 = $$1;
+      }
+
+      int $$8 = this.k;
+      this.k += $$5;
+      this.j++;
+      eyn.a $$9 = new eyn.a(this.p, this.m, $$0, this.q, $$2, this.w, $$4);
+      return new eyn.b($$8, $$9);
+   }
+
+   private void r() {
+      this.t = false;
+      this.m = 0;
+      this.n = null;
+      this.o = 0;
+      this.u = null;
+      this.v = null;
+      this.w = false;
+   }
+
+   @Override
+   public void a(int $$0, byte $$1) {
+      this.h.put(this.l + $$0, $$1);
+   }
+
+   @Override
+   public void a(int $$0, short $$1) {
+      this.h.putShort(this.l + $$0, $$1);
+   }
+
+   @Override
+   public void a(int $$0, float $$1) {
+      this.h.putFloat(this.l + $$0, $$1);
+   }
+
+   @Override
+   public void e() {
+      if (this.o != 0) {
+         throw new IllegalStateException("Not filled all elements of the vertex");
+      } else {
+         this.m++;
+         this.m();
+         if (this.q == eyx.b.a || this.q == eyx.b.b) {
+            int $$0 = this.p.b();
+            this.h.put(this.l, this.h, this.l - $$0, $$0);
+            this.l += $$0;
+            this.m++;
+            this.m();
          }
-      } catch (ezz var5) {
-         throw new faa(eyp.b.a(var5));
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public static enum b {
-      a("pc.realms.minecraft.net", "https"),
-      b("pc-stage.realms.minecraft.net", "https"),
-      c("localhost:8080", "http");
-
-      public final String d;
-      public final String e;
-
-      private b(String $$0, String $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   @Override
+   public void f() {
+      ImmutableList<eyy> $$0 = this.p.c();
+      this.o = (this.o + 1) % $$0.size();
+      this.l = this.l + this.n.e();
+      eyy $$1 = (eyy)$$0.get(this.o);
+      this.n = $$1;
+      if ($$1.b() == eyy.b.e) {
+         this.f();
       }
 
-      public static Optional<eyn.b> a(String $$0) {
-         String var1 = $$0.toLowerCase(Locale.ROOT);
+      if (this.a && this.n.b() == eyy.b.c) {
+         eyp.super.a(this.b, this.c, this.d, this.e);
+      }
+   }
 
-         return switch (var1) {
-            case "production" -> Optional.of(a);
-            case "local" -> Optional.of(c);
-            case "stage", "staging" -> Optional.of(b);
-            default -> Optional.empty();
-         };
+   @Override
+   public eyw a(int $$0, int $$1, int $$2, int $$3) {
+      if (this.a) {
+         throw new IllegalStateException();
+      } else {
+         return eyp.super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      if (this.a) {
+         throw new IllegalStateException();
+      } else if (this.r) {
+         this.a(0, $$0);
+         this.a(4, $$1);
+         this.a(8, $$2);
+         this.a(12, (byte)((int)($$3 * 255.0F)));
+         this.a(13, (byte)((int)($$4 * 255.0F)));
+         this.a(14, (byte)((int)($$5 * 255.0F)));
+         this.a(15, (byte)((int)($$6 * 255.0F)));
+         this.a(16, $$7);
+         this.a(20, $$8);
+         int $$14;
+         if (this.s) {
+            this.a(24, (short)($$9 & 65535));
+            this.a(26, (short)($$9 >> 16 & 65535));
+            $$14 = 28;
+         } else {
+            $$14 = 24;
+         }
+
+         this.a($$14 + 0, (short)($$10 & 65535));
+         this.a($$14 + 2, (short)($$10 >> 16 & 65535));
+         this.a($$14 + 4, eyp.a($$11));
+         this.a($$14 + 5, eyp.a($$12));
+         this.a($$14 + 6, eyp.a($$13));
+         this.l += $$14 + 8;
+         this.e();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+      }
+   }
+
+   void s() {
+      if (this.j > 0 && --this.j == 0) {
+         this.g();
+      }
+   }
+
+   public void g() {
+      if (this.j > 0) {
+         g.warn("Clearing BufferBuilder with unused batches");
+      }
+
+      this.h();
+   }
+
+   public void h() {
+      this.j = 0;
+      this.k = 0;
+      this.l = 0;
+   }
+
+   public void i() {
+      if (this.j > 0) {
+         throw new IllegalStateException("BufferBuilder closed with unused batches");
+      } else if (this.t) {
+         throw new IllegalStateException("Cannot close BufferBuilder while it is building");
+      } else if (!this.i) {
+         this.i = true;
+         exq.a(this.h);
+      }
+   }
+
+   @Override
+   public eyy j() {
+      if (this.n == null) {
+         throw new IllegalStateException("BufferBuilder not started");
+      } else {
+         return this.n;
+      }
+   }
+
+   public boolean k() {
+      return this.t;
+   }
+
+   ByteBuffer c(int $$0, int $$1) {
+      return MemoryUtil.memSlice(this.h, $$0, $$1 - $$0);
+   }
+
+   public static record a(eyx a, int b, int c, eyx.b d, eyx.a e, boolean f, boolean g) {
+
+      public int a() {
+         return this.b * this.a.b();
+      }
+
+      public int b() {
+         return 0;
+      }
+
+      public int c() {
+         return this.a();
+      }
+
+      public int d() {
+         return this.f ? 0 : this.c();
+      }
+
+      public int e() {
+         return this.d() + this.n();
+      }
+
+      private int n() {
+         return this.g ? 0 : this.c * this.e.d;
+      }
+
+      public int f() {
+         return this.e();
+      }
+
+      public eyx g() {
+         return this.a;
+      }
+
+      public int h() {
+         return this.b;
+      }
+
+      public int i() {
+         return this.c;
+      }
+
+      public eyx.b j() {
+         return this.d;
+      }
+
+      public eyx.a k() {
+         return this.e;
+      }
+
+      public boolean l() {
+         return this.f;
+      }
+
+      public boolean m() {
+         return this.g;
+      }
+   }
+
+   public class b {
+      private final int b;
+      private final eyn.a c;
+      private boolean d;
+
+      b(int $$1, eyn.a $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Nullable
+      public ByteBuffer a() {
+         if (this.c.l()) {
+            return null;
+         } else {
+            int $$0 = this.b + this.c.b();
+            int $$1 = this.b + this.c.c();
+            return eyn.this.c($$0, $$1);
+         }
+      }
+
+      @Nullable
+      public ByteBuffer b() {
+         if (this.c.m()) {
+            return null;
+         } else {
+            int $$0 = this.b + this.c.d();
+            int $$1 = this.b + this.c.e();
+            return eyn.this.c($$0, $$1);
+         }
+      }
+
+      public eyn.a c() {
+         return this.c;
+      }
+
+      public boolean d() {
+         return this.c.b == 0;
+      }
+
+      public void e() {
+         if (this.d) {
+            throw new IllegalStateException("Buffer has already been released!");
+         } else {
+            eyn.this.s();
+            this.d = true;
+         }
+      }
+   }
+
+   public static class c {
+      final eyx.b a;
+      final int b;
+      @Nullable
+      final Vector3f[] c;
+      @Nullable
+      final eza d;
+
+      c(eyx.b $$0, int $$1, @Nullable Vector3f[] $$2, @Nullable eza $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
    }
 }

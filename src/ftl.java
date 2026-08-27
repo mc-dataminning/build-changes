@@ -1,53 +1,68 @@
-import com.google.common.collect.ImmutableList;
+public class ftl<T extends ceq> extends ftf<T> {
+   private final fvw a;
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+   private final fvw i;
 
-public class ftl<T extends brh> extends fqw<T> {
-   protected final fvb a;
-   protected final fvb b;
-   protected final fvb f;
-   protected final fvb g;
-   protected final fvb h;
-   protected final fvb i;
-
-   protected ftl(fvb $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+   public ftl(fvw $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.f = $$0.b("right_arm");
+      this.g = $$0.b("left_arm");
+      this.h = $$0.b("right_leg");
+      this.i = $$0.b("left_leg");
    }
 
-   public static fvj a(int $$0, fvf $$1) {
-      fvj $$2 = new fvj();
-      fvk $$3 = $$2.a();
-      $$3.a("head", fvg.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), fvd.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", fvg.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), fvd.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fvg $$4 = fvg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, fvd.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, fvd.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, fvd.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, fvd.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
-   }
-
-   @Override
-   protected Iterable<fvb> a() {
-      return ImmutableList.of(this.a);
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("head", fwb.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fvy.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         fwb.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fwa(0.5F)),
+         fvy.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", fwb.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fvy.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", fwb.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fvy.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", fwb.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fvy.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", fwb.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fvy.a(5.0F, 11.0F, 0.0F));
+      return fwc.a($$0, 128, 128);
    }
 
    @Override
-   protected Iterable<fvb> b() {
-      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
+   public fvw a() {
+      return this.a;
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = axz.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = axz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = axz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = axz.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.e = -1.5F * ayd.e($$1, 13.0F) * $$2;
+      this.i.e = 1.5F * ayd.e($$1, 13.0F) * $$2;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         this.f.e = -2.0F + 1.5F * ayd.e((float)$$4 - $$3, 10.0F);
+         this.g.e = -2.0F + 1.5F * ayd.e((float)$$4 - $$3, 10.0F);
+      } else {
+         int $$5 = $$0.gp();
+         if ($$5 > 0) {
+            this.f.e = -0.8F + 0.025F * ayd.e((float)$$5, 70.0F);
+            this.g.e = 0.0F;
+         } else {
+            this.f.e = (-0.2F + 1.5F * ayd.e($$1, 13.0F)) * $$2;
+            this.g.e = (-0.2F - 1.5F * ayd.e($$1, 13.0F)) * $$2;
+         }
+      }
+   }
+
+   public fvw c() {
+      return this.f;
    }
 }

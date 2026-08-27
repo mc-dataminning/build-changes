@@ -1,200 +1,106 @@
-import com.google.common.collect.Queues;
 import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fwp {
-   private static final wu a = wu.c("chat.validation_error").a(n.m, n.u);
-   private final fde b;
-   private final Deque<fwp.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+public class fwp extends fwo implements aay, wl {
+   private static final Logger j = LogUtils.getLogger();
+   private final GameProfile k;
+   private coj l;
+   private final jl.b m;
+   private final fxe n = new fxe();
+   @Nullable
+   private fwx o;
+   @Nullable
+   protected fga.b i;
 
-   public fwp(fde $$0) {
-      this.b = $$0;
+   public fwp(fdz $$0, vv $$1, fwv $$2) {
+      super($$0, $$1, $$2);
+      this.k = $$2.a();
+      this.m = $$2.c();
+      this.l = $$2.d();
+      this.i = $$2.i();
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (ac.b() >= this.e + this.d) {
-            fwp.a $$0 = this.c.poll();
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
-            }
-         }
+   @Override
+   protected void a(aaf $$0) {
+      this.b($$0);
+   }
+
+   private void b(aaf $$0) {
+      j.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(aba $$0) {
+      zh.a($$0, this, this.a);
+      this.n.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zt $$0) {
+      zh.a($$0, this, this.a);
+      this.n.a($$0.b());
+   }
+
+   @Override
+   public void a(abd $$0) {
+      this.l = col.e.a($$0.b());
+   }
+
+   @Override
+   public void a(abc $$0) {
+      zh.a($$0, this, this.a);
+      if (this.o == null) {
+         this.o = new fwx();
       }
+
+      List<atd> $$1 = this.o.a($$0.b());
+      this.b(new abi($$1));
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(fwp.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
+   @Override
+   public void a(abb $$0) {
+      this.i = null;
    }
 
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(fwp.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xg $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ac.b() < this.e + this.d;
-   }
-
-   private void a(@Nullable xg $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new fwp.a($$0, $$1));
+   private <T> T a(Function<atz, T> $$0) {
+      if (this.o == null) {
+         return $$0.apply(atz.b);
       } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(xk $$0, GameProfile $$1, wq.a $$2) {
-      boolean $$3 = this.b.m.ag().c();
-      xk $$4 = $$3 ? $$0.a() : $$0;
-      wu $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         fvx $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
+         Object var3;
+         try (atm $$1 = this.o.a()) {
+            var3 = $$0.apply($$1);
          }
 
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, wq.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            wu $$2 = $$1.a(a);
-            this.b.l.d().a($$2, null, fcz.d());
-            this.e = ac.b();
-            return true;
-         }
-      });
-   }
-
-   public void a(wu $$0, wq.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         wu $$3 = $$1.a($$0);
-         this.b.l.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ac.b();
-         return true;
-      });
-   }
-
-   private boolean a(wq.a $$0, xk $$1, wu $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      fwr $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fcz $$7 = $$6.a($$1);
-         xg $$8 = $$1.l();
-         wy $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.l.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            wu $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.l.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ac.b();
-         return true;
-      } else {
-         return false;
+         return (T)var3;
       }
    }
 
-   private void a(wq.a $$0, wu $$1) {
-      this.b.aZ().a($$0.b($$1));
+   @Override
+   public void a(aaz $$0) {
+      zh.a($$0, this, this.a);
+      jl.b $$1 = this.a($$0x -> this.n.a($$0x, this.m, this.b.e()));
+      this.b.a(agc.b.bind(wi.a($$1)), new fws(this.a, this.b, new fwv(this.k, this.e, $$1, this.l, this.d, this.c, this.f, this.h, this.i)));
+      this.b.a(abh.a);
+      this.b.a(agc.a.bind(wi.a($$1)));
    }
 
-   private fwr a(xk $$0, wu $$1, Instant $$2) {
-      return this.a($$0.g()) ? fwr.a : fwr.a($$0, $$1, $$2);
+   @Override
+   public void e() {
+      this.f();
    }
 
-   private void a(xk $$0, wq.a $$1, GameProfile $$2, fwr $$3) {
-      fwq $$4 = this.b.bb().b();
-      $$4.a(fwt.a($$2, $$0, $$3));
-   }
-
-   private void a(wu $$0, Instant $$1) {
-      fwq $$2 = this.b.bb().b();
-      $$2.a(fwt.a($$0, $$1));
-   }
-
-   public void a(wu $$0, boolean $$1) {
-      if (!this.b.m.ae().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.l.a($$0, false);
-         } else {
-            this.b.l.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aZ().b($$0);
-      }
-   }
-
-   private UUID a(wu $$0) {
-      String $$1 = ays.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ac.e : this.b.aN().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.s != null) {
-         UUID $$1 = this.b.s.fZ().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable xg a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xg b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+   @Override
+   public void a(wx $$0) {
+      super.a($$0);
+      this.a.B();
    }
 }

@@ -1,102 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfm extends ddn {
+public class dfm extends ddy {
    public static final MapCodec<dfm> a = b(dfm::new);
-   public static final drf<drd> b = dqx.ae;
+   public static final drs b = drr.w;
+   public static final drs c = drr.r;
 
    @Override
-   public MapCodec<? extends dfm> a() {
+   protected MapCodec<? extends dfm> a() {
       return a;
    }
 
-   public dfm(dqg.d $$0) {
+   public dfm(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, drd.b));
+      this.k(this.n().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      drd $$6 = $$0.c(b);
-      if ($$1.o() != is.a.b || $$6 == drd.b != ($$1 == is.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == drd.b && $$1 == is.a && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return ddg.a.n();
+   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof aqm $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
-   @Nullable
    @Override
-   public dqh a(cwi $$0) {
-      in $$1 = $$0.a();
-      dad $$2 = $$0.q();
-      return $$1.v() < $$2.al() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
-   }
-
-   @Override
-   public void a(dad $$0, in $$1, dqh $$2, bsa $$3, csz $$4) {
-      in $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.n().a(b, drd.a)), 3);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      if ($$0.c(b) != drd.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dqh $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == drd.b;
+   protected void a(drb $$0, dax $$1, io $$2, ddy $$3, io $$4, boolean $$5) {
+      if ($$1 instanceof aqm $$6) {
+         this.a($$0, $$6, $$2);
       }
    }
 
-   public static void a(dae $$0, dqh $$1, in $$2, int $$3) {
-      in $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, drd.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, drd.a)), $$3);
-   }
-
-   public static dqh c(dag $$0, in $$1, dqh $$2) {
-      return $$2.b(dqx.C) ? $$2.a(dqx.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public dqh a(dad $$0, in $$1, dqh $$2, clh $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
-         } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eV());
+   public void a(drb $$0, aqm $$1, io $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         drb $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? avh.fG : avh.fH, avi.e);
          }
-      }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dad $$0, clh $$1, in $$2, dqh $$3, @Nullable dnm $$4, csz $$5) {
-      super.a($$0, $$1, $$2, ddg.a.n(), $$4, $$5);
-   }
-
-   protected static void b(dad $$0, in $$1, dqh $$2, clh $$3) {
-      drd $$4 = $$2.c(b);
-      if ($$4 == drd.a) {
-         in $$5 = $$1.d();
-         dqh $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == drd.b) {
-            dqh $$7 = $$6.u().b(emb.c) ? ddg.G.n() : ddg.a.n();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, dde.i($$6));
-         }
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(c, b);
    }
 
    @Override
-   protected long a(dqh $$0, in $$1) {
-      return axz.b($$1.u(), $$1.c($$0.c(b) == drd.b ? 0 : 1).v(), $$1.w());
+   protected boolean c_(drb $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(drb $$0, dax $$1, io $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

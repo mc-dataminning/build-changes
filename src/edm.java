@@ -1,40 +1,28 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class edm extends edl {
-   public static final Codec<edm> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, edm::new));
-   protected final List<dqh> h;
+public class edm extends edi {
+   public static final MapCodec<edm> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edm::new));
 
-   protected static <P extends edm> P4<Mu<P>, Long, eld.a, Float, List<dqh>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dqh.b).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public edm(long $$0, eld.a $$1, float $$2, List<dqh> $$3) {
+   public edm(boz $$0, boz $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.h = $$3;
    }
 
    @Override
-   protected edj<?> a() {
-      return edj.d;
+   protected edo<?> a() {
+      return edo.f;
    }
 
    @Override
-   public dqh a(ayg $$0, in $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   protected dqh a(List<dqh> $$0, in $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dqh a(List<dqh> $$0, double $$1) {
-      double $$2 = axz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return ayd.k((float)$$1 + 0.5F) + ayd.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

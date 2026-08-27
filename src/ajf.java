@@ -1,20 +1,12 @@
-public record ajf(ajg b) implements zb<aje> {
-   public static final ys<vu, ajf> a = zb.a(ajf::a, ajf::new);
+public class ajf {
+   public static final zg<aje> a = a("pong_response");
+   public static final zg<ajh> b = b("ping_request");
 
-   private ajf(vu $$0) {
-      this($$0.a(ajg.a));
+   private static <T extends ze<ajd>> zg<T> a(String $$0) {
+      return new zg<>(zf.b, new akm($$0));
    }
 
-   private void a(vu $$0) {
-      $$0.a(ajg.a, this.b);
-   }
-
-   @Override
-   public zd<ajf> a() {
-      return ajj.a;
-   }
-
-   public void a(aje $$0) {
-      $$0.a(this);
+   private static <T extends ze<ajg>> zg<T> b(String $$0) {
+      return new zg<>(zf.a, new akm($$0));
    }
 }

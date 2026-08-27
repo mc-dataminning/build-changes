@@ -1,98 +1,106 @@
-public class avm {
-   public static final avl<dde> a = a("mined", ld.e);
-   public static final avl<csu> b = a("crafted", ld.h);
-   public static final avl<csu> c = a("used", ld.h);
-   public static final avl<csu> d = a("broken", ld.h);
-   public static final avl<csu> e = a("picked_up", ld.h);
-   public static final avl<csu> f = a("dropped", ld.h);
-   public static final avl<brn<?>> g = a("killed", ld.g);
-   public static final avl<brn<?>> h = a("killed_by", ld.g);
-   public static final avl<akh> i = a("custom", ld.m);
-   public static final akh j = a("leave_game", avk.b);
-   public static final akh k = a("play_time", avk.e);
-   public static final akh l = a("total_world_time", avk.e);
-   public static final akh m = a("time_since_death", avk.e);
-   public static final akh n = a("time_since_rest", avk.e);
-   public static final akh o = a("sneak_time", avk.e);
-   public static final akh p = a("walk_one_cm", avk.d);
-   public static final akh q = a("crouch_one_cm", avk.d);
-   public static final akh r = a("sprint_one_cm", avk.d);
-   public static final akh s = a("walk_on_water_one_cm", avk.d);
-   public static final akh t = a("fall_one_cm", avk.d);
-   public static final akh u = a("climb_one_cm", avk.d);
-   public static final akh v = a("fly_one_cm", avk.d);
-   public static final akh w = a("walk_under_water_one_cm", avk.d);
-   public static final akh x = a("minecart_one_cm", avk.d);
-   public static final akh y = a("boat_one_cm", avk.d);
-   public static final akh z = a("pig_one_cm", avk.d);
-   public static final akh A = a("horse_one_cm", avk.d);
-   public static final akh B = a("aviate_one_cm", avk.d);
-   public static final akh C = a("swim_one_cm", avk.d);
-   public static final akh D = a("strider_one_cm", avk.d);
-   public static final akh E = a("jump", avk.b);
-   public static final akh F = a("drop", avk.b);
-   public static final akh G = a("damage_dealt", avk.c);
-   public static final akh H = a("damage_dealt_absorbed", avk.c);
-   public static final akh I = a("damage_dealt_resisted", avk.c);
-   public static final akh J = a("damage_taken", avk.c);
-   public static final akh K = a("damage_blocked_by_shield", avk.c);
-   public static final akh L = a("damage_absorbed", avk.c);
-   public static final akh M = a("damage_resisted", avk.c);
-   public static final akh N = a("deaths", avk.b);
-   public static final akh O = a("mob_kills", avk.b);
-   public static final akh P = a("animals_bred", avk.b);
-   public static final akh Q = a("player_kills", avk.b);
-   public static final akh R = a("fish_caught", avk.b);
-   public static final akh S = a("talked_to_villager", avk.b);
-   public static final akh T = a("traded_with_villager", avk.b);
-   public static final akh U = a("eat_cake_slice", avk.b);
-   public static final akh V = a("fill_cauldron", avk.b);
-   public static final akh W = a("use_cauldron", avk.b);
-   public static final akh X = a("clean_armor", avk.b);
-   public static final akh Y = a("clean_banner", avk.b);
-   public static final akh Z = a("clean_shulker_box", avk.b);
-   public static final akh aa = a("interact_with_brewingstand", avk.b);
-   public static final akh ab = a("interact_with_beacon", avk.b);
-   public static final akh ac = a("inspect_dropper", avk.b);
-   public static final akh ad = a("inspect_hopper", avk.b);
-   public static final akh ae = a("inspect_dispenser", avk.b);
-   public static final akh af = a("play_noteblock", avk.b);
-   public static final akh ag = a("tune_noteblock", avk.b);
-   public static final akh ah = a("pot_flower", avk.b);
-   public static final akh ai = a("trigger_trapped_chest", avk.b);
-   public static final akh aj = a("open_enderchest", avk.b);
-   public static final akh ak = a("enchant_item", avk.b);
-   public static final akh al = a("play_record", avk.b);
-   public static final akh am = a("interact_with_furnace", avk.b);
-   public static final akh an = a("interact_with_crafting_table", avk.b);
-   public static final akh ao = a("open_chest", avk.b);
-   public static final akh ap = a("sleep_in_bed", avk.b);
-   public static final akh aq = a("open_shulker_box", avk.b);
-   public static final akh ar = a("open_barrel", avk.b);
-   public static final akh as = a("interact_with_blast_furnace", avk.b);
-   public static final akh at = a("interact_with_smoker", avk.b);
-   public static final akh au = a("interact_with_lectern", avk.b);
-   public static final akh av = a("interact_with_campfire", avk.b);
-   public static final akh aw = a("interact_with_cartography_table", avk.b);
-   public static final akh ax = a("interact_with_loom", avk.b);
-   public static final akh ay = a("interact_with_stonecutter", avk.b);
-   public static final akh az = a("bell_ring", avk.b);
-   public static final akh aA = a("raid_trigger", avk.b);
-   public static final akh aB = a("raid_win", avk.b);
-   public static final akh aC = a("interact_with_anvil", avk.b);
-   public static final akh aD = a("interact_with_grindstone", avk.b);
-   public static final akh aE = a("target_hit", avk.b);
-   public static final akh aF = a("interact_with_smithing_table", avk.b);
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private static akh a(String $$0, avk $$1) {
-      akh $$2 = new akh($$0);
-      jj.a(ld.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class avm extends avk {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
+
+   public int a(Collection<cxw<?>> $$0, aqn $$1) {
+      List<akm> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxw<?> $$4 : $$0) {
+         akm $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().an_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(adz.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   private static <T> avl<T> a(String $$0, jj<T> $$1) {
-      wu $$2 = wu.c("stat_type.minecraft." + $$0);
-      return jj.a(ld.x, $$0, new avl<>($$1, $$2));
+   public int b(Collection<cxw<?>> $$0, aqn $$1) {
+      List<akm> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cxw<?> $$4 : $$0) {
+         akm $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(adz.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(adz.a $$0, aqn $$1, List<akm> $$2) {
+      $$1.d.b(new adz($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public ud b() {
+      ud $$0 = new ud();
+      this.a().b($$0);
+      uj $$1 = new uj();
+
+      for (akm $$2 : this.a) {
+         $$1.add(uy.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      uj $$3 = new uj();
+
+      for (akm $$4 : this.b) {
+         $$3.add(uy.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(ud $$0, cxx $$1) {
+      this.a(avl.a($$0));
+      uj $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      uj $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(uj $$0, Consumer<cxw<?>> $$1, cxx $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            akm $$5 = new akm($$4);
+            Optional<cxw<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(aqn $$0) {
+      $$0.d.b(new adz(adz.a.a, this.a, this.b, this.a()));
    }
 }

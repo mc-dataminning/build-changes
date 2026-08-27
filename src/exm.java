@@ -1,42 +1,40 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class exm {
-   private static final Logger a = LogUtils.getLogger();
+public enum exm {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
+   private final String[] c;
+
+   private exm(String... $$0) {
+      this.c = $$0;
    }
 
-   public static void a(exn $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
+   public List<ato<InputStream>> a(asi $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   public static int a() throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+   public ato<InputStream> b(asi $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private ato<InputStream> a(asi $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      ato<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
       } else {
-         return $$0;
-      }
-   }
-
-   public static void b(exn $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+         return $$3;
       }
    }
 }

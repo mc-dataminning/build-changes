@@ -1,17 +1,19 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class ekv implements ekx {
-   private static final ekv b = new ekv();
-   public static final Codec<ekv> a = Codec.unit(b);
+public class ekv extends ekw {
+   public static final MapCodec<ekv> a = MapCodec.unit(() -> ekv.b);
+   public static final ekv b = new ekv();
 
-   @Override
-   public ua a(ayg $$0, @Nullable ua $$1) {
-      return new ua();
+   private ekv() {
    }
 
    @Override
-   public eky<?> a() {
-      return eky.a;
+   public boolean a(io $$0, io $$1, io $$2, ayk $$3) {
+      return true;
+   }
+
+   @Override
+   protected ekx<?> a() {
+      return ekx.a;
    }
 }

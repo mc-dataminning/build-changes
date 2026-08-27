@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+public record bli<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-public interface bli<S> {
-   Stream<String> possibleValues(blf<S> var1);
-
-   static <S> bli<S> b() {
-      return $$0 -> Stream.empty();
+   public static <T> bli<T> a(String $$0) {
+      return new bli<>($$0);
    }
 }

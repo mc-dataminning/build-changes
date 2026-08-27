@@ -1,32 +1,22 @@
-public class byb extends bxz {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public byb(bsc $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class byb<E extends cla> extends buh<E> {
+   public byb(int $$0) {
+      super(ImmutableMap.of(cbs.aC, cbt.a, cbs.m, cbt.b, cbs.n, cbt.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.bb = this.a(this.a.bb, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dF(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.K().l()) {
-            this.a.s(this.a(this.a.dF(), 0.0F, 5.0F));
-         }
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return true;
+   }
 
-         this.a.bb = this.a(this.a.bb, this.a.aZ, this.b);
-      }
+   protected void b(aqm $$0, E $$1, long $$2) {
+      $$1.b(bta.n);
+      $$1.a(avh.BI, 5.0F, 1.0F);
+   }
 
-      float $$0 = axz.g(this.a.bb - this.a.aZ);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aZ -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aZ += 4.0F;
+   protected void c(aqm $$0, E $$1, long $$2) {
+      if ($$1.c(bta.n)) {
+         $$1.b(bta.a);
       }
    }
 }

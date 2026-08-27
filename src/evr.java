@@ -1,166 +1,136 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 public class evr {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
-   @Nullable
-   private gri g;
+   private static final Map<String, evr> a = Maps.newHashMap();
+   private static final Map<String, evr> o = Maps.newHashMap();
+   public static final evr b = b("dummy");
+   public static final evr c = b("trigger");
+   public static final evr d = b("deathCount");
+   public static final evr e = b("playerKillCount");
+   public static final evr f = b("totalKillCount");
+   public static final evr g = a("health", true, evr.a.b);
+   public static final evr h = a("food", true, evr.a.a);
+   public static final evr i = a("air", true, evr.a.a);
+   public static final evr j = a("armor", true, evr.a.a);
+   public static final evr k = a("xp", true, evr.a.a);
+   public static final evr l = a("level", true, evr.a.a);
+   public static final evr[] m = new evr[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final evr[] n = new evr[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final evr.a r;
 
-   @Nullable
-   static evr a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return evw.a("Allocate new source") ? null : new evr($$0[0]);
+   private static evr a(String $$0, boolean $$1, evr.a $$2) {
+      evr $$3 = new evr($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   private evr(int $$0) {
-      this.d = $$0;
+   private static evr b(String $$0) {
+      return a($$0, false, evr.a.a);
    }
 
-   public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         evw.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
+   protected evr(String $$0) {
+      this($$0, false, evr.a.a);
+   }
 
-            this.l();
-            this.g = null;
-         }
+   protected evr(String $$0, boolean $$1, evr.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
 
-         AL10.alDeleteSources(new int[]{this.d});
-         evw.a("Cleanup");
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<evr> a(String $$0) {
+      evr $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : le.x.b(akm.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akm.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public void c() {
-      AL10.alSourcePlay(this.d);
+   private static <T> Optional<evr> a(avq<T> $$0, akm $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   public String d() {
+      return this.p;
    }
 
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
+   public boolean e() {
+      return this.q;
    }
 
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
+   public evr.a f() {
+      return this.r;
    }
 
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         evw.a("Stop");
-      }
-   }
+   public static enum a implements ayx {
+      a("integer"),
+      b("hearts");
 
-   public boolean g() {
-      return this.k() == 4114;
-   }
+      private final String d;
+      public static final ayx.a<evr.a> c = ayx.a(evr.a::values);
 
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(etp $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(evx $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(gri $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
-         try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new evx($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
-               }
-            }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
-         }
-      }
-   }
-
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
-      }
-   }
-
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         evw.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         evw.a("Remove processed buffers");
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      return $$0;
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public static evr.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

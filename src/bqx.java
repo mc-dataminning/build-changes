@@ -1,12 +1,12 @@
-class bqx extends bqr {
-   protected bqx(bqs $$0, int $$1) {
+class bqx extends bra {
+   protected bqx(brb $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(bsa $$0, int $$1) {
-      if ($$0.ey() < $$0.eP()) {
-         $$0.c(1.0F);
+   public boolean a(bso $$0, int $$1) {
+      if ($$0 instanceof clw $$2) {
+         $$2.C(0.005F * (float)($$1 + 1));
       }
 
       return true;
@@ -14,7 +14,6 @@ class bqx extends bqr {
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

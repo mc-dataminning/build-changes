@@ -1,23 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
+import java.util.Set;
 
-public class abd implements zb<abc> {
-   public static final abd a = new abd();
-   public static final ys<ByteBuf, abd> b = ys.a(a);
+public record abd(Set<akm> b) implements ze<aay> {
+   public static final yv<vx, abd> a = ze.a(abd::a, abd::new);
 
-   private abd() {
+   private abd(vx $$0) {
+      this($$0.a(HashSet::new, vx::q));
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b, vx::a);
    }
 
    @Override
-   public zd<abd> a() {
-      return aba.e;
+   public zg<abd> a() {
+      return abe.c;
    }
 
-   public void a(abc $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

@@ -1,8 +1,8 @@
-public interface aic extends aga {
-   @Override
-   default vt b() {
-      return vt.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ahz var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aic {
 }

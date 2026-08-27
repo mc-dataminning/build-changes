@@ -1,62 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gbu {
-   private final gbz a = new gbz();
-   private final gca b;
-   private final gbo.a c;
-   private final gbo.a d;
-   private final gbp e;
+   private static final gbu a = new gbu("") {
+      @Override
+      public void a(fdz $$0) {
+      }
 
-   public gbu(int $$0) {
-      this.b = gca.a($$0);
-      SortedMap<gbw, exs> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gcd.h(), this.a.a(gbw.c()));
-         $$0x.put(gcd.i(), this.a.a(gbw.e()));
-         $$0x.put(gcd.a(), this.a.a(gbw.d()));
-         $$0x.put(gcd.k(), this.a.a(gbw.f()));
-         a($$0x, gcd.b());
-         a($$0x, gcd.c());
-         a($$0x, gcd.d());
-         a($$0x, gcd.e());
-         a($$0x, gcd.f());
-         $$0x.put(gcd.g(), new exs(786432));
-         a($$0x, gbw.j());
-         a($$0x, gbw.k());
-         a($$0x, gbw.m());
-         a($$0x, gbw.n());
-         a($$0x, gbw.l());
-         a($$0x, gbw.o());
-         a($$0x, gbw.p());
-         a($$0x, gbw.i());
-         gpe.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gbo.a(new exs(1536));
-      this.c = gbo.a($$1, new exs(786432));
-      this.e = new gbp(this.c);
+      @Override
+      public void a(gbu.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gbu.b e;
+
+   gbu(String $$0) {
+      this.d = fdz.Q().p.toPath().resolve($$0);
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gbw, exs> $$0, gbw $$1) {
-      $$0.put($$1, new exs($$1.I()));
+   public static gbu a(@Nullable String $$0) {
+      return $$0 == null ? a : new gbu($$0);
    }
 
-   public gbz a() {
-      return this.a;
+   public void a(gbu.c $$0, String $$1, String $$2) {
+      this.e = new gbu.b($$0, $$1, $$2);
    }
 
-   public gca b() {
-      return this.b;
+   public void a(fdz $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.h().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            gbu.a $$2 = new gbu.a(this.e, Instant.now(), $$0.q.j());
+            Codec.list(gbu.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
    }
 
-   public gbo.a c() {
-      return this.c;
+   static record a(gbu.b b, Instant c, dau d) {
+      public static final Codec<gbu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gbu.b.a.forGetter(gbu.a::a), axm.m.fieldOf("lastPlayedTime").forGetter(gbu.a::b), dau.f.fieldOf("gamemode").forGetter(gbu.a::c))
+               .apply($$0, gbu.a::new)
+      );
+
+      public gbu.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public dau c() {
+         return this.d;
+      }
    }
 
-   public gbo.a d() {
-      return this.d;
+   static record b(gbu.c b, String c, String d) {
+      public static final MapCodec<gbu.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gbu.c.d.fieldOf("type").forGetter(gbu.b::a), axm.o.fieldOf("id").forGetter(gbu.b::b), Codec.STRING.fieldOf("name").forGetter(gbu.b::c)
+               )
+               .apply($$0, gbu.b::new)
+      );
+
+      public gbu.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
    }
 
-   public gbp e() {
-      return this.e;
+   public static enum c implements ayx {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gbu.c> d = ayx.a(gbu.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

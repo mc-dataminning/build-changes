@@ -1,166 +1,17 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public class nt {
-   public static final ns a = a("cube", nv.c, nv.j, nv.k, nv.l, nv.m, nv.n, nv.o);
-   public static final ns b = a("cube_directional", nv.c, nv.j, nv.k, nv.l, nv.m, nv.n, nv.o);
-   public static final ns c = a("cube_all", nv.a);
-   public static final ns d = a("cube_all_inner_faces", nv.a);
-   public static final ns e = a("cube_mirrored_all", "_mirrored", nv.a);
-   public static final ns f = a("cube_north_west_mirrored_all", "_north_west_mirrored", nv.a);
-   public static final ns g = a("cube_column_uv_locked_x", "_x", nv.d, nv.i);
-   public static final ns h = a("cube_column_uv_locked_y", "_y", nv.d, nv.i);
-   public static final ns i = a("cube_column_uv_locked_z", "_z", nv.d, nv.i);
-   public static final ns j = a("cube_column", nv.d, nv.i);
-   public static final ns k = a("cube_column_horizontal", "_horizontal", nv.d, nv.i);
-   public static final ns l = a("cube_column_mirrored", "_mirrored", nv.d, nv.i);
-   public static final ns m = a("cube_top", nv.f, nv.i);
-   public static final ns n = a("cube_bottom_top", nv.f, nv.e, nv.i);
-   public static final ns o = a("cube_bottom_top_inner_faces", nv.f, nv.e, nv.i);
-   public static final ns p = a("orientable", nv.f, nv.g, nv.i);
-   public static final ns q = a("orientable_with_bottom", nv.f, nv.e, nv.i, nv.g);
-   public static final ns r = a("orientable_vertical", "_vertical", nv.g, nv.i);
-   public static final ns s = a("button", nv.b);
-   public static final ns t = a("button_pressed", "_pressed", nv.b);
-   public static final ns u = a("button_inventory", "_inventory", nv.b);
-   public static final ns v = a("door_bottom_left", "_bottom_left", nv.f, nv.e);
-   public static final ns w = a("door_bottom_left_open", "_bottom_left_open", nv.f, nv.e);
-   public static final ns x = a("door_bottom_right", "_bottom_right", nv.f, nv.e);
-   public static final ns y = a("door_bottom_right_open", "_bottom_right_open", nv.f, nv.e);
-   public static final ns z = a("door_top_left", "_top_left", nv.f, nv.e);
-   public static final ns A = a("door_top_left_open", "_top_left_open", nv.f, nv.e);
-   public static final ns B = a("door_top_right", "_top_right", nv.f, nv.e);
-   public static final ns C = a("door_top_right_open", "_top_right_open", nv.f, nv.e);
-   public static final ns D = a("custom_fence_post", "_post", nv.b, nv.c);
-   public static final ns E = a("custom_fence_side_north", "_side_north", nv.b);
-   public static final ns F = a("custom_fence_side_east", "_side_east", nv.b);
-   public static final ns G = a("custom_fence_side_south", "_side_south", nv.b);
-   public static final ns H = a("custom_fence_side_west", "_side_west", nv.b);
-   public static final ns I = a("custom_fence_inventory", "_inventory", nv.b);
-   public static final ns J = a("fence_post", "_post", nv.b);
-   public static final ns K = a("fence_side", "_side", nv.b);
-   public static final ns L = a("fence_inventory", "_inventory", nv.b);
-   public static final ns M = a("template_wall_post", "_post", nv.r);
-   public static final ns N = a("template_wall_side", "_side", nv.r);
-   public static final ns O = a("template_wall_side_tall", "_side_tall", nv.r);
-   public static final ns P = a("wall_inventory", "_inventory", nv.r);
-   public static final ns Q = a("template_custom_fence_gate", nv.b, nv.c);
-   public static final ns R = a("template_custom_fence_gate_open", "_open", nv.b, nv.c);
-   public static final ns S = a("template_custom_fence_gate_wall", "_wall", nv.b, nv.c);
-   public static final ns T = a("template_custom_fence_gate_wall_open", "_wall_open", nv.b, nv.c);
-   public static final ns U = a("template_fence_gate", nv.b);
-   public static final ns V = a("template_fence_gate_open", "_open", nv.b);
-   public static final ns W = a("template_fence_gate_wall", "_wall", nv.b);
-   public static final ns X = a("template_fence_gate_wall_open", "_wall_open", nv.b);
-   public static final ns Y = a("pressure_plate_up", nv.b);
-   public static final ns Z = a("pressure_plate_down", "_down", nv.b);
-   public static final ns aa = a(nv.c);
-   public static final ns ab = a("slab", nv.e, nv.f, nv.i);
-   public static final ns ac = a("slab_top", "_top", nv.e, nv.f, nv.i);
-   public static final ns ad = a("leaves", nv.a);
-   public static final ns ae = a("stairs", nv.e, nv.f, nv.i);
-   public static final ns af = a("inner_stairs", "_inner", nv.e, nv.f, nv.i);
-   public static final ns ag = a("outer_stairs", "_outer", nv.e, nv.f, nv.i);
-   public static final ns ah = a("template_trapdoor_top", "_top", nv.b);
-   public static final ns ai = a("template_trapdoor_bottom", "_bottom", nv.b);
-   public static final ns aj = a("template_trapdoor_open", "_open", nv.b);
-   public static final ns ak = a("template_orientable_trapdoor_top", "_top", nv.b);
-   public static final ns al = a("template_orientable_trapdoor_bottom", "_bottom", nv.b);
-   public static final ns am = a("template_orientable_trapdoor_open", "_open", nv.b);
-   public static final ns an = a("pointed_dripstone", nv.p);
-   public static final ns ao = a("cross", nv.p);
-   public static final ns ap = a("tinted_cross", nv.p);
-   public static final ns aq = a("flower_pot_cross", nv.q);
-   public static final ns ar = a("tinted_flower_pot_cross", nv.q);
-   public static final ns as = a("rail_flat", nv.s);
-   public static final ns at = a("rail_curved", "_corner", nv.s);
-   public static final ns au = a("template_rail_raised_ne", "_raised_ne", nv.s);
-   public static final ns av = a("template_rail_raised_sw", "_raised_sw", nv.s);
-   public static final ns aw = a("carpet", nv.t);
-   public static final ns ax = a("flowerbed_1", "_1", nv.P, nv.y);
-   public static final ns ay = a("flowerbed_2", "_2", nv.P, nv.y);
-   public static final ns az = a("flowerbed_3", "_3", nv.P, nv.y);
-   public static final ns aA = a("flowerbed_4", "_4", nv.P, nv.y);
-   public static final ns aB = a("coral_fan", nv.x);
-   public static final ns aC = a("coral_wall_fan", nv.x);
-   public static final ns aD = a("template_glazed_terracotta", nv.u);
-   public static final ns aE = a("template_chorus_flower", nv.b);
-   public static final ns aF = a("template_daylight_detector", nv.f, nv.i);
-   public static final ns aG = a("template_glass_pane_noside", "_noside", nv.v);
-   public static final ns aH = a("template_glass_pane_noside_alt", "_noside_alt", nv.v);
-   public static final ns aI = a("template_glass_pane_post", "_post", nv.v, nv.w);
-   public static final ns aJ = a("template_glass_pane_side", "_side", nv.v, nv.w);
-   public static final ns aK = a("template_glass_pane_side_alt", "_side_alt", nv.v, nv.w);
-   public static final ns aL = a("template_command_block", nv.g, nv.h, nv.i);
-   public static final ns aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", nv.b);
-   public static final ns aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", nv.b);
-   public static final ns aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", nv.b);
-   public static final ns aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", nv.b);
-   public static final ns aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", nv.b);
-   public static final ns aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", nv.b);
-   public static final ns aS = a("template_anvil", nv.f);
-   public static final ns[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, nv.y)).toArray(ns[]::new);
-   public static final ns aU = a("stem_fruit", nv.y, nv.z);
-   public static final ns aV = a("crop", nv.A);
-   public static final ns aW = a("template_farmland", nv.B, nv.f);
-   public static final ns aX = a("template_fire_floor", nv.C);
-   public static final ns aY = a("template_fire_side", nv.C);
-   public static final ns aZ = a("template_fire_side_alt", nv.C);
-   public static final ns ba = a("template_fire_up", nv.C);
-   public static final ns bb = a("template_fire_up_alt", nv.C);
-   public static final ns bc = a("template_campfire", nv.C, nv.K);
-   public static final ns bd = a("template_lantern", nv.D);
-   public static final ns be = a("template_hanging_lantern", "_hanging", nv.D);
-   public static final ns bf = a("template_torch", nv.G);
-   public static final ns bg = a("template_torch_wall", nv.G);
-   public static final ns bh = a("template_piston", nv.E, nv.e, nv.i);
-   public static final ns bi = a("template_piston_head", nv.E, nv.i, nv.F);
-   public static final ns bj = a("template_piston_head_short", nv.E, nv.i, nv.F);
-   public static final ns bk = a("template_seagrass", nv.b);
-   public static final ns bl = a("template_turtle_egg", nv.a);
-   public static final ns bm = a("template_two_turtle_eggs", nv.a);
-   public static final ns bn = a("template_three_turtle_eggs", nv.a);
-   public static final ns bo = a("template_four_turtle_eggs", nv.a);
-   public static final ns bp = a("template_single_face", nv.b);
-   public static final ns bq = a("template_cauldron_level1", nv.N, nv.M, nv.c, nv.f, nv.e, nv.i);
-   public static final ns br = a("template_cauldron_level2", nv.N, nv.M, nv.c, nv.f, nv.e, nv.i);
-   public static final ns bs = a("template_cauldron_full", nv.N, nv.M, nv.c, nv.f, nv.e, nv.i);
-   public static final ns bt = a("template_azalea", nv.f, nv.i);
-   public static final ns bu = a("template_potted_azalea_bush", nv.q, nv.f, nv.i);
-   public static final ns bv = a("template_potted_azalea_bush", nv.q, nv.f, nv.i);
-   public static final ns bw = a("sniffer_egg", nv.f, nv.e, nv.j, nv.k, nv.l, nv.m);
-   public static final ns bx = b("generated", nv.H);
-   public static final ns by = b("template_music_disc", nv.H);
-   public static final ns bz = b("handheld", nv.H);
-   public static final ns bA = b("handheld_rod", nv.H);
-   public static final ns bB = b("generated", nv.H, nv.I);
-   public static final ns bC = b("generated", nv.H, nv.I, nv.J);
-   public static final ns bD = b("template_shulker_box", nv.c);
-   public static final ns bE = b("template_bed", nv.c);
-   public static final ns bF = b("template_banner");
-   public static final ns bG = b("template_skull");
-   public static final ns bH = a("template_candle", nv.a, nv.c);
-   public static final ns bI = a("template_two_candles", nv.a, nv.c);
-   public static final ns bJ = a("template_three_candles", nv.a, nv.c);
-   public static final ns bK = a("template_four_candles", nv.a, nv.c);
-   public static final ns bL = a("template_cake_with_candle", nv.L, nv.e, nv.i, nv.f, nv.c);
-   public static final ns bM = a("template_sculk_shrieker", nv.e, nv.i, nv.f, nv.c, nv.O);
-   public static final ns bN = a("template_vault", nv.f, nv.e, nv.i, nv.g);
-   public static final ns bO = b("handheld_mace", nv.H);
+public class nt implements Supplier<JsonElement> {
+   private final akm a;
 
-   private static ns a(nv... $$0) {
-      return new ns(Optional.empty(), Optional.empty(), $$0);
+   public nt(akm $$0) {
+      this.a = $$0;
    }
 
-   private static ns a(String $$0, nv... $$1) {
-      return new ns(Optional.of(new akh("minecraft", "block/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static ns b(String $$0, nv... $$1) {
-      return new ns(Optional.of(new akh("minecraft", "item/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static ns a(String $$0, String $$1, nv... $$2) {
-      return new ns(Optional.of(new akh("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

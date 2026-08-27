@@ -1,17 +1,13 @@
-public interface aky extends akx {
-   ape a();
+public final class aky extends RuntimeException {
+   public static final aky a = new aky();
 
-   String b();
+   private aky() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
 
-   int d();
-
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
+   }
 }

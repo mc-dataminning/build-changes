@@ -1,54 +1,40 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
 public class enm {
-   private final in a;
-   private final int b;
-   private final int c;
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final enl[] d = new enl[4096];
 
-   public enm(in $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public enl a(dad $$0, io $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      enl $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
    @Nullable
-   public static enm a(ua $$0) {
-      Optional<in> $$1 = up.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new enm($$1.get(), $$2, $$3);
+   private enl a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
+
+   private enl a(dad $$0, io $$1, int $$2, long $$3) {
+      enl $$4 = enq.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
+
+   public void a(io $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   public ua a() {
-      ua $$0 = new ua();
-      $$0.a("pos", up.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
-   }
-
-   public in b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(in $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

@@ -1,30 +1,90 @@
-public class gdt implements gdo<dns> {
-   private static final float a = 0.375F;
-   private final ghv b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gdt(gdp.a $$0) {
-      this.b = $$0.d();
+public class gdt {
+   public static final gdt a = new gdt();
+   public final gds b;
+   public final gds c;
+   public final gds d;
+   public final gds e;
+   public final gds f;
+   public final gds g;
+   public final gds h;
+   public final gds i;
+
+   private gdt() {
+      this(gds.a, gds.a, gds.a, gds.a, gds.a, gds.a, gds.a, gds.a);
    }
 
-   public void a(dns $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
-      is $$6 = $$0.n().c(dds.f);
-      jf<csz> $$7 = $$0.b();
-      int $$8 = (int)$$0.az_().a();
+   public gdt(gdt $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         csz $$10 = $$7.get($$9);
-         if ($$10 != csz.i) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            is $$11 = is.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, csw.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+   public gdt(gds $$0, gds $$1, gds $$2, gds $$3, gds $$4, gds $$5, gds $$6, gds $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public gds a(ctl $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gds.a;
+      };
+   }
+
+   public boolean b(ctl $$0) {
+      return this.a($$0) != gds.a;
+   }
+
+   protected static class a implements JsonDeserializer<gdt> {
+      public gdt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gds $$4 = this.a($$2, $$3, ctl.c);
+         gds $$5 = this.a($$2, $$3, ctl.b);
+         if ($$5 == gds.a) {
+            $$5 = $$4;
          }
+
+         gds $$6 = this.a($$2, $$3, ctl.e);
+         gds $$7 = this.a($$2, $$3, ctl.d);
+         if ($$7 == gds.a) {
+            $$7 = $$6;
+         }
+
+         gds $$8 = this.a($$2, $$3, ctl.f);
+         gds $$9 = this.a($$2, $$3, ctl.g);
+         gds $$10 = this.a($$2, $$3, ctl.h);
+         gds $$11 = this.a($$2, $$3, ctl.i);
+         return new gdt($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private gds a(JsonDeserializationContext $$0, JsonObject $$1, ctl $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gds)$$0.deserialize($$1.get($$3), gds.class) : gds.a;
       }
    }
 }

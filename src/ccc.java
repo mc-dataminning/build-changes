@@ -1,29 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class ccc extends cca {
+   private boolean p;
 
-public class ccc<T extends bsa> extends ccj<T> {
-   @Override
-   protected void a(aqh $$0, T $$1) {
-      etk $$2 = $$1.cI().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bsa> $$3 = $$0.a(bsa.class, $$2, $$1x -> $$1x != $$1 && $$1x.bB());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      btb<?> $$4 = $$1.dQ();
-      $$4.a(cbd.g, $$3);
-      $$4.a(cbd.h, new cbf($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public ccc(bsq $$0, dax $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.of(cbd.g, cbd.h);
+   protected enk a(int $$0) {
+      this.p = this.a.ak() == bsa.y;
+      this.o = new eno(this.p);
+      return new enk(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bi();
+   }
+
+   @Override
+   protected euk b() {
+      return new euk(this.a.du(), this.a.e(0.5), this.a.dA());
+   }
+
+   @Override
+   protected double a(euk $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(euk $$0, euk $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(io $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

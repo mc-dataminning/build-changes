@@ -1,21 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gnl implements gnc {
-   public static final Codec<gnl> b = RecordCodecBuilder.create($$0 -> $$0.group(ayh.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gnl::new));
-   private final ayh c;
+public final class gnl {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final akm d = new akm("missingno");
+   private static final aty e = new aty.a().a(gpg.a, new gpg(ImmutableList.of(new gpf(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gni f;
 
-   public gnl(ayh $$0) {
-      this.c = $$0;
+   private static ext a(int $$0, int $$1) {
+      ext $$2 = new ext($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   @Override
-   public void a(atr $$0, gnc.a $$1) {
-      $$1.a(this.c.c());
+   public static gnp a() {
+      ext $$0 = a(16, 16);
+      return new gnp(d, new gpi(16, 16), $$0, e);
    }
 
-   @Override
-   public gne a() {
-      return gnf.c;
+   public static akm b() {
+      return d;
+   }
+
+   public static gni c() {
+      if (f == null) {
+         ext $$0 = a(16, 16);
+         $$0.i();
+         f = new gni($$0);
+         fdz.Q().aa().a(d, f);
+      }
+
+      return f;
    }
 }

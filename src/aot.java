@@ -1,120 +1,126 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.function.Function;
 
 public class aot {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.whitelist.remove.failed"));
-
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a(
-                                 "whitelist"
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a(
+                                    "targets", er.d()
+                                 )
+                                 .then(ef.a("clear").executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets")))))
+                              .then(ef.a("reset").executes($$0x -> b((ee)$$0x.getSource(), er.f($$0x, "targets")))))
+                           .then(
+                              ef.a("title")
+                                 .then(
+                                    ef.a("title", en.a($$1))
+                                       .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), en.a($$0x, "title"), "title", afh::new))
+                                 )
+                           ))
+                        .then(
+                           ef.a("subtitle")
+                              .then(
+                                 ef.a("title", en.a($$1))
+                                    .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), en.a($$0x, "title"), "subtitle", aff::new))
                               )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ee.a("on").executes($$0x -> b((ed)$$0x.getSource()))))
-                        .then(ee.a("off").executes($$0x -> c((ed)$$0x.getSource()))))
-                     .then(ee.a("list").executes($$0x -> d((ed)$$0x.getSource()))))
-                  .then(ee.a("add").then(ee.a("targets", es.a()).suggests(($$0x, $$1) -> {
-                     aue $$2 = ((ed)$$0x.getSource()).l().ah();
-                     return ei.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fZ())).map($$0xx -> $$0xx.fZ().getName()), $$1);
-                  }).executes($$0x -> a((ed)$$0x.getSource(), es.a($$0x, "targets"))))))
-               .then(
-                  ee.a("remove")
+                        ))
                      .then(
-                        ee.a("targets", es.a())
-                           .suggests(($$0x, $$1) -> ei.a(((ed)$$0x.getSource()).l().ah().j(), $$1))
-                           .executes($$0x -> b((ed)$$0x.getSource(), es.a($$0x, "targets")))
-                     )
-               ))
-            .then(ee.a("reload").executes($$0x -> a((ed)$$0x.getSource())))
+                        ef.a("actionbar")
+                           .then(
+                              ef.a("title", en.a($$1))
+                                 .executes($$0x -> a((ee)$$0x.getSource(), er.f($$0x, "targets"), en.a($$0x, "title"), "actionbar", aei::new))
+                           )
+                     ))
+                  .then(
+                     ef.a("times")
+                        .then(
+                           ef.a("fadeIn", ft.a())
+                              .then(
+                                 ef.a("stay", ft.a())
+                                    .then(
+                                       ef.a("fadeOut", ft.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ee)$$0x.getSource(),
+                                                   er.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ed $$0) {
-      $$0.l().ah().a();
-      $$0.a(() -> wu.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
+   private static int a(ee $$0, Collection<aqn> $$1) {
+      ach $$2 = new ach(false);
+
+      for (aqn $$3 : $$1) {
+         $$3.d.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wx.a("commands.title.cleared.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wx.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(ed $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aum $$2 = $$0.l().ah().i();
-      int $$3 = 0;
+   private static int b(ee $$0, Collection<aqn> $$1) {
+      ach $$2 = new ach(true);
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            aun $$5 = new aun($$4);
-            $$2.a($$5);
-            $$0.a(() -> wu.a("commands.whitelist.add.success", wu.b($$4.getName())), true);
-            $$3++;
-         }
+      for (aqn $$3 : $$1) {
+         $$3.d.b($$2);
       }
 
-      if ($$3 == 0) {
-         throw c.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> wx.a("commands.title.reset.single", $$1.iterator().next().O_()), true);
       } else {
-         return $$3;
+         $$0.a(() -> wx.a("commands.title.reset.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private static int b(ed $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aum $$2 = $$0.l().ah().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            aun $$5 = new aun($$4);
-            $$2.b($$5);
-            $$0.a(() -> wu.a("commands.whitelist.remove.success", wu.b($$4.getName())), true);
-            $$3++;
-         }
+   private static int a(ee $$0, Collection<aqn> $$1, wx $$2, String $$3, Function<wx, ze<?>> $$4) throws CommandSyntaxException {
+      for (aqn $$5 : $$1) {
+         $$5.d.b($$4.apply(xa.a($$0, $$2, $$5, 0)));
       }
 
-      if ($$3 == 0) {
-         throw d.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> wx.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().O_()), true);
       } else {
-         $$0.l().a($$0);
-         return $$3;
+         $$0.a(() -> wx.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private static int b(ed $$0) throws CommandSyntaxException {
-      aue $$1 = $$0.l().ah();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> wu.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
-   }
+   private static int a(ee $$0, Collection<aqn> $$1, int $$2, int $$3, int $$4) {
+      afi $$5 = new afi($$2, $$3, $$4);
 
-   private static int c(ed $$0) throws CommandSyntaxException {
-      aue $$1 = $$0.l().ah();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> wu.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
-
-   private static int d(ed $$0) {
-      String[] $$1 = $$0.l().ah().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> wu.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> wu.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      for (aqn $$6 : $$1) {
+         $$6.d.b($$5);
       }
 
-      return $$1.length;
+      if ($$1.size() == 1) {
+         $$0.a(() -> wx.a("commands.title.times.single", $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wx.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

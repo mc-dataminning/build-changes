@@ -1,54 +1,42 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class egs extends enh {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public class egs extends egq {
+   public static final MapCodec<egs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(boz.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), boz.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, egs::new)
+   );
+   private final boz c;
+   private final boz d;
 
-   public static enh.a<egs> a() {
-      return new enh.a<>(egs::new, egs::b, azf.o);
+   public static egs a(boz $$0, boz $$1) {
+      return new egs($$0, $$1);
    }
 
-   private egs(LongSet $$0, LongSet $$1) {
+   public static egs a(boz $$0) {
+      return new egs(bow.a(0), $$0);
+   }
+
+   public static egs b(boz $$0) {
+      return new egs($$0, bow.a(0));
+   }
+
+   private egs(boz $$0, boz $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   public egs() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static egs b(ua $$0, iy.a $$1) {
-      return new egs(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   @Override
+   public Stream<io> a_(ego $$0, ayk $$1, io $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new io($$3, $$4, $$5));
    }
 
    @Override
-   public ua a(ua $$0, iy.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   public egr<?> b() {
+      return egr.n;
    }
 }

@@ -1,59 +1,71 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class gfh implements gfa.a {
-   private final fde a;
-   private final Map<Long, Map<in, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+class gfh {
+   private final Map<io, dog> a;
+   @Nullable
+   private final List<dtp<drb>> b;
+   private final boolean c;
+   private final dth d;
 
-   gfh(fde $$0) {
-      this.a = $$0;
-   }
+   gfh(dth $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ah();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dtd) {
+         this.b = null;
+      } else {
+         dti[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   public void a(long $$0, in $$1) {
-      Map<in, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
-   @Override
-   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Y();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<in> $$8 = Sets.newHashSet();
-      Map<in, Integer> $$9 = Maps.newHashMap();
-      eyb $$10 = $$1.getBuffer(gbw.y());
-      Iterator<Entry<Long, Map<in, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<in, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<in, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<in, Integer> $$16 : $$14.entrySet()) {
-               in $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  etk $$19 = new etk(in.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gbm.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+         for (dti $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
+   }
 
-      for (Entry<in, Integer> $$20 : $$9.entrySet()) {
-         in $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gfa.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+   @Nullable
+   public dog a(io $$0) {
+      return this.a.get($$0);
+   }
+
+   public drb b(io $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         drb $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dea.hW.n();
+         }
+
+         if ($$2 == 70) {
+            $$4 = dwk.a($$1, $$3);
+         }
+
+         return $$4 == null ? dea.a.n() : $$4;
+      } else if (this.b == null) {
+         return dea.a.n();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dtp<drb> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dea.a.n();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
+         }
       }
    }
 }

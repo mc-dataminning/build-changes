@@ -1,10 +1,15 @@
-public class cyu extends cyg {
-   protected cyu(cyg.b $$0) {
+public class cyu extends cyz {
+   public cyu(cyz.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cyg $$0) {
-      return super.a($$0) && $$0 != cyj.x;
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
    }
 }

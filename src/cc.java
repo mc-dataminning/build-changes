@@ -4,7 +4,7 @@ public record cc(cv c) implements ci {
    public static final Codec<cc> a = cv.c.xmap(cc::new, cc::a);
 
    @Override
-   public boolean a(csz $$0) {
+   public boolean a(cto $$0) {
       return this.c.a($$0);
    }
 

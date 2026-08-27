@@ -1,36 +1,40 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edx extends edz {
-   public static final Codec<edx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edx::new, $$0 -> $$0.b).codec();
-   private final float b;
+public record edx(jb<ddy> b, jb<ddy> c, eec d, int e, int f, float g) {
+   public static final Codec<edx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jm.a(lf.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jm.a(lf.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eec.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, edx::new)
+   );
 
-   public edx(float $$0) {
-      this.b = $$0;
+   public jb<ddy> a() {
+      return this.b;
    }
 
-   @Override
-   protected eea<?> a() {
-      return eea.c;
+   public jb<ddy> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(edz.a $$0) {
-      ayg $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<in> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (is $$3x : is.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  is $$4 = $$3x.g();
-                  in $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, ddg.fC.n().a(del.c, Integer.valueOf($$1.a(3))).a(del.aE, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public eec c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

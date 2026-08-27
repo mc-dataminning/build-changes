@@ -1,29 +1,34 @@
-public class ago implements zb<afz> {
-   public static final ys<vu, ago> a = zb.a(ago::a, ago::new);
-   private final int b;
+public class ago implements ze<agd> {
+   public static final yv<vx, ago> a = ze.a(ago::a, ago::new);
+   private final ago.a b;
 
-   public ago(int $$0) {
+   public ago(ago.a $$0) {
       this.b = $$0;
    }
 
-   private ago(vu $$0) {
-      this.b = $$0.readByte();
+   private ago(vx $$0) {
+      this.b = $$0.b(ago.a.class);
    }
 
-   private void a(vu $$0) {
-      $$0.k(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ago> a() {
-      return afx.br;
+   public zg<ago> a() {
+      return agb.bn;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ago.a b() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

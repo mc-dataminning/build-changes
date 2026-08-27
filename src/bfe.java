@@ -1,30 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class bfe extends DataFix {
-   public bfe(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bfe extends bed {
+   public bfe(Schema $$0) {
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsKeyTranslationFix",
-         this.getInputSchema().getType(bfs.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
-                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
-                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
-                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
-                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
-                        }
-                     }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
 
-                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
-      );
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
    }
 }

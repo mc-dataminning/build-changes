@@ -1,7 +1,38 @@
-@FunctionalInterface
-public interface egm {
-   egm a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   void afterPlace(day var1, daw var2, dse var3, ayg var4, egh var5, czk var6, ehe var7);
+public class egm extends egu {
+   public static final MapCodec<egm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, egm::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
+
+   private egm(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static egm a(double $$0, int $$1, int $$2) {
+      return new egm($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(ayk $$0, io $$1) {
+      double $$2 = dbw.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public egr<?> b() {
+      return egr.h;
+   }
 }

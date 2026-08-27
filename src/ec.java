@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface ec {
    ec a = new ec() {
+      @Nullable
       @Override
-      public void a(wu $$0) {
-      }
-
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
+      public xn a(String $$0) {
+         return null;
       }
    };
 
-   void a(wu var1);
+   @Nullable
+   xn a(String var1);
 
-   boolean l_();
+   public static record a(Map<String, xn> b) implements ec {
+      @Nullable
+      @Override
+      public xn a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean w_();
-
-   boolean U_();
-
-   default boolean m_() {
-      return false;
+      public Map<String, xn> a() {
+         return this.b;
+      }
    }
 }

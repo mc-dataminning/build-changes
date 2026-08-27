@@ -2,30 +2,60 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qh {
-   public static final akg<ehy> a = qs.a("bastion/starts");
-
-   public static void a(ql<ehy> $$0) {
-      ix<ekn> $$1 = $$0.a(le.aK);
-      iw<ekn> $$2 = $$1.b(qt.w);
-      ix<ehy> $$3 = $$0.a(le.aM);
-      iw<ehy> $$4 = $$3.b(qs.a);
-      $$0.a(
-         a,
-         new ehy(
-            $$4,
+   public static void a(qo<eis> $$0) {
+      iy<elh> $$1 = $$0.a(lf.aK);
+      ix<elh> $$2 = $$1.b(qw.y);
+      ix<elh> $$3 = $$1.b(qw.w);
+      ix<elh> $$4 = $$1.b(qw.z);
+      ix<elh> $$5 = $$1.b(qw.x);
+      iy<eis> $$6 = $$0.a(lf.aM);
+      ix<eis> $$7 = $$6.b(qv.a);
+      qv.a(
+         $$0,
+         "bastion/bridge/starting_pieces",
+         new eis(
+            $$7,
             ImmutableList.of(
-               Pair.of(ehw.b("bastion/units/air_base", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(ehw.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(ehw.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(eiq.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(eiq.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
             ),
-            ehy.a.b
+            eis.a.b
          )
       );
-      qg.a($$0);
-      qf.a($$0);
-      qj.a($$0);
-      qe.a($$0);
-      qi.a($$0);
+      qv.a($$0, "bastion/bridge/bridge_pieces", new eis($$7, ImmutableList.of(Pair.of(eiq.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), eis.a.b));
+      qv.a(
+         $$0,
+         "bastion/bridge/legs",
+         new eis($$7, ImmutableList.of(Pair.of(eiq.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(eiq.b("bastion/bridge/legs/leg_1", $$3), 1)), eis.a.b)
+      );
+      qv.a(
+         $$0,
+         "bastion/bridge/walls",
+         new eis(
+            $$7,
+            ImmutableList.of(Pair.of(eiq.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(eiq.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            eis.a.b
+         )
+      );
+      qv.a(
+         $$0,
+         "bastion/bridge/ramparts",
+         new eis(
+            $$7,
+            ImmutableList.of(Pair.of(eiq.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(eiq.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            eis.a.b
+         )
+      );
+      qv.a($$0, "bastion/bridge/rampart_plates", new eis($$7, ImmutableList.of(Pair.of(eiq.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), eis.a.b));
+      qv.a(
+         $$0,
+         "bastion/bridge/connectors",
+         new eis(
+            $$7,
+            ImmutableList.of(
+               Pair.of(eiq.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(eiq.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
+            ),
+            eis.a.b
+         )
+      );
    }
 }

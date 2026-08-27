@@ -1,42 +1,29 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
 import java.util.Set;
 
-public record esp(esl b, esl c) implements esl {
-   public static final Codec<esp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(esm.a.fieldOf("min").forGetter(esp::c), esm.a.fieldOf("max").forGetter(esp::d)).apply($$0, esp::new)
-   );
+public class esp implements esl {
+   private static final esp b = new esp();
+   public static final MapCodec<esp> a = MapCodec.unit(b);
 
-   @Override
-   public esk b() {
-      return esm.c;
-   }
-
-   public static esp a(float $$0, float $$1) {
-      return new esp(esj.a($$0), esj.a($$1));
+   private esp() {
    }
 
    @Override
-   public int a(eol $$0) {
-      return axz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public esm b() {
+      return esn.i;
    }
 
    @Override
-   public float b(eol $$0) {
-      return axz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public Set<eru<?>> a() {
+      return ImmutableSet.of(erx.b);
    }
 
-   @Override
-   public Set<eqz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public boolean a(epf $$0) {
+      return $$0.a(erx.b);
    }
 
-   public esl c() {
-      return this.b;
-   }
-
-   public esl d() {
-      return this.c;
+   public static esl.a c() {
+      return () -> b;
    }
 }

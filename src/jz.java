@@ -1,80 +1,100 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public interface jz<T> {
-   Codec<jz<?>> a = axh.a((Supplier<Codec<jz<?>>>)(() -> ld.as.q()));
-   ys<wf, jz<?>> b = ys.a($$0 -> yq.a(le.av));
+public final class jz implements Predicate<jx> {
+   public static final Codec<jz> a = ka.d
+      .xmap(
+         $$0 -> new jz($$0.entrySet().stream().map(kd::a).collect(Collectors.toList())),
+         $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(kd::a, kd::b))
+      );
+   public static final yv<wi, jz> b = kd.a.a(yt.a()).a(jz::new, $$0 -> $$0.d);
+   public static final jz c = new jz(List.of());
+   private final List<kd<?>> d;
 
-   static <T> jz.a<T> a() {
-      return new jz.a<>();
+   jz(List<kd<?>> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   Codec<T> b();
+   public static jz.a a() {
+      return new jz.a();
+   }
 
-   default Codec<T> c() {
-      Codec<T> $$0 = this.b();
-      if ($$0 == null) {
-         throw new IllegalStateException(this + " is not a persistent component");
-      } else {
-         return $$0;
+   public static jz a(jx $$0) {
+      return new jz(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof jz $$1 && this.d.equals($$1.d)) {
+         return true;
       }
+
+      return false;
    }
 
-   default boolean d() {
-      return this.b() == null;
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
    }
 
-   ys<? super wf, T> e();
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 
-   public static class a<T> {
-      @Nullable
-      private Codec<T> a;
-      @Nullable
-      private ys<? super wf, T> b;
+   public boolean b(jx $$0) {
+      for (kd<?> $$1 : this.d) {
+         Object $$2 = $$0.a($$1.a());
+         if (!Objects.equals($$1.b(), $$2)) {
+            return false;
+         }
+      }
 
-      public jz.a<T> a(Codec<T> $$0) {
-         this.a = $$0;
+      return true;
+   }
+
+   public boolean a(jw $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   public jy c() {
+      jy.a $$0 = jy.a();
+
+      for (kd<?> $$1 : this.d) {
+         $$0.a($$1);
+      }
+
+      return $$0.a();
+   }
+
+   public static class a {
+      private final List<kd<?>> a = new ArrayList<>();
+
+      a() {
+      }
+
+      public <T> jz.a a(ka<? super T> $$0, T $$1) {
+         for (kd<?> $$2 : this.a) {
+            if ($$2.a() == $$0) {
+               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
+            }
+         }
+
+         this.a.add(new kd<>($$0, $$1));
          return this;
       }
 
-      public jz.a<T> a(ys<? super wf, T> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public jz<T> a() {
-         ys<? super wf, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> yq.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
-         return new jz.a.a<>(this.a, $$0);
-      }
-
-      static class a<T> implements jz<T> {
-         @Nullable
-         private final Codec<T> c;
-         private final ys<? super wf, T> d;
-
-         a(@Nullable Codec<T> $$0, ys<? super wf, T> $$1) {
-            this.c = $$0;
-            this.d = $$1;
-         }
-
-         @Nullable
-         @Override
-         public Codec<T> b() {
-            return this.c;
-         }
-
-         @Override
-         public ys<? super wf, T> e() {
-            return this.d;
-         }
-
-         @Override
-         public String toString() {
-            return ac.a((jj<jz.a.a<T>>)ld.as, this);
-         }
+      public jz a() {
+         return new jz(List.copyOf(this.a));
       }
    }
 }

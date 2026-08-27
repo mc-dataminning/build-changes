@@ -1,25 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class ccs {
-   @Nullable
-   public static etp a(bsi $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = ccv.a($$0, $$1);
-      return ccy.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public abstract class ccs extends ccy<bso> {
+   protected abstract boolean a(bso var1, bso var2);
+
+   protected abstract cbs<bso> b();
+
+   @Override
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   @Nullable
-   public static in a(bsi $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      in $$8 = ccy.a($$0.ej(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         in $$9 = ccy.a($$0, $$1, $$0.ej(), $$8);
-         if (!ccv.a($$9, $$0) && !ccv.a($$7, $$0, $$9)) {
-            $$9 = ccy.a($$9, $$0.dN().al(), $$1x -> ccv.c($$0, $$1x));
-            return ccv.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   protected void a(aqm $$0, bso $$1) {
+      $$1.dS().a(this.b(), this.b($$1));
+   }
+
+   private Optional<bso> b(bso $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<cbu> a(bso $$0) {
+      return $$0.dS().c(cbs.h);
    }
 }

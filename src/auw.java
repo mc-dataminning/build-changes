@@ -1,113 +1,45 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class auw extends aut {
-   private static final Logger d = LogUtils.getLogger();
-   private final ServerSocket e;
-   private final String f;
-   private final List<auv> g = Lists.newArrayList();
-   private final aky h;
+public class auw implements ed {
+   private static final String b = "Rcon";
+   private static final wx c = wx.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   private auw(aky $$0, ServerSocket $$1, String $$2) {
-      super("RCON Listener");
-      this.h = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public auw(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   private void d() {
-      this.g.removeIf($$0 -> !$$0.c());
+   public void e() {
+      this.d.setLength(0);
+   }
+
+   public String f() {
+      return this.d.toString();
+   }
+
+   public ee g() {
+      aqm $$0 = this.e.I();
+      return new ee(this, euk.a($$0.U()), euj.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override
-   public void run() {
-      try {
-         while (this.a) {
-            try {
-               Socket $$0 = this.e.accept();
-               auv $$1 = new auv(this.h, this.f, $$0);
-               $$1.a();
-               this.g.add($$1);
-               this.d();
-            } catch (SocketTimeoutException var7) {
-               this.d();
-            } catch (IOException var8) {
-               if (this.a) {
-                  d.info("IO exception: ", var8);
-               }
-            }
-         }
-      } finally {
-         this.a(this.e);
-      }
-   }
-
-   @Nullable
-   public static auw a(aky $$0) {
-      ape $$1 = $$0.a();
-      String $$2 = $$0.b();
-      if ($$2.isEmpty()) {
-         $$2 = "0.0.0.0";
-      }
-
-      int $$3 = $$1.s;
-      if (0 < $$3 && 65535 >= $$3) {
-         String $$4 = $$1.t;
-         if ($$4.isEmpty()) {
-            d.warn("No rcon password set in server.properties, rcon disabled!");
-            return null;
-         } else {
-            try {
-               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
-               $$5.setSoTimeout(500);
-               auw $$6 = new auw($$0, $$5, $$4);
-               if (!$$6.a()) {
-                  return null;
-               } else {
-                  d.info("RCON running on {}:{}", $$2, $$3);
-                  return $$6;
-               }
-            } catch (IOException var7) {
-               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
-               return null;
-            }
-         }
-      } else {
-         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
-         return null;
-      }
+   public void a(wx $$0) {
+      this.d.append($$0.getString());
    }
 
    @Override
-   public void b() {
-      this.a = false;
-      this.a(this.e);
-      super.b();
-
-      for (auv $$0 : this.g) {
-         if ($$0.c()) {
-            $$0.b();
-         }
-      }
-
-      this.g.clear();
+   public boolean l_() {
+      return true;
    }
 
-   private void a(ServerSocket $$0) {
-      d.debug("closeSocket: {}", $$0);
+   @Override
+   public boolean w_() {
+      return true;
+   }
 
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         d.warn("Failed to close socket", var3);
-      }
+   @Override
+   public boolean U_() {
+      return this.e.m();
    }
 }

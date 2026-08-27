@@ -1,27 +1,55 @@
-public class cny {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+public class cny extends cns {
+   public cny(bsa<? extends cny> $$0, dax $$1) {
+      super($$0, $$1);
+   }
+
+   public cny(dax $$0, double $$1, double $$2, double $$3) {
+      super(bsa.s, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   protected ctj ag_() {
+      return ctr.nN;
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cnr.a v() {
+      return cnr.a.b;
+   }
+
+   @Override
+   public drb x() {
+      return dea.cv.n().a(dfb.c, it.c);
+   }
+
+   @Override
+   public int z() {
+      return 8;
+   }
+
+   @Override
+   public cot a(int $$0, clv $$1) {
+      return cpa.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(clw $$0) {
+      this.dP().a(dvu.j, this.dn(), dvu.a.a($$0));
+   }
+
+   @Override
+   public bpu a(clw $$0, bpt $$1) {
+      bpu $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dvu.k, $$0);
+         ckn.a($$0, true);
+      }
+
+      return $$2;
+   }
 }

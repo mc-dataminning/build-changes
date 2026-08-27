@@ -1,45 +1,20 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import java.util.function.Consumer;
 
-public enum fji {
-   a,
-   b,
-   c,
-   d;
+public class fji {
+   private static final int a = 4;
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fjh a() {
-      return switch (this) {
-         case a, b -> fjh.b;
-         case c, d -> fjh.a;
-      };
+   private fji() {
    }
 
-   public fji b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public static fjn a(ffk $$0, fjo $$1, wx $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+   public static fjn a(ffk $$0, fjo $$1, wx $$2, Consumer<fjp> $$3) {
+      fjq $$4 = fjq.d().a(4);
+      $$4.a(new fhg($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

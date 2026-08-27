@@ -1,84 +1,62 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class fhp implements fhn {
-   private static final akh g = new akh("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fhp.a h;
-   private final wu i;
-   @Nullable
-   private final wu j;
-   private fhn.a k = fhn.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fhp extends fho {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public fhp(fhp.a $$0, wu $$1, @Nullable wu $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public fhp(ffk $$0, bky $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fhn.a a(fer $$0, fho $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+   protected void d(ffm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   }
+
+   private void a(ffm $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   }
+
+   private void a(ffm $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3, -1);
+   }
+
+   @Override
+   protected String a(double $$0) {
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
       } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", ayd.a($$0));
       }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = axz.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
    }
 
-   public void c() {
-      this.k = fhn.a.b;
+   @Override
+   protected int b(double $$0) {
+      return d(e($$0));
    }
 
-   public void a(float $$0) {
-      this.n = $$0;
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
    }
 
-   public static enum a {
-      a(new akh("toast/movement_keys")),
-      b(new akh("toast/mouse")),
-      c(new akh("toast/tree")),
-      d(new akh("toast/recipe_book")),
-      e(new akh("toast/wooden_planks")),
-      f(new akh("toast/social_interactions")),
-      g(new akh("toast/right_click"));
+   @Override
+   protected int a(long $$0) {
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   }
 
-      private final akh h;
-
-      private a(akh $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fer $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
-      }
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

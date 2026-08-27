@@ -1,53 +1,55 @@
-public abstract class clt extends clo implements clw {
-   private static final ajm<csz> e = ajq.a(clt.class, ajo.h);
+public class clt {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
 
-   public clt(brn<? extends clt> $$0, dad $$1) {
-      super($$0, $$1);
+   public void a(ud $$0) {
+      ud $$1 = new ud();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public clt(brn<? extends clt> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dad $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public void b(ud $$0) {
+      if ($$0.b("abilities", 10)) {
+         ud $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
 
-   public clt(brn<? extends clt> $$0, bsa $$1, double $$2, double $$3, double $$4, dad $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(csz $$0) {
-      if ($$0.d()) {
-         this.an().a(e, this.y());
-      } else {
-         this.an().a(e, $$0.c(1));
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
       }
    }
 
-   @Override
-   public csz p() {
-      return this.an().a(e);
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(ajq.a $$0) {
-      $$0.a(e, this.y());
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dP()));
+   public float b() {
+      return this.g;
    }
 
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(csz.a(this.dP(), (ux)$$0.p("Item")).orElse(this.y()));
-      } else {
-         this.a(this.y());
-      }
-   }
-
-   private csz y() {
-      return new csz(ctc.tX);
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

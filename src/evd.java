@@ -1,268 +1,238 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import com.google.common.math.DoubleMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class evd<T> implements evc<T> {
-   private static final Comparator<evb<?>> a = ($$0, $$1) -> evg.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Supplier<bma> c;
-   private final Long2ObjectMap<evb<T>> d = new Long2ObjectOpenHashMap();
-   private final Long2LongMap e = ac.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<evb<T>> f = new PriorityQueue<>(a);
-   private final Queue<evg<T>> g = new ArrayDeque<>();
-   private final List<evg<T>> h = new ArrayList<>();
-   private final Set<evg<?>> i = new ObjectOpenCustomHashSet(evg.c);
-   private final BiConsumer<evb<T>, evg<T>> j = ($$0x, $$1x) -> {
-      if ($$1x.equals($$0x.b())) {
-         this.b($$1x);
-      }
-   };
+public abstract class evd {
+   protected final eut a;
+   @Nullable
+   private evd[] b;
 
-   public evd(LongPredicate $$0, Supplier<bma> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   evd(eut $$0) {
+      this.a = $$0;
    }
 
-   public void a(czk $$0, evb<T> $$1) {
-      long $$2 = $$0.a();
-      this.d.put($$2, $$1);
-      evg<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.e.put($$2, $$3.c());
-      }
-
-      $$1.a(this.j);
+   public double b(it.a $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
    }
 
-   public void a(czk $$0) {
-      long $$1 = $$0.a();
-      evb<T> $$2 = (evb<T>)this.d.remove($$1);
-      this.e.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
-      }
+   public double c(it.a $$0) {
+      int $$1 = this.a.b($$0);
+      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
    }
 
-   @Override
-   public void a(evg<T> $$0) {
-      long $$1 = czk.a($$0.b());
-      evb<T> $$2 = (evb<T>)this.d.get($$1);
-      if ($$2 == null) {
-         ac.b(new IllegalStateException("Trying to schedule tick in not loaded position " + $$0.b()));
+   public euf a() {
+      if (this.c()) {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
       } else {
-         $$2.a($$0);
+         return new euf(this.b(it.a.a), this.b(it.a.b), this.b(it.a.c), this.c(it.a.a), this.c(it.a.b), this.c(it.a.c));
       }
    }
 
-   public void a(long $$0, int $$1, BiConsumer<in, T> $$2) {
-      bma $$3 = this.c.get();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.g.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
+   public evd b() {
+      return this.c() ? eva.a() : eva.a(this.b(it.a.a), this.b(it.a.b), this.b(it.a.c), this.c(it.a.a), this.c(it.a.b), this.c(it.a.c));
    }
 
-   private void a(long $$0, int $$1, bma $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.f.size());
-      this.a($$0, $$1);
-      this.b();
+   protected double a(it.a $$0, int $$1) {
+      return this.a($$0).getDouble($$1);
    }
 
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
+   protected abstract DoubleList a(it.a var1);
 
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            evb<T> $$5 = (evb<T>)this.d.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               evg<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.f.add($$5);
+   public boolean c() {
+      return this.a.a();
+   }
+
+   public evd a(double $$0, double $$1, double $$2) {
+      return (evd)(this.c() ? eva.a() : new eum(this.a, new euz(this.a(it.a.a), $$0), new euz(this.a(it.a.b), $$1), new euz(this.a(it.a.c), $$2)));
+   }
+
+   public evd d() {
+      evd[] $$0 = new evd[]{eva.a()};
+      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = eva.b($$0[0], eva.a($$1, $$2, $$3, $$4, $$5, $$6), euo.o));
+      return $$0[0];
+   }
+
+   public void a(eva.a $$0) {
+      this.a
+         .a(
+            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
+                  this.a(it.a.a, $$1), this.a(it.a.b, $$2), this.a(it.a.c, $$3), this.a(it.a.a, $$4), this.a(it.a.b, $$5), this.a(it.a.c, $$6)
+               ),
+            true
+         );
+   }
+
+   public void b(eva.a $$0) {
+      DoubleList $$1 = this.a(it.a.a);
+      DoubleList $$2 = this.a(it.a.b);
+      DoubleList $$3 = this.a(it.a.c);
+      this.a
+         .b(
+            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
+                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
+               ),
+            true
+         );
+   }
+
+   public List<euf> e() {
+      List<euf> $$0 = Lists.newArrayList();
+      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new euf($$1, $$2, $$3, $$4, $$5, $$6)));
+      return $$0;
+   }
+
+   public double a(it.a $$0, double $$1, double $$2) {
+      it.a $$3 = il.b.a($$0);
+      it.a $$4 = il.c.a($$0);
+      int $$5 = this.a($$3, $$1);
+      int $$6 = this.a($$4, $$2);
+      int $$7 = this.a.a($$0, $$5, $$6);
+      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
+   }
+
+   public double b(it.a $$0, double $$1, double $$2) {
+      it.a $$3 = il.b.a($$0);
+      it.a $$4 = il.c.a($$0);
+      int $$5 = this.a($$3, $$1);
+      int $$6 = this.a($$4, $$2);
+      int $$7 = this.a.b($$0, $$5, $$6);
+      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
+   }
+
+   protected int a(it.a $$0, double $$1) {
+      return ayd.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
+   }
+
+   @Nullable
+   public eug a(euk $$0, euk $$1, io $$2) {
+      if (this.c()) {
+         return null;
+      } else {
+         euk $$3 = $$1.d($$0);
+         if ($$3.g() < 1.0E-7) {
+            return null;
+         } else {
+            euk $$4 = $$0.e($$3.a(0.001));
+            return this.a.e(this.a(it.a.a, $$4.c - (double)$$2.u()), this.a(it.a.b, $$4.d - (double)$$2.v()), this.a(it.a.c, $$4.e - (double)$$2.w()))
+               ? new eug($$4, it.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
+               : euf.a(this.e(), $$0, $$1, $$2);
+         }
+      }
+   }
+
+   public Optional<euk> a(euk $$0) {
+      if (this.c()) {
+         return Optional.empty();
+      } else {
+         euk[] $$1 = new euk[1];
+         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
+            double $$8 = ayd.a($$0.a(), $$2, $$5);
+            double $$9 = ayd.a($$0.b(), $$3, $$6);
+            double $$10 = ayd.a($$0.c(), $$4, $$7);
+            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
+               $$1[0] = new euk($$8, $$9, $$10);
+            }
+         });
+         return Optional.of($$1[0]);
+      }
+   }
+
+   public evd a(it $$0) {
+      if (!this.c() && this != eva.b()) {
+         if (this.b != null) {
+            evd $$1 = this.b[$$0.ordinal()];
+            if ($$1 != null) {
+               return $$1;
+            }
+         } else {
+            this.b = new evd[6];
+         }
+
+         evd $$2 = this.b($$0);
+         this.b[$$0.ordinal()] = $$2;
+         return $$2;
+      } else {
+         return this;
+      }
+   }
+
+   private evd b(it $$0) {
+      it.a $$1 = $$0.o();
+      DoubleList $$2 = this.a($$1);
+      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
+         return this;
+      } else {
+         it.b $$3 = $$0.f();
+         int $$4 = this.a($$1, $$3 == it.b.a ? 0.9999999 : 1.0E-7);
+         return new evb(this, $$1, $$4);
+      }
+   }
+
+   public double a(it.a $$0, euf $$1, double $$2) {
+      return this.a(il.a($$0, it.a.a), $$1, $$2);
+   }
+
+   protected double a(il $$0, euf $$1, double $$2) {
+      if (this.c()) {
+         return $$2;
+      } else if (Math.abs($$2) < 1.0E-7) {
+         return 0.0;
+      } else {
+         il $$3 = $$0.a();
+         it.a $$4 = $$3.a(it.a.a);
+         it.a $$5 = $$3.a(it.a.b);
+         it.a $$6 = $$3.a(it.a.c);
+         double $$7 = $$1.b($$4);
+         double $$8 = $$1.a($$4);
+         int $$9 = this.a($$4, $$8 + 1.0E-7);
+         int $$10 = this.a($$4, $$7 - 1.0E-7);
+         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
+         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
+         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
+         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
+         int $$15 = this.a.c($$4);
+         if ($$2 > 0.0) {
+            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
+               for (int $$17 = $$11; $$17 < $$12; $$17++) {
+                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
+                     if (this.a.a($$3, $$16, $$17, $$18)) {
+                        double $$19 = this.a($$4, $$16) - $$7;
+                        if ($$19 >= -1.0E-7) {
+                           $$2 = Math.min($$2, $$19);
+                        }
+
+                        return $$2;
+                     }
+                  }
+               }
+            }
+         } else if ($$2 < 0.0) {
+            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
+               for (int $$21 = $$11; $$21 < $$12; $$21++) {
+                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
+                     if (this.a.a($$3, $$20, $$21, $$22)) {
+                        double $$23 = this.a($$4, $$20 + 1) - $$8;
+                        if ($$23 <= 1.0E-7) {
+                           $$2 = Math.max($$2, $$23);
+                        }
+
+                        return $$2;
+                     }
+                  }
                }
             }
          }
+
+         return $$2;
       }
-   }
-
-   private void a(long $$0, int $$1) {
-      evb<T> $$2;
-      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
-         evg<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.f, $$2, $$0, $$1);
-         evg<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.f.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
-      }
-   }
-
-   private void b() {
-      for (evb<T> $$0 : this.f) {
-         this.b($$0.b());
-      }
-   }
-
-   private void b(evg<T> $$0) {
-      this.e.put(czk.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<evb<T>> $$0, evb<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         evb<T> $$4 = $$0.peek();
-         evg<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            evg<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && evg.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(evg<T> $$0) {
-      this.g.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.g.size() < $$0;
-   }
-
-   private void a(BiConsumer<in, T> $$0) {
-      while (!this.g.isEmpty()) {
-         evg<T> $$1 = this.g.poll();
-         if (!this.i.isEmpty()) {
-            this.i.remove($$1);
-         }
-
-         this.h.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.g.clear();
-      this.f.clear();
-      this.h.clear();
-      this.i.clear();
    }
 
    @Override
-   public boolean a(in $$0, T $$1) {
-      evb<T> $$2 = (evb<T>)this.d.get(czk.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(in $$0, T $$1) {
-      this.d();
-      return this.i.contains(evg.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.i.isEmpty() && !this.g.isEmpty()) {
-         this.i.addAll(this.g);
-      }
-   }
-
-   private void a(egh $$0, evd.a<T> $$1) {
-      int $$2 = jp.a((double)$$0.h());
-      int $$3 = jp.a((double)$$0.j());
-      int $$4 = jp.a((double)$$0.k());
-      int $$5 = jp.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = czk.c($$6, $$7);
-            evb<T> $$9 = (evb<T>)this.d.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
-      }
-   }
-
-   public void a(egh $$0) {
-      Predicate<evg<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         evg<T> $$3 = $$2.b();
-         $$2.a($$1);
-         evg<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.e.remove($$1x);
-            }
-         }
-      });
-      this.h.removeIf($$1);
-      this.g.removeIf($$1);
-   }
-
-   public void a(egh $$0, jr $$1) {
-      this.a(this, $$0, $$1);
-   }
-
-   public void a(evd<T> $$0, egh $$1, jr $$2) {
-      List<evg<T>> $$3 = new ArrayList<>();
-      Predicate<evg<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.h.stream().filter($$4).forEach($$3::add);
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(evg::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new evg<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
-   }
-
-   @Override
-   public int a() {
-      return this.d.values().stream().mapToInt(evi::a).sum();
-   }
-
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, evb<T> var3);
+   public String toString() {
+      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
    }
 }

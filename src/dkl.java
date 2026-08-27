@@ -1,49 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dkl extends dbz {
-   public static final MapCodec<dkl> c = b(dkl::new);
+public enum dkl implements ayx {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dkl> a() {
-      return c;
+   public static final Codec<dkl> e = ayx.a(dkl::values);
+   private final String f;
+   private final h g;
+
+   private dkl(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dkl(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new doz($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
-      return a($$0, $$2, dno.B);
-   }
-
-   @Override
-   protected void a(dad $$0, in $$1, clh $$2) {
-      dnm $$3 = $$0.c_($$1);
-      if ($$3 instanceof doz) {
-         $$2.a((bpq)$$3);
-         $$2.a(avm.at);
+   public dkl a(dkl $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Override
-   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avc.xW, avd.e, 1.0F, 1.0F, false);
+   public h a() {
+      return this.g;
+   }
+
+   public it a(it $$0) {
+      if ($$0.o() == it.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
-
-         $$1.a(kx.ab, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dkl a(ayk $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dkl> b(ayk $$0) {
+      return ac.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

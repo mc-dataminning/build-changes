@@ -1,38 +1,70 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Set;
 
-public class epr extends epw {
-   public static final Codec<epr> a = RecordCodecBuilder.create($$0 -> a($$0).and(eol.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, epr::new));
-   private final eol.b b;
+public class epr extends epo {
+   public static final MapCodec<epr> a = a(epr::new);
 
-   public epr(List<erq> $$0, eol.b $$1) {
-      super($$0);
-      this.b = $$1;
+   epr(List<epv> $$0, List<esl> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public epy b() {
-      return epz.y;
+   public epw a() {
+      return ept.i;
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return ImmutableSet.of(this.b.a());
+   protected epn a(List<? extends epn> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (epn)$$0.get(0);
+         case 2 -> {
+            epn $$1 = $$0.get(0);
+            epn $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (epn $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      if ($$0.a(ctc.un) && $$1.c(this.b.a()) instanceof clh $$2) {
-         $$0.b(ka.S, new cvz($$2.fZ()));
+   public static epr.a a(epv.a<?>... $$0) {
+      return new epr.a($$0);
+   }
+
+   public static class a extends epv.a<epr.a> {
+      private final Builder<epv> a = ImmutableList.builder();
+
+      public a(epv.a<?>... $$0) {
+         for (epv.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
+      protected epr.a a() {
+         return this;
+      }
 
-   public static epw.a<?> a(eol.b $$0) {
-      return a($$1 -> new epr($$1, $$0));
+      @Override
+      public epr.a b(epv.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public epv b() {
+         return new epr(this.a.build(), this.f());
+      }
    }
 }

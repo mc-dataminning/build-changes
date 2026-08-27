@@ -1,208 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class fhi extends fgy implements fgh, fiy {
-   private static final int a = -1;
-   private static final int b = 400;
-   private static final int c = 24;
-   private static final int d = 14;
-   private static final wu e = wu.c("narration.tab_navigation.usage");
-   private final fiv f = fiv.e();
-   private int g;
-   private final fhh h;
-   private final ImmutableList<fhg> i;
-   private final ImmutableList<fgn> j;
+public class fhi extends ffx {
+   private static final fhm a = new fhm(
+      new akm("widget/tab_selected"), new akm("widget/tab"), new akm("widget/tab_selected_highlighted"), new akm("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fic m;
+   private final fib n;
 
-   fhi(int $$0, fhh $$1, Iterable<fhg> $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = ImmutableList.copyOf($$2);
-      this.f.c().b();
-      Builder<fgn> $$3 = ImmutableList.builder();
-
-      for (fhg $$4 : $$2) {
-         $$3.add(this.f.a(new fgn($$1, $$4, 0, 24)));
-      }
-
-      this.j = $$3.build();
-   }
-
-   public static fhi.a a(fhh $$0, int $$1) {
-      return new fhi.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
+   public fhi(fic $$0, fib $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (this.aH_() != null) {
-         this.aH_().a($$0);
-      }
-   }
-
-   @Override
-   public void a(@Nullable fha $$0) {
-      super.a($$0);
-      if ($$0 instanceof fgn $$1) {
-         this.h.a($$1.a(), true);
-      }
-   }
-
-   @Nullable
-   @Override
-   public feo a(fjg $$0) {
-      if (!this.aI_()) {
-         fgn $$1 = this.d();
-         if ($$1 != null) {
-            return feo.a(this, feo.a($$1));
-         }
-      }
-
-      return $$0 instanceof fjg.c ? null : super.a($$0);
-   }
-
-   @Override
-   public List<? extends fha> aE_() {
-      return this.j;
-   }
-
-   @Override
-   public fiy.a t() {
-      return this.j.stream().map(ffc::t).max(Comparator.naturalOrder()).orElse(fiy.a.a);
-   }
-
-   @Override
-   public void b(fja $$0) {
-      Optional<fgn> $$1 = this.j.stream().filter(ffc::z).findFirst().or(() -> Optional.ofNullable(this.d()));
-      $$1.ifPresent($$1x -> {
-         this.a($$0.a(), $$1x);
-         $$1x.b($$0);
-      });
-      if (this.aI_()) {
-         $$0.a(fiz.d, e);
-      }
-   }
-
-   protected void a(fja $$0, fgn $$1) {
-      if (this.i.size() > 1) {
-         int $$2 = this.j.indexOf($$1);
-         if ($$2 != -1) {
-            $$0.a(fiz.b, wu.a("narrator.position.tab", $$2 + 1, this.i.size()));
-         }
-      }
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
       RenderSystem.enableBlend();
-      $$0.a(fld.h, 0, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, ((fgn)this.j.get(0)).C(), 2, 32, 2);
-      int $$4 = ((fgn)this.j.get(this.j.size() - 1)).E();
-      $$0.a(fld.h, $$4, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
       RenderSystem.disableBlend();
-      UnmodifiableIterator var6 = this.j.iterator();
-
-      while (var6.hasNext()) {
-         fgn $$5 = (fgn)var6.next();
-         $$5.a($$0, $$1, $$2, $$3);
+      ffk $$4 = fdz.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
+         this.b($$0, $$4, $$5);
       }
+   }
+
+   protected void a(ffm $$0, int $$1, int $$2, int $$3, int $$4) {
+      fly.a($$0, fly.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(ffm $$0, ffk $$1, int $$2) {
+      int $$3 = this.C() + 1;
+      int $$4 = this.D() + (this.b() ? 0 : 3);
+      int $$5 = this.C() + this.x() - 1;
+      int $$6 = this.D() + this.v();
+      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(ffm $$0, ffk $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
+      int $$4 = this.C() + (this.x() - $$3) / 2;
+      int $$5 = this.D() + this.v() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   public fjk G() {
-      return this.f.G();
+   protected void a(fjv $$0) {
+      $$0.a(fju.a, wx.a("gui.narrate.tab", this.n.a()));
    }
 
-   public void b() {
-      int $$0 = Math.min(400, this.g) - 28;
-      int $$1 = axz.d($$0 / this.i.size(), 2);
-      UnmodifiableIterator var3 = this.j.iterator();
-
-      while (var3.hasNext()) {
-         fgn $$2 = (fgn)var3.next();
-         $$2.k($$1);
-      }
-
-      this.f.a();
-      this.f.m(axz.d((this.g - $$0) / 2, 2));
-      this.f.n(0);
+   @Override
+   public void a(gsn $$0) {
    }
 
-   public void a(int $$0, boolean $$1) {
-      if (this.aI_()) {
-         this.a((fha)this.j.get($$0));
-      } else {
-         this.h.a((fhg)this.i.get($$0), $$1);
-      }
+   public fib a() {
+      return this.n;
    }
 
-   public boolean b(int $$0) {
-      if (fld.r()) {
-         int $$1 = this.c($$0);
-         if ($$1 != -1) {
-            this.a(axz.a($$1, 0, this.i.size() - 1), true);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private int c(int $$0) {
-      if ($$0 >= 49 && $$0 <= 57) {
-         return $$0 - 49;
-      } else {
-         if ($$0 == 258) {
-            int $$1 = this.c();
-            if ($$1 != -1) {
-               int $$2 = fld.s() ? $$1 - 1 : $$1 + 1;
-               return Math.floorMod($$2, this.i.size());
-            }
-         }
-
-         return -1;
-      }
-   }
-
-   private int c() {
-      fhg $$0 = this.h.a();
-      int $$1 = this.i.indexOf($$0);
-      return $$1 != -1 ? $$1 : -1;
-   }
-
-   @Nullable
-   private fgn d() {
-      int $$0 = this.c();
-      return $$0 != -1 ? (fgn)this.j.get($$0) : null;
-   }
-
-   public static class a {
-      private final int a;
-      private final fhh b;
-      private final List<fhg> c = new ArrayList<>();
-
-      a(fhh $$0, int $$1) {
-         this.b = $$0;
-         this.a = $$1;
-      }
-
-      public fhi.a a(fhg... $$0) {
-         Collections.addAll(this.c, $$0);
-         return this;
-      }
-
-      public fhi a() {
-         return new fhi(this.a, this.b, this.c);
-      }
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

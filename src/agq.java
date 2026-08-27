@@ -1,20 +1,23 @@
-public record agq(bkn b) implements zb<afz> {
-   public static final ys<vu, agq> a = zb.a(agq::a, agq::new);
+import io.netty.buffer.ByteBuf;
 
-   private agq(vu $$0) {
-      this($$0.b(bkn.class));
-   }
+public class agq implements ze<agd> {
+   public static final agq a = new agq();
+   public static final yv<ByteBuf, agq> b = yv.a(a);
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private agq() {
    }
 
    @Override
-   public zd<agq> a() {
-      return afx.bt;
+   public zg<agq> a() {
+      return agb.bp;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

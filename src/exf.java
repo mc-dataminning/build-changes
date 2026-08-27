@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@evq
-@evp
-interface exf {
+public class exf extends exe {
+   public exf(int $$0, int $$1, boolean $$2, boolean $$3) {
+      super($$2);
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a($$0, $$1, $$3);
+   }
 }

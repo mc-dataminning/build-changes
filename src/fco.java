@@ -1,30 +1,57 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public enum fco implements ayb {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fco {
+   private static final Map<String, fco.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final akm c = new akm("textures/gui/presets/isles.png");
 
-   private static final IntFunction<fco> d = awq.a(fco::a, values(), awq.a.b);
-   private final int e;
-   private final String f;
-
-   private fco(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static akm a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   private static akm b(String $$0, String $$1) {
+      fco.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         ext $$3 = a($$1);
+         if ($$3 == null) {
+            akm $$4 = gnl.b();
+            a.put($$0, new fco.a($$1, $$4));
+            return $$4;
+         } else {
+            akm $$5 = new akm("realms", "dynamic/" + $$0);
+            fdz.Q().aa().a($$5, new gni($$3));
+            a.put($$0, new fco.a($$1, $$5));
+            return $$5;
+         }
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   @Nullable
+   private static ext a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return ext.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
    }
 
-   public static fco a(int $$0) {
-      return d.apply($$0);
+   public static record a(String a, akm b) {
    }
 }

@@ -5,22 +5,22 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               csz.a.fieldOf("icon").forGetter(ar::c),
-               ww.a.fieldOf("title").forGetter(ar::a),
-               ww.a.fieldOf("description").forGetter(ar::b),
-               axh.a(akh.a, "background").forGetter(ar::d),
-               axh.a(al.d, "frame", al.a).forGetter(ar::e),
-               axh.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
-               axh.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
-               axh.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
+               cto.a.fieldOf("icon").forGetter(ar::c),
+               wz.a.fieldOf("title").forGetter(ar::a),
+               wz.a.fieldOf("description").forGetter(ar::b),
+               akm.a.optionalFieldOf("background").forGetter(ar::d),
+               al.d.optionalFieldOf("frame", al.a).forGetter(ar::e),
+               Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(ar::h),
+               Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(ar::i),
+               Codec.BOOL.optionalFieldOf("hidden", false).forGetter(ar::j)
             )
             .apply($$0, ar::new)
    );
-   public static final ys<wf, ar> b = ys.a(ar::a, ar::b);
-   private final wu c;
-   private final wu d;
-   private final csz e;
-   private final Optional<akh> f;
+   public static final yv<wi, ar> b = yv.a(ar::a, ar::b);
+   private final wx c;
+   private final wx d;
+   private final cto e;
+   private final Optional<akm> f;
    private final al g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(csz $$0, wu $$1, wu $$2, Optional<akh> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cto $$0, wx $$1, wx $$2, Optional<akm> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class ar {
       this.l = $$1;
    }
 
-   public wu a() {
+   public wx a() {
       return this.c;
    }
 
-   public wu b() {
+   public wx b() {
       return this.d;
    }
 
-   public csz c() {
+   public cto c() {
       return this.e;
    }
 
-   public Optional<akh> d() {
+   public Optional<akm> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class ar {
       return this.j;
    }
 
-   private void a(wf $$0) {
-      ww.d.encode($$0, this.c);
-      ww.d.encode($$0, this.d);
-      csz.f.encode($$0, this.e);
+   private void a(wi $$0) {
+      wz.d.encode($$0, this.c);
+      wz.d.encode($$0, this.d);
+      cto.f.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class ar {
       $$0.a(this.l);
    }
 
-   private static ar b(wf $$0) {
-      wu $$1 = ww.d.decode($$0);
-      wu $$2 = ww.d.decode($$0);
-      csz $$3 = csz.f.decode($$0);
+   private static ar b(wi $$0) {
+      wx $$1 = wz.d.decode($$0);
+      wx $$2 = wz.d.decode($$0);
+      cto $$3 = cto.f.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
-      Optional<akh> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<akm> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       ar $$9 = new ar($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

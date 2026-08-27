@@ -1,47 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface gqm {
-   akh a();
-
-   @Nullable
-   grr a(grq var1);
-
-   gqj b();
-
-   avd c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gqm.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static ayg t() {
-      return ayg.a();
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
+   void a(Map<UUID, asd.c> var1, Consumer<asd.b> var2);
 }

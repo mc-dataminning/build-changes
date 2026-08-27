@@ -1,51 +1,201 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public record eni(in c, crs d, Optional<wu> e) {
-   public static final Codec<eni> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               in.a.fieldOf("pos").forGetter(eni::c), crs.q.optionalFieldOf("color", crs.a).forGetter(eni::d), ww.g.optionalFieldOf("name").forGetter(eni::e)
-            )
-            .apply($$0, eni::new)
-   );
-   public static final Codec<List<eni>> b = a.listOf();
+public class eni {
+   private final List<eng> a;
+   @Nullable
+   private eni.a b;
+   private int c;
+   private final io d;
+   private final float e;
+   private final boolean f;
+
+   public eni(List<eng> $$0, io $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
 
    @Nullable
-   public static eni a(czj $$0, in $$1) {
-      if ($$0.c_($$1) instanceof dnb $$3) {
-         crs $$4 = $$3.f();
-         Optional<wu> $$5 = Optional.ofNullable($$3.af());
-         return new eni($$1, $$4, $$5);
-      } else {
-         return null;
+   public eng d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public eng a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   public iw<enk> a() {
-      return switch (this.d) {
-         case a -> enl.k;
-         case b -> enl.l;
-         case c -> enl.m;
-         case d -> enl.n;
-         case e -> enl.o;
-         case f -> enl.p;
-         case g -> enl.q;
-         case h -> enl.r;
-         case i -> enl.s;
-         case j -> enl.t;
-         case k -> enl.u;
-         case l -> enl.v;
-         case m -> enl.w;
-         case n -> enl.x;
-         case o -> enl.y;
-         case p -> enl.z;
-      };
+   public void a(int $$0, eng $$1) {
+      this.a.set($$0, $$1);
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public euk a(bru $$0, int $$1) {
+      eng $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dj() + 1.0F)) * 0.5;
+      return new euk($$3, $$4, $$5);
+   }
+
+   public io d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public euk a(bru $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public io g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eng h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eng i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eni $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eng $$2 = this.a.get($$1);
+            eng $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @azg
+   void a(eng[] $$0, eng[] $$1, Set<enp> $$2) {
+      this.b = new eni.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eni.a k() {
+      return this.b;
+   }
+
+   public void a(vx $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static eni b(vx $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      io $$3 = $$0.e();
+      List<eng> $$4 = $$0.a(eng::b);
+      eni.a $$5 = eni.a.b($$0);
+      eni $$6 = new eni($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public io l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eng[] c(vx $$0) {
+      eng[] $$1 = new eng[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eng.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(vx $$0, eng[] $$1) {
+      $$0.c($$1.length);
+
+      for (eng $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eni n() {
+      eni $$0 = new eni(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eng[] a, eng[] b, Set<enp> c) {
+
+      public void a(vx $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eni.a($$0, this.a);
+         eni.a($$0, this.b);
+      }
+
+      public static eni.a b(vx $$0) {
+         HashSet<enp> $$1 = $$0.a(HashSet::new, enp::c);
+         eng[] $$2 = eni.c($$0);
+         eng[] $$3 = eni.c($$0);
+         return new eni.a($$2, $$3, $$1);
+      }
    }
 }

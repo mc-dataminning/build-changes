@@ -1,63 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cgj extends brh {
-   public final cgl b;
-   public final String c;
-   private final brk d;
-
-   public cgj(cgl $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dN());
-      this.d = brk.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+public class cgj extends cgh {
+   public cgj(bsa<? extends cgj> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ajq.a $$0) {
+   protected avg v() {
+      return avh.hf;
    }
 
    @Override
-   protected void a(ua $$0) {
+   protected avg gN() {
+      return avh.hg;
    }
 
    @Override
-   protected void b(ua $$0) {
-   }
-
-   @Override
-   public boolean bx() {
-      return true;
+   protected avg o_() {
+      return avh.hi;
    }
 
    @Nullable
    @Override
-   public csz dA() {
-      return this.b.dA();
+   protected avg gw() {
+      return avh.hj;
    }
 
    @Override
-   public boolean a(bqf $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   protected avg d(bqn $$0) {
+      return avh.hk;
    }
 
    @Override
-   public boolean t(brh $$0) {
-      return this == $$0 || this.b == $$0;
+   public boolean a(cee $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cgj) && !($$0 instanceof cgk) ? false : this.gW() && ((cgi)$$0).gW();
+      }
    }
 
    @Override
-   public zb<abm> dj() {
-      throw new UnsupportedOperationException();
+   protected void gV() {
+      this.a(avh.hl, 0.4F, 1.0F);
    }
 
+   @Nullable
    @Override
-   public brk a(bsl $$0) {
-      return this.d;
-   }
+   public bro a(aqm $$0, bro $$1) {
+      bsa<? extends cgi> $$2 = $$1 instanceof cgk ? bsa.at : bsa.z;
+      cgi $$3 = $$2.a((dax)$$0);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
 
-   @Override
-   public boolean dL() {
-      return false;
+      return $$3;
    }
 }

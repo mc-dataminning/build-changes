@@ -1,129 +1,104 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ded extends dke {
-   public static final MapCodec<ded> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dru.a.fieldOf("wood_type").forGetter(dke::d), u()).apply($$0, ded::new));
-   public static final drh b = dqx.ba;
-   public static final dqy c = dqx.a;
-   protected static final float d = 5.0F;
-   protected static final eui e = dde.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, eui> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         dde.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         dde.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         dde.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         dde.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
+public class ded extends ddk implements dgt {
+   public static final MapCodec<ded> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               le.e.q().fieldOf("turns_into").forGetter(ded::b),
+               le.b.q().fieldOf("brush_sound").forGetter(ded::c),
+               le.b.q().fieldOf("brush_comleted_sound").forGetter(ded::d),
+               u()
+            )
+            .apply($$0, ded::new)
    );
+   private static final dsb c = drr.bv;
+   public static final int b = 2;
+   private final ddy d;
+   private final avg e;
+   private final avg f;
 
    @Override
    public MapCodec<ded> a() {
       return a;
    }
 
-   public ded(dru $$0, dqg.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   public ded(ddy $$0, avg $$1, avg $$2, dra.d $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected bpo a(csz $$0, dqh $$1, dad $$2, in $$3, clh $$4, bpl $$5, etl $$6) {
-      if ($$2.c_($$3) instanceof dow $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return bpo.e;
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public dke a_(drb $$0) {
+      return dke.c;
+   }
+
+   @Override
+   public void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      $$1.a($$2, this, 2);
+   }
+
+   @Override
+   public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      $$3.a($$4, this, 2);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if ($$1.c_($$2) instanceof dok $$4) {
+         $$4.b();
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(clh $$0, etl $$1, dow $$2, csz $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.f() instanceof csm && $$1.b().equals(is.a);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return $$1.a_($$2.c()).a($$1, $$2.c(), is.a, dlf.b);
+      if (dgu.m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
+         cif $$5 = cif.a($$1, $$2, $$0);
+         $$5.s();
+      }
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      dad $$1 = $$0.q();
-      ema $$2 = $$1.b_($$0.a());
-      in $$3 = $$0.a().c();
-      dqh $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(avr.aA);
-      is $$6 = is.a((double)$$0.i());
-      boolean $$7 = !dde.a($$4.k($$1, $$3), is.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dmd.b)) {
-            is $$8 = $$4.c(dmd.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<is> $$9 = drn.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
+   public void a(dax $$0, io $$1, cif $$2) {
+      euk $$3 = $$2.cK().f();
+      $$0.c(2001, io.a($$3), ddy.i($$2.u()));
+      $$0.a($$2, dvu.f, $$3);
+   }
+
+   @Override
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      if ($$3.a(16) == 0) {
+         io $$4 = $$2.d();
+         if (dgu.m($$1.a_($$4))) {
+            double $$5 = (double)$$2.u() + $$3.j();
+            double $$6 = (double)$$2.v() - 0.05;
+            double $$7 = (double)$$2.w() + $$3.j();
+            $$1.a(new kp(ky.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
          }
       }
-
-      int $$10 = !$$7 ? drn.a($$6.g()) : drn.a($$0.i() + 180.0F);
-      return this.n().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == emb.c));
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      eui $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
-   }
-
-   @Override
-   protected eui b_(dqh $$0, czj $$1, in $$2) {
-      return this.a($$0, $$1, $$2, etu.a());
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return $$1 == is.b && !this.a($$0, $$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(dqh $$0) {
-      return drn.b($$0.c(b));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b, c, f);
-   }
-
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new doj($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
-      return a($$2, dno.i, dow::a);
+   public dog a(io $$0, drb $$1) {
+      return new dok($$0, $$1);
+   }
+
+   public ddy b() {
+      return this.d;
+   }
+
+   public avg c() {
+      return this.e;
+   }
+
+   public avg d() {
+      return this.f;
    }
 }

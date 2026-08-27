@@ -1,140 +1,159 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public class elu extends elo<elu.a> {
-   protected elu(dsq $$0) {
-      super(dam.a, $$0, new elu.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class elu implements dwm.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<elu> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, elu::a)
+   );
+   public static final axx<elu> a = axx.a(f);
+   private final ely g;
+   private final ely h;
+   private final ely i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
+
+   public static elu a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new elu(new dxu(0L), $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private elu(ely $$0, ely $$1, ely $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
+   }
+
+   @VisibleForTesting
+   public elu(ayk $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         ely.a($$0, IntStream.rangeClosed(-15, 0)),
+         ely.a($$0, IntStream.rangeClosed(-15, 0)),
+         ely.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
+   }
+
+   public elu a(ayk $$0) {
+      return new elu($$0, this.p, this.q, this.l, this.m, this.n);
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
-   }
+   public double a(dwm.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = jp.e($$0);
-      int $$3 = jp.c($$2);
-      elu.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(jp.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dsi $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = in.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         elv $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(ely.b($$4 * $$13), ely.b($$5 * $$13), ely.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
+         }
 
-               $$2 = jp.a($$2, is.b);
+         $$13 /= 2.0;
+      }
+
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
+
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = ely.b($$1 * $$13);
+         double $$21 = ely.b($$2 * $$13);
+         double $$22 = ely.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            elv $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
 
-         return $$6.a(jp.b(in.a($$0)), jp.b(in.b($$0)), jp.b(in.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void h(long $$0) {
-      int $$1 = jp.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = jp.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = jp.f($$0);
-      int $$2 = jp.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jp.a($$3, is.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
-   }
-
-   @Override
-   protected dsi g(long $$0) {
-      dsi $$1 = (dsi)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(jp.f($$0));
-         if ($$2 != this.d.b && jp.c($$0) < $$2) {
-            long $$3 = jp.a($$0, is.b);
-
-            dsi $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = jp.a($$3, is.b);
+         if (!$$18) {
+            elv $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dsi(15) : new dsi();
-         }
-      }
-   }
-
-   private static dsi a(dsi $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
          }
 
-         return new dsi($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean l(long $$0) {
-      long $$1 = jp.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || jp.c($$0) >= $$2;
-   }
-
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends ell<elu.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<dsi> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
+         $$13 /= 2.0;
       }
 
-      public elu.a a() {
-         return new elu.a(this.a.clone(), this.c.clone(), this.b);
-      }
+      return ayd.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
+   }
+
+   @Override
+   public double a() {
+      return -this.b();
+   }
+
+   @Override
+   public double b() {
+      return this.o;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
+
+   @Override
+   public axx<? extends dwm> c() {
+      return a;
    }
 }

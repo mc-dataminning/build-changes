@@ -1,22 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bwx {
-   private static final int a = 36;
-
-   public static btt<bsa> a() {
-      return bxf.a(
-         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$0 -> $$0.group($$0.a(cbd.x), $$0.a(cbd.y), $$0.a(cbd.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bsa>a($$2).filter($$1xx -> $$1xx.g((brh)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dQ().a($$4.Z(), $$4.Y());
+   public static bui<bso> a() {
+      return bxu.a(
+         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$0 -> $$0.group($$0.b(cbs.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bso $$1xx ? $$1xx : null)
+                           .filter(bso::eB)
+                           .filter($$1xx -> $$1xx.ak() != bsa.by || $$2.aa().b(dat.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
                      }
-
-                     return true;
-                  }))
+               ))
       );
    }
 }

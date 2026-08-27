@@ -1,83 +1,66 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-public class bkt<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
+public class bkt {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final auj c;
+   private final EnumMap<bkv, Map<aqn, bkt.b>> d;
+   private final Queue<bkt.a> e = new LinkedList<>();
 
-   public bkt(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public bkt(auj $$0) {
+      this.c = $$0;
+      this.d = new EnumMap<>(bkv.class);
 
-   public static <T> bkt<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bkt<>($$0, $$2);
-   }
-
-   public void a(T $$0) throws IOException, JsonIOException {
-      JsonElement $$1 = ac.a(this.b.encodeStart(JsonOps.INSTANCE, $$0), IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, $$2);
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public bku<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      } else {
-         this.d.incrementAndGet();
-         final bku<T> $$0 = bku.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bku<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bkt.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bkt.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               bkt.this.b();
-            }
-         };
+      for (bkv $$1 : bkv.values()) {
+         this.d.put($$1, Maps.newHashMap());
       }
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b();
+   public boolean a(bkv $$0) {
+      return !this.d.get($$0).isEmpty();
    }
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+   public void a(acr $$0) {
+      for (aqn $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.d.b($$0);
       }
+   }
+
+   public void a(aqn $$0, bkv $$1) {
+      if (this.c.f($$0.gb())) {
+         this.e.add(new bkt.a($$0, $$1));
+      }
+   }
+
+   public void a(int $$0) {
+      long $$1 = ac.c();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (bkt.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new bkt.b($$0, $$1));
+      }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<aqn, bkt.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((aqn)$$2x.getKey()).gb());
+            bkt.b $$4 = (bkt.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(aqn a, bkv b) {
+   }
+
+   static record b(long a, int b) {
    }
 }

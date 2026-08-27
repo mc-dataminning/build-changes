@@ -1,185 +1,58 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class flo {
-   private final fde a;
-   private final fls b;
-   private final flp c;
-   private final int d;
-   private final ag e;
-   private final ar f;
-   private final csz g;
-   private final wu h;
-   private final flq i;
-   private final Map<af, flq> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public flo(fde $$0, fls $$1, flp $$2, int $$3, ag $$4, ar $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new flq(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
-   }
-
-   public flp a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public wu d() {
-      return this.h;
-   }
-
-   public ar e() {
-      return this.f;
-   }
-
-   public void a(fer $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(fer $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(fer $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      akh $$3 = this.f.d().orElse(gmz.a);
-      int $$4 = axz.a(this.k);
-      int $$5 = axz.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
-   }
-
-   public void a(fer $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, axz.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = axz.a(this.k);
-      int $$7 = axz.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (flq $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = axz.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = axz.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
+public class flo extends fma {
+   private static final wx a = wx.c("options.online.title");
    @Nullable
-   public static flo a(fde $$0, fls $$1, int $$2, ag $$3) {
-      Optional<ar> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (flp $$5 : flp.values()) {
-            if ($$2 < $$5.a()) {
-               return new flo($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
+   private final fec<Unit> u;
 
-            $$2 -= $$5.a();
+   public static flo a(fdz $$0, fly $$1, fed $$2) {
+      List<fec<?>> $$3 = new ArrayList<>();
+      $$3.add($$2.T());
+      $$3.add($$2.U());
+      fec<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            bpr $$1x = $$0x.ak();
+            return new fec<>(
+               "options.difficulty.online",
+               fec.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fec.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
          }
-
-         return null;
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = axz.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
       }
 
-      if (this.p - this.n > 113) {
-         this.l = axz.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      return new flo($$1, $$2, $$3.toArray(new fec[0]), $$4);
+   }
+
+   private flo(fly $$0, fed $$1, fec<?>[] $$2, @Nullable fec<Unit> $$3) {
+      super($$0, $$1, a, $$2);
+      this.u = $$3;
+   }
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      if (this.u != null) {
+         ffx $$0 = this.s.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
       }
-   }
 
-   public void a(ag $$0) {
-      Optional<ar> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         flq $$2 = new flq(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
+      ffx $$1 = this.s.b(this.c.ai());
+      if ($$1 != null) {
+         $$1.j = this.m.D();
       }
-   }
-
-   private void a(flq $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (flq $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public flq a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public fls f() {
-      return this.b;
    }
 }

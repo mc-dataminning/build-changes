@@ -1,70 +1,74 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class era {
-   private final Set<eqz<?>> a;
-   private final Set<eqz<?>> b;
+public class era extends eqq {
+   public static final MapCodec<era> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(le.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ept.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, era::new)
+   );
+   private final ix<doi<?>> b;
+   private final List<epv> c;
 
-   era(Set<eqz<?>> $$0, Set<eqz<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(eqz<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<eqz<?>> a() {
-      return this.a;
-   }
-
-   public Set<eqz<?>> b() {
-      return this.b;
+   era(List<esl> $$0, ix<doi<?>> $$1, List<epv> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public eqs b() {
+      return eqt.s;
    }
 
-   public void a(eor $$0, eom $$1) {
-      Set<eqz<?>> $$2 = $$1.a();
-      Set<eqz<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
+   @Override
+   public cto a(cto $$0, epf $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         jg<cto> $$2 = jg.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(epk.a($$1.d(), $$2::add), $$1)));
+         $$0.b(kb.Z, cwk.a($$2));
+         return $$0;
       }
    }
 
-   public static era.a c() {
-      return new era.a();
+   @Override
+   public void a(epl $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   public static class a {
-      private final Set<eqz<?>> a = Sets.newIdentityHashSet();
-      private final Set<eqz<?>> b = Sets.newIdentityHashSet();
+   public static era.a a(doi<?> $$0) {
+      return new era.a($$0);
+   }
 
-      public era.a a(eqz<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+   public static class a extends eqq.a<era.a> {
+      private final Builder<epv> a = ImmutableList.builder();
+      private final doi<?> b;
+
+      public a(doi<?> $$0) {
+         this.b = $$0;
       }
 
-      public era.a b(eqz<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      protected era.a a() {
+         return this;
       }
 
-      public era a() {
-         return new era(this.a, this.b);
+      public era.a a(epv.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eqr b() {
+         return new era(this.g(), this.b.a(), this.a.build());
       }
    }
 }

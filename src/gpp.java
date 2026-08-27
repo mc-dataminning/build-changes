@@ -1,7 +1,12 @@
+import com.mojang.serialization.Codec;
 import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
 
-public interface gpp {
-   void a(Map<UUID, ary.c> var1, Consumer<ary.b> var2);
+public record gpp(Map<String, gpc> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gpp> b = Codec.unboundedMap(a, gpc.a).xmap(gpp::new, gpp::a);
+   public static final asw<gpp> c = asw.a("language", b);
+
+   public Map<String, gpc> a() {
+      return this.d;
+   }
 }

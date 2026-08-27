@@ -1,45 +1,20 @@
-public class euz {
-   private static final evj<Object> a = new evj<Object>() {
-      @Override
-      public void a(evg<Object> $$0) {
-      }
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-      @Override
-      public boolean a(in $$0, Object $$1) {
-         return false;
-      }
+public class euz extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final evc<Object> b = new evc<Object>() {
-      @Override
-      public void a(evg<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(in $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(in $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> evj<T> a() {
-      return (evj<T>)a;
+   public euz(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static <T> evc<T> b() {
-      return (evc<T>)b;
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
+   }
+
+   public int size() {
+      return this.a.size();
    }
 }

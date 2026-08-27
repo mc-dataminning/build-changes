@@ -1,60 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gsh {
-   private boolean a;
-   @Nullable
-   private gsb.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public class gsh implements gsf {
+   private final gsh.a a;
+   private gsf b;
+   private final BufferedInputStream c;
 
-   public gsh(@Nullable String $$0) {
-      this.d = $$0;
+   public gsh(gsh.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gsh.b(this.c));
    }
 
-   public void a(gsc.a $$0) {
-      if (this.c != null) {
-         $$0.a(gsb.j, !this.c.equals("vanilla"));
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gsh.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      $$0.a(gsb.k, this.a());
+      return $$1;
    }
 
-   private gsb.c a() {
-      fwk $$0 = fde.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gsb.c.a;
-      } else {
-         return fde.Q().U() ? gsb.c.b : gsb.c.c;
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gsf create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
-   }
 
-   public boolean a(gry $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(grz.b, $$0x -> {
-            $$0x.a(gsb.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gsb.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
+      @Override
+      public void close() {
       }
-   }
-
-   public void a(daa $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gsb.b.e : gsb.b.a;
-         case b -> gsb.b.b;
-         case c -> gsb.b.c;
-         case d -> gsb.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
    }
 }

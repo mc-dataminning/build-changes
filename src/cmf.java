@@ -1,49 +1,67 @@
-public class cmf extends cln {
-   private int g = 200;
+import java.util.List;
 
-   public cmf(brn<? extends cmf> $$0, dad $$1) {
+public class cmf extends cmd {
+   public static final float e = 4.0F;
+
+   public cmf(bsa<? extends cmf> $$0, dax $$1) {
       super($$0, $$1);
    }
 
-   public cmf(dad $$0, bsa $$1, csz $$2) {
-      super(brn.aU, $$1, $$0, $$2);
-   }
-
-   public cmf(dad $$0, double $$1, double $$2, double $$3, csz $$4) {
-      super(brn.aU, $$1, $$2, $$3, $$0, $$4);
+   public cmf(dax $$0, bso $$1, double $$2, double $$3, double $$4) {
+      super(bsa.A, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dN().B && !this.b) {
-         this.dN().a(kx.P, this.ds(), this.du(), this.dy(), 0.0, 0.0, 0.0);
+   protected void a(eui $$0) {
+      super.a($$0);
+      if ($$0.c() != eui.a.c || !this.e(((euh)$$0).a())) {
+         if (!this.dP().B) {
+            List<bso> $$1 = this.dP().a(bso.class, this.cK().c(4.0, 2.0, 4.0));
+            brq $$2 = new brq(this.dP(), this.du(), this.dw(), this.dA());
+            bru $$3 = this.s();
+            if ($$3 instanceof bso) {
+               $$2.a((bso)$$3);
+            }
+
+            $$2.a(ky.h);
+            $$2.a(3.0F);
+            $$2.a(600);
+            $$2.c((7.0F - $$2.g()) / (float)$$2.j());
+            $$2.a(new brc(bre.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bso $$4 : $$1) {
+                  double $$5 = this.g($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.du(), $$4.dw(), $$4.dA());
+                     break;
+                  }
+               }
+            }
+
+            this.dP().c(2006, this.dp(), this.aW() ? -1 : 1);
+            this.dP().b($$2);
+            this.ao();
+         }
       }
    }
 
    @Override
-   protected void a(bsa $$0) {
-      super.a($$0);
-      bqt $$1 = new bqt(bqv.x, this.g, 0);
-      $$0.b($$1, this.I());
+   public boolean bz() {
+      return false;
    }
 
    @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.g = $$0.h("Duration");
-      }
+   public boolean a(bqn $$0, float $$1) {
+      return false;
    }
 
    @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.g);
+   protected kw v() {
+      return ky.h;
    }
 
    @Override
-   protected csz x() {
-      return new csz(ctc.vp);
+   protected boolean u() {
+      return false;
    }
 }

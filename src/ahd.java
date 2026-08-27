@@ -1,61 +1,37 @@
-public class ahd implements zb<afz> {
-   public static final ys<vu, ahd> a = zb.a(ahd::a, ahd::new);
-   private final int b;
-   private final ahd.a c;
-   private final int d;
+public class ahd implements ze<agd> {
+   public static final yv<vx, ahd> a = ze.a(ahd::a, ahd::new);
+   private final boolean b;
+   private final boolean c;
 
-   public ahd(brh $$0, ahd.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public ahd(brh $$0, ahd.a $$1, int $$2) {
-      this.b = $$0.aj();
+   public ahd(boolean $$0, boolean $$1) {
+      this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private ahd(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahd.a.class);
-      this.d = $$0.l();
+   private ahd(vx $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.c(this.d);
    }
 
-   @Override
-   public zd<ahd> a() {
-      return afx.bJ;
-   }
-
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Override
+   public zg<ahd> a() {
+      return agb.bF;
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   public ahd.a e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

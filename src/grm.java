@@ -1,56 +1,52 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-
 public class grm {
-   private final atu a;
-   private final Map<akh, CompletableFuture<evx>> b = Maps.newHashMap();
+   public static class a extends gqs {
+      private final gbm n;
 
-   public grm(atu $$0) {
-      this.a = $$0;
-   }
+      protected a(gbm $$0, avg $$1) {
+         super($$1, avi.i, grj.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public CompletableFuture<evx> a(akh $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               evx var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  evv $$2 = new evv($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new evx($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ac.f()));
-   }
-
-   public CompletableFuture<gri> a(akh $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (gri)($$1 ? new grk(evv::new, $$2) : new evv($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+      @Override
+      public void q() {
+         if (this.n.dK() || !this.n.bj()) {
+            this.n();
          }
-      }, ac.f());
+      }
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(evx::b));
-      this.b.clear();
-   }
+   public static class b extends gqs {
+      public static final int n = 40;
+      private final gbm o;
+      private int p;
 
-   public CompletableFuture<?> a(Collection<gqj> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+      public b(gbm $$0) {
+         super(avh.z, avi.i, grj.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dK() && this.p >= 0) {
+            if (this.o.bj()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

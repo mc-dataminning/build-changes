@@ -1,81 +1,21 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class euq implements eup {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private wu g;
-   @Nullable
-   private yk h;
+public class euq extends AbstractDoubleList {
+   private final int a;
 
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   public wu d() {
-      return this.g;
-   }
-
-   public void a(@Nullable wu $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
-   @Override
-   public yk c() {
-      return this.h;
-   }
-
-   public void b(@Nullable yk $$0) {
-      this.h = $$0;
-   }
-
-   public ua a(iy.a $$0) {
-      ua $$1 = new ua();
-      $$1.a("Score", this.e);
-      $$1.a("Locked", this.f);
-      if (this.g != null) {
-         $$1.a("display", wu.a.a(this.g, $$0));
+   euq(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
       }
-
-      if (this.h != null) {
-         ym.b.encodeStart($$0.a(uo.a), this.h).result().ifPresent($$1x -> $$1.a("format", $$1x));
-      }
-
-      return $$1;
    }
 
-   public static euq a(ua $$0, iy.a $$1) {
-      euq $$2 = new euq();
-      $$2.e = $$0.h("Score");
-      $$2.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$2.g = wu.a.a($$0.l("display"), $$1);
-      }
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
 
-      if ($$0.b("format", 10)) {
-         ym.b.parse($$1.a(uo.a), $$0.c("format")).result().ifPresent($$1x -> $$2.h = $$1x);
-      }
-
-      return $$2;
+   public int size() {
+      return this.a + 1;
    }
 }

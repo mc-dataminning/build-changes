@@ -1,30 +1,43 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record esr(eol.b c) implements esu {
-   public static final Codec<esr> a = RecordCodecBuilder.create($$0 -> $$0.group(eol.b.e.fieldOf("target").forGetter(esr::c)).apply($$0, esr::new));
-   public static final Codec<esr> b = eol.b.e.xmap(esr::new, esr::c);
+public record esr(float b, float c) implements esl {
+   public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(esr::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(esr::d)).apply($$0, esr::new)
+   );
 
-   public static esu a(eol.b $$0) {
-      return new esr($$0);
+   @Override
+   public esm b() {
+      return esn.g;
    }
 
    @Override
-   public est a() {
-      return esv.c;
+   public Set<eru<?>> a() {
+      return ImmutableSet.of(erx.d);
    }
 
-   @Nullable
-   @Override
-   public eus a(eol $$0) {
-      return $$0.c(this.c.a());
+   public boolean a(epf $$0) {
+      bru $$1 = $$0.c(erx.d);
+      int $$2 = 0;
+      if ($$1 instanceof bso) {
+         $$2 = cza.h((bso)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   @Override
-   public Set<eqz<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public static esl.a a(float $$0, float $$1) {
+      return () -> new esr($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

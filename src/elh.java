@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface elh {
+public class elh {
+   private final List<elg> a;
+
+   public elh(List<elg> $$0) {
+      this.a = $$0;
+   }
+
+   public List<elg> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
+   }
 }

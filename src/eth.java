@@ -1,103 +1,20 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class eth implements PathMatcher {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<eth.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+public class eth {
+   private static final Codec<etg> g = le.I.q().dispatch(etg::b, etf::a);
+   public static final Codec<etg> a = Codec.lazyInitialized(() -> {
+      Codec<etg> $$0 = Codec.withAlternative(g, etk.a.codec());
+      return Codec.either(ete.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof ete $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final etf b = a("constant", ete.a);
+   public static final etf c = a("uniform", etk.a);
+   public static final etf d = a("binomial", etd.a);
+   public static final etf e = a("score", eti.a);
+   public static final etf f = a("storage", etj.a);
 
-   public eth(List<eth.a> $$0) {
-      this.c = $$0;
-   }
-
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
-         try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
-         } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
-         }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-         };
-      });
-   }
-
-   @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
-   }
-
-   public static eth a(BufferedReader $$0) {
-      return new eth($$0.lines().flatMap($$0x -> eth.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(eth.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
-      }
-
-      static Optional<eth.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new eth.a(eth.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new eth.a(eth.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new eth.a(eth.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
-         }
-      }
-
-      static eth.a b(String $$0) {
-         return new eth.a(eth.b.a, "glob:" + $$0);
-      }
-
-      static eth.a c(String $$0) {
-         return new eth.a(eth.b.a, "regex:" + $$0);
-      }
-
-      static eth.a d(String $$0) {
-         return new eth.a(eth.b.b, $$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      eth.b a = FileSystem::getPathMatcher;
-      eth.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
-
-      PathMatcher compile(FileSystem var1, String var2);
+   private static etf a(String $$0, MapCodec<? extends etg> $$1) {
+      return jk.a(le.I, new akm($$0), new etf($$1));
    }
 }

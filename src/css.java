@@ -1,78 +1,59 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class css extends csu {
-   private final awg<csr> a;
-
-   public css(csu.a $$0, awg<csr> $$1) {
+public class css extends ctj implements cug {
+   public css(ctj.a $$0) {
       super($$0);
-      this.a = $$1;
    }
 
    @Override
-   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<akg<csr>> $$4 = this.j($$0).flatMap(iw::e);
-      if ($$4.isPresent()) {
-         xi $$5 = wu.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
-      }
-   }
-
-   public static csz a(csu $$0, iw<csr> $$1) {
-      csz $$2 = new csz($$0);
-      $$2.b(ka.N, $$1);
-      return $$2;
-   }
-
-   public static void a(csz $$0, awg<csr> $$1, ayg $$2) {
-      Optional<iw<csr>> $$3 = ld.am.a($$1, $$2);
-      $$3.ifPresent($$1x -> $$0.b(ka.N, $$1x));
-   }
-
-   @Override
-   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      csz $$3 = $$1.b($$2);
-      iw<csr> $$4 = $$3.a(ka.N);
-      if ($$4 != null) {
-         csr $$5 = $$4.a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gv().a(this, $$5.b());
-         $$1.b(avm.c.b(this));
-         return bpn.b($$3);
+   public bpu a(cxb $$0) {
+      dax $$1 = $$0.q();
+      io $$2 = $$0.a();
+      drb $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dem.h($$3) && !den.g($$3) && !deo.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (ddl.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, ddl.a($$1, $$2));
+            $$1.a($$0.o(), dvu.i, $$2);
+            $$4 = true;
+         }
       } else {
-         return bpn.d($$3);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(drr.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dvu.c, $$2);
+         $$4 = true;
       }
-   }
 
-   @Override
-   public int b(csz $$0) {
-      Optional<iw<csr>> $$1 = this.j($$0);
-      return $$1.<Integer>map($$0x -> ((csr)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<iw<csr>> j(csz $$0) {
-      iw<csr> $$1 = $$0.a(ka.N);
-      if ($$1 != null) {
-         return Optional.of($$1);
+      if ($$4) {
+         $$0.n().h(1);
+         return bpu.a($$1.B);
       } else {
-         Iterator<iw<csr>> $$2 = ld.am.c(this.a).iterator();
-         return $$2.hasNext() ? Optional.of($$2.next()) : Optional.empty();
+         return bpu.e;
       }
    }
 
-   @Override
-   public cus c(csz $$0) {
-      return cus.i;
+   private void a(dax $$0, io $$1) {
+      ayk $$2 = $$0.E_();
+      $$0.a(null, $$1, avh.iK, avi.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
-   private static void a(dad $$0, clh $$1, csr $$2) {
-      avb $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, avd.c, $$4, 1.0F);
-      $$0.a(dva.B, $$1.dl(), dva.a.a($$1));
+   @Override
+   public cmo a(dax $$0, jh $$1, cto $$2, it $$3) {
+      ayk $$4 = $$0.E_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      cms $$8 = new cms($$0, $$1.a(), $$1.b(), $$1.c(), $$5, $$6, $$7);
+      $$8.a($$2);
+      return $$8;
+   }
+
+   @Override
+   public void a(cmo $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public cug.a c() {
+      return cug.a.a().a(($$0, $$1) -> dgd.a($$0, 1.0, euk.b)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

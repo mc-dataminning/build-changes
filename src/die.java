@@ -1,253 +1,109 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class die extends dde {
-   private static final float a = 1.0F;
-   private static final eui c = dde.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eui d = dde.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final eui e = dde.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final eui f = dde.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eui g = dde.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final eui h = dde.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<is, dqy> i = dis.h;
-   private static final Map<is, eui> j = ac.a(Maps.newEnumMap(is.class), $$0 -> {
-      $$0.put(is.c, g);
-      $$0.put(is.f, f);
-      $$0.put(is.d, h);
-      $$0.put(is.e, e);
-      $$0.put(is.b, c);
-      $$0.put(is.a, d);
-   });
-   protected static final is[] b = is.values();
-   private final ImmutableMap<dqh, eui> k;
-   private final boolean l;
-   private final boolean m;
-   private final boolean n;
+public class die extends ddy implements dkz {
+   public static final MapCodec<die> a = b(die::new);
+   public static final drv b = dhu.aE;
+   public static final drs c = drr.C;
+   protected static final float d = 3.0F;
+   protected static final evd e = ddy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final evd f = ddy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final evd g = ddy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final evd h = ddy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
-   public die(dqg.d $$0) {
+   @Override
+   public MapCodec<die> a() {
+      return a;
+   }
+
+   protected die(dra.d $$0) {
       super($$0);
-      this.k(a(this.E));
-      this.k = this.a(die::o);
-      this.l = is.c.a.a().allMatch(this::a);
-      this.m = is.c.a.a().filter(is.a.a).filter(this::a).count() % 2L == 0L;
-      this.n = is.c.a.a().filter(is.a.c).filter(this::a).count() % 2L == 0L;
+      this.k(this.E.b().a(b, it.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends die> a();
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      switch ((it)$$0.c(b)) {
+         case c:
+            return h;
+         case d:
+            return g;
+         case e:
+            return f;
+         case f:
+         default:
+            return e;
+      }
+   }
 
-   public static Set<is> m(dqh $$0) {
-      if (!($$0.b() instanceof die)) {
-         return Set.of();
+   private boolean a(dad $$0, io $$1, it $$2) {
+      drb $$3 = $$0.a_($$1);
+      return $$3.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(drb $$0, dba $$1, io $$2) {
+      it $$3 = $$0.c(b);
+      return this.a($$1, $$2.a($$3.g()), $$3);
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
+         return dea.a.n();
       } else {
-         Set<is> $$1 = EnumSet.noneOf(is.class);
-
-         for (is $$2 : is.values()) {
-            if (a($$0, $$2)) {
-               $$1.add($$2);
-            }
+         if ($$0.c(c)) {
+            $$3.a($$4, emv.c, emv.c.a($$3));
          }
 
-         return $$1;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   public static Set<is> a(byte $$0) {
-      Set<is> $$1 = EnumSet.noneOf(is.class);
-
-      for (is $$2 : is.values()) {
-         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static byte a(Collection<is> $$0) {
-      byte $$1 = 0;
-
-      for (is $$2 : $$0) {
-         $$1 = (byte)($$1 | 1 << $$2.ordinal());
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(is $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      for (is $$1 : b) {
-         if (this.a($$1)) {
-            $$0.a(b($$1));
-         }
-      }
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if (!n($$0)) {
-         return ddg.a.n();
-      } else {
-         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
-      }
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return (eui)this.k.get($$0);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      boolean $$3 = false;
-
-      for (is $$4 : b) {
-         if (a($$0, $$4)) {
-            in $$5 = $$2.a($$4);
-            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
-               return false;
-            }
-
-            $$3 = true;
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected boolean a(dqh $$0, cwi $$1) {
-      return p($$0);
    }
 
    @Nullable
    @Override
-   public dqh a(cwi $$0) {
-      dad $$1 = $$0.q();
-      in $$2 = $$0.a();
-      dqh $$3 = $$1.a_($$2);
-      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
-   }
-
-   public boolean a(czj $$0, dqh $$1, in $$2, is $$3) {
-      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
-         in $$4 = $$2.a($$3);
-         return a($$0, $$3, $$4, $$0.a_($$4));
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public dqh c(dqh $$0, czj $$1, in $$2, is $$3) {
-      if (!this.a($$1, $$0, $$2, $$3)) {
-         return null;
-      } else {
-         dqh $$4;
-         if ($$0.a(this)) {
-            $$4 = $$0;
-         } else if (this.k() && $$0.u().a(emb.c)) {
-            $$4 = this.n().a(dqx.C, Boolean.valueOf(true));
-         } else {
-            $$4 = this.n();
+   public drb a(cwz $$0) {
+      if (!$$0.c()) {
+         drb $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
+         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
+            return null;
          }
-
-         return $$4.a(b($$3), Boolean.valueOf(true));
       }
+
+      drb $$2 = this.n();
+      dba $$3 = $$0.q();
+      io $$4 = $$0.a();
+      emu $$5 = $$0.q().b_($$0.a());
+
+      for (it $$6 : $$0.f()) {
+         if ($$6.o().d()) {
+            $$2 = $$2.a(b, $$6.g());
+            if ($$2.a($$3, $$4)) {
+               return $$2.a(c, Boolean.valueOf($$5.a() == emv.c));
+            }
+         }
+      }
+
+      return null;
    }
 
    @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return !this.l ? $$0 : this.a($$0, $$1::a);
+   protected drb a(drb $$0, dkl $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      if ($$1 == dib.c && !this.m) {
-         return $$0;
-      } else {
-         return $$1 == dib.b && !this.n ? $$0 : this.a($$0, $$1::b);
-      }
+   protected drb a(drb $$0, div $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   private dqh a(dqh $$0, Function<is, is> $$1) {
-      dqh $$2 = $$0;
-
-      for (is $$3 : b) {
-         if (this.a($$3)) {
-            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
-         }
-      }
-
-      return $$2;
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b, c);
    }
 
-   public static boolean a(dqh $$0, is $$1) {
-      dqy $$2 = b($$1);
-      return $$0.b($$2) && $$0.c($$2);
+   @Override
+   protected emu b_(drb $$0) {
+      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
    }
-
-   public static boolean a(czj $$0, is $$1, in $$2, dqh $$3) {
-      return dde.a($$3.l($$0, $$2), $$1.g()) || dde.a($$3.k($$0, $$2), $$1.g());
-   }
-
-   private boolean k() {
-      return this.E.d().contains(dqx.C);
-   }
-
-   private static dqh a(dqh $$0, dqy $$1) {
-      dqh $$2 = $$0.a($$1, Boolean.valueOf(false));
-      return n($$2) ? $$2 : ddg.a.n();
-   }
-
-   public static dqy b(is $$0) {
-      return i.get($$0);
-   }
-
-   private static dqh a(dqi<dde, dqh> $$0) {
-      dqh $$1 = $$0.b();
-
-      for (dqy $$2 : i.values()) {
-         if ($$1.b($$2)) {
-            $$1 = $$1.a($$2, Boolean.valueOf(false));
-         }
-      }
-
-      return $$1;
-   }
-
-   private static eui o(dqh $$0) {
-      eui $$1 = euf.a();
-
-      for (is $$2 : b) {
-         if (a($$0, $$2)) {
-            $$1 = euf.a($$1, j.get($$2));
-         }
-      }
-
-      return $$1.c() ? euf.b() : $$1;
-   }
-
-   protected static boolean n(dqh $$0) {
-      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
-   }
-
-   private static boolean p(dqh $$0) {
-      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
-   }
-
-   public abstract dif c();
 }

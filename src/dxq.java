@@ -1,21 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dxq {
+   private final int a;
+   private final int b;
 
-@Deprecated
-public class dxq extends dxr {
-   public static final Codec<dxq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxq::new));
-
-   public dxq(jr $$0) {
-      super($$0);
+   public dxq(dsy $$0, daz $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   @Override
-   protected boolean a(dqh $$0) {
-      return $$0.e();
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public dxh<?> a() {
-      return dxh.e;
+   public int b() {
+      return this.b;
    }
 }

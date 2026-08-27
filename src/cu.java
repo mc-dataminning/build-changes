@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cu(Map<iw<bqr>, cu.b> b) {
-   public static final Codec<cu> a = Codec.unboundedMap(ld.d.r(), cu.b.a).xmap(cu::new, cu::a);
+public record cu(Map<ix<bra>, cu.b> b) {
+   public static final Codec<cu> a = Codec.unboundedMap(le.d.r(), cu.b.a).xmap(cu::new, cu::a);
 
-   public boolean a(brh $$0) {
-      if ($$0 instanceof bsa $$1 && this.a($$1.ew())) {
+   public boolean a(bru $$0) {
+      if ($$0 instanceof bso $$1 && this.a($$1.ey())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bsa $$0) {
-      return this.a($$0.ew());
+   public boolean a(bso $$0) {
+      return this.a($$0.ey());
    }
 
-   public boolean a(Map<iw<bqr>, bqt> $$0) {
-      for (Entry<iw<bqr>, cu.b> $$1 : this.b.entrySet()) {
-         bqt $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<ix<bra>, brc> $$0) {
+      for (Entry<ix<bra>, cu.b> $$1 : this.b.entrySet()) {
+         brc $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record cu(Map<iw<bqr>, cu.b> b) {
       return true;
    }
 
-   public Map<iw<bqr>, cu.b> a() {
+   public Map<ix<bra>, cu.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<iw<bqr>, cu.b> a = ImmutableMap.builder();
+      private final Builder<ix<bra>, cu.b> a = ImmutableMap.builder();
 
       public static cu.a a() {
          return new cu.a();
       }
 
-      public cu.a a(iw<bqr> $$0) {
+      public cu.a a(ix<bra> $$0) {
          this.a.put($$0, new cu.b());
          return this;
       }
 
-      public cu.a a(iw<bqr> $$0, cu.b $$1) {
+      public cu.a a(ix<bra> $$0, cu.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -62,10 +62,10 @@ public record cu(Map<iw<bqr>, cu.b> b) {
    public static record b(ct.d b, ct.d c, Optional<Boolean> d, Optional<Boolean> e) {
       public static final Codec<cu.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(ct.d.d, "amplifier", ct.d.c).forGetter(cu.b::a),
-                  axh.a(ct.d.d, "duration", ct.d.c).forGetter(cu.b::b),
-                  axh.a(Codec.BOOL, "ambient").forGetter(cu.b::c),
-                  axh.a(Codec.BOOL, "visible").forGetter(cu.b::d)
+                  ct.d.d.optionalFieldOf("amplifier", ct.d.c).forGetter(cu.b::a),
+                  ct.d.d.optionalFieldOf("duration", ct.d.c).forGetter(cu.b::b),
+                  Codec.BOOL.optionalFieldOf("ambient").forGetter(cu.b::c),
+                  Codec.BOOL.optionalFieldOf("visible").forGetter(cu.b::d)
                )
                .apply($$0, cu.b::new)
       );
@@ -74,7 +74,7 @@ public record cu(Map<iw<bqr>, cu.b> b) {
          this(ct.d.c, ct.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bqt $$0) {
+      public boolean a(@Nullable brc $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

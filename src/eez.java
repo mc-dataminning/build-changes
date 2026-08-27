@@ -1,50 +1,72 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eez extends eew {
-   public static final Codec<eez> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dwt.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dwt.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, eez::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dwt d;
-   private final dwt e;
-   private final LongSet f = new LongOpenHashSet();
+public class eez extends eff {
+   public static final MapCodec<eez> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eez::new));
 
-   private eez(dwt $$0, dwt $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static eez a(dwt $$0, dwt $$1) {
-      return new eez($$0, $$1);
+   public eez(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(ayg $$0, dww $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   protected efg<?> a() {
+      return efg.e;
+   }
+
+   @Override
+   public List<edn.a> a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, int $$3, io $$4, ecx $$5) {
+      List<edn.a> $$6 = Lists.newArrayList();
+      io $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      it $$8 = it.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
+
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         return $$2;
-      } else {
-         return axz.b($$0, $$2, $$3);
+         int $$18 = $$12 + $$17;
+         io $$19 = new io($$14, $$18, $$15);
+         if (ebj.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         }
       }
-   }
 
-   @Override
-   public eex<?> a() {
-      return eex.b;
-   }
+      $$6.add(new edn.a(new io($$14, $$16, $$15), 0, true));
 
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new io($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new edn.a(new io($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
+      }
+
+      return $$6;
    }
 }

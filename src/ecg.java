@@ -1,34 +1,36 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class ecg implements ebh {
+public class ecg implements ecb {
    public static final Codec<ecg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awg.b(le.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               edi.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eft.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               efk.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bor.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bor.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               le.e.q().fieldOf("block").flatXmap(ecg::a, DataResult::success).orElse((diy)dea.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               jm.a(lf.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, ecg::new)
    );
-   public final awg<dde> b;
-   public final edi c;
-   public final iw<eft> d;
-   public final efk e;
-   public final bor f;
+   public final diy b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
    public final float g;
-   public final int h;
-   public final float i;
-   public final bor j;
-   public final float k;
+   public final jb<ddy> h;
+   private final ObjectArrayList<it> i;
 
-   public ecg(awg<dde> $$0, edi $$1, iw<eft> $$2, efk $$3, bor $$4, float $$5, int $$6, float $$7, bor $$8, float $$9) {
+   private static DataResult<diy> a(ddy $$0) {
+      return $$0 instanceof diy $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   }
+
+   public ecg(diy $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jb<ddy> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -36,8 +38,25 @@ public class ecg implements ebh {
       this.f = $$4;
       this.g = $$5;
       this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(it.b);
+      }
+
+      if ($$2) {
+         this.i.add(it.a);
+      }
+
+      if ($$4) {
+         it.c.a.forEach(this.i::add);
+      }
+   }
+
+   public List<it> a(ayk $$0, it $$1) {
+      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<it> a(ayk $$0) {
+      return ac.a(this.i, $$0);
    }
 }

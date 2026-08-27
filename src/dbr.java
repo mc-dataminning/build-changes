@@ -1,14 +1,25 @@
-public class dbr {
-   public static final akg<dbq> a = a("nether");
-   public static final akg<dbq> b = a("overworld");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static void a(ql<dbq> $$0) {
-      ix<dbc> $$1 = $$0.a(le.az);
-      $$0.a(a, new dbq(dbq.a.a, $$1));
-      $$0.a(b, new dbq(dbq.a.b, $$1));
+public record dbr(dal d, coj e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dbr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dal.b.lenientOptionalFieldOf("DataPacks", dal.a).forGetter(dbr::a), col.f.lenientOptionalFieldOf("enabled_features", col.h).forGetter(dbr::b)
+            )
+            .apply($$0, dbr::new)
+   );
+   public static final dbr c = new dbr(dal.a, col.h);
+
+   public dbr a(coj $$0) {
+      return new dbr(this.d, this.e.b($$0));
    }
 
-   private static akg<dbq> a(String $$0) {
-      return akg.a(le.aR, new akh($$0));
+   public dal a() {
+      return this.d;
+   }
+
+   public coj b() {
+      return this.e;
    }
 }

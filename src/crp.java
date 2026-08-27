@@ -1,17 +1,15 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class crp extends csu {
-   public crp(csu.a $$0) {
+public class crp extends ctj {
+   public crp(ctj.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
-      $$2.add(this.c().a(n.h));
+   public boolean a(cto $$0) {
+      return $$0.I() == 1;
    }
 
-   public xi c() {
-      return wu.c(this.a() + ".desc");
+   @Override
+   public int g() {
+      return 1;
    }
 }

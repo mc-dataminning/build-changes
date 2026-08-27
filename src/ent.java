@@ -1,30 +1,13 @@
 public class ent {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+   public final euk a;
+   public final euk b;
+   public final float c;
+   public final float d;
 
-   public ent(int $$0) {
-      this($$0, a);
-   }
-
-   public ent(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(ent $$0) {
-      return this.b().equals($$0.b());
+   public ent(euk $$0, euk $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

@@ -1,18 +1,84 @@
-import com.mojang.serialization.Codec;
+import java.util.function.LongFunction;
 
-class dxs implements dxg {
-   public static dxs a = new dxs();
-   public static final Codec<dxs> e = Codec.unit(() -> a);
+public class dxs extends dwu {
+   private final ayk d;
+   private int e;
 
-   private dxs() {
+   public dxs(ayk $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public boolean a(day $$0, in $$1) {
-      return true;
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public dxh<?> a() {
-      return dxh.l;
+   public ayk d() {
+      return this.d.d();
+   }
+
+   @Override
+   public dxg e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dwu $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static ayk a(int $$0, int $$1, long $$2, long $$3) {
+      return ayk.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dwu::new),
+      b(dxu::new);
+
+      private final LongFunction<ayk> c;
+
+      private a(LongFunction<ayk> $$0) {
+         this.c = $$0;
+      }
+
+      public ayk a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

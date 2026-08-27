@@ -1,78 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
+public class cjk extends cik {
+   private static final int c = 300;
+   private static final ajr<Boolean> d = ajv.a(cjk.class, ajt.k);
+   public static final String b = "StrayConversionTime";
+   private int e;
+   private int bY;
 
-public class cjk {
-   public static final float a = 0.6F;
-   public static final float b = 4.0F;
-   public static final float c = 8.0F;
-   public static final float d = 20.0F;
-   static final List<cck<? extends ccj<? super cjj>>> e = ImmutableList.of(cck.c, cck.f, cck.d, cck.z);
-   static final List<cbd<?>> f = ImmutableList.of(
-      cbd.n, cbd.h, cbd.B, cbd.E, cbd.o, cbd.m, cbd.aU, cbd.aZ, cbd.aV, cbd.aW, cbd.aX, cbd.aY, new cbd[]{cbd.ba, cbd.bb, cbd.x, cbd.y, cbd.t}
-   );
-
-   protected static btb<?> a(btb<cjj> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(cmw.a));
-      $$0.b(cmw.k);
-      $$0.f();
-      return $$0;
+   public cjk(bsa<? extends cjk> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   private static void b(btb<cjj> $$0) {
-      $$0.a(cmw.a, 0, ImmutableList.of(new bwm(0.8F), new buy(45, 90)));
+   @Override
+   protected void a(ajv.a $$0) {
+      super.a($$0);
+      $$0.a(d, false);
    }
 
-   private static void c(btb<cjj> $$0) {
-      $$0.a(
-         cmw.b,
-         ImmutableList.of(
-            Pair.of(0, bwe.a($$0x -> $$0x.dQ().c(cbd.B))),
-            Pair.of(1, bwe.a(cjj::gq)),
-            Pair.of(2, new cjk.a(20, 40)),
-            Pair.of(3, new bvp(ImmutableList.of(Pair.of(new buc(20, 100), 1), Pair.of(bvk.a(0.6F), 2))))
-         )
-      );
+   public boolean gs() {
+      return this.ap().a(d);
    }
 
-   private static void d(btb<cjj> $$0) {
-      $$0.a(
-         cmw.k,
-         ImmutableList.of(Pair.of(0, bwh.a()), Pair.of(1, new cjn()), Pair.of(2, new cjm()), Pair.of(3, new cjo()), Pair.of(4, new cjp())),
-         ImmutableSet.of(Pair.of(cbd.o, cbe.a), Pair.of(cbd.m, cbe.b))
-      );
+   public void w(boolean $$0) {
+      this.ao.a(d, $$0);
    }
 
-   static void a(cjj $$0) {
-      $$0.dQ().a(ImmutableList.of(cmw.k, cmw.b));
+   @Override
+   public boolean gr() {
+      return this.gs();
    }
 
-   public static class a extends bvc {
-      @VisibleForTesting
-      public a(int $$0, int $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      protected void c(aqh $$0, bsc $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         $$1.a(avc.cM);
-         $$1.b(bsl.p);
-      }
-
-      @Override
-      protected void b(aqh $$0, bsc $$1, long $$2) {
-         super.b($$0, $$1, $$2);
-         $$1.b(bsl.a);
-         if ($$1.dQ().a(cbd.o)) {
-            $$1.dQ().a(cbd.aV, azb.a, 60L);
+   @Override
+   public void l() {
+      if (!this.dP().B && this.bD() && !this.gf()) {
+         if (this.aB) {
+            if (this.gs()) {
+               this.bY--;
+               if (this.bY < 0) {
+                  this.gt();
+               }
+            } else {
+               this.e++;
+               if (this.e >= 140) {
+                  this.b(300);
+               }
+            }
+         } else {
+            this.e = -1;
+            this.w(false);
          }
+      }
+
+      super.l();
+   }
+
+   @Override
+   public void b(ud $$0) {
+      super.b($$0);
+      $$0.a("StrayConversionTime", this.gs() ? this.bY : -1);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      super.a($$0);
+      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
+         this.b($$0.h("StrayConversionTime"));
+      }
+   }
+
+   private void b(int $$0) {
+      this.bY = $$0;
+      this.w(true);
+   }
+
+   protected void gt() {
+      this.a(bsa.aY, true);
+      if (!this.aW()) {
+         this.dP().a(null, 1048, this.dp(), 0);
+      }
+   }
+
+   @Override
+   public boolean dD() {
+      return false;
+   }
+
+   @Override
+   protected avg v() {
+      return avh.wY;
+   }
+
+   @Override
+   protected avg d(bqn $$0) {
+      return avh.xj;
+   }
+
+   @Override
+   protected avg o_() {
+      return avh.xa;
+   }
+
+   @Override
+   avg u() {
+      return avh.xl;
+   }
+
+   @Override
+   protected void a(bqn $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof cio $$4 && $$4.gq()) {
+         $$4.gr();
+         this.a(ctr.ul);
       }
    }
 }

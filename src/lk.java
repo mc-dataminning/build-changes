@@ -1,71 +1,86 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
+import com.google.common.base.Stopwatch;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.ToIntFunction;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 
-public interface lk {
-   ToIntFunction<String> a = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("type", 0);
-      $$0.put("parent", 1);
-      $$0.defaultReturnValue(2);
-   });
-   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
-   Logger c = LogUtils.getLogger();
+public class lk {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final ln c;
+   final Set<String> d = new HashSet<>();
+   final Map<String, ll> e = new LinkedHashMap<>();
+   private final ad f;
+   private final boolean g;
 
-   CompletableFuture<?> a(li var1);
-
-   String a();
-
-   static <T> CompletableFuture<?> a(li $$0, iy.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      akf<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
-      JsonElement $$6 = ac.a($$2.encodeStart($$5, $$3), IllegalStateException::new);
-      return a($$0, $$6, $$4);
+   public lk(Path $$0, ad $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = new ln(this.b);
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   static CompletableFuture<?> a(li $$0, JsonElement $$1, Path $$2) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
+   public void a() throws IOException {
+      lm $$0 = new lm(this.b, this.d, this.f);
+      Stopwatch $$1 = Stopwatch.createStarted();
+      Stopwatch $$2 = Stopwatch.createUnstarted();
+      this.e.forEach(($$2x, $$3) -> {
+         if (!this.g && !$$0.a($$2x)) {
+            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
+         } else {
+            a.info("Starting provider: {}", $$2x);
+            $$2.start();
+            $$0.a($$0.a($$2x, $$3::a).join());
+            $$2.stop();
+            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
+            $$2.reset();
+         }
+      });
+      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
+      $$0.a();
+   }
 
-            try {
-               $$5.setSerializeNulls(false);
-               $$5.setIndent("  ");
-               axp.a($$5, $$1, b);
-            } catch (Throwable var9) {
-               try {
-                  $$5.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
+   public lk.a a(boolean $$0) {
+      return new lk.a($$0, "vanilla", this.c);
+   }
 
-               throw var9;
+   public lk.a a(boolean $$0, String $$1) {
+      Path $$2 = this.c.a(ln.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
+      return new lk.a($$0, $$1, new ln($$2));
+   }
+
+   static {
+      ako.a();
+   }
+
+   public class a {
+      private final boolean b;
+      private final String c;
+      private final ln d;
+
+      a(boolean $$1, String $$2, ln $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public <T extends ll> T a(ll.a<T> $$0) {
+         T $$1 = $$0.create(this.d);
+         String $$2 = this.c + "/" + $$1.a();
+         if (!lk.this.d.add($$2)) {
+            throw new IllegalStateException("Duplicate provider: " + $$2);
+         } else {
+            if (this.b) {
+               lk.this.e.put($$2, $$1);
             }
 
-            $$5.close();
-            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
-         } catch (IOException var10) {
-            c.error("Failed to save file to {}", $$2, var10);
+            return $$1;
          }
-      }, ac.f());
-   }
-
-   @FunctionalInterface
-   public interface a<T extends lk> {
-      T create(lm var1);
+      }
    }
 }

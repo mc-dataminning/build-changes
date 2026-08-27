@@ -1,20 +1,20 @@
-public record acs(czk b) implements zb<abm> {
-   public static final ys<vu, acs> a = zb.a(acs::a, acs::new);
+public record acs(xj.a b) implements ze<abq> {
+   public static final yv<vx, acs> a = ze.a(acs::a, acs::new);
 
-   private acs(vu $$0) {
-      this($$0.f());
+   private acs(vx $$0) {
+      this(xj.a.a($$0));
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vx $$0) {
+      xj.a.a($$0, this.b);
    }
 
    @Override
-   public zd<acs> a() {
-      return afx.F;
+   public zg<acs> a() {
+      return agb.B;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 }

@@ -1,49 +1,110 @@
-public class gqf extends gpv {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cnc s;
-   private float t = 0.0F;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-   public gqf(cnc $$0) {
-      super(avc.oD, avd.g, gqm.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.ds());
-      this.g = (double)((float)$$0.du());
-      this.h = (double)((float)$$0.dy());
+public class gqf implements gpw {
+   private final List<Pair<Predicate<drb>, gpw>> g;
+   protected final boolean a;
+   protected final boolean b;
+   protected final boolean c;
+   protected final gnv d;
+   protected final gdt e;
+   protected final gdr f;
+   private final Map<drb, BitSet> h = new Reference2ObjectOpenHashMap();
+
+   public gqf(List<Pair<Predicate<drb>, gpw>> $$0) {
+      this.g = $$0;
+      gpw $$1 = (gpw)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
    }
 
    @Override
-   public boolean s() {
-      return !this.s.aU();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dI()) {
-         this.n();
+   public List<gdh> a(@Nullable drb $$0, @Nullable it $$1, ayk $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
       } else {
-         this.f = (double)((float)this.s.ds());
-         this.g = (double)((float)this.s.du());
-         this.h = (double)((float)this.s.dy());
-         float $$0 = (float)this.s.dq().h();
-         if ($$0 >= 0.01F && this.s.dN().s().i()) {
-            this.t = axz.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = axz.i(axz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<drb>, gpw> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.h.put($$0, $$3);
          }
+
+         List<gdh> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
+
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((gpw)this.g.get($$8).getRight()).a($$0, $$1, ayk.a($$7)));
+            }
+         }
+
+         return $$6;
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return this.a;
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gnv e() {
+      return this.d;
+   }
+
+   @Override
+   public gdt f() {
+      return this.e;
+   }
+
+   @Override
+   public gdr g() {
+      return this.f;
+   }
+
+   public static class a {
+      private final List<Pair<Predicate<drb>, gpw>> a = Lists.newArrayList();
+
+      public void a(Predicate<drb> $$0, gpw $$1) {
+         this.a.add(Pair.of($$0, $$1));
+      }
+
+      public gpw a() {
+         return new gqf(this.a);
       }
    }
 }

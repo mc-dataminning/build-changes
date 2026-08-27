@@ -1,11 +1,12 @@
-import javax.annotation.Nullable;
+public class gmd<T extends cje> extends glr<T, ftx<T>> {
+   private static final gcs a = gcs.p(new akm("textures/entity/phantom_eyes.png"));
 
-public interface gmd extends gmg {
-   @Deprecated
-   @Override
-   default float call(csz $$0, @Nullable fvw $$1, @Nullable bsa $$2, int $$3) {
-      return axz.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gmd(gjp<T, ftx<T>> $$0) {
+      super($$0);
    }
 
-   float unclampedCall(csz var1, @Nullable fvw var2, @Nullable bsa var3, int var4);
+   @Override
+   public gcs a() {
+      return a;
+   }
 }

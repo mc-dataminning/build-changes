@@ -1,28 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ecp extends eco {
-   public static final Codec<ecp> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecp::new));
+public class ecp implements ecb {
+   public static final Codec<ecp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(ecj.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ecp::new)
+   );
+   public final List<ecj.a> b;
 
-   public ecp(bor $$0, bor $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ecp(drb $$0, drb $$1) {
+      this(ImmutableList.of(ecj.a(new eko($$0), $$1)));
    }
 
-   @Override
-   protected ecu<?> a() {
-      return ecu.e;
-   }
-
-   @Override
-   protected void a(daj $$0, ect.b $$1, ayg $$2, ecd $$3, int $$4, ect.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(ayg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public ecp(List<ecj.a> $$0) {
+      this.b = $$0;
    }
 }

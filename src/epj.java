@@ -1,41 +1,146 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class epj extends epw {
-   public static final Codec<epj> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, epj::new));
+public class epj {
+   public static final Codec<epj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ept.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               esn.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               eqt.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               eth.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               eth.a.fieldOf("bonus_rolls").orElse(ete.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, epj::new)
+   );
+   private final List<epv> b;
+   private final List<esl> c;
+   private final Predicate<epf> d;
+   private final List<eqr> e;
+   private final BiFunction<cto, epf, cto> f;
+   private final etg g;
+   private final etg h;
 
-   private epj(List<erq> $$0) {
-      super($$0);
+   epj(List<epv> $$0, List<esl> $$1, List<eqr> $$2, etg $$3, etg $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ac.a($$1);
+      this.e = $$2;
+      this.f = eqt.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public epy b() {
-      return epz.w;
-   }
+   private void b(Consumer<cto> $$0, epf $$1) {
+      ayk $$2 = $$1.b();
+      List<epu> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      Float $$2 = $$1.c(erc.j);
-      if ($$2 != null) {
-         ayg $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.G();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
+      for (epv $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
             }
-         }
-
-         $$0.e($$6);
+         });
       }
 
-      return $$0;
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (epu $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
    }
 
-   public static epw.a<?> c() {
-      return a(epj::new);
+   public void a(Consumer<cto> $$0, epf $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cto> $$2 = eqr.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + ayd.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
+   }
+
+   public void a(epl $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static epj.a a() {
+      return new epj.a();
+   }
+
+   public static class a implements eqn<epj.a>, ese<epj.a> {
+      private final Builder<epv> a = ImmutableList.builder();
+      private final Builder<esl> b = ImmutableList.builder();
+      private final Builder<eqr> c = ImmutableList.builder();
+      private etg d = ete.a(1.0F);
+      private etg e = ete.a(0.0F);
+
+      public epj.a a(etg $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public epj.a a() {
+         return this;
+      }
+
+      public epj.a b(etg $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public epj.a a(epv.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public epj.a a(esl.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public epj.a a(eqr.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public epj b() {
+         return new epj(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      }
    }
 }

@@ -1,61 +1,84 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
+import java.util.EnumSet;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class byt extends byx {
-   private static final int a = 200;
-   private final cdo b;
-   private int c;
-   private int d;
+public class byt<T extends bso> extends bzm {
+   protected final bsx a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eni d;
+   protected final cca e;
+   protected final Class<T> f;
+   protected final Predicate<bso> g;
+   protected final Predicate<bso> h;
+   private final cdf k;
 
-   public byt(cdo $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
+   public byt(bsx $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, brz.e::test);
    }
 
-   protected int a(cdo $$0) {
-      return b(200 + $$0.ej().a(200) % 20);
+   public byt(bsx $$0, Class<T> $$1, Predicate<bso> $$2, float $$3, double $$4, double $$5, Predicate<bso> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.K();
+      this.a(EnumSet.of(bzm.a.a));
+      this.k = cdf.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public byt(bsx $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bso> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (this.b.gv()) {
-         return false;
-      } else if (this.b.gs()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      this.b = this.a
+         .dP()
+         .a(this.a.dP().a(this.f, this.a.cK().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.du(), this.a.dw(), this.a.dA());
+      if (this.b == null) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<cdo> $$0 = $$0x -> $$0x.gu() || !$$0x.gs();
-         List<? extends cdo> $$1 = this.b.dN().a((Class<? extends cdo>)this.b.getClass(), this.b.cI().c(8.0, 8.0, 8.0), $$0);
-         cdo $$2 = (cdo)DataFixUtils.orElse($$1.stream().filter(cdo::gu).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gs()));
-         return this.b.gs();
+         euk $$0 = cdj.a(this.a, 16, 7, this.b.dn());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.b.gs() && this.b.gw();
+      return !this.e.l();
    }
 
    @Override
    public void c() {
-      this.c = 0;
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void d() {
-      this.b.gt();
+      this.b = null;
    }
 
    @Override
    public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gx();
+      if (this.a.g((bru)this.b) < 49.0) {
+         this.a.K().a(this.j);
+      } else {
+         this.a.K().a(this.i);
       }
    }
 }

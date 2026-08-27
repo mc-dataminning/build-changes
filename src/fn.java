@@ -1,4 +1,3 @@
-import com.google.gson.JsonPrimitive;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -6,38 +5,37 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
-public class fn<T extends Enum<T> & ayt> implements ArgumentType<T> {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("argument.enum.invalid", $$0));
-   private final Codec<T> b;
-   private final Supplier<T[]> c;
+public class fn implements ArgumentType<cqp> {
+   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("slot.unknown", $$0));
 
-   protected fn(Codec<T> $$0, Supplier<T[]> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static fn a() {
+      return new fn();
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      return (T)this.b.parse(JsonOps.INSTANCE, new JsonPrimitive($$1)).result().orElseThrow(() -> a.createWithContext($$0, $$1));
+   public static cqp a(CommandContext<ee> $$0, String $$1) {
+      return (cqp)$$0.getArgument($$1, cqp.class);
+   }
+
+   public cqp a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = ei.a($$0, $$0x -> $$0x != ' ');
+      cqp $$2 = cqq.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
+      } else {
+         return $$2;
+      }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ei.b(Arrays.<Enum>stream((Enum[])this.c.get()).map($$0x -> ((ayt)$$0x).c()).map(this::a).collect(Collectors.toList()), $$1);
+      return ej.b(cqq.a(), $$1);
    }
 
    public Collection<String> getExamples() {
-      return Arrays.<Enum>stream((Enum[])this.c.get()).map($$0 -> ((ayt)$$0).c()).map(this::a).limit(2L).collect(Collectors.toList());
-   }
-
-   protected String a(String $$0) {
-      return $$0;
+      return a;
    }
 }

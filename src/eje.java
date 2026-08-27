@@ -1,105 +1,52 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class eje {
-   static final in a = new in(4, 0, 15);
-   private static final akh[] b = new akh[]{
-      new akh("shipwreck/with_mast"),
-      new akh("shipwreck/sideways_full"),
-      new akh("shipwreck/sideways_fronthalf"),
-      new akh("shipwreck/sideways_backhalf"),
-      new akh("shipwreck/rightsideup_full"),
-      new akh("shipwreck/rightsideup_fronthalf"),
-      new akh("shipwreck/rightsideup_backhalf"),
-      new akh("shipwreck/with_mast_degraded"),
-      new akh("shipwreck/rightsideup_full_degraded"),
-      new akh("shipwreck/rightsideup_fronthalf_degraded"),
-      new akh("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final akh[] c = new akh[]{
-      new akh("shipwreck/with_mast"),
-      new akh("shipwreck/upsidedown_full"),
-      new akh("shipwreck/upsidedown_fronthalf"),
-      new akh("shipwreck/upsidedown_backhalf"),
-      new akh("shipwreck/sideways_full"),
-      new akh("shipwreck/sideways_fronthalf"),
-      new akh("shipwreck/sideways_backhalf"),
-      new akh("shipwreck/rightsideup_full"),
-      new akh("shipwreck/rightsideup_fronthalf"),
-      new akh("shipwreck/rightsideup_backhalf"),
-      new akh("shipwreck/with_mast_degraded"),
-      new akh("shipwreck/upsidedown_full_degraded"),
-      new akh("shipwreck/upsidedown_fronthalf_degraded"),
-      new akh("shipwreck/upsidedown_backhalf_degraded"),
-      new akh("shipwreck/sideways_full_degraded"),
-      new akh("shipwreck/sideways_fronthalf_degraded"),
-      new akh("shipwreck/sideways_backhalf_degraded"),
-      new akh("shipwreck/rightsideup_full_degraded"),
-      new akh("shipwreck/rightsideup_fronthalf_degraded"),
-      new akh("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, akg<eoq>> d = Map.of("map_chest", eoj.H, "treasure_chest", eoj.J, "supply_chest", eoj.I);
+public class eje extends ehi {
+   public static final MapCodec<eje> d = a(eje::new);
 
-   public static void a(ekq $$0, in $$1, djr $$2, egu $$3, ayg $$4, boolean $$5) {
-      akh $$6 = ac.a($$5 ? b : c, $$4);
-      $$3.a(new eje.a($$0, $$6, $$1, $$2, $$5));
+   public eje(ehj.c $$0) {
+      super(ejd::new, 21, 21, $$0);
    }
 
-   public static class a extends egz {
-      private final boolean h;
+   @Override
+   public void a(dbs $$0, dbq $$1, dsy $$2, ayk $$3, ehb $$4, dae $$5, ehy $$6) {
+      Set<io> $$7 = ayu.a(js::i);
 
-      public a(ekq $$0, akh $$1, in $$2, djr $$3, boolean $$4) {
-         super(ehg.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
-
-      public a(ekq $$0, ua $$1) {
-         super(ehg.ab, $$1, $$0, $$1x -> a(djr.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
-      }
-
-      @Override
-      protected void a(ehf $$0, ua $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static ekl a(djr $$0) {
-         return new ekl().a($$0).a(dib.a).a(eje.a).a(ejr.d);
-      }
-
-      @Override
-      protected void a(String $$0, in $$1, das $$2, ayg $$3, egh $$4) {
-         akg<eoq> $$5 = eje.d.get($$0);
-         if ($$5 != null) {
-            bpu.a($$2, $$3, $$1.d(), $$5);
+      for (ehn $$8 : $$6.c()) {
+         if ($$8 instanceof ejd $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
          }
       }
 
-      @Override
-      public void a(day $$0, daw $$1, dse $$2, ayg $$3, egh $$4, czk $$5, in $$6) {
-         int $$7 = $$0.al();
-         int $$8 = 0;
-         jr $$9 = this.b.a();
-         dvz.a $$10 = this.h ? dvz.a.a : dvz.a.c;
-         int $$11 = $$9.u() * $$9.w();
-         if ($$11 == 0) {
-            $$8 = $$0.a($$10, this.d.u(), this.d.w());
-         } else {
-            in $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+      ObjectArrayList<io> $$10 = new ObjectArrayList($$7.stream().toList());
+      ayk $$11 = ayk.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
 
-            for (in $$13 : in.c(this.d, $$12)) {
-               int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-               $$8 += $$14;
-               $$7 = Math.min($$7, $$14);
-            }
-
-            $$8 /= $$11;
+      while (var12.hasNext()) {
+         io $$13 = (io)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dea.I.n(), 2);
          }
-
-         int $$15 = this.h ? $$7 - $$9.v() / 2 - $$3.a(3) : $$8;
-         this.d = new in(this.d.u(), $$15, this.d.w());
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
+   }
+
+   private static void a(ehb $$0, dbs $$1, io $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dea.J.n(), 2);
+         $$1.a($$2, doi.N).ifPresent($$1x -> $$1x.a(epd.bc, $$2.a()));
+      }
+   }
+
+   @Override
+   public ehs<?> e() {
+      return ehs.b;
    }
 }

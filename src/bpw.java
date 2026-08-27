@@ -1,19 +1,26 @@
-public final class bpw implements bpq {
-   private final wu a;
-   private final cpk b;
+public enum bpw {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 
-   public bpw(cpk $$0, wu $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public boolean a() {
+      return this.b().a();
    }
 
-   @Override
-   public wu O_() {
-      return this.a;
+   public static bpw a(boolean $$0) {
+      return $$0 ? a : b;
    }
 
-   @Override
-   public cod createMenu(int $$0, clg $$1, clh $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public bpu b() {
+      return switch (this) {
+         case a -> bpu.a;
+         case b -> bpu.b;
+         case c -> bpu.c;
+         case d, e -> bpu.d;
+         case f -> bpu.e;
+      };
    }
 }

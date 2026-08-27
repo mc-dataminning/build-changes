@@ -1,49 +1,45 @@
-public record ahz(int b, String c, int d, ahy e) implements zb<aic> {
-   public static final ys<vu, ahz> a = zb.a(ahz::a, ahz::new);
-   private static final int f = 255;
+public class ahz implements ze<agd> {
+   public static final yv<vx, ahz> a = ze.a(ahz::a, ahz::new);
+   private final eug b;
+   private final bpt c;
+   private final int d;
 
-   @Deprecated
-   public ahz(int b, String c, int d, ahy e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public ahz(bpt $$0, eug $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private ahz(vu $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ahy.a($$0.l()));
+   private ahz(vx $$0) {
+      this.c = $$0.b(bpt.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
       $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
-   public zd<ahz> a() {
-      return aia.a;
+   public zg<ahz> a() {
+      return agb.cb;
    }
 
-   public void a(aic $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public bpt b() {
+      return this.c;
    }
 
-   public String e() {
-      return this.c;
+   public eug e() {
+      return this.b;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public ahy g() {
-      return this.e;
    }
 }

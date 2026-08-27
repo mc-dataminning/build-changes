@@ -1,29 +1,20 @@
-public class agv implements zb<afz> {
-   public static final ys<vu, agv> a = zb.a(agv::a, agv::new);
-   private final boolean b;
+public record agv(bkv b) implements ze<agd> {
+   public static final yv<vx, agv> a = ze.a(agv::a, agv::new);
 
-   public agv(boolean $$0) {
-      this.b = $$0;
+   private agv(vx $$0) {
+      this($$0.b(bkv.class));
    }
 
-   private agv(vu $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
+   private void a(vx $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zd<agv> a() {
-      return afx.by;
+   public zg<agv> a() {
+      return agb.bu;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

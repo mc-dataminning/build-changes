@@ -1,19 +1,17 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public interface eup {
-   int a();
+   static eup a() {
+      return euu.a;
+   }
+
+   static eup a(bru $$0) {
+      return new euu($$0);
+   }
 
    boolean b();
 
-   @Nullable
-   yk c();
+   boolean a(evd var1, io var2, boolean var3);
 
-   default xi a(yk $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
+   boolean a(ctj var1);
 
-   static xi a(@Nullable eup $$0, yk $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
-   }
+   boolean a(emu var1, emu var2);
 }

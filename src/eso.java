@@ -1,48 +1,47 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public record eso(akh b, ev.g c) implements esl {
-   public static final Codec<eso> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akh.a.fieldOf("storage").forGetter(eso::c), ev.g.a.fieldOf("path").forGetter(eso::d)).apply($$0, eso::new)
+public record eso(Optional<br> b, epf.b c) implements esl {
+   public static final MapCodec<eso> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(br.a.optionalFieldOf("predicate").forGetter(eso::c), epf.b.e.fieldOf("entity").forGetter(eso::d)).apply($$0, eso::new)
    );
 
    @Override
-   public esk b() {
-      return esm.f;
-   }
-
-   private Optional<uq> c(eol $$0) {
-      ua $$1 = $$0.d().o().aL().a(this.b);
-
-      try {
-         List<ux> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof uq $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   public esm b() {
+      return esn.h;
    }
 
    @Override
-   public float b(eol $$0) {
-      return this.c($$0).map(uq::k).orElse(0.0F);
+   public Set<eru<?>> a() {
+      return ImmutableSet.of(erx.f, this.c.a());
    }
 
-   @Override
-   public int a(eol $$0) {
-      return this.c($$0).map(uq::g).orElse(0);
+   public boolean a(epf $$0) {
+      bru $$1 = $$0.c(this.c.a());
+      euk $$2 = $$0.c(erx.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public akh c() {
+   public static esl.a a(epf.b $$0) {
+      return a($$0, br.a.a());
+   }
+
+   public static esl.a a(epf.b $$0, br.a $$1) {
+      return () -> new eso(Optional.of($$1.b()), $$0);
+   }
+
+   public static esl.a a(epf.b $$0, br $$1) {
+      return () -> new eso(Optional.of($$1), $$0);
+   }
+
+   public Optional<br> c() {
       return this.b;
    }
 
-   public ev.g d() {
+   public epf.b d() {
       return this.c;
    }
 }

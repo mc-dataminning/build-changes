@@ -1,91 +1,61 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Consumer;
 
-public class fjr {
-   private static final wu b = wu.c("gui.banned.title.temporary").a(n.r);
-   private static final wu c = wu.c("gui.banned.title.permanent").a(n.r);
-   public static final wu a = wu.c("gui.banned.name.title").a(n.r);
-   private static final wu d = wu.c("gui.banned.skin.title").a(n.r);
-   private static final wu e = wu.a("gui.banned.skin.description", wu.b("https://aka.ms/mcjavamoderation"));
+public class fjr implements fjo {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   public static fju a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fju($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", wt.m, true);
+   public fjr(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static fju a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fju($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", wt.m, true);
+   public fjr(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fju a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fju($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, wu.a("gui.banned.name.description", wu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", wt.m, true);
+   public static fjr a(int $$0) {
+      return new fjr($$0, 0);
    }
 
-   private static wu a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   public static fjr b(int $$0) {
+      return new fjr(0, $$0);
    }
 
-   private static wu b(BanDetails $$0) {
-      return wu.a("gui.banned.description", c($$0), d($$0), wu.b("https://aka.ms/mcjavamoderation"));
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
    }
 
-   private static wu c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fww $$4 = fww.a($$3);
-         wu $$5;
-         if ($$4 != null) {
-            $$5 = wx.a($$4.a().f(), xr.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = wu.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return wu.a("gui.banned.description.reason", $$5);
-      } else {
-         return wu.c("gui.banned.description.unknownreason");
-      }
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
    }
 
-   private static wu d(BanDetails $$0) {
-      if (f($$0)) {
-         wu $$1 = e($$0);
-         return wu.a("gui.banned.description.temporary", wu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return wu.c("gui.banned.description.permanent").a(n.r);
-      }
+   @Override
+   public int C() {
+      return this.a;
    }
 
-   private static wu e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wt.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? wt.c($$1.toMinutes()) : wt.b($$1.toHours());
-      }
+   @Override
+   public int D() {
+      return this.b;
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   @Override
+   public int x() {
+      return this.c;
+   }
+
+   @Override
+   public int v() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ffx> $$0) {
    }
 }

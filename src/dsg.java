@@ -1,9 +1,25 @@
-import com.mojang.serialization.Codec;
+public enum dsg implements ayx {
+   a("up"),
+   b("side"),
+   c("none");
 
-public class dsg {
-   public static Codec<? extends dse> a(jj<Codec<? extends dse>> $$0) {
-      jj.a($$0, "noise", dwc.c);
-      jj.a($$0, "flat", dvu.c);
-      return jj.a($$0, "debug", dvq.c);
+   private final String d;
+
+   private dsg(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

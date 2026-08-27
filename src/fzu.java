@@ -1,100 +1,56 @@
-public class fzu extends gac {
-   private static final ayg a = ayg.a();
-   private final fzx b;
-
-   fzu(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzx $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+public class fzu extends gay {
+   fzu(fwr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public fzg b() {
-      return fzg.c;
+   public gac b() {
+      return gac.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
-      } else {
-         this.e(axz.i(0.05F, this.y, 1.0F));
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(ky.ae, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
       }
    }
 
-   private boolean g() {
-      fde $$0 = fde.Q();
-      gaq $$1 = $$0.s;
-      return $$1 != null && $$1.bv().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aA().a() && $$1.gy();
-   }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-   public static class a implements fzf<la> {
-      private final fzx a;
-
-      public a(fzx $$0) {
+      public a(gat $$0) {
          this.a = $$0;
       }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements fzf<kp> {
-      private final fzx a;
-
-      public b(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(kp $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzc $$8 = new fzu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
-         return $$8;
-      }
-   }
-
-   public static class c implements fzf<la> {
-      private final fzx a;
-
-      public c(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class d implements fzf<la> {
-      private final fzx a;
-
-      public d(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzu $$8 = new fzu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzu $$8 = new fzu($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
          return $$8;
       }
    }

@@ -1,36 +1,58 @@
-public class fup extends fsk<cmp> {
-   private static final int a = 16;
-   private final fvb b;
-   private final fvb f;
-   private final fvb g;
+import com.google.common.collect.ImmutableList;
 
-   public fup(fvb $$0) {
-      super(gbw::i);
-      this.b = $$0.b("bone");
-      this.g = this.b.b("wind");
-      this.f = this.b.b("wind_charge");
+public class fup<T extends cji> extends fto<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+
+   public fup(fvw $$0) {
+      super(gcs::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      fvk $$2 = $$1.a("bone", fvg.c(), fvd.a(0.0F, 0.0F, 0.0F));
-      $$2.a(
-         "wind",
-         fvg.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new fvf(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new fvf(0.0F)),
-         fvd.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      $$2.a("wind_charge", fvg.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fvf(0.0F)), fvd.a(0.0F, 0.0F, 0.0F));
-      return fvh.a($$0, 64, 32);
+   public static fwc a() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("lid", fwb.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fvy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fwb.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fvy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fwb.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fvy.a(0.0F, 12.0F, 0.0F));
+      return fwc.a($$0, 64, 64);
    }
 
-   public void a(cmp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = -$$3 * 16.0F * (float) (Math.PI / 180.0);
-      this.g.f = $$3 * 16.0F * (float) (Math.PI / 180.0);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + ayd.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = ayd.a($$3 * 0.1F) * 0.7F;
+      }
+
+      this.g.a(0.0F, 16.0F + ayd.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.G($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.bb - 180.0F - $$0.aZ) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public fvb a() {
-      return this.b;
+   public Iterable<fvw> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fvw b() {
+      return this.g;
+   }
+
+   public fvw c() {
+      return this.h;
    }
 }

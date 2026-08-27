@@ -1,64 +1,67 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class caq<T extends bsa> extends cax {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
-   @Nullable
-   protected bsa c;
-   protected ccq d;
+public class caq extends bzm {
+   private final cgi a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public caq(bsc $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public caq(bsc $$0, Class<T> $$1, boolean $$2, Predicate<bsa> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public caq(bsc $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public caq(bsc $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bsa> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(byx.a.d));
-      this.d = ccq.a().a(this.l()).a($$5);
+   public caq(cgi $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b > 0 && this.e.ej().a(this.b) != 0) {
+      if (!this.a.gE() && this.a.bS()) {
+         euk $$0 = cdj.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      } else {
          return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   protected etk a(double $$0) {
-      return this.e.cI().c($$0, 4.0, $$0);
-   }
-
-   protected void h() {
-      if (this.a != clh.class && this.a != aqi.class) {
-         this.c = this.e.dN().a(this.e.dN().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.ds(), this.e.dw(), this.e.dy());
-      } else {
-         this.c = this.e.dN().a(this.d, this.e, this.e.ds(), this.e.dw(), this.e.dy());
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
-      super.c();
+      this.a.K().a(this.c, this.d, this.e, this.b);
    }
 
-   public void a(@Nullable bsa $$0) {
-      this.c = $$0;
+   @Override
+   public boolean b() {
+      return !this.a.gE() && !this.a.K().l() && this.a.bS();
+   }
+
+   @Override
+   public void e() {
+      if (!this.a.gE() && this.a.el().a(this.a(50)) == 0) {
+         bru $$0 = this.a.cT();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof clw $$1) {
+            int $$2 = this.a.gK();
+            int $$3 = this.a.gP();
+            if ($$3 > 0 && this.a.el().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.w(5);
+         }
+
+         this.a.bH();
+         this.a.gU();
+         this.a.dP().a(this.a, (byte)6);
+      }
    }
 }

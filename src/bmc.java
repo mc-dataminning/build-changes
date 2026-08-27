@@ -1,25 +1,33 @@
-public final class bmc implements Comparable<bmc> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-   public bmc(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bmc {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bmg c = bmf.a;
+
+   public bmc(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int a(bmc $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
+   public boolean a() {
+      return this.c != bmf.a;
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   public void b() {
+      this.c = bmf.a;
+   }
+
+   public void c() {
+      this.c = new bmb(this.a, this.b, true);
+   }
+
+   public bmi d() {
+      return this.c;
+   }
+
+   public bmh e() {
+      return this.c.d();
    }
 }

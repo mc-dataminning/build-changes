@@ -1,84 +1,663 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.google.common.primitives.Doubles;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gfk implements gfa.a {
-   private final fde a;
+public class gfk {
+   private static final int a = 2;
+   private final PriorityBlockingQueue<gfk.b.a> b = Queues.newPriorityBlockingQueue();
+   private final Queue<gfk.b.a> c = Queues.newLinkedBlockingDeque();
+   private int d = 2;
+   private final Queue<Runnable> e = Queues.newConcurrentLinkedQueue();
+   final gcv f;
+   private final gcw g;
+   private volatile int h;
+   private volatile boolean i;
+   private final bon<Runnable> j;
+   private final Executor k;
+   fwr l;
+   final gci m;
+   private euk n = euk.b;
 
-   public gfk(fde $$0) {
-      this.a = $$0;
+   public gfk(fwr $$0, gci $$1, Executor $$2, gcq $$3) {
+      this.l = $$0;
+      this.m = $$1;
+      this.f = $$3.a();
+      this.g = $$3.b();
+      this.k = $$2;
+      this.j = bon.a($$2, "Section Renderer");
+      this.j.a(this::j);
    }
 
-   @Override
-   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      czj $$6 = this.a.s.dN();
-      in $$7 = in.a($$2, $$3, $$4);
+   public void a(fwr $$0) {
+      this.l = $$0;
+   }
 
-      for (in $$8 : in.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dqh $$9 = $$6.a_($$8);
-         if (!$$9.a(ddg.a)) {
-            eui $$10 = $$9.j($$6, $$8);
+   private void j() {
+      if (!this.i && !this.g.b()) {
+         gfk.b.a $$0 = this.k();
+         if ($$0 != null) {
+            gcv $$1 = Objects.requireNonNull(this.g.a());
+            this.h = this.b.size() + this.c.size();
+            CompletableFuture.supplyAsync(ac.a($$0.b(), () -> $$0.a($$1)), this.k).thenCompose($$0x -> $$0x).whenComplete(($$1x, $$2) -> {
+               if ($$2 != null) {
+                  fdz.Q().a(o.a($$2, "Batching sections"));
+               } else {
+                  this.j.a(() -> {
+                     if ($$1x == gfk.c.a) {
+                        $$1.a();
+                     } else {
+                        $$1.b();
+                     }
 
-            for (etk $$11 : $$10.e()) {
-               etk $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, is.e)) {
-                  eyb $$23 = $$1.getBuffer(gbw.A());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                     this.g.a($$1);
+                     this.j();
+                  });
+               }
+            });
+         }
+      }
+   }
+
+   @Nullable
+   private gfk.b.a k() {
+      if (this.d <= 0) {
+         gfk.b.a $$0 = this.c.poll();
+         if ($$0 != null) {
+            this.d = 2;
+            return $$0;
+         }
+      }
+
+      gfk.b.a $$1 = this.b.poll();
+      if ($$1 != null) {
+         this.d--;
+         return $$1;
+      } else {
+         this.d = 2;
+         return this.c.poll();
+      }
+   }
+
+   public String a() {
+      return String.format(Locale.ROOT, "pC: %03d, pU: %02d, aB: %02d", this.h, this.e.size(), this.g.c());
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public int d() {
+      return this.g.c();
+   }
+
+   public void a(euk $$0) {
+      this.n = $$0;
+   }
+
+   public euk e() {
+      return this.n;
+   }
+
+   public void f() {
+      Runnable $$0;
+      while (($$0 = this.e.poll()) != null) {
+         $$0.run();
+      }
+   }
+
+   public void a(gfk.b $$0, gfj $$1) {
+      $$0.b($$1);
+   }
+
+   public void g() {
+      this.l();
+   }
+
+   public void a(gfk.b.a $$0) {
+      if (!this.i) {
+         this.j.a(() -> {
+            if (!this.i) {
+               if ($$0.c) {
+                  this.b.offer($$0);
+               } else {
+                  this.c.offer($$0);
                }
 
-               if ($$9.d($$6, $$8, is.d)) {
-                  eyb $$24 = $$1.getBuffer(gbw.A());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+               this.h = this.b.size() + this.c.size();
+               this.j();
+            }
+         });
+      }
+   }
 
-               if ($$9.d($$6, $$8, is.f)) {
-                  eyb $$25 = $$1.getBuffer(gbw.A());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   public CompletableFuture<Void> a(eyn.b $$0, eyv $$1) {
+      return this.i ? CompletableFuture.completedFuture(null) : CompletableFuture.runAsync(() -> {
+         if ($$1.e()) {
+            $$0.e();
+         } else {
+            $$1.a();
+            $$1.a($$0);
+            eyv.b();
+         }
+      }, this.e::add);
+   }
 
-               if ($$9.d($$6, $$8, is.c)) {
-                  eyb $$26 = $$1.getBuffer(gbw.A());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   private void l() {
+      while (!this.b.isEmpty()) {
+         gfk.b.a $$0 = this.b.poll();
+         if ($$0 != null) {
+            $$0.a();
+         }
+      }
 
-               if ($$9.d($$6, $$8, is.a)) {
-                  eyb $$27 = $$1.getBuffer(gbw.A());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+      while (!this.c.isEmpty()) {
+         gfk.b.a $$1 = this.c.poll();
+         if ($$1 != null) {
+            $$1.a();
+         }
+      }
 
-               if ($$9.d($$6, $$8, is.b)) {
-                  eyb $$28 = $$1.getBuffer(gbw.A());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+      this.h = 0;
+   }
+
+   public boolean h() {
+      return this.h == 0 && this.e.isEmpty();
+   }
+
+   public void i() {
+      this.i = true;
+      this.l();
+      this.f();
+   }
+
+   public static class a {
+      public static final gfk.a a = new gfk.a() {
+         @Override
+         public boolean a(it $$0, it $$1) {
+            return false;
+         }
+      };
+      final Set<gcs> b = new ObjectArraySet(gcs.H().size());
+      final List<dog> c = Lists.newArrayList();
+      gfm d = new gfm();
+      @Nullable
+      eyn.c e;
+
+      public boolean a() {
+         return this.b.isEmpty();
+      }
+
+      public boolean a(gcs $$0) {
+         return !this.b.contains($$0);
+      }
+
+      public List<dog> b() {
+         return this.c;
+      }
+
+      public boolean a(it $$0, it $$1) {
+         return this.d.a($$0, $$1);
+      }
+   }
+
+   public class b {
+      public static final int a = 16;
+      public final int b;
+      public final AtomicReference<gfk.a> c = new AtomicReference<>(gfk.a.a);
+      final AtomicInteger e = new AtomicInteger(0);
+      @Nullable
+      private gfk.b.b f;
+      @Nullable
+      private gfk.b.c g;
+      private final Set<dog> h = Sets.newHashSet();
+      private final Map<gcs, eyv> i = gcs.H().stream().collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eyv(eyv.a.a)));
+      private euf j;
+      private boolean k = true;
+      final io.a l = new io.a(-1, -1, -1);
+      private final io.a[] m = ac.a(new io.a[6], $$0x -> {
+         for (int $$1x = 0; $$1x < $$0x.length; $$1x++) {
+            $$0x[$$1x] = new io.a();
+         }
+      });
+      private boolean n;
+
+      public b(int $$1, int $$2, int $$3, int $$4) {
+         this.b = $$1;
+         this.a($$2, $$3, $$4);
+      }
+
+      private boolean a(io $$0) {
+         return gfk.this.l.a(jq.a($$0.u()), jq.a($$0.w()), dtw.n, false) != null;
+      }
+
+      public boolean a() {
+         int $$0 = 24;
+         return !(this.c() > 576.0)
+            ? true
+            : this.a(this.m[it.e.ordinal()]) && this.a(this.m[it.c.ordinal()]) && this.a(this.m[it.f.ordinal()]) && this.a(this.m[it.d.ordinal()]);
+      }
+
+      public euf b() {
+         return this.j;
+      }
+
+      public eyv a(gcs $$0) {
+         return this.i.get($$0);
+      }
+
+      public void a(int $$0, int $$1, int $$2) {
+         this.k();
+         this.l.d($$0, $$1, $$2);
+         this.j = new euf((double)$$0, (double)$$1, (double)$$2, (double)($$0 + 16), (double)($$1 + 16), (double)($$2 + 16));
+
+         for (it $$3 : it.values()) {
+            this.m[$$3.ordinal()].g(this.l).c($$3, 16);
+         }
+      }
+
+      protected double c() {
+         fdk $$0 = fdz.Q().j.m();
+         double $$1 = this.j.a + 8.0 - $$0.b().c;
+         double $$2 = this.j.b + 8.0 - $$0.b().d;
+         double $$3 = this.j.c + 8.0 - $$0.b().e;
+         return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+      }
+
+      void a(eyn $$0) {
+         $$0.a(eyx.b.h, eyq.j);
+      }
+
+      public gfk.a d() {
+         return this.c.get();
+      }
+
+      private void k() {
+         this.j();
+         this.c.set(gfk.a.a);
+         this.k = true;
+      }
+
+      public void e() {
+         this.k();
+         this.i.values().forEach(eyv::close);
+      }
+
+      public io f() {
+         return this.l;
+      }
+
+      public void a(boolean $$0) {
+         boolean $$1 = this.k;
+         this.k = true;
+         this.n = $$0 | ($$1 && this.n);
+      }
+
+      public void g() {
+         this.k = false;
+         this.n = false;
+      }
+
+      public boolean h() {
+         return this.k;
+      }
+
+      public boolean i() {
+         return this.k && this.n;
+      }
+
+      public io a(it $$0) {
+         return this.m[$$0.ordinal()];
+      }
+
+      public boolean a(gcs $$0, gfk $$1) {
+         gfk.a $$2 = this.d();
+         if (this.g != null) {
+            this.g.a();
+         }
+
+         if (!$$2.b.contains($$0)) {
+            return false;
+         } else {
+            this.g = new gfk.b.c(this.c(), $$2);
+            $$1.a(this.g);
+            return true;
+         }
+      }
+
+      protected boolean j() {
+         boolean $$0 = false;
+         if (this.f != null) {
+            this.f.a();
+            this.f = null;
+            $$0 = true;
+         }
+
+         if (this.g != null) {
+            this.g.a();
+            this.g = null;
+         }
+
+         return $$0;
+      }
+
+      public gfk.b.a a(gfj $$0) {
+         boolean $$1 = this.j();
+         io $$2 = this.l.i();
+         int $$3 = 1;
+         gfi $$4 = $$0.a(gfk.this.l, $$2.b(-1, -1, -1), $$2.b(16, 16, 16), 1);
+         boolean $$5 = this.c.get() == gfk.a.a;
+         if ($$5 && $$1) {
+            this.e.incrementAndGet();
+         }
+
+         this.f = new gfk.b.b(this.c(), $$4, !$$5 || this.e.get() > 2);
+         return this.f;
+      }
+
+      public void a(gfk $$0, gfj $$1) {
+         gfk.b.a $$2 = this.a($$1);
+         $$0.a($$2);
+      }
+
+      void a(Collection<dog> $$0) {
+         Set<dog> $$1 = Sets.newHashSet($$0);
+         Set<dog> $$2;
+         synchronized (this.h) {
+            $$2 = Sets.newHashSet(this.h);
+            $$1.removeAll(this.h);
+            $$2.removeAll($$0);
+            this.h.clear();
+            this.h.addAll($$0);
+         }
+
+         gfk.this.m.a($$2, $$1);
+      }
+
+      public void b(gfj $$0) {
+         gfk.b.a $$1 = this.a($$0);
+         $$1.a(gfk.this.f);
+      }
+
+      public boolean b(int $$0, int $$1, int $$2) {
+         io $$3 = this.f();
+         return $$0 == jq.a($$3.u()) || $$2 == jq.a($$3.w()) || $$1 == jq.a($$3.v());
+      }
+
+      abstract class a implements Comparable<gfk.b.a> {
+         protected final double a;
+         protected final AtomicBoolean b = new AtomicBoolean(false);
+         protected final boolean c;
+
+         public a(double $$0, boolean $$1) {
+            this.a = $$0;
+            this.c = $$1;
+         }
+
+         public abstract CompletableFuture<gfk.c> a(gcv var1);
+
+         public abstract void a();
+
+         protected abstract String b();
+
+         public int a(gfk.b.a $$0) {
+            return Doubles.compare(this.a, $$0.a);
+         }
+      }
+
+      class b extends gfk.b.a {
+         @Nullable
+         protected gfi e;
+
+         public b(double $$0, @Nullable gfi $$1, boolean $$2) {
+            super($$0, $$2);
+            this.e = $$1;
+         }
+
+         @Override
+         protected String b() {
+            return "rend_chk_rebuild";
+         }
+
+         @Override
+         public CompletableFuture<gfk.c> a(gcv $$0) {
+            if (this.b.get()) {
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else if (!b.this.a()) {
+               this.e = null;
+               b.this.a(false);
+               this.b.set(true);
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else if (this.b.get()) {
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else {
+               euk $$1 = gfk.this.e();
+               float $$2 = (float)$$1.c;
+               float $$3 = (float)$$1.d;
+               float $$4 = (float)$$1.e;
+               gfk.b.b.a $$5 = this.a($$2, $$3, $$4, $$0);
+               b.this.a($$5.a);
+               if (this.b.get()) {
+                  $$5.c.values().forEach(eyn.b::e);
+                  return CompletableFuture.completedFuture(gfk.c.b);
+               } else {
+                  gfk.a $$6 = new gfk.a();
+                  $$6.d = $$5.d;
+                  $$6.c.addAll($$5.b);
+                  $$6.e = $$5.e;
+                  List<CompletableFuture<Void>> $$7 = Lists.newArrayList();
+                  $$5.c.forEach(($$2x, $$3x) -> {
+                     $$7.add(gfk.this.a($$3x, b.this.a($$2x)));
+                     $$6.b.add($$2x);
+                  });
+                  return ac.e($$7).handle(($$1x, $$2x) -> {
+                     if ($$2x != null && !($$2x instanceof CancellationException) && !($$2x instanceof InterruptedException)) {
+                        fdz.Q().a(o.a($$2x, "Rendering section"));
+                     }
+
+                     if (this.b.get()) {
+                        return gfk.c.b;
+                     } else {
+                        b.this.c.set($$6);
+                        b.this.e.set(0);
+                        gfk.this.m.a(b.this);
+                        return gfk.c.a;
+                     }
+                  });
                }
             }
          }
+
+         private gfk.b.b.a a(float $$0, float $$1, float $$2, gcv $$3) {
+            gfk.b.b.a $$4 = new gfk.b.b.a();
+            int $$5 = 1;
+            io $$6 = b.this.l.i();
+            io $$7 = $$6.b(15, 15, 15);
+            gfl $$8 = new gfl();
+            gfi $$9 = this.e;
+            this.e = null;
+            eys $$10 = new eys();
+            if ($$9 != null) {
+               gdg.a();
+               Set<gcs> $$11 = new ReferenceArraySet(gcs.H().size());
+               ayk $$12 = ayk.a();
+               gde $$13 = fdz.Q().ap();
+
+               for (io $$14 : io.c($$6, $$7)) {
+                  drb $$15 = $$9.a_($$14);
+                  if ($$15.i($$9, $$14)) {
+                     $$8.a($$14);
+                  }
+
+                  if ($$15.t()) {
+                     dog $$16 = $$9.c_($$14);
+                     if ($$16 != null) {
+                        this.a($$4, $$16);
+                     }
+                  }
+
+                  emu $$17 = $$15.u();
+                  if (!$$17.c()) {
+                     gcs $$18 = gcf.a($$17);
+                     eyn $$19 = $$3.a($$18);
+                     if ($$11.add($$18)) {
+                        b.this.a($$19);
+                     }
+
+                     $$13.a($$14, $$9, $$19, $$15, $$17);
+                  }
+
+                  if ($$15.l() != dke.a) {
+                     gcs $$20 = gcf.a($$15);
+                     eyn $$21 = $$3.a($$20);
+                     if ($$11.add($$20)) {
+                        b.this.a($$21);
+                     }
+
+                     $$10.a();
+                     $$10.a((float)($$14.u() & 15), (float)($$14.v() & 15), (float)($$14.w() & 15));
+                     $$13.a($$15, $$14, $$9, $$10, $$21, true, $$12);
+                     $$10.b();
+                  }
+               }
+
+               if ($$11.contains(gcs.f())) {
+                  eyn $$22 = $$3.a(gcs.f());
+                  if (!$$22.b()) {
+                     $$22.a(eza.a($$0 - (float)$$6.u(), $$1 - (float)$$6.v(), $$2 - (float)$$6.w()));
+                     $$4.e = $$22.a();
+                  }
+               }
+
+               for (gcs $$23 : $$11) {
+                  eyn.b $$24 = $$3.a($$23).c();
+                  if ($$24 != null) {
+                     $$4.c.put($$23, $$24);
+                  }
+               }
+
+               gdg.b();
+            }
+
+            $$4.d = $$8.a();
+            return $$4;
+         }
+
+         private <E extends dog> void a(gfk.b.b.a $$0, E $$1) {
+            gek<E> $$2 = fdz.Q().ar().a($$1);
+            if ($$2 != null) {
+               $$0.b.add($$1);
+               if ($$2.a($$1)) {
+                  $$0.a.add($$1);
+               }
+            }
+         }
+
+         @Override
+         public void a() {
+            this.e = null;
+            if (this.b.compareAndSet(false, true)) {
+               b.this.a(false);
+            }
+         }
+
+         static final class a {
+            public final List<dog> a = new ArrayList<>();
+            public final List<dog> b = new ArrayList<>();
+            public final Map<gcs, eyn.b> c = new Reference2ObjectArrayMap();
+            public gfm d = new gfm();
+            @Nullable
+            public eyn.c e;
+         }
       }
+
+      class c extends gfk.b.a {
+         private final gfk.a f;
+
+         public c(double $$0, gfk.a $$1) {
+            super($$0, true);
+            this.f = $$1;
+         }
+
+         @Override
+         protected String b() {
+            return "rend_chk_sort";
+         }
+
+         @Override
+         public CompletableFuture<gfk.c> a(gcv $$0) {
+            if (this.b.get()) {
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else if (!b.this.a()) {
+               this.b.set(true);
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else if (this.b.get()) {
+               return CompletableFuture.completedFuture(gfk.c.b);
+            } else {
+               euk $$1 = gfk.this.e();
+               float $$2 = (float)$$1.c;
+               float $$3 = (float)$$1.d;
+               float $$4 = (float)$$1.e;
+               eyn.c $$5 = this.f.e;
+               if ($$5 != null && !this.f.a(gcs.f())) {
+                  eyn $$6 = $$0.a(gcs.f());
+                  b.this.a($$6);
+                  $$6.a($$5);
+                  $$6.a(eza.a($$2 - (float)b.this.l.u(), $$3 - (float)b.this.l.v(), $$4 - (float)b.this.l.w()));
+                  this.f.e = $$6.a();
+                  eyn.b $$7 = $$6.d();
+                  if (this.b.get()) {
+                     $$7.e();
+                     return CompletableFuture.completedFuture(gfk.c.b);
+                  } else {
+                     CompletableFuture<gfk.c> $$8 = gfk.this.a($$7, b.this.a(gcs.f())).thenApply($$0x -> gfk.c.b);
+                     return $$8.handle(($$0x, $$1x) -> {
+                        if ($$1x != null && !($$1x instanceof CancellationException) && !($$1x instanceof InterruptedException)) {
+                           fdz.Q().a(o.a($$1x, "Rendering section"));
+                        }
+
+                        return this.b.get() ? gfk.c.b : gfk.c.a;
+                     });
+                  }
+               } else {
+                  return CompletableFuture.completedFuture(gfk.c.b);
+               }
+            }
+         }
+
+         @Override
+         public void a() {
+            this.b.set(true);
+         }
+      }
+   }
+
+   static enum c {
+      a,
+      b;
    }
 }

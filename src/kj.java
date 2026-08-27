@@ -1,7 +1,7 @@
 public abstract class kj extends kh {
    private boolean c = true;
 
-   public boolean a() {
+   public boolean b() {
       return this.c;
    }
 
@@ -11,6 +11,6 @@ public abstract class kj extends kh {
 
    @Override
    protected void a(kf $$0) {
-      $$0.b().c(this.a() ? 1000 : 1001, $$0.c(), 0);
+      $$0.b().c(this.b() ? 1000 : 1001, $$0.c(), 0);
    }
 }

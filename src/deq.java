@@ -1,71 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class deq extends dga {
-   public static final MapCodec<deq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ld.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, deq::new)
-   );
-   private final dde b;
+public class deq extends dft {
+   public static final MapCodec<deq> a = b(deq::new);
+   private static final evd[] b = new evd[]{
+      ddy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<deq> a() {
       return a;
    }
 
-   public deq(dde $$0, dqg.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public deq(dra.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dad $$0, in $$1, dqh $$2, dqh $$3, chq $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.n(), 3);
-      }
+   protected daw d() {
+      return ctr.uf;
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      czj $$1 = $$0.q();
-      in $$2 = $$0.a();
-      dqh $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.n() : super.a($$0);
-   }
-
-   private static boolean a(czj $$0, in $$1, dqh $$2) {
-      return n($$2) || a($$0, $$1);
-   }
-
-   private static boolean a(czj $$0, in $$1) {
-      boolean $$2 = false;
-      in.a $$3 = $$1.j();
-
-      for (is $$4 : is.values()) {
-         dqh $$5 = $$0.a_($$3);
-         if ($$4 != is.a || n($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   private static boolean n(dqh $$0) {
-      return $$0.u().a(avw.a);
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return a($$3, $$4) ? this.b.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public int b(dqh $$0, czj $$1, in $$2) {
-      return $$0.d($$1, $$2).ak;
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return b[this.g($$0)];
    }
 }

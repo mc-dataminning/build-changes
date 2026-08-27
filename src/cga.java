@@ -1,85 +1,132 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class cga extends byx {
-   private final cfz a;
+public class cga extends buh<cfy> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final avg l;
+   private final avg m;
+   private euk n;
+   private cga.a o = cga.a.d;
 
-   public cga(cfz $$0) {
-      this.a = $$0;
+   public cga(avg $$0, avg $$1) {
+      super(ImmutableMap.of(cbs.m, cbt.b, cbs.n, cbt.c, cbs.o, cbt.a, cbs.Z, cbt.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   @Override
-   public boolean a() {
-      return this.a.dN().a(this.a.ds(), this.a.du(), this.a.dy(), 10.0);
+   protected boolean a(aqm $$0, cfy $$1) {
+      bso $$2 = $$1.dS().c(cbs.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.dS().b(cbs.o);
+         this.b($$1, $$2);
+      }
+
+      return $$3 && $$1.ar() != bta.i && cfy.j($$2);
    }
 
-   @Override
-   public void e() {
-      aqh $$0 = (aqh)this.a.dN();
-      bpk $$1 = $$0.d_(this.a.dn());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      brz $$2 = brn.al.a((dad)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.ds(), this.a.du(), this.a.dy());
-         $$2.a(true);
-         $$0.b($$2);
-         civ $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected boolean a(aqm $$0, cfy $$1, long $$2) {
+      return $$1.dS().a(cbs.o) && this.o != cga.a.d && !$$1.dS().a(cbs.Z);
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cft $$5 = this.a($$1);
-               if ($$5 != null) {
-                  civ $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.ej().a(0.0, 1.1485), 0.0, this.a.ej().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
+   protected void b(aqm $$0, cfy $$1, long $$2) {
+      bso $$3 = $$1.dS().c(cbs.o).get();
+      buj.a($$1, $$3);
+      $$1.b($$3);
+      $$1.dS().a(cbs.m, new cbv($$3.dn(), 2.0F, 0));
+      this.k = 10;
+      this.o = cga.a.a;
+   }
+
+   protected void c(aqm $$0, cfy $$1, long $$2) {
+      $$1.dS().b(cbs.o);
+      $$1.s();
+      $$1.b(bta.a);
+   }
+
+   private void b(aqm $$0, cfy $$1) {
+      $$0.a(null, $$1, this.m, avi.g, 2.0F, 1.0F);
+      Optional<bru> $$2 = $$1.u();
+      if ($$2.isPresent()) {
+         bru $$3 = $$2.get();
+         if ($$3.bD()) {
+            $$1.C($$3);
+            if (!$$3.bD()) {
+               $$3.a(bru.c.a);
             }
          }
       }
    }
 
-   @Nullable
-   private cft a(bpk $$0) {
-      cfz $$1 = brn.aN.a(this.a.dN());
-      if ($$1 != null) {
-         $$1.a((aqh)this.a.dN(), $$0, bse.k, null);
-         $$1.a_(this.a.ds(), this.a.du(), this.a.dy());
-         $$1.am = 60;
-         $$1.fT();
-         $$1.x(true);
-         $$1.c_(0);
+   protected void d(aqm $$0, cfy $$1, long $$2) {
+      bso $$3 = $$1.dS().c(cbs.o).get();
+      $$1.b($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, avi.g, 2.0F, 1.0F);
+               $$1.b(bta.j);
+               $$3.g($$3.dn().a($$1.dn()).d().a(0.75));
+               this.n = $$3.dn();
+               this.j = 0;
+               this.o = cga.a.b;
+            } else if (this.k <= 0) {
+               $$1.dS().a(cbs.m, new cbv($$3.dn(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = cga.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = cga.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
       }
-
-      return $$1;
    }
 
-   @Nullable
-   private civ a(bpk $$0, cft $$1) {
-      civ $$2 = brn.aM.a($$1.dN());
-      if ($$2 != null) {
-         $$2.a((aqh)$$1.dN(), $$0, bse.k, null);
-         $$2.a_($$1.ds(), $$1.du(), $$1.dy());
-         $$2.am = 60;
-         $$2.fT();
-         if ($$2.d(bro.f).d()) {
-            $$2.a(bro.f, new csz(ctc.pG));
-         }
-
-         $$2.a(bro.a, cyh.a($$2.ej(), this.a($$2.eV()), (int)(5.0F + $$0.d() * (float)$$2.ej().a(18)), false));
-         $$2.a(bro.f, cyh.a($$2.ej(), this.a($$2.d(bro.f)), (int)(5.0F + $$0.d() * (float)$$2.ej().a(18)), false));
-      }
-
-      return $$2;
+   private boolean a(cfy $$0, bso $$1) {
+      eni $$2 = $$0.K().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
    }
 
-   private csz a(csz $$0) {
-      $$0.b(ka.i, cyl.a);
-      return $$0;
+   private void b(cfy $$0, bso $$1) {
+      List<UUID> $$2 = $$0.dS().c(cbs.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cz());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.cz());
+      }
+
+      $$0.dS().a(cbs.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

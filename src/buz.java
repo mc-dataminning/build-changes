@@ -1,29 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class buz {
-   public static bvd<bsc> a(int $$0) {
-      return bxf.a(
-         (Function<bxf.b<bsc>, ? extends App<bxf.c<bsc>, bxi<bsc>>>)($$1 -> $$1.group($$1.a(cbd.n), $$1.b(cbd.o), $$1.c(cbd.p), $$1.b(cbd.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bsa $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<cbf>b($$5).a($$9)) {
-                        $$2.a(new bud($$9, true));
-                        $$7.a(bpl.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class buz extends buh<clj> {
+   private static final int d = 1200;
+   final float c;
+
+   public buz(float $$0) {
+      super(ImmutableMap.of(cbs.d, cbt.a), 1200);
+      this.c = $$0;
    }
 
-   private static boolean a(bsc $$0) {
-      return $$0.b($$1 -> {
-         csu $$2 = $$1.f();
-         return $$2 instanceof ctq && $$0.a((ctq)$$2);
+   protected boolean a(aqm $$0, clj $$1) {
+      return $$1.dS().g().map($$0x -> $$0x == cnl.b || $$0x == cnl.c || $$0x == cnl.d).orElse(true);
+   }
+
+   protected boolean a(aqm $$0, clj $$1, long $$2) {
+      return $$1.dS().a(cbs.d);
+   }
+
+   protected void b(aqm $$0, clj $$1, long $$2) {
+      buj.a($$1, $$1.dS().c(cbs.d).get().b(), this.c, 1);
+   }
+
+   protected void c(aqm $$0, clj $$1, long $$2) {
+      Optional<iw> $$3 = $$1.dS().c(cbs.d);
+      $$3.ifPresent($$1x -> {
+         io $$2x = $$1x.b();
+         aqm $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            cds $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            aga.c($$0, $$2x);
+         }
       });
+      $$1.dS().b(cbs.d);
    }
 }

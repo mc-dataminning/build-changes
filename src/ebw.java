@@ -1,26 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebw implements ebh {
-   public static final Codec<ebw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dqh.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dqh.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bor.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ebw::new)
-   );
-   public final dqh b;
-   public final dqh c;
-   private final bor d;
+public class ebw implements ecb {
+   public static final Codec<ebw> a = boz.b(0, 256).fieldOf("count").xmap(ebw::new, ebw::a).codec();
+   private final boz b;
 
-   public ebw(dqh $$0, dqh $$1, bor $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ebw(int $$0) {
+      this.b = bow.a($$0);
    }
 
-   public bor a() {
-      return this.d;
+   public ebw(boz $$0) {
+      this.b = $$0;
+   }
+
+   public boz a() {
+      return this.b;
    }
 }

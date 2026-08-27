@@ -1,61 +1,87 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dmv extends dde {
-   public static final MapCodec<dmv> a = b(dmv::new);
+public class dmv extends dcp {
+   public static final MapCodec<dmv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csh.q.fieldOf("color").forGetter(dcp::b), u()).apply($$0, dmv::new));
+   public static final drv b = dhu.aE;
+   private static final Map<it, evd> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         it.c,
+         ddy.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         it.d,
+         ddy.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         it.e,
+         ddy.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         it.f,
+         ddy.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
    @Override
    public MapCodec<dmv> a() {
       return a;
    }
 
-   protected dmv(dqg.d $$0) {
-      super($$0);
+   public dmv(csh $$0, dra.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, it.c));
    }
 
    @Override
-   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, ddg.aO.n(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, avc.BW, avd.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
-      }
+   public String g() {
+      return this.q().a();
    }
 
    @Override
-   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
-      is $$4 = is.b($$3);
-      if ($$4 != is.b) {
-         in $$5 = $$2.a($$4);
-         dqh $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == is.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == is.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == is.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == is.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
+   protected boolean a(drb $$0, dba $$1, io $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public drb a(cwz $$0) {
+      drb $$1 = this.n();
+      dba $$2 = $$0.q();
+      io $$3 = $$0.a();
+      it[] $$4 = $$0.f();
+
+      for (it $$5 : $$4) {
+         if ($$5.o().d()) {
+            it $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
-
-            $$1.a(kx.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected drb a(drb $$0, dkl $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected drb a(drb $$0, div $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b);
    }
 }

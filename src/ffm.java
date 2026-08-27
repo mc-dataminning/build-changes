@@ -1,564 +1,657 @@
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.DataFixUtils;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.util.EnumMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.client.ClientBrandRetriever;
+import org.joml.Matrix4f;
+import org.joml.Vector2ic;
 
 public class ffm {
-   private static final int a = 14737632;
-   private static final int b = 2;
+   public static final float a = 10000.0F;
+   public static final float b = -10000.0F;
    private static final int c = 2;
-   private static final int d = 2;
-   private static final Map<dvz.a, String> e = ac.a(new EnumMap<>(dvz.a.class), $$0 -> {
-      $$0.put(dvz.a.a, "SW");
-      $$0.put(dvz.a.b, "S");
-      $$0.put(dvz.a.c, "OW");
-      $$0.put(dvz.a.d, "O");
-      $$0.put(dvz.a.e, "M");
-      $$0.put(dvz.a.f, "ML");
-   });
-   private final fde f;
-   private final ffm.a g;
-   private final fep h;
-   private etn i;
-   private etn j;
-   @Nullable
-   private czk k;
-   @Nullable
-   private dsn l;
-   @Nullable
-   private CompletableFuture<dsn> m;
-   private boolean n;
-   private boolean o;
-   private boolean p;
-   private boolean q;
-   private final bkm r = new bkm(1);
-   private final bkm s = new bkm(bkr.values().length);
-   private final bkm t = new bkm(1);
-   private final bkm u = new bkm(1);
-   private final Map<bkn, bkm> v = Map.of(bkn.a, this.s);
-   private final fgv w;
-   private final fgx x;
-   private final fgw y;
-   private final fgu z;
+   private final fdz d;
+   private final eys e;
+   private final gck.a f;
+   private final ffm.a g = new ffm.a();
+   private final ffn h;
+   private boolean i;
 
-   public ffm(fde $$0) {
-      this.f = $$0;
-      this.g = new ffm.a();
-      this.h = $$0.h;
-      this.w = new fgv(this.h, this.r);
-      this.x = new fgx(this.h, this.s, () -> $$0.r.s().g());
-      this.y = new fgw(this.h, this.t);
-      this.z = new fgu(this.h, this.u);
+   private ffm(fdz $$0, eys $$1, gck.a $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.h = $$0.aI();
    }
 
-   public void a() {
-      this.m = null;
-      this.l = null;
+   public ffm(fdz $$0, gck.a $$1) {
+      this($$0, new eys(), $$1);
    }
 
-   public void a(fer $$0) {
-      this.f.aJ().a("debug");
-      brh $$1 = this.f.ao();
-      this.i = $$1.a(20.0, 0.0F, false);
-      this.j = $$1.a(20.0, 0.0F, true);
-      $$0.a(() -> {
-         this.b($$0);
-         this.c($$0);
-         if (this.p) {
-            int $$1x = $$0.a();
-            int $$2 = $$1x / 2;
-            this.w.a($$0, 0, this.w.a($$2));
-            if (this.s.d() > 0) {
-               int $$3 = this.x.a($$2);
-               this.x.a($$0, $$1x - $$3, $$3);
-            }
-         }
-
-         if (this.q) {
-            int $$4 = $$0.a();
-            int $$5 = $$4 / 2;
-            if (!this.f.T()) {
-               this.z.a($$0, 0, this.z.a($$5));
-            }
-
-            int $$6 = this.y.a($$5);
-            this.y.a($$0, $$4 - $$6, $$6);
-         }
-      });
-      this.f.aJ().c();
+   @Deprecated
+   public void a(Runnable $$0) {
+      this.e();
+      this.i = true;
+      $$0.run();
+      this.i = false;
+      this.e();
    }
 
-   protected void b(fer $$0) {
-      List<String> $$1 = this.b();
-      $$1.add("");
-      boolean $$2 = this.f.V() != null;
-      $$1.add(
-         "Debug charts: [F3+1] Profiler "
-            + (this.o ? "visible" : "hidden")
-            + "; [F3+2] "
-            + ($$2 ? "FPS + TPS " : "FPS ")
-            + (this.p ? "visible" : "hidden")
-            + "; [F3+3] "
-            + (!this.f.T() ? "Bandwidth + Ping" : "Ping")
-            + (this.q ? " visible" : " hidden")
-      );
-      $$1.add("For help: press F3 + Q");
-      this.a($$0, $$1, true);
-   }
-
-   protected void c(fer $$0) {
-      List<String> $$1 = this.c();
-      this.a($$0, $$1, false);
-   }
-
-   private void a(fer $$0, List<String> $$1, boolean $$2) {
-      int $$3 = 9;
-
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         String $$5 = $$1.get($$4);
-         if (!Strings.isNullOrEmpty($$5)) {
-            int $$6 = this.h.b($$5);
-            int $$7 = $$2 ? 2 : $$0.a() - 2 - $$6;
-            int $$8 = 2 + $$3 * $$4;
-            $$0.a($$7 - 1, $$8 - 1, $$7 + $$6 + 1, $$8 + $$3 - 1, -1873784752);
-         }
-      }
-
-      for (int $$9 = 0; $$9 < $$1.size(); $$9++) {
-         String $$10 = $$1.get($$9);
-         if (!Strings.isNullOrEmpty($$10)) {
-            int $$11 = this.h.b($$10);
-            int $$12 = $$2 ? 2 : $$0.a() - 2 - $$11;
-            int $$13 = 2 + $$3 * $$9;
-            $$0.a(this.h, $$10, $$12, $$13, 14737632, false);
-         }
+   @Deprecated
+   private void g() {
+      if (!this.i) {
+         this.e();
       }
    }
 
-   protected List<String> b() {
-      grd $$0 = this.f.V();
-      fvx $$1 = this.f.L();
-      vs $$2 = $$1.l();
-      float $$3 = $$2.p();
-      float $$4 = $$2.o();
-      bpx $$5 = this.r().s();
-      String $$6;
-      if ($$5.j()) {
-         $$6 = " (frozen - stepping)";
-      } else if ($$5.l()) {
-         $$6 = " (frozen)";
-      } else {
-         $$6 = "";
+   @Deprecated
+   private void h() {
+      if (this.i) {
+         this.e();
+      }
+   }
+
+   public int a() {
+      return this.d.aP().o();
+   }
+
+   public int b() {
+      return this.d.aP().p();
+   }
+
+   public eys c() {
+      return this.e;
+   }
+
+   public gck.a d() {
+      return this.f;
+   }
+
+   public void e() {
+      RenderSystem.disableDepthTest();
+      this.f.b();
+      RenderSystem.enableDepthTest();
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(gcs.D(), $$0, $$1, $$2, $$3);
+   }
+
+   public void a(gcs $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$2 < $$1) {
+         int $$5 = $$1;
+         $$1 = $$2;
+         $$2 = $$5;
       }
 
-      String $$12;
+      this.a($$0, $$1, $$3, $$2 + 1, $$3 + 1, $$4);
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b(gcs.D(), $$0, $$1, $$2, $$3);
+   }
+
+   public void b(gcs $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$3 < $$2) {
+         int $$5 = $$2;
+         $$2 = $$3;
+         $$3 = $$5;
+      }
+
+      this.a($$0, $$1, $$2 + 1, $$1 + 1, $$3, $$4);
+   }
+
+   public void c(int $$0, int $$1, int $$2, int $$3) {
+      this.a(this.g.a(new fkf($$0, $$1, $$2 - $$0, $$3 - $$1)));
+   }
+
+   public void f() {
+      this.a(this.g.a());
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.g.a($$0, $$1);
+   }
+
+   private void a(@Nullable fkf $$0) {
+      this.h();
       if ($$0 != null) {
-         ala $$9 = $$0.aQ();
-         boolean $$10 = $$9.a();
-         if ($$10) {
-            $$6 = " (sprinting)";
-         }
-
-         String $$11 = $$10 ? "-" : String.format(Locale.ROOT, "%.1f", $$5.g());
-         $$12 = String.format(Locale.ROOT, "Integrated server @ %.1f/%s ms%s, %.0f tx, %.0f rx", $$0.aP(), $$11, $$6, $$3, $$4);
+         exw $$1 = fdz.Q().aP();
+         int $$2 = $$1.l();
+         double $$3 = $$1.s();
+         double $$4 = (double)$$0.d() * $$3;
+         double $$5 = (double)$$2 - (double)$$0.c() * $$3;
+         double $$6 = (double)$$0.g() * $$3;
+         double $$7 = (double)$$0.h() * $$3;
+         RenderSystem.enableScissor((int)$$4, (int)$$5, Math.max(0, (int)$$6), Math.max(0, (int)$$7));
       } else {
-         $$12 = String.format(Locale.ROOT, "\"%s\" server%s, %.0f tx, %.0f rx", $$1.g(), $$6, $$3, $$4);
+         RenderSystem.disableScissor();
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.h();
+      RenderSystem.setShaderColor($$0, $$1, $$2, $$3);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3, 0, $$4);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a(gcs.D(), $$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(gcs $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4, 0, $$5);
+   }
+
+   public void a(gcs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      Matrix4f $$7 = this.e.c().a();
+      if ($$1 < $$3) {
+         int $$8 = $$1;
+         $$1 = $$3;
+         $$3 = $$8;
       }
 
-      in $$14 = this.f.ao().dn();
-      if (this.f.ax()) {
-         return Lists.newArrayList(
-            new String[]{
-               "Minecraft " + aa.b().c() + " (" + this.f.i() + "/" + ClientBrandRetriever.getClientModName() + ")",
-               this.f.z,
-               $$12,
-               this.f.f.g(),
-               this.f.f.l(),
-               "P: " + this.f.g.d() + ". T: " + this.f.r.h(),
-               this.f.r.I(),
-               "",
-               String.format(Locale.ROOT, "Chunk-relative: %d %d %d", $$14.u() & 15, $$14.v() & 15, $$14.w() & 15)
-            }
-         );
+      if ($$2 < $$4) {
+         int $$9 = $$2;
+         $$2 = $$4;
+         $$4 = $$9;
+      }
+
+      float $$10 = (float)axo.b.a($$6) / 255.0F;
+      float $$11 = (float)axo.b.b($$6) / 255.0F;
+      float $$12 = (float)axo.b.c($$6) / 255.0F;
+      float $$13 = (float)axo.b.d($$6) / 255.0F;
+      eyw $$14 = this.f.getBuffer($$0);
+      $$14.a($$7, (float)$$1, (float)$$2, (float)$$5).a($$11, $$12, $$13, $$10).e();
+      $$14.a($$7, (float)$$1, (float)$$4, (float)$$5).a($$11, $$12, $$13, $$10).e();
+      $$14.a($$7, (float)$$3, (float)$$4, (float)$$5).a($$11, $$12, $$13, $$10).e();
+      $$14.a($$7, (float)$$3, (float)$$2, (float)$$5).a($$11, $$12, $$13, $$10).e();
+      this.g();
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a($$0, $$1, $$2, $$3, 0, $$4, $$5);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.a(gcs.D(), $$0, $$1, $$2, $$3, $$5, $$6, $$4);
+   }
+
+   public void a(gcs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      eyw $$8 = this.f.getBuffer($$0);
+      this.a($$8, $$1, $$2, $$3, $$4, $$7, $$5, $$6);
+      this.g();
+   }
+
+   private void a(eyw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      float $$8 = (float)axo.b.a($$6) / 255.0F;
+      float $$9 = (float)axo.b.b($$6) / 255.0F;
+      float $$10 = (float)axo.b.c($$6) / 255.0F;
+      float $$11 = (float)axo.b.d($$6) / 255.0F;
+      float $$12 = (float)axo.b.a($$7) / 255.0F;
+      float $$13 = (float)axo.b.b($$7) / 255.0F;
+      float $$14 = (float)axo.b.c($$7) / 255.0F;
+      float $$15 = (float)axo.b.d($$7) / 255.0F;
+      Matrix4f $$16 = this.e.c().a();
+      $$0.a($$16, (float)$$1, (float)$$2, (float)$$5).a($$9, $$10, $$11, $$8).e();
+      $$0.a($$16, (float)$$1, (float)$$4, (float)$$5).a($$13, $$14, $$15, $$12).e();
+      $$0.a($$16, (float)$$3, (float)$$4, (float)$$5).a($$13, $$14, $$15, $$12).e();
+      $$0.a($$16, (float)$$3, (float)$$2, (float)$$5).a($$9, $$10, $$11, $$8).e();
+   }
+
+   public void b(gcs $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Matrix4f $$6 = this.e.c().a();
+      eyw $$7 = this.f.getBuffer($$0);
+      $$7.a($$6, (float)$$1, (float)$$2, (float)$$5).e();
+      $$7.a($$6, (float)$$1, (float)$$4, (float)$$5).e();
+      $$7.a($$6, (float)$$3, (float)$$4, (float)$$5).e();
+      $$7.a($$6, (float)$$3, (float)$$2, (float)$$5).e();
+      this.g();
+   }
+
+   public void a(ffk $$0, String $$1, int $$2, int $$3, int $$4) {
+      this.b($$0, $$1, $$2 - $$0.b($$1) / 2, $$3, $$4);
+   }
+
+   public void a(ffk $$0, wx $$1, int $$2, int $$3, int $$4) {
+      axq $$5 = $$1.g();
+      this.b($$0, $$5, $$2 - $$0.a($$5) / 2, $$3, $$4);
+   }
+
+   public void a(ffk $$0, axq $$1, int $$2, int $$3, int $$4) {
+      this.b($$0, $$1, $$2 - $$0.a($$1) / 2, $$3, $$4);
+   }
+
+   public int b(ffk $$0, @Nullable String $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, true);
+   }
+
+   public int a(ffk $$0, @Nullable String $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$1 == null) {
+         return 0;
       } else {
-         brh $$15 = this.f.ao();
-         is $$16 = $$15.cF();
+         int $$6 = $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, ffk.a.a, 0, 15728880, $$0.a());
+         this.g();
+         return $$6;
+      }
+   }
 
-         String $$21 = switch ($$16) {
-            case c -> "Towards negative Z";
-            case d -> "Towards positive Z";
-            case e -> "Towards negative X";
-            case f -> "Towards positive X";
-            default -> "Invalid";
-         };
-         czk $$22 = new czk($$14);
-         if (!Objects.equals(this.k, $$22)) {
-            this.k = $$22;
-            this.a();
-         }
+   public int b(ffk $$0, axq $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, true);
+   }
 
-         dad $$23 = this.r();
-         LongSet $$24 = (LongSet)($$23 instanceof aqh ? ((aqh)$$23).w() : LongSets.EMPTY_SET);
-         List<String> $$25 = Lists.newArrayList(
-            new String[]{
-               "Minecraft "
-                  + aa.b().c()
-                  + " ("
-                  + this.f.i()
-                  + "/"
-                  + ClientBrandRetriever.getClientModName()
-                  + ("release".equalsIgnoreCase(this.f.j()) ? "" : "/" + this.f.j())
-                  + ")",
-               this.f.z,
-               $$12,
-               this.f.f.g(),
-               this.f.f.l(),
-               "P: " + this.f.g.d() + ". T: " + this.f.r.h(),
-               this.f.r.I()
-            }
+   public int a(ffk $$0, axq $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, ffk.a.a, 0, 15728880);
+      this.g();
+      return $$6;
+   }
+
+   public int b(ffk $$0, wx $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, true);
+   }
+
+   public int a(ffk $$0, wx $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return this.a($$0, $$1.g(), $$2, $$3, $$4, $$5);
+   }
+
+   public void a(ffk $$0, xc $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (axq $$6 : $$0.c($$1, $$4)) {
+         this.a($$0, $$6, $$2, $$3, $$5, false);
+         $$3 += 9;
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, gnv $$5) {
+      this.a($$5, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, gnv $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$5.i(), $$0, $$0 + $$3, $$1, $$1 + $$4, $$2, $$5.c(), $$5.d(), $$5.g(), $$5.h(), $$6, $$7, $$8, $$9);
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$0 + $$2, $$1 + 1, $$4);
+      this.a($$0, $$1 + $$3 - 1, $$0 + $$2, $$1 + $$3, $$4);
+      this.a($$0, $$1 + 1, $$0 + 1, $$1 + $$3 - 1, $$4);
+      this.a($$0 + $$2 - 1, $$1 + 1, $$0 + $$2, $$1 + $$3 - 1, $$4);
+   }
+
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, 0, $$3, $$4);
+   }
+
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      gnv $$6 = this.h.a($$0);
+      gpn $$7 = this.h.a($$6);
+      if ($$7 instanceof gpn.b) {
+         this.a($$6, $$1, $$2, $$3, $$4, $$5);
+      } else if ($$7 instanceof gpn.c $$8) {
+         this.a($$6, $$1, $$2, $$3, $$4, $$5, 0, 0, $$8.b(), $$8.c(), $$8.b(), $$8.c());
+      } else if ($$7 instanceof gpn.a $$9) {
+         this.a($$6, $$9, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0, $$7, $$8);
+   }
+
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
+      gnv $$10 = this.h.a($$0);
+      gpn $$11 = this.h.a($$10);
+      if ($$11 instanceof gpn.b) {
+         this.a($$10, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      } else {
+         this.a($$10, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   private void a(gnv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
+      if ($$8 != 0 && $$9 != 0) {
+         this.a(
+            $$0.i(),
+            $$5,
+            $$5 + $$8,
+            $$6,
+            $$6 + $$9,
+            $$7,
+            $$0.a((float)$$3 / (float)$$1),
+            $$0.a((float)($$3 + $$8) / (float)$$1),
+            $$0.c((float)$$4 / (float)$$2),
+            $$0.c((float)($$4 + $$9) / (float)$$2)
          );
-         String $$26 = this.q();
-         if ($$26 != null) {
-            $$25.add($$26);
-         }
-
-         $$25.add(this.f.r.ae().a() + " FC: " + $$24.size());
-         $$25.add("");
-         $$25.add(String.format(Locale.ROOT, "XYZ: %.3f / %.5f / %.3f", this.f.ao().ds(), this.f.ao().du(), this.f.ao().dy()));
-         $$25.add(String.format(Locale.ROOT, "Block: %d %d %d [%d %d %d]", $$14.u(), $$14.v(), $$14.w(), $$14.u() & 15, $$14.v() & 15, $$14.w() & 15));
-         $$25.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$22.e, jp.a($$14.v()), $$22.f, $$22.j(), $$22.k(), $$22.h(), $$22.i()));
-         $$25.add(String.format(Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", $$16, $$21, axz.g($$15.dD()), axz.g($$15.dF())));
-         dsn $$27 = this.t();
-         if ($$27.C()) {
-            $$25.add("Waiting for chunk...");
-         } else {
-            int $$28 = this.f.r.i().p().a($$14, 0);
-            int $$29 = this.f.r.a(dam.a, $$14);
-            int $$30 = this.f.r.a(dam.b, $$14);
-            $$25.add("Client Light: " + $$28 + " (" + $$29 + " sky, " + $$30 + " block)");
-            dsn $$31 = this.s();
-            StringBuilder $$32 = new StringBuilder("CH");
-
-            for (dvz.a $$33 : dvz.a.values()) {
-               if ($$33.b()) {
-                  $$32.append(" ").append(e.get($$33)).append(": ").append($$27.a($$33, $$14.u(), $$14.w()));
-               }
-            }
-
-            $$25.add($$32.toString());
-            $$32.setLength(0);
-            $$32.append("SH");
-
-            for (dvz.a $$34 : dvz.a.values()) {
-               if ($$34.d()) {
-                  $$32.append(" ").append(e.get($$34)).append(": ");
-                  if ($$31 != null) {
-                     $$32.append($$31.a($$34, $$14.u(), $$14.w()));
-                  } else {
-                     $$32.append("??");
-                  }
-               }
-            }
-
-            $$25.add($$32.toString());
-            if ($$14.v() >= this.f.r.I_() && $$14.v() < this.f.r.al()) {
-               $$25.add("Biome: " + a(this.f.r.t($$14)));
-               if ($$31 != null) {
-                  float $$35 = $$23.ap();
-                  long $$36 = $$31.u();
-                  bpk $$37 = new bpk($$23.ak(), $$23.Z(), $$36, $$35);
-                  $$25.add(String.format(Locale.ROOT, "Local Difficulty: %.2f // %.2f (Day %d)", $$37.b(), $$37.d(), this.f.r.Z() / 24000L));
-               } else {
-                  $$25.add("Local Difficulty: ??");
-               }
-            }
-
-            if ($$31 != null && $$31.s()) {
-               $$25.add("Blending: Old");
-            }
-         }
-
-         aqh $$38 = this.p();
-         if ($$38 != null) {
-            aqf $$39 = $$38.l();
-            dse $$40 = $$39.g();
-            dwn $$41 = $$39.i();
-            $$40.a($$25, $$41, $$14);
-            dbl.f $$42 = $$41.b();
-            dbg $$43 = $$40.c();
-            $$43.a($$25, $$14, $$42);
-            dao.d $$44 = $$39.n();
-            if ($$44 != null) {
-               Object2IntMap<bsd> $$45 = $$44.b();
-               int $$46 = $$44.a();
-               $$25.add(
-                  "SC: "
-                     + $$46
-                     + ", "
-                     + Stream.of(bsd.values())
-                        .map($$1x -> Character.toUpperCase($$1x.a().charAt(0)) + ": " + $$45.getInt($$1x))
-                        .collect(Collectors.joining(", "))
-               );
-            } else {
-               $$25.add("SC: N/A");
-            }
-         }
-
-         gbr $$47 = this.f.j.g();
-         if ($$47 != null) {
-            $$25.add("Shader: " + $$47.a());
-         }
-
-         $$25.add(this.f.ak().j() + String.format(Locale.ROOT, " (Mood %d%%)", Math.round(this.f.s.d() * 100.0F)));
-         return $$25;
       }
    }
 
-   private static String a(iw<dbc> $$0) {
-      return (String)$$0.d().map($$0x -> $$0x.a().toString(), $$0x -> "[unregistered " + $$0x + "]");
-   }
-
-   @Nullable
-   private aqh p() {
-      grd $$0 = this.f.V();
-      return $$0 != null ? $$0.a(this.f.r.ae()) : null;
-   }
-
-   @Nullable
-   private String q() {
-      aqh $$0 = this.p();
-      return $$0 != null ? $$0.I() : null;
-   }
-
-   private dad r() {
-      return (dad)DataFixUtils.orElse(Optional.ofNullable(this.f.V()).flatMap($$0 -> Optional.ofNullable($$0.a(this.f.r.ae()))), this.f.r);
-   }
-
-   @Nullable
-   private dsn s() {
-      if (this.m == null) {
-         aqh $$0 = this.p();
-         if ($$0 == null) {
-            return null;
-         }
-
-         this.m = $$0.l().b(this.k.e, this.k.f, dtc.n, false).thenApply($$0x -> (dsn)$$0x.b(null));
+   private void a(gnv $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      if ($$4 != 0 && $$5 != 0) {
+         this.a($$0.i(), $$1, $$1 + $$4, $$2, $$2 + $$5, $$3, $$0.c(), $$0.d(), $$0.g(), $$0.h());
       }
-
-      return this.m.getNow(null);
    }
 
-   private dsn t() {
-      if (this.l == null) {
-         this.l = this.f.r.d(this.k.e, this.k.f);
-      }
-
-      return this.l;
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.a($$0, $$1, $$2, 0, (float)$$3, (float)$$4, $$5, $$6, 256, 256);
    }
 
-   protected List<String> c() {
-      long $$0 = Runtime.getRuntime().maxMemory();
-      long $$1 = Runtime.getRuntime().totalMemory();
-      long $$2 = Runtime.getRuntime().freeMemory();
-      long $$3 = $$1 - $$2;
-      List<String> $$4 = Lists.newArrayList(
-         new String[]{
-            String.format(Locale.ROOT, "Java: %s %dbit", System.getProperty("java.version"), this.f.ah() ? 64 : 32),
-            String.format(Locale.ROOT, "Mem: %2d%% %03d/%03dMB", $$3 * 100L / $$0, b($$3), b($$0)),
-            String.format(Locale.ROOT, "Allocation rate: %03dMB/s", b(this.g.a($$3))),
-            String.format(Locale.ROOT, "Allocated: %2d%% %03dMB", $$1 * 100L / $$0, b($$1)),
-            "",
-            String.format(Locale.ROOT, "CPU: %s", ewq.b()),
-            "",
-            String.format(Locale.ROOT, "Display: %dx%d (%s)", fde.Q().aP().k(), fde.Q().aP().l(), ewq.a()),
-            ewq.c(),
-            ewq.d()
-         }
+   public void a(akm $$0, int $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9) {
+      this.a($$0, $$1, $$1 + $$6, $$2, $$2 + $$7, $$3, $$6, $$7, $$4, $$5, $$8, $$9);
+   }
+
+   public void a(akm $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
+      this.a($$0, $$1, $$1 + $$3, $$2, $$2 + $$4, 0, $$7, $$8, $$5, $$6, $$9, $$10);
+   }
+
+   public void a(akm $$0, int $$1, int $$2, float $$3, float $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$0, $$1, $$2, $$5, $$6, $$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10, int $$11) {
+      this.a(
+         $$0,
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5,
+         ($$8 + 0.0F) / (float)$$10,
+         ($$8 + (float)$$6) / (float)$$10,
+         ($$9 + 0.0F) / (float)$$11,
+         ($$9 + (float)$$7) / (float)$$11
       );
-      if (this.f.ax()) {
-         return $$4;
+   }
+
+   void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, float $$9) {
+      RenderSystem.setShaderTexture(0, $$0);
+      RenderSystem.setShader(gcd::s);
+      Matrix4f $$10 = this.e.c().a();
+      eyn $$11 = eyu.b().d();
+      $$11.a(eyx.b.h, eyq.q);
+      $$11.a($$10, (float)$$1, (float)$$3, (float)$$5).a($$6, $$8).e();
+      $$11.a($$10, (float)$$1, (float)$$4, (float)$$5).a($$6, $$9).e();
+      $$11.a($$10, (float)$$2, (float)$$4, (float)$$5).a($$7, $$9).e();
+      $$11.a($$10, (float)$$2, (float)$$3, (float)$$5).a($$7, $$8).e();
+      eyo.a($$11.d());
+   }
+
+   void a(akm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12, float $$13) {
+      RenderSystem.setShaderTexture(0, $$0);
+      RenderSystem.setShader(gcd::r);
+      RenderSystem.enableBlend();
+      Matrix4f $$14 = this.e.c().a();
+      eyn $$15 = eyu.b().d();
+      $$15.a(eyx.b.h, eyq.r);
+      $$15.a($$14, (float)$$1, (float)$$3, (float)$$5).a($$10, $$11, $$12, $$13).a($$6, $$8).e();
+      $$15.a($$14, (float)$$1, (float)$$4, (float)$$5).a($$10, $$11, $$12, $$13).a($$6, $$9).e();
+      $$15.a($$14, (float)$$2, (float)$$4, (float)$$5).a($$10, $$11, $$12, $$13).a($$7, $$9).e();
+      $$15.a($$14, (float)$$2, (float)$$3, (float)$$5).a($$10, $$11, $$12, $$13).a($$7, $$8).e();
+      eyo.a($$15.d());
+      RenderSystem.disableBlend();
+   }
+
+   private void a(gnv $$0, gpn.a $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      gpn.a.a $$7 = $$1.d();
+      int $$8 = Math.min($$7.a(), $$5 / 2);
+      int $$9 = Math.min($$7.c(), $$5 / 2);
+      int $$10 = Math.min($$7.b(), $$6 / 2);
+      int $$11 = Math.min($$7.d(), $$6 / 2);
+      if ($$5 == $$1.b() && $$6 == $$1.c()) {
+         this.a($$0, $$1.b(), $$1.c(), 0, 0, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$6 == $$1.c()) {
+         this.a($$0, $$1.b(), $$1.c(), 0, 0, $$2, $$3, $$4, $$8, $$6);
+         this.a($$0, $$2 + $$8, $$3, $$4, $$5 - $$9 - $$8, $$6, $$8, 0, $$1.b() - $$9 - $$8, $$1.c(), $$1.b(), $$1.c());
+         this.a($$0, $$1.b(), $$1.c(), $$1.b() - $$9, 0, $$2 + $$5 - $$9, $$3, $$4, $$9, $$6);
+      } else if ($$5 == $$1.b()) {
+         this.a($$0, $$1.b(), $$1.c(), 0, 0, $$2, $$3, $$4, $$5, $$10);
+         this.a($$0, $$2, $$3 + $$10, $$4, $$5, $$6 - $$11 - $$10, 0, $$10, $$1.b(), $$1.c() - $$11 - $$10, $$1.b(), $$1.c());
+         this.a($$0, $$1.b(), $$1.c(), 0, $$1.c() - $$11, $$2, $$3 + $$6 - $$11, $$4, $$5, $$11);
       } else {
-         if (this.i.c() == etn.a.b) {
-            in $$5 = ((etl)this.i).a();
-            dqh $$6 = this.f.r.a_($$5);
-            $$4.add("");
-            $$4.add(n.t + "Targeted Block: " + $$5.u() + ", " + $$5.v() + ", " + $$5.w());
-            $$4.add(String.valueOf(ld.e.b($$6.b())));
+         this.a($$0, $$1.b(), $$1.c(), 0, 0, $$2, $$3, $$4, $$8, $$10);
+         this.a($$0, $$2 + $$8, $$3, $$4, $$5 - $$9 - $$8, $$10, $$8, 0, $$1.b() - $$9 - $$8, $$10, $$1.b(), $$1.c());
+         this.a($$0, $$1.b(), $$1.c(), $$1.b() - $$9, 0, $$2 + $$5 - $$9, $$3, $$4, $$9, $$10);
+         this.a($$0, $$1.b(), $$1.c(), 0, $$1.c() - $$11, $$2, $$3 + $$6 - $$11, $$4, $$8, $$11);
+         this.a($$0, $$2 + $$8, $$3 + $$6 - $$11, $$4, $$5 - $$9 - $$8, $$11, $$8, $$1.c() - $$11, $$1.b() - $$9 - $$8, $$11, $$1.b(), $$1.c());
+         this.a($$0, $$1.b(), $$1.c(), $$1.b() - $$9, $$1.c() - $$11, $$2 + $$5 - $$9, $$3 + $$6 - $$11, $$4, $$9, $$11);
+         this.a($$0, $$2, $$3 + $$10, $$4, $$8, $$6 - $$11 - $$10, 0, $$10, $$8, $$1.c() - $$11 - $$10, $$1.b(), $$1.c());
+         this.a($$0, $$2 + $$8, $$3 + $$10, $$4, $$5 - $$9 - $$8, $$6 - $$11 - $$10, $$8, $$10, $$1.b() - $$9 - $$8, $$1.c() - $$11 - $$10, $$1.b(), $$1.c());
+         this.a($$0, $$2 + $$5 - $$9, $$3 + $$10, $$4, $$8, $$6 - $$11 - $$10, $$1.b() - $$9, $$10, $$9, $$1.c() - $$11 - $$10, $$1.b(), $$1.c());
+      }
+   }
 
-            for (Entry<drk<?>, Comparable<?>> $$7 : $$6.C().entrySet()) {
-               $$4.add(this.a($$7));
+   private void a(gnv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11) {
+      if ($$4 > 0 && $$5 > 0) {
+         if ($$8 > 0 && $$9 > 0) {
+            for (int $$12 = 0; $$12 < $$4; $$12 += $$8) {
+               int $$13 = Math.min($$8, $$4 - $$12);
+
+               for (int $$14 = 0; $$14 < $$5; $$14 += $$9) {
+                  int $$15 = Math.min($$9, $$5 - $$14);
+                  this.a($$0, $$10, $$11, $$6, $$7, $$1 + $$12, $$2 + $$14, $$3, $$13, $$15);
+               }
+            }
+         } else {
+            throw new IllegalArgumentException("Tiled sprite texture size must be positive, got " + $$8 + "x" + $$9);
+         }
+      }
+   }
+
+   public void a(cto $$0, int $$1, int $$2) {
+      this.a(this.d.s, this.d.r, $$0, $$1, $$2, 0);
+   }
+
+   public void a(cto $$0, int $$1, int $$2, int $$3) {
+      this.a(this.d.s, this.d.r, $$0, $$1, $$2, $$3);
+   }
+
+   public void a(cto $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a(this.d.s, this.d.r, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void b(cto $$0, int $$1, int $$2) {
+      this.b($$0, $$1, $$2, 0);
+   }
+
+   public void b(cto $$0, int $$1, int $$2, int $$3) {
+      this.a(null, this.d.r, $$0, $$1, $$2, $$3);
+   }
+
+   public void a(bso $$0, cto $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$0.dP(), $$1, $$2, $$3, $$4);
+   }
+
+   private void a(@Nullable bso $$0, @Nullable dax $$1, cto $$2, int $$3, int $$4, int $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, 0);
+   }
+
+   private void a(@Nullable bso $$0, @Nullable dax $$1, cto $$2, int $$3, int $$4, int $$5, int $$6) {
+      if (!$$2.e()) {
+         gpw $$7 = this.d.as().a($$2, $$1, $$0, $$5);
+         this.e.a();
+         this.e.a((float)($$3 + 8), (float)($$4 + 8), (float)(150 + ($$7.b() ? $$6 : 0)));
+
+         try {
+            this.e.b(16.0F, -16.0F, 16.0F);
+            boolean $$8 = !$$7.c();
+            if ($$8) {
+               exo.c();
             }
 
-            $$6.s().map($$0x -> "#" + $$0x.b()).forEach($$4::add);
+            this.d.as().a($$2, ctl.g, false, this.e, this.d(), 15728880, gnm.d, $$7);
+            this.e();
+            if ($$8) {
+               exo.d();
+            }
+         } catch (Throwable var12) {
+            o $$10 = o.a(var12, "Rendering item");
+            p $$11 = $$10.a("Item being rendered");
+            $$11.a("Item Type", () -> String.valueOf($$2.g()));
+            $$11.a("Item Components", () -> String.valueOf($$2.a()));
+            $$11.a("Item Foil", () -> String.valueOf($$2.y()));
+            throw new y($$10);
          }
 
-         if (this.j.c() == etn.a.b) {
-            in $$8 = ((etl)this.j).a();
-            ema $$9 = this.f.r.b_($$8);
-            $$4.add("");
-            $$4.add(n.t + "Targeted Fluid: " + $$8.u() + ", " + $$8.v() + ", " + $$8.w());
-            $$4.add(String.valueOf(ld.c.b($$9.a())));
+         this.e.b();
+      }
+   }
 
-            for (Entry<drk<?>, Comparable<?>> $$10 : $$9.C().entrySet()) {
-               $$4.add(this.a($$10));
+   public void a(ffk $$0, cto $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, null);
+   }
+
+   public void a(ffk $$0, cto $$1, int $$2, int $$3, @Nullable String $$4) {
+      if (!$$1.e()) {
+         this.e.a();
+         if ($$1.I() != 1 || $$4 != null) {
+            String $$5 = $$4 == null ? String.valueOf($$1.I()) : $$4;
+            this.e.a(0.0F, 0.0F, 200.0F);
+            this.a($$0, $$5, $$2 + 19 - 2 - $$0.b($$5), $$3 + 6 + 3, 16777215, true);
+         }
+
+         if ($$1.p()) {
+            int $$6 = $$1.q();
+            int $$7 = $$1.r();
+            int $$8 = $$2 + 2;
+            int $$9 = $$3 + 13;
+            this.a(gcs.E(), $$8, $$9, $$8 + 13, $$9 + 2, -16777216);
+            this.a(gcs.E(), $$8, $$9, $$8 + $$6, $$9 + 1, $$7 | 0xFF000000);
+         }
+
+         gbm $$10 = this.d.s;
+         float $$11 = $$10 == null ? 0.0F : $$10.gx().a($$1.g(), this.d.au());
+         if ($$11 > 0.0F) {
+            int $$12 = $$3 + ayd.d(16.0F * (1.0F - $$11));
+            int $$13 = $$12 + ayd.f(16.0F * $$11);
+            this.a(gcs.E(), $$2, $$12, $$2 + 16, $$13, Integer.MAX_VALUE);
+         }
+
+         this.e.b();
+      }
+   }
+
+   public void b(ffk $$0, cto $$1, int $$2, int $$3) {
+      this.a($$0, fly.a(this.d, $$1), $$1.b(), $$2, $$3);
+   }
+
+   public void a(ffk $$0, List<wx> $$1, Optional<cqy> $$2, int $$3, int $$4) {
+      List<fop> $$5 = $$1.stream().map(wx::g).map(fop::a).collect(ac.b());
+      $$2.ifPresent($$1x -> $$5.add($$5.isEmpty() ? 0 : 1, fop.a($$1x)));
+      this.a($$0, $$5, $$3, $$4, fos.a);
+   }
+
+   public void a(ffk $$0, wx $$1, int $$2, int $$3) {
+      this.b($$0, List.of($$1.g()), $$2, $$3);
+   }
+
+   public void a(ffk $$0, List<wx> $$1, int $$2, int $$3) {
+      this.b($$0, Lists.transform($$1, wx::g), $$2, $$3);
+   }
+
+   public void b(ffk $$0, List<? extends axq> $$1, int $$2, int $$3) {
+      this.a($$0, $$1.stream().map(fop::a).collect(Collectors.toList()), $$2, $$3, fos.a);
+   }
+
+   public void a(ffk $$0, List<axq> $$1, foq $$2, int $$3, int $$4) {
+      this.a($$0, $$1.stream().map(fop::a).collect(Collectors.toList()), $$3, $$4, $$2);
+   }
+
+   private void a(ffk $$0, List<fop> $$1, int $$2, int $$3, foq $$4) {
+      if (!$$1.isEmpty()) {
+         int $$5 = 0;
+         int $$6 = $$1.size() == 1 ? -2 : 0;
+
+         for (fop $$7 : $$1) {
+            int $$8 = $$7.a($$0);
+            if ($$8 > $$5) {
+               $$5 = $$8;
             }
 
-            $$9.k().map($$0x -> "#" + $$0x.b()).forEach($$4::add);
+            $$6 += $$7.a();
          }
 
-         brh $$11 = this.f.u;
-         if ($$11 != null) {
-            $$4.add("");
-            $$4.add(n.t + "Targeted Entity");
-            $$4.add(String.valueOf(ld.g.b($$11.ai())));
+         int $$9 = $$5;
+         int $$10 = $$6;
+         Vector2ic $$11 = $$4.a(this.a(), this.b(), $$2, $$3, $$9, $$10);
+         int $$12 = $$11.x();
+         int $$13 = $$11.y();
+         this.e.a();
+         int $$14 = 400;
+         this.a(() -> fou.a(this, $$12, $$13, $$9, $$10, 400));
+         this.e.a(0.0F, 0.0F, 400.0F);
+         int $$15 = $$13;
+
+         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
+            fop $$17 = $$1.get($$16);
+            $$17.a($$0, $$12, $$15, this.e.c().a(), this.f);
+            $$15 += $$17.a() + ($$16 == 0 ? 2 : 0);
          }
 
-         return $$4;
+         $$15 = $$13;
+
+         for (int $$18 = 0; $$18 < $$1.size(); $$18++) {
+            fop $$19 = $$1.get($$18);
+            $$19.a($$0, $$12, $$15, this);
+            $$15 += $$19.a() + ($$18 == 0 ? 2 : 0);
+         }
+
+         this.e.b();
       }
    }
 
-   private String a(Entry<drk<?>, Comparable<?>> $$0) {
-      drk<?> $$1 = $$0.getKey();
-      Comparable<?> $$2 = $$0.getValue();
-      String $$3 = ac.a($$1, $$2);
-      if (Boolean.TRUE.equals($$2)) {
-         $$3 = n.k + $$3;
-      } else if (Boolean.FALSE.equals($$2)) {
-         $$3 = n.m + $$3;
+   public void a(ffk $$0, @Nullable xu $$1, int $$2, int $$3) {
+      if ($$1 != null && $$1.i() != null) {
+         xd $$4 = $$1.i();
+         xd.c $$5 = $$4.a(xd.a.b);
+         if ($$5 != null) {
+            this.b($$0, $$5.a(), $$2, $$3);
+         } else {
+            xd.b $$6 = $$4.a(xd.a.c);
+            if ($$6 != null) {
+               if (this.d.m.m) {
+                  this.a($$0, $$6.a(), $$2, $$3);
+               }
+            } else {
+               wx $$7 = $$4.a(xd.a.a);
+               if ($$7 != null) {
+                  this.b($$0, $$0.c($$7, Math.max(this.a() / 2, 200)), $$2, $$3);
+               }
+            }
+         }
       }
-
-      return $$1.f() + ": " + $$3;
-   }
-
-   private static long b(long $$0) {
-      return $$0 / 1024L / 1024L;
-   }
-
-   public boolean d() {
-      return this.n && !this.f.m.Z;
-   }
-
-   public boolean e() {
-      return this.d() && this.o;
-   }
-
-   public boolean f() {
-      return this.d() && this.q;
-   }
-
-   public boolean g() {
-      return this.d() && this.p;
-   }
-
-   public void h() {
-      this.n = !this.n;
-   }
-
-   public void i() {
-      this.q = !this.n || !this.q;
-      if (this.q) {
-         this.n = true;
-         this.p = false;
-      }
-   }
-
-   public void j() {
-      this.p = !this.n || !this.p;
-      if (this.p) {
-         this.n = true;
-         this.q = false;
-      }
-   }
-
-   public void k() {
-      this.o = !this.n || !this.o;
-      if (this.o) {
-         this.n = true;
-      }
-   }
-
-   public void a(long $$0) {
-      this.r.a($$0);
-   }
-
-   public bkm l() {
-      return this.s;
-   }
-
-   public bkm m() {
-      return this.t;
-   }
-
-   public bkm n() {
-      return this.u;
-   }
-
-   public void a(long[] $$0, bkn $$1) {
-      bkm $$2 = this.v.get($$1);
-      if ($$2 != null) {
-         $$2.a($$0);
-      }
-   }
-
-   public void o() {
-      this.n = false;
-      this.s.e();
-      this.t.e();
-      this.u.e();
    }
 
    static class a {
-      private static final int a = 500;
-      private static final List<GarbageCollectorMXBean> b = ManagementFactory.getGarbageCollectorMXBeans();
-      private long c = 0L;
-      private long d = -1L;
-      private long e = -1L;
-      private long f = 0L;
+      private final Deque<fkf> a = new ArrayDeque<>();
 
-      long a(long $$0) {
-         long $$1 = System.currentTimeMillis();
-         if ($$1 - this.c < 500L) {
-            return this.f;
+      public fkf a(fkf $$0) {
+         fkf $$1 = this.a.peekLast();
+         if ($$1 != null) {
+            fkf $$2 = Objects.requireNonNullElse($$0.b($$1), fkf.a());
+            this.a.addLast($$2);
+            return $$2;
          } else {
-            long $$2 = a();
-            if (this.c != 0L && $$2 == this.e) {
-               double $$3 = (double)TimeUnit.SECONDS.toMillis(1L) / (double)($$1 - this.c);
-               long $$4 = $$0 - this.d;
-               this.f = Math.round((double)$$4 * $$3);
-            }
-
-            this.c = $$1;
-            this.d = $$0;
-            this.e = $$2;
-            return this.f;
+            this.a.addLast($$0);
+            return $$0;
          }
       }
 
-      private static long a() {
-         long $$0 = 0L;
-
-         for (GarbageCollectorMXBean $$1 : b) {
-            $$0 += $$1.getCollectionCount();
+      @Nullable
+      public fkf a() {
+         if (this.a.isEmpty()) {
+            throw new IllegalStateException("Scissor stack underflow");
+         } else {
+            this.a.removeLast();
+            return this.a.peekLast();
          }
+      }
 
-         return $$0;
+      public boolean a(int $$0, int $$1) {
+         return this.a.isEmpty() ? true : this.a.peek().a($$0, $$1);
       }
    }
 }

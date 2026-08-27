@@ -1,128 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dhz extends djs implements dkf {
-   public static final MapCodec<dhz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpw.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dhz::new)
-   );
-   public static final drh b = dqx.at;
-   public static final int c = 4;
-   private static final eui[] j = new eui[]{
-      dde.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      dde.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      dde.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      dde.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      dde.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dqy k = dqx.C;
-   public static final dqy d = dqx.j;
+public class dhz extends dfu {
+   public static final MapCodec<dhz> i = b(dhz::new);
 
    @Override
-   public MapCodec<dhz> a() {
-      return a;
+   public MapCodec<? extends dhz> a() {
+      return i;
    }
 
-   public dhz(dpw $$0, dqg.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   protected dhz(dra.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(f).a(b).a(k).a(d);
+   public drb a(cwz $$0) {
+      dad $$1 = $$0.q();
+      io $$2 = $$0.a();
+      emu $$3 = $$0.q().b_($$0.a());
+      io $$4 = $$2.e();
+      io $$5 = $$2.f();
+      io $$6 = $$2.g();
+      io $$7 = $$2.h();
+      drb $$8 = $$1.a_($$4);
+      drb $$9 = $$1.a_($$5);
+      drb $$10 = $$1.a_($$6);
+      drb $$11 = $$1.a_($$7);
+      return this.n()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, it.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, it.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, it.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, it.e))))
+         .a(e, Boolean.valueOf($$3.a() == emv.c));
    }
 
    @Override
-   protected boolean b(dqh $$0, czj $$1, in $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(ddg.dR);
-   }
-
-   @Nullable
-   @Override
-   public dqh a(cwi $$0) {
-      ema $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == emb.c;
-      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      etp $$4 = $$0.n($$1, $$2);
-      eui $$5;
-      if (!$$0.c(d)) {
-         $$5 = j[4];
-      } else {
-         $$5 = j[$$0.c(b)];
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
       }
 
-      return $$5.a($$4.c, $$4.d, $$4.e);
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return m($$0) ? $$1.a_($$2.c()).a(ddg.aL) : super.a($$0, $$1, $$2);
+   protected evd c(drb $$0, dad $$1, io $$2, eup $$3) {
+      return eva.a();
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$0.c(k)) {
-         $$3.a($$4, emb.c, emb.c.a($$3));
-      }
-
-      return $$1 == is.b && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ema b_(dqh $$0) {
-      return $$0.c(k) ? emb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if (!m($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
+   protected boolean a(drb $$0, drb $$1, it $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
-      } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   public final boolean a(drb $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof dhz || $$0.a(avw.L);
    }
 
    @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      return !m($$2) || !n($$2);
-   }
-
-   @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return m($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      if (m($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static boolean m(dqh $$0) {
-      return $$0.c(d);
-   }
-
-   private static boolean n(dqh $$0) {
-      return $$0.c(b) == 4;
-   }
-
-   public static dqh c() {
-      return b(0);
-   }
-
-   public static dqh b(int $$0) {
-      return ddg.E.n().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

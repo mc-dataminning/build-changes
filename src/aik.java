@@ -1,19 +1,41 @@
-public class aik {
-   public static final zd<aif> a = a("custom_query");
-   public static final zd<aig> b = a("game_profile");
-   public static final zd<aih> c = a("hello");
-   public static final zd<aii> d = a("login_compression");
-   public static final zd<aij> e = a("login_disconnect");
-   public static final zd<ain> f = b("custom_query_answer");
-   public static final zd<aio> g = b("hello");
-   public static final zd<aip> h = b("key");
-   public static final zd<aiq> i = b("login_acknowledged");
+public record aik(int b, aix c) implements ze<aij> {
+   public static final yv<vx, aik> a = ze.a(aik::a, aik::new);
+   private static final int d = 1048576;
 
-   private static <T extends zb<aie>> zd<T> a(String $$0) {
-      return new zd<>(zc.b, new akh($$0));
+   private aik(vx $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private static <T extends zb<aim>> zd<T> b(String $$0) {
-      return new zd<>(zc.a, new akh($$0));
+   private static aix a(akm $$0, vx $$1) {
+      return b($$0, $$1);
+   }
+
+   private static aiz b(akm $$0, vx $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new aiz($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
+   }
+
+   @Override
+   public zg<aik> a() {
+      return aip.a;
+   }
+
+   public void a(aij $$0) {
+      $$0.a(this);
+   }
+
+   public aix e() {
+      return this.c;
    }
 }

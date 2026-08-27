@@ -1,48 +1,85 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-@FunctionalInterface
 public interface fxq {
-   Logger a = LogUtils.getLogger();
-   fxq b = $$0 -> Optional.empty();
+   static fxq a(fxw $$0, UserApiService $$1) {
+      return new fxq.b($$0, $$1);
+   }
 
-   Optional<fxn> lookupRedirect(fxn var1);
+   CompletableFuture<Unit> a(UUID var1, fxy var2, AbuseReport var3);
 
-   static fxq createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends xx {
+      public a(wx $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static record b(fxw a, UserApiService b) implements fxq {
+      private static final wx c = wx.c("gui.abuseReport.send.service_unavailable");
+      private static final wx d = wx.c("gui.abuseReport.send.http_error");
+      private static final wx e = wx.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fxy $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wx $$5 = this.a(var7);
+               throw new CompletionException(new fxq.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wx $$7 = this.a(var8);
+               throw new CompletionException(new fxq.a($$7, var8));
+            }
+         }, ac.h());
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fxn($$4x[3], fxn.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
 
-         return Optional.empty();
-      };
+      private wx a(MinecraftClientHttpException $$0) {
+         return wx.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wx a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fxw c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

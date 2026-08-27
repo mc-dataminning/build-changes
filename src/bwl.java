@@ -1,32 +1,48 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bwl {
-   public static btt<cku> a(cbd<List<iv>> $$0, float $$1, int $$2, int $$3, cbd<iv> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return bxf.a(
-         (Function<bxf.b<cku>, ? extends App<bxf.c<cku>, bxi<cku>>>)($$6 -> $$6.group($$6.a(cbd.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<iv> $$11 = $$6.b($$6x);
-                     iv $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
+   public static bui<bsx> a(cbs<io> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, euk::c);
+   }
+
+   public static bvs<bsx> b(cbs<? extends bru> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bru::dn);
+   }
+
+   private static <T> bvs<bsx> a(cbs<T> $$0, float $$1, int $$2, boolean $$3, Function<T, euk> $$4) {
+      return bxu.a(
+         (Function<bxu.b<bsx>, ? extends App<bxu.c<bsx>, bxx<bsx>>>)($$5 -> $$5.group($$5.a(cbs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cbv> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     euk $$11 = $$8.dn();
+                     euk $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jh)$$12, (double)$$2)) {
                         return false;
                      } else {
-                        iv $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dl(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cbg($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           euk $$13 = $$10.get().a().a().d($$11);
+                           euk $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
                            }
-
-                           return true;
-                        } else {
-                           return false;
                         }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           euk $$16 = cdm.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cbv($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

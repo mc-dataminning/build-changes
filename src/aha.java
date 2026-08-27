@@ -1,45 +1,29 @@
-public class aha implements zb<afz> {
-   public static final ys<vu, aha> a = zb.a(aha::a, aha::new);
-   private final int b;
-   private final akh c;
-   private final boolean d;
+public class aha implements ze<agd> {
+   public static final yv<vx, aha> a = ze.a(aha::a, aha::new);
+   private final boolean b;
 
-   public aha(int $$0, cxf<?> $$1, boolean $$2) {
+   public aha(boolean $$0) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
    }
 
-   private aha(vu $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private aha(vx $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(vu $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<aha> a() {
-      return afx.bG;
+   public zg<aha> a() {
+      return agb.bz;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
-   }
-
-   public akh e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

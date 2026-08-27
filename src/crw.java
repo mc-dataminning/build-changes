@@ -1,27 +1,44 @@
-public class crw extends crj {
-   public crw(csu.a $$0) {
+public class crw extends ctj {
+   public crw(ctj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      csz $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bpn.a($$3);
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(avm.c.b(this));
-         $$1.dN().a(null, $$1, avc.Ag, $$1.dc(), 1.0F, 1.0F);
-         csz $$4 = cth.a($$0, $$1.dr(), $$1.dx(), (byte)0, true, false);
-         if ($$3.d()) {
-            return bpn.b($$4);
-         } else {
-            if (!$$1.ga().f($$4.r())) {
-               $$1.a($$4, false);
+   public cto a(cto $$0, dax $$1, bso $$2) {
+      cto $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.du() + ($$2.el().j() - 0.5) * 16.0;
+            double $$6 = ayd.a($$2.dw() + (double)($$2.el().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqm)$$1).k() - 1));
+            double $$7 = $$2.dA() + ($$2.el().j() - 0.5) * 16.0;
+            if ($$2.bR()) {
+               $$2.ac();
             }
 
-            return bpn.b($$3);
+            euk $$8 = $$2.dn();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dvu.R, $$8, dvu.a.a($$2));
+               avi $$10;
+               avg $$9;
+               if ($$2 instanceof ceo) {
+                  $$9 = avh.jp;
+                  $$10 = avi.g;
+               } else {
+                  $$9 = avh.fh;
+                  $$10 = avi.h;
+               }
+
+               $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), $$9, $$10);
+               $$2.n();
+               break;
+            }
+         }
+
+         if ($$2 instanceof clw $$13) {
+            $$13.gx().a(this, 20);
          }
       }
+
+      return $$3;
    }
 }

@@ -1,58 +1,62 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class eqh extends epw {
-   public static final Codec<eqh> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  akg.a(le.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  axh.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  ld.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eqh::new)
+public class eqh extends eqq {
+   public static final MapCodec<eqh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eqh.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, eqh::new)
    );
-   private final akg<eoq> b;
-   private final long c;
-   private final iw<dno<?>> d;
+   private final eqh.a b;
 
-   private eqh(List<erq> $$0, akg<eoq> $$1, long $$2, iw<dno<?>> $$3) {
+   private eqh(List<esl> $$0, eqh.a $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public epy b() {
-      return epz.v;
+   public eqs b() {
+      return eqt.r;
    }
 
    @Override
-   public csz a(csz $$0, eol $$1) {
-      if ($$0.d()) {
-         return $$0;
-      } else {
-         $$0.b(ka.ab, new cwa(this.b, this.c));
-         return $$0;
+   public Set<eru<?>> a() {
+      return ImmutableSet.of(this.b.g);
+   }
+
+   @Override
+   public cto a(cto $$0, epf $$1) {
+      if ($$1.c(this.b.g) instanceof bpz $$3) {
+         $$0.b(kb.f, $$3.ah());
       }
+
+      return $$0;
    }
 
-   @Override
-   public void a(eor $$0) {
-      super.a($$0);
-      if ($$0.a().a(le.aU, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
+   public static eqq.a<?> a(eqh.a $$0) {
+      return a($$1 -> new eqh($$1, $$0));
+   }
+
+   public static enum a implements ayx {
+      a("this", erx.a),
+      b("killer", erx.d),
+      c("killer_player", erx.b),
+      d("block_entity", erx.h);
+
+      public static final Codec<eqh.a> e = ayx.a(eqh.a::values);
+      private final String f;
+      final eru<?> g;
+
+      private a(String $$0, eru<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
-   }
 
-   public static epw.a<?> a(dno<?> $$0, akg<eoq> $$1) {
-      return a($$2 -> new eqh($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static epw.a<?> a(dno<?> $$0, akg<eoq> $$1, long $$2) {
-      return a($$3 -> new eqh($$3, $$1, $$2, $$0.a()));
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

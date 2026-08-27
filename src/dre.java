@@ -1,23 +1,8 @@
-public enum dre implements ayt {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String f;
-
-   private dre(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dre {
 }

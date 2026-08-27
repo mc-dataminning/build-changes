@@ -1,40 +1,54 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class faf implements Iterable<eze> {
-   private final fde a;
-   private final Set<eze> b = new HashSet<>();
-   private List<eze> c = List.of();
+public class faf {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public faf(fde $$0) {
-      this.a = $$0;
+   private faf(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void a(List<eze> $$0) {
-      List<eze> $$1 = new ArrayList<>($$0);
-      $$1.sort(new eze.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+   public wx a(wx $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wx a() {
+      if (!gpb.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wx.c(this.c) : wx.a(this.c, this.d);
+      }
+   }
+
+   public static faf a(JsonObject $$0) {
+      String $$1 = fcl.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
       }
 
-      this.c = $$1;
-   }
-
-   public void a(eze $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
+      return new faf($$1, $$5);
    }
 
    @Override
-   public Iterator<eze> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+   public String toString() {
+      return this.c;
    }
 }

@@ -1,29 +1,26 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
-public class bgv extends DataFix {
-   public bgv(Schema $$0) {
-      super($$0, false);
+public class bgv extends bex {
+   private final Map<String, String> a;
+
+   public bgv(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfs.K);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
-               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
-                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
-                        if ($$1xx.get("type").asString().result().isEmpty()) {
-                           throw new IllegalStateException("Unable load old custom worlds.");
-                        }
-                     });
-                     return $$0xxxx;
-                  }));
-               return $$0xx;
-            })
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+            )
       );
    }
 }

@@ -1,33 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bus {
-   public static bvd<bsa> a(int $$0, float $$1, int $$2) {
-      return bxf.a(
-         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$3 -> $$3.group(
-                  $$3.c(cbd.m), $$3.a(cbd.b), $$3.a(cbd.C), $$3.a(cbd.t), $$3.a(cbd.n), $$3.a(cbd.r), $$3.a(cbd.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(cdh.n), $$0xxxx -> true, $$12.dn(), $$2 + 1, cdd.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dl(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cdh.n), $$0xxxxx -> true, cdd.b.c, $$12.dn(), $$0, $$12.ej()))
-                           .or(() -> $$3.<iv>a($$5).map(iv::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(iv.a($$11.ae(), $$10xx));
-                              if (!$$10xx.a($$12.dl(), (double)$$2)) {
-                                 $$4.a(new cbg($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class bus implements bvv {
+   private final bru a;
+   private final boolean b;
+
+   public bus(bru $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public euk a() {
+      return this.b ? this.a.dn().b(0.0, (double)this.a.cL(), 0.0) : this.a.dn();
+   }
+
+   @Override
+   public io b() {
+      return this.a.dp();
+   }
+
+   @Override
+   public boolean a(bso $$0) {
+      if (this.a instanceof bso $$1) {
+         if (!$$1.bD()) {
+            return false;
+         } else {
+            Optional<cbu> $$3 = $$0.dS().c(cbs.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bru c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

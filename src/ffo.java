@@ -1,72 +1,38 @@
-public class ffo extends fey {
-   private final fep a;
-   private final ffy b;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-   public ffo(int $$0, int $$1, int $$2, int $$3, wu $$4, fep $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new ffy($$4, $$5).d(this.x() - this.b());
-   }
+public class ffo {
+   public static final float a = 200.0F;
+   private final List<ffo.a> b = new ArrayList<>();
 
-   public ffo a(int $$0) {
-      this.b.c($$0);
+   public ffo a(ffo.a $$0) {
+      this.b.add($$0);
       return this;
    }
 
-   @Override
-   public void k(int $$0) {
-      super.k($$0);
-      this.b.d(this.x() - this.b());
-   }
-
-   @Override
-   protected int h() {
-      return this.b.v();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(fer $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aI_()) {
-         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
-      }
-   }
-
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
+   public ffo a(ffo $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
          }
-      }
+      });
    }
 
-   public boolean j() {
-      return super.e();
-   }
-
-   @Override
-   protected void c(fer $$0, int $$1, int $$2, float $$3) {
+   public void a(ffm $$0, float $$1) {
       $$0.c().a();
-      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
+      this.b($$0, $$1);
       $$0.c().b();
    }
 
-   @Override
-   protected void a(fja $$0) {
-      $$0.a(fiz.a, this.y());
+   private void b(ffm $$0, float $$1) {
+      for (ffo.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(ffm var1, float var2);
    }
 }

@@ -1,11 +1,14 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dve {
-   Codec<dve> c = ld.v.q().dispatch(dve::a, dvf::a);
-   ys<wf, dve> d = yq.a(le.W).b(dve::a, dvf::b);
+public interface dve<T> extends AutoCloseable {
+   CompletableFuture<duz<T>> a(dae var1);
 
-   Optional<etp> a(dad var1);
+   void a(duz<T> var1);
 
-   dvf<? extends dve> a();
+   void a(boolean var1);
+
+   @Override
+   default void close() throws IOException {
+   }
 }

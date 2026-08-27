@@ -1,11 +1,11 @@
-public class gig extends gid<ced, fsz<ced>> {
-   private static final akh a = new akh("textures/entity/cat/ocelot.png");
+public class gig extends giz<cge, ftc<cge>> {
+   private static final akm a = new akm("textures/entity/goat/goat.png");
 
-   public gig(ggx.a $$0) {
-      super($$0, new fsz<>($$0.a(fva.aE)), 0.4F);
+   public gig(ght.a $$0) {
+      super($$0, new ftc<>($$0.a(fvv.al)), 0.7F);
    }
 
-   public akh a(ced $$0) {
+   public akm a(cge $$0) {
       return a;
    }
 }

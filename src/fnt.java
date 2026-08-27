@@ -1,24 +1,30 @@
-import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fnt implements fnu {
-   private final axl a;
+public class fnt extends fmy {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int d = 16;
+   private static final int r = 16;
+   private final akm s = new akm("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-   public fnt(axl $$0) {
-      this.a = $$0;
+   public fnt(dpq $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wx.c("hanging_sign.edit"));
    }
 
    @Override
-   public int a(fep $$0) {
-      return $$0.a(this.a);
+   protected void b(ffm $$0, drb $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public int a() {
-      return 10;
+   protected void a(ffm $$0, drb $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void a(fep $$0, int $$1, int $$2, Matrix4f $$3, gbo.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fep.a.a, 0, 15728880);
+   protected Vector3f m() {
+      return c;
    }
 }

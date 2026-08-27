@@ -1,56 +1,118 @@
-public class dzc extends dzd<ebo> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final in an = in.c;
-   private final boolean ao;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   public static in a(in $$0) {
-      return an.a((jr)$$0);
-   }
+public class dzc extends dzx<ebv> {
+   private static final ImmutableList<ddy> a = ImmutableList.of(dea.H, dea.F, dea.kJ, dea.dW, dea.fn, dea.fo, dea.fp, dea.fq, dea.cv, dea.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
 
-   public dzc(boolean $$0) {
-      super(ebo.a);
-      this.ao = $$0;
+   public dzc(Codec<ebv> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dzf<ebo> $$0) {
-      in $$1 = $$0.e();
-      day $$2 = $$0.b();
+   public boolean a(dzz<ebv> $$0) {
+      int $$1 = $$0.c().e();
+      io $$2 = $$0.e();
+      dbs $$3 = $$0.b();
+      ayk $$4 = $$0.d();
+      ebv $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-      for (in $$3 : in.c(new in($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new in($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, ddg.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, ddg.fz.n());
+         for (io $$11 : io.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   private boolean a(day $$0, int $$1, io $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (io $$6 : io.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         io $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (io.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (io)$$10)) {
+                  this.a($$0, $$10, dea.dY.n());
+                  $$10.c(it.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dea.dY)) {
+                     break;
+                  }
+
+                  $$10.c(it.b);
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, ddg.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, ddg.F.n());
-            } else if (this.ao) {
-               this.a($$2, new in($$3), ddg.fx.n());
-            } else {
-               this.a($$2, new in($$3), ddg.a.n());
             }
          }
       }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), ddg.F.n());
+      return $$5;
+   }
+
+   @Nullable
+   private static io a(day $$0, int $$1, io.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(it.a);
       }
 
-      in $$6 = $$1.b(2);
+      return null;
+   }
 
-      for (is $$7 : is.c.a) {
-         this.a($$2, $$6.a($$7), ddg.cq.n().a(dmg.g, $$7));
+   private static boolean a(day $$0, int $$1, io.a $$2) {
+      if (!a($$0, $$1, (io)$$2)) {
+         return false;
+      } else {
+         drb $$3 = $$0.a_($$2.c(it.a));
+         $$2.c(it.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static io a(day $$0, io.a $$1, int $$2) {
+      while ($$1.v() < $$0.al() && $$2 > 0) {
+         $$2--;
+         drb $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(it.b);
       }
 
-      return true;
+      return null;
+   }
+
+   private static boolean a(day $$0, int $$1, io $$2) {
+      drb $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(dea.H) && $$2.v() <= $$1;
    }
 }

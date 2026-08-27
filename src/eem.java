@@ -1,26 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public class eem<P extends eel> {
-   public static final eem<eek> a = a("straight_trunk_placer", eek.a);
-   public static final eem<eeh> b = a("forking_trunk_placer", eeh.a);
-   public static final eem<eei> c = a("giant_trunk_placer", eei.a);
-   public static final eem<eej> d = a("mega_jungle_trunk_placer", eej.b);
-   public static final eem<eef> e = a("dark_oak_trunk_placer", eef.a);
-   public static final eem<eeg> f = a("fancy_trunk_placer", eeg.a);
-   public static final eem<eed> g = a("bending_trunk_placer", eed.a);
-   public static final eem<een> h = a("upwards_branching_trunk_placer", een.a);
-   public static final eem<eee> i = a("cherry_trunk_placer", eee.a);
-   private final Codec<P> j;
+public class eem extends eec {
+   public static final MapCodec<eem> b = boe.b(drb.b).comapFlatMap(eem::a, $$0 -> $$0.c).fieldOf("entries");
+   private final boe<drb> c;
 
-   private static <P extends eel> eem<P> a(String $$0, Codec<P> $$1) {
-      return jj.a(ld.X, $$0, new eem<>($$1));
+   private static DataResult<eem> a(boe<drb> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eem($$0));
    }
 
-   private eem(Codec<P> $$0) {
-      this.j = $$0;
+   public eem(boe<drb> $$0) {
+      this.c = $$0;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   public eem(boe.a<drb> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected eed<?> a() {
+      return eed.b;
+   }
+
+   @Override
+   public drb a(ayk $$0, io $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

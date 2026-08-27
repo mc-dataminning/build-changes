@@ -1,46 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dzl extends dyg {
-   public dzl(Codec<ebj> $$0) {
+public class dzl extends dzm {
+   public dzl(Codec<eci> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dae $$0, ayg $$1, in $$2, int $$3, in.a $$4, ebj $$5) {
-      int $$6 = $$5.d;
+   protected boolean a(day $$0, ayk $$1, io $$2, drb $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         it $$4 = it.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<it> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dqh $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dhb.e) && $$19.b(dhb.c) && $$19.b(dhb.b) && $$19.b(dhb.d)) {
-                     $$19 = $$19.a(dhb.e, Boolean.valueOf($$15))
-                        .a(dhb.c, Boolean.valueOf($$16))
-                        .a(dhb.b, Boolean.valueOf($$17))
-                        .a(dhb.d, Boolean.valueOf($$18));
-                  }
+         for (it $$8 : $$6.subList(0, $$5)) {
+            io.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            it $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(it.b);
+               it[] $$13 = new it[]{$$8, it.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-                  this.a($$0, $$4, $$19);
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(it.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(it.b);
                }
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+         return true;
+      }
    }
 }

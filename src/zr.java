@@ -1,24 +1,33 @@
-public class zr {
-   public static final zd<zi> a = a("custom_payload");
-   public static final zd<zj> b = a("disconnect");
-   public static final zd<zk> c = a("keep_alive");
-   public static final zd<zl> d = a("ping");
-   public static final zd<zm> e = a("resource_pack_pop");
-   public static final zd<zn> f = a("resource_pack_push");
-   public static final zd<zo> g = a("store_cookie");
-   public static final zd<zp> h = a("transfer");
-   public static final zd<zq> i = a("update_tags");
-   public static final zd<zt> j = b("client_information");
-   public static final zd<zu> k = b("custom_payload");
-   public static final zd<zv> l = b("keep_alive");
-   public static final zd<zw> m = b("pong");
-   public static final zd<zx> n = b("resource_pack");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zb<zh>> zd<T> a(String $$0) {
-      return new zd<>(zc.b, new akh($$0));
+public record zr(akm c, byte[] d) implements ze<zk> {
+   public static final yv<vx, zr> a = ze.a(zr::a, zr::new);
+   private static final int e = 5120;
+   public static final yv<ByteBuf, byte[]> b = yt.a(5120);
+
+   private zr(vx $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private static <T extends zb<zs>> zd<T> b(String $$0) {
-      return new zd<>(zc.a, new akh($$0));
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
+   }
+
+   @Override
+   public zg<zr> a() {
+      return zu.g;
+   }
+
+   public void a(zk $$0) {
+      $$0.a(this);
+   }
+
+   public akm b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

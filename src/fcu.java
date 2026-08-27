@@ -1,29 +1,53 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fcu {
-   private final List<wz> a = Lists.newArrayList();
+public class fcu extends fcz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.configure.world.closing");
+   private final ezz d;
+   private final fbi e;
 
-   public void a(wz $$0) {
-      this.a.add($$0);
+   public fcu(ezz $$0, fbi $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   public wz a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : wz.a(this.a);
+   @Override
+   public void run() {
+      ezi $$0 = ezi.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = ezz.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (faw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   public wz b() {
-      wz $$0 = this.a();
-      return $$0 != null ? $$0 : wz.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   public wx a() {
+      return c;
    }
 }

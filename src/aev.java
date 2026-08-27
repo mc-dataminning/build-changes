@@ -1,45 +1,39 @@
-public class aev implements zb<abm> {
-   public static final ys<vu, aev> a = zb.a(aev::a, aev::new);
-   private final float b;
+import javax.annotation.Nullable;
+
+public class aev implements ze<abq> {
+   public static final yv<vx, aev> a = ze.a(aev::a, aev::new);
+   private final int b;
    private final int c;
-   private final float d;
 
-   public aev(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public aev(bru $$0, @Nullable bru $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
-   private aev(vu $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private aev(vx $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(vx $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zd<aev> a() {
-      return afx.aH;
+   public zg<aev> a() {
+      return agb.aD;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

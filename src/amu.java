@@ -1,44 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class amu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.kick.singleplayer.failed"));
-
-   public static void a(CommandDispatcher<ed> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ee.a("targets", eq.d())
-                     .executes($$0x -> a((ed)$$0x.getSource(), eq.f($$0x, "targets"), wu.c("multiplayer.disconnect.kicked"))))
-                  .then(ee.a("reason", eu.a()).executes($$0x -> a((ed)$$0x.getSource(), eq.f($$0x, "targets"), eu.a($$0x, "reason"))))
-            )
-      );
-   }
-
-   private static int a(ed $$0, Collection<aqi> $$1, wu $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
-      } else {
-         int $$3 = 0;
-
-         for (aqi $$4 : $$1) {
-            if (!$$0.l().a($$4.fZ())) {
-               $$4.d.b($$2);
-               $$0.a(() -> wu.a("commands.kick.success", $$4.O_(), $$2), true);
-               $$3++;
+   public static void a(CommandDispatcher<ee> $$0) {
+      final LiteralArgumentBuilder<ee> $$1 = (LiteralArgumentBuilder<ee>)ef.a("gamerule").requires($$0x -> $$0x.c(2));
+      dat.a(
+         new dat.c() {
+            @Override
+            public <T extends dat.g<T>> void a(dat.e<T> $$0, dat.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)ef.a($$0.a()).executes($$1xxx -> amu.a((ee)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> amu.a($$1xxx, $$0)))
+               );
             }
          }
+      );
+      $$0.register($$1);
+   }
 
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
-      }
+   static <T extends dat.g<T>> int a(CommandContext<ee> $$0, dat.e<T> $$1) {
+      ee $$2 = (ee)$$0.getSource();
+      T $$3 = $$2.l().aM().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> wx.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
+
+   static <T extends dat.g<T>> int a(ee $$0, dat.e<T> $$1) {
+      T $$2 = $$0.l().aM().a($$1);
+      $$0.a(() -> wx.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

@@ -1,29 +1,42 @@
 import java.util.Optional;
 
-public abstract class ego extends egp {
-   private final ego.a d;
-   private final int e;
-   private final int f;
+public class ego extends dxq {
+   private final dbs a;
+   private final dsy b;
+   private final Optional<egn> c;
 
-   protected ego(ego.a $$0, int $$1, int $$2, egp.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public ego(dbs $$0, dsy $$1, Optional<egn> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Optional<egp.b> a(egp.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dvz.a.a, $$1 -> this.a($$1, $$0));
+   public int a(dwt.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   private void a(ehh $$0, egp.a $$1) {
-      czk $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   public dsw a(dae $$0, dwp.a $$1) {
+      return ((dtr)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @FunctionalInterface
-   protected interface a {
-      egt construct(dwy var1, int var2, int var3);
+   public drb a(io $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.I_();
+   }
+
+   public dbs d() {
+      return this.a;
+   }
+
+   public Optional<egn> e() {
+      return this.c;
+   }
+
+   public dsy f() {
+      return this.b;
    }
 }

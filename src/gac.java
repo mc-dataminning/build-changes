@@ -1,45 +1,117 @@
-public abstract class gac extends fzp {
-   protected gmy E;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   protected gac(fvw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gac(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gmy $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(fzx $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(fzx $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+public interface gac {
+   gac a = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gnu.e);
+         $$0.a(eyx.b.h, eyq.l);
       }
-   }
+
+      @Override
+      public void a(eyu $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   gac b = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gcd::u);
+         RenderSystem.setShaderTexture(0, gnu.f);
+         $$0.a(eyx.b.h, eyq.l);
+      }
+
+      @Override
+      public void a(eyu $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   gac c = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gnu.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(eyx.b.h, eyq.l);
+      }
+
+      @Override
+      public void a(eyu $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   gac d = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gnu.f);
+         $$0.a(eyx.b.h, eyq.l);
+      }
+
+      @Override
+      public void a(eyu $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   gac e = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(eyu $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gac f = new gac() {
+      @Override
+      public void a(eyn $$0, gnw $$1) {
+      }
+
+      @Override
+      public void a(eyu $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(eyn var1, gnw var2);
+
+   void a(eyu var1);
 }

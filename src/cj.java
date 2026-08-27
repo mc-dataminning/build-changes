@@ -8,10 +8,10 @@ public class cj {
    public static final ci.a<cc> e = a("custom_data", cc.a);
 
    private static <T extends ci> ci.a<T> a(String $$0, Codec<T> $$1) {
-      return jj.a(ld.au, $$0, new ci.a<>($$1));
+      return jk.a(le.au, $$0, new ci.a<>($$1));
    }
 
-   public static ci.a<?> a(jj<ci.a<?>> $$0) {
+   public static ci.a<?> a(jk<ci.a<?>> $$0) {
       return a;
    }
 }

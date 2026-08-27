@@ -1,20 +1,20 @@
-public record agi(float b) implements zb<afz> {
-   public static final ys<vu, agi> a = zb.a(agi::a, agi::new);
+public record agi(int b) implements ze<agd> {
+   public static final yv<vx, agi> a = ze.a(agi::a, agi::new);
 
-   private agi(vu $$0) {
-      this($$0.readFloat());
+   private agi(vx $$0) {
+      this($$0.l());
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<agi> a() {
-      return afx.bl;
+   public zg<agi> a() {
+      return agb.bh;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 }

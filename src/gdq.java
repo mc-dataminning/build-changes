@@ -1,51 +1,68 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 public class gdq {
-   private static final Map<dno<?>, gdp<?>> a = Maps.newHashMap();
+   private final akm a;
+   private final List<gdq.b> b;
 
-   private static <T extends dnm> void a(dno<? extends T> $$0, gdp<T> $$1) {
-      a.put($$0, $$1);
+   public gdq(akm $$0, List<gdq.b> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public static Map<dno<?>, gdo<?>> a(gdp.a $$0) {
-      Builder<dno<?>, gdo<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + ld.k.b((dno<?>)$$2), var5);
+   public akm a() {
+      return this.a;
+   }
+
+   public Stream<gdq.b> b() {
+      return this.b.stream();
+   }
+
+   protected static class a implements JsonDeserializer<gdq> {
+      public gdq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         akm $$4 = new akm(axu.i($$3, "model"));
+         List<gdq.b> $$5 = this.a($$3);
+         return new gdq($$4, $$5);
+      }
+
+      protected List<gdq.b> a(JsonObject $$0) {
+         Map<akm, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = axu.u($$0, "predicate");
+
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(new akm($$3.getKey()), axu.e($$3.getValue(), $$3.getKey()));
          }
-      });
-      return $$1.build();
+
+         return $$1.entrySet().stream().map($$0x -> new gdq.b((akm)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+      }
    }
 
-   static {
-      a(dno.h, gec::new);
-      a(dno.i, gdy::new);
-      a(dno.j, gee::new);
-      a(dno.k, gea::new);
-      a(dno.b, gdu::new);
-      a(dno.d, gdu::new);
-      a(dno.c, gdu::new);
-      a(dno.m, gdx::new);
-      a(dno.D, gdz::new);
-      a(dno.n, geh::new);
-      a(dno.v, geg::new);
-      a(dno.o, gdk::new);
-      a(dno.p, ged::new);
-      a(dno.t, gdj::new);
-      a(dno.u, gef::new);
-      a(dno.x, geb::new);
-      a(dno.y, gdl::new);
-      a(dno.z, gdv::new);
-      a(dno.E, gdm::new);
-      a(dno.G, gdt::new);
-      a(dno.N, gds::new);
-      a(dno.O, gdw::new);
-      a(dno.Q, gei::new);
-      a(dno.R, gej::new);
+   public static class b {
+      private final akm a;
+      private final float b;
+
+      public b(akm $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public akm a() {
+         return this.a;
+      }
+
+      public float b() {
+         return this.b;
+      }
    }
 }

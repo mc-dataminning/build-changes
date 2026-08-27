@@ -5,21 +5,21 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
 
-public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
+public record ch(Optional<jb<ctj>> b, ct.d c, jz d, Map<ci.a<?>, ci> e) {
    public static final Codec<ch> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axh.a(jl.a(le.G), "items").forGetter(ch::a),
-               axh.a(ct.d.d, "count", ct.d.c).forGetter(ch::b),
-               axh.a(jy.a, "components", jy.c).forGetter(ch::c),
-               axh.a(ci.b, "predicates", Map.of()).forGetter(ch::d)
+               jm.a(lf.G).optionalFieldOf("items").forGetter(ch::a),
+               ct.d.d.optionalFieldOf("count", ct.d.c).forGetter(ch::b),
+               jz.a.optionalFieldOf("components", jz.c).forGetter(ch::c),
+               ci.b.optionalFieldOf("predicates", Map.of()).forGetter(ch::d)
             )
             .apply($$0, ch::new)
    );
 
-   public boolean a(csz $$0) {
+   public boolean a(cto $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
-      } else if (!this.c.d($$0.G())) {
+      } else if (!this.c.d($$0.I())) {
          return false;
       } else if (!this.d.a($$0)) {
          return false;
@@ -34,7 +34,7 @@ public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
       }
    }
 
-   public Optional<ja<csu>> a() {
+   public Optional<jb<ctj>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
       return this.c;
    }
 
-   public jy c() {
+   public jz c() {
       return this.d;
    }
 
@@ -51,13 +51,13 @@ public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
    }
 
    public static class a {
-      private Optional<ja<csu>> a = Optional.empty();
+      private Optional<jb<ctj>> a = Optional.empty();
       private ct.d b = ct.d.c;
-      private jy c;
+      private jz c;
       private final Builder<ci.a<?>, ci> d;
 
       private a() {
-         this.c = jy.c;
+         this.c = jz.c;
          this.d = ImmutableMap.builder();
       }
 
@@ -65,13 +65,13 @@ public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
          return new ch.a();
       }
 
-      public ch.a a(dac... $$0) {
-         this.a = Optional.of(ja.a($$0x -> $$0x.q().n(), $$0));
+      public ch.a a(daw... $$0) {
+         this.a = Optional.of(jb.a($$0x -> $$0x.q().n(), $$0));
          return this;
       }
 
-      public ch.a a(awg<csu> $$0) {
-         this.a = Optional.of(ld.h.a($$0));
+      public ch.a a(awl<ctj> $$0) {
+         this.a = Optional.of(le.h.a($$0));
          return this;
       }
 
@@ -85,7 +85,7 @@ public record ch(Optional<ja<csu>> b, ct.d c, jy d, Map<ci.a<?>, ci> e) {
          return this;
       }
 
-      public ch.a a(jy $$0) {
+      public ch.a a(jz $$0) {
          this.c = $$0;
          return this;
       }

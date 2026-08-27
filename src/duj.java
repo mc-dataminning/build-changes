@@ -1,61 +1,37 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public class duj<T extends duh> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public class duj {
+   private final BitSet a = new BitSet();
 
-   public <U extends T> void a(duo<T, U> $$0, awm<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
+   }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
+   }
+
+   public int a(int $$0) {
+      int $$1 = 0;
+
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
          }
+
+         $$1 = $$3;
       }
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
-
-   public void a(T $$0) {
-      UUID $$1 = $$0.cx();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.aj(), $$0);
-      }
-   }
-
-   public void b(T $$0) {
-      this.c.remove($$0.cx());
-      this.b.remove($$0.aj());
-   }
-
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

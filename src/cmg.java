@@ -1,47 +1,136 @@
-public abstract class cmg extends cmh implements clw {
-   private static final ajm<csz> b = ajq.a(cmg.class, ajo.h);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public cmg(brn<? extends cmg> $$0, dad $$1) {
+public class cmg extends bru implements btn {
+   public static final int b = 20;
+   public static final int c = 2;
+   public static final int d = 14;
+   private int e;
+   private boolean f;
+   private int g = 22;
+   private boolean h;
+   @Nullable
+   private bso i;
+   @Nullable
+   private UUID j;
+
+   public cmg(bsa<? extends cmg> $$0, dax $$1) {
       super($$0, $$1);
    }
 
-   public cmg(brn<? extends cmg> $$0, double $$1, double $$2, double $$3, dad $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public cmg(brn<? extends cmg> $$0, bsa $$1, dad $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(csz $$0) {
-      this.an().a(b, $$0.c(1));
-   }
-
-   protected abstract csu r();
-
-   @Override
-   public csz p() {
-      return this.an().a(b);
+   public cmg(dax $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bso $$6) {
+      this(bsa.K, $$0);
+      this.e = $$5;
+      this.a($$6);
+      this.r($$4 * (180.0F / (float)Math.PI));
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected void a(ajq.a $$0) {
-      $$0.a(b, new csz(this.r()));
+   protected void a(ajv.a $$0) {
+   }
+
+   public void a(@Nullable bso $$0) {
+      this.i = $$0;
+      this.j = $$0 == null ? null : $$0.cz();
+   }
+
+   @Nullable
+   public bso p() {
+      if (this.i == null && this.j != null && this.dP() instanceof aqm) {
+         bru $$0 = ((aqm)this.dP()).a(this.j);
+         if ($$0 instanceof bso) {
+            this.i = (bso)$$0;
+         }
+      }
+
+      return this.i;
    }
 
    @Override
-   public void b(ua $$0) {
+   protected void a(ud $$0) {
+      this.e = $$0.h("Warmup");
+      if ($$0.b("Owner")) {
+         this.j = $$0.a("Owner");
+      }
+   }
+
+   @Override
+   protected void b(ud $$0) {
+      $$0.a("Warmup", this.e);
+      if (this.j != null) {
+         $$0.a("Owner", this.j);
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dP().B) {
+         if (this.h) {
+            this.g--;
+            if (this.g == 14) {
+               for (int $$0 = 0; $$0 < 12; $$0++) {
+                  double $$1 = this.du() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
+                  double $$2 = this.dw() + 0.05 + this.ah.j();
+                  double $$3 = this.dA() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
+                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  double $$5 = 0.3 + this.ah.j() * 0.3;
+                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  this.dP().a(ky.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
+               }
+            }
+         }
+      } else if (--this.e < 0) {
+         if (this.e == -8) {
+            for (bso $$8 : this.dP().a(bso.class, this.cK().c(0.2, 0.0, 0.2))) {
+               this.c($$8);
+            }
+         }
+
+         if (!this.f) {
+            this.dP().a(this, (byte)4);
+            this.f = true;
+         }
+
+         if (--this.g < 0) {
+            this.ao();
+         }
+      }
+   }
+
+   private void c(bso $$0) {
+      bso $$1 = this.p();
+      if ($$0.bD() && !$$0.cu() && $$0 != $$1) {
+         if ($$1 == null) {
+            $$0.a(this.dQ().o(), 6.0F);
+         } else {
+            if ($$1.s($$0)) {
+               return;
+            }
+
+            $$0.a(this.dQ().c(this, (bru)$$1), 6.0F);
+         }
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
       super.b($$0);
-      $$0.a("Item", this.p().a(this.dP()));
+      if ($$0 == 4) {
+         this.h = true;
+         if (!this.aW()) {
+            this.dP().a(this.du(), this.dw(), this.dA(), avh.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
+         }
+      }
    }
 
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(csz.a(this.dP(), (ux)$$0.p("Item")).orElseGet(() -> new csz(this.r())));
+   public float a(float $$0) {
+      if (!this.h) {
+         return 0.0F;
       } else {
-         this.a(new csz(this.r()));
+         int $$1 = this.g - 2;
+         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
       }
    }
 }

@@ -1,102 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public record cvs(List<cvs.b> e, boolean f) {
-   public static final cvs a = new cvs(List.of(), true);
-   private static final Codec<cvs> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvs.b.a.listOf().fieldOf("modifiers").forGetter(cvs::b), axh.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cvs::c))
+public class cvs implements cwu {
+   public static final Codec<cvs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cvt.c.fieldOf("material").forGetter(cvs::b),
+               cvv.c.fieldOf("pattern").forGetter(cvs::a),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
+            )
             .apply($$0, cvs::new)
    );
-   public static final Codec<cvs> b = axh.a(g, cvs.b.a.listOf(), $$0 -> new cvs($$0, true));
-   public static final ys<wf, cvs> c = ys.a(cvs.b.b.a(yq.a()), cvs::b, yq.b, cvs::c, cvs::new);
-   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   public static final yv<wi, cvs> b = yv.a(cvt.d, cvs::b, cvv.d, cvs::a, yt.b, $$0 -> $$0.f, cvs::new);
+   private static final wx c = wx.c(ac.a("item", new akm("smithing_template.upgrade"))).a(n.h);
+   private final ix<cvt> d;
+   private final ix<cvv> e;
+   private final boolean f;
+   private final Function<ix<cre>, akm> g;
+   private final Function<ix<cre>, akm> h;
 
-   public cvs a(boolean $$0) {
-      return new cvs(this.e, $$0);
+   private cvs(ix<cvt> $$0, ix<cvv> $$1, boolean $$2, Function<ix<cre>, akm> $$3, Function<ix<cre>, akm> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public static cvs.a a() {
-      return new cvs.a();
+   public cvs(ix<cvt> $$0, ix<cvv> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ac.b($$2x -> {
+         akm $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
+      });
+      this.h = ac.b($$2x -> {
+         akm $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
+      });
+      this.f = $$2;
    }
 
-   public cvs a(iw<btc> $$0, btf $$1, brp $$2) {
-      return new cvs(ac.a(this.e, new cvs.b($$0, $$1, $$2)), this.f);
+   public cvs(ix<cvt> $$0, ix<cvv> $$1) {
+      this($$0, $$1, true);
    }
 
-   public void a(bro $$0, BiConsumer<iw<btc>, btf> $$1) {
-      for (cvs.b $$2 : this.e) {
-         if ($$2.e.a($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
-      }
+   private static String b(ix<cvt> $$0, ix<cre> $$1) {
+      Map<ix<cre>, String> $$2 = $$0.a().d();
+      String $$3 = $$2.get($$1);
+      return $$3 != null ? $$3 : $$0.a().a();
    }
 
-   public double a(double $$0, bro $$1) {
-      double $$2 = $$0;
-
-      for (cvs.b $$3 : this.e) {
-         if ($$3.e.a($$1)) {
-            double $$4 = $$3.d.d();
-
-            $$2 += switch ($$3.d.e()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
-         }
-      }
-
-      return $$2;
+   public boolean a(ix<cvv> $$0, ix<cvt> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
    }
 
-   public List<cvs.b> b() {
+   public ix<cvv> a() {
       return this.e;
    }
 
-   public boolean c() {
-      return this.f;
+   public ix<cvt> b() {
+      return this.d;
    }
 
-   public static class a {
-      private final Builder<cvs.b> a = ImmutableList.builder();
+   public akm a(ix<cre> $$0) {
+      return this.g.apply($$0);
+   }
 
-      a() {
-      }
+   public akm b(ix<cre> $$0) {
+      return this.h.apply($$0);
+   }
 
-      public cvs.a a(iw<btc> $$0, btf $$1, brp $$2) {
-         this.a.add(new cvs.b($$0, $$1, $$2));
-         return this;
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cvs $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
+   }
 
-      public cvs a() {
-         return new cvs(this.a.build(), true);
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
+
+   @Override
+   public void a(Consumer<wx> $$0, cvh $$1) {
+      if (this.f) {
+         $$0.accept(c);
+         $$0.accept(ww.a().b(this.e.a().a(this.d)));
+         $$0.accept(ww.a().b(this.d.a().e()));
       }
    }
 
-   public static record b(iw<btc> c, btf d, brp e) {
-      public static final Codec<cvs.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ld.u.r().fieldOf("type").forGetter(cvs.b::a), btf.a.forGetter(cvs.b::b), axh.a(brp.k, "slot", brp.a).forGetter(cvs.b::c))
-               .apply($$0, cvs.b::new)
-      );
-      public static final ys<wf, cvs.b> b = ys.a(yq.b(le.c), cvs.b::a, btf.c, cvs.b::b, brp.l, cvs.b::c, cvs.b::new);
-
-      public iw<btc> a() {
-         return this.c;
-      }
-
-      public btf b() {
-         return this.d;
-      }
-
-      public brp c() {
-         return this.e;
-      }
+   public cvs a(boolean $$0) {
+      return new cvs(this.d, this.e, $$0, this.g, this.h);
    }
 }

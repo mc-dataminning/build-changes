@@ -1,115 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class cql extends cot {
+   private static final int k = 27;
+   private final bpn l;
 
-public class cql {
-   private static final Codec<cql> e = av.a.flatComapMap($$0 -> new cql(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<cql> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axh.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), axh.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cql::a))
-            .apply($$0, cql::new)
-   );
-   public static final Codec<cql> a = axh.e(f, e);
-   public static final ys<wf, cql> b = ys.a(av.b.a(yq.a()), $$0 -> $$0.h, yq.b, cql::a, cql::new);
-   public static final wu c = wu.c("item.canBreak").a(n.h);
-   public static final wu d = wu.c("item.canPlace").a(n.h);
-   private static final wu g = wu.c("item.canUse.unknown").a(n.h);
-   private final List<av> h;
-   private final boolean i;
-   private final List<wu> j;
-   @Nullable
-   private dql k;
-   private boolean l;
-   private boolean m;
-
-   private cql(List<av> $$0, boolean $$1, List<wu> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public cql(int $$0, clv $$1) {
+      this($$0, $$1, new bqd(27));
    }
 
-   public cql(List<av> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
-   }
+   public cql(int $$0, clv $$1, bpn $$2) {
+      super(cqa.u, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.l);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   private static boolean a(dql $$0, @Nullable dql $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         jk $$3 = $$0.c().H_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cqm($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cqo($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cqo($$1, $$9, 8 + $$9 * 18, 142));
       }
    }
 
-   public boolean a(dql $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
+   @Override
+   public boolean a(clw $$0) {
+      return this.l.a($$0);
+   }
 
-         for (av $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
+   @Override
+   public cto a(clw $$0, int $$1) {
+      cto $$2 = cto.i;
+      cqo $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cto $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cto.i;
             }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cto.i;
          }
 
-         this.l = false;
-         return false;
-      }
-   }
-
-   public void a(Consumer<wu> $$0) {
-      this.j.forEach($$0);
-   }
-
-   public cql a(boolean $$0) {
-      return new cql(this.h, $$0, this.j);
-   }
-
-   private static List<wu> a(List<av> $$0) {
-      for (av $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
+         if ($$4.e()) {
+            $$3.e(cto.i);
+         } else {
+            $$3.b();
          }
       }
 
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dde)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
+      return $$2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cql $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
+   public void b(clw $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

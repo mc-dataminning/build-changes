@@ -1,24 +1,24 @@
-import java.util.Collection;
-import java.util.List;
+public record aft(int b) implements ze<abq> {
+   public static final yv<vx, aft> a = ze.a(aft::a, aft::new);
 
-public class aft implements zb<abm> {
-   public static final ys<wf, aft> a = ys.a(cxf.a.a(yq.a()), $$0 -> $$0.b, aft::new);
-   private final List<cxf<?>> b;
+   private aft(vx $$0) {
+      this($$0.l());
+   }
 
-   public aft(Collection<cxf<?>> $$0) {
-      this.b = List.copyOf($$0);
+   public static aft a(bqf $$0) {
+      return new aft($$0.k());
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<aft> a() {
-      return afx.bd;
+   public zg<aft> a() {
+      return agb.cf;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
-   }
-
-   public List<cxf<?>> b() {
-      return this.b;
    }
 }

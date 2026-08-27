@@ -1,64 +1,35 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+public interface xm {
+   wx a();
 
-public record xm<S>(List<xm.a<S>> a) {
-   public static <S> xm<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xm.a<S>> $$4 = a($$1, $$2);
+   void a(aqn var1, boolean var2, wt.a var3);
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new xm<>($$4);
+   static xm a(xn $$0) {
+      return (xm)($$0.h() ? new xm.a($$0.d()) : new xm.b($$0));
    }
 
-   private static <S> List<xm.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xm.a<S>> $$2 = new ArrayList<>();
+   public static record a(wx a) implements xm {
+      @Override
+      public void a(aqn $$0, boolean $$1, wt.a $$2) {
+         $$0.d.a(this.a, $$2);
+      }
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fk) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xm.a<>($$4, $$6));
-               }
-            }
+   public static record b(xn a) implements xm {
+      @Override
+      public wx a() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(aqn $$0, boolean $$1, wt.a $$2) {
+         xn $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.d.a($$3, $$2);
          }
       }
 
-      return $$2;
-   }
-
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
-
-      public ArgumentCommandNode<S, ?> b() {
+      public xn b() {
          return this.a;
-      }
-
-      public String c() {
-         return this.b;
       }
    }
 }

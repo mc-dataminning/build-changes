@@ -1,44 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eag extends dzd<ebp> {
-   private static final int a = 7;
+public class eag implements ecb {
+   public static final Codec<eag> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               drb.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               drb.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               drb.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               drb.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               dya.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eag::new)
+   );
+   public final drb b;
+   public final drb c;
+   public final drb d;
+   public final drb e;
+   public final dya f;
+   public final boolean g;
 
-   eag(Codec<ebp> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dzf<ebp> $$0) {
-      day $$1 = $$0.b();
-      ayg $$2 = $$0.d();
-      ebp $$3 = $$0.f();
-      in $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      in.a $$6 = new in.a();
-
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dqh $$8 = $$1.a_($$6);
-
-         for (ebp.a $$9 : $$3.b) {
-            if (dzy.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(in.a $$0, ayg $$1, in $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ayg $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   public eag(drb $$0, drb $$1, drb $$2, drb $$3, dya $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

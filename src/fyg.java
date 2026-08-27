@@ -1,43 +1,33 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-public class fyg extends fyi<kq> {
-   private final Vector3f a;
-   private final Vector3f b;
+public interface fyg {
+   boolean a(fyh var1);
 
-   protected fyg(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, kq $$7, fzx $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
+   boolean a(fyi var1);
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
+   static fyg a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fyg() {
+         @Override
+         public boolean a(fyh $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
-
-   @Override
-   public void a(eyb $$0, fcp $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements fzf<kq> {
-      private final fzx a;
-
-      public a(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(kq $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyg($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+         @Override
+         public boolean a(fyi $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

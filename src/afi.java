@@ -1,68 +1,45 @@
-import javax.annotation.Nullable;
+public class afi implements ze<abq> {
+   public static final yv<vx, afi> a = ze.a(afi::a, afi::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class afi implements zb<abm> {
-   public static final ys<vu, afi> a = zb.a(afi::a, afi::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final akh d;
-   @Nullable
-   private final avd e;
-
-   public afi(@Nullable akh $$0, @Nullable avd $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public afi(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afi(vu $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(avd.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private afi(vx $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(vu $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(vx $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zd<afi> a() {
-      return afx.aU;
+   public zg<afi> a() {
+      return agb.aQ;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akh b() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 
-   @Nullable
-   public avd e() {
-      return this.e;
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

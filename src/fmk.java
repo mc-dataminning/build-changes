@@ -1,94 +1,133 @@
-import javax.annotation.Nullable;
+enum fmk {
+   a(
+      new fmk.a(
+         new akm("advancements/tab_above_left_selected"), new akm("advancements/tab_above_middle_selected"), new akm("advancements/tab_above_right_selected")
+      ),
+      new fmk.a(new akm("advancements/tab_above_left"), new akm("advancements/tab_above_middle"), new akm("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fmk.a(
+         new akm("advancements/tab_below_left_selected"), new akm("advancements/tab_below_middle_selected"), new akm("advancements/tab_below_right_selected")
+      ),
+      new fmk.a(new akm("advancements/tab_below_left"), new akm("advancements/tab_below_middle"), new akm("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fmk.a(
+         new akm("advancements/tab_left_top_selected"), new akm("advancements/tab_left_middle_selected"), new akm("advancements/tab_left_bottom_selected")
+      ),
+      new fmk.a(new akm("advancements/tab_left_top"), new akm("advancements/tab_left_middle"), new akm("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fmk.a(
+         new akm("advancements/tab_right_top_selected"), new akm("advancements/tab_right_middle_selected"), new akm("advancements/tab_right_bottom_selected")
+      ),
+      new fmk.a(new akm("advancements/tab_right_top"), new akm("advancements/tab_right_middle"), new akm("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-public class fmk extends fmb<coj> {
-   private static final akh D = new akh("container/cartography_table/error");
-   private static final akh E = new akh("container/cartography_table/scaled_map");
-   private static final akh F = new akh("container/cartography_table/duplicated_map");
-   private static final akh G = new akh("container/cartography_table/map");
-   private static final akh H = new akh("container/cartography_table/locked");
-   private static final akh I = new akh("textures/gui/container/cartography_table.png");
+   private final fmk.a e;
+   private final fmk.a f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public fmk(coj $$0, clg $$1, wu $$2) {
-      super($$0, $$1, $$2);
-      this.s -= 2;
+   private fmk(fmk.a $$0, fmk.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   protected void a(fer $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
-      csz $$6 = this.w.b(1).g();
-      boolean $$7 = $$6.a(ctc.uj);
-      boolean $$8 = $$6.a(ctc.qO);
-      boolean $$9 = $$6.a(ctc.fT);
-      csz $$10 = this.w.b(0).g();
-      enn $$11 = $$10.a(ka.z);
-      boolean $$12 = false;
-      enp $$13;
-      if ($$11 != null) {
-         $$13 = cth.a($$11, this.m.r);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
-
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
-            }
-         }
+   public void a(ffm $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fmk.a $$5 = $$3 ? this.e : this.f;
+      akm $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         $$13 = null;
+         $$6 = $$5.b();
       }
 
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   private void a(fer $$0, @Nullable enn $$1, @Nullable enp $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.z;
-      int $$8 = this.A;
-      if ($$4 && !$$6) {
-         $$0.a(E, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(F, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(F, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(H, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+   public void a(ffm $$0, int $$1, int $$2, int $$3, cto $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   private void a(fer $$0, @Nullable enn $$1, @Nullable enp $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         this.m.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
-         $$0.e();
-         $$0.c().b();
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(akm a, akm b, akm c) {
    }
 }

@@ -1,343 +1,77 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class dqa extends dfh {
-   public static final MapCodec<dqa> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("sticky").forGetter($$0x -> $$0x.n), u()).apply($$0, dqa::new)
-   );
-   public static final dqy c = dqx.g;
-   public static final int d = 0;
-   public static final int e = 1;
-   public static final int f = 2;
-   public static final float g = 4.0F;
-   protected static final eui h = dde.a(0.0, 0.0, 0.0, 12.0, 16.0, 16.0);
-   protected static final eui i = dde.a(4.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final eui j = dde.a(0.0, 0.0, 0.0, 16.0, 16.0, 12.0);
-   protected static final eui k = dde.a(0.0, 0.0, 4.0, 16.0, 16.0, 16.0);
-   protected static final eui l = dde.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   protected static final eui m = dde.a(0.0, 4.0, 0.0, 16.0, 16.0, 16.0);
-   private final boolean n;
+public class dqa extends dog implements dbp, dqe.b {
+   private static final Logger a = LogUtils.getLogger();
+   private dqe b;
 
-   @Override
-   public MapCodec<dqa> a() {
-      return b;
-   }
-
-   public dqa(boolean $$0, dqg.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(a, is.c).a(c, Boolean.valueOf(false)));
-      this.n = $$0;
+   public dqa(io $$0, drb $$1) {
+      super(doi.Q, $$0, $$1);
+      dqd $$2 = dqd.a;
+      dqd.a $$3 = dqd.a.a;
+      this.b = new dqe(this, $$2, $$3);
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      if ($$0.c(c)) {
-         switch ((is)$$0.c(a)) {
-            case a:
-               return m;
-            case b:
-            default:
-               return l;
-            case c:
-               return k;
-            case d:
-               return j;
-            case e:
-               return i;
-            case f:
-               return h;
-         }
-      } else {
-         return euf.b();
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.e("normal_config")) {
+         ud $$2 = $$0.p("normal_config").h();
+         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
+      }
+
+      this.b.a().parse(ur.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.n != null) {
+         this.f();
       }
    }
 
    @Override
-   public void a(dad $$0, in $$1, dqh $$2, bsa $$3, csz $$4) {
-      if (!$$0.B) {
-         this.a($$0, $$1, $$2);
-      }
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      this.b.a().encodeStart(ur.a, this.b).ifSuccess($$1x -> $$0.a((ud)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+   }
+
+   public abx b() {
+      return abx.a(this);
    }
 
    @Override
-   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
-      if (!$$1.B) {
-         this.a($$1, $$2, $$0);
-      }
+   public ud a(iz.a $$0) {
+      return this.b.f().a(this.n().c(dmn.b));
    }
 
    @Override
-   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if (!$$1.B && $$1.c_($$2) == null) {
-            this.a($$1, $$2, $$0);
-         }
-      }
-   }
-
-   @Override
-   public dqh a(cwi $$0) {
-      return this.n().a(a, $$0.d().g()).a(c, Boolean.valueOf(false));
-   }
-
-   private void a(dad $$0, in $$1, dqh $$2) {
-      is $$3 = $$2.c(a);
-      boolean $$4 = this.a($$0, $$1, $$3);
-      if ($$4 && !$$2.c(c)) {
-         if (new dqe($$0, $$1, $$3, true).a()) {
-            $$0.a($$1, this, 0, $$3.d());
-         }
-      } else if (!$$4 && $$2.c(c)) {
-         in $$5 = $$1.a($$3, 2);
-         dqh $$6 = $$0.a_($$5);
-         int $$7 = 1;
-         if ($$6.a(ddg.bQ) && $$6.c(a) == $$3 && $$0.c_($$5) instanceof dqd $$9 && $$9.b() && ($$9.a(0.0F) < 0.5F || $$0.Y() == $$9.l() || ((aqh)$$0).c())) {
-            $$7 = 2;
-         }
-
-         $$0.a($$1, this, $$7, $$3.d());
-      }
-   }
-
-   private boolean a(dat $$0, in $$1, is $$2) {
-      for (is $$3 : is.values()) {
-         if ($$3 != $$2 && $$0.b($$1.a($$3), $$3)) {
-            return true;
-         }
-      }
-
-      if ($$0.b($$1, is.a)) {
-         return true;
-      } else {
-         in $$4 = $$1.c();
-
-         for (is $$5 : is.values()) {
-            if ($$5 != is.a && $$0.b($$4.a($$5), $$5)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dad $$1, in $$2, int $$3, int $$4) {
-      is $$5 = $$0.c(a);
-      dqh $$6 = $$0.a(c, Boolean.valueOf(true));
-      if (!$$1.B) {
-         boolean $$7 = this.a($$1, $$2, $$5);
-         if ($$7 && ($$3 == 1 || $$3 == 2)) {
-            $$1.a($$2, $$6, 2);
-            return false;
-         }
-
-         if (!$$7 && $$3 == 0) {
-            return false;
-         }
-      }
-
-      if ($$3 == 0) {
-         if (!this.a($$1, $$2, $$5, true)) {
-            return false;
-         }
-
-         $$1.a($$2, $$6, 67);
-         $$1.a(null, $$2, avc.tM, avd.e, 0.5F, $$1.z.i() * 0.25F + 0.6F);
-         $$1.a(dva.a, $$2, dva.a.a($$6));
-      } else if ($$3 == 1 || $$3 == 2) {
-         dnm $$8 = $$1.c_($$2.a($$5));
-         if ($$8 instanceof dqd) {
-            ((dqd)$$8).k();
-         }
-
-         dqh $$9 = ddg.bQ.n().a(dpz.b, $$5).a(dpz.c, this.n ? drj.b : drj.a);
-         $$1.a($$2, $$9, 20);
-         $$1.a(dpz.a($$2, $$9, this.n().a(a, is.a($$4 & 7)), $$5, false, true));
-         $$1.b($$2, $$9.b());
-         $$9.a($$1, $$2, 2);
-         if (this.n) {
-            in $$10 = $$2.b($$5.j() * 2, $$5.k() * 2, $$5.l() * 2);
-            dqh $$11 = $$1.a_($$10);
-            boolean $$12 = false;
-            if ($$11.a(ddg.bQ) && $$1.c_($$10) instanceof dqd $$14 && $$14.c() == $$5 && $$14.b()) {
-               $$14.k();
-               $$12 = true;
-            }
-
-            if (!$$12) {
-               if ($$3 != 1 || $$11.i() || !a($$11, $$1, $$10, $$5.g(), false, $$5) || $$11.o() != emf.a && !$$11.a(ddg.by) && !$$11.a(ddg.br)) {
-                  $$1.a($$2.a($$5), false);
-               } else {
-                  this.a($$1, $$2, $$5, false);
-               }
-            }
-         } else {
-            $$1.a($$2.a($$5), false);
-         }
-
-         $$1.a(null, $$2, avc.tL, avd.e, 0.5F, $$1.z.i() * 0.15F + 0.6F);
-         $$1.a(dva.e, $$2, dva.a.a($$9));
-      }
-
+   public boolean q() {
       return true;
    }
 
-   public static boolean a(dqh $$0, dad $$1, in $$2, is $$3, boolean $$4, is $$5) {
-      if ($$2.v() < $$1.I_() || $$2.v() > $$1.al() - 1 || !$$1.C_().a($$2)) {
-         return false;
-      } else if ($$0.i()) {
-         return true;
-      } else if ($$0.a(ddg.co) || $$0.a(ddg.pk) || $$0.a(ddg.pl) || $$0.a(ddg.to)) {
-         return false;
-      } else if ($$3 == is.a && $$2.v() == $$1.I_()) {
-         return false;
-      } else if ($$3 == is.b && $$2.v() == $$1.al() - 1) {
-         return false;
-      } else {
-         if (!$$0.a(ddg.by) && !$$0.a(ddg.br)) {
-            if ($$0.h($$1, $$2) == -1.0F) {
-               return false;
-            }
+   @Override
+   public void a(bsa<?> $$0, ayk $$1) {
+      this.b.f().a(this.b, $$1, $$0);
+      this.e();
+   }
 
-            switch ($$0.o()) {
-               case c:
-                  return false;
-               case b:
-                  return $$4;
-               case e:
-                  return $$3 == $$5;
-            }
-         } else if ($$0.c(c)) {
-            return false;
-         }
+   public dqe c() {
+      return this.b;
+   }
 
-         return !$$0.t();
+   @Override
+   public dqh d() {
+      return !this.n().b(drr.by) ? dqh.a : this.n().c(drr.by);
+   }
+
+   @Override
+   public void a(dax $$0, dqh $$1) {
+      this.e();
+      $$0.b(this.o, this.n().a(drr.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.n != null) {
+         this.n.a(this.o, this.n(), this.n(), 3);
       }
-   }
-
-   private boolean a(dad $$0, in $$1, is $$2, boolean $$3) {
-      in $$4 = $$1.a($$2);
-      if (!$$3 && $$0.a_($$4).a(ddg.bz)) {
-         $$0.a($$4, ddg.a.n(), 20);
-      }
-
-      dqe $$5 = new dqe($$0, $$1, $$2, $$3);
-      if (!$$5.a()) {
-         return false;
-      } else {
-         Map<in, dqh> $$6 = Maps.newHashMap();
-         List<in> $$7 = $$5.c();
-         List<dqh> $$8 = Lists.newArrayList();
-
-         for (in $$9 : $$7) {
-            dqh $$10 = $$0.a_($$9);
-            $$8.add($$10);
-            $$6.put($$9, $$10);
-         }
-
-         List<in> $$11 = $$5.d();
-         dqh[] $$12 = new dqh[$$7.size() + $$11.size()];
-         is $$13 = $$3 ? $$2 : $$2.g();
-         int $$14 = 0;
-
-         for (int $$15 = $$11.size() - 1; $$15 >= 0; $$15--) {
-            in $$16 = $$11.get($$15);
-            dqh $$17 = $$0.a_($$16);
-            dnm $$18 = $$17.t() ? $$0.c_($$16) : null;
-            a($$17, $$0, $$16, $$18);
-            $$0.a($$16, ddg.a.n(), 18);
-            $$0.a(dva.f, $$16, dva.a.a($$17));
-            if (!$$17.a(avr.aK)) {
-               $$0.a($$16, $$17);
-            }
-
-            $$12[$$14++] = $$17;
-         }
-
-         for (int $$19 = $$7.size() - 1; $$19 >= 0; $$19--) {
-            in $$20 = $$7.get($$19);
-            dqh $$21 = $$0.a_($$20);
-            $$20 = $$20.a($$13);
-            $$6.remove($$20);
-            dqh $$22 = ddg.bQ.n().a(a, $$2);
-            $$0.a($$20, $$22, 68);
-            $$0.a(dpz.a($$20, $$22, $$8.get($$19), $$2, $$3, false));
-            $$12[$$14++] = $$21;
-         }
-
-         if ($$3) {
-            drj $$23 = this.n ? drj.b : drj.a;
-            dqh $$24 = ddg.bz.n().a(dqb.a, $$2).a(dqb.c, $$23);
-            dqh $$25 = ddg.bQ.n().a(dpz.b, $$2).a(dpz.c, this.n ? drj.b : drj.a);
-            $$6.remove($$4);
-            $$0.a($$4, $$25, 68);
-            $$0.a(dpz.a($$4, $$25, $$24, $$2, true, true));
-         }
-
-         dqh $$26 = ddg.a.n();
-
-         for (in $$27 : $$6.keySet()) {
-            $$0.a($$27, $$26, 82);
-         }
-
-         for (Entry<in, dqh> $$28 : $$6.entrySet()) {
-            in $$29 = $$28.getKey();
-            dqh $$30 = $$28.getValue();
-            $$30.b($$0, $$29, 2);
-            $$26.a($$0, $$29, 2);
-            $$26.b($$0, $$29, 2);
-         }
-
-         $$14 = 0;
-
-         for (int $$31 = $$11.size() - 1; $$31 >= 0; $$31--) {
-            dqh $$32 = $$12[$$14++];
-            in $$33 = $$11.get($$31);
-            $$32.b($$0, $$33, 2);
-            $$0.a($$33, $$32.b());
-         }
-
-         for (int $$34 = $$7.size() - 1; $$34 >= 0; $$34--) {
-            $$0.a($$7.get($$34), $$12[$$14++].b());
-         }
-
-         if ($$3) {
-            $$0.a($$4, ddg.bz);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(a, c);
-   }
-
-   @Override
-   protected boolean f_(dqh $$0) {
-      return $$0.c(c);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
    }
 }

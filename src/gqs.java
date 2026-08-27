@@ -1,33 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+public abstract class gqs extends gqr implements grk {
+   private boolean n;
 
-public class gqs<T> implements gqw<T> {
-   protected final Comparator<T> a;
-   protected final gqx<T> b;
-
-   public gqs(Function<T, Stream<akh>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.g($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gqx.a($$1, $$0);
+   protected gqs(avg $$0, avi $$1, ayk $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public boolean m() {
+      return this.n;
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
-   }
-
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gqt<T>($$2.iterator(), $$3.iterator(), this.a));
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class dxz extends dww {
-   private final jk a;
-   private final dwd b;
-   private final dwn c;
-   private final dwq.o d;
+class dxz extends dyc {
+   public static final MapCodec<dxz> a = a(dxz::new);
 
-   public dxz(dwc $$0, jk $$1, daf $$2, dwd $$3, dwn $$4, dwq.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dxz(List<dya> $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<dqh> a(Function<in, iw<dbc>> $$0, dsd $$1, in $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dbs $$0, io $$1) {
+      for (dya $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Deprecated
-   public jk c() {
-      return this.a;
-   }
-
-   public dwn d() {
-      return this.c;
+   @Override
+   public dyb<?> a() {
+      return dyb.i;
    }
 }

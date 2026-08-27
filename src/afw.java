@@ -1,145 +1,94 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class afw implements ze<abq> {
+   public static final yv<wi, afw> a = ze.a(afw::a, afw::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final ix<bra> g;
+   private final int h;
+   private final int i;
+   private final byte j;
 
-public class afw {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(aqh $$0, in $$1, String $$2, int $$3, int $$4) {
-      a($$0, (aac)(new aag($$1, $$3, $$2, $$4)));
-   }
-
-   public static void a(aqh $$0) {
-      a($$0, (aac)(new aah()));
-   }
-
-   public static void a(aqh $$0, czk $$1) {
-   }
-
-   public static void a(aqh $$0, in $$1) {
-      d($$0, $$1);
-   }
-
-   public static void b(aqh $$0, in $$1) {
-      d($$0, $$1);
-   }
-
-   public static void c(aqh $$0, in $$1) {
-      d($$0, $$1);
-   }
-
-   private static void d(aqh $$0, in $$1) {
-   }
-
-   public static void a(dad $$0, bsc $$1, @Nullable emo $$2, float $$3) {
-   }
-
-   public static void a(dad $$0, in $$1) {
-   }
-
-   public static void a(day $$0, egx $$1) {
-   }
-
-   public static void a(dad $$0, bsc $$1, byy $$2) {
-   }
-
-   public static void a(aqh $$0, Collection<cms> $$1) {
-   }
-
-   public static void a(bsa $$0) {
-   }
-
-   public static void a(cdq $$0) {
-   }
-
-   public static void a(cjj $$0) {
-   }
-
-   public static void a(dad $$0, iw<dva> $$1, etp $$2) {
-   }
-
-   public static void a(dad $$0, dvc $$1) {
-   }
-
-   public static void a(dad $$0, in $$1, dqh $$2, dnj $$3) {
-   }
-
-   private static List<String> a(bsa $$0, long $$1) {
-      Map<cbd<?>, Optional<? extends cbc<?>>> $$2 = $$0.dQ().b();
-      List<String> $$3 = Lists.newArrayList();
-
-      for (Entry<cbd<?>, Optional<? extends cbc<?>>> $$4 : $$2.entrySet()) {
-         cbd<?> $$5 = $$4.getKey();
-         Optional<? extends cbc<?>> $$6 = $$4.getValue();
-         String $$10;
-         if ($$6.isPresent()) {
-            cbc<?> $$7 = (cbc<?>)$$6.get();
-            Object $$8 = $$7.c();
-            if ($$5 == cbd.D) {
-               long $$9 = $$1 - (Long)$$8;
-               $$10 = $$9 + " ticks ago";
-            } else if ($$7.e()) {
-               $$10 = a((aqh)$$0.dN(), $$8) + " (ttl: " + $$7.b() + ")";
-            } else {
-               $$10 = a((aqh)$$0.dN(), $$8);
-            }
-         } else {
-            $$10 = "-";
-         }
-
-         $$3.add(ld.B.b($$5).a() + ": " + $$10);
+   public afw(int $$0, brc $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
       }
 
-      $$3.sort(String::compareTo);
-      return $$3;
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   private static String a(aqh $$0, @Nullable Object $$1) {
-      if ($$1 == null) {
-         return "-";
-      } else if ($$1 instanceof UUID) {
-         return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof bsa) {
-         brh $$2 = (brh)$$1;
-         return afv.a($$2);
-      } else if ($$1 instanceof bpr) {
-         return ((bpr)$$1).ad().getString();
-      } else if ($$1 instanceof cbg) {
-         return a($$0, ((cbg)$$1).a());
-      } else if ($$1 instanceof bud) {
-         return a($$0, ((bud)$$1).c());
-      } else if ($$1 instanceof iv) {
-         return a($$0, ((iv)$$1).b());
-      } else if ($$1 instanceof btv) {
-         return a($$0, ((btv)$$1).b());
-      } else if ($$1 instanceof bqf) {
-         brh $$3 = ((bqf)$$1).d();
-         return $$3 == null ? $$1.toString() : a($$0, $$3);
-      } else if (!($$1 instanceof Collection)) {
-         return $$1.toString();
-      } else {
-         List<String> $$4 = Lists.newArrayList();
-
-         for (Object $$5 : (Iterable)$$1) {
-            $$4.add(a($$0, $$5));
-         }
-
-         return $$4.toString();
-      }
+   private afw(wi $$0) {
+      this.f = $$0.l();
+      this.g = yt.b(lf.R).decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
    }
 
-   private static void a(aqh $$0, aac $$1) {
-      zb<?> $$2 = new zi($$1);
+   private void a(wi $$0) {
+      $$0.c(this.f);
+      yt.b(lf.R).encode($$0, this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
+      $$0.k(this.j);
+   }
 
-      for (aqi $$3 : $$0.x()) {
-         $$3.d.b($$2);
-      }
+   @Override
+   public zg<afw> a() {
+      return agb.bc;
+   }
+
+   public void a(abq $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.f;
+   }
+
+   public ix<bra> e() {
+      return this.g;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
+
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
    }
 }

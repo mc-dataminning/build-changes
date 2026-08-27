@@ -1,43 +1,25 @@
-public class fyr extends gac {
-   private final fzx a;
-
-   protected fyr(fvw $$0, double $$1, double $$2, double $$3, fzx $$4) {
+public class fyr extends gay {
+   fyr(fwr $$0, double $$1, double $$2, double $$3, drb $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+      this.a(fdz.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public fzg b() {
-      return fzg.d;
+   public gac b() {
+      return gac.a;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   public static class a implements fzf<la> {
-      private final fzx a;
-
-      public a(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyr($$1, $$2, $$3, $$4, this.a);
+   public static class a implements gab<kp> {
+      public fzy a(kp $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyr($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

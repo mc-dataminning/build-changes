@@ -1,35 +1,110 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmh extends ddn {
+public class dmh extends ddy {
    public static final MapCodec<dmh> a = b(dmh::new);
-   protected static final eui b = dde.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+   public static final drs b = drr.B;
 
    @Override
    public MapCodec<dmh> a() {
       return a;
    }
 
-   protected dmh(dqg.d $$0) {
+   public dmh(dra.d $$0) {
       super($$0);
+      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dqh $$0, dad $$1, in $$2, brh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof aqh && $$3 instanceof cne) {
-         $$1.a(new in($$2), true, $$3);
+   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if ($$1.C($$2)) {
+            a($$1, $$2);
+            $$1.a($$2, false);
+         }
       }
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return b;
+   protected void a(drb $$0, dax $$1, io $$2, ddy $$3, io $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         a($$1, $$2);
+         $$1.a($$2, false);
+      }
    }
 
    @Override
-   protected boolean b(dqh $$0, czj $$1, in $$2) {
-      ema $$3 = $$1.b_($$2);
-      ema $$4 = $$1.b_($$2.c());
-      return ($$3.a() == emb.c || $$0.b() instanceof dhc) && $$4.a() == emb.a;
+   public drb a(dax $$0, io $$1, drb $$2, clw $$3) {
+      if (!$$0.x_() && !$$3.f() && $$2.c(b)) {
+         a($$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dax $$0, io $$1, dap $$2) {
+      if (!$$0.B) {
+         cih $$3 = new cih($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
+         int $$4 = $$3.u();
+         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
+         $$0.b($$3);
+      }
+   }
+
+   public static void a(dax $$0, io $$1) {
+      a($$0, $$1, null);
+   }
+
+   private static void a(dax $$0, io $$1, @Nullable bso $$2) {
+      if (!$$0.B) {
+         cih $$3 = new cih($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
+         $$0.b($$3);
+         $$0.a(null, $$3.du(), $$3.dw(), $$3.dA(), avh.zv, avi.e, 1.0F, 1.0F);
+         $$0.a($$2, dvu.I, $$1);
+      }
+   }
+
+   @Override
+   protected bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
+      if (!$$0.a(ctr.os) && !$$0.a(ctr.tX)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else {
+         a($$2, $$3, $$4);
+         $$2.a($$3, dea.a.n(), 11);
+         ctj $$7 = $$0.g();
+         if (!$$4.f()) {
+            if ($$0.a(ctr.os)) {
+               $$0.a(1, $$4, bso.d($$5));
+            } else {
+               $$0.h(1);
+            }
+         }
+
+         $$4.b(avr.c.b($$7));
+         return bpw.a($$2.B);
+      }
+   }
+
+   @Override
+   protected void a(dax $$0, drb $$1, eug $$2, cmo $$3) {
+      if (!$$0.B) {
+         io $$4 = $$2.a();
+         bru $$5 = $$3.s();
+         if ($$3.bQ() && $$3.a($$0, $$4)) {
+            a($$0, $$4, $$5 instanceof bso ? (bso)$$5 : null);
+            $$0.a($$4, false);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(dap $$0) {
+      return false;
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b);
    }
 }

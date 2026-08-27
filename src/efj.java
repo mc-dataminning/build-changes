@@ -1,26 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efj extends efw {
-   public static final Codec<efj> a = dvv.a.c.fieldOf("step").xmap(efj::new, $$0 -> $$0.c).codec();
-   private final dvv.a c;
+public class efj {
+   public static final Codec<efj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dut.c).fieldOf("height").forGetter(efj::a), le.e.q().fieldOf("block").orElse(dea.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, efj::new)
+   );
+   private final ddy b;
+   private final int c;
 
-   private efj(dvv.a $$0) {
+   public efj(int $$0, ddy $$1) {
       this.c = $$0;
+      this.b = $$1;
    }
 
-   public static efj a(dvv.a $$0) {
-      return new efj($$0);
+   public int a() {
+      return this.c;
+   }
+
+   public drb b() {
+      return this.b.n();
    }
 
    @Override
-   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
-      czk $$3 = new czk($$2);
-      return $$0.a($$3, this.c).a($$3);
-   }
-
-   @Override
-   public efx<?> b() {
-      return efx.o;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + le.e.b(this.b);
    }
 }

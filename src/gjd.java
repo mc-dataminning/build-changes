@@ -1,20 +1,32 @@
-public class gjd<T extends ciy> extends gid<T, fuc<T>> {
-   private static final akh a = new akh("textures/entity/spider/spider.png");
+public class gjd extends ghs<bsv> {
+   private static final float a = 40.0F;
+   private static final int f = 50;
+   private final gir g;
 
-   public gjd(ggx.a $$0) {
-      this($$0, fva.bx);
+   protected gjd(ght.a $$0) {
+      super($$0);
+      this.g = $$0.b();
    }
 
-   public gjd(ggx.a $$0, fuz $$1) {
-      super($$0, new fuc<>($$0.a($$1)), 0.8F);
-      this.a(new glp<>(this));
+   public akm a(bsv $$0) {
+      return gnu.e;
    }
 
-   protected float b(T $$0) {
-      return 180.0F;
-   }
+   public void a(bsv $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
+      cto $$6 = $$0.s();
+      if (!$$6.e()) {
+         $$3.a();
+         if ($$0.ai <= 50) {
+            float $$7 = Math.min((float)$$0.ai + $$2, 50.0F) / 50.0F;
+            $$3.b($$7, $$7, $$7);
+         }
 
-   public akh a(T $$0) {
-      return a;
+         dax $$8 = $$0.dP();
+         float $$9 = ayd.g((float)($$8.Y() - 1L)) * 40.0F;
+         float $$10 = ayd.g((float)$$8.Y()) * 40.0F;
+         $$3.a(a.d.rotationDegrees(ayd.j($$2, $$9, $$10)));
+         gip.a(this.g, $$3, $$4, 15728880, $$6, $$8.z, $$8);
+         $$3.b();
+      }
    }
 }

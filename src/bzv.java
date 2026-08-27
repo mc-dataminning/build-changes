@@ -1,13 +1,18 @@
-import javax.annotation.Nullable;
-
 public class bzv extends bzu {
-   public bzv(bsi $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private final cle h;
+
+   public bzv(cle $$0) {
+      super($$0, clw.class, 8.0F);
+      this.h = $$0;
    }
 
-   @Nullable
    @Override
-   protected etp h() {
-      return btu.a(this.b, 10, 7);
+   public boolean a() {
+      if (this.h.gq()) {
+         this.c = this.h.gp();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

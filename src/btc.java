@@ -1,32 +1,48 @@
-public class btc {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+import java.util.EnumSet;
+import java.util.Set;
 
-   protected btc(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
+public enum btc {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   public static final Set<btc> f = Set.of(values());
+   public static final Set<btc> g = Set.of(e, d);
+   private final int h;
+
+   private btc(int $$0) {
+      this.h = $$0;
    }
 
-   public double a() {
-      return this.b;
+   private int a() {
+      return 1 << this.h;
    }
 
-   public boolean b() {
-      return this.c;
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
    }
 
-   public btc a(boolean $$0) {
-      this.c = $$0;
-      return this;
+   public static Set<btc> a(int $$0) {
+      Set<btc> $$1 = EnumSet.noneOf(btc.class);
+
+      for (btc $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
    }
 
-   public double a(double $$0) {
-      return $$0;
-   }
+   public static int a(Set<btc> $$0) {
+      int $$1 = 0;
 
-   public String c() {
-      return this.d;
+      for (btc $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
    }
 }

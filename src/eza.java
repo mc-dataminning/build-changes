@@ -1,55 +1,36 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class eza extends ezt implements ezn {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public interface eza {
+   eza a = a(0.0F, 0.0F, 0.0F);
+   eza b = a((eza.a)($$0 -> -$$0.z()));
 
-   public String a() {
-      return this.a;
+   static eza a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   static eza a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   public UUID b() {
-      return this.b;
+   static eza a(eza.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
+   int[] sort(Vector3f[] var1);
 
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

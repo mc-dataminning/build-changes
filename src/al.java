@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements ayt {
+public enum al implements ayx {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = ayt.a(al::values);
+   public static final Codec<al> d = ayx.a(al::values);
    private final String e;
    private final n f;
-   private final wu g;
+   private final wx g;
 
    private al(String $$0, n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = wu.c("advancements.toast." + $$0);
+      this.g = wx.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public wu b() {
+   public wx b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum al implements ayt {
       return this.e;
    }
 
-   public xi a(af $$0, aqi $$1) {
-      return wu.a("chat.type.advancement." + this.e, $$1.O_(), ae.a($$0));
+   public xl a(af $$0, aqn $$1) {
+      return wx.a("chat.type.advancement." + this.e, $$1.O_(), ae.a($$0));
    }
 }

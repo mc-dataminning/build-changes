@@ -1,39 +1,52 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class xy implements wv {
-   public static final MapCodec<xy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, xy::new)
-   );
-   public static final wv.a<xy> b = new wv.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<wu> d;
+public record xy(String d, @Nullable gc e) implements xz {
+   public static final MapCodec<xy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xy::b)).apply($$0, xy::new));
+   public static final xz.a<xy> b = new xz.a<>(a, "block");
 
    public xy(String $$0) {
-      this.c = $$0;
+      this($$0, a($$0));
    }
 
-   private wu c() {
-      if (this.d == null) {
-         this.d = xz.a.apply(this.c);
+   @Nullable
+   private static gc a(String $$0) {
+      try {
+         return ga.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   @Override
+   public Stream<ud> a(ee $$0) {
+      if (this.e != null) {
+         aqm $$1 = $$0.e();
+         io $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dog $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.v()));
+            }
+         }
       }
 
-      return this.d.get();
+      return Stream.empty();
    }
 
    @Override
-   public <T> Optional<T> a(wz.a<T> $$0) {
-      return this.c().a($$0);
+   public xz.a<?> a() {
+      return b;
    }
 
    @Override
-   public <T> Optional<T> a(wz.b<T> $$0, xr $$1) {
-      return this.c().a($$0, $$1);
+   public String toString() {
+      return "block=" + this.d;
    }
 
    @Override
@@ -41,7 +54,7 @@ public class xy implements wv {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof xy $$1 && this.c.equals($$1.c)) {
+         if ($$0 instanceof xy $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -51,20 +64,15 @@ public class xy implements wv {
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
+      return this.d.hashCode();
    }
 
    public String b() {
-      return this.c;
+      return this.d;
    }
 
-   @Override
-   public wv.a<?> a() {
-      return b;
+   @Nullable
+   public gc c() {
+      return this.e;
    }
 }

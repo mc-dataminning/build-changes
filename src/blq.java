@@ -1,22 +1,9 @@
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class blq implements blg<StringReader, ux> {
-   public static final blg<StringReader, ux> a = new blq();
+public interface blq<S> {
+   Stream<String> possibleValues(bln<S> var1);
 
-   private blq() {
-   }
-
-   @Override
-   public Optional<ux> a(blf<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-
-      try {
-         return Optional.of(new uy($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   static <S> blq<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

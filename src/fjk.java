@@ -1,101 +1,111 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record fjk(fjj a, int b, int c) {
-   private static final fjk d = new fjk(0, 0, 0, 0);
+public class fjk extends fjh {
+   private final List<fjk.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fjp f = fjp.i().a(0.5F, 0.5F);
+
+   public fjk() {
+      this(0, 0, 0, 0);
+   }
+
+   public fjk(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
 
    public fjk(int $$0, int $$1, int $$2, int $$3) {
-      this(new fjj($$0, $$1), $$2, $$3);
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   public static fjk a() {
-      return d;
+   public fjk a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   public static fjk a(fjh $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fjk($$1, $$2, $$3, $$4);
-         case b -> new fjk($$2, $$1, $$4, $$3);
-      };
+   public fjk a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public fjk a(fji $$0) {
-      return new fjk(this.a.a($$0), this.b, this.c);
+   public fjk b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public int a(fjh $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
+   public fjp b() {
+      return this.f.g();
    }
 
-   public int b(fji $$0) {
-      fjh $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   public fjp c() {
+      return this.f;
    }
 
-   public fjk c(fji $$0) {
-      int $$1 = this.b($$0);
-      fjh $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fjk.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
+      }
+
+      for (fjk.a $$3 : this.c) {
+         $$3.a(this.C(), $$0);
+         $$3.b(this.D(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a(fjk $$0) {
-      return this.a($$0, fjh.a) && this.a($$0, fjh.b);
+   public <T extends fjo> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public boolean a(fjk $$0, fjh $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   public <T extends fjo> T a(T $$0, fjp $$1) {
+      this.c.add(new fjk.a($$0, $$1));
+      return $$0;
    }
 
-   public int b(fjh $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   public <T extends fjo> T a(T $$0, Consumer<fjp> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
-   @Nullable
-   public fjk b(fjk $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fjk($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   @Override
+   public void b(Consumer<fjo> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public int b() {
-      return this.a.b();
+   public static void a(fjo $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public int c() {
-      return this.a.b() + this.c;
+   public static void a(fjo $$0, fkf $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   public int d() {
-      return this.a.a();
+   public static void a(fjo $$0, fkf $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
    }
 
-   public int e() {
-      return this.a.a() + this.b;
+   public static void a(fjo $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.x(), $$0::m, $$5);
+      a($$2, $$4, $$0.v(), $$0::n, $$6);
    }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)ayd.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
    }
 
-   public fjj f() {
-      return this.a;
-   }
-
-   public int g() {
-      return this.b;
-   }
-
-   public int h() {
-      return this.c;
+   static class a extends fjh.a {
+      protected a(fjo $$0, fjp $$1) {
+         super($$0, $$1);
+      }
    }
 }

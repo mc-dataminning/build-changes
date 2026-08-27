@@ -1,37 +1,15 @@
-public class fts extends fsx {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fvb e;
-   private final fvb f;
-   private final fvb g;
+import java.util.function.Function;
 
-   public fts(fvb $$0) {
-      super(gbw::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+public abstract class fts {
+   protected final Function<akm, gcs> v;
+
+   public fts(Function<akm, gcs> $$0) {
+      this.v = $$0;
    }
 
-   public static fvh a() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      $$1.a("plate", fvg.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fvd.a);
-      $$1.a("handle", fvg.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fvd.a);
-      return fvh.a($$0, 64, 64);
+   public final gcs a(akm $$0) {
+      return this.v.apply($$0);
    }
 
-   public fvb b() {
-      return this.f;
-   }
-
-   public fvb c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public abstract void a(eys var1, eyw var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

@@ -1,38 +1,23 @@
-public class agu implements zb<afz> {
-   public static final ys<vu, agu> a = zb.a(agu::a, agu::new);
-   private final in b;
-   private final int c;
-   private final boolean d;
+public record agu(int b, int c, boolean d) implements ze<agd> {
+   public static final yv<vx, agu> a = ze.a(agu::a, agu::new);
 
-   public agu(in $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private agu(vx $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
    }
 
-   private agu(vu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vx $$0) {
+      $$0.c(this.b);
       $$0.c(this.c);
       $$0.a(this.d);
    }
 
    @Override
-   public zd<agu> a() {
-      return afx.bx;
+   public zg<agu> a() {
+      return agb.bt;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
-   }
-
-   public in b() {
-      return this.b;
    }
 
    public int e() {

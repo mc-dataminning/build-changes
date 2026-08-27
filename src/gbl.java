@@ -1,47 +1,31 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class gbl extends gbk {
+   private final fed i;
 
-public class gbl {
-   public final Int2ObjectMap<gpg> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<goz> b = new Int2ObjectOpenHashMap(256);
-   private final gpf c;
-
-   public gbl(gpf $$0) {
-      this.c = $$0;
+   public gbl(fed $$0) {
+      this.i = $$0;
    }
 
-   public goz a(csz $$0) {
-      goz $$1 = this.a($$0.f());
-      return $$1 == null ? this.c.a() : $$1;
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
+      } else {
+         return $$0 ? 1.0F : -1.0F;
+      }
    }
 
-   @Nullable
-   public goz a(csu $$0) {
-      return (goz)this.b.get(b($$0));
-   }
-
-   private static int b(csu $$0) {
-      return csu.a($$0);
-   }
-
-   public void a(csu $$0, gpg $$1) {
-      this.a.put(b($$0), $$1);
-   }
-
-   public gpf a() {
-      return this.c;
-   }
-
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
-
-      while (var1.hasNext()) {
-         Entry<Integer, gpg> $$0 = (Entry<Integer, gpg>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+   @Override
+   public void a(boolean $$0, float $$1) {
+      this.c = this.i.x.e();
+      this.d = this.i.z.e();
+      this.e = this.i.y.e();
+      this.f = this.i.A.e();
+      this.b = a(this.c, this.d);
+      this.a = a(this.e, this.f);
+      this.g = this.i.B.e();
+      this.h = this.i.C.e();
+      if ($$0) {
+         this.a *= $$1;
+         this.b *= $$1;
       }
    }
 }

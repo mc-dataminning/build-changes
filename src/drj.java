@@ -1,20 +1,18 @@
-public enum drj implements ayt {
-   a("normal"),
-   b("sticky");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class drj implements Predicate<drb> {
+   private final ddy a;
 
-   private drj(String $$0) {
-      this.c = $$0;
+   public drj(ddy $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static drj a(ddy $$0) {
+      return new drj($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable drb $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

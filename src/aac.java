@@ -1,51 +1,100 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface aac {
-   aac.b<? extends aac> a();
+public record aac(aac.a c) implements aaf {
+   public static final yv<vx, aac> a = aaf.a(aac::a, aac::new);
+   public static final aaf.b<aac> b = aaf.a("debug/brain");
 
-   static <B extends ByteBuf, T extends aac> ys<B, T> a(yv<B, T> $$0, yt<B, T> $$1) {
-      return ys.a($$0, $$1);
+   private aac(vx $$0) {
+      this(new aac.a($$0));
    }
 
-   static <T extends aac> aac.b<T> a(String $$0) {
-      return new aac.b<>(new akh($$0));
+   private void a(vx $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends vu> ys<B, aac> a(final aac.a<B> $$0, List<aac.c<? super B, ?>> $$1) {
-      final Map<akh, ys<? super B, ? extends aac>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aac.c::b));
-      return new ys<B, aac>() {
-         private ys<? super B, ? extends aac> a(akh $$0x) {
-            ys<? super B, ? extends aac> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aac> void a(B $$0x, aac.b<T> $$1, aac $$2x) {
-            $$0.a($$1.a());
-            ys<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aac $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aac a(B $$0x) {
-            akh $$1 = $$0.q();
-            return (aac)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aaf.b<aac> a() {
+      return b;
    }
 
-   public interface a<B extends vu> {
-      ys<B, ? extends aac> create(akh var1);
+   public aac.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aac>(akh a) {
-   }
+   public static record a(
+      UUID a,
+      int b,
+      String c,
+      String d,
+      int e,
+      float f,
+      float g,
+      euk h,
+      String i,
+      @Nullable eni j,
+      boolean k,
+      int l,
+      List<String> m,
+      List<String> n,
+      List<String> o,
+      List<String> p,
+      Set<io> q,
+      Set<io> r
+   ) {
+      public a(vx $$0) {
+         this(
+            $$0.n(),
+            $$0.readInt(),
+            $$0.p(),
+            $$0.p(),
+            $$0.readInt(),
+            $$0.readFloat(),
+            $$0.readFloat(),
+            $$0.k(),
+            $$0.p(),
+            $$0.c(eni::b),
+            $$0.readBoolean(),
+            $$0.readInt(),
+            $$0.a(vx::p),
+            $$0.a(vx::p),
+            $$0.a(vx::p),
+            $$0.a(vx::p),
+            $$0.a(HashSet::new, io.b),
+            $$0.a(HashSet::new, io.b)
+         );
+      }
 
-   public static record c<B extends vu, T extends aac>(aac.b<T> a, ys<B, T> b) {
+      public void a(vx $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+         $$0.p(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g);
+         $$0.a(this.h);
+         $$0.a(this.i);
+         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.k);
+         $$0.p(this.l);
+         $$0.a(this.m, vx::a);
+         $$0.a(this.n, vx::a);
+         $$0.a(this.o, vx::a);
+         $$0.a(this.p, vx::a);
+         $$0.a(this.q, io.b);
+         $$0.a(this.r, io.b);
+      }
+
+      public boolean a(io $$0) {
+         return this.q.contains($$0);
+      }
+
+      public boolean b(io $$0) {
+         return this.r.contains($$0);
+      }
    }
 }

@@ -1,83 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eqa extends epw {
-   public static final int a = 0;
-   public static final Codec<eqa> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(esm.a.fieldOf("count").forGetter($$0x -> $$0x.c), axh.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
+public class eqa extends epx {
+   public static final MapCodec<eqa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(awl.a(lf.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, eqa::new)
    );
-   private final esl c;
-   private final int d;
+   private final awl<ctj> j;
+   private final boolean k;
 
-   eqa(List<erq> $$0, esl $$1, int $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private eqa(awl<ctj> $$0, boolean $$1, int $$2, int $$3, List<esl> $$4, List<eqr> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public epy b() {
-      return epz.l;
+   public epw a() {
+      return ept.f;
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return Sets.union(ImmutableSet.of(erc.d), this.c.a());
+   public void a(Consumer<cto> $$0, epf $$1) {
+      le.h.c(this.j).forEach($$1x -> $$0.accept(new cto($$1x)));
    }
 
-   private boolean c() {
-      return this.d > 0;
-   }
-
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      brh $$2 = $$1.c(erc.d);
-      if ($$2 instanceof bsa) {
-         int $$3 = cyh.h((bsa)$$2);
-         if ($$3 == 0) {
-            return $$0;
+   private boolean a(epf $$0, Consumer<epu> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ix<ctj> $$2 : le.h.c(this.j)) {
+            $$1.accept(new epx.c() {
+               @Override
+               public void a(Consumer<cto> $$0, epf $$1) {
+                  $$0.accept(new cto($$2));
+               }
+            });
          }
 
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.G() > this.d) {
-            $$0.e(this.d);
-         }
+         return true;
       }
-
-      return $$0;
    }
 
-   public static eqa.a a(esl $$0) {
-      return new eqa.a($$0);
+   @Override
+   public boolean expand(epf $$0, Consumer<epu> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static class a extends epw.a<eqa.a> {
-      private final esl a;
-      private int b = 0;
+   public static epx.a<?> a(awl<ctj> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqa($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      public a(esl $$0) {
-         this.a = $$0;
-      }
-
-      protected eqa.a a() {
-         return this;
-      }
-
-      public eqa.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public epx b() {
-         return new eqa(this.g(), this.a, this.b);
-      }
+   public static epx.a<?> b(awl<ctj> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqa($$0, true, $$1, $$2, $$3, $$4));
    }
 }

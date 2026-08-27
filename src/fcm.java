@@ -1,52 +1,22 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public enum fcm {
+   a(0, egz.a),
+   b(1, egz.b),
+   c(2, egz.c),
+   d(3, egz.d);
 
-public class fcm extends fce {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.minigame.world.slot.screen.title");
-   private final long d;
    private final int e;
-   private final Runnable f;
+   private final wx f;
 
-   public fcm(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private fcm(int $$0, akl<egy> $$1) {
+      this.e = $$0;
+      this.f = wx.c($$1.a().f("generator"));
    }
 
-   @Override
-   public void run() {
-      eyn $$0 = eyn.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fab var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
-      }
+   public wx a() {
+      return this.f;
    }
 
-   @Override
-   public wu a() {
-      return c;
+   public int b() {
+      return this.e;
    }
 }

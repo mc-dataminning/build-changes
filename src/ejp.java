@@ -1,65 +1,42 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ejp extends ekm {
-   public static final Codec<ejp> a = Codec.unit(() -> ejp.b);
-   public static final ejp b = new ejp();
-   private final Map<dde, dde> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ddg.m, ddg.pr);
-      $$0.put(ddg.cn, ddg.pr);
-      $$0.put(ddg.b, ddg.pv);
-      $$0.put(ddg.eH, ddg.pw);
-      $$0.put(ddg.eI, ddg.pw);
-      $$0.put(ddg.cQ, ddg.ps);
-      $$0.put(ddg.ni, ddg.ps);
-      $$0.put(ddg.nk, ddg.pD);
-      $$0.put(ddg.fj, ddg.pA);
-      $$0.put(ddg.ng, ddg.pA);
-      $$0.put(ddg.jI, ddg.pu);
-      $$0.put(ddg.nw, ddg.pu);
-      $$0.put(ddg.jE, ddg.pE);
-      $$0.put(ddg.jD, ddg.pE);
-      $$0.put(ddg.jK, ddg.pz);
-      $$0.put(ddg.nu, ddg.pz);
-      $$0.put(ddg.nK, ddg.pB);
-      $$0.put(ddg.nI, ddg.pB);
-      $$0.put(ddg.fP, ddg.pt);
-      $$0.put(ddg.fQ, ddg.pt);
-      $$0.put(ddg.eK, ddg.py);
-      $$0.put(ddg.eJ, ddg.px);
-      $$0.put(ddg.eW, ddg.eX);
-   });
+public class ejp extends ehj {
+   public static final boi<dci.c> d = boi.a(
+      new dci.c(bsa.i, 10, 2, 3), new dci.c(bsa.bx, 5, 4, 4), new dci.c(bsa.bq, 8, 5, 5), new dci.c(bsa.aN, 2, 5, 5), new dci.c(bsa.ap, 3, 4, 4)
+   );
+   public static final MapCodec<ejp> e = a(ejp::new);
 
-   private ejp() {
+   public ejp(ehj.c $$0) {
+      super($$0);
    }
 
    @Override
-   public ekp.c a(dag $$0, in $$1, in $$2, ekp.c $$3, ekp.c $$4, ekl $$5) {
-      dde $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         dqh $$7 = $$4.b();
-         dqh $$8 = $$6.n();
-         if ($$7.b(dky.b)) {
-            $$8 = $$8.a(dky.b, $$7.c(dky.b));
-         }
+   public Optional<ehj.b> a(ehj.a $$0) {
+      dae $$1 = $$0.h();
+      io $$2 = new io($$1.d(), 64, $$1.e());
+      return Optional.of(new ehj.b($$2, (Consumer<eib>)($$1x -> a($$1x, $$0))));
+   }
 
-         if ($$7.b(dky.c)) {
-            $$8 = $$8.a(dky.c, $$7.c(dky.c));
-         }
+   private static void a(eib $$0, ehj.a $$1) {
+      ejo.q $$2 = new ejo.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<ehn> $$3 = $$2.d;
 
-         if ($$7.b(dkh.b)) {
-            $$8 = $$8.a(dkh.b, $$7.c(dkh.b));
-         }
-
-         return new ekp.c($$4.a(), $$8, $$4.c());
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         ehn $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   protected eko<?> a() {
-      return eko.l;
+   public ehs<?> e() {
+      return ehs.d;
    }
 }

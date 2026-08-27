@@ -1,62 +1,50 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfp extends dfj {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dfp> d = b(dfp::new);
-   private static final ki f = new kh();
+public class dfp extends ddi {
+   public static final MapCodec<dfp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfn.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dfp::new));
+   private final ddy e;
+   protected static final float b = 6.0F;
+   protected static final evd c = ddy.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<dfp> a() {
-      return d;
+      return a;
    }
 
-   public dfp(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ki a(csz $$0) {
-      return f;
+   protected dfp(ddy $$0, dra.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dof($$0, $$1);
+   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      this.a($$0, (day)$$1, $$2);
    }
 
    @Override
-   protected void a(aqh $$0, dqh $$1, in $$2) {
-      doe $$3 = $$0.a($$2, dno.g).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         kf $$4 = new kf($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            csz $$6 = $$3.a($$5);
-            if (!$$6.d()) {
-               is $$7 = $$0.a_($$2).c(b);
-               bpf $$8 = dol.a($$0, $$2.a($$7));
-               csz $$9;
-               if ($$8 == null) {
-                  $$9 = f.dispense($$4, $$6);
-               } else {
-                  $$9 = dol.a($$3, $$8, $$6.r().a(1), $$7.g());
-                  if ($$9.d()) {
-                     $$9 = $$6.r();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.r();
-                  }
-               }
-
-               $$3.a($$5, $$9);
-            }
-         }
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.n().a(d, Boolean.valueOf(false)), 2);
       }
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$1 == it.a && !$$0.a($$3, $$4)) {
+         return dea.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, emv.c, emv.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return c;
    }
 }

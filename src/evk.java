@@ -1,29 +1,19 @@
-public enum evk {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private final int h;
+public interface evk {
+   int a();
 
-   private evk(int $$0) {
-      this.h = $$0;
+   boolean b();
+
+   @Nullable
+   yn c();
+
+   default xl a(yn $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   public static evk a(int $$0) {
-      for (evk $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
-   }
-
-   public int a() {
-      return this.h;
+   static xl a(@Nullable evk $$0, yn $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

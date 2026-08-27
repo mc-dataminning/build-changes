@@ -1,40 +1,36 @@
-public class fae {
-   private final fbs a;
-   private boolean b;
-   private String c;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public fae(fbs $$0) {
-      this.a = $$0;
-      fbs.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+public class fae extends fao {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fad> a;
 
-   public boolean a() {
-      return this.b;
-   }
+   public static fae a(String $$0) {
+      fae $$1 = new fae();
+      $$1.a = Lists.newArrayList();
 
-   public String b() {
-      return this.c;
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-   public void a(ezc $$0) {
-      fbs.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fbs.a b(ezc $$0) {
-      fbs.a $$1 = new fbs.a();
-      $$1.a = $$0.a;
-      fbs.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+            while ($$5.hasNext()) {
+               $$1.a.add(fad.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
+
+      return $$1;
    }
 }

@@ -1,49 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
+public class zn implements ze<zk> {
+   public static final yv<vx, zn> a = ze.a(zn::a, zn::new);
+   private final long b;
 
-public record zn(UUID c, String d, String e, boolean f, Optional<wu> g) implements zb<zh> {
-   public static final int a = 40;
-   public static final ys<ByteBuf, zn> b = ys.a(jq.g, zn::b, yq.k, zn::e, yq.b(40), zn::f, yq.b, zn::g, ww.f.a(yq::a), zn::h, zn::new);
+   public zn(long $$0) {
+      this.b = $$0;
+   }
 
-   public zn(UUID c, String d, String e, boolean f, Optional<wu> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
+   private zn(vx $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vx $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zd<zn> a() {
-      return zr.f;
+   public zg<zn> a() {
+      return zu.c;
    }
 
-   public void a(zh $$0) {
+   public void a(zk $$0) {
       $$0.a(this);
    }
 
-   public UUID b() {
-      return this.c;
-   }
-
-   public String e() {
-      return this.d;
-   }
-
-   public String f() {
-      return this.e;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public Optional<wu> h() {
-      return this.g;
+   public long b() {
+      return this.b;
    }
 }

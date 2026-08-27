@@ -1,20 +1,12 @@
-public class fav extends fau {
-   private final fce a;
+public class fav extends Exception {
+   public final ezk a;
 
-   public fav(fld $$0, fce $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public fav(ezk $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
-
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   public String getMessage() {
+      return this.a.c();
    }
 }

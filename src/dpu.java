@@ -1,116 +1,74 @@
-public enum dpu implements ayt {
-   a("inactive", dpu.a.a) {
+import javax.annotation.Nullable;
+
+public class dpu extends dog implements dbp {
+   private final czz a = new czz() {
       @Override
-      protected void a(aqh $$0, in $$1, dpr $$2, dpt $$3) {
-         $$3.a(csz.i);
-         $$0.c(3016, $$1, 0);
+      public void a(dax $$0, io $$1, int $$2) {
+         $$0.a($$1, dea.ct, $$2, 0);
       }
-   },
-   b("active", dpu.a.b) {
+
       @Override
-      protected void a(aqh $$0, in $$1, dpr $$2, dpt $$3) {
-         if (!$$3.b()) {
-            dpp.b.a($$0, this, $$2, $$3, $$1);
+      public void a(@Nullable dax $$0, io $$1, dbo $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            drb $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
          }
-
-         $$0.c(3015, $$1, 0);
-      }
-   },
-   c("unlocking", dpu.a.b) {
-      @Override
-      protected void a(aqh $$0, in $$1, dpr $$2, dpt $$3) {
-         $$0.a(null, $$1, avc.Au, avd.e);
-      }
-   },
-   d("ejecting", dpu.a.b) {
-      @Override
-      protected void a(aqh $$0, in $$1, dpr $$2, dpt $$3) {
-         $$0.a(null, $$1, avc.Aw, avd.e);
-      }
-
-      @Override
-      protected void b(aqh $$0, in $$1, dpr $$2, dpt $$3) {
-         $$0.a(null, $$1, avc.Ap, avd.e);
       }
    };
 
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dpu.a j;
-
-   dpu(String $$0, dpu.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public dpu(io $$0, drb $$1) {
+      super(doi.j, $$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.n, this.o, $$0);
    }
 
-   public int a() {
-      return this.j.c;
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
    }
 
-   public dpu a(aqh $$0, in $$1, dpr $$2, dps $$3, dpt $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Y() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Y() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public static void a(dax $$0, io $$1, drb $$2, dpu $$3) {
+      $$3.a.a($$0, $$1);
    }
 
-   private static dpu a(aqh $$0, in $$1, dpr $$2, dps $$3, dpt $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Y() + 20L);
-      return $$4.c() ? b : a;
+   public static void b(dax $$0, io $$1, drb $$2, dpu $$3) {
+      $$3.a.a((aqm)$$0, $$1);
    }
 
-   public void a(aqh $$0, in $$1, dpu $$2, dpr $$3, dpt $$4) {
-      this.b($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4);
+   public abx b() {
+      return abx.a(this);
    }
 
-   protected void a(aqh $$0, in $$1, dpr $$2, dpt $$3) {
+   @Override
+   public ud a(iz.a $$0) {
+      ud $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
    }
 
-   protected void b(aqh $$0, in $$1, dpr $$2, dpt $$3) {
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
    }
 
-   private void a(aqh $$0, in $$1, csz $$2, float $$3) {
-      kh.a($$0, $$2, 2, is.b, etp.c($$1).a(is.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, avc.Ar, avd.e, 1.0F, 0.8F + 0.4F * $$3);
+   @Override
+   public boolean q() {
+      return true;
    }
 
-   static enum a {
-      a(6),
-      b(12);
+   @Override
+   public void a(bsa<?> $$0, ayk $$1) {
+      this.a.a($$0, this.n, $$1, this.o);
+      this.e();
+   }
 
-      final int c;
-
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   public czz c() {
+      return this.a;
    }
 }

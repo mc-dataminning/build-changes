@@ -1,47 +1,22 @@
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public abstract class ccj<E extends bsa> {
-   private static final ayg a = ayg.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final ccq d = ccq.b().a(16.0);
-   private static final ccq e = ccq.b().a(16.0).e();
-   private static final ccq f = ccq.a().a(16.0);
-   private static final ccq g = ccq.a().a(16.0).e();
-   private static final ccq h = ccq.a().a(16.0).d();
-   private static final ccq i = ccq.a().a(16.0).d().e();
-   private final int j;
-   private long k;
+public class ccj extends ccs {
+   public static final float a = 10.0F;
 
-   public ccj(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   @Override
+   protected boolean a(bso $$0, bso $$1) {
+      return !$$0.dS().a(cbs.U) && ccy.c($$0, $$1) && cfy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   public ccj() {
-      this(20);
+   private boolean e(bso $$0, bso $$1) {
+      List<UUID> $$2 = $$0.dS().c(cbs.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
-   public final void b(aqh $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
-   }
-
-   protected abstract void a(aqh var1, E var2);
-
-   public abstract Set<cbd<?>> a();
-
-   public static boolean b(bsa $$0, bsa $$1) {
-      return $$0.dQ().b(cbd.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(bsa $$0, bsa $$1) {
-      return $$0.dQ().b(cbd.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(bsa $$0, bsa $$1) {
-      return $$0.dQ().b(cbd.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   @Override
+   protected cbs<bso> b() {
+      return cbs.B;
    }
 }

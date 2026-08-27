@@ -1,210 +1,140 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public abstract class fmv extends fly {
+   private static final wx s = wx.c("advMode.setCommand");
+   private static final wx u = wx.c("advMode.command");
+   private static final wx v = wx.c("advMode.previousOutput");
+   protected fgi a;
+   protected fgi b;
+   protected ffz c;
+   protected ffz d;
+   protected fgg<Boolean> r;
+   fgc w;
 
-public class fmv extends fmb<coy> {
-   private static final akh[] K = new akh[]{
-      new akh("container/enchanting_table/level_1"), new akh("container/enchanting_table/level_2"), new akh("container/enchanting_table/level_3")
-   };
-   private static final akh[] L = new akh[]{
-      new akh("container/enchanting_table/level_1_disabled"),
-      new akh("container/enchanting_table/level_2_disabled"),
-      new akh("container/enchanting_table/level_3_disabled")
-   };
-   private static final akh M = new akh("container/enchanting_table/enchantment_slot_disabled");
-   private static final akh N = new akh("container/enchanting_table/enchantment_slot_highlighted");
-   private static final akh O = new akh("container/enchanting_table/enchantment_slot");
-   private static final akh P = new akh("textures/gui/container/enchanting_table.png");
-   private static final akh Q = new akh("textures/entity/enchanting_table_book.png");
-   private final ayg R = ayg.a();
-   private frj S;
-   public int D;
-   public float E;
-   public float F;
-   public float G;
-   public float H;
-   public float I;
-   public float J;
-   private csz T = csz.i;
-
-   public fmv(coy $$0, clg $$1, wu $$2) {
-      super($$0, $$1, $$2);
+   public fmv() {
+      super(fdr.a);
    }
+
+   @Override
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
+   }
+
+   abstract czy m();
+
+   abstract int C();
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.S = new frj(this.m.aS().a(fva.r));
+      this.c = this.c(ffz.a(ww.d, $$0x -> this.D()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(ffz.a(ww.e, $$0x -> this.d()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.r = this.c(fgg.a(wx.b("O"), wx.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.C(), 20, 20, wx.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         czy $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fgi(this.p, this.n / 2 - 150, 50, 300, 20, wx.c("advMode.command")) {
+         @Override
+         protected xl aK_() {
+            return super.aK_().b(fmv.this.w.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fgi(this.p, this.n / 2 - 150, this.C(), 276, 20, wx.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.w = new fgc(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.w.a(true);
+      this.w.d();
+      this.c($$0);
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
+   protected void aC_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected wx z() {
+      return this.w.a() ? this.w.b() : super.z();
+   }
+
+   @Override
+   public void a(fdz $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.w.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void D() {
+      czy $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(czy var1);
+
+   private void a(String $$0) {
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.D();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.w.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = (this.n - this.c) / 2;
-      int $$4 = (this.o - this.d) / 2;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         double $$6 = $$0 - (double)($$3 + 60);
-         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
-         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.w.b(this.m.s, $$5)) {
-            this.m.q.a(this.w.j, $$5);
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+      return this.w.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fer $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(P, $$4, $$5, 0, 0, this.c, this.d);
-      this.d($$0, $$4, $$5, $$1);
-      fmu.a().a((long)this.w.m());
-      int $$6 = this.w.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = $$4 + 60;
-         int $$9 = $$8 + 20;
-         int $$10 = this.w.k[$$7];
-         if ($$10 == 0) {
-            $$0.a(M, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-         } else {
-            String $$11 = $$10 + "";
-            int $$12 = 86 - this.p.b($$11);
-            wz $$13 = fmu.a().a(this.p, $$12);
-            int $$14 = 6839882;
-            if (($$6 < $$7 + 1 || this.m.s.cp < $$10) && !this.m.s.gb().d) {
-               $$0.a(M, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               $$0.a(L[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
-               $$14 = 4226832;
-            } else {
-               int $$15 = $$2 - ($$4 + 60);
-               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
-               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
-                  $$0.a(N, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-                  $$14 = 16777088;
-               } else {
-                  $$0.a(O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               }
-
-               $$0.a(K[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
-               $$14 = 8453920;
-            }
-
-            $$0.b(this.p, $$11, $$9 + 86 - this.p.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
-         }
-      }
-   }
-
-   private void d(fer $$0, int $$1, int $$2, float $$3) {
-      float $$4 = axz.i($$3, this.J, this.I);
-      float $$5 = axz.i($$3, this.F, this.E);
-      ewt.e();
-      $$0.c().a();
-      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
-      float $$6 = 40.0F;
-      $$0.c().b(-40.0F, 40.0F, 40.0F);
-      $$0.c().a(a.b.rotationDegrees(25.0F));
-      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
-      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
-      $$0.c().a(a.d.rotationDegrees($$7));
-      $$0.c().a(a.b.rotationDegrees(180.0F));
-      float $$8 = axz.a(axz.h($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float $$9 = axz.a(axz.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      this.S.a(0.0F, $$8, $$9, $$4);
-      eyb $$10 = $$0.d().getBuffer(this.S.a(Q));
-      this.S.a($$0.c(), $$10, 15728880, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.e();
-      $$0.c().b();
-      ewt.d();
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      $$3 = this.m.au();
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      boolean $$4 = this.m.s.gb().d;
-      int $$5 = this.w.l();
-
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         int $$7 = this.w.k[$$6];
-         cyg $$8 = cyg.b(this.w.l[$$6]);
-         int $$9 = this.w.m[$$6];
-         int $$10 = $$6 + 1;
-         if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
-            List<wu> $$11 = Lists.newArrayList();
-            $$11.add(wu.a("container.enchant.clue", $$8.e($$9)).a(n.p));
-            if (!$$4) {
-               $$11.add(wt.a);
-               if (this.m.s.cp < $$7) {
-                  $$11.add(wu.a("container.enchant.level.requirement", this.w.k[$$6]).a(n.m));
-               } else {
-                  xi $$12;
-                  if ($$10 == 1) {
-                     $$12 = wu.c("container.enchant.lapis.one");
-                  } else {
-                     $$12 = wu.a("container.enchant.lapis.many", $$10);
-                  }
-
-                  $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
-                  xi $$14;
-                  if ($$10 == 1) {
-                     $$14 = wu.c("container.enchant.level.one");
-                  } else {
-                     $$14 = wu.a("container.enchant.level.many", $$10);
-                  }
-
-                  $$11.add($$14.a(n.h));
-               }
-            }
-
-            $$0.a(this.p, $$11, $$1, $$2);
-            break;
-         }
+      $$0.a(this.p, s, this.n / 2, 20, 16777215);
+      $$0.b(this.p, u, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.C() - 135;
+         $$0.b(this.p, v, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.w.a($$0, $$1, $$2);
    }
 
-   public void E() {
-      csz $$0 = this.w.b(0).g();
-      if (!csz.a($$0, this.T)) {
-         this.T = $$0;
-
-         do {
-            this.G = this.G + (float)(this.R.a(4) - this.R.a(4));
-         } while (this.E <= this.G + 1.0F && this.E >= this.G - 1.0F);
-      }
-
-      this.D++;
-      this.F = this.E;
-      this.J = this.I;
-      boolean $$1 = false;
-
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (this.w.k[$$2] != 0) {
-            $$1 = true;
-         }
-      }
-
-      if ($$1) {
-         this.I += 0.2F;
-      } else {
-         this.I -= 0.2F;
-      }
-
-      this.I = axz.a(this.I, 0.0F, 1.0F);
-      float $$3 = (this.G - this.E) * 0.4F;
-      float $$4 = 0.2F;
-      $$3 = axz.a($$3, -0.2F, 0.2F);
-      this.H = this.H + ($$3 - this.H) * 0.9F;
-      this.E = this.E + this.H;
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

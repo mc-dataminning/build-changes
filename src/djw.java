@@ -1,55 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djw extends dcq {
+public class djw extends ddy {
    public static final MapCodec<djw> a = b(djw::new);
-   public static final dqy b = dqx.E;
-   private final bor c = boo.a(5);
 
    @Override
    public MapCodec<djw> a() {
       return a;
    }
 
-   public djw(dqg.d $$0) {
+   protected djw(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dos($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
-      return $$0.B ? null : a($$2, dno.K, dos::a);
-   }
-
-   @Override
-   protected djk a_(dqh $$0) {
-      return djk.c;
-   }
-
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, csz $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   protected bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
+      if (!$$0.a(ctr.rV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bpw.a($$2.B);
+      } else {
+         it $$7 = $$6.b();
+         it $$8 = $$7.o() == it.a.b ? $$4.cH().g() : $$7;
+         $$2.a(null, $$3, avh.uT, avi.e, 1.0F, 1.0F);
+         $$2.a($$3, dea.ee.n().a(des.b, $$8), 11);
+         cig $$9 = new cig(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cto(ctr.rY, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bso.d($$5));
+         $$2.a($$4, dvu.M, $$3);
+         $$4.b(avr.c.b(ctr.rV));
+         return bpw.a($$2.B);
       }
    }
 }

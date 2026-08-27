@@ -1,19 +1,19 @@
-import java.util.List;
+public class cum extends ctk {
+   private final aqn a;
 
-public interface cum {
-   int a();
+   public cum(aqn $$0) {
+      this.a = $$0;
+   }
 
-   float b();
+   @Override
+   protected void b(ctj $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.d.b(new aco($$0, $$1));
+   }
 
-   float c();
-
-   awg<dde> d();
-
-   int e();
-
-   cxa f();
-
-   default cwc a(awg<dde> $$0) {
-      return new cwc(List.of(cwc.a.a(this.d()), cwc.a.a($$0, this.b())), 1.0F, 1);
+   @Override
+   protected void c(ctj $$0) {
+      super.c($$0);
+      this.a.d.b(new aco($$0, 0));
    }
 }

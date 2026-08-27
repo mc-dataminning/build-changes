@@ -1,11 +1,24 @@
-public class gjh extends gid<cfm, fuf<cfm>> {
-   private static final akh a = new akh("textures/entity/tadpole/tadpole.png");
+public class gjh extends giz<cje, ftx<cje>> {
+   private static final akm a = new akm("textures/entity/phantom.png");
 
-   public gjh(ggx.a $$0) {
-      super($$0, new fuf<>($$0.a(fva.bF)), 0.14F);
+   public gjh(ght.a $$0) {
+      super($$0, new ftx<>($$0.a(fvv.aH)), 0.75F);
+      this.a(new gmd<>(this));
    }
 
-   public akh a(cfm $$0) {
+   public akm a(cje $$0) {
       return a;
+   }
+
+   protected void a(cje $$0, eys $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cje $$0, eys $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dH()));
    }
 }

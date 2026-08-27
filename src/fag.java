@@ -1,153 +1,154 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.gson.JsonObject;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class fag extends ffe {
-   private static final akh u = new akh("widget/slot_frame");
-   private static final akh v = new akh("icon/checkmark");
-   public static final akh a = new akh("textures/gui/realms/empty_frame.png");
-   public static final akh b = new akh("minecraft", "textures/gui/title/background/panorama_0.png");
-   public static final akh c = new akh("minecraft", "textures/gui/title/background/panorama_2.png");
-   public static final akh d = new akh("minecraft", "textures/gui/title/background/panorama_3.png");
-   private static final wu w = wu.c("mco.configure.world.slot.tooltip.active");
-   private static final wu x = wu.c("mco.configure.world.slot.tooltip.minigame");
-   private static final wu y = wu.c("mco.configure.world.slot.tooltip");
-   static final wu z = wu.c("mco.worldSlot.minigame");
-   private final int A;
+public class fag extends fao {
+   public final boolean a;
+   public final boolean b;
+   public final boolean c;
+   public final boolean d;
+   public final int e;
+   public final boolean f;
+   public final boolean g;
+   public final int h;
+   public final int i;
+   private final String o;
+   public final String j;
+   public final ezz.a k;
+   public long l;
    @Nullable
-   private fag.b B;
+   public String m;
+   public boolean n;
+   private static final boolean p = false;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final boolean s = true;
+   private static final boolean t = true;
+   private static final int u = 0;
+   private static final boolean v = false;
+   private static final int w = 2;
+   private static final int x = 0;
+   private static final String y = "";
+   private static final String z = "";
+   private static final ezz.a A = ezz.a.a;
+   private static final long B = -1L;
+   private static final String C = null;
 
-   public fag(int $$0, int $$1, int $$2, int $$3, int $$4, ffe.c $$5) {
-      super($$0, $$1, $$2, $$3, wt.a, $$5, q);
-      this.A = $$4;
+   public fag(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, ezz.a $$11) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.g = $$8;
+      this.o = $$9;
+      this.j = $$10;
+      this.k = $$11;
    }
 
-   @Nullable
-   public fag.b a() {
-      return this.B;
+   public static fag a() {
+      return new fag(true, true, true, true, 0, false, 2, 0, false, "", "", A);
    }
 
-   public void a(eze $$0) {
-      this.B = new fag.b($$0, this.A);
-      this.a(this.B, $$0.o);
+   public static fag b() {
+      fag $$0 = a();
+      $$0.a(true);
+      return $$0;
    }
 
-   private void a(fag.b $$0, @Nullable String $$1) {
-      wu $$2 = switch ($$0.c) {
-         case c -> w;
-         case b -> $$0.b ? x : y;
-         default -> null;
-      };
-      if ($$2 != null) {
-         this.a(fgp.a($$2));
-      }
-
-      xi $$3 = wu.b($$0.e);
-      if ($$0.b && $$1 != null) {
-         $$3 = $$3.b(wt.v).f($$1);
-      }
-
-      this.b($$3);
+   public void a(boolean $$0) {
+      this.n = $$0;
    }
 
-   static fag.a a(eze $$0, boolean $$1, boolean $$2) {
-      if ($$1 && !$$0.j && $$0.e != eze.c.c) {
-         return fag.a.c;
+   public static fag a(JsonObject $$0) {
+      fag $$1 = new fag(
+         fcl.a("pvp", $$0, true),
+         fcl.a("spawnAnimals", $$0, true),
+         fcl.a("spawnMonsters", $$0, true),
+         fcl.a("spawnNPCs", $$0, true),
+         fcl.a("spawnProtection", $$0, 0),
+         fcl.a("commandBlocks", $$0, false),
+         fcl.a("difficulty", $$0, 2),
+         fcl.a("gameMode", $$0, 0),
+         fcl.a("forceGameMode", $$0, false),
+         fcl.a("slotName", $$0, ""),
+         fcl.a("version", $$0, ""),
+         ezz.d(fcl.a("compatibility", $$0, ezz.a.a.name()))
+      );
+      $$1.l = fcl.a("worldTemplateId", $$0, -1L);
+      $$1.m = fcl.b("worldTemplateImage", $$0, C);
+      return $$1;
+   }
+
+   public String a(int $$0) {
+      if (ayy.h(this.o)) {
+         return this.n ? gpb.a("mco.configure.world.slot.empty") : this.b($$0);
       } else {
-         return $$1 || $$2 && $$0.j ? fag.a.a : fag.a.b;
+         return this.o;
       }
    }
 
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      if (this.B != null) {
-         int $$4 = this.C();
-         int $$5 = this.D();
-         boolean $$6 = this.A();
-         akh $$7;
-         if (this.B.b) {
-            $$7 = fbt.a(String.valueOf(this.B.h), this.B.i);
-         } else if (this.B.a) {
-            $$7 = a;
-         } else if (this.B.i != null && this.B.h != -1L) {
-            $$7 = fbt.a(String.valueOf(this.B.h), this.B.i);
-         } else if (this.A == 1) {
-            $$7 = b;
-         } else if (this.A == 2) {
-            $$7 = c;
-         } else if (this.A == 3) {
-            $$7 = d;
-         } else {
-            $$7 = a;
-         }
-
-         if (this.B.d) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-         boolean $$14 = $$6 && this.B.c != fag.a.a;
-         if ($$14) {
-            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         } else if (this.B.d) {
-            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
-         } else {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a(u, $$4, $$5, 80, 80);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         if (this.B.d) {
-            RenderSystem.enableBlend();
-            $$0.a(v, $$4 + 67, $$5 + 4, 9, 8);
-            RenderSystem.disableBlend();
-         }
-
-         fep $$15 = fde.Q().h;
-         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
-         $$0.a($$15, eyi.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
-      }
+   public String b(int $$0) {
+      return gpb.a("mco.configure.world.slot", $$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
+      }
+
+      if (!this.b) {
+         $$0.addProperty("spawnAnimals", this.b);
+      }
+
+      if (!this.c) {
+         $$0.addProperty("spawnMonsters", this.c);
+      }
+
+      if (!this.d) {
+         $$0.addProperty("spawnNPCs", this.d);
+      }
+
+      if (this.e != 0) {
+         $$0.addProperty("spawnProtection", this.e);
+      }
+
+      if (this.f) {
+         $$0.addProperty("commandBlocks", this.f);
+      }
+
+      if (this.h != 2) {
+         $$0.addProperty("difficulty", this.h);
+      }
+
+      if (this.i != 0) {
+         $$0.addProperty("gameMode", this.i);
+      }
+
+      if (this.g) {
+         $$0.addProperty("forceGameMode", this.g);
+      }
+
+      if (!Objects.equals(this.o, "")) {
+         $$0.addProperty("slotName", this.o);
+      }
+
+      if (!Objects.equals(this.j, "")) {
+         $$0.addProperty("version", this.j);
+      }
+
+      if (this.k != A) {
+         $$0.addProperty("compatibility", this.k.name());
+      }
+
+      return $$0.toString();
    }
 
-   public static class b {
-      final boolean d;
-      final String e;
-      final String f;
-      final eze.a g;
-      final long h;
-      @Nullable
-      final String i;
-      public final boolean a;
-      public final boolean b;
-      public final fag.a c;
-
-      public b(eze $$0, int $$1) {
-         this.b = $$1 == 4;
-         if (this.b) {
-            this.d = $$0.m == eze.d.b;
-            this.e = fag.z.getString();
-            this.h = (long)$$0.p;
-            this.i = $$0.q;
-            this.a = $$0.p == -1;
-            this.f = "";
-            this.g = eze.a.a;
-         } else {
-            ezl $$2 = $$0.i.get($$1);
-            this.d = $$0.n == $$1 && $$0.m != eze.d.b;
-            this.e = $$2.a($$1);
-            this.h = $$2.l;
-            this.i = $$2.m;
-            this.a = $$2.n;
-            this.f = $$2.j;
-            this.g = $$2.k;
-         }
-
-         this.c = fag.a($$0, this.d, this.b);
-      }
+   public fag d() {
+      return new fag(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
    }
 }

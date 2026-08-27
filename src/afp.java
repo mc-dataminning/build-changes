@@ -1,24 +1,46 @@
-public record afp(int b) implements zb<abm> {
-   public static final ys<vu, afp> a = zb.a(afp::a, afp::new);
+import javax.annotation.Nullable;
 
-   private afp(vu $$0) {
-      this($$0.l());
+public class afp implements ze<abq> {
+   public static final yv<vx, afp> a = ze.a(afp::a, afp::new);
+   private final int b;
+   @Nullable
+   private final ud c;
+
+   public afp(int $$0, @Nullable ud $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static afp a(bpx $$0) {
-      return new afp($$0.k());
+   private afp(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(vu $$0) {
+   private void a(vx $$0) {
       $$0.c(this.b);
+      $$0.a((va)this.c);
    }
 
    @Override
-   public zd<afp> a() {
-      return afx.ce;
+   public zg<afp> a() {
+      return agb.aX;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ud e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

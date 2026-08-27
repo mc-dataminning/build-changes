@@ -1,57 +1,58 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class gpg extends akh {
-   @VisibleForTesting
-   static final char g = '#';
-   private final String h;
+public class gpg {
+   public static final gph a = new gph();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gpg e = new gpg(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gpi a(int $$0, int $$1) {
+         return new gpi($$0, $$1);
+      }
+   };
+   private final List<gpf> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
 
-   private gpg(String $$0, String $$1, String $$2, @Nullable akh.a $$3) {
-      super($$0, $$1, $$3);
+   public gpg(List<gpf> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
       this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   public gpg(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.h = j($$2);
-   }
-
-   public gpg(akh $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static gpg c(String $$0, String $$1) {
-      return new gpg("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof gpg && super.equals($$0)) {
-         gpg $$1 = (gpg)$$0;
-         return this.h.equals($$1.h);
+   public gpi a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gpi(this.g, this.h) : new gpi(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gpi($$0, this.h);
       } else {
-         return false;
+         int $$2 = Math.min($$0, $$1);
+         return new gpi($$2, $$2);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.h.hashCode();
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.h;
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(gpg.a $$0) {
+      for (gpf $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

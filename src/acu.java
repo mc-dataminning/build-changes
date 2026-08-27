@@ -1,45 +1,40 @@
-public class acu implements zb<abm> {
-   public static final ys<vu, acu> a = zb.a(acu::a, acu::new);
+import javax.annotation.Nullable;
+
+public class acu implements ze<abq> {
+   public static final yv<vx, acu> a = ze.a(acu::a, acu::new);
    private final int b;
-   private final int c;
-   private final int d;
+   private final byte c;
 
-   public acu(int $$0, int $$1, int $$2) {
-      this.b = $$0;
+   public acu(bru $$0, byte $$1) {
+      this.b = $$0.al();
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private acu(vu $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
+   private acu(vx $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(vu $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.p(this.d);
+   private void a(vx $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public zd<acu> a() {
-      return afx.H;
+   public zg<acu> a() {
+      return agb.D;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bru a(dax $$0) {
+      return $$0.a(this.b);
    }
 
-   public int e() {
+   public byte b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

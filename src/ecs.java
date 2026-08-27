@@ -1,28 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecs extends eco {
-   public static final Codec<ecs> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecs::new));
+public record ecs(int b, int c, int d, int e, int f, boz g, float h) implements ecb {
+   public static final Codec<ecs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ecs::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ecs::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ecs::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ecs::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ecs::f),
+               boz.c.fieldOf("extra_rare_growths").forGetter(ecs::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ecs::h)
+            )
+            .apply($$0, ecs::new)
+   );
 
-   public ecs(bor $$0, bor $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ecu<?> a() {
-      return ecu.f;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(daj $$0, ect.b $$1, ayg $$2, ecd $$3, int $$4, ect.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(ayg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return axz.k((float)$$1 + 0.5F) + axz.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int d() {
+      return this.e;
    }
 }

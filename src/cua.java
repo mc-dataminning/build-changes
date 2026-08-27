@@ -1,21 +1,24 @@
-import javax.annotation.Nullable;
-
-public class cua extends cui {
-   public cua(csu.a $$0, dde $$1, dde $$2) {
-      super($$1, $$2, $$0, is.a);
-   }
-
-   public cua(csu.a $$0, dde $$1, dde $$2, is $$3) {
-      super($$1, $$2, $$0, $$3);
+public class cua extends ctj {
+   public cua(ctj.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(in $$0, dad $$1, @Nullable clh $$2, csz $$3, dqh $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dow $$6 && $$1.a_($$0).b() instanceof dke $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public bpu a(cto $$0, clw $$1, bso $$2, bpt $$3) {
+      wx $$4 = $$0.a(kb.f);
+      if ($$4 != null && !($$2 instanceof clw)) {
+         if (!$$1.dP().B && $$2.bD()) {
+            $$2.b($$4);
+            if ($$2 instanceof bsq $$5) {
+               $$5.fT();
+            }
 
-      return $$5;
+            $$0.h(1);
+         }
+
+         return bpu.a($$1.dP().B);
+      } else {
+         return bpu.d;
+      }
    }
 }

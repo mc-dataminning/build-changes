@@ -1,61 +1,85 @@
-public class adh implements zb<abm> {
-   public static final ys<vu, adh> a = zb.a(adh::a, adh::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public adh(brh $$0) {
-      this.b = $$0.ds();
-      this.c = $$0.du();
-      this.d = $$0.dy();
-      this.e = $$0.dD();
-      this.f = $$0.dF();
+public record adh(int b, boolean c, Set<akl<dax>> d, int e, int f, int g, boolean h, boolean i, boolean j, afy k, boolean l) implements ze<abq> {
+   public static final yv<wi, adh> a = ze.a(adh::a, adh::new);
+
+   private adh(wi $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lf.aS)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new afy($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private adh(vu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(wi $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.a(this.d, vx::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zd<adh> a() {
-      return afx.U;
+   public zg<adh> a() {
+      return agb.O;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public boolean e() {
       return this.c;
    }
 
-   public double f() {
+   public Set<akl<dax>> f() {
       return this.d;
    }
 
-   public float g() {
+   public int g() {
       return this.e;
    }
 
-   public float h() {
+   public int h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public afy m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

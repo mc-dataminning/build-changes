@@ -1,70 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class eox extends eou {
-   public static final Codec<eox> a = a(eox::new);
+public class eox {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final eon d;
+   private final boolean e;
 
-   eox(List<epb> $$0, List<erq> $$1) {
-      super($$0, $$1);
+   private eox(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new eon($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public epc a() {
-      return eoz.i;
+   public static eox a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eox(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(eon.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new eox($$1, $$2, "", 0, eon.a, false);
    }
 
-   @Override
-   protected eot a(List<? extends eot> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eot)$$0.get(0);
-         case 2 -> {
-            eot $$1 = $$0.get(0);
-            eot $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (eot $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public int a() {
+      return this.a;
    }
 
-   public static eox.a a(epb.a<?>... $$0) {
-      return new eox.a($$0);
+   public long b() {
+      return this.b;
    }
 
-   public static class a extends epb.a<eox.a> {
-      private final Builder<epb> a = ImmutableList.builder();
+   public String c() {
+      return this.c;
+   }
 
-      public a(epb.a<?>... $$0) {
-         for (epb.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public eon d() {
+      return this.d;
+   }
 
-      protected eox.a a() {
-         return this;
-      }
-
-      @Override
-      public eox.a b(epb.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public epb b() {
-         return new eox(this.a.build(), this.f());
-      }
+   public boolean e() {
+      return this.e;
    }
 }

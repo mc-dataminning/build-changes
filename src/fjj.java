@@ -1,24 +1,163 @@
-public record fjj(int a, int b) {
-   public static fjj a(fjh $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fjj($$1, $$2);
-         case b -> new fjj($$2, $$1);
-      };
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class fjj extends fjh {
+   private final fjj.b c;
+   private final List<fjj.a> d = new ArrayList<>();
+   private final fjp e = fjp.i();
+
+   public fjj(int $$0, int $$1, fjj.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public fjj a(fji $$0) {
-      return switch ($$0) {
-         case b -> new fjj(this.a, this.b + 1);
-         case a -> new fjj(this.a, this.b - 1);
-         case c -> new fjj(this.a - 1, this.b);
-         case d -> new fjj(this.a + 1, this.b);
-      };
+   public fjj(int $$0, int $$1, int $$2, int $$3, fjj.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
-   public int a(fjh $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fjj.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fjj.a> $$5 = this.d.iterator();
+         fjj.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fjj.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fjj.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void b(Consumer<fjo> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public fjp b() {
+      return this.e.g();
+   }
+
+   public fjp c() {
+      return this.e;
+   }
+
+   public <T extends fjo> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fjo> T a(T $$0, fjp $$1) {
+      this.d.add(new fjj.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fjo> T a(T $$0, Consumer<fjp> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends fjh.a {
+      protected a(fjo $$0, fjp $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fjo $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
+
+      int a(fjj.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fjo $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
+
+      int b(fjj.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fjj.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fjj.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fjo $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
+      }
+
+      int d(fjo $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
+      }
    }
 }

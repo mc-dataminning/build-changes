@@ -1,58 +1,50 @@
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fbs {
-   private static final String a = "realms_persistence.json";
-   private static final eyv b = new eyv();
-   private static final Logger c = LogUtils.getLogger();
+public class fbs extends gty {
+   private static final wx a = wx.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fjq c = fjq.d();
+   private final fly B;
+   @Nullable
+   private fgt C;
 
-   public fbs.a a() {
-      return b();
+   public fbs(fly $$0) {
+      super(fdr.a);
+      this.B = $$0;
    }
 
-   public void a(fbs.a $$0) {
-      b($$0);
+   @Override
+   public void aM_() {
+      this.c.a(15).c().b();
+      this.C = new fgt(a, this.p).b(true);
+      this.c.a(this.C);
+      fjq $$0 = this.c.a(fjq.e().a(8));
+      wx $$1 = wx.c("mco.account.privacy.info.button");
+      $$0.a(ffz.a($$1, fkp.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(ffz.a(ww.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         ffx var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static fbs.a b() {
-      Path $$0 = c();
+   @Override
+   public void d() {
+      this.m.a(this.B);
+   }
 
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fbs.a $$2 = b.a($$1, fbs.a.class);
-         if ($$2 != null) {
-            return $$2;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
+   @Override
+   protected void c() {
+      if (this.C != null) {
+         this.C.d(this.n - 15);
       }
 
-      return new fbs.a();
+      this.c.a();
+      fjk.a(this.c, this.G());
    }
 
-   public static void b(fbs.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
-      }
-   }
-
-   private static Path c() {
-      return fde.Q().p.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements ezn {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   @Override
+   public wx i() {
+      return a;
    }
 }

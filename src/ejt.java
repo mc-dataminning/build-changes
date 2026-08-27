@@ -1,41 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ejt extends ekm {
-   public static final Codec<ejt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jl.a(le.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ejt::new)
-   );
-   private final Optional<ja<dde>> b;
-   private final float c;
+public class ejt extends ehj {
+   public static final MapCodec<ejt> d = a(ejt::new);
 
-   public ejt(ja<dde> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public ejt(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private ejt(Optional<ja<dde>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ekp.c a(dag $$0, in $$1, in $$2, ekp.c $$3, ekp.c $$4, ekl $$5) {
-      ayg $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public ejt(ehj.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected eko<?> a() {
-      return eko.f;
+   public Optional<ehj.b> a(ehj.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (ix<dbw> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(avv.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, dwt.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static ehn a(dae $$0, dxs $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      it $$4 = it.c.a.a($$1);
+      return new ejs.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(eib $$0, ehj.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static ehy a(dae $$0, long $$1, ehy $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dxs $$3 = new dxs(new dwu(dxi.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         ehn $$4 = $$2.c().get(0);
+         ehb $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         it $$8 = it.c.a.a($$3);
+         it $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         ehn $$10 = new ejs.h($$3, $$6, $$7, $$9);
+         eib $$11 = new eib();
+         $$11.a($$10);
+         return $$11.a();
+      }
+   }
+
+   @Override
+   public ehs<?> e() {
+      return ehs.j;
    }
 }

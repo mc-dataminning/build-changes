@@ -1,110 +1,116 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-public class fpq extends fld {
-   private static final wu a = wu.c("telemetry_info.screen.title");
-   private static final wu b = wu.c("telemetry_info.screen.description").b(-4539718);
-   private static final wu c = wu.c("telemetry_info.button.privacy_statement");
-   private static final wu d = wu.c("telemetry_info.button.give_feedback");
-   private static final wu r = wu.c("telemetry_info.button.show_data");
-   private static final wu s = wu.c("telemetry_info.opt_in.description");
-   private static final int u = 8;
-   private static final boolean v = fde.Q().D();
-   private final fld w;
-   private final fdi x;
-   private final fir y = new fir(this, 16 + 9 * 5 + 20, v ? 33 + ffg.a(fde.Q().h) : 33);
-   @Nullable
-   private fpp z;
-   @Nullable
-   private ffy A;
-   private double B;
+public class fpq {
+   private final jl a;
+   private final List<cxw<?>> b;
+   private final boolean c;
+   private final Set<cxw<?>> d = Sets.newHashSet();
+   private final Set<cxw<?>> e = Sets.newHashSet();
+   private final Set<cxw<?>> f = Sets.newHashSet();
 
-   public fpq(fld $$0, fdi $$1) {
-      super(a);
-      this.w = $$0;
-      this.x = $$1;
-   }
-
-   @Override
-   public wu i() {
-      return wt.a(super.i(), b);
-   }
-
-   @Override
-   protected void aM_() {
-      fiv $$0 = this.y.a(fiv.d().a(4));
-      $$0.c().b();
-      $$0.a(new fgl(a, this.p));
-      this.A = $$0.a(new ffy(b, this.p).b(true));
-      fiv $$1 = $$0.a(fiv.e().a(8));
-      $$1.a(ffe.a(c, this::a).a());
-      $$1.a(ffe.a(d, this::b).a());
-      fiv $$2 = this.y.b(fiv.d().a(4));
-      if (v) {
-         $$2.a(this.m());
-      }
-
-      fiv $$3 = $$2.a(fiv.e().a(8));
-      $$3.a(ffe.a(r, this::c).a());
-      $$3.a(ffe.a(wt.d, $$0x -> this.d()).a());
-      fiv $$4 = this.y.c(fiv.d().a(8));
-      this.z = $$4.a(new fpp(0, 0, this.n - 40, this.y.d(), this.p));
-      this.z.a($$0x -> this.B = $$0x);
-      this.y.a($$1x -> {
-         ffc var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.a(this.B);
-         this.z.k(this.n - 40);
-         this.z.l(this.y.d());
-         this.z.j();
-      }
-
-      if (this.A != null) {
-         this.A.d(this.n - 16);
-      }
-
-      this.y.a();
-   }
-
-   @Override
-   protected void aC_() {
-      if (this.z != null) {
-         this.b(this.z);
+   public fpq(jl $$0, List<cxw<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
       }
    }
 
-   private ffc m() {
-      fdh<Boolean> $$0 = this.x.ai();
-      return ffg.a(s, this.p).a($$0).a(this::a).a();
+   private static boolean a(jl $$0, List<cxw<?>> $$1) {
+      int $$2 = $$1.size();
+      cto $$3 = $$1.get(0).b().a($$0);
+
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cto $$5 = $$1.get($$4).b().a($$0);
+         if (!cto.c($$3, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   private void a(ffc $$0, boolean $$1) {
-      if (this.z != null) {
-         this.z.b($$1);
+   public jl a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(avk $$0) {
+      for (cxw<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
       }
    }
 
-   private void a(ffe $$0) {
-      fju.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   public void a(cma $$0, int $$1, int $$2, avk $$3) {
+      for (cxw<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
    }
 
-   private void b(ffe $$0) {
-      fju.a(this, "https://aka.ms/javafeedback?ref=game");
+   public boolean a(cxw<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   private void c(ffe $$0) {
-      Path $$1 = this.m.u().b();
-      ac.j().a($$1.toUri());
+   public boolean c() {
+      return !this.d.isEmpty();
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.w);
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<cxw<?>> e() {
+      return this.b;
+   }
+
+   public List<cxw<?>> a(boolean $$0) {
+      List<cxw<?>> $$1 = Lists.newArrayList();
+      Set<cxw<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (cxw<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
+      }
+
+      return $$1;
+   }
+
+   public List<cxw<?>> b(boolean $$0) {
+      List<cxw<?>> $$1 = Lists.newArrayList();
+
+      for (cxw<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean f() {
+      return this.c;
    }
 }

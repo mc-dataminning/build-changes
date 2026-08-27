@@ -1,95 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhn extends dbx {
-   public static final MapCodec<dhn> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dbc.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jt.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dhn::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final drh g = dqx.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dbc.c j;
+public abstract class dhn extends dhl implements deb {
+   public static final dsb e = drr.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dhn> a() {
-      return d;
-   }
-
-   public dhn(dbc.c $$0, jt.a $$1, dqg.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   protected dhn(dra.d $$0, it $$1, evd $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean d(dqh $$0) {
-      return $$0.c(g) == 3;
+   protected abstract MapCodec<? extends dhn> a();
+
+   @Override
+   public drb a(day $$0) {
+      return this.n().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   protected boolean a(elz $$0) {
-      return $$0 == emb.c && this.j == dbc.c.b;
+   protected boolean d_(drb $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   protected double b(dqh $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dqh $$0, dad $$1, in $$2, brh $$3) {
-      if (!$$1.B && $$3.bO() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         io $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
          }
       }
    }
 
-   private void e(dqh $$0, dad $$1, in $$2) {
-      if (this.j == dbc.c.c) {
-         d(ddg.fu.n().a(g, $$0.c(g)), $$1, $$2);
+   protected drb a(drb $$0, ayk $$1) {
+      return $$0.a(e);
+   }
+
+   public drb n(drb $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(drb $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected drb a(drb $$0, drb $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, emv.c, emv.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dqh $$0, dad $$1, in $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dqh $$4 = $$3 == 0 ? ddg.ft.n() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dva.c, $$2, dva.a.a($$4));
-   }
-
-   @Override
-   public void a(dqh $$0, dad $$1, in $$2, dbc.c $$3) {
-      if (ddz.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dqh $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dva.c, $$2, dva.a.a($$4));
+         return this.a($$0, this.b().n());
       }
    }
 
    @Override
-   protected int a(dqh $$0, dad $$1, in $$2) {
-      return $$0.c(g);
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(g);
+   public boolean b(dba $$0, io $$1, drb $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
    }
 
    @Override
-   protected void a(dqh $$0, dad $$1, in $$2, elz $$3) {
-      if (!this.d($$0)) {
-         dqh $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dva.c, $$2, dva.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
+      io $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
+   }
+
+   protected abstract int a(ayk var1);
+
+   protected abstract boolean g(drb var1);
+
+   @Override
+   protected dhn c() {
+      return this;
    }
 }

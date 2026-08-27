@@ -1,88 +1,72 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ddi extends dcq {
-   public static final MapCodec<ddi> a = b(ddi::new);
-   public static final dqy[] b = new dqy[]{dqx.k, dqx.l, dqx.m};
-   protected static final eui c = euf.a(dde.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dde.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public abstract class ddi extends ddy implements dkz {
+   public static final drs d = drr.C;
+   private static final evd a = ddy.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<ddi> a() {
-      return a;
-   }
-
-   public ddi(dqg.d $$0) {
+   protected ddi(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected djk a_(dqh $$0) {
-      return djk.c;
+   protected abstract MapCodec<? extends ddi> a();
+
+   protected void a(drb $$0, day $$1, io $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.E_().a(40));
+      }
    }
 
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dnp($$0, $$1);
+   protected static boolean e(drb $$0, dad $$1, io $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (it $$3 : it.values()) {
+            if ($$1.b_($$2.a($$3)).a(awb.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
-      return $$0.B ? null : a($$2, dno.l, dnp::a);
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      return this.n().a(d, Boolean.valueOf($$1.a(awb.a) && $$1.e() == 8));
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return c;
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return a;
    }
 
    @Override
-   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
-      if ($$1.B) {
-         return bpm.a;
-      } else {
-         dnm $$5 = $$1.c_($$2);
-         if ($$5 instanceof dnp) {
-            $$3.a((dnp)$$5);
-            $$3.a(avm.aa);
-         }
-
-         return bpm.b;
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
       }
+
+      return $$1 == it.a && !this.a($$0, (dba)$$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(kx.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected boolean a(drb $$0, dba $$1, io $$2) {
+      io $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, it.b);
    }
 
    @Override
-   protected void a(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      bpi.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected boolean c_(dqh $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dqh $$0, dad $$1, in $$2) {
-      return cod.a($$1.c_($$2));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
+   protected emu b_(drb $$0) {
+      return $$0.c(d) ? emv.c.a(false) : super.b_($$0);
    }
 }

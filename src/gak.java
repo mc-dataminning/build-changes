@@ -1,26 +1,53 @@
-public class gak extends fxv {
-   private static final int a = 12235202;
+public class gak extends gay {
+   protected final gat a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   protected gak(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fzx $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axj.b.b(12235202) / 255.0F;
-      this.w = (float)axj.b.c(12235202) / 255.0F;
-      this.x = (float)axj.b.d(12235202) / 255.0F;
+   protected gak(fwr $$0, double $$1, double $$2, double $$3, gat $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
    }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
 
-      public a(fzx $$0) {
-         this.a = $$0;
-      }
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
+   }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayg $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gak($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+   @Override
+   public gac b() {
+      return gac.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

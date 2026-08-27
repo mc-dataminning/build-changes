@@ -1,20 +1,31 @@
-public record zt(apw b) implements zb<zs> {
-   public static final ys<vu, zt> a = zb.a(zt::a, zt::new);
+import java.util.Map;
 
-   private zt(vu $$0) {
-      this(new apw($$0));
+public class zt implements ze<zk> {
+   public static final yv<vx, zt> a = ze.a(zt::a, zt::new);
+   private final Map<akl<? extends jk<?>>, awo.a> b;
+
+   public zt(Map<akl<? extends jk<?>>, awo.a> $$0) {
+      this.b = $$0;
    }
 
-   private void a(vu $$0) {
-      this.b.a($$0);
+   private zt(vx $$0) {
+      this.b = $$0.a(vx::r, awo.a::b);
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b, vx::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zd<zt> a() {
-      return zr.j;
+   public zg<zt> a() {
+      return zu.i;
    }
 
-   public void a(zs $$0) {
+   public void a(zk $$0) {
       $$0.a(this);
+   }
+
+   public Map<akl<? extends jk<?>>, awo.a> b() {
+      return this.b;
    }
 }

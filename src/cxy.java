@@ -1,60 +1,35 @@
-public class cxy extends cwv {
-   public cxy(cwt $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
 
-   public boolean a(cou $$0, dad $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+public interface cxy<T extends cxu<?>> {
+   cxy<cyb> a = a("crafting_shaped", new cyb.a());
+   cxy<cyd> b = a("crafting_shapeless", new cyd.a());
+   cxy<cxe> c = a("crafting_special_armordye", new cyh<>(cxe::new));
+   cxy<cxh> d = a("crafting_special_bookcloning", new cyh<>(cxh::new));
+   cxy<cxs> e = a("crafting_special_mapcloning", new cyh<>(cxs::new));
+   cxy<cxt> f = a("crafting_special_mapextending", new cyh<>(cxt::new));
+   cxy<cxo> g = a("crafting_special_firework_rocket", new cyh<>(cxo::new));
+   cxy<cxq> h = a("crafting_special_firework_star", new cyh<>(cxq::new));
+   cxy<cxp> i = a("crafting_special_firework_star_fade", new cyh<>(cxp::new));
+   cxy<cyq> j = a("crafting_special_tippedarrow", new cyh<>(cyq::new));
+   cxy<cxf> k = a("crafting_special_bannerduplicate", new cyh<>(cxf::new));
+   cxy<cye> l = a("crafting_special_shielddecoration", new cyh<>(cye::new));
+   cxy<cyf> m = a("crafting_special_shulkerboxcoloring", new cyh<>(cyf::new));
+   cxy<cyp> n = a("crafting_special_suspiciousstew", new cyh<>(cyp::new));
+   cxy<cya> o = a("crafting_special_repairitem", new cyh<>(cya::new));
+   cxy<cyj> p = a("smelting", new cyg<>(cyj::new, 200));
+   cxy<cxg> q = a("blasting", new cyg<>(cxg::new, 100));
+   cxy<cyn> r = a("smoking", new cyg<>(cyn::new, 100));
+   cxy<cxi> s = a("campfire_cooking", new cyg<>(cxi::new, 100));
+   cxy<cyo> t = a("stonecutting", new cyi.b<>(cyo::new));
+   cxy<cyl> u = a("smithing_transform", new cyl.a());
+   cxy<cym> v = a("smithing_trim", new cym.a());
+   cxy<cxn> w = a("crafting_decorated_pot", new cyh<>(cxn::new));
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         csz $$7 = $$0.a($$6);
-         if (!$$7.d()) {
-            if ($$7.a(ddg.cf.q()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(ddg.cg.q()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(avz.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(ctc.pq) || $$5) {
-                  return false;
-               }
+   MapCodec<T> a();
 
-               $$5 = true;
-            }
-         }
-      }
+   yv<wi, T> b();
 
-      return $$2 && $$4 && $$3 && $$5;
-   }
-
-   public csz a(cou $$0, iy.a $$1) {
-      csz $$2 = new csz(ctc.vU, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         csz $$4 = $$0.a($$3);
-         if (!$$4.d()) {
-            dlg $$5 = dlg.a($$4.f());
-            if ($$5 != null) {
-               $$2.b(ka.F, $$5.b());
-               break;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.n;
+   static <S extends cxy<T>, T extends cxu<?>> S a(String $$0, S $$1) {
+      return jk.a(le.t, $$0, $$1);
    }
 }

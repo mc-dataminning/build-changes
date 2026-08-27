@@ -1,50 +1,85 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fmr {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<akh> e = List.of();
-   private int f;
-   private int g;
+public class fmr extends flq {
+   private static final wx s = wx.c("controls.keybinds.title");
+   @Nullable
+   public fdx a;
+   public long r;
+   private fmq u;
+   private ffz v;
 
-   public fmr(int $$0) {
-      this.d = $$0;
+   public fmr(fly $$0, fed $$1) {
+      super($$0, $$1, s);
    }
 
-   public void a(List<akh> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
-   }
-
-   public void a(cod $$0, fer $$1, float $$2, int $$3, int $$4) {
-      cpz $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+   @Override
+   protected void aM_() {
+      this.u = this.c(new fmq(this, this.m));
+      this.v = ffz.a(wx.c("controls.resetAll"), $$0 -> {
+         for (fdx $$1 : this.c.X) {
+            $$1.b($$1.i());
          }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+         this.u.d();
+      }).a();
+      super.aM_();
+   }
+
+   @Override
+   protected void h() {
+      fjq $$0 = this.d.b(fjq.e().a(8));
+      $$0.a(this.v);
+      $$0.a(ffz.a(ww.d, $$0x -> this.d()).a());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+      this.u.a(this.n, this.d);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.c.a(this.a, exn.b.c.a($$2));
+         this.a = null;
+         this.u.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private void a(cpz $$0, akh $$1, float $$2, fer $$3, int $$4, int $$5) {
-      gmy $$6 = fde.Q().a(gmx.e).apply($$1);
-      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.c.a(this.a, exn.bv);
+         } else {
+            this.c.a(this.a, exn.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.r = ac.c();
+         this.u.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (fdx $$5 : this.c.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.v.j = $$4;
    }
 }

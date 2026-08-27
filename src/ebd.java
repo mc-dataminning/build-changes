@@ -1,41 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebd implements ebh {
-   public static final Codec<ebd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dqh.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dqh.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bor.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bor.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ebd::new)
-   );
-   private final dqh b;
-   private final dqh c;
-   private final bor d;
-   private final bor e;
-
-   public ebd(dqh $$0, dqh $$1, bor $$2, bor $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class ebd extends dzx<ecl> {
+   public ebd(Codec<ecl> $$0) {
+      super($$0);
    }
 
-   public dqh a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(dzz<ecl> $$0) {
+      boolean $$1 = false;
+      ayk $$2 = $$0.d();
+      dbs $$3 = $$0.b();
+      io $$4 = $$0.e();
+      ecl $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dwt.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      io $$9 = new io($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dea.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         drb $$11 = $$10 ? dea.bx.n() : dea.bw.n();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               drb $$12 = $$11.a(dme.d, drx.a);
+               io $$13 = $$9.c();
+               if ($$3.a_($$13).a(dea.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-   public dqh b() {
-      return this.c;
-   }
+            $$1 = true;
+         }
+      }
 
-   public bor c() {
-      return this.d;
-   }
-
-   public bor d() {
-      return this.e;
+      return $$1;
    }
 }

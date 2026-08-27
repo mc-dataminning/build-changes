@@ -1,34 +1,53 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class efo extends efw {
-   public static final Codec<efo> a = RecordCodecBuilder.create($$0 -> $$0.group(eew.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, efo::new));
-   private final eew c;
+public class efo extends efq {
+   public static final MapCodec<efo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dxn.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dxn.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, efo::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dxn d;
+   private final dxn e;
+   private final int f;
 
-   private efo(eew $$0) {
-      this.c = $$0;
+   private efo(dxn $$0, dxn $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static efo a(eew $$0) {
-      return new efo($$0);
-   }
-
-   public static efo a(dwt $$0, dwt $$1) {
-      return a(eez.a($$0, $$1));
-   }
-
-   public static efo b(dwt $$0, dwt $$1) {
-      return a(eey.a($$0, $$1));
+   public static efo a(dxn $$0, dxn $$1, int $$2) {
+      return new efo($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   public int a(ayk $$0, dxq $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public efx<?> b() {
-      return efx.l;
+   public efr<?> a() {
+      return efr.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

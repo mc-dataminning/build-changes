@@ -2,31 +2,31 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record bz(Optional<ja<elz>> b, Optional<dk> c) {
+public record bz(Optional<jb<emt>> b, Optional<dl> c) {
    public static final Codec<bz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axh.a(jl.a(le.z), "fluids").forGetter(bz::a), axh.a(dk.a, "state").forGetter(bz::b)).apply($$0, bz::new)
+      $$0 -> $$0.group(jm.a(lf.z).optionalFieldOf("fluids").forGetter(bz::a), dl.a.optionalFieldOf("state").forGetter(bz::b)).apply($$0, bz::new)
    );
 
-   public boolean a(aqh $$0, in $$1) {
+   public boolean a(aqm $$0, io $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         ema $$2 = $$0.b_($$1);
+         emu $$2 = $$0.b_($$1);
          return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
       }
    }
 
-   public Optional<ja<elz>> a() {
+   public Optional<jb<emt>> a() {
       return this.b;
    }
 
-   public Optional<dk> b() {
+   public Optional<dl> b() {
       return this.c;
    }
 
    public static class a {
-      private Optional<ja<elz>> a = Optional.empty();
-      private Optional<dk> b = Optional.empty();
+      private Optional<jb<emt>> a = Optional.empty();
+      private Optional<dl> b = Optional.empty();
 
       private a() {
       }
@@ -35,17 +35,17 @@ public record bz(Optional<ja<elz>> b, Optional<dk> c) {
          return new bz.a();
       }
 
-      public bz.a a(elz $$0) {
-         this.a = Optional.of(ja.a($$0.k()));
+      public bz.a a(emt $$0) {
+         this.a = Optional.of(jb.a($$0.k()));
          return this;
       }
 
-      public bz.a a(ja<elz> $$0) {
+      public bz.a a(jb<emt> $$0) {
          this.a = Optional.of($$0);
          return this;
       }
 
-      public bz.a a(dk $$0) {
+      public bz.a a(dl $$0) {
          this.b = Optional.of($$0);
          return this;
       }

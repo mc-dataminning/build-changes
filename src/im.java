@@ -1,51 +1,85 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.function.Supplier;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 
-public class im {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<is, j> a = ac.a(Maps.newEnumMap(is.class), $$0 -> {
-      $$0.put(is.d, j.a());
-      $$0.put(is.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(is.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(is.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(is.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(is.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<is, j> b = ac.a(Maps.newEnumMap(is.class), $$0 -> {
-      for (is $$1 : is.values()) {
-         $$0.put($$1, a.get($$1).b());
+public record im(io b, io c) implements Iterable<io> {
+   public static final yv<ByteBuf, im> a = new yv<ByteBuf, im>() {
+      public im a(ByteBuf $$0) {
+         return new im(vx.b($$0), vx.b($$0));
       }
-   });
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
+      public void a(ByteBuf $$0, im $$1) {
+         vx.a($$0, $$1.f());
+         vx.a($$0, $$1.g());
+      }
+   };
+
+   public im(io b, io c) {
+      this.b = io.a(b, c);
+      this.c = io.b(b, c);
    }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
+   public static im a(io $$0) {
+      return new im($$0, $$0);
    }
 
-   public static j a(j $$0, is $$1, Supplier<String> $$2) {
-      is $$3 = is.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+   public static im a(io $$0, io $$1) {
+      return new im($$0, $$1);
+   }
+
+   public im b(io $$0) {
+      return new im(io.a(this.b, $$0), io.b(this.c, $$0));
+   }
+
+   public boolean a() {
+      return this.b.equals(this.c);
+   }
+
+   public boolean c(io $$0) {
+      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
+   }
+
+   public euf b() {
+      return euf.a(this.b, this.c);
+   }
+
+   @Override
+   public Iterator<io> iterator() {
+      return io.c(this.b, this.c).iterator();
+   }
+
+   public int c() {
+      return this.c.u() - this.b.u() + 1;
+   }
+
+   public int d() {
+      return this.c.v() - this.b.v() + 1;
+   }
+
+   public int e() {
+      return this.c.w() - this.b.w() + 1;
+   }
+
+   public im a(it $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
       } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+         return $$0.f() == it.b.a ? a(this.b, io.b(this.b, this.c.a($$0, $$1))) : a(io.a(this.b.a($$0, $$1), this.c), this.c);
       }
+   }
+
+   public im b(it $$0, int $$1) {
+      return $$1 == 0 ? this : new im(this.b.a($$0, $$1), this.c.a($$0, $$1));
+   }
+
+   public im a(js $$0) {
+      return new im(this.b.a($$0), this.c.a($$0));
+   }
+
+   public io f() {
+      return this.b;
+   }
+
+   public io g() {
+      return this.c;
    }
 }

@@ -4,23 +4,29 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bwg {
-   public static btt<bsa> a(Function<bsa, Optional<bvg>> $$0, Predicate<bsa> $$1, int $$2, int $$3, float $$4) {
-      return bxf.a(
-         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$5 -> $$5.group($$5.a(cbd.n), $$5.a(cbd.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bvg> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bvg $$11 = $$10.get();
-                        if ($$8.dl().a((jg)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bvg $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cbg($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
+   public static bui<bso> a(bsr $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak().f()), $$1);
+   }
+
+   public static bvs<bso> a(bsa<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ak()), $$1);
+   }
+
+   public static bvs<bso> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bvs<bso> a(Predicate<bso> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bxu.a(
+         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$2x -> $$2x.group($$2x.c(cbs.n), $$2x.b(cbs.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bso> $$8 = $$2x.<cbu>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bru)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
+                     } else {
+                        $$3.a(new bus($$8.get(), true));
+                        return true;
                      }
                   }))
       );

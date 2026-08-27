@@ -1,44 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyu extends dys {
-   public dyu(Codec<ebo> $$0) {
-      super($$0);
+public class dyu extends dyr {
+   public static final Codec<dyu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dyr.d.forGetter($$0x -> $$0x),
+               box.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               box.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               box.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dyu::new)
+   );
+   public final box b;
+   public final box c;
+   final box j;
+
+   public dyu(float $$0, efq $$1, box $$2, dxn $$3, dys $$4, jb<ddy> $$5, box $$6, box $$7, box $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   protected boolean a(dae $$0, ayg $$1, in $$2, dqh $$3) {
-      in.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public dyu(float $$0, efq $$1, box $$2, dxn $$3, jb<ddy> $$4, box $$5, box $$6, box $$7) {
+      this($$0, $$1, $$2, $$3, dys.a, $$4, $$5, $$6, $$7);
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(is.b);
-      }
-
-      in $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<is> $$9 = is.c.a.c($$1);
-
-      for (is $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(is.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public dyu(dyr $$0, box $$1, box $$2, box $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

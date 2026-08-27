@@ -1,35 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public enum cgc implements ayt {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public class cgc {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
 
-   public static final Codec<cgc> h = ayt.a(cgc::values);
-   private static final IntFunction<cgc> i = awq.a(cgc::a, values(), awq.a.b);
-   private final int j;
-   private final String k;
-
-   private cgc(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+   protected static btq<?> a(btq<cgb> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cnl.a));
+      $$0.b(cnl.b);
+      $$0.f();
+      return $$0;
    }
 
-   public int a() {
-      return this.j;
+   private static void b(btq<cgb> $$0) {
+      $$0.a(cnl.a, 0, ImmutableList.of(new buc(2.0F), new bvn(45, 90), new bvr(), new bun(cbs.P)));
    }
 
-   public static cgc a(int $$0) {
-      return i.apply($$0);
+   private static void c(btq<cgb> $$0) {
+      $$0.a(
+         cnl.b,
+         ImmutableList.of(
+            Pair.of(0, bwh.a(bsa.by, 6.0F, bpf.a(30, 60))),
+            Pair.of(1, new buu($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new buv(
+                  ImmutableMap.of(cbs.m, cbt.b),
+                  ImmutableSet.of(),
+                  buv.a.a,
+                  buv.b.b,
+                  ImmutableList.of(Pair.of(bvz.c(0.5F), 2), Pair.of(bwo.a(0.5F, 3), 3), Pair.of(bxu.a(bru::bh), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   public static void a(cgb $$0) {
+      $$0.dS().a(ImmutableList.of(cnl.b));
    }
 }

@@ -1,37 +1,31 @@
-public class abz implements zb<abm> {
-   public static final ys<vu, abz> a = zb.a(abz::a, abz::new);
-   private final bpj b;
-   private final boolean c;
+public class abz implements ze<abq> {
+   public static final yv<wi, abz> a = yv.a(io.b, abz::e, yt.a(ddy.q), abz::b, abz::new);
+   private final io b;
+   private final drb c;
 
-   public abz(bpj $$0, boolean $$1) {
+   public abz(io $$0, drb $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private abz(vu $$0) {
-      this.b = bpj.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vu $$0) {
-      $$0.k(this.b.a());
-      $$0.a(this.c);
+   public abz(dad $$0, io $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public zd<abz> a() {
-      return afx.m;
+   public zg<abz> a() {
+      return agb.k;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public drb b() {
       return this.c;
    }
 
-   public bpj e() {
+   public io e() {
       return this.b;
    }
 }

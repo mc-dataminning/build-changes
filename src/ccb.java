@@ -1,24 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ccb extends ccj<bsc> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class ccb extends cbz {
+   @Nullable
+   private io p;
 
-   @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.of(cbd.L);
+   public ccb(bsq $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(aqh $$0, bsc $$1) {
-      btb<?> $$2 = $$1.dQ();
-      List<chr> $$3 = $$0.a(chr.class, $$1.cI().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<chr> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cbd.L, $$4);
+   @Override
+   public eni a(io $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public eni a(bru $$0, int $$1) {
+      this.p = $$0.dp();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bru $$0, double $$1) {
+      eni $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dp();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dn(), (double)this.a.dj())
+               && (!(this.a.dw() > (double)this.p.v()) || !io.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

@@ -1,46 +1,17 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cuw {
-   @Nullable
-   private final String a;
-   private final List<bqt> b;
-
-   public cuw(bqt... $$0) {
-      this(null, $$0);
+public class cuw extends crh {
+   public cuw(ctj.a $$0) {
+      super($$0);
    }
 
-   public cuw(@Nullable String $$0, bqt... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
+   @Override
+   public cmc a(dax $$0, cto $$1, bso $$2) {
+      return new cmu($$0, $$2, $$1.c(1));
    }
 
-   public static String a(Optional<iw<cuw>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
-      }
-
-      String $$3 = $$0.flatMap(iw::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<bqt> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bqt $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public cmo a(dax $$0, jh $$1, cto $$2, it $$3) {
+      cmu $$4 = new cmu($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.d = cmc.a.b;
+      return $$4;
    }
 }

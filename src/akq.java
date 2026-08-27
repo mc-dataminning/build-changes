@@ -1,15 +1,9 @@
-import java.util.List;
+public class akq {
+   public final String a;
+   public final ee b;
 
-public enum akq {
-   a,
-   b,
-   c,
-   d;
-
-   private static final List<akq> e = List.of(values());
-   private static final jk.b f = jk.a(ld.aw);
-
-   public static jd<akq> a() {
-      return new jd<>(e).a(a, f);
+   public akq(String $$0, ee $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

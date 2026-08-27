@@ -1,96 +1,67 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 import java.util.Map;
 
-public class azt extends ber {
-   private static final Map<String, String> a = Map.ofEntries(
-      Map.entry("b", "minecraft:base"),
-      Map.entry("bl", "minecraft:square_bottom_left"),
-      Map.entry("br", "minecraft:square_bottom_right"),
-      Map.entry("tl", "minecraft:square_top_left"),
-      Map.entry("tr", "minecraft:square_top_right"),
-      Map.entry("bs", "minecraft:stripe_bottom"),
-      Map.entry("ts", "minecraft:stripe_top"),
-      Map.entry("ls", "minecraft:stripe_left"),
-      Map.entry("rs", "minecraft:stripe_right"),
-      Map.entry("cs", "minecraft:stripe_center"),
-      Map.entry("ms", "minecraft:stripe_middle"),
-      Map.entry("drs", "minecraft:stripe_downright"),
-      Map.entry("dls", "minecraft:stripe_downleft"),
-      Map.entry("ss", "minecraft:small_stripes"),
-      Map.entry("cr", "minecraft:cross"),
-      Map.entry("sc", "minecraft:straight_cross"),
-      Map.entry("bt", "minecraft:triangle_bottom"),
-      Map.entry("tt", "minecraft:triangle_top"),
-      Map.entry("bts", "minecraft:triangles_bottom"),
-      Map.entry("tts", "minecraft:triangles_top"),
-      Map.entry("ld", "minecraft:diagonal_left"),
-      Map.entry("rd", "minecraft:diagonal_up_right"),
-      Map.entry("lud", "minecraft:diagonal_up_left"),
-      Map.entry("rud", "minecraft:diagonal_right"),
-      Map.entry("mc", "minecraft:circle"),
-      Map.entry("mr", "minecraft:rhombus"),
-      Map.entry("vh", "minecraft:half_vertical"),
-      Map.entry("hh", "minecraft:half_horizontal"),
-      Map.entry("vhr", "minecraft:half_vertical_right"),
-      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
-      Map.entry("bo", "minecraft:border"),
-      Map.entry("cbo", "minecraft:curly_border"),
-      Map.entry("gra", "minecraft:gradient"),
-      Map.entry("gru", "minecraft:gradient_up"),
-      Map.entry("bri", "minecraft:bricks"),
-      Map.entry("glb", "minecraft:globe"),
-      Map.entry("cre", "minecraft:creeper"),
-      Map.entry("sku", "minecraft:skull"),
-      Map.entry("flo", "minecraft:flower"),
-      Map.entry("moj", "minecraft:mojang"),
-      Map.entry("pig", "minecraft:piglin")
-   );
+public class azt extends azu {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
+      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
+      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
+      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
+      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
+      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
+      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
+      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
+      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
+      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
+      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
+      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
+      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
+      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
+      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
+      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
+      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
+      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
+      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
+      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
+      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
+      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
+      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
+      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
+      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
+      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
+      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
+      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
+      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
+      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
+      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
+      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
+      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
+      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
+      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
+      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
+      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
+      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
+      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
+      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
+      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
+      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
+      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
+      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
+      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
+      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
+      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
+      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
+      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
+      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
+      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
+      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
+      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
+      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
+      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
+      .build();
 
-   public azt(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", bfs.s, "minecraft:banner");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), azt::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return azh.a($$0, "Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(azt::b)));
-   }
-
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = azh.a(
-         $$0,
-         "Pattern",
-         "pattern",
-         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> a.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
-      );
-      return azh.a($$0, "Color", "color", $$0x -> $$0x.createString(a($$0x.asInt(0))));
-   }
-
-   public static String a(int $$0) {
-      return switch ($$0) {
-         case 1 -> "orange";
-         case 2 -> "magenta";
-         case 3 -> "light_blue";
-         case 4 -> "yellow";
-         case 5 -> "lime";
-         case 6 -> "pink";
-         case 7 -> "gray";
-         case 8 -> "light_gray";
-         case 9 -> "cyan";
-         case 10 -> "purple";
-         case 11 -> "blue";
-         case 12 -> "brown";
-         case 13 -> "green";
-         case 14 -> "red";
-         case 15 -> "black";
-         default -> "white";
-      };
+   public azt(Schema $$0, boolean $$1) {
+      super($$0, $$1, "AdvancementsFix", $$0x -> a.getOrDefault($$0x, $$0x));
    }
 }

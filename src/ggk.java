@@ -1,11 +1,44 @@
-public class ggk extends gid<cdw, fru<cdw>> {
-   private static final akh a = new akh("textures/entity/cow/cow.png");
+public class ggk implements gfw.a {
+   private final fdz a;
 
-   public ggk(ggx.a $$0) {
-      super($$0, new fru<>($$0.a(fva.G)), 0.7F);
+   public ggk(fdz $$0) {
+      this.a = $$0;
    }
 
-   public akh a(cdw $$0) {
-      return a;
+   @Override
+   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
+      io $$5 = this.a.s.dp();
+      dba $$6 = this.a.s.dP();
+
+      for (io $$7 : io.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         emu $$8 = $$6.b_($$7);
+         if ($$8.a(awb.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gfw.a(
+               $$0,
+               $$1,
+               new euf(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (io $$10 : io.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         emu $$11 = $$6.b_($$10);
+         if ($$11.a(awb.a)) {
+            gfw.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

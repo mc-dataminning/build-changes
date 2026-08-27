@@ -1,16 +1,8 @@
-public enum dqs implements ayt {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String d;
-
-   private dqs(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dqs {
 }

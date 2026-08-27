@@ -1,53 +1,95 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 
-public class azy extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
+public class azy extends bex {
+   private static final Map<String, String> a = Map.ofEntries(
+      Map.entry("b", "minecraft:base"),
+      Map.entry("bl", "minecraft:square_bottom_left"),
+      Map.entry("br", "minecraft:square_bottom_right"),
+      Map.entry("tl", "minecraft:square_top_left"),
+      Map.entry("tr", "minecraft:square_top_right"),
+      Map.entry("bs", "minecraft:stripe_bottom"),
+      Map.entry("ts", "minecraft:stripe_top"),
+      Map.entry("ls", "minecraft:stripe_left"),
+      Map.entry("rs", "minecraft:stripe_right"),
+      Map.entry("cs", "minecraft:stripe_center"),
+      Map.entry("ms", "minecraft:stripe_middle"),
+      Map.entry("drs", "minecraft:stripe_downright"),
+      Map.entry("dls", "minecraft:stripe_downleft"),
+      Map.entry("ss", "minecraft:small_stripes"),
+      Map.entry("cr", "minecraft:cross"),
+      Map.entry("sc", "minecraft:straight_cross"),
+      Map.entry("bt", "minecraft:triangle_bottom"),
+      Map.entry("tt", "minecraft:triangle_top"),
+      Map.entry("bts", "minecraft:triangles_bottom"),
+      Map.entry("tts", "minecraft:triangles_top"),
+      Map.entry("ld", "minecraft:diagonal_left"),
+      Map.entry("rd", "minecraft:diagonal_up_right"),
+      Map.entry("lud", "minecraft:diagonal_up_left"),
+      Map.entry("rud", "minecraft:diagonal_right"),
+      Map.entry("mc", "minecraft:circle"),
+      Map.entry("mr", "minecraft:rhombus"),
+      Map.entry("vh", "minecraft:half_vertical"),
+      Map.entry("hh", "minecraft:half_horizontal"),
+      Map.entry("vhr", "minecraft:half_vertical_right"),
+      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
+      Map.entry("bo", "minecraft:border"),
+      Map.entry("cbo", "minecraft:curly_border"),
+      Map.entry("gra", "minecraft:gradient"),
+      Map.entry("gru", "minecraft:gradient_up"),
+      Map.entry("bri", "minecraft:bricks"),
+      Map.entry("glb", "minecraft:globe"),
+      Map.entry("cre", "minecraft:creeper"),
+      Map.entry("sku", "minecraft:skull"),
+      Map.entry("flo", "minecraft:flower"),
+      Map.entry("moj", "minecraft:mojang"),
+      Map.entry("pig", "minecraft:piglin")
+   );
 
    public azy(Schema $$0) {
-      super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
+      super($$0, false, "BannerPatternFormatFix", bfy.s, "minecraft:banner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bfs.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), azy::a);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bhc.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bhc.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
-            }
-         }
-      }
-
-      return $$0;
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameAndFixField("Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(azy::b)));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(jp.a($$2)), $$0.createString("max_section"), $$0.createInt(jp.a($$2 + $$1))))
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.renameAndFixField(
+         "Pattern",
+         "pattern",
+         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> a.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
       );
+      return $$0.renameAndFixField("Color", "color", $$0x -> $$0x.createString(a($$0x.asInt(0))));
+   }
+
+   public static String a(int $$0) {
+      return switch ($$0) {
+         case 1 -> "orange";
+         case 2 -> "magenta";
+         case 3 -> "light_blue";
+         case 4 -> "yellow";
+         case 5 -> "lime";
+         case 6 -> "pink";
+         case 7 -> "gray";
+         case 8 -> "light_gray";
+         case 9 -> "cyan";
+         case 10 -> "purple";
+         case 11 -> "blue";
+         case 12 -> "brown";
+         case 13 -> "green";
+         case 14 -> "red";
+         case 15 -> "black";
+         default -> "white";
+      };
    }
 }

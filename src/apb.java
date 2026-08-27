@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface apb {
+public interface apb {
+   void a(ud var1) throws CommandSyntaxException;
+
+   ud a() throws CommandSyntaxException;
+
+   wx b();
+
+   wx a(va var1);
+
+   wx a(ew.g var1, double var2, int var4);
 }

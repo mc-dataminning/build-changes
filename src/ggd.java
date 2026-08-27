@@ -1,32 +1,59 @@
-public class ggd extends gid<cjj, frk<cjj>> {
-   private static final akh a = new akh("textures/entity/breeze/breeze.png");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public ggd(ggx.a $$0) {
-      super($$0, new frk<>($$0.a(fva.s)), 0.5F);
-      this.a(new gkh(this));
-      this.a(new gkg(this));
+public class ggd implements gfw.a {
+   private final fdz a;
+   private final Map<Long, Map<io, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   ggd(fdz $$0) {
+      this.a = $$0;
    }
 
-   public void a(cjj $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
-      frk<cjj> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(long $$0, io $$1) {
+      Map<io, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public akh a(cjj $$0) {
-      return a;
-   }
+   @Override
+   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.Y();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<io> $$8 = Sets.newHashSet();
+      Map<io, Integer> $$9 = Maps.newHashMap();
+      eyw $$10 = $$1.getBuffer(gcs.y());
+      Iterator<Entry<Long, Map<io, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public static frk<cjj> a(frk<cjj> $$0, fvb... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (fvb $$2 : $$1) {
-         $$2.k = true;
+      while ($$11.hasNext()) {
+         Entry<Long, Map<io, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<io, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<io, Integer> $$16 : $$14.entrySet()) {
+               io $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  euf $$19 = new euf(io.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gci.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      return $$0;
+      for (Entry<io, Integer> $$20 : $$9.entrySet()) {
+         io $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gfw.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

@@ -2,20 +2,24 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cy extends de<cy.a> {
+public class cy extends df<cy.a> {
    @Override
    public Codec<cy.a> a() {
       return cy.a.a;
    }
 
-   public void a(aqi $$0, csz $$1, brh $$2) {
-      eol $$3 = br.b($$0, $$2);
+   public void a(aqn $$0, cto $$1, bru $$2) {
+      epf $$3 = br.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d) implements de.a {
+   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d) implements df.a {
       public static final Codec<cy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axh.a(br.b, "player").forGetter(cy.a::a), axh.a(ch.a, "item").forGetter(cy.a::b), axh.a(br.b, "entity").forGetter(cy.a::c))
+         $$0 -> $$0.group(
+                  br.b.optionalFieldOf("player").forGetter(cy.a::a),
+                  ch.a.optionalFieldOf("item").forGetter(cy.a::b),
+                  br.b.optionalFieldOf("entity").forGetter(cy.a::c)
+               )
                .apply($$0, cy.a::new)
       );
 
@@ -27,13 +31,13 @@ public class cy extends de<cy.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(csz $$0, eol $$1) {
+      public boolean a(cto $$0, epf $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 
       @Override
       public void a(bd $$0) {
-         de.a.super.a($$0);
+         df.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 

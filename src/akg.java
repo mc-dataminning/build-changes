@@ -1,64 +1,90 @@
-import com.google.common.collect.MapMaker;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
 
-public class akg<T> {
-   private static final ConcurrentMap<akg.a, akg<?>> a = new MapMaker().weakValues().makeMap();
-   private final akh b;
-   private final akh c;
+public class akg<E> implements Codec<jb<E>> {
+   private final akl<? extends jk<E>> a;
+   private final Codec<ix<E>> b;
+   private final Codec<List<ix<E>>> c;
+   private final Codec<Either<awl<E>, List<ix<E>>>> d;
 
-   public static <T> Codec<akg<T>> a(akg<? extends jj<T>> $$0) {
-      return akh.a.xmap($$1 -> a($$0, $$1), akg::a);
+   private static <E> Codec<List<ix<E>>> a(Codec<ix<E>> $$0, boolean $$1) {
+      Codec<List<ix<E>>> $$2 = $$0.listOf().validate(axm.b(ix::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ix)$$0x.get(0)) : Either.left($$0x));
    }
 
-   public static <T> ys<ByteBuf, akg<T>> b(akg<? extends jj<T>> $$0) {
-      return akh.b.a($$1 -> a($$0, $$1), akg::a);
+   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0, Codec<ix<E>> $$1, boolean $$2) {
+      return new akg<>($$0, $$1, $$2);
    }
 
-   public static <T> akg<T> a(akg<? extends jj<T>> $$0, akh $$1) {
-      return a($$0.c, $$1);
+   private akg(akl<? extends jk<E>> $$0, Codec<ix<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(awl.b($$0), this.c);
    }
 
-   public static <T> akg<jj<T>> a(akh $$0) {
-      return a(le.a, $$0);
+   public <T> DataResult<Pair<jb<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof akk<T> $$2) {
+         Optional<iy<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            iy<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).flatMap($$1x -> {
+               DataResult<jb<E>> $$2x = (DataResult<jb<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jb.a($$0xx)));
+               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
+            });
+         }
+      }
+
+      return this.a($$0, $$1);
    }
 
-   private static <T> akg<T> a(akh $$0, akh $$1) {
-      return (akg<T>)a.computeIfAbsent(new akg.a($$0, $$1), $$0x -> new akg($$0x.a, $$0x.b));
+   private static <E> DataResult<jb<E>> a(iy<E> $$0, awl<E> $$1) {
+      return $$0.a($$1)
+         .<DataResult<jb<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
    }
 
-   private akg(akh $$0, akh $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public <T> DataResult<T> a(jb<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof akk<T> $$3) {
+         Optional<ja<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
    }
 
-   @Override
-   public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   private <T> DataResult<Pair<jb<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<ix.a<E>> $$1x = new ArrayList<>();
+
+         for (ix<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof ix.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(jb.a($$1x), $$0x.getSecond()));
+      });
    }
 
-   public boolean c(akg<? extends jj<?>> $$0) {
-      return this.b.equals($$0.a());
-   }
-
-   public <E> Optional<akg<E>> d(akg<? extends jj<E>> $$0) {
-      return this.c($$0) ? Optional.of((akg<E>)this) : Optional.empty();
-   }
-
-   public akh a() {
-      return this.c;
-   }
-
-   public akh b() {
-      return this.b;
-   }
-
-   public akg<jj<T>> c() {
-      return a(this.b);
-   }
-
-   static record a(akh a, akh b) {
+   private <T> DataResult<T> b(jb<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

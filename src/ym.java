@@ -1,16 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public class ym {
-   public static final MapCodec<yk> a = ld.aq.q().dispatchMap(yk::a, $$0 -> $$0.a().codec());
-   public static final Codec<yk> b = a.codec();
-   public static final ys<wf, yk> c = yq.a(le.at).b(yk::a, yl::b);
-   public static final ys<wf, Optional<yk>> d = c.a(yq::a);
+public class ym implements yn {
+   public static final yo<ym> a = new yo<ym>() {
+      private static final MapCodec<ym> a = wz.a.fieldOf("value").xmap(ym::new, $$0 -> $$0.b);
+      private static final yv<wi, ym> b = yv.a(wz.d, $$0 -> $$0.b, ym::new);
 
-   public static yl<?> a(jj<yl<?>> $$0) {
-      jj.a($$0, "blank", yi.b);
-      jj.a($$0, "styled", yn.a);
-      return jj.a($$0, "fixed", yj.a);
+      @Override
+      public MapCodec<ym> a() {
+         return a;
+      }
+
+      @Override
+      public yv<wi, ym> b() {
+         return b;
+      }
+   };
+   final wx b;
+
+   public ym(wx $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public xl a(int $$0) {
+      return this.b.f();
+   }
+
+   @Override
+   public yo<ym> a() {
+      return a;
    }
 }

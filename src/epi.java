@@ -1,146 +1,136 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class epi extends epw {
-   private static final Map<akh, epi.c> b = Stream.of(epi.a.a, epi.d.b, epi.e.b).collect(Collectors.toMap(epi.c::a, Function.identity()));
-   private static final Codec<epi.c> c = akh.a.comapFlatMap($$0 -> {
-      epi.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, epi.c::a);
-   private static final MapCodec<epi.b> d = axh.a("formula", "parameters", c, epi.b::a, epi.c::b);
-   public static final Codec<epi> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(ld.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, epi::new)
-   );
-   private final iw<cyg> e;
-   private final epi.b f;
+public class epi {
+   private final aqm a;
+   private final Map<eru<?>, Object> b;
+   private final Map<akm, epi.b> c;
+   private final float d;
 
-   private epi(List<erq> $$0, iw<cyg> $$1, epi.b $$2) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
+   public epi(aqm $$0, Map<eru<?>, Object> $$1, Map<akm, epi.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public epy b() {
-      return epz.u;
+   public aqm a() {
+      return this.a;
    }
 
-   @Override
-   public Set<eqz<?>> a() {
-      return ImmutableSet.of(erc.i);
+   public boolean a(eru<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      csz $$2 = $$1.c(erc.i);
-      if ($$2 != null) {
-         int $$3 = cyh.a(this.e.a(), $$2);
-         int $$4 = this.f.a($$1.b(), $$0.G(), $$3);
-         $$0.e($$4);
-      }
-
-      return $$0;
-   }
-
-   public static epw.a<?> a(cyg $$0, float $$1, int $$2) {
-      return a($$3 -> new epi($$3, $$0.l(), new epi.a($$2, $$1)));
-   }
-
-   public static epw.a<?> a(cyg $$0) {
-      return a($$1 -> new epi($$1, $$0.l(), new epi.d()));
-   }
-
-   public static epw.a<?> b(cyg $$0) {
-      return a($$1 -> new epi($$1, $$0.l(), new epi.e(1)));
-   }
-
-   public static epw.a<?> a(cyg $$0, int $$1) {
-      return a($$2 -> new epi($$2, $$0.l(), new epi.e($$1)));
-   }
-
-   static record a(int b, float c) implements epi.b {
-      private static final Codec<epi.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(epi.a::b), Codec.FLOAT.fieldOf("probability").forGetter(epi.a::c)).apply($$0, epi.a::new)
-      );
-      public static final epi.c a = new epi.c(new akh("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(ayg $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
-         }
-
+   public <T> T b(eru<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
          return $$1;
       }
+   }
 
-      @Override
-      public epi.c a() {
-         return a;
+   @Nullable
+   public <T> T c(eru<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(eru<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(akm $$0, Consumer<cto> $$1) {
+      epi.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
       }
    }
 
-   interface b {
-      int a(ayg var1, int var2, int var3);
-
-      epi.c a();
+   public float b() {
+      return this.d;
    }
 
-   static record c(akh a, Codec<? extends epi.b> b) {
-   }
+   public static class a {
+      private final aqm a;
+      private final Map<eru<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<akm, epi.b> c = Maps.newHashMap();
+      private float d;
 
-   static record d() implements epi.b {
-      public static final Codec<epi.d> a = Codec.unit(epi.d::new);
-      public static final epi.c b = new epi.c(new akh("ore_drops"), a);
+      public a(aqm $$0) {
+         this.a = $$0;
+      }
 
-      @Override
-      public int a(ayg $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
+      public aqm a() {
+         return this.a;
+      }
 
-            return $$1 * ($$3 + 1);
+      public <T> epi.a a(eru<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> epi.a b(eru<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(eru<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
          } else {
             return $$1;
          }
       }
 
-      @Override
-      public epi.c a() {
-         return b;
+      @Nullable
+      public <T> T b(eru<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public epi.a a(akm $$0, epi.b $$1) {
+         epi.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public epi.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public epi a(erv $$0) {
+         Set<eru<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<eru<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new epi(this.a, this.b, this.c, this.d);
+            }
+         }
       }
    }
 
-   static record e(int c) implements epi.b {
-      public static final Codec<epi.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(epi.e::b)).apply($$0, epi.e::new)
-      );
-      public static final epi.c b = new epi.c(new akh("uniform_bonus_count"), a);
-
-      @Override
-      public int a(ayg $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
-      }
-
-      @Override
-      public epi.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cto> var1);
    }
 }

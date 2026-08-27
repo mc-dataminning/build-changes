@@ -1,33 +1,24 @@
-public class ccv {
-   public static boolean a(bsc $$0) {
-      return $$0.K() instanceof cbk;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class ccv extends ccy<bso> {
+   @Override
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of(cbs.j, cbs.k, cbs.l);
    }
 
-   public static boolean a(bsi $$0, int $$1) {
-      return $$0.ga() && $$0.fX().a($$0.dl(), (double)($$0.fY() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(in $$0, bsi $$1) {
-      return $$0.v() < $$1.dN().I_() || $$0.v() > $$1.dN().al();
-   }
-
-   public static boolean a(boolean $$0, bsi $$1, in $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cbl $$0, in $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bsi $$0, in $$1) {
-      return $$0.dN().b_($$1).a(avw.a);
-   }
-
-   public static boolean b(bsi $$0, in $$1) {
-      return $$0.a(emw.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bsi $$0, in $$1) {
-      return $$0.dN().a_($$1).e();
+   @Override
+   protected void a(aqm $$0, bso $$1) {
+      List<clw> $$2 = $$0.x().stream().filter(brz.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
+      btq<?> $$3 = $$1.dS();
+      $$3.a(cbs.j, $$2);
+      List<clw> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(cbs.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<clw> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(cbs.l, $$5);
    }
 }

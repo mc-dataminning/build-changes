@@ -1,23 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface daz {
+   int J_();
 
-public class daz {
-   public static final Codec<daz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avb.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, daz::new)
-   );
-   private final iw<avb> b;
-   private final double c;
+   int I_();
 
-   public daz(iw<avb> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default int al() {
+      return this.I_() + this.J_();
    }
 
-   public iw<avb> a() {
-      return this.b;
+   default int am() {
+      return this.ao() - this.an();
    }
 
-   public double b() {
-      return this.c;
+   default int an() {
+      return jq.a(this.I_());
+   }
+
+   default int ao() {
+      return jq.a(this.al() - 1) + 1;
+   }
+
+   default boolean s(io $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.al();
+   }
+
+   default int e(int $$0) {
+      return this.f(jq.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static daz e(final int $$0, final int $$1) {
+      return new daz() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

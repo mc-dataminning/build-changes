@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cf implements df<cyl> {
+public abstract class cf implements dg<cze> {
    private final List<bm> a;
 
    protected cf(List<bm> $$0) {
@@ -17,7 +17,7 @@ public abstract class cf implements df<cyl> {
       return this.a;
    }
 
-   public boolean a(csz $$0, cyl $$1) {
+   public boolean a(cto $$0, cze $$1) {
       for (bm $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,8 +43,8 @@ public abstract class cf implements df<cyl> {
       }
 
       @Override
-      public jz<cyl> a() {
-         return ka.i;
+      public ka<cze> a() {
+         return kb.j;
       }
    }
 
@@ -56,8 +56,8 @@ public abstract class cf implements df<cyl> {
       }
 
       @Override
-      public jz<cyl> a() {
-         return ka.w;
+      public ka<cze> a() {
+         return kb.x;
       }
    }
 }

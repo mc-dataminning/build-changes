@@ -1,31 +1,20 @@
-import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ezq extends ezt {
-   public long a;
-   public List<ezp> b = Lists.newArrayList();
+public class ezq {
+   private final Gson a = new Gson();
 
-   public static ezq a(String $$0) {
-      ezq $$1 = new ezq();
-      JsonParser $$2 = new JsonParser();
+   public String a(fai $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fbq.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               ezp $$8 = ezp.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
-      }
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-      return $$1;
+   @Nullable
+   public <T extends fai> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

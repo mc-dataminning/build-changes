@@ -1,197 +1,98 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class euu extends enh {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final eut c;
+public class euu implements eup {
+   protected static final eup a = new euu(false, -Double.MAX_VALUE, cto.i, $$0 -> false, null) {
+      @Override
+      public boolean a(evd $$0, io $$1, boolean $$2) {
+         return $$2;
+      }
+   };
+   private final boolean b;
+   private final double c;
+   private final cto d;
+   private final Predicate<emu> e;
+   @Nullable
+   private final bru f;
 
-   public euu(eut $$0) {
-      this.c = $$0;
+   protected euu(boolean $$0, double $$1, cto $$2, Predicate<emu> $$3, @Nullable bru $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public euu b(ua $$0, iy.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
-   }
-
-   private void a(ug $$0, iy.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ua $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         euo $$5 = this.c.c($$4);
-         wu $$6 = wu.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wu $$7 = wu.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
-            }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wu $$8 = wu.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            euv.b $$9 = euv.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            euv.b $$10 = euv.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            euv.a $$11 = euv.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
-   }
-
-   private void a(euo $$0, ug $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void a(ua $$0) {
-      for (String $$1 : $$0.e()) {
-         euk $$2 = euk.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            eul $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(ug $$0, iy.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ua $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         euw $$5 = euw.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, euw.b.d());
-            return euw.b;
-         });
-         String $$6 = $$3.l("Name");
-         wu $$7 = wu.a.a($$3.l("DisplayName"), $$1);
-         euw.a $$8 = euw.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         yk $$10 = (yk)ym.b.parse($$1.a(uo.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
+   @Deprecated
+   protected euu(bru $$0) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual bru.bZ ()Z
+      // 05: aload 1
+      // 06: invokevirtual bru.dw ()D
+      // 09: aload 1
+      // 0a: instanceof bso
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast bso
+      // 14: invokevirtual bso.eX ()Lcto;
+      // 17: goto 1d
+      // 1a: getstatic cto.i Lcto;
+      // 1d: aload 1
+      // 1e: instanceof bso
+      // 21: ifeq 35
+      // 24: aload 1
+      // 25: checkcast bso
+      // 28: dup
+      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 2c: pop
+      // 2d: invokedynamic test (Lbso;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bso.a (Lemu;)Z, (Lemu;)Z ]
+      // 32: goto 3a
+      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, euu.a (Lemu;)Z, (Lemu;)Z ]
+      // 3a: aload 1
+      // 3b: invokespecial euu.<init> (ZDLcto;Ljava/util/function/Predicate;Lbru;)V
+      // 3e: return
    }
 
    @Override
-   public ua a(ua $$0, iy.a $$1) {
-      $$0.a("Objectives", this.b($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.a($$1));
-      this.b($$0);
-      return $$0;
+   public boolean a(ctj $$0) {
+      return this.d.a($$0);
    }
 
-   private ug a(iy.a $$0) {
-      ug $$1 = new ug();
-
-      for (euo $$3 : this.c.g()) {
-         ua $$4 = new ua();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wu.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wu.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wu.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         ug $$5 = new ug();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(uv.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
+   @Override
+   public boolean a(emu $$0, emu $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
    }
 
-   private void b(ua $$0) {
-      ua $$1 = new ua();
-
-      for (euk $$2 : euk.values()) {
-         eul $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
+   @Override
+   public boolean b() {
+      return this.b;
    }
 
-   private ug b(iy.a $$0) {
-      ug $$1 = new ug();
+   @Override
+   public boolean a(evd $$0, io $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(it.a.b) - 1.0E-5F;
+   }
 
-      for (eul $$3 : this.c.c()) {
-         ua $$4 = new ua();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wu.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         yk $$5 = $$3.f();
-         if ($$5 != null) {
-            ym.b.encodeStart($$0.a(uo.a), $$5).result().ifPresent($$1x -> $$4.a("format", $$1x));
-         }
-
-         $$1.add($$4);
-      }
-
-      return $$1;
+   @Nullable
+   public bru c() {
+      return this.f;
    }
 }

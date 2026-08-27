@@ -1,18 +1,27 @@
-import io.netty.channel.ChannelHandlerContext;
-
 public interface wd {
-   static void a(ChannelHandlerContext $$0, zb<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wj.a());
-         $$0.pipeline().remove($$0.name());
-      }
+   zf a();
+
+   vw b();
+
+   void a(wx var1);
+
+   boolean c();
+
+   default boolean a(ze<?> $$0) {
+      return this.c();
    }
 
-   static void b(ChannelHandlerContext $$0, zb<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wj.c());
-         $$0.pipeline().remove($$0.name());
-      }
+   default boolean d() {
+      return true;
+   }
+
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
+   }
+
+   default void a(p $$0) {
    }
 }

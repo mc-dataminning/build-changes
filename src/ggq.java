@@ -1,16 +1,11 @@
-public class ggq extends ghl {
-   public static final akh a = new akh("textures/entity/guardian_elder.png");
+public class ggq extends giz<cfn, fru> {
+   private static final akm a = new akm("textures/entity/armadillo.png");
 
-   public ggq(ggx.a $$0) {
-      super($$0, 1.2F, fva.V);
+   public ggq(ght.a $$0) {
+      super($$0, new fru($$0.a(fvv.b)), 0.4F);
    }
 
-   protected void a(cij $$0, exx $$1, float $$2) {
-      $$1.b(cic.b, cic.b, cic.b);
-   }
-
-   @Override
-   public akh a(cij $$0) {
+   public akm a(cfn $$0) {
       return a;
    }
 }

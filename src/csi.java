@@ -1,32 +1,46 @@
-public class csi<T extends brh & brx> extends csu {
-   private final brn<T> a;
-   private final int b;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public csi(csu.a $$0, brn<T> $$1, int $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+public class csi extends ctj implements cuq {
+   private static final Map<csh, csi> a = Maps.newEnumMap(csh.class);
+   private final csh b;
+
+   public csi(csh $$0, ctj.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      csz $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bpn.c($$3);
-      } else {
-         brh $$4 = $$1.db();
-         if ($$1.bP() && $$4 instanceof brx $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, bsa.d($$2));
-            if ($$3.d()) {
-               csz $$6 = $$3.b(ctc.qV, 1);
-               return bpn.a($$6);
-            }
-
-            return bpn.a($$3);
+   public bpu a(cto $$0, clw $$1, bso $$2, bpt $$3) {
+      if ($$2 instanceof cfa $$4 && $$4.bD() && !$$4.y() && $$4.u() != this.b) {
+         $$4.dP().a($$1, $$4, avh.hM, avi.h, 1.0F, 1.0F);
+         if (!$$1.dP().B) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
 
-         $$1.b(avm.c.b(this));
-         return bpn.c($$3);
+         return bpu.a($$1.dP().B);
+      }
+
+      return bpu.d;
+   }
+
+   public csh c() {
+      return this.b;
+   }
+
+   public static csi a(csh $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(dax $$0, dpq $$1, boolean $$2, clw $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.az_(), avh.hM, avi.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

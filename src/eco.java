@@ -1,42 +1,30 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eco extends ect {
-   public static final Codec<eco> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eco::new));
-   protected final int b;
+public record eco(int b, int c, int d, ix<egn> e) implements ecb {
+   public static final Codec<eco> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axm.j.fieldOf("tries").orElse(128).forGetter(eco::a),
+               axm.i.fieldOf("xz_spread").orElse(7).forGetter(eco::b),
+               axm.i.fieldOf("y_spread").orElse(3).forGetter(eco::c),
+               egn.b.fieldOf("feature").forGetter(eco::d)
+            )
+            .apply($$0, eco::new)
+   );
 
-   protected static <P extends eco> P3<Mu<P>, bor, bor, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public eco(bor $$0, bor $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ecu<?> a() {
-      return ecu.a;
-   }
-
-   @Override
-   protected void a(daj $$0, ect.b $$1, ayg $$2, ecd $$3, int $$4, ect.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ayg $$0, int $$1, ecd $$2) {
+   public int a() {
       return this.b;
    }
 
-   @Override
-   protected boolean a(ayg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ix<egn> d() {
+      return this.e;
    }
 }

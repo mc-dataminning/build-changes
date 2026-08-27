@@ -1,9 +1,13 @@
-public class gkc extends gfs<cjg, fut<cjg>> {
-   public gkc(ggx.a $$0) {
-      this($$0, fva.cf, fva.ci, fva.cj);
+public class gkc extends gjv<cjo> {
+   private static final akm a = new akm("textures/entity/skeleton/stray.png");
+   private static final akm i = new akm("textures/entity/skeleton/stray_overlay.png");
+
+   public gkc(ght.a $$0) {
+      super($$0, fvv.bz, fvv.bA, fvv.bB);
+      this.a(new gmj<>(this, $$0.f(), fvv.bC, i));
    }
 
-   public gkc(ggx.a $$0, fuz $$1, fuz $$2, fuz $$3) {
-      super($$0, new fut<>($$0.a($$1)), new fut<>($$0.a($$2)), new fut<>($$0.a($$3)));
+   public akm a(cjo $$0) {
+      return a;
    }
 }

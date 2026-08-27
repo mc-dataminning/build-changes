@@ -1,97 +1,133 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public final class dvn {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dtc> e = ld.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dtc.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dvn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dvn::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dvn::new)
-   );
-   private static final Set<akg<dbc>> f = Set.of(dbj.aa, dbj.Z, dbj.ab);
-   public static final daf b = new daf() {
-      @Override
-      public int J_() {
-         return 64;
-      }
+public class dvn<T extends dvb> {
+   static final Logger a = LogUtils.getLogger();
+   final dvj<T> b;
+   final dvd<T> c;
+   final dvg<T> d;
+   private final LongSet e = new LongOpenHashSet();
+   private final dvk<T> f;
 
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dtc g;
-   private final BitSet h;
-
-   private dvn(dtc $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   public dvn(Class<T> $$0, dvj<T> $$1) {
+      this.c = new dvd<>();
+      this.d = new dvg<>($$0, $$0x -> this.e.contains($$0x) ? dvo.c : dvo.b);
+      this.b = $$1;
+      this.f = new dvl<>(this.c, this.d);
    }
 
-   @Nullable
-   public static dvn a(ua $$0) {
-      dtc $$1 = dtc.a($$0.l("target_status"));
-      return $$1 == dtc.c ? null : new dvn($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(dsx $$0) {
-      int $$1 = 4;
-      in.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(ddg.F)) {
-            $$0.a($$1x, ddg.sJ.n(), false);
+   public void a(dae $$0) {
+      long $$1 = $$0.a();
+      this.e.add($$1);
+      this.d.b($$1).forEach($$0x -> {
+         dvo $$1x = $$0x.a(dvo.c);
+         if (!$$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dO()).forEach(this.b::e);
          }
       });
    }
 
-   public void b(dsx $$0) {
-      daf $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.al() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               in.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, ddg.a.n(), false));
-            }
+   public void b(dae $$0) {
+      long $$1 = $$0.a();
+      this.e.remove($$1);
+      this.d.b($$1).forEach($$0x -> {
+         dvo $$1x = $$0x.a(dvo.b);
+         if ($$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dO()).forEach(this.b::d);
          }
+      });
+   }
+
+   public dvk<T> a() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      this.c.a($$0);
+      long $$1 = jq.c($$0.dp());
+      dvf<T> $$2 = this.d.c($$1);
+      $$2.a($$0);
+      $$0.a(new dvn.a($$0, $$1, $$2));
+      this.b.g($$0);
+      this.b.c($$0);
+      if ($$0.dO() || $$2.c().a()) {
+         this.b.e($$0);
       }
    }
 
-   public dtc a() {
-      return this.g;
+   @azg
+   public int b() {
+      return this.c.b();
    }
 
-   public boolean b() {
-      return !this.h.isEmpty();
+   void a(long $$0, dvf<T> $$1) {
+      if ($$1.a()) {
+         this.d.e($$0);
+      }
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   @azg
+   public String c() {
+      return this.c.b() + "," + this.d.b() + "," + this.e.size();
    }
 
-   public static dbf a(dbf $$0, dsd $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<akg<dbc>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            iw<dbc> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+   class a implements dvc {
+      private final T c;
+      private long d;
+      private dvf<T> e;
+
+      a(T $$0, long $$1, dvf<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         io $$0 = this.c.dp();
+         long $$1 = jq.c($$0);
+         if ($$1 != this.d) {
+            dvo $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dvn.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jq.a(this.d), $$1});
+            }
+
+            dvn.this.a(this.d, this.e);
+            dvf<T> $$3 = dvn.this.d.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            dvn.this.b.a(this.c);
+            if (!this.c.dO()) {
+               boolean $$4 = $$2.a();
+               boolean $$5 = $$3.c().a();
+               if ($$4 && !$$5) {
+                  dvn.this.b.d(this.c);
+               } else if (!$$4 && $$5) {
+                  dvn.this.b.e(this.c);
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a(bru.c $$0) {
+         if (!this.e.b(this.c)) {
+            dvn.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jq.a(this.d), $$0});
+         }
+
+         dvo $$1 = this.e.c();
+         if ($$1.a() || this.c.dO()) {
+            dvn.this.b.d(this.c);
+         }
+
+         dvn.this.b.b(this.c);
+         dvn.this.b.f(this.c);
+         dvn.this.c.b(this.c);
+         this.c.a(a);
+         dvn.this.a(this.d, this.e);
       }
    }
 }

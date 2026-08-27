@@ -1,75 +1,51 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class fei {
-   private static final int a = -1;
-   private final jc<feh> b = new jc<>(32);
-   private final Map<dde, Set<drk<?>>> c = Maps.newHashMap();
+public enum fei {
+   a(new cto(ctr.qS)),
+   b(new cto(dea.cj)),
+   c(new cto(ctr.lH)),
+   d(new cto(ctr.pd), new cto(ctr.oV)),
+   e(new cto(ctr.qA), new cto(ctr.ot)),
+   f(new cto(ctr.qS)),
+   g(new cto(ctr.pX)),
+   h(new cto(dea.b)),
+   i(new cto(ctr.qA), new cto(ctr.oz)),
+   j(new cto(ctr.qS)),
+   k(new cto(dea.dI)),
+   l(new cto(ctr.pb), new cto(ctr.pQ)),
+   m(new cto(ctr.qS)),
+   n(new cto(ctr.pX)),
+   o(new cto(ctr.fF)),
+   p(new cto(ctr.pT)),
+   q(new cto(ctr.pX)),
+   r(new cto(ctr.hB));
 
-   public static fei a() {
-      fei $$0 = new fei();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gba.a($$1, $$0x.c(dfm.b) == drd.a ? $$2.d() : $$2) : dab.a(), ddg.iI, ddg.iH);
-      $$0.a(dfm.b, ddg.iI, ddg.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gba.a($$1, $$2) : dab.a(), ddg.i, ddg.bu, ddg.bt, ddg.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? gba.a($$1, $$2) : dab.a();
-         } else {
-            return -1;
-         }
-      }, ddg.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> czx.a(), ddg.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> czx.b(), ddg.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gba.b($$1, $$2) : czx.c(), ddg.aE, ddg.aH, ddg.aI, ddg.aK, ddg.ff, ddg.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gba.c($$1, $$2) : -1, ddg.G, ddg.nd, ddg.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> djg.b($$0x.c(djg.f)), ddg.cw);
-      $$0.a(djg.f, ddg.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gba.a($$1, $$2) : -1, ddg.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, ddg.fc, ddg.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dla.c);
-         return axj.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, ddg.fe, ddg.fd);
-      $$0.a(dla.c, ddg.fe, ddg.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, ddg.fm);
-      return $$0;
+   public static final List<fei> s = ImmutableList.of(m, n);
+   public static final List<fei> t = ImmutableList.of(j, k, l);
+   public static final List<fei> u = ImmutableList.of(f, g, h, i);
+   public static final List<fei> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<fei, List<fei>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cto> x;
+
+   private fei(cto... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public int a(dqh $$0, dad $$1, in $$2) {
-      feh $$3 = this.b.a(ld.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eme $$4 = $$0.d($$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
+   public static List<fei> a(cqh $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public int a(dqh $$0, @Nullable czg $$1, @Nullable in $$2, int $$3) {
-      feh $$4 = this.b.a(ld.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(feh $$0, dde... $$1) {
-      for (dde $$2 : $$1) {
-         this.b.a($$0, ld.e.a($$2));
-      }
-   }
-
-   private void a(Set<drk<?>> $$0, dde... $$1) {
-      for (dde $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(drk<?> $$0, dde... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<drk<?>> a(dde $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
+   public List<cto> a() {
+      return this.x;
    }
 }

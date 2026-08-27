@@ -1,149 +1,136 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
 
-public class fpp extends fey {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final String d = "telemetry.event.optional.disabled";
-   private static final wu e = wu.c("telemetry_info.property_title").a(n.t);
-   private final fep f;
-   private fpp.a m;
-   @Nullable
-   private DoubleConsumer n;
+public class fpp extends ffx {
+   private static final akm b = new akm("recipe_book/slot_many_craftable");
+   private static final akm c = new akm("recipe_book/slot_craftable");
+   private static final akm d = new akm("recipe_book/slot_many_uncraftable");
+   private static final akm e = new akm("recipe_book/slot_uncraftable");
+   private static final float f = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final wx n = wx.c("gui.recipebook.moreRecipes");
+   private cqg<?> o;
+   private avk p;
+   private fpq q;
+   private float r;
+   private float s;
+   private int u;
 
-   public fpp(int $$0, int $$1, int $$2, int $$3, fep $$4) {
-      super($$0, $$1, $$2, $$3, wu.i());
-      this.f = $$4;
-      this.m = this.c(fde.Q().C());
+   public fpp() {
+      super(0, 0, 25, 25, ww.a);
    }
 
-   public void b(boolean $$0) {
-      this.m = this.c($$0);
-      this.a(this.c());
-   }
+   public void a(fpq $$0, fpn $$1) {
+      this.q = $$0;
+      this.o = (cqg<?>)$$1.d().s.cc;
+      this.p = $$1.e();
+      List<cxw<?>> $$2 = $$0.a(this.p.a(this.o));
 
-   public void j() {
-      this.m = this.c(fde.Q().C());
-      this.a(this.c());
-   }
-
-   private fpp.a c(boolean $$0) {
-      fpp.b $$1 = new fpp.b(this.k());
-      List<grz> $$2 = new ArrayList<>(grz.g());
-      $$2.sort(Comparator.comparing(grz::d));
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         grz $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+      for (cxw<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.s = 15.0F;
+            break;
          }
       }
-
-      return $$1.a();
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.n != null) {
-         this.n.accept(this.c());
-      }
+   public fpq a() {
+      return this.q;
    }
 
    @Override
-   protected int h() {
-      return this.m.a().v();
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      if (!fly.r()) {
+         this.r += $$3;
+      }
+
+      akm $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
+      }
+
+      boolean $$8 = this.s > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.s / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
+         this.s -= $$3;
+      }
+
+      $$0.a($$4, this.C(), this.D(), this.g, this.h);
+      List<cxw<?>> $$10 = this.f();
+      this.u = ayd.d(this.r / 30.0F) % $$10.size();
+      cto $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.f().size() > 1) {
+         $$0.a($$11, this.C() + $$12 + 1, this.D() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.C() + $$12, this.D() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<cxw<?>> f() {
+      List<cxw<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
+   }
+
+   public boolean b() {
+      return this.f().size() == 1;
+   }
+
+   public cxw<?> d() {
+      List<cxw<?>> $$0 = this.f();
+      return $$0.get(this.u);
+   }
+
+   public List<wx> e() {
+      cto $$0 = this.f().get(this.u).b().a(this.q.a());
+      List<wx> $$1 = Lists.newArrayList(fly.a(fdz.Q(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
+      }
+
+      return $$1;
    }
 
    @Override
-   protected double i() {
-      return 9.0;
+   public void a(fjv $$0) {
+      cto $$1 = this.f().get(this.u).b().a(this.q.a());
+      $$0.a(fju.a, wx.a("narration.recipe", $$1.x()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(fju.d, wx.c("narration.button.usage.hovered"), wx.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fju.d, wx.c("narration.button.usage.hovered"));
+      }
    }
 
    @Override
-   protected void c(fer $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.a();
-      int $$5 = this.C() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
+   public int x() {
+      return 25;
    }
 
    @Override
-   protected void a(fja $$0) {
-      $$0.a(fiz.a, this.m.b());
-   }
-
-   private wu a(wu $$0, boolean $$1) {
-      return (wu)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(fpp.b $$0, grz $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.f, this.a(wu.a($$3, $$1.e()), $$2));
-      $$0.b(this.f, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.f, this.a(e, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(grz $$0, fpp.b $$1, boolean $$2) {
-      for (gsb<?> $$3 : $$0.b()) {
-         $$1.a(this.f, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int k() {
-      return this.g - this.b();
-   }
-
-   static record a(fis a, wu b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fiv b;
-      private final xi c = wu.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fiv.d();
-         this.b.c().a();
-         this.b.a(fiw.a($$0));
-      }
-
-      public void a(fep $$0, wu $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(fep $$0, wu $$1, int $$2) {
-         this.b.a(new ffy($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(fep $$0, wu $$1) {
-         this.b.a(new ffy($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(fiw.b($$0));
-      }
-
-      public fpp.a a() {
-         this.b.a();
-         return new fpp.a(this.b, this.c);
-      }
+   protected boolean j(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

@@ -1,49 +1,62 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dql {
-   private final dag a;
-   private final in b;
-   private final boolean c;
-   @Nullable
-   private dqh d;
-   @Nullable
-   private dnm e;
-   private boolean f;
+public record dql(akl<epk> d, double e, double f, cto g, Optional<akl<epk>> h, dqd i, dqd.a j) {
+   static final String a = "config";
+   static dql b = new dql();
+   static Codec<dql> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akl.a(lf.aU).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dql::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dql::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dql::d),
+                  cto.a("key_item").forGetter(dql::e),
+                  akl.a(lf.aU).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dql::f)
+               )
+               .apply($$0, dql::new)
+      )
+      .validate(dql::h);
 
-   public dql(dag $$0, in $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
+   private dql() {
+      this(epd.S, 4.0, 4.5, new cto(ctr.yz), Optional.empty(), dqd.b, dqd.a.a);
    }
 
-   public dqh a() {
-      if (this.d == null && (this.c || this.a.B(this.b))) {
-         this.d = this.a.a_(this.b);
-      }
+   public dql(akl<epk> $$0, double $$1, double $$2, cto $$3, Optional<akl<epk>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   }
 
+   public dqd a() {
+      return this.i;
+   }
+
+   private DataResult<dql> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
+   }
+
+   public akl<epk> b() {
       return this.d;
    }
 
-   @Nullable
-   public dnm b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
-      }
-
+   public double c() {
       return this.e;
    }
 
-   public dag c() {
-      return this.a;
+   public double d() {
+      return this.f;
    }
 
-   public in d() {
-      return this.b;
+   public cto e() {
+      return this.g;
    }
 
-   public static Predicate<dql> a(Predicate<dqh> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
+   public Optional<akl<epk>> f() {
+      return this.h;
+   }
+
+   public dqd.a g() {
+      return this.j;
    }
 }

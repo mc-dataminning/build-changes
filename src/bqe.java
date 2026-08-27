@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
+public final class bqe implements bpy {
+   private final wx a;
+   private final cpz b;
 
-public enum bqe implements ayt {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<bqe> d = ayt.a(bqe::values);
-   private final String e;
-
-   private bqe(String $$0) {
-      this.e = $$0;
+   public bqe(cpz $$0, wx $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public wx O_() {
+      return this.a;
+   }
+
+   @Override
+   public cot createMenu(int $$0, clv $$1, clw $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

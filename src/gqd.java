@@ -1,29 +1,57 @@
-public class gqd extends gpv {
-   private final brh n;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public gqd(avb $$0, avd $$1, float $$2, float $$3, brh $$4, long $$5) {
-      super($$0, $$1, ayg.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.ds());
-      this.g = (double)((float)this.n.du());
-      this.h = (double)((float)this.n.dy());
+public class gqd extends akm {
+   @VisibleForTesting
+   static final char g = '#';
+   private final String h;
+
+   private gqd(String $$0, String $$1, String $$2, @Nullable akm.a $$3) {
+      super($$0, $$1, $$3);
+      this.h = $$2;
+   }
+
+   public gqd(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.h = j($$2);
+   }
+
+   public gqd(akm $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gqd c(String $$0, String $$1) {
+      return new gqd("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.h;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aU();
-   }
-
-   @Override
-   public void q() {
-      if (this.n.dI()) {
-         this.n();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gqd && super.equals($$0)) {
+         gqd $$1 = (gqd)$$0;
+         return this.h.equals($$1.h);
       } else {
-         this.f = (double)((float)this.n.ds());
-         this.g = (double)((float)this.n.du());
-         this.h = (double)((float)this.n.dy());
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.h.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.h;
    }
 }

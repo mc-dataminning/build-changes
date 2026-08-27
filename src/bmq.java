@@ -1,100 +1,58 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public record bmq(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<bnc> e,
-   List<bmw> f,
-   bmy.a g,
-   bnb.a h,
-   bmz<bna> i,
-   bmz<bna> j,
-   bmz<bmv> k,
-   bmz<bmv> l,
-   bmx.a m,
-   bmx.a n,
-   List<bmu> o
-) {
-   public List<Pair<dtc, bne<bmu>>> a() {
-      Map<dtc, List<bmu>> $$0 = this.o.stream().collect(Collectors.groupingBy(bmu::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((dtc)$$0x.getKey(), bne.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dtc, bne<bmu>>, Duration>comparing($$0x -> ((bne)$$0x.getSecond()).f()).reversed())
-         .toList();
+public class bmq {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
+
+   protected bmq(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public String b() {
-      return new bms().a(this);
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
+
+         bmy $$1;
+         try {
+            $$1 = bmx.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
    }
 
-   public Instant c() {
-      return this.a;
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         ako.a($$0.get());
+      }
    }
 
-   public Instant d() {
-      return this.b;
-   }
-
-   public Duration e() {
-      return this.c;
-   }
-
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
-
-   public List<bnc> g() {
-      return this.e;
-   }
-
-   public List<bmw> h() {
-      return this.f;
-   }
-
-   public bmy.a i() {
-      return this.g;
-   }
-
-   public bnb.a j() {
-      return this.h;
-   }
-
-   public bmz<bna> k() {
-      return this.i;
-   }
-
-   public bmz<bna> l() {
-      return this.j;
-   }
-
-   public bmz<bmv> m() {
-      return this.k;
-   }
-
-   public bmz<bmv> n() {
-      return this.l;
-   }
-
-   public bmx.a o() {
-      return this.m;
-   }
-
-   public bmx.a p() {
-      return this.n;
-   }
-
-   public List<bmu> q() {
-      return this.o;
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         ako.a($$0.get());
+         $$1.printStackTrace(ako.a);
+      }
    }
 }

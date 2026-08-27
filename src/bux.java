@@ -1,44 +1,79 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bux extends bts<cku> {
-   private final float c;
+public class bux<E extends bso & clh> extends buh<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<bso, Optional<bvv>> e;
+   private final float f;
 
-   public bux(float $$0) {
-      super(ImmutableMap.of(cbd.m, cbe.c, cbd.n, cbe.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(aqh $$0, cku $$1) {
-      clh $$2 = $$1.gp();
-      return $$1.bB() && $$2 != null && !$$1.bc() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cc != null;
-   }
-
-   protected boolean a(aqh $$0, cku $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqh $$0, cku $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aqh $$0, cku $$1, long $$2) {
-      btb<?> $$3 = $$1.dQ();
-      $$3.b(cbd.m);
-      $$3.b(cbd.n);
-   }
-
-   protected void d(aqh $$0, cku $$1, long $$2) {
-      this.a($$1);
+   public bux(Function<bso, Optional<bvv>> $$0, float $$1, int $$2) {
+      super(Map.of(cbs.n, cbt.c, cbs.m, cbt.c, cbs.aP, cbt.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected boolean a(aqm $$0, E $$1) {
+      return this.b($$1);
    }
 
-   private void a(cku $$0) {
-      btb<?> $$1 = $$0.dQ();
-      $$1.a(cbd.m, new cbg(new bud($$0.gp(), false), this.c, 2));
-      $$1.a(cbd.n, new bud($$0.gp(), true));
+   @Override
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
+
+   @Override
+   protected void d(aqm $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> buj.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(aqm $$0, E $$1, long $$2) {
+      Optional<bvv> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bvv $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bx());
+         if ($$5 < 3.0) {
+            cto $$6 = $$1.y().a(0, 1);
+            if (!$$6.e()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof cfk $$7) {
+                  cfl.a((bso)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dS().a(cbs.aP, 60);
+            }
+         }
+      }
+   }
+
+   private void a(bvv $$0, cto $$1, aqn $$2) {
+      io $$3 = $$0.b().d();
+      am.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.y().c()) {
+         return false;
+      } else {
+         Optional<bvv> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
+      }
+   }
+
+   private static euk a(bvv $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
+   }
+
+   public static void a(bso $$0, cto $$1, euk $$2) {
+      euk $$3 = new euk(0.2F, 0.3F, 0.2F);
+      buj.a($$0, $$1, $$2, $$3, 0.2F);
+      dax $$4 = $$0.dP();
+      if ($$4.Y() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ac.<Float>a(cfk.d, $$4.E_());
+         $$4.a(null, $$0, avh.g, avi.g, 1.0F, $$5);
+      }
    }
 }

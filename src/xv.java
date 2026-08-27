@@ -1,78 +1,73 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public record xv(String d, @Nullable gb e) implements xw {
-   public static final MapCodec<xv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xv::b)).apply($$0, xv::new));
-   public static final xw.a<xv> b = new xw.a<>(a, "block");
+public class xv {
+   private final String a;
+   private final List<xu> b;
+   private final Int2IntFunction c;
 
-   public xv(String $$0) {
-      this($$0, a($$0));
+   private xv(String $$0, List<xu> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   @Nullable
-   private static gb a(String $$0) {
-      try {
-         return fz.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public Stream<ua> a(ed $$0) {
-      if (this.e != null) {
-         aqh $$1 = $$0.e();
-         in $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            dnm $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.v()));
+   public List<axq> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
+      } else {
+         List<axq> $$3 = Lists.newArrayList();
+         xu $$4 = this.b.get($$0);
+         int $$5 = $$0;
+
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            xu $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? axq.backward($$9, $$4, this.c) : axq.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
             }
          }
-      }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public xw.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xv $$1 && this.d.equals($$1.d)) {
-            return true;
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? axq.backward($$10, $$4, this.c) : axq.forward($$10, $$4));
          }
 
-         return false;
+         return $$2 ? Lists.reverse($$3) : $$3;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
+   public static xv a(xc $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
    }
 
-   public String b() {
-      return this.d;
-   }
+   public static xv a(xc $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<xu> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         ayw.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
 
-   @Nullable
-   public gb c() {
-      return this.e;
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
+            return true;
+         });
+         return Optional.empty();
+      }, xu.a);
+      return new xv($$2.apply($$3.toString()), $$4, $$1);
    }
 }

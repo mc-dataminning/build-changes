@@ -1,122 +1,118 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class emu extends emn {
-   private final boolean k;
-   private final Long2ObjectMap<emr> l = new Long2ObjectOpenHashMap();
+public final class emu extends drd<emt, emu> {
+   public static final Codec<emu> a = a(le.c.q(), emt::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public emu(boolean $$0) {
-      this.k = $$0;
+   public emu(emt $$0, Reference2ObjectArrayMap<dse<?>, Comparable<?>> $$1, MapCodec<emu> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(daq $$0, bsc $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public emt a() {
+      return this.e;
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public emm a() {
-      return this.c(axz.a(this.b.cI().a), axz.a(this.b.cI().b + 0.5), axz.a(this.b.cI().c));
+   public boolean a(emt $$0) {
+      return this.e == $$0 && this.e.c(this);
    }
 
-   @Override
-   public emv a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   public boolean c() {
+      return this.a().b();
    }
 
-   @Override
-   public int a(emm[] $$0, emm $$1) {
-      int $$2 = 0;
-      Map<is, emm> $$3 = Maps.newEnumMap(is.class);
+   public float a(dad $$0, io $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
 
-      for (is $$4 : is.values()) {
-         emm $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
+   public float d() {
+      return this.a().a(this);
+   }
 
-      for (is $$6 : is.c.a) {
-         is $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            emm $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(dad $$0, io $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            io $$4 = $$1.b($$2, 0, $$3);
+            emu $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
       }
 
-      return $$2;
+      return false;
    }
 
-   protected boolean a(@Nullable emm $$0) {
-      return $$0 != null && !$$0.i;
+   public void a(dax $$0, io $$1) {
+      this.a().b($$0, $$1, this);
    }
 
-   private static boolean b(@Nullable emm $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public void a(dax $$0, io $$1, ayk $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(dax $$0, io $$1, ayk $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public euk c(dad $$0, io $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public drb g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   protected emm a(int $$0, int $$1, int $$2) {
-      emm $$3 = null;
-      emr $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == emr.u || $$4 == emr.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new in($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
+   public kw h() {
+      return this.a().h();
    }
 
-   protected emr b(int $$0, int $$1, int $$2) {
-      return (emr)this.l.computeIfAbsent(in.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   public boolean a(awl<emt> $$0) {
+      return this.a().k().a($$0);
    }
 
-   @Override
-   public emr a(emt $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public boolean a(jb<emt> $$0) {
+      return $$0.a(this.a().k());
    }
 
-   @Override
-   public emr a(emt $$0, int $$1, int $$2, int $$3, bsc $$4) {
-      in.a $$5 = new in.a();
+   public boolean b(emt $$0) {
+      return this.a() == $$0;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dqh $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               ema $$10 = $$9.u();
-               if ($$10.c() && $$9.a(emp.b) && $$9.i()) {
-                  return emr.u;
-               }
+   public float i() {
+      return this.a().c();
+   }
 
-               if (!$$10.a(avw.a)) {
-                  return emr.a;
-               }
-            }
-         }
-      }
+   public boolean a(dad $$0, io $$1, emt $$2, it $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
 
-      dqh $$11 = $$0.a($$5);
-      return $$11.a(emp.b) ? emr.j : emr.a;
+   public evd d(dad $$0, io $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public ix<emt> j() {
+      return this.e.k();
+   }
+
+   public Stream<awl<emt>> k() {
+      return this.e.k().c();
    }
 }

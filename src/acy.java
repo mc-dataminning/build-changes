@@ -1,41 +1,33 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class acy implements zb<abm> {
-   public static final ys<wf, acy> a = zb.a(acy::a, acy::new);
+public class acy implements ze<abq> {
+   public static final yv<vx, acy> a = ze.a(acy::a, acy::new);
    private final int b;
    private final int c;
-   private final acx d;
-   private final adc e;
+   private final int d;
 
-   public acy(dsn $$0, elp $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      czk $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new acx($$0);
-      this.e = new adc($$4, $$1, $$2, $$3);
+   public acy(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private acy(wf $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new acx($$0, this.b, this.c);
-      this.e = new adc($$0, this.b, this.c);
+   private acy(vx $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(wf $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(vx $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zd<acy> a() {
-      return afx.K;
+   public zg<acy> a() {
+      return agb.H;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
@@ -47,11 +39,7 @@ public class acy implements zb<abm> {
       return this.c;
    }
 
-   public acx f() {
+   public int f() {
       return this.d;
-   }
-
-   public adc g() {
-      return this.e;
    }
 }

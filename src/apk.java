@@ -1,25 +1,25 @@
-import java.util.Vector;
-import javax.swing.JList;
-import net.minecraft.server.MinecraftServer;
+import java.nio.file.Path;
+import java.util.function.UnaryOperator;
 
-public class apk extends JList<String> {
-   private final MinecraftServer a;
-   private int b;
+public class apk {
+   private final Path a;
+   private apj b;
 
-   public apk(MinecraftServer $$0) {
+   public apk(Path $$0) {
       this.a = $$0;
-      $$0.b(this::a);
+      this.b = apj.a($$0);
    }
 
-   public void a() {
-      if (this.b++ % 20 == 0) {
-         Vector<String> $$0 = new Vector<>();
+   public apj a() {
+      return this.b;
+   }
 
-         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
-            $$0.add(this.a.ah().t().get($$1).fZ().getName());
-         }
+   public void b() {
+      this.b.c(this.a);
+   }
 
-         this.setListData($$0);
-      }
+   public apk a(UnaryOperator<apj> $$0) {
+      (this.b = $$0.apply(this.b)).c(this.a);
+      return this;
    }
 }

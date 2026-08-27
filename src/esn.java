@@ -1,61 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
 
-public record esn(esu b, String c, float d) implements esl {
-   public static final Codec<esn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               esv.a.fieldOf("target").forGetter(esn::c),
-               Codec.STRING.fieldOf("score").forGetter(esn::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(esn::e)
-            )
-            .apply($$0, esn::new)
-   );
+public class esn {
+   private static final Codec<esl> u = le.H.q().dispatch("condition", esl::b, esm::a);
+   public static final Codec<esl> a = Codec.lazyInitialized(() -> Codec.withAlternative(u, erz.b));
+   public static final Codec<ix<esl>> b = aki.a(lf.aW, a);
+   public static final esm c = a("inverted", esi.a);
+   public static final esm d = a("any_of", esa.a);
+   public static final esm e = a("all_of", erz.a);
+   public static final esm f = a("random_chance", esq.a);
+   public static final esm g = a("random_chance_with_looting", esr.a);
+   public static final esm h = a("entity_properties", eso.a);
+   public static final esm i = a("killed_by_player", esp.a);
+   public static final esm j = a("entity_scores", esg.a);
+   public static final esm k = a("block_state_property", esk.a);
+   public static final esm l = a("match_tool", ess.a);
+   public static final esm m = a("table_bonus", esb.a);
+   public static final esm n = a("survives_explosion", esh.a);
+   public static final esm o = a("damage_source_properties", esf.a);
+   public static final esm p = a("location_check", esj.a);
+   public static final esm q = a("weather_check", esv.a);
+   public static final esm r = a("reference", esd.a);
+   public static final esm s = a("time_check", est.a);
+   public static final esm t = a("value_check", esu.a);
 
-   @Override
-   public esk b() {
-      return esm.e;
-   }
-
-   @Override
-   public Set<eqz<?>> a() {
-      return this.b.b();
-   }
-
-   public static esn a(eol.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static esn a(eol.b $$0, String $$1, float $$2) {
-      return new esn(esr.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(eol $$0) {
-      eus $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         eut $$2 = $$0.d().f();
-         eul $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            eup $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public esu c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   private static esm a(String $$0, MapCodec<? extends esl> $$1) {
+      return jk.a(le.H, new akm($$0), new esm($$1));
    }
 }

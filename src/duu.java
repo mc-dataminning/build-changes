@@ -1,29 +1,19 @@
-public enum duu {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final boolean d;
-   private final boolean e;
+public record duu(ix<dut> e, dsy f) {
+   public static final Codec<duu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dut.j.fieldOf("type").forGetter(duu::a), dsy.a.fieldOf("generator").forGetter(duu::b)).apply($$0, $$0.stable(duu::new))
+   );
+   public static final akl<duu> b = akl.a(lf.aT, new akm("overworld"));
+   public static final akl<duu> c = akl.a(lf.aT, new akm("the_nether"));
+   public static final akl<duu> d = akl.a(lf.aT, new akm("the_end"));
 
-   private duu(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
+   public ix<dut> a() {
       return this.e;
    }
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public static duu a(aqa $$0) {
-      if ($$0.a(aqa.d)) {
-         return c;
-      } else {
-         return $$0.a(aqa.b) ? b : a;
-      }
+   public dsy b() {
+      return this.f;
    }
 }

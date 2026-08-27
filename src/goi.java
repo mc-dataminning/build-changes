@@ -1,22 +1,21 @@
-public class goi {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public goi(int $$0) {
-      this($$0, -1);
+public class goi implements gnz {
+   public static final MapCodec<goi> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayl.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, goi::new));
+   private final ayl c;
+
+   public goi(ayl $$0) {
+      this.c = $$0;
    }
 
-   public goi(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public void a(atw $$0, gnz.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public gob a() {
+      return goc.c;
    }
 }

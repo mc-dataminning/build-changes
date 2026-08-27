@@ -1,25 +1,24 @@
-public class gjv extends ggw<cmp> {
-   private static final akh a = new akh("textures/entity/projectiles/wind_charge.png");
-   private final fup f;
+public class gjv<T extends cik> extends gik<T, fur<T>> {
+   private static final akm a = new akm("textures/entity/skeleton/skeleton.png");
 
-   public gjv(ggx.a $$0) {
-      super($$0);
-      this.f = new fup($$0.a(fva.bT));
+   public gjv(ght.a $$0) {
+      this($$0, fvv.bn, fvv.bp, fvv.bq);
    }
 
-   public void a(cmp $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
-      float $$6 = (float)$$0.ai + $$2;
-      eyb $$7 = $$4.getBuffer(gbw.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public gjv(ght.a $$0, fvu $$1, fvu $$2, fvu $$3) {
+      this($$0, $$2, $$3, new fur<>($$0.a($$1)));
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public gjv(ght.a $$0, fvu $$1, fvu $$2, fur<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new glv<>(this, new fur($$0.a($$1)), new fur($$0.a($$2)), $$0.g()));
    }
 
-   public akh a(cmp $$0) {
+   public akm a(T $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.gr();
    }
 }

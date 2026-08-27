@@ -1,64 +1,63 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
 
-public class ejv extends ekm {
-   public static final Codec<ejv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eko.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bor.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ejv::new)
+public class ejv extends ehj {
+   public static final MapCodec<ejv> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               ejv.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ejv::new)
    );
-   private final ekm b;
-   private final bor c;
+   public final ejv.a e;
+   public final float f;
+   public final float g;
 
-   public ejv(ekm $$0, bor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ejv(ehj.c $$0, ejv.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   protected eko<?> a() {
-      return eko.o;
+   public Optional<ehj.b> a(ehj.a $$0) {
+      return a($$0, dwt.a.c, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(eib $$0, ehj.a $$1) {
+      io $$2 = new io($$1.h().d(), 90, $$1.h().e());
+      dkl $$3 = dkl.a($$1.f());
+      eju.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public final List<ekp.c> a(das $$0, in $$1, in $$2, List<ekp.c> $$3, List<ekp.c> $$4, ekl $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            ayg $$6 = ayg.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
+   public ehs<?> e() {
+      return ehs.k;
+   }
 
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ekp.c $$12 = $$3.get($$11);
-                  ekp.c $$13 = $$4.get($$11);
-                  ekp.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
+   public static enum a implements ayx {
+      a("warm"),
+      b("cold");
 
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
+      public static final Codec<ejv.a> c = ayx.a(ejv.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

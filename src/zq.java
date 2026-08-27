@@ -1,31 +1,49 @@
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public class zq implements zb<zh> {
-   public static final ys<vu, zq> a = zb.a(zq::a, zq::new);
-   private final Map<akg<? extends jj<?>>, awj.a> b;
+public record zq(UUID c, String d, String e, boolean f, Optional<wx> g) implements ze<zk> {
+   public static final int a = 40;
+   public static final yv<ByteBuf, zq> b = yv.a(jr.g, zq::b, yt.k, zq::e, yt.b(40), zq::f, yt.b, zq::g, wz.f.a(yt::a), zq::h, zq::new);
 
-   public zq(Map<akg<? extends jj<?>>, awj.a> $$0) {
-      this.b = $$0;
-   }
-
-   private zq(vu $$0) {
-      this.b = $$0.a(vu::r, awj.a::b);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b, vu::b, ($$0x, $$1) -> $$1.a($$0x));
+   public zq(UUID c, String d, String e, boolean f, Optional<wx> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
    @Override
-   public zd<zq> a() {
-      return zr.i;
+   public zg<zq> a() {
+      return zu.f;
    }
 
-   public void a(zh $$0) {
+   public void a(zk $$0) {
       $$0.a(this);
    }
 
-   public Map<akg<? extends jj<?>>, awj.a> b() {
-      return this.b;
+   public UUID b() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public String f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public Optional<wx> h() {
+      return this.g;
    }
 }

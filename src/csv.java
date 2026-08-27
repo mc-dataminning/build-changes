@@ -1,65 +1,36 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class csv {
-   private final Map<csu, csv.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(csu $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class csv extends ctj {
+   public csv(ctj.a $$0) {
+      super($$0);
    }
 
-   public float a(csu $$0, float $$1) {
-      csv.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return axz.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<csu, csv.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<csu, csv.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
+   @Override
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      cto $$3 = $$1.b($$2);
+      if ($$1.cu != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cu.a($$3);
+            $$3.a($$4, $$1, bso.d($$2));
          }
+
+         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avh.iW, avi.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         $$1.a(dvu.C);
+      } else {
+         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avh.iY, avi.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cza.e($$3);
+            int $$6 = cza.d($$3);
+            $$0.b(new cmk($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(avr.c.b(this));
+         $$1.a(dvu.D);
       }
+
+      return bpv.a($$3, $$0.x_());
    }
 
-   public void a(csu $$0, int $$1) {
-      this.a.put($$0, new csv.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(csu $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(csu $$0, int $$1) {
-   }
-
-   protected void c(csu $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public int g() {
+      return 1;
    }
 }

@@ -1,62 +1,102 @@
-public class cwj extends cwi {
-   private final is b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-   public cwj(dad $$0, in $$1, is $$2, csz $$3, is $$4) {
-      super($$0, null, bpl.a, $$3, new etl(etp.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record cwj(List<cwj.b> e, boolean f) {
+   public static final cwj a = new cwj(List.of(), true);
+   private static final Codec<cwj> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cwj.b.a.listOf().fieldOf("modifiers").forGetter(cwj::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwj::c))
+            .apply($$0, cwj::new)
+   );
+   public static final Codec<cwj> b = Codec.withAlternative(g, cwj.b.a.listOf(), $$0 -> new cwj($$0, true));
+   public static final yv<wi, cwj> c = yv.a(cwj.b.b.a(yt.a()), cwj::b, yt.b, cwj::c, cwj::new);
+   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+
+   public cwj a(boolean $$0) {
+      return new cwj(this.e, $$0);
    }
 
-   @Override
-   public in a() {
-      return this.j().a();
+   public static cwj.a a() {
+      return new cwj.a();
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public cwj a(ix<btr> $$0, btu $$1, bsc $$2) {
+      return new cwj(ac.a(this.e, new cwj.b($$0, $$1, $$2)), this.f);
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public is d() {
-      return is.a;
-   }
-
-   @Override
-   public is[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new is[]{is.a, is.c, is.f, is.d, is.e, is.b};
-         case b:
-            return new is[]{is.a, is.b, is.c, is.f, is.d, is.e};
-         case c:
-            return new is[]{is.a, is.c, is.f, is.e, is.b, is.d};
-         case d:
-            return new is[]{is.a, is.d, is.f, is.e, is.b, is.c};
-         case e:
-            return new is[]{is.a, is.e, is.d, is.b, is.c, is.f};
-         case f:
-            return new is[]{is.a, is.f, is.d, is.b, is.c, is.e};
+   public void a(bsb $$0, BiConsumer<ix<btr>, btu> $$1) {
+      for (cwj.b $$2 : this.e) {
+         if ($$2.e.a($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
       }
    }
 
-   @Override
-   public is g() {
-      return this.b.o() == is.a.b ? is.c : this.b;
+   public double a(double $$0, bsb $$1) {
+      double $$2 = $$0;
+
+      for (cwj.b $$3 : this.e) {
+         if ($$3.e.a($$1)) {
+            double $$4 = $$3.d.d();
+
+            $$2 += switch ($$3.d.e()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
+         }
+      }
+
+      return $$2;
    }
 
-   @Override
-   public boolean h() {
-      return false;
+   public List<cwj.b> b() {
+      return this.e;
    }
 
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public boolean c() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Builder<cwj.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public cwj.a a(ix<btr> $$0, btu $$1, bsc $$2) {
+         this.a.add(new cwj.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public cwj a() {
+         return new cwj(this.a.build(), true);
+      }
+   }
+
+   public static record b(ix<btr> c, btu d, bsc e) {
+      public static final Codec<cwj.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(le.u.r().fieldOf("type").forGetter(cwj.b::a), btu.a.forGetter(cwj.b::b), bsc.l.optionalFieldOf("slot", bsc.a).forGetter(cwj.b::c))
+               .apply($$0, cwj.b::new)
+      );
+      public static final yv<wi, cwj.b> b = yv.a(yt.b(lf.c), cwj.b::a, btu.c, cwj.b::b, bsc.m, cwj.b::c, cwj.b::new);
+
+      public ix<btr> a() {
+         return this.c;
+      }
+
+      public btu b() {
+         return this.d;
+      }
+
+      public bsc c() {
+         return this.e;
+      }
    }
 }

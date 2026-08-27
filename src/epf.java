@@ -1,64 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class epf extends eou {
-   public static final Codec<epf> a = a(epf::new);
+public class epf {
+   private final epi a;
+   private final ayk b;
+   private final iy.a c;
+   private final Set<epf.c<?>> d = Sets.newLinkedHashSet();
 
-   epf(List<epb> $$0, List<erq> $$1) {
-      super($$0, $$1);
+   epf(epi $$0, ayk $$1, iy.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public epc a() {
-      return eoz.h;
+   public boolean a(eru<?> $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   protected eot a(List<? extends eot> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eot)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eot $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public <T> T b(eru<T> $$0) {
+      return this.a.b($$0);
    }
 
-   public static epf.a a(epb.a<?>... $$0) {
-      return new epf.a($$0);
+   public void a(akm $$0, Consumer<cto> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public static class a extends epb.a<epf.a> {
-      private final Builder<epb> a = ImmutableList.builder();
+   @Nullable
+   public <T> T c(eru<T> $$0) {
+      return this.a.d($$0);
+   }
 
-      public a(epb.a<?>... $$0) {
-         for (epb.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   public boolean a(epf.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(epf.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(epf.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public iy.a a() {
+      return this.c;
+   }
+
+   public ayk b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public aqm d() {
+      return this.a.a();
+   }
+
+   public static epf.c<epk> a(epk $$0) {
+      return new epf.c<>(eph.c, $$0);
+   }
+
+   public static epf.c<esl> a(esl $$0) {
+      return new epf.c<>(eph.a, $$0);
+   }
+
+   public static epf.c<eqr> a(eqr $$0) {
+      return new epf.c<>(eph.b, $$0);
+   }
+
+   public static class a {
+      private final epi a;
+      @Nullable
+      private ayk b;
+
+      public a(epi $$0) {
+         this.a = $$0;
       }
 
-      protected epf.a a() {
+      public epf.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = ayk.a($$0);
+         }
+
          return this;
       }
 
-      @Override
-      public epf.a c(epb.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public aqm a() {
+         return this.a.a();
+      }
+
+      public epf a(Optional<akm> $$0) {
+         aqm $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         ayk $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new epf(this.a, $$3, $$2.be().b());
+      }
+   }
+
+   public static enum b implements ayx {
+      a("this", erx.a),
+      b("killer", erx.d),
+      c("direct_killer", erx.e),
+      d("killer_player", erx.b);
+
+      public static final ayx.a<epf.b> e = ayx.a(epf.b::values);
+      private final String f;
+      private final eru<? extends bru> g;
+
+      private b(String $$0, eru<? extends bru> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public eru<? extends bru> a() {
+         return this.g;
+      }
+
+      public static epf.b a(String $$0) {
+         epf.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
       }
 
       @Override
-      public epb b() {
-         return new epf(this.a.build(), this.f());
+      public String c() {
+         return this.f;
       }
+   }
+
+   public static record c<T>(eph<T> a, T b) {
    }
 }

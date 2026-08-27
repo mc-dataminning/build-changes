@@ -1,57 +1,39 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class gn {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("arguments.item.overstacked", $$0, $$1));
-   private final iw<csu> b;
-   private final jw c;
+public class gn implements ArgumentType<go> {
+   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
+   private final gp b;
 
-   public gn(iw<csu> $$0, jw $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gn(ea $$0) {
+      this.b = new gp($$0);
    }
 
-   public csu a() {
-      return this.b.a();
+   public static gn a(ea $$0) {
+      return new gn($$0);
    }
 
-   public csz a(int $$0, boolean $$1) throws CommandSyntaxException {
-      csz $$2 = new csz(this.b, $$0);
-      if ($$1 && $$0 > $$2.i()) {
-         throw a.create(this.b(), $$2.i());
-      } else {
-         $$2.a(this.c);
-         return $$2;
-      }
+   public go a(StringReader $$0) throws CommandSyntaxException {
+      gp.a $$1 = this.b.a($$0);
+      return new go($$1.a(), $$1.b());
    }
 
-   public String a(iy.a $$0) {
-      StringBuilder $$1 = new StringBuilder(this.b());
-      String $$2 = this.b($$0);
-      if (!$$2.isEmpty()) {
-         $$1.append('[');
-         $$1.append($$2);
-         $$1.append(']');
-      }
-
-      return $$1.toString();
+   public static <S> go a(CommandContext<S> $$0, String $$1) {
+      return (go)$$0.getArgument($$1, go.class);
    }
 
-   private String b(iy.a $$0) {
-      DynamicOps<ux> $$1 = $$0.a(uo.a);
-      return this.c.c().flatMap($$1x -> {
-         jz<?> $$2 = $$1x.a();
-         akh $$3 = ld.as.b($$2);
-         Optional<ux> $$4 = $$1x.a($$1).result();
-         return $$3 != null && !$$4.isEmpty() ? Stream.of($$3.toString() + "=" + $$4.get()) : Stream.empty();
-      }).collect(Collectors.joining(String.valueOf(',')));
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return this.b.a($$1);
    }
 
-   private String b() {
-      return this.b.e().map(akg::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+   public Collection<String> getExamples() {
+      return a;
    }
 }

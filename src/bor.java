@@ -1,40 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bor {
-   private static final Codec<Either<Integer, bor>> a = Codec.either(Codec.INT, ld.M.q().dispatch(bor::c, bos::codec));
-   public static final Codec<bor> c = a.xmap(
-      $$0 -> (bor)$$0.map(boo::a, $$0x -> $$0x), $$0 -> $$0.c() == bos.a ? Either.left(((boo)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bor> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bor> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bor> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
-   }
-
-   public static <T extends bor> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return axh.b(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
+public class bor extends boz {
+   public static final MapCodec<bor> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bor::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
       );
+   private final int b;
+   private final int f;
+
+   private bor(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public abstract int a(ayg var1);
+   public static bor a(int $$0, int $$1) {
+      return new bor($$0, $$1);
+   }
 
-   public abstract int a();
+   @Override
+   public int a(ayk $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   }
 
-   public abstract int b();
+   @Override
+   public int a() {
+      return this.b;
+   }
 
-   public abstract bos<?> c();
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bpa<?> c() {
+      return bpa.c;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
+   }
 }

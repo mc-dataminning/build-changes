@@ -1,49 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class btw {
+   public static final ix<btr> a = a("generic.armor", new bty("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final ix<btr> b = a("generic.armor_toughness", new bty("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final ix<btr> c = a("generic.attack_damage", new bty("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final ix<btr> d = a("generic.attack_knockback", new bty("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final ix<btr> e = a("generic.attack_speed", new bty("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final ix<btr> f = a("player.block_break_speed", new bty("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final ix<btr> g = a("player.block_interaction_range", new bty("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final ix<btr> h = a("player.entity_interaction_range", new bty("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final ix<btr> i = a("generic.fall_damage_multiplier", new bty("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
+   public static final ix<btr> j = a("generic.flying_speed", new bty("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final ix<btr> k = a("generic.follow_range", new bty("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final ix<btr> l = a("generic.gravity", new bty("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
+   public static final ix<btr> m = a("generic.jump_strength", new bty("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final ix<btr> n = a("generic.knockback_resistance", new bty("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final ix<btr> o = a("generic.luck", new bty("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final ix<btr> p = a("generic.max_absorption", new bty("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final ix<btr> q = a("generic.max_health", new bty("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final ix<btr> r = a("generic.movement_speed", new bty("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final ix<btr> s = a("generic.safe_fall_distance", new bty("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final ix<btr> t = a("generic.scale", new bty("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final ix<btr> u = a("zombie.spawn_reinforcements", new bty("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final ix<btr> v = a("generic.step_height", new bty("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-public class btw extends bts<cku> {
-   @Nullable
-   private cms c;
-
-   public btw(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   private static ix<btr> a(String $$0, btr $$1) {
+      return jk.b(le.u, new akm($$0), $$1);
    }
 
-   protected boolean a(aqh $$0, cku $$1) {
-      in $$2 = $$1.dn();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bvb.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(aqh $$0, cku $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(aqh $$0, cku $$1, long $$2) {
-      this.c = null;
-      $$1.dQ().a($$0.Z(), $$0.Y());
-   }
-
-   protected void c(aqh $$0, cku $$1, long $$2) {
-      ayg $$3 = $$1.ej();
-      if ($$3.a(100) == 0) {
-         $$1.gu();
-      }
-
-      if ($$3.a(200) == 0 && bvb.a($$0, $$1, $$1.dn())) {
-         crs $$4 = ac.a(crs.values(), $$3);
-         int $$5 = $$3.a(3);
-         csz $$6 = this.a($$4, $$5);
-         clu $$7 = new clu($$1.dN(), $$1, $$1.ds(), $$1.dw(), $$1.dy(), $$6);
-         $$1.dN().b($$7);
-      }
-   }
-
-   private csz a(crs $$0, int $$1) {
-      csz $$2 = new csz(ctc.uu);
-      $$2.b(ka.R, new cvr((byte)$$1, List.of(new cvq(cvq.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   public static ix<btr> a(jk<btr> $$0) {
+      return q;
    }
 }

@@ -1,43 +1,95 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record alb(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aua d) {
-   private static final String e = "usercache.json";
+public class alb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akm b = new akm("tick");
+   private static final akm c = new akm("load");
+   private final MinecraftServer d;
+   private List<hq<ee>> e = ImmutableList.of();
+   private boolean f;
+   private ala g;
 
-   public static alb a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      aua $$4 = new aua($$3, new File($$1, "usercache.json"));
-      return new alb($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public alb(MinecraftServer $$0, ala $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   @Nullable
-   public ayl a() {
-      return ayl.a(this.b, ServicesKeyType.PROFILE_KEY);
+   public CommandDispatcher<ee> a() {
+      return this.d.aH().a();
    }
 
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+   public void b() {
+      if (this.d.aQ().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<hq<ee>> $$0 = this.g.b(c);
+            this.a($$0, c);
+         }
+
+         this.a(this.e, b);
+      }
    }
 
-   public MinecraftSessionService c() {
-      return this.a;
+   private void a(Collection<hq<ee>> $$0, akm $$1) {
+      this.d.aT().a($$1::toString);
+
+      for (hq<ee> $$2 : $$0) {
+         this.a($$2, this.c());
+      }
+
+      this.d.aT().c();
    }
 
-   public ServicesKeySet d() {
-      return this.b;
+   public void a(hq<ee> $$0, ee $$1) {
+      bmi $$2 = this.d.aT();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         hs<ee> $$3 = $$0.a(null, this.a());
+         ef.a($$1, $$2x -> hd.a($$2x, $$3, $$1, eb.a));
+      } catch (eh var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
+      }
    }
 
-   public GameProfileRepository e() {
-      return this.c;
+   public void a(ala $$0) {
+      this.g = $$0;
+      this.b($$0);
    }
 
-   public aua f() {
-      return this.d;
+   private void b(ala $$0) {
+      this.e = ImmutableList.copyOf($$0.b(b));
+      this.f = true;
+   }
+
+   public ee c() {
+      return this.d.aI().a(2).a();
+   }
+
+   public Optional<hq<ee>> a(akm $$0) {
+      return this.g.a($$0);
+   }
+
+   public Collection<hq<ee>> b(akm $$0) {
+      return this.g.b($$0);
+   }
+
+   public Iterable<akm> d() {
+      return this.g.a().keySet();
+   }
+
+   public Iterable<akm> e() {
+      return this.g.b();
    }
 }

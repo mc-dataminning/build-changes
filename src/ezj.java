@@ -1,36 +1,18 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class ezj extends ezt {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ezi> a;
+public class ezj {
+   @Nullable
+   private static Proxy a;
 
-   public static ezj a(String $$0) {
-      ezj $$1 = new ezj();
-      $$1.a = Lists.newArrayList();
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(ezi.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
       }
-
-      return $$1;
    }
 }

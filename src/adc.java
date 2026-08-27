@@ -1,88 +1,57 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
 import java.util.BitSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class adc {
-   private static final ys<ByteBuf, byte[]> a = yq.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
+public class adc implements ze<abq> {
+   public static final yv<wi, adc> a = ze.a(adc::a, adc::new);
+   private final int b;
+   private final int c;
+   private final adb d;
+   private final adg e;
 
-   public adc(czk $$0, elp $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dam.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dam.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public adc(dth $$0, emj $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      dae $$4 = $$0.f();
+      this.b = $$4.e;
+      this.c = $$4.f;
+      this.d = new adb($$0);
+      this.e = new adg($$4, $$1, $$2, $$3);
    }
 
-   public adc(vu $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adc(wi $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = new adb($$0, this.b, this.c);
+      this.e = new adg($$0, this.b, this.c);
    }
 
-   public void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+   private void a(wi $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
-   private void a(czk $$0, elp $$1, dam $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dsi $$7 = $$1.a($$2).a(jp.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public zg<adc> a() {
+      return agb.K;
    }
 
-   public BitSet a() {
+   public void a(abq $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public int e() {
       return this.c;
    }
 
-   public BitSet e() {
-      return this.e;
+   public adb f() {
+      return this.d;
    }
 
-   public List<byte[]> f() {
-      return this.g;
+   public adg g() {
+      return this.e;
    }
 }

@@ -1,33 +1,31 @@
-import java.util.function.UnaryOperator;
+import io.netty.buffer.ByteBuf;
 
-public interface atd {
-   UnaryOperator<wu> a = UnaryOperator.identity();
-   atd b = a(a, true);
-   atd c = a(a("pack.source.builtin"), true);
-   atd d = a(a("pack.source.feature"), false);
-   atd e = a(a("pack.source.world"), true);
-   atd f = a(a("pack.source.server"), true);
+public record atd(String c, String d, String e) {
+   public static final yv<ByteBuf, atd> a = yv.a(yt.k, atd::b, yt.k, atd::c, yt.k, atd::d, atd::new);
+   public static final String b = "minecraft";
 
-   wu a(wu var1);
-
-   boolean a();
-
-   static atd a(final UnaryOperator<wu> $$0, final boolean $$1) {
-      return new atd() {
-         @Override
-         public wu a(wu $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   public static atd a(String $$0) {
+      return new atd("minecraft", $$0, aa.b().b());
    }
 
-   private static UnaryOperator<wu> a(String $$0) {
-      wu $$1 = wu.c($$0);
-      return $$1x -> wu.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public boolean a() {
+      return this.c.equals("minecraft");
+   }
+
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
    }
 }

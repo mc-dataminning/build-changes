@@ -1,23 +1,83 @@
 import javax.annotation.Nullable;
 
-public record adx(int b, iw<bqr> c) implements zb<abm> {
-   public static final ys<wf, adx> a = ys.a(yq.f, $$0 -> $$0.b, yq.b(le.R), adx::e, adx::new);
+public class adx implements ze<abq> {
+   public static final yv<vx, adx> a = ze.a(adx::a, adx::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final eq.a f;
+   private final eq.a g;
+   private final boolean h;
 
-   @Override
-   public zd<adx> a() {
-      return afx.ak;
+   public adx(eq.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
    }
 
-   public void a(abm $$0) {
+   public adx(eq.a $$0, bru $$1, eq.a $$2) {
+      this.f = $$0;
+      this.e = $$1.al();
+      this.g = $$2;
+      euk $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
+   }
+
+   private adx(vx $$0) {
+      this.f = $$0.b(eq.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
+      if (this.h) {
+         this.e = $$0.l();
+         this.g = $$0.b(eq.a.class);
+      } else {
+         this.e = 0;
+         this.g = null;
+      }
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.f);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
+      }
+   }
+
+   @Override
+   public zg<adx> a() {
+      return agb.ag;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brh a(dad $$0) {
-      return $$0.a(this.b);
+   public eq.a b() {
+      return this.f;
    }
 
-   public iw<bqr> e() {
-      return this.c;
+   @Nullable
+   public euk a(dax $$0) {
+      if (this.h) {
+         bru $$1 = $$0.a(this.e);
+         return $$1 == null ? new euk(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new euk(this.b, this.c, this.d);
+      }
    }
 }

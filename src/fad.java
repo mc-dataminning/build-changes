@@ -1,33 +1,54 @@
-import java.time.Duration;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fad {
-   public final fbm a = new fbm(ac.g(), TimeUnit.MILLISECONDS, ac.c);
-   private final List<fbm.e<?>> h;
-   public final fbm.e<List<ezd>> b;
-   public final fbm.e<fad.a> c;
-   public final fbm.e<Integer> d;
-   public final fbm.e<Boolean> e;
-   public final fbm.e<ezc> f;
-   public final fae g = new fae(new fbs());
+public class fad extends fao {
+   private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
-   public fad(eyn $$0) {
-      this.c = this.a.a("server list", () -> {
-         ezg $$1 = $$0.b();
-         return eyi.b() ? new fad.a($$1.a, $$0.c()) : new fad.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fbn.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fbn.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fbn.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fbn.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fbn.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   public static fad a(JsonObject $$0) {
+      fad $$1 = new fad();
+
+      try {
+         $$1.a = fcl.a("serverId", $$0, -1L);
+         String $$2 = fcl.b("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
+         }
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   public List<fbm.e<?>> a() {
-      return this.h;
-   }
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
 
-   public static record a(List<eze> a, List<eze> b) {
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = fcl.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 }

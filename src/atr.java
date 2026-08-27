@@ -1,52 +1,73 @@
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
 
-public interface atr extends atu {
-   Set<String> a();
+public class atr extends auc<atr.a> {
+   private static final Logger c = LogUtils.getLogger();
+   private final Stopwatch d = Stopwatch.createUnstarted();
 
-   List<atp> a(akh var1);
+   public atr(atw $$0, List<atq> $$1, Executor $$2, Executor $$3, CompletableFuture<azf> $$4) {
+      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         bmb $$8 = new bmb(ac.c, () -> 0, false);
+         bmb $$9 = new bmb(ac.c, () -> 0, false);
+         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
+               long $$2xxx = ac.d();
+               $$2xx.run();
+               $$6.addAndGet(ac.d() - $$2xxx);
+            }), $$2xx -> $$5.execute(() -> {
+               long $$2xxx = ac.d();
+               $$2xx.run();
+               $$7.addAndGet(ac.d() - $$2xxx);
+            }));
+         return $$10.thenApplyAsync($$5x -> {
+            c.debug("Finished reloading " + $$3x.c());
+            return new atr.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
+         }, $$3);
+      }, $$4);
+      this.d.start();
+      this.b = this.b.thenApplyAsync(this::a, $$3);
+   }
 
-   Map<akh, atp> b(String var1, Predicate<akh> var2);
+   private List<atr.a> a(List<atr.a> $$0) {
+      this.d.stop();
+      long $$1 = 0L;
+      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
-   Map<akh, List<atp>> c(String var1, Predicate<akh> var2);
-
-   Stream<asd> b();
-
-   public static enum a implements atr {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
+      for (atr.a $$2 : $$0) {
+         bmh $$3 = $$2.b;
+         bmh $$4 = $$2.c;
+         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
+         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
+         long $$7 = $$5 + $$6;
+         String $$8 = $$2.a;
+         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
+         $$1 += $$6;
       }
 
-      @Override
-      public Optional<atp> getResource(akh $$0) {
-         return Optional.empty();
-      }
+      c.info("Total blocking time: {} ms", $$1);
+      return $$0;
+   }
 
-      @Override
-      public List<atp> a(akh $$0) {
-         return List.of();
-      }
+   public static class a {
+      final String a;
+      final bmh b;
+      final bmh c;
+      final AtomicLong d;
+      final AtomicLong e;
 
-      @Override
-      public Map<akh, atp> b(String $$0, Predicate<akh> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<akh, List<atp>> c(String $$0, Predicate<akh> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<asd> b() {
-         return Stream.of();
+      a(String $$0, bmh $$1, bmh $$2, AtomicLong $$3, AtomicLong $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
    }
 }

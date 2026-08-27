@@ -1,38 +1,40 @@
-public class fam extends gtb {
-   private static final wu a = wu.c("mco.client.incompatible.title").b(-65536);
-   private static final wu b = wu.b(aa.b().c()).b(-65536);
-   private static final wu c = wu.a("mco.client.unsupported.snapshot.version", b);
-   private static final wu B = wu.a("mco.client.outdated.stable.version", b);
-   private final fld C;
-   private final fir D = new fir(this);
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fam(fld $$0) {
-      super(a);
-      this.C = $$0;
+public class fam extends fao {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fam.a c = fam.a.a;
+
+   public static fam a(String $$0) {
+      fam $$1 = new fam();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fcl.a("startDate", $$3, 0L);
+         $$1.b = fcl.a("daysLeft", $$3, 0);
+         $$1.c = b(fcl.b("subscriptionType", $$3, fam.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void aM_() {
-      this.D.a(a, this.p);
-      this.D.c(new ffy(this.C(), this.p).b(true));
-      this.D.b(ffe.a(wt.k, $$0 -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         ffc var10000 = this.c($$1);
-      });
-      this.c();
+   private static fam.a b(String $$0) {
+      try {
+         return fam.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fam.a.a;
+      }
    }
 
-   @Override
-   protected void c() {
-      this.D.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.C);
-   }
-
-   private wu C() {
-      return aa.b().g() ? B : c;
+   public static enum a {
+      a,
+      b;
    }
 }

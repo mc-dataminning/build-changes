@@ -1,16 +1,24 @@
-import com.google.common.collect.Lists;
+public class zu {
+   public static final zg<zl> a = a("custom_payload");
+   public static final zg<zm> b = a("disconnect");
+   public static final zg<zn> c = a("keep_alive");
+   public static final zg<zo> d = a("ping");
+   public static final zg<zp> e = a("resource_pack_pop");
+   public static final zg<zq> f = a("resource_pack_push");
+   public static final zg<zr> g = a("store_cookie");
+   public static final zg<zs> h = a("transfer");
+   public static final zg<zt> i = a("update_tags");
+   public static final zg<zw> j = b("client_information");
+   public static final zg<zx> k = b("custom_payload");
+   public static final zg<zy> l = b("keep_alive");
+   public static final zg<zz> m = b("pong");
+   public static final zg<aaa> n = b("resource_pack");
 
-public record zu(aac b) implements zb<zs> {
-   private static final int c = 32767;
-   public static final ys<vu, zu> a = aac.<vu>a($$0 -> aad.a($$0, 32767), ac.a(Lists.newArrayList(new aac.c[]{new aac.c<>(aaa.b, aaa.a)}), $$0 -> {
-   })).a(zu::new, zu::b);
-
-   @Override
-   public zd<zu> a() {
-      return zr.k;
+   private static <T extends ze<zk>> zg<T> a(String $$0) {
+      return new zg<>(zf.b, new akm($$0));
    }
 
-   public void a(zs $$0) {
-      $$0.a(this);
+   private static <T extends ze<zv>> zg<T> b(String $$0) {
+      return new zg<>(zf.a, new akm($$0));
    }
 }

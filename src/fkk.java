@@ -1,82 +1,47 @@
-import javax.annotation.Nullable;
+public class fkk extends fly {
+   private static final int a = 90;
+   private final wx b;
+   private fgs c = fgs.a;
+   private final Runnable d;
+   private final wx r;
+   private final boolean s;
 
-public class fkk extends fld {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wu d;
-   private final wu r;
-   private final Runnable s;
-   @Nullable
-   private ffx u;
-   private ffe v;
-   private int w;
-
-   public static fkk a(wu $$0, wu $$1, Runnable $$2) {
-      return new fkk($$0, null, $$1, $$2, 0);
+   public fkk(Runnable $$0, wx $$1, wx $$2) {
+      this($$0, $$1, $$2, ww.k, true);
    }
 
-   public static fkk a(wu $$0, wu $$1, wu $$2, Runnable $$3) {
-      return new fkk($$0, $$1, $$2, $$3, 20);
+   public fkk(Runnable $$0, wx $$1, wx $$2, wx $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.r = $$3;
+      this.s = $$4;
    }
 
-   protected fkk(wu $$0, @Nullable wu $$1, wu $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.w = $$4;
+   @Override
+   public wx i() {
+      return ww.a(super.i(), this.b);
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      if (this.d != null) {
-         this.u = ffx.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.u != null ? this.u.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.v = this.c(ffe.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
+      this.c = fgs.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = ayd.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(ffz.a(this.r, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void e() {
-      if (this.w > 0) {
-         this.w--;
-      }
-
-      this.v.j = this.w == 0;
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.u == null) {
-         String $$4 = fko.a(ac.b());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.u.a($$0, this.n / 2, 120);
-      }
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
    public boolean aD_() {
-      return this.u != null && this.v.j;
-   }
-
-   @Override
-   public void d() {
-      this.s.run();
-   }
-
-   @Override
-   public wu i() {
-      return wt.a(this.l, this.d != null ? this.d : wt.a);
+      return this.s;
    }
 }

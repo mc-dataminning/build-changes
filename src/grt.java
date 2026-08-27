@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface grt {
+public interface grt<T> extends grw<T> {
+   static <T> grt<T> b() {
+      return $$0 -> List.of();
+   }
+
+   default void a() {
+   }
 }

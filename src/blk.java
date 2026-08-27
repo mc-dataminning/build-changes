@@ -1,65 +1,27 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record blk<T>(blc<StringReader> a, bla<T> b) {
-   public Optional<T> a(blf<StringReader> $$0) {
-      return $$0.a(this.b);
-   }
+public class blk<S> {
+   private final Map<bli<?>, blo<S, ?>> a = new HashMap<>();
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bld.a<StringReader> $$1 = new bld.a<>();
-      blo $$2 = new blo(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(ble::toString).collect(Collectors.joining(", ")));
-         }
+   public <T> void a(bli<T> $$0, blo<S, T> $$1) {
+      blo<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bld.a<StringReader> $$2 = new bld.a<>();
-      blo $$3 = new blo(this.a(), $$2, $$1);
-      this.a($$3);
-      List<ble<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public <T> void a(bli<T> $$0, blr<S> $$1, blo.a<S, T> $$2) {
+      this.a($$0, blo.a($$1, $$2));
+   }
 
-         for (ble<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bln $$7) {
-               ei.a($$7.a(), $$5);
-            } else {
-               ei.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
+   public <T> void a(bli<T> $$0, blr<S> $$1, blo.b<T> $$2) {
+      this.a($$0, blo.a($$1, $$2));
+   }
 
-         return $$5.buildFuture();
-      }
+   @Nullable
+   public <T> blo<S, T> a(bli<T> $$0) {
+      return (blo<S, T>)this.a.get($$0);
    }
 }

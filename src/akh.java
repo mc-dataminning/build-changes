@@ -1,263 +1,225 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class akh implements Comparable<akh> {
-   public static final Codec<akh> a = Codec.STRING.comapFlatMap(akh::b, akh::toString).stable();
-   public static final ys<ByteBuf, akh> b = yq.k.a(akh::new, akh::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String g;
-   private final String h;
+public class akh {
+   private static final Logger d = LogUtils.getLogger();
+   private static final jj e = new jj(Optional.empty(), Lifecycle.experimental());
+   private static final Function<Optional<atd>, jj> f = ac.b($$0 -> {
+      Lifecycle $$1 = $$0.<Boolean>map(atd::a).map($$0x -> Lifecycle.stable()).orElse(Lifecycle.experimental());
+      return new jj($$0, $$1);
+   });
+   public static final List<akh.c<?>> a = List.of(
+      new akh.c<>(lf.aE, dut.h),
+      new akh.c<>(lf.az, dbw.a),
+      new akh.c<>(lf.aA, wt.a),
+      new akh.c<>(lf.aB, dyw.a),
+      new akh.c<>(lf.aC, dzk.a),
+      new akh.c<>(lf.aI, egn.a),
+      new akh.c<>(lf.aJ, ehj.a),
+      new akh.c<>(lf.aL, ehp.a),
+      new akh.c<>(lf.aK, eli.c),
+      new akh.c<>(lf.aM, eis.a),
+      new akh.c<>(lf.aG, dwy.a),
+      new akh.c<>(lf.aH, elx.a.a),
+      new akh.c<>(lf.aD, dwm.b),
+      new akh.c<>(lf.aQ, egy.a),
+      new akh.c<>(lf.aF, efk.a),
+      new akh.c<>(lf.aP, cvv.a),
+      new akh.c<>(lf.aO, cvt.a),
+      new akh.c<>(lf.m, cfi.a),
+      new akh.c<>(lf.s, bqp.a),
+      new akh.c<>(lf.aR, dck.a),
+      new akh.c<>(lf.d, dnw.a)
+   );
+   public static final List<akh.c<?>> b = List.of(new akh.c<>(lf.aT, duu.a));
+   public static final List<akh.c<?>> c = List.of(
+      new akh.c<>(lf.az, dbw.b),
+      new akh.c<>(lf.aA, wt.a),
+      new akh.c<>(lf.aP, cvv.a),
+      new akh.c<>(lf.aO, cvt.a),
+      new akh.c<>(lf.m, cfi.a),
+      new akh.c<>(lf.aE, dut.h),
+      new akh.c<>(lf.s, bqp.a),
+      new akh.c<>(lf.d, dnw.a)
+   );
 
-   protected akh(String $$0, String $$1, @Nullable akh.a $$2) {
-      this.g = $$0;
-      this.h = $$1;
+   public static jl.b a(atw $$0, jl $$1, List<akh.c<?>> $$2) {
+      return a(($$1x, $$2x) -> $$1x.a($$0, $$2x), $$1, $$2);
    }
 
-   public akh(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
+   public static jl.b a(Map<akl<? extends jk<?>>, List<jo.a>> $$0, atz $$1, jl $$2, List<akh.c<?>> $$3) {
+      return a(($$2x, $$3x) -> $$2x.a($$0, $$1, $$3x), $$2, $$3);
    }
 
-   private akh(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
+   public static jl.b a(akh.b $$0, jl $$1, List<akh.c<?>> $$2) {
+      Map<akl<?>, Exception> $$3 = new HashMap<>();
+      List<akh.a<?>> $$4 = $$2.stream().map($$1x -> $$1x.a(Lifecycle.stable(), $$3)).collect(Collectors.toUnmodifiableList());
+      akk.b $$5 = a($$1, $$4);
+      $$4.forEach($$2x -> $$0.apply($$2x, $$5));
+      $$4.forEach($$1x -> {
+         jk<?> $$2x = $$1x.b();
 
-   public akh(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static akh a(String $$0, char $$1) {
-      return new akh(b($$0, $$1));
-   }
-
-   @Nullable
-   public static akh a(String $$0) {
-      try {
-         return new akh($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static akh a(String $$0, String $$1) {
-      try {
-         return new akh($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   public static DataResult<akh> b(String $$0) {
-      try {
-         return DataResult.success(new akh($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.h;
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public akh c(String $$0) {
-      return new akh(this.g, d(this.g, $$0), null);
-   }
-
-   public akh a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.h));
-   }
-
-   public akh d(String $$0) {
-      return this.c($$0 + this.h);
-   }
-
-   public akh e(String $$0) {
-      return this.c(this.h + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.g + ":" + this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof akh $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.g.hashCode() + this.h.hashCode();
-   }
-
-   public int a(akh $$0) {
-      int $$1 = this.h.compareTo($$0.h);
-      if ($$1 == 0) {
-         $$1 = this.g.compareTo($$0.g);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.g + "." + this.h;
-   }
-
-   public String e() {
-      return this.g.equals("minecraft") ? this.h : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static akh a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return new akh($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
-   }
-
-   public static akh b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
          try {
-            return new akh($$2);
-         } catch (z var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
+            $$2x.l();
+         } catch (Exception var4x) {
+            $$3.put($$2x.c(), var4x);
          }
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      });
+      if (!$$3.isEmpty()) {
+         a($$3);
+         throw new IllegalStateException("Failed to load registries due to above errors");
       } else {
-         return $$0;
+         return new jl.c($$4.stream().map(akh.a::b).toList()).d();
       }
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   private static akk.b a(jl $$0, List<akh.a<?>> $$1) {
+      final Map<akl<? extends jk<?>>, akk.a<?>> $$2 = new HashMap<>();
+      $$0.c().forEach($$1x -> $$2.put($$1x.a(), a($$1x.b())));
+      $$1.forEach($$1x -> $$2.put($$1x.b.c(), a($$1x.b)));
+      return new akk.b() {
+         @Override
+         public <T> Optional<akk.a<T>> a(akl<? extends jk<? extends T>> $$0) {
+            return Optional.ofNullable((akk.a<T>)$$2.get($$0));
+         }
+      };
    }
 
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   private static <T> akk.a<T> a(jt<T> $$0) {
+      return new akk.a<>($$0.p(), $$0.n(), $$0.d());
    }
 
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   private static <T> akk.a<T> a(jk<T> $$0) {
+      return new akk.a<>($$0.p(), $$0.u(), $$0.d());
    }
 
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
+   private static void a(Map<akl<?>, Exception> $$0) {
+      StringWriter $$1 = new StringWriter();
+      PrintWriter $$2 = new PrintWriter($$1);
+      Map<akm, Map<akm, Exception>> $$3 = $$0.entrySet()
+         .stream()
+         .collect(Collectors.groupingBy($$0x -> ((akl)$$0x.getKey()).b(), Collectors.toMap($$0x -> ((akl)$$0x.getKey()).a(), Entry::getValue)));
+      $$3.entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1x -> {
+         $$2.printf("> Errors in registry %s:%n", $$1x.getKey());
+         ((Map)$$1x.getValue()).entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1xx -> {
+            $$2.printf(">> Errors in element %s:%n", $$1xx.getKey());
+            ((Exception)$$1xx.getValue()).printStackTrace($$2);
+         });
+      });
+      $$2.flush();
+      d.error("Registry loading errors:\n{}", $$1);
+   }
+
+   private static String a(akm $$0) {
+      return $$0.a();
+   }
+
+   private static <E> void a(jt<E> $$0, Decoder<E> $$1, akk<JsonElement> $$2, akl<E> $$3, atu $$4, jj $$5) throws IOException {
+      try (Reader $$6 = $$4.e()) {
+         JsonElement $$7 = JsonParser.parseReader($$6);
+         DataResult<E> $$8 = $$1.parse($$2, $$7);
+         E $$9 = (E)$$8.getOrThrow();
+         $$0.a($$3, $$9, $$5);
       }
    }
 
-   protected interface a {
+   static <E> void a(atw $$0, akk.b $$1, jt<E> $$2, Decoder<E> $$3, Map<akl<?>, Exception> $$4) {
+      String $$5 = a($$2.c().a());
+      akf $$6 = akf.a($$5);
+      akk<JsonElement> $$7 = akk.a(JsonOps.INSTANCE, $$1);
+
+      for (Entry<akm, atu> $$8 : $$6.a($$0).entrySet()) {
+         akm $$9 = $$8.getKey();
+         akl<E> $$10 = akl.a($$2.c(), $$6.b($$9));
+         atu $$11 = $$8.getValue();
+         jj $$12 = f.apply($$11.c());
+
+         try {
+            a($$2, $$3, $$7, $$10, $$11, $$12);
+         } catch (Exception var15) {
+            $$4.put($$10, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", $$9, $$11.b()), var15));
+         }
+      }
    }
 
-   public static class b implements JsonDeserializer<akh>, JsonSerializer<akh> {
-      public akh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new akh(axp.a($$0, "location"));
+   static <E> void a(Map<akl<? extends jk<?>>, List<jo.a>> $$0, atz $$1, akk.b $$2, jt<E> $$3, Decoder<E> $$4, Map<akl<?>, Exception> $$5) {
+      List<jo.a> $$6 = $$0.get($$3.c());
+      if ($$6 != null) {
+         akk<va> $$7 = akk.a(ur.a, $$2);
+         akk<JsonElement> $$8 = akk.a(JsonOps.INSTANCE, $$2);
+         String $$9 = a($$3.c().a());
+         akf $$10 = akf.a($$9);
+
+         for (jo.a $$11 : $$6) {
+            akl<E> $$12 = akl.a($$3.c(), $$11.a());
+            Optional<va> $$13 = $$11.b();
+            if ($$13.isPresent()) {
+               try {
+                  DataResult<E> $$14 = $$4.parse($$7, $$13.get());
+                  E $$15 = (E)$$14.getOrThrow();
+                  $$3.a($$12, $$15, e);
+               } catch (Exception var17) {
+                  $$5.put($$12, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse value %s from server", $$13.get()), var17));
+               }
+            } else {
+               akm $$17 = $$10.a($$11.a());
+
+               try {
+                  atu $$18 = $$1.getResourceOrThrow($$17);
+                  a($$3, $$4, $$8, $$12, $$18, e);
+               } catch (Exception var18) {
+                  $$5.put($$12, new IllegalStateException("Failed to parse local data", var18));
+               }
+            }
+         }
+      }
+   }
+
+   static record a<T>(akh.c<T> a, jt<T> b, Map<akl<?>, Exception> c) {
+
+      public void a(atw $$0, akk.b $$1) {
+         akh.a($$0, $$1, this.b, this.a.b, this.c);
       }
 
-      public JsonElement a(akh $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
+      public void a(Map<akl<? extends jk<?>>, List<jo.a>> $$0, atz $$1, akk.b $$2) {
+         akh.a($$0, $$1, $$2, this.b, this.a.b, this.c);
+      }
+   }
+
+   @FunctionalInterface
+   interface b {
+      void apply(akh.a<?> var1, akk.b var2);
+   }
+
+   public static record c<T>(akl<? extends jk<T>> a, Codec<T> b) {
+
+      akh.a<T> a(Lifecycle $$0, Map<akl<?>, Exception> $$1) {
+         jt<T> $$2 = new jf<>(this.a, $$0);
+         return new akh.a<>(this, $$2, $$1);
+      }
+
+      public void a(BiConsumer<akl<? extends jk<T>>, Codec<T>> $$0) {
+         $$0.accept(this.a, this.b);
       }
    }
 }

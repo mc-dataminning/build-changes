@@ -1,44 +1,27 @@
-import com.mojang.serialization.Codec;
+public abstract class boo<R extends Runnable> extends bok<R> {
+   private int b;
 
-public class boo extends bor {
-   public static final boo a = new boo(0);
-   public static final Codec<boo> b = axh.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(boo::new, boo::d);
-   private final int f;
-
-   public static boo a(int $$0) {
-      return $$0 == 0 ? a : new boo($$0);
-   }
-
-   private boo(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
+   public boo(String $$0) {
+      super($$0);
    }
 
    @Override
-   public int a(ayg $$0) {
-      return this.f;
+   public boolean ay() {
+      return this.bA() || super.ay();
+   }
+
+   protected boolean bA() {
+      return this.b != 0;
    }
 
    @Override
-   public int a() {
-      return this.f;
-   }
+   public void d(R $$0) {
+      this.b++;
 
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bos<?> c() {
-      return bos.a;
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

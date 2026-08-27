@@ -1,17 +1,28 @@
-public class gkd extends gho<cjh, fuu<cjh>> {
-   private static final akh a = new akh("textures/entity/zombie_villager/zombie_villager.png");
+public class gkd extends giz<cjp, fuz<cjp>> {
+   private static final akm a = new akm("textures/entity/strider/strider.png");
+   private static final akm i = new akm("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gkd(ggx.a $$0) {
-      super($$0, new fuu<>($$0.a(fva.ck)), 0.5F);
-      this.a(new gky<>(this, new fuu($$0.a(fva.cl)), new fuu($$0.a(fva.cm)), $$0.g()));
-      this.a(new glt<>(this, $$0.e(), "zombie_villager"));
+   public gkd(ght.a $$0) {
+      super($$0, new fuz<>($$0.a(fvv.bD)), 0.5F);
+      this.a(new gmg<>(this, new fuz<>($$0.a(fvv.bE)), new akm("textures/entity/strider/strider_saddle.png")));
    }
 
-   public akh a(cjh $$0) {
-      return a;
+   public akm a(cjp $$0) {
+      return $$0.s() ? i : a;
    }
 
-   protected boolean b(cjh $$0) {
-      return super.a($$0) || $$0.gz();
+   protected float b(cjp $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(cjp $$0, eys $$1, float $$2) {
+      float $$3 = $$0.ed();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cjp $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

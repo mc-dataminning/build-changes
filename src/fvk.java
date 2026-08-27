@@ -1,44 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class fvk extends ftf<cne> {
+   private static final int a = 16;
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
 
-public class fvk {
-   private final List<fve> a;
-   private final fvd b;
-   private final Map<String, fvk> c = Maps.newHashMap();
-
-   fvk(List<fve> $$0, fvd $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fvk(fvw $$0) {
+      super(gcs::i);
+      this.b = $$0.b("bone");
+      this.g = this.b.b("wind");
+      this.f = this.b.b("wind_charge");
    }
 
-   public fvk a(String $$0, fvg $$1, fvd $$2) {
-      fvk $$3 = new fvk($$1.b(), $$2);
-      fvk $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      fwf $$2 = $$1.a("bone", fwb.c(), fvy.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         fwb.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new fwa(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new fwa(0.0F)),
+         fvy.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", fwb.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fwa(0.0F)), fvy.a(0.0F, 0.0F, 0.0F));
+      return fwc.a($$0, 64, 32);
    }
 
-   public fvb a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fvb> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fvk)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fvb.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fvb $$4 = new fvb($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   public void a(cne $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = -$$3 * 16.0F * (float) (Math.PI / 180.0);
+      this.g.f = $$3 * 16.0F * (float) (Math.PI / 180.0);
    }
 
-   public fvk a(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public fvw a() {
+      return this.b;
    }
 }

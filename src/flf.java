@@ -1,37 +1,82 @@
 import javax.annotation.Nullable;
 
-public abstract class flf extends fkv {
-   protected final fdh<?>[] r;
+public class flf extends fly {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
    @Nullable
-   private ffc a;
-   protected fgb s;
+   private final wx d;
+   private final wx r;
+   private final Runnable s;
+   @Nullable
+   private fgs u;
+   private ffz v;
+   private int w;
 
-   public flf(fld $$0, fdi $$1, wu $$2, fdh<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.r = $$3;
+   public static flf a(wx $$0, wx $$1, Runnable $$2) {
+      return new flf($$0, null, $$1, $$2, 0);
+   }
+
+   public static flf a(wx $$0, wx $$1, wx $$2, Runnable $$3) {
+      return new flf($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected flf(wx $$0, @Nullable wx $$1, wx $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.r = $$2;
+      this.s = $$3;
+      this.w = $$4;
    }
 
    @Override
    protected void aM_() {
-      this.s = this.c(new fgb(this.m, this.n, this.o, this));
-      this.s.a(this.r);
-      this.a = this.s.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.m.aZ().a();
+      super.aM_();
+      if (this.d != null) {
+         this.u = fgs.a(this.p, this.d, 360);
       }
 
-      super.aM_();
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.u != null ? this.u.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.v = this.c(ffz.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public void e() {
+      if (this.w > 0) {
+         this.w--;
+      }
+
+      this.v.j = this.w == 0;
    }
 
-   public void C() {
-      if (this.a instanceof ffl) {
-         ((ffl)this.a).a(this.c.as().c());
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.u == null) {
+         String $$4 = flj.a(ac.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.u.a($$0, this.n / 2, 120);
       }
+   }
+
+   @Override
+   public boolean aD_() {
+      return this.u != null && this.v.j;
+   }
+
+   @Override
+   public void d() {
+      this.s.run();
+   }
+
+   @Override
+   public wx i() {
+      return ww.a(this.l, this.d != null ? this.d : ww.a);
    }
 }

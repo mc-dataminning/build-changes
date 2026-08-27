@@ -1,7 +1,7 @@
-public enum drt implements ayt {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum drt implements ayx {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
@@ -10,12 +10,15 @@ public enum drt implements ayt {
    }
 
    @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
    public String c() {
       return this.d;
+   }
+
+   public drt a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

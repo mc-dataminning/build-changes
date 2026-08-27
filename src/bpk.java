@@ -1,59 +1,147 @@
-import javax.annotation.concurrent.Immutable;
+import java.util.UUID;
 
-@Immutable
-public class bpk {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bpj d;
-   private final float e;
+public abstract class bpk {
+   private final UUID h;
+   protected wx a;
+   protected float b;
+   protected bpk.a c;
+   protected bpk.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   public bpk(bpj $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public bpk(UUID $$0, wx $$1, bpk.a $$2, bpk.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   public bpj a() {
+   public UUID h() {
+      return this.h;
+   }
+
+   public wx i() {
+      return this.a;
+   }
+
+   public void a(wx $$0) {
+      this.a = $$0;
+   }
+
+   public float j() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bpk.a k() {
+      return this.c;
+   }
+
+   public void a(bpk.a $$0) {
+      this.c = $$0;
+   }
+
+   public bpk.b l() {
       return this.d;
    }
 
-   public float b() {
+   public void a(bpk.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
       return this.e;
    }
 
-   public boolean c() {
-      return this.e >= (float)bpj.d.ordinal();
+   public bpk a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   public boolean n() {
+      return this.f;
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+   public bpk b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bpk c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static bpk.a a(String $$0) {
+         for (bpk.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
       }
    }
 
-   private float a(bpj $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bpj.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bpj.d;
-         float $$5 = 0.75F;
-         float $$6 = axz.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += axz.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += axz.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bpj.b) {
-            $$7 *= 0.5F;
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
+
+      private final String f;
+
+      private b(String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bpk.b a(String $$0) {
+         for (bpk.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
          }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
+         return a;
       }
    }
 }

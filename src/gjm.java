@@ -1,34 +1,39 @@
-public class gjm extends ggw<chs> {
-   private final gci a;
+public class gjm extends giz<cex, fsw<cex>> {
+   private static final akm a = new akm("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fsw<cex> j;
+   private final fsw<cex> k;
+   private final fsw<cex> l = this.a();
 
-   public gjm(ggx.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gjm(ght.a $$0) {
+      super($$0, new fud<>($$0.a(fvv.bb)), 0.2F);
+      this.k = new fue<>($$0.a(fvv.bc));
+      this.j = new fuf<>($$0.a(fvv.bd));
    }
 
-   public void a(chs $$0, float $$1, float $$2, exx $$3, gbo $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.r();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = axz.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
+   public akm a(cex $$0) {
+      return a;
+   }
+
+   public void a(cex $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
+      int $$6 = $$0.gr();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
       }
 
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gjl.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akh a(chs $$0) {
-      return gmx.e;
+   protected void a(cex $$0, eys $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(0.0F, ayd.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

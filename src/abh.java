@@ -1,20 +1,23 @@
-public record abh(akh b) implements zb<abg> {
-   public static final ys<vu, abh> a = zb.a(abh::a, abh::new);
+import io.netty.buffer.ByteBuf;
 
-   private abh(vu $$0) {
-      this($$0.q());
-   }
+public class abh implements ze<abg> {
+   public static final abh a = new abh();
+   public static final yv<ByteBuf, abh> b = yv.a(a);
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private abh() {
    }
 
    @Override
-   public zd<abh> a() {
-      return abi.a;
+   public zg<abh> a() {
+      return abe.f;
    }
 
    public void a(abg $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,131 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
+public class cvq {
+   public static final ix<cvn> a = a("water", new cvn());
+   public static final ix<cvn> b = a("mundane", new cvn());
+   public static final ix<cvn> c = a("thick", new cvn());
+   public static final ix<cvn> d = a("awkward", new cvn());
+   public static final ix<cvn> e = a("night_vision", new cvn(new brc(bre.p, 3600)));
+   public static final ix<cvn> f = a("long_night_vision", new cvn("night_vision", new brc(bre.p, 9600)));
+   public static final ix<cvn> g = a("invisibility", new cvn(new brc(bre.n, 3600)));
+   public static final ix<cvn> h = a("long_invisibility", new cvn("invisibility", new brc(bre.n, 9600)));
+   public static final ix<cvn> i = a("leaping", new cvn(new brc(bre.h, 3600)));
+   public static final ix<cvn> j = a("long_leaping", new cvn("leaping", new brc(bre.h, 9600)));
+   public static final ix<cvn> k = a("strong_leaping", new cvn("leaping", new brc(bre.h, 1800, 1)));
+   public static final ix<cvn> l = a("fire_resistance", new cvn(new brc(bre.l, 3600)));
+   public static final ix<cvn> m = a("long_fire_resistance", new cvn("fire_resistance", new brc(bre.l, 9600)));
+   public static final ix<cvn> n = a("swiftness", new cvn(new brc(bre.a, 3600)));
+   public static final ix<cvn> o = a("long_swiftness", new cvn("swiftness", new brc(bre.a, 9600)));
+   public static final ix<cvn> p = a("strong_swiftness", new cvn("swiftness", new brc(bre.a, 1800, 1)));
+   public static final ix<cvn> q = a("slowness", new cvn(new brc(bre.b, 1800)));
+   public static final ix<cvn> r = a("long_slowness", new cvn("slowness", new brc(bre.b, 4800)));
+   public static final ix<cvn> s = a("strong_slowness", new cvn("slowness", new brc(bre.b, 400, 3)));
+   public static final ix<cvn> t = a("turtle_master", new cvn("turtle_master", new brc(bre.b, 400, 3), new brc(bre.k, 400, 2)));
+   public static final ix<cvn> u = a("long_turtle_master", new cvn("turtle_master", new brc(bre.b, 800, 3), new brc(bre.k, 800, 2)));
+   public static final ix<cvn> v = a("strong_turtle_master", new cvn("turtle_master", new brc(bre.b, 400, 5), new brc(bre.k, 400, 3)));
+   public static final ix<cvn> w = a("water_breathing", new cvn(new brc(bre.m, 3600)));
+   public static final ix<cvn> x = a("long_water_breathing", new cvn("water_breathing", new brc(bre.m, 9600)));
+   public static final ix<cvn> y = a("healing", new cvn(new brc(bre.f, 1)));
+   public static final ix<cvn> z = a("strong_healing", new cvn("healing", new brc(bre.f, 1, 1)));
+   public static final ix<cvn> A = a("harming", new cvn(new brc(bre.g, 1)));
+   public static final ix<cvn> B = a("strong_harming", new cvn("harming", new brc(bre.g, 1, 1)));
+   public static final ix<cvn> C = a("poison", new cvn(new brc(bre.s, 900)));
+   public static final ix<cvn> D = a("long_poison", new cvn("poison", new brc(bre.s, 1800)));
+   public static final ix<cvn> E = a("strong_poison", new cvn("poison", new brc(bre.s, 432, 1)));
+   public static final ix<cvn> F = a("regeneration", new cvn(new brc(bre.j, 900)));
+   public static final ix<cvn> G = a("long_regeneration", new cvn("regeneration", new brc(bre.j, 1800)));
+   public static final ix<cvn> H = a("strong_regeneration", new cvn("regeneration", new brc(bre.j, 450, 1)));
+   public static final ix<cvn> I = a("strength", new cvn(new brc(bre.e, 3600)));
+   public static final ix<cvn> J = a("long_strength", new cvn("strength", new brc(bre.e, 9600)));
+   public static final ix<cvn> K = a("strong_strength", new cvn("strength", new brc(bre.e, 1800, 1)));
+   public static final ix<cvn> L = a("weakness", new cvn(new brc(bre.r, 1800)));
+   public static final ix<cvn> M = a("long_weakness", new cvn("weakness", new brc(bre.r, 4800)));
+   public static final ix<cvn> N = a("luck", new cvn("luck", new brc(bre.z, 6000)));
+   public static final ix<cvn> O = a("slow_falling", new cvn(new brc(bre.B, 1800)));
+   public static final ix<cvn> P = a("long_slow_falling", new cvn("slow_falling", new brc(bre.B, 4800)));
+   public static final ix<cvn> Q = a("wind_charged", new cvn("wind_charged", new brc(bre.J, 3600)).a(col.c));
+   public static final ix<cvn> R = a("weaving", new cvn("weaving", new brc(bre.K, 3600)).a(col.c));
+   public static final ix<cvn> S = a("oozing", new cvn("oozing", new brc(bre.L, 3600)).a(col.c));
+   public static final ix<cvn> T = a("infested", new cvn("infested", new brc(bre.M, 3600)).a(col.c));
 
-public record cvq(cvq.a e, IntList f, IntList g, boolean h, boolean i) implements cwd {
-   public static final cvq a = new cvq(cvq.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<cvq> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cvq.a.g.fieldOf("shape").forGetter(cvq::a),
-               axh.a(b, "colors", IntList.of()).forGetter(cvq::b),
-               axh.a(b, "fade_colors", IntList.of()).forGetter(cvq::c),
-               axh.a(Codec.BOOL, "has_trail", false).forGetter(cvq::d),
-               axh.a(Codec.BOOL, "has_twinkle", false).forGetter(cvq::e)
-            )
-            .apply($$0, cvq::new)
-   );
-   private static final ys<ByteBuf, IntList> j = yq.e.a(yq.a()).a(IntArrayList::new, ArrayList::new);
-   public static final ys<ByteBuf, cvq> d = ys.a(cvq.a.f, cvq::a, j, cvq::b, j, cvq::c, yq.b, cvq::d, yq.b, cvq::e, cvq::new);
-   private static final wu k = wu.c("item.minecraft.firework_star.custom_color");
-
-   @Override
-   public void a(Consumer<wu> $$0, cuq $$1) {
-      this.a($$0);
-      this.b($$0);
+   private static ix<cvn> a(String $$0, cvn $$1) {
+      return jk.b(le.i, new akm($$0), $$1);
    }
 
-   public void a(Consumer<wu> $$0) {
-      $$0.accept(this.e.a().a(n.h));
-   }
-
-   public void b(Consumer<wu> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wu.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wu.c("item.minecraft.firework_star.fade_to").b(wt.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wu.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wu.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static wu a(xi $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
-         }
-
-         $$0.b(a($$1.getInt($$2)));
-      }
-
-      return $$0;
-   }
-
-   private static wu a(int $$0) {
-      crs $$1 = crs.b($$0);
-      return (wu)($$1 == null ? k : wu.c("item.minecraft.firework_star." + $$1.b()));
-   }
-
-   public cvq a(IntList $$0) {
-      return new cvq(this.e, this.f, new IntArrayList($$0), this.h, this.i);
-   }
-
-   public cvq.a a() {
-      return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public static enum a implements ayt {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cvq.a> h = awq.a(cvq.a::b, values(), awq.a.a);
-      public static final ys<ByteBuf, cvq.a> f = yq.a(h, cvq.a::b);
-      public static final Codec<cvq.a> g = ayt.b(cvq.a::values);
-      private final int i;
-      private final String j;
-
-      private a(int $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public xi a() {
-         return wu.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static cvq.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
+   public static ix<cvn> a(jk<cvn> $$0) {
+      return a;
    }
 }

@@ -1,48 +1,73 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class buu<E extends bsc> extends buv<E> {
-   private final awg<dde> m;
-   private final float n;
-   private final List<buv.a> o = new ArrayList<>();
-   private boolean p;
+public class buu extends buh<bsx> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bso, Float> f;
+   private final Function<bso, Double> g;
 
-   public buu(box $$0, int $$1, int $$2, float $$3, Function<E, avb> $$4, awg<dde> $$5, float $$6, BiPredicate<E, in> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public buu(Function<bso, Float> $$0) {
+      this($$0, $$0x -> 2.5);
+   }
+
+   public buu(Function<bso, Float> $$0, Function<bso, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<cbs<?>, cbt> $$0x = ImmutableMap.builder();
+         $$0x.put(cbs.n, cbt.c);
+         $$0x.put(cbs.m, cbt.c);
+         $$0x.put(cbs.P, cbt.b);
+         $$0x.put(cbs.R, cbt.c);
+         $$0x.put(cbs.O, cbt.a);
+         $$0x.put(cbs.r, cbt.b);
+         $$0x.put(cbs.Z, cbt.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected float a(bsx $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<clw> b(bsx $$0) {
+      return $$0.dS().c(cbs.O);
    }
 
    @Override
-   protected void a(aqh $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ej().i() < this.n;
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   @Override
-   protected Optional<buv.a> a(aqh $$0) {
-      if (!this.p) {
-         return super.a($$0);
+   protected boolean a(aqm $$0, bsx $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dS().a(cbs.r) && !$$1.dS().a(cbs.Z);
+   }
+
+   protected void b(aqm $$0, bsx $$1, long $$2) {
+      $$1.dS().a(cbs.R, true);
+   }
+
+   protected void c(aqm $$0, bsx $$1, long $$2) {
+      btq<?> $$3 = $$1.dS();
+      $$3.a(cbs.P, 100);
+      $$3.a(cbs.R, false);
+      $$3.b(cbs.m);
+      $$3.b(cbs.n);
+   }
+
+   protected void d(aqm $$0, bsx $$1, long $$2) {
+      clw $$3 = this.b($$1).get();
+      btq<?> $$4 = $$1.dS();
+      $$4.a(cbs.n, new bus($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < ayd.k($$5)) {
+         $$4.b(cbs.m);
       } else {
-         in.a $$1 = new in.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<buv.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               buv.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), is.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+         $$4.a(cbs.m, new cbv(new bus($$3, false), this.a($$1), 2));
       }
    }
 }

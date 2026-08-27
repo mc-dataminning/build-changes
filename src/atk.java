@@ -1,119 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class atk implements ath {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, ati> c;
-   private final List<asd> d;
+public class atk extends atb {
+   private static final asx c = new asx(wx.c("dataPack.vanilla.description"), aa.b().a(ask.b), Optional.empty());
+   private static final ase d = new ase(col.h);
+   private static final asa e = asa.a(asx.b, c, ase.a, d);
+   private static final ash f = new ash("vanilla", wx.c("dataPack.vanilla.name"), ati.c, Optional.of(b));
+   private static final asj g = new asj(false, ate.b.b, false);
+   private static final asj h = new asj(false, ate.b.a, false);
+   private static final akm i = new akm("minecraft", "datapacks");
 
-   public atk(asf $$0, List<asd> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, ati> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+   public atk(eua $$0) {
+      super(ask.b, b(), i, $$0);
+   }
 
-      for (asd $$4 : $$1) {
-         atq $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<akh> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+   private static ash a(String $$0, wx $$1) {
+      return new ash($$0, $$1, ati.d, Optional.of(atd.a($$0)));
+   }
 
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               ati $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new ati($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
+   @VisibleForTesting
+   public static asm b() {
+      return new asn().a(e).a("minecraft").b().a().a(f);
+   }
 
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
-      }
-
-      this.c = $$2;
+   @Override
+   protected wx a(String $$0) {
+      return wx.b($$0);
    }
 
    @Nullable
-   private atq a(asd $$0) {
-      try {
-         return $$0.a(atq.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
-   }
-
    @Override
-   public Set<String> a() {
-      return this.c.keySet();
+   protected ate a(asi $$0) {
+      return ate.a(f, b($$0), ask.b, g);
    }
 
+   @Nullable
    @Override
-   public Optional<atp> getResource(akh $$0) {
-      atr $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
+   protected ate a(String $$0, ate.c $$1, wx $$2) {
+      return ate.a(a($$0, $$2), $$1, ask.b, h);
    }
 
-   @Override
-   public List<atp> a(akh $$0) {
-      atr $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
+   public static ath a(Path $$0, eua $$1) {
+      return new ath(new atk($$1), new atc($$0, ask.b, ati.e, $$1));
    }
 
-   @Override
-   public Map<akh, atp> b(String $$0, Predicate<akh> $$1) {
-      a($$0);
-      Map<akh, atp> $$2 = new TreeMap<>();
-
-      for (ati $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
+   public static ath c() {
+      return new ath(new atk(new eua($$0 -> true)));
    }
 
-   @Override
-   public Map<akh, List<atp>> c(String $$0, Predicate<akh> $$1) {
-      a($$0);
-      Map<akh, List<atp>> $$2 = new TreeMap<>();
-
-      for (ati $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<asd> b() {
-      return this.d.stream();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(asd::close);
+   public static ath a(eov.c $$0) {
+      return a($$0.a(eot.j), $$0.d().e());
    }
 }

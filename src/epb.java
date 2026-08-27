@@ -1,66 +1,94 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class epb implements eot {
-   protected final List<erq> e;
-   private final Predicate<eol> a;
+public interface epb {
+   int d = 19133;
+   int e = 19132;
 
-   protected epb(List<erq> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   dbr D();
+
+   void a(dbr var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   protected static <T extends epb> P1<Mu<T>, List<erq>> a(Instance<T> $$0) {
-      return $$0.group(axh.a(ers.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
-
-   public void a(eor $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   protected final boolean a(eol $$0) {
-      return this.a.test($$0);
-   }
+   @Nullable
+   ud E();
 
-   public abstract epc a();
+   void a(@Nullable ud var1);
 
-   public abstract static class a<T extends epb.a<T>> implements erj<T> {
-      private final Builder<erq> a = ImmutableList.builder();
+   epa I();
 
-      protected abstract T aB_();
+   dbb J();
 
-      public T a(erq.a $$0) {
-         this.a.add($$0.build());
-         return this.aB_();
-      }
+   ud a(jl var1, @Nullable ud var2);
 
-      public final T e() {
-         return this.aB_();
-      }
+   boolean l();
 
-      protected List<erq> f() {
-         return this.a.build();
-      }
+   int x();
 
-      public eos.a a(epb.a<?> $$0) {
-         return new eos.a(this, $$0);
-      }
+   String e();
 
-      public eox.a b(epb.a<?> $$0) {
-         return new eox.a(this, $$0);
-      }
+   dau k();
 
-      public epf.a c(epb.a<?> $$0) {
-         return new epf.a(this, $$0);
-      }
+   void a(dau var1);
 
-      public abstract epb b();
+   boolean m();
+
+   bpr q();
+
+   void a(bpr var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dat o();
+
+   @Nullable
+   ud w();
+
+   duw.a C();
+
+   void a(duw.a var1);
+
+   dxr y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default coj K() {
+      return this.D().b();
    }
 }

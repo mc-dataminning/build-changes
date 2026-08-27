@@ -1,29 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dzg extends dzd<ebl> {
-   public dzg(Codec<ebl> $$0) {
+public class dzg extends dzx<ebt> {
+   public dzg(Codec<ebt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dzf<ebl> $$0) {
-      in $$1 = $$0.e();
-      ebl $$2 = $$0.f();
-      day $$3 = $$0.b();
-      in.a $$4 = new in.a();
+   public boolean a(dzz<ebt> $$0) {
+      io $$1 = $$0.e();
+      dbs $$2 = $$0.b();
+      ayk $$3 = $$0.d();
+      ebt $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
+         for (io $$7 : io.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
-      }
 
-      return true;
+         return true;
+      }
+   }
+
+   private boolean a(day $$0, io $$1, ayk $$2) {
+      io $$3 = $$1.d();
+      drb $$4 = $$0.a_($$3);
+      return $$4.a(dea.kE) ? $$2.h() : $$4.d($$0, $$3, it.b);
+   }
+
+   private void a(day $$0, io $$1, ayk $$2, ebt $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      }
    }
 }

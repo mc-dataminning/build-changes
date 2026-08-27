@@ -1,25 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface dal {
-   boolean a(in var1, dqh var2, int var3, int var4);
+public class dal {
+   public static final dal a = new dal(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dal> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dal::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   default boolean a(in $$0, dqh $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public dal(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   boolean a(in var1, boolean var2);
-
-   default boolean b(in $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public List<String> a() {
+      return this.c;
    }
 
-   default boolean a(in $$0, boolean $$1, @Nullable brh $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(in var1, boolean var2, @Nullable brh var3, int var4);
-
-   default boolean b(brh $$0) {
-      return false;
+   public List<String> b() {
+      return this.d;
    }
 }

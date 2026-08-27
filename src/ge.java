@@ -5,43 +5,37 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.EnumSet;
 
-public class ge implements ArgumentType<EnumSet<is.a>> {
-   private static final Collection<String> a = Arrays.asList("xyz", "x");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("arguments.swizzle.invalid"));
+public class ge implements ArgumentType<gc> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("argument.rotation.incomplete"));
 
    public static ge a() {
       return new ge();
    }
 
-   public static EnumSet<is.a> a(CommandContext<ed> $$0, String $$1) {
-      return (EnumSet<is.a>)$$0.getArgument($$1, EnumSet.class);
+   public static gc a(CommandContext<ee> $$0, String $$1) {
+      return (gc)$$0.getArgument($$1, gc.class);
    }
 
-   public EnumSet<is.a> a(StringReader $$0) throws CommandSyntaxException {
-      EnumSet<is.a> $$1 = EnumSet.noneOf(is.a.class);
-
-      while ($$0.canRead() && $$0.peek() != ' ') {
-         char $$2 = $$0.read();
-
-         is.a $$6 = switch ($$2) {
-            case 'x' -> is.a.a;
-            case 'y' -> is.a.b;
-            case 'z' -> is.a.c;
-            default -> throw b.createWithContext($$0);
-         };
-         if ($$1.contains($$6)) {
-            throw b.createWithContext($$0);
+   public gc a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         gi $$2 = gi.a($$0, false);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gi $$3 = gi.a($$0, false);
+            return new gj($$3, $$2, new gi(true, 0.0));
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
          }
-
-         $$1.add($$6);
       }
-
-      return $$1;
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

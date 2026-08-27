@@ -1,30 +1,26 @@
-import java.util.function.IntFunction;
+public enum fdl {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum fdl implements ayb {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+   private static final fdl[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   private static final IntFunction<fdl> d = awq.a(fdl::a, values(), awq.a.b);
-   private final int e;
-   private final String f;
-
-   private fdl(int $$0, String $$1) {
+   private fdl(boolean $$0, boolean $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   @Override
-   public int a() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
+   public boolean b() {
       return this.f;
    }
 
-   public static fdl a(int $$0) {
-      return d.apply($$0);
+   public fdl c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

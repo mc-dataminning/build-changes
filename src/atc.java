@@ -1,116 +1,98 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class atc {
-   private final Set<ate> a;
-   private Map<String, asz> b = ImmutableMap.of();
-   private List<asz> c = ImmutableList.of();
+public class atc implements atj {
+   static final Logger a = LogUtils.getLogger();
+   private static final asj b = new asj(false, ate.b.a, false);
+   private final Path c;
+   private final ask d;
+   private final ati e;
+   private final eua f;
 
-   public atc(ate... $$0) {
-      this.a = ImmutableSet.copyOf($$0);
+   public atc(Path $$0, ask $$1, ati $$2, eua $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void a() {
-      List<String> $$0 = this.c.stream().map(asz::g).collect(ImmutableList.toImmutableList());
-      this.b = this.h();
-      this.c = this.b($$0);
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   private Map<String, asz> h() {
-      Map<String, asz> $$0 = Maps.newTreeMap();
-
-      for (ate $$1 : this.a) {
-         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
-      }
-
-      return ImmutableMap.copyOf($$0);
-   }
-
-   public void a(Collection<String> $$0) {
-      this.c = this.b($$0);
-   }
-
-   public boolean a(String $$0) {
-      asz $$1 = this.b.get($$0);
-      if ($$1 != null && !this.c.contains($$1)) {
-         List<asz> $$2 = Lists.newArrayList(this.c);
-         $$2.add($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void loadPacks(Consumer<ate> $$0) {
+      try {
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            ash $$3 = this.b($$1);
+            ate $$4 = ate.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
+            }
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
       }
    }
 
-   public boolean b(String $$0) {
-      asz $$1 = this.b.get($$0);
-      if ($$1 != null && this.c.contains($$1)) {
-         List<asz> $$2 = Lists.newArrayList(this.c);
-         $$2.remove($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
+   private ash b(Path $$0) {
+      String $$1 = a($$0);
+      return new ash("file/" + $$1, wx.b($$1), this.e, Optional.empty());
+   }
+
+   public static void a(Path $$0, eua $$1, BiConsumer<Path, ate.c> $$2) throws IOException {
+      atc.a $$3 = new atc.a($$1);
+
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<eub> $$6 = new ArrayList<>();
+               ate.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", etz.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
+               }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
+            }
+         }
       }
    }
 
-   private List<asz> b(Collection<String> $$0) {
-      List<asz> $$1 = this.c($$0).collect(Collectors.toList());
+   static class a extends atg<ate.c> {
+      protected a(eua $$0) {
+         super($$0);
+      }
 
-      for (asz $$2 : this.b.values()) {
-         if ($$2.i() && !$$1.contains($$2)) {
-            $$2.k().a($$1, $$2, asz::h, false);
+      @Nullable
+      protected ate.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof ass)) {
+            atc.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new asf.a($$0);
          }
       }
 
-      return ImmutableList.copyOf($$1);
-   }
-
-   private Stream<asz> c(Collection<String> $$0) {
-      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> b() {
-      return this.b.keySet();
-   }
-
-   public Collection<asz> c() {
-      return this.b.values();
-   }
-
-   public Collection<String> d() {
-      return this.c.stream().map(asz::g).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public cnu e() {
-      return this.f().stream().map(asz::e).reduce(cnu::b).orElse(cnu.a());
-   }
-
-   public Collection<asz> f() {
-      return this.c;
-   }
-
-   @Nullable
-   public asz c(String $$0) {
-      return this.b.get($$0);
-   }
-
-   public boolean d(String $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public List<asd> g() {
-      return this.c.stream().map(asz::f).collect(ImmutableList.toImmutableList());
+      protected ate.c b(Path $$0) {
+         return new asl.a($$0);
+      }
    }
 }

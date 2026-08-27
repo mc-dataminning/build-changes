@@ -1,12 +1,8 @@
-public class eoa extends RuntimeException {
-   private final wu a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public eoa(wu $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public wu a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eoa {
 }

@@ -1,35 +1,45 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record esj(float c) implements esl {
-   public static final Codec<esj> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(esj::c)).apply($$0, esj::new));
-   public static final Codec<esj> b = Codec.FLOAT.xmap(esj::new, esj::c);
+public record esj(Optional<cr> b, io c) implements esl {
+   private static final MapCodec<io> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(js::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(js::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(js::w)
+            )
+            .apply($$0, io::new)
+   );
+   public static final MapCodec<esj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cr.a.optionalFieldOf("predicate").forGetter(esj::c), d.forGetter(esj::d)).apply($$0, esj::new)
+   );
 
    @Override
-   public esk b() {
-      return esm.b;
+   public esm b() {
+      return esn.p;
    }
 
-   @Override
-   public float b(eol $$0) {
+   public boolean a(epf $$0) {
+      euk $$1 = $$0.c(erx.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
+
+   public static esl.a a(cr.a $$0) {
+      return () -> new esj(Optional.of($$0.b()), io.c);
+   }
+
+   public static esl.a a(cr.a $$0, io $$1) {
+      return () -> new esj(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<cr> c() {
+      return this.b;
+   }
+
+   public io d() {
       return this.c;
-   }
-
-   public static esj a(float $$0) {
-      return new esj($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((esj)$$0).c, this.c) == 0 : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

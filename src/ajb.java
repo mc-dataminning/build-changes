@@ -1,3 +1,8 @@
-public interface ajb extends wa {
-   void a(ajc var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajb {
 }

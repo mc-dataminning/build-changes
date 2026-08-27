@@ -1,40 +1,40 @@
 import java.util.EnumSet;
 
-public class cav extends cax {
-   private final bsw a;
-   private bsa b;
-   private int c;
+public class cav extends bzm {
+   private final cle a;
 
-   public cav(bsw $$0) {
-      super($$0, false);
+   public cav(cle $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(byx.a.d));
+      this.a(EnumSet.of(bzm.a.c, bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.r() && !this.a.gp()) {
-         bsa $$0 = this.a.P_();
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         clw $$0 = this.a.gp();
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.em();
-            int $$1 = $$0.en();
-            return $$1 != this.c && this.a(this.b, ccq.a) && this.a.a(this.b, $$0);
+            return this.a.g($$0) > 16.0 ? false : $$0.cc != null;
          }
-      } else {
-         return false;
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      bsa $$0 = this.a.P_();
-      if ($$0 != null) {
-         this.c = $$0.en();
-      }
+      this.a.K().n();
+   }
 
-      super.c();
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

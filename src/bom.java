@@ -1,64 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class bom extends bor {
-   public static final Codec<bom> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bom::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public interface bom<Msg> extends AutoCloseable {
+   String bx();
 
-   public static bom a(float $$0, float $$1, int $$2, int $$3) {
-      return new bom($$0, $$1, $$2, $$3);
-   }
-
-   private bom(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-   }
+   void a(Msg var1);
 
    @Override
-   public int a(ayg $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   default void close() {
    }
 
-   public static int a(ayg $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)axz.a(axz.c($$0, $$1, $$2), $$3, $$4);
+   default <Source> CompletableFuture<Source> b(Function<? super bom<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public int a() {
-      return this.g;
+   default <Source> CompletableFuture<Source> c(Function<? super bom<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public int b() {
-      return this.h;
-   }
+   static <Msg> bom<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bom<Msg>() {
+         @Override
+         public String bx() {
+            return $$0;
+         }
 
-   @Override
-   public bos<?> c() {
-      return bos.f;
-   }
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,37 +1,101 @@
-import java.util.Locale;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum fxc {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+public class fxc {
+   private final GameProfile a;
+   private final Supplier<gov> b;
+   private dau c = dau.e;
+   private int d;
+   @Nullable
+   private wx e;
+   @Nullable
+   private xo f;
+   private xt g;
 
-   private final String k;
-   private final wu l;
-   private final wu m;
-
-   private fxc(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = wu.c($$1);
-      this.m = wu.c($$1 + ".description");
+   public fxc(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<gov>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public String a() {
-      return this.k;
+   private static Supplier<gov> a(GameProfile $$0) {
+      fdz $$1 = fdz.Q();
+      gow $$2 = $$1.an();
+      CompletableFuture<gov> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gov $$5 = gon.a($$0);
+      return () -> {
+         gov $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public wu b() {
-      return this.l;
+   public GameProfile a() {
+      return this.a;
    }
 
-   public wu c() {
-      return this.m;
+   @Nullable
+   public xo b() {
+      return this.f;
+   }
+
+   public xt c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.f != null;
+   }
+
+   protected void a(xo $$0) {
+      this.f = $$0;
+      this.g = $$0.a(clz.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static xt b(boolean $$0) {
+      return $$0 ? xt.c : xt.b;
+   }
+
+   public dau e() {
+      return this.c;
+   }
+
+   protected void a(dau $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gov g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public evj h() {
+      return fdz.Q().r.L().e(this.a().getName());
+   }
+
+   public void a(@Nullable wx $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wx i() {
+      return this.e;
    }
 }

@@ -1,53 +1,34 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public interface bxh<F extends K1, Value> {
-   cbd<Value> a();
+public class bxh {
+   public static bui<bso> a(ddy $$0) {
+      return bxu.a(
+         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$1 -> $$1.group($$1.c(cbs.o), $$1.b(cbs.m), $$1.b(cbs.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.be() && $$3x.aE()) {
+                        io $$5 = $$3x.dp().d();
 
-   cbe b();
+                        for (it $$6 : it.c.a) {
+                           io $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(it.b).c() && $$2x.b_($$7).b(emv.c)) {
+                              io $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 drb $$9 = $$0.n();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dvu.i, $$8, dvu.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, avh.jP, avi.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   @Nullable
-   bxg<F, Value> a(btb<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cbd<Value> a) implements bxh<Mu<Unit>, Value> {
-      @Override
-      public cbe b() {
-         return cbe.b;
-      }
-
-      @Override
-      public bxg<Mu<Unit>, Value> a(btb<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bxg<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
-   }
-
-   public static record b<Value>(cbd<Value> a) implements bxh<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cbe b() {
-         return cbe.a;
-      }
-
-      @Override
-      public bxg<com.mojang.datafixers.kinds.IdF.Mu, Value> a(btb<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bxg<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(cbd<Value> a) implements bxh<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cbe b() {
-         return cbe.c;
-      }
-
-      @Override
-      public bxg<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(btb<?> $$0, Optional<Value> $$1) {
-         return new bxg<>($$0, this.a, OptionalBox.create($$1));
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

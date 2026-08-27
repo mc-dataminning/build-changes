@@ -1,25 +1,18 @@
-public class gkp extends gli<cdx, frw<cdx>> {
-   private final gbk a;
+public class gkp extends gim<cjr> {
+   private static final akm a = new akm("textures/entity/illager/vindicator.png");
 
-   public gkp(gis<cdx, frw<cdx>> $$0, gbk $$1) {
-      super($$0);
-      this.a = $$1;
+   public gkp(ght.a $$0) {
+      super($$0, new ftk<>($$0.a(fvv.bQ)), 0.5F);
+      this.a(new gly<cjr, ftk<cjr>>(this, $$0.d()) {
+         public void a(eys $$0, gck $$1, int $$2, cjr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gh()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, cdx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fs() == bru.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = axz.e($$3.dF()) / 60.0F;
-      if ($$3.dF() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
-
-      csz $$14 = $$10 ? $$3.eV() : $$3.eW();
-      this.a.a($$3, $$14, csw.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public akm a(cjr $$0) {
+      return a;
    }
 }

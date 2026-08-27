@@ -1,85 +1,32 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bve {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+   public static <T extends bso> bui<bso> a(bsa<? extends T> $$0, int $$1, cbs<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
 
-   public static btt<bsi> a() {
-      return bxf.a(
-         (Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$0 -> $$0.group($$0.b(cbd.i), $$0.c(cbd.m), $$0.a(cbd.n), $$0.a(cbd.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.E_().a(10) != 0) {
-                        return false;
+   public static <E extends bso, T extends bso> bui<E> a(bsa<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cbs<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bso> $$8 = $$2x -> $$0.equals($$2x.ak()) && $$3.test((T)$$2x);
+      return bxu.a(
+         (Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cbs.n), $$6x.c(cbs.m), $$6x.b(cbs.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cbu $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bso> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bru)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bus($$5xxxx, true));
+                           $$8x.a(new cbv(new bus($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
                      } else {
-                        List<bsa> $$8 = $$0.b($$1);
-                        Optional<bsa> $$9 = $$8.stream().filter($$1xx -> a((bsa)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bsa> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              etp $$11 = ccx.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(in.a($$11))) {
-                                 $$2.a(new cbg($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
+                        return false;
                      }
                   }))
       );
-   }
-
-   private static void a(bxg<?, bsa> $$0, bxg<?, bvg> $$1, bxg<?, cbg> $$2, bsa $$3) {
-      $$0.a($$3);
-      $$1.a(new bud($$3, true));
-      $$2.a(new cbg(new bud($$3, false), 0.6F, 1));
-   }
-
-   private static Optional<bsa> a(List<bsa> $$0) {
-      Map<bsa, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<bsa, Integer> b(List<bsa> $$0) {
-      Map<bsa, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bve::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static bsa a(bsa $$0) {
-      return $$0.dQ().c(cbd.q).get();
-   }
-
-   private static boolean b(bsa $$0) {
-      return $$0.dQ().c(cbd.q).isPresent();
-   }
-
-   private static boolean a(bsa $$0, bsa $$1) {
-      return $$1.dQ().c(cbd.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

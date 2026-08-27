@@ -1,20 +1,69 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public interface goz {
-   List<gcl> a(@Nullable dqh var1, @Nullable is var2, ayg var3);
+public class goz extends ty {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   boolean a();
+   private goz(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   boolean b();
+   public static goz a(atw $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
 
-   boolean c();
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
 
-   boolean d();
+         for (String $$6 : $$0.a()) {
+            try {
+               akm $$7 = new akm($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
+      }
 
-   gmy e();
+      return new goz(ImmutableMap.copyOf($$3), $$2);
+   }
 
-   gcx f();
+   private static void a(String $$0, List<atu> $$1, Map<String, String> $$2) {
+      for (atu $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            ty.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
+   }
 
-   gcv g();
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public axq a(xc $$0) {
+      return gpa.a($$0, this.d);
+   }
 }

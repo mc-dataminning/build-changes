@@ -1,28 +1,49 @@
-public enum dlf {
-   a {
-      @Override
-      public boolean a(dqh $$0, czj $$1, in $$2, is $$3) {
-         return dde.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final eui e = dde.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(dqh $$0, czj $$1, in $$2, is $$3) {
-         return !euf.c($$0.l($$1, $$2).a($$3), this.e, ett.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final eui e = euf.a(euf.b(), dde.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), ett.e);
+public class dlf extends dct {
+   public static final MapCodec<dlf> c = b(dlf::new);
 
-      @Override
-      public boolean a(dqh $$0, czj $$1, in $$2, is $$3) {
-         return !euf.c($$0.l($$1, $$2).a($$3), this.e, ett.c);
-      }
-   };
+   @Override
+   public MapCodec<dlf> a() {
+      return c;
+   }
 
-   public abstract boolean a(dqh var1, czj var2, in var3, is var4);
+   protected dlf(dra.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public dog a(io $$0, drb $$1) {
+      return new dpt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
+      return a($$0, $$2, doi.B);
+   }
+
+   @Override
+   protected void a(dax $$0, io $$1, clw $$2) {
+      dog $$3 = $$0.c_($$1);
+      if ($$3 instanceof dpt) {
+         $$2.a((bpy)$$3);
+         $$2.a(avr.at);
+      }
+   }
+
+   @Override
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avh.yh, avi.e, 1.0F, 1.0F, false);
+         }
+
+         $$1.a(ky.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
+   }
 }

@@ -1,44 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class dzr extends dzd<ebo> {
-   public dzr(Codec<ebo> $$0) {
+public class dzr extends dzx<eby> {
+   public dzr(Codec<eby> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dzf<ebo> $$0) {
-      int $$1 = 0;
-      day $$2 = $$0.b();
-      in $$3 = $$0.e();
-      ayg $$4 = $$0.d();
-      int $$5 = $$2.a(dvz.a.d, $$3.u(), $$3.w());
-      in $$6 = new in($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(ddg.G)) {
-         dqh $$7 = ddg.mc.n();
-         dqh $$8 = ddg.md.n();
-         int $$9 = 1 + $$4.a(10);
+   public boolean a(dzz<eby> $$0) {
+      eby $$1 = $$0.f();
+      io $$2 = $$0.e();
+      dbs $$3 = $$0.b();
+      ayk $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      io.a $$10 = new io.a();
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(ddg.G) && $$2.a_($$6.c()).a(ddg.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(dhi.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               in $$11 = $$6.d();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(ddg.mc)) {
-                  $$2.a($$11, $$7.a(dhi.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.c();
+      for (io $$11 : io.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      return $$1 > 0;
+      return $$5;
+   }
+
+   protected boolean a(eby $$0, dbs $$1, ayk $$2, int $$3, int $$4, io.a $$5) {
+      boolean $$6 = false;
+
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            drb $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
+      }
+
+      return $$6;
    }
 }

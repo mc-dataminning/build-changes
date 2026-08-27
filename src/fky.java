@@ -1,121 +1,79 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fky extends fld {
-   private static final akh a = new akh("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int r = 204;
-   private static final int s = 98;
-   private static final wu u = wu.c("menu.returnToGame");
-   private static final wu v = wu.c("gui.advancements");
-   private static final wu w = wu.c("gui.stats");
-   private static final wu x = wu.c("menu.sendFeedback");
-   private static final wu y = wu.c("menu.reportBugs");
-   private static final wu z = wu.c("menu.options");
-   private static final wu A = wu.c("menu.shareToLan");
-   private static final wu B = wu.c("menu.playerReporting");
-   private static final wu C = wu.c("menu.returnToMenu");
-   private static final wu D = wu.c("menu.savingLevel");
-   private static final wu E = wu.c("menu.game");
-   private static final wu F = wu.c("menu.paused");
-   private final boolean G;
-   @Nullable
-   private ffe H;
+public class fky extends fly {
+   private static final wx a = wx.c("addServer.enterIp");
+   private ffz b;
+   private final fxf c;
+   private fgi d;
+   private final BooleanConsumer r;
+   private final fly s;
 
-   public fky(boolean $$0) {
-      super($$0 ? E : F);
-      this.G = $$0;
+   public fky(fly $$0, BooleanConsumer $$1, fxf $$2) {
+      super(wx.c("selectServer.direct"));
+      this.s = $$0;
+      this.c = $$2;
+      this.r = $$1;
    }
 
-   public boolean m() {
-      return this.G;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aH_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
+      }
    }
 
    @Override
    protected void aM_() {
-      if (this.G) {
-         this.C();
-      }
+      this.d = new fgi(this.p, this.n / 2 - 100, 116, 200, 20, wx.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.m.aa);
+      this.d.b($$0 -> this.C());
+      this.d(this.d);
+      this.b = this.c(ffz.a(wx.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(ffz.a(ww.e, $$0 -> this.r.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.C();
+   }
 
-      this.c(new fgl(0, this.G ? 40 : 10, this.n, 9, this.l, this.p));
+   @Override
+   protected void aC_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(fdz $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.r.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.s);
+   }
+
+   @Override
+   public void j() {
+      this.m.m.aa = this.d.a();
+      this.m.m.av();
    }
 
    private void C() {
-      fiq $$0 = new fiq();
-      $$0.c().a(4, 4, 4, 0);
-      fiq.b $$1 = $$0.d(2);
-      $$1.a(ffe.a(u, $$0x -> {
-         this.m.a(null);
-         this.m.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(v, () -> new fls(this.m.s.h.q(), this)));
-      $$1.a(this.a(w, () -> new flm(this, this.m.s.j())));
-      $$1.a(this.a(x, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(y, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
-      $$1.a(this.a(z, () -> new fku(this, this.m.m)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(A, () -> new fle(this)));
-      } else {
-         $$1.a(this.a(B, () -> new fpn(this)));
-      }
-
-      wu $$2 = this.m.T() ? C : wt.p;
-      this.H = $$1.a(ffe.a($$2, $$0x -> {
-         $$0x.j = false;
-         this.m.bb().a(this.m, this, this::D, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fip.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
-   }
-
-   private void D() {
-      boolean $$0 = this.m.T();
-      fwk $$1 = this.m.S();
-      this.m.r.X();
-      if ($$0) {
-         this.m.b(new fkj(D));
-      } else {
-         this.m.y();
-      }
-
-      fli $$2 = new fli();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new eyi($$2));
-      } else {
-         this.m.a(new foa($$2));
-      }
+      this.b.j = fyi.b(this.d.a());
    }
 
    @Override
-   public void e() {
-      super.e();
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.G && this.m != null && this.m.bb().c() && this.H != null) {
-         $$0.a(a, this.H.C() + this.H.x() - 17, this.H.D() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      if (this.G) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private ffe a(wu $$0, Supplier<fld> $$1) {
-      return ffe.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private ffe a(wu $$0, String $$1) {
-      return ffe.a($$0, fju.b(this, $$1)).a(98).a();
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,43 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dew extends dcp {
-   public static final MapCodec<dew> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(det.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dew::new));
-   private final dde f;
+public class dew extends dhm implements deb, deu {
+   public static final MapCodec<dew> c = b(dew::new);
 
    @Override
    public MapCodec<dew> a() {
-      return e;
+      return c;
    }
 
-   protected dew(dde $$0, dqg.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      this.a($$0, (dae)$$1, $$2);
+   public dew(dra.d $$0) {
+      super($$0, it.a, q_, false);
+      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.n().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
-      }
+   protected dhn c() {
+      return (dhn)dea.sv;
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return ddg.a.n();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, emb.c, emb.c.a($$3));
-         }
+   protected drb a(drb $$0, drb $$1) {
+      return $$1.a(r_, $$0.c(r_));
+   }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   @Override
+   public cto a(dba $$0, io $$1, drb $$2) {
+      return new cto(ctr.ws);
+   }
+
+   @Override
+   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
+      return deu.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dba $$0, io $$1, drb $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

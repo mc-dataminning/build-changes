@@ -1,28 +1,68 @@
-import java.util.EnumSet;
+public class byr extends byp {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class byr extends byx {
-   private final bsc a;
-
-   public byr(bsc $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(byx.a.c));
-      $$0.K().a(true);
+   public byr(bsq $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      return this.a.bc() && this.a.b(avw.a) > this.a.dg() || this.a.bq();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.ej().i() < 0.8F) {
-         this.a.I().a();
+   public void a() {
+      if (this.r && this.d.be()) {
+         this.d.g(this.d.ds().b(0.0, 0.005, 0.0));
       }
+
+      if (this.k == byp.a.b && !this.d.K().l()) {
+         double $$0 = this.e - this.d.du();
+         double $$1 = this.f - this.d.dw();
+         double $$2 = this.g - this.d.dA();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.C(0.0F);
+         } else {
+            float $$4 = (float)(ayd.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dF(), $$4, (float)this.o));
+            this.d.aZ = this.d.dF();
+            this.d.bb = this.d.dF();
+            float $$5 = (float)(this.h * this.d.g(btw.r));
+            if (this.d.be()) {
+               this.d.y($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(ayd.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = ayd.a(ayd.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dH(), $$7, 5.0F));
+               }
+
+               float $$8 = ayd.b(this.d.dH() * (float) (Math.PI / 180.0));
+               float $$9 = ayd.a(this.d.dH() * (float) (Math.PI / 180.0));
+               this.d.br = $$8 * $$5;
+               this.d.bq = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(ayd.g(this.d.dF() - $$4));
+               float $$11 = a($$10);
+               this.d.y($$5 * this.q * $$11);
+            }
+         }
+      } else {
+         this.d.y(0.0F);
+         this.d.E(0.0F);
+         this.d.D(0.0F);
+         this.d.C(0.0F);
+      }
+   }
+
+   private static float a(float $$0) {
+      return 1.0F - ayd.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

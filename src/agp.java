@@ -1,30 +1,37 @@
-public record agp(int b, int c, boolean d) implements zb<afz> {
-   public static final ys<vu, agp> a = zb.a(agp::a, agp::new);
+public class agp implements ze<agd> {
+   public static final yv<vx, agp> a = ze.a(agp::a, agp::new);
+   private final int b;
+   private final String c;
 
-   private agp(vu $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public agp(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vu $$0) {
+   private agp(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
+   }
+
+   private void a(vx $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zd<agp> a() {
-      return afx.bs;
+   public zg<agp> a() {
+      return agb.bo;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.d;
+   public String e() {
+      return this.c;
    }
 }

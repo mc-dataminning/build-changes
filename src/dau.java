@@ -1,75 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public record dau(ua d, Optional<dau.a> e) {
-   public static final String a = "entity";
-   public static final Codec<dau> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ua.a.fieldOf("entity").forGetter($$0x -> $$0x.d), dau.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
-            .apply($$0, dau::new)
-   );
-   public static final Codec<bnw<dau>> c = bnw.a(b);
+public enum dau implements ayx {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public dau() {
-      this(new ua(), Optional.empty());
+   public static final dau e = a;
+   public static final ayx.a<dau> f = ayx.a(dau::values);
+   private static final IntFunction<dau> g = awv.a(dau::a, values(), awv.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final wx k;
+   private final wx l;
+
+   private dau(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = wx.c("selectWorld.gameMode." + $$1);
+      this.l = wx.c("gameMode." + $$1);
    }
 
-   public dau(ua d, Optional<dau.a> e) {
-      if (d.e("id")) {
-         akh $$2 = akh.a(d.l("id"));
-         if ($$2 != null) {
-            d.a("id", $$2.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
+   public int a() {
+      return this.i;
    }
 
-   public ua a() {
-      return this.d;
+   public String b() {
+      return this.j;
    }
 
-   public Optional<dau.a> b() {
-      return this.e;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   public ua c() {
-      return this.d;
+   public wx d() {
+      return this.l;
    }
 
-   public Optional<dau.a> d() {
-      return this.e;
+   public wx e() {
+      return this.k;
    }
 
-   public static record a(axr<Integer> b, axr<Integer> c) {
-      private static final axr<Integer> d = new axr<>(0, 15);
-      public static final Codec<dau.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dau.a::new)
-      );
-
-      private static DataResult<axr<Integer>> a(axr<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+   public void a(clt $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
 
-      private static MapCodec<axr<Integer>> a(String $$0) {
-         return axh.a(axr.a.optionalFieldOf($$0, d), dau.a::a);
-      }
+      $$0.e = !this.f();
+   }
 
-      public boolean a(in $$0, aqh $$1) {
-         return this.b.a($$1.a(dam.b, $$0)) && this.c.a($$1.a(dam.a, $$0));
-      }
+   public boolean f() {
+      return this == c || this == d;
+   }
 
-      public axr<Integer> a() {
-         return this.b;
-      }
+   public boolean g() {
+      return this == b;
+   }
 
-      public axr<Integer> b() {
-         return this.c;
-      }
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static dau a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static dau a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dau a(String $$0, @Nullable dau $$1) {
+      dau $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dau $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static dau b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

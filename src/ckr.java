@@ -1,64 +1,18 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class ckr implements cza {
-   private final clh a;
-   private czc b = new czc();
-   private int c;
+public class ckr {
+   public static bui<bso> a() {
+      return bxu.a(
+         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$0 -> $$0.group($$0.b(cbs.o), $$0.a(cbs.ah))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bso $$6 = $$0.b($$1);
+                     if ($$6.ak() == bsa.Z && $$6.eB()) {
+                        $$2.a(true, (long)ckn.d.a($$4.dP().z));
+                     }
 
-   public ckr(clh $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public clh gp() {
-      return this.a;
-   }
-
-   @Override
-   public void f(@Nullable clh $$0) {
-   }
-
-   @Override
-   public czc gr() {
-      return this.b;
-   }
-
-   @Override
-   public void a(czc $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(czb $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void n(csz $$0) {
-   }
-
-   @Override
-   public boolean gx() {
-      return this.a.dN().B;
-   }
-
-   @Override
-   public int u() {
-      return this.c;
-   }
-
-   @Override
-   public void u(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gs() {
-      return true;
-   }
-
-   @Override
-   public avb gt() {
-      return avc.AJ;
+                     return true;
+                  }))
+      );
    }
 }

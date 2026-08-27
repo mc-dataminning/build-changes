@@ -1,15 +1,70 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class eib {
-   public static Codec<? extends eia> a(jj<Codec<? extends eia>> $$0) {
-      jj.a($$0, "random", eid.a);
-      jj.a($$0, "random_group", eie.a);
-      return jj.a($$0, "direct", ehz.a);
+public class eib implements eho {
+   private final List<ehn> a = Lists.newArrayList();
+
+   @Override
+   public void a(ehn $$0) {
+      this.a.add($$0);
    }
 
-   public static void a(ql<ehy> $$0, iw<ehy> $$1, List<eia> $$2) {
-      $$2.stream().flatMap(eia::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qs.a($$0, $$2x, new ehy($$1, List.of(Pair.of(ehw.b($$2x), 1)), ehy.a.b)));
+   @Nullable
+   @Override
+   public ehn a(ehb $$0) {
+      return ehn.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (ehn $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, ayk $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      ehb $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(ayk $$0, int $$1, int $$2) {
+      ehb $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public ehy a() {
+      return new ehy(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public ehb d() {
+      return ehn.a(this.a.stream());
    }
 }

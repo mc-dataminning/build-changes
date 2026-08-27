@@ -1,30 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-
-public class cbx extends ccj<bsa> {
-   @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.of(cbd.x, cbd.y);
+public class cbx extends cca {
+   public cbx(bsq $$0, dax $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(aqh $$0, bsa $$1) {
-      btb<?> $$2 = $$1.dQ();
-      bqf $$3 = $$1.eA();
-      if ($$3 != null) {
-         $$2.a(cbd.x, $$1.eA());
-         brh $$4 = $$3.d();
-         if ($$4 instanceof bsa) {
-            $$2.a(cbd.y, (bsa)$$4);
-         }
-      } else {
-         $$2.b(cbd.x);
-      }
+   protected enk a(int $$0) {
+      this.o = new end(false);
+      this.o.a(true);
+      return new enk(this.o, $$0);
+   }
 
-      $$2.c(cbd.y).ifPresent($$2x -> {
-         if (!$$2x.bB() || $$2x.dN() != $$0) {
-            $$2.b(cbd.y);
-         }
-      });
+   @Override
+   protected boolean a() {
+      return true;
+   }
+
+   @Override
+   protected euk b() {
+      return new euk(this.a.du(), this.a.e(0.5), this.a.dA());
+   }
+
+   @Override
+   protected double a(euk $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(euk $$0, euk $$1) {
+      return this.a.bi() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(io $$0) {
+      return !this.b.a_($$0.d()).i();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

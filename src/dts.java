@@ -1,98 +1,89 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.Validate;
 
-public class dts {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<dts> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dts> i = new Object2ObjectOpenHashMap();
-   public static final dts a = a(new dts(1, null, $$0 -> new axi(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dts b = a(
-      new dts(2, "deflate", $$0 -> new axi(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dts c = a(new dts(3, "none", axi::new, BufferedOutputStream::new));
-   public static final dts d = a(
-      new dts(4, "lz4", $$0 -> new axi(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dts e = a(new dts(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final dts f = b;
-   private static volatile dts j = f;
-   private final int k;
+public class dts<T> implements dtn<T> {
+   private final jc<T> a;
    @Nullable
-   private final String l;
-   private final dts.a<InputStream> m;
-   private final dts.a<OutputStream> n;
+   private T b;
+   private final dto<T> c;
 
-   private dts(int $$0, @Nullable String $$1, dts.a<InputStream> $$2, dts.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
-
-   private static dts a(dts $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
+   public dts(jc<T> $$0, dto<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
-
-      return $$0;
    }
 
-   @Nullable
-   public static dts a(int $$0) {
-      return (dts)h.get($$0);
+   public static <A> dtn<A> a(int $$0, jc<A> $$1, dto<A> $$2, List<A> $$3) {
+      return new dts<>($$1, $$2, $$3);
    }
 
-   public static void a(String $$0) {
-      dts $$1 = (dts)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
       } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         this.b = $$0;
+         return 0;
       }
    }
 
-   public static dts a() {
-      return j;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
    }
 
+   @Override
+   public void a(vx $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vx $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wo.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
    public int b() {
-      return this.k;
+      return 1;
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
-   }
-
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
-   }
-
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   @Override
+   public dtn<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

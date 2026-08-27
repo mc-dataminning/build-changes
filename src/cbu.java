@@ -1,22 +1,60 @@
-import java.util.ArrayList;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class cbu extends ccd {
-   public static final float a = 10.0F;
+public class cbu {
+   private static final cbu a = new cbu();
+   private final List<bso> b;
+   private final Predicate<bso> c;
 
-   @Override
-   protected boolean a(bsa $$0, bsa $$1) {
-      return !$$0.dQ().a(cbd.U) && ccj.c($$0, $$1) && cfj.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   private cbu() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   private boolean e(bsa $$0, bsa $$1) {
-      List<UUID> $$2 = $$0.dQ().c(cbd.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cx());
+   public cbu(bso $$0, List<bso> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bso> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bso> $$3 = $$1x -> ccy.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected cbd<bsa> b() {
-      return cbd.B;
+   public static cbu a() {
+      return a;
+   }
+
+   public Optional<bso> a(Predicate<bso> $$0) {
+      for (bso $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public Iterable<bso> b(Predicate<bso> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bso> c(Predicate<bso> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bso $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bso> $$0) {
+      for (bso $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

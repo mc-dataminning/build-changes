@@ -1,16 +1,12 @@
-public class ghj extends gje<brs> {
-   private static final akh a = new akh("textures/entity/squid/glow_squid.png");
+public class ghj extends giz<cem, fsr<cem>> {
+   private static final akm a = new akm("textures/entity/dolphin.png");
 
-   public ghj(ggx.a $$0, fud<brs> $$1) {
-      super($$0, $$1);
+   public ghj(ght.a $$0) {
+      super($$0, new fsr<>($$0.a(fvv.M)), 0.7F);
+      this.a(new glm(this, $$0.d()));
    }
 
-   public akh a(brs $$0) {
+   public akm a(cem $$0) {
       return a;
-   }
-
-   protected int a(brs $$0, in $$1) {
-      int $$2 = (int)axz.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

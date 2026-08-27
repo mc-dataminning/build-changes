@@ -1,21 +1,33 @@
-public record acp(wu b, wq.a c) implements zb<abm> {
-   public static final ys<wf, acp> a = ys.a(ww.d, acp::b, wq.a.a, acp::e, acp::new);
+import java.util.List;
 
-   @Override
-   public zd<acp> a() {
-      return afx.C;
+public record acp(acp.a b, List<String> c) implements ze<abq> {
+   public static final yv<vx, acp> a = ze.a(acp::a, acp::new);
+
+   private acp(vx $$0) {
+      this($$0.b(acp.a.class), $$0.a(vx::p));
    }
 
-   public void a(abm $$0) {
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vx::a);
+   }
+
+   @Override
+   public zg<acp> a() {
+      return agb.y;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public List<String> e() {
+      return this.c;
    }
 
-   public wq.a e() {
-      return this.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

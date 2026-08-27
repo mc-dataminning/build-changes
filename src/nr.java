@@ -1,32 +1,43 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public class nr {
-   @Deprecated
-   public static akh a(String $$0) {
-      return new akh("minecraft", "block/" + $$0);
+public class nr<T> {
+   final String a;
+   final Function<T, JsonElement> b;
+
+   public nr(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static akh b(String $$0) {
-      return new akh("minecraft", "item/" + $$0);
+   public nr<T>.a a(T $$0) {
+      return new nr.a($$0);
    }
 
-   public static akh a(dde $$0, String $$1) {
-      akh $$2 = ld.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   @Override
+   public String toString() {
+      return this.a;
    }
 
-   public static akh a(dde $$0) {
-      akh $$1 = ld.e.b($$0);
-      return $$1.d("block/");
-   }
+   public class a {
+      private final T b;
 
-   public static akh a(csu $$0) {
-      akh $$1 = ld.h.b($$0);
-      return $$1.d("item/");
-   }
+      public a(T $$1) {
+         this.b = $$1;
+      }
 
-   public static akh a(csu $$0, String $$1) {
-      akh $$2 = ld.h.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+      public nr<T> a() {
+         return nr.this;
+      }
+
+      public void a(JsonObject $$0) {
+         $$0.add(nr.this.a, nr.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return nr.this.a + "=" + this.b;
+      }
    }
 }

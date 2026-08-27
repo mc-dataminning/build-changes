@@ -1,15 +1,12 @@
-public class gjy extends giy<cje> {
-   private static final akh a = new akh("textures/entity/skeleton/wither_skeleton.png");
+public class gjy extends giz<cfc, fuw<cfc>> {
+   private static final akm a = new akm("textures/entity/snow_golem.png");
 
-   public gjy(ggx.a $$0) {
-      super($$0, fva.bX, fva.bY, fva.bZ);
+   public gjy(ght.a $$0) {
+      super($$0, new fuw<>($$0.a(fvv.bv)), 0.5F);
+      this.a(new gml(this, $$0.c(), $$0.b()));
    }
 
-   public akh a(cje $$0) {
+   public akm a(cfc $$0) {
       return a;
-   }
-
-   protected void a(cje $$0, exx $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

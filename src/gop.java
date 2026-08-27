@@ -1,12 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public record gop(goq d) {
-   public static final gop a = new gop(goq.b);
-   public static final Codec<gop> b = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(goq.a, "scaling", goq.b).forGetter(gop::a)).apply($$0, gop::new));
-   public static final asr<gop> c = asr.a("gui", b);
+public class gop extends aub<int[]> {
+   private static final akm a = new akm("textures/colormap/grass.png");
 
-   public goq a() {
-      return this.d;
+   protected int[] a(atw $$0, bmi $$1) {
+      try {
+         return gor.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, atw $$1, bmi $$2) {
+      dav.a($$0);
    }
 }

@@ -1,52 +1,88 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public interface bny {
-   bnx a();
+public class bny implements bnr {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bnp> b = new ObjectOpenHashSet();
+   private final bnx c = new bnx();
 
-   static <T> bny.b<T> a(T $$0, int $$1) {
-      return new bny.b<>($$0, bnx.a($$1));
+   public bny(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
+      }
    }
 
-   public static class a implements bny {
-      private final bnx a;
+   public static Set<bnp> a() {
+      Builder<bnp> $$0 = ImmutableSet.builder();
 
-      public a(int $$0) {
-         this.a = bnx.a($$0);
+      try {
+         bny.a $$1 = new bny.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bnp.a("cpu#" + $$1x, bno.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
 
-      public a(bnx $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bnx a() {
-         return this.a;
-      }
+      $$0.add(bnp.a("heap MiB", bno.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bnq.a.a());
+      return $$0.build();
    }
 
-   public static class b<T> implements bny {
-      private final T a;
-      private final bnx b;
+   @Override
+   public Set<bnp> a(Supplier<bmg> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
+   }
 
-      b(T $$0, bnx $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static bnp a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
 
-      public T b() {
-         return this.a;
-      }
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bnp.d $$3 = new bnp.d(2.0F);
+      return bnp.a("ticktime", bno.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
 
-      @Override
-      public bnx a() {
-         return this.b;
-      }
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
 
-      public static <E> Codec<bny.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bny.b::b), bnx.a.fieldOf("weight").forGetter(bny.b::a)).apply($$1, bny.b::new)
-         );
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
       }
    }
 }

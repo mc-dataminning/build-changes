@@ -1,65 +1,38 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record erp(iw<dde> b, Optional<dk> c) implements erq {
-   public static final Codec<erp> a = axh.b(
-      RecordCodecBuilder.create($$0 -> $$0.group(ld.e.r().fieldOf("block").forGetter(erp::c), axh.a(dk.a, "properties").forGetter(erp::d)).apply($$0, erp::new)),
-      erp::a
+public class erp extends eqq {
+   public static final Codec<wx> a = wz.a.validate($$0 -> cwx.h.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<erp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cwx.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eqp.a(100).forGetter($$0x -> $$0x.d))).apply($$0, erp::new)
    );
+   private final List<ard<wx>> c;
+   private final eqp d;
 
-   private static DataResult<erp> a(erp $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   protected erp(List<esl> $$0, List<ard<wx>> $$1, eqp $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public err b() {
-      return ers.k;
+   protected cto a(cto $$0, epf $$1) {
+      $$0.a(kb.I, cwx.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public cwx a(cwx $$0) {
+      List<ard<wx>> $$1 = this.d.a($$0.a(), this.c, 100);
+      return $$0.b($$1);
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return Set.of(erc.g);
-   }
-
-   public boolean a(eol $$0) {
-      dqh $$1 = $$0.c(erc.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
-
-   public static erp.a a(dde $$0) {
-      return new erp.a($$0);
-   }
-
-   public iw<dde> c() {
-      return this.b;
-   }
-
-   public Optional<dk> d() {
-      return this.c;
-   }
-
-   public static class a implements erq.a {
-      private final iw<dde> a;
-      private Optional<dk> b = Optional.empty();
-
-      public a(dde $$0) {
-         this.a = $$0.r();
-      }
-
-      public erp.a a(dk.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public erq build() {
-         return new erp(this.a, this.b);
-      }
+   public eqs b() {
+      return eqt.K;
    }
 }

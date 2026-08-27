@@ -1,139 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class pb extends po<dbc> {
-   public pb(lm $$0, CompletableFuture<iy.a> $$1) {
-      super($$0, le.az, $$1);
-   }
+public class pb implements pa.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(iy.a $$0) {
-      this.b(avq.a).a(dbj.X).a(dbj.V).a(dbj.T).a(dbj.R);
-      this.b(avq.b).b(avq.a).a(dbj.W).a(dbj.S).a(dbj.U).a(dbj.Q).a(dbj.P);
-      this.b(avq.c).a(dbj.M).a(dbj.N);
-      this.b(avq.d).a(dbj.K).a(dbj.L);
-      this.b(avq.e).a(dbj.D).a(dbj.H).a(dbj.I).a(dbj.J).a(dbj.G).a(dbj.E);
-      this.b(avq.f).a(dbj.A).a(dbj.B).a(dbj.C);
-      this.b(avq.g).a(dbj.t).a(dbj.v).a(dbj.u);
-      this.b(avq.h).a(dbj.p).a(dbj.q).a(dbj.n).a(dbj.o);
-      this.b(avq.i).a(dbj.z).a(dbj.x).a(dbj.y);
-      this.b(avq.j).a(dbj.i).a(dbj.j).a(dbj.k).a(dbj.m).a(dbj.l).a(dbj.F);
-      this.b(avq.k).a(dbj.r).a(dbj.s).a(dbj.w);
-      po.b<dbc> $$1 = this.b(avq.m);
-      dbq.a.a.a().forEach($$1::a);
-      po.b<dbc> $$2 = this.b(avq.l);
-      dbq.a.b.a().forEach($$2::a);
-      this.b(avq.n).a(dbj.ah).a(dbj.ai).a(dbj.aj).a(dbj.ak).a(dbj.al);
-      this.b(avq.p).b(avq.c);
-      this.b(avq.q).a(dbj.f);
-      this.b(avq.r).a(dbj.q).a(dbj.d).a(dbj.G);
-      this.b(avq.s).a(dbj.z).a(dbj.x);
-      this.b(avq.t)
-         .b(avq.b)
-         .b(avq.d)
-         .b(avq.c)
-         .b(avq.e)
-         .b(avq.g)
-         .b(avq.h)
-         .b(avq.i)
-         .b(avq.j)
-         .a(dbj.O)
-         .a(dbj.Y)
-         .a(dbj.e)
-         .a(dbj.w)
-         .a(dbj.f)
-         .a(dbj.r)
-         .a(dbj.d)
-         .a(dbj.b)
-         .a(dbj.c)
-         .a(dbj.g)
-         .a(dbj.h)
-         .a(dbj.s)
-         .a(dbj.Z)
-         .a(dbj.aa);
-      this.b(avq.u).b(avq.f);
-      this.b(avq.Y).a(dbj.ab);
-      this.b(avq.v).b(avq.a);
-      this.b(avq.X).b(avq.b).b(avq.d);
-      this.b(avq.w).a(dbj.W).a(dbj.U).a(dbj.S).a(dbj.X).a(dbj.V).a(dbj.T);
-      this.b(avq.x).a(dbj.Q).a(dbj.P).a(dbj.R);
-      this.b(avq.y).a(dbj.f).a(dbj.b).a(dbj.r).a(dbj.d).a(dbj.p).b(avq.e).a(dbj.F);
-      this.b(avq.z).a(dbj.f);
-      this.b(avq.A).b(avq.i);
-      this.b(avq.B).b(avq.b);
-      this.b(avq.C).a(dbj.g).a(dbj.h);
-      this.b(avq.D).b(avq.f).b(avq.g).a(dbj.s).a(dbj.w).a(dbj.O).b(avq.e);
-      this.b(avq.E).b(avq.c).b(avq.d).b(avq.h).b(avq.j).a(dbj.Y).a(dbj.e).a(dbj.Z).a(dbj.aa).a(dbj.r).a(dbj.d).a(dbj.b).a(dbj.c);
-      this.b(avq.F).b(avq.c);
-      this.b(avq.G).b(avq.b);
-      this.b(avq.J).a(dbj.g);
-      this.b(avq.K).a(dbj.f);
-      this.b(avq.L).a(dbj.b).a(dbj.D);
-      this.b(avq.M).a(dbj.r);
-      this.b(avq.N).a(dbj.d);
-      this.b(avq.O).a(dbj.p);
-      this.b(avq.P).a(dbj.p).a(dbj.q).a(dbj.n).a(dbj.o).a(dbj.m).a(dbj.x);
-      this.b(avq.Q).a(dbj.l);
-      this.b(avq.o)
-         .a(dbj.b)
-         .a(dbj.c)
-         .a(dbj.d)
-         .a(dbj.e)
-         .a(dbj.f)
-         .a(dbj.i)
-         .a(dbj.j)
-         .a(dbj.k)
-         .a(dbj.l)
-         .a(dbj.m)
-         .a(dbj.n)
-         .a(dbj.o)
-         .a(dbj.p)
-         .a(dbj.q)
-         .a(dbj.r)
-         .a(dbj.s)
-         .a(dbj.t)
-         .a(dbj.u)
-         .a(dbj.v)
-         .a(dbj.w)
-         .a(dbj.x)
-         .a(dbj.y)
-         .a(dbj.z)
-         .a(dbj.A)
-         .a(dbj.B)
-         .a(dbj.C)
-         .a(dbj.D)
-         .a(dbj.F)
-         .a(dbj.G)
-         .a(dbj.H)
-         .a(dbj.I)
-         .a(dbj.J)
-         .a(dbj.Y)
-         .a(dbj.Z)
-         .a(dbj.aa);
-      this.b(avq.H).b(avq.l);
-      this.b(avq.R).b(avq.m);
-      this.b(avq.S).a(dbj.af);
-      this.b(avq.T).a(dbj.ae).a(dbj.ac).a(dbj.af).a(dbj.ad);
-      this.b(avq.U).a(dbj.ab);
-      this.b(avq.V).b(avq.m);
-      this.b(avq.W).a(dbj.ai).a(dbj.aj);
-      this.b(avq.ac).a(dbj.P);
-      this.b(avq.Z).b(avq.b).b(avq.d);
-      this.b(avq.aa).a(dbj.g).a(dbj.h);
-      this.b(avq.ab).b(avq.b).b(avq.d).a(dbj.g).a(dbj.h);
-      this.b(avq.af).a(dbj.Y);
-      this.b(avq.ag).a(dbj.Y);
-      this.b(avq.ah).a(dbj.a);
-      this.b(avq.ai).a(dbj.d).a(dbj.e).a(dbj.H).a(dbj.I).a(dbj.G).a(dbj.W).a(dbj.X).a(dbj.F).a(dbj.ab).a(dbj.L).a(dbj.q).a(dbj.N).b(avq.n);
-      this.b(avq.aj).a(dbj.f).a(dbj.P).b(avq.i).b(avq.k).b(avq.m).b(avq.f).a(dbj.h);
-      this.b(avq.ak).a(dbj.f);
-      this.b(avq.al).a(dbj.d).a(dbj.e).a(dbj.W).a(dbj.q).a(dbj.L).a(dbj.N).a(dbj.H).a(dbj.I).a(dbj.G).a(dbj.F);
-      this.b(avq.am).b(avq.d);
-      this.b(avq.an).a(dbj.aa);
-      this.b(avq.ao).a(dbj.W).a(dbj.X);
-      this.b(avq.ap).b(avq.d);
-      this.b(avq.aq).a(dbj.g).a(dbj.h);
-      this.b(avq.ar).a(dbj.d).a(dbj.e).a(dbj.W).a(dbj.q).a(dbj.L).a(dbj.N).a(dbj.H).a(dbj.I).a(dbj.G).a(dbj.F);
-      this.b(avq.ad).a(dbj.z).a(dbj.Y).a(dbj.h).a(dbj.G).a(dbj.H).a(dbj.I).a(dbj.g).a(dbj.x);
-      this.b(avq.ae).a(dbj.A).a(dbj.ag).a(dbj.ae).a(dbj.f).a(dbj.B).a(dbj.ac).a(dbj.r).a(dbj.s).a(dbj.af).a(dbj.ad).a(dbj.w).a(dbj.C);
+   public ud apply(String $$0, ud $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static ud a(String $$0, ud $$1) {
+      elj $$2 = new elj();
+      int $$3 = us.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
+      }
+
+      ud $$5 = azj.f.a(azk.a(), $$1, $$3);
+      $$2.a(le.e.p(), $$5);
+      return $$2.a(new ud());
    }
 }

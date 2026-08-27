@@ -1,36 +1,16 @@
-import java.util.function.Function;
+import java.util.function.Consumer;
 
-public enum gsv {
-   a("movement", gsq::new),
-   b("find_tree", gsp::new),
-   c("punch_tree", gss::new),
-   d("open_inventory", gsr::new),
-   e("craft_planks", gso::new),
-   f("none", gsn::new);
+@FunctionalInterface
+public interface gsv {
+   gsv a = ($$0, $$1) -> {
+   };
 
-   private final String g;
-   private final Function<gst, ? extends gsu> h;
-
-   private <T extends gsu> gsv(String $$0, Function<gst, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   default gsv decorate(Consumer<gsz.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   public gsu a(gst $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gsv a(String $$0) {
-      for (gsv $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return f;
-   }
+   void send(gsw var1, Consumer<gsz.a> var2);
 }

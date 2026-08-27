@@ -1,117 +1,166 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public abstract class emg extends ely {
-   @Override
-   public elz d() {
-      return emb.b;
+public abstract class emg {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final emk b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
+
+   protected emg(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new emk($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
+      }
    }
 
-   @Override
-   public elz e() {
-      return emb.c;
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
    }
 
-   @Override
-   public csu a() {
-      return ctc.qz;
-   }
-
-   @Override
-   public void a(dad $$0, in $$1, ema $$2, ayg $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avc.BN, avd.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(kx.ai, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      });
+      $$1.forEach(this::e);
+   }
+
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
+   }
+
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
+   }
+
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
+   }
+
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = ayd.a($$2, 0, this.f - 1);
+         $$3 = ayd.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
+
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = ayd.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
+         }
       }
    }
 
-   @Nullable
-   @Override
-   public kv h() {
-      return kx.l;
-   }
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = ayd.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = ayd.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
 
-   @Override
-   protected boolean a(dad $$0) {
-      return $$0.aa().b(czz.U);
-   }
-
-   @Override
-   protected void a(dae $$0, in $$1, dqh $$2) {
-      dnm $$3 = $$2.t() ? $$0.c_($$1) : null;
-      dde.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(dag $$0) {
-      return 4;
-   }
-
-   @Override
-   public dqh b(ema $$0) {
-      return ddg.G.n().a(dhu.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(elz $$0) {
-      return $$0 == emb.c || $$0 == emb.b;
-   }
-
-   @Override
-   public int c(dag $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(dag $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(ema $$0, czj $$1, in $$2, elz $$3, is $$4) {
-      return $$4 == is.a && !$$3.a(avw.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<avb> j() {
-      return Optional.of(avc.di);
-   }
-
-   public static class a extends emg {
-      @Override
-      protected void a(dqi.a<elz, ema> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(ema $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ema $$0) {
-         return false;
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
       }
    }
 
-   public static class b extends emg {
-      @Override
-      public int d(ema $$0) {
-         return 8;
-      }
+   protected final boolean b() {
+      return this.d;
+   }
 
-      @Override
-      public boolean c(ema $$0) {
-         return true;
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = ayd.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
+
+               this.a($$1, $$2, false);
+            }
+         }
+
+         this.d = !this.b.b();
+         return $$0;
       }
    }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

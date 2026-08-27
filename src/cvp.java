@@ -1,92 +1,176 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Locale;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Consumer;
 
-public record cvp(int d, boolean e) implements cwd {
-   private static final Codec<cvp> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cvp::a), axh.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cvp::b)).apply($$0, cvp::new)
+public record cvp(Optional<ix<cvn>> d, Optional<Integer> e, List<brc> f) {
+   public static final cvp a = new cvp(Optional.empty(), Optional.empty(), List.of());
+   private static final wx g = wx.c("effect.none").a(n.h);
+   private static final int h = -524040;
+   private static final int i = -13083194;
+   private static final Codec<cvp> j = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               le.i.r().optionalFieldOf("potion").forGetter(cvp::f),
+               Codec.INT.optionalFieldOf("custom_color").forGetter(cvp::g),
+               brc.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cvp::e)
+            )
+            .apply($$0, cvp::new)
    );
-   public static final Codec<cvp> a = axh.a(f, Codec.INT, $$0 -> new cvp($$0, true));
-   public static final ys<ByteBuf, cvp> b = ys.a(yq.e, cvp::a, yq.b, cvp::b, cvp::new);
-   public static final int c = -6265536;
+   public static final Codec<cvp> b = Codec.withAlternative(j, le.i.r(), cvp::new);
+   public static final yv<wi, cvp> c = yv.a(yt.b(lf.Y).a(yt::a), cvp::f, yt.e.a(yt::a), cvp::g, brc.e.a(yt.a()), cvp::e, cvp::new);
 
-   public static int a(csz $$0, int $$1) {
-      cvp $$2 = $$0.a(ka.x);
-      return $$2 != null ? axj.b.e($$2.a()) : $$1;
+   public cvp(ix<cvn> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of());
    }
 
-   public static csz a(csz $$0, List<crt> $$1) {
-      if (!$$0.a(avz.bz)) {
-         return csz.i;
+   public static cto a(ctj $$0, ix<cvn> $$1) {
+      cto $$2 = new cto($$0);
+      $$2.b(kb.F, new cvp($$1));
+      return $$2;
+   }
+
+   public boolean a(ix<cvn> $$0) {
+      return this.d.isPresent() && this.d.get().a($$0) && this.f.isEmpty();
+   }
+
+   public Iterable<brc> a() {
+      if (this.d.isEmpty()) {
+         return this.f;
       } else {
-         csz $$2 = $$0.c(1);
-         int $$3 = 0;
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         int $$7 = 0;
-         cvp $$8 = $$2.a(ka.x);
-         if ($$8 != null) {
-            int $$9 = axj.b.b($$8.a());
-            int $$10 = axj.b.c($$8.a());
-            int $$11 = axj.b.d($$8.a());
-            $$6 += Math.max($$9, Math.max($$10, $$11));
-            $$3 += $$9;
-            $$4 += $$10;
-            $$5 += $$11;
-            $$7++;
-         }
-
-         for (crt $$12 : $$1) {
-            float[] $$13 = $$12.c().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$6 += Math.max($$14, Math.max($$15, $$16));
-            $$3 += $$14;
-            $$4 += $$15;
-            $$5 += $$16;
-            $$7++;
-         }
-
-         int $$17 = $$3 / $$7;
-         int $$18 = $$4 / $$7;
-         int $$19 = $$5 / $$7;
-         float $$20 = (float)$$6 / (float)$$7;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int $$22 = axj.b.a(0, $$17, $$18, $$19);
-         boolean $$23 = $$8 == null || $$8.b();
-         $$2.b(ka.x, new cvp($$22, $$23));
-         return $$2;
+         return (Iterable<brc>)(this.f.isEmpty() ? this.d.get().a().a() : Iterables.concat(this.d.get().a().a(), this.f));
       }
    }
 
-   @Override
-   public void a(Consumer<wu> $$0, cuq $$1) {
-      if (this.e) {
-         if ($$1.a()) {
-            $$0.accept(wu.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
-         } else {
-            $$0.accept(wu.c("item.dyed").a(n.h, n.u));
+   public void a(Consumer<brc> $$0) {
+      if (this.d.isPresent()) {
+         for (brc $$1 : this.d.get().a().a()) {
+            $$0.accept(new brc($$1));
+         }
+      }
+
+      for (brc $$2 : this.f) {
+         $$0.accept(new brc($$2));
+      }
+   }
+
+   public cvp b(ix<cvn> $$0) {
+      return new cvp(Optional.of($$0), this.e, this.f);
+   }
+
+   public cvp a(brc $$0) {
+      return new cvp(this.d, this.e, ac.a(this.f, $$0));
+   }
+
+   public int b() {
+      if (this.e.isPresent()) {
+         return this.e.get();
+      } else {
+         return this.d.isEmpty() ? -524040 : a(this.a());
+      }
+   }
+
+   public int c() {
+      return this.e.isPresent() ? this.e.get() : a(this.a());
+   }
+
+   public static int c(ix<cvn> $$0) {
+      return a($$0.a().a());
+   }
+
+   public static int a(Iterable<brc> $$0) {
+      return b($$0).orElse(-13083194);
+   }
+
+   public static OptionalInt b(Iterable<brc> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (brc $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().g();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * axo.b.b($$6);
+            $$2 += $$7 * axo.b.c($$6);
+            $$3 += $$7 * axo.b.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axo.b.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
+   }
+
+   public boolean d() {
+      return !this.f.isEmpty() ? true : this.d.isPresent() && !this.d.get().a().a().isEmpty();
+   }
+
+   public List<brc> e() {
+      return Lists.transform(this.f, brc::new);
+   }
+
+   public void a(Consumer<wx> $$0, float $$1, float $$2) {
+      a(this.a(), $$0, $$1, $$2);
+   }
+
+   public static void a(Iterable<brc> $$0, Consumer<wx> $$1, float $$2, float $$3) {
+      List<Pair<ix<btr>, btu>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (brc $$6 : $$0) {
+         $$5 = false;
+         xl $$7 = wx.c($$6.i());
+         ix<bra> $$8 = $$6.c();
+         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         if ($$6.e() > 0) {
+            $$7 = wx.a("potion.withAmplifier", $$7, wx.c("potion.potency." + $$6.e()));
+         }
+
+         if (!$$6.a(20)) {
+            $$7 = wx.a("potion.withDuration", $$7, brd.a($$6, $$2, $$3));
+         }
+
+         $$1.accept($$7.a($$8.a().f().a()));
+      }
+
+      if ($$5) {
+         $$1.accept(g);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(ww.a);
+         $$1.accept(wx.c("potion.whenDrank").a(n.f));
+
+         for (Pair<ix<btr>, btu> $$9 : $$4) {
+            btu $$10 = (btu)$$9.getSecond();
+            double $$11 = $$10.d();
+            double $$13;
+            if ($$10.e() != btu.a.b && $$10.e() != btu.a.c) {
+               $$13 = $$10.d();
+            } else {
+               $$13 = $$10.d() * 100.0;
+            }
+
+            if ($$11 > 0.0) {
+               $$1.accept(wx.a("attribute.modifier.plus." + $$10.e().a(), cwj.d.format($$13), wx.c(((btr)((ix)$$9.getFirst()).a()).c())).a(n.j));
+            } else if ($$11 < 0.0) {
+               $$13 *= -1.0;
+               $$1.accept(wx.a("attribute.modifier.take." + $$10.e().a(), cwj.d.format($$13), wx.c(((btr)((ix)$$9.getFirst()).a()).c())).a(n.m));
+            }
          }
       }
    }
 
-   public cvp a(boolean $$0) {
-      return new cvp(this.d, $$0);
-   }
-
-   public int a() {
+   public Optional<ix<cvn>> f() {
       return this.d;
    }
 
-   public boolean b() {
+   public Optional<Integer> g() {
       return this.e;
    }
 }

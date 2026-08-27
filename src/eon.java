@@ -1,57 +1,30 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public class eon {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public record eon<T>(akg<jj<T>> d, Codec<T> e, String f, eon.a<T> g) {
-   private static final Logger h = LogUtils.getLogger();
-   public static final eon<erq> a = new eon<>(le.aW, ers.a, "predicates", f());
-   public static final eon<epx> b = new eon<>(le.aV, epz.c, "item_modifiers", f());
-   public static final eon<eoq> c = new eon<>(le.aU, eoq.d, "loot_tables", g());
-
-   public void a(eor $$0, akg<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   public eon(int $$0) {
+      this($$0, a);
    }
 
-   public <V> Optional<T> a(akh $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
+   public eon(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static Stream<eon<?>> a() {
-      return Stream.of(a, b, c);
+   public boolean a() {
+      return !this.c.equals(a);
    }
 
-   private static <T extends eom> eon.a<T> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public String b() {
+      return this.c;
    }
 
-   private static eon.a<eoq> g() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public int c() {
+      return this.b;
    }
 
-   public akg<jj<T>> b() {
-      return this.d;
-   }
-
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   public eon.a<T> e() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(eor var1, akg<T> var2, T var3);
+   public boolean a(eon $$0) {
+      return this.b().equals($$0.b());
    }
 }

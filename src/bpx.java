@@ -1,60 +1,30 @@
-public class bpx {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = ayy.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import com.mojang.serialization.Codec;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)ayy.a / (double)this.b);
-   }
+public record bpx(String d) {
+   public static final bpx a = new bpx("");
+   public static final Codec<bpx> b = Codec.STRING.xmap(bpx::new, bpx::a);
+   public static final String c = "Lock";
 
-   public float f() {
-      return this.b;
-   }
-
-   public float g() {
-      return (float)this.c / (float)ayy.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   public boolean a(cto $$0) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         wx $$1 = $$0.a(kb.f);
+         return $$1 != null && this.d.equals($$1.getString());
       }
    }
 
-   public boolean a(brh $$0) {
-      return !this.i() && !($$0 instanceof clh) && $$0.cV() <= 0;
+   public void a(ud $$0) {
+      if (!this.d.isEmpty()) {
+         $$0.a("Lock", this.d);
+      }
+   }
+
+   public static bpx b(ud $$0) {
+      return $$0.b("Lock", 8) ? new bpx($$0.l("Lock")) : a;
+   }
+
+   public String a() {
+      return this.d;
    }
 }

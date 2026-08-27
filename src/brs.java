@@ -1,83 +1,38 @@
-public class brs extends ceo {
-   private static final ajm<Integer> cc = ajq.a(brs.class, ajo.b);
+public class brs {
+   public static final brs a = new brs(0.75F, 0.5F, 0.25F);
+   public static final brs b = new brs(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-   public brs(brn<? extends brs> $$0, dad $$1) {
-      super($$0, $$1);
+   private brs(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   protected kv r() {
-      return kx.aM;
-   }
-
-   @Override
-   protected void a(ajq.a $$0) {
-      super.a($$0);
-      $$0.a(cc, 0);
-   }
-
-   @Override
-   protected avb u() {
-      return avc.kE;
-   }
-
-   @Override
-   protected avb v() {
-      return avc.kB;
-   }
-
-   @Override
-   protected avb d(bqf $$0) {
-      return avc.kD;
-   }
-
-   @Override
-   protected avb o_() {
-      return avc.kC;
-   }
-
-   @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+   public brs.a a(float $$0) {
+      if ($$0 < this.e) {
+         return brs.a.d;
+      } else if ($$0 < this.d) {
+         return brs.a.c;
+      } else {
+         return $$0 < this.c ? brs.a.b : brs.a.a;
       }
-
-      this.dN().a(kx.aN, this.d(0.6), this.dv(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
-   @Override
-   public boolean a(bqf $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
-      }
-
-      return $$2;
+   public brs.a a(cto $$0) {
+      return !$$0.l() ? brs.a.a : this.a($$0.n(), $$0.o());
    }
 
-   private void c(int $$0) {
-      this.ao.a(cc, $$0);
+   public brs.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   public int y() {
-      return this.ao.a(cc);
-   }
-
-   public static boolean a(brn<? extends bsa> $$0, das $$1, bse $$2, in $$3, ayg $$4) {
-      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(ddg.G);
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,20 +1,15 @@
 public interface dvc {
-   dve a();
+   dvc a = new dvc() {
+      @Override
+      public void a() {
+      }
 
-   int b();
+      @Override
+      public void a(bru.c $$0) {
+      }
+   };
 
-   boolean a(aqh var1, iw<dva> var2, dva.a var3, etp var4);
+   void a();
 
-   default dvc.a c() {
-      return dvc.a.a;
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
-
-   public interface b<T extends dvc> {
-      T c();
-   }
+   void a(bru.c var1);
 }

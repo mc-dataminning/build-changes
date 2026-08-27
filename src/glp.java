@@ -1,12 +1,12 @@
-public class glp<T extends brh, M extends fuc<T>> extends gku<T, M> {
-   private static final gbw a = gbw.p(new akh("textures/entity/spider_eyes.png"));
+public class glp<T extends bso> extends glr<T, fsu<T>> {
+   private static final gcs a = gcs.p(new akm("textures/entity/enderman/enderman_eyes.png"));
 
-   public glp(gis<T, M> $$0) {
+   public glp(gjp<T, fsu<T>> $$0) {
       super($$0);
    }
 
    @Override
-   public gbw a() {
+   public gcs a() {
       return a;
    }
 }

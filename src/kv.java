@@ -1,13 +1,12 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+public class kv {
+   private final int b;
+   public static final kv a = new kv(1000);
 
-public interface kv {
-   kw<?> a();
+   public kv(int $$0) {
+      this.b = $$0;
+   }
 
-   String a(iy.a var1);
-
-   @Deprecated
-   public interface a<T extends kv> {
-      T b(kw<T> var1, StringReader var2, iy.a var3) throws CommandSyntaxException;
+   public int a() {
+      return this.b;
    }
 }

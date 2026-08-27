@@ -1,11 +1,25 @@
-public interface zs extends abj, aga {
-   void a(zv var1);
+public record zs(String b, int c) implements ze<zk> {
+   public static final yv<vx, zs> a = ze.a(zs::a, zs::new);
 
-   void a(zw var1);
+   private zs(vx $$0) {
+      this($$0.p(), $$0.l());
+   }
 
-   void a(zu var1);
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
 
-   void a(zx var1);
+   @Override
+   public zg<zs> a() {
+      return zu.h;
+   }
 
-   void a(zt var1);
+   public void a(zk $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
 }

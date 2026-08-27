@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fac {
+public class fac extends fao {
+   public volatile String a = "0";
+   public volatile String b = "";
 }

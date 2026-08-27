@@ -1,49 +1,166 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public class fdx {
-   public static void a(fsk<?> $$0, fdv $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+public class fdx implements Comparable<fdx> {
+   private static final Map<String, fdx> h = Maps.newHashMap();
+   private static final Map<exn.a, fdx> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final exn.a m;
+   private final String n;
+   private exn.a o;
+   private boolean p;
+   private int q;
 
-      for (Entry<String, List<fdu>> $$6 : $$1.c().entrySet()) {
-         Optional<fvb> $$7 = $$0.a($$6.getKey());
-         List<fdu> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fdw[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, axz.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fdw $$8x = $$5x[$$6x];
-               fdw $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = axz.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
-
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+   public static void a(exn.a $$0) {
+      fdx $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
       }
    }
 
-   private static float a(fdv $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   public static void a(exn.a $$0, boolean $$1) {
+      fdx $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
+   public static void a() {
+      for (fdx $$0 : h.values()) {
+         if ($$0.o.a() == exn.b.a && $$0.o.b() != exn.bv.b()) {
+            $$0.a(exn.a(fdz.Q().aP().i(), $$0.o.b()));
+         }
+      }
    }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   public static void b() {
+      for (fdx $$0 : h.values()) {
+         $$0.n();
+      }
    }
 
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   public static void c() {
+      for (fdx $$0 : h.values()) {
+         if ($$0 instanceof fen $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (fdx $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public fdx(String $$0, int $$1, String $$2) {
+      this($$0, exn.b.a, $$1, $$2);
+   }
+
+   public fdx(String $$0, exn.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public exn.a i() {
+      return this.m;
+   }
+
+   public void b(exn.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(fdx $$0) {
+      return this.n.equals($$0.n) ? gpb.a(this.l).compareTo(gpb.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<wx> a(String $$0) {
+      fdx $$1 = h.get($$0);
+      return $$1 == null ? () -> wx.c($$0) : $$1::k;
+   }
+
+   public boolean b(fdx $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(exn.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == exn.bv.b() ? this.o.a() == exn.b.b && this.o.b() == $$1 : this.o.a() == exn.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == exn.b.c && this.o.b() == $$0;
+   }
+
+   public wx k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
 }

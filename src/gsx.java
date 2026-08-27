@@ -1,37 +1,59 @@
-public class gsx extends gtb {
-   private final wu a;
-   private ffx b = ffx.a;
-   private final fld c;
-   private int B;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gsx(fld $$0, wu $$1, wu $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class gsx implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bla d;
+   @Nullable
+   private CompletableFuture<Optional<gst>> e;
+
+   private gsx(bla $$0) {
+      this.d = $$0;
+   }
+
+   public static CompletableFuture<Optional<gsx>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bla $$1 = bla.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gsx($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.g());
+   }
+
+   public CompletableFuture<Optional<gsu>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bla.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gst($$1, ac.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.g());
+      }
+
+      return this.e.thenApply($$0 -> $$0.map(gst::a));
    }
 
    @Override
-   public void aM_() {
-      this.m.ae().i();
-      this.b = ffx.a(this.p, this.a, this.n - 50);
-      this.B = this.b.a() * 9;
-      this.c(ffe.a(wt.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
-   }
-
-   @Override
-   public wu i() {
-      return wu.i().b(this.l).f(": ").b(this.a);
-   }
-
-   @Override
-   public void d() {
-      fde.Q().a(this.c);
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(gst::close));
+      }
    }
 }

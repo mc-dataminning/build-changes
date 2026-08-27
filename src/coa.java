@@ -1,97 +1,138 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class coa extends cnr {
+   private static final ajr<Boolean> e = ajv.a(coa.class, ajt.k);
+   private int i;
+   public double c;
+   public double d;
+   private static final cxr j = cxr.a(ctr.ow, ctr.ox);
 
-public record coa(int c, float d, boolean e, float f, List<coa.b> g) {
-   private static final float h = 1.6F;
-   public static final Codec<coa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axh.i.fieldOf("nutrition").forGetter(coa::b),
-               Codec.FLOAT.fieldOf("saturation_modifier").forGetter(coa::c),
-               axh.a(Codec.BOOL, "can_always_eat", false).forGetter(coa::d),
-               axh.a(axh.k, "eat_seconds", 1.6F).forGetter(coa::e),
-               axh.a(coa.b.a.listOf(), "effects", List.of()).forGetter(coa::f)
-            )
-            .apply($$0, coa::new)
-   );
-   public static final ys<wf, coa> b = ys.a(yq.f, coa::b, yq.h, coa::c, yq.b, coa::d, yq.h, coa::e, coa.b.b.a(yq.a()), coa::f, coa::new);
-
-   public int a() {
-      return (int)(this.f * 20.0F);
+   public coa(bsa<? extends coa> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   public int b() {
-      return this.c;
+   public coa(dax $$0, double $$1, double $$2, double $$3) {
+      super(bsa.S, $$0, $$1, $$2, $$3);
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   public cnr.a v() {
+      return cnr.a.c;
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   protected void a(ajv.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
    }
 
-   public float e() {
-      return this.f;
-   }
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dP().x_()) {
+         if (this.i > 0) {
+            this.i--;
+         }
 
-   public List<coa.b> f() {
-      return this.g;
-   }
+         if (this.i <= 0) {
+            this.c = 0.0;
+            this.d = 0.0;
+         }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private final Builder<coa.b> e = ImmutableList.builder();
-
-      public coa.a a(int $$0) {
-         this.a = $$0;
-         return this;
+         this.b(this.i > 0);
       }
 
-      public coa.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public coa.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public coa.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public coa.a a(bqt $$0, float $$1) {
-         this.e.add(new coa.b($$0, $$1));
-         return this;
-      }
-
-      public coa c() {
-         return new coa(this.a, this.b, this.c, this.d, this.e.build());
+      if (this.B() && this.ah.a(4) == 0) {
+         this.dP().a(ky.X, this.du(), this.dw() + 0.8, this.dA(), 0.0, 0.0, 0.0);
       }
    }
 
-   public static record b(bqt c, float d) {
-      public static final Codec<coa.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bqt.d.fieldOf("effect").forGetter(coa.b::a), axh.a(Codec.floatRange(0.0F, 1.0F), "probability", 1.0F).forGetter(coa.b::b))
-               .apply($$0, coa.b::new)
-      );
-      public static final ys<wf, coa.b> b = ys.a(bqt.e, coa.b::a, yq.h, coa.b::b, coa.b::new);
+   @Override
+   protected double p() {
+      return (this.be() ? 3.0 : 4.0) / 20.0;
+   }
 
-      public bqt a() {
-         return new bqt(this.c);
+   @Override
+   protected ctj ag_() {
+      return ctr.nO;
+   }
+
+   @Override
+   protected void c(io $$0, drb $$1) {
+      double $$2 = 1.0E-4;
+      double $$3 = 0.001;
+      super.c($$0, $$1);
+      euk $$4 = this.ds();
+      double $$5 = $$4.i();
+      double $$6 = this.c * this.c + this.d * this.d;
+      if ($$6 > 1.0E-4 && $$5 > 0.001) {
+         double $$7 = Math.sqrt($$5);
+         double $$8 = Math.sqrt($$6);
+         this.c = $$4.c / $$7 * $$8;
+         this.d = $$4.e / $$7 * $$8;
+      }
+   }
+
+   @Override
+   protected void u() {
+      double $$0 = this.c * this.c + this.d * this.d;
+      if ($$0 > 1.0E-7) {
+         $$0 = Math.sqrt($$0);
+         this.c /= $$0;
+         this.d /= $$0;
+         euk $$1 = this.ds().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         if (this.be()) {
+            $$1 = $$1.a(0.1);
+         }
+
+         this.g($$1);
+      } else {
+         this.g(this.ds().d(0.98, 0.0, 0.98));
       }
 
-      public float b() {
-         return this.d;
+      super.u();
+   }
+
+   @Override
+   public bpu a(clw $$0, bpt $$1) {
+      cto $$2 = $$0.b($$1);
+      if (j.a($$2) && this.i + 3600 <= 32000) {
+         $$2.a(1, $$0);
+         this.i += 3600;
       }
+
+      if (this.i > 0) {
+         this.c = this.du() - $$0.du();
+         this.d = this.dA() - $$0.dA();
+      }
+
+      return bpu.a(this.dP().B);
+   }
+
+   @Override
+   protected void b(ud $$0) {
+      super.b($$0);
+      $$0.a("PushX", this.c);
+      $$0.a("PushZ", this.d);
+      $$0.a("Fuel", (short)this.i);
+   }
+
+   @Override
+   protected void a(ud $$0) {
+      super.a($$0);
+      this.c = $$0.k("PushX");
+      this.d = $$0.k("PushZ");
+      this.i = $$0.g("Fuel");
+   }
+
+   protected boolean B() {
+      return this.ao.a(e);
+   }
+
+   protected void b(boolean $$0) {
+      this.ao.a(e, $$0);
+   }
+
+   @Override
+   public drb x() {
+      return dea.cD.n().a(dhf.a, it.c).a(dhf.b, Boolean.valueOf(this.B()));
    }
 }

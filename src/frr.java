@@ -1,38 +1,60 @@
-public class frr<T extends brh> extends fsk<T> {
-   private final fvb a;
-   private final fvb b;
+import java.util.function.Function;
 
-   public frr(fvb $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail_fin");
+public abstract class frr<E extends bru> extends fsw<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected frr(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
    }
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fvg.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), fvd.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", fvg.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fvd.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", fvg.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), fvd.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", fvg.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fvd.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fvg.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fvd.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", fvg.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), fvd.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", fvg.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), fvd.a(0.0F, 20.0F, 0.0F));
-      return fvh.a($$0, 32, 32);
+   protected frr(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(gcs::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected frr(Function<akm, gcs> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   protected frr() {
+      this(false, 5.0F, 2.0F);
    }
 
    @Override
-   public fvb a() {
-      return this.a;
-   }
+   public void a(eys $$0, eyw $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.5F;
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
-
-      this.b.f = -$$6 * 0.45F * axz.a(0.6F * $$3);
    }
+
+   protected abstract Iterable<fvw> a();
+
+   protected abstract Iterable<fvw> b();
 }

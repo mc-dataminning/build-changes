@@ -1,17 +1,14 @@
-public interface els {
-   void a(in var1);
+import com.mojang.serialization.MapCodec;
 
-   boolean K_();
+public interface els<P extends elr> {
+   els<elp> a = a("clear", elp.a);
+   els<elq> b = a("passthrough", elq.b);
+   els<elo> c = a("append_static", elo.a);
+   els<eln> d = a("append_loot", eln.a);
 
-   int a();
+   MapCodec<P> codec();
 
-   default void a(in $$0, boolean $$1) {
-      this.a(jp.a($$0), $$1);
+   private static <P extends elr> els<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.p, $$0, () -> $$1);
    }
-
-   void a(jp var1, boolean var2);
-
-   void a(czk var1, boolean var2);
-
-   void b(czk var1);
 }

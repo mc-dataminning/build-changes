@@ -1,22 +1,49 @@
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class fes extends gob {
-   private static final Set<asq<?>> a = Set.of(goj.a, gop.c);
+public class fes {
+   public static void a(ftf<?> $$0, feq $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
 
-   public fes(gmz $$0) {
-      super($$0, new akh("textures/atlas/gui.png"), new akh("gui"), a);
+      for (Entry<String, List<fep>> $$6 : $$1.c().entrySet()) {
+         Optional<fvw> $$7 = $$0.a($$6.getKey());
+         List<fep> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               fer[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, ayd.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               fer $$8x = $$5x[$$6x];
+               fer $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = ayd.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
+               } else {
+                  $$11 = 0.0F;
+               }
+
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
+      }
    }
 
-   @Override
-   public gmy a(akh $$0) {
-      return super.a($$0);
+   private static float a(feq $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
    }
 
-   public goq a(gmy $$0) {
-      return this.b($$0).a();
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
    }
 
-   private gop b(gmy $$0) {
-      return $$0.e().f().a(gop.c).orElse(gop.a);
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   }
+
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
    }
 }

@@ -1,84 +1,59 @@
-public abstract class cnp extends brh {
-   protected static final ajm<Integer> f = ajq.a(cnp.class, ajo.b);
-   protected static final ajm<Integer> g = ajq.a(cnp.class, ajo.b);
-   protected static final ajm<Float> h = ajq.a(cnp.class, ajo.d);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   public cnp(brn<?> $$0, dad $$1) {
-      super($$0, $$1);
+public class cnp {
+   private final List<cnm> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cnm> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   @Override
-   public boolean a(bqf $$0, float $$1) {
-      if (this.dN().B || this.dI()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
+   public cnp a(int $$0, float $$1) {
+      this.a.add(new cnm($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cnp a(Collection<cnm> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cnm> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         this.n(-this.P());
-         this.d(10);
-         this.bt();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dva.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof clh && ((clh)$$0.d()).gb().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.am();
+         cnm $$1 = this.a.get(this.b);
+         cnm $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cnm $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
-         } else {
-            this.a($$0);
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         return true;
+         return $$5;
       }
    }
-
-   boolean d(bqf $$0) {
-      return false;
-   }
-
-   public void b(csu $$0) {
-      this.al();
-      if (this.dN().aa().b(czz.i)) {
-         csz $$1 = new csz($$0);
-         $$1.b(ka.f, this.af());
-         this.b($$1);
-      }
-   }
-
-   @Override
-   protected void a(ajq.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.ao.a(f, $$0);
-   }
-
-   public void n(int $$0) {
-      this.ao.a(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.ao.a(h, $$0);
-   }
-
-   public float N() {
-      return this.ao.a(h);
-   }
-
-   public int O() {
-      return this.ao.a(f);
-   }
-
-   public int P() {
-      return this.ao.a(g);
-   }
-
-   protected void a(bqf $$0) {
-      this.b(this.ag_());
-   }
-
-   abstract csu ag_();
 }

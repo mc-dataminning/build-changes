@@ -1,130 +1,115 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fir implements fis {
-   public static final int a = 33;
-   private static final int b = 30;
-   private final fip c = new fip();
-   private final fip d = new fip();
-   private final fip e = new fip();
-   private final fld f;
-   private int g;
-   private int h;
+public class fir extends gng implements gnh {
+   private static final int e = 256;
+   private final fis f;
+   private final boolean g;
+   private final fir.a h;
 
-   public fir(fld $$0) {
-      this($$0, 33);
-   }
-
-   public fir(fld $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public fir(fld $$0, int $$1, int $$2) {
-      this.f = $$0;
+   public fir(fis $$0, boolean $$1) {
       this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+      this.h = new fir.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? ext.b.a : ext.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
    @Override
-   public void m(int $$0) {
+   public void a(atw $$0) {
    }
 
    @Override
-   public void n(int $$0) {
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fiu a(eww $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         fir.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fiu(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
    }
 
    @Override
-   public int C() {
-      return 0;
+   public void a(akm $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   @Override
-   public int D() {
-      return 0;
-   }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fir.a e;
+      @Nullable
+      private fir.a f;
+      private boolean g;
 
-   @Override
-   public int x() {
-      return this.f.n;
-   }
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   @Override
-   public int v() {
-      return this.f.o;
-   }
+      @Nullable
+      fir.a a(eww $$0) {
+         if (this.e != null && this.f != null) {
+            fir.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
 
-   public int b() {
-      return this.h;
-   }
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fir.a(this.a, this.b, $$2, this.d);
+                  this.f = new fir.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fir.a(this.a, this.b, this.c, $$3);
+                  this.f = new fir.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
 
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.f.o - this.c() - this.b();
-   }
-
-   @Override
-   public void b(Consumer<fit> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
-
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.n);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.n);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.o - $$1);
-      this.e.b(this.f.n);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.o - $$1 - this.e.v();
-      this.e.c(0, Math.min($$2, $$3));
-   }
-
-   public <T extends fit> T a(T $$0) {
-      return this.c.a($$0);
-   }
-
-   public <T extends fit> T a(T $$0, Consumer<fiu> $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   public void a(wu $$0, fep $$1) {
-      this.c.a(new fgl($$0, $$1));
-   }
-
-   public <T extends fit> T b(T $$0) {
-      return this.d.a($$0);
-   }
-
-   public <T extends fit> T b(T $$0, Consumer<fiu> $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   public <T extends fit> T c(T $$0) {
-      return this.e.a($$0);
-   }
-
-   public <T extends fit> T c(T $$0, Consumer<fiu> $$1) {
-      return this.e.a($$0, $$1);
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

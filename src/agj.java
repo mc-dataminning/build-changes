@@ -1,34 +1,20 @@
-public class agj implements zb<afz> {
-   public static final ys<vu, agj> a = zb.a(agj::a, agj::new);
-   private final agj.a b;
+public record agj(String b) implements ze<agd> {
+   public static final yv<vx, agj> a = ze.a(agj::a, agj::new);
 
-   public agj(agj.a $$0) {
-      this.b = $$0;
+   private agj(vx $$0) {
+      this($$0.d(256));
    }
 
-   private agj(vu $$0) {
-      this.b = $$0.b(agj.a.class);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b, 256);
    }
 
    @Override
-   public zd<agj> a() {
-      return afx.bm;
+   public zg<agj> a() {
+      return agb.bi;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
-   }
-
-   public agj.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class aur implements ec {
-   private static final String b = "Rcon";
-   private static final wu c = wu.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
-
-   public aur(MinecraftServer $$0) {
-      this.e = $$0;
-   }
-
-   public void e() {
-      this.d.setLength(0);
-   }
-
-   public String f() {
-      return this.d.toString();
-   }
-
-   public ed g() {
-      aqh $$0 = this.e.I();
-      return new ed(this, etp.a($$0.U()), eto.a, $$0, 4, "Rcon", c, this.e, null);
+public class aur extends auo<GameProfile, aus> {
+   public aur(File $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(wu $$0) {
-      this.d.append($$0.getString());
+   protected aun<GameProfile> a(JsonObject $$0) {
+      return new aus($$0);
+   }
+
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
    @Override
-   public boolean l_() {
-      return true;
+   public String[] a() {
+      return this.d().stream().map(aun::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   @Override
-   public boolean w_() {
-      return true;
-   }
-
-   @Override
-   public boolean U_() {
-      return this.e.m();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

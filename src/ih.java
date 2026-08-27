@@ -1,48 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.brigadier.arguments.LongArgumentType;
 
-public class ih implements hx<StringArgumentType, ih.a> {
-   public void a(ih.a $$0, vu $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public class ih implements hy<LongArgumentType, ih.a> {
+   public void a(ih.a $$0, vx $$1) {
+      boolean $$2 = $$0.b != Long.MIN_VALUE;
+      boolean $$3 = $$0.c != Long.MAX_VALUE;
+      $$1.k(ia.a($$2, $$3));
+      if ($$2) {
+         $$1.b($$0.b);
+      }
+
+      if ($$3) {
+         $$1.b($$0.c);
+      }
    }
 
-   public ih.a a(vu $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new ih.a($$1);
+   public ih.a a(vx $$0) {
+      byte $$1 = $$0.readByte();
+      long $$2 = ia.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
+      long $$3 = ia.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      return new ih.a($$2, $$3);
    }
 
    public void a(ih.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new IncompatibleClassChangeError();
-      });
-   }
-
-   public ih.a a(StringArgumentType $$0) {
-      return new ih.a($$0.getType());
-   }
-
-   public final class a implements hx.a<StringArgumentType> {
-      final StringType b;
-
-      public a(StringType $$1) {
-         this.b = $$1;
+      if ($$0.b != Long.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      public StringArgumentType a(dz $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new IncompatibleClassChangeError();
-         };
+      if ($$0.c != Long.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public ih.a a(LongArgumentType $$0) {
+      return new ih.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements hy.a<LongArgumentType> {
+      final long b;
+      final long c;
+
+      a(long $$1, long $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public LongArgumentType a(ea $$0) {
+         return LongArgumentType.longArg(this.b, this.c);
       }
 
       @Override
-      public hx<StringArgumentType, ?> a() {
+      public hy<LongArgumentType, ?> a() {
          return ih.this;
       }
    }

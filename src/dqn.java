@@ -1,96 +1,76 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class dqn {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dql>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+   static final String a = "shared_data";
+   static Codec<dqn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cto.a("display_item").forGetter($$0x -> $$0x.d),
+               jr.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dql.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dqn::new)
+   );
+   private cto d = cto.i;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dql.b.d();
+   boolean c;
 
-   private dqn() {
-      this.c.put(' ', $$0 -> true);
+   dqn(cto $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
    }
 
-   public dqn a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
+   dqn() {
+   }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+   public cto a() {
+      return this.d;
+   }
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
+   public boolean b() {
+      return !this.d.e();
+   }
 
-            this.b.add($$0);
-            return this;
-         }
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+   public void a(cto $$0) {
+      if (!cto.a(this.d, $$0)) {
+         this.d = $$0.s();
+         this.f();
       }
    }
 
-   public static dqn a() {
-      return new dqn();
+   boolean c() {
+      return !this.e.isEmpty();
    }
 
-   public dqn a(char $$0, Predicate<dql> $$1) {
-      this.c.put($$0, $$1);
-      return this;
+   Set<UUID> d() {
+      return this.e;
    }
 
-   public dqm b() {
-      return new dqm(this.c());
+   double e() {
+      return this.f;
    }
 
-   private Predicate<dql>[][][] c() {
-      this.d();
-      Predicate<dql>[][][] $$0 = (Predicate<dql>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
+   void a(aqm $$0, io $$1, dqm $$2, dql $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
       }
-
-      return $$0;
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   private void f() {
+      this.c = true;
+   }
 
-      for (Entry<Character, Predicate<dql>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   void a(dqn $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

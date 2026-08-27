@@ -1,15 +1,11 @@
-public class ggu extends gid<cie, fsa<cie>> {
-   private static final akh a = new akh("textures/entity/endermite.png");
+public class ggu extends giz<cdz, frz> {
+   private static final akm a = new akm("textures/entity/bat.png");
 
-   public ggu(ggx.a $$0) {
-      super($$0, new fsa<>($$0.a(fva.Y)), 0.3F);
+   public ggu(ght.a $$0) {
+      super($$0, new frz($$0.a(fvv.h)), 0.25F);
    }
 
-   protected float a(cie $$0) {
-      return 180.0F;
-   }
-
-   public akh b(cie $$0) {
+   public akm a(cdz $$0) {
       return a;
    }
 }

@@ -1,42 +1,116 @@
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class cqr extends csu {
-   public cqr(csu.a $$0) {
-      super($$0);
+public class cqr extends cpv {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   public static final int n = 3;
+   public static final int s = 8;
+   public static final int t = 26;
+   public static final int u = 44;
+   private static final int w = 98;
+   public static final int v = 48;
+   private final dax x;
+   @Nullable
+   private cxw<cyk> y;
+   private final List<cxw<cyk>> z;
+
+   public cqr(int $$0, clv $$1) {
+      this($$0, $$1, cpe.a);
+   }
+
+   public cqr(int $$0, clv $$1, cpe $$2) {
+      super(cqa.v, $$0, $$1, $$2);
+      this.x = $$1.l.dP();
+      this.z = this.x.r().a(cxz.g);
    }
 
    @Override
-   public bpm a(cwk $$0) {
-      is $$1 = $$0.k();
-      if ($$1 == is.a) {
-         return bpm.e;
+   protected cpw l() {
+      return cpw.a()
+         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
+         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
+         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
+         .a(3, 98, 48)
+         .a();
+   }
+
+   @Override
+   protected boolean a(drb $$0) {
+      return $$0.a(dea.ob);
+   }
+
+   @Override
+   protected boolean a(clw $$0, boolean $$1) {
+      return this.y != null && this.y.b().a(this.q, this.x);
+   }
+
+   @Override
+   protected void a(clw $$0, cto $$1) {
+      $$1.a($$0.dP(), $$0, $$1.I());
+      this.r.a($$0, this.n());
+      this.e(0);
+      this.e(1);
+      this.e(2);
+      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
+   }
+
+   private List<cto> n() {
+      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
+   }
+
+   private void e(int $$0) {
+      cto $$1 = this.q.a($$0);
+      if (!$$1.e()) {
+         $$1.h(1);
+         this.q.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void m() {
+      List<cxw<cyk>> $$0 = this.x.r().b(cxz.g, this.q, this.x);
+      if ($$0.isEmpty()) {
+         this.r.a(0, cto.i);
       } else {
-         dad $$2 = $$0.q();
-         cwi $$3 = new cwi($$0);
-         in $$4 = $$3.a();
-         csz $$5 = $$0.n();
-         etp $$6 = etp.c($$4);
-         etk $$7 = brn.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof aqh $$8) {
-               Consumer<chh> $$9 = brn.a($$8, $$5, $$0.o());
-               chh $$10 = brn.d.b($$8, $$9, $$4, bse.m, true, true);
-               if ($$10 == null) {
-                  return bpm.e;
-               }
-
-               float $$11 = (float)axz.d((axz.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.ds(), $$10.du(), $$10.dy(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.ds(), $$10.du(), $$10.dy(), avc.aD, avd.e, 0.75F, 0.8F);
-               $$10.a(dva.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bpm.a($$2.B);
-         } else {
-            return bpm.e;
+         cxw<cyk> $$1 = $$0.get(0);
+         cto $$2 = $$1.b().a(this.q, this.x.H_());
+         if ($$2.a(this.x.J())) {
+            this.y = $$1;
+            this.r.a($$1);
+            this.r.a(0, $$2);
          }
       }
+   }
+
+   @Override
+   public int d(cto $$0) {
+      return this.e($$0).orElse(0);
+   }
+
+   private static OptionalInt a(cyk $$0, cto $$1) {
+      if ($$0.a($$1)) {
+         return OptionalInt.of(0);
+      } else if ($$0.b($$1)) {
+         return OptionalInt.of(1);
+      } else {
+         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public boolean a(cto $$0, cqo $$1) {
+      return $$1.d != this.r && super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean c(cto $$0) {
+      return this.e($$0).isPresent();
+   }
+
+   private OptionalInt e(cto $$0) {
+      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
    }
 }

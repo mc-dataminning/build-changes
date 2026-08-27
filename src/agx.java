@@ -1,61 +1,37 @@
-public class agx implements zb<afz> {
-   public static final ys<vu, agx> a = zb.a(agx::a, agx::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class agx implements ze<agd> {
+   public static final yv<vx, agx> a = ze.a(agx::a, agx::new);
+   private final int b;
+   private final int c;
 
-   public agx(brh $$0) {
-      this.b = $$0.ds();
-      this.c = $$0.du();
-      this.d = $$0.dy();
-      this.e = $$0.dD();
-      this.f = $$0.dF();
+   public agx(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private agx(vu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private agx(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zd<agx> a() {
-      return afx.bD;
+   public zg<agx> a() {
+      return agb.bw;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

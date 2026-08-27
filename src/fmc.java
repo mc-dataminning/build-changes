@@ -1,107 +1,34 @@
-public abstract class fmc<T extends coe> extends fmb<T> implements fox {
-   public final fom D;
-   private boolean E;
-   private final akh F;
-   private final akh G;
-   private final akh H;
+import java.util.Arrays;
 
-   public fmc(T $$0, fom $$1, clg $$2, wu $$3, akh $$4, akh $$5, akh $$6) {
-      super($$0, $$2, $$3);
-      this.D = $$1;
-      this.F = $$4;
-      this.G = $$5;
-      this.H = $$6;
+public class fmc extends flq {
+   private static final wx a = wx.c("options.sounds.title");
+   private fgw r;
+
+   private static fec<?>[] a(fed $$0) {
+      return new fec[]{$$0.W(), $$0.X()};
+   }
+
+   public fmc(fly $$0, fed $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public void aM_() {
+   protected void aM_() {
+      this.r = this.c(new fgw(this.m, this.n, this.o, this));
+      this.r.a(this.c.b(avi.a));
+      this.r.a(this.C());
+      this.r.a(this.c.at());
+      this.r.a(a(this.c));
       super.aM_();
-      this.E = this.n < 379;
-      this.D.a(this.n, this.o, this.m, this.E, this.w);
-      this.z = this.D.a(this.n, this.c);
-      this.c(new ffq(this.z + 20, this.o / 2 - 49, 20, 18, foq.a, $$0 -> {
-         this.D.e();
-         this.z = this.D.a(this.n, this.c);
-         $$0.c(this.z + 20, this.o / 2 - 49);
-      }));
-      this.r = (this.c - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.D.h();
+   protected void c() {
+      super.c();
+      this.r.a(this.n, this.d);
    }
 
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      if (this.D.f() && this.E) {
-         this.b($$0, $$1, $$2, $$3);
-         this.D.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.D.a($$0, $$1, $$2, $$3);
-         this.D.a($$0, this.z, this.A, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.D.a($$0, this.z, this.A, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fer $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(this.F, $$4, $$5, 0, 0, this.c, this.d);
-      if (this.w.s()) {
-         int $$6 = 14;
-         int $$7 = axz.f(this.w.r() * 13.0F) + 1;
-         $$0.a(this.G, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = axz.f(this.w.q() * 24.0F);
-      $$0.a(this.H, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.D.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.E && this.D.f() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(cpz $$0, int $$1, int $$2, com $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.D.a($$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.D.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
-      return this.D.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.D.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void E() {
-      this.D.i();
-   }
-
-   @Override
-   public foq F() {
-      return this.D;
+   private fec<?>[] C() {
+      return Arrays.stream(avi.values()).filter($$0 -> $$0 != avi.a).map($$0 -> this.c.b($$0)).toArray(fec[]::new);
    }
 }

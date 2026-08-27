@@ -1,10 +1,14 @@
-public class csy extends cqx {
-   public csy(dde $$0, csu.a $$1) {
+import javax.annotation.Nullable;
+
+public class csy extends crm {
+   public csy(ddy $$0, ctj.a $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public String a() {
-      return this.s();
+   protected drb c(cwz $$0) {
+      clw $$1 = $$0.o();
+      return $$1 != null && !$$1.gz() ? null : super.c($$0);
    }
 }

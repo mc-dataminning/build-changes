@@ -1,46 +1,37 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class dsh implements dsq, AutoCloseable {
-   @Nullable
-   public dsn a(int $$0, int $$1, boolean $$2) {
-      return (dsn)this.a($$0, $$1, dtc.n, $$2);
+public class dsh {
+   private static final aym a = new aym(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
+
+   public static int a() {
+      return b;
    }
 
-   @Nullable
-   public dsn a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public static int a(it $$0) {
+      return a.a($$0);
    }
 
-   @Nullable
-   @Override
-   public dsp c(int $$0, int $$1) {
-      return this.a($$0, $$1, dtc.c, false);
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dtc.n, false) != null;
+   public static Optional<it> a(int $$0) {
+      it $$1 = switch ($$0) {
+         case 0 -> it.c;
+         case 4 -> it.f;
+         case 8 -> it.d;
+         case 12 -> it.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   @Nullable
-   public abstract dsd a(int var1, int var2, dtc var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract elp p();
-
-   public void a(boolean $$0, boolean $$1) {
-   }
-
-   public void a(czk $$0, boolean $$1) {
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

@@ -1,88 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public record wr(String b, List<wr.a> c, xr d) {
-   public static final Codec<wr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(wr::a),
-               wr.a.d.listOf().fieldOf("parameters").forGetter(wr::b),
-               xr.b.b.optionalFieldOf("style", xr.a).forGetter(wr::c)
-            )
-            .apply($$0, wr::new)
-   );
+@Sharable
+public class wr extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   public static wr a(String $$0) {
-      return new wr($$0, List.of(wr.a.a, wr.a.c), xr.a);
-   }
-
-   public static wr b(String $$0) {
-      xr $$1 = xr.a.a(n.h).b(true);
-      return new wr($$0, List.of(wr.a.a, wr.a.c), $$1);
-   }
-
-   public static wr c(String $$0) {
-      xr $$1 = xr.a.a(n.h).b(true);
-      return new wr($$0, List.of(wr.a.b, wr.a.c), $$1);
-   }
-
-   public static wr d(String $$0) {
-      return new wr($$0, List.of(wr.a.b, wr.a.a, wr.a.c), xr.a);
-   }
-
-   public wu a(wu $$0, wq.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return wu.a(this.b, $$2).c(this.d);
-   }
-
-   private wu[] b(wu $$0, wq.a $$1) {
-      wu[] $$2 = new wu[this.c.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         wr.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public List<wr.a> b() {
-      return this.c;
-   }
-
-   public xr c() {
-      return this.d;
-   }
-
-   public static enum a implements ayt {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c().orElse(wt.a)),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<wr.a> d = ayt.a(wr.a::values);
-      private final String e;
-      private final wr.a.a f;
-
-      private a(String $$0, wr.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public wu a(wu $$0, wq.a $$1) {
-         return this.f.select($$0, $$1);
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         wu select(wu var1, wq.a var2);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = wo.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("unable to fit " + $$3 + " into 3");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         wo.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
       }
    }
 }

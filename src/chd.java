@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class chd extends chc {
+   public chd(cha $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface chd {
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public float a(bqn $$0, float $$1) {
+      if ($$0.c() instanceof cmc) {
+         $$0.c().g(1);
+         return 0.0F;
+      } else {
+         return super.a($$0, $$1);
+      }
+   }
 }

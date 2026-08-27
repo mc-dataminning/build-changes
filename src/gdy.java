@@ -1,111 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gdy extends gec {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final etp k = new etp(0.0, -0.32F, 0.073F);
-   private final Map<dru, gdy.a> l;
+public class gdy implements gdx {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public gdy(gdp.a $$0) {
-      super($$0);
-      this.l = dru.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gdy.a($$0.a(fva.b($$1)))));
+   public gdy(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public float b() {
-      return 1.0F;
-   }
+   public Predicate<drb> getPredicate(drc<ddy, drb> $$0) {
+      dse<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<drb> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<drb>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
 
-   @Override
-   public void a(dow $$0, float $$1, exx $$2, gbo $$3, int $$4, int $$5) {
-      dqh $$6 = $$0.n();
-      dke $$7 = (dke)$$6.b();
-      dru $$8 = dke.a($$7);
-      gdy.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(exx $$0, float $$1, dqh $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   void a(exx $$0, int $$1, int $$2, fsx $$3, eyb $$4) {
-      gdy.a $$5 = (gdy.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   gpc a(dru $$0) {
-      return gcd.b($$0);
-   }
-
-   @Override
-   etp d() {
-      return k;
-   }
-
-   public static fvh e() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      $$1.a("board", fvg.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fvd.a);
-      $$1.a("plank", fvg.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fvd.a);
-      fvk $$2 = $$1.a("normalChains", fvg.c(), fvd.a);
-      $$2.a("chainL1", fvg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fvd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fvg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fvd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fvg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fvd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fvg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fvd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fvg.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fvd.a);
-      return fvh.a($$0, 64, 32);
-   }
-
-   public static final class a extends fsx {
-      public final fvb a;
-      public final fvb b;
-      public final fvb c;
-      public final fvb d;
-
-      public a(fvb $$0) {
-         super(gbw::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
-      }
-
-      public void a(dqh $$0) {
-         boolean $$1 = !($$0.b() instanceof ded);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dqx.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
 
-      @Override
-      public void a(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private Predicate<drb> a(drc<ddy, drb> $$0, dse<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

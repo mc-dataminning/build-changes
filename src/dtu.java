@@ -1,206 +1,390 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.io.IOException;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.EnumSet;
+import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
+import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dtu<R> implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dtv d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final jk i;
-   protected final daf c;
+public class dtu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final dtu a = new dtu(dam.a);
+   private static final String c = "Indices";
+   private static final iu[] d = iu.values();
+   private final EnumSet<iu> e = EnumSet.noneOf(iu.class);
+   private final List<ewa<ddy>> f = Lists.newArrayList();
+   private final List<ewa<emt>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<ddy, dtu.a> i = new IdentityHashMap<>();
+   static final Set<dtu.a> j = Sets.newHashSet();
 
-   public dtu(dtv $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, jk $$3, daf $$4) {
-      this.d = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.c = $$4;
+   private dtu(daz $$0) {
+      this.h = new int[$$0.am()][];
    }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         czk $$1 = jp.a(this.f.firstLong()).r();
-         this.d($$1);
+   public dtu(ud $$0, daz $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         ud $$2 = $$0.p("Indices");
+
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
+            }
+         }
+      }
+
+      int $$5 = $$0.h("Sides");
+
+      for (iu $$6 : iu.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
+         }
+      }
+
+      a($$0, "neighbor_block_ticks", $$0x -> le.e.b(akm.a($$0x)).or(() -> Optional.of(dea.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> le.c.b(akm.a($$0x)).or(() -> Optional.of(emv.a)), this.g);
+   }
+
+   private static <T> void a(ud $$0, String $$1, Function<String, Optional<T>> $$2, List<ewa<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (va $$5 : $$0.c($$1, 10)) {
+            ewa.a((ud)$$5, $$2).ifPresent($$3::add);
+         }
+      }
+   }
+
+   public void a(dth $$0) {
+      this.b($$0);
+
+      for (iu $$1 : d) {
+         a($$0, $$1);
+      }
+
+      dax $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         ddy $$2x = $$1x.a() == dea.a ? $$2.a_($$1x.b()).b() : (ddy)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      this.g.forEach($$1x -> {
+         emt $$2x = $$1x.a() == emv.a ? $$2.b_($$1x.b()).a() : (emt)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
+   }
+
+   private static void a(dth $$0, iu $$1) {
+      dax $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<it> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(it.f);
+         boolean $$7 = $$3.contains(it.e);
+         boolean $$8 = $$3.contains(it.d);
+         boolean $$9 = $$3.contains(it.c);
+         boolean $$10 = $$3.size() == 1;
+         dae $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         it[] $$16 = it.values();
+         io.a $$17 = new io.a();
+
+         for (io $$18 : io.b($$12, $$2.I_(), $$14, $$13, $$2.al() - 1, $$15)) {
+            drb $$19 = $$2.a_($$18);
+            drb $$20 = $$19;
+
+            for (it $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
+            }
+
+            ddy.a($$19, $$20, $$2, $$18, 18);
+         }
+      }
+   }
+
+   private static drb a(drb $$0, it $$1, day $$2, io $$3, io $$4) {
+      return i.getOrDefault($$0.b(), dtu.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   }
+
+   private void b(dth $$0) {
+      io.a $$1 = new io.a();
+      io.a $$2 = new io.a();
+      dae $$3 = $$0.f();
+      day $$4 = $$0.F();
+
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         dti $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            it[] $$8 = it.values();
+            dtp<drb> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = jq.c($$10);
+
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               drb $$16 = $$9.a($$12);
+               drb $$17 = $$16;
+
+               for (it $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (jq.a($$1.u()) == $$3.e && jq.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
+                  }
+               }
+
+               ddy.a($$16, $$17, $$4, $$1, 18);
+            }
+         }
+      }
+
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
+
+         this.h[$$19] = null;
       }
    }
 
    public boolean a() {
-      return !this.f.isEmpty();
-   }
-
-   @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
-   }
-
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
-      } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(jp.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ac.b(new IllegalStateException());
-            } else {
-               return $$1;
-            }
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
+            return false;
          }
+      }
+
+      return this.e.isEmpty();
+   }
+
+   public ud b() {
+      ud $$0 = new ud();
+      ud $$1 = new ud();
+
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
+         }
+      }
+
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
+      }
+
+      int $$4 = 0;
+
+      for (iu $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         uj $$6 = new uj();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> le.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         uj $$7 = new uj();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> le.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
+      }
+
+      return $$0;
+   }
+
+   public interface a {
+      drb a(drb var1, it var2, drb var3, day var4, io var5, io var6);
+
+      default void a(day $$0) {
       }
    }
 
-   protected boolean e(long $$0) {
-      int $$1 = jp.c(jp.c($$0));
-      return this.c.d($$1);
-   }
-
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
+   static enum b implements dtu.a {
+      a(
+         dea.kO,
+         dea.ed,
+         dea.lM,
+         dea.lN,
+         dea.lO,
+         dea.lP,
+         dea.lQ,
+         dea.lR,
+         dea.lS,
+         dea.lT,
+         dea.lU,
+         dea.lV,
+         dea.lW,
+         dea.lX,
+         dea.lY,
+         dea.lZ,
+         dea.ma,
+         dea.mb,
+         dea.gS,
+         dea.gT,
+         dea.gU,
+         dea.fA,
+         dea.L,
+         dea.I,
+         dea.K,
+         dea.cE,
+         dea.cF,
+         dea.cG,
+         dea.cH,
+         dea.cI,
+         dea.cJ,
+         dea.cK,
+         dea.cR,
+         dea.cS,
+         dea.cT,
+         dea.cU,
+         dea.cW,
+         dea.cX,
+         dea.da,
+         dea.db,
+         dea.dc,
+         dea.dd,
+         dea.df,
+         dea.dg,
+         dea.dl,
+         dea.dm,
+         dea.dn,
+         dea.do,
+         dea.dq,
+         dea.dr
+      ) {
+         @Override
+         public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+            return $$0;
          }
-      }
-   }
-
-   private void b(czk $$0) {
-      Optional<ua> $$1 = this.c($$0).join();
-      akf<ux> $$2 = this.i.a(uo.a);
-      this.a($$0, $$2, $$1.orElse(null));
-   }
-
-   private CompletableFuture<Optional<ua>> c(czk $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1);
+      },
+      b {
+         @Override
+         public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
          }
-      });
-   }
+      },
+      c(dea.cv, dea.gV) {
+         @Override
+         public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(dfb.d) == drt.a && $$2.c(dfb.d) == drt.a) {
+               it $$6 = $$0.c(dfb.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(dfb.c)) {
+                  drt $$7 = $$1 == $$6.h() ? drt.b : drt.c;
+                  $$3.a($$5, $$2.a(dfb.d, $$7.a()), 18);
+                  if ($$6 == it.c || $$6 == it.f) {
+                     dog $$8 = $$3.c_($$4);
+                     dog $$9 = $$3.c_($$5);
+                     if ($$8 instanceof don && $$9 instanceof don) {
+                        don.a((don)$$8, (don)$$9);
+                     }
+                  }
 
-   private void a(czk $$0, akf<ux> $$1, @Nullable ua $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.an(); $$3 < this.c.ao(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<ux> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = aa.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<ux> $$8 = this.d.a($$4, $$5);
-         OptionalDynamic<ux> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.an(); $$10 < this.c.ao(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
+                  return $$0.a(dfb.d, $$7);
                }
-            });
-         }
-      }
-   }
-
-   private void d(czk $$0) {
-      akf<ux> $$1 = this.i.a(uo.a);
-      Dynamic<ux> $$2 = this.a($$0, $$1);
-      ux $$3 = (ux)$$2.getValue();
-      if ($$3 instanceof ua) {
-         this.d.a($$0, (ua)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(czk $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.an(); $$3 < this.c.ao(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
-      );
-   }
-
-   private static long a(czk $$0, int $$1) {
-      return jp.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", jp.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(czk $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.an(); $$1 < this.c.ao(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
             }
+
+            return $$0;
+         }
+      },
+      d(true, dea.aI, dea.aJ, dea.aG, dea.aK, dea.aH, dea.aE, dea.aF) {
+         private final ThreadLocal<List<ObjectSet<io>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+
+         @Override
+         public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+            drb $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(drr.aC);
+               List<ObjectSet<io>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
+
+               $$8.get($$7).add($$4.i());
+            }
+
+            return $$0;
+         }
+
+         @Override
+         public void a(day $$0) {
+            io.a $$1 = new io.a();
+            List<ObjectSet<io>> $$2 = this.g.get();
+
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<io> $$5 = $$2.get($$4);
+               ObjectSet<io> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
+
+               while (var8.hasNext()) {
+                  io $$7 = (io)var8.next();
+                  drb $$8 = $$0.a_($$7);
+                  if ($$8.c(drr.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(drr.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (it $$9 : f) {
+                           $$1.a($$7, $$9);
+                           drb $$10 = $$0.a_($$1);
+                           if ($$10.b(drr.aC) && $$8.c(drr.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            $$2.clear();
+         }
+      },
+      e(dea.fe, dea.fd) {
+         @Override
+         public drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+            if ($$0.c(dlu.c) == 7) {
+               ddy $$6 = $$0.a(dea.fd) ? dea.eZ : dea.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(dea.fd) ? dea.fb : dea.fc).n().a(dhu.aE, $$1);
+               }
+            }
+
+            return $$0;
+         }
+      };
+
+      public static final it[] f = it.values();
+
+      b(ddy... $$0) {
+         this(false, $$0);
+      }
+
+      b(boolean $$0, ddy... $$1) {
+         for (ddy $$2 : $$1) {
+            dtu.i.put($$2, this);
+         }
+
+         if ($$0) {
+            dtu.j.add(this);
          }
       }
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.d.close();
    }
 }

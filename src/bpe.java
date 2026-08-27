@@ -1,86 +1,56 @@
-public class bpe implements bpf {
-   private final bpf b;
-   private final bpf c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public bpe(bpf $$0, bpf $$1) {
+public class bpe extends box {
+   public static final MapCodec<bpe> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bpe::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
+
+   private bpe(float $$0, float $$1) {
       this.b = $$0;
-      this.c = $$1;
+      this.d = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bpf $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public csz a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public csz a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public csz b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, csz $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
+   public static bpe b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
       } else {
-         this.b.a($$0, $$1);
+         return new bpe($$0, $$1);
       }
    }
 
    @Override
-   public int ah_() {
-      return this.b.ah_();
+   public float a(ayk $$0) {
+      return ayd.b($$0, this.b, this.d);
    }
 
    @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public boolean a(clh $$0) {
-      return this.b.a($$0) && this.c.a($$0);
+   public float b() {
+      return this.d;
    }
 
    @Override
-   public void d_(clh $$0) {
-      this.b.d_($$0);
-      this.c.d_($$0);
+   public boy<?> c() {
+      return boy.b;
    }
 
    @Override
-   public void c(clh $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, csz $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

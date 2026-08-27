@@ -1,112 +1,92 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public record cwg(aqy<String> l, String m, int n, List<aqy<wu>> o, boolean p) implements cvj<wu, cwg> {
-   public static final cwg a = new cwg(aqy.a(""), "", 0, List.of(), true);
-   public static final int b = 32767;
-   public static final int c = 100;
-   public static final int d = 16;
-   public static final int e = 32;
-   public static final int f = 3;
-   public static final int g = 2;
-   public static final Codec<wu> h = ww.a(32767);
-   public static final Codec<List<aqy<wu>>> i = a(h);
-   public static final Codec<cwg> j = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqy.a(axh.b(0, 32)).fieldOf("title").forGetter(cwg::d),
-               Codec.STRING.fieldOf("author").forGetter(cwg::e),
-               axh.a(axh.a(0, 3), "generation", Integer.valueOf(0)).forGetter(cwg::f),
-               axh.a(i, "pages", List.of()).forGetter(cwg::a),
-               axh.a(Codec.BOOL, "resolved", false).forGetter(cwg::g)
-            )
-            .apply($$0, cwg::new)
+public record cwg(int d, boolean e) implements cwu {
+   private static final Codec<cwg> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cwg::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwg::b)).apply($$0, cwg::new)
    );
-   public static final ys<wf, cwg> k = ys.a(aqy.a(yq.b(32)), cwg::d, yq.k, cwg::e, yq.f, cwg::f, aqy.a(ww.b).a(yq.c(100)), cwg::a, yq.b, cwg::g, cwg::new);
+   public static final Codec<cwg> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cwg($$0, true));
+   public static final yv<ByteBuf, cwg> b = yv.a(yt.e, cwg::a, yt.b, cwg::b, cwg::new);
+   public static final int c = -6265536;
 
-   private static Codec<aqy<wu>> b(Codec<wu> $$0) {
-      return aqy.a($$0);
+   public static int a(cto $$0, int $$1) {
+      cwg $$2 = $$0.a(kb.y);
+      return $$2 != null ? axo.b.e($$2.a()) : $$1;
    }
 
-   public static Codec<List<aqy<wu>>> a(Codec<wu> $$0) {
-      return axh.a(b($$0).listOf(), 100);
-   }
-
-   @Nullable
-   public cwg b() {
-      return this.n >= 2 ? null : new cwg(this.l, this.m, this.n + 1, this.o, this.p);
-   }
-
-   @Nullable
-   public cwg a(ed $$0, @Nullable clh $$1) {
-      if (this.p) {
-         return null;
+   public static cto a(cto $$0, List<csi> $$1) {
+      if (!$$0.a(awe.bz)) {
+         return cto.i;
       } else {
-         Builder<aqy<wu>> $$2 = ImmutableList.builderWithExpectedSize(this.o.size());
-
-         for (aqy<wu> $$3 : this.o) {
-            Optional<aqy<wu>> $$4 = a($$0, $$1, $$3);
-            if ($$4.isEmpty()) {
-               return null;
-            }
-
-            $$2.add($$4.get());
+         cto $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cwg $$8 = $$2.a(kb.y);
+         if ($$8 != null) {
+            int $$9 = axo.b.b($$8.a());
+            int $$10 = axo.b.c($$8.a());
+            int $$11 = axo.b.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
-         return new cwg(this.l, this.m, this.n, $$2.build(), true);
+         for (csi $$12 : $$1) {
+            float[] $$13 = $$12.c().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = axo.b.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(kb.y, new cwg($$22, $$23));
+         return $$2;
       }
    }
 
-   public cwg c() {
-      return new cwg(this.l, this.m, this.n, this.o, true);
-   }
-
-   private static Optional<aqy<wu>> a(ed $$0, @Nullable clh $$1, aqy<wu> $$2) {
-      return $$2.b($$2x -> {
-         try {
-            wu $$3 = wx.a($$0, $$2x, $$1, 0);
-            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
-         } catch (Exception var4) {
-            return Optional.of($$2x);
-         }
-      });
-   }
-
-   private static boolean a(wu $$0, iy.a $$1) {
-      return wu.a.a($$0, $$1).length() > 32767;
-   }
-
-   public List<wu> a(boolean $$0) {
-      return Lists.transform(this.o, $$1 -> (wu)$$1.a($$0));
-   }
-
-   public cwg b(List<aqy<wu>> $$0) {
-      return new cwg(this.l, this.m, this.n, $$0, false);
-   }
-
-   public aqy<String> d() {
-      return this.l;
-   }
-
-   public String e() {
-      return this.m;
-   }
-
-   public int f() {
-      return this.n;
-   }
-
    @Override
-   public List<aqy<wu>> a() {
-      return this.o;
+   public void a(Consumer<wx> $$0, cvh $$1) {
+      if (this.e) {
+         if ($$1.a()) {
+            $$0.accept(wx.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$0.accept(wx.c("item.dyed").a(n.h, n.u));
+         }
+      }
    }
 
-   public boolean g() {
-      return this.p;
+   public cwg a(boolean $$0) {
+      return new cwg(this.d, $$0);
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
    }
 }

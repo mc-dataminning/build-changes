@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecf implements ebh {
+public class ecf implements ecb {
    public static final Codec<ecf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dut.c).fieldOf("height").forGetter($$0x -> $$0x.b), drb.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, ecf::new)
    );
    public final int b;
-   public final int c;
-   public final float d;
+   public final drb c;
 
-   public ecf(int $$0, int $$1, float $$2) {
+   public ecf(int $$0, drb $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 }

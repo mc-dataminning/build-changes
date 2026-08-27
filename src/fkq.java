@@ -1,82 +1,102 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fkq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cpl<?>, fkq.a<?, ?>> b = Maps.newHashMap();
+public class fkq extends fly {
+   private static final int d = 20;
+   private final wx r;
+   private fgs s = fgs.a;
+   protected wx a;
+   protected wx b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<ffz> v = Lists.newArrayList();
 
-   public static <T extends cod> void a(cpl<T> $$0, fde $$1, int $$2, wu $$3) {
-      fkq.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ld.r.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
+   public fkq(BooleanConsumer $$0, wx $$1, wx $$2) {
+      this($$0, $$1, $$2, ww.f, ww.g);
+   }
+
+   public fkq(BooleanConsumer $$0, wx $$1, wx $$2, wx $$3, wx $$4) {
+      super($$1);
+      this.c = $$0;
+      this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public wx i() {
+      return ww.a(super.i(), this.r);
+   }
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.s = fgs.a(this.p, this.r, this.n - 50);
+      int $$0 = ayd.a(this.C() + this.D() + 20, this.o / 6 + 96, this.o - 24);
+      this.v.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(ffz.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(ffz.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(ffz $$0) {
+      this.v.add(this.c($$0));
+   }
+
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.s.a($$0, this.n / 2, this.C());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.D()) / 2;
+      return ayd.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int C() {
+      return this.m() + 20;
+   }
+
+   private int D() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (ffz $$1 : this.v) {
+         $$1.j = false;
       }
    }
 
-   @Nullable
-   private static <T extends cod> fkq.a<T, ?> a(cpl<T> $$0) {
-      return (fkq.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cod, U extends fld & fng<M>> void a(cpl<? extends M> $$0, fkq.a<M, U> $$1) {
-      fkq.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ld.r.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cpl<?> $$1 : ld.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ld.r.b($$1));
-            $$0 = true;
+   @Override
+   public void e() {
+      super.e();
+      if (--this.u == 0) {
+         for (ffz $$0 : this.v) {
+            $$0.j = true;
          }
       }
-
-      return $$0;
    }
 
-   static {
-      a(cpl.a, fmm::new);
-      a(cpl.b, fmm::new);
-      a(cpl.c, fmm::new);
-      a(cpl.d, fmm::new);
-      a(cpl.e, fmm::new);
-      a(cpl.f, fmm::new);
-      a(cpl.g, fms::new);
-      a(cpl.h, fmn::new);
-      a(cpl.i, fme::new);
-      a(cpl.j, fmf::new);
-      a(cpl.k, fmg::new);
-      a(cpl.l, fmj::new);
-      a(cpl.m, fmo::new);
-      a(cpl.n, fmv::new);
-      a(cpl.o, fmw::new);
-      a(cpl.p, fmx::new);
-      a(cpl.q, fmz::new);
-      a(cpl.r, fne::new);
-      a(cpl.s, fnf::new);
-      a(cpl.t, fnh::new);
-      a(cpl.u, fnk::new);
-      a(cpl.v, fnm::new);
-      a(cpl.w, fnn::new);
-      a(cpl.x, fmk::new);
-      a(cpl.y, fno::new);
+   @Override
+   public boolean aD_() {
+      return false;
    }
 
-   interface a<T extends cod, U extends fld & fng<T>> {
-      default void a(wu $$0, cpl<T> $$1, fde $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.ga()), $$2.s.ga(), $$0);
-         $$2.s.cc = $$4.D();
-         $$2.a($$4);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      U create(T var1, clg var2, wu var3);
    }
 }

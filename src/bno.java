@@ -1,13 +1,21 @@
-public interface bno {
-   void a();
+public enum bno {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-   void b();
+   private final String j;
 
-   void c();
+   private bno(String $$0) {
+      this.j = $$0;
+   }
 
-   boolean e();
-
-   bma f();
-
-   void d();
+   public String a() {
+      return this.j;
+   }
 }

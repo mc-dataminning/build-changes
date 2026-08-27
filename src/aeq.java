@@ -1,52 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+public class aeq implements ze<abq> {
+   public static final yv<vx, aeq> a = ze.a(aeq::a, aeq::new);
+   private final int b;
+   private final int c;
 
-public record aeq(int c, List<ajq.c<?>> d) implements zb<abm> {
-   public static final ys<wf, aeq> a = zb.a(aeq::b, aeq::new);
-   public static final int b = 255;
-
-   private aeq(wf $$0) {
-      this($$0.l(), a($$0));
+   public aeq(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static void a(List<ajq.c<?>> $$0, wf $$1) {
-      for (ajq.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private aeq(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private static List<ajq.c<?>> a(wf $$0) {
-      List<ajq.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ajq.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wf $$0) {
+   private void a(vx $$0) {
+      $$0.c(this.b);
       $$0.c(this.c);
-      a(this.d, $$0);
    }
 
    @Override
-   public zd<aeq> a() {
-      return afx.aC;
+   public zg<aeq> a() {
+      return agb.ay;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<ajq.c<?>> e() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

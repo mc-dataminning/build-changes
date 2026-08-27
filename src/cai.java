@@ -1,41 +1,47 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cai extends bzm {
+   private final cgi a;
+   private int b;
 
-public class cai<T extends bsc> extends byx {
-   private final T a;
-   private final csz b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avb d;
-
-   public cai(T $$0, csz $$1, @Nullable avb $$2, Predicate<? super T> $$3) {
+   public cai(cgi $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.ft();
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      this.a.a(bro.a, this.b.r());
-      this.a.c(bpl.a);
+      this.a.gT();
+      this.h();
+   }
+
+   private void h() {
+      avg $$0 = this.a.gS();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void d() {
-      this.a.a(bro.a, csz.i);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.ej().i() * 0.2F + 0.9F);
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.el().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fg() && this.a.el().a(10) == 0;
+      } else {
+         return false;
       }
+   }
+
+   private void a(cgi $$0) {
+      this.b = -$$0.gX();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

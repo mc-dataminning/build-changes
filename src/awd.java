@@ -1,35 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+public interface awd {
+   awl<ctg> a = a("regular_goat_horns");
+   awl<ctg> b = a("screaming_goat_horns");
+   awl<ctg> c = a("goat_horns");
 
-public class awd {
-   private final List<awe> a = new ArrayList<>();
-
-   public static awd a() {
-      return new awd();
-   }
-
-   public List<awe> b() {
-      return List.copyOf(this.a);
-   }
-
-   public awd a(awe $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public awd a(akh $$0) {
-      return this.a(awe.a($$0));
-   }
-
-   public awd b(akh $$0) {
-      return this.a(awe.b($$0));
-   }
-
-   public awd c(akh $$0) {
-      return this.a(awe.c($$0));
-   }
-
-   public awd d(akh $$0) {
-      return this.a(awe.d($$0));
+   private static awl<ctg> a(String $$0) {
+      return awl.a(lf.E, new akm($$0));
    }
 }

@@ -1,40 +1,17 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.OptionalInt;
 
-public class exj extends exl {
-   private static final exe a = new exe() {
-      @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
-      }
-   };
-   private int b;
+public class exj {
+   public final int a;
+   public final int b;
+   public final OptionalInt c;
+   public final OptionalInt d;
+   public final boolean e;
 
-   private exj(exl.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(exi $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
-   }
-
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
-      }
-   }
-
-   public static exj a(exl.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      exj $$5 = new exj($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
+   public exj(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

@@ -1,11 +1,9 @@
 public interface ayf {
-   void a(wu var1);
+   int a();
 
-   void b(wu var1);
+   String b();
 
-   void c(wu var1);
-
-   void a(int var1);
-
-   void a();
+   default wx d() {
+      return wx.c(this.b());
+   }
 }

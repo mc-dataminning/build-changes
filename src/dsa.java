@@ -1,5 +1,20 @@
-public interface dsa {
-   dqh a(int var1);
+public enum dsa implements ayx {
+   a("top"),
+   b("bottom");
 
-   void a(int var1, dqh var2);
+   private final String c;
+
+   private dsa(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

@@ -1,65 +1,58 @@
-public class gso implements gsu {
-   private static final int a = 1200;
-   private static final wu b = wu.c("tutorial.craft_planks.title");
-   private static final wu c = wu.c("tutorial.craft_planks.description");
-   private final gst d;
-   private fhp e;
-   private int f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gso(gst $$0) {
-      this.d = $$0;
+public class gso implements gsp<grg> {
+   private final List<gsp<grg>> a = Lists.newArrayList();
+   @Nullable
+   private final wx b;
+
+   public gso(akm $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wx.c($$1);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gsv.f);
-      } else {
-         if (this.f == 1) {
-            gaq $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.ga().a(avz.b)) {
-                  this.d.a(gsv.f);
-                  return;
-               }
+   public int e() {
+      int $$0 = 0;
 
-               if (a($$0, avz.b)) {
-                  this.d.a(gsv.f);
-                  return;
-               }
+      for (gsp<grg> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public grg a(ayk $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (gsp<grg> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
             }
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fhp(fhp.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
+         return gsn.a;
+      } else {
+         return gsn.a;
       }
+   }
+
+   public void a(gsp<grg> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public wx a() {
+      return this.b;
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+   public void a(gsk $$0) {
+      for (gsp<grg> $$1 : this.a) {
+         $$1.a($$0);
       }
-   }
-
-   @Override
-   public void a(csz $$0) {
-      if ($$0.a(avz.b)) {
-         this.d.a(gsv.f);
-      }
-   }
-
-   public static boolean a(gaq $$0, awg<csu> $$1) {
-      for (iw<csu> $$2 : ld.h.c($$1)) {
-         if ($$0.j().a(avm.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

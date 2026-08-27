@@ -1,208 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dci extends dde implements ddh {
-   public static final MapCodec<dci> a = b(dci::new);
-   protected static final float b = 3.0F;
-   protected static final float c = 5.0F;
-   protected static final float d = 1.5F;
-   protected static final eui e = dde.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   protected static final eui f = dde.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   protected static final eui g = dde.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   public static final drh h = dqx.aq;
-   public static final drf<dqt> i = dqx.bk;
-   public static final drh j = dqx.aU;
-   public static final int k = 16;
-   public static final int l = 0;
-   public static final int m = 1;
-   public static final int n = 0;
-   public static final int o = 1;
+public class dci {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final boi<dci.c> a = boi.c();
+   public static final dci b = new dci.a().a();
+   public static final MapCodec<dci> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bsr.i, boi.c(dci.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ayx.a(bsr.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(le.g.q(), dci.b.a, le.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dci::new)
+   );
+   private final float f;
+   private final Map<bsr, boi<dci.c>> g;
+   private final Map<bsa<?>, dci.b> h;
 
-   @Override
-   public MapCodec<dci> a() {
-      return a;
+   dci(float $$0, Map<bsr, boi<dci.c>> $$1, Map<bsa<?>, dci.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public dci(dqg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(h, Integer.valueOf(0)).a(i, dqt.a).a(j, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(h, i, j);
-   }
-
-   @Override
-   protected boolean a_(dqh $$0, czj $$1, in $$2) {
-      return true;
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      eui $$4 = $$0.c(i) == dqt.c ? f : e;
-      etp $$5 = $$0.n($$1, $$2);
-      return $$4.a($$5.c, $$5.d, $$5.e);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
-   }
-
-   @Override
-   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
-      etp $$4 = $$0.n($$1, $$2);
-      return g.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   protected boolean c(dqh $$0, czj $$1, in $$2) {
-      return false;
+   public boi<dci.c> a(bsr $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
    @Nullable
-   @Override
-   public dqh a(cwi $$0) {
-      ema $$1 = $$0.q().b_($$0.a());
-      if (!$$1.c()) {
-         return null;
-      } else {
-         dqh $$2 = $$0.q().a_($$0.a().d());
-         if ($$2.a(avr.au)) {
-            if ($$2.a(ddg.mY)) {
-               return this.n().a(h, Integer.valueOf(0));
-            } else if ($$2.a(ddg.mZ)) {
-               int $$3 = $$2.c(h) > 0 ? 1 : 0;
-               return this.n().a(h, Integer.valueOf($$3));
-            } else {
-               dqh $$4 = $$0.q().a_($$0.a().c());
-               return $$4.a(ddg.mZ) ? this.n().a(h, $$4.c(h)) : ddg.mY.n();
-            }
-         } else {
-            return null;
-         }
+   public dci.b a(bsa<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bsr, List<dci.c>> a = Stream.of(bsr.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bsa<?>, dci.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dci.a a(bsr $$0, dci.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dci.a a(bsa<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dci.b($$2, $$1));
+         return this;
+      }
+
+      public dci.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dci a() {
+         return new dci(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> boi.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public static record b(double b, double c) {
+      public static final Codec<dci.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dci.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
       }
    }
 
-   @Override
-   protected boolean d_(dqh $$0) {
-      return $$0.c(j) == 0;
-   }
+   public static class c extends bog.a {
+      public static final Codec<dci.c> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     le.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bof.a.fieldOf("weight").forGetter(bog.a::a),
+                     axm.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     axm.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dci.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+      public final bsa<?> b;
+      public final int c;
+      public final int d;
 
-   @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if ($$0.c(j) == 0) {
-         if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-            int $$4 = this.b($$1, $$2) + 1;
-            if ($$4 < 16) {
-               this.a($$0, $$1, $$2, $$3, $$4);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return $$1.a_($$2.d()).a(avr.au);
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+      public c(bsa<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bof.a($$1), $$2, $$3);
       }
 
-      if ($$1 == is.b && $$2.a(ddg.mZ) && $$2.c(h) > $$0.c(h)) {
-         $$3.a($$4, $$0.a(h), 2);
+      public c(bsa<?> $$0, bof $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bsr.h ? bsa.az : $$0;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      int $$3 = this.a($$0, $$1);
-      int $$4 = this.b($$0, $$1);
-      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(j) != 1;
-   }
-
-   @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      int $$4 = this.a($$0, $$2);
-      int $$5 = this.b($$0, $$2);
-      int $$6 = $$4 + $$5 + 1;
-      int $$7 = 1 + $$1.a(2);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         in $$9 = $$2.b($$4);
-         dqh $$10 = $$0.a_($$9);
-         if ($$6 >= 16 || $$10.c(j) == 1 || !$$0.u($$9.c())) {
-            return;
-         }
-
-         this.a($$10, $$0, $$9, $$1, $$6);
-         $$4++;
-         $$6++;
+      @Override
+      public String toString() {
+         return bsa.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
-   }
-
-   @Override
-   protected float a(dqh $$0, clh $$1, czj $$2, in $$3) {
-      return $$1.eV().f() instanceof cuk ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dqh $$0, dad $$1, in $$2, ayg $$3, int $$4) {
-      dqh $$5 = $$1.a_($$2.d());
-      in $$6 = $$2.c(2);
-      dqh $$7 = $$1.a_($$6);
-      dqt $$8 = dqt.a;
-      if ($$4 >= 1) {
-         if (!$$5.a(ddg.mZ) || $$5.c(i) == dqt.a) {
-            $$8 = dqt.b;
-         } else if ($$5.a(ddg.mZ) && $$5.c(i) != dqt.a) {
-            $$8 = dqt.c;
-            if ($$7.a(ddg.mZ)) {
-               $$1.a($$2.d(), $$5.a(i, dqt.b), 3);
-               $$1.a($$6, $$7.a(i, dqt.a), 3);
-            }
-         }
-      }
-
-      int $$9 = $$0.c(h) != 1 && !$$7.a(ddg.mZ) ? 0 : 1;
-      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
-      $$1.a($$2.c(), this.n().a(h, Integer.valueOf($$9)).a(i, $$8).a(j, Integer.valueOf($$10)), 3);
-   }
-
-   protected int a(czj $$0, in $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(ddg.mZ)) {
-         $$2++;
-      }
-
-      return $$2;
-   }
-
-   protected int b(czj $$0, in $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(ddg.mZ)) {
-         $$2++;
-      }
-
-      return $$2;
    }
 }

@@ -1,26 +1,40 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public interface ehd {
+   akl<ehj> a = a("pillager_outpost");
+   akl<ehj> b = a("mineshaft");
+   akl<ehj> c = a("mineshaft_mesa");
+   akl<ehj> d = a("mansion");
+   akl<ehj> e = a("jungle_pyramid");
+   akl<ehj> f = a("desert_pyramid");
+   akl<ehj> g = a("igloo");
+   akl<ehj> h = a("shipwreck");
+   akl<ehj> i = a("shipwreck_beached");
+   akl<ehj> j = a("swamp_hut");
+   akl<ehj> k = a("stronghold");
+   akl<ehj> l = a("monument");
+   akl<ehj> m = a("ocean_ruin_cold");
+   akl<ehj> n = a("ocean_ruin_warm");
+   akl<ehj> o = a("fortress");
+   akl<ehj> p = a("nether_fossil");
+   akl<ehj> q = a("end_city");
+   akl<ehj> r = a("buried_treasure");
+   akl<ehj> s = a("bastion_remnant");
+   akl<ehj> t = a("village_plains");
+   akl<ehj> u = a("village_desert");
+   akl<ehj> v = a("village_savanna");
+   akl<ehj> w = a("village_snowy");
+   akl<ehj> x = a("village_taiga");
+   akl<ehj> y = a("ruined_portal");
+   akl<ehj> z = a("ruined_portal_desert");
+   akl<ehj> A = a("ruined_portal_jungle");
+   akl<ehj> B = a("ruined_portal_swamp");
+   akl<ehj> C = a("ruined_portal_mountain");
+   akl<ehj> D = a("ruined_portal_ocean");
+   akl<ehj> E = a("ruined_portal_nether");
+   akl<ehj> F = a("ancient_city");
+   akl<ehj> G = a("trail_ruins");
+   akl<ehj> H = a("trial_chambers");
 
-@FunctionalInterface
-public interface ehd<C extends ebh> {
-   Optional<ehc<C>> createGenerator(ehd.a<C> var1);
-
-   static <C extends ebh> ehd<C> simple(Predicate<ehd.a<C>> $$0, ehc<C> $$1) {
-      Optional<ehc<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
-   }
-
-   static <C extends ebh> Predicate<ehd.a<C>> checkForBiomeOnTop(dvz.a $$0) {
-      return $$1 -> $$1.a($$0);
-   }
-
-   public static record a<C extends ebh>(dse a, dbg b, dwn c, long d, czk e, C f, daf g, Predicate<iw<dbc>> h, ekq i, jk j) {
-      public boolean a(dvz.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         iw<dbc> $$4 = this.a.c().getNoiseBiome(jh.a($$1), jh.a($$3), jh.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   private static akl<ehj> a(String $$0) {
+      return akl.a(lf.aJ, new akm($$0));
    }
 }

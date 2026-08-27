@@ -1,71 +1,46 @@
-import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cts extends csu {
-   private static final Map<avb, cts> a = Maps.newHashMap();
-   private final int b;
-   private final avb c;
-   private final int j;
+public class cts extends ctj {
+   private static final Logger a = LogUtils.getLogger();
 
-   protected cts(int $$0, avb $$1, csu.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.j = $$3 * 20;
-      a.put(this.c, this);
+   public cts(ctj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bpm a(cwk $$0) {
-      dad $$1 = $$0.q();
-      in $$2 = $$0.a();
-      dqh $$3 = $$1.a_($$2);
-      if ($$3.a(ddg.dT) && !$$3.c(dhh.b)) {
-         csz $$4 = $$0.n();
-         if (!$$1.B) {
-            clh $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof don $$6) {
-               $$6.b($$4.r());
-               $$1.a(dva.c, $$2, dva.a.a($$5, $$3));
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      cto $$3 = $$1.b($$2);
+      if (!$$1.fP()) {
+         $$1.a($$2, cto.i);
+      }
+
+      List<akm> $$4 = $$3.a(kb.Q, List.of());
+      if ($$4.isEmpty()) {
+         return bpv.d($$3);
+      } else {
+         if (!$$0.B) {
+            cxx $$5 = $$0.o().aJ();
+            List<cxw<?>> $$6 = new ArrayList<>($$4.size());
+
+            for (akm $$7 : $$4) {
+               Optional<cxw<?>> $$8 = $$5.a($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bpv.d($$3);
+               }
+
+               $$6.add($$8.get());
             }
 
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(avm.al);
-            }
+            $$1.a($$6);
+            $$1.b(avr.c.b(this));
          }
 
-         return bpm.a($$1.B);
-      } else {
-         return bpm.d;
+         return bpv.a($$3, $$0.x_());
       }
-   }
-
-   public int h() {
-      return this.b;
-   }
-
-   @Override
-   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
-      $$2.add(this.i().a(n.h));
-   }
-
-   public xi i() {
-      return wu.c(this.a() + ".desc");
-   }
-
-   @Nullable
-   public static cts a(avb $$0) {
-      return a.get($$0);
-   }
-
-   public avb j() {
-      return this.c;
-   }
-
-   public int k() {
-      return this.j;
    }
 }

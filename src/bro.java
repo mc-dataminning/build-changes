@@ -1,76 +1,183 @@
-public enum bro implements ayt {
-   a(bro.a.a, 0, 0, "mainhand"),
-   b(bro.a.a, 1, 5, "offhand"),
-   c(bro.a.b, 0, 1, "feet"),
-   d(bro.a.b, 1, 2, "legs"),
-   e(bro.a.b, 2, 3, "chest"),
-   f(bro.a.b, 3, 4, "head"),
-   g(bro.a.c, 0, 6, "body");
+import javax.annotation.Nullable;
 
-   public static final ayt.a<bro> h = ayt.a(bro::values);
-   private final bro.a i;
-   private final int j;
-   private final int k;
-   private final String l;
+public abstract class bro extends bsx {
+   private static final ajr<Boolean> bY = ajv.a(bro.class, ajt.k);
+   public static final int b = -24000;
+   private static final int bZ = 40;
+   protected int c;
+   protected int d;
+   protected int e;
 
-   private bro(bro.a $$0, int $$1, int $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-   }
-
-   public bro.a a() {
-      return this.i;
-   }
-
-   public int b() {
-      return this.j;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public String e() {
-      return this.l;
-   }
-
-   public boolean f() {
-      return this.i == bro.a.b;
+   protected bro(bsa<? extends bro> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.l;
+   public bth a(dbm $$0, bps $$1, bss $$2, @Nullable bth $$3) {
+      if ($$3 == null) {
+         $$3 = new bro.a(true);
+      }
+
+      bro.a $$4 = (bro.a)$$3;
+      if ($$4.c() && $$4.a() > 0 && $$0.E_().i() <= $$4.d()) {
+         this.c_(-24000);
+      }
+
+      $$4.b();
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static bro a(String $$0) {
-      bro $$1 = h.a($$0);
-      if ($$1 != null) {
-         return $$1;
+   @Nullable
+   public abstract bro a(aqm var1, bro var2);
+
+   @Override
+   protected void a(ajv.a $$0) {
+      super.a($$0);
+      $$0.a(bY, false);
+   }
+
+   public boolean X_() {
+      return false;
+   }
+
+   public int g() {
+      if (this.dP().B) {
+         return this.ao.a(bY) ? -1 : 1;
       } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+         return this.c;
       }
    }
 
-   public static bro a(bro.a $$0, int $$1) {
-      for (bro $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.g();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
+
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.d += $$4;
+         if (this.e == 0) {
+            this.e = 40;
          }
       }
 
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+      if (this.g() == 0) {
+         this.c_(this.d);
+      }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public void b_(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void c_(int $$0) {
+      int $$1 = this.g();
+      this.c = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.ao.a(bY, $$0 < 0);
+         this.k();
+      }
+   }
+
+   @Override
+   public void b(ud $$0) {
+      super.b($$0);
+      $$0.a("Age", this.g());
+      $$0.a("ForcedAge", this.d);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.d = $$0.h("ForcedAge");
+   }
+
+   @Override
+   public void a(ajr<?> $$0) {
+      if (bY.equals($$0)) {
+         this.j_();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (this.dP().B) {
+         if (this.e > 0) {
+            if (this.e % 4 == 0) {
+               this.dP().a(ky.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
+
+            this.e--;
+         }
+      } else if (this.bD()) {
+         int $$0 = this.g();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
+         }
+      }
+   }
+
+   protected void k() {
+      if (!this.p_() && this.bR() && this.dc() instanceof cnt $$0 && !$$0.b((bru)this)) {
+         this.ac();
+      }
+   }
+
+   @Override
+   public boolean p_() {
+      return this.g() < 0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   public static class a implements bth {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      private a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
+      }
    }
 }

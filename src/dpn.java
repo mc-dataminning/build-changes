@@ -1,186 +1,117 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum dpn implements ayt {
-   a("inactive", 0, dpn.b.a, -1.0, false),
-   b("waiting_for_players", 4, dpn.b.b, 200.0, true),
-   c("active", 8, dpn.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, dpn.b.b, -1.0, false),
-   e("ejecting_reward", 8, dpn.b.b, -1.0, false),
-   f("cooldown", 0, dpn.b.d, -1.0, false);
+public class dpn extends dog implements dvw.b<dwd.b>, dwd {
+   private static final Logger b = LogUtils.getLogger();
+   private dwd.a c;
+   private final dwd.b d;
+   private final dwd.d e = this.b();
+   private int h;
 
-   private static final float g = 40.0F;
-   private static final int h = axz.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final dpn.b l;
-   private final boolean m;
-
-   private dpn(String $$0, int $$1, dpn.b $$2, double $$3, boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   protected dpn(doi<?> $$0, io $$1, drb $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dwd.a();
+      this.d = new dwd.b(this);
    }
 
-   dpn a(in $$0, dpk $$1, aqh $$2) {
-      dpm $$3 = $$1.c();
-      dpl $$4 = $$1.b();
-      dpj $$5 = $$1.f();
-      dpj.a $$6 = $$1.g();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               int $$7 = $$3.a($$0);
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               if ($$3.a($$4, $$7)) {
-                  if ($$3.b()) {
-                     $$3.e = $$2.Y() + (long)$$4.h();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$7)) {
-                  $$1.a($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.Y() + (long)$$4.g();
-                     $$3.j.b($$2.E_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((dau)$$2xx.b());
-                        $$1.e();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, $$4, 40.0F)) {
-               $$2.a(null, $$0, avc.ma, avd.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, $$4, (float)h)) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, avc.mb, avd.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.E_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            if ($$3.a($$2)) {
-               $$3.e = 0L;
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
+   public dpn(io $$0, drb $$1) {
+      this(doi.I, $$0, $$1);
    }
 
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
-   }
-
-   public boolean e() {
-      return this.m;
-   }
-
-   public void a(dad $$0, in $$1) {
-      this.l.emit($$0, $$0.E_(), $$1);
+   public dwd.d b() {
+      return new dpn.a(this.az_());
    }
 
    @Override
-   public String c() {
-      return this.i;
-   }
-
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dwd.a.a.parse(new Dynamic(ur.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
    }
 
-   interface b {
-      dpn.b a = ($$0, $$1, $$2) -> {
-      };
-      dpn.b b = ($$0, $$1, $$2) -> {
-         if ($$1.a(2) == 0) {
-            etp $$3 = $$2.b().a($$1, 0.9F);
-            a(kx.aG, $$3, $$0);
-         }
-      };
-      dpn.b c = ($$0, $$1, $$2) -> {
-         etp $$3 = $$2.b().a($$1, 1.0F);
-         a(kx.ab, $$3, $$0);
-         a(kx.E, $$3, $$0);
-      };
-      dpn.b d = ($$0, $$1, $$2) -> {
-         etp $$3 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(kx.ab, $$3, $$0);
-         }
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      dwd.a.a.encodeStart(ur.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
 
-         if ($$0.Y() % 20L == 0L) {
-            etp $$4 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$5 = $$0.E_().a(4) + 20;
+   @Override
+   public dwd.a gr() {
+      return this.c;
+   }
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               a(kx.ab, $$4, $$0);
+   @Override
+   public dwd.d gs() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dwd.b f() {
+      return this.d;
+   }
+
+   protected class a implements dwd.d {
+      public static final int b = 8;
+      protected final io c;
+      private final dvy a;
+
+      public a(io $$1) {
+         this.c = $$1;
+         this.a = new dvq($$1);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public dvy b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(aqm $$0, io $$1, ix<dvu> $$2, @Nullable dvu.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dvu.f) && !$$2.a(dvu.i) ? dkr.n(dpn.this.n()) : false;
+      }
+
+      @Override
+      public void a(aqm $$0, io $$1, ix<dvu> $$2, @Nullable bru $$3, @Nullable bru $$4, float $$5) {
+         drb $$6 = dpn.this.n();
+         if (dkr.n($$6)) {
+            dpn.this.a(dwd.a_($$2));
+            int $$7 = dwd.a_($$5, this.a());
+            if ($$6.b() instanceof dkr $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dpn.this.d());
             }
          }
-      };
-
-      private static void a(la $$0, etp $$1, dad $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
 
-      void emit(dad var1, ayg var2, in var3);
-   }
+      @Override
+      public void e() {
+         dpn.this.e();
+      }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
-
-      private c() {
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

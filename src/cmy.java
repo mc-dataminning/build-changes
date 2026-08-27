@@ -1,39 +1,82 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cmy {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cmy c = a("empty").a(0, cmw.b).a();
-   public static final cmy d = a("simple").a(5000, cmw.c).a(11000, cmw.e).a();
-   public static final cmy e = a("villager_baby").a(10, cmw.b).a(3000, cmw.d).a(6000, cmw.b).a(10000, cmw.d).a(12000, cmw.e).a();
-   public static final cmy f = a("villager_default").a(10, cmw.b).a(2000, cmw.c).a(9000, cmw.f).a(11000, cmw.b).a(12000, cmw.e).a();
-   private final Map<cmw, cna> g = Maps.newHashMap();
-
-   protected static cmz a(String $$0) {
-      cmy $$1 = jj.a(ld.D, $$0, new cmy());
-      return new cmz($$1);
+public class cmy extends cmv {
+   public cmy(bsa<? extends cmy> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cmw $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cna());
+   public cmy(dax $$0, bso $$1) {
+      super(bsa.G, $$1, $$0);
+   }
+
+   @Override
+   protected ctj u() {
+      return ctr.sf;
+   }
+
+   @Override
+   protected void a(euh $$0) {
+      super.a($$0);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(eui $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dP().a(ky.ac, this.du(), this.dw() + this.ah.j() * 2.0, this.dA(), this.ah.k(), 0.0, this.ah.k());
+      }
+
+      if (!this.dP().B && !this.dK()) {
+         bru $$2 = this.s();
+         if ($$2 instanceof aqn $$3) {
+            if ($$3.d.c() && $$3.dP() == this.dP() && !$$3.fL()) {
+               if (this.ah.i() < 0.05F && this.dP().aa().b(dat.e)) {
+                  cit $$4 = bsa.I.a(this.dP());
+                  if ($$4 != null) {
+                     $$4.b($$2.du(), $$2.dw(), $$2.dA(), $$2.dF(), $$2.dH());
+                     this.dP().b($$4);
+                  }
+               }
+
+               if ($$2.bR()) {
+                  $$3.a(this.du(), this.dw(), this.dA());
+               } else {
+                  $$2.c(this.du(), this.dw(), this.dA());
+               }
+
+               $$2.n();
+               $$2.a(this.dQ().k(), 5.0F);
+               this.dP().a(null, this.du(), this.dw(), this.dA(), avh.us, avi.h);
+            }
+         } else if ($$2 != null) {
+            $$2.c(this.du(), this.dw(), this.dA());
+            $$2.n();
+         }
+
+         this.ao();
       }
    }
 
-   protected cna b(cmw $$0) {
-      return this.g.get($$0);
+   @Override
+   public void l() {
+      bru $$0 = this.s();
+      if ($$0 instanceof aqn && !$$0.bD() && this.dP().aa().b(dat.Y)) {
+         this.ao();
+      } else {
+         super.l();
+      }
    }
 
-   protected List<cna> c(cmw $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
+   @Nullable
+   @Override
+   public bru b(aqm $$0) {
+      bru $$1 = this.s();
+      if ($$1 != null && $$1.dP().ae() != $$0.ae()) {
+         this.c(null);
+      }
 
-   public cmw a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cmw.b);
+      return super.b($$0);
    }
 }

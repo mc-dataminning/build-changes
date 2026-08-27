@@ -1,37 +1,55 @@
-public interface fhn {
-   Object b = new Object();
-   int c = 32;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   fhn.a a(fer var1, fho var2, long var3);
+public class fhn {
+   @Nullable
+   private fhk a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   default Object e() {
-      return b;
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   default int a() {
-      return 160;
+   public void a(@Nullable fhk $$0) {
+      this.a = $$0;
    }
 
-   default int b() {
-      return 32;
+   @Nullable
+   public fhk a() {
+      return this.a;
    }
 
-   default int f() {
-      return axz.e(this.b(), 32);
-   }
+   public void a(boolean $$0, boolean $$1, fkf $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fdz.Q().aY().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ac.c();
+            }
 
-   public static enum a {
-      a(avc.Ak),
-      b(avc.Al);
+            this.d = $$3;
+         }
 
-      private final avb c;
-
-      private a(avb $$0) {
-         this.c = $$0;
+         if ($$3 && ac.c() - this.c > this.b.toMillis()) {
+            fly $$4 = fdz.Q().y;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
+   }
 
-      public void a(grq $$0) {
-         $$0.a(gqh.a(this.c, 1.0F, 1.0F));
+   private foq a(fkf $$0, boolean $$1, boolean $$2) {
+      return (foq)(!$$1 && $$2 && fdz.Q().aY().b() ? new fom($$0) : new fot($$0));
+   }
+
+   public void a(fjv $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
    }
 }

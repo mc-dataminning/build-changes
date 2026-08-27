@@ -1,65 +1,41 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+public class fwz {
+   private final gbm a;
+   private final fwr b;
+   private final gci c;
+   private fwz.a d = fwz.a.a;
 
-public class fwz extends fxa {
-   private final String f;
-
-   fwz(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fwz(gbm $$0, fwr $$1, gci $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.f;
+   public void a() {
+      switch (this.d) {
+         case b:
+            io $$0 = this.a.dp();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bD()) {
+               this.d = fwz.a.c;
+            }
+         case a:
+         case c:
+      }
    }
 
-   public fwz c() {
-      fwz $$0 = new fwz(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+   public boolean b() {
+      return this.d == fwz.a.c;
    }
 
-   @Override
-   public fld a(fld $$0, fxe $$1) {
-      return new fpf($$0, $$1, this);
+   public void c() {
+      if (this.d == fwz.a.a) {
+         this.d = fwz.a.b;
+      }
    }
 
-   public static class a extends fxa.a<fwz> {
-      public a(fwz $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fwz(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fxa.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fxa.b.d : null;
-      }
-
-      @Override
-      public Either<fxa.c, fxa.b> a(fxe $$0) {
-         fxa.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fxa.c(this.a.a, fxd.c, $$3));
-         }
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

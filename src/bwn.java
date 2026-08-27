@@ -1,95 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bwn extends bts<cku> {
-   private Set<csu> c = ImmutableSet.of();
+public class bwn {
+   public static bvs<clj> a(cbs<iw> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bxu.a(
+         (Function<bxu.b<clj>, ? extends App<bxu.c<clj>, bxx<clj>>>)($$5 -> $$5.group($$5.a(cbs.E), $$5.c(cbs.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     iw $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ae() && (!$$13.isPresent() || $$9.Y() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dp()) > $$3) {
+                           euk $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bwn() {
-      super(ImmutableMap.of(cbd.q, cbe.a, cbd.h, cbe.a));
-   }
+                           while ($$14 == null || io.a($$14).k($$10.dp()) > $$3) {
+                              $$14 = cdj.a($$10, 15, 7, euk.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   protected boolean a(aqh $$0, cku $$1) {
-      return btu.a($$1.dQ(), cbd.q, brn.bi);
-   }
+                           $$7.a(new cbv($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dp()) > $$2) {
+                           $$7.a(new cbv($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   protected boolean a(aqh $$0, cku $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqh $$0, cku $$1, long $$2) {
-      cku $$3 = (cku)$$1.dQ().c(cbd.q).get();
-      btu.a($$1, $$3, 0.5F, 2);
-      this.c = a($$1, $$3);
-   }
-
-   protected void c(aqh $$0, cku $$1, long $$2) {
-      cku $$3 = (cku)$$1.dQ().c(cbd.q).get();
-      if (!($$1.g($$3) > 5.0)) {
-         btu.a($$1, $$3, 0.5F, 2);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gH() && ($$1.gA().b() == ckx.g || $$3.gI())) {
-            a($$1, cku.cb.keySet(), $$3);
-         }
-
-         if ($$3.gA().b() == ckx.g && $$1.y().a_(ctc.pw) > ctc.pw.p() / 2) {
-            a($$1, ImmutableSet.of(ctc.pw), $$3);
-         }
-
-         if (!this.c.isEmpty() && $$1.y().a(this.c)) {
-            a($$1, this.c, $$3);
-         }
-      }
-   }
-
-   protected void d(aqh $$0, cku $$1, long $$2) {
-      $$1.dQ().b(cbd.q);
-   }
-
-   private static Set<csu> a(cku $$0, cku $$1) {
-      ImmutableSet<csu> $$2 = $$1.gA().b().d();
-      ImmutableSet<csu> $$3 = $$0.gA().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cku $$0, Set<csu> $$1, bsa $$2) {
-      bpv $$3 = $$0.y();
-      csz $$4 = csz.i;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         csz $$6;
-         csu $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.d()) {
-               $$7 = $$6.f();
-               if ($$1.contains($$7)) {
-                  if ($$6.G() > $$6.i() / 2) {
-                     $$8 = $$6.G() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.G() > 24) {
-                     $$8 = $$6.G() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new csz($$7, $$8);
-         break;
-      }
-
-      if (!$$4.d()) {
-         btu.a($$0, $$4, $$2.dl());
-      }
+                     return true;
+                  }))
+      );
    }
 }

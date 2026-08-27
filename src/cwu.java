@@ -1,8 +1,5 @@
-public interface cwu extends cxd<cou> {
-   @Override
-   default cxi<?> e() {
-      return cxi.a;
-   }
+import java.util.function.Consumer;
 
-   cwt d();
+public interface cwu {
+   void a(Consumer<wx> var1, cvh var2);
 }

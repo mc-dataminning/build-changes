@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fvo<T extends cjv> extends frp<T> {
+   public fvo(fvw $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fvo {
+   public boolean a(T $$0) {
+      return $$0.gh();
+   }
 }

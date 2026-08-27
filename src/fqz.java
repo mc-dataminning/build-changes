@@ -1,80 +1,531 @@
-public class fqz extends fqv<cey> {
-   private static final float a = 16.02F;
-   private static final float b = 25.0F;
-   private static final float f = 22.5F;
-   private static final float g = 16.5F;
-   private static final float h = 2.5F;
-   private static final String i = "head_cube";
-   private static final String j = "right_ear_cube";
-   private static final String k = "left_ear_cube";
-   private final fvb l;
-   private final fvb m;
-   private final fvb n;
-   private final fvb o;
-   private final fvb p;
-   private final fvb q;
-   private final fvb r;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-   public fqz(fvb $$0) {
-      super(0.6F, 16.02F);
-      this.l = $$0;
-      this.m = $$0.b("body");
-      this.n = $$0.b("right_hind_leg");
-      this.o = $$0.b("left_hind_leg");
-      this.q = this.m.b("head");
-      this.r = this.m.b("tail");
-      this.p = $$0.b("cube");
-   }
+public class fqz extends fgv<fqz.a> {
+   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
+   static final akm m = new akm("world_list/error_highlighted");
+   static final akm n = new akm("world_list/error");
+   static final akm o = new akm("world_list/marked_join_highlighted");
+   static final akm p = new akm("world_list/marked_join");
+   static final akm q = new akm("world_list/warning_highlighted");
+   static final akm r = new akm("world_list/warning");
+   static final akm s = new akm("world_list/join_highlighted");
+   static final akm u = new akm("world_list/join");
+   static final Logger v = LogUtils.getLogger();
+   static final wx w = wx.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
+   static final wx x = wx.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
+   static final wx y = wx.c("selectWorld.tooltip.snapshot1").a(n.g);
+   static final wx z = wx.c("selectWorld.tooltip.snapshot2").a(n.g);
+   static final wx A = wx.c("selectWorld.locked").a(n.m);
+   static final wx B = wx.c("selectWorld.conversion.tooltip").a(n.m);
+   static final wx C = wx.c("selectWorld.incompatible.tooltip").a(n.m);
+   static final wx D = wx.c("selectWorld.experimental");
+   private final fqu E;
+   private CompletableFuture<List<eow>> F;
+   @Nullable
+   private List<eow> G;
+   private String H;
+   private final fqz.b I;
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      fvk $$2 = $$1.a(
-         "body",
-         fvg.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fvf(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fvf(0.0F)),
-         fvd.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", fvg.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fvf(0.0F)), fvd.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fvk $$3 = $$2.a("head", fvg.c(), fvd.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", fvg.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fvf(0.0F)), fvd.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fvk $$4 = $$3.a("right_ear", fvg.c(), fvd.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", fvg.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fvf(0.0F)), fvd.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fvk $$5 = $$3.a("left_ear", fvg.c(), fvd.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", fvg.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fvf(0.0F)), fvd.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", fvg.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fvf(0.0F)), fvd.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", fvg.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fvf(0.0F)), fvd.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", fvg.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fvf(0.0F)), fvd.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fvg.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fvf(0.0F)), fvd.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", fvg.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fvf(0.0F)), fvd.a(0.0F, 24.0F, 0.0F));
-      return fvh.a($$0, 64, 64);
+   public fqz(fqu $$0, fdz $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fqz $$7) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.E = $$0;
+      this.I = new fqz.b($$1);
+      this.H = $$6;
+      if ($$7 != null) {
+         this.F = $$7.F;
+      } else {
+         this.F = this.L();
+      }
+
+      this.a(this.J());
    }
 
    @Override
-   public fvb a() {
-      return this.l;
+   protected void k() {
+      this.aE_().forEach(fqz.a::close);
+      super.k();
    }
 
-   public void a(cey $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fvb::c);
-      if ($$0.y()) {
-         this.m.l = true;
-         this.o.k = false;
-         this.n.k = false;
-         this.r.k = false;
-         this.p.k = true;
-      } else {
-         this.m.l = false;
-         this.o.k = true;
-         this.n.k = true;
-         this.r.k = true;
-         this.p.k = false;
-         this.q.e = axz.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.q.f = axz.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   @Nullable
+   private List<eow> J() {
+      try {
+         return this.F.getNow(null);
+      } catch (CancellationException | CompletionException var2) {
+         return null;
+      }
+   }
+
+   void K() {
+      this.F = this.L();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fka.a($$0)) {
+         Optional<fqz.c> $$3 = this.d();
+         if ($$3.isPresent()) {
+            if ($$3.get().b()) {
+               this.c.ak().a(gre.a(avh.Ao, 1.0F));
+               $$3.get().c();
+            }
+
+            return true;
+         }
       }
 
-      this.a(fdy.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.cc, fdy.d, $$3, 1.0F);
-      this.a($$0.cd, fdy.a, $$3, 1.0F);
-      this.a($$0.ce, fdy.c, $$3, 1.0F);
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      List<eow> $$4 = this.J();
+      if ($$4 != this.G) {
+         this.a($$4);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   private void a(@Nullable List<eow> $$0) {
+      if ($$0 == null) {
+         this.M();
+      } else {
+         this.a(this.H, $$0);
+      }
+
+      this.G = $$0;
+   }
+
+   public void a(String $$0) {
+      if (this.G != null && !$$0.equals(this.H)) {
+         this.a($$0, this.G);
+      }
+
+      this.H = $$0;
+   }
+
+   private CompletableFuture<List<eow>> L() {
+      eov.a $$0;
+      try {
+         $$0 = this.c.m().b();
+      } catch (eou var3) {
+         v.error("Couldn't load level list", var3);
+         this.c(var3.a());
+         return CompletableFuture.completedFuture(List.of());
+      }
+
+      if ($$0.a()) {
+         fqo.a(this.c, null);
+         return CompletableFuture.completedFuture(List.of());
+      } else {
+         return this.c.m().a($$0).exceptionally($$0x -> {
+            this.c.a(o.a($$0x, "Couldn't load level list"));
+            return List.of();
+         });
+      }
+   }
+
+   private void a(String $$0, List<eow> $$1) {
+      this.k();
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+
+      for (eow $$2 : $$1) {
+         if (this.a($$0, $$2)) {
+            this.b(new fqz.c(this, $$2));
+         }
+      }
+
+      this.N();
+   }
+
+   private boolean a(String $$0, eow $$1) {
+      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
+   }
+
+   private void M() {
+      this.k();
+      this.b(this.I);
+      this.N();
+   }
+
+   private void N() {
+      this.a(this.n());
+      this.E.d(true);
+   }
+
+   private void c(wx $$0) {
+      this.c.a(new flb(wx.c("selectWorld.unable_to_load"), $$0));
+   }
+
+   @Override
+   public int b() {
+      return 270;
+   }
+
+   public void a(@Nullable fqz.a $$0) {
+      super.a($$0);
+      this.E.a($$0 instanceof fqz.c $$1 ? $$1.f : null);
+   }
+
+   public Optional<fqz.c> d() {
+      fqz.a $$0 = this.h();
+      return $$0 instanceof fqz.c $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   public fqu I() {
+      return this.E;
+   }
+
+   @Override
+   public void a(fjv $$0) {
+      if (this.aE_().contains(this.I)) {
+         this.I.b($$0);
+      } else {
+         super.a($$0);
+      }
+   }
+
+   public abstract static class a extends fgv.a<fqz.a> implements AutoCloseable {
+      @Override
+      public void close() {
+      }
+   }
+
+   public static class b extends fqz.a {
+      private static final wx a = wx.c("selectWorld.loading_list");
+      private final fdz b;
+
+      public b(fdz $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = (this.b.y.n - this.b.h.a(a)) / 2;
+         int $$11 = $$2 + ($$5 - 9) / 2;
+         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
+         String $$12 = flj.a(ac.c());
+         int $$13 = (this.b.y.n - this.b.h.b($$12)) / 2;
+         int $$14 = $$11 + 9;
+         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
+      }
+
+      @Override
+      public wx a() {
+         return a;
+      }
+   }
+
+   public final class c extends fqz.a implements AutoCloseable {
+      private static final int b = 32;
+      private static final int c = 32;
+      private final fdz d;
+      private final fqu e;
+      final eow f;
+      private final flc g;
+      @Nullable
+      private Path h;
+      private long i;
+
+      public c(fqz $$1, eow $$2) {
+         this.d = $$1.c;
+         this.e = $$1.I();
+         this.f = $$2;
+         this.g = flc.a(this.d.aa(), $$2.a());
+         this.h = $$2.c();
+         this.j();
+         this.l();
+      }
+
+      private void j() {
+         if (this.h != null) {
+            try {
+               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+               if ($$0.isSymbolicLink()) {
+                  List<eub> $$1 = this.d.bf().a(this.h);
+                  if (!$$1.isEmpty()) {
+                     fqz.v.warn("{}", etz.a(this.h, $$1));
+                     this.h = null;
+                  } else {
+                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
+                  }
+               }
+
+               if (!$$0.isRegularFile()) {
+                  this.h = null;
+               }
+            } catch (NoSuchFileException var3) {
+               this.h = null;
+            } catch (IOException var4) {
+               fqz.v.error("could not validate symlink", var4);
+               this.h = null;
+            }
+         }
+      }
+
+      @Override
+      public wx a() {
+         wx $$0 = wx.a("narrator.select.world_info", this.f.b(), wx.a(new Date(this.f.f())), this.f.s());
+         if (this.f.p()) {
+            $$0 = ww.a($$0, fqz.A);
+         }
+
+         if (this.f.e()) {
+            $$0 = ww.a($$0, fqz.D);
+         }
+
+         return wx.a("narrator.select", $$0);
+      }
+
+      @Override
+      public void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         String $$10 = this.f.b();
+         String $$11 = this.f.a();
+         long $$12 = this.f.f();
+         if ($$12 != -1L) {
+            $$11 = $$11 + " (" + fqz.a.format(Instant.ofEpochMilli($$12)) + ")";
+         }
+
+         if (StringUtils.isEmpty($$10)) {
+            $$10 = gpb.a("selectWorld.world") + " " + ($$1 + 1);
+         }
+
+         wx $$13 = this.f.s();
+         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
+         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
+         RenderSystem.enableBlend();
+         $$0.a(this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         RenderSystem.disableBlend();
+         if (this.d.m.Z().c() || $$8) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$14 = $$6 - $$3;
+            boolean $$15 = $$14 < 32;
+            akm $$16 = $$15 ? fqz.s : fqz.u;
+            akm $$17 = $$15 ? fqz.q : fqz.r;
+            akm $$18 = $$15 ? fqz.m : fqz.n;
+            akm $$19 = $$15 ? fqz.o : fqz.p;
+            if (this.f instanceof eow.c || this.f instanceof eow.b) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               $$0.a($$19, $$3, $$2, 32, 32);
+               return;
+            }
+
+            if (this.f.p()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fqz.A, 175));
+               }
+            } else if (this.f.d()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fqz.B, 175));
+               }
+            } else if (!this.f.r()) {
+               $$0.a($$18, $$3, $$2, 32, 32);
+               if ($$15) {
+                  this.e.b(this.d.h.c(fqz.C, 175));
+               }
+            } else if (this.f.m()) {
+               $$0.a($$19, $$3, $$2, 32, 32);
+               if (this.f.n()) {
+                  $$0.a($$18, $$3, $$2, 32, 32);
+                  if ($$15) {
+                     this.e.b(ImmutableList.of(fqz.w.g(), fqz.x.g()));
+                  }
+               } else if (!aa.b().g()) {
+                  $$0.a($$17, $$3, $$2, 32, 32);
+                  if ($$15) {
+                     this.e.b(ImmutableList.of(fqz.y.g(), fqz.z.g()));
+                  }
+               }
+            } else {
+               $$0.a($$16, $$3, $$2, 32, 32);
+            }
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (!this.f.u()) {
+            return true;
+         } else {
+            fqz.this.a((fqz.a)this);
+            if (!($$0 - (double)fqz.this.r() <= 32.0) && ac.c() - this.i >= 250L) {
+               this.i = ac.c();
+               return super.a($$0, $$1, $$2);
+            } else {
+               if (this.b()) {
+                  this.d.ak().a(gre.a(avh.Ao, 1.0F));
+                  this.c();
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public boolean b() {
+         return this.f.u();
+      }
+
+      public void c() {
+         if (this.f.u()) {
+            if (this.f instanceof eow.c) {
+               this.d.a(fln.a(() -> this.d.a(this.e)));
+            } else {
+               this.d.x().a(this.f.a(), () -> {
+                  fqz.this.K();
+                  this.d.a(this.e);
+               });
+            }
+         }
+      }
+
+      public void d() {
+         this.d.a(new fkq($$0 -> {
+            if ($$0) {
+               this.d.a(new flv(true));
+               this.e();
+            }
+
+            this.d.a(this.e);
+         }, wx.c("selectWorld.deleteQuestion"), wx.a("selectWorld.deleteWarning", this.f.b()), wx.c("selectWorld.deleteButton"), ww.e));
+      }
+
+      public void e() {
+         eov $$0 = this.d.m();
+         String $$1 = this.f.a();
+
+         try (eov.c $$2 = $$0.e($$1)) {
+            $$2.k();
+         } catch (IOException var8) {
+            fih.b(this.d, $$1);
+            fqz.v.error("Failed to delete world {}", $$1, var8);
+         }
+
+         fqz.this.K();
+      }
+
+      public void f() {
+         this.k();
+         String $$0 = this.f.a();
+
+         eov.c $$1;
+         try {
+            $$1 = this.d.m().d($$0);
+         } catch (IOException var6) {
+            fih.a(this.d, $$0);
+            fqz.v.error("Failed to access level {}", $$0, var6);
+            fqz.this.K();
+            return;
+         } catch (etz var7) {
+            fqz.v.warn("{}", var7.getMessage());
+            this.d.a(fln.a(() -> this.d.a(this.e)));
+            return;
+         }
+
+         fqq $$5;
+         try {
+            $$5 = fqq.a(this.d, $$1, $$1x -> {
+               $$1.c();
+               if ($$1x) {
+                  fqz.this.K();
+               }
+
+               this.d.a(this.e);
+            });
+         } catch (uo | uu | IOException var5) {
+            $$1.c();
+            fih.a(this.d, $$0);
+            fqz.v.error("Failed to load world data {}", $$0, var5);
+            fqz.this.K();
+            return;
+         }
+
+         this.d.a($$5);
+      }
+
+      public void h() {
+         this.k();
+
+         try (eov.c $$0 = this.d.m().d(this.f.a())) {
+            Pair<dbb, fqw> $$1 = this.d.x().a($$0);
+            dbb $$2 = (dbb)$$1.getFirst();
+            fqw $$3 = (fqw)$$1.getSecond();
+            Path $$4 = fqo.a($$0.a(eot.j), this.d);
+            if ($$3.b().e()) {
+               this.d
+                  .a(
+                     new fkq(
+                        $$3x -> this.d.a((fly)($$3x ? fqo.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
+                        wx.c("selectWorld.recreate.customized.title"),
+                        wx.c("selectWorld.recreate.customized.text"),
+                        ww.i,
+                        ww.e
+                     )
+                  );
+            } else {
+               this.d.a(fqo.a(this.d, this.e, $$2, $$3, $$4));
+            }
+         } catch (etz var8) {
+            fqz.v.warn("{}", var8.getMessage());
+            this.d.a(fln.a(() -> this.d.a(this.e)));
+         } catch (Exception var9) {
+            fqz.v.error("Unable to recreate world", var9);
+            this.d.a(new fkk(() -> this.d.a(this.e), wx.c("selectWorld.recreate.error.title"), wx.c("selectWorld.recreate.error.text")));
+         }
+      }
+
+      private void k() {
+         this.d.d(new fle(wx.c("selectWorld.data_read")));
+      }
+
+      private void l() {
+         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
+         if ($$0) {
+            try (InputStream $$1 = Files.newInputStream(this.h)) {
+               this.g.a(ext.a($$1));
+            } catch (Throwable var7) {
+               fqz.v.error("Invalid icon for world {}", this.f.a(), var7);
+               this.h = null;
+            }
+         } else {
+            this.g.a();
+         }
+      }
+
+      @Override
+      public void close() {
+         this.g.close();
+      }
+
+      public String i() {
+         return this.f.b();
+      }
    }
 }

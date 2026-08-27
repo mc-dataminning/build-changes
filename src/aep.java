@@ -1,45 +1,29 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aep implements ze<abq> {
+   public static final yv<vx, aep> a = ze.a(aep::a, aep::new);
+   private final int b;
 
-public class aep implements zb<abm> {
-   public static final ys<vu, aep> a = zb.a(aep::a, aep::new);
-   private final euk b;
-   private final String c;
-
-   public aep(euk $$0, @Nullable eul $$1) {
+   public aep(int $$0) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
    }
 
-   private aep(vu $$0) {
-      this.b = $$0.a(euk.u);
-      this.c = $$0.p();
+   private aep(vx $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(vu $$0) {
-      $$0.a(euk::a, this.b);
-      $$0.a(this.c);
+   private void a(vx $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zd<aep> a() {
-      return afx.aB;
+   public zg<aep> a() {
+      return agb.ax;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public euk b() {
+   public int b() {
       return this.b;
-   }
-
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

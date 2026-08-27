@@ -1,49 +1,27 @@
-public class cww extends cwv {
-   public cww(cwt $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
+
+public record cww(List<ard<String>> f) implements cwa<String, cww> {
+   public static final cww a = new cww(List.of());
+   public static final int b = 1024;
+   private static final Codec<ard<String>> g = ard.a(Codec.string(0, 1024));
+   public static final Codec<List<ard<String>>> c = g.sizeLimitedListOf(100);
+   public static final Codec<cww> d = RecordCodecBuilder.create($$0 -> $$0.group(c.optionalFieldOf("pages", List.of()).forGetter(cww::a)).apply($$0, cww::new));
+   public static final yv<ByteBuf, cww> e = ard.a(yt.b(1024)).a(yt.c(100)).a(cww::new, cww::a);
+
+   public Stream<String> a(boolean $$0) {
+      return this.f.stream().map($$1 -> $$1.a($$0));
    }
 
-   public boolean a(cou $$0, dad $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            csz $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(avz.bq)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(ctc.a)) {
-                     return false;
-                  }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public csz a(cou $$0, iy.a $$1) {
-      doq $$2 = new doq($$0.a(1).f(), $$0.a(3).f(), $$0.a(5).f(), $$0.a(7).f());
-      return doc.a($$2);
+   public cww b(List<ard<String>> $$0) {
+      return new cww($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.w;
+   public List<ard<String>> a() {
+      return this.f;
    }
 }

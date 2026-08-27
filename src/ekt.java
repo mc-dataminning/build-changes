@@ -1,30 +1,42 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ekt implements ekx {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ekt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akg.a(le.aU).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ekt::new)
+public class ekt extends ekw {
+   public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ekt::new)
    );
-   private final akg<eoq> d;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public ekt(akg<eoq> $$0) {
-      this.d = $$0;
+   public ekt(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
    @Override
-   public ua a(ayg $$0, @Nullable ua $$1) {
-      ua $$2 = $$1 == null ? new ua() : $$1.h();
-      akg.a(le.aU).encodeStart(uo.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public boolean a(io $$0, io $$1, io $$2, ayk $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= ayd.b(this.b, this.d, ayd.g((float)$$4, (float)this.e, (float)this.f));
    }
 
    @Override
-   public eky<?> a() {
-      return eky.d;
+   protected ekx<?> a() {
+      return ekx.b;
    }
 }

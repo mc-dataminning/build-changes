@@ -1,81 +1,152 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fpw extends fld {
-   private static final wu a = wu.c("selectWorld.experiments");
-   private static final wu b = wu.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final fir d = new fir(this);
-   private final fld r;
-   private final atc s;
-   private final Consumer<atc> u;
-   private final Object2BooleanMap<asz> v = new Object2BooleanLinkedOpenHashMap();
+public abstract class fpw<B extends fxv.a<?>> extends fly {
+   private static final wx y = wx.c("gui.abuseReport.report_sent_msg");
+   private static final wx z = wx.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wx A = wx.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wx B = wx.c("gui.abuseReport.error.title").a(n.r);
+   private static final wx C = wx.c("gui.abuseReport.send.generic_error");
+   protected static final wx a = wx.c("gui.abuseReport.send");
+   protected static final wx b = wx.c("gui.abuseReport.observed_what");
+   protected static final wx c = wx.c("gui.abuseReport.select_reason");
+   private static final wx D = wx.c("gui.abuseReport.describe");
+   protected static final wx d = wx.c("gui.abuseReport.more_comments");
+   private static final wx E = wx.c("gui.abuseReport.comments");
+   protected static final int r = 20;
+   protected static final int s = 280;
+   protected static final int u = 8;
+   private static final Logger F = LogUtils.getLogger();
+   protected final fly v;
+   protected final fxz w;
+   protected B x;
 
-   public fpw(fld $$0, atc $$1, Consumer<atc> $$2) {
-      super(a);
-      this.r = $$0;
-      this.s = $$1;
-      this.u = $$2;
+   protected fpw(wx $$0, fly $$1, fxz $$2, B $$3) {
+      super($$0);
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
+   }
 
-      for (asz $$3 : $$1.c()) {
-         if ($$3.l() == atd.d) {
-            this.v.put($$3, $$1.f().contains($$3));
-         }
+   protected fgr a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.w.a().b();
+      fgr $$4 = new fgr(this.p, 0, 0, $$0, $$1, D, E);
+      $$4.a(this.x.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
+
+   protected void m() {
+      this.x.a(this.w).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(flf.a(z, ww.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void C() {
+      this.E();
+      this.m.a(flf.a(A, y, ww.d, () -> this.m.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      F.error("Encountered error while sending abuse report", $$0);
+      wx $$2;
+      if ($$0.getCause() instanceof xx $$1) {
+         $$2 = $$1.a();
+      } else {
+         $$2 = C;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(wx $$0) {
+      wx $$1 = $$0.f().a(n.m);
+      this.m.a(flf.a(B, $$1, ww.k, () -> this.m.a(this)));
+   }
+
+   void D() {
+      if (this.x.b()) {
+         this.w.a(this.x.e().b());
       }
    }
 
-   @Override
-   protected void aM_() {
-      this.d.a(a, this.p);
-      fiv $$0 = this.d.c(fiv.d());
-      $$0.a(new ffy(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fqa.a $$1 = fqa.a(310).a(2, true).b(4);
-      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fiv $$2 = this.d.b(fiv.e().a(8));
-      $$2.a(ffe.a(wt.d, $$0x -> this.m()).a());
-      $$2.a(ffe.a(wt.e, $$0x -> this.d()).a());
-      this.d.a($$1x -> {
-         ffc var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   private static wu a(asz $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (wu)(goe.a($$1) ? wu.c($$1) : $$0.b());
-   }
-
-   @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public wu i() {
-      return wt.a(super.i(), b);
+   void E() {
+      this.w.a(null);
    }
 
    @Override
    public void d() {
-      this.m.a(this.r);
+      if (this.x.b()) {
+         this.m.a(new fpw.a());
+      } else {
+         this.m.a(this.v);
+      }
    }
 
-   private void m() {
-      List<asz> $$0 = new ArrayList<>(this.s.f());
-      List<asz> $$1 = new ArrayList<>();
-      this.v.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.s.a($$0.stream().map(asz::g).toList());
-      this.u.accept(this.s);
+   @Override
+   public void j() {
+      this.D();
+      super.j();
+   }
+
+   class a extends fpb {
+      private static final wx c = wx.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wx d = wx.c("gui.abuseReport.discard.content");
+      private static final wx r = wx.c("gui.abuseReport.discard.return");
+      private static final wx s = wx.c("gui.abuseReport.discard.draft");
+      private static final wx u = wx.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(c, d, d);
+      }
+
+      @Override
+      protected fjn m() {
+         fjq $$0 = fjq.d().a(8);
+         $$0.c().b();
+         fjq $$1 = $$0.a(fjq.e().a(8));
+         $$1.a(ffz.a(r, $$0x -> this.d()).a());
+         $$1.a(ffz.a(s, $$0x -> {
+            fpw.this.D();
+            this.m.a(fpw.this.v);
+         }).a());
+         $$0.a(ffz.a(u, $$0x -> {
+            fpw.this.E();
+            this.m.a(fpw.this.v);
+         }).a());
+         return $$0;
+      }
+
+      @Override
+      public void d() {
+         this.m.a(fpw.this);
+      }
+
+      @Override
+      public boolean aD_() {
+         return false;
+      }
    }
 }

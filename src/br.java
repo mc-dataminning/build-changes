@@ -19,31 +19,31 @@ public record br(
    Optional<br> m,
    Optional<br> n,
    Optional<String> o,
-   Optional<di> p
+   Optional<dj> p
 ) {
-   public static final Codec<br> a = axh.a(
+   public static final Codec<br> a = Codec.recursive(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     axh.a(bu.a, "type").forGetter(br::a),
-                     axh.a(bi.a, "distance").forGetter(br::b),
-                     axh.a(cr.a, "location").forGetter(br::c),
-                     axh.a(cr.a, "stepping_on").forGetter(br::d),
-                     axh.a(cu.a, "effects").forGetter(br::e),
-                     axh.a(cv.c, "nbt").forGetter(br::f),
-                     axh.a(bp.a, "flags").forGetter(br::g),
-                     axh.a(bo.a, "equipment").forGetter(br::h),
-                     axh.a(bs.a, "type_specific").forGetter(br::i),
-                     axh.a($$0, "vehicle").forGetter(br::j),
-                     axh.a($$0, "passenger").forGetter(br::k),
-                     axh.a($$0, "targeted_entity").forGetter(br::l),
-                     axh.a(Codec.STRING, "team").forGetter(br::m),
-                     axh.a(di.a, "slots").forGetter(br::n)
+                     bu.a.optionalFieldOf("type").forGetter(br::a),
+                     bi.a.optionalFieldOf("distance").forGetter(br::b),
+                     cr.a.optionalFieldOf("location").forGetter(br::c),
+                     cr.a.optionalFieldOf("stepping_on").forGetter(br::d),
+                     cu.a.optionalFieldOf("effects").forGetter(br::e),
+                     cv.c.optionalFieldOf("nbt").forGetter(br::f),
+                     bp.a.optionalFieldOf("flags").forGetter(br::g),
+                     bo.a.optionalFieldOf("equipment").forGetter(br::h),
+                     bs.a.optionalFieldOf("type_specific").forGetter(br::i),
+                     $$0.optionalFieldOf("vehicle").forGetter(br::j),
+                     $$0.optionalFieldOf("passenger").forGetter(br::k),
+                     $$0.optionalFieldOf("targeted_entity").forGetter(br::l),
+                     Codec.STRING.optionalFieldOf("team").forGetter(br::m),
+                     dj.a.optionalFieldOf("slots").forGetter(br::n)
                   )
                   .apply($$1, br::new)
          )
    );
-   public static final Codec<bc> b = axh.a(bc.a, a, br::a);
+   public static final Codec<bc> b = Codec.withAlternative(bc.a, a, br::a);
 
    public static bc a(br.a $$0) {
       return a($$0.b());
@@ -58,33 +58,33 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      erq $$1 = ert.a(eol.b.a, $$0).build();
+      esl $$1 = eso.a(epf.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(aqi $$0, @Nullable brh $$1) {
-      return this.a($$0.z(), $$0.dl(), $$1);
+   public boolean a(aqn $$0, @Nullable bru $$1) {
+      return this.a($$0.z(), $$0.dn(), $$1);
    }
 
-   public boolean a(aqh $$0, @Nullable etp $$1, @Nullable brh $$2) {
+   public boolean a(aqm $$0, @Nullable euk $$1, @Nullable bru $$2) {
       if ($$2 == null) {
          return false;
-      } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
+      } else if (this.c.isPresent() && !this.c.get().b($$2.ak())) {
          return false;
       } else {
          if ($$1 == null) {
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.ds(), $$2.du(), $$2.dy())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.du(), $$2.dw(), $$2.dA())) {
             return false;
          }
 
-         if (this.e.isPresent() && !this.e.get().a($$0, $$2.ds(), $$2.du(), $$2.dy())) {
+         if (this.e.isPresent() && !this.e.get().a($$0, $$2.du(), $$2.dw(), $$2.dA())) {
             return false;
          } else {
             if (this.f.isPresent()) {
-               etp $$3 = etp.b($$2.aJ());
+               euk $$3 = euk.b($$2.aL());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -98,15 +98,15 @@ public record br(
                return false;
             } else if (this.k.isPresent() && !this.k.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.l.isPresent() && !this.l.get().a($$0, $$1, $$2.da())) {
+            } else if (this.l.isPresent() && !this.l.get().a($$0, $$1, $$2.dc())) {
                return false;
-            } else if (this.m.isPresent() && $$2.cQ().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
+            } else if (this.m.isPresent() && $$2.cS().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bsc ? ((bsc)$$2).p() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bsq ? ((bsq)$$2).p() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  euv $$4 = $$2.ch();
+                  evq $$4 = $$2.cj();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record br(
       }
    }
 
-   public static eol b(aqi $$0, brh $$1) {
-      eoo $$2 = new eoo.a($$0.z()).a(erc.a, $$1).a(erc.f, $$0.dl()).a(erb.m);
-      return new eol.a($$2).a(Optional.empty());
+   public static epf b(aqn $$0, bru $$1) {
+      epi $$2 = new epi.a($$0.z()).a(erx.a, $$1).a(erx.f, $$0.dn()).a(erw.n);
+      return new epf.a($$2).a(Optional.empty());
    }
 
    public Optional<bu> a() {
@@ -175,7 +175,7 @@ public record br(
       return this.o;
    }
 
-   public Optional<di> n() {
+   public Optional<dj> n() {
       return this.p;
    }
 
@@ -193,18 +193,18 @@ public record br(
       private Optional<br> k = Optional.empty();
       private Optional<br> l = Optional.empty();
       private Optional<String> m = Optional.empty();
-      private Optional<di> n = Optional.empty();
+      private Optional<dj> n = Optional.empty();
 
       public static br.a a() {
          return new br.a();
       }
 
-      public br.a a(brn<?> $$0) {
+      public br.a a(bsa<?> $$0) {
          this.a = Optional.of(bu.a($$0));
          return this;
       }
 
-      public br.a a(awg<brn<?>> $$0) {
+      public br.a a(awl<bsa<?>> $$0) {
          this.a = Optional.of(bu.a($$0));
          return this;
       }
@@ -279,7 +279,7 @@ public record br(
          return this;
       }
 
-      public br.a a(di $$0) {
+      public br.a a(dj $$0) {
          this.n = Optional.of($$0);
          return this;
       }

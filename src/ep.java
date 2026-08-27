@@ -1,4 +1,3 @@
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -6,74 +5,39 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ep implements ArgumentType<ep.a> {
-   private static final Collection<String> a = Arrays.asList("eyes", "feet");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("argument.anchor.invalid", $$0));
+public class ep implements ArgumentType<akm> {
+   private static final Collection<String> a = Stream.of(dax.h, dax.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("argument.dimension.invalid", $$0));
 
-   public static ep.a a(CommandContext<ed> $$0, String $$1) {
-      return (ep.a)$$0.getArgument($$1, ep.a.class);
-   }
-
-   public static ep a() {
-      return new ep();
-   }
-
-   public ep.a a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = $$0.readUnquotedString();
-      ep.a $$3 = ep.a.a($$2);
-      if ($$3 == null) {
-         $$0.setCursor($$1);
-         throw b.createWithContext($$0, $$2);
-      } else {
-         return $$3;
-      }
+   public akm a(StringReader $$0) throws CommandSyntaxException {
+      return akm.a($$0);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ei.b(ep.a.c.keySet(), $$1);
+      return $$0.getSource() instanceof ej ? ej.a(((ej)$$0.getSource()).u().stream().map(akl::a), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   public static enum a {
-      a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new etp($$0.c, $$0.d + (double)$$1.cJ(), $$0.e));
+   public static ep a() {
+      return new ep();
+   }
 
-      static final Map<String, ep.a> c = ac.a(Maps.newHashMap(), $$0 -> {
-         for (ep.a $$1 : values()) {
-            $$0.put($$1.d, $$1);
-         }
-      });
-      private final String d;
-      private final BiFunction<etp, brh, etp> e;
-
-      private a(String $$0, BiFunction<etp, brh, etp> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Nullable
-      public static ep.a a(String $$0) {
-         return c.get($$0);
-      }
-
-      public etp a(brh $$0) {
-         return this.e.apply($$0.dl(), $$0);
-      }
-
-      public etp a(ed $$0) {
-         brh $$1 = $$0.f();
-         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
+   public static aqm a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      akm $$2 = (akm)$$0.getArgument($$1, akm.class);
+      akl<dax> $$3 = akl.a(lf.aS, $$2);
+      aqm $$4 = ((ee)$$0.getSource()).l().a($$3);
+      if ($$4 == null) {
+         throw b.create($$2);
+      } else {
+         return $$4;
       }
    }
 }

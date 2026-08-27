@@ -1,60 +1,61 @@
-import javax.annotation.Nullable;
+public class ahi implements ze<agd> {
+   public static final yv<vx, ahi> a = ze.a(ahi::a, ahi::new);
+   private final int b;
+   private final ahi.a c;
+   private final int d;
 
-public class ahi implements zb<afz> {
-   public static final ys<vu, ahi> a = zb.a(ahi::a, ahi::new);
-   private final ahi.a b;
-   @Nullable
-   private final akh c;
+   public ahi(bru $$0, ahi.a $$1) {
+      this($$0, $$1, 0);
+   }
 
-   public ahi(ahi.a $$0, @Nullable akh $$1) {
-      this.b = $$0;
+   public ahi(bru $$0, ahi.a $$1, int $$2) {
+      this.b = $$0.al();
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public static ahi a(af $$0) {
-      return new ahi(ahi.a.a, $$0.a());
+   private ahi(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(ahi.a.class);
+      this.d = $$0.l();
    }
 
-   public static ahi b() {
-      return new ahi(ahi.a.b, null);
-   }
-
-   private ahi(vu $$0) {
-      this.b = $$0.b(ahi.a.class);
-      if (this.b == ahi.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      if (this.b == ahi.a.a) {
-         $$0.a(this.c);
-      }
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zd<ahi> a() {
-      return afx.bO;
+   public zg<ahi> a() {
+      return agb.bK;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public ahi.a e() {
+   public int b() {
       return this.b;
    }
 
-   @Nullable
-   public akh f() {
+   public ahi.a e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 
    public static enum a {
       a,
-      b;
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

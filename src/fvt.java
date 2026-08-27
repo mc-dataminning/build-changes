@@ -1,249 +1,232 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
 
-public abstract class fvt implements zh {
-   private static final wu i = wu.c("disconnect.lost");
-   private static final Logger j = LogUtils.getLogger();
-   protected final fde a;
-   protected final vs b;
-   @Nullable
-   protected final fwk c;
-   @Nullable
-   protected String d;
-   protected final gsd e;
-   @Nullable
-   protected final fld f;
-   protected boolean g;
-   private final List<fvt.a> k = new ArrayList<>();
-   protected final Map<akh, byte[]> h;
+public class fvt {
+   private static final fwa a = new fwa(0.008F);
+   private static final fwa b = new fwa(1.0F);
+   private static final fwa c = new fwa(0.5F);
 
-   protected fvt(fde $$0, vs $$1, fwa $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
-   }
+   public static Map<fvu, fwc> a() {
+      Builder<fvu, fwc> $$0 = ImmutableMap.builder();
+      fwc $$1 = fwc.a(ftj.a(fwa.a, 0.0F), 64, 64);
+      fwc $$2 = fwc.a(fti.a(b), 64, 32);
+      fwc $$3 = fwc.a(fti.a(new fwa(1.02F)), 64, 32);
+      fwc $$4 = fwc.a(fti.a(c), 64, 32);
+      fwc $$5 = ftr.b();
+      fwc $$6 = fus.c();
+      fwc $$7 = fwc.a(fth.a(fwa.a), 64, 64);
+      fwc $$8 = ftk.b();
+      fwc $$9 = fsp.c();
+      fwc $$10 = fwc.a(ftu.a(fwa.a), 64, 32);
+      fwc $$11 = fwc.a(fua.a(fwa.a), 64, 64);
+      fwc $$12 = fwc.a(ftz.a(), 64, 64);
+      fwc $$13 = fus.b();
+      fwc $$14 = ftp.a(fwa.a);
+      fwc $$15 = fuz.b();
+      fwc $$16 = ftg.c();
+      fwc $$17 = fur.e();
+      fwc $$18 = fwc.a(fvh.b(), 64, 64);
+      fwc $$19 = fux.b();
+      $$0.put(fvv.a, frs.b());
+      $$0.put(fvv.b, fru.b());
+      $$0.put(fvv.c, frx.c());
+      $$0.put(fvv.d, frw.a(c));
+      $$0.put(fvv.e, frw.a(b));
+      $$0.put(fvv.f, fry.c());
+      $$0.put(fvv.g, gef.a());
+      $$0.put(fvv.h, frz.b());
+      $$0.put(fvv.i, geh.c());
+      $$0.put(fvv.j, geh.b());
+      $$0.put(fvv.k, fsa.c());
+      $$0.put(fvv.l, gei.b());
+      $$0.put(fvv.m, fsb.b());
+      $$0.put(fvv.n, fsd.c());
+      $$0.put(fvv.o, $$4);
+      $$0.put(fvv.p, $$2);
+      $$0.put(fvv.q, fwc.a(ftj.a(new fwa(0.2F), 0.0F), 64, 32));
+      $$0.put(fvv.r, fse.a());
+      $$0.put(fvv.s, fsf.a(32, 32));
+      $$0.put(fvv.t, $$10);
+      $$0.put(fvv.u, fwc.a(ftu.a(new fwa(0.01F)), 64, 32));
+      $$0.put(fvv.v, fsg.b());
+      $$0.put(fvv.w, $$19);
+      $$0.put(fvv.x, geq.b());
+      $$0.put(fvv.y, $$5);
+      $$0.put(fvv.z, fsl.c());
+      $$0.put(fvv.A, fsm.b());
+      $$0.put(fvv.B, $$5);
+      $$0.put(fvv.D, ger.b());
+      $$0.put(fvv.F, ger.c());
+      $$0.put(fvv.E, ger.d());
+      $$0.put(fvv.C, ger.e());
+      $$0.put(fvv.G, $$9);
+      $$0.put(fvv.H, fsq.a(fwa.a));
+      $$0.put(fvv.I, fsq.a(new fwa(2.0F)));
+      $$0.put(fvv.J, $$6);
+      $$0.put(fvv.K, ges.b());
+      $$0.put(fvv.L, ges.c());
+      $$0.put(fvv.M, fsr.b());
+      $$0.put(fvv.N, fsk.c());
+      $$0.put(fvv.O, geq.d());
+      $$0.put(fvv.P, geq.c());
+      $$0.put(fvv.Q, fvq.a());
+      $$0.put(fvv.R, fss.a(fwa.a));
+      $$0.put(fvv.S, $$4);
+      $$0.put(fvv.T, $$4);
+      $$0.put(fvv.U, fss.a(new fwa(0.25F)));
+      $$0.put(fvv.V, ftd.b());
+      $$0.put(fvv.W, fst.c());
+      $$0.put(fvv.X, fsu.c());
+      $$0.put(fvv.Y, fsv.b());
+      $$0.put(fvv.Z, gho.a());
+      $$0.put(fvv.aa, ghn.a());
+      $$0.put(fvv.ab, $$8);
+      $$0.put(fvv.ac, fsx.b());
+      $$0.put(fvv.ad, fsy.c());
+      $$0.put(fvv.ae, fsz.b());
+      $$0.put(fvv.af, $$5);
+      $$0.put(fvv.ag, fta.b());
+      $$0.put(fvv.ah, $$1);
+      $$0.put(fvv.ai, $$4);
+      $$0.put(fvv.aj, $$2);
+      $$0.put(fvv.ak, fuy.b());
+      $$0.put(fvv.al, ftc.c());
+      $$0.put(fvv.am, ftd.b());
+      $$0.put(fvv.an, $$16);
+      $$0.put(fvv.ao, $$5);
+      $$0.put(fvv.ap, $$7);
+      $$0.put(fvv.aq, fwc.a(fth.a(new fwa(0.1F)), 64, 64));
+      $$0.put(fvv.ar, $$1);
+      $$0.put(fvv.as, $$4);
+      $$0.put(fvv.at, $$2);
+      $$0.put(fvv.au, $$8);
+      $$0.put(fvv.av, ftl.b());
+      $$0.put(fvv.aw, ftn.b());
+      $$0.put(fvv.ax, $$14);
+      $$0.put(fvv.ay, ftp.a(new fwa(0.5F)));
+      $$0.put(fvv.az, ftq.b());
+      $$0.put(fvv.aA, ftm.b());
+      $$0.put(fvv.aB, $$5);
+      $$0.put(fvv.aC, $$9);
+      $$0.put(fvv.aD, fsk.c());
+      $$0.put(fvv.aE, $$10);
+      $$0.put(fvv.aF, ftv.c());
+      $$0.put(fvv.aG, ftw.b());
+      $$0.put(fvv.aH, ftx.b());
+      $$0.put(fvv.aI, fty.a(fwa.a));
+      $$0.put(fvv.aQ, fty.a(new fwa(0.5F)));
+      $$0.put(fvv.aJ, $$11);
+      $$0.put(fvv.aO, $$4);
+      $$0.put(fvv.aP, $$3);
+      $$0.put(fvv.aK, $$11);
+      $$0.put(fvv.aL, $$4);
+      $$0.put(fvv.aM, $$3);
+      $$0.put(fvv.aN, $$12);
+      $$0.put(fvv.aR, $$8);
+      $$0.put(fvv.aS, fwc.a(fub.a(fwa.a, false), 64, 64));
+      $$0.put(fvv.aT, $$13);
+      $$0.put(fvv.aU, $$4);
+      $$0.put(fvv.aV, $$2);
+      $$0.put(fvv.aW, fwc.a(fub.a(fwa.a, true), 64, 64));
+      $$0.put(fvv.aX, $$4);
+      $$0.put(fvv.aY, $$2);
+      $$0.put(fvv.aZ, gmn.a());
+      $$0.put(fvv.ba, fuc.c());
+      $$0.put(fvv.bb, fud.b());
+      $$0.put(fvv.bc, fue.b());
+      $$0.put(fvv.bd, fuf.b());
+      $$0.put(fvv.be, fuh.a());
+      $$0.put(fvv.bf, fuj.b());
+      $$0.put(fvv.bg, fuk.b());
+      $$0.put(fvv.bh, fum.c());
+      $$0.put(fvv.bi, ful.c());
+      $$0.put(fvv.bj, fun.a());
+      $$0.put(fvv.bk, fup.a());
+      $$0.put(fvv.bl, fuo.b());
+      $$0.put(fvv.bm, fuq.b());
+      $$0.put(fvv.bn, $$17);
+      $$0.put(fvv.bp, $$4);
+      $$0.put(fvv.bq, $$2);
+      $$0.put(fvv.bo, $$7);
+      $$0.put(fvv.br, $$6);
+      $$0.put(fvv.bs, fuu.c());
+      $$0.put(fvv.bt, fuu.b());
+      $$0.put(fvv.bu, fuv.b());
+      $$0.put(fvv.bv, fuw.b());
+      $$0.put(fvv.bw, $$5);
+      $$0.put(fvv.bx, $$19);
+      $$0.put(fvv.by, fuy.b());
+      $$0.put(fvv.bz, $$17);
+      $$0.put(fvv.bA, $$4);
+      $$0.put(fvv.bB, $$2);
+      $$0.put(fvv.bC, fwc.a(ftj.a(new fwa(0.25F), 0.0F), 64, 32));
+      $$0.put(fvv.bD, $$15);
+      $$0.put(fvv.bE, $$15);
+      $$0.put(fvv.bF, fva.c());
+      $$0.put(fvv.bG, $$5);
+      $$0.put(fvv.bH, $$14);
+      $$0.put(fvv.bI, fvb.a());
+      $$0.put(fvv.bJ, fvd.a(fwa.a));
+      $$0.put(fvv.bK, fvd.a(a));
+      $$0.put(fvv.bL, fvc.a(fwa.a));
+      $$0.put(fvv.bM, fvc.a(a));
+      $$0.put(fvv.bN, fve.c());
+      $$0.put(fvv.bO, fvf.b());
+      $$0.put(fvv.bP, $$18);
+      $$0.put(fvv.bQ, $$8);
+      $$0.put(fvv.bR, fvi.b());
+      $$0.put(fvv.bS, $$18);
+      $$0.put(fvv.bT, fvk.b());
+      $$0.put(fvv.bU, fvl.c());
+      $$0.put(fvv.bV, fvm.a(fwa.a));
+      $$0.put(fvv.bW, fvm.a(c));
+      $$0.put(fvv.cb, gkw.a());
+      $$0.put(fvv.bX, $$17);
+      $$0.put(fvv.bY, $$4);
+      $$0.put(fvv.bZ, $$2);
+      $$0.put(fvv.ca, $$6);
+      $$0.put(fvv.cc, fwc.a(fvn.a(fwa.a), 64, 32));
+      $$0.put(fvv.cd, fwc.a(fvn.a(new fwa(0.2F)), 64, 32));
+      $$0.put(fvv.ce, $$16);
+      $$0.put(fvv.cf, $$1);
+      $$0.put(fvv.ci, $$4);
+      $$0.put(fvv.cj, $$2);
+      $$0.put(fvv.cg, $$13);
+      $$0.put(fvv.ch, $$7);
+      $$0.put(fvv.ck, fvp.c());
+      $$0.put(fvv.cl, fvp.a(c));
+      $$0.put(fvv.cm, fvp.a(b));
+      $$0.put(fvv.cn, $$11);
+      $$0.put(fvv.co, $$4);
+      $$0.put(fvv.cp, $$3);
+      fwc $$20 = fsc.a();
+      fwc $$21 = fsi.e();
+      fwc $$22 = fui.b();
+      fwc $$23 = fsj.a();
 
-   @Override
-   public void a(zk $$0) {
-      this.a(new zv($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(zl $$0) {
-      ze.a($$0, this, this.a);
-      this.b(new zw($$0.b()));
-   }
-
-   @Override
-   public void a(zi $$0) {
-      aac $$1 = $$0.b();
-      if (!($$1 instanceof aad)) {
-         ze.a($$0, this, this.a);
-         if ($$1 instanceof aaa $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
+      for (cnt.b $$24 : cnt.b.values()) {
+         if ($$24 == cnt.b.i) {
+            $$0.put(fvv.c($$24), $$22);
+            $$0.put(fvv.d($$24), $$23);
          } else {
-            this.a($$1);
+            $$0.put(fvv.c($$24), $$20);
+            $$0.put(fvv.d($$24), $$21);
          }
       }
-   }
 
-   protected abstract void a(aac var1);
-
-   @Override
-   public void a(zn $$0) {
-      ze.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new zx($$1, zx.a.f));
+      fwc $$25 = gey.f();
+      dso.a().forEach($$2x -> $$0.put(fvv.a($$2x), $$25));
+      fwc $$26 = geu.e();
+      dso.a().forEach($$2x -> $$0.put(fvv.b($$2x), $$26));
+      ImmutableMap<fvu, fwc> $$27 = $$0.build();
+      List<fvu> $$28 = fvv.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
       } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         fwk.a $$5 = this.c != null ? this.c.b() : fwk.a.c;
-         if ($$5 != fwk.a.c && (!$$4 || $$5 != fwk.a.b)) {
-            this.a.ae().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
-         }
-      }
-   }
-
-   @Override
-   public void a(zm $$0) {
-      ze.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
-   }
-
-   static wu a(wu $$0, @Nullable wu $$1) {
-      return (wu)($$1 == null ? $$0 : wu.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(abh $$0) {
-      ze.a($$0, this, this.a);
-      this.b.a(new abk($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(zo $$0) {
-      ze.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zp $$0) {
-      ze.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.g = true;
-         this.b.a(wu.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         fxn $$1 = new fxn($$0.b(), $$0.e());
-         fjw.a(Objects.requireNonNullElseGet(this.f, fli::new), this.a, $$1, this.c, false, new fwo(this.h));
-      }
-   }
-
-   @Override
-   public void a(zj $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void f() {
-      Iterator<fvt.a> $$0 = this.k.iterator();
-
-      while ($$0.hasNext()) {
-         fvt.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(zb<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(wu $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      j.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$0.a("Server brand", () -> this.d);
-   }
-
-   protected fld b(wu $$0) {
-      fld $$1 = Objects.requireNonNullElseGet(this.f, () -> new foa(new fli()));
-      return (fld)(this.c != null && this.c.e() ? new gsx($$1, i, $$0) : new fke($$1, i, $$0));
-   }
-
-   @Nullable
-   public String g() {
-      return this.d;
-   }
-
-   private void a(zb<? extends wg> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.k.add(new fvt.a($$0, $$1, ac.b() + $$2.toMillis()));
-      }
-   }
-
-   private fld a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable wu $$4) {
-      fld $$5 = this.a.y;
-      return $$5 instanceof fvt.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fvt.b(this.a, $$5, List.of(new fvt.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(zb<? extends wg> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends fjv {
-      private final List<fvt.b.a> r;
-      @Nullable
-      private final fld s;
-
-      b(fde $$0, @Nullable fld $$1, List<fvt.b.a> $$2, boolean $$3, @Nullable wu $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               gpo $$6 = $$0.ae();
-               if ($$5) {
-                  if (fvt.this.c != null) {
-                     fvt.this.c.a(fwk.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     fvt.this.b.a(wu.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (fvt.this.c != null) {
-                     fvt.this.c.a(fwk.a.b);
-                  }
-               }
-
-               for (fvt.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (fvt.this.c != null) {
-                  fwl.b(fvt.this.c);
-               }
-            },
-            $$3 ? wu.c("multiplayer.requiredTexturePrompt.line1") : wu.c("multiplayer.texturePrompt.line1"),
-            fvt.a($$3 ? wu.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : wu.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? wt.i : wt.f,
-            $$3 ? wt.p : wt.g
-         );
-         this.r = $$2;
-         this.s = $$1;
-      }
-
-      public fvt.b a(fde $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable wu $$5) {
-         List<fvt.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.r.size() + 1).addAll(this.r).add(new fvt.b.a($$1, $$2, $$3)).build();
-         return fvt.this.new b($$0, this.s, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
+         return $$27;
       }
    }
 }

@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface yo {
+public interface yo<T extends yn> {
+   MapCodec<T> a();
+
+   yv<wi, T> b();
 }

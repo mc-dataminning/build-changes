@@ -1,12 +1,25 @@
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface daj {
-   boolean a(in var1, Predicate<dqh> var2);
+public interface daj extends dao, dba, dbc {
+   @Override
+   default <T extends dog> Optional<T> a(io $$0, doi<T> $$1) {
+      return dba.super.a($$0, $$1);
+   }
 
-   boolean b(in var1, Predicate<ema> var2);
+   @Override
+   default List<evd> c(@Nullable bru $$0, euf $$1) {
+      return dao.super.c($$0, $$1);
+   }
 
-   <T extends dnm> Optional<T> a(in var1, dno<T> var2);
+   @Override
+   default boolean a(@Nullable bru $$0, evd $$1) {
+      return dao.super.a($$0, $$1);
+   }
 
-   in a(dvz.a var1, in var2);
+   @Override
+   default io a(dwt.a $$0, io $$1) {
+      return dba.super.a($$0, $$1);
+   }
 }

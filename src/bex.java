@@ -1,27 +1,32 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bex extends ber {
-   public bex(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bfs.s, "minecraft:banner");
+public abstract class bex extends DataFix {
+   private final String a;
+   private final String b;
+   private final TypeReference c;
+
+   public bex(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.c = $$3;
+      this.b = $$4;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(this.c),
+         this.getOutputSchema().getType(this.c),
+         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
+      );
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("CustomName").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get();
-         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-         return $$0.set("CustomName", $$0.createString($$2));
-      } else {
-         return $$0;
-      }
-   }
+   protected abstract Typed<?> a(Typed<?> var1);
 }

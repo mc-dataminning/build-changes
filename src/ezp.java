@@ -1,20 +1,33 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class ezp extends ezt {
-   public String a;
-   public long b;
-   public long c;
+public class ezp extends fao {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ezo> a;
 
-   public static ezp a(JsonObject $$0) {
-      ezp $$1 = new ezp();
+   public static ezp a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ezp $$2 = new ezp();
+      $$2.a = Lists.newArrayList();
 
       try {
-         $$1.a = fbq.b("profileUuid", $$0, null);
-         $$1.b = fbq.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fbq.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(ezo.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

@@ -1,95 +1,102 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class akw {
    private static final Logger a = LogUtils.getLogger();
-   private static final akh b = new akh("tick");
-   private static final akh c = new akh("load");
-   private final MinecraftServer d;
-   private List<hp<ed>> e = ImmutableList.of();
-   private boolean f;
-   private akv g;
+   private static final Gson b = new GsonBuilder().create();
+   private static final jj c = new jj(Optional.empty(), Lifecycle.experimental());
 
-   public akw(MinecraftServer $$0, akv $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public static CompletableFuture<je<akv>> a(je<akv> $$0, atw $$1, Executor $$2) {
+      jl.b $$3 = $$0.b(akv.d);
+      akk<JsonElement> $$4 = new akw.a($$3).a(JsonOps.INSTANCE);
+      List<CompletableFuture<jt<?>>> $$5 = eph.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      CompletableFuture<List<jt<?>>> $$6 = ac.d($$5);
+      return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   public CommandDispatcher<ed> a() {
-      return this.d.aH().a();
+   private static <T> CompletableFuture<jt<?>> a(eph<T> $$0, akk<JsonElement> $$1, atw $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         jt<T> $$3x = new jf<>($$0.b(), Lifecycle.experimental());
+         Map<akm, JsonElement> $$4 = new HashMap<>();
+         aua.a($$2, $$0.d(), b, $$4);
+         $$4.forEach(($$3xx, $$4x) -> $$0.a($$3xx, $$1, $$4x).ifPresent($$3xxx -> $$3x.a(akl.a($$0.b(), $$3xx), (T)$$3xxx, c)));
+         return $$3x;
+      }, $$3);
    }
 
-   public void b() {
-      if (this.d.aQ().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<hp<ed>> $$0 = this.g.b(c);
-            this.a($$0, c);
-         }
+   private static je<akv> a(je<akv> $$0, List<jt<?>> $$1) {
+      je<akv> $$2 = b($$0, $$1);
+      ayi.a $$3 = new ayi.a();
+      jl.b $$4 = $$2.a();
+      epl $$5 = new epl($$3, erw.q, $$4.b());
+      eph.a().forEach($$2x -> a($$5, $$2x, $$4));
+      $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      return $$2;
+   }
 
-         this.a(this.e, b);
+   private static je<akv> b(je<akv> $$0, List<jt<?>> $$1) {
+      jl $$2 = new jl.c($$1);
+      ((jt)$$2.<epk>d(lf.aU)).a(epd.a, epk.a, c);
+      return $$0.a(akv.d, $$2.d());
+   }
+
+   private static <T> void a(epl $$0, eph<T> $$1, jl $$2) {
+      jk<T> $$3 = $$2.d($$1.b());
+      $$3.h().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
+   }
+
+   static class a implements iz.a {
+      private final jl a;
+
+      a(jl $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Stream<akl<? extends jk<?>>> a() {
+         return this.a.a();
+      }
+
+      @Override
+      public <T> Optional<iz.b<T>> a(akl<? extends jk<? extends T>> $$0) {
+         return this.a.c($$0).map(jk::u);
       }
    }
 
-   private void a(Collection<hp<ed>> $$0, akh $$1) {
-      this.d.aT().a($$1::toString);
+   public static class b {
+      private final jl.b a;
 
-      for (hp<ed> $$2 : $$0) {
-         this.a($$2, this.c());
+      public b(jl.b $$0) {
+         this.a = $$0;
       }
 
-      this.d.aT().c();
-   }
-
-   public void a(hp<ed> $$0, ed $$1) {
-      bma $$2 = this.d.aT();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         hr<ed> $$3 = $$0.a(null, this.a());
-         ee.a($$1, $$2x -> hc.a($$2x, $$3, $$1, ea.a));
-      } catch (eg var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
+      public jl.b a() {
+         return this.a;
       }
-   }
 
-   public void a(akv $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
+      public iy.a b() {
+         return this.a.b();
+      }
 
-   private void b(akv $$0) {
-      this.e = ImmutableList.copyOf($$0.b(b));
-      this.f = true;
-   }
+      public Collection<akm> a(akl<? extends jk<?>> $$0) {
+         return this.a.c($$0).stream().flatMap($$0x -> $$0x.h().map($$0xx -> $$0xx.h().a())).toList();
+      }
 
-   public ed c() {
-      return this.d.aI().a(2).a();
-   }
-
-   public Optional<hp<ed>> a(akh $$0) {
-      return this.g.a($$0);
-   }
-
-   public Collection<hp<ed>> b(akh $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<akh> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<akh> e() {
-      return this.g.b();
+      public epk b(akl<epk> $$0) {
+         return this.a.a(lf.aU).flatMap($$1 -> $$1.a($$0)).map(ix::a).orElse(epk.a);
+      }
    }
 }

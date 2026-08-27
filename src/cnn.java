@@ -1,70 +1,39 @@
-public class cnn extends cnc {
-   private final czf c = new czf() {
-      @Override
-      public void a(dad $$0, in $$1, int $$2) {
-         $$0.a(cnn.this, (byte)$$2);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class cnn {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cnn c = a("empty").a(0, cnl.b).a();
+   public static final cnn d = a("simple").a(5000, cnl.c).a(11000, cnl.e).a();
+   public static final cnn e = a("villager_baby").a(10, cnl.b).a(3000, cnl.d).a(6000, cnl.b).a(10000, cnl.d).a(12000, cnl.e).a();
+   public static final cnn f = a("villager_default").a(10, cnl.b).a(2000, cnl.c).a(9000, cnl.f).a(11000, cnl.b).a(12000, cnl.e).a();
+   private final Map<cnl, cnp> g = Maps.newHashMap();
+
+   protected static cno a(String $$0) {
+      cnn $$1 = jk.a(le.D, $$0, new cnn());
+      return new cno($$1);
+   }
+
+   protected void a(cnl $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cnp());
       }
-   };
-   private final Runnable d;
-
-   public cnn(brn<? extends cnn> $$0, dad $$1) {
-      super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public cnn(dad $$0, double $$1, double $$2, double $$3) {
-      super(brn.aT, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
+   protected cnp b(cnl $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   protected csu ag_() {
-      return ctc.nM;
+   protected List<cnp> c(cnl $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   private Runnable b(dad $$0) {
-      return $$0 instanceof aqh ? () -> this.c.a((aqh)$$0, this.dn()) : () -> this.c.a($$0, this.dn());
-   }
-
-   @Override
-   public cnc.a v() {
-      return cnc.a.e;
-   }
-
-   @Override
-   public dqh x() {
-      return ddg.ct.n();
-   }
-
-   @Override
-   protected void a(ua $$0) {
-      super.a($$0);
-      this.c.a(this.dN(), this.dn(), $$0);
-   }
-
-   @Override
-   protected void b(ua $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dN(), $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public czf B() {
-      return this.c;
-   }
-
-   @Override
-   public boolean cN() {
-      return true;
+   public cnl a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cnl.b);
    }
 }

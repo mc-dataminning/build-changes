@@ -1,114 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cxv implements cxt {
-   final cxa a;
-   final cxa b;
-   final cxa c;
+public class cxv {
+   private final cxv.a[] a;
+   private WeakReference<cxx> b = new WeakReference<>(null);
 
-   public cxv(cxa $$0, cxa $$1, cxa $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public cxv(int $$0) {
+      this.a = new cxv.a[$$0];
    }
 
-   @Override
-   public boolean a(bpf $$0, dad $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
+   public Optional<cxw<cxl>> a(dax $$0, cpj $$1) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cxv.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public csz a(bpf $$0, iy.a $$1) {
-      csz $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<iw.c<cvc>> $$3 = cvd.a($$1, $$0.a(2));
-         Optional<iw.c<cve>> $$4 = cvf.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            cvb $$5 = $$2.a(ka.I);
-            if ($$5 != null && $$5.a($$4.get(), $$3.get())) {
-               return csz.i;
+   private void a(dax $$0) {
+      cxx $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<cxw<cxl>> a(cpj $$0, dax $$1) {
+      Optional<cxw<cxl>> $$2 = $$1.r().a(cxz.a, $$0, $$1);
+      this.a($$0.h(), $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cxv.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<cto> $$0, @Nullable cxw<cxl> $$1) {
+      jg<cto> $$2 = jg.a($$0.size(), cto.i);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cxv.a($$2, $$1);
+   }
+
+   static record a(jg<cto> a, @Nullable cxw<cxl> b) {
+      public boolean a(List<cto> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cto.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
             }
 
-            csz $$6 = $$2.c(1);
-            $$6.b(ka.I, new cvb($$3.get(), $$4.get()));
-            return $$6;
+            return true;
          }
-      }
-
-      return csz.i;
-   }
-
-   @Override
-   public csz a(iy.a $$0) {
-      csz $$1 = new csz(ctc.pH);
-      Optional<iw.c<cve>> $$2 = $$0.b(le.aP).b().findFirst();
-      Optional<iw.c<cvc>> $$3 = $$0.b(le.aO).a(cvd.d);
-      if ($$2.isPresent() && $$3.isPresent()) {
-         $$1.b(ka.I, new cvb($$3.get(), $$2.get()));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(csz $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(csz $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(csz $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.v;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cxa::c);
-   }
-
-   public static class a implements cxh<cxv> {
-      private static final Codec<cxv> y = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cxa.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cxa.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cxa.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, cxv::new)
-      );
-      public static final ys<wf, cxv> x = ys.a(cxv.a::a, cxv.a::a);
-
-      @Override
-      public Codec<cxv> a() {
-         return y;
-      }
-
-      @Override
-      public ys<wf, cxv> b() {
-         return x;
-      }
-
-      private static cxv a(wf $$0) {
-         cxa $$1 = cxa.b.decode($$0);
-         cxa $$2 = cxa.b.decode($$0);
-         cxa $$3 = cxa.b.decode($$0);
-         return new cxv($$1, $$2, $$3);
-      }
-
-      private static void a(wf $$0, cxv $$1) {
-         cxa.b.encode($$0, $$1.a);
-         cxa.b.encode($$0, $$1.b);
-         cxa.b.encode($$0, $$1.c);
       }
    }
 }

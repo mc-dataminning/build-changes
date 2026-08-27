@@ -1,47 +1,143 @@
-public class fjp extends fld {
-   private static final int a = 90;
-   private final wu b;
-   private ffx c = ffx.a;
-   private final Runnable d;
-   private final wu r;
-   private final boolean s;
+public interface fjp {
+   fjp a(int var1);
 
-   public fjp(Runnable $$0, wu $$1, wu $$2) {
-      this($$0, $$1, $$2, wt.k, true);
+   fjp a(int var1, int var2);
+
+   fjp a(int var1, int var2, int var3, int var4);
+
+   fjp b(int var1);
+
+   fjp c(int var1);
+
+   fjp d(int var1);
+
+   fjp e(int var1);
+
+   fjp f(int var1);
+
+   fjp g(int var1);
+
+   fjp a(float var1, float var2);
+
+   fjp a(float var1);
+
+   fjp b(float var1);
+
+   default fjp a() {
+      return this.a(0.0F);
    }
 
-   public fjp(Runnable $$0, wu $$1, wu $$2, wu $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.r = $$3;
-      this.s = $$4;
+   default fjp b() {
+      return this.a(0.5F);
    }
 
-   @Override
-   public wu i() {
-      return wt.a(super.i(), this.b);
+   default fjp c() {
+      return this.a(1.0F);
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.c = ffx.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = axz.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(ffe.a(this.r, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+   default fjp d() {
+      return this.b(0.0F);
    }
 
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
+   default fjp e() {
+      return this.b(0.5F);
    }
 
-   @Override
-   public boolean aD_() {
-      return this.s;
+   default fjp f() {
+      return this.b(1.0F);
+   }
+
+   fjp g();
+
+   fjp.a h();
+
+   static fjp i() {
+      return new fjp.a();
+   }
+
+   public static class a implements fjp {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
+      }
+
+      public a(fjp.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public fjp.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fjp.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fjp.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fjp.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fjp.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fjp.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fjp.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fjp.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fjp.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fjp.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fjp.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fjp.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fjp.a j() {
+         return new fjp.a(this);
+      }
+
+      @Override
+      public fjp.a h() {
+         return this;
+      }
    }
 }

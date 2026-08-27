@@ -1,61 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class ph extends po<dva> {
-   @VisibleForTesting
-   static final List<akg<dva>> d = List.of(
-      dva.b.h(),
-      dva.c.h(),
-      dva.d.h(),
-      dva.f.h(),
-      dva.g.h(),
-      dva.h.h(),
-      dva.i.h(),
-      dva.a.h(),
-      dva.e.h(),
-      dva.j.h(),
-      dva.k.h(),
-      dva.l.h(),
-      dva.m.h(),
-      dva.n.h(),
-      dva.o.h(),
-      dva.p.h(),
-      dva.q.h(),
-      dva.r.h(),
-      dva.s.h(),
-      dva.t.h(),
-      dva.u.h(),
-      dva.v.h(),
-      dva.w.h(),
-      dva.y.h(),
-      dva.z.h(),
-      dva.A.h(),
-      dva.B.h(),
-      dva.C.h(),
-      dva.G.h(),
-      dva.H.h(),
-      dva.I.h(),
-      dva.J.h(),
-      dva.K.h(),
-      dva.M.h(),
-      dva.O.h(),
-      dva.P.h(),
-      dva.Q.h(),
-      dva.R.h(),
-      dva.S.h()
-   );
-
-   public ph(lm $$0, CompletableFuture<iy.a> $$1) {
-      super($$0, le.C, $$1);
+public class ph extends pm<bsa<?>> {
+   public ph(ln $$0, CompletableFuture<iz.a> $$1) {
+      super($$0, lf.v, $$1, $$0x -> $$0x.r().h());
    }
 
    @Override
-   protected void a(iy.a $$0) {
-      this.b(avx.a).a(d).a(dvj.e_).a(dva.x.h());
-      this.b(avx.c).a(dva.L.h());
-      this.b(avx.b).a(d).a(dvj.e_).a(dva.N.h()).b(avx.c);
-      this.b(avx.d).a(dva.A.h(), dva.K.h(), dva.P.h(), dva.Q.h(), dva.D.h(), dva.C.h());
-      this.b(avx.e).a(dva.H.h());
+   protected void a(iz.a $$0) {
+      this.a(avz.a).a(bsa.aN, bsa.aY, bsa.bq, bsa.aO);
+      this.a(avz.b).a(bsa.bv, bsa.bu, bsa.bw, bsa.bx, bsa.bt, bsa.B, bsa.ac);
+      this.a(avz.c).a(bsa.J, bsa.aC, bsa.aH, bsa.bk, bsa.ad, bsa.bo);
+      this.a(avz.d).a(avz.a).a(avz.b).a(bsa.bp).a(bsa.ay);
+      this.a(avz.e).a(bsa.h);
+      this.a(avz.f).a(bsa.e, bsa.aV);
+      this.a(avz.g).a(avz.f).a(bsa.P).a(bsa.aT, bsa.ak, bsa.aQ, bsa.C, bsa.bf, bsa.A, bsa.br);
+      this.a(avz.h).a(bsa.aG, bsa.I, bsa.aM, bsa.Q);
+      this.a(avz.j).a(bsa.bg, bsa.aF, bsa.aI, bsa.u, bsa.aX, bsa.W, bsa.ba);
+      this.a(avz.i).a(bsa.B, bsa.Y, bsa.D);
+      this.a(avz.k).a(bsa.aY, bsa.aD, bsa.aS, bsa.bp);
+      this.a(avz.l).a(bsa.aZ, bsa.i, bsa.ap);
+      this.a(avz.m).a(avz.d).a(bsa.f, bsa.R, bsa.Y, bsa.D, bsa.bh, bsa.W, bsa.u, bsa.aF, bsa.aI, bsa.aX, bsa.bg, bsa.ba, bsa.d);
+      this.a(avz.n).a(bsa.aP, bsa.ap);
+      this.a(avz.o).a(bsa.af, bsa.aS, bsa.aK, bsa.a, bsa.g, bsa.h, bsa.i, bsa.p, bsa.t, bsa.T, bsa.ay, bsa.ap, bsa.au, bsa.ax, bsa.bp);
+      this.a(avz.p).a(bsa.o, bsa.t, bsa.z, bsa.ab, bsa.an, bsa.at, bsa.az, bsa.aH, bsa.aW, bsa.aZ, bsa.be, bsa.bv);
+      this.a(avz.q).a(bsa.aP, bsa.ap);
+      this.a(avz.t).a(bsa.J).a(bsa.ad).a(bsa.aC).a(bsa.bk);
+      this.a(avz.u).a(bsa.bh).a(bsa.f).a(bsa.Y).a(bsa.D).a(bsa.u).a(bsa.aF).a(bsa.aI).a(bsa.bg).a(bsa.y).a(bsa.aX).a(bsa.W).a(bsa.ba);
+      this.a(avz.v).a(bsa.h).a(bsa.I).a(bsa.aM).a(bsa.aW).a(bsa.q);
+      this.a(avz.w).a(avz.d);
+      this.a(avz.x).a(avz.d);
+      this.a(avz.y).a(avz.d);
+      this.a(avz.z).a(avz.t);
+      this.a(avz.A).a(bsa.bh).a(bsa.Y).a(bsa.D).a(bsa.u).a(bsa.aF).a(bsa.aI).a(bsa.bg).a(bsa.y).a(bsa.aX).a(bsa.W).a(bsa.ba);
+      this.a(avz.B).a(avz.u);
+      this.a(avz.C).a(avz.v);
+      this.a(avz.D).a(avz.d);
    }
 }

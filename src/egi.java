@@ -1,26 +1,34 @@
-public interface egi {
-   akg<egv> a = a("villages");
-   akg<egv> b = a("desert_pyramids");
-   akg<egv> c = a("igloos");
-   akg<egv> d = a("jungle_temples");
-   akg<egv> e = a("swamp_huts");
-   akg<egv> f = a("pillager_outposts");
-   akg<egv> g = a("ocean_monuments");
-   akg<egv> h = a("woodland_mansions");
-   akg<egv> i = a("buried_treasures");
-   akg<egv> j = a("mineshafts");
-   akg<egv> k = a("ruined_portals");
-   akg<egv> l = a("shipwrecks");
-   akg<egv> m = a("ocean_ruins");
-   akg<egv> n = a("nether_complexes");
-   akg<egv> o = a("nether_fossils");
-   akg<egv> p = a("end_cities");
-   akg<egv> q = a("ancient_cities");
-   akg<egv> r = a("strongholds");
-   akg<egv> s = a("trail_ruins");
-   akg<egv> t = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static akg<egv> a(String $$0) {
-      return akg.a(le.aL, new akh($$0));
+public class egi extends egq {
+   public static final MapCodec<egi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(efq.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, egi::new));
+   private final efq c;
+
+   private egi(efq $$0) {
+      this.c = $$0;
+   }
+
+   public static egi a(efq $$0) {
+      return new egi($$0);
+   }
+
+   public static egi a(dxn $$0, dxn $$1) {
+      return a(eft.a($$0, $$1));
+   }
+
+   public static egi b(dxn $$0, dxn $$1) {
+      return a(efs.a($$0, $$1));
+   }
+
+   @Override
+   public Stream<io> a_(ego $$0, ayk $$1, io $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public egr<?> b() {
+      return egr.l;
    }
 }

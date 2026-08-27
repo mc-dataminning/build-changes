@@ -1,193 +1,245 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dou extends dnm implements dvc.b<dvj.b>, dvj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<avb> k = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, avc.BC);
-      $$0.put(2, avc.BD);
-      $$0.put(3, avc.BE);
-      $$0.put(4, avc.BB);
-   });
-   private int l;
-   private final dvj.d m = new dou.a();
-   private dvj.a q = new dvj.a();
-   private final dvj.b r = new dvj.b(this);
+public class dou extends dpl implements cpj {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private jg<cto> q = jg.a(9, cto.i);
+   private int r = 0;
+   protected final cpd k = new cpd() {
+      private final int[] b = new int[9];
+      private int c = 0;
 
-   public dou(in $$0, dqh $$1) {
-      super(dno.L, $$0, $$1);
-   }
-
-   @Override
-   public dvj.a gr() {
-      return this.q;
-   }
-
-   @Override
-   public dvj.d gs() {
-      return this.m;
-   }
-
-   @Override
-   public void a(ua $$0, iy.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.c : this.b[$$0];
       }
 
-      if ($$0.b("listener", 10)) {
-         dvj.a.a.parse(new Dynamic(uo.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.q = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(ua $$0, iy.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      dvj.a.a.encodeStart(uo.a, this.q).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Nullable
-   public static aqi a(@Nullable brh $$0) {
-      if ($$0 instanceof aqi) {
-         return (aqi)$$0;
-      } else {
-         if ($$0 != null) {
-            bsa $$6 = $$0.cO();
-            if ($$6 instanceof aqi) {
-               return (aqi)$$6;
-            }
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.c = $$1;
+         } else {
+            this.b[$$0] = $$1;
          }
-
-         if ($$0 instanceof clz $$3) {
-            brh var3 = $$3.u();
-            if (var3 instanceof aqi) {
-               return (aqi)var3;
-            }
-         }
-
-         if ($$0 instanceof chr $$5) {
-            brh var9 = $$5.u();
-            if (var9 instanceof aqi) {
-               return (aqi)var9;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   public void a(aqh $$0, @Nullable aqi $$1) {
-      if ($$1 != null) {
-         dqh $$2 = this.n();
-         if (!$$2.c(djy.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (brh)$$1);
-            }
-         }
-      }
-   }
-
-   private boolean b(aqh $$0, aqi $$1) {
-      OptionalInt $$2 = ckn.a($$0, this.az_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(aqh $$0, @Nullable brh $$1) {
-      in $$2 = this.az_();
-      dqh $$3 = this.n();
-      $$0.a($$2, $$3.a(djy.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(dva.N, $$2, dva.a.a($$1));
-   }
-
-   private boolean b(aqh $$0) {
-      return this.n().c(djy.d) && $$0.ak() != bpj.a && $$0.aa().b(czz.M);
-   }
-
-   public void a(aqh $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dad)$$0);
-         }
-
-         ckl.a($$0, etp.b(this.az_()), null, 40);
-      }
-   }
-
-   private void b(dad $$0) {
-      avb $$1 = (avb)k.get(this.l);
-      if ($$1 != null) {
-         in $$2 = this.az_();
-         int $$3 = $$2.u() + axz.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + axz.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + axz.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, avd.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(aqh $$0) {
-      return this.l < 4 ? false : ayr.a(brn.bl, bse.k, $$0, this.az_(), 20, 5, 6, ayr.a.b).isPresent();
-   }
-
-   public dvj.b b() {
-      return this.r;
-   }
-
-   class a implements dvj.d {
-      private static final int b = 8;
-      private final dve c = new duw(dou.this.o);
-
-      public a() {
       }
 
       @Override
       public int a() {
-         return 8;
+         return 10;
+      }
+   };
+
+   public dou(io $$0, drb $$1) {
+      super(doi.P, $$0, $$1);
+   }
+
+   @Override
+   protected wx k() {
+      return wx.c("container.crafter");
+   }
+
+   @Override
+   protected cot a(int $$0, clv $$1) {
+      return new cph($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, cto $$1) {
+      if (this.k.a($$0) == 1) {
+         return false;
+      } else {
+         cto $$2 = this.q.get($$0);
+         int $$3 = $$2.I();
+         if ($$3 >= $$2.j()) {
+            return false;
+         } else {
+            return $$2.e() ? true : !this.a($$3, $$2, $$0);
+         }
+      }
+   }
+
+   private boolean a(int $$0, cto $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cto $$4 = this.a($$3);
+            if ($$4.e() || $$4.I() < $$0 && cto.c($$4, $$1)) {
+               return true;
+            }
+         }
       }
 
-      @Override
-      public dve b() {
-         return this.c;
+      return false;
+   }
+
+   @Override
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.r = $$0.h("crafting_ticks_remaining");
+      this.q = jg.a(this.b(), cto.i);
+      if (!this.a_($$0)) {
+         bpo.b($$0, this.q, $$1);
       }
 
-      @Override
-      public awg<dva> c() {
-         return avx.c;
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.k.a($$3, 0);
       }
 
-      @Override
-      public boolean a(aqh $$0, in $$1, iw<dva> $$2, dva.a $$3) {
-         return !dou.this.n().c(djy.b) && dou.a($$3.a()) != null;
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.k.a($$4, 1);
+         }
       }
 
-      @Override
-      public void a(aqh $$0, in $$1, iw<dva> $$2, @Nullable brh $$3, @Nullable brh $$4, float $$5) {
-         dou.this.a($$0, dou.a($$4 != null ? $$4 : $$3));
+      this.k.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.r);
+      if (!this.b_($$0)) {
+         bpo.a($$0, this.q, $$1);
       }
 
-      @Override
-      public void e() {
-         dou.this.e();
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (cto $$0 : this.q) {
+         if (!$$0.e()) {
+            return false;
+         }
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      return true;
+   }
+
+   @Override
+   public cto a(int $$0) {
+      return this.q.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, cto $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
       }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(clw $$0) {
+      return bpn.a(this, $$0);
+   }
+
+   @Override
+   public jg<cto> j() {
+      return this.q;
+   }
+
+   @Override
+   protected void a(jg<cto> $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public int f() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void a(cma $$0) {
+      for (cto $$1 : this.q) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(ud $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(ud $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean l() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(dax $$0, io $$1, drb $$2, dou $$3) {
+      int $$4 = $$3.r - 1;
+      if ($$4 >= 0) {
+         $$3.r = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.a(dfr.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.r = $$0;
+   }
+
+   public int u() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cto $$2 = this.a($$1);
+         if (!$$2.e() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.q.get($$0).e();
    }
 }

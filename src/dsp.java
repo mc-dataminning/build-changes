@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dsp extends czj {
-   void a(BiConsumer<in, dqh> var1);
-
-   elk B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dsp {
 }

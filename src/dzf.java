@@ -1,43 +1,66 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class dzf<FC extends ebh> {
-   private final Optional<dyq<?, ?>> a;
-   private final day b;
-   private final dse c;
-   private final ayg d;
-   private final in e;
-   private final FC f;
-
-   public dzf(Optional<dyq<?, ?>> $$0, day $$1, dse $$2, ayg $$3, in $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class dzf extends dzx<ebs> {
+   public dzf(Codec<ebs> $$0) {
+      super($$0);
    }
 
-   public Optional<dyq<?, ?>> a() {
-      return this.a;
+   @Override
+   public boolean a(dzz<ebs> $$0) {
+      dbs $$1 = $$0.b();
+      ebs $$2 = $$0.f();
+      ayk $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
+         return false;
+      } else {
+         io.a $$8 = $$0.e().j();
+         io.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               ebs.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
    }
 
-   public day b() {
-      return this.b;
-   }
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
 
-   public dse c() {
-      return this.c;
-   }
-
-   public ayg d() {
-      return this.d;
-   }
-
-   public in e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

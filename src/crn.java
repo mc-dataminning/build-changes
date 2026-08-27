@@ -1,83 +1,67 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class crn extends csu {
-   public crn(csu.a $$0) {
-      super($$0);
+public class crn extends ctj {
+   private static final Predicate<bru> a = brz.f.and(bru::bz);
+   private final cnt.b b;
+   private final boolean c;
+
+   public crn(boolean $$0, cnt.b $$1, ctj.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean a(dqh $$0, dad $$1, in $$2, clh $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bpl.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bpm a(cwk $$0) {
-      clh $$1 = $$0.o();
-      dad $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         in $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bpm.e;
-         }
-      }
-
-      return bpm.a($$2.B);
-   }
-
-   private boolean a(clh $$0, dqh $$1, dae $$2, in $$3, boolean $$4, csz $$5) {
-      if (!$$0.gx()) {
-         return false;
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      cto $$3 = $$1.b($$2);
+      eui $$4 = a($$0, $$1, dag.b.c);
+      if ($$4.c() == eui.a.a) {
+         return bpv.c($$3);
       } else {
-         iw<dde> $$6 = $$1.c();
-         dqi<dde, dqh> $$7 = $$6.a().l();
-         Collection<drk<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, wu.a(this.a() + ".empty", $$6.g()));
-            return false;
-         } else {
-            cvo $$9 = $$5.a(ka.J);
-            if ($$9 == null) {
-               return false;
-            } else {
-               drk<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
+         euk $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<bru> $$7 = $$0.a($$1, $$1.cK().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            euk $$8 = $$1.bx();
 
-                  dqh $$11 = a($$1, $$10, $$0.fP());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, wu.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fP());
-                  $$5.b(ka.J, $$9.a($$6, $$10));
-                  a($$0, wu.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
+            for (bru $$9 : $$7) {
+               euf $$10 = $$9.cK().g((double)$$9.bK());
+               if ($$10.d($$8)) {
+                  return bpv.c($$3);
                }
-
-               return true;
             }
          }
+
+         if ($$4.c() == eui.a.b) {
+            cnt $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dF());
+            if (!$$0.a($$11, $$11.cK())) {
+               return bpv.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dvu.t, $$4.e());
+                  $$3.a(1, $$1);
+               }
+
+               $$1.b(avr.c.b(this));
+               return bpv.a($$3, $$0.x_());
+            }
+         } else {
+            return bpv.c($$3);
+         }
       }
    }
 
-   private static <T extends Comparable<T>> dqh a(dqh $$0, drk<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
-   }
+   private cnt a(dax $$0, eui $$1, cto $$2, clw $$3) {
+      euk $$4 = $$1.e();
+      cnt $$5 = (cnt)(this.c ? new cnu($$0, $$4.c, $$4.d, $$4.e) : new cnt($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof aqm $$6) {
+         bsa.<cnt>a($$6, $$2, $$3).accept($$5);
+      }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(clh $$0, wu $$1) {
-      ((aqi)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dqh $$0, drk<T> $$1) {
-      return $$1.a($$0.c($$1));
+      return $$5;
    }
 }

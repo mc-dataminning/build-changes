@@ -1,92 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
 
 public class ant {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<ed> c = ($$0, $$1) -> ei.b(((ed)$$0.getSource()).l().bb().I().s().a(), $$1);
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wx.c("commands.ride.mount.failure.wrong_dimension"));
 
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ee.a("function")
-                     .then(
-                        ee.a("function", gl.a())
-                           .suggests(amn.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ee.a("time", fs.a())
-                                       .executes($$0x -> a((ed)$$0x.getSource(), gl.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       ee.a("append")
-                                          .executes(
-                                             $$0x -> a((ed)$$0x.getSource(), gl.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    ee.a("replace")
-                                       .executes($$0x -> a((ed)$$0x.getSource(), gl.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ee.a("clear")
-                  .then(
-                     ee.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((ed)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
-                  )
+               ((RequiredArgumentBuilder)ef.a("target", er.a())
+                     .then(ef.a("mount").then(ef.a("vehicle", er.a()).executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), er.a($$0x, "vehicle"))))))
+                  .then(ef.a("dismount").executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(ed $$0, Pair<akh, Either<hp<ed>, Collection<hp<ed>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
+   private static int a(ee $$0, bru $$1, bru $$2) throws CommandSyntaxException {
+      bru $$3 = $$1.dc();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.ak() == bsa.by) {
+         throw d.create();
+      } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dP() != $$2.dP()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
       } else {
-         long $$4 = $$0.e().Y() + (long)$$2;
-         akh $$5 = (akh)$$1.getFirst();
-         etc<MinecraftServer> $$6 = $$0.l().bb().I().s();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new esy($$5));
-            $$0.a(() -> wu.a("commands.schedule.created.function", wu.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new esz($$5));
-            $$0.a(() -> wu.a("commands.schedule.created.tag", wu.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         $$0.a(() -> wx.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 
-   private static int a(ed $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().bb().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
+   private static int a(ee $$0, bru $$1) throws CommandSyntaxException {
+      bru $$2 = $$1.dc();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
       } else {
-         $$0.a(() -> wu.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+         $$1.ac();
+         $$0.a(() -> wx.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 }

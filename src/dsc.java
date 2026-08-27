@@ -1,51 +1,62 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+public enum dsc implements ayx {
+   a("harp", avh.rV, dsc.a.a),
+   b("basedrum", avh.rP, dsc.a.a),
+   c("snare", avh.rY, dsc.a.a),
+   d("hat", avh.rW, dsc.a.a),
+   e("bass", avh.rQ, dsc.a.a),
+   f("flute", avh.rT, dsc.a.a),
+   g("bell", avh.rR, dsc.a.a),
+   h("guitar", avh.rU, dsc.a.a),
+   i("chime", avh.rS, dsc.a.a),
+   j("xylophone", avh.rZ, dsc.a.a),
+   k("iron_xylophone", avh.sa, dsc.a.a),
+   l("cow_bell", avh.sb, dsc.a.a),
+   m("didgeridoo", avh.sc, dsc.a.a),
+   n("bit", avh.sd, dsc.a.a),
+   o("banjo", avh.se, dsc.a.a),
+   p("pling", avh.rX, dsc.a.a),
+   q("zombie", avh.sf, dsc.a.b),
+   r("skeleton", avh.sg, dsc.a.b),
+   s("creeper", avh.sh, dsc.a.b),
+   t("dragon", avh.si, dsc.a.b),
+   u("wither_skeleton", avh.sj, dsc.a.b),
+   v("piglin", avh.sk, dsc.a.b),
+   w("custom_head", avh.Ao, dsc.a.c);
 
-public class dsc {
-   private final int a;
-   private final BitSet b;
-   private dsc.a c = ($$0x, $$1x, $$2) -> false;
+   private final String x;
+   private final ix<avg> y;
+   private final dsc.a z;
 
-   public dsc(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   private dsc(String $$0, ix<avg> $$1, dsc.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   public void a(dsc.a $$0) {
-      this.c = $$0;
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   public dsc(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   public ix<avg> a() {
+      return this.y;
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   public boolean b() {
+      return this.z == dsc.a.a;
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   public boolean d() {
+      return this.z == dsc.a.c;
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   public boolean e() {
+      return this.z != dsc.a.a;
    }
 
-   public Stream<in> a(czk $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
-
-   public long[] a() {
-      return this.b.toLongArray();
-   }
-
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

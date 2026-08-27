@@ -1,20 +1,37 @@
-public class gov {
-   public static final gow a = new gow();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public gov(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record gov(akm a, @Nullable String b, @Nullable akm c, @Nullable akm d, gov.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public boolean a() {
-      return this.d;
-   }
+      private final String c;
 
-   public boolean b() {
-      return this.e;
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      public static gov.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

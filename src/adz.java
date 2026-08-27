@@ -1,36 +1,69 @@
-public record adz(afu e, byte f) implements zb<abm> {
-   public static final ys<wf, adz> a = zb.a(adz::a, adz::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-   private adz(wf $$0) {
-      this(new afu($$0), $$0.readByte());
+public class adz implements ze<abq> {
+   public static final yv<vx, adz> a = ze.a(adz::a, adz::new);
+   private final adz.a b;
+   private final List<akm> c;
+   private final List<akm> d;
+   private final avl e;
+
+   public adz(adz.a $$0, Collection<akm> $$1, Collection<akm> $$2, avl $$3) {
+      this.b = $$0;
+      this.c = ImmutableList.copyOf($$1);
+      this.d = ImmutableList.copyOf($$2);
+      this.e = $$3;
    }
 
-   private void a(wf $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   private adz(vx $$0) {
+      this.b = $$0.b(adz.a.class);
+      this.e = avl.a($$0);
+      this.c = $$0.a(vx::q);
+      if (this.b == adz.a.a) {
+         this.d = $$0.a(vx::q);
+      } else {
+         this.d = ImmutableList.of();
+      }
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      this.e.b($$0);
+      $$0.a(this.c, vx::a);
+      if (this.b == adz.a.a) {
+         $$0.a(this.d, vx::a);
+      }
    }
 
    @Override
-   public zd<adz> a() {
-      return afx.al;
+   public zg<adz> a() {
+      return agb.ai;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public List<akm> b() {
+      return this.c;
    }
 
-   public afu b() {
+   public List<akm> e() {
+      return this.d;
+   }
+
+   public avl f() {
       return this.e;
    }
 
-   public byte e() {
-      return this.f;
+   public adz.a g() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

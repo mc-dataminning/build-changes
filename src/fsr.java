@@ -1,57 +1,53 @@
-import java.util.Arrays;
+public class fsr<T extends bru> extends ftf<T> {
+   private final fvw a;
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
 
-public class fsr<T extends ciw> extends fsk<T> {
-   private static final int a = 8;
-   private final fvb b;
-   private final fvb[] f = new fvb[8];
-
-   public fsr(fvb $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+   public fsr(fvw $$0) {
+      this.a = $$0;
+      this.b = $$0.b("body");
+      this.f = this.b.b("tail");
+      this.g = this.f.b("tail_fin");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
-   }
-
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fvg.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fvd.a);
-      }
-
-      $$1.a("inside_cube", fvg.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fvd.a);
-      return fvh.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = axz.i($$3, $$0.bX, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
-      }
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      fwf $$4 = $$1.a("body", fwb.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fvy.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", fwb.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fvy.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         fwb.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fvy.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         fwb.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fvy.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      fwf $$5 = $$4.a("tail", fwb.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fvy.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", fwb.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fvy.a(0.0F, 0.0F, 9.0F));
+      fwf $$6 = $$4.a("head", fwb.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fvy.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", fwb.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fvy.a);
+      return fwc.a($$0, 64, 64);
    }
 
    @Override
-   public fvb a() {
-      return this.b;
+   public fvw a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.ds().i() > 1.0E-7) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * ayd.b($$3 * 0.3F));
+         this.f.e = -0.1F * ayd.b($$3 * 0.3F);
+         this.g.e = -0.2F * ayd.b($$3 * 0.3F);
+      }
    }
 }

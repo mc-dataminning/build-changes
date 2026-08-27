@@ -1,102 +1,44 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class es implements ArgumentType<es.a> {
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.player.unknown"));
+public class es implements ArgumentType<dau> {
+   private static final Collection<String> a = Stream.of(dau.a, dau.b).map(dau::b).collect(Collectors.toList());
+   private static final dau[] b = dau.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("argument.gamemode.invalid", $$0));
 
-   public static Collection<GameProfile> a(CommandContext<ed> $$0, String $$1) throws CommandSyntaxException {
-      return ((es.a)$$0.getArgument($$1, es.a.class)).getNames((ed)$$0.getSource());
+   public dau a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      dau $$2 = dau.a($$1, null);
+      if ($$2 == null) {
+         throw c.createWithContext($$0, $$1);
+      } else {
+         return $$2;
+      }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof ej ? ej.b(Arrays.stream(b).map(dau::b), $$1) : Suggestions.empty();
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 
    public static es a() {
       return new es();
    }
 
-   public es.a a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         gt $$1 = new gt($$0);
-         gs $$2 = $$1.t();
-         if ($$2.b()) {
-            throw eq.c.createWithContext($$0);
-         } else {
-            return new es.b($$2);
-         }
-      } else {
-         int $$3 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
-            return Collections.singleton($$2.orElseThrow(a::create));
-         };
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof ei) {
-         StringReader $$2 = new StringReader($$1.getInput());
-         $$2.setCursor($$1.getStart());
-         gt $$3 = new gt($$2);
-
-         try {
-            $$3.t();
-         } catch (CommandSyntaxException var6) {
-         }
-
-         return $$3.a($$1, $$1x -> ei.b(((ei)$$0.getSource()).q(), $$1x));
-      } else {
-         return Suggestions.empty();
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return b;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      Collection<GameProfile> getNames(ed var1) throws CommandSyntaxException;
-   }
-
-   public static class b implements es.a {
-      private final gs a;
-
-      public b(gs $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public Collection<GameProfile> getNames(ed $$0) throws CommandSyntaxException {
-         List<aqi> $$1 = this.a.d($$0);
-         if ($$1.isEmpty()) {
-            throw eq.e.create();
-         } else {
-            List<GameProfile> $$2 = Lists.newArrayList();
-
-            for (aqi $$3 : $$1) {
-               $$2.add($$3.fZ());
-            }
-
-            return $$2;
-         }
-      }
+   public static dau a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return (dau)$$0.getArgument($$1, dau.class);
    }
 }

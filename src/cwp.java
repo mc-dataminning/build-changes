@@ -1,15 +1,19 @@
-public class cwp extends cwm {
-   public cwp(String $$0, cws $$1, cxa $$2, csz $$3, float $$4, int $$5) {
-      super(cxi.c, $$0, $$1, $$2, $$3, $$4, $$5);
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum cwp {
+   a(0),
+   b(1);
+
+   public static final IntFunction<cwp> c = awv.a(cwp::a, values(), awv.a.a);
+   public static final yv<ByteBuf, cwp> d = yt.a(c, cwp::a);
+   private final int e;
+
+   private cwp(int $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public csz g() {
-      return new csz(ddg.nW);
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.q;
+   public int a() {
+      return this.e;
    }
 }

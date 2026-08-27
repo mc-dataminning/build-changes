@@ -1,37 +1,61 @@
-public class adl implements zb<abm> {
-   public static final ys<vu, adl> a = zb.a(adl::a, adl::new);
-   private final int b;
-   private final akh c;
+public class adl implements ze<abq> {
+   public static final yv<vx, adl> a = ze.a(adl::a, adl::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public adl(int $$0, cxf<?> $$1) {
-      this.b = $$0;
-      this.c = $$1.a();
+   public adl(bru $$0) {
+      this.b = $$0.du();
+      this.c = $$0.dw();
+      this.d = $$0.dA();
+      this.e = $$0.dF();
+      this.f = $$0.dH();
    }
 
-   private adl(vu $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private adl(vx $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(vu $$0) {
-      $$0.k(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zd<adl> a() {
-      return afx.Y;
+   public zg<adl> a() {
+      return agb.U;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public akh b() {
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public int e() {
-      return this.b;
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

@@ -1,23 +1,21 @@
-public interface ddh {
-   boolean b(dag var1, in var2, dqh var3);
+import com.mojang.serialization.MapCodec;
 
-   boolean a(dad var1, ayg var2, in var3, dqh var4);
+public class ddh extends ddi {
+   public static final MapCodec<ddh> a = b(ddh::new);
+   protected static final float b = 6.0F;
+   protected static final evd c = ddy.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
-   void a(aqh var1, ayg var2, in var3, dqh var4);
-
-   default in a(in $$0) {
-      return switch (this.aq_()) {
-         case a -> $$0.c();
-         case b -> $$0;
-      };
+   @Override
+   public MapCodec<ddh> a() {
+      return a;
    }
 
-   default ddh.a aq_() {
-      return ddh.a.b;
+   protected ddh(dra.d $$0) {
+      super($$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return c;
    }
 }

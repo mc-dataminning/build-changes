@@ -1,54 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ead extends dzd<ebw> {
-   public ead(Codec<ebw> $$0) {
+public class ead extends dzx<ecc> {
+   private static final it[] a = it.values();
+
+   public ead(Codec<ecc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dzf<ebw> $$0) {
-      ebw $$1 = $$0.f();
-      day $$2 = $$0.b();
-      ayg $$3 = $$0.d();
-      dde $$4 = $$1.b.b();
-      in $$5 = a($$2, $$0.e().j().a(is.a.b, $$2.I_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+   public boolean a(dzz<ecc> $$0) {
+      ecc $$1 = $$0.f();
+      ayk $$2 = $$0.d();
+      io $$3 = $$0.e();
+      dbs $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<io, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      dxs $$9 = new dxs(new dwu($$4.C()));
+      elx $$10 = elx.a($$9, -4, 1.0);
+      List<io> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      dws $$13 = $$1.d;
+      dwq $$14 = $$1.c;
+      dwr $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
 
-         for (in $$11 : in.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         io $$27 = $$3.b($$24, $$25, $$26);
+         drb $$28 = $$4.a_($$27);
+         if ($$28.i() || $$28.a(avw.bQ)) {
+            if (++$$22 > $$1.p) {
+               return false;
+            }
+         }
+
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+      }
+
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
+         } else {
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
+         }
+      }
+
+      List<io> $$31 = Lists.newArrayList();
+      Predicate<drb> $$32 = a($$1.c.g);
+
+      for (io $$33 : io.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
+
+         for (Pair<io, Integer> $$37 : $$7) {
+            $$35 += ayd.f($$33.j((js)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+         }
+
+         for (io $$38 : $$11) {
+            $$36 += ayd.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
+
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, dea.a.n(), $$32);
+
+               for (it $$39 : a) {
+                  io $$40 = $$33.a($$39);
+                  emu $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
+                  }
+               }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.i());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            }
+         }
+      }
+
+      List<drb> $$43 = $$14.f;
+
+      for (io $$44 : $$31) {
+         drb $$45 = ac.a($$43, $$2);
+
+         for (it $$46 : a) {
+            if ($$45.b(drr.P)) {
+               $$45 = $$45.a(drr.P, $$46);
+            }
+
+            io $$47 = $$44.a($$46);
+            drb $$48 = $$4.a_($$47);
+            if ($$45.b(drr.C)) {
+               $$45 = $$45.a(drr.C, Boolean.valueOf($$48.u().b()));
+            }
+
+            if (deg.g($$48)) {
+               this.a($$4, $$47, $$45, $$32);
                break;
             }
-
-            dqh $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
          }
-
-         return $$10;
-      }
-   }
-
-   @Nullable
-   private static in a(dae $$0, in.a $$1, dde $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dqh $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(is.a);
       }
 
-      return null;
+      return true;
    }
 }

@@ -1,61 +1,112 @@
-public class frj extends fsx {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fvb e;
-   private final fvb f;
-   private final fvb g;
-   private final fvb h;
-   private final fvb i;
-   private final fvb j;
-   private final fvb k;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public frj(fvb $$0) {
-      super(gbw::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+public class frj implements fre, frf {
+   private static final akm a = new akm("spectator/teleport_to_team");
+   private static final wx b = wx.c("spectatorMenu.team_teleport");
+   private static final wx c = wx.c("spectatorMenu.team_teleport.prompt");
+   private final List<frf> d;
+
+   public frj() {
+      fdz $$0 = fdz.Q();
+      this.d = a($$0, $$0.r.L());
    }
 
-   public static fvh a() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      $$1.a("left_lid", fvg.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fvd.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fvg.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fvd.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fvg.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fvd.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fvg.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fvd.a);
-      $$1.a("right_pages", fvg.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fvd.a);
-      fvg $$2 = fvg.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fvd.a);
-      $$1.a("flip_page2", $$2, fvd.a);
-      return fvh.a($$0, 64, 32);
+   private static List<frf> a(fdz $$0, evo $$1) {
+      return $$1.g().stream().flatMap($$1x -> frj.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public void a(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public List<frf> a() {
+      return this.d;
    }
 
-   public void b(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public wx b() {
+      return c;
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (axz.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = axz.a($$4);
-      this.i.b = axz.a($$4);
-      this.j.b = axz.a($$4);
-      this.k.b = axz.a($$4);
+   @Override
+   public void a(frd $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wx aN_() {
+      return b;
+   }
+
+   @Override
+   public void a(ffm $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements frf {
+      private final evj a;
+      private final Supplier<gov> b;
+      private final List<fxc> c;
+
+      private a(evj $$0, List<fxc> $$1, Supplier<gov> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<frf> a(fdz $$0, evj $$1) {
+         List<fxc> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fxc $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dau.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ayk.a().a($$2.size())).a();
+            Supplier<gov> $$6 = $$0.an().a($$5);
+            return Optional.of(new frj.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(frd $$0) {
+         $$0.a(new fri(this.c));
+      }
+
+      @Override
+      public wx aN_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(ffm $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, ayd.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fgy.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aO_() {
+         return true;
+      }
    }
 }

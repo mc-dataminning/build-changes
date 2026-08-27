@@ -1,5 +1,20 @@
-public interface gqn extends gqm {
-   boolean m();
+import java.util.UUID;
 
-   void q();
+public interface gqn {
+   void a(UUID var1, gqn.b var2);
+
+   void a(UUID var1, gqn.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum b {
+      a,
+      b;
+   }
 }

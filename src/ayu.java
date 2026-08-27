@@ -1,93 +1,220 @@
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import it.unimi.dsi.fastutil.objects.ObjectArrays;
+import java.util.AbstractSet;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ayu {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+public class ayu<T> extends AbstractSet<T> {
+   private static final int a = 10;
+   private final Comparator<T> b;
+   T[] c;
+   int d;
 
-   public static String a(int $$0, float $$1) {
-      int $$2 = axz.d((float)$$0 / $$1);
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      int $$4 = $$3 / 60;
-      $$3 %= 60;
-      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
+   private ayu(int $$0, Comparator<T> $$1) {
+      this.b = $$1;
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
+      } else {
+         this.c = (T[])a(new Object[$$0]);
+      }
    }
 
-   public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
+   public static <T extends Comparable<T>> ayu<T> a() {
+      return a(10);
    }
 
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
+   public static <T extends Comparable<T>> ayu<T> a(int $$0) {
+      return new ayu<>($$0, Comparator.naturalOrder());
    }
 
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
+   public static <T> ayu<T> a(Comparator<T> $$0) {
+      return a($$0, 10);
+   }
+
+   public static <T> ayu<T> a(Comparator<T> $$0, int $$1) {
+      return new ayu<>($$1, $$0);
+   }
+
+   private static <T> T[] a(Object[] $$0) {
+      return (T[])$$0;
+   }
+
+   private int c(T $$0) {
+      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
+   }
+
+   private static int b(int $$0) {
+      return -$$0 - 1;
+   }
+
+   @Override
+   public boolean add(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         this.a($$0, $$2);
+         return true;
+      }
+   }
+
+   private void c(int $$0) {
+      if ($$0 > this.c.length) {
+         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
+            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
+         } else if ($$0 < 10) {
+            $$0 = 10;
+         }
+
+         Object[] $$1 = new Object[$$0];
+         System.arraycopy(this.c, 0, $$1, 0, this.d);
+         this.c = (T[])a($$1);
+      }
+   }
+
+   private void a(T $$0, int $$1) {
+      this.c(this.d + 1);
+      if ($$1 != this.d) {
+         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
+      }
+
+      this.c[$$1] = $$0;
+      this.d++;
+   }
+
+   void d(int $$0) {
+      this.d--;
+      if ($$0 != this.d) {
+         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
+      }
+
+      this.c[this.d] = null;
+   }
+
+   private T e(int $$0) {
+      return this.c[$$0];
+   }
+
+   public T a(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return this.e($$1);
+      } else {
+         this.a($$0, b($$1));
          return $$0;
-      } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
       }
    }
 
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
+   @Override
+   public boolean remove(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      if ($$1 >= 0) {
+         this.d($$1);
+         return true;
       } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
+         return false;
+      }
+   }
 
-         while ($$1.find()) {
-            $$2++;
+   @Nullable
+   public T b(T $$0) {
+      int $$1 = this.c($$0);
+      return $$1 >= 0 ? this.e($$1) : null;
+   }
+
+   public T b() {
+      return this.e(0);
+   }
+
+   public T c() {
+      return this.e(this.d - 1);
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      return $$1 >= 0;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return new ayu.a();
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @Override
+   public Object[] toArray() {
+      return Arrays.copyOf(this.c, this.d, Object[].class);
+   }
+
+   @Override
+   public <U> U[] toArray(U[] $$0) {
+      if ($$0.length < this.d) {
+         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
+      } else {
+         System.arraycopy(this.c, 0, $$0, 0, this.d);
+         if ($$0.length > this.d) {
+            $$0[this.d] = null;
          }
 
-         return $$2;
+         return $$0;
       }
    }
 
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
+   @Override
+   public void clear() {
+      Arrays.fill(this.c, 0, this.d, null);
+      this.d = 0;
    }
 
-   public static String e(String $$0) {
-      return a($$0, 256, false);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ayu<?> $$1 && this.b.equals($$1.b)) {
+            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
+         }
+
+         return super.equals($$0);
+      }
    }
 
-   public static boolean a(char $$0) {
-      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
-   }
+   class a implements Iterator<T> {
+      private int b;
+      private int c = -1;
 
-   public static boolean f(String $$0) {
-      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
-   }
+      @Override
+      public boolean hasNext() {
+         return this.b < ayu.this.d;
+      }
 
-   public static String g(String $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(String $$0, boolean $$1) {
-      StringBuilder $$2 = new StringBuilder();
-
-      for (char $$3 : $$0.toCharArray()) {
-         if (a($$3)) {
-            $$2.append($$3);
-         } else if ($$1 && $$3 == '\n') {
-            $$2.append($$3);
+      @Override
+      public T next() {
+         if (this.b >= ayu.this.d) {
+            throw new NoSuchElementException();
+         } else {
+            this.c = this.b++;
+            return ayu.this.c[this.c];
          }
       }
 
-      return $$2.toString();
-   }
-
-   public static boolean a(int $$0) {
-      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
-   }
-
-   public static boolean h(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(ayu::a) : true;
+      @Override
+      public void remove() {
+         if (this.c == -1) {
+            throw new IllegalStateException();
+         } else {
+            ayu.this.d(this.c);
+            this.b--;
+            this.c = -1;
+         }
+      }
    }
 }

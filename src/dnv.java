@@ -1,135 +1,109 @@
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dnv extends dnm implements bpf {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jf<csz> d = jf.a(6, csz.i);
-   private int e = -1;
+public class dnv extends dog implements bpz {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wx d;
+   private csh e;
+   private dnx f = dnx.a;
 
-   public dnv(in $$0, dqh $$1) {
-      super(dno.M, $$0, $$1);
+   public dnv(io $$0, drb $$1) {
+      super(doi.t, $$0, $$1);
+      this.e = ((dcp)$$1.b()).b();
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dqh $$1 = this.n();
+   public dnv(io $$0, drb $$1, csh $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
 
-         for (int $$2 = 0; $$2 < dei.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).d();
-            dqy $$4 = dei.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
+   public void a(cto $$0, csh $$1) {
+      this.e = $$1;
+      this.a($$0);
+   }
 
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(dva.c, this.o, dva.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
+   @Override
+   public wx af() {
+      return (wx)(this.d != null ? this.d : wx.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public wx ah() {
+      return this.d;
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dnx.a)) {
+         $$0.a("patterns", (va)dnx.b.encodeStart($$1.a(ur.a), this.f).getOrThrow());
+      }
+
+      if (this.d != null) {
+         $$0.a("CustomName", wx.a.a(this.d, $$1));
       }
    }
 
    @Override
-   public void a(ua $$0, iy.a $$1) {
-      this.d.clear();
-      bpg.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(ua $$0, iy.a $$1) {
-      bpg.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(csz::d)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(csz::d);
-   }
-
-   @Override
-   public csz a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public csz a(int $$0, int $$1) {
-      csz $$2 = Objects.requireNonNullElse(this.d.get($$0), csz.i);
-      this.d.set($$0, csz.i);
-      if (!$$2.d()) {
-         this.c($$0);
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = wx.a.a($$0.l("CustomName"), $$1);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public csz b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, csz $$1) {
-      if ($$1.a(avz.aW)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.d()) {
-         this.a($$0, 1);
+      if ($$0.e("patterns")) {
+         dnx.b
+            .parse($$1.a(ur.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
       }
    }
 
-   @Override
-   public boolean a(bpf $$0, int $$1, csz $$2) {
-      return $$0.a_($$2x -> $$2x.d() ? true : csz.c($$2, $$2x) && $$2x.G() + $$2.G() <= $$0.a($$2x));
+   public abx a() {
+      return abx.a(this);
    }
 
    @Override
-   public int ah_() {
-      return 1;
+   public ud a(iz.a $$0) {
+      return this.e($$0);
    }
 
-   @Override
-   public boolean a(clh $$0) {
-      return bpf.a(this, $$0);
+   public dnx b() {
+      return this.f;
    }
 
-   @Override
-   public boolean b(int $$0, csz $$1) {
-      return $$1.a(avz.aW) && this.a($$0).d() && $$1.G() == this.ah_();
+   public cto c() {
+      cto $$0 = new cto(ddd.a(this.e));
+      $$0.a(this.s());
+      return $$0;
    }
 
-   public int j() {
+   public csh f() {
       return this.e;
    }
 
    @Override
-   public void a(jw $$0) {
-      $$0.a(ka.X, cvt.a).a(this.d);
+   protected void a(dog.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(kb.W, dnx.a);
+      this.d = $$0.a(kb.f);
    }
 
    @Override
-   public void a(jw.a $$0) {
-      $$0.a(ka.X, cvt.a(this.d));
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.W, this.f);
+      $$0.a(kb.f, this.d);
    }
 
    @Override
-   public void a(ua $$0) {
-      $$0.r("Items");
+   public void a(ud $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

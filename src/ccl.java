@@ -1,48 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class ccl extends ccj<bsi> {
-   public static final int a = 10;
-   private static final ccq c = ccq.b().a(10.0).d();
-   private final Predicate<csz> d;
-
-   public ccl(Predicate<csz> $$0) {
-      this.d = $$0;
-   }
-
-   protected void a(aqh $$0, bsi $$1) {
-      btb<?> $$2 = $$1.dQ();
-      List<clh> $$3 = $$0.x()
-         .stream()
-         .filter(brm.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         clh $$4 = $$3.get(0);
-         $$2.a(cbd.O, $$4);
-      } else {
-         $$2.b(cbd.O);
-      }
-   }
-
-   private boolean a(clh $$0) {
-      return this.a($$0.eV()) || this.a($$0.eW());
-   }
-
-   private boolean a(csz $$0) {
-      return this.d.test($$0);
-   }
-
+public class ccl extends ccy<ckg> {
    @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.of(cbd.O);
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of(cbs.h, cbs.aw, cbs.aq, cbs.ap, cbs.as, cbs.at, new cbs[0]);
+   }
+
+   protected void a(aqm $$0, ckg $$1) {
+      btq<?> $$2 = $$1.dS();
+      $$2.a(cbs.aw, this.b($$0, $$1));
+      Optional<ckm> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<ckg> $$5 = Lists.newArrayList();
+      cbu $$6 = $$2.c(cbs.h).orElse(cbu.a());
+
+      for (bso $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof ckm || $$0x instanceof ckg))) {
+         if ($$7 instanceof ckm $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof ckg $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(cbs.aq, $$3);
+      $$2.a(cbs.ap, $$5);
+      $$2.a(cbs.as, $$4);
+      $$2.a(cbs.at, $$5.size());
+   }
+
+   private Optional<io> b(aqm $$0, ckg $$1) {
+      return io.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(avw.aS));
    }
 }

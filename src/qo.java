@@ -1,24 +1,11 @@
-import java.util.OptionalLong;
+import com.mojang.serialization.Lifecycle;
 
-public class qo {
-   public static void a(ql<dtz> $$0) {
-      $$0.a(
-         dtx.a,
-         new dtz(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, avr.bb, dtx.e, 0.0F, new dtz.a(false, true, box.a(0, 7), 0))
-      );
-      $$0.a(
-         dtx.b,
-         new dtz(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, avr.bc, dtx.f, 0.1F, new dtz.a(true, false, boo.a(7), 15))
-      );
-      $$0.a(
-         dtx.c,
-         new dtz(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, avr.bd, dtx.g, 0.0F, new dtz.a(false, true, box.a(0, 7), 0)
-         )
-      );
-      $$0.a(
-         dtx.d,
-         new dtz(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, avr.bb, dtx.e, 0.0F, new dtz.a(false, true, box.a(0, 7), 0))
-      );
+public interface qo<T> {
+   ix.c<T> a(akl<T> var1, T var2, Lifecycle var3);
+
+   default ix.c<T> a(akl<T> $$0, T $$1) {
+      return this.a($$0, $$1, Lifecycle.stable());
    }
+
+   <S> iy<S> a(akl<? extends jk<? extends S>> var1);
 }

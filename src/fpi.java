@@ -1,77 +1,60 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fpi extends fpb<fxf.a> {
-   private static final int y = 120;
-   private static final int z = 85;
-   private static final int A = 178;
-   private static final wu B = wu.c("gui.abuseReport.skin.title");
-   private final fiv C = fiv.d().a(8);
-   private ffw D;
-   private ffe E;
-   private ffe F;
+public abstract class fpi extends fpm {
+   private static final fhm i = new fhm(
+      new akm("recipe_book/furnace_filter_enabled"),
+      new akm("recipe_book/furnace_filter_disabled"),
+      new akm("recipe_book/furnace_filter_enabled_highlighted"),
+      new akm("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   @Nullable
+   private cxr j;
 
-   private fpi(fld $$0, fxe $$1, fxf.a $$2) {
-      super(B, $$0, $$1, $$2);
-   }
-
-   public fpi(fld $$0, fxe $$1, UUID $$2, Supplier<gny> $$3) {
-      this($$0, $$1, new fxf.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fpi(fld $$0, fxe $$1, fxf $$2) {
-      this($$0, $$1, new fxf.a($$2, $$1.a().b()));
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
    @Override
-   protected void aM_() {
-      this.C.c().b();
-      this.C.a(new fgl(this.l, this.p));
-      fiv $$0 = this.C.a(fiv.e().a(8));
-      $$0.c().e();
-      $$0.a(new fge(85, 120, this.m.aS(), this.x.e().a()));
-      fiv $$1 = $$0.a(fiv.d().a(8));
-      this.F = ffe.a(c, $$0x -> this.m.a(new fph(this, this.x.h(), $$0xx -> {
-            this.x.a($$0xx);
-            this.C();
-         }))).a(178).a();
-      $$1.a(fin.a(this.p, this.F, b));
-      this.D = this.a(178, 9 * 8, $$0x -> {
-         this.x.a($$0x);
-         this.C();
-      });
-      $$1.a(fin.a(this.p, this.D, d, $$0x -> $$0x.e(12)));
-      fiv $$2 = this.C.a(fiv.e().a(8));
-      $$2.a(ffe.a(wt.k, $$0x -> this.d()).a(120).a());
-      this.E = $$2.a(ffe.a(a, $$0x -> this.m()).a(120).a());
-      this.C.a($$1x -> {
-         ffc var10000 = this.c($$1x);
-      });
-      this.c();
-      this.C();
+   public void a(@Nullable cqo $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.e < this.g.p()) {
+         this.e.a();
+      }
    }
 
    @Override
-   protected void c() {
-      this.C.a();
-      fip.a(this.C, this.G());
-   }
+   public void a(cxw<?> $$0, List<cqo> $$1) {
+      cto $$2 = $$0.b().a(this.h.r.H_());
+      this.e.a($$0);
+      this.e.a(cxr.a($$2), $$1.get(2).f, $$1.get(2).g);
+      jg<cxr> $$3 = $$0.b().a();
+      cqo $$4 = $$1.get(1);
+      if ($$4.g().e()) {
+         if (this.j == null) {
+            this.j = cxr.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.J())).map(cto::new));
+         }
 
-   private void C() {
-      fxc $$0 = this.x.h();
-      if ($$0 != null) {
-         this.F.b($$0.b());
-      } else {
-         this.F.b(c);
+         this.e.a(this.j, $$4.f, $$4.g);
       }
 
-      fxa.b $$1 = this.x.c();
-      this.E.j = $$1 == null;
-      this.E.a(x.a($$1, fxa.b::a));
+      Iterator<cxr> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
+         }
+
+         cxr $$7 = $$5.next();
+         if (!$$7.c()) {
+            cqo $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.f, $$8.g);
+         }
+      }
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
-   }
+   protected abstract Set<ctj> b();
 }

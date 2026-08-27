@@ -1,18 +1,15 @@
-public interface cxi<T extends cxd<?>> {
-   cxi<cwu> a = a("crafting");
-   cxi<cxs> b = a("smelting");
-   cxi<cwp> c = a("blasting");
-   cxi<cxw> d = a("smoking");
-   cxi<cwr> e = a("campfire_cooking");
-   cxi<cxx> f = a("stonecutting");
-   cxi<cxt> g = a("smithing");
+public class cxi extends cxd {
+   public cxi(String $$0, cxj $$1, cxr $$2, cto $$3, float $$4, int $$5) {
+      super(cxz.e, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-   static <T extends cxd<?>> cxi<T> a(final String $$0) {
-      return jj.a(ld.s, new akh($$0), new cxi<T>() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      });
+   @Override
+   public cto g() {
+      return new cto(dea.og);
+   }
+
+   @Override
+   public cxy<?> ao_() {
+      return cxy.s;
    }
 }

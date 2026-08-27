@@ -12,7 +12,6 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DataResult.PartialResult;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -86,7 +85,7 @@ public class ac {
    private static final DateTimeFormatter n = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    public static final int a = 8;
    public static final long b = 1000000L;
-   public static ayx.a c = System::nanoTime;
+   public static azb.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return ac.c.getAsLong();
@@ -105,32 +104,36 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(drk<T> $$0, Object $$1) {
+   public static <T> Collector<T, ?, List<T>> b() {
+      return Collectors.toCollection(Lists::newArrayList);
+   }
+
+   public static <T extends Comparable<T>> String a(dse<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable akh $$1) {
+   public static String a(String $$0, @Nullable akm $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
-   public static long b() {
-      return c() / 1000000L;
-   }
-
    public static long c() {
-      return c.getAsLong();
+      return d() / 1000000L;
    }
 
    public static long d() {
+      return c.getAsLong();
+   }
+
+   public static long e() {
       return Instant.now().toEpochMilli();
    }
 
-   public static String e() {
+   public static String f() {
       return n.format(ZonedDateTime.now());
    }
 
    private static ExecutorService b(String $$0) {
-      int $$1 = axz.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = ayd.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -157,7 +160,7 @@ public class ac {
       return $$2;
    }
 
-   private static int m() {
+   private static int n() {
       String $$0 = System.getProperty("max.bg.threads");
       if ($$0 != null) {
          try {
@@ -175,19 +178,19 @@ public class ac {
       return 255;
    }
 
-   public static ExecutorService f() {
+   public static ExecutorService g() {
       return k;
    }
 
-   public static ExecutorService g() {
+   public static ExecutorService h() {
       return l;
    }
 
-   public static ExecutorService h() {
+   public static ExecutorService i() {
       return m;
    }
 
-   public static void i() {
+   public static void j() {
       a(k);
       a(l);
    }
@@ -229,7 +232,7 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         akj.a($$2.a().e());
+         ako.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -246,7 +249,7 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = azg.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = azk.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
          if (aa.aX) {
@@ -288,8 +291,8 @@ public class ac {
       } : $$1;
    }
 
-   public static <T> String a(jj<T> $$0, T $$1) {
-      akh $$2 = $$0.b($$1);
+   public static <T> String a(jk<T> $$0, T $$1) {
+      akm $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -331,7 +334,7 @@ public class ac {
       };
    }
 
-   public static ac.a j() {
+   public static ac.a k() {
       String $$0 = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       if ($$0.contains("win")) {
          return ac.a.c;
@@ -348,7 +351,7 @@ public class ac {
       }
    }
 
-   public static Stream<String> k() {
+   public static Stream<String> l() {
       RuntimeMXBean $$0 = ManagementFactory.getRuntimeMXBean();
       return $$0.getInputArguments().stream().filter($$0x -> $$0x.startsWith("-X"));
    }
@@ -511,19 +514,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, ayg $$1) {
+   public static <T> T a(T[] $$0, ayk $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, ayg $$1) {
+   public static int a(int[] $$0, ayk $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, ayg $$1) {
+   public static <T> T a(List<T> $$0, ayk $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, ayg $$1) {
+   public static <T> Optional<T> b(List<T> $$0, ayk $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -689,7 +692,7 @@ public class ac {
       }
    }
 
-   public static void l() {
+   public static void m() {
       Thread $$0 = new Thread("Timer hack thread") {
          @Override
          public void run() {
@@ -718,8 +721,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> ayo<K, V> a(Function<K, V> $$0) {
-      return new ayo<>($$0);
+   public static <K, V> ays<K, V> a(Function<K, V> $$0) {
+      return new ays<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -754,13 +757,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, ayg $$1) {
+   public static <T> List<T> a(Stream<T> $$0, ayk $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, ayg $$1) {
+   public static IntArrayList a(IntStream $$0, ayk $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -772,19 +775,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, ayg $$1) {
+   public static <T> List<T> b(T[] $$0, ayk $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, ayg $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, ayk $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, ayg $$1) {
+   public static <T> void c(List<T> $$0, ayk $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -854,32 +857,8 @@ public class ac {
       }
    }
 
-   public static <T, E extends Throwable> T a(DataResult<T> $$0, Function<String, E> $$1) throws E {
-      Optional<PartialResult<T>> $$2 = $$0.error();
-      if ($$2.isPresent()) {
-         throw $$1.apply($$2.get().message());
-      } else {
-         return (T)$$0.result().orElseThrow();
-      }
-   }
-
-   public static <T, E extends Throwable> T b(DataResult<T> $$0, Function<String, E> $$1) throws E {
-      Optional<PartialResult<T>> $$2 = $$0.error();
-      if ($$2.isPresent()) {
-         Optional<T> $$3 = $$0.resultOrPartial($$0x -> {
-         });
-         if ($$3.isPresent()) {
-            return $$3.get();
-         } else {
-            throw $$1.apply($$2.get().message());
-         }
-      } else {
-         return (T)$$0.result().orElseThrow();
-      }
-   }
-
    public static <A, B> Typed<B> a(Typed<A> $$0, Type<B> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      Dynamic<?> $$3 = a($$0.write(), IllegalStateException::new);
+      Dynamic<?> $$3 = (Dynamic<?>)$$0.write().getOrThrow();
       return a($$1, $$2.apply($$3), true);
    }
 
@@ -891,7 +870,7 @@ public class ac {
       DataResult<Typed<T>> $$3 = $$0.readTyped($$1).map(Pair::getFirst);
 
       try {
-         return $$2 ? b($$3, IllegalStateException::new) : a($$3, IllegalStateException::new);
+         return $$2 ? (Typed)$$3.getPartialOrThrow(IllegalStateException::new) : (Typed)$$3.getOrThrow(IllegalStateException::new);
       } catch (IllegalStateException var7) {
          o $$5 = o.a(var7, "Reading type");
          p $$6 = $$5.a("Info");

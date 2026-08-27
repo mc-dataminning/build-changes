@@ -1,51 +1,53 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class ahw implements ze<agd> {
+   public static final yv<vx, ahw> a = ze.a(ahw::a, ahw::new);
+   private static final int b = 384;
+   private final io c;
+   private final String[] d;
+   private final boolean e;
 
-public class ahw {
-   private static final double a = 4096.0;
-   private etp b;
-
-   public ahw() {
-      this.b = etp.b;
+   public ahw(io $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
+   private ahw(vx $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public etp a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new etp($$3, $$4, $$5);
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
       }
    }
 
-   public long a(etp $$0) {
-      return a($$0.c) - a(this.b.c);
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
-   public long b(etp $$0) {
-      return a($$0.d) - a(this.b.d);
+   @Override
+   public zg<ahw> a() {
+      return agb.bY;
    }
 
-   public long c(etp $$0) {
-      return a($$0.e) - a(this.b.e);
+   public void a(agd $$0) {
+      $$0.a(this);
    }
 
-   public etp d(etp $$0) {
-      return $$0.d(this.b);
+   public io b() {
+      return this.c;
    }
 
-   public void e(etp $$0) {
-      this.b = $$0;
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

@@ -1,102 +1,84 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class fpx extends fld {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<akg<dad>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dad.h, -13408734);
-      $$0.put(dad.i, -10075085);
-      $$0.put(dad.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bpa d;
+public class fpx extends fpw<fxs.a> {
+   private static final int y = 120;
+   private static final wx z = wx.c("gui.chatReport.title");
+   private static final wx A = wx.c("gui.chatReport.select_chat");
+   private final fjq B = fjq.d().a(8);
+   private fgr C;
+   private ffz D;
+   private ffz E;
+   private ffz F;
 
-   @Nullable
-   public static fpx a(fde $$0, BooleanConsumer $$1, DataFixer $$2, eob.c $$3, boolean $$4) {
-      try {
-         fqd $$5 = $$0.x();
-         atc $$6 = atf.a($$3);
-
-         fpx var10;
-         try (ale $$7 = $$5.a($$3.h(), false, $$6)) {
-            eoh $$8 = $$7.d();
-            jk.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fpx($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
+   private fpx(fly $$0, fxz $$1, fxs.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   private fpx(BooleanConsumer $$0, DataFixer $$1, eob.c $$2, dah $$3, boolean $$4, jk $$5) {
-      super(wu.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bpa($$2, $$1, $$5, $$4, false);
+   public fpx(fly $$0, fxz $$1, UUID $$2) {
+      this($$0, $$1, new fxs.a($$2, $$1.a().b()));
+   }
+
+   public fpx(fly $$0, fxz $$1, fxs $$2) {
+      this($$0, $$1, new fxs.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.c(ffe.a(wt.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+      this.B.c().b();
+      this.B.a(new fhg(this.l, this.p));
+      this.E = this.B.a(ffz.a(A, $$0x -> this.m.a(new fpz(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.F = ffz.a(c, $$0x -> this.m.a(new fqc(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.B.a(fji.a(this.p, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.B.a(fji.a(this.p, this.C, d, $$0x -> $$0x.e(12)));
+      fjq $$0 = this.B.a(fjq.e().a(8));
+      $$0.a(ffz.a(ww.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(ffz.a(a, $$0x -> this.m()).a(120).a());
+      this.B.a($$1 -> {
+         ffx var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
+   protected void c() {
+      this.B.a();
+      fjk.a(this.B, this.G());
+   }
+
+   private void C() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(wx.a("gui.chatReport.selected_chat", $$0.size()));
       }
-   }
 
-   @Override
-   public void d() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void j() {
-      this.d.a();
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, wu.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, wu.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, wu.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (akg<dad> $$9 : this.d.c()) {
-            int $$10 = axz.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
-
-         int $$11 = this.d.f() + this.d.g();
-         wu $$12 = wu.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         wu $$13 = wu.a("optimizeWorld.progress.percentage", axz.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      fxx $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
       }
+
+      fxv.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(x.a($$2, fxv.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

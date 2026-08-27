@@ -1,29 +1,37 @@
-public class ado implements zb<abm> {
-   public static final ys<vu, ado> a = zb.a(ado::a, ado::new);
-   private final int b;
+public class ado implements ze<abq> {
+   public static final yv<vx, ado> a = ze.a(ado::a, ado::new);
+   private final io b;
+   private final boolean c;
 
-   public ado(bqc $$0) {
-      this($$0.b());
-   }
-
-   public ado(int $$0) {
+   public ado(io $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ado(vu $$0) {
-      this.b = $$0.l();
+   private ado(vx $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<ado> a() {
-      return afx.ab;
+   public zg<ado> a() {
+      return agb.X;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   public io b() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

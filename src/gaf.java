@@ -1,61 +1,42 @@
-public class gaf extends gac {
-   private final fzx a;
-   private static final int b = 8;
-
-   protected gaf(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fzx $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / axz.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
-   }
-
-   @Override
-   public fzg b() {
-      return fzg.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fzp.a p() {
-      return fzp.a.b;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+public class gaf extends gae {
+   gaf(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * axz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
+      }
+   }
 
-      public a(fzx $$0) {
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
          this.a = $$0;
       }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gaf($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gaf $$8 = new gaf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

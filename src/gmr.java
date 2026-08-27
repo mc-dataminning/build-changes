@@ -1,119 +1,41 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class gmr extends gmj {
-   static final Logger f = LogUtils.getLogger();
-   protected final akh e;
+public class gmr<T extends cla, M extends fvi<T>> extends gmf<T, M> {
+   private final akm a;
+   private final gmr.a<T> b;
+   private final gmr.b<T, M> c;
 
-   public gmr(akh $$0) {
-      this.e = $$0;
+   public gmr(gjp<T, M> $$0, akm $$1, gmr.a<T> $$2, gmr.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public void a(atr $$0) throws IOException {
-      gmr.a $$1 = this.b($$0);
-      $$1.c();
-      gov $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      ewy $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
+   public void a(eys $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ch()) {
+         this.a();
+         eyw $$10 = $$1.getBuffer(gcs.j(this.a));
+         this.c().a($$0, $$10, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
    }
 
-   private void a(ewy $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   private void a() {
+      List<fvw> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
    }
 
-   protected gmr.a b(atr $$0) {
-      return gmr.a.a($$0, this.e);
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
    }
 
-   protected static class a implements Closeable {
-      @Nullable
-      private final gov a;
-      @Nullable
-      private final ewy b;
-      @Nullable
-      private final IOException c;
+   public interface a<T extends cla> {
+      float apply(T var1, float var2, float var3);
+   }
 
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable gov $$0, ewy $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static gmr.a a(atr $$0, akh $$1) {
-         try {
-            atp $$2 = $$0.getResourceOrThrow($$1);
-
-            ewy $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = ewy.a($$3);
-            }
-
-            gov $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(gov.a).orElse(null);
-            } catch (RuntimeException var8) {
-               gmr.f.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new gmr.a($$6, $$4);
-         } catch (IOException var10) {
-            return new gmr.a(var10);
-         }
-      }
-
-      @Nullable
-      public gov a() {
-         return this.a;
-      }
-
-      public ewy b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+   public interface b<T extends cla, M extends fsw<T>> {
+      List<fvw> getPartsToDraw(M var1);
    }
 }

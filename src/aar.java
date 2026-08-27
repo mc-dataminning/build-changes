@@ -1,29 +1,26 @@
-import java.util.HashSet;
-import java.util.Set;
+public record aar(io c, int d) implements aaf {
+   public static final yv<vx, aar> a = aaf.a(aar::a, aar::new);
+   public static final aaf.b<aar> b = aaf.a("debug/poi_ticket_count");
 
-public record aar(Set<jp> c, Set<jp> d) implements aac {
-   public static final ys<vu, aar> a = aac.a(aar::a, aar::new);
-   public static final aac.b<aar> b = aac.a("debug/village_sections");
-
-   private aar(vu $$0) {
-      this($$0.a(HashSet::new, vu::g), $$0.a(HashSet::new, vu::g));
+   private aar(vx $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c, vu::a);
-      $$0.a(this.d, vu::a);
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public aac.b<aar> a() {
+   public aaf.b<aar> a() {
       return b;
    }
 
-   public Set<jp> b() {
+   public io b() {
       return this.c;
    }
 
-   public Set<jp> c() {
+   public int c() {
       return this.d;
    }
 }

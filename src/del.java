@@ -1,125 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class del extends dha implements ddh {
+public class del extends dkr {
    public static final MapCodec<del> a = b(del::new);
-   public static final int b = 2;
-   public static final drh c = dqx.ar;
-   protected static final int d = 4;
-   protected static final int e = 5;
-   protected static final int f = 2;
-   protected static final int g = 6;
-   protected static final int h = 7;
-   protected static final int i = 3;
-   protected static final int j = 8;
-   protected static final int k = 9;
-   protected static final int l = 4;
-   protected static final eui[] m = new eui[]{
-      dde.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dde.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dde.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
-   };
-   protected static final eui[] n = new eui[]{
-      dde.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dde.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dde.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
-   };
-   protected static final eui[] o = new eui[]{
-      dde.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dde.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dde.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
-   };
-   protected static final eui[] F = new eui[]{
-      dde.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dde.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dde.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
-   };
+   public static final drv b = drr.R;
 
    @Override
    public MapCodec<del> a() {
       return a;
    }
 
-   public del(dqg.d $$0) {
+   public del(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, is.c).a(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected boolean d_(dqh $$0) {
-      return $$0.c(c) < 2;
-   }
-
-   @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if ($$1.z.a(5) == 0) {
-         int $$4 = $$0.c(c);
-         if ($$4 < 2) {
-            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      dqh $$3 = $$1.a_($$2.a($$0.c(aE)));
-      return $$3.a(avr.z);
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      int $$4 = $$0.c(c);
-      switch ((is)$$0.c(aE)) {
-         case d:
-            return F[$$4];
-         case c:
-         default:
-            return o[$$4];
-         case e:
-            return n[$$4];
-         case f:
-            return m[$$4];
-      }
+      this.k(this.n().a(b, it.c));
    }
 
    @Nullable
    @Override
-   public dqh a(cwi $$0) {
-      dqh $$1 = this.n();
-      dag $$2 = $$0.q();
-      in $$3 = $$0.a();
+   public dog a(io $$0, drb $$1) {
+      return new dol($$0, $$1);
+   }
 
-      for (is $$4 : $$0.f()) {
-         if ($$4.o().d()) {
-            $$1 = $$1.a(aE, $$4);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
+   @Nullable
+   @Override
+   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
+      return !$$0.B ? a($$2, doi.J, ($$0x, $$1x, $$2x, $$3) -> dwd.c.a($$0x, $$3.gr(), $$3.gs())) : null;
+   }
 
-      return null;
+   @Nullable
+   @Override
+   public drb a(cwz $$0) {
+      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int a(drb $$0, dad $$1, io $$2, it $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      return $$2.c(c) < 2;
+   protected void a(drc.a<ddy, drb> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return true;
+   public drb a(drb $$0, dkl $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   public drb a(drb $$0, div $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(aE, c);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
+   public int c() {
+      return 10;
    }
 }

@@ -1,22 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dvx {
+   dvx a = new dvx() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public class dvx {
-   public static final Codec<dvx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ebi.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dvx::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+      @Override
+      public void a(dvw $$0) {
+      }
 
-   public dvx(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      @Override
+      public void b(dvw $$0) {
+      }
+
+      @Override
+      public boolean a(ix<dvu> $$0, euk $$1, dvu.a $$2, dvx.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dvw var1);
+
+   void b(dvw var1);
+
+   boolean a(ix<dvu> var1, euk var2, dvu.a var3, dvx.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dvw var1, euk var2);
    }
 }

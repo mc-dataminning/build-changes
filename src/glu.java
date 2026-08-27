@@ -1,41 +1,24 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class glu<T extends ckl, M extends fun<T>> extends gli<T, M> {
-   private final akh a;
-   private final glu.a<T> b;
-   private final glu.b<T, M> c;
+public class glu extends gmf<cgk, fth<cgk>> {
+   private static final Map<cgm, akm> a = ac.a(Maps.newEnumMap(cgm.class), $$0 -> {
+      $$0.put(cgm.a, null);
+      $$0.put(cgm.b, new akm("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cgm.c, new akm("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cgm.d, new akm("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cgm.e, new akm("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public glu(gis<T, M> $$0, akh $$1, glu.a<T> $$2, glu.b<T, M> $$3) {
+   public glu(gjp<cgk, fth<cgk>> $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cf()) {
-         this.a();
-         eyb $$10 = $$1.getBuffer(gbw.j(this.a));
-         this.c().a($$0, $$10, $$2, ghy.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(eys $$0, gck $$1, int $$2, cgk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      akm $$10 = a.get($$3.u());
+      if ($$10 != null && !$$3.ch()) {
+         eyw $$11 = $$1.getBuffer(gcs.i($$10));
+         this.c().a($$0, $$11, $$2, giu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-   }
-
-   private void a() {
-      List<fvb> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends ckl> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends ckl, M extends fsb<T>> {
-      List<fvb> getPartsToDraw(M var1);
    }
 }

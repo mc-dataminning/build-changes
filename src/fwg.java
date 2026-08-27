@@ -1,17 +1,22 @@
 public class fwg {
-   private final fvx a;
-   private final bkm b;
+   private final float a;
+   private final float b;
 
-   public fwg(fvx $$0, bkm $$1) {
+   public fwg(float $$0, float $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a() {
-      this.a.b(new ajc(ac.b()));
+   public float a() {
+      return this.a;
    }
 
-   public void a(aiz $$0) {
-      this.b.a(ac.b() - $$0.b());
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
    }
 }

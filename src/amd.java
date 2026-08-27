@@ -1,29 +1,41 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class amd {
-   public static void a(CommandDispatcher<ed> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.deop.failed"));
+
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(ee.a("gamemode", er.a()).executes($$0x -> a((ed)$$0x.getSource(), er.a($$0x, "gamemode"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("deop").requires($$0x -> $$0x.c(3)))
+            .then(
+               ef.a("targets", et.a())
+                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().l(), $$1))
+                  .executes($$0x -> a((ee)$$0x.getSource(), et.a($$0x, "targets")))
+            )
       );
    }
 
-   private static int a(ed $$0, daa $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      daa $$4 = $$3.bf();
-      if ($$4 != null) {
-         for (aqi $$5 : $$3.ah().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
+   private static int a(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      auj $$2 = $$0.l().ah();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.f($$4)) {
+            $$2.b($$4);
+            $$3++;
+            $$0.a(() -> wx.a("commands.deop.success", $$1.iterator().next().getName()), true);
          }
       }
 
-      $$0.a(() -> wu.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
    }
 }

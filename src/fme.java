@@ -1,121 +1,72 @@
-public class fme extends fnc<cof> {
-   private static final akh D = new akh("container/anvil/text_field");
-   private static final akh E = new akh("container/anvil/text_field_disabled");
-   private static final akh F = new akh("container/anvil/error");
-   private static final akh G = new akh("textures/gui/container/anvil.png");
-   private static final wu H = wu.c("container.repair.expensive");
-   private ffn I;
-   private final clh J;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-   public fme(cof $$0, clg $$1, wu $$2) {
-      super($$0, $$1, $$2, G);
-      this.J = $$1.l;
-      this.r = 60;
+public class fme extends fly {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final wx d;
+   private final xc r;
+   private final ImmutableList<fme.a> s;
+   private fgs u = fgs.a;
+   private int v;
+   private int w;
+
+   protected fme(wx $$0, List<wx> $$1, ImmutableList<fme.a> $$2) {
+      super($$0);
+      this.r = xc.a($$1);
+      this.d = ww.a($$0, xa.a($$1, ww.a));
+      this.s = $$2;
    }
 
    @Override
-   protected void E() {
-      int $$0 = (this.n - this.c) / 2;
-      int $$1 = (this.o - this.d) / 2;
-      this.I = new ffn(this.p, $$0 + 62, $$1 + 24, 103, 12, wu.c("container.repair"));
-      this.I.f(false);
-      this.I.g(-1);
-      this.I.h(-1);
-      this.I.d(false);
-      this.I.f(50);
-      this.I.b(this::a);
-      this.I.a("");
-      this.d(this.I);
-      this.I.e(this.w.b(0).h());
+   public wx i() {
+      return this.d;
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.I);
-   }
+   public void aM_() {
+      UnmodifiableIterator $$1 = this.s.iterator();
 
-   @Override
-   public void a(fde $$0, int $$1, int $$2) {
-      String $$3 = this.I.a();
-      this.b($$0, $$1, $$2);
-      this.I.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.s.r();
+      while ($$1.hasNext()) {
+         fme.a $$0 = (fme.a)$$1.next();
+         this.w = Math.max(this.w, 20 + this.p.a($$0.a) + 20);
       }
 
-      return !this.I.a($$0, $$1, $$2) && !this.I.d() ? super.a($$0, $$1, $$2) : true;
-   }
+      int $$1x = 5 + this.w + 5;
+      int $$2 = $$1x * this.s.size();
+      this.u = fgs.a(this.p, this.r, $$2);
+      int $$3 = this.u.a() * 9;
+      this.v = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.v + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
 
-   private void a(String $$0) {
-      cpz $$1 = this.w.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(ka.f) && $$0.equals($$1.g().w().getString())) {
-            $$2 = "";
-         }
-
-         if (this.w.a($$2)) {
-            this.m.s.h.b(new ahh($$2));
-         }
+      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fme.a $$6 = (fme.a)var6.next();
+         this.c(ffz.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
       }
    }
 
    @Override
-   protected void b(fer $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.w.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         wu $$5;
-         if ($$3 >= 40 && !this.m.s.gb().d) {
-            $$5 = H;
-            $$4 = 16736352;
-         } else if (!this.w.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = wu.a("container.repair.cost", $$3);
-            if (!this.w.b(2).a(this.J)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(fer $$0, float $$1, int $$2, int $$3) {
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
+      $$0.a(this.p, this.l, this.n / 2, this.v - 9 * 2, -1);
+      this.u.a($$0, this.n / 2, this.v);
    }
 
    @Override
-   public void d(fer $$0, int $$1, int $$2, float $$3) {
-      this.I.a($$0, $$1, $$2, $$3);
+   public boolean aD_() {
+      return false;
    }
 
-   @Override
-   protected void c(fer $$0, int $$1, int $$2) {
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
-         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
-      }
-   }
+   public static final class a {
+      final wx a;
+      final ffz.c b;
 
-   @Override
-   public void a(cod $$0, int $$1, csz $$2) {
-      if ($$1 == 0) {
-         this.I.a($$2.d() ? "" : $$2.w().getString());
-         this.I.e(!$$2.d());
-         this.a(this.I);
+      public a(wx $$0, ffz.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

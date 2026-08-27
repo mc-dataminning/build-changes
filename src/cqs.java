@@ -1,9 +1,9 @@
-public class cqs extends csu {
-   public cqs(csu.a $$0) {
-      super($$0);
+public class cqs extends cou {
+   public cqs(int $$0, clv $$1) {
+      super(cqa.w, cxz.d, cqh.d, $$0, $$1);
    }
 
-   public cln a(dad $$0, csz $$1, bsa $$2) {
-      return new clp($$0, $$2, $$1.c(1));
+   public cqs(int $$0, clv $$1, bpn $$2, cpd $$3) {
+      super(cqa.w, cxz.d, cqh.d, $$0, $$1, $$2, $$3);
    }
 }

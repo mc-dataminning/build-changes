@@ -1,48 +1,45 @@
-public class gls extends gli<cep, frt<cep>> {
-   private static final akh a = new akh("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final akh b = new akh("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final akh c = new akh("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final akh d = new akh("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final akh e = new akh("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final akh f = new akh("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final akh g = new akh("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final akh h = new akh("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final akh i = new akh("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final akh j = new akh("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final akh k = new akh("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final akh l = new akh("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fuh<cep> m;
-   private final fui<cep> n;
+public class gls extends gmf<ceo, fsy<ceo>> {
+   private final gcg a;
 
-   public gls(gis<cep, frt<cep>> $$0, fux $$1) {
+   public gls(gjp<ceo, fsy<ceo>> $$0, gcg $$1) {
       super($$0);
-      this.m = new fuh<>($$1.a(fva.bM));
-      this.n = new fui<>($$1.a(fva.bK));
+      this.a = $$1;
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, cep $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cep.b $$10 = $$3.gA();
+   public void a(eys $$0, gck $$1, int $$2, ceo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fL();
+      boolean $$11 = $$3.p_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
+      }
 
-      fsb<cep> $$11 = (fsb<cep>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.G($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.p_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
 
-      akh $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gz().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      cto $$14 = $$3.a(bsb.a);
+      this.a.a($$3, $$14, ctl.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

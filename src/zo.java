@@ -1,33 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class zo implements ze<zk> {
+   public static final yv<vx, zo> a = ze.a(zo::a, zo::new);
+   private final int b;
 
-public record zo(akh c, byte[] d) implements zb<zh> {
-   public static final ys<vu, zo> a = zb.a(zo::a, zo::new);
-   private static final int e = 5120;
-   public static final ys<ByteBuf, byte[]> b = yq.a(5120);
-
-   private zo(vu $$0) {
-      this($$0.q(), b.decode($$0));
+   public zo(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private zo(vx $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(vx $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public zd<zo> a() {
-      return zr.g;
+   public zg<zo> a() {
+      return zu.d;
    }
 
-   public void a(zh $$0) {
+   public void a(zk $$0) {
       $$0.a(this);
    }
 
-   public akh b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

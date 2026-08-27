@@ -1,190 +1,97 @@
-public class coj extends cod {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   private static final int o = 3;
-   private static final int p = 30;
-   private static final int q = 30;
-   private static final int r = 39;
-   private final cop s;
-   long t;
-   public final bpf n = new bpv(2) {
-      @Override
-      public void e() {
-         coj.this.a(this);
-         super.e();
-      }
-   };
-   private final cpu u = new cpu() {
-      @Override
-      public void e() {
-         coj.this.a(this);
-         super.e();
-      }
-   };
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public coj(int $$0, clg $$1) {
-      this($$0, $$1, cop.a);
+public final class coj {
+   private static final coj b = new coj(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cok c;
+   private final long d;
+
+   private coj(@Nullable cok $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public coj(int $$0, clg $$1, final cop $$2) {
-      super(cpl.x, $$0);
-      this.s = $$2;
-      this.a(new cpz(this.n, 0, 15, 15) {
-         @Override
-         public boolean a(csz $$0) {
-            return $$0.a(ctc.rU);
-         }
-      });
-      this.a(new cpz(this.n, 1, 15, 52) {
-         @Override
-         public boolean a(csz $$0) {
-            return $$0.a(ctc.qO) || $$0.a(ctc.uj) || $$0.a(ctc.fT);
-         }
-      });
-      this.a(new cpz(this.u, 2, 145, 39) {
-         @Override
-         public boolean a(csz $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(clh $$0, csz $$1) {
-            coj.this.i.get(0).a(1);
-            coj.this.i.get(1).a(1);
-            $$1.f().b($$1, $$0.dN(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.Y();
-               if (coj.this.t != $$2xx) {
-                  $$0x.a(null, $$1x, avc.Ag, avd.e, 1.0F, 1.0F);
-                  coj.this.t = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cpz($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cpz($$1, $$5, 8 + $$5 * 18, 142));
-      }
-   }
-
-   @Override
-   public boolean a(clh $$0) {
-      return a(this.s, $$0, ddg.nX);
-   }
-
-   @Override
-   public void a(bpf $$0) {
-      csz $$1 = this.n.a(0);
-      csz $$2 = this.n.a(1);
-      csz $$3 = this.u.a(2);
-      if ($$3.d() || !$$1.d() && !$$2.d()) {
-         if (!$$1.d() && !$$2.d()) {
-            this.a($$1, $$2, $$3);
-         }
+   static coj a(cok $$0, Collection<coh> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         this.u.b(2);
+         long $$2 = a($$0, 0L, $$1);
+         return new coj($$0, $$2);
       }
    }
 
-   private void a(csz $$0, csz $$1, csz $$2) {
-      this.s.a(($$3, $$4) -> {
-         enp $$5 = cth.b($$0, $$3);
-         if ($$5 != null) {
-            csz $$6;
-            if ($$1.a(ctc.qO) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(ka.B, cvy.b);
-               this.d();
-            } else if ($$1.a(ctc.fT) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.b(ka.B, cvy.a);
-               this.d();
-            } else {
-               if (!$$1.a(ctc.uj)) {
-                  this.u.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!csz.a($$6, $$2)) {
-               this.u.a(2, $$6);
-               this.d();
-            }
-         }
-      });
+   public static coj a() {
+      return b;
    }
 
-   @Override
-   public boolean a(csz $$0, cpz $$1) {
-      return $$1.d != this.u && super.a($$0, $$1);
+   public static coj a(coh $$0) {
+      return new coj($$0.a, $$0.b);
    }
 
-   @Override
-   public csz a(clh $$0, int $$1) {
-      csz $$2 = csz.i;
-      cpz $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         csz $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 == 2) {
-            $$4.f().b($$4, $$0.dN(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return csz.i;
-            }
+   public static coj a(coh $$0, coh... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new coj($$0.a, $$2);
+   }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.a(ctc.rU)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return csz.i;
-               }
-            } else if (!$$4.a(ctc.qO) && !$$4.a(ctc.uj) && !$$4.a(ctc.fT)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return csz.i;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return csz.i;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return csz.i;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return csz.i;
+   private static long a(cok $$0, long $$1, Iterable<coh> $$2) {
+      for (coh $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
 
-         if ($$4.d()) {
-            $$3.e(csz.i);
-         }
-
-         $$3.b();
-         if ($$4.G() == $$2.G()) {
-            return csz.i;
-         }
-
-         $$3.a($$0, $$4);
-         this.d();
+         $$1 |= $$3.b;
       }
 
-      return $$2;
+      return $$1;
+   }
+
+   public boolean b(coh $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(coj $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public coj b(coj $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new coj(this.c, this.d | $$0.d);
+      }
    }
 
    @Override
-   public void b(clh $$0) {
-      super.b($$0);
-      this.u.b(2);
-      this.s.a(($$1, $$2) -> this.a($$0, this.n));
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof coj $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

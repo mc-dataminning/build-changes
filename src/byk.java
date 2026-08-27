@@ -1,50 +1,59 @@
-import java.util.EnumSet;
+public class byk implements byl {
+   private final bsq a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class byk extends bzk {
-   private final cds g;
-
-   public byk(cds $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(byx.a.c, byx.a.a));
+   public byk(bsq $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return this.g.r() && !this.g.gp() && !this.g.gx() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(bsi $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.z(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gx()) {
-         this.g.z(true);
+   public void a() {
+      if (this.f()) {
+         this.a.aZ = this.a.dF();
+         this.c();
+         this.f = this.a.bb;
+         this.e = 0;
+      } else {
+         if (this.e()) {
+            if (Math.abs(this.a.bb - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.bb;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
+         }
       }
    }
 
-   @Override
-   protected boolean a(dag $$0, in $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(avr.R);
+   private void b() {
+      this.a.aZ = ayd.c(this.a.aZ, this.a.bb, (float)this.a.aa());
+   }
+
+   private void c() {
+      this.a.bb = ayd.c(this.a.bb, this.a.aZ, (float)this.a.aa());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = ayd.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.aa() * (1.0F - $$1);
+      this.a.aZ = ayd.c(this.a.aZ, this.a.bb, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cT() instanceof bsq);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.du() - this.a.L;
+      double $$1 = this.a.dA() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

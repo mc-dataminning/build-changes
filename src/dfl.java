@@ -1,88 +1,71 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfl {
-   public static <S extends dnm> dfl.c<S> a(
-      dno<S> $$0, Function<dqh, dfl.a> $$1, Function<dqh, is> $$2, drb $$3, dqh $$4, dae $$5, in $$6, BiPredicate<dae, in> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return dfl.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return dfl.b::b;
-      } else {
-         dfl.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == dfl.a.a;
-         boolean $$11 = $$9 == dfl.a.b;
-         if ($$10) {
-            return new dfl.c.b<>($$8);
-         } else {
-            in $$12 = $$6.a($$2.apply($$4));
-            dqh $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               dfl.a $$14 = $$1.apply($$13);
-               if ($$14 != dfl.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return dfl.b::b;
-                  }
+public class dfl extends ddk implements dkz {
+   public static final MapCodec<dfl> a = b(dfl::new);
+   public static final drs b = drr.C;
+   private static final int d = 3;
+   protected static final evd c = ddy.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new dfl.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new dfl.c.b<>($$8);
-         }
-      }
+   @Override
+   public MapCodec<dfl> a() {
+      return a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public dfl(dra.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b);
    }
 
-   public interface c<S> {
-      <T> T apply(dfl.b<? super S, T> var1);
+   @Override
+   public dog a(io $$0, drb $$1) {
+      return new dos($$0, $$1);
+   }
 
-      public static final class a<S> implements dfl.c<S> {
-         private final S a;
-         private final S b;
+   @Nullable
+   @Override
+   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
+      return a($$2, doi.z, $$0.B ? dos::a : dos::b);
+   }
 
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
+   @Override
+   protected dke a_(drb $$0) {
+      return dke.b;
+   }
 
-         @Override
-         public <T> T apply(dfl.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
+   @Override
+   protected emu b_(drb $$0) {
+      return $$0.c(b) ? emv.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
       }
 
-      public static final class b<S> implements dfl.c<S> {
-         private final S a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return c;
+   }
 
-         @Override
-         public <T> T apply(dfl.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Nullable
+   @Override
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      return this.n().a(b, Boolean.valueOf($$1.a(awb.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected boolean a(drb $$0, enj $$1) {
+      return false;
    }
 }

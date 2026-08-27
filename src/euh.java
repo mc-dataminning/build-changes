@@ -1,46 +1,21 @@
-public final class euh extends ety {
-   private final ety d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+public class euh extends eui {
+   private final bru b;
 
-   protected euh(ety $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public euh(bru $$0) {
+      this($$0, $$0.dn());
+   }
+
+   public euh(bru $$0, euk $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bru a() {
+      return this.b;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(is.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(is.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(is.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return axz.a($$1, $$2, $$3) - $$2;
+   public eui.a c() {
+      return eui.a.c;
    }
 }

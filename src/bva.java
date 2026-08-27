@@ -2,25 +2,26 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bva {
-   private static final int a = 1;
+   private static io a(bsq $$0, io $$1) {
+      ayk $$2 = $$0.dP().z;
+      return $$1.b(a($$2), 0, a($$2));
+   }
 
-   public static btt<bsa> a(float $$0) {
-      return bxf.a(
-         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$1 -> $$1.group($$1.a(cbd.n), $$1.c(cbd.m), $$1.b(cbd.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bP()) {
-                        return false;
-                     } else {
-                        brh $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bud($$8, true));
-                           $$3.a(new cbg(new bud($$8, false), $$0, 1));
-                        }
+   private static int a(ayk $$0) {
+      return $$0.a(3) - 1;
+   }
 
-                        return true;
+   public static <E extends bsq> bvs<E> a(cbs<io> $$0, int $$1, float $$2) {
+      return bxu.a(
+         (Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cbs.o), $$3.c(cbs.m), $$3.a(cbs.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     io $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dp(), (double)$$1);
+                     if (!$$8) {
+                        buj.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
+
+                     return true;
                   }))
       );
    }

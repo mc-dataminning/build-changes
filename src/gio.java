@@ -1,16 +1,23 @@
-public class gio extends gid<ceh, fth<ceh>> {
-   private static final akh a = new akh("textures/entity/bear/polarbear.png");
+public class gio extends giz<ceq, ftl<ceq>> {
+   private static final akm a = new akm("textures/entity/iron_golem/iron_golem.png");
 
-   public gio(ggx.a $$0) {
-      super($$0, new fth<>($$0.a(fva.ba)), 0.9F);
+   public gio(ght.a $$0) {
+      super($$0, new ftl<>($$0.a(fvv.av)), 0.7F);
+      this.a(new glw(this));
+      this.a(new glx(this, $$0.c()));
    }
 
-   public akh a(ceh $$0) {
+   public akm a(ceq $$0) {
       return a;
    }
 
-   protected void a(ceh $$0, exx $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   protected void a(ceq $$0, eys $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!((double)$$0.aV.a() < 0.01)) {
+         float $$6 = 13.0F;
+         float $$7 = $$0.aV.c($$4) + 6.0F;
+         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$8));
+      }
    }
 }

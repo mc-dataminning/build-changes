@@ -1,83 +1,77 @@
-public class fyd extends gac {
-   fyd(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+
+public class fyd implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fyd.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(io $$0, drb $$1, gbm $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fyd.a(this.b, $$1, $$2.dn()));
+   }
+
+   public boolean a(io $$0, drb $$1) {
+      fyd.a $$2 = (fyd.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, fwr $$1) {
+      ObjectIterator<Entry<fyd.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<fyd.a> $$3 = (Entry<fyd.a>)$$2.next();
+         fyd.a $$4 = (fyd.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            io $$5 = io.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public fyd a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * axz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void close() {
+      this.c = false;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+   public int b() {
+      return this.b;
    }
 
-   @Override
-   public fzg b() {
-      return fzg.b;
+   public boolean c() {
+      return this.c;
    }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
+   static class a {
+      final euk a;
+      int b;
+      drb c;
 
-      public a(fzx $$0) {
-         this.a = $$0;
+      a(int $$0, drb $$1, euk $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyd $$8 = new fyd($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fzf<la> {
-      private final fzx a;
-
-      public b(fzx $$0) {
-         this.a = $$0;
+      fyd.a a(int $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyd $$8 = new fyd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements fzf<la> {
-      private final fzx a;
-
-      public c(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyd $$8 = new fyd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      void a(drb $$0) {
+         this.c = $$0;
       }
    }
 }

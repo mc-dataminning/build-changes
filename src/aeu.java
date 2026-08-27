@@ -1,45 +1,52 @@
-public class aeu implements zb<abm> {
-   public static final ys<vu, aeu> a = zb.a(aeu::a, aeu::new);
-   private final float b;
-   private final int c;
-   private final int d;
+import java.util.ArrayList;
+import java.util.List;
 
-   public aeu(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record aeu(int c, List<ajv.c<?>> d) implements ze<abq> {
+   public static final yv<wi, aeu> a = ze.a(aeu::b, aeu::new);
+   public static final int b = 255;
+
+   private aeu(wi $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private aeu(vu $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private static void a(List<ajv.c<?>> $$0, wi $$1) {
+      for (ajv.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
+   private static List<ajv.c<?>> a(wi $$0) {
+      List<ajv.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(ajv.c.a($$0, $$2));
+      }
+
+      return $$1;
+   }
+
+   private void b(wi $$0) {
       $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zd<aeu> a() {
-      return afx.aG;
+   public zg<aeu> a() {
+      return agb.aC;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public int f() {
+   public List<ajv.c<?>> e() {
       return this.d;
    }
 }

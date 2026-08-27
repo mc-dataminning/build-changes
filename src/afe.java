@@ -1,45 +1,20 @@
-public class afe implements zb<abm> {
-   public static final ys<vu, afe> a = zb.a(afe::a, afe::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public record afe(int b) implements ze<abq> {
+   public static final yv<vx, afe> a = ze.a(afe::a, afe::new);
 
-   public afe(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private afe(vx $$0) {
+      this($$0.l());
    }
 
-   private afe(vu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
-   }
-
-   private void a(vu $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<afe> a() {
-      return afx.aQ;
+   public zg<afe> a() {
+      return agb.aM;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

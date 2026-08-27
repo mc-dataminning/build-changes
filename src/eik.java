@@ -1,52 +1,61 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eik extends ego {
-   public static final Codec<eik> d = a(eik::new);
+public class eik extends eiq {
+   public static final MapCodec<eik> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(egn.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, eik::new)
+   );
+   private final ix<egn> b;
+   private final ud c;
 
-   public eik(egp.c $$0) {
-      super(eij::new, 21, 21, $$0);
+   protected eik(ix<egn> $$0, eis.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
+   }
+
+   private ud b() {
+      ud $$0 = new ud();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dpg.a.a.c());
+      return $$0;
    }
 
    @Override
-   public void a(day $$0, daw $$1, dse $$2, ayg $$3, egh $$4, czk $$5, ehe $$6) {
-      Set<in> $$7 = ayq.a(jr::i);
-
-      for (egt $$8 : $$6.c()) {
-         if ($$8 instanceof eij $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
-         }
-      }
-
-      ObjectArrayList<in> $$10 = new ObjectArrayList($$7.stream().toList());
-      ayg $$11 = ayg.a($$0.C()).e().a($$6.b().g());
-      ac.c($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
-
-      while (var12.hasNext()) {
-         in $$13 = (in)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, ddg.I.n(), 2);
-         }
-      }
-   }
-
-   private static void a(egh $$0, day $$1, in $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, ddg.J.n(), 2);
-         $$1.a($$2, dno.N).ifPresent($$1x -> $$1x.a(eoj.aU, $$2.a()));
-      }
+   public js a(elk $$0, dkl $$1) {
+      return js.g;
    }
 
    @Override
-   public egy<?> e() {
-      return egy.b;
+   public List<elj.c> a(elk $$0, io $$1, dkl $$2, ayk $$3) {
+      List<elj.c> $$4 = Lists.newArrayList();
+      $$4.add(new elj.c($$1, dea.pb.n().a(dia.b, iv.a(it.a, it.d)), this.c));
+      return $$4;
+   }
+
+   @Override
+   public ehb a(elk $$0, io $$1, dkl $$2) {
+      js $$3 = this.a($$0, $$2);
+      return new ehb($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(elk $$0, dbs $$1, dbq $$2, dsy $$3, io $$4, io $$5, dkl $$6, ehb $$7, ayk $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public eir<?> a() {
+      return eir.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

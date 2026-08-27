@@ -1,118 +1,139 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class bsv extends bru {
+   private static final int c = 60;
+   private static final int d = 120;
+   private static final String e = "spawn_item_after_ticks";
+   private static final String f = "item";
+   private static final ajr<cto> g = ajv.a(bsv.class, ajt.h);
+   public static final int b = 36;
+   private long h;
 
-public class bsv {
-   private static final Map<brn<?>, bsv.a> a = Maps.newHashMap();
+   public bsv(bsa<? extends bsv> $$0, dax $$1) {
+      super($$0, $$1);
+      this.ag = true;
+   }
 
-   private static <T extends bsc> void a(brn<T> $$0, bst $$1, dvz.a $$2, bsv.b<T> $$3) {
-      bsv.a $$4 = a.put($$0, new bsv.a($$2, $$1, $$3));
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration for type " + ld.g.b($$0));
+   public static bsv a(dax $$0, cto $$1) {
+      bsv $$2 = new bsv(bsa.aj, $$0);
+      $$2.h = (long)$$0.z.a(60, 120);
+      $$2.a($$1);
+      return $$2;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dP().B) {
+         this.v();
+      } else {
+         this.u();
       }
    }
 
-   public static bst a(brn<?> $$0) {
-      bsv.a $$1 = a.get($$0);
-      return $$1 == null ? bsu.a : $$1.b;
+   private void u() {
+      if ((long)this.ai == this.h - 36L) {
+         this.dP().a(null, this.dp(), avh.md, avi.g);
+      }
+
+      if ((long)this.ai >= this.h) {
+         this.w();
+         this.an();
+      }
    }
 
-   public static boolean a(brn<?> $$0, dag $$1, in $$2) {
-      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
+   private void v() {
+      if (this.dP().Y() % 5L == 0L) {
+         this.p();
+      }
    }
 
-   public static dvz.a b(@Nullable brn<?> $$0) {
-      bsv.a $$1 = a.get($$0);
-      return $$1 == null ? dvz.a.f : $$1.a;
+   private void w() {
+      dax $$0 = this.dP();
+      cto $$1 = this.s();
+      if (!$$1.e()) {
+         bru $$6;
+         if ($$1.g() instanceof cug $$2) {
+            it $$3 = it.a;
+            cmo $$4 = $$2.a($$0, this.dn(), $$1, $$3);
+            cug.a $$5 = $$2.c();
+            $$2.a($$4, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), $$5.d(), $$5.c());
+            $$5.e().ifPresent($$1x -> $$0.c($$1x, this.dp(), 0));
+            $$6 = $$4;
+         } else {
+            $$6 = new cig($$0, this.du(), this.dw(), this.dA(), $$1);
+         }
+
+         $$0.b($$6);
+         $$0.c(3021, this.dp(), 1);
+         $$0.a($$6, dvu.t, this.dn());
+         this.a(cto.i);
+      }
    }
 
-   public static <T extends brh> boolean a(brn<T> $$0, das $$1, bse $$2, in $$3, ayg $$4) {
-      bsv.a $$5 = a.get($$0);
-      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
+   @Override
+   protected void a(ajv.a $$0) {
+      $$0.a(g, cto.i);
    }
 
-   static {
-      a(brn.f, bsu.b, dvz.a.f, cfb::a);
-      a(brn.u, bsu.b, dvz.a.f, cer::c);
-      a(brn.y, bsu.b, dvz.a.f, cer::c);
-      a(brn.B, bsu.b, dvz.a.f, cib::a);
-      a(brn.Y, bsu.b, dvz.a.f, cij::b);
-      a(brn.aE, bsu.b, dvz.a.f, cer::c);
-      a(brn.aH, bsu.b, dvz.a.f, cer::c);
-      a(brn.aW, bsu.b, dvz.a.f, cer::c);
-      a(brn.bf, bsu.b, dvz.a.f, cep::b);
-      a(brn.c, bsu.d, dvz.a.f, cey::c);
-      a(brn.g, bsu.d, dvz.a.f, cdk::b);
-      a(brn.i, bsu.d, dvz.a.f, cin::c);
-      a(brn.l, bsu.d, dvz.a.f, cin::b);
-      a(brn.q, bsu.d, dvz.a.f, cin::b);
-      a(brn.t, bsu.d, dvz.a.f, cdp::b);
-      a(brn.w, bsu.d, dvz.a.f, cdp::b);
-      a(brn.x, bsu.d, dvz.a.f, cin::b);
-      a(brn.z, bsu.d, dvz.a.f, cdp::b);
-      a(brn.H, bsu.d, dvz.a.f, cin::b);
-      a(brn.I, bsu.d, dvz.a.f, cie::b);
-      a(brn.F, bsu.d, dvz.a.f, bsc::a);
-      a(brn.R, bsu.d, dvz.a.f, cfj::c);
-      a(brn.T, bsu.d, dvz.a.f, cih::b);
-      a(brn.U, bsu.d, dvz.a.f, cin::b);
-      a(brn.W, bsu.b, dvz.a.f, brs::a);
-      a(brn.X, bsu.d, dvz.a.f, cfp::c);
-      a(brn.ab, bsu.d, dvz.a.f, cdp::b);
-      a(brn.ac, bsu.d, dvz.a.f, cik::a);
-      a(brn.af, bsu.d, dvz.a.f, bsc::a);
-      a(brn.am, bsu.d, dvz.a.f, cdp::b);
-      a(brn.ao, bsu.d, dvz.a.f, cim::b);
-      a(brn.ar, bsu.d, dvz.a.f, cec::c);
-      a(brn.as, bsu.d, dvz.a.f, cdp::b);
-      a(brn.at, bsu.d, dvz.a.e, ced::c);
-      a(brn.aw, bsu.d, dvz.a.e, cef::c);
-      a(brn.ay, bsu.d, dvz.a.f, cdp::b);
-      a(brn.Z, bsu.d, dvz.a.f, cjr::c);
-      a(brn.az, bsu.d, dvz.a.f, cjx::b);
-      a(brn.aB, bsu.d, dvz.a.f, cio::b);
-      a(brn.aC, bsu.d, dvz.a.f, ceh::c);
-      a(brn.aF, bsu.d, dvz.a.f, cej::c);
-      a(brn.aI, bsu.d, dvz.a.f, cdp::b);
-      a(brn.aL, bsu.d, dvz.a.f, ciu::b);
-      a(brn.aM, bsu.d, dvz.a.f, cin::b);
-      a(brn.aN, bsu.d, dvz.a.f, cfz::c);
-      a(brn.aO, bsu.d, dvz.a.f, ciw::c);
-      a(brn.aR, bsu.d, dvz.a.f, bsc::a);
-      a(brn.aV, bsu.d, dvz.a.f, cin::b);
-      a(brn.aX, bsu.d, dvz.a.f, ciz::a);
-      a(brn.aY, bsu.c, dvz.a.f, cja::c);
-      a(brn.bg, bsu.d, dvz.a.f, ceq::c);
-      a(brn.bi, bsu.d, dvz.a.f, bsc::a);
-      a(brn.bn, bsu.d, dvz.a.f, cin::b);
-      a(brn.bo, bsu.d, dvz.a.f, cin::b);
-      a(brn.bp, bsu.d, dvz.a.f, cin::b);
-      a(brn.br, bsu.d, dvz.a.f, ces::c);
-      a(brn.bt, bsu.d, dvz.a.f, cin::b);
-      a(brn.bu, bsu.d, dvz.a.f, cgd::c);
-      a(brn.bw, bsu.d, dvz.a.f, cji::b);
-      a(brn.bv, bsu.d, dvz.a.f, cin::b);
-      a(brn.p, bsu.d, dvz.a.f, cdp::b);
-      a(brn.D, bsu.b, dvz.a.f, cij::b);
-      a(brn.J, bsu.a, dvz.a.f, cin::b);
-      a(brn.Q, bsu.a, dvz.a.f, cdz::c);
-      a(brn.ad, bsu.a, dvz.a.f, cin::b);
-      a(brn.av, bsu.a, dvz.a.f, cdp::b);
-      a(brn.ax, bsu.a, dvz.a.f, bsc::a);
-      a(brn.aG, bsu.d, dvz.a.f, cin::b);
-      a(brn.aJ, bsu.a, dvz.a.f, bsc::a);
-      a(brn.bd, bsu.a, dvz.a.f, cdp::b);
-      a(brn.bh, bsu.a, dvz.a.f, cin::b);
-      a(brn.bj, bsu.a, dvz.a.f, cin::b);
-      a(brn.bk, bsu.d, dvz.a.f, bsc::a);
-      a(brn.bl, bsu.a, dvz.a.f, bsc::a);
+   @Override
+   protected void a(ud $$0) {
+      cto $$1 = $$0.b("item", 10) ? cto.a(this.dR(), (va)$$0.p("item")).orElse(cto.i) : cto.i;
+      this.a($$1);
+      $$0.i("spawn_item_after_ticks");
    }
 
-   static record a(dvz.a a, bst b, bsv.b<?> c) {
+   @Override
+   protected void b(ud $$0) {
+      if (!this.s().e()) {
+         $$0.a("item", this.s().a(this.dR()).d());
+      }
+
+      $$0.a("spawn_item_after_ticks", this.h);
    }
 
-   @FunctionalInterface
-   public interface b<T extends brh> {
-      boolean test(brn<T> var1, das var2, bse var3, in var4, ayg var5);
+   @Override
+   protected boolean r(bru $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bJ() {
+      return false;
+   }
+
+   @Override
+   protected void p(bru $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public emz k_() {
+      return emz.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
+   }
+
+   public void p() {
+      euk $$0 = this.dn();
+      int $$1 = this.ah.a(1, 3);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         double $$3 = 0.4;
+         euk $$4 = new euk(
+            this.du() + 0.4 * (this.ah.k() - this.ah.k()), this.dw() + 0.4 * (this.ah.k() - this.ah.k()), this.dA() + 0.4 * (this.ah.k() - this.ah.k())
+         );
+         euk $$5 = $$0.a($$4);
+         this.dP().a(ky.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
+      }
+   }
+
+   public cto s() {
+      return this.ap().a(g);
+   }
+
+   private void a(cto $$0) {
+      this.ap().a(g, $$0);
    }
 }

@@ -1,77 +1,9 @@
-public class cox extends cod {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bpf p;
-
-   public cox(int $$0, clg $$1) {
-      this($$0, $$1, new bpv(9));
+public class cox extends cou {
+   public cox(int $$0, clv $$1) {
+      super(cqa.k, cxz.c, cqh.c, $$0, $$1);
    }
 
-   public cox(int $$0, clg $$1, bpf $$2) {
-      super(cpl.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.l);
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new cpz($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cpz($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cpz($$1, $$7, 8 + $$7 * 18, 142));
-      }
-   }
-
-   @Override
-   public boolean a(clh $$0) {
-      return this.p.a($$0);
-   }
-
-   @Override
-   public csz a(clh $$0, int $$1) {
-      csz $$2 = csz.i;
-      cpz $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         csz $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return csz.i;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return csz.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(csz.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.G() == $$2.G()) {
-            return csz.i;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void b(clh $$0) {
-      super.b($$0);
-      this.p.c($$0);
+   public cox(int $$0, clv $$1, bpn $$2, cpd $$3) {
+      super(cqa.k, cxz.c, cqh.c, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,37 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.concurrent.Immutable;
 
+@Immutable
 public class bps {
-   public static final Codec<bps> a = RecordCodecBuilder.create($$0 -> $$0.group(dxa.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bps::new));
-   private final dxa b;
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bpr d;
+   private final float e;
 
-   public bps(dxa $$0) {
-      this.b = $$0;
+   public bps(bpr $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public bps(long $$0, akh $$1) {
-      this(a($$0, Optional.of($$1)));
+   public bpr a() {
+      return this.d;
    }
 
-   public bps(long $$0, Optional<akh> $$1) {
-      this(a($$0, $$1));
+   public float b() {
+      return this.e;
    }
 
-   private static dxa a(long $$0, Optional<akh> $$1) {
-      dwo.a $$2 = dwo.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public boolean c() {
+      return this.e >= (float)bpr.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
-
-      return new dxa($$2.a());
    }
 
-   public static dwo.a a(akh $$0) {
-      return dwo.a($$0.toString());
-   }
+   private float a(bpr $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bpr.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bpr.d;
+         float $$5 = 0.75F;
+         float $$6 = ayd.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += ayd.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += ayd.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bpr.b) {
+            $$7 *= 0.5F;
+         }
 
-   public ayg a() {
-      return this.b;
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

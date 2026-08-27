@@ -1,9 +1,15 @@
-public interface dpe {
-   void a();
+public interface dpe extends bpn {
+   euf p_ = ddy.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
 
-   boolean b();
+   default euf ai_() {
+      return p_;
+   }
 
-   in c();
+   double H();
 
-   String d();
+   double I();
+
+   double J();
+
+   boolean K();
 }

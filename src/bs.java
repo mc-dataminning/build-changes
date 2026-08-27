@@ -1,11 +1,12 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public interface bs {
-   Codec<bs> a = ld.at.q().dispatch(bs::a, MapCodec::codec);
+   Codec<bs> a = le.at.q().dispatch(bs::a, Function.identity());
 
    MapCodec<? extends bs> a();
 
-   boolean a(brh var1, aqh var2, @Nullable etp var3);
+   boolean a(bru var1, aqm var2, @Nullable euk var3);
 }

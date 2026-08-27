@@ -1,7 +1,52 @@
-public class va {
-   private static final uz<?>[] a = new uz[]{uc.a, ty.a, us.a, uf.a, ui.a, ud.b, ub.b, tx.a, uv.a, ug.a, ua.b, ue.a, uh.a};
+import java.io.DataOutput;
+import java.io.IOException;
 
-   public static uz<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : uz.a($$0);
+public interface va {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
+
+   void a(DataOutput var1) throws IOException;
+
+   @Override
+   String toString();
+
+   byte b();
+
+   vc<?> c();
+
+   va d();
+
+   int a();
+
+   default String s_() {
+      return new uz().a(this);
+   }
+
+   void a(ve var1);
+
+   ux.b a(ux var1);
+
+   default void b(ux $$0) {
+      ux.b $$1 = $$0.b(this.c());
+      if ($$1 == ux.b.a) {
+         this.a($$0);
+      }
    }
 }

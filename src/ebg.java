@@ -1,32 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ebg implements ebh {
-   public static final Codec<ebg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(in.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ebg::new)
-   );
-   private final Optional<in> b;
-   private final boolean c;
-
-   private ebg(Optional<in> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ebg extends dzx<eci> {
+   public ebg(Codec<eci> $$0) {
+      super($$0);
    }
 
-   public static ebg a(in $$0, boolean $$1) {
-      return new ebg(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(dzz<eci> $$0) {
+      dbs $$1 = $$0.b();
+      io $$2 = $$0.e();
+      io.a $$3 = new io.a();
+      io.a $$4 = new io.a();
 
-   public static ebg a() {
-      return new ebg(Optional.empty(), false);
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dwt.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(it.a, 1);
+            dbw $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dea.dO.n(), 2);
+            }
 
-   public Optional<in> b() {
-      return this.b;
-   }
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dea.dN.n(), 2);
+               drb $$11 = $$1.a_($$4);
+               if ($$11.b(dli.c)) {
+                  $$1.a($$4, $$11.a(dli.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
 
-   public boolean c() {
-      return this.c;
+      return true;
    }
 }

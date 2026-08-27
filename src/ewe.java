@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@evq
-@evp
-interface ewe {
+public interface ewe<T> extends ewd<T> {
 }

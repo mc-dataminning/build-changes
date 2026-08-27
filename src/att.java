@@ -1,71 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface att {
-   att a = new att() {
-      @Override
-      public <T> Optional<T> a(asq<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   atj<att> b = () -> a;
+public class att implements atw, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private atm c;
+   private final List<atq> d = Lists.newArrayList();
+   private final ask e;
 
-   static att a(InputStream $$0) throws IOException {
-      att var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = axp.a($$1);
-         var3 = new att() {
-            @Override
-            public <T> Optional<T> a(asq<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(axp.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public att(ask $$0) {
+      this.e = $$0;
+      this.c = new atp($$0, List.of());
    }
 
-   <T> Optional<T> a(asq<T> var1);
-
-   default att a(Collection<asq<?>> $$0) {
-      att.a $$1 = new att.a();
-
-      for (asq<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   private <T> void a(att.a $$0, asq<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   public void a(atq $$0) {
+      this.d.add($$0);
    }
 
-   public static class a {
-      private final Builder<asq<?>, Object> a = ImmutableMap.builder();
+   public ats a(Executor $$0, Executor $$1, CompletableFuture<azf> $$2, List<asi> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(asi::b).collect(Collectors.joining(", "))));
+      this.c.close();
+      this.c = new atp(this.e, $$3);
+      return auc.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-      public <T> att.a a(asq<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+   @Override
+   public Optional<atu> getResource(akm $$0) {
+      return this.c.getResource($$0);
+   }
 
-      public att a() {
-         final ImmutableMap<asq<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? att.a : new att() {
-            @Override
-            public <T> Optional<T> a(asq<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   @Override
+   public Set<String> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public List<atu> a(akm $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public Map<akm, atu> b(String $$0, Predicate<akm> $$1) {
+      return this.c.b($$0, $$1);
+   }
+
+   @Override
+   public Map<akm, List<atu>> c(String $$0, Predicate<akm> $$1) {
+      return this.c.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<asi> b() {
+      return this.c.b();
    }
 }

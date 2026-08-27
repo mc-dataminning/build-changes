@@ -1,104 +1,151 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
 import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import javax.annotation.Nullable;
 
-public record fij(akh c, float d, float e, fij.a f, String g) implements fig {
-   private static final Codec<String> h = axh.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fij> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akh.a.fieldOf("file").forGetter(fij::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fij::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fij::e),
-               fij.a.b.optionalFieldOf("shift", fij.a.a).forGetter(fij::f),
-               h.optionalFieldOf("skip", "").forGetter(fij::g)
-            )
-            .apply($$0, fij::new)
-   );
+public class fij {
+   private static final int a = 5;
+   private static final int b = -1;
+   final fdz c;
+   private final List<fij.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fii> f = Queues.newArrayDeque();
 
-   @Override
-   public fih a() {
-      return fih.b;
+   public fij(fdz $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public Either<fig.b, fig.c> b() {
-      return Either.left(this::a);
-   }
-
-   private ewa a(atr $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
-
-      try {
-         ewd var14;
-         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            MemoryStack $$4 = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer $$5 = $$4.mallocPointer(1);
-               fif.a(FreeType.FT_New_Memory_Face(fif.a(), $$2, 0L, $$5), "Initializing font face");
-               $$1 = FT_Face.create($$5.get());
-            } catch (Throwable var10) {
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (Throwable var9) {
-                     var10.addSuppressed(var9);
-                  }
+   public void a(ffm $$0) {
+      if (!this.c.m.Z) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new fij.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
                }
-
-               throw var10;
-            }
-
-            if ($$4 != null) {
-               $$4.close();
-            }
-
-            String $$6 = FreeType.FT_Get_Font_Format($$1);
-            if (!"TrueType".equals($$6)) {
-               throw new IOException("Font is not in TTF format, was " + $$6);
-            }
-
-            fif.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-            var14 = new ewd($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            });
          }
-
-         return var14;
-      } catch (Exception var12) {
-         if ($$1 != null) {
-            FreeType.FT_Done_Face($$1);
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var12;
       }
    }
 
-   public static record a(float c, float d) {
-      public static final fij.a a = new fij.a(0.0F, 0.0F);
-      public static final Codec<fij.a> b = Codec.FLOAT
-         .listOf()
-         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fij.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
 
-      public float a() {
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
+   }
+
+   private int d() {
+      return 5 - this.e.cardinality();
+   }
+
+   @Nullable
+   public <T extends fii> T a(Class<? extends T> $$0, Object $$1) {
+      for (fij.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (fii $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fii $$0) {
+      this.f.add($$0);
+   }
+
+   public fdz b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.B().c();
+   }
+
+   class a<T extends fii> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fii.a h = fii.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
          return this.c;
       }
 
-      public float b() {
-         return this.d;
+      private float a(long $$0) {
+         float $$1 = ayd.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == fii.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, ffm $$1) {
+         long $$2 = ac.c();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(fij.this.c.ak());
+         }
+
+         if (this.h == fii.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
+
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         fii.a $$3 = this.c.a($$1, fij.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(fij.this.c.ak());
+         }
+
+         return this.h == fii.a.b && $$2 - this.f > 600L;
       }
    }
 }

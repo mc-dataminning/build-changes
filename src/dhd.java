@@ -1,69 +1,87 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class dhd extends dde {
-   public static final MapCodec<dhd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ld.e.q().fieldOf("host").forGetter(dhd::b), u()).apply($$0, dhd::new));
-   private final dde b;
-   private static final Map<dde, dde> c = Maps.newIdentityHashMap();
-   private static final Map<dqh, dqh> d = Maps.newIdentityHashMap();
-   private static final Map<dqh, dqh> e = Maps.newIdentityHashMap();
+public class dhd extends dhw {
+   public static final MapCodec<dhd> a = b(dhd::new);
+   public static final int b = 3;
+   public static final dsb c = drr.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
-   public MapCodec<? extends dhd> a() {
+   public MapCodec<dhd> a() {
       return a;
    }
 
-   public dhd(dde $$0, dqg.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dhd(dra.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
-   public dde b() {
-      return this.b;
+   @Override
+   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
-   public static boolean m(dqh $$0) {
-      return c.containsKey($$0.b());
+   @Override
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         io.a $$4 = new io.a();
+
+         for (it $$5 : it.values()) {
+            $$4.a($$2, $$5);
+            drb $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, ayd.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, ayd.a($$3, 20, 40));
+      }
    }
 
-   private void a(aqh $$0, in $$1) {
-      ciu $$2 = brn.aL.a((dad)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.Q();
+   private boolean e(drb $$0, dax $$1, io $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, csz $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.aa().b(czz.h) && cyh.a(cyj.v, $$3) == 0) {
-         this.a($$1, $$2);
+   protected void a(drb $$0, dax $$1, io $$2, ddy $$3, io $$4, boolean $$5) {
+      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static dqh n(dqh $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).n());
-   }
+   private boolean a(dad $$0, io $$1, int $$2) {
+      int $$3 = 0;
+      io.a $$4 = new io.a();
 
-   public dqh o(dqh $$0) {
-      return a(e, $$0, () -> this.b().n());
-   }
-
-   private static dqh a(Map<dqh, dqh> $$0, dqh $$1, Supplier<dqh> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dqh $$2x = $$2.get();
-
-         for (drk $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+      for (it $$5 : it.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
          }
+      }
 
-         return $$2x;
-      });
+      return true;
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public cto a(dba $$0, io $$1, drb $$2) {
+      return cto.i;
    }
 }

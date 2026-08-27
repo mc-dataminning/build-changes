@@ -1,95 +1,108 @@
-public abstract class byo extends byx {
-   protected bsc d;
-   protected in e = in.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.Optional;
 
-   public byo(bsc $$0) {
-      this.d = $$0;
-      if (!ccv.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class byo implements byl {
+   protected final bsq a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
+
+   public byo(bsq $$0) {
+      this.a = $$0;
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
+   public void a(euk $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public void a(bru $$0) {
+      this.a($$0.du(), b($$0), $$0.dA());
+   }
+
+   public void a(bru $$0, float $$1, float $$2) {
+      this.a($$0.du(), b($$0), $$0.dA(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ad(), (float)this.a.Z());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.bb = this.a(this.a.bb, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dH(), $$0, this.c)));
       } else {
-         dqh $$0 = this.d.dN().a_(this.e);
-         if (!($$0.b() instanceof dfk)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(dfk.c);
-         }
+         this.a.bb = this.a(this.a.bb, this.a.aZ, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.K().l()) {
+         this.a.bb = ayd.c(this.a.bb, this.a.aZ, (float)this.a.aa());
       }
    }
 
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dqh $$1 = this.d.dN().a_(this.e);
-         if ($$1.b() instanceof dfk) {
-            ((dfk)$$1.b()).a(this.d, this.d.dN(), $$1, this.e, $$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean a() {
-      if (!ccv.a(this.d)) {
-         return false;
-      } else if (!this.d.Q) {
-         return false;
-      } else {
-         cbk $$0 = (cbk)this.d.K();
-         emo $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               emm $$3 = $$1.a($$2);
-               this.e = new in($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.du(), (double)this.e.w()) > 2.25)) {
-                  this.f = dfk.a(this.d.dN(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dn().c();
-            this.f = dfk.a(this.d.dN(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a;
-   }
-
-   @Override
-   public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.ds());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dy());
-   }
-
-   @Override
-   public boolean R_() {
+   protected boolean c() {
       return true;
    }
 
-   @Override
-   public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.ds());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dy());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
-      }
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.du();
+      double $$1 = this.f - this.a.dy();
+      double $$2 = this.g - this.a.dA();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(ayd.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.du();
+      double $$1 = this.g - this.a.dA();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(ayd.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = ayd.c($$0, $$1);
+      float $$4 = ayd.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bru $$0) {
+      return $$0 instanceof bso ? $$0.dy() : ($$0.cK().b + $$0.cK().e) / 2.0;
    }
 }

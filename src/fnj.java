@@ -1,33 +1,99 @@
-public class fnj extends ffe {
-   private static final akh a = new akh("widget/page_forward_highlighted");
-   private static final akh b = new akh("widget/page_forward");
-   private static final akh c = new akh("widget/page_backward_highlighted");
-   private static final akh d = new akh("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public class fnj extends fmw<cpk> implements fps {
+   private static final akm D = new akm("textures/gui/container/crafting_table.png");
+   private final fpm E = new fpm();
+   private boolean F;
 
-   public fnj(int $$0, int $$1, boolean $$2, ffe.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wt.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   public fnj(cpk $$0, clv $$1, wx $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      akh $$4;
-      if (this.u) {
-         $$4 = this.A() ? a : b;
+   protected void aM_() {
+      super.aM_();
+      this.F = this.n < 379;
+      this.E.a(this.n, this.o, this.m, this.F, this.w);
+      this.z = this.E.a(this.n, this.c);
+      this.c(new fgl(this.z + 5, this.o / 2 - 49, 20, 18, fpm.a, $$0 -> {
+         this.E.e();
+         this.z = this.E.a(this.n, this.c);
+         $$0.c(this.z + 5, this.o / 2 - 49);
+      }));
+      this.d(this.E);
+      this.r = 29;
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      this.E.h();
+   }
+
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      if (this.E.f() && this.F) {
+         this.b($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
       } else {
-         $$4 = this.A() ? c : d;
+         super.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, this.z, this.A, true, $$3);
       }
 
-      $$0.a($$4, this.C(), this.D(), 23, 13);
+      this.a($$0, $$1, $$2);
+      this.E.a($$0, this.z, this.A, $$1, $$2);
    }
 
    @Override
-   public void a(grq $$0) {
-      if (this.v) {
-         $$0.a(gqh.a(avc.cy, 1.0F));
+   protected void a(ffm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E.a($$0, $$1, $$2)) {
+         this.a(this.E);
+         return true;
+      } else {
+         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cqo $$0, int $$1, int $$2, cpc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E.a($$0);
+   }
+
+   @Override
+   public void E() {
+      this.E.i();
+   }
+
+   @Override
+   public fpm F() {
+      return this.E;
    }
 }

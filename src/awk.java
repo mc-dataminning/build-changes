@@ -1,11 +1,17 @@
-public class awk {
-   public static final awg<ege> a = a("normal");
-   public static final awg<ege> b = a("extended");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private awk() {
+public record awk(List<awj> b, boolean c) {
+   public static final Codec<awk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awj.a.listOf().fieldOf("values").forGetter(awk::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(awk::b)).apply($$0, awk::new)
+   );
+
+   public List<awj> a() {
+      return this.b;
    }
 
-   private static awg<ege> a(String $$0) {
-      return awg.a(le.aQ, new akh($$0));
+   public boolean b() {
+      return this.c;
    }
 }

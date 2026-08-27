@@ -1,76 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlb extends dde {
+public class dlb extends ddy implements dkz {
    public static final MapCodec<dlb> a = b(dlb::new);
-   private static final wu d = wu.c("container.stonecutter");
-   public static final drb b = dha.aE;
-   protected static final eui c = dde.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final drz<dsj> b = drr.bh;
+   public static final drs c = drr.C;
+   protected static final evd d = ddy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final evd e = ddy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dlb> a() {
+   public MapCodec<? extends dlb> a() {
       return a;
    }
 
-   public dlb(dqg.d $$0) {
+   public dlb(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, is.c));
+      this.k(this.n().a(b, dsj.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      return this.n().a(b, $$0.g().g());
+   protected boolean f_(drb $$0) {
+      return $$0.c(b) != dsj.c;
    }
 
    @Override
-   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
-      if ($$1.B) {
-         return bpm.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avm.ay);
-         return bpm.b;
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      dsj $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return eva.b();
+         case a:
+            return e;
+         default:
+            return d;
       }
    }
 
    @Nullable
    @Override
-   protected bpq b(dqh $$0, dad $$1, in $$2) {
-      return new bpw(($$2x, $$3, $$4) -> new cqf($$2x, $$3, cop.a($$1, $$2)), d);
+   public drb a(cwz $$0) {
+      io $$1 = $$0.a();
+      drb $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, dsj.c).a(c, Boolean.valueOf(false));
+      } else {
+         emu $$3 = $$0.q().b_($$1);
+         drb $$4 = this.n().a(b, dsj.b).a(c, Boolean.valueOf($$3.a() == emv.c));
+         it $$5 = $$0.k();
+         return $$5 != it.a && ($$5 == it.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dsj.a);
+      }
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return c;
+   protected boolean a(drb $$0, cwz $$1) {
+      cto $$2 = $$1.n();
+      dsj $$3 = $$0.c(b);
+      if ($$3 == dsj.c || !$$2.a(this.q())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         it $$5 = $$1.k();
+         return $$3 == dsj.b ? $$5 == it.b || $$4 && $$5.o().d() : $$5 == it.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
    }
 
    @Override
-   protected boolean f_(dqh $$0) {
-      return true;
+   protected emu b_(drb $$0) {
+      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected djk a_(dqh $$0) {
-      return djk.c;
+   public boolean a(day $$0, io $$1, drb $$2, emu $$3) {
+      return $$2.c(b) != dsj.c ? dkz.super.a($$0, $$1, $$2, $$3) : false;
    }
 
    @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public boolean a(@Nullable clw $$0, dad $$1, io $$2, drb $$3, emt $$4) {
+      return $$3.c(b) != dsj.c ? dkz.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
    @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
+   protected boolean a(drb $$0, enj $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.u().a(awb.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

@@ -1,61 +1,172 @@
-public class ftw<T extends bsc & cir> extends fso<T> {
-   public ftw(fvb $$0) {
-      super($$0);
+public class ftw extends ftf<ceu> {
+   private static final String a = "feather";
+   private final fvw b;
+   private final fvw f;
+   private final fvw g;
+   private final fvw h;
+   private final fvw i;
+   private final fvw j;
+   private final fvw k;
+   private final fvw l;
+   private final fvw m;
+
+   public ftw(fvw $$0) {
+      this.b = $$0;
+      this.f = $$0.b("body");
+      this.g = $$0.b("tail");
+      this.h = $$0.b("left_wing");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("head");
+      this.k = this.j.b("feather");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("right_leg");
    }
 
-   public static fvh e() {
-      fvj $$0 = fso.a(fvf.a, 0.0F);
-      fvk $$1 = $$0.a();
-      a($$1);
-      return fvh.a($$0, 64, 32);
-   }
-
-   protected static void a(fvk $$0) {
-      $$0.a("right_arm", fvg.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvd.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", fvg.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvd.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", fvg.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvd.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", fvg.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvd.a(2.0F, 12.0F, 0.0F));
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fso.a.a;
-      this.r = fso.a.a;
-      csz $$4 = $$0.b(bpl.a);
-      if ($$4.a(ctc.ou) && $$0.gh()) {
-         if ($$0.fs() == bru.b) {
-            this.s = fso.a.d;
-         } else {
-            this.r = fso.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      csz $$6 = $$0.eV();
-      if ($$0.gh() && ($$6.d() || !$$6.a(ctc.ou))) {
-         float $$7 = axz.a(this.c * (float) Math.PI);
-         float $$8 = axz.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fqy.a(this.n, this.o, $$3);
-      }
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("body", fwb.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), fvy.a(0.0F, 16.5F, -3.0F));
+      $$1.a("tail", fwb.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), fvy.a(0.0F, 21.07F, 1.16F));
+      $$1.a("left_wing", fwb.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fvy.a(1.5F, 16.94F, -2.76F));
+      $$1.a("right_wing", fwb.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fvy.a(-1.5F, 16.94F, -2.76F));
+      fwf $$2 = $$1.a("head", fwb.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), fvy.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", fwb.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), fvy.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", fwb.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), fvy.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", fwb.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), fvy.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", fwb.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), fvy.a(0.0F, -2.15F, 0.15F));
+      fwb $$3 = fwb.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, fvy.a(1.0F, 22.0F, -1.05F));
+      $$1.a("right_leg", $$3, fvy.a(-1.0F, 22.0F, -1.05F));
+      return fwc.a($$0, 32, 32);
    }
 
    @Override
-   public void a(bru $$0, exx $$1) {
-      float $$2 = $$0 == bru.b ? 1.0F : -1.0F;
-      fvb $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fvw a() {
+      return this.b;
+   }
+
+   public void a(ceu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a(a($$0), $$0.ai, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(ceu $$0, float $$1, float $$2, float $$3) {
+      this.a(a($$0));
+   }
+
+   public void a(eys $$0, eyw $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8) {
+      this.a(ftw.a.e);
+      this.a(ftw.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
+      this.b.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(ftw.a $$0, int $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.j.e = $$6 * (float) (Math.PI / 180.0);
+      this.j.f = $$5 * (float) (Math.PI / 180.0);
+      this.j.g = 0.0F;
+      this.j.b = 0.0F;
+      this.f.b = 0.0F;
+      this.g.b = 0.0F;
+      this.i.b = -1.5F;
+      this.h.b = 1.5F;
+      switch ($$0) {
+         case c:
+            break;
+         case d:
+            float $$7 = ayd.b((float)$$1);
+            float $$8 = ayd.a((float)$$1);
+            this.j.b = $$7;
+            this.j.c = 15.69F + $$8;
+            this.j.e = 0.0F;
+            this.j.f = 0.0F;
+            this.j.g = ayd.a((float)$$1) * 0.4F;
+            this.f.b = $$7;
+            this.f.c = 16.5F + $$8;
+            this.h.g = -0.0873F - $$4;
+            this.h.b = 1.5F + $$7;
+            this.h.c = 16.94F + $$8;
+            this.i.g = 0.0873F + $$4;
+            this.i.b = -1.5F + $$7;
+            this.i.c = 16.94F + $$8;
+            this.g.b = $$7;
+            this.g.c = 21.07F + $$8;
+            break;
+         case b:
+            this.l.e = this.l.e + ayd.b($$2 * 0.6662F) * 1.4F * $$3;
+            this.m.e = this.m.e + ayd.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
+         case a:
+         case e:
+         default:
+            float $$9 = $$4 * 0.3F;
+            this.j.c = 15.69F + $$9;
+            this.g.e = 1.015F + ayd.b($$2 * 0.6662F) * 0.3F * $$3;
+            this.g.c = 21.07F + $$9;
+            this.f.c = 16.5F + $$9;
+            this.h.g = -0.0873F - $$4;
+            this.h.c = 16.94F + $$9;
+            this.i.g = 0.0873F + $$4;
+            this.i.c = 16.94F + $$9;
+            this.l.c = 22.0F + $$9;
+            this.m.c = 22.0F + $$9;
+      }
+   }
+
+   private void a(ftw.a $$0) {
+      this.k.e = -0.2214F;
+      this.f.e = 0.4937F;
+      this.h.e = -0.6981F;
+      this.h.f = (float) -Math.PI;
+      this.i.e = -0.6981F;
+      this.i.f = (float) -Math.PI;
+      this.l.e = -0.0299F;
+      this.m.e = -0.0299F;
+      this.l.c = 22.0F;
+      this.m.c = 22.0F;
+      this.l.g = 0.0F;
+      this.m.g = 0.0F;
+      switch ($$0) {
+         case c:
+            float $$1 = 1.9F;
+            this.j.c = 17.59F;
+            this.g.e = 1.5388988F;
+            this.g.c = 22.97F;
+            this.f.c = 18.4F;
+            this.h.g = -0.0873F;
+            this.h.c = 18.84F;
+            this.i.g = 0.0873F;
+            this.i.c = 18.84F;
+            this.l.c++;
+            this.m.c++;
+            this.l.e++;
+            this.m.e++;
+            break;
+         case d:
+            this.l.g = (float) (-Math.PI / 9);
+            this.m.g = (float) (Math.PI / 9);
+         case b:
+         case e:
+         default:
+            break;
+         case a:
+            this.l.e += (float) (Math.PI * 2.0 / 9.0);
+            this.m.e += (float) (Math.PI * 2.0 / 9.0);
+      }
+   }
+
+   private static ftw.a a(ceu $$0) {
+      if ($$0.gw()) {
+         return ftw.a.d;
+      } else if ($$0.y()) {
+         return ftw.a.c;
+      } else {
+         return $$0.gC() ? ftw.a.a : ftw.a.b;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

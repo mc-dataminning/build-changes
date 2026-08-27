@@ -1,43 +1,17 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+public enum vw {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public class vw extends MessageToMessageDecoder<zb<?>> {
-   private final za a;
-   @Nullable
-   private za.a b;
+   private final String f;
 
-   public vw(za $$0) {
-      this.a = $$0;
+   private vw(String $$0) {
+      this.f = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zb<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         zb<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         za.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
-      }
-   }
-
-   private static void a(zb<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
-      }
+   public String a() {
+      return this.f;
    }
 }

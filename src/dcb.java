@@ -1,24 +1,10 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcb extends dde {
-   public static final MapCodec<dcb> a = b(dcb::new);
-
-   @Override
-   public MapCodec<dcb> a() {
-      return a;
-   }
-
-   public dcb(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected djk a_(dqh $$0) {
-      return djk.a;
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return euf.a();
+public class dcb {
+   public static MapCodec<? extends dca> a(jk<MapCodec<? extends dca>> $$0) {
+      jk.a($$0, "fixed", dch.b);
+      jk.a($$0, "multi_noise", dcj.c);
+      jk.a($$0, "checkerboard", dce.b);
+      return jk.a($$0, "the_end", dcn.b);
    }
 }

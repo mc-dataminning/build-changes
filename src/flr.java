@@ -1,38 +1,31 @@
-public enum flr {
-   a(
-      new akh("advancements/box_obtained"),
-      new akh("advancements/task_frame_obtained"),
-      new akh("advancements/challenge_frame_obtained"),
-      new akh("advancements/goal_frame_obtained")
-   ),
-   b(
-      new akh("advancements/box_unobtained"),
-      new akh("advancements/task_frame_unobtained"),
-      new akh("advancements/challenge_frame_unobtained"),
-      new akh("advancements/goal_frame_unobtained")
-   );
+public class flr extends fly {
+   private static final wx a = wx.c("outOfMemory.title");
+   private static final wx b = wx.c("outOfMemory.message");
+   private static final int c = 300;
+   private final fjm d = new fjm(this);
 
-   private final akh c;
-   private final akh d;
-   private final akh e;
-   private final akh f;
-
-   private flr(akh $$0, akh $$1, akh $$2, akh $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public flr() {
+      super(a);
    }
 
-   public akh a() {
-      return this.c;
+   @Override
+   protected void aM_() {
+      this.d.a(a, this.p);
+      this.d.c(new fgk(300, b, this.p));
+      fjq $$0 = this.d.b(fjq.e().a(8));
+      $$0.a(ffz.a(ww.l, $$0x -> this.m.a(new fmd())).a());
+      $$0.a(ffz.a(wx.c("menu.quit"), $$0x -> this.m.q()).a());
+      this.d.a(this::c);
+      this.c();
    }
 
-   public akh a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected void c() {
+      this.d.a();
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

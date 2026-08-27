@@ -1,34 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dix extends dez {
+public class dix extends ddy {
    public static final MapCodec<dix> a = b(dix::new);
-   private static final eui[] b = new eui[]{
-      dde.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dde.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+   protected static final evd b = ddy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<dix> a() {
       return a;
    }
 
-   public dix(dqg.d $$0) {
+   public dix(dra.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dac d() {
-      return ctc.ug;
+   protected evd b(drb $$0, dad $$1, io $$2, eup $$3) {
+      return b;
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return b[this.g($$0)];
+   protected evd b_(drb $$0, dad $$1, io $$2) {
+      return eva.b();
+   }
+
+   @Override
+   protected evd c(drb $$0, dad $$1, io $$2, eup $$3) {
+      return eva.b();
+   }
+
+   @Override
+   protected boolean a(drb $$0, enj $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(drb $$0, dad $$1, io $$2) {
+      return 0.2F;
    }
 }

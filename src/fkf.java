@@ -1,80 +1,101 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import javax.annotation.Nullable;
 
-public class fkf extends fld {
-   private static final wu a = wu.c("addServer.enterName");
-   private static final wu b = wu.c("addServer.enterIp");
-   private ffe c;
-   private final BooleanConsumer d;
-   private final fwk r;
-   private ffn s;
-   private ffn u;
-   private final fld v;
+public record fkf(fke a, int b, int c) {
+   private static final fkf d = new fkf(0, 0, 0, 0);
 
-   public fkf(fld $$0, BooleanConsumer $$1, fwk $$2) {
-      super(wu.c("addServer.title"));
-      this.v = $$0;
-      this.d = $$1;
-      this.r = $$2;
+   public fkf(int $$0, int $$1, int $$2, int $$3) {
+      this(new fke($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void aM_() {
-      this.u = new ffn(this.p, this.n / 2 - 100, 66, 200, 20, wu.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.C());
-      this.d(this.u);
-      this.s = new ffn(this.p, this.n / 2 - 100, 106, 200, 20, wu.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.C());
-      this.d(this.s);
-      this.c(
-         ffl.a(fwk.a::a)
-            .a(fwk.a.values())
-            .a(this.r.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, wu.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
-      );
-      this.c = this.c(ffe.a(wu.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(ffe.a(wt.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.C();
+   public static fkf a() {
+      return d;
    }
 
-   @Override
-   protected void aC_() {
-      this.b(this.u);
+   public static fkf a(fkc $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fkf($$1, $$2, $$3, $$4);
+         case b -> new fkf($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   public void a(fde $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
+   public fkf a(fkd $$0) {
+      return new fkf(this.a.a($$0), this.b, this.c);
    }
 
-   private void m() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.d.accept(true);
+   public int a(fkc $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.v);
+   public int b(fkd $$0) {
+      fkc $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   private void C() {
-      this.c.j = fxn.b(this.s.a()) && !this.u.a().isEmpty();
+   public fkf c(fkd $$0) {
+      int $$1 = this.b($$0);
+      fkc $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+   public boolean a(fkf $$0) {
+      return this.a($$0, fkc.a) && this.a($$0, fkc.b);
+   }
+
+   public boolean a(fkf $$0, fkc $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fkc $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fkf b(fkf $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fkf($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fke f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

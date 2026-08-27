@@ -1,29 +1,63 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public record grv(grz b, gsc c) {
-   public static final Codec<grv> a = grz.a.dispatchStable(grv::a, grz::c);
+public class grv implements atx {
+   public static final grv.a<cto> a = new grv.a<>();
+   public static final grv.a<cto> b = new grv.a<>();
+   public static final grv.a<fpq> c = new grv.a<>();
+   private final Map<grv.a<?>, grv.c<?>> d = new HashMap<>();
 
-   public grv(grz b, gsc c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
+   @Override
+   public void a(atw $$0) {
+      for (grv.c<?> $$1 : this.d.values()) {
+         $$1.a();
+      }
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   public <T> void a(grv.a<T> $$0, grv.b<T> $$1) {
+      this.d.put($$0, new grv.c<>($$1));
    }
 
-   public grz a() {
-      return this.b;
+   private <T> grv.c<T> b(grv.a<T> $$0) {
+      grv.c<T> $$1 = (grv.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
    }
 
-   public gsc b() {
-      return this.c;
+   public <T> void a(grv.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
+   }
+
+   public <T> grw<T> a(grv.a<T> $$0) {
+      return this.b($$0).b;
+   }
+
+   public static class a<T> {
+   }
+
+   public interface b<T> extends Function<List<T>, grt<T>> {
+   }
+
+   static class c<T> {
+      private final grv.b<T> a;
+      grt<T> b = grt.b();
+
+      c(grv.b<T> $$0) {
+         this.a = $$0;
+      }
+
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
+      }
+
+      void a() {
+         this.b.a();
+      }
    }
 }

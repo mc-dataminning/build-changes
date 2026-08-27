@@ -1,24 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edj<P extends edi> {
-   public static final edj<edr> a = a("simple_state_provider", edr.b);
-   public static final edj<eds> b = a("weighted_state_provider", eds.b);
-   public static final edj<edn> c = a("noise_threshold_provider", edn.b);
-   public static final edj<edm> d = a("noise_provider", edm.g);
-   public static final edj<edk> e = a("dual_noise_provider", edk.b);
-   public static final edj<edp> f = a("rotated_block_provider", edp.b);
-   public static final edj<edo> g = a("randomized_int_state_provider", edo.b);
-   private final Codec<P> h;
+public class edj extends edi {
+   public static final MapCodec<edj> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edj::new));
 
-   private static <P extends edi> edj<P> a(String $$0, Codec<P> $$1) {
-      return jj.a(ld.V, $$0, new edj<>($$1));
+   public edj(boz $$0, boz $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private edj(Codec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected edo<?> a() {
+      return edo.e;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

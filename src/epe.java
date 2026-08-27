@@ -1,57 +1,109 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class epe extends epd {
-   public static final Codec<epe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.either(akg.a(le.aU), eoq.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, epe::new)
+public class epe {
+   private static final Codec<epe> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eth.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               eth.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, epe::new)
    );
-   private final Either<akg<eoq>, eoq> j;
+   public static final Codec<epe> a = Codec.either(Codec.INT, b).xmap($$0 -> (epe)$$0.map(epe::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final etg c;
+   @Nullable
+   private final etg d;
+   private final epe.b e;
+   private final epe.a f;
 
-   private epe(Either<akg<eoq>, eoq> $$0, int $$1, int $$2, List<erq> $$3, List<epx> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
-   }
-
-   @Override
-   public epc a() {
-      return eoz.d;
-   }
-
-   @Override
-   public void a(Consumer<csz> $$0, eol $$1) {
-      ((eoq)this.j.map($$1x -> $$1.a().a(le.aU, $$1x).map(iw::a).orElse(eoq.a), $$0x -> $$0x)).a($$1, $$0);
-   }
-
-   @Override
-   public void a(eor $$0) {
-      Optional<akg<eoq>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         akg<eoq> $$2 = $$1.get();
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   public Set<eru<?>> a() {
+      Builder<eru<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .a(le.aU, $$1x)
-                  .ifPresentOrElse($$2x -> ((eoq)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public static epd.a<?> a(akg<eoq> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new epe(Either.left($$0), $$1, $$2, $$3, $$4));
+   private epe(Optional<etg> $$0, Optional<etg> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   public static epd.a<?> a(eoq $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new epe(Either.right($$0), $$1, $$2, $$3, $$4));
+   private epe(@Nullable etg $$0, @Nullable etg $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayd.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      }
+   }
+
+   public static epe a(int $$0) {
+      ete $$1 = ete.a((float)$$0);
+      return new epe(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static epe a(int $$0, int $$1) {
+      return new epe(Optional.of(ete.a((float)$$0)), Optional.of(ete.a((float)$$1)));
+   }
+
+   public static epe b(int $$0) {
+      return new epe(Optional.of(ete.a((float)$$0)), Optional.empty());
+   }
+
+   public static epe c(int $$0) {
+      return new epe(Optional.empty(), Optional.of(ete.a((float)$$0)));
+   }
+
+   public int a(epf $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(epf $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof ete $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(epf var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(epf var1, int var2);
    }
 }

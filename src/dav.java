@@ -1,34 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class dav {
+   private static int[] a = new int[65536];
 
-public interface dav {
-   void a(brn<?> var1, ayg var2);
-
-   static void a(csz $$0, List<wu> $$1, String $$2) {
-      wu $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(wt.a);
-         $$1.add(wu.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(wt.a().b(wu.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   @Nullable
-   static wu a(csz $$0, String $$1) {
-      ua $$2 = $$0.a(ka.M, cvm.a).d();
-      akh $$3 = a($$2, $$1);
-      return $$3 != null ? ld.g.b($$3).map($$0x -> wu.c($$0x.g()).a(n.h)).orElse(null) : null;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   @Nullable
-   private static akh a(ua $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return akh.a($$2);
-      } else {
-         return null;
-      }
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

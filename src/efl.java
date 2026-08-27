@@ -1,78 +1,112 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-@Deprecated
-public class efl extends efw {
-   public static final Codec<efl> a = bor.b(0, 256).fieldOf("count").xmap(efl::new, $$0 -> $$0.c).codec();
-   private final bor c;
+public class efl {
+   public static final akl<efk> a = a("classic_flat");
+   public static final akl<efk> b = a("tunnelers_dream");
+   public static final akl<efk> c = a("water_world");
+   public static final akl<efk> d = a("overworld");
+   public static final akl<efk> e = a("snowy_kingdom");
+   public static final akl<efk> f = a("bottomless_pit");
+   public static final akl<efk> g = a("desert");
+   public static final akl<efk> h = a("redstone_ready");
+   public static final akl<efk> i = a("the_void");
 
-   private efl(bor $$0) {
-      this.c = $$0;
+   public static void a(qo<efk> $$0) {
+      new efl.a($$0).a();
    }
 
-   public static efl a(bor $$0) {
-      return new efl($$0);
+   private static akl<efk> a(String $$0) {
+      return akl.a(lf.aF, new akm($$0));
    }
 
-   public static efl a(int $$0) {
-      return a(boo.a($$0));
-   }
+   static class a {
+      private final qo<efk> a;
 
-   @Override
-   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
-      Builder<in> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dvz.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new in($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
-   }
-
-   @Override
-   public efx<?> b() {
-      return efx.i;
-   }
-
-   private static int a(efu $$0, int $$1, int $$2, int $$3, int $$4) {
-      in.a $$5 = new in.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dqh $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dqh $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(ddg.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
-         }
-
-         $$7 = $$9;
+      a(qo<efk> $$0) {
+         this.a = $$0;
       }
 
-      return Integer.MAX_VALUE;
-   }
+      private void a(akl<efk> $$0, daw $$1, akl<dbw> $$2, Set<akl<ehp>> $$3, boolean $$4, boolean $$5, efj... $$6) {
+         iy<ehp> $$7 = this.a.a(lf.aL);
+         iy<egn> $$8 = this.a.a(lf.aI);
+         iy<dbw> $$9 = this.a.a(lf.az);
+         jb.a<ehp> $$10 = jb.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         efm $$11 = new efm(Optional.of($$10), $$9.b($$2), efm.b($$8));
+         if ($$4) {
+            $$11.a();
+         }
 
-   private static boolean a(dqh $$0) {
-      return $$0.i() || $$0.a(ddg.G) || $$0.a(ddg.H);
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new efk($$1.q().n(), $$11));
+      }
+
+      public void a() {
+         this.a(efl.a, dea.i, dcd.b, ImmutableSet.of(ehc.a), false, false, new efj(1, dea.i), new efj(2, dea.j), new efj(1, dea.F));
+         this.a(efl.b, dea.b, dcd.t, ImmutableSet.of(ehc.j, ehc.r), true, false, new efj(1, dea.i), new efj(5, dea.j), new efj(230, dea.b), new efj(1, dea.F));
+         this.a(
+            efl.c,
+            ctr.qz,
+            dcd.T,
+            ImmutableSet.of(ehc.m, ehc.l, ehc.g),
+            false,
+            false,
+            new efj(90, dea.G),
+            new efj(5, dea.L),
+            new efj(5, dea.j),
+            new efj(5, dea.b),
+            new efj(64, dea.sJ),
+            new efj(1, dea.F)
+         );
+         this.a(
+            efl.d,
+            dea.bt,
+            dcd.b,
+            ImmutableSet.of(ehc.a, ehc.j, ehc.f, ehc.k, ehc.r),
+            true,
+            true,
+            new efj(1, dea.i),
+            new efj(3, dea.j),
+            new efj(59, dea.b),
+            new efj(1, dea.F)
+         );
+         this.a(
+            efl.e,
+            dea.dN,
+            dcd.d,
+            ImmutableSet.of(ehc.a, ehc.c),
+            false,
+            false,
+            new efj(1, dea.dN),
+            new efj(1, dea.i),
+            new efj(3, dea.j),
+            new efj(59, dea.b),
+            new efj(1, dea.F)
+         );
+         this.a(efl.f, ctr.pt, dcd.b, ImmutableSet.of(ehc.a), false, false, new efj(1, dea.i), new efj(3, dea.j), new efj(2, dea.m));
+         this.a(
+            efl.g,
+            dea.I,
+            dcd.f,
+            ImmutableSet.of(ehc.a, ehc.b, ehc.j, ehc.r),
+            true,
+            false,
+            new efj(8, dea.I),
+            new efj(52, dea.aV),
+            new efj(3, dea.b),
+            new efj(1, dea.F)
+         );
+         this.a(efl.h, ctr.lH, dcd.f, ImmutableSet.of(), false, false, new efj(116, dea.aV), new efj(3, dea.b), new efj(1, dea.F));
+         this.a(efl.i, dea.hW, dcd.a, ImmutableSet.of(), true, false, new efj(1, dea.a));
+      }
    }
 }

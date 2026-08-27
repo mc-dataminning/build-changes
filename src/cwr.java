@@ -1,15 +1,16 @@
-public class cwr extends cwm {
-   public cwr(String $$0, cws $$1, cxa $$2, csz $$3, float $$4, int $$5) {
-      super(cxi.e, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cwr(akl<epk> b, long c) {
+   public static final Codec<cwr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akl.a(lf.aU).fieldOf("loot_table").forGetter(cwr::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(cwr::b)).apply($$0, cwr::new)
+   );
+
+   public akl<epk> a() {
+      return this.b;
    }
 
-   @Override
-   public csz g() {
-      return new csz(ddg.og);
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.s;
+   public long b() {
+      return this.c;
    }
 }

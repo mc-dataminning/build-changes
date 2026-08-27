@@ -1,59 +1,48 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gmp extends gmf<cfe, fso<cfe>> {
+   private static final akm a = new akm("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final akm b = new akm("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final akm c = new akm("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final akm d = new akm("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final akm e = new akm("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final akm f = new akm("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final akm g = new akm("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final akm h = new akm("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final akm i = new akm("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final akm j = new akm("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final akm k = new akm("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final akm l = new akm("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fvc<cfe> m;
+   private final fvd<cfe> n;
 
-public class gmp implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final gml f = new gml(16, 16, false);
-
-   public gmp() {
-      ewy $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
-         }
-      }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
+   public gmp(gjp<cfe, fso<cfe>> $$0, fvs $$1) {
+      super($$0);
+      this.m = new fvc<>($$1.a(fvv.bM));
+      this.n = new fvd<>($$1.a(fvv.bK));
    }
 
-   @Override
-   public void close() {
-      this.f.close();
-   }
+   public void a(eys $$0, gck $$1, int $$2, cfe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cfe.b $$10 = $$3.gA();
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
+      fsw<cfe> $$11 = (fsw<cfe>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+      akm $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gz().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

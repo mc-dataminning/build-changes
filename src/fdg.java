@@ -1,37 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fdg {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fdg extends fcz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wx c = wx.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final faq e;
+   private final fbi f;
 
-   private static final IntFunction<fdg> e = awq.a(fdg::a, values(), awq.a.b);
-   private final int f;
-   private final wu g;
-
-   private fdg(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = wu.c($$1);
+   public fdg(long $$0, faq $$1, fbi $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a() {
-      return this.f;
+   @Override
+   public void run() {
+      ezi $$0 = ezi.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (faw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 
-   public wu b() {
-      return this.g;
-   }
-
-   public static fdg a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   public wx a() {
+      return c;
    }
 }

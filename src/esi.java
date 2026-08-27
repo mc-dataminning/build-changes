@@ -1,53 +1,36 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record esi(esl b, esl c) implements esl {
-   public static final Codec<esi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(esm.a.fieldOf("n").forGetter(esi::c), esm.a.fieldOf("p").forGetter(esi::d)).apply($$0, esi::new)
-   );
+public record esi(esl b) implements esl {
+   public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(esn.a.fieldOf("term").forGetter(esi::c)).apply($$0, esi::new));
 
    @Override
-   public esk b() {
-      return esm.d;
+   public esm b() {
+      return esn.c;
+   }
+
+   public boolean a(epf $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public int a(eol $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ayg $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public Set<eru<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public float b(eol $$0) {
-      return (float)this.a($$0);
+   public void a(epl $$0) {
+      esl.super.a($$0);
+      this.b.a($$0);
    }
 
-   public static esi a(int $$0, float $$1) {
-      return new esi(esj.a((float)$$0), esj.a($$1));
-   }
-
-   @Override
-   public Set<eqz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static esl.a a(esl.a $$0) {
+      esi $$1 = new esi($$0.build());
+      return () -> $$1;
    }
 
    public esl c() {
       return this.b;
-   }
-
-   public esl d() {
-      return this.c;
    }
 }

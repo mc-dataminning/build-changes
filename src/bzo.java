@@ -1,49 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bzo extends byx {
-   private static final ccq b = ccq.b().a(6.0);
-   public static final int a = 400;
-   private final ceb c;
-   private cku d;
-   private int e;
+public class bzo extends caj {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public bzo(ceb $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(byx.a.a, byx.a.b));
+   public bzo(bsx $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (!this.c.dN().Q()) {
-         return false;
-      } else if (this.c.ej().a(8000) != 0) {
-         return false;
+   protected euk h() {
+      float $$0 = this.b.dP().z.i();
+      if (this.b.dP().z.i() < 0.3F) {
+         return this.k();
       } else {
-         this.d = this.c.dN().a(cku.class, b, this.c, this.c.ds(), this.c.du(), this.c.dy(), this.c.cI().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         euk $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.e > 0;
+   @Nullable
+   private euk k() {
+      return cdm.a(this.b, 10, 7);
    }
 
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
+   @Nullable
+   private euk l() {
+      aqm $$0 = (aqm)this.b.dP();
+      List<clj> $$1 = $$0.a(bsa.bj, this.b.cK().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         clj $$2 = $$1.get(this.b.dP().z.a($$1.size()));
+         euk $$3 = $$2.dn();
+         return cdm.a(this.b, 10, 7, $$3);
+      }
    }
 
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
+   @Nullable
+   private euk m() {
+      jq $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         io $$1 = this.a($$0);
+         return $$1 == null ? null : cdm.a(this.b, 10, 7, euk.c($$1));
+      }
    }
 
-   @Override
-   public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   @Nullable
+   private jq n() {
+      aqm $$0 = (aqm)this.b.dP();
+      List<jq> $$1 = jq.a(jq.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private io a(jq $$0) {
+      aqm $$1 = (aqm)this.b.dP();
+      cds $$2 = $$1.y();
+      List<io> $$3 = $$2.c($$0x -> true, $$0.q(), 8, cds.b.b).map(cdt::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(clj $$0) {
+      return $$0.a(this.b.dP().Y());
    }
 }

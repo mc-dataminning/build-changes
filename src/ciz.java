@@ -1,45 +1,63 @@
-public class ciz extends chv {
-   public ciz(brn<? extends ciz> $$0, dad $$1) {
+public class ciz extends cjv {
+   public ciz(bsa<? extends ciz> $$0, dax $$1) {
       super($$0, $$1);
    }
 
-   public static boolean a(brn<ciz> $$0, das $$1, bse $$2, in $$3, ayg $$4) {
-      in $$5 = $$3;
-
-      do {
-         $$5 = $$5.c();
-      } while ($$1.a_($$5).a(ddg.qP));
-
-      return b($$0, $$1, $$2, $$3, $$4) && (bse.a($$2) || $$1.h($$5.d()));
+   public static boolean a(bsa<ciz> $$0, dbm $$1, bss $$2, io $$3, ayk $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bss.a($$2) || $$1.h($$3));
    }
 
    @Override
-   protected avb v() {
-      return avc.yY;
+   protected boolean ad_() {
+      return false;
    }
 
    @Override
-   protected avb d(bqf $$0) {
-      return avc.za;
+   protected avg v() {
+      return avh.mZ;
    }
 
    @Override
-   protected avb o_() {
-      return avc.yZ;
+   protected avg d(bqn $$0) {
+      return avh.nc;
    }
 
    @Override
-   avb u() {
-      return avc.zb;
+   protected avg o_() {
+      return avh.nb;
    }
 
    @Override
-   protected cln b(csz $$0, float $$1) {
-      cln $$2 = super.b($$0, $$1);
-      if ($$2 instanceof clp) {
-         ((clp)$$2).a(new bqt(bqv.b, 600));
+   protected avg gp() {
+      return avh.nd;
+   }
+
+   @Override
+   public boolean C(bru $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eX().e() && $$0 instanceof bso) {
+         float $$2 = this.dP().d_(this.dp()).b();
+         ((bso)$$0).b(new brc(bre.q, 140 * (int)$$2), this);
       }
 
-      return $$2;
+      return $$1;
+   }
+
+   @Override
+   protected boolean gr() {
+      return true;
+   }
+
+   @Override
+   protected void ac_() {
+      this.b(bsa.bu);
+      if (!this.aW()) {
+         this.dP().a(null, 1041, this.dp(), 0);
+      }
+   }
+
+   @Override
+   protected cto gq() {
+      return cto.i;
    }
 }

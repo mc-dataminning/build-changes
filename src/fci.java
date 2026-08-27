@@ -1,13 +1,41 @@
-public class fci extends fcj {
-   private final ezv b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fci(ezv $$0, long $$1, wu $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
-   }
+public interface fci {
+   fci a = new fci() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   @Override
-   protected void a(eyn $$0, long $$1) throws faa {
-      $$0.d($$1, this.b.a);
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fci a(final int $$0) {
+      return new fci() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

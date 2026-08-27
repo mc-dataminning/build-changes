@@ -1,67 +1,71 @@
-public class cxb extends cwv {
-   public cxb(cwt $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cxb {
+   @Nullable
+   private final clw a;
+   private final bpt b;
+   private final eug c;
+   private final dax d;
+   private final cto e;
+
+   public cxb(clw $$0, bpt $$1, eug $$2) {
+      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cou $$0, dad $$1) {
-      int $$2 = 0;
-      csz $$3 = csz.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csz $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(ctc.rU)) {
-               if (!$$3.d()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ctc.uj)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.d() && $$2 > 0;
+   protected cxb(dax $$0, @Nullable clw $$1, bpt $$2, cto $$3, eug $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public csz a(cou $$0, iy.a $$1) {
-      int $$2 = 0;
-      csz $$3 = csz.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csz $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(ctc.rU)) {
-               if (!$$3.d()) {
-                  return csz.i;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ctc.uj)) {
-                  return csz.i;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.d() && $$2 >= 1 ? $$3.c($$2 + 1) : csz.i;
+   protected final eug j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public io a() {
+      return this.c.a();
    }
 
-   @Override
-   public cxh<?> ao_() {
-      return cxh.e;
+   public it k() {
+      return this.c.b();
+   }
+
+   public euk l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cto n() {
+      return this.e;
+   }
+
+   @Nullable
+   public clw o() {
+      return this.a;
+   }
+
+   public bpt p() {
+      return this.b;
+   }
+
+   public dax q() {
+      return this.d;
+   }
+
+   public it g() {
+      return this.a == null ? it.c : this.a.cH();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fR();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dF();
    }
 }

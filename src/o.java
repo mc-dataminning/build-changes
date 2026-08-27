@@ -239,7 +239,7 @@ public class o {
       };
 
       try {
-         return $$0[(int)(ac.c() % (long)$$0.length)];
+         return $$0[(int)(ac.d() % (long)$$0.length)];
       } catch (Throwable var2) {
          return "Witty comment unavailable :(";
       }
@@ -261,7 +261,7 @@ public class o {
    }
 
    public static void h() {
-      axx.a();
+      ayb.a();
       new o("Don't panic!", new Throwable()).e();
    }
 }

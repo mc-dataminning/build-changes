@@ -1,33 +1,41 @@
-public class abs implements zb<abm> {
-   public static final ys<vu, abs> a = zb.a(abs::a, abs::new);
+public class abs implements ze<abq> {
+   public static final yv<vx, abs> a = ze.a(abs::a, abs::new);
    private final int b;
-   private final in c;
-   private final int d;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-   public abs(int $$0, in $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public abs(bse $$0) {
+      this.b = $$0.al();
+      this.c = $$0.du();
+      this.d = $$0.dw();
+      this.e = $$0.dA();
+      this.f = $$0.p();
    }
 
-   private abs(vu $$0) {
+   private abs(vx $$0) {
       this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(vu $$0) {
+   private void a(vx $$0) {
       $$0.c(this.b);
       $$0.a(this.c);
-      $$0.k(this.d);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
    }
 
    @Override
-   public zd<abs> a() {
-      return afx.h;
+   public zg<abs> a() {
+      return agb.d;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +43,19 @@ public class abs implements zb<abm> {
       return this.b;
    }
 
-   public in e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public double f() {
       return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

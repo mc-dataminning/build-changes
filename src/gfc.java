@@ -1,61 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gfc extends gfd<dpw> {
+   private static final akm c = new akm("textures/entity/end_gateway_beam.png");
 
-public class gfc implements gfa.a {
-   private static final float a = 0.02F;
-   private final Map<in, gfc.a> b = Maps.newHashMap();
+   public gfc(gel.a $$0) {
+      super($$0);
+   }
 
-   public void a(in $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gfc.a($$1, $$2, ac.b() + (long)$$3));
+   public void a(dpw $$0, float $$1, eys $$2, gck $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
+         $$6 = ayd.a($$6 * (float) Math.PI);
+         int $$8 = ayd.a((double)$$6 * $$7);
+         float[] $$9 = $$0.b() ? csh.c.d() : csh.k.d();
+         long $$10 = $$0.i().Y();
+         geg.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a() {
-      this.b.clear();
+   protected float b() {
+      return 1.0F;
    }
 
    @Override
-   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gfc.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   protected float c() {
+      return 0.0F;
    }
 
-   private void a(exx $$0, gbo $$1, in $$2, gfc.a $$3) {
-      gfa.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gfa.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
+   @Override
+   protected gcs d() {
+      return gcs.v();
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+   @Override
+   public int aP_() {
+      return 256;
    }
 }

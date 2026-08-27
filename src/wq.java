@@ -1,84 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record wq(wr j, wr k) {
-   public static final Codec<wq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(wr.a.fieldOf("chat").forGetter(wq::a), wr.a.fieldOf("narration").forGetter(wq::b)).apply($$0, wq::new)
-   );
-   public static final wr b = wr.a("chat.type.text");
-   public static final akg<wq> c = a("chat");
-   public static final akg<wq> d = a("say_command");
-   public static final akg<wq> e = a("msg_command_incoming");
-   public static final akg<wq> f = a("msg_command_outgoing");
-   public static final akg<wq> g = a("team_msg_command_incoming");
-   public static final akg<wq> h = a("team_msg_command_outgoing");
-   public static final akg<wq> i = a("emote_command");
+public class wq extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final vo c;
 
-   private static akg<wq> a(String $$0) {
-      return akg.a(le.aA, new akh($$0));
+   public wq(@Nullable vo $$0) {
+      this.c = $$0;
    }
 
-   public static void a(ql<wq> $$0) {
-      $$0.a(c, new wq(b, wr.a("chat.type.text.narrate")));
-      $$0.a(d, new wq(wr.a("chat.type.announcement"), wr.a("chat.type.text.narrate")));
-      $$0.a(e, new wq(wr.b("commands.message.display.incoming"), wr.a("chat.type.text.narrate")));
-      $$0.a(f, new wq(wr.c("commands.message.display.outgoing"), wr.a("chat.type.text.narrate")));
-      $$0.a(g, new wq(wr.d("chat.type.team.text"), wr.a("chat.type.text.narrate")));
-      $$0.a(h, new wq(wr.d("chat.type.team.sent"), wr.a("chat.type.text.narrate")));
-      $$0.a(i, new wq(wr.a("chat.type.emote"), wr.a("chat.type.emote")));
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
    }
 
-   public static wq.a a(akg<wq> $$0, brh $$1) {
-      return a($$0, $$1.dN().H_(), $$1.O_());
-   }
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
 
-   public static wq.a a(akg<wq> $$0, ed $$1) {
-      return a($$0, $$1.v(), $$1.b());
-   }
-
-   public static wq.a a(akg<wq> $$0, jk $$1, wu $$2) {
-      jj<wq> $$3 = $$1.d(le.aA);
-      return new wq.a($$3.g($$0), $$2);
-   }
-
-   public wr a() {
-      return this.j;
-   }
-
-   public wr b() {
-      return this.k;
-   }
-
-   public static record a(iw<wq> b, wu c, Optional<wu> d) {
-      public static final ys<wf, wq.a> a = ys.a(yq.b(le.aA), wq.a::a, ww.d, wq.a::b, ww.e, wq.a::c, wq.a::new);
-
-      a(iw<wq> $$0, wu $$1) {
-         this($$0, $$1, Optional.empty());
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!wo.a($$3)) {
+            return true;
+         }
       }
 
-      public wu a(wu $$0) {
-         return this.b.a().a().a($$0, this);
-      }
+      throw new CorruptedFrameException("length wider than 21-bit");
+   }
 
-      public wu b(wu $$0) {
-         return this.b.a().b().a($$0, this);
-      }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = wo.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + wo.a($$3));
+            }
 
-      public wq.a c(wu $$0) {
-         return new wq.a(this.b, this.c, Optional.of($$0));
-      }
-
-      public iw<wq> a() {
-         return this.b;
-      }
-
-      public wu b() {
-         return this.c;
-      }
-
-      public Optional<wu> c() {
-         return this.d;
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

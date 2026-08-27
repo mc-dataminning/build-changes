@@ -1,96 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class xo {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private xp b;
-   private Instant c = Instant.EPOCH;
-
-   public xo(UUID $$0, UUID $$1) {
-      this.b = xp.a($$0, $$1);
+public record xo(UUID a, clz b) {
+   public xt a(Duration $$0) {
+      return new xt.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public xo.c a(aym $$0) {
-      return $$1 -> {
-         xp $$2 = this.a();
-         return $$2 == null ? null : new xg($$0.sign($$2x -> xk.a($$2x, $$2, $$1)));
-      };
+   public xr.b a(UUID $$0) {
+      return new xr($$0, this.a).a(this.b);
    }
 
-   public xo.b a(clk $$0) {
-      ayl $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         xp $$4 = this.a();
-         if ($$4 == null) {
-            throw new xo.a(wu.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new xo.a(wu.c("chat.disabled.expiredProfileKey"), false);
-         } else if ($$3.b().isBefore(this.c)) {
-            throw new xo.a(wu.c("multiplayer.disconnect.out_of_order_chat"), true);
-         } else {
-            this.c = $$3.b();
-            xk $$5 = new xk($$4, $$2, $$3, null, wy.c);
-            if (!$$5.a($$1)) {
-               throw new xo.a(wu.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
+   public xo.a a() {
+      return new xo.a(this.a, this.b.b());
    }
 
-   @Nullable
-   private xp a() {
-      xp $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public clz d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, clz.a b) {
+      public static xo.a a(vx $$0) {
+         return new xo.a($$0.n(), new clz.a($$0));
       }
 
-      return $$0;
-   }
-
-   public static class a extends xu {
-      private final boolean a;
-
-      public a(wu $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+      public static void a(vx $$0, xo.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public boolean a() {
-         return this.a;
+      public xo a(GameProfile $$0, ayp $$1) throws clz.b {
+         return new xo(this.a, clz.a($$1, $$0.getId(), this.b));
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      static xo.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new xo.a(wu.c("chat.disabled.missingProfileKey"), false);
-            } else {
-               return xk.a($$0, $$3.a());
-            }
-         };
-      }
-
-      xk unpack(@Nullable xg var1, xn var2) throws xo.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      xo.c a = $$0 -> null;
-
-      @Nullable
-      xg pack(xn var1);
    }
 }

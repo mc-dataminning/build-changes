@@ -1,151 +1,204 @@
-import com.google.common.base.Suppliers;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
-public class gnj implements gnc {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gnj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(akh.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               akh.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, akh.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, gnj::new)
-   );
-   private final List<akh> d;
-   private final Map<String, akh> e;
-   private final akh f;
+public class gnj extends gno {
+   private static final Logger f = LogUtils.getLogger();
+   private static final int g = 64;
+   private static final int h = 64;
+   private static final int i = 32;
+   @Nullable
+   private final File j;
+   private final String k;
+   private final boolean l;
+   @Nullable
+   private final Runnable m;
+   @Nullable
+   private CompletableFuture<?> n;
+   private boolean o;
 
-   private gnj(List<akh> $$0, akh $$1, Map<String, akh> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
+   public gnj(@Nullable File $$0, String $$1, akm $$2, boolean $$3, @Nullable Runnable $$4) {
+      super($$2);
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   @Override
-   public void a(atr $$0, gnc.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+   private void a(ext $$0) {
+      if (this.m != null) {
+         this.m.run();
+      }
 
-      for (akh $$4 : this.d) {
-         akh $$5 = a.a($$4);
-         Optional<atp> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
+      fdz.Q().execute(() -> {
+         this.o = true;
+         if (!RenderSystem.isOnRenderThread()) {
+            RenderSystem.recordRenderCall(() -> this.b($$0));
          } else {
-            gni $$7 = new gni($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               akh $$9 = $$4.e("_" + $$8.getKey());
-               $$1.a($$9, new gnj.a($$7, $$8.getValue(), $$9));
-            }
+            this.b($$0);
          }
-      }
+      });
    }
 
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
-
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (axj.a.a($$4) != 0) {
-               $$2.put(axj.a.e($$4), $$1[$$3]);
-            }
-         }
-
-         return $$1x -> {
-            int $$2x = axj.a.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
-            } else {
-               int $$3x = axj.a.e($$1x);
-               int $$4x = $$2.getOrDefault($$3x, axj.a.f($$3x));
-               int $$5 = axj.a.a($$4x);
-               return axj.a.a($$2x * $$5 / 255, $$4x);
-            }
-         };
-      }
-   }
-
-   public static int[] a(atr $$0, akh $$1) {
-      Optional<atp> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               ewy $$4 = ewy.a($$3);
-            ) {
-               var5 = $$4.d();
-            }
-
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
-      }
+   private void b(ext $$0) {
+      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, true);
    }
 
    @Override
-   public gne a() {
-      return gnf.e;
-   }
+   public void a(atw $$0) throws IOException {
+      fdz.Q().execute(() -> {
+         if (!this.o) {
+            try {
+               super.a($$0);
+            } catch (IOException var3x) {
+               f.warn("Failed to load texture: {}", this.e, var3x);
+            }
 
-   static record a(gni a, Supplier<IntUnaryOperator> b, akh c) implements gnc.b {
-      @Nullable
-      public gms a(gnb $$0) {
-         Object var3;
-         try {
-            ewy $$1 = this.a.a().a(this.b.get());
-            return new gms(this.c, new gol($$1.a(), $$1.b()), $$1, att.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            gnj.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
+            this.o = true;
+         }
+      });
+      if (this.n == null) {
+         ext $$2;
+         if (this.j != null && this.j.isFile()) {
+            f.debug("Loading http texture from local cache ({})", this.j);
+            FileInputStream $$1 = new FileInputStream(this.j);
+            $$2 = this.a($$1);
+         } else {
+            $$2 = null;
          }
 
-         return (gms)var3;
+         if ($$2 != null) {
+            this.a($$2);
+         } else {
+            this.n = CompletableFuture.runAsync(() -> {
+               HttpURLConnection $$0x = null;
+               f.debug("Downloading http texture from {} to {}", this.k, this.j);
+
+               try {
+                  $$0x = (HttpURLConnection)new URL(this.k).openConnection(fdz.Q().Z());
+                  $$0x.setDoInput(true);
+                  $$0x.setDoOutput(false);
+                  $$0x.connect();
+                  if ($$0x.getResponseCode() / 100 == 2) {
+                     InputStream $$1x;
+                     if (this.j != null) {
+                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.j);
+                        $$1x = new FileInputStream(this.j);
+                     } else {
+                        $$1x = $$0x.getInputStream();
+                     }
+
+                     fdz.Q().execute(() -> {
+                        ext $$1xx = this.a($$1x);
+                        if ($$1xx != null) {
+                           this.a($$1xx);
+                        }
+                     });
+                     return;
+                  }
+               } catch (Exception var6) {
+                  f.error("Couldn't download http texture", var6);
+                  return;
+               } finally {
+                  if ($$0x != null) {
+                     $$0x.disconnect();
+                  }
+               }
+            }, ac.g());
+         }
+      }
+   }
+
+   @Nullable
+   private ext a(InputStream $$0) {
+      ext $$1 = null;
+
+      try {
+         $$1 = ext.a($$0);
+         if (this.l) {
+            $$1 = this.c($$1);
+         }
+      } catch (Exception var4) {
+         f.warn("Error while loading the skin texture", var4);
       }
 
-      @Override
-      public void a() {
-         this.a.b();
+      return $$1;
+   }
+
+   @Nullable
+   private ext c(ext $$0) {
+      int $$1 = $$0.b();
+      int $$2 = $$0.a();
+      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
+         boolean $$3 = $$1 == 32;
+         if ($$3) {
+            ext $$4 = new ext(64, 64, true);
+            $$4.a($$0);
+            $$0.close();
+            $$0 = $$4;
+            $$4.a(0, 32, 64, 32, 0);
+            $$4.a(4, 16, 16, 32, 4, 4, true, false);
+            $$4.a(8, 16, 16, 32, 4, 4, true, false);
+            $$4.a(0, 20, 24, 32, 4, 12, true, false);
+            $$4.a(4, 20, 16, 32, 4, 12, true, false);
+            $$4.a(8, 20, 8, 32, 4, 12, true, false);
+            $$4.a(12, 20, 16, 32, 4, 12, true, false);
+            $$4.a(44, 16, -8, 32, 4, 4, true, false);
+            $$4.a(48, 16, -8, 32, 4, 4, true, false);
+            $$4.a(40, 20, 0, 32, 4, 12, true, false);
+            $$4.a(44, 20, -8, 32, 4, 12, true, false);
+            $$4.a(48, 20, -16, 32, 4, 12, true, false);
+            $$4.a(52, 20, -8, 32, 4, 12, true, false);
+         }
+
+         b($$0, 0, 0, 32, 16);
+         if ($$3) {
+            a($$0, 32, 0, 64, 32);
+         }
+
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
+      } else {
+         $$0.close();
+         f.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.k});
+         return null;
+      }
+   }
+
+   private static void a(ext $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (($$7 >> 24 & 0xFF) < 128) {
+               return;
+            }
+         }
       }
 
-      public gni b() {
-         return this.a;
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
       }
+   }
 
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public akh d() {
-         return this.c;
+   private static void b(ext $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.a($$5, $$6, $$0.a($$5, $$6) | 0xFF000000);
+         }
       }
    }
 }

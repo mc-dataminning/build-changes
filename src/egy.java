@@ -1,26 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public interface egy<S extends egp> {
-   egy<eii> a = a("buried_treasure", eii.d);
-   egy<eik> b = a("desert_pyramid", eik.d);
-   egy<eim> c = a("end_city", eim.d);
-   egy<eiv> d = a("fortress", eiv.e);
-   egy<eio> e = a("igloo", eio.d);
-   egy<eip> f = a("jigsaw", eip.g);
-   egy<eir> g = a("jungle_temple", eir.d);
-   egy<eit> h = a("mineshaft", eit.d);
-   egy<eix> i = a("nether_fossil", eix.d);
-   egy<eiz> j = a("ocean_monument", eiz.d);
-   egy<ejb> k = a("ocean_ruin", ejb.d);
-   egy<ejd> l = a("ruined_portal", ejd.d);
-   egy<ejf> m = a("shipwreck", ejf.d);
-   egy<ejh> n = a("stronghold", ejh.d);
-   egy<ejj> o = a("swamp_hut", ejj.d);
-   egy<ejl> p = a("woodland_mansion", ejl.d);
+public class egy {
+   public static final Codec<egy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(akl.a(lf.aT), duu.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, egy::new)
+      )
+      .validate(egy::a);
+   public static final Codec<ix<egy>> b = aki.a(lf.aQ, a);
+   private final Map<akl<duu>, duu> c;
 
-   Codec<S> codec();
+   public egy(Map<akl<duu>, duu> $$0) {
+      this.c = $$0;
+   }
 
-   private static <S extends egp> egy<S> a(String $$0, Codec<S> $$1) {
-      return jj.a(ld.T, $$0, () -> $$1);
+   private ImmutableMap<akl<duu>, duu> c() {
+      Builder<akl<duu>, duu> $$0 = ImmutableMap.builder();
+      dxo.a(this.c.keySet().stream()).forEach($$1 -> {
+         duu $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
+   }
+
+   public dxo a() {
+      return new dxo(this.c());
+   }
+
+   public Optional<duu> b() {
+      return Optional.ofNullable(this.c.get(duu.b));
+   }
+
+   private static DataResult<egy> a(egy $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

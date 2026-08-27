@@ -1,37 +1,83 @@
-public class fyz extends fzc {
-   private final fsx a;
-   private final gbw b = gbw.i(ggq.a);
+public class fyz extends gay {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gat M;
 
-   fyz(fvw $$0, double $$1, double $$2, double $$3) {
+   fyz(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = new fsi(fde.Q().aS().a(fva.V));
-      this.u = 0.0F;
-      this.t = 30;
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = ayd.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = ayd.a(this.r, 0.0F, 0.0F);
+      this.x = ayd.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
-   public fzg b() {
-      return fzg.e;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
    }
 
    @Override
-   public void a(eyb $$0, fcp $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * axz.a($$3 * (float) Math.PI);
-      exx $$5 = new exx();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gbo.a $$6 = fde.Q().aR().c();
-      eyb $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gmp.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public gac b() {
+      return gac.b;
    }
 
-   public static class a implements fzf<la> {
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyz($$1, $$2, $$3, $$4);
+   @Override
+   public float b(float $$0) {
+      return this.D * ayd.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,105 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum djr implements ayt {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class djr extends dft {
+   public static final MapCodec<djr> a = b(djr::new);
+   private static final evd[] b = new evd[]{
+      ddy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      ddy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-   public static final Codec<djr> e = ayt.a(djr::values);
-   private final String f;
-   private final h g;
-
-   private djr(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<djr> a() {
+      return a;
    }
 
-   public djr a(djr $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public is a(is $$0) {
-      if ($$0.o() == is.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static djr a(ayg $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<djr> b(ayg $$0) {
-      return ac.b(values(), $$0);
+   public djr(dra.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected daw d() {
+      return ctr.ug;
+   }
+
+   @Override
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return b[this.g($$0)];
    }
 }

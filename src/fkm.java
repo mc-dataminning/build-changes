@@ -1,114 +1,91 @@
-public class fkm extends fkv {
-   private static final wu a = wu.c("options.languageAccuracyWarning").a(n.h);
-   private static final int r = 53;
-   private fkm.a s;
-   final gog u;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-   public fkm(fld $$0, fdi $$1, gog $$2) {
-      super($$0, $$1, wu.c("options.language.title"));
-      this.u = $$2;
+public class fkm {
+   private static final wx b = wx.c("gui.banned.title.temporary").a(n.r);
+   private static final wx c = wx.c("gui.banned.title.permanent").a(n.r);
+   public static final wx a = wx.c("gui.banned.name.title").a(n.r);
+   private static final wx d = wx.c("gui.banned.skin.title").a(n.r);
+   private static final wx e = wx.a("gui.banned.skin.description", wx.b("https://aka.ms/mcjavamoderation"));
+
+   public static fkp a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fkp($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", ww.m, true);
    }
 
-   @Override
-   protected void aM_() {
-      this.s = this.c(new fkm.a(this.m));
-      this.d.a(53);
-      super.aM_();
+   public static fkp a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fkp($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", ww.m, true);
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public static fkp a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fkp($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, wx.a("gui.banned.name.description", wx.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", ww.m, true);
    }
 
-   @Override
-   protected void h() {
-      fiv $$0 = this.d.b(fiv.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fgl(a, this.p));
-      fiv $$1 = $$0.a(fiv.e().a(8));
-      $$1.a(ffe.a(wu.c("options.font"), $$0x -> this.m.a(new fki(this, this.c))).a());
-      $$1.a(ffe.a(wt.d, $$0x -> this.C()).a());
+   private static wx a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   void C() {
-      fkm.a.a $$0 = this.s.h();
-      if ($$0 != null && !$$0.b.equals(this.u.a())) {
-         this.u.a($$0.b);
-         this.c.ad = $$0.b;
-         this.m.l();
+   private static wx b(BanDetails $$0) {
+      return wx.a("gui.banned.description", c($$0), d($$0), wx.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static wx c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fxr $$4 = fxr.a($$3);
+         wx $$5;
+         if ($$4 != null) {
+            $$5 = xa.a($$4.a().f(), xu.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wx.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wx.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return wx.a("gui.banned.description.reason", $$5);
+      } else {
+         return wx.c("gui.banned.description.unknownreason");
       }
-
-      this.m.a(this.b);
    }
 
-   class a extends fga<fkm.a.a> {
-      public a(fde $$0) {
-         super($$0, fkm.this.n, fkm.this.o - 33 - 53, 33, 18);
-         String $$1 = fkm.this.u.a();
-         fkm.this.u.b().forEach(($$1x, $$2) -> {
-            fkm.a.a $$3 = new fkm.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
+   private static wx d(BanDetails $$0) {
+      if (f($$0)) {
+         wx $$1 = e($$0);
+         return wx.a("gui.banned.description.temporary", wx.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wx.c("gui.banned.description.permanent").a(n.r);
       }
+   }
 
-      @Override
-      public int b() {
-         return super.b() + 50;
+   private static wx e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return ww.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? ww.c($$1.toMinutes()) : ww.b($$1.toHours());
       }
+   }
 
-      public class a extends fga.a<fkm.a.a> {
-         final String b;
-         private final wu c;
-         private long d;
-
-         public a(String $$1, gof $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fkm.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fjf.a($$0)) {
-               this.b();
-               fkm.this.C();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fkm.this.C();
-            }
-
-            this.d = ac.b();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public wu a() {
-            return wu.a("narrator.select", this.c);
-         }
-      }
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

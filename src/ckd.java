@@ -1,19 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Map;
 
-public class ckd {
-   public static btt<bsa> a(int $$0) {
-      return bxf.a(
-         (Function<bxf.b<bsa>, ? extends App<bxf.c<bsa>, bxi<bsa>>>)($$1 -> $$1.group($$1.b(cbd.L), $$1.c(cbd.ad), $$1.c(cbd.ag), $$1.c(cbd.af))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
-                     chr $$7 = $$1.b($$2);
-                     if (!cjy.a($$7.p())) {
-                        return false;
-                     } else {
-                        $$3.a(true, (long)$$0);
-                        return true;
-                     }
-                  }))
-      );
+public class ckd extends buh<cjy> {
+   public ckd() {
+      super(Map.of(cbs.o, cbt.a, cbs.aZ, cbt.b, cbs.ba, cbt.b, cbs.m, cbt.b, cbs.aV, cbt.b));
+   }
+
+   protected boolean a(aqm $$0, cjy $$1) {
+      return $$1.bR() || $$1.be() || $$1.c(bre.y) != null;
+   }
+
+   protected boolean a(aqm $$0, cjy $$1, long $$2) {
+      return false;
+   }
+
+   protected void b(aqm $$0, cjy $$1, long $$2) {
+      $$1.dS().a(cbs.aV, azf.a, 60L);
    }
 }

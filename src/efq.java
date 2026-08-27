@@ -1,23 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class efq extends efw {
-   private static final efq c = new efq();
-   public static final Codec<efq> a = Codec.unit(() -> c);
+public abstract class efq {
+   private static final Codec<Either<dxn, efq>> a = Codec.either(dxn.a, le.N.q().dispatch(efq::a, efr::codec));
+   public static final Codec<efq> c = a.xmap(
+      $$0 -> (efq)$$0.map(efp::a, $$0x -> $$0x), $$0 -> $$0.a() == efr.a ? Either.left(((efp)$$0).b()) : Either.right($$0)
+   );
 
-   public static efq a() {
-      return c;
-   }
+   public abstract int a(ayk var1, dxq var2);
 
-   @Override
-   public Stream<in> a_(efu $$0, ayg $$1, in $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new in($$3, $$2.v(), $$4));
-   }
-
-   @Override
-   public efx<?> b() {
-      return efx.m;
-   }
+   public abstract efr<?> a();
 }

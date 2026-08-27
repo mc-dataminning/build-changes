@@ -1,151 +1,89 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class fho {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final ffk d;
+   protected final bky e;
 
-public class fho {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fde c;
-   private final List<fho.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fhn> f = Queues.newArrayDeque();
-
-   public fho(fde $$0) {
-      this.c = $$0;
+   protected fho(ffk $$0, bky $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(fer $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new fho.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-         }
-      }
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
+   public void a(ffm $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gcs.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends fhn> T a(Class<? extends T> $$0, Object $$1) {
-      for (fho.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
+      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gcs.E(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gcs.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      for (fhn $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
+   protected void a(ffm $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   public void a(fhn $$0) {
-      this.f.add($$0);
+   protected void b(ffm $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gcs.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   public fde b() {
-      return this.c;
+   protected void c(ffm $$0, int $$1, int $$2, int $$3) {
    }
 
-   public double c() {
-      return this.c.m.B().c();
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   class a<T extends fhn> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fhn.a h = fhn.a.a;
+   protected void d(ffm $$0, int $$1, int $$2, int $$3) {
+   }
 
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+   protected void a(ffm $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gcs.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
 
-      public T a() {
-         return this.c;
-      }
+   protected abstract String a(double var1);
 
-      private float a(long $$0) {
-         float $$1 = axz.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == fhn.a.b ? 1.0F - $$1 : $$1;
-      }
+   protected abstract int b(double var1);
 
-      public boolean a(int $$0, fer $$1) {
-         long $$2 = ac.b();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(fho.this.c.ak());
-         }
+   protected abstract int a(long var1);
 
-         if (this.h == fhn.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         fhn.a $$3 = this.c.a($$1, fho.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(fho.this.c.ak());
-         }
-
-         return this.h == fhn.a.b && $$2 - this.f > 600L;
-      }
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = ayd.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axo.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axo.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

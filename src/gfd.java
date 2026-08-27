@@ -1,52 +1,46 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class gfd implements gfa.a {
-   private static final int a = 160;
-   private final fde b;
-   private final Int2ObjectMap<gfd.a> c = new Int2ObjectOpenHashMap();
+public class gfd<T extends dpx> implements gek<T> {
+   public static final akm a = new akm("textures/environment/end_sky.png");
+   public static final akm b = new akm("textures/entity/end_portal.png");
 
-   @Override
-   public void a() {
-      this.c.clear();
+   public gfd(gel.a $$0) {
    }
 
-   public void a(int $$0, in $$1, List<aai.a> $$2) {
-      this.c.put($$0, new gfd.a($$1, $$2));
+   public void a(T $$0, float $$1, eys $$2, gck $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
    }
 
-   public void a(int $$0) {
-      this.c.remove($$0);
+   private void a(T $$0, Matrix4f $$1, eyw $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, it.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, it.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, it.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, it.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, it.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, it.b);
    }
 
-   public gfd(fde $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(exx $$0, gbo $$1, double $$2, double $$3, double $$4) {
-      fcp $$5 = this.b.j.m();
-      in $$6 = in.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gfd.a $$7 = (gfd.a)var11.next();
-         in $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               aai.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gfa.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
-         }
+   private void a(T $$0, Matrix4f $$1, eyw $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, it $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
    }
 
-   static record a(in a, List<aai.a> b) {
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gcs d() {
+      return gcs.u();
    }
 }

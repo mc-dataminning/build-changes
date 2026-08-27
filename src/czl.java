@@ -1,25 +1,32 @@
-import java.util.function.Predicate;
+import java.util.Map.Entry;
 
-public class czl {
-   private final etp a;
-   private final etp b;
-   private final Predicate<dqh> c;
+public class czl extends cyz {
+   private static final float b = 0.15F;
 
-   public czl(etp $$0, etp $$1, Predicate<dqh> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public czl(cyz.b $$0) {
+      super($$0);
    }
 
-   public etp a() {
-      return this.b;
+   @Override
+   public void b(bso $$0, bru $$1, int $$2) {
+      ayk $$3 = $$0.el();
+      Entry<bsb, cto> $$4 = cza.b(czc.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dQ().d($$0), (float)b($$2, $$3));
+         }
+
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
+         }
+      }
    }
 
-   public etp b() {
-      return this.a;
+   public static boolean a(int $$0, ayk $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
    }
 
-   public Predicate<dqh> c() {
-      return this.c;
+   public static int b(int $$0, ayk $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

@@ -1,21 +1,17 @@
-public enum drp implements ayt {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum drp implements ayx {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
    private drp(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 }

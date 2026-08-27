@@ -1,47 +1,45 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public class bmd {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bly f = blx.a;
+public class bmd implements bmh {
+   public static final bmd a = new bmd();
 
-   public bmd(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   private bmd() {
    }
 
-   public bma a() {
-      this.f = new blt(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   @Override
+   public List<bmk> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   public void b() {
-      if (this.f != blx.a) {
-         blz $$0 = this.f.d();
-         this.f = blx.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
-      }
+   @Override
+   public boolean a(Path $$0) {
+      return false;
    }
 
-   @Nullable
-   public static bmd a(String $$0) {
-      return null;
+   @Override
+   public long a() {
+      return 0L;
    }
 
-   public static bma a(bma $$0, @Nullable bmd $$1) {
-      return $$1 != null ? bma.a($$1.a(), $$0) : $$0;
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

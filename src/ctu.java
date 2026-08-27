@@ -1,60 +1,20 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ctu extends cqx {
-   public ctu(dde $$0, csu.a $$1) {
-      super($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public cwi b(cwi $$0) {
-      in $$1 = $$0.a();
-      dad $$2 = $$0.q();
-      dqh $$3 = $$2.a_($$1);
-      dde $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return djt.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         is $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == is.b ? $$0.g() : is.b;
-         }
-
-         int $$7 = 0;
-         in.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               clh $$9 = $$0.o();
-               int $$10 = $$2.al();
-               if ($$9 instanceof aqi && $$8.v() >= $$10) {
-                  ((aqi)$$9).b(wu.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return cwi.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
-      }
+public class ctu extends cvc {
+   public ctu(ctj.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean c() {
-      return false;
+   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
+      cvp $$4 = $$0.a(kb.F, cvp.a);
+      $$4.a($$2::add, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   }
+
+   @Override
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avh.nX, avi.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

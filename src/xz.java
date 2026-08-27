@@ -1,10 +1,18 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class xz {
-   static Function<String, Supplier<wu>> a = $$0 -> () -> wu.b($$0);
+public interface xz {
+   MapCodec<xz> c = wz.a(new xz.a[]{ya.b, xy.b, yh.b}, xz.a::a, xz::a, "source");
 
-   public static void a(Function<String, Supplier<wu>> $$0) {
-      a = $$0;
+   Stream<ud> a(ee var1) throws CommandSyntaxException;
+
+   xz.a<?> a();
+
+   public static record a<T extends xz>(MapCodec<T> a, String b) implements ayx {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

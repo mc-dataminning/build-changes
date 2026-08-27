@@ -1,32 +1,45 @@
-public class ggf extends gid<cds, frm<cds>> {
-   public ggf(ggx.a $$0) {
-      super($$0, new frm<>($$0.a(fva.t)), 0.4F);
-      this.a(new gkk(this, $$0.f()));
+import com.google.common.collect.Lists;
+import java.util.Collection;
+
+public class ggf implements gfw.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fdz c;
+   private Collection<io> d = Lists.newArrayList();
+
+   public ggf(fdz $$0) {
+      this.c = $$0;
    }
 
-   public akh a(cds $$0) {
-      return $$0.gv();
+   public void a(Collection<io> $$0) {
+      this.d = $$0;
    }
 
-   protected void a(cds $$0, exx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
+   @Override
+   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
+      io $$5 = this.b().c();
 
-   protected void a(cds $$0, exx $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.G($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(axz.j($$6, 0.0F, 90.0F)));
-         in $$7 = $$0.dn();
-
-         for (clh $$9 : $$0.dN().a(clh.class, new etk($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fJ()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
-            }
+      for (io $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
       }
+   }
+
+   private static void a(eys $$0, gck $$1, io $$2) {
+      gfw.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(eys $$0, gck $$1, String $$2, io $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gfw.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fdk b() {
+      return this.c.j.m();
    }
 }

@@ -2,9 +2,9 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public record co(ct.d b) {
-   public static final Codec<co> a = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(ct.d.d, "light", ct.d.c).forGetter(co::a)).apply($$0, co::new));
+   public static final Codec<co> a = RecordCodecBuilder.create($$0 -> $$0.group(ct.d.d.optionalFieldOf("light", ct.d.c).forGetter(co::a)).apply($$0, co::new));
 
-   public boolean a(aqh $$0, in $$1) {
+   public boolean a(aqm $$0, io $$1) {
       return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
    }
 

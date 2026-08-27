@@ -1,5 +1,7 @@
-import java.time.Duration;
+import jdk.jfr.consumer.RecordedEvent;
 
-public interface bnd {
-   Duration a();
+public record bnd(String a, String b, int c, int d) {
+   public static bnd a(RecordedEvent $$0) {
+      return new bnd($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
+   }
 }

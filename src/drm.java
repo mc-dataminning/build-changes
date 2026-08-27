@@ -1,7 +1,7 @@
-public enum drm implements ayt {
-   a("up"),
-   b("side"),
-   c("none");
+public enum drm implements ayx {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
@@ -10,16 +10,7 @@ public enum drm implements ayt {
    }
 
    @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

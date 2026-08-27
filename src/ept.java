@@ -1,22 +1,18 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface ept<T extends ept<T>> {
-   T b(epx.a var1);
+public class ept {
+   public static final Codec<epv> a = le.F.q().dispatch(epv::a, epw::a);
+   public static final epw b = a("empty", epq.a);
+   public static final epw c = a("item", eps.a);
+   public static final epw d = a("loot_table", epy.a);
+   public static final epw e = a("dynamic", epp.a);
+   public static final epw f = a("tag", eqa.a);
+   public static final epw g = a("alternatives", epm.a);
+   public static final epw h = a("sequence", epz.a);
+   public static final epw i = a("group", epr.a);
 
-   default <E> T a(Iterable<E> $$0, Function<E, epx.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private static epw a(String $$0, MapCodec<? extends epv> $$1) {
+      return jk.a(le.F, new akm($$0), new epw($$1));
    }
-
-   default <E> T a(E[] $$0, Function<E, epx.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
-   }
-
-   T c();
 }

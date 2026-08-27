@@ -1,56 +1,72 @@
-import com.mojang.serialization.Codec;
+public abstract class cxd implements cxu<bpn> {
+   protected final cxz<?> a;
+   protected final cxj b;
+   protected final String c;
+   protected final cxr d;
+   protected final cto e;
+   protected final float f;
+   protected final int g;
 
-public interface cxd<C extends bpf> {
-   Codec<cxd<?>> h = ld.t.q().dispatch(cxd::ao_, cxh::a);
-   ys<wf, cxd<?>> i = yq.a(le.Z).b(cxd::ao_, cxh::b);
-
-   boolean a(C var1, dad var2);
-
-   csz a(C var1, iy.a var2);
-
-   boolean a(int var1, int var2);
-
-   csz a(iy.a var1);
-
-   default jf<csz> a(C $$0) {
-      jf<csz> $$1 = jf.a($$0.b(), csz.i);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         csu $$3 = $$0.a($$2).f();
-         if ($$3.u()) {
-            $$1.set($$2, new csz($$3.t()));
-         }
-      }
-
-      return $$1;
+   public cxd(cxz<?> $$0, String $$1, cxj $$2, cxr $$3, cto $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   default jf<cxa> a() {
-      return jf.a();
+   @Override
+   public boolean a(bpn $$0, dax $$1) {
+      return this.d.a($$0.a(0));
    }
 
-   default boolean an_() {
-      return false;
+   @Override
+   public cto a(bpn $$0, iz.a $$1) {
+      return this.e.s();
    }
 
-   default boolean h() {
+   @Override
+   public boolean a(int $$0, int $$1) {
       return true;
    }
 
-   default String c() {
-      return "";
+   @Override
+   public jg<cxr> a() {
+      jg<cxr> $$0 = jg.a();
+      $$0.add(this.d);
+      return $$0;
    }
 
-   default csz g() {
-      return new csz(ddg.cA);
+   public float b() {
+      return this.f;
    }
 
-   cxh<?> ao_();
+   @Override
+   public cto a(iz.a $$0) {
+      return this.e;
+   }
 
-   cxi<?> e();
+   @Override
+   public String c() {
+      return this.c;
+   }
 
-   default boolean i() {
-      jf<cxa> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cxz<?> e() {
+      return this.a;
+   }
+
+   public cxj f() {
+      return this.b;
+   }
+
+   public interface a<T extends cxd> {
+      T create(String var1, cxj var2, cxr var3, cto var4, float var5, int var6);
    }
 }

@@ -1,43 +1,49 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fgp extends ffz {
+   private boolean a;
 
-public class fgp implements fjb {
-   private static final int a = 170;
-   private final wu b;
-   @Nullable
-   private List<axl> c;
-   @Nullable
-   private final wu d;
-
-   private fgp(wu $$0, @Nullable wu $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static fgp a(wu $$0, @Nullable wu $$1) {
-      return new fgp($$0, $$1);
-   }
-
-   public static fgp a(wu $$0) {
-      return new fgp($$0, $$0);
+   public fgp(int $$0, int $$1, ffz.c $$2) {
+      super($$0, $$1, 20, 20, wx.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
    @Override
-   public void b(fja $$0) {
-      if (this.d != null) {
-         $$0.a(fiz.c, this.d);
-      }
+   protected xl aK_() {
+      return ww.a(super.aK_(), this.a() ? wx.c("narrator.button.difficulty_lock.locked") : wx.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public List<axl> a(fde $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
+   public boolean a() {
+      return this.a;
    }
 
-   public static List<axl> a(fde $$0, wu $$1) {
-      return $$0.h.c($$1, 170);
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      fgp.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fgp.a.c : fgp.a.f;
+      } else if (this.A()) {
+         $$4 = this.a ? fgp.a.b : fgp.a.e;
+      } else {
+         $$4 = this.a ? fgp.a.a : fgp.a.d;
+      }
+
+      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new akm("widget/locked_button")),
+      b(new akm("widget/locked_button_highlighted")),
+      c(new akm("widget/locked_button_disabled")),
+      d(new akm("widget/unlocked_button")),
+      e(new akm("widget/unlocked_button_highlighted")),
+      f(new akm("widget/unlocked_button_disabled"));
+
+      final akm g;
+
+      private a(akm $$0) {
+         this.g = $$0;
+      }
    }
 }

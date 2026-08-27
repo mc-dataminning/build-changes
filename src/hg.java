@@ -1,8 +1,12 @@
-@FunctionalInterface
-public interface hg<T> {
-   void execute(T var1, hc<T> var2, he var3);
+public interface hg extends AutoCloseable {
+   void a(int var1, String var2);
 
-   default hb<T> bind(T $$0) {
-      return ($$1, $$2) -> this.execute($$0, $$1, $$2);
-   }
+   void a(int var1, String var2, int var3);
+
+   void a(String var1);
+
+   void a(int var1, akm var2, int var3);
+
+   @Override
+   void close();
 }

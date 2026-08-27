@@ -1,69 +1,53 @@
-public class cmi extends cmg {
-   public cmi(brn<? extends cmi> $$0, dad $$1) {
+public abstract class cmi extends cmd implements cml {
+   private static final ajr<cto> e = ajv.a(cmi.class, ajt.h);
+
+   public cmi(bsa<? extends cmi> $$0, dax $$1) {
       super($$0, $$1);
    }
 
-   public cmi(dad $$0, bsa $$1) {
-      super(brn.C, $$1, $$0);
+   public cmi(bsa<? extends cmi> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dax $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public cmi(dad $$0, double $$1, double $$2, double $$3) {
-      super(brn.C, $$1, $$2, $$3, $$0);
+   public cmi(bsa<? extends cmi> $$0, bso $$1, double $$2, double $$3, double $$4, dax $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dN()
-               .a(
-                  new kt(kx.Q, this.p()),
-                  this.ds(),
-                  this.du(),
-                  this.dy(),
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08
-               );
-         }
+   public void a(cto $$0) {
+      if ($$0.e()) {
+         this.ap().a(e, this.y());
+      } else {
+         this.ap().a(e, $$0.c(1));
       }
    }
 
    @Override
-   protected void a(etm $$0) {
-      super.a($$0);
-      $$0.a().a(this.dO().b(this, this.u()), 0.0F);
+   public cto p() {
+      return this.ap().a(e);
    }
 
    @Override
-   protected void a(etn $$0) {
+   protected void a(ajv.a $$0) {
+      $$0.a(e, this.y());
+   }
+
+   @Override
+   public void b(ud $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().a(this.dR()));
+   }
+
+   @Override
+   public void a(ud $$0) {
       super.a($$0);
-      if (!this.dN().B) {
-         if (this.ah.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ah.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cdu $$3 = brn.t.a(this.dN());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.ds(), this.du(), this.dy(), this.dD(), 0.0F);
-                  this.dN().b($$3);
-               }
-            }
-         }
-
-         this.dN().a(this, (byte)3);
-         this.am();
+      if ($$0.b("Item", 10)) {
+         this.a(cto.a(this.dR(), (va)$$0.p("Item")).orElse(this.y()));
+      } else {
+         this.a(this.y());
       }
    }
 
-   @Override
-   protected csu r() {
-      return ctc.qR;
+   private cto y() {
+      return new cto(ctr.tX);
    }
 }

@@ -1,22 +1,167 @@
-public enum fbr {
-   a(0, egf.a),
-   b(1, egf.b),
-   c(2, egf.c),
-   d(3, egf.d);
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-   private final int e;
-   private final wu f;
+public class fbr extends gty {
+   private static final akm a = new akm("icon/unseen_notification");
+   private static final akm b = new akm("icon/news");
+   private static final akm c = new akm("icon/invite");
+   private static final akm B = new akm("icon/trial_available");
+   private final CompletableFuture<Boolean> C = ezc.a().thenApply($$0 -> $$0.a() == ezc.b.a);
+   @Nullable
+   private fch.c D;
+   @Nullable
+   private fbr.a E;
+   private volatile int F;
+   private static boolean G;
+   private static boolean H;
+   private static boolean I;
+   private final fbr.a J = new fbr.a() {
+      @Override
+      public fch.c a(fay $$0) {
+         fch.c $$1 = $$0.a.a();
+         fbr.this.a($$0, $$1);
+         fbr.this.b($$0, $$1);
+         return $$1;
+      }
 
-   private fbr(int $$0, akg<ege> $$1) {
-      this.e = $$0;
-      this.f = wu.c($$1.a().f("generator"));
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fbr.a K = new fbr.a() {
+      @Override
+      public fch.c a(fay $$0) {
+         fch.c $$1 = $$0.a.a();
+         fbr.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fbr() {
+      super(fdr.a);
    }
 
-   public wu a() {
-      return this.f;
+   @Override
+   public void aM_() {
+      if (this.D != null) {
+         this.D.a();
+      }
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.m.bc().b.a();
+   }
+
+   @Nullable
+   private fbr.a C() {
+      boolean $$0 = this.E() && this.C.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.D() ? this.J : this.K;
+      }
+   }
+
+   @Override
+   public void e() {
+      fbr.a $$0 = this.C();
+      if (!Objects.equals(this.E, $$0)) {
+         this.E = $$0;
+         if (this.E != null) {
+            this.D = this.E.a(this.m.bc());
+         } else {
+            this.D = null;
+         }
+      }
+
+      if (this.D != null) {
+         this.D.b();
+      }
+   }
+
+   private boolean D() {
+      return this.m.m.T().c();
+   }
+
+   private boolean E() {
+      return this.m.y instanceof fmd;
+   }
+
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.C.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(ffm $$0) {
+      int $$1 = this.F;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (I) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.E != null && this.E.a()) {
+         if (H) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (G) {
+            $$0.a(B, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(fay $$0, fch.c $$1) {
+      $$1.a($$0.d, $$0x -> this.F = $$0x);
+      $$1.a($$0.e, $$0x -> G = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         H = $$0.g.a();
+      });
+   }
+
+   void b(fay $$0, fch.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         I = false;
+
+         for (ezy $$1x : $$0x) {
+            if (!$$1x.a()) {
+               I = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fch.c a(fay var1);
+
+      boolean a();
    }
 }

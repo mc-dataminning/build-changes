@@ -1,65 +1,79 @@
-public class cmw {
-   public static final cmw a = a("core");
-   public static final cmw b = a("idle");
-   public static final cmw c = a("work");
-   public static final cmw d = a("play");
-   public static final cmw e = a("rest");
-   public static final cmw f = a("meet");
-   public static final cmw g = a("panic");
-   public static final cmw h = a("raid");
-   public static final cmw i = a("pre_raid");
-   public static final cmw j = a("hide");
-   public static final cmw k = a("fight");
-   public static final cmw l = a("celebrate");
-   public static final cmw m = a("admire_item");
-   public static final cmw n = a("avoid");
-   public static final cmw o = a("ride");
-   public static final cmw p = a("play_dead");
-   public static final cmw q = a("long_jump");
-   public static final cmw r = a("ram");
-   public static final cmw s = a("tongue");
-   public static final cmw t = a("swim");
-   public static final cmw u = a("lay_spawn");
-   public static final cmw v = a("sniff");
-   public static final cmw w = a("investigate");
-   public static final cmw x = a("roar");
-   public static final cmw y = a("emerge");
-   public static final cmw z = a("dig");
-   private final String A;
-   private final int B;
-
-   private cmw(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public abstract class cmw extends cmo {
+   protected cmw(bsa<? extends cmw> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   protected cmw(bsa<? extends cmw> $$0, double $$1, double $$2, double $$3, dax $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   private static cmw a(String $$0) {
-      return jj.a(ld.E, $$0, new cmw($$0));
+   protected cmw(bsa<? extends cmw> $$0, bso $$1, dax $$2) {
+      this($$0, $$1.du(), $$1.dy() - 0.1F, $$1.dA(), $$2);
+      this.c($$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cmw $$1 = (cmw)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   public boolean a(double $$0) {
+      double $$1 = this.cK().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   public void l() {
+      super.l();
+      eui $$0 = cmq.a(this, this::b);
+      boolean $$1 = false;
+      if ($$0.c() == eui.a.b) {
+         io $$2 = ((eug)$$0).a();
+         drb $$3 = this.dP().a_($$2);
+         if ($$3.a(dea.ed)) {
+            this.g($$2);
+            $$1 = true;
+         } else if ($$3.a(dea.kF)) {
+            dog $$4 = this.dP().c_($$2);
+            if ($$4 instanceof dpw && dpw.a(this)) {
+               dpw.a(this.dP(), $$2, $$3, this, (dpw)$$4);
+            }
+
+            $$1 = true;
+         }
+      }
+
+      if ($$0.c() != eui.a.a && !$$1) {
+         this.a($$0);
+      }
+
+      this.aS();
+      euk $$5 = this.ds();
+      double $$6 = this.du() + $$5.c;
+      double $$7 = this.dw() + $$5.d;
+      double $$8 = this.dA() + $$5.e;
+      this.J();
+      float $$11;
+      if (this.be()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dP().a(ky.d, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
+      } else {
+         $$11 = 0.99F;
+      }
+
+      this.g($$5.a((double)$$11));
+      this.ba();
+      this.a_($$6, $$7, $$8);
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   protected double aY() {
+      return 0.03;
    }
 }

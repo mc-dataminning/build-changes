@@ -1,203 +1,107 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public class ra {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final ayz<Float> e = ayz.a;
-   private static final ayz<Float> f = ayz.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final ayz<Float> g = ayz.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final ayz<Float> h = ayz.a($$0 -> $$0 * 2.0F);
-
-   public static <C, I extends ayz<C>> axb<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      ayz<Float> $$4 = $$3 ? f : e;
-      axb<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      axb<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      axb<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      axb<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return axb.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
+   public static ehj.c a(jb<dbw> $$0, Map<bsr, ehq> $$1, dwp.b $$2, ehu $$3) {
+      return new ehj.c($$0, $$1, $$2, $$3);
    }
 
-   public static <C, I extends ayz<C>> axb<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      ayz<Float> $$5 = $$4 ? g : e;
-      return axb.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
+   private static ehj.c a(jb<dbw> $$0, dwp.b $$1, ehu $$2) {
+      return a($$0, Map.of(), $$1, $$2);
    }
 
-   public static <C, I extends ayz<C>> axb<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      ayz<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return axb.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
+   private static ehj.c a(jb<dbw> $$0, ehu $$1) {
+      return a($$0, Map.of(), dwp.b.e, $$1);
    }
 
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, ayz<Float> $$7) {
-      float $$8 = -0.5775F;
-      axb<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      axb<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return axb.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, I $$1, float $$2, float $$3, ayz<Float> $$4) {
-      float $$5 = dwg.a(0.4F);
-      float $$6 = dwg.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      axb.b<C, I> $$8 = axb.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
-      }
-
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
-      }
-
-      return $$8.a();
-   }
-
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, float $$1, ayz<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return axb.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
-   }
-
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, ayz<Float> $$5) {
-      axb<C, I> $$6 = axb.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      axb.b<C, I> $$7 = axb.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, axb.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, axb.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         axb<C, I> $$8 = axb.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         axb<C, I> $$9 = axb.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         axb<C, I> $$10 = axb.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         axb<C, I> $$11 = axb.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
-   }
-
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, float $$1, boolean $$2, ayz<Float> $$3) {
-      axb.b<C, I> $$4 = axb.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, axz.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends ayz<C>> axb<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, ayz<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      axb<C, I> $$14 = a($$1, axz.i($$5, 0.6F, 1.5F), $$9, $$10);
-      axb<C, I> $$15 = a($$1, axz.i($$5, 0.6F, 1.0F), $$9, $$10);
-      axb<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      axb<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, axz.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      axb<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      axb<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      axb<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      axb<C, I> $$21 = axb.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      axb<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      axb.b<C, I> $$23 = axb.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends ayz<C>> axb<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, ayz<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return axb.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   public static void a(qo<ehj> $$0) {
+      iy<dbw> $$1 = $$0.a(lf.az);
+      iy<eis> $$2 = $$0.a(lf.aM);
+      $$0.a(
+         ehd.a,
+         new ejj(
+            a($$1.b(avv.y), Map.of(bsr.a, new ehq(ehq.a.b, boi.a(new dci.c(bsa.aC, 1, 1, 1)))), dwp.b.e, ehu.c), $$2.b(qt.a), 7, efp.a(dxn.a(0)), true, dwt.a.a
+         )
+      );
+      $$0.a(ehd.b, new ejn(a($$1.b(avv.t), dwp.b.d, ehu.a), ejn.a.a));
+      $$0.a(ehd.c, new ejn(a($$1.b(avv.u), dwp.b.d, ehu.a), ejn.a.b));
+      $$0.a(ehd.d, new ekf(a($$1.b(avv.Q), ehu.a)));
+      $$0.a(ehd.e, new ejl(a($$1.b(avv.s), ehu.a)));
+      $$0.a(ehd.f, new eje(a($$1.b(avv.q), ehu.a)));
+      $$0.a(ehd.g, new eji(a($$1.b(avv.r), ehu.a)));
+      $$0.a(ehd.h, new ejz(a($$1.b(avv.G), ehu.a), false));
+      $$0.a(ehd.i, new ejz(a($$1.b(avv.F), ehu.a), true));
+      $$0.a(
+         ehd.j,
+         new ekd(
+            a(
+               $$1.b(avv.J),
+               Map.of(bsr.a, new ehq(ehq.a.a, boi.a(new dci.c(bsa.bo, 1, 1, 1))), bsr.b, new ehq(ehq.a.a, boi.a(new dci.c(bsa.p, 1, 1, 1)))),
+               dwp.b.e,
+               ehu.a
+            )
+         )
+      );
+      $$0.a(ehd.k, new ekb(a($$1.b(avv.H), ehu.b)));
+      $$0.a(
+         ehd.l,
+         new ejt(
+            a(
+               $$1.b(avv.v),
+               Map.of(bsr.a, new ehq(ehq.a.b, boi.a(new dci.c(bsa.Y, 1, 2, 4))), bsr.e, new ehq(ehq.a.b, dci.a), bsr.d, new ehq(ehq.a.b, dci.a)),
+               dwp.b.e,
+               ehu.a
+            )
+         )
+      );
+      $$0.a(ehd.m, new ejv(a($$1.b(avv.w), ehu.a), ejv.a.b, 0.3F, 0.9F));
+      $$0.a(ehd.n, new ejv(a($$1.b(avv.x), ehu.a), ejv.a.a, 0.3F, 0.9F));
+      $$0.a(ehd.o, new ejp(a($$1.b(avv.R), Map.of(bsr.a, new ehq(ehq.a.a, ejp.d)), dwp.b.h, ehu.a)));
+      $$0.a(ehd.p, new ejr(a($$1.b(avv.S), dwp.b.h, ehu.c), eft.a(dxn.a(32), dxn.c(2))));
+      $$0.a(ehd.q, new ejg(a($$1.b(avv.W), ehu.a)));
+      $$0.a(ehd.r, new ejc(a($$1.b(avv.p), dwp.b.d, ehu.a)));
+      $$0.a(ehd.s, new ejj(a($$1.b(avv.T), ehu.a), $$2.b(qk.a), 6, efp.a(dxn.a(33)), false));
+      $$0.a(ehd.t, new ejj(a($$1.b(avv.L), ehu.c), $$2.b(qu.a), 6, efp.a(dxn.a(0)), true, dwt.a.a));
+      $$0.a(ehd.u, new ejj(a($$1.b(avv.K), ehu.c), $$2.b(qq.a), 6, efp.a(dxn.a(0)), true, dwt.a.a));
+      $$0.a(ehd.v, new ejj(a($$1.b(avv.M), ehu.c), $$2.b(qx.a), 6, efp.a(dxn.a(0)), true, dwt.a.a));
+      $$0.a(ehd.w, new ejj(a($$1.b(avv.N), ehu.c), $$2.b(qy.a), 6, efp.a(dxn.a(0)), true, dwt.a.a));
+      $$0.a(ehd.x, new ejj(a($$1.b(avv.O), ehu.c), $$2.b(rc.a), 6, efp.a(dxn.a(0)), true, dwt.a.a));
+      $$0.a(
+         ehd.y,
+         new ejx(
+            a($$1.b(avv.E), ehu.a),
+            List.of(new ejx.a(ejw.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new ejx.a(ejw.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
+      );
+      $$0.a(ehd.z, new ejx(a($$1.b(avv.z), ehu.a), new ejx.a(ejw.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
+      $$0.a(ehd.A, new ejx(a($$1.b(avv.A), ehu.a), new ejx.a(ejw.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
+      $$0.a(ehd.B, new ejx(a($$1.b(avv.C), ehu.a), new ejx.a(ejw.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
+      $$0.a(
+         ehd.C,
+         new ejx(
+            a($$1.b(avv.D), ehu.a),
+            List.of(new ejx.a(ejw.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new ejx.a(ejw.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
+      );
+      $$0.a(ehd.D, new ejx(a($$1.b(avv.B), ehu.a), new ejx.a(ejw.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
+      $$0.a(ehd.E, new ejx(a($$1.b(avv.V), ehu.a), new ejx.a(ejw.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
+      $$0.a(
+         ehd.F,
+         new ejj(
+            a($$1.b(avv.U), Arrays.stream(bsr.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new ehq(ehq.a.b, boi.c()))), dwp.b.h, ehu.d),
+            $$2.b(qf.a),
+            Optional.of(new akm("city_anchor")),
+            7,
+            efp.a(dxn.a(-27)),
+            false,
+            Optional.empty(),
+            116,
+            List.of()
+         )
+      );
+      $$0.a(ehd.G, new ejj(a($$1.b(avv.P), Map.of(), dwp.b.d, ehu.b), $$2.b(re.a), 7, efp.a(dxn.a(-15)), false, dwt.a.a));
    }
 }

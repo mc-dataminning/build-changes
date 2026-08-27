@@ -1,13 +1,23 @@
-public class dpd extends dnm {
-   protected dpd(dno<?> $$0, in $$1, dqh $$2) {
-      super($$0, $$1, $$2);
+public class dpd extends dpq {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dpd(io $$0, drb $$1) {
+      super(doi.i, $$0, $$1);
    }
 
-   public dpd(in $$0, dqh $$1) {
-      this(dno.n, $$0, $$1);
+   @Override
+   public int b() {
+      return 9;
    }
 
-   public boolean a(is $$0) {
-      return $$0.o() == is.a.b;
+   @Override
+   public int c() {
+      return 60;
+   }
+
+   @Override
+   public avg d() {
+      return avh.BW;
    }
 }

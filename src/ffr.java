@@ -1,66 +1,71 @@
 import javax.annotation.Nullable;
 
-public abstract class ffr extends ffc {
-   ffr(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, wt.a);
-   }
+public abstract class ffr extends ffx implements fhu {
+   @Nullable
+   private fhv a;
+   private boolean b;
 
-   public static ffr a(int $$0, int $$1, akh $$2, int $$3, int $$4) {
-      return new ffr.b(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static ffr a(int $$0, int $$1, akh $$2) {
-      return new ffr.a(0, 0, $$0, $$1, $$2);
+   public ffr(int $$0, int $$1, int $$2, int $$3, wx $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(fja $$0) {
+   public final boolean aG_() {
+      return this.b;
    }
 
    @Override
-   public void a(grq $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
+   public final void b(boolean $$0) {
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public feo a(fjg $$0) {
-      return null;
+   public fhv aH_() {
+      return this.a;
    }
 
-   static class a extends ffr {
-      private final akh a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, akh $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
+   @Override
+   public void a(@Nullable fhv $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      @Override
-      public void b(fer $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v());
+      if ($$0 != null) {
+         $$0.a(true);
       }
+
+      this.a = $$0;
    }
 
-   static class b extends ffr {
-      private final akh a;
-      private final int b;
-      private final int c;
+   @Nullable
+   @Override
+   public ffj a(fkb $$0) {
+      return fhu.super.a($$0);
+   }
 
-      public b(int $$0, int $$1, int $$2, int $$3, akh $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return fhu.super.a($$0, $$1, $$2);
+   }
 
-      @Override
-      protected void b(fer $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v(), 0.0F, 0.0F, this.x(), this.v(), this.b, this.c);
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return fhu.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return fhu.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aI_() {
+      return fhu.super.aI_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fhu.super.a($$0);
    }
 }

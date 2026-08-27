@@ -4,11 +4,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record bi(ct.c b, ct.c c, ct.c d, ct.c e, ct.c f) {
    public static final Codec<bi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axh.a(ct.c.d, "x", ct.c.c).forGetter(bi::a),
-               axh.a(ct.c.d, "y", ct.c.c).forGetter(bi::b),
-               axh.a(ct.c.d, "z", ct.c.c).forGetter(bi::c),
-               axh.a(ct.c.d, "horizontal", ct.c.c).forGetter(bi::d),
-               axh.a(ct.c.d, "absolute", ct.c.c).forGetter(bi::e)
+               ct.c.d.optionalFieldOf("x", ct.c.c).forGetter(bi::a),
+               ct.c.d.optionalFieldOf("y", ct.c.c).forGetter(bi::b),
+               ct.c.d.optionalFieldOf("z", ct.c.c).forGetter(bi::c),
+               ct.c.d.optionalFieldOf("horizontal", ct.c.c).forGetter(bi::d),
+               ct.c.d.optionalFieldOf("absolute", ct.c.c).forGetter(bi::e)
             )
             .apply($$0, bi::new)
    );
@@ -29,7 +29,7 @@ public record bi(ct.c b, ct.c c, ct.c d, ct.c e, ct.c f) {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)axz.e($$6)) || !this.c.d((double)axz.e($$7)) || !this.d.d((double)axz.e($$8))) {
+      if (!this.b.d((double)ayd.e($$6)) || !this.c.d((double)ayd.e($$7)) || !this.d.d((double)ayd.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));

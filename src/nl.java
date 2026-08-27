@@ -1,49 +1,97 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public final class nl {
-   private static final nl a = new nl(ImmutableList.of());
-   private static final Comparator<drk.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<drk.a<?>> c;
+public class nl implements nj {
+   private final ddy a;
+   private final List<nl.b> b = Lists.newArrayList();
 
-   public nl a(drk.a<?> $$0) {
-      return new nl(ImmutableList.builder().addAll(this.c).add($$0).build());
-   }
-
-   public nl a(nl $$0) {
-      return new nl(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
-   }
-
-   private nl(List<drk.a<?>> $$0) {
-      this.c = $$0;
-   }
-
-   public static nl a() {
-      return a;
-   }
-
-   public static nl a(drk.a<?>... $$0) {
-      return new nl(ImmutableList.copyOf($$0));
+   private nl(ddy $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof nl && this.c.equals(((nl)$$0).c);
+   public ddy a() {
+      return this.a;
    }
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   public static nl a(ddy $$0) {
+      return new nl($$0);
    }
 
-   public String b() {
-      return this.c.stream().sorted(b).map(drk.a::toString).collect(Collectors.joining(","));
+   public nl a(List<np> $$0) {
+      this.b.add(new nl.b($$0));
+      return this;
    }
 
-   @Override
-   public String toString() {
-      return this.b();
+   public nl a(np $$0) {
+      return this.a(ImmutableList.of($$0));
+   }
+
+   public nl a(nk $$0, List<np> $$1) {
+      this.b.add(new nl.a($$0, $$1));
+      return this;
+   }
+
+   public nl a(nk $$0, np... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public nl a(nk $$0, np $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      drc<ddy, drb> $$0 = this.a.m();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(nl.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends nl.b {
+      private final nk a;
+
+      a(nk $$0, List<np> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(drc<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<np> a;
+
+      b(List<np> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(drc<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", np.a(this.a));
+         return $$0;
+      }
    }
 }

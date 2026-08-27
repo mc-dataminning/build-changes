@@ -1,42 +1,101 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ade implements ze<abq> {
+   public static final yv<wi, ade> a = ze.a(ade::a, ade::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final kw k;
 
-public record ade(enn b, byte c, boolean d, Optional<List<enj>> e, Optional<enp.b> f) implements zb<abm> {
-   public static final ys<wf, ade> a = ys.a(enn.b, ade::b, yq.c, ade::e, yq.b, ade::f, enj.a.a(yq.a()).a(yq::a), ade::g, enp.b.a, ade::h, ade::new);
+   public <T extends kw> ade(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
+   }
 
-   public ade(enn $$0, byte $$1, boolean $$2, @Nullable Collection<enj> $$3, @Nullable enp.b $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private ade(wi $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = ky.bg.decode($$0);
+   }
+
+   private void a(wi $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.p(this.i);
+      ky.bg.encode($$0, this.k);
    }
 
    @Override
-   public zd<ade> a() {
-      return afx.P;
+   public zg<ade> a() {
+      return agb.M;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public void a(enp $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   public boolean b() {
+      return this.j;
    }
 
-   public byte e() {
+   public double e() {
+      return this.b;
+   }
+
+   public double f() {
       return this.c;
    }
 
-   public boolean f() {
+   public double g() {
       return this.d;
    }
 
-   public Optional<List<enj>> g() {
+   public float h() {
       return this.e;
    }
 
-   public Optional<enp.b> h() {
+   public float i() {
       return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public kw m() {
+      return this.k;
    }
 }

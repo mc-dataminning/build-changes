@@ -1,25 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.LongStream;
 
-public class dxt implements dxg {
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jr.v(16).optionalFieldOf("offset", jr.g).forGetter($$0x -> $$0x.e), dqh.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dxt::new)
-   );
-   private final jr e;
-   private final dqh f;
+public class dxt {
+   private long b;
+   private long c;
+   public static final Codec<dxt> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dxt($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   protected dxt(jr $$0, dqh $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dxt(dxi.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public boolean a(day $$0, in $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public dxt(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public dxh<?> a() {
-      return dxh.g;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

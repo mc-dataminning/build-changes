@@ -1,135 +1,166 @@
-import com.google.common.base.Preconditions;
-
 public class eme {
-   private static final eme[] am = new eme[64];
-   public static final eme a = new eme(0, 0);
-   public static final eme b = new eme(1, 8368696);
-   public static final eme c = new eme(2, 16247203);
-   public static final eme d = new eme(3, 13092807);
-   public static final eme e = new eme(4, 16711680);
-   public static final eme f = new eme(5, 10526975);
-   public static final eme g = new eme(6, 10987431);
-   public static final eme h = new eme(7, 31744);
-   public static final eme i = new eme(8, 16777215);
-   public static final eme j = new eme(9, 10791096);
-   public static final eme k = new eme(10, 9923917);
-   public static final eme l = new eme(11, 7368816);
-   public static final eme m = new eme(12, 4210943);
-   public static final eme n = new eme(13, 9402184);
-   public static final eme o = new eme(14, 16776437);
-   public static final eme p = new eme(15, 14188339);
-   public static final eme q = new eme(16, 11685080);
-   public static final eme r = new eme(17, 6724056);
-   public static final eme s = new eme(18, 15066419);
-   public static final eme t = new eme(19, 8375321);
-   public static final eme u = new eme(20, 15892389);
-   public static final eme v = new eme(21, 5000268);
-   public static final eme w = new eme(22, 10066329);
-   public static final eme x = new eme(23, 5013401);
-   public static final eme y = new eme(24, 8339378);
-   public static final eme z = new eme(25, 3361970);
-   public static final eme A = new eme(26, 6704179);
-   public static final eme B = new eme(27, 6717235);
-   public static final eme C = new eme(28, 10040115);
-   public static final eme D = new eme(29, 1644825);
-   public static final eme E = new eme(30, 16445005);
-   public static final eme F = new eme(31, 6085589);
-   public static final eme G = new eme(32, 4882687);
-   public static final eme H = new eme(33, 55610);
-   public static final eme I = new eme(34, 8476209);
-   public static final eme J = new eme(35, 7340544);
-   public static final eme K = new eme(36, 13742497);
-   public static final eme L = new eme(37, 10441252);
-   public static final eme M = new eme(38, 9787244);
-   public static final eme N = new eme(39, 7367818);
-   public static final eme O = new eme(40, 12223780);
-   public static final eme P = new eme(41, 6780213);
-   public static final eme Q = new eme(42, 10505550);
-   public static final eme R = new eme(43, 3746083);
-   public static final eme S = new eme(44, 8874850);
-   public static final eme T = new eme(45, 5725276);
-   public static final eme U = new eme(46, 8014168);
-   public static final eme V = new eme(47, 4996700);
-   public static final eme W = new eme(48, 4993571);
-   public static final eme X = new eme(49, 5001770);
-   public static final eme Y = new eme(50, 9321518);
-   public static final eme Z = new eme(51, 2430480);
-   public static final eme aa = new eme(52, 12398641);
-   public static final eme ab = new eme(53, 9715553);
-   public static final eme ac = new eme(54, 6035741);
-   public static final eme ad = new eme(55, 1474182);
-   public static final eme ae = new eme(56, 3837580);
-   public static final eme af = new eme(57, 5647422);
-   public static final eme ag = new eme(58, 1356933);
-   public static final eme ah = new eme(59, 6579300);
-   public static final eme ai = new eme(60, 14200723);
-   public static final eme aj = new eme(61, 8365974);
-   public final int ak;
-   public final int al;
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final awt d;
+   private final io.a e = new io.a();
+   private final io.a f = new io.a();
 
-   private eme(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   public eme(daz $$0) {
+      this.c = $$0.I_() - 1;
+      int $$1 = $$0.al();
+      int $$2 = ayd.e($$1 - this.c + 1);
+      this.d = new ayr($$2, 256);
+   }
+
+   public void a(dsx $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
       }
    }
 
-   public int a(eme.a $$0) {
-      if (this == a) {
-         return 0;
+   private int a(dsx $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jq.c($$0.g($$1) + 1);
+      io.a $$5 = this.e.d($$2, $$4, $$3);
+      io.a $$6 = this.f.a($$5, it.a);
+      drb $$7 = dea.a.n();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dti $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dea.a.n();
+            int $$10 = $$0.g($$8);
+            $$5.q(jq.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               drb $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(it.a);
+            }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(dad $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
       } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+         io $$7 = this.e.d($$1, $$2 + 1, $$3);
+         drb $$8 = $$0.a_($$7);
+         io $$9 = this.f.d($$1, $$2, $$3);
+         drb $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            io $$11 = this.e.d($$1, $$2 - 1, $$3);
+            drb $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
       }
    }
 
-   public static eme a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static eme c(int $$0) {
-      eme $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(eme.a.b($$1 & 3));
-   }
-
-   public byte b(eme.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final eme.a[] g = new eme.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private boolean a(dad $$0, int $$1, int $$2, io $$3, drb $$4, io $$5, drb $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
-      public static eme.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      return false;
+   }
+
+   private int a(dad $$0, io $$1, drb $$2) {
+      io.a $$3 = this.e.g($$1);
+      io.a $$4 = this.f.a($$1, it.a);
+      drb $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         drb $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(it.a);
       }
 
-      static eme.a b(int $$0) {
-         return g[$$0];
+      return this.c;
+   }
+
+   private static boolean a(dad $$0, io $$1, drb $$2, io $$3, drb $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         evd $$5 = eml.a($$0, $$1, $$2, it.a);
+         evd $$6 = eml.a($$0, $$3, $$4, it.b);
+         return eva.b($$5, $$6);
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

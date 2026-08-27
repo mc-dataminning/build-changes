@@ -1,42 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ehp extends ehw {
-   public static final Codec<ehp> a = Codec.unit(() -> ehp.b);
-   public static final ehp b = new ehp();
+public record ehp(List<ehp.a> c, eig d) {
+   public static final Codec<ehp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ehp.a.a.listOf().fieldOf("structures").forGetter(ehp::a), eig.b.fieldOf("placement").forGetter(ehp::b)).apply($$0, ehp::new)
+   );
+   public static final Codec<ix<ehp>> b = aki.a(lf.aL, a);
 
-   private ehp() {
-      super(ehy.a.a);
+   public ehp(ix<ehj> $$0, eig $$1) {
+      this(List.of(new ehp.a($$0, 1)), $$1);
    }
 
-   @Override
-   public jr a(ekq $$0, djr $$1) {
-      return jr.g;
+   public static ehp.a a(ix<ehj> $$0, int $$1) {
+      return new ehp.a($$0, $$1);
    }
 
-   @Override
-   public List<ekp.c> a(ekq $$0, in $$1, djr $$2, ayg $$3) {
-      return Collections.emptyList();
+   public static ehp.a a(ix<ehj> $$0) {
+      return new ehp.a($$0, 1);
    }
 
-   @Override
-   public egh a(ekq $$0, in $$1, djr $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   public List<ehp.a> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(ekq $$0, day $$1, daw $$2, dse $$3, in $$4, in $$5, djr $$6, egh $$7, ayg $$8, boolean $$9) {
-      return true;
+   public eig b() {
+      return this.d;
    }
 
-   @Override
-   public ehx<?> a() {
-      return ehx.d;
-   }
+   public static record a(ix<ehj> b, int c) {
+      public static final Codec<ehp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ehj.b.fieldOf("structure").forGetter(ehp.a::a), axm.j.fieldOf("weight").forGetter(ehp.a::b)).apply($$0, ehp.a::new)
+      );
 
-   @Override
-   public String toString() {
-      return "Empty";
+      public ix<ehj> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

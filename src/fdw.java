@@ -1,4 +1,14 @@
-import org.joml.Vector3f;
+public enum fdw {
+   a,
+   b,
+   c,
+   d;
 
-public record fdw(float a, Vector3f b, fdu.a c) {
+   public boolean a() {
+      return this == b;
+   }
+
+   public boolean b() {
+      return this == c || this == d;
+   }
 }

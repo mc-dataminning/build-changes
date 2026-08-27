@@ -1,250 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-public class qz {
-   public static final akg<ehy> a = qs.a("village/taiga/town_centers");
-   private static final akg<ehy> b = qs.a("village/taiga/terminators");
-
-   public static void a(ql<ehy> $$0) {
-      ix<eft> $$1 = $$0.a(le.aI);
-      iw<eft> $$2 = $$1.b(si.h);
-      iw<eft> $$3 = $$1.b(si.i);
-      iw<eft> $$4 = $$1.b(si.e);
-      iw<eft> $$5 = $$1.b(si.l);
-      iw<eft> $$6 = $$1.b(si.m);
-      ix<ekn> $$7 = $$0.a(le.aK);
-      iw<ekn> $$8 = $$7.b(qt.f);
-      iw<ekn> $$9 = $$7.b(qt.d);
-      iw<ekn> $$10 = $$7.b(qt.k);
-      iw<ekn> $$11 = $$7.b(qt.o);
-      ix<ehy> $$12 = $$0.a(le.aM);
-      iw<ehy> $$13 = $$12.b(qs.a);
-      iw<ehy> $$14 = $$12.b(b);
+public interface qz {
+   static void a(qo<ehp> $$0) {
+      iy<ehj> $$1 = $$0.a(lf.aJ);
+      iy<dbw> $$2 = $$0.a(lf.az);
+      ix.c<ehp> $$3 = $$0.a(
+         ehc.a,
+         new ehp(
+            List.of(ehp.a($$1.b(ehd.t)), ehp.a($$1.b(ehd.u)), ehp.a($$1.b(ehd.v)), ehp.a($$1.b(ehd.w)), ehp.a($$1.b(ehd.x))), new eie(34, 8, eif.a, 10387312)
+         )
+      );
+      $$0.a(ehc.b, new ehp($$1.b(ehd.f), new eie(32, 8, eif.a, 14357617)));
+      $$0.a(ehc.c, new ehp($$1.b(ehd.g), new eie(32, 8, eif.a, 14357618)));
+      $$0.a(ehc.d, new ehp($$1.b(ehd.e), new eie(32, 8, eif.a, 14357619)));
+      $$0.a(ehc.e, new ehp($$1.b(ehd.j), new eie(32, 8, eif.a, 14357620)));
+      $$0.a(ehc.f, new ehp($$1.b(ehd.a), new eie(js.g, eig.c.b, 0.2F, 165745296, Optional.of(new eig.a($$3, 10)), 32, 8, eif.a)));
+      $$0.a(ehc.q, new ehp($$1.b(ehd.F), new eie(24, 8, eif.a, 20083232)));
+      $$0.a(ehc.g, new ehp($$1.b(ehd.l), new eie(32, 5, eif.b, 10387313)));
+      $$0.a(ehc.h, new ehp($$1.b(ehd.d), new eie(80, 20, eif.b, 10387319)));
+      $$0.a(ehc.i, new ehp($$1.b(ehd.r), new eie(new js(9, 0, 9), eig.c.c, 0.01F, 0, Optional.empty(), 1, 0, eif.a)));
+      $$0.a(ehc.j, new ehp(List.of(ehp.a($$1.b(ehd.b)), ehp.a($$1.b(ehd.c))), new eie(js.g, eig.c.d, 0.004F, 0, Optional.empty(), 1, 0, eif.a)));
       $$0.a(
-         a,
-         new ehy(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
-               Pair.of(ehw.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
-               Pair.of(ehw.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
-               Pair.of(ehw.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
+         ehc.k,
+         new ehp(
+            List.of(
+               ehp.a($$1.b(ehd.y)),
+               ehp.a($$1.b(ehd.z)),
+               ehp.a($$1.b(ehd.A)),
+               ehp.a($$1.b(ehd.B)),
+               ehp.a($$1.b(ehd.C)),
+               ehp.a($$1.b(ehd.D)),
+               ehp.a($$1.b(ehd.E))
             ),
-            ehy.a.b
+            new eie(40, 15, eif.a, 34222645)
          )
       );
-      qs.a(
-         $$0,
-         "village/taiga/streets",
-         new ehy(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/streets/corner_01", $$10), 2),
-               Pair.of(ehw.a("village/taiga/streets/corner_02", $$10), 2),
-               Pair.of(ehw.a("village/taiga/streets/corner_03", $$10), 2),
-               Pair.of(ehw.a("village/taiga/streets/straight_01", $$10), 4),
-               Pair.of(ehw.a("village/taiga/streets/straight_02", $$10), 4),
-               Pair.of(ehw.a("village/taiga/streets/straight_03", $$10), 4),
-               Pair.of(ehw.a("village/taiga/streets/straight_04", $$10), 7),
-               Pair.of(ehw.a("village/taiga/streets/straight_05", $$10), 7),
-               Pair.of(ehw.a("village/taiga/streets/straight_06", $$10), 4),
-               Pair.of(ehw.a("village/taiga/streets/crossroad_01", $$10), 1),
-               Pair.of(ehw.a("village/taiga/streets/crossroad_02", $$10), 1),
-               Pair.of(ehw.a("village/taiga/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ehw.a("village/taiga/streets/crossroad_04", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/streets/crossroad_05", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/streets/crossroad_06", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/streets/turn_01", $$10), 3)
-               }
-            ),
-            ehy.a.a
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/zombie/streets",
-         new ehy(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/zombie/streets/corner_01", $$10), 2),
-               Pair.of(ehw.a("village/taiga/zombie/streets/corner_02", $$10), 2),
-               Pair.of(ehw.a("village/taiga/zombie/streets/corner_03", $$10), 2),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_01", $$10), 4),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_02", $$10), 4),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_03", $$10), 4),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_04", $$10), 7),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_05", $$10), 7),
-               Pair.of(ehw.a("village/taiga/zombie/streets/straight_06", $$10), 4),
-               Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
-               Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            ehy.a.a
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/houses",
-         new ehy(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
-               Pair.of(ehw.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
-               Pair.of(ehw.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
-               Pair.of(ehw.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
-               Pair.of(ehw.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
-               Pair.of(ehw.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
-               new Pair[]{
-                  Pair.of(ehw.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_library_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_temple_1", $$8), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
-                  Pair.of(ehw.g(), 6)
-               }
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/zombie/houses",
-         new ehy(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
-               Pair.of(ehw.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
-               Pair.of(ehw.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
-                  Pair.of(ehw.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
-                  Pair.of(ehw.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
-                  Pair.of(ehw.g(), 6)
-               }
-            ),
-            ehy.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new ehy(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(ehw.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(ehw.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(ehw.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            ehy.a.a
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/decor",
-         new ehy(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/taiga_lamp_post_1"), 10),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_5"), 2),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_6"), 1),
-               Pair.of(ehw.a($$2), 4),
-               Pair.of(ehw.a($$3), 4),
-               Pair.of(ehw.a($$4), 2),
-               Pair.of(ehw.a($$5), 4),
-               Pair.of(ehw.a($$6), 1),
-               new Pair[]{Pair.of(ehw.g(), 4)}
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/zombie/decor",
-         new ehy(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(ehw.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(ehw.a($$2), 4),
-               Pair.of(ehw.a($$3), 4),
-               Pair.of(ehw.a($$4), 2),
-               Pair.of(ehw.a($$5), 4),
-               Pair.of(ehw.a($$6), 1),
-               Pair.of(ehw.g(), 4)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/villagers",
-         new ehy(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ehw.a("village/taiga/villagers/nitwit"), 1),
-               Pair.of(ehw.a("village/taiga/villagers/baby"), 1),
-               Pair.of(ehw.a("village/taiga/villagers/unemployed"), 10)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "village/taiga/zombie/villagers",
-         new ehy(
-            $$13,
-            ImmutableList.of(Pair.of(ehw.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(ehw.a("village/taiga/zombie/villagers/unemployed"), 10)),
-            ehy.a.b
-         )
-      );
+      $$0.a(ehc.l, new ehp(List.of(ehp.a($$1.b(ehd.h)), ehp.a($$1.b(ehd.i))), new eie(24, 4, eif.a, 165745295)));
+      $$0.a(ehc.m, new ehp(List.of(ehp.a($$1.b(ehd.m)), ehp.a($$1.b(ehd.n))), new eie(20, 8, eif.a, 14357621)));
+      $$0.a(ehc.n, new ehp(List.of(ehp.a($$1.b(ehd.o), 2), ehp.a($$1.b(ehd.s), 3)), new eie(27, 4, eif.a, 30084232)));
+      $$0.a(ehc.o, new ehp($$1.b(ehd.p), new eie(2, 1, eif.a, 14357921)));
+      $$0.a(ehc.p, new ehp($$1.b(ehd.q), new eie(20, 11, eif.b, 10387313)));
+      $$0.a(ehc.r, new ehp($$1.b(ehd.k), new eid(32, 3, 128, $$2.b(avv.o))));
+      $$0.a(ehc.s, new ehp($$1.b(ehd.G), new eie(34, 8, eif.a, 83469867)));
    }
 }

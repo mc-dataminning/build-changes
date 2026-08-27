@@ -1,29 +1,19 @@
-public class zk implements zb<zh> {
-   public static final ys<vu, zk> a = zb.a(zk::a, zk::new);
-   private final long b;
+public interface zk extends abk, vs {
+   void a(zn var1);
 
-   public zk(long $$0) {
-      this.b = $$0;
-   }
+   void a(zo var1);
 
-   private zk(vu $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(zl var1);
 
-   private void a(vu $$0) {
-      $$0.b(this.b);
-   }
+   void a(zm var1);
 
-   @Override
-   public zd<zk> a() {
-      return zr.c;
-   }
+   void a(zq var1);
 
-   public void a(zh $$0) {
-      $$0.a(this);
-   }
+   void a(zp var1);
 
-   public long b() {
-      return this.b;
-   }
+   void a(zt var1);
+
+   void a(zr var1);
+
+   void a(zs var1);
 }

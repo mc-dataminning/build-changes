@@ -1,84 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dlc extends dcq implements dgm {
+public class dlc extends dho {
    public static final MapCodec<dlc> a = b(dlc::new);
-   public static final drf<drr> b = dqx.bj;
 
    @Override
    public MapCodec<dlc> a() {
       return a;
    }
 
-   protected dlc(dqg.d $$0) {
+   public dlc(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, drr.b));
    }
 
    @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dpb($$0, $$1);
-   }
-
-   @Override
-   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
-      dnm $$5 = $$1.c_($$2);
-      if ($$5 instanceof dpb) {
-         return ((dpb)$$5).a($$3) ? bpm.a($$1.B) : bpm.d;
+   public void a(dax $$0, drb $$1, io $$2, bru $$3, float $$4) {
+      if ($$3.bX()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         return bpm.d;
+         $$3.a($$4, 0.0F, $$0.ai().k());
       }
    }
 
    @Override
-   public void a(dad $$0, in $$1, dqh $$2, @Nullable bsa $$3, csz $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dnm $$5 = $$0.c_($$1);
-            if ($$5 instanceof dpb) {
-               ((dpb)$$5).a($$3);
-            }
-         }
+   public void a(dad $$0, bru $$1) {
+      if ($$1.bX()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bru $$0) {
+      euk $$1 = $$0.ds();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bso ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
       }
    }
 
    @Override
-   protected djk a_(dqh $$0) {
-      return djk.c;
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
-      if ($$1 instanceof aqh) {
-         if ($$1.c_($$2) instanceof dpb $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.C();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aqh)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
+   public void a(dax $$0, io $$1, drb $$2, bru $$3) {
+      double $$4 = Math.abs($$3.ds().d);
+      if ($$4 < 0.1 && !$$3.bW()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.g($$3.ds().d($$5, 1.0, $$5));
       }
-   }
 
-   private void a(aqh $$0, dpb $$1) {
-      switch ($$1.u()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.A();
-         case d:
-      }
+      super.a($$0, $$1, $$2, $$3);
    }
 }

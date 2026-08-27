@@ -1,35 +1,36 @@
-public record aaj(aaj.a c) implements aac {
-   public static final ys<vu, aaj> a = aac.a(aaj::a, aaj::new);
-   public static final aac.b<aaj> b = aac.a("debug/hive");
+public record aaj(io c, int d, String e, int f) implements aaf {
+   public static final yv<vx, aaj> a = aaf.a(aaj::a, aaj::new);
+   public static final aaf.b<aaj> b = aaf.a("debug/game_test_add_marker");
 
-   private aaj(vu $$0) {
-      this(new aaj.a($$0));
+   private aaj(vx $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vu $$0) {
-      this.c.a($$0);
+   private void a(vx $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public aac.b<aaj> a() {
+   public aaf.b<aaj> a() {
       return b;
    }
 
-   public aaj.a b() {
+   public io b() {
       return this.c;
    }
 
-   public static record a(in a, String b, int c, int d, boolean e) {
-      public a(vu $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
+   public int c() {
+      return this.d;
+   }
 
-      public void a(vu $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

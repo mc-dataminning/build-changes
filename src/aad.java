@@ -1,23 +1,21 @@
-public record aad(akh a) implements aac {
-   public static <T extends vu> ys<T, aad> a(akh $$0, int $$1) {
-      return aac.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new aad($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public record aad(String c) implements aaf {
+   public static final yv<vx, aad> a = aaf.a(aad::a, aad::new);
+   public static final aaf.b<aad> b = aaf.a("brand");
+
+   private aad(vx $$0) {
+      this($$0.p());
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aac.b<aad> a() {
-      return new aac.b<>(this.a);
+   public aaf.b<aad> a() {
+      return b;
    }
 
-   public akh b() {
-      return this.a;
+   public String b() {
+      return this.c;
    }
 }

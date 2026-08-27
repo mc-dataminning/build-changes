@@ -1,136 +1,47 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class fou {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public class fou extends ffc {
-   private static final akh b = new akh("recipe_book/slot_many_craftable");
-   private static final akh c = new akh("recipe_book/slot_craftable");
-   private static final akh d = new akh("recipe_book/slot_many_uncraftable");
-   private static final akh e = new akh("recipe_book/slot_uncraftable");
-   private static final float f = 15.0F;
-   private static final int m = 25;
-   public static final int a = 30;
-   private static final wu n = wu.c("gui.recipebook.moreRecipes");
-   private cpr<?> o;
-   private avf p;
-   private fov q;
-   private float r;
-   private float s;
-   private int u;
-
-   public fou() {
-      super(0, 0, 25, 25, wt.a);
+   public static void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   public void a(fov $$0, fos $$1) {
-      this.q = $$0;
-      this.o = (cpr<?>)$$1.d().s.cc;
-      this.p = $$1.e();
-      List<cxf<?>> $$2 = $$0.a(this.p.a(this.o));
-
-      for (cxf<?> $$3 : $$2) {
-         if (this.p.d($$3)) {
-            $$1.a($$2);
-            this.s = 15.0F;
-            break;
-         }
-      }
+   private static void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   public fov a() {
-      return this.q;
+   private static void b(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      if (!fld.r()) {
-         this.r += $$3;
-      }
-
-      akh $$4;
-      if (this.q.c()) {
-         if (this.q.a(this.p.a(this.o)).size() > 1) {
-            $$4 = b;
-         } else {
-            $$4 = c;
-         }
-      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$4 = d;
-      } else {
-         $$4 = e;
-      }
-
-      boolean $$8 = this.s > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.s / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
-         this.s -= $$3;
-      }
-
-      $$0.a($$4, this.C(), this.D(), this.g, this.h);
-      List<cxf<?>> $$10 = this.f();
-      this.u = axz.d(this.r / 30.0F) % $$10.size();
-      csz $$11 = $$10.get(this.u).b().a(this.q.a());
-      int $$12 = 4;
-      if (this.q.f() && this.f().size() > 1) {
-         $$0.a($$11, this.C() + $$12 + 1, this.D() + $$12 + 1, 0, 10);
-         $$12--;
-      }
-
-      $$0.b($$11, this.C() + $$12, this.D() + $$12);
-      if ($$8) {
-         $$0.c().b();
-      }
+   private static void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
    }
 
-   private List<cxf<?>> f() {
-      List<cxf<?>> $$0 = this.q.b(true);
-      if (!this.p.a(this.o)) {
-         $$0.addAll(this.q.b(false));
-      }
-
-      return $$0;
+   private static void c(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
    }
 
-   public boolean b() {
-      return this.f().size() == 1;
-   }
-
-   public cxf<?> d() {
-      List<cxf<?>> $$0 = this.f();
-      return $$0.get(this.u);
-   }
-
-   public List<wu> e() {
-      csz $$0 = this.f().get(this.u).b().a(this.q.a());
-      List<wu> $$1 = Lists.newArrayList(fld.a(fde.Q(), $$0));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$1.add(n);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(fja $$0) {
-      csz $$1 = this.f().get(this.u).b().a(this.q.a());
-      $$0.a(fiz.a, wu.a("narration.recipe", $$1.w()));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(fiz.d, wu.c("narration.button.usage.hovered"), wu.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(fiz.d, wu.c("narration.button.usage.hovered"));
-      }
-   }
-
-   @Override
-   public int x() {
-      return 25;
-   }
-
-   @Override
-   protected boolean j(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   private static void b(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

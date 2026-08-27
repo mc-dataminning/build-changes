@@ -1,32 +1,58 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.List;
 
 public class ow {
-   public static void a(String[] $$0) throws IOException {
-      aa.a(t.a);
-      akj.a();
+   private static final jn a = new jn()
+      .a(lf.aE, qr::a)
+      .a(lf.aB, qp::a)
+      .a(lf.aC, rt::a)
+      .a(lf.aI, si::a)
+      .a(lf.aJ, ra::a)
+      .a(lf.aL, qz::a)
+      .a(lf.aK, qw::a)
+      .a(lf.aM, qv::a)
+      .a(lf.az, rl::a)
+      .a(lf.aR, dcl::a)
+      .a(lf.aH, qs::a)
+      .a(lf.aD, dxa::a)
+      .a(lf.aG, dwy::a)
+      .a(lf.aQ, egz::a)
+      .a(lf.aF, efl::a)
+      .a(lf.aA, wt::a)
+      .a(lf.aP, cvw::a)
+      .a(lf.aO, cvu::a)
+      .a(lf.m, cfj::a)
+      .a(lf.s, bqq::a)
+      .a(lf.d, dny::a);
 
-      for (String $$1 : $$0) {
-         a($$1);
-      }
+   private static void a(iz.a $$0) {
+      a($$0.b(lf.aI), $$0.b(lf.az));
    }
 
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               ua $$2 = up.a($$1x);
-               ua $$3 = oy.a($$0x.toString(), $$2);
-               ov.a(li.a, $$0x, up.a($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
-      }
+   public static void a(iy<egn> $$0, iz<dbw> $$1) {
+      $$1.b().forEach($$1x -> {
+         akm $$2 = $$1x.h().a();
+         List<jb<egn>> $$3 = ((dbw)$$1x.a()).d().b();
+         $$3.stream().flatMap(jb::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
+               ix.c<egn> $$3xx = $$0.b($$2xx);
+               if (!a($$3xx.a())) {
+                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
+               }
+            }).ifRight($$1xxx -> {
+               if (!a($$1xxx)) {
+                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
+               }
+            }));
+      });
+   }
+
+   private static boolean a(egn $$0) {
+      return $$0.c().contains(egb.a());
+   }
+
+   public static iz.a a() {
+      jl.b $$0 = jl.a(le.aw);
+      iz.a $$1 = a.a($$0);
+      a($$1);
+      return $$1;
    }
 }

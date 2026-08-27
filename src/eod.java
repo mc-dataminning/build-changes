@@ -1,54 +1,42 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.Optional;
 
-public class eod {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final ent d;
-   private final boolean e;
+public record eod(ix<eoe> b, byte c, byte d, byte e, Optional<wx> f) {
+   public static final yv<wi, eod> a = yv.a(eoe.c, eod::c, yt.c, eod::d, yt.c, eod::e, yt.c, eod::f, wz.c, eod::g, eod::new);
 
-   private eod(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new ent($$3, $$4);
-      this.e = $$5;
+   public eod(ix<eoe> b, byte c, byte d, byte e, Optional<wx> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   public static eod a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new eod(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(ent.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new eod($$1, $$2, "", 0, ent.a, false);
+   public akm a() {
+      return this.b.a().b();
    }
 
-   public int a() {
-      return this.a;
+   public boolean b() {
+      return this.b.a().c();
    }
 
-   public long b() {
+   public ix<eoe> c() {
       return this.b;
    }
 
-   public String c() {
+   public byte d() {
       return this.c;
    }
 
-   public ent d() {
+   public byte e() {
       return this.d;
    }
 
-   public boolean e() {
+   public byte f() {
       return this.e;
+   }
+
+   public Optional<wx> g() {
+      return this.f;
    }
 }

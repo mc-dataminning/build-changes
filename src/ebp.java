@@ -1,53 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ebp implements ebh {
-   public static final Codec<ebp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ebp.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ebp::new)
-   );
-   public final List<ebp.a> b;
-   public final int c;
-   public final float d;
-
-   public ebp(List<ebp.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
+public class ebp extends ebm {
+   public ebp(Codec<eda> $$0) {
+      super($$0);
    }
 
-   public ebp(List<ebp.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
+   @Override
+   protected Set<io> a(dbs $$0, eda $$1, ayk $$2, io $$3, Predicate<drb> $$4, int $$5, int $$6) {
+      Set<io> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<io> $$8 = new HashSet<>();
+      io.a $$9 = new io.a();
+
+      for (io $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (io $$11 : $$8) {
+         $$0.a($$11, dea.G.n(), 2);
+      }
+
+      return $$8;
    }
 
-   public ebp(ekj $$0, dqh $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new ebp.a($$0, $$1)), $$2, $$3);
+   private static boolean a(dbs $$0, Set<io> $$1, io $$2, io.a $$3) {
+      return a($$0, $$2, $$3, it.c) || a($$0, $$2, $$3, it.f) || a($$0, $$2, $$3, it.d) || a($$0, $$2, $$3, it.e) || a($$0, $$2, $$3, it.a);
    }
 
-   public ebp(ekj $$0, dqh $$1, int $$2) {
-      this(ImmutableList.of(new ebp.a($$0, $$1)), $$2, 0.0F);
+   private static boolean a(dbs $$0, io $$1, io.a $$2, it $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
-   public static ebp.a a(ekj $$0, dqh $$1) {
-      return new ebp.a($$0, $$1);
-   }
+   @Override
+   protected boolean a(dbs $$0, eda $$1, dsy $$2, ayk $$3, io $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         drb $$5 = $$0.a_($$4);
+         if ($$5.b(drr.C) && !$$5.c(drr.C)) {
+            $$0.a($$4, $$5.a(drr.C, Boolean.valueOf(true)), 2);
+         }
 
-   public static class a {
-      public static final Codec<ebp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ekj.c.fieldOf("target").forGetter($$0x -> $$0x.b), dqh.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ebp.a::new)
-      );
-      public final ekj b;
-      public final dqh c;
-
-      a(ekj $$0, dqh $$1) {
-         this.b = $$0;
-         this.c = $$1;
+         return true;
+      } else {
+         return false;
       }
    }
 }

@@ -1,3 +1,7 @@
-public interface aiy extends wa {
-   void a(aiz var1);
+public record aiy() implements aiw {
+   public static final aiy a = new aiy();
+
+   @Override
+   public void a(vx $$0) {
+   }
 }

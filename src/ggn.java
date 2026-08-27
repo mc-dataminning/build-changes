@@ -1,12 +1,13 @@
-public class ggn extends gid<cdx, frw<cdx>> {
-   private static final akh a = new akh("textures/entity/dolphin.png");
+public abstract class ggn<T extends cgi, M extends fth<T>> extends giz<T, M> {
+   private final float a;
 
-   public ggn(ggx.a $$0) {
-      super($$0, new frw<>($$0.a(fva.M)), 0.7F);
-      this.a(new gkp(this, $$0.d()));
+   public ggn(ght.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public akh a(cdx $$0) {
-      return a;
+   protected void a(T $$0, eys $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

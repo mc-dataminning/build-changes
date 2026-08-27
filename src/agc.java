@@ -1,37 +1,187 @@
-public class agc implements zb<afz> {
-   public static final ys<vu, agc> a = zb.a(agc::a, agc::new);
-   private final int b;
-   private final in c;
-
-   public agc(int $$0, in $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private agc(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-   }
-
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public zd<agc> a() {
-      return afx.bf;
-   }
-
-   public void a(afz $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public in e() {
-      return this.c;
-   }
+public class agc {
+   public static final wf.a<agd, wi> a = zj.c(
+      vw.b,
+      $$0 -> $$0.a(agb.be, agf.a)
+            .a(agb.bf, agg.a)
+            .a(agb.bg, agh.a)
+            .a(agb.bh, agi.a)
+            .a(agb.bi, agj.a)
+            .a(agb.bj, agk.a)
+            .a(agb.bk, agl.a)
+            .a(agb.bl, agm.a)
+            .a(agb.bm, agn.a)
+            .a(agb.bn, ago.a)
+            .a(zu.j, zw.a)
+            .a(agb.bo, agp.a)
+            .a(agb.bp, agq.b)
+            .a(agb.bq, agr.a)
+            .a(agb.br, ags.a)
+            .a(agb.bs, agt.a)
+            .a(agb.bt, agu.a)
+            .a(abm.b, abo.a)
+            .a(zu.k, zx.a)
+            .a(agb.bu, agv.a)
+            .a(agb.bv, agw.b)
+            .a(agb.bw, agx.a)
+            .a(agb.bx, agy.a)
+            .a(agb.by, agz.a)
+            .a(zu.l, zy.a)
+            .a(agb.bz, aha.a)
+            .a(agb.bA, ahb.a.i)
+            .a(agb.bB, ahb.b.i)
+            .a(agb.bC, ahb.c.i)
+            .a(agb.bD, ahb.d.i)
+            .a(agb.bE, ahc.a)
+            .a(agb.bF, ahd.a)
+            .a(agb.bG, ahe.a)
+            .a(ajf.b, ajh.a)
+            .a(agb.bH, ahf.a)
+            .a(agb.bI, ahg.a)
+            .a(agb.bJ, ahh.a)
+            .a(agb.bK, ahi.a)
+            .a(agb.bL, ahj.a)
+            .a(zu.m, zz.a)
+            .a(agb.bM, ahk.a)
+            .a(agb.bN, ahl.a)
+            .a(agb.bO, ahm.a)
+            .a(zu.n, aaa.a)
+            .a(agb.bP, ahn.a)
+            .a(agb.bQ, aho.a)
+            .a(agb.bR, ahp.a)
+            .a(agb.bS, ahq.a)
+            .a(agb.bT, ahr.a)
+            .a(agb.bU, ahs.a)
+            .a(agb.bV, aht.a)
+            .a(agb.bW, ahu.a)
+            .a(agb.bX, ahv.a)
+            .a(agb.bY, ahw.a)
+            .a(agb.bZ, ahx.a)
+            .a(agb.ca, ahy.a)
+            .a(agb.cb, ahz.a)
+            .a(agb.cc, aia.a)
+   );
+   public static final wf.a<abq, wi> b = zj.d(
+      vw.b,
+      $$0 -> $$0.a(agb.a, acc::new, new acb())
+            .a(agb.c, abr.a)
+            .a(agb.d, abs.a)
+            .a(agb.e, abt.a)
+            .a(agb.f, abu.a)
+            .a(agb.g, abv.a)
+            .a(agb.h, abw.a)
+            .a(agb.i, abx.a)
+            .a(agb.j, aby.a)
+            .a(agb.k, abz.a)
+            .a(agb.l, aca.a)
+            .a(agb.m, acd.a)
+            .a(agb.n, ace.a)
+            .a(agb.o, acf.b)
+            .a(agb.p, acg.a)
+            .a(agb.q, ach.a)
+            .a(agb.r, aci.a)
+            .a(agb.s, acj.a)
+            .a(agb.t, ack.a)
+            .a(agb.u, acl.a)
+            .a(agb.v, acm.a)
+            .a(agb.w, acn.a)
+            .a(abm.a, abl.a)
+            .a(agb.x, aco.a)
+            .a(agb.y, acp.a)
+            .a(zu.a, zl.a)
+            .a(agb.z, acq.a)
+            .a(agb.A, acr.a)
+            .a(agb.B, acs.a)
+            .a(zu.b, zm.a)
+            .a(agb.C, act.a)
+            .a(agb.D, acu.a)
+            .a(agb.E, acv.a)
+            .a(agb.F, acw.a)
+            .a(agb.G, acx.a)
+            .a(agb.H, acy.a)
+            .a(agb.I, acz.a)
+            .a(agb.J, ada.a)
+            .a(zu.c, zn.a)
+            .a(agb.K, adc.a)
+            .a(agb.L, add.a)
+            .a(agb.M, ade.a)
+            .a(agb.N, adf.a)
+            .a(agb.O, adh.a)
+            .a(agb.P, adi.a)
+            .a(agb.Q, adj.a)
+            .a(agb.R, adk.a.j)
+            .a(agb.S, adk.b.j)
+            .a(agb.T, adk.c.j)
+            .a(agb.U, adl.a)
+            .a(agb.V, adm.a)
+            .a(agb.W, adn.a)
+            .a(agb.X, ado.a)
+            .a(zu.d, zo.a)
+            .a(ajf.a, aje.a)
+            .a(agb.Y, adp.a)
+            .a(agb.Z, adq.a)
+            .a(agb.aa, adr.a)
+            .a(agb.ab, ads.a)
+            .a(agb.ac, adt.b)
+            .a(agb.ad, adu.a)
+            .a(agb.ae, adv.a)
+            .a(agb.af, adw.a)
+            .a(agb.ag, adx.a)
+            .a(agb.ah, ady.a)
+            .a(agb.ai, adz.a)
+            .a(agb.aj, aea.a)
+            .a(agb.ak, aeb.a)
+            .a(agb.cd, aec.a)
+            .a(zu.e, zp.a)
+            .a(zu.f, zq.b)
+            .a(agb.al, aed.a)
+            .a(agb.am, aee.a)
+            .a(agb.an, aef.a)
+            .a(agb.ao, aeg.a)
+            .a(agb.ap, aeh.a)
+            .a(agb.aq, aei.a)
+            .a(agb.ar, aej.a)
+            .a(agb.as, aek.a)
+            .a(agb.at, ael.a)
+            .a(agb.au, aem.a)
+            .a(agb.av, aen.a)
+            .a(agb.aw, aeo.a)
+            .a(agb.ax, aep.a)
+            .a(agb.ay, aeq.a)
+            .a(agb.az, aer.a)
+            .a(agb.aA, aes.a)
+            .a(agb.aB, aet.a)
+            .a(agb.aC, aeu.a)
+            .a(agb.aD, aev.a)
+            .a(agb.aE, aew.a)
+            .a(agb.aF, aex.a)
+            .a(agb.aG, aey.a)
+            .a(agb.aH, aez.a)
+            .a(agb.aI, afa.a)
+            .a(agb.aJ, afb.a)
+            .a(agb.aK, afc.a)
+            .a(agb.aL, afd.a)
+            .a(agb.aM, afe.a)
+            .a(agb.aN, aff.a)
+            .a(agb.aO, afg.a)
+            .a(agb.aP, afh.a)
+            .a(agb.aQ, afi.a)
+            .a(agb.aR, afj.a)
+            .a(agb.aS, afk.a)
+            .a(agb.aT, afl.b)
+            .a(agb.aU, afm.a)
+            .a(zu.g, zr.a)
+            .a(agb.aV, afn.a)
+            .a(agb.aW, afo.a)
+            .a(agb.aX, afp.a)
+            .a(agb.aY, afq.a)
+            .a(agb.aZ, afr.a)
+            .a(agb.ce, afs.a)
+            .a(agb.cf, aft.a)
+            .a(zu.h, zs.a)
+            .a(agb.ba, afu.a)
+            .a(agb.bb, afv.a)
+            .a(agb.bc, afw.a)
+            .a(agb.bd, afx.a)
+            .a(zu.i, zt.a)
+   );
 }

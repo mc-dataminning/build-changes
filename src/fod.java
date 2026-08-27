@@ -1,50 +1,30 @@
-public class fod extends fld {
-   private static final int a = 600;
-   private final vs b;
-   private ffe c;
-   private int d;
-   private final fiv r = fiv.d();
+public class fod extends fmv {
+   private final czy s;
 
-   public fod(wu $$0, vs $$1) {
-      super($$0);
-      this.b = $$1;
+   public fod(czy $$0) {
+      this.s = $$0;
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   public czy m() {
+      return this.s;
+   }
+
+   @Override
+   int C() {
+      return 150;
    }
 
    @Override
    protected void aM_() {
-      this.r.c().b().a(10);
-      this.r.a(new fgl(this.l, this.p));
-      this.c = this.r.a(ffe.a(wt.p, $$0 -> this.b.a(fjw.a)).a());
-      this.c.j = false;
-      this.r.a();
-      this.r.a($$1 -> {
-         ffc var10000 = this.c($$1);
-      });
-      this.c();
+      super.aM_();
+      this.a.a(this.m().m());
    }
 
    @Override
-   protected void c() {
-      fip.a(this.r, this.G());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+   protected void a(czy $$0) {
+      if ($$0 instanceof cnz.a $$1) {
+         this.m.L().b(new ahs($$1.h().al(), this.a.a(), $$0.p()));
       }
    }
 }

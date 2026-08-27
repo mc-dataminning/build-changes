@@ -1,37 +1,36 @@
-public class aea implements zb<abm> {
-   public static final ys<vu, aea> a = zb.a(aea::a, aea::new);
-   private final int b;
-   private final byte c;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public aea(brh $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+public class aea implements ze<abq> {
+   public static final yv<vx, aea> a = ze.a(aea::a, aea::new);
+   private final IntList b;
+
+   public aea(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private aea(vu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   public aea(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vu $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private aea(vx $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<aea> a() {
-      return afx.am;
+   public zg<aea> a() {
+      return agb.aj;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public brh a(dad $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

@@ -1,33 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bww {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 200;
 
-   public static bvd<bsi> a(float $$0) {
-      return a($$0, 10, 7);
+   public static <E extends bsq> bui<E> a(BiConsumer<E, bso> $$0) {
+      return a($$0x -> false, $$0, true);
    }
 
-   public static bvd<bsi> a(float $$0, int $$1, int $$2) {
-      return bxf.a((Function<bxf.b<bsi>, ? extends App<bxf.c<bsi>, bxi<bsi>>>)($$3 -> $$3.group($$3.c(cbd.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               in $$7 = $$5.dn();
-               etp $$8;
-               if ($$4.c($$7)) {
-                  $$8 = ccx.a($$5, $$1, $$2);
-               } else {
-                  jp $$9 = jp.a($$7);
-                  jp $$10 = btu.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = ccu.a($$5, $$1, $$2, etp.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = ccx.a($$5, $$1, $$2);
-                  }
-               }
+   public static <E extends bsq> bui<E> a(Predicate<bso> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cbg($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   public static <E extends bsq> bui<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bsq> bui<E> a(Predicate<bso> $$0, BiConsumer<E, bso> $$1, boolean $$2) {
+      return bxu.a(
+         (Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$3 -> $$3.group($$3.b(cbs.o), $$3.a(cbs.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bso $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bD() && $$9.dP() == $$7.dP() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
+      );
+   }
+
+   private static boolean a(bso $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dP().Y() - $$1.get() > 200L;
    }
 }

@@ -1,36 +1,36 @@
-public class glo extends gli<cen, fub<cen>> {
-   private final gci a;
-   private final ghv b;
+public class glo<T extends bso, M extends fsw<T>> extends gmf<T, M> {
+   private static final akm a = new akm("textures/entity/elytra.png");
+   private final fst<T> b;
 
-   public glo(gis<cen, fub<cen>> $$0, gci $$1, ghv $$2) {
+   public glo(gjp<T, M> $$0, fvs $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = new fst<>($$1.a(fvv.W));
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, cen $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         boolean $$10 = fde.Q().b($$3) && $$3.cf();
-         if (!$$3.cf() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            csz $$12 = new csz(ddg.ee);
-            if ($$10) {
-               dqh $$13 = ddg.ee.n();
-               goz $$14 = this.a.a($$13);
-               int $$15 = ghy.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gbw.r(gmx.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+   public void a(eys $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cto $$10 = $$3.a(bsb.e);
+      if ($$10.a(ctr.nT)) {
+         akm $$13;
+         if ($$3 instanceof gbj $$11) {
+            gov $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(clx.a)) {
+               $$13 = $$12.c();
             } else {
-               this.b.a($$3, $$12, csw.f, false, $$0, $$1, $$3.dN(), $$2, ghy.c($$3, 0.0F), $$3.aj());
+               $$13 = a;
             }
-
-            $$0.b();
+         } else {
+            $$13 = a;
          }
+
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         eyw $$17 = gir.a($$1, gcs.a($$13), false, $$10.y());
+         this.b.a($$0, $$17, $$2, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
    }
 }

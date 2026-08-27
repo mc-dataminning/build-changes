@@ -1,25 +1,23 @@
-public record zp(String b, int c) implements zb<zh> {
-   public static final ys<vu, zp> a = zb.a(zp::a, zp::new);
+import java.util.Optional;
+import java.util.UUID;
 
-   private zp(vu $$0) {
-      this($$0.p(), $$0.l());
+public record zp(Optional<UUID> b) implements ze<zk> {
+   public static final yv<vx, zp> a = ze.a(zp::a, zp::new);
+
+   private zp(vx $$0) {
+      this($$0.b(jr.g));
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vx $$0) {
+      $$0.a(this.b, jr.g);
    }
 
    @Override
-   public zd<zp> a() {
-      return zr.h;
+   public zg<zp> a() {
+      return zu.e;
    }
 
-   public void a(zh $$0) {
+   public void a(zk $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

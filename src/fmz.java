@@ -1,22 +1,121 @@
-public class fmz extends fmb<cpd> {
-   private static final akh D = new akh("textures/gui/container/hopper.png");
+public class fmz extends fnx<cov> {
+   private static final akm D = new akm("container/anvil/text_field");
+   private static final akm E = new akm("container/anvil/text_field_disabled");
+   private static final akm F = new akm("container/anvil/error");
+   private static final akm G = new akm("textures/gui/container/anvil.png");
+   private static final wx H = wx.c("container.repair.expensive");
+   private fgi I;
+   private final clw J;
 
-   public fmz(cpd $$0, clg $$1, wu $$2) {
-      super($$0, $$1, $$2);
-      this.d = 133;
-      this.v = this.d - 94;
+   public fmz(cov $$0, clv $$1, wx $$2) {
+      super($$0, $$1, $$2, G);
+      this.J = $$1.l;
+      this.r = 60;
    }
 
    @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
+   protected void E() {
+      int $$0 = (this.n - this.c) / 2;
+      int $$1 = (this.o - this.d) / 2;
+      this.I = new fgi(this.p, $$0 + 62, $$1 + 24, 103, 12, wx.c("container.repair"));
+      this.I.f(false);
+      this.I.g(-1);
+      this.I.h(-1);
+      this.I.d(false);
+      this.I.f(50);
+      this.I.b(this::a);
+      this.I.a("");
+      this.d(this.I);
+      this.I.e(this.w.b(0).h());
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.I);
+   }
+
+   @Override
+   public void a(fdz $$0, int $$1, int $$2) {
+      String $$3 = this.I.a();
+      this.b($$0, $$1, $$2);
+      this.I.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.s.r();
+      }
+
+      return !this.I.a($$0, $$1, $$2) && !this.I.d() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cqo $$1 = this.w.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(kb.f) && $$0.equals($$1.g().x().getString())) {
+            $$2 = "";
+         }
+
+         if (this.w.a($$2)) {
+            this.m.s.h.b(new ahm($$2));
+         }
+      }
+   }
+
+   @Override
+   protected void b(ffm $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.w.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         wx $$5;
+         if ($$3 >= 40 && !this.m.s.gd().d) {
+            $$5 = H;
+            $$4 = 16736352;
+         } else if (!this.w.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = wx.a("container.repair.cost", $$3);
+            if (!this.w.b(2).a(this.J)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(ffm $$0, float $$1, int $$2, int $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
    }
 
    @Override
-   protected void a(fer $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void d(ffm $$0, int $$1, int $$2, float $$3) {
+      this.I.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(ffm $$0, int $$1, int $$2) {
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
+         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(cot $$0, int $$1, cto $$2) {
+      if ($$1 == 0) {
+         this.I.a($$2.e() ? "" : $$2.x().getString());
+         this.I.e(!$$2.e());
+         this.a(this.I);
+      }
    }
 }

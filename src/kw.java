@@ -1,23 +1,13 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-public abstract class kw<T extends kv> {
-   private final boolean a;
-   private final kv.a<T> b;
+public interface kw {
+   kx<?> a();
 
-   protected kw(boolean $$0, kv.a<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   String a(iz.a var1);
+
+   @Deprecated
+   public interface a<T extends kw> {
+      T b(kx<T> var1, StringReader var2, iz.a var3) throws CommandSyntaxException;
    }
-
-   public boolean b() {
-      return this.a;
-   }
-
-   public kv.a<T> c() {
-      return this.b;
-   }
-
-   public abstract Codec<T> d();
-
-   public abstract ys<? super wf, T> e();
 }

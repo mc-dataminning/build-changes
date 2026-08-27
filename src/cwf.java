@@ -1,27 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public record cwf(List<aqy<String>> f) implements cvj<String, cwf> {
-   public static final cwf a = new cwf(List.of());
-   public static final int b = 1024;
-   private static final Codec<aqy<String>> g = aqy.a(axh.b(0, 1024));
-   public static final Codec<List<aqy<String>>> c = axh.a(g.listOf(), 100);
-   public static final Codec<cwf> d = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(c, "pages", List.of()).forGetter(cwf::a)).apply($$0, cwf::new));
-   public static final ys<ByteBuf, cwf> e = aqy.a(yq.b(1024)).a(yq.c(100)).a(cwf::new, cwf::a);
+public record cwf(Map<ix<ddy>, dse<?>> c) {
+   public static final cwf a = new cwf(Map.of());
+   public static final Codec<cwf> b = Codec.dispatchedMap(le.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dse<?> $$2 = ((ddy)$$0.a()).m().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dse::f)).xmap(cwf::new, cwf::a);
 
-   public Stream<String> a(boolean $$0) {
-      return this.f.stream().map($$1 -> $$1.a($$0));
+   public cwf a(ix<ddy> $$0, dse<?> $$1) {
+      return new cwf(ac.a(this.c, $$0, $$1));
    }
 
-   public cwf b(List<aqy<String>> $$0) {
-      return new cwf($$0);
-   }
-
-   @Override
-   public List<aqy<String>> a() {
-      return this.f;
+   public Map<ix<ddy>, dse<?>> a() {
+      return this.c;
    }
 }

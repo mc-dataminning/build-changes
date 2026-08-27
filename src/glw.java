@@ -1,24 +1,27 @@
-public class glw extends gkt<chf, fur<chf>> {
-   private static final akh a = new akh("textures/entity/wither/wither_armor.png");
-   private final fur<chf> b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public glw(gis<chf, fur<chf>> $$0, fux $$1) {
+public class glw extends gmf<ceq, ftl<ceq>> {
+   private static final Map<brs.a, akm> a = ImmutableMap.of(
+      brs.a.b,
+      new akm("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      brs.a.c,
+      new akm("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      brs.a.d,
+      new akm("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public glw(gjp<ceq, ftl<ceq>> $$0) {
       super($$0);
-      this.b = new fur<>($$1.a(fva.bW));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return axz.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected akh a() {
-      return a;
-   }
-
-   @Override
-   protected fsb<chf> b() {
-      return this.b;
+   public void a(eys $$0, gck $$1, int $$2, ceq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ch()) {
+         brs.a $$10 = $$3.u();
+         if ($$10 != brs.a.a) {
+            akm $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         }
+      }
    }
 }

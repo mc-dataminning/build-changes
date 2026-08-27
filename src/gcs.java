@@ -1,261 +1,733 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-public class gcs {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+public abstract class gcs extends gcr {
+   private static final int aY = 1048576;
+   public static final int aT = 4194304;
+   public static final int aU = 786432;
+   public static final int aV = 1536;
+   private static final gcs aZ = a("solid", eyq.j, eyx.b.h, 4194304, true, false, gcs.b.a().a(at).a(p).a(an).a(true));
+   private static final gcs ba = a("cutout_mipped", eyq.j, eyx.b.h, 4194304, true, false, gcs.b.a().a(at).a(q).a(an).a(true));
+   private static final gcs bb = a("cutout", eyq.j, eyx.b.h, 786432, true, false, gcs.b.a().a(at).a(r).a(ao).a(true));
+   private static final gcs bc = a("translucent", eyq.j, eyx.b.h, 786432, true, true, a(s));
+   private static final gcs bd = a("translucent_moving_block", eyq.j, eyx.b.h, 786432, false, true, Q());
+   private static final Function<akm, gcs> be = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
+   private static final Function<akm, gcs> bf = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(v).a(new gcr.n($$0, false, false)).a(c).a(at).a(av).a(true);
+      return a("entity_solid", eyq.k, eyx.b.h, 1536, true, false, $$1);
+   });
+   private static final Function<akm, gcs> bg = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(w).a(new gcr.n($$0, false, false)).a(c).a(at).a(av).a(true);
+      return a("entity_cutout", eyq.k, eyx.b.h, 1536, true, false, $$1);
+   });
+   private static final BiFunction<akm, Boolean, gcs> bh = ac.a(($$0, $$1) -> {
+      gcs.b $$2 = gcs.b.a().a(x).a(new gcr.n($$0, false, false)).a(c).a(ay).a(at).a(av).a($$1);
+      return a("entity_cutout_no_cull", eyq.k, eyx.b.h, 1536, true, false, $$2);
+   });
+   private static final BiFunction<akm, Boolean, gcs> bi = ac.a(($$0, $$1) -> {
+      gcs.b $$2 = gcs.b.a().a(y).a(new gcr.n($$0, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$1);
+      return a("entity_cutout_no_cull_z_offset", eyq.k, eyx.b.h, 1536, true, false, $$2);
+   });
+   private static final Function<akm, gcs> bj = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(z).a(new gcr.n($$0, false, false)).a(h).a(aP).a(at).a(av).a(gcr.aD).a(true);
+      return a("item_entity_translucent_cull", eyq.k, eyx.b.h, 1536, true, true, $$1);
+   });
+   private static final Function<akm, gcs> bk = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(A).a(new gcr.n($$0, false, false)).a(h).a(at).a(av).a(true);
+      return a("entity_translucent_cull", eyq.k, eyx.b.h, 1536, true, true, $$1);
+   });
+   private static final BiFunction<akm, Boolean, gcs> bl = ac.a(($$0, $$1) -> {
+      gcs.b $$2 = gcs.b.a().a(B).a(new gcr.n($$0, false, false)).a(h).a(ay).a(at).a(av).a($$1);
+      return a("entity_translucent", eyq.k, eyx.b.h, 1536, true, true, $$2);
+   });
+   private static final BiFunction<akm, Boolean, gcs> bm = ac.a(($$0, $$1) -> {
+      gcs.b $$2 = gcs.b.a().a(C).a(new gcr.n($$0, false, false)).a(h).a(ay).a(aE).a(av).a($$1);
+      return a("entity_translucent_emissive", eyq.k, eyx.b.h, 1536, true, true, $$2);
+   });
+   private static final Function<akm, gcs> bn = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(D).a(new gcr.n($$0, false, false)).a(ay).a(at).a(true);
+      return a("entity_smooth_cutout", eyq.k, eyx.b.h, 1536, $$1);
+   });
+   private static final BiFunction<akm, Boolean, gcs> bo = ac.a(($$0, $$1) -> {
+      gcs.b $$2 = gcs.b.a().a(E).a(new gcr.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aE : aD).a(false);
+      return a("beacon_beam", eyq.j, eyx.b.h, 1536, false, true, $$2);
+   });
+   private static final Function<akm, gcs> bp = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(F).a(new gcr.n($$0, false, false)).a(aA).a(ay).a(at).a(av).a(false);
+      return a("entity_decal", eyq.k, eyx.b.h, 1536, $$1);
+   });
+   private static final Function<akm, gcs> bq = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(G).a(new gcr.n($$0, false, false)).a(h).a(ay).a(at).a(av).a(aE).a(false);
+      return a("entity_no_outline", eyq.k, eyx.b.h, 1536, false, true, $$1);
+   });
+   private static final Function<akm, gcs> br = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(H).a(new gcr.n($$0, false, false)).a(h).a(ax).a(at).a(av).a(aE).a(aB).a(aI).a(false);
+      return a("entity_shadow", eyq.k, eyx.b.h, 1536, false, false, $$1);
+   });
+   private static final Function<akm, gcs> bs = ac.b($$0 -> {
+      gcs.b $$1 = gcs.b.a().a(I).a(new gcr.n($$0, false, false)).a(ay).a(true);
+      return a("entity_alpha", eyq.k, eyx.b.h, 1536, $$1);
+   });
+   private static final BiFunction<akm, gcr.p, gcs> bt = ac.a(($$0, $$1) -> {
+      gcr.n $$2 = new gcr.n($$0, false, false);
+      return a("eyes", eyq.k, eyx.b.h, 1536, false, true, gcs.b.a().a(J).a($$2).a($$1).a(aE).a(false));
+   });
+   private static final gcs bu = a("leash", eyq.p, eyx.b.f, 1536, gcs.b.a().a(L).a(ap).a(ay).a(at).a(false));
+   private static final gcs bv = a("water_mask", eyq.m, eyx.b.h, 1536, gcs.b.a().a(M).a(ap).a(aF).a(false));
+   private static final gcs bw = a(
+      "armor_glint", eyq.q, eyx.b.h, 1536, gcs.b.a().a(O).a(new gcr.n(gir.a, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aI).a(false)
+   );
+   private static final gcs bx = a(
+      "armor_entity_glint", eyq.q, eyx.b.h, 1536, gcs.b.a().a(P).a(new gcr.n(gir.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(aI).a(false)
+   );
+   private static final gcs by = a(
+      "glint_translucent", eyq.q, eyx.b.h, 1536, gcs.b.a().a(Q).a(new gcr.n(gir.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aP).a(false)
+   );
+   private static final gcs bz = a("glint", eyq.q, eyx.b.h, 1536, gcs.b.a().a(R).a(new gcr.n(gir.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
+   private static final gcs bA = a("glint_direct", eyq.q, eyx.b.h, 1536, gcs.b.a().a(S).a(new gcr.n(gir.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
+   private static final gcs bB = a(
+      "entity_glint", eyq.q, eyx.b.h, 1536, gcs.b.a().a(T).a(new gcr.n(gir.a, true, false)).a(aE).a(ay).a(aA).a(f).a(aP).a(as).a(false)
+   );
+   private static final gcs bC = a(
+      "entity_glint_direct", eyq.q, eyx.b.h, 1536, gcs.b.a().a(U).a(new gcr.n(gir.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(false)
+   );
+   private static final Function<akm, gcs> bD = ac.b($$0 -> {
+      gcr.n $$1 = new gcr.n($$0, false, false);
+      return a("crumbling", eyq.j, eyx.b.h, 1536, false, true, gcs.b.a().a(V).a($$1).a(g).a(aE).a(aH).a(false));
+   });
+   private static final Function<akm, gcs> bE = ac.b(
+      $$0 -> a("text", eyq.t, eyx.b.h, 786432, false, true, gcs.b.a().a(W).a(new gcr.n($$0, false, false)).a(h).a(at).a(false))
+   );
+   private static final gcs bF = a("text_background", eyq.p, eyx.b.h, 1536, false, true, gcs.b.a().a(X).a(ap).a(h).a(at).a(false));
+   private static final Function<akm, gcs> bG = ac.b(
+      $$0 -> a("text_intensity", eyq.t, eyx.b.h, 786432, false, true, gcs.b.a().a(Y).a(new gcr.n($$0, false, false)).a(h).a(at).a(false))
+   );
+   private static final Function<akm, gcs> bH = ac.b(
+      $$0 -> a("text_polygon_offset", eyq.t, eyx.b.h, 1536, false, true, gcs.b.a().a(W).a(new gcr.n($$0, false, false)).a(h).a(at).a(aH).a(false))
+   );
+   private static final Function<akm, gcs> bI = ac.b(
+      $$0 -> a("text_intensity_polygon_offset", eyq.t, eyx.b.h, 1536, false, true, gcs.b.a().a(Y).a(new gcr.n($$0, false, false)).a(h).a(at).a(aH).a(false))
+   );
+   private static final Function<akm, gcs> bJ = ac.b(
+      $$0 -> a("text_see_through", eyq.t, eyx.b.h, 1536, false, true, gcs.b.a().a(Z).a(new gcr.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
+   );
+   private static final gcs bK = a("text_background_see_through", eyq.p, eyx.b.h, 1536, false, true, gcs.b.a().a(aa).a(ap).a(h).a(at).a(az).a(aE).a(false));
+   private static final Function<akm, gcs> bL = ac.b(
+      $$0 -> a("text_intensity_see_through", eyq.t, eyx.b.h, 1536, false, true, gcs.b.a().a(ab).a(new gcr.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
+   );
+   private static final gcs bM = a("lightning", eyq.n, eyx.b.h, 1536, false, true, gcs.b.a().a(ac).a(aD).a(e).a(aN).a(false));
+   private static final gcs bN = a("tripwire", eyq.j, eyx.b.h, 1536, true, true, R());
+   private static final gcs bO = a(
+      "end_portal", eyq.m, eyx.b.h, 1536, false, false, gcs.b.a().a(ae).a(gcr.i.d().a(gfd.a, false, false).a(gfd.b, false, false).a()).a(false)
+   );
+   private static final gcs bP = a(
+      "end_gateway", eyq.m, eyx.b.h, 1536, false, false, gcs.b.a().a(af).a(gcr.i.d().a(gfd.a, false, false).a(gfd.b, false, false).a()).a(false)
+   );
+   private static final gcs bQ = a(false);
+   private static final gcs bR = a(true);
+   public static final gcs.a aW = a("lines", eyq.o, eyx.b.a, 1536, gcs.b.a().a(ah).a(new gcr.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false));
+   public static final gcs.a aX = a(
+      "line_strip", eyq.o, eyx.b.b, 1536, gcs.b.a().a(ah).a(new gcr.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false)
+   );
+   private static final Function<Double, gcs.a> bS = ac.b(
+      $$0 -> a("debug_line_strip", eyq.n, eyx.b.d, 1536, gcs.b.a().a(o).a(new gcr.h(OptionalDouble.of($$0))).a(c).a(ay).a(false))
+   );
+   private static final gcs.a bT = a("debug_filled_box", eyq.n, eyx.b.f, 1536, false, true, gcs.b.a().a(o).a(aI).a(h).a(false));
+   private static final gcs.a bU = a("debug_quads", eyq.n, eyx.b.h, 1536, false, true, gcs.b.a().a(o).a(h).a(ay).a(false));
+   private static final gcs.a bV = a("debug_section_quads", eyq.n, eyx.b.h, 1536, false, true, gcs.b.a().a(o).a(aI).a(h).a(ax).a(false));
+   private static final gcs.a bW = a("gui", eyq.n, eyx.b.h, 786432, gcs.b.a().a(ai).a(h).a(aB).a(false));
+   private static final gcs.a bX = a("gui_overlay", eyq.n, eyx.b.h, 1536, gcs.b.a().a(aj).a(h).a(az).a(aE).a(false));
+   private static final gcs.a bY = a("gui_text_highlight", eyq.n, eyx.b.h, 1536, gcs.b.a().a(ak).a(h).a(az).a(aS).a(false));
+   private static final gcs.a bZ = a("gui_ghost_recipe_overlay", eyq.n, eyx.b.h, 1536, gcs.b.a().a(al).a(h).a(aC).a(aE).a(false));
+   private static final ImmutableList<gcs> ca = ImmutableList.of(c(), d(), e(), f(), t());
+   private final eyx cb;
+   private final eyx.b cc;
+   private final int cd;
+   private final boolean ce;
+   private final boolean cf;
+   private final Optional<gcs> cg;
 
-   public gcl a(Vector3f $$0, Vector3f $$1, gcn $$2, gmy $$3, is $$4, gph $$5, @Nullable gco $$6, boolean $$7, akh $$8) {
-      gcp $$9 = $$2.e;
-      if ($$5.c()) {
-         $$9 = a($$2.e, $$4, $$5.b(), $$8);
+   public static gcs c() {
+      return aZ;
+   }
+
+   public static gcs d() {
+      return ba;
+   }
+
+   public static gcs e() {
+      return bb;
+   }
+
+   private static gcs.b a(gcr.m $$0) {
+      return gcs.b.a().a(at).a($$0).a(an).a(h).a(aL).a(true);
+   }
+
+   public static gcs f() {
+      return bc;
+   }
+
+   private static gcs.b Q() {
+      return gcs.b.a().a(at).a(t).a(an).a(h).a(aP).a(true);
+   }
+
+   public static gcs g() {
+      return bd;
+   }
+
+   private static gcs.a a(String $$0, akm $$1, boolean $$2) {
+      gcs.b $$3 = gcs.b.a().a(u).a(new gcr.n($$1, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$2 ? aA : aB).a(true);
+      return a($$0, eyq.k, eyx.b.h, 1536, true, false, $$3);
+   }
+
+   public static gcs a(akm $$0) {
+      return be.apply($$0);
+   }
+
+   public static gcs b(akm $$0) {
+      return a("armor_decal_cutout_no_cull", $$0, true);
+   }
+
+   public static gcs c(akm $$0) {
+      return bf.apply($$0);
+   }
+
+   public static gcs d(akm $$0) {
+      return bg.apply($$0);
+   }
+
+   public static gcs a(akm $$0, boolean $$1) {
+      return bh.apply($$0, $$1);
+   }
+
+   public static gcs e(akm $$0) {
+      return a($$0, true);
+   }
+
+   public static gcs b(akm $$0, boolean $$1) {
+      return bi.apply($$0, $$1);
+   }
+
+   public static gcs f(akm $$0) {
+      return b($$0, true);
+   }
+
+   public static gcs g(akm $$0) {
+      return bj.apply($$0);
+   }
+
+   public static gcs h(akm $$0) {
+      return bk.apply($$0);
+   }
+
+   public static gcs c(akm $$0, boolean $$1) {
+      return bl.apply($$0, $$1);
+   }
+
+   public static gcs i(akm $$0) {
+      return c($$0, true);
+   }
+
+   public static gcs d(akm $$0, boolean $$1) {
+      return bm.apply($$0, $$1);
+   }
+
+   public static gcs j(akm $$0) {
+      return d($$0, true);
+   }
+
+   public static gcs k(akm $$0) {
+      return bn.apply($$0);
+   }
+
+   public static gcs e(akm $$0, boolean $$1) {
+      return bo.apply($$0, $$1);
+   }
+
+   public static gcs l(akm $$0) {
+      return bp.apply($$0);
+   }
+
+   public static gcs m(akm $$0) {
+      return bq.apply($$0);
+   }
+
+   public static gcs n(akm $$0) {
+      return br.apply($$0);
+   }
+
+   public static gcs o(akm $$0) {
+      return bs.apply($$0);
+   }
+
+   public static gcs p(akm $$0) {
+      return bt.apply($$0, d);
+   }
+
+   public static gcs q(akm $$0) {
+      return bm.apply($$0, false);
+   }
+
+   public static gcs a(akm $$0, float $$1, float $$2) {
+      return a(
+         "breeze_wind",
+         eyq.k,
+         eyx.b.h,
+         1536,
+         false,
+         true,
+         gcs.b.a().a(am).a(new gcr.n($$0, false, false)).a(new gcr.j($$1, $$2)).a(h).a(ay).a(at).a(aw).a(false)
+      );
+   }
+
+   public static gcs b(akm $$0, float $$1, float $$2) {
+      return a(
+         "energy_swirl",
+         eyq.k,
+         eyx.b.h,
+         1536,
+         false,
+         true,
+         gcs.b.a().a(K).a(new gcr.n($$0, false, false)).a(new gcr.j($$1, $$2)).a(d).a(ay).a(at).a(av).a(false)
+      );
+   }
+
+   public static gcs h() {
+      return bu;
+   }
+
+   public static gcs i() {
+      return bv;
+   }
+
+   public static gcs r(akm $$0) {
+      return gcs.a.aY.apply($$0, ay);
+   }
+
+   public static gcs j() {
+      return bw;
+   }
+
+   public static gcs k() {
+      return bx;
+   }
+
+   public static gcs l() {
+      return by;
+   }
+
+   public static gcs m() {
+      return bz;
+   }
+
+   public static gcs n() {
+      return bA;
+   }
+
+   public static gcs o() {
+      return bB;
+   }
+
+   public static gcs p() {
+      return bC;
+   }
+
+   public static gcs s(akm $$0) {
+      return bD.apply($$0);
+   }
+
+   public static gcs t(akm $$0) {
+      return bE.apply($$0);
+   }
+
+   public static gcs q() {
+      return bF;
+   }
+
+   public static gcs u(akm $$0) {
+      return bG.apply($$0);
+   }
+
+   public static gcs v(akm $$0) {
+      return bH.apply($$0);
+   }
+
+   public static gcs w(akm $$0) {
+      return bI.apply($$0);
+   }
+
+   public static gcs x(akm $$0) {
+      return bJ.apply($$0);
+   }
+
+   public static gcs r() {
+      return bK;
+   }
+
+   public static gcs y(akm $$0) {
+      return bL.apply($$0);
+   }
+
+   public static gcs s() {
+      return bM;
+   }
+
+   private static gcs.b R() {
+      return gcs.b.a().a(at).a(ad).a(an).a(h).a(aN).a(true);
+   }
+
+   public static gcs t() {
+      return bN;
+   }
+
+   public static gcs u() {
+      return bO;
+   }
+
+   public static gcs v() {
+      return bP;
+   }
+
+   private static gcs.a a(boolean $$0) {
+      return a("clouds", eyq.v, eyx.b.h, 786432, false, false, gcs.b.a().a(ag).a(new gcr.n(gci.c, false, false)).a(h).a(ay).a($$0 ? aF : aD).a(aO).a(true));
+   }
+
+   public static gcs w() {
+      return bQ;
+   }
+
+   public static gcs x() {
+      return bR;
+   }
+
+   public static gcs y() {
+      return aW;
+   }
+
+   public static gcs z() {
+      return aX;
+   }
+
+   public static gcs a(double $$0) {
+      return bS.apply($$0);
+   }
+
+   public static gcs A() {
+      return bT;
+   }
+
+   public static gcs B() {
+      return bU;
+   }
+
+   public static gcs C() {
+      return bV;
+   }
+
+   public static gcs D() {
+      return bW;
+   }
+
+   public static gcs E() {
+      return bX;
+   }
+
+   public static gcs F() {
+      return bY;
+   }
+
+   public static gcs G() {
+      return bZ;
+   }
+
+   public gcs(String $$0, eyx $$1, eyx.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
+      super($$0, $$6, $$7);
+      this.cb = $$1;
+      this.cc = $$2;
+      this.cd = $$3;
+      this.ce = $$4;
+      this.cf = $$5;
+      this.cg = Optional.of(this);
+   }
+
+   static gcs.a a(String $$0, eyx $$1, eyx.b $$2, int $$3, gcs.b $$4) {
+      return a($$0, $$1, $$2, $$3, false, false, $$4);
+   }
+
+   private static gcs.a a(String $$0, eyx $$1, eyx.b $$2, int $$3, boolean $$4, boolean $$5, gcs.b $$6) {
+      return new gcs.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(eyn $$0, eza $$1) {
+      if ($$0.k()) {
+         if (this.cf) {
+            $$0.a($$1);
+         }
+
+         eyn.b $$2 = $$0.d();
+         this.a();
+         eyo.a($$2);
+         this.b();
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   public static List<gcs> H() {
+      return ca;
+   }
+
+   public int I() {
+      return this.cd;
+   }
+
+   public eyx J() {
+      return this.cb;
+   }
+
+   public eyx.b K() {
+      return this.cc;
+   }
+
+   public Optional<gcs> L() {
+      return Optional.empty();
+   }
+
+   public boolean M() {
+      return false;
+   }
+
+   public boolean N() {
+      return this.ce;
+   }
+
+   public boolean O() {
+      return !this.cc.l;
+   }
+
+   public Optional<gcs> P() {
+      return this.cg;
+   }
+
+   static final class a extends gcs {
+      static final BiFunction<akm, gcr.c, gcs> aY = ac.a(
+         ($$0, $$1) -> gcs.a("outline", eyq.r, eyx.b.h, 1536, gcs.b.a().a(N).a(new gcr.n($$0, false, false)).a($$1).a(az).a(aK).a(gcs.c.b))
+      );
+      private final gcs.b aZ;
+      private final Optional<gcs> ba;
+      private final boolean bb;
+
+      a(String $$0, eyx $$1, eyx.b $$2, int $$3, boolean $$4, boolean $$5, gcs.b $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gcr::a), () -> $$6.o.forEach(gcr::b));
+         this.aZ = $$6;
+         this.ba = $$6.n == gcs.c.c ? $$6.a.c().map($$1x -> aY.apply($$1x, $$6.e)) : Optional.empty();
+         this.bb = $$6.n == gcs.c.b;
       }
 
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = axz.i($$11, $$9.a[0], $$12);
-      $$9.a[2] = axz.i($$11, $$9.a[2], $$12);
-      $$9.a[1] = axz.i($$11, $$9.a[1], $$13);
-      $$9.a[3] = axz.i($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
-      is $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         this.a($$14, $$15);
+      @Override
+      public Optional<gcs> L() {
+         return this.ba;
       }
 
-      return new gcl($$14, $$2.c, $$15, $$3, $$7);
-   }
-
-   public static gcp a(gcp $$0, is $$1, j $$2, akh $$3) {
-      Matrix4f $$4 = im.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
-      float $$5 = $$0.a($$0.c(0));
-      float $$6 = $$0.b($$0.c(0));
-      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
-      float $$8 = 16.0F * $$7.x();
-      float $$9 = 16.0F * $$7.y();
-      float $$10 = $$0.a($$0.c(2));
-      float $$11 = $$0.b($$0.c(2));
-      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
-      float $$13 = 16.0F * $$12.x();
-      float $$14 = 16.0F * $$12.y();
-      float $$15;
-      float $$16;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$15 = $$8;
-         $$16 = $$13;
-      } else {
-         $$15 = $$13;
-         $$16 = $$8;
+      @Override
+      public boolean M() {
+         return this.bb;
       }
 
-      float $$19;
-      float $$20;
-      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
-         $$19 = $$9;
-         $$20 = $$14;
-      } else {
-         $$19 = $$14;
-         $$20 = $$9;
+      protected final gcs.b Q() {
+         return this.aZ;
       }
 
-      float $$23 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$24 = new Matrix3f($$4);
-      Vector3f $$25 = $$24.transform(new Vector3f(axz.b($$23), axz.a($$23), 0.0F));
-      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
-      return new gcp(new float[]{$$15, $$19, $$16, $$20}, $$26);
-   }
-
-   private int[] a(gcp $$0, gmy $$1, is $$2, float[] $$3, j $$4, @Nullable gco $$5, boolean $$6) {
-      int[] $$7 = new int[32];
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
-      }
-
-      return $$7;
-   }
-
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[is.values().length];
-      $$2[gbf.a.f] = $$0.x() / 16.0F;
-      $$2[gbf.a.e] = $$0.y() / 16.0F;
-      $$2[gbf.a.d] = $$0.z() / 16.0F;
-      $$2[gbf.a.c] = $$1.x() / 16.0F;
-      $$2[gbf.a.b] = $$1.y() / 16.0F;
-      $$2[gbf.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private void a(int[] $$0, int $$1, is $$2, gcp $$3, float[] $$4, gmy $$5, j $$6, @Nullable gco $$7, boolean $$8) {
-      gbf.b $$9 = gbf.a($$2).a($$1);
-      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
-      this.a($$10, $$7);
-      this.a($$10, $$6);
-      this.a($$0, $$1, $$10, $$5, $$3);
-   }
-
-   private void a(int[] $$0, int $$1, Vector3f $$2, gmy $$3, gcp $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private void a(Vector3f $$0, @Nullable gco $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
-         }
-
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
+      @Override
+      public String toString() {
+         return "RenderType[" + this.b + ":" + this.aZ + "]";
       }
    }
 
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+   protected static final class b {
+      final gcr.e a;
+      private final gcr.m b;
+      private final gcr.p c;
+      private final gcr.d d;
+      final gcr.c e;
+      private final gcr.g f;
+      private final gcr.l g;
+      private final gcr.f h;
+      private final gcr.k i;
+      private final gcr.o j;
+      private final gcr.q k;
+      private final gcr.h l;
+      private final gcr.b m;
+      final gcs.c n;
+      final ImmutableList<gcr> o;
+
+      b(
+         gcr.e $$0,
+         gcr.m $$1,
+         gcr.p $$2,
+         gcr.d $$3,
+         gcr.c $$4,
+         gcr.g $$5,
+         gcr.l $$6,
+         gcr.f $$7,
+         gcr.k $$8,
+         gcr.o $$9,
+         gcr.q $$10,
+         gcr.h $$11,
+         gcr.b $$12,
+         gcs.c $$13
+      ) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
+         this.k = $$10;
+         this.l = $$11;
+         this.m = $$12;
+         this.n = $$13;
+         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gcr[]{this.l});
+      }
+
+      @Override
+      public String toString() {
+         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
+      }
+
+      public static gcs.b.a a() {
+         return new gcs.b.a();
+      }
+
+      public static class a {
+         private gcr.e a = gcr.ap;
+         private gcr.m b = gcr.i;
+         private gcr.p c;
+         private gcr.d d;
+         private gcr.c e;
+         private gcr.g f;
+         private gcr.l g;
+         private gcr.f h;
+         private gcr.k i;
+         private gcr.o j;
+         private gcr.q k;
+         private gcr.h l;
+         private gcr.b m;
+
+         a() {
+            this.c = gcr.c;
+            this.d = gcr.aB;
+            this.e = gcr.ax;
+            this.f = gcr.au;
+            this.g = gcr.aw;
+            this.h = gcr.aG;
+            this.i = gcr.aJ;
+            this.j = gcr.aq;
+            this.k = gcr.aD;
+            this.l = gcr.aQ;
+            this.m = gcr.aR;
+         }
+
+         public gcs.b.a a(gcr.e $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.m $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.p $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.d $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.c $$0) {
+            this.e = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.g $$0) {
+            this.f = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.l $$0) {
+            this.g = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.f $$0) {
+            this.h = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.k $$0) {
+            this.i = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.o $$0) {
+            this.j = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.q $$0) {
+            this.k = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.h $$0) {
+            this.l = $$0;
+            return this;
+         }
+
+         public gcs.b.a a(gcr.b $$0) {
+            this.m = $$0;
+            return this;
+         }
+
+         public gcs.b a(boolean $$0) {
+            return this.a($$0 ? gcs.c.c : gcs.c.a);
+         }
+
+         public gcs.b a(gcs.c $$0) {
+            return new gcs.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
+         }
       }
    }
 
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
+   static enum c {
+      a("none"),
+      b("is_outline"),
+      c("affects_outline");
 
-   public static is a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return is.b;
-      } else {
-         is $$7 = null;
-         float $$8 = 0.0F;
+      private final String d;
 
-         for (is $$9 : is.values()) {
-            jr $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? is.b : $$7;
-      }
-   }
-
-   private void a(int[] $$0, is $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[is.values().length];
-      $$3[gbf.a.f] = 999.0F;
-      $$3[gbf.a.e] = 999.0F;
-      $$3[gbf.a.d] = 999.0F;
-      $$3[gbf.a.c] = -999.0F;
-      $$3[gbf.a.b] = -999.0F;
-      $$3[gbf.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[gbf.a.f]) {
-            $$3[gbf.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[gbf.a.e]) {
-            $$3[gbf.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[gbf.a.d]) {
-            $$3[gbf.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[gbf.a.c]) {
-            $$3[gbf.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[gbf.a.b]) {
-            $$3[gbf.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[gbf.a.a]) {
-            $$3[gbf.a.a] = $$8;
-         }
+      private c(String $$0) {
+         this.d = $$0;
       }
 
-      gbf $$9 = gbf.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         gbf.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (axz.a($$13, $$18) && axz.a($$14, $$19) && axz.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
-         }
+      @Override
+      public String toString() {
+         return this.d;
       }
    }
 }

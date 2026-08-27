@@ -1,37 +1,18 @@
-public interface avu {
-   awg<brn<?>> a = a("skeletons");
-   awg<brn<?>> b = a("zombies");
-   awg<brn<?>> c = a("raiders");
-   awg<brn<?>> d = a("undead");
-   awg<brn<?>> e = a("beehive_inhabitors");
-   awg<brn<?>> f = a("arrows");
-   awg<brn<?>> g = a("impact_projectiles");
-   awg<brn<?>> h = a("powder_snow_walkable_mobs");
-   awg<brn<?>> i = a("axolotl_always_hostiles");
-   awg<brn<?>> j = a("axolotl_hunt_targets");
-   awg<brn<?>> k = a("freeze_immune_entity_types");
-   awg<brn<?>> l = a("freeze_hurts_extra_types");
-   awg<brn<?>> m = a("can_breathe_under_water");
-   awg<brn<?>> n = a("frog_food");
-   awg<brn<?>> o = a("fall_damage_immune");
-   awg<brn<?>> p = a("dismounts_underwater");
-   awg<brn<?>> q = a("non_controlling_rider");
-   awg<brn<?>> r = a("deflects_projectiles");
-   awg<brn<?>> s = a("can_turn_in_boats");
-   awg<brn<?>> t = a("illager");
-   awg<brn<?>> u = a("aquatic");
-   awg<brn<?>> v = a("arthropod");
-   awg<brn<?>> w = a("ignores_poison_and_regen");
-   awg<brn<?>> x = a("inverted_healing_and_harm");
-   awg<brn<?>> y = a("wither_friends");
-   awg<brn<?>> z = a("illager_friends");
-   awg<brn<?>> A = a("not_scary_for_pufferfish");
-   awg<brn<?>> B = a("sensitive_to_impaling");
-   awg<brn<?>> C = a("sensitive_to_bane_of_arthropods");
-   awg<brn<?>> D = a("sensitive_to_smite");
-   awg<brn<?>> E = a("no_anger_from_wind_charge");
+public class avu {
+   public static final awl<dnw> a = a("no_item_required");
+   public static final awl<dnw> b = a("pattern_item/flower");
+   public static final awl<dnw> c = a("pattern_item/creeper");
+   public static final awl<dnw> d = a("pattern_item/skull");
+   public static final awl<dnw> e = a("pattern_item/mojang");
+   public static final awl<dnw> f = a("pattern_item/globe");
+   public static final awl<dnw> g = a("pattern_item/piglin");
+   public static final awl<dnw> h = a("pattern_item/flow");
+   public static final awl<dnw> i = a("pattern_item/guster");
 
-   private static awg<brn<?>> a(String $$0) {
-      return awg.a(le.v, new akh($$0));
+   private avu() {
+   }
+
+   private static awl<dnw> a(String $$0) {
+      return awl.a(lf.d, new akm($$0));
    }
 }

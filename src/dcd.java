@@ -1,103 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+public abstract class dcd {
+   public static final akl<dbw> a = a("the_void");
+   public static final akl<dbw> b = a("plains");
+   public static final akl<dbw> c = a("sunflower_plains");
+   public static final akl<dbw> d = a("snowy_plains");
+   public static final akl<dbw> e = a("ice_spikes");
+   public static final akl<dbw> f = a("desert");
+   public static final akl<dbw> g = a("swamp");
+   public static final akl<dbw> h = a("mangrove_swamp");
+   public static final akl<dbw> i = a("forest");
+   public static final akl<dbw> j = a("flower_forest");
+   public static final akl<dbw> k = a("birch_forest");
+   public static final akl<dbw> l = a("dark_forest");
+   public static final akl<dbw> m = a("old_growth_birch_forest");
+   public static final akl<dbw> n = a("old_growth_pine_taiga");
+   public static final akl<dbw> o = a("old_growth_spruce_taiga");
+   public static final akl<dbw> p = a("taiga");
+   public static final akl<dbw> q = a("snowy_taiga");
+   public static final akl<dbw> r = a("savanna");
+   public static final akl<dbw> s = a("savanna_plateau");
+   public static final akl<dbw> t = a("windswept_hills");
+   public static final akl<dbw> u = a("windswept_gravelly_hills");
+   public static final akl<dbw> v = a("windswept_forest");
+   public static final akl<dbw> w = a("windswept_savanna");
+   public static final akl<dbw> x = a("jungle");
+   public static final akl<dbw> y = a("sparse_jungle");
+   public static final akl<dbw> z = a("bamboo_jungle");
+   public static final akl<dbw> A = a("badlands");
+   public static final akl<dbw> B = a("eroded_badlands");
+   public static final akl<dbw> C = a("wooded_badlands");
+   public static final akl<dbw> D = a("meadow");
+   public static final akl<dbw> E = a("cherry_grove");
+   public static final akl<dbw> F = a("grove");
+   public static final akl<dbw> G = a("snowy_slopes");
+   public static final akl<dbw> H = a("frozen_peaks");
+   public static final akl<dbw> I = a("jagged_peaks");
+   public static final akl<dbw> J = a("stony_peaks");
+   public static final akl<dbw> K = a("river");
+   public static final akl<dbw> L = a("frozen_river");
+   public static final akl<dbw> M = a("beach");
+   public static final akl<dbw> N = a("snowy_beach");
+   public static final akl<dbw> O = a("stony_shore");
+   public static final akl<dbw> P = a("warm_ocean");
+   public static final akl<dbw> Q = a("lukewarm_ocean");
+   public static final akl<dbw> R = a("deep_lukewarm_ocean");
+   public static final akl<dbw> S = a("ocean");
+   public static final akl<dbw> T = a("deep_ocean");
+   public static final akl<dbw> U = a("cold_ocean");
+   public static final akl<dbw> V = a("deep_cold_ocean");
+   public static final akl<dbw> W = a("frozen_ocean");
+   public static final akl<dbw> X = a("deep_frozen_ocean");
+   public static final akl<dbw> Y = a("mushroom_fields");
+   public static final akl<dbw> Z = a("dripstone_caves");
+   public static final akl<dbw> aa = a("lush_caves");
+   public static final akl<dbw> ab = a("deep_dark");
+   public static final akl<dbw> ac = a("nether_wastes");
+   public static final akl<dbw> ad = a("warped_forest");
+   public static final akl<dbw> ae = a("crimson_forest");
+   public static final akl<dbw> af = a("soul_sand_valley");
+   public static final akl<dbw> ag = a("basalt_deltas");
+   public static final akl<dbw> ah = a("the_end");
+   public static final akl<dbw> ai = a("end_highlands");
+   public static final akl<dbw> aj = a("end_midlands");
+   public static final akl<dbw> ak = a("small_end_islands");
+   public static final akl<dbw> al = a("end_barrens");
 
-public class dcd extends dcc implements dkf {
-   public static final MapCodec<dcd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
-            .apply($$0, dcd::new)
-   );
-   public static final dqy c = dqx.C;
-   public static final drb d = dqx.P;
-   private final float k;
-   private final float l;
-   protected final eui e;
-   protected final eui f;
-   protected final eui g;
-   protected final eui h;
-   protected final eui i;
-   protected final eui j;
-
-   @Override
-   public MapCodec<dcd> a() {
-      return b;
-   }
-
-   public dcd(float $$0, float $$1, dqg.d $$2) {
-      super($$2);
-      this.k(this.n().a(c, Boolean.valueOf(false)).a(d, is.b));
-      this.i = dde.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
-      this.j = dde.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
-      this.e = dde.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
-      this.f = dde.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
-      this.g = dde.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.h = dde.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.k = $$0;
-      this.l = $$1;
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      is $$4 = $$0.c(d);
-      switch ($$4) {
-         case c:
-            return this.e;
-         case d:
-            return this.f;
-         case f:
-            return this.g;
-         case e:
-            return this.h;
-         case a:
-            return this.j;
-         case b:
-         default:
-            return this.i;
-      }
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      is $$3 = $$0.c(d);
-      in $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, emb.c, emb.c.a($$3));
-      }
-
-      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dqh a(cwi $$0) {
-      dae $$1 = $$0.q();
-      in $$2 = $$0.a();
-      return this.n().a(c, Boolean.valueOf($$1.b_($$2).a() == emb.c)).a(d, $$0.k());
-   }
-
-   @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected ema b_(dqh $$0) {
-      return $$0.c(c) ? emb.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(c, d);
+   private static akl<dbw> a(String $$0) {
+      return akl.a(lf.az, new akm($$0));
    }
 }

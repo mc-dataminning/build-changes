@@ -1,58 +1,120 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.Collection;
 
-public class aoy implements aow {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.data.entity.invalid"));
-   public static final Function<String, aox.c> a = $$0 -> new aox.c() {
-         @Override
-         public aow a(CommandContext<ed> $$0x) throws CommandSyntaxException {
-            return new aoy(eq.a($$0, $$0));
-         }
+public class aoy {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.whitelist.remove.failed"));
 
-         @Override
-         public ArgumentBuilder<ed, ?> a(ArgumentBuilder<ed, ?> $$0x, Function<ArgumentBuilder<ed, ?>, ArgumentBuilder<ed, ?>> $$1) {
-            return $$0.then(ee.a("entity").then($$1.apply(ee.a($$0, eq.a()))));
-         }
-      };
-   private final brh c;
-
-   public aoy(brh $$0) {
-      this.c = $$0;
+   public static void a(CommandDispatcher<ee> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a(
+                                 "whitelist"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(ef.a("on").executes($$0x -> b((ee)$$0x.getSource()))))
+                        .then(ef.a("off").executes($$0x -> c((ee)$$0x.getSource()))))
+                     .then(ef.a("list").executes($$0x -> d((ee)$$0x.getSource()))))
+                  .then(ef.a("add").then(ef.a("targets", et.a()).suggests(($$0x, $$1) -> {
+                     auj $$2 = ((ee)$$0x.getSource()).l().ah();
+                     return ej.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
+                  }).executes($$0x -> a((ee)$$0x.getSource(), et.a($$0x, "targets"))))))
+               .then(
+                  ef.a("remove")
+                     .then(
+                        ef.a("targets", et.a())
+                           .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().j(), $$1))
+                           .executes($$0x -> b((ee)$$0x.getSource(), et.a($$0x, "targets")))
+                     )
+               ))
+            .then(ef.a("reload").executes($$0x -> a((ee)$$0x.getSource())))
+      );
    }
 
-   @Override
-   public void a(ua $$0) throws CommandSyntaxException {
-      if (this.c instanceof clh) {
-         throw b.create();
+   private static int a(ee $$0) {
+      $$0.l().ah().a();
+      $$0.a(() -> wx.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
+   }
+
+   private static int a(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aur $$2 = $$0.l().ah().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            aus $$5 = new aus($$4);
+            $$2.a($$5);
+            $$0.a(() -> wx.a("commands.whitelist.add.success", wx.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw c.create();
       } else {
-         UUID $$1 = this.c.cx();
-         this.c.g($$0);
-         this.c.a_($$1);
+         return $$3;
       }
    }
 
-   @Override
-   public ua a() {
-      return cv.b(this.c);
+   private static int b(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aur $$2 = $$0.l().ah().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            aus $$5 = new aus($$4);
+            $$2.b($$5);
+            $$0.a(() -> wx.a("commands.whitelist.remove.success", wx.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw d.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
    }
 
-   @Override
-   public wu b() {
-      return wu.a("commands.data.entity.modified", this.c.O_());
+   private static int b(ee $$0) throws CommandSyntaxException {
+      auj $$1 = $$0.l().ah();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> wx.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
    }
 
-   @Override
-   public wu a(ux $$0) {
-      return wu.a("commands.data.entity.query", this.c.O_(), up.c($$0));
+   private static int c(ee $$0) throws CommandSyntaxException {
+      auj $$1 = $$0.l().ah();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> wx.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
    }
 
-   @Override
-   public wu a(ev.g $$0, double $$1, int $$2) {
-      return wu.a("commands.data.entity.get", $$0.a(), this.c.O_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int d(ee $$0) {
+      String[] $$1 = $$0.l().ah().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> wx.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> wx.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      }
+
+      return $$1.length;
    }
 }

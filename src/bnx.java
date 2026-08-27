@@ -1,52 +1,30 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class bnx {
-   public static final Codec<bnx> a = Codec.INT.xmap(bnx::a, bnx::a);
-   private static final bnx b = new bnx(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   private bnx(int $$0) {
-      this.d = $$0;
-   }
+   public Set<bnp> a(Supplier<bmg> $$0) {
+      Set<bnp> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bno)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-   public static bnx a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bnx($$0);
+      for (bnp $$2 : $$1) {
+         this.a.add($$2.d());
       }
+
+      return $$1;
    }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aX) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bnx && this.d == ((bnx)$$0).d;
+   private static bnp a(Supplier<bmg> $$0, String $$1, bno $$2) {
+      return bnp.a($$1, $$2, () -> {
+         bmb.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)azc.b;
+      });
    }
 }

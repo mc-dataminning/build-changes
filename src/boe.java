@@ -1,50 +1,52 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 
-public interface boe<Msg> extends AutoCloseable {
-   String bx();
-
-   void a(Msg var1);
-
-   @Override
-   default void close() {
+public class boe<E> extends boi<bog.b<E>> {
+   public static <E> Codec<boe<E>> a(Codec<E> $$0) {
+      return bog.b.a($$0).listOf().xmap(boe::new, boi::e);
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super boe<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   public static <E> Codec<boe<E>> b(Codec<E> $$0) {
+      return axm.a(bog.b.a($$0).listOf()).xmap(boe::new, boi::e);
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super boe<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
+   boe(List<? extends bog.b<E>> $$0) {
+      super($$0);
    }
 
-   static <Msg> boe<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new boe<Msg>() {
-         @Override
-         public String bx() {
-            return $$0;
-         }
+   public static <E> boe.a<E> a() {
+      return new boe.a<>();
+   }
 
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
+   public static <E> boe<E> b() {
+      return new boe<>(List.of());
+   }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public static <E> boe<E> a(E $$0) {
+      return new boe<>(List.of(bog.a($$0, 1)));
+   }
+
+   public Optional<E> a(ayk $$0) {
+      return this.b($$0).map(bog.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bog.b<E>> a = ImmutableList.builder();
+
+      public boe.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public boe.a<E> a(E $$0, int $$1) {
+         this.a.add(bog.a($$0, $$1));
+         return this;
+      }
+
+      public boe<E> a() {
+         return new boe<>(this.a.build());
+      }
    }
 }

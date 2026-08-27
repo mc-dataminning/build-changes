@@ -1,50 +1,37 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ctx extends ctj {
+   private static final int a = 32;
 
-public class ctx extends csu implements csb {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public ctx(csu.a $$0) {
+   public ctx(ctj.a $$0) {
       super($$0);
-      dfj.a(this, cqo.a);
    }
 
    @Override
-   public String i(csz $$0) {
-      crs $$1 = $$0.a(ka.V);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   public cto a(cto $$0, dax $$1, bso $$2) {
+      if ($$2 instanceof aqn $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(avr.c.b(this));
+      }
+
+      $$0.a(1, $$2);
+      if (!$$1.B) {
+         $$2.ew();
+      }
+
+      return $$0.e() ? new cto(ctr.qy) : $$0;
    }
 
    @Override
-   public void a(csz $$0, @Nullable dad $$1, List<wu> $$2, cuq $$3) {
-      cqu.a($$0, $$2);
+   public int b(cto $$0) {
+      return 32;
    }
 
    @Override
-   public cus c(csz $$0) {
-      return cus.d;
+   public cvj c(cto $$0) {
+      return cvj.c;
    }
 
    @Override
-   public int b(csz $$0) {
-      return 72000;
-   }
-
-   @Override
-   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      csz $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bpn.b($$3);
-   }
-
-   @Override
-   public boolean a(csz $$0, csz $$1) {
-      return $$1.a(avz.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bro k() {
-      return bro.b;
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      return ctq.a($$0, $$1, $$2);
    }
 }

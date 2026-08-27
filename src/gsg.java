@@ -1,53 +1,87 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public final class gsg extends gse {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gsg {
+   private final Set<gsg.a> a = Sets.newIdentityHashSet();
+   final ewn b;
+   final Executor c;
 
-   @Override
-   public void a(gry $$0) {
-      if (fde.Q().C()) {
-         super.a($$0);
-      }
+   public gsg(ewn $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)fde.Q().o());
-      this.h();
-      this.c.add(fde.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(gry $$0) {
-      $$0.send(grz.c, $$0x -> {
-         $$0x.a(gsb.r, new LongArrayList(this.b));
-         $$0x.a(gsb.s, new LongArrayList(this.c));
-         $$0x.a(gsb.t, new LongArrayList(this.d));
-         $$0x.a(gsb.u, this.e());
-         $$0x.a(gsb.v, fde.Q().m.aD());
-         $$0x.a(gsb.w, (int)a);
+   public CompletableFuture<gsg.a> a(ewn.c $$0) {
+      CompletableFuture<gsg.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         ewm $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gsg.a $$3 = new gsg.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
       });
-      this.g();
+      return $$1;
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void a(Consumer<Stream<ewm>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gsg.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gsg.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gsg.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      ewm b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(ewm $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<ewm> $$0) {
+         gsg.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gsg.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

@@ -1,308 +1,312 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 public class aoi {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.team.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.team.empty.unchanged"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.team.option.name.unchanged"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.team.option.color.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("commands.team.option.friendlyfire.alreadyEnabled"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wu.c("commands.team.option.friendlyfire.alreadyDisabled"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wu.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wu.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wu.c("commands.team.option.nametagVisibility.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(wu.c("commands.team.option.deathMessageVisibility.unchanged"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(wu.c("commands.team.option.collisionRule.unchanged"));
+   private static final int a = 10000;
+   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> wx.b("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> wx.b("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> wx.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
+   );
 
-   public static void a(CommandDispatcher<ed> $$0, dz $$1) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a(
-                                    "team"
-                                 )
-                                 .requires($$0x -> $$0x.c(2)))
-                              .then(
-                                 ((LiteralArgumentBuilder)ee.a("list").executes($$0x -> a((ed)$$0x.getSource())))
-                                    .then(ee.a("team", fp.a()).executes($$0x -> c((ed)$$0x.getSource(), fp.a($$0x, "team"))))
-                              ))
-                           .then(
-                              ee.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)ee.a("team", StringArgumentType.word())
-                                          .executes($$0x -> a((ed)$$0x.getSource(), StringArgumentType.getString($$0x, "team"))))
-                                       .then(
-                                          ee.a("displayName", em.a($$1))
-                                             .executes($$0x -> a((ed)$$0x.getSource(), StringArgumentType.getString($$0x, "team"), em.a($$0x, "displayName")))
-                                       )
-                                 )
-                           ))
-                        .then(ee.a("remove").then(ee.a("team", fp.a()).executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"))))))
-                     .then(ee.a("empty").then(ee.a("team", fp.a()).executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"))))))
-                  .then(
-                     ee.a("join")
-                        .then(
-                           ((RequiredArgumentBuilder)ee.a("team", fp.a())
-                                 .executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), Collections.singleton(((ed)$$0x.getSource()).g()))))
-                              .then(ee.a("members", fi.b()).suggests(fi.a).executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), fi.c($$0x, "members"))))
-                        )
-                  ))
-               .then(ee.a("leave").then(ee.a("members", fi.b()).suggests(fi.a).executes($$0x -> a((ed)$$0x.getSource(), fi.c($$0x, "members"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("spreadplayers").requires($$0x -> $$0x.c(2)))
             .then(
-               ee.a("modify")
+               ef.a("center", gg.a())
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ee.a(
-                                                   "team", fp.a()
-                                                )
-                                                .then(
-                                                   ee.a("displayName")
-                                                      .then(
-                                                         ee.a("displayName", em.a($$1))
-                                                            .executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), em.a($$0x, "displayName")))
-                                                      )
-                                                ))
-                                             .then(
-                                                ee.a("color")
-                                                   .then(
-                                                      ee.a("value", el.a()).executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), el.a($$0x, "value")))
-                                                   )
-                                             ))
-                                          .then(
-                                             ee.a("friendlyFire")
-                                                .then(
-                                                   ee.a("allowed", BoolArgumentType.bool())
-                                                      .executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                                )
-                                          ))
-                                       .then(
-                                          ee.a("seeFriendlyInvisibles")
-                                             .then(
-                                                ee.a("allowed", BoolArgumentType.bool())
-                                                   .executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                             )
-                                       ))
-                                    .then(
-                                       ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("nametagVisibility")
-                                                   .then(ee.a("never").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.b))))
-                                                .then(ee.a("hideForOtherTeams").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.c))))
-                                             .then(ee.a("hideForOwnTeam").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.d))))
-                                          .then(ee.a("always").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.a)))
-                                    ))
+                     ef.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                        .then(
+                           ((RequiredArgumentBuilder)ef.a("maxRange", FloatArgumentType.floatArg(1.0F))
                                  .then(
-                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("deathMessageVisibility")
-                                                .then(ee.a("never").executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.b))))
-                                             .then(ee.a("hideForOtherTeams").executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.c))))
-                                          .then(ee.a("hideForOwnTeam").executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.d))))
-                                       .then(ee.a("always").executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.b.a)))
+                                    ef.a("respectTeams", BoolArgumentType.bool())
+                                       .then(
+                                          ef.a("targets", er.b())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ee)$$0x.getSource(),
+                                                      gg.a($$0x, "center"),
+                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                      ((ee)$$0x.getSource()).e().al(),
+                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                      er.b($$0x, "targets")
+                                                   )
+                                             )
+                                       )
                                  ))
                               .then(
-                                 ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("collisionRule")
-                                             .then(ee.a("never").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.a.b))))
-                                          .then(ee.a("pushOwnTeam").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.a.d))))
-                                       .then(ee.a("pushOtherTeams").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.a.c))))
-                                    .then(ee.a("always").executes($$0x -> a((ed)$$0x.getSource(), fp.a($$0x, "team"), euv.a.a)))
-                              ))
-                           .then(
-                              ee.a("prefix")
-                                 .then(ee.a("prefix", em.a($$1)).executes($$0x -> b((ed)$$0x.getSource(), fp.a($$0x, "team"), em.a($$0x, "prefix"))))
-                           ))
-                        .then(
-                           ee.a("suffix").then(ee.a("suffix", em.a($$1)).executes($$0x -> c((ed)$$0x.getSource(), fp.a($$0x, "team"), em.a($$0x, "suffix"))))
+                                 ef.a("under")
+                                    .then(
+                                       ef.a("maxHeight", IntegerArgumentType.integer())
+                                          .then(
+                                             ef.a("respectTeams", BoolArgumentType.bool())
+                                                .then(
+                                                   ef.a("targets", er.b())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ee)$$0x.getSource(),
+                                                               gg.a($$0x, "center"),
+                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
+                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                               er.b($$0x, "targets")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static wu a(Collection<eus> $$0) {
-      return $$0.iterator().next().hd();
+   private static int a(ee $$0, euj $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bru> $$6) throws CommandSyntaxException {
+      aqm $$7 = $$0.e();
+      int $$8 = $$7.I_();
+      if ($$4 < $$8) {
+         throw d.create($$4, $$8);
+      } else {
+         ayk $$9 = ayk.a();
+         double $$10 = (double)($$1.i - $$3);
+         double $$11 = (double)($$1.j - $$3);
+         double $$12 = (double)($$1.i + $$3);
+         double $$13 = (double)($$1.j + $$3);
+         aoi.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
+         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
+         double $$15 = a($$6, $$7, $$14, $$4, $$5);
+         $$0.a(
+            () -> wx.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            true
+         );
+         return $$14.length;
+      }
    }
 
-   private static int a(ed $$0, Collection<eus> $$1) {
-      eut $$2 = $$0.l().aK();
+   private static int a(Collection<? extends bru> $$0) {
+      Set<evq> $$1 = Sets.newHashSet();
 
-      for (eus $$3 : $$1) {
-         $$2.d($$3.cz());
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.team.leave.success.single", a($$1)), true);
-      } else {
-         $$0.a(() -> wu.a("commands.team.leave.success.multiple", $$1.size()), true);
+      for (bru $$2 : $$0) {
+         if ($$2 instanceof clw) {
+            $$1.add($$2.cj());
+         } else {
+            $$1.add(null);
+         }
       }
 
       return $$1.size();
    }
 
-   private static int a(ed $$0, euo $$1, Collection<eus> $$2) {
-      eut $$3 = $$0.l().aK();
+   private static void a(euj $$0, double $$1, aqm $$2, ayk $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aoi.a[] $$9, boolean $$10) throws CommandSyntaxException {
+      boolean $$11 = true;
+      double $$12 = Float.MAX_VALUE;
 
-      for (eus $$4 : $$2) {
-         $$3.a($$4.cz(), $$1);
+      int $$13;
+      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
+         $$11 = false;
+         $$12 = Float.MAX_VALUE;
+
+         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
+            aoi.a $$15 = $$9[$$14];
+            int $$16 = 0;
+            aoi.a $$17 = new aoi.a();
+
+            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
+               if ($$14 != $$18) {
+                  aoi.a $$19 = $$9[$$18];
+                  double $$20 = $$15.a($$19);
+                  $$12 = Math.min($$20, $$12);
+                  if ($$20 < $$1) {
+                     $$16++;
+                     $$17.a = $$17.a + ($$19.a - $$15.a);
+                     $$17.b = $$17.b + ($$19.b - $$15.b);
+                  }
+               }
+            }
+
+            if ($$16 > 0) {
+               $$17.a /= (double)$$16;
+               $$17.b /= (double)$$16;
+               double $$21 = $$17.b();
+               if ($$21 > 0.0) {
+                  $$17.a();
+                  $$15.b($$17);
+               } else {
+                  $$15.a($$3, $$4, $$5, $$6, $$7);
+               }
+
+               $$11 = true;
+            }
+
+            if ($$15.a($$4, $$5, $$6, $$7)) {
+               $$11 = true;
+            }
+         }
+
+         if (!$$11) {
+            for (aoi.a $$22 : $$9) {
+               if (!$$22.b($$2, $$8)) {
+                  $$22.a($$3, $$4, $$5, $$6, $$7);
+                  $$11 = true;
+               }
+            }
+         }
       }
 
-      if ($$2.size() == 1) {
-         $$0.a(() -> wu.a("commands.team.join.success.single", a($$2), $$1.d()), true);
-      } else {
-         $$0.a(() -> wu.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
+      if ($$12 == Float.MAX_VALUE) {
+         $$12 = 0.0;
       }
 
-      return $$2.size();
-   }
-
-   private static int a(ed $$0, euo $$1, euv.b $$2) throws CommandSyntaxException {
-      if ($$1.j() == $$2) {
-         throw i.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> wu.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int b(ed $$0, euo $$1, euv.b $$2) throws CommandSyntaxException {
-      if ($$1.k() == $$2) {
-         throw j.create();
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> wu.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ed $$0, euo $$1, euv.a $$2) throws CommandSyntaxException {
-      if ($$1.l() == $$2) {
-         throw k.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> wu.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ed $$0, euo $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.i() == $$2) {
-         if ($$2) {
-            throw g.create();
+      if ($$13 >= 10000) {
+         if ($$10) {
+            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
          } else {
-            throw h.create();
+            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
          }
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> wu.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
       }
    }
 
-   private static int b(ed $$0, euo $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.h() == $$2) {
-         if ($$2) {
-            throw e.create();
+   private static double a(Collection<? extends bru> $$0, aqm $$1, aoi.a[] $$2, int $$3, boolean $$4) {
+      double $$5 = 0.0;
+      int $$6 = 0;
+      Map<evq, aoi.a> $$7 = Maps.newHashMap();
+
+      for (bru $$8 : $$0) {
+         aoi.a $$10;
+         if ($$4) {
+            evq $$9 = $$8 instanceof clw ? $$8.cj() : null;
+            if (!$$7.containsKey($$9)) {
+               $$7.put($$9, $$2[$$6++]);
+            }
+
+            $$10 = $$7.get($$9);
          } else {
-            throw f.create();
-         }
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> wu.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ed $$0, euo $$1, wu $$2) throws CommandSyntaxException {
-      if ($$1.c().equals($$2)) {
-         throw c.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> wu.a("commands.team.option.name.success", $$1.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ed $$0, euo $$1, n $$2) throws CommandSyntaxException {
-      if ($$1.n() == $$2) {
-         throw d.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> wu.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ed $$0, euo $$1) throws CommandSyntaxException {
-      eut $$2 = $$0.l().aK();
-      Collection<String> $$3 = Lists.newArrayList($$1.g());
-      if ($$3.isEmpty()) {
-         throw b.create();
-      } else {
-         for (String $$4 : $$3) {
-            $$2.b($$4, $$1);
+            $$10 = $$2[$$6++];
          }
 
-         $$0.a(() -> wu.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
-         return $$3.size();
-      }
-   }
+         $$8.a($$1, (double)ayd.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayd.a($$10.b) + 0.5, Set.of(), $$8.dF(), $$8.dH());
+         double $$12 = Double.MAX_VALUE;
 
-   private static int b(ed $$0, euo $$1) {
-      eut $$2 = $$0.l().aK();
-      $$2.d($$1);
-      $$0.a(() -> wu.a("commands.team.remove.success", $$1.d()), true);
-      return $$2.g().size();
-   }
+         for (aoi.a $$13 : $$2) {
+            if ($$10 != $$13) {
+               double $$14 = $$10.a($$13);
+               $$12 = Math.min($$14, $$12);
+            }
+         }
 
-   private static int a(ed $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, wu.b($$1));
-   }
-
-   private static int a(ed $$0, String $$1, wu $$2) throws CommandSyntaxException {
-      eut $$3 = $$0.l().aK();
-      if ($$3.b($$1) != null) {
-         throw a.create();
-      } else {
-         euo $$4 = $$3.c($$1);
-         $$4.a($$2);
-         $$0.a(() -> wu.a("commands.team.add.success", $$4.d()), true);
-         return $$3.g().size();
-      }
-   }
-
-   private static int c(ed $$0, euo $$1) {
-      Collection<String> $$2 = $$1.g();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> wu.a("commands.team.list.members.empty", $$1.d()), false);
-      } else {
-         $$0.a(() -> wu.a("commands.team.list.members.success", $$1.d(), $$2.size(), wx.a($$2)), false);
+         $$5 += $$12;
       }
 
-      return $$2.size();
+      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
    }
 
-   private static int a(ed $$0) {
-      Collection<euo> $$1 = $$0.l().aK().g();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> wu.c("commands.team.list.teams.empty"), false);
-      } else {
-         $$0.a(() -> wu.a("commands.team.list.teams.success", $$1.size(), wx.b($$1, euo::d)), false);
+   private static aoi.a[] a(ayk $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+      aoi.a[] $$6 = new aoi.a[$$1];
+
+      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
+         aoi.a $$8 = new aoi.a();
+         $$8.a($$0, $$2, $$3, $$4, $$5);
+         $$6[$$7] = $$8;
       }
 
-      return $$1.size();
+      return $$6;
    }
 
-   private static int b(ed $$0, euo $$1, wu $$2) {
-      $$1.b($$2);
-      $$0.a(() -> wu.a("commands.team.option.prefix.success", $$2), false);
-      return 1;
-   }
+   static class a {
+      double a;
+      double b;
 
-   private static int c(ed $$0, euo $$1, wu $$2) {
-      $$1.c($$2);
-      $$0.a(() -> wu.a("commands.team.option.suffix.success", $$2), false);
-      return 1;
+      double a(aoi.a $$0) {
+         double $$1 = this.a - $$0.a;
+         double $$2 = this.b - $$0.b;
+         return Math.sqrt($$1 * $$1 + $$2 * $$2);
+      }
+
+      void a() {
+         double $$0 = this.b();
+         this.a /= $$0;
+         this.b /= $$0;
+      }
+
+      double b() {
+         return Math.sqrt(this.a * this.a + this.b * this.b);
+      }
+
+      public void b(aoi.a $$0) {
+         this.a = this.a - $$0.a;
+         this.b = this.b - $$0.b;
+      }
+
+      public boolean a(double $$0, double $$1, double $$2, double $$3) {
+         boolean $$4 = false;
+         if (this.a < $$0) {
+            this.a = $$0;
+            $$4 = true;
+         } else if (this.a > $$2) {
+            this.a = $$2;
+            $$4 = true;
+         }
+
+         if (this.b < $$1) {
+            this.b = $$1;
+            $$4 = true;
+         } else if (this.b > $$3) {
+            this.b = $$3;
+            $$4 = true;
+         }
+
+         return $$4;
+      }
+
+      public int a(dad $$0, int $$1) {
+         io.a $$2 = new io.a(this.a, (double)($$1 + 1), this.b);
+         boolean $$3 = $$0.a_($$2).i();
+         $$2.c(it.a);
+         boolean $$4 = $$0.a_($$2).i();
+
+         while ($$2.v() > $$0.I_()) {
+            $$2.c(it.a);
+            boolean $$5 = $$0.a_($$2).i();
+            if (!$$5 && $$4 && $$3) {
+               return $$2.v() + 1;
+            }
+
+            $$3 = $$4;
+            $$4 = $$5;
+         }
+
+         return $$1 + 1;
+      }
+
+      public boolean b(dad $$0, int $$1) {
+         io $$2 = io.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
+         drb $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.k() && !$$3.a(avw.aK);
+      }
+
+      public void a(ayk $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = ayd.a($$0, $$1, $$3);
+         this.b = ayd.a($$0, $$2, $$4);
+      }
    }
 }

@@ -1,70 +1,42 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.io.IOException;
 import org.slf4j.Logger;
 
 public class eyh {
    private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<eyh.a> b;
 
-   public static CompletableFuture<eyh.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   private static boolean a(CompletableFuture<eyh.a> $$0) {
-      eyh.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public static void a(eyi $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
    }
 
-   private static CompletableFuture<eyh.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         eyn $$0 = eyn.a();
-
-         try {
-            if ($$0.g() != eyn.a.a) {
-               return new eyh.a(eyh.b.b);
-            } else {
-               return !$$0.f() ? new eyh.a(eyh.b.c) : new eyh.a(eyh.b.a);
-            }
-         } catch (faa var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new eyh.a(eyh.b.d) : new eyh.a(var2);
-         }
-      }, ac.g());
-   }
-
-   public static record a(eyh.b a, @Nullable faa b) {
-      public a(eyh.b $$0) {
-         this($$0, null);
-      }
-
-      public a(faa $$0) {
-         this(eyh.b.e, $$0);
-      }
-
-      @Nullable
-      public fld a(fld $$0) {
-         return (fld)(switch (this.a) {
-            case a -> null;
-            case b -> new fam($$0);
-            case c -> new fax($$0);
-            case d -> new far(wu.c("mco.error.invalid.session.title"), wu.c("mco.error.invalid.session.message"), $$0);
-            case e -> new far(Objects.requireNonNull(this.b), $$0);
-         });
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+      } else {
+         return $$0;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public static void b(eyi $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+      }
    }
 }

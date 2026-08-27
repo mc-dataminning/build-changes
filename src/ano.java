@@ -1,56 +1,158 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class ano {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.random.error.range_too_small"));
 
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("ride").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("random").then(a("value", false))).then(a("roll", true)))
             .then(
-               ((RequiredArgumentBuilder)ee.a("target", eq.a())
-                     .then(ee.a("mount").then(ee.a("vehicle", eq.a()).executes($$0x -> a((ed)$$0x.getSource(), eq.a($$0x, "target"), eq.a($$0x, "vehicle"))))))
-                  .then(ee.a("dismount").executes($$0x -> a((ed)$$0x.getSource(), eq.a($$0x, "target"))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("reset").requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ((LiteralArgumentBuilder)ef.a("*").executes($$0x -> a((ee)$$0x.getSource())))
+                           .then(
+                              ((RequiredArgumentBuilder)ef.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)ef.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ee)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          ef.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ee)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)ef.a("sequence", ff.a()).suggests(ano::a).executes($$0x -> a((ee)$$0x.getSource(), ff.c($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)ef.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((ee)$$0x.getSource(), ff.c($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)ef.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ee)$$0x.getSource(),
+                                                ff.c($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       ef.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ee)$$0x.getSource(),
+                                                   ff.c($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ed $$0, brh $$1, brh $$2) throws CommandSyntaxException {
-      brh $$3 = $$1.da();
-      if ($$3 != null) {
-         throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ai() == brn.bx) {
-         throw d.create();
-      } else if ($$1.cS().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dN() != $$2.dN()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.O_(), $$2.O_());
+   private static LiteralArgumentBuilder<ee> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<ee>)ef.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)ef.a("range", fc.a()).executes($$1x -> a((ee)$$1x.getSource(), fc.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)ef.a("sequence", ff.a()).suggests(ano::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((ee)$$1x.getSource(), fc.b.a($$1x, "range"), ff.c($$1x, "sequence"), $$1))
+               )
+         );
+   }
+
+   private static CompletableFuture<Suggestions> a(CommandContext<ee> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((ee)$$0.getSource()).e().K().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return ej.b($$2, $$1);
+   }
+
+   private static int a(ee $$0, ct.d $$1, @Nullable akm $$2, boolean $$3) throws CommandSyntaxException {
+      ayk $$4;
+      if ($$2 != null) {
+         $$4 = $$0.e().a($$2);
       } else {
-         $$0.a(() -> wu.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+         $$4 = $$0.e().E_();
+      }
+
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
+         throw a.create();
+      } else {
+         int $$9 = ayd.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.l().ah().a(wx.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
+         } else {
+            $$0.a(() -> wx.a("commands.random.sample.success", $$9), false);
+         }
+
+         return $$9;
       }
    }
 
-   private static int a(ed $$0, brh $$1) throws CommandSyntaxException {
-      brh $$2 = $$1.da();
-      if ($$2 == null) {
-         throw a.create($$1.O_());
-      } else {
-         $$1.ac();
-         $$0.a(() -> wu.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
-      }
+   private static int a(ee $$0, akm $$1) throws CommandSyntaxException {
+      $$0.e().K().b($$1);
+      $$0.a(() -> wx.a("commands.random.reset.success", wx.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(ee $$0, akm $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.e().K().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> wx.a("commands.random.reset.success", wx.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(ee $$0) {
+      int $$1 = $$0.e().K().a();
+      $$0.a(() -> wx.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
+
+   private static int a(ee $$0, int $$1, boolean $$2, boolean $$3) {
+      bqb $$4 = $$0.e().K();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> wx.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

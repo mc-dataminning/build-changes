@@ -1,181 +1,103 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fwm {
    private static final Logger a = LogUtils.getLogger();
-   private static final wu b = wu.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vs> c = Collections.synchronizedList(Lists.newArrayList());
+   private final fdz b;
+   private final gta c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private fwm.a f;
+   @Nullable
+   private af g;
 
-   public void a(final fwk $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final fxn $$3 = fxn.a($$0.b);
-      Optional<InetSocketAddress> $$4 = fxp.a.a($$3).map(fxm::d);
-      if ($$4.isEmpty()) {
-         this.a(fjw.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vs $$6 = vs.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wu.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         aje $$7 = new aje() {
-            private boolean h;
-            private boolean i;
-            private long j;
+   public fwm(fdz $$0, gta $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-            @Override
-            public void a(ajf $$0x) {
-               if (this.i) {
-                  $$6.a(wu.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  ajg $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wu.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wu.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fwm.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wu> $$2xx = new ArrayList<>($$1xxx.c().size());
+   public void a(afu $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
 
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wu.b($$3xx.getName()));
-                        }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wu.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
+      for (Entry<akm, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wu.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fwk.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ac.b();
-                  $$6.a(new ajc(this.j));
-                  this.h = true;
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fif($$2.b()));
                }
             }
-
-            @Override
-            public void a(aiz $$0x) {
-               long $$1 = this.j;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$6.a(wu.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(wu $$0x) {
-               if (!this.h) {
-                  fwm.this.a($$0, $$0);
-                  fwm.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aji.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
    }
 
-   void a(wu $$0, fwk $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wt.a;
+   public ak a() {
+      return this.d;
    }
 
-   void a(InetSocketAddress $$0, final fxn $$1, final fwk $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vs.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
+   public void a(@Nullable af $$0, boolean $$1) {
+      fws $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahn.a($$0));
+      }
 
-            $$0.pipeline().addLast(new ChannelHandler[]{new fwd($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(fwk.b.d);
-               $$2.h = wu.b($$2xx);
-               $$2.d = wu.b($$3);
-               $$2.c = fwm.a($$4, $$5);
-               $$2.e = new ajg.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static wu a(int $$0, int $$1) {
-      wu $$2 = wu.b(Integer.toString($$0)).a(n.h);
-      wu $$3 = wu.b(Integer.toString($$1)).a(n.h);
-      return wu.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
-
-   public void a() {
-      synchronized (this.c) {
-         Iterator<vs> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vs $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
          }
       }
    }
 
-   public void b() {
-      synchronized (this.c) {
-         Iterator<vs> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vs $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wu.c("multiplayer.status.cancelled"));
+   public void a(@Nullable fwm.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
             }
-         }
+         });
+         $$0.a(this.g);
       }
+   }
+
+   @Nullable
+   public af a(akm $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

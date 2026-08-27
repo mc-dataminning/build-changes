@@ -1,209 +1,56 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
-import java.util.Locale;
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
 
-public class bnh {
-   private final String b;
-   private final bng c;
-   private final DoubleSupplier d;
-   private final ByteBuf e;
-   private final ByteBuf f;
-   private volatile boolean g;
-   @Nullable
-   private final Runnable h;
-   @Nullable
-   final bnh.c a;
-   private double i;
+public final class bnh<T> {
+   private final bnh.a a;
+   private final List<Pair<T, bnh.a>> b;
+   private final Duration c;
 
-   protected bnh(String $$0, bng $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable bnh.c $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.h = $$3;
-      this.d = $$2;
-      this.a = $$4;
-      this.f = ByteBufAllocator.DEFAULT.buffer();
-      this.e = ByteBufAllocator.DEFAULT.buffer();
-      this.g = true;
+   public bnh(Duration $$0, List<Pair<T, bnh.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bnh.a>map(Pair::getSecond).reduce(new bnh.a(0L, 0L), bnh.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bnh.a.c)).limit(10L).toList();
    }
 
-   public static bnh a(String $$0, bng $$1, DoubleSupplier $$2) {
-      return new bnh($$0, $$1, $$2, null, null);
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   public static <T> bnh a(String $$0, bng $$1, T $$2, ToDoubleFunction<T> $$3) {
-      return a($$0, $$1, $$3, $$2).a();
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
    }
 
-   public static <T> bnh.a<T> a(String $$0, bng $$1, ToDoubleFunction<T> $$2, T $$3) {
-      return new bnh.a<>($$0, $$1, $$2, $$3);
+   public long c() {
+      return this.a.a;
    }
 
-   public void a() {
-      if (!this.g) {
-         throw new IllegalStateException("Not running");
-      } else {
-         if (this.h != null) {
-            this.h.run();
-         }
-      }
+   public long d() {
+      return this.a.b;
    }
 
-   public void a(int $$0) {
-      this.h();
-      this.i = this.d.getAsDouble();
-      this.f.writeDouble(this.i);
-      this.e.writeInt($$0);
-   }
-
-   public void b() {
-      this.h();
-      this.f.release();
-      this.e.release();
-      this.g = false;
-   }
-
-   private void h() {
-      if (!this.g) {
-         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
-      }
-   }
-
-   DoubleSupplier c() {
-      return this.d;
-   }
-
-   public String d() {
+   public List<Pair<T, bnh.a>> e() {
       return this.b;
    }
 
-   public bng e() {
-      return this.c;
-   }
+   public static record a(long a, long b) {
+      static final Comparator<bnh.a> c = Comparator.comparing(bnh.a::c).thenComparing(bnh.a::b).reversed();
 
-   public bnh.b f() {
-      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
-      int $$1 = Integer.MIN_VALUE;
-      int $$2 = Integer.MIN_VALUE;
-
-      while (this.f.isReadable(8)) {
-         int $$3 = this.e.readInt();
-         if ($$1 == Integer.MIN_VALUE) {
-            $$1 = $$3;
-         }
-
-         $$0.put($$3, this.f.readDouble());
-         $$2 = $$3;
+      bnh.a a(bnh.a $$0) {
+         return new bnh.a(this.a + $$0.a, this.b + $$0.b);
       }
 
-      return new bnh.b($$1, $$2, $$0);
-   }
-
-   public boolean g() {
-      return this.a != null && this.a.test(this.i);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bnh $$1 = (bnh)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static class a<T> {
-      private final String a;
-      private final bng b;
-      private final DoubleSupplier c;
-      private final T d;
-      @Nullable
-      private Runnable e;
-      @Nullable
-      private bnh.c f;
-
-      public a(String $$0, bng $$1, ToDoubleFunction<T> $$2, T $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = () -> $$2.applyAsDouble($$3);
-         this.d = $$3;
+      public float a() {
+         return (float)this.b / (float)this.a;
       }
 
-      public bnh.a<T> a(Consumer<T> $$0) {
-         this.e = () -> $$0.accept(this.d);
-         return this;
+      public long b() {
+         return this.a;
       }
 
-      public bnh.a<T> a(bnh.c $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public bnh a() {
-         return new bnh(this.a, this.b, this.c, this.e, this.f);
-      }
-   }
-
-   public static class b {
-      private final Int2DoubleMap a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, Int2DoubleMap $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      public double a(int $$0) {
-         return this.a.get($$0);
-      }
-
-      public int a() {
+      public long c() {
          return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public interface c {
-      boolean test(double var1);
-   }
-
-   public static class d implements bnh.c {
-      private final float a;
-      private double b = Double.MIN_VALUE;
-
-      public d(float $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean test(double $$0) {
-         boolean $$2;
-         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
-            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
-         } else {
-            $$2 = false;
-         }
-
-         this.b = $$0;
-         return $$2;
       }
    }
 }

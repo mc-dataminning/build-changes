@@ -1,183 +1,169 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class flk extends fkv {
-   private static final wu a = wu.c("options.videoTitle");
-   private static final wu r = wu.c("options.graphics.fabulous").a(n.u);
-   private static final wu s = wu.a("options.graphics.warning.message", r, r);
-   private static final wu u = wu.c("options.graphics.warning.title").a(n.m);
-   private static final wu v = wu.c("options.graphics.warning.accept");
-   private static final wu w = wu.c("options.graphics.warning.cancel");
-   private fgb x;
-   private final gbi y;
-   private final int z;
+public class flk extends fls {
+   static final akm c = new akm("textures/gui/title/mojangstudios.png");
+   private static final int d = axo.b.a(255, 239, 50, 61);
+   private static final int e = axo.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fdz.Q().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final fdz m;
+   private final ats n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   private static fdh<?>[] a(fdi $$0) {
-      return new fdh[]{
-         $$0.j(),
-         $$0.e(),
-         $$0.l(),
-         $$0.f(),
-         $$0.k(),
-         $$0.h(),
-         $$0.N(),
-         $$0.ab(),
-         $$0.aq(),
-         $$0.D(),
-         $$0.ap(),
-         $$0.i(),
-         $$0.aa(),
-         $$0.ar(),
-         $$0.C(),
-         $$0.O(),
-         $$0.aj(),
-         $$0.g(),
-         $$0.ak(),
-         $$0.af(),
-         $$0.am(),
-         $$0.an(),
-         $$0.p()
-      };
+   public flk(fdz $$0, ats $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   public flk(fld $$0, fdi $$1) {
-      super($$0, $$1, a);
-      this.y = $$0.m.aj();
-      this.y.i();
-      if ($$1.j().c() == fcx.c) {
-         this.y.e();
-      }
+   public static void a(fdz $$0) {
+      $$0.aa().a(c, new flk.a());
+   }
 
-      this.z = $$1.C().c();
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aM_() {
-      this.x = this.c(new fgb(this.m, this.n, this.o, this));
-      int $$0 = -1;
-      exb $$1 = this.m.aP();
-      eww $$2 = $$1.t();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
-      } else {
-         Optional<exa> $$4 = $$1.f();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.c();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
       }
 
-      fdh<Integer> $$6 = new fdh<>("options.fullscreen.resolution", fdh.a(), ($$1x, $$2x) -> {
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
+         }
+
+         int $$9 = ayd.f((1.0F - ayd.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(gcs.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - ayd.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = ayd.c(ayd.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(gcs.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = ayd.a($$8, 0.0F, 1.0F);
+      } else {
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, fdz.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = ayd.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - ayd.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.c();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
+      }
+   }
+
+   private void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = ayd.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = axo.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gno {
+      public a() {
+         super(flk.c);
+      }
+
+      @Override
+      protected gno.a b(atw $$0) {
+         asm $$1 = fdz.Q().ad();
+         ato<InputStream> $$2 = $$1.a(ask.a, flk.c);
          if ($$2 == null) {
-            return wu.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return fdi.a($$1x, wu.c("options.fullscreen.current"));
+            return new gno.a(new FileNotFoundException(flk.c.toString()));
          } else {
-            exa $$3x = $$2.a($$2x);
-            return fdi.a($$1x, wu.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
-         }
-      }, new fdh.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
-         }
-      });
-      this.x.a($$6);
-      this.x.a(this.c.E());
-      this.x.a(a(this.c));
-      super.aM_();
-   }
-
-   @Override
-   public void d() {
-      this.m.aP().g();
-      super.d();
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      this.x.a(this.n, this.d);
-   }
-
-   @Override
-   public void j() {
-      if (this.c.C().c() != this.z) {
-         this.m.b(this.c.C().c());
-         this.m.R();
-      }
-
-      super.j();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = this.c.aq().c();
-      if (super.a($$0, $$1, $$2)) {
-         if (this.c.aq().c() != $$3) {
-            this.m.a();
-         }
-
-         if (this.y.g()) {
-            List<wu> $$4 = Lists.newArrayList(new wu[]{s, wt.s});
-            String $$5 = this.y.j();
-            if ($$5 != null) {
-               $$4.add(wt.s);
-               $$4.add(wu.a("options.graphics.warning.renderer", $$5).a(n.h));
-            }
-
-            String $$6 = this.y.l();
-            if ($$6 != null) {
-               $$4.add(wt.s);
-               $$4.add(wu.a("options.graphics.warning.vendor", $$6).a(n.h));
-            }
-
-            String $$7 = this.y.k();
-            if ($$7 != null) {
-               $$4.add(wt.s);
-               $$4.add(wu.a("options.graphics.warning.version", $$7).a(n.h));
-            }
-
-            this.m.a(new flj(u, $$4, ImmutableList.of(new flj.a(v, $$0x -> {
-               this.c.j().a(fcx.c);
-               fde.Q().f.f();
-               this.y.e();
-               this.m.a(this);
-            }), new flj.a(w, $$0x -> {
-               this.y.f();
-               this.m.a(this);
-            }))));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fld.r()) {
-         fdh<Integer> $$4 = this.c.aq();
-         if ($$4.e() instanceof fdh.c $$5) {
-            int $$6 = $$4.c() + (int)Math.signum($$3);
-            if ($$6 != 0 && $$6 <= $$5.b()) {
-               ffl<Integer> $$7 = (ffl<Integer>)this.x.b($$4);
-               if ($$7 != null) {
-                  $$4.a($$6);
-                  $$7.a($$6);
+            try {
+               gno.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gno.a(new gps(true, true), ext.a($$3));
                }
 
-               if ($$4.c() == $$6) {
-                  this.m.a();
-                  this.x.a(0.0);
-                  return true;
-               }
+               return var5;
+            } catch (IOException var9) {
+               return new gno.a(var9);
             }
          }
-
-         return false;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
       }
    }
 }

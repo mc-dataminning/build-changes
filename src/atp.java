@@ -1,56 +1,119 @@
-import java.io.BufferedReader;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class atp {
-   private final asd a;
-   private final atj<InputStream> b;
-   private final atj<att> c;
-   @Nullable
-   private att d;
+public class atp implements atm {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, atn> c;
+   private final List<asi> d;
 
-   public atp(asd $$0, atj<InputStream> $$1, atj<att> $$2) {
-      this.a = $$0;
-      this.b = $$1;
+   public atp(ask $$0, List<asi> $$1) {
+      this.d = List.copyOf($$1);
+      Map<String, atn> $$2 = new HashMap<>();
+      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+
+      for (asi $$4 : $$1) {
+         atv $$5 = this.a($$4);
+         Set<String> $$6 = $$4.a($$0);
+         Predicate<akm> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+
+         for (String $$8 : $$3) {
+            boolean $$9 = $$6.contains($$8);
+            boolean $$10 = $$5 != null && $$5.a($$8);
+            if ($$9 || $$10) {
+               atn $$11 = $$2.get($$8);
+               if ($$11 == null) {
+                  $$11 = new atn($$0, $$8);
+                  $$2.put($$8, $$11);
+               }
+
+               if ($$9 && $$10) {
+                  $$11.a($$4, $$7);
+               } else if ($$9) {
+                  $$11.a($$4);
+               } else {
+                  $$11.a($$4.b(), $$7);
+               }
+            }
+         }
+      }
+
       this.c = $$2;
    }
 
-   public atp(asd $$0, atj<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = att.b;
-      this.d = att.a;
+   @Nullable
+   private atv a(asi $$0) {
+      try {
+         return $$0.a(atv.a);
+      } catch (IOException var3) {
+         a.error("Failed to get filter section from pack {}", $$0.b());
+         return null;
+      }
    }
 
-   public asd a() {
-      return this.a;
+   @Override
+   public Set<String> a() {
+      return this.c.keySet();
    }
 
-   public String b() {
-      return this.a.b();
+   @Override
+   public Optional<atu> getResource(akm $$0) {
+      atw $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
    }
 
-   public Optional<asy> c() {
-      return this.a.c();
+   @Override
+   public List<atu> a(akm $$0) {
+      atw $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.a($$0) : List.of();
    }
 
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
+   @Override
+   public Map<akm, atu> b(String $$0, Predicate<akm> $$1) {
+      a($$0);
+      Map<akm, atu> $$2 = new TreeMap<>();
 
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public att f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
+      for (atn $$3 : this.c.values()) {
+         $$2.putAll($$3.b($$0, $$1));
       }
 
-      return this.d;
+      return $$2;
+   }
+
+   @Override
+   public Map<akm, List<atu>> c(String $$0, Predicate<akm> $$1) {
+      a($$0);
+      Map<akm, List<atu>> $$2 = new TreeMap<>();
+
+      for (atn $$3 : this.c.values()) {
+         $$2.putAll($$3.c($$0, $$1));
+      }
+
+      return $$2;
+   }
+
+   private static void a(String $$0) {
+      if ($$0.endsWith("/")) {
+         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      }
+   }
+
+   @Override
+   public Stream<asi> b() {
+      return this.d.stream();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(asi::close);
    }
 }

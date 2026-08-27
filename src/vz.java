@@ -1,41 +1,43 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import org.slf4j.Logger;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class vz<T extends wa> extends MessageToByteEncoder<zb<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final wc<T> b;
+public class vz extends MessageToMessageDecoder<ze<?>> {
+   private final zd a;
+   @Nullable
+   private zd.a b;
 
-   public vz(wc<T> $$0) {
-      this.b = $$0;
+   public vz(zd $$0) {
+      this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zb<T> $$1, ByteBuf $$2) throws Exception {
-      zd<? extends zb<? super T>> $$3 = $$1.a();
-      if (a.isDebugEnabled()) {
-         a.debug(vs.d, "OUT: [{}:{}] {}", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName()});
+   protected void a(ChannelHandlerContext $$0, ze<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         ze<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
+      } else {
+         zd.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
+         }
       }
+   }
 
-      try {
-         int $$4 = $$2.writerIndex();
-         this.b.c().encode($$2, $$1);
-         int $$5 = $$2.writerIndex() - $$4;
-         if ($$5 > 8388608) {
-            throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
-         }
-
-         bmg.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
-      } catch (Throwable var10) {
-         a.error("Error sending packet {}", $$3, var10);
-         if ($$1.c()) {
-            throw new wh(var10);
-         }
-
-         throw var10;
-      } finally {
-         wd.b($$0, $$1);
+   private static void a(ze<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

@@ -1,20 +1,16 @@
-public record aco(xg.a b) implements zb<abm> {
-   public static final ys<vu, aco> a = zb.a(aco::a, aco::new);
-
-   private aco(vu $$0) {
-      this(xg.a.a($$0));
-   }
-
-   private void a(vu $$0) {
-      xg.a.a($$0, this.b);
-   }
+public record aco(ctj b, int c) implements ze<abq> {
+   public static final yv<wi, aco> a = yv.a(yt.a(lf.G), aco::b, yt.f, aco::e, aco::new);
 
    @Override
-   public zd<aco> a() {
-      return afx.B;
+   public zg<aco> a() {
+      return agb.x;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

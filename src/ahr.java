@@ -1,53 +1,84 @@
-public class ahr implements zb<afz> {
-   public static final ys<vu, ahr> a = zb.a(ahr::a, ahr::new);
-   private static final int b = 384;
-   private final in c;
-   private final String[] d;
-   private final boolean e;
+public class ahr implements ze<agd> {
+   public static final yv<vx, ahr> a = ze.a(ahr::a, ahr::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final io e;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final doq.a j;
 
-   public ahr(in $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
+   public ahr(io $$0, String $$1, doq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   private ahr(vu $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
+   private ahr(vx $$0) {
+      this.e = $$0.e();
+      this.f = $$0.p();
+      this.j = $$0.b(doq.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
+   private void a(vx $$0) {
       $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
+      $$0.a(this.f);
+      $$0.a(this.j);
+      int $$1 = 0;
+      if (this.g) {
+         $$1 |= 1;
       }
+
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.i) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public zd<ahr> a() {
-      return afx.bX;
+   public zg<ahr> a() {
+      return agb.bT;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public in b() {
-      return this.c;
-   }
-
-   public boolean e() {
+   public io b() {
       return this.e;
    }
 
-   public String[] f() {
-      return this.d;
+   public String e() {
+      return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public boolean h() {
+      return this.i;
+   }
+
+   public doq.a i() {
+      return this.j;
    }
 }

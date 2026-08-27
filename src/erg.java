@@ -1,47 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record erg(iw<cyg> b, List<Float> c) implements erq {
-   public static final Codec<erg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ld.f.r().fieldOf("enchantment").forGetter(erg::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(erg::d)).apply($$0, erg::new)
+public class erg extends eqq {
+   public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(awl.b(lf.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, erg::new)
    );
+   private final awl<ctg> b;
 
-   @Override
-   public err b() {
-      return ers.m;
+   private erg(List<esl> $$0, awl<ctg> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return ImmutableSet.of(erc.i);
+   public eqs b() {
+      return eqt.D;
    }
 
-   public boolean a(eol $$0) {
-      csz $$1 = $$0.c(erc.i);
-      int $$2 = $$1 != null ? cyh.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   public cto a(cto $$0, epf $$1) {
+      cth.a($$0, this.b, $$1.b());
+      return $$0;
    }
 
-   public static erq.a a(cyg $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new erg($$0.l(), $$2);
-   }
-
-   public iw<cyg> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   public static eqq.a<?> a(awl<ctg> $$0) {
+      return a($$1 -> new erg($$1, $$0));
    }
 }

@@ -1,44 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Optional;
 
-public record cvw(Map<String, cvw.a> c) {
-   public static final cvw a = new cvw(Map.of());
-   public static final Codec<cvw> b = Codec.unboundedMap(Codec.STRING, cvw.a.a).xmap(cvw::new, cvw::a);
+public class cvw {
+   public static final akl<cvv> a = a("sentry");
+   public static final akl<cvv> b = a("dune");
+   public static final akl<cvv> c = a("coast");
+   public static final akl<cvv> d = a("wild");
+   public static final akl<cvv> e = a("ward");
+   public static final akl<cvv> f = a("eye");
+   public static final akl<cvv> g = a("vex");
+   public static final akl<cvv> h = a("tide");
+   public static final akl<cvv> i = a("snout");
+   public static final akl<cvv> j = a("rib");
+   public static final akl<cvv> k = a("spire");
+   public static final akl<cvv> l = a("wayfinder");
+   public static final akl<cvv> m = a("shaper");
+   public static final akl<cvv> n = a("silence");
+   public static final akl<cvv> o = a("raiser");
+   public static final akl<cvv> p = a("host");
+   public static final akl<cvv> q = a("flow");
+   public static final akl<cvv> r = a("bolt");
 
-   public cvw a(String $$0, cvw.a $$1) {
-      return new cvw(ac.a(this.c, $$0, $$1));
+   public static void a(qo<cvv> $$0) {
+      a($$0, ctr.xt, a);
+      a($$0, ctr.xu, b);
+      a($$0, ctr.xv, c);
+      a($$0, ctr.xw, d);
+      a($$0, ctr.xx, e);
+      a($$0, ctr.xy, f);
+      a($$0, ctr.xz, g);
+      a($$0, ctr.xA, h);
+      a($$0, ctr.xB, i);
+      a($$0, ctr.xC, j);
+      a($$0, ctr.xD, k);
+      a($$0, ctr.xE, l);
+      a($$0, ctr.xF, m);
+      a($$0, ctr.xG, n);
+      a($$0, ctr.xH, o);
+      a($$0, ctr.xI, p);
    }
 
-   public Map<String, cvw.a> a() {
-      return this.c;
+   public static Optional<ix.c<cvv>> a(iz.a $$0, cto $$1) {
+      return $$0.b(lf.aP).b().filter($$1x -> $$1.a(((cvv)$$1x.a()).b())).findFirst();
    }
 
-   public static record a(iw<enk> b, double c, double d, float e) {
-      public static final Codec<cvw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  enk.b.fieldOf("type").forGetter(cvw.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cvw.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cvw.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cvw.a::d)
-               )
-               .apply($$0, cvw.a::new)
-      );
+   public static void a(qo<cvv> $$0, ctj $$1, akl<cvv> $$2) {
+      cvv $$3 = new cvv($$2.a(), le.h.e($$1), wx.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
+   }
 
-      public iw<enk> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   private static akl<cvv> a(String $$0) {
+      return akl.a(lf.aP, new akm($$0));
    }
 }

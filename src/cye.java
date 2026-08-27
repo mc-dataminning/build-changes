@@ -1,33 +1,74 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cye extends cyg {
-   private final Optional<awg<brn<?>>> b;
-
-   public cye(cyg.b $$0, Optional<awg<brn<?>>> $$1) {
+public class cye extends cxm {
+   public cye(cxk $$0) {
       super($$0);
-      this.b = $$1;
    }
 
-   @Override
-   public float a(int $$0, @Nullable brn<?> $$1) {
-      if (this.b.isEmpty()) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
+   public boolean a(cpj $$0, dax $$1) {
+      cto $$2 = cto.i;
+      cto $$3 = cto.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cto $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof crj) {
+               if (!$$3.e()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(ctr.vs)) {
+                  return false;
+               }
+
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               dnx $$6 = $$5.a(kb.W, dnx.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            }
+         }
+      }
+
+      return !$$2.e() && !$$3.e();
+   }
+
+   public cto a(cpj $$0, iz.a $$1) {
+      cto $$2 = cto.i;
+      cto $$3 = cto.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cto $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof crj) {
+               $$2 = $$5;
+            } else if ($$5.a(ctr.vs)) {
+               $$3 = $$5.s();
+            }
+         }
+      }
+
+      if ($$3.e()) {
+         return $$3;
       } else {
-         return $$1 != null && $$1.a(this.b.get()) ? (float)$$0 * 2.5F : 0.0F;
+         $$3.b(kb.W, $$2.a(kb.W));
+         $$3.b(kb.X, ((crj)$$2.g()).b());
+         return $$3;
       }
    }
 
    @Override
-   public boolean a(cyg $$0) {
-      return !($$0 instanceof cye);
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public void a(bsa $$0, brh $$1, int $$2) {
-      if (this.b.isPresent() && $$1 instanceof bsa $$3 && this.b.get() == avu.C && $$2 > 0 && $$3.ai().a(this.b.get())) {
-         int $$4 = 20 + $$0.ej().a(10 * $$2);
-         $$3.b(new bqt(bqv.b, $$4, 3));
-      }
+   public cxy<?> ao_() {
+      return cxy.l;
    }
 }

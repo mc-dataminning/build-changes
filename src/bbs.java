@@ -1,23 +1,31 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bbs extends bgd {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:salmon_mob", "minecraft:salmon")
-      .put("minecraft:cod_mob", "minecraft:cod")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
-      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
-      .build();
-
-   public bbs(Schema $$0, boolean $$1) {
-      super("EntityCodSalmonFix", $$0, $$1);
+public class bbs extends DataFix {
+   public bbs(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected String a(String $$0) {
-      return a.getOrDefault($$0, $$0);
+   public TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bfy.t)
+      );
+      return this.fixTypeEverywhereTyped(
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bfy.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
+                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
+                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
+                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
+                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
+               }))
+      );
    }
 }

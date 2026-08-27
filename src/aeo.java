@@ -1,37 +1,32 @@
-public class aeo implements zb<abm> {
-   public static final ys<vu, aeo> a = zb.a(aeo::a, aeo::new);
-   private final in b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public aeo(in $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class aeo implements ze<abq> {
+   public static final yv<vx, aeo> a = ze.a(aeo::a, aeo::new);
+   private final int b;
+
+   public aeo(bru $$0) {
+      this.b = $$0.al();
    }
 
-   private aeo(vu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aeo(vx $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<aeo> a() {
-      return afx.aA;
+   public zg<aeo> a() {
+      return agb.aw;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public in b() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
+   @Nullable
+   public bru a(dax $$0) {
+      return $$0.a(this.b);
    }
 }

@@ -1,61 +1,98 @@
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+
 public class brw {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final ajq c;
-   private final ajm<Integer> d;
-   private final ajm<Boolean> e;
-   private boolean f;
-   private int g;
+   private final Map<brv, List<euk>> a;
 
-   public brw(ajq $$0, ajm<Integer> $$1, ajm<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   brw(Map<brv, List<euk>> $$0) {
+      this.a = $$0;
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   public static brw a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public boolean a(ayg $$0) {
-      if (this.f) {
-         return false;
+   public static brw.a a() {
+      return new brw.a();
+   }
+
+   public brw a(float $$0, float $$1, float $$2) {
+      Map<brv, List<euk>> $$3 = new EnumMap<>(brv.class);
+
+      for (Entry<brv, List<euk>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new brw($$3);
+   }
+
+   private static List<euk> a(List<euk> $$0, float $$1, float $$2, float $$3) {
+      List<euk> $$4 = new ArrayList<>($$0.size());
+
+      for (euk $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
+   }
+
+   @Nullable
+   public euk a(brv $$0, int $$1, float $$2) {
+      List<euk> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
+
+   public euk b(brv $$0, int $$1, float $$2) {
+      euk $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         this.f = true;
-         this.g = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
+         return $$3;
       }
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
+   public euk c(brv $$0, int $$1, float $$2) {
+      List<euk> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         euk $$4 = $$3.get(ayd.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
       }
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * axz.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   private static euk a(euk $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   private int e() {
-      return this.c.a(this.d);
-   }
+   public static class a {
+      private final Map<brv, List<euk>> a = new EnumMap<>(brv.class);
 
-   public void a(ua $$0) {
-      $$0.a("Saddle", this.d());
-   }
+      a() {
+      }
 
-   public void b(ua $$0) {
-      this.a($$0.q("Saddle"));
-   }
+      public brw.a a(brv $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new euk((double)$$1, (double)$$2, (double)$$3));
+      }
 
-   public void a(boolean $$0) {
-      this.c.a(this.e, $$0);
-   }
+      public brw.a a(brv $$0, euk $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
 
-   public boolean d() {
-      return this.c.a(this.e);
+      public brw a(float $$0, float $$1) {
+         Map<brv, List<euk>> $$2 = new EnumMap<>(brv.class);
+
+         for (brv $$3 : brv.values()) {
+            List<euk> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new brw($$2);
+      }
    }
 }

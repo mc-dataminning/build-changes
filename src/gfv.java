@@ -1,45 +1,29 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gfv extends ghy<chh, frb> {
-   public static final akh a = new akh("textures/entity/armorstand/wood.png");
+public class gfv implements gfw.a {
+   private final fdz a;
+   private double b = Double.MIN_VALUE;
+   private List<evd> c = Collections.emptyList();
 
-   public gfv(ggx.a $$0) {
-      super($$0, new frc($$0.a(fva.c)), 0.0F);
-      this.a(new gky<>(this, new frb($$0.a(fva.d)), new frb($$0.a(fva.e)), $$0.g()));
-      this.a(new glb<>(this, $$0.d()));
-      this.a(new gkr<>(this, $$0.f()));
-      this.a(new gkn<>(this, $$0.f(), $$0.d()));
+   public gfv(fdz $$0) {
+      this.a = $$0;
    }
 
-   public akh a(chh $$0) {
-      return a;
-   }
-
-   protected void a(chh $$0, exx $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dN().Y() - $$0.bN) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(axz.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+   @Override
+   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bru $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dP().d($$6, $$6.cK().g(6.0)));
       }
-   }
 
-   protected boolean b(chh $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bY() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cC();
-   }
+      eyw $$7 = $$1.getBuffer(gcs.y());
 
-   @Nullable
-   protected gbw a(chh $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.z()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         akh $$4 = this.a($$0);
-         if ($$2) {
-            return gbw.c($$4, false);
-         } else {
-            return $$1 ? gbw.a($$4, false) : null;
-         }
+      for (evd $$8 : this.c) {
+         gci.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
    }
 }

@@ -1,112 +1,78 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class ehy {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<iw<ehy>>> d = new MutableObject();
-   public static final Codec<ehy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axh.a(d::getValue).fieldOf("fallback").forGetter(ehy::a),
-               Codec.mapPair(ehw.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehy::new)
-   );
-   public static final Codec<iw<ehy>> b = ac.a(akd.a(le.aM, a), d::setValue);
-   private final List<Pair<ehw, Integer>> e;
-   private final ObjectArrayList<ehw> f;
-   private final iw<ehy> g;
-   private int h = Integer.MIN_VALUE;
+public record ehy(List<ehn> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akm c = new akm("jigsaw");
+   private static final Map<akm, akm> d = ImmutableMap.builder()
+      .put(new akm("nvi"), c)
+      .put(new akm("pcp"), c)
+      .put(new akm("bastionremnant"), c)
+      .put(new akm("runtime"), c)
+      .build();
 
-   public ehy(iw<ehy> $$0, List<Pair<ehw, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   public ehy(List<ehn> a) {
+      this.a = List.copyOf(a);
+   }
 
-      for (Pair<ehw, Integer> $$2 : $$1) {
-         ehw $$3 = (ehw)$$2.getFirst();
+   public boolean a() {
+      return this.a.isEmpty();
+   }
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
+   public boolean a(io $$0) {
+      for (ehn $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
          }
       }
 
-      this.g = $$0;
+      return false;
    }
 
-   public ehy(iw<ehy> $$0, List<Pair<Function<ehy.a, ? extends ehw>, Integer>> $$1, ehy.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
+   public va a(ehz $$0) {
+      uj $$1 = new uj();
 
-      for (Pair<Function<ehy.a, ? extends ehw>, Integer> $$3 : $$1) {
-         ehw $$4 = (ehw)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+      for (ehn $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
 
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
+      return $$1;
+   }
+
+   public static ehy a(uj $$0, ehz $$1) {
+      List<ehn> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ud $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         akm $$6 = new akm($$5);
+         akm $$7 = d.getOrDefault($$6, $$6);
+         eia $$8 = le.S.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               ehn $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
          }
       }
 
-      this.g = $$0;
+      return new ehy($$2);
    }
 
-   public int a(ekq $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != ehp.b).mapToInt($$1 -> $$1.a($$0, in.c, djr.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   public ehb b() {
+      return ehn.a(this.a.stream());
    }
 
-   public iw<ehy> a() {
-      return this.g;
-   }
-
-   public ehw a(ayg $$0) {
-      return (ehw)this.f.get($$0.a(this.f.size()));
-   }
-
-   public List<ehw> b(ayg $$0) {
-      return ac.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements ayt {
-      a("terrain_matching", ImmutableList.of(new ejw(dvz.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final ayt.a<ehy.a> c = ayt.a(ehy.a::values);
-      private final String d;
-      private final ImmutableList<ekm> e;
-
-      private a(String $$0, ImmutableList<ekm> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static ehy.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<ekm> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public List<ehn> c() {
+      return this.a;
    }
 }

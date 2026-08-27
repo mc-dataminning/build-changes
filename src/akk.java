@@ -1,80 +1,91 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class akk extends IOException {
-   private final List<akk.a> a = Lists.newArrayList();
-   private final String b;
+public class akk<T> extends ake<T> {
+   private final akk.b b;
 
-   public akk(String $$0) {
-      this.a.add(new akk.a());
-      this.b = $$0;
-   }
+   private static akk.b a(final akk.b $$0) {
+      return new akk.b() {
+         private final Map<akl<? extends jk<?>>, Optional<? extends akk.a<?>>> b = new HashMap<>();
 
-   public akk(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new akk.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new akk.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static akk a(Exception $$0) {
-      if ($$0 instanceof akk) {
-         return (akk)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
+         @Override
+         public <T> Optional<akk.a<T>> a(akl<? extends jk<? extends T>> $$0x) {
+            return (Optional<akk.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
          }
+      };
+   }
 
-         return new akk($$1, $$0);
+   public static <T> akk<T> a(DynamicOps<T> $$0, final iz.a $$1) {
+      return a($$0, a(new akk.b() {
+         @Override
+         public <E> Optional<akk.a<E>> a(akl<? extends jk<? extends E>> $$0) {
+            return $$1.a($$0).map(akk.a::a);
+         }
+      }));
+   }
+
+   public static <T> akk<T> a(DynamicOps<T> $$0, akk.b $$1) {
+      return new akk<>($$0, $$1);
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, iz.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
+   }
+
+   private akk(DynamicOps<T> $$0, akk.b $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   public <U> akk<U> a(DynamicOps<U> $$0) {
+      return (akk<U>)($$0 == this.a ? this : new akk((DynamicOps<T>)$$0, this.b));
+   }
+
+   public <E> Optional<ja<E>> a(akl<? extends jk<? extends E>> $$0) {
+      return this.b.a($$0).map(akk.a::a);
+   }
+
+   public <E> Optional<iy<E>> b(akl<? extends jk<? extends E>> $$0) {
+      return this.b.a($$0).map(akk.a::b);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, iy<E>> c(akl<? extends jk<? extends E>> $$0) {
+      return axm.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof akk<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, ix.c<E>> d(akl<E> $$0) {
+      akl<? extends jk<E>> $$1 = akl.a($$0.b());
+      return axm.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof akk<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static record a<T>(ja<T> a, iy<T> b, Lifecycle c) {
+      public static <T> akk.a<T> a(iz.b<T> $$0) {
+         return new akk.a<>($$0, $$0, $$0.g());
       }
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   public interface b {
+      <T> Optional<akk.a<T>> a(akl<? extends jk<? extends T>> var1);
    }
 }

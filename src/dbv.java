@@ -1,32 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dbv extends dcq {
-   private final crs a;
+public class dbv {
+   public static final Codec<dbv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ky.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dbv::new)
+   );
+   private final kw b;
+   private final float c;
 
-   protected dbv(crs $$0, dqg.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public dbv(kw $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends dbv> a();
-
-   @Override
-   public boolean a(dqh $$0) {
-      return true;
+   public kw a() {
+      return this.b;
    }
 
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dnb($$0, $$1, this.a);
-   }
-
-   @Override
-   public csz a(dag $$0, in $$1, dqh $$2) {
-      return $$0.c_($$1) instanceof dnb $$3 ? $$3.c() : super.a($$0, $$1, $$2);
-   }
-
-   public crs b() {
-      return this.a;
+   public boolean a(ayk $$0) {
+      return $$0.i() <= this.c;
    }
 }

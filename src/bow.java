@@ -1,57 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class bow extends bop {
-   public static final Codec<bow> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bow::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+public class bow extends boz {
+   public static final bow a = new bow(0);
+   public static final MapCodec<bow> b = Codec.INT.fieldOf("value").xmap(bow::a, bow::d);
+   private final int f;
 
-   private bow(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public static bow a(int $$0) {
+      return $$0 == 0 ? a : new bow($$0);
    }
 
-   public static bow b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bow($$0, $$1);
-      }
+   private bow(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(ayg $$0) {
-      return axz.b($$0, this.b, this.d);
+   public int a(ayk $$0) {
+      return this.f;
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.f;
    }
 
    @Override
-   public boq<?> c() {
-      return boq.b;
+   public bpa<?> c() {
+      return bpa.a;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return Integer.toString(this.f);
    }
 }

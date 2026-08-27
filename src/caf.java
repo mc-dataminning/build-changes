@@ -1,103 +1,79 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class caf extends byx {
-   private static final ccq c = ccq.b().a(10.0).d();
-   private final ccq d;
-   protected final bsi a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
-   @Nullable
-   protected clh b;
-   private int k;
-   private boolean l;
-   private final Predicate<csz> m;
-   private final boolean n;
+public class caf extends bzm {
+   public static final int a = 1;
+   protected final bsx b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
 
-   public caf(bsi $$0, double $$1, Predicate<csz> $$2, boolean $$3) {
-      this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(byx.a.a, byx.a.b));
-      this.d = c.c().a(this::a);
+   public caf(bsx $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.k > 0) {
-         this.k--;
+      if (!this.h()) {
          return false;
       } else {
-         this.b = this.a.dN().a(this.d, this.a);
-         return this.b != null;
-      }
-   }
-
-   private boolean a(bsa $$0) {
-      return this.m.test($$0.eV()) || this.m.test($$0.eW());
-   }
-
-   @Override
-   public boolean b() {
-      if (this.h()) {
-         if (this.a.g(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
+         if (this.b.bQ()) {
+            io $$0 = this.a(this.b.dP(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
             }
-
-            if (Math.abs((double)this.b.dF() - this.i) > 5.0 || Math.abs((double)this.b.dD() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.ds();
-            this.g = this.b.du();
-            this.h = this.b.dy();
          }
 
-         this.i = (double)this.b.dF();
-         this.j = (double)this.b.dD();
+         return this.i();
       }
-
-      return this.a();
    }
 
    protected boolean h() {
-      return this.n;
+      return this.b.em() != null || this.b.dE() || this.b.bQ();
+   }
+
+   protected boolean i() {
+      euk $$0 = cdj.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      this.f = this.b.ds();
-      this.g = this.b.du();
-      this.h = this.b.dy();
-      this.l = true;
+      this.b.K().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.K().n();
-      this.k = b(100);
-      this.l = false;
+      this.g = false;
    }
 
    @Override
-   public void e() {
-      this.a.G().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
-      if (this.a.g(this.b) < 6.25) {
-         this.a.K().n();
-      } else {
-         this.a.K().a(this.b, this.e);
-      }
+   public boolean b() {
+      return !this.b.K().l();
    }
 
-   public boolean i() {
-      return this.l;
+   @Nullable
+   protected io a(dad $$0, bru $$1, int $$2) {
+      io $$3 = $$1.dp();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : io.a($$1.dp(), $$2, 1, $$1x -> $$0.b_($$1x).a(awb.a)).orElse(null);
    }
 }

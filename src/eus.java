@@ -1,53 +1,38 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface eus {
-   String a_ = "*";
-   eus cz = new eus() {
-      @Override
-      public String cz() {
-         return "*";
-      }
-   };
+public final class eus implements euw {
+   private final euq a;
+   private final int b;
+   private final int c;
 
-   String cz();
-
-   @Nullable
-   default wu O_() {
-      return null;
+   eus(int $$0, int $$1) {
+      this.a = new euq((int)eva.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   default wu hd() {
-      wu $$0 = this.O_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xa(xa.a.a, wu.b(this.cz())))) : wu.b(this.cz());
-   }
+   @Override
+   public boolean a(euw.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   static eus c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cz;
-      } else {
-         final wu $$1 = wu.b($$0);
-         return new eus() {
-            @Override
-            public String cz() {
-               return $$0;
-            }
-
-            @Override
-            public wu hd() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static eus a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new eus() {
-         @Override
-         public String cz() {
-            return $$1;
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
          }
-      };
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

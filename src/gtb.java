@@ -1,34 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public abstract class gtb extends fld {
-   protected static final int d = 17;
-   protected static final int r = 7;
-   protected static final long s = 5368709120L;
-   protected static final int u = 5000268;
-   protected static final int v = 7105644;
-   protected static final int w = 8388479;
-   protected static final int x = 3368635;
-   protected static final int y = 7107012;
-   protected static final int z = 8226750;
-   protected static final int A = 32;
-   private final List<gsz> a = Lists.newArrayList();
+public abstract class gtb {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   public gtb(wu $$0) {
-      super($$0);
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void a(gsv $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
 
-   protected gsz a(gsz $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   public wu m() {
-      return wt.a(this.a.stream().map(gsz::a).collect(Collectors.toList()));
+   public boolean c() {
+      return this.c >= 10;
    }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(gsv var1);
 }

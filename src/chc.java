@@ -1,45 +1,57 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class chc {
-   private static final Logger a = LogUtils.getLogger();
-   private final cgl b;
-   private final cgv[] c = new cgv[chb.c()];
+public abstract class chc implements chk {
+   protected final cha a;
+
+   public chc(cha $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(cgz $$0, io $$1, bqn $$2, @Nullable clw $$3) {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
    @Nullable
-   private cgv d;
-
-   public chc(cgl $$0) {
-      this.b = $$0;
-      this.a(chb.k);
+   @Override
+   public euk g() {
+      return null;
    }
 
-   public void a(chb<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((chb<cgv>)$$0);
-         if (!this.b.dN().B) {
-            this.b.an().a(cgl.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dN().B ? "client" : "server");
-         this.d.d();
-      }
+   @Override
+   public float a(bqn $$0, float $$1) {
+      return $$1;
    }
 
-   public cgv a() {
-      return this.d;
-   }
-
-   public <T extends cgv> T b(chb<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

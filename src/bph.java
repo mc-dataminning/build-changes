@@ -1,3 +1,8 @@
-public interface bph {
-   void a(bpf var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bph {
 }

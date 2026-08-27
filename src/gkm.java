@@ -1,17 +1,17 @@
-public class gkm<T extends bsa, M extends fsb<T>> extends gli<T, M> {
-   private final gbk a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gkm(gis<T, M> $$0, gbk $$1) {
-      super($$0);
-      this.a = $$1;
+public class gkm extends ggn<cgi, fth<cgi>> {
+   private static final Map<bsa<?>, akm> a = Maps.newHashMap(
+      ImmutableMap.of(bsa.bv, new akm("textures/entity/horse/horse_zombie.png"), bsa.aO, new akm("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gkm(ght.a $$0, fvu $$1) {
+      super($$0, new fth<>($$0.a($$1)), 1.0F);
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      csz $$10 = $$3.d(bro.a);
-      this.a.a($$3, $$10, csw.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public akm a(cgi $$0) {
+      return a.get($$0.ak());
    }
 }

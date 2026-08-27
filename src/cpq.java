@@ -1,73 +1,45 @@
-import javax.annotation.Nullable;
+public class cpq extends cqo {
+   private final clw a;
+   private int b;
 
-public class cpq extends bpv {
-   @Nullable
-   private doh b;
-
-   public cpq() {
-      super(27);
-   }
-
-   public void a(doh $$0) {
-      this.b = $$0;
-   }
-
-   public boolean b(doh $$0) {
-      return this.b == $$0;
+   public cpq(clw $$0, bpn $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public void a(ug $$0, iy.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, csz.i);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ua $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, csz.a($$1, (ux)$$4).orElse(csz.i));
-         }
-      }
+   public boolean a(cto $$0) {
+      return false;
    }
 
    @Override
-   public ug a(iy.a $$0) {
-      ug $$1 = new ug();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         csz $$3 = this.a($$2);
-         if (!$$3.d()) {
-            ua $$4 = new ua();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
+   public cto a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().I());
       }
 
-      return $$1;
+      return super.a($$0);
    }
 
    @Override
-   public boolean a(clh $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public void a(clw $$0, cto $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
    }
 
    @Override
-   public void d_(clh $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.d_($$0);
+   protected void a(cto $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public void c(clh $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
+   protected void b_(cto $$0) {
+      $$0.a(this.a.dP(), this.a, this.b);
+      if (this.a instanceof aqn $$1 && this.d instanceof dnu $$2) {
+         $$2.a($$1);
       }
 
-      super.c($$0);
-      this.b = null;
+      this.b = 0;
    }
 }

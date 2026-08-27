@@ -1,43 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djb extends dcs {
-   public static final MapCodec<djb> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dqw.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, djb::new)
-   );
-   public static final dqy f = dqx.w;
+public class djb extends dlp {
+   public static final MapCodec<djb> a = b(djb::new);
 
    @Override
    public MapCodec<djb> a() {
-      return e;
+      return a;
    }
 
-   protected djb(dqw $$0, dqg.d $$1) {
-      super($$1, $$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int g(dqh $$0) {
-      return $$0.c(f) ? 15 : 0;
+   public djb(dra.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dqh a(dqh $$0, int $$1) {
-      return $$0.a(f, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(dad $$0, in $$1) {
-      Class<? extends brh> $$2 = switch (this.d.f()) {
-         case a -> brh.class;
-         case b -> bsa.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(f);
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(ky.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 }

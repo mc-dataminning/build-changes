@@ -1,20 +1,18 @@
-public interface ajn<T> {
-   ys<? super wf, T> codec();
+import io.netty.buffer.ByteBuf;
 
-   default ajm<T> a(int $$0) {
-      return new ajm<>($$0, this);
+public class ajn implements ze<ajm> {
+   public static final ajn a = new ajn();
+   public static final yv<ByteBuf, ajn> b = yv.a(a);
+
+   private ajn() {
    }
 
-   T copy(T var1);
-
-   static <T> ajn<T> a(ys<? super wf, T> $$0) {
-      return () -> $$0;
+   @Override
+   public zg<ajn> a() {
+      return ajo.b;
    }
 
-   public interface a<T> extends ajn<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
+   public void a(ajm $$0) {
+      $$0.a(this);
    }
 }

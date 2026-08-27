@@ -1,46 +1,28 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fjc<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fjc<?> a = new fjc<>(azb.a, ($$0, $$1) -> {
-   });
+public enum fjc implements ayx {
+   a("bitmap", fiz.a.a),
+   b("ttf", fje.a),
+   c("space", ewx.a.a),
+   d("unihex", fjf.b.a),
+   e("reference", fjd.a);
 
-   private fjc(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public static final Codec<fjc> f = ayx.a(fjc::values);
+   private final String g;
+   private final MapCodec<? extends fjb> h;
 
-   public static fjc<?> a(String $$0) {
-      return new fjc<>($$0, Consumer::accept);
-   }
-
-   public static fjc<?> a(wu $$0) {
-      return new fjc<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fjc<?> a(List<wu> $$0) {
-      return new fjc<>($$0, ($$1, $$2) -> $$0.stream().map(wu::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
+   private fjc(String $$0, MapCodec<? extends fjb> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fjc<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
-      }
+   public String c() {
+      return this.g;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public MapCodec<? extends fjb> a() {
+      return this.h;
    }
 }

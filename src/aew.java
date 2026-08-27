@@ -1,74 +1,61 @@
-import java.util.Optional;
+public class aew implements ze<abq> {
+   public static final yv<vx, aew> a = ze.a(aew::a, aew::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-public class aew implements zb<abm> {
-   public static final ys<wf, aew> a = zb.a(aew::a, aew::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final wu f;
-   private final euw.a g;
-   private final Optional<yk> h;
-   private final int i;
-
-   public aew(eul $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
+   public aew(bru $$0) {
+      this($$0.al(), $$0.ds());
    }
 
-   private aew(wf $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = wt.a;
-         this.g = euw.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = ww.d.decode($$0);
-         this.g = $$0.b(euw.a.class);
-         this.h = ym.d.decode($$0);
-      }
+   public aew(int $$0, euk $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = ayd.a($$1.c, -3.9, 3.9);
+      double $$4 = ayd.a($$1.d, -3.9, 3.9);
+      double $$5 = ayd.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.e);
-      $$0.k(this.i);
-      if (this.i == 0 || this.i == 2) {
-         ww.d.encode($$0, this.f);
-         $$0.a(this.g);
-         ym.d.encode($$0, this.h);
-      }
+   private aew(vx $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
+   }
+
+   private void a(vx $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public zd<aew> a() {
-      return afx.aI;
+   public zg<aew> a() {
+      return agb.aE;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 
-   public wu e() {
-      return this.f;
+   public int e() {
+      return this.c;
    }
 
    public int f() {
-      return this.i;
+      return this.d;
    }
 
-   public euw.a g() {
-      return this.g;
-   }
-
-   public Optional<yk> h() {
-      return this.h;
+   public int g() {
+      return this.e;
    }
 }

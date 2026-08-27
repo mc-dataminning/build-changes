@@ -1,25 +1,56 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record dh(ct.d c) implements bs {
-   public static final MapCodec<dh> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axh.a(ct.d.d, "size", ct.d.c).forGetter(dh::b)).apply($$0, dh::new));
-
-   public static dh a(ct.d $$0) {
-      return new dh($$0);
-   }
-
+public class dh extends df<dh.a> {
    @Override
-   public boolean a(brh $$0, aqh $$1, @Nullable etp $$2) {
-      return $$0 instanceof ciw $$3 ? this.c.d($$3.gq()) : false;
+   public Codec<dh.a> a() {
+      return dh.a.a;
    }
 
-   @Override
-   public MapCodec<dh> a() {
-      return bt.d;
+   public void a(aqn $$0, drb $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public ct.d b() {
-      return this.c;
+   public static record a(Optional<bc> b, Optional<ix<ddy>> c, Optional<dl> d) implements df.a {
+      public static final Codec<dh.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     br.b.optionalFieldOf("player").forGetter(dh.a::a),
+                     le.e.r().optionalFieldOf("block").forGetter(dh.a::b),
+                     dl.a.optionalFieldOf("state").forGetter(dh.a::c)
+                  )
+                  .apply($$0, dh.a::new)
+         )
+         .validate(dh.a::a);
+
+      private static DataResult<dh.a> a(dh.a $$0) {
+         return $$0.c
+            .<DataResult<dh.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((ddy)$$1.a()).m())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
+      }
+
+      public static an<dh.a> a(ddy $$0) {
+         return am.K.a(new dh.a(Optional.empty(), Optional.of($$0.r()), Optional.empty()));
+      }
+
+      public boolean a(drb $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<ix<ddy>> b() {
+         return this.c;
+      }
+
+      public Optional<dl> c() {
+         return this.d;
+      }
    }
 }

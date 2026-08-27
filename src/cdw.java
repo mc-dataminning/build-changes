@@ -1,78 +1,97 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public class cdw extends cdp {
-   private static final brk bY = brn.w.n().a(0.5F).b(0.665F);
+public class cdw {
+   public static final akl<cdv> a = a("armorer");
+   public static final akl<cdv> b = a("butcher");
+   public static final akl<cdv> c = a("cartographer");
+   public static final akl<cdv> d = a("cleric");
+   public static final akl<cdv> e = a("farmer");
+   public static final akl<cdv> f = a("fisherman");
+   public static final akl<cdv> g = a("fletcher");
+   public static final akl<cdv> h = a("leatherworker");
+   public static final akl<cdv> i = a("librarian");
+   public static final akl<cdv> j = a("mason");
+   public static final akl<cdv> k = a("shepherd");
+   public static final akl<cdv> l = a("toolsmith");
+   public static final akl<cdv> m = a("weaponsmith");
+   public static final akl<cdv> n = a("home");
+   public static final akl<cdv> o = a("meeting");
+   public static final akl<cdv> p = a("beehive");
+   public static final akl<cdv> q = a("bee_nest");
+   public static final akl<cdv> r = a("nether_portal");
+   public static final akl<cdv> s = a("lodestone");
+   public static final akl<cdv> t = a("lightning_rod");
+   private static final Set<drb> u = ImmutableList.of(
+         dea.bn, dea.bo, dea.bk, dea.bl, dea.bi, dea.bg, dea.bm, dea.bc, dea.bh, dea.be, dea.bb, dea.ba, new ddy[]{dea.bf, dea.bj, dea.aZ, dea.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.m().a().stream())
+      .filter($$0 -> $$0.c(ddr.b) == dro.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<drb> v = ImmutableList.of(dea.ft, dea.fv, dea.fu, dea.fw)
+      .stream()
+      .flatMap($$0 -> $$0.m().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<drb, ix<cdv>> w = Maps.newHashMap();
 
-   public cdw(brn<? extends cdw> $$0, dad $$1) {
-      super($$0, $$1);
+   private static Set<drb> a(ddy $$0) {
+      return ImmutableSet.copyOf($$0.m().a());
    }
 
-   @Override
-   protected void z() {
-      this.bS.a(0, new byr(this));
-      this.bS.a(1, new bzq(this, 2.0));
-      this.bS.a(2, new byj(this, 1.0));
-      this.bS.a(3, new caf(this, 1.25, $$0 -> $$0.a(avz.aa), false));
-      this.bS.a(4, new byw(this, 1.25));
-      this.bS.a(5, new cak(this, 1.0));
-      this.bS.a(6, new bzf(this, clh.class, 6.0F));
-      this.bS.a(7, new bzs(this));
+   private static akl<cdv> a(String $$0) {
+      return akl.a(lf.V, new akm($$0));
    }
 
-   @Override
-   public boolean o(csz $$0) {
-      return $$0.a(avz.aa);
+   private static cdv a(jk<cdv> $$0, akl<cdv> $$1, Set<drb> $$2, int $$3, int $$4) {
+      cdv $$5 = new cdv($$2, $$3, $$4);
+      jk.a($$0, $$1, $$5);
+      a($$0.g($$1), $$2);
+      return $$5;
    }
 
-   public static btg.a r() {
-      return bsc.A().a(bth.q, 10.0).a(bth.r, 0.2F);
+   private static void a(ix<cdv> $$0, Set<drb> $$1) {
+      $$1.forEach($$1x -> {
+         ix<cdv> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+         }
+      });
    }
 
-   @Override
-   protected avb v() {
-      return avc.fW;
+   public static Optional<ix<cdv>> a(drb $$0) {
+      return Optional.ofNullable(w.get($$0));
    }
 
-   @Override
-   protected avb d(bqf $$0) {
-      return avc.fY;
+   public static boolean b(drb $$0) {
+      return w.containsKey($$0);
    }
 
-   @Override
-   protected avb o_() {
-      return avc.fX;
-   }
-
-   @Override
-   protected void b(in $$0, dqh $$1) {
-      this.a(avc.ga, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fc() {
-      return 0.4F;
-   }
-
-   @Override
-   public bpm b(clh $$0, bpl $$1) {
-      csz $$2 = $$0.b($$1);
-      if ($$2.a(ctc.qy) && !this.p_()) {
-         $$0.a(avc.fZ, 1.0F, 1.0F);
-         csz $$3 = ctb.a($$2, $$0, ctc.qE.v());
-         $$0.a($$1, $$3);
-         return bpm.a(this.dN().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public cdw b(aqh $$0, brb $$1) {
-      return brn.w.a((dad)$$0);
-   }
-
-   @Override
-   public brk e(bsl $$0) {
-      return this.p_() ? bY : super.e($$0);
+   public static cdv a(jk<cdv> $$0) {
+      a($$0, a, a(dea.nW), 1, 1);
+      a($$0, b, a(dea.nV), 1, 1);
+      a($$0, c, a(dea.nX), 1, 1);
+      a($$0, d, a(dea.fs), 1, 1);
+      a($$0, e, a(dea.pc), 1, 1);
+      a($$0, f, a(dea.nU), 1, 1);
+      a($$0, g, a(dea.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(dea.oa), 1, 1);
+      a($$0, j, a(dea.oc), 1, 1);
+      a($$0, k, a(dea.nT), 1, 1);
+      a($$0, l, a(dea.ob), 1, 1);
+      a($$0, m, a(dea.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(dea.od), 32, 6);
+      a($$0, p, a(dea.pf), 0, 1);
+      a($$0, q, a(dea.pe), 0, 1);
+      a($$0, r, a(dea.ed), 0, 1);
+      a($$0, s, a(dea.pq), 0, 1);
+      return a($$0, t, a(dea.ss), 0, 1);
    }
 }

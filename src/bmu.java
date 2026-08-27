@@ -1,14 +1,49 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record bmu(Duration a, czk b, apx c, dtc d, String e) implements bnd {
-   public static bmu a(RecordedEvent $$0) {
-      return new bmu(
-         $$0.getDuration(),
-         new czk($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new apx($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         dtc.a($$0.getString("status")),
-         $$0.getString("level")
-      );
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bmu extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bmu(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
+   }
+
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
+
+      private a() {
+      }
    }
 }

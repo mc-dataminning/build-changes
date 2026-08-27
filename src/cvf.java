@@ -1,54 +1,57 @@
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public class cvf {
-   public static final akg<cve> a = a("sentry");
-   public static final akg<cve> b = a("dune");
-   public static final akg<cve> c = a("coast");
-   public static final akg<cve> d = a("wild");
-   public static final akg<cve> e = a("ward");
-   public static final akg<cve> f = a("eye");
-   public static final akg<cve> g = a("vex");
-   public static final akg<cve> h = a("tide");
-   public static final akg<cve> i = a("snout");
-   public static final akg<cve> j = a("rib");
-   public static final akg<cve> k = a("spire");
-   public static final akg<cve> l = a("wayfinder");
-   public static final akg<cve> m = a("shaper");
-   public static final akg<cve> n = a("silence");
-   public static final akg<cve> o = a("raiser");
-   public static final akg<cve> p = a("host");
-   public static final akg<cve> q = a("flow");
-   public static final akg<cve> r = a("bolt");
+public enum cvf implements cvd {
+   a(avw.bN, 59, 2.0F, 0.0F, 15, () -> cxr.a(awe.b)),
+   b(avw.bL, 131, 4.0F, 1.0F, 5, () -> cxr.a(awe.aY)),
+   c(avw.bK, 250, 6.0F, 2.0F, 14, () -> cxr.a(ctr.oE)),
+   d(avw.bJ, 1561, 8.0F, 3.0F, 10, () -> cxr.a(ctr.oy)),
+   e(avw.bM, 32, 12.0F, 0.0F, 22, () -> cxr.a(ctr.oI)),
+   f(avw.bI, 2031, 9.0F, 4.0F, 15, () -> cxr.a(ctr.oJ));
 
-   public static void a(ql<cve> $$0) {
-      a($$0, ctc.xt, a);
-      a($$0, ctc.xu, b);
-      a($$0, ctc.xv, c);
-      a($$0, ctc.xw, d);
-      a($$0, ctc.xx, e);
-      a($$0, ctc.xy, f);
-      a($$0, ctc.xz, g);
-      a($$0, ctc.xA, h);
-      a($$0, ctc.xB, i);
-      a($$0, ctc.xC, j);
-      a($$0, ctc.xD, k);
-      a($$0, ctc.xE, l);
-      a($$0, ctc.xF, m);
-      a($$0, ctc.xG, n);
-      a($$0, ctc.xH, o);
-      a($$0, ctc.xI, p);
+   private final awl<ddy> g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final Supplier<cxr> l;
+
+   private cvf(awl<ddy> $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cxr> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = Suppliers.memoize($$5::get);
    }
 
-   public static Optional<iw.c<cve>> a(iy.a $$0, csz $$1) {
-      return $$0.b(le.aP).b().filter($$1x -> $$1.a(((cve)$$1x.a()).b())).findFirst();
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   public static void a(ql<cve> $$0, csu $$1, akg<cve> $$2) {
-      cve $$3 = new cve($$2.a(), ld.h.e($$1), wu.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   private static akg<cve> a(String $$0) {
-      return akg.a(le.aP, new akh($$0));
+   @Override
+   public float c() {
+      return this.j;
+   }
+
+   @Override
+   public awl<ddy> d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cxr f() {
+      return this.l.get();
    }
 }

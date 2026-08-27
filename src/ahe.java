@@ -1,64 +1,29 @@
-public class ahe implements zb<afz> {
-   public static final ys<vu, ahe> a = zb.a(ahe::a, ahe::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class ahe implements ze<agd> {
+   public static final yv<vx, ahe> a = ze.a(ahe::a, ahe::new);
+   private final int b;
 
-   public ahe(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ahe(int $$0) {
+      this.b = $$0;
    }
 
-   private ahe(vu $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   private ahe(vx $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<ahe> a() {
-      return afx.bK;
+   public zg<ahe> a() {
+      return agb.bG;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.d;
-   }
-
-   public float e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public int b() {
+      return this.b;
    }
 }

@@ -1,55 +1,35 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class eqo extends epw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eqo> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(esm.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eqo::new)
-   );
-   private final esl c;
-   private final boolean d;
+public class eqo extends eqq {
+   public static final MapCodec<eqo> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(epe.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eqo::new));
+   private final epe b;
 
-   private eqo(List<erq> $$0, esl $$1, boolean $$2) {
+   private eqo(List<esl> $$0, epe $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public epy b() {
-      return epz.m;
+   public eqs b() {
+      return eqt.t;
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return this.c.a();
+   public Set<eru<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public csz a(csz $$0, eol $$1) {
-      if ($$0.k()) {
-         int $$2 = $$0.n();
-         float $$3 = this.d ? 1.0F - (float)$$0.m() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - axz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(axz.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cto a(cto $$0, epf $$1) {
+      int $$2 = this.b.a($$1, $$0.I());
+      $$0.e($$2);
       return $$0;
    }
 
-   public static epw.a<?> a(esl $$0) {
-      return a($$1 -> new eqo($$1, $$0, false));
-   }
-
-   public static epw.a<?> a(esl $$0, boolean $$1) {
-      return a($$2 -> new eqo($$2, $$0, $$1));
+   public static eqq.a<?> a(epe $$0) {
+      return a($$1 -> new eqo($$1, $$0));
    }
 }

@@ -1,17 +1,26 @@
-import java.util.Locale;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public enum fxd {
-   a("chat"),
-   b("skin"),
-   c("username");
+public interface fxd {
+   fxd a = new fxd() {
+      @Override
+      public CompletableFuture<Optional<cly>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
 
-   private final String d;
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
 
-   private fxd(String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
+   static fxd a(UserApiService $$0, feo $$1, Path $$2) {
+      return (fxd)($$1.g() == feo.a.c ? new fwk($$0, $$1.b(), $$2) : a);
    }
 
-   public String a() {
-      return this.d;
-   }
+   CompletableFuture<Optional<cly>> a();
+
+   boolean b();
 }

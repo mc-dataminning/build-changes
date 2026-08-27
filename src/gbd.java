@@ -1,136 +1,55 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+public class gbd extends gay {
+   private final gat a;
 
-public abstract class gbd {
-   private static final Object2ObjectMap<akh, gbd> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      gbd.c $$1 = new gbd.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dtx.e, $$1);
-      $$0.put(dtx.f, new gbd.b());
-      $$0.put(dtx.g, new gbd.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final gbd.d e;
-   private final boolean f;
-   private final boolean g;
-
-   public gbd(float $$0, boolean $$1, gbd.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   gbd(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   public static gbd a(dtz $$0) {
-      return (gbd)a.get($$0.r());
+   @Override
+   public gac b() {
+      return gac.b;
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = axz.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - axz.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         return null;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public float a() {
-      return this.c;
-   }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public abstract etp a(etp var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public gbd.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends gbd {
-      public a() {
-         super(Float.NaN, false, gbd.d.c, true, false);
+      public a(gat $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public etp a(etp $$0, float $$1) {
-         return $$0.a(0.15F);
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends gbd {
-      public b() {
-         super(Float.NaN, true, gbd.d.a, false, true);
-      }
-
-      @Override
-      public etp a(etp $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends gbd {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, gbd.d.b, false, false);
-      }
-
-      @Override
-      public etp a(etp $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

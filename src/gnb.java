@@ -1,44 +1,100 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gnb {
-   Logger a = LogUtils.getLogger();
+public class gnb implements gna {
+   public static final int a = 0;
+   private final gnb.b c = new gnb.b();
+   private final gnb.b d = new gnb.b();
+   public final gnb.a b;
 
-   static gnb create(Collection<asq<?>> $$0) {
-      return ($$1, $$2) -> {
-         att $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
+   public gnb(gnb.a $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public float unclampedCall(cto $$0, @Nullable fwr $$1, @Nullable bso $$2, int $$3) {
+      bru $$4 = (bru)($$2 != null ? $$2 : $$0.F());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
+   }
+
+   private float a(cto $$0, fwr $$1, int $$2, bru $$3) {
+      iw $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.Y();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return ayd.b((float)$$2, 1.0F);
+   }
+
+   private float a(bru $$0, long $$1, io $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof clw $$5 && $$5.g() && $$5.dP().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
          }
 
-         ewy $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = ewy.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
+         double $$6 = $$3 + this.c.a;
+         return ayd.b((float)$$6, 1.0F);
+      }
 
-         goj $$11 = $$3.a(goj.a).orElse(goj.e);
-         gol $$12 = $$11.a($$7.a(), $$7.b());
-         if (axz.c($$7.a(), $$12.a()) && axz.c($$7.b(), $$12.b())) {
-            return new gms($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return ayd.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   gms loadSprite(akh var1, atp var2);
+   private fwr a(bru $$0, @Nullable fwr $$1) {
+      return $$1 == null && $$0.dP() instanceof fwr ? (fwr)$$0.dP() : $$1;
+   }
+
+   private boolean a(bru $$0, @Nullable iw $$1) {
+      return $$1 != null && $$1.a() == $$0.dP().ae() && !($$1.b().b($$0.dn()) < 1.0E-5F);
+   }
+
+   private double a(bru $$0, io $$1) {
+      euk $$2 = euk.b($$1);
+      return Math.atan2($$2.c() - $$0.dA(), $$2.a() - $$0.du()) / (float) (Math.PI * 2);
+   }
+
+   private double a(bru $$0) {
+      return ayd.c((double)($$0.dG() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      iw getPos(fwr var1, cto var2, bru var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = ayd.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = ayd.c(this.a + this.b, 1.0);
+      }
+   }
 }

@@ -1,49 +1,42 @@
-import java.util.Arrays;
+public class fud<T extends bru> extends ftf<T> {
+   private final fvw a;
+   private final fvw b;
+   private final fvw f;
 
-public class fud<T extends brh> extends fsk<T> {
-   private final fvb[] a = new fvb[8];
-   private final fvb b;
-
-   public fud(fvb $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public fud(fvw $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fwb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvy.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fwb.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fvy.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fwb.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fvy.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fwb.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fvy.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fwb.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fvy.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fwb.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fvy.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fwb.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fvy.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fwb.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fvy.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fwb.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fvy.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fwb.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fvy.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fwb.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fvy.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fwb.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fvy.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fwb.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fvy.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fwc.a($$0, 32, 32);
    }
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      fvf $$2 = new fvf(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fvg.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fvd.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fvg $$5 = fvg.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fvd.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fvh.a($$0, 64, 32);
+   @Override
+   public fvw a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fvb $$6 : this.a) {
-         $$6.e = $$3;
-      }
-   }
-
-   @Override
-   public fvb a() {
-      return this.b;
+      this.f.g = -0.2F + 0.4F * ayd.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayd.a($$3 * 0.2F);
    }
 }

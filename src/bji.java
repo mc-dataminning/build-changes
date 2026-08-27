@@ -4,16 +4,27 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bji extends bhc {
+public class bji extends bhj {
    public bji(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bhk.a($$0));
+   }
+
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bfs.t.in($$0)));
-      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bfs.u.in($$0)));
-      $$0.registerSimple($$1, "minecraft:text_display");
+      a($$0, $$1, "minecraft:frog");
+      a($$0, $$1, "minecraft:tadpole");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bfy.C.in($$0))))
+      );
       return $$1;
    }
 }

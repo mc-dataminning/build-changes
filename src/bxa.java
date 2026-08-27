@@ -1,40 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bxa extends bts<cku> {
-   public bxa() {
-      super(ImmutableMap.of());
-   }
+public class bxa {
+   public static bui<clj> a(cbs<List<iw>> $$0, float $$1, int $$2, int $$3, cbs<iw> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bxu.a(
+         (Function<bxu.b<clj>, ? extends App<bxu.c<clj>, bxx<clj>>>)($$6 -> $$6.group($$6.a(cbs.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<iw> $$11 = $$6.b($$6x);
+                     iw $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        iw $$13 = $$11.get($$8.E_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dn(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cbv($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   protected boolean a(aqh $$0, cku $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(aqh $$0, cku $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         btb<?> $$3 = $$1.dQ();
-         if (!$$3.c(cmw.g)) {
-            $$3.b(cbd.t);
-            $$3.b(cbd.m);
-            $$3.b(cbd.n);
-            $$3.b(cbd.r);
-            $$3.b(cbd.q);
-         }
-
-         $$3.a(cmw.g);
-      }
-   }
-
-   protected void c(aqh $$0, cku $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bsa $$0) {
-      return $$0.dQ().a(cbd.A);
-   }
-
-   public static boolean c(bsa $$0) {
-      return $$0.dQ().a(cbd.x);
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

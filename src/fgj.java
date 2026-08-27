@@ -1,111 +1,72 @@
-import javax.annotation.Nullable;
+public class fgj extends fft {
+   private final ffk a;
+   private final fgt b;
 
-public abstract class fgj extends ffe {
-   protected final akh a;
-   protected final int b;
-   protected final int c;
-
-   fgj(int $$0, int $$1, wu $$2, int $$3, int $$4, akh $$5, ffe.c $$6, @Nullable ffe.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
+   public fgj(int $$0, int $$1, int $$2, int $$3, wx $$4, ffk $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
       this.a = $$5;
+      this.b = new fgt($$4, $$5).d(this.x() - this.b());
    }
 
-   public static fgj.a a(wu $$0, ffe.c $$1, boolean $$2) {
-      return new fgj.a($$0, $$1, $$2);
+   public fgj a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
-   public static class a {
-      private final wu b;
-      private final ffe.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private akh g;
-      private int h;
-      private int i;
-      @Nullable
-      ffe.b a;
+   @Override
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.x() - this.b());
+   }
 
-      public a(wu $$0, ffe.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   @Override
+   protected int h() {
+      return this.b.v();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(ffm $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aI_()) {
+         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
       }
+   }
 
-      public fgj.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fgj.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fgj.a a(akh $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fgj.a a(ffe.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fgj a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
          } else {
-            return (fgj)(this.d
-               ? new fgj.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fgj.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+            super.b($$0, $$1, $$2, $$3);
          }
       }
    }
 
-   public static class b extends fgj {
-      protected b(int $$0, int $$1, wu $$2, int $$3, int $$4, akh $$5, ffe.c $$6, @Nullable ffe.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fer $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.C() + this.x() / 2 - this.b / 2;
-         int $$5 = this.D() + this.v() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fer $$0, fep $$1, int $$2) {
-      }
+   public boolean j() {
+      return super.e();
    }
 
-   public static class c extends fgj {
-      protected c(int $$0, int $$1, wu $$2, int $$3, int $$4, akh $$5, ffe.c $$6, @Nullable ffe.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   @Override
+   protected void c(ffm $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
 
-      @Override
-      public void b(fer $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.C() + this.x() - this.b - 2;
-         int $$5 = this.D() + this.v() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fer $$0, fep $$1, int $$2) {
-         int $$3 = this.C() + 2;
-         int $$4 = this.C() + this.x() - this.b - 4;
-         int $$5 = this.C() + this.x() / 2;
-         a($$0, $$1, this.y(), $$5, $$3, this.D(), $$4, this.D() + this.v(), $$2);
-      }
+   @Override
+   protected void a(fjv $$0) {
+      $$0.a(fju.a, this.y());
    }
 }

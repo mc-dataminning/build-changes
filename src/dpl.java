@@ -1,70 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dpl(int c, int d, float e, float f, float g, float h, int i, int j, bnw<dau> k, bnw<akg<eoq>> l) {
-   public static final dpl a = new dpl(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bnw.b(), bnw.<akg<eoq>>a().a(eoj.aR).a(eoj.aQ).a());
-   public static final MapCodec<dpl> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dpl::a),
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dpl::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dpl::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dpl::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dpl::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dpl::f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dpl::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dpl::h),
-               dau.c.optionalFieldOf("spawn_potentials", bnw.b()).forGetter(dpl::i),
-               bnw.a(akg.a(le.aU)).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dpl::j)
-            )
-            .apply($$0, dpl::new)
-   );
+public abstract class dpl extends doa implements bqc {
+   @Nullable
+   protected akl<epk> l;
+   protected long m = 0L;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   protected dpl(doi<?> $$0, io $$1, drb $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public int h() {
-      return this.j;
-   }
-
-   public bnw<dau> i() {
-      return this.k;
-   }
-
-   public bnw<akg<eoq>> j() {
+   @Nullable
+   @Override
+   public akl<epk> ax_() {
       return this.l;
+   }
+
+   @Override
+   public void a(@Nullable akl<epk> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long ay_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
+   }
+
+   @Override
+   public cto a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public cto a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public cto b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cto $$1) {
+      this.e_(null);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean d(clw $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
+   }
+
+   @Nullable
+   @Override
+   public cot createMenu(int $$0, clv $$1, clw $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected void a(dog.b $$0) {
+      super.a($$0);
+      cwr $$1 = $$0.a(kb.ad);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
+   }
+
+   @Override
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kb.ad, new cwr(this.l, this.m));
+      }
+   }
+
+   @Override
+   public void a(ud $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

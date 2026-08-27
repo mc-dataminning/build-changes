@@ -1,89 +1,135 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cqb {
-   private static final List<cqa> b = ac.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bro.a.a(98);
-      int $$2 = bro.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bro.f.a(100);
-      $$2 = bro.e.a(100);
-      int $$5 = bro.d.a(100);
-      int $$6 = bro.c.a(100);
-      int $$7 = bro.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cqa> a = ayt.b(() -> b.toArray(new cqa[0]));
-   private static final Function<String, cqa> c = ayt.a(b.toArray(new cqa[0]), $$0 -> $$0);
+public class cqb implements bpn {
+   private final czu b;
+   private final jg<cto> c = jg.a(3, cto.i);
+   @Nullable
+   private czv d;
+   private int e;
+   private int f;
 
-   private static cqa a(String $$0, int $$1) {
-      return cqa.a($$0, IntLists.singleton($$1));
+   public cqb(czu $$0) {
+      this.b = $$0;
    }
 
-   private static cqa a(String $$0, IntList $$1) {
-      return cqa.a($$0, IntLists.unmodifiable($$1));
+   @Override
+   public int b() {
+      return this.c.size();
    }
 
-   private static cqa a(String $$0, int... $$1) {
-      return cqa.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<cqa> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cqa> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public boolean c() {
+      for (cto $$0 : this.c) {
+         if (!$$0.e()) {
+            return false;
+         }
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      return true;
    }
 
-   private static void a(List<cqa> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   public cto a(int $$0) {
+      return this.c.get($$0);
+   }
+
+   @Override
+   public cto a(int $$0, int $$1) {
+      cto $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.e()) {
+         return bpo.a(this.c, $$0, $$2.I());
+      } else {
+         cto $$3 = bpo.a(this.c, $$0, $$1);
+         if (!$$3.e() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cto b(int $$0) {
+      return bpo.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cto $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(clw $$0) {
+      return this.b.gp() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.d = null;
+      cto $$0;
+      cto $$1;
+      if (this.c.get(0).e()) {
+         $$0 = this.c.get(1);
+         $$1 = cto.i;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
+      }
+
+      if ($$0.e()) {
+         this.a(2, cto.i);
+         this.f = 0;
+      } else {
+         czw $$4 = this.b.gr();
+         if (!$$4.isEmpty()) {
+            czv $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, cto.i);
+               this.f = 0;
+            }
+         }
+
+         this.b.n(this.a(2));
+      }
    }
 
    @Nullable
-   public static cqa a(String $$0) {
-      return c.apply($$0);
+   public czv g() {
+      return this.d;
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(ayt::c);
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
    }
 
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(ayt::c);
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public int h() {
+      return this.f;
    }
 }

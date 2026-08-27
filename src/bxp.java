@@ -1,21 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bxp {
-   public static <E extends ckl> btt<E> a(Function<E, Optional<? extends bsa>> $$0) {
-      return bxf.a(
-         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$1 -> $$1.group($$1.c(cbd.ay), $$1.c(cbd.o), $$1.a(cbd.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bsa> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bxp extends buh<clj> {
+   public bxp() {
+      super(ImmutableMap.of());
+   }
+
+   protected boolean a(aqm $$0, clj $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(aqm $$0, clj $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         btq<?> $$3 = $$1.dS();
+         if (!$$3.c(cnl.g)) {
+            $$3.b(cbs.t);
+            $$3.b(cbs.m);
+            $$3.b(cbs.n);
+            $$3.b(cbs.r);
+            $$3.b(cbs.q);
+         }
+
+         $$3.a(cnl.g);
+      }
+   }
+
+   protected void c(aqm $$0, clj $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
+   }
+
+   public static boolean b(bso $$0) {
+      return $$0.dS().a(cbs.A);
+   }
+
+   public static boolean c(bso $$0) {
+      return $$0.dS().a(cbs.x);
    }
 }

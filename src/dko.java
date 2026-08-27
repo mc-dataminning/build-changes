@@ -1,36 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class dko extends dde {
-   public static final MapCodec<dko> b = b(dko::new);
-   public static final dqy c = dqx.z;
+public interface dko {
+   dko s_ = new dko() {
+      @Override
+      public boolean a(day $$0, io $$1, drb $$2, @Nullable Collection<it> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dku)dea.qT).l().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(emv.c) ? false : dku.a($$0, $$1, $$2, $$3);
+         } else {
+            return dko.super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
 
-   @Override
-   protected MapCodec<? extends dko> a() {
-      return b;
+      @Override
+      public int a(dkt.a $$0, day $$1, io $$2, ayk $$3, dkt $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int i_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   protected dko(dqg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   default void a(day $$0, drb $$1, io $$2, ayk $$3) {
    }
 
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return $$1 == is.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default boolean a(day $$0, io $$1, ayk $$2) {
+      return false;
    }
 
-   @Override
-   public dqh a(cwi $$0) {
-      dqh $$1 = $$0.q().a_($$0.a().c());
-      return this.n().a(c, Boolean.valueOf(m($$1)));
+   default boolean a(day $$0, io $$1, drb $$2, @Nullable Collection<it> $$3, boolean $$4) {
+      return ((diy)dea.qT).c().a($$2, $$0, $$1, $$4) > 0L;
    }
 
-   private static boolean m(dqh $$0) {
-      return $$0.a(avr.bz);
+   default boolean d() {
+      return true;
    }
 
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(c);
+   default int i_(int $$0) {
+      return 1;
    }
+
+   int a(dkt.a var1, day var2, io var3, ayk var4, dkt var5, boolean var6);
 }

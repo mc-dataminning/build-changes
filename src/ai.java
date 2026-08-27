@@ -11,12 +11,12 @@ public record ai(List<List<String>> c) {
    public static final Codec<ai> a = Codec.STRING.listOf().listOf().xmap(ai::new, ai::d);
    public static final ai b = new ai(List.of());
 
-   public ai(vu $$0) {
-      this($$0.a((yt<? super vu, List<String>>)($$0x -> $$0x.a(vu::p))));
+   public ai(vx $$0) {
+      this($$0.a((yw<? super vx, List<String>>)($$0x -> $$0x.a(vx::p))));
    }
 
-   public void a(vu $$0) {
-      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, vu::a));
+   public void a(vx $$0) {
+      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, vx::a));
    }
 
    public static ai a(Collection<String> $$0) {

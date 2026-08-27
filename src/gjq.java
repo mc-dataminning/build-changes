@@ -1,17 +1,29 @@
-public class gjq extends gid<cjb, fuk> {
-   private static final akh a = new akh("textures/entity/illager/vex.png");
-   private static final akh i = new akh("textures/entity/illager/vex_charging.png");
+public class gjq extends giz<cez, fuk<cez>> {
+   private static final akm a = new akm("textures/entity/fish/salmon.png");
 
-   public gjq(ggx.a $$0) {
-      super($$0, new fuk($$0.a(fva.bO)), 0.3F);
-      this.a(new glb<>(this, $$0.d()));
+   public gjq(ght.a $$0) {
+      super($$0, new fuk<>($$0.a(fvv.bg)), 0.4F);
    }
 
-   protected int a(cjb $$0, in $$1) {
-      return 15;
+   public akm a(cez $$0) {
+      return a;
    }
 
-   public akh a(cjb $$0) {
-      return $$0.gq() ? i : a;
+   protected void a(cez $$0, eys $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.be()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
+
+      float $$8 = $$6 * 4.3F * ayd.a($$7 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$8));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.be()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

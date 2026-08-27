@@ -1,24 +1,22 @@
-public abstract class gkt<T extends brh & bsm, M extends fsb<T>> extends gli<T, M> {
-   public gkt(gis<T, M> $$0) {
-      super($$0);
+public class gkt extends giz<cjs, fvl<cjs>> {
+   private static final akm a = new akm("textures/entity/witch.png");
+
+   public gkt(ght.a $$0) {
+      super($$0, new fvl<>($$0.a(fvv.bU)), 0.5F);
+      this.a(new gms<>(this, $$0.d()));
    }
 
-   @Override
-   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         fsb<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         eyb $$12 = $$1.getBuffer(gbw.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gmp.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(cjs $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
+      this.f.b(!$$0.eX().e());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected abstract float a(float var1);
+   public akm a(cjs $$0) {
+      return a;
+   }
 
-   protected abstract akh a();
-
-   protected abstract fsb<T> b();
+   protected void a(cjs $$0, eys $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   }
 }

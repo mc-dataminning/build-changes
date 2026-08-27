@@ -1,37 +1,56 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class gsj {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   private final atz a;
+   private final Map<akm, CompletableFuture<ews>> b = Maps.newHashMap();
+
+   public gsj(atz $$0) {
+      this.a = $$0;
+   }
+
+   public CompletableFuture<ews> a(akm $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ews var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  ewq $$2 = new ewq($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ews($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.g()));
+   }
+
+   public CompletableFuture<gsf> a(akm $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gsf)($$1 ? new gsh(ewq::new, $$2) : new ewq($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.g());
+   }
 
    public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+      this.b.values().forEach($$0 -> $$0.thenAccept(ews::b));
+      this.b.clear();
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
-   }
-
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(gry $$0) {
-      this.b.ifPresent($$1 -> $$0.send(grz.e, $$1x -> {
-            $$1x.a(gsb.p, this.a($$1));
-            $$1x.a(gsb.q, (int)this.c);
-         }));
+   public CompletableFuture<?> a(Collection<grg> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

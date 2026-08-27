@@ -1,70 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class byq extends byo {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class byq extends byx {
-   protected final bsi a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dad f;
-
-   public byq(bsi $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dN();
-      this.a(EnumSet.of(byx.a.a));
+   public byq(bsq $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public boolean a() {
-      if (this.a.p() != null) {
-         return false;
-      } else if (!this.f.Q()) {
-         return false;
-      } else if (!this.a.bO()) {
-         return false;
-      } else if (!this.f.h(this.a.dn())) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.bb = this.a(this.a.bb, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dH(), $$0x + 10.0F, this.c)));
       } else {
-         return !this.a.d(bro.f).d() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      etp $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.K().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
-   }
-
-   @Nullable
-   protected etp i() {
-      ayg $$0 = this.a.ej();
-      in $$1 = this.a.dn();
-
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         in $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
-            return etp.c($$3);
+         if (this.a.K().l()) {
+            this.a.s(this.a(this.a.dH(), 0.0F, 5.0F));
          }
+
+         this.a.bb = this.a(this.a.bb, this.a.aZ, this.b);
       }
 
-      return null;
+      float $$0 = ayd.g(this.a.bb - this.a.aZ);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aZ -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aZ += 4.0F;
+      }
    }
 }

@@ -1,201 +1,127 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public abstract class cze implements ec {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final wu c = wu.b("@");
-   private long d = -1L;
-   private boolean e = true;
-   private int f;
-   private boolean g = true;
-   @Nullable
-   private wu h;
-   private String i = "";
-   @Nullable
-   private wu j;
+public class cze implements cwu {
+   public static final cze a = new cze(new Object2IntLinkedOpenHashMap(), true);
+   public static final int b = 255;
+   private static final Codec<Integer> e = Codec.intRange(0, 255);
+   private static final Codec<Object2IntLinkedOpenHashMap<ix<cyz>>> f = Codec.unboundedMap(le.f.r(), e)
+      .xmap(Object2IntLinkedOpenHashMap::new, Function.identity());
+   private static final Codec<cze> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(f.fieldOf("levels").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.i))
+            .apply($$0, cze::new)
+   );
+   public static final Codec<cze> c = Codec.withAlternative(g, f, $$0 -> new cze($$0, true));
+   public static final yv<wi, cze> d = yv.a(yt.a(Object2IntLinkedOpenHashMap::new, yt.b(lf.u), yt.f), $$0 -> $$0.h, yt.b, $$0 -> $$0.i, cze::new);
+   final Object2IntLinkedOpenHashMap<ix<cyz>> h;
+   final boolean i;
 
-   public int k() {
-      return this.f;
-   }
-
-   public void a(int $$0) {
-      this.f = $$0;
-   }
-
-   public wu l() {
-      return this.h == null ? wt.a : this.h;
-   }
-
-   public ua a(ua $$0, iy.a $$1) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      if (this.j != null) {
-         $$0.a("CustomName", wu.a.a(this.j, $$1));
-      }
-
-      $$0.a("TrackOutput", this.g);
-      if (this.h != null && this.g) {
-         $$0.a("LastOutput", wu.a.a(this.h, $$1));
-      }
-
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
-      return $$0;
-   }
-
-   public void b(ua $$0, iy.a $$1) {
-      this.i = $$0.l("Command");
-      this.f = $$0.h("SuccessCount");
-      if ($$0.b("CustomName", 8)) {
-         this.b(wu.a.a($$0.l("CustomName"), $$1));
-      } else {
-         this.b(null);
-      }
-
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.q("TrackOutput");
-      }
-
-      if ($$0.b("LastOutput", 8) && this.g) {
-         try {
-            this.h = wu.a.a($$0.l("LastOutput"), $$1);
-         } catch (Throwable var4) {
-            this.h = wu.b(var4.getMessage());
-         }
-      } else {
-         this.h = null;
-      }
-
-      if ($$0.e("UpdateLastExecution")) {
-         this.e = $$0.q("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.e("LastExecution")) {
-         this.d = $$0.i("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-      this.f = 0;
-   }
-
-   public String m() {
-      return this.i;
-   }
-
-   public boolean a(dad $$0) {
-      if ($$0.B || $$0.Y() == this.d) {
-         return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = wu.b("#itzlipofutzli");
-         this.f = 1;
-         return true;
-      } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().o();
-         if ($$1.q() && !ayu.b(this.i)) {
-            try {
-               this.h = null;
-               ed $$2 = this.i().a((ea)(($$0x, $$1x) -> {
-                  if ($$0x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aH().a($$2, this.i);
-            } catch (Throwable var6) {
-               o $$4 = o.a(var6, "Executing command block");
-               p $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new y($$4);
-            }
-         }
-
-         if (this.e) {
-            this.d = $$0.Y();
-         } else {
-            this.d = -1L;
-         }
-
-         return true;
-      }
-   }
-
-   public wu n() {
-      return this.j != null ? this.j : c;
-   }
-
-   @Nullable
-   public wu o() {
-      return this.j;
-   }
-
-   public void b(@Nullable wu $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a(wu $$0) {
-      if (this.g) {
-         this.h = wu.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
-      }
-   }
-
-   public abstract aqh e();
-
-   public abstract void f();
-
-   public void c(@Nullable wu $$0) {
+   cze(Object2IntLinkedOpenHashMap<ix<cyz>> $$0, boolean $$1) {
       this.h = $$0;
+      this.i = $$1;
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public int a(cyz $$0) {
+      return this.h.getInt($$0.m());
    }
 
-   public boolean p() {
-      return this.g;
-   }
+   @Override
+   public void a(Consumer<wx> $$0, cvh $$1) {
+      if (this.i) {
+         ObjectBidirectionalIterator var3 = this.h.object2IntEntrySet().iterator();
 
-   public bpm a(clh $$0) {
-      if (!$$0.gx()) {
-         return bpm.d;
-      } else {
-         if ($$0.cL().B) {
-            $$0.a(this);
+         while (var3.hasNext()) {
+            Entry<ix<cyz>> $$2 = (Entry<ix<cyz>>)var3.next();
+            $$0.accept(((cyz)((ix)$$2.getKey()).a()).e($$2.getIntValue()));
          }
-
-         return bpm.a($$0.dN().B);
       }
    }
 
-   public abstract etp g();
+   public cze a(boolean $$0) {
+      return new cze(this.h, $$0);
+   }
 
-   public abstract ed i();
+   public Set<ix<cyz>> a() {
+      return Collections.unmodifiableSet(this.h.keySet());
+   }
 
-   @Override
-   public boolean l_() {
-      return this.e().aa().b(czz.p) && this.g;
+   public Set<Entry<ix<cyz>>> b() {
+      return Collections.unmodifiableSet(this.h.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.h.size();
+   }
+
+   public boolean d() {
+      return this.h.isEmpty();
    }
 
    @Override
-   public boolean w_() {
-      return this.g;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cze $$1) ? false : this.i == $$1.i && this.h.equals($$1.h);
+      }
    }
 
    @Override
-   public boolean U_() {
-      return this.e().aa().b(czz.j);
+   public int hashCode() {
+      int $$0 = this.h.hashCode();
+      return 31 * $$0 + (this.i ? 1 : 0);
    }
 
-   public abstract boolean j();
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.h + ", showInTooltip=" + this.i + "}";
+   }
+
+   public static class a {
+      private final Object2IntLinkedOpenHashMap<ix<cyz>> a = new Object2IntLinkedOpenHashMap();
+      private final boolean b;
+
+      public a(cze $$0) {
+         this.a.putAll($$0.h);
+         this.b = $$0.i;
+      }
+
+      public void a(cyz $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0.m());
+         } else {
+            this.a.put($$0.m(), $$1);
+         }
+      }
+
+      public void b(cyz $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0.m(), $$1, Integer::max);
+         }
+      }
+
+      public void a(Predicate<ix<cyz>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(cyz $$0) {
+         return this.a.getOrDefault($$0.m(), 0);
+      }
+
+      public Set<ix<cyz>> a() {
+         return this.a.keySet();
+      }
+
+      public cze b() {
+         return new cze(this.a, this.b);
+      }
+   }
 }

@@ -1,15 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvp<E extends bsa> extends bug<E> {
-   public bvp(List<Pair<? extends btt<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
+public class bvp {
+   private static final int a = 1;
 
-   public bvp(Map<cbd<?>, cbe> $$0, List<Pair<? extends btt<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bug.a.b, bug.b.a, $$1);
+   public static bui<bso> a(float $$0) {
+      return bxu.a(
+         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$1 -> $$1.group($$1.a(cbs.n), $$1.c(cbs.m), $$1.b(cbs.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bR()) {
+                        return false;
+                     } else {
+                        bru $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bus($$8, true));
+                           $$3.a(new cbv(new bus($$8, false), $$0, 1));
+                        }
+
+                        return true;
+                     }
+                  }))
+      );
    }
 }

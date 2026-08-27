@@ -1,100 +1,164 @@
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
-public class ffe extends fev {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final ffe.b q = $$0 -> $$0.get();
-   protected final ffe.c r;
-   protected final ffe.b s;
+public class ffe {
+   private static final int a = 256;
+   private final ThreadLocal<ffe.b> b = ThreadLocal.withInitial(ffe.b::new);
+   private final Long2ObjectLinkedOpenHashMap<ffe.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<io> e;
 
-   public static ffe.a a(wu $$0, ffe.c $$1) {
-      return new ffe.a($$0, $$1);
+   public ffe(ToIntFunction<io> $$0) {
+      this.e = $$0;
    }
 
-   protected ffe(int $$0, int $$1, int $$2, int $$3, wu $$4, ffe.c $$5, ffe.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+   public int a(io $$0) {
+      int $$1 = jq.a($$0.u());
+      int $$2 = jq.a($$0.w());
+      ffe.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
+
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
    }
 
-   @Override
-   public void b() {
-      this.r.onPress(this);
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dae.c($$0 + $$2, $$1 + $$3);
+               ffe.a $$5 = (ffe.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
+         }
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
-   @Override
-   protected xi aK_() {
-      return this.s.createNarrationMessage(() -> super.aK_());
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(ffe.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
-   @Override
-   public void a(fja $$0) {
-      this.c($$0);
+   private ffe.a b(int $$0, int $$1) {
+      long $$2 = dae.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         ffe.a $$3 = (ffe.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      ffe.a $$5;
+      try {
+         ffe.a $$4 = (ffe.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new ffe.a();
+            if (this.c.size() >= 256) {
+               ffe.a $$6 = (ffe.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
    }
 
-   public static class a {
-      private final wu a;
-      private final ffe.c b;
-      @Nullable
-      private fgp c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private ffe.b h = ffe.q;
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = ayd.h(16);
+      private volatile boolean d;
 
-      public a(wu $$0, ffe.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
       }
 
-      public ffe.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public ffe.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ffe.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public ffe.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public ffe.a a(@Nullable fgp $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ffe.a a(ffe.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public ffe a() {
-         ffe $$0 = new ffe(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
          return $$0;
       }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
    }
 
-   public interface b {
-      xi createNarrationMessage(Supplier<xi> var1);
-   }
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      ffe.a c;
 
-   public interface c {
-      void onPress(ffe var1);
+      private b() {
+      }
    }
 }

@@ -1,18 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class eaa extends dzd<ebs> {
-   public eaa(Codec<ebs> $$0) {
+public class eaa extends dzx<ecf> {
+   public eaa(Codec<ecf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dzf<ebs> $$0) {
-      ayg $$1 = $$0.d();
-      ebs $$2 = $$0.f();
-      day $$3 = $$0.b();
-      dse $$4 = $$0.c();
-      in $$5 = $$0.e();
-      boolean $$6 = $$1.h();
-      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
+   public boolean a(dzz<ecf> $$0) {
+      io $$1 = $$0.e();
+      ecf $$2 = $$0.f();
+      dbs $$3 = $$0.b();
+      io.a $$4 = new io.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
+         }
+      }
+
+      return true;
    }
 }

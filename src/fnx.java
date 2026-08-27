@@ -1,39 +1,50 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public abstract class fnx<T extends cpv> extends fmw<T> implements cpf {
+   private final akm D;
 
-public class fnx implements fnv {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fjk e;
+   public fnx(T $$0, clv $$1, wx $$2, akm $$3) {
+      super($$0, $$1, $$2);
+      this.D = $$3;
+   }
 
-   public fnx(fjk $$0) {
-      this.e = $$0;
+   protected void E() {
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
-      return $$6;
+   protected void aM_() {
+      super.aM_();
+      this.E();
+      this.w.a(this);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(axz.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   public void j() {
+      super.j();
+      this.w.b(this);
+   }
+
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(ffm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(ffm $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.D, this.z, this.A, 0, 0, this.c, this.d);
+      this.c($$0, this.z, this.A);
+   }
+
+   protected abstract void c(ffm var1, int var2, int var3);
+
+   @Override
+   public void a(cot $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cot $$0, int $$1, cto $$2) {
    }
 }

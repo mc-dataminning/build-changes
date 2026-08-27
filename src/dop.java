@@ -1,3 +1,139 @@
-public interface dop {
-   float a(float var1);
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
+
+public class dop extends dog implements bpn {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jg<cto> d = jg.a(6, cto.i);
+   private int e = -1;
+
+   public dop(io $$0, drb $$1) {
+      super(doi.M, $$0, $$1);
+   }
+
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         drb $$1 = this.n();
+
+         for (int $$2 = 0; $$2 < dfc.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).e();
+            drs $$4 = dfc.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(dvu.c, this.o, dvu.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
+   }
+
+   @Override
+   protected void a(ud $$0, iz.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bpo.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(ud $$0, iz.a $$1) {
+      super.b($$0, $$1);
+      bpo.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cto::e)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cto::e);
+   }
+
+   @Override
+   public cto a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cto a(int $$0, int $$1) {
+      cto $$2 = Objects.requireNonNullElse(this.d.get($$0), cto.i);
+      this.d.set($$0, cto.i);
+      if (!$$2.e()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cto b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cto $$1) {
+      if ($$1.a(awe.aW)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.e()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bpn $$0, int $$1, cto $$2) {
+      return $$0.a_($$2x -> $$2x.e() ? true : cto.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
+   }
+
+   @Override
+   public int ah_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(clw $$0) {
+      return bpn.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cto $$1) {
+      return $$1.a(awe.aW) && this.a($$0).e() && $$1.I() == this.ah_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dog.b $$0) {
+      super.a($$0);
+      $$0.a(kb.Z, cwk.a).a(this.d);
+   }
+
+   @Override
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.Z, cwk.a(this.d));
+   }
+
+   @Override
+   public void a(ud $$0) {
+      $$0.r("Items");
+   }
 }

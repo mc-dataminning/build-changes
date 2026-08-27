@@ -1,59 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class dhi extends dgt implements dhv {
-   public static final MapCodec<dhi> c = b(dhi::new);
-   protected static final eui g = dde.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class dhi extends diy implements deb, dkz {
+   public static final MapCodec<dhi> a = b(dhi::new);
+   private static final drs c = drr.C;
+   private final diz d = new diz(this);
 
    @Override
    public MapCodec<dhi> a() {
-      return c;
+      return a;
    }
 
-   protected dhi(dqg.d $$0) {
-      super($$0, is.b, g, true, 0.14);
+   public dhi(dra.d $$0) {
+      super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected boolean g(dqh $$0) {
-      return $$0.a(ddg.G);
-   }
-
-   @Override
-   protected dde b() {
-      return ddg.md;
+   public static ToIntFunction<drb> b(int $$0) {
+      return $$1 -> diy.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected boolean m(dqh $$0) {
-      return !$$0.a(ddg.kJ);
+   protected void a(drc.a<ddy, drb> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   public boolean a(@Nullable clh $$0, czj $$1, in $$2, dqh $$3, elz $$4) {
-      return false;
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dae $$0, in $$1, dqh $$2, ema $$3) {
-      return false;
+   protected boolean a(drb $$0, cwz $$1) {
+      return !$$1.n().a(ctr.fW) || super.a($$0, $$1);
    }
 
    @Override
-   protected int a(ayg $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dqh a(cwi $$0) {
-      ema $$1 = $$0.q().b_($$0.a());
-      return $$1.a(avw.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public boolean b(dba $$0, io $$1, drb $$2) {
+      return it.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   protected ema b_(dqh $$0) {
-      return emb.c.a(false);
+   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected emu b_(drb $$0) {
+      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(drb $$0, dad $$1, io $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public diz c() {
+      return this.d;
    }
 }

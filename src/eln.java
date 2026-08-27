@@ -1,49 +1,30 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface eln extends els {
-   @Nullable
-   dsi a(jp var1);
+public class eln implements elr {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<eln> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akl.a(lf.aU).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, eln::new)
+   );
+   private final akl<epk> d;
 
-   int b(in var1);
+   public eln(akl<epk> $$0) {
+      this.d = $$0;
+   }
 
-   public static enum a implements eln {
-      a;
+   @Override
+   public ud a(ayk $$0, @Nullable ud $$1) {
+      ud $$2 = $$1 == null ? new ud() : $$1.h();
+      akl.a(lf.aU).encodeStart(ur.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
+   }
 
-      @Nullable
-      @Override
-      public dsi a(jp $$0) {
-         return null;
-      }
-
-      @Override
-      public int b(in $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(in $$0) {
-      }
-
-      @Override
-      public boolean K_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(jp $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(czk $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(czk $$0) {
-      }
+   @Override
+   public els<?> a() {
+      return els.d;
    }
 }

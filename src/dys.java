@@ -1,52 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dys extends dzd<ebo> {
-   public dys(Codec<ebo> $$0) {
-      super($$0);
+public class dys {
+   public static final dys a = new dys(false, dea.gz.n(), dea.pL.n(), dea.ej.n(), dea.aQ.n());
+   public static final Codec<dys> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dys::a),
+               drb.b.optionalFieldOf("air_state", a.b()).forGetter(dys::b),
+               drb.b.optionalFieldOf("water_state", a.b()).forGetter(dys::c),
+               drb.b.optionalFieldOf("lava_state", a.b()).forGetter(dys::d),
+               drb.b.optionalFieldOf("barrier_state", a.b()).forGetter(dys::e)
+            )
+            .apply($$0, dys::new)
+   );
+   private final boolean c;
+   private final drb d;
+   private final drb e;
+   private final drb f;
+   private final drb g;
+
+   public static dys a(boolean $$0, drb $$1, drb $$2, drb $$3, drb $$4) {
+      return new dys($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dzf<ebo> $$0) {
-      ayg $$1 = $$0.d();
-      day $$2 = $$0.b();
-      in $$3 = $$0.e();
-      Optional<dde> $$4 = ld.e.a(avr.aq, $$1).map(iw::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
+   public static dys a(drb $$0, drb $$1, drb $$2, drb $$3) {
+      return new dys(false, $$0, $$1, $$2, $$3);
    }
 
-   protected abstract boolean a(dae var1, ayg var2, in var3, dqh var4);
+   public static dys a(boolean $$0, drb $$1) {
+      return new dys($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-   protected boolean b(dae $$0, ayg $$1, in $$2, dqh $$3) {
-      in $$4 = $$2.c();
-      dqh $$5 = $$0.a_($$2);
-      if (($$5.a(ddg.G) || $$5.a(avr.at)) && $$0.a_($$4).a(ddg.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            ld.e.a(avr.at, $$1).map(iw::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, ddg.mV.n().a(dkb.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+   private dys(boolean $$0, drb $$1, drb $$2, drb $$3, drb $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-         for (is $$6 : is.c.a) {
-            if ($$1.i() < 0.2F) {
-               in $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(ddg.G)) {
-                  ld.e.a(avr.ar, $$1).map(iw::a).ifPresent($$3x -> {
-                     dqh $$4x = $$3x.n();
-                     if ($$4x.b(dcp.c)) {
-                        $$4x = $$4x.a(dcp.c, $$6);
-                     }
+   public boolean a() {
+      return this.c;
+   }
 
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
+   public drb b() {
+      return this.d;
+   }
 
-         return true;
-      } else {
-         return false;
-      }
+   public drb c() {
+      return this.e;
+   }
+
+   public drb d() {
+      return this.f;
+   }
+
+   public drb e() {
+      return this.g;
    }
 }

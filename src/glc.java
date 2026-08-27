@@ -1,46 +1,44 @@
-public class glc extends gli<cfw, fsu<cfw>> {
-   private static final akh[] a = new akh[]{
-      new akh("textures/entity/llama/decor/white.png"),
-      new akh("textures/entity/llama/decor/orange.png"),
-      new akh("textures/entity/llama/decor/magenta.png"),
-      new akh("textures/entity/llama/decor/light_blue.png"),
-      new akh("textures/entity/llama/decor/yellow.png"),
-      new akh("textures/entity/llama/decor/lime.png"),
-      new akh("textures/entity/llama/decor/pink.png"),
-      new akh("textures/entity/llama/decor/gray.png"),
-      new akh("textures/entity/llama/decor/light_gray.png"),
-      new akh("textures/entity/llama/decor/cyan.png"),
-      new akh("textures/entity/llama/decor/purple.png"),
-      new akh("textures/entity/llama/decor/blue.png"),
-      new akh("textures/entity/llama/decor/brown.png"),
-      new akh("textures/entity/llama/decor/green.png"),
-      new akh("textures/entity/llama/decor/red.png"),
-      new akh("textures/entity/llama/decor/black.png")
-   };
-   private static final akh b = new akh("textures/entity/llama/decor/trader_llama.png");
-   private final fsu<cfw> c;
+public class glc<T extends bso, M extends fub<T>> extends gmo<T, M> {
+   private static final akm a = new akm("textures/entity/bee/bee_stinger.png");
 
-   public glc(gis<cfw, fsu<cfw>> $$0, fux $$1) {
+   public glc(giu<T, M> $$0) {
       super($$0);
-      this.c = new fsu<>($$1.a(fva.ay));
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, cfw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      crs $$10 = $$3.gC();
-      akh $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gy()) {
-            return;
-         }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eU();
+   }
 
-         $$11 = b;
+   @Override
+   protected void a(eys $$0, gck $$1, int $$2, bru $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ayd.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      eyw $$16 = $$1.getBuffer(gcs.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         eys.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
+   }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      eyb $$14 = $$1.getBuffer(gbw.e($$11));
-      this.c.a($$0, $$14, $$2, gmp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   private static void a(eyw $$0, eys.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(gnm.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

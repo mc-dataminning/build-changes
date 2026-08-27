@@ -1,28 +1,49 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bul {
-   private static in a(bsc $$0, in $$1) {
-      ayg $$2 = $$0.dN().z;
-      return $$1.b(a($$2), 0, a($$2));
+public class bul extends buh<clj> {
+   @Nullable
+   private cnh c;
+
+   public bul(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   private static int a(ayg $$0) {
-      return $$0.a(3) - 1;
+   protected boolean a(aqm $$0, clj $$1) {
+      io $$2 = $$1.dp();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && bvq.a($$0, $$1, $$2);
    }
 
-   public static <E extends bsc> bvd<E> a(cbd<in> $$0, int $$1, float $$2) {
-      return bxf.a(
-         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cbd.o), $$3.c(cbd.m), $$3.a(cbd.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     in $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dn(), (double)$$1);
-                     if (!$$8) {
-                        btu.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   protected boolean a(aqm $$0, clj $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
 
-                     return true;
-                  }))
-      );
+   protected void b(aqm $$0, clj $$1, long $$2) {
+      this.c = null;
+      $$1.dS().a($$0.Z(), $$0.Y());
+   }
+
+   protected void c(aqm $$0, clj $$1, long $$2) {
+      ayk $$3 = $$1.el();
+      if ($$3.a(100) == 0) {
+         $$1.gu();
+      }
+
+      if ($$3.a(200) == 0 && bvq.a($$0, $$1, $$1.dp())) {
+         csh $$4 = ac.a(csh.values(), $$3);
+         int $$5 = $$3.a(3);
+         cto $$6 = this.a($$4, $$5);
+         cmj $$7 = new cmj($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
+         $$1.dP().b($$7);
+      }
+   }
+
+   private cto a(csh $$0, int $$1) {
+      cto $$2 = new cto(ctr.uu);
+      $$2.b(kb.T, new cwi((byte)$$1, List.of(new cwh(cwh.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

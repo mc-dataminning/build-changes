@@ -1,464 +1,320 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
 
-public class gcc implements exn, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String q = "shaders/core/";
-   private static final String r = "shaders/include/";
-   static final Logger s = LogUtils.getLogger();
-   private static final exg t = new exg();
-   private static final boolean u = true;
-   private static gcc v;
-   private static int w = -1;
-   private final Map<String, Object> x = Maps.newHashMap();
-   private final List<String> y = Lists.newArrayList();
-   private final List<Integer> z = Lists.newArrayList();
-   private final List<exo> A = Lists.newArrayList();
-   private final List<Integer> B = Lists.newArrayList();
-   private final Map<String, exo> C = Maps.newHashMap();
-   private final int D;
-   private final String E;
-   private boolean F;
-   private final exh G;
-   private final exl H;
-   private final exl I;
-   private final eyc J;
-   @Nullable
-   public final exo b;
-   @Nullable
-   public final exo c;
-   @Nullable
-   public final exo d;
-   @Nullable
-   public final exo e;
-   @Nullable
-   public final exo f;
-   @Nullable
-   public final exo g;
-   @Nullable
-   public final exo h;
-   @Nullable
-   public final exo i;
-   @Nullable
-   public final exo j;
-   @Nullable
-   public final exo k;
-   @Nullable
-   public final exo l;
-   @Nullable
-   public final exo m;
-   @Nullable
-   public final exo n;
-   @Nullable
-   public final exo o;
-   @Nullable
-   public final exo p;
+public class gcc {
+   private static final int b = 96;
+   private static final List<gcc.e> c = Lists.newArrayList(new gcc.e[]{new gcc.a(), new gcc.b()});
+   public static final float a = 5000.0F;
+   private static float d;
+   private static float e;
+   private static float f;
+   private static int g = -1;
+   private static int h = -1;
+   private static long i = -1L;
 
-   public gcc(atu $$0, String $$1, eyc $$2) throws IOException {
-      this.E = $$1;
-      this.J = $$2;
-      akh $$3 = new akh("shaders/core/" + $$1 + ".json");
+   public static void a(fdk $$0, float $$1, fwr $$2, int $$3, float $$4) {
+      emw $$5 = $$0.k();
+      bru $$6 = $$0.g();
+      if ($$5 == emw.b) {
+         long $$7 = ac.c();
+         int $$8 = $$2.t(io.a($$0.b())).a().j();
+         if (i < 0L) {
+            g = $$8;
+            h = $$8;
+            i = $$7;
+         }
 
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = axp.a($$4);
-         String $$6 = axp.i($$5, "vertex");
-         String $$7 = axp.i($$5, "fragment");
-         JsonArray $$8 = axp.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
+         int $$9 = g >> 16 & 0xFF;
+         int $$10 = g >> 8 & 0xFF;
+         int $$11 = g & 0xFF;
+         int $$12 = h >> 16 & 0xFF;
+         int $$13 = h >> 8 & 0xFF;
+         int $$14 = h & 0xFF;
+         float $$15 = ayd.a((float)($$7 - i) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = ayd.i($$15, (float)$$12, (float)$$9);
+         float $$17 = ayd.i($$15, (float)$$13, (float)$$10);
+         float $$18 = ayd.i($$15, (float)$$14, (float)$$11);
+         d = $$16 / 255.0F;
+         e = $$17 / 255.0F;
+         f = $$18 / 255.0F;
+         if (g != $$8) {
+            g = $$8;
+            h = ayd.d($$16) << 16 | ayd.d($$17) << 8 | ayd.d($$18);
+            i = $$7;
+         }
+      } else if ($$5 == emw.a) {
+         d = 0.6F;
+         e = 0.1F;
+         f = 0.0F;
+         i = -1L;
+      } else if ($$5 == emw.c) {
+         d = 0.623F;
+         e = 0.734F;
+         f = 0.785F;
+         i = -1L;
+         RenderSystem.clearColor(d, e, f, 0.0F);
+      } else {
+         float $$19 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$19 = 1.0F - (float)Math.pow((double)$$19, 0.25);
+         euk $$20 = $$2.a($$0.b(), $$1);
+         float $$21 = (float)$$20.c;
+         float $$22 = (float)$$20.d;
+         float $$23 = (float)$$20.e;
+         float $$24 = ayd.a(ayd.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         dby $$25 = $$2.F_();
+         euk $$26 = $$0.b().a(2.0, 2.0, 2.0).a(0.25);
+         euk $$27 = axf.a($$26, ($$3x, $$4x, $$5x) -> $$2.d().a(euk.a($$25.a($$3x, $$4x, $$5x).a().e()), $$24));
+         d = (float)$$27.a();
+         e = (float)$$27.b();
+         f = (float)$$27.c();
+         if ($$3 >= 4) {
+            float $$28 = ayd.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$29 = new Vector3f($$28, 0.0F, 0.0F);
+            float $$30 = $$0.l().dot($$29);
+            if ($$30 < 0.0F) {
+               $$30 = 0.0F;
+            }
 
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var18) {
-                  akk $$12 = akk.a(var18);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
+            if ($$30 > 0.0F) {
+               float[] $$31 = $$2.d().a($$2.f($$1), $$1);
+               if ($$31 != null) {
+                  $$30 *= $$31[3];
+                  d = d * (1.0F - $$30) + $$31[0] * $$30;
+                  e = e * (1.0F - $$30) + $$31[1] * $$30;
+                  f = f * (1.0F - $$30) + $$31[2] * $$30;
                }
-
-               $$9++;
             }
          }
 
-         JsonArray $$13 = axp.a($$5, "uniforms", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.b($$15);
-               } catch (Exception var17) {
-                  akk $$17 = akk.a(var17);
-                  $$17.a("uniforms[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
+         d = d + ($$21 - d) * $$19;
+         e = e + ($$22 - e) * $$19;
+         f = f + ($$23 - f) * $$19;
+         float $$32 = $$2.d($$1);
+         if ($$32 > 0.0F) {
+            float $$33 = 1.0F - $$32 * 0.5F;
+            float $$34 = 1.0F - $$32 * 0.4F;
+            d *= $$33;
+            e *= $$33;
+            f *= $$34;
          }
 
-         this.G = a(axp.a($$5, "blend", null));
-         this.H = a($$0, exl.a.a, $$6);
-         this.I = a($$0, exl.a.b, $$7);
-         this.D = exm.a();
-         int $$18 = 0;
-
-         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
-            String $$19 = (String)var26.next();
-            exo.a(this.D, $$18, $$19);
+         float $$35 = $$2.b($$1);
+         if ($$35 > 0.0F) {
+            float $$36 = 1.0F - $$35 * 0.5F;
+            d *= $$36;
+            e *= $$36;
+            f *= $$36;
          }
 
-         exm.b(this);
-         this.j();
-      } catch (Exception var20) {
-         akk $$22 = akk.a(var20);
-         $$22.b($$3.a());
-         throw $$22;
+         i = -1L;
       }
 
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("TextureMat");
-      this.e = this.a("ScreenSize");
-      this.f = this.a("ColorModulator");
-      this.g = this.a("Light0_Direction");
-      this.h = this.a("Light1_Direction");
-      this.i = this.a("GlintAlpha");
-      this.j = this.a("FogStart");
-      this.k = this.a("FogEnd");
-      this.l = this.a("FogColor");
-      this.m = this.a("FogShape");
-      this.n = this.a("LineWidth");
-      this.o = this.a("GameTime");
-      this.p = this.a("ChunkOffset");
-   }
-
-   private static exl a(final atu $$0, exl.a $$1, String $$2) throws IOException {
-      exl $$3 = $$1.c().get($$2);
-      exl $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         atp $$5 = $$0.getResourceOrThrow(new akh($$4));
-
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.a($$4);
-            $$8 = exl.a($$1, $$2, $$6, $$5.b(), new exe() {
-               private final Set<String> c = Sets.newHashSet();
-
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     akh $$2 = new akh($$1);
-
-                     try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
-
-                        return var5;
-                     } catch (IOException var9) {
-                        gcc.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
-                     }
-                  }
-               }
-            });
-         }
-      } else {
-         $$8 = $$3;
+      float $$37 = ((float)$$0.b().d - (float)$$2.I_()) * $$2.k().e();
+      gcc.e $$38 = a($$6, $$1);
+      if ($$38 != null) {
+         bso $$39 = (bso)$$6;
+         $$37 = $$38.a($$39, $$39.c($$38.a()), $$37, $$1);
       }
 
-      return $$8;
-   }
-
-   public static exh a(JsonObject $$0) {
-      if ($$0 == null) {
-         return new exh();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (axp.a($$0, "func")) {
-            $$1 = exh.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
+      if ($$37 < 1.0F && $$5 != emw.a && $$5 != emw.c) {
+         if ($$37 < 0.0F) {
+            $$37 = 0.0F;
          }
 
-         if (axp.a($$0, "srcrgb")) {
-            $$2 = exh.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
+         $$37 *= $$37;
+         d *= $$37;
+         e *= $$37;
+         f *= $$37;
+      }
 
-         if (axp.a($$0, "dstrgb")) {
-            $$3 = exh.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
+      if ($$4 > 0.0F) {
+         d = d * (1.0F - $$4) + d * 0.7F * $$4;
+         e = e * (1.0F - $$4) + e * 0.6F * $$4;
+         f = f * (1.0F - $$4) + f * 0.6F * $$4;
+      }
 
-         if (axp.a($$0, "srcalpha")) {
-            $$4 = exh.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (axp.a($$0, "dstalpha")) {
-            $$5 = exh.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new exh();
+      float $$40;
+      if ($$5 == emw.b) {
+         if ($$6 instanceof gbm) {
+            $$40 = ((gbm)$$6).D();
          } else {
-            return $$7 ? new exh($$2, $$3, $$4, $$5, $$1) : new exh($$2, $$3, $$1);
+            $$40 = 1.0F;
          }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (exo $$0 : this.A) {
-         $$0.close();
-      }
-
-      exm.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      exm.a(0);
-      w = -1;
-      v = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         if (this.x.get(this.y.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.F = false;
-      v = this;
-      this.G.a();
-      if (this.D != w) {
-         exm.a(this.D);
-         w = this.D;
-      }
-
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         if (this.x.get($$2) != null) {
-            int $$3 = exo.a(this.D, $$2);
-            exo.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.x.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof ewj) {
-               $$5 = ((ewj)$$4).f();
-            } else if ($$4 instanceof gmj) {
-               $$5 = ((gmj)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
+      } else {
+         label86: {
+            if ($$6 instanceof bso $$42 && $$42.b(bre.p) && !$$42.b(bre.G)) {
+               $$40 = gcd.a($$42, $$1);
+               break label86;
             }
 
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
-            }
+            $$40 = 0.0F;
          }
       }
 
-      GlStateManager._activeTexture($$0);
-
-      for (exo $$6 : this.A) {
-         $$6.b();
+      if (d != 0.0F && e != 0.0F && f != 0.0F) {
+         float $$45 = Math.min(1.0F / d, Math.min(1.0F / e, 1.0F / f));
+         d = d * (1.0F - $$40) + d * $$45 * $$40;
+         e = e * (1.0F - $$40) + e * $$45 * $$40;
+         f = f * (1.0F - $$40) + f * $$45 * $$40;
       }
+
+      RenderSystem.clearColor(d, e, f, 0.0F);
    }
 
-   @Override
-   public void b() {
-      this.F = true;
+   public static void a() {
+      RenderSystem.setShaderFogStart(Float.MAX_VALUE);
    }
 
    @Nullable
-   public exo a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.C.get($$0);
+   private static gcc.e a(bru $$0, float $$1) {
+      return $$0 instanceof bso $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
    }
 
-   public exg b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      exo $$1 = this.a($$0);
-      return (exg)($$1 == null ? t : $$1);
-   }
-
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         int $$3 = exo.a(this.D, $$2);
-         if ($$3 == -1) {
-            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
-            this.x.remove($$2);
-            $$0.add($$1);
+   public static void a(fdk $$0, gcc.d $$1, float $$2, boolean $$3, float $$4) {
+      emw $$5 = $$0.k();
+      bru $$6 = $$0.g();
+      gcc.c $$7 = new gcc.c($$1);
+      gcc.e $$8 = a($$6, $$4);
+      if ($$5 == emw.a) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else if ($$6 instanceof bso && ((bso)$$6).b(bre.l)) {
+            $$7.b = 0.0F;
+            $$7.c = 5.0F;
          } else {
-            this.z.add($$3);
+            $$7.b = 0.25F;
+            $$7.c = 1.0F;
          }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.y.remove($$5);
-      }
-
-      for (exo $$6 : this.A) {
-         String $$7 = $$6.a();
-         int $$8 = exo.a(this.D, $$7);
-         if ($$8 == -1) {
-            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
+      } else if ($$5 == emw.c) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
          } else {
-            this.B.add($$8);
-            $$6.b($$8);
-            this.C.put($$7, $$6);
+            $$7.b = 0.0F;
+            $$7.c = 2.0F;
          }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = axp.m($$0, "sampler");
-      String $$2 = axp.i($$1, "name");
-      if (!axp.a($$1, "file")) {
-         this.x.put($$2, null);
-         this.y.add($$2);
-      } else {
-         this.y.add($$2);
-      }
-   }
-
-   public void a(String $$0, Object $$1) {
-      this.x.put($$0, $$1);
-      this.b();
-   }
-
-   private void b(JsonElement $$0) throws akk {
-      JsonObject $$1 = axp.m($$0, "uniform");
-      String $$2 = axp.i($$1, "name");
-      int $$3 = exo.a(axp.i($$1, "type"));
-      int $$4 = axp.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = axp.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new akk("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
-
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = axp.e($$8, "value");
-            } catch (Exception var13) {
-               akk $$10 = akk.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
-
-            $$7++;
+      } else if ($$8 != null) {
+         bso $$9 = (bso)$$6;
+         brc $$10 = $$9.c($$8.a());
+         if ($$10 != null) {
+            $$8.a($$7, $$9, $$10, $$2, $$4);
          }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
+      } else if ($$5 == emw.b) {
+         $$7.b = -8.0F;
+         $$7.c = 96.0F;
+         if ($$6 instanceof gbm $$11) {
+            $$7.c = $$7.c * Math.max(0.25F, $$11.D());
+            ix<dbw> $$12 = $$11.dP().t($$11.dp());
+            if ($$12.a(avv.aa)) {
+               $$7.c *= 0.85F;
             }
          }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         exo $$12 = new exo($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         if ($$7.c > $$2) {
+            $$7.c = $$2;
+            $$7.d = eyf.b;
          }
+      } else if ($$3) {
+         $$7.b = $$2 * 0.05F;
+         $$7.c = Math.min($$2, 192.0F) * 0.5F;
+      } else if ($$1 == gcc.d.a) {
+         $$7.b = 0.0F;
+         $$7.c = $$2;
+         $$7.d = eyf.b;
+      } else {
+         float $$13 = ayd.a($$2 / 10.0F, 4.0F, 64.0F);
+         $$7.b = $$2 - $$13;
+         $$7.c = $$2;
+         $$7.d = eyf.b;
+      }
 
-         this.A.add($$12);
+      RenderSystem.setShaderFogStart($$7.b);
+      RenderSystem.setShaderFogEnd($$7.c);
+      RenderSystem.setShaderFogShape($$7.d);
+   }
+
+   public static void b() {
+      RenderSystem.setShaderFogColor(d, e, f);
+   }
+
+   static class a implements gcc.e {
+      @Override
+      public ix<bra> a() {
+         return bre.o;
+      }
+
+      @Override
+      public void a(gcc.c $$0, bso $$1, brc $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : ayd.i(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == gcc.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
       }
    }
 
-   @Override
-   public exl c() {
-      return this.H;
+   static class b implements gcc.e {
+      @Override
+      public ix<bra> a() {
+         return bre.G;
+      }
+
+      @Override
+      public void a(gcc.c $$0, bso $$1, brc $$2, float $$3, float $$4) {
+         float $$5 = ayd.i($$2.a($$1, $$4), $$3, 15.0F);
+         $$0.b = $$0.a == gcc.d.a ? 0.0F : $$5 * 0.75F;
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(bso $$0, brc $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
+      }
    }
 
-   @Override
-   public exl d() {
-      return this.I;
+   static class c {
+      public final gcc.d a;
+      public float b;
+      public float c;
+      public eyf d = eyf.a;
+
+      public c(gcc.d $$0) {
+         this.a = $$0;
+      }
    }
 
-   @Override
-   public void e() {
-      this.I.a(this);
-      this.H.a(this);
+   public static enum d {
+      a,
+      b;
    }
 
-   public eyc h() {
-      return this.J;
-   }
+   interface e {
+      ix<bra> a();
 
-   public String i() {
-      return this.E;
-   }
+      void a(gcc.c var1, bso var2, brc var3, float var4, float var5);
 
-   @Override
-   public int a() {
-      return this.D;
+      default boolean a(bso $$0, float $$1) {
+         return $$0.b(this.a());
+      }
+
+      default float a(bso $$0, brc $$1, float $$2, float $$3) {
+         brc $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
+      }
    }
 }

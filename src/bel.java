@@ -3,6 +3,7 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class bel extends DataFix {
    public bel(Schema $$0) {
@@ -10,12 +11,18 @@ public class bel extends DataFix {
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> $$0xx.update("Pos", azh::a))));
+      return $$0.update("ExitPortalLocation", azl::a);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bfs.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bel::a))
-      );
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bfy.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", a($$2));
+            }
+         }));
    }
 }

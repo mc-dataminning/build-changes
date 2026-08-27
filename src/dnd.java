@@ -1,76 +1,96 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public record dnd(List<dnd.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dnd a = new dnd(List.of());
-   public static final Codec<dnd> b = dnd.b.a.listOf().xmap(dnd::new, dnd::b);
-   public static final ys<wf, dnd> c = dnd.b.b.a(yq.a()).a(dnd::new, dnd::b);
+public interface dnd extends dez<dnd.a> {
+   Supplier<BiMap<ddy, ddy>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dea.qW, dea.qX)
+            .put(dea.qX, dea.qY)
+            .put(dea.qY, dea.qZ)
+            .put(dea.rf, dea.re)
+            .put(dea.re, dea.rd)
+            .put(dea.rd, dea.rc)
+            .put(dea.rj, dea.ri)
+            .put(dea.ri, dea.rh)
+            .put(dea.rh, dea.rg)
+            .put(dea.rv, dea.ru)
+            .put(dea.ru, dea.rt)
+            .put(dea.rt, dea.rs)
+            .put(dea.rr, dea.rq)
+            .put(dea.rq, dea.rp)
+            .put(dea.rp, dea.ro)
+            .put(dea.rM, dea.rN)
+            .put(dea.rN, dea.rP)
+            .put(dea.rP, dea.rO)
+            .put(dea.rU, dea.rV)
+            .put(dea.rV, dea.rX)
+            .put(dea.rX, dea.rW)
+            .put(dea.sc, dea.sd)
+            .put(dea.sd, dea.se)
+            .put(dea.se, dea.sf)
+            .put(dea.sk, dea.sl)
+            .put(dea.sl, dea.sm)
+            .put(dea.sm, dea.sn)
+            .build()
+   );
+   Supplier<BiMap<ddy, ddy>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   public dnd a() {
-      return new dnd(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   static Optional<ddy> a(ddy $$0) {
+      return Optional.ofNullable((ddy)u_.get().get($$0));
    }
 
-   public List<dnd.b> b() {
-      return this.d;
+   static ddy b(ddy $$0) {
+      ddy $$1 = $$0;
+
+      for (ddy $$2 = (ddy)u_.get().get($$0); $$2 != null; $$2 = (ddy)u_.get().get($$2)) {
+         $$1 = $$2;
+      }
+
+      return $$1;
    }
 
-   public static class a {
-      private final Builder<dnd.b> a = ImmutableList.builder();
-
-      @Deprecated
-      public dnd.a a(ix<dnc> $$0, akg<dnc> $$1, crs $$2) {
-         Optional<iw.c<dnc>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dnd.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
-      }
-
-      public dnd.a a(iw<dnc> $$0, crs $$1) {
-         return this.a(new dnd.b($$0, $$1));
-      }
-
-      public dnd.a a(dnd.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dnd.a a(dnd $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dnd a() {
-         return new dnd(this.a.build());
-      }
+   static Optional<drb> b(drb $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
    }
 
-   public static record b(iw<dnc> c, crs d) {
-      public static final Codec<dnd.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dnc.c.fieldOf("pattern").forGetter(dnd.b::b), crs.q.fieldOf("color").forGetter(dnd.b::c)).apply($$0, dnd.b::new)
-      );
-      public static final ys<wf, dnd.b> b = ys.a(dnc.d, dnd.b::b, crs.r, dnd.b::c, dnd.b::new);
+   static Optional<ddy> c(ddy $$0) {
+      return Optional.ofNullable((ddy)t_.get().get($$0));
+   }
 
-      public xi a() {
-         String $$0 = this.c.a().b();
-         return wu.c($$0 + "." + this.d.b());
+   static drb c(drb $$0) {
+      return b($$0.b()).l($$0);
+   }
+
+   @Override
+   default Optional<drb> i_(drb $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   @Override
+   default float au_() {
+      return this.c() == dnd.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements ayx {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<dnd.a> e = ayx.a(dnd.a::values);
+      private final String f;
+
+      private a(String $$0) {
+         this.f = $$0;
       }
 
-      public iw<dnc> b() {
-         return this.c;
-      }
-
-      public crs c() {
-         return this.d;
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

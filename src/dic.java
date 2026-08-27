@@ -1,34 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dic extends dde implements ddh {
-   public static final MapCodec<dic> a = b(dic::new);
+public class dic extends dhn implements dip {
+   public static final MapCodec<dic> c = b(dic::new);
+   protected static final evd g = ddy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dic> a() {
-      return a;
+      return c;
    }
 
-   public dic(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      return $$0.a_($$1.c()).i();
+   protected dic(dra.d $$0) {
+      super($$0, it.b, g, true, 0.14);
    }
 
    @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return true;
+   protected boolean g(drb $$0) {
+      return $$0.a(dea.G);
    }
 
    @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      $$0.H_().c(le.aC).flatMap($$0x -> $$0x.b(ro.n)).ifPresent($$3x -> ((dyq)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   protected ddy b() {
+      return dea.md;
    }
 
    @Override
-   public ddh.a aq_() {
-      return ddh.a.a;
+   protected boolean m(drb $$0) {
+      return !$$0.a(dea.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable clw $$0, dad $$1, io $$2, drb $$3, emt $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(day $$0, io $$1, drb $$2, emu $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(ayk $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awb.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected emu b_(drb $$0) {
+      return emv.c.a(false);
    }
 }

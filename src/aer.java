@@ -1,39 +1,29 @@
-import javax.annotation.Nullable;
-
-public class aer implements zb<abm> {
-   public static final ys<vu, aer> a = zb.a(aer::a, aer::new);
+public class aer implements ze<abq> {
+   public static final yv<vx, aer> a = ze.a(aer::a, aer::new);
    private final int b;
-   private final int c;
 
-   public aer(brh $$0, @Nullable brh $$1) {
-      this.b = $$0.aj();
-      this.c = $$1 != null ? $$1.aj() : 0;
+   public aer(int $$0) {
+      this.b = $$0;
    }
 
-   private aer(vu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private aer(vx $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vu $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+   private void a(vx $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<aer> a() {
-      return afx.aD;
+   public zg<aer> a() {
+      return agb.az;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

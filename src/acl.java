@@ -1,33 +1,60 @@
 import java.util.List;
 
-public record acl(acl.a b, List<String> c) implements zb<abm> {
-   public static final ys<vu, acl> a = zb.a(acl::a, acl::new);
+public class acl implements ze<abq> {
+   public static final yv<wi, acl> a = ze.a(acl::a, acl::new);
+   private final int b;
+   private final int c;
+   private final List<cto> d;
+   private final cto e;
 
-   private acl(vu $$0) {
-      this($$0.b(acl.a.class), $$0.a(vu::p));
+   public acl(int $$0, int $$1, jg<cto> $$2, cto $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = jg.a($$2.size(), cto.i);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).s());
+      }
+
+      this.e = $$3.s();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vu::a);
+   private acl(wi $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = cto.g.decode($$0);
+      this.e = cto.e.decode($$0);
+   }
+
+   private void a(wi $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      cto.g.encode($$0, this.d);
+      cto.e.encode($$0, this.e);
    }
 
    @Override
-   public zd<acl> a() {
-      return afx.y;
+   public zg<acl> a() {
+      return agb.u;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public List<cto> e() {
+      return this.d;
+   }
+
+   public cto f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

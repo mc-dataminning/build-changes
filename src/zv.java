@@ -1,29 +1,11 @@
-public class zv implements zb<zs> {
-   public static final ys<vu, zv> a = zb.a(zv::a, zv::new);
-   private final long b;
+public interface zv extends abn, age {
+   void a(zy var1);
 
-   public zv(long $$0) {
-      this.b = $$0;
-   }
+   void a(zz var1);
 
-   private zv(vu $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(zx var1);
 
-   private void a(vu $$0) {
-      $$0.b(this.b);
-   }
+   void a(aaa var1);
 
-   @Override
-   public zd<zv> a() {
-      return zr.l;
-   }
-
-   public void a(zs $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
+   void a(zw var1);
 }

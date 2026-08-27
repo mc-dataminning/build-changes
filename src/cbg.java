@@ -1,35 +1,19 @@
-public class cbg {
-   private final bvg a;
-   private final float b;
-   private final int c;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public cbg(in $$0, float $$1, int $$2) {
-      this(new btv($$0), $$1, $$2);
+public class cbg<T extends bso> extends cbf<T> {
+   private boolean i = true;
+
+   public cbg(cni $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bso> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public cbg(etp $$0, float $$1, int $$2) {
-      this(new btv(in.a($$0)), $$1, $$2);
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
-   public cbg(brh $$0, float $$1, int $$2) {
-      this(new bud($$0, false), $$1, $$2);
-   }
-
-   public cbg(bvg $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public bvg a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   @Override
+   public boolean a() {
+      return this.i && super.a();
    }
 }

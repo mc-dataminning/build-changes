@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface nc {
+public class nc implements mj {
+   @Override
+   public void generate(iz.a $$0, BiConsumer<akl<epk>, epk.a> $$1) {
+      $$1.accept(epd.ba, epk.b());
+   }
 }

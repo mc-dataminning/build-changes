@@ -3,33 +3,33 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record cr(
-   Optional<cr.b> b, Optional<ja<dbc>> c, Optional<ja<egp>> d, Optional<akg<dad>> e, Optional<Boolean> f, Optional<co> g, Optional<av> h, Optional<bz> i
+   Optional<cr.b> b, Optional<jb<dbw>> c, Optional<jb<ehj>> d, Optional<akl<dax>> e, Optional<Boolean> f, Optional<co> g, Optional<av> h, Optional<bz> i
 ) {
    public static final Codec<cr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axh.a(cr.b.a, "position").forGetter(cr::a),
-               axh.a(jl.a(le.az), "biomes").forGetter(cr::b),
-               axh.a(jl.a(le.aJ), "structures").forGetter(cr::c),
-               axh.a(akg.a(le.aS), "dimension").forGetter(cr::d),
-               axh.a(Codec.BOOL, "smokey").forGetter(cr::e),
-               axh.a(co.a, "light").forGetter(cr::f),
-               axh.a(av.a, "block").forGetter(cr::g),
-               axh.a(bz.a, "fluid").forGetter(cr::h)
+               cr.b.a.optionalFieldOf("position").forGetter(cr::a),
+               jm.a(lf.az).optionalFieldOf("biomes").forGetter(cr::b),
+               jm.a(lf.aJ).optionalFieldOf("structures").forGetter(cr::c),
+               akl.a(lf.aS).optionalFieldOf("dimension").forGetter(cr::d),
+               Codec.BOOL.optionalFieldOf("smokey").forGetter(cr::e),
+               co.a.optionalFieldOf("light").forGetter(cr::f),
+               av.a.optionalFieldOf("block").forGetter(cr::g),
+               bz.a.optionalFieldOf("fluid").forGetter(cr::h)
             )
             .apply($$0, cr::new)
    );
 
-   public boolean a(aqh $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aqm $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
          return false;
       } else {
-         in $$4 = in.a($$1, $$2, $$3);
+         io $$4 = io.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dds.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dem.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -51,15 +51,15 @@ public record cr(
       return this.b;
    }
 
-   public Optional<ja<dbc>> b() {
+   public Optional<jb<dbw>> b() {
       return this.c;
    }
 
-   public Optional<ja<egp>> c() {
+   public Optional<jb<ehj>> c() {
       return this.d;
    }
 
-   public Optional<akg<dad>> d() {
+   public Optional<akl<dax>> d() {
       return this.e;
    }
 
@@ -83,9 +83,9 @@ public record cr(
       private ct.c a;
       private ct.c b;
       private ct.c c;
-      private Optional<ja<dbc>> d;
-      private Optional<ja<egp>> e;
-      private Optional<akg<dad>> f;
+      private Optional<jb<dbw>> d;
+      private Optional<jb<ehj>> e;
+      private Optional<akl<dax>> f;
       private Optional<Boolean> g;
       private Optional<co> h;
       private Optional<av> i;
@@ -108,16 +108,16 @@ public record cr(
          return new cr.a();
       }
 
-      public static cr.a a(iw<dbc> $$0) {
-         return a().a(ja.a($$0));
+      public static cr.a a(ix<dbw> $$0) {
+         return a().a(jb.a($$0));
       }
 
-      public static cr.a a(akg<dad> $$0) {
+      public static cr.a a(akl<dax> $$0) {
          return a().b($$0);
       }
 
-      public static cr.a b(iw<egp> $$0) {
-         return a().b(ja.a($$0));
+      public static cr.a b(ix<ehj> $$0) {
+         return a().b(jb.a($$0));
       }
 
       public static cr.a a(ct.c $$0) {
@@ -139,17 +139,17 @@ public record cr(
          return this;
       }
 
-      public cr.a a(ja<dbc> $$0) {
+      public cr.a a(jb<dbw> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public cr.a b(ja<egp> $$0) {
+      public cr.a b(jb<ehj> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public cr.a b(akg<dad> $$0) {
+      public cr.a b(akl<dax> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -183,7 +183,9 @@ public record cr(
    static record b(ct.c b, ct.c c, ct.c d) {
       public static final Codec<cr.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(ct.c.d, "x", ct.c.c).forGetter(cr.b::a), axh.a(ct.c.d, "y", ct.c.c).forGetter(cr.b::b), axh.a(ct.c.d, "z", ct.c.c).forGetter(cr.b::c)
+                  ct.c.d.optionalFieldOf("x", ct.c.c).forGetter(cr.b::a),
+                  ct.c.d.optionalFieldOf("y", ct.c.c).forGetter(cr.b::b),
+                  ct.c.d.optionalFieldOf("z", ct.c.c).forGetter(cr.b::c)
                )
                .apply($$0, cr.b::new)
       );

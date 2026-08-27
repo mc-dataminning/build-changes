@@ -1,34 +1,77 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnr extends dot {
-   public dnr(in $$0, dqh $$1) {
-      super(dno.J, $$0, $$1);
+public class dnr extends dla {
+   public static final MapCodec<dnr> b = b(dnr::new);
+   @Nullable
+   private static drg h;
+   @Nullable
+   private static drg i;
+
+   @Override
+   public MapCodec<dnr> a() {
+      return b;
+   }
+
+   protected dnr(dra.d $$0) {
+      super(dla.b.d, $$0);
    }
 
    @Override
-   public dvj.d b() {
-      return new dnr.a(this.az_());
+   public void a(dax $$0, io $$1, drb $$2, @Nullable bso $$3, cto $$4) {
+      a($$0, $$1);
    }
 
-   protected class a extends dot.a {
-      public a(in $$1) {
-         super($$1);
+   public static void a(dax $$0, io $$1) {
+      if ($$0.c_($$1) instanceof dps $$2) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dax $$0, io $$1, dps $$2) {
+      if (!$$0.B) {
+         drb $$3 = $$2.n();
+         boolean $$4 = $$3.a(dea.gG) || $$3.a(dea.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.ak() != bpr.a) {
+            drg.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               chu $$6 = bsa.bp.a($$0);
+               if ($$6 != null) {
+                  des.a($$0, $$5);
+                  io $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == it.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aZ = $$5.b().o() == it.a.a ? 0.0F : 90.0F;
+                  $$6.s();
+
+                  for (aqn $$8 : $$0.a(aqn.class, $$6.cK().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  des.b($$0, $$5);
+               }
+            }
+         }
+      }
+   }
+
+   public static boolean b(dax $$0, io $$1, cto $$2) {
+      return $$2.a(ctr.um) && $$1.v() >= $$0.I_() + 2 && $$0.ak() != bpr.a && !$$0.B ? y().a($$0, $$1) != null : false;
+   }
+
+   private static drg s() {
+      if (h == null) {
+         h = drh.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(avw.aF)).a('^', drf.a(drk.a(dea.gG).or(drk.a(dea.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      @Override
-      public int a() {
-         return 16;
+      return h;
+   }
+
+   private static drg y() {
+      if (i == null) {
+         i = drh.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(avw.aF)).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      @Override
-      public boolean a(aqh $$0, in $$1, iw<dva> $$2, @Nullable dva.a $$3) {
-         int $$4 = this.a($$0, this.c, dnr.this.n());
-         return $$4 != 0 && dvj.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dad $$0, in $$1, dqh $$2) {
-         is $$3 = $$2.c(ddr.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+      return i;
    }
 }

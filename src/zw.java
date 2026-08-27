@@ -1,29 +1,20 @@
-public class zw implements zb<zs> {
-   public static final ys<vu, zw> a = zb.a(zw::a, zw::new);
-   private final int b;
+public record zw(aqb b) implements ze<zv> {
+   public static final yv<vx, zw> a = ze.a(zw::a, zw::new);
 
-   public zw(int $$0) {
-      this.b = $$0;
+   private zw(vx $$0) {
+      this(new aqb($$0));
    }
 
-   private zw(vu $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vu $$0) {
-      $$0.p(this.b);
+   private void a(vx $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zd<zw> a() {
-      return zr.m;
+   public zg<zw> a() {
+      return zu.j;
    }
 
-   public void a(zs $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

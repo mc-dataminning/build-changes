@@ -1,17 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class awf {
+   public static final awl<cic> a = a("placeable");
 
-public record awf(List<awe> b, boolean c) {
-   public static final Codec<awf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a.listOf().fieldOf("values").forGetter(awf::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(awf::b)).apply($$0, awf::new)
-   );
-
-   public List<awe> a() {
-      return this.b;
+   private awf() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static awl<cic> a(String $$0) {
+      return awl.a(lf.S, new akm($$0));
    }
 }

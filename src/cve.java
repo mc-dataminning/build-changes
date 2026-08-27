@@ -1,37 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cve extends ctj {
+   private final cvd a;
 
-public record cve(akh e, iw<csu> f, wu g, boolean h) {
-   public static final Codec<cve> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akh.a.fieldOf("asset_id").forGetter(cve::a),
-               ake.a(le.G).fieldOf("template_item").forGetter(cve::b),
-               ww.a.fieldOf("description").forGetter(cve::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cve::d)
-            )
-            .apply($$0, cve::new)
-   );
-   public static final ys<wf, cve> b = ys.a(akh.b, cve::a, yq.b(le.G), cve::b, ww.b, cve::c, yq.b, cve::d, cve::new);
-   public static final Codec<iw<cve>> c = akd.a(le.aP, a);
-   public static final ys<wf, iw<cve>> d = yq.a(le.aP, b);
-
-   public wu a(iw<cvc> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   public cve(cvd $$0, ctj.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
    }
 
-   public akh a() {
-      return this.e;
+   public cvd h() {
+      return this.a;
    }
 
-   public iw<csu> b() {
-      return this.f;
+   @Override
+   public int g() {
+      return this.a.e();
    }
 
-   public wu c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
+   @Override
+   public boolean a(cto $$0, cto $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

@@ -1,3 +1,8 @@
-public interface fra {
-   void a(bru var1, exx var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fra {
 }

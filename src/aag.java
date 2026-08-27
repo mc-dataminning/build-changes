@@ -1,36 +1,23 @@
-public record aag(in c, int d, String e, int f) implements aac {
-   public static final ys<vu, aag> a = aac.a(aag::a, aag::new);
-   public static final aac.b<aag> b = aac.a("debug/game_test_add_marker");
-
-   private aag(vu $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+public record aag(akm a) implements aaf {
+   public static <T extends vx> yv<T, aag> a(akm $$0, int $$1) {
+      return aaf.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new aag($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aac.b<aag> a() {
-      return b;
+   public aaf.b<aag> a() {
+      return new aaf.b<>(this.a);
    }
 
-   public in b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   public akm b() {
+      return this.a;
    }
 }

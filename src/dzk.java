@@ -1,47 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dzk extends dzd<ebo> {
-   public dzk(Codec<ebo> $$0) {
-      super($$0);
+public record dzk<FC extends ecb, F extends dzx<FC>>(F d, FC e) {
+   public static final Codec<dzk<?, ?>> a = le.Q.q().dispatch($$0 -> $$0.d, dzx::a);
+   public static final Codec<ix<dzk<?, ?>>> b = aki.a(lf.aC, a);
+   public static final Codec<jb<dzk<?, ?>>> c = jm.a(lf.aC, a);
+
+   public boolean a(dbs $$0, dsy $$1, ayk $$2, io $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dzk<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dzf<ebo> $$0) {
-      day $$1 = $$0.b();
-      in $$2 = $$0.e();
-      ayg $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dqh $$4 = $$1.a_($$2.c());
-         if (!$$4.a(ddg.dV) && !$$4.a(ddg.dY) && !$$4.a(ddg.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, ddg.ec.n(), 2);
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               in $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
+   public F b() {
+      return this.d;
+   }
 
-                  for (is $$8 : is.values()) {
-                     if ($$1.a_($$6.a($$8)).a(ddg.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, ddg.ec.n(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public FC c() {
+      return this.e;
    }
 }

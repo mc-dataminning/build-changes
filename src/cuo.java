@@ -1,57 +1,50 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum cuo implements cum {
-   a(avr.bN, 59, 2.0F, 0.0F, 15, () -> cxa.a(avz.b)),
-   b(avr.bL, 131, 4.0F, 1.0F, 5, () -> cxa.a(avz.aY)),
-   c(avr.bK, 250, 6.0F, 2.0F, 14, () -> cxa.a(ctc.oE)),
-   d(avr.bJ, 1561, 8.0F, 3.0F, 10, () -> cxa.a(ctc.oy)),
-   e(avr.bM, 32, 12.0F, 0.0F, 22, () -> cxa.a(ctc.oI)),
-   f(avr.bI, 2031, 9.0F, 4.0F, 15, () -> cxa.a(ctc.oJ));
+public class cuo extends ctj implements csq {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   private final awg<dde> g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final Supplier<cxa> l;
-
-   private cuo(awg<dde> $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cxa> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = Suppliers.memoize($$5::get);
+   public cuo(ctj.a $$0) {
+      super($$0);
+      dgd.a(this, crd.a);
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public String i(cto $$0) {
+      csh $$1 = $$0.a(kb.X);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
    }
 
    @Override
-   public float b() {
-      return this.i;
+   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
+      crj.a($$0, $$2);
    }
 
    @Override
-   public float c() {
-      return this.j;
+   public cvj c(cto $$0) {
+      return cvj.d;
    }
 
    @Override
-   public awg<dde> d() {
-      return this.g;
+   public int b(cto $$0) {
+      return 72000;
    }
 
    @Override
-   public int e() {
-      return this.k;
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      cto $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bpv.b($$3);
    }
 
    @Override
-   public cxa f() {
-      return this.l.get();
+   public boolean a(cto $$0, cto $$1) {
+      return $$1.a(awe.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bsb l() {
+      return bsb.b;
    }
 }

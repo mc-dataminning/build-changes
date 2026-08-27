@@ -1,29 +1,16 @@
-public class aij implements zb<aie> {
-   public static final ys<vu, aij> a = zb.a(aij::a, aij::new);
-   private final wu b;
-
-   public aij(wu $$0) {
-      this.b = $$0;
-   }
-
-   private aij(vu $$0) {
-      this.b = wu.a.b($$0.d(262144), jk.b);
-   }
-
-   private void a(vu $$0) {
-      $$0.a(wu.a.a(this.b, jk.b));
-   }
-
+public interface aij extends abk, vs {
    @Override
-   public zd<aij> a() {
-      return aik.e;
+   default vw b() {
+      return vw.d;
    }
 
-   public void a(aie $$0) {
-      $$0.a(this);
-   }
+   void a(aim var1);
 
-   public wu b() {
-      return this.b;
-   }
+   void a(ail var1);
+
+   void a(aio var1);
+
+   void a(ain var1);
+
+   void a(aik var1);
 }

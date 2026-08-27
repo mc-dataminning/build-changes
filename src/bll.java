@@ -1,21 +1,45 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bll implements blg<StringReader, akh> {
-   public static final blg<StringReader, akh> a = new bll();
+public interface bll<S> {
+   void a(int var1, blq<S> var2, Object var3);
 
-   private bll() {
+   default void a(int $$0, Object $$1) {
+      this.a($$0, blq.b(), $$1);
    }
 
-   @Override
-   public Optional<akh> a(blf<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   void a(int var1);
 
-      try {
-         return Optional.of(akh.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
+   public static class a<S> implements bll<S> {
+      private final List<blm<S>> a = new ArrayList<>();
+      private int b = -1;
+
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, blq<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new blm<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<blm<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
       }
    }
 }

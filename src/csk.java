@@ -1,15 +1,30 @@
-public class csk extends csu implements ctz {
-   public csk(csu.a $$0) {
+public class csk extends ctj implements csq {
+   public csk(ctj.a $$0) {
       super($$0);
+      dgd.a(this, crd.a);
+   }
+
+   public static boolean j(cto $$0) {
+      return $$0.n() < $$0.o() - 1;
    }
 
    @Override
-   public boolean a(dad $$0, dow $$1, boolean $$2, clh $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.az_(), avc.kv, avd.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public boolean a(cto $$0, cto $$1) {
+      return $$1.a(ctr.vQ);
+   }
+
+   @Override
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public ix<avg> ap_() {
+      return avh.ar;
+   }
+
+   @Override
+   public bsb l() {
+      return bsb.e;
    }
 }

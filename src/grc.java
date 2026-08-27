@@ -1,34 +1,49 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class grc extends gqs {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cnr s;
+   private float t = 0.0F;
 
-public class grc extends aue {
-   private ua a;
-
-   public grc(grd $$0, jd<akq> $$1, eoe $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public grc(cnr $$0) {
+      super(avh.oN, avi.g, grj.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.du());
+      this.g = (double)((float)$$0.dw());
+      this.h = (double)((float)$$0.dA());
    }
 
    @Override
-   protected void b(aqi $$0) {
-      if (this.b().a($$0.fZ())) {
-         this.a = $$0.f(new ua());
+   public boolean s() {
+      return !this.s.aW();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dK()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.du());
+         this.g = (double)((float)this.s.dw());
+         this.h = (double)((float)this.s.dA());
+         float $$0 = (float)this.s.ds().h();
+         if ($$0 >= 0.01F && this.s.dP().s().i()) {
+            this.t = ayd.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ayd.i(ayd.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public wu a(SocketAddress $$0, GameProfile $$1) {
-      return (wu)(this.b().a($$1) && this.a($$1.getName()) != null ? wu.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public grd b() {
-      return (grd)super.c();
-   }
-
-   @Override
-   public ua r() {
-      return this.a;
    }
 }

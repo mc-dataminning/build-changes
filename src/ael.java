@@ -1,29 +1,29 @@
-public class ael implements zb<abm> {
-   public static final ys<vu, ael> a = zb.a(ael::a, ael::new);
-   private final int b;
+public class ael implements ze<abq> {
+   public static final yv<vx, ael> a = ze.a(ael::a, ael::new);
+   private final double b;
 
-   public ael(int $$0) {
-      this.b = $$0;
+   public ael(dss $$0) {
+      this.b = $$0.k();
    }
 
-   private ael(vu $$0) {
-      this.b = $$0.readByte();
+   private ael(vx $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vu $$0) {
-      $$0.k(this.b);
+   private void a(vx $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ael> a() {
-      return afx.ax;
+   public zg<ael> a() {
+      return agb.at;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

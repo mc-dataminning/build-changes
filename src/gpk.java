@@ -1,12 +1,12 @@
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface gpk {
-   Collection<akh> f();
+public class gpk implements asv<gpj> {
+   public gpj b(JsonObject $$0) {
+      return new gpj(gpj.a.a(axu.a($$0, "hat", "none")));
+   }
 
-   void a(Function<akh, gpk> var1);
-
-   @Nullable
-   goz a(gpd var1, Function<gpc, gmy> var2, gph var3, akh var4);
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

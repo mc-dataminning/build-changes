@@ -1,76 +1,57 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dch extends dde implements ddh {
-   public static final MapCodec<dch> a = b(dch::new);
-   protected static final float b = 4.0F;
-   protected static final eui c = dde.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class dch extends dca implements dby.a {
+   public static final MapCodec<dch> b = dbw.c.fieldOf("biome").xmap(dch::new, $$0 -> $$0.c).stable();
+   private final ix<dbw> c;
 
-   @Override
-   public MapCodec<dch> a() {
-      return a;
-   }
-
-   public dch(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      etp $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   public dch(ix<dbw> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   protected Stream<ix<dbw>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return $$1.a_($$2.d()).a(avr.au);
+   protected MapCodec<? extends dca> a() {
+      return b;
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return ddg.a.n();
+   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2, dcf.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<io, ix<dbw>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ix<dbw>> $$5, ayk $$6, boolean $$7, dcf.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new io($$0, $$1, $$2), this.c) : Pair.of(new io($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
       } else {
-         if ($$1 == is.b && $$2.a(ddg.mZ)) {
-            $$3.a($$4, ddg.mZ.n(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return null;
       }
    }
 
+   @Nullable
    @Override
-   public csz a(dag $$0, in $$1, dqh $$2) {
-      return new csz(ctc.dR);
+   public Pair<io, ix<dbw>> a(io $$0, int $$1, int $$2, int $$3, Predicate<ix<dbw>> $$4, dcf.f $$5, dba $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
    @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dqh $$0, clh $$1, czj $$2, in $$3) {
-      return $$1.eV().f() instanceof cuk ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dad $$0, in $$1) {
-      $$0.a($$1.c(), ddg.mZ.n().a(dci.i, dqt.b), 3);
+   public Set<ix<dbw>> a(int $$0, int $$1, int $$2, int $$3, dcf.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

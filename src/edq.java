@@ -1,49 +1,49 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record edq(edi b, List<edq.a> c) {
-   public static final Codec<edq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(edi.a.fieldOf("fallback").forGetter(edq::a), edq.a.a.listOf().fieldOf("rules").forGetter(edq::b)).apply($$0, edq::new)
+public class edq extends edn {
+   public static final MapCodec<edq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(boz.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, edq::new)
    );
+   private final boz b;
 
-   public static edq a(edi $$0) {
-      return new edq($$0, List.of());
+   public edq(boz $$0, boz $$1, boz $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static edq a(dde $$0) {
-      return a(edi.a($$0));
+   @Override
+   protected edo<?> a() {
+      return edo.h;
    }
 
-   public dqh a(day $$0, ayg $$1, in $$2) {
-      for (edq.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   @Override
+   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
+      io $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + ayd.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
-      }
 
-      return this.b.a($$1, $$2);
+         this.a($$0, $$1, $$2, $$3, new io($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
    }
 
-   public edi a() {
-      return this.b;
+   @Override
+   public int a(ayk $$0, int $$1, ecx $$2) {
+      return this.b.a($$0);
    }
 
-   public List<edq.a> b() {
-      return this.c;
-   }
-
-   public static record a(dxg b, edi c) {
-      public static final Codec<edq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dxg.b.fieldOf("if_true").forGetter(edq.a::a), edi.a.fieldOf("then").forGetter(edq.a::b)).apply($$0, edq.a::new)
-      );
-
-      public dxg a() {
-         return this.b;
-      }
-
-      public edi b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

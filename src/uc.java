@@ -1,84 +1,15 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.AbstractList;
 
-public class uc implements ux {
-   private static final int c = 8;
-   public static final uz<uc> a = new uz<uc>() {
-      public uc a(DataInput $$0, uj $$1) {
-         $$1.b(8L);
-         return uc.b;
-      }
+public abstract class uc<T extends va> extends AbstractList<T> implements va {
+   public abstract T d(int var1, T var2);
 
-      @Override
-      public uu.b a(DataInput $$0, uu $$1, uj $$2) {
-         $$2.b(8L);
-         return $$1.a();
-      }
+   public abstract void c(int var1, T var2);
 
-      @Override
-      public void a(DataInput $$0, int $$1, uj $$2) {
-      }
+   public abstract T c(int var1);
 
-      @Override
-      public void b(DataInput $$0, uj $$1) {
-      }
+   public abstract boolean a(int var1, va var2);
 
-      @Override
-      public String a() {
-         return "END";
-      }
+   public abstract boolean b(int var1, va var2);
 
-      @Override
-      public String b() {
-         return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final uc b = new uc();
-
-   private uc() {
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-   }
-
-   @Override
-   public int a() {
-      return 8;
-   }
-
-   @Override
-   public byte b() {
-      return 0;
-   }
-
-   @Override
-   public uz<uc> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   public uc e() {
-      return this;
-   }
-
-   @Override
-   public void a(vb $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public uu.b a(uu $$0) {
-      return $$0.a();
-   }
+   public abstract byte f();
 }

@@ -1,18 +1,39 @@
+import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public interface dz extends iy.a {
-   static dz a(final iy.a $$0, final cnu $$1) {
-      return new dz() {
-         @Override
-         public Stream<akg<? extends jj<?>>> a() {
-            return $$0.a();
+public class dz {
+   public static final Codec<dz> a = akm.a.xmap(dz::new, dz::a);
+   private final akm b;
+   private boolean c;
+   private Optional<hq<ee>> d = Optional.empty();
+
+   public dz(akm $$0) {
+      this.b = $$0;
+   }
+
+   public Optional<hq<ee>> a(alb $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
+
+      return this.d;
+   }
+
+   public akm a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof dz $$1 && this.a().equals($$1.a())) {
+            return true;
          }
 
-         @Override
-         public <T> Optional<iy.b<T>> a(akg<? extends jj<? extends T>> $$0x) {
-            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
-         }
-      };
+         return false;
+      }
    }
 }

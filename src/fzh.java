@@ -1,79 +1,79 @@
-public class fzh extends gac {
-   private final fzx a;
+import javax.annotation.Nullable;
 
-   fzh(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzx $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
+public class fzh extends gay {
+   private final float a;
+   private final gat b;
+
+   fzh(fwr $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
       this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public fzg b() {
-      return fzg.c;
+   public gac b() {
+      return gac.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * axz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * ayd.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         clh $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.du();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dq().d - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
          }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
+   public static class a implements gab<kp> {
+      private final gat a;
 
-      public a(fzx $$0) {
+      public a(gat $$0) {
          this.a = $$0;
       }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
+      @Nullable
+      public fzy a(kp $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         drb $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dke.a) {
+            return null;
+         } else {
+            io $$9 = io.a($$2, $$3, $$4);
+            int $$10 = fdz.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dgu) {
+               $$10 = ((dgu)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   public static class b implements fzf<la> {
-      private final fzx a;
-
-      public b(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzc $$8 = new fzh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fzh($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

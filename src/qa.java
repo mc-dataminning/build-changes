@@ -1,13 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qa extends po<ege> {
-   public qa(lm $$0, CompletableFuture<iy.a> $$1) {
-      super($$0, le.aQ, $$1);
+public class qa extends pr<ehj> {
+   public qa(ln $$0, CompletableFuture<iz.a> $$1, CompletableFuture<pr.c<ehj>> $$2) {
+      super($$0, lf.aJ, $$1, $$2);
    }
 
    @Override
-   protected void a(iy.a $$0) {
-      this.b(awk.a).a(egf.a).a(egf.b).a(egf.c).a(egf.d).a(egf.e);
-      this.b(awk.b).b(awk.a).a(egf.f);
+   protected void a(iz.a $$0) {
+      this.b(awh.m).a(ehd.H);
    }
 }

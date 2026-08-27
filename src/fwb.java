@@ -1,28 +1,83 @@
-import java.util.EnumMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 public class fwb {
-   public static final int a = 5000;
-   private final fvx b;
-   private final ffm c;
-   private final EnumMap<bkn, Long> d;
+   private static final Set<it> a = EnumSet.allOf(it.class);
+   private final List<fvz> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public fwb(fvx $$0, ffm $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bkn.class);
+   public fwb a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bkn.a);
-      }
+   public fwb a() {
+      return this.a(true);
    }
 
-   private void a(bkn $$0) {
-      long $$1 = ac.b();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new agq($$0));
-         this.d.put($$0, $$1);
-      }
+   public fwb a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fwb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fwa $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fwa.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<it> $$6) {
+      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
+   }
+
+   public fwb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fwa.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fwa $$7) {
+      this.b.add(new fvz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fwa.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fwa $$6, float $$7, float $$8) {
+      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public fwb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fwa $$6) {
+      this.b.add(new fvz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<fvz> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fwb c() {
+      return new fwb();
    }
 }

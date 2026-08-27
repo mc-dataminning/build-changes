@@ -1,70 +1,97 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public record dwh(int g, int h, int i, int j) {
+public final class dwh {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dtw> e = le.n
+      .q()
+      .comapFlatMap($$0 -> $$0 == dtw.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
    public static final Codec<dwh> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dtz.e, dtz.d).fieldOf("min_y").forGetter(dwh::c),
-                  Codec.intRange(0, dtz.c).fieldOf("height").forGetter(dwh::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dwh::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dwh::f)
-               )
-               .apply($$0, dwh::new)
-      )
-      .comapFlatMap(dwh::a, Function.identity());
-   protected static final dwh b = a(-64, 384, 1, 2);
-   protected static final dwh c = a(0, 128, 1, 2);
-   protected static final dwh d = a(0, 128, 2, 1);
-   protected static final dwh e = a(-64, 192, 1, 2);
-   protected static final dwh f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dwh::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dwh::new)
+   );
+   private static final Set<akl<dbw>> f = Set.of(dcd.aa, dcd.Z, dcd.ab);
+   public static final daz b = new daz() {
+      @Override
+      public int J_() {
+         return 64;
+      }
 
-   private static DataResult<dwh> a(dwh $$0) {
-      if ($$0.c() + $$0.d() > dtz.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dtz.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      @Override
+      public int I_() {
+         return -64;
+      }
+   };
+   private final dtw g;
+   private final BitSet h;
+
+   private dwh(dtw $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
+
+   @Nullable
+   public static dwh a(ud $$0) {
+      dtw $$1 = dtw.a($$0.l("target_status"));
+      return $$1 == dtw.c ? null : new dwh($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dtr $$0) {
+      int $$1 = 4;
+      io.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dea.F)) {
+            $$0.a($$1x, dea.sJ.n(), false);
+         }
+      });
+   }
+
+   public void b(dtr $$0) {
+      daz $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.al() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               io.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dea.a.n(), false));
+            }
+         }
       }
    }
 
-   public static dwh a(int $$0, int $$1, int $$2, int $$3) {
-      dwh $$4 = new dwh($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
-   }
-
-   public int a() {
-      return jh.c(this.f());
-   }
-
-   public int b() {
-      return jh.c(this.e());
-   }
-
-   public dwh a(daf $$0) {
-      int $$1 = Math.max(this.g, $$0.I_());
-      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
-      return new dwh($$1, $$2, this.i, this.j);
-   }
-
-   public int c() {
+   public dtw a() {
       return this.g;
    }
 
-   public int d() {
-      return this.h;
+   public boolean b() {
+      return !this.h.isEmpty();
    }
 
-   public int e() {
-      return this.i;
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
    }
 
-   public int f() {
-      return this.j;
+   public static dbz a(dbz $$0, dsx $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<akl<dbw>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ix<dbw> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
+      }
    }
 }

@@ -2,23 +2,23 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ce extends de<ce.a> {
+public class ce extends df<ce.a> {
    @Override
    public Codec<ce.a> a() {
       return ce.a.a;
    }
 
-   public void a(aqi $$0, csz $$1, int $$2) {
+   public void a(aqn $$0, cto $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c, ct.d d, ct.d e) implements de.a {
+   public static record a(Optional<bc> b, Optional<ch> c, ct.d d, ct.d e) implements df.a {
       public static final Codec<ce.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(br.b, "player").forGetter(ce.a::a),
-                  axh.a(ch.a, "item").forGetter(ce.a::b),
-                  axh.a(ct.d.d, "durability", ct.d.c).forGetter(ce.a::c),
-                  axh.a(ct.d.d, "delta", ct.d.c).forGetter(ce.a::d)
+                  br.b.optionalFieldOf("player").forGetter(ce.a::a),
+                  ch.a.optionalFieldOf("item").forGetter(ce.a::b),
+                  ct.d.d.optionalFieldOf("durability", ct.d.c).forGetter(ce.a::c),
+                  ct.d.d.optionalFieldOf("delta", ct.d.c).forGetter(ce.a::d)
                )
                .apply($$0, ce.a::new)
       );
@@ -31,11 +31,11 @@ public class ce extends de<ce.a> {
          return am.u.a(new ce.a($$0, $$1, $$2, ct.d.c));
       }
 
-      public boolean a(csz $$0, int $$1) {
+      public boolean a(cto $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {
-            return !this.d.d($$0.n() - $$1) ? false : this.e.d($$0.m() - $$1);
+            return !this.d.d($$0.o() - $$1) ? false : this.e.d($$0.n() - $$1);
          }
       }
 

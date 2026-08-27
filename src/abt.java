@@ -1,44 +1,42 @@
-import java.util.function.BiFunction;
+public class abt implements ze<abq> {
+   public static final yv<vx, abt> a = ze.a(abt::a, abt::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-public class abt implements zb<abm> {
-   public static final ys<wf, abt> a = ys.a(in.b, abt::b, yq.a(le.h), abt::e, yq.o, abt::f, abt::new);
-   private final in b;
-   private final dno<?> c;
-   private final ua d;
-
-   public static abt a(dnm $$0, BiFunction<dnm, jk, ua> $$1) {
-      jk $$2 = $$0.i().H_();
-      return new abt($$0.az_(), $$0.r(), $$1.apply($$0, $$2));
+   public abt(bru $$0, int $$1) {
+      this.g = $$0.al();
+      this.h = $$1;
    }
 
-   public static abt a(dnm $$0) {
-      return a($$0, dnm::a);
+   private abt(vx $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
    }
 
-   private abt(in $$0, dno<?> $$1, ua $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(vx $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public zd<abt> a() {
-      return afx.i;
+   public zg<abt> a() {
+      return agb.e;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public in b() {
-      return this.b;
+   public int b() {
+      return this.g;
    }
 
-   public dno<?> e() {
-      return this.c;
-   }
-
-   public ua f() {
-      return this.d;
+   public int e() {
+      return this.h;
    }
 }

@@ -1,38 +1,30 @@
-public class brf {
-   public static final brf a = new brf(0.75F, 0.5F, 0.25F);
-   public static final brf b = new brf(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
+import java.util.function.ToIntFunction;
 
-   private brf(float $$0, float $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+class brf extends bra {
+   private final ToIntFunction<ayk> a;
+
+   protected brf(brb $$0, int $$1, ToIntFunction<ayk> $$2) {
+      super($$0, $$1, ky.U);
+      this.a = $$2;
    }
 
-   public brf.a a(float $$0) {
-      if ($$0 < this.e) {
-         return brf.a.d;
-      } else if ($$0 < this.d) {
-         return brf.a.c;
-      } else {
-         return $$0 < this.c ? brf.a.b : brf.a.a;
+   @Override
+   public void a(bso $$0, int $$1, bru.c $$2) {
+      if ($$2 == bru.c.a) {
+         int $$3 = this.a.applyAsInt($$0.el());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.a($$0.dP(), $$0.du(), $$0.dw() + 0.5, $$0.dA());
+         }
       }
    }
 
-   public brf.a a(csz $$0) {
-      return !$$0.k() ? brf.a.a : this.a($$0.m(), $$0.n());
-   }
-
-   public brf.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   private void a(dax $$0, double $$1, double $$2, double $$3) {
+      cjl $$4 = bsa.aP.a($$0);
+      if ($$4 != null) {
+         $$4.a(2, true);
+         $$4.b($$1, $$2, $$3, $$0.E_().i() * 360.0F, 0.0F);
+         $$0.b($$4);
+      }
    }
 }

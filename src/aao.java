@@ -1,26 +1,31 @@
-public record aao(in c, int d) implements aac {
-   public static final ys<vu, aao> a = aac.a(aao::a, aao::new);
-   public static final aac.b<aao> b = aac.a("debug/poi_ticket_count");
+public record aao(int c, eni d, float e) implements aaf {
+   public static final yv<vx, aao> a = aaf.a(aao::a, aao::new);
+   public static final aaf.b<aao> b = aaf.a("debug/path");
 
-   private aao(vu $$0) {
-      this($$0.e(), $$0.readInt());
+   private aao(vx $$0) {
+      this($$0.readInt(), eni.b($$0), $$0.readFloat());
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
+   private void a(vx $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aac.b<aao> a() {
+   public aaf.b<aao> a() {
       return b;
    }
 
-   public in b() {
+   public int b() {
       return this.c;
    }
 
-   public int c() {
+   public eni c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

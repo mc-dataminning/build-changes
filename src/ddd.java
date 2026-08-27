@@ -1,56 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class ddd extends dbz {
-   public static final MapCodec<ddd> c = b(ddd::new);
+public class ddd extends dcp {
+   public static final MapCodec<ddd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csh.q.fieldOf("color").forGetter(dcp::b), u()).apply($$0, ddd::new));
+   public static final dsb b = drr.ba;
+   private static final Map<csh, ddy> c = Maps.newHashMap();
+   private static final evd d = ddy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<ddd> a() {
-      return c;
+      return a;
    }
 
-   protected ddd(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dnm a(in $$0, dqh $$1) {
-      return new dnl($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dnm> dnn<T> a(dad $$0, dqh $$1, dno<T> $$2) {
-      return a($$0, $$2, dno.C);
+   public ddd(csh $$0, dra.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected void a(dad $$0, in $$1, clh $$2) {
-      dnm $$3 = $$0.c_($$1);
-      if ($$3 instanceof dnl) {
-         $$2.a((bpq)$$3);
-         $$2.a(avm.as);
-      }
+   protected boolean a(drb $$0, dba $$1, io $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avc.cA, avd.e, 1.0F, 1.0F, false);
-         }
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return d;
+   }
 
-         is $$7 = $$0.c(a);
-         is.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == is.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == is.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(kx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public drb a(cwz $$0) {
+      return this.n().a(b, Integer.valueOf(dsh.a($$0.i() + 180.0F)));
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      return $$1 == it.a && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected drb a(drb $$0, dkl $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected drb a(drb $$0, div $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b);
+   }
+
+   public static ddy a(csh $$0) {
+      return c.getOrDefault($$0, dea.iJ);
    }
 }

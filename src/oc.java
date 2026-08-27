@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface oc {
-   void a(akh var1, cxd<?> var2, @Nullable af var3);
-
-   ae.a a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface oc {
 }

@@ -1,39 +1,30 @@
-import java.util.List;
+public class caw extends bzm {
+   private final bsx a;
 
-public class caw<T extends bsc & bsg> extends byx {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
-
-   public caw(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public caw(bsx $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.b.dN().aa().b(czz.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ek() != null && this.b.ek().ai() == brn.bx && this.b.el() > this.d;
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awb.a);
    }
 
    @Override
    public void c() {
-      this.d = this.b.el();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bsg)$$0).forEach(bsg::aa_);
+      io $$0 = null;
+
+      for (io $$2 : io.b(
+         ayd.a(this.a.du() - 2.0), ayd.a(this.a.dw() - 2.0), ayd.a(this.a.dA() - 2.0), ayd.a(this.a.du() + 2.0), this.a.dv(), ayd.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awb.a)) {
+            $$0 = $$2;
+            break;
+         }
       }
 
-      super.c();
-   }
-
-   private List<? extends bsc> i() {
-      double $$0 = this.b.g(bth.k);
-      etk $$1 = etk.a(this.b.dl()).c($$0, 10.0, $$0);
-      return this.b.dN().a((Class<? extends bsc>)this.b.getClass(), $$1, brm.f);
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

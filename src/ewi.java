@@ -1,94 +1,21 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
 public class ewi {
-   private final List<ConcurrentLinkedQueue<ewh>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
-
-   public ewi() {
-      this.c = this.e = this.f + 1;
+   public static void a(exd $$0, float $$1) {
+      ConcurrentLinkedQueue<exc> $$2 = $$0.i();
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
+   public static void b(exd $$0, float $$1) {
+      ConcurrentLinkedQueue<exc> $$2 = $$0.j();
    }
 
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
-      } else {
-         return false;
-      }
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   public void a(ewh $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<ewh> $$1 = this.i();
-         $$1.add($$0);
-      }
-   }
-
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
-   }
-
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<ewh> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<ewh> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<ewh> j() {
-      return this.a.get(this.e);
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

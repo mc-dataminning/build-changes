@@ -1,44 +1,52 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record cvz(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<cvz> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axh.a(axh.u, "name").forGetter(cvz::c), axh.a(jq.a, "id").forGetter(cvz::d), axh.a(axh.t, "properties", new PropertyMap()).forGetter(cvz::e)
-            )
-            .apply($$0, cvz::new)
-   );
-   public static final Codec<cvz> a = axh.a(g, axh.u, $$0 -> new cvz(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final ys<ByteBuf, cvz> b = ys.a(yq.b(16).a(yq::a), cvz::c, jq.g.a(yq::a), cvz::d, yq.s, cvz::e, cvz::new);
+public record cvz(Map<String, String> d) {
+   public static final cvz a = new cvz(Map.of());
+   public static final Codec<cvz> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cvz::new, cvz::b);
+   private static final yv<ByteBuf, Map<String, String>> e = yt.a(Object2ObjectOpenHashMap::new, yt.k, yt.k);
+   public static final yv<ByteBuf, cvz> c = e.a(cvz::new, cvz::b);
 
-   public cvz(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public <T extends Comparable<T>> cvz a(dse<T> $$0, T $$1) {
+      return new cvz(ac.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public cvz(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   public <T extends Comparable<T>> cvz a(dse<T> $$0, drb $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   public CompletableFuture<cvz> a() {
-      return this.b() ? CompletableFuture.completedFuture(this) : doy.a(this.c.orElseThrow()).thenApply($$0 -> {
-         GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
-         return new cvz($$1);
-      });
+   @Nullable
+   public <T extends Comparable<T>> T a(dse<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
+   public drb a(drb $$0) {
+      drc<ddy, drb> $$1 = $$0.b().m();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dse<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
+         }
+      }
+
+      return $$0;
    }
 
-   public boolean b() {
-      return this.d.isPresent() || !this.e.isEmpty() || this.c.isEmpty();
+   private static <T extends Comparable<T>> drb a(drb $$0, dse<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   public Map<String, String> b() {
+      return this.d;
    }
 }

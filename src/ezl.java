@@ -1,154 +1,289 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 
-public class ezl extends ezt {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final eze.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final eze.a A = eze.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public abstract class ezl<T extends ezl<T>> {
+   protected HttpURLConnection a;
+   private boolean c;
+   protected String b;
+   private static final int d = 60000;
+   private static final int e = 5000;
+   private static final String f = "Is-Prerelease";
+   private static final String g = "Cookie";
 
-   public ezl(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, eze.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
+   public ezl(String $$0, int $$1, int $$2) {
+      try {
+         this.b = $$0;
+         Proxy $$3 = ezj.a();
+         if ($$3 != null) {
+            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+         } else {
+            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         }
+
+         this.a.setConnectTimeout($$1);
+         this.a.setReadTimeout($$2);
+      } catch (MalformedURLException var5) {
+         throw new fau(var5.getMessage(), var5);
+      } catch (IOException var6) {
+         throw new fau(var6.getMessage(), var6);
+      }
    }
 
-   public static ezl a() {
-      return new ezl(true, true, true, true, 0, false, 2, 0, false, "", "", A);
+   public void a(String $$0, String $$1) {
+      a(this.a, $$0, $$1);
    }
 
-   public static ezl b() {
-      ezl $$0 = a();
-      $$0.a(true);
-      return $$0;
+   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
+      String $$3 = $$0.getRequestProperty("Cookie");
+      if ($$3 == null) {
+         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+      } else {
+         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+      }
    }
 
    public void a(boolean $$0) {
-      this.n = $$0;
+      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
    }
 
-   public static ezl a(JsonObject $$0) {
-      ezl $$1 = new ezl(
-         fbq.a("pvp", $$0, true),
-         fbq.a("spawnAnimals", $$0, true),
-         fbq.a("spawnMonsters", $$0, true),
-         fbq.a("spawnNPCs", $$0, true),
-         fbq.a("spawnProtection", $$0, 0),
-         fbq.a("commandBlocks", $$0, false),
-         fbq.a("difficulty", $$0, 2),
-         fbq.a("gameMode", $$0, 0),
-         fbq.a("forceGameMode", $$0, false),
-         fbq.a("slotName", $$0, ""),
-         fbq.a("version", $$0, ""),
-         eze.d(fbq.a("compatibility", $$0, eze.a.a.name()))
-      );
-      $$1.l = fbq.a("worldTemplateId", $$0, -1L);
-      $$1.m = fbq.b("worldTemplateImage", $$0, C);
-      return $$1;
+   public int a() {
+      return a(this.a);
    }
 
-   public String a(int $$0) {
-      if (ayu.h(this.o)) {
-         return this.n ? goe.a("mco.configure.world.slot.empty") : this.b($$0);
-      } else {
-         return this.o;
+   public static int a(HttpURLConnection $$0) {
+      String $$1 = $$0.getHeaderField("Retry-After");
+
+      try {
+         return Integer.valueOf($$1);
+      } catch (Exception var3) {
+         return 5;
       }
    }
 
-   public String b(int $$0) {
-      return goe.a("mco.configure.world.slot", $$0);
+   public int b() {
+      try {
+         this.d();
+         return this.a.getResponseCode();
+      } catch (Exception var2) {
+         throw new fau(var2.getMessage(), var2);
+      }
    }
 
    public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
+      try {
+         this.d();
+         String $$0;
+         if (this.b() >= 400) {
+            $$0 = this.a(this.a.getErrorStream());
+         } else {
+            $$0 = this.a(this.a.getInputStream());
+         }
 
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
+         this.f();
+         return $$0;
+      } catch (IOException var2) {
+         throw new fau(var2.getMessage(), var2);
       }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
    }
 
-   public ezl d() {
-      return new ezl(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   private String a(@Nullable InputStream $$0) throws IOException {
+      if ($$0 == null) {
+         return "";
+      } else {
+         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
+         StringBuilder $$2 = new StringBuilder();
+
+         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
+            $$2.append((char)$$3);
+         }
+
+         return $$2.toString();
+      }
+   }
+
+   private void f() {
+      byte[] $$0 = new byte[1024];
+
+      try {
+         InputStream $$1 = this.a.getInputStream();
+
+         while ($$1.read($$0) > 0) {
+         }
+
+         $$1.close();
+         return;
+      } catch (Exception var9) {
+         try {
+            InputStream $$3 = this.a.getErrorStream();
+            if ($$3 != null) {
+               while ($$3.read($$0) > 0) {
+               }
+
+               $$3.close();
+               return;
+            }
+         } catch (IOException var8) {
+            return;
+         }
+      } finally {
+         if (this.a != null) {
+            this.a.disconnect();
+         }
+      }
+   }
+
+   protected T d() {
+      if (this.c) {
+         return (T)this;
+      } else {
+         T $$0 = this.e();
+         this.c = true;
+         return $$0;
+      }
+   }
+
+   protected abstract T e();
+
+   public static ezl<?> a(String $$0) {
+      return new ezl.b($$0, 5000, 60000);
+   }
+
+   public static ezl<?> a(String $$0, int $$1, int $$2) {
+      return new ezl.b($$0, $$1, $$2);
+   }
+
+   public static ezl<?> b(String $$0, String $$1) {
+      return new ezl.c($$0, $$1, 5000, 60000);
+   }
+
+   public static ezl<?> a(String $$0, String $$1, int $$2, int $$3) {
+      return new ezl.c($$0, $$1, $$2, $$3);
+   }
+
+   public static ezl<?> b(String $$0) {
+      return new ezl.a($$0, 5000, 60000);
+   }
+
+   public static ezl<?> c(String $$0, String $$1) {
+      return new ezl.d($$0, $$1, 5000, 60000);
+   }
+
+   public static ezl<?> b(String $$0, String $$1, int $$2, int $$3) {
+      return new ezl.d($$0, $$1, $$2, $$3);
+   }
+
+   public String c(String $$0) {
+      return a(this.a, $$0);
+   }
+
+   public static String a(HttpURLConnection $$0, String $$1) {
+      try {
+         return $$0.getHeaderField($$1);
+      } catch (Exception var3) {
+         return "";
+      }
+   }
+
+   public static class a extends ezl<ezl.a> {
+      public a(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public ezl.a f() {
+         try {
+            this.a.setDoOutput(true);
+            this.a.setRequestMethod("DELETE");
+            this.a.connect();
+            return this;
+         } catch (Exception var2) {
+            throw new fau(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class b extends ezl<ezl.b> {
+      public b(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public ezl.b f() {
+         try {
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("GET");
+            return this;
+         } catch (Exception var2) {
+            throw new fau(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class c extends ezl<ezl.c> {
+      private final String c;
+
+      public c(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public ezl.c f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("POST");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fau(var3.getMessage(), var3);
+         }
+      }
+   }
+
+   public static class d extends ezl<ezl.d> {
+      private final String c;
+
+      public d(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public ezl.d f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoOutput(true);
+            this.a.setDoInput(true);
+            this.a.setRequestMethod("PUT");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fau(var3.getMessage(), var3);
+         }
+      }
    }
 }

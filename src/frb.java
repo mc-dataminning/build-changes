@@ -1,37 +1,36 @@
-public class frb extends fso<chh> {
-   public frb(fvb $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
+
+public class frb implements frf {
+   private final GameProfile a;
+   private final Supplier<gov> b;
+   private final wx c;
+
+   public frb(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fdz.Q().an().a($$0);
+      this.c = wx.b($$0.getName());
    }
 
-   public static fvh a(fvf $$0) {
-      fvj $$1 = fso.a($$0, 0.0F);
-      fvk $$2 = $$1.a();
-      $$2.a("head", fvg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fvd.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fvg.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fvd.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fvg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fvd.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fvg.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fvd.a(1.9F, 11.0F, 0.0F));
-      return fvh.a($$1, 64, 32);
+   @Override
+   public void a(frd $$0) {
+      fdz.Q().L().b(new ahy(this.a.getId()));
    }
 
-   public void a(chh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
-      this.l.a(this.k);
+   @Override
+   public wx aN_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ffm $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      fgy.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aO_() {
+      return true;
    }
 }

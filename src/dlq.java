@@ -1,29 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlq extends dgu {
-   public static final MapCodec<dlq> b = b(dlq::new);
+public class dlq extends dmk implements ddp {
+   public static final MapCodec<dlq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csh.q.fieldOf("color").forGetter(dlq::b), u()).apply($$0, dlq::new));
+   private final csh c;
 
-   protected dlq(dqg.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<dlq> a() {
+      return a;
+   }
+
+   public dlq(csh $$0, dra.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected MapCodec<? extends dlq> a() {
-      return b;
-   }
-
-   @Override
-   protected eui c(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return euf.a();
-   }
-
-   @Override
-   protected float d(dqh $$0, czj $$1, in $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected boolean a_(dqh $$0, czj $$1, in $$2) {
-      return true;
+   public csh b() {
+      return this.c;
    }
 }

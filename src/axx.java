@@ -1,14 +1,7 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class axx {
-   @Nullable
-   private static byte[] a = null;
-
-   public static void a() {
-      a = new byte[10485760];
-   }
-
-   public static void b() {
-      a = new byte[0];
+public record axx<A>(MapCodec<A> a) {
+   public static <A> axx<A> a(MapCodec<A> $$0) {
+      return new axx<>($$0);
    }
 }

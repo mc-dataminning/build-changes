@@ -1,21 +1,21 @@
-public record kf(aqh a, in b, dqh c, doe d) {
-   public etp a() {
+public record kf(aqm a, io b, drb c, doy d) {
+   public euk a() {
       return this.b.b();
    }
 
-   public aqh b() {
+   public aqm b() {
       return this.a;
    }
 
-   public in c() {
+   public io c() {
       return this.b;
    }
 
-   public dqh d() {
+   public drb d() {
       return this.c;
    }
 
-   public doe e() {
+   public doy e() {
       return this.d;
    }
 }

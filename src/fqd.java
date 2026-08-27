@@ -1,312 +1,77 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class fqd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final fde c;
-   private final eob d;
+public class fqd extends fpw<fya.a> {
+   private static final int y = 120;
+   private static final int z = 85;
+   private static final int A = 178;
+   private static final wx B = wx.c("gui.abuseReport.skin.title");
+   private final fjq C = fjq.d().a(8);
+   private fgr D;
+   private ffz E;
+   private ffz F;
 
-   public fqd(fde $$0, eob $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private fqd(fly $$0, fxz $$1, fya.a $$2) {
+      super(B, $$0, $$1, $$2);
    }
 
-   public void a(String $$0, dah $$1, dwx $$2, Function<jk, dwu> $$3, fld $$4) {
-      this.c.d(new fkj(wu.c("selectWorld.data_read")));
-      eob.c $$5 = this.a($$0);
-      if ($$5 != null) {
-         atc $$6 = atf.a($$5);
-         dax $$7 = $$1.g();
-
-         try {
-            ald.d $$8 = new ald.d($$6, $$7, false, false);
-            ale $$9 = this.a($$8, $$3x -> {
-               dwu.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(le.aT));
-               return new ald.b<>(new eof($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, ale::new);
-            this.c.a($$5, $$6, $$9, true);
-         } catch (Exception var11) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var11);
-            $$5.c();
-            this.c.a($$4);
-         }
-      }
+   public fqd(fly $$0, fxz $$1, UUID $$2, Supplier<gov> $$3) {
+      this($$0, $$1, new fya.a($$2, $$3, $$1.a().b()));
    }
 
-   @Nullable
-   private eob.c a(String $$0) {
-      try {
-         return this.d.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         fhm.a(this.c, $$0);
-         this.c.a(null);
-         return null;
-      } catch (ete var4) {
-         a.warn("{}", var4.getMessage());
-         this.c.a(fks.a(() -> this.c.a(null)));
-         return null;
-      }
+   public fqd(fly $$0, fxz $$1, fya $$2) {
+      this($$0, $$1, new fya.a($$2, $$1.a().b()));
    }
 
-   public void a(eob.c $$0, aks $$1, jd<akq> $$2, eoh $$3) {
-      atc $$4 = atf.a($$0);
-      ath $$5 = (ath)new ald.d($$4, $$3.D(), false, false).a().getSecond();
-      this.c.a($$0, $$4, new ale($$5, $$1, $$2, $$3), true);
-   }
-
-   public ale a(Dynamic<?> $$0, boolean $$1, atc $$2) throws Exception {
-      ald.d $$3 = eob.a($$0, $$2, $$1);
-      return this.a($$3, $$1x -> {
-         jj<dua> $$2x = $$1x.d().d(le.aT);
-         eny $$3x = eob.a($$0, $$1x.b(), $$2x, $$1x.c());
-         return new ald.b<>($$3x.a(), $$3x.b().b());
-      }, ale::new);
-   }
-
-   public Pair<dah, fqb> a(eob.c $$0) throws Exception {
-      atc $$1 = atf.a($$0);
-      Dynamic<?> $$2 = $$0.h();
-      ald.d $$3 = eob.a($$2, $$1, false);
-
-      record a(dah a, dwx b, jj<dua> c) {
-      }
-
-      return this.a($$3, $$1x -> {
-         jj<dua> $$2x = new je<>(le.aT, Lifecycle.stable()).l();
-         eny $$3x = eob.a($$2, $$1x.b(), $$2x, $$1x.c());
-         return new ald.b<>(new a($$3x.a().J(), $$3x.a().y(), $$3x.b().c()), $$1x.d());
-      }, ($$0x, $$1x, $$2x, $$3x) -> {
-         $$0x.close();
-         return Pair.of($$3x.a, new fqb($$3x.b, new dwu($$3x.c), $$2x, $$1x, $$3x.a.g()));
+   @Override
+   protected void aM_() {
+      this.C.c().b();
+      this.C.a(new fhg(this.l, this.p));
+      fjq $$0 = this.C.a(fjq.e().a(8));
+      $$0.c().e();
+      $$0.a(new fgz(85, 120, this.m.aS(), this.x.e().a()));
+      fjq $$1 = $$0.a(fjq.d().a(8));
+      this.F = ffz.a(c, $$0x -> this.m.a(new fqc(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(178).a();
+      $$1.a(fji.a(this.p, this.F, b));
+      this.D = this.a(178, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
       });
-   }
-
-   private <D, R> R a(ald.d $$0, ald.f<D> $$1, ald.e<D, R> $$2) throws Exception {
-      ald.c $$3 = new ald.c($$0, ee.a.c, 2);
-      CompletableFuture<R> $$4 = ald.a($$3, $$1, $$2, ac.f(), this.c);
-      this.c.c($$4::isDone);
-      return $$4.get();
-   }
-
-   private void a(eob.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
-      wu $$4;
-      wu $$5;
-      if ($$1) {
-         $$4 = wu.c("selectWorld.backupQuestion.customized");
-         $$5 = wu.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = wu.c("selectWorld.backupQuestion.experimental");
-         $$5 = wu.c("selectWorld.backupWarning.experimental");
-      }
-
-      this.c.a(new fjq($$3, ($$2x, $$3x) -> {
-         if ($$2x) {
-            fpv.a($$0);
-         }
-
-         $$2.run();
-      }, $$4, $$5, false));
-   }
-
-   public static void a(fde $$0, fpt $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new fjv($$5, wu.c("selectWorld.warning.experimental.title"), wu.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new fjv($$5, wu.c("selectWorld.warning.deprecated.title"), wu.c("selectWorld.warning.deprecated.question")));
-      }
-   }
-
-   public void a(String $$0, Runnable $$1) {
-      this.c.d(new fkj(wu.c("selectWorld.data_read")));
-      eob.c $$2 = this.a($$0);
-      if ($$2 != null) {
-         this.a($$2, $$1);
-      }
-   }
-
-   private void a(eob.c $$0, Runnable $$1) {
-      this.c.d(new fkj(wu.c("selectWorld.data_read")));
-
-      Dynamic<?> $$2;
-      eoc $$3;
-      try {
-         $$2 = $$0.h();
-         $$3 = $$0.a($$2);
-      } catch (ul | ur | IOException var10) {
-         this.c.a(new flc(this.c, $$2x -> {
-            if ($$2x) {
-               this.a($$0, $$1);
-            } else {
-               $$0.c();
-               $$1.run();
-            }
-         }, $$0));
-         return;
-      } catch (OutOfMemoryError var11) {
-         axx.b();
-         System.gc();
-         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.f() + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$6);
-         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$7.initCause(var11);
-         o $$8 = o.a($$7, $$6);
-         p $$9 = $$8.a("World details");
-         $$9.a("World folder", $$0.f());
-         throw new y($$8);
-      }
-
-      this.a($$0, $$3, $$2, $$1);
-   }
-
-   private void a(eob.c $$0, eoc $$1, Dynamic<?> $$2, Runnable $$3) {
-      if (!$$1.r()) {
-         $$0.c();
-         this.c.a(new fjp($$3, wu.c("selectWorld.incompatible.title").b(-65536), wu.a("selectWorld.incompatible.description", $$1.k())));
-      } else {
-         eoc.a $$4 = $$1.o();
-         if ($$4.a()) {
-            String $$5 = "selectWorld.backupQuestion." + $$4.c();
-            String $$6 = "selectWorld.backupWarning." + $$4.c();
-            xi $$7 = wu.c($$5);
-            if ($$4.b()) {
-               $$7.b(-2142128);
-            }
-
-            wu $$8 = wu.a($$6, $$1.k(), aa.b().c());
-            this.c.a(new fjq(() -> {
-               $$0.c();
-               $$3.run();
-            }, ($$3x, $$4x) -> {
-               if ($$3x) {
-                  fpv.a($$0);
-               }
-
-               this.a($$0, $$2, false, $$3);
-            }, $$7, $$8, false));
-         } else {
-            this.a($$0, $$2, false, $$3);
-         }
-      }
-   }
-
-   private void a(eob.c $$0, Dynamic<?> $$1, boolean $$2, Runnable $$3) {
-      this.c.d(new fkj(wu.c("selectWorld.resource_load")));
-      atc $$4 = atf.a($$0);
-
-      ale $$5;
-      try {
-         $$5 = this.a($$1, $$2, $$4);
-      } catch (Exception var8) {
-         a.warn("Failed to load level data or datapacks, can't proceed with server load", var8);
-         if (!$$2) {
-            this.c.a(new fka(() -> {
-               $$0.c();
-               $$3.run();
-            }, () -> this.a($$0, $$1, true, $$3)));
-         } else {
-            $$0.c();
-            this.c.a(new fjp($$3, wu.c("datapackFailure.safeMode.failed.title"), wu.c("datapackFailure.safeMode.failed.description"), wt.k, true));
-         }
-
-         return;
-      }
-
-      this.a($$0, $$5, $$4, $$3);
-   }
-
-   private void a(eob.c $$0, ale $$1, atc $$2, Runnable $$3) {
-      eoh $$4 = $$1.d();
-      boolean $$5 = $$4.y().e();
-      boolean $$6 = $$4.B() != Lifecycle.stable();
-      if (!$$5 && !$$6) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         this.a($$0, $$5, () -> this.b($$0, $$1, $$2, $$3), () -> {
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         });
-      }
-   }
-
-   private void b(eob.c $$0, ale $$1, atc $$2, Runnable $$3) {
-      gpo $$4 = this.c.ae();
-      this.a($$4, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-         a.warn("Failed to load pack: ", $$0x);
-         return this.a();
-      }, this.c).thenAcceptAsync($$5 -> {
-         if ($$5) {
-            this.a($$0, $$1, $$4, $$2, $$3);
-         } else {
-            $$4.e();
-            $$1.close();
-            $$0.c();
-            $$3.run();
-         }
-      }, this.c).exceptionally($$0x -> {
-         this.c.a(o.a($$0x, "Load world"));
-         return null;
+      $$1.a(fji.a(this.p, this.D, d, $$0x -> $$0x.e(12)));
+      fjq $$2 = this.C.a(fjq.e().a(8));
+      $$2.a(ffz.a(ww.k, $$0x -> this.d()).a(120).a());
+      this.E = $$2.a(ffz.a(a, $$0x -> this.m()).a(120).a());
+      this.C.a($$1x -> {
+         ffx var10000 = this.c($$1x);
       });
+      this.c();
+      this.C();
    }
 
-   private void a(eob.c $$0, ale $$1, gpo $$2, atc $$3, Runnable $$4) {
-      if ($$0.b()) {
-         this.c.a(new fjv($$5 -> {
-            if ($$5) {
-               this.a($$0, $$1, $$3);
-            } else {
-               $$2.e();
-               $$1.close();
-               $$0.c();
-               $$4.run();
-            }
-         }, wu.c("selectWorld.warning.lowDiskSpace.title").a(n.m), wu.c("selectWorld.warning.lowDiskSpace.description"), wt.j, wt.k));
+   @Override
+   protected void c() {
+      this.C.a();
+      fjk.a(this.C, this.G());
+   }
+
+   private void C() {
+      fxx $$0 = this.x.h();
+      if ($$0 != null) {
+         this.F.b($$0.b());
       } else {
-         this.a($$0, $$1, $$3);
+         this.F.b(c);
       }
+
+      fxv.b $$1 = this.x.c();
+      this.E.j = $$1 == null;
+      this.E.a(x.a($$1, fxv.b::a));
    }
 
-   private void a(eob.c $$0, ale $$1, atc $$2) {
-      this.c.a($$0, $$2, $$1, false);
-   }
-
-   private CompletableFuture<Void> a(gpo $$0, eob.c $$1) {
-      Path $$2 = $$1.a(enz.k);
-      if (Files.exists($$2) && !Files.isDirectory($$2)) {
-         $$0.f();
-         CompletableFuture<Void> $$3 = $$0.b(b);
-         $$0.a(b, $$2);
-         return $$3;
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.c.a(new fjv($$0::complete, wu.c("multiplayer.texturePrompt.failure.line1"), wu.c("multiplayer.texturePrompt.failure.line2"), wt.i, wt.e));
-      return $$0;
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
    }
 }

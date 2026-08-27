@@ -1,8 +1,95 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sj {
+public class sj {
+   public static final akl<egn> a = si.a("crimson_fungi");
+   public static final akl<egn> b = si.a("warped_fungi");
+   public static final akl<egn> c = si.a("oak_checked");
+   public static final akl<egn> d = si.a("dark_oak_checked");
+   public static final akl<egn> e = si.a("birch_checked");
+   public static final akl<egn> f = si.a("acacia_checked");
+   public static final akl<egn> g = si.a("spruce_checked");
+   public static final akl<egn> h = si.a("mangrove_checked");
+   public static final akl<egn> i = si.a("cherry_checked");
+   public static final akl<egn> j = si.a("pine_on_snow");
+   public static final akl<egn> k = si.a("spruce_on_snow");
+   public static final akl<egn> l = si.a("pine_checked");
+   public static final akl<egn> m = si.a("jungle_tree");
+   public static final akl<egn> n = si.a("fancy_oak_checked");
+   public static final akl<egn> o = si.a("mega_jungle_tree_checked");
+   public static final akl<egn> p = si.a("mega_spruce_checked");
+   public static final akl<egn> q = si.a("mega_pine_checked");
+   public static final akl<egn> r = si.a("tall_mangrove_checked");
+   public static final akl<egn> s = si.a("jungle_bush");
+   public static final akl<egn> t = si.a("super_birch_bees_0002");
+   public static final akl<egn> u = si.a("super_birch_bees");
+   public static final akl<egn> v = si.a("oak_bees_0002");
+   public static final akl<egn> w = si.a("oak_bees_002");
+   public static final akl<egn> x = si.a("birch_bees_0002");
+   public static final akl<egn> y = si.a("birch_bees_002");
+   public static final akl<egn> z = si.a("fancy_oak_bees_0002");
+   public static final akl<egn> A = si.a("fancy_oak_bees_002");
+   public static final akl<egn> B = si.a("fancy_oak_bees");
+   public static final akl<egn> C = si.a("cherry_bees_005");
+
+   public static void a(qo<egn> $$0) {
+      iy<dzk<?, ?>> $$1 = $$0.a(lf.aC);
+      ix<dzk<?, ?>> $$2 = $$1.b(ry.a);
+      ix<dzk<?, ?>> $$3 = $$1.b(ry.c);
+      ix<dzk<?, ?>> $$4 = $$1.b(ry.g);
+      ix<dzk<?, ?>> $$5 = $$1.b(ry.h);
+      ix<dzk<?, ?>> $$6 = $$1.b(ry.i);
+      ix<dzk<?, ?>> $$7 = $$1.b(ry.j);
+      ix<dzk<?, ?>> $$8 = $$1.b(ry.k);
+      ix<dzk<?, ?>> $$9 = $$1.b(ry.x);
+      ix<dzk<?, ?>> $$10 = $$1.b(ry.z);
+      ix<dzk<?, ?>> $$11 = $$1.b(ry.l);
+      ix<dzk<?, ?>> $$12 = $$1.b(ry.m);
+      ix<dzk<?, ?>> $$13 = $$1.b(ry.n);
+      ix<dzk<?, ?>> $$14 = $$1.b(ry.p);
+      ix<dzk<?, ?>> $$15 = $$1.b(ry.q);
+      ix<dzk<?, ?>> $$16 = $$1.b(ry.r);
+      ix<dzk<?, ?>> $$17 = $$1.b(ry.y);
+      ix<dzk<?, ?>> $$18 = $$1.b(ry.v);
+      ix<dzk<?, ?>> $$19 = $$1.b(ry.s);
+      ix<dzk<?, ?>> $$20 = $$1.b(ry.t);
+      ix<dzk<?, ?>> $$21 = $$1.b(ry.A);
+      ix<dzk<?, ?>> $$22 = $$1.b(ry.B);
+      ix<dzk<?, ?>> $$23 = $$1.b(ry.D);
+      ix<dzk<?, ?>> $$24 = $$1.b(ry.E);
+      ix<dzk<?, ?>> $$25 = $$1.b(ry.G);
+      ix<dzk<?, ?>> $$26 = $$1.b(ry.H);
+      ix<dzk<?, ?>> $$27 = $$1.b(ry.J);
+      ix<dzk<?, ?>> $$28 = $$1.b(ry.K);
+      si.a($$0, a, $$2, egf.a(8), egb.a());
+      si.a($$0, b, $$3, egf.a(8), egb.a());
+      si.a($$0, c, $$4, si.a(dea.x));
+      si.a($$0, d, $$5, si.a(dea.D));
+      si.a($$0, e, $$6, si.a(dea.z));
+      si.a($$0, f, $$7, si.a(dea.B));
+      si.a($$0, g, $$8, si.a(dea.y));
+      si.a($$0, h, $$9, si.a(dea.E));
+      si.a($$0, i, $$10, si.a(dea.C));
+      dya $$29 = dya.a(it.a.q(), dea.dP, dea.qP);
+      List<egq> $$30 = List.of(egh.a(it.b, dya.a(dya.a(dea.qP)), 8), egc.a($$29));
+      si.a($$0, j, $$11, $$30);
+      si.a($$0, k, $$8, $$30);
+      si.a($$0, l, $$11, si.a(dea.y));
+      si.a($$0, m, $$12, si.a(dea.A));
+      si.a($$0, n, $$13, si.a(dea.x));
+      si.a($$0, o, $$14, si.a(dea.A));
+      si.a($$0, p, $$15, si.a(dea.y));
+      si.a($$0, q, $$16, si.a(dea.y));
+      si.a($$0, r, $$17, si.a(dea.E));
+      si.a($$0, s, $$18, si.a(dea.x));
+      si.a($$0, t, $$19, si.a(dea.z));
+      si.a($$0, u, $$20, si.a(dea.z));
+      si.a($$0, v, $$21, si.a(dea.x));
+      si.a($$0, w, $$22, si.a(dea.x));
+      si.a($$0, x, $$23, si.a(dea.z));
+      si.a($$0, y, $$24, si.a(dea.z));
+      si.a($$0, z, $$25, si.a(dea.x));
+      si.a($$0, A, $$26, si.a(dea.x));
+      si.a($$0, B, $$27, si.a(dea.x));
+      si.a($$0, C, $$28, si.a(dea.C));
+   }
 }

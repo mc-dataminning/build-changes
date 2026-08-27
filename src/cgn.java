@@ -1,57 +1,49 @@
 import javax.annotation.Nullable;
 
-public abstract class cgn implements cgv {
-   protected final cgl a;
-
-   public cgn(cgl $$0) {
-      this.a = $$0;
+public class cgn extends cgh {
+   public cgn(bsa<? extends cgn> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      return false;
+   protected avg v() {
+      return avh.px;
    }
 
    @Override
-   public void b() {
+   protected avg gN() {
+      return avh.py;
    }
 
    @Override
-   public void c() {
-   }
-
-   @Override
-   public void a(cgk $$0, in $$1, bqf $$2, @Nullable clh $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
+   protected avg o_() {
+      return avh.pA;
    }
 
    @Nullable
    @Override
-   public etp g() {
-      return null;
+   protected avg gw() {
+      return avh.pB;
    }
 
    @Override
-   public float a(bqf $$0, float $$1) {
-      return $$1;
+   protected avg d(bqn $$0) {
+      return avh.pC;
    }
 
    @Override
-   public float h() {
-      float $$0 = (float)this.a.dq().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   protected void gV() {
+      this.a(avh.pD, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void gp() {
+      this.a(avh.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bro a(aqm $$0, bro $$1) {
+      return bsa.at.a((dax)$$0);
    }
 }

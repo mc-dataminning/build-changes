@@ -1,54 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public enum iu implements ayt {
-   a("down_east", is.a, is.f),
-   b("down_north", is.a, is.c),
-   c("down_south", is.a, is.d),
-   d("down_west", is.a, is.e),
-   e("up_east", is.b, is.f),
-   f("up_north", is.b, is.c),
-   g("up_south", is.b, is.d),
-   h("up_west", is.b, is.e),
-   i("west_up", is.e, is.b),
-   j("east_up", is.f, is.b),
-   k("north_up", is.c, is.b),
-   l("south_up", is.d, is.b);
+public enum iu {
+   a(it.c),
+   b(it.c, it.f),
+   c(it.f),
+   d(it.d, it.f),
+   e(it.d),
+   f(it.d, it.e),
+   g(it.e),
+   h(it.c, it.e);
 
-   private static final Int2ObjectMap<iu> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
-      for (iu $$1 : values()) {
-         $$0.put(b($$1.p, $$1.o), $$1);
+   private final Set<it> i;
+   private final js j;
+
+   private iu(it... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new js(0, 0, 0);
+
+      for (it $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
-   });
-   private final String n;
-   private final is o;
-   private final is p;
-
-   private static int b(is $$0, is $$1) {
-      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   private iu(String $$0, is $$1, is $$2) {
-      this.n = $$0;
-      this.p = $$1;
-      this.o = $$2;
+   public Set<it> a() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.n;
+   public int b() {
+      return this.j.u();
    }
 
-   public static iu a(is $$0, is $$1) {
-      int $$2 = b($$0, $$1);
-      return (iu)m.get($$2);
-   }
-
-   public is a() {
-      return this.p;
-   }
-
-   public is b() {
-      return this.o;
+   public int c() {
+      return this.j.w();
    }
 }

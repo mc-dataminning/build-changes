@@ -1,54 +1,59 @@
-import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class dvv {
-   public static enum a implements ayt {
-      a("air"),
-      b("liquid");
+   private final aqm a;
 
-      public static final Codec<dvv.a> c = ayt.a(dvv.a::values);
-      private final String d;
+   public dvv(aqm $$0) {
+      this.a = $$0;
+   }
 
-      private a(String $$0) {
-         this.d = $$0;
+   public void a(ix<dvu> $$0, euk $$1, dvu.a $$2) {
+      int $$3 = $$0.a().a();
+      io $$4 = io.a($$1);
+      int $$5 = jq.a($$4.u() - $$3);
+      int $$6 = jq.a($$4.v() - $$3);
+      int $$7 = jq.a($$4.w() - $$3);
+      int $$8 = jq.a($$4.u() + $$3);
+      int $$9 = jq.a($$4.v() + $$3);
+      int $$10 = jq.a($$4.w() + $$3);
+      List<dvu.b> $$11 = new ArrayList<>();
+      dvx.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == dvw.a.b) {
+            $$11.add(new dvu.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
+
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dsx $$16 = this.a.l().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
       }
 
-      public String a() {
-         return this.d;
+      if (!$$11.isEmpty()) {
+         this.a($$11);
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      if ($$13) {
+         aga.a(this.a, $$0, $$1);
       }
    }
 
-   public static enum b implements ayt {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   private void a(List<dvu.b> $$0) {
+      Collections.sort($$0);
 
-      public static final Codec<dvv.b> l = ayt.a(dvv.b::values);
-      private final String m;
-
-      private b(String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
+      for (dvu.b $$1 : $$0) {
+         dvw $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
    }
 }

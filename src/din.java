@@ -1,129 +1,123 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class din extends dde {
-   public static final MapCodec<din> a = b(din::new);
-   public static final drf<dri> b = dqx.bf;
-   public static final dqy c = dqx.w;
-   public static final drh d = dqx.aR;
-   public static final int e = 3;
+public class din extends dkh implements dkz {
+   public static final MapCodec<din> b = b(din::new);
+   public static final drs c = drr.C;
+   public static final drs d = drr.w;
+   private static final int k = 8;
+   public static final int e = 128;
+   private static final int l = 200;
 
    @Override
    public MapCodec<din> a() {
-      return a;
+      return b;
    }
 
-   public din(dqg.d $$0) {
+   public din(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dri.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(a, it.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
-   private dqh b(dae $$0, in $$1, dqh $$2) {
-      dri $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(b, $$3);
-      } else {
-         dri $$4 = $$0.a_($$1.d()).A();
-         dri $$5 = $$4.e() ? dri.a : $$4;
-         return $$2.a(b, $$5);
+   @Override
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == emv.c;
+      return this.n().a(a, $$0.k()).a(c, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected emu b_(drb $$0) {
+      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected int a(drb $$0, dad $$1, io $$2, it $$3) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(drb $$0, dad $$1, io $$2, it $$3) {
+      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   public void d(drb $$0, dax $$1, io $$2) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, 8);
+      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
+   }
+
+   private void e(drb $$0, dax $$1, io $$2) {
+      $$1.a($$2.a($$0.c(a).g()), this);
+   }
+
+   @Override
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      if ($$1.ab() && (long)$$1.z.a(200) <= $$1.Y() % 200L && $$2.v() == $$1.a(dwt.a.b, $$2.u(), $$2.w()) - 1) {
+         ayg.a($$0.c(a).o(), $$1, $$2, 0.125, ky.aT, bpf.a(1, 2));
       }
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      return this.b($$0.q(), $$0.a(), this.n());
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      boolean $$6 = $$1.o() == is.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dqh $$0, dad $$1, in $$2, dde $$3, in $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.e($$0, $$1, $$2);
          }
 
-         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   private void a(@Nullable brh $$0, dqh $$1, dad $$2, in $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dva.H, $$3);
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected bpo a(csz $$0, dqh $$1, dad $$2, in $$3, clh $$4, bpl $$5, etl $$6) {
-      return $$0.a(avz.bg) && $$6.b() == is.b ? bpo.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   protected bpm a(dqh $$0, dad $$1, in $$2, clh $$3, etl $$4) {
-      if ($$1.B) {
-         return bpm.a;
-      } else {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(avm.ag);
-         return bpm.b;
-      }
-   }
-
-   @Override
-   protected void a(dqh $$0, dad $$1, in $$2, clh $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(avm.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean a(dqh $$0, dad $$1, in $$2, int $$3, int $$4) {
-      dri $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(kx.X, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      iw<avb> $$10;
-      if ($$5.d()) {
-         akh $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
-            return false;
+   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d) && !$$1.O().a($$2, this)) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 18);
          }
-
-         $$10 = iw.a(avb.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
+   }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, avd.c, 3.0F, $$7, $$1.z.g());
+   @Override
+   protected void a(dax $$0, drb $$1, eug $$2, cmo $$3) {
+      if ($$0.ab() && $$3 instanceof cnb && ((cnb)$$3).K()) {
+         io $$4 = $$2.a();
+         if ($$0.h($$4)) {
+            bsn $$5 = bsa.am.a($$0);
+            if ($$5 != null) {
+               $$5.e(euk.c($$4.c()));
+               bru $$6 = $$3.s();
+               $$5.b($$6 instanceof aqn ? (aqn)$$6 : null);
+               $$0.b($$5);
+            }
+
+            $$0.a(null, $$4, avh.zE, avi.d, 5.0F, 1.0F);
+         }
+      }
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(a, d, c);
+   }
+
+   @Override
+   protected boolean e_(drb $$0) {
       return true;
-   }
-
-   @Nullable
-   private akh a(dad $$0, in $$1) {
-      return $$0.c_($$1.c()) instanceof doy $$2 ? $$2.d() : null;
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b, c, d);
    }
 }

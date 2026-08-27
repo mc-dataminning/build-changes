@@ -1,70 +1,25 @@
-public abstract class dbj {
-   public static final akg<dbc> a = a("the_void");
-   public static final akg<dbc> b = a("plains");
-   public static final akg<dbc> c = a("sunflower_plains");
-   public static final akg<dbc> d = a("snowy_plains");
-   public static final akg<dbc> e = a("ice_spikes");
-   public static final akg<dbc> f = a("desert");
-   public static final akg<dbc> g = a("swamp");
-   public static final akg<dbc> h = a("mangrove_swamp");
-   public static final akg<dbc> i = a("forest");
-   public static final akg<dbc> j = a("flower_forest");
-   public static final akg<dbc> k = a("birch_forest");
-   public static final akg<dbc> l = a("dark_forest");
-   public static final akg<dbc> m = a("old_growth_birch_forest");
-   public static final akg<dbc> n = a("old_growth_pine_taiga");
-   public static final akg<dbc> o = a("old_growth_spruce_taiga");
-   public static final akg<dbc> p = a("taiga");
-   public static final akg<dbc> q = a("snowy_taiga");
-   public static final akg<dbc> r = a("savanna");
-   public static final akg<dbc> s = a("savanna_plateau");
-   public static final akg<dbc> t = a("windswept_hills");
-   public static final akg<dbc> u = a("windswept_gravelly_hills");
-   public static final akg<dbc> v = a("windswept_forest");
-   public static final akg<dbc> w = a("windswept_savanna");
-   public static final akg<dbc> x = a("jungle");
-   public static final akg<dbc> y = a("sparse_jungle");
-   public static final akg<dbc> z = a("bamboo_jungle");
-   public static final akg<dbc> A = a("badlands");
-   public static final akg<dbc> B = a("eroded_badlands");
-   public static final akg<dbc> C = a("wooded_badlands");
-   public static final akg<dbc> D = a("meadow");
-   public static final akg<dbc> E = a("cherry_grove");
-   public static final akg<dbc> F = a("grove");
-   public static final akg<dbc> G = a("snowy_slopes");
-   public static final akg<dbc> H = a("frozen_peaks");
-   public static final akg<dbc> I = a("jagged_peaks");
-   public static final akg<dbc> J = a("stony_peaks");
-   public static final akg<dbc> K = a("river");
-   public static final akg<dbc> L = a("frozen_river");
-   public static final akg<dbc> M = a("beach");
-   public static final akg<dbc> N = a("snowy_beach");
-   public static final akg<dbc> O = a("stony_shore");
-   public static final akg<dbc> P = a("warm_ocean");
-   public static final akg<dbc> Q = a("lukewarm_ocean");
-   public static final akg<dbc> R = a("deep_lukewarm_ocean");
-   public static final akg<dbc> S = a("ocean");
-   public static final akg<dbc> T = a("deep_ocean");
-   public static final akg<dbc> U = a("cold_ocean");
-   public static final akg<dbc> V = a("deep_cold_ocean");
-   public static final akg<dbc> W = a("frozen_ocean");
-   public static final akg<dbc> X = a("deep_frozen_ocean");
-   public static final akg<dbc> Y = a("mushroom_fields");
-   public static final akg<dbc> Z = a("dripstone_caves");
-   public static final akg<dbc> aa = a("lush_caves");
-   public static final akg<dbc> ab = a("deep_dark");
-   public static final akg<dbc> ac = a("nether_wastes");
-   public static final akg<dbc> ad = a("warped_forest");
-   public static final akg<dbc> ae = a("crimson_forest");
-   public static final akg<dbc> af = a("soul_sand_valley");
-   public static final akg<dbc> ag = a("basalt_deltas");
-   public static final akg<dbc> ah = a("the_end");
-   public static final akg<dbc> ai = a("end_highlands");
-   public static final akg<dbc> aj = a("end_midlands");
-   public static final akg<dbc> ak = a("small_end_islands");
-   public static final akg<dbc> al = a("end_barrens");
+public final class dbj implements dsu {
+   private final int a;
+   private final drb[] b;
 
-   private static akg<dbc> a(String $$0) {
-      return akg.a(le.az, new akh($$0));
+   public dbj(int $$0, drb[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public drb a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dea.a.n();
+   }
+
+   @Override
+   public void a(int $$0, drb $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

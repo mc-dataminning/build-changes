@@ -3,75 +3,97 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fd<T> implements ArgumentType<akg<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wu.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wu.b("commands.place.jigsaw.invalid", $$0));
-   final akg<? extends jj<T>> e;
+public class fd<T> implements ArgumentType<ix.c<T>> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wx.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("argument.resource.not_found", $$0, $$1));
+   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wx.b("argument.resource.invalid_type", $$0, $$1, $$2)
+   );
+   final akl<? extends jk<T>> e;
+   private final iz<T> f;
 
-   public fd(akg<? extends jj<T>> $$0) {
-      this.e = $$0;
+   public fd(ea $$0, akl<? extends jk<T>> $$1) {
+      this.e = $$1;
+      this.f = $$0.b($$1);
    }
 
-   public static <T> fd<T> a(akg<? extends jj<T>> $$0) {
-      return new fd<>($$0);
+   public static <T> fd<T> a(ea $$0, akl<? extends jk<T>> $$1) {
+      return new fd<>($$0, $$1);
    }
 
-   private static <T> akg<T> a(CommandContext<ed> $$0, String $$1, akg<jj<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      akg<?> $$4 = (akg<?>)$$0.getArgument($$1, akg.class);
-      Optional<akg<T>> $$5 = $$4.d($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public static <T> ix.c<T> a(CommandContext<ee> $$0, String $$1, akl<jk<T>> $$2) throws CommandSyntaxException {
+      ix.c<T> $$3 = (ix.c<T>)$$0.getArgument($$1, ix.c.class);
+      akl<?> $$4 = $$3.h();
+      if ($$4.c($$2)) {
+         return $$3;
+      } else {
+         throw b.create($$4.a(), $$4.b(), $$2.a());
+      }
    }
 
-   private static <T> jj<T> a(CommandContext<ed> $$0, akg<? extends jj<T>> $$1) {
-      return ((ed)$$0.getSource()).l().bc().d($$1);
+   public static ix.c<btr> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.c);
    }
 
-   private static <T> iw.c<T> b(CommandContext<ed> $$0, String $$1, akg<jj<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      akg<T> $$4 = a($$0, $$1, $$2, $$3);
-      return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
+   public static ix.c<dzk<?, ?>> b(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.aC);
    }
 
-   public static iw.c<dyq<?, ?>> a(CommandContext<ed> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, le.aC, b);
+   public static ix.c<ehj> c(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.aJ);
    }
 
-   public static iw.c<egp> b(CommandContext<ed> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, le.aJ, c);
+   public static ix.c<bsa<?>> d(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.v);
    }
 
-   public static iw.c<ehy> c(CommandContext<ed> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, le.aM, d);
+   public static ix.c<bsa<?>> e(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      ix.c<bsa<?>> $$2 = a($$0, $$1, lf.v);
+      if (!$$2.a().c()) {
+         throw d.create($$2.h().a().toString());
+      } else {
+         return $$2;
+      }
    }
 
-   public akg<T> a(StringReader $$0) throws CommandSyntaxException {
-      akh $$1 = akh.a($$0);
-      return akg.a(this.e, $$1);
+   public static ix.c<bra> f(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.R);
+   }
+
+   public static ix.c<cyz> g(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lf.u);
+   }
+
+   public ix.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      akm $$1 = akm.a($$0);
+      akl<T> $$2 = akl.a(this.e, $$1);
+      return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ei $$2 ? $$2.a(this.e, ei.a.b, $$1, $$0) : $$1.buildFuture();
+      return ej.a(this.f.c().map(akl::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return c;
    }
 
-   public static class a<T> implements hx<fd<T>, fd.a<T>.a> {
-      public void a(fd.a<T>.a $$0, vu $$1) {
+   public static class a<T> implements hy<fd<T>, fd.a<T>.a> {
+      public void a(fd.a<T>.a $$0, vx $$1) {
          $$1.b($$0.b);
       }
 
-      public fd.a<T>.a a(vu $$0) {
+      public fd.a<T>.a a(vx $$0) {
          return new fd.a.a($$0.r());
       }
 
@@ -83,19 +105,19 @@ public class fd<T> implements ArgumentType<akg<T>> {
          return new fd.a.a($$0.e);
       }
 
-      public final class a implements hx.a<fd<T>> {
-         final akg<? extends jj<T>> b;
+      public final class a implements hy.a<fd<T>> {
+         final akl<? extends jk<T>> b;
 
-         a(akg<? extends jj<T>> $$1) {
+         a(akl<? extends jk<T>> $$1) {
             this.b = $$1;
          }
 
-         public fd<T> a(dz $$0) {
-            return new fd<>(this.b);
+         public fd<T> a(ea $$0) {
+            return new fd<>($$0, this.b);
          }
 
          @Override
-         public hx<fd<T>, ?> a() {
+         public hy<fd<T>, ?> a() {
             return a.this;
          }
       }

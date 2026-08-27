@@ -1,14 +1,61 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface aqx {
-   void a(Consumer<zb<?>> var1);
+public class aqx implements aqv {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   aqx.a a();
+   private aqx(int $$0) {
+      this.b = $$0;
+   }
 
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
+   public static aqx b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static aqx c(int $$0) {
+      int $$1 = aqv.a($$0);
+      return new aqx($$1 * $$1);
+   }
+
+   public static aqx c() {
+      return new aqx(0);
+   }
+
+   @Override
+   public void a(dae $$0) {
+      this.e = ac.c();
+      this.d = this.e;
+   }
+
+   @Override
+   public void a(dae $$0, @Nullable dtw $$1) {
+      if ($$1 == dtw.n) {
+         this.c++;
       }
+
+      int $$2 = this.d();
+      if (ac.c() > this.e) {
+         this.e += 500L;
+         a.info(wx.a("menu.preparingSpawn", ayd.a($$2, 0, 100)).getString());
+      }
+   }
+
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ac.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : ayd.d((float)this.c * 100.0F / (float)this.b);
    }
 }

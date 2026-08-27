@@ -1,19 +1,38 @@
-public interface zh extends abg, vp {
-   void a(zk var1);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   void a(zl var1);
+public class zh {
+   private static final Logger a = LogUtils.getLogger();
 
-   void a(zi var1);
+   public static <T extends wd> void a(ze<T> $$0, T $$1, aqm $$2) throws aky {
+      a($$0, $$1, $$2.o());
+   }
 
-   void a(zj var1);
+   public static <T extends wd> void a(ze<T> $$0, T $$1, bok<?> $$2) throws aky {
+      if (!$$2.bv()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var6) {
+                  if (var6 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     if (var6 instanceof y $$4) {
+                        $$1.a($$4.a());
+                        throw var6;
+                     }
 
-   void a(zn var1);
+                     o $$5 = o.a(var6, "Main thread packet handler");
+                     $$1.a($$5);
+                     throw new y($$5);
+                  }
 
-   void a(zm var1);
-
-   void a(zq var1);
-
-   void a(zo var1);
-
-   void a(zp var1);
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var6);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw aky.a;
+      }
+   }
 }

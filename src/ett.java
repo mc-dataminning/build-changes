@@ -1,20 +1,29 @@
-public interface ett {
-   ett a = ($$0, $$1) -> false;
-   ett b = ($$0, $$1) -> !$$0 && !$$1;
-   ett c = ($$0, $$1) -> $$1 && !$$0;
-   ett d = ($$0, $$1) -> !$$0;
-   ett e = ($$0, $$1) -> $$0 && !$$1;
-   ett f = ($$0, $$1) -> !$$1;
-   ett g = ($$0, $$1) -> $$0 != $$1;
-   ett h = ($$0, $$1) -> !$$0 || !$$1;
-   ett i = ($$0, $$1) -> $$0 && $$1;
-   ett j = ($$0, $$1) -> $$0 == $$1;
-   ett k = ($$0, $$1) -> $$1;
-   ett l = ($$0, $$1) -> !$$0 || $$1;
-   ett m = ($$0, $$1) -> $$0;
-   ett n = ($$0, $$1) -> $$0 || !$$1;
-   ett o = ($$0, $$1) -> $$0 || $$1;
-   ett p = ($$0, $$1) -> true;
+import net.minecraft.server.MinecraftServer;
 
-   boolean apply(boolean var1, boolean var2);
+public class ett implements etv<MinecraftServer> {
+   final akm a;
+
+   public ett(akm $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, etx<MinecraftServer> $$1, long $$2) {
+      alb $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
+
+   public static class a extends etv.a<MinecraftServer, ett> {
+      public a() {
+         super(new akm("function"), ett.class);
+      }
+
+      public void a(ud $$0, ett $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public ett a(ud $$0) {
+         akm $$1 = new akm($$0.l("Name"));
+         return new ett($$1);
+      }
+   }
 }

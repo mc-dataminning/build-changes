@@ -1,143 +1,73 @@
-public interface fiu {
-   fiu a(int var1);
+import org.joml.Matrix4f;
 
-   fiu a(int var1, int var2);
+public class fiu {
+   private final fis a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   fiu a(int var1, int var2, int var3, int var4);
-
-   fiu b(int var1);
-
-   fiu c(int var1);
-
-   fiu d(int var1);
-
-   fiu e(int var1);
-
-   fiu f(int var1);
-
-   fiu g(int var1);
-
-   fiu a(float var1, float var2);
-
-   fiu a(float var1);
-
-   fiu b(float var1);
-
-   default fiu a() {
-      return this.a(0.0F);
+   public fiu(fis $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   default fiu b() {
-      return this.a(0.5F);
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eyw $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   default fiu c() {
-      return this.a(1.0F);
+   public void a(fiu.a $$0, Matrix4f $$1, eyw $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   default fiu d() {
-      return this.b(0.0F);
+   public gcs a(ffk.a $$0) {
+      return this.a.a($$0);
    }
 
-   default fiu e() {
-      return this.b(0.5F);
-   }
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
 
-   default fiu f() {
-      return this.b(1.0F);
-   }
-
-   fiu g();
-
-   fiu.a h();
-
-   static fiu i() {
-      return new fiu.a();
-   }
-
-   public static class a implements fiu {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
-      }
-
-      public a(fiu.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fiu.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fiu.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fiu.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fiu.a i(int $$0) {
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
          this.a = $$0;
-         return this;
-      }
-
-      public fiu.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fiu.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fiu.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fiu.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fiu.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fiu.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fiu.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fiu.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fiu.a j() {
-         return new fiu.a(this);
-      }
-
-      @Override
-      public fiu.a h() {
-         return this;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
    }
 }

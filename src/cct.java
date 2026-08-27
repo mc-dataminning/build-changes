@@ -1,13 +1,30 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cct {
-   @Nullable
-   public static etp a(bsi $$0, int $$1, int $$2, int $$3, etp $$4, double $$5) {
-      etp $$6 = $$4.a($$0.ds(), $$0.du(), $$0.dy());
-      boolean $$7 = ccv.a($$0, $$1);
-      return ccy.a($$0, () -> {
-         in $$7x = ccs.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !ccv.a($$0, $$7x) ? $$7x : null;
-      });
+public class cct extends ccy<bso> {
+   @Override
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of(cbs.h, cbs.M, cbs.an);
+   }
+
+   @Override
+   protected void a(aqm $$0, bso $$1) {
+      btq<?> $$2 = $$1.dS();
+      List<ckl> $$3 = Lists.newArrayList();
+      cbu $$4 = $$2.c(cbs.h).orElse(cbu.a());
+      Optional<bsq> $$5 = $$4.a($$0x -> $$0x instanceof cjt || $$0x instanceof chu).map(bsq.class::cast);
+
+      for (bso $$7 : $$2.c(cbs.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof ckl && ((ckl)$$7).gq()) {
+            $$3.add((ckl)$$7);
+         }
+      }
+
+      $$2.a(cbs.M, $$5);
+      $$2.a(cbs.an, $$3);
    }
 }

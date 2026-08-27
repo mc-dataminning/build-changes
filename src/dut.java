@@ -1,133 +1,232 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.OptionalLong;
 
-public class dut<T extends duh> {
-   static final Logger a = LogUtils.getLogger();
-   final dup<T> b;
-   final duj<T> c;
-   final dum<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final duq<T> f;
+public record dut(
+   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awl<ddy> v, akm w, float x, dut.a y
+) {
+   public static final int a = io.d;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<dut> h = axm.c(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axm.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dut::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(dut::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dut::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dut::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(dut::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dut::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(dut::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dut::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dut::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(dut::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dut::p),
+                  awl.b(lf.f).fieldOf("infiniburn").forGetter(dut::q),
+                  akm.a.fieldOf("effects").orElse(dur.e).forGetter(dut::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dut::s),
+                  dut.a.a.forGetter(dut::t)
+               )
+               .apply($$0, dut::new)
+      )
+   );
+   private static final int z = 8;
+   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<ix<dut>> j = aki.a(lf.aE, h);
 
-   public dut(Class<T> $$0, dup<T> $$1) {
-      this.c = new duj<>();
-      this.d = new dum<>($$0, $$0x -> this.e.contains($$0x) ? duu.c : duu.b);
-      this.b = $$1;
-      this.f = new dur<>(this.c, this.d);
-   }
-
-   public void a(czk $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         duu $$1x = $$0x.a(duu.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dM()).forEach(this.b::e);
-         }
-      });
-   }
-
-   public void b(czk $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         duu $$1x = $$0x.a(duu.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dM()).forEach(this.b::d);
-         }
-      });
-   }
-
-   public duq<T> a() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = jp.c($$0.dn());
-      dul<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new dut.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dM() || $$2.c().a()) {
-         this.b.e($$0);
+   public dut(
+      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awl<ddy> v, akm w, float x, dut.a y
+   ) {
+      if (t < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (s + t > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (u > t) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (t % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (s % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
+      } else {
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
       }
    }
 
-   @azc
-   public int b() {
-      return this.c.b();
-   }
+   @Deprecated
+   public static DataResult<akl<dax>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dax.i);
+         }
 
-   void a(long $$0, dul<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
+         if ($$2 == 0) {
+            return DataResult.success(dax.h);
+         }
 
-   @azc
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
-
-   class a implements dui {
-      private final T c;
-      private long d;
-      private dul<T> e;
-
-      a(T $$0, long $$1, dul<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         in $$0 = this.c.dn();
-         long $$1 = jp.c($$0);
-         if ($$1 != this.d) {
-            duu $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dut.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jp.a(this.d), $$1});
-            }
-
-            dut.this.a(this.d, this.e);
-            dul<T> $$3 = dut.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            dut.this.b.a(this.c);
-            if (!this.c.dM()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  dut.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  dut.this.b.e(this.c);
-               }
-            }
+         if ($$2 == 1) {
+            return DataResult.success(dax.j);
          }
       }
 
-      @Override
-      public void a(brh.c $$0) {
-         if (!this.e.b(this.c)) {
-            dut.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jp.a(this.d), $$0});
-         }
+      return dax.g.parse($$0);
+   }
 
-         duu $$1 = this.e.c();
-         if ($$1.a() || this.c.dM()) {
-            dut.this.b.d(this.c);
-         }
+   public static double a(dut $$0, dut $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
 
-         dut.this.b.b(this.c);
-         dut.this.b.f(this.c);
-         dut.this.c.b(this.c);
-         this.c.a(a);
-         dut.this.a(this.d, this.e);
+   public static Path a(akl<dax> $$0, Path $$1) {
+      if ($$0 == dax.h) {
+         return $$1;
+      } else if ($$0 == dax.j) {
+         return $$1.resolve("DIM1");
+      } else {
+         return $$0 == dax.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+      }
+   }
+
+   public boolean a() {
+      return this.k.isPresent();
+   }
+
+   public float a(long $$0) {
+      double $$1 = ayd.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
+
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.y.a();
+   }
+
+   public boolean c() {
+      return this.y.b();
+   }
+
+   public boz d() {
+      return this.y.c();
+   }
+
+   public int e() {
+      return this.y.d();
+   }
+
+   public OptionalLong f() {
+      return this.k;
+   }
+
+   public boolean g() {
+      return this.l;
+   }
+
+   public boolean h() {
+      return this.m;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public boolean j() {
+      return this.o;
+   }
+
+   public double k() {
+      return this.p;
+   }
+
+   public boolean l() {
+      return this.q;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public int n() {
+      return this.s;
+   }
+
+   public int o() {
+      return this.t;
+   }
+
+   public int p() {
+      return this.u;
+   }
+
+   public awl<ddy> q() {
+      return this.v;
+   }
+
+   public akm r() {
+      return this.w;
+   }
+
+   public float s() {
+      return this.x;
+   }
+
+   public dut.a t() {
+      return this.y;
+   }
+
+   public static record a(boolean b, boolean c, boz d, int e) {
+      public static final MapCodec<dut.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dut.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(dut.a::b),
+                  boz.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dut.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dut.a::d)
+               )
+               .apply($$0, dut.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
+      }
+
+      public boz c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
       }
    }
 }

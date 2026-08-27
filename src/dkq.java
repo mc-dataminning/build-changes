@@ -1,60 +1,55 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkq extends dde {
+public class dkq extends ddk {
    public static final MapCodec<dkq> a = b(dkq::new);
-   protected static final eui b = dde.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+   public static final drs b = drr.E;
+   private final boz c = bow.a(5);
 
    @Override
    public MapCodec<dkq> a() {
       return a;
    }
 
-   public dkq(dqg.d $$0) {
+   public dkq(dra.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eui b(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return b;
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected eui b_(dqh $$0, czj $$1, in $$2) {
-      return euf.b();
-   }
-
-   @Override
-   protected eui c(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return euf.b();
-   }
-
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      ddk.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$1 == is.b && $$2.a(ddg.G)) {
-         $$3.a($$4, this, 20);
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Nullable
+   @Override
+   public dog a(io $$0, drb $$1) {
+      return new dpm($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
+      return $$0.B ? null : a($$2, doi.K, dpm::a);
    }
 
    @Override
-   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected dke a_(drb $$0) {
+      return dke.c;
    }
 
    @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dqh $$0, czj $$1, in $$2) {
-      return 0.2F;
+   protected void a(drb $$0, aqm $$1, io $$2, cto $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

@@ -1,44 +1,39 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
+import java.util.Locale;
+import org.joml.Vector3f;
 
-public class kt implements kv {
-   public static final kv.a<kt> a = new kv.a<kt>() {
-      public kt a(kw<kt> $$0, StringReader $$1, iy.a $$2) throws CommandSyntaxException {
-         $$1.expect(' ');
-         go.a $$3 = new go($$2).a($$1);
-         csz $$4 = new gn($$3.a(), $$3.b()).a(1, false);
-         return new kt($$0, $$4);
-      }
-   };
-   private final kw<kt> b;
-   private final csz c;
+public abstract class kt implements kw {
+   public static final float f = 0.01F;
+   public static final float g = 4.0F;
+   protected final Vector3f h;
+   protected final float i;
 
-   public static Codec<kt> a(kw<kt> $$0) {
-      return csz.a.xmap($$1 -> new kt($$0, $$1), $$0x -> $$0x.c);
+   public kt(Vector3f $$0, float $$1) {
+      this.h = $$0;
+      this.i = ayd.a($$1, 0.01F, 4.0F);
    }
 
-   public static ys<? super wf, kt> b(kw<kt> $$0) {
-      return csz.f.a($$1 -> new kt($$0, $$1), $$0x -> $$0x.c);
-   }
-
-   public kt(kw<kt> $$0, csz $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
    }
 
    @Override
-   public String a(iy.a $$0) {
-      gn $$1 = new gn(this.c.g(), this.c.a());
-      return ld.j.b(this.a()) + " " + $$1.a($$0);
+   public String a(iz.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", le.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i);
    }
 
-   @Override
-   public kw<kt> a() {
-      return this.b;
+   public Vector3f d() {
+      return this.h;
    }
 
-   public csz b() {
-      return this.c;
+   public float e() {
+      return this.i;
    }
 }

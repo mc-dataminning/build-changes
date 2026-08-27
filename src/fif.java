@@ -1,64 +1,53 @@
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import java.util.List;
 
-public class fif {
-   private static long a = 0L;
+public class fif implements fii {
+   private static final akm d = new akm("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public static long a() {
-      if (a == 0L) {
-         MemoryStack $$0 = MemoryStack.stackPush();
+   public fif(af $$0) {
+      this.e = $$0;
+   }
 
-         try {
-            PointerBuffer $$1 = $$0.mallocPointer(1);
-            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-            a = $$1.get();
-         } catch (Throwable var4) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var3) {
-                  var4.addSuppressed(var3);
+   @Override
+   public fii.a a(ffm $$0, fij $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<axq> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayd.d(ayd.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ayd.d(ayd.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+
+               for (axq $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
                }
             }
-
-            throw var4;
          }
 
-         if ($$0 != null) {
-            $$0.close();
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ak().a(gre.a(avh.Au, 1.0F, 1.0F));
+            }
          }
-      }
 
-      return a;
-   }
-
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
-   }
-
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
-
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
-
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      if (a != 0L) {
-         FreeType.FT_Done_Library(a);
-         a = 0L;
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fii.a.b : fii.a.a;
+      } else {
+         return fii.a.b;
       }
    }
 }

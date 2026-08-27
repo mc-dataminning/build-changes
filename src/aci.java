@@ -1,45 +1,60 @@
-public class aci implements zb<abm> {
-   public static final ys<vu, aci> a = zb.a(aci::a, aci::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-   public aci(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record aci(int b, int c, int d, List<aci.a> e) implements ze<abq> {
+   public static final yv<wi, aci> a = yv.a(yt.f, aci::e, yt.f, aci::f, yt.f, aci::g, aci.a.a.a(yt.a()), aci::h, aci::new);
 
-   private aci(vu $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-   }
-
-   private void a(vu $$0) {
-      $$0.k(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   public aci(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new aci.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xa::a))).toList()
+      );
    }
 
    @Override
-   public zd<aci> a() {
-      return afx.v;
+   public zg<aci> a() {
+      return agb.r;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
    }
 
    public int e() {
-      return this.c;
+      return this.b;
    }
 
    public int f() {
+      return this.c;
+   }
+
+   public int g() {
       return this.d;
+   }
+
+   public List<aci.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<wx> c) {
+      public static final yv<wi, aci.a> a = yv.a(yt.k, aci.a::a, wz.e, aci.a::b, aci.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<wx> b() {
+         return this.c;
+      }
    }
 }

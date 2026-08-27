@@ -1,135 +1,77 @@
-import javax.annotation.Nullable;
+public class cpm extends cot {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bpn p;
 
-public class cpm implements bpf {
-   private final cza b;
-   private final jf<csz> c = jf.a(3, csz.i);
-   @Nullable
-   private czb d;
-   private int e;
-   private int f;
-
-   public cpm(cza $$0) {
-      this.b = $$0;
+   public cpm(int $$0, clv $$1) {
+      this($$0, $$1, new bqd(9));
    }
 
-   @Override
-   public int b() {
-      return this.c.size();
-   }
+   public cpm(int $$0, clv $$1, bpn $$2) {
+      super(cqa.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.l);
 
-   @Override
-   public boolean c() {
-      for (csz $$0 : this.c) {
-         if (!$$0.d()) {
-            return false;
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cqo($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public csz a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public csz a(int $$0, int $$1) {
-      csz $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.d()) {
-         return bpg.a(this.c, $$0, $$2.G());
-      } else {
-         csz $$3 = bpg.a(this.c, $$0, $$1);
-         if (!$$3.d() && this.d($$0)) {
-            this.f();
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cqo($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
          }
-
-         return $$3;
       }
-   }
 
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public csz b(int $$0) {
-      return bpg.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, csz $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.a($$1));
-      if (this.d($$0)) {
-         this.f();
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cqo($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(clh $$0) {
-      return this.b.gp() == $$0;
+   public boolean a(clw $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      csz $$0;
-      csz $$1;
-      if (this.c.get(0).d()) {
-         $$0 = this.c.get(1);
-         $$1 = csz.i;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.d()) {
-         this.a(2, csz.i);
-         this.f = 0;
-      } else {
-         czc $$4 = this.b.gr();
-         if (!$$4.isEmpty()) {
-            czb $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
+   public cto a(clw $$0, int $$1) {
+      cto $$2 = cto.i;
+      cqo $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cto $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cto.i;
             }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, csz.i);
-               this.f = 0;
-            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cto.i;
          }
 
-         this.b.n(this.a(2));
+         if ($$4.e()) {
+            $$3.e(cto.i);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.I() == $$2.I()) {
+            return cto.i;
+         }
+
+         $$3.a($$0, $$4);
       }
-   }
 
-   @Nullable
-   public czb g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
+      return $$2;
    }
 
    @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   public void b(clw $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

@@ -1,85 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class gan extends gay {
+   private final gat a;
 
-public abstract class gan extends clh {
-   @Nullable
-   private fwh g;
-   protected etp b;
-   public float c;
-   public float d;
-   public float e;
-   public final fvw f;
-
-   public gan(fvw $$0, GameProfile $$1) {
-      super($$0, $$0.U(), $$0.V(), $$1);
-      this.b = etp.b;
-      this.f = $$0;
+   protected gan(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public boolean N_() {
-      fwh $$0 = this.a();
-      return $$0 != null && $$0.e() == daa.d;
+   public gac b() {
+      return gac.b;
    }
 
    @Override
-   public boolean f() {
-      fwh $$0 = this.a();
-      return $$0 != null && $$0.e() == daa.b;
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   @Nullable
-   protected fwh a() {
-      if (this.g == null) {
-         this.g = fde.Q().L().a(this.cx());
+   public static class a implements gab<lb> {
+      private final gat a;
+
+      public a(gat $$0) {
+         this.a = $$0;
       }
 
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dq();
-      super.l();
-   }
-
-   public etp E(float $$0) {
-      return this.b.a(this.dq(), (double)$$0);
-   }
-
-   public gny b() {
-      fwh $$0 = this.a();
-      return $$0 == null ? gnq.a(this.cx()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.gb().b) {
-         $$0 *= 1.1F;
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gan $$8 = new gan($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
-
-      $$0 *= ((float)this.g(bth.r) / this.gb().b() + 1.0F) / 2.0F;
-      if (this.gb().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      csz $$1 = this.fv();
-      if (this.ft()) {
-         if ($$1.a(ctc.ou)) {
-            int $$2 = this.fx();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (fde.Q().m.aA().a() && this.gy()) {
-            return 0.1F;
-         }
-      }
-
-      return axz.i(fde.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

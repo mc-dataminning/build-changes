@@ -1,29 +1,19 @@
-public class aeh implements zb<abm> {
-   public static final ys<vu, aeh> a = zb.a(aeh::a, aeh::new);
-   private final double b;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aeh(dry $$0) {
-      this.b = $$0.k();
-   }
-
-   private aeh(vu $$0) {
-      this.b = $$0.readDouble();
-   }
-
-   private void a(vu $$0) {
-      $$0.a(this.b);
-   }
+public record aeh(wx b, Optional<byte[]> c) implements ze<abq> {
+   public static final yv<ByteBuf, aeh> a = yv.a(wz.f, aeh::b, yt.j.a(yt::a), aeh::e, aeh::new);
 
    @Override
-   public zd<aeh> a() {
-      return afx.at;
+   public zg<aeh> a() {
+      return agb.ap;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

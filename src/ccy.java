@@ -1,119 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class ccy {
-   private static final int a = 10;
+public abstract class ccy<E extends bso> {
+   private static final ayk a = ayk.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final cdf d = cdf.b().a(16.0);
+   private static final cdf e = cdf.b().a(16.0).e();
+   private static final cdf f = cdf.a().a(16.0);
+   private static final cdf g = cdf.a().a(16.0).e();
+   private static final cdf h = cdf.a().a(16.0).d();
+   private static final cdf i = cdf.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public static in a(ayg $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new in($$3, $$4, $$5);
+   public ccy(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   @Nullable
-   public static in a(ayg $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = axz.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)axz.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return in.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
+   public ccy() {
+      this(20);
+   }
+
+   public final void b(aqm $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
       }
    }
 
-   @VisibleForTesting
-   public static in a(in $$0, int $$1, Predicate<in> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         in $$3 = $$0.c();
+   protected abstract void a(aqm var1, E var2);
 
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
+   public abstract Set<cbs<?>> a();
 
-         return $$3;
-      }
+   public static boolean b(bso $$0, bso $$1) {
+      return $$0.dS().b(cbs.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   @VisibleForTesting
-   public static in a(in $$0, int $$1, int $$2, Predicate<in> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         in $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         in $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            in $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
+   public static boolean c(bso $$0, bso $$1) {
+      return $$0.dS().b(cbs.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
    }
 
-   @Nullable
-   public static etp a(bsi $$0, Supplier<in> $$1) {
-      return a($$1, $$0::h);
-   }
-
-   @Nullable
-   public static etp a(Supplier<in> $$0, ToDoubleFunction<in> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      in $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         in $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? etp.c($$3) : null;
-   }
-
-   public static in a(bsi $$0, int $$1, ayg $$2, in $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.ga() && $$1 > 1) {
-         in $$6 = $$0.fX();
-         if ($$0.ds() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dy() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return in.a((double)$$4 + $$0.ds(), (double)$$3.v() + $$0.du(), (double)$$5 + $$0.dy());
+   public static boolean d(bso $$0, bso $$1) {
+      return $$0.dS().b(cbs.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

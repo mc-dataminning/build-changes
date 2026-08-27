@@ -1,28 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
 import java.util.Set;
 
-public class ccm extends ccj<bsa> {
+public class ccm extends ccy<bso> {
    @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.of(cbd.i);
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of(cbs.x, cbs.y);
    }
 
    @Override
-   protected void a(aqh $$0, bsa $$1) {
-      $$1.dQ().a(cbd.i, this.a($$1));
-   }
+   protected void a(aqm $$0, bso $$1) {
+      btq<?> $$2 = $$1.dS();
+      bqn $$3 = $$1.eC();
+      if ($$3 != null) {
+         $$2.a(cbs.x, $$1.eC());
+         bru $$4 = $$3.d();
+         if ($$4 instanceof bso) {
+            $$2.a(cbs.y, (bso)$$4);
+         }
+      } else {
+         $$2.b(cbs.x);
+      }
 
-   private List<bsa> a(bsa $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bsa $$0) {
-      return $$0.ai() == brn.bi && $$0.p_();
-   }
-
-   private cbf c(bsa $$0) {
-      return $$0.dQ().c(cbd.h).orElse(cbf.a());
+      $$2.c(cbs.y).ifPresent($$2x -> {
+         if (!$$2x.bD() || $$2x.dP() != $$0) {
+            $$2.b(cbs.y);
+         }
+      });
    }
 }

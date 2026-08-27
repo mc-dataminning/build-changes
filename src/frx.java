@@ -1,51 +1,75 @@
-public class frx<T extends cjg> extends fut<T> {
-   public frx(fvb $$0) {
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+
+public class frx extends frw {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String w = "shoulder_stick";
+   private static final String x = "base_plate";
+   private final fvw y;
+   private final fvw z;
+   private final fvw A;
+   private final fvw B;
+
+   public frx(fvw $$0) {
       super($$0);
+      this.y = $$0.b("right_body_stick");
+      this.z = $$0.b("left_body_stick");
+      this.A = $$0.b("shoulder_stick");
+      this.B = $$0.b("base_plate");
+      this.l.k = false;
    }
 
-   public static fvh a(fvf $$0) {
-      fvj $$1 = fso.a($$0, 0.0F);
-      fvk $$2 = $$1.a();
-      $$2.a("left_arm", fvg.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvd.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", fvg.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fvd.a(1.9F, 12.0F, 0.0F));
-      return fvh.a($$1, 64, 64);
+   public static fwc c() {
+      fwe $$0 = ftj.a(fwa.a, 0.0F);
+      fwf $$1 = $$0.a();
+      $$1.a("head", fwb.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fvy.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", fwb.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fvy.a);
+      $$1.a("right_arm", fwb.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvy.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fwb.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fvy.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fwb.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fvy.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", fwb.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fvy.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", fwb.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fvy.a);
+      $$1.a("left_body_stick", fwb.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fvy.a);
+      $$1.a("shoulder_stick", fwb.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fvy.a);
+      $$1.a("base_plate", fwb.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fvy.a(0.0F, 12.0F, 0.0F));
+      return fwc.a($$0, 64, 64);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fso.a.a;
-      this.r = fso.a.a;
-      csz $$4 = $$0.b(bpl.a);
-      if ($$4.a(ctc.vP) && $$0.gh()) {
-         if ($$0.fs() == bru.b) {
-            this.s = fso.a.e;
-         } else {
-            this.r = fso.a.e;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public void a(chw $$0, float $$1, float $$2, float $$3) {
+      this.B.e = 0.0F;
+      this.B.f = (float) (Math.PI / 180.0) * -ayd.j($$3, $$0.O, $$0.dF());
+      this.B.g = 0.0F;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   @Override
+   public void a(chw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fso.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
-      }
+      this.o.k = $$0.v();
+      this.n.k = $$0.v();
+      this.B.k = !$$0.y();
+      this.y.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.y.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.y.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.z.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.z.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.z.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.A.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.A.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.A.g = (float) (Math.PI / 180.0) * $$0.B().d();
+   }
 
-      if (this.s == fso.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
-      }
+   @Override
+   protected Iterable<fvw> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
+   }
 
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * axz.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * axz.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * axz.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * axz.a(0.1F * $$3);
-         this.k.e = 0.0F;
-      }
+   @Override
+   public void a(bsi $$0, eys $$1) {
+      fvw $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

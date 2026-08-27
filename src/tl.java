@@ -1,36 +1,161 @@
-import java.util.Optional;
+import com.google.common.base.MoreObjects;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
-public class tl implements sz.c {
-   private static final int c = 5;
-   private static final int d = 6;
-   private final int e;
-   private int f;
-   private etk g;
-   private final in.a h;
-   private final in i;
+class tl implements ta {
+   private int a = 0;
+   private int b = 0;
 
-   public tl(in $$0, int $$1) {
-      this.e = $$1;
-      this.h = $$0.j();
-      this.g = new etk(this.h);
-      this.i = $$0;
+   public tl() {
    }
 
    @Override
-   public Optional<sw> spawnStructure(sw $$0) {
-      in $$1 = new in(this.h);
-      $$0.b($$1);
-      $$0.n();
-      etk $$2 = tm.a($$0.e());
-      this.g = this.g.b($$2);
-      this.h.e((int)$$2.b() + 5, 0, 0);
-      if (++this.f >= this.e) {
-         this.f = 0;
-         this.h.e(0, 0, (int)this.g.d() + 6);
-         this.h.p(this.i.u());
-         this.g = new etk(this.h);
+   public void a(sz $$0) {
+      a($$0, dea.eq);
+      this.a++;
+   }
+
+   private void a(sz $$0, tc $$1, boolean $$2) {
+      tm $$3 = $$0.z();
+      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
+      if (!$$3.b()) {
+         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
       }
 
-      return Optional.of($$0);
+      $$4 = $$4 + "]";
+      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.k() + "ms";
+      String $$6 = String.format("%-53s%s", $$4, $$5);
+      if ($$2) {
+         a($$0, $$6);
+      } else {
+         a($$0.f(), n.m, $$6);
+      }
+
+      if ($$3.a(this.a, this.b)) {
+         $$1.a($$0);
+      }
+   }
+
+   @Override
+   public void a(sz $$0, tc $$1) {
+      this.b++;
+      if ($$0.z().c()) {
+         this.a($$0, $$1, true);
+      } else if (!$$0.w()) {
+         a($$0, $$0.b() + " passed! (" + $$0.k() + "ms)");
+      } else {
+         if (this.b >= $$0.y()) {
+            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+         } else {
+            a($$0.f(), n.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
+            $$1.a($$0);
+         }
+      }
+   }
+
+   @Override
+   public void b(sz $$0, tc $$1) {
+      if (!$$0.w()) {
+         a($$0, $$0.m());
+         if ($$0.z().c()) {
+            this.a($$0, $$1, false);
+         }
+      } else {
+         tt $$2 = $$0.u();
+         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
+         if ($$2.k() > 1) {
+            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
+         }
+
+         a($$0.f(), n.o, $$3);
+         if ($$0.x() - this.a + this.b >= $$0.y()) {
+            $$1.a($$0);
+         } else {
+            a($$0, new sp(this.a, this.b, $$0));
+         }
+      }
+   }
+
+   @Override
+   public void a(sz $$0, sz $$1, tc $$2) {
+      $$1.a(this);
+   }
+
+   public static void a(sz $$0, String $$1) {
+      a($$0, dea.en);
+      b($$0, $$1);
+   }
+
+   private static void b(sz $$0, String $$1) {
+      a($$0.f(), n.k, $$1);
+      th.b($$0);
+   }
+
+   protected static void a(sz $$0, Throwable $$1) {
+      a($$0, $$0.q() ? dea.ew : dea.ej);
+      c($$0, ac.c($$1));
+      b($$0, $$1);
+   }
+
+   protected static void b(sz $$0, Throwable $$1) {
+      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ac.c($$1.getCause()));
+      String $$3 = ($$0.q() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
+      a($$0.f(), $$0.q() ? n.m : n.o, $$3);
+      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
+      if ($$4 instanceof ss $$5) {
+         a($$0.f(), $$5.c(), $$5.a());
+      }
+
+      th.a($$0);
+   }
+
+   protected static void a(sz $$0, ddy $$1) {
+      aqm $$2 = $$0.f();
+      io $$3 = $$0.c();
+      io $$4 = new io(-1, -1, -1);
+      io $$5 = elj.a($$3.a((js)$$4), div.a, $$0.t(), $$3);
+      $$2.b($$5, dea.fO.n().a($$0.t()));
+      io $$6 = $$5.b(0, 1, 0);
+      $$2.b($$6, $$1.n());
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            io $$9 = $$5.b($$7, -1, $$8);
+            $$2.b($$9, dea.ci.n());
+         }
+      }
+   }
+
+   private static void c(sz $$0, String $$1) {
+      aqm $$2 = $$0.f();
+      io $$3 = $$0.c();
+      io $$4 = new io(-1, 1, -1);
+      io $$5 = elj.a($$3.a((js)$$4), div.a, $$0.t(), $$3);
+      $$2.b($$5, dea.oa.n().a($$0.t()));
+      drb $$6 = $$2.a_($$5);
+      cto $$7 = a($$0.b(), $$0.q(), $$1);
+      dij.a(null, $$2, $$5, $$6, $$7);
+   }
+
+   private static cto a(String $$0, boolean $$1, String $$2) {
+      StringBuffer $$3 = new StringBuffer();
+      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$3.append($$1x).append('\n'));
+      if (!$$1) {
+         $$3.append("(optional)\n");
+      }
+
+      $$3.append("-------------------\n");
+      cto $$4 = new cto(ctr.tZ);
+      $$4.b(kb.H, new cww(List.of(ard.a($$3 + $$2))));
+      return $$4;
+   }
+
+   protected static void a(aqm $$0, n $$1, String $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(wx.b($$2).a($$1)));
+   }
+
+   private static void a(aqm $$0, io $$1, String $$2) {
+      aga.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
    }
 }

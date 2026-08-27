@@ -1,37 +1,13 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cci {
-   private final bsc a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cci(bsc $$0) {
-      this.a = $$0;
+public class cci extends ccy<bso> {
+   @Override
+   protected void a(aqm $$0, bso $$1) {
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean a(brh $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dN().af().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dN().af().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$2;
-      }
+   @Override
+   public Set<cbs<?>> a() {
+      return ImmutableSet.of();
    }
 }

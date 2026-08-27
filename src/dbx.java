@@ -1,76 +1,111 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public abstract class dbx extends dde {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final eui h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eui b = euf.a(
-      euf.b(), euf.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ett.e
+public class dbx {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dbx a = new dbx(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<dbx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dwp.a.c, dyw.c.promotePartial(ac.a("Carver: ", c::error)), ayx.a(dwp.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               egn.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dbx::new)
    );
-   protected final jt.a c;
+   private final Map<dwp.a, jb<dyw<?>>> d;
+   private final List<jb<egn>> e;
+   private final Supplier<List<dzk<?, ?>>> f;
+   private final Supplier<Set<egn>> g;
 
-   @Override
-   protected abstract MapCodec<? extends dbx> a();
-
-   public dbx(dqg.d $$0, jt.a $$1) {
-      super($$0);
-      this.c = $$1;
+   dbx(Map<dwp.a, jb<dyw<?>>> $$0, List<jb<egn>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jb::a).map(ix::a).flatMap(egn::a).filter($$0xx -> $$0xx.b() == dzx.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jb::a).map(ix::a).collect(Collectors.toSet()));
    }
 
-   protected double b(dqh $$0) {
-      return 0.0;
+   public Iterable<ix<dyw<?>>> a(dwp.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
    }
 
-   protected boolean a(dqh $$0, in $$1, brh $$2) {
-      return $$2.du() < (double)$$1.v() + this.b($$0) && $$2.cI().e > (double)$$1.v() + 0.25;
+   public List<dzk<?, ?>> a() {
+      return this.f.get();
    }
 
-   @Override
-   protected bpo a(csz $$0, dqh $$1, dad $$2, in $$3, clh $$4, bpl $$5, etl $$6) {
-      jt $$7 = this.c.b().get($$0.f());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   public List<jb<egn>> b() {
+      return this.e;
    }
 
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return b;
+   public boolean a(egn $$0) {
+      return this.g.get().contains($$0);
    }
 
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2) {
-      return h;
-   }
+   public static class a extends dbx.b {
+      private final iy<egn> a;
+      private final iy<dyw<?>> b;
 
-   @Override
-   protected boolean c_(dqh $$0) {
-      return true;
-   }
+      public a(iy<egn> $$0, iy<dyw<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   protected boolean a(dqh $$0, emp $$1) {
-      return false;
-   }
+      public dbx.a a(dwp.b $$0, akl<egn> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
 
-   public abstract boolean d(dqh var1);
-
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      in $$4 = diw.a((dad)$$1, $$2);
-      if ($$4 != null) {
-         elz $$5 = diw.a($$1, $$4);
-         if ($$5 != emb.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
+      public dbx.a a(dwp.a $$0, akl<dyw<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
       }
    }
 
-   protected boolean a(elz $$0) {
-      return false;
-   }
+   public static class b {
+      private final Map<dwp.a, List<ix<dyw<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<ix<egn>>> b = Lists.newArrayList();
 
-   protected void a(dqh $$0, dad $$1, in $$2, elz $$3) {
+      public dbx.b a(dwp.b $$0, ix<egn> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dbx.b a(int $$0, ix<egn> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dbx.b a(dwp.a $$0, ix<dyw<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dbx a() {
+         return new dbx(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> jb.a((List)$$0.getValue()))),
+            this.b.stream().map(jb::a).collect(ImmutableList.toImmutableList())
+         );
+      }
    }
 }

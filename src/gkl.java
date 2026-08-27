@@ -1,24 +1,16 @@
-public class gkl extends gkt<chz, frv<chz>> {
-   private static final akh a = new akh("textures/entity/creeper/creeper_armor.png");
-   private final frv<chz> b;
+public class gkl extends giz<cff, fve<cff>> {
+   private static final akm a = new akm("textures/entity/turtle/big_sea_turtle.png");
 
-   public gkl(gis<chz, frv<chz>> $$0, fux $$1) {
-      super($$0);
-      this.b = new frv<>($$1.a(fva.I));
+   public gkl(ght.a $$0) {
+      super($$0, new fve<>($$0.a(fvv.bN)), 0.7F);
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   protected float a(cff $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.83F : $$1;
    }
 
-   @Override
-   protected akh a() {
+   public akm b(cff $$0) {
       return a;
-   }
-
-   @Override
-   protected fsb<chz> b() {
-      return this.b;
    }
 }

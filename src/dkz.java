@@ -1,53 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkz extends dke {
-   public static final MapCodec<dkz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dru.a.fieldOf("wood_type").forGetter(dke::d), u()).apply($$0, dkz::new));
-   public static final drh b = dqx.ba;
-
+public interface dkz extends def, dip {
    @Override
-   public MapCodec<dkz> a() {
-      return a;
-   }
-
-   public dkz(dru $$0, dqg.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   default boolean a(@Nullable clw $$0, dad $$1, io $$2, drb $$3, emt $$4) {
+      return $$4 == emv.c;
    }
 
    @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return $$1.a_($$2.d()).e();
+   default boolean a(day $$0, io $$1, drb $$2, emu $$3) {
+      if (!$$2.c(drr.C) && $$3.a() == emv.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(drr.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      ema $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, Integer.valueOf(drn.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == emb.c));
+   default cto a(@Nullable clw $$0, day $$1, io $$2, drb $$3) {
+      if ($$3.c(drr.C)) {
+         $$1.a($$2, $$3.a(drr.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cto(ctr.qz);
+      } else {
+         return cto.i;
+      }
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return $$1 == is.a && !this.a($$0, $$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(dqh $$0) {
-      return drn.b($$0.c(b));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b, f);
+   default Optional<avg> as_() {
+      return emv.c.j();
    }
 }

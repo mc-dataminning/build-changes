@@ -1,192 +1,246 @@
-public class fnd extends fld {
-   private static final wu a = wu.c("jigsaw_block.joint_label");
-   private static final wu b = wu.c("jigsaw_block.pool");
-   private static final wu c = wu.c("jigsaw_block.name");
-   private static final wu d = wu.c("jigsaw_block.target");
-   private static final wu r = wu.c("jigsaw_block.final_state");
-   private static final wu s = wu.c("jigsaw_block.placement_priority");
-   private static final wu u = wu.c("jigsaw_block.placement_priority.tooltip");
-   private static final wu v = wu.c("jigsaw_block.selection_priority");
-   private static final wu w = wu.c("jigsaw_block.selection_priority.tooltip");
-   private final dom x;
-   private ffn y;
-   private ffn z;
-   private ffn A;
-   private ffn B;
-   private ffn C;
-   private ffn D;
-   int E;
-   private boolean F = true;
-   private ffl<dom.a> G;
-   private ffe H;
-   private ffe I;
-   private dom.a J;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fnd(dom $$0) {
-      super(fcw.a);
+public class fnd extends fly {
+   public static final int a = 16;
+   public static final int b = 36;
+   public static final int c = 30;
+   public static final fnd.a d = new fnd.a(List.of());
+   public static final akm r = new akm("textures/gui/book.png");
+   protected static final int s = 114;
+   protected static final int u = 128;
+   protected static final int v = 192;
+   protected static final int w = 192;
+   private fnd.a x;
+   private int y;
+   private List<axq> z = Collections.emptyList();
+   private int A = -1;
+   private wx B = ww.a;
+   private foe C;
+   private foe D;
+   private final boolean E;
+
+   public fnd(fnd.a $$0) {
+      this($$0, true);
+   }
+
+   public fnd() {
+      this(d, false);
+   }
+
+   private fnd(fnd.a $$0, boolean $$1) {
+      super(fdr.a);
       this.x = $$0;
+      this.E = $$1;
    }
 
-   private void m() {
-      this.D();
-      this.m.a(null);
+   public void a(fnd.a $$0) {
+      this.x = $$0;
+      this.y = ayd.a(this.y, 0, $$0.a());
+      this.J();
+      this.A = -1;
    }
 
-   private void C() {
-      this.m.a(null);
-   }
-
-   private void D() {
-      this.m
-         .L()
-         .b(new ahp(this.x.az_(), new akh(this.y.a()), new akh(this.z.a()), new akh(this.A.a()), this.B.a(), this.J, this.a(this.C.a()), this.a(this.D.a())));
-   }
-
-   private int a(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   public boolean a(int $$0) {
+      int $$1 = ayd.a($$0, 0, this.x.a() - 1);
+      if ($$1 != this.y) {
+         this.y = $$1;
+         this.J();
+         this.A = -1;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void E() {
-      this.m.L().b(new agu(this.x.az_(), this.E, this.F));
-   }
-
-   @Override
-   public void d() {
-      this.C();
+   protected boolean b(int $$0) {
+      return this.a($$0);
    }
 
    @Override
    protected void aM_() {
-      this.A = new ffn(this.p, this.n / 2 - 153, 20, 300, 20, b);
-      this.A.f(128);
-      this.A.a(this.x.d().a().toString());
-      this.A.b($$0x -> this.F());
-      this.d(this.A);
-      this.y = new ffn(this.p, this.n / 2 - 153, 55, 300, 20, c);
-      this.y.f(128);
-      this.y.a(this.x.b().toString());
-      this.y.b($$0x -> this.F());
-      this.d(this.y);
-      this.z = new ffn(this.p, this.n / 2 - 153, 90, 300, 20, d);
-      this.z.f(128);
-      this.z.a(this.x.c().toString());
-      this.z.b($$0x -> this.F());
-      this.d(this.z);
-      this.B = new ffn(this.p, this.n / 2 - 153, 125, 300, 20, r);
-      this.B.f(256);
-      this.B.a(this.x.f());
-      this.d(this.B);
-      this.C = new ffn(this.p, this.n / 2 - 153, 160, 98, 20, v);
-      this.C.f(3);
-      this.C.a(Integer.toString(this.x.l()));
-      this.C.a(fgp.a(w));
-      this.d(this.C);
-      this.D = new ffn(this.p, this.n / 2 - 50, 160, 98, 20, s);
-      this.D.f(3);
-      this.D.a(Integer.toString(this.x.k()));
-      this.D.a(fgp.a(u));
-      this.d(this.D);
-      this.J = this.x.j();
-      this.G = this.c(ffl.<dom.a>a(dom.a::a).a(dom.a.values()).a(this.J).a().a(this.n / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.J = $$1));
-      boolean $$0 = dhg.m(this.x.n()).o().b();
-      this.G.j = $$0;
-      this.G.k = $$0;
-      this.c(new ffa(this.n / 2 - 154, 185, 100, 20, wt.a, 0.0) {
-         {
-            this.b();
-         }
-
-         @Override
-         protected void b() {
-            this.b(wu.a("jigsaw_block.levels", fnd.this.E));
-         }
-
-         @Override
-         protected void a() {
-            fnd.this.E = axz.a(axz.b(0.0, 20.0, this.c));
-         }
-      });
-      this.c(ffl.b(this.F).a(this.n / 2 - 50, 185, 100, 20, wu.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.F = $$1));
-      this.I = this.c((ffe)ffe.a(wu.c("jigsaw_block.generate"), $$0x -> {
-         this.m();
-         this.E();
-      }).a(this.n / 2 + 54, 185, 100, 20).a());
-      this.H = this.c((ffe)ffe.a(wt.d, $$0x -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c((ffe)ffe.a(wt.e, $$0x -> this.C()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.F();
+      this.m();
+      this.C();
    }
 
-   @Override
-   protected void aC_() {
-      this.b(this.A);
+   protected void m() {
+      this.c(ffz.a(ww.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
    }
 
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   protected void C() {
+      int $$0 = (this.n - 192) / 2;
+      int $$1 = 2;
+      this.C = this.c(new foe($$0 + 116, 159, true, $$0x -> this.F(), this.E));
+      this.D = this.c(new foe($$0 + 43, 159, false, $$0x -> this.E(), this.E));
+      this.J();
    }
 
-   private void F() {
-      boolean $$0 = akh.i(this.y.a()) && akh.i(this.z.a()) && akh.i(this.A.a());
-      this.H.j = $$0;
-      this.I.j = $$0;
+   private int D() {
+      return this.x.a();
    }
 
-   @Override
-   public void a(fde $$0, int $$1, int $$2) {
-      String $$3 = this.y.a();
-      String $$4 = this.z.a();
-      String $$5 = this.A.a();
-      String $$6 = this.B.a();
-      String $$7 = this.C.a();
-      String $$8 = this.D.a();
-      int $$9 = this.E;
-      dom.a $$10 = this.J;
-      this.b($$0, $$1, $$2);
-      this.y.a($$3);
-      this.z.a($$4);
-      this.A.a($$5);
-      this.B.a($$6);
-      this.E = $$9;
-      this.J = $$10;
-      this.G.a($$10);
-      this.C.a($$7);
-      this.D.a($$8);
+   protected void E() {
+      if (this.y > 0) {
+         this.y--;
+      }
+
+      this.J();
+   }
+
+   protected void F() {
+      if (this.y < this.D() - 1) {
+         this.y++;
+      }
+
+      this.J();
+   }
+
+   private void J() {
+      this.C.k = this.y < this.D() - 1;
+      this.D.k = this.y > 0;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if (super.a($$0, $$1, $$2)) {
          return true;
-      } else if (!this.H.j || $$0 != 257 && $$0 != 335) {
-         return false;
       } else {
-         this.m();
-         return true;
+         switch ($$0) {
+            case 266:
+               this.D.b();
+               return true;
+            case 267:
+               this.C.b();
+               return true;
+            default:
+               return false;
+         }
       }
    }
 
    @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, b, this.n / 2 - 153, 10, 10526880);
-      this.A.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, c, this.n / 2 - 153, 45, 10526880);
-      this.y.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, d, this.n / 2 - 153, 80, 10526880);
-      this.z.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, r, this.n / 2 - 153, 115, 10526880);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, v, this.n / 2 - 153, 150, 10526880);
-      this.D.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, s, this.n / 2 - 50, 150, 10526880);
-      this.C.a($$0, $$1, $$2, $$3);
-      if (dhg.m(this.x.n()).o().b()) {
-         $$0.b(this.p, a, this.n / 2 + 53, 150, 10526880);
+      int $$4 = (this.n - 192) / 2;
+      int $$5 = 2;
+      if (this.A != this.y) {
+         xc $$6 = this.x.a(this.y);
+         this.z = this.p.c($$6, 114);
+         this.B = wx.a("book.pageIndicator", this.y + 1, Math.max(this.D(), 1));
+      }
+
+      this.A = this.y;
+      int $$7 = this.p.a(this.B);
+      $$0.a(this.p, this.B, $$4 - $$7 + 192 - 44, 18, 0, false);
+      int $$8 = Math.min(128 / 9, this.z.size());
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         axq $$10 = this.z.get($$9);
+         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      }
+
+      xu $$11 = this.b((double)$$1, (double)$$2);
+      if ($$11 != null) {
+         $$0.a(this.p, $$11, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+      $$0.a(r, (this.n - 192) / 2, 2, 0, 0, 192, 192);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         xu $$3 = this.b($$0, $$1);
+         if ($$3 != null && this.a($$3)) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(xu $$0) {
+      wv $$1 = $$0.h();
+      if ($$1 == null) {
+         return false;
+      } else if ($$1.a() == wv.a.e) {
+         String $$2 = $$1.b();
+
+         try {
+            int $$3 = Integer.parseInt($$2) - 1;
+            return this.b($$3);
+         } catch (Exception var5) {
+            return false;
+         }
+      } else {
+         boolean $$4 = super.a($$0);
+         if ($$4 && $$1.a() == wv.a.c) {
+            this.I();
+         }
+
+         return $$4;
+      }
+   }
+
+   protected void I() {
+      this.m.a(null);
+   }
+
+   @Nullable
+   public xu b(double $$0, double $$1) {
+      if (this.z.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = ayd.a($$0 - (double)((this.n - 192) / 2) - 36.0);
+         int $$3 = ayd.a($$1 - 2.0 - 30.0);
+         if ($$2 >= 0 && $$3 >= 0) {
+            int $$4 = Math.min(128 / 9, this.z.size());
+            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
+               int $$5 = $$3 / 9;
+               if ($$5 >= 0 && $$5 < this.z.size()) {
+                  axq $$6 = this.z.get($$5);
+                  return this.m.h.b().a($$6, $$2);
+               } else {
+                  return null;
+               }
+            } else {
+               return null;
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   public static record a(List<wx> a) {
+      public int a() {
+         return this.a.size();
+      }
+
+      public xc a(int $$0) {
+         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xc.b;
+      }
+
+      @Nullable
+      public static fnd.a a(cto $$0) {
+         boolean $$1 = fdz.Q().aT();
+         cwx $$2 = $$0.a(kb.I);
+         if ($$2 != null) {
+            return new fnd.a($$2.a($$1));
+         } else {
+            cww $$3 = $$0.a(kb.H);
+            return $$3 != null ? new fnd.a($$3.a($$1).map(wx::b).toList()) : null;
+         }
+      }
+
+      public List<wx> b() {
+         return this.a;
       }
    }
 }

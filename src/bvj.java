@@ -1,29 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bvj extends bts<bsc> {
-   private final bor c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bvj<E extends bsq> extends bvk<E> {
+   private final awl<ddy> m;
+   private final float n;
+   private final List<bvk.a> o = new ArrayList<>();
+   private boolean p;
 
-   public bvj(bor $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cbd.n, cbe.b, cbd.Q, cbe.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public bvj(bpf $$0, int $$1, int $$2, float $$3, Function<E, avg> $$4, awl<ddy> $$5, float $$6, BiPredicate<E, io> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   protected void a(aqh $$0, bsc $$1, long $$2) {
-      ayg $$3 = $$1.ej();
-      float $$4 = axz.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = axz.g($$1.dD() + 2.0F * $$3.i() * this.d - this.d);
-      etp $$6 = etp.a($$4, $$5);
-      $$1.dQ().a(cbd.n, new btv($$1.bv().e($$6)));
-      $$1.dQ().a(cbd.Q, this.c.a($$3));
+   @Override
+   protected void a(aqm $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.el().i() < this.n;
+   }
+
+   @Override
+   protected Optional<bvk.a> a(aqm $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         io.a $$1 = new io.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bvk.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bvk.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), it.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

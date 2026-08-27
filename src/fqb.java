@@ -1,59 +1,59 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+public class fqb extends fly {
+   private static final wx a = wx.c("gui.abuseReport.title");
+   private static final wx b = wx.c("gui.abuseReport.message");
+   private static final wx c = wx.c("gui.abuseReport.type.chat");
+   private static final wx d = wx.c("gui.abuseReport.type.skin");
+   private static final wx r = wx.c("gui.abuseReport.type.name");
+   private static final int s = 6;
+   private final fly u;
+   private final fxz v;
+   private final fqf w;
+   private final fjq x = fjq.d().a(6);
 
-public record fqb(dwx a, jj<dua> b, dwu c, jd<akq> d, aks e, dax f) {
-   public fqb(dwv $$0, jd<akq> $$1, aks $$2, dax $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+   public fqb(fly $$0, fxz $$1, fqf $$2) {
+      super(a);
+      this.u = $$0;
+      this.v = $$1;
+      this.w = $$2;
    }
 
-   public fqb(dwx $$0, dwu $$1, jd<akq> $$2, aks $$3, dax $$4) {
-      this($$0, $$2.a(akq.c).d(le.aT), $$1, $$2.a(akq.c), $$3, $$4);
+   @Override
+   public wx i() {
+      return ww.a(super.i(), b);
    }
 
-   public fqb a(dwx $$0, dwu $$1) {
-      return new fqb($$0, this.b, $$1, this.d, this.e, this.f);
+   @Override
+   protected void aM_() {
+      this.x.c().b();
+      this.x.a(new fhg(this.l, this.p), this.x.b().e(6));
+      this.x.a(new fgt(b, this.p).b(true), this.x.b().e(6));
+      ffz $$0 = this.x.a(ffz.a(c, $$0x -> this.m.a(new fpx(this.u, this.v, this.w.d()))).a());
+      if (!this.w.k()) {
+         $$0.j = false;
+         $$0.a(fhk.a(wx.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.w.j()) {
+         $$0.j = false;
+         $$0.a(fhk.a(wx.a("gui.socialInteractions.tooltip.report.no_messages", this.w.c())));
+      }
+
+      this.x.a(ffz.a(d, $$0x -> this.m.a(new fqd(this.u, this.v, this.w.d(), this.w.h()))).a());
+      this.x.a(ffz.a(r, $$0x -> this.m.a(new fqa(this.u, this.v, this.w.d(), this.w.c()))).a());
+      this.x.a(fjr.b(20));
+      this.x.a(ffz.a(ww.e, $$0x -> this.d()).a());
+      this.x.a($$1 -> {
+         ffx var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public fqb a(fqb.b $$0) {
-      return new fqb($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      this.x.a();
+      fjk.a(this.x, this.G());
    }
 
-   public fqb a(fqb.a $$0) {
-      return new fqb(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
-   }
-
-   public jk.b a() {
-      return this.d.a();
-   }
-
-   public dwx b() {
-      return this.a;
-   }
-
-   public jj<dua> c() {
-      return this.b;
-   }
-
-   public dwu d() {
-      return this.c;
-   }
-
-   public jd<akq> e() {
-      return this.d;
-   }
-
-   public aks f() {
-      return this.e;
-   }
-
-   public dax g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<jk.b, dwu, dwu> {
-   }
-
-   public interface b extends UnaryOperator<dwx> {
+   @Override
+   public void d() {
+      this.m.a(this.u);
    }
 }

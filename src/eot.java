@@ -1,20 +1,28 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+public class eot {
+   public static final eot a = new eot("advancements");
+   public static final eot b = new eot("stats");
+   public static final eot c = new eot("playerdata");
+   public static final eot d = new eot("players");
+   public static final eot e = new eot("level.dat");
+   public static final eot f = new eot("level.dat_old");
+   public static final eot g = new eot("icon.png");
+   public static final eot h = new eot("session.lock");
+   public static final eot i = new eot("generated");
+   public static final eot j = new eot("datapacks");
+   public static final eot k = new eot("resources.zip");
+   public static final eot l = new eot(".");
+   private final String m;
 
-@FunctionalInterface
-interface eot {
-   eot b = ($$0, $$1) -> false;
-   eot c = ($$0, $$1) -> true;
-
-   boolean expand(eol var1, Consumer<epa> var2);
-
-   default eot and(eot $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   private eot(String $$0) {
+      this.m = $$0;
    }
 
-   default eot or(eot $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   public String a() {
+      return this.m;
+   }
+
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

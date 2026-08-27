@@ -1,4 +1,3 @@
-import com.mojang.serialization.Codec;
-
-public record epc(Codec<? extends epb> a) {
+public interface epc extends eor {
+   void a(io var1, float var2);
 }

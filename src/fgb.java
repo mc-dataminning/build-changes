@@ -1,129 +1,135 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class fgb extends ffk<fgb.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final fkv n;
+public class fgb extends ffq {
+   private static final akm a = new akm("widget/checkbox_selected_highlighted");
+   private static final akm b = new akm("widget/checkbox_selected");
+   private static final akm c = new akm("widget/checkbox_highlighted");
+   private static final akm d = new akm("widget/checkbox");
+   private static final int f = 14737632;
+   private static final int m = 4;
+   private static final int n = 8;
+   private boolean o;
+   private final fgb.b p;
 
-   public fgb(fde $$0, int $$1, int $$2, fkv $$3) {
-      super($$0, $$1, $$3.d.d(), $$3.d.c(), 25);
-      this.e = false;
-      this.n = $$3;
+   fgb(int $$0, int $$1, wx $$2, ffk $$3, boolean $$4, fgb.b $$5) {
+      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
+      this.o = $$4;
+      this.p = $$5;
    }
 
-   public void a(fdh<?> $$0) {
-      this.b(fgb.b.a(this.c.m, $$0, this.n));
+   public static fgb.a a(wx $$0, ffk $$1) {
+      return new fgb.a($$0, $$1);
    }
 
-   public void a(fdh<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         fdh<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fgb.b.a(this.c.m, $$0[$$1], $$2, this.n));
-      }
-   }
-
-   public void a(List<ffc> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
-      }
-   }
-
-   public void a(ffc $$0, @Nullable ffc $$1) {
-      this.b(fgb.a.a($$0, $$1, this.n));
+   public static int a(ffk $$0) {
+      return 9 + 8;
    }
 
    @Override
-   public int b() {
-      return 310;
+   public void b() {
+      this.o = !this.o;
+      this.p.onValueChange(this, this.o);
    }
 
-   @Nullable
-   public ffc b(fdh<?> $$0) {
-      for (fgb.a $$1 : this.aE_()) {
-         if ($$1 instanceof fgb.b $$2) {
-            ffc $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
-            }
+   public boolean a() {
+      return this.o;
+   }
+
+   @Override
+   public void a(fjv $$0) {
+      $$0.a(fju.a, this.aK_());
+      if (this.j) {
+         if (this.aI_()) {
+            $$0.a(fju.d, wx.c("narration.checkbox.usage.focused"));
+         } else {
+            $$0.a(fju.d, wx.c("narration.checkbox.usage.hovered"));
          }
       }
-
-      return null;
    }
 
-   public Optional<fha> e(double $$0, double $$1) {
-      for (fgb.a $$2 : this.aE_()) {
-         for (fha $$3 : $$2.aE_()) {
-            if ($$3.c($$0, $$1)) {
-               return Optional.of($$3);
-            }
-         }
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      fdz $$4 = fdz.Q();
+      RenderSystem.enableDepthTest();
+      ffk $$5 = $$4.h;
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      akm $$6;
+      if (this.o) {
+         $$6 = this.aI_() ? a : b;
+      } else {
+         $$6 = this.aI_() ? c : d;
       }
 
-      return Optional.empty();
+      int $$8 = a($$5);
+      int $$9 = this.C() + $$8 + 4;
+      int $$10 = this.D() + (this.h >> 1) - (9 >> 1);
+      $$0.a($$6, this.C(), this.D(), $$8, $$8);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      $$0.b($$5, this.y(), $$9, $$10, 14737632 | ayd.f(this.l * 255.0F) << 24);
    }
 
-   protected static class a extends ffk.a<fgb.a> {
-      private final List<ffc> a;
-      private final fld b;
-      private static final int c = 160;
+   public static class a {
+      private final wx a;
+      private final ffk b;
+      private int c = 0;
+      private int d = 0;
+      private fgb.b e = fgb.b.a;
+      private boolean f = false;
+      @Nullable
+      private fec<Boolean> g = null;
+      @Nullable
+      private fhk h = null;
 
-      a(List<ffc> $$0, fld $$1) {
-         this.a = ImmutableList.copyOf($$0);
+      a(wx $$0, ffk $$1) {
+         this.a = $$0;
          this.b = $$1;
       }
 
-      public static fgb.a a(List<ffc> $$0, fld $$1) {
-         return new fgb.a($$0, $$1);
+      public fgb.a a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         return this;
       }
 
-      public static fgb.a a(ffc $$0, @Nullable ffc $$1, fld $$2) {
-         return $$1 == null ? new fgb.a(ImmutableList.of($$0), $$2) : new fgb.a(ImmutableList.of($$0, $$1), $$2);
+      public fgb.a a(fgb.b $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      @Override
-      public void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.n / 2 - 155;
-
-         for (ffc $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
-         }
+      public fgb.a a(boolean $$0) {
+         this.f = $$0;
+         this.g = null;
+         return this;
       }
 
-      @Override
-      public List<? extends fha> aE_() {
-         return this.a;
+      public fgb.a a(fec<Boolean> $$0) {
+         this.g = $$0;
+         this.f = $$0.c();
+         return this;
       }
 
-      @Override
-      public List<? extends fiy> b() {
-         return this.a;
+      public fgb.a a(fhk $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fgb a() {
+         fgb.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
+            this.g.a($$1x);
+            this.e.onValueChange($$0x, $$1x);
+         };
+         fgb $$1 = new fgb(this.c, this.d, this.a, this.b, this.f, $$0);
+         $$1.a(this.h);
+         return $$1;
       }
    }
 
-   protected static class b extends fgb.a {
-      final Map<fdh<?>, ffc> a;
+   public interface b {
+      fgb.b a = ($$0, $$1) -> {
+      };
 
-      private b(Map<fdh<?>, ffc> $$0, fkv $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
-      }
-
-      public static fgb.b a(fdi $$0, fdh<?> $$1, fkv $$2) {
-         return new fgb.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
-
-      public static fgb.b a(fdi $$0, fdh<?> $$1, @Nullable fdh<?> $$2, fkv $$3) {
-         ffc $$4 = $$1.a($$0);
-         return $$2 == null ? new fgb.b(ImmutableMap.of($$1, $$4), $$3) : new fgb.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
-      }
+      void onValueChange(fgb var1, boolean var2);
    }
 }

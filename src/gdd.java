@@ -1,100 +1,61 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class gdd implements gpk {
-   private final dqi<dde, dqh> a;
-   private final List<gdf> b;
+public class gdd {
+   private Map<drb, gpw> a = Map.of();
+   private final gqc b;
 
-   public gdd(dqi<dde, dqh> $$0, List<gdf> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gdd(gqc $$0) {
+      this.b = $$0;
    }
 
-   public List<gdf> a() {
+   public gnv a(drb $$0) {
+      return this.b($$0).e();
+   }
+
+   public gpw b(drb $$0) {
+      gpw $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public gqc a() {
       return this.b;
    }
 
-   public Set<gcy> b() {
-      Set<gcy> $$0 = Sets.newHashSet();
-
-      for (gdf $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   public void a(Map<drb, gpw> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gdd $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
+   public static gqd c(drb $$0) {
+      return a(le.e.b($$0.b()), $$0);
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+   public static gqd a(akm $$0, drb $$1) {
+      return new gqd($$0, b($$1.C()));
    }
 
-   @Override
-   public Collection<akh> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
+   public static String b(Map<dse<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
 
-   @Override
-   public void a(Function<akh, gpk> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public goz a(gpd $$0, Function<gpc, gmy> $$1, gph $$2, akh $$3) {
-      gpi.a $$4 = new gpi.a();
-
-      for (gdf $$5 : this.a()) {
-         goz $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
-   }
-
-   public static class a implements JsonDeserializer<gdd> {
-      private final gcr.a a;
-
-      public a(gcr.a $$0) {
-         this.a = $$0;
-      }
-
-      public gdd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gdd(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<gdf> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gdf> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((gdf)$$0.deserialize($$3, gdf.class));
+      for (Entry<dse<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
 
-         return $$2;
+         dse<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
+   }
+
+   private static <T extends Comparable<T>> String a(dse<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

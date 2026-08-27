@@ -1,37 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bty extends btr {
+   private final double b;
+   private final double c;
 
-public class bty extends bts<bsa> {
-   private final cbd<Integer> c;
-
-   public bty(cbd<Integer> $$0) {
-      super(ImmutableMap.of($$0, cbe.a));
-      this.c = $$0;
+   public bty(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
    }
 
-   private Optional<Integer> b(bsa $$0) {
-      return $$0.dQ().c(this.c);
+   public double d() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(aqh $$0, bsa $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(aqh $$0, bsa $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dQ().a(this.c, $$3.get() - 1);
+   public double e() {
+      return this.c;
    }
 
    @Override
-   protected void b(aqh $$0, bsa $$1, long $$2) {
-      $$1.dQ().b(this.c);
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : ayd.a($$0, this.b, this.c);
    }
 }

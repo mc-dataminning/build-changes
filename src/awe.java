@@ -1,109 +1,158 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public final class awe {
+   public static final awl<ctj> a = a("wool");
+   public static final awl<ctj> b = a("planks");
+   public static final awl<ctj> c = a("stone_bricks");
+   public static final awl<ctj> d = a("wooden_buttons");
+   public static final awl<ctj> e = a("stone_buttons");
+   public static final awl<ctj> f = a("buttons");
+   public static final awl<ctj> g = a("wool_carpets");
+   public static final awl<ctj> h = a("wooden_doors");
+   public static final awl<ctj> i = a("wooden_stairs");
+   public static final awl<ctj> j = a("wooden_slabs");
+   public static final awl<ctj> k = a("wooden_fences");
+   public static final awl<ctj> l = a("fence_gates");
+   public static final awl<ctj> m = a("wooden_pressure_plates");
+   public static final awl<ctj> n = a("wooden_trapdoors");
+   public static final awl<ctj> o = a("doors");
+   public static final awl<ctj> p = a("saplings");
+   public static final awl<ctj> q = a("logs_that_burn");
+   public static final awl<ctj> r = a("logs");
+   public static final awl<ctj> s = a("dark_oak_logs");
+   public static final awl<ctj> t = a("oak_logs");
+   public static final awl<ctj> u = a("birch_logs");
+   public static final awl<ctj> v = a("acacia_logs");
+   public static final awl<ctj> w = a("cherry_logs");
+   public static final awl<ctj> x = a("jungle_logs");
+   public static final awl<ctj> y = a("spruce_logs");
+   public static final awl<ctj> z = a("mangrove_logs");
+   public static final awl<ctj> A = a("crimson_stems");
+   public static final awl<ctj> B = a("warped_stems");
+   public static final awl<ctj> C = a("bamboo_blocks");
+   public static final awl<ctj> D = a("wart_blocks");
+   public static final awl<ctj> E = a("banners");
+   public static final awl<ctj> F = a("sand");
+   public static final awl<ctj> G = a("smelts_to_glass");
+   public static final awl<ctj> H = a("stairs");
+   public static final awl<ctj> I = a("slabs");
+   public static final awl<ctj> J = a("walls");
+   public static final awl<ctj> K = a("anvil");
+   public static final awl<ctj> L = a("rails");
+   public static final awl<ctj> M = a("leaves");
+   public static final awl<ctj> N = a("trapdoors");
+   public static final awl<ctj> O = a("small_flowers");
+   public static final awl<ctj> P = a("beds");
+   public static final awl<ctj> Q = a("fences");
+   public static final awl<ctj> R = a("tall_flowers");
+   public static final awl<ctj> S = a("flowers");
+   public static final awl<ctj> T = a("piglin_repellents");
+   public static final awl<ctj> U = a("piglin_loved");
+   public static final awl<ctj> V = a("ignored_by_piglin_babies");
+   public static final awl<ctj> W = a("meat");
+   public static final awl<ctj> X = a("sniffer_food");
+   public static final awl<ctj> Y = a("piglin_food");
+   public static final awl<ctj> Z = a("fox_food");
+   public static final awl<ctj> aa = a("cow_food");
+   public static final awl<ctj> ab = a("goat_food");
+   public static final awl<ctj> ac = a("sheep_food");
+   public static final awl<ctj> ad = a("wolf_food");
+   public static final awl<ctj> ae = a("cat_food");
+   public static final awl<ctj> af = a("horse_food");
+   public static final awl<ctj> ag = a("horse_tempt_items");
+   public static final awl<ctj> ah = a("camel_food");
+   public static final awl<ctj> ai = a("armadillo_food");
+   public static final awl<ctj> aj = a("bee_food");
+   public static final awl<ctj> ak = a("chicken_food");
+   public static final awl<ctj> al = a("frog_food");
+   public static final awl<ctj> am = a("hoglin_food");
+   public static final awl<ctj> an = a("llama_food");
+   public static final awl<ctj> ao = a("llama_tempt_items");
+   public static final awl<ctj> ap = a("ocelot_food");
+   public static final awl<ctj> aq = a("panda_food");
+   public static final awl<ctj> ar = a("pig_food");
+   public static final awl<ctj> as = a("rabbit_food");
+   public static final awl<ctj> at = a("strider_food");
+   public static final awl<ctj> au = a("strider_tempt_items");
+   public static final awl<ctj> av = a("turtle_food");
+   public static final awl<ctj> aw = a("parrot_food");
+   public static final awl<ctj> ax = a("parrot_poisonous_food");
+   public static final awl<ctj> ay = a("axolotl_food");
+   public static final awl<ctj> az = a("gold_ores");
+   public static final awl<ctj> aA = a("iron_ores");
+   public static final awl<ctj> aB = a("diamond_ores");
+   public static final awl<ctj> aC = a("redstone_ores");
+   public static final awl<ctj> aD = a("lapis_ores");
+   public static final awl<ctj> aE = a("coal_ores");
+   public static final awl<ctj> aF = a("emerald_ores");
+   public static final awl<ctj> aG = a("copper_ores");
+   public static final awl<ctj> aH = a("non_flammable_wood");
+   public static final awl<ctj> aI = a("soul_fire_base_blocks");
+   public static final awl<ctj> aJ = a("candles");
+   public static final awl<ctj> aK = a("dirt");
+   public static final awl<ctj> aL = a("terracotta");
+   public static final awl<ctj> aM = a("completes_find_tree_tutorial");
+   public static final awl<ctj> aN = a("boats");
+   public static final awl<ctj> aO = a("chest_boats");
+   public static final awl<ctj> aP = a("fishes");
+   public static final awl<ctj> aQ = a("signs");
+   public static final awl<ctj> aR = a("music_discs");
+   public static final awl<ctj> aS = a("creeper_drop_music_discs");
+   public static final awl<ctj> aT = a("coals");
+   public static final awl<ctj> aU = a("arrows");
+   public static final awl<ctj> aV = a("lectern_books");
+   public static final awl<ctj> aW = a("bookshelf_books");
+   public static final awl<ctj> aX = a("beacon_payment_items");
+   public static final awl<ctj> aY = a("stone_tool_materials");
+   public static final awl<ctj> aZ = a("stone_crafting_materials");
+   public static final awl<ctj> ba = a("freeze_immune_wearables");
+   public static final awl<ctj> bb = a("dampens_vibrations");
+   public static final awl<ctj> bc = a("cluster_max_harvestables");
+   public static final awl<ctj> bd = a("compasses");
+   public static final awl<ctj> be = a("hanging_signs");
+   public static final awl<ctj> bf = a("creeper_igniters");
+   public static final awl<ctj> bg = a("noteblock_top_instruments");
+   public static final awl<ctj> bh = a("foot_armor");
+   public static final awl<ctj> bi = a("leg_armor");
+   public static final awl<ctj> bj = a("chest_armor");
+   public static final awl<ctj> bk = a("head_armor");
+   public static final awl<ctj> bl = a("skulls");
+   public static final awl<ctj> bm = a("trimmable_armor");
+   public static final awl<ctj> bn = a("trim_materials");
+   public static final awl<ctj> bo = a("trim_templates");
+   public static final awl<ctj> bp = a("decorated_pot_sherds");
+   public static final awl<ctj> bq = a("decorated_pot_ingredients");
+   public static final awl<ctj> br = a("swords");
+   public static final awl<ctj> bs = a("axes");
+   public static final awl<ctj> bt = a("hoes");
+   public static final awl<ctj> bu = a("pickaxes");
+   public static final awl<ctj> bv = a("shovels");
+   public static final awl<ctj> bw = a("tools");
+   public static final awl<ctj> bx = a("breaks_decorated_pots");
+   public static final awl<ctj> by = a("villager_plantable_seeds");
+   public static final awl<ctj> bz = a("dyeable");
+   public static final awl<ctj> bA = a("enchantable/foot_armor");
+   public static final awl<ctj> bB = a("enchantable/leg_armor");
+   public static final awl<ctj> bC = a("enchantable/chest_armor");
+   public static final awl<ctj> bD = a("enchantable/head_armor");
+   public static final awl<ctj> bE = a("enchantable/armor");
+   public static final awl<ctj> bF = a("enchantable/sword");
+   public static final awl<ctj> bG = a("enchantable/fire_aspect");
+   public static final awl<ctj> bH = a("enchantable/sharp_weapon");
+   public static final awl<ctj> bI = a("enchantable/weapon");
+   public static final awl<ctj> bJ = a("enchantable/mining");
+   public static final awl<ctj> bK = a("enchantable/mining_loot");
+   public static final awl<ctj> bL = a("enchantable/fishing");
+   public static final awl<ctj> bM = a("enchantable/trident");
+   public static final awl<ctj> bN = a("enchantable/durability");
+   public static final awl<ctj> bO = a("enchantable/bow");
+   public static final awl<ctj> bP = a("enchantable/equippable");
+   public static final awl<ctj> bQ = a("enchantable/crossbow");
+   public static final awl<ctj> bR = a("enchantable/vanishing");
+   public static final awl<ctj> bS = a("enchantable/mace");
 
-public class awe {
-   private static final Codec<awe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axh.p.fieldOf("id").forGetter(awe::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, awe::new)
-   );
-   public static final Codec<awe> a = Codec.either(axh.p, b)
-      .xmap($$0 -> (awe)$$0.map($$0x -> new awe($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final akh c;
-   private final boolean d;
-   private final boolean e;
-
-   private awe(akh $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private awe() {
    }
 
-   private awe(axh.g $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
-   }
-
-   private axh.g a() {
-      return new axh.g(this.c, this.d);
-   }
-
-   public static awe a(akh $$0) {
-      return new awe($$0, false, true);
-   }
-
-   public static awe b(akh $$0) {
-      return new awe($$0, false, false);
-   }
-
-   public static awe c(akh $$0) {
-      return new awe($$0, true, true);
-   }
-
-   public static awe d(akh $$0) {
-      return new awe($$0, true, false);
-   }
-
-   public <T> boolean a(awe.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.b(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
-      } else {
-         T $$3 = $$0.a(this.c);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<akh> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public void b(Consumer<akh> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public boolean a(Predicate<akh> $$0, Predicate<akh> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
-      }
-
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
-      }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(akh var1);
-
-      @Nullable
-      Collection<T> b(akh var1);
+   private static awl<ctj> a(String $$0) {
+      return awl.a(lf.G, new akm($$0));
    }
 }

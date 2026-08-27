@@ -1,43 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmi extends dlq implements dkf {
-   public static final MapCodec<dmi> a = b(dmi::new);
-   public static final dqy c = dqx.C;
+public class dmi extends ddo {
+   protected static final MapCodec<lb> c = le.j
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof lb $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dmi> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dmi::new));
+   protected final lb e;
 
    @Override
-   protected MapCodec<? extends dmi> a() {
-      return a;
+   public MapCodec<? extends dmi> a() {
+      return d;
    }
 
-   protected dmi(dqg.d $$0) {
-      super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dqh a(cwi $$0) {
-      ema $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(emb.c)));
+   protected dmi(lb $$0, dra.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, emb.c, emb.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ema b_(dqh $$0) {
-      return $$0.c(c) ? emb.c.a(true) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(c);
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(ky.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

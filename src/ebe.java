@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ebe(edq b, dxg c, bor d, int e) implements ebh {
-   public static final Codec<ebe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edq.a.fieldOf("state_provider").forGetter(ebe::a),
-               dxg.b.fieldOf("target").forGetter(ebe::b),
-               bor.b(0, 8).fieldOf("radius").forGetter(ebe::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ebe::d)
-            )
-            .apply($$0, ebe::new)
-   );
-
-   public edq a() {
-      return this.b;
+public class ebe extends dzx<ect> {
+   public ebe(Codec<ect> $$0) {
+      super($$0);
    }
 
-   public dxg b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dzz<ect> $$0) {
+      ect $$1 = $$0.f();
+      dbs $$2 = $$0.b();
+      io $$3 = $$0.e();
+      drb $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dgg) {
+            if (!$$2.u($$3.c())) {
+               return false;
+            }
 
-   public bor c() {
-      return this.d;
-   }
+            dgg.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
 
-   public int d() {
-      return this.e;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

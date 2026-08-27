@@ -1,61 +1,84 @@
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class dcj extends dbv {
-   public static final MapCodec<dcj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(crs.q.fieldOf("color").forGetter(dbv::b), u()).apply($$0, dcj::new));
-   public static final drh b = dqx.ba;
-   private static final Map<crs, dde> c = Maps.newHashMap();
-   private static final eui d = dde.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dcj extends dca {
+   private static final MapCodec<ix<dbw>> d = dbw.c.fieldOf("biome");
+   public static final MapCodec<dcf.c<ix<dbw>>> b = dcf.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ix<dck>> e = dck.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<dcj> c = Codec.mapEither(b, e).xmap(dcj::new, $$0 -> $$0.f);
+   private final Either<dcf.c<ix<dbw>>, ix<dck>> f;
 
-   @Override
-   public MapCodec<dcj> a() {
-      return a;
+   private dcj(Either<dcf.c<ix<dbw>>, ix<dck>> $$0) {
+      this.f = $$0;
    }
 
-   public dcj(crs $$0, dqg.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   public static dcj a(dcf.c<ix<dbw>> $$0) {
+      return new dcj(Either.left($$0));
    }
 
-   @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      return $$1.a_($$2.d()).e();
+   public static dcj a(ix<dck> $$0) {
+      return new dcj(Either.right($$0));
    }
 
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return d;
+   private dcf.c<ix<dbw>> d() {
+      return (dcf.c<ix<dbw>>)this.f.map($$0 -> $$0, $$0 -> ((dck)$$0.a()).a());
    }
 
    @Override
-   public dqh a(cwi $$0) {
-      return this.n().a(b, Integer.valueOf(drn.a($$0.i() + 180.0F)));
+   protected Stream<ix<dbw>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      return $$1 == is.a && !$$0.a($$3, $$4) ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected MapCodec<? extends dca> a() {
+      return c;
+   }
+
+   public boolean a(akl<dck> $$0) {
+      Optional<ix<dck>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2, dcf.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @azg
+   public ix<dbw> a(dcf.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   protected dqh a(dqh $$0, dib $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
-   }
-
-   public static dde a(crs $$0) {
-      return c.getOrDefault($$0, ddg.iJ);
+   public void a(List<String> $$0, io $$1, dcf.f $$2) {
+      int $$3 = ji.a($$1.u());
+      int $$4 = ji.a($$1.v());
+      int $$5 = ji.a($$1.w());
+      dcf.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = dcf.a($$6.d());
+      float $$8 = dcf.a($$6.e());
+      float $$9 = dcf.a($$6.b());
+      float $$10 = dcf.a($$6.c());
+      float $$11 = dcf.a($$6.g());
+      double $$12 = (double)dxa.a($$11);
+      dcm $$13 = new dcm();
+      $$0.add(
+         "Biome builder PV: "
+            + dcm.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

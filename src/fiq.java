@@ -1,218 +1,178 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Set;
 
-public class fiq extends fim {
-   private final List<fit> c = new ArrayList<>();
-   private final List<fiq.a> d = new ArrayList<>();
-   private final fiu e = fiu.i();
-   private int f = 0;
-   private int g = 0;
+public class fiq implements AutoCloseable {
+   private static final ayk a = ayk.a();
+   private static final float b = 32.0F;
+   private final gnw c;
+   private final akm d;
+   private fiu e;
+   private fiu f;
+   private List<ewv.a> g = List.of();
+   private List<ewv> h = List.of();
+   private final fin<fiu> i = new fin<>(fiu[]::new, fiu[][]::new);
+   private final fin<fiq.a> j = new fin<>(fiq.a[]::new, fiq.a[][]::new);
+   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
+   private final List<fir> l = Lists.newArrayList();
 
-   public fiq() {
-      this(0, 0);
+   public fiq(gnw $$0, akm $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public fiq(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
-
-      for (fiq.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
-
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (fiq.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fiq.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.C() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.D() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2, fiu $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2, Consumer<fiu> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fiu $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new fiq.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends fit> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fiu> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public fiq a(int $$0) {
+   public void a(List<ewv.a> $$0, Set<fip> $$1) {
       this.g = $$0;
-      return this;
+      this.a($$1);
    }
 
-   public fiq b(int $$0) {
-      this.f = $$0;
-      return this;
+   public void a(Set<fip> $$0) {
+      this.h = List.of();
+      this.c();
+      this.h = this.b(this.g, $$0);
    }
 
-   public fiq c(int $$0) {
-      return this.a($$0).b($$0);
+   private void c() {
+      this.d();
+      this.i.a();
+      this.j.a();
+      this.k.clear();
+      this.e = fiw.b.bake(this::a);
+      this.f = fiw.a.bake(this::a);
+   }
+
+   private List<ewv> b(List<ewv.a> $$0, Set<fip> $$1) {
+      IntSet $$2 = new IntOpenHashSet();
+      List<ewv> $$3 = new ArrayList<>();
+
+      for (ewv.a $$4 : $$0) {
+         if ($$4.b().a($$1)) {
+            $$3.add($$4.a());
+            $$2.addAll($$4.a().a());
+         }
+      }
+
+      Set<ewv> $$5 = Sets.newHashSet();
+      $$2.forEach($$2x -> {
+         for (ewv $$3x : $$3) {
+            ewu $$4x = $$3x.a($$2x);
+            if ($$4x != null) {
+               $$5.add($$3x);
+               if ($$4x != fiw.b) {
+                  ((IntList)this.k.computeIfAbsent(ayd.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      return $$3.stream().filter($$5::contains).toList();
    }
 
    @Override
-   public void b(Consumer<fit> $$0) {
-      this.c.forEach($$0);
+   public void close() {
+      this.d();
    }
 
-   public fiu b() {
-      return this.e.g();
+   private void d() {
+      for (fir $$0 : this.l) {
+         $$0.close();
+      }
+
+      this.l.clear();
    }
 
-   public fiu c() {
+   private static boolean b(ewu $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
+      }
+   }
+
+   private fiq.a b(int $$0) {
+      ewu $$1 = null;
+
+      for (ewv $$2 : this.h) {
+         ewu $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
+            }
+
+            if (!b($$3)) {
+               return new fiq.a($$1, $$3);
+            }
+         }
+      }
+
+      return $$1 != null ? new fiq.a($$1, fiw.b) : fiq.a.c;
+   }
+
+   public ewu a(int $$0, boolean $$1) {
+      return this.j.a($$0, this::b).a($$1);
+   }
+
+   private fiu c(int $$0) {
+      for (ewv $$1 : this.h) {
+         ewu $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
       return this.e;
    }
 
-   public fiq.b d(int $$0) {
-      return new fiq.b($$0);
+   public fiu a(int $$0) {
+      return this.i.a($$0, this::c);
    }
 
-   static class a extends fim.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(fit $$0, int $$1, int $$2, int $$3, int $$4, fiu $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends fit> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends fit> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends fit> T a(T $$0, fiu $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends fit> T a(T $$0, int $$1, fiu $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = axz.d(this.c, this.b);
+   private fiu a(eww $$0) {
+      for (fir $$1 : this.l) {
+         fiu $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
          }
-
-         this.c += $$1;
-         return fiq.this.a($$0, $$3, $$4, 1, $$1, $$2);
       }
 
-      public fiq a() {
-         return fiq.this;
-      }
+      akm $$3 = this.d.e("/" + this.l.size());
+      boolean $$4 = $$0.c();
+      fis $$5 = $$4 ? fis.b($$3) : fis.a($$3);
+      fir $$6 = new fir($$5, $$4);
+      this.l.add($$6);
+      this.c.a($$3, $$6);
+      fiu $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
 
-      public fiu b() {
-         return fiq.this.b();
-      }
+   public fiu a(ewu $$0) {
+      IntList $$1 = (IntList)this.k.get(ayd.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
 
-      public fiu c() {
-         return fiq.this.c();
+   public akm a() {
+      return this.d;
+   }
+
+   public fiu b() {
+      return this.f;
+   }
+
+   static record a(ewu a, ewu b) {
+      static final fiq.a c = new fiq.a(fiw.b, fiw.b);
+
+      ewu a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

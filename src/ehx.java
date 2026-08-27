@@ -1,15 +1,26 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public interface ehx<P extends ehw> {
-   ehx<ehv> a = a("single_pool_element", ehv.b);
-   ehx<ehu> b = a("list_pool_element", ehu.a);
-   ehx<ehq> c = a("feature_pool_element", ehq.a);
-   ehx<ehp> d = a("empty_pool_element", ehp.a);
-   ehx<eht> e = a("legacy_single_pool_element", eht.a);
+@FunctionalInterface
+public interface ehx<C extends ecb> {
+   Optional<ehw<C>> createGenerator(ehx.a<C> var1);
 
-   Codec<P> codec();
+   static <C extends ecb> ehx<C> simple(Predicate<ehx.a<C>> $$0, ehw<C> $$1) {
+      Optional<ehw<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   }
 
-   static <P extends ehw> ehx<P> a(String $$0, Codec<P> $$1) {
-      return jj.a(ld.ai, $$0, () -> $$1);
+   static <C extends ecb> Predicate<ehx.a<C>> checkForBiomeOnTop(dwt.a $$0) {
+      return $$1 -> $$1.a($$0);
+   }
+
+   public static record a<C extends ecb>(dsy a, dca b, dxh c, long d, dae e, C f, daz g, Predicate<ix<dbw>> h, elk i, jl j) {
+      public boolean a(dwt.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         ix<dbw> $$4 = this.a.c().getNoiseBiome(ji.a($$1), ji.a($$3), ji.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

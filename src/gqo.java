@@ -1,32 +1,18 @@
-public class gqo implements gpw {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gaq e;
-   private final grq f;
-   private int g = 0;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
 
-   public gqo(gaq $$0, grq $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public interface gqo {
+   void scheduleReload(gqo.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<gqo.b> b();
    }
 
-   @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bh()) {
-         float $$0 = this.e.dN().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gqm)(new gqp.a(this.e, avc.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gqm)(new gqp.a(this.e, avc.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gqm)(new gqp.a(this.e, avc.A)));
-         }
-      }
+   public static record b(UUID a, Path b) {
    }
 }

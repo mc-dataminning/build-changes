@@ -1,72 +1,113 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
+import net.minecraft.server.MinecraftServer;
 
-public class alf {
-   private static final int a = 2;
+public class alf extends bqf {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   private static alf.b a(ae $$0, boolean $$1) {
-      Optional<ar> $$2 = $$0.c();
-      if ($$2.isEmpty()) {
-         return alf.b.b;
-      } else if ($$1) {
-         return alf.b.a;
+   public alf(MinecraftServer $$0) {
+      this.l = $$0;
+   }
+
+   public boolean a() {
+      return this.j > 0L;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
+   }
+
+   private void n() {
+      this.l.ah().a(afs.a(this));
+   }
+
+   private void o() {
+      this.l.ah().a(aft.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
       } else {
-         return $$2.get().j() ? alf.b.b : alf.b.c;
+         this.d = $$0;
+         this.o();
+         return true;
       }
    }
 
-   private static boolean a(Stack<alf.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         alf.b $$2 = (alf.b)$$0.peek($$1);
-         if ($$2 == alf.b.a) {
-            return true;
-         }
-
-         if ($$2 == alf.b.b) {
-            return false;
-         }
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
       }
-
-      return false;
    }
 
-   private static boolean a(ag $$0, Stack<alf.b> $$1, Predicate<ag> $$2, alf.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      alf.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ag $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
       }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
    }
 
-   public static void a(ag $$0, Predicate<ag> $$1, alf.a $$2) {
-      ag $$3 = $$0.d();
-      Stack<alf.b> $$4 = new ObjectArrayList();
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
 
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(alf.b.c);
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)azc.b;
+      int $$2 = (int)((double)(azc.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aI().a(() -> wx.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.E();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
       }
-
-      a($$3, $$4, $$1, $$2);
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(ag var1, boolean var2);
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.E();
+      this.n();
+   }
+
+   public void a(aqn $$0) {
+      $$0.d.b(afs.a(this));
+      $$0.d.b(aft.a(this));
    }
 }

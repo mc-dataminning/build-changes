@@ -1,88 +1,17 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class atx<S> implements atn {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<azb> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
-   final Set<atl> f;
-   private final int g;
-   private int h;
-   private int i;
-   private final AtomicInteger j = new AtomicInteger();
-   private final AtomicInteger k = new AtomicInteger();
-
-   public static atx<Void> a(atr $$0, List<atl> $$1, Executor $$2, Executor $$3, CompletableFuture<azb> $$4) {
-      return new atx<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, blx.a, blx.a, $$2, $$5), $$4);
-   }
-
-   protected atx(Executor $$0, final Executor $$1, atr $$2, List<atl> $$3, atx.a<S> $$4, CompletableFuture<azb> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
-
-      for (final atl $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new atl.a() {
-            @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  atx.this.f.remove($$8);
-                  if (atx.this.f.isEmpty()) {
-                     atx.this.a.complete(azb.a);
-                  }
-               });
-               return atx.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
-            }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
-         });
-         $$6.add($$10);
-         $$7 = $$10;
-      }
-
-      this.b = ac.e($$6);
-   }
-
+public interface atx extends atq {
    @Override
-   public CompletableFuture<?> a() {
-      return this.b;
+   default CompletableFuture<Void> a(atq.a $$0, atw $$1, bmi $$2, bmi $$3, Executor $$4, Executor $$5) {
+      return $$0.a(azf.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   @Override
-   public float b() {
-      int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
-      return $$1 / $$2;
-   }
-
-   public static atn a(atr $$0, List<atl> $$1, Executor $$2, Executor $$3, CompletableFuture<azb> $$4, boolean $$5) {
-      return (atn)($$5 ? new atm($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
-   }
-
-   protected interface a<S> {
-      CompletableFuture<S> create(atl.a var1, atr var2, atl var3, Executor var4, Executor var5);
-   }
+   void a(atw var1);
 }

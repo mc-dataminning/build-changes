@@ -1,26 +1,30 @@
-import java.util.IllegalFormatException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class goe {
-   private static volatile tv a = tv.a();
+public class goe implements gnz {
+   public static final MapCodec<goe> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, goe::new)
+   );
+   private final String c;
+   private final String d;
 
-   private goe() {
+   public goe(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   static void a(tv $$0) {
-      a = $$0;
+   @Override
+   public void a(atw $$0, gnz.a $$1) {
+      akf $$2 = new akf("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         akm $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   @Override
+   public gob a() {
+      return goc.b;
    }
 }

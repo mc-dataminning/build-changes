@@ -1,59 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record ek(List<ek.a> b) {
-   public static final ek a = new ek(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
+public class ek implements ArgumentType<ek.a> {
+   private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("argument.angle.invalid"));
 
-   public ek(vu $$0) {
-      this($$0.a(vu.a(ArrayList::new, 8), ek.a::new));
+   public static ek a() {
+      return new ek();
    }
 
-   @Nullable
-   public xg a(String $$0) {
-      for (ek.a $$1 : this.b) {
-         if ($$1.a.equals($$0)) {
-            return $$1.b;
+   public static float a(CommandContext<ee> $$0, String $$1) {
+      return ((ek.a)$$0.getArgument($$1, ek.a.class)).a((ee)$$0.getSource());
+   }
+
+   public ek.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$1 = gi.b($$0);
+         float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
+         if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
+            return new ek.a($$2, $$1);
+         } else {
+            throw b.createWithContext($$0);
          }
       }
-
-      return null;
    }
 
-   public void a(vu $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public Collection<String> getExamples() {
+      return c;
    }
 
-   public static ek a(xm<?> $$0, ek.b $$1) {
-      List<ek.a> $$2 = $$0.a().stream().map($$1x -> {
-         xg $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new ek.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new ek($$2);
-   }
+   public static final class a {
+      private final float a;
+      private final boolean b;
 
-   public List<ek.a> a() {
-      return this.b;
-   }
-
-   public static record a(String a, xg b) {
-
-      public a(vu $$0) {
-         this($$0.d(16), xg.a($$0));
+      a(float $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public void a(vu $$0) {
-         $$0.a(this.a, 16);
-         xg.a($$0, this.b);
+      public float a(ee $$0) {
+         return ayd.g(this.b ? this.a + $$0.k().j : this.a);
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      @Nullable
-      xg sign(String var1);
    }
 }

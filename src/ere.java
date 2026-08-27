@@ -1,41 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
+import java.util.Optional;
 
-public class ere extends erh {
-   public static final Codec<ere> a = a(ere::new);
-   public static final Codec<ere> b = b(ere::new);
+public class ere extends eqq {
+   public static final MapCodec<ere> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cwh.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cwh.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cwh.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, ere::new)
+   );
+   public static final cwh b = new cwh(cwh.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cwh.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   ere(List<erq> $$0) {
-      super($$0, ac.a($$0));
-   }
-
-   public static ere a(List<erq> $$0) {
-      return new ere(List.copyOf($$0));
+   public ere(List<esl> $$0, Optional<cwh.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public err b() {
-      return ers.e;
+   protected cto a(cto $$0, epf $$1) {
+      $$0.a(kb.S, b, this::a);
+      return $$0;
    }
 
-   public static ere.a a(erq.a... $$0) {
-      return new ere.a($$0);
+   private cwh a(cwh $$0) {
+      return new cwh(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static class a extends erh.a {
-      public a(erq.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public ere.a and(erq.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected erq a(List<erq> $$0) {
-         return new ere($$0);
-      }
+   @Override
+   public eqs b() {
+      return eqt.I;
    }
 }

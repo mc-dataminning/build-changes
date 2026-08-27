@@ -1,111 +1,48 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fip extends fim {
-   private final List<fip.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fiu f = fiu.i().a(0.5F, 0.5F);
+public enum fip implements ayx {
+   a("uniform"),
+   b("jp");
 
-   public fip() {
-      this(0, 0, 0, 0);
-   }
+   public static final Codec<fip> c = ayx.a(fip::values);
+   private final String d;
 
-   public fip(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fip(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fip a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fip a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fip b(int $$0) {
+   private fip(String $$0) {
       this.d = $$0;
-      return this;
-   }
-
-   public fiu b() {
-      return this.f.g();
-   }
-
-   public fiu c() {
-      return this.f;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+   public String c() {
+      return this.d;
+   }
 
-      for (fip.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+   public static class a {
+      private final Map<fip, Boolean> c;
+      public static final Codec<fip.a> a = Codec.unboundedMap(fip.c, Codec.BOOL).xmap(fip.a::new, $$0 -> $$0.c);
+      public static final fip.a b = new fip.a(Map.of());
+
+      public a(Map<fip, Boolean> $$0) {
+         this.c = $$0;
       }
 
-      for (fip.a $$3 : this.c) {
-         $$3.a(this.C(), $$0);
-         $$3.b(this.D(), $$1);
+      public boolean a(Set<fip> $$0) {
+         for (Entry<fip, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends fit> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fit> T a(T $$0, fiu $$1) {
-      this.c.add(new fip.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fit> T a(T $$0, Consumer<fiu> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fit> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(fit $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fit $$0, fjk $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fit $$0, fjk $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fit $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.x(), $$0::m, $$5);
-      a($$2, $$4, $$0.v(), $$0::n, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)axz.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fim.a {
-      protected a(fit $$0, fiu $$1) {
-         super($$0, $$1);
+      public fip.a a(fip.a $$0) {
+         Map<fip, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fip.a(Map.copyOf($$1));
       }
    }
 }

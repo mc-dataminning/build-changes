@@ -2,170 +2,25 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qf {
-   public static void a(ql<ehy> $$0) {
-      ix<ekn> $$1 = $$0.a(le.aK);
-      iw<ekn> $$2 = $$1.b(qt.v);
-      iw<ekn> $$3 = $$1.b(qt.u);
-      ix<ehy> $$4 = $$0.a(le.aM);
-      iw<ehy> $$5 = $$4.b(qs.a);
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/starting_pieces",
-         new ehy(
-            $$5,
+   public static final akl<eis> a = qv.a("ancient_city/city_center");
+
+   public static void a(qo<eis> $$0) {
+      iy<elh> $$1 = $$0.a(lf.aK);
+      ix<elh> $$2 = $$1.b(qw.G);
+      iy<eis> $$3 = $$0.a(lf.aM);
+      ix<eis> $$4 = $$3.b(qv.a);
+      $$0.a(
+         a,
+         new eis(
+            $$4,
             ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
+               Pair.of(eiq.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(eiq.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(eiq.b("ancient_city/city_center/city_center_3", $$2), 1)
             ),
-            ehy.a.b
+            eis.a.b
          )
       );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/mirrored_starting_pieces",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a($$0, "bastion/hoglin_stable/wall_bases", new ehy($$5, ImmutableList.of(Pair.of(ehw.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), ehy.a.b));
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/walls",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(ehw.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/stairs",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
-               new Pair[]{
-                  Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
-                  Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
-                  Pair.of(ehw.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
-               }
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/small_stables/inner",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/small_stables/outer",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/large_stables/inner",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/large_stables/outer",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/posts",
-         new ehy(
-            $$5,
-            ImmutableList.of(Pair.of(ehw.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(ehw.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/ramparts",
-         new ehy(
-            $$5,
-            ImmutableList.of(
-               Pair.of(ehw.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
-               Pair.of(ehw.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
-            ),
-            ehy.a.b
-         )
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/rampart_plates",
-         new ehy($$5, ImmutableList.of(Pair.of(ehw.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), ehy.a.b)
-      );
-      qs.a(
-         $$0,
-         "bastion/hoglin_stable/connectors",
-         new ehy($$5, ImmutableList.of(Pair.of(ehw.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), ehy.a.b)
-      );
+      qg.a($$0);
    }
 }

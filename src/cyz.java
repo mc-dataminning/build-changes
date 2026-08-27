@@ -1,55 +1,176 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record cyz(iw<csu> d, int e, jy f, csz g) {
-   public static final Codec<cyz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ld.h.r().fieldOf("id").forGetter(cyz::a), axh.j.fieldOf("count").orElse(1).forGetter(cyz::b), axh.a(jy.a, "components", jy.c).forGetter(cyz::c)
-            )
-            .apply($$0, cyz::new)
-   );
-   public static final ys<wf, cyz> b = ys.a(yq.b(le.G), cyz::a, yq.f, cyz::b, jy.b, cyz::c, cyz::new);
-   public static final ys<wf, Optional<cyz>> c = b.a(yq::a);
+public class cyz implements cog {
+   private final cyz.b b;
+   @Nullable
+   protected String a;
+   private final ix.c<cyz> c = le.f.f(this);
 
-   public cyz(dac $$0) {
-      this($$0, 1);
+   public static cyz.a a(int $$0) {
+      return new cyz.a($$0, 0);
    }
 
-   public cyz(dac $$0, int $$1) {
-      this($$0.q().n(), $$1, jy.c);
+   public static cyz.a a(int $$0, int $$1) {
+      return new cyz.a($$0, $$1);
    }
 
-   public cyz(iw<csu> $$0, int $$1, jy $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public static cyz.b a(awl<ctj> $$0, awl<ctj> $$1, int $$2, int $$3, cyz.a $$4, cyz.a $$5, int $$6, bsb... $$7) {
+      return new cyz.b($$0, Optional.of($$1), $$2, $$3, $$4, $$5, $$6, col.h, $$7);
    }
 
-   public cyz a(UnaryOperator<jy.a> $$0) {
-      return new cyz(this.d, this.e, $$0.apply(jy.a()).a());
+   public static cyz.b a(awl<ctj> $$0, int $$1, int $$2, cyz.a $$3, cyz.a $$4, int $$5, bsb... $$6) {
+      return new cyz.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, col.h, $$6);
    }
 
-   private static csz a(iw<csu> $$0, int $$1, jy $$2) {
-      return new csz($$0, $$1, $$2.c());
+   public static cyz.b a(awl<ctj> $$0, int $$1, int $$2, cyz.a $$3, cyz.a $$4, int $$5, coj $$6, bsb... $$7) {
+      return new cyz.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public boolean a(csz $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
+   @Nullable
+   public static cyz b(int $$0) {
+      return le.f.a($$0);
    }
 
-   public iw<csu> a() {
-      return this.d;
+   public cyz(cyz.b $$0) {
+      this.b = $$0;
    }
 
-   public int b() {
-      return this.e;
+   public Map<bsb, cto> a(bso $$0) {
+      Map<bsb, cto> $$1 = Maps.newEnumMap(bsb.class);
+
+      for (bsb $$2 : this.b.i()) {
+         cto $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            $$1.put($$2, $$3);
+         }
+      }
+
+      return $$1;
    }
 
-   public jy c() {
-      return this.f;
+   public final awl<ctj> c() {
+      return this.b.a();
    }
 
-   public csz d() {
-      return this.g;
+   public final boolean a(cto $$0) {
+      return this.b.b.isEmpty() || $$0.a(this.b.b.get());
+   }
+
+   public final int d() {
+      return this.b.c();
+   }
+
+   public final int e() {
+      return this.b.g();
+   }
+
+   public final int f() {
+      return 1;
+   }
+
+   public final int g() {
+      return this.b.d();
+   }
+
+   public final int c(int $$0) {
+      return this.b.e().a($$0);
+   }
+
+   public final int d(int $$0) {
+      return this.b.f().a($$0);
+   }
+
+   public int a(int $$0, bqn $$1) {
+      return 0;
+   }
+
+   public float a(int $$0, @Nullable bsa<?> $$1) {
+      return 0.0F;
+   }
+
+   public final boolean b(cyz $$0) {
+      return this.a($$0) && $$0.a(this);
+   }
+
+   protected boolean a(cyz $$0) {
+      return this != $$0;
+   }
+
+   protected String h() {
+      if (this.a == null) {
+         this.a = ac.a("enchantment", le.f.b(this));
+      }
+
+      return this.a;
+   }
+
+   public String j() {
+      return this.h();
+   }
+
+   public wx e(int $$0) {
+      xl $$1 = wx.c(this.j());
+      if (this.b()) {
+         $$1.a(n.m);
+      } else {
+         $$1.a(n.h);
+      }
+
+      if ($$0 != 1 || this.g() != 1) {
+         $$1.b(ww.v).b(wx.c("enchantment.level." + $$0));
+      }
+
+      return $$1;
+   }
+
+   public boolean b(cto $$0) {
+      return $$0.g().n().a(this.b.a());
+   }
+
+   public void a(bso $$0, bru $$1, int $$2) {
+   }
+
+   public void b(bso $$0, bru $$1, int $$2) {
+   }
+
+   public void c(bso $$0, bru $$1, int $$2) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   public boolean b() {
+      return false;
+   }
+
+   public boolean k() {
+      return true;
+   }
+
+   public boolean l() {
+      return true;
+   }
+
+   @Deprecated
+   public ix.c<cyz> m() {
+      return this.c;
+   }
+
+   @Override
+   public coj i() {
+      return this.b.h();
+   }
+
+   public static record a(int a, int b) {
+      public int a(int $$0) {
+         return this.a + this.b * ($$0 - 1);
+      }
+   }
+
+   public static record b(awl<ctj> a, Optional<awl<ctj>> b, int c, int d, cyz.a e, cyz.a f, int g, coj h, bsb[] i) {
    }
 }

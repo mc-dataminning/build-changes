@@ -1,35 +1,30 @@
-public class cek extends cdo {
-   public cek(brn<? extends cek> $$0, dad $$1) {
+public class cek extends ced {
+   public cek(bsa<? extends cek> $$0, dax $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public int gr() {
-      return 5;
+   public cto b() {
+      return new cto(ctr.qH);
    }
 
    @Override
-   public csz b() {
-      return new csz(ctc.qG);
+   protected avg v() {
+      return avh.fn;
    }
 
    @Override
-   protected avb v() {
-      return avc.vr;
+   protected avg o_() {
+      return avh.fo;
    }
 
    @Override
-   protected avb o_() {
-      return avc.vs;
+   protected avg d(bqn $$0) {
+      return avh.fq;
    }
 
    @Override
-   protected avb d(bqf $$0) {
-      return avc.vu;
-   }
-
-   @Override
-   protected avb gq() {
-      return avc.vt;
+   protected avg gq() {
+      return avh.fp;
    }
 }

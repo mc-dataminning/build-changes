@@ -1,29 +1,74 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class gtc {
-   private final float a;
-   private final AtomicReference<gtc.a> b = new AtomicReference<>();
+   public static final gtc a = new gtc(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<gsy<gtc.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public gtc(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   protected gtc(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public void a(fcw $$0, wu $$1) {
-      gtc.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gtc.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public synchronized void a(gsy<gtc.a> $$0) {
+      this.a($$0, (Function<gsy<gtc.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(gsy<gtc.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<gsy<gtc.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(gsy<gtc.a> $$0, Function<gsy<gtc.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(gsy<gtc.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
       }
    }
 
-   static class a {
-      final wu a;
-      final RateLimiter b;
+   public void a(gsv $$0) {
+      $$0.send(gsw.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((gsy<gtc.a>)$$1, new gtc.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gsw.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(gsy.B, new gtc.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
 
-      a(wu $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<gtc.a> a = Codec.INT.xmap(gtc.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
 }

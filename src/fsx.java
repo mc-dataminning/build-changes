@@ -1,15 +1,47 @@
-import java.util.function.Function;
+public class fsx<T extends bru> extends ftf<T> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String f = "lower_jaw";
+   private final fvw g;
+   private final fvw h;
+   private final fvw i;
+   private final fvw j;
 
-public abstract class fsx {
-   protected final Function<akh, gbw> v;
-
-   public fsx(Function<akh, gbw> $$0) {
-      this.v = $$0;
+   public fsx(fvw $$0) {
+      this.g = $$0;
+      this.h = $$0.b("base");
+      this.i = $$0.b("upper_jaw");
+      this.j = $$0.b("lower_jaw");
    }
 
-   public final gbw a(akh $$0) {
-      return this.v.apply($$0);
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("base", fwb.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fvy.a(-5.0F, 24.0F, -5.0F));
+      fwb $$2 = fwb.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$1.a("upper_jaw", $$2, fvy.a(1.5F, 24.0F, -4.0F));
+      $$1.a("lower_jaw", $$2, fvy.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
+      return fwc.a($$0, 64, 32);
    }
 
-   public abstract void a(exx var1, eyb var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$1 * 2.0F;
+      if ($$6 > 1.0F) {
+         $$6 = 1.0F;
+      }
+
+      $$6 = 1.0F - $$6 * $$6 * $$6;
+      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
+      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
+      float $$7 = ($$1 + ayd.a($$1 * 2.7F)) * 0.6F * 12.0F;
+      this.i.c = 24.0F - $$7;
+      this.j.c = this.i.c;
+      this.h.c = this.i.c;
+   }
+
+   @Override
+   public fvw a() {
+      return this.g;
+   }
 }

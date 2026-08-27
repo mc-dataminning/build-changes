@@ -1,38 +1,61 @@
-public enum emr {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
-
-   private final float A;
-
-   private emr(float $$0) {
-      this.A = $$0;
+public class emr extends emt {
+   @Override
+   public ctj a() {
+      return ctr.a;
    }
 
-   public float a() {
-      return this.A;
+   @Override
+   public boolean a(emu $$0, dad $$1, io $$2, emt $$3, it $$4) {
+      return true;
+   }
+
+   @Override
+   public euk a(dad $$0, io $$1, emu $$2) {
+      return euk.b;
+   }
+
+   @Override
+   public int a(dba $$0) {
+      return 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(emu $$0, dad $$1, io $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(emu $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected drb b(emu $$0) {
+      return dea.a.n();
+   }
+
+   @Override
+   public boolean c(emu $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(emu $$0) {
+      return 0;
+   }
+
+   @Override
+   public evd b(emu $$0, dad $$1, io $$2) {
+      return eva.a();
    }
 }

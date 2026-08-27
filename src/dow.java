@@ -1,251 +1,174 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dow extends dnm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
+public class dow extends dog implements bqc, evv.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
    @Nullable
-   private UUID d;
-   private dox e = this.f();
-   private dox f = this.f();
-   private boolean g;
+   public dow.a h;
+   private dpk k;
+   private cto l = cto.i;
+   @Nullable
+   protected akl<epk> i;
+   protected long j;
 
-   public dow(in $$0, dqh $$1) {
-      this(dno.h, $$0, $$1);
-   }
-
-   public dow(dno $$0, in $$1, dqh $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected dox f() {
-      return new dox();
-   }
-
-   public boolean a(clh $$0) {
-      if (this.n().b() instanceof dke $$1) {
-         etp $$2 = $$1.m(this.n());
-         double $$3 = $$0.ds() - ((double)this.az_().u() + $$2.c);
-         double $$4 = $$0.dy() - ((double)this.az_().w() + $$2.e);
-         float $$5 = $$1.g(this.n());
-         float $$6 = (float)(axz.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return axz.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public dox a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
-
-   public dox j() {
-      return this.e;
-   }
-
-   public dox k() {
-      return this.f;
-   }
-
-   public int b() {
-      return 10;
-   }
-
-   public int c() {
-      return 90;
+   public dow(io $$0, drb $$1) {
+      super(doi.O, $$0, $$1);
+      this.k = dpk.a;
    }
 
    @Override
-   protected void b(ua $$0, iy.a $$1) {
+   protected void b(ud $$0, iz.a $$1) {
       super.b($$0, $$1);
-      DynamicOps<ux> $$2 = $$1.a(uo.a);
-      dox.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
-      dox.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
-      $$0.a("is_waxed", this.g);
+      this.k.a($$0);
+      if (!this.b_($$0) && !this.l.e()) {
+         $$0.a("item", this.l.a($$1));
+      }
    }
 
    @Override
-   public void a(ua $$0, iy.a $$1) {
+   protected void a(ud $$0, iz.a $$1) {
       super.a($$0, $$1);
-      DynamicOps<ux> $$2 = $$1.a(uo.a);
-      if ($$0.e("front_text")) {
-         dox.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dox.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private dox a(dox $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         wu $$2 = this.a($$0.a($$1, false));
-         wu $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private wu a(wu $$0) {
-      if (this.n instanceof aqh $$1) {
-         try {
-            return wx.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(clh $$0, boolean $$1, List<aqz> $$2) {
-      if (!this.u() && $$0.cx().equals(this.t()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.az_(), this.n(), this.n(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ad().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<dox> $$0, boolean $$1) {
-      dox $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private dox a(clh $$0, List<aqz> $$1, dox $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         aqz $$4 = $$1.get($$3);
-         xr $$5 = $$2.a($$3, $$0.Y()).a();
-         if ($$0.Y()) {
-            $$2 = $$2.a($$3, wu.b($$4.b()).b($$5));
+      this.k = dpk.b($$0);
+      if (!this.a_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cto.a($$1, (va)$$0.p("item")).orElse(cto.i);
          } else {
-            $$2 = $$2.a($$3, wu.b($$4.d()).b($$5), wu.b($$4.b()).b($$5));
+            this.l = cto.i;
          }
       }
-
-      return $$2;
    }
 
-   public boolean a(dox $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dox $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(dox $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, clh $$1) {
-      return this.u() && this.a($$0).b($$1);
-   }
-
-   public boolean a(clh $$0, dad $$1, in $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (wu $$5 : this.a($$3).b($$0.Y())) {
-         xr $$6 = $$5.a();
-         ws $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == ws.a.c) {
-            $$0.cM().aH().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static ed a(@Nullable clh $$0, dad $$1, in $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ad().getString();
-      wu $$4 = (wu)($$0 == null ? wu.b("Sign") : $$0.O_());
-      return new ed(ec.a, etp.b($$2), eto.a, (aqh)$$1, 2, $$3, $$4, $$1.o(), $$0);
-   }
-
-   public abt l() {
-      return abt.a(this);
+   public abx j() {
+      return abx.a(this);
    }
 
    @Override
-   public ua a(iy.a $$0) {
-      return this.d($$0);
+   public ud a(iz.a $$0) {
+      return this.e($$0);
    }
 
-   @Override
-   public boolean q() {
-      return true;
+   public it k() {
+      return this.n().c(drr.R);
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
+   public dpk l() {
+      return this.k;
+   }
+
+   public void c(cto $$0) {
+      this.a($$0);
+   }
+
+   public cto u() {
+      cto $$0 = ctr.eC.v();
+      $$0.a(this.s());
+      return $$0;
+   }
+
+   public static cto a(dpk $$0) {
+      cto $$1 = ctr.eC.v();
+      $$1.b(kb.Y, $$0);
+      return $$1;
    }
 
    @Nullable
-   public UUID t() {
-      return this.d;
+   @Override
+   public akl<epk> ax_() {
+      return this.i;
    }
 
-   private void v() {
-      this.e();
-      this.n.a(this.az_(), this.n(), this.n(), 3);
+   @Override
+   public void a(@Nullable akl<epk> $$0) {
+      this.i = $$0;
    }
 
-   public boolean u() {
-      return this.g;
+   @Override
+   public long ay_() {
+      return this.j;
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.v();
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(jx.a $$0) {
+      super.a($$0);
+      $$0.a(kb.Y, this.k);
+      $$0.a(kb.Z, cwk.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(dog.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(kb.Y, dpk.a);
+      this.l = $$0.a(kb.Z, cwk.a).a();
+   }
+
+   @Override
+   public void a(ud $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cto f() {
+      this.e_(null);
+      return this.l;
+   }
+
+   @Override
+   public cto c(int $$0) {
+      this.e_(null);
+      cto $$1 = this.l.a($$0);
+      if (this.l.e()) {
+         this.l = cto.i;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cto $$0) {
+      this.e_(null);
+      this.l = $$0;
+   }
+
+   @Override
+   public dog v() {
+      return this;
+   }
+
+   public void a(dow.a $$0) {
+      if (this.n != null && !this.n.x_()) {
+         this.n.a(this.az_(), this.n().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dow.a.values().length) {
+         this.g = this.n.Y();
+         this.h = dow.a.values()[$$1];
          return true;
       } else {
-         return false;
+         return super.a_($$0, $$1);
       }
    }
 
-   public boolean b(UUID $$0) {
-      clh $$1 = this.n.b($$0);
-      return $$1 == null || $$1.i((double)this.az_().u(), (double)this.az_().v(), (double)this.az_().w()) > 64.0;
-   }
+   public static enum a {
+      a(7),
+      b(10);
 
-   public static void a(dad $$0, in $$1, dqh $$2, dow $$3) {
-      UUID $$4 = $$3.t();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
+      public final int c;
+
+      private a(int $$0) {
+         this.c = $$0;
       }
-   }
-
-   private void a(dow $$0, dad $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public avb d() {
-      return avc.BM;
    }
 }

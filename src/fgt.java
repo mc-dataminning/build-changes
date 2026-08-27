@@ -1,89 +1,69 @@
-public abstract class fgt {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final fep d;
-   protected final bkq e;
+import java.util.OptionalInt;
 
-   protected fgt(fep $$0, bkq $$1) {
+public class fgt extends ffw {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final ays<fgt.a, fgs> c;
+   private boolean d = false;
+
+   public fgt(wx $$0, ffk $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fgt(int $$0, int $$1, wx $$2, ffk $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fgs.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fgs.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public fgt c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fgt d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fgt e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fgt b(boolean $$0) {
       this.d = $$0;
-      this.e = $$1;
+      return this;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
+   @Override
+   public int x() {
+      return this.c.a(this.d()).b();
    }
 
-   public void a(fer $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gbw.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
+   @Override
+   public int v() {
+      return this.c.a(this.d()).a() * 9;
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+      fgs $$4 = this.c.a(this.d());
+      int $$5 = this.C();
+      int $$6 = this.D();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
-
-      $$0.a(gbw.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gbw.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gbw.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gbw.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
-      }
-
-      this.d($$0, $$1, $$2, $$3);
    }
 
-   protected void a(fer $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
+   private fgt.a d() {
+      return new fgt.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   protected void b(fer $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gbw.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
-
-   protected void c(fer $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
-
-   protected void d(fer $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(fer $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gbw.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = axz.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axj.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axj.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   static record a(wx a, int b, OptionalInt c) {
    }
 }

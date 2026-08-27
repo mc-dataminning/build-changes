@@ -1,62 +1,56 @@
-public class far extends gtb {
-   private final fld a;
-   private final far.a b;
-   private ffx c = ffx.a;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public far(faa $$0, fld $$1) {
-      super(fcw.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class far extends fao {
+   private static final Logger e = LogUtils.getLogger();
+   public List<faq> a;
+   public int b;
+   public int c;
+   public int d;
+
+   public far() {
    }
 
-   public far(wu $$0, fld $$1) {
-      super(fcw.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public far(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   public far(wu $$0, wu $$1, fld $$2) {
-      super(fcw.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   private static far.a a(faa $$0) {
-      eyp $$1 = $$0.a;
-      return a(wu.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
+   public static far a(String $$0) {
+      far $$1 = new far();
+      $$1.a = Lists.newArrayList();
 
-   private static far.a a(wu $$0) {
-      return a(wu.c("mco.errorMessage.generic"), $$0);
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   private static far.a a(wu $$0, wu $$1) {
-      return new far.a($$0, $$1);
-   }
+            while ($$4.hasNext()) {
+               $$1.a.add(faq.a($$4.next().getAsJsonObject()));
+            }
+         }
 
-   @Override
-   public void aM_() {
-      this.c(ffe.a(wt.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = ffx.a(this.p, this.b.b, this.n * 3 / 4);
-   }
+         $$1.b = fcl.a("page", $$3, 0);
+         $$1.c = fcl.a("size", $$3, 0);
+         $$1.d = fcl.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
 
-   @Override
-   public void d() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public wu i() {
-      return wu.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wu a, wu b) {
+      return $$1;
    }
 }

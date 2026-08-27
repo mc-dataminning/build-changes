@@ -1,26 +1,16 @@
-public record aak(long c, in d) implements aac {
-   public static final ys<vu, aak> a = aac.a(aak::a, aak::new);
-   public static final aac.b<aak> b = aac.a("debug/neighbors_update");
+public record aak() implements aaf {
+   public static final yv<vx, aak> a = aaf.a(aak::a, aak::new);
+   public static final aaf.b<aak> b = aaf.a("debug/game_test_clear");
 
-   private aak(vu $$0) {
-      this($$0.m(), $$0.e());
+   private aak(vx $$0) {
+      this();
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vx $$0) {
    }
 
    @Override
-   public aac.b<aak> a() {
+   public aaf.b<aak> a() {
       return b;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public in c() {
-      return this.d;
    }
 }

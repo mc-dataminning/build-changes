@@ -5,22 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bg(List<dm<bqh>> b, Optional<br> c, Optional<br> d) {
+public record bg(List<dn<bqp>> b, Optional<br> c, Optional<br> d) {
    public static final Codec<bg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axh.a(dm.a(le.s).listOf(), "tags", List.of()).forGetter(bg::a),
-               axh.a(br.a, "direct_entity").forGetter(bg::b),
-               axh.a(br.a, "source_entity").forGetter(bg::c)
+               dn.a(lf.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bg::a),
+               br.a.optionalFieldOf("direct_entity").forGetter(bg::b),
+               br.a.optionalFieldOf("source_entity").forGetter(bg::c)
             )
             .apply($$0, bg::new)
    );
 
-   public boolean a(aqi $$0, bqf $$1) {
-      return this.a($$0.z(), $$0.dl(), $$1);
+   public boolean a(aqn $$0, bqn $$1) {
+      return this.a($$0.z(), $$0.dn(), $$1);
    }
 
-   public boolean a(aqh $$0, etp $$1, bqf $$2) {
-      for (dm<bqh> $$3 : this.b) {
+   public boolean a(aqm $$0, euk $$1, bqn $$2) {
+      for (dn<bqp> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -29,7 +29,7 @@ public record bg(List<dm<bqh>> b, Optional<br> c, Optional<br> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public List<dm<bqh>> a() {
+   public List<dn<bqp>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record bg(List<dm<bqh>> b, Optional<br> c, Optional<br> d) {
    }
 
    public static class a {
-      private final Builder<dm<bqh>> a = ImmutableList.builder();
+      private final Builder<dn<bqp>> a = ImmutableList.builder();
       private Optional<br> b = Optional.empty();
       private Optional<br> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bg(List<dm<bqh>> b, Optional<br> c, Optional<br> d) {
          return new bg.a();
       }
 
-      public bg.a a(dm<bqh> $$0) {
+      public bg.a a(dn<bqp> $$0) {
          this.a.add($$0);
          return this;
       }

@@ -1,13 +1,26 @@
-import org.joml.Matrix4f;
+import java.util.function.Consumer;
 
-public class fia extends fhz {
-   public static final fia a = new fia();
+public class fia implements fib {
+   private final wx b;
+   protected final fjl a = new fjl();
 
-   public fia() {
-      super(fhx.b(new akh("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public fia(wx $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eyb $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   public wx a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(Consumer<ffx> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fkf $$0) {
+      this.a.a();
+      fjk.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

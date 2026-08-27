@@ -1,12 +1,9 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+public class gos extends goy {
+   public gos(gnw $$0) {
+      super($$0, new akm("textures/atlas/map_decorations.png"), new akm("map_decorations"));
+   }
 
-public record gos(Map<String, gof> d) {
-   public static final Codec<String> a = axh.b(1, 16);
-   public static final Codec<gos> b = Codec.unboundedMap(a, gof.a).xmap(gos::new, gos::a);
-   public static final asr<gos> c = asr.a("language", b);
-
-   public Map<String, gof> a() {
-      return this.d;
+   public gnv a(eod $$0) {
+      return this.a($$0.a());
    }
 }

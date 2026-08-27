@@ -1,56 +1,37 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class anh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.pardonip.failed"));
 
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ed)$$0x.getSource(), axq.a(), false, null)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)ee.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ed)$$0x.getSource(), axq.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ee.a("gamemode", er.a())
-                           .executes($$0x -> a((ed)$$0x.getSource(), axq.a(), BoolArgumentType.getBool($$0x, "allowCommands"), er.a($$0x, "gamemode"))))
-                        .then(
-                           ee.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ed)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       er.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
+               ef.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().g().a(), $$1))
+                  .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
    }
 
-   private static int a(ed $$0, int $$1, boolean $$2, @Nullable daa $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().R());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
+   private static int a(ee $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
+         aug $$2 = $$0.l().ah().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
+         } else {
+            $$2.c($$1);
+            $$0.a(() -> wx.a("commands.pardonip.success", $$1), true);
+            return 1;
+         }
       }
-   }
-
-   public static xi a(int $$0) {
-      wu $$1 = wx.a(String.valueOf($$0));
-      return wu.a("commands.publish.started", $$1);
    }
 }

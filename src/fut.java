@@ -1,9 +1,7 @@
-public class fut<T extends cjg> extends fqu<T> {
-   public fut(fvb $$0) {
-      super($$0);
+public abstract class fut extends fts {
+   public fut() {
+      super(gcs::i);
    }
 
-   public boolean a(T $$0) {
-      return $$0.gh();
-   }
+   public abstract void a(float var1, float var2, float var3);
 }

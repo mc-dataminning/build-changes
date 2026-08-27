@@ -1,79 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkm extends dde {
-   public static final MapCodec<dkm> a = b(dkm::new);
-   public static final int b = 2;
-   public static final drh c = dqx.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final eui g = dde.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dkm> a() {
-      return a;
-   }
-
-   public dkm(dqg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
-   }
+public class dkm extends deh implements deb {
+   public static final MapCodec<dkm> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqq.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dkm::new)
+   );
+   public static final dsb f = drr.aU;
+   protected static final float g = 6.0F;
+   protected static final evd h = ddy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dqq i;
 
    @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(c);
+   public MapCodec<? extends dkm> a() {
+      return e;
+   }
+
+   protected dkm(dqq $$0, dra.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
    }
 
    @Override
-   public eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return g;
-   }
-
-   public int m(dqh $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean n(dqh $$0) {
-      return this.m($$0) == 2;
+   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
+      return h;
    }
 
    @Override
-   public void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, avc.yk, avd.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(aqm $$0, io $$1, drb $$2, ayk $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
       } else {
-         $$1.a(null, $$2, avc.yl, avd.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         cgg $$4 = brn.aQ.a((dad)$$1);
-         if ($$4 != null) {
-            etp $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), axz.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.x_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dva.i, $$2, dva.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   public boolean b(dba $$0, io $$1, drb $$2) {
+      return true;
    }
 
    @Override
-   public boolean a(dqh $$0, emp $$1) {
-      return false;
+   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
-   public static boolean a(czj $$0, in $$1) {
-      return $$0.a_($$1.d()).a(avr.cs);
+   @Override
+   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(f);
    }
 }

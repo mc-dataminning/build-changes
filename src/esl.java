@@ -1,9 +1,22 @@
-public interface esl extends eom {
-   float b(eol var1);
+import java.util.function.Predicate;
 
-   default int a(eol $$0) {
-      return Math.round(this.b($$0));
+public interface esl extends epg, Predicate<epf> {
+   esm b();
+
+   @FunctionalInterface
+   public interface a {
+      esl build();
+
+      default esl.a invert() {
+         return esi.a(this);
+      }
+
+      default esa.a or(esl.a $$0) {
+         return esa.a(this, $$0);
+      }
+
+      default erz.a and(esl.a $$0) {
+         return erz.a(this, $$0);
+      }
    }
-
-   esk b();
 }

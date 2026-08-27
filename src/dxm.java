@@ -1,22 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.atomic.AtomicLong;
 
-class dxm extends dxr {
-   private final ja<dde> e;
-   public static final Codec<dxm> a = RecordCodecBuilder.create($$0 -> a($$0).and(jl.a(le.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dxm::new));
+@Deprecated
+public class dxm implements dwi {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dwv i = new dwv(this);
 
-   public dxm(jr $$0, ja<dde> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dxm(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(dqh $$0) {
-      return $$0.a(this.e);
+   public ayk d() {
+      return new dxm(this.g());
    }
 
    @Override
-   public dxh<?> a() {
-      return dxh.a;
+   public dxg e() {
+      return new dwu.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

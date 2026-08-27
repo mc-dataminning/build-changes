@@ -1,83 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
 
-public record clk(clk.a d) {
-   public static final wu a = wu.c("multiplayer.disconnect.expired_public_key");
-   private static final wu e = wu.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<clk> c = clk.a.a.xmap(clk::new, clk::b);
+public class clk {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<clk> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               le.y.q().fieldOf("type").orElseGet(() -> clo.c).forGetter($$0x -> $$0x.f),
+               le.z.q().fieldOf("profession").orElseGet(() -> clm.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, clk::new)
+   );
+   public static final yv<wi, clk> d = yv.a(yt.a(lf.ar), $$0 -> $$0.f, yt.a(lf.aq), $$0 -> $$0.g, yt.f, $$0 -> $$0.h, clk::new);
+   private final clo f;
+   private final clm g;
+   private final int h;
 
-   public static clk a(ayl $$0, UUID $$1, clk.a $$2) throws clk.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new clk.b(e);
-      } else {
-         return new clk($$2);
-      }
+   public clk(clo $$0, clm $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   public ayl a() {
-      return ayl.a(this.d.c, "SHA256withRSA");
+   public clo a() {
+      return this.f;
    }
 
-   public clk.a b() {
-      return this.d;
+   public clm b() {
+      return this.g;
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<clk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axh.m.fieldOf("expires_at").forGetter(clk.a::b), awx.f.fieldOf("key").forGetter(clk.a::c), axh.n.fieldOf("signature_v2").forGetter(clk.a::d)
-               )
-               .apply($$0, clk.a::new)
-      );
-
-      public a(vu $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(vu $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(ayl $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof clk.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
+   public int c() {
+      return this.h;
    }
 
-   public static class b extends xu {
-      public b(wu $$0) {
-         super($$0);
-      }
+   public clk a(clo $$0) {
+      return new clk($$0, this.g, this.h);
+   }
+
+   public clk a(clm $$0) {
+      return new clk(this.f, $$0, this.h);
+   }
+
+   public clk a(int $$0) {
+      return new clk(this.f, this.g, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

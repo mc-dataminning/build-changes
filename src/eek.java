@@ -1,29 +1,49 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eek extends eel {
-   public static final Codec<eek> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eek::new));
+public record eek(eec b, List<eek.a> c) {
+   public static final Codec<eek> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eec.a.fieldOf("fallback").forGetter(eek::a), eek.a.a.listOf().fieldOf("rules").forGetter(eek::b)).apply($$0, eek::new)
+   );
 
-   public eek(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public static eek a(eec $$0) {
+      return new eek($$0, List.of());
    }
 
-   @Override
-   protected eem<?> a() {
-      return eem.a;
+   public static eek a(ddy $$0) {
+      return a(eec.a($$0));
    }
 
-   @Override
-   public List<ect.a> a(daj $$0, BiConsumer<in, dqh> $$1, ayg $$2, int $$3, in $$4, ecd $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+   public drb a(dbs $$0, ayk $$1, io $$2) {
+      for (eek.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
       }
 
-      return ImmutableList.of(new ect.a($$4.b($$3), 0, false));
+      return this.b.a($$1, $$2);
+   }
+
+   public eec a() {
+      return this.b;
+   }
+
+   public List<eek.a> b() {
+      return this.c;
+   }
+
+   public static record a(dya b, eec c) {
+      public static final Codec<eek.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dya.b.fieldOf("if_true").forGetter(eek.a::a), eec.a.fieldOf("then").forGetter(eek.a::b)).apply($$0, eek.a::new)
+      );
+
+      public dya a() {
+         return this.b;
+      }
+
+      public eec b() {
+         return this.c;
+      }
    }
 }

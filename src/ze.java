@@ -1,38 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
 
-public class ze {
-   private static final Logger a = LogUtils.getLogger();
+public interface ze<T extends wd> {
+   zg<? extends ze<T>> a();
 
-   public static <T extends wa> void a(zb<T> $$0, T $$1, aqh $$2) throws akt {
-      a($$0, $$1, $$2.o());
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public static <T extends wa> void a(zb<T> $$0, T $$1, boc<?> $$2) throws akt {
-      if (!$$2.bv()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var6) {
-                  if (var6 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
-                     if (var6 instanceof y $$4) {
-                        $$1.a($$4.a());
-                        throw var6;
-                     }
+   default boolean d() {
+      return false;
+   }
 
-                     o $$5 = o.a(var6, "Main thread packet handler");
-                     $$1.a($$5);
-                     throw new y($$5);
-                  }
-
-                  a.error("Failed to handle packet {}, suppressing error", $$0, var6);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw akt.a;
-      }
+   static <B extends ByteBuf, T extends ze<?>> yv<B, T> a(yy<B, T> $$0, yw<B, T> $$1) {
+      return yv.a($$0, $$1);
    }
 }

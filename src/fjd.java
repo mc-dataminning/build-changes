@@ -1,88 +1,17 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fjd {
-   int a;
-   final Map<fjd.a, fjd.b> b = Maps.newTreeMap(Comparator.<fjd.a, fiz>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public record fjd(akm c) implements fjb {
+   public static final MapCodec<fjd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akm.a.fieldOf("id").forGetter(fjd::c)).apply($$0, fjd::new));
 
-   public void a(Consumer<fja> $$0) {
-      this.a++;
-      $$0.accept(new fjd.c(0));
+   @Override
+   public fjc a() {
+      return fjc.e;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
-
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
-
-   static class a {
-      final fiz a;
-      final int b;
-
-      a(fiz $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   static class b {
-      fjc<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fjc.a;
-         this.b = -1;
-      }
-
-      public fjd.b a(int $$0, fjc<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements fja {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fiz $$0, fjc<?> $$1) {
-         fjd.this.b.computeIfAbsent(new fjd.a($$0, this.b), $$0x -> new fjd.b()).a(fjd.this.a, $$1);
-      }
-
-      @Override
-      public fja a() {
-         return fjd.this.new c(this.b + 1);
-      }
+   @Override
+   public Either<fjb.b, fjb.c> b() {
+      return Either.right(new fjb.c(this.c));
    }
 }

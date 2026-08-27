@@ -1,18 +1,9 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ekw implements ekx {
-   public static final ekw a = new ekw();
-   public static final Codec<ekw> b = Codec.unit(a);
+public abstract class ekw {
+   public static final Codec<ekw> c = le.q.q().dispatch("predicate_type", ekw::a, ekx::codec);
 
-   @Nullable
-   @Override
-   public ua a(ayg $$0, @Nullable ua $$1) {
-      return $$1;
-   }
+   public abstract boolean a(io var1, io var2, io var3, ayk var4);
 
-   @Override
-   public eky<?> a() {
-      return eky.b;
-   }
+   protected abstract ekx<?> a();
 }

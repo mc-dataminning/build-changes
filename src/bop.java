@@ -1,27 +1,111 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public abstract class bop implements bou {
-   private static final Codec<Either<Float, bop>> a = Codec.either(Codec.FLOAT, ld.L.q().dispatch(bop::c, boq::codec));
-   public static final Codec<bop> c = a.xmap(
-      $$0 -> (bop)$$0.map(bon::a, $$0x -> $$0x), $$0 -> $$0.c() == boq.a ? Either.left(((bon)$$0).d()) : Either.right($$0)
-   );
+public interface bop<T, F> {
+   @Nullable
+   F a();
 
-   public static Codec<bop> a(float $$0, float $$1) {
-      return axh.b(c, (Function<bop, DataResult<bop>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+   boolean a(T var1);
+
+   boolean b();
+
+   int c();
+
+   public static final class a implements bop<bop.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
          }
-      }));
+      }
+
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bop.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   public abstract float a();
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
 
-   public abstract float b();
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public abstract boq<?> c();
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
+   }
+
+   public static final class c<T> implements bop<T, T> {
+      private final Queue<T> a;
+
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
+   }
 }

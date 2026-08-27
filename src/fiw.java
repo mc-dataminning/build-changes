@@ -1,61 +1,73 @@
-import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class fiw implements fit {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public enum fiw implements ewu {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public fiw(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   final ext c;
+
+   private static ext a(int $$0, int $$1, fiw.a $$2) {
+      ext $$3 = new ext(ext.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
    }
 
-   public fiw(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static fiw a(int $$0) {
-      return new fiw($$0, 0);
-   }
-
-   public static fiw b(int $$0) {
-      return new fiw(0, $$0);
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
+   private fiw(Supplier<ext> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   public int C() {
-      return this.a;
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
    }
 
    @Override
-   public int D() {
-      return this.b;
+   public fiu bake(Function<eww, fiu> $$0) {
+      return $$0.apply(new eww() {
+         @Override
+         public int a() {
+            return fiw.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fiw.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fiw.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
    }
 
-   @Override
-   public int x() {
-      return this.c;
-   }
-
-   @Override
-   public int v() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<ffc> $$0) {
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

@@ -1,98 +1,205 @@
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface dae extends czp, dak {
+public class dae {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final dae b = new dae(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
+
+   public dae(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public dae(io $$0) {
+      this.e = jq.a($$0.u());
+      this.f = jq.a($$0.w());
+   }
+
+   public dae(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
+   }
+
+   public static dae a(int $$0, int $$1) {
+      return new dae($$0 << 5, $$1 << 5);
+   }
+
+   public static dae b(int $$0, int $$1) {
+      return new dae(($$0 << 5) + 31, ($$1 << 5) + 31);
+   }
+
+   public long a() {
+      return c(this.e, this.f);
+   }
+
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static long a(io $$0) {
+      return c(jq.a($$0.u()), jq.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
    @Override
-   default long aj() {
-      return this.A_().d();
+   public int hashCode() {
+      return d(this.e, this.f);
    }
 
-   long G_();
-
-   evc<dde> O();
-
-   private <T> evg<T> a(in $$0, T $$1, int $$2, evk $$3) {
-      return new evg<>($$1, $$0, this.A_().c() + (long)$$2, $$3, this.G_());
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
    }
-
-   private <T> evg<T> a(in $$0, T $$1, int $$2) {
-      return new evg<>($$1, $$0, this.A_().c() + (long)$$2, this.G_());
-   }
-
-   default void a(in $$0, dde $$1, int $$2, evk $$3) {
-      this.O().a(this.a($$0, $$1, $$2, $$3));
-   }
-
-   default void a(in $$0, dde $$1, int $$2) {
-      this.O().a(this.a($$0, $$1, $$2));
-   }
-
-   evc<elz> N();
-
-   default void a(in $$0, elz $$1, int $$2, evk $$3) {
-      this.N().a(this.a($$0, $$1, $$2, $$3));
-   }
-
-   default void a(in $$0, elz $$1, int $$2) {
-      this.N().a(this.a($$0, $$1, $$2));
-   }
-
-   enx A_();
-
-   bpk d_(in var1);
-
-   @Nullable
-   MinecraftServer o();
-
-   default bpj ak() {
-      return this.A_().q();
-   }
-
-   dsh M();
 
    @Override
-   default boolean b(int $$0, int $$1) {
-      return this.M().b($$0, $$1);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dae $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+      }
    }
 
-   ayg E_();
-
-   default void b(in $$0, dde $$1) {
+   public int b() {
+      return this.a(8);
    }
 
-   default void a(is $$0, dqh $$1, in $$2, in $$3, int $$4, int $$5) {
-      ene.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   public int c() {
+      return this.b(8);
    }
 
-   default void a(@Nullable clh $$0, in $$1, avb $$2, avd $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   public int d() {
+      return jq.c(this.e);
    }
 
-   void a(@Nullable clh var1, in var2, avb var3, avd var4, float var5, float var6);
-
-   void a(kv var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable clh var1, int var2, in var3, int var4);
-
-   default void c(int $$0, in $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
+   public int e() {
+      return jq.c(this.f);
    }
 
-   void a(iw<dva> var1, etp var2, dva.a var3);
-
-   default void a(@Nullable brh $$0, iw<dva> $$1, etp $$2) {
-      this.a($$1, $$2, new dva.a($$0, null));
+   public int f() {
+      return this.a(15);
    }
 
-   default void a(@Nullable brh $$0, iw<dva> $$1, in $$2) {
-      this.a($$1, $$2, new dva.a($$0, null));
+   public int g() {
+      return this.b(15);
    }
 
-   default void a(iw<dva> $$0, in $$1, dva.a $$2) {
-      this.a($$0, etp.b($$1), $$2);
+   public int h() {
+      return this.e >> 5;
    }
 
-   default void a(akg<dva> $$0, in $$1, dva.a $$2) {
-      this.a(this.H_().d(le.C).g($$0), $$1, $$2);
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public io a(int $$0, int $$1, int $$2) {
+      return new io(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return jq.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return jq.a(this.f, $$0);
+   }
+
+   public io c(int $$0) {
+      return new io(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public io l() {
+      return new io(this.d(), 0, this.e());
+   }
+
+   public int a(dae $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(dae $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<dae> a(dae $$0, int $$1) {
+      return a(new dae($$0.e - $$1, $$0.f - $$1), new dae($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<dae> a(final dae $$0, final dae $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dae>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dae e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super dae> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new dae($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new dae($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

@@ -1,16 +1,20 @@
-public class aba {
-   public static final zd<aaw> a = a("finish_configuration");
-   public static final zd<aax> b = a("registry_data");
-   public static final zd<aaz> c = a("update_enabled_features");
-   public static final zd<aay> d = a("select_known_packs");
-   public static final zd<abd> e = b("finish_configuration");
-   public static final zd<abe> f = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends zb<aav>> zd<T> a(String $$0) {
-      return new zd<>(zc.b, new akh($$0));
+public record aba(akl<? extends jk<?>> b, List<jo.a> c) implements ze<aay> {
+   private static final yv<ByteBuf, akl<? extends jk<?>>> d = akm.b.a(akl::a, akl::a);
+   public static final yv<vx, aba> a = yv.a(d, aba::b, jo.a.a.a(yt.a()), aba::e, aba::new);
+
+   @Override
+   public zg<aba> a() {
+      return abe.b;
    }
 
-   private static <T extends zb<abc>> zd<T> b(String $$0) {
-      return new zd<>(zc.a, new akh($$0));
+   public void a(aay $$0) {
+      $$0.a(this);
+   }
+
+   public List<jo.a> e() {
+      return this.c;
    }
 }

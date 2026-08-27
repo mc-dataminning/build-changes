@@ -1,26 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class ekh extends ekj {
-   public static final Codec<ekh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dqh.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, ekh::new)
-   );
-   private final dqh b;
-   private final float d;
+public class ekh extends eld {
+   public static final MapCodec<ekh> a = MapCodec.unit(() -> ekh.b);
+   public static final ekh b = new ekh();
 
-   public ekh(dqh $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private ekh() {
    }
 
    @Override
-   public boolean a(dqh $$0, ayg $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public boolean a(drb $$0, ayk $$1) {
+      return true;
    }
 
    @Override
-   protected ekk<?> a() {
-      return ekk.f;
+   protected ele<?> a() {
+      return ele.a;
    }
 }

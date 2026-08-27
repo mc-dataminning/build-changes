@@ -1,154 +1,156 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import com.mojang.serialization.Codec;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cqo extends csu implements csb {
-   private static final EnumMap<cqo.a, UUID> j = ac.a(new EnumMap<>(cqo.a.class), $$0 -> {
-      $$0.put(cqo.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
-      $$0.put(cqo.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
-      $$0.put(cqo.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
-      $$0.put(cqo.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
-      $$0.put(cqo.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
-   });
-   public static final ki a = new kh() {
-      @Override
-      protected csz a(kf $$0, csz $$1) {
-         return cqo.a($$0, $$1) ? $$1 : super.a($$0, $$1);
+public class cqo {
+   private final int a;
+   public final bpn d;
+   public int e;
+   public final int f;
+   public final int g;
+
+   public cqo(bpn $$0, int $$1, int $$2, int $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   public void b(cto $$0, cto $$1) {
+      int $$2 = $$1.I() - $$0.I();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
       }
-   };
-   protected final cqo.a b;
-   protected final iw<cqp> c;
-   private final Supplier<Multimap<iw<btc>, btf>> k;
+   }
 
-   public static boolean a(kf $$0, csz $$1) {
-      in $$2 = $$0.c().a($$0.d().c(dfj.b));
-      List<bsa> $$3 = $$0.b().a(bsa.class, new etk($$2), brm.f.and(new brm.a($$1)));
-      if ($$3.isEmpty()) {
-         return false;
+   protected void a(cto $$0, int $$1) {
+   }
+
+   protected void b(int $$0) {
+   }
+
+   protected void b_(cto $$0) {
+   }
+
+   public void a(clw $$0, cto $$1) {
+      this.b();
+   }
+
+   public boolean a(cto $$0) {
+      return true;
+   }
+
+   public cto g() {
+      return this.d.a(this.a);
+   }
+
+   public boolean h() {
+      return !this.g().e();
+   }
+
+   public void e(cto $$0) {
+      this.a($$0, this.g());
+   }
+
+   public void a(cto $$0, cto $$1) {
+      this.f($$0);
+   }
+
+   public void f(cto $$0) {
+      this.d.a(this.a, $$0);
+      this.b();
+   }
+
+   public void b() {
+      this.d.e();
+   }
+
+   public int a() {
+      return this.d.ah_();
+   }
+
+   public int a_(cto $$0) {
+      return Math.min(this.a(), $$0.j());
+   }
+
+   @Nullable
+   public Pair<akm, akm> c() {
+      return null;
+   }
+
+   public cto a(int $$0) {
+      return this.d.a(this.a, $$0);
+   }
+
+   public boolean a(clw $$0) {
+      return true;
+   }
+
+   public boolean d() {
+      return true;
+   }
+
+   public Optional<cto> a(int $$0, int $$1, clw $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().I()) {
+         return Optional.empty();
       } else {
-         bsa $$4 = $$3.get(0);
-         bro $$5 = bsc.h($$1);
-         csz $$6 = $$1.a(1);
-         $$4.a($$5, $$6);
-         if ($$4 instanceof bsc) {
-            ((bsc)$$4).a($$5, 2.0F);
-            ((bsc)$$4).fT();
-         }
+         $$0 = Math.min($$0, $$1);
+         cto $$3 = this.a($$0);
+         if ($$3.e()) {
+            return Optional.empty();
+         } else {
+            if (this.g().e()) {
+               this.a(cto.i, $$3);
+            }
 
-         return true;
+            return Optional.of($$3);
+         }
       }
    }
 
-   public cqo(iw<cqp> $$0, cqo.a $$1, csu.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
-      dfj.a(this, a);
-      this.k = Suppliers.memoize(() -> {
-         int $$2x = $$0.a().a($$1);
-         float $$3 = $$0.a().f();
-         Builder<iw<btc>, btf> $$4 = ImmutableMultimap.builder();
-         UUID $$5 = j.get($$1);
-         $$4.put(bth.a, new btf($$5, "Armor modifier", (double)$$2x, btf.a.a));
-         $$4.put(bth.b, new btf($$5, "Armor toughness", (double)$$3, btf.a.a));
-         float $$6 = $$0.a().g();
-         if ($$6 > 0.0F) {
-            $$4.put(bth.n, new btf($$5, "Armor knockback resistance", (double)$$6, btf.a.a));
+   public cto b(int $$0, int $$1, clw $$2) {
+      Optional<cto> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(cto.i);
+   }
+
+   public cto d(cto $$0) {
+      return this.b($$0, $$0.I());
+   }
+
+   public cto b(cto $$0, int $$1) {
+      if (!$$0.e() && this.a($$0)) {
+         cto $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.I()), this.a_($$0) - $$2.I());
+         if ($$2.e()) {
+            this.e($$0.a($$3));
+         } else if (cto.c($$2, $$0)) {
+            $$0.h($$3);
+            $$2.g($$3);
+            this.e($$2);
          }
 
-         return $$4.build();
-      });
+         return $$0;
+      } else {
+         return $$0;
+      }
    }
 
-   public cqo.a f() {
-      return this.b;
-   }
-
-   @Override
-   public int g() {
-      return this.c.a().b();
-   }
-
-   public iw<cqp> h() {
-      return this.c;
-   }
-
-   @Override
-   public boolean a(csz $$0, csz $$1) {
-      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public Multimap<iw<btc>, btf> a(bro $$0) {
-      return $$0 == this.b.a() ? this.k.get() : super.a($$0);
+   public boolean b(clw $$0) {
+      return this.a($$0) && this.a(this.g());
    }
 
    public int i() {
-      return this.c.a().a(this.b);
+      return this.a;
    }
 
-   public float j() {
-      return this.c.a().f();
+   public boolean e() {
+      return true;
    }
 
-   @Override
-   public bro k() {
-      return this.b.a();
-   }
-
-   @Override
-   public iw<avb> ap_() {
-      return this.h().a().c();
-   }
-
-   public static enum a implements ayt {
-      a(bro.f, 11, "helmet"),
-      b(bro.e, 16, "chestplate"),
-      c(bro.d, 15, "leggings"),
-      d(bro.c, 13, "boots"),
-      e(bro.g, 16, "body");
-
-      public static final Codec<cqo.a> f = ayt.b(cqo.a::values);
-      private final bro g;
-      private final String h;
-      private final int i;
-
-      private a(bro $$0, int $$1, String $$2) {
-         this.g = $$0;
-         this.h = $$2;
-         this.i = $$1;
-      }
-
-      public int a(int $$0) {
-         return this.i * $$0;
-      }
-
-      public bro a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public boolean d() {
-         return this == a || this == b || this == c || this == d;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+   public boolean f() {
+      return false;
    }
 }

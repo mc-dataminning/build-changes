@@ -1,7 +1,12 @@
-import java.util.List;
-
-public interface cvj<T, C> {
-   List<aqy<T>> a();
-
-   C a(List<aqy<T>> var1);
+public enum cvj {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j;
 }

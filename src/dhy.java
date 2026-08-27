@@ -1,34 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhy extends dho implements ddh {
-   public static final MapCodec<dhy> a = b(dhy::new);
+public class dhy extends dhx {
+   public static final MapCodec<dhy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(le.e.q().fieldOf("host").forGetter(dhx::b), u()).apply($$0, dhy::new));
 
    @Override
    public MapCodec<dhy> a() {
-      return a;
+      return b;
    }
 
-   public dhy(dqg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dag $$0, in $$1, dqh $$2) {
-      return $$0.a_($$1.d()).i();
+   public dhy(ddy $$0, dra.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(dkk.i, it.a.b));
    }
 
    @Override
-   public boolean a(dad $$0, ayg $$1, in $$2, dqh $$3) {
-      return true;
+   protected drb a(drb $$0, dkl $$1) {
+      return dkk.b($$0, $$1);
    }
 
    @Override
-   public void a(aqh $$0, ayg $$1, in $$2, dqh $$3) {
-      $$0.a($$2.d(), dhz.c(), 2);
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(dkk.i);
    }
 
    @Override
-   public in a(in $$0) {
-      return $$0.d();
+   public drb a(cwz $$0) {
+      return this.n().a(dkk.i, $$0.k().o());
    }
 }

@@ -1,75 +1,124 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
 
-public class ckq implements czq {
-   private static final int a = 1200;
-   private int b;
+public class ckq {
+   private static final int a = 600;
+   private static final int b = 20;
+   private static final double c = 0.0125;
+   private static final int d = 8;
+   private static final int e = 8;
+   private static final double f = 12.0;
+   private static final float g = 0.6F;
+   private static final int h = 2;
+   private static final int i = 100;
+   private static final int j = 5;
 
-   @Override
-   public int a(aqh $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.aa().b(czz.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            clh $$3 = $$0.j();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               ayg $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               in $$7 = $$3.dn().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (bsv.a(brn.p, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
+   protected static btq<?> a(ckp $$0, btq<ckp> $$1) {
+      b($$0, $$1);
+      c($$0, $$1);
+      d($$0, $$1);
+      $$1.a(ImmutableSet.of(cnl.a));
+      $$1.b(cnl.b);
+      $$1.f();
+      return $$1;
+   }
 
-                     if ($$0.a().a($$7, awc.n).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
+   protected static void a(ckp $$0) {
+      iw $$1 = iw.a($$0.dP().ae(), $$0.dp());
+      $$0.dS().a(cbs.b, $$1);
+   }
 
-                  return 0;
-               }
-            }
-         }
+   private static void b(ckp $$0, btq<ckp> $$1) {
+      $$1.a(cnl.a, 0, ImmutableList.of(new bvn(45, 90), new bvr(), bvf.a(), bwx.a()));
+   }
+
+   private static void c(ckp $$0, btq<ckp> $$1) {
+      $$1.a(cnl.b, 10, ImmutableList.of(bwt.a(ckq::a), a(), b(), bwj.a(bsa.by, 4)));
+   }
+
+   private static void d(ckp $$0, btq<ckp> $$1) {
+      $$1.a(cnl.k, 10, ImmutableList.of(bww.a($$1x -> !a((ckl)$$0, $$1x)), bwm.a(1.0F), bvo.a(20)), cbs.o);
+   }
+
+   private static bwe<ckp> a() {
+      return new bwe<>(
+         ImmutableList.of(
+            Pair.of(bwg.a(bsa.by, 8.0F), 1),
+            Pair.of(bwg.a(bsa.aA, 8.0F), 1),
+            Pair.of(bwg.a(bsa.aB, 8.0F), 1),
+            Pair.of(bwg.a(8.0F), 1),
+            Pair.of(new bur(30, 60), 1)
+         )
+      );
+   }
+
+   private static bwe<ckp> b() {
+      return new bwe<>(
+         ImmutableList.of(
+            Pair.of(bvz.a(0.6F), 2),
+            Pair.of(bve.a(bsa.aA, 8, cbs.q, 0.6F, 2), 2),
+            Pair.of(bve.a(bsa.aB, 8, cbs.q, 0.6F, 2), 2),
+            Pair.of(bwz.a(cbs.b, 0.6F, 2, 100), 2),
+            Pair.of(bwy.a(cbs.b, 0.6F, 5), 2),
+            Pair.of(new bur(30, 60), 1)
+         )
+      );
+   }
+
+   protected static void b(ckp $$0) {
+      btq<ckp> $$1 = $$0.dS();
+      cnl $$2 = $$1.g().orElse(null);
+      $$1.a(ImmutableList.of(cnl.k, cnl.b));
+      cnl $$3 = $$1.g().orElse(null);
+      if ($$2 != $$3) {
+         d($$0);
+      }
+
+      $$0.v($$1.a(cbs.o));
+   }
+
+   private static boolean a(ckl $$0, bso $$1) {
+      return a($$0).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static Optional<? extends bso> a(ckl $$0) {
+      Optional<bso> $$1 = buj.a($$0, cbs.ab);
+      if ($$1.isPresent() && ccy.d($$0, $$1.get())) {
+         return $$1;
       } else {
-         return 0;
+         Optional<? extends bso> $$2 = a($$0, cbs.l);
+         return $$2.isPresent() ? $$2 : $$0.dS().c(cbs.M);
       }
    }
 
-   private int a(aqh $$0, in $$1) {
-      int $$2 = 48;
-      if ($$0.y().a($$0x -> $$0x.a(cdh.n), $$1, 48, cdd.b.b) > 4L) {
-         List<cds> $$3 = $$0.a(cds.class, new etk($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
+   private static Optional<? extends bso> a(ckl $$0, cbs<? extends bso> $$1) {
+      return $$0.dS().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
+   }
+
+   protected static void a(ckp $$0, bso $$1) {
+      if (!($$1 instanceof ckl)) {
+         ckn.a($$0, $$1);
+      }
+   }
+
+   protected static void b(ckp $$0, bso $$1) {
+      $$0.dS().b(cbs.E);
+      $$0.dS().a(cbs.ab, $$1.cz(), 600L);
+   }
+
+   protected static void c(ckp $$0) {
+      if ((double)$$0.dP().z.i() < 0.0125) {
+         d($$0);
+      }
+   }
+
+   private static void d(ckp $$0) {
+      $$0.dS().g().ifPresent($$1 -> {
+         if ($$1 == cnl.k) {
+            $$0.gw();
          }
-      }
-
-      return 0;
-   }
-
-   private int b(aqh $$0, in $$1) {
-      int $$2 = 16;
-      List<cds> $$3 = $$0.a(cds.class, new etk($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(in $$0, aqh $$1) {
-      cds $$2 = brn.p.a((dad)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bse.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
-      }
+      });
    }
 }

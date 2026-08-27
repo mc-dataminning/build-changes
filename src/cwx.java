@@ -1,76 +1,112 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cwx extends cwv {
-   private static final cxa a = cxa.a(ctc.qO);
-   private static final cxa b = cxa.a(ctc.pu);
-   private static final cxa c = cxa.a(ctc.uv);
+public record cwx(ard<String> l, String m, int n, List<ard<wx>> o, boolean p) implements cwa<wx, cwx> {
+   public static final cwx a = new cwx(ard.a(""), "", 0, List.of(), true);
+   public static final int b = 32767;
+   public static final int c = 100;
+   public static final int d = 16;
+   public static final int e = 32;
+   public static final int f = 3;
+   public static final int g = 2;
+   public static final Codec<wx> h = wz.a(32767);
+   public static final Codec<List<ard<wx>>> i = a(h);
+   public static final Codec<cwx> j = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ard.a(Codec.string(0, 32)).fieldOf("title").forGetter(cwx::d),
+               Codec.STRING.fieldOf("author").forGetter(cwx::e),
+               axm.a(0, 3).optionalFieldOf("generation", 0).forGetter(cwx::f),
+               i.optionalFieldOf("pages", List.of()).forGetter(cwx::a),
+               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(cwx::g)
+            )
+            .apply($$0, cwx::new)
+   );
+   public static final yv<wi, cwx> k = yv.a(ard.a(yt.b(32)), cwx::d, yt.k, cwx::e, yt.f, cwx::f, ard.a(wz.b).a(yt.c(100)), cwx::a, yt.b, cwx::g, cwx::new);
 
-   public cwx(cwt $$0) {
-      super($$0);
+   private static Codec<ard<wx>> b(Codec<wx> $$0) {
+      return ard.a($$0);
    }
 
-   public boolean a(cou $$0, dad $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
+   public static Codec<List<ard<wx>>> a(Codec<wx> $$0) {
+      return b($$0).sizeLimitedListOf(100);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csz $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
+   @Nullable
+   public cwx b() {
+      return this.n >= 2 ? null : new cwx(this.l, this.m, this.n + 1, this.o, this.p);
+   }
 
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
+   @Nullable
+   public cwx a(ee $$0, @Nullable clw $$1) {
+      if (this.p) {
+         return null;
+      } else {
+         Builder<ard<wx>> $$2 = ImmutableList.builderWithExpectedSize(this.o.size());
+
+         for (ard<wx> $$3 : this.o) {
+            Optional<ard<wx>> $$4 = a($$0, $$1, $$3);
+            if ($$4.isEmpty()) {
+               return null;
             }
+
+            $$2.add($$4.get());
          }
-      }
 
-      return $$2 && $$3 >= 1;
+         return new cwx(this.l, this.m, this.n, $$2.build(), true);
+      }
    }
 
-   public csz a(cou $$0, iy.a $$1) {
-      List<cvq> $$2 = new ArrayList<>();
-      int $$3 = 0;
+   public cwx c() {
+      return new cwx(this.l, this.m, this.n, this.o, true);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         csz $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cvq $$6 = $$5.a(ka.Q);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
+   private static Optional<ard<wx>> a(ee $$0, @Nullable clw $$1, ard<wx> $$2) {
+      return $$2.b($$2x -> {
+         try {
+            wx $$3 = xa.a($$0, $$2x, $$1, 0);
+            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
+         } catch (Exception var4) {
+            return Optional.of($$2x);
          }
-      }
+      });
+   }
 
-      csz $$7 = new csz(ctc.uu, 3);
-      $$7.b(ka.R, new cvr($$3, $$2));
-      return $$7;
+   private static boolean a(wx $$0, iz.a $$1) {
+      return wx.a.a($$0, $$1).length() > 32767;
+   }
+
+   public List<wx> a(boolean $$0) {
+      return Lists.transform(this.o, $$1 -> (wx)$$1.a($$0));
+   }
+
+   public cwx b(List<ard<wx>> $$0) {
+      return new cwx(this.l, this.m, this.n, $$0, false);
+   }
+
+   public ard<String> d() {
+      return this.l;
+   }
+
+   public String e() {
+      return this.m;
+   }
+
+   public int f() {
+      return this.n;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<ard<wx>> a() {
+      return this.o;
    }
 
-   @Override
-   public csz a(iy.a $$0) {
-      return new csz(ctc.uu);
-   }
-
-   @Override
-   public cxh<?> ao_() {
-      return cxh.g;
+   public boolean g() {
+      return this.p;
    }
 }

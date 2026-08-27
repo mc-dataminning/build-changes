@@ -1,67 +1,42 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxe {
-   public static btt<cku> a(float $$0) {
-      return bxf.a(
-         (Function<bxf.b<cku>, ? extends App<bxf.c<cku>, bxi<cku>>>)($$1 -> $$1.group($$1.b(cbd.d), $$1.c(cbd.c), $$1.b(cbd.g), $$1.a(cbd.m), $$1.a(cbd.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.p_()) {
-                           return false;
-                        } else if ($$7.gA().b() != ckx.b) {
-                           return false;
-                        } else {
-                           in $$9 = $$1.<iv>b($$2).b();
-                           Optional<iw<cdg>> $$10 = $$6x.y().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bsa>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cku && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cku)$$0xxxx)
-                                 .filter(bsa::bB)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.dQ().c(cbd.c).isEmpty()) {
-                                       btu.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.dQ().a(cbd.d, iv.a($$6x.ae(), $$9));
-                                       afw.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
+   private static final int a = 60;
+
+   public static bui<bsx> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bxu.a(
+         (Function<bxu.b<bsx>, ? extends App<bxu.c<bsx>, bxx<bsx>>>)($$3 -> $$3.group($$3.c(cbs.o), $$3.c(cbs.m), $$3.a(cbs.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dp()).a(awb.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        io $$8 = $$6.dp();
+                        io.a $$9 = new io.a();
+                        eup $$10 = eup.a($$6);
+
+                        for (io $$11 : io.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              drb $$12 = $$5x.a_($$11);
+                              drb $$13 = $$5x.a_($$9.a($$11, it.a));
+                              if (!$$12.a(dea.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, it.b)) {
+                                 io $$14 = $$11.i();
+                                 $$5.a(new buk($$14));
+                                 $$4.a(new cbv(new buk($$14), $$1, 1));
+                                 break;
+                              }
                            }
                         }
+
+                        $$2.setValue($$7 + 60L);
+                        return true;
                      }
-               ))
+                  }))
       );
-   }
-
-   private static boolean a(iw<cdg> $$0, cku $$1, in $$2) {
-      boolean $$3 = $$1.dQ().c(cbd.d).isPresent();
-      if ($$3) {
-         return false;
-      } else {
-         Optional<iv> $$4 = $$1.dQ().c(cbd.c);
-         ckx $$5 = $$1.gA().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
-         }
-      }
-   }
-
-   private static boolean a(bsi $$0, in $$1, cdg $$2) {
-      emo $$3 = $$0.K().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
    }
 }

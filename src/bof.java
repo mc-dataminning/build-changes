@@ -1,151 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.mojang.serialization.Codec;
 import org.slf4j.Logger;
 
-public class bof<T> implements bnk, boe<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final boh<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public class bof {
+   public static final Codec<bof> a = Codec.INT.xmap(bof::a, bof::a);
+   private static final bof b = new bof(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   public static bof<Runnable> a(Executor $$0, String $$1) {
-      return new bof<>(new boh.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   private bof(int $$0) {
+      this.d = $$0;
    }
 
-   public bof(boh<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bni.a.a(this);
-   }
-
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
-
-      return true;
-   }
-
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
-   }
-
-   @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
+   public static bof a(int $$0) {
+      if ($$0 == 1) {
+         return b;
       } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
+         b($$0);
+         return new bof($$0);
+      }
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aX) {
+            c.warn("Found 0 weight, make sure this is intentional!");
          }
       }
-   }
-
-   @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
-         }
-      }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   public int b() {
-      return this.e.c();
-   }
-
-   public boolean c() {
-      return this.g() && !this.e.b();
    }
 
    @Override
    public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
+      return Integer.toString(this.d);
    }
 
    @Override
-   public String bx() {
-      return this.g;
+   public int hashCode() {
+      return Integer.hashCode(this.d);
    }
 
    @Override
-   public List<bnh> bu() {
-      return ImmutableList.of(bnh.a(this.g + "-queue-size", bng.c, this::b));
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bof && this.d == ((bof)$$0).d;
    }
 }

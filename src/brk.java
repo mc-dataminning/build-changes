@@ -1,43 +1,39 @@
-public record brk(float a, float b, float c, brj d, boolean e) {
-   private brk(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), brj.a($$0, $$1), $$2);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.ToIntFunction;
+
+class brk extends bra {
+   private final ToIntFunction<ayk> a;
+
+   protected brk(brb $$0, int $$1, ToIntFunction<ayk> $$2) {
+      super($$0, $$1, ky.V);
+      this.a = $$2;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   @Override
+   public void a(bso $$0, int $$1, bru.c $$2) {
+      if ($$2 == bru.c.a) {
+         this.a($$0.dP(), $$0.el(), $$0.aL());
+      }
    }
 
-   public etk a(etp $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
-   }
+   private void a(dax $$0, ayk $$1, io $$2) {
+      List<io> $$3 = new ArrayList<>();
+      int $$4 = this.a.applyAsInt($$1);
 
-   public etk a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new etk($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
-   }
+      for (io $$5 : io.a($$1, 10, $$2, 3)) {
+         io $$6 = $$5.d();
+         if ($$0.a_($$5).i() && $$0.a_($$6).d($$0, $$6, it.b)) {
+            $$3.add($$5.i());
+            if ($$3.size() >= $$4) {
+               break;
+            }
+         }
+      }
 
-   public brk a(float $$0) {
-      return this.a($$0, $$0);
-   }
-
-   public brk a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new brk(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
-   }
-
-   public static brk b(float $$0, float $$1) {
-      return new brk($$0, $$1, false);
-   }
-
-   public static brk c(float $$0, float $$1) {
-      return new brk($$0, $$1, true);
-   }
-
-   public brk b(float $$0) {
-      return new brk(this.a, this.b, $$0, this.d, this.e);
-   }
-
-   public brk a(brj.a $$0) {
-      return new brk(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+      for (io $$7 : $$3) {
+         $$0.a($$7, dea.bs.n(), 3);
+         $$0.c(3018, $$7, 0);
+      }
    }
 }

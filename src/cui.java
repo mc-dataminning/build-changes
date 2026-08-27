@@ -1,44 +1,32 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cui extends cqx {
-   protected final dde a;
-   private final is b;
+public enum cui implements ayx {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
 
-   public cui(dde $$0, dde $$1, csu.a $$2, is $$3) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
+   public static final Codec<cui> e = ayx.b(cui::values);
+   public static final IntFunction<cui> f = awv.a($$0 -> $$0.h, values(), awv.a.a);
+   public static final yv<ByteBuf, cui> g = yt.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cui(int $$0, String $$1, n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   protected boolean a(dag $$0, dqh $$1, in $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dqh c(cwi $$0) {
-      dqh $$1 = this.a.a($$0);
-      dqh $$2 = null;
-      dag $$3 = $$0.q();
-      in $$4 = $$0.a();
-
-      for (is $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dqh $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, etu.a()) ? $$2 : null;
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public void a(Map<dde, csu> $$0, csu $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public String c() {
+      return this.i;
    }
 }

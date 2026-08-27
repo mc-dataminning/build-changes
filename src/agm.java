@@ -1,37 +1,20 @@
-public class agm implements zb<afz> {
-   public static final ys<vu, agm> a = zb.a(agm::a, agm::new);
-   private final int b;
-   private final int c;
+public record agm(xo.a b) implements ze<agd> {
+   public static final yv<vx, agm> a = ze.a(agm::a, agm::new);
 
-   public agm(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agm(vx $$0) {
+      this(xo.a.a($$0));
    }
 
-   private agm(vu $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vu $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+   private void a(vx $$0) {
+      xo.a.a($$0, this.b);
    }
 
    @Override
-   public zd<agm> a() {
-      return afx.bp;
+   public zg<agm> a() {
+      return agb.bl;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

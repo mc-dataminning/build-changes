@@ -1,158 +1,231 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fdk extends atw<Map<String, List<fdk.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fdk.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fdk.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fdk.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fdk.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fdk.a::d)
-                  )
-                  .apply($$0, fdk.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final akh c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private fdk.b f;
+public class fdk {
+   private static final float b = 4.0F;
+   private boolean c;
+   private dad d;
+   private bru e;
+   private euk f = euk.b;
+   private final io.a g = new io.a();
+   private final Vector3f h = new Vector3f(0.0F, 0.0F, 1.0F);
+   private final Vector3f i = new Vector3f(0.0F, 1.0F, 0.0F);
+   private final Vector3f j = new Vector3f(1.0F, 0.0F, 0.0F);
+   private float k;
+   private float l;
+   private final Quaternionf m = new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F);
+   private boolean n;
+   private float o;
+   private float p;
+   private float q;
+   public static final float a = 0.083333336F;
 
-   public fdk(akh $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected Map<String, List<fdk.a>> a(atr $$0, bma $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+   public void a(dad $$0, bru $$1, boolean $$2, boolean $$3, float $$4) {
+      this.c = true;
+      this.d = $$0;
+      this.e = $$1;
+      this.n = $$2;
+      this.q = $$4;
+      this.a($$1.h($$4), $$1.g($$4));
+      this.b(ayd.d((double)$$4, $$1.L, $$1.du()), ayd.d((double)$$4, $$1.M, $$1.dw()) + (double)ayd.i($$4, this.p, this.o), ayd.d((double)$$4, $$1.N, $$1.dA()));
+      if ($$2) {
+         if ($$3) {
+            this.a(this.l + 180.0F, -this.k);
          }
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
+         float $$6 = $$1 instanceof bso $$5 ? $$5.ee() : 1.0F;
+         this.a(-this.a((double)(4.0F * $$6)), 0.0, 0.0);
+      } else if ($$1 instanceof bso && ((bso)$$1).fL()) {
+         it $$7 = ((bso)$$1).fN();
+         this.a($$7 != null ? $$7.p() - 180.0F : 0.0F, 0.0F);
+         this.a(0.0, 0.3, 0.0);
       }
    }
 
-   protected void a(Map<String, List<fdk.a>> $$0, atr $$1, bma $$2) {
-      List<fdk.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new fdk.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
+   public void a() {
       if (this.e != null) {
-         this.e.cancel();
+         this.p = this.o;
+         this.o = this.o + (this.e.cL() - this.o) * 0.5F;
       }
    }
 
-   private long a(List<fdk.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<fdk.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final fde a = fde.Q();
-      private final List<fdk.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<fdk.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public fdk.b a(List<fdk.a> $$0, long $$1) {
-         this.cancel();
-         return new fdk.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (fdk.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fhm.a(fde.Q().aA(), fhm.a.f, wu.a($$2.c, $$3), wu.a($$2.d, $$3)));
-                  return;
-               }
+   private double a(double $$0) {
+      for (int $$1 = 0; $$1 < 8; $$1++) {
+         float $$2 = (float)(($$1 & 1) * 2 - 1);
+         float $$3 = (float)(($$1 >> 1 & 1) * 2 - 1);
+         float $$4 = (float)(($$1 >> 2 & 1) * 2 - 1);
+         $$2 *= 0.1F;
+         $$3 *= 0.1F;
+         $$4 *= 0.1F;
+         euk $$5 = this.f.b((double)$$2, (double)$$3, (double)$$4);
+         euk $$6 = new euk(
+            this.f.c - (double)this.h.x() * $$0 + (double)$$2,
+            this.f.d - (double)this.h.y() * $$0 + (double)$$3,
+            this.f.e - (double)this.h.z() * $$0 + (double)$$4
+         );
+         eui $$7 = this.d.a(new dag($$5, $$6, dag.a.c, dag.b.a, this.e));
+         if ($$7.c() != eui.a.a) {
+            double $$8 = $$7.e().f(this.f);
+            if ($$8 < $$0) {
+               $$0 = $$8;
             }
          }
+      }
+
+      return $$0;
+   }
+
+   protected void a(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.h.x() * $$0 + (double)this.i.x() * $$1 + (double)this.j.x() * $$2;
+      double $$4 = (double)this.h.y() * $$0 + (double)this.i.y() * $$1 + (double)this.j.y() * $$2;
+      double $$5 = (double)this.h.z() * $$0 + (double)this.i.z() * $$1 + (double)this.j.z() * $$2;
+      this.a(new euk(this.f.c + $$3, this.f.d + $$4, this.f.e + $$5));
+   }
+
+   protected void a(float $$0, float $$1) {
+      this.k = $$1;
+      this.l = $$0;
+      this.m.rotationYXZ(-$$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
+      this.h.set(0.0F, 0.0F, 1.0F).rotate(this.m);
+      this.i.set(0.0F, 1.0F, 0.0F).rotate(this.m);
+      this.j.set(1.0F, 0.0F, 0.0F).rotate(this.m);
+   }
+
+   protected void b(double $$0, double $$1, double $$2) {
+      this.a(new euk($$0, $$1, $$2));
+   }
+
+   protected void a(euk $$0) {
+      this.f = $$0;
+      this.g.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public euk b() {
+      return this.f;
+   }
+
+   public io c() {
+      return this.g;
+   }
+
+   public float d() {
+      return this.k;
+   }
+
+   public float e() {
+      return this.l;
+   }
+
+   public Quaternionf f() {
+      return this.m;
+   }
+
+   public bru g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public fdk.a j() {
+      fdz $$0 = fdz.Q();
+      double $$1 = (double)$$0.aP().k() / (double)$$0.aP().l();
+      double $$2 = Math.tan((double)((float)$$0.m.ah().c().intValue() * (float) (Math.PI / 180.0)) / 2.0) * 0.05F;
+      double $$3 = $$2 * $$1;
+      euk $$4 = new euk(this.h).a(0.05F);
+      euk $$5 = new euk(this.j).a($$3);
+      euk $$6 = new euk(this.i).a($$2);
+      return new fdk.a($$4, $$5, $$6);
+   }
+
+   public emw k() {
+      if (!this.c) {
+         return emw.d;
+      } else {
+         emu $$0 = this.d.b_(this.g);
+         if ($$0.a(awb.a) && this.f.d < (double)((float)this.g.v() + $$0.a(this.d, this.g))) {
+            return emw.b;
+         } else {
+            fdk.a $$1 = this.j();
+
+            for (euk $$3 : Arrays.asList($$1.a, $$1.a(), $$1.b(), $$1.c(), $$1.d())) {
+               euk $$4 = this.f.e($$3);
+               io $$5 = io.a($$4);
+               emu $$6 = this.d.b_($$5);
+               if ($$6.a(awb.b)) {
+                  if ($$4.d <= (double)($$6.a(this.d, $$5) + (float)$$5.v())) {
+                     return emw.a;
+                  }
+               } else {
+                  drb $$7 = this.d.a_($$5);
+                  if ($$7.a(dea.qP)) {
+                     return emw.c;
+                  }
+               }
+            }
+
+            return emw.d;
+         }
+      }
+   }
+
+   public final Vector3f l() {
+      return this.h;
+   }
+
+   public final Vector3f m() {
+      return this.i;
+   }
+
+   public final Vector3f n() {
+      return this.j;
+   }
+
+   public void o() {
+      this.d = null;
+      this.e = null;
+      this.c = false;
+   }
+
+   public float p() {
+      return this.q;
+   }
+
+   public static class a {
+      final euk a;
+      private final euk b;
+      private final euk c;
+
+      a(euk $$0, euk $$1, euk $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public euk a() {
+         return this.a.e(this.c).e(this.b);
+      }
+
+      public euk b() {
+         return this.a.e(this.c).d(this.b);
+      }
+
+      public euk c() {
+         return this.a.d(this.c).e(this.b);
+      }
+
+      public euk d() {
+         return this.a.d(this.c).d(this.b);
+      }
+
+      public euk a(float $$0, float $$1) {
+         return this.a.e(this.c.a((double)$$1)).d(this.b.a((double)$$0));
       }
    }
 }

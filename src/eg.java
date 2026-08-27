@@ -1,12 +1,32 @@
-public class eg extends Exception {
-   private final wu a;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.ResultConsumer;
+import com.mojang.brigadier.exceptions.CommandExceptionType;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-   public eg(wu $$0) {
-      super($$0.getString());
-      this.a = $$0;
+public interface eg<T extends eg<T>> {
+   boolean c(int var1);
+
+   T b(eb var1);
+
+   eb p();
+
+   default T a_() {
+      return this.b(eb.a);
    }
 
-   public wu a() {
-      return this.a;
+   CommandDispatcher<T> x();
+
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hg var4);
+
+   boolean y();
+
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hg $$2) {
+      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
+   }
+
+   static <T extends eg<T>> ResultConsumer<T> b_() {
+      return ($$0, $$1, $$2) -> ((eg)$$0.getSource()).p().onResult($$1, $$2);
    }
 }

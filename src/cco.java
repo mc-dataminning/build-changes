@@ -1,35 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class cco extends ccc<ckl> {
-   @Override
-   public Set<cbd<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cbd.B)));
-   }
+public class cco<T extends bso> extends ccy<T> {
+   private final BiPredicate<T, bso> a;
+   private final Predicate<T> c;
+   private final cbs<Boolean> d;
+   private final int e;
 
-   protected void a(aqh $$0, ckl $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == brn.bx)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != brn.bx))
-         .ifPresentOrElse($$1x -> $$1.dQ().a(cbd.B, $$1x), () -> $$1.dQ().b(cbd.B));
-   }
-
-   private static Optional<bsa> a(ckl $$0, Predicate<bsa> $$1) {
-      return $$0.dQ().c(cbd.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   public cco(int $$0, BiPredicate<T, bso> $$1, Predicate<T> $$2, cbs<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   protected int b() {
-      return 24;
+   protected void a(aqm $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
    @Override
-   protected int c() {
-      return 24;
+   public Set<cbs<?>> a() {
+      return Set.of(cbs.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<bso>> $$1 = $$0.dS().c(cbs.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dS().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dS().b(this.d);
    }
 }

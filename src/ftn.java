@@ -1,70 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+public class ftn<T extends bru> extends ftf<T> {
+   private static final String a = "knot";
+   private final fvw b;
+   private final fvw f;
 
-public class ftn extends fst<cne> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fvb g;
-   private final fvb h;
-   private final ImmutableList<fvb> i;
-
-   public ftn(fvb $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+   public ftn(fvw $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   protected Builder<fvb> a(fvb $$0) {
-      Builder<fvb> $$1 = new Builder();
-      $$1.add(new fvb[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
+   public static fwc b() {
+      fwe $$0 = new fwe();
+      fwf $$1 = $$0.a();
+      $$1.a("knot", fwb.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fvy.a);
+      return fwc.a($$0, 32, 32);
    }
 
-   public static void a(fvk $$0) {
-      $$0.a(
-         "bottom",
-         fvg.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fvd.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fvg.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fvd.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fvg.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fvd.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   @Override
+   public fvw a() {
+      return this.b;
    }
 
-   public static fvh b() {
-      fvj $$0 = new fvj();
-      fvk $$1 = $$0.a();
-      a($$1);
-      return fvh.a($$0, 128, 64);
-   }
-
-   public void a(cne $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fvb> c() {
-      return this.i;
-   }
-
-   private static void a(cne $$0, int $$1, fvb $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = axz.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axz.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = axz.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axz.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,67 +1,54 @@
-import java.util.Locale;
-import java.util.UUID;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface eog extends eoi {
-   @Override
-   String e();
+public class eog {
+   private final io a;
+   private final int b;
+   private final int c;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, daf $$1) {
-      eoi.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public eog(io $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   int f();
-
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
-
    @Nullable
-   UUID v();
+   public static eog a(ud $$0) {
+      Optional<io> $$1 = us.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new eog($$1.get(), $$2, $$3);
+      }
+   }
 
-   void a(UUID var1);
+   public ud a() {
+      ud $$0 = new ud();
+      $$0.a("pos", us.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
 
-   daa k();
+   public io b() {
+      return this.a;
+   }
 
-   void a(dry.c var1);
+   public int c() {
+      return this.b;
+   }
 
-   dry.c p();
+   public int d() {
+      return this.c;
+   }
 
-   boolean n();
+   public String e() {
+      return a(this.a);
+   }
 
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(daa var1);
-
-   etc<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+   public static String a(io $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   }
 }

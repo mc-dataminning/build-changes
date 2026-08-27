@@ -1,4 +1,20 @@
-public class ail {
-   public static final wc<aim> a = zg.a(vt.d, $$0 -> $$0.a(aik.g, aio.a).a(aik.h, aip.a).a(aik.f, ain.a).a(aik.i, aiq.b).a(abi.b, abk.a));
-   public static final wc<aie> b = zg.b(vt.d, $$0 -> $$0.a(aik.e, aij.a).a(aik.c, aih.a).a(aik.b, aig.a).a(aik.d, aii.a).a(aik.a, aif.a).a(abi.a, abh.a));
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
+
+public record ail(GameProfile b) implements ze<aij> {
+   public static final yv<ByteBuf, ail> a = yt.t.a(ail::new, ail::b);
+
+   @Override
+   public zg<ail> a() {
+      return aip.b;
+   }
+
+   public void a(aij $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

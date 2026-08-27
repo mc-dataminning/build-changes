@@ -1,133 +1,91 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.UUID;
-import java.util.function.Predicate;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class btu {
-   private btu() {
+public record btu(UUID d, String e, double f, btu.a g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final MapCodec<btu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jr.a.fieldOf("uuid").forGetter(btu::b),
+               Codec.STRING.fieldOf("name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("amount").forGetter(btu::d),
+               btu.a.f.fieldOf("operation").forGetter(btu::e)
+            )
+            .apply($$0, btu::new)
+   );
+   public static final Codec<btu> b = a.codec();
+   public static final yv<ByteBuf, btu> c = yv.a(jr.g, btu::b, yt.k, $$0 -> $$0.e, yt.i, btu::d, btu.a.e, btu::e, btu::new);
+
+   public btu(String $$0, double $$1, btu.a $$2) {
+      this(ayd.a(ayk.c()), $$0, $$1, $$2);
    }
 
-   public static void a(bsa $$0, bsa $$1, float $$2, int $$3) {
-      c($$0, $$1);
-      b($$0, $$1, $$2, $$3);
-   }
-
-   public static boolean a(btb<?> $$0, bsa $$1) {
-      Optional<cbf> $$2 = $$0.c(cbd.h);
-      return $$2.isPresent() && $$2.get().a($$1);
-   }
-
-   public static boolean a(btb<?> $$0, cbd<? extends bsa> $$1, brn<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ai() == $$2);
-   }
-
-   private static boolean a(btb<?> $$0, cbd<? extends bsa> $$1, Predicate<bsa> $$2) {
-      return $$0.c($$1).filter($$2).filter(bsa::bB).filter($$1x -> a($$0, $$1x)).isPresent();
-   }
-
-   private static void c(bsa $$0, bsa $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bsa $$0, bsa $$1) {
-      $$0.dQ().a(cbd.n, new bud($$1, true));
-   }
-
-   private static void b(bsa $$0, bsa $$1, float $$2, int $$3) {
-      a($$0, (brh)$$1, $$2, $$3);
-      a($$1, (brh)$$0, $$2, $$3);
-   }
-
-   public static void a(bsa $$0, brh $$1, float $$2, int $$3) {
-      a($$0, new bud($$1, true), $$2, $$3);
-   }
-
-   public static void a(bsa $$0, in $$1, float $$2, int $$3) {
-      a($$0, new btv($$1), $$2, $$3);
-   }
-
-   public static void a(bsa $$0, bvg $$1, float $$2, int $$3) {
-      cbg $$4 = new cbg($$1, $$2, $$3);
-      $$0.dQ().a(cbd.n, $$1);
-      $$0.dQ().a(cbd.m, $$4);
-   }
-
-   public static void a(bsa $$0, csz $$1, etp $$2) {
-      etp $$3 = new etp(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bsa $$0, csz $$1, etp $$2, etp $$3, float $$4) {
-      double $$5 = $$0.dw() - (double)$$4;
-      chr $$6 = new chr($$0.dN(), $$0.ds(), $$5, $$0.dy(), $$1);
-      $$6.b($$0);
-      etp $$7 = $$2.d($$0.dl());
-      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
-      $$6.g($$7);
-      $$6.v();
-      $$0.dN().b($$6);
-   }
-
-   public static jp a(aqh $$0, jp $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return jp.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bsc $$0, bsa $$1, int $$2) {
-      if ($$0.eV().f() instanceof ctq $$3 && $$0.a($$3)) {
-         int $$4 = $$3.c() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(bsa $$0, bsa $$1, double $$2) {
-      Optional<bsa> $$3 = $$0.dQ().c(cbd.o);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         double $$4 = $$0.f($$3.get().dl());
-         double $$5 = $$0.f($$1.dl());
-         return $$5 > $$4 + $$2 * $$2;
-      }
-   }
-
-   public static boolean b(bsa $$0, bsa $$1) {
-      btb<?> $$2 = $$0.dQ();
-      return !$$2.a(cbd.h) ? false : $$2.c(cbd.h).get().a($$1);
-   }
-
-   public static bsa a(bsa $$0, Optional<bsa> $$1, bsa $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
-   }
-
-   public static bsa a(bsa $$0, bsa $$1, bsa $$2) {
-      etp $$3 = $$1.dl();
-      etp $$4 = $$2.dl();
-      return $$0.f($$3) < $$0.f($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<bsa> a(bsa $$0, cbd<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.dQ().c($$1);
-      return $$2.<brh>map($$1x -> ((aqh)$$0.dN()).a($$1x)).map($$0x -> $$0x instanceof bsa $$1x ? $$1x : null);
+   public ud a() {
+      ud $$0 = new ud();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.f);
+      $$0.a("Operation", this.g.a());
+      $$0.a("UUID", this.d);
+      return $$0;
    }
 
    @Nullable
-   public static etp a(bsi $$0, int $$1, int $$2) {
-      etp $$3 = ccu.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dN().a_(in.a($$3)).a(emp.b) && $$4++ < 10) {
-         $$3 = ccu.a($$0, $$1, $$2);
+   public static btu a(ud $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         btu.a $$2 = btu.a.d.apply($$0.h("Operation"));
+         return new btu($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         h.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
       }
-
-      return $$3;
    }
 
-   public static boolean a(bsa $$0) {
-      return $$0.dQ().a(cbd.r);
+   public UUID b() {
+      return this.d;
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
+   }
+
+   public btu.a e() {
+      return this.g;
+   }
+
+   public static enum a implements ayx {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<btu.a> d = awv.a(btu.a::a, values(), awv.a.a);
+      public static final yv<ByteBuf, btu.a> e = yt.a(d, btu.a::a);
+      public static final Codec<btu.a> f = ayx.a(btu.a::values);
+      private final String g;
+      private final int h;
+
+      private a(String $$0, int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

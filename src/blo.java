@@ -1,24 +1,31 @@
-import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class blo extends blf<StringReader> {
-   private final StringReader a;
+public interface blo<S, T> {
+   Optional<T> a(bln<S> var1);
 
-   public blo(blc<StringReader> $$0, bld<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   static <S, T> blo<S, T> a(blr<S> $$0, blo.a<S, T> $$1) {
+      return new blo.c<>($$1, $$0);
    }
 
-   public StringReader d() {
-      return this.a;
+   static <S, T> blo<S, T> a(blr<S> $$0, blo.b<T> $$1) {
+      return new blo.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   @Override
-   public int c() {
-      return this.a.getCursor();
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bln<S> var1, blp var2);
    }
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+   @FunctionalInterface
+   public interface b<T> {
+      T run(blp var1);
+   }
+
+   public static record c<S, T>(blo.a<S, T> a, blr<S> b) implements blo<S, T> {
+      @Override
+      public Optional<T> a(bln<S> $$0) {
+         blp $$1 = new blp();
+         return this.b.a($$0, $$1, blj.a) ? this.a.run($$0, $$1) : Optional.empty();
+      }
    }
 }

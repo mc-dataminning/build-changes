@@ -1,19 +1,28 @@
-public class ghh extends gid<cih, fsf<cih>> {
-   private static final akh a = new akh("textures/entity/ghast/ghast.png");
-   private static final akh i = new akh("textures/entity/ghast/ghast_shooting.png");
+public class ghh extends giz<cio, fsq<cio>> {
+   private static final akm a = new akm("textures/entity/creeper/creeper.png");
 
-   public ghh(ggx.a $$0) {
-      super($$0, new fsf<>($$0.a(fva.ag)), 1.5F);
+   public ghh(ght.a $$0) {
+      super($$0, new fsq<>($$0.a(fvv.H)), 0.5F);
+      this.a(new gli(this, $$0.f()));
    }
 
-   public akh a(cih $$0) {
-      return $$0.r() ? i : a;
+   protected void a(cio $$0, eys $$1, float $$2) {
+      float $$3 = $$0.G($$2);
+      float $$4 = 1.0F + ayd.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = ayd.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   protected void a(cih $$0, exx $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   protected float a(cio $$0, float $$1) {
+      float $$2 = $$0.G($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ayd.a($$2, 0.5F, 1.0F);
+   }
+
+   public akm a(cio $$0) {
+      return a;
    }
 }

@@ -1,71 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+@FunctionalInterface
+public interface gel<T extends dog> {
+   gek<T> create(gel.a var1);
 
-class gel {
-   private final Map<in, dnm> a;
-   @Nullable
-   private final List<dsv<dqh>> b;
-   private final boolean c;
-   private final dsn d;
+   public static class a {
+      private final gej a;
+      private final gde b;
+      private final gir c;
+      private final ghr d;
+      private final fvs e;
+      private final ffk f;
 
-   gel(dsn $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ah();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dsj) {
-         this.b = null;
-      } else {
-         dso[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dso $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+      public a(gej $$0, gde $$1, gir $$2, ghr $$3, fvs $$4, ffk $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
-   }
 
-   @Nullable
-   public dnm a(in $$0) {
-      return this.a.get($$0);
-   }
+      public gej a() {
+         return this.a;
+      }
 
-   public dqh b(in $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dqh $$4 = null;
-         if ($$2 == 60) {
-            $$4 = ddg.hW.n();
-         }
+      public gde b() {
+         return this.b;
+      }
 
-         if ($$2 == 70) {
-            $$4 = dvq.a($$1, $$3);
-         }
+      public ghr c() {
+         return this.d;
+      }
 
-         return $$4 == null ? ddg.a.n() : $$4;
-      } else if (this.b == null) {
-         return ddg.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dsv<dqh> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+      public gir d() {
+         return this.c;
+      }
 
-            return ddg.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+      public fvs e() {
+         return this.e;
+      }
+
+      public fvw a(fvu $$0) {
+         return this.e.a($$0);
+      }
+
+      public ffk f() {
+         return this.f;
       }
    }
 }

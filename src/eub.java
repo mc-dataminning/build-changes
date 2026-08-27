@@ -1,13 +1,4 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.nio.file.Path;
 
-interface eub {
-   DoubleList a();
-
-   boolean a(eub.a var1);
-
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
-   }
+public record eub(Path a, Path b) {
 }

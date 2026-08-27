@@ -1,27 +1,48 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class czw {
-   public Optional<Float> a(czv $$0, czj $$1, in $$2, dqh $$3, ema $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public class czw extends ArrayList<czv> {
+   public static final Codec<czw> a = czv.a.listOf().fieldOf("Recipes").xmap(czw::new, Function.identity()).codec();
+   public static final yv<wi, czw> b = czv.b.a(yt.a(czw::new));
+
+   public czw() {
    }
 
-   public boolean a(czv $$0, czj $$1, in $$2, dqh $$3, float $$4) {
-      return true;
+   private czw(int $$0) {
+      super($$0);
    }
 
-   public boolean a(czv $$0, brh $$1) {
-      return true;
+   private czw(Collection<czv> $$0) {
+      super($$0);
    }
 
-   public float a() {
-      return 1.0F;
+   @Nullable
+   public czv a(cto $$0, cto $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         czv $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            czv $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public float b(czv $$0, brh $$1) {
-      float $$2 = $$0.a() * 2.0F;
-      etp $$3 = $$0.b();
-      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
-      double $$5 = (1.0 - $$4) * (double)czv.a($$3, $$1);
-      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
+   public czw a() {
+      czw $$0 = new czw(this.size());
+
+      for (czv $$1 : this) {
+         $$0.add($$1.v());
+      }
+
+      return $$0;
    }
 }

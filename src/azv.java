@@ -1,48 +1,41 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class azv extends DataFix {
+public class azv extends bex {
    public azv(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "AreaEffectCloudPotionFix", bfy.z, "minecraft:area_effect_cloud");
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.remove("Bees");
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.remove("EntityData");
-      $$0 = azh.a($$0, "TicksInHive", "ticks_in_hive");
-      return azh.a($$0, "MinOccupationTicks", "min_ticks_in_hive");
-   }
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
+         }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bfs.s, "minecraft:beehive");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
-      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
-      Type<?> $$3 = $$2.getElement();
-      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
-      OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bfs.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bfs.s);
-      return this.fixTypeEverywhereTyped(
-         "BeehiveFieldRenameFix",
-         $$6,
-         $$7,
-         $$4x -> azh.a(
-               $$7,
-               $$4x.updateTyped(
-                  $$1,
-                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
-                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
-               )
-            )
-      );
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
+         }
+
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
+
+         return $$0.set("potion_contents", $$4);
+      }
    }
 }

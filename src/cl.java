@@ -8,30 +8,30 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cl extends de<cl.a> {
+public class cl extends df<cl.a> {
    @Override
    public Codec<cl.a> a() {
       return cl.a.a;
    }
 
-   public void a(aqi $$0, Collection<brh> $$1) {
-      List<eol> $$2 = Lists.newArrayList();
-      Set<brn<?>> $$3 = Sets.newHashSet();
+   public void a(aqn $$0, Collection<bru> $$1) {
+      List<epf> $$2 = Lists.newArrayList();
+      Set<bsa<?>> $$3 = Sets.newHashSet();
 
-      for (brh $$4 : $$1) {
-         $$3.add($$4.ai());
+      for (bru $$4 : $$1) {
+         $$3.add($$4.ak());
          $$2.add(br.b($$0, $$4));
       }
 
       this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bc> b, List<bc> c, ct.d d) implements de.a {
+   public static record a(Optional<bc> b, List<bc> c, ct.d d) implements df.a {
       public static final Codec<cl.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(br.b, "player").forGetter(cl.a::a),
-                  axh.a(br.b.listOf(), "victims", List.of()).forGetter(cl.a::b),
-                  axh.a(ct.d.d, "unique_entity_types", ct.d.c).forGetter(cl.a::c)
+                  br.b.optionalFieldOf("player").forGetter(cl.a::a),
+                  br.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cl.a::b),
+                  ct.d.d.optionalFieldOf("unique_entity_types", ct.d.c).forGetter(cl.a::c)
                )
                .apply($$0, cl.a::new)
       );
@@ -44,16 +44,16 @@ public class cl extends de<cl.a> {
          return am.H.a(new cl.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<eol> $$0, int $$1) {
+      public boolean a(Collection<epf> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<eol> $$2 = Lists.newArrayList($$0);
+            List<epf> $$2 = Lists.newArrayList($$0);
 
             for (bc $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<eol> $$5 = $$2.iterator();
+               Iterator<epf> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  eol $$6 = $$5.next();
+                  epf $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;
@@ -72,7 +72,7 @@ public class cl extends de<cl.a> {
 
       @Override
       public void a(bd $$0) {
-         de.a.super.a($$0);
+         df.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

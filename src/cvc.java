@@ -1,46 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-
-public record cvc(String e, iw<csu> f, float g, Map<iw<cqp>, String> h, wu i) {
-   public static final Codec<cvc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axh.y.fieldOf("asset_name").forGetter(cvc::a),
-               ake.a(le.G).fieldOf("ingredient").forGetter(cvc::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cvc::c),
-               Codec.unboundedMap(cqp.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cvc::d),
-               ww.a.fieldOf("description").forGetter(cvc::e)
-            )
-            .apply($$0, cvc::new)
-   );
-   public static final ys<wf, cvc> b = ys.a(
-      yq.k, cvc::a, yq.b(le.G), cvc::b, yq.h, cvc::c, yq.a(Object2ObjectOpenHashMap::new, yq.b(le.au), yq.k), cvc::d, ww.b, cvc::e, cvc::new
-   );
-   public static final Codec<iw<cvc>> c = akd.a(le.aO, a);
-   public static final ys<wf, iw<cvc>> d = yq.a(le.aO, b);
-
-   public static cvc a(String $$0, csu $$1, float $$2, wu $$3, Map<iw<cqp>, String> $$4) {
-      return new cvc($$0, ld.h.e($$1), $$2, $$4, $$3);
+public class cvc extends cuf implements cug {
+   public cvc(ctj.a $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.e;
+   @Override
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      cto $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         cna $$4 = new cna($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
+
+      $$1.b(avr.c.b(this));
+      $$3.a(1, $$1);
+      return bpv.a($$3, $$0.x_());
    }
 
-   public iw<csu> b() {
-      return this.f;
+   @Override
+   public cmo a(dax $$0, jh $$1, cto $$2, it $$3) {
+      cna $$4 = new cna($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 
-   public float c() {
-      return this.g;
-   }
-
-   public Map<iw<cqp>, String> d() {
-      return this.h;
-   }
-
-   public wu e() {
-      return this.i;
+   @Override
+   public cug.a c() {
+      return cug.a.a().a(cug.a.a.c() * 0.5F).b(cug.a.a.d() * 1.25F).a();
    }
 }

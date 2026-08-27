@@ -1,20 +1,19 @@
-public class dnl extends dna {
-   public dnl(in $$0, dqh $$1) {
-      super(dno.C, $$0, $$1, cxi.c);
+import com.mojang.serialization.MapCodec;
+
+public class dnl extends ddy {
+   public static final MapCodec<dnl> a = b(dnl::new);
+
+   @Override
+   public MapCodec<dnl> a() {
+      return a;
+   }
+
+   public dnl(dra.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected wu k() {
-      return wu.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int b(csz $$0) {
-      return super.b($$0) / 2;
-   }
-
-   @Override
-   protected cod a(int $$0, clg $$1) {
-      return new coh($$0, $$1, this, this.m);
+   protected void a(drb $$0, dax $$1, io $$2, bru $$3) {
+      $$3.a($$0, new euk(0.25, 0.05F, 0.25));
    }
 }

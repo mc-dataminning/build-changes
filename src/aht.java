@@ -1,33 +1,37 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aht implements ze<agd> {
+   public static final yv<wi, aht> a = ze.a(aht::a, aht::new);
+   private final int b;
+   private final cto c;
 
-public class aht implements zb<afz> {
-   public static final ys<vu, aht> a = zb.a(aht::a, aht::new);
-   private final UUID b;
-
-   public aht(UUID $$0) {
+   public aht(int $$0, cto $$1) {
       this.b = $$0;
+      this.c = $$1.s();
    }
 
-   private aht(vu $$0) {
-      this.b = $$0.n();
+   private aht(wi $$0) {
+      this.b = $$0.readShort();
+      this.c = cto.e.decode($$0);
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
+   private void a(wi $$0) {
+      $$0.l(this.b);
+      cto.e.encode($$0, this.c);
    }
 
    @Override
-   public zd<aht> a() {
-      return afx.bZ;
+   public zg<aht> a() {
+      return agb.bV;
    }
 
-   public void a(afz $$0) {
+   public void a(agd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public brh a(aqh $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
+   }
+
+   public cto e() {
+      return this.c;
    }
 }

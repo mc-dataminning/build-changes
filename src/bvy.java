@@ -1,42 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvy {
-   public static bvd<cku> a(cbd<iv> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return bxf.a(
-         (Function<bxf.b<cku>, ? extends App<bxf.c<cku>, bxi<cku>>>)($$5 -> $$5.group($$5.a(cbd.E), $$5.c(cbd.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     iv $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ae() && (!$$13.isPresent() || $$9.Y() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dn()) > $$3) {
-                           etp $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+public class bvy extends buh<bsq> {
+   private final boz c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-                           while ($$14 == null || in.a($$14).k($$10.dn()) > $$3) {
-                              $$14 = ccu.a($$10, 15, 7, etp.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public bvy(boz $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cbs.n, cbt.b, cbs.Q, cbt.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
 
-                           $$7.a(new cbg($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dn()) > $$2) {
-                           $$7.a(new cbg($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
-
-                     return true;
-                  }))
-      );
+   protected void a(aqm $$0, bsq $$1, long $$2) {
+      ayk $$3 = $$1.el();
+      float $$4 = ayd.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = ayd.g($$1.dF() + 2.0F * $$3.i() * this.d - this.d);
+      euk $$6 = euk.a($$4, $$5);
+      $$1.dS().a(cbs.n, new buk($$1.bx().e($$6)));
+      $$1.dS().a(cbs.Q, this.c.a($$3));
    }
 }

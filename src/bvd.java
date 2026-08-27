@@ -1,37 +1,31 @@
-public abstract class bvd<E extends bsa> implements btt<E>, bxi<E> {
-   private bts.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
 
-   public bvd() {
-      this.a = bts.a.a;
-   }
-
-   @Override
-   public final bts.a a() {
-      return this.a;
-   }
-
-   @Override
-   public final boolean e(aqh $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bts.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(aqh $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(aqh $$0, E $$1, long $$2) {
-      this.a = bts.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bvd {
+   public static bui<bsx> a(float $$0) {
+      return bxu.a(
+         (Function<bxu.b<bsx>, ? extends App<bxu.c<bsx>, bxx<bsx>>>)($$1 -> $$1.group($$1.c(cbs.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dp())) {
+                           return false;
+                        } else {
+                           io $$5 = $$3.dp();
+                           List<io> $$6 = io.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(io::i).collect(ac.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new cbv($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

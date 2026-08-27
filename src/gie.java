@@ -1,18 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gie extends giz<cix, ftj<cix>> {
+   private static final akm a = new akm("textures/entity/zombie/zombie.png");
+   private final float i;
 
-public class gie extends gid<cec, fru<cec>> {
-   private static final Map<cec.a, akh> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cec.a.b, new akh("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cec.a.a, new akh("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gie(ggx.a $$0) {
-      super($$0, new fru<>($$0.a(fva.aC)), 0.7F);
-      this.a(new gld<>(this, $$0.c()));
+   public gie(ght.a $$0, float $$1) {
+      super($$0, new ftb($$0.a(fvv.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gly<>(this, $$0.d()));
+      this.a(new glv<>(this, new ftb($$0.a(fvv.ai)), new ftb($$0.a(fvv.aj)), $$0.g()));
    }
 
-   public akh a(cec $$0) {
-      return a.get($$0.u());
+   protected void a(cix $$0, eys $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public akm a(cix $$0) {
+      return a;
    }
 }

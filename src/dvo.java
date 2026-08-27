@@ -1,55 +1,29 @@
-public interface dvo extends ayg {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+public enum dvo {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-   int c(int var1);
+   private final boolean d;
+   private final boolean e;
 
-   @Override
-   default int f() {
-      return this.c(32);
+   private dvo(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public static dvo a(aqf $$0) {
+      if ($$0.a(aqf.d)) {
+         return c;
       } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
-
-         return $$2;
+         return $$0.a(aqf.b) ? b : a;
       }
-   }
-
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
-   }
-
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
-   }
-
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
    }
 }

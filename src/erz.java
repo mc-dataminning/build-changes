@@ -1,36 +1,42 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public record erz(esl b, eok c) implements erq {
-   public static final Codec<erz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(esm.a.fieldOf("value").forGetter(erz::c), eok.a.fieldOf("range").forGetter(erz::d)).apply($$0, erz::new)
-   );
+public class erz extends esc {
+   public static final MapCodec<erz> a = a(erz::new);
+   public static final Codec<erz> b = b(erz::new);
 
-   @Override
-   public err b() {
-      return ers.t;
+   erz(List<esl> $$0) {
+      super($$0, ac.a($$0));
+   }
+
+   public static erz a(List<esl> $$0) {
+      return new erz(List.copyOf($$0));
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public esm b() {
+      return esn.e;
    }
 
-   public boolean a(eol $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public static erz.a a(esl.a... $$0) {
+      return new erz.a($$0);
    }
 
-   public static erq.a a(esl $$0, eok $$1) {
-      return () -> new erz($$0, $$1);
-   }
+   public static class a extends esc.a {
+      public a(esl.a... $$0) {
+         super($$0);
+      }
 
-   public esl c() {
-      return this.b;
-   }
+      @Override
+      public erz.a and(esl.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public eok d() {
-      return this.c;
+      @Override
+      protected esl a(List<esl> $$0) {
+         return new erz($$0);
+      }
    }
 }

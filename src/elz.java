@@ -1,93 +1,74 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public abstract class elz {
-   public static final jc<ema> c = new jc<>();
-   protected final dqi<elz, ema> d;
-   private ema a;
-   private final iw.c<elz> b = ld.c.f(this);
+public class elz {
+   private final ema[] a;
+   private final double b;
+   private final double c;
 
-   protected elz() {
-      dqi.a<elz, ema> $$0 = new dqi.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(elz::g, ema::new);
-      this.f(this.d.b());
+   public elz(ayk $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   protected void a(dqi.a<elz, ema> $$0) {
+   private elz(ayk $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            ema $$5 = new ema($$0);
+            int $$6 = $$3;
+            this.a = new ema[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new ema($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               ayk $$9 = new dxs(new dwu($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new ema($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+         }
+      }
    }
 
-   public dqi<elz, ema> f() {
-      return this.d;
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   protected final void f(ema $$0) {
-      this.a = $$0;
-   }
+      for (ema $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
 
-   public final ema g() {
-      return this.a;
-   }
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
 
-   public abstract csu a();
-
-   protected void a(dad $$0, in $$1, ema $$2, ayg $$3) {
-   }
-
-   protected void b(dad $$0, in $$1, ema $$2) {
-   }
-
-   protected void b(dad $$0, in $$1, ema $$2, ayg $$3) {
-   }
-
-   @Nullable
-   protected kv h() {
-      return null;
-   }
-
-   protected abstract boolean a(ema var1, czj var2, in var3, elz var4, is var5);
-
-   protected abstract etp a(czj var1, in var2, ema var3);
-
-   public abstract int a(dag var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(ema var1, czj var2, in var3);
-
-   public abstract float a(ema var1);
-
-   protected abstract dqh b(ema var1);
-
-   public abstract boolean c(ema var1);
-
-   public abstract int d(ema var1);
-
-   public boolean a(elz $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(awg<elz> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract eui b(ema var1, czj var2, in var3);
-
-   public Optional<avb> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public iw.c<elz> k() {
-      return this.b;
+      return $$3;
    }
 }

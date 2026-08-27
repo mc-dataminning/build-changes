@@ -1,34 +1,15 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class bwe {
-   public static <E extends bsc> btt<E> a(Function<E, Optional<? extends bsa>> $$0) {
-      return a($$0x -> true, $$0);
+public class bwe<E extends bso> extends buv<E> {
+   public bwe(List<Pair<? extends bui<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
    }
 
-   public static <E extends bsc> btt<E> a(Predicate<E> $$0, Function<E, Optional<? extends bsa>> $$1) {
-      return bxf.a(
-         (Function<bxf.b<E>, ? extends App<bxf.c<E>, bxi<E>>>)($$2 -> $$2.group($$2.c(cbd.o), $$2.a(cbd.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bsa> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bsa $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
-                  }
-               }))
-      );
+   public bwe(Map<cbs<?>, cbt> $$0, List<Pair<? extends bui<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), buv.a.b, buv.b.a, $$1);
    }
 }

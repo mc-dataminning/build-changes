@@ -1,30 +1,37 @@
-public record he(int a, ea b, he.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface he<T> {
+   void a(hc<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable hg var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   hg a();
 
-   public ea d() {
-      return this.b;
-   }
+   hf b();
 
-   public he.a e() {
-      return this.c;
-   }
+   static <T extends eg<T>> he<T> a(final hd<T> $$0, final hf $$1) {
+      return new he<T>() {
+         @Override
+         public void a(hc<T> $$0x) {
+            $$0.a(new gz<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable hg $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public hg a() {
+            return $$0.b();
+         }
+
+         @Override
+         public hf b() {
+            return $$1;
+         }
+      };
    }
 }

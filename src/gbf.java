@@ -1,51 +1,62 @@
-public enum gbf {
-   a(new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a)),
-   b(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d)),
-   c(new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d)),
-   d(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a)),
-   e(new gbf.b(gbf.a.f, gbf.a.b, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.f, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.f, gbf.a.b, gbf.a.a)),
-   f(new gbf.b(gbf.a.c, gbf.a.b, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.a), new gbf.b(gbf.a.c, gbf.a.e, gbf.a.d), new gbf.b(gbf.a.c, gbf.a.b, gbf.a.d));
-
-   private static final gbf[] g = ac.a(new gbf[6], $$0 -> {
-      $$0[gbf.a.e] = a;
-      $$0[gbf.a.b] = b;
-      $$0[gbf.a.d] = c;
-      $$0[gbf.a.a] = d;
-      $$0[gbf.a.f] = e;
-      $$0[gbf.a.c] = f;
-   });
-   private final gbf.b[] h;
-
-   public static gbf a(is $$0) {
-      return g[$$0.d()];
+public class gbf extends gay {
+   protected gbf(fwr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   private gbf(gbf.b... $$0) {
-      this.h = $$0;
+   @Override
+   public gac b() {
+      return gac.b;
    }
 
-   public gbf.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         io $$0 = io.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(it.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((dad)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
    }
 
-   public static final class a {
-      public static final int a = is.d.d();
-      public static final int b = is.b.d();
-      public static final int c = is.f.d();
-      public static final int d = is.c.d();
-      public static final int e = is.a.d();
-      public static final int f = is.e.d();
-   }
+   public static class a implements gab<lb> {
+      private final gat a;
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(gat $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbf $$8 = new gbf($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fqj {
-   List<fqk> a();
-
-   wu b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fqj {
 }

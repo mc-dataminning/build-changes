@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cko {
+public enum cko {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 }

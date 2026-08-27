@@ -1,17 +1,22 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Supplier;
+import com.google.gson.JsonPrimitive;
 
-public class nq implements Supplier<JsonElement> {
-   private final akh a;
+public class nq {
+   public static final nr<nq.a> a = new nr<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final nr<nq.a> b = new nr<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final nr<akm> c = new nr<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final nr<Boolean> d = new nr<>("uvlock", JsonPrimitive::new);
+   public static final nr<Integer> e = new nr<>("weight", JsonPrimitive::new);
 
-   public nq(akh $$0) {
-      this.a = $$0;
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
-      return $$0;
+      final int e;
+
+      private a(int $$0) {
+         this.e = $$0;
+      }
    }
 }

@@ -1,41 +1,85 @@
-public class fyi<T extends ks> extends gac {
-   private final fzx a;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   protected fyi(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fzx $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.d().x(), $$9);
-      this.w = this.a($$7.d().y(), $$9);
-      this.x = this.a($$7.d().z(), $$9);
-      this.D = this.D * 0.75F * $$7.e();
-      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$10 * $$7.e(), 1.0F);
-      this.b($$8);
+public final class fyi {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fyi c = new fyi(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fyi(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   private fyi(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fyi a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fyi($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
    @Override
-   public fzg b() {
-      return fzg.b;
+   public String toString() {
+      return this.b.toString();
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * axz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fyi ? this.b.equals(((fyi)$$0).b) : false;
+      }
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

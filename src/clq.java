@@ -1,67 +1,138 @@
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class clq extends clo {
-   public static final float e = 4.0F;
+public class clq implements dak {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final ayk h = ayk.a();
+   private final epa i;
+   private int j;
+   private int k;
+   private int l;
 
-   public clq(brn<? extends clq> $$0, dad $$1) {
-      super($$0, $$1);
-   }
-
-   public clq(dad $$0, bsa $$1, double $$2, double $$3, double $$4) {
-      super(brn.A, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(etn $$0) {
-      super.a($$0);
-      if ($$0.c() != etn.a.c || !this.e(((etm)$$0).a())) {
-         if (!this.dN().B) {
-            List<bsa> $$1 = this.dN().a(bsa.class, this.cI().c(4.0, 2.0, 4.0));
-            brd $$2 = new brd(this.dN(), this.ds(), this.du(), this.dy());
-            brh $$3 = this.u();
-            if ($$3 instanceof bsa) {
-               $$2.a((bsa)$$3);
-            }
-
-            $$2.a(kx.h);
-            $$2.a(3.0F);
-            $$2.a(600);
-            $$2.c((7.0F - $$2.g()) / (float)$$2.k());
-            $$2.a(new bqt(bqv.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bsa $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.ds(), $$4.du(), $$4.dy());
-                     break;
-                  }
-               }
-            }
-
-            this.dN().c(2006, this.dn(), this.aU() ? -1 : 1);
-            this.dN().b($$2);
-            this.am();
-         }
+   public clq(epa $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.t();
+      this.l = $$0.u();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.d(this.k);
+         this.l = 25;
+         $$0.e(this.l);
       }
    }
 
    @Override
-   public boolean bx() {
-      return false;
+   public int a(aqm $$0, boolean $$1, boolean $$2) {
+      if (!$$0.aa().b(dat.L)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
+      } else {
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.d(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.aa().b(dat.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = ayd.a(this.l + 25, 25, 75);
+               this.i.e(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean a(bqf $$0, float $$1) {
-      return false;
+   private boolean a(aqm $$0) {
+      clw $$1 = $$0.j();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         io $$2 = $$1.dp();
+         int $$3 = 48;
+         cds $$4 = $$0.y();
+         Optional<io> $$5 = $$4.d($$0x -> $$0x.a(cdw.o), $$0x -> true, $$2, 48, cds.b.c);
+         io $$6 = $$5.orElse($$2);
+         io $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.t($$7).a(avv.ah)) {
+               return false;
+            }
+
+            clp $$8 = bsa.bl.a($$0, $$7, bss.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.cz());
+               $$8.v(48000);
+               $$8.i($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Override
-   protected kv v() {
-      return kx.h;
+   private void a(aqm $$0, clp $$1, int $$2) {
+      io $$3 = this.a($$0, $$1.dp(), $$2);
+      if ($$3 != null) {
+         cgq $$4 = bsa.be.a($$0, $$3, bss.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
+      }
    }
 
-   @Override
-   protected boolean r() {
-      return false;
+   @Nullable
+   private io a(dba $$0, io $$1, int $$2) {
+      io $$3 = null;
+      bti $$4 = btk.a(bsa.bl);
+
+      for (int $$5 = 0; $$5 < 10; $$5++) {
+         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$8 = $$0.a(dwt.a.b, $$6, $$7);
+         io $$9 = new io($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bsa.bl)) {
+            $$3 = $$9;
+            break;
+         }
+      }
+
+      return $$3;
+   }
+
+   private boolean a(dad $$0, io $$1) {
+      for (io $$2 : io.c($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).k($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

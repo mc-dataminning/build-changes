@@ -1,104 +1,105 @@
-public interface exu extends eyb {
-   eyd j();
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
-   void f();
+public class exu {
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<exr> b = new Long2ObjectOpenHashMap();
+   private final exs c;
 
-   void a(int var1, byte var2);
-
-   void a(int var1, short var2);
-
-   void a(int var1, float var2);
-
-   @Override
-   default eyb a(double $$0, double $$1, double $$2) {
-      if (this.j().b() != eyd.b.a) {
-         return this;
-      } else if (this.j().a() == eyd.a.a && this.j().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default eyb a(int $$0, int $$1, int $$2, int $$3) {
-      eyd $$4 = this.j();
-      if ($$4.b() != eyd.b.c) {
-         return this;
-      } else if ($$4.a() == eyd.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default eyb a(float $$0, float $$1) {
-      eyd $$2 = this.j();
-      if ($$2.b() == eyd.b.d && $$2.d() == 0) {
-         if ($$2.a() == eyd.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
-         } else {
-            throw new IllegalStateException();
+   public exu(exs $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
          }
-      } else {
-         return this;
       }
    }
 
-   @Override
-   default eyb a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
-   }
-
-   @Override
-   default eyb b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
-   }
-
-   default eyb a(short $$0, short $$1, int $$2) {
-      eyd $$3 = this.j();
-      if ($$3.b() != eyd.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == eyd.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
       }
    }
 
-   @Override
-   default eyb a(float $$0, float $$1, float $$2) {
-      eyd $$3 = this.j();
-      if ($$3.b() != eyd.b.b) {
-         return this;
-      } else if ($$3.a() == eyd.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
+   @Nullable
+   public exr a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (exr)this.b.get($$0);
+   }
+
+   @Nullable
+   public exr a(exw $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
       } else {
-         throw new IllegalStateException();
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         exr $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
+
+         while (var12.hasNext()) {
+            exr $$9 = (exr)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
+            }
+         }
+
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
       }
    }
 
-   static byte a(float $$0) {
-      return (byte)((int)(axz.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
+      }
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
+      }
    }
 }

@@ -1,29 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public record iv(akg<dad> d, in e) {
-   public static final MapCodec<iv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dad.g.fieldOf("dimension").forGetter(iv::a), in.a.fieldOf("pos").forGetter(iv::b)).apply($$0, iv::a)
-   );
-   public static final Codec<iv> b = a.codec();
-   public static final ys<ByteBuf, iv> c = ys.a(akg.b(le.aS), iv::a, in.b, iv::b, iv::a);
+public enum iv implements ayx {
+   a("down_east", it.a, it.f),
+   b("down_north", it.a, it.c),
+   c("down_south", it.a, it.d),
+   d("down_west", it.a, it.e),
+   e("up_east", it.b, it.f),
+   f("up_north", it.b, it.c),
+   g("up_south", it.b, it.d),
+   h("up_west", it.b, it.e),
+   i("west_up", it.e, it.b),
+   j("east_up", it.f, it.b),
+   k("north_up", it.c, it.b),
+   l("south_up", it.d, it.b);
 
-   public static iv a(akg<dad> $$0, in $$1) {
-      return new iv($$0, $$1);
+   private static final Int2ObjectMap<iv> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (iv $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final it o;
+   private final it p;
+
+   private static int b(it $$0, it $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
+   }
+
+   private iv(String $$0, it $$1, it $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.e;
+   public String c() {
+      return this.n;
    }
 
-   public akg<dad> a() {
-      return this.d;
+   public static iv a(it $$0, it $$1) {
+      int $$2 = b($$0, $$1);
+      return (iv)m.get($$2);
    }
 
-   public in b() {
-      return this.e;
+   public it a() {
+      return this.p;
+   }
+
+   public it b() {
+      return this.o;
    }
 }

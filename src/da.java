@@ -2,18 +2,18 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class da extends de<da.a> {
+public class da extends df<da.a> {
    @Override
    public Codec<da.a> a() {
       return da.a.a;
    }
 
-   public void a(aqi $$0) {
+   public void a(aqn $$0) {
       this.a($$0, $$0x -> true);
    }
 
-   public static record a(Optional<bc> b) implements de.a {
-      public static final Codec<da.a> a = RecordCodecBuilder.create($$0 -> $$0.group(axh.a(br.b, "player").forGetter(da.a::a)).apply($$0, da.a::new));
+   public static record a(Optional<bc> b) implements df.a {
+      public static final Codec<da.a> a = RecordCodecBuilder.create($$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(da.a::a)).apply($$0, da.a::new));
 
       public static an<da.a> a(cr.a $$0) {
          return am.q.a(new da.a(Optional.of(br.a(br.a.a().a($$0)))));
@@ -43,7 +43,7 @@ public class da extends de<da.a> {
          return am.x.a(new da.a(Optional.empty()));
       }
 
-      public static an<da.a> a(dde $$0, csu $$1) {
+      public static an<da.a> a(ddy $$0, ctj $$1) {
          return a(br.a.a().a(bo.a.a().d(ch.a.a().a($$1))).b(cr.a.a().a(av.a.a().a($$0))));
       }
 

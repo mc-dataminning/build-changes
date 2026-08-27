@@ -1,40 +1,54 @@
-public class dwp implements dvo {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dwb i = new dwb(this);
+import com.mojang.serialization.Codec;
 
-   public dwp(long $$0) {
-      this.b($$0);
+public class dwp {
+   public static enum a implements ayx {
+      a("air"),
+      b("liquid");
+
+      public static final Codec<dwp.a> c = ayx.a(dwp.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 
-   @Override
-   public ayg d() {
-      return new dwp(this.g());
-   }
+   public static enum b implements ayx {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   @Override
-   public dwm e() {
-      return new dwa.a(this.g());
-   }
+      public static final Codec<dwp.b> l = ayx.a(dwp.b::values);
+      private final String m;
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
+      private b(String $$0) {
+         this.m = $$0;
+      }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
+      public String a() {
+         return this.m;
+      }
 
-   @Override
-   public double k() {
-      return this.i.b();
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

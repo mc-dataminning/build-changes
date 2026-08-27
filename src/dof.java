@@ -1,10 +1,20 @@
-public class dof extends doe {
-   public dof(in $$0, dqh $$1) {
-      super(dno.g, $$0, $$1);
+public class dof extends dnu {
+   public dof(io $$0, drb $$1) {
+      super(doi.C, $$0, $$1, cxz.c);
    }
 
    @Override
-   protected wu k() {
-      return wu.c("container.dropper");
+   protected wx k() {
+      return wx.c("container.blast_furnace");
+   }
+
+   @Override
+   protected int b(cto $$0) {
+      return super.b($$0) / 2;
+   }
+
+   @Override
+   protected cot a(int $$0, clv $$1) {
+      return new cox($$0, $$1, this, this.m);
    }
 }

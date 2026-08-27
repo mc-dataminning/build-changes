@@ -1,45 +1,34 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cmz {
-   private final cmy a;
-   private final List<cmz.a> b = Lists.newArrayList();
-
-   public cmz(cmy $$0) {
-      this.a = $$0;
+public class cmz extends cmv {
+   public cmz(bsa<? extends cmz> $$0, dax $$1) {
+      super($$0, $$1);
    }
 
-   public cmz a(int $$0, cmw $$1) {
-      this.b.add(new cmz.a($$0, $$1));
-      return this;
+   public cmz(dax $$0, bso $$1) {
+      super(bsa.L, $$1, $$0);
    }
 
-   public cmy a() {
-      this.b.stream().map(cmz.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cmw $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cmz(dax $$0, double $$1, double $$2, double $$3) {
+      super(bsa.L, $$1, $$2, $$3, $$0);
    }
 
-   static class a {
-      private final int a;
-      private final cmw b;
+   @Override
+   protected ctj u() {
+      return ctr.tW;
+   }
 
-      public a(int $$0, cmw $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   protected double aY() {
+      return 0.07;
+   }
 
-      public int a() {
-         return this.a;
-      }
-
-      public cmw b() {
-         return this.b;
+   @Override
+   protected void a(eui $$0) {
+      super.a($$0);
+      if (this.dP() instanceof aqm) {
+         this.dP().c(2002, this.dp(), cvp.c(cvq.a));
+         int $$1 = 3 + this.dP().z.a(5) + this.dP().z.a(5);
+         bse.a((aqm)this.dP(), this.dn(), $$1);
+         this.ao();
       }
    }
 }

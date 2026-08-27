@@ -1,52 +1,123 @@
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.ArgumentType;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.brigadier.tree.RootCommandNode;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class ia<A extends ArgumentType<?>> implements hx<A, ia<A>.a> {
-   private final ia<A>.a a;
+public class ia {
+   private static final Logger a = LogUtils.getLogger();
+   private static final byte b = 1;
+   private static final byte c = 2;
 
-   private ia(Function<dz, A> $$0) {
-      this.a = new ia.a($$0);
-   }
-
-   public static <T extends ArgumentType<?>> ia<T> a(Supplier<T> $$0) {
-      return new ia<>($$1 -> $$0.get());
-   }
-
-   public static <T extends ArgumentType<?>> ia<T> a(Function<dz, T> $$0) {
-      return new ia<>($$0);
-   }
-
-   public void a(ia<A>.a $$0, vu $$1) {
-   }
-
-   public void a(ia<A>.a $$0, JsonObject $$1) {
-   }
-
-   public ia<A>.a a(vu $$0) {
-      return this.a;
-   }
-
-   public ia<A>.a b(A $$0) {
-      return this.a;
-   }
-
-   public final class a implements hx.a<A> {
-      private final Function<dz, A> b;
-
-      public a(Function<dz, A> $$1) {
-         this.b = $$1;
+   public static int a(boolean $$0, boolean $$1) {
+      int $$2 = 0;
+      if ($$0) {
+         $$2 |= 1;
       }
 
-      @Override
-      public A b(dz $$0) {
-         return this.b.apply($$0);
+      if ($$1) {
+         $$2 |= 2;
       }
 
-      @Override
-      public hx<A, ?> a() {
-         return ia.this;
+      return $$2;
+   }
+
+   public static boolean a(byte $$0) {
+      return ($$0 & 1) != 0;
+   }
+
+   public static boolean b(byte $$0) {
+      return ($$0 & 2) != 0;
+   }
+
+   private static <A extends ArgumentType<?>> void a(JsonObject $$0, hy.a<A> $$1) {
+      a($$0, $$1.a(), $$1);
+   }
+
+   private static <A extends ArgumentType<?>, T extends hy.a<A>> void a(JsonObject $$0, hy<A, T> $$1, hy.a<A> $$2) {
+      $$1.a((T)$$2, $$0);
+   }
+
+   private static <T extends ArgumentType<?>> void a(JsonObject $$0, T $$1) {
+      hy.a<T> $$2 = hz.b($$1);
+      $$0.addProperty("type", "argument");
+      $$0.addProperty("parser", le.w.b($$2.a()).toString());
+      JsonObject $$3 = new JsonObject();
+      a($$3, $$2);
+      if ($$3.size() > 0) {
+         $$0.add("properties", $$3);
+      }
+   }
+
+   public static <S> JsonObject a(CommandDispatcher<S> $$0, CommandNode<S> $$1) {
+      JsonObject $$2 = new JsonObject();
+      if ($$1 instanceof RootCommandNode) {
+         $$2.addProperty("type", "root");
+      } else if ($$1 instanceof LiteralCommandNode) {
+         $$2.addProperty("type", "literal");
+      } else if ($$1 instanceof ArgumentCommandNode<?, ?> $$3) {
+         a($$2, $$3.getType());
+      } else {
+         a.error("Could not serialize node {} ({})!", $$1, $$1.getClass());
+         $$2.addProperty("type", "unknown");
+      }
+
+      JsonObject $$4 = new JsonObject();
+
+      for (CommandNode<S> $$5 : $$1.getChildren()) {
+         $$4.add($$5.getName(), a($$0, $$5));
+      }
+
+      if ($$4.size() > 0) {
+         $$2.add("children", $$4);
+      }
+
+      if ($$1.getCommand() != null) {
+         $$2.addProperty("executable", true);
+      }
+
+      if ($$1.getRedirect() != null) {
+         Collection<String> $$6 = $$0.getPath($$1.getRedirect());
+         if (!$$6.isEmpty()) {
+            JsonArray $$7 = new JsonArray();
+
+            for (String $$8 : $$6) {
+               $$7.add($$8);
+            }
+
+            $$2.add("redirect", $$7);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static <T> Set<ArgumentType<?>> a(CommandNode<T> $$0) {
+      Set<CommandNode<T>> $$1 = Sets.newIdentityHashSet();
+      Set<ArgumentType<?>> $$2 = Sets.newHashSet();
+      a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   private static <T> void a(CommandNode<T> $$0, Set<ArgumentType<?>> $$1, Set<CommandNode<T>> $$2) {
+      if ($$2.add($$0)) {
+         if ($$0 instanceof ArgumentCommandNode<?, ?> $$3) {
+            $$1.add($$3.getType());
+         }
+
+         $$0.getChildren().forEach($$2x -> a($$2x, $$1, $$2));
+         CommandNode<T> $$4 = $$0.getRedirect();
+         if ($$4 != null) {
+            a($$4, $$1, $$2);
+         }
       }
    }
 }

@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class erm implements erq {
-   private static final erm b = new erm();
-   public static final Codec<erm> a = Codec.unit(b);
+public class erm extends eqq {
+   public static final MapCodec<erm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(le.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, erm::new));
+   private final ix<cvn> b;
 
-   private erm() {
+   private erm(List<esl> $$0, ix<cvn> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public err b() {
-      return ers.n;
+   public eqs b() {
+      return eqt.C;
    }
 
    @Override
-   public Set<eqz<?>> a() {
-      return ImmutableSet.of(erc.j);
+   public cto a(cto $$0, epf $$1) {
+      $$0.a(kb.F, cvp.a, this.b, cvp::b);
+      return $$0;
    }
 
-   public boolean a(eol $$0) {
-      Float $$1 = $$0.c(erc.j);
-      if ($$1 != null) {
-         ayg $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
-   }
-
-   public static erq.a c() {
-      return () -> b;
+   public static eqq.a<?> a(ix<cvn> $$0) {
+      return a($$1 -> new erm($$1, $$0));
    }
 }

@@ -1,61 +1,85 @@
-public abstract class aqd extends elm {
-   protected aqd(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class aqd extends aqo {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
+
+   public aqd(aqn $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = jp.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.Y();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.d.b(new acx(acx.g, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.d.b(new acx(acx.g, 104.0F));
+            } else {
+               this.d.a(wx.c("demo.day." + $$1));
             }
          }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.d.b(new acx(acx.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.d.b(new acx(acx.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.d.b(new acx(acx.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(wx.c("demo.day.warning"));
+      }
+   }
+
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(wx.c("demo.reminder"));
+         this.g = 0;
       }
    }
 
    @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = jp.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
+   public void a(io $$0, ahh.a $$1, it $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
-
-      return $$3;
    }
 
    @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
+   public bpu a(aqn $$0, dax $$1, cto $$2, bpt $$3) {
+      if (this.f) {
+         this.f();
+         return bpu.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+   @Override
+   public bpu a(aqn $$0, dax $$1, cto $$2, bpt $$3, eug $$4) {
+      if (this.f) {
+         this.f();
+         return bpu.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

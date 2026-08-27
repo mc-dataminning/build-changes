@@ -1,79 +1,321 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
-import java.util.Collection;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aku extends atv {
+public class aku {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<akh, af> c = Map.of();
-   private ak d = new ak();
-   private final iy.a e;
+   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
+   private final auj c;
+   private final Path d;
+   private ak e;
+   private final Map<af, ah> f = new LinkedHashMap<>();
+   private final Set<af> g = new HashSet<>();
+   private final Set<af> h = new HashSet<>();
+   private final Set<ag> i = new HashSet<>();
+   private aqn j;
+   @Nullable
+   private af k;
+   private boolean l = true;
+   private final Codec<aku.a> m;
 
-   public aku(iy.a $$0) {
-      super(b, "advancements");
-      this.e = $$0;
+   public aku(DataFixer $$0, auj $$1, akz $$2, Path $$3, aqn $$4) {
+      this.c = $$1;
+      this.d = $$3;
+      this.j = $$4;
+      this.e = $$2.a();
+      int $$5 = 1343;
+      this.m = azj.p.a(aku.a.a, $$0, 1343);
+      this.d($$2);
    }
 
-   protected void a(Map<akh, JsonElement> $$0, atr $$1, bma $$2) {
-      akf<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<akh, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
+   public void a(aqn $$0) {
+      this.j = $$0;
+   }
+
+   public void a() {
+      for (ap<?> $$0 : le.ap) {
+         $$0.a(this);
+      }
+   }
+
+   public void a(akz $$0) {
+      this.a();
+      this.f.clear();
+      this.g.clear();
+      this.i.clear();
+      this.h.clear();
+      this.l = true;
+      this.k = null;
+      this.e = $$0.a();
+      this.d($$0);
+   }
+
+   private void b(akz $$0) {
+      for (af $$1 : $$0.b()) {
+         this.d($$1);
+      }
+   }
+
+   private void c(akz $$0) {
+      for (af $$1 : $$0.b()) {
+         ae $$2 = $$1.b();
+         if ($$2.e().isEmpty()) {
+            this.a($$1, "");
+            $$2.d().a(this.j);
+         }
+      }
+   }
+
+   private void d(akz $$0) {
+      if (Files.isRegularFile(this.d)) {
          try {
-            ae $$4x = ac.a(ae.a.parse($$3, $$3x), JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+            JsonReader $$1 = new JsonReader(Files.newBufferedReader(this.d, StandardCharsets.UTF_8));
+
+            try {
+               $$1.setLenient(false);
+               JsonElement $$2 = Streams.parse($$1);
+               aku.a $$3 = (aku.a)this.m.parse(JsonOps.INSTANCE, $$2).getOrThrow(JsonParseException::new);
+               this.a($$0, $$3);
+            } catch (Throwable var6) {
+               try {
+                  $$1.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+
+               throw var6;
+            }
+
+            $$1.close();
+         } catch (JsonParseException var7) {
+            a.error("Couldn't parse player advancements in {}", this.d, var7);
+         } catch (IOException var8) {
+            a.error("Couldn't access player advancements in {}", this.d, var8);
+         }
+      }
+
+      this.c($$0);
+      this.b($$0);
+   }
+
+   public void b() {
+      JsonElement $$0 = (JsonElement)this.m.encodeStart(JsonOps.INSTANCE, this.c()).getOrThrow();
+
+      try {
+         v.c(this.d.getParent());
+
+         try (Writer $$1 = Files.newBufferedWriter(this.d, StandardCharsets.UTF_8)) {
+            b.toJson($$0, $$1);
+         }
+      } catch (IOException var7) {
+         a.error("Couldn't save player advancements to {}", this.d, var7);
+      }
+   }
+
+   private void a(akz $$0, aku.a $$1) {
+      $$1.a(($$1x, $$2) -> {
+         af $$3 = $$0.a($$1x);
+         if ($$3 == null) {
+            a.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", $$1x, this.d);
+         } else {
+            this.a($$3, $$2);
+            this.h.add($$3);
+            this.c($$3);
          }
       });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
+   }
 
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
+   private aku.a c() {
+      Map<akm, ah> $$0 = new LinkedHashMap<>();
+      this.f.forEach(($$1, $$2) -> {
+         if ($$2.b()) {
+            $$0.put($$1.a(), $$2);
+         }
+      });
+      return new aku.a($$0);
+   }
+
+   public boolean a(af $$0, String $$1) {
+      boolean $$2 = false;
+      ah $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.a($$1)) {
+         this.e($$0);
+         this.h.add($$0);
+         $$2 = true;
+         if (!$$4 && $$3.a()) {
+            $$0.b().d().a(this.j);
+            $$0.b().c().ifPresent($$1x -> {
+               if ($$1x.i() && this.j.dP().aa().b(dat.A)) {
+                  this.c.a($$1x.e().a($$0, this.j), false);
+               }
+            });
          }
       }
 
-      this.d = $$5;
+      if (!$$4 && $$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
    }
 
-   private void a(akh $$0, ae $$1) {
-      aye.a $$2 = new aye.a();
-      $$1.a($$2, this.e.b());
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+   public boolean b(af $$0, String $$1) {
+      boolean $$2 = false;
+      ah $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.b($$1)) {
+         this.d($$0);
+         this.h.add($$0);
+         $$2 = true;
+      }
+
+      if ($$4 && !$$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   private void c(af $$0) {
+      ag $$1 = this.e.a($$0);
+      if ($$1 != null) {
+         this.i.add($$1.d());
       }
    }
 
-   @Nullable
-   public af a(akh $$0) {
-      return this.c.get($$0);
+   private void d(af $$0) {
+      ah $$1 = this.b($$0);
+      if (!$$1.a()) {
+         for (Entry<String, an<?>> $$2 : $$0.b().e().entrySet()) {
+            ao $$3 = $$1.c($$2.getKey());
+            if ($$3 != null && !$$3.a()) {
+               this.a($$0, $$2.getKey(), $$2.getValue());
+            }
+         }
+      }
    }
 
-   public ak a() {
-      return this.d;
+   private <T extends aq> void a(af $$0, String $$1, an<T> $$2) {
+      $$2.a().a(this, new ap.a<>($$2.b(), $$0, $$1));
    }
 
-   public Collection<af> b() {
-      return this.c.values();
+   private void e(af $$0) {
+      ah $$1 = this.b($$0);
+
+      for (Entry<String, an<?>> $$2 : $$0.b().e().entrySet()) {
+         ao $$3 = $$1.c($$2.getKey());
+         if ($$3 != null && ($$3.a() || $$1.a())) {
+            this.b($$0, $$2.getKey(), $$2.getValue());
+         }
+      }
+   }
+
+   private <T extends aq> void b(af $$0, String $$1, an<T> $$2) {
+      $$2.a().b(this, new ap.a<>($$2.b(), $$0, $$1));
+   }
+
+   public void b(aqn $$0) {
+      if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
+         Map<akm, ah> $$1 = new HashMap<>();
+         Set<af> $$2 = new HashSet<>();
+         Set<akm> $$3 = new HashSet<>();
+
+         for (ag $$4 : this.i) {
+            this.a($$4, $$2, $$3);
+         }
+
+         this.i.clear();
+
+         for (af $$5 : this.h) {
+            if (this.g.contains($$5)) {
+               $$1.put($$5.a(), this.f.get($$5));
+            }
+         }
+
+         this.h.clear();
+         if (!$$1.isEmpty() || !$$2.isEmpty() || !$$3.isEmpty()) {
+            $$0.d.b(new afu(this.l, $$2, $$3, $$1));
+         }
+      }
+
+      this.l = false;
+   }
+
+   public void a(@Nullable af $$0) {
+      af $$1 = this.k;
+      if ($$0 != null && $$0.b().a() && $$0.b().c().isPresent()) {
+         this.k = $$0;
+      } else {
+         this.k = null;
+      }
+
+      if ($$1 != this.k) {
+         this.j.d.b(new aeg(this.k == null ? null : this.k.a()));
+      }
+   }
+
+   public ah b(af $$0) {
+      ah $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         $$1 = new ah();
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   private void a(af $$0, ah $$1) {
+      $$1.a($$0.b().f());
+      this.f.put($$0, $$1);
+   }
+
+   private void a(ag $$0, Set<af> $$1, Set<akm> $$2) {
+      alk.a($$0, $$0x -> this.b($$0x.b()).a(), ($$2x, $$3) -> {
+         af $$4 = $$2x.b();
+         if ($$3) {
+            if (this.g.add($$4)) {
+               $$1.add($$4);
+               if (this.f.containsKey($$4)) {
+                  this.h.add($$4);
+               }
+            }
+         } else if (this.g.remove($$4)) {
+            $$2.add($$4.a());
+         }
+      });
+   }
+
+   static record a(Map<akm, ah> b) {
+      public static final Codec<aku.a> a = Codec.unboundedMap(akm.a, ah.a).xmap(aku.a::new, aku.a::a);
+
+      public void a(BiConsumer<akm, ah> $$0) {
+         this.b.entrySet().stream().sorted(Entry.comparingByValue()).forEach($$1 -> $$0.accept($$1.getKey(), $$1.getValue()));
+      }
+
+      public Map<akm, ah> a() {
+         return this.b;
+      }
    }
 }

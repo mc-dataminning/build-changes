@@ -1,17 +1,37 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface fii {
+   Object b = new Object();
+   int c = 32;
 
-public record fii(akh c) implements fig {
-   public static final MapCodec<fii> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akh.a.fieldOf("id").forGetter(fii::c)).apply($$0, fii::new));
+   fii.a a(ffm var1, fij var2, long var3);
 
-   @Override
-   public fih a() {
-      return fih.e;
+   default Object e() {
+      return b;
    }
 
-   @Override
-   public Either<fig.b, fig.c> b() {
-      return Either.right(new fig.c(this.c));
+   default int a() {
+      return 160;
+   }
+
+   default int b() {
+      return 32;
+   }
+
+   default int f() {
+      return ayd.e(this.b(), 32);
+   }
+
+   public static enum a {
+      a(avh.Av),
+      b(avh.Aw);
+
+      private final avg c;
+
+      private a(avg $$0) {
+         this.c = $$0;
+      }
+
+      public void a(gsn $$0) {
+         $$0.a(gre.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

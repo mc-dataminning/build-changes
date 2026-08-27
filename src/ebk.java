@@ -1,40 +1,79 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebk implements ebh {
-   public static final Codec<ebk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bor.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bop.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bop.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bop.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bop.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, ebk::new)
-   );
-   public final int b;
-   public final bor c;
-   public final bop d;
-   public final float e;
-   public final bop f;
-   public final bop g;
-   public final bop h;
-   public final int i;
-   public final float j;
+public class ebk extends dzx<ecy> {
+   public ebk(Codec<ecy> $$0) {
+      super($$0);
+   }
 
-   public ebk(int $$0, bor $$1, bop $$2, float $$3, bop $$4, bop $$5, bop $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(dzz<ecy> $$0) {
+      dbs $$1 = $$0.b();
+      io $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         ayk $$3 = $$0.d();
+         ecy $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         io.a $$8 = new io.a();
+
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayd.a($$3, -$$5, $$5), ayd.a($$3, -$$6, $$6), ayd.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (io)$$8)) {
+               int $$10 = ayd.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(day $$0, io.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(day $$0, ayk $$1, io.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dea.oB.n().a(dhn.e, Integer.valueOf(ayd.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dea.oC.n(), 2);
+         }
+
+         $$2.c(it.b);
+      }
+   }
+
+   private static boolean a(day $$0, io $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         drb $$2 = $$0.a_($$1.d());
+         return !$$2.a(dea.dV) && !$$2.a(dea.on) && !$$2.a(dea.op);
+      }
    }
 }

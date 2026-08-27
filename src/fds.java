@@ -1,26 +1,39 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class fds extends fdc {
-   private final BooleanSupplier h;
+public enum fds implements ayf {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public fds(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, ews.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<fds> d = awv.a(fds::a, values(), awv.a.b);
+   private final int e;
+   private final String f;
+
+   private fds(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int a() {
+      return this.e;
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public String b() {
+      return this.f;
+   }
+
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static fds a(int $$0) {
+      return d.apply($$0);
    }
 }

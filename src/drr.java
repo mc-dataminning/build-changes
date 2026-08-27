@@ -1,23 +1,133 @@
-public enum drr implements ayt {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
-
-   private final String e;
-   private final wu f;
-
-   private drr(String $$0) {
-      this.e = $$0;
-      this.f = wu.c("structure_block.mode_info." + $$0);
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
-
-   public wu a() {
-      return this.f;
-   }
+public class drr {
+   public static final drs a = drs.a("attached");
+   public static final drs b = drs.a("bottom");
+   public static final drs c = drs.a("conditional");
+   public static final drs d = drs.a("disarmed");
+   public static final drs e = drs.a("drag");
+   public static final drs f = drs.a("enabled");
+   public static final drs g = drs.a("extended");
+   public static final drs h = drs.a("eye");
+   public static final drs i = drs.a("falling");
+   public static final drs j = drs.a("hanging");
+   public static final drs k = drs.a("has_bottle_0");
+   public static final drs l = drs.a("has_bottle_1");
+   public static final drs m = drs.a("has_bottle_2");
+   public static final drs n = drs.a("has_record");
+   public static final drs o = drs.a("has_book");
+   public static final drs p = drs.a("inverted");
+   public static final drs q = drs.a("in_wall");
+   public static final drs r = drs.a("lit");
+   public static final drs s = drs.a("locked");
+   public static final drs t = drs.a("occupied");
+   public static final drs u = drs.a("open");
+   public static final drs v = drs.a("persistent");
+   public static final drs w = drs.a("powered");
+   public static final drs x = drs.a("short");
+   public static final drs y = drs.a("signal_fire");
+   public static final drs z = drs.a("snowy");
+   public static final drs A = drs.a("triggered");
+   public static final drs B = drs.a("unstable");
+   public static final drs C = drs.a("waterlogged");
+   public static final drs D = drs.a("berries");
+   public static final drs E = drs.a("bloom");
+   public static final drs F = drs.a("shrieking");
+   public static final drs G = drs.a("can_summon");
+   public static final drz<it.a> H = drz.a("axis", it.a.class, it.a.a, it.a.c);
+   public static final drz<it.a> I = drz.a("axis", it.a.class);
+   public static final drs J = drs.a("up");
+   public static final drs K = drs.a("down");
+   public static final drs L = drs.a("north");
+   public static final drs M = drs.a("east");
+   public static final drs N = drs.a("south");
+   public static final drs O = drs.a("west");
+   public static final drv P = drv.a("facing", it.c, it.f, it.d, it.e, it.b, it.a);
+   public static final drv Q = drv.a("facing", $$0 -> $$0 != it.b);
+   public static final drv R = drv.a("facing", it.c.a);
+   public static final dsb S = dsb.a("flower_amount", 1, 4);
+   public static final drz<iv> T = drz.a("orientation", iv.class);
+   public static final drz<drm> U = drz.a("face", drm.class);
+   public static final drz<drp> V = drz.a("attachment", drp.class);
+   public static final drz<dsn> W = drz.a("east", dsn.class);
+   public static final drz<dsn> X = drz.a("north", dsn.class);
+   public static final drz<dsn> Y = drz.a("south", dsn.class);
+   public static final drz<dsn> Z = drz.a("west", dsn.class);
+   public static final drz<dsg> aa = drz.a("east", dsg.class);
+   public static final drz<dsg> ab = drz.a("north", dsg.class);
+   public static final drz<dsg> ac = drz.a("south", dsg.class);
+   public static final drz<dsg> ad = drz.a("west", dsg.class);
+   public static final drz<drx> ae = drz.a("half", drx.class);
+   public static final drz<dsa> af = drz.a("half", dsa.class);
+   public static final drz<dsf> ag = drz.a("shape", dsf.class);
+   public static final drz<dsf> ah = drz.a("shape", dsf.class, $$0 -> $$0 != dsf.j && $$0 != dsf.i && $$0 != dsf.g && $$0 != dsf.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dsb aq = dsb.a("age", 0, 1);
+   public static final dsb ar = dsb.a("age", 0, 2);
+   public static final dsb as = dsb.a("age", 0, 3);
+   public static final dsb at = dsb.a("age", 0, 4);
+   public static final dsb au = dsb.a("age", 0, 5);
+   public static final dsb av = dsb.a("age", 0, 7);
+   public static final dsb aw = dsb.a("age", 0, 15);
+   public static final dsb ax = dsb.a("age", 0, 25);
+   public static final dsb ay = dsb.a("bites", 0, 6);
+   public static final dsb az = dsb.a("candles", 1, 4);
+   public static final dsb aA = dsb.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dsb aC = dsb.a("distance", 1, 7);
+   public static final dsb aD = dsb.a("eggs", 1, 4);
+   public static final dsb aE = dsb.a("hatch", 0, 2);
+   public static final dsb aF = dsb.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dsb aK = dsb.a("level", 1, 3);
+   public static final dsb aL = dsb.a("level", 0, 8);
+   public static final dsb aM = dsb.a("level", 1, 8);
+   public static final dsb aN = dsb.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dsb aP = dsb.a("level", 0, 15);
+   public static final dsb aQ = dsb.a("moisture", 0, 7);
+   public static final dsb aR = dsb.a("note", 0, 24);
+   public static final dsb aS = dsb.a("pickles", 1, 4);
+   public static final dsb aT = dsb.a("power", 0, 15);
+   public static final dsb aU = dsb.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dsb aW = dsb.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dsb aZ = dsb.a("charges", 0, 4);
+   public static final dsb ba = dsb.a("rotation", 0, dsh.a());
+   public static final drz<dro> bb = drz.a("part", dro.class);
+   public static final drz<drt> bc = drz.a("type", drt.class);
+   public static final drz<dru> bd = drz.a("mode", dru.class);
+   public static final drz<drw> be = drz.a("hinge", drw.class);
+   public static final drz<dsc> bf = drz.a("instrument", dsc.class);
+   public static final drz<dsd> bg = drz.a("type", dsd.class);
+   public static final drz<dsj> bh = drz.a("type", dsj.class);
+   public static final drz<dsk> bi = drz.a("shape", dsk.class);
+   public static final drz<dsl> bj = drz.a("mode", dsl.class);
+   public static final drz<drn> bk = drz.a("leaves", drn.class);
+   public static final drz<dsm> bl = drz.a("tilt", dsm.class);
+   public static final drv bm = drv.a("vertical_direction", it.b, it.a);
+   public static final drz<dry> bn = drz.a("thickness", dry.class);
+   public static final drz<dsi> bo = drz.a("sculk_sensor_phase", dsi.class);
+   public static final drs bp = drs.a("slot_0_occupied");
+   public static final drs bq = drs.a("slot_1_occupied");
+   public static final drs br = drs.a("slot_2_occupied");
+   public static final drs bs = drs.a("slot_3_occupied");
+   public static final drs bt = drs.a("slot_4_occupied");
+   public static final drs bu = drs.a("slot_5_occupied");
+   public static final dsb bv = dsb.a("dusted", 0, 3);
+   public static final drs bw = drs.a("cracked");
+   public static final drs bx = drs.a("crafting");
+   public static final drz<dqh> by = drz.a("trial_spawner_state", dqh.class);
+   public static final drz<dqo> bz = drz.a("vault_state", dqo.class);
+   public static final drs bA = drs.a("ominous");
 }

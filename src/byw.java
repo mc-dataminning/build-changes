@@ -1,78 +1,77 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class byw extends byx {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cdp d;
-   @Nullable
-   private cdp e;
-   private final double f;
-   private int g;
+public class byw extends bzd {
+   private static final int g = 240;
+   private final Predicate<bpr> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public byw(cdp $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public byw(bsq $$0, Predicate<bpr> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public byw(bsq $$0, int $$1, Predicate<bpr> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      if (this.d.g() >= 0) {
+      if (!super.a()) {
          return false;
       } else {
-         List<? extends cdp> $$0 = this.d.dN().a((Class<? extends cdp>)this.d.getClass(), this.d.cI().c(8.0, 4.0, 8.0));
-         cdp $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cdp $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bB()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
+         return !this.d.dP().aa().b(dat.c) ? false : this.a(this.d.dP().ak()) && !this.h();
       }
    }
 
    @Override
    public void c() {
-      this.g = 0;
+      super.c();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dn(), 2.0) && this.a(this.d.dP().ak());
    }
 
    @Override
    public void d() {
-      this.e = null;
+      super.d();
+      this.d.dP().a(this.d.al(), this.e, -1);
    }
 
    @Override
    public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.K().a(this.e, this.f);
+      super.e();
+      if (this.d.el().a(20) == 0) {
+         this.d.dP().c(1019, this.e, 0);
+         if (!this.d.aK) {
+            this.d.a(this.d.fw());
+         }
       }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dP().a(this.d.al(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dP().ak())) {
+         this.d.dP().a(this.e, false);
+         this.d.dP().c(1021, this.e, 0);
+         this.d.dP().c(2001, this.e, ddy.i(this.d.dP().a_(this.e)));
+      }
+   }
+
+   private boolean a(bpr $$0) {
+      return this.h.test($$0);
    }
 }

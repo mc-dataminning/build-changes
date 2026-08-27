@@ -1,42 +1,58 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public enum brp implements ayt {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bro.a),
-   c(2, "offhand", bro.b),
-   d(3, "hand", $$0 -> $$0.a() == bro.a.a),
-   e(4, "feet", bro.c),
-   f(5, "legs", bro.d),
-   g(6, "chest", bro.e),
-   h(7, "head", bro.f),
-   i(8, "armor", bro::f);
+public class brp {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
 
-   public static final IntFunction<brp> j = awq.a($$0 -> $$0.m, values(), awq.a.a);
-   public static final Codec<brp> k = ayt.a(brp::values);
-   public static final ys<ByteBuf, brp> l = yq.a(j, $$0 -> $$0.m);
-   private final int m;
-   private final String n;
-   private final Predicate<bro> o;
-
-   private brp(int $$0, String $$1, Predicate<bro> $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   private brp(int $$0, String $$1, bro $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.n;
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   public boolean a(bro $$0) {
-      return this.o.test($$0);
+   public void a() {
+      this.b = Long.MAX_VALUE;
+   }
+
+   public void a(Consumer<brp> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = ayd.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.c()) {
+         this.c += (long)((float)($$0 * 1000) * $$1) / 20L;
+      }
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

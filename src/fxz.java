@@ -1,49 +1,73 @@
-public class fxz extends gac {
-   fxz(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public final class fxz {
+   private static final int a = 1024;
+   private final fxq b;
+   private final fxw c;
+   private final fxl d;
+   @Nullable
+   private fxv e;
+
+   public fxz(fxq $$0, fxw $$1, fxl $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   public static fxz a(fxw $$0, UserApiService $$1) {
+      fxl $$2 = new fxl(1024);
+      fxq $$3 = fxq.a($$0, $$1);
+      return new fxz($$3, $$0, $$2);
+   }
+
+   public void a(fdz $$0, fly $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fxv $$4 = this.e.b();
+         $$0.a(
+            new fkq(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wx.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wx.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wx.c("gui.abuseReport.draft.edit"),
+               wx.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(in.a(this.g, this.h, this.i)).a(avw.a)) {
-            this.k();
-         }
+         $$2.run();
       }
    }
 
-   @Override
-   public fzg b() {
-      return fzg.b;
+   public fxq a() {
+      return this.b;
    }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
+   public fxl b() {
+      return this.d;
+   }
 
-      public a(fzx $$0) {
-         this.a = $$0;
-      }
+   public boolean a(fxw $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fxz $$8 = new fxz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public void a(@Nullable fxv $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

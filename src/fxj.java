@@ -1,4 +1,4 @@
-@FunctionalInterface
-public interface fxj {
-   zb<afz> predict(int var1);
+import java.util.Map;
+
+public record fxj(Map<akm, byte[]> a) {
 }

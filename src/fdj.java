@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum fdj implements ayb {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum fdj implements ayf {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private static final IntFunction<fdj> d = awq.a(fdj::a, values(), awq.a.b);
+   private static final IntFunction<fdj> d = awv.a(fdj::a, values(), awv.a.b);
    private final int e;
    private final String f;
 
@@ -15,13 +15,13 @@ public enum fdj implements ayb {
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public int a() {
+      return this.e;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public String b() {
+      return this.f;
    }
 
    public static fdj a(int $$0) {

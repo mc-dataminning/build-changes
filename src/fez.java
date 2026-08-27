@@ -1,527 +1,901 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public abstract class fez<E extends fez.a<E>> extends few {
-   protected static final int b = 6;
-   private static final akh a = new akh("widget/scroller");
-   private static final akh m = new akh("widget/scroller_background");
-   private static final akh n = new akh("textures/gui/menu_list_background.png");
-   private static final akh o = new akh("textures/gui/inworld_menu_list_background.png");
-   protected final fde c;
-   protected final int d;
-   private final List<E> p = new fez.b();
-   protected boolean e = true;
-   private double q;
-   private boolean r;
-   protected int f;
-   private boolean s;
-   @Nullable
-   private E u;
-   @Nullable
-   private E v;
-
-   public fez(fde $$0, int $$1, int $$2, int $$3, int $$4) {
-      super(0, $$3, $$1, $$2, wt.a);
-      this.c = $$0;
-      this.d = $$4;
-   }
-
-   protected void a(boolean $$0, int $$1) {
-      this.r = $$0;
-      this.f = $$1;
-      if (!$$0) {
-         this.f = 0;
-      }
-   }
-
-   public int b() {
-      return 220;
-   }
-
-   @Nullable
-   public E h() {
-      return this.u;
-   }
-
-   public void a(@Nullable E $$0) {
-      this.u = $$0;
-   }
-
-   public E i() {
-      return this.p.get(0);
-   }
-
-   @Nullable
-   public E j() {
-      return (E)super.aH_();
-   }
-
-   @Override
-   public final List<E> aE_() {
-      return this.p;
-   }
-
-   protected void k() {
-      this.p.clear();
-      this.u = null;
-   }
-
-   protected void a(Collection<E> $$0) {
-      this.k();
-      this.p.addAll($$0);
-   }
-
-   protected E d(int $$0) {
-      return this.aE_().get($$0);
-   }
-
-   protected int b(E $$0) {
-      this.p.add($$0);
-      return this.p.size() - 1;
-   }
-
-   protected void c(E $$0) {
-      double $$1 = (double)this.o() - this.n();
-      this.p.add(0, $$0);
-      this.a((double)this.o() - $$1);
-   }
-
-   protected boolean d(E $$0) {
-      double $$1 = (double)this.o() - this.n();
-      boolean $$2 = this.g($$0);
-      this.a((double)this.o() - $$1);
-      return $$2;
-   }
-
-   protected int l() {
-      return this.aE_().size();
-   }
-
-   protected boolean e(int $$0) {
-      return Objects.equals(this.h(), this.aE_().get($$0));
-   }
-
-   @Nullable
-   protected final E b(double $$0, double $$1) {
-      int $$2 = this.b() / 2;
-      int $$3 = this.C() + this.g / 2;
-      int $$4 = $$3 - $$2;
-      int $$5 = $$3 + $$2;
-      int $$6 = axz.a($$1 - (double)this.D()) - this.f + (int)this.n() - 4;
-      int $$7 = $$6 / this.d;
-      return $$0 >= (double)$$4 && $$0 <= (double)$$5 && $$7 >= 0 && $$6 >= 0 && $$7 < this.l() ? this.aE_().get($$7) : null;
-   }
-
-   public void a(int $$0, fir $$1) {
-      this.b($$0, $$1.d(), $$1.c());
-   }
-
-   public void b(int $$0, int $$1, int $$2) {
-      this.b($$0, $$1);
-      this.c(0, $$2);
-   }
-
-   protected int a() {
-      return this.l() * this.d + this.f;
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   protected void a(fer $$0, int $$1, int $$2) {
-   }
-
-   protected void b(fer $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void b(fer $$0, int $$1, int $$2, float $$3) {
-      this.v = this.c((double)$$1, (double)$$2) ? this.b((double)$$1, (double)$$2) : null;
-      this.b($$0);
-      this.c($$0);
-      if (this.r) {
-         int $$4 = this.r();
-         int $$5 = this.D() + 4 - (int)this.n();
-         this.a($$0, $$4, $$5);
-      }
-
-      this.c($$0, $$1, $$2, $$3);
-      $$0.f();
-      this.a($$0);
-      if (this.m()) {
-         int $$6 = this.p();
-         int $$7 = (int)((float)(this.h * this.h) / (float)this.a());
-         $$7 = axz.a($$7, 32, this.h - 8);
-         int $$8 = (int)this.n() * (this.h - $$7) / this.o() + this.D();
-         if ($$8 < this.D()) {
-            $$8 = this.D();
-         }
-
-         RenderSystem.enableBlend();
-         $$0.a(m, $$6, this.D(), 6, this.v());
-         $$0.a(a, $$6, $$8, 6, $$7);
-         RenderSystem.disableBlend();
-      }
-
-      this.b($$0, $$1, $$2);
-      RenderSystem.disableBlend();
-   }
-
-   protected boolean m() {
-      return this.o() > 0;
-   }
-
-   protected void a(fer $$0) {
-      RenderSystem.enableBlend();
-      akh $$1 = this.c.r == null ? fld.h : fld.j;
-      akh $$2 = this.c.r == null ? fld.i : fld.k;
-      $$0.a($$1, this.C(), this.D() - 2, 0.0F, 0.0F, this.x(), 2, 32, 2);
-      $$0.a($$2, this.C(), this.F(), 0.0F, 0.0F, this.x(), 2, 32, 2);
-      RenderSystem.disableBlend();
-   }
-
-   protected void b(fer $$0) {
-      RenderSystem.enableBlend();
-      akh $$1 = this.c.r == null ? n : o;
-      $$0.a($$1, this.C(), this.D(), (float)this.E(), (float)(this.F() + (int)this.n()), this.x(), this.v(), 32, 32);
-      RenderSystem.disableBlend();
-   }
-
-   protected void c(fer $$0) {
-      $$0.c(this.C(), this.D(), this.E(), this.F());
-   }
-
-   protected void e(E $$0) {
-      this.a((double)(this.aE_().indexOf($$0) * this.d + this.d / 2 - this.h / 2));
-   }
-
-   protected void f(E $$0) {
-      int $$1 = this.g(this.aE_().indexOf($$0));
-      int $$2 = $$1 - this.D() - 4 - this.d;
-      if ($$2 < 0) {
-         this.a($$2);
-      }
-
-      int $$3 = this.F() - $$1 - this.d - this.d;
-      if ($$3 < 0) {
-         this.a(-$$3);
-      }
-   }
-
-   private void a(int $$0) {
-      this.a(this.n() + (double)$$0);
-   }
-
-   public double n() {
-      return this.q;
-   }
-
-   public void a(double $$0) {
-      this.q = axz.a($$0, 0.0, (double)this.o());
-   }
-
-   public int o() {
-      return Math.max(0, this.a() - (this.h - 4));
-   }
-
-   protected void c(double $$0, double $$1, int $$2) {
-      this.s = $$2 == 0 && $$0 >= (double)this.p() && $$0 < (double)(this.p() + 6);
-   }
-
-   protected int p() {
-      return this.q();
-   }
-
-   protected int q() {
-      return this.J() + this.d();
-   }
-
-   private int d() {
-      return 10;
-   }
-
-   protected boolean f(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (!this.f($$2)) {
-         return false;
-      } else {
-         this.c($$0, $$1, $$2);
-         if (!this.c($$0, $$1)) {
-            return false;
-         } else {
-            E $$3 = this.b($$0, $$1);
-            if ($$3 != null) {
-               if ($$3.a($$0, $$1, $$2)) {
-                  E $$4 = this.j();
-                  if ($$4 != $$3 && $$4 instanceof fgz $$5) {
-                     $$5.a(null);
-                  }
-
-                  this.a($$3);
-                  this.b(true);
-                  return true;
-               }
-            } else if (this.a((int)($$0 - (double)(this.C() + this.g / 2 - this.b() / 2)), (int)($$1 - (double)this.D()) + (int)this.n() - 4)) {
-               return true;
-            }
-
-            return this.s;
-         }
-      }
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.j() != null) {
-         this.j().b($$0, $$1, $$2);
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if ($$2 == 0 && this.s) {
-         if ($$1 < (double)this.D()) {
-            this.a(0.0);
-         } else if ($$1 > (double)this.F()) {
-            this.a((double)this.o());
-         } else {
-            double $$5 = (double)Math.max(1, this.o());
-            int $$6 = this.h;
-            int $$7 = axz.a((int)((float)($$6 * $$6) / (float)this.a()), 32, $$6 - 8);
-            double $$8 = Math.max(1.0, $$5 / (double)($$6 - $$7));
-            this.a(this.n() + $$4 * $$8);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      this.a(this.n() - $$3 * (double)this.d / 2.0);
-      return true;
-   }
-
-   @Override
-   public void a(@Nullable fha $$0) {
-      super.a($$0);
-      int $$1 = this.p.indexOf($$0);
-      if ($$1 >= 0) {
-         E $$2 = this.p.get($$1);
-         this.a($$2);
-         if (this.c.aY().b()) {
-            this.f($$2);
-         }
-      }
-   }
-
-   @Nullable
-   protected E a(fji $$0) {
-      return this.a($$0, $$0x -> true);
-   }
-
-   @Nullable
-   protected E a(fji $$0, Predicate<E> $$1) {
-      return this.a($$0, $$1, this.h());
-   }
-
-   @Nullable
-   protected E a(fji $$0, Predicate<E> $$1, @Nullable E $$2) {
-      int $$3 = switch ($$0) {
-         case d, c -> 0;
-         case a -> -1;
-         case b -> 1;
-      };
-      if (!this.aE_().isEmpty() && $$3 != 0) {
-         int $$4;
-         if ($$2 == null) {
-            $$4 = $$3 > 0 ? 0 : this.aE_().size() - 1;
-         } else {
-            $$4 = this.aE_().indexOf($$2) + $$3;
-         }
-
-         for (int $$6 = $$4; $$6 >= 0 && $$6 < this.p.size(); $$6 += $$3) {
-            E $$7 = this.aE_().get($$6);
-            if ($$1.test($$7)) {
-               return $$7;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return $$1 >= (double)this.D() && $$1 <= (double)this.F() && $$0 >= (double)this.C() && $$0 <= (double)this.E();
-   }
-
-   protected void c(fer $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r();
-      int $$5 = this.b();
-      int $$6 = this.d - 4;
-      int $$7 = this.l();
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         int $$9 = this.g($$8);
-         int $$10 = this.h($$8);
-         if ($$10 >= this.D() && $$9 <= this.F()) {
-            this.a($$0, $$1, $$2, $$3, $$8, $$4, $$9, $$5, $$6);
-         }
-      }
-   }
-
-   protected void a(fer $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      E $$9 = this.d($$4);
-      $$9.b($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, Objects.equals(this.v, $$9), $$3);
-      if (this.e($$4)) {
-         int $$10 = this.aI_() ? -1 : -8355712;
-         this.a($$0, $$6, $$7, $$8, $$10, -16777216);
-      }
-
-      $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, Objects.equals(this.v, $$9), $$3);
-   }
-
-   protected void a(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = this.C() + (this.g - $$2) / 2;
-      int $$7 = this.C() + (this.g + $$2) / 2;
-      $$0.a($$6, $$1 - 2, $$7, $$1 + $$3 + 2, $$4);
-      $$0.a($$6 + 1, $$1 - 1, $$7 - 1, $$1 + $$3 + 1, $$5);
-   }
-
-   public int r() {
-      return this.C() + this.g / 2 - this.b() / 2 + 2;
-   }
-
-   private int I() {
-      return this.C() + this.g / 2 - this.b() / 2;
-   }
-
-   public int s() {
-      return this.r() + this.b();
-   }
-
-   private int J() {
-      return this.I() + this.b();
-   }
-
-   protected int g(int $$0) {
-      return this.D() + 4 - (int)this.n() + $$0 * this.d + this.f;
-   }
-
-   protected int h(int $$0) {
-      return this.g($$0) + this.d;
-   }
-
-   @Override
-   public fiy.a t() {
-      if (this.aI_()) {
-         return fiy.a.c;
-      } else {
-         return this.v != null ? fiy.a.b : fiy.a.a;
-      }
-   }
-
-   @Nullable
-   protected E i(int $$0) {
-      E $$1 = this.p.get($$0);
-      return this.g(this.p.get($$0)) ? $$1 : null;
-   }
-
-   protected boolean g(E $$0) {
-      boolean $$1 = this.p.remove($$0);
-      if ($$1 && $$0 == this.h()) {
-         this.a(null);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   protected E u() {
-      return this.v;
-   }
-
-   void h(fez.a<E> $$0) {
-      $$0.a = this;
-   }
-
-   protected void a(fja $$0, E $$1) {
-      List<E> $$2 = this.aE_();
-      if ($$2.size() > 1) {
-         int $$3 = $$2.indexOf($$1);
-         if ($$3 != -1) {
-            $$0.a(fiz.b, wu.a("narrator.position.list", $$3 + 1, $$2.size()));
-         }
-      }
-   }
-
-   protected abstract static class a<E extends fez.a<E>> implements fha {
-      @Deprecated
-      fez<E> a;
-
-      @Override
-      public void a(boolean $$0) {
-      }
-
-      @Override
-      public boolean aI_() {
-         return this.a.j() == this;
-      }
-
-      public abstract void a(fer var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, float var10);
-
-      public void b(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      }
-
-      @Override
-      public boolean c(double $$0, double $$1) {
-         return Objects.equals(this.a.b($$0, $$1), this);
-      }
-   }
-
-   class b extends AbstractList<E> {
-      private final List<E> b = Lists.newArrayList();
-
-      public E a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      @Override
-      public int size() {
-         return this.b.size();
-      }
-
-      public E a(int $$0, E $$1) {
-         E $$2 = this.b.set($$0, $$1);
-         fez.this.h($$1);
-         return $$2;
-      }
-
-      public void b(int $$0, E $$1) {
-         this.b.add($$0, $$1);
-         fez.this.h($$1);
-      }
-
-      public E b(int $$0) {
-         return this.b.remove($$0);
-      }
-   }
+public class fez {
+   public static final feq a = feq.a.a(6.68F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, -22.5F), fep.b.b),
+            new fer(1.2F, fes.b(0.0F, 0.0F, -7.5F), fep.b.b),
+            new fer(1.68F, fes.b(0.0F, 0.0F, 10.0F), fep.b.b),
+            new fer(1.8F, fes.b(0.0F, 0.0F, 10.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, 0.0F, 10.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, 0.0F, 10.0F), fep.b.b),
+            new fer(3.76F, fes.b(25.0F, 0.0F, -7.5F), fep.b.b),
+            new fer(3.92F, fes.b(35.0F, 0.0F, -7.5F), fep.b.b),
+            new fer(4.08F, fes.b(25.0F, 0.0F, -7.5F), fep.b.b),
+            new fer(4.44F, fes.b(47.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.b(47.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.68F, fes.b(47.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(70.0F, 0.0F, 2.5F), fep.b.b),
+            new fer(5.8F, fes.b(70.0F, 0.0F, 2.5F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, -63.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, -56.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.68F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.8F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(3.16F, fes.a(0.0F, -27.0F, 0.0F), fep.b.b),
+            new fer(3.76F, fes.a(0.0F, -14.0F, 0.0F), fep.b.b),
+            new fer(3.92F, fes.a(0.0F, -11.0F, 0.0F), fep.b.b),
+            new fer(4.08F, fes.a(0.0F, -14.0F, 0.0F), fep.b.b),
+            new fer(4.44F, fes.a(0.0F, -6.0F, -3.0F), fep.b.b),
+            new fer(4.56F, fes.a(0.0F, -4.0F, -3.0F), fep.b.b),
+            new fer(4.68F, fes.a(0.0F, -6.0F, -3.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, -3.0F, -4.0F), fep.b.b),
+            new fer(5.8F, fes.a(0.0F, -3.0F, -4.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.92F, fes.b(0.74F, 0.0F, -40.38F), fep.b.b),
+            new fer(1.16F, fes.b(-67.5F, 0.0F, -2.5F), fep.b.b),
+            new fer(1.24F, fes.b(-67.5F, 0.0F, -2.5F), fep.b.b),
+            new fer(1.32F, fes.b(-47.5F, 0.0F, -2.5F), fep.b.b),
+            new fer(1.4F, fes.b(-67.5F, 0.0F, -2.5F), fep.b.b),
+            new fer(1.68F, fes.b(-67.5F, 0.0F, 15.0F), fep.b.b),
+            new fer(1.76F, fes.b(-67.5F, 0.0F, -5.0F), fep.b.b),
+            new fer(1.84F, fes.b(-52.5F, 0.0F, -5.0F), fep.b.b),
+            new fer(1.92F, fes.b(-67.5F, 0.0F, -5.0F), fep.b.b),
+            new fer(2.64F, fes.b(-17.5F, 0.0F, -10.0F), fep.b.b),
+            new fer(3.76F, fes.b(70.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(4.04F, fes.b(70.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(4.12F, fes.b(80.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(4.24F, fes.b(70.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(5.0F, fes.b(77.5F, 0.0F, -2.5F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(-8.0F, -11.0F, 0.0F), fep.b.b),
+            new fer(0.92F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.a(0.0F, 0.47F, -0.95F), fep.b.b),
+            new fer(1.32F, fes.a(0.0F, 0.47F, -0.95F), fep.b.b),
+            new fer(1.4F, fes.a(0.0F, 0.47F, -0.95F), fep.b.b),
+            new fer(1.68F, fes.a(0.0F, 1.0F, -2.0F), fep.b.b),
+            new fer(1.76F, fes.a(0.0F, 1.0F, -2.0F), fep.b.b),
+            new fer(1.84F, fes.a(0.0F, 1.0F, -2.0F), fep.b.b),
+            new fer(1.92F, fes.a(0.0F, 1.0F, -2.0F), fep.b.b),
+            new fer(2.64F, fes.a(0.0F, -2.0F, -2.0F), fep.b.b),
+            new fer(3.76F, fes.a(0.0F, -4.0F, 1.0F), fep.b.b),
+            new fer(4.04F, fes.a(0.0F, -1.0F, 1.0F), fep.b.b),
+            new fer(4.12F, fes.a(0.0F, -1.0F, 1.0F), fep.b.b),
+            new fer(4.24F, fes.a(0.0F, -1.0F, 1.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, -1.0F, 1.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.b(-152.5F, 2.5F, 7.5F), fep.b.b),
+            new fer(1.68F, fes.b(-180.0F, 12.5F, -10.0F), fep.b.b),
+            new fer(1.8F, fes.b(-90.0F, 12.5F, -10.0F), fep.b.b),
+            new fer(2.28F, fes.b(-90.0F, 12.5F, -10.0F), fep.b.b),
+            new fer(2.88F, fes.b(-90.0F, 12.5F, -10.0F), fep.b.b),
+            new fer(3.08F, fes.b(-95.0F, 12.5F, -10.0F), fep.b.b),
+            new fer(3.24F, fes.b(-83.93F, 3.93F, 5.71F), fep.b.b),
+            new fer(3.36F, fes.b(-80.0F, 7.5F, 17.5F), fep.b.b),
+            new fer(3.76F, fes.b(-67.5F, 2.5F, 0.0F), fep.b.b),
+            new fer(4.08F, fes.b(-67.5F, 2.5F, 0.0F), fep.b.b),
+            new fer(4.44F, fes.b(-55.0F, 2.5F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.b(-60.0F, 2.5F, 0.0F), fep.b.b),
+            new fer(4.68F, fes.b(-55.0F, 2.5F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(-67.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.56F, fes.b(-50.45F, 0.0F, 2.69F), fep.b.b),
+            new fer(6.08F, fes.b(-62.72F, 0.0F, 4.3F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.a(0.0F, -21.0F, 9.0F), fep.b.b),
+            new fer(1.68F, fes.a(2.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(1.8F, fes.a(2.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(2.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(2.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.08F, fes.a(2.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(3.24F, fes.a(2.0F, 2.71F, 3.86F), fep.b.b),
+            new fer(3.36F, fes.a(2.0F, 1.0F, 5.0F), fep.b.b),
+            new fer(3.76F, fes.a(2.0F, 3.0F, 3.0F), fep.b.b),
+            new fer(4.08F, fes.a(2.0F, 3.0F, 3.0F), fep.b.b),
+            new fer(4.44F, fes.a(2.67F, 4.0F, 0.0F), fep.b.b),
+            new fer(4.56F, fes.a(2.67F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.68F, fes.a(2.67F, 4.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.67F, 3.0F, 4.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.12F, fes.b(-167.5F, -17.5F, -7.5F), fep.b.b),
+            new fer(0.6F, fes.b(-167.5F, -17.5F, -7.5F), fep.b.b),
+            new fer(0.88F, fes.b(-175.0F, -17.5F, 15.0F), fep.b.b),
+            new fer(1.16F, fes.b(-190.0F, -17.5F, 5.0F), fep.b.b),
+            new fer(1.28F, fes.b(-90.0F, -5.0F, 5.0F), fep.b.b),
+            new fer(1.68F, fes.b(-90.0F, -17.5F, -12.5F), fep.b.b),
+            new fer(1.8F, fes.b(-90.0F, -17.5F, -12.5F), fep.b.b),
+            new fer(2.28F, fes.b(-90.0F, -17.5F, -12.5F), fep.b.b),
+            new fer(2.88F, fes.b(-90.0F, -17.5F, -12.5F), fep.b.b),
+            new fer(3.04F, fes.b(-81.29F, -10.64F, -14.21F), fep.b.b),
+            new fer(3.16F, fes.b(-83.5F, -5.5F, -15.5F), fep.b.b),
+            new fer(3.76F, fes.b(-62.5F, -7.5F, 5.0F), fep.b.b),
+            new fer(3.92F, fes.b(-58.75F, -3.75F, 5.0F), fep.b.b),
+            new fer(4.08F, fes.b(-55.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.44F, fes.b(-52.5F, 0.0F, 5.0F), fep.b.b),
+            new fer(4.56F, fes.b(-50.0F, 0.0F, 5.0F), fep.b.b),
+            new fer(4.68F, fes.b(-52.5F, 0.0F, 5.0F), fep.b.b),
+            new fer(5.0F, fes.b(-72.5F, -2.5F, 5.0F), fep.b.b),
+            new fer(5.56F, fes.b(-57.5F, -4.54F, 2.99F), fep.b.b),
+            new fer(6.08F, fes.b(-70.99F, -5.77F, 1.78F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.12F, fes.a(0.0F, -8.0F, 0.0F), fep.b.b),
+            new fer(0.6F, fes.a(0.0F, -8.0F, 0.0F), fep.b.b),
+            new fer(0.88F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.a(-2.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.68F, fes.a(-4.0F, 3.0F, 0.0F), fep.b.b),
+            new fer(1.8F, fes.a(-4.0F, 3.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(-4.0F, 3.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(-4.0F, 3.0F, 0.0F), fep.b.b),
+            new fer(3.04F, fes.a(-3.23F, 5.7F, 4.97F), fep.b.b),
+            new fer(3.16F, fes.a(-1.49F, 2.22F, 5.25F), fep.b.b),
+            new fer(3.76F, fes.a(-1.14F, 1.71F, 1.86F), fep.b.b),
+            new fer(3.92F, fes.a(-1.14F, 1.21F, 3.86F), fep.b.b),
+            new fer(4.08F, fes.a(-1.14F, 2.71F, 4.86F), fep.b.b),
+            new fer(4.44F, fes.a(-1.0F, 1.0F, 3.0F), fep.b.b),
+            new fer(4.56F, fes.a(0.0F, 1.0F, 1.0F), fep.b.b),
+            new fer(4.68F, fes.a(0.0F, 1.0F, 3.0F), fep.b.b),
+            new fer(5.0F, fes.a(-2.0F, 0.0F, 4.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.32F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.48F, fes.b(55.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.6F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, -63.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, -56.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.68F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.8F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.a(0.0F, -22.0F, 0.0F), fep.b.b),
+            new fer(3.76F, fes.a(0.0F, -12.28F, 2.48F), fep.b.b),
+            new fer(3.92F, fes.a(0.0F, -9.28F, 2.48F), fep.b.b),
+            new fer(4.08F, fes.a(0.0F, -12.28F, 2.48F), fep.b.b),
+            new fer(4.32F, fes.a(0.0F, -4.14F, 4.14F), fep.b.b),
+            new fer(4.48F, fes.a(0.0F, -0.57F, -8.43F), fep.b.b),
+            new fer(4.6F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.84F, fes.b(20.0F, 0.0F, -17.5F), fep.b.b),
+            new fer(4.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.68F, fes.b(20.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.84F, fes.b(10.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, -63.0F, 0.0F), fep.b.b),
+            new fer(0.52F, fes.a(0.0F, -56.0F, 0.0F), fep.b.b),
+            new fer(1.2F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.68F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(1.8F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.a(0.0F, -32.0F, 0.0F), fep.b.b),
+            new fer(3.36F, fes.a(0.0F, -22.0F, 0.0F), fep.b.b),
+            new fer(3.84F, fes.a(-4.0F, 2.0F, -7.0F), fep.b.b),
+            new fer(4.0F, fes.a(-4.0F, 0.0F, -5.0F), fep.b.b),
+            new fer(4.68F, fes.a(-4.0F, 0.0F, -9.0F), fep.b.b),
+            new fer(4.84F, fes.a(-2.0F, 2.0F, -3.5F), fep.b.b),
+            new fer(5.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(5.8F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(6.64F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .b();
+   public static final feq b = feq.a.a(5.0F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.25F, fes.b(4.13441F, 0.94736F, 1.2694F), fep.b.b),
+            new fer(0.5F, fes.b(50.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.7083F, fes.b(54.45407F, -13.53935F, -18.14183F), fep.b.b),
+            new fer(1.0417F, fes.b(59.46442F, -10.8885F, 35.7954F), fep.b.b),
+            new fer(1.3333F, fes.b(82.28261F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.625F, fes.b(53.23606F, 10.04715F, -29.72932F), fep.b.b),
+            new fer(2.2083F, fes.b(-17.71739F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.5417F, fes.b(112.28261F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.6667F, fes.b(116.06889F, 5.11581F, -24.50117F), fep.b.b),
+            new fer(2.8333F, fes.b(121.56244F, -4.17248F, 19.57737F), fep.b.b),
+            new fer(3.0417F, fes.b(138.5689F, 5.11581F, -24.50117F), fep.b.b),
+            new fer(3.25F, fes.b(144.06244F, -4.17248F, 19.57737F), fep.b.b),
+            new fer(3.375F, fes.b(147.28261F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.625F, fes.b(147.28261F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.875F, fes.b(134.36221F, 8.81113F, -8.90172F), fep.b.b),
+            new fer(4.0417F, fes.b(132.05966F, -8.35927F, 9.70506F), fep.b.b),
+            new fer(4.25F, fes.b(134.36221F, 8.81113F, -8.90172F), fep.b.b),
+            new fer(4.5F, fes.b(147.5F, 0.0F, 0.0F), fep.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.a(0.0F, -16.48454F, -6.5784F), fep.b.b),
+            new fer(0.7083F, fes.a(0.0F, -16.48454F, -6.5784F), fep.b.b),
+            new fer(1.0417F, fes.a(0.0F, -16.97F, -7.11F), fep.b.b),
+            new fer(1.625F, fes.a(0.0F, -13.97F, -7.11F), fep.b.b),
+            new fer(2.2083F, fes.a(0.0F, -11.48454F, -0.5784F), fep.b.b),
+            new fer(2.5417F, fes.a(0.0F, -16.48454F, -6.5784F), fep.b.b),
+            new fer(2.6667F, fes.a(0.0F, -20.27F, -5.42F), fep.b.b),
+            new fer(3.375F, fes.a(0.0F, -21.48454F, -5.5784F), fep.b.b),
+            new fer(4.0417F, fes.a(0.0F, -22.48454F, -5.5784F), fep.b.b),
+            new fer(4.5F, fes.a(0.0F, -40.0F, -8.0F), fep.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.6667F, fes.b(12.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.2083F, fes.b(12.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.75F, fes.b(45.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.375F, fes.b(-22.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.5417F, fes.b(67.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.375F, fes.b(67.5F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a("head", new fep(fep.d.a, new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b), new fer(4.375F, fes.a(0.0F, 0.0F, 0.0F), fep.b.a)))
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.b(-101.8036F, -21.29587F, 30.61478F), fep.b.b),
+            new fer(0.7083F, fes.b(-101.8036F, -21.29587F, 30.61478F), fep.b.b),
+            new fer(1.0F, fes.b(48.7585F, -17.61941F, 9.9865F), fep.b.b),
+            new fer(1.1667F, fes.b(48.7585F, -17.61941F, 9.9865F), fep.b.b),
+            new fer(1.4583F, fes.b(-101.8036F, -21.29587F, 30.61478F), fep.b.b),
+            new fer(1.75F, fes.b(-89.04994F, -4.19657F, -1.47845F), fep.b.b),
+            new fer(2.2083F, fes.b(-158.30728F, 3.7152F, -1.52352F), fep.b.b),
+            new fer(2.5417F, fes.b(-89.04994F, -4.19657F, -1.47845F), fep.b.b),
+            new fer(4.375F, fes.b(-120.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.7083F, fes.a(2.22F, 0.0F, 0.86F), fep.b.b),
+            new fer(1.0F, fes.a(3.12F, 0.0F, 4.29F), fep.b.b),
+            new fer(2.2083F, fes.a(1.0F, 0.0F, 4.0F), fep.b.b),
+            new fer(4.375F, fes.a(0.0F, 0.0F, 4.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.2917F, fes.b(-63.89288F, -0.52011F, 2.09491F), fep.b.b),
+            new fer(0.5F, fes.b(-63.89288F, -0.52011F, 2.09491F), fep.b.b),
+            new fer(0.7083F, fes.b(-62.87857F, 15.15061F, 9.97445F), fep.b.b),
+            new fer(0.9167F, fes.b(-86.93642F, 17.45026F, 4.05284F), fep.b.b),
+            new fer(1.1667F, fes.b(-86.93642F, 17.45026F, 4.05284F), fep.b.b),
+            new fer(1.4583F, fes.b(-86.93642F, 17.45026F, 4.05284F), fep.b.b),
+            new fer(1.6667F, fes.b(63.0984F, 8.83573F, -8.71284F), fep.b.b),
+            new fer(1.8333F, fes.b(35.5984F, 8.83573F, -8.71284F), fep.b.b),
+            new fer(2.2083F, fes.b(-153.27473F, -0.02953F, 3.5235F), fep.b.b),
+            new fer(2.5417F, fes.b(-87.07754F, -0.02625F, 3.132F), fep.b.b),
+            new fer(4.375F, fes.b(-120.0F, 0.0F, 0.0F), fep.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.a(-0.28F, 5.0F, 10.0F), fep.b.b),
+            new fer(0.7083F, fes.a(-1.51F, 4.35F, 4.33F), fep.b.b),
+            new fer(0.9167F, fes.a(-0.6F, 3.61F, 4.63F), fep.b.b),
+            new fer(1.1667F, fes.a(-0.6F, 3.61F, 0.63F), fep.b.b),
+            new fer(1.6667F, fes.a(-2.85F, -0.1F, 3.33F), fep.b.b),
+            new fer(2.2083F, fes.a(-1.0F, 0.0F, 4.0F), fep.b.b),
+            new fer(4.375F, fes.a(0.0F, 0.0F, 4.0F), fep.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.b(113.27F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.7083F, fes.b(113.27F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.3333F, fes.b(113.27F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.5833F, fes.b(182.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.8333F, fes.b(120.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.0833F, fes.b(182.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.2917F, fes.b(120.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.5F, fes.b(90.0F, 0.0F, 0.0F), fep.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.a(0.0F, -13.98F, -2.37F), fep.b.b),
+            new fer(0.7083F, fes.a(0.0F, -13.98F, -2.37F), fep.b.b),
+            new fer(3.3333F, fes.a(0.0F, -13.98F, -2.37F), fep.b.b),
+            new fer(3.5833F, fes.a(0.0F, -7.0F, -3.0F), fep.b.b),
+            new fer(3.8333F, fes.a(0.0F, -9.0F, -3.0F), fep.b.b),
+            new fer(4.0833F, fes.a(0.0F, -16.71F, -3.69F), fep.b.b),
+            new fer(4.2917F, fes.a(0.0F, -28.0F, -5.0F), fep.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.b(114.98F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.7083F, fes.b(114.98F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.3333F, fes.b(114.98F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.5833F, fes.b(90.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.8333F, fes.b(172.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.0833F, fes.b(90.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.2917F, fes.b(197.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.5F, fes.b(90.0F, 0.0F, 0.0F), fep.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.5F, fes.a(0.0F, -14.01F, -2.35F), fep.b.b),
+            new fer(0.7083F, fes.a(0.0F, -14.01F, -2.35F), fep.b.b),
+            new fer(3.3333F, fes.a(0.0F, -14.01F, -2.35F), fep.b.b),
+            new fer(3.5833F, fes.a(0.0F, -5.0F, -4.0F), fep.b.b),
+            new fer(3.8333F, fes.a(0.0F, -7.0F, -4.0F), fep.b.b),
+            new fer(4.0833F, fes.a(0.0F, -15.5F, -3.76F), fep.b.b),
+            new fer(4.2917F, fes.a(0.0F, -28.0F, -5.0F), fep.b.a)
+         )
+      )
+      .b();
+   public static final feq c = feq.a.a(4.2F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.b(-25.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.6F, fes.b(32.5F, 0.0F, -7.5F), fep.b.b),
+            new fer(1.84F, fes.b(38.33F, 0.0F, 2.99F), fep.b.b),
+            new fer(2.08F, fes.b(40.97F, 0.0F, -4.3F), fep.b.b),
+            new fer(2.36F, fes.b(44.41F, 0.0F, 6.29F), fep.b.b),
+            new fer(3.0F, fes.b(47.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.a(0.0F, -1.0F, 3.0F), fep.b.b),
+            new fer(1.6F, fes.a(0.0F, -3.0F, -6.0F), fep.b.b),
+            new fer(3.0F, fes.a(0.0F, -3.0F, -6.0F), fep.b.b),
+            new fer(4.2F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.b(-32.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.6F, fes.b(-32.5F, 0.0F, -27.5F), fep.b.b),
+            new fer(1.8F, fes.b(-32.5F, 0.0F, 26.0F), fep.b.b),
+            new fer(2.04F, fes.b(-32.5F, 0.0F, -27.5F), fep.b.b),
+            new fer(2.44F, fes.b(-32.5F, 0.0F, 26.0F), fep.b.b),
+            new fer(2.84F, fes.b(-5.0F, 0.0F, -12.5F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.6F, fes.a(0.0F, -2.0F, -6.0F), fep.b.b),
+            new fer(2.2F, fes.a(0.0F, -2.0F, -6.0F), fep.b.b),
+            new fer(2.48F, fes.a(0.0F, -2.0F, -6.0F), fep.b.b),
+            new fer(4.2F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.76F, fes.b(0.0F, 0.0F, -10.85F), fep.b.b),
+            new fer(2.08F, fes.b(0.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(2.4F, fes.b(0.0F, 0.0F, -10.85F), fep.b.b),
+            new fer(2.72F, fes.b(0.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(3.0F, fes.b(0.0F, 0.0F, -10.85F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.76F, fes.b(0.0F, 0.0F, -15.85F), fep.b.b),
+            new fer(2.08F, fes.b(0.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(2.4F, fes.b(0.0F, 0.0F, -15.85F), fep.b.b),
+            new fer(2.72F, fes.b(0.0F, 0.0F, 12.5F), fep.b.b),
+            new fer(3.0F, fes.b(0.0F, 0.0F, -15.85F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.72F, fes.b(-120.0F, 0.0F, -20.0F), fep.b.b),
+            new fer(1.24F, fes.b(-77.5F, 3.75F, 15.0F), fep.b.b),
+            new fer(1.48F, fes.b(67.5F, -32.5F, 20.0F), fep.b.b),
+            new fer(2.48F, fes.b(37.5F, -32.5F, 25.0F), fep.b.b),
+            new fer(2.88F, fes.b(27.6F, -17.1F, 32.5F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.72F, fes.a(3.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(1.48F, fes.a(4.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(2.48F, fes.a(4.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(4.2F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.72F, fes.b(-125.0F, 0.0F, 20.0F), fep.b.b),
+            new fer(1.24F, fes.b(-76.25F, -17.5F, -7.5F), fep.b.b),
+            new fer(1.48F, fes.b(62.5F, 42.5F, -12.5F), fep.b.b),
+            new fer(2.48F, fes.b(37.5F, 27.5F, -27.5F), fep.b.b),
+            new fer(2.88F, fes.b(25.0F, 18.4F, -30.0F), fep.b.b),
+            new fer(4.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.72F, fes.a(-3.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(1.48F, fes.a(-4.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(2.48F, fes.a(-4.0F, -2.0F, 0.0F), fep.b.b),
+            new fer(4.2F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .b();
+   public static final feq d = feq.a.a(4.16F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.56F, fes.b(17.5F, 32.5F, 0.0F), fep.b.b),
+            new fer(0.96F, fes.b(0.0F, 32.5F, 0.0F), fep.b.b),
+            new fer(2.2F, fes.b(10.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.8F, fes.b(10.0F, -30.0F, 0.0F), fep.b.b),
+            new fer(3.32F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.68F, fes.b(0.0F, 40.0F, 0.0F), fep.b.b),
+            new fer(0.96F, fes.b(-22.5F, 40.0F, 0.0F), fep.b.b),
+            new fer(1.24F, fes.b(0.0F, 20.0F, 0.0F), fep.b.b),
+            new fer(1.52F, fes.b(-35.0F, 20.0F, 0.0F), fep.b.b),
+            new fer(1.76F, fes.b(0.0F, 20.0F, 0.0F), fep.b.b),
+            new fer(2.28F, fes.b(0.0F, -20.0F, 0.0F), fep.b.b),
+            new fer(2.88F, fes.b(0.0F, -20.0F, 0.0F), fep.b.b),
+            new fer(3.32F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.96F, fes.b(17.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.76F, fes.b(-15.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.32F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.96F, fes.b(-15.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.2F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.76F, fes.b(17.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.32F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .b();
+   public static final feq e = feq.a.a(0.33333F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.b(-22.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.2083F, fes.b(22.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.3333F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.2083F, fes.a(0.0F, -1.0F, -2.0F), fep.b.b),
+            new fer(0.3333F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.b(22.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.25F, fes.b(-30.17493F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.3333F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.25F, fes.a(0.0F, -2.0F, -2.0F), fep.b.b),
+            new fer(0.3333F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.b(-120.36119F, 40.78947F, -20.94102F), fep.b.b),
+            new fer(0.1667F, fes.b(-90.0F, -45.0F, 0.0F), fep.b.b),
+            new fer(0.3333F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.a(4.0F, 0.0F, 5.0F), fep.b.b),
+            new fer(0.1667F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.3333F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.b(-120.36119F, -40.78947F, 20.94102F), fep.b.b),
+            new fer(0.1667F, fes.b(-61.1632F, 42.85882F, 11.52421F), fep.b.b),
+            new fer(0.3333F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.0417F, fes.a(-4.0F, 0.0F, 5.0F), fep.b.b),
+            new fer(0.1667F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.3333F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .b();
+   public static final feq f = feq.a.a(3.0F)
+      .a(
+         "body",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.0833F, fes.b(47.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.625F, fes.b(55.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.9167F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.0F, fes.b(-32.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.4583F, fes.b(-32.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.7083F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.875F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.0833F, fes.a(0.0F, -3.0F, 0.0F), fep.b.b),
+            new fer(1.625F, fes.a(0.0F, -4.0F, -1.0F), fep.b.b),
+            new fer(1.9167F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.7083F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.875F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_ribcage",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.5417F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.7917F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.875F, fes.b(0.0F, 125.0F, 0.0F), fep.b.b),
+            new fer(2.5F, fes.b(0.0F, 125.0F, 0.0F), fep.b.b),
+            new fer(2.6667F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_ribcage",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.5417F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.7917F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.875F, fes.b(0.0F, -125.0F, 0.0F), fep.b.b),
+            new fer(2.5F, fes.b(0.0F, -125.0F, 0.0F), fep.b.b),
+            new fer(2.6667F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.0F, fes.b(67.5F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.75F, fes.b(80.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.9167F, fes.b(-45.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.5F, fes.b(-45.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.7083F, fes.b(-45.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.875F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.9167F, fes.a(0.0F, 0.0F, -3.0F), fep.b.b),
+            new fer(2.5F, fes.a(0.0F, 0.0F, -3.0F), fep.b.b),
+            new fer(2.7083F, fes.a(0.0F, 0.0F, -3.0F), fep.b.b),
+            new fer(2.875F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.875F, fes.b(-42.28659F, -32.69813F, -5.00825F), fep.b.b),
+            new fer(1.1667F, fes.b(-29.83757F, -35.39626F, -45.28089F), fep.b.b),
+            new fer(1.3333F, fes.b(-29.83757F, -35.39626F, -45.28089F), fep.b.b),
+            new fer(1.6667F, fes.b(-72.28659F, -32.69813F, -5.00825F), fep.b.b),
+            new fer(1.8333F, fes.b(35.26439F, -30.0F, 35.26439F), fep.b.b),
+            new fer(1.9167F, fes.b(73.75484F, -13.0931F, 19.20518F), fep.b.b),
+            new fer(2.5F, fes.b(73.75484F, -13.0931F, 19.20518F), fep.b.b),
+            new fer(2.75F, fes.b(58.20713F, -21.1064F, 28.7261F), fep.b.b),
+            new fer(3.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.8333F, fes.a(3.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.75F, fes.a(3.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.b,
+            new fer(0.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(0.875F, fes.b(-33.80694F, 32.31058F, 6.87997F), fep.b.b),
+            new fer(1.1667F, fes.b(-17.87827F, 34.62115F, 49.02433F), fep.b.b),
+            new fer(1.3333F, fes.b(-17.87827F, 34.62115F, 49.02433F), fep.b.b),
+            new fer(1.6667F, fes.b(-51.30694F, 32.31058F, 6.87997F), fep.b.b),
+            new fer(1.8333F, fes.b(35.26439F, 30.0F, -35.26439F), fep.b.b),
+            new fer(1.9167F, fes.b(73.75484F, 13.0931F, -19.20518F), fep.b.b),
+            new fer(2.5F, fes.b(73.75484F, 13.0931F, -19.20518F), fep.b.b),
+            new fer(2.75F, fes.b(58.20713F, 21.1064F, -28.7261F), fep.b.b),
+            new fer(3.0F, fes.b(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fep(
+            fep.d.a,
+            new fer(0.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(1.8333F, fes.a(-3.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(2.75F, fes.a(-3.0F, 0.0F, 0.0F), fep.b.b),
+            new fer(3.0F, fes.a(0.0F, 0.0F, 0.0F), fep.b.b)
+         )
+      )
+      .b();
 }

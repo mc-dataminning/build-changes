@@ -1,23 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pn extends po<egp> {
-   public pn(lm $$0, CompletableFuture<iy.a> $$1) {
-      super($$0, le.aJ, $$1);
+public abstract class pn extends pm<ctj> {
+   private final CompletableFuture<pr.c<ddy>> d;
+   private final Map<awl<ddy>, awl<ctj>> g = new HashMap<>();
+
+   public pn(ln $$0, CompletableFuture<iz.a> $$1, CompletableFuture<pr.c<ddy>> $$2) {
+      super($$0, lf.G, $$1, $$0x -> $$0x.n().h());
+      this.d = $$2;
+   }
+
+   public pn(ln $$0, CompletableFuture<iz.a> $$1, CompletableFuture<pr.c<ctj>> $$2, CompletableFuture<pr.c<ddy>> $$3) {
+      super($$0, lf.G, $$1, $$2, $$0x -> $$0x.n().h());
+      this.d = $$3;
+   }
+
+   protected void a(awl<ddy> $$0, awl<ctj> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(iy.a $$0) {
-      this.b(awc.p).a(egj.t).a(egj.u).a(egj.v).a(egj.w).a(egj.x);
-      this.b(awc.q).a(egj.b).a(egj.c);
-      this.b(awc.t).a(egj.m).a(egj.n);
-      this.b(awc.r).a(egj.h).a(egj.i);
-      this.b(awc.s).a(egj.z).a(egj.A).a(egj.C).a(egj.E).a(egj.D).a(egj.y).a(egj.B);
-      this.b(awc.n).a(egj.j);
-      this.b(awc.o).a(egj.j);
-      this.b(awc.a).a(egj.k);
-      this.b(awc.b).b(awc.t).b(awc.r);
-      this.b(awc.c).a(egj.d);
-      this.b(awc.d).a(egj.l);
-      this.b(awc.l).a(egj.r);
+   protected CompletableFuture<iz.a> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            awi $$3 = this.c((awl<ctj>)$$2);
+            Optional<awi> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (iz.a)$$0;
+      });
    }
 }

@@ -1,30 +1,38 @@
-public class btj extends btc {
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public btj(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+public interface btj {
+   bti a = ($$0, $$1, $$2) -> true;
+   bti b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.C_().a($$1)) {
+         io $$3 = $$1.c();
+         return $$0.b_($$1).a(awb.a) && !$$0.a_($$3).g($$0, $$3);
+      } else {
+         return false;
       }
-   }
+   };
+   bti c = ($$0, $$1, $$2) -> $$2 != null && $$0.C_().a($$1) ? $$0.b_($$1).a(awb.b) : false;
+   bti d = new bti() {
+      @Override
+      public boolean isSpawnPositionOk(dba $$0, io $$1, @Nullable bsa<?> $$2) {
+         if ($$2 != null && $$0.C_().a($$1)) {
+            io $$3 = $$1.c();
+            io $$4 = $$1.d();
+            drb $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
+      }
 
-   public double d() {
-      return this.b;
-   }
+      private boolean a(dba $$0, io $$1, bsa<?> $$2) {
+         drb $$3 = $$0.a_($$1);
+         return dbi.a($$0, $$1, $$3, $$3.u(), $$2);
+      }
 
-   public double e() {
-      return this.c;
-   }
-
-   @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : axz.a($$0, this.b, this.c);
-   }
+      @Override
+      public io a(dba $$0, io $$1) {
+         io $$2 = $$1.d();
+         return $$0.a_($$2).a(enj.a) ? $$2 : $$1;
+      }
+   };
 }

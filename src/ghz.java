@@ -1,20 +1,27 @@
-public class ghz extends gid<cfw, fsu<cfw>> {
-   private static final akh a = new akh("textures/entity/llama/creamy.png");
-   private static final akh i = new akh("textures/entity/llama/white.png");
-   private static final akh j = new akh("textures/entity/llama/brown.png");
-   private static final akh k = new akh("textures/entity/llama/gray.png");
+public class ghz extends ghs<cmj> {
+   private final gir a;
 
-   public ghz(ggx.a $$0, fuz $$1) {
-      super($$0, new fsu<>($$0.a($$1)), 0.7F);
-      this.a(new glc(this, $$0.f()));
+   public ghz(ght.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public akh a(cfw $$0) {
-      return switch ($$0.gB()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public void a(cmj $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.u()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), ctl.h, $$5, gnm.d, $$3, $$4, $$0.dP(), $$0.al());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akm a(cmj $$0) {
+      return gnu.e;
    }
 }

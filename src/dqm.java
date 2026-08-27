@@ -1,174 +1,124 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
 public class dqm {
-   private final Predicate<dql>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+   static final String a = "server_data";
+   static Codec<dqm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jr.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               cto.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dqm::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<cto> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
 
-   public dqm(Predicate<dql>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
-      }
+   dqm(Set<UUID> $$0, long $$1, List<cto> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
    }
 
-   public int a() {
-      return this.b;
+   dqm() {
    }
 
-   public int b() {
-      return this.c;
+   void a(long $$0) {
+      this.h = $$0;
    }
 
-   public int c() {
-      return this.d;
+   long a() {
+      return this.h;
+   }
+
+   Set<UUID> b() {
+      return this.e;
+   }
+
+   boolean a(clw $$0) {
+      return this.e.contains($$0.cz());
    }
 
    @VisibleForTesting
-   public Predicate<dql>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dqm.b a(dag $$0, in $$1, is $$2, is $$3) {
-      LoadingCache<in, dql> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dqm.b a(in $$0, is $$1, is $$2, LoadingCache<in, dql> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dql)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+   public void b(clw $$0) {
+      this.e.add($$0.cz());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
          }
       }
 
-      return new dqm.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+      this.i();
    }
 
-   @Nullable
-   public dqm.b a(dag $$0, in $$1) {
-      LoadingCache<in, dql> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (in $$4 : in.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (is $$5 : is.values()) {
-            for (is $$6 : is.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dqm.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   long c() {
+      return this.f;
    }
 
-   public static LoadingCache<in, dql> a(dag $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dqm.a($$0, $$1));
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
    }
 
-   protected static in a(in $$0, is $$1, is $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         jr $$6 = new jr($$1.j(), $$1.k(), $$1.l());
-         jr $$7 = new jr($$2.j(), $$2.k(), $$2.l());
-         jr $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
+   List<cto> d() {
+      return this.g;
+   }
+
+   void e() {
+      this.i = 0;
+      this.i();
+   }
+
+   void a(List<cto> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
+   }
+
+   cto f() {
+      return this.g.isEmpty() ? cto.i : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cto.i);
+   }
+
+   cto g() {
+      if (this.g.isEmpty()) {
+         return cto.i;
       } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cto.i);
       }
    }
 
-   static class a extends CacheLoader<in, dql> {
-      private final dag a;
-      private final boolean b;
-
-      public a(dag $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dql a(in $$0) {
-         return new dql(this.a, $$0, this.b);
-      }
+   void a(dqm $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   public static class b {
-      private final in a;
-      private final is b;
-      private final is c;
-      private final LoadingCache<in, dql> d;
-      private final int e;
-      private final int f;
-      private final int g;
+   private void i() {
+      this.c = true;
+   }
 
-      public b(in $$0, is $$1, is $$2, LoadingCache<in, dql> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public in a() {
-         return this.a;
-      }
-
-      public is b() {
-         return this.b;
-      }
-
-      public is c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dql a(int $$0, int $$1, int $$2) {
-         return (dql)this.d.getUnchecked(dqm.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - ayd.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

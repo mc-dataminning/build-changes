@@ -1,101 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class epl extends epw {
-   public static final Codec<epl> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(epl.b.b.fieldOf("source").forGetter($$0x -> $$0x.b), jz.a.listOf().fieldOf("components").forGetter($$0x -> $$0x.c)))
-            .apply($$0, epl::new)
-   );
-   private final epl.b b;
-   private final List<jz<?>> c;
+public class epl {
+   private final ayi a;
+   private final erv b;
+   private final iy.a c;
+   private final Set<akl<?>> d;
 
-   epl(List<erq> $$0, epl.b $$1, List<jz<?>> $$2) {
-      super($$0);
+   public epl(ayi $$0, erv $$1, iy.a $$2) {
+      this($$0, $$1, $$2, Set.of());
+   }
+
+   private epl(ayi $$0, erv $$1, iy.a $$2, Set<akl<?>> $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public epy b() {
-      return epz.G;
+   public epl a(String $$0) {
+      return new epl(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   @Override
-   public Set<eqz<?>> a() {
-      return this.b.a();
+   public epl a(String $$0, akl<?> $$1) {
+      Set<akl<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new epl(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   @Override
-   public csz a(csz $$0, eol $$1) {
-      jw $$2 = this.b.a($$1);
-      $$0.a($$2.a(this.c::contains));
-      return $$0;
+   public boolean a(akl<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public static epl.a a(epl.b $$0) {
-      return new epl.a($$0);
+   public void b(String $$0) {
+      this.a.b($$0);
    }
 
-   public static class a extends epw.a<epl.a> {
-      private final epl.b a;
-      private final Builder<jz<?>> b = ImmutableList.builder();
-
-      a(epl.b $$0) {
-         this.a = $$0;
-      }
-
-      public epl.a a(jz<?> $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected epl.a a() {
-         return this;
-      }
-
-      @Override
-      public epx b() {
-         return new epl(this.g(), this.a, this.b.build());
-      }
+   public void a(epg $$0) {
+      this.b.a(this, $$0);
    }
 
-   public static enum b implements ayt {
-      a("block_entity");
+   public iy.a a() {
+      return this.c;
+   }
 
-      public static final Codec<epl.b> b = ayt.b(epl.b::values);
-      private final String c;
-
-      private b(String $$0) {
-         this.c = $$0;
-      }
-
-      public jw a(eol $$0) {
-         switch (this) {
-            case a:
-               dnm $$1 = $$0.c(erc.h);
-               return $$1 != null ? $$1.s() : jw.a;
-            default:
-               throw new IncompatibleClassChangeError();
-         }
-      }
-
-      public Set<eqz<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(erc.h);
-            default:
-               throw new IncompatibleClassChangeError();
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   public epl a(erv $$0) {
+      return new epl(this.a, $$0, this.c, this.d);
    }
 }

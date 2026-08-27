@@ -1,33 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egw(egw.a b, boa<dbo.c> c) {
-   public static final Codec<egw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egw.a.c.fieldOf("bounding_box").forGetter(egw::a), boa.c(dbo.c.a).fieldOf("spawns").forGetter(egw::b)).apply($$0, egw::new)
+public class egw extends egp {
+   public static final MapCodec<egw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, egw::new)
    );
+   private final int c;
 
-   public egw.a a() {
-      return this.b;
+   private egw(int $$0) {
+      this.c = $$0;
    }
 
-   public boa<dbo.c> b() {
-      return this.c;
+   public static egw a(int $$0) {
+      return new egw($$0);
    }
 
-   public static enum a implements ayt {
-      a("piece"),
-      b("full");
+   @Override
+   protected boolean a(ego $$0, ayk $$1, io $$2) {
+      int $$3 = $$0.a(dwt.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dwt.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
+   }
 
-      public static final Codec<egw.a> c = ayt.a(egw.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public egr<?> b() {
+      return egr.d;
    }
 }

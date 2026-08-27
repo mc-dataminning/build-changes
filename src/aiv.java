@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import io.netty.buffer.ByteBuf;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aiv {
+public class aiv implements ze<air> {
+   public static final aiv a = new aiv();
+   public static final yv<ByteBuf, aiv> b = yv.a(a);
+
+   private aiv() {
+   }
+
+   @Override
+   public zg<aiv> a() {
+      return aip.i;
+   }
+
+   public void a(air $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

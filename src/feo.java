@@ -1,54 +1,77 @@
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface feo {
-   static feo a(fha $$0) {
-      return new feo.a($$0);
+public class feo {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final feo.a f;
+
+   public feo(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, feo.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Nullable
-   static feo a(fgz $$0, @Nullable feo $$1) {
-      return $$1 == null ? null : new feo.b($$0, $$1);
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
    }
 
-   static feo a(fha $$0, fgz... $$1) {
-      feo $$2 = a($$0);
-
-      for (fgz $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
+   public UUID b() {
+      return this.b;
    }
 
-   fha a();
-
-   void a(boolean var1);
-
-   public static record a(fha a) implements feo {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
+   public String c() {
+      return this.a;
    }
 
-   public static record b(fgz a, feo b) implements feo {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
+   public String d() {
+      return this.c;
+   }
 
-         this.b.a($$0);
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public feo.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, feo.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
       }
 
-      public fgz b() {
-         return this.a;
+      @Nullable
+      public static feo.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
       }
 
-      public feo c() {
-         return this.b;
+      public String a() {
+         return this.e;
       }
    }
 }

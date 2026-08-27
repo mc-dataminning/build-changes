@@ -1,30 +1,30 @@
-public class fyk extends fzo {
-   fyk(fvw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzx $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class fyk {
+   public static final fyk a = new fyk(fyj.b, fyl.createDnsSrvRedirectHandler(), fyg.a());
+   private final fyj b;
+   private final fyl c;
+   private final fyg d;
+
+   @VisibleForTesting
+   fyk(fyj $$0, fyl $$1, fyg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
+   public Optional<fyh> a(fyi $$0) {
+      Optional<fyh> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fyi> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   public static class a implements fzf<la> {
-      private final fzx a;
-
-      public a(fzx $$0) {
-         this.a = $$0;
-      }
-
-      public fzc a(la $$0, fvw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

@@ -1,80 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bxc extends bxd {
-   private static final List<csu> c = ImmutableList.of(ctc.pv, ctc.vl);
+public class bxc extends buh<clj> {
+   private Set<ctj> c = ImmutableSet.of();
 
-   @Override
-   protected void a(aqh $$0, cku $$1) {
-      Optional<iv> $$2 = $$1.dQ().c(cbd.c);
-      if (!$$2.isEmpty()) {
-         iv $$3 = $$2.get();
-         dqh $$4 = $$0.a_($$3.b());
-         if ($$4.a(ddg.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   public bxc() {
+      super(ImmutableMap.of(cbs.q, cbt.a, cbs.h, cbt.a));
+   }
+
+   protected boolean a(aqm $$0, clj $$1) {
+      return buj.a($$1.dS(), cbs.q, bsa.bj);
+   }
+
+   protected boolean a(aqm $$0, clj $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqm $$0, clj $$1, long $$2) {
+      clj $$3 = (clj)$$1.dS().c(cbs.q).get();
+      buj.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(aqm $$0, clj $$1, long $$2) {
+      clj $$3 = (clj)$$1.dS().c(cbs.q).get();
+      if (!($$1.g($$3) > 5.0)) {
+         buj.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gH() && ($$1.gA().b() == clm.g || $$3.gI())) {
+            a($$1, clj.cb.keySet(), $$3);
+         }
+
+         if ($$3.gA().b() == clm.g && $$1.y().a_(ctr.pw) > ctr.pw.p() / 2) {
+            a($$1, ImmutableSet.of(ctr.pw), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.y().a(this.c)) {
+            a($$1, this.c, $$3);
          }
       }
    }
 
-   private void a(aqh $$0, cku $$1, iv $$2, dqh $$3) {
-      in $$4 = $$2.b();
-      if ($$3.c(dep.e) == 8) {
-         $$3 = dep.a($$1, $$3, (dad)$$0, $$4);
-      }
+   protected void d(aqm $$0, clj $$1, long $$2) {
+      $$1.dS().b(cbs.q);
+   }
 
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bpv $$8 = $$1.y();
-      int $$9 = $$8.b();
-      dqh $$10 = $$3;
+   private static Set<ctj> a(clj $$0, clj $$1) {
+      ImmutableSet<ctj> $$2 = $$1.gA().b().d();
+      ImmutableSet<ctj> $$3 = $$0.gA().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
 
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         csz $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.f());
-         if ($$13 != -1) {
-            int $$14 = $$12.G();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
+   private static void a(clj $$0, Set<ctj> $$1, bso $$2) {
+      bqd $$3 = $$0.y();
+      cto $$4 = cto.i;
+      int $$5 = 0;
 
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dep.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dep.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
+      while ($$5 < $$3.b()) {
+         cto $$6;
+         ctj $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.e()) {
+               $$7 = $$6.g();
+               if ($$1.contains($$7)) {
+                  if ($$6.I() > $$6.j() / 2) {
+                     $$8 = $$6.I() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.I() > 24) {
+                     $$8 = $$6.I() - 24;
+                     break label28;
                   }
                }
             }
+
+            $$5++;
+            continue;
          }
+
+         $$6.h($$8);
+         $$4 = new cto($$7, $$8);
+         break;
       }
 
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(aqh $$0, dqh $$1, in $$2, dqh $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cku $$0) {
-      bpv $$1 = $$0.y();
-      if ($$1.a_(ctc.px) <= 36) {
-         int $$2 = $$1.a_(ctc.pw);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(ctc.pw, $$6);
-            csz $$7 = $$1.b(new csz(ctc.px, $$5));
-            if (!$$7.d()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
+      if (!$$4.e()) {
+         buj.a($$0, $$4, $$2.dn());
       }
    }
 }

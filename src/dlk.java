@@ -1,73 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dlk extends dfm implements dhv {
-   public static final MapCodec<dlk> c = b(dlk::new);
-   public static final drf<drd> d = dfm.b;
-   protected static final float e = 6.0F;
-   protected static final eui f = dde.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dlk extends ddy {
+   public static final MapCodec<dlk> a = b(dlk::new);
+   protected static final evd b = ddy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dlk> a() {
-      return c;
+      return a;
    }
 
-   public dlk(dqg.d $$0) {
+   public dlk(dra.d $$0) {
       super($$0);
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      return f;
+   protected evd b(drb $$0, dad $$1, io $$2, eup $$3) {
+      return b;
    }
 
    @Override
-   protected boolean b(dqh $$0, czj $$1, in $$2) {
-      return $$0.d($$1, $$2, is.b) && !$$0.a(ddg.kJ);
+   protected evd b_(drb $$0, dad $$1, io $$2) {
+      return eva.b();
    }
 
    @Override
-   public csz a(dag $$0, in $$1, dqh $$2) {
-      return new csz(ddg.bw);
+   protected evd c(drb $$0, dad $$1, io $$2, eup $$3) {
+      return eva.b();
    }
 
-   @Nullable
    @Override
-   public dqh a(cwi $$0) {
-      dqh $$1 = super.a($$0);
-      if ($$1 != null) {
-         ema $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(avw.a) && $$2.e() == 8) {
-            return $$1;
-         }
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      dee.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$1 == it.b && $$2.a(dea.G)) {
+         $$3.a($$4, this, 20);
       }
 
-      return null;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dqh $$0, dag $$1, in $$2) {
-      if ($$0.c(d) == drd.a) {
-         dqh $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == drd.b;
-      } else {
-         ema $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(avw.a) && $$4.e() == 8;
-      }
+   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected ema b_(dqh $$0) {
-      return emb.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable clh $$0, czj $$1, in $$2, dqh $$3, elz $$4) {
+   protected boolean a(drb $$0, enj $$1) {
       return false;
    }
 
    @Override
-   public boolean a(dae $$0, in $$1, dqh $$2, ema $$3) {
-      return false;
+   protected float d(drb $$0, dad $$1, io $$2) {
+      return 0.2F;
    }
 }

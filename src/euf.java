@@ -1,277 +1,386 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public final class euf {
-   public static final double a = 1.0E-7;
-   public static final double b = 1.0E-6;
-   private static final eui d = ac.a(() -> {
-      ety $$0 = new ets(1, 1, 1);
-      $$0.c(0, 0, 0);
-      return new etw($$0);
-   });
-   public static final eui c = a(
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY
-   );
-   private static final eui e = new etr(
-      new ets(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
-   );
+public class euf {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
 
-   public static eui a() {
-      return e;
+   public euf(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public static eui b() {
-      return d;
+   public euf(io $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public static eui a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
-         return b($$0, $$1, $$2, $$3, $$4, $$5);
+   public euf(euk $$0, euk $$1) {
+      this($$0.c, $$0.d, $$0.e, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static euf a(ehb $$0) {
+      return new euf((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   public static euf a(euk $$0) {
+      return new euf($$0.c, $$0.d, $$0.e, $$0.c + 1.0, $$0.d + 1.0, $$0.e + 1.0);
+   }
+
+   public static euf a(io $$0, io $$1) {
+      return new euf(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
+   }
+
+   public euf a(double $$0) {
+      return new euf($$0, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public euf b(double $$0) {
+      return new euf(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public euf c(double $$0) {
+      return new euf(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public euf d(double $$0) {
+      return new euf(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public euf e(double $$0) {
+      return new euf(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public euf f(double $$0) {
+      return new euf(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(it.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public double b(it.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof euf $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
       } else {
-         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
    }
 
-   public static eui b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
-         int $$6 = a($$0, $$3);
-         int $$7 = a($$1, $$4);
-         int $$8 = a($$2, $$5);
-         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
-            return new etr(
-               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
-            );
-         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
-            return b();
-         } else {
-            int $$9 = 1 << $$6;
-            int $$10 = 1 << $$7;
-            int $$11 = 1 << $$8;
-            ets $$12 = ets.a(
-               $$9,
-               $$10,
-               $$11,
-               (int)Math.round($$0 * (double)$$9),
-               (int)Math.round($$1 * (double)$$10),
-               (int)Math.round($$2 * (double)$$11),
-               (int)Math.round($$3 * (double)$$9),
-               (int)Math.round($$4 * (double)$$10),
-               (int)Math.round($$5 * (double)$$11)
-            );
-            return new etw($$12);
-         }
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   }
+
+   public euf a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new euf($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public euf b(euk $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public euf b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new euf($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public euf c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new euf($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public euf g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public euf a(euf $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new euf($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public euf b(euf $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new euf($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public euf d(double $$0, double $$1, double $$2) {
+      return new euf(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public euf a(io $$0) {
+      return new euf(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public euf c(euk $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean c(euf $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(euk $$0, euk $$1) {
+      return this.a(
+         Math.min($$0.c, $$1.c), Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.max($$0.c, $$1.c), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e)
+      );
+   }
+
+   public boolean d(euk $$0) {
+      return this.e($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public euf f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public euf h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<euk> b(euk $$0, euk $$1) {
+      double[] $$2 = new double[]{1.0};
+      double $$3 = $$1.c - $$0.c;
+      double $$4 = $$1.d - $$0.d;
+      double $$5 = $$1.e - $$0.e;
+      it $$6 = a(this, $$0, $$2, null, $$3, $$4, $$5);
+      if ($$6 == null) {
+         return Optional.empty();
       } else {
-         return a();
+         double $$7 = $$2[0];
+         return Optional.of($$0.b($$7 * $$3, $$7 * $$4, $$7 * $$5));
       }
    }
 
-   public static eui a(etk $$0) {
-      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
+   @Nullable
+   public static eug a(Iterable<euf> $$0, euk $$1, euk $$2, io $$3) {
+      double[] $$4 = new double[]{1.0};
+      it $$5 = null;
+      double $$6 = $$2.c - $$1.c;
+      double $$7 = $$2.d - $$1.d;
+      double $$8 = $$2.e - $$1.e;
 
-   @VisibleForTesting
-   protected static int a(double $$0, double $$1) {
-      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
-         for (int $$2 = 0; $$2 <= 3; $$2++) {
-            int $$3 = 1 << $$2;
-            double $$4 = $$0 * (double)$$3;
-            double $$5 = $$1 * (double)$$3;
-            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
-            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
-            if ($$6 && $$7) {
-               return $$2;
-            }
-         }
+      for (euf $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
 
-         return -1;
+      if ($$5 == null) {
+         return null;
       } else {
-         return -1;
+         double $$10 = $$4[0];
+         return new eug($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
       }
    }
 
-   protected static long a(int $$0, int $$1) {
-      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
-   }
-
-   public static eui a(eui $$0, eui $$1) {
-      return a($$0, $$1, ett.o);
-   }
-
-   public static eui a(eui $$0, eui... $$1) {
-      return Arrays.stream($$1).reduce($$0, euf::a);
-   }
-
-   public static eui a(eui $$0, eui $$1, ett $$2) {
-      return b($$0, $$1, $$2).d();
-   }
-
-   public static eui b(eui $$0, eui $$1, ett $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
-      } else if ($$0 == $$1) {
-         return $$2.apply(true, true) ? $$0 : a();
-      } else {
-         boolean $$3 = $$2.apply(true, false);
-         boolean $$4 = $$2.apply(false, true);
-         if ($$0.c()) {
-            return $$4 ? $$1 : a();
-         } else if ($$1.c()) {
-            return $$3 ? $$0 : a();
-         } else {
-            eub $$5 = a(1, $$0.a(is.a.a), $$1.a(is.a.a), $$3, $$4);
-            eub $$6 = a($$5.size() - 1, $$0.a(is.a.b), $$1.a(is.a.b), $$3, $$4);
-            eub $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(is.a.c), $$1.a(is.a.c), $$3, $$4);
-            ets $$8 = ets.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
-            return (eui)($$5 instanceof etx && $$6 instanceof etx && $$7 instanceof etx ? new etw($$8) : new etr($$8, $$5.a(), $$6.a(), $$7.a()));
-         }
+   @Nullable
+   private static it a(euf $$0, euk $$1, double[] $$2, @Nullable it $$3, double $$4, double $$5, double $$6) {
+      if ($$4 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.a, $$0.b, $$0.e, $$0.c, $$0.f, it.e, $$1.c, $$1.d, $$1.e);
+      } else if ($$4 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.d, $$0.b, $$0.e, $$0.c, $$0.f, it.f, $$1.c, $$1.d, $$1.e);
       }
-   }
 
-   public static boolean c(eui $$0, eui $$1, ett $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
-      } else {
-         boolean $$3 = $$0.c();
-         boolean $$4 = $$1.c();
-         if (!$$3 && !$$4) {
-            if ($$0 == $$1) {
-               return $$2.apply(true, true);
-            } else {
-               boolean $$5 = $$2.apply(true, false);
-               boolean $$6 = $$2.apply(false, true);
-
-               for (is.a $$7 : ik.d) {
-                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-
-                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-               }
-
-               eub $$8 = a(1, $$0.a(is.a.a), $$1.a(is.a.a), $$5, $$6);
-               eub $$9 = a($$8.size() - 1, $$0.a(is.a.b), $$1.a(is.a.b), $$5, $$6);
-               eub $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(is.a.c), $$1.a(is.a.c), $$5, $$6);
-               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
-            }
-         } else {
-            return $$2.apply(!$$3, !$$4);
-         }
+      if ($$5 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.b, $$0.c, $$0.f, $$0.a, $$0.d, it.a, $$1.d, $$1.e, $$1.c);
+      } else if ($$5 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.e, $$0.c, $$0.f, $$0.a, $$0.d, it.b, $$1.d, $$1.e, $$1.c);
       }
-   }
 
-   private static boolean a(eub $$0, eub $$1, eub $$2, ety $$3, ety $$4, ett $$5) {
-      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
-   }
-
-   public static double a(is.a $$0, etk $$1, Iterable<eui> $$2, double $$3) {
-      for (eui $$4 : $$2) {
-         if (Math.abs($$3) < 1.0E-7) {
-            return 0.0;
-         }
-
-         $$3 = $$4.a($$0, $$1, $$3);
+      if ($$6 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.c, $$0.a, $$0.d, $$0.b, $$0.e, it.c, $$1.e, $$1.c, $$1.d);
+      } else if ($$6 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.f, $$0.a, $$0.d, $$0.b, $$0.e, it.d, $$1.e, $$1.c, $$1.d);
       }
 
       return $$3;
    }
 
-   public static boolean a(eui $$0, eui $$1, is $$2) {
-      if ($$0 == b() && $$1 == b()) {
-         return true;
-      } else if ($$1.c()) {
-         return false;
+   @Nullable
+   private static it a(
+      double[] $$0,
+      @Nullable it $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      it $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
       } else {
-         is.a $$3 = $$2.o();
-         is.b $$4 = $$2.f();
-         eui $$5 = $$4 == is.b.a ? $$0 : $$1;
-         eui $$6 = $$4 == is.b.a ? $$1 : $$0;
-         ett $$7 = $$4 == is.b.a ? ett.e : ett.c;
-         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
-            && !c(new eug($$5, $$3, $$5.a.c($$3) - 1), new eug($$6, $$3, 0), $$7);
+         return $$1;
       }
    }
 
-   public static eui a(eui $$0, is $$1) {
-      if ($$0 == b()) {
-         return b();
-      } else {
-         is.a $$2 = $$1.o();
-         boolean $$3;
-         int $$4;
-         if ($$1.f() == is.b.a) {
-            $$3 = DoubleMath.fuzzyEquals($$0.c($$2), 1.0, 1.0E-7);
-            $$4 = $$0.a.c($$2) - 1;
-         } else {
-            $$3 = DoubleMath.fuzzyEquals($$0.b($$2), 0.0, 1.0E-7);
-            $$4 = 0;
-         }
-
-         return (eui)(!$$3 ? a() : new eug($$0, $$2, $$4));
-      }
+   public double e(euk $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.c, $$0.c - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.d, $$0.d - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.e, $$0.e - this.f), 0.0);
+      return ayd.f($$1, $$2, $$3);
    }
 
-   public static boolean b(eui $$0, eui $$1, is $$2) {
-      if ($$0 != b() && $$1 != b()) {
-         is.a $$3 = $$2.o();
-         is.b $$4 = $$2.f();
-         eui $$5 = $$4 == is.b.a ? $$0 : $$1;
-         eui $$6 = $$4 == is.b.a ? $$1 : $$0;
-         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
-            $$5 = a();
-         }
-
-         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
-            $$6 = a();
-         }
-
-         return !c(b(), b(new eug($$5, $$3, $$5.a.c($$3) - 1), new eug($$6, $$3, 0), ett.o), ett.e);
-      } else {
-         return true;
-      }
+   @Override
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
    }
 
-   public static boolean b(eui $$0, eui $$1) {
-      if ($$0 == b() || $$1 == b()) {
-         return true;
-      } else {
-         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, ett.o), ett.e);
-      }
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
    }
 
-   @VisibleForTesting
-   protected static eub a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
-      int $$5 = $$1.size() - 1;
-      int $$6 = $$2.size() - 1;
-      if ($$1 instanceof etv && $$2 instanceof etv) {
-         long $$7 = a($$5, $$6);
-         if ((long)$$0 * $$7 <= 256L) {
-            return new etx($$5, $$6);
-         }
-      }
-
-      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
-         return new eud($$1, $$2, false);
-      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
-         return new eud($$2, $$1, true);
-      } else {
-         return (eub)($$5 == $$6 && Objects.equals($$1, $$2) ? new eua($$1) : new euc($$1, $$2, $$3, $$4));
-      }
+   public euk f() {
+      return new euk(ayd.d(0.5, this.a, this.d), ayd.d(0.5, this.b, this.e), ayd.d(0.5, this.c, this.f));
    }
 
-   public interface a {
-      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
+   public static euf a(euk $$0, double $$1, double $$2, double $$3) {
+      return new euf($$0.c - $$1 / 2.0, $$0.d - $$2 / 2.0, $$0.e - $$3 / 2.0, $$0.c + $$1 / 2.0, $$0.d + $$2 / 2.0, $$0.e + $$3 / 2.0);
    }
 }

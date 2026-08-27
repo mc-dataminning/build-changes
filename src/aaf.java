@@ -1,17 +1,51 @@
-public record aaf(dve c, int d) implements aac {
-   public static final ys<wf, aaf> a = ys.a(dve.d, aaf::b, yq.f, aaf::c, aaf::new);
-   public static final aac.b<aaf> b = aac.a("debug/game_event_listeners");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   @Override
-   public aac.b<aaf> a() {
-      return b;
+public interface aaf {
+   aaf.b<? extends aaf> a();
+
+   static <B extends ByteBuf, T extends aaf> yv<B, T> a(yy<B, T> $$0, yw<B, T> $$1) {
+      return yv.a($$0, $$1);
    }
 
-   public dve b() {
-      return this.c;
+   static <T extends aaf> aaf.b<T> a(String $$0) {
+      return new aaf.b<>(new akm($$0));
    }
 
-   public int c() {
-      return this.d;
+   static <B extends vx> yv<B, aaf> a(final aaf.a<B> $$0, List<aaf.c<? super B, ?>> $$1) {
+      final Map<akm, yv<? super B, ? extends aaf>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aaf.c::b));
+      return new yv<B, aaf>() {
+         private yv<? super B, ? extends aaf> a(akm $$0x) {
+            yv<? super B, ? extends aaf> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends aaf> void a(B $$0x, aaf.b<T> $$1, aaf $$2x) {
+            $$0.a($$1.a());
+            yv<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, aaf $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public aaf a(B $$0x) {
+            akm $$1 = $$0.q();
+            return (aaf)this.a($$1).decode($$0);
+         }
+      };
+   }
+
+   public interface a<B extends vx> {
+      yv<B, ? extends aaf> create(akm var1);
+   }
+
+   public static record b<T extends aaf>(akm a) {
+   }
+
+   public static record c<B extends vx, T extends aaf>(aaf.b<T> a, yv<B, T> b) {
    }
 }

@@ -1,117 +1,82 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class dot extends dnm implements dvc.b<dvj.b>, dvj {
-   private static final Logger b = LogUtils.getLogger();
-   private dvj.a c;
-   private final dvj.b d;
-   private final dvj.d e = this.b();
-   private int h;
+public abstract class dot {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   protected dot(dno<?> $$0, in $$1, dqh $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dvj.a();
-      this.d = new dvj.b(this);
-   }
+   protected abstract void a(dax var1, io var2, drb var3);
 
-   public dot(in $$0, dqh $$1) {
-      this(dno.I, $$0, $$1);
-   }
+   protected abstract void b(dax var1, io var2, drb var3);
 
-   public dvj.d b() {
-      return new dot.a(this.az_());
-   }
+   protected abstract void a(dax var1, io var2, drb var3, int var4, int var5);
 
-   @Override
-   public void a(ua $$0, iy.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dvj.a.a.parse(new Dynamic(uo.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
-   }
+   protected abstract boolean a(clw var1);
 
-   @Override
-   protected void b(ua $$0, iy.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      dvj.a.a.encodeStart(uo.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Override
-   public dvj.a gr() {
-      return this.c;
-   }
-
-   @Override
-   public dvj.d gs() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dvj.b f() {
-      return this.d;
-   }
-
-   protected class a implements dvj.d {
-      public static final int b = 8;
-      protected final in c;
-      private final dve a;
-
-      public a(in $$1) {
-         this.c = $$1;
-         this.a = new duw($$1);
+   public void a(clw $$0, dax $$1, io $$2, drb $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dvu.k, $$2);
+         d($$1, $$2, $$3);
       }
 
-      @Override
-      public int a() {
-         return 8;
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gC(), this.c);
+   }
+
+   public void b(clw $$0, dax $$1, io $$2, drb $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dvu.j, $$2);
+         this.c = 0.0;
       }
 
-      @Override
-      public dve b() {
-         return this.a;
+      this.a($$1, $$2, $$3, $$4, this.b);
+   }
+
+   private List<clw> a(dax $$0, io $$1) {
+      double $$2 = this.c + 4.0;
+      euf $$3 = new euf($$1).g($$2);
+      return $$0.a(dvi.a(clw.class), $$3, this::a);
+   }
+
+   public void c(dax $$0, io $$1, drb $$2) {
+      List<clw> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (clw $$4 : $$3) {
+         this.c = Math.max($$4.gC(), this.c);
       }
 
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(aqh $$0, in $$1, iw<dva> $$2, @Nullable dva.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dva.f) && !$$2.a(dva.i) ? djx.n(dot.this.n()) : false;
-      }
-
-      @Override
-      public void a(aqh $$0, in $$1, iw<dva> $$2, @Nullable brh $$3, @Nullable brh $$4, float $$5) {
-         dqh $$6 = dot.this.n();
-         if (djx.n($$6)) {
-            dot.this.a(dvj.a_($$2));
-            int $$7 = dvj.a_($$5, this.a());
-            if ($$6.b() instanceof djx $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dot.this.d());
-            }
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dvu.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dvu.j, $$1);
          }
+
+         this.b = $$5;
       }
 
-      @Override
-      public void e() {
-         dot.this.e();
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
+   }
 
-      @Override
-      public boolean f() {
-         return true;
-      }
+   public int a() {
+      return this.b;
+   }
+
+   private static void d(dax $$0, io $$1, drb $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

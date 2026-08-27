@@ -1,47 +1,18 @@
-import javax.annotation.Nullable;
-
-public class cud extends cqx implements crq {
-   private final avb a;
-
-   public cud(dde $$0, avb $$1, csu.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+public class cud extends crm {
+   public cud(ddy $$0, ctj.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bpm a(cwk $$0) {
-      bpm $$1 = super.a($$0);
-      clh $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bpl $$3 = $$0.p();
-         $$2.a($$3, ctc.qy.v());
-      }
-
-      return $$1;
+   public bpu a(cxb $$0) {
+      return bpu.d;
    }
 
    @Override
-   public String a() {
-      return this.s();
-   }
-
-   @Override
-   protected avb a(dqh $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable clh $$0, dad $$1, in $$2, @Nullable etl $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.d().n(), 3);
-         }
-
-         $$1.a($$0, dva.z, $$2);
-         $$1.a($$0, $$2, this.a, avd.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
+      eug $$3 = a($$0, $$1, dag.b.b);
+      eug $$4 = $$3.a($$3.a().c());
+      bpu $$5 = super.a(new cxb($$1, $$2, $$4));
+      return new bpv<>($$5, $$1.b($$2));
    }
 }

@@ -1,60 +1,60 @@
-public class cyp extends cyg {
-   public final cyp.a b;
-
-   public cyp(cyg.b $$0, cyp.a $$1) {
+public class cyp extends cxm {
+   public cyp(cxk $$0) {
       super($$0);
-      this.b = $$1;
+   }
+
+   public boolean a(cpj $$0, dax $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cto $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if ($$7.a(dea.cf.q()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(dea.cg.q()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(awe.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(ctr.pq) || $$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            }
+         }
+      }
+
+      return $$2 && $$4 && $$3 && $$5;
+   }
+
+   public cto a(cpj $$0, iz.a $$1) {
+      cto $$2 = new cto(ctr.vU, 1);
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cto $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            dma $$5 = dma.a($$4.g());
+            if ($$5 != null) {
+               $$2.b(kb.G, $$5.b());
+               break;
+            }
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public int a(int $$0, bqf $$1) {
-      if ($$1.a(avt.e)) {
-         return 0;
-      } else if (this.b == cyp.a.a) {
-         return $$0;
-      } else if (this.b == cyp.a.b && $$1.a(avt.j)) {
-         return $$0 * 2;
-      } else if (this.b == cyp.a.c && $$1.a(avt.n)) {
-         return $$0 * 3;
-      } else if (this.b == cyp.a.d && $$1.a(avt.m)) {
-         return $$0 * 2;
-      } else {
-         return this.b == cyp.a.e && $$1.a(avt.k) ? $$0 * 2 : 0;
-      }
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
    }
 
    @Override
-   public boolean a(cyg $$0) {
-      if ($$0 instanceof cyp $$1) {
-         return this.b == $$1.b ? false : this.b == cyp.a.c || $$1.b == cyp.a.c;
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   public static int a(bsa $$0, int $$1) {
-      int $$2 = cyh.a(cyj.b, $$0);
-      if ($$2 > 0) {
-         $$1 -= axz.d((float)$$1 * (float)$$2 * 0.15F);
-      }
-
-      return $$1;
-   }
-
-   public static double a(bsa $$0, double $$1) {
-      int $$2 = cyh.a(cyj.d, $$0);
-      if ($$2 > 0) {
-         $$1 *= axz.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
-      }
-
-      return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public cxy<?> ao_() {
+      return cxy.n;
    }
 }

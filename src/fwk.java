@@ -1,169 +1,138 @@
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fwk {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public wu c;
-   public wu d;
-   @Nullable
-   public ajg.b e;
-   public long f;
-   public int g = aa.b().e();
-   public wu h = wu.b(aa.b().c());
-   public List<wu> i = Collections.emptyList();
-   private fwk.a l = fwk.a.c;
-   @Nullable
-   private byte[] m;
-   private fwk.c n;
-   private fwk.b o = fwk.b.a;
+public class fwk implements fxd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cly>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   public fwk(String $$0, String $$1, fwk.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public fwk(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
-   public ua a() {
-      ua $$0 = new ua();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == fwk.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fwk.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+   @Override
+   public CompletableFuture<Optional<cly>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
-   public fwk.a b() {
-      return this.l;
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cly::a).orElse(true) : false;
    }
 
-   public void a(fwk.a $$0) {
-      this.l = $$0;
-   }
+   private CompletableFuture<Optional<cly>> a(Optional<cly> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aX) {
+               this.a(null);
+            }
 
-   public static fwk a(ua $$0) {
-      fwk $$1 = new fwk($$0.l("name"), $$0.l("ip"), fwk.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fwk.a.a);
+            return $$0;
          } else {
-            $$1.a(fwk.a.b);
-         }
-      } else {
-         $$1.a(fwk.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == fwk.c.a;
-   }
-
-   public boolean e() {
-      return this.n == fwk.c.b;
-   }
-
-   public fwk.c f() {
-      return this.n;
-   }
-
-   public void a(fwk $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(fwk $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public fwk.b g() {
-      return this.o;
-   }
-
-   public void a(fwk.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            ayd $$1 = ayd.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+            try {
+               cly $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (axd | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
                return $$0;
             }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
+         }
+      }, ac.i());
+   }
+
+   private Optional<cly> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cly.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
          }
       }
-
-      return null;
    }
 
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final wu d;
-
-      private a(String $$0) {
-         this.d = wu.c("addServer.resourcePack." + $$0);
+   private void a(@Nullable cly $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
       }
 
-      public wu a() {
-         return this.d;
+      if ($$0 != null) {
+         if (aa.aX) {
+            cly.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Nullable
+   private cly a(UserApiService $$0) throws axd, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         clz.a $$2 = a($$1);
+         return new cly(axc.a($$1.keyPair().privateKey()), new clz($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         return null;
+      }
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
+   private static clz.a a(KeyPairResponse $$0) throws axd {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = axc.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new clz.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new axd(var5);
+         }
+      } else {
+         throw new axd(new MissingException("Missing public key"));
+      }
    }
 }

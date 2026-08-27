@@ -1,31 +1,35 @@
-public record aam(in c, String d, int e) implements aac {
-   public static final ys<vu, aam> a = aac.a(aam::a, aam::new);
-   public static final aac.b<aam> b = aac.a("debug/poi_added");
+public record aam(aam.a c) implements aaf {
+   public static final yv<vx, aam> a = aaf.a(aam::a, aam::new);
+   public static final aaf.b<aam> b = aaf.a("debug/hive");
 
-   private aam(vu $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aam(vx $$0) {
+      this(new aam.a($$0));
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   private void a(vx $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aac.b<aam> a() {
+   public aaf.b<aam> a() {
       return b;
    }
 
-   public in b() {
+   public aam.a b() {
       return this.c;
    }
 
-   public String c() {
-      return this.d;
-   }
+   public static record a(io a, String b, int c, int d, boolean e) {
+      public a(vx $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public int d() {
-      return this.e;
+      public void a(vx $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

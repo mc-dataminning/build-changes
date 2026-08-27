@@ -1,41 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 public class fwc {
-   private final atc a = atf.c();
-   private final Map<asy, String> b;
+   private final fwe a;
+   private final fwd b;
 
-   public fwc() {
-      this.a.a();
-      Builder<asy, String> $$0 = ImmutableMap.builder();
-      this.a.c().forEach($$1 -> {
-         asc $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   private fwc(fwe $$0, fwd $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public List<asy> a(List<asy> $$0) {
-      List<asy> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (asy $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
-      }
-
-      this.a.a($$2);
-      return $$1;
+   public fvw a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public ath a() {
-      List<asd> $$0 = this.a.g();
-      return new atk(asf.b, $$0);
+   public static fwc a(fwe $$0, int $$1, int $$2) {
+      return new fwc($$0, new fwd($$1, $$2));
    }
 }

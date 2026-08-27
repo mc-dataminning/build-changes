@@ -1,135 +1,78 @@
-import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Collection;
 
 public class amm {
-   private static final int a = 256;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.forceload.toobig", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.forceload.query.failure", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("commands.forceload.removed.failure"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wx.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wx.c("commands.enchant.failed"));
 
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("forceload").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ee.a("add")
-                        .then(
-                           ((RequiredArgumentBuilder)ee.a("from", ga.a())
-                                 .executes($$0x -> a((ed)$$0x.getSource(), ga.a($$0x, "from"), ga.a($$0x, "from"), true)))
-                              .then(ee.a("to", ga.a()).executes($$0x -> a((ed)$$0x.getSource(), ga.a($$0x, "from"), ga.a($$0x, "to"), true)))
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ee.a("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)ee.a("from", ga.a())
-                                 .executes($$0x -> a((ed)$$0x.getSource(), ga.a($$0x, "from"), ga.a($$0x, "from"), false)))
-                              .then(ee.a("to", ga.a()).executes($$0x -> a((ed)$$0x.getSource(), ga.a($$0x, "from"), ga.a($$0x, "to"), false)))
-                        ))
-                     .then(ee.a("all").executes($$0x -> b((ed)$$0x.getSource())))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("enchant").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)ee.a("query").executes($$0x -> a((ed)$$0x.getSource())))
-                  .then(ee.a("pos", ga.a()).executes($$0x -> a((ed)$$0x.getSource(), ga.a($$0x, "pos"))))
+               ef.a("targets", er.b())
+                  .then(
+                     ((RequiredArgumentBuilder)ef.a("enchantment", fd.a($$1, lf.u))
+                           .executes($$0x -> a((ee)$$0x.getSource(), er.b($$0x, "targets"), fd.g($$0x, "enchantment"), 1)))
+                        .then(
+                           ef.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (ee)$$0x.getSource(), er.b($$0x, "targets"), fd.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ed $$0, apx $$1) throws CommandSyntaxException {
-      czk $$2 = $$1.a();
-      aqh $$3 = $$0.e();
-      akg<dad> $$4 = $$3.ae();
-      boolean $$5 = $$3.w().contains($$2.a());
-      if ($$5) {
-         $$0.a(() -> wu.a("commands.forceload.query.success", wu.a($$2), wu.a($$4.a())), false);
-         return 1;
+   private static int a(ee $$0, Collection<? extends bru> $$1, ix<cyz> $$2, int $$3) throws CommandSyntaxException {
+      cyz $$4 = $$2.a();
+      if ($$3 > $$4.g()) {
+         throw d.create($$3, $$4.g());
       } else {
-         throw c.create($$2, $$4.a());
-      }
-   }
+         int $$5 = 0;
 
-   private static int a(ed $$0) {
-      aqh $$1 = $$0.e();
-      akg<dad> $$2 = $$1.ae();
-      LongSet $$3 = $$1.w();
-      int $$4 = $$3.size();
-      if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(czk::new).map(czk::toString).iterator());
-         if ($$4 == 1) {
-            $$0.a(() -> wu.a("commands.forceload.list.single", wu.a($$2.a()), $$5), false);
-         } else {
-            $$0.a(() -> wu.a("commands.forceload.list.multiple", $$4, wu.a($$2.a()), $$5), false);
-         }
-      } else {
-         $$0.b(wu.a("commands.forceload.added.none", wu.a($$2.a())));
-      }
-
-      return $$4;
-   }
-
-   private static int b(ed $$0) {
-      aqh $$1 = $$0.e();
-      akg<dad> $$2 = $$1.ae();
-      LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(czk.a($$1x), czk.b($$1x), false));
-      $$0.a(() -> wu.a("commands.forceload.removed.all", wu.a($$2.a())), true);
-      return 0;
-   }
-
-   private static int a(ed $$0, apx $$1, apx $$2, boolean $$3) throws CommandSyntaxException {
-      int $$4 = Math.min($$1.c(), $$2.c());
-      int $$5 = Math.min($$1.d(), $$2.d());
-      int $$6 = Math.max($$1.c(), $$2.c());
-      int $$7 = Math.max($$1.d(), $$2.d());
-      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
-         int $$8 = jp.a($$4);
-         int $$9 = jp.a($$5);
-         int $$10 = jp.a($$6);
-         int $$11 = jp.a($$7);
-         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
-         if ($$12 > 256L) {
-            throw b.create(256, $$12);
-         } else {
-            aqh $$13 = $$0.e();
-            akg<dad> $$14 = $$13.ae();
-            czk $$15 = null;
-            int $$16 = 0;
-
-            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
-               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
-                  boolean $$19 = $$13.a($$17, $$18, $$3);
-                  if ($$19) {
-                     $$16++;
-                     if ($$15 == null) {
-                        $$15 = new czk($$17, $$18);
-                     }
+         for (bru $$6 : $$1) {
+            if ($$6 instanceof bso) {
+               bso $$7 = (bso)$$6;
+               cto $$8 = $$7.eX();
+               if (!$$8.e()) {
+                  if ($$4.b($$8) && cza.a(cza.b($$8).a(), $$4)) {
+                     $$8.a($$4, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.g().o($$8).getString());
                   }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.af().getString());
                }
-            }
-
-            czk $$20 = $$15;
-            if ($$16 == 0) {
-               throw ($$3 ? d : e).create();
-            } else {
-               if ($$16 == 1) {
-                  $$0.a(() -> wu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wu.a($$20), wu.a($$14.a())), true);
-               } else {
-                  czk $$21 = new czk($$8, $$9);
-                  czk $$22 = new czk($$10, $$11);
-                  $$0.a(() -> wu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", wu.a($$20), wu.a($$14.a()), wu.a($$21), wu.a($$22)), true);
-               }
-
-               return $$16;
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.af().getString());
             }
          }
-      } else {
-         throw fz.b.create();
+
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wx.a("commands.enchant.success.single", $$4.e($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wx.a("commands.enchant.success.multiple", $$4.e($$3), $$1.size()), true);
+            }
+
+            return $$5;
+         }
       }
    }
 }

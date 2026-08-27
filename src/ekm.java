@@ -1,15 +1,20 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ekm {
-   @Nullable
-   public ekp.c a(dag $$0, in $$1, in $$2, ekp.c $$3, ekp.c $$4, ekl $$5) {
-      return $$4;
+public class ekm extends eld {
+   public static final MapCodec<ekm> a = le.e.q().fieldOf("block").xmap(ekm::new, $$0 -> $$0.b);
+   private final ddy b;
+
+   public ekm(ddy $$0) {
+      this.b = $$0;
    }
 
-   protected abstract eko<?> a();
+   @Override
+   public boolean a(drb $$0, ayk $$1) {
+      return $$0.a(this.b);
+   }
 
-   public List<ekp.c> a(das $$0, in $$1, in $$2, List<ekp.c> $$3, List<ekp.c> $$4, ekl $$5) {
-      return $$4;
+   @Override
+   protected ele<?> a() {
+      return ele.b;
    }
 }

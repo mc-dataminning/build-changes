@@ -1,19 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public record dnc(akh e, String f) {
-   public static final Codec<dnc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akh.a.fieldOf("asset_id").forGetter(dnc::a), Codec.STRING.fieldOf("translation_key").forGetter(dnc::b)).apply($$0, dnc::new)
-   );
-   public static final ys<wf, dnc> b = ys.a(akh.b, dnc::a, yq.k, dnc::b, dnc::new);
-   public static final Codec<iw<dnc>> c = akd.a(le.d, a);
-   public static final ys<wf, iw<dnc>> d = yq.a(le.d, b);
+public class dnc extends dmk implements dkz {
+   public static final MapCodec<dnc> a = b(dnc::new);
+   public static final drs c = drr.C;
 
-   public akh a() {
-      return this.e;
+   @Override
+   protected MapCodec<? extends dnc> a() {
+      return a;
    }
 
-   public String b() {
-      return this.f;
+   protected dnc(dra.d $$0) {
+      super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(emv.c)));
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected emu b_(drb $$0) {
+      return $$0.c(c) ? emv.c.a(true) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(c);
    }
 }

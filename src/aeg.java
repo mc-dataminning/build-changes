@@ -1,45 +1,33 @@
-public class aeg implements zb<abm> {
-   public static final ys<vu, aeg> a = zb.a(aeg::a, aeg::new);
-   private final double b;
-   private final double c;
-   private final long d;
+import javax.annotation.Nullable;
 
-   public aeg(dry $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+public class aeg implements ze<abq> {
+   public static final yv<vx, aeg> a = ze.a(aeg::a, aeg::new);
+   @Nullable
+   private final akm b;
+
+   public aeg(@Nullable akm $$0) {
+      this.b = $$0;
    }
 
-   private aeg(vu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
+   private aeg(vx $$0) {
+      this.b = $$0.c(vx::q);
    }
 
-   private void a(vu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vx $$0) {
+      $$0.a(this.b, vx::a);
    }
 
    @Override
-   public zd<aeg> a() {
-      return afx.as;
+   public zg<aeg> a() {
+      return agb.ao;
    }
 
-   public void a(abm $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   @Nullable
+   public akm b() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

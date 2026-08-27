@@ -1,16 +1,29 @@
-public record ack(csu b, int c) implements zb<abm> {
-   public static final ys<wf, ack> a = ys.a(yq.a(le.G), ack::b, yq.f, ack::e, ack::new);
+public class ack implements ze<abq> {
+   public static final yv<vx, ack> a = ze.a(ack::a, ack::new);
+   private final int b;
 
-   @Override
-   public zd<ack> a() {
-      return afx.x;
+   public ack(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(abm $$0) {
+   private ack(vx $$0) {
+      this.b = $$0.readUnsignedByte();
+   }
+
+   private void a(vx $$0) {
+      $$0.k(this.b);
+   }
+
+   @Override
+   public zg<ack> a() {
+      return agb.t;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

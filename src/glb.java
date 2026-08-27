@@ -1,39 +1,24 @@
-public class glb<T extends bsa, M extends fsb<T> & fra> extends gli<T, M> {
-   private final gbk a;
+public class glb<T extends bso, M extends fub<T>> extends gmo<T, M> {
+   private final ghr a;
 
-   public glb(gis<T, M> $$0, gbk $$1) {
-      super($$0);
-      this.a = $$1;
+   public glb(ght.a $$0, giu<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(exx $$0, gbo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fs() == bru.b;
-      csz $$11 = $$10 ? $$3.eW() : $$3.eV();
-      csz $$12 = $$10 ? $$3.eV() : $$3.eW();
-      if (!$$11.d() || !$$12.d()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, csw.c, bru.b, $$0, $$1, $$2);
-         this.a($$3, $$11, csw.b, bru.a, $$0, $$1, $$2);
-         $$0.b();
-      }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eT();
    }
 
-   protected void a(bsa $$0, csz $$1, csw $$2, bru $$3, exx $$4, gbo $$5, int $$6) {
-      if (!$$1.d()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bru.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
-      }
+   @Override
+   protected void a(eys $$0, gck $$1, int $$2, bru $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ayd.c($$4 * $$4 + $$6 * $$6);
+      cme $$9 = new cme($$3.dP(), $$3.du(), $$3.dw(), $$3.dA(), cto.i);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.O = $$9.dF();
+      $$9.P = $$9.dH();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

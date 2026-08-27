@@ -1,57 +1,51 @@
-import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum bsd implements ayt {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public interface bsd {
+   void a(bsb var1, cto var2);
 
-   public static final Codec<bsd> i = ayt.a(bsd::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
+   cto a(bsb var1);
 
-   private bsd(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   void a(bsb var1, float var2);
+
+   default void a(akm $$0, epi $$1) {
+      this.a($$0, $$1, 0L);
    }
 
-   public String a() {
-      return this.m;
+   default void a(akm $$0, epi $$1, long $$2) {
+      akl<epk> $$3 = akl.a(lf.aU, $$0);
+      if (!$$3.equals(epd.a)) {
+         epk $$4 = $$1.a().o().be().b($$3);
+         if ($$4 != epk.a) {
+            List<cto> $$5 = $$4.a($$1, $$2);
+            List<bsb> $$6 = new ArrayList<>();
+
+            for (cto $$7 : $$5) {
+               bsb $$8 = this.a($$7, $$6);
+               if ($$8 != null) {
+                  cto $$9 = $$8.f() ? $$7.c(1) : $$7;
+                  this.a($$8, $$9);
+                  this.a($$8, 0.085F);
+                  $$6.add($$8);
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.m;
-   }
+   @Nullable
+   default bsb a(cto $$0, List<bsb> $$1) {
+      csq $$2 = csq.c_($$0);
+      if ($$2 != null) {
+         bsb $$3 = $$2.l();
+         if (!$$1.contains($$3)) {
+            return $$3;
+         }
+      } else if (!$$1.contains(bsb.a)) {
+         return bsb.a;
+      }
 
-   public int b() {
-      return this.j;
-   }
-
-   public boolean d() {
-      return this.k;
-   }
-
-   public boolean e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.o;
-   }
-
-   public int g() {
-      return 32;
+      return null;
    }
 }

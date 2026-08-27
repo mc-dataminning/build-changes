@@ -1,38 +1,34 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fcv extends fcz {
+   private static final wx b = wx.c("mco.connect.connecting");
+   private final gtv c;
+   private final ezz d;
+   private final faa e;
 
-public class fcv {
-   private final fvx a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ua> c;
-
-   public fcv(fvx $$0) {
-      this.a = $$0;
+   public fcv(fly $$0, ezz $$1, faa $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gtv($$0);
    }
 
-   public boolean a(int $$0, @Nullable ua $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public void run() {
+      this.c.a(this.d, fyi.a(this.e.a));
    }
 
-   private int a(Consumer<ua> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      fdz.Q().ae().i();
    }
 
-   public void a(int $$0, Consumer<ua> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ags($$2, $$0));
+   @Override
+   public void c() {
+      this.c.b();
    }
 
-   public void a(in $$0, Consumer<ua> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agc($$2, $$0));
+   @Override
+   public wx a() {
+      return b;
    }
 }

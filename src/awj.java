@@ -1,77 +1,109 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class awj {
-   public static Map<akg<? extends jj<?>>, awj.a> a(jd<akq> $$0) {
-      return jn.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((awj.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private static final Codec<awj> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axm.p.fieldOf("id").forGetter(awj::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, awj::new)
+   );
+   public static final Codec<awj> a = Codec.either(axm.p, b)
+      .xmap($$0 -> (awj)$$0.map($$0x -> new awj($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final akm c;
+   private final boolean d;
+   private final boolean e;
+
+   private awj(akm $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static <T> awj.a a(jj<T> $$0) {
-      Map<akh, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         ja<T> $$3 = (ja<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
+   private awj(axm.c $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
+   }
 
-         for (iw<T> $$5 : $$3) {
-            if ($$5.f() != iw.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
+   private axm.c a() {
+      return new axm.c(this.c, this.d);
+   }
 
-            $$4.add($$0.a($$5.a()));
+   public static awj a(akm $$0) {
+      return new awj($$0, false, true);
+   }
+
+   public static awj b(akm $$0) {
+      return new awj($$0, false, false);
+   }
+
+   public static awj c(akm $$0) {
+      return new awj($$0, true, true);
+   }
+
+   public static awj d(akm $$0) {
+      return new awj($$0, true, false);
+   }
+
+   public <T> boolean a(awj.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.b(this.c);
+         if ($$2 == null) {
+            return !this.e;
          }
 
-         $$1.put(((awg)$$2.getFirst()).b(), $$4);
-      });
-      return new awj.a($$1);
-   }
-
-   static <T> void a(akg<? extends jj<T>> $$0, jj<T> $$1, awj.a $$2, awj.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         awg<T> $$5 = awg.a($$0, $$3x);
-         List<iw<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<akh, IntList> a;
-
-      a(Map<akh, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(vu $$0) {
-         $$0.a(this.a, vu::a, vu::a);
-      }
-
-      public static awj.a b(vu $$0) {
-         return new awj.a($$0.a(vu::q, vu::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(jj<T> $$0) {
-         if (this.a() != 0) {
-            Map<awg<T>, List<iw<T>>> $$1 = new HashMap<>(this.a());
-            awj.a($$0.c(), $$0, this, $$1::put);
-            $$0.a($$1);
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c);
+         if ($$3 == null) {
+            return !this.e;
          }
+
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<akm> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(awg<T> var1, List<iw<T>> var2);
+   public void b(Consumer<akm> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public boolean a(Predicate<akm> $$0, Predicate<akm> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(akm var1);
+
+      @Nullable
+      Collection<T> b(akm var1);
    }
 }

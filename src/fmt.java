@@ -1,108 +1,214 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Optional;
 
-public abstract class fmt<T extends cod> extends fmb<T> {
-   private static final akh D = new akh("container/inventory/effect_background_large");
-   private static final akh E = new akh("container/inventory/effect_background_small");
+public class fmt extends fly {
+   static final akm a = new akm("gamemode_switcher/slot");
+   static final akm b = new akm("gamemode_switcher/selection");
+   private static final akm c = new akm("textures/gui/container/gamemode_switcher.png");
+   private static final int d = 128;
+   private static final int r = 128;
+   private static final int s = 26;
+   private static final int u = 5;
+   private static final int v = 31;
+   private static final int w = 5;
+   private static final int x = fmt.a.values().length * 31 - 5;
+   private static final wx y = wx.a("debug.gamemodes.select_next", wx.c("debug.gamemodes.press_f4").a(n.l));
+   private final fmt.a z;
+   private fmt.a A;
+   private int B;
+   private int C;
+   private boolean D;
+   private final List<fmt.b> E = Lists.newArrayList();
 
-   public fmt(T $$0, clg $$1, wu $$2) {
-      super($$0, $$1, $$2);
+   public fmt() {
+      super(fdr.a);
+      this.z = fmt.a.a(this.m());
+      this.A = this.z;
+   }
+
+   private dau m() {
+      fxa $$0 = fdz.Q().q;
+      dau $$1 = $$0.i();
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         return $$0.j() == dau.b ? dau.a : dau.b;
+      }
    }
 
    @Override
-   public void a(fer $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+   protected void aM_() {
+      super.aM_();
+      this.A = this.z;
+
+      for (int $$0 = 0; $$0 < fmt.a.e.length; $$0++) {
+         fmt.a $$1 = fmt.a.e[$$0];
+         this.E.add(new fmt.b($$1, this.n / 2 - x / 2 + $$0 * 31, this.o / 2 - 31));
+      }
    }
 
-   public boolean I() {
-      int $$0 = this.z + this.c + 2;
-      int $$1 = this.n - $$0;
-      return $$1 >= 32;
-   }
-
-   private void c(fer $$0, int $$1, int $$2) {
-      int $$3 = this.z + this.c + 2;
-      int $$4 = this.n - $$3;
-      Collection<bqt> $$5 = this.m.s.ev();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
+   @Override
+   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+      if (!this.D()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.n / 2 - 62;
+         int $$5 = this.o / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
+         super.a($$0, $$1, $$2, $$3);
+         $$0.a(this.p, this.A.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
+         $$0.a(this.p, y, this.n / 2, this.o / 2 + 5, 16777215);
+         if (!this.D) {
+            this.B = $$1;
+            this.C = $$2;
+            this.D = true;
          }
 
-         Iterable<bqt> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.A;
-            bqt $$10 = null;
+         boolean $$6 = this.B == $$1 && this.C == $$2;
 
-            for (bqt $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<wu> $$12 = List.of(this.a($$10), bqu.a($$10, 1.0F, this.m.r.s().f()));
-               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+         for (fmt.b $$7 : this.E) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.A == $$7.b);
+            if (!$$6 && $$7.A()) {
+               this.A = $$7.b;
             }
          }
       }
    }
 
-   private void a(fer $$0, int $$1, int $$2, Iterable<bqt> $$3, boolean $$4) {
-      int $$5 = this.A;
+   @Override
+   public void b(ffm $$0, int $$1, int $$2, float $$3) {
+   }
 
-      for (bqt $$6 : $$3) {
-         if ($$4) {
-            $$0.a(D, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(E, $$1, $$5, 32, 32);
+   private void C() {
+      a(this.m, this.A);
+   }
+
+   private static void a(fdz $$0, fmt.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         fmt.a $$2 = fmt.a.a($$0.q.j());
+         if ($$0.s.m(2) && $$1 != $$2) {
+            $$0.s.h.d($$1.b());
          }
-
-         $$5 += $$2;
       }
    }
 
-   private void b(fer $$0, int $$1, int $$2, Iterable<bqt> $$3, boolean $$4) {
-      gnw $$5 = this.m.aG();
-      int $$6 = this.A;
-
-      for (bqt $$7 : $$3) {
-         iw<bqr> $$8 = $$7.c();
-         gmy $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
+   private boolean D() {
+      if (!exn.a(this.m.aP().i(), 292)) {
+         this.C();
+         this.m.a(null);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void a(fer $$0, int $$1, int $$2, Iterable<bqt> $$3) {
-      int $$4 = this.A;
-
-      for (bqt $$5 : $$3) {
-         wu $$6 = this.a($$5);
-         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         wu $$7 = bqu.a($$5, 1.0F, this.m.r.s().f());
-         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 293) {
+         this.D = false;
+         this.A = this.A.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private wu a(bqt $$0) {
-      xi $$1 = $$0.c().a().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(wt.v).b(wu.c("enchantment.level." + ($$0.e() + 1)));
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   static enum a {
+      a(wx.c("gameMode.creative"), "gamemode creative", new cto(dea.i)),
+      b(wx.c("gameMode.survival"), "gamemode survival", new cto(ctr.pa)),
+      c(wx.c("gameMode.adventure"), "gamemode adventure", new cto(ctr.uj)),
+      d(wx.c("gameMode.spectator"), "gamemode spectator", new cto(ctr.ss));
+
+      protected static final fmt.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final wx g;
+      final String h;
+      final cto i;
+
+      private a(wx $$0, String $$1, cto $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      return $$1;
+      void a(ffm $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      wx a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      fmt.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static fmt.a a(dau $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
+   }
+
+   public class b extends ffx {
+      final fmt.a b;
+      private boolean c;
+
+      public b(fmt.a $$1, int $$2, int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.b = $$1;
+      }
+
+      @Override
+      public void b(ffm $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.b.a($$0, this.C() + 5, this.D() + 5);
+         if (this.c) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(fjv $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean A() {
+         return super.A() || this.c;
+      }
+
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      private void a(ffm $$0) {
+         $$0.a(fmt.a, this.C(), this.D(), 26, 26);
+      }
+
+      private void b(ffm $$0) {
+         $$0.a(fmt.b, this.C(), this.D(), 26, 26);
+      }
    }
 }

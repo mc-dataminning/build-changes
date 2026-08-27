@@ -1,50 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dev extends dco {
-   public static final MapCodec<dev> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(det.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dev::new));
-   private final dde e;
-   protected static final float b = 6.0F;
-   protected static final eui c = dde.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class dev extends dhn implements deb, deu {
+   public static final MapCodec<dev> c = b(dev::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dev> a() {
-      return a;
-   }
-
-   protected dev(dde $$0, dqg.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dqh $$0, dad $$1, in $$2, dqh $$3, boolean $$4) {
-      this.a($$0, (dae)$$1, $$2);
-   }
-
-   @Override
-   protected void a(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.n().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      if ($$1 == is.a && !$$0.a($$3, $$4)) {
-         return ddg.a.n();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, emb.c, emb.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
       return c;
+   }
+
+   public dev(dra.d $$0) {
+      super($$0, it.a, q_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected int a(ayk $$0) {
+      return 1;
+   }
+
+   @Override
+   protected boolean g(drb $$0) {
+      return $$0.i();
+   }
+
+   @Override
+   protected ddy b() {
+      return dea.sw;
+   }
+
+   @Override
+   protected drb a(drb $$0, drb $$1) {
+      return $$1.a(r_, $$0.c(r_));
+   }
+
+   @Override
+   protected drb a(drb $$0, ayk $$1) {
+      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cto a(dba $$0, io $$1, drb $$2) {
+      return new cto(ctr.ws);
+   }
+
+   @Override
+   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
+      return deu.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(drc.a<ddy, drb> $$0) {
+      super.a($$0);
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(dba $$0, io $$1, drb $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

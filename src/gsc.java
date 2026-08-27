@@ -1,110 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gsc {
-   final Map<gsb<?>, Object> a;
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   gsc(Map<gsb<?>, Object> $$0) {
-      this.a = $$0;
-   }
+   public static class a extends Thread {
+      private final gsc.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public static gsc.a a() {
-      return new gsc.a();
-   }
+      public a(gsc.b $$0) throws IOException {
+         super("LanServerDetector #" + gsc.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(gsc.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
 
-   public static Codec<gsc> a(final List<gsb<?>> $$0) {
-      return (new MapCodec<gsc>() {
-         public <T> RecordBuilder<T> a(gsc $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-            for (gsb<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               gsc.b.error("Couldn't ping server", var6);
+               break;
             }
 
-            return $$3;
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            gsc.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
          }
 
-         private <T, V> RecordBuilder<T> a(gsc $$0x, RecordBuilder<T> $$1, gsb<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
          }
 
-         public <T> DataResult<gsc> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<gsc.a> $$2 = DataResult.success(new gsc.a());
+         this.c.close();
+      }
+   }
 
-            for (gsb<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
+   public static class b {
+      private final List<gsb> a = Lists.newArrayList();
+      private boolean b;
+
+      @Nullable
+      public synchronized List<gsb> a() {
+         if (this.b) {
+            List<gsb> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
+
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = gsd.a($$0);
+         String $$3 = gsd.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (gsb $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
             }
 
-            return $$2.map(gsc.a::a);
-         }
-
-         private <T, V> DataResult<gsc.a> a(DataResult<gsc.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gsb<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
+            if (!$$4) {
+               this.a.add(new gsb($$2, $$3));
+               this.b = true;
             }
          }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(gsb::b).map($$0::createString);
-         }
-      }).codec();
-   }
-
-   @Nullable
-   public <T> T a(gsb<T> $$0) {
-      return (T)this.a.get($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<gsb<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<gsb<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> gsc.a a(gsb<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> gsc.a b(gsb<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public gsc.a a(gsc $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public gsc a() {
-         return new gsc(this.a);
       }
    }
 }

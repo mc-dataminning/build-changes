@@ -1,115 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
 
-public class dii extends dde {
-   public static final MapCodec<dii> a = b(dii::new);
-   public static final drf<is.a> b = dqx.H;
-   protected static final int c = 2;
-   protected static final eui d = dde.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final eui e = dde.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class dii extends ddy implements dkz {
+   public static final MapCodec<dii> b = b(dii::new);
+   public static final int c = 7;
+   public static final dsb d = drr.aC;
+   public static final drs e = drr.v;
+   public static final drs f = drr.C;
+   private static final int a = 1;
 
    @Override
-   public MapCodec<dii> a() {
-      return a;
+   public MapCodec<? extends dii> a() {
+      return b;
    }
 
-   public dii(dqg.d $$0) {
+   public dii(dra.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, is.a.a));
+      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eui a(dqh $$0, czj $$1, in $$2, etu $$3) {
-      switch ((is.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
+   protected evd b_(drb $$0, dad $$1, io $$2) {
+      return eva.a();
+   }
+
+   @Override
+   protected boolean d_(drb $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
+   }
+
+   @Override
+   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      if (this.m($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean m(drb $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
+   }
+
+   @Override
+   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int g(drb $$0, dad $$1, io $$2) {
+      return 1;
+   }
+
+   @Override
+   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, emv.c, emv.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(d) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static drb a(drb $$0, day $$1, io $$2) {
+      int $$3 = 7;
+      io.a $$4 = new io.a();
+
+      for (it $$5 : it.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(d, Integer.valueOf($$3));
+   }
+
+   private static int o(drb $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(drb $$0) {
+      if ($$0.a(avw.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
       }
    }
 
    @Override
-   protected void b(dqh $$0, aqh $$1, in $$2, ayg $$3) {
-      if ($$1.D_().j() && $$1.aa().b(czz.e) && $$3.a(2000) < $$1.ak().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
+   protected emu b_(drb $$0) {
+      return $$0.c(f) ? emv.c.a(false) : super.b_($$0);
+   }
 
-         if ($$1.a_($$2).a($$1, $$2, brn.bw)) {
-            brh $$4 = brn.bw.a($$1, $$2.c(), bse.d);
-            if ($$4 != null) {
-               $$4.au();
+   @Override
+   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
+      if ($$1.r($$2.c())) {
+         if ($$3.a(15) == 1) {
+            io $$4 = $$2.d();
+            drb $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, it.b)) {
+               ayg.a($$1, $$2, $$3, ky.l);
             }
          }
       }
    }
 
    @Override
-   protected dqh a(dqh $$0, is $$1, dqh $$2, dae $$3, in $$4, in $$5) {
-      is.a $$6 = $$1.o();
-      is.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new ena($$3, $$4, $$7).c() ? ddg.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(drc.a<ddy, drb> $$0) {
+      $$0.a(d, e, f);
    }
 
    @Override
-   protected void a(dqh $$0, dad $$1, in $$2, brh $$3) {
-      if ($$3.cu()) {
-         $$3.f($$2);
-      }
-   }
-
-   @Override
-   public void a(dqh $$0, dad $$1, in $$2, ayg $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avc.ut, avd.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
-         } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
-         }
-
-         $$1.a(kx.Z, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public csz a(dag $$0, in $$1, dqh $$2) {
-      return csz.i;
-   }
-
-   @Override
-   protected dqh a(dqh $$0, djr $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((is.a)$$0.c(b)) {
-               case c:
-                  return $$0.a(b, is.a.a);
-               case a:
-                  return $$0.a(b, is.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected void a(dqi.a<dde, dqh> $$0) {
-      $$0.a(b);
+   public drb a(cwz $$0) {
+      emu $$1 = $$0.q().b_($$0.a());
+      drb $$2 = this.n().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == emv.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

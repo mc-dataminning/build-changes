@@ -1,40 +1,29 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.pardon.failed"));
-
-   public static void a(CommandDispatcher<ed> $$0) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               ee.a("targets", es.a())
-                  .suggests(($$0x, $$1) -> ei.a(((ed)$$0x.getSource()).l().ah().f().a(), $$1))
-                  .executes($$0x -> a((ed)$$0x.getSource(), es.a($$0x, "targets")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("list").executes($$0x -> a((ee)$$0x.getSource())))
+            .then(ef.a("uuids").executes($$0x -> b((ee)$$0x.getSource())))
       );
    }
 
-   private static int a(ed $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      auk $$2 = $$0.l().ah().f();
-      int $$3 = 0;
+   private static int a(ee $$0) {
+      return a($$0, clw::O_);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> wu.a("commands.pardon.success", wu.b($$4.getName())), true);
-         }
-      }
+   private static int b(ee $$0) {
+      return a($$0, $$0x -> wx.a("commands.list.nameAndId", $$0x.af(), wx.a($$0x.gb().getId())));
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   private static int a(ee $$0, Function<aqn, wx> $$1) {
+      auj $$2 = $$0.l().ah();
+      List<aqn> $$3 = $$2.t();
+      wx $$4 = xa.b($$3, $$1);
+      $$0.a(() -> wx.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

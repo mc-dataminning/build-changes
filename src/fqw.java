@@ -1,60 +1,59 @@
-import java.util.function.Function;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public abstract class fqw<E extends brh> extends fsb<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
-
-   protected fqw(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+public record fqw(dxr a, jk<duu> b, dxo c, je<akv> d, akx e, dbr f) {
+   public fqw(dxp $$0, je<akv> $$1, akx $$2, dbr $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   protected fqw(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(gbw::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   public fqw(dxr $$0, dxo $$1, je<akv> $$2, akx $$3, dbr $$4) {
+      this($$0, $$2.a(akv.c).d(lf.aT), $$1, $$2.a(akv.c), $$3, $$4);
    }
 
-   protected fqw(Function<akh, gbw> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public fqw a(dxr $$0, dxo $$1) {
+      return new fqw($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   protected fqw() {
-      this(false, 5.0F, 2.0F);
+   public fqw a(fqw.b $$0) {
+      return new fqw($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public void a(exx $$0, eyb $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
+   public fqw a(fqw.a $$0) {
+      return new fqw(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   protected abstract Iterable<fvb> a();
+   public jl.b a() {
+      return this.d.a();
+   }
 
-   protected abstract Iterable<fvb> b();
+   public dxr b() {
+      return this.a;
+   }
+
+   public jk<duu> c() {
+      return this.b;
+   }
+
+   public dxo d() {
+      return this.c;
+   }
+
+   public je<akv> e() {
+      return this.d;
+   }
+
+   public akx f() {
+      return this.e;
+   }
+
+   public dbr g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<jl.b, dxo, dxo> {
+   }
+
+   public interface b extends UnaryOperator<dxr> {
+   }
 }

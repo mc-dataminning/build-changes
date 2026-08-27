@@ -5,16 +5,16 @@ import java.util.Optional;
 public record bf(ct.c b, ct.c c, Optional<br> d, Optional<Boolean> e, Optional<bg> f) {
    public static final Codec<bf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axh.a(ct.c.d, "dealt", ct.c.c).forGetter(bf::a),
-               axh.a(ct.c.d, "taken", ct.c.c).forGetter(bf::b),
-               axh.a(br.a, "source_entity").forGetter(bf::c),
-               axh.a(Codec.BOOL, "blocked").forGetter(bf::d),
-               axh.a(bg.a, "type").forGetter(bf::e)
+               ct.c.d.optionalFieldOf("dealt", ct.c.c).forGetter(bf::a),
+               ct.c.d.optionalFieldOf("taken", ct.c.c).forGetter(bf::b),
+               br.a.optionalFieldOf("source_entity").forGetter(bf::c),
+               Codec.BOOL.optionalFieldOf("blocked").forGetter(bf::d),
+               bg.a.optionalFieldOf("type").forGetter(bf::e)
             )
             .apply($$0, bf::new)
    );
 
-   public boolean a(aqi $$0, bqf $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(aqn $$0, bqn $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {

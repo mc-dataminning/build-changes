@@ -3,24 +3,24 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public class by extends de<by.a> {
+public class by extends df<by.a> {
    @Override
    public Codec<by.a> a() {
       return by.a.a;
    }
 
-   public void a(aqi $$0, csz $$1, clv $$2, Collection<csz> $$3) {
-      eol $$4 = br.b($$0, (brh)($$2.v() != null ? $$2.v() : $$2));
+   public void a(aqn $$0, cto $$1, cmk $$2, Collection<cto> $$3) {
+      epf $$4 = br.b($$0, (bru)($$2.v() != null ? $$2.v() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d, Optional<ch> e) implements de.a {
+   public static record a(Optional<bc> b, Optional<ch> c, Optional<bc> d, Optional<ch> e) implements df.a {
       public static final Codec<by.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  axh.a(br.b, "player").forGetter(by.a::a),
-                  axh.a(ch.a, "rod").forGetter(by.a::b),
-                  axh.a(br.b, "entity").forGetter(by.a::c),
-                  axh.a(ch.a, "item").forGetter(by.a::d)
+                  br.b.optionalFieldOf("player").forGetter(by.a::a),
+                  ch.a.optionalFieldOf("rod").forGetter(by.a::b),
+                  br.b.optionalFieldOf("entity").forGetter(by.a::c),
+                  ch.a.optionalFieldOf("item").forGetter(by.a::d)
                )
                .apply($$0, by.a::new)
       );
@@ -29,7 +29,7 @@ public class by extends de<by.a> {
          return am.E.a(new by.a(Optional.empty(), $$0, br.a($$1), $$2));
       }
 
-      public boolean a(csz $$0, eol $$1, Collection<csz> $$2) {
+      public boolean a(cto $$0, epf $$1, Collection<cto> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class by extends de<by.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               brh $$4 = $$1.c(erc.a);
-               if ($$4 instanceof chr $$5 && this.e.get().a($$5.p())) {
+               bru $$4 = $$1.c(erx.a);
+               if ($$4 instanceof cig $$5 && this.e.get().a($$5.p())) {
                   $$3 = true;
                }
 
-               for (csz $$6 : $$2) {
+               for (cto $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;
@@ -60,7 +60,7 @@ public class by extends de<by.a> {
 
       @Override
       public void a(bd $$0) {
-         de.a.super.a($$0);
+         df.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 

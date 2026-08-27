@@ -1,41 +1,14 @@
-import java.util.stream.Stream;
-
-public class ctb {
-   public static bpn<csz> a(dad $$0, clh $$1, bpl $$2) {
-      $$1.c($$2);
-      return bpn.b($$1.b($$2));
+public class ctb extends cur {
+   public ctb(ddy $$0, ddy $$1, ctj.a $$2) {
+      super($$2, $$0, $$1, it.b);
    }
 
-   public static csz a(csz $$0, clh $$1, csz $$2, boolean $$3) {
-      boolean $$4 = $$1.fN();
-      if ($$3 && $$4) {
-         if (!$$1.ga().i($$2)) {
-            $$1.ga().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.d()) {
-            return $$2;
-         } else {
-            if (!$$1.ga().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
+   @Override
+   protected boolean a(dba $$0, drb $$1, io $$2) {
+      if ($$1.b() instanceof dmx $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
       }
-   }
 
-   public static csz a(csz $$0, clh $$1, csz $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(chr $$0, Stream<csz> $$1) {
-      dad $$2 = $$0.dN();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new chr($$2, $$0.ds(), $$0.du(), $$0.dy(), $$2x)));
-      }
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,61 +1,107 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.ToIntFunction;
 
 public class aog {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.summon.invalidPosition"));
+   private static final Map<Pair<ix<cre>, bsb>, ctj> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(Pair.of(crf.b, bsb.f), ctr.pC);
+      $$0.put(Pair.of(crf.b, bsb.e), ctr.pD);
+      $$0.put(Pair.of(crf.b, bsb.d), ctr.pE);
+      $$0.put(Pair.of(crf.b, bsb.c), ctr.pF);
+      $$0.put(Pair.of(crf.c, bsb.f), ctr.pG);
+      $$0.put(Pair.of(crf.c, bsb.e), ctr.pH);
+      $$0.put(Pair.of(crf.c, bsb.d), ctr.pI);
+      $$0.put(Pair.of(crf.c, bsb.c), ctr.pJ);
+      $$0.put(Pair.of(crf.d, bsb.f), ctr.pO);
+      $$0.put(Pair.of(crf.d, bsb.e), ctr.pP);
+      $$0.put(Pair.of(crf.d, bsb.d), ctr.pQ);
+      $$0.put(Pair.of(crf.d, bsb.c), ctr.pR);
+      $$0.put(Pair.of(crf.g, bsb.f), ctr.pS);
+      $$0.put(Pair.of(crf.g, bsb.e), ctr.pT);
+      $$0.put(Pair.of(crf.g, bsb.d), ctr.pU);
+      $$0.put(Pair.of(crf.g, bsb.c), ctr.pV);
+      $$0.put(Pair.of(crf.e, bsb.f), ctr.pK);
+      $$0.put(Pair.of(crf.e, bsb.e), ctr.pL);
+      $$0.put(Pair.of(crf.e, bsb.d), ctr.pM);
+      $$0.put(Pair.of(crf.e, bsb.c), ctr.pN);
+      $$0.put(Pair.of(crf.f, bsb.f), ctr.oo);
+   });
+   private static final List<akl<cvv>> b = List.of(
+      cvw.a, cvw.b, cvw.c, cvw.d, cvw.e, cvw.f, cvw.g, cvw.h, cvw.i, cvw.j, cvw.k, cvw.l, cvw.m, cvw.n, cvw.o, cvw.p, cvw.q, cvw.r
+   );
+   private static final List<akl<cvt>> c = List.of(cvu.a, cvu.b, cvu.c, cvu.d, cvu.e, cvu.f, cvu.g, cvu.h, cvu.i, cvu.j);
+   private static final ToIntFunction<akl<cvv>> d = ac.g(b);
+   private static final ToIntFunction<akl<cvt>> e = ac.g(c);
 
-   public static void a(CommandDispatcher<ed> $$0, dz $$1) {
+   public static void a(CommandDispatcher<ee> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ee.a("summon").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)ee.a("entity", fc.a($$1, le.v))
-                     .suggests(ib.d)
-                     .executes($$0x -> b((ed)$$0x.getSource(), fc.e($$0x, "entity"), ((ed)$$0x.getSource()).d(), new ua(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)ee.a("pos", gg.a())
-                           .executes($$0x -> b((ed)$$0x.getSource(), fc.e($$0x, "entity"), gg.a($$0x, "pos"), new ua(), true)))
-                        .then(ee.a("nbt", en.a()).executes($$0x -> b((ed)$$0x.getSource(), fc.e($$0x, "entity"), gg.a($$0x, "pos"), en.a($$0x, "nbt"), false)))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
+            .executes($$0x -> a((ee)$$0x.getSource(), ((ee)$$0x.getSource()).h()))
       );
    }
 
-   public static brh a(ed $$0, iw.c<brn<?>> $$1, etp $$2, ua $$3, boolean $$4) throws CommandSyntaxException {
-      in $$5 = in.a($$2);
-      if (!dad.l($$5)) {
-         throw c.create();
-      } else {
-         ua $$6 = $$3.h();
-         $$6.a("id", $$1.h().a().toString());
-         aqh $$7 = $$0.e();
-         brh $$8 = brn.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dD(), $$1x.dF());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bsc) {
-               ((bsc)$$8).a($$0.e(), $$0.e().d_($$8.dn()), bse.n, null);
-            }
+   private static int a(ee $$0, clw $$1) {
+      dax $$2 = $$1.dP();
+      jg<cvs> $$3 = jg.a();
+      jk<cvv> $$4 = $$2.H_().d(lf.aP);
+      jk<cvt> $$5 = $$2.H_().d(lf.aO);
+      $$4.s()
+         .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.d($$1x).orElse(null))))
+         .forEachOrdered(
+            $$3x -> $$5.s()
+                  .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.d($$1xx).orElse(null))))
+                  .forEachOrdered($$4x -> $$3.add(new cvs($$5.e($$4x), $$4.e($$3x))))
+         );
+      io $$6 = $$1.dp().a($$1.cH(), 5);
+      jk<cre> $$7 = $$0.v().d(lf.au);
+      int $$8 = $$7.b() - 1;
+      double $$9 = 3.0;
+      int $$10 = 0;
+      int $$11 = 0;
 
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
+      for (cvs $$12 : $$3) {
+         for (cre $$13 : $$7) {
+            if ($$13 != crf.a.a()) {
+               double $$14 = (double)$$6.u() + 0.5 - (double)($$10 % $$5.b()) * 3.0;
+               double $$15 = (double)$$6.v() + 0.5 + (double)($$11 % $$8) * 3.0;
+               double $$16 = (double)$$6.w() + 0.5 + (double)($$10 / $$5.b() * 10);
+               chw $$17 = new chw($$2, $$14, $$15, $$16);
+               $$17.r(180.0F);
+               $$17.f(true);
+
+               for (bsb $$18 : bsb.values()) {
+                  ctj $$19 = a.get(Pair.of($$13, $$18));
+                  if ($$19 != null) {
+                     cto $$20 = new cto($$19);
+                     $$20.b(kb.J, $$12);
+                     $$17.a($$18, $$20);
+                     if ($$19 instanceof crd) {
+                        crd $$21 = (crd)$$19;
+                        if ($$21.h().a(crf.f)) {
+                           $$17.b($$12.a().a().a($$12.b()).f().f(" ").b($$12.b().a().e()));
+                           $$17.o(true);
+                           continue;
+                        }
+                     }
+
+                     $$17.k(true);
+                  }
+               }
+
+               $$2.b($$17);
+               $$11++;
             }
          }
-      }
-   }
 
-   private static int b(ed $$0, iw.c<brn<?>> $$1, etp $$2, ua $$3, boolean $$4) throws CommandSyntaxException {
-      brh $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> wu.a("commands.summon.success", $$5.O_()), true);
+         $$10++;
+      }
+
+      $$0.a(() -> wx.b("Armorstands with trimmed armor spawned around you"), true);
       return 1;
    }
 }

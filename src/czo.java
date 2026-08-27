@@ -1,4 +1,15 @@
-@FunctionalInterface
-public interface czo {
-   int getColor(dbc var1, double var2, double var4);
+public class czo extends cyz {
+   public czo(cyz.b $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
 }

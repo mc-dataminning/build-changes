@@ -1,9 +1,9 @@
-public class coh extends coe {
-   public coh(int $$0, clg $$1) {
-      super(cpl.k, cxi.c, cps.c, $$0, $$1);
-   }
+public class coh {
+   final cok a;
+   final long b;
 
-   public coh(int $$0, clg $$1, bpf $$2, coo $$3) {
-      super(cpl.k, cxi.c, cps.c, $$0, $$1, $$2, $$3);
+   coh(cok $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class bci extends bgd {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+public class bci extends bex {
+   public bci(Schema $$0) {
+      super($$0, false, "EntityPaintingFieldsRenameFix", bfy.z, "minecraft:painting");
+   }
 
-   public bci(Schema $$0, boolean $$1) {
-      super("EntityRavagerRenameFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("Motive", "variant").renameField("Facing", "facing");
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

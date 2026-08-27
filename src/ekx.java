@@ -1,11 +1,13 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface ekx {
-   Codec<ekx> c = ld.p.q().dispatch(ekx::a, eky::codec);
+public interface ekx<P extends ekw> {
+   ekx<ekv> a = a("always_true", ekv.a);
+   ekx<ekt> b = a("linear_pos", ekt.a);
+   ekx<eki> c = a("axis_aligned_linear_pos", eki.a);
 
-   @Nullable
-   ua a(ayg var1, @Nullable ua var2);
+   MapCodec<P> codec();
 
-   eky<?> a();
+   static <P extends ekw> ekx<P> a(String $$0, MapCodec<P> $$1) {
+      return jk.a(le.q, $$0, () -> $$1);
+   }
 }

@@ -1,29 +1,56 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface atu {
-   atu b = $$0 -> Optional.empty();
+public class atu {
+   private final asi a;
+   private final ato<InputStream> b;
+   private final ato<aty> c;
+   @Nullable
+   private aty d;
 
-   Optional<atp> getResource(akh var1);
-
-   default atp getResourceOrThrow(akh $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   public atu(asi $$0, ato<InputStream> $$1, ato<aty> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default InputStream open(akh $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
+   public atu(asi $$0, ato<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = aty.b;
+      this.d = aty.a;
    }
 
-   default BufferedReader openAsReader(akh $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
+   public asi a() {
+      return this.a;
    }
 
-   static atu fromMap(Map<akh, atp> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public String b() {
+      return this.a.b();
+   }
+
+   public Optional<atd> c() {
+      return this.a.c();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public aty f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

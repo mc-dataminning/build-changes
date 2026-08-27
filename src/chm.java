@@ -1,162 +1,100 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class chm extends chj implements bsz<iw<chn>> {
-   private static final ajm<iw<chn>> g = ajq.a(chm.class, ajo.A);
-   private static final akg<chn> h = cho.a;
-   public static final MapCodec<iw<chn>> e = ld.l.r().fieldOf("variant");
-   public static final Codec<iw<chn>> f = e.codec();
+public class chm extends chd {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private brq g;
 
-   private static iw<chn> r() {
-      return ld.l.g(h);
-   }
-
-   public chm(brn<? extends chm> $$0, dad $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(ajq.a $$0) {
-      $$0.a(g, r());
+   public chm(cha $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(ajm<?> $$0) {
-      if (g.equals($$0)) {
-         this.y();
-      }
-   }
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         euk $$0 = this.a.F(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.e.du();
+         double $$2 = this.a.e.e(0.5);
+         double $$3 = this.a.e.dA();
 
-   public void b(iw<chn> $$0) {
-      this.ao.a(g, $$0);
-   }
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.el().k() / 2.0;
+            double $$6 = $$2 + this.a.el().k() / 2.0;
+            double $$7 = $$3 + this.a.el().k() / 2.0;
 
-   public iw<chn> p() {
-      return this.ao.a(g);
-   }
-
-   public static Optional<chm> a(dad $$0, in $$1, is $$2) {
-      chm $$3 = new chm($$0, $$1);
-      List<iw<chn>> $$4 = new ArrayList<>();
-      ld.l.c(awa.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.b($$1x);
-            return !$$3.z();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(chm::c).max().orElse(0);
-            $$4.removeIf($$1x -> c($$1x) < $$5);
-            Optional<iw<chn>> $$6 = ac.b($$4, $$3.ah);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.b($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dP().a(ky.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
             }
+
+            $$0.b((float) (Math.PI / 16));
          }
       }
    }
 
-   private static int c(iw<chn> $$0) {
-      return $$0.a().a() * $$0.a().b();
-   }
-
-   private chm(dad $$0, in $$1) {
-      super(brn.au, $$0, $$1);
-   }
-
-   public chm(dad $$0, in $$1, is $$2, iw<chn> $$3) {
-      this($$0, $$1);
-      this.b($$3);
-      this.a($$2);
-   }
-
    @Override
-   public void b(ua $$0) {
-      a($$0, this.p());
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gm().a(chq.e);
+         } else {
+            this.a.gm().a(chq.g);
+         }
+      } else if (this.e == 10) {
+         euk $$0 = new euk(this.a.e.du() - this.a.du(), 0.0, this.a.e.dA() - this.a.dA()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.e.du() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dA() + $$0.e * 5.0 / 2.0;
+         double $$4 = this.a.e.e(0.5);
+         double $$5 = $$4;
+         io.a $$6 = new io.a($$2, $$4, $$3);
 
-   @Override
-   public void a(ua $$0) {
-      iw<chn> $$1 = f.parse(uo.a, $$0).result().orElseGet(chm::r);
-      this.b($$1);
-      this.d = is.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
+         while (this.a.dP().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
 
-   public static void a(ua $$0, iw<chn> $$1) {
-      f.encodeStart(uo.a, $$1).result().ifPresent($$1x -> $$0.a((ua)$$1x));
-   }
-
-   @Override
-   public int A() {
-      return this.p().a().a();
-   }
-
-   @Override
-   public int B() {
-      return this.p().a().b();
-   }
-
-   @Override
-   public void b(@Nullable brh $$0) {
-      if (this.dN().aa().b(czz.i)) {
-         this.a(avc.se, 1.0F, 1.0F);
-         if ($$0 instanceof clh $$1 && $$1.fN()) {
-            return;
+            $$6.b($$2, $$5, $$3);
          }
 
-         this.a(ctc.pZ);
+         $$5 = (double)(ayd.a($$5) + 1);
+         this.g = new brq(this.a.dP(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(ky.h);
+         this.g.a(new brc(bre.g));
+         this.a.dP().b(this.g);
       }
    }
 
    @Override
-   public void C() {
-      this.a(avc.sf, 1.0F, 1.0F);
+   public void d() {
+      this.e = 0;
+      this.f++;
    }
 
    @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
+   public void e() {
+      if (this.g != null) {
+         this.g.ao();
+         this.g = null;
+      }
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
+   public chq<chm> i() {
+      return chq.f;
    }
 
-   @Override
-   public etp dm() {
-      return etp.a(this.c);
-   }
-
-   @Override
-   public zb<abm> dj() {
-      return new abn(this, this.d.d(), this.D());
-   }
-
-   @Override
-   public void a(abn $$0) {
-      super.a($$0);
-      this.a(is.a($$0.p()));
-   }
-
-   @Override
-   public csz dA() {
-      return new csz(ctc.pZ);
+   public void j() {
+      this.f = 0;
    }
 }

@@ -1,45 +1,80 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class ejh extends egp {
-   public static final Codec<ejh> d = a(ejh::new);
+public class ejh {
+   public static final int a = 90;
+   static final akm b = new akm("igloo/top");
+   private static final akm c = new akm("igloo/middle");
+   private static final akm d = new akm("igloo/bottom");
+   static final Map<akm, io> e = ImmutableMap.of(b, new io(3, 5, 5), c, new io(1, 3, 1), d, new io(3, 6, 7));
+   static final Map<akm, io> f = ImmutableMap.of(b, io.c, c, new io(2, -3, 4), d, new io(0, -3, -2));
 
-   public ejh(egp.c $$0) {
-      super($$0);
+   public static void a(elk $$0, io $$1, dkl $$2, eho $$3, ayk $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new ejh.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new ejh.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new ejh.a($$0, b, $$1, $$2, 0));
    }
 
-   @Override
-   public Optional<egp.b> a(egp.a $$0) {
-      return Optional.of(new egp.b($$0.h().l(), (Consumer<ehh>)($$1 -> a($$1, $$0))));
-   }
+   public static class a extends eht {
+      public a(elk $$0, akm $$1, io $$2, dkl $$3, int $$4) {
+         super(eia.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
 
-   private static void a(ehh $$0, egp.a $$1) {
-      int $$2 = 0;
+      public a(elk $$0, ud $$1) {
+         super(eia.I, $$1, $$0, $$1x -> a(dkl.valueOf($$1.l("Rot")), $$1x));
+      }
 
-      ejg.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         ejg.a();
-         $$3 = new ejg.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<egt> $$4 = $$3.c;
+      private static elf a(dkl $$0, akm $$1) {
+         return new elf().a($$0).a(div.a).a(ejh.e.get($$1)).a(ekl.b);
+      }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            egt $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+      private static io a(akm $$0, io $$1, int $$2) {
+         return $$1.a(ejh.f.get($$0)).c($$2);
+      }
+
+      @Override
+      protected void a(ehz $$0, ud $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, io $$1, dbm $$2, ayk $$3, ehb $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dea.a.n(), 3);
+            dog $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof don) {
+               ((don)$$5).a(epd.C, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(dbs $$0, dbq $$1, dsy $$2, ayk $$3, ehb $$4, dae $$5, io $$6) {
+         akm $$7 = new akm(this.a);
+         elf $$8 = a(this.c.d(), $$7);
+         io $$9 = ejh.f.get($$7);
+         io $$10 = this.d.a((js)elj.a($$8, new io(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dwt.a.a, $$10.u(), $$10.w());
+         io $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(ejh.b)) {
+            io $$13 = this.d.a((js)elj.a($$8, new io(3, 0, 5)));
+            drb $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(dea.cO)) {
+               $$0.a($$13, dea.dP.n(), 3);
+            }
          }
 
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
-   }
-
-   @Override
-   public egy<?> e() {
-      return egy.n;
+         this.d = $$12;
+      }
    }
 }

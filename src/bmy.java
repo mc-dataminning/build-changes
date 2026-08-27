@@ -1,59 +1,100 @@
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
+import javax.annotation.Nullable;
 
-public record bmy(Instant a, long b, bmy.b c) {
-   public static bmy a(RecordedEvent $$0) {
-      return new bmy($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bmy.b.a : bmy.b.b);
+public record bmy(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bnk> e,
+   List<bne> f,
+   bng.a g,
+   bnj.a h,
+   bnh<bni> i,
+   bnh<bni> j,
+   bnh<bnd> k,
+   bnh<bnd> l,
+   bnf.a m,
+   bnf.a n,
+   List<bnc> o
+) {
+   public List<Pair<dtw, bnm<bnc>>> a() {
+      Map<dtw, List<bnc>> $$0 = this.o.stream().collect(Collectors.groupingBy(bnc::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dtw)$$0x.getKey(), bnm.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dtw, bnm<bnc>>, Duration>comparing($$0x -> ((bnm)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   public static bmy.a a(Duration $$0, List<bmy> $$1, Duration $$2, int $$3) {
-      return new bmy.a($$0, $$2, $$3, a($$1));
+   public String b() {
+      return new bna().a(this);
    }
 
-   private static double a(List<bmy> $$0) {
-      long $$1 = 0L;
-      Map<bmy.b, List<bmy>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
-      List<bmy> $$3 = $$2.get(bmy.b.a);
-      List<bmy> $$4 = $$2.get(bmy.b.b);
-
-      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-         bmy $$6 = $$3.get($$5);
-         bmy $$7 = $$4.get($$5 - 1);
-         $$1 += $$6.b - $$7.b;
-      }
-
-      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
-      return (double)$$1 / (double)$$8.getSeconds();
+   public Instant c() {
+      return this.a;
    }
 
-   public static record a(Duration a, Duration b, int c, double d) {
-      public float a() {
-         return (float)this.b.toMillis() / (float)this.a.toMillis();
-      }
-
-      public Duration b() {
-         return this.a;
-      }
-
-      public Duration c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public double e() {
-         return this.d;
-      }
+   public Instant d() {
+      return this.b;
    }
 
-   static enum b {
-      a,
-      b;
+   public Duration e() {
+      return this.c;
+   }
+
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bnk> g() {
+      return this.e;
+   }
+
+   public List<bne> h() {
+      return this.f;
+   }
+
+   public bng.a i() {
+      return this.g;
+   }
+
+   public bnj.a j() {
+      return this.h;
+   }
+
+   public bnh<bni> k() {
+      return this.i;
+   }
+
+   public bnh<bni> l() {
+      return this.j;
+   }
+
+   public bnh<bnd> m() {
+      return this.k;
+   }
+
+   public bnh<bnd> n() {
+      return this.l;
+   }
+
+   public bnf.a o() {
+      return this.m;
+   }
+
+   public bnf.a p() {
+      return this.n;
+   }
+
+   public List<bnc> q() {
+      return this.o;
    }
 }

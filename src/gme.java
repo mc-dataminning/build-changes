@@ -1,100 +1,33 @@
-import javax.annotation.Nullable;
+public class gme<T extends clw, M extends fsw<T> & frv & fte> extends gly<T, M> {
+   private final gcg a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-public class gme implements gmd {
-   public static final int a = 0;
-   private final gme.b c = new gme.b();
-   private final gme.b d = new gme.b();
-   public final gme.a b;
-
-   public gme(gme.a $$0) {
-      this.b = $$0;
+   public gme(gjp<T, M> $$0, gcg $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
-   public float unclampedCall(csz $$0, @Nullable fvw $$1, @Nullable bsa $$2, int $$3) {
-      brh $$4 = (brh)($$2 != null ? $$2 : $$0.D());
-      if ($$4 == null) {
-         return 0.0F;
+   protected void a(bso $$0, cto $$1, ctl $$2, bsi $$3, eys $$4, gck $$5, int $$6) {
+      if ($$1.a(ctr.qX) && $$0.fx() == $$1 && $$0.aM == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
       } else {
-         $$1 = this.a($$4, $$1);
-         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   private float a(csz $$0, fvw $$1, int $$2, brh $$3) {
-      iv $$4 = this.b.getPos($$1, $$0, $$3);
-      long $$5 = $$1.Y();
-      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
-   }
-
-   private float a(int $$0, long $$1) {
-      if (this.d.a($$1)) {
-         this.d.a($$1, Math.random());
-      }
-
-      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
-      return axz.b((float)$$2, 1.0F);
-   }
-
-   private float a(brh $$0, long $$1, in $$2) {
-      double $$3 = this.a($$0, $$2);
-      double $$4 = this.a($$0);
-      if ($$0 instanceof clh $$5 && $$5.g() && $$5.dN().s().i()) {
-         if (this.c.a($$1)) {
-            this.c.a($$1, 0.5 - ($$4 - 0.25));
-         }
-
-         double $$6 = $$3 + this.c.a;
-         return axz.b((float)$$6, 1.0F);
-      }
-
-      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
-      return axz.b((float)$$7, 1.0F);
-   }
-
-   @Nullable
-   private fvw a(brh $$0, @Nullable fvw $$1) {
-      return $$1 == null && $$0.dN() instanceof fvw ? (fvw)$$0.dN() : $$1;
-   }
-
-   private boolean a(brh $$0, @Nullable iv $$1) {
-      return $$1 != null && $$1.a() == $$0.dN().ae() && !($$1.b().b($$0.dl()) < 1.0E-5F);
-   }
-
-   private double a(brh $$0, in $$1) {
-      etp $$2 = etp.b($$1);
-      return Math.atan2($$2.c() - $$0.dy(), $$2.a() - $$0.ds()) / (float) (Math.PI * 2);
-   }
-
-   private double a(brh $$0) {
-      return axz.c((double)($$0.dE() / 360.0F), 1.0);
-   }
-
-   private int a(int $$0) {
-      return $$0 * 1327217883;
-   }
-
-   public interface a {
-      @Nullable
-      iv getPos(fvw var1, csz var2, brh var3);
-   }
-
-   static class b {
-      double a;
-      private double b;
-      private long c;
-
-      boolean a(long $$0) {
-         return this.c != $$0;
-      }
-
-      void a(long $$0, double $$1) {
-         this.c = $$0;
-         double $$2 = $$1 - this.a;
-         $$2 = axz.c($$2 + 0.5, 1.0) - 0.5;
-         this.b += $$2 * 0.1;
-         this.b *= 0.8;
-         this.a = axz.c(this.a + this.b, 1.0);
-      }
+   private void a(bso $$0, cto $$1, bsi $$2, eys $$3, gck $$4, int $$5) {
+      $$3.a();
+      fvw $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = ayd.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      glk.a($$3, false);
+      boolean $$8 = $$2 == bsi.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, ctl.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }
