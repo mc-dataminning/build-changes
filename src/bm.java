@@ -1,31 +1,31 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bm(Optional<il<cuw>> b, cm.d c) {
+public record bm(Optional<il<cwq>> b, cm.d c) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(ki.f.r(), "enchantment").forGetter(bm::a), awe.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
+      $$0 -> $$0.group(aws.a(kr.f.r(), "enchantment").forGetter(bm::a), aws.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
    );
 
-   public bm(cuw $$0, cm.d $$1) {
+   public bm(cwq $$0, cm.d $$1) {
       this(Optional.of($$0.k()), $$1);
    }
 
-   public boolean a(Map<cuw, Integer> $$0) {
+   public boolean a(cwx $$0) {
       if (this.b.isPresent()) {
-         cuw $$1 = this.b.get().a();
-         if (!$$0.containsKey($$1)) {
+         cwq $$1 = this.b.get().a();
+         int $$2 = $$0.a($$1);
+         if ($$2 == 0) {
             return false;
          }
 
-         int $$2 = $$0.get($$1);
          if (this.c != cm.d.c && !this.c.d($$2)) {
             return false;
          }
       } else if (this.c != cm.d.c) {
-         for (Integer $$3 : $$0.values()) {
-            if (this.c.d($$3)) {
+         for (Entry<il<cwq>> $$3 : $$0.b()) {
+            if (this.c.d($$3.getIntValue())) {
                return true;
             }
          }
@@ -36,7 +36,7 @@ public record bm(Optional<il<cuw>> b, cm.d c) {
       return true;
    }
 
-   public Optional<il<cuw>> a() {
+   public Optional<il<cwq>> a() {
       return this.b;
    }
 

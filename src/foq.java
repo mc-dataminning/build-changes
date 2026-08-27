@@ -1,13 +1,36 @@
-public class foq<T extends bpp> extends fos<T> {
-   public foq(frf $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
+
+public class foq implements fov {
+   private final GameProfile a;
+   private final Supplier<gmi> b;
+   private final wg c;
+
+   public foq(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fbp.Q().an().a($$0);
+      this.c = wg.b($$0.getName());
    }
 
-   public static frn a(frj $$0) {
-      frn $$1 = fos.a($$0, 0.0F);
-      fro $$2 = $$1.a();
-      $$2.a("right_leg", frk.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), frh.a(-1.9F, 12.0F, 0.0F));
-      $$2.a("left_leg", frk.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), frh.a(1.9F, 12.0F, 0.0F));
-      return $$1;
+   @Override
+   public void a(fot $$0) {
+      fbp.Q().L().b(new ahf(this.a.getId()));
+   }
+
+   @Override
+   public wg aO_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(fdc $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      feo.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aP_() {
+      return true;
    }
 }

@@ -1,52 +1,34 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dgr {
-   dgr s_ = new dgr() {
-      @Override
-      public boolean a(cxc $$0, ib $$1, dnb $$2, @Nullable Collection<ih> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dgx)dae.qT).i().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(eiq.c) ? false : dgx.a($$0, $$1, $$2, $$3);
-         } else {
-            return dgr.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public class dgr extends dgh implements dcb {
+   public static final MapCodec<dgr> a = b(dgr::new);
 
-      @Override
-      public int a(dgw.a $$0, cxc $$1, ib $$2, axd $$3, dgw $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   @Override
+   public MapCodec<dgr> a() {
+      return a;
    }
 
-   default void a(cxc $$0, dnb $$1, ib $$2, axd $$3) {
+   public dgr(doy.d $$0) {
+      super($$0);
    }
 
-   default boolean a(cxc $$0, ib $$1, axd $$2) {
-      return false;
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
-   default boolean a(cxc $$0, ib $$1, dnb $$2, @Nullable Collection<ih> $$3, boolean $$4) {
-      return ((dfb)dae.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
+   @Override
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
       return true;
    }
 
-   default int i_(int $$0) {
-      return 1;
+   @Override
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      $$0.a($$2.d(), dgs.c(), 2);
    }
 
-   int a(dgw.a var1, cxc var2, ib var3, axd var4, dgw var5, boolean var6);
+   @Override
+   public ib a(ib $$0) {
+      return $$0.d();
+   }
 }

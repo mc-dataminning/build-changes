@@ -1,115 +1,46 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
 
-public class ctl extends cth {
-   private static final ctm a = ctm.a(cqp.tW, cqp.ps, cqp.sh, cqp.uj, cqp.uk, cqp.un, cqp.ul, cqp.uo, cqp.um, cqp.up);
-   private static final ctm b = ctm.a(cqp.ox);
-   private static final ctm c = ctm.a(cqp.qX);
-   private static final Map<cqh, cpr.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cqp.tW, cpr.a.b);
-      $$0.put(cqp.ps, cpr.a.e);
-      $$0.put(cqp.sh, cpr.a.c);
-      $$0.put(cqp.uj, cpr.a.d);
-      $$0.put(cqp.uk, cpr.a.d);
-      $$0.put(cqp.un, cpr.a.d);
-      $$0.put(cqp.ul, cpr.a.d);
-      $$0.put(cqp.uo, cpr.a.d);
-      $$0.put(cqp.um, cpr.a.d);
-      $$0.put(cqp.up, cpr.a.d);
-   });
-   private static final ctm e = ctm.a(cqp.pt);
+public record ctl(String e, il<cre> f, float g, Map<il<coz>, String> h, wg i) {
+   public static final Codec<ctl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aws.y.fieldOf("asset_name").forGetter(ctl::a),
+               ajq.a(ks.F).fieldOf("ingredient").forGetter(ctl::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(ctl::c),
+               Codec.unboundedMap(coz.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(ctl::d),
+               wi.a.fieldOf("description").forGetter(ctl::e)
+            )
+            .apply($$0, ctl::new)
+   );
+   public static final ye<vr, ctl> b = ye.a(
+      yc.k, ctl::a, yc.b(ks.F), ctl::b, yc.h, ctl::c, yc.a(Object2ObjectOpenHashMap::new, yc.b(ks.at), yc.k), ctl::d, wi.b, ctl::e, ctl::new
+   );
+   public static final Codec<il<ctl>> c = ajp.a(ks.aK, a);
+   public static final ye<vr, il<ctl>> d = yc.a(ks.aK, b);
 
-   public ctl(ctf $$0) {
-      super($$0);
+   public static ctl a(String $$0, cre $$1, float $$2, wg $$3, Map<il<coz>, String> $$4) {
+      return new ctl($$0, kr.h.e($$1), $$2, $$4, $$3);
    }
 
-   public boolean a(cmg $$0, cxb $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
-
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         cqm $$8 = $$0.a($$7);
-         if (!$$8.b()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.d() instanceof cpe)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$2 && $$3;
+   public String a() {
+      return this.e;
    }
 
-   public cqm a(cmg $$0, iz $$1) {
-      cqm $$2 = new cqm(cqp.ut);
-      ta $$3 = $$2.b("Explosion");
-      cpr.a $$4 = cpr.a.a;
-      List<Integer> $$5 = Lists.newArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cqm $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (a.a($$7)) {
-               $$4 = d.get($$7.d());
-            } else if (c.a($$7)) {
-               $$3.a("Flicker", true);
-            } else if (b.a($$7)) {
-               $$3.a("Trail", true);
-            } else if ($$7.d() instanceof cpe) {
-               $$5.add(((cpe)$$7.d()).c().f());
-            }
-         }
-      }
-
-      $$3.b("Colors", $$5);
-      $$3.a("Type", (byte)$$4.a());
-      return $$2;
+   public il<cre> b() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public float c() {
+      return this.g;
    }
 
-   @Override
-   public cqm a(iz $$0) {
-      return new cqm(cqp.ut);
+   public Map<il<coz>, String> d() {
+      return this.h;
    }
 
-   @Override
-   public ctt<?> ar_() {
-      return ctt.h;
+   public wg e() {
+      return this.i;
    }
 }

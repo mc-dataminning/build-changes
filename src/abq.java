@@ -1,40 +1,60 @@
-import javax.annotation.Nullable;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-public class abq implements yb<aam> {
-   public static final xs<uu, abq> a = yb.a(abq::a, abq::new);
-   private final int b;
-   private final byte c;
+public record abq(int b, int c, int d, List<abq.a> e) implements yn<aay> {
+   public static final ye<vr, abq> a = ye.a(yc.f, abq::e, yc.f, abq::f, yc.f, abq::g, abq.a.a.a(yc.a()), abq::h, abq::new);
 
-   public abq(box $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
-   }
-
-   private abq(uu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(uu $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   public abq(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new abq.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(wj::a))).toList()
+      );
    }
 
    @Override
-   public yd<abq> a() {
-      return aex.D;
+   public yp<abq> a() {
+      return afj.r;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public box a(cxb $$0) {
-      return $$0.a(this.b);
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
    }
 
-   public byte b() {
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
       return this.c;
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public List<abq.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<wg> c) {
+      public static final ye<vr, abq.a> a = ye.a(yc.k, abq.a::a, wi.e, abq.a::b, abq.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<wg> b() {
+         return this.c;
+      }
    }
 }

@@ -1,23 +1,37 @@
-import javax.annotation.Nullable;
+public class acx implements yn<aay> {
+   public static final ye<vg, acx> a = yn.a(acx::a, acx::new);
+   private final int b;
+   private final ajt c;
 
-public record acx(int b, il<boi> c) implements yb<aam> {
-   public static final xs<vf, acx> a = xs.a(xq.d, $$0 -> $$0.b, xq.b(kj.Q), acx::e, acx::new);
-
-   @Override
-   public yd<acx> a() {
-      return aex.ak;
+   public acx(int $$0, cvl<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   public void a(aam $$0) {
+   private acx(vg $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+   }
+
+   private void a(vg $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public yp<acx> a() {
+      return afj.Y;
+   }
+
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public box a(cxb $$0) {
-      return $$0.a(this.b);
+   public ajt b() {
+      return this.c;
    }
 
-   public il<boi> e() {
-      return this.c;
+   public int e() {
+      return this.b;
    }
 }

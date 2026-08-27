@@ -1,159 +1,144 @@
-public class dkp extends dlm implements dll {
-   private static final int e = 1;
-   private iu<cqm> f = iu.a(27, cqm.h);
-   private final dkv g = new dkv() {
-      @Override
-      protected void a(cxb $$0, ib $$1, dnb $$2) {
-         dkp.a($$0, $$1, $$2, aty.eP);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class dkp extends dby {
+   public static final MapCodec<dkp> a = b(dkp::new);
+   public static final int b = 2;
+   public static final int c = 1;
+   public static final int d = 4;
+   private static final est g = dby.a(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
+   private static final est h = dby.a(1.0, 0.0, 1.0, 15.0, 7.0, 15.0);
+   public static final dpz e = dpp.aE;
+   public static final dpz f = dpp.aD;
+
+   @Override
+   public MapCodec<dkp> a() {
+      return a;
+   }
+
+   public dkp(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(f, Integer.valueOf(1)));
+   }
+
+   @Override
+   public void a(cyx $$0, ib $$1, doz $$2, bpv $$3) {
+      if (!$$3.bT()) {
+         this.a($$0, $$2, $$1, $$3, 100);
       }
 
-      @Override
-      protected void b(cxb $$0, ib $$1, dnb $$2) {
-         dkp.a($$0, $$1, $$2, aty.eN);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cyx $$0, doz $$1, ib $$2, bpv $$3, float $$4) {
+      if (!($$3 instanceof chs)) {
+         this.a($$0, $$1, $$2, $$3, 3);
       }
 
-      @Override
-      protected void a(cxb $$0, ib $$1, dnb $$2, int $$3, int $$4) {
-         dkp.this.a($$0, $$1, $$2, $$3, $$4);
-      }
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      @Override
-      protected boolean a(ciu $$0) {
-         if (!($$0.bZ instanceof clx)) {
-            return false;
-         } else {
-            bmw $$1 = ((clx)$$0.bZ).l();
-            return $$1 == dkp.this || $$1 instanceof bmv && ((bmv)$$1).a(dkp.this);
+   private void a(cyx $$0, doz $$1, ib $$2, bpv $$3, int $$4) {
+      if (this.a($$0, $$3)) {
+         if (!$$0.B && $$0.z.a($$4) == 0 && $$1.a(dca.mf)) {
+            this.a($$0, $$2, $$1);
          }
       }
-   };
-   private final dkq h = new dkq();
-
-   protected dkp(dkk<?> $$0, ib $$1, dnb $$2) {
-      super($$0, $$1, $$2);
    }
 
-   public dkp(ib $$0, dnb $$1) {
-      this(dkk.b, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected vu k() {
-      return vu.c("container.chest");
-   }
-
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.f = iu.a(this.b(), cqm.h);
-      if (!this.c_($$0)) {
-         bmx.b($$0, this.f);
-      }
-   }
-
-   @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b($$0)) {
-         bmx.a($$0, this.f);
-      }
-   }
-
-   public static void a(cxb $$0, ib $$1, dnb $$2, dkp $$3) {
-      $$3.h.a();
-   }
-
-   static void a(cxb $$0, ib $$1, dnb $$2, atx $$3) {
-      dnt $$4 = $$2.c(dbf.d);
-      if ($$4 != dnt.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dnt.c) {
-            ih $$8 = dbf.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, atz.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h.a($$1 > 0);
-         return true;
+   private void a(cyx $$0, ib $$1, doz $$2) {
+      $$0.a(null, $$1, aum.zM, aun.e, 0.7F, 0.9F + $$0.z.i() * 0.2F);
+      int $$3 = $$2.c(f);
+      if ($$3 <= 1) {
+         $$0.b($$1, false);
       } else {
-         return super.a_($$0, $$1);
+         $$0.a($$1, $$2.a(f, Integer.valueOf($$3 - 1)), 2);
+         $$0.a(dts.f, $$1, dts.a.a($$2));
+         $$0.c(2001, $$1, dby.i($$2));
       }
    }
 
    @Override
-   public void d_(ciu $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.g.a($$0, this.i(), this.aC_(), this.n());
-      }
-   }
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if (this.a($$1) && a($$1, $$2)) {
+         int $$4 = $$0.c(e);
+         if ($$4 < 2) {
+            $$1.a(null, $$2, aum.zN, aun.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+            $$1.a($$2, $$0.a(e, Integer.valueOf($$4 + 1)), 2);
+            $$1.a(dts.c, $$2, dts.a.a($$0));
+         } else {
+            $$1.a(null, $$2, aum.zO, aun.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+            $$1.a($$2, false);
+            $$1.a(dts.f, $$2, dts.a.a($$0));
 
-   @Override
-   public void c(ciu $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.g.b($$0, this.i(), this.aC_(), this.n());
-      }
-   }
-
-   @Override
-   protected iu<cqm> j() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(iu<cqm> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.h.a($$0);
-   }
-
-   public static int a(cwh $$0, ib $$1) {
-      dnb $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dki $$3 = $$0.c_($$1);
-         if ($$3 instanceof dkp) {
-            return ((dkp)$$3).g.a();
+            for (int $$5 = 0; $$5 < $$0.c(f); $$5++) {
+               $$1.c(2001, $$2, dby.i($$0));
+               cde $$6 = bqb.bg.a((cyx)$$1);
+               if ($$6 != null) {
+                  $$6.c_(-24000);
+                  $$6.i($$2);
+                  $$6.b((double)$$2.u() + 0.3 + (double)$$5 * 0.2, (double)$$2.v(), (double)$$2.w() + 0.3, 0.0F, 0.0F);
+                  $$1.b($$6);
+               }
+            }
          }
       }
-
-      return 0;
    }
 
-   public static void a(dkp $$0, dkp $$1) {
-      iu<cqm> $$2 = $$0.j();
-      $$0.a($$1.j());
-      $$1.a($$2);
+   public static boolean a(cyd $$0, ib $$1) {
+      return b($$0, $$1.d());
+   }
+
+   public static boolean b(cyd $$0, ib $$1) {
+      return $$0.a_($$1).a(avc.H);
    }
 
    @Override
-   protected clq a(int $$0, cit $$1) {
-      return clx.a($$0, $$1, this);
-   }
-
-   public void l() {
-      if (!this.q) {
-         this.g.c(this.i(), this.aC_(), this.n());
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (a($$1, $$2) && !$$1.B) {
+         $$1.c(2012, $$2, 15);
       }
    }
 
-   protected void a(cxb $$0, ib $$1, dnb $$2, int $$3, int $$4) {
-      dac $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   private boolean a(cyx $$0) {
+      float $$1 = $$0.f(1.0F);
+      return (double)$$1 < 0.69 && (double)$$1 > 0.65 ? true : $$0.z.a(500) == 0;
+   }
+
+   @Override
+   public void a(cyx $$0, cjt $$1, ib $$2, doz $$3, @Nullable dmf $$4, crj $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a($$0, $$2, $$3);
+   }
+
+   @Override
+   protected boolean a(doz $$0, cuo $$1) {
+      return !$$1.h() && $$1.n().a(this.p()) && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      doz $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(f, Integer.valueOf(Math.min(4, $$1.c(f) + 1))) : super.a($$0);
+   }
+
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return $$0.c(f) > 1 ? h : g;
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(e, f);
+   }
+
+   private boolean a(cyx $$0, bpv $$1) {
+      if ($$1 instanceof cde || $$1 instanceof cby) {
+         return false;
+      } else {
+         return !($$1 instanceof bqo) ? false : $$1 instanceof cjt || $$0.aa().b(cyt.c);
+      }
    }
 }

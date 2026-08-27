@@ -1,127 +1,127 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public abstract class bym extends bwm {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bpr e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bpp g;
-   protected int h = 60;
+public class bym<T extends cgz & chd & cgm> extends bxl {
+   public static final bnl a = ayj.a(1, 2);
+   private final T b;
+   private bym.a c = bym.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public bym(bpr $$0, boolean $$1) {
-      this($$0, $$1, false);
+   public bym(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(bxl.a.a, bxl.a.b));
    }
 
-   public bym(bpr $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a() {
+      return this.i() && this.h();
+   }
+
+   private boolean h() {
+      return this.b.b(crm.vR);
    }
 
    @Override
    public boolean b() {
-      bpp $$0 = this.e.p();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         eqz $$1 = this.e.cg();
-         eqz $$2 = $$0.cg();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
+      return this.i() && (this.a() || !this.b.K().l()) && this.h();
    }
 
-   protected double l() {
-      return this.e.g(bqw.k);
-   }
-
-   @Override
-   public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
+   private boolean i() {
+      return this.b.p() != null && this.b.p().bA();
    }
 
    @Override
    public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bpp $$0, caf $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dm())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+      super.d();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fs()) {
+         this.b.fy();
+         this.b.b(false);
+         this.b.fu().b(jp.v, cts.a);
       }
    }
 
-   private boolean a(bpp $$0) {
-      this.j = b(10 + this.e.ei().a(5));
-      ejd $$1 = this.e.K().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         ejb $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      bqo $$0 = this.b.p();
+      if ($$0 != null) {
+         boolean $$1 = this.b.M().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
+         }
+
+         if ($$1) {
+            this.f++;
          } else {
-            int $$3 = $$2.a - $$0.dq();
-            int $$4 = $$2.c - $$0.dw();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+            this.f--;
+         }
+
+         double $$3 = this.b.g($$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.K().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.ei());
+            }
+         } else {
+            this.h = 0;
+            this.b.K().n();
+         }
+
+         this.b.G().a($$0, 30.0F, 30.0F);
+         if (this.c == bym.a.a) {
+            if (!$$4) {
+               this.b.c(ckn.a(this.b, crm.vR));
+               this.c = bym.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == bym.a.b) {
+            if (!this.b.fs()) {
+               this.c = bym.a.a;
+            }
+
+            int $$5 = this.b.fw();
+            crj $$6 = this.b.fu();
+            if ($$5 >= cpw.l($$6)) {
+               this.b.fx();
+               this.c = bym.a.c;
+               this.g = 20 + this.b.ei().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == bym.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = bym.a.d;
+            }
+         } else if (this.c == bym.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            this.c = bym.a.a;
          }
       }
    }
 
-   public bym c(int $$0) {
-      this.h = $$0;
-      return this;
+   private boolean k() {
+      return this.c == bym.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,62 +1,122 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class eml {
-   public static final BiFunction<cqm, ekw, cqm> a = ($$0, $$1) -> $$0;
-   private static final Codec<emj> D = ki.G.q().dispatch("function", emj::b, emk::a);
-   public static final Codec<emj> b = awe.a((Supplier<Codec<emj>>)(() -> awe.e(D, emn.b)));
-   public static final emk c = a("set_count", emu.a);
-   public static final emk d = a("enchant_with_levels", emc.a);
-   public static final emk e = a("enchant_randomly", emb.a);
-   public static final emk f = a("set_enchantments", ems.a);
-   public static final emk g = a("set_nbt", emy.a);
-   public static final emk h = a("furnace_smelt", enb.a);
-   public static final emk i = a("looting_enchant", emm.b);
-   public static final emk j = a("set_damage", emv.a);
-   public static final emk k = a("set_attributes", emo.a);
-   public static final emk l = a("set_name", emx.a);
-   public static final emk m = a("exploration_map", emd.f);
-   public static final emk n = a("set_stew_effect", ena.a);
-   public static final emk o = a("copy_name", elz.a);
-   public static final emk p = a("set_contents", emq.a);
-   public static final emk q = a("limit_count", emh.a);
-   public static final emk r = a("apply_bonus", elw.a);
-   public static final emk s = a("set_loot_table", emr.a);
-   public static final emk t = a("explosion_decay", elx.a);
-   public static final emk u = a("set_lore", emw.a);
-   public static final emk v = a("fill_player_head", eme.a);
-   public static final emk w = a("copy_nbt", ema.a);
-   public static final emk x = a("copy_state", ely.a);
-   public static final emk y = a("set_banner_pattern", emp.a);
-   public static final emk z = a("set_potion", emz.a);
-   public static final emk A = a("set_instrument", emt.a);
-   public static final emk B = a("reference", emf.a);
-   public static final emk C = a("sequence", emn.a);
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, elz> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final in.a d;
+   private final File e;
 
-   private static emk a(String $$0, Codec<? extends emj> $$1) {
-      return iy.a(ki.G, new ajh($$0), new emk($$1));
+   public eml(File $$0, DataFixer $$1, in.a $$2) {
+      this.c = $$1;
+      this.e = $$0;
+      this.d = $$2;
    }
 
-   public static BiFunction<cqm, ekw, cqm> a(List<? extends BiFunction<cqm, ekw, cqm>> $$0) {
-      List<BiFunction<cqm, ekw, cqm>> $$1 = List.copyOf($$0);
+   private File a(String $$0) {
+      return new File(this.e, $$0 + ".dat");
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cqm, ekw, cqm> $$2 = $$1.get(0);
-            BiFunction<cqm, ekw, cqm> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+   public <T extends elz> T a(elz.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   public <T extends elz> T b(elz.a<T> $$0, String $$1) {
+      elz $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
+      }
+
+      return (T)$$2;
+   }
+
+   @Nullable
+   private <T extends elz> T a(BiFunction<tm, in.a, T> $$0, ayq $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            tm $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
          }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cqm, ekw, cqm> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
+
+      return null;
+   }
+
+   public void a(String $$0, elz $$1) {
+      this.b.put($$0, $$1);
+   }
+
+   public tm a(String $$0, ayq $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
+
+      tm var9;
+      try (
+         InputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream(new awt($$4), 2);
+      ) {
+         tm $$6;
+         if (this.a($$5)) {
+            $$6 = tz.a($$5, tv.a());
+         } else {
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = tz.a($$7);
+            }
          }
 
-         return $$1x;
-      };
-      };
+         int $$10 = ub.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
+      }
+
+      return var9;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
+   }
+
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0), this.d);
+         }
+      });
    }
 }

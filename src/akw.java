@@ -1,168 +1,138 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class akw {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> vu.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<du> e = ($$0, $$1) -> dz.b(
-         ((du)$$0.getSource()).l().aG().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<du> f = ($$0, $$1) -> {
-      arz $$2 = ((du)$$0.getSource()).l().aG();
-      Collection<String> $$3 = $$2.d();
-      clh $$4 = ((du)$$0.getSource()).w();
-      return dz.b(
-         $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(arw::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final atp d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("enable")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, arw::h, false))
-                                          ))
-                                       .then(
-                                          dv.a("after")
-                                             .then(
-                                                dv.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       dv.a("before")
-                                          .then(
-                                             dv.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(dv.a("last").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(dv.a("first").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  dv.a("disable").then(dv.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", false))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
-                     .then(dv.a("available").executes($$0x -> b((du)$$0x.getSource()))))
-                  .then(dv.a("enabled").executes($$0x -> c((du)$$0x.getSource())))
-            )
-      );
+   public akw(String $$0, int $$1, atp $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static int a(du $$0, arw $$1, akw.a $$2) throws CommandSyntaxException {
-      arz $$3 = $$0.l().aG();
-      List<arw> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> vu.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      amk.a($$4.stream().map(arw::g).collect(Collectors.toList()), $$0);
-      return $$4.size();
-   }
-
-   private static int a(du $$0, arw $$1) {
-      arz $$2 = $$0.l().aG();
-      List<arw> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> vu.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      amk.a($$3.stream().map(arw::g).collect(Collectors.toList()), $$0);
-      return $$3.size();
-   }
-
-   private static int a(du $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(du $$0) {
-      arz $$1 = $$0.l().aG();
-      $$1.a();
-      Collection<arw> $$2 = $$1.f();
-      Collection<arw> $$3 = $$1.c();
-      clh $$4 = $$0.w();
-      List<arw> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> vu.c("commands.datapack.list.available.none"), false);
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
       } else {
-         $$0.a(() -> vu.a("commands.datapack.list.available.success", $$5.size(), vx.b($$5, $$0xx -> $$0xx.a(false))), false);
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
-
-      return $$5.size();
    }
 
-   private static int c(du $$0) {
-      arz $$1 = $$0.l().aG();
-      $$1.a();
-      Collection<? extends arw> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> vu.c("commands.datapack.list.enabled.none"), false);
-      } else {
-         $$0.a(() -> vu.a("commands.datapack.list.enabled.success", $$2.size(), vx.b($$2, $$0xx -> $$0xx.a(true))), false);
-      }
+   private void c() {
+      akw.a $$0 = null;
 
-      return $$2.size();
-   }
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            akw.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
 
-   private static arw a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      arz $$4 = ((du)$$0.getSource()).l().aG();
-      arw $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
-         } else {
-            clh $$7 = ((du)$$0.getSource()).w();
-            clh $$8 = $$5.e();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, clj.a($$7, $$8));
-            } else {
-               return $$5;
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     ac.g().submit(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
             }
          }
       }
    }
 
-   interface a {
-      void apply(List<arw> var1, arw var2) throws CommandSyntaxException;
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
+
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
+         }
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
+         }
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
+         }
+      } finally {
+         IOUtils.closeQuietly(this.g);
+      }
+
+      a.info("Remote control server is now stopped");
+      this.f = false;
+   }
+
+   @Nullable
+   private akw.a e() {
+      List<apt> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
+      } else {
+         apt $$1 = $$0.get(0);
+         String $$2 = (String)ale.a.inverse().get($$1.dM().ae());
+         return $$2 == null ? null : new akw.a($$2, $$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
+      }
+   }
+
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

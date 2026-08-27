@@ -1,99 +1,112 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
-public abstract class lk implements lm {
-   protected static final br.a a = br.a.a().a(bp.a.a().a(true));
-   private static final Set<bpd<?>> b = ImmutableSet.of(bpd.by, bpd.e, bpd.ag, bpd.aS, bpd.bj);
-   private final clh c;
-   private final clh d;
-   private final Map<bpd<?>, Map<ajh, ele.a>> e = Maps.newHashMap();
-
-   protected lk(clh $$0) {
-      this($$0, $$0);
-   }
-
-   protected lk(clh $$0, clh $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected static ele.a a(cxa $$0) {
-      return ele.b().a(eld.a().a(eoo.a(1.0F)).a(elm.a($$0))).a(eld.a().a(eoo.a(1.0F)).a(els.a(bpd.aJ.j())));
-   }
-
-   public abstract void a();
-
+public class lk implements lc {
    @Override
-   public void generate(BiConsumer<ajh, ele.a> $$0) {
-      this.a();
-      Set<ajh> $$1 = Sets.newHashSet();
-      ki.g
-         .h()
-         .forEach(
-            $$2 -> {
-               bpd<?> $$3 = $$2.a();
-               if ($$3.a(this.c)) {
-                  if (a($$3)) {
-                     Map<ajh, ele.a> $$4 = this.e.remove($$3);
-                     ajh $$5 = $$3.j();
-                     if (!$$5.equals(eku.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
-                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.h().a()));
-                     }
-
-                     if ($$4 != null) {
-                        $$4.forEach(($$3x, $$4x) -> {
-                           if (!$$1.add($$3x)) {
-                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2.h().a()));
-                           } else {
-                              $$0.accept($$3x, $$4x);
-                           }
-                        });
-                     }
-                  } else {
-                     Map<ajh, ele.a> $$6 = this.e.remove($$3);
-                     if ($$6 != null) {
-                        throw new IllegalStateException(
-                           String.format(
-                              Locale.ROOT,
-                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              $$6.keySet().stream().map(ajh::toString).collect(Collectors.joining(",")),
-                              $$2.h().a()
-                           )
-                        );
-                     }
-                  }
-               }
-            }
-         );
-      if (!this.e.isEmpty()) {
-         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
-      }
-   }
-
-   private static boolean a(bpd<?> $$0) {
-      return b.contains($$0) || $$0.f() != bps.h;
-   }
-
-   protected env.a b() {
-      return enp.a(bg.a.a().b(br.a.a().a(bpd.S)));
-   }
-
-   protected env.a a(cbp $$0) {
-      return enp.a(bg.a.a().b(br.a.a().a(bpd.S).a(bs.a($$0))));
-   }
-
-   protected void a(bpd<?> $$0, ele.a $$1) {
-      this.a($$0, $$0.j(), $$1);
-   }
-
-   protected void a(bpd<?> $$0, ajh $$1, ele.a $$2) {
-      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
+   public void a(in.a $$0, Consumer<af> $$1) {
+      af $$2 = ae.a.a()
+         .a(
+            dca.i,
+            wg.c("advancements.story.root.title"),
+            wg.c("advancements.story.root.description"),
+            new ajt("textures/gui/advancements/backgrounds/stone.png"),
+            al.a,
+            false,
+            false,
+            false
+         )
+         .a("crafting_table", ca.a.a(dca.cA))
+         .a($$1, "story/root");
+      af $$3 = ae.a.a()
+         .a($$2)
+         .a(crm.oM, wg.c("advancements.story.mine_stone.title"), wg.c("advancements.story.mine_stone.description"), null, al.a, true, true, false)
+         .a("get_stone", ca.a.a(cc.a.a().a(avk.ax)))
+         .a($$1, "story/mine_stone");
+      af $$4 = ae.a.a()
+         .a($$3)
+         .a(crm.oR, wg.c("advancements.story.upgrade_tools.title"), wg.c("advancements.story.upgrade_tools.description"), null, al.a, true, true, false)
+         .a("stone_pickaxe", ca.a.a(crm.oR))
+         .a($$1, "story/upgrade_tools");
+      af $$5 = ae.a.a()
+         .a($$4)
+         .a(crm.oD, wg.c("advancements.story.smelt_iron.title"), wg.c("advancements.story.smelt_iron.description"), null, al.a, true, true, false)
+         .a("iron", ca.a.a(crm.oD))
+         .a($$1, "story/smelt_iron");
+      af $$6 = ae.a.a()
+         .a($$5)
+         .a(crm.pb, wg.c("advancements.story.iron_tools.title"), wg.c("advancements.story.iron_tools.description"), null, al.a, true, true, false)
+         .a("iron_pickaxe", ca.a.a(crm.pb))
+         .a($$1, "story/iron_tools");
+      af $$7 = ae.a.a()
+         .a($$6)
+         .a(crm.ox, wg.c("advancements.story.mine_diamond.title"), wg.c("advancements.story.mine_diamond.description"), null, al.a, true, true, false)
+         .a("diamond", ca.a.a(crm.ox))
+         .a($$1, "story/mine_diamond");
+      af $$8 = ae.a.a()
+         .a($$5)
+         .a(crm.qz, wg.c("advancements.story.lava_bucket.title"), wg.c("advancements.story.lava_bucket.description"), null, al.a, true, true, false)
+         .a("lava_bucket", ca.a.a(crm.qz))
+         .a($$1, "story/lava_bucket");
+      af $$9 = ae.a.a()
+         .a($$5)
+         .a(crm.pG, wg.c("advancements.story.obtain_armor.title"), wg.c("advancements.story.obtain_armor.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("iron_helmet", ca.a.a(crm.pF))
+         .a("iron_chestplate", ca.a.a(crm.pG))
+         .a("iron_leggings", ca.a.a(crm.pH))
+         .a("iron_boots", ca.a.a(crm.pI))
+         .a($$1, "story/obtain_armor");
+      ae.a.a()
+         .a($$7)
+         .a(crm.uu, wg.c("advancements.story.enchant_item.title"), wg.c("advancements.story.enchant_item.description"), null, al.a, true, true, false)
+         .a("enchanted_item", bl.a.b())
+         .a($$1, "story/enchant_item");
+      af $$10 = ae.a.a()
+         .a($$8)
+         .a(dca.co, wg.c("advancements.story.form_obsidian.title"), wg.c("advancements.story.form_obsidian.description"), null, al.a, true, true, false)
+         .a("obsidian", ca.a.a(dca.co))
+         .a($$1, "story/form_obsidian");
+      ae.a.a()
+         .a($$9)
+         .a(crm.vq, wg.c("advancements.story.deflect_arrow.title"), wg.c("advancements.story.deflect_arrow.description"), null, al.a, true, true, false)
+         .a("deflected_projectile", bq.a.a(bf.a.a().a(bg.a.a().a(dd.a(ave.k))).a(true)))
+         .a($$1, "story/deflect_arrow");
+      ae.a.a()
+         .a($$7)
+         .a(crm.pK, wg.c("advancements.story.shiny_gear.title"), wg.c("advancements.story.shiny_gear.description"), null, al.a, true, true, false)
+         .a(ai.a.b)
+         .a("diamond_helmet", ca.a.a(crm.pJ))
+         .a("diamond_chestplate", ca.a.a(crm.pK))
+         .a("diamond_leggings", ca.a.a(crm.pL))
+         .a("diamond_boots", ca.a.a(crm.pM))
+         .a($$1, "story/shiny_gear");
+      af $$11 = ae.a.a()
+         .a($$10)
+         .a(crm.or, wg.c("advancements.story.enter_the_nether.title"), wg.c("advancements.story.enter_the_nether.description"), null, al.a, true, true, false)
+         .a("entered_nether", ay.a.a(cyx.i))
+         .a($$1, "story/enter_the_nether");
+      ae.a.a()
+         .a($$11)
+         .a(
+            crm.pZ,
+            wg.c("advancements.story.cure_zombie_villager.title"),
+            wg.c("advancements.story.cure_zombie_villager.description"),
+            null,
+            al.c,
+            true,
+            true,
+            false
+         )
+         .a("cured_zombie", be.a.b())
+         .a($$1, "story/cure_zombie_villager");
+      af $$12 = ae.a.a()
+         .a($$11)
+         .a(crm.sr, wg.c("advancements.story.follow_ender_eye.title"), wg.c("advancements.story.follow_ender_eye.description"), null, al.a, true, true, false)
+         .a("in_stronghold", ct.a.a(ck.a.b($$0.b(ks.aF).b(efb.k))))
+         .a($$1, "story/follow_ender_eye");
+      ae.a.a()
+         .a($$12)
+         .a(dca.fz, wg.c("advancements.story.enter_the_end.title"), wg.c("advancements.story.enter_the_end.description"), null, al.a, true, true, false)
+         .a("entered_end", ay.a.a(cyx.j))
+         .a($$1, "story/enter_the_end");
    }
 }

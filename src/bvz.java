@@ -1,50 +1,31 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class bvz extends bwz {
-   private final cbh g;
-
-   public bvz(cbh $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bwm.a.c, bwm.a.a));
+public class bvz<E extends cix> extends bsg<E> {
+   public bvz(int $$0) {
+      super(ImmutableMap.of(bzr.o, bzs.b, bzr.m, bzs.b), $$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.g.r() && !this.g.gn() && !this.g.gv() && super.a();
+   protected boolean a(aps $$0, E $$1, long $$2) {
+      return $$1.dI() == null;
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
+   protected boolean a(aps $$0, E $$1) {
+      return $$1.aC() || $$1.bc() || $$1.bq();
    }
 
-   @Override
-   protected int a(bpx $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.z(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gv()) {
-         this.g.z(true);
+   protected void b(aps $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(bqz.o);
+         $$1.a(aum.Bo, 5.0F, 1.0F);
+      } else {
+         $$1.a(aum.Bj, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
    }
 
-   @Override
-   protected boolean a(cxe $$0, ib $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(aun.R);
+   protected void c(aps $$0, E $$1, long $$2) {
+      if ($$1.dI() == null) {
+         $$1.a(bpv.c.b);
+      }
    }
 }

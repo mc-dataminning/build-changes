@@ -1,14 +1,35 @@
-public interface zv extends yh {
-   @Override
-   default ut b() {
-      return ut.e;
+public record zv(zv.a c) implements zo {
+   public static final ye<vg, zv> a = zo.a(zv::a, zv::new);
+   public static final zo.b<zv> b = zo.a("debug/hive");
+
+   private zv(vg $$0) {
+      this(new zv.a($$0));
    }
 
-   void a(zw var1);
+   private void a(vg $$0) {
+      this.c.a($$0);
+   }
 
-   void a(zx var1);
+   @Override
+   public zo.b<zv> a() {
+      return b;
+   }
 
-   void a(zz var1);
+   public zv.a b() {
+      return this.c;
+   }
 
-   void a(zy var1);
+   public static record a(ib a, String b, int c, int d, boolean e) {
+      public a(vg $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(vg $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
+   }
 }

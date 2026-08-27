@@ -1,65 +1,49 @@
-public class ckj {
-   public static final ckj a = a("core");
-   public static final ckj b = a("idle");
-   public static final ckj c = a("work");
-   public static final ckj d = a("play");
-   public static final ckj e = a("rest");
-   public static final ckj f = a("meet");
-   public static final ckj g = a("panic");
-   public static final ckj h = a("raid");
-   public static final ckj i = a("pre_raid");
-   public static final ckj j = a("hide");
-   public static final ckj k = a("fight");
-   public static final ckj l = a("celebrate");
-   public static final ckj m = a("admire_item");
-   public static final ckj n = a("avoid");
-   public static final ckj o = a("ride");
-   public static final ckj p = a("play_dead");
-   public static final ckj q = a("long_jump");
-   public static final ckj r = a("ram");
-   public static final ckj s = a("tongue");
-   public static final ckj t = a("swim");
-   public static final ckj u = a("lay_spawn");
-   public static final ckj v = a("sniff");
-   public static final ckj w = a("investigate");
-   public static final ckj x = a("roar");
-   public static final ckj y = a("emerge");
-   public static final ckj z = a("dig");
-   private final String A;
-   private final int B;
+public class ckj extends ckf {
+   private int e = 1;
 
-   private ckj(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+   public ckj(bqb<? extends ckj> $$0, cyx $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
-   }
-
-   private static ckj a(String $$0) {
-      return iy.a(ki.E, $$0, new ckj($$0));
+   public ckj(cyx $$0, bqo $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(bqb.aj, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ckj $$1 = (ckj)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected void a(ery $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         boolean $$1 = this.dM().aa().b(cyt.c);
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), (float)this.e, $$1, cyx.a.c);
+         this.am();
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   protected void a(erx $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bpv $$1 = $$0.a();
+         bpv $$2 = this.u();
+         $$1.a(this.dN().a((ckf)this, $$2), 6.0F);
+         if ($$2 instanceof bqo) {
+            this.a((bqo)$$2, $$1);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   public void b(tm $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(tm $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

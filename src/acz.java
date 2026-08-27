@@ -1,36 +1,60 @@
-public record acz(aeu e, byte f) implements yb<aam> {
-   public static final xs<vf, acz> a = yb.a(acz::a, acz::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private acz(vf $$0) {
-      this(new aeu($$0), $$0.readByte());
+public record acz(UUID b, int c, @Nullable ws d, wz.a e, @Nullable wg f, wk g, wc.a h) implements yn<aay> {
+   public static final ye<vr, acz> a = yn.a(acz::a, acz::new);
+
+   private acz(vr $$0) {
+      this($$0.n(), $$0.l(), $$0.c(ws::a), new wz.a($$0), vg.a($$0, wi.d), wk.a($$0), wc.a.a.decode($$0));
    }
 
-   private void a(vf $$0) {
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, ws::a);
       this.e.a($$0);
-      $$0.k(this.f);
+      vg.a($$0, this.f, wi.d);
+      wk.a($$0, this.g);
+      wc.a.a.encode($$0, this.h);
    }
 
    @Override
-   public yd<acz> a() {
-      return aex.al;
+   public yp<acz> a() {
+      return afj.aa;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public aeu b() {
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public ws f() {
+      return this.d;
+   }
+
+   public wz.a g() {
       return this.e;
    }
 
-   public byte e() {
+   @Nullable
+   public wg h() {
       return this.f;
+   }
+
+   public wk i() {
+      return this.g;
+   }
+
+   public wc.a j() {
+      return this.h;
    }
 }

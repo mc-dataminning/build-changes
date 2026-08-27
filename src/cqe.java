@@ -1,23 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cqe(il<atx> b, int c, float d) {
-   public static final Codec<cqe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atx.b.fieldOf("sound_event").forGetter(cqe::a), awe.k.fieldOf("use_duration").forGetter(cqe::b), awe.l.fieldOf("range").forGetter(cqe::c)
-            )
-            .apply($$0, cqe::new)
-   );
-
-   public il<atx> a() {
-      return this.b;
+public class cqe extends cre {
+   public cqe(cre.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
+      crj $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.hI, aun.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cku $$4 = new cku($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public float c() {
-      return this.d;
+      $$1.b(auw.c.b(this));
+      $$3.a(1, $$1);
+      return bob.a($$3, $$0.x_());
    }
 }

@@ -1,37 +1,53 @@
-public class acl implements yb<aam> {
-   public static final xs<uu, acl> a = yb.a(acl::a, acl::new);
+public class acl implements yn<aay> {
+   public static final ye<vg, acl> a = yn.a(acl::a, acl::new);
    private final int b;
-   private final ajh c;
+   private final ib c;
+   private final int d;
+   private final boolean e;
 
-   public acl(int $$0, ctr<?> $$1) {
+   public acl(int $$0, ib $$1, int $$2, boolean $$3) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private acl(uu $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private acl(vg $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(uu $$0) {
-      $$0.k(this.b);
+   private void a(vg $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public yd<acl> a() {
-      return aex.Y;
+   public yp<acl> a() {
+      return afj.L;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public ajh b() {
-      return this.c;
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
       return this.b;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public ib g() {
+      return this.c;
    }
 }

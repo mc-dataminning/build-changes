@@ -1,49 +1,49 @@
-public record agz(int b, String c, int d, agy e) implements yb<ahc> {
-   public static final xs<uu, agz> a = yb.a(agz::a, agz::new);
-   private static final int f = 255;
+import javax.annotation.Nullable;
 
-   @Deprecated
-   public agz(int b, String c, int d, agy e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+public class agz implements yn<afl> {
+   public static final ye<vg, agz> a = yn.a(agz::a, agz::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public agz(int $$0, String $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agz(uu $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), agy.a($$0.l()));
+   private agz(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.c(this.b);
       $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<agz> a() {
-      return aha.a;
+   public yp<agz> a() {
+      return afj.bT;
    }
 
-   public void a(ahc $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   @Nullable
+   public cxy a(cyx $$0) {
+      bpv $$1 = $$0.a(this.b);
+      return $$1 instanceof clw ? ((clw)$$1).B() : null;
    }
 
-   public String e() {
+   public String b() {
       return this.c;
    }
 
-   public int f() {
+   public boolean e() {
       return this.d;
-   }
-
-   public agy g() {
-      return this.e;
    }
 }

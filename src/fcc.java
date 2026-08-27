@@ -1,69 +1,24 @@
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fcc extends fbf {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final axl<fcc.a, fcb> c;
-   private boolean d = false;
+public class fcc {
+   public float a;
+   public float b;
+   private long c;
+   private final float d;
+   private final FloatUnaryOperator e;
 
-   public fcc(vu $$0, fat $$1) {
-      this(0, 0, $$0, $$1);
+   public fcc(float $$0, long $$1, FloatUnaryOperator $$2) {
+      this.d = 1000.0F / $$0;
+      this.c = $$1;
+      this.e = $$2;
    }
 
-   public fcc(int $$0, int $$1, vu $$2, fat $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fcb.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fcb.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fcc b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fcc c(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fcc d(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fcc b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int w() {
-      return this.c.a(this.d()).b();
-   }
-
-   @Override
-   public int u() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-      fcb $$4 = this.c.a(this.d());
-      int $$5 = this.B();
-      int $$6 = this.C();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
-      }
-   }
-
-   private fcc.a d() {
-      return new fcc.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
-   }
-
-   static record a(vu a, int b, OptionalInt c) {
+   public int a(long $$0) {
+      this.b = (float)($$0 - this.c) / this.e.apply(this.d);
+      this.c = $$0;
+      this.a = this.a + this.b;
+      int $$1 = (int)this.a;
+      this.a -= (float)$$1;
+      return $$1;
    }
 }

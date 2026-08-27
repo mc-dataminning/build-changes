@@ -1,74 +1,13 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fgl implements AutoCloseable {
-   private static final ajh a = new ajh("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gjd d;
-   private final ajh e;
-   @Nullable
-   private gip f;
-   private boolean g;
+public class fgl extends fgk {
+   public static final fgl a = new fgl();
 
-   private fgl(gjd $$0, ajh $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fgl a(gjd $$0, String $$1) {
-      return new fgl($$0, new ajh("minecraft", "worlds/" + ac.a($$1, ajh::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fgl b(gjd $$0, String $$1) {
-      return new fgl($$0, new ajh("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(etc $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gip($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public ajh b() {
-      return this.f != null ? this.e : a;
+   public fgl() {
+      super(fgi.b(new ajt("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
-   }
-
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, ewm $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

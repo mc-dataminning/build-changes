@@ -1,103 +1,162 @@
-import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class alw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vu.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> vu.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wg.b("commands.fill.toobig", $$0, $$1));
+   static final fj b = new fj(dca.a.n(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wg.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(dv.a("structure").then(dv.a("structure", ex.a(kj.aE)).executes($$0x -> a((du)$$0x.getSource(), ex.a($$0x, "structure", kj.aE, c))))))
-               .then(dv.a("biome").then(dv.a("biome", ew.a($$1, kj.au)).executes($$0x -> a((du)$$0x.getSource(), ew.a($$0x, "biome", kj.au))))))
-            .then(dv.a("poi").then(dv.a("poi", ew.a($$1, kj.U)).executes($$0x -> b((du)$$0x.getSource(), ew.a($$0x, "poi", kj.U)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("fill").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("from", fo.a())
+                  .then(
+                     dv.a("to", fo.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                                "block", fl.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alw.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)dv.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                            fl.a($$0x, "block"),
+                                                            alw.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dv.a("filter", fk.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                               fl.a($$0x, "block"),
+                                                               alw.a.a,
+                                                               fk.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                      fl.a($$0x, "block"),
+                                                      alw.a.a,
+                                                      $$0xx -> $$0xx.c().u($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("outline")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alw.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("hollow")
+                                       .executes(
+                                          $$0x -> a((du)$$0x.getSource(), eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alw.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("destroy")
+                                    .executes($$0x -> a((du)$$0x.getSource(), eez.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alw.a.d, null))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static Optional<? extends ip.b<ede>> a(ex.c<ede> $$0, iy<ede> $$1) {
-      return (Optional<? extends ip.b<ede>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> ip.a($$0xx)), $$1::b);
-   }
-
-   private static int a(du $$0, ex.c<ede> $$1) throws CommandSyntaxException {
-      iy<ede> $$2 = $$0.e().H_().d(kj.aE);
-      ip<ede> $$3 = (ip<ede>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      ib $$4 = ib.a($$0.d());
-      apf $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<ib, il<ede>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
+   private static int a(du $$0, eez $$1, fj $$2, alw.a $$3, @Nullable Predicate<dpd> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().aa().c(cyt.z);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+         List<ib> $$7 = Lists.newArrayList();
+         aps $$8 = $$0.e();
+         int $$9 = 0;
+
+         for (ib $$10 : ib.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new dpd($$8, $$10, true))) {
+               fj $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dmf $$12 = $$8.c_($$10);
+                  bnr.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
+            }
+         }
+
+         for (ib $$13 : $$7) {
+            dby $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> wg.a("commands.fill.success", $$15), true);
+            return $$9;
+         }
       }
    }
 
-   private static int a(du $$0, ew.c<cya> $$1) throws CommandSyntaxException {
-      ib $$2 = ib.a($$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<ib, il<cya>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? alw.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
+
+      public final ani.a e;
+
+      private a(ani.a $$0) {
+         this.e = $$0;
       }
-   }
-
-   private static int b(du $$0, ew.c<cav> $$1) throws CommandSyntaxException {
-      ib $$2 = ib.a($$0.d());
-      apf $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<il<cav>, ib>> $$5 = $$3.y().e($$1, $$2, 256, cas.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
-      }
-   }
-
-   public static int a(du $$0, ew.c<?> $$1, ib $$2, Pair<ib, ? extends il<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((il)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   public static int a(du $$0, ex.c<?> $$1, ib $$2, Pair<ib, ? extends il<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((il)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   private static int a(du $$0, ib $$1, Pair<ib, ? extends il<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      ib $$7 = (ib)$$2.getFirst();
-      int $$8 = $$4 ? aww.d(aww.c((float)$$1.j($$7))) : aww.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      vu $$10 = vx.a((vu)vu.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new vs(vs.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new wa(wa.a.a, vu.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> vu.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
-   }
-
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return aww.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

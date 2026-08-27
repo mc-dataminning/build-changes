@@ -1,112 +1,113 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.List;
 
-public class apy extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final ajw b;
+public class apy extends apf {
+   public static final int a = 33;
+   private static final int c = 4;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final Long2ObjectOpenHashMap<ayb<apw<?>>> d = new Long2ObjectOpenHashMap();
 
-   public apy(ajw $$0) {
-      this.b = $$0;
+   public apy() {
+      super(34, 16, 256);
+      this.b.defaultReturnValue((byte)33);
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
+   private ayb<apw<?>> g(long $$0) {
+      return (ayb<apw<?>>)this.d.computeIfAbsent($$0, $$0x -> ayb.a(4));
+   }
 
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
+   private int a(ayb<apw<?>> $$0) {
+      return $$0.isEmpty() ? 34 : $$0.b().b();
+   }
 
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
-                  }
-
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
-               }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
-            }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
-         }
+   public void a(long $$0, apw<?> $$1) {
+      ayb<apw<?>> $$2 = this.g($$0);
+      int $$3 = this.a($$2);
+      $$2.add($$1);
+      if ($$1.b() < $$3) {
+         this.b($$0, $$1.b(), true);
       }
    }
 
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
+   public void b(long $$0, apw<?> $$1) {
+      ayb<apw<?>> $$2 = this.g($$0);
+      $$2.remove($$1);
+      if ($$2.isEmpty()) {
+         this.d.remove($$0);
+      }
+
+      this.b($$0, this.a($$2), false);
+   }
+
+   public <T> void a(apx<T> $$0, cye $$1, int $$2, T $$3) {
+      this.a($$1.a(), new apw<>($$0, $$2, $$3));
+   }
+
+   public <T> void b(apx<T> $$0, cye $$1, int $$2, T $$3) {
+      apw<T> $$4 = new apw<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
+   }
+
+   public void a(int $$0) {
+      List<Pair<apw<cye>, Long>> $$1 = new ArrayList<>();
+      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<ayb<apw<?>>> $$2 = (Entry<ayb<apw<?>>>)var3.next();
+
+         for (apw<?> $$3 : (ayb)$$2.getValue()) {
+            if ($$3.a() == apx.c) {
+               $$1.add(Pair.of($$3, $$2.getLongKey()));
+            }
+         }
+      }
+
+      for (Pair<apw<cye>, Long> $$4 : $$1) {
+         Long $$5 = (Long)$$4.getSecond();
+         apw<cye> $$6 = (apw<cye>)$$4.getFirst();
+         this.b($$5, $$6);
+         cye $$7 = new cye($$5);
+         apx<cye> $$8 = $$6.a();
+         this.a($$8, $$7, $$0, $$7);
+      }
+   }
+
+   @Override
+   protected int b(long $$0) {
+      ayb<apw<?>> $$1 = (ayb<apw<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   }
+
+   public int a(cye $$0) {
+      return this.c($$0.a());
+   }
+
+   @Override
+   protected int c(long $$0) {
+      return this.b.get($$0);
+   }
+
+   @Override
+   protected void a(long $$0, int $$1) {
+      if ($$1 >= 33) {
+         this.b.remove($$0);
       } else {
-         String $$2 = apx.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
-         } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = apx.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
-         }
+         this.b.put($$0, (byte)$$1);
       }
    }
 
-   private static String a(ajw $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.af(), $$0.M(), $$0.N());
+   public void a() {
+      this.b(Integer.MAX_VALUE);
    }
 
-   private static String b(ajw $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.L(), $$0.af(), $$0.M(), $$0.N());
-   }
-
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      apx.a($$2, $$1);
-      return $$2;
+   public String d(long $$0) {
+      ayb<apw<?>> $$1 = (ayb<apw<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 }

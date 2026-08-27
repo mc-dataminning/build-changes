@@ -1,68 +1,85 @@
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class aqf implements ahc {
-   private static final vu a = vu.c("disconnect.ignoring_status_request");
-   private final MinecraftServer b;
-   private final us c;
+public class aqf implements aqb {
+   private final aqd a;
+   private final Long2ObjectOpenHashMap<dru> b = new Long2ObjectOpenHashMap();
+   private cye c = new cye(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public aqf(MinecraftServer $$0, us $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private aqf(aqd $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public static aqf b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static aqf c(int $$0) {
+      aqd $$1 = aqd.c($$0);
+      int $$2 = aqb.a($$0);
+      int $$3 = $$0 + dru.b();
+      int $$4 = aqb.a($$3);
+      return new aqf($$1, $$2, $$3, $$4);
+   }
+
+   public static aqf c() {
+      return new aqf(aqd.c(), 0, 0, 0);
    }
 
    @Override
-   public void a(agz $$0) {
-      switch ($$0.g()) {
-         case b:
-            this.a($$0, false);
-            break;
-         case a:
-            aig $$1 = this.b.av();
-            this.c.a(aik.b);
-            if (this.b.an() && $$1 != null) {
-               this.c.a(aik.a, new aqi($$1, this.c));
-            } else {
-               this.c.a(a);
-            }
-            break;
-         case c:
-            if (!this.b.bo()) {
-               this.c.a(ahl.b);
-               vu $$2 = vu.c("multiplayer.disconnect.transfers_disabled");
-               this.c.a(new ahj($$2));
-               this.c.a($$2);
-            } else {
-               this.a($$0, true);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+   public void a(cye $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
       }
    }
 
-   private void a(agz $$0, boolean $$1) {
-      this.c.a(ahl.b);
-      if ($$0.b() != aa.b().e()) {
-         vu $$2;
-         if ($$0.b() < 754) {
-            $$2 = vu.a("multiplayer.disconnect.outdated_client", aa.b().c());
+   @Override
+   public void a(cye $$0, @Nullable dru $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
          } else {
-            $$2 = vu.a("multiplayer.disconnect.incompatible", aa.b().c());
+            this.b.put($$0.a(), $$1);
          }
-
-         this.c.a(new ahj($$2));
-         this.c.a($$2);
-      } else {
-         this.c.a(ahl.a, new aqg(this.b, this.c, $$1));
       }
    }
 
    @Override
-   public void a(vu $$0) {
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
    }
 
    @Override
-   public boolean c() {
-      return this.c.i();
+   public void b() {
+      this.g = false;
+      this.a.b();
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.a.d();
+   }
+
+   @Nullable
+   public dru a(int $$0, int $$1) {
+      return (dru)this.b.get(cye.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

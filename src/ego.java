@@ -1,41 +1,81 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ego extends egr {
-   public static final Codec<ego> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ego::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public abstract class ego {
+   public static final Codec<ego> e = kr.ai.q().dispatch("element_type", ego::a, egp::codec);
+   private static final il<ejf> a = il.a(new ejf(List.of()));
+   @Nullable
+   private volatile egq.a b;
 
-   public ego(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   protected static <E extends ego> RecordCodecBuilder<E, egq.a> d() {
+      return egq.a.c.fieldOf("projection").forGetter(ego::e);
+   }
+
+   protected ego(egq.a $$0) {
+      this.b = $$0;
+   }
+
+   public abstract jg a(eji var1, dik var2);
+
+   public abstract List<ejh.c> a(eji var1, ib var2, dik var3, axr var4);
+
+   public abstract eez a(eji var1, ib var2, dik var3);
+
+   public abstract boolean a(eji var1, czs var2, czq var3, dqw var4, ib var5, ib var6, dik var7, eez var8, axr var9, boolean var10);
+
+   public abstract egp<?> a();
+
+   public void a(cyy $$0, ejh.c $$1, ib $$2, dik $$3, axr $$4, eez $$5) {
+   }
+
+   public ego a(egq.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public egq.a e() {
+      egq.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$0;
       }
    }
 
-   @Override
-   public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= aww.b(this.b, this.d, aww.g((float)$$4, (float)this.e, (float)this.f));
+   public int f() {
+      return 1;
    }
 
-   @Override
-   protected egs<?> a() {
-      return egs.b;
+   public static Function<egq.a, egh> g() {
+      return $$0 -> egh.b;
+   }
+
+   public static Function<egq.a, egl> a(String $$0) {
+      return $$1 -> new egl(Either.left(new ajt($$0)), a, $$1);
+   }
+
+   public static Function<egq.a, egl> a(String $$0, il<ejf> $$1) {
+      return $$2 -> new egl(Either.left(new ajt($$0)), $$1, $$2);
+   }
+
+   public static Function<egq.a, egn> b(String $$0) {
+      return $$1 -> new egn(Either.left(new ajt($$0)), a, $$1);
+   }
+
+   public static Function<egq.a, egn> b(String $$0, il<ejf> $$1) {
+      return $$2 -> new egn(Either.left(new ajt($$0)), $$1, $$2);
+   }
+
+   public static Function<egq.a, egi> a(il<eel> $$0) {
+      return $$1 -> new egi($$0, $$1);
+   }
+
+   public static Function<egq.a, egm> b(List<Function<egq.a, ? extends ego>> $$0) {
+      return $$1 -> new egm($$0.stream().map($$1x -> (ego)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

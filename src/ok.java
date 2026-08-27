@@ -1,14 +1,32 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
-public class ok extends oq<cqe> {
-   public ok(kr $$0, CompletableFuture<in.a> $$1) {
-      super($$0, kj.D, $$1);
+public class ok {
+   public static void a(String[] $$0) throws IOException {
+      aa.a(t.a);
+      ajv.a();
+
+      for (String $$1 : $$0) {
+         a($$1);
+      }
    }
 
-   @Override
-   protected void a(in.a $$0) {
-      this.b(auu.a).a(cqg.c).a(cqg.d).a(cqg.e).a(cqg.f);
-      this.b(auu.b).a(cqg.g).a(cqg.h).a(cqg.i).a(cqg.j);
-      this.b(auu.c).b(auu.a).b(auu.b);
+   private static void a(String $$0) throws IOException {
+      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
+         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
+            try {
+               String $$1x = Files.readString($$0x);
+               tm $$2 = ub.a($$1x);
+               tm $$3 = om.a($$0x.toString(), $$2);
+               oj.a(kw.a, $$0x, ub.b($$3));
+            } catch (IOException | CommandSyntaxException var4) {
+               throw new RuntimeException(var4);
+            }
+         });
+      }
    }
 }

@@ -1,11 +1,51 @@
-public class aut {
-   public static final avd<drp> a = a("vibrations");
-   public static final avd<drp> b = a("warden_can_listen");
-   public static final avd<drp> c = a("shrieker_can_listen");
-   public static final avd<drp> d = a("ignore_vibrations_sneaking");
-   public static final avd<drp> e = a("allay_can_listen");
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static avd<drp> a(String $$0) {
-      return avd.a(kj.B, new ajh($$0));
+public class aut<T> extends eth {
+   public static final ye<vr, aut<?>> a = yc.a(ks.ag).b(aut::a, auv::a);
+   private final auu o;
+   private final T p;
+   private final auv<T> q;
+
+   protected aut(auv<T> $$0, T $$1, auu $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
+   }
+
+   public static <T> String a(auv<T> $$0, T $$1) {
+      return a(kr.x.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable ajt $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public auv<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof aut && Objects.equals(this.d(), ((aut)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

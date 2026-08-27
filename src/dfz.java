@@ -1,37 +1,78 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfz extends dac {
+public class dfz extends dby implements deq, dfg {
    public static final MapCodec<dfz> a = b(dfz::new);
+   public static final dpx<ij> b = dpp.T;
 
    @Override
    public MapCodec<dfz> a() {
       return a;
    }
 
-   protected dfz(dna.d $$0) {
+   protected dfz(doy.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, ij.k));
    }
 
    @Override
-   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
-      if (!$$0.a(cqp.rU)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.B) {
-         return bnf.a($$2.B);
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public doz a(cuo $$0) {
+      ih $$1 = $$0.k();
+      ih $$2;
+      if ($$1.o() == ih.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         ih $$7 = $$6.b();
-         ih $$8 = $$7.o() == ih.a.b ? $$4.cE().g() : $$7;
-         $$2.a(null, $$3, aty.ux, atz.e, 1.0F, 1.0F);
-         $$2.a($$3, dae.ee.o().a(daw.b, $$8), 11);
-         cfe $$9 = new cfe(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cqm(cqp.rX, 4)
-         );
-         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bpp.d($$5));
-         $$2.a($$4, drp.M, $$3);
-         $$4.b(aui.c.b(cqp.rU));
-         return bnf.a($$2.B);
+         $$2 = ih.b;
       }
+
+      return this.n().a(b, ij.a($$1, $$2));
+   }
+
+   @Override
+   public dmf a(ib $$0, doz $$1) {
+      return new dnf($$0, $$1);
+   }
+
+   @Override
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      dmf $$5 = $$1.c_($$2);
+      if ($$5 instanceof dnf && $$3.gw()) {
+         $$3.a((dnf)$$5);
+         return boa.a($$1.B);
+      } else {
+         return boa.d;
+      }
+   }
+
+   public static boolean a(ejh.c $$0, ejh.c $$1) {
+      ih $$2 = m($$0.b());
+      ih $$3 = m($$1.b());
+      ih $$4 = n($$0.b());
+      ih $$5 = n($$1.b());
+      dnf.a $$6 = dnf.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dnf.a.b : dnf.a.a);
+      boolean $$7 = $$6 == dnf.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   }
+
+   public static ih m(doz $$0) {
+      return $$0.c(b).a();
+   }
+
+   public static ih n(doz $$0) {
+      return $$0.c(b).b();
    }
 }

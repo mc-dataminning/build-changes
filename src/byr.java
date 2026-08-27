@@ -1,59 +1,67 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class byr<T> {
-   private final T a;
-   private long b;
+public class byr extends bxl {
+   private static final int a = 10;
+   private final bqw b;
+   private final int c;
+   @Nullable
+   private ib d;
 
-   public byr(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> byr<T> a(T $$0) {
-      return new byr<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> byr<T> a(T $$0, long $$1) {
-      return new byr<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public byr(bqw $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(bxl.a.a));
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      if (this.b.cO()) {
+         return false;
+      } else if (this.b.dM().Q()) {
+         return false;
+      } else if (this.b.ei().a(this.c) != 0) {
+         return false;
+      } else {
+         aps $$0 = (aps)this.b.dM();
+         ib $$1 = this.b.dm();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            esa $$2 = cbl.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(je.a($$1x))));
+            this.d = $$2 == null ? null : ib.a($$2);
+            return this.d != null;
+         }
+      }
    }
 
-   @axz
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean b() {
+      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
    }
 
-   public static <T> Codec<byr<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new byr<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void e() {
+      if (this.d != null) {
+         bzz $$0 = this.b.K();
+         if ($$0.l() && !this.d.a(this.b.dk(), 10.0)) {
+            esa $$1 = esa.c(this.d);
+            esa $$2 = this.b.dk();
+            esa $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            esa $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            ib $$5 = ib.a($$4);
+            $$5 = this.b.dM().a(dur.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
+      }
+   }
+
+   private void h() {
+      axr $$0 = this.b.ei();
+      ib $$1 = this.b.dM().a(dur.a.f, this.b.dm().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

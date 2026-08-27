@@ -1,55 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcg extends dac {
-   public static final MapCodec<dcg> a = b(dcg::new);
-   protected static final eqm b = dcz.c;
+public class dcg extends daw {
+   public static final MapCodec<dcg> b = b(dcg::new);
+   public static final int c = 5;
+   private static final ih[] d = ih.values();
 
    @Override
    public MapCodec<dcg> a() {
-      return a;
+      return b;
    }
 
-   protected dcg(dna.d $$0) {
+   public dcg(doy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean g_(dnb $$0) {
-      return true;
-   }
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if ($$3.a(5) == 0) {
+         ih $$4 = d[$$3.a(d.length)];
+         ib $$5 = $$2.a($$4);
+         doz $$6 = $$1.a_($$5);
+         dby $$7 = null;
+         if (g($$6)) {
+            $$7 = dca.qy;
+         } else if ($$6.a(dca.qy) && $$6.c(dax.d) == $$4) {
+            $$7 = dca.qx;
+         } else if ($$6.a(dca.qx) && $$6.c(dax.d) == $$4) {
+            $$7 = dca.qw;
+         } else if ($$6.a(dca.qw) && $$6.c(dax.d) == $$4) {
+            $$7 = dca.qv;
+         }
 
-   @Override
-   public dnb a(csu $$0) {
-      return !this.o().a((cxe)$$0.q(), $$0.a()) ? dac.a(this.o(), dae.j.o(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+         if ($$7 != null) {
+            doz $$8 = $$7.n().a(dax.d, $$4).a(dax.c, Boolean.valueOf($$6.u().a() == ekt.c));
+            $$1.b($$5, $$8);
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      dcz.a(null, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      dnb $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof ddb;
-   }
-
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      return false;
+   public static boolean g(doz $$0) {
+      return $$0.i() || $$0.a(dca.G) && $$0.u().e() == 8;
    }
 }

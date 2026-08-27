@@ -1,56 +1,50 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ddp extends dac {
-   protected final ih a;
-   protected final boolean b;
-   protected final eqm d;
+public class ddp extends dbi {
+   public static final MapCodec<ddp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddn.a.forGetter($$0x -> $$0x.e), u()).apply($$0, ddp::new));
+   private final dby e;
+   protected static final float b = 6.0F;
+   protected static final est c = dby.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
-   protected ddp(dna.d $$0, ih $$1, eqm $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<ddp> a() {
+      return a;
+   }
+
+   protected ddp(dby $$0, doy.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends ddp> a();
-
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      dnb $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
-   }
-
-   public dnb a(cxc $$0) {
-      return this.o();
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      this.a($$0, (cyy)$$1, $$2);
    }
 
    @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      ib $$3 = $$2.a(this.a.g());
-      dnb $$4 = $$1.a_($$3);
-      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.n().a(d, Boolean.valueOf(false)), 2);
       }
    }
 
-   protected boolean m(dnb $$0) {
-      return true;
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
+         return dca.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, ekt.c, ekt.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return this.d;
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return c;
    }
-
-   protected abstract ddr c();
-
-   protected abstract dac b();
 }

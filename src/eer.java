@@ -1,24 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
 
-@FunctionalInterface
-public interface eer {
-   eer a = $$0 -> $$0;
+public class eer extends een {
+   public static final Codec<eer> a = aws.j.fieldOf("chance").xmap(eer::new, $$0 -> $$0.c).codec();
+   private final int c;
 
-   ajg<een> lookup(ajg<een> var1);
+   private eer(int $$0) {
+      this.c = $$0;
+   }
 
-   static eer create(List<eep> $$0, ib $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         axd $$3 = axd.a($$2).e().a($$1);
-         Builder<ajg<een>, ajg<een>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<ajg<een>, ajg<een>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   public static eer a(int $$0) {
+      return new eer($$0);
+   }
+
+   @Override
+   protected boolean a(eem $$0, axr $$1, ib $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public eep<?> b() {
+      return eep.b;
    }
 }

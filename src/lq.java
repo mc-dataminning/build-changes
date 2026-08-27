@@ -1,67 +1,48 @@
-import java.util.Set;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
-public class lq extends lj {
-   protected lq() {
-      super(Set.of(), clh.a(clj.c));
+public class lq implements ky {
+   private final la d;
+   private final CompletableFuture<in.a> e;
+
+   public lq(la $$0, CompletableFuture<in.a> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   protected void b() {
-      this.t(dae.tq);
-      this.t(dae.qH);
-      this.t(dae.qB);
-      this.t(dae.qC);
-      this.t(dae.qD);
-      this.t(dae.qF);
-      this.t(dae.qG);
-      this.t(dae.qI);
-      this.t(dae.qK);
-      this.t(dae.qL);
-      this.t(dae.qM);
-      this.a(dae.qA, $$1 -> this.a($$1));
-      this.a(dae.qJ, $$1 -> this.a($$1));
-      this.a(dae.qE, $$1 -> this.a($$1));
-      this.t(dae.rj);
-      this.t(dae.ri);
-      this.t(dae.rh);
-      this.t(dae.rg);
-      this.t(dae.rn);
-      this.t(dae.rm);
-      this.t(dae.rl);
-      this.t(dae.rk);
-      this.a(dae.rM, $$1 -> this.q($$1));
-      this.a(dae.rN, $$1 -> this.q($$1));
-      this.a(dae.rP, $$1 -> this.q($$1));
-      this.a(dae.rO, $$1 -> this.q($$1));
-      this.a(dae.rQ, $$1 -> this.q($$1));
-      this.a(dae.rR, $$1 -> this.q($$1));
-      this.a(dae.rT, $$1 -> this.q($$1));
-      this.a(dae.rS, $$1 -> this.q($$1));
-      this.t(dae.rU);
-      this.t(dae.rV);
-      this.t(dae.rX);
-      this.t(dae.rW);
-      this.t(dae.rY);
-      this.t(dae.rZ);
-      this.t(dae.sb);
-      this.t(dae.sa);
-      this.t(dae.sc);
-      this.t(dae.sd);
-      this.t(dae.se);
-      this.t(dae.sf);
-      this.t(dae.sg);
-      this.t(dae.sh);
-      this.t(dae.si);
-      this.t(dae.sj);
-      this.t(dae.sk);
-      this.t(dae.sl);
-      this.t(dae.sm);
-      this.t(dae.sn);
-      this.t(dae.so);
-      this.t(dae.sp);
-      this.t(dae.sq);
-      this.t(dae.sr);
-      this.a(dae.tr, a());
-      this.a(dae.ts, a());
+   public CompletableFuture<?> a(kw $$0) {
+      Path $$1 = this.d.a(la.b.c).resolve("items.json");
+      return this.e.thenCompose($$2 -> {
+         JsonObject $$3 = new JsonObject();
+         ajr<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+         $$2.b(ks.F).b().forEach($$2x -> {
+            JsonObject $$3x = new JsonObject();
+            JsonArray $$4x = new JsonArray();
+            ((cre)$$2x.a()).o().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
+            $$3x.add("components", $$4x);
+            $$3.add($$2x.g(), $$3x);
+         });
+         return ky.a($$0, $$3, $$1);
+      });
+   }
+
+   private static <T> JsonElement a(jr<T> $$0, DynamicOps<JsonElement> $$1) {
+      ajt $$2 = kr.at.b($$0.a());
+      JsonElement $$3 = ac.a($$0.a($$1), $$1x -> new IllegalStateException("Failed to serialize component " + $$2 + ": " + $$1x));
+      JsonObject $$4 = new JsonObject();
+      $$4.addProperty("type", $$2.toString());
+      $$4.add("value", $$3);
+      return $$4;
+   }
+
+   @Override
+   public final String a() {
+      return "Item List";
    }
 }

@@ -1,92 +1,76 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class eoh implements eoj {
-   private static final String d = "block_entity";
-   private static final eoh.a e = new eoh.a() {
-      @Override
-      public tx a(ekw $$0) {
-         dki $$1 = $$0.c(enh.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
+public class eoh extends eoo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<ip<cwq>> c = kr.f.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
+   public static final Codec<eoh> a = RecordCodecBuilder.create($$0 -> a($$0).and(aws.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, eoh::new));
+   private final Optional<ip<cwq>> d;
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
+   eoh(List<eqc> $$0, Optional<ip<cwq>> $$1) {
+      super($$0);
+      this.d = $$1;
+   }
 
-      @Override
-      public Set<ene<?>> b() {
-         return ImmutableSet.of(enh.h);
-      }
-   };
-   public static final eoh a = new eoh(e);
-   private static final Codec<eoh.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
+   @Override
+   public eoq b() {
+      return eor.e;
+   }
+
+   @Override
+   public crj a(crj $$0, enb $$1) {
+      axr $$2 = $$1.b();
+      Optional<il<cwq>> $$3 = this.d.<il<cwq>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(crm.qO);
+         List<il.c<cwq>> $$3x = kr.f.h().filter($$0xx -> ((cwq)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cwq)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
       } else {
-         ekw.b $$1 = ekw.b.a($$0);
-         return b($$1);
+         return a($$0, $$3.get().a(), $$2);
       }
-   }, eoh.a::a);
-   public static final Codec<eoh> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eoh::new));
-   public static final Codec<eoh> c = f.xmap(eoh::new, $$0 -> $$0.g);
-   private final eoh.a g;
-
-   private static eoh.a b(final ekw.b $$0) {
-      return new eoh.a() {
-         @Nullable
-         @Override
-         public tx a(ekw $$0x) {
-            box $$1 = $$0.c($$0.a());
-            return $$1 != null ? co.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<ene<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
    }
 
-   private eoh(eoh.a $$0) {
-      this.g = $$0;
+   private static crj a(crj $$0, cwq $$1, axr $$2) {
+      int $$3 = axk.a($$2, $$1.f(), $$1.a());
+      if ($$0.a(crm.qO)) {
+         $$0 = new crj(crm.uu);
+      }
+
+      $$0.a($$1, $$3);
+      return $$0;
    }
 
-   @Override
-   public eoi a() {
-      return eok.c;
+   public static eoh.a c() {
+      return new eoh.a();
    }
 
-   @Nullable
-   @Override
-   public tx a(ekw $$0) {
-      return this.g.a($$0);
+   public static eoo.a<?> d() {
+      return a($$0 -> new eoh($$0, Optional.empty()));
    }
 
-   @Override
-   public Set<ene<?>> b() {
-      return this.g.b();
-   }
+   public static class a extends eoo.a<eoh.a> {
+      private final List<il<cwq>> a = new ArrayList<>();
 
-   public static eoj a(ekw.b $$0) {
-      return new eoh(b($$0));
-   }
+      protected eoh.a a() {
+         return this;
+      }
 
-   interface a {
-      @Nullable
-      tx a(ekw var1);
+      public eoh.a a(cwq $$0) {
+         this.a.add($$0.k());
+         return this;
+      }
 
-      String a();
-
-      Set<ene<?>> b();
+      @Override
+      public eop b() {
+         return new eoh(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ip.a(this.a)));
+      }
    }
 }

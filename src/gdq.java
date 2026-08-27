@@ -1,15 +1,41 @@
-public class gdq extends geh<che, foo<che>> {
-   private static final ajh a = new ajh("textures/entity/hoglin/hoglin.png");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public gdq(gdb.a $$0) {
-      super($$0, new foo<>($$0.a(fre.an)), 0.7F);
+public class gdq implements gdl.a {
+   private final fbp a;
+   private static final int b = 10;
+
+   public gdq(fbp $$0) {
+      this.a = $$0;
    }
 
-   public ajh a(che $$0) {
-      return a;
-   }
+   @Override
+   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
+      cyx $$5 = this.a.r;
+      ib $$6 = ib.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   protected boolean b(che $$0) {
-      return super.a($$0) || $$0.y();
+      for (ib $$8 : ib.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(czg.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = axk.h($$10, 0.9F, 0.9F);
+         long $$12 = je.e($$8.a());
+         if ($$7.add($$12)) {
+            gdl.a(
+               $$0,
+               $$1,
+               $$5.M().p().a(czg.a, je.a($$12)),
+               (double)je.a(je.b($$12), 8),
+               (double)je.a(je.c($$12), 8),
+               (double)je.a(je.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gdl.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

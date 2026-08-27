@@ -1,64 +1,156 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dml(ajh d, double e, double f, cqm g, Optional<ajh> h, dmd i, dmd.a j) {
-   static final String a = "config";
-   static dml b = new dml();
-   static Codec<dml> c = awe.b(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ajh.a.optionalFieldOf("loot_table", b.b()).forGetter(dml::b),
-                  Codec.DOUBLE.optionalFieldOf("activation_range", b.c()).forGetter(dml::c),
-                  Codec.DOUBLE.optionalFieldOf("deactivation_range", b.d()).forGetter(dml::d),
-                  cqm.a.optionalFieldOf("key_item", b.e()).forGetter(dml::e),
-                  ajh.a.optionalFieldOf("override_loot_table_to_display").forGetter(dml::f)
-               )
-               .apply($$0, dml::new)
-      ),
-      dml::h
-   );
+public class dml extends dmf implements bnr {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final iu<crj> c = iu.a(4, crj.i);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final cvm.a<bnt, cux> f = cvm.b(cvo.e);
 
-   private dml() {
-      this(eku.S, 4.0, 4.5, new cqm(cqp.yq), Optional.empty(), dmd.b, dmd.a.a);
+   public dml(ib $$0, doz $$1) {
+      super(dmh.G, $$0, $$1);
    }
 
-   public dml(ajh $$0, double $$1, double $$2, cqm $$3, Optional<ajh> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   public static void a(cyx $$0, ib $$1, doz $$2, dml $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         crj $$6 = $$3.c.get($$5);
+         if (!$$6.d()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               bnt $$7 = new boj($$6);
+               crj $$8 = $$3.f.a($$7, $$0).map($$2x -> ((cux)$$2x.b()).a($$7, $$0.H_())).orElse($$6);
+               if ($$8.a($$0.J())) {
+                  bnw.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, crj.i);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(dts.c, $$1, dts.a.a($$2));
+               }
+            }
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   public dmd a() {
-      return this.i;
+   public static void b(cyx $$0, ib $$1, doz $$2, dml $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = axk.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   private DataResult<dml> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   public static void c(cyx $$0, ib $$1, doz $$2, dml $$3) {
+      axr $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dcm.a($$0, $$1, $$2.c(dcm.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(dcm.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).d() && $$4.i() < 0.2F) {
+            ih $$8 = ih.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(kl.ac, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
    }
 
-   public ajh b() {
-      return this.d;
+   public iu<crj> b() {
+      return this.c;
    }
 
-   public double c() {
-      return this.e;
+   @Override
+   public void a(tm $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      bnu.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
    }
 
-   public double d() {
-      return this.f;
+   @Override
+   protected void b(tm $$0, in.a $$1) {
+      super.b($$0, $$1);
+      bnu.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
    }
 
-   public cqm e() {
-      return this.g;
+   public abf c() {
+      return abf.a(this);
    }
 
-   public Optional<ajh> f() {
-      return this.h;
+   @Override
+   public tm a(in.a $$0) {
+      tm $$1 = new tm();
+      bnu.a($$1, this.c, true, $$0);
+      return $$1;
    }
 
-   public dmd.a g() {
-      return this.j;
+   public Optional<cvl<cux>> a(crj $$0) {
+      return this.c.stream().noneMatch(crj::d) ? Optional.empty() : this.f.a(new boj($$0), this.o);
+   }
+
+   public boolean a(@Nullable bpv $$0, crj $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         crj $$4 = this.c.get($$3);
+         if ($$4.d()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.a(1));
+            this.o.a(dts.c, this.aA_(), dts.a.a($$0, this.n()));
+            this.f();
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private void f() {
+      this.e();
+      this.i().a(this.aA_(), this.n(), this.n(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void d() {
+      if (this.o != null) {
+         this.f();
+      }
    }
 }

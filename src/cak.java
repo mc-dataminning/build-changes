@@ -1,33 +1,43 @@
-public class cak {
-   public static boolean a(bpr $$0) {
-      return $$0.K() instanceof byz;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+public class cak extends cax<cid> {
+   @Override
+   public Set<bzr<?>> a() {
+      return ImmutableSet.of(bzr.h, bzr.aw, bzr.aq, bzr.ap, bzr.as, bzr.at, new bzr[0]);
    }
 
-   public static boolean a(bpx $$0, int $$1) {
-      return $$0.fZ() && $$0.fW().a($$0.dk(), (double)($$0.fX() + (float)$$1) + 1.0);
+   protected void a(aps $$0, cid $$1) {
+      brp<?> $$2 = $$1.dP();
+      $$2.a(bzr.aw, this.b($$0, $$1));
+      Optional<cij> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cid> $$5 = Lists.newArrayList();
+      bzt $$6 = $$2.c(bzr.h).orElse(bzt.a());
+
+      for (bqo $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cij || $$0x instanceof cid))) {
+         if ($$7 instanceof cij $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cid $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(bzr.aq, $$3);
+      $$2.a(bzr.ap, $$5);
+      $$2.a(bzr.as, $$4);
+      $$2.a(bzr.at, $$5.size());
    }
 
-   public static boolean a(ib $$0, bpx $$1) {
-      return $$0.v() < $$1.dM().I_() || $$0.v() > $$1.dM().ak();
-   }
-
-   public static boolean a(boolean $$0, bpx $$1, ib $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bza $$0, ib $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bpx $$0, ib $$1) {
-      return $$0.dM().b_($$1).a(aus.a);
-   }
-
-   public static boolean b(bpx $$0, ib $$1) {
-      return $$0.a(ejj.a($$0.dM(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bpx $$0, ib $$1) {
-      return $$0.dM().a_($$1).e();
+   private Optional<ib> b(aps $$0, cid $$1) {
+      return ib.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(avc.aS));
    }
 }

@@ -1,35 +1,23 @@
-public class ghu<T extends bpp> extends ghm<T, fpk<T>> {
-   public static final ajh a = new ajh("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final frf c;
+public class ghu extends gfh<cky> {
+   public static final ajt a = new ajt("textures/entity/trident.png");
+   private final fsr f;
 
-   public ghu(gew<T, fpk<T>> $$0, frb $$1) {
+   public ghu(gfi.a $$0) {
       super($$0);
-      frf $$2 = $$1.a(fre.aZ);
-      this.c = $$2.b("box");
+      this.f = new fsr($$0.a(ftl.bI));
    }
 
-   public static frl a() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      $$1.a("box", frk.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), frh.a);
-      return frl.a($$0, 64, 64);
+   public void a(cky $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(axk.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(axk.i($$2, $$0.O, $$0.dE()) + 90.0F));
+      ewm $$6 = ggg.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fo()) {
-         euf $$10 = $$1.getBuffer(fya.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, git.d);
-            $$0.b();
-         }
-      }
+   public ajt a(cky $$0) {
+      return a;
    }
 }

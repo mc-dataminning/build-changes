@@ -1,143 +1,99 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
-public class lu implements lm {
+public abstract class lu implements lw {
+   protected static final br.a a = br.a.a().a(bp.a.a().a(true));
+   private static final Set<bqb<?>> b = ImmutableSet.of(bqb.bx, bqb.d, bqb.af, bqb.aR, bqb.bi);
+   private final cmg c;
+   private final cmg d;
+   private final Map<bqb<?>, Map<ajt, enj.a>> e = Maps.newHashMap();
+
+   protected lu(cmg $$0) {
+      this($$0, $$0);
+   }
+
+   protected lu(cmg $$0, cmg $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   protected static enj.a a(cyw $$0) {
+      return enj.b().a(eni.a().a(eqv.a(1.0F)).a(enr.a($$0))).a(eni.a().a(eqv.a(1.0F)).a(enx.a(bqb.aI.j())));
+   }
+
+   public abstract void a();
+
    @Override
-   public void generate(BiConsumer<ajh, ele.a> $$0) {
-      $$0.accept(
-         eku.aP,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.xH).a(2))
-                  .a(elm.a(cqp.xJ).a(2))
-                  .a(elm.a(cqp.qK))
-                  .a(elm.a(cqp.oy))
-                  .a(elm.a(cqp.po))
-                  .a(
-                     elm.a(cqp.vS)
-                        .a(
-                           ena.c()
-                              .a(bom.p, eot.a(7.0F, 10.0F))
-                              .a(bom.h, eot.a(7.0F, 10.0F))
-                              .a(bom.r, eot.a(6.0F, 8.0F))
-                              .a(bom.o, eot.a(5.0F, 7.0F))
-                              .a(bom.s, eot.a(10.0F, 20.0F))
-                              .a(bom.w, eot.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$0.accept(
-         eku.aQ,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.xG))
-                  .a(elm.a(cqp.xR))
-                  .a(elm.a(cqp.xU))
-                  .a(elm.a(cqp.xX))
-                  .a(elm.a(cqp.ox))
-                  .a(elm.a(cqp.mc))
-                  .a(elm.a(cqp.pt))
-                  .a(elm.a(cqp.oy))
-            )
-      );
-      $$0.accept(
-         eku.aR,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.oy).a(2))
-                  .a(elm.a(cqp.pv).a(2))
-                  .a(elm.a(cqp.oO).a(2))
-                  .a(elm.a(cqp.eW).a(2))
-                  .a(elm.a(cqp.qK).a(2))
-                  .a(elm.a(cqp.rl).a(2))
-                  .a(elm.a(cqp.rs).a(2))
-                  .a(elm.a(cqp.rk).a(2))
-                  .a(elm.a(cqp.rh).a(2))
-                  .a(elm.a(cqp.ri).a(2))
-                  .a(elm.a(cqp.xb).a(2))
-                  .a(elm.a(cqp.xa).a(2))
-                  .a(elm.a(cqp.wX).a(2))
-                  .a(elm.a(cqp.wZ).a(2))
-                  .a(elm.a(cqp.iu))
-                  .a(elm.a(cqp.iy))
-                  .a(elm.a(cqp.iD))
-                  .a(elm.a(cqp.iv))
-                  .a(elm.a(cqp.iG))
-                  .a(elm.a(cqp.iw))
-                  .a(elm.a(cqp.iC))
-                  .a(elm.a(cqp.qn))
-                  .a(elm.a(cqp.qm))
-                  .a(elm.a(cqp.sh))
-                  .a(elm.a(cqp.ov))
-                  .a(elm.a(cqp.pu))
-                  .a(elm.a(cqp.vj))
-                  .a(elm.a(cqp.cQ))
-                  .a(elm.a(cqp.uc))
-                  .a(elm.a(cqp.pr))
-                  .a(elm.a(cqp.uI))
-            )
-      );
-      $$0.accept(
-         eku.aS,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.xK))
-                  .a(elm.a(cqp.xL))
-                  .a(elm.a(cqp.xN))
-                  .a(elm.a(cqp.xO))
-                  .a(elm.a(cqp.xP))
-                  .a(elm.a(cqp.xQ))
-                  .a(elm.a(cqp.xV))
-                  .a(elm.a(cqp.xA))
-                  .a(elm.a(cqp.xD))
-                  .a(elm.a(cqp.xB))
-                  .a(elm.a(cqp.xE))
-                  .a(elm.a(cqp.vJ))
-            )
-      );
-      $$0.accept(
-         eku.aT,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.xF))
-                  .a(elm.a(cqp.xW))
-                  .a(elm.a(cqp.xY))
-                  .a(elm.a(cqp.kp))
-                  .a(elm.a(cqp.pc))
-                  .a(elm.a(cqp.oy).a(2))
-                  .a(elm.a(cqp.pv).a(2))
-                  .a(elm.a(cqp.oO).a(2))
-                  .a(elm.a(cqp.ov).a(2))
-                  .a(elm.a(cqp.sh).a(2))
-            )
-      );
-      $$0.accept(
-         eku.aU,
-         ele.b()
-            .a(
-               eld.a()
-                  .a(eoo.a(1.0F))
-                  .a(elm.a(cqp.xI))
-                  .a(elm.a(cqp.xM))
-                  .a(elm.a(cqp.xS))
-                  .a(elm.a(cqp.xT))
-                  .a(elm.a(cqp.pc))
-                  .a(elm.a(cqp.oy).a(2))
-                  .a(elm.a(cqp.pv).a(2))
-                  .a(elm.a(cqp.oO).a(2))
-                  .a(elm.a(cqp.ov).a(2))
-                  .a(elm.a(cqp.sh).a(2))
-            )
-      );
+   public void generate(in.a $$0, BiConsumer<ajt, enj.a> $$1) {
+      this.a();
+      Set<ajt> $$2 = Sets.newHashSet();
+      kr.g
+         .h()
+         .forEach(
+            $$2x -> {
+               bqb<?> $$3 = (bqb<?>)$$2x.a();
+               if ($$3.a(this.c)) {
+                  if (a($$3)) {
+                     Map<ajt, enj.a> $$4 = this.e.remove($$3);
+                     ajt $$5 = $$3.j();
+                     if (!$$5.equals(emz.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2x.h().a()));
+                     }
+
+                     if ($$4 != null) {
+                        $$4.forEach(($$3x, $$4x) -> {
+                           if (!$$2.add($$3x)) {
+                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2x.h().a()));
+                           } else {
+                              $$1.accept($$3x, $$4x);
+                           }
+                        });
+                     }
+                  } else {
+                     Map<ajt, enj.a> $$6 = this.e.remove($$3);
+                     if ($$6 != null) {
+                        throw new IllegalStateException(
+                           String.format(
+                              Locale.ROOT,
+                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
+                              $$6.keySet().stream().map(ajt::toString).collect(Collectors.joining(",")),
+                              $$2x.h().a()
+                           )
+                        );
+                     }
+                  }
+               }
+            }
+         );
+      if (!this.e.isEmpty()) {
+         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
+      }
+   }
+
+   private static boolean a(bqb<?> $$0) {
+      return b.contains($$0) || $$0.f() != bqr.h;
+   }
+
+   protected eqc.a b() {
+      return epw.a(bg.a.a().b(br.a.a().a(bqb.R)));
+   }
+
+   protected eqc.a a(cco $$0) {
+      return epw.a(bg.a.a().b(br.a.a().a(bqb.R).a(bs.a($$0))));
+   }
+
+   protected void a(bqb<?> $$0, enj.a $$1) {
+      this.a($$0, $$0.j(), $$1);
+   }
+
+   protected void a(bqb<?> $$0, ajt $$1, enj.a $$2) {
+      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

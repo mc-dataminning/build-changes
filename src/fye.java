@@ -1,64 +1,56 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fye extends fxv {
+   private final fyi b;
+   protected boolean a;
 
-public class fye {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<fyd> c;
-   private volatile int d;
-
-   private fye(List<fyd> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   fye(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
-   public static fye a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fyd.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<fyd> $$3 = new ArrayList<>($$2);
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new fyd());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+   @Override
+   public fxr b() {
+      return fxr.c;
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      return new fye($$3);
-   }
-
-   @Nullable
-   public fyd a() {
-      fyd $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fye $$8 = new fye($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
       }
    }
 
-   public void a(fyd $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
-   }
+   public static class b implements fxq<ko> {
+      private final fyi a;
 
-   public boolean b() {
-      return this.c.isEmpty();
-   }
+      public b(fyi $$0) {
+         this.a = $$0;
+      }
 
-   public int c() {
-      return this.d;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fye $$8 = new fye($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

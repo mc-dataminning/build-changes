@@ -1,31 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public interface efb {
+   ajs<efh> a = a("pillager_outpost");
+   ajs<efh> b = a("mineshaft");
+   ajs<efh> c = a("mineshaft_mesa");
+   ajs<efh> d = a("mansion");
+   ajs<efh> e = a("jungle_pyramid");
+   ajs<efh> f = a("desert_pyramid");
+   ajs<efh> g = a("igloo");
+   ajs<efh> h = a("shipwreck");
+   ajs<efh> i = a("shipwreck_beached");
+   ajs<efh> j = a("swamp_hut");
+   ajs<efh> k = a("stronghold");
+   ajs<efh> l = a("monument");
+   ajs<efh> m = a("ocean_ruin_cold");
+   ajs<efh> n = a("ocean_ruin_warm");
+   ajs<efh> o = a("fortress");
+   ajs<efh> p = a("nether_fossil");
+   ajs<efh> q = a("end_city");
+   ajs<efh> r = a("buried_treasure");
+   ajs<efh> s = a("bastion_remnant");
+   ajs<efh> t = a("village_plains");
+   ajs<efh> u = a("village_desert");
+   ajs<efh> v = a("village_savanna");
+   ajs<efh> w = a("village_snowy");
+   ajs<efh> x = a("village_taiga");
+   ajs<efh> y = a("ruined_portal");
+   ajs<efh> z = a("ruined_portal_desert");
+   ajs<efh> A = a("ruined_portal_jungle");
+   ajs<efh> B = a("ruined_portal_swamp");
+   ajs<efh> C = a("ruined_portal_mountain");
+   ajs<efh> D = a("ruined_portal_ocean");
+   ajs<efh> E = a("ruined_portal_nether");
+   ajs<efh> F = a("ancient_city");
+   ajs<efh> G = a("trail_ruins");
+   ajs<efh> H = a("trial_chambers");
 
-public class efb extends ede {
-   public static final Codec<efb> d = a(efb::new);
-
-   public efb(ede.c $$0) {
-      super($$0);
-   }
-
-   @Override
-   public Optional<ede.b> a(ede.a $$0) {
-      dgo $$1 = dgo.a($$0.f());
-      ib $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ede.b($$2, (Consumer<edw>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(edw $$0, ib $$1, dgo $$2, ede.a $$3) {
-      List<edi> $$4 = Lists.newArrayList();
-      efa.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public edn<?> e() {
-      return edn.c;
+   private static ajs<efh> a(String $$0) {
+      return ajs.a(ks.aF, new ajt($$0));
    }
 }

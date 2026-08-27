@@ -1,54 +1,98 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
 public class dsk {
-   public static enum a implements axq {
-      a("air"),
-      b("liquid");
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dsk> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dsk> i = new Object2ObjectOpenHashMap();
+   public static final dsk a = a(new dsk(1, null, $$0 -> new awt(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dsk b = a(
+      new dsk(2, "deflate", $$0 -> new awt(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dsk c = a(new dsk(3, "none", awt::new, BufferedOutputStream::new));
+   public static final dsk d = a(
+      new dsk(4, "lz4", $$0 -> new awt(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dsk e = a(new dsk(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dsk f = b;
+   private static volatile dsk j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dsk.a<InputStream> m;
+   private final dsk.a<OutputStream> n;
 
-      public static final Codec<dsk.a> c = axq.a(dsk.a::values);
-      private final String d;
+   private dsk(int $$0, @Nullable String $$1, dsk.a<InputStream> $$2, dsk.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
 
-      private a(String $$0) {
-         this.d = $$0;
+   private static dsk a(dsk $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
       }
 
-      public String a() {
-         return this.d;
-      }
+      return $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.d;
+   @Nullable
+   public static dsk a(int $$0) {
+      return (dsk)h.get($$0);
+   }
+
+   public static void a(String $$0) {
+      dsk $$1 = (dsk)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
       }
    }
 
-   public static enum b implements axq {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   public static dsk a() {
+      return j;
+   }
 
-      public static final Codec<dsk.b> l = axq.a(dsk.b::values);
-      private final String m;
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
+   }
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
+   public int b() {
+      return this.k;
+   }
 
-      public String a() {
-         return this.m;
-      }
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
 
-      @Override
-      public String c() {
-         return this.m;
-      }
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

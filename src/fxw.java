@@ -1,88 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+public class fxw extends fyn {
+   private final fyi a;
 
-public class fxw implements AutoCloseable {
-   private final fxi c;
-   public final esn a;
-   public final esn b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-
-   public fxw(aso $$0, String $$1, esn $$2, esn $$3) throws IOException {
-      this.c = new fxi($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   fxw(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public void close() {
-      this.c.close();
+   public int a(float $$0) {
+      return 240;
    }
 
-   public final String a() {
-      return this.c.h();
+   @Override
+   public fxr b() {
+      return fxr.c;
    }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+   public static record a(fyi a) implements fxq<km> {
+      public fxn a(km $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxw $$8 = new fxw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      ezi $$4 = ezi.Q();
-      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
-      this.c.g();
-      this.b.b(ezi.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      etw $$5 = eud.b().d();
-      $$5.a(eug.b.h, etz.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      etx.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof esn) {
-            ((esn)$$6).d();
-         }
-      }
-   }
-
-   public fxi b() {
-      return this.c;
    }
 }

@@ -1,23 +1,12 @@
-public record aim<T>(int a, ain<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aim<?> $$1 = (aim<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+public class aim {
+   public static final yp<ail> a = a("pong_response");
+   public static final yp<aio> b = b("ping_request");
+
+   private static <T extends yn<aik>> yp<T> a(String $$0) {
+      return new yp<>(yo.b, new ajt($$0));
    }
 
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   private static <T extends yn<ain>> yp<T> b(String $$0) {
+      return new yp<>(yo.a, new ajt($$0));
    }
 }

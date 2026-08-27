@@ -1,200 +1,57 @@
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
+
 public class fae {
-   public static final ezz a = ezz.a.a(1.125F)
-      .a(
-         "head",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(-12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.b(-12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.9167F, fab.b(5.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, -2.0F, 0.0F), ezy.b.a),
-            new faa(0.7917F, fab.a(0.0F, -1.0F, 2.0F), ezy.b.a),
-            new faa(0.9583F, fab.a(0.0F, -1.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a("wind_bottom", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a(
-         "wind_mid",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.b(12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.9167F, fab.b(-10.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, 0.0F, 5.0F), ezy.b.a),
-            new faa(0.75F, fab.a(0.0F, 0.0F, 6.0F), ezy.b.a),
-            new faa(0.9167F, fab.a(0.0F, 0.0F, -2.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(15.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.b(15.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.9167F, fab.b(-10.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, 0.0F, 3.0F), ezy.b.a),
-            new faa(0.8333F, fab.a(0.0F, 0.0F, 4.0F), ezy.b.a),
-            new faa(0.9583F, fab.a(0.0F, 0.0F, -2.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.b(12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.9167F, fab.b(-2.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, 3.0F, 5.0F), ezy.b.a),
-            new faa(0.8333F, fab.a(0.0F, 3.0F, 6.0F), ezy.b.a),
-            new faa(0.9583F, fab.a(0.0F, 3.0F, -1.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a("rods", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(1.0F, fab.b(0.0F, 360.0F, 0.0F), ezy.b.a)))
-      .b();
-   public static final ezz b = ezz.a.a(1.125F)
-      .a(
-         "body",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.a(0.0F, -10.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.a(0.0F, -10.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.a(0.0F, 11.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(22.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(22.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.8333F, fab.b(-19.25F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new ezy(
-            ezy.d.c,
-            new faa(0.0F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.5F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.625F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.75F, fab.a(1.0, 1.3F, 1.0), ezy.b.a),
-            new faa(1.125F, fab.a(1.0, 1.0, 1.0), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, 90.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 360.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new ezy(
-            ezy.d.c,
-            new faa(0.0F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.5F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.625F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.75F, fab.a(1.0, 1.1F, 1.0), ezy.b.a),
-            new faa(1.125F, fab.a(1.0, 1.0, 1.0), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 180.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.a(0.0F, -6.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.a(0.0F, -6.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.a(0.0F, 2.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(0.0F, 90.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.a(0.0F, -5.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.a(0.0F, -5.0F, 0.0F), ezy.b.a),
-            new faa(0.75F, fab.a(0.0F, 2.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a("rods", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.8333F, fab.b(0.0F, 360.0F, 0.0F), ezy.b.a)))
-      .b();
-   public static final ezz c = ezz.a.a(0.2F)
-      .a("body", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.2F, fab.a(0.0F, 0.0F, -6.0F), ezy.b.a)))
-      .a("wind_mid", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.2F, fab.a(0.0F, 0.0F, -3.0F), ezy.b.a)))
-      .a("wind_top", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.2F, fab.a(0.0F, 0.0F, -2.0F), ezy.b.a)))
-      .b();
-   public static final ezz d = ezz.a.a(0.1F)
-      .a("body", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, -6.0F), ezy.b.a), new faa(0.1F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("wind_mid", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, -3.0F), ezy.b.a), new faa(0.1F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("wind_top", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, -2.0F), ezy.b.a), new faa(0.1F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .b();
+   private static final Map<String, fae.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final ajt c = new ajt("textures/gui/presets/isles.png");
+
+   public static ajt a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
+   }
+
+   private static ajt b(String $$0, String $$1) {
+      fae.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         evj $$3 = a($$1);
+         if ($$3 == null) {
+            ajt $$4 = gkz.b();
+            a.put($$0, new fae.a($$1, $$4));
+            return $$4;
+         } else {
+            ajt $$5 = new ajt("realms", "dynamic/" + $$0);
+            fbp.Q().aa().a($$5, new gkw($$3));
+            a.put($$0, new fae.a($$1, $$5));
+            return $$5;
+         }
+      }
+   }
+
+   @Nullable
+   private static evj a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return evj.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
+   }
+
+   public static record a(String a, ajt b) {
+   }
 }

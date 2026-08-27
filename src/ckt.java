@@ -1,149 +1,79 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public abstract class ckt extends ckl {
+   protected ckt(bqb<? extends ckt> $$0, cyx $$1) {
+      super($$0, $$1);
+   }
 
-public interface ckt extends bmw, bnh {
-   ept dk();
+   protected ckt(bqb<? extends ckt> $$0, double $$1, double $$2, double $$3, cyx $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
+   }
 
-   epo cH();
-
-   @Nullable
-   ajh B();
-
-   void a(@Nullable ajh var1);
-
-   long C();
-
-   void a(long var1);
-
-   iu<cqm> D();
-
-   void E();
-
-   cxb dM();
-
-   boolean dH();
+   protected ckt(bqb<? extends ckt> $$0, bqo $$1, cyx $$2) {
+      this($$0, $$1.dr(), $$1.dv() - 0.1F, $$1.dx(), $$2);
+      this.c($$1);
+   }
 
    @Override
-   default boolean ai_() {
-      return this.g();
-   }
-
-   default void c(ta $$0) {
-      if (this.B() != null) {
-         $$0.a("LootTable", this.B().toString());
-         if (this.C() != 0L) {
-            $$0.a("LootTableSeed", this.C());
-         }
-      } else {
-         bmx.a($$0, this.D());
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
-   default void b_(ta $$0) {
-      this.E();
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ajh($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bmx.b($$0, this.D());
-      }
-   }
-
-   default void a(bnw $$0, cxb $$1, box $$2) {
-      if ($$1.Z().b(cwx.i)) {
-         bmz.a($$1, $$2, this);
-         if (!$$1.B) {
-            box $$3 = $$0.c();
-            if ($$3 != null && $$3.ai() == bpd.by) {
-               chl.a((ciu)$$3, true);
+   @Override
+   public void l() {
+      super.l();
+      ery $$0 = ckn.a(this, this::b);
+      boolean $$1 = false;
+      if ($$0.c() == ery.a.b) {
+         ib $$2 = ((erw)$$0).a();
+         doz $$3 = this.dM().a_($$2);
+         if ($$3.a(dca.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(dca.kF)) {
+            dmf $$4 = this.dM().c_($$2);
+            if ($$4 instanceof dnv && dnv.a(this)) {
+               dnv.a(this.dM(), $$2, $$3, this, (dnv)$$4);
             }
-         }
-      }
-   }
 
-   default bnd c_(ciu $$0) {
-      $$0.a(this);
-      return !$$0.dM().B ? bnd.b : bnd.a;
-   }
-
-   default void f(@Nullable ciu $$0) {
-      MinecraftServer $$1 = this.dM().o();
-      if (this.B() != null && $$1 != null) {
-         ele $$2 = $$1.aM().getLootTable(this.B());
-         if ($$0 != null) {
-            am.Q.a((apg)$$0, this.B());
-         }
-
-         this.a(null);
-         elc.a $$3 = new elc.a((apf)this.dM()).a(enh.f, this.dk());
-         if ($$0 != null) {
-            $$3.a($$0.gv()).a(enh.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(eng.c), this.C());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.D().clear();
-   }
-
-   default boolean g() {
-      for (cqm $$0 : this.D()) {
-         if (!$$0.b()) {
-            return false;
+            $$1 = true;
          }
       }
 
-      return true;
-   }
+      if ($$0.c() != ery.a.a && !$$1) {
+         this.a($$0);
+      }
 
-   default cqm e_(int $$0) {
-      this.f(null);
-      cqm $$1 = this.D().get($$0);
-      if ($$1.b()) {
-         return cqm.h;
+      this.aQ();
+      esa $$5 = this.dp();
+      double $$6 = this.dr() + $$5.c;
+      double $$7 = this.dt() + $$5.d;
+      double $$8 = this.dx() + $$5.e;
+      this.J();
+      float $$11;
+      if (this.bc()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dM().a(kl.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
       } else {
-         this.D().set($$0, cqm.h);
-         return $$1;
+         $$11 = 0.99F;
       }
+
+      this.g($$5.a((double)$$11));
+      this.aY();
+      this.a_($$6, $$7, $$8);
    }
 
-   default cqm f_(int $$0) {
-      this.f(null);
-      return this.D().get($$0);
-   }
-
-   default cqm b(int $$0, int $$1) {
-      this.f(null);
-      return bmx.a(this.D(), $$0, $$1);
-   }
-
-   default void c(int $$0, cqm $$1) {
-      this.f(null);
-      this.D().set($$0, $$1);
-      if (!$$1.b() && $$1.M() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-   }
-
-   default bqg g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bqg() {
-         @Override
-         public cqm a() {
-            return ckt.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cqm $$0x) {
-            ckt.this.c($$0, $$0);
-            return true;
-         }
-      } : bqg.b;
-   }
-
-   default boolean g(ciu $$0) {
-      return !this.dH() && $$0.a(this.cH(), 4.0);
+   @Override
+   protected double aW() {
+      return 0.03;
    }
 }

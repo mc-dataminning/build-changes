@@ -1,36 +1,53 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class xn implements xk {
-   public static final xl<xn> a = new xl<xn>() {
-      private static final MapCodec<xn> a = wr.b.a.xmap(xn::new, $$0 -> $$0.e);
-      private static final xs<vf, xn> b = xs.a(wr.b.c, $$0 -> $$0.e, xn::new);
-
+public interface xn extends wh {
+   MapCodec<xn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(xn::b)).apply($$0, xn::a));
+   wh.a<xn> b = new wh.a<>(a, "text");
+   xn c = new xn() {
       @Override
-      public MapCodec<xn> a() {
-         return a;
+      public String toString() {
+         return "empty";
       }
 
       @Override
-      public xs<vf, xn> b() {
-         return b;
+      public String b() {
+         return "";
       }
    };
-   public static final xn b = new xn(wr.a);
-   public static final xn c = new xn(wr.a.a(n.m));
-   public static final xn d = new xn(wr.a.a(n.o));
-   final wr e;
 
-   public xn(wr $$0) {
-      this.e = $$0;
+   static xn a(String $$0) {
+      return (xn)($$0.isEmpty() ? c : new xn.a($$0));
    }
 
-   @Override
-   public wi a(int $$0) {
-      return vu.b(Integer.toString($$0)).c(this.e);
-   }
+   String b();
 
    @Override
-   public xl<xn> a() {
-      return a;
+   default wh.a<?> a() {
+      return b;
+   }
+
+   public static record a(String d) implements xn {
+      @Override
+      public <T> Optional<T> a(wl.a<T> $$0) {
+         return $$0.accept(this.d);
+      }
+
+      @Override
+      public <T> Optional<T> a(wl.b<T> $$0, xd $$1) {
+         return $$0.accept($$1, this.d);
+      }
+
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
+
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

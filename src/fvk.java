@@ -1,117 +1,65 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface fvk {
-   fvk a = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gjb.e);
-         $$0.a(eug.b.h, etz.l);
+public class fvk extends fvl {
+   private final String f;
+
+   fvk(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public String a() {
+      return this.f;
+   }
+
+   public fvk c() {
+      fvk $$0 = new fvk(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
+   }
+
+   @Override
+   public fjo a(fjo $$0, fvp $$1) {
+      return new fnp($$0, $$1, this);
+   }
+
+   public static class a extends fvl.a<fvk> {
+      public a(fvk $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      @Override
-      public void a(eud $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   fvk b = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(fxl::u);
-         RenderSystem.setShaderTexture(0, gjb.f);
-         $$0.a(eug.b.h, etz.l);
-      }
-
-      @Override
-      public void a(eud $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   fvk c = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gjb.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(eug.b.h, etz.l);
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fvk(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
       @Override
-      public void a(eud $$0) {
-         $$0.c();
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public fvl.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fvl.b.d : null;
       }
 
       @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
+      public Either<fvl.c, fvl.b> a(fvp $$0) {
+         fvl.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fvl.c(this.a.a, fvo.c, $$3));
+         }
       }
-   };
-   fvk d = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gjb.f);
-         $$0.a(eug.b.h, etz.l);
-      }
-
-      @Override
-      public void a(eud $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   fvk e = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(eud $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   fvk f = new fvk() {
-      @Override
-      public void a(etw $$0, gjd $$1) {
-      }
-
-      @Override
-      public void a(eud $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(etw var1, gjd var2);
-
-   void a(eud var1);
+   }
 }

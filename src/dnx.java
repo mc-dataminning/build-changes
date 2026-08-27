@@ -1,28 +1,9 @@
-public enum dnx implements axq {
-   a(ih.a),
-   b(ih.b);
+public interface dnx {
+   void a();
 
-   private final ih c;
+   boolean b();
 
-   private dnx(ih $$0) {
-      this.c = $$0;
-   }
+   ib c();
 
-   public ih a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dnx b() {
-      return this == a ? b : a;
-   }
+   String d();
 }

@@ -1,52 +1,33 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public interface aso extends asr {
-   Set<String> a();
+public interface aso {
+   UnaryOperator<wg> a = UnaryOperator.identity();
+   aso b = a(a, true);
+   aso c = a(a("pack.source.builtin"), true);
+   aso d = a(a("pack.source.feature"), false);
+   aso e = a(a("pack.source.world"), true);
+   aso f = a(a("pack.source.server"), true);
 
-   List<asm> a(ajh var1);
+   wg a(wg var1);
 
-   Map<ajh, asm> b(String var1, Predicate<ajh> var2);
+   boolean a();
 
-   Map<ajh, List<asm>> c(String var1, Predicate<ajh> var2);
+   static aso a(final UnaryOperator<wg> $$0, final boolean $$1) {
+      return new aso() {
+         @Override
+         public wg a(wg $$0x) {
+            return $$0.apply($$0);
+         }
 
-   Stream<ara> b();
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
+   }
 
-   public static enum a implements aso {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<asm> getResource(ajh $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<asm> a(ajh $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<ajh, asm> b(String $$0, Predicate<ajh> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<ajh, List<asm>> c(String $$0, Predicate<ajh> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<ara> b() {
-         return Stream.of();
-      }
+   private static UnaryOperator<wg> a(String $$0) {
+      wg $$1 = wg.c($$0);
+      return $$1x -> wg.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

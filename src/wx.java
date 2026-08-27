@@ -1,74 +1,44 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record wx(String d, @Nullable gi e) implements ww {
-   public static final MapCodec<wx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(wx::b)).apply($$0, wx::new));
-   public static final ww.a<wx> b = new ww.a<>(a, "entity");
-
-   public wx(String $$0) {
-      this($$0, a($$0));
+public record wx(UUID a, cjw b) {
+   public xc a(Duration $$0) {
+      return new xc.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   @Nullable
-   private static gi a(String $$0) {
-      try {
-         gj $$1 = new gj(new StringReader($$0));
-         return $$1.t();
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public xa.b a(UUID $$0) {
+      return new xa($$0, this.a).a(this.b);
+   }
+
+   public wx.a a() {
+      return new wx.a(this.a, this.b.b());
+   }
+
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public cjw d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cjw.a b) {
+      public static wx.a a(vg $$0) {
+         return new wx.a($$0.n(), new cjw.a($$0));
       }
-   }
 
-   @Override
-   public Stream<ta> a(du $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends box> $$1 = this.e.b($$0);
-         return $$1.stream().map(co::b);
-      } else {
-         return Stream.empty();
+      public static void a(vg $$0, wx.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
-   }
 
-   @Override
-   public ww.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "entity=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wx $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+      public wx a(GameProfile $$0, axw $$1) throws cjw.b {
+         return new wx(this.a, cjw.a($$1, $$0.getId(), this.b));
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gi c() {
-      return this.e;
    }
 }

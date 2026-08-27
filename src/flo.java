@@ -1,230 +1,187 @@
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class flo extends fjo {
+   private static final wg a = wg.c("jigsaw_block.joint_label");
+   private static final wg b = wg.c("jigsaw_block.pool");
+   private static final wg c = wg.c("jigsaw_block.name");
+   private static final wg d = wg.c("jigsaw_block.target");
+   private static final wg o = wg.c("jigsaw_block.final_state");
+   private static final wg p = wg.c("jigsaw_block.placement_priority");
+   private static final wg q = wg.c("jigsaw_block.placement_priority.tooltip");
+   private static final wg r = wg.c("jigsaw_block.selection_priority");
+   private static final wg s = wg.c("jigsaw_block.selection_priority.tooltip");
+   private final dnf u;
+   private fdy v;
+   private fdy w;
+   private fdy x;
+   private fdy y;
+   private fdy z;
+   private fdy A;
+   int B;
+   private boolean C = true;
+   private fdw<dnf.a> D;
+   private fdp E;
+   private fdp F;
+   private dnf.a G;
 
-public class flo extends fbo.a<flo> {
-   private static final ajh f = new ajh("icon/draft_report");
-   private static final Duration g = Duration.ofMillis(500L);
-   private static final fcv h = new fcv(
-      new ajh("social_interactions/report_button"),
-      new ajh("social_interactions/report_button_disabled"),
-      new ajh("social_interactions/report_button_highlighted")
-   );
-   private static final fcv i = new fcv(new ajh("social_interactions/mute_button"), new ajh("social_interactions/mute_button_highlighted"));
-   private static final fcv j = new fcv(new ajh("social_interactions/unmute_button"), new ajh("social_interactions/unmute_button_highlighted"));
-   private final ezi k;
-   private final List<fbg> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<gkb> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean t;
-   private final boolean u;
-   @Nullable
-   private fbi v;
-   @Nullable
-   private fbi w;
-   @Nullable
-   private fbi x;
-   private float y;
-   private static final vu z = vu.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final vu A = vu.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final vu B = vu.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final vu C = vu.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final vu D = vu.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final vu E = vu.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final vu F = vu.c("gui.socialInteractions.tooltip.hide");
-   private static final vu G = vu.c("gui.socialInteractions.tooltip.show");
-   private static final vu H = vu.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = awg.b.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = awg.b.a(255, 74, 74, 74);
-   public static final int c = awg.b.a(255, 48, 48, 48);
-   public static final int d = awg.b.a(255, 255, 255, 255);
-   public static final int e = awg.b.a(140, 255, 255, 255);
+   public flo(dnf $$0) {
+      super(fbh.a);
+      this.u = $$0;
+   }
 
-   public flo(ezi $$0, flr $$1, UUID $$2, String $$3, Supplier<gkb> $$4, boolean $$5) {
-      this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      fti $$6 = $$0.ba();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.t = $$6.a($$2);
-      vu $$7 = vu.a("gui.socialInteractions.narration.hide", $$3);
-      vu $$8 = vu.a("gui.socialInteractions.narration.show", $$3);
-      flp $$9 = $$0.aM();
-      boolean $$10 = $$0.J().a($$0.T());
-      boolean $$11 = !$$0.s.cw().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new fbu(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new flk($$1, $$6, this)), false), vu.c("gui.socialInteractions.report")) {
-            @Override
-            protected wi aL_() {
-               return flo.this.a(super.aL_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.k());
-         this.x.a(g);
-         this.v = new fbu(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, vu.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, vu.c("gui.socialInteractions.hide")) {
-            @Override
-            protected wi aL_() {
-               return flo.this.a(super.aL_());
-            }
-         };
-         this.v.a(fct.a(F, $$7));
-         this.v.a(g);
-         this.w = new fbu(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, vu.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, vu.c("gui.socialInteractions.show")) {
-            @Override
-            protected wi aL_() {
-               return flo.this.a(super.aL_());
-            }
-         };
-         this.w.a(fct.a(G, $$8));
-         this.w.a(g);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
+   private void m() {
+      this.D();
+      this.j.a(null);
+   }
+
+   private void C() {
+      this.j.a(null);
+   }
+
+   private void D() {
+      this.j
+         .L()
+         .b(new ahb(this.u.aA_(), new ajt(this.v.a()), new ajt(this.w.a()), new ajt(this.x.a()), this.y.a(), this.G, this.a(this.z.a()), this.a(this.A.a())));
+   }
+
+   private int a(String $$0) {
+      try {
+         return Integer.parseInt($$0);
+      } catch (NumberFormatException var3) {
+         return 0;
       }
    }
 
-   private fct k() {
-      return !this.r ? fct.a(E) : fct.a(H, vu.a("gui.socialInteractions.narration.report", this.n));
+   private void E() {
+      this.j.L().b(new agg(this.u.aA_(), this.B, this.C));
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      vu $$13 = this.m();
-      int $$14;
-      if ($$13 == vt.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
-      }
+   public void d() {
+      this.C();
+   }
 
-      fch.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
-      }
-
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.m($$3 + ($$4 - this.v.w() - 4) - 20 - 4);
-         this.v.n($$2 + ($$5 - this.v.u()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.m($$3 + ($$4 - this.w.w() - 4) - 20 - 4);
-         this.w.n($$2 + ($$5 - this.w.u()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.m($$3 + ($$4 - this.w.w() - 4));
-         this.x.n($$2 + ($$5 - this.w.u()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+   @Override
+   protected void aN_() {
+      this.x = new fdy(this.m, this.k / 2 - 153, 20, 300, 20, b);
+      this.x.f(128);
+      this.x.a(this.u.d().a().toString());
+      this.x.b($$0x -> this.F());
+      this.d(this.x);
+      this.v = new fdy(this.m, this.k / 2 - 153, 55, 300, 20, c);
+      this.v.f(128);
+      this.v.a(this.u.b().toString());
+      this.v.b($$0x -> this.F());
+      this.d(this.v);
+      this.w = new fdy(this.m, this.k / 2 - 153, 90, 300, 20, d);
+      this.w.f(128);
+      this.w.a(this.u.c().toString());
+      this.w.b($$0x -> this.F());
+      this.d(this.w);
+      this.y = new fdy(this.m, this.k / 2 - 153, 125, 300, 20, o);
+      this.y.f(256);
+      this.y.a(this.u.f());
+      this.d(this.y);
+      this.z = new fdy(this.m, this.k / 2 - 153, 160, 98, 20, r);
+      this.z.f(3);
+      this.z.a(Integer.toString(this.u.l()));
+      this.z.a(ffa.a(s));
+      this.d(this.z);
+      this.A = new fdy(this.m, this.k / 2 - 50, 160, 98, 20, p);
+      this.A.f(3);
+      this.A.a(Integer.toString(this.u.k()));
+      this.A.a(ffa.a(q));
+      this.d(this.A);
+      this.G = this.u.j();
+      this.D = this.c(fdw.<dnf.a>a(dnf.a::a).a(dnf.a.values()).a(this.G).a().a(this.k / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.G = $$1));
+      boolean $$0 = dfz.m(this.u.n()).o().b();
+      this.D.j = $$0;
+      this.D.k = $$0;
+      this.c(new fdl(this.k / 2 - 154, 185, 100, 20, wf.a, 0.0) {
+         {
+            this.b();
          }
-      }
 
-      if (this.t && this.x != null) {
-         $$0.a(f, this.x.B() + 5, this.x.C() + 1, 15, 15);
-      }
+         @Override
+         protected void b() {
+            this.b(wg.a("jigsaw_block.levels", flo.this.B));
+         }
+
+         @Override
+         protected void a() {
+            flo.this.B = axk.a(axk.b(0.0, 20.0, this.c));
+         }
+      });
+      this.c(fdw.b(this.C).a(this.k / 2 - 50, 185, 100, 20, wg.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.C = $$1));
+      this.F = this.c((fdp)fdp.a(wg.c("jigsaw_block.generate"), $$0x -> {
+         this.m();
+         this.E();
+      }).a(this.k / 2 + 54, 185, 100, 20).a());
+      this.E = this.c((fdp)fdp.a(wf.d, $$0x -> this.m()).a(this.k / 2 - 4 - 150, 210, 150, 20).a());
+      this.c((fdp)fdp.a(wf.e, $$0x -> this.C()).a(this.k / 2 + 4, 210, 150, 20).a());
+      this.F();
    }
 
    @Override
-   public List<? extends fde> l() {
-      return this.l;
+   protected void aD_() {
+      this.b(this.x);
+   }
+
+   private void F() {
+      boolean $$0 = ajt.i(this.v.a()) && ajt.i(this.w.a()) && ajt.i(this.x.a());
+      this.E.j = $$0;
+      this.F.j = $$0;
    }
 
    @Override
-   public List<? extends ffc> a() {
-      return this.l;
+   public void a(fbp $$0, int $$1, int $$2) {
+      String $$3 = this.v.a();
+      String $$4 = this.w.a();
+      String $$5 = this.x.a();
+      String $$6 = this.y.a();
+      String $$7 = this.z.a();
+      String $$8 = this.A.a();
+      int $$9 = this.B;
+      dnf.a $$10 = this.G;
+      this.b($$0, $$1, $$2);
+      this.v.a($$3);
+      this.w.a($$4);
+      this.x.a($$5);
+      this.y.a($$6);
+      this.B = $$9;
+      this.G = $$10;
+      this.D.a($$10);
+      this.z.a($$7);
+      this.A.a($$8);
    }
 
-   public String b() {
-      return this.n;
-   }
-
-   public UUID c() {
-      return this.m;
-   }
-
-   public Supplier<gkb> d() {
-      return this.o;
-   }
-
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public void d(boolean $$0) {
-      this.q = $$0;
-   }
-
-   public boolean i() {
-      return this.q;
-   }
-
-   public boolean j() {
-      return this.u;
-   }
-
-   private void a(boolean $$0, vu $$1) {
-      this.e($$0);
-      this.k.l.d().a($$1);
-      this.k.aY().c($$1);
-   }
-
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
-
-   wi a(wi $$0) {
-      vu $$1 = this.m();
-      return $$1 == vt.a ? vu.b(this.n).f(", ").b($$0) : vu.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
-
-   private vu m() {
-      boolean $$0 = this.k.aM().d(this.m);
-      boolean $$1 = this.k.aM().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if (!this.E.j || $$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         return this.p ? B : vt.a;
+         this.m();
+         return true;
+      }
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, b, this.k / 2 - 153, 10, 10526880);
+      this.x.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, c, this.k / 2 - 153, 45, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, d, this.k / 2 - 153, 80, 10526880);
+      this.w.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, o, this.k / 2 - 153, 115, 10526880);
+      this.y.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, r, this.k / 2 - 153, 150, 10526880);
+      this.A.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, p, this.k / 2 - 50, 150, 10526880);
+      this.z.a($$0, $$1, $$2, $$3);
+      if (dfz.m(this.u.n()).o().b()) {
+         $$0.b(this.m, a, this.k / 2 + 53, 150, 10526880);
       }
    }
 }

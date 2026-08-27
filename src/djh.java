@@ -1,33 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djh extends dbq implements djg {
-   public static final MapCodec<djh> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(djg.a.e.fieldOf("weathering_state").forGetter(djh::i), u()).apply($$0, djh::new)
-   );
-   private final djg.a e;
+public class djh extends dby {
+   public static final MapCodec<djh> b = b(djh::new);
+   public static final dpq c = dpp.z;
 
    @Override
-   protected MapCodec<djh> a() {
-      return d;
+   protected MapCodec<? extends djh> a() {
+      return b;
    }
 
-   public djh(djg.a $$0, dna.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected djh(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1 == ih.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean e_(dnb $$0) {
-      return djg.c($$0.b()).isPresent();
+   public doz a(cuo $$0) {
+      doz $$1 = $$0.q().a_($$0.a().c());
+      return this.n().a(c, Boolean.valueOf(m($$1)));
    }
 
-   public djg.a i() {
-      return this.e;
+   private static boolean m(doz $$0) {
+      return $$0.a(avc.bz);
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(c);
    }
 }

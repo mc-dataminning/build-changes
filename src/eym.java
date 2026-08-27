@@ -1,13 +1,13 @@
-public class eym extends eyn {
-   private final evz b;
+public class eym extends eyl {
+   public static final int b = 5;
+   public final int c;
 
-   public eym(evz $$0, long $$1, vu $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
-   }
-
-   @Override
-   protected void a(eur $$0, long $$1) throws ewe {
-      $$0.d($$1, this.b.a);
+   public eym(int $$0, int $$1) {
+      super(exa.b.a($$1));
+      if ($$0 >= 0 && $$0 <= 120) {
+         this.c = $$0;
+      } else {
+         this.c = 5;
+      }
    }
 }

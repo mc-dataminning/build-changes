@@ -1,37 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwl extends dvs<dyc> {
-   public dwl(Codec<dyc> $$0) {
-      super($$0);
+public class dwl implements dvy {
+   public static final Codec<dwl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.e), doz.b.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, dwl::new)
+   );
+   private final jg e;
+   private final doz f;
+
+   protected dwl(jg $$0, doz $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(czs $$0, ib $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public boolean a(dvu<dyc> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      dnb $$3 = $$1.a_($$2.d());
-      dyc $$4 = $$0.f();
-      axd $$5 = $$0.d();
-      if (!$$3.a(aun.aL)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.ak()) {
-            int $$7 = 0;
-
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               ib $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dnb $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
-            }
-
-            return $$7 > 0;
-         } else {
-            return false;
-         }
-      }
+   public dvz<?> a() {
+      return dvz.g;
    }
 }

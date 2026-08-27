@@ -1,61 +1,69 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+public class aer implements yn<aay> {
+   public static final ye<vr, aer> a = yn.a(aer::a, aer::new);
+   private final il<aul> b;
+   private final aun c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class aer implements yb<aam> {
-   public static final xs<vf, aer> a = xs.a(xq.d, aer::b, aer.a.b.a(xq.a()), aer::e, aer::new);
-   private final int b;
-   private final List<aer.a> c;
-
-   public aer(int $$0, Collection<bqs> $$1) {
-      this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bqs $$2 : $$1) {
-         this.c.add(new aer.a($$2.a(), $$2.b(), $$2.c()));
-      }
-   }
-
-   private aer(int $$0, List<aer.a> $$1) {
+   public aer(il<aul> $$0, aun $$1, bpv $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2.aj();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
+
+   private aer(vr $$0) {
+      this.b = aul.d.decode($$0);
+      this.c = $$0.b(aun.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
+   }
+
+   private void a(vr $$0) {
+      aul.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public yd<aer> a() {
-      return aex.bb;
+   public yp<aer> a() {
+      return afj.aR;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public il<aul> b() {
       return this.b;
    }
 
-   public List<aer.a> e() {
+   public aun e() {
       return this.c;
    }
 
-   public static record a(il<bqr> c, double d, Collection<bqu> e) {
-      public static final xs<ByteBuf, bqu> a = xs.a(
-         jf.g, bqu::a, xq.g, bqu::c, bqu.a.e, bqu::b, ($$0, $$1, $$2) -> new bqu($$0, "Unknown synced attribute modifier", $$1, $$2)
-      );
-      public static final xs<vf, aer.a> b = xs.a(xq.b(kj.c), aer.a::a, xq.g, aer.a::b, a.a(xq.a(ArrayList::new)), aer.a::c, aer.a::new);
+   public int f() {
+      return this.d;
+   }
 
-      public il<bqr> a() {
-         return this.c;
-      }
+   public float g() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.d;
-      }
+   public float h() {
+      return this.f;
+   }
 
-      public Collection<bqu> c() {
-         return this.e;
-      }
+   public long i() {
+      return this.g;
    }
 }

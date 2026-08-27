@@ -1,17 +1,11 @@
-import java.io.IOException;
-
-public class gjw extends ast<int[]> {
-   private static final ajh a = new ajh("textures/colormap/grass.png");
-
-   protected int[] a(aso $$0, bjr $$1) {
-      try {
-         return gjy.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+public class gjw extends gjt<chf, fsf<chf>> {
+   public gjw(ghd<chf, fsf<chf>> $$0) {
+      super($$0);
    }
 
-   protected void a(int[] $$0, aso $$1, bjr $$2) {
-      cwz.a($$0);
+   public void a(ewi $$0, fzz $$1, int $$2, chf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ajt $$10 = ghh.a($$3.go());
+      ewm $$11 = $$1.getBuffer(gah.c($$10));
+      this.c().c().a($$0, $$11, $$2, ggj.c($$3, 0.0F));
    }
 }

@@ -1,36 +1,30 @@
-public class agb implements yb<aez> {
-   public static final xs<uu, agb> a = yb.a(agb::a, agb::new);
-   private static final int b = 2;
-   private final boolean c;
+public record agb(int b, int c, boolean d) implements yn<afl> {
+   public static final ye<vg, agb> a = yn.a(agb::a, agb::new);
 
-   public agb(cir $$0) {
-      this.c = $$0.b;
+   private agb(vg $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
    }
 
-   private agb(uu $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(uu $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vg $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<agb> a() {
-      return aex.bH;
+   public yp<agb> a() {
+      return afj.bs;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

@@ -1,14 +1,13 @@
-import com.mojang.serialization.Codec;
+import java.time.Instant;
 
-public interface bmh<P extends bmg> {
-   bmh<bme> a = a("constant", bme.b);
-   bmh<bmn> b = a("uniform", bmn.a);
-   bmh<bmc> c = a("clamped_normal", bmc.a);
-   bmh<bmm> d = a("trapezoid", bmm.a);
+public final class bmh {
+   public final Instant a;
+   public final int b;
+   public final bkn c;
 
-   Codec<P> codec();
-
-   static <P extends bmg> bmh<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.L, $$0, () -> $$1);
+   public bmh(Instant $$0, int $$1, bkn $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

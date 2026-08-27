@@ -1,67 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-public class fsu {
-   private final fsw[] a;
-   private int b;
+public class fsu<T extends cde> extends frw<T> {
+   private static final String j = "egg_belly";
+   private final ftm k;
 
-   public static Codec<fsu> a(int $$0) {
-      return Codec.list(fsw.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new fsu($$0, $$1));
-            },
-            fsu::c
-         );
+   public fsu(ftm $$0) {
+      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
+      this.k = $$0.b("egg_belly");
    }
 
-   public fsu(int $$0) {
-      this.a = new fsw[$$0];
+   public static fts c() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("head", ftr.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fto.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         ftr.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         fto.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", ftr.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fto.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", ftr.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fto.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", ftr.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fto.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", ftr.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fto.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", ftr.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fto.a(5.0F, 21.0F, -4.0F));
+      return fts.a($$0, 128, 64);
    }
 
-   private fsu(int $$0, List<fsw> $$1) {
-      this.a = $$1.toArray(fsw[]::new);
-      this.b = $$1.size();
+   @Override
+   protected Iterable<ftm> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.k));
    }
 
-   private List<fsw> c() {
-      List<fsw> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.f.e = axk.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.g.e = axk.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.h.g = axk.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.i.g = axk.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.h.e = 0.0F;
+      this.i.e = 0.0F;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+      this.f.f = 0.0F;
+      this.g.f = 0.0F;
+      if (!$$0.bc() && $$0.aC()) {
+         float $$6 = $$0.u() ? 4.0F : 1.0F;
+         float $$7 = $$0.u() ? 2.0F : 1.0F;
+         float $$8 = 5.0F;
+         this.h.f = axk.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
+         this.h.g = 0.0F;
+         this.i.f = axk.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
+         this.i.g = 0.0F;
+         this.f.f = axk.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
+         this.f.e = 0.0F;
+         this.g.f = axk.b($$1 * 5.0F) * 3.0F * $$2;
+         this.g.e = 0.0F;
       }
 
-      return $$0;
+      this.k.k = !this.e && $$0.r();
    }
 
-   public void a(fsw $$0) {
-      this.a[this.c(this.b++)] = $$0;
-   }
+   @Override
+   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      boolean $$8 = this.k.k;
+      if ($$8) {
+         $$0.a();
+         $$0.a(0.0F, -0.08F, 0.0F);
+      }
 
-   @Nullable
-   public fsw b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
-   }
-
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$8) {
+         $$0.b();
+      }
    }
 }

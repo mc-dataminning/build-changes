@@ -1,26 +1,16 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.serialization.Codec;
 
-@Immutable
-public class bng {
-   public static final bng a = new bng("");
-   public static final String b = "Lock";
-   private final String c;
+public interface bng<P extends bnf> {
+   bng<bnc> a = a("constant", bnc.b);
+   bng<bnl> b = a("uniform", bnl.a);
+   bng<bmx> c = a("biased_to_bottom", bmx.a);
+   bng<bmy> d = a("clamped", bmy.a);
+   bng<bnm> e = a("weighted_list", bnm.a);
+   bng<bna> f = a("clamped_normal", bna.a);
 
-   public bng(String $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   public boolean a(cqm $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.B() && this.c.equals($$0.z().getString());
-   }
-
-   public void a(ta $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
-      }
-   }
-
-   public static bng b(ta $$0) {
-      return $$0.b("Lock", 8) ? new bng($$0.l("Lock")) : a;
+   static <P extends bnf> bng<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.M, $$0, () -> $$1);
    }
 }

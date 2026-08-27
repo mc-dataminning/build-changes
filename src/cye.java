@@ -1,141 +1,205 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public abstract class cye implements cyd {
-   public static final Codec<cye> a = ki.ab.q().dispatchStable(cye::a, Function.identity());
-   private final Supplier<Set<il<cya>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public class cye {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final cye b = new cye(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   protected cye() {
+   public cye(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected abstract Codec<? extends cye> a();
-
-   protected abstract Stream<il<cya>> b();
-
-   public Set<il<cya>> c() {
-      return this.b.get();
+   public cye(ib $$0) {
+      this.e = je.a($$0.u());
+      this.f = je.a($$0.w());
    }
 
-   public Set<il<cya>> a(int $$0, int $$1, int $$2, int $$3, cyj.f $$4) {
-      int $$5 = iw.a($$0 - $$3);
-      int $$6 = iw.a($$1 - $$3);
-      int $$7 = iw.a($$2 - $$3);
-      int $$8 = iw.a($$0 + $$3);
-      int $$9 = iw.a($$1 + $$3);
-      int $$10 = iw.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<il<cya>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
-      }
-
-      return $$14;
+   public cye(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   @Nullable
-   public Pair<ib, il<cya>> a(int $$0, int $$1, int $$2, int $$3, Predicate<il<cya>> $$4, axd $$5, cyj.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   public static cye a(int $$0, int $$1) {
+      return new cye($$0 << 5, $$1 << 5);
    }
 
-   @Nullable
-   public Pair<ib, il<cya>> a(ib $$0, int $$1, int $$2, int $$3, Predicate<il<cya>> $$4, cyj.f $$5, cxe $$6) {
-      Set<il<cya>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = aww.a($$0.v(), $$6.I_() + 1, $$6.ak(), $$3).toArray();
-
-         for (ib.a $$10 : ib.a(ib.c, $$8, ih.f, ih.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = iw.a($$11);
-            int $$14 = iw.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = iw.a($$15);
-               il<cya> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new ib($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
-      }
+   public static cye b(int $$0, int $$1) {
+      return new cye(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   @Nullable
-   public Pair<ib, il<cya>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<il<cya>> $$5, axd $$6, boolean $$7, cyj.f $$8) {
-      int $$9 = iw.a($$0);
-      int $$10 = iw.a($$2);
-      int $$11 = iw.a($$3);
-      int $$12 = iw.a($$1);
-      Pair<ib, il<cya>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
+   public long a() {
+      return c(this.e, this.f);
+   }
 
-      while ($$16 <= $$11) {
-         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
+   public static long a(ib $$0) {
+      return c(je.a($$0.u()), je.a($$0.w()));
+   }
 
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               il<cya> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     ib $$24 = new ib(iw.c($$21), $$1, iw.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
 
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
-      }
-
-      return $$13;
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
-   public abstract il<cya> getNoiseBiome(int var1, int var2, int var3, cyj.f var4);
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
 
-   public void a(List<String> $$0, ib $$1, cyj.f $$2) {
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cye $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+      }
+   }
+
+   public int b() {
+      return this.a(8);
+   }
+
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return je.c(this.e);
+   }
+
+   public int e() {
+      return je.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public ib a(int $$0, int $$1, int $$2) {
+      return new ib(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return je.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return je.a(this.f, $$0);
+   }
+
+   public ib c(int $$0) {
+      return new ib(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public ib l() {
+      return new ib(this.d(), 0, this.e());
+   }
+
+   public int a(cye $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(cye $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<cye> a(cye $$0, int $$1) {
+      return a(new cye($$0.e - $$1, $$0.f - $$1), new cye($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<cye> a(final cye $$0, final cye $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<cye>((long)($$2 * $$3), 64) {
+         @Nullable
+         private cye e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super cye> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new cye($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new cye($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

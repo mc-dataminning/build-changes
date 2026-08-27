@@ -1,35 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvg<E extends chy> extends brh<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class bvg {
+   public static bsh<bqo> a(dby $$0) {
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$1 -> $$1.group($$1.c(bzr.o), $$1.b(bzr.m), $$1.b(bzr.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bc() && $$3x.aC()) {
+                        ib $$5 = $$3x.dm().d();
 
-   public bvg(int $$0) {
-      super(ImmutableMap.of(bys.aB, byt.a, bys.o, byt.b, bys.m, byt.b, bys.n, byt.c, bys.B, byt.c, bys.az, byt.c, bys.aG, byt.c), $$0);
-   }
+                        for (ih $$6 : ih.c.a) {
+                           ib $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ih.b).c() && $$2x.b_($$7).b(ekt.c)) {
+                              ib $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 doz $$9 = $$0.n();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dts.i, $$8, dts.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, aum.jK, aun.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected boolean a(apf $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(apf $$0, E $$1, long $$2) {
-      $$1.a(aty.Bv, 5.0F, 1.0F);
-   }
-
-   protected void c(apf $$0, E $$1, long $$2) {
-      if ($$1.c(bqa.m)) {
-         $$1.b(bqa.a);
-      }
-
-      $$1.dP().b(bys.aB);
-      $$1.dP().c(bys.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dP().a(bys.az)) {
-            chz.a($$1, $$1x.dm());
-         }
-      });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

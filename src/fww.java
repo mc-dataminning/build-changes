@@ -1,67 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+public class fww extends fyn {
+   private final fyi a;
 
-public class fww {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cit.g();
-   public static final Codec<fww> a = awe.<List>b(Codec.PASSTHROUGH.listOf(), (Function<List, DataResult<List>>)($$0 -> ac.a($$0, c)))
-      .xmap(fww::new, $$0 -> $$0.f);
-   private static final DynamicOps<tx> d = to.a;
-   private static final Dynamic<?> e = new Dynamic(d, (tx)ac.a(cqm.a.encodeStart(d, cqm.h), IllegalStateException::new));
-   private List<Dynamic<?>> f;
-
-   private fww(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   protected fww(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public fww() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public fxr b() {
+      return fxr.b;
    }
 
-   public List<cqm> a(in.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cqm.a.parse(ajf.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cqm.h))
-         .toList();
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public void a(cit $$0, iz $$1) {
-      ajf<tx> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+   public static class a implements fxq<ko> {
+      private final fyi a;
 
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cqm $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cqm.a
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fww($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
    }
 }

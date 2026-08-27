@@ -1,27 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public class cwp {
-   public static final cwp a = new cwp(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<cwp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, cwp::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
-
-   public cwp(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+public class cwp extends cwq {
+   protected cwp(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bi, $$1);
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   public int a(int $$0) {
+      return 1 + 10 * ($$0 - 1);
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 5;
    }
 }

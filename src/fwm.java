@@ -1,21 +1,18 @@
-public class fwm extends fwg {
-   private float a;
-
-   fwm(fsa $$0, double $$1, double $$2, double $$3) {
+public class fwm extends fyn {
+   fwm(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
-   }
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   @Override
-   public fvk b() {
-      return fvk.b;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
@@ -23,32 +20,49 @@ public class fwm extends fwg {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * aww.b(this.a));
-         this.l = this.l + (double)(0.6F * aww.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (!this.c.b_(ib.a(this.g, this.h, this.i)).a(aus.a) || this.m) {
-            this.k();
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
          }
-
-         this.a += 0.08F;
+      } else {
+         this.k();
       }
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
+   @Override
+   public fxr b() {
+      return fxr.c;
+   }
 
-      public a(fwb $$0) {
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
          this.a = $$0;
       }
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fwm $$8 = new fwm($$1, $$2, $$3, $$4);
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fwm $$8 = new fwm($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fxq<ko> {
+      private final fyi a;
+
+      public b(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fwm $$8 = new fwm($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
          $$8.a(this.a);
          return $$8;
       }

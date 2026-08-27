@@ -1,28 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dzj<P extends dzi> {
-   public static final dzj<dzd> a = a("blob_foliage_placer", dzd.a);
-   public static final dzj<dzo> b = a("spruce_foliage_placer", dzo.a);
-   public static final dzj<dzm> c = a("pine_foliage_placer", dzm.a);
-   public static final dzj<dzc> d = a("acacia_foliage_placer", dzc.a);
-   public static final dzj<dze> e = a("bush_foliage_placer", dze.c);
-   public static final dzj<dzh> f = a("fancy_foliage_placer", dzh.c);
-   public static final dzj<dzk> g = a("jungle_foliage_placer", dzk.a);
-   public static final dzj<dzl> h = a("mega_pine_foliage_placer", dzl.a);
-   public static final dzj<dzg> i = a("dark_oak_foliage_placer", dzg.a);
-   public static final dzj<dzn> j = a("random_spread_foliage_placer", dzn.a);
-   public static final dzj<dzf> k = a("cherry_foliage_placer", dzf.a);
-   private final Codec<P> l;
-
-   private static <P extends dzi> dzj<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.W, $$0, new dzj<>($$1));
+public class dzj extends dxv<eax> {
+   public dzj(Codec<eax> $$0) {
+      super($$0);
    }
 
-   private dzj(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   public boolean a(dxx<eax> $$0) {
+      czs $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      eax $$3 = $$0.f();
+      axr $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ib $$6 = $$2.h($$5.getAsInt());
+         jg $$7 = new jg($$3.c, $$3.c, $$3.c);
+         eez $$8 = eez.a($$6.b($$7), $$6.a($$7));
+         return ib.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dca.kJ.n(), 2);
+            return 1;
+         }).sum() > 0;
+      }
    }
 
-   public Codec<P> a() {
-      return this.l;
+   private static OptionalInt a(czs $$0, ib $$1, eax $$2) {
+      Predicate<doz> $$3 = $$0x -> $$0x.a(dca.G);
+      Predicate<doz> $$4 = $$0x -> !$$0x.a(dca.G);
+      Optional<duh> $$5 = duh.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(duh::c).orElseGet(OptionalInt::empty);
+   }
+
+   private boolean b(czs $$0, ib $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (ih $$2 : ih.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(cyy $$0, ib $$1) {
+      doz $$2 = $$0.a_($$1);
+      return $$2.a(dca.G) || $$2.i();
    }
 }

@@ -1,70 +1,39 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class glb implements AutoCloseable {
-   private final Map<ajh, glb.a> a;
+public class glb extends glc {
+   @Nullable
+   private CompletableFuture<glc.a> f;
 
-   public glb(Map<ajh, ajh> $$0, gjd $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         gjb $$2 = new gjb((ajh)$$1x.getKey());
-         $$1.a((ajh)$$1x.getKey(), $$2);
-         return new glb.a($$2, (ajh)$$1x.getValue());
-      }));
-   }
-
-   public gjb a(ajh $$0) {
-      return this.a.get($$0).a();
+   public glb(atc $$0, ajt $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> glc.a.a($$0, $$1), $$2);
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(glb.a::close);
-      this.a.clear();
-   }
-
-   public Map<ajh, CompletableFuture<glb.b>> a(aso $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         glb.a $$4 = $$3.getValue();
-         return gix.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new glb.b($$4.a, $$1xx));
-      }));
-   }
-
-   static record a(gjb a, ajh b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
+   protected glc.a b(atc $$0) {
+      if (this.f != null) {
+         glc.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return glc.a.a($$0, this.e);
       }
    }
 
-   public static class b {
-      private final gjb a;
-      private final gix.a b;
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   }
 
-      public b(gjb $$0, gix.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void a(glk $$0, atc $$1, ajt $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> glc.a.a($$1, this.e), ac.f());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
 
-      @Nullable
-      public gjc a(ajh $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public gjc a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

@@ -1,19 +1,24 @@
-public class dfh {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dnb $$0) {
-      return $$0.i();
+public class dfh extends dft {
+   public static final MapCodec<dfh> a = b(dfh::new);
+
+   @Override
+   public MapCodec<dfh> a() {
+      return a;
    }
 
-   public static int a(axd $$0) {
-      double $$1 = 1.0;
+   public dfh(doy.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(aE);
+   }
 
-      return $$2;
+   @Override
+   public doz a(cuo $$0) {
+      return this.n().a(aE, $$0.g().g());
    }
 }

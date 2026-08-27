@@ -1,71 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface asq {
-   asq a = new asq() {
-      @Override
-      public <T> Optional<T> a(arn<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   asg<asq> b = () -> a;
+public class asq extends ash {
+   private static final asd c = new asd(wg.c("dataPack.vanilla.description"), aa.b().a(arq.b), Optional.empty());
+   private static final ark d = new ark(cmi.h);
+   private static final arg e = arg.a(asd.b, c, ark.a, d);
+   private static final arn f = new arn("vanilla", wg.c("dataPack.vanilla.name"), aso.c, Optional.of(b));
+   private static final arp g = new arp(false, ask.b.b, false);
+   private static final arp h = new arp(false, ask.b.a, false);
+   private static final ajt i = new ajt("minecraft", "datapacks");
 
-   static asq a(InputStream $$0) throws IOException {
-      asq var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = awm.a($$1);
-         var3 = new asq() {
-            @Override
-            public <T> Optional<T> a(arn<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(awm.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   public asq(erq $$0) {
+      super(arq.b, b(), i, $$0);
    }
 
-   <T> Optional<T> a(arn<T> var1);
-
-   default asq a(Collection<arn<?>> $$0) {
-      asq.a $$1 = new asq.a();
-
-      for (arn<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   private static arn a(String $$0, wg $$1) {
+      return new arn($$0, $$1, aso.d, Optional.of(asj.a($$0)));
    }
 
-   private <T> void a(asq.a $$0, arn<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   @VisibleForTesting
+   public static ars b() {
+      return new art().a(e).a("minecraft").b().a().a(f);
    }
 
-   public static class a {
-      private final Builder<arn<?>, Object> a = ImmutableMap.builder();
+   @Override
+   protected wg a(String $$0) {
+      return wg.b($$0);
+   }
 
-      public <T> asq.a a(arn<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+   @Nullable
+   @Override
+   protected ask a(aro $$0) {
+      return ask.a(f, b($$0), arq.b, g);
+   }
 
-      public asq a() {
-         final ImmutableMap<arn<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? asq.a : new asq() {
-            @Override
-            public <T> Optional<T> a(arn<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+   @Nullable
+   @Override
+   protected ask a(String $$0, ask.c $$1, wg $$2) {
+      return ask.a(a($$0, $$2), $$1, arq.b, h);
+   }
+
+   public static asn a(Path $$0, erq $$1) {
+      return new asn(new asq($$1), new asi($$0, arq.b, aso.e, $$1));
+   }
+
+   public static asn c() {
+      return new asn(new asq(new erq($$0 -> true)));
+   }
+
+   public static asn a(emr.c $$0) {
+      return a($$0.a(emp.j), $$0.d().e());
    }
 }

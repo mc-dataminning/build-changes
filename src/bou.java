@@ -1,410 +1,247 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bou extends box implements bqn {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 5;
-   private static final aim<Float> f = aiq.a(bou.class, aio.d);
-   private static final aim<Integer> g = aiq.a(bou.class, aio.b);
-   private static final aim<Boolean> h = aiq.a(bou.class, aio.k);
-   private static final aim<ka> i = aiq.a(bou.class, aio.l);
-   private static final float j = 32.0F;
-   private static final float k = 0.5F;
-   private static final float l = 3.0F;
-   public static final float b = 6.0F;
-   public static final float c = 0.5F;
-   private static final String m = "effects";
-   private il<csj> n = csm.b;
-   private final List<bok> o = Lists.newArrayList();
-   private final Map<box, Integer> p = Maps.newHashMap();
-   private int q = 600;
-   private int r = 20;
-   private int s = 20;
-   private boolean t;
-   private int u;
-   private float v;
-   private float aE;
-   @Nullable
-   private bpp aF;
-   @Nullable
-   private UUID aG;
+public class bou {
+   private final iy<bov> a;
+   private final bot b;
+   private final bot c;
+   private final bot d;
+   private final bot e;
+   private final bot f;
+   private final bot g;
+   private final bot h;
+   private final bot i;
+   private final bot j;
+   private final bot k;
+   private final bot l;
+   private final bot m;
+   private final bot n;
+   private final bot o;
+   private final bot p;
+   private final bot q;
+   private final bot r;
+   private final bot s;
+   private final bot t;
+   private final bot u;
+   private final bot v;
+   private final bot w;
+   private final bot x;
 
-   public bou(bpd<? extends bou> $$0, cxb $$1) {
-      super($$0, $$1);
-      this.af = true;
+   public bou(iz $$0) {
+      this.a = $$0.d(ks.r);
+      this.b = this.a(bow.a);
+      this.c = this.a(bow.b);
+      this.d = this.a(bow.c);
+      this.e = this.a(bow.d);
+      this.f = this.a(bow.e);
+      this.g = this.a(bow.f);
+      this.h = this.a(bow.g);
+      this.i = this.a(bow.h);
+      this.j = this.a(bow.i);
+      this.k = this.a(bow.j);
+      this.l = this.a(bow.k);
+      this.m = this.a(bow.l);
+      this.n = this.a(bow.m);
+      this.o = this.a(bow.n);
+      this.p = this.a(bow.o);
+      this.q = this.a(bow.p);
+      this.r = this.a(bow.q);
+      this.s = this.a(bow.r);
+      this.t = this.a(bow.s);
+      this.u = this.a(bow.t);
+      this.v = this.a(bow.u);
+      this.w = this.a(bow.S);
+      this.x = this.a(bow.T);
    }
 
-   public bou(cxb $$0, double $$1, double $$2, double $$3) {
-      this(bpd.c, $$0);
-      this.a_($$1, $$2, $$3);
+   private bot a(ajs<bov> $$0) {
+      return new bot(this.a.g($$0));
    }
 
-   @Override
-   protected void a(aiq.a $$0) {
-      $$0.a(g, 0);
-      $$0.a(f, 3.0F);
-      $$0.a(h, false);
-      $$0.a(i, kc.v);
+   private bot a(ajs<bov> $$0, @Nullable bpv $$1) {
+      return new bot(this.a.g($$0), $$1);
    }
 
-   public void a(float $$0) {
-      if (!this.dM().B) {
-         this.an().a(f, aww.a($$0, 0.0F, 32.0F));
-      }
+   private bot a(ajs<bov> $$0, @Nullable bpv $$1, @Nullable bpv $$2) {
+      return new bot(this.a.g($$0), $$1, $$2);
    }
 
-   @Override
-   public void j_() {
-      double $$0 = this.dr();
-      double $$1 = this.dt();
-      double $$2 = this.dx();
-      super.j_();
-      this.a_($$0, $$1, $$2);
+   public bot a() {
+      return this.b;
    }
 
-   public float g() {
-      return this.an().a(f);
+   public bot b() {
+      return this.c;
    }
 
-   public void a(il<csj> $$0) {
-      this.n = $$0;
-      if (!this.t) {
-         this.w();
-      }
+   public bot c() {
+      return this.d;
    }
 
-   private void w() {
-      if (this.n.a(csm.b) && this.o.isEmpty()) {
-         this.an().a(g, 0);
-      } else {
-         this.an().a(g, csl.a(csl.a(this.n, this.o)));
-      }
+   public bot d() {
+      return this.e;
    }
 
-   public void a(bok $$0) {
-      this.o.add($$0);
-      if (!this.t) {
-         this.w();
-      }
+   public bot e() {
+      return this.f;
    }
 
-   public int h() {
-      return this.an().a(g);
+   public bot f() {
+      return this.g;
    }
 
-   public void a(int $$0) {
-      this.t = true;
-      this.an().a(g, $$0);
+   public bot g() {
+      return this.h;
    }
 
-   public ka i() {
-      return this.an().a(i);
+   public bot h() {
+      return this.i;
    }
 
-   public void a(ka $$0) {
-      this.an().a(i, $$0);
+   public bot i() {
+      return this.j;
    }
 
-   protected void a(boolean $$0) {
-      this.an().a(h, $$0);
+   public bot j() {
+      return this.k;
    }
 
-   public boolean j() {
-      return this.an().a(h);
+   public bot k() {
+      return this.l;
    }
 
-   public int k() {
-      return this.q;
+   public bot l() {
+      return this.m;
    }
 
-   public void b(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      boolean $$0 = this.j();
-      float $$1 = this.g();
-      if (this.dM().B) {
-         if ($$0 && this.ag.h()) {
-            return;
-         }
-
-         ka $$2 = this.i();
-         int $$3;
-         float $$4;
-         if ($$0) {
-            $$3 = 2;
-            $$4 = 0.2F;
-         } else {
-            $$3 = aww.f((float) Math.PI * $$1 * $$1);
-            $$4 = $$1;
-         }
-
-         for (int $$7 = 0; $$7 < $$3; $$7++) {
-            float $$8 = this.ag.i() * (float) (Math.PI * 2);
-            float $$9 = aww.c(this.ag.i()) * $$4;
-            double $$10 = this.dr() + (double)(aww.b($$8) * $$9);
-            double $$11 = this.dt();
-            double $$12 = this.dx() + (double)(aww.a($$8) * $$9);
-            double $$14;
-            double $$15;
-            double $$16;
-            if ($$2.a() == kc.v) {
-               int $$13 = $$0 && this.ag.h() ? 16777215 : this.h();
-               $$14 = (double)((float)($$13 >> 16 & 0xFF) / 255.0F);
-               $$15 = (double)((float)($$13 >> 8 & 0xFF) / 255.0F);
-               $$16 = (double)((float)($$13 & 0xFF) / 255.0F);
-            } else if ($$0) {
-               $$14 = 0.0;
-               $$15 = 0.0;
-               $$16 = 0.0;
-            } else {
-               $$14 = (0.5 - this.ag.j()) * 0.15;
-               $$15 = 0.01F;
-               $$16 = (0.5 - this.ag.j()) * 0.15;
-            }
-
-            this.dM().b($$2, $$10, $$11, $$12, $$14, $$15, $$16);
-         }
-      } else {
-         if (this.ah >= this.r + this.q) {
-            this.am();
-            return;
-         }
-
-         boolean $$23 = this.ah < this.r;
-         if ($$0 != $$23) {
-            this.a($$23);
-         }
-
-         if ($$23) {
-            return;
-         }
-
-         if (this.aE != 0.0F) {
-            $$1 += this.aE;
-            if ($$1 < 0.5F) {
-               this.am();
-               return;
-            }
-
-            this.a($$1);
-         }
-
-         if (this.ah % 5 == 0) {
-            this.p.entrySet().removeIf($$0x -> this.ah >= (Integer)$$0x.getValue());
-            List<bok> $$24 = Lists.newArrayList();
-
-            for (bok $$25 : this.n.a().a()) {
-               $$24.add(new bok($$25.b(), $$25.a($$0x -> $$0x / 4), $$25.d(), $$25.e(), $$25.f()));
-            }
-
-            $$24.addAll(this.o);
-            if ($$24.isEmpty()) {
-               this.p.clear();
-            } else {
-               List<bpp> $$26 = this.dM().a(bpp.class, this.cH());
-               if (!$$26.isEmpty()) {
-                  for (bpp $$27 : $$26) {
-                     if (!this.p.containsKey($$27) && $$27.fD()) {
-                        double $$28 = $$27.dr() - this.dr();
-                        double $$29 = $$27.dx() - this.dx();
-                        double $$30 = $$28 * $$28 + $$29 * $$29;
-                        if ($$30 <= (double)($$1 * $$1)) {
-                           this.p.put($$27, this.ah + this.s);
-
-                           for (bok $$31 : $$24) {
-                              if ($$31.b().a().a()) {
-                                 $$31.b().a().a(this, this.r(), $$27, $$31.d(), 0.5);
-                              } else {
-                                 $$27.b(new bok($$31), this);
-                              }
-                           }
-
-                           if (this.v != 0.0F) {
-                              $$1 += this.v;
-                              if ($$1 < 0.5F) {
-                                 this.am();
-                                 return;
-                              }
-
-                              this.a($$1);
-                           }
-
-                           if (this.u != 0) {
-                              this.q = this.q + this.u;
-                              if (this.q <= 0) {
-                                 this.am();
-                                 return;
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public float m() {
-      return this.v;
-   }
-
-   public void b(float $$0) {
-      this.v = $$0;
-   }
-
-   public float o() {
-      return this.aE;
-   }
-
-   public void c(float $$0) {
-      this.aE = $$0;
-   }
-
-   public int p() {
-      return this.u;
-   }
-
-   public void c(int $$0) {
-      this.u = $$0;
-   }
-
-   public int q() {
-      return this.r;
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public void a(@Nullable bpp $$0) {
-      this.aF = $$0;
-      this.aG = $$0 == null ? null : $$0.cw();
-   }
-
-   @Nullable
-   public bpp r() {
-      if (this.aF == null && this.aG != null && this.dM() instanceof apf) {
-         box $$0 = ((apf)this.dM()).a(this.aG);
-         if ($$0 instanceof bpp) {
-            this.aF = (bpp)$$0;
-         }
-      }
-
-      return this.aF;
-   }
-
-   @Override
-   protected void a(ta $$0) {
-      this.ah = $$0.h("Age");
-      this.q = $$0.h("Duration");
-      this.r = $$0.h("WaitTime");
-      this.s = $$0.h("ReapplicationDelay");
-      this.u = $$0.h("DurationOnUse");
-      this.v = $$0.j("RadiusOnUse");
-      this.aE = $$0.j("RadiusPerTick");
-      this.a($$0.j("Radius"));
-      if ($$0.b("Owner")) {
-         this.aG = $$0.a("Owner");
-      }
-
-      if ($$0.b("Particle", 8)) {
-         try {
-            this.a(er.a(new StringReader($$0.l("Particle")), this.dO()));
-         } catch (CommandSyntaxException var5) {
-            d.warn("Couldn't load custom particle {}", $$0.l("Particle"), var5);
-         }
-      }
-
-      if ($$0.b("Color", 99)) {
-         this.a($$0.h("Color"));
-      }
-
-      if ($$0.b("Potion", 8)) {
-         this.a(csl.c($$0));
-      }
-
-      if ($$0.b("effects", 9)) {
-         tg $$2 = $$0.c("effects", 10);
-         this.o.clear();
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            bok $$4 = bok.a($$2.a($$3));
-            if ($$4 != null) {
-               this.a($$4);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      $$0.a("Age", this.ah);
-      $$0.a("Duration", this.q);
-      $$0.a("WaitTime", this.r);
-      $$0.a("ReapplicationDelay", this.s);
-      $$0.a("DurationOnUse", this.u);
-      $$0.a("RadiusOnUse", this.v);
-      $$0.a("RadiusPerTick", this.aE);
-      $$0.a("Radius", this.g());
-      $$0.a("Particle", this.i().a(this.dO()));
-      if (this.aG != null) {
-         $$0.a("Owner", this.aG);
-      }
-
-      if (this.t) {
-         $$0.a("Color", this.h());
-      }
-
-      Optional<ajg<csj>> $$1 = this.n.e();
-      if ($$1.isPresent() && !this.n.a(csm.b)) {
-         $$0.a("Potion", $$1.get().a().toString());
-      }
-
-      if (!this.o.isEmpty()) {
-         tg $$2 = new tg();
-
-         for (bok $$3 : this.o) {
-            $$2.add($$3.i());
-         }
-
-         $$0.a("effects", $$2);
-      }
-   }
-
-   @Override
-   public void a(aim<?> $$0) {
-      if (f.equals($$0)) {
-         this.j_();
-      }
-
-      super.a($$0);
-   }
-
-   public il<csj> s() {
+   public bot m() {
       return this.n;
    }
 
-   @Override
-   public eiu r_() {
-      return eiu.d;
+   public bot n() {
+      return this.o;
    }
 
-   @Override
-   public bpa a(bqa $$0) {
-      return bpa.b(this.g() * 2.0F, 0.5F);
+   public bot o() {
+      return this.p;
+   }
+
+   public bot p() {
+      return this.q;
+   }
+
+   public bot q() {
+      return this.r;
+   }
+
+   public bot r() {
+      return this.s;
+   }
+
+   public bot s() {
+      return this.t;
+   }
+
+   public bot t() {
+      return this.u;
+   }
+
+   public bot u() {
+      return this.v;
+   }
+
+   public bot a(bpv $$0) {
+      return this.a(bow.v, $$0);
+   }
+
+   public bot b(bpv $$0) {
+      return this.a(bow.w, $$0);
+   }
+
+   public bot c(bpv $$0) {
+      return this.a(bow.x, $$0);
+   }
+
+   public bot a(bqo $$0) {
+      return this.a(bow.y, $$0);
+   }
+
+   public bot b(bqo $$0) {
+      return this.a(bow.z, $$0);
+   }
+
+   public bot c(bqo $$0) {
+      return this.a(bow.A, $$0);
+   }
+
+   public bot a(cjt $$0) {
+      return this.a(bow.B, $$0);
+   }
+
+   public bot a(cjz $$0, @Nullable bpv $$1) {
+      return this.a(bow.C, $$0, $$1);
+   }
+
+   public bot a(bpv $$0, @Nullable bpv $$1) {
+      return this.a(bow.D, $$0, $$1);
+   }
+
+   public bot a(bpv $$0, @Nullable bqo $$1) {
+      return this.a(bow.E, $$0, $$1);
+   }
+
+   public bot b(bpv $$0, @Nullable bqo $$1) {
+      return this.a(bow.F, $$0, $$1);
+   }
+
+   public bot c(bpv $$0, @Nullable bqo $$1) {
+      return this.a(bow.G, $$0, $$1);
+   }
+
+   public bot a(ckg $$0, @Nullable bpv $$1) {
+      return this.a(bow.H, $$0, $$1);
+   }
+
+   public bot a(ckf $$0, @Nullable bpv $$1) {
+      return $$1 == null ? this.a(bow.J, $$0) : this.a(bow.I, $$0, $$1);
+   }
+
+   public bot a(ckz $$0, bpv $$1) {
+      return this.a(bow.K, $$0, $$1);
+   }
+
+   public bot b(bpv $$0, @Nullable bpv $$1) {
+      return this.a(bow.L, $$0, $$1);
+   }
+
+   public bot c(bpv $$0, @Nullable bpv $$1) {
+      return this.a(bow.M, $$0, $$1);
+   }
+
+   public bot d(bpv $$0) {
+      return this.a(bow.N, $$0);
+   }
+
+   public bot a(@Nullable cyp $$0) {
+      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
+   }
+
+   public bot d(@Nullable bpv $$0, @Nullable bpv $$1) {
+      return this.a($$1 != null && $$0 != null ? bow.P : bow.O, $$0, $$1);
+   }
+
+   public bot e(bpv $$0) {
+      return this.a(bow.Q, $$0);
+   }
+
+   public bot a(esa $$0) {
+      return new bot(this.a.g(bow.R), $$0);
+   }
+
+   public bot v() {
+      return this.w;
+   }
+
+   public bot w() {
+      return this.x;
    }
 }

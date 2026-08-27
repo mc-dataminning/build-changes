@@ -1,44 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public record wl(UUID a, cix b) {
-   public wq a(Duration $$0) {
-      return new wq.a(this.b.a(), () -> this.b.b().a($$0));
-   }
-
-   public wo.b a(UUID $$0) {
-      return new wo($$0, this.a).a(this.b);
-   }
-
-   public wl.a a() {
-      return new wl.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cix d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cix.a b) {
-      public static wl.a a(uu $$0) {
-         return new wl.a($$0.n(), new cix.a($$0));
+public interface wl {
+   Optional<aym> a = Optional.of(aym.a);
+   wl b = new wl() {
+      @Override
+      public <T> Optional<T> a(wl.a<T> $$0) {
+         return Optional.empty();
       }
 
-      public static void a(uu $$0, wl.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      @Override
+      public <T> Optional<T> a(wl.b<T> $$0, xd $$1) {
+         return Optional.empty();
       }
+   };
 
-      public wl a(GameProfile $$0, axi $$1) throws cix.b {
-         return new wl(this.a, cix.a($$1, $$0.getId(), this.b));
-      }
+   <T> Optional<T> a(wl.a<T> var1);
+
+   <T> Optional<T> a(wl.b<T> var1, xd var2);
+
+   static wl e(final String $$0) {
+      return new wl() {
+         @Override
+         public <T> Optional<T> a(wl.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(wl.b<T> $$0x, xd $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static wl a(final String $$0, final xd $$1) {
+      return new wl() {
+         @Override
+         public <T> Optional<T> a(wl.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(wl.b<T> $$0x, xd $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static wl a(wl... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static wl a(final List<? extends wl> $$0) {
+      return new wl() {
+         @Override
+         public <T> Optional<T> a(wl.a<T> $$0x) {
+            for (wl $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(wl.b<T> $$0x, xd $$1) {
+            for (wl $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(xd var1, String var2);
    }
 }

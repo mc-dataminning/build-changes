@@ -1,73 +1,104 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Optional;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class ws {
-   private final String a;
-   private final List<wr> b;
-   private final Int2IntFunction c;
+public record ws(byte[] c) {
+   public static final Codec<ws> a = aws.n.xmap(ws::new, ws::b);
+   public static final int b = 256;
 
-   private ws(String $$0, List<wr> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
+   public ws(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public String a() {
-      return this.a;
+   public static ws a(vg $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new ws($$1);
    }
 
-   public List<awi> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
+   public static void a(vg $$0, ws $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(axw $$0, axv $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         List<awi> $$3 = Lists.newArrayList();
-         wr $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            wr $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? awi.backward($$9, $$4, this.c) : awi.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
+         if ($$0 instanceof ws $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
          }
 
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? awi.backward($$10, $$4, this.c) : awi.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
+         return false;
       }
    }
 
-   public static ws a(vz $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
    }
 
-   public static ws a(vz $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<wr> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         axp.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
+   public ws.a a(wt $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new ws.a($$1) : new ws.a(this);
+   }
 
-            return true;
-         });
-         return Optional.empty();
-      }, wr.a);
-      return new ws($$2.apply($$3.toString()), $$4, $$1);
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable ws c) {
+      public static final int a = -1;
+
+      public a(ws $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static ws.a a(vg $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new ws.a(ws.a($$0)) : new ws.a($$1);
+      }
+
+      public static void a(vg $$0, ws.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            ws.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<ws> a(wt $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public ws b() {
+         return this.c;
+      }
    }
 }

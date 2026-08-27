@@ -1,181 +1,38 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
-public class fsq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vu b = vu.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<us> c = Collections.synchronizedList(Lists.newArrayList());
+public class fsq<T extends cdy> extends fph<T> {
+   private final ftm a;
+   private final ftm b;
 
-   public void a(final fso $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final ftr $$3 = ftr.a($$0.b);
-      Optional<InetSocketAddress> $$4 = ftt.a.a($$3).map(ftq::d);
-      if ($$4.isEmpty()) {
-         this.a(fga.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final us $$6 = us.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = vu.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         aie $$7 = new aie() {
-            private boolean h;
-            private boolean i;
-            private long j;
-
-            @Override
-            public void a(aif $$0x) {
-               if (this.i) {
-                  $$6.a(vu.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  aig $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = vu.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = vu.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fsq.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<vu> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(vu.b($$3xx.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(vu.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = vu.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fso.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ac.b();
-                  $$6.a(new aic(this.j));
-                  this.h = true;
-               }
-            }
-
-            @Override
-            public void a(ahz $$0x) {
-               long $$1 = this.j;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$6.a(vu.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(vu $$0x) {
-               if (!this.h) {
-                  fsq.this.a($$0, $$0);
-                  fsq.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aii.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
-      }
+   public fsq(ftm $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   void a(vu $$0, fso $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = vt.a;
+   public static fts c() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", ftr.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fto.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", ftr.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fto.a(0.0F, 22.0F, 0.0F));
+      return fts.a($$0, 16, 16);
    }
 
-   void a(InetSocketAddress $$0, final ftr $$1, final fso $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)us.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fsh($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(fso.b.d);
-               $$2.h = vu.b($$2xx);
-               $$2.d = vu.b($$3);
-               $$2.c = fsq.a($$4, $$5);
-               $$2.e = new aig.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+   @Override
+   protected Iterable<ftm> a() {
+      return ImmutableList.of(this.a);
    }
 
-   public static vu a(int $$0, int $$1) {
-      vu $$2 = vu.b(Integer.toString($$0)).a(n.h);
-      vu $$3 = vu.b(Integer.toString($$1)).a(n.h);
-      return vu.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
+   @Override
+   protected Iterable<ftm> b() {
+      return ImmutableList.of(this.b);
    }
 
-   public void a() {
-      synchronized (this.c) {
-         Iterator<us> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            us $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
-         }
-      }
-   }
-
-   public void b() {
-      synchronized (this.c) {
-         Iterator<us> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            us $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(vu.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$0.bc() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * axk.a(0.3F * $$3);
    }
 }

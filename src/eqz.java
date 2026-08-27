@@ -1,83 +1,61 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public abstract class eqz {
-   public boolean a(@Nullable eqz $$0) {
-      return $$0 == null ? false : this == $$0;
+public record eqz(erf b, String c, float d) implements eqx {
+   public static final Codec<eqz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               erg.a.fieldOf("target").forGetter(eqz::c),
+               Codec.STRING.fieldOf("score").forGetter(eqz::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eqz::e)
+            )
+            .apply($$0, eqz::new)
+   );
+
+   @Override
+   public eqw b() {
+      return eqy.e;
    }
 
-   public abstract String b();
+   @Override
+   public Set<epl<?>> a() {
+      return this.b.b();
+   }
 
-   public abstract wi d(vu var1);
+   public static eqz a(enb.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
 
-   public abstract boolean i();
+   public static eqz a(enb.b $$0, String $$1, float $$2) {
+      return new eqz(erc.a($$0), $$1, $$2);
+   }
 
-   public abstract boolean h();
-
-   public abstract eqz.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract eqz.b k();
-
-   public abstract eqz.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, eqz.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eqz.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static eqz.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public vu a() {
-         return vu.c("team.collision." + this.e);
+   @Override
+   public float b(enb $$0) {
+      etd $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         ete $$2 = $$0.d().f();
+         esw $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            eta $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
       }
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public erf c() {
+      return this.b;
+   }
 
-      private static final Map<String, eqz.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eqz.b)$$0));
-      public final String e;
-      public final int f;
+   public String d() {
+      return this.c;
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static eqz.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public vu b() {
-         return vu.c("team.visibility." + this.e);
-      }
+   public float e() {
+      return this.d;
    }
 }

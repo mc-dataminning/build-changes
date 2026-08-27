@@ -1,130 +1,48 @@
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class amc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.particle.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.help.failed"));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("particle").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("help").executes($$1 -> {
+               Map<CommandNode<du>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (du)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((du)$$1.getSource()).a(() -> wg.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
             .then(
-               ((RequiredArgumentBuilder)dv.a("name", er.a($$1))
-                     .executes(
-                        $$0x -> a(
-                              (du)$$0x.getSource(), er.a($$0x, "name"), ((du)$$0x.getSource()).d(), ept.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t()
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("pos", fv.a())
-                           .executes(
-                              $$0x -> a((du)$$0x.getSource(), er.a($$0x, "name"), fv.a($$0x, "pos"), ept.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t())
-                           ))
-                        .then(
-                           dv.a("delta", fv.a(false))
-                              .then(
-                                 dv.a("speed", FloatArgumentType.floatArg(0.0F))
-                                    .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         er.a($$0x, "name"),
-                                                         fv.a($$0x, "pos"),
-                                                         fv.a($$0x, "delta"),
-                                                         FloatArgumentType.getFloat($$0x, "speed"),
-                                                         IntegerArgumentType.getInteger($$0x, "count"),
-                                                         false,
-                                                         ((du)$$0x.getSource()).l().ah().t()
-                                                      )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)dv.a("force")
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               er.a($$0x, "name"),
-                                                               fv.a($$0x, "pos"),
-                                                               fv.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               true,
-                                                               ((du)$$0x.getSource()).l().ah().t()
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      dv.a("viewers", eh.d())
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (du)$$0x.getSource(),
-                                                                  er.a($$0x, "name"),
-                                                                  fv.a($$0x, "pos"),
-                                                                  fv.a($$0x, "delta"),
-                                                                  FloatArgumentType.getFloat($$0x, "speed"),
-                                                                  IntegerArgumentType.getInteger($$0x, "count"),
-                                                                  true,
-                                                                  eh.f($$0x, "viewers")
-                                                               )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)dv.a("normal")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            er.a($$0x, "name"),
-                                                            fv.a($$0x, "pos"),
-                                                            fv.a($$0x, "delta"),
-                                                            FloatArgumentType.getFloat($$0x, "speed"),
-                                                            IntegerArgumentType.getInteger($$0x, "count"),
-                                                            false,
-                                                            ((du)$$0x.getSource()).l().ah().t()
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dv.a("viewers", eh.d())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               er.a($$0x, "name"),
-                                                               fv.a($$0x, "pos"),
-                                                               fv.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               false,
-                                                               eh.f($$0x, "viewers")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+               dv.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<du> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (du)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<du>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (du)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((du)$$1.getSource()).a(() -> wg.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
                   )
             )
       );
-   }
-
-   private static int a(du $$0, ka $$1, ept $$2, ept $$3, float $$4, int $$5, boolean $$6, Collection<apg> $$7) throws CommandSyntaxException {
-      int $$8 = 0;
-
-      for (apg $$9 : $$7) {
-         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
-            $$8++;
-         }
-      }
-
-      if ($$8 == 0) {
-         throw a.create();
-      } else {
-         $$0.a(() -> vu.a("commands.particle.success", ki.j.b($$1.a()).toString()), true);
-         return $$8;
-      }
    }
 }

@@ -1,46 +1,36 @@
-public final class eql extends eqc {
-   private final eqc d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   protected eql(eqc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public record eql(eqx b, ena c) implements eqc {
+   public static final Codec<eql> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eqy.a.fieldOf("value").forGetter(eql::c), ena.a.fieldOf("range").forGetter(eql::d)).apply($$0, eql::new)
+   );
+
+   @Override
+   public eqd b() {
+      return eqe.s;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public Set<epl<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public boolean a(enb $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   @Override
-   public int a(ih.a $$0) {
-      return this.a($$0, this.d.a($$0));
+   public static eqc.a a(eqx $$0, ena $$1) {
+      return () -> new eql($$0, $$1);
    }
 
-   @Override
-   public int b(ih.a $$0) {
-      return this.a($$0, this.d.b($$0));
+   public eqx c() {
+      return this.b;
    }
 
-   private int a(ih.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return aww.a($$1, $$2, $$3) - $$2;
+   public ena d() {
+      return this.c;
    }
 }

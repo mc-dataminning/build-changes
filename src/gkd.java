@@ -1,56 +1,48 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class gkd extends gjt<cdd, fqe<cdd>> {
+   private static final ajt a = new ajt("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final ajt b = new ajt("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final ajt c = new ajt("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final ajt d = new ajt("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final ajt e = new ajt("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final ajt f = new ajt("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final ajt g = new ajt("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final ajt h = new ajt("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final ajt i = new ajt("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final ajt j = new ajt("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final ajt k = new ajt("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final ajt l = new ajt("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fss<cdd> m;
+   private final fst<cdd> n;
 
-public class gkd extends ast<List<String>> {
-   private static final ajh a = new ajh("texts/splashes.txt");
-   private static final axd b = axd.a();
-   private final List<String> c = Lists.newArrayList();
-   private final ezx d;
-
-   public gkd(ezx $$0) {
-      this.d = $$0;
+   public gkd(ghd<cdd, fqe<cdd>> $$0, fti $$1) {
+      super($$0);
+      this.m = new fss<>($$1.a(ftl.bM));
+      this.n = new fst<>($$1.a(ftl.bK));
    }
 
-   protected List<String> a(aso $$0, bjr $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = ezi.Q().ab().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
+   public void a(ewi $$0, fzz $$1, int $$2, cdd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cdd.b $$10 = $$3.gy();
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
-   }
+      fqm<cdd> $$11 = (fqm<cdd>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   protected void a(List<String> $$0, aso $$1, bjr $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
-
-   @Nullable
-   public fcm a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fcm.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fcm.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fcm.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fcm(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fcm(this.c.get(b.a(this.c.size())));
-      }
+      ajt $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gx().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

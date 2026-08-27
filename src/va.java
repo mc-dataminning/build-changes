@@ -1,27 +1,16 @@
-public interface va {
-   yc a();
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-   ut b();
+public class va extends MessageToByteEncoder<ByteBuf> {
+   private final uy a;
 
-   void a(vu var1);
-
-   boolean c();
-
-   default boolean a(yb<?> $$0) {
-      return this.c();
+   public va(Cipher $$0) {
+      this.a = new uy($$0);
    }
 
-   default boolean d() {
-      return true;
-   }
-
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$1);
-   }
-
-   default void a(p $$0) {
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

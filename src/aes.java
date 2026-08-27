@@ -1,94 +1,86 @@
-public class aes implements yb<aam> {
-   public static final xs<vf, aes> a = yb.a(aes::a, aes::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
+public class aes implements yn<aay> {
+   public static final ye<vr, aes> a = yn.a(aes::a, aes::new);
+   public static final float b = 8.0F;
+   private final il<aul> c;
+   private final aun d;
+   private final int e;
    private final int f;
-   private final il<boi> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-   public aes(int $$0, bok $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.b();
-      this.h = $$1.d();
-      this.i = $$1.c();
-      byte $$3 = 0;
-      if ($$1.e()) {
-         $$3 = (byte)($$3 | 1);
-      }
-
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+   public aes(il<aul> $$0, aun $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   private aes(vf $$0) {
-      this.f = $$0.l();
-      this.g = xq.b(kj.Q).decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
+   private aes(vr $$0) {
+      this.c = aul.d.decode($$0);
+      this.d = $$0.b(aun.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
    }
 
-   private void a(vf $$0) {
-      $$0.c(this.f);
-      xq.b(kj.Q).encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.k(this.j);
+   private void a(vr $$0) {
+      aul.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.p(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public yd<aes> a() {
-      return aex.bc;
+   public yp<aes> a() {
+      return afj.aS;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.f;
+   public il<aul> b() {
+      return this.c;
    }
 
-   public il<boi> e() {
-      return this.g;
+   public aun e() {
+      return this.d;
    }
 
-   public int f() {
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
       return this.h;
    }
 
-   public int g() {
+   public float j() {
       return this.i;
    }
 
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+   public long k() {
+      return this.j;
    }
 }

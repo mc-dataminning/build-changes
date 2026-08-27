@@ -1,24 +1,29 @@
-public class ghe extends ghm<cbq, fou<cbq>> {
-   private final fym a;
+public class ghe extends ggo<ccy, fsa<ccy>> {
+   private static final ajt a = new ajt("textures/entity/fish/salmon.png");
 
-   public ghe(gew<cbq, fou<cbq>> $$0, fym $$1) {
-      super($$0);
-      this.a = $$1;
+   public ghe(gfi.a $$0) {
+      super($$0, new fsa<>($$0.a(ftl.bg)), 0.4F);
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, cbq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gn() != 0) {
-         $$0.a();
-         frf $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dae.bT.o(), $$0, $$1, $$2, git.d);
-         $$0.b();
+   public ajt a(ccy $$0) {
+      return a;
+   }
+
+   protected void a(ccy $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.bc()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
+
+      float $$8 = $$6 * 4.3F * axk.a($$7 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$8));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.bc()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
    }
 }

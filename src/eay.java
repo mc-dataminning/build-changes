@@ -1,41 +1,43 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eay extends eax {
-   public static final Codec<eay> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eay::new));
+public class eay implements dzz {
+   public static final Codec<eay> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avr.b(ks.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               eca.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eel.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               eec.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bnf.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bnf.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, eay::new)
+   );
+   public final avr<dby> b;
+   public final eca c;
+   public final il<eel> d;
+   public final eec e;
+   public final bnf f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bnf j;
+   public final float k;
 
-   public eay(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected ebb<?> a() {
-      return ebb.d;
-   }
-
-   @Override
-   public List<dzi.a> a(cxh $$0, BiConsumer<ib, dnb> $$1, axd $$2, int $$3, ib $$4, dys $$5) {
-      List<dzi.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + aww.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + aww.a($$8) * (float)$$11);
-            ib $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new dzi.a($$4.b($$9, $$7, $$10), -2, false));
-      }
-
-      return $$6;
+   public eay(avr<dby> $$0, eca $$1, il<eel> $$2, eec $$3, bnf $$4, float $$5, int $$6, float $$7, bnf $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

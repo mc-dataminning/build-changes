@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class yx implements yn<yt> {
+   public static final ye<vg, yx> a = yn.a(yx::a, yx::new);
+   private final int b;
 
-public record yx(UUID b, yx.a c) implements yb<ys> {
-   public static final xs<uu, yx> a = yb.a(yx::a, yx::new);
-
-   private yx(uu $$0) {
-      this($$0.n(), $$0.b(yx.a.class));
+   public yx(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private yx(vg $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(vg $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public yd<yx> a() {
-      return yr.n;
+   public yp<yx> a() {
+      return zd.d;
    }
 
-   public void a(ys $$0) {
+   public void a(yt $$0) {
       $$0.a(this);
    }
 
-   public yx.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public int b() {
+      return this.b;
    }
 }

@@ -1,39 +1,42 @@
-public class fyp {
-   protected final int[] a;
-   protected final int b;
-   protected final ih c;
-   protected final gjc d;
-   private final boolean e;
+public class fyp extends fxl {
+   private final bpv a;
+   private int b;
+   private final int D;
+   private final kj E;
 
-   public fyp(int[] $$0, int $$1, ih $$2, gjc $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public fyp(fuh $$0, bpv $$1, kj $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public gjc a() {
-      return this.d;
+   public fyp(fuh $$0, bpv $$1, kj $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dp());
    }
 
-   public int[] b() {
-      return this.a;
+   private fyp(fuh $$0, bpv $$1, kj $$2, int $$3, esa $$4) {
+      super($$0, $$1.dr(), $$1.e(0.5), $$1.dx(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
-   public boolean c() {
-      return this.b != -1;
-   }
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
 
-   public int d() {
-      return this.b;
-   }
-
-   public ih e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

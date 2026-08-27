@@ -1,181 +1,231 @@
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class dse {
-   public static dse.b a(int $$0, int $$1) {
-      return new dse.b($$0 - 1, $$1 + 1);
+public class dse implements dsa, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bmt<bmv.b> c;
+   private final dsj d;
+   private final Map<cye, dse.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
+
+   protected dse(dsl $$0, Path $$1, boolean $$2) {
+      this.d = new dsj($$0, $$1, $$2);
+      this.c = new bmt<>(new bmv.a(dse.b.values().length), ac.g(), "IOWorker-" + $$0.c());
    }
 
-   public static dse.b b(int $$0, int $$1) {
-      return new dse.b($$0, $$1);
-   }
+   public boolean a(cye $$0, int $$1) {
+      cye $$2 = new cye($$0.e - $$1, $$0.f - $$1);
+      cye $$3 = new cye($$0.e + $$1, $$0.f + $$1);
 
-   public static dse a(int $$0) {
-      return new dse.c($$0, false);
-   }
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               cye $$7 = cye.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
 
-   public static dse b(int $$0) {
-      return new dse.c($$0 + 1, false);
-   }
-
-   public static dse c(int $$0) {
-      return new dse.c($$0, true);
-   }
-
-   public static dse d(int $$0) {
-      return new dse.c($$0 - 1, true);
-   }
-
-   public static dse a() {
-      return dse.a.a;
-   }
-
-   public static dse a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dse a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public dse b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<dse> a(cxh $$0, ib $$1, int $$2, Predicate<dnb> $$3, Predicate<dnb> $$4) {
-      ib.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(cxh $$0, int $$1, Predicate<dnb> $$2, Predicate<dnb> $$3, ib.a $$4, int $$5, ih $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dse {
-      static final dse.a a = new dse.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends dse {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
          }
       }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
+      return false;
+   }
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = cye.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
+         return $$3;
       }
    }
 
-   public static final class c extends dse {
-      private final int a;
-      private final boolean b;
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         cye $$2 = cye.a($$0, $$1);
+         cye $$3 = cye.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         cye.a($$2, $$3).forEach($$1xx -> {
+            uq $$2x = new uq(new us(tr.a, "DataVersion"), new us(tm.b, "blending_data"));
 
-      public c(int $$0, boolean $$1) {
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof tm $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ac.f());
+   }
+
+   private boolean a(tm $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(cye $$0, @Nullable tm $$1) {
+      return this.a(() -> {
+         dse.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dse.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<tm>> a(cye $$0) {
+      return this.a(() -> {
+         dse.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
+         } else {
+            try {
+               tm $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
+         }
+      });
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(cye $$0, ug $$1) {
+      return this.a(() -> {
+         try {
+            dse.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bmv.b(dse.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<cye, dse.a>> $$0 = this.e.entrySet().iterator();
+         Entry<cye, dse.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new bmv.b(dse.b.b.ordinal(), this::a));
+   }
+
+   private void a(cye $$0, dse.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bmv.b(dse.b.c.ordinal(), () -> $$0.a(aym.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
+   }
+
+   static class a {
+      @Nullable
+      tm a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable tm $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

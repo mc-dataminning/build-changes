@@ -1,30 +1,41 @@
-public class fun extends ftz {
-   private static final int a = 12235202;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-   protected fun(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fwb $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)awg.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)awg.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)awg.b.d(12235202) / 255.0F - $$9;
+public class fun {
+   private final asn a = asq.c();
+   private final Map<asj, String> b;
+
+   public fun() {
+      this.a.a();
+      Builder<asj, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         arn $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public List<asj> a(List<asj> $$0) {
+      List<asj> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (asj $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
+      }
+
+      this.a.a($$2);
+      return $$1;
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
-
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fun($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+   public ass a() {
+      List<aro> $$0 = this.a.g();
+      return new asv(arq.b, $$0);
    }
 }

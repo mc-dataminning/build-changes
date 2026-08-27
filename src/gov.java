@@ -1,74 +1,66 @@
-public class gov implements gox {
-   private static final int a = 600;
-   private static final vu b = vu.c("tutorial.punch_tree.title");
-   private static final vu c = vu.a("tutorial.punch_tree.description", gow.a("attack"));
-   private final gow d;
-   private fdt e;
-   private int f;
-   private int g;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-   public gov(gow $$0) {
-      this.d = $$0;
+public class gov implements JsonDeserializer<gou> {
+   private static final bnd a = bnb.a(1.0F);
+
+   public gou a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = axa.m($$0, "entry");
+      boolean $$4 = axa.a($$3, "replace", false);
+      String $$5 = axa.a($$3, "subtitle", null);
+      List<got> $$6 = this.a($$3);
+      return new gou($$6, $$4, $$5);
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(goy.f);
-      } else {
-         if (this.f == 1) {
-            fwu $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fZ().a(auv.r)) {
-                  this.d.a(goy.e);
-                  return;
-               }
+   private List<got> a(JsonObject $$0) {
+      List<got> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = axa.v($$0, "sounds");
 
-               if (gos.a($$0)) {
-                  this.d.a(goy.e);
-                  return;
-               }
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (axa.a($$4)) {
+               String $$5 = axa.a($$4, "sound");
+               $$1.add(new got($$5, a, a, 1, got.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(axa.m($$4, "sound")));
             }
          }
-
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fdt(fdt.a.c, b, c, true);
-            this.d.e().aA().a(this.e);
-         }
       }
+
+      return $$1;
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   private got b(JsonObject $$0) {
+      String $$1 = axa.i($$0, "name");
+      got.a $$2 = this.a($$0, got.a.a);
+      float $$3 = axa.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = axa.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = axa.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = axa.a($$0, "preload", false);
+      boolean $$7 = axa.a($$0, "stream", false);
+      int $$8 = axa.a($$0, "attenuation_distance", 16);
+      return new got($$1, bnb.a($$3), bnb.a($$4), $$5, $$2, $$7, $$6, $$8);
    }
 
-   @Override
-   public void a(fsa $$0, ib $$1, dnb $$2, float $$3) {
-      boolean $$4 = $$2.a(aun.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(goy.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
+   private got.a a(JsonObject $$0, got.a $$1) {
+      got.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = got.a.a(axa.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
       }
-   }
 
-   @Override
-   public void a(cqm $$0) {
-      if ($$0.a(auv.r)) {
-         this.d.a(goy.e);
-      }
+      return $$2;
    }
 }

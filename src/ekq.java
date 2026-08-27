@@ -1,546 +1,412 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ekq implements ekr, eks {
-   private static final Logger f = LogUtils.getLogger();
-   public static final String a = "LevelName";
-   protected static final String b = "Player";
-   protected static final String c = "WorldGenSettings";
-   private cxf g;
-   private final dtm h;
-   private final ekq.a i;
-   private final Lifecycle j;
-   private ib k;
-   private float l;
-   private long m;
-   private long n;
-   @Nullable
-   private final ta o;
-   private final int p;
-   private int q;
-   private boolean r;
-   private int s;
-   private boolean t;
-   private int u;
-   private boolean v;
-   private boolean w;
-   private dos.c x;
-   private dqr.a y;
-   @Nullable
-   private ta z;
-   private int A;
-   private int B;
-   @Nullable
-   private UUID C;
-   private final Set<String> D;
-   private boolean E;
-   private final Set<String> F;
-   private final epg<MinecraftServer> G;
+public abstract class ekq extends ekr {
+   public static final dpq a = dpp.i;
+   public static final dpz b = dpp.aM;
+   private static final int e = 200;
+   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<dby.a>> f = ThreadLocal.withInitial(() -> {
+      Object2ByteLinkedOpenHashMap<dby.a> $$0 = new Object2ByteLinkedOpenHashMap<dby.a>(200) {
+         protected void rehash(int $$0) {
+         }
+      };
+      $$0.defaultReturnValue((byte)127);
+      return $$0;
+   });
+   private final Map<eks, est> g = Maps.newIdentityHashMap();
 
-   private ekq(
-      @Nullable ta $$0,
-      boolean $$1,
-      ib $$2,
-      float $$3,
-      long $$4,
-      long $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      boolean $$9,
-      int $$10,
-      boolean $$11,
-      boolean $$12,
-      boolean $$13,
-      dos.c $$14,
-      int $$15,
-      int $$16,
-      @Nullable UUID $$17,
-      Set<String> $$18,
-      Set<String> $$19,
-      epg<MinecraftServer> $$20,
-      @Nullable ta $$21,
-      dqr.a $$22,
-      cxf $$23,
-      dtm $$24,
-      ekq.a $$25,
-      Lifecycle $$26
-   ) {
-      this.E = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.p = $$6;
-      this.q = $$7;
-      this.s = $$8;
-      this.r = $$9;
-      this.u = $$10;
-      this.t = $$11;
-      this.v = $$12;
-      this.w = $$13;
-      this.x = $$14;
-      this.A = $$15;
-      this.B = $$16;
-      this.C = $$17;
-      this.D = $$18;
-      this.F = $$19;
-      this.o = $$0;
-      this.G = $$20;
-      this.z = $$21;
-      this.y = $$22;
-      this.g = $$23;
-      this.h = $$24;
-      this.i = $$25;
-      this.j = $$26;
-   }
-
-   public ekq(cxf $$0, dtm $$1, ekq.a $$2, Lifecycle $$3) {
-      this(
-         null,
-         false,
-         ib.c,
-         0.0F,
-         0L,
-         0L,
-         19133,
-         0,
-         0,
-         false,
-         0,
-         false,
-         false,
-         false,
-         dos.e,
-         0,
-         0,
-         null,
-         Sets.newLinkedHashSet(),
-         new HashSet<>(),
-         new epg<>(epf.a),
-         null,
-         dqr.a.b,
-         $$0.h(),
-         $$1,
-         $$2,
-         $$3
-      );
-   }
-
-   public static <T> ekq a(Dynamic<T> $$0, cxf $$1, ekq.a $$2, dtm $$3, Lifecycle $$4) {
-      long $$5 = $$0.get("Time").asLong(0L);
-      return new ekq(
-         (ta)ta.a.parse($$0.get("Player").orElseEmptyMap()).result().orElse(null),
-         $$0.get("WasModded").asBoolean(false),
-         new ib($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
-         $$0.get("SpawnAngle").asFloat(0.0F),
-         $$5,
-         $$0.get("DayTime").asLong($$5),
-         eko.a($$0).a(),
-         $$0.get("clearWeatherTime").asInt(0),
-         $$0.get("rainTime").asInt(0),
-         $$0.get("raining").asBoolean(false),
-         $$0.get("thunderTime").asInt(0),
-         $$0.get("thundering").asBoolean(false),
-         $$0.get("initialized").asBoolean(true),
-         $$0.get("DifficultyLocked").asBoolean(false),
-         dos.c.a($$0, dos.e),
-         $$0.get("WanderingTraderSpawnDelay").asInt(0),
-         $$0.get("WanderingTraderSpawnChance").asInt(0),
-         (UUID)$$0.get("WanderingTraderId").read(jf.a).result().orElse(null),
-         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
-         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
-         new epg<>(epf.a, $$0.get("ScheduledEvents").asStream()),
-         (ta)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
-         $$0.get("DragonFight").read(dqr.a.a).resultOrPartial(f::error).orElse(dqr.a.b),
-         $$1,
-         $$3,
-         $$2,
-         $$4
-      );
+   @Override
+   protected void a(dpa.a<ekr, eks> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public ta a(iz $$0, @Nullable ta $$1) {
-      if ($$1 == null) {
-         $$1 = this.o;
+   public esa a(cyd $$0, ib $$1, eks $$2) {
+      double $$3 = 0.0;
+      double $$4 = 0.0;
+      ib.a $$5 = new ib.a();
+
+      for (ih $$6 : ih.c.a) {
+         $$5.a($$1, $$6);
+         eks $$7 = $$0.b_($$5);
+         if (this.g($$7)) {
+            float $$8 = $$7.d();
+            float $$9 = 0.0F;
+            if ($$8 == 0.0F) {
+               if (!$$0.a_($$5).d()) {
+                  ib $$10 = $$5.d();
+                  eks $$11 = $$0.b_($$10);
+                  if (this.g($$11)) {
+                     $$8 = $$11.d();
+                     if ($$8 > 0.0F) {
+                        $$9 = $$2.d() - ($$8 - 0.8888889F);
+                     }
+                  }
+               }
+            } else if ($$8 > 0.0F) {
+               $$9 = $$2.d() - $$8;
+            }
+
+            if ($$9 != 0.0F) {
+               $$3 += (double)((float)$$6.j() * $$9);
+               $$4 += (double)((float)$$6.l() * $$9);
+            }
+         }
       }
 
-      ta $$2 = new ta();
-      this.a($$0, $$2, $$1);
+      esa $$12 = new esa($$3, 0.0, $$4);
+      if ($$2.c(a)) {
+         for (ih $$13 : ih.c.a) {
+            $$5.a($$1, $$13);
+            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.c(), $$13)) {
+               $$12 = $$12.d().b(0.0, -6.0, 0.0);
+               break;
+            }
+         }
+      }
+
+      return $$12.d();
+   }
+
+   private boolean g(eks $$0) {
+      return $$0.c() || $$0.a().a(this);
+   }
+
+   protected boolean a(cyd $$0, ib $$1, ih $$2) {
+      doz $$3 = $$0.a_($$1);
+      eks $$4 = $$0.b_($$1);
+      if ($$4.a().a(this)) {
+         return false;
+      } else if ($$2 == ih.b) {
+         return true;
+      } else {
+         return $$3.b() instanceof dfv ? false : $$3.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void a(cyx $$0, ib $$1, eks $$2) {
+      if (!$$2.c()) {
+         doz $$3 = $$0.a_($$1);
+         ib $$4 = $$1.d();
+         doz $$5 = $$0.a_($$4);
+         eks $$6 = this.a($$0, $$4, $$5);
+         if (this.a($$0, $$1, $$3, ih.a, $$4, $$5, $$0.b_($$4), $$6.a())) {
+            this.a($$0, $$4, $$5, ih.a, $$6);
+            if (this.a($$0, $$1) >= 3) {
+               this.a($$0, $$1, $$2, $$3);
+            }
+         } else if ($$2.b() || !this.a($$0, $$6.a(), $$1, $$3, $$4, $$5)) {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private void a(cyx $$0, ib $$1, eks $$2, doz $$3) {
+      int $$4 = $$2.e() - this.c($$0);
+      if ($$2.c(a)) {
+         $$4 = 7;
+      }
+
+      if ($$4 > 0) {
+         Map<ih, eks> $$5 = this.b($$0, $$1, $$3);
+
+         for (Entry<ih, eks> $$6 : $$5.entrySet()) {
+            ih $$7 = $$6.getKey();
+            eks $$8 = $$6.getValue();
+            ib $$9 = $$1.a($$7);
+            doz $$10 = $$0.a_($$9);
+            if (this.a($$0, $$1, $$3, $$7, $$9, $$10, $$0.b_($$9), $$8.a())) {
+               this.a($$0, $$9, $$10, $$7, $$8);
+            }
+         }
+      }
+   }
+
+   protected eks a(cyx $$0, ib $$1, doz $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (ih $$5 : ih.c.a) {
+         ib $$6 = $$1.a($$5);
+         doz $$7 = $$0.a_($$6);
+         eks $$8 = $$7.u();
+         if ($$8.a().a(this) && this.a($$5, $$0, $$1, $$2, $$6, $$7)) {
+            if ($$8.b()) {
+               $$4++;
+            }
+
+            $$3 = Math.max($$3, $$8.e());
+         }
+      }
+
+      if (this.a($$0) && $$4 >= 2) {
+         doz $$9 = $$0.a_($$1.d());
+         eks $$10 = $$9.u();
+         if ($$9.e() || this.h($$10)) {
+            return this.a(false);
+         }
+      }
+
+      ib $$11 = $$1.c();
+      doz $$12 = $$0.a_($$11);
+      eks $$13 = $$12.u();
+      if (!$$13.c() && $$13.a().a(this) && this.a(ih.b, $$0, $$1, $$2, $$11, $$12)) {
+         return this.a(8, true);
+      } else {
+         int $$14 = $$3 - this.c($$0);
+         return $$14 <= 0 ? ekt.a.g() : this.a($$14, false);
+      }
+   }
+
+   private boolean a(ih $$0, cyd $$1, ib $$2, doz $$3, ib $$4, doz $$5) {
+      Object2ByteLinkedOpenHashMap<dby.a> $$7;
+      if (!$$3.b().o() && !$$5.b().o()) {
+         $$7 = f.get();
+      } else {
+         $$7 = null;
+      }
+
+      dby.a $$8;
+      if ($$7 != null) {
+         $$8 = new dby.a($$3, $$5, $$0);
+         byte $$9 = $$7.getAndMoveToFirst($$8);
+         if ($$9 != 127) {
+            return $$9 != 0;
+         }
+      } else {
+         $$8 = null;
+      }
+
+      est $$11 = $$3.k($$1, $$2);
+      est $$12 = $$5.k($$1, $$4);
+      boolean $$13 = !esq.b($$11, $$12, $$0);
+      if ($$7 != null) {
+         if ($$7.size() == 200) {
+            $$7.removeLastByte();
+         }
+
+         $$7.putAndMoveToFirst($$8, (byte)($$13 ? 1 : 0));
+      }
+
+      return $$13;
+   }
+
+   public abstract ekr d();
+
+   public eks a(int $$0, boolean $$1) {
+      return this.d().g().a(b, $$0).a(a, $$1);
+   }
+
+   public abstract ekr e();
+
+   public eks a(boolean $$0) {
+      return this.e().g().a(a, $$0);
+   }
+
+   protected abstract boolean a(cyx var1);
+
+   protected void a(cyy $$0, ib $$1, doz $$2, ih $$3, eks $$4) {
+      if ($$2.b() instanceof dgo) {
+         ((dgo)$$2.b()).a($$0, $$1, $$2, $$4);
+      } else {
+         if (!$$2.i()) {
+            this.a($$0, $$1, $$2);
+         }
+
+         $$0.a($$1, $$4.g(), 3);
+      }
+   }
+
+   protected abstract void a(cyy var1, ib var2, doz var3);
+
+   private static short a(ib $$0, ib $$1) {
+      int $$2 = $$1.u() - $$0.u();
+      int $$3 = $$1.w() - $$0.w();
+      return (short)(($$2 + 128 & 0xFF) << 8 | $$3 + 128 & 0xFF);
+   }
+
+   protected int a(cza $$0, ib $$1, int $$2, ih $$3, doz $$4, ib $$5, Short2ObjectMap<Pair<doz, eks>> $$6, Short2BooleanMap $$7) {
+      int $$8 = 1000;
+
+      for (ih $$9 : ih.c.a) {
+         if ($$9 != $$3) {
+            ib $$10 = $$1.a($$9);
+            short $$11 = a($$5, $$10);
+            Pair<doz, eks> $$12 = (Pair<doz, eks>)$$6.computeIfAbsent($$11, $$2x -> {
+               doz $$3x = $$0.a_($$10);
+               return Pair.of($$3x, $$3x.u());
+            });
+            doz $$13 = (doz)$$12.getFirst();
+            eks $$14 = (eks)$$12.getSecond();
+            if (this.a($$0, this.d(), $$1, $$4, $$9, $$10, $$13, $$14)) {
+               boolean $$15 = $$7.computeIfAbsent($$11, $$3x -> {
+                  ib $$4x = $$10.d();
+                  doz $$5x = $$0.a_($$4x);
+                  return this.a($$0, this.d(), $$10, $$13, $$4x, $$5x);
+               });
+               if ($$15) {
+                  return $$2;
+               }
+
+               if ($$2 < this.b($$0)) {
+                  int $$16 = this.a($$0, $$10, $$2 + 1, $$9.g(), $$13, $$5, $$6, $$7);
+                  if ($$16 < $$8) {
+                     $$8 = $$16;
+                  }
+               }
+            }
+         }
+      }
+
+      return $$8;
+   }
+
+   private boolean a(cyd $$0, ekr $$1, ib $$2, doz $$3, ib $$4, doz $$5) {
+      if (!this.a(ih.a, $$0, $$2, $$3, $$4, $$5)) {
+         return false;
+      } else {
+         return $$5.u().a().a(this) ? true : this.a($$0, $$4, $$5, $$1);
+      }
+   }
+
+   private boolean a(cyd $$0, ekr $$1, ib $$2, doz $$3, ih $$4, ib $$5, doz $$6, eks $$7) {
+      return !this.h($$7) && this.a($$4, $$0, $$2, $$3, $$5, $$6) && this.a($$0, $$5, $$6, $$1);
+   }
+
+   private boolean h(eks $$0) {
+      return $$0.a().a(this) && $$0.b();
+   }
+
+   protected abstract int b(cza var1);
+
+   private int a(cza $$0, ib $$1) {
+      int $$2 = 0;
+
+      for (ih $$3 : ih.c.a) {
+         ib $$4 = $$1.a($$3);
+         eks $$5 = $$0.b_($$4);
+         if (this.h($$5)) {
+            $$2++;
+         }
+      }
+
       return $$2;
    }
 
-   private void a(iz $$0, ta $$1, @Nullable ta $$2) {
-      $$1.a("ServerBrands", a(this.D));
-      $$1.a("WasModded", this.E);
-      if (!this.F.isEmpty()) {
-         $$1.a("removed_features", a(this.F));
+   protected Map<ih, eks> b(cyx $$0, ib $$1, doz $$2) {
+      int $$3 = 1000;
+      Map<ih, eks> $$4 = Maps.newEnumMap(ih.class);
+      Short2ObjectMap<Pair<doz, eks>> $$5 = new Short2ObjectOpenHashMap();
+      Short2BooleanMap $$6 = new Short2BooleanOpenHashMap();
+
+      for (ih $$7 : ih.c.a) {
+         ib $$8 = $$1.a($$7);
+         short $$9 = a($$1, $$8);
+         Pair<doz, eks> $$10 = (Pair<doz, eks>)$$5.computeIfAbsent($$9, $$2x -> {
+            doz $$3x = $$0.a_($$8);
+            return Pair.of($$3x, $$3x.u());
+         });
+         doz $$11 = (doz)$$10.getFirst();
+         eks $$12 = (eks)$$10.getSecond();
+         eks $$13 = this.a($$0, $$8, $$11);
+         if (this.a($$0, $$13.a(), $$1, $$2, $$7, $$8, $$11, $$12)) {
+            ib $$14 = $$8.d();
+            boolean $$15 = $$6.computeIfAbsent($$9, $$4x -> {
+               doz $$5x = $$0.a_($$14);
+               return this.a($$0, this.d(), $$8, $$11, $$14, $$5x);
+            });
+            int $$16;
+            if ($$15) {
+               $$16 = 0;
+            } else {
+               $$16 = this.a($$0, $$8, 1, $$7.g(), $$11, $$1, $$5, $$6);
+            }
+
+            if ($$16 < $$3) {
+               $$4.clear();
+            }
+
+            if ($$16 <= $$3) {
+               $$4.put($$7, $$13);
+               $$3 = $$16;
+            }
+         }
       }
 
-      ta $$3 = new ta();
-      $$3.a("Name", aa.b().c());
-      $$3.a("Id", aa.b().d().c());
-      $$3.a("Snapshot", !aa.b().g());
-      $$3.a("Series", aa.b().d().b());
-      $$1.a("Version", $$3);
-      tp.f($$1);
-      DynamicOps<tx> $$4 = $$0.a(to.a);
-      dtk.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
-      $$1.a("GameType", this.g.b().a());
-      $$1.a("SpawnX", this.k.u());
-      $$1.a("SpawnY", this.k.v());
-      $$1.a("SpawnZ", this.k.w());
-      $$1.a("SpawnAngle", this.l);
-      $$1.a("Time", this.m);
-      $$1.a("DayTime", this.n);
-      $$1.a("LastPlayed", ac.d());
-      $$1.a("LevelName", this.g.a());
-      $$1.a("version", 19133);
-      $$1.a("clearWeatherTime", this.q);
-      $$1.a("rainTime", this.s);
-      $$1.a("raining", this.r);
-      $$1.a("thunderTime", this.u);
-      $$1.a("thundering", this.t);
-      $$1.a("hardcore", this.g.c());
-      $$1.a("allowCommands", this.g.e());
-      $$1.a("initialized", this.v);
-      this.x.a($$1);
-      $$1.a("Difficulty", (byte)this.g.d().a());
-      $$1.a("DifficultyLocked", this.w);
-      $$1.a("GameRules", this.g.f().a());
-      $$1.a("DragonFight", ac.a(dqr.a.a.encodeStart(to.a, this.y), IllegalStateException::new));
-      if ($$2 != null) {
-         $$1.a("Player", $$2);
-      }
+      return $$4;
+   }
 
-      DataResult<tx> $$5 = cxv.b.encodeStart(to.a, this.g.g());
-      $$5.get().ifLeft($$1x -> $$1.a((ta)$$1x)).ifRight($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
-      if (this.z != null) {
-         $$1.a("CustomBossEvents", this.z);
-      }
-
-      $$1.a("ScheduledEvents", this.G.b());
-      $$1.a("WanderingTraderSpawnDelay", this.A);
-      $$1.a("WanderingTraderSpawnChance", this.B);
-      if (this.C != null) {
-         $$1.a("WanderingTraderId", this.C);
+   private boolean a(cyd $$0, ib $$1, doz $$2, ekr $$3) {
+      dby $$4 = $$2.b();
+      if ($$4 instanceof dgo $$5) {
+         return $$5.a(null, $$0, $$1, $$2, $$3);
+      } else if ($$4 instanceof dee || $$2.a(avc.ax) || $$2.a(dca.cO) || $$2.a(dca.dS) || $$2.a(dca.nd)) {
+         return false;
+      } else {
+         return !$$2.a(dca.ed) && !$$2.a(dca.fx) && !$$2.a(dca.kF) && !$$2.a(dca.kN) ? !$$2.d() : false;
       }
    }
 
-   private static tg a(Set<String> $$0) {
-      tg $$1 = new tg();
-      $$0.stream().map(tv::a).forEach($$1::add);
-      return $$1;
+   protected boolean a(cyd $$0, ib $$1, doz $$2, ih $$3, ib $$4, doz $$5, eks $$6, ekr $$7) {
+      return $$6.a($$0, $$4, $$7, $$3) && this.a($$3, $$0, $$1, $$2, $$4, $$5) && this.a($$0, $$4, $$5, $$7);
+   }
+
+   protected abstract int c(cza var1);
+
+   protected int a(cyx $$0, ib $$1, eks $$2, eks $$3) {
+      return this.a((cza)$$0);
    }
 
    @Override
-   public ib a() {
-      return this.k;
+   public void b(cyx $$0, ib $$1, eks $$2) {
+      if (!$$2.b()) {
+         eks $$3 = this.a($$0, $$1, $$0.a_($$1));
+         int $$4 = this.a($$0, $$1, $$2, $$3);
+         if ($$3.c()) {
+            $$2 = $$3;
+            $$0.a($$1, dca.a.n(), 3);
+         } else if (!$$3.equals($$2)) {
+            $$2 = $$3;
+            doz $$5 = $$3.g();
+            $$0.a($$1, $$5, 2);
+            $$0.a($$1, $$3.a(), $$4);
+            $$0.a($$1, $$5.b());
+         }
+      }
+
+      this.a($$0, $$1, $$2);
+   }
+
+   protected static int e(eks $$0) {
+      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
+   }
+
+   private static boolean c(eks $$0, cyd $$1, ib $$2) {
+      return $$0.a().a($$1.b_($$2.c()).a());
    }
 
    @Override
-   public float b() {
-      return this.l;
+   public float a(eks $$0, cyd $$1, ib $$2) {
+      return c($$0, $$1, $$2) ? 1.0F : $$0.d();
    }
 
    @Override
-   public long c() {
-      return this.m;
+   public float a(eks $$0) {
+      return (float)$$0.e() / 9.0F;
    }
 
    @Override
-   public long d() {
-      return this.n;
-   }
-
-   @Nullable
-   @Override
-   public ta w() {
-      return this.o;
-   }
+   public abstract int d(eks var1);
 
    @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public void a(ib $$0, float $$1) {
-      this.k = $$0.i();
-      this.l = $$1;
-   }
-
-   @Override
-   public String e() {
-      return this.g.a();
-   }
-
-   @Override
-   public int x() {
-      return this.p;
-   }
-
-   @Override
-   public int f() {
-      return this.q;
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public boolean g() {
-      return this.t;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.t = $$0;
-   }
-
-   @Override
-   public int h() {
-      return this.u;
-   }
-
-   @Override
-   public void b(int $$0) {
-      this.u = $$0;
-   }
-
-   @Override
-   public boolean i() {
-      return this.r;
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int j() {
-      return this.s;
-   }
-
-   @Override
-   public void c(int $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public cwy k() {
-      return this.g.b();
-   }
-
-   @Override
-   public void a(cwy $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean l() {
-      return this.g.c();
-   }
-
-   @Override
-   public boolean m() {
-      return this.g.e();
-   }
-
-   @Override
-   public boolean n() {
-      return this.v;
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   public cwx o() {
-      return this.g.f();
-   }
-
-   @Override
-   public dos.c p() {
-      return this.x;
-   }
-
-   @Override
-   public void a(dos.c $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public bna q() {
-      return this.g.d();
-   }
-
-   @Override
-   public void a(bna $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean r() {
-      return this.w;
-   }
-
-   @Override
-   public void d(boolean $$0) {
-      this.w = $$0;
-   }
-
-   @Override
-   public epg<MinecraftServer> s() {
-      return this.G;
-   }
-
-   @Override
-   public void a(p $$0, cxd $$1) {
-      ekr.super.a($$0, $$1);
-      eks.super.a($$0);
-   }
-
-   @Override
-   public dtm y() {
-      return this.h;
-   }
-
-   @Override
-   public boolean z() {
-      return this.i == ekq.a.b;
-   }
-
-   @Override
-   public boolean A() {
-      return this.i == ekq.a.c;
-   }
-
-   @Override
-   public Lifecycle B() {
-      return this.j;
-   }
-
-   @Override
-   public dqr.a C() {
-      return this.y;
-   }
-
-   @Override
-   public void a(dqr.a $$0) {
-      this.y = $$0;
-   }
-
-   @Override
-   public cxv D() {
-      return this.g.g();
-   }
-
-   @Override
-   public void a(cxv $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public ta E() {
-      return this.z;
-   }
-
-   @Override
-   public void a(@Nullable ta $$0) {
-      this.z = $$0;
-   }
-
-   @Override
-   public int t() {
-      return this.A;
-   }
-
-   @Override
-   public void d(int $$0) {
-      this.A = $$0;
-   }
-
-   @Override
-   public int u() {
-      return this.B;
-   }
-
-   @Override
-   public void e(int $$0) {
-      this.B = $$0;
-   }
-
-   @Nullable
-   @Override
-   public UUID v() {
-      return this.C;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-      this.C = $$0;
-   }
-
-   @Override
-   public void a(String $$0, boolean $$1) {
-      this.D.add($$0);
-      this.E |= $$1;
-   }
-
-   @Override
-   public boolean F() {
-      return this.E;
-   }
-
-   @Override
-   public Set<String> G() {
-      return ImmutableSet.copyOf(this.D);
-   }
-
-   @Override
-   public Set<String> H() {
-      return Set.copyOf(this.F);
-   }
-
-   @Override
-   public ekr I() {
-      return this;
-   }
-
-   @Override
-   public cxf J() {
-      return this.g.h();
-   }
-
-   @Deprecated
-   public static enum a {
-      a,
-      b,
-      c;
+   public est b(eks $$0, cyd $$1, ib $$2) {
+      return $$0.e() == 9 && c($$0, $$1, $$2) ? esq.b() : this.g.computeIfAbsent($$0, $$2x -> esq.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
    }
 }

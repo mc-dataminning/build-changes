@@ -3,11 +3,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
 public class hw implements hn<StringArgumentType, hw.a> {
-   public void a(hw.a $$0, uu $$1) {
+   public void a(hw.a $$0, vg $$1) {
       $$1.a((Enum<?>)$$0.b);
    }
 
-   public hw.a a(uu $$0) {
+   public hw.a a(vg $$0) {
       StringType $$1 = $$0.b(StringType.class);
       return new hw.a($$1);
    }

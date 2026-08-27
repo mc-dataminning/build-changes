@@ -1,31 +1,21 @@
-public record zm(ib c, String d, int e) implements zc {
-   public static final xs<uu, zm> a = zc.a(zm::a, zm::new);
-   public static final zc.b<zm> b = zc.a("debug/poi_added");
+public record zm(String c) implements zo {
+   public static final ye<vg, zm> a = zo.a(zm::a, zm::new);
+   public static final zo.b<zm> b = zo.a("brand");
 
-   private zm(uu $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private zm(vg $$0) {
+      this($$0.p());
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
    }
 
    @Override
-   public zc.b<zm> a() {
+   public zo.b<zm> a() {
       return b;
    }
 
-   public ib b() {
+   public String b() {
       return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

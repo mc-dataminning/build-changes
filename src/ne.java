@@ -1,7 +1,17 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public interface ne {
-   void a(ajh var1, ctp<?> var2, @Nullable af var3);
+public class ne implements Supplier<JsonElement> {
+   private final ajt a;
 
-   ae.a a();
+   public ne(ajt $$0) {
+      this.a = $$0;
+   }
+
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
+   }
 }

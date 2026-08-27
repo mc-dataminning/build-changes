@@ -1,31 +1,21 @@
-public class geu extends geh<cby, fpq<cby>> {
-   private static final ajh a = new ajh("textures/entity/rabbit/brown.png");
-   private static final ajh i = new ajh("textures/entity/rabbit/white.png");
-   private static final ajh j = new ajh("textures/entity/rabbit/black.png");
-   private static final ajh k = new ajh("textures/entity/rabbit/gold.png");
-   private static final ajh l = new ajh("textures/entity/rabbit/salt.png");
-   private static final ajh m = new ajh("textures/entity/rabbit/white_splotched.png");
-   private static final ajh n = new ajh("textures/entity/rabbit/toast.png");
-   private static final ajh o = new ajh("textures/entity/rabbit/caerbannog.png");
+public class geu extends ggo<ccj, fqc<ccj>> {
+   private static final ajt a = new ajt("textures/entity/fish/cod.png");
 
-   public geu(gdb.a $$0) {
-      super($$0, new fpq<>($$0.a(fre.be)), 0.3F);
+   public geu(gfi.a $$0) {
+      super($$0, new fqc<>($$0.a(ftl.A)), 0.3F);
    }
 
-   public ajh a(cby $$0) {
-      String $$1 = n.a($$0.ad().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.gn()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
+   public ajt a(ccj $$0) {
+      return a;
+   }
+
+   protected void a(ccj $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 4.3F * axk.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.bc()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
    }
 }

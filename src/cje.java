@@ -1,136 +1,36 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public interface cje {
+   String d_ = "Inventory";
 
-public class cje extends box implements bqn {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private bpp i;
-   @Nullable
-   private UUID j;
+   boj y();
 
-   public cje(bpd<? extends cje> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
-
-   public cje(cxb $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bpp $$6) {
-      this(bpd.L, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.r($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(aiq.a $$0) {
-   }
-
-   public void a(@Nullable bpp $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cw();
-   }
-
-   @Nullable
-   public bpp p() {
-      if (this.i == null && this.j != null && this.dM() instanceof apf) {
-         box $$0 = ((apf)this.dM()).a(this.j);
-         if ($$0 instanceof bpp) {
-            this.i = (bpp)$$0;
-         }
-      }
-
-      return this.i;
-   }
-
-   @Override
-   protected void a(ta $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dM().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dr() + (this.ag.j() * 2.0 - 1.0) * (double)this.dg() * 0.5;
-                  double $$2 = this.dt() + 0.05 + this.ag.j();
-                  double $$3 = this.dx() + (this.ag.j() * 2.0 - 1.0) * (double)this.dg() * 0.5;
-                  double $$4 = (this.ag.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ag.j() * 0.3;
-                  double $$6 = (this.ag.j() * 2.0 - 1.0) * 0.3;
-                  this.dM().a(kc.g, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (bpp $$8 : this.dM().a(bpp.class, this.cH().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
+   static void a(bqq $$0, cje $$1, cgd $$2) {
+      crj $$3 = $$2.p();
+      if ($$0.k($$3)) {
+         boj $$4 = $$1.y();
+         boolean $$5 = $$4.b($$3);
+         if (!$$5) {
+            return;
          }
 
-         if (!this.f) {
-            this.dM().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.am();
-         }
-      }
-   }
-
-   private void c(bpp $$0) {
-      bpp $$1 = this.p();
-      if ($$0.bA() && !$$0.cr() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dN().o(), 6.0F);
+         $$0.a($$2);
+         int $$6 = $$3.G();
+         crj $$7 = $$4.a($$3);
+         $$0.a($$2, $$6 - $$7.G());
+         if ($$7.d()) {
+            $$2.am();
          } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            $$0.a(this.dN().c(this, (box)$$1), 6.0F);
+            $$3.e($$7.G());
          }
       }
    }
 
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.aU()) {
-            this.dM().a(this.dr(), this.dt(), this.dx(), aty.iu, this.db(), 1.0F, this.ag.i() * 0.2F + 0.85F, false);
-         }
+   default void a(tm $$0, in.a $$1) {
+      if ($$0.b("Inventory", 9)) {
+         this.y().a($$0.c("Inventory", 10), $$1);
       }
    }
 
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
-      } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
-      }
+   default void b(tm $$0, in.a $$1) {
+      $$0.a("Inventory", this.y().a($$1));
    }
 }

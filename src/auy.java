@@ -1,12 +1,28 @@
-public class auy {
-   public static final avd<cav> a = a("acquirable_job_site");
-   public static final avd<cav> b = a("village");
-   public static final avd<cav> c = a("bee_home");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private auy() {
+public class auy {
+   protected final Object2IntMap<aut<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public auy() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static avd<cav> a(String $$0) {
-      return avd.a(kj.U, new ajh($$0));
+   public void b(cjt $$0, aut<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cjt $$0, aut<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(auv<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(aut<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

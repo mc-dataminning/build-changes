@@ -1,36 +1,26 @@
-public class gab implements fzs<dlc> {
-   public static final glf a = new glf(gjb.e, new ajh("entity/enchanting_table_book"));
-   private final fnm b;
+public class gab {
+   private final fbp a;
+   private final fzn b;
+   private float c;
+   private float d;
 
-   public gab(fzt.a $$0) {
-      this.b = new fnm($$0.a(fre.r));
+   public gab(fzn $$0) {
+      this.b = $$0;
+      this.a = fbp.Q();
    }
 
-   public void a(dlc $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + aww.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public void a(float $$0, float $$1) {
+      float $$2 = (float)((double)$$0 * this.a.m.s().c());
+      this.c = b(this.c + $$2 * 0.1F, 360.0F);
+      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
+      this.b.a(this.a, 10.0F, -this.c, $$1);
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
-      }
+   public void a(float $$0) {
+      this.a($$0, 1.0F);
+   }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = aww.i($$1, $$0.c, $$0.b);
-      float $$10 = aww.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = aww.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = aww.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, aww.a($$10, 0.0F, 1.0F), aww.a($$11, 0.0F, 1.0F), $$12);
-      euf $$13 = a.a($$3, fya::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   private static float b(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

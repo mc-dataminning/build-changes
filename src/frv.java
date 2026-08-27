@@ -1,103 +1,35 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class frv<T extends bpv> extends fqv<T> {
+   private final ftm a;
+   private final ftm b;
+   private final ftm f;
 
-public class frv {
-   private static final Logger a = LogUtils.getLogger();
-   private final ezi b;
-   private final gog c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private frv.a f;
-   @Nullable
-   private af g;
-
-   public frv(ezi $$0, gog $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public frv(ftm $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public void a(aeq $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
-      }
-
-      this.d.a($$0.e());
-      this.d.a($$0.b());
-
-      for (Entry<ajh, ah> $$1 : $$0.f().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<ar> $$4 = $$2.a().c();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.aA().a(new fdo($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", ftr.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fto.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", ftr.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fto.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", ftr.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fto.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", ftr.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fto.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", ftr.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fto.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", ftr.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fto.a(1.5F, 22.0F, -1.5F));
+      return fts.a($$0, 32, 32);
    }
 
-   public ak a() {
-      return this.d;
+   @Override
+   public ftm a() {
+      return this.a;
    }
 
-   public void a(@Nullable af $$0, boolean $$1) {
-      fsb $$2 = this.b.L();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(agi.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
-   }
-
-   public void a(@Nullable frv.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
-   }
-
-   @Nullable
-   public af a(ajh $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * axk.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * axk.a($$3 * 0.2F);
    }
 }

@@ -1,53 +1,141 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class bma extends bmi {
-   public static final Codec<bma> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bma::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
+public class bma implements bmc {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<blv, List<bmh>> c = new Object2ObjectOpenHashMap();
+   private final bki d;
+   private final Executor e;
+   private final bmg f;
+   private final Consumer<bkn> g;
+   private final Consumer<Path> h;
+   private final blx i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bkm m;
+   private volatile boolean n;
+   private Set<blv> o = ImmutableSet.of();
 
-   private bma(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   private bma(blx $$0, LongSupplier $$1, Executor $$2, bmg $$3, Consumer<bkn> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bki($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bkh(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public static bma a(int $$0, int $$1) {
-      return new bma($$0, $$1);
+   public static bma a(blx $$0, LongSupplier $$1, Executor $$2, bmg $$3, Consumer<bkn> $$4, Consumer<Path> $$5) {
+      return new bma($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(axd $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
    }
 
    @Override
-   public int a() {
-      return this.b;
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bkl.a;
+         this.g.accept(bkj.a);
+         this.a(this.o);
+      }
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (blv $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
    }
 
    @Override
-   public bmj<?> c() {
-      return bmj.c;
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (blv $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               bmh $$1 = new bmh(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bkh(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bkn $$2 = this.d.e();
+            this.m = bkl.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bko f() {
+      return bko.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bkn $$0) {
+      HashSet<blv> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<blv> $$0) {
+      for (blv $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

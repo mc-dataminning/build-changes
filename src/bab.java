@@ -1,14 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bab extends bdh {
+public class bab extends bea {
    public bab(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", beh.y, "minecraft:shulker");
+      super($$0, $$1, "CatTypeFix", bfa.z, "minecraft:cat");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("CatType").asInt(0) == 9 ? $$0.set("CatType", $$0.createInt(10)) : $$0;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

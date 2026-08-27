@@ -1,26 +1,18 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class eby extends ecl {
-   public static final Codec<eby> a = dsk.a.c.fieldOf("step").xmap(eby::new, $$0 -> $$0.c).codec();
-   private final dsk.a c;
+public class eby<P extends ebx> {
+   public static final eby<ebw> a = a("mangrove_root_placer", ebw.c);
+   private final Codec<P> b;
 
-   private eby(dsk.a $$0) {
-      this.c = $$0;
+   private static <P extends ebx> eby<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.Y, $$0, new eby<>($$1));
    }
 
-   public static eby a(dsk.a $$0) {
-      return new eby($$0);
+   private eby(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public Stream<ib> a_(ecj $$0, axd $$1, ib $$2) {
-      cwi $$3 = new cwi($$2);
-      return $$0.a($$3, this.c).a($$3);
-   }
-
-   @Override
-   public ecm<?> b() {
-      return ecm.o;
+   public Codec<P> a() {
+      return this.b;
    }
 }

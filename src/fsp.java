@@ -1,166 +1,94 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fsp<T extends chm> extends fqv<T> {
+   private static final String a = "right_bottom_bristle";
+   private static final String b = "right_middle_bristle";
+   private static final String f = "right_top_bristle";
+   private static final String g = "left_top_bristle";
+   private static final String h = "left_middle_bristle";
+   private static final String i = "left_bottom_bristle";
+   private final ftm j;
+   private final ftm k;
+   private final ftm l;
+   private final ftm m;
+   private final ftm n;
+   private final ftm o;
+   private final ftm p;
+   private final ftm q;
+   private final ftm r;
+   private final ftm s;
 
-public class fsp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final blw<Runnable> b = blw.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final ezi d;
-   private final List<fso> e = Lists.newArrayList();
-   private final List<fso> f = Lists.newArrayList();
-
-   public fsp(ezi $$0) {
-      this.d = $$0;
+   public fsp(ftm $$0) {
+      this.j = $$0;
+      this.k = $$0.b("right_leg");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("body");
+      this.n = this.m.b("right_bottom_bristle");
+      this.o = this.m.b("right_middle_bristle");
+      this.p = this.m.b("right_top_bristle");
+      this.q = this.m.b("left_top_bristle");
+      this.r = this.m.b("left_middle_bristle");
+      this.s = this.m.b("left_bottom_bristle");
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         ta $$0 = tn.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         tg $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            ta $$3 = $$1.a($$2);
-            fso $$4 = fso.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("right_leg", ftr.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fto.a(-4.0F, 8.0F, 0.0F));
+      $$1.a("left_leg", ftr.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fto.a(4.0F, 8.0F, 0.0F));
+      ftv $$2 = $$1.a("body", ftr.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), fto.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_bottom_bristle", ftr.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
+      $$2.a("right_middle_bristle", ftr.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
+      $$2.a("right_top_bristle", ftr.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
+      $$2.a("left_top_bristle", ftr.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
+      $$2.a("left_middle_bristle", ftr.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
+      $$2.a("left_bottom_bristle", ftr.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
+      return fts.a($$0, 64, 128);
    }
 
-   public void b() {
-      try {
-         tg $$0 = new tg();
-
-         for (fso $$1 : this.e) {
-            ta $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (fso $$3 : this.f) {
-            ta $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         ta $$5 = new ta();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         tn.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public fso a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public fso a(String $$0) {
-      for (fso $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (fso $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public fso b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fso $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fso $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fso $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
+   public void a(chm $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$2 = Math.min(0.25F, $$2);
+      if (!$$0.bP()) {
+         this.m.e = $$5 * (float) (Math.PI / 180.0);
+         this.m.f = $$4 * (float) (Math.PI / 180.0);
       } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fso $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fso $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fso $$0, List<fso> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fso $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
+         this.m.e = 0.0F;
+         this.m.f = 0.0F;
       }
 
-      return false;
+      float $$6 = 1.5F;
+      this.m.g = 0.1F * axk.a($$1 * 1.5F) * 4.0F * $$2;
+      this.m.c = 2.0F;
+      this.m.c = this.m.c - 2.0F * axk.b($$1 * 1.5F) * 2.0F * $$2;
+      this.l.e = axk.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.k.e = axk.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.l.g = (float) (Math.PI / 18) * axk.b($$1 * 1.5F * 0.5F) * $$2;
+      this.k.g = (float) (Math.PI / 18) * axk.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
+      this.l.c = 8.0F + 2.0F * axk.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.k.c = 8.0F + 2.0F * axk.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.n.g = -1.2217305F;
+      this.o.g = -1.134464F;
+      this.p.g = -0.87266463F;
+      this.q.g = 0.87266463F;
+      this.r.g = 1.134464F;
+      this.s.g = 1.2217305F;
+      float $$7 = axk.b($$1 * 1.5F + (float) Math.PI) * $$2;
+      this.n.g += $$7 * 1.3F;
+      this.o.g += $$7 * 1.2F;
+      this.p.g += $$7 * 0.6F;
+      this.q.g += $$7 * 0.6F;
+      this.r.g += $$7 * 1.2F;
+      this.s.g += $$7 * 1.3F;
+      float $$8 = 1.0F;
+      float $$9 = 1.0F;
+      this.n.g = this.n.g + 0.05F * axk.a($$3 * 1.0F * -0.4F);
+      this.o.g = this.o.g + 0.1F * axk.a($$3 * 1.0F * 0.2F);
+      this.p.g = this.p.g + 0.1F * axk.a($$3 * 1.0F * 0.4F);
+      this.q.g = this.q.g + 0.1F * axk.a($$3 * 1.0F * 0.4F);
+      this.r.g = this.r.g + 0.1F * axk.a($$3 * 1.0F * 0.2F);
+      this.s.g = this.s.g + 0.05F * axk.a($$3 * 1.0F * -0.4F);
    }
 
-   public static void b(fso $$0) {
-      b.a(() -> {
-         fsp $$1 = new fsp(ezi.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+   @Override
+   public ftm a() {
+      return this.j;
    }
 }

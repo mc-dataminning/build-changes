@@ -1,98 +1,59 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dan extends dac {
-   public static final MapCodec<dan> a = b(dan::new);
-   public static final dob b = dnr.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final eqm e = dac.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final eqm f = dac.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dan extends daa {
+   public static final Codec<dan> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajr.d(dad.ah), ajr.d(dad.ai), ajr.d(dad.aj), ajr.d(dad.ak), ajr.d(dad.al)).apply($$0, $$0.stable(dan::new))
+   );
+   private final il<czw> c;
+   private final il<czw> d;
+   private final il<czw> e;
+   private final il<czw> f;
+   private final il<czw> g;
 
-   @Override
-   public MapCodec<dan> a() {
-      return a;
+   public static dan a(im<czw> $$0) {
+      return new dan($$0.b(dad.ah), $$0.b(dad.ai), $$0.b(dad.aj), $$0.b(dad.ak), $$0.b(dad.al));
    }
 
-   protected dan(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      ib $$4 = $$2.c();
-      if ($$1.u($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.o());
-               dnb $$7 = $$0.a(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, $$2, false);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
-            }
-         }
-      }
+   private dan(il<czw> $$0, il<czw> $$1, il<czw> $$2, il<czw> $$3, il<czw> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected eqm b(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return e;
+   protected Stream<il<czw>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return f;
+   protected Codec<? extends daa> a() {
+      return b;
    }
 
    @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      for (ih $$3 : ih.c.a) {
-         dnb $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(aus.b)) {
-            return false;
+   public il<czw> getNoiseBiome(int $$0, int $$1, int $$2, daf.f $$3) {
+      int $$4 = iw.c($$0);
+      int $$5 = iw.c($$1);
+      int $$6 = iw.c($$2);
+      int $$7 = je.a($$4);
+      int $$8 = je.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (je.a($$4) * 2 + 1) * 8;
+         int $$10 = (je.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new duk.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-
-      dnb $$5 = $$1.a_($$2.d());
-      return ($$5.a(dae.dQ) || $$5.a(aun.H)) && !$$1.a_($$2.c()).k();
-   }
-
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
-      $$3.a($$1.ah().j(), 1.0F);
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      return false;
    }
 }

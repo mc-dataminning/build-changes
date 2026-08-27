@@ -1,54 +1,74 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
 public class ejx {
-   private final ib a;
-   private final int b;
-   private final int c;
+   private final ejy[] a;
+   private final double b;
+   private final double c;
 
-   public ejx(ib $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ejx(axr $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   @Nullable
-   public static ejx a(ta $$0) {
-      Optional<ib> $$1 = tp.a($$0, "pos");
+   private ejx(axr $$0, IntSortedSet $$1) {
       if ($$1.isEmpty()) {
-         return null;
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new ejx($$1.get(), $$2, $$3);
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            ejy $$5 = new ejy($$0);
+            int $$6 = $$3;
+            this.a = new ejy[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new ejy($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               axr $$9 = new dvq(new dus($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new ejy($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+         }
       }
    }
 
-   public ta a() {
-      ta $$0 = new ta();
-      $$0.a("pos", tp.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   public ib b() {
-      return this.a;
-   }
+      for (ejy $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
 
-   public int c() {
-      return this.b;
-   }
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
 
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(ib $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+      return $$3;
    }
 }

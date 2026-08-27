@@ -1,15 +1,16 @@
-public class gfb extends geh<cgh, fpz<cgh>> {
-   private static final ajh a = new ajh("textures/entity/silverfish.png");
+public class gfb extends gfw {
+   public static final ajt a = new ajt("textures/entity/guardian_elder.png");
 
-   public gfb(gdb.a $$0) {
-      super($$0, new fpz<>($$0.a(fre.bm)), 0.3F);
+   public gfb(gfi.a $$0) {
+      super($$0, 1.2F, ftl.V);
    }
 
-   protected float a(cgh $$0) {
-      return 180.0F;
+   protected void a(cgv $$0, ewi $$1, float $$2) {
+      $$1.b(cgo.b, cgo.b, cgo.b);
    }
 
-   public ajh b(cgh $$0) {
+   @Override
+   public ajt a(cgv $$0) {
       return a;
    }
 }

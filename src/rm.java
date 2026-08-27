@@ -1,5 +1,65 @@
-class rm extends Throwable {
-   public rm(int $$0, int $$1, rw $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.y() + ". max attempts: " + $$2.x() + ".", $$2.m());
+public class rm {
+   public static final ajs<eel> a = rr.a("monster_room");
+   public static final ajs<eel> b = rr.a("monster_room_deep");
+   public static final ajs<eel> c = rr.a("fossil_upper");
+   public static final ajs<eel> d = rr.a("fossil_lower");
+   public static final ajs<eel> e = rr.a("dripstone_cluster");
+   public static final ajs<eel> f = rr.a("large_dripstone");
+   public static final ajs<eel> g = rr.a("pointed_dripstone");
+   public static final ajs<eel> h = rr.a("underwater_magma");
+   public static final ajs<eel> i = rr.a("glow_lichen");
+   public static final ajs<eel> j = rr.a("rooted_azalea_tree");
+   public static final ajs<eel> k = rr.a("cave_vines");
+   public static final ajs<eel> l = rr.a("lush_caves_vegetation");
+   public static final ajs<eel> m = rr.a("lush_caves_clay");
+   public static final ajs<eel> n = rr.a("lush_caves_ceiling_vegetation");
+   public static final ajs<eel> o = rr.a("spore_blossom");
+   public static final ajs<eel> p = rr.a("classic_vines_cave_feature");
+   public static final ajs<eel> q = rr.a("amethyst_geode");
+   public static final ajs<eel> r = rr.a("sculk_patch_deep_dark");
+   public static final ajs<eel> s = rr.a("sculk_patch_ancient_city");
+   public static final ajs<eel> t = rr.a("sculk_vein");
+
+   public static void a(px<eel> $$0) {
+      im<dxi<?, ?>> $$1 = $$0.a(ks.ay);
+      il<dxi<?, ?>> $$2 = $$1.b(ra.a);
+      il<dxi<?, ?>> $$3 = $$1.b(ra.b);
+      il<dxi<?, ?>> $$4 = $$1.b(ra.c);
+      il<dxi<?, ?>> $$5 = $$1.b(ra.d);
+      il<dxi<?, ?>> $$6 = $$1.b(ra.e);
+      il<dxi<?, ?>> $$7 = $$1.b(ra.f);
+      il<dxi<?, ?>> $$8 = $$1.b(ra.g);
+      il<dxi<?, ?>> $$9 = $$1.b(ra.h);
+      il<dxi<?, ?>> $$10 = $$1.b(ra.i);
+      il<dxi<?, ?>> $$11 = $$1.b(ra.j);
+      il<dxi<?, ?>> $$12 = $$1.b(ra.m);
+      il<dxi<?, ?>> $$13 = $$1.b(ra.r);
+      il<dxi<?, ?>> $$14 = $$1.b(ra.s);
+      il<dxi<?, ?>> $$15 = $$1.b(ra.t);
+      il<dxi<?, ?>> $$16 = $$1.b(ri.c);
+      il<dxi<?, ?>> $$17 = $$1.b(ra.u);
+      il<dxi<?, ?>> $$18 = $$1.b(ra.v);
+      il<dxi<?, ?>> $$19 = $$1.b(ra.w);
+      il<dxi<?, ?>> $$20 = $$1.b(ra.x);
+      rr.a($$0, a, $$2, eee.a(10), eei.a(), eeg.a(dvl.a(0), dvl.b()), edz.a());
+      rr.a($$0, b, $$2, eee.a(4), eei.a(), eeg.a(dvl.b(6), dvl.a(-1)), edz.a());
+      rr.a($$0, c, $$3, eer.a(64), eei.a(), eeg.a(dvl.a(0), dvl.b()), edz.a());
+      rr.a($$0, d, $$4, eer.a(64), eei.a(), eeg.a(dvl.a(), dvl.a(-8)), edz.a());
+      rr.a($$0, e, $$5, eee.a(bnl.a(48, 96)), eei.a(), rr.i, edz.a());
+      rr.a($$0, f, $$6, eee.a(bnl.a(10, 48)), eei.a(), rr.i, edz.a());
+      rr.a($$0, g, $$7, eee.a(bnl.a(192, 256)), eei.a(), rr.i, eee.a(bnl.a(1, 5)), eeq.a(bna.a(0.0F, 3.0F, -10, 10), bna.a(0.0F, 0.6F, -2, 2)), edz.a());
+      rr.a($$0, h, $$8, eee.a(bnl.a(44, 52)), eei.a(), rr.i, eet.a(dur.a.c, Integer.MIN_VALUE, -2), edz.a());
+      rr.a($$0, i, $$9, eee.a(bnl.a(104, 157)), rr.i, eei.a(), eet.a(dur.a.c, Integer.MIN_VALUE, -13), edz.a());
+      rr.a($$0, j, $$10, eee.a(bnl.a(1, 2)), eei.a(), rr.i, eef.a(ih.b, dvy.c(), dvy.c, 12), eeq.a(bnc.a(-1)), edz.a());
+      rr.a($$0, k, $$11, eee.a(188), eei.a(), rr.i, eef.a(ih.b, dvy.a(ih.a), dvy.c, 12), eeq.a(bnc.a(-1)), edz.a());
+      rr.a($$0, l, $$12, eee.a(125), eei.a(), rr.i, eef.a(ih.a, dvy.c(), dvy.c, 12), eeq.a(bnc.a(1)), edz.a());
+      rr.a($$0, m, $$13, eee.a(62), eei.a(), rr.i, eef.a(ih.a, dvy.c(), dvy.c, 12), eeq.a(bnc.a(1)), edz.a());
+      rr.a($$0, n, $$14, eee.a(125), eei.a(), rr.i, eef.a(ih.b, dvy.c(), dvy.c, 12), eeq.a(bnc.a(-1)), edz.a());
+      rr.a($$0, o, $$15, eee.a(25), eei.a(), rr.i, eef.a(ih.b, dvy.c(), dvy.c, 12), eeq.a(bnc.a(-1)), edz.a());
+      rr.a($$0, p, $$16, eee.a(256), eei.a(), rr.i, edz.a());
+      rr.a($$0, q, $$17, eer.a(24), eei.a(), eeg.a(dvl.b(6), dvl.a(30)), edz.a());
+      rr.a($$0, r, $$18, eee.a(bnc.a(256)), eei.a(), rr.i, edz.a());
+      rr.a($$0, s, $$19);
+      rr.a($$0, t, $$20, eee.a(bnl.a(204, 250)), eei.a(), rr.i, edz.a());
    }
 }

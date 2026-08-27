@@ -1,68 +1,48 @@
-public class bvr extends bvp {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-   public bvr(bpr $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public class bvr extends bsg<cjg> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
+
+   public bvr() {
+      super(ImmutableMap.of(bzr.c, bzs.a, bzr.n, bzs.c));
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.bc()) {
-         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == bvp.a.b && !this.d.K().l()) {
-         double $$0 = this.e - this.d.dr();
-         double $$1 = this.f - this.d.dt();
-         double $$2 = this.g - this.d.dx();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.C(0.0F);
-         } else {
-            float $$4 = (float)(aww.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
-            this.d.aX = this.d.dC();
-            this.d.aZ = this.d.dC();
-            float $$5 = (float)(this.h * this.d.g(bqw.r));
-            if (this.d.bc()) {
-               this.d.y($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(aww.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = aww.a(aww.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
-               }
-
-               float $$8 = aww.b(this.d.dE() * (float) (Math.PI / 180.0));
-               float $$9 = aww.a(this.d.dE() * (float) (Math.PI / 180.0));
-               this.d.bp = $$8 * $$5;
-               this.d.bo = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(aww.g(this.d.dC() - $$4));
-               float $$11 = a($$10);
-               this.d.y($$5 * this.q * $$11);
-            }
-         }
+   protected boolean b(aps $$0, cjg $$1) {
+      if ($$0.Y() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
       } else {
-         this.d.y(0.0F);
-         this.d.E(0.0F);
-         this.d.D(0.0F);
-         this.d.C(0.0F);
+         this.e = $$0.Y();
+         ik $$2 = $$1.dP().c(bzr.c).get();
+         return $$2.a() == $$0.ae() && $$2.b().a($$1.dk(), 1.73);
       }
    }
 
-   private static float a(float $$0) {
-      return 1.0F - aww.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   protected void a(aps $$0, cjg $$1, long $$2) {
+      brp<cjg> $$3 = $$1.dP();
+      $$3.a(bzr.J, $$2);
+      $$3.c(bzr.c).ifPresent($$1x -> $$3.a(bzr.n, new bsj($$1x.b())));
+      $$1.gC();
+      this.a($$0, $$1);
+      if ($$1.gB()) {
+         $$1.gA();
+      }
+   }
+
+   protected void a(aps $$0, cjg $$1) {
+   }
+
+   protected boolean b(aps $$0, cjg $$1, long $$2) {
+      Optional<ik> $$3 = $$1.dP().c(bzr.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ik $$4 = $$3.get();
+         return $$4.a() == $$0.ae() && $$4.b().a($$1.dk(), 1.73);
+      }
    }
 }

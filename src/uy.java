@@ -1,46 +1,43 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
-import java.util.List;
-import org.slf4j.Logger;
+import javax.crypto.Cipher;
+import javax.crypto.ShortBufferException;
 
-public class uy<T extends va> extends ByteToMessageDecoder implements vd {
-   private static final Logger a = LogUtils.getLogger();
-   private final vc<T> b;
+public class uy {
+   private final Cipher a;
+   private byte[] b = new byte[0];
+   private byte[] c = new byte[0];
 
-   public uy(vc<T> $$0) {
-      this.b = $$0;
+   protected uy(Cipher $$0) {
+      this.a = $$0;
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         yb<? super T> $$4 = this.b.c().decode($$1);
-         yd<? extends yb<? super T>> $$5 = $$4.a();
-         bjx.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
-         if ($$1.readableBytes() > 0) {
-            throw new IOException(
-               "Packet "
-                  + this.b.a().a()
-                  + "/"
-                  + $$5
-                  + " ("
-                  + $$4.getClass().getSimpleName()
-                  + ") was larger than I expected, found "
-                  + $$1.readableBytes()
-                  + " bytes extra whilst reading packet "
-                  + $$5
-            );
-         } else {
-            $$2.add($$4);
-            if (a.isDebugEnabled()) {
-               a.debug(us.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
-            }
-
-            vd.a($$0, $$4);
-         }
+   private byte[] a(ByteBuf $$0) {
+      int $$1 = $$0.readableBytes();
+      if (this.b.length < $$1) {
+         this.b = new byte[$$1];
       }
+
+      $$0.readBytes(this.b, 0, $$1);
+      return this.b;
+   }
+
+   protected ByteBuf a(ChannelHandlerContext $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$1.readableBytes();
+      byte[] $$3 = this.a($$1);
+      ByteBuf $$4 = $$0.alloc().heapBuffer(this.a.getOutputSize($$2));
+      $$4.writerIndex(this.a.update($$3, 0, $$2, $$4.array(), $$4.arrayOffset()));
+      return $$4;
+   }
+
+   protected void a(ByteBuf $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$0.readableBytes();
+      byte[] $$3 = this.a($$0);
+      int $$4 = this.a.getOutputSize($$2);
+      if (this.c.length < $$4) {
+         this.c = new byte[$$4];
+      }
+
+      $$1.writeBytes(this.c, 0, this.a.update($$3, 0, $$2, this.c));
    }
 }

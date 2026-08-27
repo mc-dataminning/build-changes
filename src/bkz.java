@@ -1,79 +1,76 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import jdk.jfr.Category;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public class bkz {
-   public static final bkz a = new bkz();
-   private final WeakHashMap<blb, Void> b = new WeakHashMap<>();
+@Category({"Minecraft", "Storage"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bkz extends Event {
+   @Name("regionPosX")
+   @Label("Region X Position")
+   public final int regionPosX;
+   @Name("regionPosZ")
+   @Label("Region Z Position")
+   public final int regionPosZ;
+   @Name("localPosX")
+   @Label("Local X Position")
+   public final int localChunkPosX;
+   @Name("localPosZ")
+   @Label("Local Z Position")
+   public final int localChunkPosZ;
+   @Name("chunkPosX")
+   @Label("Chunk X Position")
+   public final int chunkPosX;
+   @Name("chunkPosZ")
+   @Label("Chunk Z Position")
+   public final int chunkPosZ;
+   @Name("level")
+   @Label("Level Id")
+   public final String levelId;
+   @Name("dimension")
+   @Label("Dimension")
+   public final String dimension;
+   @Name("type")
+   @Label("Type")
+   public final String type;
+   @Name("compression")
+   @Label("Compression")
+   public final String compression;
+   @Name("bytes")
+   @Label("Bytes")
+   public final int bytes;
 
-   private bkz() {
+   public bkz(dsl $$0, cye $$1, dsk $$2, int $$3) {
+      this.regionPosX = $$1.h();
+      this.regionPosZ = $$1.i();
+      this.localChunkPosX = $$1.j();
+      this.localChunkPosZ = $$1.k();
+      this.chunkPosX = $$1.e;
+      this.chunkPosZ = $$1.f;
+      this.levelId = $$0.a();
+      this.dimension = $$0.b().a().toString();
+      this.type = $$0.c();
+      this.compression = "standard:" + $$2.b();
+      this.bytes = $$3;
    }
 
-   public void a(blb $$0) {
-      this.b.put($$0, null);
-   }
+   public static class a {
+      public static final String a = "regionPosX";
+      public static final String b = "regionPosZ";
+      public static final String c = "localPosX";
+      public static final String d = "localPosZ";
+      public static final String e = "chunkPosX";
+      public static final String f = "chunkPosZ";
+      public static final String g = "level";
+      public static final String h = "dimension";
+      public static final String i = "type";
+      public static final String j = "compression";
+      public static final String k = "bytes";
 
-   public List<bky> a() {
-      Map<String, List<bky>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bu().stream()).collect(Collectors.groupingBy(bky::d));
-      return a($$0);
-   }
-
-   private static List<bky> a(Map<String, List<bky>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bky> $$2 = (List<bky>)$$0x.getValue();
-         return (bky)($$2.size() > 1 ? new bkz.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bky {
-      private final List<bky> b;
-
-      a(String $$0, List<bky> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bky.c a(List<bky> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bky> $$0) {
-         for (bky $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bky> $$0) {
-         double $$1 = 0.0;
-
-         for (bky $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bkz.a $$1 = (bkz.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+      private a() {
       }
    }
 }

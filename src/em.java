@@ -20,11 +20,11 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class em implements ArgumentType<em.g> {
    private static final Collection<String> d = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("arguments.nbtpath.node.invalid"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("arguments.nbtpath.too_deep"));
-   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("arguments.nbtpath.nothing_found", $$0));
-   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> vu.b("commands.data.modify.expected_list", $$0));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> vu.b("commands.data.modify.invalid_index", $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("arguments.nbtpath.node.invalid"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("arguments.nbtpath.too_deep"));
+   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wg.b("arguments.nbtpath.nothing_found", $$0));
+   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wg.b("commands.data.modify.expected_list", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wg.b("commands.data.modify.invalid_index", $$0));
    private static final char g = '[';
    private static final char h = ']';
    private static final char i = '{';
@@ -69,7 +69,7 @@ public class em implements ArgumentType<em.g> {
             $$0.skip();
             int $$3 = $$0.peek();
             if ($$3 == 123) {
-               ta $$4 = new ty($$0).f();
+               tm $$4 = new uk($$0).f();
                $$0.expect(']');
                yield new em.d($$4);
             } else if ($$3 == 93) {
@@ -86,7 +86,7 @@ public class em implements ArgumentType<em.g> {
                throw a.createWithContext($$0);
             }
 
-            ta $$2 = new ty($$0).f();
+            tm $$2 = new uk($$0).f();
             yield new em.f($$2);
          }
          default -> a($$0, b($$0));
@@ -95,7 +95,7 @@ public class em implements ArgumentType<em.g> {
 
    private static em.h a(StringReader $$0, String $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '{') {
-         ta $$2 = new ty($$0).f();
+         tm $$2 = new uk($$0).f();
          return new em.e($$1, $$2);
       } else {
          return new em.b($$1);
@@ -124,8 +124,8 @@ public class em implements ArgumentType<em.g> {
       return $$0 != ' ' && $$0 != '"' && $$0 != '\'' && $$0 != '[' && $$0 != ']' && $$0 != '.' && $$0 != '{' && $$0 != '}';
    }
 
-   static Predicate<tx> a(ta $$0) {
-      return $$1 -> tp.a($$0, $$1, true);
+   static Predicate<uj> a(tm $$0) {
+      return $$1 -> ub.a($$0, $$1, true);
    }
 
    static class a implements em.h {
@@ -135,34 +135,34 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof sz) {
-            $$1.addAll((sz)$$0);
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof tl) {
+            $$1.addAll((tl)$$0);
          }
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
-         if ($$0 instanceof sz<?> $$3) {
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
+         if ($$0 instanceof tl<?> $$3) {
             if ($$3.isEmpty()) {
-               tx $$4 = $$1.get();
+               uj $$4 = $$1.get();
                if ($$3.b(0, $$4)) {
                   $$2.add($$4);
                }
             } else {
-               $$2.addAll((Collection<? extends tx>)$$3);
+               $$2.addAll((Collection<? extends uj>)$$3);
             }
          }
       }
 
       @Override
-      public tx a() {
-         return new tg();
+      public uj a() {
+         return new ts();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
-         if (!($$0 instanceof sz<?> $$2)) {
+      public int a(uj $$0, Supplier<uj> $$1) {
+         if (!($$0 instanceof tl<?> $$2)) {
             return 0;
          } else {
             int $$3 = $$2.size();
@@ -170,7 +170,7 @@ public class em implements ArgumentType<em.g> {
                $$2.b(0, $$1.get());
                return 1;
             } else {
-               tx $$4 = $$1.get();
+               uj $$4 = $$1.get();
                int $$5 = $$3 - (int)$$2.stream().filter($$4::equals).count();
                if ($$5 == 0) {
                   return 0;
@@ -191,8 +191,8 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public int a(tx $$0) {
-         if ($$0 instanceof sz<?> $$1) {
+      public int a(uj $$0) {
+         if ($$0 instanceof tl<?> $$1) {
             int $$2 = $$1.size();
             if ($$2 > 0) {
                $$1.clear();
@@ -212,9 +212,9 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof ta) {
-            tx $$2 = ((ta)$$0).c(this.a);
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof tm) {
+            uj $$2 = ((tm)$$0).c(this.a);
             if ($$2 != null) {
                $$1.add($$2);
             }
@@ -222,9 +222,9 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
-         if ($$0 instanceof ta $$3) {
-            tx $$4;
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
+         if ($$0 instanceof tm $$3) {
+            uj $$4;
             if ($$3.e(this.a)) {
                $$4 = $$3.c(this.a);
             } else {
@@ -237,15 +237,15 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public tx a() {
-         return new ta();
+      public uj a() {
+         return new tm();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
-         if ($$0 instanceof ta $$2) {
-            tx $$3 = $$1.get();
-            tx $$4 = $$2.a(this.a, $$3);
+      public int a(uj $$0, Supplier<uj> $$1) {
+         if ($$0 instanceof tm $$2) {
+            uj $$3 = $$1.get();
+            uj $$4 = $$2.a(this.a, $$3);
             if (!$$3.equals($$4)) {
                return 1;
             }
@@ -255,8 +255,8 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public int a(tx $$0) {
-         if ($$0 instanceof ta $$1 && $$1.e(this.a)) {
+      public int a(uj $$0) {
+         if ($$0 instanceof tm $$1 && $$1.e(this.a)) {
             $$1.r(this.a);
             return 1;
          }
@@ -273,8 +273,8 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof sz<?> $$2) {
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof tl<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
@@ -284,23 +284,23 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public tx a() {
-         return new tg();
+      public uj a() {
+         return new ts();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
-         if ($$0 instanceof sz<?> $$2) {
+      public int a(uj $$0, Supplier<uj> $$1) {
+         if ($$0 instanceof tl<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
-               tx $$5 = $$2.get($$4);
-               tx $$6 = $$1.get();
+               uj $$5 = $$2.get($$4);
+               uj $$6 = $$1.get();
                if (!$$6.equals($$5) && $$2.a($$4, $$6)) {
                   return 1;
                }
@@ -311,8 +311,8 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public int a(tx $$0) {
-         if ($$0 instanceof sz<?> $$1) {
+      public int a(uj $$0) {
+         if ($$0 instanceof tl<?> $$1) {
             int $$2 = $$1.size();
             int $$3 = this.a < 0 ? $$2 + this.a : this.a;
             if (0 <= $$3 && $$3 < $$2) {
@@ -326,31 +326,31 @@ public class em implements ArgumentType<em.g> {
    }
 
    static class d implements em.h {
-      private final ta a;
-      private final Predicate<tx> b;
+      private final tm a;
+      private final Predicate<uj> b;
 
-      public d(ta $$0) {
+      public d(tm $$0) {
          this.a = $$0;
          this.b = em.a($$0);
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof tg $$2) {
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof ts $$2) {
             $$2.stream().filter(this.b).forEach($$1::add);
          }
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
          MutableBoolean $$3 = new MutableBoolean();
-         if ($$0 instanceof tg $$4) {
+         if ($$0 instanceof ts $$4) {
             $$4.stream().filter(this.b).forEach($$2x -> {
                $$2.add($$2x);
                $$3.setTrue();
             });
             if ($$3.isFalse()) {
-               ta $$5 = this.a.h();
+               tm $$5 = this.a.h();
                $$4.add($$5);
                $$2.add($$5);
             }
@@ -358,23 +358,23 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public tx a() {
-         return new tg();
+      public uj a() {
+         return new ts();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
+      public int a(uj $$0, Supplier<uj> $$1) {
          int $$2 = 0;
-         if ($$0 instanceof tg $$3) {
+         if ($$0 instanceof ts $$3) {
             int $$4 = $$3.size();
             if ($$4 == 0) {
                $$3.add($$1.get());
                $$2++;
             } else {
                for (int $$5 = 0; $$5 < $$4; $$5++) {
-                  tx $$6 = $$3.k($$5);
+                  uj $$6 = $$3.k($$5);
                   if (this.b.test($$6)) {
-                     tx $$7 = $$1.get();
+                     uj $$7 = $$1.get();
                      if (!$$7.equals($$6) && $$3.a($$5, $$7)) {
                         $$2++;
                      }
@@ -387,9 +387,9 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public int a(tx $$0) {
+      public int a(uj $$0) {
          int $$1 = 0;
-         if ($$0 instanceof tg $$2) {
+         if ($$0 instanceof ts $$2) {
             for (int $$3 = $$2.size() - 1; $$3 >= 0; $$3--) {
                if (this.b.test($$2.k($$3))) {
                   $$2.c($$3);
@@ -404,19 +404,19 @@ public class em implements ArgumentType<em.g> {
 
    static class e implements em.h {
       private final String a;
-      private final ta b;
-      private final Predicate<tx> c;
+      private final tm b;
+      private final Predicate<uj> c;
 
-      public e(String $$0, ta $$1) {
+      public e(String $$0, tm $$1) {
          this.a = $$0;
          this.b = $$1;
          this.c = em.a($$1);
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof ta) {
-            tx $$2 = ((ta)$$0).c(this.a);
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof tm) {
+            uj $$2 = ((tm)$$0).c(this.a);
             if (this.c.test($$2)) {
                $$1.add($$2);
             }
@@ -424,11 +424,11 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
-         if ($$0 instanceof ta $$3) {
-            tx $$4 = $$3.c(this.a);
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
+         if ($$0 instanceof tm $$3) {
+            uj $$4 = $$3.c(this.a);
             if ($$4 == null) {
-               tx var6 = this.b.h();
+               uj var6 = this.b.h();
                $$3.a(this.a, var6);
                $$2.add(var6);
             } else if (this.c.test($$4)) {
@@ -438,16 +438,16 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public tx a() {
-         return new ta();
+      public uj a() {
+         return new tm();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
-         if ($$0 instanceof ta $$2) {
-            tx $$3 = $$2.c(this.a);
+      public int a(uj $$0, Supplier<uj> $$1) {
+         if ($$0 instanceof tm $$2) {
+            uj $$3 = $$2.c(this.a);
             if (this.c.test($$3)) {
-               tx $$4 = $$1.get();
+               uj $$4 = $$1.get();
                if (!$$4.equals($$3)) {
                   $$2.a(this.a, $$4);
                   return 1;
@@ -459,9 +459,9 @@ public class em implements ArgumentType<em.g> {
       }
 
       @Override
-      public int a(tx $$0) {
-         if ($$0 instanceof ta $$1) {
-            tx $$2 = $$1.c(this.a);
+      public int a(uj $$0) {
+         if ($$0 instanceof tm $$1) {
+            uj $$2 = $$1.c(this.a);
             if (this.c.test($$2)) {
                $$1.r(this.a);
                return 1;
@@ -473,36 +473,36 @@ public class em implements ArgumentType<em.g> {
    }
 
    static class f implements em.h {
-      private final Predicate<tx> a;
+      private final Predicate<uj> a;
 
-      public f(ta $$0) {
+      public f(tm $$0) {
          this.a = em.a($$0);
       }
 
       @Override
-      public void a(tx $$0, List<tx> $$1) {
-         if ($$0 instanceof ta && this.a.test($$0)) {
+      public void a(uj $$0, List<uj> $$1) {
+         if ($$0 instanceof tm && this.a.test($$0)) {
             $$1.add($$0);
          }
       }
 
       @Override
-      public void a(tx $$0, Supplier<tx> $$1, List<tx> $$2) {
+      public void a(uj $$0, Supplier<uj> $$1, List<uj> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public tx a() {
-         return new ta();
+      public uj a() {
+         return new tm();
       }
 
       @Override
-      public int a(tx $$0, Supplier<tx> $$1) {
+      public int a(uj $$0, Supplier<uj> $$1) {
          return 0;
       }
 
       @Override
-      public int a(tx $$0) {
+      public int a(uj $$0) {
          return 0;
       }
    }
@@ -518,8 +518,8 @@ public class em implements ArgumentType<em.g> {
          this.b = $$2;
       }
 
-      public List<tx> a(tx $$0) throws CommandSyntaxException {
-         List<tx> $$1 = Collections.singletonList($$0);
+      public List<uj> a(uj $$0) throws CommandSyntaxException {
+         List<uj> $$1 = Collections.singletonList($$0);
 
          for (em.h $$2 : this.c) {
             $$1 = $$2.a($$1);
@@ -531,8 +531,8 @@ public class em implements ArgumentType<em.g> {
          return $$1;
       }
 
-      public int b(tx $$0) {
-         List<tx> $$1 = Collections.singletonList($$0);
+      public int b(uj $$0) {
+         List<uj> $$1 = Collections.singletonList($$0);
 
          for (em.h $$2 : this.c) {
             $$1 = $$2.a($$1);
@@ -544,8 +544,8 @@ public class em implements ArgumentType<em.g> {
          return $$1.size();
       }
 
-      private List<tx> d(tx $$0) throws CommandSyntaxException {
-         List<tx> $$1 = Collections.singletonList($$0);
+      private List<uj> d(uj $$0) throws CommandSyntaxException {
+         List<uj> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.c.length - 1; $$2++) {
             em.h $$3 = this.c[$$2];
@@ -559,29 +559,29 @@ public class em implements ArgumentType<em.g> {
          return $$1;
       }
 
-      public List<tx> a(tx $$0, Supplier<tx> $$1) throws CommandSyntaxException {
-         List<tx> $$2 = this.d($$0);
+      public List<uj> a(uj $$0, Supplier<uj> $$1) throws CommandSyntaxException {
+         List<uj> $$2 = this.d($$0);
          em.h $$3 = this.c[this.c.length - 1];
          return $$3.a($$2, $$1);
       }
 
-      private static int a(List<tx> $$0, Function<tx, Integer> $$1) {
+      private static int a(List<uj> $$0, Function<uj, Integer> $$1) {
          return $$0.stream().map($$1).reduce(0, ($$0x, $$1x) -> $$0x + $$1x);
       }
 
-      public static boolean a(tx $$0, int $$1) {
+      public static boolean a(uj $$0, int $$1) {
          if ($$1 >= 512) {
             return true;
          } else {
-            if ($$0 instanceof ta $$2) {
+            if ($$0 instanceof tm $$2) {
                for (String $$3 : $$2.e()) {
-                  tx $$4 = $$2.c($$3);
+                  uj $$4 = $$2.c($$3);
                   if ($$4 != null && a($$4, $$1 + 1)) {
                      return true;
                   }
                }
-            } else if ($$0 instanceof tg) {
-               for (tx $$6 : (tg)$$0) {
+            } else if ($$0 instanceof ts) {
+               for (uj $$6 : (ts)$$0) {
                   if (a($$6, $$1 + 1)) {
                      return true;
                   }
@@ -592,12 +592,12 @@ public class em implements ArgumentType<em.g> {
          }
       }
 
-      public int a(tx $$0, tx $$1) throws CommandSyntaxException {
+      public int a(uj $$0, uj $$1) throws CommandSyntaxException {
          if (a($$1, this.b())) {
             throw em.b.create();
          } else {
-            tx $$2 = $$1.d();
-            List<tx> $$3 = this.d($$0);
+            uj $$2 = $$1.d();
+            List<uj> $$3 = this.d($$0);
             if ($$3.isEmpty()) {
                return 0;
             } else {
@@ -619,30 +619,30 @@ public class em implements ArgumentType<em.g> {
          return this.c.length;
       }
 
-      public int a(int $$0, ta $$1, List<tx> $$2) throws CommandSyntaxException {
-         List<tx> $$3 = new ArrayList<>($$2.size());
+      public int a(int $$0, tm $$1, List<uj> $$2) throws CommandSyntaxException {
+         List<uj> $$3 = new ArrayList<>($$2.size());
 
-         for (tx $$4 : $$2) {
-            tx $$5 = $$4.d();
+         for (uj $$4 : $$2) {
+            uj $$5 = $$4.d();
             $$3.add($$5);
             if (a($$5, this.b())) {
                throw em.b.create();
             }
          }
 
-         Collection<tx> $$6 = this.a($$1, tg::new);
+         Collection<uj> $$6 = this.a($$1, ts::new);
          int $$7 = 0;
          boolean $$8 = false;
 
-         for (tx $$9 : $$6) {
-            if (!($$9 instanceof sz<?> $$10)) {
+         for (uj $$9 : $$6) {
+            if (!($$9 instanceof tl<?> $$10)) {
                throw em.e.create($$9);
             }
 
             boolean $$11 = false;
             int $$12 = $$0 < 0 ? $$10.size() + $$0 + 1 : $$0;
 
-            for (tx $$13 : $$3) {
+            for (uj $$13 : $$3) {
                try {
                   if ($$10.b($$12, $$8 ? $$13.d() : $$13)) {
                      $$12++;
@@ -660,8 +660,8 @@ public class em implements ArgumentType<em.g> {
          return $$7;
       }
 
-      public int c(tx $$0) {
-         List<tx> $$1 = Collections.singletonList($$0);
+      public int c(uj $$0) {
+         List<uj> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.c.length - 1; $$2++) {
             $$1 = this.c[$$2].a($$1);
@@ -687,28 +687,28 @@ public class em implements ArgumentType<em.g> {
    }
 
    interface h {
-      void a(tx var1, List<tx> var2);
+      void a(uj var1, List<uj> var2);
 
-      void a(tx var1, Supplier<tx> var2, List<tx> var3);
+      void a(uj var1, Supplier<uj> var2, List<uj> var3);
 
-      tx a();
+      uj a();
 
-      int a(tx var1, Supplier<tx> var2);
+      int a(uj var1, Supplier<uj> var2);
 
-      int a(tx var1);
+      int a(uj var1);
 
-      default List<tx> a(List<tx> $$0) {
+      default List<uj> a(List<uj> $$0) {
          return this.a($$0, this::a);
       }
 
-      default List<tx> a(List<tx> $$0, Supplier<tx> $$1) {
+      default List<uj> a(List<uj> $$0, Supplier<uj> $$1) {
          return this.a($$0, ($$1x, $$2) -> this.a($$1x, $$1, $$2));
       }
 
-      default List<tx> a(List<tx> $$0, BiConsumer<tx, List<tx>> $$1) {
-         List<tx> $$2 = Lists.newArrayList();
+      default List<uj> a(List<uj> $$0, BiConsumer<uj, List<uj>> $$1) {
+         List<uj> $$2 = Lists.newArrayList();
 
-         for (tx $$3 : $$0) {
+         for (uj $$3 : $$0) {
             $$1.accept($$3, $$2);
          }
 

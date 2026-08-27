@@ -1,29 +1,54 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class enx {
-   private static final Codec<env> t = ki.H.q().dispatch("condition", env::b, enw::a);
-   public static final Codec<env> a = awe.a((Supplier<Codec<env>>)(() -> awe.e(t, enj.b)));
-   public static final enw b = a("inverted", ens.a);
-   public static final enw c = a("any_of", enk.a);
-   public static final enw d = a("all_of", enj.a);
-   public static final enw e = a("random_chance", eoa.a);
-   public static final enw f = a("random_chance_with_looting", eob.a);
-   public static final enw g = a("entity_properties", eny.a);
-   public static final enw h = a("killed_by_player", enz.a);
-   public static final enw i = a("entity_scores", enq.a);
-   public static final enw j = a("block_state_property", enu.a);
-   public static final enw k = a("match_tool", eoc.a);
-   public static final enw l = a("table_bonus", enl.a);
-   public static final enw m = a("survives_explosion", enr.a);
-   public static final enw n = a("damage_source_properties", enp.a);
-   public static final enw o = a("location_check", ent.a);
-   public static final enw p = a("weather_check", eof.a);
-   public static final enw q = a("reference", enn.a);
-   public static final enw r = a("time_check", eod.a);
-   public static final enw s = a("value_check", eoe.a);
+public class enx extends enw {
+   public static final Codec<enx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.either(ajt.a, enj.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, enx::new)
+   );
+   private final Either<ajt, enj> j;
 
-   private static enw a(String $$0, Codec<? extends env> $$1) {
-      return iy.a(ki.H, new ajh($$0), new enw($$1));
+   private enx(Either<ajt, enj> $$0, int $$1, int $$2, List<eqc> $$3, List<eop> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
+   }
+
+   @Override
+   public env a() {
+      return ens.d;
+   }
+
+   @Override
+   public void a(Consumer<crj> $$0, enb $$1) {
+      ((enj)this.j.map($$1x -> $$1.a().getLootTable($$1x), $$0x -> $$0x)).a($$1, $$0);
+   }
+
+   @Override
+   public void a(enk $$0) {
+      Optional<ajt> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         end<enj> $$2 = new end<>(eng.c, $$1.get());
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$1.get() + " is recursively called");
+            return;
+         }
+      }
+
+      super.a($$0);
+      this.j.ifLeft($$1x -> {
+         end<enj> $$2x = new end<>(eng.c, $$1x);
+         $$0.a().getElementOptional($$2x).ifPresentOrElse($$3 -> $$3.a($$0.a("->{" + $$1x + "}", $$2x)), () -> $$0.b("Unknown loot table called " + $$1x));
+      }).ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
+
+   public static enw.a<?> a(ajt $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new enx(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
+
+   public static enw.a<?> a(enj $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new enx(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

@@ -1,7 +1,32 @@
-import jdk.jfr.consumer.RecordedEvent;
+import java.nio.file.Path;
+import java.util.List;
 
-public record bkn(double a, double b, double c) {
-   public static bkn a(RecordedEvent $$0) {
-      return new bkn((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
+public interface bkn {
+   char d = '\u001e';
+
+   List<bkq> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
+   }
+
+   default int f() {
+      return this.d() - this.b();
+   }
+
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

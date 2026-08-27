@@ -1,39 +1,38 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public enum fkc {
+   a(
+      new ajt("advancements/box_obtained"),
+      new ajt("advancements/task_frame_obtained"),
+      new ajt("advancements/challenge_frame_obtained"),
+      new ajt("advancements/goal_frame_obtained")
+   ),
+   b(
+      new ajt("advancements/box_unobtained"),
+      new ajt("advancements/task_frame_unobtained"),
+      new ajt("advancements/challenge_frame_unobtained"),
+      new ajt("advancements/goal_frame_unobtained")
+   );
 
-public class fkc implements fka {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final ffo e;
+   private final ajt c;
+   private final ajt d;
+   private final ajt e;
+   private final ajt f;
 
-   public fkc(ffo $$0) {
-      this.e = $$0;
+   private fkc(ajt $$0, ajt $$1, ajt $$2, ajt $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
-      return $$6;
+   public ajt a() {
+      return this.c;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(aww.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   public ajt a(al $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

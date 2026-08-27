@@ -1,51 +1,61 @@
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public interface dbd<T extends Enum<T>> {
-   int v_ = 4;
+public class dbd extends dap {
+   public static final MapCodec<dbd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cqc.q.fieldOf("color").forGetter(dap::b), u()).apply($$0, dbd::new));
+   public static final dpz b = dpp.ba;
+   private static final Map<cqc, dby> c = Maps.newHashMap();
+   private static final est d = dby.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
-   Optional<dnb> j_(dnb var1);
-
-   float ax_();
-
-   default void a_(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<dbd> a() {
+      return a;
    }
 
-   T c();
+   public dbd(cqc $$0, doy.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
+   }
 
-   default Optional<dnb> c(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      return $$1.a_($$2.d()).e();
+   }
 
-      for (ib $$7 : ib.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return d;
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dbd<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   public doz a(cuo $$0) {
+      return this.n().a(b, Integer.valueOf(dqf.a($$0.i() + 180.0F)));
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.ax_();
-      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b);
+   }
+
+   public static dby a(cqc $$0) {
+      return c.getOrDefault($$0, dca.iJ);
    }
 }

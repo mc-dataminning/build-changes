@@ -1,89 +1,31 @@
-public class ctc extends cth {
-   public ctc(ctf $$0) {
+public class ctc extends cre {
+   private static final int a = 10;
+
+   public ctc(cre.a $$0) {
       super($$0);
    }
 
-   public boolean a(cmg $$0, cxb $$1) {
-      int $$2 = 0;
-      cqm $$3 = cqm.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cqp.tZ)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cqp.tY)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
-   }
-
-   public cqm a(cmg $$0, iz $$1) {
-      int $$2 = 0;
-      cqm $$3 = cqm.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cqp.tZ)) {
-               if (!$$3.b()) {
-                  return cqm.h;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cqp.tY)) {
-                  return cqm.h;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$2 >= 1 && csi.d($$3) < 2) {
-         cqm $$6 = $$3.c($$2);
-         $$6.x().a("generation", csi.d($$3) + 1);
-         return $$6;
-      } else {
-         return cqm.h;
-      }
-   }
-
-   public iu<cqm> a(cmg $$0) {
-      iu<cqm> $$1 = iu.a($$0.b(), cqm.h);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cqm $$3 = $$0.a($$2);
-         if ($$3.d().u()) {
-            $$1.set($$2, new cqm($$3.d().t()));
-         } else if ($$3.d() instanceof csi) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
    @Override
-   public ctt<?> ar_() {
-      return ctt.d;
-   }
+   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
+      if (!$$0.x_()) {
+         esa $$3 = new esa($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.8F));
+         if (!$$0.a_(ib.a($$3)).r()) {
+            $$3 = new esa($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.05F));
+         }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+         cld $$4 = new cld($$1, $$0, $$3.a(), $$3.b(), $$3.c());
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
+
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.BU, aun.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      crj $$5 = $$1.b($$2);
+      $$1.gu().a(this, 10);
+      $$1.b(auw.c.b(this));
+      if (!$$1.f()) {
+         $$5.g(1);
+      }
+
+      return bob.a($$5, $$0.x_());
    }
 }

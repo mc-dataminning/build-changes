@@ -1,20 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ank {
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tellraw").requires($$0x -> $$0x.c(2)))
-            .then(dv.a("targets", eh.d()).then(dv.a("message", ed.a($$1)).executes($$0x -> {
-               int $$1x = 0;
-
-               for (apg $$2 : eh.f($$0x, "targets")) {
-                  $$2.b(vx.a((du)$$0x.getSource(), ed.a($$0x, "message"), $$2, 0), false);
-                  $$1x++;
-               }
-
-               return $$1x;
-            })))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), ib.a(((du)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ib.a(((du)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", fo.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), 0.0F)))
+                        .then(dv.a("angle", ea.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), ea.a($$0x, "angle"))))
+                  )
+            )
       );
+   }
+
+   private static int a(du $$0, Collection<apt> $$1, ib $$2, float $$3) {
+      ajs<cyx> $$4 = $$0.e().ae();
+
+      for (apt $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
+      }
+
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> wg.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> wg.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

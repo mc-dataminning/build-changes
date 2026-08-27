@@ -1,99 +1,39 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class fbi extends faz {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   public static final int o = 8;
-   protected static final fbi.b p = $$0 -> $$0.get();
-   protected final fbi.c q;
-   protected final fbi.b r;
+public enum fbi implements axm {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public static fbi.a a(vu $$0, fbi.c $$1) {
-      return new fbi.a($$0, $$1);
-   }
+   private static final IntFunction<fbi> d = awb.a(fbi::a, values(), awb.a.b);
+   private final int e;
+   private final String f;
 
-   protected fbi(int $$0, int $$1, int $$2, int $$3, vu $$4, fbi.c $$5, fbi.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.q = $$5;
-      this.r = $$6;
+   private fbi(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void b() {
-      this.q.onPress(this);
+   public int a() {
+      return this.e;
    }
 
    @Override
-   protected wi aL_() {
-      return this.r.createNarrationMessage(() -> super.aL_());
+   public String b() {
+      return this.f;
    }
 
    @Override
-   public void a(ffe $$0) {
-      this.c($$0);
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
-   public static class a {
-      private final vu a;
-      private final fbi.c b;
-      @Nullable
-      private fct c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fbi.b h = fbi.p;
-
-      public a(vu $$0, fbi.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fbi.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fbi.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fbi.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fbi.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fbi.a a(@Nullable fct $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fbi.a a(fbi.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fbi a() {
-         fbi $$0 = new fbi(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
-   }
-
-   public interface b {
-      wi createNarrationMessage(Supplier<wi> var1);
-   }
-
-   public interface c {
-      void onPress(fbi var1);
+   public static fbi a(int $$0) {
+      return d.apply($$0);
    }
 }

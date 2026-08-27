@@ -1,185 +1,22 @@
-public final class aun {
-   public static final avd<dac> a = a("wool");
-   public static final avd<dac> b = a("planks");
-   public static final avd<dac> c = a("stone_bricks");
-   public static final avd<dac> d = a("wooden_buttons");
-   public static final avd<dac> e = a("stone_buttons");
-   public static final avd<dac> f = a("buttons");
-   public static final avd<dac> g = a("wool_carpets");
-   public static final avd<dac> h = a("wooden_doors");
-   public static final avd<dac> i = a("wooden_stairs");
-   public static final avd<dac> j = a("wooden_slabs");
-   public static final avd<dac> k = a("wooden_fences");
-   public static final avd<dac> l = a("pressure_plates");
-   public static final avd<dac> m = a("wooden_pressure_plates");
-   public static final avd<dac> n = a("stone_pressure_plates");
-   public static final avd<dac> o = a("wooden_trapdoors");
-   public static final avd<dac> p = a("doors");
-   public static final avd<dac> q = a("saplings");
-   public static final avd<dac> r = a("logs_that_burn");
-   public static final avd<dac> s = a("overworld_natural_logs");
-   public static final avd<dac> t = a("logs");
-   public static final avd<dac> u = a("dark_oak_logs");
-   public static final avd<dac> v = a("oak_logs");
-   public static final avd<dac> w = a("birch_logs");
-   public static final avd<dac> x = a("acacia_logs");
-   public static final avd<dac> y = a("cherry_logs");
-   public static final avd<dac> z = a("jungle_logs");
-   public static final avd<dac> A = a("spruce_logs");
-   public static final avd<dac> B = a("mangrove_logs");
-   public static final avd<dac> C = a("crimson_stems");
-   public static final avd<dac> D = a("warped_stems");
-   public static final avd<dac> E = a("bamboo_blocks");
-   public static final avd<dac> F = a("wart_blocks");
-   public static final avd<dac> G = a("banners");
-   public static final avd<dac> H = a("sand");
-   public static final avd<dac> I = a("smelts_to_glass");
-   public static final avd<dac> J = a("stairs");
-   public static final avd<dac> K = a("slabs");
-   public static final avd<dac> L = a("walls");
-   public static final avd<dac> M = a("anvil");
-   public static final avd<dac> N = a("rails");
-   public static final avd<dac> O = a("leaves");
-   public static final avd<dac> P = a("trapdoors");
-   public static final avd<dac> Q = a("small_flowers");
-   public static final avd<dac> R = a("beds");
-   public static final avd<dac> S = a("fences");
-   public static final avd<dac> T = a("tall_flowers");
-   public static final avd<dac> U = a("flowers");
-   public static final avd<dac> V = a("piglin_repellents");
-   public static final avd<dac> W = a("gold_ores");
-   public static final avd<dac> X = a("iron_ores");
-   public static final avd<dac> Y = a("diamond_ores");
-   public static final avd<dac> Z = a("redstone_ores");
-   public static final avd<dac> aa = a("lapis_ores");
-   public static final avd<dac> ab = a("coal_ores");
-   public static final avd<dac> ac = a("emerald_ores");
-   public static final avd<dac> ad = a("copper_ores");
-   public static final avd<dac> ae = a("candles");
-   public static final avd<dac> af = a("dirt");
-   public static final avd<dac> ag = a("terracotta");
-   public static final avd<dac> ah = a("badlands_terracotta");
-   public static final avd<dac> ai = a("concrete_powder");
-   public static final avd<dac> aj = a("completes_find_tree_tutorial");
-   public static final avd<dac> ak = a("flower_pots");
-   public static final avd<dac> al = a("enderman_holdable");
-   public static final avd<dac> am = a("ice");
-   public static final avd<dac> an = a("valid_spawn");
-   public static final avd<dac> ao = a("impermeable");
-   public static final avd<dac> ap = a("underwater_bonemeals");
-   public static final avd<dac> aq = a("coral_blocks");
-   public static final avd<dac> ar = a("wall_corals");
-   public static final avd<dac> as = a("coral_plants");
-   public static final avd<dac> at = a("corals");
-   public static final avd<dac> au = a("bamboo_plantable_on");
-   public static final avd<dac> av = a("standing_signs");
-   public static final avd<dac> aw = a("wall_signs");
-   public static final avd<dac> ax = a("signs");
-   public static final avd<dac> ay = a("ceiling_hanging_signs");
-   public static final avd<dac> az = a("wall_hanging_signs");
-   public static final avd<dac> aA = a("all_hanging_signs");
-   public static final avd<dac> aB = a("all_signs");
-   public static final avd<dac> aC = a("dragon_immune");
-   public static final avd<dac> aD = a("dragon_transparent");
-   public static final avd<dac> aE = a("wither_immune");
-   public static final avd<dac> aF = a("wither_summon_base_blocks");
-   public static final avd<dac> aG = a("beehives");
-   public static final avd<dac> aH = a("crops");
-   public static final avd<dac> aI = a("bee_growables");
-   public static final avd<dac> aJ = a("portals");
-   public static final avd<dac> aK = a("fire");
-   public static final avd<dac> aL = a("nylium");
-   public static final avd<dac> aM = a("beacon_base_blocks");
-   public static final avd<dac> aN = a("soul_speed_blocks");
-   public static final avd<dac> aO = a("wall_post_override");
-   public static final avd<dac> aP = a("climbable");
-   public static final avd<dac> aQ = a("fall_damage_resetting");
-   public static final avd<dac> aR = a("shulker_boxes");
-   public static final avd<dac> aS = a("hoglin_repellents");
-   public static final avd<dac> aT = a("soul_fire_base_blocks");
-   public static final avd<dac> aU = a("strider_warm_blocks");
-   public static final avd<dac> aV = a("campfires");
-   public static final avd<dac> aW = a("guarded_by_piglins");
-   public static final avd<dac> aX = a("prevent_mob_spawning_inside");
-   public static final avd<dac> aY = a("fence_gates");
-   public static final avd<dac> aZ = a("unstable_bottom_center");
-   public static final avd<dac> ba = a("mushroom_grow_block");
-   public static final avd<dac> bb = a("infiniburn_overworld");
-   public static final avd<dac> bc = a("infiniburn_nether");
-   public static final avd<dac> bd = a("infiniburn_end");
-   public static final avd<dac> be = a("base_stone_overworld");
-   public static final avd<dac> bf = a("stone_ore_replaceables");
-   public static final avd<dac> bg = a("deepslate_ore_replaceables");
-   public static final avd<dac> bh = a("base_stone_nether");
-   public static final avd<dac> bi = a("overworld_carver_replaceables");
-   public static final avd<dac> bj = a("nether_carver_replaceables");
-   public static final avd<dac> bk = a("candle_cakes");
-   public static final avd<dac> bl = a("cauldrons");
-   public static final avd<dac> bm = a("crystal_sound_blocks");
-   public static final avd<dac> bn = a("inside_step_sound_blocks");
-   public static final avd<dac> bo = a("combination_step_sound_blocks");
-   public static final avd<dac> bp = a("camel_sand_step_sound_blocks");
-   public static final avd<dac> bq = a("occludes_vibration_signals");
-   public static final avd<dac> br = a("dampens_vibrations");
-   public static final avd<dac> bs = a("dripstone_replaceable_blocks");
-   public static final avd<dac> bt = a("cave_vines");
-   public static final avd<dac> bu = a("moss_replaceable");
-   public static final avd<dac> bv = a("lush_ground_replaceable");
-   public static final avd<dac> bw = a("azalea_root_replaceable");
-   public static final avd<dac> bx = a("small_dripleaf_placeable");
-   public static final avd<dac> by = a("big_dripleaf_placeable");
-   public static final avd<dac> bz = a("snow");
-   public static final avd<dac> bA = a("mineable/axe");
-   public static final avd<dac> bB = a("mineable/hoe");
-   public static final avd<dac> bC = a("mineable/pickaxe");
-   public static final avd<dac> bD = a("mineable/shovel");
-   public static final avd<dac> bE = a("sword_efficient");
-   public static final avd<dac> bF = a("needs_diamond_tool");
-   public static final avd<dac> bG = a("needs_iron_tool");
-   public static final avd<dac> bH = a("needs_stone_tool");
-   public static final avd<dac> bI = a("features_cannot_replace");
-   public static final avd<dac> bJ = a("lava_pool_stone_cannot_replace");
-   public static final avd<dac> bK = a("geode_invalid_blocks");
-   public static final avd<dac> bL = a("frog_prefer_jump_to");
-   public static final avd<dac> bM = a("sculk_replaceable");
-   public static final avd<dac> bN = a("sculk_replaceable_world_gen");
-   public static final avd<dac> bO = a("ancient_city_replaceable");
-   public static final avd<dac> bP = a("vibration_resonators");
-   public static final avd<dac> bQ = a("animals_spawnable_on");
-   public static final avd<dac> bR = a("armadillo_spawnable_on");
-   public static final avd<dac> bS = a("axolotls_spawnable_on");
-   public static final avd<dac> bT = a("goats_spawnable_on");
-   public static final avd<dac> bU = a("mooshrooms_spawnable_on");
-   public static final avd<dac> bV = a("parrots_spawnable_on");
-   public static final avd<dac> bW = a("polar_bears_spawnable_on_alternate");
-   public static final avd<dac> bX = a("rabbits_spawnable_on");
-   public static final avd<dac> bY = a("foxes_spawnable_on");
-   public static final avd<dac> bZ = a("wolves_spawnable_on");
-   public static final avd<dac> ca = a("frogs_spawnable_on");
-   public static final avd<dac> cb = a("azalea_grows_on");
-   public static final avd<dac> cc = a("convertable_to_mud");
-   public static final avd<dac> cd = a("mangrove_logs_can_grow_through");
-   public static final avd<dac> ce = a("mangrove_roots_can_grow_through");
-   public static final avd<dac> cf = a("dead_bush_may_place_on");
-   public static final avd<dac> cg = a("snaps_goat_horn");
-   public static final avd<dac> ch = a("replaceable_by_trees");
-   public static final avd<dac> ci = a("snow_layer_cannot_survive_on");
-   public static final avd<dac> cj = a("snow_layer_can_survive_on");
-   public static final avd<dac> ck = a("invalid_spawn_inside");
-   public static final avd<dac> cl = a("sniffer_diggable_block");
-   public static final avd<dac> cm = a("sniffer_egg_hatch_boost");
-   public static final avd<dac> cn = a("trail_ruins_replaceable");
-   public static final avd<dac> co = a("replaceable");
-   public static final avd<dac> cp = a("enchantment_power_provider");
-   public static final avd<dac> cq = a("enchantment_power_transmitter");
-   public static final avd<dac> cr = a("maintains_farmland");
-   public static final avd<dac> cs = a("blocks_wind_charge_explosions");
-   public static final avd<dac> ct = a("does_not_block_hoppers");
+public enum aun {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   private aun() {
+   private final String k;
+
+   private aun(String $$0) {
+      this.k = $$0;
    }
 
-   private static avd<dac> a(String $$0) {
-      return avd.a(kj.f, new ajh($$0));
+   public String a() {
+      return this.k;
    }
 }

@@ -1,99 +1,57 @@
-import com.google.common.collect.ImmutableList;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface vz {
-   Optional<axy> a = Optional.of(axy.a);
-   vz b = new vz() {
-      @Override
-      public <T> Optional<T> a(vz.a<T> $$0) {
-         return Optional.empty();
+public class vz extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final ux c;
+
+   public vz(@Nullable ux $$0) {
+      this.c = $$0;
+   }
+
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
+   }
+
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
+
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!vx.a($$3)) {
+            return true;
+         }
       }
 
-      @Override
-      public <T> Optional<T> a(vz.b<T> $$0, wr $$1) {
-         return Optional.empty();
+      throw new CorruptedFrameException("length wider than 21-bit");
+   }
+
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = vx.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + vx.a($$3));
+            }
+
+            $$2.add($$1.readBytes($$3));
+         }
       }
-   };
-
-   <T> Optional<T> a(vz.a<T> var1);
-
-   <T> Optional<T> a(vz.b<T> var1, wr var2);
-
-   static vz e(final String $$0) {
-      return new vz() {
-         @Override
-         public <T> Optional<T> a(vz.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(vz.b<T> $$0x, wr $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
-   }
-
-   static vz a(final String $$0, final wr $$1) {
-      return new vz() {
-         @Override
-         public <T> Optional<T> a(vz.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(vz.b<T> $$0x, wr $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
-   }
-
-   static vz a(vz... $$0) {
-      return a(ImmutableList.copyOf($$0));
-   }
-
-   static vz a(final List<? extends vz> $$0) {
-      return new vz() {
-         @Override
-         public <T> Optional<T> a(vz.a<T> $$0x) {
-            for (vz $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
-            }
-
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(vz.b<T> $$0x, wr $$1) {
-            for (vz $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
-   }
-
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      Optional<T> accept(String var1);
-   }
-
-   public interface b<T> {
-      Optional<T> accept(wr var1, String var2);
    }
 }

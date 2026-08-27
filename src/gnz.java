@@ -1,33 +1,7 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-public class gnz implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bje<gny> b;
-   private final blw<Runnable> c;
-
-   public gnz(FileChannel $$0, Executor $$1) {
-      this.b = new bje<>(gny.a, $$0);
-      this.c = blw.a($$1, "telemetry-event-log");
-   }
-
-   public goa a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
-   }
-
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
-   }
+public interface gnz {
+   void a(Map<UUID, arj.c> var1, Consumer<arj.b> var2);
 }

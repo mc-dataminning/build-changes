@@ -1,316 +1,234 @@
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.logging.LogUtils;
 import java.util.Arrays;
 import java.util.List;
-import org.lwjgl.glfw.GLFWDropCallback;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ezj {
-   private final ezi a;
-   private boolean b;
-   private boolean c;
-   private boolean d;
-   private double e;
-   private double f;
-   private int g;
-   private int h = -1;
-   private boolean i = true;
-   private int j;
-   private double k;
-   private final axm l = new axm();
-   private final axm m = new axm();
-   private double n;
-   private double o;
-   private double p;
-   private double q;
-   private double r = Double.MIN_VALUE;
-   private boolean s;
+public class ezj extends grl {
+   static final ajt a = new ajt("pending_invite/accept_highlighted");
+   static final ajt b = new ajt("pending_invite/accept");
+   static final ajt c = new ajt("pending_invite/reject_highlighted");
+   static final ajt y = new ajt("pending_invite/reject");
+   private static final Logger z = LogUtils.getLogger();
+   private static final wg A = wg.c("mco.invites.nopending");
+   static final wg B = wg.c("mco.invites.button.accept");
+   static final wg C = wg.c("mco.invites.button.reject");
+   private final fjo D;
+   private final CompletableFuture<List<exi>> E = CompletableFuture.supplyAsync(() -> {
+      try {
+         return ewy.a().i().a;
+      } catch (eyl var1x) {
+         z.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ac.g());
+   @Nullable
+   wg F;
+   ezj.b G;
+   int H = -1;
+   private fdp I;
+   private fdp J;
 
-   public ezj(ezi $$0) {
-      this.a = $$0;
+   public ezj(fjo $$0, wg $$1) {
+      super($$1);
+      this.D = $$0;
    }
 
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.a.aO().i()) {
-         if (this.a.y != null) {
-            this.a.a(ezf.b);
+   @Override
+   public void aN_() {
+      ewt.f();
+      this.G = new ezj.b();
+      this.E.thenAcceptAsync($$0 -> {
+         List<ezj.a> $$1 = $$0.stream().map($$0x -> new ezj.a($$0x)).toList();
+         this.G.a($$1);
+         if ($$1.isEmpty()) {
+            this.j.aY().b(A);
          }
+      }, this.n);
+      this.c(this.G);
+      this.I = this.c((fdp)fdp.a(B, $$0 -> {
+         this.a(this.H, true);
+         this.H = -1;
+         this.C();
+      }).a(this.k / 2 - 174, this.l - 32, 100, 20).a());
+      this.c((fdp)fdp.a(wf.d, $$0 -> this.d()).a(this.k / 2 - 50, this.l - 32, 100, 20).a());
+      this.J = this.c((fdp)fdp.a(C, $$0 -> {
+         this.a(this.H, false);
+         this.H = -1;
+         this.C();
+      }).a(this.k / 2 + 74, this.l - 32, 100, 20).a());
+      this.C();
+   }
 
-         boolean $$4 = $$2 == 1;
-         if (ezi.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.g++;
-               }
-            } else if (this.g > 0) {
-               $$1 = 1;
-               this.g--;
-            }
-         }
+   @Override
+   public void d() {
+      this.j.a(this.D);
+   }
 
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.a.m.X().c() && this.j++ > 0) {
-               return;
-            }
-
-            this.h = $$5;
-            this.k = err.b();
-         } else if (this.h != -1) {
-            if (this.a.m.X().c() && --this.j > 0) {
-               return;
-            }
-
-            this.h = -1;
-         }
-
-         boolean[] $$6 = new boolean[]{false};
-         if (this.a.aL() == null) {
-            if (this.a.y == null) {
-               if (!this.s && $$4) {
-                  this.i();
-               }
-            } else {
-               double $$7 = this.e * (double)this.a.aO().o() / (double)this.a.aO().m();
-               double $$8 = this.f * (double)this.a.aO().p() / (double)this.a.aO().n();
-               fhh $$9 = this.a.y;
-               if ($$4) {
-                  $$9.y();
-                  fhh.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.G.l()) {
+         String $$2 = this.G.aF_().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               ewy $$2x = ewy.a();
+               if ($$1) {
+                  $$2x.a($$2);
                } else {
-                  fhh.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.a.y == null && this.a.aL() == null) {
-            if ($$5 == 0) {
-               this.b = $$4;
-            } else if ($$5 == 2) {
-               this.c = $$4;
-            } else if ($$5 == 1) {
-               this.d = $$4;
-            }
-
-            ezg.a(esw.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.a.s.N_() && $$5 == 2) {
-                  this.a.l.g().b();
-               } else {
-                  ezg.a(esw.b.c.a($$5));
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == ezi.Q().aO().i()) {
-         boolean $$3 = this.a.m.Q().c();
-         double $$4 = this.a.m.D().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.a.aL() == null) {
-            if (this.a.y != null) {
-               double $$7 = this.e * (double)this.a.aO().o() / (double)this.a.aO().m();
-               double $$8 = this.f * (double)this.a.aO().p() / (double)this.a.aO().n();
-               this.a.y.a($$7, $$8, $$5, $$6);
-               this.a.y.y();
-            } else if (this.a.s != null) {
-               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
-                  this.p = 0.0;
+                  $$2x.b($$2);
                }
 
-               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
-                  this.q = 0.0;
+               return true;
+            } catch (eyl var3x) {
+               z.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ac.g()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.G.a($$0);
+               eyo $$3 = this.j.bb();
+               if ($$1) {
+                  $$3.c.a();
                }
 
-               this.p += $$5;
-               this.q += $$6;
-               int $$9 = (int)this.p;
-               int $$10 = (int)this.q;
-               if ($$9 == 0 && $$10 == 0) {
-                  return;
-               }
+               $$3.d.a();
+            }
+         }, this.n);
+      }
+   }
 
-               this.p -= (double)$$9;
-               this.q -= (double)$$10;
-               int $$11 = $$10 == 0 ? -$$9 : $$10;
-               if (this.a.s.N_()) {
-                  if (this.a.l.g().a()) {
-                     this.a.l.g().b(-$$11);
-                  } else {
-                     float $$12 = aww.a(this.a.s.ga().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
-                     this.a.s.ga().a($$12);
-                  }
-               } else {
-                  this.a.s.fZ().a((double)$$11);
-               }
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.F = null;
+      $$0.a(this.m, this.i, this.k / 2, 12, -1);
+      if (this.F != null) {
+         $$0.a(this.m, this.F, $$1, $$2);
+      }
+
+      if (this.E.isDone() && this.G.l() == 0) {
+         $$0.a(this.m, A, this.k / 2, this.l / 2 - 20, -1);
+      }
+   }
+
+   void C() {
+      this.I.k = this.a(this.H);
+      this.J.k = this.a(this.H);
+   }
+
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends fel.a<ezj.a> {
+      private static final int b = 38;
+      final exi c;
+      private final List<eys> d;
+
+      a(exi $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new ezj.a.a(), new ezj.a.b());
+      }
+
+      @Override
+      public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         eys.a(ezj.this.G, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fdc $$0, exi $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(ezj.this.m, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(ezj.this.m, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(ezj.this.m, faf.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         eys.a($$0, this.d, ezj.this.G, $$2, $$3, $$4, $$5);
+         faf.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public wg a() {
+         wg $$0 = wf.b(wg.b(this.c.b), wg.b(this.c.c), faf.a(this.c.e));
+         return wg.a("narrator.select", $$0);
+      }
+
+      class a extends eys {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fdc $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? ezj.a : ezj.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               ezj.this.F = ezj.B;
             }
          }
+
+         @Override
+         public void a(int $$0) {
+            ezj.this.a($$0, true);
+         }
       }
-   }
 
-   private void a(long $$0, List<Path> $$1) {
-      if (this.a.y != null) {
-         this.a.y.a($$1);
-      }
-   }
+      class b extends eys {
+         b() {
+            super(15, 15, 235, 5);
+         }
 
-   public void a(long $$0) {
-      esw.a(
-         $$0,
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            Path[] $$3 = new Path[$$1];
-
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+         @Override
+         protected void a(fdc $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? ezj.c : ezj.y, $$1, $$2, 18, 18);
+            if ($$3) {
+               ezj.this.F = ezj.C;
             }
-
-            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
          }
-      );
-   }
 
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == ezi.Q().aO().i()) {
-         if (this.i) {
-            this.e = $$1;
-            this.f = $$2;
-            this.i = false;
-         } else {
-            if (this.a.aC()) {
-               this.n = this.n + ($$1 - this.e);
-               this.o = this.o + ($$2 - this.f);
-            }
-
-            this.e = $$1;
-            this.f = $$2;
+         @Override
+         public void a(int $$0) {
+            ezj.this.a($$0, false);
          }
       }
    }
 
-   public void a() {
-      double $$0 = err.b();
-      double $$1 = $$0 - this.r;
-      this.r = $$0;
-      if (this.a.aC()) {
-         fhh $$2 = this.a.y;
-         if ($$2 != null && this.a.aL() == null && (this.n != 0.0 || this.o != 0.0)) {
-            double $$3 = this.e * (double)this.a.aO().o() / (double)this.a.aO().m();
-            double $$4 = this.f * (double)this.a.aO().p() / (double)this.a.aO().n();
-            fhh.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
-            if (this.h != -1 && this.k > 0.0) {
-               double $$5 = this.n * (double)this.a.aO().o() / (double)this.a.aO().m();
-               double $$6 = this.o * (double)this.a.aO().p() / (double)this.a.aO().n();
-               fhh.a(() -> $$2.a($$3, $$4, this.h, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
-            }
-
-            $$2.x();
-         }
-
-         if (this.h() && this.a.s != null) {
-            this.a($$1);
-         }
+   class b extends grk<ezj.a> {
+      public b() {
+         super(ezj.this.k, ezj.this.l - 72, 32, 36);
       }
 
-      this.n = 0.0;
-      this.o = 0.0;
-   }
-
-   private void a(double $$0) {
-      double $$1 = this.a.m.d().c() * 0.6F + 0.2F;
-      double $$2 = $$1 * $$1 * $$1;
-      double $$3 = $$2 * 8.0;
-      double $$6;
-      double $$7;
-      if (this.a.m.ab) {
-         double $$4 = this.l.a(this.n * $$3, $$0 * $$3);
-         double $$5 = this.m.a(this.o * $$3, $$0 * $$3);
-         $$6 = $$4;
-         $$7 = $$5;
-      } else if (this.a.m.ay().a() && this.a.s.gx()) {
-         this.l.a();
-         this.m.a();
-         $$6 = this.n * $$2;
-         $$7 = this.o * $$2;
-      } else {
-         this.l.a();
-         this.m.a();
-         $$6 = this.n * $$3;
-         $$7 = this.o * $$3;
+      @Override
+      public void a(int $$0) {
+         this.i($$0);
       }
 
-      int $$12 = 1;
-      if (this.a.m.P().c()) {
-         $$12 = -1;
+      @Override
+      public int a() {
+         return this.l() * 36;
       }
 
-      this.a.aB().a($$6, $$7);
-      if (this.a.s != null) {
-         this.a.s.b($$6, $$7 * (double)$$12);
+      @Override
+      public int b() {
+         return 260;
       }
-   }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public double e() {
-      return this.e;
-   }
-
-   public double f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.i = true;
-   }
-
-   public boolean h() {
-      return this.s;
-   }
-
-   public void i() {
-      if (this.a.aC()) {
-         if (!this.s) {
-            if (!ezi.a) {
-               ezg.a();
-            }
-
-            this.s = true;
-            this.e = (double)(this.a.aO().m() / 2);
-            this.f = (double)(this.a.aO().n() / 2);
-            esw.a(this.a.aO().i(), 212995, this.e, this.f);
-            this.a.a(null);
-            this.a.w = 10000;
-            this.i = true;
-         }
+      @Override
+      public void b(int $$0) {
+         super.b($$0);
+         this.c($$0);
       }
-   }
 
-   public void j() {
-      if (this.s) {
-         this.s = false;
-         this.e = (double)(this.a.aO().m() / 2);
-         this.f = (double)(this.a.aO().n() / 2);
-         esw.a(this.a.aO().i(), 212993, this.e, this.f);
+      public void c(int $$0) {
+         ezj.this.H = $$0;
+         ezj.this.C();
       }
-   }
 
-   public void k() {
-      this.i = true;
+      public void a(@Nullable ezj.a $$0) {
+         super.a($$0);
+         ezj.this.H = this.aF_().indexOf($$0);
+         ezj.this.C();
+      }
    }
 }

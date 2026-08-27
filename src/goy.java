@@ -1,36 +1,32 @@
-import java.util.function.Function;
+public class goy implements gog {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fzb e;
+   private final gqa f;
+   private int g = 0;
 
-public enum goy {
-   a("movement", got::new),
-   b("find_tree", gos::new),
-   c("punch_tree", gov::new),
-   d("open_inventory", gou::new),
-   e("craft_planks", gor::new),
-   f("none", goq::new);
-
-   private final String g;
-   private final Function<gow, ? extends gox> h;
-
-   private <T extends gox> goy(String $$0, Function<gow, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public goy(fzb $$0, gqa $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public gox a(gow $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static goy a(String $$0) {
-      for (goy $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bh()) {
+         float $$0 = this.e.dM().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gow)(new goz.a(this.e, aum.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gow)(new goz.a(this.e, aum.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gow)(new goz.a(this.e, aum.A)));
          }
       }
-
-      return f;
    }
 }

@@ -1,80 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dgz extends dal implements daf, des {
-   public static final MapCodec<dgz> a = b(dgz::new);
-   protected static final float b = 6.0F;
-   protected static final eqm c = dac.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+public class dgz extends dch implements dcb {
+   public static final MapCodec<dgz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ajs.a(ks.ay).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dgz::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final est c = dby.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final ajs<dxi<?, ?>> d;
 
    @Override
    public MapCodec<dgz> a() {
       return a;
    }
 
-   protected dgz(dna.d $$0) {
-      super($$0);
+   public dgz(ajs<dxi<?, ?>> $$0, doy.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
       return c;
    }
 
    @Override
-   protected boolean b(dnb $$0, cwh $$1, ib $$2) {
-      return $$0.d($$1, $$2, ih.b) && !$$0.a(dae.kJ);
-   }
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      eip $$1 = $$0.q().b_($$0.a());
-      return $$1.a(aus.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
+         for (ib $$6 : ib.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
 
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      dnb $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, eiq.c, eiq.c.a($$3));
-      }
+         ib $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
 
-      return $$6;
-   }
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
 
-   @Override
-   public boolean b(cxe $$0, ib $$1, dnb $$2) {
-      return true;
-   }
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
 
-   @Override
-   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
-      return true;
-   }
-
-   @Override
-   protected eip c_(dnb $$0) {
-      return eiq.c.a(false);
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
-      dnb $$4 = dae.bx.o();
-      dnb $$5 = $$4.a(dih.d, dnx.a);
-      ib $$6 = $$2.c();
-      if ($$0.a_($$6).a(dae.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
-      return false;
+   protected boolean b(doz $$0, cyd $$1, ib $$2) {
+      return $$0.i($$1, $$2);
    }
 
    @Override
-   public boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
-      return false;
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      doz $$4 = $$1.a_($$3);
+      return $$4.a(avc.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(aps $$0, ib $$1, doz $$2, axr $$3) {
+      Optional<? extends il<dxi<?, ?>>> $$4 = $$0.H_().d(ks.ay).b(this.d);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

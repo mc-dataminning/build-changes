@@ -1,31 +1,45 @@
-public class gme implements glz {
-   private final fwu a;
-   private boolean b;
-   private boolean c = true;
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-   public gme(fwu $$0) {
-      this.a = $$0;
-   }
+public class gme {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
 
-   @Override
-   public void a() {
-      cxb $$0 = this.a.dM();
-      dnb $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dae.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(dae.nd) && !this.a.N_()) {
-            boolean $$2 = $$1.c(dai.b);
-            if ($$2) {
-               this.a.a(aty.da, 1.0F, 1.0F);
-            } else {
-               this.a.a(aty.cY, 1.0F, 1.0F);
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      ary.a $$3 = ary.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = axa.a($$5);
+         JsonObject $$7 = axa.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = axa.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
             }
          }
-
-         this.b = true;
-      } else {
-         this.b = false;
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      this.c = false;
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

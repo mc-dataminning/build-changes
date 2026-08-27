@@ -1,22 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class ddx extends dac {
-   public static final dnv aE = dnr.R;
+public class ddx extends dch {
+   public static final MapCodec<ddx> a = b(ddx::new);
+   protected static final float b = 6.0F;
+   protected static final est c = dby.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   protected ddx(dna.d $$0) {
+   @Override
+   public MapCodec<ddx> a() {
+      return a;
+   }
+
+   protected ddx(doy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends ddx> a();
-
-   @Override
-   protected dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return c;
    }
 
    @Override
-   protected dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
+   protected boolean b(doz $$0, cyd $$1, ib $$2) {
+      return $$0.a(avc.cf);
    }
 }

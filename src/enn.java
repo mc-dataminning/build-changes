@@ -1,58 +1,45 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record enn(ajh b) implements env {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<enn> a = RecordCodecBuilder.create($$0 -> $$0.group(ajh.a.fieldOf("name").forGetter(enn::c)).apply($$0, enn::new));
+public abstract class enn extends enu {
+   protected final List<enu> d;
+   private final enm a;
 
-   @Override
-   public enw b() {
-      return enx.q;
+   protected enn(List<enu> $$0, List<eqc> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public void a(elf $$0) {
-      eky<env> $$1 = new eky<>(elb.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.b("Condition " + this.b + " is recursively called");
-      } else {
-         env.super.a($$0);
-         $$0.a()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
+   public void a(enk $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   public boolean a(ekw $$0) {
-      env $$1 = $$0.a().getElement(elb.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         ekw.c<?> $$2 = ekw.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
+   protected abstract enm a(List<? extends enm> var1);
 
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   @Override
+   public final boolean expand(enb $$0, Consumer<ent> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static env.a a(ajh $$0) {
-      return () -> new enn($$0);
+   public static <T extends enn> Codec<T> a(enn.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(aws.a(ens.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public ajh c() {
-      return this.b;
+   @FunctionalInterface
+   public interface a<T extends enn> {
+      T create(List<enu> var1, List<eqc> var2);
    }
 }

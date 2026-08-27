@@ -1,13 +1,32 @@
-import java.util.EnumSet;
+public class bwp extends bwn {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class bwp extends bwu {
-   public bwp(bpr $$0, Class<? extends bpp> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bwm.a.b, bwm.a.a));
+   public bwp(bqq $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
-   public bwp(bpr $$0, Class<? extends bpp> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bwm.a.b, bwm.a.a));
+   @Override
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dE(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.K().l()) {
+            this.a.s(this.a(this.a.dE(), 0.0F, 5.0F));
+         }
+
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
+      }
+
+      float $$0 = axk.g(this.a.aZ - this.a.aX);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aX -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aX += 4.0F;
+      }
    }
 }

@@ -17,43 +17,43 @@ public class el implements fa<el.a> {
       return new el();
    }
 
-   public static vu a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static wg a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       el.a $$2 = (el.a)$$0.getArgument($$1, el.a.class);
       return $$2.a((du)$$0.getSource());
    }
 
-   public static void a(CommandContext<du> $$0, String $$1, Consumer<wk> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<du> $$0, String $$1, Consumer<ww> $$2) throws CommandSyntaxException {
       el.a $$3 = (el.a)$$0.getArgument($$1, el.a.class);
       du $$4 = (du)$$0.getSource();
-      vu $$5 = $$3.a($$4);
+      wg $$5 = $$3.a($$4);
       ds $$6 = $$4.n();
-      wk $$7 = $$6.a($$1);
+      ww $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, wk.a($$3.a).a($$5));
+         b($$2, $$4, ww.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<wk> $$0, du $$1, wk $$2) {
+   private static void a(Consumer<ww> $$0, du $$1, ww $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<apw> $$4 = a($$1, $$2);
-      vu $$5 = $$3.bm().decorate($$1.i(), $$2.d());
+      CompletableFuture<aqk> $$4 = a($$1, $$2);
+      wg $$5 = $$3.bm().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         wk $$4x = $$2.a($$5).a($$3x.e());
+         ww $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<wk> $$0, du $$1, wk $$2) {
-      vp $$3 = $$1.l().bm();
-      vu $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<ww> $$0, du $$1, ww $$2) {
+      wb $$3 = $$1.l().bm();
+      wg $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<apw> a(du $$0, wk $$1) {
-      apg $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(apw.a($$1.c()));
+   private static CompletableFuture<aqk> a(du $$0, ww $$1) {
+      apt $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(aqk.a($$1.c()));
    }
 
    public el.a a(StringReader $$0) throws CommandSyntaxException {
@@ -81,17 +81,17 @@ public class el implements fa<el.a> {
          return this.b;
       }
 
-      vu a(du $$0) throws CommandSyntaxException {
+      wg a(du $$0) throws CommandSyntaxException {
          return this.a($$0, $$0.c(2));
       }
 
-      public vu a(du $$0, boolean $$1) throws CommandSyntaxException {
+      public wg a(du $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            wi $$2 = vu.b(this.a.substring(0, this.b[0].a()));
+            wu $$2 = wg.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (el.b $$4 : this.b) {
-               vu $$5 = $$4.a($$0);
+               wg $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -109,7 +109,7 @@ public class el implements fa<el.a> {
 
             return $$2;
          } else {
-            return vu.b(this.a);
+            return wg.b(this.a);
          }
       }
 
@@ -179,7 +179,7 @@ public class el implements fa<el.a> {
       }
 
       @Nullable
-      public vu a(du $$0) throws CommandSyntaxException {
+      public wg a(du $$0) throws CommandSyntaxException {
          return gi.a(this.c.b($$0));
       }
    }

@@ -1,23 +1,29 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
-public class evg extends evx {
-   private static final Logger b = LogUtils.getLogger();
-   public String a;
+public class evg {
+   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
 
-   public static evg a(String $$0) {
-      evg $$1 = new evg();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = exu.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+   public static ByteBuffer a(int $$0) {
+      long $$1 = a.malloc((long)$$0);
+      if ($$1 == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$1, $$0);
       }
+   }
 
-      return $$1;
+   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
+      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
+      if ($$2 == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$2, $$1);
+      }
+   }
+
+   public static void a(ByteBuffer $$0) {
+      a.free(MemoryUtil.memAddress0($$0));
    }
 }

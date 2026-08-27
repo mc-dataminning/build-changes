@@ -1,22 +1,22 @@
-public class cnk implements cma {
-   private final int[] a;
+public class cnk extends cok {
+   private final cmq a;
 
-   public cnk(int $$0) {
-      this.a = new int[$$0];
+   public cnk(cmq $$0, bnt $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public boolean a(crj $$0) {
+      return this.a.d($$0) || c($$0);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
+   public int a_(crj $$0) {
+      return c($$0) ? 1 : super.a_($$0);
    }
 
-   @Override
-   public int a() {
-      return this.a.length;
+   public static boolean c(crj $$0) {
+      return $$0.a(crm.qx);
    }
 }

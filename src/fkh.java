@@ -1,25 +1,85 @@
-public class fkh extends fkk {
-   private static final vu b = vu.c("multiplayerWarning.header").a(n.r);
-   private static final vu c = vu.c("multiplayerWarning.message");
-   private static final vu k = vu.c("multiplayerWarning.check");
-   private static final vu l = b.f().f("\n").b(c);
-   private final fhh m;
+import javax.annotation.Nullable;
 
-   public fkh(fhh $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class fkh extends fjg {
+   private static final wg p = wg.c("controls.keybinds.title");
+   @Nullable
+   public fbn a;
+   public long o;
+   private fkg q;
+   private fdp r;
+
+   public fkh(fjo $$0, fbt $$1) {
+      super($$0, $$1, p);
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fbi.a(vt.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.at();
+   protected void aN_() {
+      this.q = this.c(new fkg(this, this.j));
+      this.r = fdp.a(wg.c("controls.resetAll"), $$0 -> {
+         for (fbn $$1 : this.c.X) {
+            $$1.b($$1.i());
          }
 
-         this.f.a(new fkf(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fbi.a(vt.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+         this.q.d();
+      }).a();
+      super.aN_();
+   }
+
+   @Override
+   protected void h() {
+      fhg $$0 = this.d.b(fhg.e().a(8));
+      $$0.a(this.r);
+      $$0.a(fdp.a(wf.d, $$0x -> this.d()).a());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+      this.q.a(this.k, this.d);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.c.a(this.a, evd.b.c.a($$2));
+         this.a = null;
+         this.q.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.c.a(this.a, evd.bv);
+         } else {
+            this.c.a(this.a, evd.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.o = ac.b();
+         this.q.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (fbn $$5 : this.c.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.r.j = $$4;
    }
 }

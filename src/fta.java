@@ -1,47 +1,36 @@
-import javax.annotation.Nullable;
+public class fta extends fqv<clb> {
+   private static final int a = 16;
+   private final ftm b;
+   private final ftm f;
+   private final ftm g;
 
-public enum fta {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final vu n;
-
-   private fta(String $$0) {
-      this.n = vu.c("gui.banned.reason." + $$0);
+   public fta(ftm $$0) {
+      super(gah::i);
+      this.b = $$0.b("bone");
+      this.g = this.b.b("wind");
+      this.f = this.b.b("wind_charge");
    }
 
-   public vu a() {
-      return this.n;
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      ftv $$2 = $$1.a("bone", ftr.c(), fto.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         ftr.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new ftq(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new ftq(0.0F)),
+         fto.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", ftr.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new ftq(0.0F)), fto.a(0.0F, 0.0F, 0.0F));
+      return fts.a($$0, 64, 32);
    }
 
-   @Nullable
-   public static fta a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   public void a(clb $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = -$$3 * 16.0F * (float) (Math.PI / 180.0);
+      this.g.f = $$3 * 16.0F * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public ftm a() {
+      return this.b;
    }
 }

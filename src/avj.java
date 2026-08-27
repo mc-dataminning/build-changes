@@ -1,22 +1,9 @@
-import java.util.function.Consumer;
+public interface avj {
+   avr<crb> a = a("regular_goat_horns");
+   avr<crb> b = a("screaming_goat_horns");
+   avr<crb> c = a("goat_horns");
 
-@FunctionalInterface
-public interface avj<T> {
-   avj.a accept(T var1);
-
-   static <T> avj<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return avj.a.a;
-      };
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static avr<crb> a(String $$0) {
+      return avr.a(ks.D, new ajt($$0));
    }
 }

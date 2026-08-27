@@ -1,18 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Map;
 
-public class ajm extends ajo {
-   private static final Logger b = LogUtils.getLogger();
+public class ajm {
+   private final String a;
+   private final String b;
 
-   public ajm(String $$0, OutputStream $$1) {
-      super($$0, $$1);
+   public ajm(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   protected void a(String $$0) {
-      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
-      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
-      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
+   public static ajm a(String $$0) {
+      return new ajm($$0, ".json");
+   }
+
+   public ajt a(ajt $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
+   }
+
+   public ajt b(ajt $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   }
+
+   public Map<ajt, ata> a(atc $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
+
+   public Map<ajt, List<ata>> b(atc $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

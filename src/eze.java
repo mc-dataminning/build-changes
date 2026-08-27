@@ -1,66 +1,66 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class eze {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fww[] e = new fww[9];
-   private boolean f;
+public class eze extends grl {
+   static final wg b = wg.c("mco.warning");
+   static final wg c = wg.c("mco.info");
+   private final eze.a y;
+   private final wg z;
+   private final wg A;
+   protected final BooleanConsumer a;
+   private final boolean B;
 
-   public eze(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   public eze(BooleanConsumer $$0, eze.a $$1, wg $$2, wg $$3, boolean $$4) {
+      super(fbh.a);
+      this.a = $$0;
+      this.y = $$1;
+      this.z = $$2;
+      this.A = $$3;
+      this.B = $$4;
+   }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fww();
+   @Override
+   public void aN_() {
+      if (this.B) {
+         this.c(fdp.a(wf.f, $$0 -> this.a.accept(true)).a(this.k / 2 - 105, g(8), 100, 20).a());
+         this.c(fdp.a(wf.g, $$0 -> this.a.accept(false)).a(this.k / 2 + 5, g(8), 100, 20).a());
+      } else {
+         this.c(fdp.a(wf.h, $$0 -> this.a.accept(true)).a(this.k / 2 - 50, g(8), 100, 20).a());
       }
    }
 
-   private void b() {
-      try {
-         ta $$0 = tn.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
+   @Override
+   public wg i() {
+      return wf.b(this.y.d, this.z, this.A);
+   }
 
-         int $$1 = tp.b($$0, 1343);
-         $$0 = ayc.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = fww.a.parse(to.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(fww::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.a.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public void a() {
-      try {
-         ta $$0 = tp.f(new ta());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            fww $$2 = this.a($$1);
-            DataResult<tx> $$3 = fww.a.encodeStart(to.a, $$2);
-            $$0.a(String.valueOf($$1), ac.a($$3, IllegalStateException::new));
-         }
-
-         tn.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.y.d, this.k / 2, g(2), this.y.c);
+      $$0.a(this.m, this.z, this.k / 2, g(4), -1);
+      $$0.a(this.m, this.A, this.k / 2, g(6), -1);
    }
 
-   public fww a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
+   public static enum a {
+      a(eze.b, -65536),
+      b(eze.c, 8226750);
 
-      return this.e[$$0];
+      public final int c;
+      public final wg d;
+
+      private a(wg $$0, int $$1) {
+         this.d = $$0;
+         this.c = $$1;
+      }
    }
 }

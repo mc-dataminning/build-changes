@@ -1,100 +1,40 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class nx implements kp {
-   private static final Logger d = LogUtils.getLogger();
-   private final Iterable<Path> e;
-   private final kr f;
+public class nx {
+   private final np a;
+   private final cvg b;
+   private final cvg c;
+   private final cvg d;
+   private final Map<String, an<?>> e = new LinkedHashMap<>();
 
-   public nx(kr $$0, Collection<Path> $$1) {
-      this.e = $$1;
-      this.f = $$0;
+   public nx(np $$0, cvg $$1, cvg $$2, cvg $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public CompletableFuture<?> a(kn $$0) {
-      Path $$1 = this.f.a();
-      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+   public static nx a(cvg $$0, cvg $$1, cvg $$2, np $$3) {
+      return new nx($$3, $$0, $$1, $$2);
+   }
 
-      for (Path $$3 : this.e) {
-         $$2.add(
-            CompletableFuture.<CompletableFuture>supplyAsync(
-                  () -> {
-                     try {
-                        CompletableFuture var4;
-                        try (Stream<Path> $$3x = Files.walk($$3)) {
-                           var4 = CompletableFuture.allOf(
-                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
-                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ac.g()))
-                                 .toArray(CompletableFuture[]::new)
-                           );
-                        }
+   public nx a(String $$0, an<?> $$1) {
+      this.e.put($$0, $$1);
+      return this;
+   }
 
-                        return var4;
-                     } catch (IOException var8) {
-                        d.error("Failed to read structure input directory", var8);
-                        return CompletableFuture.completedFuture(null);
-                     }
-                  },
-                  ac.f()
-               )
-               .thenCompose($$0x -> $$0x)
-         );
+   public void a(nq $$0, ajt $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.e.forEach($$2::a);
+      cwb $$3 = new cwb(this.b, this.c, this.d);
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.a.a() + "/")));
+   }
+
+   private void a(ajt $$0) {
+      if (this.e.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
-
-      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
-   }
-
-   @Override
-   public final String a() {
-      return "NBT -> SNBT";
-   }
-
-   private static String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".nbt".length());
-   }
-
-   @Nullable
-   public static Path a(kn $$0, Path $$1, String $$2, Path $$3) {
-      try {
-         Path var7;
-         try (
-            InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new awf($$4);
-         ) {
-            Path $$6 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$6, tp.b(tn.a($$5, tj.a())));
-            d.info("Converted {} from NBT to SNBT", $$2);
-            var7 = $$6;
-         }
-
-         return var7;
-      } catch (IOException var12) {
-         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
-         return null;
-      }
-   }
-
-   public static void a(kn $$0, Path $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
-      $$4.write(10);
-      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

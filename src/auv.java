@@ -1,130 +1,45 @@
-public final class auv {
-   public static final avd<cqh> a = a("wool");
-   public static final avd<cqh> b = a("planks");
-   public static final avd<cqh> c = a("stone_bricks");
-   public static final avd<cqh> d = a("wooden_buttons");
-   public static final avd<cqh> e = a("stone_buttons");
-   public static final avd<cqh> f = a("buttons");
-   public static final avd<cqh> g = a("wool_carpets");
-   public static final avd<cqh> h = a("wooden_doors");
-   public static final avd<cqh> i = a("wooden_stairs");
-   public static final avd<cqh> j = a("wooden_slabs");
-   public static final avd<cqh> k = a("wooden_fences");
-   public static final avd<cqh> l = a("fence_gates");
-   public static final avd<cqh> m = a("wooden_pressure_plates");
-   public static final avd<cqh> n = a("wooden_trapdoors");
-   public static final avd<cqh> o = a("doors");
-   public static final avd<cqh> p = a("saplings");
-   public static final avd<cqh> q = a("logs_that_burn");
-   public static final avd<cqh> r = a("logs");
-   public static final avd<cqh> s = a("dark_oak_logs");
-   public static final avd<cqh> t = a("oak_logs");
-   public static final avd<cqh> u = a("birch_logs");
-   public static final avd<cqh> v = a("acacia_logs");
-   public static final avd<cqh> w = a("cherry_logs");
-   public static final avd<cqh> x = a("jungle_logs");
-   public static final avd<cqh> y = a("spruce_logs");
-   public static final avd<cqh> z = a("mangrove_logs");
-   public static final avd<cqh> A = a("crimson_stems");
-   public static final avd<cqh> B = a("warped_stems");
-   public static final avd<cqh> C = a("bamboo_blocks");
-   public static final avd<cqh> D = a("wart_blocks");
-   public static final avd<cqh> E = a("banners");
-   public static final avd<cqh> F = a("sand");
-   public static final avd<cqh> G = a("smelts_to_glass");
-   public static final avd<cqh> H = a("stairs");
-   public static final avd<cqh> I = a("slabs");
-   public static final avd<cqh> J = a("walls");
-   public static final avd<cqh> K = a("anvil");
-   public static final avd<cqh> L = a("rails");
-   public static final avd<cqh> M = a("leaves");
-   public static final avd<cqh> N = a("trapdoors");
-   public static final avd<cqh> O = a("small_flowers");
-   public static final avd<cqh> P = a("beds");
-   public static final avd<cqh> Q = a("fences");
-   public static final avd<cqh> R = a("tall_flowers");
-   public static final avd<cqh> S = a("flowers");
-   public static final avd<cqh> T = a("piglin_repellents");
-   public static final avd<cqh> U = a("piglin_loved");
-   public static final avd<cqh> V = a("ignored_by_piglin_babies");
-   public static final avd<cqh> W = a("piglin_food");
-   public static final avd<cqh> X = a("fox_food");
-   public static final avd<cqh> Y = a("gold_ores");
-   public static final avd<cqh> Z = a("iron_ores");
-   public static final avd<cqh> aa = a("diamond_ores");
-   public static final avd<cqh> ab = a("redstone_ores");
-   public static final avd<cqh> ac = a("lapis_ores");
-   public static final avd<cqh> ad = a("coal_ores");
-   public static final avd<cqh> ae = a("emerald_ores");
-   public static final avd<cqh> af = a("copper_ores");
-   public static final avd<cqh> ag = a("non_flammable_wood");
-   public static final avd<cqh> ah = a("soul_fire_base_blocks");
-   public static final avd<cqh> ai = a("candles");
-   public static final avd<cqh> aj = a("dirt");
-   public static final avd<cqh> ak = a("terracotta");
-   public static final avd<cqh> al = a("completes_find_tree_tutorial");
-   public static final avd<cqh> am = a("boats");
-   public static final avd<cqh> an = a("chest_boats");
-   public static final avd<cqh> ao = a("fishes");
-   public static final avd<cqh> ap = a("signs");
-   public static final avd<cqh> aq = a("music_discs");
-   public static final avd<cqh> ar = a("creeper_drop_music_discs");
-   public static final avd<cqh> as = a("coals");
-   public static final avd<cqh> at = a("arrows");
-   public static final avd<cqh> au = a("lectern_books");
-   public static final avd<cqh> av = a("bookshelf_books");
-   public static final avd<cqh> aw = a("beacon_payment_items");
-   public static final avd<cqh> ax = a("stone_tool_materials");
-   public static final avd<cqh> ay = a("stone_crafting_materials");
-   public static final avd<cqh> az = a("freeze_immune_wearables");
-   public static final avd<cqh> aA = a("axolotl_tempt_items");
-   public static final avd<cqh> aB = a("dampens_vibrations");
-   public static final avd<cqh> aC = a("cluster_max_harvestables");
-   public static final avd<cqh> aD = a("compasses");
-   public static final avd<cqh> aE = a("hanging_signs");
-   public static final avd<cqh> aF = a("creeper_igniters");
-   public static final avd<cqh> aG = a("noteblock_top_instruments");
-   public static final avd<cqh> aH = a("foot_armor");
-   public static final avd<cqh> aI = a("leg_armor");
-   public static final avd<cqh> aJ = a("chest_armor");
-   public static final avd<cqh> aK = a("head_armor");
-   public static final avd<cqh> aL = a("skulls");
-   public static final avd<cqh> aM = a("trimmable_armor");
-   public static final avd<cqh> aN = a("trim_materials");
-   public static final avd<cqh> aO = a("trim_templates");
-   public static final avd<cqh> aP = a("sniffer_food");
-   public static final avd<cqh> aQ = a("decorated_pot_sherds");
-   public static final avd<cqh> aR = a("decorated_pot_ingredients");
-   public static final avd<cqh> aS = a("swords");
-   public static final avd<cqh> aT = a("axes");
-   public static final avd<cqh> aU = a("hoes");
-   public static final avd<cqh> aV = a("pickaxes");
-   public static final avd<cqh> aW = a("shovels");
-   public static final avd<cqh> aX = a("tools");
-   public static final avd<cqh> aY = a("breaks_decorated_pots");
-   public static final avd<cqh> aZ = a("villager_plantable_seeds");
-   public static final avd<cqh> ba = a("dyeable");
-   public static final avd<cqh> bb = a("enchantable/foot_armor");
-   public static final avd<cqh> bc = a("enchantable/leg_armor");
-   public static final avd<cqh> bd = a("enchantable/chest_armor");
-   public static final avd<cqh> be = a("enchantable/head_armor");
-   public static final avd<cqh> bf = a("enchantable/armor");
-   public static final avd<cqh> bg = a("enchantable/sword");
-   public static final avd<cqh> bh = a("enchantable/weapon");
-   public static final avd<cqh> bi = a("enchantable/mining");
-   public static final avd<cqh> bj = a("enchantable/mining_loot");
-   public static final avd<cqh> bk = a("enchantable/fishing");
-   public static final avd<cqh> bl = a("enchantable/trident");
-   public static final avd<cqh> bm = a("enchantable/durability");
-   public static final avd<cqh> bn = a("enchantable/bow");
-   public static final avd<cqh> bo = a("enchantable/equippable");
-   public static final avd<cqh> bp = a("enchantable/crossbow");
-   public static final avd<cqh> bq = a("enchantable/vanishing");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private auv() {
+public class auv<T> implements Iterable<aut<T>> {
+   private final iy<T> a;
+   private final Map<T, aut<T>> b = new IdentityHashMap<>();
+   private final wg c;
+   private final ye<vr, aut<T>> d;
+
+   public auv(iy<T> $$0, wg $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = yc.a($$0.c()).a(this::b, aut::b);
    }
 
-   private static avd<cqh> a(String $$0) {
-      return avd.a(kj.F, new ajh($$0));
+   public ye<vr, aut<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public aut<T> a(T $$0, auu $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new aut<>(this, (T)$$1x, $$1));
+   }
+
+   public iy<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<aut<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public aut<T> b(T $$0) {
+      return this.a($$0, auu.b);
+   }
+
+   public wg c() {
+      return this.c;
    }
 }

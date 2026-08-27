@@ -1,61 +1,53 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djs extends dac {
-   public static final MapCodec<djs> a = b(djs::new);
+public class djs extends dix {
+   public static final MapCodec<djs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqm.a.fieldOf("wood_type").forGetter(dix::d), u()).apply($$0, djs::new));
+   public static final dpz b = dpp.ba;
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   protected djs(dna.d $$0) {
-      super($$0);
+   public djs(dqm $$0, doy.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, dae.aO.o(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, aty.iN, atz.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
-      }
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      ih $$4 = ih.b($$3);
-      if ($$4 != ih.b) {
-         ib $$5 = $$2.a($$4);
-         dnb $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == ih.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == ih.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == ih.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == ih.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   public doz a(cuo $$0) {
+      eks $$1 = $$0.q().b_($$0.a());
+      return this.n().a(b, Integer.valueOf(dqf.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == ekt.c));
+   }
 
-            $$1.a(kc.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !this.a($$0, $$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(doz $$0) {
+      return dqf.b($$0.c(b));
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b, f);
    }
 }

@@ -1,26 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class dsn {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<dsn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dsn::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+public class dsn implements AutoCloseable {
+   private final dse a;
+   private final DataFixer b;
+   private final ayq c;
 
-   public dsn(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public dsn(dsl $$0, Path $$1, DataFixer $$2, boolean $$3, ayq $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new dse($$0, $$1, $$3);
+   }
+
+   public CompletableFuture<Optional<tm>> a(cye $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(cye $$0, @Nullable tm $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public tm a(tm $$0, int $$1) {
+      int $$2 = ub.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
+
+   public Dynamic<uj> a(Dynamic<uj> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 }

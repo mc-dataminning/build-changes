@@ -1,224 +1,131 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public record ctx(int c, int d, iu<ctm> e, Optional<ctx.a> f) {
-   private static final int g = 3;
-   public static final MapCodec<ctx> a = ctx.a.a
-      .flatXmap(ctx::a, $$0 -> $$0.d().<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
-   public static final xs<vf, ctx> b = xs.a(ctx::a, ctx::b);
+public record ctx(ctx.a d, IntList e, IntList f, boolean g, boolean h) implements cuj {
+   public static final ctx a = new ctx(ctx.a.a, IntList.of(), IntList.of(), false, false);
+   private static final Codec<IntList> i = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
+   public static final Codec<ctx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ctx.a.g.fieldOf("shape").forGetter(ctx::a),
+               aws.a(i, "colors", IntList.of()).forGetter(ctx::b),
+               aws.a(i, "fade_colors", IntList.of()).forGetter(ctx::c),
+               aws.a(Codec.BOOL, "has_trail", false).forGetter(ctx::d),
+               aws.a(Codec.BOOL, "has_twinkle", false).forGetter(ctx::e)
+            )
+            .apply($$0, ctx::new)
+   );
+   private static final ye<ByteBuf, IntList> j = yc.e.a(yc.a()).a(IntArrayList::new, ArrayList::new);
+   public static final ye<ByteBuf, ctx> c = ye.a(ctx.a.f, ctx::a, j, ctx::b, j, ctx::c, yc.b, ctx::d, yc.b, ctx::e, ctx::new);
+   private static final wg k = wg.c("item.minecraft.firework_star.custom_color");
 
-   public static ctx a(Map<Character, ctm> $$0, String... $$1) {
-      return a($$0, List.of($$1));
+   @Override
+   public void a(Consumer<wg> $$0, csz $$1) {
+      this.a($$0);
+      this.b($$0);
    }
 
-   public static ctx a(Map<Character, ctm> $$0, List<String> $$1) {
-      ctx.a $$2 = new ctx.a($$0, $$1);
-      return ac.a(a($$2), IllegalArgumentException::new);
+   public void a(Consumer<wg> $$0) {
+      $$0.accept(this.d.a().a(n.h));
    }
 
-   private static DataResult<ctx> a(ctx.a $$0) {
-      String[] $$1 = a($$0.c);
-      int $$2 = $$1[0].length();
-      int $$3 = $$1.length;
-      iu<ctm> $$4 = iu.a($$2 * $$3, ctm.a);
-      CharSet $$5 = new CharArraySet($$0.b.keySet());
-
-      for (int $$6 = 0; $$6 < $$1.length; $$6++) {
-         String $$7 = $$1[$$6];
-
-         for (int $$8 = 0; $$8 < $$7.length(); $$8++) {
-            char $$9 = $$7.charAt($$8);
-            ctm $$10 = $$9 == ' ' ? ctm.a : $$0.b.get($$9);
-            if ($$10 == null) {
-               return DataResult.error(() -> "Pattern references symbol '" + $$9 + "' but it's not defined in the key");
-            }
-
-            $$5.remove($$9);
-            $$4.set($$8 + $$2 * $$6, $$10);
-         }
+   public void b(Consumer<wg> $$0) {
+      if (!this.e.isEmpty()) {
+         $$0.accept(a(wg.i().a(n.h), this.e));
       }
 
-      return !$$5.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
-         : DataResult.success(new ctx($$2, $$3, $$4, Optional.of($$0)));
-   }
-
-   @VisibleForTesting
-   static String[] a(List<String> $$0) {
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         String $$6 = $$0.get($$5);
-         $$1 = Math.min($$1, a($$6));
-         int $$7 = b($$6);
-         $$2 = Math.max($$2, $$7);
-         if ($$7 < 0) {
-            if ($$3 == $$5) {
-               $$3++;
-            }
-
-            $$4++;
-         } else {
-            $$4 = 0;
-         }
+      if (!this.f.isEmpty()) {
+         $$0.accept(a(wg.c("item.minecraft.firework_star.fade_to").b(wf.v).a(n.h), this.f));
       }
 
-      if ($$0.size() == $$4) {
-         return new String[0];
-      } else {
-         String[] $$8 = new String[$$0.size() - $$4 - $$3];
+      if (this.g) {
+         $$0.accept(wg.c("item.minecraft.firework_star.trail").a(n.h));
+      }
 
-         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
-            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
+      if (this.h) {
+         $$0.accept(wg.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static wg a(wu $$0, IntList $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
 
-         return $$8;
-      }
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 0;
-
-      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
-         $$1++;
+         $$0.b(a($$1.getInt($$2)));
       }
 
-      return $$1;
+      return $$0;
    }
 
-   private static int b(String $$0) {
-      int $$1 = $$0.length() - 1;
-
-      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
-         $$1--;
-      }
-
-      return $$1;
+   private static wg a(int $$0) {
+      cqc $$1 = cqc.b($$0);
+      return (wg)($$1 == null ? k : wg.c("item.minecraft.firework_star." + $$1.b()));
    }
 
-   public boolean a(cmg $$0) {
-      for (int $$1 = 0; $$1 <= $$0.f() - this.c; $$1++) {
-         for (int $$2 = 0; $$2 <= $$0.g() - this.d; $$2++) {
-            if (this.a($$0, $$1, $$2, true)) {
-               return true;
-            }
-
-            if (this.a($$0, $$1, $$2, false)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public ctx a(IntList $$0) {
+      return new ctx(this.d, this.e, new IntArrayList($$0), this.g, this.h);
    }
 
-   private boolean a(cmg $$0, int $$1, int $$2, boolean $$3) {
-      for (int $$4 = 0; $$4 < $$0.f(); $$4++) {
-         for (int $$5 = 0; $$5 < $$0.g(); $$5++) {
-            int $$6 = $$4 - $$1;
-            int $$7 = $$5 - $$2;
-            ctm $$8 = ctm.a;
-            if ($$6 >= 0 && $$7 >= 0 && $$6 < this.c && $$7 < this.d) {
-               if ($$3) {
-                  $$8 = this.e.get(this.c - $$6 - 1 + $$7 * this.c);
-               } else {
-                  $$8 = this.e.get($$6 + $$7 * this.c);
-               }
-            }
-
-            if (!$$8.a($$0.a($$4 + $$5 * $$0.f()))) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(vf $$0) {
-      $$0.c(this.c);
-      $$0.c(this.d);
-
-      for (ctm $$1 : this.e) {
-         ctm.b.encode($$0, $$1);
-      }
-   }
-
-   private static ctx b(vf $$0) {
-      int $$1 = $$0.l();
-      int $$2 = $$0.l();
-      iu<ctm> $$3 = iu.a($$1 * $$2, ctm.a);
-      $$3.replaceAll($$1x -> ctm.b.decode($$0));
-      return new ctx($$1, $$2, $$3, Optional.empty());
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
+   public ctx.a a() {
       return this.d;
    }
 
-   public iu<ctm> c() {
+   public IntList b() {
       return this.e;
    }
 
-   public Optional<ctx.a> d() {
+   public IntList c() {
       return this.f;
    }
 
-   public static record a(Map<Character, ctm> b, List<String> c) {
-      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
-         if ($$0.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int $$1 = ((String)$$0.get(0)).length();
+   public boolean d() {
+      return this.g;
+   }
 
-            for (String $$2 : $$0) {
-               if ($$2.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-               }
+   public boolean e() {
+      return this.h;
+   }
 
-               if ($$1 != $$2.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-               }
-            }
+   public static enum a implements aye {
+      a(0, "small_ball"),
+      b(1, "large_ball"),
+      c(2, "star"),
+      d(3, "creeper"),
+      e(4, "burst");
 
-            return DataResult.success($$0);
-         }
-      }, Function.identity());
-      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
-         if ($$0.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<ctx.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(awe.d(e, ctm.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, ctx.a::new)
-      );
+      private static final IntFunction<ctx.a> h = awb.a(ctx.a::b, values(), awb.a.a);
+      public static final ye<ByteBuf, ctx.a> f = yc.a(h, ctx.a::b);
+      public static final Codec<ctx.a> g = aye.b(ctx.a::values);
+      private final int i;
+      private final String j;
 
-      public Map<Character, ctm> a() {
-         return this.b;
+      private a(int $$0, String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
 
-      public List<String> b() {
-         return this.c;
+      public wu a() {
+         return wg.c("item.minecraft.firework_star.shape." + this.j);
+      }
+
+      public int b() {
+         return this.i;
+      }
+
+      public static ctx.a a(int $$0) {
+         return h.apply($$0);
+      }
+
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

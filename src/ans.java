@@ -1,120 +1,116 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.Set;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vu.c("commands.whitelist.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.tag.remove.failed"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                 "whitelist"
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eh.b())
+                        .then(
+                           dv.a("add")
+                              .then(
+                                 dv.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                               )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dv.a("on").executes($$0x -> b((du)$$0x.getSource()))))
-                        .then(dv.a("off").executes($$0x -> c((du)$$0x.getSource()))))
-                     .then(dv.a("list").executes($$0x -> d((du)$$0x.getSource()))))
-                  .then(dv.a("add").then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
-                     atb $$2 = ((du)$$0x.getSource()).l().ah();
-                     return dz.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fY())).map($$0xx -> $$0xx.fY().getName()), $$1);
-                  }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))))
-               .then(
-                  dv.a("remove")
+                        ))
                      .then(
-                        dv.a("targets", ej.a())
-                           .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ah().j(), $$1))
-                           .executes($$0x -> b((du)$$0x.getSource(), ej.a($$0x, "targets")))
-                     )
-               ))
-            .then(dv.a("reload").executes($$0x -> a((du)$$0x.getSource())))
+                        dv.a("remove")
+                           .then(
+                              dv.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> dz.b(a(eh.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"))))
+            )
       );
    }
 
-   private static int a(du $$0) {
-      $$0.l().ah().a();
-      $$0.a(() -> vu.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
+   private static Collection<String> a(Collection<? extends bpv> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+
+      for (bpv $$2 : $$0) {
+         $$1.addAll($$2.ak());
+      }
+
+      return $$1;
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      atj $$2 = $$0.l().ah().i();
+   private static int a(du $$0, Collection<? extends bpv> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            atk $$5 = new atk($$4);
-            $$2.a($$5);
-            $$0.a(() -> vu.a("commands.whitelist.add.success", vu.b($$4.getName())), true);
+      for (bpv $$4 : $$1) {
+         if ($$4.a($$2)) {
             $$3++;
          }
       }
 
       if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      atj $$2 = $$0.l().ah().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            atk $$5 = new atk($$4);
-            $$2.b($$5);
-            $$0.a(() -> vu.a("commands.whitelist.remove.success", vu.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0) throws CommandSyntaxException {
-      atb $$1 = $$0.l().ah();
-      if ($$1.o()) {
          throw a.create();
       } else {
-         $$1.a(true);
-         $$0.a(() -> vu.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
+         if ($$1.size() == 1) {
+            $$0.a(() -> wg.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wg.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   private static int c(du $$0) throws CommandSyntaxException {
-      atb $$1 = $$0.l().ah();
-      if (!$$1.o()) {
+   private static int b(du $$0, Collection<? extends bpv> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bpv $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
          throw b.create();
       } else {
-         $$1.a(false);
-         $$0.a(() -> vu.c("commands.whitelist.disabled"), true);
-         return 1;
+         if ($$1.size() == 1) {
+            $$0.a(() -> wg.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wg.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   private static int d(du $$0) {
-      String[] $$1 = $$0.l().ah().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> vu.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> vu.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+   private static int a(du $$0, Collection<? extends bpv> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bpv $$3 : $$1) {
+         $$2.addAll($$3.ak());
       }
 
-      return $$1.length;
+      if ($$1.size() == 1) {
+         bpv $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> wg.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> wg.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), wj.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> wg.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> wg.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wj.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

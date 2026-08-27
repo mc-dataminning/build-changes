@@ -1,98 +1,71 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class dpz implements AutoCloseable {
-   public static final int d = 1493;
-   private final dqb a;
-   protected final DataFixer e;
-   @Nullable
-   private volatile ecz b;
+public class dpz extends dqc<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   public dpz(dqi $$0, Path $$1, DataFixer $$2, boolean $$3) {
-      this.e = $$2;
-      this.a = new dqb($$0, $$1, $$3);
-   }
+   protected dpz(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
 
-   public boolean b(cwi $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public ta a(ajg<cxb> $$0, Supplier<ekg> $$1, ta $$2, Optional<ajg<Codec<? extends doy>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 < 1493) {
-         $$2 = ayc.c.a(this.e, $$2, $$4, 1493);
-         if ($$2.p("Level").q("hasLegacyStructureData")) {
-            ecz $$5 = this.a($$0, $$1);
-            $$2 = $$5.a($$2);
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
          }
+
+         this.a = ImmutableSet.copyOf($$3);
       }
-
-      a($$2, $$0, $$3);
-      $$2 = ayc.c.a(this.e, $$2, Math.max(1493, $$4));
-      if ($$4 < aa.b().d().c()) {
-         tp.f($$2);
-      }
-
-      $$2.r("__context");
-      return $$2;
-   }
-
-   private ecz a(ajg<cxb> $$0, Supplier<ekg> $$1) {
-      ecz $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = ecz.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void a(ta $$0, ajg<cxb> $$1, Optional<ajg<Codec<? extends doy>>> $$2) {
-      ta $$3 = new ta();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   public static int a(ta $$0) {
-      return tp.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<ta>> e(cwi $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(cwi $$0, ta $$1) {
-      this.f($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   protected void f(cwi $$0) {
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
    }
 
    @Override
-   public void close() throws IOException {
-      this.a.close();
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public dpx p() {
-      return this.a;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dpz $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
+
+   public static dpz a(String $$0, int $$1, int $$2) {
+      return new dpz($$0, $$1, $$2);
+   }
+
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
+   }
+
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

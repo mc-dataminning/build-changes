@@ -1,101 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bsg extends brh<bpr> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private ib h;
-   private int i;
-   private int j;
-   private int k;
+public abstract class bsg<E extends bqo> implements bsh<E> {
+   public static final int a = 60;
+   protected final Map<bzr<?>, bzs> b;
+   private bsg.a c = bsg.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bsg(float $$0) {
-      super(ImmutableMap.of(bys.w, byt.a, bys.m, byt.b));
-      this.g = $$0;
+   public bsg(Map<bzr<?>, bzs> $$0) {
+      this($$0, 60);
    }
 
-   protected boolean a(apf $$0, bpr $$1) {
-      return $$1.o_() && this.b($$0, $$1);
+   public bsg(Map<bzr<?>, bzs> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   protected void a(apf $$0, bpr $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
-
-   protected void b(apf $$0, bpr $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(apf $$0, bpr $$1, long $$2) {
-      return $$1.o_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   public bsg(Map<bzr<?>, bzs> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   public bsg.a a() {
+      return this.c;
    }
 
-   protected void d(apf $$0, bpr $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
+   @Override
+   public final boolean e(aps $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bsg.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
       } else {
-         if (this.d($$0, $$1)) {
-            $$1.I().a();
-            this.j--;
-            this.k = 5;
-         }
+         return false;
       }
    }
 
-   private void a(bpr $$0, ib $$1) {
-      $$0.dP().a(bys.m, new byv($$1, this.g, 0));
+   protected void d(aps $$0, E $$1, long $$2) {
    }
 
-   private boolean b(apf $$0, bpr $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
+   @Override
+   public final void f(aps $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   private boolean c(apf $$0, bpr $$1) {
-      ib $$2 = $$1.dm();
-      ib $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
+   protected void c(aps $$0, E $$1, long $$2) {
    }
 
-   private boolean d(apf $$0, bpr $$1) {
-      return this.a($$0, $$1.dm());
+   @Override
+   public final void g(aps $$0, E $$1, long $$2) {
+      this.c = bsg.a.a;
+      this.b($$0, $$1, $$2);
    }
 
-   private boolean a(apf $$0, ib $$1) {
-      return $$0.a_($$1).a(aun.R);
+   protected void b(aps $$0, E $$1, long $$2) {
    }
 
-   private Optional<ib> a(bpr $$0) {
-      return $$0.dP().c(bys.w);
+   protected boolean a(aps $$0, E $$1, long $$2) {
+      return false;
    }
 
-   private boolean e(apf $$0, bpr $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
    }
 
-   private boolean f(apf $$0, bpr $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   protected boolean a(aps $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<bzr<?>, bzs> $$1 : this.b.entrySet()) {
+         bzr<?> $$2 = $$1.getKey();
+         bzs $$3 = $$1.getValue();
+         if (!$$0.dP().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

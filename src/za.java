@@ -1,21 +1,33 @@
-public record za(String c) implements zc {
-   public static final xs<uu, za> a = zc.a(za::a, za::new);
-   public static final zc.b<za> b = zc.a("brand");
+import io.netty.buffer.ByteBuf;
 
-   private za(uu $$0) {
-      this($$0.p());
+public record za(ajt c, byte[] d) implements yn<yt> {
+   public static final ye<vg, za> a = yn.a(za::a, za::new);
+   private static final int e = 5120;
+   public static final ye<ByteBuf, byte[]> b = yc.a(5120);
+
+   private za(vg $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zc.b<za> a() {
-      return b;
+   public yp<za> a() {
+      return zd.g;
    }
 
-   public String b() {
+   public void a(yt $$0) {
+      $$0.a(this);
+   }
+
+   public ajt b() {
       return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

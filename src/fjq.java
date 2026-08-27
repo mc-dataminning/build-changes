@@ -1,47 +1,37 @@
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class fjq extends fii {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+public abstract class fjq extends fjg {
+   protected final fbs<?>[] o;
    @Nullable
-   private gag.a l;
+   private fdn a;
+   protected fem p;
 
-   public fjq(dlr $$0, boolean $$1, boolean $$2) {
+   public fjq(fjo $$0, fbt $$1, wg $$2, fbs<?>[] $$3) {
       super($$0, $$1, $$2);
+      this.o = $$3;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.l = gag.a(this.f.aR(), this.a);
-   }
-
-   @Override
-   protected void b(fav $$0, dnb $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dhw;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   protected void aN_() {
+      this.p = this.c(new fem(this.j, this.k, this.l, this));
+      this.p.a(this.o);
+      this.a = this.p.b(this.c.as());
+      if (this.a != null) {
+         this.a.j = this.j.aY().a();
       }
+
+      super.aN_();
    }
 
    @Override
-   protected void a(fav $$0, dnb $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof dhw;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         glf $$3 = fyh.a(this.a);
-         euf $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, git.d);
+   protected void c() {
+      super.c();
+      this.p.a(this.k, this.d);
+   }
+
+   public void C() {
+      if (this.a instanceof fdw) {
+         ((fdw)this.a).a(this.c.as().c());
       }
-   }
-
-   @Override
-   protected Vector3f o() {
-      return k;
    }
 }

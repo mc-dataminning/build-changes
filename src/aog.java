@@ -1,205 +1,62 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Objects;
-import java.util.Properties;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
 import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class aog<T extends aog<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   protected final Properties ab;
-
-   public aog(Properties $$0) {
-      this.ab = $$0;
-   }
-
-   public static Properties b(Path $$0) {
-      try {
-         try {
-            Properties var13;
-            try (InputStream $$1 = Files.newInputStream($$0)) {
-               CharsetDecoder $$2 = StandardCharsets.UTF_8
-                  .newDecoder()
-                  .onMalformedInput(CodingErrorAction.REPORT)
-                  .onUnmappableCharacter(CodingErrorAction.REPORT);
-               Properties $$3 = new Properties();
-               $$3.load(new InputStreamReader($$1, $$2));
-               var13 = $$3;
+public class aog implements aoh {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.data.block.invalid"));
+   public static final Function<String, aoi.c> a = $$0 -> new aoi.c() {
+         @Override
+         public aoh a(CommandContext<du> $$0x) throws CommandSyntaxException {
+            ib $$1 = fo.a($$0, $$0 + "Pos");
+            dmf $$2 = ((du)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw aog.b.create();
+            } else {
+               return new aog($$2, $$1);
             }
-
-            return var13;
-         } catch (CharacterCodingException var9) {
-            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
-
-            Properties var4;
-            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
-               Properties $$6 = new Properties();
-               $$6.load($$5);
-               var4 = $$6;
-            }
-
-            return var4;
          }
-      } catch (IOException var10) {
-         a.error("Failed to load properties from file: {}", $$0, var10);
-         return new Properties();
-      }
-   }
 
-   public void c(Path $$0) {
-      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
-         this.ab.store($$1, "Minecraft server properties");
-      } catch (IOException var7) {
-         a.error("Failed to store properties to file: {}", $$0);
-      }
-   }
-
-   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
-      return $$1 -> {
-         try {
-            return $$0.apply($$1);
-         } catch (NumberFormatException var3) {
-            return null;
+         @Override
+         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
+            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fo.a()))));
          }
       };
+   private final dmf c;
+   private final ib d;
+
+   public aog(dmf $$0, ib $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
-      return $$2 -> {
-         try {
-            return $$0.apply(Integer.parseInt($$2));
-         } catch (NumberFormatException var4) {
-            return $$1.apply($$2);
-         }
-      };
+   @Override
+   public void a(tm $$0) {
+      doz $$1 = this.c.i().a_(this.d);
+      this.c.a($$0, this.c.i().H_());
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
-   @Nullable
-   private String c(String $$0) {
-      return (String)this.ab.get($$0);
+   @Override
+   public tm a() {
+      return this.c.b(this.c.i().H_());
    }
 
-   @Nullable
-   protected <V> V a(String $$0, Function<String, V> $$1) {
-      String $$2 = this.c($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         this.ab.remove($$0);
-         return $$1.apply($$2);
-      }
+   @Override
+   public wg b() {
+      return wg.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
-   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return $$5;
+   @Override
+   public wg a(uj $$0) {
+      return wg.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), ub.c($$0));
    }
 
-   protected <V> aog<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ab.put($$0, $$2.apply($$5));
-      return new aog.a<>($$0, $$5, $$2);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
-      return this.a($$0, $$2x -> {
-         V $$3x = $$1.apply($$2x);
-         return $$3x != null ? $$2.apply($$3x) : null;
-      }, $$3, $$4);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
-      return this.a($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected <V> aog<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
-      return this.b($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected String a(String $$0, String $$1) {
-      return this.a($$0, Function.identity(), Function.identity(), $$1);
-   }
-
-   @Nullable
-   protected String a(String $$0) {
-      return this.a($$0, Function.identity());
-   }
-
-   protected int a(String $$0, int $$1) {
-      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
-   }
-
-   protected aog<T>.a<Integer> b(String $$0, int $$1) {
-      return this.b($$0, a(Integer::parseInt), $$1);
-   }
-
-   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
-      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
-   }
-
-   protected long a(String $$0, long $$1) {
-      return this.a($$0, a(Long::parseLong), $$1);
-   }
-
-   protected boolean a(String $$0, boolean $$1) {
-      return this.a($$0, Boolean::valueOf, $$1);
-   }
-
-   protected aog<T>.a<Boolean> b(String $$0, boolean $$1) {
-      return this.b($$0, Boolean::valueOf, $$1);
-   }
-
-   @Nullable
-   protected Boolean b(String $$0) {
-      return this.a($$0, Boolean::valueOf);
-   }
-
-   protected Properties a() {
-      Properties $$0 = new Properties();
-      $$0.putAll(this.ab);
-      return $$0;
-   }
-
-   protected abstract T b(iz var1, Properties var2);
-
-   public class a<V> implements Supplier<V> {
-      private final String b;
-      private final V c;
-      private final Function<V, String> d;
-
-      a(String $$1, V $$2, Function<V, String> $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public V get() {
-         return this.c;
-      }
-
-      public T a(iz $$0, V $$1) {
-         Properties $$2 = aog.this.a();
-         $$2.put(this.b, this.d.apply($$1));
-         return aog.this.b($$0, $$2);
-      }
+   @Override
+   public wg a(em.g $$0, double $$1, int $$2) {
+      return wg.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

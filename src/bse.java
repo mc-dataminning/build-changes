@@ -1,27 +1,16 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bse {
-   public static <T extends bpp> bri<bpp> a(bpd<? extends T> $$0, int $$1, bys<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
-   }
-
-   public static <E extends bpp, T extends bpp> bri<E> a(bpd<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bys<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bpp> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
-      return buu.a(
-         (Function<buu.b<E>, ? extends App<buu.c<E>, bux<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bys.n), $$6x.c(bys.m), $$6x.b(bys.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     byu $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bpp> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((box)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new brs($$5xxxx, true));
-                           $$8x.a(new byv(new brs($$5xxxx, false), $$5, $$6));
-                        });
+   public static btr<bqq> a(int $$0, float $$1) {
+      return bvt.a(
+         (Function<bvt.b<bqq>, ? extends App<bvt.c<bqq>, bvw<bqq>>>)($$2 -> $$2.group($$2.c(bzr.m), $$2.a(bzr.n), $$2.b(bzr.o), $$2.b(bzr.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     bqo $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<bzt>b($$6).a($$9)) {
+                        $$4.a(new bsr($$9, true));
+                        $$7.H().a(-$$1, 0.0F);
+                        $$7.r(axk.c($$7.dC(), $$7.aZ, 0.0F));
                         return true;
                      } else {
                         return false;

@@ -1,69 +1,60 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
 
-public class abt implements yb<aam> {
-   public static final xs<uu, abt> a = yb.a(abt::a, abt::new);
-   public static final abt.a b = new abt.a(0);
-   public static final abt.a c = new abt.a(1);
-   public static final abt.a d = new abt.a(2);
-   public static final abt.a e = new abt.a(3);
-   public static final abt.a f = new abt.a(4);
-   public static final abt.a g = new abt.a(5);
-   public static final abt.a h = new abt.a(6);
-   public static final abt.a i = new abt.a(7);
-   public static final abt.a j = new abt.a(8);
-   public static final abt.a k = new abt.a(9);
-   public static final abt.a l = new abt.a(10);
-   public static final abt.a m = new abt.a(11);
-   public static final abt.a n = new abt.a(12);
-   public static final abt.a o = new abt.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final abt.a u;
-   private final float v;
+public class abt implements yn<aay> {
+   public static final ye<vr, abt> a = yn.a(abt::a, abt::new);
+   private final int b;
+   private final int c;
+   private final List<crj> d;
+   private final crj e;
 
-   public abt(abt.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
+   public abt(int $$0, int $$1, iu<crj> $$2, crj $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = iu.a($$2.size(), crj.i);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).r());
+      }
+
+      this.e = $$3.r();
    }
 
-   private abt(uu $$0) {
-      this.u = (abt.a)abt.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
+   private abt(vr $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = crj.g.decode($$0);
+      this.e = crj.e.decode($$0);
    }
 
-   private void a(uu $$0) {
-      $$0.k(this.u.b);
-      $$0.a(this.v);
+   private void a(vr $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      crj.g.encode($$0, this.d);
+      crj.e.encode($$0, this.e);
    }
 
    @Override
-   public yd<abt> a() {
-      return aex.G;
+   public yp<abt> a() {
+      return afj.u;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public abt.a b() {
-      return this.u;
+   public int b() {
+      return this.b;
    }
 
-   public float e() {
-      return this.v;
+   public List<crj> e() {
+      return this.d;
    }
 
-   public static class a {
-      static final Int2ObjectMap<abt.a> a = new Int2ObjectOpenHashMap();
-      final int b;
+   public crj f() {
+      return this.e;
+   }
 
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
+   public int g() {
+      return this.c;
    }
 }

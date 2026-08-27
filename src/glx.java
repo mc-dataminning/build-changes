@@ -1,107 +1,123 @@
-public abstract class glx implements gmp {
-   protected gmm a;
-   protected final atz b;
-   protected final ajh c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gmp.a k = gmp.a.b;
-   protected boolean l;
-   protected axd m;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   protected glx(atx $$0, atz $$1, axd $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class glx implements gln {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<glx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajt.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               aws.a(glx.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, glx::new)
+   );
+   private final ajt d;
+   private final List<glx.a> e;
+   private final double f;
+   private final double g;
 
-   protected glx(ajh $$0, atz $$1, axd $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
+   public glx(ajt $$0, List<glx.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public ajh a() {
-      return this.c;
-   }
+   public void a(atc $$0, gln.a $$1) {
+      ajt $$2 = a.a(this.d);
+      Optional<ata> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         glt $$4 = new glt($$2, $$3.get(), this.e.size());
 
-   @Override
-   public gnu a(gnt $$0) {
-      if (this.c.equals(gnt.b)) {
-         this.a = gnt.d;
-         return gnt.c;
-      } else {
-         gnu $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = gnt.a;
-         } else {
-            this.a = $$1.a(this.m);
+         for (glx.a $$5 : this.e) {
+            $$1.a($$5.b, new glx.b($$4, $$5, this.f, this.g));
          }
-
-         return $$1;
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
    @Override
-   public gmm b() {
-      return this.a;
+   public glp a() {
+      return glq.d;
    }
 
-   @Override
-   public atz c() {
-      return this.b;
+   static record a(ajt b, double c, double d, double e, double f) {
+      public static final Codec<glx.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ajt.a.fieldOf("sprite").forGetter(glx.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(glx.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(glx.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(glx.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(glx.a::e)
+               )
+               .apply($$0, glx.a::new)
+      );
+
+      public ajt a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
    }
 
-   @Override
-   public boolean d() {
-      return this.i;
-   }
+   static class b implements gln.b {
+      private final glt a;
+      private final glx.a b;
+      private final double c;
+      private final double d;
 
-   @Override
-   public int e() {
-      return this.j;
-   }
+      b(glt $$0, glx.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
+      public gld a(glm $$0) {
+         try {
+            evj $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = axk.a(this.b.c * $$2);
+            int $$5 = axk.a(this.b.d * $$3);
+            int $$6 = axk.a(this.b.e * $$2);
+            int $$7 = axk.a(this.b.f * $$3);
+            evj $$8 = new evj(evj.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new gld(this.b.b, new gmv($$6, $$7), $$8, ate.a);
+         } catch (Exception var16) {
+            glx.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
 
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
+         return gkz.a();
+      }
 
-   @Override
-   public double h() {
-      return this.f;
-   }
-
-   @Override
-   public double i() {
-      return this.g;
-   }
-
-   @Override
-   public double j() {
-      return this.h;
-   }
-
-   @Override
-   public gmp.a k() {
-      return this.k;
-   }
-
-   @Override
-   public boolean l() {
-      return this.l;
-   }
-
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      @Override
+      public void a() {
+         this.a.b();
+      }
    }
 }

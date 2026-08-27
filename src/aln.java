@@ -1,47 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aln {
-   public static final int a = 2;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wg.b("Target not reached"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("gamemode").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((du)$$0x.getSource()).h()), ei.a($$0x, "gamemode"))))
-                  .then(dv.a("target", eh.d()).executes($$0x -> a($$0x, eh.f($$0x, "target"), ei.a($$0x, "gamemode"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("to", fo.a()).executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "to"))))
       );
    }
 
-   private static void a(du $$0, apg $$1, cwy $$2) {
-      vu $$3 = vu.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> vu.a("commands.gamemode.success.self", $$3), true);
+   private static int a(du $$0, ib $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bqq $$3)) {
+         throw a.create();
       } else {
-         if ($$0.e().Z().b(cwx.p)) {
-            $$1.a(vu.a("gameMode.changed", $$3));
-         }
-
-         $$0.a(() -> vu.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
-      }
-   }
-
-   private static int a(CommandContext<du> $$0, Collection<apg> $$1, cwy $$2) {
-      int $$3 = 0;
-
-      for (apg $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((du)$$0.getSource(), $$4, $$2);
-            $$3++;
+         bzz $$4 = new bzy($$3, $$0.e());
+         elg $$5 = $$4.a($$1, 0);
+         afi.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> wg.b("Made path"), true);
+            return 1;
          }
       }
-
-      return $$3;
    }
 }

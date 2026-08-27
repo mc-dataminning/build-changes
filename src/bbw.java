@@ -1,6 +1,7 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
@@ -9,8 +10,8 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class bbw extends DataFix {
@@ -18,53 +19,69 @@ public class bbw extends DataFix {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.a(this.getOutputSchema().getTypeRaw(beh.G));
+   public TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      Schema $$1 = this.getOutputSchema();
+      Type<?> $$2 = $$0.getTypeRaw(bfa.y);
+      Type<?> $$3 = $$1.getTypeRaw(bfa.y);
+      Type<?> $$4 = $$0.getTypeRaw(bfa.z);
+      return this.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private <R> TypeRewriteRule a(Type<R> $$0) {
-      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
-         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
+   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
+      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bfa.y.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
+      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
+         bfa.y.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
       );
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(beh.s, "minecraft:furnace"));
-      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(beh.s, "minecraft:blast_furnace"));
-      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(beh.s, "minecraft:smoker"));
-      Type<?> $$5 = this.getOutputSchema().getChoiceType(beh.s, "minecraft:furnace");
-      Type<?> $$6 = this.getOutputSchema().getChoiceType(beh.s, "minecraft:blast_furnace");
-      Type<?> $$7 = this.getOutputSchema().getChoiceType(beh.s, "minecraft:smoker");
-      Type<?> $$8 = this.getInputSchema().getType(beh.s);
-      Type<?> $$9 = this.getOutputSchema().getType(beh.s);
-      return this.fixTypeEverywhereTyped(
-         "FurnaceRecipesFix",
-         $$8,
-         $$9,
-         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
-      );
-   }
+      Type<?> $$7 = $$0.getType(bfa.y);
+      Type<?> $$8 = $$1.getType(bfa.y);
+      if (!Objects.equals($$7, $$5)) {
+         throw new IllegalStateException("Old entity type is not what was expected.");
+      } else if (!$$8.equals($$6, true, true)) {
+         throw new IllegalStateException("New entity type is not what was expected.");
+      } else {
+         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
+         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
+         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
+         Type<?> $$12 = $$0.getType(bfa.b);
+         Type<?> $$13 = $$1.getType(bfa.b);
+         return TypeRewriteRule.seq(
+            this.fixTypeEverywhere(
+               "EntityRidingToPassengerFix",
+               $$5,
+               $$6,
+               $$5x -> $$6x -> {
+                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
+                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
 
-   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
-      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
-      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
-      $$3 = $$3.remove("RecipesUsedSize");
-      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
+                     while (true) {
+                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
+                           $$7x.map(
+                              $$4xxx -> {
+                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
+                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
+                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
+                                    .getOptional($$11)
+                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                                 return Either.left(ImmutableList.of($$6xx));
+                              }
+                           ),
+                           Either.right(DSL.unit())
+                        );
+                        $$7x = Optional.of(Pair.of(bfa.y.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
+                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
+                        if ($$10x.isEmpty()) {
+                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                        }
 
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         String $$7 = "RecipeLocation" + $$6;
-         String $$8 = "RecipeAmount" + $$6;
-         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
-         int $$10 = $$3.get($$8).asInt(0);
-         if ($$10 > 0) {
-            $$9.ifPresent($$3x -> {
-               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
-               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
-            });
-         }
-
-         $$3 = $$3.remove($$7).remove($$8);
+                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
+                           .getOptional($$9)
+                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
+                     }
+                  }
+            ),
+            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
+         );
       }
-
-      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
    }
 }

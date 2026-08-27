@@ -1,169 +1,49 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
 
-public class fso {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public vu c;
-   public vu d;
-   @Nullable
-   public aig.b e;
-   public long f;
-   public int g = aa.b().e();
-   public vu h = vu.b(aa.b().c());
-   public List<vu> i = Collections.emptyList();
-   private fso.a l = fso.a.c;
-   @Nullable
-   private byte[] m;
-   private fso.c n;
-   private fso.b o = fso.b.a;
+public class fso<T extends bpv> extends fqv<T> {
+   private final ftm[] a = new ftm[8];
+   private final ftm b;
 
-   public fso(String $$0, String $$1, fso.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public fso(ftm $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   public ta a() {
-      ta $$0 = new ta();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      ftq $$2 = new ftq(0.02F);
+      int $$3 = -16;
+      $$1.a("body", ftr.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fto.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      ftr $$5 = ftr.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, fto.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
       }
 
-      if (this.l == fso.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fso.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+      return fts.a($$0, 64, 32);
    }
 
-   public fso.a b() {
-      return this.l;
-   }
-
-   public void a(fso.a $$0) {
-      this.l = $$0;
-   }
-
-   public static fso a(ta $$0) {
-      fso $$1 = new fso($$0.l("name"), $$0.l("ip"), fso.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fso.a.a);
-         } else {
-            $$1.a(fso.a.b);
-         }
-      } else {
-         $$1.a(fso.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == fso.c.a;
-   }
-
-   public boolean e() {
-      return this.n == fso.c.b;
-   }
-
-   public fso.c f() {
-      return this.n;
-   }
-
-   public void a(fso $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(fso $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public fso.b g() {
-      return this.o;
-   }
-
-   public void a(fso.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            axa $$1 = axa.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final vu d;
-
-      private a(String $$0) {
-         this.d = vu.c("addServer.resourcePack." + $$0);
-      }
-
-      public vu a() {
-         return this.d;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (ftm $$6 : this.a) {
+         $$6.e = $$3;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
+   @Override
+   public ftm a() {
+      return this.b;
    }
 }

@@ -1,75 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ddn extends dhs implements daf {
-   public static final MapCodec<ddn> a = b(ddn::new);
+public class ddn extends dby {
+   public static final MapCodec<dby> a = kr.e.q().fieldOf("dead");
+   public static final MapCodec<ddn> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, ddn::new));
+   private final dby c;
+
+   public ddn(dby $$0, doy.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<ddn> a() {
-      return a;
-   }
-
-   public ddn(dna.d $$0) {
-      super($$0);
+      return b;
    }
 
    @Override
-   public boolean b(cxe $$0, ib $$1, dnb $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
-      ib $$4 = $$2.c();
-      dnb $$5 = dae.bt.o();
-      Optional<il.c<eci>> $$6 = $$0.H_().d(kj.aD).b(rh.n);
-
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ib $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
-
-         dnb $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((daf)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            il<eci> $$12;
-            if ($$1.a(8) == 0) {
-               List<dvf<?, ?>> $$11 = $$0.t($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((dyj)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.n(), 2);
       }
    }
 
    @Override
-   public daf.a at_() {
-      return daf.a.a;
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.E_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(cyd $$0, ib $$1) {
+      for (ih $$2 : ih.values()) {
+         eks $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(avh.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+      }
+
+      return this.n();
    }
 }

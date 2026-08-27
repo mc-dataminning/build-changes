@@ -1,52 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class eyp {
+   private final fad a;
+   private boolean b;
+   private String c;
 
-public class eyp extends eyi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final evz e;
-   private final ewr f;
-
-   public eyp(long $$0, evz $$1, ewr $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eyp(fad $$0) {
+      this.a = $$0;
+      fad.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
-   @Override
-   public void run() {
-      eur $$0 = eur.a();
+   public boolean a() {
+      return this.b;
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   public String b() {
+      return this.c;
+   }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (ewf var4) {
-            if (this.d()) {
-               return;
-            }
+   public void a(exn $$0) {
+      fad.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
 
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
+   private fad.a b(exn $$0) {
+      fad.a $$1 = new fad.a();
+      $$1.a = $$0.a;
+      fad.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
+      } else {
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
       }
-   }
-
-   @Override
-   public vu a() {
-      return c;
    }
 }

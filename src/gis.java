@@ -1,50 +1,19 @@
-import com.google.common.collect.ImmutableList;
-import javax.annotation.Nullable;
+public class gis extends gjt<chv, fpv<chv>> {
+   private static final ajt a = new ajt("textures/entity/breeze/breeze_wind.png");
+   private static final fpv<chv> b = new fpv<>(fpv.a(128, 128).a());
 
-public final class gis {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ajh d = new ajh("missingno");
-   private static final asq e = new asq.a().a(gkm.a, new gkm(ImmutableList.of(new gkl(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static gip f;
-
-   private static etc a(int $$0, int $$1) {
-      etc $$2 = new etc($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
-         }
-      }
-
-      return $$2;
+   public gis(ghd<chv, fpv<chv>> $$0) {
+      super($$0);
    }
 
-   public static giw a() {
-      etc $$0 = a(16, 16);
-      return new giw(d, new gko(16, 16), $$0, e);
+   public void a(ewi $$0, fzz $$1, int $$2, chv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ah + $$6;
+      ewm $$11 = $$1.getBuffer(gah.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      geo.a(b, b.e()).a($$0, $$11, $$2, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 
-   public static ajh b() {
-      return d;
-   }
-
-   public static gip c() {
-      if (f == null) {
-         etc $$0 = a(16, 16);
-         $$0.i();
-         f = new gip($$0);
-         ezi.Q().aa().a(d, f);
-      }
-
-      return f;
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

@@ -1,86 +1,165 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public class nh implements nc {
-   private final nd b;
-   private final cqh c;
-   private final int d;
-   private final iu<ctm> e = iu.a();
-   private final Map<String, an<?>> f = new LinkedHashMap<>();
-   @Nullable
-   private String g;
+public class nh {
+   public static final ng a = a("cube", nj.c, nj.j, nj.k, nj.l, nj.m, nj.n, nj.o);
+   public static final ng b = a("cube_directional", nj.c, nj.j, nj.k, nj.l, nj.m, nj.n, nj.o);
+   public static final ng c = a("cube_all", nj.a);
+   public static final ng d = a("cube_all_inner_faces", nj.a);
+   public static final ng e = a("cube_mirrored_all", "_mirrored", nj.a);
+   public static final ng f = a("cube_north_west_mirrored_all", "_north_west_mirrored", nj.a);
+   public static final ng g = a("cube_column_uv_locked_x", "_x", nj.d, nj.i);
+   public static final ng h = a("cube_column_uv_locked_y", "_y", nj.d, nj.i);
+   public static final ng i = a("cube_column_uv_locked_z", "_z", nj.d, nj.i);
+   public static final ng j = a("cube_column", nj.d, nj.i);
+   public static final ng k = a("cube_column_horizontal", "_horizontal", nj.d, nj.i);
+   public static final ng l = a("cube_column_mirrored", "_mirrored", nj.d, nj.i);
+   public static final ng m = a("cube_top", nj.f, nj.i);
+   public static final ng n = a("cube_bottom_top", nj.f, nj.e, nj.i);
+   public static final ng o = a("cube_bottom_top_inner_faces", nj.f, nj.e, nj.i);
+   public static final ng p = a("orientable", nj.f, nj.g, nj.i);
+   public static final ng q = a("orientable_with_bottom", nj.f, nj.e, nj.i, nj.g);
+   public static final ng r = a("orientable_vertical", "_vertical", nj.g, nj.i);
+   public static final ng s = a("button", nj.b);
+   public static final ng t = a("button_pressed", "_pressed", nj.b);
+   public static final ng u = a("button_inventory", "_inventory", nj.b);
+   public static final ng v = a("door_bottom_left", "_bottom_left", nj.f, nj.e);
+   public static final ng w = a("door_bottom_left_open", "_bottom_left_open", nj.f, nj.e);
+   public static final ng x = a("door_bottom_right", "_bottom_right", nj.f, nj.e);
+   public static final ng y = a("door_bottom_right_open", "_bottom_right_open", nj.f, nj.e);
+   public static final ng z = a("door_top_left", "_top_left", nj.f, nj.e);
+   public static final ng A = a("door_top_left_open", "_top_left_open", nj.f, nj.e);
+   public static final ng B = a("door_top_right", "_top_right", nj.f, nj.e);
+   public static final ng C = a("door_top_right_open", "_top_right_open", nj.f, nj.e);
+   public static final ng D = a("custom_fence_post", "_post", nj.b, nj.c);
+   public static final ng E = a("custom_fence_side_north", "_side_north", nj.b);
+   public static final ng F = a("custom_fence_side_east", "_side_east", nj.b);
+   public static final ng G = a("custom_fence_side_south", "_side_south", nj.b);
+   public static final ng H = a("custom_fence_side_west", "_side_west", nj.b);
+   public static final ng I = a("custom_fence_inventory", "_inventory", nj.b);
+   public static final ng J = a("fence_post", "_post", nj.b);
+   public static final ng K = a("fence_side", "_side", nj.b);
+   public static final ng L = a("fence_inventory", "_inventory", nj.b);
+   public static final ng M = a("template_wall_post", "_post", nj.r);
+   public static final ng N = a("template_wall_side", "_side", nj.r);
+   public static final ng O = a("template_wall_side_tall", "_side_tall", nj.r);
+   public static final ng P = a("wall_inventory", "_inventory", nj.r);
+   public static final ng Q = a("template_custom_fence_gate", nj.b, nj.c);
+   public static final ng R = a("template_custom_fence_gate_open", "_open", nj.b, nj.c);
+   public static final ng S = a("template_custom_fence_gate_wall", "_wall", nj.b, nj.c);
+   public static final ng T = a("template_custom_fence_gate_wall_open", "_wall_open", nj.b, nj.c);
+   public static final ng U = a("template_fence_gate", nj.b);
+   public static final ng V = a("template_fence_gate_open", "_open", nj.b);
+   public static final ng W = a("template_fence_gate_wall", "_wall", nj.b);
+   public static final ng X = a("template_fence_gate_wall_open", "_wall_open", nj.b);
+   public static final ng Y = a("pressure_plate_up", nj.b);
+   public static final ng Z = a("pressure_plate_down", "_down", nj.b);
+   public static final ng aa = a(nj.c);
+   public static final ng ab = a("slab", nj.e, nj.f, nj.i);
+   public static final ng ac = a("slab_top", "_top", nj.e, nj.f, nj.i);
+   public static final ng ad = a("leaves", nj.a);
+   public static final ng ae = a("stairs", nj.e, nj.f, nj.i);
+   public static final ng af = a("inner_stairs", "_inner", nj.e, nj.f, nj.i);
+   public static final ng ag = a("outer_stairs", "_outer", nj.e, nj.f, nj.i);
+   public static final ng ah = a("template_trapdoor_top", "_top", nj.b);
+   public static final ng ai = a("template_trapdoor_bottom", "_bottom", nj.b);
+   public static final ng aj = a("template_trapdoor_open", "_open", nj.b);
+   public static final ng ak = a("template_orientable_trapdoor_top", "_top", nj.b);
+   public static final ng al = a("template_orientable_trapdoor_bottom", "_bottom", nj.b);
+   public static final ng am = a("template_orientable_trapdoor_open", "_open", nj.b);
+   public static final ng an = a("pointed_dripstone", nj.p);
+   public static final ng ao = a("cross", nj.p);
+   public static final ng ap = a("tinted_cross", nj.p);
+   public static final ng aq = a("flower_pot_cross", nj.q);
+   public static final ng ar = a("tinted_flower_pot_cross", nj.q);
+   public static final ng as = a("rail_flat", nj.s);
+   public static final ng at = a("rail_curved", "_corner", nj.s);
+   public static final ng au = a("template_rail_raised_ne", "_raised_ne", nj.s);
+   public static final ng av = a("template_rail_raised_sw", "_raised_sw", nj.s);
+   public static final ng aw = a("carpet", nj.t);
+   public static final ng ax = a("flowerbed_1", "_1", nj.P, nj.y);
+   public static final ng ay = a("flowerbed_2", "_2", nj.P, nj.y);
+   public static final ng az = a("flowerbed_3", "_3", nj.P, nj.y);
+   public static final ng aA = a("flowerbed_4", "_4", nj.P, nj.y);
+   public static final ng aB = a("coral_fan", nj.x);
+   public static final ng aC = a("coral_wall_fan", nj.x);
+   public static final ng aD = a("template_glazed_terracotta", nj.u);
+   public static final ng aE = a("template_chorus_flower", nj.b);
+   public static final ng aF = a("template_daylight_detector", nj.f, nj.i);
+   public static final ng aG = a("template_glass_pane_noside", "_noside", nj.v);
+   public static final ng aH = a("template_glass_pane_noside_alt", "_noside_alt", nj.v);
+   public static final ng aI = a("template_glass_pane_post", "_post", nj.v, nj.w);
+   public static final ng aJ = a("template_glass_pane_side", "_side", nj.v, nj.w);
+   public static final ng aK = a("template_glass_pane_side_alt", "_side_alt", nj.v, nj.w);
+   public static final ng aL = a("template_command_block", nj.g, nj.h, nj.i);
+   public static final ng aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", nj.b);
+   public static final ng aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", nj.b);
+   public static final ng aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", nj.b);
+   public static final ng aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", nj.b);
+   public static final ng aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", nj.b);
+   public static final ng aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", nj.b);
+   public static final ng aS = a("template_anvil", nj.f);
+   public static final ng[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, nj.y)).toArray(ng[]::new);
+   public static final ng aU = a("stem_fruit", nj.y, nj.z);
+   public static final ng aV = a("crop", nj.A);
+   public static final ng aW = a("template_farmland", nj.B, nj.f);
+   public static final ng aX = a("template_fire_floor", nj.C);
+   public static final ng aY = a("template_fire_side", nj.C);
+   public static final ng aZ = a("template_fire_side_alt", nj.C);
+   public static final ng ba = a("template_fire_up", nj.C);
+   public static final ng bb = a("template_fire_up_alt", nj.C);
+   public static final ng bc = a("template_campfire", nj.C, nj.K);
+   public static final ng bd = a("template_lantern", nj.D);
+   public static final ng be = a("template_hanging_lantern", "_hanging", nj.D);
+   public static final ng bf = a("template_torch", nj.G);
+   public static final ng bg = a("template_torch_wall", nj.G);
+   public static final ng bh = a("template_piston", nj.E, nj.e, nj.i);
+   public static final ng bi = a("template_piston_head", nj.E, nj.i, nj.F);
+   public static final ng bj = a("template_piston_head_short", nj.E, nj.i, nj.F);
+   public static final ng bk = a("template_seagrass", nj.b);
+   public static final ng bl = a("template_turtle_egg", nj.a);
+   public static final ng bm = a("template_two_turtle_eggs", nj.a);
+   public static final ng bn = a("template_three_turtle_eggs", nj.a);
+   public static final ng bo = a("template_four_turtle_eggs", nj.a);
+   public static final ng bp = a("template_single_face", nj.b);
+   public static final ng bq = a("template_cauldron_level1", nj.N, nj.M, nj.c, nj.f, nj.e, nj.i);
+   public static final ng br = a("template_cauldron_level2", nj.N, nj.M, nj.c, nj.f, nj.e, nj.i);
+   public static final ng bs = a("template_cauldron_full", nj.N, nj.M, nj.c, nj.f, nj.e, nj.i);
+   public static final ng bt = a("template_azalea", nj.f, nj.i);
+   public static final ng bu = a("template_potted_azalea_bush", nj.q, nj.f, nj.i);
+   public static final ng bv = a("template_potted_azalea_bush", nj.q, nj.f, nj.i);
+   public static final ng bw = a("sniffer_egg", nj.f, nj.e, nj.j, nj.k, nj.l, nj.m);
+   public static final ng bx = b("generated", nj.H);
+   public static final ng by = b("template_music_disc", nj.H);
+   public static final ng bz = b("handheld", nj.H);
+   public static final ng bA = b("handheld_rod", nj.H);
+   public static final ng bB = b("generated", nj.H, nj.I);
+   public static final ng bC = b("generated", nj.H, nj.I, nj.J);
+   public static final ng bD = b("template_shulker_box", nj.c);
+   public static final ng bE = b("template_bed", nj.c);
+   public static final ng bF = b("template_banner");
+   public static final ng bG = b("template_skull");
+   public static final ng bH = a("template_candle", nj.a, nj.c);
+   public static final ng bI = a("template_two_candles", nj.a, nj.c);
+   public static final ng bJ = a("template_three_candles", nj.a, nj.c);
+   public static final ng bK = a("template_four_candles", nj.a, nj.c);
+   public static final ng bL = a("template_cake_with_candle", nj.L, nj.e, nj.i, nj.f, nj.c);
+   public static final ng bM = a("template_sculk_shrieker", nj.e, nj.i, nj.f, nj.c, nj.O);
+   public static final ng bN = a("template_vault", nj.f, nj.e, nj.i, nj.g);
 
-   public nh(nd $$0, cxa $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1.l();
-      this.d = $$2;
+   private static ng a(nj... $$0) {
+      return new ng(Optional.empty(), Optional.empty(), $$0);
    }
 
-   public static nh a(nd $$0, cxa $$1) {
-      return new nh($$0, $$1, 1);
+   private static ng a(String $$0, nj... $$1) {
+      return new ng(Optional.of(new ajt("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
-   public static nh a(nd $$0, cxa $$1, int $$2) {
-      return new nh($$0, $$1, $$2);
+   private static ng b(String $$0, nj... $$1) {
+      return new ng(Optional.of(new ajt("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public nh a(avd<cqh> $$0) {
-      return this.a(ctm.a($$0));
-   }
-
-   public nh b(cxa $$0) {
-      return this.a($$0, 1);
-   }
-
-   public nh a(cxa $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.a(ctm.a($$0));
-      }
-
-      return this;
-   }
-
-   public nh a(ctm $$0) {
-      return this.a($$0, 1);
-   }
-
-   public nh a(ctm $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.e.add($$0);
-      }
-
-      return this;
-   }
-
-   public nh b(String $$0, an<?> $$1) {
-      this.f.put($$0, $$1);
-      return this;
-   }
-
-   public nh b(@Nullable String $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   @Override
-   public cqh a() {
-      return this.c;
-   }
-
-   @Override
-   public void a(ne $$0, ajh $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.f.forEach($$2::a);
-      cty $$3 = new cty(Objects.requireNonNullElse(this.g, ""), nc.a(this.b), new cqm(this.c, this.d), this.e);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
-   }
-
-   private void a(ajh $$0) {
-      if (this.f.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0);
-      }
+   private static ng a(String $$0, String $$1, nj... $$2) {
+      return new ng(Optional.of(new ajt("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

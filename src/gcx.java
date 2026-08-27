@@ -1,31 +1,62 @@
-public class gcx extends geh<cfq, foc<cfq>> {
-   private static final ajh a = new ajh("textures/entity/enderman/enderman.png");
-   private final axd i = axd.a();
+import javax.annotation.Nullable;
 
-   public gcx(gdb.a $$0) {
-      super($$0, new foc<>($$0.a(fre.X)), 0.5F);
-      this.a(new ggw<>(this));
-      this.a(new ggn(this, $$0.c()));
+public class gcx implements cya {
+   private final int c;
+   private final int d;
+   protected final gcw[][] a;
+   protected final cyx b;
+
+   gcx(cyx $$0, int $$1, int $$2, gcw[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
-   public void a(cfq $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      dnb $$6 = $$0.gn();
-      foc<cfq> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.go();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public doz a_(ib $$0) {
+      int $$1 = je.a($$0.u()) - this.c;
+      int $$2 = je.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   public ept a(cfq $$0, float $$1) {
-      if ($$0.go()) {
-         double $$2 = 0.02 * (double)$$0.eb();
-         return new ept(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
-      }
+   @Override
+   public eks b_(ib $$0) {
+      int $$1 = je.a($$0.u()) - this.c;
+      int $$2 = je.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
    }
 
-   public ajh a(cfq $$0) {
-      return a;
+   @Override
+   public float a(ih $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public ekh y_() {
+      return this.b.y_();
+   }
+
+   @Nullable
+   @Override
+   public dmf c_(ib $$0) {
+      int $$1 = je.a($$0.u()) - this.c;
+      int $$2 = je.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
+
+   @Override
+   public int a(ib $$0, cyi $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

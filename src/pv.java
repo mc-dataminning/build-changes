@@ -2,246 +2,227 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pv {
-   public static final ajg<een> a = ps.a("village/snowy/town_centers");
-   private static final ajg<een> b = ps.a("village/snowy/terminators");
-
-   public static void a(pl<een> $$0) {
-      im<eci> $$1 = $$0.a(kj.aD);
-      il<eci> $$2 = $$1.b(ri.h);
-      il<eci> $$3 = $$1.b(ri.c);
-      il<eci> $$4 = $$1.b(ri.d);
-      im<ehc> $$5 = $$0.a(kj.aF);
-      il<ehc> $$6 = $$5.b(pt.k);
-      il<ehc> $$7 = $$5.b(pt.n);
-      il<ehc> $$8 = $$5.b(pt.c);
-      im<een> $$9 = $$0.a(kj.aH);
-      il<een> $$10 = $$9.b(ps.a);
-      il<een> $$11 = $$9.b(b);
-      $$0.a(
-         a,
-         new een(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eel.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
-               Pair.of(eel.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
-               Pair.of(eel.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
-               Pair.of(eel.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
-               Pair.of(eel.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
-               Pair.of(eel.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
+   public static void a(px<egq> $$0) {
+      im<ejf> $$1 = $$0.a(ks.aG);
+      il<ejf> $$2 = $$1.b(qf.s);
+      il<ejf> $$3 = $$1.b(qf.B);
+      il<ejf> $$4 = $$1.b(qf.r);
+      il<ejf> $$5 = $$1.b(qf.C);
+      il<ejf> $$6 = $$1.b(qf.A);
+      im<egq> $$7 = $$0.a(ks.aI);
+      il<egq> $$8 = $$7.b(qe.a);
+      qe.a($$0, "bastion/treasure/bases", new egq($$8, ImmutableList.of(Pair.of(ego.b("bastion/treasure/bases/lava_basin", $$2), 1)), egq.a.b));
+      qe.a($$0, "bastion/treasure/stairs", new egq($$8, ImmutableList.of(Pair.of(ego.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), egq.a.b));
+      qe.a(
          $$0,
-         "village/snowy/streets",
-         new een(
-            $$11,
+         "bastion/treasure/bases/centers",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/streets/corner_01", $$6), 2),
-               Pair.of(eel.a("village/snowy/streets/corner_02", $$6), 2),
-               Pair.of(eel.a("village/snowy/streets/corner_03", $$6), 2),
-               Pair.of(eel.a("village/snowy/streets/square_01", $$6), 2),
-               Pair.of(eel.a("village/snowy/streets/straight_01", $$6), 4),
-               Pair.of(eel.a("village/snowy/streets/straight_02", $$6), 4),
-               Pair.of(eel.a("village/snowy/streets/straight_03", $$6), 4),
-               Pair.of(eel.a("village/snowy/streets/straight_04", $$6), 7),
-               Pair.of(eel.a("village/snowy/streets/straight_06", $$6), 4),
-               Pair.of(eel.a("village/snowy/streets/straight_08", $$6), 4),
-               Pair.of(eel.a("village/snowy/streets/crossroad_02", $$6), 1),
-               Pair.of(eel.a("village/snowy/streets/crossroad_03", $$6), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/snowy/streets/crossroad_04", $$6), 2),
-                  Pair.of(eel.a("village/snowy/streets/crossroad_05", $$6), 2),
-                  Pair.of(eel.a("village/snowy/streets/crossroad_06", $$6), 2),
-                  Pair.of(eel.a("village/snowy/streets/turn_01", $$6), 3)
-               }
+               Pair.of(ego.b("bastion/treasure/bases/centers/center_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/bases/centers/center_1", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/bases/centers/center_2", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/bases/centers/center_3", $$2), 1)
             ),
-            een.a.a
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a($$0, "bastion/treasure/brains", new egq($$8, ImmutableList.of(Pair.of(ego.b("bastion/treasure/brains/center_brain", $$2), 1)), egq.a.b));
+      qe.a(
          $$0,
-         "village/snowy/zombie/streets",
-         new een(
-            $$11,
-            ImmutableList.of(
-               Pair.of(eel.a("village/snowy/zombie/streets/corner_01", $$6), 2),
-               Pair.of(eel.a("village/snowy/zombie/streets/corner_02", $$6), 2),
-               Pair.of(eel.a("village/snowy/zombie/streets/corner_03", $$6), 2),
-               Pair.of(eel.a("village/snowy/zombie/streets/square_01", $$6), 2),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_01", $$6), 4),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_02", $$6), 4),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_03", $$6), 4),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_04", $$6), 7),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_06", $$6), 4),
-               Pair.of(eel.a("village/snowy/zombie/streets/straight_08", $$6), 4),
-               Pair.of(eel.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
-               Pair.of(eel.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
-                  Pair.of(eel.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
-                  Pair.of(eel.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
-                  Pair.of(eel.a("village/snowy/zombie/streets/turn_01", $$6), 3)
-               }
-            ),
-            een.a.a
+         "bastion/treasure/walls",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(ego.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/snowy/houses",
-         new een(
-            $$11,
+         "bastion/treasure/walls/outer",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_1"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_2"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_3"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_4"), 3),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_5"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_6"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_7"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_small_house_8"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_medium_house_1"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_medium_house_2"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_medium_house_3"), 2),
-               Pair.of(eel.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_tool_smith_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
-                  Pair.of(eel.a("village/snowy/houses/snowy_armorer_house_1"), 1),
-                  Pair.of(eel.a("village/snowy/houses/snowy_armorer_house_2"), 1),
-                  Pair.of(eel.a("village/snowy/houses/snowy_fisher_cottage"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_tannery_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_library_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_masons_house_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_masons_house_2"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_temple_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_farm_1", $$7), 3),
-                  Pair.of(eel.a("village/snowy/houses/snowy_farm_2", $$7), 3),
-                  Pair.of(eel.a("village/snowy/houses/snowy_animal_pen_1"), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_animal_pen_2"), 2),
-                  Pair.of(eel.g(), 6)
-               }
+               Pair.of(ego.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/snowy/zombie/houses",
-         new een(
-            $$11,
+         "bastion/treasure/walls/bottom",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
-               Pair.of(eel.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
-               Pair.of(eel.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
-                  Pair.of(eel.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
-                  Pair.of(eel.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_library_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_temple_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_farm_1", $$8), 3),
-                  Pair.of(eel.a("village/snowy/houses/snowy_farm_2", $$8), 3),
-                  Pair.of(eel.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
-                  Pair.of(eel.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
-                  Pair.of(eel.g(), 6)
-               }
+               Pair.of(ego.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      $$0.a(
-         b,
-         new een(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eel.a("village/plains/terminators/terminator_01", $$6), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_02", $$6), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_03", $$6), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_04", $$6), 1)
-            ),
-            een.a.a
-         )
-      );
-      ps.a($$0, "village/snowy/trees", new een($$10, ImmutableList.of(Pair.of(eel.a($$2), 1)), een.a.b));
-      ps.a(
+      qe.a(
          $$0,
-         "village/snowy/decor",
-         new een(
-            $$10,
+         "bastion/treasure/walls/mid",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_01"), 4),
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_02"), 4),
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_03"), 1),
-               Pair.of(eel.a($$2), 4),
-               Pair.of(eel.a($$3), 4),
-               Pair.of(eel.a($$4), 1),
-               Pair.of(eel.g(), 9)
+               Pair.of(ego.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/snowy/zombie/decor",
-         new een(
-            $$10,
+         "bastion/treasure/walls/top",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_01", $$8), 1),
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_02", $$8), 1),
-               Pair.of(eel.a("village/snowy/snowy_lamp_post_03", $$8), 1),
-               Pair.of(eel.a($$2), 4),
-               Pair.of(eel.a($$3), 4),
-               Pair.of(eel.a($$4), 4),
-               Pair.of(eel.g(), 7)
+               Pair.of(ego.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/top/wall_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/walls/top/wall_1", $$2), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/snowy/villagers",
-         new een(
-            $$10,
+         "bastion/treasure/connectors",
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/snowy/villagers/nitwit"), 1),
-               Pair.of(eel.a("village/snowy/villagers/baby"), 1),
-               Pair.of(eel.a("village/snowy/villagers/unemployed"), 10)
+               Pair.of(ego.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a($$0, "bastion/treasure/entrances", new egq($$8, ImmutableList.of(Pair.of(ego.b("bastion/treasure/entrances/entrance_0", $$2), 1)), egq.a.b));
+      qe.a(
          $$0,
-         "village/snowy/zombie/villagers",
-         new een(
-            $$10,
-            ImmutableList.of(Pair.of(eel.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(eel.a("village/snowy/zombie/villagers/unemployed"), 10)),
-            een.a.b
+         "bastion/treasure/ramparts",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
+               Pair.of(ego.b("bastion/treasure/ramparts/top_wall", $$5), 1),
+               Pair.of(ego.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/corners/bottom",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(ego.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/corners/edges",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/corners/edges/bottom", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/corners/edges/middle", $$3), 1),
+               Pair.of(ego.b("bastion/treasure/corners/edges/top", $$3), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/corners/middle",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(ego.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/corners/top",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(ego.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/extensions/large_pool",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/empty", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/extensions/small_pool",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
+               Pair.of(ego.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/extensions/houses",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(ego.b("bastion/treasure/extensions/house_1", $$2), 1)),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/treasure/roofs",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/treasure/roofs/wall_roof", $$6), 1),
+               Pair.of(ego.b("bastion/treasure/roofs/corner_roof", $$6), 1),
+               Pair.of(ego.b("bastion/treasure/roofs/center_roof", $$6), 1)
+            ),
+            egq.a.b
          )
       );
    }

@@ -1,38 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dxj extends dvs<dyd> {
-   private static final ib a = new ib(8, 3, 8);
-   private static final cwi b = new cwi(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dxj(Codec<dyd> $$0) {
+public class dxj extends dxk {
+   public dxj(Codec<eag> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(dvu<dyd> $$0) {
-      cxw $$1 = $$0.b();
-      cwi $$2 = new cwi($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
+   protected boolean a(cyy $$0, axr $$1, ib $$2, doz $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
       } else {
-         ib $$3 = a.h($$0.e().v() + a.v());
-         ib.a $$4 = new ib.a();
+         ih $$4 = ih.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ih> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dae.m.o(), 2);
-                  } else {
-                     $$1.a($$4, dae.b.o(), 2);
-                  }
+         for (ih $$8 : $$6.subList(0, $$5)) {
+            ib.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ih $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ih.b);
+               ih[] $$13 = new ih[]{$$8, ih.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ih.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ih.b);
                }
             }
          }

@@ -1,108 +1,103 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public abstract class fiy<T extends clq> extends fig<T> {
-   private static final ajh x = new ajh("container/inventory/effect_background_large");
-   private static final ajh y = new ajh("container/inventory/effect_background_small");
+public class fiy extends fjo {
+   private static final long a = 2000L;
+   private final aqf b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<dru> o = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dru.c, 5526612);
+      $$0.put(dru.d, 10066329);
+      $$0.put(dru.e, 6250897);
+      $$0.put(dru.f, 8434258);
+      $$0.put(dru.g, 13750737);
+      $$0.put(dru.h, 7497737);
+      $$0.put(dru.i, 3159410);
+      $$0.put(dru.j, 2213376);
+      $$0.put(dru.k, 13421772);
+      $$0.put(dru.l, 16769184);
+      $$0.put(dru.m, 15884384);
+      $$0.put(dru.n, 16777215);
+   });
 
-   public fiy(T $$0, cit $$1, vu $$2) {
-      super($$0, $$1, $$2);
+   public fiy(aqf $$0) {
+      super(fbh.a);
+      this.b = $$0;
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
+   public boolean aE_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aM_() {
+      return false;
+   }
+
+   @Override
+   public void j() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fhl $$0) {
+      if (this.d) {
+         $$0.a(fhk.a, wg.c("narrator.loading.done"));
+      } else {
+         $$0.a(fhk.a, this.m());
+      }
+   }
+
+   private wg m() {
+      return wg.a("loading.progress", axk.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.k / 2;
+      int $$6 = this.l / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.m, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   public boolean K() {
-      int $$0 = this.t + this.c + 2;
-      int $$1 = this.g - $$0;
-      return $$1 >= 32;
-   }
-
-   private void c(fav $$0, int $$1, int $$2) {
-      int $$3 = this.t + this.c + 2;
-      int $$4 = this.g - $$3;
-      Collection<bok> $$5 = this.f.s.eu();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
+   public static void a(fdc $$0, aqf $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
          }
 
-         Iterable<bok> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.u;
-            bok $$10 = null;
-
-            for (bok $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<vu> $$12 = List.of(this.a($$10), bol.a($$10, 1.0F, this.f.r.s().f()));
-               $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dru $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, o.getInt($$13x) | 0xFF000000);
             }
          }
-      }
-   }
-
-   private void a(fav $$0, int $$1, int $$2, Iterable<bok> $$3, boolean $$4) {
-      int $$5 = this.u;
-
-      for (bok $$6 : $$3) {
-         if ($$4) {
-            $$0.a(x, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(y, $$1, $$5, 32, 32);
-         }
-
-         $$5 += $$2;
-      }
-   }
-
-   private void b(fav $$0, int $$1, int $$2, Iterable<bok> $$3, boolean $$4) {
-      gjz $$5 = this.f.aG();
-      int $$6 = this.u;
-
-      for (bok $$7 : $$3) {
-         il<boi> $$8 = $$7.b();
-         gjc $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
-      }
-   }
-
-   private void a(fav $$0, int $$1, int $$2, Iterable<bok> $$3) {
-      int $$4 = this.u;
-
-      for (bok $$5 : $$3) {
-         vu $$6 = this.a($$5);
-         $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         vu $$7 = bol.a($$5, 1.0F, this.f.r.s().f());
-         $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
-      }
-   }
-
-   private vu a(bok $$0) {
-      wi $$1 = $$0.b().a().e().f();
-      if ($$0.d() >= 1 && $$0.d() <= 9) {
-         $$1.b(vt.v).b(vu.c("enchantment.level." + ($$0.d() + 1)));
-      }
-
-      return $$1;
+      });
    }
 }

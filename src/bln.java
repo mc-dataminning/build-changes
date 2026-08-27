@@ -1,52 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
-public class bln<E> extends blr<blp.b<E>> {
-   public static <E> Codec<bln<E>> a(Codec<E> $$0) {
-      return blp.b.a($$0).listOf().xmap(bln::new, blr::e);
+public final class bln<T> {
+   private final bln.a a;
+   private final List<Pair<T, bln.a>> b;
+   private final Duration c;
+
+   public bln(Duration $$0, List<Pair<T, bln.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bln.a>map(Pair::getSecond).reduce(new bln.a(0L, 0L), bln.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bln.a.c)).limit(10L).toList();
    }
 
-   public static <E> Codec<bln<E>> b(Codec<E> $$0) {
-      return awe.a(blp.b.a($$0).listOf()).xmap(bln::new, blr::e);
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   bln(List<? extends blp.b<E>> $$0) {
-      super($$0);
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
    }
 
-   public static <E> bln.a<E> a() {
-      return new bln.a<>();
+   public long c() {
+      return this.a.a;
    }
 
-   public static <E> bln<E> b() {
-      return new bln<>(List.of());
+   public long d() {
+      return this.a.b;
    }
 
-   public static <E> bln<E> a(E $$0) {
-      return new bln<>(List.of(blp.a($$0, 1)));
+   public List<Pair<T, bln.a>> e() {
+      return this.b;
    }
 
-   public Optional<E> a(axd $$0) {
-      return this.b($$0).map(blp.b::b);
-   }
+   public static record a(long a, long b) {
+      static final Comparator<bln.a> c = Comparator.comparing(bln.a::c).thenComparing(bln.a::b).reversed();
 
-   public static class a<E> {
-      private final Builder<blp.b<E>> a = ImmutableList.builder();
-
-      public bln.a<E> a(E $$0) {
-         return this.a($$0, 1);
+      bln.a a(bln.a $$0) {
+         return new bln.a(this.a + $$0.a, this.b + $$0.b);
       }
 
-      public bln.a<E> a(E $$0, int $$1) {
-         this.a.add(blp.a($$0, $$1));
-         return this;
+      public float a() {
+         return (float)this.b / (float)this.a;
       }
 
-      public bln<E> a() {
-         return new bln<>(this.a.build());
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

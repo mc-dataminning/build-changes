@@ -23,18 +23,18 @@ public class ib extends jg {
    public static final Codec<ib> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ib($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final xs<ByteBuf, ib> b = new xs<ByteBuf, ib>() {
+   public static final ye<ByteBuf, ib> b = new ye<ByteBuf, ib>() {
       public ib a(ByteBuf $$0) {
-         return uu.b($$0);
+         return vg.b($$0);
       }
 
       public void a(ByteBuf $$0, ib $$1) {
-         uu.a($$0, $$1);
+         vg.a($$0, $$1);
       }
    };
    private static final Logger e = LogUtils.getLogger();
    public static final ib c = new ib(0, 0, 0);
-   private static final int h = 1 + aww.f(aww.c(30000000));
+   private static final int h = 1 + axk.f(axk.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class ib extends jg {
    }
 
    public static ib a(double $$0, double $$1, double $$2) {
-      return new ib(aww.a($$0), aww.a($$1), aww.a($$2));
+      return new ib(axk.a($$0), axk.a($$1), axk.a($$2));
    }
 
    public static ib a(iv $$0) {
@@ -103,8 +103,8 @@ public class ib extends jg {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ib(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ept b() {
-      return ept.b(this);
+   public esa b() {
+      return esa.b(this);
    }
 
    public ib a(jg $$0) {
@@ -190,7 +190,7 @@ public class ib extends jg {
       }
    }
 
-   public ib a(dgo $$0) {
+   public ib a(dik $$0) {
       switch ($$0) {
          case a:
          default:
@@ -220,7 +220,7 @@ public class ib extends jg {
       return new ib.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<ib> a(axd $$0, int $$1, ib $$2, int $$3) {
+   public static Iterable<ib> a(axr $$0, int $$1, ib $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -229,7 +229,7 @@ public class ib extends jg {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<ib> a(axd $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<ib> a(axr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -331,7 +331,7 @@ public class ib extends jg {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ib> a(ecw $$0) {
+   public static Stream<ib> a(eez $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -342,8 +342,8 @@ public class ib extends jg {
       );
    }
 
-   public static Stream<ib> a(epo $$0) {
-      return a(aww.a($$0.a), aww.a($$0.b), aww.a($$0.c), aww.a($$0.d), aww.a($$0.e), aww.a($$0.f));
+   public static Stream<ib> a(erv $$0) {
+      return a(axk.a($$0.a), axk.a($$0.b), axk.a($$0.c), axk.a($$0.d), axk.a($$0.e), axk.a($$0.f));
    }
 
    public static Stream<ib> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -443,7 +443,7 @@ public class ib extends jg {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(aww.a($$0), aww.a($$1), aww.a($$2));
+         this(axk.a($$0), axk.a($$1), axk.a($$2));
       }
 
       @Override
@@ -467,7 +467,7 @@ public class ib extends jg {
       }
 
       @Override
-      public ib a(dgo $$0) {
+      public ib a(dik $$0) {
          return super.a($$0).i();
       }
 
@@ -479,7 +479,7 @@ public class ib extends jg {
       }
 
       public ib.a b(double $$0, double $$1, double $$2) {
-         return this.d(aww.a($$0), aww.a($$1), aww.a($$2));
+         return this.d(axk.a($$0), axk.a($$1), axk.a($$2));
       }
 
       public ib.a g(jg $$0) {
@@ -525,11 +525,11 @@ public class ib extends jg {
       public ib.a a(ih.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(aww.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(axk.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), aww.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), axk.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), aww.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), axk.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

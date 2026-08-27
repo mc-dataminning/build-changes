@@ -1,63 +1,72 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public final class dtd {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dtd<T extends dsz> {
+   private static final Logger a = LogUtils.getLogger();
+   private final awc<T> b;
+   private dtm c;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dtd(Class<T> $$0, dtm $$1) {
+      this.c = $$1;
+      this.b = new awc<>($$0);
    }
 
-   public static dtd.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dtd.a($$1, $$2);
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   public static dtd.a c(long $$0) {
-      return b($$0).a();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
    }
 
-   public static dtd.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dtd.a($$2, $$3);
+   public avx.a a(erv $$0, avx<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+            return avx.a.b;
+         }
+      }
+
+      return avx.a.a;
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public <U extends T> avx.a a(dtg<T, U> $$0, erv $$1, avx<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return avx.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+               return avx.a.b;
+            }
+         }
+
+         return avx.a.a;
+      }
    }
 
-   public static record a(long a, long b) {
-      public dtd.a a(long $$0, long $$1) {
-         return new dtd.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   public boolean a() {
+      return this.b.isEmpty();
+   }
 
-      public dtd.a a(dtd.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-      public dtd.a a() {
-         return new dtd.a(dtd.a(this.a), dtd.a(this.b));
-      }
+   public dtm c() {
+      return this.c;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public dtm a(dtm $$0) {
+      dtm $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   @ayn
+   public int d() {
+      return this.b.size();
    }
 }

@@ -1,130 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class bxm<T extends cga & cge> extends bwm {
-   private final T a;
-   private final double b;
-   private int c;
-   private final float d;
-   private int e = -1;
-   private int f;
-   private boolean g;
-   private boolean h;
-   private int i = -1;
+public class bxm {
+   private static final byz a = new byz(Integer.MAX_VALUE, new bxl() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bxl.a, byz> b = new EnumMap<>(bxl.a.class);
+   private final Set<byz> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bko> d;
+   private final EnumSet<bxl.a> e = EnumSet.noneOf(bxl.a.class);
 
-   public bxm(T $$0, double $$1, int $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 * $$3;
-      this.a(EnumSet.of(bwm.a.a, bwm.a.b));
+   public bxm(Supplier<bko> $$0) {
+      this.d = $$0;
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
+   public void a(int $$0, bxl $$1) {
+      this.c.add(new byz($$0, $$1));
    }
 
-   @Override
-   public boolean a() {
-      return this.a.p() == null ? false : this.h();
+   @VisibleForTesting
+   public void a(Predicate<bxl> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
    }
 
-   protected boolean h() {
-      return this.a.b(cqp.ot);
+   public void a(bxl $$0) {
+      for (byz $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
+         }
+      }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Override
-   public boolean b() {
-      return (this.a() || !this.a.K().l()) && this.h();
+   private static boolean a(byz $$0, EnumSet<bxl.a> $$1) {
+      for (bxl.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.a.v(true);
-   }
+   private static boolean a(byz $$0, Map<bxl.a, byz> $$1) {
+      for (bxl.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
 
-   @Override
-   public void d() {
-      super.d();
-      this.a.v(false);
-      this.f = 0;
-      this.e = -1;
-      this.a.fy();
-   }
-
-   @Override
-   public boolean R_() {
       return true;
    }
 
-   @Override
-   public void e() {
-      bpp $$0 = this.a.p();
-      if ($$0 != null) {
-         double $$1 = this.a.i($$0.dr(), $$0.dt(), $$0.dx());
-         boolean $$2 = this.a.M().a($$0);
-         boolean $$3 = this.f > 0;
-         if ($$2 != $$3) {
-            this.f = 0;
-         }
+   public void a() {
+      bko $$0 = this.d.get();
+      $$0.a("goalCleanup");
 
-         if ($$2) {
-            this.f++;
-         } else {
-            this.f--;
+      for (byz $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
          }
+      }
 
-         if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.K().n();
-            this.i++;
-         } else {
-            this.a.K().a($$0, this.b);
-            this.i = -1;
-         }
+      this.b.entrySet().removeIf($$0x -> !((byz)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
 
-         if (this.i >= 20) {
-            if ((double)this.a.ei().i() < 0.3) {
-               this.g = !this.g;
+      for (byz $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bxl.a $$3 : $$2.j()) {
+               byz $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
             }
 
-            if ((double)this.a.ei().i() < 0.3) {
-               this.h = !this.h;
-            }
-
-            this.i = 0;
+            $$2.c();
          }
+      }
 
-         if (this.i > -1) {
-            if ($$1 > (double)(this.d * 0.75F)) {
-               this.h = false;
-            } else if ($$1 < (double)(this.d * 0.25F)) {
-               this.h = true;
-            }
+      $$0.c();
+      this.a(true);
+   }
 
-            this.a.H().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.da() instanceof bpr $$4) {
-               $$4.a($$0, 30.0F, 30.0F);
-            }
+   public void a(boolean $$0) {
+      bko $$1 = this.d.get();
+      $$1.a("goalTick");
 
-            this.a.a($$0, 30.0F, 30.0F);
-         } else {
-            this.a.G().a($$0, 30.0F, 30.0F);
+      for (byz $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
          }
+      }
 
-         if (this.a.fs()) {
-            if (!$$2 && this.f < -60) {
-               this.a.fy();
-            } else if ($$2) {
-               int $$5 = this.a.fw();
-               if ($$5 >= 20) {
-                  this.a.fy();
-                  this.a.a($$0, com.a($$5));
-                  this.e = this.c;
-               }
-            }
-         } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(cjo.a(this.a, cqp.ot));
-         }
+      $$1.c();
+   }
+
+   public Set<byz> b() {
+      return this.c;
+   }
+
+   public void a(bxl.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(bxl.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(bxl.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
       }
    }
 }

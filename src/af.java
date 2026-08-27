@@ -1,8 +1,8 @@
 import java.util.List;
 
-public record af(ajh c, ae d) {
-   public static final xs<vf, af> a = xs.a(ajh.b, af::a, ae.b, af::b, af::new);
-   public static final xs<vf, List<af>> b = a.a(xq.a());
+public record af(ajt c, ae d) {
+   public static final ye<vr, af> a = ye.a(ajt.b, af::a, ae.b, af::b, af::new);
+   public static final ye<vr, List<af>> b = a.a(yc.a());
 
    @Override
    public boolean equals(Object $$0) {
@@ -27,7 +27,7 @@ public record af(ajh c, ae d) {
       return this.c.toString();
    }
 
-   public ajh a() {
+   public ajt a() {
       return this.c;
    }
 

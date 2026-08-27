@@ -1,3 +1,8 @@
-public interface cbn {
-   boolean gA();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cbn {
 }

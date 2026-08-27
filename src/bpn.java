@@ -1,6 +1,17 @@
-import java.util.Map;
-import org.joml.Vector3f;
+class bpn extends bpf {
+   protected bpn(bpg $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public interface bpn {
-   Map<String, Vector3f> a();
+   @Override
+   public boolean a(bqo $$0, int $$1) {
+      $$0.a($$0.dN().p(), 1.0F);
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 40 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   }
 }

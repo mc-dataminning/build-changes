@@ -1,24 +1,34 @@
-public class cvl extends cuw {
-   public cvl(cuw.a $$0, bpe... $$1) {
-      super($$0, auv.bg, $$1);
+public record cvl<T extends cvj<?>>(ajt b, T c) {
+   public static final ye<vr, cvl<?>> a = ye.a(ajt.b, cvl::a, cvj.i, cvl::b, cvl::new);
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cvl<?> $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 9;
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
+   public String toString() {
+      return this.b.toString();
    }
 
-   @Override
-   public int a() {
-      return 3;
+   public ajt a() {
+      return this.b;
    }
 
-   public static float e(int $$0) {
-      return 1.0F - 1.0F / (float)($$0 + 1);
+   public T b() {
+      return this.c;
    }
 }

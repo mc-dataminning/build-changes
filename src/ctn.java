@@ -1,67 +1,37 @@
-public class ctn extends cth {
-   public ctn(ctf $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record ctn(ajt e, il<cre> f, wg g, boolean h) {
+   public static final Codec<ctn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajt.a.fieldOf("asset_id").forGetter(ctn::a),
+               ajq.a(ks.F).fieldOf("template_item").forGetter(ctn::b),
+               wi.a.fieldOf("description").forGetter(ctn::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(ctn::d)
+            )
+            .apply($$0, ctn::new)
+   );
+   public static final ye<vr, ctn> b = ye.a(ajt.b, ctn::a, yc.b(ks.F), ctn::b, wi.b, ctn::c, yc.b, ctn::d, ctn::new);
+   public static final Codec<il<ctn>> c = ajp.a(ks.aL, a);
+   public static final ye<vr, il<ctn>> d = yc.a(ks.aL, b);
+
+   public wg a(il<ctl> $$0) {
+      return this.g.f().c($$0.a().e().a());
    }
 
-   public boolean a(cmg $$0, cxb $$1) {
-      int $$2 = 0;
-      cqm $$3 = cqm.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cqp.rT)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cqp.uh)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
+   public ajt a() {
+      return this.e;
    }
 
-   public cqm a(cmg $$0, iz $$1) {
-      int $$2 = 0;
-      cqm $$3 = cqm.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cqp.rT)) {
-               if (!$$3.b()) {
-                  return cqm.h;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cqp.uh)) {
-                  return cqm.h;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cqm.h;
+   public il<cre> b() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public wg c() {
+      return this.g;
    }
 
-   @Override
-   public ctt<?> ar_() {
-      return ctt.e;
+   public boolean d() {
+      return this.h;
    }
 }

@@ -1,33 +1,47 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class djl extends dhe implements djg {
-   public static final MapCodec<djl> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(djg.a.e.fieldOf("weathering_state").forGetter(dbd::c), u()).apply($$0, djl::new)
-   );
-   private final djg.a g;
+public class djl extends dbk {
+   public static final MapCodec<djl> a = b(djl::new);
 
    @Override
    public MapCodec<djl> a() {
-      return f;
+      return a;
    }
 
-   public djl(djg.a $$0, dna.d $$1) {
-      super($$1);
-      this.g = $$0;
-   }
-
-   @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected djl(doy.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean e_(dnb $$0) {
-      return djg.c($$0.b()).isPresent();
+   public dmf a(ib $$0, doz $$1) {
+      return new dnt($$0, $$1);
    }
 
-   public djg.a i() {
-      return this.g;
+   @Nullable
+   @Override
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return a($$2, dmh.j, $$0.B ? dnt::a : dnt::b);
+   }
+
+   @Override
+   protected void a(doz $$0, aps $$1, ib $$2, crj $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
+      }
+   }
+
+   @Override
+   protected did b_(doz $$0) {
+      return did.c;
+   }
+
+   @Override
+   public void a(crj $$0, @Nullable cyd $$1, List<wg> $$2, csz $$3, @Nullable iz $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      czp.a($$0, $$2, "SpawnData");
    }
 }

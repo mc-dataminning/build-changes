@@ -1,54 +1,100 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class elb<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final elb<env> a = new elb<>(enx.a, "predicates", c());
-   public static final elb<emj> b = new elb<>(eml.b, "item_modifiers", c());
-   public static final elb<ele> c = new elb<>(ele.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final elb.a<T> g;
+public class elb extends elo {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   private elb(Codec<T> $$0, String $$1, elb.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public elb(boolean $$0) {
+      this.l = $$0;
    }
 
-   public String a() {
-      return this.f;
+   @Override
+   public void a(czk $$0, bqq $$1) {
+      super.a($$0, $$1);
+      $$1.a(elj.j, 0.0F);
+      this.m = $$1.a(elj.c);
+      $$1.a(elj.c, 6.0F);
+      this.n = $$1.a(elj.k);
+      $$1.a(elj.k, 4.0F);
    }
 
-   public void a(elf $$0, eky<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   @Override
+   public void b() {
+      this.b.a(elj.c, this.m);
+      this.b.a(elj.k, this.n);
+      super.b();
    }
 
-   public <V> Optional<T> a(ajh $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
+   @Override
+   public ele a() {
+      return !this.b.bc() ? super.a() : this.c(new ib(axk.a(this.b.cH().a), axk.a(this.b.cH().b + 0.5), axk.a(this.b.cH().c)));
    }
 
-   public static Stream<elb<?>> b() {
-      return Stream.of(a, b, c);
+   @Override
+   public eln a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
    }
 
-   private static <T extends ekx> elb.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   @Override
+   public int a(ele[] $$0, ele $$1) {
+      int $$2 = super.a($$0, $$1);
+      elj $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      elj $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != elj.w) {
+         $$5 = axk.d(Math.max(1.0F, this.b.dG()));
+      } else {
+         $$5 = 0;
+      }
+
+      double $$7 = this.d(new ib($$1.a, $$1.b, $$1.c));
+      ele $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ih.b, $$4);
+      ele $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ih.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
+
+      if (this.b($$9, $$1) && $$4 != elj.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         ele $$11 = $$0[$$10];
+         if ($$11.l == elj.j && this.l && $$11.b < this.b.dM().z_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   private static elb.a<ele> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   private boolean b(@Nullable ele $$0, ele $$1) {
+      return this.a($$0, $$1) && $$0.l == elj.j;
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(elf var1, eky<T> var2, T var3);
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public elj a(ell $$0, int $$1, int $$2, int $$3) {
+      elj $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == elj.j) {
+         ib.a $$5 = new ib.a();
+
+         for (ih $$6 : ih.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            elj $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == elj.a) {
+               return elj.k;
+            }
+         }
+
+         return elj.j;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

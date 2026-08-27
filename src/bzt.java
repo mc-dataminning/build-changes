@@ -1,30 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bzt extends bzy<bpp> {
-   @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.of(bys.h, bys.M, bys.an);
+public class bzt {
+   private static final bzt a = new bzt();
+   private final List<bqo> b;
+   private final Predicate<bqo> c;
+
+   private bzt() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   protected void a(apf $$0, bpp $$1) {
-      bqq<?> $$2 = $$1.dP();
-      List<chj> $$3 = Lists.newArrayList();
-      byu $$4 = $$2.c(bys.h).orElse(byu.a());
-      Optional<bpr> $$5 = $$4.a($$0x -> $$0x instanceof cgr || $$0x instanceof ces).map(bpr.class::cast);
+   public bzt(bqo $$0, List<bqo> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bqo> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bqo> $$3 = $$1x -> cax.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   }
 
-      for (bpp $$7 : $$2.c(bys.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof chj && ((chj)$$7).go()) {
-            $$3.add((chj)$$7);
+   public static bzt a() {
+      return a;
+   }
+
+   public Optional<bqo> a(Predicate<bqo> $$0) {
+      for (bqo $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
 
-      $$2.a(bys.M, $$5);
-      $$2.a(bys.an, $$3);
+      return Optional.empty();
+   }
+
+   public Iterable<bqo> b(Predicate<bqo> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bqo> c(Predicate<bqo> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bqo $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bqo> $$0) {
+      for (bqo $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

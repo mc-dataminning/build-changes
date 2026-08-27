@@ -1,22 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyu implements dxw {
-   public static final Codec<dyu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dyu::new)
-   );
-   public final int b;
-   public final int c;
-   public final float d;
+public class dyu extends dxv<eal> {
+   public dyu(Codec<eal> $$0) {
+      super($$0);
+   }
 
-   public dyu(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(dxx<eal> $$0) {
+      eal $$1 = $$0.f();
+      axr $$2 = $$0.d();
+      czs $$3 = $$0.b();
+      dqw $$4 = $$0.c();
+      ib $$5 = $$0.e();
+
+      for (dzp $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
+         }
+      }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

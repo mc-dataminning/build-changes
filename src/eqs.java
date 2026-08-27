@@ -1,177 +1,29 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eqs extends eqz {
-   private static final int a = 0;
-   private static final int b = 1;
-   private final eqx c;
-   private final String d;
-   private final Set<String> e = Sets.newHashSet();
-   private vu f;
-   private vu g = vt.a;
-   private vu h = vt.a;
-   private boolean i = true;
-   private boolean j = true;
-   private eqz.b k = eqz.b.a;
-   private eqz.b l = eqz.b.a;
-   private n m = n.v;
-   private eqz.a n = eqz.a.a;
-   private final wr o;
+public record eqs(ajt b) implements eqq {
+   public static final Codec<eqs> a = RecordCodecBuilder.create($$0 -> $$0.group(ajt.a.fieldOf("source").forGetter(eqs::c)).apply($$0, eqs::new));
 
-   public eqs(eqx $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = vu.b($$1);
-      this.o = wr.a.a($$1).a(new wa(wa.a.a, vu.b($$1)));
+   @Override
+   public eqp a() {
+      return eqr.b;
    }
 
-   public eqx a() {
-      return this.c;
+   @Nullable
+   @Override
+   public uj a(enb $$0) {
+      return $$0.d().o().aL().a(this.b);
    }
 
    @Override
-   public String b() {
-      return this.d;
+   public Set<epl<?>> b() {
+      return ImmutableSet.of();
    }
 
-   public vu c() {
-      return this.f;
-   }
-
-   public wi d() {
-      wi $$0 = vx.a((vu)this.f.f().c(this.o));
-      n $$1 = this.n();
-      if ($$1 != n.v) {
-         $$0.a($$1);
-      }
-
-      return $$0;
-   }
-
-   public void a(vu $$0) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Name cannot be null");
-      } else {
-         this.f = $$0;
-         this.c.b(this);
-      }
-   }
-
-   public void b(@Nullable vu $$0) {
-      this.g = $$0 == null ? vt.a : $$0;
-      this.c.b(this);
-   }
-
-   public vu e() {
-      return this.g;
-   }
-
-   public void c(@Nullable vu $$0) {
-      this.h = $$0 == null ? vt.a : $$0;
-      this.c.b(this);
-   }
-
-   public vu f() {
-      return this.h;
-   }
-
-   @Override
-   public Collection<String> g() {
-      return this.e;
-   }
-
-   @Override
-   public wi d(vu $$0) {
-      wi $$1 = vu.i().b(this.g).b($$0).b(this.h);
-      n $$2 = this.n();
-      if ($$2 != n.v) {
-         $$1.a($$2);
-      }
-
-      return $$1;
-   }
-
-   public static wi a(@Nullable eqz $$0, vu $$1) {
-      return $$0 == null ? $$1.f() : $$0.d($$1);
-   }
-
-   @Override
-   public boolean h() {
-      return this.i;
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public boolean i() {
-      return this.j;
-   }
-
-   public void b(boolean $$0) {
-      this.j = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eqz.b j() {
-      return this.k;
-   }
-
-   @Override
-   public eqz.b k() {
-      return this.l;
-   }
-
-   public void a(eqz.b $$0) {
-      this.k = $$0;
-      this.c.b(this);
-   }
-
-   public void b(eqz.b $$0) {
-      this.l = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eqz.a l() {
-      return this.n;
-   }
-
-   public void a(eqz.a $$0) {
-      this.n = $$0;
-      this.c.b(this);
-   }
-
-   public int m() {
-      int $$0 = 0;
-      if (this.h()) {
-         $$0 |= 1;
-      }
-
-      if (this.i()) {
-         $$0 |= 2;
-      }
-
-      return $$0;
-   }
-
-   public void a(int $$0) {
-      this.a(($$0 & 1) > 0);
-      this.b(($$0 & 2) > 0);
-   }
-
-   public void a(n $$0) {
-      this.m = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public n n() {
-      return this.m;
+   public ajt c() {
+      return this.b;
    }
 }

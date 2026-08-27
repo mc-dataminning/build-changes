@@ -1,23 +1,45 @@
-import io.netty.buffer.ByteBuf;
+public class aeh implements yn<aay> {
+   public static final ye<vg, aeh> a = yn.a(aeh::a, aeh::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class aeh implements yb<aam> {
-   public static final aeh a = new aeh();
-   public static final xs<ByteBuf, aeh> b = xs.a(a);
+   public aeh(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   private aeh() {
+   private aeh(vg $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<aeh> a() {
-      return aex.aT;
+   public yp<aeh> a() {
+      return afj.aH;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public float b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

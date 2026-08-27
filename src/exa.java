@@ -1,167 +1,178 @@
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.base.Strings;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Locale;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class exa extends gpe {
-   private static final ajh a = new ajh("icon/unseen_notification");
-   private static final ajh b = new ajh("icon/news");
-   private static final ajh c = new ajh("icon/invite");
-   private static final ajh v = new ajh("icon/trial_available");
-   private final CompletableFuture<Boolean> w = eul.a().thenApply($$0 -> $$0.a() == eul.b.a);
-   @Nullable
-   private exq.c x;
-   @Nullable
-   private exa.a y;
-   private volatile int z;
-   private static boolean A;
-   private static boolean B;
-   private static boolean C;
-   private final exa.a D = new exa.a() {
-      @Override
-      public exq.c a(ewh $$0) {
-         exq.c $$1 = $$0.a.a();
-         exa.this.a($$0, $$1);
-         exa.this.b($$0, $$1);
-         return $$1;
-      }
+public interface exa {
+   wg a = wg.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final exa.a E = new exa.a() {
-      @Override
-      public exq.c a(ewh $$0) {
-         exq.c $$1 = $$0.a.a();
-         exa.this.b($$0, $$1);
-         return $$1;
-      }
+   int a();
 
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
+   wg b();
 
-   public exa() {
-      super(eza.a);
-   }
+   String c();
 
-   @Override
-   public void aO_() {
-      if (this.x != null) {
-         this.x.a();
-      }
-   }
-
-   @Override
-   public void aG_() {
-      super.aG_();
-      this.f.bb().b.a();
-   }
-
-   @Nullable
-   private exa.a E() {
-      boolean $$0 = this.I() && this.w.getNow(false);
-      if (!$$0) {
-         return null;
+   static exa a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return exa.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return exa.b.b($$0);
       } else {
-         return this.H() ? this.D : this.E;
-      }
-   }
-
-   @Override
-   public void e() {
-      exa.a $$0 = this.E();
-      if (!Objects.equals(this.y, $$0)) {
-         this.y = $$0;
-         if (this.y != null) {
-            this.x = this.y.a(this.f.bb());
-         } else {
-            this.x = null;
-         }
-      }
-
-      if (this.x != null) {
-         this.x.b();
-      }
-   }
-
-   private boolean H() {
-      return this.f.m.R().c();
-   }
-
-   private boolean I() {
-      return this.f.y instanceof fhm;
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.w.getNow(false)) {
-         this.c($$0);
-      }
-   }
-
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void c(fav $$0) {
-      int $$1 = this.z;
-      int $$2 = 24;
-      int $$3 = this.h / 4 + 48;
-      int $$4 = this.g / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (C) {
-         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
-      }
-
-      if (this.y != null && this.y.a()) {
-         if (B) {
-            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (A) {
-            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
-         }
-      }
-   }
-
-   void a(ewh $$0, exq.c $$1) {
-      $$1.a($$0.d, $$0x -> this.z = $$0x);
-      $$1.a($$0.e, $$0x -> A = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         B = $$0.g.a();
-      });
-   }
-
-   void b(ewh $$0, exq.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         C = false;
-
-         for (evh $$1x : $$0x) {
-            if (!$$1x.a()) {
-               C = true;
-               break;
+         try {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = axa.a($$2, "reason", null);
+            String $$4 = axa.a($$2, "errorMsg", null);
+            int $$5 = axa.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new exa.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
             }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
          }
-      });
+
+         return new exa.d($$0, $$1);
+      }
    }
 
-   interface a {
-      exq.c a(ewh var1);
+   public static record a(String d) implements exa {
+      public static final int c = 401;
 
-      boolean a();
+      @Override
+      public int a() {
+         return 401;
+      }
+
+      @Override
+      public wg b() {
+         return wg.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
+   }
+
+   public static record b(int e, @Nullable wg f) implements exa {
+      public static final exa.b c = new exa.b(429, wg.c("mco.errorMessage.serviceBusy"));
+      public static final wg d = wg.c("mco.errorMessage.retry");
+
+      public static exa.b a(String $$0) {
+         return new exa.b(500, wg.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+      }
+
+      public static exa.b a(eyk $$0) {
+         return new exa.b(500, wg.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+      }
+
+      public static exa.b a(int $$0) {
+         return new exa.b($$0, d);
+      }
+
+      public static exa.b b(int $$0) {
+         return new exa.b($$0, null);
+      }
+
+      @Override
+      public int a() {
+         return this.e;
+      }
+
+      @Override
+      public wg b() {
+         return this.f != null ? this.f : a;
+      }
+
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      @Nullable
+      public wg e() {
+         return this.f;
+      }
+   }
+
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements exa {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public wg b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (gmo.a($$0)) {
+            return wg.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (gmo.a($$1)) {
+                  return wg.c($$1);
+               }
+            }
+
+            return (wg)(this.f != null ? wg.b(this.f) : a);
+         }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
+      }
+   }
+
+   public static record d(int c, String d) implements exa {
+      @Override
+      public int a() {
+         return this.c;
+      }
+
+      @Override
+      public wg b() {
+         return wg.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
+      }
    }
 }

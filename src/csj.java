@@ -1,49 +1,21 @@
-import java.util.List;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class csj {
-   @Nullable
-   private final String a;
-   private final List<bok> b;
-
-   public static il<csj> a(String $$0) {
-      ajh $$1 = ajh.a($$0);
-      return $$1 == null ? csm.b : ki.i.c($$1).map(Function.identity()).orElse(csm.b);
+public class csj extends csr {
+   public csj(cre.a $$0, dby $$1, dby $$2) {
+      super($$1, $$2, $$0, ih.a);
    }
 
-   public csj(bok... $$0) {
-      this(null, $$0);
+   public csj(cre.a $$0, dby $$1, dby $$2, ih $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
-   public csj(@Nullable String $$0, bok... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public static String a(il<csj> $$0, String $$1) {
-      String $$2 = $$0.a().a;
-      if ($$2 != null) {
-         return $$1 + $$2;
-      } else {
-         ajg<csj> $$3 = $$0.e().orElse(csm.a);
-         return $$1 + $$3.a().a();
-      }
-   }
-
-   public List<bok> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bok $$0 : this.b) {
-            if ($$0.b().a().a()) {
-               return true;
-            }
-         }
+   @Override
+   protected boolean a(ib $$0, cyx $$1, @Nullable cjt $$2, crj $$3, doz $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dnp $$6 && $$1.a_($$0).b() instanceof dix $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return false;
+      return $$5;
    }
 }

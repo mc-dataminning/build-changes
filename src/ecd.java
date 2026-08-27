@@ -1,34 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ecd extends ecl {
-   public static final Codec<ecd> a = RecordCodecBuilder.create($$0 -> $$0.group(ebl.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ecd::new));
-   private final ebl c;
+public abstract class ecd extends eca {
+   protected final long c;
+   protected final ejv.a d;
+   protected final float e;
+   protected final ejv f;
 
-   private ecd(ebl $$0) {
+   protected static <P extends ecd> P3<Mu<P>, Long, ejv.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         ejv.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         aws.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
+   }
+
+   protected ecd(long $$0, ejv.a $$1, float $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = ejv.b(new dvq(new dus($$0)), $$1);
    }
 
-   public static ecd a(ebl $$0) {
-      return new ecd($$0);
-   }
-
-   public static ecd a(dti $$0, dti $$1) {
-      return a(ebo.a($$0, $$1));
-   }
-
-   public static ecd b(dti $$0, dti $$1) {
-      return a(ebn.a($$0, $$1));
-   }
-
-   @Override
-   public Stream<ib> a_(ecj $$0, axd $$1, ib $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
-
-   @Override
-   public ecm<?> b() {
-      return ecm.l;
+   protected double a(ib $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

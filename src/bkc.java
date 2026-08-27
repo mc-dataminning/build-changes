@@ -1,76 +1,44 @@
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bkc extends Event {
-   @Name("regionPosX")
-   @Label("Region X Position")
-   public final int regionPosX;
-   @Name("regionPosZ")
-   @Label("Region Z Position")
-   public final int regionPosZ;
-   @Name("localPosX")
-   @Label("Local X Position")
-   public final int localChunkPosX;
-   @Name("localPosZ")
-   @Label("Local Z Position")
-   public final int localChunkPosZ;
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("level")
-   @Label("Level Id")
-   public final String levelId;
-   @Name("dimension")
-   @Label("Dimension")
-   public final String dimension;
-   @Name("type")
-   @Label("Type")
-   public final String type;
-   @Name("compression")
-   @Label("Compression")
-   public final String compression;
-   @Name("bytes")
-   @Label("Bytes")
-   public final int bytes;
+public interface bkc<T> extends Closeable {
+   static <T> bkc<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bkc<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   public bkc(dqi $$0, cwi $$1, dqh $$2, int $$3) {
-      this.regionPosX = $$1.h();
-      this.regionPosZ = $$1.i();
-      this.localChunkPosX = $$1.j();
-      this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.e;
-      this.chunkPosZ = $$1.f;
-      this.levelId = $$0.a();
-      this.dimension = $$0.b().a().toString();
-      this.type = $$0.c();
-      this.compression = "standard:" + $$2.b();
-      this.bytes = $$3;
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   public static class a {
-      public static final String a = "regionPosX";
-      public static final String b = "regionPosZ";
-      public static final String c = "localPosX";
-      public static final String d = "localPosZ";
-      public static final String e = "chunkPosX";
-      public static final String f = "chunkPosZ";
-      public static final String g = "level";
-      public static final String h = "dimension";
-      public static final String i = "type";
-      public static final String j = "compression";
-      public static final String k = "bytes";
-
-      private a() {
-      }
-   }
+   @Nullable
+   T a() throws IOException;
 }

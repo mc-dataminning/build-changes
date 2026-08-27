@@ -1,38 +1,25 @@
-public enum ejg {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import com.mojang.serialization.Codec;
 
-   private final float A;
+public interface ejg<P extends eje> {
+   Codec<eje> a = kr.ah.q().dispatch("processor_type", eje::a, ejg::codec);
+   Codec<ejf> b = a.listOf().xmap(ejf::new, ejf::a);
+   Codec<ejf> c = aws.e(b.fieldOf("processors").codec(), b);
+   Codec<il<ejf>> d = ajp.a(ks.aG, c);
+   ejg<eij> e = a("block_ignore", eij.a);
+   ejg<eil> f = a("block_rot", eil.a);
+   ejg<eio> g = a("gravity", eio.a);
+   ejg<eip> h = a("jigsaw_replacement", eip.a);
+   ejg<eja> i = a("rule", eja.a);
+   ejg<eis> j = a("nop", eis.a);
+   ejg<eii> k = a("block_age", eii.a);
+   ejg<eih> l = a("blackstone_replace", eih.a);
+   ejg<eiq> m = a("lava_submerged_block", eiq.a);
+   ejg<eix> n = a("protected_blocks", eix.b);
+   ejg<ein> o = a("capped", ein.a);
 
-   private ejg(float $$0) {
-      this.A = $$0;
-   }
+   Codec<P> codec();
 
-   public float a() {
-      return this.A;
+   static <P extends eje> ejg<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.ah, $$0, () -> $$1);
    }
 }

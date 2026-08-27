@@ -1,186 +1,45 @@
-public class aey {
-   public static final vc.a<aez, vf> a = yg.c(
-      ut.b,
-      $$0 -> $$0.a(aex.be, afb.a)
-            .a(aex.bf, afc.a)
-            .a(aex.bg, afd.a)
-            .a(aex.bh, afe.a)
-            .a(aex.bi, aff.a)
-            .a(aex.bj, afg.a)
-            .a(aex.bk, afh.a)
-            .a(aex.bl, afi.a)
-            .a(aex.bm, afj.a)
-            .a(yr.j, yt.a)
-            .a(aex.bn, afk.a)
-            .a(aex.bo, afl.b)
-            .a(aex.bp, afm.a)
-            .a(aex.bq, afn.a)
-            .a(aex.br, afo.a)
-            .a(aex.bs, afp.a)
-            .a(aai.b, aak.a)
-            .a(yr.k, yu.a)
-            .a(aex.bt, afq.a)
-            .a(aex.bu, afr.b)
-            .a(aex.bv, afs.a)
-            .a(aex.bw, aft.a)
-            .a(aex.bx, afu.a)
-            .a(yr.l, yv.a)
-            .a(aex.by, afv.a)
-            .a(aex.bz, afw.a.i)
-            .a(aex.bA, afw.b.i)
-            .a(aex.bB, afw.c.i)
-            .a(aex.bC, afw.d.i)
-            .a(aex.bD, afx.a)
-            .a(aex.bE, afy.a)
-            .a(aex.bF, afz.a)
-            .a(aia.b, aic.a)
-            .a(aex.bG, aga.a)
-            .a(aex.bH, agb.a)
-            .a(aex.bI, agc.a)
-            .a(aex.bJ, agd.a)
-            .a(aex.bK, age.a)
-            .a(yr.m, yw.a)
-            .a(aex.bL, agf.a)
-            .a(aex.bM, agg.a)
-            .a(aex.bN, agh.a)
-            .a(yr.n, yx.a)
-            .a(aex.bO, agi.a)
-            .a(aex.bP, agj.a)
-            .a(aex.bQ, agk.a)
-            .a(aex.bR, agl.a)
-            .a(aex.bS, agm.a)
-            .a(aex.bT, agn.a)
-            .a(aex.bU, ago.a)
-            .a(aex.bV, agp.a)
-            .a(aex.bW, agq.a)
-            .a(aex.bX, agr.a)
-            .a(aex.bY, ags.a)
-            .a(aex.bZ, agt.a)
-            .a(aex.ca, agu.a)
-            .a(aex.cb, agv.a)
-   );
-   public static final vc.a<aam, vf> b = yg.d(
-      ut.b,
-      $$0 -> $$0.a(aex.a, aay::new, new aax())
-            .a(aex.c, aan.a)
-            .a(aex.d, aao.a)
-            .a(aex.e, aap.a)
-            .a(aex.f, aaq.a)
-            .a(aex.g, aar.a)
-            .a(aex.h, aas.a)
-            .a(aex.i, aat.a)
-            .a(aex.j, aau.a)
-            .a(aex.k, aav.a)
-            .a(aex.l, aaw.a)
-            .a(aex.m, aaz.a)
-            .a(aex.n, aba.a)
-            .a(aex.o, abb.b)
-            .a(aex.p, abc.a)
-            .a(aex.q, abd.a)
-            .a(aex.r, abe.a)
-            .a(aex.s, abf.a)
-            .a(aex.t, abg.a)
-            .a(aex.u, abh.a)
-            .a(aex.v, abi.a)
-            .a(aex.w, abj.a)
-            .a(aai.a, aah.a)
-            .a(aex.x, abk.a)
-            .a(aex.y, abl.a)
-            .a(yr.a, yi.a)
-            .a(aex.z, abm.a)
-            .a(aex.A, abn.a)
-            .a(aex.B, abo.a)
-            .a(yr.b, yj.a)
-            .a(aex.C, abp.a)
-            .a(aex.D, abq.a)
-            .a(aex.E, abr.a)
-            .a(aex.F, abs.a)
-            .a(aex.G, abt.a)
-            .a(aex.H, abu.a)
-            .a(aex.I, abv.a)
-            .a(aex.J, abw.a)
-            .a(yr.c, yk.a)
-            .a(aex.K, aby.a)
-            .a(aex.L, abz.a)
-            .a(aex.M, aca.a)
-            .a(aex.N, acb.a)
-            .a(aex.O, acd.a)
-            .a(aex.P, ace.a)
-            .a(aex.Q, acf.a)
-            .a(aex.R, acg.a.j)
-            .a(aex.S, acg.b.j)
-            .a(aex.T, acg.c.j)
-            .a(aex.U, ach.a)
-            .a(aex.V, aci.a)
-            .a(aex.W, acj.a)
-            .a(aex.X, ack.a)
-            .a(yr.d, yl.a)
-            .a(aia.a, ahz.a)
-            .a(aex.Y, acl.a)
-            .a(aex.Z, acm.a)
-            .a(aex.aa, acn.a)
-            .a(aex.ab, aco.a)
-            .a(aex.ac, acp.b)
-            .a(aex.ad, acq.a)
-            .a(aex.ae, acr.a)
-            .a(aex.af, acs.a)
-            .a(aex.ag, act.a)
-            .a(aex.ah, acu.a)
-            .a(aex.ai, acv.a)
-            .a(aex.aj, acw.a)
-            .a(aex.ak, acx.a)
-            .a(aex.cc, acy.a)
-            .a(yr.e, ym.a)
-            .a(yr.f, yn.b)
-            .a(aex.al, acz.a)
-            .a(aex.am, ada.a)
-            .a(aex.an, adb.a)
-            .a(aex.ao, adc.a)
-            .a(aex.ap, add.a)
-            .a(aex.aq, ade.a)
-            .a(aex.ar, adf.a)
-            .a(aex.as, adg.a)
-            .a(aex.at, adh.a)
-            .a(aex.au, adi.a)
-            .a(aex.av, adj.a)
-            .a(aex.aw, adk.a)
-            .a(aex.ax, adl.a)
-            .a(aex.ay, adm.a)
-            .a(aex.az, adn.a)
-            .a(aex.aA, ado.a)
-            .a(aex.aB, adp.a)
-            .a(aex.aC, adq.a)
-            .a(aex.aD, adr.a)
-            .a(aex.aE, ads.a)
-            .a(aex.aF, adt.a)
-            .a(aex.aG, adu.a)
-            .a(aex.aH, adv.a)
-            .a(aex.aI, adw.a)
-            .a(aex.aJ, adx.a)
-            .a(aex.aK, ady.a)
-            .a(aex.aL, adz.a)
-            .a(aex.aM, aea.a)
-            .a(aex.aN, aeb.a)
-            .a(aex.aO, aec.a)
-            .a(aex.aP, aed.a)
-            .a(aex.aQ, aee.a)
-            .a(aex.aR, aef.a)
-            .a(aex.aS, aeg.a)
-            .a(aex.aT, aeh.b)
-            .a(aex.aU, aei.a)
-            .a(yr.g, yo.a)
-            .a(aex.aV, aej.a)
-            .a(aex.aW, aek.a)
-            .a(aex.aX, ael.a)
-            .a(aex.aY, aem.a)
-            .a(aex.aZ, aen.a)
-            .a(aex.cd, aeo.a)
-            .a(aex.ce, aep.a)
-            .a(yr.h, yp.a)
-            .a(aex.ba, aeq.a)
-            .a(aex.bb, aer.a)
-            .a(aex.bc, aes.a)
-            .a(aex.bd, aet.a)
-            .a(yr.i, yq.a)
-   );
+public class aey implements yn<aay> {
+   public static final ye<vg, aey> a = yn.a(aey::a, aey::new);
+   private final int b;
+   private final int c;
+   private final int d;
+
+   public aey(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   private aey(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
+   }
+
+   private void a(vg $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public yp<aey> a() {
+      return afj.aY;
+   }
+
+   public void a(aay $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
 }

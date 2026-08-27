@@ -1,16 +1,15 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aaq(Object2IntMap<auf<?>> b) implements yb<aam> {
-   private static final xs<vf, Object2IntMap<auf<?>>> c = xq.a(Object2IntOpenHashMap::new, auf.a, xq.d);
-   public static final xs<vf, aaq> a = c.a(aaq::new, aaq::b);
+public record aaq(List<asj> b) implements yn<aao> {
+   public static final ye<ByteBuf, aaq> a = ye.a(asj.a.a(yc.c(64)), aaq::b, aaq::new);
 
    @Override
-   public yd<aaq> a() {
-      return aex.f;
+   public yp<aaq> a() {
+      return aam.f;
    }
 
-   public void a(aam $$0) {
+   public void a(aao $$0) {
       $$0.a(this);
    }
 }

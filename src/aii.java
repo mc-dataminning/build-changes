@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class aii implements yb<aih> {
-   public static final aii a = new aii();
-   public static final xs<ByteBuf, aii> b = xs.a(a);
-
-   private aii() {
-   }
-
-   @Override
-   public yd<aii> a() {
-      return aij.b;
-   }
-
-   public void a(aih $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aii {
 }

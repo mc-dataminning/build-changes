@@ -8,24 +8,24 @@ public class di extends cx<di.a> {
       return di.a.a;
    }
 
-   public void a(apg $$0, cqm $$1) {
+   public void a(apt $$0, crj $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c) implements cx.a {
       public static final Codec<di.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(di.a::a), awe.a(cc.a, "item").forGetter(di.a::b)).apply($$0, di.a::new)
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(di.a::a), aws.a(cc.a, "item").forGetter(di.a::b)).apply($$0, di.a::new)
       );
 
       public static an<di.a> a(cc $$0) {
          return am.C.a(new di.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public static an<di.a> a(cxa $$0) {
+      public static an<di.a> a(cyw $$0) {
          return am.C.a(new di.a(Optional.empty(), Optional.of(cc.a.a().a($$0).b())));
       }
 
-      public boolean a(cqm $$0) {
+      public boolean a(crj $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

@@ -1,96 +1,106 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ena extends emi {
-   private static final Codec<List<ena.b>> b = awe.b(ena.b.a.listOf(), (Function<List<ena.b>, DataResult<List<ena.b>>>)($$0 -> {
-      Set<il<boi>> $$1 = new ObjectOpenHashSet();
-
-      for (ena.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   }));
-   public static final Codec<ena> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(awe.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ena::new)
+public class ena {
+   private static final Codec<ena> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aws.a(eqy.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), aws.a(eqy.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, ena::new)
    );
-   private final List<ena.b> c;
+   public static final Codec<ena> a = Codec.either(Codec.INT, b).xmap($$0 -> (ena)$$0.map(ena::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final eqx c;
+   @Nullable
+   private final eqx d;
+   private final ena.b e;
+   private final ena.a f;
 
-   ena(List<env> $$0, List<ena.b> $$1) {
-      super($$0);
-      this.c = $$1;
+   public Set<epl<?>> a() {
+      Builder<epl<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public emk b() {
-      return eml.n;
+   private ena(Optional<eqx> $$0, Optional<eqx> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public Set<ene<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      if ($$0.a(cqp.vS) && !this.c.isEmpty()) {
-         ena.b $$2 = ac.a(this.c, $$1.b());
-         il<boi> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
+   private ena(@Nullable eqx $$0, @Nullable eqx $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         crw.b($$0, List.of(new did.a($$3, $$4)));
-         return $$0;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         return $$0;
+         this.e = ($$2, $$3) -> axk.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static ena.a c() {
-      return new ena.a();
+   public static ena a(int $$0) {
+      eqv $$1 = eqv.a((float)$$0);
+      return new ena(Optional.of($$1), Optional.of($$1));
    }
 
-   public static class a extends emi.a<ena.a> {
-      private final Builder<ena.b> a = ImmutableList.builder();
-
-      protected ena.a a() {
-         return this;
-      }
-
-      public ena.a a(il<boi> $$0, eoq $$1) {
-         this.a.add(new ena.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public emj b() {
-         return new ena(this.g(), this.a.build());
-      }
+   public static ena a(int $$0, int $$1) {
+      return new ena(Optional.of(eqv.a((float)$$0)), Optional.of(eqv.a((float)$$1)));
    }
 
-   static record b(il<boi> b, eoq c) {
-      public static final Codec<ena.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ki.d.r().fieldOf("type").forGetter(ena.b::a), eor.a.fieldOf("duration").forGetter(ena.b::b)).apply($$0, ena.b::new)
-      );
+   public static ena b(int $$0) {
+      return new ena(Optional.of(eqv.a((float)$$0)), Optional.empty());
+   }
 
-      public il<boi> a() {
-         return this.b;
-      }
+   public static ena c(int $$0) {
+      return new ena(Optional.empty(), Optional.of(eqv.a((float)$$0)));
+   }
 
-      public eoq b() {
-         return this.c;
-      }
+   public int a(enb $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(enb $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eqv $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(enb var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(enb var1, int var2);
    }
 }

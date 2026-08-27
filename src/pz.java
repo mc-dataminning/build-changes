@@ -2,248 +2,217 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pz {
-   public static final ajg<een> a = ps.a("village/taiga/town_centers");
-   private static final ajg<een> b = ps.a("village/taiga/terminators");
+   public static final ajs<egq> a = qe.a("village/desert/town_centers");
+   private static final ajs<egq> b = qe.a("village/desert/terminators");
+   private static final ajs<egq> c = qe.a("village/desert/zombie/terminators");
 
-   public static void a(pl<een> $$0) {
-      im<eci> $$1 = $$0.a(kj.aD);
-      il<eci> $$2 = $$1.b(ri.h);
-      il<eci> $$3 = $$1.b(ri.i);
-      il<eci> $$4 = $$1.b(ri.e);
-      il<eci> $$5 = $$1.b(ri.l);
-      il<eci> $$6 = $$1.b(ri.m);
-      im<ehc> $$7 = $$0.a(kj.aF);
-      il<ehc> $$8 = $$7.b(pt.f);
-      il<ehc> $$9 = $$7.b(pt.d);
-      il<ehc> $$10 = $$7.b(pt.k);
-      il<ehc> $$11 = $$7.b(pt.o);
-      im<een> $$12 = $$0.a(kj.aH);
-      il<een> $$13 = $$12.b(ps.a);
-      il<een> $$14 = $$12.b(b);
+   public static void a(px<egq> $$0) {
+      im<eel> $$1 = $$0.a(ks.aE);
+      il<eel> $$2 = $$1.b(ru.j);
+      il<eel> $$3 = $$1.b(ru.a);
+      im<ejf> $$4 = $$0.a(ks.aG);
+      il<ejf> $$5 = $$4.b(qf.e);
+      il<ejf> $$6 = $$4.b(qf.p);
+      im<egq> $$7 = $$0.a(ks.aI);
+      il<egq> $$8 = $$7.b(qe.a);
+      il<egq> $$9 = $$7.b(b);
+      il<egq> $$10 = $$7.b(c);
       $$0.a(
          a,
-         new een(
-            $$13,
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
-               Pair.of(eel.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
-               Pair.of(eel.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
-               Pair.of(eel.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
+               Pair.of(ego.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(ego.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(ego.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(ego.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/streets",
-         new een(
-            $$14,
+         "village/desert/streets",
+         new egq(
+            $$9,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/streets/corner_01", $$10), 2),
-               Pair.of(eel.a("village/taiga/streets/corner_02", $$10), 2),
-               Pair.of(eel.a("village/taiga/streets/corner_03", $$10), 2),
-               Pair.of(eel.a("village/taiga/streets/straight_01", $$10), 4),
-               Pair.of(eel.a("village/taiga/streets/straight_02", $$10), 4),
-               Pair.of(eel.a("village/taiga/streets/straight_03", $$10), 4),
-               Pair.of(eel.a("village/taiga/streets/straight_04", $$10), 7),
-               Pair.of(eel.a("village/taiga/streets/straight_05", $$10), 7),
-               Pair.of(eel.a("village/taiga/streets/straight_06", $$10), 4),
-               Pair.of(eel.a("village/taiga/streets/crossroad_01", $$10), 1),
-               Pair.of(eel.a("village/taiga/streets/crossroad_02", $$10), 1),
-               Pair.of(eel.a("village/taiga/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/taiga/streets/crossroad_04", $$10), 2),
-                  Pair.of(eel.a("village/taiga/streets/crossroad_05", $$10), 2),
-                  Pair.of(eel.a("village/taiga/streets/crossroad_06", $$10), 2),
-                  Pair.of(eel.a("village/taiga/streets/turn_01", $$10), 3)
-               }
+               Pair.of(ego.a("village/desert/streets/corner_01"), 3),
+               Pair.of(ego.a("village/desert/streets/corner_02"), 3),
+               Pair.of(ego.a("village/desert/streets/straight_01"), 4),
+               Pair.of(ego.a("village/desert/streets/straight_02"), 4),
+               Pair.of(ego.a("village/desert/streets/straight_03"), 3),
+               Pair.of(ego.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(ego.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(ego.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(ego.a("village/desert/streets/square_01"), 3),
+               Pair.of(ego.a("village/desert/streets/square_02"), 3),
+               Pair.of(ego.a("village/desert/streets/turn_01"), 3)
             ),
-            een.a.a
+            egq.a.a
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/zombie/streets",
-         new een(
-            $$14,
+         "village/desert/zombie/streets",
+         new egq(
+            $$10,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/zombie/streets/corner_01", $$10), 2),
-               Pair.of(eel.a("village/taiga/zombie/streets/corner_02", $$10), 2),
-               Pair.of(eel.a("village/taiga/zombie/streets/corner_03", $$10), 2),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_01", $$10), 4),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_02", $$10), 4),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_03", $$10), 4),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_04", $$10), 7),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_05", $$10), 7),
-               Pair.of(eel.a("village/taiga/zombie/streets/straight_06", $$10), 4),
-               Pair.of(eel.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
-               Pair.of(eel.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(eel.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(eel.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(eel.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(eel.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(eel.a("village/taiga/zombie/streets/turn_01", $$10), 3)
-               }
+               Pair.of(ego.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(ego.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(ego.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(ego.a("village/desert/zombie/streets/turn_01"), 3)
             ),
-            een.a.a
+            egq.a.a
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/houses",
-         new een(
-            $$14,
+         "village/desert/houses",
+         new egq(
+            $$9,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
-               Pair.of(eel.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
-               Pair.of(eel.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
-               Pair.of(eel.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
-               Pair.of(eel.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
-               Pair.of(eel.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(ego.a("village/desert/houses/desert_tool_smith_1"), 2),
                new Pair[]{
-                  Pair.of(eel.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
-                  Pair.of(eel.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
-                  Pair.of(eel.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
-                  Pair.of(eel.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_library_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_temple_1", $$8), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
-                  Pair.of(eel.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
-                  Pair.of(eel.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
-                  Pair.of(eel.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
-                  Pair.of(eel.g(), 6)
+                  Pair.of(ego.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(ego.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(ego.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(ego.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(ego.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(ego.g(), 5)
                }
             ),
-            een.a.b
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/zombie/houses",
-         new een(
-            $$14,
+         "village/desert/zombie/houses",
+         new egq(
+            $$10,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
-               Pair.of(eel.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
-               Pair.of(eel.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(ego.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(ego.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(ego.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
                new Pair[]{
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
-                  Pair.of(eel.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
-                  Pair.of(eel.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
-                  Pair.of(eel.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
-                  Pair.of(eel.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
-                  Pair.of(eel.g(), 6)
+                  Pair.of(ego.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(ego.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(ego.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(ego.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(ego.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(ego.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(ego.g(), 5)
                }
             ),
-            een.a.b
+            egq.a.b
          )
       );
       $$0.a(
          b,
-         new een(
-            $$13,
-            ImmutableList.of(
-               Pair.of(eel.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(eel.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            een.a.a
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.a("village/desert/terminators/terminator_01"), 1), Pair.of(ego.a("village/desert/terminators/terminator_02"), 1)),
+            egq.a.a
          )
       );
-      ps.a(
-         $$0,
-         "village/taiga/decor",
-         new een(
-            $$13,
+      $$0.a(
+         c,
+         new egq(
+            $$8,
             ImmutableList.of(
-               Pair.of(eel.a("village/taiga/taiga_lamp_post_1"), 10),
-               Pair.of(eel.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(eel.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(eel.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(eel.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(eel.a("village/taiga/taiga_decoration_5"), 2),
-               Pair.of(eel.a("village/taiga/taiga_decoration_6"), 1),
-               Pair.of(eel.a($$2), 4),
-               Pair.of(eel.a($$3), 4),
-               Pair.of(eel.a($$4), 2),
-               Pair.of(eel.a($$5), 4),
-               Pair.of(eel.a($$6), 1),
-               new Pair[]{Pair.of(eel.g(), 4)}
+               Pair.of(ego.a("village/desert/terminators/terminator_01"), 1), Pair.of(ego.a("village/desert/zombie/terminators/terminator_02"), 1)
             ),
-            een.a.b
+            egq.a.a
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/zombie/decor",
-         new een(
-            $$13,
-            ImmutableList.of(
-               Pair.of(eel.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(eel.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(eel.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(eel.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(eel.a($$2), 4),
-               Pair.of(eel.a($$3), 4),
-               Pair.of(eel.a($$4), 2),
-               Pair.of(eel.a($$5), 4),
-               Pair.of(eel.a($$6), 1),
-               Pair.of(eel.g(), 4)
-            ),
-            een.a.b
+         "village/desert/decor",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.a("village/desert/desert_lamp_1"), 10), Pair.of(ego.a($$2), 4), Pair.of(ego.a($$3), 4), Pair.of(ego.g(), 10)),
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/villagers",
-         new een(
-            $$13,
-            ImmutableList.of(
-               Pair.of(eel.a("village/taiga/villagers/nitwit"), 1),
-               Pair.of(eel.a("village/taiga/villagers/baby"), 1),
-               Pair.of(eel.a("village/taiga/villagers/unemployed"), 10)
-            ),
-            een.a.b
+         "village/desert/zombie/decor",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(ego.a($$2), 4), Pair.of(ego.a($$3), 4), Pair.of(ego.g(), 10)),
+            egq.a.b
          )
       );
-      ps.a(
+      qe.a(
          $$0,
-         "village/taiga/zombie/villagers",
-         new een(
-            $$13,
-            ImmutableList.of(Pair.of(eel.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(eel.a("village/taiga/zombie/villagers/unemployed"), 10)),
-            een.a.b
+         "village/desert/villagers",
+         new egq(
+            $$8,
+            ImmutableList.of(
+               Pair.of(ego.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(ego.a("village/desert/villagers/baby"), 1),
+               Pair.of(ego.a("village/desert/villagers/unemployed"), 10)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "village/desert/camel", new egq($$8, ImmutableList.of(Pair.of(ego.a("village/desert/camel_spawn"), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new egq(
+            $$8,
+            ImmutableList.of(Pair.of(ego.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(ego.a("village/desert/zombie/villagers/unemployed"), 10)),
+            egq.a.b
          )
       );
    }

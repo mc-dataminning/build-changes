@@ -1,47 +1,47 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class dxk extends dxh {
-   public dxk(Codec<dyv> $$0) {
+public abstract class dxk extends dxv<eag> {
+   public dxk(Codec<eag> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<ib> a(cxw $$0, dyv $$1, axd $$2, ib $$3, Predicate<dnb> $$4, int $$5, int $$6) {
-      Set<ib> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<ib> $$8 = new HashSet<>();
-      ib.a $$9 = new ib.a();
+   public boolean a(dxx<eag> $$0) {
+      axr $$1 = $$0.d();
+      czs $$2 = $$0.b();
+      ib $$3 = $$0.e();
+      Optional<dby> $$4 = kr.e.a(avc.aq, $$1).map(il::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
+   }
 
-      for (ib $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+   protected abstract boolean a(cyy var1, axr var2, ib var3, doz var4);
+
+   protected boolean b(cyy $$0, axr $$1, ib $$2, doz $$3) {
+      ib $$4 = $$2.c();
+      doz $$5 = $$0.a_($$2);
+      if (($$5.a(dca.G) || $$5.a(avc.at)) && $$0.a_($$4).a(dca.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            kr.e.a(avc.at, $$1).map(il::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dca.mV.n().a(diu.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      for (ib $$11 : $$8) {
-         $$0.a($$11, dae.G.o(), 2);
-      }
+         for (ih $$6 : ih.c.a) {
+            if ($$1.i() < 0.2F) {
+               ib $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dca.G)) {
+                  kr.e.a(avc.ar, $$1).map(il::a).ifPresent($$3x -> {
+                     doz $$4x = $$3x.n();
+                     if ($$4x.b(dbj.c)) {
+                        $$4x = $$4x.a(dbj.c, $$6);
+                     }
 
-      return $$8;
-   }
-
-   private static boolean a(cxw $$0, Set<ib> $$1, ib $$2, ib.a $$3) {
-      return a($$0, $$2, $$3, ih.c) || a($$0, $$2, $$3, ih.f) || a($$0, $$2, $$3, ih.d) || a($$0, $$2, $$3, ih.e) || a($$0, $$2, $$3, ih.a);
-   }
-
-   private static boolean a(cxw $$0, ib $$1, ib.a $$2, ih $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(cxw $$0, dyv $$1, doy $$2, axd $$3, ib $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dnb $$5 = $$0.a_($$4);
-         if ($$5.b(dnr.C) && !$$5.c(dnr.C)) {
-            $$0.a($$4, $$5.a(dnr.C, Boolean.valueOf(true)), 2);
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
          }
 
          return true;

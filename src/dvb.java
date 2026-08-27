@@ -1,45 +1,68 @@
-import com.mojang.serialization.Codec;
+public final class dvb {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public class dvb extends dvs<dxo> {
-   public dvb(Codec<dxo> $$0) {
-      super($$0);
+   private dvb() {
    }
 
-   @Override
-   public boolean a(dvu<dxo> $$0) {
-      ib $$1 = $$0.e();
-      cxw $$2 = $$0.b();
-      axd $$3 = $$0.d();
-      dxo $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (ib $$7 : ib.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+   protected static duv.c a(duk $$0, duk $$1, duk $$2, dve $$3) {
+      doz $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dvb.a $$8 = $$6 > 0.0 ? dvb.a.a : dvb.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = axk.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               axr $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = axk.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
             }
+         } else {
+            return $$4;
          }
-
-         return true;
-      }
+      };
    }
 
-   private boolean a(cxc $$0, ib $$1, axd $$2) {
-      ib $$3 = $$1.d();
-      dnb $$4 = $$0.a_($$3);
-      return $$4.a(dae.kE) ? $$2.h() : $$4.d($$0, $$3, ih.b);
-   }
+   protected static enum a {
+      a(dca.ra.n(), dca.tg.n(), dca.c.n(), 0, 50),
+      b(dca.Q.n(), dca.tf.n(), dca.qz.n(), -60, -8);
 
-   private void a(cxc $$0, ib $$1, axd $$2, dxo $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      final doz e;
+      final doz f;
+      final doz g;
+      protected final int c;
+      protected final int d;
+
+      private a(doz $$0, doz $$1, doz $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

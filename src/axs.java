@@ -1,28 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-@FunctionalInterface
-public interface axs {
-   Logger a = LogUtils.getLogger();
+public class axs {
+   public static final Codec<axs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aws.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), aws.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, axs::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<ajt> f;
 
-   static axs immediate(final Executor $$0) {
-      return new axs() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
-         }
-      };
+   private axs(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<ajt> c() {
+      return this.f;
+   }
 }

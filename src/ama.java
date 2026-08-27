@@ -1,40 +1,35 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class ama {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.pardon.failed"));
-
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ah().f().a(), $$1))
-                  .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
-            )
+      final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
+      cyt.a(
+         new cyt.c() {
+            @Override
+            public <T extends cyt.g<T>> void a(cyt.e<T> $$0, cyt.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> ama.a((du)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> ama.a($$1xxx, $$0)))
+               );
+            }
+         }
       );
+      $$0.register($$1);
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      ath $$2 = $$0.l().ah().f();
-      int $$3 = 0;
+   static <T extends cyt.g<T>> int a(CommandContext<du> $$0, cyt.e<T> $$1) {
+      du $$2 = (du)$$0.getSource();
+      T $$3 = $$2.l().aN().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> wg.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> vu.a("commands.pardon.success", vu.b($$4.getName())), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   static <T extends cyt.g<T>> int a(du $$0, cyt.e<T> $$1) {
+      T $$2 = $$0.l().aN().a($$1);
+      $$0.a(() -> wg.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

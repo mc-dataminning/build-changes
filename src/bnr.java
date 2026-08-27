@@ -1,4 +1,11 @@
 import javax.annotation.Nullable;
 
-public record bnr(bnw a, float b, @Nullable bob c, float d) {
+public interface bnr {
+   void a();
+
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bnr) {
+         ((bnr)$$0).a();
+      }
+   }
 }

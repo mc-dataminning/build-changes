@@ -1,109 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deh extends dac implements dhc {
+public class deh extends deu {
    public static final MapCodec<deh> a = b(deh::new);
-   public static final dnv b = ddx.aE;
-   public static final dns c = dnr.C;
-   protected static final float d = 3.0F;
-   protected static final eqm e = dac.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final eqm f = dac.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final eqm g = dac.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final eqm h = dac.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final est b = dby.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<deh> a() {
       return a;
    }
 
-   protected deh(dna.d $$0) {
+   public deh(doy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ih.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      switch ((ih)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
-      }
-   }
-
-   private boolean a(cwh $$0, ib $$1, ih $$2) {
-      dnb $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      ih $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      this.d($$0, $$1, $$2);
+      return boa.a($$1.B);
    }
 
    @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return dae.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eiq.c, eiq.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected void a(doz $$0, cyx $$1, ib $$2, cjt $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      if (!$$0.c()) {
-         dnb $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
-      }
+   private void d(doz $$0, cyx $$1, ib $$2) {
+      dqq $$3 = $$1.C_();
 
-      dnb $$2 = this.o();
-      cxe $$3 = $$0.q();
-      ib $$4 = $$0.a();
-      eip $$5 = $$0.q().b_($$0.a());
-
-      for (ih $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == eiq.c));
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ib $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = axk.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = axk.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = axk.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(kl.aa, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
+
+            return;
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected int b() {
+      return 5;
    }
 
    @Override
-   protected dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected eip c_(dnb $$0) {
-      return $$0.c(c) ? eiq.c.a(false) : super.c_($$0);
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 }

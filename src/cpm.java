@@ -1,76 +1,79 @@
-public class cpm extends cqh {
-   public cpm(cqh.a $$0) {
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class cpm extends crz {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public cpm(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnd a(csw $$0) {
-      cxb $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dnb $$3 = $$1.a_($$2);
-      if (!$$3.a(dae.fy) || $$3.c(dcr.c)) {
-         return bnd.d;
-      } else if ($$1.B) {
-         return bnd.a;
-      } else {
-         dnb $$4 = $$3.a(dcr.c, Boolean.valueOf(true));
-         dac.a($$3, $$4, $$1, $$2);
-         $$1.a($$2, $$4, 2);
-         $$1.c($$2, dae.fy);
-         $$0.n().h(1);
-         $$1.c(1503, $$2, 0);
-         dng.b $$5 = dcr.b().a($$1, $$2);
-         if ($$5 != null) {
-            ib $$6 = $$5.a().b(-3, 0, -3);
-
-            for (int $$7 = 0; $$7 < 3; $$7++) {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  $$1.a($$6.b($$7, 0, $$8), dae.fx.o(), 2);
+   public void a(crj $$0, cyx $$1, bqo $$2, int $$3) {
+      if ($$2 instanceof cjt $$4) {
+         crj $$5 = $$4.g($$0);
+         if (!$$5.d()) {
+            int $$6 = this.b($$0) - $$3;
+            float $$7 = a($$6);
+            if (!((double)$$7 < 0.1)) {
+               List<crj> $$8 = a($$0, $$5, $$4);
+               if (!$$1.x_() && !$$8.isEmpty()) {
+                  this.a($$1, $$4, $$4.ft(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
+
+               $$1.a(null, $$4.dr(), $$4.dt(), $$4.dx(), aum.aG, aun.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(auw.c.b(this));
             }
-
-            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
-
-         return bnd.b;
       }
    }
 
    @Override
-   public int b(cqm $$0) {
-      return 0;
+   protected void a(bqo $$0, ckl $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bqo $$6) {
+      $$1.a($$0, $$0.dE(), $$0.dC() + $$5, 0.0F, $$3, $$4);
+   }
+
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
    }
 
    @Override
-   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
-      cqm $$3 = $$1.b($$2);
-      epp $$4 = a($$0, $$1, cwk.b.a);
-      if ($$4.c() == epr.a.b && $$0.a_($$4.a()).a(dae.fy)) {
-         return bne.c($$3);
+   public int b(crj $$0) {
+      return 72000;
+   }
+
+   @Override
+   public ctb c(crj $$0) {
+      return ctb.e;
+   }
+
+   @Override
+   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
+      crj $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).d();
+      if (!$$1.fM() && !$$4) {
+         return bob.d($$3);
       } else {
          $$1.c($$2);
-         if ($$0 instanceof apf $$5) {
-            ib $$6 = $$5.a(auz.a, $$1.dm(), 100, false);
-            if ($$6 != null) {
-               cjf $$7 = new cjf($$0, $$1.dr(), $$1.e(0.5), $$1.dx());
-               $$7.a($$3);
-               $$7.a($$6);
-               $$0.a(drp.K, $$7.dk(), drp.a.a($$1));
-               $$0.b($$7);
-               if ($$1 instanceof apg) {
-                  am.n.a((apg)$$1, $$6);
-               }
-
-               $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.ib, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-               $$0.a(null, 1003, $$1.dm(), 0);
-               $$3.a(1, $$1);
-               $$1.b(aui.c.b(this));
-               $$1.a($$2, true);
-               return bne.a($$3);
-            }
-         }
-
-         return bne.b($$3);
+         return bob.b($$3);
       }
+   }
+
+   @Override
+   public Predicate<crj> b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 15;
    }
 }

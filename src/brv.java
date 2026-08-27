@@ -1,113 +1,32 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public class brv {
+   public static final il<brq> a = a("generic.armor", new brx("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final il<brq> b = a("generic.armor_toughness", new brx("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final il<brq> c = a("generic.attack_damage", new brx("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final il<brq> d = a("generic.attack_knockback", new brx("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final il<brq> e = a("generic.attack_speed", new brx("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final il<brq> f = a("player.block_break_speed", new brx("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final il<brq> g = a("player.block_interaction_range", new brx("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final il<brq> h = a("player.entity_interaction_range", new brx("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final il<brq> i = a("generic.fall_damage_multiplier", new brx("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
+   public static final il<brq> j = a("generic.flying_speed", new brx("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final il<brq> k = a("generic.follow_range", new brx("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final il<brq> l = a("generic.gravity", new brx("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
+   public static final il<brq> m = a("generic.jump_strength", new brx("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final il<brq> n = a("generic.knockback_resistance", new brx("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final il<brq> o = a("generic.luck", new brx("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final il<brq> p = a("generic.max_absorption", new brx("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final il<brq> q = a("generic.max_health", new brx("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final il<brq> r = a("generic.movement_speed", new brx("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final il<brq> s = a("generic.safe_fall_distance", new brx("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final il<brq> t = a("generic.scale", new brx("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final il<brq> u = a("zombie.spawn_reinforcements", new brx("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final il<brq> v = a("generic.step_height", new brx("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-public class brv<E extends bpp> implements bri<E> {
-   private final Map<bys<?>, byt> a;
-   private final Set<bys<?>> b;
-   private final brv.a c;
-   private final brv.b d;
-   private final btq<bri<? super E>> e = new btq<>();
-   private brh.a f = brh.a.a;
-
-   public brv(Map<bys<?>, byt> $$0, Set<bys<?>> $$1, brv.a $$2, brv.b $$3, List<Pair<? extends bri<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((bri<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   private static il<brq> a(String $$0, brq $$1) {
+      return iy.b(kr.u, new ajt($$0), $$1);
    }
 
-   @Override
-   public brh.a a() {
-      return this.f;
-   }
-
-   private boolean a(E $$0) {
-      for (Entry<bys<?>, byt> $$1 : this.a.entrySet()) {
-         bys<?> $$2 = $$1.getKey();
-         byt $$3 = $$1.getValue();
-         if (!$$0.dP().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public final boolean e(apf $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = brh.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(apf $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == brh.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == brh.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(apf $$0, E $$1, long $$2) {
-      this.f = brh.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == brh.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dP()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends bri<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == brh.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(btq::a);
-
-      private final Consumer<btq<?>> c;
-
-      private a(Consumer<btq<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(btq<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends bpp> void a(Stream<bri<? super E>> $$0, apf $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == brh.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
-         }
-      },
-      b {
-         @Override
-         public <E extends bpp> void a(Stream<bri<? super E>> $$0, apf $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == brh.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
-
-      public abstract <E extends bpp> void a(Stream<bri<? super E>> var1, apf var2, E var3, long var4);
+   public static il<brq> a(iy<brq> $$0) {
+      return q;
    }
 }

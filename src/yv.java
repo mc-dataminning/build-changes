@@ -1,29 +1,14 @@
-public class yv implements yb<ys> {
-   public static final xs<uu, yv> a = yb.a(yv::a, yv::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public yv(long $$0) {
-      this.b = $$0;
-   }
-
-   private yv(uu $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(uu $$0) {
-      $$0.b(this.b);
-   }
+public record yv(wg b) implements yn<yt> {
+   public static final ye<ByteBuf, yv> a = wi.f.a(yv::new, yv::b);
 
    @Override
-   public yd<yv> a() {
-      return yr.l;
+   public yp<yv> a() {
+      return zd.b;
    }
 
-   public void a(ys $$0) {
+   public void a(yt $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

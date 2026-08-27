@@ -1,62 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cii {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cii> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ki.y.q().fieldOf("type").orElseGet(() -> cim.c).forGetter($$0x -> $$0x.f),
-               ki.z.q().fieldOf("profession").orElseGet(() -> cik.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cii::new)
-   );
-   public static final xs<vf, cii> d = xs.a(xq.a(kj.aq), $$0 -> $$0.f, xq.a(kj.ap), $$0 -> $$0.g, xq.d, $$0 -> $$0.h, cii::new);
-   private final cim f;
-   private final cik g;
-   private final int h;
+public abstract class cii extends cgz {
+   protected static final aiy<Boolean> b = ajc.a(cii.class, aja.k);
+   protected static final int c = 300;
+   protected int d;
 
-   public cii(cim $$0, cik $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   public cii(bqb<? extends cii> $$0, cyx $$1) {
+      super($$0, $$1);
+      this.s(true);
+      this.y();
+      this.a(elj.n, 16.0F);
+      this.a(elj.o, -1.0F);
    }
 
-   public cim a() {
-      return this.f;
+   private void y() {
+      if (cbj.a(this)) {
+         ((bzy)this.K()).b(true);
+      }
    }
 
-   public cik b() {
-      return this.g;
+   protected abstract boolean r();
+
+   public void w(boolean $$0) {
+      this.an().a(b, $$0);
    }
 
-   public int c() {
-      return this.h;
+   protected boolean u() {
+      return this.an().a(b);
    }
 
-   public cii a(cim $$0) {
-      return new cii($$0, this.g, this.h);
+   @Override
+   protected void a(ajc.a $$0) {
+      super.a($$0);
+      $$0.a(b, false);
    }
 
-   public cii a(cik $$0) {
-      return new cii(this.f, $$0, this.h);
+   @Override
+   public void b(tm $$0) {
+      super.b($$0);
+      if (this.u()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.d);
    }
 
-   public cii a(int $$0) {
-      return new cii(this.f, this.g, $$0);
+   @Override
+   public void a(tm $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.d = $$0.h("TimeInOverworld");
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
+   @Override
+   protected void Y() {
+      super.Y();
+      if (this.gn()) {
+         this.d++;
+      } else {
+         this.d = 0;
+      }
+
+      if (this.d > 300) {
+         this.gr();
+         this.c((aps)this.dM());
+      }
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
+   public boolean gn() {
+      return !this.dM().D_().b() && !this.u() && !this.gd();
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   protected void c(aps $$0) {
+      chu $$1 = this.a(bqb.bw, true);
+      if ($$1 != null) {
+         $$1.b(new bph(bpj.i, 200, 0));
+      }
    }
+
+   public boolean go() {
+      return !this.p_();
+   }
+
+   public abstract cil gp();
+
+   @Nullable
+   @Override
+   public bqo p() {
+      return this.bC.c(bzr.o).orElse(null);
+   }
+
+   protected boolean gq() {
+      return this.eU().f() instanceof csw;
+   }
+
+   @Override
+   public void P() {
+      if (cik.d(this)) {
+         super.P();
+      }
+   }
+
+   @Override
+   protected void X() {
+      super.X();
+      afi.a(this);
+   }
+
+   protected abstract void gr();
 }

@@ -1,44 +1,64 @@
-public class bmz {
-   public static void a(cxb $$0, ib $$1, bmw $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+
+public class bmz extends bnd {
+   public static final Codec<bmz> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bmz::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public static bmz a(float $$0, float $$1, float $$2, float $$3) {
+      return new bmz($$0, $$1, $$2, $$3);
    }
 
-   public static void a(cxb $$0, box $$1, bmw $$2) {
-      a($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2);
+   private bmz(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private static void a(cxb $$0, double $$1, double $$2, double $$3, bmw $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   @Override
+   public float a(axr $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
    }
 
-   public static void a(cxb $$0, ib $$1, iu<cqm> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   public static float a(axr $$0, float $$1, float $$2, float $$3, float $$4) {
+      return axk.a(axk.c($$0, $$1, $$2), $$3, $$4);
    }
 
-   public static void a(cxb $$0, double $$1, double $$2, double $$3, cqm $$4) {
-      double $$5 = (double)bpd.ah.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.b()) {
-         cfe $$11 = new cfe($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public float a() {
+      return this.e;
    }
 
-   public static void a(dnb $$0, dnb $$1, cxb $$2, ib $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bmw $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public bne<?> c() {
+      return bne.c;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

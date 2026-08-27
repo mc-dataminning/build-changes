@@ -1,24 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dbk extends dcy {
-   public static final MapCodec<dbk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(avq.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), u()).apply($$0, dbk::new)
-   );
-   private final avq b;
-
-   @Override
-   public MapCodec<dbk> a() {
-      return a;
-   }
-
-   public dbk(avq $$0, dna.d $$1) {
-      super($$1);
-      this.b = $$0;
+public abstract class dbk extends dby implements deq {
+   protected dbk(doy.d $$0) {
+      super($$0);
    }
 
    @Override
-   public int b(dnb $$0, cwh $$1, ib $$2) {
-      return this.b.a();
+   protected abstract MapCodec<? extends dbk> a();
+
+   @Override
+   protected did b_(doz $$0) {
+      return did.a;
+   }
+
+   @Override
+   protected boolean a(doz $$0, cyx $$1, ib $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dmf $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
+   }
+
+   @Nullable
+   @Override
+   protected boe b(doz $$0, cyx $$1, ib $$2) {
+      dmf $$3 = $$1.c_($$2);
+      return $$3 instanceof boe ? (boe)$$3 : null;
+   }
+
+   @Nullable
+   protected static <E extends dmf, A extends dmf> dmg<A> a(dmh<A> $$0, dmh<E> $$1, dmg<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

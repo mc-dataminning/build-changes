@@ -1,85 +1,87 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
 
-public class fzc implements gln {
-   private final List<fzd> a;
+public class fzc extends fyy {
+   private esa g = esa.b;
+   private int ct;
 
-   public fzc(List<fzd> $$0) {
-      this.a = $$0;
-   }
-
-   public List<fzd> a() {
-      return this.a;
+   public fzc(fuh $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(bot $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void n_() {
+      if (this.bq > 0) {
+         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
+         this.bq--;
+      }
+
+      if (this.bx > 0) {
+         this.a(this.bx, this.bw);
+         this.bx--;
+      }
+
+      if (this.ct > 0) {
+         this.h(new esa((this.g.c - this.dp().c) / (double)this.ct, (this.g.d - this.dp().d) / (double)this.ct, (this.g.e - this.dp().e) / (double)this.ct));
+         this.ct--;
+      }
+
+      this.cb = this.cc;
+      this.eS();
+      float $$1;
+      if (this.aC() && !this.ey()) {
+         $$1 = (float)Math.min(0.1, this.dp().h());
       } else {
-         return $$0 instanceof fzc $$1 ? this.a.equals($$1.a) : false;
+         $$1 = 0.0F;
       }
+
+      this.cc = this.cc + ($$1 - this.cc) * 0.4F;
+      this.dM().af().a("push");
+      this.q();
+      this.dM().af().c();
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new esa($$0, $$1, $$2);
+      this.ct = this.ai().p() + 1;
    }
 
    @Override
-   public Collection<ajh> f() {
-      return this.a().stream().map(fzd::a).collect(Collectors.toSet());
+   protected void fS() {
    }
 
    @Override
-   public void a(Function<ajh, gln> $$0) {
-      this.a().stream().map(fzd::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   public void a(wg $$0) {
+      fbp $$1 = fbp.Q();
+      $$1.l.d().a($$0);
    }
 
-   @Nullable
    @Override
-   public glc a(glg $$0, Function<glf, gjc> $$1, glk $$2, ajh $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         glo.a $$4 = new glo.a();
-
-         for (fzd $$5 : this.a()) {
-            glc $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<fzc> {
-      public fzc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<fzd> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((fzd)$$2.deserialize($$5, fzd.class));
-            }
-         } else {
-            $$3.add((fzd)$$2.deserialize($$0, fzd.class));
-         }
-
-         return new fzc($$3);
-      }
+   public void a(aaz $$0) {
+      super.a($$0);
+      this.bs();
    }
 }

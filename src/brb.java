@@ -1,84 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class brb extends brh<cbe> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bpd<? extends cbe> f;
-   private final float g;
+public enum brb {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   public static final Set<brb> f = Set.of(values());
+   public static final Set<brb> g = Set.of(e, d);
    private final int h;
-   private static final int i = 2;
-   private long j;
 
-   public brb(bpd<? extends cbe> $$0) {
-      this($$0, 1.0F, 2);
+   private brb(int $$0) {
+      this.h = $$0;
    }
 
-   public brb(bpd<? extends cbe> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(bys.h, byt.a, bys.r, byt.b, bys.m, byt.c, bys.n, byt.c, bys.Z, byt.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   private int a() {
+      return 1 << this.h;
    }
 
-   protected boolean a(apf $$0, cbe $$1) {
-      return $$1.gr() && this.c($$1).isPresent();
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
    }
 
-   protected void a(apf $$0, cbe $$1, long $$2) {
-      cbe $$3 = this.c($$1).get();
-      $$1.dP().a(bys.r, $$3);
-      $$3.dP().a(bys.r, $$1);
-      brj.a($$1, (bpp)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.ei().a(50);
-      this.j = $$2 + (long)$$4;
-   }
+   public static Set<brb> a(int $$0) {
+      Set<brb> $$1 = EnumSet.noneOf(brb.class);
 
-   protected boolean b(apf $$0, cbe $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         cbe $$3 = this.a($$1);
-         return $$3.bA() && $$1.a($$3) && brj.a($$1.dP(), $$3) && $$2 <= this.j && !$$1.gk() && !$$3.gk();
-      }
-   }
-
-   protected void c(apf $$0, cbe $$1, long $$2) {
-      cbe $$3 = this.a($$1);
-      brj.a($$1, (bpp)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dP().b(bys.r);
-            $$3.dP().b(bys.r);
+      for (brb $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
          }
       }
+
+      return $$1;
    }
 
-   protected void d(apf $$0, cbe $$1, long $$2) {
-      $$1.dP().b(bys.r);
-      $$1.dP().b(bys.m);
-      $$1.dP().b(bys.n);
-      this.j = 0L;
-   }
+   public static int a(Set<brb> $$0) {
+      int $$1 = 0;
 
-   private cbe a(cbe $$0) {
-      return (cbe)$$0.dP().c(bys.r).get();
-   }
+      for (brb $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
 
-   private boolean b(cbe $$0) {
-      bqq<?> $$1 = $$0.dP();
-      return $$1.a(bys.r) && $$1.c(bys.r).get().ai() == this.f;
-   }
-
-   private Optional<? extends cbe> c(cbe $$0) {
-      return $$0.dP().c(bys.h).get().a($$1 -> {
-         if ($$1.ai() == this.f && $$1 instanceof cbe $$2 && $$0.a($$2) && !$$2.gk()) {
-            return true;
-         }
-
-         return false;
-      }).map(cbe.class::cast);
+      return $$1;
    }
 }

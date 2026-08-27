@@ -1,48 +1,21 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class acb implements yb<aam> {
-   public static final xs<uu, acb> a = yb.a(acb::a, acb::new);
-   private final int b;
-   private final int c;
-   private final acc d;
-
-   public acb(cwi $$0, eie $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new acc($$0, $$1, $$2, $$3);
-   }
-
-   private acb(uu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new acc($$0, this.b, this.c);
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
-   }
+public record acb(wg b, wc.a c) implements yn<aay> {
+   public static final ye<vr, acb> a = ye.a(wi.d, acb::b, wc.a.a, acb::e, acb::new);
 
    @Override
-   public yd<acb> a() {
-      return aex.N;
+   public yp<acb> a() {
+      return afj.C;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public int e() {
+   public wc.a e() {
       return this.c;
-   }
-
-   public acc f() {
-      return this.d;
    }
 }

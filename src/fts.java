@@ -1,22 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class fts {
+   private final ftu a;
+   private final ftt b;
 
-@FunctionalInterface
-public interface fts {
-   Logger a = LogUtils.getLogger();
-   fts b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(ftq.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
-      }
-   };
+   private fts(ftu $$0, ftt $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Optional<ftq> resolve(ftr var1);
+   public ftm a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static fts a(ftu $$0, int $$1, int $$2) {
+      return new fts($$0, new ftt($$1, $$2));
+   }
 }

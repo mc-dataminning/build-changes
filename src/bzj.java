@@ -1,22 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.EnumSet;
 
-public class bzj extends bzs {
-   public static final float a = 10.0F;
+public class bzj extends bzl {
+   private final brk a;
+   private bqo b;
+   private int c;
 
-   @Override
-   protected boolean a(bpp $$0, bpp $$1) {
-      return !$$0.dP().a(bys.U) && bzy.c($$0, $$1) && ccw.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
-   }
-
-   private boolean e(bpp $$0, bpp $$1) {
-      List<UUID> $$2 = $$0.dP().c(bys.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cw());
+   public bzj(brk $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bxl.a.d));
    }
 
    @Override
-   protected bys<bpp> b() {
-      return bys.B;
+   public boolean a() {
+      if (this.a.r() && !this.a.gn()) {
+         bqo $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.el();
+            int $$1 = $$0.em();
+            return $$1 != this.c && this.a(this.b, cbe.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      bqo $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.em();
+      }
+
+      super.c();
    }
 }

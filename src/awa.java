@@ -1,80 +1,28 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class awa implements DataOutput {
-   private final DataOutput a;
+public record awa(int d, int e) {
+   public static final Codec<Integer> a = aws.a(0, 15);
+   public static final Codec<awa> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(awa::b), a.fieldOf("sky").forGetter(awa::c)).apply($$0, awa::new)
+   );
+   public static awa c = new awa(15, 15);
 
-   public awa(DataOutput $$0) {
-      this.a = $$0;
+   public int a() {
+      return this.d << 4 | this.e << 20;
    }
 
-   @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
+   public static awa a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new awa($$1, $$2);
    }
 
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
-   }
-
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
-   }
-
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
-   }
-
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
-
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
-
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+   public int c() {
+      return this.e;
    }
 }

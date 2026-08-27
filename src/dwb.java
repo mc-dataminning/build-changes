@@ -1,31 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwb implements dxw {
+public class dwb implements dvy {
+   private final jg e;
+   private final ih f;
    public static final Codec<dwb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dnb.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dnb.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dnb.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dnb.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dtv.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
+      $$0 -> $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.e), ih.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
             .apply($$0, dwb::new)
    );
-   public final dnb b;
-   public final dnb c;
-   public final dnb d;
-   public final dnb e;
-   public final dtv f;
-   public final boolean g;
 
-   public dwb(dnb $$0, dnb $$1, dnb $$2, dnb $$3, dtv $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public dwb(jg $$0, ih $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(czs $$0, ib $$1) {
+      ib $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
+   }
+
+   @Override
+   public dvz<?> a() {
+      return dvz.d;
    }
 }

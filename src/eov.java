@@ -1,30 +1,66 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record eov(ekw.b c) implements eoy {
-   public static final Codec<eov> a = RecordCodecBuilder.create($$0 -> $$0.group(ekw.b.e.fieldOf("target").forGetter(eov::c)).apply($$0, eov::new));
-   public static final Codec<eov> b = ekw.b.e.xmap(eov::new, eov::c);
+public class eov extends eoo {
+   public static final Codec<eov> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(dlw.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eov::new)
+   );
+   private final dlw b;
+   private final boolean c;
 
-   public static eoy a(ekw.b $$0) {
-      return new eov($$0);
+   eov(List<eqc> $$0, dlw $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public eox a() {
-      return eoz.c;
+   protected crj a(crj $$0, enb $$1) {
+      if (this.c) {
+         $$0.a(jp.N, dlw.a, this.b, ($$0x, $$1x) -> new dlw.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(jp.N, this.b);
+      }
+
+      return $$0;
    }
 
-   @Nullable
    @Override
-   public eqw a(ekw $$0) {
-      return $$0.c(this.c.a());
+   public eoq b() {
+      return eor.z;
    }
 
-   @Override
-   public Set<ene<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public static eov.a a(boolean $$0) {
+      return new eov.a($$0);
+   }
+
+   public static class a extends eoo.a<eov.a> {
+      private final dlw.a a = new dlw.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eov.a a() {
+         return this;
+      }
+
+      @Override
+      public eop b() {
+         return new eov(this.g(), this.a.a(), this.b);
+      }
+
+      public eov.a a(ajs<dlv> $$0, cqc $$1) {
+         return this.a(kr.am.g($$0), $$1);
+      }
+
+      public eov.a a(il<dlv> $$0, cqc $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

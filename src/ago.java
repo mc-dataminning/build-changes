@@ -1,37 +1,67 @@
-public class ago implements yb<aez> {
-   public static final xs<vf, ago> a = yb.a(ago::a, ago::new);
-   private final int b;
-   private final cqm c;
+public class ago implements yn<afl> {
+   public static final ye<vg, ago> a = yn.a(ago::a, ago::new);
+   private final ib b;
+   private final ih c;
+   private final ago.a d;
+   private final int e;
 
-   public ago(int $$0, cqm $$1) {
-      this.b = $$0;
-      this.c = $$1.q();
+   public ago(ago.a $$0, ib $$1, ih $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   private ago(vf $$0) {
-      this.b = $$0.readShort();
-      this.c = cqm.f.decode($$0);
+   public ago(ago.a $$0, ib $$1, ih $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private void a(vf $$0) {
-      $$0.l(this.b);
-      cqm.f.encode($$0, this.c);
+   private ago(vg $$0) {
+      this.d = $$0.b(ago.a.class);
+      this.b = $$0.e();
+      this.c = ih.a($$0.readUnsignedByte());
+      this.e = $$0.l();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.k(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public yd<ago> a() {
-      return aex.bU;
+   public yp<ago> a() {
+      return afj.bI;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ib b() {
       return this.b;
    }
 
-   public cqm e() {
+   public ih e() {
       return this.c;
+   }
+
+   public ago.a f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

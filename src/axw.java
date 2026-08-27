@@ -1,50 +1,54 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.logging.LogUtils;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface axw<C> {
-   axw<Float> a = a($$0 -> $$0);
+public interface axw {
+   axw a = ($$0, $$1) -> true;
+   Logger b = LogUtils.getLogger();
 
-   float a(C var1);
+   boolean validate(axv var1, byte[] var2);
 
-   float b();
+   default boolean a(byte[] $$0, byte[] $$1) {
+      return this.validate($$1x -> $$1x.update($$0), $$1);
+   }
 
-   float c();
+   private static boolean a(axv $$0, byte[] $$1, Signature $$2) throws SignatureException {
+      $$0.update($$2::update);
+      return $$2.verify($$1);
+   }
 
-   static axw<Float> a(final Float2FloatFunction $$0) {
-      return new axw<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
+   static axw a(PublicKey $$0, String $$1) {
+      return ($$2, $$3) -> {
+         try {
+            Signature $$4 = Signature.getInstance($$1);
+            $$4.initVerify($$0);
+            return a($$2, $$3, $$4);
+         } catch (Exception var5) {
+            b.error("Failed to verify signature", var5);
+            return false;
          }
       };
    }
 
-   default <C2> axw<C2> a(final Function<C2, C> $$0) {
-      final axw<C> $$1 = this;
-      return new axw<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
+   @Nullable
+   static axw a(ServicesKeySet $$0, ServicesKeyType $$1) {
+      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
+      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
+            Signature $$3 = $$2xx.signature();
 
-         @Override
-         public float b() {
-            return $$1.b();
-         }
-
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+            try {
+               return a($$1x, $$2x, $$3);
+            } catch (SignatureException var5) {
+               b.error("Failed to verify Services signature", var5);
+               return false;
+            }
+         });
    }
 }

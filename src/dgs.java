@@ -1,84 +1,128 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dgs extends dcm implements dgr {
-   public static final MapCodec<dgs> b = b(dgs::new);
+public class dgs extends dil implements diy {
+   public static final MapCodec<dgs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(doo.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dgs::new)
+   );
+   public static final dpz b = dpp.at;
+   public static final int c = 4;
+   private static final est[] j = new est[]{
+      dby.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      dby.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      dby.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      dby.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      dby.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dpq k = dpp.C;
+   public static final dpq d = dpp.j;
 
    @Override
    public MapCodec<dgs> a() {
-      return b;
+      return a;
    }
 
-   public dgs(dna.d $$0) {
-      super(bmf.a(1), $$0);
-   }
-
-   @Override
-   public int a(dgw.a $$0, cxc $$1, ib $$2, axd $$3, dgw $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         ib $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               ib $$10 = $$7.c();
-               dnb $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), atz.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
-      } else {
-         return $$6;
-      }
-   }
-
-   private static int a(dgw $$0, ib $$1, ib $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = aww.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = aww.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
-   }
-
-   private dnb a(cxc $$0, ib $$1, axd $$2, boolean $$3) {
-      dnb $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dae.qV.o().a(dgv.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = dae.qQ.o();
-      }
-
-      return $$4.b(dnr.C) && !$$0.b_($$1).c() ? $$4.a(dnr.C, Boolean.valueOf(true)) : $$4;
-   }
-
-   private static boolean a(cxc $$0, ib $$1) {
-      dnb $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(dae.G) && $$2.u().b(eiq.c)) {
-         int $$3 = 0;
-
-         for (ib $$4 : ib.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dnb $$5 = $$0.a_($$4);
-            if ($$5.a(dae.qQ) || $$5.a(dae.qV)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public dgs(doo $$0, doy.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d() {
-      return false;
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
+   }
+
+   @Override
+   protected boolean b(doz $$0, cyd $$1, ib $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dca.dR);
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      eks $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ekt.c;
+      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
+   }
+
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      esa $$4 = $$0.n($$1, $$2);
+      est $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
+      } else {
+         $$5 = j[$$0.c(b)];
+      }
+
+      return $$5.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      return m($$0) ? $$1.a_($$2.c()).a(dca.aL) : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, ekt.c, ekt.c.a($$3));
+      }
+
+      return $$1 == ih.b && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected eks c_(doz $$0) {
+      return $$0.c(k) ? ekt.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if (!m($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!n($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
+         }
+      }
+   }
+
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return !m($$2) || !n($$2);
+   }
+
+   @Override
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return m($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      if (m($$3) && !n($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static boolean m(doz $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean n(doz $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static doz c() {
+      return b(0);
+   }
+
+   public static doz b(int $$0) {
+      return dca.E.n().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
    }
 }

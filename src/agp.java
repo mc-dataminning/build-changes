@@ -1,85 +1,61 @@
-public class agp implements yb<aez> {
-   public static final xs<uu, agp> a = yb.a(agp::a, agp::new);
-   private final ib b;
-   private final ajh c;
-   private final ajh d;
-   private final ajh e;
-   private final String f;
-   private final dli.a g;
-   private final int h;
-   private final int i;
+public class agp implements yn<afl> {
+   public static final ye<vg, agp> a = yn.a(agp::a, agp::new);
+   private final int b;
+   private final agp.a c;
+   private final int d;
 
-   public agp(ib $$0, ajh $$1, ajh $$2, ajh $$3, String $$4, dli.a $$5, int $$6, int $$7) {
-      this.b = $$0;
+   public agp(bpv $$0, agp.a $$1) {
+      this($$0, $$1, 0);
+   }
+
+   public agp(bpv $$0, agp.a $$1, int $$2) {
+      this.b = $$0.aj();
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
    }
 
-   private agp(uu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dli.a.a($$0.p()).orElse(dli.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private agp(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(agp.a.class);
+      this.d = $$0.l();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
+   private void a(vg $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
+      $$0.c(this.d);
    }
 
    @Override
-   public yd<agp> a() {
-      return aex.bV;
+   public yp<agp> a() {
+      return afj.bJ;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   public int b() {
       return this.b;
    }
 
-   public ajh e() {
+   public agp.a e() {
       return this.c;
    }
 
-   public ajh f() {
+   public int f() {
       return this.d;
    }
 
-   public ajh g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dli.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

@@ -1,39 +1,46 @@
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fbx extends fbg {
-   private final fat a;
-
-   public fbx(fat $$0, vu $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected void b(fav $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.B() + this.w() / 2;
-      int $$5 = this.C() + this.u() / 2;
-      vu $$6 = this.x();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fgs.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
-   }
-
-   @Override
-   protected void a(ffe $$0) {
-   }
-
-   @Override
-   public void a(gnt $$0) {
-   }
-
-   @Override
-   public boolean A() {
-      return false;
-   }
-
+public class fbx {
+   private static final Logger a = LogUtils.getLogger();
+   private final fbp b;
    @Nullable
-   @Override
-   public fas a(ffk $$0) {
-      return null;
+   private CompletableFuture<Boolean> c;
+   private boolean d;
+
+   public fbx(fbp $$0) {
+      this.b = $$0;
+   }
+
+   public void a(fjo $$0) {
+      if (!this.b.ah() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fmm($$0));
+         this.d = true;
+      }
+   }
+
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+      }
+
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
+      }
+   }
+
+   private boolean b() {
+      try {
+         return ewy.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (eyl var2) {
+         return false;
+      }
    }
 }

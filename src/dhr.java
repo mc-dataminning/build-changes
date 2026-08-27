@@ -1,53 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dhr extends dac {
+public class dhr extends dby implements dcf {
    public static final MapCodec<dhr> a = b(dhr::new);
-   private static final eqm b = dac.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final est f = esq.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dhr> a() {
       return a;
    }
 
-   public dhr(dna.d $$0) {
+   public dhr(doy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      return dac.a($$1, $$2.c(), ih.a) && !$$1.z($$2);
+   protected boolean a(doz $$0, doz $$1, ih $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      return $$1 == ih.b && !this.a($$0, $$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected est f(doz $$0, cyd $$1, ib $$2) {
+      return esq.a();
    }
 
    @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(kc.ax, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ib.a $$10 = new ib.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aww.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aww.a($$3, -10, 10));
-         dnb $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(kc.aB, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+   protected void a(doz $$0, cyx $$1, ib $$2, bpv $$3) {
+      if (!($$3 instanceof bqo) || $$3.dn().a(this)) {
+         $$3.a($$0, new esa(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            axr $$4 = $$1.E_();
+            boolean $$5 = $$3.ac != $$3.dr() || $$3.ae != $$3.dx();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  kl.aI,
+                  $$3.dr(),
+                  (double)($$2.v() + 1),
+                  $$3.dx(),
+                  (double)(axk.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(axk.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
          }
+      }
+
+      $$3.o(true);
+      if (!$$1.B) {
+         if ($$3.bN() && ($$1.aa().b(cyt.c) || $$3 instanceof cjt) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.a_(false);
       }
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return b;
+   public void a(cyx $$0, doz $$1, ib $$2, bpv $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof bqo $$5) {
+         bqo.a $$7 = $$5.eI();
+         aul $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected est b(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      if ($$3 instanceof esk $$4) {
+         bpv $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.ab > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cgc;
+            if ($$6 || a($$5) && $$3.a(esq.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return esq.a();
+   }
+
+   @Override
+   protected est c(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return esq.a();
+   }
+
+   public static boolean a(bpv $$0) {
+      if ($$0.ai().a(avf.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bqo ? ((bqo)$$0).d(bqc.c).a(crm.pA) : false;
+      }
+   }
+
+   @Override
+   public crj a(@Nullable cjt $$0, cyy $$1, ib $$2, doz $$3) {
+      $$1.a($$2, dca.a.n(), 11);
+      if (!$$1.x_()) {
+         $$1.c(2001, $$2, dby.i($$3));
+      }
+
+      return new crj(crm.qA);
+   }
+
+   @Override
+   public Optional<aul> at_() {
+      return Optional.of(aum.dm);
+   }
+
+   @Override
+   protected boolean a(doz $$0, elh $$1) {
+      return true;
    }
 }

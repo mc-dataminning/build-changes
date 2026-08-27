@@ -1,51 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class atx {
-   public static final Codec<atx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajh.a.fieldOf("sound_id").forGetter(atx::a), Codec.FLOAT.optionalFieldOf("range").forGetter(atx::b)).apply($$0, atx::a)
-   );
-   public static final Codec<il<atx>> b = ajd.a(kj.af, a);
-   public static final xs<ByteBuf, atx> c = xs.a(ajh.b, atx::a, xq.f.a(xq::a), atx::b, atx::a);
-   public static final xs<vf, il<atx>> d = xq.a(kj.af, c);
-   private static final float e = 16.0F;
-   private final ajh f;
-   private final float g;
-   private final boolean h;
-
-   private static atx a(ajh $$0, Optional<Float> $$1) {
-      return $$1.<atx>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+public class atx extends atu<GameProfile, aty> {
+   public atx(File $$0) {
+      super($$0);
    }
 
-   public static atx a(ajh $$0) {
-      return new atx($$0, 16.0F, false);
+   @Override
+   protected att<GameProfile> a(JsonObject $$0) {
+      return new aty($$0);
    }
 
-   public static atx a(ajh $$0, float $$1) {
-      return new atx($$0, $$1, true);
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   private atx(ajh $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(att::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public ajh a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

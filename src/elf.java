@@ -1,49 +1,91 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class elf {
-   private final axb a;
-   private final enf b;
-   private final ela c;
-   private final Set<eky<?>> d;
+public abstract class elf {
+   protected ell a;
+   protected bqq b;
+   protected final Int2ObjectMap<ele> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public elf(axb $$0, enf $$1, ela $$2) {
-      this($$0, $$1, $$2, Set.of());
-   }
-
-   private elf(axb $$0, enf $$1, ela $$2, Set<eky<?>> $$3) {
-      this.a = $$0;
+   public void a(czk $$0, bqq $$1) {
+      this.a = new ell($$0, $$1);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c.clear();
+      this.d = axk.d($$1.dg() + 1.0F);
+      this.e = axk.d($$1.dh() + 1.0F);
+      this.f = axk.d($$1.dg() + 1.0F);
    }
 
-   public elf a(String $$0) {
-      return new elf(this.a.a($$0), this.b, this.c, this.d);
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   public elf a(String $$0, eky<?> $$1) {
-      ImmutableSet<eky<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new elf(this.a.a($$0), this.b, this.c, $$2);
+   protected ele b(ib $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean a(eky<?> $$0) {
-      return this.d.contains($$0);
+   protected ele c(int $$0, int $$1, int $$2) {
+      return (ele)this.c.computeIfAbsent(ele.b($$0, $$1, $$2), $$3 -> new ele($$0, $$1, $$2));
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public abstract ele a();
+
+   public abstract eln a(double var1, double var3, double var5);
+
+   protected eln b(double $$0, double $$1, double $$2) {
+      return new eln(this.c(axk.a($$0), axk.a($$1), axk.a($$2)));
    }
 
-   public void a(ekx $$0) {
-      this.b.a(this, $$0);
+   public abstract int a(ele[] var1, ele var2);
+
+   public abstract elj a(ell var1, int var2, int var3, int var4, bqq var5);
+
+   public abstract elj a(ell var1, int var2, int var3, int var4);
+
+   public elj a(bqq $$0, ib $$1) {
+      return this.a(new ell($$0.dM(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   public ela a() {
-      return this.c;
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public elf a(enf $$0) {
-      return new elf(this.a, $$0, this.c, this.d);
+   public void b(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.j = $$0;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public boolean e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public boolean g() {
+      return this.j;
+   }
+
+   public static boolean a(doz $$0) {
+      return $$0.a(avc.aK) || $$0.a(dca.H) || $$0.a(dca.kJ) || dcm.g($$0) || $$0.a(dca.fv);
    }
 }

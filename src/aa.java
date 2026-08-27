@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3817;
+   public static final int b = 3819;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w07a";
+   public static final String d = "24w09a";
    @Deprecated
    public static final int e = 766;
    @Deprecated
-   public static final int f = 177;
+   public static final int f = 178;
    public static final int g = 3798;
-   private static final int bn = 30;
+   private static final int bo = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 26;
+   public static final int i = 28;
    @Deprecated
-   public static final int j = 32;
+   public static final int j = 33;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -123,76 +123,55 @@ public class aa {
    public static final int aZ = 256;
    public static final int ba = 32500;
    public static final int bb = 2000000;
-   public static final int bc = 1000000;
-   public static final int bd = 32;
-   public static final char[] be = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bf = 20;
-   public static final int bg = 50;
-   public static final int bh = 1200;
-   public static final int bi = 24000;
-   public static final float bj = 1365.3334F;
-   public static final float bk = 0.87890625F;
-   public static final float bl = 17.578125F;
-   public static final int bm = 64;
+   public static final int bc = 16;
+   public static final int bd = 1000000;
+   public static final int be = 32;
+   public static final char[] bf = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
+   public static final int bg = 20;
+   public static final int bh = 50;
+   public static final int bi = 1200;
+   public static final int bj = 24000;
+   public static final float bk = 1365.3334F;
+   public static final float bl = 0.87890625F;
+   public static final float bm = 17.578125F;
+   public static final int bn = 64;
    @Nullable
-   private static ad bo;
-
-   public static boolean a(char $$0) {
-      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
-   }
-
-   public static String a(String $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(String $$0, boolean $$1) {
-      StringBuilder $$2 = new StringBuilder();
-
-      for (char $$3 : $$0.toCharArray()) {
-         if (a($$3)) {
-            $$2.append($$3);
-         } else if ($$1 && $$3 == '\n') {
-            $$2.append($$3);
-         }
-      }
-
-      return $$2.toString();
-   }
+   private static ad bp;
 
    public static void a(ad $$0) {
-      if (bo == null) {
-         bo = $$0;
-      } else if ($$0 != bo) {
+      if (bp == null) {
+         bp = $$0;
+      } else if ($$0 != bp) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bo == null) {
-         bo = t.a();
+      if (bp == null) {
+         bp = t.a();
       }
    }
 
    public static ad b() {
-      if (bo == null) {
+      if (bp == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bo;
+         return bp;
       }
    }
 
    public static int c() {
-      return 1073742001;
+      return 1073742002;
    }
 
-   public static boolean a(cwi $$0) {
+   public static boolean a(cye $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aX = ayc.t;
+      aX = ayq.t;
    }
 
    static {

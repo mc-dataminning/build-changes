@@ -1,12 +1,15 @@
-public abstract class fmy<T extends cga> extends fos<T> {
-   protected fmy(frf $$0) {
-      super($$0);
+import java.util.Set;
+
+public class fmy extends fmx {
+   private static final wg i = wg.c("gui.recipebook.toggleRecipes.blastable");
+
+   @Override
+   protected wg c() {
+      return i;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      fnc.a(this.o, this.n, this.a($$0), this.c, $$3);
+   @Override
+   protected Set<cre> b() {
+      return dlt.g().keySet();
    }
-
-   public abstract boolean a(T var1);
 }

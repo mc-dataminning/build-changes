@@ -1,39 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+public class giu extends gjt<cgp, fqk<cgp>> {
+   private final gat a;
 
-public class giu extends giv {
-   @Nullable
-   private CompletableFuture<giv.a> f;
-
-   public giu(aso $$0, ajh $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> giv.a.a($$0, $$1), $$2);
+   public giu(ghd<cgp, fqk<cgp>> $$0, gat $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   protected giv.a b(aso $$0) {
-      if (this.f != null) {
-         giv.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return giv.a.a($$0, this.e);
+   public void a(ewi $$0, fzz $$1, int $$2, cgp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      doz $$10 = $$3.gn();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gla.d);
+         $$0.b();
       }
-   }
-
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
-   }
-
-   @Override
-   public void a(gjd $$0, aso $$1, ajh $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> giv.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

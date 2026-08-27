@@ -1,74 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gbq implements gbe.a {
-   private final ezi a;
-   private double b = Double.MIN_VALUE;
-   private List<box> c = Collections.emptyList();
+public class gbq {
+   private final gbm a;
+   private final gbj b;
 
-   public gbq(ezi $$0) {
-      this.a = $$0;
+   public gbq(gbm $$0, gbj $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public gbj a() {
+      return this.b;
+   }
+
+   public Predicate<doz> a(dpa<dby, doz> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         box $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<gbq> {
+      public gbq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gbq(this.b($$3), (gbj)$$2.deserialize($$3.get("apply"), gbj.class));
       }
 
-      ciu $$7 = this.a.s;
-      if ($$7 != null && $$7.aD.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      private gbm b(JsonObject $$0) {
+         return $$0.has("when") ? a(axa.u($$0, "when")) : gbm.b;
       }
 
-      for (box $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      @VisibleForTesting
+      static gbm a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gbm> $$2 = Streams.stream(axa.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gbp($$2);
+            } else if ($$0.has("AND")) {
+               List<gbm> $$3 = Streams.stream(axa.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gbl($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gbl($$1.stream().map(gbq.a::a).collect(Collectors.toList()));
          }
       }
-   }
 
-   private void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4, box $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aD.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         ib $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         ib $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(box $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(ib $$0, eub $$1, double $$2, double $$3, double $$4, fxs $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fxq.a($$1, $$5.getBuffer(fya.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fxq.a(
-         $$1,
-         $$5.getBuffer(fya.y()),
-         this.a.r.a_($$0).b(this.a.r, $$0, epy.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+      private static gbm a(Entry<String, JsonElement> $$0) {
+         return new gbn($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

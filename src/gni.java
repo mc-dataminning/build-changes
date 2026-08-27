@@ -1,101 +1,70 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gni {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class gni implements AutoCloseable {
+   private final Map<ajt, gni.a> a;
 
-   public static class a extends Thread {
-      private final gni.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
+   public gni(Map<ajt, ajt> $$0, glk $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gli $$2 = new gli((ajt)$$1x.getKey());
+         $$1.a((ajt)$$1x.getKey(), $$2);
+         return new gni.a($$2, (ajt)$$1x.getValue());
+      }));
+   }
 
-      public a(gni.b $$0) throws IOException {
-         super("LanServerDetector #" + gni.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(gni.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
+   public gli a(ajt $$0) {
+      return this.a.get($$0).a();
+   }
+
+   @Override
+   public void close() {
+      this.a.values().forEach(gni.a::close);
+      this.a.clear();
+   }
+
+   public Map<ajt, CompletableFuture<gni.b>> a(atc $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gni.a $$4 = $$3.getValue();
+         return gle.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gni.b($$4.a, $$1xx));
+      }));
+   }
+
+   static record a(gli a, ajt b) implements AutoCloseable {
 
       @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               gni.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            gni.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
+      public void close() {
+         this.a.f();
       }
    }
 
    public static class b {
-      private final List<gnh> a = Lists.newArrayList();
-      private boolean b;
+      private final gli a;
+      private final gle.a b;
 
-      @Nullable
-      public synchronized List<gnh> a() {
-         if (this.b) {
-            List<gnh> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
+      public b(gli $$0, gle.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = gnj.a($$0);
-         String $$3 = gnj.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
+      @Nullable
+      public glj a(ajt $$0) {
+         return this.b.f().get($$0);
+      }
 
-            for (gnh $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
+      public glj a() {
+         return this.b.e();
+      }
 
-            if (!$$4) {
-               this.a.add(new gnh($$2, $$3));
-               this.b = true;
-            }
-         }
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
       }
    }
 }

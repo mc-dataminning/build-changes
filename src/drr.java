@@ -1,20 +1,18 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface drr {
-   drt a();
+   @Nullable
+   efp a(efh var1);
 
-   int b();
+   void a(efh var1, efp var2);
 
-   boolean a(apf var1, il<drp> var2, drp.a var3, ept var4);
+   LongSet b(efh var1);
 
-   default drr.a c() {
-      return drr.a.a;
-   }
+   void a(efh var1, long var2);
 
-   public static enum a {
-      a,
-      b;
-   }
+   Map<efh, LongSet> h();
 
-   public interface b<T extends drr> {
-      T c();
-   }
+   void b(Map<efh, LongSet> var1);
 }

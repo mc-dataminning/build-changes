@@ -1,27 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fvh {
-   private final List<ajh> a;
+public enum fvh {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   private fvh(List<ajh> $$0) {
-      this.a = $$0;
+   private final wg n;
+
+   private fvh(String $$0) {
+      this.n = wg.c("gui.banned.reason." + $$0);
    }
 
-   public List<ajh> a() {
-      return this.a;
+   public wg a() {
+      return this.n;
    }
 
-   public static fvh a(JsonObject $$0) {
-      JsonArray $$1 = awm.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fvh(List.of());
-      } else {
-         List<ajh> $$2 = Streams.stream($$1).map($$0x -> awm.a($$0x, "texture")).map(ajh::new).collect(ImmutableList.toImmutableList());
-         return new fvh($$2);
-      }
+   @Nullable
+   public static fvh a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

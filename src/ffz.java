@@ -1,102 +1,151 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class ffz extends fhh {
-   private static final int k = 20;
-   private final vu l;
-   private fcb m = fcb.a;
-   protected vu a;
-   protected vu b;
-   private int n;
-   protected final BooleanConsumer c;
-   private final List<fbi> o = Lists.newArrayList();
+public class ffz {
+   private static final int a = 5;
+   private static final int b = -1;
+   final fbp c;
+   private final List<ffz.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<ffy> f = Queues.newArrayDeque();
 
-   public ffz(BooleanConsumer $$0, vu $$1, vu $$2) {
-      this($$0, $$1, $$2, vt.f, vt.g);
-   }
-
-   public ffz(BooleanConsumer $$0, vu $$1, vu $$2, vu $$3, vu $$4) {
-      super($$1);
+   public ffz(fbp $$0) {
       this.c = $$0;
-      this.l = $$2;
-      this.a = $$3;
-      this.b = $$4;
    }
 
-   @Override
-   public vu i() {
-      return vt.a(super.i(), this.l);
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.m = fcb.a(this.i, this.l, this.g - 50);
-      int $$0 = aww.a(this.E() + this.H() + 20, this.h / 6 + 96, this.h - 24);
-      this.o.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(fbi.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
-      this.a(fbi.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fbi $$0) {
-      this.o.add(this.c($$0));
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o(), 16777215);
-      this.m.a($$0, this.g / 2, this.E());
-   }
-
-   private int o() {
-      int $$0 = (this.h - this.H()) / 2;
-      return aww.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.o() + 20;
-   }
-
-   private int H() {
-      return this.m.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-
-      for (fbi $$1 : this.o) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.n == 0) {
-         for (fbi $$0 : this.o) {
-            $$0.j = true;
+   public void a(fdc $$0) {
+      if (!this.c.m.Z) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new ffz.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
          }
       }
    }
 
-   @Override
-   public boolean aM_() {
-      return false;
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private int d() {
+      return 5 - this.e.cardinality();
+   }
+
+   @Nullable
+   public <T extends ffy> T a(Class<? extends T> $$0, Object $$1) {
+      for (ffz.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (ffy $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(ffy $$0) {
+      this.f.add($$0);
+   }
+
+   public fbp b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.B().c();
+   }
+
+   class a<T extends ffy> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private ffy.a h = ffy.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      private float a(long $$0) {
+         float $$1 = axk.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == ffy.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, fdc $$1) {
+         long $$2 = ac.b();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(ffz.this.c.ak());
+         }
+
+         if (this.h == ffy.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
+
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         ffy.a $$3 = this.c.a($$1, ffz.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(ffz.this.c.ak());
+         }
+
+         return this.h == ffy.a.b && $$2 - this.f > 600L;
       }
    }
 }

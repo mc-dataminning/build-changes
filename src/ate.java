@@ -1,45 +1,71 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public class ate {
-   private int a;
-   private int b;
+public interface ate {
+   ate a = new ate() {
+      @Override
+      public <T> Optional<T> a(asb<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   asu<ate> b = () -> a;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
-   }
-
-   public boolean a(int $$0, List<apg> $$1) {
-      int $$2 = (int)$$1.stream().filter(ciu::gc).count();
-      return $$2 >= this.b($$0);
-   }
-
-   public int b(int $$0) {
-      return Math.max(1, aww.f((float)(this.a * $$0) / 100.0F));
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean a(List<apg> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (apg $$3 : $$0) {
-         if (!$$3.N_()) {
-            this.a++;
-            if ($$3.fI()) {
-               this.b++;
+   static ate a(InputStream $$0) throws IOException {
+      ate var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = axa.a($$1);
+         var3 = new ate() {
+            @Override
+            public <T> Optional<T> a(asb<T> $$0) {
+               String $$1 = $$0.a();
+               return $$2.has($$1) ? Optional.of($$0.a(axa.u($$2, $$1))) : Optional.empty();
             }
-         }
+         };
       }
 
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+      return var3;
+   }
+
+   <T> Optional<T> a(asb<T> var1);
+
+   default ate a(Collection<asb<?>> $$0) {
+      ate.a $$1 = new ate.a();
+
+      for (asb<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
+   }
+
+   private <T> void a(ate.a $$0, asb<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   }
+
+   public static class a {
+      private final Builder<asb<?>, Object> a = ImmutableMap.builder();
+
+      public <T> ate.a a(asb<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public ate a() {
+         final ImmutableMap<asb<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? ate.a : new ate() {
+            @Override
+            public <T> Optional<T> a(asb<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
+      }
    }
 }

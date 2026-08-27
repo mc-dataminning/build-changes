@@ -1,15 +1,12 @@
-public class cue extends csy {
-   public cue(String $$0, cte $$1, ctm $$2, cqm $$3, float $$4, int $$5) {
-      super(ctu.b, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public cqm g() {
-      return new cqm(dae.cD);
-   }
+public record cue(int d) {
+   public static final Codec<cue> a = Codec.INT.xmap(cue::new, cue::a);
+   public static final ye<ByteBuf, cue> b = yc.e.a(cue::new, cue::a);
+   public static final cue c = new cue(4603950);
 
-   @Override
-   public ctt<?> ar_() {
-      return ctt.p;
+   public int a() {
+      return this.d;
    }
 }

@@ -1,38 +1,52 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fax {
-   public static final float a = 200.0F;
-   private final List<fax.a> b = new ArrayList<>();
+public class fax extends fap {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wg c = wg.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public fax a(fax.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fax(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public fax a(fax $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
+   @Override
+   public void run() {
+      ewy $$0 = ewy.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (eym var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
-      });
-   }
-
-   public void a(fav $$0, float $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(fav $$0, float $$1) {
-      for (fax.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
    }
 
-   public interface a {
-      void render(fav var1, float var2);
+   @Override
+   public wg a() {
+      return c;
    }
 }

@@ -1,50 +1,209 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.function.DoubleSupplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public interface blv<Msg> extends AutoCloseable {
-   String bx();
+public class blv {
+   private final String b;
+   private final blu c;
+   private final DoubleSupplier d;
+   private final ByteBuf e;
+   private final ByteBuf f;
+   private volatile boolean g;
+   @Nullable
+   private final Runnable h;
+   @Nullable
+   final blv.c a;
+   private double i;
 
-   void a(Msg var1);
+   protected blv(String $$0, blu $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable blv.c $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.h = $$3;
+      this.d = $$2;
+      this.a = $$4;
+      this.f = ByteBufAllocator.DEFAULT.buffer();
+      this.e = ByteBufAllocator.DEFAULT.buffer();
+      this.g = true;
+   }
+
+   public static blv a(String $$0, blu $$1, DoubleSupplier $$2) {
+      return new blv($$0, $$1, $$2, null, null);
+   }
+
+   public static <T> blv a(String $$0, blu $$1, T $$2, ToDoubleFunction<T> $$3) {
+      return a($$0, $$1, $$3, $$2).a();
+   }
+
+   public static <T> blv.a<T> a(String $$0, blu $$1, ToDoubleFunction<T> $$2, T $$3) {
+      return new blv.a<>($$0, $$1, $$2, $$3);
+   }
+
+   public void a() {
+      if (!this.g) {
+         throw new IllegalStateException("Not running");
+      } else {
+         if (this.h != null) {
+            this.h.run();
+         }
+      }
+   }
+
+   public void a(int $$0) {
+      this.h();
+      this.i = this.d.getAsDouble();
+      this.f.writeDouble(this.i);
+      this.e.writeInt($$0);
+   }
+
+   public void b() {
+      this.h();
+      this.f.release();
+      this.e.release();
+      this.g = false;
+   }
+
+   private void h() {
+      if (!this.g) {
+         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
+      }
+   }
+
+   DoubleSupplier c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public blu e() {
+      return this.c;
+   }
+
+   public blv.b f() {
+      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
+      int $$1 = Integer.MIN_VALUE;
+      int $$2 = Integer.MIN_VALUE;
+
+      while (this.f.isReadable(8)) {
+         int $$3 = this.e.readInt();
+         if ($$1 == Integer.MIN_VALUE) {
+            $$1 = $$3;
+         }
+
+         $$0.put($$3, this.f.readDouble());
+         $$2 = $$3;
+      }
+
+      return new blv.b($$1, $$2, $$0);
+   }
+
+   public boolean g() {
+      return this.a != null && this.a.test(this.i);
+   }
 
    @Override
-   default void close() {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         blv $$1 = (blv)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super blv<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super blv<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
+   public static class a<T> {
+      private final String a;
+      private final blu b;
+      private final DoubleSupplier c;
+      private final T d;
+      @Nullable
+      private Runnable e;
+      @Nullable
+      private blv.c f;
+
+      public a(String $$0, blu $$1, ToDoubleFunction<T> $$2, T $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = () -> $$2.applyAsDouble($$3);
+         this.d = $$3;
+      }
+
+      public blv.a<T> a(Consumer<T> $$0) {
+         this.e = () -> $$0.accept(this.d);
+         return this;
+      }
+
+      public blv.a<T> a(blv.c $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public blv a() {
+         return new blv(this.a, this.b, this.c, this.e, this.f);
+      }
    }
 
-   static <Msg> blv<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new blv<Msg>() {
-         @Override
-         public String bx() {
-            return $$0;
+   public static class b {
+      private final Int2DoubleMap a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, Int2DoubleMap $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      public double a(int $$0) {
+         return this.a.get($$0);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public interface c {
+      boolean test(double var1);
+   }
+
+   public static class d implements blv.c {
+      private final float a;
+      private double b = Double.MIN_VALUE;
+
+      public d(float $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean test(double $$0) {
+         boolean $$2;
+         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
+            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
+         } else {
+            $$2 = false;
          }
 
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+         this.b = $$0;
+         return $$2;
+      }
    }
 }

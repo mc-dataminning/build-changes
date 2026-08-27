@@ -1,19 +1,74 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class egc extends egy {
-   public static final Codec<egc> a = Codec.unit(() -> egc.b);
-   public static final egc b = new egc();
+public class egc extends ege {
+   public static final Codec<egc> a = aws.<egc>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(egc::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(egc::b),
+                        egd.c.optionalFieldOf("spread_type", egd.a).forGetter(egc::c)
+                     )
+                  )
+                  .apply($$0, egc::new)
+         ),
+         egc::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final egd e;
 
-   private egc() {
+   private static DataResult<egc> a(egc $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
+
+   public egc(jg $$0, ege.c $$1, float $$2, int $$3, Optional<ege.a> $$4, int $$5, int $$6, egd $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public egc(int $$0, int $$1, egd $$2, int $$3) {
+      this(jg.g, ege.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public egd c() {
+      return this.e;
+   }
+
+   public cye a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dvq $$5 = new dvq(new dus(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new cye($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public boolean a(dnb $$0, axd $$1) {
-      return true;
+   protected boolean a(dqx $$0, int $$1, int $$2) {
+      cye $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
    @Override
-   protected egz<?> a() {
-      return egz.a;
+   public egf<?> e() {
+      return egf.a;
    }
 }

@@ -1,51 +1,112 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record ejv(ib c, cpd d, Optional<vu> e) {
-   public static final Codec<ejv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ib.a.fieldOf("pos").forGetter(ejv::c), cpd.q.optionalFieldOf("color", cpd.a).forGetter(ejv::d), vw.e.optionalFieldOf("name").forGetter(ejv::e)
-            )
-            .apply($$0, ejv::new)
-   );
-   public static final Codec<List<ejv>> b = a.listOf();
+public class ejv {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final ejw d;
+   private final ejw e;
+   private final double f;
+   private final ejv.a g;
 
-   @Nullable
-   public static ejv a(cwh $$0, ib $$1) {
-      if ($$0.c_($$1) instanceof djy $$3) {
-         cpd $$4 = $$3.f();
-         Optional<vu> $$5 = Optional.ofNullable($$3.af());
-         return new ejv($$1, $$4, $$5);
+   @Deprecated
+   public static ejv a(axr $$0, ejv.a $$1) {
+      return new ejv($$0, $$1, false);
+   }
+
+   public static ejv a(axr $$0, int $$1, double... $$2) {
+      return b($$0, new ejv.a($$1, new DoubleArrayList($$2)));
+   }
+
+   public static ejv b(axr $$0, ejv.a $$1) {
+      return new ejv($$0, $$1, true);
+   }
+
+   private ejv(axr $$0, ejv.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = ejw.b($$0, $$3, $$4);
+         this.e = ejw.b($$0, $$3, $$4);
       } else {
-         return null;
+         this.d = ejw.a($$0, $$3, $$4);
+         this.e = ejw.a($$0, $$3, $$4);
       }
+
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   public ejw.a a() {
-      return switch (this.d) {
-         case a -> ejw.a.k;
-         case b -> ejw.a.l;
-         case c -> ejw.a.m;
-         case d -> ejw.a.n;
-         case e -> ejw.a.o;
-         case f -> ejw.a.p;
-         case g -> ejw.a.q;
-         case h -> ejw.a.r;
-         case i -> ejw.a.s;
-         case j -> ejw.a.t;
-         case k -> ejw.a.u;
-         case l -> ejw.a.v;
-         case m -> ejw.a.w;
-         case n -> ejw.a.x;
-         case o -> ejw.a.y;
-         default -> ejw.a.z;
-      };
+   public double a() {
+      return this.f;
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public ejv.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<ejv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(ejv.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(ejv.a::b))
+               .apply($$0, ejv.a::new)
+      );
+      public static final Codec<il<ejv.a>> b = ajp.a(ks.aD, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
+      }
+
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
+      }
    }
 }

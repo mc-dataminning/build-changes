@@ -1,93 +1,44 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public abstract class eio {
-   public static final ir<eip> c = new ir<>();
-   protected final dnc<eio, eip> d;
-   private eip a;
-   private final il.c<eio> b = ki.c.f(this);
+public class eio extends eje {
+   public static final Codec<eio> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dur.a.g.fieldOf("heightmap").orElse(dur.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, eio::new)
+   );
+   private final dur.a b;
+   private final int c;
 
-   protected eio() {
-      dnc.a<eio, eip> $$0 = new dnc.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(eio::g, eip::new);
-      this.f(this.d.b());
-   }
-
-   protected void a(dnc.a<eio, eip> $$0) {
-   }
-
-   public dnc<eio, eip> f() {
-      return this.d;
-   }
-
-   protected final void f(eip $$0) {
-      this.a = $$0;
-   }
-
-   public final eip g() {
-      return this.a;
-   }
-
-   public abstract cqh a();
-
-   protected void a(cxb $$0, ib $$1, eip $$2, axd $$3) {
-   }
-
-   protected void b(cxb $$0, ib $$1, eip $$2) {
-   }
-
-   protected void b(cxb $$0, ib $$1, eip $$2, axd $$3) {
+   public eio(dur.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
-   protected ka h() {
-      return null;
+   @Override
+   public ejh.c a(cza $$0, ib $$1, ib $$2, ejh.c $$3, ejh.c $$4, ejd $$5) {
+      dur.a $$6;
+      if ($$0 instanceof aps) {
+         if (this.b == dur.a.a) {
+            $$6 = dur.a.b;
+         } else if (this.b == dur.a.c) {
+            $$6 = dur.a.d;
+         } else {
+            $$6 = this.b;
+         }
+      } else {
+         $$6 = this.b;
+      }
+
+      ib $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ejh.c(new ib($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
-   protected abstract boolean a(eip var1, cwh var2, ib var3, eio var4, ih var5);
-
-   protected abstract ept a(cwh var1, ib var2, eip var3);
-
-   public abstract int a(cxe var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(eip var1, cwh var2, ib var3);
-
-   public abstract float a(eip var1);
-
-   protected abstract dnb b(eip var1);
-
-   public abstract boolean c(eip var1);
-
-   public abstract int d(eip var1);
-
-   public boolean a(eio $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(avd<eio> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract eqm b(eip var1, cwh var2, ib var3);
-
-   public Optional<atx> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public il.c<eio> k() {
-      return this.b;
+   @Override
+   protected ejg<?> a() {
+      return ejg.g;
    }
 }

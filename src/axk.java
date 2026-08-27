@@ -1,368 +1,663 @@
-import java.util.function.IntConsumer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.function.IntPredicate;
+import java.util.stream.IntStream;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class axk implements avl {
-   private static final int[] a = new int[]{
-      -1,
-      -1,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      0,
-      1431655765,
-      1431655765,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      1,
-      858993459,
-      858993459,
-      0,
-      715827882,
-      715827882,
-      0,
-      613566756,
-      613566756,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      2,
-      477218588,
-      477218588,
-      0,
-      429496729,
-      429496729,
-      0,
-      390451572,
-      390451572,
-      0,
-      357913941,
-      357913941,
-      0,
-      330382099,
-      330382099,
-      0,
-      306783378,
-      306783378,
-      0,
-      286331153,
-      286331153,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      3,
-      252645135,
-      252645135,
-      0,
-      238609294,
-      238609294,
-      0,
-      226050910,
-      226050910,
-      0,
-      214748364,
-      214748364,
-      0,
-      204522252,
-      204522252,
-      0,
-      195225786,
-      195225786,
-      0,
-      186737708,
-      186737708,
-      0,
-      178956970,
-      178956970,
-      0,
-      171798691,
-      171798691,
-      0,
-      165191049,
-      165191049,
-      0,
-      159072862,
-      159072862,
-      0,
-      153391689,
-      153391689,
-      0,
-      148102320,
-      148102320,
-      0,
-      143165576,
-      143165576,
-      0,
-      138547332,
-      138547332,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      4,
-      130150524,
-      130150524,
-      0,
-      126322567,
-      126322567,
-      0,
-      122713351,
-      122713351,
-      0,
-      119304647,
-      119304647,
-      0,
-      116080197,
-      116080197,
-      0,
-      113025455,
-      113025455,
-      0,
-      110127366,
-      110127366,
-      0,
-      107374182,
-      107374182,
-      0,
-      104755299,
-      104755299,
-      0,
-      102261126,
-      102261126,
-      0,
-      99882960,
-      99882960,
-      0,
-      97612893,
-      97612893,
-      0,
-      95443717,
-      95443717,
-      0,
-      93368854,
-      93368854,
-      0,
-      91382282,
-      91382282,
-      0,
-      89478485,
-      89478485,
-      0,
-      87652393,
-      87652393,
-      0,
-      85899345,
-      85899345,
-      0,
-      84215045,
-      84215045,
-      0,
-      82595524,
-      82595524,
-      0,
-      81037118,
-      81037118,
-      0,
-      79536431,
-      79536431,
-      0,
-      78090314,
-      78090314,
-      0,
-      76695844,
-      76695844,
-      0,
-      75350303,
-      75350303,
-      0,
-      74051160,
-      74051160,
-      0,
-      72796055,
-      72796055,
-      0,
-      71582788,
-      71582788,
-      0,
-      70409299,
-      70409299,
-      0,
-      69273666,
-      69273666,
-      0,
-      68174084,
-      68174084,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      5
+public class axk {
+   private static final long k = 61440L;
+   private static final long l = 16384L;
+   private static final long m = -4611686018427387904L;
+   private static final long n = Long.MIN_VALUE;
+   public static final float a = (float) Math.PI;
+   public static final float b = (float) (Math.PI / 2);
+   public static final float c = (float) (Math.PI * 2);
+   public static final float d = (float) (Math.PI / 180.0);
+   public static final float e = 180.0F / (float)Math.PI;
+   public static final float f = 1.0E-5F;
+   public static final float g = c(2.0F);
+   private static final float o = 10430.378F;
+   public static final Vector3f h = new Vector3f(0.0F, 1.0F, 0.0F);
+   public static final Vector3f i = new Vector3f(1.0F, 0.0F, 0.0F);
+   public static final Vector3f j = new Vector3f(0.0F, 0.0F, 1.0F);
+   private static final float[] p = ac.a(new float[65536], $$0x -> {
+      for (int $$1x = 0; $$1x < $$0x.length; $$1x++) {
+         $$0x[$$1x] = (float)Math.sin((double)$$1x * Math.PI * 2.0 / 65536.0);
+      }
+   });
+   private static final axr q = axr.b();
+   private static final int[] r = new int[]{
+      0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
    };
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   private static final double s = 0.16666666666666666;
+   private static final int t = 8;
+   private static final int u = 257;
+   private static final double v = Double.longBitsToDouble(4805340802404319232L);
+   private static final double[] w = new double[257];
+   private static final double[] x = new double[257];
 
-   public axk(int $$0, int $$1, int[] $$2) {
-      this($$0, $$1);
-      int $$3 = 0;
-
-      int $$4;
-      for ($$4 = 0; $$4 <= $$1 - this.f; $$4 += this.f) {
-         long $$5 = 0L;
-
-         for (int $$6 = this.f - 1; $$6 >= 0; $$6--) {
-            $$5 <<= $$0;
-            $$5 |= (long)$$2[$$4 + $$6] & this.d;
-         }
-
-         this.b[$$3++] = $$5;
-      }
-
-      int $$7 = $$1 - $$4;
-      if ($$7 > 0) {
-         long $$8 = 0L;
-
-         for (int $$9 = $$7 - 1; $$9 >= 0; $$9--) {
-            $$8 <<= $$0;
-            $$8 |= (long)$$2[$$4 + $$9] & this.d;
-         }
-
-         this.b[$$3] = $$8;
-      }
+   public static float a(float $$0) {
+      return p[(int)($$0 * 10430.378F) & 65535];
    }
 
-   public axk(int $$0, int $$1) {
-      this($$0, $$1, (long[])null);
+   public static float b(float $$0) {
+      return p[(int)($$0 * 10430.378F + 16384.0F) & 65535];
    }
 
-   public axk(int $$0, int $$1, @Nullable long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.d = (1L << $$0) - 1L;
-      this.f = (char)(64 / $$0);
-      int $$3 = 3 * (this.f - 1);
-      this.g = a[$$3 + 0];
-      this.h = a[$$3 + 1];
-      this.i = a[$$3 + 2];
-      int $$4 = ($$1 + this.f - 1) / this.f;
-      if ($$2 != null) {
-         if ($$2.length != $$4) {
-            throw new axk.a("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$4);
-         }
+   public static float c(float $$0) {
+      return (float)Math.sqrt((double)$$0);
+   }
 
-         this.b = $$2;
+   public static int d(float $$0) {
+      int $$1 = (int)$$0;
+      return $$0 < (float)$$1 ? $$1 - 1 : $$1;
+   }
+
+   public static int a(double $$0) {
+      int $$1 = (int)$$0;
+      return $$0 < (double)$$1 ? $$1 - 1 : $$1;
+   }
+
+   public static long b(double $$0) {
+      long $$1 = (long)$$0;
+      return $$0 < (double)$$1 ? $$1 - 1L : $$1;
+   }
+
+   public static float e(float $$0) {
+      return Math.abs($$0);
+   }
+
+   public static int a(int $$0) {
+      return Math.abs($$0);
+   }
+
+   public static int f(float $$0) {
+      int $$1 = (int)$$0;
+      return $$0 > (float)$$1 ? $$1 + 1 : $$1;
+   }
+
+   public static int c(double $$0) {
+      int $$1 = (int)$$0;
+      return $$0 > (double)$$1 ? $$1 + 1 : $$1;
+   }
+
+   public static int a(int $$0, int $$1, int $$2) {
+      return Math.min(Math.max($$0, $$1), $$2);
+   }
+
+   public static long a(long $$0, long $$1, long $$2) {
+      return Math.min(Math.max($$0, $$1), $$2);
+   }
+
+   public static float a(float $$0, float $$1, float $$2) {
+      return $$0 < $$1 ? $$1 : Math.min($$0, $$2);
+   }
+
+   public static double a(double $$0, double $$1, double $$2) {
+      return $$0 < $$1 ? $$1 : Math.min($$0, $$2);
+   }
+
+   public static double b(double $$0, double $$1, double $$2) {
+      if ($$2 < 0.0) {
+         return $$0;
       } else {
-         this.b = new long[$$4];
+         return $$2 > 1.0 ? $$1 : d($$2, $$0, $$1);
       }
    }
 
-   private int b(int $$0) {
-      long $$1 = Integer.toUnsignedLong(this.g);
-      long $$2 = Integer.toUnsignedLong(this.h);
-      return (int)((long)$$0 * $$1 + $$2 >> 32 >> this.i);
+   public static float b(float $$0, float $$1, float $$2) {
+      if ($$2 < 0.0F) {
+         return $$0;
+      } else {
+         return $$2 > 1.0F ? $$1 : i($$2, $$0, $$1);
+      }
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      int $$5 = (int)($$3 >> $$4 & this.d);
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
-      return $$5;
+   public static double a(double $$0, double $$1) {
+      if ($$0 < 0.0) {
+         $$0 = -$$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$1 = -$$1;
+      }
+
+      return Math.max($$0, $$1);
    }
 
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
+   public static int a(int $$0, int $$1) {
+      return Math.floorDiv($$0, $$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = this.b($$0);
-      long $$2 = this.b[$$1];
-      int $$3 = ($$0 - $$1 * this.f) * this.c;
-      return (int)($$2 >> $$3 & this.d);
+   public static int a(axr $$0, int $$1, int $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.a($$2 - $$1 + 1) + $$1;
    }
 
-   @Override
-   public long[] a() {
-      return this.b;
+   public static float a(axr $$0, float $$1, float $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.i() * ($$2 - $$1) + $$1;
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static double a(axr $$0, double $$1, double $$2) {
+      return $$1 >= $$2 ? $$1 : $$0.j() * ($$2 - $$1) + $$1;
    }
 
-   @Override
-   public int c() {
-      return this.c;
+   public static boolean a(float $$0, float $$1) {
+      return Math.abs($$1 - $$0) < 1.0E-5F;
    }
 
-   @Override
-   public void a(IntConsumer $$0) {
-      int $$1 = 0;
+   public static boolean b(double $$0, double $$1) {
+      return Math.abs($$1 - $$0) < 1.0E-5F;
+   }
 
-      for (long $$2 : this.b) {
-         for (int $$3 = 0; $$3 < this.f; $$3++) {
-            $$0.accept((int)($$2 & this.d));
-            $$2 >>= this.c;
-            if (++$$1 >= this.e) {
-               return;
+   public static int b(int $$0, int $$1) {
+      return Math.floorMod($$0, $$1);
+   }
+
+   public static float b(float $$0, float $$1) {
+      return ($$0 % $$1 + $$1) % $$1;
+   }
+
+   public static double c(double $$0, double $$1) {
+      return ($$0 % $$1 + $$1) % $$1;
+   }
+
+   public static boolean c(int $$0, int $$1) {
+      return $$0 % $$1 == 0;
+   }
+
+   public static int b(int $$0) {
+      int $$1 = $$0 % 360;
+      if ($$1 >= 180) {
+         $$1 -= 360;
+      }
+
+      if ($$1 < -180) {
+         $$1 += 360;
+      }
+
+      return $$1;
+   }
+
+   public static float g(float $$0) {
+      float $$1 = $$0 % 360.0F;
+      if ($$1 >= 180.0F) {
+         $$1 -= 360.0F;
+      }
+
+      if ($$1 < -180.0F) {
+         $$1 += 360.0F;
+      }
+
+      return $$1;
+   }
+
+   public static double d(double $$0) {
+      double $$1 = $$0 % 360.0;
+      if ($$1 >= 180.0) {
+         $$1 -= 360.0;
+      }
+
+      if ($$1 < -180.0) {
+         $$1 += 360.0;
+      }
+
+      return $$1;
+   }
+
+   public static float c(float $$0, float $$1) {
+      return g($$1 - $$0);
+   }
+
+   public static float d(float $$0, float $$1) {
+      return e(c($$0, $$1));
+   }
+
+   public static float c(float $$0, float $$1, float $$2) {
+      float $$3 = c($$0, $$1);
+      float $$4 = a($$3, -$$2, $$2);
+      return $$1 - $$4;
+   }
+
+   public static float d(float $$0, float $$1, float $$2) {
+      $$2 = e($$2);
+      return $$0 < $$1 ? a($$0 + $$2, $$0, $$1) : a($$0 - $$2, $$1, $$0);
+   }
+
+   public static float e(float $$0, float $$1, float $$2) {
+      float $$3 = c($$0, $$1);
+      return d($$0, $$0 + $$3, $$2);
+   }
+
+   public static int a(String $$0, int $$1) {
+      return NumberUtils.toInt($$0, $$1);
+   }
+
+   public static int c(int $$0) {
+      int $$1 = $$0 - 1;
+      $$1 |= $$1 >> 1;
+      $$1 |= $$1 >> 2;
+      $$1 |= $$1 >> 4;
+      $$1 |= $$1 >> 8;
+      $$1 |= $$1 >> 16;
+      return $$1 + 1;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 != 0 && ($$0 & $$0 - 1) == 0;
+   }
+
+   public static int e(int $$0) {
+      $$0 = d($$0) ? $$0 : c($$0);
+      return r[(int)((long)$$0 * 125613361L >> 27) & 31];
+   }
+
+   public static int f(int $$0) {
+      return e($$0) - (d($$0) ? 0 : 1);
+   }
+
+   public static int f(float $$0, float $$1, float $$2) {
+      return awu.b.a(0, d($$0 * 255.0F), d($$1 * 255.0F), d($$2 * 255.0F));
+   }
+
+   public static float h(float $$0) {
+      return $$0 - (float)d($$0);
+   }
+
+   public static double e(double $$0) {
+      return $$0 - (double)b($$0);
+   }
+
+   @Deprecated
+   public static long a(jg $$0) {
+      return b($$0.u(), $$0.v(), $$0.w());
+   }
+
+   @Deprecated
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = (long)($$0 * 3129871) ^ (long)$$2 * 116129781L ^ (long)$$1;
+      $$3 = $$3 * $$3 * 42317861L + $$3 * 11L;
+      return $$3 >> 16;
+   }
+
+   public static UUID a(axr $$0) {
+      long $$1 = $$0.g() & -61441L | 16384L;
+      long $$2 = $$0.g() & 4611686018427387903L | Long.MIN_VALUE;
+      return new UUID($$1, $$2);
+   }
+
+   public static UUID a() {
+      return a(q);
+   }
+
+   public static double c(double $$0, double $$1, double $$2) {
+      return ($$0 - $$1) / ($$2 - $$1);
+   }
+
+   public static float g(float $$0, float $$1, float $$2) {
+      return ($$0 - $$1) / ($$2 - $$1);
+   }
+
+   public static boolean a(esa $$0, esa $$1, erv $$2) {
+      double $$3 = ($$2.a + $$2.d) * 0.5;
+      double $$4 = ($$2.d - $$2.a) * 0.5;
+      double $$5 = $$0.c - $$3;
+      if (Math.abs($$5) > $$4 && $$5 * $$1.c >= 0.0) {
+         return false;
+      } else {
+         double $$6 = ($$2.b + $$2.e) * 0.5;
+         double $$7 = ($$2.e - $$2.b) * 0.5;
+         double $$8 = $$0.d - $$6;
+         if (Math.abs($$8) > $$7 && $$8 * $$1.d >= 0.0) {
+            return false;
+         } else {
+            double $$9 = ($$2.c + $$2.f) * 0.5;
+            double $$10 = ($$2.f - $$2.c) * 0.5;
+            double $$11 = $$0.e - $$9;
+            if (Math.abs($$11) > $$10 && $$11 * $$1.e >= 0.0) {
+               return false;
+            } else {
+               double $$12 = Math.abs($$1.c);
+               double $$13 = Math.abs($$1.d);
+               double $$14 = Math.abs($$1.e);
+               double $$15 = $$1.d * $$11 - $$1.e * $$8;
+               if (Math.abs($$15) > $$7 * $$14 + $$10 * $$13) {
+                  return false;
+               } else {
+                  $$15 = $$1.e * $$5 - $$1.c * $$11;
+                  if (Math.abs($$15) > $$4 * $$14 + $$10 * $$12) {
+                     return false;
+                  } else {
+                     $$15 = $$1.c * $$8 - $$1.d * $$5;
+                     return Math.abs($$15) < $$4 * $$13 + $$7 * $$12;
+                  }
+               }
             }
          }
       }
    }
 
-   @Override
-   public void a(int[] $$0) {
-      int $$1 = this.b.length;
-      int $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$1 - 1; $$3++) {
-         long $$4 = this.b[$$3];
-
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            $$0[$$2 + $$5] = (int)($$4 & this.d);
-            $$4 >>= this.c;
+   public static double d(double $$0, double $$1) {
+      double $$2 = $$1 * $$1 + $$0 * $$0;
+      if (Double.isNaN($$2)) {
+         return Double.NaN;
+      } else {
+         boolean $$3 = $$0 < 0.0;
+         if ($$3) {
+            $$0 = -$$0;
          }
 
-         $$2 += this.f;
-      }
-
-      int $$6 = this.e - $$2;
-      if ($$6 > 0) {
-         long $$7 = this.b[$$1 - 1];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0[$$2 + $$8] = (int)($$7 & this.d);
-            $$7 >>= this.c;
+         boolean $$4 = $$1 < 0.0;
+         if ($$4) {
+            $$1 = -$$1;
          }
+
+         boolean $$5 = $$0 > $$1;
+         if ($$5) {
+            double $$6 = $$1;
+            $$1 = $$0;
+            $$0 = $$6;
+         }
+
+         double $$7 = g($$2);
+         $$1 *= $$7;
+         $$0 *= $$7;
+         double $$8 = v + $$0;
+         int $$9 = (int)Double.doubleToRawLongBits($$8);
+         double $$10 = w[$$9];
+         double $$11 = x[$$9];
+         double $$12 = $$8 - v;
+         double $$13 = $$0 * $$11 - $$1 * $$12;
+         double $$14 = (6.0 + $$13 * $$13) * $$13 * 0.16666666666666666;
+         double $$15 = $$10 + $$14;
+         if ($$5) {
+            $$15 = (Math.PI / 2) - $$15;
+         }
+
+         if ($$4) {
+            $$15 = Math.PI - $$15;
+         }
+
+         if ($$3) {
+            $$15 = -$$15;
+         }
+
+         return $$15;
       }
    }
 
-   @Override
-   public avl d() {
-      return new axk(this.c, this.e, (long[])this.b.clone());
+   public static float i(float $$0) {
+      return org.joml.Math.invsqrt($$0);
    }
 
-   public static class a extends RuntimeException {
-      a(String $$0) {
-         super($$0);
+   public static double f(double $$0) {
+      return org.joml.Math.invsqrt($$0);
+   }
+
+   @Deprecated
+   public static double g(double $$0) {
+      double $$1 = 0.5 * $$0;
+      long $$2 = Double.doubleToRawLongBits($$0);
+      $$2 = 6910469410427058090L - ($$2 >> 1);
+      $$0 = Double.longBitsToDouble($$2);
+      return $$0 * (1.5 - $$1 * $$0 * $$0);
+   }
+
+   public static float j(float $$0) {
+      int $$1 = Float.floatToIntBits($$0);
+      $$1 = 1419967116 - $$1 / 3;
+      float $$2 = Float.intBitsToFloat($$1);
+      $$2 = 0.6666667F * $$2 + 1.0F / (3.0F * $$2 * $$2 * $$0);
+      return 0.6666667F * $$2 + 1.0F / (3.0F * $$2 * $$2 * $$0);
+   }
+
+   public static int h(float $$0, float $$1, float $$2) {
+      int $$3 = (int)($$0 * 6.0F) % 6;
+      float $$4 = $$0 * 6.0F - (float)$$3;
+      float $$5 = $$2 * (1.0F - $$1);
+      float $$6 = $$2 * (1.0F - $$4 * $$1);
+      float $$7 = $$2 * (1.0F - (1.0F - $$4) * $$1);
+      float $$8;
+      float $$9;
+      float $$10;
+      switch ($$3) {
+         case 0:
+            $$8 = $$2;
+            $$9 = $$7;
+            $$10 = $$5;
+            break;
+         case 1:
+            $$8 = $$6;
+            $$9 = $$2;
+            $$10 = $$5;
+            break;
+         case 2:
+            $$8 = $$5;
+            $$9 = $$2;
+            $$10 = $$7;
+            break;
+         case 3:
+            $$8 = $$5;
+            $$9 = $$6;
+            $$10 = $$2;
+            break;
+         case 4:
+            $$8 = $$7;
+            $$9 = $$5;
+            $$10 = $$2;
+            break;
+         case 5:
+            $$8 = $$2;
+            $$9 = $$5;
+            $$10 = $$6;
+            break;
+         default:
+            throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + $$0 + ", " + $$1 + ", " + $$2);
+      }
+
+      return awu.b.a(0, a((int)($$8 * 255.0F), 0, 255), a((int)($$9 * 255.0F), 0, 255), a((int)($$10 * 255.0F), 0, 255));
+   }
+
+   public static int g(int $$0) {
+      $$0 ^= $$0 >>> 16;
+      $$0 *= -2048144789;
+      $$0 ^= $$0 >>> 13;
+      $$0 *= -1028477387;
+      return $$0 ^ $$0 >>> 16;
+   }
+
+   public static int a(int $$0, int $$1, IntPredicate $$2) {
+      int $$3 = $$1 - $$0;
+
+      while ($$3 > 0) {
+         int $$4 = $$3 / 2;
+         int $$5 = $$0 + $$4;
+         if ($$2.test($$5)) {
+            $$3 = $$4;
+         } else {
+            $$0 = $$5 + 1;
+            $$3 -= $$4 + 1;
+         }
+      }
+
+      return $$0;
+   }
+
+   public static int a(float $$0, int $$1, int $$2) {
+      return $$1 + d($$0 * (float)($$2 - $$1));
+   }
+
+   public static int b(float $$0, int $$1, int $$2) {
+      int $$3 = $$2 - $$1;
+      return $$1 + d($$0 * (float)($$3 - 1)) + ($$0 > 0.0F ? 1 : 0);
+   }
+
+   public static float i(float $$0, float $$1, float $$2) {
+      return $$1 + $$0 * ($$2 - $$1);
+   }
+
+   public static double d(double $$0, double $$1, double $$2) {
+      return $$1 + $$0 * ($$2 - $$1);
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return d($$1, d($$0, $$2, $$3), d($$0, $$4, $$5));
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, double $$9, double $$10) {
+      return d($$2, a($$0, $$1, $$3, $$4, $$5, $$6), a($$0, $$1, $$7, $$8, $$9, $$10));
+   }
+
+   public static float a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return 0.5F
+         * (2.0F * $$2 + ($$3 - $$1) * $$0 + (2.0F * $$1 - 5.0F * $$2 + 4.0F * $$3 - $$4) * $$0 * $$0 + (3.0F * $$2 - $$1 - 3.0F * $$3 + $$4) * $$0 * $$0 * $$0);
+   }
+
+   public static double h(double $$0) {
+      return $$0 * $$0 * $$0 * ($$0 * ($$0 * 6.0 - 15.0) + 10.0);
+   }
+
+   public static double i(double $$0) {
+      return 30.0 * $$0 * $$0 * ($$0 - 1.0) * ($$0 - 1.0);
+   }
+
+   public static int j(double $$0) {
+      if ($$0 == 0.0) {
+         return 0;
+      } else {
+         return $$0 > 0.0 ? 1 : -1;
+      }
+   }
+
+   public static float j(float $$0, float $$1, float $$2) {
+      return $$1 + $$0 * g($$2 - $$1);
+   }
+
+   public static double e(double $$0, double $$1, double $$2) {
+      return $$1 + $$0 * d($$2 - $$1);
+   }
+
+   public static float e(float $$0, float $$1) {
+      return (Math.abs($$0 % $$1 - $$1 * 0.5F) - $$1 * 0.25F) / ($$1 * 0.25F);
+   }
+
+   public static float k(float $$0) {
+      return $$0 * $$0;
+   }
+
+   public static double k(double $$0) {
+      return $$0 * $$0;
+   }
+
+   public static int h(int $$0) {
+      return $$0 * $$0;
+   }
+
+   public static long a(long $$0) {
+      return $$0 * $$0;
+   }
+
+   public static double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return b($$3, $$4, c($$0, $$1, $$2));
+   }
+
+   public static float b(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return b($$3, $$4, g($$0, $$1, $$2));
+   }
+
+   public static double b(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return d(c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   public static float c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      return i(g($$0, $$1, $$2), $$3, $$4);
+   }
+
+   public static double l(double $$0) {
+      return $$0 + (2.0 * axr.a((long)a($$0 * 3000.0)).j() - 1.0) * 1.0E-7 / 2.0;
+   }
+
+   public static int d(int $$0, int $$1) {
+      return e($$0, $$1) * $$1;
+   }
+
+   public static int e(int $$0, int $$1) {
+      return -Math.floorDiv(-$$0, $$1);
+   }
+
+   public static int b(axr $$0, int $$1, int $$2) {
+      return $$0.a($$2 - $$1 + 1) + $$1;
+   }
+
+   public static float b(axr $$0, float $$1, float $$2) {
+      return $$0.i() * ($$2 - $$1) + $$1;
+   }
+
+   public static float c(axr $$0, float $$1, float $$2) {
+      return $$1 + (float)$$0.k() * $$2;
+   }
+
+   public static double e(double $$0, double $$1) {
+      return $$0 * $$0 + $$1 * $$1;
+   }
+
+   public static double f(double $$0, double $$1) {
+      return Math.sqrt(e($$0, $$1));
+   }
+
+   public static double f(double $$0, double $$1, double $$2) {
+      return $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+   }
+
+   public static double g(double $$0, double $$1, double $$2) {
+      return Math.sqrt(f($$0, $$1, $$2));
+   }
+
+   public static int a(double $$0, int $$1) {
+      return a($$0 / (double)$$1) * $$1;
+   }
+
+   public static IntStream c(int $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 1);
+   }
+
+   public static IntStream a(int $$0, int $$1, int $$2, int $$3) {
+      if ($$1 > $$2) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "upperbound %d expected to be > lowerBound %d", $$2, $$1));
+      } else if ($$3 < 1) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "steps expected to be >= 1, was %d", $$3));
+      } else {
+         return $$0 >= $$1 && $$0 <= $$2 ? IntStream.iterate($$0, $$3x -> {
+            int $$4 = Math.abs($$0 - $$3x);
+            return $$0 - $$4 >= $$1 || $$0 + $$4 <= $$2;
+         }, $$4 -> {
+            boolean $$5 = $$4 <= $$0;
+            int $$6 = Math.abs($$0 - $$4);
+            boolean $$7 = $$0 + $$6 + $$3 <= $$2;
+            if (!$$5 || !$$7) {
+               int $$8 = $$0 - $$6 - ($$5 ? $$3 : 0);
+               if ($$8 >= $$1) {
+                  return $$8;
+               }
+            }
+
+            return $$0 + $$6 + $$3;
+         }) : IntStream.empty();
+      }
+   }
+
+   public static Quaternionf a(Vector3f $$0, Quaternionf $$1, Quaternionf $$2) {
+      float $$3 = $$0.dot($$1.x, $$1.y, $$1.z);
+      return $$2.set($$0.x * $$3, $$0.y * $$3, $$0.z * $$3, $$1.w).normalize();
+   }
+
+   static {
+      for (int $$0 = 0; $$0 < 257; $$0++) {
+         double $$1 = (double)$$0 / 256.0;
+         double $$2 = Math.asin($$1);
+         x[$$0] = Math.cos($$2);
+         w[$$0] = $$2;
       }
    }
 }

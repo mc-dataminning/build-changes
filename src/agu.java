@@ -1,45 +1,60 @@
-public class agu implements yb<aez> {
-   public static final xs<uu, agu> a = yb.a(agu::a, agu::new);
-   private final epp b;
-   private final bnc c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public agu(bnc $$0, epp $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class agu implements yn<afl> {
+   public static final ye<vg, agu> a = yn.a(agu::a, agu::new);
+   private final agu.a b;
+   @Nullable
+   private final ajt c;
+
+   public agu(agu.a $$0, @Nullable ajt $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private agu(uu $$0) {
-      this.c = $$0.b(bnc.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   public static agu a(af $$0) {
+      return new agu(agu.a.a, $$0.a());
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.c);
+   public static agu b() {
+      return new agu(agu.a.b, null);
+   }
+
+   private agu(vg $$0) {
+      this.b = $$0.b(agu.a.class);
+      if (this.b == agu.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vg $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
+      if (this.b == agu.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public yd<agu> a() {
-      return aex.ca;
+   public yp<agu> a() {
+      return afj.bO;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public bnc b() {
-      return this.c;
-   }
-
-   public epp e() {
+   public agu.a e() {
       return this.b;
    }
 
-   public int f() {
-      return this.d;
+   @Nullable
+   public ajt f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

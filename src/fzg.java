@@ -1,61 +1,36 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public class fzg implements fzf {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public class fzg implements blx {
+   private final fzx a;
+   private final Set<blv> b = new ObjectOpenHashSet();
+   private final bmd c = new bmd();
 
-   public fzg(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fzg(LongSupplier $$0, fzx $$1) {
+      this.a = $$1;
+      this.b.add(bme.a($$0));
+      this.a();
    }
 
-   @Override
-   public Predicate<dnb> getPredicate(dnc<dac, dnb> $$0) {
-      doe<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
-
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dnb> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<dnb>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
-            }
-
-            return $$3 ? $$5.negate() : $$5;
-         }
-      }
-   }
-
-   private Predicate<dnb> a(dnc<dac, dnb> $$0, doe<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+   private void a() {
+      this.b.addAll(bme.a());
+      this.b.add(blv.a("totalChunks", blu.f, this.a, fzx::i));
+      this.b.add(blv.a("renderedChunks", blu.f, this.a, fzx::k));
+      this.b.add(blv.a("lastViewDistance", blu.f, this.a, fzx::j));
+      gcz $$0 = this.a.h();
+      this.b.add(blv.a("toUpload", blu.g, $$0, gcz::c));
+      this.b.add(blv.a("freeBufferCount", blu.g, $$0, gcz::d));
+      this.b.add(blv.a("toBatchCount", blu.g, $$0, gcz::b));
+      if (ewb.a().isPresent()) {
+         this.b.add(blv.a("gpuUtilization", blu.i, fbp.Q(), fbp::v));
       }
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+   public Set<blv> a(Supplier<bkm> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

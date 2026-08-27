@@ -1,62 +1,13 @@
-public class csv extends csu {
-   private final ih b;
+public interface csv {
+   int a();
 
-   public csv(cxb $$0, ib $$1, ih $$2, cqm $$3, ih $$4) {
-      super($$0, null, bnc.a, $$3, new epp(ept.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+   float b();
 
-   @Override
-   public ib a() {
-      return this.j().a();
-   }
+   float c();
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
-   }
+   int d();
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
+   int e();
 
-   @Override
-   public ih d() {
-      return ih.a;
-   }
-
-   @Override
-   public ih[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ih[]{ih.a, ih.c, ih.f, ih.d, ih.e, ih.b};
-         case b:
-            return new ih[]{ih.a, ih.b, ih.c, ih.f, ih.d, ih.e};
-         case c:
-            return new ih[]{ih.a, ih.c, ih.f, ih.e, ih.b, ih.d};
-         case d:
-            return new ih[]{ih.a, ih.d, ih.f, ih.e, ih.b, ih.c};
-         case e:
-            return new ih[]{ih.a, ih.e, ih.d, ih.b, ih.c, ih.f};
-         case f:
-            return new ih[]{ih.a, ih.f, ih.d, ih.b, ih.c, ih.e};
-      }
-   }
-
-   @Override
-   public ih g() {
-      return this.b.o() == ih.a.b ? ih.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
-   }
+   cvg f();
 }

@@ -1,88 +1,152 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fnl extends fox<ckr> implements fqs {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final frf l;
-   private final frf m;
-   private final frf n;
-   private final ImmutableList<frf> o;
+public abstract class fnl<B extends fvl.a<?>> extends fjo {
+   private static final wg v = wg.c("gui.abuseReport.report_sent_msg");
+   private static final wg w = wg.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wg x = wg.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wg y = wg.c("gui.abuseReport.error.title").a(n.r);
+   private static final wg z = wg.c("gui.abuseReport.send.generic_error");
+   protected static final wg a = wg.c("gui.abuseReport.send");
+   protected static final wg b = wg.c("gui.abuseReport.observed_what");
+   protected static final wg c = wg.c("gui.abuseReport.select_reason");
+   private static final wg A = wg.c("gui.abuseReport.describe");
+   protected static final wg d = wg.c("gui.abuseReport.more_comments");
+   private static final wg B = wg.c("gui.abuseReport.comments");
+   protected static final int o = 20;
+   protected static final int p = 280;
+   protected static final int q = 8;
+   private static final Logger C = LogUtils.getLogger();
+   protected final fjo r;
+   protected final fvp s;
+   protected B u;
 
-   public fnl(frf $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+   protected fnl(wg $$0, fjo $$1, fvp $$2, B $$3) {
+      super($$0);
+      this.r = $$1;
+      this.s = $$2;
+      this.u = $$3;
    }
 
-   protected Builder<frf> a(frf $$0) {
-      Builder<frf> $$1 = new Builder();
-      $$1.add(new frf[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   protected feh a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.s.a().b();
+      feh $$4 = new feh(this.m, 0, 0, $$0, $$1, A, B);
+      $$4.a(this.u.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   public static void a(fro $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", frk.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), frh.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", frk.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), frh.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", frk.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), frh.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", frk.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), frh.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", frk.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), frh.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         frk.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         frh.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         frk.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         frh.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", frk.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), frh.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   protected void m() {
+      this.u.a(this.s).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.s.a().a($$0.a(), $$0.b(), $$0.c());
+         this.j.a(fiv.a(w, wf.e, () -> {
+            this.j.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.j);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
-   public static frl a() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      a($$1);
-      return frl.a($$0, 128, 64);
+   private void C() {
+      this.E();
+      this.j.a(fiv.a(x, v, wf.d, () -> this.j.a(null)));
    }
 
-   public void a(ckr $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
+   private void a(Throwable $$0) {
+      C.error("Encountered error while sending abuse report", $$0);
+      wg $$2;
+      if ($$0.getCause() instanceof xg $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = z;
+      }
+
+      this.a($$2);
    }
 
-   public ImmutableList<frf> b() {
-      return this.o;
+   private void a(wg $$0) {
+      wg $$1 = $$0.f().a(n.m);
+      this.j.a(fiv.a(y, $$1, wf.k, () -> this.j.a(this)));
+   }
+
+   void D() {
+      if (this.u.b()) {
+         this.s.a(this.u.e().b());
+      }
+   }
+
+   void E() {
+      this.s.a(null);
    }
 
    @Override
-   public frf c() {
-      return this.n;
+   public void d() {
+      if (this.u.b()) {
+         this.j.a(new fnl.a());
+      } else {
+         this.j.a(this.r);
+      }
    }
 
-   private static void a(ckr $$0, int $$1, frf $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = aww.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aww.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = aww.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aww.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+   @Override
+   public void j() {
+      this.D();
+      super.j();
+   }
+
+   class a extends fmq {
+      private static final wg c = wg.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wg d = wg.c("gui.abuseReport.discard.content");
+      private static final wg o = wg.c("gui.abuseReport.discard.return");
+      private static final wg p = wg.c("gui.abuseReport.discard.draft");
+      private static final wg q = wg.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(c, d, d);
+      }
+
+      @Override
+      protected fhd m() {
+         fhg $$0 = fhg.d().a(8);
+         $$0.c().b();
+         fhg $$1 = $$0.a(fhg.e().a(8));
+         $$1.a(fdp.a(o, $$0x -> this.d()).a());
+         $$1.a(fdp.a(p, $$0x -> {
+            fnl.this.D();
+            this.j.a(fnl.this.r);
+         }).a());
+         $$0.a(fdp.a(q, $$0x -> {
+            fnl.this.E();
+            this.j.a(fnl.this.r);
+         }).a());
+         return $$0;
+      }
+
+      @Override
+      public void d() {
+         this.j.a(fnl.this);
+      }
+
+      @Override
+      public boolean aE_() {
+         return false;
       }
    }
 }

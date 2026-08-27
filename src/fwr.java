@@ -1,85 +1,43 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public abstract class fwr extends ciu {
-   @Nullable
-   private fsl g;
-   protected ept b;
-   public float c;
-   public float d;
-   public float e;
-   public final fsa f;
+public class fwr extends fwt<ke> {
+   private final Vector3f a;
+   private final Vector3f b;
 
-   public fwr(fsa $$0, GameProfile $$1) {
-      super($$0, $$0.T(), $$0.U(), $$1);
-      this.b = ept.b;
-      this.f = $$0;
+   protected fwr(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ke $$7, fyi $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public boolean N_() {
-      fsl $$0 = this.a();
-      return $$0 != null && $$0.e() == cwy.d;
+   public void a(ewm $$0, fba $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean f() {
-      fsl $$0 = this.a();
-      return $$0 != null && $$0.e() == cwy.b;
-   }
+   public static class a implements fxq<ke> {
+      private final fyi a;
 
-   @Nullable
-   protected fsl a() {
-      if (this.g == null) {
-         this.g = ezi.Q().L().a(this.cw());
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dp();
-      super.l();
-   }
-
-   public ept E(float $$0) {
-      return this.b.a(this.dp(), (double)$$0);
-   }
-
-   public gkb b() {
-      fsl $$0 = this.a();
-      return $$0 == null ? gju.a(this.cw()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.ga().b) {
-         $$0 *= 1.1F;
+      public fxn a(ke $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
-
-      $$0 *= ((float)this.g(bqw.r) / this.ga().b() + 1.0F) / 2.0F;
-      if (this.ga().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cqm $$1 = this.fu();
-      if (this.fs()) {
-         if ($$1.a(cqp.ot)) {
-            int $$2 = this.fw();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (ezi.Q().m.ay().a() && this.gx()) {
-            return 0.1F;
-         }
-      }
-
-      return aww.i(ezi.Q().m.ai().c().floatValue(), 1.0F, $$0);
    }
 }

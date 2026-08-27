@@ -1,27 +1,46 @@
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public enum boy {
-   a(boy.a.c),
-   b(boy.a.b),
-   c(boy.a.c),
-   d(boy.a.d);
+public record boy(String i) {
+   public static final boy a = new boy("generic");
+   public static final boy b = new boy("ladder");
+   public static final boy c = new boy("vines");
+   public static final boy d = new boy("weeping_vines");
+   public static final boy e = new boy("twisting_vines");
+   public static final boy f = new boy("scaffolding");
+   public static final boy g = new boy("other_climbable");
+   public static final boy h = new boy("water");
 
-   private final boy.a e;
-
-   private boy(boy.a $$0) {
-      this.e = $$0;
+   public static boy a(doz $$0) {
+      if ($$0.a(dca.cO) || $$0.a(avc.P)) {
+         return b;
+      } else if ($$0.a(dca.ff)) {
+         return c;
+      } else if ($$0.a(dca.oz) || $$0.a(dca.oA)) {
+         return d;
+      } else if ($$0.a(dca.oB) || $$0.a(dca.oC)) {
+         return e;
+      } else {
+         return $$0.a(dca.nS) ? f : g;
+      }
    }
 
-   public List<ept> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   @Nullable
+   public static boy a(bqo $$0) {
+      Optional<ib> $$1 = $$0.eJ();
+      if ($$1.isPresent()) {
+         doz $$2 = $$0.dM().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bc() ? h : null;
+      }
    }
 
-   public interface a {
-      List<ept> a = List.of(ept.b);
-      boy.a b = ($$0, $$1) -> a;
-      boy.a c = ($$0, $$1) -> List.of(new ept(0.0, (double)$$1, 0.0));
-      boy.a d = ($$0, $$1) -> List.of(new ept(0.0, (double)$$1 / 2.0, 0.0));
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
 
-      List<ept> create(float var1, float var2);
+   public String b() {
+      return this.i;
    }
 }

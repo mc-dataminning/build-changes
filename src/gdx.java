@@ -1,95 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-public class gdx extends gda<cfe> {
-   private static final float a = 0.15F;
-   private static final float f = 0.0F;
-   private static final float g = 0.0F;
-   private static final float h = 0.09375F;
-   private final gdz i;
-   private final axd j = axd.a();
+public class gdx implements gdl.a {
+   private final fbp a;
+   private double b = Double.MIN_VALUE;
+   private List<bpv> c = Collections.emptyList();
 
-   public gdx(gdb.a $$0) {
-      super($$0);
-      this.i = $$0.b();
-      this.d = 0.15F;
-      this.e = 0.75F;
+   public gdx(fbp $$0) {
+      this.a = $$0;
    }
 
-   public ajh a(cfe $$0) {
-      return gjb.e;
-   }
-
-   public void a(cfe $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      $$3.a();
-      cqm $$6 = $$0.p();
-      this.j.b((long)a($$6));
-      glc $$7 = this.i.a($$6, $$0.dM(), null, $$0.aj());
-      boolean $$8 = $$7.b();
-      float $$9 = 0.25F;
-      float $$10 = aww.a(((float)$$0.r() + $$2) / 10.0F + $$0.c) * 0.1F + 0.1F;
-      float $$11 = $$7.f().a(cqj.h).d.y();
-      $$3.a(0.0F, $$10 + 0.25F * $$11, 0.0F);
-      float $$12 = $$0.a($$2);
-      $$3.a(a.d.rotation($$12));
-      a(this.i, $$3, $$4, $$5, $$6, $$7, $$8, this.j);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static int a(cqm $$0) {
-      return $$0.b() ? 187 : cqh.a($$0.d()) + $$0.l();
-   }
-
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
-   }
-
-   public static void a(gdz $$0, eub $$1, fxs $$2, int $$3, cqm $$4, axd $$5, cxb $$6) {
-      glc $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
-   }
-
-   public static void a(gdz $$0, eub $$1, fxs $$2, int $$3, cqm $$4, glc $$5, boolean $$6, axd $$7) {
-      int $$8 = a($$4.M());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
+   @Override
+   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bpv $$6 = this.a.j.n().g();
+         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
       }
 
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
+      cjt $$7 = this.a.s;
+      if ($$7 != null && $$7.aD.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
 
-         $$0.a($$4, cqj.h, false, $$1, $$2, $$3, git.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
+      for (bpv $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
+   }
+
+   private void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4, bpv $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aD.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         ib $$12 = $$5.aJ();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         ib $$13 = $$5.aH();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
+   }
+
+   private double a(bpv $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(ib $$0, ewi $$1, double $$2, double $$3, double $$4, fzz $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      fzx.a($$1, $$5.getBuffer(gah.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      fzx.a(
+         $$1,
+         $$5.getBuffer(gah.y()),
+         this.a.r.a_($$0).b(this.a.r, $$0, esf.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

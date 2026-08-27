@@ -1,32 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class buh {
-   public static bri<bpp> a(dac $$0) {
-      return buu.a(
-         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$1 -> $$1.group($$1.c(bys.o), $$1.b(bys.m), $$1.b(bys.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bc() && $$3x.aC()) {
-                        ib $$5 = $$3x.dm().d();
+   private static final int a = 300;
 
-                        for (ih $$6 : ih.c.a) {
-                           ib $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ih.b).c() && $$2x.b_($$7).b(eiq.c)) {
-                              ib $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dnb $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(drp.i, $$8, drp.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, aty.jI, atz.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
+   public static bsh<bqo> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$3x -> $$3x.group($$3x.b(bzr.C), $$3x.b(bzr.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        ib $$11 = $$3x.<ik>b($$4).b();
+                        if ($$11.a($$7.dm(), (double)$$1)) {
+                           $$3.increment();
                         }
 
                         return true;
                      } else {
-                        return false;
+                        $$5.b();
+                        $$4.b();
+                        $$7.dP().a($$6.Z(), $$6.Y());
+                        $$3.setValue(0);
+                        return true;
                      }
                   }))
       );

@@ -1,39 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dza extends dyx {
-   public static final Codec<dza> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, dza::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-
-   public dza(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public dza(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class dza extends dxv<dzu> {
+   public dza(Codec<dzu> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dyy<?> b() {
-      return dyy.a;
-   }
+   public boolean a(dxx<dzu> $$0) {
+      int $$1 = 0;
+      axr $$2 = $$0.d();
+      czs $$3 = $$0.b();
+      ib $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dur.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
+         doz $$11 = dca.mV.n().a(diu.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dca.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
+
+      return $$1 > 0;
    }
 }

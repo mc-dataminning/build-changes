@@ -1,20 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dxm {
-   public static final Codec<dxm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eci.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, dxm::new)
-   );
-   public final il<eci> b;
-   public final float c;
-
-   public dxm(il<eci> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dxm extends dxk {
+   public dxm(Codec<eag> $$0) {
+      super($$0);
    }
 
-   public boolean a(cxw $$0, doy $$1, axd $$2, ib $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   protected boolean a(cyy $$0, axr $$1, ib $$2, doz $$3) {
+      ib.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
+
+         $$4.c(ih.b);
+      }
+
+      ib $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ih> $$9 = ih.c.a.c($$1);
+
+      for (ih $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ih.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
+            }
+         }
+      }
+
+      return true;
    }
 }

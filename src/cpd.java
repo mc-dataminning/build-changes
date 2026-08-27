@@ -1,99 +1,86 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cpd implements axq {
-   a(0, "white", 16383998, eit.i, 15790320, 16777215),
-   b(1, "orange", 16351261, eit.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, eit.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, eit.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, eit.s, 14602026, 16776960),
-   f(5, "lime", 8439583, eit.t, 4312372, 12582656),
-   g(6, "pink", 15961002, eit.u, 14188952, 16738740),
-   h(7, "gray", 4673362, eit.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, eit.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, eit.x, 2651799, 65535),
-   k(10, "purple", 8991416, eit.y, 8073150, 10494192),
-   l(11, "blue", 3949738, eit.z, 2437522, 255),
-   m(12, "brown", 8606770, eit.A, 5320730, 9127187),
-   n(13, "green", 6192150, eit.B, 3887386, 65280),
-   o(14, "red", 11546150, eit.C, 11743532, 16711680),
-   p(15, "black", 1908001, eit.D, 1973019, 0);
+public class cpd extends cpy {
+   protected static final Map<dby, dby> a = new Builder()
+      .put(dca.ao, dca.aw)
+      .put(dca.U, dca.al)
+      .put(dca.au, dca.aC)
+      .put(dca.aa, dca.ak)
+      .put(dca.as, dca.aA)
+      .put(dca.Y, dca.ai)
+      .put(dca.at, dca.aB)
+      .put(dca.Z, dca.aj)
+      .put(dca.aq, dca.ay)
+      .put(dca.W, dca.ag)
+      .put(dca.ar, dca.az)
+      .put(dca.X, dca.ah)
+      .put(dca.ap, dca.ax)
+      .put(dca.V, dca.af)
+      .put(dca.oj, dca.ok)
+      .put(dca.ol, dca.om)
+      .put(dca.os, dca.ot)
+      .put(dca.ou, dca.ov)
+      .put(dca.av, dca.aD)
+      .put(dca.ab, dca.am)
+      .put(dca.ae, dca.an)
+      .build();
 
-   private static final IntFunction<cpd> r = avn.a(cpd::a, values(), avn.a.a);
-   private static final Int2ObjectOpenHashMap<cpd> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cpd)$$0))
-   );
-   public static final axq.a<cpd> q = axq.a(cpd::values);
-   private final int t;
-   private final String u;
-   private final eit v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cpd(int $$0, String $$1, int $$2, eit $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public eit e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static cpd a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cpd a(String $$0, @Nullable cpd $$1) {
-      cpd $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cpd b(int $$0) {
-      return (cpd)s.get($$0);
+   public cpd(csv $$0, cre.a $$1) {
+      super($$0, avc.bA, $$1);
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public boa a(cuq $$0) {
+      cyx $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      cjt $$3 = $$0.o();
+      Optional<doz> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+      if ($$4.isEmpty()) {
+         return boa.d;
+      } else {
+         crj $$5 = $$0.n();
+         if ($$3 instanceof apt) {
+            am.N.a((apt)$$3, $$2, $$5);
+         }
+
+         $$1.a($$2, $$4.get(), 11);
+         $$1.a(dts.c, $$2, dts.a.a($$3, $$4.get()));
+         if ($$3 != null) {
+            $$5.a(1, $$3, bqo.d($$0.p()));
+         }
+
+         return boa.a($$1.B);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.u;
+   private Optional<doz> a(cyx $$0, ib $$1, @Nullable cjt $$2, doz $$3) {
+      Optional<doz> $$4 = this.b($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, aum.aH, aun.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<doz> $$5 = dlc.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, aum.aI, aun.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<doz> $$6 = Optional.ofNullable((dby)cqz.b.get().get($$3.b())).map($$1x -> $$1x.l($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, aum.aJ, aun.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
+            }
+         }
+      }
+   }
+
+   private Optional<doz> b(doz $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(dij.i, $$0.c(dij.i)));
    }
 }

@@ -1,44 +1,148 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ur extends MessageToByteEncoder<ByteBuf> {
-   private final byte[] a = new byte[8192];
-   private final Deflater b;
-   private int c;
+public class ur implements ug {
+   private String a = "";
+   @Nullable
+   private uj b;
+   private final Deque<Consumer<uj>> c = new ArrayDeque<>();
 
-   public ur(int $$0) {
-      this.c = $$0;
-      this.b = new Deflater();
+   @Nullable
+   public uj d() {
+      return this.b;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      if ($$3 < this.c) {
-         vl.a($$2, 0);
-         $$2.writeBytes($$1);
-      } else {
-         byte[] $$4 = new byte[$$3];
-         $$1.readBytes($$4);
-         vl.a($$2, $$4.length);
-         this.b.setInput($$4, 0, $$3);
-         this.b.finish();
+   protected int e() {
+      return this.c.size();
+   }
 
-         while (!this.b.finished()) {
-            int $$5 = this.b.deflate(this.a);
-            $$2.writeBytes(this.a, 0, $$5);
-         }
+   private void a(uj $$0) {
+      this.c.getLast().accept($$0);
+   }
 
-         this.b.reset();
+   @Override
+   public ug.b a() {
+      this.a(to.b);
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(String $$0) {
+      this.a(uh.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(byte $$0) {
+      this.a(tk.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(short $$0) {
+      this.a(ue.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(int $$0) {
+      this.a(tr.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(long $$0) {
+      this.a(tu.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(float $$0) {
+      this.a(tp.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(double $$0) {
+      this.a(tn.a($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(byte[] $$0) {
+      this.a(new tj($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(int[] $$0) {
+      this.a(new tq($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(long[] $$0) {
+      this.a(new tt($$0));
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.b a(ul<?> $$0, int $$1) {
+      return ug.b.a;
+   }
+
+   @Override
+   public ug.a b(ul<?> $$0, int $$1) {
+      this.c($$0);
+      return ug.a.a;
+   }
+
+   @Override
+   public ug.a a(ul<?> $$0) {
+      return ug.a.a;
+   }
+
+   @Override
+   public ug.a a(ul<?> $$0, String $$1) {
+      this.a = $$1;
+      this.c($$0);
+      return ug.a.a;
+   }
+
+   private void c(ul<?> $$0) {
+      if ($$0 == ts.a) {
+         ts $$1 = new ts();
+         this.a($$1);
+         this.c.addLast($$1::add);
+      } else if ($$0 == tm.b) {
+         tm $$2 = new tm();
+         this.a($$2);
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
       }
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   public ug.b b() {
+      this.c.removeLast();
+      return ug.b.a;
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   @Override
+   public ug.b b(ul<?> $$0) {
+      if ($$0 == ts.a) {
+         ts $$1 = new ts();
+         this.b = $$1;
+         this.c.addLast($$1::add);
+      } else if ($$0 == tm.b) {
+         tm $$2 = new tm();
+         this.b = $$2;
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      } else {
+         this.c.addLast($$0x -> this.b = $$0x);
+      }
+
+      return ug.b.a;
    }
 }

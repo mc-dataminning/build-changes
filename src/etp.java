@@ -1,101 +1,54 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
-public class etp {
-   private static final int a = 32768;
-   private final etp.a b;
-   private final String c;
-   private int d;
+public class etp<T> implements ets<T>, etu<T> {
+   private final List<etq<T>> a = Lists.newArrayList();
+   private final Set<etq<?>> b = new ObjectOpenCustomHashSet(etq.a);
 
-   protected etp(etp.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
+   @Override
+   public void a(etr<T> $$0) {
+      etq<T> $$1 = new etq<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public void a(etr $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
+   private void a(etq<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
    }
 
-   public String b() {
-      return this.c;
+   @Override
+   public boolean a(ib $$0, T $$1) {
+      return this.b.contains(etq.a($$1, $$0));
    }
 
-   public static etp a(etp.a $$0, String $$1, InputStream $$2, String $$3, eti $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      etp $$6 = new etp($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   protected static int b(etp.a $$0, String $$1, InputStream $$2, String $$3, eti $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
-         }
+   @Override
+   public uj b(long $$0, Function<T, String> $$1) {
+      ts $$2 = new ts();
+
+      for (etq<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
       }
+
+      return $$2;
    }
 
-   protected int c() {
-      return this.d;
+   public List<etq<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, etp> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public String a() {
-         return this.c;
-      }
-
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, etp> c() {
-         return this.f;
-      }
+   public static <T> etp<T> a(ts $$0, Function<String, Optional<T>> $$1, cye $$2) {
+      etp<T> $$3 = new etp<>();
+      etq.a($$0, $$1, $$2, $$3::a);
+      return $$3;
    }
 }

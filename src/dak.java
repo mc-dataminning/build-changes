@@ -1,44 +1,89 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dak extends cza {
-   public static final MapCodec<dak> b = b(dak::new);
-   public static final int c = 5;
-   private static final ih[] d = ih.values();
+public class dak {
+   public static final Codec<dak> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dak.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ajr.c(ks.av)).apply($$0, dak::new)
+   );
+   public static final Codec<il<dak>> b = ajp.a(ks.aN, a);
+   private final dak.a c;
+   private final daf.c<il<czw>> d;
 
-   @Override
-   public MapCodec<dak> a() {
-      return b;
+   public dak(dak.a $$0, im<czw> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public dak(dna.d $$0) {
-      super($$0);
+   public daf.c<il<czw>> a() {
+      return this.d;
    }
 
-   @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$3.a(5) == 0) {
-         ih $$4 = d[$$3.a(d.length)];
-         ib $$5 = $$2.a($$4);
-         dnb $$6 = $$1.a_($$5);
-         dac $$7 = null;
-         if (g($$6)) {
-            $$7 = dae.qy;
-         } else if ($$6.a(dae.qy) && $$6.c(czb.d) == $$4) {
-            $$7 = dae.qx;
-         } else if ($$6.a(dae.qx) && $$6.c(czb.d) == $$4) {
-            $$7 = dae.qw;
-         } else if ($$6.a(dae.qw) && $$6.c(czb.d) == $$4) {
-            $$7 = dae.qv;
-         }
+   public static Map<dak.a, daf.c<ajs<czw>>> b() {
+      return dak.a.f.values().stream().collect(Collectors.toMap($$0 -> (dak.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   }
 
-         if ($$7 != null) {
-            dnb $$8 = $$7.o().a(czb.d, $$4).a(czb.c, Boolean.valueOf($$6.u().a() == eiq.c));
-            $$1.b($$5, $$8);
+   public static record a(ajt d, dak.a.a e) {
+      public static final dak.a a = new dak.a(
+         new ajt("nether"),
+         new dak.a.a() {
+            @Override
+            public <T> daf.c<T> apply(Function<ajs<czw>, T> $$0) {
+               return new daf.c<>(
+                  List.of(
+                     Pair.of(daf.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dad.ac)),
+                     Pair.of(daf.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dad.af)),
+                     Pair.of(daf.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dad.ae)),
+                     Pair.of(daf.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dad.ad)),
+                     Pair.of(daf.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dad.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final dak.a b = new dak.a(new ajt("overworld"), new dak.a.a() {
+         @Override
+         public <T> daf.c<T> apply(Function<ajs<czw>, T> $$0) {
+            return dak.a.a($$0);
+         }
+      });
+      static final Map<ajt, dak.a> f = Stream.of(a, b).collect(Collectors.toMap(dak.a::b, $$0 -> (dak.a)$$0));
+      public static final Codec<dak.a> c = ajt.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> daf.c<T> a(Function<ajs<czw>, T> $$0) {
+         Builder<Pair<daf.d, T>> $$1 = ImmutableList.builder();
+         new dam().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new daf.c<>($$1.build());
       }
-   }
 
-   public static boolean g(dnb $$0) {
-      return $$0.i() || $$0.a(dae.G) && $$0.u().e() == 8;
+      public Stream<ajs<czw>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ajs<czw>>map(Pair::getSecond).distinct();
+      }
+
+      public ajt b() {
+         return this.d;
+      }
+
+      public dak.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> daf.c<T> apply(Function<ajs<czw>, T> var1);
+      }
    }
 }

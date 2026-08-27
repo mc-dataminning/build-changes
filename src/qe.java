@@ -1,26 +1,24 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class qe {
-   public static final ajg<ehc> a = ajg.a(kj.aF, new ajh("trial_chambers_copper_bulb_degradation"));
+   public static final ajs<egq> a = a("empty");
 
-   public static void a(pl<ehc> $$0) {
-      a(
-         $$0,
-         a,
-         List.of(
-            new egx(
-               List.of(
-                  new egt(new egv(dae.so, 0.1F), egc.b, dae.sr.o().a(dbq.c, Boolean.valueOf(true))),
-                  new egt(new egv(dae.so, 0.33333334F), egc.b, dae.sq.o().a(dbq.c, Boolean.valueOf(true))),
-                  new egt(new egv(dae.so, 0.5F), egc.b, dae.sp.o().a(dbq.c, Boolean.valueOf(true)))
-               )
-            ),
-            new egu(aun.bI)
-         )
-      );
+   public static ajs<egq> a(String $$0) {
+      return ajs.a(ks.aI, new ajt($$0));
    }
 
-   private static void a(pl<ehc> $$0, ajg<ehc> $$1, List<ehb> $$2) {
-      $$0.a($$1, new ehc($$2));
+   public static void a(px<egq> $$0, String $$1, egq $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(px<egq> $$0) {
+      im<egq> $$1 = $$0.a(ks.aI);
+      il<egq> $$2 = $$1.b(a);
+      $$0.a(a, new egq($$2, ImmutableList.of(), egq.a.b));
+      pt.a($$0);
+      qc.a($$0);
+      qt.a($$0);
+      po.a($$0);
+      qn.a($$0);
    }
 }

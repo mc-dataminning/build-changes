@@ -1,38 +1,27 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class eyz {
-   private final fsb a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ta> c;
+public class eyz extends grl {
+   protected BooleanConsumer a;
+   private final wg b;
+   private final wg c;
 
-   public eyz(fsb $$0) {
+   public eyz(BooleanConsumer $$0, wg $$1, wg $$2) {
+      super(fbh.a);
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean a(int $$0, @Nullable ta $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public void aN_() {
+      this.c(fdp.a(wf.f, $$0 -> this.a.accept(true)).a(this.k / 2 - 105, g(9), 100, 20).a());
+      this.c(fdp.a(wf.g, $$0 -> this.a.accept(false)).a(this.k / 2 + 5, g(9), 100, 20).a());
    }
 
-   private int a(Consumer<ta> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<ta> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new afs($$2, $$0));
-   }
-
-   public void a(ib $$0, Consumer<ta> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new afc($$2, $$0));
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.b, this.k / 2, g(3), -1);
+      $$0.a(this.m, this.c, this.k / 2, g(5), -1);
    }
 }

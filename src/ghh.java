@@ -1,52 +1,38 @@
-public class ghh<T extends cbr> extends ghm<T, fnx<T>> {
-   private final fym a;
+import javax.annotation.Nullable;
 
-   public ghh(gew<T, fnx<T>> $$0, fym $$1) {
-      super($$0);
-      this.a = $$1;
+public class ghh extends ggo<chf, fsf<chf>> {
+   private static final ajt a = new ajt("textures/" + gao.i.b().a() + ".png");
+   private static final ajt[] i = gao.j.stream().map($$0 -> new ajt("textures/" + $$0.b().a() + ".png")).toArray(ajt[]::new);
+
+   public ghh(gfi.a $$0) {
+      super($$0, new fsf<>($$0.a(ftl.bk)), 0.0F);
+      this.a(new gjw(this));
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         ezi $$10 = ezi.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
-            dnb $$12 = $$3.s().a();
-            int $$13 = gec.c($$3, 0.0F);
-            glc $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
+   public esa a(chf $$0, float $$1) {
+      return $$0.H($$1).orElse(super.a($$0, $$1)).a((double)$$0.eb());
    }
 
-   private void a(eub $$0, fxs $$1, int $$2, boolean $$3, dnb $$4, int $$5, glc $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(fya.r(gjb.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   public boolean a(chf $$0, gdd $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.H(0.0F).filter($$2x -> {
+         bqb<?> $$3x = $$0.ai();
+         float $$4x = $$3x.l() / 2.0F;
+         float $$5 = $$3x.k() / 2.0F;
+         esa $$6 = esa.c($$0.dm());
+         return $$1.a(new erv($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
+      }).isPresent();
+   }
+
+   public ajt a(chf $$0) {
+      return a($$0.go());
+   }
+
+   public static ajt a(@Nullable cqc $$0) {
+      return $$0 == null ? a : i[$$0.a()];
+   }
+
+   protected void a(chf $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
+      $$1.a($$0.y().g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

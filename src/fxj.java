@@ -1,51 +1,57 @@
-public enum fxj {
-   a(new fxj.b(fxj.a.f, fxj.a.e, fxj.a.a), new fxj.b(fxj.a.f, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.a)),
-   b(new fxj.b(fxj.a.f, fxj.a.b, fxj.a.d), new fxj.b(fxj.a.f, fxj.a.b, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.b, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.b, fxj.a.d)),
-   c(new fxj.b(fxj.a.c, fxj.a.b, fxj.a.d), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.f, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.f, fxj.a.b, fxj.a.d)),
-   d(new fxj.b(fxj.a.f, fxj.a.b, fxj.a.a), new fxj.b(fxj.a.f, fxj.a.e, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.b, fxj.a.a)),
-   e(new fxj.b(fxj.a.f, fxj.a.b, fxj.a.d), new fxj.b(fxj.a.f, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.f, fxj.a.e, fxj.a.a), new fxj.b(fxj.a.f, fxj.a.b, fxj.a.a)),
-   f(new fxj.b(fxj.a.c, fxj.a.b, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.a), new fxj.b(fxj.a.c, fxj.a.e, fxj.a.d), new fxj.b(fxj.a.c, fxj.a.b, fxj.a.d));
-
-   private static final fxj[] g = ac.a(new fxj[6], $$0 -> {
-      $$0[fxj.a.e] = a;
-      $$0[fxj.a.b] = b;
-      $$0[fxj.a.d] = c;
-      $$0[fxj.a.a] = d;
-      $$0[fxj.a.f] = e;
-      $$0[fxj.a.c] = f;
-   });
-   private final fxj.b[] h;
-
-   public static fxj a(ih $$0) {
-      return g[$$0.d()];
+public class fxj extends fyn {
+   fxj(fuh $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   private fxj(fxj.b... $$0) {
-      this.h = $$0;
+   @Override
+   public fxr b() {
+      return fxr.b;
    }
 
-   public fxj.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
-   public static final class a {
-      public static final int a = ih.d.d();
-      public static final int b = ih.b.d();
-      public static final int c = ih.f.d();
-      public static final int d = ih.c.d();
-      public static final int e = ih.a.d();
-      public static final int f = ih.e.d();
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(kl.ac, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
 
-      b(int $$0, int $$1, int $$2) {
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxj $$8 = new fxj($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

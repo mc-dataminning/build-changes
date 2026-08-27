@@ -1,47 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class bju extends bjs implements bjy {
+   public static final int c = 240;
+   private final long[][] d;
+   private int e;
+   private int f;
 
-public class bju {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bjp f = bjo.a;
-
-   public bju(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   public bju(int $$0) {
+      this($$0, new long[$$0]);
    }
 
-   public bjr a() {
-      this.f = new bjk(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   public bju(int $$0, long[] $$1) {
+      super($$0, $$1);
+      this.d = new long[240][$$0];
    }
 
-   public void b() {
-      if (this.f != bjo.a) {
-         bjq $$0 = this.f.d();
-         this.f = bjo.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
+   @Override
+   protected void a() {
+      int $$0 = this.b(this.e + this.f);
+      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
+      if (this.f < 240) {
+         this.f++;
+      } else {
+         this.e = this.b(this.e + 1);
       }
    }
 
-   @Nullable
-   public static bju a(String $$0) {
-      return null;
+   @Override
+   public int c() {
+      return this.d.length;
    }
 
-   public static bjr a(bjr $$0, @Nullable bju $$1) {
-      return $$1 != null ? bjr.a($$1.a(), $$0) : $$0;
+   @Override
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public long a(int $$0) {
+      return this.a($$0, 0);
+   }
+
+   @Override
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.f) {
+         long[] $$2 = this.d[this.b(this.e + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
+         } else {
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+         }
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+      }
+   }
+
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   @Override
+   public void e() {
+      this.e = 0;
+      this.f = 0;
    }
 }

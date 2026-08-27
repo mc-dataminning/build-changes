@@ -1,71 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gap implements ewm {
+   private final ewm a;
+   private final glj b;
 
-class gap {
-   private final Map<ib, dki> a;
-   @Nullable
-   private final List<dpq<dnb>> b;
-   private final boolean c;
-   private final dpi d;
-
-   gap(dpi $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ag();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dpe) {
-         this.b = null;
-      } else {
-         dpj[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dpj $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gap(ewm $$0, glj $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public dki a(ib $$0) {
-      return this.a.get($$0);
+   @Override
+   public ewm a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public dnb b(ib $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dnb $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dae.hW.o();
-         }
+   @Override
+   public ewm a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
 
-         if ($$2 == 70) {
-            $$4 = dsf.a($$1, $$3);
-         }
+   @Override
+   public ewm a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
 
-         return $$4 == null ? dae.a.o() : $$4;
-      } else if (this.b == null) {
-         return dae.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dpq<dnb> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+   @Override
+   public ewm a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-            return dae.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
-      }
+   @Override
+   public ewm b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public ewm a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

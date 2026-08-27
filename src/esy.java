@@ -1,51 +1,46 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class esy {
-   private static final int a = 8;
-   private static final int b = 16384;
+class esy {
+   private final Reference2ObjectOpenHashMap<esw, etb> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   public static void a(long $$0) {
-      c($$0).filter(esy::a).ifPresent(esy::c);
+   @Nullable
+   public etb a(esw $$0) {
+      return (etb)this.a.get($$0);
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+   public etb a(esw $$0, Consumer<etb> $$1) {
+      return (etb)this.a.computeIfAbsent($$0, $$1x -> {
+         etb $$2 = new etb();
+         $$1.accept($$2);
+         return $$2;
       });
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   public boolean b(esw $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   public Object2IntMap<esw> b() {
+      Object2IntMap<esw> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
    }
 
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   void a(esw $$0, etb $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public static void a(asg<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
-      }
+   Map<esw, etb> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

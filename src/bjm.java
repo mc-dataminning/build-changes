@@ -1,45 +1,22 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bjm implements bjq {
-   public static final bjm a = new bjm();
-
-   private bjm() {
+public class bjm extends Schema {
+   public bjm(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public List<bjt> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("EntityHorse");
+      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bfa.t.in($$0), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
+      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0)), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
+      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0)), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
+      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bfa.t.in($$0), bgl.a($$0)));
+      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bfa.t.in($$0), bgl.a($$0)));
+      return $$1;
    }
 }

@@ -1,49 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzl extends dzi {
-   public static final Codec<dzl> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmi.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dzl::new)
-   );
-   private final bmi b;
-
-   public dzl(bmi $$0, bmi $$1, bmi $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+public class dzl extends dxv<eag> {
+   public dzl(Codec<eag> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dzj<?> a() {
-      return dzj.h;
-   }
-
-   @Override
-   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + aww.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
+   public boolean a(dxx<eag> $$0) {
+      czs $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ih $$3 : ih.values()) {
+            if ($$3 != ih.a && dkt.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dca.ff.n().a(dkt.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
          }
 
-         this.a($$0, $$1, $$2, $$3, new ib($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+         return false;
       }
-   }
-
-   @Override
-   public int a(axd $$0, int $$1, dys $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

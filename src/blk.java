@@ -1,13 +1,7 @@
-import java.time.Instant;
+import jdk.jfr.consumer.RecordedEvent;
 
-public final class blk {
-   public final Instant a;
-   public final int b;
-   public final bjq c;
-
-   public blk(Instant $$0, int $$1, bjq $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record blk(double a, double b, double c) {
+   public static blk a(RecordedEvent $$0) {
+      return new blk((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

@@ -1,54 +1,37 @@
-public class fqf<T extends box> extends fon<T> {
-   private static final String a = "upper_body";
-   private final frf b;
-   private final frf f;
-   private final frf g;
-   private final frf h;
-   private final frf i;
-
-   public fqf(frf $$0) {
-      this.b = $$0;
-      this.g = $$0.b("head");
-      this.h = $$0.b("left_arm");
-      this.i = $$0.b("right_arm");
-      this.f = $$0.b("upper_body");
+public class fqf<T extends bpv> extends frw<T> {
+   public fqf(ftm $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      float $$2 = 4.0F;
-      frj $$3 = new frj(-0.5F);
-      $$1.a("head", frk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), frh.a(0.0F, 4.0F, 0.0F));
-      frk $$4 = frk.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, frh.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, frh.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", frk.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), frh.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", frk.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), frh.a(0.0F, 24.0F, 0.0F));
-      return frl.a($$0, 64, 64);
+   public static fts c() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         ftr.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fto.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         ftr.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fto.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      ftr $$3 = ftr.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fto.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fto.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fto.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fto.a(4.0F, 12.0F, -6.0F));
+      return fts.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
-      float $$6 = aww.a(this.f.f);
-      float $$7 = aww.b(this.f.f);
-      this.h.f = this.f.f;
-      this.i.f = this.f.f + (float) Math.PI;
-      this.h.b = $$7 * 5.0F;
-      this.h.d = -$$6 * 5.0F;
-      this.i.b = -$$7 * 5.0F;
-      this.i.d = $$6 * 5.0F;
-   }
-
-   @Override
-   public frf a() {
-      return this.b;
-   }
-
-   public frf c() {
-      return this.g;
+   public ftm d() {
+      return this.a;
    }
 }

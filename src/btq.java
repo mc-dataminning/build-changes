@@ -1,98 +1,124 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class btq<U> implements Iterable<U> {
-   protected final List<btq.a<U>> a;
-   private final axd b = axd.a();
+public class btq extends bsg<bqq> {
+   private static final int c = 40;
+   private int d;
+   @Nullable
+   private elg e;
+   @Nullable
+   private ib f;
+   private float g;
 
    public btq() {
-      this.a = Lists.newArrayList();
+      this(150, 250);
    }
 
-   private btq(List<btq.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public btq(int $$0, int $$1) {
+      super(ImmutableMap.of(bzr.E, bzs.c, bzr.t, bzs.b, bzr.m, bzs.a), $$0, $$1);
    }
 
-   public static <U> Codec<btq<U>> a(Codec<U> $$0) {
-      return btq.a.a($$0).listOf().xmap(btq::new, $$0x -> $$0x.a);
-   }
-
-   public btq<U> a(U $$0, int $$1) {
-      this.a.add(new btq.a<>($$0, $$1));
-      return this;
-   }
-
-   public btq<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(btq.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(btq.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), btq.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<btq.a<E>> a(final Codec<E> $$0) {
-         return new Codec<btq.a<E>>() {
-            public <T> DataResult<Pair<btq.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new btq.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+   protected boolean a(aps $$0, bqq $$1) {
+      if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         brp<?> $$2 = $$1.dP();
+         bzu $$3 = $$2.c(bzr.m).get();
+         boolean $$4 = this.a($$1, $$3);
+         if (!$$4 && this.a($$1, $$3, $$0.Y())) {
+            this.f = $$3.a().b();
+            return true;
+         } else {
+            $$2.b(bzr.m);
+            if ($$4) {
+               $$2.b(bzr.E);
             }
 
-            public <T> DataResult<T> a(btq.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
+            return false;
+         }
       }
+   }
+
+   protected boolean a(aps $$0, bqq $$1, long $$2) {
+      if (this.e != null && this.f != null) {
+         Optional<bzu> $$3 = $$1.dP().c(bzr.m);
+         boolean $$4 = $$3.<Boolean>map(btq::a).orElse(false);
+         bzz $$5 = $$1.K();
+         return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
+      } else {
+         return false;
+      }
+   }
+
+   protected void b(aps $$0, bqq $$1, long $$2) {
+      if ($$1.dP().a(bzr.m) && !this.a($$1, $$1.dP().c(bzr.m).get()) && $$1.K().r()) {
+         this.d = $$0.E_().a(40);
+      }
+
+      $$1.K().n();
+      $$1.dP().b(bzr.m);
+      $$1.dP().b(bzr.t);
+      this.e = null;
+   }
+
+   protected void c(aps $$0, bqq $$1, long $$2) {
+      $$1.dP().a(bzr.t, this.e);
+      $$1.K().a(this.e, (double)this.g);
+   }
+
+   protected void d(aps $$0, bqq $$1, long $$2) {
+      elg $$3 = $$1.K().j();
+      brp<?> $$4 = $$1.dP();
+      if (this.e != $$3) {
+         this.e = $$3;
+         $$4.a(bzr.t, $$3);
+      }
+
+      if ($$3 != null && this.f != null) {
+         bzu $$5 = $$4.c(bzr.m).get();
+         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.Y())) {
+            this.f = $$5.a().b();
+            this.c($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private boolean a(bqq $$0, bzu $$1, long $$2) {
+      ib $$3 = $$1.a().b();
+      this.e = $$0.K().a($$3, 0);
+      this.g = $$1.b();
+      brp<?> $$4 = $$0.dP();
+      if (this.a($$0, $$1)) {
+         $$4.b(bzr.E);
+      } else {
+         boolean $$5 = this.e != null && this.e.j();
+         if ($$5) {
+            $$4.b(bzr.E);
+         } else if (!$$4.a(bzr.E)) {
+            $$4.a(bzr.E, $$2);
+         }
+
+         if (this.e != null) {
+            return true;
+         }
+
+         esa $$6 = cbi.a((bqw)$$0, 10, 7, esa.c($$3), (float) (Math.PI / 2));
+         if ($$6 != null) {
+            this.e = $$0.K().a($$6.c, $$6.d, $$6.e, 0);
+            return this.e != null;
+         }
+      }
+
+      return false;
+   }
+
+   private boolean a(bqq $$0, bzu $$1) {
+      return $$1.a().b().k($$0.dm()) <= $$1.c();
+   }
+
+   private static boolean a(bzu $$0) {
+      return $$0.a() instanceof bsr $$2 ? $$2.c().N_() : false;
    }
 }

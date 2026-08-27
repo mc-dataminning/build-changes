@@ -1,61 +1,32 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dap extends dgu {
-   public static final MapCodec<dap> a = b(dap::new);
-   public static final dnv b = dnr.R;
+public abstract class dap extends dbk {
+   private final cqc a;
 
-   @Override
-   public MapCodec<dap> a() {
-      return a;
-   }
-
-   public dap(dna.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, ih.c));
-   }
-
-   @Nullable
-   @Override
-   public dki a(ib $$0, dnb $$1) {
-      return new dkn($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return !$$0.B ? a($$2, dkk.J, ($$0x, $$1x, $$2x, $$3) -> dry.c.a($$0x, $$3.gp(), $$3.gq())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      return super.a($$0).a(b, $$0.g());
+   protected dap(cqc $$0, doy.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public int a(dnb $$0, cwh $$1, ib $$2, ih $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected abstract MapCodec<? extends dap> a();
+
+   @Override
+   public boolean a(doz $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public dmf a(ib $$0, doz $$1) {
+      return new dlu($$0, $$1, this.a);
    }
 
    @Override
-   public dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public crj a(cza $$0, ib $$1, doz $$2) {
+      return $$0.c_($$1) instanceof dlu $$3 ? $$3.c() : super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   public cqc b() {
+      return this.a;
    }
 }

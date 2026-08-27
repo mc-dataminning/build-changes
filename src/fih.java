@@ -1,107 +1,188 @@
-public abstract class fih<T extends clr> extends fig<T> implements flb {
-   public final fkr x;
-   private boolean y;
-   private final ajh z;
-   private final ajh A;
-   private final ajh B;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fih(T $$0, fkr $$1, cit $$2, vu $$3, ajh $$4, ajh $$5, ajh $$6) {
-      super($$0, $$2, $$3);
-      this.x = $$1;
-      this.z = $$4;
-      this.A = $$5;
-      this.B = $$6;
+public class fih extends fjo {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long o = 2000L;
+   public static final wg a = wg.c("connect.aborted");
+   public static final wg b = wg.a("disconnect.genericReason", wg.c("disconnect.unknownHost"));
+   @Nullable
+   volatile ve p;
+   @Nullable
+   ChannelFuture q;
+   volatile boolean r;
+   final fjo s;
+   private wg u = wg.c("connect.connecting");
+   private long v = -1L;
+   final wg w;
+
+   private fih(fjo $$0, wg $$1) {
+      super(fbh.a);
+      this.s = $$0;
+      this.w = $$1;
    }
 
-   @Override
-   public void aO_() {
-      super.aO_();
-      this.y = this.g < 379;
-      this.x.a(this.g, this.h, this.f, this.y, this.p);
-      this.t = this.x.a(this.g, this.c);
-      this.c(new fbu(this.t + 20, this.h / 2 - 49, 20, 18, fkv.a, $$0 -> {
-         this.x.e();
-         this.t = this.x.a(this.g, this.c);
-         $$0.c(this.t + 20, this.h / 2 - 49);
-      }));
-      this.l = (this.c - this.i.a(this.e)) / 2;
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.x.g();
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      if (this.x.f() && this.y) {
-         this.b($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
+   public static void a(fjo $$0, fbp $$1, fvy $$2, fuv $$3, boolean $$4, @Nullable fuz $$5) {
+      if ($$1.y instanceof fih) {
+         d.error("Attempt to connect while already connecting");
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, this.t, this.u, true, $$3);
-      }
+         wg $$6;
+         if ($$5 != null) {
+            $$6 = wf.q;
+         } else if ($$4) {
+            $$6 = fzi.a;
+         } else {
+            $$6 = wf.r;
+         }
 
-      this.a($$0, $$1, $$2);
-      this.x.a($$0, this.t, this.u, $$1, $$2);
-   }
+         fih $$9 = new fih($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(wg.c("connect.transferring"));
+         }
 
-   @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.p.s()) {
-         int $$6 = 14;
-         int $$7 = aww.f(this.p.r() * 13.0F) + 1;
-         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = aww.f(this.p.q() * 24.0F);
-      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.y && this.x.f() ? true : super.a($$0, $$1, $$2);
+         $$1.y();
+         $$1.aT();
+         $$1.a(fvm.a($$3.b));
+         $$1.bc().a(fzj.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
       }
    }
 
+   private void a(final fbp $$0, final fvy $$1, final fuv $$2, @Nullable final fuz $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fih.this.r) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = fwa.a.a($$1).map(fvx::d);
+               if (fih.this.r) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fip(fih.this.s, fih.this.w, fih.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               ve $$2;
+               synchronized (fih.this) {
+                  if (fih.this.r) {
+                     return;
+                  }
+
+                  $$2 = new ve(yo.b);
+                  $$2.a($$0.aP().n());
+                  fih.this.q = ve.a($$0, $$0.m.az(), $$2);
+               }
+
+               fih.this.q.syncUninterruptibly();
+               synchronized (fih.this) {
+                  if (fih.this.r) {
+                     $$2.a(fih.a);
+                     return;
+                  }
+
+                  fih.this.p = $$2;
+                  $$0.ae().a($$2, a($$2.b()));
+               }
+
+               fih.this.p
+                  .a($$0.getHostName(), $$0.getPort(), ahx.a, ahx.b, new fug(fih.this.p, $$0, $$2, fih.this.s, false, null, fih.this::a, $$3), $$3 != null);
+               fih.this.p.a(new aia($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fih.this.r) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fih.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fip(fih.this.s, fih.this.w, wg.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static goc.c a(fuv.a $$0x) {
+            return switch ($$0) {
+               case a -> goc.c.b;
+               case b -> goc.c.c;
+               case c -> goc.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
+   }
+
+   private void a(wg $$0) {
+      this.u = $$0;
+   }
+
    @Override
-   protected void a(cnl $$0, int $$1, int $$2, clz $$3) {
+   public void e() {
+      if (this.p != null) {
+         if (this.p.i()) {
+            this.p.b();
+         } else {
+            this.p.n();
+         }
+      }
+   }
+
+   @Override
+   public boolean aE_() {
+      return false;
+   }
+
+   @Override
+   protected void aN_() {
+      this.c(fdp.a(wf.e, $$0 -> {
+         synchronized (this) {
+            this.r = true;
+            if (this.q != null) {
+               this.q.cancel(true);
+               this.q = null;
+            }
+
+            if (this.p != null) {
+               this.p.a(a);
+            }
+         }
+
+         this.j.a(this.s);
+      }).a(this.k / 2 - 100, this.l / 4 + 120 + 12, 200, 20).a());
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.x.a($$0);
-   }
+      long $$4 = ac.b();
+      if ($$4 - this.v > 2000L) {
+         this.v = $$4;
+         this.j.aY().c(wg.c("narrator.joining"));
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void I() {
-      this.x.i();
-   }
-
-   @Override
-   public fkv J() {
-      return this.x;
+      $$0.a(this.m, this.u, this.k / 2, this.l / 2 - 50, 16777215);
    }
 }

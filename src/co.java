@@ -1,34 +1,37 @@
 import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 import javax.annotation.Nullable;
 
-public record co(ta b) {
-   public static final Codec<co> a = ty.i.xmap(co::new, co::a);
+public record co(tm c) {
+   public static final Codec<co> a = uk.i.xmap(co::new, co::a);
+   public static final ye<ByteBuf, co> b = yc.n.a(co::new, co::a);
 
-   public boolean a(cqm $$0) {
-      return this.a($$0.w());
+   public boolean a(crj $$0) {
+      ctt $$1 = $$0.a(jp.a, ctt.a);
+      return $$1.b(this.c);
    }
 
-   public boolean a(box $$0) {
+   public boolean a(bpv $$0) {
       return this.a(b($$0));
    }
 
-   public boolean a(@Nullable tx $$0) {
-      return $$0 != null && tp.a(this.b, $$0, true);
+   public boolean a(@Nullable uj $$0) {
+      return $$0 != null && ub.a(this.c, $$0, true);
    }
 
-   public static ta b(box $$0) {
-      ta $$1 = $$0.f(new ta());
-      if ($$0 instanceof ciu) {
-         cqm $$2 = ((ciu)$$0).fZ().f();
-         if (!$$2.b()) {
-            $$1.a("SelectedItem", $$2.b(new ta()));
+   public static tm b(bpv $$0) {
+      tm $$1 = $$0.f(new tm());
+      if ($$0 instanceof cjt) {
+         crj $$2 = ((cjt)$$0).fZ().f();
+         if (!$$2.d()) {
+            $$1.a("SelectedItem", $$2.a($$0.dO()));
          }
       }
 
       return $$1;
    }
 
-   public ta a() {
-      return this.b;
+   public tm a() {
+      return this.c;
    }
 }

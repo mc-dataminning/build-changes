@@ -1,17 +1,36 @@
-public enum ut {
-   a("handshake"),
-   b("play"),
-   c("status"),
-   d("login"),
-   e("configuration");
+import java.util.HashMap;
+import java.util.Map;
 
-   private final String f;
-
-   private ut(String $$0) {
-      this.f = $$0;
+public record ut(int a, Map<String, ul<?>> b, Map<String, ut> c) {
+   private ut(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   public String a() {
-      return this.f;
+   public static ut a() {
+      return new ut(1);
+   }
+
+   public void a(us $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new ut(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
+   }
+
+   public boolean a(ul<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
+   }
+
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, ul<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, ut> d() {
+      return this.c;
    }
 }

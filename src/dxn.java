@@ -1,53 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dxn(List<dxn.a> b, ih c, dtv d, boolean e) implements dxw {
-   public static final Codec<dxn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxn.a.a.listOf().fieldOf("layers").forGetter(dxn::a),
-               ih.g.fieldOf("direction").forGetter(dxn::b),
-               dtv.b.fieldOf("allowed_placement").forGetter(dxn::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dxn::d)
-            )
-            .apply($$0, dxn::new)
-   );
+public class dxn extends dxv<dzv> {
+   private static final ImmutableList<dby> a = ImmutableList.of(dca.F, dca.fn, dca.fo, dca.fp, dca.fq, dca.cv, dca.ct);
+   private static final ih[] b = ih.values();
+   private static final double c = 0.9;
 
-   public static dxn.a a(bmi $$0, dzx $$1) {
-      return new dxn.a($$0, $$1);
+   public dxn(Codec<dzv> $$0) {
+      super($$0);
    }
 
-   public static dxn b(bmi $$0, dzx $$1) {
-      return new dxn(List.of(a($$0, $$1)), ih.b, dtv.c, false);
-   }
+   @Override
+   public boolean a(dxx<dzv> $$0) {
+      boolean $$1 = false;
+      axr $$2 = $$0.d();
+      czs $$3 = $$0.b();
+      dzv $$4 = $$0.f();
+      ib $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-   public List<dxn.a> a() {
-      return this.b;
-   }
+      for (ib $$13 : ib.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
 
-   public ih b() {
-      return this.c;
-   }
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
 
-   public dtv c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bmi b, dzx c) {
-      public static final Codec<dxn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bmi.d.fieldOf("height").forGetter(dxn.a::a), dzx.a.fieldOf("provider").forGetter(dxn.a::b)).apply($$0, dxn.a::new)
-      );
-
-      public bmi a() {
-         return this.b;
+            ib $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
+         }
       }
 
-      public dzx b() {
-         return this.c;
+      return $$1;
+   }
+
+   private static boolean a(cyy $$0, ib $$1, dzv $$2) {
+      doz $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (ih $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != ih.b || !$$5 && $$4 == ih.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 }

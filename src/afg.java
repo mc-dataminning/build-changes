@@ -1,44 +1,24 @@
-import java.time.Instant;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record afg(String b, Instant c, long d, @Nullable wg e, wb.b f) implements yb<aez> {
-   public static final xs<uu, afg> a = yb.a(afg::a, afg::new);
+public record afg(il<dsr> a, ajs<cyx> b, long c, cyu d, @Nullable cyu e, boolean f, boolean g, Optional<ik> h, int i) {
+   private static final ye<vr, il<dsr>> j = yc.b(ks.aA);
 
-   private afg(uu $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(wg::a), new wb.b($$0));
+   public afg(vr $$0) {
+      this(
+         j.decode($$0), $$0.a(ks.aO), $$0.readLong(), cyu.a($$0.readByte()), cyu.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(vg::h), $$0.l()
+      );
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, wg::a);
-      this.f.a($$0);
-   }
-
-   @Override
-   public yd<afg> a() {
-      return aex.bj;
-   }
-
-   public void a(aez $$0) {
-      $$0.a(this);
-   }
-
-   public Instant e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   @Nullable
-   public wg g() {
-      return this.e;
-   }
-
-   public wb.b h() {
-      return this.f;
+   public void a(vr $$0) {
+      j.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cyu.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, vg::a);
+      $$0.c(this.i);
    }
 }

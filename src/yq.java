@@ -1,31 +1,38 @@
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class yq implements yb<yh> {
-   public static final xs<uu, yq> a = yb.a(yq::a, yq::new);
-   private final Map<ajg<? extends iy<?>>, avg.a> b;
+public class yq {
+   private static final Logger a = LogUtils.getLogger();
 
-   public yq(Map<ajg<? extends iy<?>>, avg.a> $$0) {
-      this.b = $$0;
+   public static <T extends vm> void a(yn<T> $$0, T $$1, aps $$2) throws ake {
+      a($$0, $$1, $$2.o());
    }
 
-   private yq(uu $$0) {
-      this.b = $$0.a(uu::r, avg.a::b);
-   }
+   public static <T extends vm> void a(yn<T> $$0, T $$1, bmq<?> $$2) throws ake {
+      if (!$$2.bv()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var6) {
+                  if (var6 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     if (var6 instanceof y $$4) {
+                        $$1.a($$4.a());
+                        throw var6;
+                     }
 
-   private void a(uu $$0) {
-      $$0.a(this.b, uu::b, ($$0x, $$1) -> $$1.a($$0x));
-   }
+                     o $$5 = o.a(var6, "Main thread packet handler");
+                     $$1.a($$5);
+                     throw new y($$5);
+                  }
 
-   @Override
-   public yd<yq> a() {
-      return yr.i;
-   }
-
-   public void a(yh $$0) {
-      $$0.a(this);
-   }
-
-   public Map<ajg<? extends iy<?>>, avg.a> b() {
-      return this.b;
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var6);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw ake.a;
+      }
    }
 }

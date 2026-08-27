@@ -1,101 +1,127 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record dnq(String r, boolean s, boolean t, boolean u, dnq.a v, dho w, atx x, atx y, atx z, atx A, atx B, atx C, atx D, atx E) {
-   private static final Map<String, dnq> F = new Object2ObjectArrayMap();
-   public static final Codec<dnq> a = awe.a(dnq::b, F::get);
-   public static final dnq b = a(new dnq("iron", false, false, false, dnq.a.a, dho.g, aty.mV, aty.mW, aty.nd, aty.ne, aty.oo, aty.op, aty.yF, aty.yG));
-   public static final dnq c = a(new dnq("copper", true, true, false, dnq.a.a, dho.aj, aty.fH, aty.fI, aty.fO, aty.fP, aty.oo, aty.op, aty.yF, aty.yG));
-   public static final dnq d = a(new dnq("gold", false, true, false, dnq.a.a, dho.g, aty.mV, aty.mW, aty.nd, aty.ne, aty.oo, aty.op, aty.yF, aty.yG));
-   public static final dnq e = a(new dnq("stone", true, true, false, dnq.a.b, dho.f, aty.mV, aty.mW, aty.nd, aty.ne, aty.yK, aty.yL, aty.yF, aty.yG));
-   public static final dnq f = a(
-      new dnq("polished_blackstone", true, true, false, dnq.a.b, dho.f, aty.mV, aty.mW, aty.nd, aty.ne, aty.yK, aty.yL, aty.yF, aty.yG)
+public class dnq {
+   private static final Codec<wg[]> c = wi.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new wg[]{(wg)$$0x.get(0), (wg)$$0x.get(1), (wg)$$0x.get(2), (wg)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dnq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.optionalFieldOf("filtered_messages").forGetter(dnq::d),
+               cqc.q.fieldOf("color").orElse(cqc.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dnq::a)
    );
-   public static final dnq g = a(new dnq("oak"));
-   public static final dnq h = a(new dnq("spruce"));
-   public static final dnq i = a(new dnq("birch"));
-   public static final dnq j = a(new dnq("acacia"));
-   public static final dnq k = a(new dnq("cherry", true, true, true, dnq.a.a, dho.aU, aty.eD, aty.eE, aty.eF, aty.eG, aty.eJ, aty.eK, aty.eH, aty.eI));
-   public static final dnq l = a(new dnq("jungle"));
-   public static final dnq m = a(new dnq("dark_oak"));
-   public static final dnq n = a(new dnq("crimson", true, true, true, dnq.a.a, dho.aT, aty.qq, aty.qr, aty.qs, aty.qt, aty.qw, aty.qx, aty.qu, aty.qv));
-   public static final dnq o = a(new dnq("warped", true, true, true, dnq.a.a, dho.aT, aty.qq, aty.qr, aty.qs, aty.qt, aty.qw, aty.qx, aty.qu, aty.qv));
-   public static final dnq p = a(new dnq("mangrove"));
-   public static final dnq q = a(new dnq("bamboo", true, true, true, dnq.a.a, dho.aS, aty.bo, aty.bp, aty.bq, aty.br, aty.bu, aty.bv, aty.bs, aty.bt));
+   public static final int b = 4;
+   private final wg[] d;
+   private final wg[] e;
+   private final cqc f;
+   private final boolean g;
+   @Nullable
+   private aww[] h;
+   private boolean i;
 
-   public dnq(String $$0) {
-      this($$0, true, true, true, dnq.a.a, dho.b, aty.Cq, aty.Cr, aty.Cs, aty.Ct, aty.Cw, aty.Cx, aty.Cu, aty.Cv);
+   public dnq() {
+      this(c(), c(), cqc.p, false);
    }
 
-   private static dnq a(dnq $$0) {
-      F.put($$0.r, $$0);
-      return $$0;
+   public dnq(wg[] $$0, wg[] $$1, cqc $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static Stream<dnq> a() {
-      return F.values().stream();
+   private static wg[] c() {
+      return new wg[]{wf.a, wf.a, wf.a, wf.a};
    }
 
-   public String b() {
-      return this.r;
+   private static dnq a(wg[] $$0, Optional<wg[]> $$1, cqc $$2, boolean $$3) {
+      return new dnq($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   public boolean c() {
-      return this.s;
+   public boolean a() {
+      return this.g;
    }
 
-   public boolean d() {
-      return this.t;
+   public dnq a(boolean $$0) {
+      return $$0 == this.g ? this : new dnq(this.d, this.e, this.f, $$0);
    }
 
-   public boolean e() {
-      return this.u;
+   public cqc b() {
+      return this.f;
    }
 
-   public dnq.a f() {
-      return this.v;
+   public dnq a(cqc $$0) {
+      return $$0 == this.b() ? this : new dnq(this.d, this.e, $$0, this.g);
    }
 
-   public dho g() {
-      return this.w;
+   public wg a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
    }
 
-   public atx h() {
-      return this.x;
+   public dnq a(int $$0, wg $$1) {
+      return this.a($$0, $$1, $$1);
    }
 
-   public atx i() {
-      return this.y;
+   public dnq a(int $$0, wg $$1, wg $$2) {
+      wg[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wg[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dnq($$3, $$4, this.f, this.g);
    }
 
-   public atx j() {
-      return this.z;
+   public boolean a(cjt $$0) {
+      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
    }
 
-   public atx k() {
-      return this.A;
+   public wg[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
    }
 
-   public atx l() {
-      return this.B;
+   public aww[] a(boolean $$0, Function<wg, aww> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new aww[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+         }
+      }
+
+      return this.h;
    }
 
-   public atx m() {
-      return this.C;
+   private Optional<wg[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public atx n() {
-      return this.D;
-   }
+   public boolean b(cjt $$0) {
+      for (wg $$1 : this.b($$0.Y())) {
+         xd $$2 = $$1.a();
+         we $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == we.a.c) {
+            return true;
+         }
+      }
 
-   public atx o() {
-      return this.E;
-   }
-
-   public static enum a {
-      a,
-      b;
+      return false;
    }
 }

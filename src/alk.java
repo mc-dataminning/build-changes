@@ -1,162 +1,216 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class alk {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vu.b("commands.fill.toobig", $$0, $$1));
-   static final fj b = new fj(dae.a.o(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("commands.fill.failed"));
+   static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wg.c("commands.debug.alreadyRunning"));
+   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wg.c("commands.debug.function.noRecursion"));
+   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wg.c("commands.debug.function.noReturnRun"));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("fill").requires($$0x -> $$0x.c(2)))
-            .then(
-               dv.a("from", fo.a())
-                  .then(
-                     dv.a("to", fo.a())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                                "block", fl.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.a, null)
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)dv.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
-                                                            fl.a($$0x, "block"),
-                                                            alk.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dv.a("filter", fk.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
-                                                               fl.a($$0x, "block"),
-                                                               alk.a.a,
-                                                               fk.a($$0x, "filter")
-                                                            )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          dv.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
-                                                      fl.a($$0x, "block"),
-                                                      alk.a.a,
-                                                      $$0xx -> $$0xx.c().u($$0xx.d())
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       dv.a("outline")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.b, null)
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("hollow")
-                                       .executes(
-                                          $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.c, null)
-                                       )
-                                 ))
-                              .then(
-                                 dv.a("destroy")
-                                    .executes($$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.d, null))
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
+               .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)dv.a("function").requires($$0x -> $$0x.c(3))).then(dv.a("name", fz.a()).suggests(aly.b).executes(new alk.a())))
       );
    }
 
-   private static int a(du $$0, ecw $$1, fj $$2, alk.a $$3, @Nullable Predicate<dnf> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().Z().c(cwx.z);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
+   private static int a(du $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.bi()) {
+         throw c.create();
       } else {
-         List<ib> $$7 = Lists.newArrayList();
-         apf $$8 = $$0.e();
-         int $$9 = 0;
+         $$1.bj();
+         $$0.a(() -> wg.c("commands.debug.started"), true);
+         return 0;
+      }
+   }
 
-         for (ib $$10 : ib.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dnf($$8, $$10, true))) {
-               fj $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  dki $$12 = $$8.c_($$10);
-                  bmu.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.i());
-                     $$9++;
+   private static int b(du $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.bi()) {
+         throw b.create();
+      } else {
+         bkn $$2 = $$1.bk();
+         double $$3 = (double)$$2.g() / (double)ayj.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> wg.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
+   }
+
+   static class a extends gp.b<du> implements gp.a<du> {
+      public void a(du $$0, ContextChain<du> $$1, gn $$2, gt<du> $$3) throws CommandSyntaxException {
+         if ($$2.c()) {
+            throw alk.e.create();
+         } else if ($$3.a() != null) {
+            throw alk.d.create();
+         } else {
+            CommandContext<du> $$4 = $$1.getTopContext();
+            Collection<hf<du>> $$5 = fz.a($$4, "name");
+            MinecraftServer $$6 = $$0.l();
+            String $$7 = "debug-trace-" + ac.e() + ".txt";
+            CommandDispatcher<du> $$8 = $$0.l().aF().a();
+            int $$9 = 0;
+
+            try {
+               Path $$10 = $$6.c("debug").toPath();
+               Files.createDirectories($$10);
+               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
+               alk.b $$12 = new alk.b($$11);
+               $$3.a($$12);
+
+               for (final hf<du> $$13 : $$5) {
+                  try {
+                     du $$14 = $$0.a($$12).b(2);
+                     hh<du> $$15 = $$13.a(null, $$8);
+                     $$3.a((new gz<du>($$15, dr.a, false) {
+                        public void a(du $$0, gs<du> $$1, gu $$2) {
+                           $$11.println($$13.a());
+                           super.a($$0, $$1, $$2);
+                        }
+                     }).bind($$14));
+                     $$9 += $$15.b().size();
+                  } catch (dx var18) {
+                     $$0.b(var18.a());
                   }
                }
+            } catch (IOException | UncheckedIOException var19) {
+               alk.a.warn("Tracing failed", var19);
+               $$0.b(wg.c("commands.debug.function.traceFailed"));
             }
-         }
 
-         for (ib $$13 : $$7) {
-            dac $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
-         }
-
-         if ($$9 == 0) {
-            throw c.create();
-         } else {
-            int $$15 = $$9;
-            $$0.a(() -> vu.a("commands.fill.success", $$15), true);
-            return $$9;
+            int $$18 = $$9;
+            $$3.a(($$4x, $$5x) -> {
+               if ($$5.size() == 1) {
+                  $$0.a(() -> wg.a("commands.debug.function.success.single", $$18, wg.a($$5.iterator().next().a()), $$7), true);
+               } else {
+                  $$0.a(() -> wg.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+               }
+            });
          }
       }
    }
 
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? alk.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
+   static class b implements dt, gv {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
 
-      public final amw.a e;
+      b(PrintWriter $$0) {
+         this.c = $$0;
+      }
 
-      private a(amw.a $$0) {
-         this.e = $$0;
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, ajt $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.e();
+         this.a(this.d + 1);
+         this.c.print("[E] ");
+         this.c.print($$0);
+      }
+
+      @Override
+      public void a(wg $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean l_() {
+         return true;
+      }
+
+      @Override
+      public boolean w_() {
+         return true;
+      }
+
+      @Override
+      public boolean U_() {
+         return false;
+      }
+
+      @Override
+      public boolean m_() {
+         return true;
+      }
+
+      @Override
+      public void close() {
+         IOUtils.closeQuietly(this.c);
       }
    }
 }

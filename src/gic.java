@@ -1,15 +1,24 @@
-public class gic extends ghm<cch, fqw<cch>> {
-   private static final ajh a = new ajh("textures/entity/wolf/wolf_collar.png");
+public class gic extends ggo<cjg, fsx<cjg>> {
+   private static final ajt a = new ajt("textures/entity/villager/villager.png");
 
-   public gic(gew<cch, fqw<cch>> $$0) {
-      super($$0);
+   public gic(gfi.a $$0) {
+      super($$0, new fsx<>($$0.a(ftl.bP)), 0.5F);
+      this.a(new giy<>(this, $$0.f(), $$0.d()));
+      this.a(new gke<>(this, $$0.e(), "villager"));
+      this.a(new gix<>(this, $$0.d()));
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, cch $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.r() && !$$3.ce()) {
-         float[] $$10 = $$3.gw().d();
-         euf $$11 = $$1.getBuffer(fya.e(a));
-         this.c().a($$0, $$11, $$2, git.d, $$10[0], $$10[1], $$10[2], 1.0F);
-      }
+   public ajt a(cjg $$0) {
+      return a;
+   }
+
+   protected void a(cjg $$0, ewi $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ea();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cjg $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
    }
 }

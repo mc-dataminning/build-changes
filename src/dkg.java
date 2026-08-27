@@ -1,147 +1,110 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkg extends dki {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ih c;
-   private List<bpp> m;
-   private boolean n;
-   private int r;
+public class dkg extends dby {
+   public static final MapCodec<dkg> a = b(dkg::new);
+   public static final dpq b = dpp.B;
 
-   public dkg(ib $$0, dnb $$1) {
-      super(dkk.E, $$0, $$1);
+   @Override
+   public MapCodec<dkg> a() {
+      return a;
+   }
+
+   public dkg(doy.d $$0) {
+      super($$0);
+      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.b();
-         this.r = 0;
-         this.c = ih.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void a(cxb $$0, ib $$1, dnb $$2, dkg $$3, dkg.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, aty.ca, atz.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if ($$1.C($$2)) {
+            a($$1, $$2);
+            $$1.a($$2, false);
          }
       }
    }
 
-   public static void a(cxb $$0, ib $$1, dnb $$2, dkg $$3) {
-      a($$0, $$1, $$2, $$3, dkg::b);
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         a($$1, $$2);
+         $$1.a($$2, false);
+      }
    }
 
-   public static void b(cxb $$0, ib $$1, dnb $$2, dkg $$3) {
-      a($$0, $$1, $$2, $$3, dkg::a);
+   @Override
+   public doz a(cyx $$0, ib $$1, doz $$2, cjt $$3) {
+      if (!$$0.x_() && !$$3.f() && $$2.c(b)) {
+         a($$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(ih $$0) {
-      ib $$1 = this.aC_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
+   @Override
+   public void a(cyx $$0, ib $$1, cyp $$2) {
+      if (!$$0.B) {
+         cge $$3 = new cge($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
+         int $$4 = $$3.r();
+         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
+         $$0.b($$3);
+      }
+   }
+
+   public static void a(cyx $$0, ib $$1) {
+      a($$0, $$1, null);
+   }
+
+   private static void a(cyx $$0, ib $$1, @Nullable bqo $$2) {
+      if (!$$0.B) {
+         cge $$3 = new cge($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
+         $$0.b($$3);
+         $$0.a(null, $$3.dr(), $$3.dt(), $$3.dx(), aum.zc, aun.e, 1.0F, 1.0F);
+         $$0.a($$2, dts.I, $$1);
+      }
+   }
+
+   @Override
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      if (!$$0.a(crm.or) && !$$0.a(crm.tW)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.n().b(), 1, $$0.d());
-   }
-
-   private void b() {
-      ib $$0 = this.aC_();
-      if (this.o.X() > this.l + 60L || this.m == null) {
-         this.l = this.o.X();
-         epo $$1 = new epo($$0).g(48.0);
-         this.m = this.o.a(bpp.class, $$1);
-      }
-
-      if (!this.o.B) {
-         for (bpp $$2 : this.m) {
-            if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
-               $$2.dP().a(bys.D, this.o.X());
+         a($$2, $$3, $$4);
+         $$2.a($$3, dca.a.n(), 11);
+         cre $$7 = $$0.f();
+         if (!$$4.f()) {
+            if ($$0.a(crm.or)) {
+               $$0.a(1, $$4, bqo.d($$5));
+            } else {
+               $$0.g(1);
             }
          }
+
+         $$4.b(auw.c.b($$7));
+         return boc.a($$2.B);
       }
    }
 
-   private static boolean a(ib $$0, List<bpp> $$1) {
-      for (bpp $$2 : $$1) {
-         if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(auq.c)) {
-            return true;
+   @Override
+   protected void a(cyx $$0, doz $$1, erw $$2, ckl $$3) {
+      if (!$$0.B) {
+         ib $$4 = $$2.a();
+         bpv $$5 = $$3.u();
+         if ($$3.bN() && $$3.a($$0, $$4)) {
+            a($$0, $$4, $$5 instanceof bqo ? (bqo)$$5 : null);
+            $$0.a($$4, false);
          }
       }
+   }
 
+   @Override
+   public boolean a(cyp $$0) {
       return false;
    }
 
-   private static void a(cxb $$0, ib $$1, List<bpp> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dkg::a);
-   }
-
-   private static void b(cxb $$0, ib $$1, List<bpp> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
-         int $$9 = aww.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)awg.b.b($$11) / 255.0;
-            double $$13 = (double)awg.b.c($$11) / 255.0;
-            double $$14 = (double)awg.b.d($$11) / 255.0;
-            $$0.a(kc.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
-   }
-
-   private static boolean a(ib $$0, bpp $$1) {
-      return $$1.bA() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(auq.c);
-   }
-
-   private static void a(bpp $$0) {
-      $$0.b(new bok(bom.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(cxb var1, ib var2, List<bpp> var3);
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b);
    }
 }

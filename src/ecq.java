@@ -1,39 +1,59 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecq extends eck {
-   public static final Codec<ecq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dso.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ecq::new)
-   );
-   private final dso.a c;
-   private final int d;
-   private final int e;
+public class ecq extends ecr {
+   public static final Codec<ecq> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ecq::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   private ecq(dso.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   @Override
+   protected ecs<?> a() {
+      return ecs.b;
    }
 
-   public static ecq a(dso.a $$0, int $$1, int $$2) {
-      return new ecq($$0, $$1, $$2);
+   public ecq(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(ecj $$0, axd $$1, ib $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public void a(ecr.a $$0) {
+      axr $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            ib $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dkt.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ib $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dkt.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ib $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dkt.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ib $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dkt.c, $$0);
+            }
+         }
+      });
    }
 
-   @Override
-   public ecm<?> b() {
-      return ecm.c;
+   private static void a(ib $$0, dpq $$1, ecr.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (ib var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
+      }
    }
 }

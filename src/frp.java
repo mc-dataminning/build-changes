@@ -1,22 +1,31 @@
-public class frp {
-   private final float a;
-   private final float b;
+public class frp extends fsj {
+   private final ftm a;
+   private final ftm b;
+   private final ftm c;
 
-   public frp(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public frp(ftm $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public float a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
+   public static ftu a() {
+      ftu $$0 = new ftu();
+      frq.a(ftq.a, $$0);
+      return $$0;
    }
 
    @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   }
+
+   @Override
+   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

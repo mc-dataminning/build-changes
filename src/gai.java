@@ -1,36 +1,35 @@
-public class gai implements fzs<dlv> {
-   private final gcz a;
+public class gai {
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public gai(fzt.a $$0) {
-      this.a = $$0.c();
+   public gai(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public void a(dlv $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      cxb $$6 = $$0.i();
-      if ($$6 != null) {
-         cwd $$7 = $$0.c();
-         box $$8 = $$7.b($$6, $$0.aC_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
-         }
-      }
-   }
-
-   public static void a(float $$0, eub $$1, fxs $$2, int $$3, box $$4, gcz $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dg(), $$4.dh());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
       }
 
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)aww.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
-      $$1.b();
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
+
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      }
    }
 }

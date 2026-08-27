@@ -1,15 +1,20 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-@Deprecated
-public class awr<T> {
-   private final Supplier<T> a;
+public class awr<T extends Throwable> {
+   @Nullable
+   private T a;
 
-   public awr(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
+   public void a(T $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      } else {
+         this.a.addSuppressed($$0);
+      }
    }
 
-   public T a() {
-      return this.a.get();
+   public void a() throws T {
+      if (this.a != null) {
+         throw this.a;
+      }
    }
 }

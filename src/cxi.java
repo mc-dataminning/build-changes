@@ -1,15 +1,47 @@
-public interface cxi extends cxe {
-   long ai();
+import java.util.Map.Entry;
 
-   default float ao() {
-      return dqo.i[this.D_().b(this.ai())];
+public class cxi extends cwq {
+   private static final float b = 0.15F;
+
+   public cxi(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bf, $$1);
    }
 
-   default float f(float $$0) {
-      return this.D_().a(this.ai());
+   @Override
+   public int a(int $$0) {
+      return 10 + 20 * ($$0 - 1);
    }
 
-   default int ap() {
-      return this.D_().b(this.ai());
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public void b(bqo $$0, bpv $$1, int $$2) {
+      axr $$3 = $$0.ei();
+      Entry<bqc, crj> $$4 = cwr.b(cwt.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dN().d($$0), (float)b($$2, $$3));
+         }
+
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
+         }
+      }
+   }
+
+   public static boolean a(int $$0, axr $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
+   }
+
+   public static int b(int $$0, axr $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

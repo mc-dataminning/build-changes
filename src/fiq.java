@@ -1,82 +1,80 @@
-public class fiq extends fif {
-   private final dks m;
-   private fbp<dks.a> n;
-   private fbp<Boolean> o;
-   private fbp<Boolean> p;
-   private dks.a q = dks.a.c;
-   private boolean r;
-   private boolean t;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fiq(dks $$0) {
-      this.m = $$0;
+public class fiq extends fjo {
+   private static final wg a = wg.c("addServer.enterName");
+   private static final wg b = wg.c("addServer.enterIp");
+   private fdp c;
+   private final BooleanConsumer d;
+   private final fuv o;
+   private fdy p;
+   private fdy q;
+   private final fjo r;
+
+   public fiq(fjo $$0, BooleanConsumer $$1, fuv $$2) {
+      super(wg.c("addServer.title"));
+      this.r = $$0;
+      this.d = $$1;
+      this.o = $$2;
    }
 
    @Override
-   cwc o() {
-      return this.m.b();
-   }
-
-   @Override
-   int E() {
-      return 135;
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.n = this.c(fbp.<dks.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> vu.c("advMode.mode.sequence");
-            case b -> vu.c("advMode.mode.auto");
-            case c -> vu.c("advMode.mode.redstone");
-         };
-      }).a(dks.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, vu.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.c(
-         fbp.a(vu.c("advMode.mode.conditional"), vu.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.r)
-            .a(this.g / 2 - 50, 165, 100, 20, vu.c("advMode.type"), ($$0, $$1) -> this.r = $$1)
+   protected void aN_() {
+      this.q = new fdy(this.m, this.k / 2 - 100, 66, 200, 20, wg.c("addServer.enterName"));
+      this.q.a(this.o.a);
+      this.q.b($$0 -> this.C());
+      this.d(this.q);
+      this.p = new fdy(this.m, this.k / 2 - 100, 106, 200, 20, wg.c("addServer.enterIp"));
+      this.p.f(128);
+      this.p.a(this.o.b);
+      this.p.b($$0 -> this.C());
+      this.d(this.p);
+      this.c(
+         fdw.a(fuv.a::a)
+            .a(fuv.a.values())
+            .a(this.o.b())
+            .a(this.k / 2 - 100, this.l / 4 + 72, 200, 20, wg.c("addServer.resourcePack"), ($$0, $$1) -> this.o.a($$1))
       );
-      this.p = this.c(
-         fbp.a(vu.c("advMode.mode.autoexec.bat"), vu.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, vu.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.l.j = $$0;
-      this.n.j = $$0;
-      this.o.j = $$0;
-      this.p.j = $$0;
-   }
-
-   public void I() {
-      cwc $$0 = this.m.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.l();
-      this.r = this.m.s();
-      this.t = this.m.d();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.r);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
+      this.c = this.c(fdp.a(wg.c("addServer.add"), $$0 -> this.m()).a(this.k / 2 - 100, this.l / 4 + 96 + 18, 200, 20).a());
+      this.c(fdp.a(wf.e, $$0 -> this.d.accept(false)).a(this.k / 2 - 100, this.l / 4 + 120 + 18, 200, 20).a());
+      this.C();
    }
 
    @Override
-   public void a(ezi $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   protected void aD_() {
+      this.b(this.q);
    }
 
    @Override
-   protected void a(cwc $$0) {
-      this.f.L().b(new agm(ib.a($$0.g()), this.a.a(), this.q, $$0.o(), this.r, this.t));
+   public void a(fbp $$0, int $$1, int $$2) {
+      String $$3 = this.p.a();
+      String $$4 = this.q.a();
+      this.b($$0, $$1, $$2);
+      this.p.a($$3);
+      this.q.a($$4);
+   }
+
+   private void m() {
+      this.o.a = this.q.a();
+      this.o.b = this.p.a();
+      this.d.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.j.a(this.r);
+   }
+
+   private void C() {
+      this.c.j = fvy.b(this.p.a()) && !this.q.a().isEmpty();
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 17, 16777215);
+      $$0.b(this.m, a, this.k / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.m, b, this.k / 2 - 100 + 1, 94, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
+      this.p.a($$0, $$1, $$2, $$3);
    }
 }

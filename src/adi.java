@@ -1,29 +1,36 @@
-public class adi implements yb<aam> {
-   public static final xs<uu, adi> a = yb.a(adi::a, adi::new);
-   private final int b;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public adi(dos $$0) {
-      this.b = $$0.q();
+public class adi implements yn<aay> {
+   public static final ye<vg, adi> a = yn.a(adi::a, adi::new);
+   private final IntList b;
+
+   public adi(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private adi(uu $$0) {
-      this.b = $$0.l();
+   public adi(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(uu $$0) {
-      $$0.c(this.b);
+   private adi(vg $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yd<adi> a() {
-      return aex.au;
+   public yp<adi> a() {
+      return afj.aj;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public IntList b() {
       return this.b;
    }
 }

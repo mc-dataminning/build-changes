@@ -1,4 +1,6 @@
 import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -74,24 +76,24 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class ac {
-   static final Logger f = LogUtils.getLogger();
-   private static final int g = 255;
-   private static final int h = 10;
-   private static final String i = "max.bg.threads";
-   private static final ExecutorService j = c("Main");
-   private static final ExecutorService k = a("IO-Worker-", false);
-   private static final ExecutorService l = a("Download-", true);
-   private static final DateTimeFormatter m = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
-   private static final int n = 8;
-   public static final long a = 1000000L;
-   public static axu.a b = System::nanoTime;
-   public static final Ticker c = new Ticker() {
+   static final Logger g = LogUtils.getLogger();
+   private static final int h = 255;
+   private static final int i = 10;
+   private static final String j = "max.bg.threads";
+   private static final ExecutorService k = b("Main");
+   private static final ExecutorService l = a("IO-Worker-", false);
+   private static final ExecutorService m = a("Download-", true);
+   private static final DateTimeFormatter n = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
+   public static final int a = 8;
+   public static final long b = 1000000L;
+   public static ayi.a c = System::nanoTime;
+   public static final Ticker d = new Ticker() {
       public long read() {
-         return ac.b.getAsLong();
+         return ac.c.getAsLong();
       }
    };
-   public static final UUID d = new UUID(0L, 0L);
-   public static final FileSystemProvider e = FileSystemProvider.installedProviders()
+   public static final UUID e = new UUID(0L, 0L);
+   public static final FileSystemProvider f = FileSystemProvider.installedProviders()
       .stream()
       .filter($$0 -> $$0.getScheme().equalsIgnoreCase("jar"))
       .findFirst()
@@ -103,11 +105,11 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(doe<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dqc<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable ajh $$1) {
+   public static String a(String $$0, @Nullable ajt $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -116,7 +118,7 @@ public class ac {
    }
 
    public static long c() {
-      return b.getAsLong();
+      return c.getAsLong();
    }
 
    public static long d() {
@@ -124,11 +126,11 @@ public class ac {
    }
 
    public static String e() {
-      return m.format(ZonedDateTime.now());
+      return n.format(ZonedDateTime.now());
    }
 
-   private static ExecutorService c(String $$0) {
-      int $$1 = aww.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+   private static ExecutorService b(String $$0) {
+      int $$1 = axk.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -139,9 +141,9 @@ public class ac {
                @Override
                protected void onTermination(Throwable $$0) {
                   if ($$0 != null) {
-                     ac.f.warn("{} died", this.getName(), $$0);
+                     ac.g.warn("{} died", this.getName(), $$0);
                   } else {
-                     ac.f.debug("{} shutdown", this.getName());
+                     ac.g.debug("{} shutdown", this.getName());
                   }
 
                   super.onTermination($$0);
@@ -164,9 +166,9 @@ public class ac {
                return $$1;
             }
 
-            f.error("Wrong {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
+            g.error("Wrong {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
          } catch (NumberFormatException var2) {
-            f.error("Could not parse {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
+            g.error("Could not parse {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", $$0, 255});
          }
       }
 
@@ -174,20 +176,20 @@ public class ac {
    }
 
    public static ExecutorService f() {
-      return j;
-   }
-
-   public static ExecutorService g() {
       return k;
    }
 
-   public static ExecutorService h() {
+   public static ExecutorService g() {
       return l;
    }
 
+   public static ExecutorService h() {
+      return m;
+   }
+
    public static void i() {
-      a(j);
       a(k);
+      a(l);
    }
 
    private static void a(ExecutorService $$0) {
@@ -227,11 +229,11 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         ajj.a($$2.a().e());
+         ajv.a($$2.a().e());
          System.exit(-1);
       }
 
-      f.error(String.format(Locale.ROOT, "Caught exception in thread %s", $$0), $$1);
+      g.error(String.format(Locale.ROOT, "Caught exception in thread %s", $$0), $$1);
    }
 
    @Nullable
@@ -244,9 +246,9 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = ayd.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = ayr.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
-         f.error("No data fixer registered for {}", $$1);
+         g.error("No data fixer registered for {}", $$1);
          if (aa.aW) {
             throw var4;
          }
@@ -284,6 +286,11 @@ public class ac {
 
          return (V)var4;
       } : $$1;
+   }
+
+   public static <T> String a(iy<T> $$0, T $$1) {
+      ajt $$2 = $$0.b($$1);
+      return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
    public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
@@ -461,23 +468,23 @@ public class ac {
    }
 
    public static void a(String $$0) {
-      f.error($$0);
+      g.error($$0);
       if (aa.aW) {
-         d($$0);
+         c($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
-      f.error($$0, $$1);
+      g.error($$0, $$1);
       if (aa.aW) {
-         d($$0);
+         c($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
       if (aa.aW) {
-         f.error("Trying to throw a fatal exception, pausing in IDE", $$0);
-         d($$0.getMessage());
+         g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
+         c($$0.getMessage());
       }
 
       return $$0;
@@ -487,9 +494,9 @@ public class ac {
       o = $$0;
    }
 
-   private static void d(String $$0) {
+   private static void c(String $$0) {
       Instant $$1 = Instant.now();
-      f.warn("Did you remember to set a breakpoint here?");
+      g.warn("Did you remember to set a breakpoint here?");
       boolean $$2 = Duration.between($$1, Instant.now()).toMillis() > 500L;
       if (!$$2) {
          o.accept($$0);
@@ -504,19 +511,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, axd $$1) {
+   public static <T> T a(T[] $$0, axr $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, axd $$1) {
+   public static int a(int[] $$0, axr $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, axd $$1) {
+   public static <T> T a(List<T> $$0, axr $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, axd $$1) {
+   public static <T> Optional<T> b(List<T> $$0, axr $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -528,7 +535,7 @@ public class ac {
                Files.move($$0, $$1);
                return true;
             } catch (IOException var2) {
-               ac.f.error("Failed to rename", var2);
+               ac.g.error("Failed to rename", var2);
                return false;
             }
          }
@@ -548,7 +555,7 @@ public class ac {
                Files.deleteIfExists($$0);
                return true;
             } catch (IOException var2) {
-               ac.f.warn("Failed to delete", var2);
+               ac.g.warn("Failed to delete", var2);
                return false;
             }
          }
@@ -591,7 +598,7 @@ public class ac {
    private static boolean a(BooleanSupplier... $$0) {
       for (BooleanSupplier $$1 : $$0) {
          if (!$$1.getAsBoolean()) {
-            f.warn("Failed to execute {}", $$1);
+            g.warn("Failed to execute {}", $$1);
             return false;
          }
       }
@@ -605,10 +612,10 @@ public class ac {
             return true;
          }
 
-         f.error("Failed to {}, retrying {}/{}", new Object[]{$$1, $$3, $$0});
+         g.error("Failed to {}, retrying {}/{}", new Object[]{$$1, $$3, $$0});
       }
 
-      f.error("Failed to {}, aborting, progress might be lost", $$1);
+      g.error("Failed to {}, aborting, progress might be lost", $$1);
       return false;
    }
 
@@ -690,14 +697,14 @@ public class ac {
                try {
                   Thread.sleep(2147483647L);
                } catch (InterruptedException var2) {
-                  ac.f.warn("Timer hack thread interrupted, that really should not happen");
+                  ac.g.warn("Timer hack thread interrupted, that really should not happen");
                   return;
                }
             }
          }
       };
       $$0.setDaemon(true);
-      $$0.setUncaughtExceptionHandler(new r(f));
+      $$0.setUncaughtExceptionHandler(new r(g));
       $$0.start();
    }
 
@@ -711,8 +718,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> axl<K, V> a(Function<K, V> $$0) {
-      return new axl<>($$0);
+   public static <K, V> axz<K, V> a(Function<K, V> $$0) {
+      return new axz<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -747,13 +754,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, axd $$1) {
+   public static <T> List<T> a(Stream<T> $$0, axr $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, axd $$1) {
+   public static IntArrayList a(IntStream $$0, axr $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -765,19 +772,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, axd $$1) {
+   public static <T> List<T> b(T[] $$0, axr $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, axd $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, axr $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, axd $$1) {
+   public static <T> void c(List<T> $$0, axr $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -801,14 +808,14 @@ public class ac {
                $$4.run();
             }
          } catch (InterruptedException var5) {
-            f.warn("Interrupted wait");
+            g.warn("Interrupted wait");
             break;
          }
       }
 
       int $$6 = $$2.size();
       if ($$6 > 0) {
-         f.warn("Tasks left in queue: {}", $$6);
+         g.warn("Tasks left in queue: {}", $$6);
       }
 
       return $$3;
@@ -894,12 +901,12 @@ public class ac {
       }
    }
 
-   public static boolean a(int $$0) {
-      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   public static <T> List<T> a(List<T> $$0, T $$1) {
+      return ImmutableList.builderWithExpectedSize($$0.size() + 1).addAll($$0).add($$1).build();
    }
 
-   public static boolean b(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(ac::a) : true;
+   public static <K, V> Map<K, V> a(Map<K, V> $$0, K $$1, V $$2) {
+      return ImmutableMap.builderWithExpectedSize($$0.size() + 1).putAll($$0).put($$1, $$2).buildKeepingLast();
    }
 
    public static enum a {
@@ -932,7 +939,7 @@ public class ac {
             $$1.getErrorStream().close();
             $$1.getOutputStream().close();
          } catch (IOException | PrivilegedActionException var3) {
-            ac.f.error("Couldn't open url '{}'", $$0, var3);
+            ac.g.error("Couldn't open url '{}'", $$0, var3);
          }
       }
 
@@ -940,7 +947,7 @@ public class ac {
          try {
             this.a($$0.toURL());
          } catch (MalformedURLException var3) {
-            ac.f.error("Couldn't open uri '{}'", $$0, var3);
+            ac.g.error("Couldn't open uri '{}'", $$0, var3);
          }
       }
 
@@ -948,7 +955,7 @@ public class ac {
          try {
             this.a($$0.toURI().toURL());
          } catch (MalformedURLException var3) {
-            ac.f.error("Couldn't open file '{}'", $$0, var3);
+            ac.g.error("Couldn't open file '{}'", $$0, var3);
          }
       }
 
@@ -965,7 +972,7 @@ public class ac {
          try {
             this.a(new URI($$0).toURL());
          } catch (MalformedURLException | IllegalArgumentException | URISyntaxException var3) {
-            ac.f.error("Couldn't open uri '{}'", $$0, var3);
+            ac.g.error("Couldn't open uri '{}'", $$0, var3);
          }
       }
 

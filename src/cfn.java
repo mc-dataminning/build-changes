@@ -1,45 +1,63 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public interface cfn extends cge {
-   void b(boolean var1);
+public class cfn<T extends cfh> {
+   private static cfn<?>[] l = new cfn[0];
+   public static final cfn<cfd> a = a(cfd.class, "HoldingPattern");
+   public static final cfn<cfl> b = a(cfl.class, "StrafePlayer");
+   public static final cfn<cff> c = a(cff.class, "LandingApproach");
+   public static final cfn<cfg> d = a(cfg.class, "Landing");
+   public static final cfn<cfm> e = a(cfm.class, "Takeoff");
+   public static final cfn<cfj> f = a(cfj.class, "SittingFlaming");
+   public static final cfn<cfk> g = a(cfk.class, "SittingScanning");
+   public static final cfn<cfi> h = a(cfi.class, "SittingAttacking");
+   public static final cfn<cfb> i = a(cfb.class, "ChargingPlayer");
+   public static final cfn<cfc> j = a(cfc.class, "Dying");
+   public static final cfn<cfe> k = a(cfe.class, "Hover");
+   private final Class<? extends cfh> m;
+   private final int n;
+   private final String o;
 
-   void a(bpp var1, cqm var2, cjm var3, float var4);
-
-   @Nullable
-   bpp p();
-
-   void a();
-
-   default void b(bpp $$0, float $$1) {
-      bnc $$2 = cjo.a($$0, cqp.vR);
-      cqm $$3 = $$0.b($$2);
-      if ($$0.b(cqp.vR)) {
-         cox.a($$0.dM(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dM().aj().a() * 4));
-      }
-
-      this.a();
+   private cfn(int $$0, Class<? extends cfh> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   default void a(bpp $$0, bpp $$1, cjm $$2, float $$3, float $$4) {
-      double $$5 = $$1.dr() - $$0.dr();
-      double $$6 = $$1.dx() - $$0.dx();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = $$1.e(0.3333333333333333) - $$2.dt() + $$7 * 0.2F;
-      Vector3f $$9 = this.a($$0, new ept($$5, $$8, $$6), $$3);
-      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dM().aj().a() * 4));
-      $$0.a(aty.go, 1.0F, 1.0F / ($$0.ei().i() * 0.4F + 0.8F));
+   public cfh a(cex $$0) {
+      try {
+         Constructor<? extends cfh> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
+      }
    }
 
-   default Vector3f a(bpp $$0, ept $$1, float $$2) {
-      Vector3f $$3 = $$1.j().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         ept $$5 = $$0.i(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.j());
-      }
+   protected Constructor<? extends cfh> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cex.class);
+   }
 
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
+   public int b() {
+      return this.n;
+   }
+
+   @Override
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static cfn<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends cfh> cfn<T> a(Class<T> $$0, String $$1) {
+      cfn<T> $$2 = new cfn<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

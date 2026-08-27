@@ -1,111 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.Predicate;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
 
-public abstract class cew extends box {
-   private static final Logger e = LogUtils.getLogger();
-   protected static final Predicate<box> b = $$0 -> $$0 instanceof cew;
-   private int f;
-   protected ib c;
-   protected ih d;
+public class cew extends bpv {
+   private static final aiy<Optional<ib>> c = ajc.a(cew.class, aja.o);
+   private static final aiy<Boolean> d = ajc.a(cew.class, aja.k);
+   public int b;
 
-   protected cew(bpd<? extends cew> $$0, cxb $$1) {
+   public cew(bqb<? extends cew> $$0, cyx $$1) {
       super($$0, $$1);
-      this.d = ih.d;
+      this.I = true;
+      this.b = this.ag.a(100000);
    }
 
-   protected cew(bpd<? extends cew> $$0, cxb $$1, ib $$2) {
-      this($$0, $$1);
-      this.c = $$2;
+   public cew(cyx $$0, double $$1, double $$2, double $$3) {
+      this(bqb.E, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected void a(aiq.a $$0) {
+   protected bpv.b aZ() {
+      return bpv.b.a;
    }
 
-   protected void a(ih $$0) {
-      Validate.notNull($$0);
-      Validate.isTrue($$0.o().d());
-      this.d = $$0;
-      this.r((float)(this.d.e() * 90));
-      this.N = this.dC();
-      this.y();
-   }
-
-   protected void y() {
-      if (this.d != null) {
-         double $$0 = (double)this.c.u() + 0.5;
-         double $$1 = (double)this.c.v() + 0.5;
-         double $$2 = (double)this.c.w() + 0.5;
-         double $$3 = 0.46875;
-         double $$4 = this.b(this.A());
-         double $$5 = this.b(this.B());
-         $$0 -= (double)this.d.j() * 0.46875;
-         $$2 -= (double)this.d.l() * 0.46875;
-         $$1 += $$5;
-         ih $$6 = this.d.i();
-         $$0 += $$4 * (double)$$6.j();
-         $$2 += $$4 * (double)$$6.l();
-         this.p($$0, $$1, $$2);
-         double $$7 = (double)this.A();
-         double $$8 = (double)this.B();
-         double $$9 = (double)this.A();
-         if (this.d.o() == ih.a.c) {
-            $$9 = 1.0;
-         } else {
-            $$7 = 1.0;
-         }
-
-         $$7 /= 32.0;
-         $$8 /= 32.0;
-         $$9 /= 32.0;
-         this.a(new epo($$0 - $$7, $$1 - $$8, $$2 - $$9, $$0 + $$7, $$1 + $$8, $$2 + $$9));
-      }
-   }
-
-   private double b(int $$0) {
-      return $$0 % 32 == 0 ? 0.5 : 0.0;
+   @Override
+   protected void a(ajc.a $$0) {
+      $$0.a(c, Optional.empty());
+      $$0.a(d, true);
    }
 
    @Override
    public void l() {
-      if (!this.dM().B) {
-         this.at();
-         if (this.f++ == 100) {
-            this.f = 0;
-            if (!this.dH() && !this.z()) {
-               this.am();
-               this.b(null);
-            }
+      this.b++;
+      if (this.dM() instanceof aps) {
+         ib $$0 = this.dm();
+         if (((aps)this.dM()).D() != null && this.dM().a_($$0).i()) {
+            this.dM().b($$0, dbl.a(this.dM(), $$0));
          }
       }
    }
 
-   public boolean z() {
-      if (!this.dM().g(this)) {
-         return false;
-      } else {
-         int $$0 = Math.max(1, this.A() / 16);
-         int $$1 = Math.max(1, this.B() / 16);
-         ib $$2 = this.c.a(this.d.g());
-         ih $$3 = this.d.i();
-         ib.a $$4 = new ib.a();
+   @Override
+   protected void b(tm $$0) {
+      if (this.p() != null) {
+         $$0.a("beam_target", ub.a(this.p()));
+      }
 
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               int $$7 = ($$0 - 1) / -2;
-               int $$8 = ($$1 - 1) / -2;
-               $$4.g($$2).c($$3, $$5 + $$7).c(ih.b, $$6 + $$8);
-               dnb $$9 = this.dM().a_($$4);
-               if (!$$9.e() && !dce.m($$9)) {
-                  return false;
-               }
-            }
-         }
+      $$0.a("ShowBottom", this.r());
+   }
 
-         return this.dM().a(this, this.cH(), b).isEmpty();
+   @Override
+   protected void a(tm $$0) {
+      ub.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
       }
    }
 
@@ -115,28 +62,20 @@ public abstract class cew extends box {
    }
 
    @Override
-   public boolean u(box $$0) {
-      if ($$0 instanceof ciu $$1) {
-         return !this.dM().a($$1, this.c) ? true : this.a(this.dN().a($$1), 0.0F);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public ih cE() {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(bnw $$0, float $$1) {
+   public boolean a(bot $$0, float $$1) {
       if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof cex) {
          return false;
       } else {
          if (!this.dH() && !this.dM().B) {
-            this.al();
-            this.bt();
-            this.b($$0.d());
+            this.a(bpv.c.a);
+            if (!$$0.a(ave.m)) {
+               bot $$2 = $$0.d() != null ? this.dN().d(this, $$0.d()) : null;
+               this.dM().a(this, $$2, null, this.dr(), this.dt(), this.dx(), 6.0F, false, cyx.a.b);
+            }
+
+            this.a($$0);
          }
 
          return true;
@@ -144,111 +83,44 @@ public abstract class cew extends box {
    }
 
    @Override
-   public void a(bpu $$0, ept $$1) {
-      if (!this.dM().B && !this.dH() && $$1.g() > 0.0) {
-         this.al();
-         this.b(null);
-      }
+   public void al() {
+      this.a(this.dN().n());
+      super.al();
    }
 
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-      if (!this.dM().B && !this.dH() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
-         this.al();
-         this.b(null);
-      }
-   }
-
-   @Override
-   public void b(ta $$0) {
-      ib $$1 = this.D();
-      $$0.a("TileX", $$1.u());
-      $$0.a("TileY", $$1.v());
-      $$0.a("TileZ", $$1.w());
-   }
-
-   @Override
-   public void a(ta $$0) {
-      ib $$1 = new ib($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dm(), 16.0)) {
-         e.error("Hanging entity at invalid position: {}", $$1);
-      } else {
-         this.c = $$1;
-      }
-   }
-
-   public abstract int A();
-
-   public abstract int B();
-
-   public abstract void b(@Nullable box var1);
-
-   public abstract void C();
-
-   @Override
-   public cfe a(cqm $$0, float $$1) {
-      cfe $$2 = new cfe(
-         this.dM(), this.dr() + (double)((float)this.d.j() * 0.15F), this.dt() + (double)$$1, this.dx() + (double)((float)this.d.l() * 0.15F), $$0
-      );
-      $$2.s();
-      this.dM().b($$2);
-      return $$2;
-   }
-
-   @Override
-   protected boolean by() {
-      return false;
-   }
-
-   @Override
-   public void a_(double $$0, double $$1, double $$2) {
-      this.c = ib.a($$0, $$1, $$2);
-      this.y();
-      this.au = true;
-   }
-
-   public ib D() {
-      return this.c;
-   }
-
-   @Override
-   public float a(dgo $$0) {
-      if (this.d.o() != ih.a.b) {
-         switch ($$0) {
-            case c:
-               this.d = this.d.g();
-               break;
-            case d:
-               this.d = this.d.i();
-               break;
-            case b:
-               this.d = this.d.h();
+   private void a(bot $$0) {
+      if (this.dM() instanceof aps) {
+         dsu $$1 = ((aps)this.dM()).D();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
          }
       }
+   }
 
-      float $$1 = aww.g(this.dC());
-      switch ($$0) {
-         case c:
-            return $$1 + 180.0F;
-         case d:
-            return $$1 + 90.0F;
-         case b:
-            return $$1 + 270.0F;
-         default:
-            return $$1;
-      }
+   public void a(@Nullable ib $$0) {
+      this.an().a(c, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public ib p() {
+      return this.an().a(c).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.an().a(d, $$0);
+   }
+
+   public boolean r() {
+      return this.an().a(d);
    }
 
    @Override
-   public float a(dey $$0) {
-      return this.a($$0.a(this.d));
+   public boolean a(double $$0) {
+      return super.a($$0) || this.p() != null;
    }
 
    @Override
-   public void a(apf $$0, bpo $$1) {
-   }
-
-   @Override
-   public void j_() {
+   public crj dz() {
+      return new crj(crm.vd);
    }
 }

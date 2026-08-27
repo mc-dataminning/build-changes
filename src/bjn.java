@@ -1,316 +1,210 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.function.Supplier;
 
-public class bjn implements bjq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bjs b = new bjs() {
-      @Override
-      public long a() {
-         return 0L;
-      }
-
-      @Override
-      public long b() {
-         return 0L;
-      }
-
-      @Override
-      public long c() {
-         return 0L;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.emptyMap();
+public class bjn extends Schema {
+   protected static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(() -> {
+      Map<String, String> $$0 = Maps.newHashMap();
+      $$0.put("minecraft:furnace", "minecraft:furnace");
+      $$0.put("minecraft:lit_furnace", "minecraft:furnace");
+      $$0.put("minecraft:chest", "minecraft:chest");
+      $$0.put("minecraft:trapped_chest", "minecraft:chest");
+      $$0.put("minecraft:ender_chest", "minecraft:ender_chest");
+      $$0.put("minecraft:jukebox", "minecraft:jukebox");
+      $$0.put("minecraft:dispenser", "minecraft:dispenser");
+      $$0.put("minecraft:dropper", "minecraft:dropper");
+      $$0.put("minecraft:sign", "minecraft:sign");
+      $$0.put("minecraft:mob_spawner", "minecraft:mob_spawner");
+      $$0.put("minecraft:spawner", "minecraft:mob_spawner");
+      $$0.put("minecraft:noteblock", "minecraft:noteblock");
+      $$0.put("minecraft:brewing_stand", "minecraft:brewing_stand");
+      $$0.put("minecraft:enhanting_table", "minecraft:enchanting_table");
+      $$0.put("minecraft:command_block", "minecraft:command_block");
+      $$0.put("minecraft:beacon", "minecraft:beacon");
+      $$0.put("minecraft:skull", "minecraft:skull");
+      $$0.put("minecraft:daylight_detector", "minecraft:daylight_detector");
+      $$0.put("minecraft:hopper", "minecraft:hopper");
+      $$0.put("minecraft:banner", "minecraft:banner");
+      $$0.put("minecraft:flower_pot", "minecraft:flower_pot");
+      $$0.put("minecraft:repeating_command_block", "minecraft:command_block");
+      $$0.put("minecraft:chain_command_block", "minecraft:command_block");
+      $$0.put("minecraft:shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:white_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:orange_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:magenta_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:light_blue_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:yellow_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:lime_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:pink_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:gray_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:silver_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:cyan_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:purple_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:blue_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:brown_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:green_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:red_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:black_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:bed", "minecraft:bed");
+      $$0.put("minecraft:light_gray_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:banner", "minecraft:banner");
+      $$0.put("minecraft:white_banner", "minecraft:banner");
+      $$0.put("minecraft:orange_banner", "minecraft:banner");
+      $$0.put("minecraft:magenta_banner", "minecraft:banner");
+      $$0.put("minecraft:light_blue_banner", "minecraft:banner");
+      $$0.put("minecraft:yellow_banner", "minecraft:banner");
+      $$0.put("minecraft:lime_banner", "minecraft:banner");
+      $$0.put("minecraft:pink_banner", "minecraft:banner");
+      $$0.put("minecraft:gray_banner", "minecraft:banner");
+      $$0.put("minecraft:silver_banner", "minecraft:banner");
+      $$0.put("minecraft:light_gray_banner", "minecraft:banner");
+      $$0.put("minecraft:cyan_banner", "minecraft:banner");
+      $$0.put("minecraft:purple_banner", "minecraft:banner");
+      $$0.put("minecraft:blue_banner", "minecraft:banner");
+      $$0.put("minecraft:brown_banner", "minecraft:banner");
+      $$0.put("minecraft:green_banner", "minecraft:banner");
+      $$0.put("minecraft:red_banner", "minecraft:banner");
+      $$0.put("minecraft:black_banner", "minecraft:banner");
+      $$0.put("minecraft:standing_sign", "minecraft:sign");
+      $$0.put("minecraft:wall_sign", "minecraft:sign");
+      $$0.put("minecraft:piston_head", "minecraft:piston");
+      $$0.put("minecraft:daylight_detector_inverted", "minecraft:daylight_detector");
+      $$0.put("minecraft:unpowered_comparator", "minecraft:comparator");
+      $$0.put("minecraft:powered_comparator", "minecraft:comparator");
+      $$0.put("minecraft:wall_banner", "minecraft:banner");
+      $$0.put("minecraft:standing_banner", "minecraft:banner");
+      $$0.put("minecraft:structure_block", "minecraft:structure_block");
+      $$0.put("minecraft:end_portal", "minecraft:end_portal");
+      $$0.put("minecraft:end_gateway", "minecraft:end_gateway");
+      $$0.put("minecraft:sign", "minecraft:sign");
+      $$0.put("minecraft:shield", "minecraft:banner");
+      $$0.put("minecraft:white_bed", "minecraft:bed");
+      $$0.put("minecraft:orange_bed", "minecraft:bed");
+      $$0.put("minecraft:magenta_bed", "minecraft:bed");
+      $$0.put("minecraft:light_blue_bed", "minecraft:bed");
+      $$0.put("minecraft:yellow_bed", "minecraft:bed");
+      $$0.put("minecraft:lime_bed", "minecraft:bed");
+      $$0.put("minecraft:pink_bed", "minecraft:bed");
+      $$0.put("minecraft:gray_bed", "minecraft:bed");
+      $$0.put("minecraft:silver_bed", "minecraft:bed");
+      $$0.put("minecraft:light_gray_bed", "minecraft:bed");
+      $$0.put("minecraft:cyan_bed", "minecraft:bed");
+      $$0.put("minecraft:purple_bed", "minecraft:bed");
+      $$0.put("minecraft:blue_bed", "minecraft:bed");
+      $$0.put("minecraft:brown_bed", "minecraft:bed");
+      $$0.put("minecraft:green_bed", "minecraft:bed");
+      $$0.put("minecraft:red_bed", "minecraft:bed");
+      $$0.put("minecraft:black_bed", "minecraft:bed");
+      $$0.put("minecraft:oak_sign", "minecraft:sign");
+      $$0.put("minecraft:spruce_sign", "minecraft:sign");
+      $$0.put("minecraft:birch_sign", "minecraft:sign");
+      $$0.put("minecraft:jungle_sign", "minecraft:sign");
+      $$0.put("minecraft:acacia_sign", "minecraft:sign");
+      $$0.put("minecraft:dark_oak_sign", "minecraft:sign");
+      $$0.put("minecraft:crimson_sign", "minecraft:sign");
+      $$0.put("minecraft:warped_sign", "minecraft:sign");
+      $$0.put("minecraft:skeleton_skull", "minecraft:skull");
+      $$0.put("minecraft:wither_skeleton_skull", "minecraft:skull");
+      $$0.put("minecraft:zombie_head", "minecraft:skull");
+      $$0.put("minecraft:player_head", "minecraft:skull");
+      $$0.put("minecraft:creeper_head", "minecraft:skull");
+      $$0.put("minecraft:dragon_head", "minecraft:skull");
+      $$0.put("minecraft:barrel", "minecraft:barrel");
+      $$0.put("minecraft:conduit", "minecraft:conduit");
+      $$0.put("minecraft:smoker", "minecraft:smoker");
+      $$0.put("minecraft:blast_furnace", "minecraft:blast_furnace");
+      $$0.put("minecraft:lectern", "minecraft:lectern");
+      $$0.put("minecraft:bell", "minecraft:bell");
+      $$0.put("minecraft:jigsaw", "minecraft:jigsaw");
+      $$0.put("minecraft:campfire", "minecraft:campfire");
+      $$0.put("minecraft:bee_nest", "minecraft:beehive");
+      $$0.put("minecraft:beehive", "minecraft:beehive");
+      $$0.put("minecraft:sculk_sensor", "minecraft:sculk_sensor");
+      $$0.put("minecraft:decorated_pot", "minecraft:decorated_pot");
+      $$0.put("minecraft:crafter", "minecraft:crafter");
+      return ImmutableMap.copyOf($$0);
+   });
+   protected static final HookFunction b = new HookFunction() {
+      public <T> T apply(DynamicOps<T> $$0, T $$1) {
+         return bjq.a(new Dynamic($$0, $$1), bjn.a, "ArmorStand");
       }
    };
-   private static final Splitter c = Splitter.on('\u001e');
-   private static final Comparator<Entry<String, bjn.a>> e = Entry.<String, bjn.a>comparingByValue(Comparator.comparingLong($$0 -> $$0.b)).reversed();
-   private final Map<String, ? extends bjs> f;
-   private final long g;
-   private final int h;
-   private final long i;
-   private final int j;
-   private final int k;
 
-   public bjn(Map<String, ? extends bjs> $$0, long $$1, int $$2, long $$3, int $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$4 - $$2;
+   public bjn(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   private bjs c(String $$0) {
-      bjs $$1 = this.f.get($$0);
-      return $$1 != null ? $$1 : b;
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0))));
    }
 
-   @Override
-   public List<bjt> a(String $$0) {
-      String $$1 = $$0;
-      bjs $$2 = this.c("root");
-      long $$3 = $$2.a();
-      bjs $$4 = this.c($$0);
-      long $$5 = $$4.a();
-      long $$6 = $$4.c();
-      List<bjt> $$7 = Lists.newArrayList();
-      if (!$$0.isEmpty()) {
-         $$0 = $$0 + "\u001e";
-      }
-
-      long $$8 = 0L;
-
-      for (String $$9 : this.f.keySet()) {
-         if (a($$0, $$9)) {
-            $$8 += this.c($$9).a();
-         }
-      }
-
-      float $$10 = (float)$$8;
-      if ($$8 < $$5) {
-         $$8 = $$5;
-      }
-
-      if ($$3 < $$8) {
-         $$3 = $$8;
-      }
-
-      for (String $$11 : this.f.keySet()) {
-         if (a($$0, $$11)) {
-            bjs $$12 = this.c($$11);
-            long $$13 = $$12.a();
-            double $$14 = (double)$$13 * 100.0 / (double)$$8;
-            double $$15 = (double)$$13 * 100.0 / (double)$$3;
-            String $$16 = $$11.substring($$0.length());
-            $$7.add(new bjt($$16, $$14, $$15, $$12.c()));
-         }
-      }
-
-      if ((float)$$8 > $$10) {
-         $$7.add(new bjt("unspecified", (double)((float)$$8 - $$10) * 100.0 / (double)$$8, (double)((float)$$8 - $$10) * 100.0 / (double)$$3, $$6));
-      }
-
-      Collections.sort($$7);
-      $$7.add(0, new bjt($$1, 100.0, (double)$$8 * 100.0 / (double)$$3, $$6));
-      return $$7;
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return Objects.equals($$0.typeName(), bfa.s.typeName()) ? super.getChoiceType($$0, bgk.a($$1)) : super.getChoiceType($$0, $$1);
    }
 
-   private static boolean a(String $$0, String $$1) {
-      return $$1.length() > $$0.length() && $$1.startsWith($$0) && $$1.indexOf(30, $$0.length() + 1) < 0;
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
+      a($$0, $$1, "minecraft:furnace");
+      a($$0, $$1, "minecraft:chest");
+      $$0.registerSimple($$1, "minecraft:ender_chest");
+      $$0.register($$1, "minecraft:jukebox", $$1x -> DSL.optionalFields("RecordItem", bfa.t.in($$0)));
+      a($$0, $$1, "minecraft:dispenser");
+      a($$0, $$1, "minecraft:dropper");
+      $$0.registerSimple($$1, "minecraft:sign");
+      $$0.register($$1, "minecraft:mob_spawner", $$1x -> bfa.D.in($$0));
+      $$0.registerSimple($$1, "minecraft:noteblock");
+      $$0.registerSimple($$1, "minecraft:piston");
+      a($$0, $$1, "minecraft:brewing_stand");
+      $$0.registerSimple($$1, "minecraft:enchanting_table");
+      $$0.registerSimple($$1, "minecraft:end_portal");
+      $$0.registerSimple($$1, "minecraft:beacon");
+      $$0.registerSimple($$1, "minecraft:skull");
+      $$0.registerSimple($$1, "minecraft:daylight_detector");
+      a($$0, $$1, "minecraft:hopper");
+      $$0.registerSimple($$1, "minecraft:comparator");
+      $$0.register($$1, "minecraft:flower_pot", $$1x -> DSL.optionalFields("Item", DSL.or(DSL.constType(DSL.intType()), bfa.B.in($$0))));
+      $$0.registerSimple($$1, "minecraft:banner");
+      $$0.registerSimple($$1, "minecraft:structure_block");
+      $$0.registerSimple($$1, "minecraft:end_gateway");
+      $$0.registerSimple($$1, "minecraft:command_block");
+      return $$1;
    }
 
-   private Map<String, bjn.a> h() {
-      Map<String, bjn.a> $$0 = Maps.newTreeMap();
-      this.f.forEach(($$1, $$2) -> {
-         Object2LongMap<String> $$3 = $$2.d();
-         if (!$$3.isEmpty()) {
-            List<String> $$4 = c.splitToList($$1);
-            $$3.forEach(($$2x, $$3x) -> $$0.computeIfAbsent($$2x, $$0xxx -> new bjn.a()).a($$4.iterator(), $$3x));
-         }
-      });
-      return $$0;
-   }
-
-   @Override
-   public long a() {
-      return this.g;
-   }
-
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public long c() {
-      return this.i;
-   }
-
-   @Override
-   public int d() {
-      return this.j;
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      Writer $$1 = null;
-
-      boolean var4;
-      try {
-         Files.createDirectories($$0.getParent());
-         $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8);
-         $$1.write(this.a(this.g(), this.f()));
-         return true;
-      } catch (Throwable var8) {
-         a.error("Could not save profiler results to {}", $$0, var8);
-         var4 = false;
-      } finally {
-         IOUtils.closeQuietly($$1);
-      }
-
-      return var4;
-   }
-
-   protected String a(long $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      $$2.append("---- Minecraft Profiler Results ----\n");
-      $$2.append("// ");
-      $$2.append(i());
-      $$2.append("\n\n");
-      $$2.append("Version: ").append(aa.b().b()).append('\n');
-      $$2.append("Time span: ").append($$0 / 1000000L).append(" ms\n");
-      $$2.append("Tick span: ").append($$1).append(" ticks\n");
-      $$2.append("// This is approximately ")
-         .append(String.format(Locale.ROOT, "%.2f", (float)$$1 / ((float)$$0 / 1.0E9F)))
-         .append(" ticks per second. It should be ")
-         .append(20)
-         .append(" ticks per second\n\n");
-      $$2.append("--- BEGIN PROFILE DUMP ---\n\n");
-      this.a(0, "root", $$2);
-      $$2.append("--- END PROFILE DUMP ---\n\n");
-      Map<String, bjn.a> $$3 = this.h();
-      if (!$$3.isEmpty()) {
-         $$2.append("--- BEGIN COUNTER DUMP ---\n\n");
-         this.a($$3, $$2, $$1);
-         $$2.append("--- END COUNTER DUMP ---\n\n");
-      }
-
-      return $$2.toString();
-   }
-
-   @Override
-   public String e() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a(0, "root", $$0);
-      return $$0.toString();
-   }
-
-   private static StringBuilder a(StringBuilder $$0, int $$1) {
-      $$0.append(String.format(Locale.ROOT, "[%02d] ", $$1));
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.append("|   ");
-      }
-
-      return $$0;
-   }
-
-   private void a(int $$0, String $$1, StringBuilder $$2) {
-      List<bjt> $$3 = this.a($$1);
-      Object2LongMap<String> $$4 = ((bjs)ObjectUtils.firstNonNull(new bjs[]{this.f.get($$1), b})).d();
-      $$4.forEach(($$2x, $$3x) -> a($$2, $$0).append('#').append($$2x).append(' ').append($$3x).append('/').append($$3x / (long)this.k).append('\n'));
-      if ($$3.size() >= 3) {
-         for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-            bjt $$6 = $$3.get($$5);
-            a($$2, $$0)
-               .append($$6.d)
-               .append('(')
-               .append($$6.c)
-               .append('/')
-               .append(String.format(Locale.ROOT, "%.0f", (float)$$6.c / (float)this.k))
-               .append(')')
-               .append(" - ")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.a))
-               .append("%/")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.b))
-               .append("%\n");
-            if (!"unspecified".equals($$6.d)) {
-               try {
-                  this.a($$0 + 1, $$1 + "\u001e" + $$6.d, $$2);
-               } catch (Exception var9) {
-                  $$2.append("[[ EXCEPTION ").append(var9).append(" ]]");
-               }
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, String $$1, bjn.a $$2, int $$3, StringBuilder $$4) {
-      a($$4, $$0)
-         .append($$1)
-         .append(" total:")
-         .append($$2.a)
-         .append('/')
-         .append($$2.b)
-         .append(" average: ")
-         .append($$2.a / (long)$$3)
-         .append('/')
-         .append($$2.b / (long)$$3)
-         .append('\n');
-      $$2.c.entrySet().stream().sorted(e).forEach($$3x -> this.a($$0 + 1, (String)$$3x.getKey(), (bjn.a)$$3x.getValue(), $$3, $$4));
-   }
-
-   private void a(Map<String, bjn.a> $$0, StringBuilder $$1, int $$2) {
-      $$0.forEach(($$2x, $$3) -> {
-         $$1.append("-- Counter: ").append($$2x).append(" --\n");
-         this.a(0, "root", $$3.c.get("root"), $$2, $$1);
-         $$1.append("\n\n");
-      });
-   }
-
-   private static String i() {
-      String[] $$0 = new String[]{
-         "I'd Rather Be Surfing",
-         "Shiny numbers!",
-         "Am I not running fast enough? :(",
-         "I'm working as hard as I can!",
-         "Will I ever be good enough for you? :(",
-         "Speedy. Zoooooom!",
-         "Hello world",
-         "40% better than a crash report.",
-         "Now with extra numbers",
-         "Now with less numbers",
-         "Now with the same numbers",
-         "You should add flames to things, it makes them go faster!",
-         "Do you feel the need for... optimization?",
-         "*cracks redstone whip*",
-         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
-      };
-
-      try {
-         return $$0[(int)(ac.c() % (long)$$0.length)];
-      } catch (Throwable var2) {
-         return "Witty comment unavailable :(";
-      }
-   }
-
-   @Override
-   public int f() {
-      return this.k;
-   }
-
-   static class a {
-      long a;
-      long b;
-      final Map<String, bjn.a> c = Maps.newHashMap();
-
-      public void a(Iterator<String> $$0, long $$1) {
-         this.b += $$1;
-         if (!$$0.hasNext()) {
-            this.a += $$1;
-         } else {
-            this.c.computeIfAbsent($$0.next(), $$0x -> new bjn.a()).a($$0, $$1);
-         }
-      }
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bfa.s, () -> DSL.taggedChoiceLazy("id", bgk.a(), $$2));
+      $$0.registerType(
+         true,
+         bfa.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  bfa.B.in($$0),
+                  "tag",
+                  ays.a(
+                     Pair.of("EntityTag", bfa.y.in($$0)),
+                     Pair.of("BlockEntityTag", bfa.s.in($$0)),
+                     Pair.of("CanDestroy", DSL.list(bfa.A.in($$0))),
+                     Pair.of("CanPlaceOn", DSL.list(bfa.A.in($$0))),
+                     Pair.of("Items", DSL.list(bfa.t.in($$0))),
+                     Pair.of("ChargedProjectiles", DSL.list(bfa.t.in($$0)))
+                  )
+               ),
+               b,
+               HookFunction.IDENTITY
+            )
+      );
    }
 }

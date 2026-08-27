@@ -1,26 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dxi extends dvs<dyd> {
-   public dxi(Codec<dyd> $$0) {
-      super($$0);
+public record dxi<FC extends dzz, F extends dxv<FC>>(F d, FC e) {
+   public static final Codec<dxi<?, ?>> a = kr.Q.q().dispatch($$0 -> $$0.d, dxv::a);
+   public static final Codec<il<dxi<?, ?>>> b = ajp.a(ks.ay, a);
+   public static final Codec<ip<dxi<?, ?>>> c = ja.a(ks.ay, a);
+
+   public boolean a(czs $$0, dqw $$1, axr $$2, ib $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dxi<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dvu<dyd> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         for (ih $$3 : ih.values()) {
-            if ($$3 != ih.a && dix.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dae.ff.o().a(dix.a($$3), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-         return false;
-      }
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

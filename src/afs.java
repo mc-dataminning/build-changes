@@ -1,37 +1,44 @@
-public class afs implements yb<aez> {
-   public static final xs<uu, afs> a = yb.a(afs::a, afs::new);
-   private final int b;
-   private final int c;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public afs(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record afs(String b, Instant c, long d, @Nullable ws e, wn.b f) implements yn<afl> {
+   public static final ye<vg, afs> a = yn.a(afs::a, afs::new);
+
+   private afs(vg $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(ws::a), new wn.b($$0));
    }
 
-   private afs(uu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vg $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, ws::a);
+      this.f.a($$0);
    }
 
    @Override
-   public yd<afs> a() {
-      return aex.bv;
+   public yp<afs> a() {
+      return afj.bj;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public ws g() {
+      return this.e;
+   }
+
+   public wn.b h() {
+      return this.f;
    }
 }

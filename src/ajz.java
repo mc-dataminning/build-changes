@@ -1,113 +1,51 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.logging.LogUtils;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import org.slf4j.Logger;
 
-public class ajz extends bno {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
+public class ajz {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final boolean c;
 
-   public ajz(MinecraftServer $$0) {
-      this.l = $$0;
+   public ajz(Path $$0) {
+      this.b = $$0;
+      this.c = aa.aW || this.b();
+   }
+
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
+         }
+
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
+      }
    }
 
    public boolean a() {
-      return this.j > 0L;
+      return this.c;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
-   }
-
-   private void n() {
-      this.l.ah().a(aeo.a(this));
-   }
-
-   private void o() {
-      this.l.ah().a(aep.a(this));
-   }
-
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
+   private void c() {
+      if (!aa.aW) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
+         }
       }
-   }
-
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
-   }
-
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)axv.b;
-      int $$2 = (int)((double)(axv.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aI().a(() -> vu.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.E();
-   }
-
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
-      }
-   }
-
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
-   }
-
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.E();
-      this.n();
-   }
-
-   public void a(apg $$0) {
-      $$0.d.b(aeo.a(this));
-      $$0.d.b(aep.a(this));
    }
 }

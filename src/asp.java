@@ -1,17 +1,6 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public interface asp extends asi {
-   @Override
-   default CompletableFuture<Void> a(asi.a $$0, aso $$1, bjr $$2, bjr $$3, Executor $$4, Executor $$5) {
-      return $$0.a(axy.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
-   }
-
-   void a(aso var1);
+@FunctionalInterface
+public interface asp {
+   void loadPacks(Consumer<ask> var1);
 }

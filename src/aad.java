@@ -1,23 +1,29 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
+import java.util.Set;
 
-public class aad implements yb<aac> {
-   public static final aad a = new aad();
-   public static final xs<ByteBuf, aad> b = xs.a(a);
+public record aad(Set<je> c, Set<je> d) implements zo {
+   public static final ye<vg, aad> a = zo.a(aad::a, aad::new);
+   public static final zo.b<aad> b = zo.a("debug/village_sections");
 
-   private aad() {
+   private aad(vg $$0) {
+      this($$0.a(HashSet::new, vg::g), $$0.a(HashSet::new, vg::g));
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.c, vg::a);
+      $$0.a(this.d, vg::a);
    }
 
    @Override
-   public yd<aad> a() {
-      return aaa.e;
+   public zo.b<aad> a() {
+      return b;
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
+   public Set<je> b() {
+      return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public Set<je> c() {
+      return this.d;
    }
 }

@@ -1,59 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class def extends ddr implements des {
-   public static final MapCodec<def> c = b(def::new);
-   protected static final eqm g = dac.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class def {
+   public static <S extends dmf> def.c<S> a(
+      dmh<S> $$0, Function<doz, def.a> $$1, Function<doz, ih> $$2, dpt $$3, doz $$4, cyy $$5, ib $$6, BiPredicate<cyy, ib> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return def.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return def.b::b;
+      } else {
+         def.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == def.a.a;
+         boolean $$11 = $$9 == def.a.b;
+         if ($$10) {
+            return new def.c.b<>($$8);
+         } else {
+            ib $$12 = $$6.a($$2.apply($$4));
+            doz $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               def.a $$14 = $$1.apply($$13);
+               if ($$14 != def.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return def.b::b;
+                  }
 
-   @Override
-   public MapCodec<def> a() {
-      return c;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new def.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new def.c.b<>($$8);
+         }
+      }
    }
 
-   protected def(dna.d $$0) {
-      super($$0, ih.b, g, true, 0.14);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   protected boolean g(dnb $$0) {
-      return $$0.a(dae.G);
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected dac b() {
-      return dae.md;
-   }
+   public interface c<S> {
+      <T> T apply(def.b<? super S, T> var1);
 
-   @Override
-   protected boolean m(dnb $$0) {
-      return !$$0.a(dae.kJ);
-   }
+      public static final class a<S> implements def.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   public boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
-      return false;
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   public boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
-      return false;
-   }
+         @Override
+         public <T> T apply(def.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
 
-   @Override
-   protected int a(axd $$0) {
-      return 1;
-   }
+      public static final class b<S> implements def.c<S> {
+         private final S a;
 
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      eip $$1 = $$0.q().b_($$0.a());
-      return $$1.a(aus.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   @Override
-   protected eip c_(dnb $$0) {
-      return eiq.c.a(false);
+         @Override
+         public <T> T apply(def.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

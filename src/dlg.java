@@ -1,15 +1,33 @@
-public interface dlg extends bmw {
-   epo w_ = dac.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   default epo aj_() {
-      return w_;
+public class dlg extends dlb implements dlc {
+   public static final MapCodec<dlg> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlc.a.e.fieldOf("weathering_state").forGetter(dlg::k), u()).apply($$0, dlg::new)
+   );
+   private final dlc.a f;
+
+   @Override
+   protected MapCodec<dlg> a() {
+      return e;
    }
 
-   double H();
+   protected dlg(dlc.a $$0, doy.d $$1) {
+      super($$1);
+      this.f = $$0;
+   }
 
-   double I();
+   @Override
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-   double J();
+   @Override
+   protected boolean e_(doz $$0) {
+      return dlc.c($$0.b()).isPresent();
+   }
 
-   boolean K();
+   public dlc.a k() {
+      return this.f;
+   }
 }

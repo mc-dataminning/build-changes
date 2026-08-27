@@ -1,116 +1,45 @@
-import java.util.List;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public class cnm extends cok {
+   private final cjt a;
+   private int b;
 
-public class cnm extends cms {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int s = 8;
-   public static final int t = 26;
-   public static final int u = 44;
-   private static final int w = 98;
-   public static final int v = 48;
-   private final cxb x;
-   @Nullable
-   private ctr<cuf> y;
-   private final List<ctr<cuf>> z;
-
-   public cnm(int $$0, cit $$1) {
-      this($$0, $$1, cmb.a);
-   }
-
-   public cnm(int $$0, cit $$1, cmb $$2) {
-      super(cmx.v, $$0, $$1, $$2);
-      this.x = $$1.m.dM();
-      this.z = this.x.r().a(ctu.g);
+   public cnm(cjt $$0, bnt $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   protected cmt l() {
-      return cmt.a()
-         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
+   public boolean a(crj $$0) {
+      return false;
    }
 
    @Override
-   protected boolean a(dnb $$0) {
-      return $$0.a(dae.ob);
-   }
-
-   @Override
-   protected boolean a(ciu $$0, boolean $$1) {
-      return this.y != null && this.y.b().a(this.q, this.x);
-   }
-
-   @Override
-   protected void a(ciu $$0, cqm $$1) {
-      $$1.a($$0.dM(), $$0, $$1.M());
-      this.r.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cqm> n() {
-      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
-   }
-
-   private void e(int $$0) {
-      cqm $$1 = this.q.a($$0);
-      if (!$$1.b()) {
-         $$1.h(1);
-         this.q.a($$0, $$1);
+   public crj a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().G());
       }
+
+      return super.a($$0);
    }
 
    @Override
-   public void m() {
-      List<ctr<cuf>> $$0 = this.x.r().b(ctu.g, this.q, this.x);
-      if ($$0.isEmpty()) {
-         this.r.a(0, cqm.h);
-      } else {
-         ctr<cuf> $$1 = $$0.get(0);
-         cqm $$2 = $$1.b().a(this.q, this.x.H_());
-         if ($$2.a(this.x.I())) {
-            this.y = $$1;
-            this.r.a($$1);
-            this.r.a(0, $$2);
-         }
+   public void a(cjt $$0, crj $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(crj $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(crj $$0) {
+      $$0.a(this.a.dM(), this.a, this.b);
+      if (this.a instanceof apt $$1 && this.d instanceof dlt $$2) {
+         $$2.a($$1);
       }
-   }
 
-   @Override
-   public int d(cqm $$0) {
-      return this.e($$0).orElse(0);
-   }
-
-   private static OptionalInt a(cuf $$0, cqm $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
-      } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   public boolean a(cqm $$0, cnl $$1) {
-      return $$1.d != this.r && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean c(cqm $$0) {
-      return this.e($$0).isPresent();
-   }
-
-   private OptionalInt e(cqm $$0) {
-      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+      this.b = 0;
    }
 }

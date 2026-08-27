@@ -1,141 +1,181 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.NoSuchElementException;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 
-public class bld implements blf {
-   public static final int a = 10;
+public class bld {
+   private Instant a = Instant.EPOCH;
+   private Instant b = Instant.EPOCH;
+   private final List<bli> c = Lists.newArrayList();
+   private final List<blk> d = Lists.newArrayList();
+   private final Map<blo, bld.a> e = Maps.newHashMap();
+   private final Map<blo, bld.a> f = Maps.newHashMap();
+   private final Map<blj, bld.a> g = Maps.newHashMap();
+   private final Map<blj, bld.a> h = Maps.newHashMap();
+   private final List<bll> i = Lists.newArrayList();
+   private final List<bll> j = Lists.newArrayList();
+   private int k;
+   private Duration l = Duration.ZERO;
+   private final List<blm> m = Lists.newArrayList();
+   private final List<blp> n = Lists.newArrayList();
+   private final List<blq> o = Lists.newArrayList();
    @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bky, List<blk>> c = new Object2ObjectOpenHashMap();
-   private final bjl d;
-   private final Executor e;
-   private final blj f;
-   private final Consumer<bjq> g;
-   private final Consumer<Path> h;
-   private final bla i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bjp m;
-   private volatile boolean n;
-   private Set<bky> o = ImmutableSet.of();
+   private Duration p = null;
 
-   private bld(bla $$0, LongSupplier $$1, Executor $$2, blj $$3, Consumer<bjq> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bjl($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bjk(this.j, () -> this.l, false);
-      this.d.c();
+   private bld(Stream<RecordedEvent> $$0) {
+      this.a($$0);
    }
 
-   public static bld a(bla $$0, LongSupplier $$1, Executor $$2, blj $$3, Consumer<bjq> $$4, Consumer<Path> $$5) {
-      return new bld($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public static ble a(Path $$0) {
+      try {
+         ble var4;
+         try (final RecordingFile $$1 = new RecordingFile($$0)) {
+            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
+               @Override
+               public boolean hasNext() {
+                  return $$1.hasMoreEvents();
+               }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
-      }
-   }
-
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bjo.a;
-         this.g.accept(bjm.a);
-         this.a(this.o);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (bky $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
-   }
-
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bky $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               blk $$1 = new blk(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
+               public RecordedEvent a() {
+                  if (!this.hasNext()) {
+                     throw new NoSuchElementException();
+                  } else {
+                     try {
+                        return $$1.readEvent();
+                     } catch (IOException var2) {
+                        throw new UncheckedIOException(var2);
+                     }
+                  }
+               }
+            };
+            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
+            var4 = new bld($$3).a();
          }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bjk(this.j, () -> this.l, false);
-         } else {
-            this.n = false;
-            bjq $$2 = this.d.e();
-            this.m = bjo.a;
-            this.g.accept($$2);
-            this.a($$2);
+         return var4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
+   }
+
+   private ble a() {
+      Duration $$0 = Duration.between(this.a, this.b);
+      return new ble(
+         this.a,
+         this.b,
+         $$0,
+         this.p,
+         this.o,
+         this.d,
+         blm.a($$0, this.m, this.l, this.k),
+         blp.a(this.n),
+         a($$0, this.e),
+         a($$0, this.f),
+         a($$0, this.h),
+         a($$0, this.g),
+         bll.a($$0, this.i),
+         bll.a($$0, this.j),
+         this.c
+      );
+   }
+
+   private void a(Stream<RecordedEvent> $$0) {
+      $$0.forEach($$0x -> {
+         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
+            this.b = $$0x.getEndTime();
          }
-      }
-   }
 
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
+         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
+            this.a = $$0x.getStartTime();
+         }
 
-   @Override
-   public bjr f() {
-      return bjr.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bjq $$0) {
-      HashSet<bky> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
+         String var2 = $$0x.getEventType().getName();
+         switch (var2) {
+            case "minecraft.ChunkGeneration":
+               this.c.add(bli.a($$0x));
+               break;
+            case "minecraft.LoadWorld":
+               this.p = $$0x.getDuration();
+               break;
+            case "minecraft.ServerTickTime":
+               this.o.add(blq.a($$0x));
+               break;
+            case "minecraft.PacketReceived":
+               this.a($$0x, $$0x.getInt("bytes"), this.e);
+               break;
+            case "minecraft.PacketSent":
+               this.a($$0x, $$0x.getInt("bytes"), this.f);
+               break;
+            case "minecraft.ChunkRegionRead":
+               this.b($$0x, $$0x.getInt("bytes"), this.g);
+               break;
+            case "minecraft.ChunkRegionWrite":
+               this.b($$0x, $$0x.getInt("bytes"), this.h);
+               break;
+            case "jdk.ThreadAllocationStatistics":
+               this.n.add(blp.a($$0x));
+               break;
+            case "jdk.GCHeapSummary":
+               this.m.add(blm.a($$0x));
+               break;
+            case "jdk.CPULoad":
+               this.d.add(blk.a($$0x));
+               break;
+            case "jdk.FileWrite":
+               this.a($$0x, this.i, "bytesWritten");
+               break;
+            case "jdk.FileRead":
+               this.a($$0x, this.j, "bytesRead");
+               break;
+            case "jdk.GarbageCollection":
+               this.k++;
+               this.l = this.l.plus($$0x.getDuration());
+         }
       });
    }
 
-   private void a(Collection<bky> $$0) {
-      for (bky $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
+   private void a(RecordedEvent $$0, int $$1, Map<blo, bld.a> $$2) {
+      $$2.computeIfAbsent(blo.a($$0), $$0x -> new bld.a()).a($$1);
    }
 
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
+   private void b(RecordedEvent $$0, int $$1, Map<blj, bld.a> $$2) {
+      $$2.computeIfAbsent(blj.a($$0), $$0x -> new bld.a()).a($$1);
+   }
+
+   private void a(RecordedEvent $$0, List<bll> $$1, String $$2) {
+      $$1.add(new bll($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
+   }
+
+   private static <T> bln<T> a(Duration $$0, Map<T, bld.a> $$1) {
+      List<Pair<T, bln.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), ((bld.a)$$0x.getValue()).a())).toList();
+      return new bln<>($$0, $$2);
+   }
+
+   public static final class a {
+      private long a;
+      private long b;
+
+      public void a(int $$0) {
+         this.b += (long)$$0;
+         this.a++;
+      }
+
+      public bln.a a() {
+         return new bln.a(this.a, this.b);
+      }
    }
 }

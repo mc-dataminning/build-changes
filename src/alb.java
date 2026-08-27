@@ -1,35 +1,33 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class alb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.b("Target not reached"));
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(dv.a("to", fo.a()).executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "to"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     atp $$1 = ((du)$$0x.getSource()).l().ah();
+                     return a((du)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(dv.a("ips").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ah().g().d()))))
+            .then(dv.a("players").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ah().f().d())))
       );
    }
 
-   private static int a(du $$0, ib $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bpr $$3)) {
-         throw a.create();
+   private static int a(du $$0, Collection<? extends atk<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> wg.c("commands.banlist.none"), false);
       } else {
-         bza $$4 = new byz($$3, $$0.e());
-         ejd $$5 = $$4.a($$1, 0);
-         aew.a($$0.e(), $$3, $$5, $$4.q());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> vu.b("Made path"), true);
-            return 1;
+         $$0.a(() -> wg.a("commands.banlist.list", $$1.size()), false);
+
+         for (atk<?> $$2 : $$1) {
+            $$0.a(() -> wg.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
          }
       }
+
+      return $$1.size();
    }
 }

@@ -1,45 +1,78 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Collection;
 
 public class als {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.jfr.dump.failed", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wg.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wg.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wg.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wg.c("commands.enchant.failed"));
 
-   private als() {
-   }
-
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("enchant").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("targets", eh.b())
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("enchantment", et.a($$1, ks.t))
+                           .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.g($$0x, "enchantment"), 1)))
+                        .then(
+                           dv.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (du)$$0x.getSource(), eh.b($$0x, "targets"), et.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      bjv $$1 = bjv.a($$0.l());
-      if (!bjx.f.a($$1)) {
-         throw a.create();
+   private static int a(du $$0, Collection<? extends bpv> $$1, il<cwq> $$2, int $$3) throws CommandSyntaxException {
+      cwq $$4 = $$2.a();
+      if ($$3 > $$4.a()) {
+         throw d.create($$3, $$4.a());
       } else {
-         $$0.a(() -> vu.c("commands.jfr.started"), false);
-         return 1;
-      }
-   }
+         int $$5 = 0;
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bjx.f.b().normalize());
-         Path $$2 = $$0.l().r() && !aa.aW ? $$1 : $$1.toAbsolutePath();
-         vu $$3 = vu.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new vs(vs.a.f, $$2.toString())).a(new wa(wa.a.a, vu.c("chat.copy.click"))));
-         $$0.a(() -> vu.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
+         for (bpv $$6 : $$1) {
+            if ($$6 instanceof bqo) {
+               bqo $$7 = (bqo)$$6;
+               crj $$8 = $$7.eU();
+               if (!$$8.d()) {
+                  if ($$4.a($$8) && cwr.a(cwr.b($$8).a(), $$4)) {
+                     $$8.a($$4, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.f().o($$8).getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.ad().getString());
+               }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.ad().getString());
+            }
+         }
+
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wg.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wg.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+            }
+
+            return $$5;
+         }
       }
    }
 }

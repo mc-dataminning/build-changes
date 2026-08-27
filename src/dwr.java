@@ -1,24 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dwr extends dvs<dyi> {
-   public dwr(Codec<dyi> $$0) {
-      super($$0);
+public class dwr extends dvo {
+   private final iz a;
+   private final duv b;
+   private final dvf c;
+   private final dvi.o d;
+
+   public dwr(duu $$0, iz $$1, cyz $$2, duv $$3, dvf $$4, dvi.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(dvu<dyi> $$0) {
-      dyi $$1 = $$0.f();
-      axd $$2 = $$0.d();
-      cxw $$3 = $$0.b();
-      doy $$4 = $$0.c();
-      ib $$5 = $$0.e();
+   @Deprecated
+   public Optional<doz> a(Function<ib, il<czw>> $$0, dqv $$1, ib $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      for (dxm $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
-         }
-      }
+   @Deprecated
+   public iz c() {
+      return this.a;
+   }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+   public dvf d() {
+      return this.c;
    }
 }

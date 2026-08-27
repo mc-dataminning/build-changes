@@ -1,52 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dym implements dxw {
-   public static final Codec<dym> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eci.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               avd.b(kj.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               dzx.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               dzx.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dtv.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, dym::new)
-   );
-   public final il<eci> b;
-   public final int c;
-   public final int d;
-   public final avd<dac> e;
-   public final dzx f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final dzx k;
-   public final int l;
-   public final int n;
-   public final dtv o;
+public class dym extends dxv<eag> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqb<?>[] b = new bqb[]{bqb.aM, bqb.bt, bqb.bt, bqb.aV};
+   private static final doz c = dca.nc.n();
 
-   public dym(il<eci> $$0, int $$1, int $$2, avd<dac> $$3, dzx $$4, int $$5, int $$6, int $$7, int $$8, dzx $$9, int $$10, int $$11, dtv $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   public dym(Codec<eag> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dxx<eag> $$0) {
+      Predicate<doz> $$1 = dxv.a(avc.bI);
+      ib $$2 = $$0.e();
+      axr $$3 = $$0.d();
+      czs $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
+
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               ib $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
+
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  ib $$23 = $$2.b($$20, $$21, $$22);
+                  doz $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.d()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(dca.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, dca.cn.n(), $$1);
+                        } else {
+                           this.a($$4, $$23, dca.m.n(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(dca.cv) && !$$24.a(dca.ct)) {
+                     this.a($$4, $$23, c, $$1);
+                  }
+               }
+            }
+         }
+
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               ib $$30 = new ib($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (ih $$32 : ih.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, efl.a($$4, $$30, dca.cv.n()), $$1);
+                     boi.a($$4, $$3, $$30, emz.d);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, dca.ct.n(), $$1);
+         if ($$4.c_($$2) instanceof dnt $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private bqb<?> a(axr $$0) {
+      return ac.a(b, $$0);
    }
 }

@@ -5,22 +5,22 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cqm.b.fieldOf("icon").forGetter(ar::c),
-               vw.a.fieldOf("title").forGetter(ar::a),
-               vw.a.fieldOf("description").forGetter(ar::b),
-               awe.a(ajh.a, "background").forGetter(ar::d),
-               awe.a(al.d, "frame", al.a).forGetter(ar::e),
-               awe.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
-               awe.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
-               awe.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
+               crj.a.fieldOf("icon").forGetter(ar::c),
+               wi.a.fieldOf("title").forGetter(ar::a),
+               wi.a.fieldOf("description").forGetter(ar::b),
+               aws.a(ajt.a, "background").forGetter(ar::d),
+               aws.a(al.d, "frame", al.a).forGetter(ar::e),
+               aws.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
+               aws.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
+               aws.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
             )
             .apply($$0, ar::new)
    );
-   public static final xs<vf, ar> b = xs.a(ar::a, ar::b);
-   private final vu c;
-   private final vu d;
-   private final cqm e;
-   private final Optional<ajh> f;
+   public static final ye<vr, ar> b = ye.a(ar::a, ar::b);
+   private final wg c;
+   private final wg d;
+   private final crj e;
+   private final Optional<ajt> f;
    private final al g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(cqm $$0, vu $$1, vu $$2, Optional<ajh> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(crj $$0, wg $$1, wg $$2, Optional<ajt> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class ar {
       this.l = $$1;
    }
 
-   public vu a() {
+   public wg a() {
       return this.c;
    }
 
-   public vu b() {
+   public wg b() {
       return this.d;
    }
 
-   public cqm c() {
+   public crj c() {
       return this.e;
    }
 
-   public Optional<ajh> d() {
+   public Optional<ajt> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class ar {
       return this.j;
    }
 
-   private void a(vf $$0) {
-      vw.b.encode($$0, this.c);
-      vw.b.encode($$0, this.d);
-      cqm.f.encode($$0, this.e);
+   private void a(vr $$0) {
+      wi.d.encode($$0, this.c);
+      wi.d.encode($$0, this.d);
+      crj.f.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class ar {
       $$0.a(this.l);
    }
 
-   private static ar b(vf $$0) {
-      vu $$1 = vw.b.decode($$0);
-      vu $$2 = vw.b.decode($$0);
-      cqm $$3 = cqm.f.decode($$0);
+   private static ar b(vr $$0) {
+      wg $$1 = wi.d.decode($$0);
+      wg $$2 = wi.d.decode($$0);
+      crj $$3 = crj.f.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
-      Optional<ajh> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<ajt> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       ar $$9 = new ar($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

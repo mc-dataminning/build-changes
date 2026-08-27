@@ -1,525 +1,343 @@
 import com.google.common.collect.Lists;
-import com.mojang.serialization.DynamicLike;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class dos {
-   public static final double c = 5.999997E7F;
-   public static final double d = 2.9999984E7;
-   private final List<doq> a = Lists.newArrayList();
-   private double b = 0.2;
-   private double f = 5.0;
-   private int g = 15;
-   private int h = 5;
-   private double i;
-   private double j;
-   int k = 29999984;
-   private dos.a l = new dos.d(5.999997E7F);
-   public static final dos.c e = new dos.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
+public class dos extends deb {
+   public static final MapCodec<dos> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("sticky").forGetter($$0x -> $$0x.n), u()).apply($$0, dos::new)
+   );
+   public static final dpq c = dpp.g;
+   public static final int d = 0;
+   public static final int e = 1;
+   public static final int f = 2;
+   public static final float g = 4.0F;
+   protected static final est h = dby.a(0.0, 0.0, 0.0, 12.0, 16.0, 16.0);
+   protected static final est i = dby.a(4.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final est j = dby.a(0.0, 0.0, 0.0, 16.0, 16.0, 12.0);
+   protected static final est k = dby.a(0.0, 0.0, 4.0, 16.0, 16.0, 16.0);
+   protected static final est l = dby.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final est m = dby.a(0.0, 4.0, 0.0, 16.0, 16.0, 16.0);
+   private final boolean n;
 
-   public boolean a(ib $$0) {
-      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
+   @Override
+   public MapCodec<dos> a() {
+      return b;
    }
 
-   public boolean a(cwi $$0) {
-      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
+   public dos(boolean $$0, doy.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(a, ih.c).a(c, Boolean.valueOf(false)));
+      this.n = $$0;
    }
 
-   public boolean a(double $$0, double $$1) {
-      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
-   }
-
-   public boolean a(double $$0, double $$1, double $$2) {
-      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
-   }
-
-   public boolean a(epo $$0) {
-      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
-   }
-
-   public ib b(double $$0, double $$1, double $$2) {
-      return ib.a(aww.a($$0, this.e(), this.g()), $$1, aww.a($$2, this.f(), this.h()));
-   }
-
-   public double a(box $$0) {
-      return this.b($$0.dr(), $$0.dx());
-   }
-
-   public eqm c() {
-      return this.l.m();
-   }
-
-   public double b(double $$0, double $$1) {
-      double $$2 = $$1 - this.f();
-      double $$3 = this.h() - $$1;
-      double $$4 = $$0 - this.e();
-      double $$5 = this.g() - $$0;
-      double $$6 = Math.min($$4, $$5);
-      $$6 = Math.min($$6, $$2);
-      return Math.min($$6, $$3);
-   }
-
-   public boolean a(box $$0, epo $$1) {
-      double $$2 = Math.max(aww.a($$1.b(), $$1.d()), 1.0);
-      return this.a($$0) < $$2 * 2.0 && this.a($$0.dr(), $$0.dx(), $$2);
-   }
-
-   public dor d() {
-      return this.l.i();
-   }
-
-   public double e() {
-      return this.l.a();
-   }
-
-   public double f() {
-      return this.l.c();
-   }
-
-   public double g() {
-      return this.l.b();
-   }
-
-   public double h() {
-      return this.l.d();
-   }
-
-   public double a() {
-      return this.i;
-   }
-
-   public double b() {
-      return this.j;
-   }
-
-   public void c(double $$0, double $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l.k();
-
-      for (doq $$2 : this.l()) {
-         $$2.a(this, $$0, $$1);
-      }
-   }
-
-   public double i() {
-      return this.l.e();
-   }
-
-   public long j() {
-      return this.l.g();
-   }
-
-   public double k() {
-      return this.l.h();
-   }
-
-   public void a(double $$0) {
-      this.l = new dos.d($$0);
-
-      for (doq $$1 : this.l()) {
-         $$1.a(this, $$0);
-      }
-   }
-
-   public void a(double $$0, double $$1, long $$2) {
-      this.l = (dos.a)($$0 == $$1 ? new dos.d($$1) : new dos.b($$0, $$1, $$2));
-
-      for (doq $$3 : this.l()) {
-         $$3.a(this, $$0, $$1, $$2);
-      }
-   }
-
-   protected List<doq> l() {
-      return Lists.newArrayList(this.a);
-   }
-
-   public void a(doq $$0) {
-      this.a.add($$0);
-   }
-
-   public void b(doq $$0) {
-      this.a.remove($$0);
-   }
-
-   public void a(int $$0) {
-      this.k = $$0;
-      this.l.j();
-   }
-
-   public int m() {
-      return this.k;
-   }
-
-   public double n() {
-      return this.f;
-   }
-
-   public void b(double $$0) {
-      this.f = $$0;
-
-      for (doq $$1 : this.l()) {
-         $$1.c(this, $$0);
-      }
-   }
-
-   public double o() {
-      return this.b;
-   }
-
-   public void c(double $$0) {
-      this.b = $$0;
-
-      for (doq $$1 : this.l()) {
-         $$1.b(this, $$0);
-      }
-   }
-
-   public double p() {
-      return this.l.f();
-   }
-
-   public int q() {
-      return this.g;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-
-      for (doq $$1 : this.l()) {
-         $$1.a(this, $$0);
-      }
-   }
-
-   public int r() {
-      return this.h;
-   }
-
-   public void c(int $$0) {
-      this.h = $$0;
-
-      for (doq $$1 : this.l()) {
-         $$1.b(this, $$0);
-      }
-   }
-
-   public void s() {
-      this.l = this.l.l();
-   }
-
-   public dos.c t() {
-      return new dos.c(this);
-   }
-
-   public void a(dos.c $$0) {
-      this.c($$0.a(), $$0.b());
-      this.c($$0.c());
-      this.b($$0.d());
-      this.c($$0.e());
-      this.b($$0.f());
-      if ($$0.h() > 0L) {
-         this.a($$0.g(), $$0.i(), $$0.h());
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      if ($$0.c(c)) {
+         switch ((ih)$$0.c(a)) {
+            case a:
+               return m;
+            case b:
+            default:
+               return l;
+            case c:
+               return k;
+            case d:
+               return j;
+            case e:
+               return i;
+            case f:
+               return h;
+         }
       } else {
-         this.a($$0.g());
+         return esq.b();
       }
    }
 
-   interface a {
-      double a();
-
-      double b();
-
-      double c();
-
-      double d();
-
-      double e();
-
-      double f();
-
-      long g();
-
-      double h();
-
-      dor i();
-
-      void j();
-
-      void k();
-
-      dos.a l();
-
-      eqm m();
-   }
-
-   class b implements dos.a {
-      private final double b;
-      private final double c;
-      private final long d;
-      private final long e;
-      private final double f;
-
-      b(double $$0, double $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.f = (double)$$2;
-         this.e = ac.b();
-         this.d = this.e + $$2;
-      }
-
-      @Override
-      public double a() {
-         return aww.a(dos.this.a() - this.e() / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-      }
-
-      @Override
-      public double c() {
-         return aww.a(dos.this.b() - this.e() / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-      }
-
-      @Override
-      public double b() {
-         return aww.a(dos.this.a() + this.e() / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-      }
-
-      @Override
-      public double d() {
-         return aww.a(dos.this.b() + this.e() / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-      }
-
-      @Override
-      public double e() {
-         double $$0 = (double)(ac.b() - this.e) / this.f;
-         return $$0 < 1.0 ? aww.d($$0, this.b, this.c) : this.c;
-      }
-
-      @Override
-      public double f() {
-         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
-      }
-
-      @Override
-      public long g() {
-         return this.d - ac.b();
-      }
-
-      @Override
-      public double h() {
-         return this.c;
-      }
-
-      @Override
-      public dor i() {
-         return this.c < this.b ? dor.b : dor.a;
-      }
-
-      @Override
-      public void k() {
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public dos.a l() {
-         return (dos.a)(this.g() <= 0L ? dos.this.new d(this.c) : this);
-      }
-
-      @Override
-      public eqm m() {
-         return eqj.a(
-            eqj.c,
-            eqj.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            epx.e
-         );
+   @Override
+   public void a(cyx $$0, ib $$1, doz $$2, bqo $$3, crj $$4) {
+      if (!$$0.B) {
+         this.a($$0, $$1, $$2);
       }
    }
 
-   public static class c {
-      private final double a;
-      private final double b;
-      private final double c;
-      private final double d;
-      private final int e;
-      private final int f;
-      private final double g;
-      private final long h;
-      private final double i;
-
-      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-      }
-
-      c(dos $$0) {
-         this.a = $$0.a();
-         this.b = $$0.b();
-         this.c = $$0.o();
-         this.d = $$0.n();
-         this.e = $$0.r();
-         this.f = $$0.q();
-         this.g = $$0.i();
-         this.h = $$0.j();
-         this.i = $$0.k();
-      }
-
-      public double a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public double c() {
-         return this.c;
-      }
-
-      public double d() {
-         return this.d;
-      }
-
-      public int e() {
-         return this.e;
-      }
-
-      public int f() {
-         return this.f;
-      }
-
-      public double g() {
-         return this.g;
-      }
-
-      public long h() {
-         return this.h;
-      }
-
-      public double i() {
-         return this.i;
-      }
-
-      public static dos.c a(DynamicLike<?> $$0, dos.c $$1) {
-         double $$2 = aww.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
-         double $$3 = aww.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
-         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
-         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
-         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
-         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
-         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
-         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
-         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
-         return new dos.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
-      }
-
-      public void a(ta $$0) {
-         $$0.a("BorderCenterX", this.a);
-         $$0.a("BorderCenterZ", this.b);
-         $$0.a("BorderSize", this.g);
-         $$0.a("BorderSizeLerpTime", this.h);
-         $$0.a("BorderSafeZone", this.d);
-         $$0.a("BorderDamagePerBlock", this.c);
-         $$0.a("BorderSizeLerpTarget", this.i);
-         $$0.a("BorderWarningBlocks", (double)this.e);
-         $$0.a("BorderWarningTime", (double)this.f);
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
+      if (!$$1.B) {
+         this.a($$1, $$2, $$0);
       }
    }
 
-   class d implements dos.a {
-      private final double b;
-      private double c;
-      private double d;
-      private double e;
-      private double f;
-      private eqm g;
+   @Override
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if (!$$1.B && $$1.c_($$2) == null) {
+            this.a($$1, $$2, $$0);
+         }
+      }
+   }
 
-      public d(double $$0) {
-         this.b = $$0;
-         this.n();
+   @Override
+   public doz a(cuo $$0) {
+      return this.n().a(a, $$0.d().g()).a(c, Boolean.valueOf(false));
+   }
+
+   private void a(cyx $$0, ib $$1, doz $$2) {
+      ih $$3 = $$2.c(a);
+      boolean $$4 = this.a($$0, $$1, $$3);
+      if ($$4 && !$$2.c(c)) {
+         if (new dow($$0, $$1, $$3, true).a()) {
+            $$0.a($$1, this, 0, $$3.d());
+         }
+      } else if (!$$4 && $$2.c(c)) {
+         ib $$5 = $$1.a($$3, 2);
+         doz $$6 = $$0.a_($$5);
+         int $$7 = 1;
+         if ($$6.a(dca.bQ) && $$6.c(a) == $$3 && $$0.c_($$5) instanceof dov $$9 && $$9.b() && ($$9.a(0.0F) < 0.5F || $$0.Y() == $$9.l() || ((aps)$$0).c())) {
+            $$7 = 2;
+         }
+
+         $$0.a($$1, this, $$7, $$3.d());
+      }
+   }
+
+   private boolean a(czn $$0, ib $$1, ih $$2) {
+      for (ih $$3 : ih.values()) {
+         if ($$3 != $$2 && $$0.b($$1.a($$3), $$3)) {
+            return true;
+         }
       }
 
-      @Override
-      public double a() {
-         return this.c;
+      if ($$0.b($$1, ih.a)) {
+         return true;
+      } else {
+         ib $$4 = $$1.c();
+
+         for (ih $$5 : ih.values()) {
+            if ($$5 != ih.a && $$0.b($$4.a($$5), $$5)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected boolean a(doz $$0, cyx $$1, ib $$2, int $$3, int $$4) {
+      ih $$5 = $$0.c(a);
+      doz $$6 = $$0.a(c, Boolean.valueOf(true));
+      if (!$$1.B) {
+         boolean $$7 = this.a($$1, $$2, $$5);
+         if ($$7 && ($$3 == 1 || $$3 == 2)) {
+            $$1.a($$2, $$6, 2);
+            return false;
+         }
+
+         if (!$$7 && $$3 == 0) {
+            return false;
+         }
       }
 
-      @Override
-      public double b() {
-         return this.e;
+      if ($$3 == 0) {
+         if (!this.a($$1, $$2, $$5, true)) {
+            return false;
+         }
+
+         $$1.a($$2, $$6, 67);
+         $$1.a(null, $$2, aum.tE, aun.e, 0.5F, $$1.z.i() * 0.25F + 0.6F);
+         $$1.a(dts.a, $$2, dts.a.a($$6));
+      } else if ($$3 == 1 || $$3 == 2) {
+         dmf $$8 = $$1.c_($$2.a($$5));
+         if ($$8 instanceof dov) {
+            ((dov)$$8).k();
+         }
+
+         doz $$9 = dca.bQ.n().a(dor.b, $$5).a(dor.c, this.n ? dqb.b : dqb.a);
+         $$1.a($$2, $$9, 20);
+         $$1.a(dor.a($$2, $$9, this.n().a(a, ih.a($$4 & 7)), $$5, false, true));
+         $$1.b($$2, $$9.b());
+         $$9.a($$1, $$2, 2);
+         if (this.n) {
+            ib $$10 = $$2.b($$5.j() * 2, $$5.k() * 2, $$5.l() * 2);
+            doz $$11 = $$1.a_($$10);
+            boolean $$12 = false;
+            if ($$11.a(dca.bQ) && $$1.c_($$10) instanceof dov $$14 && $$14.c() == $$5 && $$14.b()) {
+               $$14.k();
+               $$12 = true;
+            }
+
+            if (!$$12) {
+               if ($$3 != 1 || $$11.i() || !a($$11, $$1, $$10, $$5.g(), false, $$5) || $$11.o() != ekx.a && !$$11.a(dca.by) && !$$11.a(dca.br)) {
+                  $$1.a($$2.a($$5), false);
+               } else {
+                  this.a($$1, $$2, $$5, false);
+               }
+            }
+         } else {
+            $$1.a($$2.a($$5), false);
+         }
+
+         $$1.a(null, $$2, aum.tD, aun.e, 0.5F, $$1.z.i() * 0.15F + 0.6F);
+         $$1.a(dts.e, $$2, dts.a.a($$9));
       }
 
-      @Override
-      public double c() {
-         return this.d;
+      return true;
+   }
+
+   public static boolean a(doz $$0, cyx $$1, ib $$2, ih $$3, boolean $$4, ih $$5) {
+      if ($$2.v() < $$1.I_() || $$2.v() > $$1.al() - 1 || !$$1.C_().a($$2)) {
+         return false;
+      } else if ($$0.i()) {
+         return true;
+      } else if ($$0.a(dca.co) || $$0.a(dca.pk) || $$0.a(dca.pl) || $$0.a(dca.to)) {
+         return false;
+      } else if ($$3 == ih.a && $$2.v() == $$1.I_()) {
+         return false;
+      } else if ($$3 == ih.b && $$2.v() == $$1.al() - 1) {
+         return false;
+      } else {
+         if (!$$0.a(dca.by) && !$$0.a(dca.br)) {
+            if ($$0.h($$1, $$2) == -1.0F) {
+               return false;
+            }
+
+            switch ($$0.o()) {
+               case c:
+                  return false;
+               case b:
+                  return $$4;
+               case e:
+                  return $$3 == $$5;
+            }
+         } else if ($$0.c(c)) {
+            return false;
+         }
+
+         return !$$0.t();
+      }
+   }
+
+   private boolean a(cyx $$0, ib $$1, ih $$2, boolean $$3) {
+      ib $$4 = $$1.a($$2);
+      if (!$$3 && $$0.a_($$4).a(dca.bz)) {
+         $$0.a($$4, dca.a.n(), 20);
       }
 
-      @Override
-      public double d() {
-         return this.f;
-      }
+      dow $$5 = new dow($$0, $$1, $$2, $$3);
+      if (!$$5.a()) {
+         return false;
+      } else {
+         Map<ib, doz> $$6 = Maps.newHashMap();
+         List<ib> $$7 = $$5.c();
+         List<doz> $$8 = Lists.newArrayList();
 
-      @Override
-      public double e() {
-         return this.b;
-      }
+         for (ib $$9 : $$7) {
+            doz $$10 = $$0.a_($$9);
+            $$8.add($$10);
+            $$6.put($$9, $$10);
+         }
 
-      @Override
-      public dor i() {
-         return dor.c;
-      }
+         List<ib> $$11 = $$5.d();
+         doz[] $$12 = new doz[$$7.size() + $$11.size()];
+         ih $$13 = $$3 ? $$2 : $$2.g();
+         int $$14 = 0;
 
-      @Override
-      public double f() {
-         return 0.0;
-      }
+         for (int $$15 = $$11.size() - 1; $$15 >= 0; $$15--) {
+            ib $$16 = $$11.get($$15);
+            doz $$17 = $$0.a_($$16);
+            dmf $$18 = $$17.t() ? $$0.c_($$16) : null;
+            a($$17, $$0, $$16, $$18);
+            $$0.a($$16, dca.a.n(), 18);
+            $$0.a(dts.f, $$16, dts.a.a($$17));
+            if (!$$17.a(avc.aK)) {
+               $$0.a($$16, $$17);
+            }
 
-      @Override
-      public long g() {
-         return 0L;
-      }
+            $$12[$$14++] = $$17;
+         }
 
-      @Override
-      public double h() {
-         return this.b;
-      }
+         for (int $$19 = $$7.size() - 1; $$19 >= 0; $$19--) {
+            ib $$20 = $$7.get($$19);
+            doz $$21 = $$0.a_($$20);
+            $$20 = $$20.a($$13);
+            $$6.remove($$20);
+            doz $$22 = dca.bQ.n().a(a, $$2);
+            $$0.a($$20, $$22, 68);
+            $$0.a(dor.a($$20, $$22, $$8.get($$19), $$2, $$3, false));
+            $$12[$$14++] = $$21;
+         }
 
-      private void n() {
-         this.c = aww.a(dos.this.a() - this.b / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-         this.d = aww.a(dos.this.b() - this.b / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-         this.e = aww.a(dos.this.a() + this.b / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-         this.f = aww.a(dos.this.b() + this.b / 2.0, (double)(-dos.this.k), (double)dos.this.k);
-         this.g = eqj.a(
-            eqj.c,
-            eqj.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            epx.e
-         );
-      }
+         if ($$3) {
+            dqb $$23 = this.n ? dqb.b : dqb.a;
+            doz $$24 = dca.bz.n().a(dot.a, $$2).a(dot.c, $$23);
+            doz $$25 = dca.bQ.n().a(dor.b, $$2).a(dor.c, this.n ? dqb.b : dqb.a);
+            $$6.remove($$4);
+            $$0.a($$4, $$25, 68);
+            $$0.a(dor.a($$4, $$25, $$24, $$2, true, true));
+         }
 
-      @Override
-      public void j() {
-         this.n();
-      }
+         doz $$26 = dca.a.n();
 
-      @Override
-      public void k() {
-         this.n();
-      }
+         for (ib $$27 : $$6.keySet()) {
+            $$0.a($$27, $$26, 82);
+         }
 
-      @Override
-      public dos.a l() {
-         return this;
-      }
+         for (Entry<ib, doz> $$28 : $$6.entrySet()) {
+            ib $$29 = $$28.getKey();
+            doz $$30 = $$28.getValue();
+            $$30.b($$0, $$29, 2);
+            $$26.a($$0, $$29, 2);
+            $$26.b($$0, $$29, 2);
+         }
 
-      @Override
-      public eqm m() {
-         return this.g;
+         $$14 = 0;
+
+         for (int $$31 = $$11.size() - 1; $$31 >= 0; $$31--) {
+            doz $$32 = $$12[$$14++];
+            ib $$33 = $$11.get($$31);
+            $$32.b($$0, $$33, 2);
+            $$0.a($$33, $$32.b());
+         }
+
+         for (int $$34 = $$7.size() - 1; $$34 >= 0; $$34--) {
+            $$0.a($$7.get($$34), $$12[$$14++].b());
+         }
+
+         if ($$3) {
+            $$0.a($$4, dca.bz);
+         }
+
+         return true;
       }
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(a, c);
+   }
+
+   @Override
+   protected boolean g_(doz $$0) {
+      return $$0.c(c);
+   }
+
+   @Override
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 }

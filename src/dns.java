@@ -1,47 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
-
-public class dns extends doe<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
-
-   protected dns(String $$0) {
-      super($$0, Boolean.class);
+public class dns extends dlt {
+   public dns(ib $$0, doz $$1) {
+      super(dmh.B, $$0, $$1, cvo.d);
    }
 
    @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static dns a(String $$0) {
-      return new dns($$0);
+   protected wg k() {
+      return wg.c("container.smoker");
    }
 
    @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
+   protected int a(crj $$0) {
+      return super.a($$0) / 2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dns $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   protected cmp a(int $$0, cjs $$1) {
+      return new com($$0, $$1, this, this.n);
    }
 }

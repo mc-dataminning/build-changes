@@ -1,210 +1,169 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fja extends fig<cmk> {
-   private static final ajh[] E = new ajh[]{
-      new ajh("container/enchanting_table/level_1"), new ajh("container/enchanting_table/level_2"), new ajh("container/enchanting_table/level_3")
-   };
-   private static final ajh[] F = new ajh[]{
-      new ajh("container/enchanting_table/level_1_disabled"),
-      new ajh("container/enchanting_table/level_2_disabled"),
-      new ajh("container/enchanting_table/level_3_disabled")
-   };
-   private static final ajh G = new ajh("container/enchanting_table/enchantment_slot_disabled");
-   private static final ajh H = new ajh("container/enchanting_table/enchantment_slot_highlighted");
-   private static final ajh I = new ajh("container/enchanting_table/enchantment_slot");
-   private static final ajh J = new ajh("textures/gui/container/enchanting_table.png");
-   private static final ajh K = new ajh("textures/entity/enchanting_table_book.png");
-   private final axd L = axd.a();
-   private fnm M;
-   public int x;
-   public float y;
-   public float z;
-   public float A;
-   public float B;
-   public float C;
-   public float D;
-   private cqm N = cqm.h;
+public class fja extends fji {
+   static final ajt c = new ajt("textures/gui/title/mojangstudios.png");
+   private static final int d = awu.b.a(255, 239, 50, 61);
+   private static final int e = awu.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fbp.Q().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final fbp m;
+   private final asy n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fja(cmk $$0, cit $$1, vu $$2) {
-      super($$0, $$1, $$2);
+   public fja(fbp $$0, asy $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+   }
+
+   public static void a(fbp $$0) {
+      $$0.aa().a(c, new fja.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.M = new fnm(this.f.aR().a(fre.r));
-   }
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
 
-   @Override
-   public void E() {
-      super.E();
-      this.I();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = (this.g - this.c) / 2;
-      int $$4 = (this.h - this.k) / 2;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         double $$6 = $$0 - (double)($$3 + 60);
-         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
-         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.p.b(this.f.s, $$5)) {
-            this.f.q.a(this.p.j, $$5);
-            return true;
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
          }
-      }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(J, $$4, $$5, 0, 0, this.c, this.k);
-      this.d($$0, $$4, $$5, $$1);
-      fiz.a().a((long)this.p.m());
-      int $$6 = this.p.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = $$4 + 60;
-         int $$9 = $$8 + 20;
-         int $$10 = this.p.k[$$7];
-         if ($$10 == 0) {
-            $$0.a(G, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-         } else {
-            String $$11 = $$10 + "";
-            int $$12 = 86 - this.i.b($$11);
-            vz $$13 = fiz.a().a(this.i, $$12);
-            int $$14 = 6839882;
-            if (($$6 < $$7 + 1 || this.f.s.cm < $$10) && !this.f.s.ga().d) {
-               $$0.a(G, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               $$0.a(F[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.i, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
-               $$14 = 4226832;
-            } else {
-               int $$15 = $$2 - ($$4 + 60);
-               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
-               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
-                  $$0.a(H, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-                  $$14 = 16777088;
-               } else {
-                  $$0.a(I, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               }
-
-               $$0.a(E[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.i, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
-               $$14 = 8453920;
-            }
-
-            $$0.b(this.i, $$11, $$9 + 86 - this.i.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+         int $$9 = axk.f((1.0F - axk.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(gah.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - axk.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
          }
-      }
-   }
 
-   private void d(fav $$0, int $$1, int $$2, float $$3) {
-      float $$4 = aww.i($$3, this.D, this.C);
-      float $$5 = aww.i($$3, this.z, this.y);
-      esx.e();
-      $$0.c().a();
-      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
-      float $$6 = 40.0F;
-      $$0.c().b(-40.0F, 40.0F, 40.0F);
-      $$0.c().a(a.b.rotationDegrees(25.0F));
-      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
-      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
-      $$0.c().a(a.d.rotationDegrees($$7));
-      $$0.c().a(a.b.rotationDegrees(180.0F));
-      float $$8 = aww.a(aww.h($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float $$9 = aww.a(aww.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      this.M.a(0.0F, $$8, $$9, $$4);
-      euf $$10 = $$0.d().getBuffer(this.M.a(K));
-      this.M.a($$0.c(), $$10, 15728880, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.e();
-      $$0.c().b();
-      esx.d();
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      $$3 = this.f.au();
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      boolean $$4 = this.f.s.ga().d;
-      int $$5 = this.p.l();
-
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         int $$7 = this.p.k[$$6];
-         cuw $$8 = cuw.c(this.p.l[$$6]);
-         int $$9 = this.p.m[$$6];
-         int $$10 = $$6 + 1;
-         if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
-            List<vu> $$11 = Lists.newArrayList();
-            $$11.add(vu.a("container.enchant.clue", $$8.d($$9)).a(n.p));
-            if (!$$4) {
-               $$11.add(vt.a);
-               if (this.f.s.cm < $$7) {
-                  $$11.add(vu.a("container.enchant.level.requirement", this.p.k[$$6]).a(n.m));
-               } else {
-                  wi $$12;
-                  if ($$10 == 1) {
-                     $$12 = vu.c("container.enchant.lapis.one");
-                  } else {
-                     $$12 = vu.a("container.enchant.lapis.many", $$10);
-                  }
-
-                  $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
-                  wi $$14;
-                  if ($$10 == 1) {
-                     $$14 = vu.c("container.enchant.level.one");
-                  } else {
-                     $$14 = vu.a("container.enchant.level.many", $$10);
-                  }
-
-                  $$11.add($$14.a(n.h));
-               }
-            }
-
-            $$0.a(this.i, $$11, $$1, $$2);
-            break;
-         }
-      }
-   }
-
-   public void I() {
-      cqm $$0 = this.p.b(0).g();
-      if (!cqm.a($$0, this.N)) {
-         this.N = $$0;
-
-         do {
-            this.A = this.A + (float)(this.L.a(4) - this.L.a(4));
-         } while (this.y <= this.A + 1.0F && this.y >= this.A - 1.0F);
-      }
-
-      this.x++;
-      this.z = this.y;
-      this.D = this.C;
-      boolean $$1 = false;
-
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (this.p.k[$$2] != 0) {
-            $$1 = true;
-         }
-      }
-
-      if ($$1) {
-         this.C += 0.2F;
+         int $$11 = axk.c(axk.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(gah.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = axk.a($$8, 0.0F, 1.0F);
       } else {
-         this.C -= 0.2F;
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, fbp.a);
+         $$10 = 1.0F;
       }
 
-      this.C = aww.a(this.C, 0.0F, 1.0F);
-      float $$3 = (this.A - this.y) * 0.4F;
-      float $$4 = 0.2F;
-      $$3 = aww.a($$3, -0.2F, 0.2F);
-      this.B = this.B + ($$3 - this.B) * 0.9F;
-      this.y = this.y + this.B;
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = axk.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - axk.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
+      }
+   }
+
+   private void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = axk.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = awu.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends glc {
+      public a() {
+         super(fja.c);
+      }
+
+      @Override
+      protected glc.a b(atc $$0) {
+         ars $$1 = fbp.Q().ad();
+         asu<InputStream> $$2 = $$1.a(arq.a, fja.c);
+         if ($$2 == null) {
+            return new glc.a(new FileNotFoundException(fja.c.toString()));
+         } else {
+            try {
+               glc.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new glc.a(new gnf(true, true), evj.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new glc.a(var9);
+            }
+         }
+      }
    }
 }

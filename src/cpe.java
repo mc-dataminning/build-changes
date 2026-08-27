@@ -1,46 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class cpe extends cqh implements crl {
-   private static final Map<cpd, cpe> a = Maps.newEnumMap(cpd.class);
-   private final cpd b;
+public class cpe extends csr {
+   private static final String b = "block.minecraft.banner.";
 
-   public cpe(cpd $$0, cqh.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public cpe(dby $$0, dby $$1, cre.a $$2) {
+      super($$0, $$1, $$2, ih.a);
+      Validate.isInstanceOf(dap.class, $$0);
+      Validate.isInstanceOf(dap.class, $$1);
    }
 
-   @Override
-   public bnd a(cqm $$0, ciu $$1, bpp $$2, bnc $$3) {
-      if ($$2 instanceof cca $$4 && $$4.bA() && !$$4.y() && $$4.s() != this.b) {
-         $$4.dM().a($$1, $$4, aty.hF, atz.h, 1.0F, 1.0F);
-         if (!$$1.dM().B) {
-            $$4.b(this.b);
-            $$0.h(1);
+   public static void a(crj $$0, List<wg> $$1) {
+      dlw $$2 = $$0.a(jp.N);
+      if ($$2 != null) {
+         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
+            dlw.b $$4 = $$2.b().get($$3);
+            $$4.a().e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(wg.c("block.minecraft.banner." + $$2x + "." + $$4.b().b()).a(n.h)));
          }
-
-         return bnd.a($$1.dM().B);
       }
-
-      return bnd.d;
    }
 
-   public cpd c() {
-      return this.b;
-   }
-
-   public static cpe a(cpd $$0) {
-      return a.get($$0);
+   public cqc b() {
+      return ((dap)this.d()).b();
    }
 
    @Override
-   public boolean a(cxb $$0, dlr $$1, boolean $$2, ciu $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
-         $$0.a(null, $$1.aC_(), aty.hF, atz.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      a($$0, $$2);
    }
 }

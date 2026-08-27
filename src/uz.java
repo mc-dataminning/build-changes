@@ -1,41 +1,17 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import org.slf4j.Logger;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.crypto.Cipher;
 
-public class uz<T extends va> extends MessageToByteEncoder<yb<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final vc<T> b;
+public class uz extends MessageToMessageDecoder<ByteBuf> {
+   private final uy a;
 
-   public uz(vc<T> $$0) {
-      this.b = $$0;
+   public uz(Cipher $$0) {
+      this.a = new uy($$0);
    }
 
-   protected void a(ChannelHandlerContext $$0, yb<T> $$1, ByteBuf $$2) throws Exception {
-      yd<? extends yb<? super T>> $$3 = $$1.a();
-      if (a.isDebugEnabled()) {
-         a.debug(us.d, "OUT: [{}:{}] {}", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName()});
-      }
-
-      try {
-         int $$4 = $$2.writerIndex();
-         this.b.c().encode($$2, $$1);
-         int $$5 = $$2.writerIndex() - $$4;
-         if ($$5 > 8388608) {
-            throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
-         }
-
-         bjx.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
-      } catch (Throwable var10) {
-         a.error("Error sending packet {}", $$3, var10);
-         if ($$1.c()) {
-            throw new vh(var10);
-         }
-
-         throw var10;
-      } finally {
-         vd.b($$0, $$1);
-      }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      $$2.add(this.a.a($$0, $$1));
    }
 }

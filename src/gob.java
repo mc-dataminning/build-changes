@@ -1,16 +1,18 @@
-import java.util.function.Consumer;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
 
-@FunctionalInterface
 public interface gob {
-   gob a = ($$0, $$1) -> {
-   };
+   void scheduleReload(gob.a var1);
 
-   default gob decorate(Consumer<gof.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<gob.b> b();
    }
 
-   void send(goc var1, Consumer<gof.a> var2);
+   public static record b(UUID a, Path b) {
+   }
 }

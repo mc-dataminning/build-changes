@@ -1,42 +1,52 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class uj extends uf {
-   private final Deque<uh> a = new ArrayDeque<>();
+public interface uj {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   public uj(ug... $$0) {
-      uh $$1 = uh.a();
-
-      for (ug $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
-   }
-
-   @Override
-   public tu.a a(tz<?> $$0, String $$1) {
-      uh $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return tu.a.b;
-      } else {
-         if ($$0 == ta.b) {
-            uh $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
+   void a(DataOutput var1) throws IOException;
 
    @Override
-   public tu.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   String toString();
 
-      return super.b();
+   byte b();
+
+   ul<?> c();
+
+   uj d();
+
+   int a();
+
+   default String s_() {
+      return new ui().a(this);
+   }
+
+   void a(un var1);
+
+   ug.b a(ug var1);
+
+   default void b(ug $$0) {
+      ug.b $$1 = $$0.b(this.c());
+      if ($$1 == ug.b.a) {
+         this.a($$0);
+      }
    }
 }

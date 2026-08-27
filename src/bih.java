@@ -4,25 +4,32 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bih extends bfq {
+public class bih extends bgk {
    public bih(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:vault",
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bfa.c,
          () -> DSL.optionalFields(
-               "config",
-               DSL.optionalFields("key_item", beh.t.in($$0)),
-               "server_data",
-               DSL.optionalFields("items_to_eject", DSL.list(beh.t.in($$0))),
-               "shared_data",
-               DSL.optionalFields("display_item", beh.t.in($$0))
+               "entities",
+               DSL.list(bfa.y.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(bfa.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", bfa.A.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(bfa.I.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bfa.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(bfa.E.in($$0)))
             )
       );
-      return $$1;
    }
 }

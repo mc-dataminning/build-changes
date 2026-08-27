@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum eea implements axq {
-   a("linear"),
-   b("triangular");
+public class eea extends een {
+   public static final Codec<eea> a = RecordCodecBuilder.create($$0 -> $$0.group(dvy.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eea::new));
+   private final dvy c;
 
-   public static final Codec<eea> c = axq.a(eea::values);
-   private final String d;
+   private eea(dvy $$0) {
+      this.c = $$0;
+   }
 
-   private eea(String $$0) {
-      this.d = $$0;
+   public static eea a(dvy $$0) {
+      return new eea($$0);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   protected boolean a(eem $$0, axr $$1, ib $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
-   public int a(axd $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   @Override
+   public eep<?> b() {
+      return eep.a;
    }
 }

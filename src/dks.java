@@ -1,146 +1,73 @@
-public class dks extends dki {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final cwc d = new cwc() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dks.this.e();
-      }
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      public apf e() {
-         return (apf)dks.this.o;
-      }
+public class dks extends dbk {
+   public static final MapCodec<dks> a = b(dks::new);
+   public static final dqc<dom> b = dpp.bz;
+   public static final dpt c = dft.aE;
 
-      @Override
-      public void f() {
-         dnb $$0 = dks.this.o.a_(dks.this.p);
-         this.e().a(dks.this.p, $$0, $$0, 3);
-      }
+   @Override
+   public MapCodec<dks> a() {
+      return a;
+   }
 
-      @Override
-      public ept g() {
-         return ept.b(dks.this.p);
-      }
-
-      @Override
-      public du i() {
-         ih $$0 = dks.this.n().c(dbl.b);
-         return new du(this, ept.b(dks.this.p), new eps(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dks.this.o();
-      }
-   };
-
-   public dks(ib $$0, dnb $$1) {
-      super(dkk.w, $$0, $$1);
+   public dks(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, ih.c).a(b, dom.a));
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      $$0.a("powered", this.c());
-      $$0.a("conditionMet", this.j());
-      $$0.a("auto", this.d());
-   }
-
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.d.b($$0);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   public cwc b() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.l() != dks.a.a) {
-         this.t();
-      }
-   }
-
-   public void f() {
-      dks.a $$0 = this.l();
-      if ($$0 == dks.a.b && (this.a || this.b) && this.o != null) {
-         this.t();
-      }
-   }
-
-   private void t() {
-      dac $$0 = this.n().b();
-      if ($$0 instanceof dbl) {
-         this.k();
-         this.o.a(this.p, $$0, 1);
-      }
-   }
-
-   public boolean j() {
-      return this.c;
-   }
-
-   public boolean k() {
-      this.c = true;
-      if (this.s()) {
-         ib $$0 = this.p.a(this.o.a_(this.p).c(dbl.b).g());
-         if (this.o.a_($$0).b() instanceof dbl) {
-            dki $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof dks && ((dks)$$1).b().k() > 0;
+   public boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      if ($$0.d() || $$1.c(b) != dom.b) {
+         return boc.d;
+      } else if ($$2 instanceof aps $$7) {
+         if ($$7.c_($$3) instanceof doh $$9) {
+            doh.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
+            return boc.a;
          } else {
-            this.c = false;
+            return boc.d;
          }
-      }
-
-      return this.c;
-   }
-
-   public dks.a l() {
-      dnb $$0 = this.n();
-      if ($$0.a(dae.fN)) {
-         return dks.a.c;
-      } else if ($$0.a(dae.kG)) {
-         return dks.a.b;
       } else {
-         return $$0.a(dae.kH) ? dks.a.a : dks.a.c;
+         return boc.b;
       }
    }
 
-   public boolean s() {
-      dnb $$0 = this.o.a_(this.aC_());
-      return $$0.b() instanceof dbl ? $$0.c(dbl.c) : false;
+   @Nullable
+   @Override
+   public dmf a(ib $$0, doz $$1) {
+      return new doh($$0, $$1);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return $$0 instanceof aps $$3
+         ? a($$2, dmh.R, ($$1x, $$2x, $$3x, $$4) -> doh.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dmh.R, ($$0x, $$1x, $$2x, $$3x) -> doh.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   }
+
+   @Override
+   public doz a(cuo $$0) {
+      return this.n().a(c, $$0.g().g());
+   }
+
+   @Override
+   public doz a(doz $$0, dik $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   public did b_(doz $$0) {
+      return did.c;
    }
 }

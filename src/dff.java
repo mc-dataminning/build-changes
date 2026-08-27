@@ -1,115 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dff extends dac {
-   public static final MapCodec<dff> a = b(dff::new);
-   public static final dnz<ih.a> b = dnr.H;
-   protected static final int c = 2;
-   protected static final eqm d = dac.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final eqm e = dac.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class dff extends dat {
+   public static final MapCodec<dff> c = b(dff::new);
 
    @Override
    public MapCodec<dff> a() {
-      return a;
+      return c;
    }
 
-   public dff(dna.d $$0) {
+   protected dff(doy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ih.a.a));
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      switch ((ih.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
+   public dmf a(ib $$0, doz $$1) {
+      return new dnb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return a($$0, $$2, dmh.a);
+   }
+
+   @Override
+   protected void a(cyx $$0, ib $$1, cjt $$2) {
+      dmf $$3 = $$0.c_($$1);
+      if ($$3 instanceof dnb) {
+         $$2.a((boe)$$3);
+         $$2.a(auw.am);
       }
    }
 
    @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$1.D_().j() && $$1.Z().b(cwx.e) && $$3.a(2000) < $$1.aj().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
+   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aum.jT, aun.e, 1.0F, 1.0F, false);
          }
 
-         if ($$1.a_($$2).a($$1, $$2, bpd.bx)) {
-            box $$4 = bpd.bx.a($$1, $$2.c(), bpt.d);
-            if ($$4 != null) {
-               $$4.au();
-            }
-         }
+         ih $$7 = $$0.c(a);
+         ih.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ih.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ih.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(kl.ac, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(kl.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      ih.a $$6 = $$1.o();
-      ih.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new ejn($$3, $$4, $$7).c() ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
-      if ($$3.ct()) {
-         $$3.f($$2);
-      }
-   }
-
-   @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aty.ui, atz.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
-         } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
-         }
-
-         $$1.a(kc.aa, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public cqm a(cxe $$0, ib $$1, dnb $$2) {
-      return cqm.h;
-   }
-
-   @Override
-   protected dnb a(dnb $$0, dgo $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ih.a)$$0.c(b)) {
-               case c:
-                  return $$0.a(b, ih.a.a);
-               case a:
-                  return $$0.a(b, ih.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b);
    }
 }

@@ -1,22 +1,18 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-@Sharable
-public class vo extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
+public interface vo<T extends vm> {
+   vf a();
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = vl.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("unable to fit " + $$3 + " into 3");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         vl.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
-      }
+   yo b();
+
+   ye<ByteBuf, yn<? super T>> c();
+
+   @Nullable
+   ym d();
+
+   public interface a<T extends vm, B extends ByteBuf> {
+      vo<T> bind(Function<ByteBuf, B> var1);
    }
 }

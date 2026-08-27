@@ -1,15 +1,41 @@
-import java.util.AbstractList;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public abstract class sz<T extends tx> extends AbstractList<T> implements tx {
-   public abstract T d(int var1, T var2);
+public class sz implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   public abstract void c(int var1, T var2);
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (sk.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = wg.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+      }
+   }
 
-   public abstract T c(int var1);
+   public static sz a() {
+      return new sz();
+   }
 
-   public abstract boolean a(int var1, tx var2);
+   public static String a(CommandContext<du> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
+   }
 
-   public abstract boolean b(int var1, tx var2);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dz.b(sk.b().stream(), $$1);
+   }
 
-   public abstract byte f();
+   public Collection<String> getExamples() {
+      return a;
+   }
 }

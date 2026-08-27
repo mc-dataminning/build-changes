@@ -1,6 +1,8 @@
-public interface up extends va {
-   @Override
-   default yc a() {
-      return yc.b;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface up {
 }

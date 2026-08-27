@@ -1,82 +1,9 @@
-import java.util.List;
-
 public class qt {
-   public static final ajg<dvf<?, ?>> a = qq.a("ore_magma");
-   public static final ajg<dvf<?, ?>> b = qq.a("ore_soul_sand");
-   public static final ajg<dvf<?, ?>> c = qq.a("ore_nether_gold");
-   public static final ajg<dvf<?, ?>> d = qq.a("ore_quartz");
-   public static final ajg<dvf<?, ?>> e = qq.a("ore_gravel_nether");
-   public static final ajg<dvf<?, ?>> f = qq.a("ore_blackstone");
-   public static final ajg<dvf<?, ?>> g = qq.a("ore_dirt");
-   public static final ajg<dvf<?, ?>> h = qq.a("ore_gravel");
-   public static final ajg<dvf<?, ?>> i = qq.a("ore_granite");
-   public static final ajg<dvf<?, ?>> j = qq.a("ore_diorite");
-   public static final ajg<dvf<?, ?>> k = qq.a("ore_andesite");
-   public static final ajg<dvf<?, ?>> l = qq.a("ore_tuff");
-   public static final ajg<dvf<?, ?>> m = qq.a("ore_coal");
-   public static final ajg<dvf<?, ?>> n = qq.a("ore_coal_buried");
-   public static final ajg<dvf<?, ?>> o = qq.a("ore_iron");
-   public static final ajg<dvf<?, ?>> p = qq.a("ore_iron_small");
-   public static final ajg<dvf<?, ?>> q = qq.a("ore_gold");
-   public static final ajg<dvf<?, ?>> r = qq.a("ore_gold_buried");
-   public static final ajg<dvf<?, ?>> s = qq.a("ore_redstone");
-   public static final ajg<dvf<?, ?>> t = qq.a("ore_diamond_small");
-   public static final ajg<dvf<?, ?>> u = qq.a("ore_diamond_medium");
-   public static final ajg<dvf<?, ?>> v = qq.a("ore_diamond_large");
-   public static final ajg<dvf<?, ?>> w = qq.a("ore_diamond_buried");
-   public static final ajg<dvf<?, ?>> x = qq.a("ore_lapis");
-   public static final ajg<dvf<?, ?>> y = qq.a("ore_lapis_buried");
-   public static final ajg<dvf<?, ?>> z = qq.a("ore_infested");
-   public static final ajg<dvf<?, ?>> A = qq.a("ore_emerald");
-   public static final ajg<dvf<?, ?>> B = qq.a("ore_ancient_debris_large");
-   public static final ajg<dvf<?, ?>> C = qq.a("ore_ancient_debris_small");
-   public static final ajg<dvf<?, ?>> D = qq.a("ore_copper_small");
-   public static final ajg<dvf<?, ?>> E = qq.a("ore_copper_large");
-   public static final ajg<dvf<?, ?>> F = qq.a("ore_clay");
-
-   public static void a(pl<dvf<?, ?>> $$0) {
-      egy $$1 = new ehg(aun.be);
-      egy $$2 = new ehg(aun.bf);
-      egy $$3 = new ehg(aun.bg);
-      egy $$4 = new egh(dae.dV);
-      egy $$5 = new ehg(aun.bh);
-      List<dye.a> $$6 = List.of(dye.a($$2, dae.P.o()), dye.a($$3, dae.Q.o()));
-      List<dye.a> $$7 = List.of(dye.a($$2, dae.N.o()), dye.a($$3, dae.O.o()));
-      List<dye.a> $$8 = List.of(dye.a($$2, dae.cx.o()), dye.a($$3, dae.cy.o()));
-      List<dye.a> $$9 = List.of(dye.a($$2, dae.aR.o()), dye.a($$3, dae.aS.o()));
-      List<dye.a> $$10 = List.of(dye.a($$2, dae.ra.o()), dye.a($$3, dae.rb.o()));
-      List<dye.a> $$11 = List.of(dye.a($$2, dae.R.o()), dye.a($$3, dae.S.o()));
-      qq.a($$0, a, dvs.I, new dye($$4, dae.kJ.o(), 33));
-      qq.a($$0, b, dvs.I, new dye($$4, dae.dW.o(), 12));
-      qq.a($$0, c, dvs.I, new dye($$4, dae.T.o(), 10));
-      qq.a($$0, d, dvs.I, new dye($$4, dae.hb.o(), 14));
-      qq.a($$0, e, dvs.I, new dye($$4, dae.L.o(), 33));
-      qq.a($$0, f, dvs.I, new dye($$4, dae.pr.o(), 33));
-      qq.a($$0, g, dvs.I, new dye($$1, dae.j.o(), 33));
-      qq.a($$0, h, dvs.I, new dye($$1, dae.L.o(), 33));
-      qq.a($$0, i, dvs.I, new dye($$1, dae.c.o(), 64));
-      qq.a($$0, j, dvs.I, new dye($$1, dae.e.o(), 64));
-      qq.a($$0, k, dvs.I, new dye($$1, dae.g.o(), 64));
-      qq.a($$0, l, dvs.I, new dye($$1, dae.qz.o(), 64));
-      qq.a($$0, m, dvs.I, new dye($$11, 17));
-      qq.a($$0, n, dvs.I, new dye($$11, 17, 0.5F));
-      qq.a($$0, o, dvs.I, new dye($$6, 9));
-      qq.a($$0, p, dvs.I, new dye($$6, 4));
-      qq.a($$0, q, dvs.I, new dye($$7, 9));
-      qq.a($$0, r, dvs.I, new dye($$7, 9, 0.5F));
-      qq.a($$0, s, dvs.I, new dye(List.of(dye.a($$2, dae.dI.o()), dye.a($$3, dae.dJ.o())), 8));
-      qq.a($$0, t, dvs.I, new dye($$8, 4, 0.5F));
-      qq.a($$0, v, dvs.I, new dye($$8, 12, 0.7F));
-      qq.a($$0, w, dvs.I, new dye($$8, 8, 1.0F));
-      qq.a($$0, u, dvs.I, new dye($$8, 8, 0.5F));
-      qq.a($$0, x, dvs.I, new dye($$9, 7));
-      qq.a($$0, y, dvs.I, new dye($$9, 7, 1.0F));
-      qq.a($$0, z, dvs.I, new dye(List.of(dye.a($$2, dae.eN.o()), dye.a($$3, dae.td.o())), 9));
-      qq.a($$0, A, dvs.I, new dye(List.of(dye.a($$2, dae.fE.o()), dye.a($$3, dae.fF.o())), 3));
-      qq.a($$0, B, dvs.ae, new dye($$5, dae.pj.o(), 3, 1.0F));
-      qq.a($$0, C, dvs.ae, new dye($$5, dae.pj.o(), 2, 1.0F));
-      qq.a($$0, D, dvs.I, new dye($$10, 10));
-      qq.a($$0, E, dvs.I, new dye($$10, 20));
-      qq.a($$0, F, dvs.I, new dye($$1, dae.dR.o(), 33));
+   public static void a(px<egq> $$0) {
+      qd.a($$0);
+      qh.a($$0);
+      qg.a($$0);
+      pz.a($$0);
+      ql.a($$0);
    }
 }

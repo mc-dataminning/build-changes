@@ -1,64 +1,265 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record wm<S>(List<wm.a<S>> a) {
-   public static <S> wm<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<wm.a<S>> $$4 = a($$1, $$2);
+public class wm {
+   public static final Codec<wm> a = Codec.either(wm.e.a.codec(), wm.e.b.codec())
+      .xmap($$0 -> new wm((wm.e<?>)$$0.map($$0x -> $$0x, $$0x -> $$0x)), $$0 -> Either.left($$0.b));
+   private final wm.e<?> b;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new wm<>($$4);
+   public <T> wm(wm.a<T> $$0, T $$1) {
+      this(new wm.e<>($$0, $$1));
    }
 
-   private static <S> List<wm.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<wm.a<S>> $$2 = new ArrayList<>();
+   private wm(wm.e<?> $$0) {
+      this.b = $$0;
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fa) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new wm.a<>($$4, $$6));
-               }
+   public wm.a<?> a() {
+      return this.b.c;
+   }
+
+   @Nullable
+   public <T> T a(wm.a<T> $$0) {
+      return this.b.c == $$0 ? $$0.a(this.b.d) : null;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? ((wm)$$0).b.equals(this.b) : false;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> implements aye {
+      public static final wm.a<wg> a = new wm.a<>("show_text", true, wi.a, ($$0, $$1) -> DataResult.success($$0));
+      public static final wm.a<wm.c> b = new wm.a<>("show_item", true, wm.c.b, wm.c::a);
+      public static final wm.a<wm.b> c = new wm.a<>("show_entity", true, wm.b.a, wm.b::a);
+      public static final Codec<wm.a<?>> d = aye.b(() -> new wm.a[]{a, b, c});
+      public static final Codec<wm.a<?>> e = aws.b(d, wm.a::a);
+      private final String f;
+      private final boolean g;
+      final Codec<wm.e<T>> h;
+      final Codec<wm.e<T>> i;
+
+      public a(String $$0, boolean $$1, Codec<T> $$2, final wm.d<T> $$3) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2.xmap($$0x -> new wm.e<>(this, (T)$$0x), $$0x -> $$0x.d).fieldOf("contents").codec();
+         this.i = new Codec<wm.e<T>>() {
+            public <D> DataResult<Pair<wm.e<T>, D>> decode(DynamicOps<D> $$0, D $$1) {
+               return wi.a.decode($$0, $$1).flatMap($$2 -> {
+                  DataResult<T> $$4;
+                  if ($$0 instanceof ajr<D> $$3xx) {
+                     $$4 = $$3.parse((wg)$$2.getFirst(), $$3xx);
+                  } else {
+                     $$4 = $$3.parse((wg)$$2.getFirst(), null);
+                  }
+
+                  return $$4.map($$1xx -> Pair.of(new wm.e<>(a.this, $$1xx), $$2.getSecond()));
+               });
             }
+
+            public <D> DataResult<D> a(wm.e<T> $$0, DynamicOps<D> $$1, D $$2) {
+               return DataResult.error(() -> "Can't encode in legacy format");
+            }
+         };
+      }
+
+      public boolean a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+
+      T a(Object $$0) {
+         return (T)$$0;
+      }
+
+      @Override
+      public String toString() {
+         return "<action " + this.f + ">";
+      }
+
+      private static DataResult<wm.a<?>> a(@Nullable wm.a<?> $$0) {
+         if ($$0 == null) {
+            return DataResult.error(() -> "Unknown action");
+         } else {
+            return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+         }
+      }
+   }
+
+   public static class b {
+      public static final Codec<wm.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kr.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                  jf.f.fieldOf("id").forGetter($$0x -> $$0x.c),
+                  aws.a(wi.a, "name").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, wm.b::new)
+      );
+      public final bqb<?> b;
+      public final UUID c;
+      public final Optional<wg> d;
+      @Nullable
+      private List<wg> e;
+
+      public b(bqb<?> $$0, UUID $$1, @Nullable wg $$2) {
+         this($$0, $$1, Optional.ofNullable($$2));
+      }
+
+      public b(bqb<?> $$0, UUID $$1, Optional<wg> $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public static DataResult<wm.b> a(wg $$0, @Nullable ajr<?> $$1) {
+         try {
+            tm $$2 = uk.a($$0.getString());
+            DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+            DataResult<wg> $$4 = wi.a.parse($$3, JsonParser.parseString($$2.l("name")));
+            bqb<?> $$5 = kr.g.a(new ajt($$2.l("type")));
+            UUID $$6 = UUID.fromString($$2.l("id"));
+            return $$4.map($$2x -> new wm.b($$5, $$6, $$2x));
+         } catch (Exception var7) {
+            return DataResult.error(() -> "Failed to parse tooltip: " + var7.getMessage());
          }
       }
 
-      return $$2;
+      public List<wg> a() {
+         if (this.e == null) {
+            this.e = new ArrayList<>();
+            this.d.ifPresent(this.e::add);
+            this.e.add(wg.a("gui.entity_tooltip.type", this.b.h()));
+            this.e.add(wg.b(this.c.toString()));
+         }
+
+         return this.e;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            wm.b $$1 = (wm.b)$$0;
+            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.b.hashCode();
+         $$0 = 31 * $$0 + this.c.hashCode();
+         return 31 * $$0 + this.d.hashCode();
+      }
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public static class c {
+      public static final Codec<wm.c> a = crj.a.xmap(wm.c::new, wm.c::a);
+      private static final Codec<wm.c> c = crj.c.xmap(wm.c::new, wm.c::a);
+      public static final Codec<wm.c> b = aws.e(a, c);
+      private final il<cre> d;
+      private final int e;
+      private final jm f;
+      @Nullable
+      private crj g;
+
+      c(il<cre> $$0, int $$1, jm $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      public c(crj $$0) {
+         this($$0.g(), $$0.G(), $$0.c());
       }
 
-      public String c() {
-         return this.b;
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            wm.c $$1 = (wm.c)$$0;
+            return this.e == $$1.e && this.d.equals($$1.d) && this.f.equals($$1.f);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.d.hashCode();
+         $$0 = 31 * $$0 + this.e;
+         return 31 * $$0 + this.f.hashCode();
+      }
+
+      public crj a() {
+         if (this.g == null) {
+            this.g = new crj(this.d, this.e, this.f);
+         }
+
+         return this.g;
+      }
+
+      private static DataResult<wm.c> a(wg $$0, @Nullable ajr<?> $$1) {
+         try {
+            tm $$2 = uk.a($$0.getString());
+            DynamicOps<uj> $$3 = (DynamicOps<uj>)($$1 != null ? $$1.a(ua.a) : ua.a);
+            return crj.a.parse($$3, $$2).map(wm.c::new);
+         } catch (CommandSyntaxException var4) {
+            return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
+         }
+      }
+   }
+
+   public interface d<T> {
+      DataResult<T> parse(wg var1, @Nullable ajr<?> var2);
+   }
+
+   static record e<T>(wm.a<T> c, T d) {
+      public static final MapCodec<wm.e<?>> a = wm.a.e.dispatchMap("action", wm.e::a, $$0 -> $$0.h);
+      public static final MapCodec<wm.e<?>> b = wm.a.e.dispatchMap("action", wm.e::a, $$0 -> $$0.i);
+
+      public wm.a<T> a() {
+         return this.c;
+      }
+
+      public T b() {
+         return this.d;
       }
    }
 }

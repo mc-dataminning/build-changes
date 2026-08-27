@@ -1,234 +1,77 @@
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Base64.Encoder;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class avu {
-   private static final String h = "AES";
-   private static final int i = 128;
-   private static final String j = "RSA";
-   private static final int k = 1024;
-   private static final String l = "ISO_8859_1";
-   private static final String m = "SHA-1";
-   public static final String a = "SHA256withRSA";
-   public static final int b = 256;
-   private static final String n = "-----BEGIN RSA PRIVATE KEY-----";
-   private static final String o = "-----END RSA PRIVATE KEY-----";
-   public static final String c = "-----BEGIN RSA PUBLIC KEY-----";
-   private static final String p = "-----END RSA PUBLIC KEY-----";
-   public static final String d = "\n";
-   public static final Encoder e = Base64.getMimeEncoder(76, "\n".getBytes(StandardCharsets.UTF_8));
-   public static final Codec<PublicKey> f = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(b($$0));
-      } catch (avv var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avu::a);
-   public static final Codec<PrivateKey> g = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(a($$0));
-      } catch (avv var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avu::a);
+   public static Map<ajs<? extends iy<?>>, avu.a> a(is<akc> $$0) {
+      return jc.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> ((avu.a)$$0x.getSecond()).a() > 0)
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   }
 
-   public static SecretKey a() throws avv {
-      try {
-         KeyGenerator $$0 = KeyGenerator.getInstance("AES");
-         $$0.init(128);
-         return $$0.generateKey();
-      } catch (Exception var1) {
-         throw new avv(var1);
+   private static <T> avu.a a(iy<T> $$0) {
+      Map<ajt, IntList> $$1 = new HashMap<>();
+      $$0.i().forEach($$2 -> {
+         ip<T> $$3 = (ip<T>)$$2.getSecond();
+         IntList $$4 = new IntArrayList($$3.b());
+
+         for (il<T> $$5 : $$3) {
+            if ($$5.f() != il.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
+            }
+
+            $$4.add($$0.a($$5.a()));
+         }
+
+         $$1.put(((avr)$$2.getFirst()).b(), $$4);
+      });
+      return new avu.a($$1);
+   }
+
+   static <T> void a(ajs<? extends iy<T>> $$0, iy<T> $$1, avu.a $$2, avu.b<T> $$3) {
+      $$2.a.forEach(($$3x, $$4) -> {
+         avr<T> $$5 = avr.a($$0, $$3x);
+         List<il<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.accept($$5, $$6);
+      });
+   }
+
+   public static final class a {
+      final Map<ajt, IntList> a;
+
+      a(Map<ajt, IntList> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(vg $$0) {
+         $$0.a(this.a, vg::a, vg::a);
+      }
+
+      public static avu.a b(vg $$0) {
+         return new avu.a($$0.a(vg::q, vg::a));
+      }
+
+      public int a() {
+         return this.a.size();
+      }
+
+      public <T> void a(iy<T> $$0) {
+         if (this.a() != 0) {
+            Map<avr<T>, List<il<T>>> $$1 = new HashMap<>(this.a());
+            avu.a($$0.c(), $$0, this, $$1::put);
+            $$0.a($$1);
+         }
       }
    }
 
-   public static KeyPair b() throws avv {
-      try {
-         KeyPairGenerator $$0 = KeyPairGenerator.getInstance("RSA");
-         $$0.initialize(1024);
-         return $$0.generateKeyPair();
-      } catch (Exception var1) {
-         throw new avv(var1);
-      }
-   }
-
-   public static byte[] a(String $$0, PublicKey $$1, SecretKey $$2) throws avv {
-      try {
-         return a($$0.getBytes("ISO_8859_1"), $$2.getEncoded(), $$1.getEncoded());
-      } catch (Exception var4) {
-         throw new avv(var4);
-      }
-   }
-
-   private static byte[] a(byte[]... $$0) throws Exception {
-      MessageDigest $$1 = MessageDigest.getInstance("SHA-1");
-
-      for (byte[] $$2 : $$0) {
-         $$1.update($$2);
-      }
-
-      return $$1.digest();
-   }
-
-   private static <T extends Key> T a(String $$0, String $$1, String $$2, avu.a<T> $$3) throws avv {
-      int $$4 = $$0.indexOf($$1);
-      if ($$4 != -1) {
-         $$4 += $$1.length();
-         int $$5 = $$0.indexOf($$2, $$4);
-         $$0 = $$0.substring($$4, $$5 + 1);
-      }
-
-      try {
-         return $$3.apply(Base64.getMimeDecoder().decode($$0));
-      } catch (IllegalArgumentException var6) {
-         throw new avv(var6);
-      }
-   }
-
-   public static PrivateKey a(String $$0) throws avv {
-      return a($$0, "-----BEGIN RSA PRIVATE KEY-----", "-----END RSA PRIVATE KEY-----", avu::b);
-   }
-
-   public static PublicKey b(String $$0) throws avv {
-      return a($$0, "-----BEGIN RSA PUBLIC KEY-----", "-----END RSA PUBLIC KEY-----", avu::a);
-   }
-
-   public static String a(PublicKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Public key must be RSA");
-      } else {
-         return "-----BEGIN RSA PUBLIC KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n";
-      }
-   }
-
-   public static String a(PrivateKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Private key must be RSA");
-      } else {
-         return "-----BEGIN RSA PRIVATE KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n";
-      }
-   }
-
-   private static PrivateKey b(byte[] $$0) throws avv {
-      try {
-         EncodedKeySpec $$1 = new PKCS8EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePrivate($$1);
-      } catch (Exception var3) {
-         throw new avv(var3);
-      }
-   }
-
-   public static PublicKey a(byte[] $$0) throws avv {
-      try {
-         EncodedKeySpec $$1 = new X509EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePublic($$1);
-      } catch (Exception var3) {
-         throw new avv(var3);
-      }
-   }
-
-   public static SecretKey a(PrivateKey $$0, byte[] $$1) throws avv {
-      byte[] $$2 = b($$0, $$1);
-
-      try {
-         return new SecretKeySpec($$2, "AES");
-      } catch (Exception var4) {
-         throw new avv(var4);
-      }
-   }
-
-   public static byte[] a(Key $$0, byte[] $$1) throws avv {
-      return a(1, $$0, $$1);
-   }
-
-   public static byte[] b(Key $$0, byte[] $$1) throws avv {
-      return a(2, $$0, $$1);
-   }
-
-   private static byte[] a(int $$0, Key $$1, byte[] $$2) throws avv {
-      try {
-         return a($$0, $$1.getAlgorithm(), $$1).doFinal($$2);
-      } catch (Exception var4) {
-         throw new avv(var4);
-      }
-   }
-
-   private static Cipher a(int $$0, String $$1, Key $$2) throws Exception {
-      Cipher $$3 = Cipher.getInstance($$1);
-      $$3.init($$0, $$2);
-      return $$3;
-   }
-
-   public static Cipher a(int $$0, Key $$1) throws avv {
-      try {
-         Cipher $$2 = Cipher.getInstance("AES/CFB8/NoPadding");
-         $$2.init($$0, $$1, new IvParameterSpec($$1.getEncoded()));
-         return $$2;
-      } catch (Exception var3) {
-         throw new avv(var3);
-      }
-   }
-
-   interface a<T extends Key> {
-      T apply(byte[] var1) throws avv;
-   }
-
-   public static record b(long b, byte[] c) {
-      public static final avu.b a = new avu.b(0L, ByteArrays.EMPTY_ARRAY);
-
-      public b(uu $$0) {
-         this($$0.readLong(), $$0.b());
-      }
-
-      public boolean a() {
-         return this.c.length > 0;
-      }
-
-      public static void a(uu $$0, avu.b $$1) {
-         $$0.b($$1.b);
-         $$0.a($$1.c);
-      }
-
-      public byte[] b() {
-         return Longs.toByteArray(this.b);
-      }
-
-      public long c() {
-         return this.b;
-      }
-
-      public byte[] d() {
-         return this.c;
-      }
-   }
-
-   public static class c {
-      private static final SecureRandom a = new SecureRandom();
-
-      public static long a() {
-         return a.nextLong();
-      }
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(avr<T> var1, List<il<T>> var2);
    }
 }

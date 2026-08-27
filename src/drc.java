@@ -1,63 +1,58 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class drc {
-   private Int2ObjectMap<box> a = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<box> b = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<box> c;
+public class drc<T> implements drl<T> {
+   private final iq<T> a;
 
-   private void a() {
-      if (this.c == this.a) {
-         this.b.clear();
-         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
-
-         while ($$1.hasNext()) {
-            Entry<box> $$0 = (Entry<box>)$$1.next();
-            this.b.put($$0.getIntKey(), (box)$$0.getValue());
-         }
-
-         Int2ObjectMap<box> $$1x = this.a;
-         this.a = this.b;
-         this.b = $$1x;
-      }
+   public drc(iq<T> $$0) {
+      this.a = $$0;
    }
 
-   public void a(box $$0) {
-      this.a();
-      this.a.put($$0.aj(), $$0);
+   public static <A> drl<A> a(int $$0, iq<A> $$1, drm<A> $$2, List<A> $$3) {
+      return new drc<>($$1);
    }
 
-   public void b(box $$0) {
-      this.a();
-      this.a.remove($$0.aj());
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
    }
 
-   public boolean c(box $$0) {
-      return this.a.containsKey($$0.aj());
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return true;
    }
 
-   public void a(Consumer<box> $$0) {
-      if (this.c != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new drk($$0);
       } else {
-         this.c = this.a;
-
-         try {
-            ObjectIterator var2 = this.a.values().iterator();
-
-            while (var2.hasNext()) {
-               box $$1 = (box)var2.next();
-               $$0.accept($$1);
-            }
-         } finally {
-            this.c = null;
-         }
+         return $$1;
       }
+   }
+
+   @Override
+   public void a(vg $$0) {
+   }
+
+   @Override
+   public void b(vg $$0) {
+   }
+
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int b() {
+      return this.a.b();
+   }
+
+   @Override
+   public drl<T> c() {
+      return this;
    }
 }

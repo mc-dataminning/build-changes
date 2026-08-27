@@ -8,14 +8,14 @@ public class dg extends cx<dg.a> {
       return dg.a.a;
    }
 
-   public void a(apg $$0, cic $$1, cqm $$2) {
-      ekw $$3 = br.b($$0, $$1);
+   public void a(apt $$0, cjb $$1, crj $$2) {
+      enb $$3 = br.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c, Optional<cc> d) implements cx.a {
       public static final Codec<dg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(dg.a::a), awe.a(br.b, "villager").forGetter(dg.a::c), awe.a(cc.a, "item").forGetter(dg.a::d))
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(dg.a::a), aws.a(br.b, "villager").forGetter(dg.a::c), aws.a(cc.a, "item").forGetter(dg.a::d))
                .apply($$0, dg.a::new)
       );
 
@@ -27,7 +27,7 @@ public class dg extends cx<dg.a> {
          return am.t.a(new dg.a(Optional.of(br.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(ekw $$0, cqm $$1) {
+      public boolean a(enb $$0, crj $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

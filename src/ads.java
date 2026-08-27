@@ -1,61 +1,45 @@
-public class ads implements yb<aam> {
-   public static final xs<uu, ads> a = yb.a(ads::a, ads::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+public class ads implements yn<aay> {
+   public static final ye<vg, ads> a = yn.a(ads::a, ads::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public ads(box $$0) {
-      this($$0.aj(), $$0.dp());
+   public ads(dqq $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   public ads(int $$0, ept $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = aww.a($$1.c, -3.9, 3.9);
-      double $$4 = aww.a($$1.d, -3.9, 3.9);
-      double $$5 = aww.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private ads(vg $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private ads(uu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<ads> a() {
-      return aex.aE;
+   public yp<ads> a() {
+      return afj.as;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public long f() {
       return this.d;
-   }
-
-   public int g() {
-      return this.e;
    }
 }

@@ -1,52 +1,32 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-public class bzo<T extends bpp> extends bzy<T> {
-   private final BiPredicate<T, bpp> a;
-   private final Predicate<T> c;
-   private final bys<Boolean> d;
-   private final int e;
+public enum bzo implements aye {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
 
-   public bzo(int $$0, BiPredicate<T, bpp> $$1, Predicate<T> $$2, bys<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<bzo> n = aye.a(bzo::values);
+
+   private bzo(String $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void a(apf $$0, T $$1) {
-      if (!this.c.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<bys<?>> a() {
-      return Set.of(bys.g);
-   }
-
-   public void a(T $$0) {
-      Optional<List<bpp>> $$1 = $$0.dP().c(bys.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public void b(T $$0) {
-      $$0.dP().a(this.d, true, (long)this.e);
-   }
-
-   public void c(T $$0) {
-      $$0.dP().b(this.d);
+   public String c() {
+      return this.i;
    }
 }

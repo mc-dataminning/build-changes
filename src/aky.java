@@ -1,216 +1,336 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
 public class aky {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vu.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vu.c("commands.debug.function.noReturnRun"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (wg)$$0);
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> wg.a("commands.advancement.criterionNotFound", $$0, $$1)
+   );
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> {
+      Collection<af> $$2 = ((du)$$0.getSource()).l().aE().b();
+      return dz.a($$2.stream().map(af::a), $$1);
+   };
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-               .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)dv.a("function").requires($$0x -> $$0x.c(3))).then(dv.a("name", fz.a()).suggests(alm.b).executes(new aky.a())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("advancement").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("grant")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                                       .then(
+                                          dv.a("only")
+                                             .then(
+                                                ((RequiredArgumentBuilder)dv.a("advancement", ev.a())
+                                                      .suggests(c)
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eh.f($$0x, "targets"),
+                                                               aky.a.a,
+                                                               a($$0x, ev.a($$0x, "advancement"), aky.b.a)
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      dv.a("criterion", StringArgumentType.greedyString())
+                                                         .suggests(($$0x, $$1) -> dz.b(ev.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (du)$$0x.getSource(),
+                                                                  eh.f($$0x, "targets"),
+                                                                  aky.a.a,
+                                                                  ev.a($$0x, "advancement"),
+                                                                  StringArgumentType.getString($$0x, "criterion")
+                                                               )
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("from")
+                                          .then(
+                                             dv.a("advancement", ev.a())
+                                                .suggests(c)
+                                                .executes(
+                                                   $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.a, a($$0x, ev.a($$0x, "advancement"), aky.b.c))
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("until")
+                                       .then(
+                                          dv.a("advancement", ev.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.a, a($$0x, ev.a($$0x, "advancement"), aky.b.d))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("through")
+                                    .then(
+                                       dv.a("advancement", ev.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.a, a($$0x, ev.a($$0x, "advancement"), aky.b.b))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.a, ((du)$$0x.getSource()).l().aE().b()))
+                           )
+                     )
+               ))
+            .then(
+               dv.a("revoke")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                                    .then(
+                                       dv.a("only")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dv.a("advancement", ev.a())
+                                                   .suggests(c)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.b, a($$0x, ev.a($$0x, "advancement"), aky.b.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dv.a("criterion", StringArgumentType.greedyString())
+                                                      .suggests(($$0x, $$1) -> dz.b(ev.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eh.f($$0x, "targets"),
+                                                               aky.a.b,
+                                                               ev.a($$0x, "advancement"),
+                                                               StringArgumentType.getString($$0x, "criterion")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("from")
+                                       .then(
+                                          dv.a("advancement", ev.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.b, a($$0x, ev.a($$0x, "advancement"), aky.b.c))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("until")
+                                    .then(
+                                       dv.a("advancement", ev.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.b, a($$0x, ev.a($$0x, "advancement"), aky.b.d))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              dv.a("through")
+                                 .then(
+                                    dv.a("advancement", ev.a())
+                                       .suggests(c)
+                                       .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.b, a($$0x, ev.a($$0x, "advancement"), aky.b.b)))
+                                 )
+                           ))
+                        .then(dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), aky.a.b, ((du)$$0x.getSource()).l().aE().b())))
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.bi()) {
-         throw c.create();
-      } else {
-         $$1.bj();
-         $$0.a(() -> vu.c("commands.debug.started"), true);
-         return 0;
-      }
-   }
+   private static int a(du $$0, Collection<apt> $$1, aky.a $$2, Collection<af> $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.bi()) {
-         throw b.create();
-      } else {
-         bjq $$2 = $$1.bk();
-         double $$3 = (double)$$2.g() / (double)axv.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> vu.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
+      for (apt $$5 : $$1) {
+         $$4 += $$2.a($$5, $$3);
       }
-   }
 
-   static class a extends gp.b<du> implements gp.a<du> {
-      public void a(du $$0, ContextChain<du> $$1, gn $$2, gt<du> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw aky.e.create();
-         } else if ($$3.a() != null) {
-            throw aky.d.create();
+      if ($$4 == 0) {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               throw a.create(wg.a($$2.a() + ".one.to.one.failure", ae.a($$3.iterator().next()), $$1.iterator().next().O_()));
+            } else {
+               throw a.create(wg.a($$2.a() + ".one.to.many.failure", ae.a($$3.iterator().next()), $$1.size()));
+            }
+         } else if ($$1.size() == 1) {
+            throw a.create(wg.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().O_()));
          } else {
-            CommandContext<du> $$4 = $$1.getTopContext();
-            Collection<hf<du>> $$5 = fz.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ac.e() + ".txt";
-            CommandDispatcher<du> $$8 = $$0.l().aF().a();
-            int $$9 = 0;
+            throw a.create(wg.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
+         }
+      } else {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wg.a($$2.a() + ".one.to.one.success", ae.a($$3.iterator().next()), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wg.a($$2.a() + ".one.to.many.success", ae.a($$3.iterator().next()), $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> wg.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wg.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
+         }
 
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               aky.b $$12 = new aky.b($$11);
-               $$3.a($$12);
+         return $$4;
+      }
+   }
 
-               for (final hf<du> $$13 : $$5) {
-                  try {
-                     du $$14 = $$0.a($$12).b(2);
-                     hh<du> $$15 = $$13.a(null, $$8);
-                     $$3.a((new gz<du>($$15, dr.a, false) {
-                        public void a(du $$0, gs<du> $$1, gu $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
-                        }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (dx var18) {
-                     $$0.b(var18.a());
-                  }
-               }
-            } catch (IOException | UncheckedIOException var19) {
-               aky.a.warn("Tracing failed", var19);
-               $$0.b(vu.c("commands.debug.function.traceFailed"));
+   private static int a(du $$0, Collection<apt> $$1, aky.a $$2, af $$3, String $$4) throws CommandSyntaxException {
+      int $$5 = 0;
+      ae $$6 = $$3.b();
+      if (!$$6.e().containsKey($$4)) {
+         throw b.create(ae.a($$3), $$4);
+      } else {
+         for (apt $$7 : $$1) {
+            if ($$2.a($$7, $$3, $$4)) {
+               $$5++;
+            }
+         }
+
+         if ($$5 == 0) {
+            if ($$1.size() == 1) {
+               throw a.create(wg.a($$2.a() + ".criterion.to.one.failure", $$4, ae.a($$3), $$1.iterator().next().O_()));
+            } else {
+               throw a.create(wg.a($$2.a() + ".criterion.to.many.failure", $$4, ae.a($$3), $$1.size()));
+            }
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wg.a($$2.a() + ".criterion.to.one.success", $$4, ae.a($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wg.a($$2.a() + ".criterion.to.many.success", $$4, ae.a($$3), $$1.size()), true);
             }
 
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> vu.a("commands.debug.function.success.single", $$18, vu.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> vu.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
-               }
-            });
+            return $$5;
          }
       }
    }
 
-   static class b implements dt, gv {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
-
-      b(PrintWriter $$0) {
-         this.c = $$0;
-      }
-
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
-      }
-
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
+   private static List<af> a(CommandContext<du> $$0, af $$1, aky.b $$2) {
+      ak $$3 = ((du)$$0.getSource()).l().aE().a();
+      ag $$4 = $$3.a($$1);
+      if ($$4 == null) {
+         return List.of($$1);
+      } else {
+         List<af> $$5 = new ArrayList<>();
+         if ($$2.f) {
+            for (ag $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
+               $$5.add($$6.b());
+            }
          }
-      }
 
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
+         $$5.add($$1);
+         if ($$2.g) {
+            a($$4, $$5);
          }
-      }
 
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
+         return $$5;
       }
+   }
 
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
+   private static void a(ag $$0, List<af> $$1) {
+      for (ag $$2 : $$0.e()) {
+         $$1.add($$2.b());
+         a($$2, $$1);
+      }
+   }
+
+   static enum a {
+      a("grant") {
+         @Override
+         protected boolean a(apt $$0, af $$1) {
+            ah $$2 = $$0.Q().b($$1);
+            if ($$2.a()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.e()) {
+                  $$0.Q().a($$1, $$3);
+               }
+
+               return true;
+            }
          }
+
+         @Override
+         protected boolean a(apt $$0, af $$1, String $$2) {
+            return $$0.Q().a($$1, $$2);
+         }
+      },
+      b("revoke") {
+         @Override
+         protected boolean a(apt $$0, af $$1) {
+            ah $$2 = $$0.Q().b($$1);
+            if (!$$2.b()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.f()) {
+                  $$0.Q().b($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(apt $$0, af $$1, String $$2) {
+            return $$0.Q().b($$1, $$2);
+         }
+      };
+
+      private final String c;
+
+      a(String $$0) {
+         this.c = "commands.advancement." + $$0;
       }
 
-      @Override
-      public void a(int $$0, ajh $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
+      public int a(apt $$0, Iterable<af> $$1) {
+         int $$2 = 0;
+
+         for (af $$3 : $$1) {
+            if (this.a($$0, $$3)) {
+               $$2++;
+            }
+         }
+
+         return $$2;
       }
 
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
-      }
+      protected abstract boolean a(apt var1, af var2);
 
-      @Override
-      public void a(vu $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
+      protected abstract boolean a(apt var1, af var2, String var3);
 
-      @Override
-      public boolean k_() {
-         return true;
+      protected String a() {
+         return this.c;
       }
+   }
 
-      @Override
-      public boolean w_() {
-         return true;
-      }
+   static enum b {
+      a(false, false),
+      b(true, true),
+      c(false, true),
+      d(true, false),
+      e(true, true);
 
-      @Override
-      public boolean U_() {
-         return false;
-      }
+      final boolean f;
+      final boolean g;
 
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+      private b(boolean $$0, boolean $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
    }
 }

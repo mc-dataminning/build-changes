@@ -1,127 +1,113 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class apc extends bmt {
-   private final Set<apg> h = Sets.newHashSet();
-   private final Set<apg> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
-
-   public apc(vu $$0, bmt.a $$1, bmt.b $$2) {
-      super(aww.a(), $$0, $$1, $$2);
+public interface apc<T> {
+   static <T> apc<T> a(T $$0) {
+      return new apc.b<>($$0);
    }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(aaw::b);
+   static <T> apc<T> a(String $$0) {
+      return a(() -> $$0);
+   }
+
+   static <T> apc<T> a(Supplier<String> $$0) {
+      return new apc.a<>($$0);
+   }
+
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(apc<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   apc<T> a(Consumer<T> var1);
+
+   <R> apc<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements apc<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public apc<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> apc<R> a(Function<T, R> $$0) {
+         return new apc.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   @Override
-   public void a(bmt.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(aaw::d);
-      }
-   }
-
-   @Override
-   public void a(bmt.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(aaw::d);
-      }
-   }
-
-   @Override
-   public bmt a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(aaw::e);
+   public static record b<T>(T a) implements apc<T> {
+      @Override
+      public boolean a() {
+         return true;
       }
 
-      return this;
-   }
-
-   @Override
-   public bmt b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(aaw::e);
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
       }
 
-      return this;
-   }
-
-   @Override
-   public bmt c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(aaw::e);
+      @Nullable
+      @Override
+      public String b() {
+         return null;
       }
 
-      return this;
-   }
-
-   @Override
-   public void a(vu $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(aaw::c);
+      @Override
+      public apc<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
       }
-   }
 
-   private void a(Function<bmt, aaw> $$0) {
-      if (this.j) {
-         aaw $$1 = $$0.apply(this);
-
-         for (apg $$2 : this.h) {
-            $$2.d.b($$1);
-         }
+      @Override
+      public <R> apc<R> a(Function<T, R> $$0) {
+         return new apc.b<>($$0.apply(this.a));
       }
-   }
 
-   public void a(apg $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.d.b(aaw.a(this));
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
       }
-   }
 
-   public void b(apg $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.d.b(aaw.a(this.i()));
+      public T c() {
+         return this.a;
       }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (apg $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (apg $$1 : this.h) {
-            $$1.d.b($$0 ? aaw.a(this) : aaw.a(this.i()));
-         }
-      }
-   }
-
-   public Collection<apg> h() {
-      return this.i;
    }
 }

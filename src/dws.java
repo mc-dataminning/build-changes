@@ -1,54 +1,32 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dws extends dvs<dyl> {
-   public dws(Codec<dyl> $$0) {
-      super($$0);
+public class dws extends dwp {
+   public static final Codec<dws> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dwp.d.forGetter($$0x -> $$0x),
+               bnd.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bnd.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bnd.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dws::new)
+   );
+   public final bnd b;
+   public final bnd c;
+   final bnd j;
+
+   public dws(float $$0, edo $$1, bnd $$2, dvl $$3, dwq $$4, ip<dby> $$5, bnd $$6, bnd $$7, bnd $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dvu<dyl> $$0) {
-      dyl $$1 = $$0.f();
-      cxw $$2 = $$0.b();
-      axd $$3 = $$0.d();
-      dac $$4 = $$1.b.b();
-      ib $$5 = a($$2, $$0.e().j().a(ih.a.b, $$2.I_() + 1, $$2.ak() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (ib $$11 : ib.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dnb $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
-      }
+   public dws(float $$0, edo $$1, bnd $$2, dvl $$3, ip<dby> $$4, bnd $$5, bnd $$6, bnd $$7) {
+      this($$0, $$1, $$2, $$3, dwq.a, $$4, $$5, $$6, $$7);
    }
 
-   @Nullable
-   private static ib a(cxc $$0, ib.a $$1, dac $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dnb $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(ih.a);
-      }
-
-      return null;
+   public dws(dwp $$0, bnd $$1, bnd $$2, bnd $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

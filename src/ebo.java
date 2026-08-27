@@ -1,50 +1,49 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
 
 public class ebo extends ebl {
    public static final Codec<ebo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dti.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dti.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, ebo::new)
+      $$0 -> b($$0).and(bnf.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ebo::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dti d;
-   private final dti e;
-   private final LongSet f = new LongOpenHashSet();
+   private final bnf b;
 
-   private ebo(dti $$0, dti $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static ebo a(dti $$0, dti $$1) {
-      return new ebo($$0, $$1);
+   public ebo(bnf $$0, bnf $$1, bnf $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public int a(axd $$0, dtl $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   protected ebm<?> a() {
+      return ebm.h;
+   }
+
+   @Override
+   protected void a(czd $$0, ebl.b $$1, axr $$2, eav $$3, int $$4, ebl.a $$5, int $$6, int $$7, int $$8) {
+      ib $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + axk.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
 
-         return $$2;
-      } else {
-         return aww.b($$0, $$2, $$3);
+         this.a($$0, $$1, $$2, $$3, new ib($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
    }
 
    @Override
-   public ebm<?> a() {
-      return ebm.b;
+   public int a(axr $$0, int $$1, eav $$2) {
+      return this.b.a($$0);
    }
 
    @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+   protected boolean a(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

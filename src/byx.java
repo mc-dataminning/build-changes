@@ -1,41 +1,16 @@
-public class byx extends bza {
-   public byx(bpr $$0, cxb $$1) {
+import javax.annotation.Nullable;
+
+public class byx extends byy {
+   public byx(bqw $$0, double $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected ejf a(int $$0) {
-      this.o = new eiy(false);
-      this.o.a(true);
-      return new ejf(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected ept b() {
-      return new ept(this.a.dr(), this.a.e(0.5), this.a.dx());
-   }
-
-   @Override
-   protected double a(ept $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(ept $$0, ept $$1) {
-      return this.a.bg() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(ib $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   protected esa h() {
+      esa $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      esa $$2 = cbk.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cbg.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

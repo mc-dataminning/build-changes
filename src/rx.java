@@ -1,9 +1,10 @@
-public interface rx {
-   void a(rw var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   void a(rw var1, rz var2);
-
-   void b(rw var1, rz var2);
-
-   void a(rw var1, rw var2, rz var3);
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface rx {
+   String a();
 }

@@ -1,25 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-public class elk extends elr {
-   public static final Codec<elk> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, elk::new));
+public class elk {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final elj[] d = new elj[4096];
 
-   private elk(int $$0, int $$1, List<env> $$2, List<emj> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public elj a(cyd $$0, ib $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      elj $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   @Override
-   public elq a() {
-      return eln.b;
+   @Nullable
+   private elj a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   @Override
-   public void a(Consumer<cqm> $$0, ekw $$1) {
+   private elj a(cyd $$0, ib $$1, int $$2, long $$3) {
+      elj $$4 = elo.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   public static elr.a<?> b() {
-      return a(elk::new);
+   public void a(ib $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
+      }
+   }
+
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

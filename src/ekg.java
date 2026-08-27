@@ -1,122 +1,321 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.util.Map;
-import java.util.function.BiFunction;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ekg {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, eju> b = Maps.newHashMap();
-   private final DataFixer c;
-   private final in.a d;
-   private final File e;
+public abstract class ekg<M extends ekd<M>> {
+   private final czg i;
+   protected final dri a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<dra> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   public ekg(File $$0, DataFixer $$1, in.a $$2) {
-      this.c = $$1;
-      this.e = $$0;
+   protected ekg(czg $$0, dri $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
       this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   private File a(String $$0) {
-      return new File(this.e, $$0 + ".dat");
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
-   public <T extends eju> T a(eju.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
+   @Nullable
+   protected dra a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
+   }
+
+   @Nullable
+   protected dra a(M $$0, long $$1) {
+      return $$0.c($$1);
+   }
+
+   @Nullable
+   protected dra c(long $$0) {
+      dra $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
       } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
-   }
-
-   @Nullable
-   public <T extends eju> T b(eju.a<T> $$0, String $$1) {
-      eju $$2 = this.b.get($$1);
-      if ($$2 == null && !this.b.containsKey($$1)) {
-         $$2 = this.a($$0.b(), $$0.c(), $$1);
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2;
-   }
-
-   @Nullable
-   private <T extends eju> T a(BiFunction<ta, in.a, T> $$0, ayc $$1, String $$2) {
-      try {
-         File $$3 = this.a($$2);
-         if ($$3.exists()) {
-            ta $$4 = this.a($$2, $$1, aa.b().d().c());
-            return $$0.apply($$4.p("data"), this.d);
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
          }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
+
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public dra d(long $$0) {
+      dra $$1 = (dra)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
+   }
+
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = je.e($$0);
+      dra $$2 = this.a($$1, true);
+      return $$2.a(je.b(ib.a($$0)), je.b(ib.b($$0)), je.b(ib.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = je.e($$0);
+      dra $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
       }
 
-      return null;
+      $$3.a(je.b(ib.a($$0)), je.b(ib.b($$0)), je.b(ib.c($$0)), $$1);
+      je.a($$0, this.f::add);
    }
 
-   public void a(String $$0, eju $$1) {
-      this.b.put($$0, $$1);
+   protected void f(long $$0) {
+      int $$1 = je.b($$0);
+      int $$2 = je.c($$0);
+      int $$3 = je.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(je.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
+            }
+         }
+      }
    }
 
-   public ta a(String $$0, ayc $$1, int $$2) throws IOException {
-      File $$3 = this.a($$0);
+   protected dra g(long $$0) {
+      dra $$1 = (dra)this.g.get($$0);
+      return $$1 != null ? $$1 : new dra();
+   }
 
-      ta var9;
-      try (
-         InputStream $$4 = new FileInputStream($$3);
-         PushbackInputStream $$5 = new PushbackInputStream(new awf($$4), 2);
-      ) {
-         ta $$6;
-         if (this.a($$5)) {
-            $$6 = tn.a($$5, tj.a());
-         } else {
-            try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = tn.a($$7);
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(ekj<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            dra $$2 = (dra)this.g.remove($$1);
+            dra $$3 = this.d.d($$1);
+            if (this.k.contains(je.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
             }
          }
 
-         int $$10 = tp.b($$6, 1343);
-         var9 = $$1.a(this.c, $$6, $$10, $$2);
-      }
+         this.d.c();
+         $$5 = this.l.iterator();
 
-      return var9;
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<dra>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<dra> $$6 = (Entry<dra>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               dra $$8 = (dra)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
    }
 
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
+   protected void h(long $$0) {
+   }
+
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
+
+   protected boolean j(long $$0) {
+      long $$1 = je.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable dra $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = ekg.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = je.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, ekg.a.a($$9, ekg.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, je.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public ekg.b k(long $$0) {
+      return ekg.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
          }
       }
 
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
       }
 
-      return $$2;
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static ekg.b c(byte $$0) {
+         if ($$0 == 0) {
+            return ekg.b.a;
+         } else {
+            return a($$0) ? ekg.b.c : ekg.b.b;
+         }
+      }
    }
 
-   public void a() {
-      this.b.forEach(($$0, $$1) -> {
-         if ($$1 != null) {
-            $$1.a(this.a($$0), this.d);
-         }
-      });
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
    }
 }

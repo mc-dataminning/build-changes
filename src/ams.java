@@ -1,92 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
 public class ams {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().bc().I().s().a(), $$1);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("commands.publish.alreadyPublished", $$0));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dv.a("function")
-                     .then(
-                        dv.a("function", fz.a())
-                           .suggests(alm.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", fh.a())
-                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       dv.a("append")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("replace")
-                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((du)$$0x.getSource(), axb.a(), false, null)))
             .then(
-               dv.a("clear")
+               ((RequiredArgumentBuilder)dv.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((du)$$0x.getSource(), axb.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
-                     dv.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                     ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
+                           .executes($$0x -> a((du)$$0x.getSource(), axb.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ei.a($$0x, "gamemode"))))
+                        .then(
+                           dv.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (du)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       ei.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(du $$0, Pair<ajh, Either<hf<du>, Collection<hf<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
+   private static int a(du $$0, int $$1, boolean $$2, @Nullable cyu $$3) throws CommandSyntaxException {
+      if ($$0.l().r()) {
+         throw b.create($$0.l().R());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
          throw a.create();
       } else {
-         long $$4 = $$0.e().X() + (long)$$2;
-         ajh $$5 = (ajh)$$1.getFirst();
-         epg<MinecraftServer> $$6 = $$0.l().bc().I().s();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new epc($$5));
-            $$0.a(() -> vu.a("commands.schedule.created.function", vu.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new epd($$5));
-            $$0.a(() -> vu.a("commands.schedule.created.tag", vu.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         $$0.a(() -> a($$1), true);
+         return $$1;
       }
    }
 
-   private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().bc().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> vu.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
-      }
+   public static wu a(int $$0) {
+      wg $$1 = wj.a(String.valueOf($$0));
+      return wg.a("commands.publish.started", $$1);
    }
 }

@@ -1,118 +1,64 @@
-public class fgq extends fgz {
-   private static final vu c = vu.c("options.languageAccuracyWarning").a(n.h);
-   private fgq.a k;
-   final gkj l;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-   public fgq(fhh $$0, ezm $$1, gkj $$2) {
-      super($$0, $$1, vu.c("options.language.title"));
-      this.l = $$2;
-   }
+public class fgq {
+   private static long a = 0L;
 
-   @Override
-   protected void aO_() {
-      this.k = this.c(new fgq.a(this.f));
-      this.c(fbi.a(vu.c("options.font"), $$0 -> this.f.a(new fgm(this, this.b))).a(this.g / 2 - 155, this.h - 38, 150, 20).a());
-      this.c(fbi.a(vt.d, $$0 -> this.o()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
-   }
+   public static long a() {
+      if (a == 0L) {
+         MemoryStack $$0 = MemoryStack.stackPush();
 
-   void o() {
-      fgq.a.a $$0 = this.k.i();
-      if ($$0 != null && !$$0.b.equals(this.l.a())) {
-         this.l.a($$0.b);
-         this.b.ad = $$0.b;
-         this.f.l();
-         this.b.at();
-      }
-
-      this.f.a(this.a);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (ffj.a($$0)) {
-         fgq.a.a $$3 = this.k.i();
-         if ($$3 != null) {
-            $$3.b();
-            this.o();
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
-   }
-
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   class a extends fce<fgq.a.a> {
-      public a(ezi $$0) {
-         super($$0, fgq.this.g, fgq.this.h - 93, 32, 18);
-         String $$1 = fgq.this.l.a();
-         fgq.this.l.b().forEach(($$1x, $$2) -> {
-            fgq.a.a $$3 = new fgq.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.i() != null) {
-            this.e(this.i());
-         }
-      }
-
-      @Override
-      protected int c() {
-         return super.c() + 20;
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends fce.a<fgq.a.a> {
-         final String b;
-         private final vu c;
-         private long d;
-
-         public a(String $$1, gki $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fav $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fgq.this.i, this.c, a.this.g / 2, $$2 + 1, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fgq.this.o();
+         try {
+            PointerBuffer $$1 = $$0.mallocPointer(1);
+            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+            a = $$1.get();
+         } catch (Throwable var4) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var3) {
+                  var4.addSuppressed(var3);
+               }
             }
 
-            this.d = ac.b();
-            return true;
+            throw var4;
          }
 
-         void b() {
-            a.this.a(this);
+         if ($$0 != null) {
+            $$0.close();
          }
+      }
 
-         @Override
-         public vu a() {
-            return vu.a("narrator.select", this.c);
-         }
+      return a;
+   }
+
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
+   }
+
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      if (a != 0L) {
+         FreeType.FT_Done_Library(a);
+         a = 0L;
       }
    }
 }

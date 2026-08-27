@@ -1,31 +1,13 @@
-public class gen extends geh<cbu, fpf> {
-   private static final ajh a = new ajh("textures/entity/parrot/parrot_red_blue.png");
-   private static final ajh i = new ajh("textures/entity/parrot/parrot_blue.png");
-   private static final ajh j = new ajh("textures/entity/parrot/parrot_green.png");
-   private static final ajh k = new ajh("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ajh l = new ajh("textures/entity/parrot/parrot_grey.png");
+public class gen extends ghj<cgj> {
+   private static final ajt a = new ajt("textures/entity/skeleton/bogged.png");
+   private static final ajt i = new ajt("textures/entity/skeleton/bogged_overlay.png");
 
-   public gen(gdb.a $$0) {
-      super($$0, new fpf($$0.a(fre.aG)), 0.3F);
+   public gen(gfi.a $$0) {
+      super($$0, ftl.o, ftl.p, new fpt($$0.a(ftl.n)));
+      this.a(new gjx<>(this, $$0.f(), ftl.q, i));
    }
 
-   public ajh a(cbu $$0) {
-      return a($$0.gv());
-   }
-
-   public static ajh a(cbu.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(cbu $$0, float $$1) {
-      float $$2 = aww.i($$1, $$0.cd, $$0.ca);
-      float $$3 = aww.i($$1, $$0.cc, $$0.cb);
-      return (aww.a($$2) + 1.0F) * $$3;
+   public ajt a(cgj $$0) {
+      return a;
    }
 }

@@ -1,29 +1,29 @@
-public class yw implements yb<ys> {
-   public static final xs<uu, yw> a = yb.a(yw::a, yw::new);
-   private final int b;
+public class yw implements yn<yt> {
+   public static final ye<vg, yw> a = yn.a(yw::a, yw::new);
+   private final long b;
 
-   public yw(int $$0) {
+   public yw(long $$0) {
       this.b = $$0;
    }
 
-   private yw(uu $$0) {
-      this.b = $$0.readInt();
+   private yw(vg $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(uu $$0) {
-      $$0.p(this.b);
+   private void a(vg $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public yd<yw> a() {
-      return yr.m;
+   public yp<yw> a() {
+      return zd.c;
    }
 
-   public void a(ys $$0) {
+   public void a(yt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

@@ -1,121 +1,79 @@
 import com.google.common.collect.ImmutableList;
 
-public class fqw<T extends cch> extends fnv<T> {
-   private static final String a = "real_head";
-   private static final String b = "upper_body";
-   private static final String f = "real_tail";
-   private final frf g;
-   private final frf h;
-   private final frf i;
-   private final frf j;
-   private final frf k;
-   private final frf l;
-   private final frf m;
-   private final frf n;
-   private final frf o;
-   private final frf p;
-   private static final int q = 8;
+public class fqw<T extends bqq & cif> extends fph<T> {
+   private static final float a = 0.87266463F;
+   private static final float b = (float) (-Math.PI / 9);
+   private final ftm f;
+   private final ftm g;
+   private final ftm h;
+   private final ftm i;
+   private final ftm j;
+   private final ftm k;
+   private final ftm l;
+   private final ftm m;
+   private final ftm n;
 
-   public fqw(frf $$0) {
-      this.g = $$0.b("head");
-      this.h = this.g.b("real_head");
+   public fqw(ftm $$0) {
+      super(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F);
       this.i = $$0.b("body");
-      this.p = $$0.b("upper_body");
-      this.j = $$0.b("right_hind_leg");
-      this.k = $$0.b("left_hind_leg");
-      this.l = $$0.b("right_front_leg");
-      this.m = $$0.b("left_front_leg");
-      this.n = $$0.b("tail");
-      this.o = this.n.b("real_tail");
+      this.n = this.i.b("mane");
+      this.f = $$0.b("head");
+      this.g = this.f.b("right_ear");
+      this.h = this.f.b("left_ear");
+      this.j = $$0.b("right_front_leg");
+      this.k = $$0.b("left_front_leg");
+      this.l = $$0.b("right_hind_leg");
+      this.m = $$0.b("left_hind_leg");
    }
 
-   public static frn a(frj $$0) {
-      frn $$1 = new frn();
-      fro $$2 = $$1.a();
-      float $$3 = 13.5F;
-      fro $$4 = $$2.a("head", frk.c(), frh.a(-1.0F, 13.5F, -7.0F));
-      $$4.a(
-         "real_head",
-         frk.c()
-            .a(0, 0)
-            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
-            .a(16, 14)
-            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(16, 14)
-            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(0, 10)
-            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
-         frh.a
-      );
-      $$2.a("body", frk.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), frh.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("upper_body", frk.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), frh.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      frk $$5 = frk.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
-      $$2.a("right_hind_leg", $$5, frh.a(-2.5F, 16.0F, 7.0F));
-      $$2.a("left_hind_leg", $$5, frh.a(0.5F, 16.0F, 7.0F));
-      $$2.a("right_front_leg", $$5, frh.a(-2.5F, 16.0F, -4.0F));
-      $$2.a("left_front_leg", $$5, frh.a(0.5F, 16.0F, -4.0F));
-      fro $$6 = $$2.a("tail", frk.c(), frh.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
-      $$6.a("real_tail", frk.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), frh.a);
-      return $$1;
+   public static fts c() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      ftv $$2 = $$1.a("body", ftr.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), fto.a(0.0F, 7.0F, 0.0F));
+      $$2.a("mane", ftr.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new ftq(0.001F)), fto.a(0.0F, -14.0F, -5.0F));
+      ftv $$3 = $$1.a("head", ftr.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), fto.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
+      $$3.a("right_ear", ftr.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fto.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
+      $$3.a("left_ear", ftr.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fto.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
+      $$3.a("right_horn", ftr.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fto.a(-7.0F, 2.0F, -12.0F));
+      $$3.a("left_horn", ftr.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fto.a(7.0F, 2.0F, -12.0F));
+      int $$4 = 14;
+      int $$5 = 11;
+      $$1.a("right_front_leg", ftr.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fto.a(-4.0F, 10.0F, -8.5F));
+      $$1.a("left_front_leg", ftr.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fto.a(4.0F, 10.0F, -8.5F));
+      $$1.a("right_hind_leg", ftr.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fto.a(-5.0F, 13.0F, 10.0F));
+      $$1.a("left_hind_leg", ftr.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fto.a(5.0F, 13.0F, 10.0F));
+      return fts.a($$0, 128, 64);
    }
 
    @Override
-   protected Iterable<frf> a() {
-      return ImmutableList.of(this.g);
+   protected Iterable<ftm> a() {
+      return ImmutableList.of(this.f);
    }
 
    @Override
-   protected Iterable<frf> b() {
-      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m, this.n, this.p);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      if ($$0.Y_()) {
-         this.n.f = 0.0F;
-      } else {
-         this.n.f = aww.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
-
-      if ($$0.y()) {
-         this.p.a(-1.0F, 16.0F, -3.0F);
-         this.p.e = (float) (Math.PI * 2.0 / 5.0);
-         this.p.f = 0.0F;
-         this.i.a(0.0F, 18.0F, 0.0F);
-         this.i.e = (float) (Math.PI / 4);
-         this.n.a(-1.0F, 21.0F, 6.0F);
-         this.j.a(-2.5F, 22.7F, 2.0F);
-         this.j.e = (float) (Math.PI * 3.0 / 2.0);
-         this.k.a(0.5F, 22.7F, 2.0F);
-         this.k.e = (float) (Math.PI * 3.0 / 2.0);
-         this.l.e = 5.811947F;
-         this.l.a(-2.49F, 17.0F, -4.0F);
-         this.m.e = 5.811947F;
-         this.m.a(0.51F, 17.0F, -4.0F);
-      } else {
-         this.i.a(0.0F, 14.0F, 2.0F);
-         this.i.e = (float) (Math.PI / 2);
-         this.p.a(-1.0F, 14.0F, -3.0F);
-         this.p.e = this.i.e;
-         this.n.a(-1.0F, 12.0F, 8.0F);
-         this.j.a(-2.5F, 16.0F, 7.0F);
-         this.k.a(0.5F, 16.0F, 7.0F);
-         this.l.a(-2.5F, 16.0F, -4.0F);
-         this.m.a(0.5F, 16.0F, -4.0F);
-         this.j.e = aww.b($$1 * 0.6662F) * 1.4F * $$2;
-         this.k.e = aww.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.l.e = aww.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.m.e = aww.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
-
-      this.h.g = $$0.H($$3) + $$0.f($$3, 0.0F);
-      this.p.g = $$0.f($$3, -0.08F);
-      this.i.g = $$0.f($$3, -0.16F);
-      this.o.g = $$0.f($$3, -0.2F);
+   protected Iterable<ftm> b() {
+      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.n.e = $$3;
+      this.g.g = (float) (-Math.PI * 2.0 / 9.0) - $$2 * axk.a($$1);
+      this.h.g = (float) (Math.PI * 2.0 / 9.0) + $$2 * axk.a($$1);
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      int $$6 = $$0.gn();
+      float $$7 = 1.0F - (float)axk.a(10 - 2 * $$6) / 10.0F;
+      this.f.e = axk.i($$7, 0.87266463F, (float) (-Math.PI / 9));
+      if ($$0.p_()) {
+         this.f.c = axk.i($$7, 2.0F, 5.0F);
+         this.n.d = -3.0F;
+      } else {
+         this.f.c = 2.0F;
+         this.n.d = -7.0F;
+      }
+
+      float $$8 = 1.2F;
+      this.j.e = axk.b($$1) * 1.2F * $$2;
+      this.k.e = axk.b($$1 + (float) Math.PI) * 1.2F * $$2;
+      this.l.e = this.k.e;
+      this.m.e = this.j.e;
    }
 }

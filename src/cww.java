@@ -1,34 +1,52 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-
-public class cww extends eju {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static eju.a<cww> a() {
-      return new eju.a<>(cww::new, cww::b, ayc.i);
-   }
-
-   private cww(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cww() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cww b(ta $$0, in.a $$1) {
-      return new cww(new LongOpenHashSet($$0.o("Forced")));
+public class cww extends cwq {
+   public cww(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bb, $$1);
    }
 
    @Override
-   public ta a(ta $$0, in.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public int a() {
+      return 2;
+   }
+
+   public static void a(bqo $$0, cyx $$1, ib $$2, int $$3) {
+      if ($$0.aC()) {
+         doz $$4 = dca.kI.n();
+         int $$5 = Math.min(16, 2 + $$3);
+         ib.a $$6 = new ib.a();
+
+         for (ib $$7 : ib.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
+            if ($$7.a($$0.dk(), (double)$$5)) {
+               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
+               doz $$8 = $$1.a_($$6);
+               if ($$8.i()) {
+                  doz $$9 = $$1.a_($$7);
+                  if ($$9 == dfd.b() && $$4.a((cza)$$1, $$7) && $$1.a($$4, $$7, esf.a())) {
+                     $$1.b($$7, $$4);
+                     $$1.a($$7, dca.kI, axk.a($$0.ei(), 60, 120));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean a(cwq $$0) {
+      return super.a($$0) && $$0 != cwt.i;
    }
 }

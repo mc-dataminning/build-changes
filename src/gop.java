@@ -1,49 +1,48 @@
-import javax.annotation.Nullable;
+public class gop extends gof {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final clo s;
+   private float t = 0.0F;
 
-public class gop {
-   private final gow a;
-   private final ezm b;
-   @Nullable
-   private fdt c;
-
-   public gop(gow $$0, ezm $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gop(clo $$0) {
+      super(aum.ov, aun.g, gow.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dr());
+      this.g = (double)((float)$$0.dt());
+      this.h = (double)((float)$$0.dx());
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      vu $$0 = vu.c("tutorial.bundleInsert.title");
-      vu $$1 = vu.c("tutorial.bundleInsert.description");
-      this.c = new fdt(fdt.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
+   @Override
+   public boolean s() {
+      return !this.s.aU();
    }
 
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.at();
-      }
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public void a(cqm $$0, cqm $$1, cly $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cqp.qT)) {
-            if ($$2 == cly.a) {
-               this.a();
-            } else if ($$2 == cly.b) {
-               this.b();
-            }
-         } else if ($$0.a(cqp.qT) && !$$1.b() && $$2 == cly.b) {
-            this.b();
+   @Override
+   public void q() {
+      if (this.s.dH()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dr());
+         this.g = (double)((float)this.s.dt());
+         this.h = (double)((float)this.s.dx());
+         float $$0 = (float)this.s.dp().h();
+         if ($$0 >= 0.01F && this.s.dM().s().i()) {
+            this.t = axk.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = axk.i(axk.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
    }

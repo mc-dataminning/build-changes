@@ -1,203 +1,202 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+
 public class qk {
-   public static cya a(im<eci> $$0, im<dur<?>> $$1) {
-      cym $$2 = new cym.a()
-         .a(bps.a, new cym.c(bpd.U, 50, 4, 4))
-         .a(bps.a, new cym.c(bpd.bx, 100, 4, 4))
-         .a(bps.a, new cym.c(bpd.ap, 2, 4, 4))
-         .a(bps.a, new cym.c(bpd.I, 1, 4, 4))
-         .a(bps.a, new cym.c(bpd.aA, 15, 4, 4))
-         .a(bps.b, new cym.c(bpd.aZ, 60, 1, 2))
-         .a();
-      cyb.a $$3 = new cyb.a($$0, $$1).a(dsk.a.a, pm.d).a(dsk.b.j, rc.p);
-      pk.ac($$3);
-      $$3.a(dsk.b.h, rd.r)
-         .a(dsk.b.h, rd.t)
-         .a(dsk.b.h, rd.s)
-         .a(dsk.b.h, rd.f)
-         .a(dsk.b.h, rd.g)
-         .a(dsk.b.h, rh.F)
-         .a(dsk.b.h, rh.G)
-         .a(dsk.b.h, re.a)
-         .a(dsk.b.h, rd.p);
-      pk.au($$3);
-      return new cya.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new cyg.a().b(4159204).c(329011).a(3344392).d(ql.a(2.0F)).a(aty.p).a(new cxy(aty.q, 6000, 8, 2.0)).a(new cxx(aty.o, 0.0111)).a(atw.a(aty.pR)).a())
-         .a($$2)
-         .a($$3.a())
-         .a();
+   private static final dvi.o a = a(dca.a);
+   private static final dvi.o b = a(dca.F);
+   private static final dvi.o c = a(dca.hj);
+   private static final dvi.o d = a(dca.hk);
+   private static final dvi.o e = a(dca.iA);
+   private static final dvi.o f = a(dca.K);
+   private static final dvi.o g = a(dca.jp);
+   private static final dvi.o h = a(dca.b);
+   private static final dvi.o i = a(dca.sJ);
+   private static final dvi.o j = a(dca.j);
+   private static final dvi.o k = a(dca.l);
+   private static final dvi.o l = a(dca.k);
+   private static final dvi.o m = a(dca.fl);
+   private static final dvi.o n = a(dca.i);
+   private static final dvi.o o = a(dca.qN);
+   private static final dvi.o p = a(dca.L);
+   private static final dvi.o q = a(dca.I);
+   private static final dvi.o r = a(dca.aV);
+   private static final dvi.o s = a(dca.iC);
+   private static final dvi.o t = a(dca.dP);
+   private static final dvi.o u = a(dca.sI);
+   private static final dvi.o v = a(dca.qP);
+   private static final dvi.o w = a(dca.dO);
+   private static final dvi.o x = a(dca.G);
+   private static final dvi.o y = a(dca.H);
+   private static final dvi.o z = a(dca.dV);
+   private static final dvi.o A = a(dca.dW);
+   private static final dvi.o B = a(dca.dX);
+   private static final dvi.o C = a(dca.dY);
+   private static final dvi.o D = a(dca.pr);
+   private static final dvi.o E = a(dca.op);
+   private static final dvi.o F = a(dca.on);
+   private static final dvi.o G = a(dca.kK);
+   private static final dvi.o H = a(dca.ow);
+   private static final dvi.o I = a(dca.fz);
+
+   private static dvi.o a(dby $$0) {
+      return dvi.a($$0.n());
    }
 
-   public static cya b(im<eci> $$0, im<dur<?>> $$1) {
-      double $$2 = 0.7;
-      double $$3 = 0.15;
-      cym $$4 = new cym.a()
-         .a(bps.a, new cym.c(bpd.aN, 20, 5, 5))
-         .a(bps.a, new cym.c(bpd.U, 50, 4, 4))
-         .a(bps.a, new cym.c(bpd.I, 1, 4, 4))
-         .a(bps.b, new cym.c(bpd.aZ, 60, 1, 2))
-         .a(bpd.aN, 0.7, 0.15)
-         .a(bpd.U, 0.7, 0.15)
-         .a(bpd.I, 0.7, 0.15)
-         .a(bpd.aZ, 0.7, 0.15)
-         .a();
-      cyb.a $$5 = new cyb.a($$0, $$1)
-         .a(dsk.a.a, pm.d)
-         .a(dsk.b.j, rc.p)
-         .a(dsk.b.c, rd.n)
-         .a(dsk.b.h, rd.r)
-         .a(dsk.b.h, rd.t)
-         .a(dsk.b.h, rd.s)
-         .a(dsk.b.h, rd.f)
-         .a(dsk.b.h, rd.g)
-         .a(dsk.b.h, rd.m)
-         .a(dsk.b.h, re.a)
-         .a(dsk.b.h, rd.p)
-         .a(dsk.b.h, re.b);
-      pk.au($$5);
-      return new cya.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new cyg.a()
-               .b(4159204)
-               .c(329011)
-               .a(1787717)
-               .d(ql.a(2.0F))
-               .a(new cxz(kc.ay, 0.00625F))
-               .a(aty.s)
-               .a(new cxy(aty.t, 6000, 8, 2.0))
-               .a(new cxx(aty.r, 0.0111))
-               .a(atw.a(aty.pU))
-               .a()
-         )
-         .a($$4)
-         .a($$5.a())
-         .a();
+   public static dvi.o a() {
+      return a(true, false, true);
    }
 
-   public static cya c(im<eci> $$0, im<dur<?>> $$1) {
-      cym $$2 = new cym.a().a(bps.a, new cym.c(bpd.U, 40, 1, 1)).a(bps.a, new cym.c(bpd.ap, 100, 2, 5)).a(bps.b, new cym.c(bpd.aZ, 60, 1, 2)).a();
-      cyb.a $$3 = new cyb.a($$0, $$1)
-         .a(dsk.a.a, pm.d)
-         .a(dsk.b.e, rd.a)
-         .a(dsk.b.e, rd.b)
-         .a(dsk.b.e, rd.c)
-         .a(dsk.b.h, rd.d)
-         .a(dsk.b.h, rd.e)
-         .a(dsk.b.h, rd.o)
-         .a(dsk.b.h, rd.t)
-         .a(dsk.b.h, rd.s)
-         .a(dsk.b.h, rd.f)
-         .a(dsk.b.h, rd.g)
-         .a(dsk.b.h, rh.F)
-         .a(dsk.b.h, rh.G)
-         .a(dsk.b.h, re.a)
-         .a(dsk.b.h, rd.q)
-         .a(dsk.b.h, re.c)
-         .a(dsk.b.h, re.d);
-      pk.av($$3);
-      return new cya.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new cyg.a()
-               .b(4159204)
-               .c(329011)
-               .a(6840176)
-               .d(ql.a(2.0F))
-               .a(new cxz(kc.aG, 0.118093334F))
-               .a(aty.j)
-               .a(new cxy(aty.k, 6000, 8, 2.0))
-               .a(new cxx(aty.i, 0.0111))
-               .a(atw.a(aty.pF))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+   public static dvi.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dvi.f $$3 = dvi.a(dvl.a(97), 2);
+      dvi.f $$4 = dvi.a(dvl.a(256), 0);
+      dvi.f $$5 = dvi.b(dvl.a(63), -1);
+      dvi.f $$6 = dvi.b(dvl.a(74), 1);
+      dvi.f $$7 = dvi.a(dvl.a(60), 0);
+      dvi.f $$8 = dvi.a(dvl.a(62), 0);
+      dvi.f $$9 = dvi.a(dvl.a(63), 0);
+      dvi.f $$10 = dvi.a(-1, 0);
+      dvi.f $$11 = dvi.a(0, 0);
+      dvi.f $$12 = dvi.b(-6, -1);
+      dvi.f $$13 = dvi.b();
+      dvi.f $$14 = dvi.a(dad.W, dad.X);
+      dvi.f $$15 = dvi.a();
+      dvi.o $$16 = dvi.a(dvi.a($$11, n), j);
+      dvi.o $$17 = dvi.a(dvi.a(dvi.e, r), q);
+      dvi.o $$18 = dvi.a(dvi.a(dvi.e, h), p);
+      dvi.f $$19 = dvi.a(dad.P, dad.M, dad.N);
+      dvi.f $$20 = dvi.a(dad.f);
+      dvi.o $$21 = dvi.a(
+         dvi.a(dvi.a(dad.J), dvi.a(dvi.a(dvi.a(dva.X, -0.0125, 0.0125), o), h)),
+         dvi.a(dvi.a(dad.O), dvi.a(dvi.a(dvi.a(dva.Y, -0.05, 0.05), $$18), h)),
+         dvi.a(dvi.a(dad.t), dvi.a(a(1.0), h)),
+         dvi.a($$19, $$17),
+         dvi.a($$20, $$17),
+         dvi.a(dvi.a(dad.Z), h)
+      );
+      dvi.o $$22 = dvi.a(dvi.a(dva.Z, 0.45, 0.58), dvi.a($$11, v));
+      dvi.o $$23 = dvi.a(dvi.a(dva.Z, 0.35, 0.6), dvi.a($$11, v));
+      dvi.o $$24 = dvi.a(
+         dvi.a(dvi.a(dad.H), dvi.a(dvi.a($$15, s), dvi.a(dvi.a(dva.aa, -0.5, 0.2), s), dvi.a(dvi.a(dva.ab, -0.0625, 0.025), w), dvi.a($$11, t))),
+         dvi.a(dvi.a(dad.G), dvi.a(dvi.a($$15, h), $$22, dvi.a($$11, t))),
+         dvi.a(dvi.a(dad.I), h),
+         dvi.a(dvi.a(dad.F), dvi.a($$22, j)),
+         $$21,
+         dvi.a(dvi.a(dad.w), dvi.a(a(1.75), h)),
+         dvi.a(dvi.a(dad.u), dvi.a(dvi.a(a(2.0), $$18), dvi.a(a(1.0), h), dvi.a(a(-1.0), j), $$18)),
+         dvi.a(dvi.a(dad.h), u),
+         j
+      );
+      dvi.o $$25 = dvi.a(
+         dvi.a(dvi.a(dad.H), dvi.a(dvi.a($$15, s), dvi.a(dvi.a(dva.aa, 0.0, 0.2), s), dvi.a(dvi.a(dva.ab, 0.0, 0.025), w), dvi.a($$11, t))),
+         dvi.a(dvi.a(dad.G), dvi.a(dvi.a($$15, h), $$23, dvi.a($$11, t))),
+         dvi.a(dvi.a(dad.I), dvi.a(dvi.a($$15, h), dvi.a($$11, t))),
+         dvi.a(dvi.a(dad.F), dvi.a($$23, dvi.a($$11, t))),
+         $$21,
+         dvi.a(dvi.a(dad.w), dvi.a(dvi.a(a(1.75), h), dvi.a(a(-0.5), l))),
+         dvi.a(dvi.a(dad.u), dvi.a(dvi.a(a(2.0), $$18), dvi.a(a(1.0), h), dvi.a(a(-1.0), $$16), $$18)),
+         dvi.a(dvi.a(dad.n, dad.o), dvi.a(dvi.a(a(1.75), l), dvi.a(a(-0.95), k))),
+         dvi.a(dvi.a(dad.e), dvi.a($$11, t)),
+         dvi.a(dvi.a(dad.h), u),
+         dvi.a(dvi.a(dad.Y), m),
+         $$16
+      );
+      dvi.f $$26 = dvi.a(dva.N, -0.909, -0.5454);
+      dvi.f $$27 = dvi.a(dva.N, -0.1818, 0.1818);
+      dvi.f $$28 = dvi.a(dva.N, 0.5454, 0.909);
+      dvi.o $$29 = dvi.a(
+         dvi.a(
+            dvi.a,
+            dvi.a(
+               dvi.a(dvi.a(dad.C), dvi.a($$3, dvi.a(dvi.a($$26, l), dvi.a($$27, l), dvi.a($$28, l), $$16))),
+               dvi.a(dvi.a(dad.g), dvi.a($$8, dvi.a(dvi.a($$9), dvi.a(dvi.a(dva.W, 0.0), x)))),
+               dvi.a(dvi.a(dad.h), dvi.a($$7, dvi.a(dvi.a($$9), dvi.a(dvi.a(dva.W, 0.0), x))))
+            )
+         ),
+         dvi.a(
+            dvi.a(dad.A, dad.B, dad.C),
+            dvi.a(
+               dvi.a(
+                  dvi.a,
+                  dvi.a(
+                     dvi.a($$4, d),
+                     dvi.a($$6, dvi.a(dvi.a($$26, e), dvi.a($$27, e), dvi.a($$28, e), dvi.e())),
+                     dvi.a($$10, dvi.a(dvi.a(dvi.e, g), f)),
+                     dvi.a(dvi.a($$13), d),
+                     dvi.a($$12, c),
+                     $$18
+                  )
+               ),
+               dvi.a($$5, dvi.a(dvi.a($$9, dvi.a(dvi.a($$6), d)), dvi.e())),
+               dvi.a(dvi.b, dvi.a($$12, c))
+            )
+         ),
+         dvi.a(dvi.a, dvi.a($$10, dvi.a(dvi.a($$14, dvi.a($$13, dvi.a(dvi.a($$11, a), dvi.a(dvi.d(), w), x))), $$25))),
+         dvi.a($$12, dvi.a(dvi.a(dvi.a, dvi.a($$14, dvi.a($$13, x))), dvi.a(dvi.b, $$24), dvi.a($$19, dvi.a(dvi.c, r)), dvi.a($$20, dvi.a(dvi.d, r)))),
+         dvi.a(dvi.a, dvi.a(dvi.a(dvi.a(dad.H, dad.I), h), dvi.a(dvi.a(dad.P, dad.Q, dad.R), $$17), $$18))
+      );
+      Builder<dvi.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dvi.a(dvi.a(dvi.a("bedrock_roof", dvl.c(5), dvl.b())), b));
+      }
+
+      if ($$2) {
+         $$30.add(dvi.a(dvi.a("bedrock_floor", dvl.a(), dvl.b(5)), b));
+      }
+
+      dvi.o $$31 = dvi.a(dvi.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dvi.a(dvi.a("deepslate", dvl.a(0), dvl.a(8)), i));
+      return dvi.a((dvi.o[])$$30.build().toArray(dvi.o[]::new));
    }
 
-   public static cya d(im<eci> $$0, im<dur<?>> $$1) {
-      cym $$2 = new cym.a()
-         .a(bps.a, new cym.c(bpd.bx, 1, 2, 4))
-         .a(bps.a, new cym.c(bpd.aa, 9, 3, 4))
-         .a(bps.a, new cym.c(bpd.aA, 5, 3, 4))
-         .a(bps.b, new cym.c(bpd.aZ, 60, 1, 2))
-         .a();
-      cyb.a $$3 = new cyb.a($$0, $$1).a(dsk.a.a, pm.d).a(dsk.b.j, rc.p);
-      pk.ac($$3);
-      $$3.a(dsk.b.h, rd.r)
-         .a(dsk.b.h, rd.t)
-         .a(dsk.b.h, rd.f)
-         .a(dsk.b.h, rd.g)
-         .a(dsk.b.h, re.a)
-         .a(dsk.b.h, rd.p)
-         .a(dsk.b.j, rd.l)
-         .a(dsk.b.j, rg.a)
-         .a(dsk.b.j, rd.h);
-      pk.au($$3);
-      return new cya.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new cyg.a()
-               .b(4159204)
-               .c(329011)
-               .a(3343107)
-               .d(ql.a(2.0F))
-               .a(new cxz(kc.az, 0.025F))
-               .a(aty.m)
-               .a(new cxy(aty.n, 6000, 8, 2.0))
-               .a(new cxx(aty.l, 0.0111))
-               .a(atw.a(aty.pG))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+   public static dvi.o b() {
+      dvi.f $$0 = dvi.a(dvl.a(31), 0);
+      dvi.f $$1 = dvi.a(dvl.a(32), 0);
+      dvi.f $$2 = dvi.b(dvl.a(30), 0);
+      dvi.f $$3 = dvi.a(dvi.b(dvl.a(35), 0));
+      dvi.f $$4 = dvi.a(dvl.c(5), 0);
+      dvi.f $$5 = dvi.b();
+      dvi.f $$6 = dvi.a(dva.ac, -0.012);
+      dvi.f $$7 = dvi.a(dva.ad, -0.012);
+      dvi.f $$8 = dvi.a(dva.ae, -0.012);
+      dvi.f $$9 = dvi.a(dva.af, 0.54);
+      dvi.f $$10 = dvi.a(dva.ag, 1.17);
+      dvi.f $$11 = dvi.a(dva.ah, 0.0);
+      dvi.o $$12 = dvi.a($$8, dvi.a($$2, dvi.a($$3, p)));
+      return dvi.a(
+         dvi.a(dvi.a("bedrock_floor", dvl.a(), dvl.b(5)), b),
+         dvi.a(dvi.a(dvi.a("bedrock_roof", dvl.c(5), dvl.b())), b),
+         dvi.a($$4, z),
+         dvi.a(dvi.a(dad.ag), dvi.a(dvi.a(dvi.f, C), dvi.a(dvi.b, dvi.a($$12, dvi.a($$11, C), D)))),
+         dvi.a(dvi.a(dad.af), dvi.a(dvi.a(dvi.f, dvi.a(dvi.a($$11, A), B)), dvi.a(dvi.b, dvi.a($$12, dvi.a($$11, A), B)))),
+         dvi.a(
+            dvi.a,
+            dvi.a(
+               dvi.a(dvi.a($$1), dvi.a($$5, y)),
+               dvi.a(dvi.a(dad.ad), dvi.a(dvi.a($$9), dvi.a($$0, dvi.a(dvi.a($$10, E), F)))),
+               dvi.a(dvi.a(dad.ae), dvi.a(dvi.a($$9), dvi.a($$0, dvi.a(dvi.a($$10, G), H))))
+            )
+         ),
+         dvi.a(
+            dvi.a(dad.ac),
+            dvi.a(
+               dvi.a(dvi.b, dvi.a($$6, dvi.a(dvi.a(dvi.a($$5), dvi.a($$2, dvi.a($$3, A))), z))),
+               dvi.a(dvi.a, dvi.a($$0, dvi.a($$3, dvi.a($$7, dvi.a(dvi.a($$1, p), dvi.a(dvi.a($$5), p))))))
+            )
+         ),
+         z
+      );
    }
 
-   public static cya e(im<eci> $$0, im<dur<?>> $$1) {
-      cym $$2 = new cym.a().a(bps.a, new cym.c(bpd.I, 1, 4, 4)).a(bps.b, new cym.c(bpd.aZ, 60, 1, 2)).a(bpd.I, 1.0, 0.12).a();
-      cyb.a $$3 = new cyb.a($$0, $$1).a(dsk.a.a, pm.d).a(dsk.b.j, rc.p);
-      pk.ac($$3);
-      $$3.a(dsk.b.h, rd.r)
-         .a(dsk.b.h, rd.t)
-         .a(dsk.b.h, rd.s)
-         .a(dsk.b.h, rd.f)
-         .a(dsk.b.h, rd.g)
-         .a(dsk.b.h, re.a)
-         .a(dsk.b.h, rd.p)
-         .a(dsk.b.j, rg.b)
-         .a(dsk.b.j, rd.i)
-         .a(dsk.b.j, rd.j)
-         .a(dsk.b.j, rd.k);
-      pk.au($$3);
-      return new cya.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new cyg.a()
-               .b(4159204)
-               .c(329011)
-               .a(1705242)
-               .d(ql.a(2.0F))
-               .a(new cxz(kc.aA, 0.01428F))
-               .a(aty.v)
-               .a(new cxy(aty.w, 6000, 8, 2.0))
-               .a(new cxx(aty.u, 0.0111))
-               .a(atw.a(aty.pW))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+   public static dvi.o c() {
+      return I;
+   }
+
+   public static dvi.o d() {
+      return a;
+   }
+
+   private static dvi.f a(double $$0) {
+      return dvi.a(dva.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

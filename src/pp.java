@@ -1,72 +1,138 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class pp {
-   @Deprecated
-   public static final ehs.a a = new ehs.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(pl<ehs.a> $$0) {
-      a($$0, 0, dsx.a, dsx.b, dsx.c, dsx.d);
-      a($$0, -2, dsx.e, dsx.f, dsx.g, dsx.h);
-      a($$0, dsx.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dsx.j, a);
-      a($$0, dsx.k, -3, 1.0);
-      a($$0, dsx.l, -7, 1.0);
-      a($$0, dsx.m, -1, 1.0);
-      a($$0, dsx.n, -5, 1.0);
-      a($$0, dsx.o, -7, 1.0, 1.0);
-      a($$0, dsx.p, -8, 1.0);
-      a($$0, dsx.q, -8, 1.0);
-      a($$0, dsx.r, -7, 1.0);
-      a($$0, dsx.s, -8, 1.0);
-      a($$0, dsx.t, -11, 1.0);
-      a($$0, dsx.u, -11, 1.0);
-      a($$0, dsx.v, -7, 1.0);
-      a($$0, dsx.w, -7, 1.0);
-      a($$0, dsx.x, -11, 1.0);
-      a($$0, dsx.y, -8, 1.0);
-      a($$0, dsx.z, -5, 1.0);
-      a($$0, dsx.A, -8, 1.0);
-      a($$0, dsx.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dsx.C, -8, 1.0);
-      a($$0, dsx.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dsx.E, -8, 1.0);
-      a($$0, dsx.F, -7, 1.0);
-      a($$0, dsx.G, -7, 1.0);
-      a($$0, dsx.H, -5, 1.0);
-      a($$0, dsx.I, -8, 1.0);
-      a($$0, dsx.J, -8, 1.0);
-      a($$0, dsx.K, -7, 1.0);
-      a($$0, dsx.L, -7, 1.0);
-      a($$0, dsx.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dsx.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dsx.P, -8, 1.0);
-      a($$0, dsx.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.R, -8, 1.0);
-      a($$0, dsx.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dsx.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.U, -3, 1.0);
-      a($$0, dsx.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dsx.W, -2, 1.0);
-      a($$0, dsx.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dsx.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dsx.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dsx.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dsx.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dsx.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dsx.ah, -4, 1.0);
-   }
-
-   private static void a(pl<ehs.a> $$0, int $$1, ajg<ehs.a> $$2, ajg<ehs.a> $$3, ajg<ehs.a> $$4, ajg<ehs.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(pl<ehs.a> $$0, ajg<ehs.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new ehs.a($$2, $$3, $$4));
+   public static void a(px<egq> $$0) {
+      im<eel> $$1 = $$0.a(ks.aE);
+      il<eel> $$2 = $$1.b(rm.s);
+      im<ejf> $$3 = $$0.a(ks.aG);
+      il<ejf> $$4 = $$3.b(qf.H);
+      il<ejf> $$5 = $$3.b(qf.I);
+      im<egq> $$6 = $$0.a(ks.aI);
+      il<egq> $$7 = $$6.b(qe.a);
+      qe.a(
+         $$0,
+         "ancient_city/structures",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.g(), 7),
+               Pair.of(ego.b("ancient_city/structures/barracks", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/chamber_1", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/chamber_2", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/chamber_3", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/sauna_1", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/small_statue", $$4), 4),
+               Pair.of(ego.b("ancient_city/structures/large_ruin_1", $$4), 1),
+               Pair.of(ego.b("ancient_city/structures/tall_ruin_1", $$4), 1),
+               Pair.of(ego.b("ancient_city/structures/tall_ruin_2", $$4), 1),
+               Pair.of(ego.b("ancient_city/structures/tall_ruin_3", $$4), 2),
+               Pair.of(ego.b("ancient_city/structures/tall_ruin_4", $$4), 2),
+               new Pair[]{
+                  Pair.of(
+                     ego.b(
+                        ImmutableList.of(
+                           ego.b("ancient_city/structures/camp_1", $$4),
+                           ego.b("ancient_city/structures/camp_2", $$4),
+                           ego.b("ancient_city/structures/camp_3", $$4)
+                        )
+                     ),
+                     1
+                  ),
+                  Pair.of(ego.b("ancient_city/structures/medium_ruin_1", $$4), 1),
+                  Pair.of(ego.b("ancient_city/structures/medium_ruin_2", $$4), 1),
+                  Pair.of(ego.b("ancient_city/structures/small_ruin_1", $$4), 1),
+                  Pair.of(ego.b("ancient_city/structures/small_ruin_2", $$4), 1),
+                  Pair.of(ego.b("ancient_city/structures/large_pillar_1", $$4), 1),
+                  Pair.of(ego.b("ancient_city/structures/medium_pillar_1", $$4), 1),
+                  Pair.of(ego.b(ImmutableList.of(ego.b("ancient_city/structures/ice_box_1"))), 1)
+               }
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "ancient_city/sculk", new egq($$7, ImmutableList.of(Pair.of(ego.a($$2), 6), Pair.of(ego.g(), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "ancient_city/walls",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
+               Pair.of(ego.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
+               new Pair[]{
+                  Pair.of(ego.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
+                  Pair.of(ego.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
+                  Pair.of(ego.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
+                  Pair.of(ego.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
+               }
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "ancient_city/walls/no_corners",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
+               Pair.of(ego.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "ancient_city/city_center/walls",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/left", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/right", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/top", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
+               Pair.of(ego.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "ancient_city/city/entrance",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
+               Pair.of(ego.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
    }
 }

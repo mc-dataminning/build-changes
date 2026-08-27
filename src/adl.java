@@ -1,29 +1,36 @@
-public class adl implements yb<aam> {
-   public static final xs<uu, adl> a = yb.a(adl::a, adl::new);
-   private final int b;
+public record adl(afg e, byte f) implements yn<aay> {
+   public static final ye<vr, adl> a = yn.a(adl::a, adl::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public adl(int $$0) {
-      this.b = $$0;
+   private adl(vr $$0) {
+      this(new afg($$0), $$0.readByte());
    }
 
-   private adl(uu $$0) {
-      this.b = $$0.readByte();
-   }
-
-   private void a(uu $$0) {
-      $$0.k(this.b);
+   private void a(vr $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public yd<adl> a() {
-      return aex.ax;
+   public yp<adl> a() {
+      return afj.al;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
+   }
+
+   public afg b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

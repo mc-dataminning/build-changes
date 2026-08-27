@@ -16,7 +16,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum ih implements axq {
+public enum ih implements aye {
    a(0, 1, -1, "down", ih.b.b, ih.a.b, new jg(0, -1, 0)),
    b(1, 0, -1, "up", ih.b.a, ih.a.b, new jg(0, 1, 0)),
    c(2, 3, 2, "north", ih.b.b, ih.a.c, new jg(0, 0, -1)),
@@ -24,10 +24,10 @@ public enum ih implements axq {
    e(4, 5, 1, "west", ih.b.b, ih.a.a, new jg(-1, 0, 0)),
    f(5, 4, 3, "east", ih.b.a, ih.a.a, new jg(1, 0, 0));
 
-   public static final axq.a<ih> g = axq.a(ih::values);
-   public static final Codec<ih> h = awe.b(g, ih::a);
-   public static final IntFunction<ih> i = avn.a(ih::d, values(), avn.a.b);
-   public static final xs<ByteBuf, ih> j = xq.a(i, ih::d);
+   public static final aye.a<ih> g = aye.a(ih::values);
+   public static final Codec<ih> h = aws.b(g, ih::a);
+   public static final IntFunction<ih> i = awb.a(ih::d, values(), awb.a.b);
+   public static final ye<ByteBuf, ih> j = yc.a(i, ih::d);
    private final int k;
    private final int l;
    private final int m;
@@ -49,13 +49,13 @@ public enum ih implements axq {
       this.q = $$6;
    }
 
-   public static ih[] a(box $$0) {
+   public static ih[] a(bpv $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = aww.a($$1);
-      float $$4 = aww.b($$1);
-      float $$5 = aww.a($$2);
-      float $$6 = aww.b($$2);
+      float $$3 = axk.a($$1);
+      float $$4 = axk.b($$1);
+      float $$5 = axk.a($$2);
+      float $$6 = axk.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -90,7 +90,7 @@ public enum ih implements axq {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ih> a(axd $$0) {
+   public static Collection<ih> a(axr $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -121,7 +121,7 @@ public enum ih implements axq {
       return this.p;
    }
 
-   public static ih a(box $$0, ih.a $$1) {
+   public static ih a(bpv $$0, ih.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -239,11 +239,11 @@ public enum ih implements axq {
    }
 
    public static ih a(int $$0) {
-      return s[aww.a($$0 % s.length)];
+      return s[axk.a($$0 % s.length)];
    }
 
    public static ih b(int $$0) {
-      return t[aww.a($$0 % t.length)];
+      return t[axk.a($$0 % t.length)];
    }
 
    @Nullable
@@ -276,7 +276,7 @@ public enum ih implements axq {
    }
 
    public static ih a(double $$0) {
-      return b(aww.a($$0 / 90.0 + 0.5) & 3);
+      return b(axk.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ih a(ih.a $$0, ih.b $$1) {
@@ -291,7 +291,7 @@ public enum ih implements axq {
       return (float)((this.m & 3) * 90);
    }
 
-   public static ih b(axd $$0) {
+   public static ih b(axr $$0) {
       return ac.a(r, $$0);
    }
 
@@ -344,12 +344,12 @@ public enum ih implements axq {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -aww.a($$1);
-      float $$3 = aww.b($$1);
+      float $$2 = -axk.a($$1);
+      float $$3 = axk.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements axq, Predicate<ih> {
+   public static enum a implements aye, Predicate<ih> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -385,7 +385,7 @@ public enum ih implements axq {
       };
 
       public static final ih.a[] d = values();
-      public static final axq.a<ih.a> e = axq.a(ih.a::values);
+      public static final aye.a<ih.a> e = aye.a(ih.a::values);
       private final String f;
 
       a(String $$0) {
@@ -414,7 +414,7 @@ public enum ih implements axq {
          return this.f;
       }
 
-      public static ih.a a(axd $$0) {
+      public static ih.a a(axr $$0) {
          return ac.a(d, $$0);
       }
 
@@ -481,11 +481,11 @@ public enum ih implements axq {
          this.d = $$1;
       }
 
-      public ih a(axd $$0) {
+      public ih a(axr $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public ih.a b(axd $$0) {
+      public ih.a b(axr $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -502,7 +502,7 @@ public enum ih implements axq {
          return Arrays.stream(this.c);
       }
 
-      public List<ih> c(axd $$0) {
+      public List<ih> c(axr $$0) {
          return ac.b(this.c, $$0);
       }
 

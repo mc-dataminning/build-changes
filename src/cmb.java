@@ -1,34 +1,84 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
+public abstract class cmb extends bpv {
+   protected static final aiy<Integer> f = ajc.a(cmb.class, aja.b);
+   protected static final aiy<Integer> g = ajc.a(cmb.class, aja.b);
+   protected static final aiy<Float> h = ajc.a(cmb.class, aja.d);
 
-public interface cmb {
-   cmb a = new cmb() {
-      @Override
-      public <T> Optional<T> a(BiFunction<cxb, ib, T> $$0) {
-         return Optional.empty();
-      }
-   };
+   public cmb(bqb<?> $$0, cyx $$1) {
+      super($$0, $$1);
+   }
 
-   static cmb a(final cxb $$0, final ib $$1) {
-      return new cmb() {
-         @Override
-         public <T> Optional<T> a(BiFunction<cxb, ib, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
+   @Override
+   public boolean a(bot $$0, float $$1) {
+      if (this.dM().B || this.dH()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
+      } else {
+         this.n(-this.P());
+         this.d(10);
+         this.bt();
+         this.b(this.N() + $$1 * 10.0F);
+         this.a(dts.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cjt && ((cjt)$$0.d()).ga().d;
+         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.am();
+            }
+         } else {
+            this.a($$0);
          }
-      };
+
+         return true;
+      }
    }
 
-   <T> Optional<T> a(BiFunction<cxb, ib, T> var1);
-
-   default <T> T a(BiFunction<cxb, ib, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
+   boolean d(bot $$0) {
+      return false;
    }
 
-   default void a(BiConsumer<cxb, ib> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   public void b(cre $$0) {
+      this.al();
+      if (this.dM().aa().b(cyt.i)) {
+         crj $$1 = new crj($$0);
+         $$1.b(jp.d, this.af());
+         this.b($$1);
+      }
    }
+
+   @Override
+   protected void a(ajc.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
+   }
+
+   public void d(int $$0) {
+      this.an.a(f, $$0);
+   }
+
+   public void n(int $$0) {
+      this.an.a(g, $$0);
+   }
+
+   public void b(float $$0) {
+      this.an.a(h, $$0);
+   }
+
+   public float N() {
+      return this.an.a(h);
+   }
+
+   public int O() {
+      return this.an.a(f);
+   }
+
+   public int P() {
+      return this.an.a(g);
+   }
+
+   protected void a(bot $$0) {
+      this.b(this.ag_());
+   }
+
+   abstract cre ag_();
 }

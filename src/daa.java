@@ -1,114 +1,141 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class daa extends ddx implements daf, dhc {
-   public static final MapCodec<daa> a = b(daa::new);
-   private static final dns f = dnr.C;
-   private static final int g = 6;
-   protected static final eqm b = dac.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final eqm c = dac.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final eqm d = dac.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final eqm e = dac.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+public abstract class daa implements czz {
+   public static final Codec<daa> a = kr.ab.q().dispatchStable(daa::a, Function.identity());
+   private final Supplier<Set<il<czw>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   @Override
-   public MapCodec<daa> a() {
-      return a;
+   protected daa() {
    }
 
-   protected daa(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(aE, ih.c));
+   protected abstract Codec<? extends daa> a();
+
+   protected abstract Stream<il<czw>> b();
+
+   public Set<il<czw>> c() {
+      return this.b.get();
    }
 
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      switch ((ih)$$0.c(aE)) {
-         case d:
-            return c;
-         case c:
-         default:
-            return b;
-         case e:
-            return e;
-         case f:
-            return d;
-      }
-   }
+   public Set<il<czw>> a(int $$0, int $$1, int $$2, int $$3, daf.f $$4) {
+      int $$5 = iw.a($$0 - $$3);
+      int $$6 = iw.a($$1 - $$3);
+      int $$7 = iw.a($$2 - $$3);
+      int $$8 = iw.a($$0 + $$3);
+      int $$9 = iw.a($$1 + $$3);
+      int $$10 = iw.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<il<czw>> $$14 = Sets.newHashSet();
 
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(f, aE);
-   }
-
-   @Override
-   protected eip c_(dnb $$0) {
-      return $$0.c(f) ? eiq.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      dnb $$4 = $$1.a_($$3);
-      dnb $$5 = $$1.a_($$2.c());
-      return ($$4.a(this) || $$4.a(aun.by)) && ($$5.a(this) || $$5.a(dae.sD));
-   }
-
-   protected static boolean a(cxc $$0, ib $$1, eip $$2, ih $$3) {
-      dnb $$4 = dae.sE.o().a(f, Boolean.valueOf($$2.a(eiq.c))).a(aE, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if (($$1 == ih.a || $$1 == ih.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
+         }
       }
 
-      if ($$0.c(f)) {
-         $$3.a($$4, eiq.c, eiq.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$14;
    }
 
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   @Nullable
+   public Pair<ib, il<czw>> a(int $$0, int $$1, int $$2, int $$3, Predicate<il<czw>> $$4, axr $$5, daf.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
    }
 
-   @Override
-   public boolean b(cxe $$0, ib $$1, dnb $$2) {
-      Optional<ib> $$3 = l.a($$0, $$1, $$2.b(), ih.b, dae.sD);
-      if ($$3.isEmpty()) {
-         return false;
+   @Nullable
+   public Pair<ib, il<czw>> a(ib $$0, int $$1, int $$2, int $$3, Predicate<il<czw>> $$4, daf.f $$5, cza $$6) {
+      Set<il<czw>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
       } else {
-         ib $$4 = $$3.get().c();
-         dnb $$5 = $$0.a_($$4);
-         return czz.a($$0, $$4, $$5);
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = axk.a($$0.v(), $$6.I_() + 1, $$6.al(), $$3).toArray();
+
+         for (ib.a $$10 : ib.a(ib.c, $$8, ih.f, ih.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = iw.a($$11);
+            int $$14 = iw.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = iw.a($$15);
+               il<czw> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new ib($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
       }
    }
 
-   @Override
-   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
-      return true;
-   }
+   @Nullable
+   public Pair<ib, il<czw>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<il<czw>> $$5, axr $$6, boolean $$7, daf.f $$8) {
+      int $$9 = iw.a($$0);
+      int $$10 = iw.a($$2);
+      int $$11 = iw.a($$3);
+      int $$12 = iw.a($$1);
+      Pair<ib, il<czw>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
 
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
-      Optional<ib> $$4 = l.a($$0, $$2, $$3.b(), ih.b, dae.sD);
-      if (!$$4.isEmpty()) {
-         ib $$5 = $$4.get();
-         ib $$6 = $$5.c();
-         ih $$7 = $$3.c(aE);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         czz.a($$0, $$6, $$0.b_($$6), $$7);
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               il<czw> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     ib $$24 = new ib(iw.c($$21), $$1, iw.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
       }
+
+      return $$13;
    }
 
    @Override
-   public cqm a(cxe $$0, ib $$1, dnb $$2) {
-      return new cqm(dae.sD);
+   public abstract il<czw> getNoiseBiome(int var1, int var2, int var3, daf.f var4);
+
+   public void a(List<String> $$0, ib $$1, daf.f $$2) {
    }
 }

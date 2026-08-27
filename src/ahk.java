@@ -1,19 +1,26 @@
-public class ahk {
-   public static final yd<ahf> a = a("custom_query");
-   public static final yd<ahg> b = a("game_profile");
-   public static final yd<ahh> c = a("hello");
-   public static final yd<ahi> d = a("login_compression");
-   public static final yd<ahj> e = a("login_disconnect");
-   public static final yd<ahn> f = b("custom_query_answer");
-   public static final yd<aho> g = b("hello");
-   public static final yd<ahp> h = b("key");
-   public static final yd<ahq> i = b("login_acknowledged");
+public enum ahk {
+   a,
+   b,
+   c;
 
-   private static <T extends yb<ahe>> yd<T> a(String $$0) {
-      return new yd<>(yc.b, new ajh($$0));
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static ahk a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private static <T extends yb<ahm>> yd<T> b(String $$0) {
-      return new yd<>(yc.a, new ajh($$0));
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

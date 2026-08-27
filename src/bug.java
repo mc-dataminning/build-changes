@@ -1,53 +1,56 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bug {
-   public static bri<bpx> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return buu.a(
-         (Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$3 -> $$3.group($$3.c(bys.o), $$3.c(bys.m), $$3.a(bys.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dm()).a(aus.a)) {
+   public static bsh<bqo> a(float $$0, bnl $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static bsh<bqo> a(bqb<?> $$0, float $$1, bnl $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   }
+
+   private static bsh<bqo> a(float $$0, bnl $$1, Predicate<bqo> $$2) {
+      float $$3 = $$0 * $$0;
+      bug.a $$4 = new bug.a($$1);
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$3x -> $$3x.group($$3x.c(bzr.n), $$3x.b(bzr.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bqo> $$9 = $$3x.<bzt>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bpv)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
                      } else {
-                        ib $$8 = null;
-                        ib $$9 = null;
-                        ib $$10 = $$6.dm();
-
-                        for (ib $$12 : ib.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dnb $$13 = $$6.dM().a_($$12.c());
-                              dnb $$14 = $$6.dM().a_($$12);
-                              if ($$14.a(dae.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
-                                    $$9 = $$12.i();
-                                 }
-                              }
-                           }
-                        }
-
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
-
-                        if ($$8 != null) {
-                           $$5.a(new brk($$8));
-                           $$4.a(new byv(new brk($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
+                        $$4x.a(new bsr($$9.get(), true));
                         return true;
                      }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bnl a;
+      private int b;
+
+      public a(bnl $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(axr $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

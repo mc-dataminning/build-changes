@@ -1,32 +1,28 @@
 import javax.annotation.Nullable;
 
-public class adk implements yb<aam> {
-   public static final xs<uu, adk> a = yb.a(adk::a, adk::new);
-   private final int b;
+public record adk(String b, @Nullable String c) implements yn<aay> {
+   public static final ye<vg, adk> a = yn.a(adk::a, adk::new);
 
-   public adk(box $$0) {
-      this.b = $$0.aj();
+   private adk(vg $$0) {
+      this($$0.p(), $$0.c(vg::p));
    }
 
-   private adk(uu $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vg::a);
    }
 
    @Override
-   public yd<adk> a() {
-      return aex.aw;
+   public yp<adk> a() {
+      return afj.cc;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public box a(cxb $$0) {
-      return $$0.a(this.b);
+   public String e() {
+      return this.c;
    }
 }

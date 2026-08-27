@@ -1,48 +1,84 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bws extends bwm {
-   private final bpr a;
-   private bpp b;
-   private final float c;
+public class bws<T extends bqo> extends bxl {
+   protected final bqw a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected elg d;
+   protected final bzz e;
+   protected final Class<T> f;
+   protected final Predicate<bqo> g;
+   protected final Predicate<bqo> h;
+   private final cbe k;
 
-   public bws(bpr $$0, float $$1) {
+   public bws(bqw $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bqa.e::test);
+   }
+
+   public bws(bqw $$0, Class<T> $$1, Predicate<bqo> $$2, float $$3, double $$4, double $$5, Predicate<bqo> $$6) {
       this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bwm.a.c, bwm.a.a));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.K();
+      this.a(EnumSet.of(bxl.a.a));
+      this.k = cbe.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bws(bqw $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bqo> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (this.a.cO()) {
+      this.b = this.a
+         .dM()
+         .a(this.a.dM().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dr(), this.a.dt(), this.a.dx());
+      if (this.b == null) {
          return false;
       } else {
-         this.b = this.a.p();
-         if (this.b == null) {
+         esa $$0 = cbi.a(this.a, 16, 7, this.b.dk());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.g(this.a)) {
             return false;
          } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.ei().a(b(5)) == 0;
-            }
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
          }
       }
    }
 
    @Override
    public boolean b() {
-      return !this.a.aC();
+      return !this.e.l();
    }
 
    @Override
    public void c() {
-      ept $$0 = this.a.dp();
-      ept $$1 = new ept(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+      this.e.a(this.d, this.i);
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public void e() {
+      if (this.a.g((bpv)this.b) < 49.0) {
+         this.a.K().a(this.j);
+      } else {
+         this.a.K().a(this.i);
+      }
    }
 }

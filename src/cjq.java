@@ -1,61 +1,55 @@
-public class cjq extends cjg {
-   public cjq(bpd<? extends cjq> $$0, cxb $$1) {
-      super($$0, $$1);
+public class cjq {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
+
+   public void a(tm $$0) {
+      tm $$1 = new tm();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public cjq(cxb $$0, bpp $$1, double $$2, double $$3, double $$4) {
-      super(bpd.aQ, $$1, $$2, $$3, $$4, $$0);
-   }
+   public void b(tm $$0) {
+      if ($$0.b("abilities", 10)) {
+         tm $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
 
-   public cjq(cxb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super(bpd.aQ, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
-   }
-
-   @Override
-   protected void a(epq $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         box $$1 = $$0.a();
-         box $$2 = this.af_();
-         int $$3 = $$1.az();
-         $$1.g(5);
-         if (!$$1.a(this.dN().a((cjg)this, $$2), 5.0F)) {
-            $$1.i($$3);
-         } else if ($$2 instanceof bpp) {
-            this.a((bpp)$$2, $$1);
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
          }
       }
    }
 
-   @Override
-   protected void a(epp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         box $$1 = this.af_();
-         if (!($$1 instanceof bpr) || this.dM().Z().b(cwx.c)) {
-            ib $$2 = $$0.a().a($$0.b());
-            if (this.dM().u($$2)) {
-               this.dM().b($$2, czp.a(this.dM(), $$2));
-            }
-         }
-      }
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(epr $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.am();
-      }
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public boolean bw() {
-      return false;
+   public float b() {
+      return this.g;
    }
 
-   @Override
-   public boolean a(bnw $$0, float $$1) {
-      return false;
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

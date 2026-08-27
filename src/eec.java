@@ -1,12 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public interface eec<SP extends eeb> {
-   eec<edz> a = a("random_spread", edz.a);
-   eec<edy> b = a("concentric_rings", edy.a);
+public enum eec implements aye {
+   a(ih.b, 1, "ceiling"),
+   b(ih.a, -1, "floor");
 
-   Codec<SP> codec();
+   public static final Codec<eec> c = aye.a(eec::values);
+   private final ih d;
+   private final int e;
+   private final String f;
 
-   private static <SP extends eeb> eec<SP> a(String $$0, Codec<SP> $$1) {
-      return iy.a(ki.R, $$0, () -> $$1);
+   private eec(ih $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public ih a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

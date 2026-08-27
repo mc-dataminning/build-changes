@@ -1,35 +1,22 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
 
-public enum cdp implements axq {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
-
-   public static final Codec<cdp> h = axq.a(cdp::values);
-   private static final IntFunction<cdp> i = avn.a(cdp::a, values(), avn.a.b);
-   private final int j;
-   private final String k;
-
-   private cdp(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+public class cdp extends bsg<cdn> {
+   public cdp() {
+      super(ImmutableMap.of(bzr.N, bzs.a, bzr.y, bzs.a), 200);
    }
 
-   public int a() {
-      return this.j;
+   protected boolean a(aps $$0, cdn $$1) {
+      return $$1.bf();
    }
 
-   public static cdp a(int $$0) {
-      return i.apply($$0);
+   protected boolean a(aps $$0, cdn $$1, long $$2) {
+      return $$1.bf() && $$1.dP().a(bzr.N);
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   protected void b(aps $$0, cdn $$1, long $$2) {
+      brp<cdn> $$3 = $$1.dP();
+      $$3.b(bzr.m);
+      $$3.b(bzr.n);
+      $$1.b(new bph(bpj.j, 200, 0));
    }
 }

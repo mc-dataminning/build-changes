@@ -1,21 +1,55 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public interface dug extends axr {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public abstract class dug implements dtv {
-   protected final jg f;
+   int c(int var1);
 
-   protected static <P extends dug> P1<Mu<P>, jg> a(Instance<P> $$0) {
-      return $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.f));
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   protected dug(jg $$0) {
-      this.f = $$0;
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
    }
 
-   public final boolean a(cxw $$0, ib $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
-   protected abstract boolean a(dnb var1);
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
+   }
 }

@@ -1,66 +1,101 @@
-public class fus extends fvo {
-   fus(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public class fus {
+   private final GameProfile a;
+   private final Supplier<gmi> b;
+   private cyu c = cyu.e;
+   private int d;
+   @Nullable
+   private wg e;
+   @Nullable
+   private wx f;
+   private xc g;
+
+   public fus(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<gmi>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   @Override
-   public fvk b() {
-      return fvk.b;
+   private static Supplier<gmi> a(GameProfile $$0) {
+      fbp $$1 = fbp.Q();
+      gmj $$2 = $$1.an();
+      CompletableFuture<gmi> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gmi $$5 = gmb.a($$0);
+      return () -> {
+         gmi $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public GameProfile a() {
+      return this.a;
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   @Nullable
+   public wx b() {
+      return this.f;
    }
 
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = aww.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public xc c() {
+      return this.g;
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
-
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fus $$8 = new fus($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public boolean d() {
+      return this.f != null;
    }
 
-   public static class b implements fvj<kf> {
-      private final fwb a;
+   protected void a(wx $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cjw.b);
+   }
 
-      public b(fwb $$0) {
-         this.a = $$0;
-      }
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fus $$8 = new fus($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
-      }
+   private static xc b(boolean $$0) {
+      return $$0 ? xc.c : xc.b;
+   }
+
+   public cyu e() {
+      return this.c;
+   }
+
+   protected void a(cyu $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gmi g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public esz h() {
+      return fbp.Q().r.L().e(this.a().getName());
+   }
+
+   public void a(@Nullable wg $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wg i() {
+      return this.e;
    }
 }

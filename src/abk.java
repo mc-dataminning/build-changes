@@ -1,16 +1,14 @@
-public record abk(cqh b, int c) implements yb<aam> {
-   public static final xs<vf, abk> a = xs.a(xq.a(kj.F), abk::b, xq.d, abk::e, abk::new);
+public class abk extends yl<aay> {
+   public abk(Iterable<yn<? super aay>> $$0) {
+      super($$0);
+   }
 
    @Override
-   public yd<abk> a() {
-      return aex.x;
+   public yp<abk> a() {
+      return afj.a;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,42 +1,83 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class dvp extends dvs<dxv> {
-   public dvp(Codec<dxv> $$0) {
-      super($$0);
+public class dvp {
+   public static final MapCodec<dvp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(dvp::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dvp::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dvp::d),
+               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(dvp::new))
+   );
+   public static final dvp b = new dvp((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
+
+   public dvp(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public boolean a(dvu<dxv> $$0) {
-      ib $$1 = $$0.e();
-      cxw $$2 = $$0.b();
-      dxv $$3 = $$0.f();
+   public static dvp a() {
+      return new dvp(f(), true, false);
+   }
 
-      for (ib $$4 : ib.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            ib $$9 = $$4.i();
-            this.a($$2, $$9, dae.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dki $$4x = $$2.c_($$9);
-               if ($$4x instanceof dlx $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dae.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dae.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dae.F.o());
-         } else {
-            this.a($$2, $$4, dae.a.o());
+   private dvp(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f.isPresent();
+   }
+
+   public dvp a(boolean $$0) {
+      return new dvp(this.c, this.d, $$0, this.f);
+   }
+
+   public dvp b(boolean $$0) {
+      return new dvp(this.c, $$0, this.e, this.f);
+   }
+
+   public dvp a(OptionalLong $$0) {
+      return new dvp($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
       }
+   }
 
-      return true;
+   public static long f() {
+      return axr.a().g();
    }
 }

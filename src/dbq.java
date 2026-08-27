@@ -1,59 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbq extends dac {
+public class dbq extends dbk implements dbp {
    public static final MapCodec<dbq> a = b(dbq::new);
-   public static final dns b = dnr.w;
-   public static final dns c = dnr.r;
 
    @Override
-   protected MapCodec<? extends dbq> a() {
+   public MapCodec<dbq> a() {
       return a;
    }
 
-   public dbq(dna.d $$0) {
+   public dbq(doy.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof apf $$5) {
-         this.a($$0, $$5, $$2);
-      }
+   public cqc b() {
+      return cqc.a;
    }
 
    @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, dac $$3, ib $$4, boolean $$5) {
-      if ($$1 instanceof apf $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public dmf a(ib $$0, doz $$1) {
+      return new dma($$0, $$1);
    }
 
-   public void a(dnb $$0, apf $$1, ib $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dnb $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? aty.fA : aty.fB, atz.e);
+   @Nullable
+   @Override
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return a($$2, dmh.o, dma::a);
+   }
+
+   @Override
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      if ($$1.B) {
+         return boa.a;
+      } else {
+         if ($$1.c_($$2) instanceof dma $$5) {
+            $$3.a($$5);
+            $$3.a(auw.ab);
          }
 
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
+         return boa.b;
       }
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean d_(dnb $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dnb $$0, cxb $$1, ib $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   protected did b_(doz $$0) {
+      return did.c;
    }
 }

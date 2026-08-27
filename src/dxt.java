@@ -1,30 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dxt(eaf b, dtv c, bmi d, int e) implements dxw {
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eaf.a.fieldOf("state_provider").forGetter(dxt::a),
-               dtv.b.fieldOf("target").forGetter(dxt::b),
-               bmi.b(0, 8).fieldOf("radius").forGetter(dxt::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dxt::d)
-            )
-            .apply($$0, dxt::new)
-   );
-
-   public eaf a() {
-      return this.b;
+public class dxt extends dxv<eag> {
+   public dxt(Codec<eag> $$0) {
+      super($$0);
    }
 
-   public dtv b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dxx<eag> $$0) {
+      czs $$1 = $$0.b();
+      axr $$2 = $$0.d();
+      ib $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public bmi c() {
-      return this.d;
-   }
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = axk.d(-$$4); $$6 <= axk.f($$4); $$6++) {
+            for (int $$7 = axk.d(-$$4); $$7 <= axk.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dca.fz.n());
+               }
+            }
+         }
 
-   public int d() {
-      return this.e;
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
+
+      return true;
    }
 }

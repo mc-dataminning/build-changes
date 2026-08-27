@@ -1,30 +1,59 @@
-import org.joml.Vector3f;
+public class fjd extends fjo {
+   private static final wg a = wg.c("symlink_warning.title.world").a(n.r);
+   private static final wg b = wg.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final wg c = wg.c("symlink_warning.title.pack").a(n.r);
+   private static final wg d = wg.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final wg o;
+   private final String p;
+   private final Runnable q;
+   private final fhb r = new fhb().b(10);
 
-public class fjd extends fii {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int k = 16;
-   private static final int l = 16;
-   private final ajh m = new ajh("textures/gui/hanging_signs/" + this.a.b() + ".png");
+   public fjd(wg $$0, wg $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+   }
 
-   public fjd(dlr $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, vu.c("hanging_sign.edit"));
+   public static fjo a(Runnable $$0) {
+      return new fjd(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fjo b(Runnable $$0) {
+      return new fjd(c, d, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   protected void b(fav $$0, dnb $$1) {
-      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
+   protected void aN_() {
+      super.aN_();
+      this.r.c().b();
+      fhb.b $$0 = this.r.d(1);
+      $$0.a(new few(this.i, this.m));
+      $$0.a(new fej(this.o, this.m).d(this.k - 50).b(true));
+      int $$1 = 120;
+      fhb $$2 = new fhb().a(5);
+      fhb.b $$3 = $$2.d(3);
+      $$3.a(fdp.a(wf.n, $$0x -> ac.j().a(this.p)).b(120, 20).a());
+      $$3.a(fdp.a(wf.o, $$0x -> this.j.o.a(this.p)).b(120, 20).a());
+      $$3.a(fdp.a(wf.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.r.a(this::c);
    }
 
    @Override
-   protected void a(fav $$0, dnb $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   protected void c() {
+      this.r.a();
+      fha.a(this.r, this.G());
    }
 
    @Override
-   protected Vector3f o() {
-      return c;
+   public wg i() {
+      return wf.a(super.i(), this.o);
+   }
+
+   @Override
+   public void d() {
+      this.q.run();
    }
 }

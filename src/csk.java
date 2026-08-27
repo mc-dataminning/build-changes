@@ -1,189 +1,107 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class csk {
-   public static final int a = 20;
-   private static final List<csk.a<csj>> b = Lists.newArrayList();
-   private static final List<csk.a<cqh>> c = Lists.newArrayList();
-   private static final List<ctm> d = Lists.newArrayList();
-   private static final Predicate<cqm> e = $$0 -> {
-      for (ctm $$1 : d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
+public class csk extends cre {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final wg c = wg.c(ac.a("item", new ajt("smithing_template.ingredients"))).a(a);
+   private static final wg j = wg.c(ac.a("item", new ajt("smithing_template.applies_to"))).a(a);
+   private static final wg k = wg.c(ac.a("upgrade", new ajt("netherite_upgrade"))).a(a);
+   private static final wg l = wg.c(ac.a("item", new ajt("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final wg m = wg.c(ac.a("item", new ajt("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final wg n = wg.c(ac.a("item", new ajt("smithing_template.armor_trim.base_slot_description")));
+   private static final wg o = wg.c(ac.a("item", new ajt("smithing_template.armor_trim.additions_slot_description")));
+   private static final wg p = wg.c(ac.a("item", new ajt("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final wg q = wg.c(ac.a("item", new ajt("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final wg r = wg.c(ac.a("item", new ajt("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final wg s = wg.c(ac.a("item", new ajt("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final ajt t = new ajt("item/empty_armor_slot_helmet");
+   private static final ajt u = new ajt("item/empty_armor_slot_chestplate");
+   private static final ajt v = new ajt("item/empty_armor_slot_leggings");
+   private static final ajt w = new ajt("item/empty_armor_slot_boots");
+   private static final ajt x = new ajt("item/empty_slot_hoe");
+   private static final ajt y = new ajt("item/empty_slot_axe");
+   private static final ajt z = new ajt("item/empty_slot_sword");
+   private static final ajt A = new ajt("item/empty_slot_shovel");
+   private static final ajt B = new ajt("item/empty_slot_pickaxe");
+   private static final ajt C = new ajt("item/empty_slot_ingot");
+   private static final ajt D = new ajt("item/empty_slot_redstone_dust");
+   private static final ajt E = new ajt("item/empty_slot_quartz");
+   private static final ajt F = new ajt("item/empty_slot_emerald");
+   private static final ajt G = new ajt("item/empty_slot_diamond");
+   private static final ajt H = new ajt("item/empty_slot_lapis_lazuli");
+   private static final ajt I = new ajt("item/empty_slot_amethyst_shard");
+   private final wg J;
+   private final wg K;
+   private final wg L;
+   private final wg M;
+   private final wg N;
+   private final List<ajt> O;
+   private final List<ajt> P;
 
-      return false;
-   };
-
-   public static boolean a(cqm $$0) {
-      return b($$0) || c($$0);
+   public csk(wg $$0, wg $$1, wg $$2, wg $$3, wg $$4, List<ajt> $$5, List<ajt> $$6) {
+      super(new cre.a());
+      this.J = $$0;
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.N = $$4;
+      this.O = $$5;
+      this.P = $$6;
    }
 
-   protected static boolean b(cqm $$0) {
-      for (csk.a<cqh> $$1 : c) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static csk a(ajs<ctn> $$0) {
+      return a($$0.a());
    }
 
-   protected static boolean c(cqm $$0) {
-      for (csk.a<csj> $$1 : b) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static csk a(ajt $$0) {
+      return new csk(l, m, wg.c(ac.a("trim_pattern", $$0)).a(a), n, o, B(), C());
    }
 
-   public static boolean a(il<csj> $$0) {
-      for (csk.a<csj> $$1 : b) {
-         if ($$1.c.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static csk h() {
+      return new csk(p, q, k, r, s, D(), E());
    }
 
-   public static boolean a(cqm $$0, cqm $$1) {
-      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
+   private static List<ajt> B() {
+      return List.of(t, u, v, w);
    }
 
-   protected static boolean b(cqm $$0, cqm $$1) {
-      for (csk.a<cqh> $$2 : c) {
-         if ($$0.a($$2.a) && $$2.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   private static List<ajt> C() {
+      return List.of(C, D, H, E, G, F, I);
    }
 
-   protected static boolean c(cqm $$0, cqm $$1) {
-      il<csj> $$2 = csl.d($$0);
-
-      for (csk.a<csj> $$3 : b) {
-         if ($$3.a.a($$2) && $$3.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   private static List<ajt> D() {
+      return List.of(t, z, u, B, v, y, w, x, A);
    }
 
-   public static cqm d(cqm $$0, cqm $$1) {
-      if ($$1.b()) {
-         return $$1;
-      } else {
-         il<csj> $$2 = csl.d($$1);
-
-         for (csk.a<cqh> $$3 : c) {
-            if ($$1.a($$3.a) && $$3.b.a($$0)) {
-               return csl.a(new cqm($$3.c), $$2);
-            }
-         }
-
-         for (csk.a<csj> $$4 : b) {
-            if ($$4.a.a($$2) && $$4.b.a($$0)) {
-               return csl.a(new cqm($$1.d()), $$4.c);
-            }
-         }
-
-         return $$1;
-      }
+   private static List<ajt> E() {
+      return List.of(C);
    }
 
-   public static void a() {
-      a(cqp.sj);
-      a(cqp.vm);
-      a(cqp.vp);
-      a(cqp.sj, cqp.pt, cqp.vm);
-      a(cqp.vm, cqp.vl, cqp.vp);
-      a(csm.c, cqp.ss, csm.d);
-      a(csm.c, cqp.sg, csm.d);
-      a(csm.c, cqp.uB, csm.d);
-      a(csm.c, cqp.sn, csm.d);
-      a(csm.c, cqp.sl, csm.d);
-      a(csm.c, cqp.rz, csm.d);
-      a(csm.c, cqp.so, csm.d);
-      a(csm.c, cqp.qX, csm.e);
-      a(csm.c, cqp.lG, csm.d);
-      a(csm.c, cqp.si, csm.f);
-      a(csm.f, cqp.ui, csm.g);
-      a(csm.g, cqp.lG, csm.h);
-      a(csm.g, cqp.sm, csm.i);
-      a(csm.h, cqp.sm, csm.j);
-      a(csm.i, cqp.lG, csm.j);
-      a(csm.f, cqp.so, csm.n);
-      a(csm.n, cqp.lG, csm.o);
-      a(csm.f, cqp.uB, csm.k);
-      a(csm.k, cqp.lG, csm.l);
-      a(csm.k, cqp.qX, csm.m);
-      a(csm.k, cqp.sm, csm.s);
-      a(csm.l, cqp.sm, csm.t);
-      a(csm.s, cqp.lG, csm.t);
-      a(csm.s, cqp.qX, csm.u);
-      a(csm.f, cqp.on, csm.v);
-      a(csm.v, cqp.lG, csm.w);
-      a(csm.v, cqp.qX, csm.x);
-      a(csm.p, cqp.sm, csm.s);
-      a(csm.q, cqp.sm, csm.t);
-      a(csm.f, cqp.rz, csm.p);
-      a(csm.p, cqp.lG, csm.q);
-      a(csm.p, cqp.qX, csm.r);
-      a(csm.f, cqp.rb, csm.y);
-      a(csm.y, cqp.lG, csm.z);
-      a(csm.f, cqp.ss, csm.A);
-      a(csm.A, cqp.qX, csm.B);
-      a(csm.A, cqp.sm, csm.C);
-      a(csm.B, cqp.sm, csm.D);
-      a(csm.C, cqp.qX, csm.D);
-      a(csm.E, cqp.sm, csm.C);
-      a(csm.F, cqp.sm, csm.C);
-      a(csm.G, cqp.sm, csm.D);
-      a(csm.f, cqp.sl, csm.E);
-      a(csm.E, cqp.lG, csm.F);
-      a(csm.E, cqp.qX, csm.G);
-      a(csm.f, cqp.sg, csm.H);
-      a(csm.H, cqp.lG, csm.I);
-      a(csm.H, cqp.qX, csm.J);
-      a(csm.f, cqp.sn, csm.K);
-      a(csm.K, cqp.lG, csm.L);
-      a(csm.K, cqp.qX, csm.M);
-      a(csm.c, cqp.sm, csm.N);
-      a(csm.N, cqp.lG, csm.O);
-      a(csm.f, cqp.vO, csm.Q);
-      a(csm.Q, cqp.lG, csm.R);
+   @Override
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(this.L);
+      $$2.add(wf.a);
+      $$2.add(j);
+      $$2.add(wf.a().b(this.J));
+      $$2.add(c);
+      $$2.add(wf.a().b(this.K));
    }
 
-   private static void a(cqh $$0, cqh $$1, cqh $$2) {
-      if (!($$0 instanceof crb)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + ki.h.b($$0));
-      } else if (!($$2 instanceof crb)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + ki.h.b($$2));
-      } else {
-         c.add(new csk.a<>($$0.k(), ctm.a($$1), $$2.k()));
-      }
+   public wg i() {
+      return this.M;
    }
 
-   private static void a(cqh $$0) {
-      if (!($$0 instanceof crb)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + ki.h.b($$0));
-      } else {
-         d.add(ctm.a($$0));
-      }
+   public wg j() {
+      return this.N;
    }
 
-   private static void a(il<csj> $$0, cqh $$1, il<csj> $$2) {
-      b.add(new csk.a<>($$0, ctm.a($$1), $$2));
+   public List<ajt> k() {
+      return this.O;
    }
 
-   static record a<T>(il<T> a, ctm b, il<T> c) {
+   public List<ajt> l() {
+      return this.P;
    }
 }

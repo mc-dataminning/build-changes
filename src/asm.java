@@ -1,56 +1,55 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class asm {
-   private final ara a;
-   private final asg<InputStream> b;
-   private final asg<asq> c;
+public abstract class asm<T> {
+   private final erq a;
+
+   protected asm(erq $$0) {
+      this.a = $$0;
+   }
+
    @Nullable
-   private asq d;
+   public T a(Path $$0, List<err> $$1) throws IOException {
+      Path $$2 = $$0;
 
-   public asm(ara $$0, asg<InputStream> $$1, asg<asq> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public asm(ara $$0, asg<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = asq.b;
-      this.d = asq.a;
-   }
-
-   public ara a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.a.b();
-   }
-
-   public Optional<arv> c() {
-      return this.a.c();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public asq f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
       }
 
-      return this.d;
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
+
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      }
+
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
    }
+
+   @Nullable
+   protected abstract T d(Path var1) throws IOException;
+
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

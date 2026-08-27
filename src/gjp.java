@@ -1,21 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class gjp extends gjt<ccs, frl<ccs>> {
+   private final fzv a;
 
-public class gjp implements gjg {
-   public static final Codec<gjp> b = RecordCodecBuilder.create($$0 -> $$0.group(axe.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gjp::new));
-   private final axe c;
-
-   public gjp(axe $$0) {
-      this.c = $$0;
+   public gjp(ghd<ccs, frl<ccs>> $$0, fzv $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(aso $$0, gjg.a $$1) {
-      $$1.a(this.c.c());
-   }
+   public void a(ewi $$0, fzz $$1, int $$2, ccs $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      crj $$10 = $$3.d(bqc.a);
+      if ($$3.y() && !$$3.gF()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gt()) {
+            $$11 -= 0.2F * axk.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * axk.a($$7 * 0.6F);
+         }
 
-   @Override
-   public gji a() {
-      return gjj.c;
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, crg.h, false, $$0, $$1, $$2);
+         $$0.b();
+      }
    }
 }

@@ -1,24 +1,20 @@
-import java.util.Map;
-import java.util.stream.Collectors;
-
-public class fyd implements AutoCloseable {
-   public static final int a = fya.H().stream().mapToInt(fya::I).sum();
-   private final Map<fya, etw> b = fya.H().stream().collect(Collectors.toMap($$0 -> (fya)$$0, $$0 -> new etw($$0.I())));
-
-   public etw a(fya $$0) {
-      return this.b.get($$0);
+public class fyd extends fxf {
+   protected fyd(fuh $$0, double $$1, double $$2, double $$3, double $$4, fyi $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   public void a() {
-      this.b.values().forEach(etw::g);
-   }
+   public static class a implements fxq<ko> {
+      private final fyi a;
 
-   public void b() {
-      this.b.values().forEach(etw::h);
-   }
+      public a(fyi $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public void close() {
-      this.b.values().forEach(etw::i);
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyd($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

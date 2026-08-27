@@ -1,44 +1,78 @@
-import java.util.Arrays;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Set;
 
-public enum chw {
-   a(0, aty.Bh, aty.Bp),
-   b(40, aty.Bg, aty.Bq),
-   c(80, aty.Bi, aty.Bq);
+public class chw {
+   public static final float a = 0.6F;
+   public static final float b = 4.0F;
+   public static final float c = 8.0F;
+   public static final float d = 20.0F;
+   static final List<cay<? extends cax<? super chv>>> e = ImmutableList.of(cay.c, cay.f, cay.d, cay.z);
+   static final List<bzr<?>> f = ImmutableList.of(
+      bzr.n, bzr.h, bzr.B, bzr.E, bzr.o, bzr.m, bzr.aU, bzr.aZ, bzr.aV, bzr.aW, bzr.aX, bzr.aY, new bzr[]{bzr.ba, bzr.bb, bzr.x, bzr.y, bzr.t}
+   );
 
-   private static final chw[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final atx f;
-   private final atx g;
-
-   private chw(int $$0, atx $$1, atx $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   protected static brp<?> a(brp<chv> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(cli.a));
+      $$0.b(cli.k);
+      $$0.f();
+      return $$0;
    }
 
-   public int a() {
-      return this.e;
+   private static void b(brp<chv> $$0) {
+      $$0.a(cli.a, 0, ImmutableList.of(new bva(0.8F), new btm(45, 90)));
    }
 
-   public atx b() {
-      return this.f;
+   private static void c(brp<chv> $$0) {
+      $$0.a(
+         cli.b,
+         ImmutableList.of(
+            Pair.of(0, bus.a($$0x -> $$0x.dP().c(bzr.B))),
+            Pair.of(1, bus.a(chv::go)),
+            Pair.of(2, new chw.a(20, 40)),
+            Pair.of(3, new bud(ImmutableList.of(Pair.of(new bsq(20, 100), 1), Pair.of(bty.a(0.6F), 2))))
+         )
+      );
    }
 
-   public atx c() {
-      return this.g;
+   private static void d(brp<chv> $$0) {
+      $$0.a(
+         cli.k,
+         ImmutableList.of(Pair.of(0, buv.a()), Pair.of(1, new chz()), Pair.of(2, new chy()), Pair.of(3, new cia()), Pair.of(4, new cib())),
+         ImmutableSet.of(Pair.of(bzr.o, bzs.a), Pair.of(bzr.m, bzs.b))
+      );
    }
 
-   public static chw a(int $$0) {
-      for (chw $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
+   static void a(chv $$0) {
+      $$0.dP().a(ImmutableList.of(cli.k, cli.b));
+   }
+
+   public static class a extends btq {
+      @VisibleForTesting
+      public a(int $$0, int $$1) {
+         super($$0, $$1);
       }
 
-      return a;
-   }
+      @Override
+      protected void c(aps $$0, bqq $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         $$1.a(aum.cM);
+         $$1.b(bqz.p);
+      }
 
-   public boolean d() {
-      return this == c;
+      @Override
+      protected void b(aps $$0, bqq $$1, long $$2) {
+         super.b($$0, $$1, $$2);
+         $$1.b(bqz.a);
+         if ($$1.dP().a(bzr.o)) {
+            $$1.dP().a(bzr.aV, aym.a, 60L);
+         }
+      }
    }
 }

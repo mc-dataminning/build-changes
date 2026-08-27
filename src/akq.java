@@ -1,46 +1,72 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class akq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.ban.failed"));
+   private static final int a = 2;
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", ej.a()).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"), null)))
-                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"), el.a($$0x, "reason"))))
-            )
-      );
+   private static akq.b a(ae $$0, boolean $$1) {
+      Optional<ar> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return akq.b.b;
+      } else if ($$1) {
+         return akq.b.a;
+      } else {
+         return $$2.get().j() ? akq.b.b : akq.b.c;
+      }
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1, @Nullable vu $$2) throws CommandSyntaxException {
-      ath $$3 = $$0.l().ah().f();
-      int $$4 = 0;
+   private static boolean a(Stack<akq.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         akq.b $$2 = (akq.b)$$0.peek($$1);
+         if ($$2 == akq.b.a) {
+            return true;
+         }
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            ati $$6 = new ati($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> vu.a("commands.ban.success", vu.b($$5.getName()), $$6.d()), true);
-            apg $$7 = $$0.l().ah().a($$5.getId());
-            if ($$7 != null) {
-               $$7.d.b(vu.c("multiplayer.disconnect.banned"));
-            }
+         if ($$2 == akq.b.b) {
+            return false;
          }
       }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
+      return false;
+   }
+
+   private static boolean a(ag $$0, Stack<akq.b> $$1, Predicate<ag> $$2, akq.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      akq.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
       }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, akq.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<akq.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(akq.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

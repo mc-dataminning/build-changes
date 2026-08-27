@@ -1,36 +1,17 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record ens(env b) implements env {
-   public static final Codec<ens> a = RecordCodecBuilder.create($$0 -> $$0.group(enx.a.fieldOf("term").forGetter(ens::c)).apply($$0, ens::new));
+public class ens {
+   public static final Codec<enu> a = kr.F.q().dispatch(enu::a, env::a);
+   public static final env b = a("empty", enp.a);
+   public static final env c = a("item", enr.a);
+   public static final env d = a("loot_table", enx.a);
+   public static final env e = a("dynamic", eno.a);
+   public static final env f = a("tag", enz.a);
+   public static final env g = a("alternatives", enl.a);
+   public static final env h = a("sequence", eny.a);
+   public static final env i = a("group", enq.a);
 
-   @Override
-   public enw b() {
-      return enx.b;
-   }
-
-   public boolean a(ekw $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<ene<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public void a(elf $$0) {
-      env.super.a($$0);
-      this.b.a($$0);
-   }
-
-   public static env.a a(env.a $$0) {
-      ens $$1 = new ens($$0.build());
-      return () -> $$1;
-   }
-
-   public env c() {
-      return this.b;
+   private static env a(String $$0, Codec<? extends enu> $$1) {
+      return iy.a(kr.F, new ajt($$0), new env($$1));
    }
 }

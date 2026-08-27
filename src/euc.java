@@ -1,93 +1,166 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public class euc extends eua {
-   private final euf f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class euc {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private gps g;
 
-   public euc(euf $$0, eub.a $$1, float $$2) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1.a()).invert();
-      this.h = new Matrix3f($$1.b()).invert();
-      this.i = $$2;
-      this.a();
+   @Nullable
+   static euc a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return euh.a("Allocate new source") ? null : new euc($$0[0]);
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   private euc(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         euh.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
+
+            this.l();
+            this.g = null;
+         }
+
+         AL10.alDeleteSources(new int[]{this.d});
+         euh.a("Cleanup");
+      }
+   }
+
+   public void c() {
+      AL10.alSourcePlay(this.d);
+   }
+
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
+      }
+   }
+
    public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      ih $$1 = ih.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
    }
 
-   @Override
-   public euf a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         euh.a("Stop");
+      }
    }
 
-   @Override
-   public euf a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   public boolean g() {
+      return this.k() == 4114;
    }
 
-   @Override
-   public euf a(float $$0, float $$1) {
-      return this;
+   public boolean h() {
+      return this.k() == 4116;
    }
 
-   @Override
-   public euf a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
+   public void a(esa $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
    }
 
-   @Override
-   public euf b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
    }
 
-   @Override
-   public euf a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(eui $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(gps $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new eui($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
+            }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
+         }
+      }
+   }
+
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
+      }
+   }
+
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         euh.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         euh.a("Remove processed buffers");
+      }
+
+      return $$0;
    }
 }

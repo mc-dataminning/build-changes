@@ -8,14 +8,14 @@ public class cf extends cx<cf.a> {
       return cf.a.a;
    }
 
-   public void a(apg $$0, box $$1, bnw $$2) {
-      ekw $$3 = br.b($$0, $$1);
+   public void a(apt $$0, bpv $$1, bot $$2) {
+      enb $$3 = br.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c, Optional<bg> d) implements cx.a {
       public static final Codec<cf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cf.a::a), awe.a(br.b, "entity").forGetter(cf.a::e), awe.a(bg.a, "killing_blow").forGetter(cf.a::f))
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(cf.a::a), aws.a(br.b, "entity").forGetter(cf.a::e), aws.a(bg.a, "killing_blow").forGetter(cf.a::f))
                .apply($$0, cf.a::new)
       );
 
@@ -79,7 +79,7 @@ public class cf extends cx<cf.a> {
          return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(apg $$0, ekw $$1, bnw $$2) {
+      public boolean a(apt $$0, enb $$1, bot $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

@@ -1,26 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface dcb {
+   boolean b(cza var1, ib var2, doz var3);
 
-public class dcb extends dal {
-   public static final MapCodec<dcb> a = b(dcb::new);
-   protected static final float b = 6.0F;
-   protected static final eqm c = dac.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   boolean a(cyx var1, axr var2, ib var3, doz var4);
 
-   @Override
-   public MapCodec<dcb> a() {
-      return a;
+   void a(aps var1, axr var2, ib var3, doz var4);
+
+   default ib a(ib $$0) {
+      return switch (this.ar_()) {
+         case a -> $$0.c();
+         case b -> $$0;
+      };
    }
 
-   protected dcb(dna.d $$0) {
-      super($$0);
+   default dcb.a ar_() {
+      return dcb.a.b;
    }
 
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean b(dnb $$0, cwh $$1, ib $$2) {
-      return $$0.a(aun.cf);
+   public static enum a {
+      a,
+      b;
    }
 }

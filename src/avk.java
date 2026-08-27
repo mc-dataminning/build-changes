@@ -1,346 +1,130 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.RandomAccess;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public final class avk {
+   public static final avr<cre> a = a("wool");
+   public static final avr<cre> b = a("planks");
+   public static final avr<cre> c = a("stone_bricks");
+   public static final avr<cre> d = a("wooden_buttons");
+   public static final avr<cre> e = a("stone_buttons");
+   public static final avr<cre> f = a("buttons");
+   public static final avr<cre> g = a("wool_carpets");
+   public static final avr<cre> h = a("wooden_doors");
+   public static final avr<cre> i = a("wooden_stairs");
+   public static final avr<cre> j = a("wooden_slabs");
+   public static final avr<cre> k = a("wooden_fences");
+   public static final avr<cre> l = a("fence_gates");
+   public static final avr<cre> m = a("wooden_pressure_plates");
+   public static final avr<cre> n = a("wooden_trapdoors");
+   public static final avr<cre> o = a("doors");
+   public static final avr<cre> p = a("saplings");
+   public static final avr<cre> q = a("logs_that_burn");
+   public static final avr<cre> r = a("logs");
+   public static final avr<cre> s = a("dark_oak_logs");
+   public static final avr<cre> t = a("oak_logs");
+   public static final avr<cre> u = a("birch_logs");
+   public static final avr<cre> v = a("acacia_logs");
+   public static final avr<cre> w = a("cherry_logs");
+   public static final avr<cre> x = a("jungle_logs");
+   public static final avr<cre> y = a("spruce_logs");
+   public static final avr<cre> z = a("mangrove_logs");
+   public static final avr<cre> A = a("crimson_stems");
+   public static final avr<cre> B = a("warped_stems");
+   public static final avr<cre> C = a("bamboo_blocks");
+   public static final avr<cre> D = a("wart_blocks");
+   public static final avr<cre> E = a("banners");
+   public static final avr<cre> F = a("sand");
+   public static final avr<cre> G = a("smelts_to_glass");
+   public static final avr<cre> H = a("stairs");
+   public static final avr<cre> I = a("slabs");
+   public static final avr<cre> J = a("walls");
+   public static final avr<cre> K = a("anvil");
+   public static final avr<cre> L = a("rails");
+   public static final avr<cre> M = a("leaves");
+   public static final avr<cre> N = a("trapdoors");
+   public static final avr<cre> O = a("small_flowers");
+   public static final avr<cre> P = a("beds");
+   public static final avr<cre> Q = a("fences");
+   public static final avr<cre> R = a("tall_flowers");
+   public static final avr<cre> S = a("flowers");
+   public static final avr<cre> T = a("piglin_repellents");
+   public static final avr<cre> U = a("piglin_loved");
+   public static final avr<cre> V = a("ignored_by_piglin_babies");
+   public static final avr<cre> W = a("piglin_food");
+   public static final avr<cre> X = a("fox_food");
+   public static final avr<cre> Y = a("gold_ores");
+   public static final avr<cre> Z = a("iron_ores");
+   public static final avr<cre> aa = a("diamond_ores");
+   public static final avr<cre> ab = a("redstone_ores");
+   public static final avr<cre> ac = a("lapis_ores");
+   public static final avr<cre> ad = a("coal_ores");
+   public static final avr<cre> ae = a("emerald_ores");
+   public static final avr<cre> af = a("copper_ores");
+   public static final avr<cre> ag = a("non_flammable_wood");
+   public static final avr<cre> ah = a("soul_fire_base_blocks");
+   public static final avr<cre> ai = a("candles");
+   public static final avr<cre> aj = a("dirt");
+   public static final avr<cre> ak = a("terracotta");
+   public static final avr<cre> al = a("completes_find_tree_tutorial");
+   public static final avr<cre> am = a("boats");
+   public static final avr<cre> an = a("chest_boats");
+   public static final avr<cre> ao = a("fishes");
+   public static final avr<cre> ap = a("signs");
+   public static final avr<cre> aq = a("music_discs");
+   public static final avr<cre> ar = a("creeper_drop_music_discs");
+   public static final avr<cre> as = a("coals");
+   public static final avr<cre> at = a("arrows");
+   public static final avr<cre> au = a("lectern_books");
+   public static final avr<cre> av = a("bookshelf_books");
+   public static final avr<cre> aw = a("beacon_payment_items");
+   public static final avr<cre> ax = a("stone_tool_materials");
+   public static final avr<cre> ay = a("stone_crafting_materials");
+   public static final avr<cre> az = a("freeze_immune_wearables");
+   public static final avr<cre> aA = a("axolotl_tempt_items");
+   public static final avr<cre> aB = a("dampens_vibrations");
+   public static final avr<cre> aC = a("cluster_max_harvestables");
+   public static final avr<cre> aD = a("compasses");
+   public static final avr<cre> aE = a("hanging_signs");
+   public static final avr<cre> aF = a("creeper_igniters");
+   public static final avr<cre> aG = a("noteblock_top_instruments");
+   public static final avr<cre> aH = a("foot_armor");
+   public static final avr<cre> aI = a("leg_armor");
+   public static final avr<cre> aJ = a("chest_armor");
+   public static final avr<cre> aK = a("head_armor");
+   public static final avr<cre> aL = a("skulls");
+   public static final avr<cre> aM = a("trimmable_armor");
+   public static final avr<cre> aN = a("trim_materials");
+   public static final avr<cre> aO = a("trim_templates");
+   public static final avr<cre> aP = a("sniffer_food");
+   public static final avr<cre> aQ = a("decorated_pot_sherds");
+   public static final avr<cre> aR = a("decorated_pot_ingredients");
+   public static final avr<cre> aS = a("swords");
+   public static final avr<cre> aT = a("axes");
+   public static final avr<cre> aU = a("hoes");
+   public static final avr<cre> aV = a("pickaxes");
+   public static final avr<cre> aW = a("shovels");
+   public static final avr<cre> aX = a("tools");
+   public static final avr<cre> aY = a("breaks_decorated_pots");
+   public static final avr<cre> aZ = a("villager_plantable_seeds");
+   public static final avr<cre> ba = a("dyeable");
+   public static final avr<cre> bb = a("enchantable/foot_armor");
+   public static final avr<cre> bc = a("enchantable/leg_armor");
+   public static final avr<cre> bd = a("enchantable/chest_armor");
+   public static final avr<cre> be = a("enchantable/head_armor");
+   public static final avr<cre> bf = a("enchantable/armor");
+   public static final avr<cre> bg = a("enchantable/sword");
+   public static final avr<cre> bh = a("enchantable/weapon");
+   public static final avr<cre> bi = a("enchantable/mining");
+   public static final avr<cre> bj = a("enchantable/mining_loot");
+   public static final avr<cre> bk = a("enchantable/fishing");
+   public static final avr<cre> bl = a("enchantable/trident");
+   public static final avr<cre> bm = a("enchantable/durability");
+   public static final avr<cre> bn = a("enchantable/bow");
+   public static final avr<cre> bo = a("enchantable/equippable");
+   public static final avr<cre> bp = a("enchantable/crossbow");
+   public static final avr<cre> bq = a("enchantable/vanishing");
 
-public class avk<T> extends AbstractList<T> implements Serializable, Cloneable, Deque<T>, RandomAccess {
-   private static final int a = 1;
-   private Object[] b;
-   private int c;
-   private int d;
-
-   public avk() {
-      this(1);
+   private avk() {
    }
 
-   public avk(int $$0) {
-      this.b = new Object[$$0];
-      this.c = 0;
-      this.d = 0;
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public int a() {
-      return this.b.length;
-   }
-
-   private int a(int $$0) {
-      return ($$0 + this.c) % this.b.length;
-   }
-
-   @Override
-   public T get(int $$0) {
-      this.b($$0);
-      return this.c(this.a($$0));
-   }
-
-   private static void a(int $$0, int $$1) {
-      if ($$0 < 0 || $$0 >= $$1) {
-         throw new IndexOutOfBoundsException($$0);
-      }
-   }
-
-   private void b(int $$0) {
-      a($$0, this.d);
-   }
-
-   private T c(int $$0) {
-      return (T)this.b[$$0];
-   }
-
-   @Override
-   public T set(int $$0, T $$1) {
-      this.b($$0);
-      Objects.requireNonNull($$1);
-      int $$2 = this.a($$0);
-      T $$3 = this.c($$2);
-      this.b[$$2] = $$1;
-      return $$3;
-   }
-
-   @Override
-   public void add(int $$0, T $$1) {
-      a($$0, this.d + 1);
-      Objects.requireNonNull($$1);
-      if (this.d == this.b.length) {
-         this.b();
-      }
-
-      int $$2 = this.a($$0);
-      if ($$0 == this.d) {
-         this.b[$$2] = $$1;
-      } else if ($$0 == 0) {
-         this.c--;
-         if (this.c < 0) {
-            this.c = this.c + this.b.length;
-         }
-
-         this.b[this.a(0)] = $$1;
-      } else {
-         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
-            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
-         }
-
-         this.b[$$2] = $$1;
-      }
-
-      this.modCount++;
-      this.d++;
-   }
-
-   private void b() {
-      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
-      Object[] $$1 = new Object[$$0];
-      this.a($$1, this.d);
-      this.c = 0;
-      this.b = $$1;
-   }
-
-   @Override
-   public T remove(int $$0) {
-      this.b($$0);
-      int $$1 = this.a($$0);
-      T $$2 = this.c($$1);
-      if ($$0 == 0) {
-         this.b[$$1] = null;
-         this.c++;
-      } else if ($$0 == this.d - 1) {
-         this.b[$$1] = null;
-      } else {
-         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
-            this.b[this.a($$3 - 1)] = this.get($$3);
-         }
-
-         this.b[this.a(this.d - 1)] = null;
-      }
-
-      this.modCount++;
-      this.d--;
-      return $$2;
-   }
-
-   @Override
-   public boolean removeIf(Predicate<? super T> $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.d; $$2++) {
-         T $$3 = this.get($$2);
-         if ($$0.test($$3)) {
-            $$1++;
-         } else if ($$1 != 0) {
-            this.b[this.a($$2 - $$1)] = $$3;
-            this.b[this.a($$2)] = null;
-         }
-      }
-
-      this.modCount += $$1;
-      this.d -= $$1;
-      return $$1 != 0;
-   }
-
-   private void a(Object[] $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0[$$2] = this.get($$2);
-      }
-   }
-
-   @Override
-   public void replaceAll(UnaryOperator<T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = this.a($$1);
-         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
-      }
-   }
-
-   @Override
-   public void forEach(Consumer<? super T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         $$0.accept(this.get($$1));
-      }
-   }
-
-   @Override
-   public void addFirst(T $$0) {
-      this.add(0, $$0);
-   }
-
-   @Override
-   public void addLast(T $$0) {
-      this.add(this.d, $$0);
-   }
-
-   @Override
-   public boolean offerFirst(T $$0) {
-      this.addFirst($$0);
-      return true;
-   }
-
-   @Override
-   public boolean offerLast(T $$0) {
-      this.addLast($$0);
-      return true;
-   }
-
-   @Override
-   public T removeFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(0);
-      }
-   }
-
-   @Override
-   public T removeLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(this.d - 1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public T pollFirst() {
-      return this.d == 0 ? null : this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   public T pollLast() {
-      return this.d == 0 ? null : this.removeLast();
-   }
-
-   @Override
-   public T getFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(0);
-      }
-   }
-
-   @Override
-   public T getLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(this.d - 1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public T peekFirst() {
-      return this.d == 0 ? null : this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   public T peekLast() {
-      return this.d == 0 ? null : this.getLast();
-   }
-
-   @Override
-   public boolean removeFirstOccurrence(Object $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean removeLastOccurrence(Object $$0) {
-      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean offer(T $$0) {
-      return this.offerLast($$0);
-   }
-
-   @Override
-   public T remove() {
-      return this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   public T poll() {
-      return this.pollFirst();
-   }
-
-   @Override
-   public T element() {
-      return this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   public T peek() {
-      return this.peekFirst();
-   }
-
-   @Override
-   public void push(T $$0) {
-      this.addFirst($$0);
-   }
-
-   @Override
-   public T pop() {
-      return this.removeFirst();
-   }
-
-   @Override
-   public Iterator<T> descendingIterator() {
-      return new avk.a();
-   }
-
-   class a implements Iterator<T> {
-      private int b = avk.this.size() - 1;
-
-      public a() {
-      }
-
-      @Override
-      public boolean hasNext() {
-         return this.b >= 0;
-      }
-
-      @Override
-      public T next() {
-         return avk.this.get(this.b--);
-      }
-
-      @Override
-      public void remove() {
-         avk.this.remove(this.b + 1);
-      }
+   private static avr<cre> a(String $$0) {
+      return avr.a(ks.F, new ajt($$0));
    }
 }

@@ -1,189 +1,78 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dky extends dki implements bnl, ere.a {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
-   @Nullable
-   public dky.b i;
-   private dky.a l;
-   private cqm m = cqm.h;
-   @Nullable
-   protected ajh j;
-   protected long k;
+public class dky extends dau {
+   public static final MapCodec<dky> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(diz.a.b.fieldOf("kind").forGetter(dau::b), u()).apply($$0, dky::new));
+   public static final dpt d = dft.aE;
+   private static final Map<ih, est> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ih.c,
+         dby.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ih.d,
+         dby.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         ih.f,
+         dby.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ih.e,
+         dby.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
-   public dky(ib $$0, dnb $$1) {
-      super(dkk.O, $$0, $$1);
-      this.l = dky.a.a;
+   @Override
+   public MapCodec<? extends dky> a() {
+      return c;
+   }
+
+   protected dky(diz.a $$0, doy.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(d, ih.c));
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.l.a($$0);
-      if (!this.b($$0) && !this.m.b()) {
-         $$0.a("item", this.m.b(new ta()));
-      }
+   public String g() {
+      return this.p().a();
    }
 
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.l = dky.a.b($$0);
-      if (!this.c_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = cqm.a($$0.p("item"));
-         } else {
-            this.m = cqm.h;
-         }
-      }
-   }
-
-   public aat j() {
-      return aat.a(this);
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b.get($$0.c(d));
    }
 
    @Override
-   public ta a(in.a $$0) {
-      return this.d($$0);
-   }
+   public doz a(cuo $$0) {
+      doz $$1 = super.a($$0);
+      cyd $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      ih[] $$4 = $$0.f();
 
-   public ih k() {
-      return this.n().c(dnr.R);
-   }
-
-   public dky.a l() {
-      return this.l;
-   }
-
-   public void b(cqm $$0) {
-      this.l = dky.a.b(coh.a($$0));
-   }
-
-   public cqm s() {
-      return a(this.l);
-   }
-
-   public static cqm a(dky.a $$0) {
-      cqm $$1 = cqp.eB.am_();
-      ta $$2 = $$0.a(new ta());
-      coh.a($$1, dkk.O, $$2);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public ajh aA_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(@Nullable ajh $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public long aB_() {
-      return this.k;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public cqm f() {
-      this.e_(null);
-      return this.m;
-   }
-
-   @Override
-   public cqm c(int $$0) {
-      this.e_(null);
-      cqm $$1 = this.m.a($$0);
-      if (this.m.b()) {
-         this.m = cqm.h;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(cqm $$0) {
-      this.e_(null);
-      this.m = $$0;
-   }
-
-   @Override
-   public dki t() {
-      return this;
-   }
-
-   public void a(dky.b $$0) {
-      if (this.o != null && !this.o.x_()) {
-         this.o.a(this.aC_(), this.n().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dky.b.values().length) {
-         this.h = this.o.X();
-         this.i = dky.b.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static record a(cqh b, cqh c, cqh d, cqh e) {
-      public static final dky.a a = new dky.a(cqp.qK, cqp.qK, cqp.qK, cqp.qK);
-
-      public ta a(ta $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            tg $$1 = new tg();
-            this.a().forEach($$1x -> $$1.add(tv.a(ki.h.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
+      for (ih $$5 : $$4) {
+         if ($$5.o().d()) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
          }
       }
 
-      public Stream<cqh> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static dky.a b(@Nullable ta $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            tg $$1 = $$0.c("sherds", 8);
-            return new dky.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cqh a(tg $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cqp.qK;
-         } else {
-            tx $$2 = $$0.k($$1);
-            return ki.h.a(ajh.a($$2.s_()));
-         }
-      }
+      return null;
    }
 
-   public static enum b {
-      a(7),
-      b(10);
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
 
-      public final int c;
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
 
-      private b(int $$0) {
-         this.c = $$0;
-      }
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

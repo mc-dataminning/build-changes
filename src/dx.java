@@ -1,12 +1,12 @@
 public class dx extends Exception {
-   private final vu a;
+   private final wg a;
 
-   public dx(vu $$0) {
+   public dx(wg $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public vu a() {
+   public wg a() {
       return this.a;
    }
 }

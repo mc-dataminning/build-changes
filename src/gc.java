@@ -4,7 +4,6 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 public class gc {
@@ -15,26 +14,31 @@ public class gc {
    }
 
    public gc.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<il<cqh>> $$1 = new MutableObject();
-      final MutableObject<ta> $$2 = new MutableObject();
+      final MutableObject<il<cre>> $$1 = new MutableObject();
+      final jl.a $$2 = jl.a();
       this.a.a($$0, new gf.c() {
          @Override
-         public void a(il<cqh> $$0) {
+         public void a(il<cre> $$0) {
             $$1.setValue($$0);
          }
 
          @Override
-         public void a(ta $$0) {
-            $$2.setValue($$0);
+         public <T> void a(jo<T> $$0, T $$1x) {
+            $$2.a($$0, $$1);
+         }
+
+         @Override
+         public void a(tm $$0) {
+            $$2.a(jp.a, ctt.a($$0));
          }
       });
-      return new gc.a(Objects.requireNonNull((il<cqh>)$$1.getValue(), "Parser gave no item"), (ta)$$2.getValue());
+      return new gc.a(Objects.requireNonNull((il<cre>)$$1.getValue(), "Parser gave no item"), $$2.a());
    }
 
    public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
       return this.a.a($$0);
    }
 
-   public static record a(il<cqh> a, @Nullable ta b) {
+   public static record a(il<cre> a, jl b) {
    }
 }

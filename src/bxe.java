@@ -1,32 +1,70 @@
-public class bxe extends bwd {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bxe(bpr $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class bxe extends bxl {
+   protected final bqw a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cyx f;
+
+   public bxe(bqw $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dM();
+      this.a(EnumSet.of(bxl.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      if (this.a.p() != null) {
+         return false;
+      } else if (!this.f.Q()) {
+         return false;
+      } else if (!this.a.bN()) {
+         return false;
+      } else if (!this.f.h(this.a.dm())) {
+         return false;
+      } else {
+         return !this.a.d(bqc.f).d() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      esa $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a && this.b > 0 && super.b();
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      this.b = 20;
-      this.a(true);
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public void d() {
-      this.a(false);
-   }
+   @Nullable
+   protected esa i() {
+      axr $$0 = this.a.ei();
+      ib $$1 = this.a.dm();
 
-   @Override
-   public void e() {
-      this.b--;
-      super.e();
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ib $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
+            return esa.c($$3);
+         }
+      }
+
+      return null;
    }
 }

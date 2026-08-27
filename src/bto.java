@@ -1,22 +1,27 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bto {
-   public static bss<bpp> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
+   private static final int a = 1;
 
-   public static bss<bpp> a(Predicate<bpp> $$0, Function<bpp, Float> $$1, int $$2) {
-      return buu.a(
-         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$3 -> $$3.group($$3.c(bys.m), $$3.b(bys.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new byv($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
+   public static bsh<bqo> a(float $$0) {
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$1 -> $$1.group($$1.a(bzr.n), $$1.c(bzr.m), $$1.b(bzr.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bO()) {
+                        return false;
+                     } else {
+                        bpv $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bsr($$8, true));
+                           $$3.a(new bzu(new bsr($$8, false), $$0, 1));
+                        }
+
+                        return true;
+                     }
+                  }))
       );
    }
 }

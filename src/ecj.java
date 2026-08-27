@@ -1,42 +1,20 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class ecj extends dtl {
-   private final cxw a;
-   private final doy b;
-   private final Optional<eci> c;
+public class ecj extends eca {
+   public static final Codec<ecj> b = doz.b.fieldOf("state").xmap(ecj::new, $$0 -> $$0.c).codec();
+   private final doz c;
 
-   public ecj(cxw $$0, doy $$1, Optional<eci> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected ecj(doz $$0) {
+      this.c = $$0;
    }
 
-   public int a(dso.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   @Override
+   protected ecb<?> a() {
+      return ecb.a;
    }
 
-   public dow a(cwi $$0, dsk.a $$1) {
-      return ((dps)this.a.a($$0.e, $$0.f)).b($$1);
-   }
-
-   public dnb a(ib $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public cxw d() {
-      return this.a;
-   }
-
-   public Optional<eci> e() {
+   @Override
+   public doz a(axr $$0, ib $$1) {
       return this.c;
-   }
-
-   public doy f() {
-      return this.b;
    }
 }

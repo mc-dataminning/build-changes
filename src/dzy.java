@@ -1,24 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dzy<P extends dzx> {
-   public static final dzy<eag> a = a("simple_state_provider", eag.b);
-   public static final dzy<eah> b = a("weighted_state_provider", eah.b);
-   public static final dzy<eac> c = a("noise_threshold_provider", eac.b);
-   public static final dzy<eab> d = a("noise_provider", eab.g);
-   public static final dzy<dzz> e = a("dual_noise_provider", dzz.b);
-   public static final dzy<eae> f = a("rotated_block_provider", eae.b);
-   public static final dzy<ead> g = a("randomized_int_state_provider", ead.b);
-   private final Codec<P> h;
+public class dzy implements dzz {
+   public static final Codec<dzy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ib.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dzy::new)
+   );
+   private final Optional<ib> b;
+   private final boolean c;
 
-   private static <P extends dzx> dzy<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.V, $$0, new dzy<>($$1));
+   private dzy(Optional<ib> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private dzy(Codec<P> $$0) {
-      this.h = $$0;
+   public static dzy a(ib $$0, boolean $$1) {
+      return new dzy(Optional.of($$0), $$1);
    }
 
-   public Codec<P> a() {
-      return this.h;
+   public static dzy a() {
+      return new dzy(Optional.empty(), false);
+   }
+
+   public Optional<ib> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

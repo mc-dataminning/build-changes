@@ -1,84 +1,77 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ekd {
-   private static final String a = "command_storage_";
-   private final Map<String, ekd.a> b = Maps.newHashMap();
-   private final ekg c;
+public abstract class ekd<M extends ekd<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dra[] d = new dra[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dra> a;
 
-   public ekd(ekg $$0) {
-      this.c = $$0;
+   protected ekd(Long2ObjectOpenHashMap<dra> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   private ekd.a a(String $$0) {
-      ekd.a $$1 = new ekd.a();
-      this.b.put($$0, $$1);
+   public abstract M b();
+
+   public dra a(long $$0) {
+      dra $$1 = ((dra)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
       return $$1;
    }
 
-   private eju.a<ekd.a> b(String $$0) {
-      return new eju.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), ayc.h);
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public ta a(ajh $$0) {
-      String $$1 = $$0.b();
-      ekd.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new ta();
-   }
+   @Nullable
+   public dra c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
 
-   public void a(ajh $$0, ta $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
+      dra $$2 = (dra)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
 
-   public Stream<ajh> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eju {
-      private static final String a = "contents";
-      private final Map<String, ta> b = Maps.newHashMap();
-
-      ekd.a a(ta $$0) {
-         ta $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
+            this.c[0] = $$0;
+            this.d[0] = $$2;
          }
 
-         return this;
+         return $$2;
       }
+   }
 
-      @Override
-      public ta a(ta $$0, in.a $$1) {
-         ta $$2 = new ta();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
-         $$0.a("contents", $$2);
-         return $$0;
+   @Nullable
+   public dra d(long $$0) {
+      return (dra)this.a.remove($$0);
+   }
+
+   public void a(long $$0, dra $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
+   }
 
-      public ta a(String $$0) {
-         ta $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new ta();
-      }
-
-      public void a(String $$0, ta $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<ajh> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new ajh($$0, $$1));
-      }
+   public void d() {
+      this.e = false;
    }
 }

@@ -1,17 +1,8 @@
-import java.util.Locale;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum fth {
-   a("chat"),
-   b("skin"),
-   c("username");
-
-   private final String d;
-
-   private fth(String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fth {
 }

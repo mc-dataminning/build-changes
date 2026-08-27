@@ -1,166 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class fyv extends fwg {
+   private static final int a = 12235202;
 
-public class fyv {
-   private final Map<String, fzc> a = Maps.newLinkedHashMap();
-   private fzh b;
-
-   public static fyv a(fyv.a $$0, Reader $$1) {
-      return awm.a($$0.a, $$1, fyv.class);
+   protected fyv(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyi $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)awu.b.b(12235202) / 255.0F;
+      this.w = (float)awu.b.c(12235202) / 255.0F;
+      this.x = (float)awu.b.d(12235202) / 255.0F;
    }
 
-   public static fyv a(fyv.a $$0, JsonElement $$1) {
-      return (fyv)$$0.a.fromJson($$1, fyv.class);
-   }
+   public static class a implements fxq<ko> {
+      private final fyi a;
 
-   public fyv(Map<String, fzc> $$0, fzh $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
-   }
-
-   public fyv(List<fyv> $$0) {
-      fyv $$1 = null;
-
-      for (fyv $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      if ($$1 != null) {
-         this.b = $$1.b;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         axr $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fyv($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-   }
-
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public fzc b(String $$0) {
-      fzc $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fyv.c();
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fyv $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fzc> a() {
-      return this.a;
-   }
-
-   @VisibleForTesting
-   public Set<fzc> b() {
-      Set<fzc> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
-      }
-
-      return $$0;
-   }
-
-   public boolean c() {
-      return this.b != null;
-   }
-
-   public fzh d() {
-      return this.b;
-   }
-
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fyv.class, new fyv.b())
-         .registerTypeAdapter(fzd.class, new fzd.a())
-         .registerTypeAdapter(fzc.class, new fzc.a())
-         .registerTypeAdapter(fzh.class, new fzh.a(this))
-         .registerTypeAdapter(fzj.class, new fzj.a())
-         .create();
-      private dnc<dac, dnb> b;
-
-      public dnc<dac, dnb> a() {
-         return this.b;
-      }
-
-      public void a(dnc<dac, dnb> $$0) {
-         this.b = $$0;
-      }
-   }
-
-   public static class b implements JsonDeserializer<fyv> {
-      public fyv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fzc> $$4 = this.a($$2, $$3);
-         fzh $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fyv($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
-      }
-
-      protected Map<String, fzc> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fzc> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = awm.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fzc)$$0.deserialize($$4.getValue(), fzc.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected fzh b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = awm.v($$1, "multipart");
-            return (fzh)$$0.deserialize($$2, fzh.class);
-         }
-      }
-   }
-
-   protected class c extends RuntimeException {
    }
 }

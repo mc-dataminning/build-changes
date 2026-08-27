@@ -1,25 +1,42 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class ayt extends DataFix {
+public class ayt extends bea {
+   private static final String a = "minecraft:wolf";
+   private static final String b = "minecraft:generic.max_health";
+
    public ayt(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "FixWolfHealth", bfa.z, "minecraft:wolf");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(beh.c);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            MutableBoolean $$1 = new MutableBoolean(false);
+            $$0x = $$0x.update(
+               "Attributes",
+               $$1x -> $$1x.createList(
+                     $$1x.asStream()
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bgk.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                              if ($$1xxx.asDouble(0.0) == 20.0) {
+                                 $$1.setTrue();
+                                 return $$1xxx.createDouble(40.0);
+                              } else {
+                                 return $$1xxx;
+                              }
+                           }) : $$1xx)
+                  )
+            );
+            if ($$1.isTrue()) {
+               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
+            }
+
+            return $$0x;
+         }
       );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

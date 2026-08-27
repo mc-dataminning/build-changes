@@ -1,131 +1,136 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import javax.annotation.Nullable;
 
-public class fzo implements fzs<dkd> {
-   public static final ajh a = new ajh("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public abstract class fzo {
+   private static final Object2ObjectMap<ajt, fzo> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fzo.c $$1 = new fzo.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dsp.e, $$1);
+      $$0.put(dsp.f, new fzo.b());
+      $$0.put(dsp.g, new fzo.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fzo.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public fzo(fzt.a $$0) {
+   public fzo(float $$0, boolean $$1, fzo.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public void a(dkd $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().X();
-      List<dkd.a> $$7 = $$0.b();
-      int $$8 = 0;
+   public static fzo a(dsr $$0) {
+      return (fzo)a.get($$0.r());
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dkd.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   @Nullable
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = axk.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - axk.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
+      } else {
+         return null;
       }
    }
 
-   private static void a(eub $$0, fxs $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   public float a() {
+      return this.c;
    }
 
-   public static void a(eub $$0, fxs $$1, ajh $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = aww.h($$13 * 0.2F - (float)aww.d($$13 * 0.1F));
-      float $$15 = $$8[0];
-      float $$16 = $$8[1];
-      float $$17 = $$8[2];
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$18 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 0.0F;
-      float $$25 = -$$9;
-      float $$26 = 0.0F;
-      float $$27 = 1.0F;
-      float $$28 = -1.0F + $$14;
-      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
-      a($$0, $$1.getBuffer(fya.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-      $$18 = -$$10;
-      float $$31 = -$$10;
-      $$21 = -$$10;
-      $$22 = -$$10;
-      $$26 = 0.0F;
-      $$27 = 1.0F;
-      $$28 = -1.0F + $$14;
-      $$29 = (float)$$7 * $$4 + $$28;
-      a($$0, $$1.getBuffer(fya.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
+   public boolean b() {
+      return this.d;
    }
 
-   private static void a(
-      eub $$0,
-      euf $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16,
-      float $$17,
-      float $$18,
-      float $$19
-   ) {
-      eub.a $$20 = $$0.c();
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   public abstract esa a(esa var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public fzo.d c() {
+      return this.e;
    }
 
-   private static void a(
-      eub.a $$0,
-      euf $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
+   public boolean d() {
+      return this.f;
    }
 
-   private static void a(eub.a $$0, euf $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
-      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(git.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
+   public boolean e() {
+      return this.g;
    }
 
-   public boolean a(dkd $$0) {
-      return true;
+   public static class a extends fzo {
+      public a() {
+         super(Float.NaN, false, fzo.d.c, true, false);
+      }
+
+      @Override
+      public esa a(esa $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
    }
 
-   @Override
-   public int aR_() {
-      return 256;
+   public static class b extends fzo {
+      public b() {
+         super(Float.NaN, true, fzo.d.a, false, true);
+      }
+
+      @Override
+      public esa a(esa $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
    }
 
-   public boolean a(dkd $$0, ept $$1) {
-      return ept.b($$0.aC_()).d(1.0, 0.0, 1.0).a((iv)$$1.d(1.0, 0.0, 1.0), (double)this.aR_());
+   public static class c extends fzo {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fzo.d.b, false, false);
+      }
+
+      @Override
+      public esa a(esa $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

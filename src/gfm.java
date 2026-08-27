@@ -1,40 +1,52 @@
-public class gfm<T extends box & cjj> extends gda<T> {
-   private static final float a = 12.25F;
-   private final gdz f;
-   private final float g;
-   private final boolean h;
+public class gfm extends gfh<bqe> {
+   private static final ajt a = new ajt("textures/entity/experience_orb.png");
+   private static final gah f = gah.g(a);
 
-   public gfm(gdb.a $$0, float $$1, boolean $$2) {
+   public gfm(gfi.a $$0) {
       super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   public gfm(gdb.a $$0) {
-      this($$0, 1.0F, false);
+   protected int a(bqe $$0, ib $$1) {
+      return axk.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   @Override
-   protected int a(T $$0, ib $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public void a(bqe $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      $$3.a();
+      int $$6 = $$0.r();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
+      int $$16 = (int)((axk.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((axk.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      ewm $$20 = $$4.getBuffer(f);
+      ewi.a $$21 = $$3.c();
+      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.p(), cqj.h, $$5, git.d, $$3, $$4, $$0.dM(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   private static void a(ewm $$0, ewi.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(gla.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 
-   @Override
-   public ajh a(box $$0) {
-      return gjb.e;
+   public ajt a(bqe $$0) {
+      return a;
    }
 }

@@ -1,43 +1,375 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bzz<U extends bzy<?>> {
-   public static final bzz<bzi> a = a("dummy", bzi::new);
-   public static final bzz<bzq> b = a("nearest_items", bzq::new);
-   public static final bzz<bzr<bpp>> c = a("nearest_living_entities", bzr::new);
-   public static final bzz<bzv> d = a("nearest_players", bzv::new);
-   public static final bzz<bzp> e = a("nearest_bed", bzp::new);
-   public static final bzz<bzm> f = a("hurt_by", bzm::new);
-   public static final bzz<cac> g = a("villager_hostiles", cac::new);
-   public static final bzz<cab> h = a("villager_babies", cab::new);
-   public static final bzz<bzw> i = a("secondary_pois", bzw::new);
-   public static final bzz<bzk> j = a("golem_detected", bzk::new);
-   public static final bzz<bzo<ccl>> k = a("armadillo_scare_detected", () -> new bzo<>(5, ccl::j, ccl::gy, bys.G, 80));
-   public static final bzz<bzu> l = a("piglin_specific_sensor", bzu::new);
-   public static final bzz<bzt> m = a("piglin_brute_specific_sensor", bzt::new);
-   public static final bzz<bzl> n = a("hoglin_specific_sensor", bzl::new);
-   public static final bzz<bzf> o = a("nearest_adult", bzf::new);
-   public static final bzz<bzg> p = a("axolotl_attackables", bzg::new);
-   public static final bzz<caa> q = a("axolotl_temptations", () -> new caa(ccp.a()));
-   public static final bzz<caa> r = a("goat_temptations", () -> new caa(cdd.a()));
-   public static final bzz<caa> s = a("frog_temptations", () -> new caa(ccx.a()));
-   public static final bzz<caa> t = a("camel_temptations", () -> new caa(ccu.b()));
-   public static final bzz<caa> u = a("armadillo_temptations", () -> new caa(ccm.b()));
-   public static final bzz<bzj> v = a("frog_attackables", bzj::new);
-   public static final bzz<bzn> w = a("is_in_water", bzn::new);
-   public static final bzz<cad> x = a("warden_entity_sensor", cad::new);
-   public static final bzz<caa> y = a("sniffer_temptations", () -> new caa(cdu.a()));
-   public static final bzz<bzh> z = a("breeze_attack_entity_sensor", bzh::new);
-   private final Supplier<U> A;
+public abstract class bzz {
+   private static final int p = 20;
+   private static final int q = 100;
+   private static final float r = 0.25F;
+   protected final bqq a;
+   protected final cyx b;
+   @Nullable
+   protected elg c;
+   protected double d;
+   protected int e;
+   protected int f;
+   protected esa g = esa.b;
+   protected jg h = jg.g;
+   protected long i;
+   protected long j;
+   protected double k;
+   protected float l = 0.5F;
+   protected boolean m;
+   protected long n;
+   protected elf o;
+   @Nullable
+   private ib s;
+   private int t;
+   private float u = 1.0F;
+   private final eli v;
+   private boolean w;
 
-   private bzz(Supplier<U> $$0) {
-      this.A = $$0;
+   public bzz(bqq $$0, cyx $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      int $$2 = axk.a($$0.g(brv.k) * 16.0);
+      this.v = this.a($$2);
    }
 
-   public U a() {
-      return this.A.get();
+   public void g() {
+      this.u = 1.0F;
    }
 
-   private static <U extends bzy<?>> bzz<U> a(String $$0, Supplier<U> $$1) {
-      return iy.a(ki.C, new ajh($$0), new bzz<>($$1));
+   public void a(float $$0) {
+      this.u = $$0;
+   }
+
+   @Nullable
+   public ib h() {
+      return this.s;
+   }
+
+   protected abstract eli a(int var1);
+
+   public void a(double $$0) {
+      this.d = $$0;
+   }
+
+   public void i() {
+      if (this.b.Y() - this.n > 20L) {
+         if (this.s != null) {
+            this.c = null;
+            this.c = this.a(this.s, this.t);
+            this.n = this.b.Y();
+            this.m = false;
+         }
+      } else {
+         this.m = true;
+      }
+   }
+
+   @Nullable
+   public final elg a(double $$0, double $$1, double $$2, int $$3) {
+      return this.a(ib.a($$0, $$1, $$2), $$3);
+   }
+
+   @Nullable
+   public elg a(Stream<ib> $$0, int $$1) {
+      return this.a($$0.collect(Collectors.toSet()), 8, false, $$1);
+   }
+
+   @Nullable
+   public elg a(Set<ib> $$0, int $$1) {
+      return this.a($$0, 8, false, $$1);
+   }
+
+   @Nullable
+   public elg a(ib $$0, int $$1) {
+      return this.a(ImmutableSet.of($$0), 8, false, $$1);
+   }
+
+   @Nullable
+   public elg a(ib $$0, int $$1, int $$2) {
+      return this.a(ImmutableSet.of($$0), 8, false, $$1, (float)$$2);
+   }
+
+   @Nullable
+   public elg a(bpv $$0, int $$1) {
+      return this.a(ImmutableSet.of($$0.dm()), 16, true, $$1);
+   }
+
+   @Nullable
+   protected elg a(Set<ib> $$0, int $$1, boolean $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, (float)this.a.g(brv.k));
+   }
+
+   @Nullable
+   protected elg a(Set<ib> $$0, int $$1, boolean $$2, int $$3, float $$4) {
+      if ($$0.isEmpty()) {
+         return null;
+      } else if (this.a.dt() < (double)this.b.I_()) {
+         return null;
+      } else if (!this.a()) {
+         return null;
+      } else if (this.c != null && !this.c.c() && $$0.contains(this.s)) {
+         return this.c;
+      } else {
+         this.b.af().a("pathfind");
+         ib $$5 = $$2 ? this.a.dm().c() : this.a.dm();
+         int $$6 = (int)($$4 + (float)$$1);
+         czk $$7 = new czk(this.b, $$5.b(-$$6, -$$6, -$$6), $$5.b($$6, $$6, $$6));
+         elg $$8 = this.v.a($$7, this.a, $$0, $$4, $$3, this.u);
+         this.b.af().c();
+         if ($$8 != null && $$8.l() != null) {
+            this.s = $$8.l();
+            this.t = $$3;
+            this.f();
+         }
+
+         return $$8;
+      }
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.a(this.a($$0, $$1, $$2, 1), $$3);
+   }
+
+   public boolean a(bpv $$0, double $$1) {
+      elg $$2 = this.a($$0, 1);
+      return $$2 != null && this.a($$2, $$1);
+   }
+
+   public boolean a(@Nullable elg $$0, double $$1) {
+      if ($$0 == null) {
+         this.c = null;
+         return false;
+      } else {
+         if (!$$0.a(this.c)) {
+            this.c = $$0;
+         }
+
+         if (this.l()) {
+            return false;
+         } else {
+            this.S_();
+            if (this.c.e() <= 0) {
+               return false;
+            } else {
+               this.d = $$1;
+               esa $$2 = this.b();
+               this.f = this.e;
+               this.g = $$2;
+               return true;
+            }
+         }
+      }
+   }
+
+   @Nullable
+   public elg j() {
+      return this.c;
+   }
+
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.i();
+      }
+
+      if (!this.l()) {
+         if (this.a()) {
+            this.k();
+         } else if (this.c != null && !this.c.c()) {
+            esa $$0 = this.b();
+            esa $$1 = this.c.a(this.a);
+            if ($$0.d > $$1.d && !this.a.aC() && axk.a($$0.c) == axk.a($$1.c) && axk.a($$0.e) == axk.a($$1.e)) {
+               this.c.a();
+            }
+         }
+
+         afi.a(this.b, this.a, this.c, this.l);
+         if (!this.l()) {
+            esa $$2 = this.c.a(this.a);
+            this.a.H().a($$2.c, this.a($$2), $$2.e, this.d);
+         }
+      }
+   }
+
+   protected double a(esa $$0) {
+      ib $$1 = ib.a($$0);
+      return this.b.a_($$1.d()).i() ? $$0.d : elo.a(this.b, $$1);
+   }
+
+   protected void k() {
+      esa $$0 = this.b();
+      this.l = this.a.dg() > 0.75F ? this.a.dg() / 2.0F : 0.75F - this.a.dg() / 2.0F;
+      jg $$1 = this.c.g();
+      double $$2 = Math.abs(this.a.dr() - ((double)$$1.u() + 0.5));
+      double $$3 = Math.abs(this.a.dt() - (double)$$1.v());
+      double $$4 = Math.abs(this.a.dx() - ((double)$$1.w() + 0.5));
+      boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
+      if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
+         this.c.a();
+      }
+
+      this.b($$0);
+   }
+
+   private boolean c(esa $$0) {
+      if (this.c.f() + 1 >= this.c.e()) {
+         return false;
+      } else {
+         esa $$1 = esa.c(this.c.g());
+         if (!$$0.a((iv)$$1, 2.0)) {
+            return false;
+         } else if (this.a($$0, this.c.a(this.a))) {
+            return true;
+         } else {
+            esa $$2 = esa.c(this.c.d(this.c.f() + 1));
+            esa $$3 = $$1.d($$0);
+            esa $$4 = $$2.d($$0);
+            double $$5 = $$3.g();
+            double $$6 = $$4.g();
+            boolean $$7 = $$6 < $$5;
+            boolean $$8 = $$5 < 0.5;
+            if (!$$7 && !$$8) {
+               return false;
+            } else {
+               esa $$9 = $$3.d();
+               esa $$10 = $$4.d();
+               return $$10.b($$9) < 0.0;
+            }
+         }
+      }
+   }
+
+   protected void b(esa $$0) {
+      if (this.e - this.f > 100) {
+         float $$1 = this.a.fk() >= 1.0F ? this.a.fk() : this.a.fk() * this.a.fk();
+         float $$2 = $$1 * 100.0F * 0.25F;
+         if ($$0.g(this.g) < (double)($$2 * $$2)) {
+            this.w = true;
+            this.n();
+         } else {
+            this.w = false;
+         }
+
+         this.f = this.e;
+         this.g = $$0;
+      }
+
+      if (this.c != null && !this.c.c()) {
+         jg $$3 = this.c.g();
+         long $$4 = this.b.Y();
+         if ($$3.equals(this.h)) {
+            this.i = this.i + ($$4 - this.j);
+         } else {
+            this.h = $$3;
+            double $$5 = $$0.f(esa.c(this.h));
+            this.k = this.a.fk() > 0.0F ? $$5 / (double)this.a.fk() * 20.0 : 0.0;
+         }
+
+         if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
+            this.e();
+         }
+
+         this.j = $$4;
+      }
+   }
+
+   private void e() {
+      this.f();
+      this.n();
+   }
+
+   private void f() {
+      this.h = jg.g;
+      this.i = 0L;
+      this.k = 0.0;
+      this.w = false;
+   }
+
+   public boolean l() {
+      return this.c == null || this.c.c();
+   }
+
+   public boolean m() {
+      return !this.l();
+   }
+
+   public void n() {
+      this.c = null;
+   }
+
+   protected abstract esa b();
+
+   protected abstract boolean a();
+
+   protected void S_() {
+      if (this.c != null) {
+         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
+            ele $$1 = this.c.a($$0);
+            ele $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
+            doz $$3 = this.b.a_(new ib($$1.a, $$1.b, $$1.c));
+            if ($$3.a(avc.bl)) {
+               this.c.a($$0, $$1.a($$1.a, $$1.b + 1, $$1.c));
+               if ($$2 != null && $$1.b >= $$2.b) {
+                  this.c.a($$0 + 1, $$1.a($$2.a, $$1.b + 1, $$2.c));
+               }
+            }
+         }
+      }
+   }
+
+   protected boolean a(esa $$0, esa $$1) {
+      return false;
+   }
+
+   public boolean b(elj $$0) {
+      return $$0 != elj.n && $$0 != elj.p && $$0 != elj.d;
+   }
+
+   protected static boolean a(bqq $$0, esa $$1, esa $$2, boolean $$3) {
+      esa $$4 = new esa($$2.c, $$2.d + (double)$$0.dh() * 0.5, $$2.e);
+      return $$0.dM().a(new cyg($$1, $$4, cyg.a.a, $$3 ? cyg.b.c : cyg.b.a, $$0)).c() == ery.a.a;
+   }
+
+   public boolean a(ib $$0) {
+      ib $$1 = $$0.d();
+      return this.b.a_($$1).i(this.b, $$1);
+   }
+
+   public elf o() {
+      return this.o;
+   }
+
+   public void a(boolean $$0) {
+      this.o.c($$0);
+   }
+
+   public boolean p() {
+      return this.o.f();
+   }
+
+   public boolean b(ib $$0) {
+      if (this.m) {
+         return false;
+      } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
+         ele $$1 = this.c.d();
+         esa $$2 = new esa(((double)$$1.a + this.a.dr()) / 2.0, ((double)$$1.b + this.a.dt()) / 2.0, ((double)$$1.c + this.a.dx()) / 2.0);
+         return $$0.a($$2, (double)(this.c.e() - this.c.f()));
+      } else {
+         return false;
+      }
+   }
+
+   public float q() {
+      return this.l;
+   }
+
+   public boolean r() {
+      return this.w;
    }
 }

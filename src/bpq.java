@@ -1,57 +1,58 @@
-public class bpq extends box {
-   private static final String b = "data";
-   private ta c = new ta();
+import java.util.function.Consumer;
 
-   public bpq(bpd<?> $$0, cxb $$1) {
-      super($$0, $$1);
-      this.af = true;
+public class bpq {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
+
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   @Override
-   public void l() {
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   protected void a(aiq.a $$0) {
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   @Override
-   protected void a(ta $$0) {
-      this.c = $$0.p("data");
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   @Override
-   protected void b(ta $$0) {
-      $$0.a("data", this.c.h());
+   public void a(Consumer<bpq> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
    }
 
-   @Override
-   public yb<aam> di() {
-      throw new IllegalStateException("Markers should never be sent");
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = axk.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
    }
 
-   @Override
-   protected boolean r(box $$0) {
-      return false;
+   public void a(int $$0, float $$1) {
+      if (this.c()) {
+         this.c += (long)((float)($$0 * 1000) * $$1) / 20L;
+      }
    }
 
-   @Override
-   protected boolean bG() {
-      return false;
+   public long b() {
+      return this.c;
    }
 
-   @Override
-   protected void p(box $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public eiu r_() {
-      return eiu.d;
-   }
-
-   @Override
-   public boolean q_() {
-      return true;
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

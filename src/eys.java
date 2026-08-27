@@ -1,30 +1,59 @@
-import java.util.function.IntFunction;
+import java.util.List;
 
-public enum eys implements awy {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public abstract class eys {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   private static final IntFunction<eys> d = avn.a(eys::a, values(), avn.a.b);
-   private final int e;
-   private final String f;
-
-   private eys(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eys(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
+   public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(fdc var1, int var2, int var3, boolean var4);
+
    public int a() {
-      return this.e;
+      return this.c + this.a;
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public int b() {
+      return this.d + this.b;
    }
 
-   public static eys a(int $$0) {
-      return d.apply($$0);
+   public abstract void a(int var1);
+
+   public static void a(fdc $$0, List<eys> $$1, grk<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (eys $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
+   }
+
+   public static void a(grk<?> $$0, fel.a<?> $$1, List<eys> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aF_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.r();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
+
+         for (eys $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

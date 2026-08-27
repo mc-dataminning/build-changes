@@ -1,125 +1,154 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public abstract class czq extends dac {
-   protected static final eqm a = dac.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final eqm b = dac.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final epo c = new epo(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dnq d;
+public class czq {
+   private final cyy a;
+   private final dvp b;
+   private final efi c;
 
-   protected czq(dna.d $$0, dnq $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   public czq(cyy $$0, dvp $$1, efi $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected abstract MapCodec<? extends czq> a();
-
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return this.g($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
-   }
-
-   @Override
-   public boolean a(dnb $$0) {
-      return true;
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !$$0.a($$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      return c($$1, $$3) || a($$1, $$3, ih.b);
-   }
-
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      int $$4 = this.g($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
+   public czq a(apz $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
+      } else {
+         return new czq($$0, this.b, this.c);
       }
    }
 
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
-      if (!$$1.B) {
-         int $$4 = this.g($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
+   public List<efp> a(cye $$0, Predicate<efh> $$1) {
+      Map<efh, LongSet> $$2 = this.a.a($$0.e, $$0.f, dru.e).h();
+      Builder<efp> $$3 = ImmutableList.builder();
+
+      for (Entry<efh, LongSet> $$4 : $$2.entrySet()) {
+         efh $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
+   }
+
+   public List<efp> a(je $$0, efh $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dru.e).b($$1);
+      Builder<efp> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(efh $$0, LongSet $$1, Consumer<efp> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         je $$4 = je.a(new cye($$3), this.a.an());
+         efp $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dru.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
          }
       }
    }
 
-   private void a(@Nullable box $$0, cxb $$1, ib $$2, dnb $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         dnb $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), atz.e);
-         $$1.a($$0, drp.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), atz.e);
-         $$1.a($$0, drp.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new ib($$2), this, this.b());
-      }
+   @Nullable
+   public efp a(je $$0, efh $$1, drr $$2) {
+      return $$2.a($$1);
    }
 
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.g($$0) > 0) {
-            this.a($$1, $$2);
+   public void a(je $$0, efh $$1, efp $$2, drr $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(je $$0, efh $$1, long $$2, drr $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public efp a(ib $$0, efh $$1) {
+      for (efp $$2 : this.a(je.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
+
+      return efp.b;
    }
 
-   protected void a(cxb $$0, ib $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.d(), this);
+   public efp a(ib $$0, avr<efh> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   @Override
-   protected int a(dnb $$0, cwh $$1, ib $$2, ih $$3) {
-      return this.g($$0);
+   public efp a(ib $$0, ip<efh> $$1) {
+      return this.a($$0, $$1::a);
    }
 
-   @Override
-   protected int b(dnb $$0, cwh $$1, ib $$2, ih $$3) {
-      return $$3 == ih.b ? this.g($$0) : 0;
+   public efp a(ib $$0, Predicate<il<efh>> $$1) {
+      iy<efh> $$2 = this.b().d(ks.aF);
+
+      for (efp $$3 : this.a(new cye($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return efp.b;
    }
 
-   @Override
-   protected boolean f_(dnb $$0) {
-      return true;
+   public efp b(ib $$0, efh $$1) {
+      for (efp $$2 : this.a(je.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return efp.b;
    }
 
-   protected static int a(cxb $$0, epo $$1, Class<? extends box> $$2) {
-      return $$0.a($$2, $$1, bpc.f.and($$0x -> !$$0x.q_())).size();
+   public boolean a(ib $$0, efp $$1) {
+      for (efl $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   protected abstract int b(cxb var1, ib var2);
+   public boolean a(ib $$0) {
+      je $$1 = je.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dru.e).w();
+   }
 
-   protected abstract int g(dnb var1);
+   public Map<efh, LongSet> b(ib $$0) {
+      je $$1 = je.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dru.e).h();
+   }
 
-   protected abstract dnb a(dnb var1, int var2);
+   public efj a(cye $$0, efh $$1, ege $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(efp $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public iz b() {
+      return this.a.H_();
+   }
 }

@@ -1,26 +1,51 @@
-public record zo(ib c, int d) implements zc {
-   public static final xs<uu, zo> a = zc.a(zo::a, zo::new);
-   public static final zc.b<zo> b = zc.a("debug/poi_ticket_count");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   private zo(uu $$0) {
-      this($$0.e(), $$0.readInt());
+public interface zo {
+   zo.b<? extends zo> a();
+
+   static <B extends ByteBuf, T extends zo> ye<B, T> a(yh<B, T> $$0, yf<B, T> $$1) {
+      return ye.a($$0, $$1);
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
+   static <T extends zo> zo.b<T> a(String $$0) {
+      return new zo.b<>(new ajt($$0));
    }
 
-   @Override
-   public zc.b<zo> a() {
-      return b;
+   static <B extends vg> ye<B, zo> a(final zo.a<B> $$0, List<zo.c<? super B, ?>> $$1) {
+      final Map<ajt, ye<? super B, ? extends zo>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), zo.c::b));
+      return new ye<B, zo>() {
+         private ye<? super B, ? extends zo> a(ajt $$0x) {
+            ye<? super B, ? extends zo> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends zo> void a(B $$0x, zo.b<T> $$1, zo $$2x) {
+            $$0.a($$1.a());
+            ye<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, zo $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public zo a(B $$0x) {
+            ajt $$1 = $$0.q();
+            return (zo)this.a($$1).decode($$0);
+         }
+      };
    }
 
-   public ib b() {
-      return this.c;
+   public interface a<B extends vg> {
+      ye<B, ? extends zo> create(ajt var1);
    }
 
-   public int c() {
-      return this.d;
+   public static record b<T extends zo>(ajt a) {
+   }
+
+   public static record c<B extends vg, T extends zo>(zo.b<T> a, ye<B, T> b) {
    }
 }

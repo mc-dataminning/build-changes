@@ -1,19 +1,17 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+public enum vf {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public class vf extends uu {
-   private final iz d;
+   private final String f;
 
-   public vf(ByteBuf $$0, iz $$1) {
-      super($$0);
-      this.d = $$1;
+   private vf(String $$0) {
+      this.f = $$0;
    }
 
-   public iz J() {
-      return this.d;
-   }
-
-   public static Function<ByteBuf, vf> a(iz $$0) {
-      return $$1 -> new vf($$1, $$0);
+   public String a() {
+      return this.f;
    }
 }

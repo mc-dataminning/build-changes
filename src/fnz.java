@@ -1,53 +1,149 @@
-public class fnz<T extends box> extends fon<T> {
-   private final frf a;
-   private final frf b;
-   private final frf f;
-   private final frf g;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-   public fnz(frf $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+public class fnz extends fdj {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final wg e = wg.c("telemetry_info.property_title").a(n.t);
+   private final fda f;
+   private fnz.a m;
+   @Nullable
+   private DoubleConsumer n;
+
+   public fnz(int $$0, int $$1, int $$2, int $$3, fda $$4) {
+      super($$0, $$1, $$2, $$3, wg.i());
+      this.f = $$4;
+      this.m = this.c(fbp.Q().C());
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fro $$4 = $$1.a("body", frk.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), frh.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", frk.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), frh.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         frk.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         frh.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         frk.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         frh.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fro $$5 = $$4.a("tail", frk.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), frh.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", frk.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), frh.a(0.0F, 0.0F, 9.0F));
-      fro $$6 = $$4.a("head", frk.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), frh.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", frk.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), frh.a);
-      return frl.a($$0, 64, 64);
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   public void j() {
+      this.m = this.c(fbp.Q().C());
+      this.a(this.c());
+   }
+
+   private fnz.a c(boolean $$0) {
+      fnz.b $$1 = new fnz.b(this.k());
+      List<gqj> $$2 = new ArrayList<>(gqj.g());
+      $$2.sort(Comparator.comparing(gqj::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gqj $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public frf a() {
-      return this.a;
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dp().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * aww.b($$3 * 0.3F));
-         this.f.e = -0.1F * aww.b($$3 * 0.3F);
-         this.g.e = -0.2F * aww.b($$3 * 0.3F);
+   protected int h() {
+      return this.m.a().v();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fdc $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.a();
+      int $$5 = this.C() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fhl $$0) {
+      $$0.a(fhk.a, this.m.b());
+   }
+
+   private wg a(wg $$0, boolean $$1) {
+      return (wg)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fnz.b $$0, gqj $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(wg.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(gqj $$0, fnz.b $$1, boolean $$2) {
+      for (gql<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fhd a, wg b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fhg b;
+      private final wu c = wg.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fhg.d();
+         this.b.c().a();
+         this.b.a(fhh.a($$0));
+      }
+
+      public void a(fda $$0, wg $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fda $$0, wg $$1, int $$2) {
+         this.b.a(new fej($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fda $$0, wg $$1) {
+         this.b.a(new fej($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fhh.b($$0));
+      }
+
+      public fnz.a a() {
+         this.b.a();
+         return new fnz.a(this.b, this.c);
       }
    }
 }

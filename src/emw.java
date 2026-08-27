@@ -1,129 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class emw extends emi {
-   public static final Codec<emw> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
-                  vw.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
-                  awe.a(ekw.b.e, "entity").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, emw::new)
-   );
-   private final boolean b;
-   private final List<vu> c;
-   private final Optional<ekw.b> d;
+public interface emw extends emy {
+   @Override
+   String e();
 
-   public emw(List<env> $$0, boolean $$1, List<vu> $$2, Optional<ekw.b> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
-      this.d = $$3;
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public emk b() {
-      return eml.u;
+   default void a(p $$0, cyz $$1) {
+      emy.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   public Set<ene<?>> a() {
-      return this.d.<Set<ene<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
+   int f();
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      tg $$2 = this.a($$0, !this.c.isEmpty());
-      if ($$2 != null) {
-         if (this.b) {
-            $$2.clear();
-         }
+   void a(int var1);
 
-         UnaryOperator<vu> $$3 = emx.a($$1, this.d.orElse(null));
-         this.c.stream().map($$3).map(vu.a::a).map(tv::a).forEach($$2::add);
-      }
+   int t();
 
-      return $$0;
-   }
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
 
    @Nullable
-   private tg a(cqm $$0, boolean $$1) {
-      ta $$2;
-      if ($$0.v()) {
-         $$2 = $$0.w();
-      } else {
-         if (!$$1) {
-            return null;
-         }
+   UUID v();
 
-         $$2 = new ta();
-         $$0.c($$2);
-      }
+   void a(UUID var1);
 
-      ta $$5;
-      if ($$2.b("display", 10)) {
-         $$5 = $$2.p("display");
-      } else {
-         if (!$$1) {
-            return null;
-         }
+   cyu k();
 
-         $$5 = new ta();
-         $$2.a("display", $$5);
-      }
+   void a(dqq.c var1);
 
-      if ($$5.b("Lore", 9)) {
-         return $$5.c("Lore", 8);
-      } else if ($$1) {
-         tg $$8 = new tg();
-         $$5.a("Lore", $$8);
-         return $$8;
-      } else {
-         return null;
-      }
-   }
+   dqq.c p();
 
-   public static emw.a c() {
-      return new emw.a();
-   }
+   boolean n();
 
-   public static class a extends emi.a<emw.a> {
-      private boolean a;
-      private Optional<ekw.b> b = Optional.empty();
-      private final Builder<vu> c = ImmutableList.builder();
+   void c(boolean var1);
 
-      public emw.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
-      }
+   boolean m();
 
-      public emw.a a(ekw.b $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
+   void a(cyu var1);
 
-      public emw.a a(vu $$0) {
-         this.c.add($$0);
-         return this;
-      }
+   ern<MinecraftServer> s();
 
-      protected emw.a a() {
-         return this;
-      }
+   void a(long var1);
 
-      @Override
-      public emj b() {
-         return new emw(this.g(), this.a, this.c.build(), this.b);
-      }
-   }
+   void b(long var1);
 }

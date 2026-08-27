@@ -1,88 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class dfp extends dac {
-   private static final ih[] a = ih.values();
-   public static final dns b = dnr.L;
-   public static final dns c = dnr.M;
-   public static final dns d = dnr.N;
-   public static final dns e = dnr.O;
-   public static final dns f = dnr.J;
-   public static final dns g = dnr.K;
-   public static final Map<ih, dns> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ih.class), $$0 -> {
-      $$0.put(ih.c, b);
-      $$0.put(ih.f, c);
-      $$0.put(ih.d, d);
-      $$0.put(ih.e, e);
-      $$0.put(ih.b, f);
-      $$0.put(ih.a, g);
-   }));
-   protected final eqm[] i;
+public class dfp extends dby implements diy {
+   public static final MapCodec<dfp> a = b(dfp::new);
+   private static final dpq c = dpp.C;
+   protected static final est b = dby.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
-   protected dfp(float $$0, dna.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dfp> a() {
+      return a;
+   }
+
+   protected dfp(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dfp> a();
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(c);
+   }
 
-   private eqm[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      eqm $$3 = dac.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      eqm[] $$4 = new eqm[a.length];
+   @Override
+   protected eks c_(doz $$0) {
+      return $$0.c(c) ? ekt.c.a(false) : super.c_($$0);
+   }
 
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         ih $$6 = a[$$5];
-         $$4[$$5] = eqj.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      doz $$1 = super.a($$0);
+      if ($$1 != null) {
+         eks $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == ekt.c));
+      } else {
+         return null;
       }
+   }
 
-      eqm[] $$7 = new eqm[64];
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      ib $$3 = $$2.c();
+      doz $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ih.a);
+   }
 
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         eqm $$9 = $$3;
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
+   }
 
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = eqj.a($$9, $$4[$$10]);
-            }
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.b && !this.a($$0, $$3, $$4)) {
+         return dca.a.n();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, ekt.c, ekt.c.a($$3));
          }
 
-         $$7[$$8] = $$9;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-
-      return $$7;
-   }
-
-   @Override
-   protected boolean a_(dnb $$0, cwh $$1, ib $$2) {
-      return false;
-   }
-
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return this.i[this.m($$0)];
-   }
-
-   protected int m(dnb $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
-      }
-
-      return $$1;
    }
 }

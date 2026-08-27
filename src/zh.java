@@ -1,16 +1,29 @@
-public record zh() implements zc {
-   public static final xs<uu, zh> a = zc.a(zh::a, zh::new);
-   public static final zc.b<zh> b = zc.a("debug/game_test_clear");
+public class zh implements yn<ze> {
+   public static final ye<vg, zh> a = yn.a(zh::a, zh::new);
+   private final long b;
 
-   private zh(uu $$0) {
-      this();
+   public zh(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(uu $$0) {
+   private zh(vg $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vg $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zc.b<zh> a() {
-      return b;
+   public yp<zh> a() {
+      return zd.l;
+   }
+
+   public void a(ze $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

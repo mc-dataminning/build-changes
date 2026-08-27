@@ -1,89 +1,59 @@
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bwj implements bwk {
+   private final bqq a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class bwj extends bwm {
-   private final bpr a;
-   private final Predicate<bpr> b;
-   @Nullable
-   private bpr c;
-   private final double d;
-   private final bza e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
-
-   public bwj(bpr $$0, double $$1, float $$2, float $$3) {
+   public bwj(bqq $$0) {
       this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.K();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bwm.a.a, bwm.a.b));
-      if (!($$0.K() instanceof byz) && !($$0.K() instanceof byy)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
    }
 
-   @Override
-   public boolean a() {
-      List<bpr> $$0 = this.a.dM().a(bpr.class, this.a.cH().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (bpr $$1 : $$0) {
-            if (!$$1.ce()) {
-               this.c = $$1;
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
-   }
-
-   @Override
-   public void c() {
-      this.f = 0;
-      this.h = this.a.a(ejg.j);
-      this.a.a(ejg.j, 0.0F);
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.e.n();
-      this.a.a(ejg.j, this.h);
-   }
-
-   @Override
-   public void e() {
-      if (this.c != null && !this.a.gb()) {
-         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dr() - this.c.dr();
-            double $$1 = this.a.dt() - this.c.dt();
-            double $$2 = this.a.dx() - this.c.dx();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
+   public void a() {
+      if (this.f()) {
+         this.a.aX = this.a.dC();
+         this.c();
+         this.f = this.a.aZ;
+         this.e = 0;
+      } else {
+         if (this.e()) {
+            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aZ;
+               this.b();
             } else {
-               this.e.n();
-               bvo $$4 = this.c.G();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dr() && $$4.f() == this.a.dt() && $$4.g() == this.a.dx()) {
-                  double $$5 = this.c.dr() - this.a.dr();
-                  double $$6 = this.c.dx() - this.a.dx();
-                  this.e.a(this.a.dr() - $$5, this.a.dt(), this.a.dx() - $$6, this.d);
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
                }
             }
          }
       }
+   }
+
+   private void b() {
+      this.a.aX = axk.c(this.a.aX, this.a.aZ, (float)this.a.aa());
+   }
+
+   private void c() {
+      this.a.aZ = axk.c(this.a.aZ, this.a.aX, (float)this.a.aa());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = axk.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.aa() * (1.0F - $$1);
+      this.a.aX = axk.c(this.a.aX, this.a.aZ, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cQ() instanceof bqq);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dr() - this.a.K;
+      double $$1 = this.a.dx() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

@@ -1,67 +1,93 @@
-import java.util.Locale;
-import java.util.UUID;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface ekr extends ekt {
-   @Override
-   String e();
+public abstract class ekr {
+   public static final ir<eks> c = new ir<>();
+   protected final dpa<ekr, eks> d;
+   private eks a;
+   private final il.c<ekr> b = kr.c.f(this);
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, cxd $$1) {
-      ekt.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   protected ekr() {
+      dpa.a<ekr, eks> $$0 = new dpa.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ekr::g, eks::new);
+      this.f(this.d.b());
    }
 
-   int f();
+   protected void a(dpa.a<ekr, eks> $$0) {
+   }
 
-   void a(int var1);
+   public dpa<ekr, eks> f() {
+      return this.d;
+   }
 
-   int t();
+   protected final void f(eks $$0) {
+      this.a = $$0;
+   }
 
-   void d(int var1);
+   public final eks g() {
+      return this.a;
+   }
 
-   int u();
+   public abstract cre a();
 
-   void e(int var1);
+   protected void a(cyx $$0, ib $$1, eks $$2, axr $$3) {
+   }
+
+   protected void b(cyx $$0, ib $$1, eks $$2) {
+   }
+
+   protected void b(cyx $$0, ib $$1, eks $$2, axr $$3) {
+   }
 
    @Nullable
-   UUID v();
+   protected kj h() {
+      return null;
+   }
 
-   void a(UUID var1);
+   protected abstract boolean a(eks var1, cyd var2, ib var3, ekr var4, ih var5);
 
-   cwy k();
+   protected abstract esa a(cyd var1, ib var2, eks var3);
 
-   void a(dos.c var1);
+   public abstract int a(cza var1);
 
-   dos.c p();
+   protected boolean i() {
+      return false;
+   }
 
-   boolean n();
+   protected boolean b() {
+      return false;
+   }
 
-   void c(boolean var1);
+   protected abstract float c();
 
-   boolean m();
+   public abstract float a(eks var1, cyd var2, ib var3);
 
-   void a(cwy var1);
+   public abstract float a(eks var1);
 
-   epg<MinecraftServer> s();
+   protected abstract doz b(eks var1);
 
-   void a(long var1);
+   public abstract boolean c(eks var1);
 
-   void b(long var1);
+   public abstract int d(eks var1);
+
+   public boolean a(ekr $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(avr<ekr> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract est b(eks var1, cyd var2, ib var3);
+
+   public Optional<aul> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public il.c<ekr> k() {
+      return this.b;
+   }
 }

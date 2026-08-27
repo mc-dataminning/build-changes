@@ -1,26 +1,11 @@
-public record ze(ajg<drp> c, ept d) implements zc {
-   public static final xs<uu, ze> a = zc.a(ze::a, ze::new);
-   public static final zc.b<ze> b = zc.a("debug/game_event");
+public interface ze extends aav, afm {
+   void a(zh var1);
 
-   private ze(uu $$0) {
-      this($$0.a(kj.B), $$0.k());
-   }
+   void a(zi var1);
 
-   private void a(uu $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
-   }
+   void a(zg var1);
 
-   @Override
-   public zc.b<ze> a() {
-      return b;
-   }
+   void a(zj var1);
 
-   public ajg<drp> b() {
-      return this.c;
-   }
-
-   public ept c() {
-      return this.d;
-   }
+   void a(zf var1);
 }

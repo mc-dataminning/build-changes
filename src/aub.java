@@ -1,93 +1,33 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
 
 public class aub {
-   protected final Set<ajh> a = Sets.newHashSet();
-   protected final Set<ajh> b = Sets.newHashSet();
-   private final auc c = new auc();
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public void a(aub $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   public void a(ctr<?> $$0) {
-      if (!$$0.b().aq_()) {
-         this.a($$0.a());
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   protected void a(ajh $$0) {
-      this.a.add($$0);
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public boolean b(@Nullable ctr<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   public boolean b(ajh $$0) {
-      return this.a.contains($$0);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   public void c(ctr<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(ajh $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(ctr<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(ctr<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(ctr<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(ajh $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(cne $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(cne $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(cnd<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(cne $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(cne $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(auc $$0) {
-      this.c.a($$0);
-   }
-
-   public auc a() {
-      return this.c.a();
-   }
-
-   public void a(cne $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

@@ -1,251 +1,384 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class czw extends czo {
-   public static final MapCodec<czw> a = b(czw::new);
-   public static final dnv b = ddx.aE;
-   public static final dob c = dnr.aN;
-   public static final int d = 5;
-   private static final int e = 3;
-
-   @Override
-   public MapCodec<czw> a() {
-      return a;
-   }
-
-   public czw(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)).a(b, ih.c));
-   }
-
-   @Override
-   protected boolean d_(dnb $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dnb $$0, cxb $$1, ib $$2) {
-      return $$0.c(c);
-   }
-
-   @Override
-   public void a(cxb $$0, ciu $$1, ib $$2, dnb $$3, @Nullable dki $$4, cqm $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$0.B && $$4 instanceof dkf $$6) {
-         if (cux.a(cuz.v, $$5) == 0) {
-            $$6.a($$1, $$3, dkf.b.c);
-            $$0.c($$2, this);
-            this.b($$0, $$2);
-         }
-
-         am.L.a((apg)$$1, $$3, $$5, $$6.f());
-      }
-   }
-
-   private void b(cxb $$0, ib $$1) {
-      epo $$2 = new epo($$1).c(8.0, 6.0, 8.0);
-      List<cbf> $$3 = $$0.a(cbf.class, $$2);
-      if (!$$3.isEmpty()) {
-         List<ciu> $$4 = $$0.a(ciu.class, $$2);
-         if ($$4.isEmpty()) {
-            return;
-         }
-
-         for (cbf $$5 : $$3) {
-            if ($$5.p() == null) {
-               ciu $$6 = ac.a($$4, $$0.z);
-               $$5.h($$6);
+public final class czw {
+   public static final Codec<czw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               czw.b.a.forGetter($$0x -> $$0x.i),
+               dac.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               czx.b.forGetter($$0x -> $$0x.j),
+               dai.c.forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, czw::new)
+   );
+   public static final Codec<czw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(czw.b.a.forGetter($$0x -> $$0x.i), dac.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new czw($$0x, $$1, czx.a, dai.b))
+   );
+   public static final Codec<il<czw>> c = ajp.a(ks.av, a);
+   public static final Codec<ip<czw>> d = ja.a(ks.av, a);
+   private static final ejx f = new ejx(new dvq(new dus(1234L)), ImmutableList.of(0));
+   static final ejx g = new ejx(new dvq(new dus(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final ejx e = new ejx(new dvq(new dus(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final czw.b i;
+   private final czx j;
+   private final dai k;
+   private final dac l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ac.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
             }
-         }
-      }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
+
+   czw(czw.b $$0, dac $$1, czx $$2, dai $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
-   public static void a(cxb $$0, ib $$1) {
-      a($$0, $$1, new cqm(cqp.ws, 3));
+   public int a() {
+      return this.l.d();
    }
 
-   @Override
-   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
-      int $$7 = $$1.c(c);
-      boolean $$8 = false;
-      if ($$7 >= 5) {
-         cqh $$9 = $$0.d();
-         if ($$0.a(cqp.rU)) {
-            $$2.a($$4, $$4.dr(), $$4.dt(), $$4.dx(), aty.bX, atz.e, 1.0F, 1.0F);
-            a($$2, $$3);
-            $$0.a(1, $$4, bpp.d($$5));
-            $$8 = true;
-            $$2.a($$4, drp.M, $$3);
-         } else if ($$0.a(cqp.sk)) {
-            $$0.h(1);
-            $$2.a($$4, $$4.dr(), $$4.dt(), $$4.dx(), aty.cB, atz.e, 1.0F, 1.0F);
-            if ($$0.b()) {
-               $$4.a($$5, new cqm(cqp.wv));
-            } else if (!$$4.fZ().e(new cqm(cqp.wv))) {
-               $$4.a(new cqm(cqp.wv), false);
-            }
+   public dai b() {
+      return this.k;
+   }
 
-            $$8 = true;
-            $$2.a($$4, drp.y, $$3);
-         }
+   public boolean c() {
+      return this.i.a();
+   }
 
-         if (!$$2.x_() && $$8) {
-            $$4.b(aui.c.b($$9));
-         }
-      }
-
-      if ($$8) {
-         if (!daq.a($$2, $$3)) {
-            if (this.c($$2, $$3)) {
-               this.b($$2, $$3);
-            }
-
-            this.a($$2, $$1, $$3, $$4, dkf.b.c);
-         } else {
-            this.a($$2, $$1, $$3);
-         }
-
-         return bnf.a($$2.B);
+   public czw.c a(ib $$0) {
+      if (!this.c()) {
+         return czw.c.a;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         return this.b($$0) ? czw.c.c : czw.c.b;
       }
    }
 
-   private boolean c(cxb $$0, ib $$1) {
-      return $$0.c_($$1) instanceof dkf $$3 ? !$$3.c() : false;
-   }
-
-   public void a(cxb $$0, dnb $$1, ib $$2, @Nullable ciu $$3, dkf.b $$4) {
-      this.a($$0, $$1, $$2);
-      if ($$0.c_($$2) instanceof dkf $$6) {
-         $$6.a($$3, $$1, $$4);
+   private float e(ib $$0) {
+      float $$1 = this.i.d.a($$0, this.g());
+      if ($$0.v() > 80) {
+         float $$2 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$1 - ($$2 + (float)$$0.v() - 80.0F) * 0.05F / 40.0F;
+      } else {
+         return $$1;
       }
    }
 
-   public void a(cxb $$0, dnb $$1, ib $$2) {
-      $$0.a($$2, $$1.a(c, Integer.valueOf(0)), 3);
-   }
-
-   @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      if ($$0.c(c) >= 5) {
-         for (int $$4 = 0; $$4 < $$3.a(1) + 1; $$4++) {
-            this.a($$1, $$2, $$0);
+   @Deprecated
+   private float f(ib $$0) {
+      long $$1 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$2 = this.m.get();
+      float $$3 = $$2.get($$1);
+      if (!Float.isNaN($$3)) {
+         return $$3;
+      } else {
+         float $$4 = this.e($$0);
+         if ($$2.size() == 1024) {
+            $$2.removeFirstFloat();
          }
+
+         $$2.put($$1, $$4);
+         return $$4;
       }
    }
 
-   private void a(cxb $$0, ib $$1, dnb $$2) {
-      if ($$2.u().c() && !($$0.z.i() < 0.3F)) {
-         eqm $$3 = $$2.k($$0, $$1);
-         double $$4 = $$3.c(ih.a.b);
-         if ($$4 >= 1.0 && !$$2.a(aun.ao)) {
-            double $$5 = $$3.b(ih.a.b);
-            if ($$5 > 0.0) {
-               this.a($$0, $$1, $$3, (double)$$1.v() + $$5 - 0.05);
-            } else {
-               ib $$6 = $$1.d();
-               dnb $$7 = $$0.a_($$6);
-               eqm $$8 = $$7.k($$0, $$6);
-               double $$9 = $$8.c(ih.a.b);
-               if (($$9 < 1.0 || !$$7.r($$0, $$6)) && $$7.u().c()) {
-                  this.a($$0, $$1, $$3, (double)$$1.v() - 0.05);
+   public boolean a(cza $$0, ib $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(cza $$0, ib $$1, boolean $$2) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.I_() && $$1.v() < $$0.al() && $$0.a(czg.b, $$1) < 10) {
+            doz $$3 = $$0.a_($$1);
+            eks $$4 = $$0.b_($$1);
+            if ($$4.a() == ekt.c && $$3.b() instanceof dgn) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.z($$1.g()) && $$0.z($$1.h()) && $$0.z($$1.e()) && $$0.z($$1.f());
+               if (!$$5) {
+                  return true;
                }
             }
          }
+
+         return false;
       }
    }
 
-   private void a(cxb $$0, ib $$1, eqm $$2, double $$3) {
-      this.a($$0, (double)$$1.u() + $$2.b(ih.a.a), (double)$$1.u() + $$2.c(ih.a.a), (double)$$1.w() + $$2.b(ih.a.c), (double)$$1.w() + $$2.c(ih.a.c), $$3);
+   public boolean b(ib $$0) {
+      return !this.c($$0);
    }
 
-   private void a(cxb $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      $$0.a(kc.at, aww.d($$0.z.j(), $$1, $$2), $$5, aww.d($$0.z.j(), $$3, $$4), 0.0, 0.0, 0.0);
+   public boolean c(ib $$0) {
+      return this.f($$0) >= 0.15F;
    }
 
-   @Override
-   public dnb a(csu $$0) {
-      return this.o().a(b, $$0.g().g());
+   public boolean d(ib $$0) {
+      return this.f($$0) > 0.1F;
    }
 
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(c, b);
+   public boolean b(cza $$0, ib $$1) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.I_() && $$1.v() < $$0.al() && $$0.a(czg.b, $$1) < 10) {
+            doz $$2 = $$0.a_($$1);
+            if (($$2.i() || $$2.a(dca.dN)) && dca.dN.n().a($$0, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.c;
+   public czx d() {
+      return this.j;
    }
 
-   @Nullable
-   @Override
-   public dki a(ib $$0, dnb $$1) {
-      return new dkf($$0, $$1);
+   public int e() {
+      return this.l.a();
    }
 
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return $$0.B ? null : a($$2, dkk.H, dkf::a);
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::p);
+      return this.l.g().a($$0, $$1, $$2);
    }
 
-   @Override
-   public dnb a(cxb $$0, ib $$1, dnb $$2, ciu $$3) {
-      if (!$$0.B && $$3.f() && $$0.Z().b(cwx.h) && $$0.c_($$1) instanceof dkf $$5) {
-         cqm $$6 = new cqm(this);
-         int $$7 = $$2.c(c);
-         boolean $$8 = !$$5.c();
-         if ($$8 || $$7 > 0) {
-            if ($$8) {
-               ta $$9 = new ta();
-               $$9.a("Bees", $$5.k());
-               coh.a($$6, dkk.H, $$9);
+   private int p() {
+      double $$0 = (double)axk.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)axk.a(this.i.e, 0.0F, 1.0F);
+      return cyv.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::q);
+   }
+
+   private int q() {
+      double $$0 = (double)axk.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)axk.a(this.i.e, 0.0F, 1.0F);
+      return cyr.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public dac h() {
+      return this.l;
+   }
+
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<czv> k() {
+      return this.l.h();
+   }
+
+   public Optional<il<aul>> l() {
+      return this.l.i();
+   }
+
+   public Optional<czu> m() {
+      return this.l.j();
+   }
+
+   public Optional<czt> n() {
+      return this.l.k();
+   }
+
+   public Optional<auj> o() {
+      return this.l.l();
+   }
+
+   public static class a {
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private czw.d c = czw.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private dac e;
+      @Nullable
+      private dai f;
+      @Nullable
+      private czx g;
+
+      public czw.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public czw.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public czw.a b(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public czw.a a(dac $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public czw.a a(dai $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public czw.a a(czx $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public czw.a a(czw.d $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public czw a() {
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new czw(new czw.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
+      }
+   }
+
+   static record b(boolean b, float c, czw.d d, float e) {
+      public static final MapCodec<czw.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  czw.d.c.optionalFieldOf("temperature_modifier", czw.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, czw.b::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public czw.d c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
+   }
+
+   public static enum c implements aye {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<czw.c> d = aye.a(czw.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   public static enum d implements aye {
+      a("none") {
+         @Override
+         public float a(ib $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(ib $$0, float $$1) {
+            double $$2 = czw.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = czw.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = czw.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
             }
 
-            ta $$10 = new ta();
-            $$10.a("honey_level", $$7);
-            $$6.a("BlockStateTag", $$10);
-            cfe $$11 = new cfe($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
-            $$11.s();
-            $$0.b($$11);
+            return $$1;
          }
+      };
+
+      private final String d;
+      public static final Codec<czw.d> c = aye.a(czw.d::values);
+
+      public abstract float a(ib var1, float var2);
+
+      d(String $$0) {
+         this.d = $$0;
       }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected List<cqm> a(dnb $$0, elc.a $$1) {
-      box $$2 = $$1.b(enh.a);
-      if ($$2 instanceof cff || $$2 instanceof cfm || $$2 instanceof cka || $$2 instanceof ces || $$2 instanceof clb) {
-         dki $$3 = $$1.b(enh.h);
-         if ($$3 instanceof dkf $$4) {
-            $$4.a(null, $$0, dkf.b.c);
-         }
+      public String a() {
+         return this.d;
       }
 
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if ($$3.a_($$5).b() instanceof ddc && $$3.c_($$4) instanceof dkf $$7) {
-         $$7.a(null, $$0, dkf.b.c);
+      @Override
+      public String c() {
+         return this.d;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(b)));
    }
 }

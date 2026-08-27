@@ -1,76 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 public class dmn {
-   static final String a = "shared_data";
-   static Codec<dmn> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cqm.a("display_item").forGetter($$0x -> $$0x.d),
-               jf.c.optionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("connected_particles_range", dml.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dmn::new)
-   );
-   private cqm d = cqm.h;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = dml.b.d();
-   boolean c;
+   private boolean a;
+   private float b;
+   private float c;
 
-   dmn(cqm $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
-   }
-
-   dmn() {
-   }
-
-   public cqm a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return !this.d.b();
-   }
-
-   public void a(cqm $$0) {
-      if (!cqm.a(this.d, $$0)) {
-         this.d = $$0.q();
-         this.f();
+   public void a() {
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
       }
    }
 
-   boolean c() {
-      return !this.e.isEmpty();
+   public float a(float $$0) {
+      return axk.i($$0, this.c, this.b);
    }
 
-   Set<UUID> d() {
-      return this.e;
-   }
-
-   double e() {
-      return this.f;
-   }
-
-   void a(apf $$0, ib $$1, dmm $$2, dml $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
-      }
-   }
-
-   private void f() {
-      this.c = true;
-   }
-
-   void a(dmn $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 }

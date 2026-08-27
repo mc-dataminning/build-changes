@@ -1,13 +1,17 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class bbs extends bco {
-   public bbs(Schema $$0) {
-      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
+public class bbs extends bfl {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+
+   public bbs(Schema $$0, boolean $$1) {
+      super("EntityPufferfishRenameFix", $$0, $$1);
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.remove("filtered_title").remove("filtered_pages");
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
    }
 }

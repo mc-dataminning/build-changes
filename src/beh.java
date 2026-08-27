@@ -1,40 +1,27 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class beh {
-   public static final TypeReference a = () -> "level";
-   public static final TypeReference b = () -> "player";
-   public static final TypeReference c = () -> "chunk";
-   public static final TypeReference d = () -> "hotbar";
-   public static final TypeReference e = () -> "options";
-   public static final TypeReference f = () -> "structure";
-   public static final TypeReference g = () -> "stats";
-   public static final TypeReference h = () -> "saved_data/command_storage";
-   public static final TypeReference i = () -> "saved_data/chunks";
-   public static final TypeReference j = () -> "saved_data/map_data";
-   public static final TypeReference k = () -> "saved_data/idcounts";
-   public static final TypeReference l = () -> "saved_data/raids";
-   public static final TypeReference m = () -> "saved_data/random_sequences";
-   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
-   public static final TypeReference o = () -> "saved_data/scoreboard";
-   public static final TypeReference p = () -> "advancements";
-   public static final TypeReference q = () -> "poi_chunk";
-   public static final TypeReference r = () -> "entity_chunk";
-   public static final TypeReference s = () -> "block_entity";
-   public static final TypeReference t = () -> "item_stack";
-   public static final TypeReference u = () -> "block_state";
-   public static final TypeReference v = () -> "flat_block_state";
-   public static final TypeReference w = () -> "entity_name";
-   public static final TypeReference x = () -> "entity_tree";
-   public static final TypeReference y = () -> "entity";
-   public static final TypeReference z = () -> "block_name";
-   public static final TypeReference A = () -> "item_name";
-   public static final TypeReference B = () -> "game_event_name";
-   public static final TypeReference C = () -> "untagged_spawner";
-   public static final TypeReference D = () -> "structure_feature";
-   public static final TypeReference E = () -> "objective";
-   public static final TypeReference F = () -> "team";
-   public static final TypeReference G = () -> "recipe";
-   public static final TypeReference H = () -> "biome";
-   public static final TypeReference I = () -> "multi_noise_biome_source_parameter_list";
-   public static final TypeReference J = () -> "world_gen_settings";
+public class beh extends bdh {
+   public beh(Schema $$0) {
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+   }
+
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
+
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
+   }
 }

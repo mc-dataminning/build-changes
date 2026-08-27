@@ -1,45 +1,29 @@
-public class adu implements yb<aam> {
-   public static final xs<uu, adu> a = yb.a(adu::a, adu::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public class adu implements yn<aay> {
+   public static final ye<vg, adu> a = yn.a(adu::a, adu::new);
+   private final int b;
 
-   public adu(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public adu(dqq $$0) {
+      this.b = $$0.q();
    }
 
-   private adu(uu $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private adu(vg $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(vg $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yd<adu> a() {
-      return aex.aG;
+   public yp<adu> a() {
+      return afj.au;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

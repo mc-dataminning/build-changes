@@ -1,30 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+public enum elj {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public class elj extends elr {
-   public static final Codec<elj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajh.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, elj::new)
-   );
-   private final ajh j;
+   private final float A;
 
-   private elj(ajh $$0, int $$1, int $$2, List<env> $$3, List<emj> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   private elj(float $$0) {
+      this.A = $$0;
    }
 
-   @Override
-   public elq a() {
-      return eln.e;
-   }
-
-   @Override
-   public void a(Consumer<cqm> $$0, ekw $$1) {
-      $$1.a(this.j, $$0);
-   }
-
-   public static elr.a<?> a(ajh $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new elj($$0, $$1, $$2, $$3, $$4));
+   public float a() {
+      return this.A;
    }
 }

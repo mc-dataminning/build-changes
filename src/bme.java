@@ -1,44 +1,88 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public class bme extends bmg {
-   public static final bme a = new bme(0.0F);
-   public static final Codec<bme> b = awe.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bme::new, bme::d);
-   private final float d;
+public class bme implements blx {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<blv> b = new ObjectOpenHashSet();
+   private final bmd c = new bmd();
 
-   public static bme a(float $$0) {
-      return $$0 == 0.0F ? a : new bme($$0);
+   public bme(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
+      }
    }
 
-   private bme(float $$0) {
-      this.d = $$0;
-   }
+   public static Set<blv> a() {
+      Builder<blv> $$0 = ImmutableSet.builder();
 
-   public float d() {
-      return this.d;
+      try {
+         bme.a $$1 = new bme.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> blv.a("cpu#" + $$1x, blu.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      }
+
+      $$0.add(blv.a("heap MiB", blu.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(blw.a.a());
+      return $$0.build();
    }
 
    @Override
-   public float a(axd $$0) {
-      return this.d;
+   public Set<blv> a(Supplier<bkm> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 
-   @Override
-   public float a() {
-      return this.d;
+   public static blv a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      blv.d $$3 = new blv.d(2.0F);
+      return blv.a("ticktime", blu.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
    }
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
 
-   @Override
-   public bmh<?> c() {
-      return bmh.a;
-   }
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
 
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+         return this.e[$$0] * 100.0;
+      }
    }
 }

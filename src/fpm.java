@@ -1,42 +1,37 @@
-public class fpm<T extends box> extends fon<T> {
-   private final frf a;
-   private final frf b;
-   private final frf f;
-
-   public fpm(frf $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public class fpm extends fqz<cft> {
+   public fpm(ftm $$0) {
+      super($$0);
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", frk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), frh.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", frk.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), frh.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", frk.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), frh.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", frk.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", frk.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), frh.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", frk.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", frk.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", frk.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", frk.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", frk.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return frl.a($$0, 32, 32);
+   public static fts a(ftq $$0) {
+      ftu $$1 = fqz.a($$0, 0.0F);
+      ftv $$2 = $$1.a();
+      $$2.a("head", ftr.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fto.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", ftr.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fto.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", ftr.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fto.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", ftr.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fto.a(1.9F, 11.0F, 0.0F));
+      return fts.a($$1, 64, 32);
    }
 
-   @Override
-   public frf a() {
-      return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * aww.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * aww.a($$3 * 0.2F);
+   public void a(cft $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
+      this.l.a(this.k);
    }
 }

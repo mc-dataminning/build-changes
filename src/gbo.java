@@ -1,84 +1,100 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gbo implements gbe.a {
-   private final ezi a;
+public class gbo implements gnu {
+   private final dpa<dby, doz> a;
+   private final List<gbq> b;
 
-   public gbo(ezi $$0) {
+   public gbo(dpa<dby, doz> $$0, List<gbq> $$1) {
       this.a = $$0;
+      this.b = $$1;
+   }
+
+   public List<gbq> a() {
+      return this.b;
+   }
+
+   public Set<gbj> b() {
+      Set<gbj> $$0 = Sets.newHashSet();
+
+      for (gbq $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
    }
 
    @Override
-   public void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      cwh $$6 = this.a.s.dM();
-      ib $$7 = ib.a($$2, $$3, $$4);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gbo $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
 
-      for (ib $$8 : ib.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dnb $$9 = $$6.a_($$8);
-         if (!$$9.a(dae.a)) {
-            eqm $$10 = $$9.j($$6, $$8);
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
 
-            for (epo $$11 : $$10.e()) {
-               epo $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ih.e)) {
-                  euf $$23 = $$1.getBuffer(fya.A());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public Collection<ajt> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
 
-               if ($$9.d($$6, $$8, ih.d)) {
-                  euf $$24 = $$1.getBuffer(fya.A());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Override
+   public void a(Function<ajt, gnu> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
 
-               if ($$9.d($$6, $$8, ih.f)) {
-                  euf $$25 = $$1.getBuffer(fya.A());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   @Nullable
+   @Override
+   public gnj a(gnn $$0, Function<gnm, glj> $$1, gnr $$2, ajt $$3) {
+      gns.a $$4 = new gns.a();
 
-               if ($$9.d($$6, $$8, ih.c)) {
-                  euf $$26 = $$1.getBuffer(fya.A());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.a)) {
-                  euf $$27 = $$1.getBuffer(fya.A());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.b)) {
-                  euf $$28 = $$1.getBuffer(fya.A());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
+      for (gbq $$5 : this.a()) {
+         gnj $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
          }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<gbo> {
+      private final gbc.a a;
+
+      public a(gbc.a $$0) {
+         this.a = $$0;
+      }
+
+      public gbo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gbo(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gbq> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gbq> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((gbq)$$0.deserialize($$3, gbq.class));
+         }
+
+         return $$2;
       }
    }
 }

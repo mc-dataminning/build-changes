@@ -1,168 +1,72 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
 public class qb {
-   public static final ajg<een> a = ps.a("trail_ruins/tower");
+   @Deprecated
+   public static final ejv.a a = new ejv.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(pl<een> $$0) {
-      im<een> $$1 = $$0.a(kj.aH);
-      il<een> $$2 = $$1.b(ps.a);
-      im<ehc> $$3 = $$0.a(kj.aF);
-      il<ehc> $$4 = $$3.b(pt.J);
-      il<ehc> $$5 = $$3.b(pt.K);
-      il<ehc> $$6 = $$3.b(pt.L);
-      $$0.a(
-         a,
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_5", $$4), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/tower/tower_top",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(eel.b("trail_ruins/tower/tower_top_5", $$6), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/tower/additions",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/tower/stable_5", $$4), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/roads",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(eel.b("trail_ruins/roads/road_spacer_1", $$5), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/buildings",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/one_room_5", $$4), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/buildings/group_room_5", $$4), 1)
-            ),
-            een.a.b
-         )
-      );
-      ps.a(
-         $$0,
-         "trail_ruins/decor",
-         new een(
-            $$2,
-            List.of(
-               Pair.of(eel.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(eel.b("trail_ruins/decor/decor_7", $$4), 1)
-            ),
-            een.a.b
-         )
-      );
+   public static void a(px<ejv.a> $$0) {
+      a($$0, 0, dva.a, dva.b, dva.c, dva.d);
+      a($$0, -2, dva.e, dva.f, dva.g, dva.h);
+      a($$0, dva.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dva.j, a);
+      a($$0, dva.k, -3, 1.0);
+      a($$0, dva.l, -7, 1.0);
+      a($$0, dva.m, -1, 1.0);
+      a($$0, dva.n, -5, 1.0);
+      a($$0, dva.o, -7, 1.0, 1.0);
+      a($$0, dva.p, -8, 1.0);
+      a($$0, dva.q, -8, 1.0);
+      a($$0, dva.r, -7, 1.0);
+      a($$0, dva.s, -8, 1.0);
+      a($$0, dva.t, -11, 1.0);
+      a($$0, dva.u, -11, 1.0);
+      a($$0, dva.v, -7, 1.0);
+      a($$0, dva.w, -7, 1.0);
+      a($$0, dva.x, -11, 1.0);
+      a($$0, dva.y, -8, 1.0);
+      a($$0, dva.z, -5, 1.0);
+      a($$0, dva.A, -8, 1.0);
+      a($$0, dva.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dva.C, -8, 1.0);
+      a($$0, dva.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dva.E, -8, 1.0);
+      a($$0, dva.F, -7, 1.0);
+      a($$0, dva.G, -7, 1.0);
+      a($$0, dva.H, -5, 1.0);
+      a($$0, dva.I, -8, 1.0);
+      a($$0, dva.J, -8, 1.0);
+      a($$0, dva.K, -7, 1.0);
+      a($$0, dva.L, -7, 1.0);
+      a($$0, dva.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dva.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dva.P, -8, 1.0);
+      a($$0, dva.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.R, -8, 1.0);
+      a($$0, dva.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dva.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.U, -3, 1.0);
+      a($$0, dva.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dva.W, -2, 1.0);
+      a($$0, dva.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dva.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dva.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dva.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dva.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dva.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dva.ah, -4, 1.0);
+   }
+
+   private static void a(px<ejv.a> $$0, int $$1, ajs<ejv.a> $$2, ajs<ejv.a> $$3, ajs<ejv.a> $$4, ajs<ejv.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(px<ejv.a> $$0, ajs<ejv.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new ejv.a($$2, $$3, $$4));
    }
 }

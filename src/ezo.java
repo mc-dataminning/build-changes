@@ -1,158 +1,167 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ezo extends ast<Map<String, List<ezo.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<ezo.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(ezo.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(ezo.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(ezo.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(ezo.a::d)
-                  )
-                  .apply($$0, ezo.a::new)
-         )
-         .listOf()
-   );
+public class ezo extends grl {
    private static final Logger b = LogUtils.getLogger();
-   private final ajh c;
-   private final Object2BooleanFunction<String> d;
+   public static final wg a = wg.c("mco.upload.select.world.title");
+   private static final wg c = wg.c("selectWorld.unable_to_load");
+   static final wg y = wg.c("selectWorld.world");
+   private static final wg z = wg.c("mco.upload.hardcore").b(-65536);
+   private static final wg A = wg.c("selectWorld.commands");
+   private static final DateFormat B = new SimpleDateFormat();
    @Nullable
-   private Timer e;
-   @Nullable
-   private ezo.b f;
+   private final far C;
+   private final ezn D;
+   private final long E;
+   private final int F;
+   fdp G;
+   List<ems> H = Lists.newArrayList();
+   int I = -1;
+   ezo.b J;
 
-   public ezo(ajh $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ezo(@Nullable far $$0, long $$1, int $$2, ezn $$3) {
+      super(a);
+      this.C = $$0;
+      this.D = $$3;
+      this.E = $$1;
+      this.F = $$2;
    }
 
-   protected Map<String, List<ezo.a>> a(aso $$0, bjr $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
+   private void C() {
+      emr.a $$0 = this.j.m().b();
+      this.H = this.j.m().a($$0).join().stream().filter(ems::v).collect(Collectors.toList());
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
-   }
-
-   protected void a(Map<String, List<ezo.a>> $$0, aso $$1, bjr $$2) {
-      List<ezo.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new ezo.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      for (ems $$1 : this.H) {
+         this.J.a($$1);
       }
    }
 
    @Override
-   public void close() {
-      this.a();
-   }
+   public void aN_() {
+      this.J = this.c(new ezo.b());
 
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
+      try {
+         this.C();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.j.a(new ezc(c, wg.a(var2.getMessage()), this.D));
+         return;
+      }
+
+      this.G = this.c(fdp.a(wg.c("mco.upload.button.name"), $$0 -> this.D()).a(this.k / 2 - 154, this.l - 32, 153, 20).a());
+      this.G.j = this.I >= 0 && this.I < this.H.size();
+      this.c(fdp.a(wf.k, $$0 -> this.j.a(this.D)).a(this.k / 2 + 6, this.l - 32, 153, 20).a());
+      this.a(new grj(wg.c("mco.upload.select.world.subtitle"), this.k / 2, g(-1), -6250336));
+      if (this.H.isEmpty()) {
+         this.a(new grj(wg.c("mco.upload.select.world.none"), this.k / 2, this.l / 2 - 20, -1));
       }
    }
 
-   private long a(List<ezo.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   @Override
+   public wg i() {
+      return wf.a(this.n(), this.m());
    }
 
-   private long a(List<ezo.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
+   private void D() {
+      if (this.I != -1 && !this.H.get(this.I).i()) {
+         ems $$0 = this.H.get(this.I);
+         this.j.a(new ezu(this.C, this.E, this.F, this.D, $$0));
       }
    }
 
-   static class b extends TimerTask {
-      private final ezi a = ezi.Q();
-      private final List<ezo.a> b;
-      private final long c;
-      private final AtomicLong d;
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 13, -1);
+   }
 
-      public b(List<ezo.a> $$0, long $$1, long $$2) {
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.j.a(this.D);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   static wg a(ems $$0) {
+      return $$0.h().d();
+   }
+
+   static String b(ems $$0) {
+      return B.format(new Date($$0.f()));
+   }
+
+   class a extends fel.a<ezo.a> {
+      private final ems b;
+      private final String c;
+      private final wg d;
+      private final wg e;
+
+      public a(ems $$0) {
          this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public ezo.b a(List<ezo.a> $$0, long $$1) {
-         this.cancel();
-         return new ezo.b($$0, this.d.get(), $$1);
+         this.c = $$0.b();
+         this.d = wg.a("mco.upload.entry.id", $$0.a(), ezo.b($$0));
+         this.e = $$0.s();
       }
 
       @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
+      public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
+      }
 
-         for (ezo.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fdq.a(ezi.Q().aA(), fdq.a.f, vu.a($$2.c, $$3), vu.a($$2.d, $$3)));
-                  return;
-               }
-            }
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ezo.this.J.b(ezo.this.H.indexOf(this.b));
+         return super.a($$0, $$1, $$2);
+      }
+
+      protected void a(fdc $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = ezo.y + " " + ($$1 + 1);
+         } else {
+            $$4 = this.c;
          }
+
+         $$0.a(ezo.this.m, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(ezo.this.m, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(ezo.this.m, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
+      }
+
+      @Override
+      public wg a() {
+         wg $$0 = wf.b(wg.b(this.b.b()), wg.b(ezo.b(this.b)), ezo.a(this.b));
+         return wg.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends grk<ezo.a> {
+      public b() {
+         super(ezo.this.k, ezo.this.l - 40 - ezo.g(0), ezo.g(0), 36);
+      }
+
+      public void a(ems $$0) {
+         this.a((ezo.a)(ezo.this.new a($$0)));
+      }
+
+      @Override
+      public int a() {
+         return ezo.this.H.size() * 36;
+      }
+
+      public void a(@Nullable ezo.a $$0) {
+         super.a($$0);
+         ezo.this.I = this.aF_().indexOf($$0);
+         ezo.this.G.j = ezo.this.I >= 0 && ezo.this.I < this.l() && !ezo.this.H.get(ezo.this.I).i();
       }
    }
 }

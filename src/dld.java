@@ -1,69 +1,33 @@
-public class dld extends dki implements dll {
-   private final dkq a = new dkq();
-   private final dkv b = new dkv() {
-      @Override
-      protected void a(cxb $$0, ib $$1, dnb $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aty.hS, atz.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      protected void b(cxb $$0, ib $$1, dnb $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aty.hR, atz.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public class dld extends ddm implements dlc {
+   public static final MapCodec<dld> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlc.a.e.fieldOf("weathering_state").forGetter(dld::k), u()).apply($$0, dld::new)
+   );
+   private final dlc.a e;
 
-      @Override
-      protected void a(cxb $$0, ib $$1, dnb $$2, int $$3, int $$4) {
-         $$0.a(dld.this.p, dae.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(ciu $$0) {
-         return $$0.gm().b(dld.this);
-      }
-   };
-
-   public dld(ib $$0, dnb $$1) {
-      super(dkk.d, $$0, $$1);
+   @Override
+   protected MapCodec<dld> a() {
+      return d;
    }
 
-   public static void a(cxb $$0, ib $$1, dnb $$2, dld $$3) {
-      $$3.a.a();
+   public dld(dlc.a $$0, doy.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public void a(ciu $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.b.a($$0, this.i(), this.aC_(), this.n());
-      }
-   }
-
-   public void b(ciu $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.b.b($$0, this.i(), this.aC_(), this.n());
-      }
-   }
-
-   public boolean c(ciu $$0) {
-      return bmw.a(this, $$0);
-   }
-
-   public void b() {
-      if (!this.q) {
-         this.b.c(this.i(), this.aC_(), this.n());
-      }
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   protected boolean e_(doz $$0) {
+      return dlc.c($$0.b()).isPresent();
+   }
+
+   public dlc.a k() {
+      return this.e;
    }
 }

@@ -1,40 +1,81 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ayh extends DataFix {
-   public ayh(Schema $$0) {
-      super($$0, false);
+public class ayh {
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final Semaphore c = new Semaphore(1);
+   private final Lock d = new ReentrantLock();
+   @Nullable
+   private volatile Thread e;
+   @Nullable
+   private volatile y f;
+
+   public ayh(String $$0) {
+      this.b = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(beh.y), this::a);
-   }
+   public void a() {
+      boolean $$0 = false;
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", ayh::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", ayh::a);
-      return this.a($$0, "minecraft:trident", ayh::a);
-   }
+      try {
+         this.d.lock();
+         if (!this.c.tryAcquire()) {
+            this.e = Thread.currentThread();
+            $$0 = true;
+            this.d.unlock();
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
-      } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+            try {
+               this.c.acquire();
+            } catch (InterruptedException var6) {
+               Thread.currentThread().interrupt();
+            }
+
+            throw this.f;
+         }
+      } finally {
+         if (!$$0) {
+            this.d.unlock();
+         }
       }
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(beh.y, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(beh.y, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public void b() {
+      try {
+         this.d.lock();
+         Thread $$0 = this.e;
+         if ($$0 != null) {
+            y $$1 = a(this.b, $$0);
+            this.f = $$1;
+            this.c.release();
+            throw $$1;
+         }
+
+         this.c.release();
+      } finally {
+         this.d.unlock();
+      }
+   }
+
+   public static y a(String $$0, @Nullable Thread $$1) {
+      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(ayh::a).collect(Collectors.joining("\n"));
+      String $$3 = "Accessing " + $$0 + " from multiple threads";
+      o $$4 = new o($$3, new IllegalStateException($$3));
+      p $$5 = $$4.a("Thread dumps");
+      $$5.a("Thread dumps", $$2);
+      a.error("Thread dumps: \n" + $$2);
+      return new y($$4);
+   }
+
+   private static String a(Thread $$0) {
+      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

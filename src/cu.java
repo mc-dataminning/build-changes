@@ -11,37 +11,37 @@ public class cu extends cx<cu.a> {
       return cu.a.a;
    }
 
-   public void a(apg $$0, ajh $$1, List<cqm> $$2) {
+   public void a(apt $$0, ajt $$1, List<crj> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bc> b, ajh c, List<cc> d) implements cx.a {
+   public static record a(Optional<bc> b, ajt c, List<cc> d) implements cx.a {
       public static final Codec<cu.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  awe.a(br.b, "player").forGetter(cu.a::a),
-                  ajh.a.fieldOf("recipe_id").forGetter(cu.a::b),
-                  awe.a(cc.a.listOf(), "ingredients", List.of()).forGetter(cu.a::c)
+                  aws.a(br.b, "player").forGetter(cu.a::a),
+                  ajt.a.fieldOf("recipe_id").forGetter(cu.a::b),
+                  aws.a(cc.a.listOf(), "ingredients", List.of()).forGetter(cu.a::c)
                )
                .apply($$0, cu.a::new)
       );
 
-      public static an<cu.a> a(ajh $$0, List<cc.a> $$1) {
+      public static an<cu.a> a(ajt $$0, List<cc.a> $$1) {
          return am.ac.a(new cu.a(Optional.empty(), $$0, $$1.stream().map(cc.a::b).toList()));
       }
 
-      public static an<cu.a> a(ajh $$0) {
+      public static an<cu.a> a(ajt $$0) {
          return am.ac.a(new cu.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(ajh $$0, List<cqm> $$1) {
+      boolean b(ajt $$0, List<crj> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cqm> $$2 = new ArrayList<>($$1);
+            List<crj> $$2 = new ArrayList<>($$1);
 
             for (cc $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cqm> $$5 = $$2.iterator();
+               Iterator<crj> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {
@@ -65,7 +65,7 @@ public class cu extends cx<cu.a> {
          return this.b;
       }
 
-      public ajh b() {
+      public ajt b() {
          return this.c;
       }
 

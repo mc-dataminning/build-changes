@@ -1,67 +1,33 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class eyo extends eyi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.backup.restoring");
-   private final eux d;
-   private final long e;
-   private final ewr f;
+public class eyo {
+   public final ezx a = new ezx(ac.g(), TimeUnit.MILLISECONDS, ac.c);
+   private final List<ezx.e<?>> h;
+   public final ezx.e<List<exo>> b;
+   public final ezx.e<eyo.a> c;
+   public final ezx.e<Integer> d;
+   public final ezx.e<Boolean> e;
+   public final ezx.e<exn> f;
+   public final eyp g = new eyp(new fad());
 
-   public eyo(eux $$0, long $$1, ewr $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eyo(ewy $$0) {
+      this.c = this.a.a("server list", () -> {
+         exr $$1 = $$0.b();
+         return ewt.b() ? new eyo.a($$1.a, $$0.c()) : new eyo.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), ezy.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), ezy.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), ezy.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), ezy.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), ezy.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public void run() {
-      eur $$0 = eur.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (ewf var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (ewe var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new ewv(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
-      }
+   public List<ezx.e<?>> a() {
+      return this.h;
    }
 
-   @Override
-   public vu a() {
-      return c;
+   public static record a(List<exp> a, List<exp> b) {
    }
 }

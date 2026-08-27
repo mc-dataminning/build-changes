@@ -8,17 +8,17 @@ public class df extends cx<df.a> {
       return df.a.a;
    }
 
-   public void a(apg $$0, box $$1, ept $$2, int $$3) {
-      ekw $$4 = br.b($$0, $$1);
+   public void a(apt $$0, bpv $$1, esa $$2, int $$3) {
+      enb $$4 = br.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
    public static record a(Optional<bc> b, cm.d c, Optional<bc> d) implements cx.a {
       public static final Codec<df.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  awe.a(br.b, "player").forGetter(df.a::a),
-                  awe.a(cm.d.d, "signal_strength", cm.d.c).forGetter(df.a::b),
-                  awe.a(br.b, "projectile").forGetter(df.a::c)
+                  aws.a(br.b, "player").forGetter(df.a::a),
+                  aws.a(cm.d.d, "signal_strength", cm.d.c).forGetter(df.a::b),
+                  aws.a(br.b, "projectile").forGetter(df.a::c)
                )
                .apply($$0, df.a::new)
       );
@@ -27,7 +27,7 @@ public class df extends cx<df.a> {
          return am.M.a(new df.a(Optional.empty(), $$0, $$1));
       }
 
-      public boolean a(ekw $$0, ept $$1, int $$2) {
+      public boolean a(enb $$0, esa $$1, int $$2) {
          return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 

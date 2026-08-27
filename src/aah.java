@@ -1,20 +1,14 @@
-public record aah(ajh b) implements yb<aag> {
-   public static final xs<uu, aah> a = yb.a(aah::a, aah::new);
-
-   private aah(uu $$0) {
-      this($$0.q());
-   }
-
-   private void a(uu $$0) {
-      $$0.a(this.b);
-   }
-
+public interface aah extends yt {
    @Override
-   public yd<aah> a() {
-      return aai.a;
+   default vf b() {
+      return vf.e;
    }
 
-   public void a(aag $$0) {
-      $$0.a(this);
-   }
+   void a(aai var1);
+
+   void a(aaj var1);
+
+   void a(aal var1);
+
+   void a(aak var1);
 }

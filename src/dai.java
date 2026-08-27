@@ -1,142 +1,134 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dai extends dac implements daj {
-   public static final MapCodec<dai> a = b(dai::new);
-   public static final dns b = dnr.e;
-   private static final int c = 5;
+public class dai {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bmo<dai.c> a = bmo.c();
+   public static final dai b = new dai.a().a();
+   public static final MapCodec<dai> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bqr.i, bmo.c(dai.c.a).promotePartial(ac.a("Spawn data: ", d::error)), aye.a(bqr.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(kr.g.q(), dai.b.a, kr.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dai::new)
+   );
+   private final float f;
+   private final Map<bqr, bmo<dai.c>> g;
+   private final Map<bqb<?>, dai.b> h;
 
-   @Override
-   public MapCodec<dai> a() {
-      return a;
+   dai(float $$0, Map<bqr, bmo<dai.c>> $$1, Map<bqb<?>, dai.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public dai(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+   public bmo<dai.c> a(bqr $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
-      dnb $$4 = $$1.a_($$2.c());
-      if ($$4.i()) {
-         $$3.k($$0.c(b));
-         if (!$$1.B) {
-            apf $$5 = (apf)$$1;
+   @Nullable
+   public dai.b a(bqb<?> $$0) {
+      return this.h.get($$0);
+   }
 
-            for (int $$6 = 0; $$6 < 2; $$6++) {
-               $$5.a(kc.ak, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
-               $$5.a(kc.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
-            }
-         }
-      } else {
-         $$3.l($$0.c(b));
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bqr, List<dai.c>> a = Stream.of(bqr.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bqb<?>, dai.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dai.a a(bqr $$0, dai.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dai.a a(bqb<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dai.b($$2, $$1));
+         return this;
+      }
+
+      public dai.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dai a() {
+         return new dai(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bmo.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.d()));
-   }
+   public static record b(double b, double c) {
+      public static final Codec<dai.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dai.b::new)
+      );
 
-   @Override
-   protected eip c_(dnb $$0) {
-      return eiq.c.a(false);
-   }
+      public double a() {
+         return this.b;
+      }
 
-   public static void b(cxc $$0, ib $$1, dnb $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
-   }
-
-   public static void a(cxc $$0, ib $$1, dnb $$2, dnb $$3) {
-      if (m($$2)) {
-         dnb $$4 = n($$3);
-         $$0.a($$1, $$4, 2);
-         ib.a $$5 = $$1.j().c(ih.b);
-
-         while (m($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(ih.b);
-         }
+      public double b() {
+         return this.c;
       }
    }
 
-   private static boolean m(dnb $$0) {
-      return $$0.a(dae.nd) || $$0.a(dae.G) && $$0.u().e() >= 8 && $$0.u().b();
-   }
+   public static class c extends bmm.a {
+      public static final Codec<dai.c> a = aws.b(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     kr.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bml.a.fieldOf("weight").forGetter(bmm.a::a),
+                     aws.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     aws.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dai.c::new)
+         ),
+         (Function<dai.c, DataResult<dai.c>>)($$0 -> $$0.c > $$0.d
+               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
+               : DataResult.success($$0))
+      );
+      public final bqb<?> b;
+      public final int c;
+      public final int d;
 
-   private static dnb n(dnb $$0) {
-      if ($$0.a(dae.nd)) {
-         return $$0;
-      } else if ($$0.a(dae.dW)) {
-         return dae.nd.o().a(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(dae.kJ) ? dae.nd.o().a(b, Boolean.valueOf(true)) : dae.G.o();
-      }
-   }
-
-   @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(kc.an, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, aty.cZ, atz.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(kc.ao, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(kc.ao, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, aty.cX, atz.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      $$3.a($$4, eiq.c, eiq.c.a($$3));
-      if (!$$0.a($$3, $$4) || $$1 == ih.a || $$1 == ih.b && !$$2.a(dae.nd) && m($$2)) {
-         $$3.a($$4, this, 5);
+      public c(bqb<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bml.a($$1), $$2, $$3);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public c(bqb<?> $$0, bml $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bqr.h ? bqb.ay : $$0;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      dnb $$3 = $$1.a_($$2.d());
-      return $$3.a(dae.nd) || $$3.a(dae.kJ) || $$3.a(dae.dW);
-   }
-
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return eqj.a();
-   }
-
-   @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.a;
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cqm a(@Nullable ciu $$0, cxc $$1, ib $$2, dnb $$3) {
-      $$1.a($$2, dae.a.o(), 11);
-      return new cqm(cqp.qy);
-   }
-
-   @Override
-   public Optional<atx> av_() {
-      return eiq.c.j();
+      @Override
+      public String toString() {
+         return bqb.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      }
    }
 }

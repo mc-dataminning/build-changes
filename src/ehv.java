@@ -1,189 +1,215 @@
-public class ehv {
-   protected static final int[][] a = new int[][]{
-      {1, 1, 0},
-      {-1, 1, 0},
-      {1, -1, 0},
-      {-1, -1, 0},
-      {1, 0, 1},
-      {-1, 0, 1},
-      {1, 0, -1},
-      {-1, 0, -1},
-      {0, 1, 1},
-      {0, -1, 1},
-      {0, 1, -1},
-      {0, -1, -1},
-      {1, 1, 0},
-      {0, -1, 1},
-      {-1, 1, 0},
-      {0, -1, -1}
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+
+public class ehv extends efh {
+   private static final String[] e = new String[]{
+      "ruined_portal/portal_1",
+      "ruined_portal/portal_2",
+      "ruined_portal/portal_3",
+      "ruined_portal/portal_4",
+      "ruined_portal/portal_5",
+      "ruined_portal/portal_6",
+      "ruined_portal/portal_7",
+      "ruined_portal/portal_8",
+      "ruined_portal/portal_9",
+      "ruined_portal/portal_10"
    };
-   private static final double e = Math.sqrt(3.0);
-   private static final double f = 0.5 * (e - 1.0);
-   private static final double g = (3.0 - e) / 6.0;
-   private final int[] h = new int[512];
-   public final double b;
-   public final double c;
-   public final double d;
+   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
+   private static final float g = 0.05F;
+   private static final int h = 15;
+   private final List<ehv.a> i;
+   public static final Codec<ehv> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), aws.a(ehv.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, ehv::new)
+   );
 
-   public ehv(axd $$0) {
-      this.b = $$0.j() * 256.0;
-      this.c = $$0.j() * 256.0;
-      this.d = $$0.j() * 256.0;
-      int $$1 = 0;
-
-      while ($$1 < 256) {
-         this.h[$$1] = $$1++;
-      }
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         int $$3 = $$0.a(256 - $$2);
-         int $$4 = this.h[$$2];
-         this.h[$$2] = this.h[$$3 + $$2];
-         this.h[$$3 + $$2] = $$4;
-      }
+   public ehv(efh.c $$0, List<ehv.a> $$1) {
+      super($$0);
+      this.i = $$1;
    }
 
-   private int a(int $$0) {
-      return this.h[$$0 & 0xFF];
+   public ehv(efh.c $$0, ehv.a $$1) {
+      this($$0, List.of($$1));
    }
 
-   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
-      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
-   }
+   @Override
+   public Optional<efh.b> a(efh.a $$0) {
+      ehu.a $$1 = new ehu.a();
+      dvq $$2 = $$0.f();
+      ehv.a $$3 = null;
+      if (this.i.size() > 1) {
+         float $$4 = 0.0F;
 
-   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
-      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
-      double $$6;
-      if ($$5 < 0.0) {
-         $$6 = 0.0;
-      } else {
-         $$5 *= $$5;
-         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
-      }
-
-      return $$6;
-   }
-
-   public double a(double $$0, double $$1) {
-      double $$2 = ($$0 + $$1) * f;
-      int $$3 = aww.a($$0 + $$2);
-      int $$4 = aww.a($$1 + $$2);
-      double $$5 = (double)($$3 + $$4) * g;
-      double $$6 = (double)$$3 - $$5;
-      double $$7 = (double)$$4 - $$5;
-      double $$8 = $$0 - $$6;
-      double $$9 = $$1 - $$7;
-      int $$10;
-      int $$11;
-      if ($$8 > $$9) {
-         $$10 = 1;
-         $$11 = 0;
-      } else {
-         $$10 = 0;
-         $$11 = 1;
-      }
-
-      double $$14 = $$8 - (double)$$10 + g;
-      double $$15 = $$9 - (double)$$11 + g;
-      double $$16 = $$8 - 1.0 + 2.0 * g;
-      double $$17 = $$9 - 1.0 + 2.0 * g;
-      int $$18 = $$3 & 0xFF;
-      int $$19 = $$4 & 0xFF;
-      int $$20 = this.a($$18 + this.a($$19)) % 12;
-      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
-      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
-      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
-      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
-      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
-      return 70.0 * ($$23 + $$24 + $$25);
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = 0.3333333333333333;
-      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
-      int $$5 = aww.a($$0 + $$4);
-      int $$6 = aww.a($$1 + $$4);
-      int $$7 = aww.a($$2 + $$4);
-      double $$8 = 0.16666666666666666;
-      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
-      double $$10 = (double)$$5 - $$9;
-      double $$11 = (double)$$6 - $$9;
-      double $$12 = (double)$$7 - $$9;
-      double $$13 = $$0 - $$10;
-      double $$14 = $$1 - $$11;
-      double $$15 = $$2 - $$12;
-      int $$16;
-      int $$17;
-      int $$18;
-      int $$19;
-      int $$20;
-      int $$21;
-      if ($$13 >= $$14) {
-         if ($$14 >= $$15) {
-            $$16 = 1;
-            $$17 = 0;
-            $$18 = 0;
-            $$19 = 1;
-            $$20 = 1;
-            $$21 = 0;
-         } else if ($$13 >= $$15) {
-            $$16 = 1;
-            $$17 = 0;
-            $$18 = 0;
-            $$19 = 1;
-            $$20 = 0;
-            $$21 = 1;
-         } else {
-            $$16 = 0;
-            $$17 = 0;
-            $$18 = 1;
-            $$19 = 1;
-            $$20 = 0;
-            $$21 = 1;
+         for (ehv.a $$5 : this.i) {
+            $$4 += $$5.h();
          }
-      } else if ($$14 < $$15) {
-         $$16 = 0;
-         $$17 = 0;
-         $$18 = 1;
-         $$19 = 0;
-         $$20 = 1;
-         $$21 = 1;
-      } else if ($$13 < $$15) {
-         $$16 = 0;
-         $$17 = 1;
-         $$18 = 0;
-         $$19 = 0;
-         $$20 = 1;
-         $$21 = 1;
+
+         float $$6 = $$2.i();
+
+         for (ehv.a $$7 : this.i) {
+            $$6 -= $$7.h() / $$4;
+            if ($$6 < 0.0F) {
+               $$3 = $$7;
+               break;
+            }
+         }
       } else {
-         $$16 = 0;
-         $$17 = 1;
-         $$18 = 0;
-         $$19 = 1;
-         $$20 = 1;
-         $$21 = 0;
+         $$3 = this.i.get(0);
       }
 
-      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
-      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
-      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
-      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
-      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
-      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
-      double $$58 = $$13 - 1.0 + 0.5;
-      double $$59 = $$14 - 1.0 + 0.5;
-      double $$60 = $$15 - 1.0 + 0.5;
-      int $$61 = $$5 & 0xFF;
-      int $$62 = $$6 & 0xFF;
-      int $$63 = $$7 & 0xFF;
-      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
-      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
-      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
-      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
-      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
-      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
-      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
-      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
-      return 32.0 * ($$68 + $$69 + $$70 + $$71);
+      if ($$3 == null) {
+         throw new IllegalStateException();
+      } else {
+         ehv.a $$8 = $$3;
+         $$1.d = a($$2, $$8.b());
+         $$1.c = $$8.c();
+         $$1.e = $$8.d();
+         $$1.f = $$8.e();
+         $$1.g = $$8.g();
+         ajt $$9;
+         if ($$2.i() < 0.05F) {
+            $$9 = new ajt(f[$$2.a(f.length)]);
+         } else {
+            $$9 = new ajt(e[$$2.a(e.length)]);
+         }
+
+         ejh $$11 = $$0.e().a($$9);
+         dik $$12 = ac.a(dik.values(), $$2);
+         dgu $$13 = $$2.i() < 0.5F ? dgu.a : dgu.c;
+         ib $$14 = new ib($$11.a().u() / 2, 0, $$11.a().w() / 2);
+         dqw $$15 = $$0.b();
+         cyz $$16 = $$0.i();
+         dvf $$17 = $$0.d();
+         ib $$18 = $$0.h().l();
+         eez $$19 = $$11.a($$18, $$12, $$14, $$13);
+         ib $$20 = $$19.g();
+         int $$21 = $$15.a($$20.u(), $$20.w(), ehu.a($$8.a()), $$16, $$17) - 1;
+         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
+         ib $$23 = new ib($$18.u(), $$22, $$18.w());
+         return Optional.of(new efh.b($$23, (Consumer<efz>)($$10 -> {
+            if ($$8.f()) {
+               $$1.b = a($$23, $$0.b().c().getNoiseBiome(iw.a($$23.u()), iw.a($$23.v()), iw.a($$23.w()), $$17.b()));
+            }
+
+            $$10.a(new ehu($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
+         })));
+      }
+   }
+
+   private static boolean a(dvq $$0, float $$1) {
+      if ($$1 == 0.0F) {
+         return false;
+      } else {
+         return $$1 == 1.0F ? true : $$0.i() < $$1;
+      }
+   }
+
+   private static boolean a(ib $$0, il<czw> $$1) {
+      return $$1.a().b($$0);
+   }
+
+   private static int a(axr $$0, dqw $$1, ehu.b $$2, boolean $$3, int $$4, int $$5, eez $$6, cyz $$7, dvf $$8) {
+      int $$9 = $$7.I_() + 15;
+      int $$10;
+      if ($$2 == ehu.b.f) {
+         if ($$3) {
+            $$10 = axk.b($$0, 32, 100);
+         } else if ($$0.i() < 0.5F) {
+            $$10 = axk.b($$0, 27, 29);
+         } else {
+            $$10 = axk.b($$0, 29, 100);
+         }
+      } else if ($$2 == ehu.b.d) {
+         int $$13 = $$4 - $$5;
+         $$10 = a($$0, 70, $$13);
+      } else if ($$2 == ehu.b.e) {
+         int $$15 = $$4 - $$5;
+         $$10 = a($$0, $$9, $$15);
+      } else if ($$2 == ehu.b.b) {
+         $$10 = $$4 - $$5 + axk.b($$0, 2, 8);
+      } else {
+         $$10 = $$4;
+      }
+
+      List<ib> $$19 = ImmutableList.of(new ib($$6.h(), 0, $$6.j()), new ib($$6.k(), 0, $$6.j()), new ib($$6.h(), 0, $$6.m()), new ib($$6.k(), 0, $$6.m()));
+      List<czj> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
+      dur.a $$21 = $$2 == ehu.b.c ? dur.a.c : dur.a.a;
+
+      int $$22;
+      for ($$22 = $$10; $$22 > $$9; $$22--) {
+         int $$23 = 0;
+
+         for (czj $$24 : $$20) {
+            doz $$25 = $$24.a($$22);
+            if ($$21.e().test($$25)) {
+               if (++$$23 == 3) {
+                  return $$22;
+               }
+            }
+         }
+      }
+
+      return $$22;
+   }
+
+   private static int a(axr $$0, int $$1, int $$2) {
+      return $$1 < $$2 ? axk.b($$0, $$1, $$2) : $$2;
+   }
+
+   @Override
+   public efq<?> e() {
+      return efq.l;
+   }
+
+   public static record a(ehu.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
+      public static final Codec<ehv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ehu.b.g.fieldOf("placement").forGetter(ehv.a::a),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(ehv.a::b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(ehv.a::c),
+                  Codec.BOOL.fieldOf("overgrown").forGetter(ehv.a::d),
+                  Codec.BOOL.fieldOf("vines").forGetter(ehv.a::e),
+                  Codec.BOOL.fieldOf("can_be_cold").forGetter(ehv.a::f),
+                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(ehv.a::g),
+                  aws.k.fieldOf("weight").forGetter(ehv.a::h)
+               )
+               .apply($$0, ehv.a::new)
+      );
+
+      public ehu.b a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+
+      public boolean g() {
+         return this.h;
+      }
+
+      public float h() {
+         return this.i;
+      }
    }
 }

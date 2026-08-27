@@ -1,8 +1,8 @@
-public interface aih extends afa, aib {
-   @Override
-   default ut b() {
-      return ut.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aii var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aih {
 }

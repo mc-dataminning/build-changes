@@ -1,29 +1,41 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bsy extends brh<bpr> {
-   private final bmi c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bsy extends bsg<cjg> {
+   private static final int d = 1200;
+   final float c;
 
-   public bsy(bmi $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bys.n, byt.b, bys.Q, byt.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public bsy(float $$0) {
+      super(ImmutableMap.of(bzr.d, bzs.a), 1200);
+      this.c = $$0;
    }
 
-   protected void a(apf $$0, bpr $$1, long $$2) {
-      axd $$3 = $$1.ei();
-      float $$4 = aww.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = aww.g($$1.dC() + 2.0F * $$3.i() * this.d - this.d);
-      ept $$6 = ept.a($$4, $$5);
-      $$1.dP().a(bys.n, new brk($$1.bu().e($$6)));
-      $$1.dP().a(bys.Q, this.c.a($$3));
+   protected boolean a(aps $$0, cjg $$1) {
+      return $$1.dP().g().map($$0x -> $$0x == cli.b || $$0x == cli.c || $$0x == cli.d).orElse(true);
+   }
+
+   protected boolean a(aps $$0, cjg $$1, long $$2) {
+      return $$1.dP().a(bzr.d);
+   }
+
+   protected void b(aps $$0, cjg $$1, long $$2) {
+      bsi.a($$1, $$1.dP().c(bzr.d).get().b(), this.c, 1);
+   }
+
+   protected void c(aps $$0, cjg $$1, long $$2) {
+      Optional<ik> $$3 = $$1.dP().c(bzr.d);
+      $$3.ifPresent($$1x -> {
+         ib $$2x = $$1x.b();
+         aps $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            cbr $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            afi.c($$0, $$2x);
+         }
+      });
+      $$1.dP().b(bzr.d);
    }
 }

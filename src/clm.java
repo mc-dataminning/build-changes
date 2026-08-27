@@ -1,117 +1,59 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
 public class clm {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+   private final List<clj> a = Lists.newArrayList();
+   private int b;
 
-   public clm() {
-      this.b = 5.0F;
+   public ImmutableList<clj> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   public clm a(int $$0, float $$1) {
+      this.a.add(new clj($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public void a(cqh $$0, cqm $$1) {
-      if ($$0.v()) {
-         cln $$2 = $$0.w();
-         this.a($$2.a(), $$2.b());
-      }
+   public clm a(Collection<clj> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   public void a(ciu $$0) {
-      bna $$1 = $$0.dM().aj();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bna.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
+   private void b() {
+      Int2ObjectSortedMap<clj> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
 
-      boolean $$2 = $$0.dM().Z().b(cwx.k);
-      if ($$2 && this.b > 0.0F && $$0.gk() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gk()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ex() > 10.0F || $$1 == bna.d || $$0.ex() > 1.0F && $$1 == bna.c) {
-               $$0.a($$0.dN().i(), 1.0F);
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         clj $$1 = this.a.get(this.b);
+         clj $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            clj $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
 
-            this.d = 0;
+            this.b = $$6;
+            $$5 = $$7.b();
          }
-      } else {
-         this.d = 0;
+
+         return $$5;
       }
-   }
-
-   public void a(ta $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(ta $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
-      this.c = $$0;
    }
 }

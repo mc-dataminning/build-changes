@@ -1,289 +1,264 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
 
-public abstract class euu<T extends euu<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public abstract class euu {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = ac.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   public euu(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = eus.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
+   public euu(boolean $$0) {
+      this.g = $$0;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
+   }
+
+   public void a(int $$0, int $$1, boolean $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0, $$1, $$2));
+      } else {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   private void d(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
+      }
+
+      this.b($$0, $$1, $$2);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
+      }
+
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
+
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
+      }
+   }
+
+   public void a(euu $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void b(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$3 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$3 && $$1 > 0 && $$1 <= $$3) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
+         if (this.g) {
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
          }
 
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new ewd(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new ewd(var6.getMessage(), var6);
-      }
-   }
+         this.a(9728);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+         }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
-   }
-
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+         this.b();
+         this.b($$2);
+         this.d();
       } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$3 + ")");
       }
+   }
+
+   public void a(int $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.k = $$0;
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, $$0);
+      GlStateManager._texParameter(3553, 10240, $$0);
+      GlStateManager._bindTexture(0);
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
+         } else {
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
+         }
+      }
+   }
+
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
+
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
    }
 
    public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new ewd(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new ewd(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.c($$0));
       } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
+         this.c($$0);
       }
    }
 
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
-               }
-
-               $$3.close();
-               return;
-            }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
+   private void c(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
       }
    }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._glBindFramebuffer(36160, 0));
       } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
+         GlStateManager._glBindFramebuffer(36160, 0);
       }
    }
 
-   protected abstract T e();
-
-   public static euu<?> a(String $$0) {
-      return new euu.b($$0, 5000, 60000);
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
    }
 
-   public static euu<?> a(String $$0, int $$1, int $$2) {
-      return new euu.b($$0, $$1, $$2);
+   public void a(int $$0, int $$1) {
+      this.c($$0, $$1, true);
    }
 
-   public static euu<?> b(String $$0, String $$1) {
-      return new euu.c($$0, $$1, 5000, 60000);
-   }
-
-   public static euu<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new euu.c($$0, $$1, $$2, $$3);
-   }
-
-   public static euu<?> b(String $$0) {
-      return new euu.a($$0, 5000, 60000);
-   }
-
-   public static euu<?> c(String $$0, String $$1) {
-      return new euu.d($$0, $$1, 5000, 60000);
-   }
-
-   public static euu<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new euu.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
+   public void c(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (!RenderSystem.isInInitPhase()) {
+         RenderSystem.recordRenderCall(() -> this.e($$0, $$1, $$2));
+      } else {
+         this.e($$0, $$1, $$2);
       }
    }
 
-   public static class a extends euu<euu.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+   private void e(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      if ($$2) {
+         GlStateManager._disableBlend();
       }
 
-      public euu.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new ewd(var2.getMessage(), var2);
-         }
+      fbp $$3 = fbp.Q();
+      gan $$4 = $$3.j.e;
+      $$4.a("DiffuseSampler", this.i);
+      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$0, (float)$$1, 0.0F, 1000.0F, 3000.0F);
+      RenderSystem.setProjectionMatrix($$5, ewq.b);
+      if ($$4.b != null) {
+         $$4.b.a(new Matrix4f().translation(0.0F, 0.0F, -2000.0F));
       }
+
+      if ($$4.c != null) {
+         $$4.c.a($$5);
+      }
+
+      $$4.g();
+      float $$6 = (float)$$0;
+      float $$7 = (float)$$1;
+      float $$8 = (float)this.e / (float)this.c;
+      float $$9 = (float)this.f / (float)this.d;
+      ewk $$10 = RenderSystem.renderThreadTesselator();
+      ewd $$11 = $$10.d();
+      $$11.a(ewn.b.h, ewg.s);
+      $$11.a(0.0, (double)$$7, 0.0).a(0.0F, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, (double)$$7, 0.0).a($$8, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, 0.0, 0.0).a($$8, $$9).a(255, 255, 255, 255).e();
+      $$11.a(0.0, 0.0, 0.0).a(0.0F, $$9).a(255, 255, 255, 255).e();
+      ewe.b($$11.d());
+      $$4.f();
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
    }
 
-   public static class b extends euu<euu.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+   public void b(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$1 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$1 |= 256;
       }
 
-      public euu.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new ewd(var2.getMessage(), var2);
-         }
-      }
+      GlStateManager._clear($$1, $$0);
+      this.e();
    }
 
-   public static class c extends euu<euu.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public euu.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new ewd(var3.getMessage(), var3);
-         }
-      }
+   public int f() {
+      return this.i;
    }
 
-   public static class d extends euu<euu.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public euu.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new ewd(var3.getMessage(), var3);
-         }
-      }
+   public int g() {
+      return this.j;
    }
 }

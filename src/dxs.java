@@ -1,41 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxs implements dxw {
-   public static final Codec<dxs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dnb.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dnb.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bmi.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bmi.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dxs::new)
-   );
-   private final dnb b;
-   private final dnb c;
-   private final bmi d;
-   private final bmi e;
-
-   public dxs(dnb $$0, dnb $$1, bmi $$2, bmi $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class dxs extends dxv<dzy> {
+   public dxs(Codec<dzy> $$0) {
+      super($$0);
    }
 
-   public dnb a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(dxx<dzy> $$0) {
+      ib $$1 = $$0.e();
+      czs $$2 = $$0.b();
+      dzy $$3 = $$0.f();
 
-   public dnb b() {
-      return this.c;
-   }
+      for (ib $$4 : ib.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ib $$9 = $$4.i();
+            this.a($$2, $$9, dca.kF.n());
+            $$3.b().ifPresent($$3x -> {
+               dmf $$4x = $$2.c_($$9);
+               if ($$4x instanceof dnv $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dca.a.n());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dca.F.n());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dca.F.n());
+         } else {
+            this.a($$2, $$4, dca.a.n());
+         }
+      }
 
-   public bmi c() {
-      return this.d;
-   }
-
-   public bmi d() {
-      return this.e;
+      return true;
    }
 }

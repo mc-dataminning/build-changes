@@ -1,54 +1,113 @@
-import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bsu {
-   public static bri<cih> a() {
-      return buu.a(
-         (Function<buu.b<cih>, ? extends App<buu.c<cih>, bux<cih>>>)($$0 -> $$0.group($$0.b(bys.c), $$0.b(bys.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ik $$6 = $$0.b($$1);
-                        $$3.y()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bpp>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cih && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cih)$$0xxxx)
-                                    .filter(bpp::bA)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bsu::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class bsu<E extends bqo> implements bsh<E> {
+   private final Map<bzr<?>, bzs> a;
+   private final Set<bzr<?>> b;
+   private final bsu.a c;
+   private final bsu.b d;
+   private final bup<bsh<? super E>> e = new bup<>();
+   private bsg.a f = bsg.a.a;
+
+   public bsu(Map<bzr<?>, bzs> $$0, Set<bzr<?>> $$1, bsu.a $$2, bsu.b $$3, List<Pair<? extends bsh<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bsh<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   private static cih a(cih $$0, cih $$1) {
-      cih $$2;
-      cih $$3;
-      if ($$0.s() > $$1.s()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
+   @Override
+   public bsg.a a() {
+      return this.f;
+   }
+
+   private boolean a(E $$0) {
+      for (Entry<bzr<?>, bzs> $$1 : this.a.entrySet()) {
+         bzr<?> $$2 = $$1.getKey();
+         bzs $$3 = $$1.getValue();
+         if (!$$0.dP().a($$2, $$3)) {
+            return false;
+         }
       }
 
-      $$3.dP().b(bys.c);
-      return $$2;
+      return true;
    }
 
-   private static boolean a(ik $$0, il<cav> $$1, cih $$2) {
-      Optional<ik> $$3 = $$2.dP().c(bys.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   @Override
+   public final boolean e(aps $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bsg.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private static boolean a(il<cav> $$0, cik $$1) {
-      return $$1.b().test($$0);
+   @Override
+   public final void f(aps $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bsg.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bsg.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aps $$0, E $$1, long $$2) {
+      this.f = bsg.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bsg.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dP()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bsh<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bsg.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(bup::a);
+
+      private final Consumer<bup<?>> c;
+
+      private a(Consumer<bup<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(bup<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bqo> void a(Stream<bsh<? super E>> $$0, aps $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bsg.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bqo> void a(Stream<bsh<? super E>> $$0, aps $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bsg.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bqo> void a(Stream<bsh<? super E>> var1, aps var2, E var3, long var4);
    }
 }

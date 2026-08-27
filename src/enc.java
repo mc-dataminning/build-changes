@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface enc {
+public interface enc {
+   default Set<epl<?>> a() {
+      return ImmutableSet.of();
+   }
+
+   default void a(enk $$0) {
+      $$0.a(this);
+   }
 }

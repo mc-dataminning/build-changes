@@ -1,37 +1,57 @@
-public class ack implements yb<aam> {
-   public static final xs<uu, ack> a = yb.a(ack::a, ack::new);
-   private final ib b;
-   private final boolean c;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public ack(ib $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ack implements yn<aay> {
+   public static final ye<vr, ack> a = yn.a(ack::a, ack::new);
+   private final int b;
+   private final int c;
+   private final acj d;
+   private final aco e;
+
+   public ack(drf $$0, ekh $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cye $$4 = $$0.f();
+      this.b = $$4.e;
+      this.c = $$4.f;
+      this.d = new acj($$0);
+      this.e = new aco($$4, $$1, $$2, $$3);
    }
 
-   private ack(uu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private ack(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = new acj($$0, this.b, this.c);
+      this.e = new aco($$0, this.b, this.c);
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vr $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public yd<ack> a() {
-      return aex.X;
+   public yp<ack> a() {
+      return afj.K;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public int e() {
       return this.c;
+   }
+
+   public acj f() {
+      return this.d;
+   }
+
+   public aco g() {
+      return this.e;
    }
 }

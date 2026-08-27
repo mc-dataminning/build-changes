@@ -1,67 +1,119 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class bxs extends bwm {
-   private static final int a = 10;
-   private final bpx b;
-   private final int c;
-   @Nullable
-   private ib d;
+public class bxs extends bxl {
+   public final cei a;
+   private double b;
+   private static final int c = 8;
+   private int d;
 
-   public bxs(bpx $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(bwm.a.a));
+   public bxs(cei $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bxl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
-         return false;
-      } else if (this.b.dM().P()) {
-         return false;
-      } else if (this.b.ei().a(this.c) != 0) {
-         return false;
-      } else {
-         apf $$0 = (apf)this.b.dM();
-         ib $$1 = this.b.dm();
-         if (!$$0.a($$1, 6)) {
+      if (!this.a.gb() && !this.a.gZ()) {
+         List<bpv> $$0 = this.a.dM().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
+            bqb<?> $$1x = $$0x.ai();
+            return $$1x == bqb.am || $$1x == bqb.bd;
+         });
+         cei $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bpv $$3 : $$0) {
+            cei $$4 = (cei)$$3;
+            if ($$4.gZ() && !$$4.gY()) {
+               double $$5 = this.a.g($$4);
+               if (!($$5 > $$2)) {
+                  $$2 = $$5;
+                  $$1 = $$4;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            for (bpv $$6 : $$0) {
+               cei $$7 = (cei)$$6;
+               if ($$7.gb() && !$$7.gY()) {
+                  double $$8 = this.a.g($$7);
+                  if (!($$8 > $$2)) {
+                     $$2 = $$8;
+                     $$1 = $$7;
+                  }
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 4.0) {
+            return false;
+         } else if (!$$1.gb() && !this.a($$1, 1)) {
             return false;
          } else {
-            ept $$2 = cam.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(je.a($$1x))));
-            this.d = $$2 == null ? null : ib.a($$2);
-            return this.d != null;
+            this.a.a($$1);
+            return true;
          }
+      } else {
+         return false;
       }
    }
 
    @Override
    public boolean b() {
-      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
+      if (this.a.gZ() && this.a.ha().bA() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.ha());
+         if ($$0 > 676.0) {
+            if (this.b <= 3.0) {
+               this.b *= 1.2;
+               this.d = b(40);
+               return true;
+            }
+
+            if (this.d == 0) {
+               return false;
+            }
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.gX();
+      this.b = 2.1;
    }
 
    @Override
    public void e() {
-      if (this.d != null) {
-         bza $$0 = this.b.K();
-         if ($$0.l() && !this.d.a(this.b.dk(), 10.0)) {
-            ept $$1 = ept.c(this.d);
-            ept $$2 = this.b.dk();
-            ept $$3 = $$2.d($$1);
-            $$1 = $$3.a(0.4).e($$1);
-            ept $$4 = $$1.d($$2).d().a(10.0).e($$2);
-            ib $$5 = ib.a($$4);
-            $$5 = this.b.dM().a(dso.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
+      if (this.a.gZ()) {
+         if (!(this.a.gc() instanceof cfx)) {
+            cei $$0 = this.a.ha();
+            double $$1 = (double)this.a.f($$0);
+            float $$2 = 2.0F;
+            esa $$3 = new esa($$0.dr() - this.a.dr(), $$0.dt() - this.a.dt(), $$0.dx() - this.a.dx()).d().a(Math.max($$1 - 2.0, 0.0));
+            this.a.K().a(this.a.dr() + $$3.c, this.a.dt() + $$3.d, this.a.dx() + $$3.e, this.b);
          }
       }
    }
 
-   private void h() {
-      axd $$0 = this.b.ei();
-      ib $$1 = this.b.dM().a(dso.a.f, this.b.dm().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   private boolean a(cei $$0, int $$1) {
+      if ($$1 > 8) {
+         return false;
+      } else if ($$0.gZ()) {
+         return $$0.ha().gb() ? true : this.a($$0.ha(), ++$$1);
+      } else {
+         return false;
+      }
    }
 }

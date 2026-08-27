@@ -1,24 +1,55 @@
-import com.mojang.serialization.MapCodec;
+public interface cyz {
+   int J_();
 
-public class cyz extends dac {
-   public static final MapCodec<cyz> a = b(cyz::new);
+   int I_();
 
-   @Override
-   public MapCodec<cyz> a() {
-      return a;
+   default int al() {
+      return this.I_() + this.J_();
    }
 
-   public cyz(dna.d $$0) {
-      super($$0);
+   default int am() {
+      return this.ao() - this.an();
    }
 
-   @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.a;
+   default int an() {
+      return je.a(this.I_());
    }
 
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return eqj.a();
+   default int ao() {
+      return je.a(this.al() - 1) + 1;
+   }
+
+   default boolean s(ib $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.al();
+   }
+
+   default int e(int $$0) {
+      return this.f(je.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static cyz e(final int $$0, final int $$1) {
+      return new cyz() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

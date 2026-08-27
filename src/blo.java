@@ -1,52 +1,7 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import jdk.jfr.consumer.RecordedEvent;
 
-public class blo {
-   public static final Codec<blo> a = Codec.INT.xmap(blo::a, blo::a);
-   private static final blo b = new blo(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private blo(int $$0) {
-      this.d = $$0;
-   }
-
-   public static blo a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new blo($$0);
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aW) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof blo && this.d == ((blo)$$0).d;
+public record blo(String a, String b, String c) {
+   public static blo a(RecordedEvent $$0) {
+      return new blo($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

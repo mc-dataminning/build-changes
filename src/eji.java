@@ -1,38 +1,290 @@
-public class eji extends ejb {
-   private float m = Float.MAX_VALUE;
-   private ejb n;
-   private boolean o;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-   public eji(ejb $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class eji {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "structures";
+   private static final String c = ".nbt";
+   private static final String d = ".snbt";
+   private final Map<ajt, Optional<ejh>> e = Maps.newConcurrentMap();
+   private final DataFixer f;
+   private atc g;
+   private final Path h;
+   private final List<eji.b> i;
+   private final im<dby> j;
+   private static final ajm k = new ajm("structures", ".nbt");
+
+   public eji(atc $$0, emr.c $$1, DataFixer $$2, im<dby> $$3) {
+      this.g = $$0;
+      this.f = $$2;
+      this.h = $$1.a(emp.i).normalize();
+      this.j = $$3;
+      Builder<eji.b> $$4 = ImmutableList.builder();
+      $$4.add(new eji.b(this::h, this::d));
+      if (aa.aW) {
+         $$4.add(new eji.b(this::g, this::c));
+      }
+
+      $$4.add(new eji.b(this::f, this::b));
+      this.i = $$4.build();
    }
 
-   public eji(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, ejb $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   public ejh a(ajt $$0) {
+      Optional<ejh> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         return $$1.get();
+      } else {
+         ejh $$2 = new ejh();
+         this.e.put($$0, Optional.of($$2));
+         return $$2;
       }
    }
 
-   public ejb d() {
-      return this.n;
+   public Optional<ejh> b(ajt $$0) {
+      return this.e.computeIfAbsent($$0, this::e);
    }
 
-   public void e() {
-      this.o = true;
+   public Stream<ajt> a() {
+      return this.i.stream().flatMap($$0 -> $$0.b().get()).distinct();
    }
 
-   public boolean f() {
-      return this.o;
+   private Optional<ejh> e(ajt $$0) {
+      for (eji.b $$1 : this.i) {
+         try {
+            Optional<ejh> $$2 = $$1.a().apply($$0);
+            if ($$2.isPresent()) {
+               return $$2;
+            }
+         } catch (Exception var5) {
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public static eji c(uu $$0) {
-      eji $$1 = new eji($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
+   public void a(atc $$0) {
+      this.g = $$0;
+      this.e.clear();
+   }
+
+   private Optional<ejh> f(ajt $$0) {
+      ajt $$1 = k.a($$0);
+      return this.a(() -> this.g.open($$1), $$1x -> a.error("Couldn't load structure {}", $$0, $$1x));
+   }
+
+   private Stream<ajt> b() {
+      return k.a(this.g).keySet().stream().map(k::b);
+   }
+
+   private Optional<ejh> g(ajt $$0) {
+      return this.a($$0, Paths.get(sy.b));
+   }
+
+   private Stream<ajt> c() {
+      return this.a(Paths.get(sy.b), "minecraft", ".snbt");
+   }
+
+   private Optional<ejh> h(ajt $$0) {
+      if (!Files.isDirectory(this.h)) {
+         return Optional.empty();
+      } else {
+         Path $$1 = b(this.h, $$0, ".nbt");
+         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> a.error("Couldn't load structure from {}", $$1, $$1x));
+      }
+   }
+
+   private Stream<ajt> d() {
+      if (!Files.isDirectory(this.h)) {
+         return Stream.empty();
+      } else {
+         try {
+            return Files.list(this.h).filter($$0 -> Files.isDirectory($$0)).flatMap($$0 -> this.a($$0));
+         } catch (IOException var2) {
+            return Stream.empty();
+         }
+      }
+   }
+
+   private Stream<ajt> a(Path $$0) {
+      Path $$1 = $$0.resolve("structures");
+      return this.a($$1, $$0.getFileName().toString(), ".nbt");
+   }
+
+   private Stream<ajt> a(Path $$0, String $$1, String $$2) {
+      if (!Files.isDirectory($$0)) {
+         return Stream.empty();
+      } else {
+         int $$3 = $$2.length();
+         Function<String, String> $$4 = $$1x -> $$1x.substring(0, $$1x.length() - $$3);
+
+         try {
+            return Files.walk($$0).filter($$1x -> $$1x.toString().endsWith($$2)).mapMulti(($$3x, $$4x) -> {
+               try {
+                  $$4x.accept(new ajt($$1, $$4.apply(this.a($$0, $$3x))));
+               } catch (z var7x) {
+                  a.error("Invalid location while listing pack contents", var7x);
+               }
+            });
+         } catch (IOException var7) {
+            a.error("Failed to list folder contents", var7);
+            return Stream.empty();
+         }
+      }
+   }
+
+   private String a(Path $$0, Path $$1) {
+      return $$0.relativize($$1).toString().replace(File.separator, "/");
+   }
+
+   private Optional<ejh> a(ajt $$0, Path $$1) {
+      if (!Files.isDirectory($$1)) {
+         return Optional.empty();
+      } else {
+         Path $$2 = v.b($$1, $$0.a(), ".snbt");
+
+         try {
+            Optional var6;
+            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
+               String $$4 = IOUtils.toString($$3);
+               var6 = Optional.of(this.a(ub.a($$4)));
+            }
+
+            return var6;
+         } catch (NoSuchFileException var9) {
+            return Optional.empty();
+         } catch (CommandSyntaxException | IOException var10) {
+            a.error("Couldn't load structure from {}", $$2, var10);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private Optional<ejh> a(eji.a $$0, Consumer<Throwable> $$1) {
+      try {
+         Optional var5;
+         try (
+            InputStream $$2 = $$0.open();
+            InputStream $$3 = new awt($$2);
+         ) {
+            var5 = Optional.of(this.a($$3));
+         }
+
+         return var5;
+      } catch (FileNotFoundException var11) {
+         return Optional.empty();
+      } catch (Throwable var12) {
+         $$1.accept(var12);
+         return Optional.empty();
+      }
+   }
+
+   private ejh a(InputStream $$0) throws IOException {
+      tm $$1 = tz.a($$0, tv.a());
+      return this.a($$1);
+   }
+
+   public ejh a(tm $$0) {
+      ejh $$1 = new ejh();
+      int $$2 = ub.b($$0, 500);
+      $$1.a(this.j, ayq.f.a(this.f, $$0, $$2));
       return $$1;
+   }
+
+   public boolean c(ajt $$0) {
+      Optional<ejh> $$1 = this.e.get($$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         ejh $$2 = $$1.get();
+         Path $$3 = b(this.h, $$0, ".nbt");
+         Path $$4 = $$3.getParent();
+         if ($$4 == null) {
+            return false;
+         } else {
+            try {
+               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
+            } catch (IOException var13) {
+               a.error("Failed to create parent directory: {}", $$4);
+               return false;
+            }
+
+            tm $$6 = $$2.a(new tm());
+
+            try {
+               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
+                  tz.a($$6, $$7);
+               }
+
+               return true;
+            } catch (Throwable var12) {
+               return false;
+            }
+         }
+      }
+   }
+
+   public Path a(ajt $$0, String $$1) {
+      return a(this.h, $$0, $$1);
+   }
+
+   public static Path a(Path $$0, ajt $$1, String $$2) {
+      try {
+         Path $$3 = $$0.resolve($$1.b());
+         Path $$4 = $$3.resolve("structures");
+         return v.b($$4, $$1.a(), $$2);
+      } catch (InvalidPathException var5) {
+         throw new z("Invalid resource path: " + $$1, var5);
+      }
+   }
+
+   private static Path b(Path $$0, ajt $$1, String $$2) {
+      if ($$1.a().contains("//")) {
+         throw new z("Invalid resource path: " + $$1);
+      } else {
+         Path $$3 = a($$0, $$1, $$2);
+         if ($$3.startsWith($$0) && v.a($$3) && v.b($$3)) {
+            return $$3;
+         } else {
+            throw new z("Invalid resource path: " + $$3);
+         }
+      }
+   }
+
+   public void d(ajt $$0) {
+      this.e.remove($$0);
+   }
+
+   @FunctionalInterface
+   interface a {
+      InputStream open() throws IOException;
+   }
+
+   static record b(Function<ajt, Optional<ejh>> a, Supplier<Stream<ajt>> b) {
    }
 }

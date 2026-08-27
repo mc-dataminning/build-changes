@@ -1,91 +1,54 @@
-public class cvi extends cuw {
-   public final cvi.a b;
+import java.util.Map;
 
-   public cvi(cuw.a $$0, cvi.a $$1, bpe... $$2) {
-      super($$0, $$1 == cvi.a.c ? auv.bb : auv.bf, $$2);
-      this.b = $$1;
+public class cvi extends cvq {
+   public cvi(cuz $$0) {
+      super("", $$0, cvr.a(Map.of('#', cvg.a(crm.qN), 'x', cvg.a(crm.rT)), "###", "#x#", "###"), new crj(crm.uh));
    }
 
    @Override
-   public int a(int $$0) {
-      return this.b.a() + ($$0 - 1) * this.b.b();
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + this.b.b();
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public int a(int $$0, bnw $$1) {
-      if ($$1.a(aup.e)) {
-         return 0;
-      } else if (this.b == cvi.a.a) {
-         return $$0;
-      } else if (this.b == cvi.a.b && $$1.a(aup.j)) {
-         return $$0 * 2;
-      } else if (this.b == cvi.a.c && $$1.a(aup.n)) {
-         return $$0 * 3;
-      } else if (this.b == cvi.a.d && $$1.a(aup.m)) {
-         return $$0 * 2;
+   public boolean a(cnf $$0, cyx $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
       } else {
-         return this.b == cvi.a.e && $$1.a(aup.k) ? $$0 * 2 : 0;
+         crj $$2 = a($$0);
+         if ($$2.d()) {
+            return false;
+         } else {
+            emf $$3 = crq.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
       }
    }
 
    @Override
-   public boolean a(cuw $$0) {
-      if ($$0 instanceof cvi $$1) {
-         return this.b == $$1.b ? false : this.b == cvi.a.c || $$1.b == cvi.a.c;
-      } else {
-         return super.a($$0);
-      }
+   public crj a(cnf $$0, iz $$1) {
+      crj $$2 = a($$0).c(1);
+      $$2.b(jp.u, cuf.b);
+      return $$2;
    }
 
-   public static int a(bpp $$0, int $$1) {
-      int $$2 = cux.a(cuz.b, $$0);
-      if ($$2 > 0) {
-         $$1 -= aww.d((float)$$1 * (float)$$2 * 0.15F);
+   private static crj a(cnf $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         crj $$2 = $$0.a($$1);
+         if ($$2.a(crm.rT)) {
+            return $$2;
+         }
       }
 
-      return $$1;
+      return crj.i;
    }
 
-   public static double a(bpp $$0, double $$1) {
-      int $$2 = cux.a(cuz.d, $$0);
-      if ($$2 > 0) {
-         $$1 *= aww.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
-      }
-
-      return $$1;
+   @Override
+   public boolean ao_() {
+      return true;
    }
 
-   public static enum a {
-      a(1, 11),
-      b(10, 8),
-      c(5, 6),
-      d(5, 8),
-      e(3, 6);
-
-      private final int f;
-      private final int g;
-
-      private a(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public int a() {
-         return this.f;
-      }
-
-      public int b() {
-         return this.g;
-      }
+   @Override
+   public cvn<?> ap_() {
+      return cvn.f;
    }
 }

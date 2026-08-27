@@ -1,57 +1,23 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.Set;
 
-public class exx {
-   private static final Map<String, exx.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final ajh c = new ajh("textures/gui/presets/isles.png");
+public class exx extends eye implements exy {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
+   @SerializedName("experiments")
+   private final Set<String> e;
 
-   public static ajh a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static ajh b(String $$0, String $$1) {
-      exx.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         etc $$3 = a($$1);
-         if ($$3 == null) {
-            ajh $$4 = gis.b();
-            a.put($$0, new exx.a($$1, $$4));
-            return $$4;
-         } else {
-            ajh $$5 = new ajh("realms", "dynamic/" + $$0);
-            ezi.Q().aa().a($$5, new gip($$3));
-            a.put($$0, new exx.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
-   @Nullable
-   private static etc a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return etc.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
-   }
-
-   public static record a(String a, ajh b) {
+   public exx(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

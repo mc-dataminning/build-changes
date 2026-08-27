@@ -1,15 +1,42 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eeq {
-   public static Codec<? extends eep> a(iy<Codec<? extends eep>> $$0) {
-      iy.a($$0, "random", ees.a);
-      iy.a($$0, "random_group", eet.a);
-      return iy.a($$0, "direct", eeo.a);
+public class eeq extends eeo {
+   public static final Codec<eeq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bnf.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bnf.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, eeq::new)
+   );
+   private final bnf c;
+   private final bnf d;
+
+   public static eeq a(bnf $$0, bnf $$1) {
+      return new eeq($$0, $$1);
    }
 
-   public static void a(pl<een> $$0, il<een> $$1, List<eep> $$2) {
-      $$2.stream().flatMap(eep::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ps.a($$0, $$2x, new een($$1, List.of(Pair.of(eel.b($$2x), 1)), een.a.b)));
+   public static eeq a(bnf $$0) {
+      return new eeq(bnc.a(0), $$0);
+   }
+
+   public static eeq b(bnf $$0) {
+      return new eeq($$0, bnc.a(0));
+   }
+
+   private eeq(bnf $$0, bnf $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new ib($$3, $$4, $$5));
+   }
+
+   @Override
+   public eep<?> b() {
+      return eep.n;
    }
 }

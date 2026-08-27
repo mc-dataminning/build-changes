@@ -1,232 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 
-public class frc {
-   private static final frj a = new frj(0.008F);
-   private static final frj b = new frj(1.0F);
-   private static final frj c = new frj(0.5F);
+public class frc<T extends chi> extends fqv<T> {
+   private static final int a = 8;
+   private final ftm b;
+   private final ftm[] f = new ftm[8];
 
-   public static Map<frd, frl> a() {
-      Builder<frd, frl> $$0 = ImmutableMap.builder();
-      frl $$1 = frl.a(fos.a(frj.a, 0.0F), 64, 64);
-      frl $$2 = frl.a(foq.a(b), 64, 32);
-      frl $$3 = frl.a(foq.a(new frj(1.02F)), 64, 32);
-      frl $$4 = frl.a(foq.a(c), 64, 32);
-      frl $$5 = fpa.b();
-      frl $$6 = fqb.c();
-      frl $$7 = frl.a(fop.a(frj.a), 64, 64);
-      frl $$8 = fot.b();
-      frl $$9 = fnx.c();
-      frl $$10 = frl.a(fpd.a(frj.a), 64, 32);
-      frl $$11 = frl.a(fpj.a(frj.a), 64, 64);
-      frl $$12 = frl.a(fpi.a(), 64, 64);
-      frl $$13 = fqb.b();
-      frl $$14 = foy.a(frj.a);
-      frl $$15 = fqi.b();
-      frl $$16 = foo.c();
-      frl $$17 = fqa.c();
-      frl $$18 = frl.a(fqq.b(), 64, 64);
-      frl $$19 = fqg.b();
-      $$0.put(fre.a, fnb.b());
-      $$0.put(fre.b, fnd.b());
-      $$0.put(fre.c, fng.c());
-      $$0.put(fre.d, fnf.a(c));
-      $$0.put(fre.e, fnf.a(b));
-      $$0.put(fre.f, fnh.c());
-      $$0.put(fre.g, fzn.a());
-      $$0.put(fre.h, fni.b());
-      $$0.put(fre.i, fzp.c());
-      $$0.put(fre.j, fzp.b());
-      $$0.put(fre.k, fnj.c());
-      $$0.put(fre.l, fzq.b());
-      $$0.put(fre.m, fnk.b());
-      $$0.put(fre.n, $$17);
-      $$0.put(fre.o, $$4);
-      $$0.put(fre.p, $$2);
-      $$0.put(fre.q, frl.a(fos.a(new frj(0.2F), 0.0F), 64, 32));
-      $$0.put(fre.r, fnm.a());
-      $$0.put(fre.s, fnn.a(32, 32));
-      $$0.put(fre.t, $$10);
-      $$0.put(fre.u, frl.a(fpd.a(new frj(0.01F)), 64, 32));
-      $$0.put(fre.v, fno.b());
-      $$0.put(fre.w, $$19);
-      $$0.put(fre.x, fzy.b());
-      $$0.put(fre.y, $$5);
-      $$0.put(fre.z, fnt.c());
-      $$0.put(fre.A, fnu.b());
-      $$0.put(fre.B, $$5);
-      $$0.put(fre.D, fzz.b());
-      $$0.put(fre.F, fzz.c());
-      $$0.put(fre.E, fzz.d());
-      $$0.put(fre.C, fzz.e());
-      $$0.put(fre.G, $$9);
-      $$0.put(fre.H, fny.a(frj.a));
-      $$0.put(fre.I, fny.a(new frj(2.0F)));
-      $$0.put(fre.J, $$6);
-      $$0.put(fre.K, gaa.b());
-      $$0.put(fre.L, gaa.c());
-      $$0.put(fre.M, fnz.b());
-      $$0.put(fre.N, fns.c());
-      $$0.put(fre.O, fzy.d());
-      $$0.put(fre.P, fzy.c());
-      $$0.put(fre.Q, fqz.a());
-      $$0.put(fre.R, foa.a(frj.a));
-      $$0.put(fre.S, $$4);
-      $$0.put(fre.T, $$4);
-      $$0.put(fre.U, foa.a(new frj(0.25F)));
-      $$0.put(fre.V, fol.b());
-      $$0.put(fre.W, fob.c());
-      $$0.put(fre.X, foc.c());
-      $$0.put(fre.Y, fod.b());
-      $$0.put(fre.Z, gcw.a());
-      $$0.put(fre.aa, gcv.a());
-      $$0.put(fre.ab, $$8);
-      $$0.put(fre.ac, fof.b());
-      $$0.put(fre.ad, fog.c());
-      $$0.put(fre.ae, foh.b());
-      $$0.put(fre.af, $$5);
-      $$0.put(fre.ag, foi.b());
-      $$0.put(fre.ah, $$1);
-      $$0.put(fre.ai, $$4);
-      $$0.put(fre.aj, $$2);
-      $$0.put(fre.ak, fqh.b());
-      $$0.put(fre.al, fok.c());
-      $$0.put(fre.am, fol.b());
-      $$0.put(fre.an, $$16);
-      $$0.put(fre.ao, $$5);
-      $$0.put(fre.ap, $$7);
-      $$0.put(fre.aq, frl.a(fop.a(new frj(0.1F)), 64, 64));
-      $$0.put(fre.ar, $$1);
-      $$0.put(fre.as, $$4);
-      $$0.put(fre.at, $$2);
-      $$0.put(fre.au, $$8);
-      $$0.put(fre.av, fou.b());
-      $$0.put(fre.aw, fow.b());
-      $$0.put(fre.ax, $$14);
-      $$0.put(fre.ay, foy.a(new frj(0.5F)));
-      $$0.put(fre.az, foz.b());
-      $$0.put(fre.aA, fov.b());
-      $$0.put(fre.aB, $$5);
-      $$0.put(fre.aC, $$9);
-      $$0.put(fre.aD, fns.c());
-      $$0.put(fre.aE, $$10);
-      $$0.put(fre.aF, fpe.c());
-      $$0.put(fre.aG, fpf.b());
-      $$0.put(fre.aH, fpg.b());
-      $$0.put(fre.aI, fph.a(frj.a));
-      $$0.put(fre.aQ, fph.a(new frj(0.5F)));
-      $$0.put(fre.aJ, $$11);
-      $$0.put(fre.aO, $$4);
-      $$0.put(fre.aP, $$3);
-      $$0.put(fre.aK, $$11);
-      $$0.put(fre.aL, $$4);
-      $$0.put(fre.aM, $$3);
-      $$0.put(fre.aN, $$12);
-      $$0.put(fre.aR, $$8);
-      $$0.put(fre.aS, frl.a(fpk.a(frj.a, false), 64, 64));
-      $$0.put(fre.aT, $$13);
-      $$0.put(fre.aU, $$4);
-      $$0.put(fre.aV, $$2);
-      $$0.put(fre.aW, frl.a(fpk.a(frj.a, true), 64, 64));
-      $$0.put(fre.aX, $$4);
-      $$0.put(fre.aY, $$2);
-      $$0.put(fre.aZ, ghu.a());
-      $$0.put(fre.ba, fpl.c());
-      $$0.put(fre.bb, fpm.b());
-      $$0.put(fre.bc, fpn.b());
-      $$0.put(fre.bd, fpo.b());
-      $$0.put(fre.be, fpq.a());
-      $$0.put(fre.bf, fps.b());
-      $$0.put(fre.bg, fpt.b());
-      $$0.put(fre.bh, fpv.c());
-      $$0.put(fre.bi, fpu.c());
-      $$0.put(fre.bj, fpw.a());
-      $$0.put(fre.bk, fpy.a());
-      $$0.put(fre.bl, fpx.b());
-      $$0.put(fre.bm, fpz.b());
-      $$0.put(fre.bn, $$17);
-      $$0.put(fre.bp, $$4);
-      $$0.put(fre.bq, $$2);
-      $$0.put(fre.bo, $$7);
-      $$0.put(fre.br, $$6);
-      $$0.put(fre.bs, fqd.c());
-      $$0.put(fre.bt, fqd.b());
-      $$0.put(fre.bu, fqe.b());
-      $$0.put(fre.bv, fqf.b());
-      $$0.put(fre.bw, $$5);
-      $$0.put(fre.bx, $$19);
-      $$0.put(fre.by, fqh.b());
-      $$0.put(fre.bz, $$17);
-      $$0.put(fre.bA, $$4);
-      $$0.put(fre.bB, $$2);
-      $$0.put(fre.bC, frl.a(fos.a(new frj(0.25F), 0.0F), 64, 32));
-      $$0.put(fre.bD, $$15);
-      $$0.put(fre.bE, $$15);
-      $$0.put(fre.bF, fqj.c());
-      $$0.put(fre.bG, $$5);
-      $$0.put(fre.bH, $$14);
-      $$0.put(fre.bI, fqk.a());
-      $$0.put(fre.bJ, fqm.a(frj.a));
-      $$0.put(fre.bK, fqm.a(a));
-      $$0.put(fre.bL, fql.a(frj.a));
-      $$0.put(fre.bM, fql.a(a));
-      $$0.put(fre.bN, fqn.c());
-      $$0.put(fre.bO, fqo.b());
-      $$0.put(fre.bP, $$18);
-      $$0.put(fre.bQ, $$8);
-      $$0.put(fre.bR, fqr.b());
-      $$0.put(fre.bS, $$18);
-      $$0.put(fre.bT, fqt.b());
-      $$0.put(fre.bU, fqu.c());
-      $$0.put(fre.bV, fqv.a(frj.a));
-      $$0.put(fre.bW, fqv.a(c));
-      $$0.put(fre.cb, ggd.a());
-      $$0.put(fre.bX, $$17);
-      $$0.put(fre.bY, $$4);
-      $$0.put(fre.bZ, $$2);
-      $$0.put(fre.ca, $$6);
-      $$0.put(fre.cc, frl.a(fqw.a(frj.a), 64, 32));
-      $$0.put(fre.cd, frl.a(fqw.a(new frj(0.2F)), 64, 32));
-      $$0.put(fre.ce, $$16);
-      $$0.put(fre.cf, $$1);
-      $$0.put(fre.ci, $$4);
-      $$0.put(fre.cj, $$2);
-      $$0.put(fre.cg, $$13);
-      $$0.put(fre.ch, $$7);
-      $$0.put(fre.ck, fqy.c());
-      $$0.put(fre.cl, fqy.a(c));
-      $$0.put(fre.cm, fqy.a(b));
-      $$0.put(fre.cn, $$11);
-      $$0.put(fre.co, $$4);
-      $$0.put(fre.cp, $$3);
-      frl $$20 = fnl.a();
-      frl $$21 = fnq.e();
-      frl $$22 = fpr.b();
-      frl $$23 = fnr.a();
+   public frc(ftm $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+   }
 
-      for (ckr.b $$24 : ckr.b.values()) {
-         if ($$24 == ckr.b.i) {
-            $$0.put(fre.c($$24), $$22);
-            $$0.put(fre.d($$24), $$23);
-         } else {
-            $$0.put(fre.c($$24), $$20);
-            $$0.put(fre.d($$24), $$21);
+   private static String a(int $$0) {
+      return "cube" + $$0;
+   }
+
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
          }
+
+         $$1.a(a($$2), ftr.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fto.a);
       }
 
-      frl $$25 = gag.f();
-      doo.a().forEach($$2x -> $$0.put(fre.a($$2x), $$25));
-      frl $$26 = gac.e();
-      doo.a().forEach($$2x -> $$0.put(fre.b($$2x), $$26));
-      ImmutableMap<frd, frl> $$27 = $$0.build();
-      List<frd> $$28 = fre.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$28.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$28);
-      } else {
-         return $$27;
+      $$1.a("inside_cube", ftr.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fto.a);
+      return fts.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = axk.i($$3, $$0.bW, $$0.e);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
       }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public ftm a() {
+      return this.b;
    }
 }

@@ -1,60 +1,95 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class akh {
-   private final Map<ajh, akg> a = Maps.newHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private static final ajt b = new ajt("tick");
+   private static final ajt c = new ajt("load");
+   private final MinecraftServer d;
+   private List<hf<du>> e = ImmutableList.of();
+   private boolean f;
+   private akg g;
 
-   @Nullable
-   public akg a(ajh $$0) {
-      return this.a.get($$0);
+   public akh(MinecraftServer $$0, akg $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   public akg a(ajh $$0, vu $$1) {
-      akg $$2 = new akg($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public CommandDispatcher<du> a() {
+      return this.d.aH().a();
+   }
+
+   public void b() {
+      if (this.d.aR().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<hf<du>> $$0 = this.g.b(c);
+            this.a($$0, c);
+         }
+
+         this.a(this.e, b);
+      }
+   }
+
+   private void a(Collection<hf<du>> $$0, ajt $$1) {
+      this.d.aU().a($$1::toString);
+
+      for (hf<du> $$2 : $$0) {
+         this.a($$2, this.c());
+      }
+
+      this.d.aU().c();
+   }
+
+   public void a(hf<du> $$0, du $$1) {
+      bko $$2 = this.d.aU();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         hh<du> $$3 = $$0.a(null, this.a());
+         dv.a($$1, $$2x -> gs.a($$2x, $$3, $$1, dr.a));
+      } catch (dx var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
+      }
    }
 
    public void a(akg $$0) {
-      this.a.remove($$0.a());
+      this.g = $$0;
+      this.b($$0);
    }
 
-   public Collection<ajh> a() {
-      return this.a.keySet();
+   private void b(akg $$0) {
+      this.e = ImmutableList.copyOf($$0.b(b));
+      this.f = true;
    }
 
-   public Collection<akg> b() {
-      return this.a.values();
+   public du c() {
+      return this.d.aI().a(2).a();
    }
 
-   public ta c() {
-      ta $$0 = new ta();
-
-      for (akg $$1 : this.a.values()) {
-         $$0.a($$1.a().toString(), $$1.f());
-      }
-
-      return $$0;
+   public Optional<hf<du>> a(ajt $$0) {
+      return this.g.a($$0);
    }
 
-   public void a(ta $$0) {
-      for (String $$1 : $$0.e()) {
-         ajh $$2 = new ajh($$1);
-         this.a.put($$2, akg.a($$0.p($$1), $$2));
-      }
+   public Collection<hf<du>> b(ajt $$0) {
+      return this.g.b($$0);
    }
 
-   public void a(apg $$0) {
-      for (akg $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
+   public Iterable<ajt> d() {
+      return this.g.a().keySet();
    }
 
-   public void b(apg $$0) {
-      for (akg $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   public Iterable<ajt> e() {
+      return this.g.b();
    }
 }

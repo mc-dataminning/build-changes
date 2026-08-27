@@ -1,70 +1,25 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class enf {
-   private final Set<ene<?>> a;
-   private final Set<ene<?>> b;
+@FunctionalInterface
+public interface enf {
+   @Nullable
+   <T> T getElement(end<T> var1);
 
-   enf(Set<ene<?>> $$0, Set<ene<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   @Nullable
+   default <T> T getElement(eng<T> $$0, ajt $$1) {
+      return this.getElement(new end<>($$0, $$1));
    }
 
-   public boolean a(ene<?> $$0) {
-      return this.b.contains($$0);
+   default <T> Optional<T> getElementOptional(end<T> $$0) {
+      return Optional.ofNullable(this.getElement($$0));
    }
 
-   public Set<ene<?>> a() {
-      return this.a;
+   default <T> Optional<T> getElementOptional(eng<T> $$0, ajt $$1) {
+      return this.getElementOptional(new end<>($$0, $$1));
    }
 
-   public Set<ene<?>> b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
-
-   public void a(elf $$0, ekx $$1) {
-      Set<ene<?>> $$2 = $$1.a();
-      Set<ene<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static enf.a c() {
-      return new enf.a();
-   }
-
-   public static class a {
-      private final Set<ene<?>> a = Sets.newIdentityHashSet();
-      private final Set<ene<?>> b = Sets.newIdentityHashSet();
-
-      public enf.a a(ene<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public enf.a b(ene<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public enf a() {
-         return new enf(this.a, this.b);
-      }
+   default enj getLootTable(ajt $$0) {
+      return this.getElementOptional(eng.c, $$0).orElse(enj.a);
    }
 }

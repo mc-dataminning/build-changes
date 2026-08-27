@@ -1,25 +1,30 @@
-public class fwa extends fwn {
-   fwa(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class fwa {
+   public static final fwa a = new fwa(fvz.b, fwb.createDnsSrvRedirectHandler(), fvw.a());
+   private final fvz b;
+   private final fwb c;
+   private final fvw d;
+
+   @VisibleForTesting
+   fwa(fvz $$0, fwb $$1, fvw $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
+   public Optional<fvx> a(fvy $$0) {
+      Optional<fvx> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fvy> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fwa $$8 = new fwa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

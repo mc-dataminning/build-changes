@@ -1,30 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class emt extends emi {
-   public static final Codec<emt> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(avd.b(kj.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, emt::new)
-   );
-   private final avd<cqe> b;
+public class emt {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final emj d;
+   private final boolean e;
 
-   private emt(List<env> $$0, avd<cqe> $$1) {
-      super($$0);
+   private emt(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = new emj($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public emk b() {
-      return eml.A;
+   public static emt a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new emt(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(emj.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new emt($$1, $$2, "", 0, emj.a, false);
    }
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      cqf.a($$0, this.b, $$1.b());
-      return $$0;
+   public int a() {
+      return this.a;
    }
 
-   public static emi.a<?> a(avd<cqe> $$0) {
-      return a($$1 -> new emt($$1, $$0));
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public emj d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

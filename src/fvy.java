@@ -1,115 +1,85 @@
-public class fvy extends fwg {
-   private static final axd a = axd.a();
-   private final fwb b;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   fvy(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
+public final class fvy {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fvy c = new fvy(HostAndPort.fromParts("server.invalid", 25565));
 
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
+   public fvy(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
+   }
+
+   private fvy(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
       }
    }
 
-   @Override
-   public fvk b() {
-      return fvk.c;
+   public int b() {
+      return this.b.getPort();
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
+   public static fvy a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         this.e(aww.i(0.05F, this.y, 1.0F));
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fvy($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
       }
    }
 
-   private boolean g() {
-      ezi $$0 = ezi.Q();
-      fwu $$1 = $$0.s;
-      return $$1 != null && $$1.bu().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ay().a() && $$1.gx();
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
-
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fvg $$8 = new fvy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class b implements fvj<kf> {
-      private final fwb a;
-
-      public b(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
    }
 
-   public static class c implements fvj<kf> {
-      private final fwb a;
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
 
-      public c(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fvg $$8 = new fvy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fvy ? this.b.equals(((fvy)$$0).b) : false;
       }
    }
 
-   public static class d implements fvj<kf> {
-      private final fwb a;
-
-      public d(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements fvj<kf> {
-      private final fwb a;
-
-      public e(fwb $$0) {
-         this.a = $$0;
-      }
-
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fvy $$8 = new fvy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

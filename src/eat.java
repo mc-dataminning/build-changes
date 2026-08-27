@@ -1,115 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eat extends eba {
-   private static final Codec<bmo> b = awe.b(
-      bmo.a,
-      (Function<bmo, DataResult<bmo>>)($$0 -> $$0.b() - $$0.a() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success($$0))
-   );
+public class eat implements dzz {
    public static final Codec<eat> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bmi.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bmi.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bmi.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bmi.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dzf.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ib.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, eat::new)
    );
-   private final bmi h;
-   private final bmi i;
-   private final bmo j;
-   private final bmo k;
-   private final bmi l;
+   private final boolean b;
+   private final List<dzf.a> c;
+   @Nullable
+   private final ib d;
 
-   public eat(int $$0, int $$1, int $$2, bmi $$3, bmi $$4, bmo $$5, bmi $$6) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bmo.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
+   public eat(boolean $$0, List<dzf.a> $$1, @Nullable ib $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected ebb<?> a() {
-      return ebb.i;
+   private eat(boolean $$0, List<dzf.a> $$1, Optional<ib> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   public List<dzi.a> a(cxh $$0, BiConsumer<ib, dnb> $$1, axd $$2, int $$3, ib $$4, dys $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
-      }
-
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
-      }
-
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<dzi.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new dzi.a($$4.b($$11), 0, false));
-      }
-
-      ib.a $$16 = new ib.a();
-      ih $$17 = ih.c.a.a($$2);
-      Function<dnb, dnb> $$18 = $$1x -> $$1x.b(dgn.i, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
+   public boolean a() {
+      return this.b;
    }
 
-   private dzi.a a(cxh $$0, BiConsumer<ib, dnb> $$1, axd $$2, int $$3, ib $$4, dys $$5, Function<dnb, dnb> $$6, ih $$7, int $$8, boolean $$9, ib.a $$10) {
-      $$10.g($$4).c(ih.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      ib $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
+   public List<dzf.a> b() {
+      return this.c;
+   }
 
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
-      }
-
-      ih $$17 = $$14.v() > $$10.v() ? ih.b : ih.a;
-
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new dzi.a($$14.c(), 0, false);
-         }
-
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
-      }
+   @Nullable
+   public ib c() {
+      return this.d;
    }
 }

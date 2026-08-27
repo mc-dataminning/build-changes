@@ -1,13 +1,36 @@
-import com.google.common.hash.HashCode;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public interface kn {
-   kn a = ($$0, $$1, $$2) -> {
-      v.c($$0.getParent());
-      Files.write($$0, $$1);
+public class kn implements kj {
+   public static final Codec<kn> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.d)).apply($$0, kn::new));
+   public static final ye<vr, kn> b = ye.a(yc.f, $$0 -> $$0.d, kn::new);
+   public static final kj.a<kn> c = new kj.a<kn>() {
+      public kn a(kk<kn> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
+         $$1.expect(' ');
+         int $$3 = $$1.readInt();
+         return new kn($$3);
+      }
    };
+   private final int d;
 
-   void writeIfNeeded(Path var1, byte[] var2, HashCode var3) throws IOException;
+   public kn(int $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String a(in.a $$0) {
+      return String.format(Locale.ROOT, "%s %d", kr.j.b(this.a()), this.d);
+   }
+
+   @Override
+   public kk<kn> a() {
+      return kl.aT;
+   }
+
+   public int b() {
+      return this.d;
+   }
 }

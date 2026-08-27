@@ -1,73 +1,49 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+public class fef extends fdp {
+   private boolean a;
 
-public enum fef implements esd {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+   public fef(int $$0, int $$1, fdp.c $$2) {
+      super($$0, $$1, 20, 20, wg.c("narrator.button.difficulty_lock"), $$2, q);
+   }
 
-   final etc c;
+   @Override
+   protected wu aL_() {
+      return wf.a(super.aL_(), this.a() ? wg.c("narrator.button.difficulty_lock.locked") : wg.c("narrator.button.difficulty_lock.unlocked"));
+   }
 
-   private static etc a(int $$0, int $$1, fef.a $$2) {
-      etc $$3 = new etc(etc.a.a, $$0, $$1, false);
+   public boolean a() {
+      return this.a;
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      fef.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fef.a.c : fef.a.f;
+      } else if (this.A()) {
+         $$4 = this.a ? fef.a.b : fef.a.e;
+      } else {
+         $$4 = this.a ? fef.a.a : fef.a.d;
       }
 
-      $$3.i();
-      return $$3;
+      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
    }
 
-   private fef(Supplier<etc> $$0) {
-      this.c = $$0.get();
-   }
+   static enum a {
+      a(new ajt("widget/locked_button")),
+      b(new ajt("widget/locked_button_highlighted")),
+      c(new ajt("widget/locked_button_disabled")),
+      d(new ajt("widget/unlocked_button")),
+      e(new ajt("widget/unlocked_button_highlighted")),
+      f(new ajt("widget/unlocked_button_disabled"));
 
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
+      final ajt g;
 
-   @Override
-   public fed bake(Function<esf, fed> $$0) {
-      return $$0.apply(new esf() {
-         @Override
-         public int a() {
-            return fef.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return fef.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fef.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      private a(ajt $$0) {
+         this.g = $$0;
+      }
    }
 }

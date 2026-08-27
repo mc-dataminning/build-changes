@@ -1,31 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record eow(String b) implements eoy {
-   public static final Codec<eow> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eow::c)).apply($$0, eow::new));
+public class eow extends eoo {
+   public static final Codec<eow> a = RecordCodecBuilder.create($$0 -> a($$0).and(jm.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eow::new));
+   private final jm b;
 
-   public static eoy a(String $$0) {
-      return new eow($$0);
+   private eow(List<eqc> $$0, jm $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eox a() {
-      return eoz.b;
+   public eoq b() {
+      return eor.h;
    }
 
    @Override
-   public eqw a(ekw $$0) {
-      return eqw.d(this.b);
+   public crj a(crj $$0, enb $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   @Override
-   public Set<ene<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   public static <T> eoo.a<?> a(jo<T> $$0, T $$1) {
+      return a($$2 -> new eow($$2, jm.a().a($$0, $$1).a()));
    }
 }

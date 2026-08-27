@@ -1,68 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public class bmm extends bmg {
-   public static final Codec<bmm> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, bmm::new)
-      )
-      .comapFlatMap(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         },
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
+public interface bmm {
+   bml a();
 
-   public static bmm a(float $$0, float $$1, float $$2) {
-      return new bmm($$0, $$1, $$2);
+   static <T> bmm.b<T> a(T $$0, int $$1) {
+      return new bmm.b<>($$0, bml.a($$1));
    }
 
-   private bmm(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static class a implements bmm {
+      private final bml a;
+
+      public a(int $$0) {
+         this.a = bml.a($$0);
+      }
+
+      public a(bml $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bml a() {
+         return this.a;
+      }
    }
 
-   @Override
-   public float a(axd $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
-   }
+   public static class b<T> implements bmm {
+      private final T a;
+      private final bml b;
 
-   @Override
-   public float a() {
-      return this.b;
-   }
+      b(T $$0, bml $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
+      public T b() {
+         return this.a;
+      }
 
-   @Override
-   public bmh<?> c() {
-      return bmh.d;
-   }
+      @Override
+      public bml a() {
+         return this.b;
+      }
 
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      public static <E> Codec<bmm.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bmm.b::b), bml.a.fieldOf("weight").forGetter(bmm.b::a)).apply($$1, bmm.b::new)
+         );
+      }
    }
 }

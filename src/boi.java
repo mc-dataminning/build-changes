@@ -1,110 +1,81 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class boi {
-   private final Map<il<bqr>, boi.a> a = new Object2ObjectOpenHashMap();
-   private final boj b;
-   private final int c;
+public interface boi extends bnt {
+   String c = "LootTable";
+   String d = "LootTableSeed";
+
    @Nullable
-   private String d;
-   private int e;
+   ajt ay_();
 
-   protected boi(boj $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   void a(@Nullable ajt var1);
+
+   default void a(ajt $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   public int b() {
-      return this.e;
-   }
+   long az_();
 
-   public boolean a(bpp $$0, int $$1) {
-      return true;
-   }
+   void a(long var1);
 
-   public void a(@Nullable box $$0, @Nullable box $$1, bpp $$2, int $$3, double $$4) {
-      this.a($$2, $$3);
-   }
+   ib aA_();
 
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
+   @Nullable
+   cyx i();
 
-   public void b(bpp $$0, int $$1) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String c() {
-      if (this.d == null) {
-         this.d = ac.a("effect", ki.d.b(this));
+   static void a(cyd $$0, axr $$1, ib $$2, ajt $$3) {
+      if ($$0.c_($$2) instanceof boi $$5) {
+         $$5.a($$3, $$1.g());
       }
-
-      return this.d;
    }
 
-   public String d() {
-      return this.c();
-   }
-
-   public vu e() {
-      return vu.c(this.d());
-   }
-
-   public boj f() {
-      return this.b;
-   }
-
-   public int g() {
-      return this.c;
-   }
-
-   public boi a(il<bqr> $$0, String $$1, double $$2, bqu.a $$3) {
-      this.a.put($$0, new boi.a(UUID.fromString($$1), $$2, $$3));
-      return this;
-   }
-
-   public boi a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public void a(int $$0, BiConsumer<il<bqr>, bqu> $$1) {
-      this.a.forEach(($$2, $$3) -> $$1.accept((il<bqr>)$$2, $$3.a(this.d(), $$0)));
-   }
-
-   public void a(bqt $$0) {
-      for (Entry<il<bqr>, boi.a> $$1 : this.a.entrySet()) {
-         bqs $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.b($$1.getValue().a());
+   default boolean a_(tm $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(new ajt($$0.l("LootTable")));
+         if ($$0.b("LootTableSeed", 4)) {
+            this.a($$0.i("LootTableSeed"));
+         } else {
+            this.a(0L);
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public void a(bqt $$0, int $$1) {
-      for (Entry<il<bqr>, boi.a> $$2 : this.a.entrySet()) {
-         bqs $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.b($$2.getValue().a());
-            $$3.d($$2.getValue().a(this.d(), $$1));
+   default boolean b_(tm $$0) {
+      ajt $$1 = this.ay_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", $$1.toString());
+         long $$2 = this.az_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
          }
+
+         return true;
       }
    }
 
-   public boolean h() {
-      return this.b == boj.a;
-   }
+   default void e_(@Nullable cjt $$0) {
+      cyx $$1 = this.i();
+      ib $$2 = this.aA_();
+      ajt $$3 = this.ay_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         enj $$4 = $$1.o().aM().getLootTable($$3);
+         if ($$0 instanceof apt) {
+            am.Q.a((apt)$$0, $$3);
+         }
 
-   static record a(UUID a, double b, bqu.a c) {
-      public bqu a(String $$0, int $$1) {
-         return new bqu(this.a, $$0 + " " + $$1, this.b * (double)($$1 + 1), this.c);
+         this.a(null);
+         enh.a $$5 = new enh.a((aps)$$1).a(epo.f, esa.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.gv()).a(epo.a, $$0);
+         }
+
+         $$4.a(this, $$5.a(epn.c), this.az_());
       }
    }
 }

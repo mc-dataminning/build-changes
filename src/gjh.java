@@ -1,75 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public class gjh extends gjt<ceh, fqx<ceh>> {
+   private final fqx<ceh> a;
 
-public class gjh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aja b = new aja("atlases", ".json");
-   private final List<gjg> c;
-
-   private gjh(List<gjg> $$0) {
-      this.c = $$0;
+   public gjh(ghd<ceh, fqx<ceh>> $$0, fti $$1) {
+      super($$0);
+      this.a = new fqx<>($$1.a(ftl.aq));
    }
 
-   public List<Function<gjf, giw>> a(aso $$0) {
-      final Map<ajh, gjg.b> $$1 = new HashMap<>();
-      gjg.a $$2 = new gjg.a() {
-         @Override
-         public void a(ajh $$0, gjg.b $$1x) {
-            gjg.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
+   public void a(ewi $$0, fzz $$1, int $$2, ceh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      crj $$10 = $$3.fP();
+      if ($$10.f() instanceof cox $$11 && $$11.d() == cox.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$15;
+         float $$16;
+         float $$14;
+         if ($$10.a(avk.ba)) {
+            int $$13 = ctw.a($$10, -6265536);
+            $$14 = (float)awu.b.b($$13) / 255.0F;
+            $$15 = (float)awu.b.c($$13) / 255.0F;
+            $$16 = (float)awu.b.d($$13) / 255.0F;
+         } else {
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+            $$16 = 1.0F;
          }
 
-         @Override
-         public void a(Predicate<ajh> $$0) {
-            Iterator<Entry<ajh, gjg.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ajh, gjg.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gjf, giw>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gjf, giw>)$$0x -> gis.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static gjh a(aso $$0, ajh $$1) {
-      ajh $$2 = b.a($$1);
-      List<gjg> $$3 = new ArrayList<>();
-
-      for (asm $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gjg>)gjj.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+         ewm $$20 = $$1.getBuffer(gah.e($$11.b()));
+         this.a.a($$0, $$20, $$2, gla.d, $$14, $$15, $$16, 1.0F);
+         return;
       }
-
-      return new gjh($$3);
    }
 }

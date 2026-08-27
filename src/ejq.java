@@ -1,23 +1,14 @@
-public class ejq implements ejr {
-   private final cxb b;
+import com.mojang.serialization.Codec;
 
-   public ejq(cxb $$0) {
-      this.b = $$0;
-   }
+public interface ejq<P extends ejp> {
+   ejq<ejn> a = a("clear", ejn.a);
+   ejq<ejo> b = a("passthrough", ejo.b);
+   ejq<ejm> c = a("append_static", ejm.a);
+   ejq<ejl> d = a("append_loot", ejl.a);
 
-   @Override
-   public void a(ih $$0, dnb $$1, ib $$2, ib $$3, int $$4, int $$5) {
-      ejr.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
-   }
+   Codec<P> codec();
 
-   @Override
-   public void a(ib $$0, dac $$1, ib $$2) {
-      dnb $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
-   }
-
-   @Override
-   public void a(dnb $$0, ib $$1, dac $$2, ib $$3, boolean $$4) {
-      ejr.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   private static <P extends ejp> ejq<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.p, $$0, () -> $$1);
    }
 }

@@ -1,20 +1,8 @@
-public enum doa implements axq {
-   a("top"),
-   b("bottom");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String c;
-
-   private doa(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface doa {
 }

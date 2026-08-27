@@ -1,13 +1,22 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class cai {
-   @Nullable
-   public static ept a(bpx $$0, int $$1, int $$2, int $$3, ept $$4, double $$5) {
-      ept $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = cak.a($$0, $$1);
-      return can.a($$0, () -> {
-         ib $$7x = cah.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cak.a($$0, $$7x) ? $$7x : null;
-      });
+public class cai extends car {
+   public static final float a = 10.0F;
+
+   @Override
+   protected boolean a(bqo $$0, bqo $$1) {
+      return !$$0.dP().a(bzr.U) && cax.c($$0, $$1) && cdv.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(bqo $$0, bqo $$1) {
+      List<UUID> $$2 = $$0.dP().c(bzr.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cw());
+   }
+
+   @Override
+   protected bzr<bqo> b() {
+      return bzr.B;
    }
 }

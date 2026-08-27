@@ -1,80 +1,59 @@
-public class fnp<T extends cbh> extends fpd<T> {
-   private float q;
-   private float r;
-   private float s;
+import java.util.UUID;
 
-   public fnp(frf $$0) {
-      super($$0);
+public class fnp extends fnl<fvk.a> {
+   private static final int v = 120;
+   private static final wg w = wg.c("gui.abuseReport.name.title");
+   private final fhg x = fhg.d().a(8);
+   private feh y;
+   private fdp z;
+
+   private fnp(fjo $$0, fvp $$1, fvk.a $$2) {
+      super(w, $$0, $$1, $$2);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.G($$3);
-      this.r = $$0.H($$3);
-      this.s = $$0.I($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.y()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
+   public fnp(fjo $$0, fvp $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fvk.a($$2, $$3, $$1.a().b()));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fpc.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fpc.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fpc.a(this.l.e, 0.8F, this.r);
-         this.m.e = fpc.a(this.m.e, -0.4F, this.r);
-      }
+   public fnp(fjo $$0, fvp $$1, fvk $$2) {
+      this($$0, $$1, new fvk.a($$2, $$1.a().b()));
+   }
 
-      if (this.s > 0.0F) {
-         this.n.e = fpc.a(this.n.e, -0.58177644F, this.s);
-      }
+   @Override
+   protected void aN_() {
+      this.x.c().b();
+      this.x.a(new few(this.i, this.m));
+      wg $$0 = wg.b(this.u.e().a()).a(n.o);
+      this.x.a(new few(wg.a("gui.abuseReport.name.reporting", $$0), this.m), $$0x -> $$0x.a().a(0, 8));
+      this.y = this.a(280, 9 * 8, $$0x -> {
+         this.u.a($$0x);
+         this.C();
+      });
+      this.x.a(fgy.a(this.m, this.y, d, $$0x -> $$0x.e(12)));
+      fhg $$1 = this.x.a(fhg.e().a(8));
+      $$1.a(fdp.a(wf.k, $$0x -> this.d()).a(120).a());
+      this.z = $$1.a(fdp.a(a, $$0x -> this.m()).a(120).a());
+      this.C();
+      this.x.a($$1x -> {
+         fdn var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.x.a();
+      fha.a(this.x, this.G());
+   }
+
+   private void C() {
+      fvl.b $$0 = this.u.c();
+      this.z.j = $$0 == null;
+      this.z.a(x.a($$0, fvl.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.y.b($$0, $$1, $$2);
    }
 }

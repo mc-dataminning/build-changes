@@ -1,8 +1,5 @@
-public interface aie extends ahy, up {
-   @Override
-   default ut b() {
-      return ut.c;
-   }
+public interface aie {
+   ajt a();
 
-   void a(aif var1);
+   void a(vg var1);
 }

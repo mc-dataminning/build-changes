@@ -1,31 +1,42 @@
-public class gml extends gly {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cdt p;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-   public gml(cdt $$0) {
-      super(aty.xV, atz.g, gmp.t());
-      this.p = $$0;
-      this.k = gmp.a.b;
-      this.i = false;
-      this.j = 0;
+public abstract class gml implements asw, AutoCloseable {
+   private final gli a;
+   private final ajt b;
+   private final Set<asb<?>> c;
+
+   public gml(glk $$0, ajt $$1, ajt $$2) {
+      this($$0, $$1, $$2, gle.a);
+   }
+
+   public gml(glk $$0, ajt $$1, ajt $$2, Set<asb<?>> $$3) {
+      this.b = $$2;
+      this.a = new gli($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected glj a(ajt $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public boolean s() {
-      return !this.p.aU();
+   public final CompletableFuture<Void> a(asw.a $$0, atc $$1, bko $$2, bko $$3, Executor $$4, Executor $$5) {
+      return gle.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gle.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(gle.a $$0, bko $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
    @Override
-   public void q() {
-      if (!this.p.dH() && this.p.p() == null && this.p.gt()) {
-         this.f = (double)((float)this.p.dr());
-         this.g = (double)((float)this.p.dt());
-         this.h = (double)((float)this.p.dx());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   public void close() {
+      this.a.f();
    }
 }

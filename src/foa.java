@@ -1,51 +1,110 @@
-public class foa<T extends cgt> extends fqx<T> {
-   public foa(frf $$0) {
-      super($$0);
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class foa extends fjo {
+   private static final wg a = wg.c("telemetry_info.screen.title");
+   private static final wg b = wg.c("telemetry_info.screen.description").a(n.h);
+   private static final wg c = wg.c("telemetry_info.button.privacy_statement");
+   private static final wg d = wg.c("telemetry_info.button.give_feedback");
+   private static final wg o = wg.c("telemetry_info.button.show_data");
+   private static final wg p = wg.c("telemetry_info.opt_in.description");
+   private static final int q = 8;
+   private static final boolean r = fbp.Q().D();
+   private final fjo s;
+   private final fbt u;
+   private final fhc v = new fhc(this, 16 + 9 * 5 + 20, r ? 33 + fdr.a(fbp.Q().h) : 33);
+   @Nullable
+   private fnz w;
+   @Nullable
+   private fej x;
+   private double y;
+
+   public foa(fjo $$0, fbt $$1) {
+      super(a);
+      this.s = $$0;
+      this.u = $$1;
    }
 
-   public static frl a(frj $$0) {
-      frn $$1 = fos.a($$0, 0.0F);
-      fro $$2 = $$1.a();
-      $$2.a("left_arm", frk.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), frh.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", frk.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), frh.a(1.9F, 12.0F, 0.0F));
-      return frl.a($$1, 64, 64);
+   @Override
+   public wg i() {
+      return wf.a(super.i(), b);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fos.a.a;
-      this.r = fos.a.a;
-      cqm $$4 = $$0.b(bnc.a);
-      if ($$4.a(cqp.vN) && $$0.gf()) {
-         if ($$0.fr() == bpj.b) {
-            this.s = fos.a.e;
-         } else {
-            this.r = fos.a.e;
-         }
+   @Override
+   protected void aN_() {
+      fhg $$0 = this.v.a(fhg.d().a(4));
+      $$0.c().b();
+      $$0.a(new few(a, this.m));
+      this.x = $$0.a(new fej(b, this.m).b(true));
+      fhg $$1 = $$0.a(fhg.e().a(8));
+      $$1.a(fdp.a(c, this::a).a());
+      $$1.a(fdp.a(d, this::b).a());
+      fhg $$2 = this.v.b(fhg.d().a(4));
+      if (r) {
+         $$2.a(this.m());
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      fhg $$3 = $$2.a(fhg.e().a(8));
+      $$3.a(fdp.a(o, this::c).a());
+      $$3.a(fdp.a(wf.d, $$0x -> this.d()).a());
+      fhg $$4 = this.v.c(fhg.d().a(8));
+      this.w = $$4.a(new fnz(0, 0, this.k - 40, this.v.d(), this.m));
+      this.w.a($$0x -> this.y = $$0x);
+      this.v.a($$1x -> {
+         fdn var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fos.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
+   @Override
+   protected void c() {
+      if (this.w != null) {
+         this.w.a(this.y);
+         this.w.k(this.k - 40);
+         this.w.l(this.v.d());
+         this.w.j();
       }
 
-      if (this.s == fos.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
+      if (this.x != null) {
+         this.x.d(this.k - 16);
       }
 
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * aww.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * aww.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * aww.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * aww.a(0.1F * $$3);
-         this.k.e = 0.0F;
+      this.v.a();
+   }
+
+   @Override
+   protected void aD_() {
+      if (this.w != null) {
+         this.b(this.w);
       }
+   }
+
+   private fdn m() {
+      fbs<Boolean> $$0 = this.u.ai();
+      return fdr.a(p, this.m).a($$0).a(this::a).a();
+   }
+
+   private void a(fdn $$0, boolean $$1) {
+      if (this.w != null) {
+         this.w.b($$1);
+      }
+   }
+
+   private void a(fdp $$0) {
+      fif.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   }
+
+   private void b(fdp $$0) {
+      fif.a(this, "https://aka.ms/javafeedback?ref=game");
+   }
+
+   private void c(fdp $$0) {
+      Path $$1 = this.j.u().b();
+      ac.j().a($$1.toUri());
+   }
+
+   @Override
+   public void d() {
+      this.j.a(this.s);
    }
 }

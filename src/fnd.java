@@ -1,80 +1,89 @@
-public class fnd extends fmz<ccl> {
-   private static final float a = 16.02F;
-   private static final float b = 25.0F;
-   private static final float f = 22.5F;
-   private static final float g = 16.5F;
-   private static final float h = 2.5F;
-   private static final String i = "head_cube";
-   private static final String j = "right_ear_cube";
-   private static final String k = "left_ear_cube";
-   private final frf l;
-   private final frf m;
-   private final frf n;
-   private final frf o;
-   private final frf p;
-   private final frf q;
-   private final frf r;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-   public fnd(frf $$0) {
-      super(0.6F, 16.02F);
-      this.l = $$0;
-      this.m = $$0.b("body");
-      this.n = $$0.b("right_hind_leg");
-      this.o = $$0.b("left_hind_leg");
-      this.q = this.m.b("head");
-      this.r = this.m.b("tail");
-      this.p = $$0.b("cube");
+public class fnd extends fev {
+   private static final ffc c = new ffc(new ajt("recipe_book/tab"), new ajt("recipe_book/tab_selected"));
+   private final fby d;
+   private static final float e = 15.0F;
+   private float f;
+
+   public fnd(fby $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      fro $$2 = $$1.a(
-         "body",
-         frk.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new frj(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new frj(0.0F)),
-         frh.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", frk.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new frj(0.0F)), frh.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fro $$3 = $$2.a("head", frk.c(), frh.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", frk.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new frj(0.0F)), frh.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fro $$4 = $$3.a("right_ear", frk.c(), frh.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", frk.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new frj(0.0F)), frh.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fro $$5 = $$3.a("left_ear", frk.c(), frh.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", frk.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new frj(0.0F)), frh.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", frk.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new frj(0.0F)), frh.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", frk.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new frj(0.0F)), frh.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", frk.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new frj(0.0F)), frh.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", frk.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new frj(0.0F)), frh.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", frk.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new frj(0.0F)), frh.a(0.0F, 24.0F, 0.0F));
-      return frl.a($$0, 64, 64);
+   public void a(fbp $$0) {
+      fbc $$1 = $$0.s.m();
+      List<fnf> $$2 = $$1.a(this.d);
+      if ($$0.s.bY instanceof coc) {
+         for (fnf $$3 : $$2) {
+            for (cvl<?> $$4 : $$3.a($$1.a((coc<?>)$$0.s.bY))) {
+               if ($$1.d($$4)) {
+                  this.f = 15.0F;
+                  return;
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public frf a() {
-      return this.l;
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
+         }
+
+         fbp $$5 = fbp.Q();
+         RenderSystem.disableDepthTest();
+         ajt $$6 = this.a.a(true, this.b);
+         int $$7 = this.C();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.D(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.as());
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
    }
 
-   public void a(ccl $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(frf::c);
-      if ($$0.y()) {
-         this.m.l = true;
-         this.o.k = false;
-         this.n.k = false;
-         this.r.k = false;
-         this.p.k = true;
-      } else {
-         this.m.l = false;
-         this.o.k = true;
-         this.n.k = true;
-         this.r.k = true;
-         this.p.k = false;
-         this.q.e = aww.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.q.f = aww.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   private void a(fdc $$0, ggg $$1) {
+      List<crj> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
+         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
+      }
+   }
+
+   public fby b() {
+      return this.d;
+   }
+
+   public boolean a(fbc $$0) {
+      List<fnf> $$1 = $$0.a(this.d);
+      this.k = false;
+      if ($$1 != null) {
+         for (fnf $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.k = true;
+               break;
+            }
+         }
       }
 
-      this.a(fac.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.cb, fac.d, $$3, 1.0F);
-      this.a($$0.cc, fac.a, $$3, 1.0F);
-      this.a($$0.cd, fac.c, $$3, 1.0F);
+      return this.k;
    }
 }

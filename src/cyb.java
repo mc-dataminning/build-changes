@@ -1,111 +1,80 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public class cyb {
-   private static final Logger c = LogUtils.getLogger();
-   public static final cyb a = new cyb(ImmutableMap.of(), ImmutableList.of());
-   public static final MapCodec<cyb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.simpleMap(dsk.a.c, dur.c.promotePartial(ac.a("Carver: ", c::error)), axq.a(dsk.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               eci.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, cyb::new)
-   );
-   private final Map<dsk.a, ip<dur<?>>> d;
-   private final List<ip<eci>> e;
-   private final Supplier<List<dvf<?, ?>>> f;
-   private final Supplier<Set<eci>> g;
+public class cyb<T> extends AbstractIterator<T> {
+   private final erv a;
+   private final esf b;
+   private final id c;
+   private final ib.a d;
+   private final est e;
+   private final cyh f;
+   private final boolean g;
+   @Nullable
+   private cyd h;
+   private long i;
+   private final BiFunction<ib.a, est, T> j;
 
-   cyb(Map<dsk.a, ip<dur<?>>> $$0, List<ip<eci>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(ip::a).map(il::a).flatMap(eci::a).filter($$0xx -> $$0xx.b() == dvs.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ip::a).map(il::a).collect(Collectors.toSet()));
+   public cyb(cyh $$0, @Nullable bpv $$1, erv $$2, boolean $$3, BiFunction<ib.a, est, T> $$4) {
+      this.b = $$1 == null ? esf.a() : esf.a($$1);
+      this.d = new ib.a();
+      this.e = esq.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = axk.a($$2.a - 1.0E-7) - 1;
+      int $$6 = axk.a($$2.d + 1.0E-7) + 1;
+      int $$7 = axk.a($$2.b - 1.0E-7) - 1;
+      int $$8 = axk.a($$2.e + 1.0E-7) + 1;
+      int $$9 = axk.a($$2.c - 1.0E-7) - 1;
+      int $$10 = axk.a($$2.f + 1.0E-7) + 1;
+      this.c = new id($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public Iterable<il<dur<?>>> a(dsk.a $$0) {
-      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
-   }
-
-   public List<dvf<?, ?>> a() {
-      return this.f.get();
-   }
-
-   public List<ip<eci>> b() {
-      return this.e;
-   }
-
-   public boolean a(eci $$0) {
-      return this.g.get().contains($$0);
-   }
-
-   public static class a extends cyb.b {
-      private final im<eci> a;
-      private final im<dur<?>> b;
-
-      public a(im<eci> $$0, im<dur<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public cyb.a a(dsk.b $$0, ajg<eci> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public cyb.a a(dsk.a $$0, ajg<dur<?>> $$1) {
-         this.a($$0, this.b.b($$1));
-         return this;
+   @Nullable
+   private cyd a(int $$0, int $$1) {
+      int $$2 = je.a($$0);
+      int $$3 = je.a($$1);
+      long $$4 = cye.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
+      } else {
+         cyd $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   public static class b {
-      private final Map<dsk.a, List<il<dur<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<il<eci>>> b = Lists.newArrayList();
-
-      public cyb.b a(dsk.b $$0, il<eci> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
-
-      public cyb.b a(int $$0, il<eci> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public cyb.b a(dsk.a $$0, il<dur<?>> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cyd $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               doz $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dca.bQ))) {
+                  est $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == esq.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     est $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && esq.c($$7, this.e, ese.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
          }
       }
 
-      public cyb a() {
-         return new cyb(
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ip.a((List)$$0.getValue()))),
-            this.b.stream().map(ip::a).collect(ImmutableList.toImmutableList())
-         );
-      }
+      return (T)this.endOfData();
    }
 }

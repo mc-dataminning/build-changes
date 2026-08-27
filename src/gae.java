@@ -1,50 +1,70 @@
-public class gae implements fzs<dmx> {
-   private final fym a;
+public class gae {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public gae(fzt.a $$0) {
-      this.a = $$0.b();
+   public gae(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(dmx $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      cxb $$6 = $$0.i();
-      if ($$6 != null) {
-         ib $$7 = $$0.aC_().a($$0.f().g());
-         dnb $$8 = $$0.j();
-         if (!$$8.i()) {
-            fyo.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dae.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dmv.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               dod $$9 = $$8.a(dae.br) ? dod.b : dod.a;
-               dnb $$10 = dae.bz.o().a(dmv.c, $$9).a(dmv.a, $$8.c(dmu.a));
-               $$10 = $$10.a(dmv.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               ib $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dmu.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
-
-            $$2.b();
-            fyo.b();
-         }
-      }
+   public gae a(gae $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   private void a(ib $$0, dnb $$1, eub $$2, fxs $$3, cxb $$4, boolean $$5, int $$6) {
-      fya $$7 = fxn.b($$1);
-      euf $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, axd.a(), $$1.a($$0), $$6);
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public int aR_() {
-      return 68;
+   public int b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

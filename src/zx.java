@@ -1,20 +1,31 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record zx(int c, elg d, float e) implements zo {
+   public static final ye<vg, zx> a = zo.a(zx::a, zx::new);
+   public static final zo.b<zx> b = zo.a("debug/path");
 
-public record zx(ajg<? extends iy<?>> b, List<jc.a> c) implements yb<zv> {
-   private static final xs<ByteBuf, ajg<? extends iy<?>>> d = ajh.b.a(ajg::a, ajg::a);
-   public static final xs<uu, zx> a = xs.a(d, zx::b, jc.a.a.a(xq.a()), zx::e, zx::new);
+   private zx(vg $$0) {
+      this($$0.readInt(), elg.b($$0), $$0.readFloat());
+   }
+
+   private void a(vg $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
+   }
 
    @Override
-   public yd<zx> a() {
-      return aaa.b;
+   public zo.b<zx> a() {
+      return b;
    }
 
-   public void a(zv $$0) {
-      $$0.a(this);
-   }
-
-   public List<jc.a> e() {
+   public int b() {
       return this.c;
+   }
+
+   public elg c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

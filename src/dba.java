@@ -1,55 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dba extends ddq implements daf, day {
-   public static final MapCodec<dba> c = b(dba::new);
+public class dba extends dch implements dcb {
+   public static final MapCodec<dba> a = b(dba::new);
+   private static final est b = esq.a(dby.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dby.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
    public MapCodec<dba> a() {
-      return c;
+      return a;
    }
 
-   public dba(dna.d $$0) {
-      super($$0, ih.a, q_, false);
-      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected ddr c() {
-      return (ddr)dae.sv;
+   protected dba(doy.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dnb a(dnb $$0, dnb $$1) {
-      return $$1.a(r_, $$0.c(r_));
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
    }
 
    @Override
-   public cqm a(cxe $$0, ib $$1, dnb $$2) {
-      return new cqm(cqp.wo);
+   protected boolean b(doz $$0, cyd $$1, ib $$2) {
+      return $$0.a(dca.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
-      return day.a($$3, $$0, $$1, $$2);
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return $$0.b_($$1.c()).c();
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(r_);
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
    @Override
-   public boolean b(cxe $$0, ib $$1, dnb $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      doo.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
    }
 }

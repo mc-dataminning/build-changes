@@ -1,28 +1,15 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aak(ajh b, @Nullable byte[] c) implements yb<aaj> {
-   public static final xs<uu, aak> a = yb.a(aak::a, aak::new);
-
-   private aak(uu $$0) {
-      this($$0.q(), $$0.c(yo.b));
-   }
-
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, yo.b);
-   }
+public record aak(List<asj> b) implements yn<aah> {
+   public static final ye<ByteBuf, aak> a = ye.a(asj.a.a(yc.a()), aak::b, aak::new);
 
    @Override
-   public yd<aak> a() {
-      return aai.b;
+   public yp<aak> a() {
+      return aam.d;
    }
 
-   public void a(aaj $$0) {
+   public void a(aah $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
    }
 }

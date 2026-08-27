@@ -1,156 +1,235 @@
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.MapCodec;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dko extends dki implements bmu {
-   private static final int a = 2;
-   private static final int b = 4;
-   private final iu<cqm> c = iu.a(4, cqm.h);
-   private final int[] d = new int[4];
-   private final int[] e = new int[4];
-   private final cts.a<bmw, ctd> f = cts.b(ctu.e);
+public class dko extends dby {
+   public static final MapCodec<dko> a = b(dko::new);
+   public static final dpt b = dft.aE;
+   public static final dpq c = dpp.w;
+   public static final dpq d = dpp.a;
+   protected static final int e = 1;
+   protected static final int f = 42;
+   private static final int l = 10;
+   protected static final int g = 3;
+   protected static final est h = dby.a(5.0, 0.0, 10.0, 11.0, 10.0, 16.0);
+   protected static final est i = dby.a(5.0, 0.0, 0.0, 11.0, 10.0, 6.0);
+   protected static final est j = dby.a(10.0, 0.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final est k = dby.a(0.0, 0.0, 5.0, 6.0, 10.0, 11.0);
 
-   public dko(ib $$0, dnb $$1) {
-      super(dkk.G, $$0, $$1);
+   @Override
+   public MapCodec<dko> a() {
+      return a;
    }
 
-   public static void a(cxb $$0, ib $$1, dnb $$2, dko $$3) {
-      boolean $$4 = false;
+   public dko(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ih.c).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   }
 
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         cqm $$6 = $$3.c.get($$5);
-         if (!$$6.b()) {
-            $$4 = true;
-            $$3.d[$$5]++;
-            if ($$3.d[$$5] >= $$3.e[$$5]) {
-               bmw $$7 = new bnm($$6);
-               cqm $$8 = $$3.f.a($$7, $$0).map($$2x -> ((ctd)$$2x.b()).a($$7, $$0.H_())).orElse($$6);
-               if ($$8.a($$0.I())) {
-                  bmz.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
-                  $$3.c.set($$5, cqm.h);
-                  $$0.a($$1, $$2, $$2, 3);
-                  $$0.a(drp.c, $$1, drp.a.a($$2));
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      switch ((ih)$$0.c(b)) {
+         case f:
+         default:
+            return k;
+         case e:
+            return j;
+         case d:
+            return i;
+         case c:
+            return h;
+      }
+   }
+
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      ih $$3 = $$0.c(b);
+      ib $$4 = $$2.a($$3.g());
+      doz $$5 = $$1.a_($$4);
+      return $$3.o().d() && $$5.d($$1, $$4, $$3);
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      doz $$1 = this.n().a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false));
+      cza $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      ih[] $$4 = $$0.f();
+
+      for (ih $$5 : $$4) {
+         if ($$5.o().d()) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public void a(cyx $$0, ib $$1, doz $$2, bqo $$3, crj $$4) {
+      a($$0, $$1, $$2, false, false, -1, null);
+   }
+
+   public static void a(cyx $$0, ib $$1, doz $$2, boolean $$3, boolean $$4, int $$5, @Nullable doz $$6) {
+      Optional<ih> $$7 = $$2.d(b);
+      if ($$7.isPresent()) {
+         ih $$8 = $$7.get();
+         boolean $$9 = $$2.d(d).orElse(false);
+         boolean $$10 = $$2.d(c).orElse(false);
+         dby $$11 = $$2.b();
+         boolean $$12 = !$$3;
+         boolean $$13 = false;
+         int $$14 = 0;
+         doz[] $$15 = new doz[42];
+
+         for (int $$16 = 1; $$16 < 42; $$16++) {
+            ib $$17 = $$1.a($$8, $$16);
+            doz $$18 = $$0.a_($$17);
+            if ($$18.a(dca.fH)) {
+               if ($$18.c(b) == $$8.g()) {
+                  $$14 = $$16;
+               }
+               break;
+            }
+
+            if (!$$18.a(dca.fI) && $$16 != $$5) {
+               $$15[$$16] = null;
+               $$12 = false;
+            } else {
+               if ($$16 == $$5) {
+                  $$18 = (doz)MoreObjects.firstNonNull($$6, $$18);
+               }
+
+               boolean $$19 = !$$18.c(dkn.d);
+               boolean $$20 = $$18.c(dkn.b);
+               $$13 |= $$19 && $$20;
+               $$15[$$16] = $$18;
+               if ($$16 == $$5) {
+                  $$0.a($$1, $$11, 10);
+                  $$12 &= $$19;
+               }
+            }
+         }
+
+         $$12 &= $$14 > 1;
+         $$13 &= $$12;
+         doz $$21 = $$11.n().b(d, Boolean.valueOf($$12)).b(c, Boolean.valueOf($$13));
+         if ($$14 > 0) {
+            ib $$22 = $$1.a($$8, $$14);
+            ih $$23 = $$8.g();
+            $$0.a($$22, $$21.a(b, $$23), 3);
+            a($$11, $$0, $$22, $$23);
+            a($$0, $$22, $$12, $$13, $$9, $$10);
+         }
+
+         a($$0, $$1, $$12, $$13, $$9, $$10);
+         if (!$$3) {
+            $$0.a($$1, $$21.a(b, $$8), 3);
+            if ($$4) {
+               a($$11, $$0, $$1, $$8);
+            }
+         }
+
+         if ($$9 != $$12) {
+            for (int $$24 = 1; $$24 < $$14; $$24++) {
+               ib $$25 = $$1.a($$8, $$24);
+               doz $$26 = $$15[$$24];
+               if ($$26 != null) {
+                  $$0.a($$25, $$26.b(d, Boolean.valueOf($$12)), 3);
+                  if (!$$0.a_($$25).i()) {
+                  }
                }
             }
          }
       }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void b(cxb $$0, ib $$1, dnb $$2, dko $$3) {
-      boolean $$4 = false;
-
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         if ($$3.d[$$5] > 0) {
-            $$4 = true;
-            $$3.d[$$5] = aww.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
-         }
-      }
-
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void c(cxb $$0, ib $$1, dnb $$2, dko $$3) {
-      axd $$4 = $$0.z;
-      if ($$4.i() < 0.11F) {
-         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
-            daq.a($$0, $$1, $$2.c(daq.d), false);
-         }
-      }
-
-      int $$6 = $$2.c(daq.f).e();
-
-      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
-         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
-            ih $$8 = ih.b(Math.floorMod($$7 + $$6, 4));
-            float $$9 = 0.3125F;
-            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
-            double $$11 = (double)$$1.v() + 0.5;
-            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
-
-            for (int $$13 = 0; $$13 < 4; $$13++) {
-               $$0.a(kc.ac, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
-            }
-         }
-      }
-   }
-
-   public iu<cqm> b() {
-      return this.c;
    }
 
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.c.clear();
-      bmx.b($$0, this.c);
-      if ($$0.b("CookingTimes", 11)) {
-         int[] $$2 = $$0.n("CookingTimes");
-         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
-      }
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      a($$1, $$2, $$0, false, true, -1, null);
+   }
 
-      if ($$0.b("CookingTotalTimes", 11)) {
-         int[] $$3 = $$0.n("CookingTotalTimes");
-         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+   private static void a(cyx $$0, ib $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
+      if ($$3 && !$$5) {
+         $$0.a(null, $$1, aum.zo, aun.e, 0.4F, 0.6F);
+         $$0.a(null, dts.a, $$1);
+      } else if (!$$3 && $$5) {
+         $$0.a(null, $$1, aum.zn, aun.e, 0.4F, 0.5F);
+         $$0.a(null, dts.e, $$1);
+      } else if ($$2 && !$$4) {
+         $$0.a(null, $$1, aum.zm, aun.e, 0.4F, 0.7F);
+         $$0.a(null, dts.b, $$1);
+      } else if (!$$2 && $$4) {
+         $$0.a(null, $$1, aum.zp, aun.e, 0.4F, 1.2F / ($$0.z.i() * 0.2F + 0.9F));
+         $$0.a(null, dts.g, $$1);
+      }
+   }
+
+   private static void a(dby $$0, cyx $$1, ib $$2, ih $$3) {
+      $$1.a($$2, $$0);
+      $$1.a($$2.a($$3.g()), $$0);
+   }
+
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         boolean $$5 = $$0.c(d);
+         boolean $$6 = $$0.c(c);
+         if ($$5 || $$6) {
+            a($$1, $$2, $$0, true, false, -1, null);
+         }
+
+         if ($$6) {
+            $$1.a($$2, this);
+            $$1.a($$2.a($$0.c(b).g()), this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      bmx.a($$0, this.c, true);
-      $$0.a("CookingTimes", this.d);
-      $$0.a("CookingTotalTimes", this.e);
-   }
-
-   public aat c() {
-      return aat.a(this);
+   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
+      return $$0.c(c) ? 15 : 0;
    }
 
    @Override
-   public ta a(in.a $$0) {
-      ta $$1 = new ta();
-      bmx.a($$1, this.c, true);
-      return $$1;
-   }
-
-   public Optional<ctr<ctd>> a(cqm $$0) {
-      return this.c.stream().noneMatch(cqm::b) ? Optional.empty() : this.f.a(new bnm($$0), this.o);
-   }
-
-   public boolean a(@Nullable box $$0, cqm $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
-         cqm $$4 = this.c.get($$3);
-         if ($$4.b()) {
-            this.e[$$3] = $$2;
-            this.d[$$3] = 0;
-            this.c.set($$3, $$1.a(1));
-            this.o.a(drp.c, this.aC_(), drp.a.a($$0, this.n()));
-            this.f();
-            return true;
-         }
+   protected int b(doz $$0, cyd $$1, ib $$2, ih $$3) {
+      if (!$$0.c(c)) {
+         return 0;
+      } else {
+         return $$0.c(b) == $$3 ? 15 : 0;
       }
-
-      return false;
-   }
-
-   private void f() {
-      this.e();
-      this.i().a(this.aC_(), this.n(), this.n(), 3);
    }
 
    @Override
-   public void a() {
-      this.c.clear();
+   protected boolean f_(doz $$0) {
+      return true;
    }
 
-   public void d() {
-      if (this.o != null) {
-         this.f();
-      }
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b, c, d);
    }
 }

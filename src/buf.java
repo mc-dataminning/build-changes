@@ -1,46 +1,34 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class buf {
-   public static bri<bpx> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return buu.a(
-         (Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$3 -> $$3.group($$3.c(bys.o), $$3.c(bys.m), $$3.a(bys.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dm()).a(aus.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           epy $$8 = epy.a($$6);
-                           ib $$9 = $$6.dm();
-                           ib.a $$10 = new ib.a();
+   public static bsh<bqo> a(bqr $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
+   }
 
-                           label45:
-                           for (ib $$11 : ib.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ih.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ih $$12 : ih.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ih.a)).a(dae.G)) {
-                                       $$5.a(new brk($$11));
-                                       $$4.a(new byv(new brk($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public static btr<bqo> a(bqb<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai()), $$1);
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
+   public static btr<bqo> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static btr<bqo> a(Predicate<bqo> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$2x -> $$2x.group($$2x.c(bzr.n), $$2x.b(bzr.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bqo> $$8 = $$2x.<bzt>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bpv)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
+                     } else {
+                        $$3.a(new bsr($$8.get(), true));
+                        return true;
                      }
-               ))
+                  }))
       );
    }
 }

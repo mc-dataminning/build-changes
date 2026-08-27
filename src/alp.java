@@ -1,73 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class alp {
-   public static final int a = 100;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wg.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               dv.a("targets", eh.d())
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("item", ga.a($$1)).executes($$0x -> a((du)$$0x.getSource(), ga.a($$0x, "item"), eh.f($$0x, "targets"), 1)))
-                        .then(
-                           dv.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((du)$$0x.getSource(), ga.a($$0x, "item"), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralArgumentBuilder<du> $$1 = dv.a("difficulty");
+
+      for (bnx $$2 : bnx.values()) {
+         $$1.then(dv.a($$2.e()).executes($$1x -> a((du)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bnx $$1x = ((du)$$0x.getSource()).e().ak();
+         ((du)$$0x.getSource()).a(() -> wg.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   private static int a(du $$0, gb $$1, Collection<apg> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().n();
-      int $$5 = $$4 * 100;
-      cqm $$6 = $$1.a($$3, false);
-      if ($$3 > $$5) {
-         $$0.b(vu.a("commands.give.failed.toomanyitems", $$5, $$6.K()));
-         return 0;
+   public static int a(du $$0, bnx $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.bc().q() == $$1) {
+         throw a.create($$1.e());
       } else {
-         for (apg $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               cqm $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fZ().e($$10);
-               if ($$11 && $$10.b()) {
-                  $$10.f(1);
-                  cfe $$13 = $$7.a($$10, false);
-                  if ($$13 != null) {
-                     $$13.B();
-                  }
-
-                  $$7.dM().a(null, $$7.dr(), $$7.dt(), $$7.dx(), aty.nl, atz.h, 0.2F, (($$7.ei().i() - $$7.ei().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bZ.d();
-               } else {
-                  cfe $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.w();
-                     $$12.b($$7.cw());
-                  }
-               }
-            }
-         }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> vu.a("commands.give.success.single", $$3, $$6.K(), $$2.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> vu.a("commands.give.success.single", $$3, $$6.K(), $$2.size()), true);
-         }
-
-         return $$2.size();
+         $$2.a($$1, true);
+         $$0.a(() -> wg.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

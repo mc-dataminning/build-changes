@@ -1,119 +1,68 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class xc implements vv {
-   public static final MapCodec<xc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(xc::b), Codec.STRING.fieldOf("objective").forGetter(xc::d)).apply($$0, xc::new)
-   );
-   public static final MapCodec<xc> b = a.fieldOf("score");
-   public static final vv.a<xc> c = new vv.a<>(b, "score");
-   private final String d;
-   @Nullable
-   private final gi e;
-   private final String f;
+@FunctionalInterface
+public interface xc {
+   Logger a = LogUtils.getLogger();
+   xc b = ww::b;
+   xc c = $$0 -> {
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
+   };
 
    @Nullable
-   private static gi a(String $$0) {
-      try {
-         return new gj(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
+   ww updateAndValidate(ww var1);
 
-   public xc(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = a($$0);
-      this.f = $$1;
-   }
+   public static class a implements xc {
+      private final axw d;
+      private final BooleanSupplier e;
+      @Nullable
+      private ww f;
+      private boolean g = true;
 
-   @Override
-   public vv.a<?> a() {
-      return c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gi c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   private eqw a(du $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends box> $$1 = this.e.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw eh.a.create();
-            }
-
-            return $$1.get(0);
-         }
+      public a(axw $$0, BooleanSupplier $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      return eqw.d(this.d);
-   }
-
-   private wi a(eqw $$0, du $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         eqx $$3 = $$2.aK();
-         eqp $$4 = $$3.a(this.f);
-         if ($$4 != null) {
-            eqt $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(xn.b));
-            }
-         }
-      }
-
-      return vu.i();
-   }
-
-   @Override
-   public wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return vu.i();
-      } else {
-         eqw $$3 = this.a($$0);
-         eqw $$4 = (eqw)($$1 != null && $$3.equals(eqw.cy) ? $$1 : $$3);
-         return this.a($$4, $$0);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xc $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+      private boolean a(ww $$0) {
+         if ($$0.equals(this.f)) {
+            return true;
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
+            a.error(
+               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
+            );
+            return false;
+         } else {
             return true;
          }
-
-         return false;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.f.hashCode();
-   }
+      private boolean b(ww $$0) {
+         if (this.e.getAsBoolean()) {
+            a.error("Received message from player with expired profile public key: {}", $$0);
+            return false;
+         } else if (!$$0.a(this.d)) {
+            a.error("Received message with invalid signature from {}", $$0.g());
+            return false;
+         } else {
+            return this.a($$0);
+         }
+      }
 
-   @Override
-   public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.f + "'}";
+      @Nullable
+      @Override
+      public ww updateAndValidate(ww $$0) {
+         this.g = this.g && this.b($$0);
+         if (!this.g) {
+            return null;
+         } else {
+            this.f = $$0;
+            return $$0;
+         }
+      }
    }
 }

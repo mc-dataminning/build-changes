@@ -1,23 +1,23 @@
-import java.util.List;
-
-public record zp(List<ib> c) implements zc {
-   public static final xs<uu, zp> a = zc.a(zp::a, zp::new);
-   public static final zc.b<zp> b = zc.a("debug/raids");
-
-   private zp(uu $$0) {
-      this($$0.a(ib.b));
-   }
-
-   private void a(uu $$0) {
-      $$0.a(this.c, ib.b);
+public record zp(ajt a) implements zo {
+   public static <T extends vg> ye<T, zp> a(ajt $$0, int $$1) {
+      return zo.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new zp($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public zc.b<zp> a() {
-      return b;
+   public zo.b<zp> a() {
+      return new zo.b<>(this.a);
    }
 
-   public List<ib> b() {
-      return this.c;
+   public ajt b() {
+      return this.a;
    }
 }

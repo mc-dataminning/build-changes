@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
-
-public class ahq implements yb<ahm> {
-   public static final ahq a = new ahq();
-   public static final xs<ByteBuf, ahq> b = xs.a(a);
-
-   private ahq() {
-   }
-
+public interface ahq extends aas, vb {
    @Override
-   public yd<ahq> a() {
-      return ahk.i;
+   default vf b() {
+      return vf.d;
    }
 
-   public void a(ahm $$0) {
-      $$0.a(this);
-   }
+   void a(aht var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(ahs var1);
+
+   void a(ahv var1);
+
+   void a(ahu var1);
+
+   void a(ahr var1);
 }

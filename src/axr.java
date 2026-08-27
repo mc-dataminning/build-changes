@@ -1,59 +1,65 @@
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public class axr {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+public interface axr {
+   @Deprecated
+   double a = 2.297;
 
-   public static String a(int $$0, float $$1) {
-      int $$2 = aww.d((float)$$0 / $$1);
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      int $$4 = $$3 / 60;
-      $$3 %= 60;
-      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
+   static axr a() {
+      return a(dvg.a());
    }
 
-   public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
+   @Deprecated
+   static axr b() {
+      return new dvk(dvg.a());
    }
 
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
+   static axr a(long $$0) {
+      return new dus($$0);
    }
 
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
-         return $$0;
-      } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
+   static axr c() {
+      return new dvh(ThreadLocalRandom.current().nextLong());
+   }
+
+   axr d();
+
+   dve e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
       } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
-
-         while ($$1.find()) {
-            $$2++;
-         }
-
-         return $$2;
+         return $$0 + this.a($$1 - $$0);
       }
-   }
-
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
-   }
-
-   public static String e(String $$0) {
-      return a($$0, 256, false);
    }
 }

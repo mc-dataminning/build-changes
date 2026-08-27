@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class gi {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ept, List<? extends box>> b = ($$0, $$1) -> {
+   public static final BiConsumer<esa, List<? extends bpv>> b = ($$0, $$1) -> {
    };
-   private static final drd<box, ?> c = new drd<box, box>() {
-      public box a(box $$0) {
+   private static final dtg<bpv, ?> c = new dtg<bpv, bpv>() {
+      public bpv a(bpv $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends box> a() {
-         return box.class;
+      public Class<? extends bpv> a() {
+         return bpv.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<box> g;
+   private final Predicate<bpv> g;
    private final cm.c h;
-   private final Function<ept, ept> i;
+   private final Function<esa, esa> i;
    @Nullable
-   private final epo j;
-   private final BiConsumer<ept, List<? extends box>> k;
+   private final erv j;
+   private final BiConsumer<esa, List<? extends bpv>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final drd<box, ?> o;
+   private final dtg<bpv, ?> o;
    private final boolean p;
 
    public gi(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<box> $$3,
+      Predicate<bpv> $$3,
       cm.c $$4,
-      Function<ept, ept> $$5,
-      @Nullable epo $$6,
-      BiConsumer<ept, List<? extends box>> $$7,
+      Function<esa, esa> $$5,
+      @Nullable erv $$6,
+      BiConsumer<esa, List<? extends bpv>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bpd<?> $$11,
+      @Nullable bqb<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class gi {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (drd<box, ?>)($$11 == null ? c : $$11);
+      this.o = (dtg<bpv, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class gi {
       }
    }
 
-   public box a(du $$0) throws CommandSyntaxException {
+   public bpv a(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends box> $$1 = this.b($$0);
+      List<? extends bpv> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw eh.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class gi {
       }
    }
 
-   public List<? extends box> b(du $$0) throws CommandSyntaxException {
+   public List<? extends bpv> b(du $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
    }
 
-   private List<? extends box> f(du $$0) throws CommandSyntaxException {
+   private List<? extends bpv> f(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         apg $$1 = $$0.l().ah().a(this.m);
-         return (List<? extends box>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$1}));
+         apt $$1 = $$0.l().ah().a(this.m);
+         return (List<? extends bpv>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apt[]{$$1}));
       } else if (this.n != null) {
-         for (apf $$2 : $$0.l().K()) {
-            box $$3 = $$2.a(this.n);
+         for (aps $$2 : $$0.l().K()) {
+            bpv $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new box[]{$$3});
+               return Lists.newArrayList(new bpv[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         ept $$4 = this.i.apply($$0.d());
-         Predicate<box> $$5 = this.a($$4);
+         esa $$4 = this.i.apply($$0.d());
+         Predicate<bpv> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends box>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new box[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends bpv>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bpv[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<box> $$6 = Lists.newArrayList();
+            List<bpv> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (apf $$7 : $$0.l().K()) {
+               for (aps $$7 : $$0.l().K()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class gi {
       }
    }
 
-   private void a(List<box> $$0, apf $$1, ept $$2, Predicate<box> $$3) {
+   private void a(List<bpv> $$0, aps $$1, esa $$2, Predicate<bpv> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class gi {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public apg c(du $$0) throws CommandSyntaxException {
+   public apt c(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<apg> $$1 = this.d($$0);
+      List<apt> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw eh.e.create();
       } else {
@@ -172,32 +172,32 @@ public class gi {
       }
    }
 
-   public List<apg> d(du $$0) throws CommandSyntaxException {
+   public List<apt> d(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         apg $$1 = $$0.l().ah().a(this.m);
-         return (List<apg>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$1}));
+         apt $$1 = $$0.l().ah().a(this.m);
+         return (List<apt>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apt[]{$$1}));
       } else if (this.n != null) {
-         apg $$2 = $$0.l().ah().a(this.n);
-         return (List<apg>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$2}));
+         apt $$2 = $$0.l().ah().a(this.n);
+         return (List<apt>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new apt[]{$$2}));
       } else {
-         ept $$3 = this.i.apply($$0.d());
-         Predicate<box> $$4 = this.a($$3);
+         esa $$3 = this.i.apply($$0.d());
+         Predicate<bpv> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.f() instanceof apg $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new apg[]{$$5});
+            if ($$0.f() instanceof apt $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new apt[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<apg> $$7;
+            List<apt> $$7;
             if (this.d()) {
                $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (apg $$9 : $$0.l().ah().t()) {
+               for (apt $$9 : $$0.l().ah().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,10 +212,10 @@ public class gi {
       }
    }
 
-   private Predicate<box> a(ept $$0) {
-      Predicate<box> $$1 = this.g;
+   private Predicate<bpv> a(esa $$0) {
+      Predicate<bpv> $$1 = this.g;
       if (this.j != null) {
-         epo $$2 = this.j.c($$0);
+         erv $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
       }
 
@@ -226,7 +226,7 @@ public class gi {
       return $$1;
    }
 
-   private <T extends box> List<T> a(ept $$0, List<T> $$1) {
+   private <T extends bpv> List<T> a(esa $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class gi {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static vu a(List<? extends box> $$0) {
-      return vx.b($$0, box::O_);
+   public static wg a(List<? extends bpv> $$0) {
+      return wj.b($$0, bpv::O_);
    }
 }

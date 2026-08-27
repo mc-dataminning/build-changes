@@ -1,35 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record csr(ajh c, il<cqh> d, vu e, boolean f) {
-   public static final Codec<csr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ajh.a.fieldOf("asset_id").forGetter(csr::a),
-               aje.a(kj.F).fieldOf("template_item").forGetter(csr::b),
-               vw.a.fieldOf("description").forGetter(csr::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(csr::d)
-            )
-            .apply($$0, csr::new)
-   );
-   public static final Codec<il<csr>> b = ajd.a(kj.aK, a);
+public class csr extends cph {
+   protected final dby a;
+   private final ih b;
 
-   public vu a(il<csp> $$0) {
-      return this.e.f().c($$0.a().e().a());
+   public csr(dby $$0, dby $$1, cre.a $$2, ih $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
    }
 
-   public ajh a() {
-      return this.c;
+   protected boolean a(cza $$0, doz $$1, ib $$2) {
+      return $$1.a($$0, $$2);
    }
 
-   public il<cqh> b() {
-      return this.d;
+   @Nullable
+   @Override
+   protected doz c(cuo $$0) {
+      doz $$1 = this.a.a($$0);
+      doz $$2 = null;
+      cza $$3 = $$0.q();
+      ib $$4 = $$0.a();
+
+      for (ih $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            doz $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, esf.a()) ? $$2 : null;
    }
 
-   public vu c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
+   @Override
+   public void a(Map<dby, cre> $$0, cre $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

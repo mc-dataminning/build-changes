@@ -1,39 +1,42 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.time.Instant;
 
-public record afr(int c, List<String> d, Optional<String> e) implements yb<aez> {
-   public static final int a = 4;
-   private static final int f = 128;
-   private static final int g = 8192;
-   private static final int h = 200;
-   public static final xs<uu, afr> b = xs.a(xq.d, afr::b, xq.b(8192).a(xq.a(uu.a(ArrayList::new, 200))), afr::e, xq.b(128).a(xq::a), afr::f, afr::new);
+public record afr(String b, Instant c, long d, eb e, wn.b f) implements yn<afl> {
+   public static final ye<vg, afr> a = yn.a(afr::a, afr::new);
 
-   public afr(int c, List<String> d, Optional<String> e) {
-      d = List.copyOf(d);
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private afr(vg $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), new eb($$0), new wn.b($$0));
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public yd<afr> a() {
-      return aex.bu;
+   public yp<afr> a() {
+      return afj.bi;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public Instant e() {
       return this.c;
    }
 
-   public List<String> e() {
+   public long f() {
       return this.d;
    }
 
-   public Optional<String> f() {
+   public eb g() {
       return this.e;
+   }
+
+   public wn.b h() {
+      return this.f;
    }
 }

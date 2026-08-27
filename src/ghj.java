@@ -1,25 +1,24 @@
-public class ghj<T extends ciu> extends ghm<T, fpk<T>> {
-   private final fpf a;
+public class ghj<T extends cgh> extends gfz<T, fsh<T>> {
+   private static final ajt a = new ajt("textures/entity/skeleton/skeleton.png");
 
-   public ghj(gew<T, fpk<T>> $$0, frb $$1) {
-      super($$0);
-      this.a = new fpf($$1.a(fre.aG));
+   public ghj(gfi.a $$0) {
+      this($$0, ftl.bn, ftl.bp, ftl.bq);
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   public ghj(gfi.a $$0, ftk $$1, ftk $$2, ftk $$3) {
+      this($$0, $$2, $$3, new fsh<>($$0.a($$1)));
    }
 
-   private void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      ta $$9 = $$8 ? $$3.gq() : $$3.gr();
-      bpd.a($$9.l("id")).filter($$0x -> $$0x == bpd.ax).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         cbu.b $$11 = cbu.b.a($$9.h("Variant"));
-         euf $$12 = $$1.getBuffer(this.a.a(gen.a($$11)));
-         this.a.a($$0, $$12, $$2, git.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+   public ghj(gfi.a $$0, ftk $$1, ftk $$2, fsh<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gjj<>(this, new fsh($$0.a($$1)), new fsh($$0.a($$2)), $$0.g()));
+   }
+
+   public ajt a(T $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.gp();
    }
 }

@@ -1,110 +1,67 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Objects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class fzd implements glk {
-   private final ajh a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fzd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = cjs.g();
+   public static final Codec<fzd> a = aws.<List>b(Codec.PASSTHROUGH.listOf(), (Function<List, DataResult<List>>)($$0 -> ac.a($$0, c)))
+      .xmap(fzd::new, $$0 -> $$0.f);
+   private static final DynamicOps<uj> d = ua.a;
+   private static final Dynamic<?> e = new Dynamic(d, (uj)ac.a(crj.b.encodeStart(d, crj.i), IllegalStateException::new));
+   private List<Dynamic<?>> f;
 
-   public fzd(ajh $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private fzd(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public ajh a() {
-      return this.a;
+   public fzd() {
+      this(Collections.nCopies(c, e));
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   public List<crj> a(in.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> crj.b.parse(ajr.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(crj.i))
+         .toList();
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
+   public void a(cjs $$0, iz $$1) {
+      ajr<uj> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fzd $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<fzd> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public fzd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ajh $$4 = this.b($$3);
-         gld $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fzd($$4, $$5.b(), $$6, $$7);
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         crj $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = crj.b
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
       }
 
-      private boolean d(JsonObject $$0) {
-         return awm.a($$0, "uvlock", false);
-      }
+      this.f = $$3.build();
+   }
 
-      protected gld a(JsonObject $$0) {
-         int $$1 = awm.a($$0, "x", 0);
-         int $$2 = awm.a($$0, "y", 0);
-         gld $$3 = gld.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
 
-      protected ajh b(JsonObject $$0) {
-         return new ajh(awm.i($$0, "model"));
-      }
+      return true;
+   }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = awm.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
-      }
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

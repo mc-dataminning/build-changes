@@ -1,79 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class dxf extends dvs<dyt> {
-   public dxf(Codec<dyt> $$0) {
+public class dxf extends dxv<eag> {
+   public dxf(Codec<eag> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvu<dyt> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      if (a($$1, $$2)) {
+   public boolean a(dxx<eag> $$0) {
+      ib $$1 = $$0.e();
+      czs $$2 = $$0.b();
+      axr $$3 = $$0.d();
+      if ($$1.v() > $$2.z_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dca.G) && !$$2.a_($$1.d()).a(dca.G)) {
          return false;
       } else {
-         axd $$3 = $$0.d();
-         dyt $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         ib.a $$8 = new ib.a();
+         boolean $$4 = false;
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(aww.a($$3, -$$5, $$5), aww.a($$3, -$$6, $$6), aww.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (ib)$$8)) {
-               int $$10 = aww.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
-               }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean a(cxc $$0, ib.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.s($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).i());
-
-      $$1.e(0, 1, 0);
-      return true;
-   }
-
-   public static void a(cxc $$0, axd $$1, ib.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.c())) {
-               $$0.a($$2, dae.oB.o().a(ddr.e, Integer.valueOf(aww.a($$1, $$4, $$5))), 2);
+         for (ih $$5 : ih.values()) {
+            if ($$5 != ih.a && $$2.a_($$1.a($$5)).a(dca.iC)) {
+               $$4 = true;
                break;
             }
-
-            $$0.a($$2, dae.oC.o(), 2);
          }
 
-         $$2.c(ih.b);
-      }
-   }
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dca.mW.n(), 2);
 
-   private static boolean a(cxc $$0, ib $$1) {
-      if (!$$0.u($$1)) {
-         return true;
-      } else {
-         dnb $$2 = $$0.a_($$1.d());
-         return !$$2.a(dae.dV) && !$$2.a(dae.on) && !$$2.a(dae.op);
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  ib $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  doz $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(dca.G) || $$10.a(dca.iC) || $$10.a(dca.dO)) {
+                     for (ih $$11 : ih.values()) {
+                        doz $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dca.mW)) {
+                           $$2.a($$9, dca.mW.n(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

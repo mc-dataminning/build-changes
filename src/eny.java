@@ -1,47 +1,64 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eny(Optional<br> b, ekw.b c) implements env {
-   public static final Codec<eny> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(br.a, "predicate").forGetter(eny::c), ekw.b.e.fieldOf("entity").forGetter(eny::d)).apply($$0, eny::new)
-   );
+public class eny extends enn {
+   public static final Codec<eny> a = a(eny::new);
 
-   @Override
-   public enw b() {
-      return enx.g;
+   eny(List<enu> $$0, List<eqc> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return ImmutableSet.of(enh.f, this.c.a());
+   public env a() {
+      return ens.h;
    }
 
-   public boolean a(ekw $$0) {
-      box $$1 = $$0.c(this.c.a());
-      ept $$2 = $$0.c(enh.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   protected enm a(List<? extends enm> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (enm)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (enm $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static env.a a(ekw.b $$0) {
-      return a($$0, br.a.a());
+   public static eny.a a(enu.a<?>... $$0) {
+      return new eny.a($$0);
    }
 
-   public static env.a a(ekw.b $$0, br.a $$1) {
-      return () -> new eny(Optional.of($$1.b()), $$0);
-   }
+   public static class a extends enu.a<eny.a> {
+      private final Builder<enu> a = ImmutableList.builder();
 
-   public static env.a a(ekw.b $$0, br $$1) {
-      return () -> new eny(Optional.of($$1), $$0);
-   }
+      public a(enu.a<?>... $$0) {
+         for (enu.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
 
-   public Optional<br> c() {
-      return this.b;
-   }
+      protected eny.a a() {
+         return this;
+      }
 
-   public ekw.b d() {
-      return this.c;
+      @Override
+      public eny.a c(enu.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public enu b() {
+         return new eny(this.a.build(), this.f());
+      }
    }
 }

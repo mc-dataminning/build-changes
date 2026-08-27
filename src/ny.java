@@ -1,32 +1,21 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
 public class ny {
-   public static void a(String[] $$0) throws IOException {
-      aa.a(t.a);
-      ajj.a();
+   private final Function<cuz, cvj<?>> a;
 
-      for (String $$1 : $$0) {
-         a($$1);
-      }
+   public ny(Function<cuz, cvj<?>> $$0) {
+      this.a = $$0;
    }
 
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               ta $$2 = tp.a($$1x);
-               ta $$3 = oa.a($$0x.toString(), $$2);
-               nx.a(kn.a, $$0x, tp.b($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
-      }
+   public static ny a(Function<cuz, cvj<?>> $$0) {
+      return new ny($$0);
+   }
+
+   public void a(nq $$0, String $$1) {
+      this.a($$0, new ajt($$1));
+   }
+
+   public void a(nq $$0, ajt $$1) {
+      $$0.a($$1, this.a.apply(cuz.d), null);
    }
 }

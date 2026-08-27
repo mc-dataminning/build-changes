@@ -1,117 +1,61 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public class dlo extends dki implements drr.b<dry.b>, dry {
-   private static final Logger b = LogUtils.getLogger();
-   private dry.a c;
-   private final dry.b d;
-   private final dry.d e = this.b();
-   private int h;
+public class dlo extends dby {
+   public static final MapCodec<dlo> a = b(dlo::new);
 
-   protected dlo(dkk<?> $$0, ib $$1, dnb $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dry.a();
-      this.d = new dry.b(this);
+   @Override
+   public MapCodec<dlo> a() {
+      return a;
    }
 
-   public dlo(ib $$0, dnb $$1) {
-      this(dkk.I, $$0, $$1);
-   }
-
-   public dry.d b() {
-      return new dlo.a(this.aC_());
+   protected dlo(doy.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dry.a.a.parse(new Dynamic(to.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, dca.aO.n(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, aum.BO, aun.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
       }
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      dry.a.a.encodeStart(to.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Override
-   public dry.a gp() {
-      return this.c;
-   }
-
-   @Override
-   public dry.d gq() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dry.b f() {
-      return this.d;
-   }
-
-   protected class a implements dry.d {
-      public static final int b = 8;
-      protected final ib c;
-      private final drt a;
-
-      public a(ib $$1) {
-         this.c = $$1;
-         this.a = new drl($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public drt b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(apf $$0, ib $$1, il<drp> $$2, @Nullable drp.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(drp.f) && !$$2.a(drp.i) ? dgu.n(dlo.this.n()) : false;
-      }
-
-      @Override
-      public void a(apf $$0, ib $$1, il<drp> $$2, @Nullable box $$3, @Nullable box $$4, float $$5) {
-         dnb $$6 = dlo.this.n();
-         if (dgu.n($$6)) {
-            dlo.this.a(dry.a_($$2));
-            int $$7 = dry.a_($$5, this.a());
-            if ($$6.b() instanceof dgu $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dlo.this.d());
+   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
+      ih $$4 = ih.b($$3);
+      if ($$4 != ih.b) {
+         ib $$5 = $$2.a($$4);
+         doz $$6 = $$1.a_($$5);
+         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == ih.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == ih.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == ih.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
+                  }
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == ih.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
+               }
             }
+
+            $$1.a(kl.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
-      }
-
-      @Override
-      public void e() {
-         dlo.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
       }
    }
 }

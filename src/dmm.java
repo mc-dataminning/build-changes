@@ -1,124 +1,159 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-
-public class dmm {
-   static final String a = "server_data";
-   static Codec<dmm> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jf.c.optionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.optionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cqm.a.listOf().optionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.optionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dmm::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cqm> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
-
-   dmm(Set<UUID> $$0, long $$1, List<cqm> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
-   }
-
-   dmm() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(ciu $$0) {
-      return this.e.contains($$0.cw());
-   }
-
-   @VisibleForTesting
-   public void b(ciu $$0) {
-      this.e.add($$0.cw());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
-         }
+public class dmm extends dnk implements dni {
+   private static final int e = 1;
+   private iu<crj> f = iu.a(27, crj.i);
+   private final dms g = new dms() {
+      @Override
+      protected void a(cyx $$0, ib $$1, doz $$2) {
+         dmm.a($$0, $$1, $$2, aum.eQ);
       }
 
-      this.i();
+      @Override
+      protected void b(cyx $$0, ib $$1, doz $$2) {
+         dmm.a($$0, $$1, $$2, aum.eO);
+      }
+
+      @Override
+      protected void a(cyx $$0, ib $$1, doz $$2, int $$3, int $$4) {
+         dmm.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cjt $$0) {
+         if (!($$0.bY instanceof cmw)) {
+            return false;
+         } else {
+            bnt $$1 = ((cmw)$$0.bY).l();
+            return $$1 == dmm.this || $$1 instanceof bns && ((bns)$$1).a(dmm.this);
+         }
+      }
+   };
+   private final dmn h = new dmn();
+
+   protected dmm(dmh<?> $$0, ib $$1, doz $$2) {
+      super($$0, $$1, $$2);
    }
 
-   long c() {
+   public dmm(ib $$0, doz $$1) {
+      this(dmh.b, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected wg k() {
+      return wg.c("container.chest");
+   }
+
+   @Override
+   public void a(tm $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.f = iu.a(this.b(), crj.i);
+      if (!this.a_($$0)) {
+         bnu.b($$0, this.f, $$1);
+      }
+   }
+
+   @Override
+   protected void b(tm $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bnu.a($$0, this.f, $$1);
+      }
+   }
+
+   public static void a(cyx $$0, ib $$1, doz $$2, dmm $$3) {
+      $$3.h.a();
+   }
+
+   static void a(cyx $$0, ib $$1, doz $$2, aul $$3) {
+      dpr $$4 = $$2.c(ddb.d);
+      if ($$4 != dpr.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dpr.c) {
+            ih $$8 = ddb.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, aun.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.h.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void d_(cjt $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.g.a($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   public void c(cjt $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.g.b($$0, this.i(), this.aA_(), this.n());
+      }
+   }
+
+   @Override
+   protected iu<crj> j() {
       return this.f;
    }
 
-   void b(long $$0) {
+   @Override
+   protected void a(iu<crj> $$0) {
       this.f = $$0;
-      this.i();
    }
 
-   List<cqm> d() {
-      return this.g;
+   @Override
+   public float a(float $$0) {
+      return this.h.a($$0);
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public static int a(cyd $$0, ib $$1) {
+      doz $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dmf $$3 = $$0.c_($$1);
+         if ($$3 instanceof dmm) {
+            return ((dmm)$$3).g.a();
+         }
+      }
+
+      return 0;
    }
 
-   void a(List<cqm> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
+   public static void a(dmm $$0, dmm $$1) {
+      iu<crj> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
    }
 
-   cqm f() {
-      return this.g.isEmpty() ? cqm.h : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cqm.h);
+   @Override
+   protected cmp a(int $$0, cjs $$1) {
+      return cmw.a($$0, $$1, this);
    }
 
-   cqm g() {
-      if (this.g.isEmpty()) {
-         return cqm.h;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cqm.h);
+   public void l() {
+      if (!this.q) {
+         this.g.c(this.i(), this.aA_(), this.n());
       }
    }
 
-   void a(dmm $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - aww.g((float)this.d().size(), 1.0F, (float)this.i);
+   protected void a(cyx $$0, ib $$1, doz $$2, int $$3, int $$4) {
+      dby $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

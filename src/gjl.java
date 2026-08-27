@@ -1,29 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class gjl extends gjt<ccp, frb<ccp>> {
+   private final gat a;
 
-public class gjl implements gjg {
-   public static final Codec<gjl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gjl::new)
-   );
-   private final String c;
-   private final String d;
-
-   public gjl(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gjl(ghd<ccp, frb<ccp>> $$0, gat $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(aso $$0, gjg.a $$1) {
-      aja $$2 = new aja("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         ajh $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gji a() {
-      return gjj.b;
+   public void a(ewi $$0, fzz $$1, int $$2, ccp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gn() != 0) {
+         $$0.a();
+         ftm $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dca.bT.n(), $$0, $$1, $$2, gla.d);
+         $$0.b();
+      }
    }
 }

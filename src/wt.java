@@ -1,89 +1,63 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public final class wt {
-   private static final String b = "#";
-   public static final Codec<wt> a = Codec.STRING.comapFlatMap(wt::a, wt::b);
-   private static final Map<n, wt> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new wt($$0.f(), $$0.g())));
-   private static final Map<String, wt> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public class wt {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final ws[] c;
 
-   private wt(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
+   public wt(int $$0) {
+      this.c = new ws[$$0];
    }
 
-   private wt(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
+   public static wt a() {
+      return new wt(128);
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         wt $$1 = (wt)$$0;
-         return this.e == $$1.e;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   @Nullable
-   public static wt a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static wt a(int $$0) {
-      return new wt($$0);
-   }
-
-   public static DataResult<wt> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
+   public int a(ws $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
          }
-      } else {
-         wt $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
+
+      return -1;
+   }
+
+   @Nullable
+   public ws a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(wz $$0, @Nullable ws $$1) {
+      List<ws> $$2 = $$0.d().a();
+      ArrayDeque<ws> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
+      }
+
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<ws> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<ws> $$0) {
+      Set<ws> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         ws $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
    }
 }

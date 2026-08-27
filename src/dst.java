@@ -1,117 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 
-public record dst(dsw j, dnb k, dnb l, dsu m, dtf.o n, List<cyj.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<dst> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsw.a.fieldOf("noise").forGetter(dst::f),
-               dnb.b.fieldOf("default_block").forGetter(dst::g),
-               dnb.b.fieldOf("default_fluid").forGetter(dst::h),
-               dsu.a.fieldOf("noise_router").forGetter(dst::i),
-               dtf.o.b.fieldOf("surface_rule").forGetter(dst::j),
-               cyj.d.a.listOf().fieldOf("spawn_target").forGetter(dst::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dst::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dst::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dst::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dst::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dst::n)
-            )
-            .apply($$0, dst::new)
-   );
-   public static final Codec<il<dst>> b = ajd.a(kj.aB, a);
-   public static final ajg<dst> c = ajg.a(kj.aB, new ajh("overworld"));
-   public static final ajg<dst> d = ajg.a(kj.aB, new ajh("large_biomes"));
-   public static final ajg<dst> e = ajg.a(kj.aB, new ajh("amplified"));
-   public static final ajg<dst> f = ajg.a(kj.aB, new ajh("nether"));
-   public static final ajg<dst> g = ajg.a(kj.aB, new ajh("end"));
-   public static final ajg<dst> h = ajg.a(kj.aB, new ajh("caves"));
-   public static final ajg<dst> i = ajg.a(kj.aB, new ajh("floating_islands"));
+public enum dst {
+   a {
+      @Override
+      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
+         ib $$5 = new ib(0, 128, 0);
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
-   }
+         for (cew $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   public boolean b() {
-      return this.r;
-   }
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new ib(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dzf.a> $$8 = dzf.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dzf.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cew $$11 : $$2) {
+                     $$11.a(new ib($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   public boolean c() {
-      return this.s;
-   }
+                  for (ib $$13 : ib.a(new ib($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ib($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   public dtn.a d() {
-      return this.t ? dtn.a.a : dtn.a.b;
-   }
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cyx.a.b);
+                  eat $$14 = new eat(true, ImmutableList.of($$10), new ib(0, 128, 0));
+                  dxv.J.a($$14, $$0, $$0.l().g(), axr.a(), new ib($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
+      }
+   },
+   d {
+      @Override
+      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   public static void a(pl<dst> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
-   }
+            for (cew $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cyx.a.a);
+               $$5.am();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new ib(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cew $$6 : $$2) {
+               $$6.a(new ib(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new ib(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
+      }
+   };
 
-   private static dst b(pl<?> $$0) {
-      return new dst(dsw.d, dae.fz.o(), dae.a.o(), dsv.a($$0.a(kj.ay)), py.c(), List.of(), 0, true, false, false, true);
-   }
-
-   private static dst c(pl<?> $$0) {
-      return new dst(dsw.c, dae.dV.o(), dae.H.o(), dsv.a($$0.a(kj.ay), $$0.a(kj.aC)), py.b(), List.of(), 32, false, false, false, true);
-   }
-
-   private static dst a(pl<?> $$0, boolean $$1, boolean $$2) {
-      return new dst(dsw.b, dae.b.o(), dae.G.o(), dsv.a($$0.a(kj.ay), $$0.a(kj.aC), $$2, $$1), py.a(), new cyq().a(), 63, false, true, true, false);
-   }
-
-   private static dst d(pl<?> $$0) {
-      return new dst(dsw.e, dae.b.o(), dae.G.o(), dsv.b($$0.a(kj.ay), $$0.a(kj.aC)), py.a(false, true, true), List.of(), 32, false, false, false, true);
-   }
-
-   private static dst e(pl<?> $$0) {
-      return new dst(dsw.f, dae.b.o(), dae.G.o(), dsv.c($$0.a(kj.ay), $$0.a(kj.aC)), py.a(false, false, false), List.of(), -64, false, false, false, true);
-   }
-
-   public static dst e() {
-      return new dst(dsw.b, dae.b.o(), dae.a.o(), dsv.a(), py.d(), List.of(), 63, true, false, false, false);
-   }
-
-   public dsw f() {
-      return this.j;
-   }
-
-   public dnb g() {
-      return this.k;
-   }
-
-   public dnb h() {
-      return this.l;
-   }
-
-   public dsu i() {
-      return this.m;
-   }
-
-   public dtf.o j() {
-      return this.n;
-   }
-
-   public List<cyj.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
-   }
+   public abstract void a(aps var1, dsu var2, List<cew> var3, int var4, ib var5);
 }

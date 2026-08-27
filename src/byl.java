@@ -1,39 +1,130 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class byl<T extends bpr & bpv> extends bwm {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class byl<T extends cgz & chd> extends bxl {
+   private final T a;
+   private final double b;
+   private int c;
+   private final float d;
+   private int e = -1;
+   private int f;
+   private boolean g;
+   private boolean h;
+   private int i = -1;
 
-   public byl(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public byl(T $$0, double $$1, int $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 * $$3;
+      this.a(EnumSet.of(bxl.a.a, bxl.a.b));
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().Z().b(cwx.O) && this.h();
+      return this.a.p() == null ? false : this.h();
    }
 
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().ai() == bpd.by && this.b.ek() > this.d;
+   protected boolean h() {
+      return this.a.b(crm.ot);
+   }
+
+   @Override
+   public boolean b() {
+      return (this.a() || !this.a.K().l()) && this.h();
    }
 
    @Override
    public void c() {
-      this.d = this.b.ek();
-      this.b.Z_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bpv)$$0).forEach(bpv::Z_);
-      }
-
       super.c();
+      this.a.v(true);
    }
 
-   private List<? extends bpr> i() {
-      double $$0 = this.b.g(bqw.k);
-      epo $$1 = epo.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends bpr>)this.b.getClass(), $$1, bpc.f);
+   @Override
+   public void d() {
+      super.d();
+      this.a.v(false);
+      this.f = 0;
+      this.e = -1;
+      this.a.fy();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      bqo $$0 = this.a.p();
+      if ($$0 != null) {
+         double $$1 = this.a.i($$0.dr(), $$0.dt(), $$0.dx());
+         boolean $$2 = this.a.M().a($$0);
+         boolean $$3 = this.f > 0;
+         if ($$2 != $$3) {
+            this.f = 0;
+         }
+
+         if ($$2) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         if (!($$1 > (double)this.d) && this.f >= 20) {
+            this.a.K().n();
+            this.i++;
+         } else {
+            this.a.K().a($$0, this.b);
+            this.i = -1;
+         }
+
+         if (this.i >= 20) {
+            if ((double)this.a.ei().i() < 0.3) {
+               this.g = !this.g;
+            }
+
+            if ((double)this.a.ei().i() < 0.3) {
+               this.h = !this.h;
+            }
+
+            this.i = 0;
+         }
+
+         if (this.i > -1) {
+            if ($$1 > (double)(this.d * 0.75F)) {
+               this.h = false;
+            } else if ($$1 < (double)(this.d * 0.25F)) {
+               this.h = true;
+            }
+
+            this.a.H().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
+            if (this.a.da() instanceof bqq $$4) {
+               $$4.a($$0, 30.0F, 30.0F);
+            }
+
+            this.a.a($$0, 30.0F, 30.0F);
+         } else {
+            this.a.G().a($$0, 30.0F, 30.0F);
+         }
+
+         if (this.a.fs()) {
+            if (!$$2 && this.f < -60) {
+               this.a.fy();
+            } else if ($$2) {
+               int $$5 = this.a.fw();
+               if ($$5 >= 20) {
+                  this.a.fy();
+                  this.a.a($$0, cpm.a($$5));
+                  this.e = this.c;
+               }
+            }
+         } else if (--this.e <= 0 && this.f >= -60) {
+            this.a.c(ckn.a(this.a, crm.ot));
+         }
+      }
    }
 }

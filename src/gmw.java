@@ -1,35 +1,38 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class gmw<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public class gmw {
+   public static final gmx a = new gmx();
+   public static final String b = "villager";
+   private final gmw.a c;
 
-   public gmw(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public gmw(gmw.a $$0) {
+      this.c = $$0;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   public gmw.a a() {
+      return this.c;
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, gmw.a> d = Arrays.stream(values()).collect(Collectors.toMap(gmw.a::a, $$0 -> (gmw.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
       }
 
-      return (T)this.endOfData();
+      public String a() {
+         return this.e;
+      }
+
+      public static gmw.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

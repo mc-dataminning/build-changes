@@ -1,56 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dxg extends dvs<dyu> {
-   public dxg(Codec<dyu> $$0) {
+public class dxg extends dxv<eag> {
+   public dxg(Codec<eag> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvu<dyu> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      dyu $$3 = $$0.f();
-      axd $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         ib $$6 = $$2.h($$5.getAsInt());
-         jg $$7 = new jg($$3.c, $$3.c, $$3.c);
-         ecw $$8 = ecw.a($$6.b($$7), $$6.a($$7));
-         return ib.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dae.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(dxx<eag> $$0) {
+      axr $$1 = $$0.d();
+      czs $$2 = $$0.b();
+      cye $$3 = new cye($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ib.a $$6 = new ib.a();
+      IntListIterator var8 = $$4.iterator();
 
-   private static OptionalInt a(cxw $$0, ib $$1, dyu $$2) {
-      Predicate<dnb> $$3 = $$0x -> $$0x.a(dae.G);
-      Predicate<dnb> $$4 = $$0x -> !$$0x.a(dae.G);
-      Optional<dse> $$5 = dse.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dse::c).orElseGet(OptionalInt::empty);
-   }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-   private boolean b(cxw $$0, ib $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (ih $$2 : ih.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ib $$9 = $$2.a(dur.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dca.cv.n(), 2);
+               boi.a($$2, $$1, $$9, emz.b);
+               doz $$10 = dca.cp.n();
+
+               for (ih $$11 : ih.c.a) {
+                  ib $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(cxc $$0, ib $$1) {
-      dnb $$2 = $$0.a_($$1);
-      return $$2.a(dae.G) || $$2.i();
+      return false;
    }
 }

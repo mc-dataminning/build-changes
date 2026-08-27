@@ -1,71 +1,112 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import java.util.Calendar;
 
-public class gcf extends gda<ckr> {
-   private final Map<ckr.b, Pair<ajh, fox<ckr>>> a;
+public class gcf<T extends dmf & dni> implements gbz<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final ftm d;
+   private final ftm e;
+   private final ftm f;
+   private final ftm g;
+   private final ftm h;
+   private final ftm i;
+   private final ftm j;
+   private final ftm k;
+   private final ftm l;
+   private boolean m;
 
-   public gcf(gdb.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(ckr.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new ajh(a($$2, $$1)), this.a($$0, $$2, $$1))));
+   public gcf(gca.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
+      }
+
+      ftm $$2 = $$0.a(ftl.x);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      ftm $$3 = $$0.a(ftl.O);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      ftm $$4 = $$0.a(ftl.P);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
    }
 
-   private fox<ckr> a(gdb.a $$0, ckr.b $$1, boolean $$2) {
-      frd $$3 = $$2 ? fre.d($$1) : fre.c($$1);
-      frf $$4 = $$0.a($$3);
-      if ($$1 == ckr.b.i) {
-         return (fox<ckr>)($$2 ? new fnr($$4) : new fpr($$4));
-      } else {
-         return (fox<ckr>)($$2 ? new fnq($$4) : new fnl($$4));
-      }
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("bottom", ftr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fto.a);
+      $$1.a("lid", ftr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fto.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ftr.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fto.a(0.0F, 9.0F, 1.0F));
+      return fts.a($$0, 64, 64);
    }
 
-   private static String a(ckr.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   public static fts c() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("bottom", ftr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fto.a);
+      $$1.a("lid", ftr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fto.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ftr.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fto.a(0.0F, 9.0F, 1.0F));
+      return fts.a($$0, 64, 64);
    }
 
-   public void a(ckr $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.O() - $$2;
-      float $$7 = $$0.N() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
-      }
+   public static fts d() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("bottom", ftr.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fto.a);
+      $$1.a("lid", ftr.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fto.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ftr.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fto.a(0.0F, 9.0F, 1.0F));
+      return fts.a($$0, 64, 64);
+   }
 
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(aww.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
-      }
-
-      float $$8 = $$0.a($$2);
-      if (!aww.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      Pair<ajh, fox<ckr>> $$9 = this.a.get($$0.x());
-      ajh $$10 = (ajh)$$9.getFirst();
-      fox<ckr> $$11 = (fox<ckr>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      euf $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.bh()) {
-         euf $$13 = $$4.getBuffer(fya.i());
-         if ($$11 instanceof fqs $$14) {
-            $$14.c().a($$3, $$13, $$5, git.d);
+   @Override
+   public void a(T $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
+      cyx $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      doz $$8 = $$7 ? $$0.n() : dca.cv.n().a(ddb.c, ih.d);
+      dpr $$9 = $$8.b(ddb.d) ? $$8.c(ddb.d) : dpr.a;
+      if ($$8.b() instanceof das<?> $$11) {
+         boolean $$12 = $$9 != dpr.a;
+         $$2.a();
+         float $$13 = $$8.c(ddb.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         def.c<? extends dmm> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
+         } else {
+            $$14 = def.b::b;
          }
-      }
 
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         float $$16 = $$14.apply(ddb.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new gcc<>()).applyAsInt($$4);
+         gnm $$18 = gao.a($$0, $$9, this.m);
+         ewm $$19 = $$18.a($$3, gah::d);
+         if ($$12) {
+            if ($$9 == dpr.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
+         }
+
+         $$2.b();
+      }
    }
 
-   public ajh a(ckr $$0) {
-      return (ajh)this.a.get($$0.x()).getFirst();
+   private void a(ewi $$0, ewm $$1, ftm $$2, ftm $$3, ftm $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

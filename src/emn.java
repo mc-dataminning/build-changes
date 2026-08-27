@@ -1,40 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Locale;
 
-public class emn implements emj {
-   public static final Codec<emn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eml.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, emn::new)
-   );
-   public static final Codec<emn> b = eml.b.listOf().xmap(emn::new, $$0 -> $$0.c);
-   private final List<emj> c;
-   private final BiFunction<cqm, ekw, cqm> d;
+public interface emn {
+   ib a();
 
-   private emn(List<emj> $$0) {
-      this.c = $$0;
-      this.d = eml.a($$0);
-   }
+   float b();
 
-   public static emn a(List<emj> $$0) {
-      return new emn(List.copyOf($$0));
-   }
+   long c();
 
-   public cqm a(cqm $$0, ekw $$1) {
-      return this.d.apply($$0, $$1);
-   }
+   long d();
 
-   @Override
-   public void a(elf $$0) {
-      emj.super.a($$0);
+   boolean g();
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
-      }
-   }
+   boolean i();
 
-   @Override
-   public emk b() {
-      return eml.C;
+   void b(boolean var1);
+
+   boolean l();
+
+   cyt o();
+
+   bnx q();
+
+   boolean r();
+
+   default void a(p $$0, cyz $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

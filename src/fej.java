@@ -1,64 +1,69 @@
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import java.util.OptionalInt;
 
-public class fej {
-   private static long a = 0L;
+public class fej extends fdm {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final axz<fej.a, fei> c;
+   private boolean d = false;
 
-   public static long a() {
-      if (a == 0L) {
-         MemoryStack $$0 = MemoryStack.stackPush();
+   public fej(wg $$0, fda $$1) {
+      this(0, 0, $$0, $$1);
+   }
 
-         try {
-            PointerBuffer $$1 = $$0.mallocPointer(1);
-            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-            a = $$1.get();
-         } catch (Throwable var4) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var3) {
-                  var4.addSuppressed(var3);
-               }
-            }
+   public fej(int $$0, int $$1, wg $$2, fda $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fei.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fei.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
 
-            throw var4;
-         }
+   public fej c(int $$0) {
+      super.a($$0);
+      return this;
+   }
 
-         if ($$0 != null) {
-            $$0.close();
-         }
+   public fej d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fej e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fej b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   @Override
+   public int x() {
+      return this.c.a(this.d()).b();
+   }
+
+   @Override
+   public int v() {
+      return this.c.a(this.d()).a() * 9;
+   }
+
+   @Override
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      fei $$4 = this.c.a(this.d());
+      int $$5 = this.C();
+      int $$6 = this.D();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
-
-      return a;
    }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
+   private fej.a d() {
+      return new fej.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
-
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
-
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      if (a != 0L) {
-         FreeType.FT_Done_Library(a);
-         a = 0L;
-      }
+   static record a(wg a, int b, OptionalInt c) {
    }
 }

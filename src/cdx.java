@@ -1,126 +1,132 @@
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class cdx extends box {
-   private static final aim<Optional<ib>> c = aiq.a(cdx.class, aio.o);
-   private static final aim<Boolean> d = aiq.a(cdx.class, aio.k);
-   public int b;
+public class cdx extends bsg<cdv> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final aul l;
+   private final aul m;
+   private esa n;
+   private cdx.a o = cdx.a.d;
 
-   public cdx(bpd<? extends cdx> $$0, cxb $$1) {
-      super($$0, $$1);
-      this.I = true;
-      this.b = this.ag.a(100000);
+   public cdx(aul $$0, aul $$1) {
+      super(ImmutableMap.of(bzr.m, bzs.b, bzr.n, bzs.c, bzr.o, bzs.a, bzr.Z, bzs.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   public cdx(cxb $$0, double $$1, double $$2, double $$3) {
-      this(bpd.F, $$0);
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected box.b aZ() {
-      return box.b.a;
-   }
-
-   @Override
-   protected void a(aiq.a $$0) {
-      $$0.a(c, Optional.empty());
-      $$0.a(d, true);
-   }
-
-   @Override
-   public void l() {
-      this.b++;
-      if (this.dM() instanceof apf) {
-         ib $$0 = this.dm();
-         if (((apf)this.dM()).D() != null && this.dM().a_($$0).i()) {
-            this.dM().b($$0, czp.a(this.dM(), $$0));
-         }
-      }
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      if (this.p() != null) {
-         $$0.a("beam_target", tp.a(this.p()));
+   protected boolean a(aps $$0, cdv $$1) {
+      bqo $$2 = $$1.dP().c(bzr.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.dP().b(bzr.o);
+         this.b($$1, $$2);
       }
 
-      $$0.a("ShowBottom", this.r());
+      return $$3 && $$1.ap() != bqz.i && cdv.j($$2);
    }
 
-   @Override
-   protected void a(ta $$0) {
-      tp.a($$0, "beam_target").ifPresent(this::a);
-      if ($$0.b("ShowBottom", 1)) {
-         this.a($$0.q("ShowBottom"));
-      }
+   protected boolean a(aps $$0, cdv $$1, long $$2) {
+      return $$1.dP().a(bzr.o) && this.o != cdx.a.d && !$$1.dP().a(bzr.Z);
    }
 
-   @Override
-   public boolean bw() {
-      return true;
+   protected void b(aps $$0, cdv $$1, long $$2) {
+      bqo $$3 = $$1.dP().c(bzr.o).get();
+      bsi.a($$1, $$3);
+      $$1.b($$3);
+      $$1.dP().a(bzr.m, new bzu($$3.dk(), 2.0F, 0));
+      this.k = 10;
+      this.o = cdx.a.a;
    }
 
-   @Override
-   public boolean a(bnw $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if ($$0.d() instanceof cdy) {
-         return false;
-      } else {
-         if (!this.dH() && !this.dM().B) {
-            this.a(box.c.a);
-            if (!$$0.a(aup.m)) {
-               bnw $$2 = $$0.d() != null ? this.dN().d(this, $$0.d()) : null;
-               this.dM().a(this, $$2, null, this.dr(), this.dt(), this.dx(), 6.0F, false, cxb.a.b);
+   protected void c(aps $$0, cdv $$1, long $$2) {
+      $$1.dP().b(bzr.o);
+      $$1.r();
+      $$1.b(bqz.a);
+   }
+
+   private void b(aps $$0, cdv $$1) {
+      $$0.a(null, $$1, this.m, aun.g, 2.0F, 1.0F);
+      Optional<bpv> $$2 = $$1.u();
+      if ($$2.isPresent()) {
+         bpv $$3 = $$2.get();
+         if ($$3.bA()) {
+            $$1.C($$3);
+            if (!$$3.bA()) {
+               $$3.a(bpv.c.a);
             }
-
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void al() {
-      this.a(this.dN().n());
-      super.al();
-   }
-
-   private void a(bnw $$0) {
-      if (this.dM() instanceof apf) {
-         dqr $$1 = ((apf)this.dM()).D();
-         if ($$1 != null) {
-            $$1.a(this, $$0);
          }
       }
    }
 
-   public void a(@Nullable ib $$0) {
-      this.an().a(c, Optional.ofNullable($$0));
+   protected void d(aps $$0, cdv $$1, long $$2) {
+      bqo $$3 = $$1.dP().c(bzr.o).get();
+      $$1.b($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, aun.g, 2.0F, 1.0F);
+               $$1.b(bqz.j);
+               $$3.g($$3.dk().a($$1.dk()).d().a(0.75));
+               this.n = $$3.dk();
+               this.j = 0;
+               this.o = cdx.a.b;
+            } else if (this.k <= 0) {
+               $$1.dP().a(bzr.m, new bzu($$3.dk(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = cdx.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = cdx.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
+      }
    }
 
-   @Nullable
-   public ib p() {
-      return this.an().a(c).orElse(null);
+   private boolean a(cdv $$0, bqo $$1) {
+      elg $$2 = $$0.K().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
    }
 
-   public void a(boolean $$0) {
-      this.an().a(d, $$0);
+   private void b(cdv $$0, bqo $$1) {
+      List<UUID> $$2 = $$0.dP().c(bzr.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cw());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.cw());
+      }
+
+      $$0.dP().a(bzr.aa, $$2, 100L);
    }
 
-   public boolean r() {
-      return this.an().a(d);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return super.a($$0) || this.p() != null;
-   }
-
-   @Override
-   public cqm dz() {
-      return new cqm(cqp.vd);
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

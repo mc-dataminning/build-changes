@@ -1,81 +1,57 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class eel {
-   public static final Codec<eel> e = ki.ai.q().dispatch("element_type", eel::a, eem::codec);
-   private static final il<ehc> a = il.a(new ehc(List.of()));
-   @Nullable
-   private volatile een.a b;
+public record eel(il<dxi<?, ?>> e, List<eeo> f) {
+   public static final Codec<eel> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dxi.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eeo.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, eel::new)
+   );
+   public static final Codec<il<eel>> b = ajp.a(ks.aE, a);
+   public static final Codec<ip<eel>> c = ja.a(ks.aE, a);
+   public static final Codec<List<ip<eel>>> d = ja.a(ks.aE, a, true).listOf();
 
-   protected static <E extends eel> RecordCodecBuilder<E, een.a> d() {
-      return een.a.c.fieldOf("projection").forGetter(eel::e);
+   public boolean a(czs $$0, dqw $$1, axr $$2, ib $$3) {
+      return this.a(new eem($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   protected eel(een.a $$0) {
-      this.b = $$0;
+   public boolean b(czs $$0, dqw $$1, axr $$2, ib $$3) {
+      return this.a(new eem($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public abstract jg a(ehf var1, dgo var2);
+   private boolean a(eem $$0, axr $$1, ib $$2) {
+      Stream<ib> $$3 = Stream.of($$2);
 
-   public abstract List<ehe.c> a(ehf var1, ib var2, dgo var3, axd var4);
-
-   public abstract ecw a(ehf var1, ib var2, dgo var3);
-
-   public abstract boolean a(ehf var1, cxw var2, cxu var3, doy var4, ib var5, ib var6, dgo var7, ecw var8, axd var9, boolean var10);
-
-   public abstract eem<?> a();
-
-   public void a(cxc $$0, ehe.c $$1, ib $$2, dgo $$3, axd $$4, ecw $$5) {
-   }
-
-   public eel a(een.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public een.a e() {
-      een.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+      for (eeo $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
       }
+
+      dxi<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
    }
 
-   public int f() {
-      return 1;
+   public Stream<dxi<?, ?>> a() {
+      return this.e.a().a();
    }
 
-   public static Function<een.a, eee> g() {
-      return $$0 -> eee.b;
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   public static Function<een.a, eei> a(String $$0) {
-      return $$1 -> new eei(Either.left(new ajh($$0)), a, $$1);
+   public il<dxi<?, ?>> b() {
+      return this.e;
    }
 
-   public static Function<een.a, eei> a(String $$0, il<ehc> $$1) {
-      return $$2 -> new eei(Either.left(new ajh($$0)), $$1, $$2);
-   }
-
-   public static Function<een.a, eek> b(String $$0) {
-      return $$1 -> new eek(Either.left(new ajh($$0)), a, $$1);
-   }
-
-   public static Function<een.a, eek> b(String $$0, il<ehc> $$1) {
-      return $$2 -> new eek(Either.left(new ajh($$0)), $$1, $$2);
-   }
-
-   public static Function<een.a, eef> a(il<eci> $$0) {
-      return $$1 -> new eef($$0, $$1);
-   }
-
-   public static Function<een.a, eej> b(List<Function<een.a, ? extends eel>> $$0) {
-      return $$1 -> new eej($$0.stream().map($$1x -> (eel)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   public List<eeo> c() {
+      return this.f;
    }
 }

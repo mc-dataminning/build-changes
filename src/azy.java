@@ -1,41 +1,74 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class azy extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("structure_references", "empty")
-      .put("biomes", "empty")
-      .put("base", "surface")
-      .put("carved", "carvers")
-      .put("liquid_carved", "liquid_carvers")
-      .put("decorated", "features")
-      .put("lighted", "light")
-      .put("mobs_spawned", "spawn")
-      .put("finalized", "heightmaps")
-      .put("fullchunk", "full")
-      .build();
+public abstract class azy extends DataFix {
+   private final String a;
 
-   public azy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public azy(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(beh.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(beh.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            String $$3 = a.getOrDefault($$2x, "empty");
-            return Objects.equals($$2x, $$3) ? $$0xx : $$0xx.set(DSL.remainderFinder(), $$1xx.set("Status", $$1xx.createString($$3)));
-         }));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfa.A);
+      Type<Pair<String, String>> $$1 = DSL.named(bfa.A.typeName(), bgk.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
+      } else {
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bfa.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+         );
+         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
+            this.a + " for flat_block_state",
+            this.getInputSchema().getType(bfa.v),
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+               )
+         );
+         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
+      }
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
+   }
+
+   private String b(String $$0) {
+      int $$1 = $$0.indexOf(91);
+      int $$2 = $$0.indexOf(123);
+      int $$3 = $$0.length();
+      if ($$1 > 0) {
+         $$3 = $$1;
+      }
+
+      if ($$2 > 0) {
+         $$3 = Math.min($$3, $$2);
+      }
+
+      String $$4 = $$0.substring(0, $$3);
+      String $$5 = this.a($$4);
+      return $$5 + $$0.substring($$3);
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new azy($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

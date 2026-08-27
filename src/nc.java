@@ -1,40 +1,43 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public interface nc {
-   ajh a = new ajh("recipes/root");
+public class nc<T> {
+   final String a;
+   final Function<T, JsonElement> b;
 
-   nc a(String var1, an<?> var2);
-
-   nc a(@Nullable String var1);
-
-   cqh a();
-
-   void a(ne var1, ajh var2);
-
-   default void a(ne $$0) {
-      this.a($$0, a(this.a()));
+   public nc(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default void a(ne $$0, String $$1) {
-      ajh $$2 = a(this.a());
-      ajh $$3 = new ajh($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, $$3);
+   public nc<T>.a a(T $$0) {
+      return new nc.a($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
+
+   public class a {
+      private final T b;
+
+      public a(T $$1) {
+         this.b = $$1;
       }
-   }
 
-   static ajh a(cxa $$0) {
-      return ki.h.b($$0.l());
-   }
+      public nc<T> a() {
+         return nc.this;
+      }
 
-   static ctf a(nd $$0) {
-      return switch ($$0) {
-         case a -> ctf.a;
-         case e, f -> ctf.c;
-         case c -> ctf.b;
-         default -> ctf.d;
-      };
+      public void a(JsonObject $$0) {
+         $$0.add(nc.this.a, nc.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return nc.this.a + "=" + this.b;
+      }
    }
 }

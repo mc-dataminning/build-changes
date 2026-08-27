@@ -26,21 +26,21 @@ import org.slf4j.Logger;
 
 public class it<T> implements jh<T> {
    private static final Logger b = LogUtils.getLogger();
-   final ajg<? extends iy<T>> c;
+   final ajs<? extends iy<T>> c;
    private final ObjectList<il.c<T>> d = new ObjectArrayList(256);
    private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<ajh, il.c<T>> f = new HashMap<>();
-   private final Map<ajg<T>, il.c<T>> g = new HashMap<>();
+   private final Map<ajt, il.c<T>> f = new HashMap<>();
+   private final Map<ajs<T>, il.c<T>> g = new HashMap<>();
    private final Map<T, il.c<T>> h = new IdentityHashMap<>();
-   private final Map<ajg<T>, ix> i = new IdentityHashMap<>();
+   private final Map<ajs<T>, ix> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<avd<T>, ip.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<avr<T>, ip.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, il.c<T>> m;
    private final in.b<T> n = new in.b<T>() {
       @Override
-      public ajg<? extends iy<? extends T>> f() {
+      public ajs<? extends iy<? extends T>> f() {
          return it.this.c;
       }
 
@@ -50,7 +50,7 @@ public class it<T> implements jh<T> {
       }
 
       @Override
-      public Optional<il.c<T>> a(ajg<T> $$0) {
+      public Optional<il.c<T>> a(ajs<T> $$0) {
          return it.this.b($$0);
       }
 
@@ -60,7 +60,7 @@ public class it<T> implements jh<T> {
       }
 
       @Override
-      public Optional<ip.c<T>> a(avd<T> $$0) {
+      public Optional<ip.c<T>> a(avr<T> $$0) {
          return it.this.b($$0);
       }
 
@@ -70,11 +70,11 @@ public class it<T> implements jh<T> {
       }
    };
 
-   public it(ajg<? extends iy<T>> $$0, Lifecycle $$1) {
+   public it(ajs<? extends iy<T>> $$0, Lifecycle $$1) {
       this($$0, $$1, false);
    }
 
-   public it(ajg<? extends iy<T>> $$0, Lifecycle $$1, boolean $$2) {
+   public it(ajs<? extends iy<T>> $$0, Lifecycle $$1, boolean $$2) {
       this.c = $$0;
       this.j = $$1;
       if ($$2) {
@@ -83,7 +83,7 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public ajg<? extends iy<T>> c() {
+   public ajs<? extends iy<T>> c() {
       return this.c;
    }
 
@@ -98,14 +98,14 @@ public class it<T> implements jh<T> {
       }
    }
 
-   private void h(ajg<T> $$0) {
+   private void h(ajs<T> $$0) {
       if (this.l) {
          throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
       }
    }
 
    @Override
-   public il.c<T> a(ajg<T> $$0, T $$1, ix $$2) {
+   public il.c<T> a(ajs<T> $$0, T $$1, ix $$2) {
       this.h($$0);
       Objects.requireNonNull($$0);
       Objects.requireNonNull($$1);
@@ -142,13 +142,13 @@ public class it<T> implements jh<T> {
 
    @Nullable
    @Override
-   public ajh b(T $$0) {
+   public ajt b(T $$0) {
       il.c<T> $$1 = this.h.get($$0);
       return $$1 != null ? $$1.h().a() : null;
    }
 
    @Override
-   public Optional<ajg<T>> d(T $$0) {
+   public Optional<ajs<T>> d(T $$0) {
       return Optional.ofNullable(this.h.get($$0)).map(il.c::h);
    }
 
@@ -159,7 +159,7 @@ public class it<T> implements jh<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable ajg<T> $$0) {
+   public T a(@Nullable ajs<T> $$0) {
       return a(this.g.get($$0));
    }
 
@@ -175,12 +175,12 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Optional<il.c<T>> c(ajh $$0) {
+   public Optional<il.c<T>> c(ajt $$0) {
       return Optional.ofNullable(this.f.get($$0));
    }
 
    @Override
-   public Optional<il.c<T>> b(ajg<T> $$0) {
+   public Optional<il.c<T>> b(ajs<T> $$0) {
       return Optional.ofNullable(this.g.get($$0));
    }
 
@@ -190,7 +190,7 @@ public class it<T> implements jh<T> {
       return (il<T>)($$1 != null ? $$1 : il.a($$0));
    }
 
-   il.c<T> i(ajg<T> $$0) {
+   il.c<T> i(ajs<T> $$0) {
       return this.g.computeIfAbsent($$0, $$0x -> {
          if (this.m != null) {
             throw new IllegalStateException("This registry can't create new holders without value");
@@ -207,7 +207,7 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Optional<ix> c(ajg<T> $$0) {
+   public Optional<ix> c(ajs<T> $$0) {
       return Optional.ofNullable(this.i.get($$0));
    }
 
@@ -223,7 +223,7 @@ public class it<T> implements jh<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable ajh $$0) {
+   public T a(@Nullable ajt $$0) {
       il.c<T> $$1 = this.f.get($$0);
       return a($$1);
    }
@@ -234,17 +234,17 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Set<ajh> e() {
+   public Set<ajt> e() {
       return Collections.unmodifiableSet(this.f.keySet());
    }
 
    @Override
-   public Set<ajg<T>> f() {
+   public Set<ajs<T>> f() {
       return Collections.unmodifiableSet(this.g.keySet());
    }
 
    @Override
-   public Set<Entry<ajg<T>, T>> g() {
+   public Set<Entry<ajs<T>, T>> g() {
       return Collections.unmodifiableSet(Maps.transformValues(this.g, il::a).entrySet());
    }
 
@@ -254,16 +254,16 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Stream<Pair<avd<T>, ip.c<T>>> i() {
+   public Stream<Pair<avr<T>, ip.c<T>>> i() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public ip.c<T> a(avd<T> $$0) {
+   public ip.c<T> a(avr<T> $$0) {
       ip.c<T> $$1 = this.k.get($$0);
       if ($$1 == null) {
          $$1 = this.d($$0);
-         Map<avd<T>, ip.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         Map<avr<T>, ip.c<T>> $$2 = new IdentityHashMap<>(this.k);
          $$2.put($$0, $$1);
          this.k = $$2;
       }
@@ -271,12 +271,12 @@ public class it<T> implements jh<T> {
       return $$1;
    }
 
-   private ip.c<T> d(avd<T> $$0) {
+   private ip.c<T> d(avr<T> $$0) {
       return new ip.c<>(this.o(), $$0);
    }
 
    @Override
-   public Stream<avd<T>> j() {
+   public Stream<avr<T>> j() {
       return this.k.keySet().stream();
    }
 
@@ -286,17 +286,17 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Optional<il.c<T>> a(axd $$0) {
+   public Optional<il.c<T>> a(axr $$0) {
       return ac.b(this.d, $$0);
    }
 
    @Override
-   public boolean d(ajh $$0) {
+   public boolean d(ajt $$0) {
       return this.f.containsKey($$0);
    }
 
    @Override
-   public boolean d(ajg<T> $$0) {
+   public boolean d(ajs<T> $$0) {
       return this.g.containsKey($$0);
    }
 
@@ -307,7 +307,7 @@ public class it<T> implements jh<T> {
       } else {
          this.l = true;
          this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
-         List<ajh> $$0 = this.g.entrySet().stream().filter($$0x -> !((il.c)$$0x.getValue()).b()).map($$0x -> ((ajg)$$0x.getKey()).a()).sorted().toList();
+         List<ajt> $$0 = this.g.entrySet().stream().filter($$0x -> !((il.c)$$0x.getValue()).b()).map($$0x -> ((ajs)$$0x.getKey()).a()).sorted().toList();
          if (!$$0.isEmpty()) {
             throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
          } else {
@@ -335,13 +335,13 @@ public class it<T> implements jh<T> {
    }
 
    @Override
-   public Optional<ip.c<T>> b(avd<T> $$0) {
+   public Optional<ip.c<T>> b(avr<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<avd<T>, List<il<T>>> $$0) {
-      Map<il.c<T>, List<avd<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<avr<T>, List<il<T>>> $$0) {
+      Map<il.c<T>, List<avr<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (il<T> $$3x : $$2x) {
@@ -356,7 +356,7 @@ public class it<T> implements jh<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<avd<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<avr<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -365,7 +365,7 @@ public class it<T> implements jh<T> {
          );
       }
 
-      Map<avd<T>, ip.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      Map<avr<T>, ip.c<T>> $$3 = new IdentityHashMap<>(this.k);
       $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
       $$1.forEach(il.c::a);
       this.k = $$3;
@@ -382,22 +382,22 @@ public class it<T> implements jh<T> {
       this.a();
       return new im<T>() {
          @Override
-         public Optional<il.c<T>> a(ajg<T> $$0) {
+         public Optional<il.c<T>> a(ajs<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public il.c<T> b(ajg<T> $$0) {
+         public il.c<T> b(ajs<T> $$0) {
             return it.this.i($$0);
          }
 
          @Override
-         public Optional<ip.c<T>> a(avd<T> $$0) {
+         public Optional<ip.c<T>> a(avr<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public ip.c<T> b(avd<T> $$0) {
+         public ip.c<T> b(avr<T> $$0) {
             return it.this.a($$0);
          }
       };

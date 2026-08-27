@@ -1,103 +1,34 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public class fgr extends fhh {
-   private static final long a = 2000L;
-   private final aps b;
-   private long c = -1L;
-   private boolean k;
-   private static final Object2IntMap<dpc> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dpc.c, 5526612);
-      $$0.put(dpc.d, 10066329);
-      $$0.put(dpc.e, 6250897);
-      $$0.put(dpc.f, 8434258);
-      $$0.put(dpc.g, 13750737);
-      $$0.put(dpc.h, 7497737);
-      $$0.put(dpc.i, 3159410);
-      $$0.put(dpc.j, 2213376);
-      $$0.put(dpc.k, 13421772);
-      $$0.put(dpc.l, 16769184);
-      $$0.put(dpc.m, 15884384);
-      $$0.put(dpc.n, 16777215);
-   });
+public interface fgr {
+   MapCodec<fgr> b = fgs.f.dispatchMap(fgr::a, $$0 -> $$0.a().codec());
 
-   public fgr(aps $$0) {
-      super(eza.a);
-      this.b = $$0;
-   }
+   fgs a();
 
-   @Override
-   public boolean aM_() {
-      return false;
-   }
+   Either<fgr.b, fgr.c> b();
 
-   @Override
-   protected boolean aN_() {
-      return false;
-   }
+   public static record a(fgr b, fgf.a c) {
+      public static final Codec<fgr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fgr.b.forGetter(fgr.a::a), aws.a(fgf.a.a, "filter", fgf.a.b).forGetter(fgr.a::b)).apply($$0, fgr.a::new)
+      );
 
-   @Override
-   public void k() {
-      this.k = true;
-      this.d(true);
-   }
+      public fgr a() {
+         return this.b;
+      }
 
-   @Override
-   protected void b(ffe $$0) {
-      if (this.k) {
-         $$0.a(ffd.a, vu.c("narrator.loading.done"));
-      } else {
-         $$0.a(ffd.a, this.o());
+      public fgf.a b() {
+         return this.c;
       }
    }
 
-   private vu o() {
-      return vu.a("loading.progress", aww.a(this.b.f(), 0, 100));
+   public interface b {
+      eul load(atc var1) throws IOException;
    }
 
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.g / 2;
-      int $$6 = this.h / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.i, this.o(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(fav $$0, aps $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dpc $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
+   public static record c(ajt a) {
    }
 }

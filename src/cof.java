@@ -1,24 +1,68 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cof extends cqh {
-   private final avd<djz> a;
+public class cof implements bnt, coe {
+   private final iu<crj> c = iu.a(1, crj.i);
+   @Nullable
+   private cvl<?> d;
 
-   public cof(avd<djz> $$0, cqh.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   public avd<djz> b() {
-      return this.a;
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
-      $$2.add(this.c().a(n.h));
+   public boolean ah_() {
+      for (crj $$0 : this.c) {
+         if (!$$0.d()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public wi c() {
-      return vu.c(this.a() + ".desc");
+   @Override
+   public crj a(int $$0) {
+      return this.c.get(0);
+   }
+
+   @Override
+   public crj a(int $$0, int $$1) {
+      return bnu.a(this.c, 0);
+   }
+
+   @Override
+   public crj b(int $$0) {
+      return bnu.a(this.c, 0);
+   }
+
+   @Override
+   public void a(int $$0, crj $$1) {
+      this.c.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cjt $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public void a(@Nullable cvl<?> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public cvl<?> d() {
+      return this.d;
    }
 }

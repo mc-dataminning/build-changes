@@ -1,34 +1,32 @@
-public class eye extends eyi {
-   private static final vu b = vu.c("mco.connect.connecting");
-   private final gpb c;
-   private final evi d;
-   private final evj e;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-   public eye(fhh $$0, evi $$1, evj $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gpb($$0);
+public abstract class eye {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
+
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
+      }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, ftr.a(this.e.a));
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      ezi.Q().ae().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public vu a() {
-      return b;
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

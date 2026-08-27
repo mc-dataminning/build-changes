@@ -1,19 +1,10 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class baw extends bdh {
-   public baw(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", beh.y, "minecraft:painting");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return aye.a(aye.a($$0, "Motive", "variant"), "Facing", "facing");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+public class baw {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

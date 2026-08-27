@@ -1,13 +1,11 @@
-import java.util.concurrent.TimeUnit;
+import java.security.SignatureException;
 
-public class axv {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
-   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
+@FunctionalInterface
+public interface axv {
+   void update(axv.a var1) throws SignatureException;
 
-   public static bmo a(int $$0, int $$1) {
-      return bmo.a($$0 * 20, $$1 * 20);
+   @FunctionalInterface
+   public interface a {
+      void update(byte[] var1) throws SignatureException;
    }
 }

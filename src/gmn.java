@@ -1,28 +1,31 @@
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public class gmn {
-   private final List<gmm> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
+   public static aww a(wl $$0, boolean $$1) {
+      xe $$2 = xe.a($$0, UCharacter::getMirror, gmn::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<aww> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gmn(List<gmm> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return aww.composite($$4);
    }
 
-   public List<gmm> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

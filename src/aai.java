@@ -1,12 +1,23 @@
-public class aai {
-   public static final yd<aah> a = a("cookie_request");
-   public static final yd<aak> b = b("cookie_response");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends yb<aag>> yd<T> a(String $$0) {
-      return new yd<>(yc.b, new ajh($$0));
+public class aai implements yn<aah> {
+   public static final aai a = new aai();
+   public static final ye<ByteBuf, aai> b = ye.a(a);
+
+   private aai() {
    }
 
-   private static <T extends yb<aaj>> yd<T> b(String $$0) {
-      return new yd<>(yc.a, new ajh($$0));
+   @Override
+   public yp<aai> a() {
+      return aam.a;
+   }
+
+   public void a(aah $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,67 +1,64 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cjd extends cjb {
-   public static final float e = 4.0F;
+public class cjd implements cxu {
+   private final cjt a;
+   private cxw b = new cxw();
+   private int c;
 
-   public cjd(bpd<? extends cjd> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
-
-   public cjd(cxb $$0, bpp $$1, double $$2, double $$3, double $$4) {
-      super(bpd.B, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(epr $$0) {
-      super.a($$0);
-      if ($$0.c() != epr.a.c || !this.e(((epq)$$0).a())) {
-         if (!this.dM().B) {
-            List<bpp> $$1 = this.dM().a(bpp.class, this.cH().c(4.0, 2.0, 4.0));
-            bou $$2 = new bou(this.dM(), this.dr(), this.dt(), this.dx());
-            box $$3 = this.af_();
-            if ($$3 instanceof bpp) {
-               $$2.a((bpp)$$3);
-            }
-
-            $$2.a(kc.i);
-            $$2.a(3.0F);
-            $$2.b(600);
-            $$2.c((7.0F - $$2.g()) / (float)$$2.k());
-            $$2.a(new bok(bom.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bpp $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dr(), $$4.dt(), $$4.dx());
-                     break;
-                  }
-               }
-            }
-
-            this.dM().c(2006, this.dm(), this.aU() ? -1 : 1);
-            this.dM().b($$2);
-            this.am();
-         }
-      }
+   public cjd(cjt $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean bw() {
-      return false;
+   public cjt gn() {
+      return this.a;
    }
 
    @Override
-   public boolean a(bnw $$0, float $$1) {
-      return false;
+   public void f(@Nullable cjt $$0) {
    }
 
    @Override
-   protected ka s() {
-      return kc.i;
+   public cxw gp() {
+      return this.b;
    }
 
    @Override
-   protected boolean r() {
-      return false;
+   public void a(cxw $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(cxv $$0) {
+      $$0.l();
+   }
+
+   @Override
+   public void n(crj $$0) {
+   }
+
+   @Override
+   public boolean gv() {
+      return this.a.dM().B;
+   }
+
+   @Override
+   public int u() {
+      return this.c;
+   }
+
+   @Override
+   public void u(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gq() {
+      return true;
+   }
+
+   @Override
+   public aul gr() {
+      return aum.AB;
    }
 }

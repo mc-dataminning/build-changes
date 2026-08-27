@@ -1,36 +1,66 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class fwz implements bla {
-   private final fxq a;
-   private final Set<bky> b = new ObjectOpenHashSet();
-   private final blg c = new blg();
-
-   public fwz(LongSupplier $$0, fxq $$1) {
-      this.a = $$1;
-      this.b.add(blh.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(blh.a());
-      this.b.add(bky.a("totalChunks", bkx.f, this.a, fxq::i));
-      this.b.add(bky.a("renderedChunks", bkx.f, this.a, fxq::k));
-      this.b.add(bky.a("lastViewDistance", bkx.f, this.a, fxq::j));
-      gas $$0 = this.a.h();
-      this.b.add(bky.a("toUpload", bkx.g, $$0, gas::c));
-      this.b.add(bky.a("freeBufferCount", bkx.g, $$0, gas::d));
-      this.b.add(bky.a("toBatchCount", bkx.g, $$0, gas::b));
-      if (etu.a().isPresent()) {
-         this.b.add(bky.a("gpuUtilization", bkx.i, ezi.Q(), ezi::v));
-      }
+public class fwz extends fxv {
+   fwz(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public Set<bky> a(Supplier<bjp> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public fxr b() {
+      return fxr.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = axk.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fwz $$8 = new fwz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fxq<ko> {
+      private final fyi a;
+
+      public b(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fwz $$8 = new fwz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
+      }
    }
 }

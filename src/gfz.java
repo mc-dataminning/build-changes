@@ -1,25 +1,12 @@
-public class gfz extends gda<ckc> {
-   private static final ajh a = new ajh("textures/entity/projectiles/wind_charge.png");
-   private final fqt f;
-
-   public gfz(gdb.a $$0) {
-      super($$0);
-      this.f = new fqt($$0.a(fre.bT));
+public abstract class gfz<T extends bqq, M extends fqz<T>> extends ggo<T, M> {
+   public gfz(gfi.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   public void a(ckc $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      float $$6 = (float)$$0.ah + $$2;
-      euf $$7 = $$4.getBuffer(fya.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public ajh a(ckc $$0) {
-      return a;
+   public gfz(gfi.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new giy<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new gjc<>(this, $$0.f()));
+      this.a(new gjm<>(this, $$0.d()));
    }
 }

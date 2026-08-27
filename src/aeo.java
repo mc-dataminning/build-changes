@@ -1,29 +1,45 @@
-public record aeo(float b, boolean c) implements yb<aam> {
-   public static final xs<uu, aeo> a = yb.a(aeo::a, aeo::new);
+public class aeo implements yn<aay> {
+   public static final ye<vg, aeo> a = yn.a(aeo::a, aeo::new);
+   private final long b;
+   private final long c;
 
-   private aeo(uu $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public aeo(long $$0, long $$1, boolean $$2) {
+      this.b = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   public static aeo a(bno $$0) {
-      return new aeo($$0.f(), $$0.l());
+   private aeo(vg $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vg $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public yd<aeo> a() {
-      return aex.cd;
+   public yp<aeo> a() {
+      return afj.aO;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public long b() {
+      return this.b;
+   }
+
+   public long e() {
       return this.c;
    }
 }

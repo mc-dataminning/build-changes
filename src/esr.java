@@ -1,40 +1,24 @@
-import com.mojang.blaze3d.platform.GLX;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import javax.annotation.Nullable;
-import org.lwjgl.system.Pointer;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class esr {
-   @Nullable
-   private static final MethodHandle a = GLX.make(() -> {
-      try {
-         Lookup $$0 = MethodHandles.lookup();
-         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
-         $$2.setAccessible(true);
-         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         $$3.setAccessible(true);
-         Object $$4 = $$3.get(null);
-         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
-      }
-   });
+public class esr extends est {
+   private final est b;
+   private final ih.a c;
+   private static final DoubleList d = new esg(1);
 
-   public static void a(long $$0) {
-      if (a != null) {
-         try {
-            a.invoke((long)$$0);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
-         }
-      }
+   public esr(est $$0, ih.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static void a(Pointer $$0) {
-      a($$0.address());
+   private static esj a(esj $$0, ih.a $$1, int $$2) {
+      return new ess(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
+   }
+
+   @Override
+   protected DoubleList a(ih.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

@@ -1,69 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dpe extends dpi {
-   private final il<cya> n;
+public class dpe {
+   private final Predicate<dpd>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public dpe(cxb $$0, cwi $$1, il<cya> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   public dpe(Predicate<dpd>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
    }
 
-   @Override
-   public dnb a_(ib $$0) {
-      return dae.nb.o();
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public Predicate<dpd>[][][] d() {
+      return this.a;
    }
 
    @Nullable
-   @Override
-   public dnb a(ib $$0, dnb $$1, boolean $$2) {
-      return null;
-   }
-
-   @Override
-   public eip b_(ib $$0) {
-      return eiq.a.g();
-   }
-
-   @Override
-   public int i(ib $$0) {
-      return 0;
+   @VisibleForTesting
+   public dpe.b a(cza $$0, ib $$1, ih $$2, ih $$3) {
+      LoadingCache<ib, dpd> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
    }
 
    @Nullable
-   @Override
-   public dki a(ib $$0, dpi.b $$1) {
+   private dpe.b a(ib $$0, ih $$1, ih $$2, LoadingCache<ib, dpd> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((dpd)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new dpe.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   }
+
+   @Nullable
+   public dpe.b a(cza $$0, ib $$1) {
+      LoadingCache<ib, dpd> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (ib $$4 : ib.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (ih $$5 : ih.values()) {
+            for (ih $$6 : ih.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  dpe.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
       return null;
    }
 
-   @Override
-   public void b(dki $$0) {
+   public static LoadingCache<ib, dpd> a(cza $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new dpe.a($$0, $$1));
    }
 
-   @Override
-   public void a(dki $$0) {
+   protected static ib a(ib $$0, ih $$1, ih $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         jg $$6 = new jg($$1.j(), $$1.k(), $$1.l());
+         jg $$7 = new jg($$2.j(), $$2.k(), $$2.l());
+         jg $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
    }
 
-   @Override
-   public void d(ib $$0) {
+   static class a extends CacheLoader<ib, dpd> {
+      private final cza a;
+      private final boolean b;
+
+      public a(cza $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dpd a(ib $$0) {
+         return new dpd(this.a, $$0, this.b);
+      }
    }
 
-   @Override
-   public boolean C() {
-      return true;
-   }
+   public static class b {
+      private final ib a;
+      private final ih b;
+      private final ih c;
+      private final LoadingCache<ib, dpd> d;
+      private final int e;
+      private final int f;
+      private final int g;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+      public b(ib $$0, ih $$1, ih $$2, LoadingCache<ib, dpd> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   @Override
-   public aoy D() {
-      return aoy.b;
-   }
+      public ib a() {
+         return this.a;
+      }
 
-   @Override
-   public il<cya> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+      public ih b() {
+         return this.b;
+      }
+
+      public ih c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public dpd a(int $$0, int $$1, int $$2) {
+         return (dpd)this.d.getUnchecked(dpe.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
    }
 }

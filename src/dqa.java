@@ -1,94 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+public enum dqa implements aye {
+   a("harp", aum.rD, dqa.a.a),
+   b("basedrum", aum.rx, dqa.a.a),
+   c("snare", aum.rG, dqa.a.a),
+   d("hat", aum.rE, dqa.a.a),
+   e("bass", aum.ry, dqa.a.a),
+   f("flute", aum.rB, dqa.a.a),
+   g("bell", aum.rz, dqa.a.a),
+   h("guitar", aum.rC, dqa.a.a),
+   i("chime", aum.rA, dqa.a.a),
+   j("xylophone", aum.rH, dqa.a.a),
+   k("iron_xylophone", aum.rI, dqa.a.a),
+   l("cow_bell", aum.rJ, dqa.a.a),
+   m("didgeridoo", aum.rK, dqa.a.a),
+   n("bit", aum.rL, dqa.a.a),
+   o("banjo", aum.rM, dqa.a.a),
+   p("pling", aum.rF, dqa.a.a),
+   q("zombie", aum.rN, dqa.a.b),
+   r("skeleton", aum.rO, dqa.a.b),
+   s("creeper", aum.rP, dqa.a.b),
+   t("dragon", aum.rQ, dqa.a.b),
+   u("wither_skeleton", aum.rR, dqa.a.b),
+   v("piglin", aum.rS, dqa.a.b),
+   w("custom_head", aum.zV, dqa.a.c);
 
-public class dqa implements dqz<box> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final apf d;
-   private final dqk e;
-   private final LongSet f = new LongOpenHashSet();
-   private final blw<Runnable> g;
+   private final String x;
+   private final il<aul> y;
+   private final dqa.a z;
 
-   public dqa(dqk $$0, apf $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = blw.a($$2, "entity-deserializer");
+   private dqa(String $$0, il<aul> $$1, dqa.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
    @Override
-   public CompletableFuture<dqu<box>> a(cwi $$0) {
-      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
-         if ($$1.isEmpty()) {
-            this.f.add($$0.a());
-            return b($$0);
-         } else {
-            try {
-               cwi $$2 = a($$1.get());
-               if (!Objects.equals($$0, $$2)) {
-                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-               }
-            } catch (Exception var6) {
-               a.warn("Failed to parse chunk {} position info", $$0, var6);
-            }
-
-            ta $$4 = this.e.a($$1.get(), -1);
-            tg $$5 = $$4.c("Entities", 10);
-            List<box> $$6 = bpd.a($$5, this.d).collect(ImmutableList.toImmutableList());
-            return new dqu<>($$0, $$6);
-         }
-      }, this.g::a);
+   public String c() {
+      return this.x;
    }
 
-   private static cwi a(ta $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new cwi($$1[0], $$1[1]);
+   public il<aul> a() {
+      return this.y;
    }
 
-   private static void a(ta $$0, cwi $$1) {
-      $$0.a("Position", new te(new int[]{$$1.e, $$1.f}));
+   public boolean b() {
+      return this.z == dqa.a.a;
    }
 
-   private static dqu<box> b(cwi $$0) {
-      return new dqu<>($$0, ImmutableList.of());
+   public boolean d() {
+      return this.z == dqa.a.c;
    }
 
-   @Override
-   public void a(dqu<box> $$0) {
-      cwi $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.e.a($$1, null);
-         }
-      } else {
-         tg $$2 = new tg();
-         $$0.b().forEach($$1x -> {
-            ta $$2x = new ta();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         ta $$3 = tp.f(new ta());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.e.a($$1, $$3).exceptionally($$1x -> {
-            a.error("Failed to store chunk {}", $$1, $$1x);
-            return null;
-         });
-         this.f.remove($$1.a());
-      }
+   public boolean e() {
+      return this.z != dqa.a.a;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

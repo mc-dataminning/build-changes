@@ -1,71 +1,51 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dob extends doe<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public interface dob {
+   dob a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bpv::cw).toList();
+   dob b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.N_()).stream().map(bpv::cw).toList();
+   dob c = ($$0, $$1, $$2, $$3) -> {
+      erv $$4 = new erv($$2).g($$3);
+      return $$1.a($$0, bqb.aI, $$4, bqo::bA).stream().map(bpv::cw).toList();
+   };
 
-   protected dob(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
+   List<UUID> detect(aps var1, dob.a var2, ib var3, double var4);
 
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
+   public interface a {
+      dob.a a = new dob.a() {
+         @Override
+         public List<apt> a(aps $$0, Predicate<? super cjt> $$1) {
+            return $$0.a($$1);
          }
 
-         this.a = ImmutableSet.copyOf($$3);
-      }
-   }
-
-   @Override
-   public Collection<Integer> a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dob $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
+         @Override
+         public <T extends bpv> List<T> a(aps $$0, dtg<bpv, T> $$1, erv $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
          }
+      };
 
-         return false;
+      List<? extends cjt> a(aps var1, Predicate<? super cjt> var2);
+
+      <T extends bpv> List<T> a(aps var1, dtg<bpv, T> var2, erv var3, Predicate<? super T> var4);
+
+      static dob.a a(cjt $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
-   }
+      static dob.a a(final List<cjt> $$0) {
+         return new dob.a() {
+            @Override
+            public List<cjt> a(aps $$0x, Predicate<? super cjt> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   public static dob a(String $$0, int $$1, int $$2) {
-      return new dob($$0, $$1, $$2);
-   }
-
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
+            @Override
+            public <T extends bpv> List<T> a(aps $$0x, dtg<bpv, T> $$1, erv $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   public String a(Integer $$0) {
-      return $$0.toString();
    }
 }

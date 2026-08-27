@@ -1,71 +1,71 @@
 import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
-import java.time.Instant;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 import java.util.Optional;
 
-public record wn(String b, Instant c, long d, wb e) {
-   public static final MapCodec<wn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(wn::a),
-               awe.n.fieldOf("time_stamp").forGetter(wn::b),
-               Codec.LONG.fieldOf("salt").forGetter(wn::c),
-               wb.a.optionalFieldOf("last_seen", wb.b).forGetter(wn::d)
-            )
-            .apply($$0, wn::new)
-   );
+public record wn(List<ws> d) {
+   public static final Codec<wn> a = ws.a.listOf().xmap(wn::new, wn::a);
+   public static wn b = new wn(List.of());
+   public static final int c = 20;
 
-   public static wn a(String $$0) {
-      return new wn($$0, Instant.now(), 0L, wb.b);
+   public void a(axv.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (ws $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public void a(axh.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public wn.a a(wt $$0) {
+      return new wn.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public wn.a a(wh $$0) {
-      return new wn.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
+   public List<ws> a() {
       return this.d;
    }
 
-   public wb d() {
-      return this.e;
+   public static record a(List<ws.a> b) {
+      public static final wn.a a = new wn.a(List.of());
+
+      public a(vg $$0) {
+         this($$0.a(vg.a(ArrayList::new, 20), ws.a::a));
+      }
+
+      public void a(vg $$0) {
+         $$0.a(this.b, ws.a::a);
+      }
+
+      public Optional<wn> a(wt $$0) {
+         List<ws> $$1 = new ArrayList<>(this.b.size());
+
+         for (ws.a $$2 : this.b) {
+            Optional<ws> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new wn($$1));
+      }
+
+      public List<ws.a> a() {
+         return this.b;
+      }
    }
 
-   public static record a(String a, Instant b, long c, wb.a d) {
-      public a(uu $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new wb.a($$0));
+   public static record b(int a, BitSet b) {
+      public b(vg $$0) {
+         this($$0.l(), $$0.e(20));
       }
 
-      public void a(uu $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
-      }
-
-      public Optional<wn> a(wh $$0) {
-         return this.d.a($$0).map($$0x -> new wn(this.a, this.b, this.c, $$0x));
+      public void a(vg $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
       }
    }
 }

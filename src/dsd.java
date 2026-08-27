@@ -1,55 +1,94 @@
-public interface dsd extends axd {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-   int c(int var1);
+public class dsd implements dtc<bpv> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final aps d;
+   private final dsn e;
+   private final LongSet f = new LongOpenHashSet();
+   private final bmt<Runnable> g;
 
-   @Override
-   default int f() {
-      return this.c(32);
+   public dsd(dsn $$0, aps $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = bmt.a($$2, "entity-deserializer");
    }
 
    @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   public CompletableFuture<dsx<bpv>> a(cye $$0) {
+      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.f.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               cye $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               a.warn("Failed to parse chunk {} position info", $$0, var6);
+            }
 
-         return $$2;
+            tm $$4 = this.e.a($$1.get(), -1);
+            ts $$5 = $$4.c("Entities", 10);
+            List<bpv> $$6 = bqb.a($$5, this.d).collect(ImmutableList.toImmutableList());
+            return new dsx<>($$0, $$6);
+         }
+      }, this.g::a);
+   }
+
+   private static cye a(tm $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new cye($$1[0], $$1[1]);
+   }
+
+   private static void a(tm $$0, cye $$1) {
+      $$0.a("Position", new tq(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dsx<bpv> b(cye $$0) {
+      return new dsx<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dsx<bpv> $$0) {
+      cye $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.e.a($$1, null);
+         }
+      } else {
+         ts $$2 = new ts();
+         $$0.b().forEach($$1x -> {
+            tm $$2x = new tm();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         tm $$3 = ub.f(new tm());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.e.a($$1, $$3).exceptionally($$1x -> {
+            a.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.f.remove($$1.a());
       }
    }
 
    @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
-   }
-
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
-   }
-
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
    }
 }

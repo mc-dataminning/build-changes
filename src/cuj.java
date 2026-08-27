@@ -1,15 +1,5 @@
-public class cuj extends cud {
-   public cuj(String $$0, ctm $$1, cqm $$2) {
-      super(ctu.f, ctt.t, $$0, $$1, $$2);
-   }
+import java.util.function.Consumer;
 
-   @Override
-   public boolean a(bmw $$0, cxb $$1) {
-      return this.a.a($$0.a(0));
-   }
-
-   @Override
-   public cqm g() {
-      return new cqm(dae.oc);
-   }
+public interface cuj {
+   void a(Consumer<wg> var1, csz var2);
 }

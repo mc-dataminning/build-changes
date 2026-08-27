@@ -1,10 +1,11 @@
-public class gej<T extends box> extends gda<T> {
-   public gej(gdb.a $$0) {
-      super($$0);
+public class gej extends ggo<cby, fpp> {
+   private static final ajt a = new ajt("textures/entity/bat.png");
+
+   public gej(gfi.a $$0) {
+      super($$0, new fpp($$0.a(ftl.h)), 0.25F);
    }
 
-   @Override
-   public ajh a(T $$0) {
-      return gjb.e;
+   public ajt a(cby $$0) {
+      return a;
    }
 }

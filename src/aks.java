@@ -1,132 +1,166 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import java.util.UUID;
 
-public class aks {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, ajg<cxb>> a = ImmutableBiMap.of("o", cxb.h, "n", cxb.i, "e", cxb.j);
-   @Nullable
-   private static akk g;
-   @Nullable
-   private static akj h;
+public class aks extends app {
+   private final ajt h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)dv.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)dv.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    dv.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((du)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)dv.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 dv.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((du)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(dv.a("stop").executes($$0x -> a((du)$$0x.getSource())))
-      );
+   public aks(ajt $$0, wg $$1) {
+      super($$1, bnq.a.g, bnq.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   private static int a(du $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> vu.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> vu.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
+   public ajt a() {
+      return this.h;
    }
 
-   private static boolean b(du $$0) {
-      if (g != null) {
-         $$0.b(vu.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(vu.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public void a(apt $$0) {
+      super.a($$0);
+      this.i.add($$0.cw());
    }
 
-   private static int a(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new akk($$1, $$2, $$0.l().ah(), 100);
+   public void a(UUID $$0) {
+      this.i.add($$0);
+   }
 
-         try {
-            g.a();
-            $$0.a(() -> vu.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(vu.b("Failed to start chase server on port " + $$2));
-            g = null;
+   @Override
+   public void b(apt $$0) {
+      super.b($$0);
+      this.i.remove($$0.cw());
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
+   }
+
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(axk.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(axk.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final wg e() {
+      return wj.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new wm(wm.a.a, wg.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<apt> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<apt> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (apt $$5 : $$0) {
+            if ($$5.cw().equals($$3)) {
+               $$4 = true;
+               break;
+            }
          }
 
-         return 0;
+         if (!$$4) {
+            $$1.add($$3);
+         }
+      }
+
+      for (apt $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cw().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (apt $$10 : this.g()) {
+            if ($$10.cw().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (apt $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public tm a(in.a $$0) {
+      tm $$1 = new tm();
+      $$1.a("Name", wg.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      ts $$2 = new ts();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(ub.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static aks a(tm $$0, ajt $$1, in.a $$2) {
+      aks $$3 = new aks($$1, wg.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bnq.a.a($$0.l("Color")));
+      $$3.a(bnq.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (uj $$5 : $$0.c("Players", 11)) {
+         $$3.a(ub.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(apt $$0) {
+      if (this.i.contains($$0.cw())) {
+         this.a($$0);
       }
    }
 
-   private static int b(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new akj($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> vu.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
-      }
+   public void d(apt $$0) {
+      super.b($$0);
    }
 }

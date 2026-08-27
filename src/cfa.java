@@ -1,17 +1,20 @@
-public class cfa {
-   private final int a;
-   private final int b;
-
-   public cfa(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public abstract class cfa extends cez {
+   public cfa(cex $$0) {
+      super($$0);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public boolean a() {
+      return true;
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public float a(bot $$0, float $$1) {
+      if ($$0.c() instanceof cjz) {
+         $$0.c().g(1);
+         return 0.0F;
+      } else {
+         return super.a($$0, $$1);
+      }
    }
 }

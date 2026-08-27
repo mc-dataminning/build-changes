@@ -1,89 +1,27 @@
-import java.util.List;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.stream.Collectors;
 
-public class dpt<T> implements dpo<T> {
-   private final iq<T> a;
-   @Nullable
-   private T b;
-   private final dpp<T> c;
-
-   public dpt(iq<T> $$0, dpp<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
+public class dpt extends dpx<ih> {
+   protected dpt(String $$0, Collection<ih> $$1) {
+      super($$0, ih.class, $$1);
    }
 
-   public static <A> dpo<A> a(int $$0, iq<A> $$1, dpp<A> $$2, List<A> $$3) {
-      return new dpt<>($$1, $$2, $$3);
+   public static dpt a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
+   public static dpt a(String $$0, Predicate<ih> $$1) {
+      return a($$0, Arrays.stream(ih.values()).filter($$1).collect(Collectors.toList()));
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
+   public static dpt a(String $$0, ih... $$1) {
+      return a($$0, Lists.newArrayList($$1));
    }
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
-   }
-
-   @Override
-   public void a(uu $$0) {
-      this.b = this.a.b($$0.l());
-   }
-
-   @Override
-   public void b(uu $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return vl.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dpo<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public static dpt a(String $$0, Collection<ih> $$1) {
+      return new dpt($$0, $$1);
    }
 }

@@ -1,18 +1,12 @@
-public interface ctu<T extends ctp<?>> {
-   ctu<ctg> a = a("crafting");
-   ctu<cue> b = a("smelting");
-   ctu<ctb> c = a("blasting");
-   ctu<cui> d = a("smoking");
-   ctu<ctd> e = a("campfire_cooking");
-   ctu<cuj> f = a("stonecutting");
-   ctu<cuf> g = a("smithing");
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   static <T extends ctp<?>> ctu<T> a(final String $$0) {
-      return iy.a(ki.s, new ajh($$0), new ctu<T>() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      });
+public record ctu(int d) {
+   public static final ctu a = new ctu(0);
+   public static final Codec<ctu> b = Codec.INT.xmap(ctu::new, ctu::a);
+   public static final ye<ByteBuf, ctu> c = yc.f.a(ctu::new, ctu::a);
+
+   public int a() {
+      return this.d;
    }
 }

@@ -1,24 +1,20 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+public interface ese {
+   ese a = ($$0, $$1) -> false;
+   ese b = ($$0, $$1) -> !$$0 && !$$1;
+   ese c = ($$0, $$1) -> $$1 && !$$0;
+   ese d = ($$0, $$1) -> !$$0;
+   ese e = ($$0, $$1) -> $$0 && !$$1;
+   ese f = ($$0, $$1) -> !$$1;
+   ese g = ($$0, $$1) -> $$0 != $$1;
+   ese h = ($$0, $$1) -> !$$0 || !$$1;
+   ese i = ($$0, $$1) -> $$0 && $$1;
+   ese j = ($$0, $$1) -> $$0 == $$1;
+   ese k = ($$0, $$1) -> $$1;
+   ese l = ($$0, $$1) -> !$$0 || $$1;
+   ese m = ($$0, $$1) -> $$0;
+   ese n = ($$0, $$1) -> $$0 || !$$1;
+   ese o = ($$0, $$1) -> $$0 || $$1;
+   ese p = ($$0, $$1) -> true;
 
-public interface ese extends AutoCloseable {
-   float a = 7.0F;
-
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default esd a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(ese a, fdy.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
-   }
+   boolean apply(boolean var1, boolean var2);
 }

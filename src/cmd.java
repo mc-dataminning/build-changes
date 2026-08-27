@@ -1,9 +1,11 @@
+import java.util.Set;
+
 public interface cmd {
-   void a(clq var1, iu<cqm> var2, cqm var3, int[] var4);
+   Set<ajs<? extends iy<? extends cmd>>> bz = Set.of(ks.F, ks.f, ks.u, ks.P);
 
-   void a(clq var1, int var2, cqm var3);
+   cmg m();
 
-   void a(clq var1, cqm var2);
-
-   void a(clq var1, int var2, int var3);
+   default boolean a(cmg $$0) {
+      return this.m().a($$0);
+   }
 }

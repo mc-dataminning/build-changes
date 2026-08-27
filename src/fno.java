@@ -1,142 +1,388 @@
-public class fno<T extends cct> extends fon<T> {
-   private static final float a = 2.0F;
-   private static final float b = 2.5F;
-   private static final float f = 0.45F;
-   private static final float g = 29.35F;
-   private static final String h = "saddle";
-   private static final String i = "bridle";
-   private static final String j = "reins";
-   private final frf k;
-   private final frf l;
-   private final frf[] m;
-   private final frf[] n;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fno(frf $$0) {
-      this.k = $$0;
-      frf $$1 = $$0.b("body");
-      this.l = $$1.b("head");
-      this.m = new frf[]{$$1.b("saddle"), this.l.b("bridle")};
-      this.n = new frf[]{this.l.b("reins")};
-   }
+public class fno extends fjo {
+   static final ajt a = new ajt("icon/checkmark");
+   private static final wg b = wg.c("gui.chatSelection.title");
+   private static final wg c = wg.c("gui.chatSelection.context");
+   @Nullable
+   private final fjo d;
+   private final fvp o;
+   private fdp p;
+   private fei q;
+   @Nullable
+   private fno.a r;
+   final fvi.a s;
+   private final Consumer<fvi.a> u;
+   private fnn v;
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      frj $$2 = new frj(0.05F);
-      fro $$3 = $$1.a("body", frk.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), frh.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", frk.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), frh.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", frk.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), frh.a(0.0F, -9.0F, 3.5F));
-      fro $$4 = $$3.a(
-         "head",
-         frk.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         frh.a(0.0F, -3.0F, -19.5F)
-      );
-      $$4.a("left_ear", frk.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), frh.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", frk.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), frh.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", frk.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), frh.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", frk.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), frh.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", frk.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), frh.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", frk.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), frh.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         frk.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         frh.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "reins",
-         frk.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         frh.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "bridle",
-         frk.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         frh.a(0.0F, 0.0F, 0.0F)
-      );
-      return frl.a($$0, 128, 128);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(frf::c);
-      this.a($$0, $$4, $$5, $$3);
-      this.a($$0);
-      this.a(faf.a, $$1, $$2, 2.0F, 2.5F);
-      this.a($$0.ce, faf.b, $$3, 1.0F);
-      this.a($$0.cf, faf.c, $$3, 1.0F);
-      this.a($$0.cg, faf.d, $$3, 1.0F);
-      this.a($$0.ch, faf.f, $$3, 1.0F);
-      this.a($$0.ci, faf.e, $$3, 1.0F);
-   }
-
-   private void a(T $$0, float $$1, float $$2, float $$3) {
-      $$1 = aww.a($$1, -30.0F, 30.0F);
-      $$2 = aww.a($$2, -25.0F, 45.0F);
-      if ($$0.ab_() > 0) {
-         float $$4 = $$3 - (float)$$0.ah;
-         float $$5 = 45.0F * ((float)$$0.ab_() - $$4) / 55.0F;
-         $$2 = aww.a($$2 + $$5, -25.0F, 70.0F);
-      }
-
-      this.l.f = $$1 * (float) (Math.PI / 180.0);
-      this.l.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(T $$0) {
-      boolean $$1 = $$0.i();
-      boolean $$2 = $$0.bP();
-
-      for (frf $$3 : this.m) {
-         $$3.k = $$1;
-      }
-
-      for (frf $$4 : this.n) {
-         $$4.k = $$2 && $$1;
-      }
+   public fno(@Nullable fjo $$0, fvp $$1, fvi.a $$2, Consumer<fvi.a> $$3) {
+      super(b);
+      this.d = $$0;
+      this.o = $$1;
+      this.s = $$2.d();
+      this.u = $$3;
    }
 
    @Override
-   public void a(eub $$0, euf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(0.45F, 0.45F, 0.45F);
-         $$0.a(0.0F, 1.834375F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected void aN_() {
+      this.v = new fnn(this.o, this::a);
+      this.q = fei.a(this.m, c, this.k - 16);
+      this.r = this.c(new fno.a(this.j, (this.q.a() + 1) * 9));
+      this.c(fdp.a(wf.k, $$0 -> this.d()).a(this.k / 2 - 155, this.l - 32, 150, 20).a());
+      this.p = this.c(fdp.a(wf.d, $$0 -> {
+         this.u.accept(this.s);
+         this.d();
+      }).a(this.k / 2 - 155 + 160, this.l - 32, 150, 20).a());
+      this.D();
+      this.m();
+      this.r.a((double)this.r.o());
+   }
+
+   private boolean a(fve $$0) {
+      return $$0.a(this.s.f());
+   }
+
+   private void m() {
+      int $$0 = this.r.d();
+      this.v.a($$0, this.r);
+   }
+
+   void C() {
+      this.m();
+   }
+
+   void D() {
+      this.p.j = !this.s.a().isEmpty();
    }
 
    @Override
-   public frf a() {
-      return this.k;
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 10, 16777215);
+      AbuseReportLimits $$4 = this.o.a().b();
+      int $$5 = this.s.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      wg $$7 = wg.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.m, $$7, this.k / 2, 16 + 9 * 3 / 2, -1);
+      this.q.a($$0, this.k / 2, this.r.I());
+   }
+
+   @Override
+   public void d() {
+      this.j.a(this.d);
+   }
+
+   @Override
+   public wg i() {
+      return wf.a(super.i(), c);
+   }
+
+   public class a extends fel<fno.a.b> implements fnn.a {
+      @Nullable
+      private fno.a.c m;
+
+      public a(fbp $$1, int $$2) {
+         super($$1, fno.this.k, fno.this.l - $$2 - 80, 40, 16);
+      }
+
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.n();
+         super.a($$0);
+         if ((float)this.o() > 1.0E-5F && $$0 <= 1.0E-5F && !axk.b($$0, $$1)) {
+            fno.this.C();
+         }
+      }
+
+      @Override
+      public void a(int $$0, fve.a $$1) {
+         boolean $$2 = $$1.a(fno.this.s.f());
+         fvc $$3 = $$1.h();
+         fbk $$4 = $$3.a($$1.g());
+         fno.a.b $$5 = new fno.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
+      }
+
+      private void a(fve.a $$0, boolean $$1) {
+         fno.a.b $$2 = new fno.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fno.a.c $$3 = new fno.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
+
+         this.m = $$3;
+      }
+
+      @Override
+      public void a(wg $$0) {
+         this.c(new fno.a.f());
+         this.c(new fno.a.a($$0));
+         this.c(new fno.a.f());
+         this.m = null;
+      }
+
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
+      }
+
+      @Override
+      public int d() {
+         return axk.e(this.h, this.d);
+      }
+
+      @Override
+      protected void a(fdc $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fno.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.h() == $$9;
+            int $$11 = this.aJ_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.u() == $$9, $$3);
+      }
+
+      private boolean b(fno.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.h() == $$0;
+            boolean $$2 = this.h() == null;
+            boolean $$3 = this.u() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fno.a.b b(fht $$0) {
+         return this.a($$0, fno.a.b::c);
+      }
+
+      public void a(@Nullable fno.a.b $$0) {
+         super.a($$0);
+         fno.a.b $$1 = this.b(fht.a);
+         if ($$1 == null) {
+            fno.this.C();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fno.a.b $$3 = this.h();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public int I() {
+         return this.F() + 9;
+      }
+
+      public class a extends fno.a.b {
+         private static final int c = -6250336;
+         private final wg d;
+
+         public a(wg $$1) {
+            this.d = $$1;
+         }
+
+         @Override
+         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fno.this.m.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fno.this.m, this.d, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public wg a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends fel.a<fno.a.b> {
+         @Override
+         public wg a() {
+            return wf.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fno.a.b b) {
+         public boolean a(fno.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fno.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final wl h;
+         private final wg i;
+         @Nullable
+         private final List<aww> j;
+         @Nullable
+         private final fbk.a k;
+         @Nullable
+         private final List<aww> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, wg $$2, wg $$3, @Nullable fbk $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, fbk::f);
+            this.l = $$4 != null && $$4.g() != null ? fno.this.m.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            wl $$7 = fno.this.m.a($$2, this.e() - fno.this.m.a(wf.u));
+            if ($$2 != $$7) {
+               this.h = wl.a($$7, wf.u);
+               this.j = fno.this.m.c($$2, a.this.b());
+            } else {
+               this.h = $$2;
+               this.j = null;
+            }
+
+            this.i = $$3;
+         }
+
+         @Override
+         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fno.this.m, th.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               fno.this.b(this.j);
+            }
+
+            int $$12 = fno.this.m.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  fno.this.b(this.l);
+               }
+            }
+         }
+
+         private void a(fdc $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(fno.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public wg a() {
+            return (wg)(this.b() ? wg.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fhq.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fno.this.s.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.m;
+         }
+
+         private boolean h() {
+            if (this.m) {
+               fno.this.s.a(this.g);
+               fno.this.D();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fno.a.b {
+         private static final int c = 12;
+         private static final int d = 4;
+         private final wg e;
+         private final Supplier<gmi> f;
+         private final boolean g;
+
+         public e(GameProfile $$1, wg $$2, boolean $$3) {
+            this.e = $$2;
+            this.g = $$3;
+            this.f = a.this.c.an().a($$1);
+         }
+
+         @Override
+         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 + 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            feo.a($$0, this.f.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fno.this.m, this.e, $$10 + 12 + 4, $$12, this.g ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fno.a.b {
+         @Override
+         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
+      }
    }
 }

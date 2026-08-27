@@ -1,47 +1,54 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eng {
-   private static final BiMap<ajh, enf> r = HashBiMap.create();
-   public static final Codec<enf> a = ajh.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((enf)r.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         r.inverse()::get
-      );
-   public static final enf b = a("empty", $$0 -> {
-   });
-   public static final enf c = a("chest", $$0 -> $$0.a(enh.f).b(enh.a));
-   public static final enf d = a("command", $$0 -> $$0.a(enh.f).b(enh.a));
-   public static final enf e = a("selector", $$0 -> $$0.a(enh.f).a(enh.a));
-   public static final enf f = a("fishing", $$0 -> $$0.a(enh.f).a(enh.i).b(enh.a));
-   public static final enf g = a("entity", $$0 -> $$0.a(enh.a).a(enh.f).a(enh.c).b(enh.d).b(enh.e).b(enh.b));
-   public static final enf h = a("archaeology", $$0 -> $$0.a(enh.f).b(enh.a));
-   public static final enf i = a("gift", $$0 -> $$0.a(enh.f).a(enh.a));
-   public static final enf j = a("barter", $$0 -> $$0.a(enh.a));
-   public static final enf k = a("vault", $$0 -> $$0.a(enh.f).b(enh.a));
-   public static final enf l = a("advancement_reward", $$0 -> $$0.a(enh.a).a(enh.f));
-   public static final enf m = a("advancement_entity", $$0 -> $$0.a(enh.a).a(enh.f));
-   public static final enf n = a("advancement_location", $$0 -> $$0.a(enh.a).a(enh.f).a(enh.i).a(enh.g));
-   public static final enf o = a("block_use", $$0 -> $$0.a(enh.a).a(enh.f).a(enh.g));
-   public static final enf p = a("generic", $$0 -> $$0.a(enh.a).a(enh.b).a(enh.c).a(enh.d).a(enh.e).a(enh.f).a(enh.g).a(enh.h).a(enh.i).a(enh.j));
-   public static final enf q = a("block", $$0 -> $$0.a(enh.g).a(enh.f).a(enh.i).b(enh.a).b(enh.h).b(enh.j));
+public class eng<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eng<eqc> a = new eng<>(eqe.a, "predicates", c());
+   public static final eng<eop> b = new eng<>(eor.b, "item_modifiers", c());
+   public static final eng<enj> c = new eng<>(enj.d, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final eng.a<T> g;
 
-   private static enf a(String $$0, Consumer<enf.a> $$1) {
-      enf.a $$2 = new enf.a();
-      $$1.accept($$2);
-      enf $$3 = $$2.a();
-      ajh $$4 = new ajh($$0);
-      enf $$5 = (enf)r.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
-      }
+   private eng(Codec<T> $$0, String $$1, eng.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   public String a() {
+      return this.f;
+   }
+
+   public void a(enk $$0, end<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
+   }
+
+   public <V> Optional<T> a(ajt $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
+   }
+
+   public static Stream<eng<?>> b() {
+      return Stream.of(a, b, c);
+   }
+
+   private static <T extends enc> eng.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   private static eng.a<enj> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(enk var1, end<T> var2, T var3);
    }
 }

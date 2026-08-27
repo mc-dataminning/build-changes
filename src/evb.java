@@ -1,30 +1,31 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
 
-public class evb extends evx {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class evb {
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
+   }
 
-   public static evb a(JsonObject $$0) {
-      evb $$1 = new evb();
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
+   }
 
-      try {
-         $$1.a = exu.b("invitationId", $$0, "");
-         $$1.b = exu.b("worldName", $$0, "");
-         $$1.c = exu.b("worldOwnerName", $$0, "");
-         $$1.d = exu.a("worldOwnerUuid", $$0, ac.d);
-         $$1.e = exu.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
-      }
+   public static String a() {
+      return GlStateManager._getString(7936);
+   }
 
-      return $$1;
+   public static String b() {
+      return GLX._getCpuInfo();
+   }
+
+   public static String c() {
+      return GlStateManager._getString(7937);
+   }
+
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

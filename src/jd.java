@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class jd {
-   public static final xs<ByteBuf, jd> a = new xs<ByteBuf, jd>() {
+   public static final ye<ByteBuf, jd> a = new ye<ByteBuf, jd>() {
       public jd a(ByteBuf $$0) {
          return new jd($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -22,15 +22,15 @@ public class jd {
       this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public jd(tg $$0) {
+   public jd(ts $$0) {
       this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public tg a() {
-      tg $$0 = new tg();
-      $$0.add(td.a(this.b));
-      $$0.add(td.a(this.c));
-      $$0.add(td.a(this.d));
+   public ts a() {
+      ts $$0 = new ts();
+      $$0.add(tp.a(this.b));
+      $$0.add(tp.a(this.c));
+      $$0.add(tp.a(this.d));
       return $$0;
    }
 
@@ -52,14 +52,14 @@ public class jd {
    }
 
    public float e() {
-      return aww.g(this.b);
+      return axk.g(this.b);
    }
 
    public float f() {
-      return aww.g(this.c);
+      return axk.g(this.c);
    }
 
    public float g() {
-      return aww.g(this.d);
+      return axk.g(this.d);
    }
 }

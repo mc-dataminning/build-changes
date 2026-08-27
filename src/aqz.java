@@ -1,9 +1,15 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record aqz(String a, vu b, asa c, Optional<arv> d) {
-   public vu a(boolean $$0, vu $$1) {
-      return vx.a(this.c.a(vu.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new wa(wa.a.a, vu.i().b(this.b).f("\n").b($$1))));
+public class aqz implements aqi {
+   public static final aqi.a a = new aqi.a("join_world");
+
+   @Override
+   public void a(Consumer<yn<?>> $$0) {
+      $$0.accept(aai.a);
+   }
+
+   @Override
+   public aqi.a a() {
+      return a;
    }
 }

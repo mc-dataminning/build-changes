@@ -1,41 +1,36 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public interface exr {
-   exr a = new exr() {
-      @Override
-      public long a() {
-         return 1L;
+public class exr extends eye {
+   private static final Logger b = LogUtils.getLogger();
+   public List<exp> a;
+
+   public static exr a(String $$0) {
+      exr $$1 = new exr();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(exp.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
-      @Override
-      public long b() {
-         return 1L;
-      }
-   };
-
-   long a();
-
-   long b();
-
-   static exr a(final int $$0) {
-      return new exr() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
-
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
-         }
-
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+      return $$1;
    }
 }

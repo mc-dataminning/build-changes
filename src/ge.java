@@ -14,29 +14,35 @@ public class ge {
       this.a = new gf($$0, true);
    }
 
-   public Predicate<cqm> a(StringReader $$0) throws CommandSyntaxException {
-      final List<Predicate<cqm>> $$1 = new ArrayList<>();
+   public Predicate<crj> a(StringReader $$0) throws CommandSyntaxException {
+      final List<Predicate<crj>> $$1 = new ArrayList<>();
+      final jn.a $$2 = jn.a();
       this.a.a($$0, new gf.c() {
          @Override
-         public void a(il<cqh> $$0) {
+         public void a(il<cre> $$0) {
             $$1.add($$1xx -> $$1xx.a($$0));
          }
 
          @Override
-         public void a(ip<cqh> $$0) {
+         public void a(ip<cre> $$0) {
             $$1.add($$1xx -> $$1xx.a($$0));
          }
 
          @Override
-         public void a(ta $$0) {
-            if (!$$0.g()) {
-               $$1.add($$1xx -> {
-                  ta $$2 = $$1xx.w();
-                  return tp.a($$0, $$2, true);
-               });
-            }
+         public <T> void a(jo<T> $$0, T $$1x) {
+            $$2.a($$0, $$1);
+         }
+
+         @Override
+         public void a(tm $$0) {
+            $$1.add(ctt.a(jp.a, $$0));
          }
       });
+      jn $$3 = $$2.a();
+      if (!$$3.b()) {
+         $$1.add($$3::a);
+      }
+
       return ac.a($$1);
    }
 

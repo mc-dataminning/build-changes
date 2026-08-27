@@ -1,18 +1,37 @@
-import java.util.Optional;
+public class agk implements yn<afl> {
+   public static final ye<vg, agk> a = yn.a(agk::a, agk::new);
+   private final boolean b;
+   private final boolean c;
 
-public record agk(Optional<il<boi>> b, Optional<il<boi>> c) implements yb<aez> {
-   public static final xs<vf, agk> a = xs.a(xq.b(kj.Q).a(xq::a), agk::b, xq.b(kj.Q).a(xq::a), agk::e, agk::new);
-
-   @Override
-   public yd<agk> a() {
-      return aex.bQ;
+   public agk(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(aez $$0) {
+   private agk(vg $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public Optional<il<boi>> e() {
+   @Override
+   public yp<agk> a() {
+      return afj.bE;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean e() {
       return this.c;
    }
 }

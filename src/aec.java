@@ -1,45 +1,52 @@
-public class aec implements yb<aam> {
-   public static final xs<uu, aec> a = yb.a(aec::a, aec::new);
-   private final long b;
-   private final long c;
+import java.util.ArrayList;
+import java.util.List;
 
-   public aec(long $$0, long $$1, boolean $$2) {
-      this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
+public record aec(int c, List<ajc.c<?>> d) implements yn<aay> {
+   public static final ye<vr, aec> a = yn.a(aec::b, aec::new);
+   public static final int b = 255;
+
+   private aec(vr $$0) {
+      this($$0.l(), a($$0));
+   }
+
+   private static void a(List<ajc.c<?>> $$0, vr $$1) {
+      for (ajc.c<?> $$2 : $$0) {
+         $$2.a($$1);
       }
 
-      this.c = $$3;
+      $$1.k(255);
    }
 
-   private aec(uu $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
+   private static List<ajc.c<?>> a(vr $$0) {
+      List<ajc.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(ajc.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(uu $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void b(vr $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public yd<aec> a() {
-      return aex.aO;
+   public yp<aec> a() {
+      return afj.aC;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public int b() {
+      return this.c;
    }
 
-   public long e() {
-      return this.c;
+   public List<ajc.c<?>> e() {
+      return this.d;
    }
 }

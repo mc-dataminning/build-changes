@@ -22,7 +22,7 @@ public class gd implements ArgumentType<gd.a> {
    }
 
    public gd.a a(StringReader $$0) throws CommandSyntaxException {
-      Predicate<cqm> $$1 = this.b.a($$0);
+      Predicate<crj> $$1 = this.b.a($$0);
       return $$1::test;
    }
 
@@ -38,6 +38,6 @@ public class gd implements ArgumentType<gd.a> {
       return a;
    }
 
-   public interface a extends Predicate<cqm> {
+   public interface a extends Predicate<crj> {
    }
 }

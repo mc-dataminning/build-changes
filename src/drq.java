@@ -1,59 +1,89 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class drq {
-   private final apf a;
+public class drq<T> implements drl<T> {
+   private final iq<T> a;
+   @Nullable
+   private T b;
+   private final drm<T> c;
 
-   public drq(apf $$0) {
+   public drq(iq<T> $$0, drm<T> $$1, List<T> $$2) {
       this.a = $$0;
-   }
-
-   public void a(il<drp> $$0, ept $$1, drp.a $$2) {
-      int $$3 = $$0.a().a();
-      ib $$4 = ib.a($$1);
-      int $$5 = je.a($$4.u() - $$3);
-      int $$6 = je.a($$4.v() - $$3);
-      int $$7 = je.a($$4.w() - $$3);
-      int $$8 = je.a($$4.u() + $$3);
-      int $$9 = je.a($$4.v() + $$3);
-      int $$10 = je.a($$4.w() + $$3);
-      List<drp.b> $$11 = new ArrayList<>();
-      drs.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == drr.a.b) {
-            $$11.add(new drp.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dox $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         aew.a(this.a, $$0, $$1);
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
    }
 
-   private void a(List<drp.b> $$0) {
-      Collections.sort($$0);
+   public static <A> drl<A> a(int $$0, iq<A> $$1, drm<A> $$2, List<A> $$3) {
+      return new drq<>($$1, $$2, $$3);
+   }
 
-      for (drp.b $$1 : $$0) {
-         drr $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(vg $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vg $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return vx.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public drl<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
       }
    }
 }

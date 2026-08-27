@@ -1,93 +1,21 @@
-import java.util.UUID;
+public record aev(wg b, boolean c) implements yn<aay> {
+   public static final ye<vr, aev> a = ye.a(wi.d, aev::b, yc.b, aev::e, aev::new);
 
-public class aev {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(box $$0) {
-      if ($$0 instanceof ciu) {
-         return $$0.ad().getString();
-      } else {
-         vu $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cw());
-      }
+   @Override
+   public yp<aev> a() {
+      return afj.aV;
    }
 
-   public static String a(UUID $$0) {
-      axd $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   public void a(aay $$0) {
+      $$0.a(this);
    }
 
-   private static String a(axd $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   private static axd b(UUID $$0) {
-      return axd.a((long)($$0.hashCode() >> 2));
+   public boolean e() {
+      return this.c;
    }
 }

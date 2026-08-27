@@ -1,79 +1,115 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fgh extends fhh {
-   private static final vu a = vu.c("addServer.enterIp");
-   private fbi b;
-   private final fso c;
-   private fbr k;
-   private final BooleanConsumer l;
-   private final fhh m;
+public class fgh extends gku implements gkv {
+   private static final int e = 256;
+   private final fgi f;
+   private final boolean g;
+   private final fgh.a h;
 
-   public fgh(fhh $$0, BooleanConsumer $$1, fso $$2) {
-      super(vu.c("selectServer.direct"));
-      this.m = $$0;
-      this.c = $$2;
-      this.l = $$1;
+   public fgh(fgi $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new fgh.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? evj.b.a : evj.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aI_() != this.k || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
+   public void a(atc $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fgk a(eum $$0) {
+      if ($$0.c() != this.g) {
+         return null;
       } else {
-         this.o();
-         return true;
+         fgh.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fgk(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
       }
    }
 
    @Override
-   protected void aO_() {
-      this.k = new fbr(this.i, this.g / 2 - 100, 116, 200, 20, vu.c("addServer.enterIp"));
-      this.k.f(128);
-      this.k.a(this.f.m.aa);
-      this.k.b($$0 -> this.E());
-      this.d(this.k);
-      this.b = this.c(fbi.a(vu.c("selectServer.select"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
-      this.c(fbi.a(vt.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-      this.E();
+   public void a(ajt $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   @Override
-   protected void aF_() {
-      this.b(this.k);
-   }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fgh.a e;
+      @Nullable
+      private fgh.a f;
+      private boolean g;
 
-   @Override
-   public void a(ezi $$0, int $$1, int $$2) {
-      String $$3 = this.k.a();
-      this.b($$0, $$1, $$2);
-      this.k.a($$3);
-   }
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   private void o() {
-      this.c.b = this.k.a();
-      this.l.accept(true);
-   }
+      @Nullable
+      fgh.a a(eum $$0) {
+         if (this.e != null && this.f != null) {
+            fgh.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
 
-   @Override
-   public void d() {
-      this.f.a(this.m);
-   }
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fgh.a(this.a, this.b, $$2, this.d);
+                  this.f = new fgh.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fgh.a(this.a, this.b, this.c, $$3);
+                  this.f = new fgh.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
 
-   @Override
-   public void k() {
-      this.f.m.aa = this.k.a();
-      this.f.m.at();
-   }
-
-   private void E() {
-      this.b.j = ftr.b(this.k.a());
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
-      this.k.a($$0, $$1, $$2, $$3);
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

@@ -1,45 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class duz extends dvs<dxp> {
-   public duz(Codec<dxp> $$0) {
-      super($$0);
+public record duz(int g, int h, int i, int j) {
+   public static final Codec<duz> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dsr.e, dsr.d).fieldOf("min_y").forGetter(duz::c),
+                  Codec.intRange(0, dsr.c).fieldOf("height").forGetter(duz::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(duz::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(duz::f)
+               )
+               .apply($$0, duz::new)
+      )
+      .comapFlatMap(duz::a, Function.identity());
+   protected static final duz b = a(-64, 384, 1, 2);
+   protected static final duz c = a(0, 128, 1, 2);
+   protected static final duz d = a(0, 128, 2, 1);
+   protected static final duz e = a(-64, 192, 1, 2);
+   protected static final duz f = a(0, 256, 2, 1);
+
+   private static DataResult<duz> a(duz $$0) {
+      if ($$0.c() + $$0.d() > dsr.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dsr.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   @Override
-   public boolean a(dvu<dxp> $$0) {
-      ib $$1 = $$0.e();
-      cxw $$2 = $$0.b();
-      axd $$3 = $$0.d();
+   public static duz a(int $$0, int $$1, int $$2, int $$3) {
+      duz $$4 = new duz($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
 
-      dxp $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            dnb $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   public int a() {
+      return iw.c(this.f());
+   }
 
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+   public int b() {
+      return iw.c(this.e());
+   }
 
-            for (ib $$11 : ib.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
+   public duz a(cyz $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
+      return new duz($$1, $$2, this.i, this.j);
+   }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
+   public int c() {
+      return this.g;
+   }
 
-         return true;
-      }
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

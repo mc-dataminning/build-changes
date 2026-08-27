@@ -1,12 +1,12 @@
-public class ggw<T extends bpp> extends ggy<T, foc<T>> {
-   private static final fya a = fya.p(new ajh("textures/entity/enderman/enderman_eyes.png"));
+public class ggw extends ggo<ccu, fro<ccu>> {
+   private static final ajt a = new ajt("textures/entity/pig/pig.png");
 
-   public ggw(gew<T, foc<T>> $$0) {
-      super($$0);
+   public ggw(gfi.a $$0) {
+      super($$0, new fro<>($$0.a(ftl.aI)), 0.7F);
+      this.a(new gju<>(this, new fro<>($$0.a(ftl.aQ)), new ajt("textures/entity/pig/pig_saddle.png")));
    }
 
-   @Override
-   public fya a() {
+   public ajt a(ccu $$0) {
       return a;
    }
 }

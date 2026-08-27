@@ -1,40 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class eme extends emi {
-   public static final Codec<eme> a = RecordCodecBuilder.create($$0 -> a($$0).and(ekw.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eme::new));
-   private final ekw.b b;
+public class eme extends elz {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public eme(List<env> $$0, ekw.b $$1) {
-      super($$0);
-      this.b = $$1;
+   public static elz.a<eme> a() {
+      return new elz.a<>(eme::new, eme::b, ayq.k);
+   }
+
+   public eme() {
+      this.b.defaultReturnValue(-1);
+   }
+
+   public static eme b(tm $$0, in.a $$1) {
+      eme $$2 = new eme();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public emk b() {
-      return eml.v;
-   }
+   public tm a(tm $$0, in.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
 
-   @Override
-   public Set<ene<?>> a() {
-      return ImmutableSet.of(this.b.a());
-   }
-
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      if ($$0.a(cqp.ul) && $$1.c(this.b.a()) instanceof ciu $$2) {
-         GameProfile $$3 = $$2.fY();
-         $$0.x().a("SkullOwner", tp.a(new ta(), $$3));
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
       }
 
       return $$0;
    }
 
-   public static emi.a<?> a(ekw.b $$0) {
-      return a($$1 -> new eme($$1, $$0));
+   public emd b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new emd($$0);
    }
 }

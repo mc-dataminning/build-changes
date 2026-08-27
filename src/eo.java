@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class eo implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wg.b("arguments.objective.readonly", $$0));
 
    public static eo a() {
       return new eo();
    }
 
-   public static eqp a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static esw a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eqx $$3 = ((du)$$0.getSource()).l().aK();
-      eqp $$4 = $$3.a($$2);
+      ete $$3 = ((du)$$0.getSource()).l().aK();
+      esw $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class eo implements ArgumentType<String> {
       }
    }
 
-   public static eqp b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      eqp $$2 = a($$0, $$1);
+   public static esw b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      esw $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

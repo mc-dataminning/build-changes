@@ -1,26 +1,53 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface eds<C extends dxw> {
-   Optional<edr<C>> createGenerator(eds.a<C> var1);
+public class eds extends edo {
+   public static final Codec<eds> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvl.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dvl.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eds::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dvl d;
+   private final dvl e;
+   private final int f;
 
-   static <C extends dxw> eds<C> simple(Predicate<eds.a<C>> $$0, edr<C> $$1) {
-      Optional<edr<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   private eds(dvl $$0, dvl $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   static <C extends dxw> Predicate<eds.a<C>> checkForBiomeOnTop(dso.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public static eds a(dvl $$0, dvl $$1, int $$2) {
+      return new eds($$0, $$1, $$2);
    }
 
-   public static record a<C extends dxw>(doy a, cye b, dtc c, long d, cwi e, C f, cxd g, Predicate<il<cya>> h, ehf i, iz j) {
-      public boolean a(dso.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         il<cya> $$4 = this.a.c().getNoiseBiome(iw.a($$1), iw.a($$3), iw.a($$2), this.c.b());
-         return this.h.test($$4);
+   @Override
+   public int a(axr $$0, dvo $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = axk.a($$0, $$2 + this.f, $$3);
+         int $$5 = axk.a($$0, $$2, $$4 - 1);
+         return axk.a($$0, $$2, $$5 - 1 + this.f);
       }
+   }
+
+   @Override
+   public edp<?> a() {
+      return edp.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

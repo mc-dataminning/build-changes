@@ -1,56 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-@Deprecated
-public class bth {
-   public static bri<bpp> a(float $$0, bmo $$1) {
-      return a($$0, $$1, $$0x -> true);
+public class bth extends bsg<bqq> {
+   public static final int c = 100;
+   private final bnl d;
+   private final aul e;
+
+   public bth(bnl $$0, aul $$1) {
+      super(ImmutableMap.of(bzr.n, bzs.c, bzr.T, bzs.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static bri<bpp> a(bpd<?> $$0, float $$1, bmo $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   protected boolean a(aps $$0, bqq $$1, long $$2) {
+      return !$$1.aC();
    }
 
-   private static bri<bpp> a(float $$0, bmo $$1, Predicate<bpp> $$2) {
-      float $$3 = $$0 * $$0;
-      bth.a $$4 = new bth.a($$1);
-      return buu.a(
-         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$3x -> $$3x.group($$3x.c(bys.n), $$3x.b(bys.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bpp> $$9 = $$3x.<byu>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((box)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.z)) {
-                        return false;
-                     } else {
-                        $$4x.a(new brs($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   protected void b(aps $$0, bqq $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bqz.g);
    }
 
-   public static final class a {
-      private final bmo a;
-      private int b;
-
-      public a(bmo $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
-         }
+   protected void c(aps $$0, bqq $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, aun.g, 2.0F, 1.0F);
       }
 
-      public boolean a(axd $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
+      $$1.p(false);
+      $$1.b(bqz.a);
+      $$1.dP().b(bzr.T);
+      $$1.dP().a(bzr.S, this.d.a($$0.z));
    }
 }

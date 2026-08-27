@@ -1,78 +1,69 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fam {
-   private static final int a = -1;
-   private final ir<fal> b = new ir<>(32);
-   private final Map<dac, Set<doe<?>>> c = Maps.newHashMap();
+public class fam extends fap {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wg c = wg.c("mco.snapshot.creating");
+   private final long d;
+   private final fai e;
+   private final String f;
+   private final String g;
+   private final ewt h;
+   @Nullable
+   private far i;
+   @Nullable
+   private fas j;
 
-   public static fam a() {
-      fam $$0 = new fam();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxe.a($$1, $$0x.c(dck.b) == dnx.a ? $$2.d() : $$2) : cwz.a(), dae.iI, dae.iH);
-      $$0.a(dck.b, dae.iI, dae.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxe.a($$1, $$2) : cwz.a(), dae.i, dae.bu, dae.bt, dae.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? fxe.a($$1, $$2) : cwz.a();
-         } else {
-            return -1;
+   public fam(ewt $$0, long $$1, fai $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
+   }
+
+   @Override
+   public void run() {
+      ewy $$0 = ewy.a();
+
+      try {
+         exp $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new far($$1.a, this.f, this.g);
+         this.j = new fas(this.e, $$1.a, ezn.a, () -> fbp.Q().execute(() -> ewt.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
          }
-      }, dae.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> cwv.a(), dae.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> cwv.b(), dae.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxe.b($$1, $$2) : cwv.c(), dae.aE, dae.aH, dae.aI, dae.aK, dae.ff, dae.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxe.c($$1, $$2) : -1, dae.G, dae.nd, dae.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dgd.b($$0x.c(dgd.f)), dae.cw);
-      $$0.a(dgd.f, dae.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxe.a($$1, $$2) : -1, dae.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, dae.fc, dae.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dhx.c);
-         int $$5 = $$4 * 32;
-         int $$6 = 255 - $$4 * 8;
-         int $$7 = $$4 * 4;
-         return $$5 << 16 | $$6 << 8 | $$7;
-      }, dae.fe, dae.fd);
-      $$0.a(dhx.c, dae.fe, dae.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, dae.fm);
-      return $$0;
-   }
 
-   public int a(dnb $$0, cxb $$1, ib $$2) {
-      fal $$3 = this.b.a(ki.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eit $$4 = $$0.d($$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (eyl var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
-   public int a(dnb $$0, @Nullable cwe $$1, @Nullable ib $$2, int $$3) {
-      fal $$4 = this.b.a(ki.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   @Override
+   public wg a() {
+      return c;
    }
 
-   public void a(fal $$0, dac... $$1) {
-      for (dac $$2 : $$1) {
-         this.b.a($$0, ki.e.a($$2));
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
       }
-   }
 
-   private void a(Set<doe<?>> $$0, dac... $$1) {
-      for (dac $$2 : $$1) {
-         this.c.put($$2, $$0);
+      if (this.j != null) {
+         this.j.b();
       }
-   }
-
-   private void a(doe<?> $$0, dac... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<doe<?>> a(dac $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

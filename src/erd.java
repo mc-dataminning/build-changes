@@ -1,45 +1,31 @@
-public class erd {
-   private static final ern<Object> a = new ern<Object>() {
-      @Override
-      public void a(erk<Object> $$0) {
-      }
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-      @Override
-      public boolean a(ib $$0, Object $$1) {
-         return false;
-      }
+public record erd(String b) implements erf {
+   public static final Codec<erd> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(erd::c)).apply($$0, erd::new));
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final erg<Object> b = new erg<Object>() {
-      @Override
-      public void a(erk<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(ib $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(ib $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> ern<T> a() {
-      return (ern<T>)a;
+   public static erf a(String $$0) {
+      return new erd($$0);
    }
 
-   public static <T> erg<T> b() {
-      return (erg<T>)b;
+   @Override
+   public ere a() {
+      return erg.b;
+   }
+
+   @Override
+   public etd a(enb $$0) {
+      return etd.c(this.b);
+   }
+
+   @Override
+   public Set<epl<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

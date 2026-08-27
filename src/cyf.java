@@ -1,10 +1,25 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
 public class cyf {
-   public static Codec<? extends cye> a(iy<Codec<? extends cye>> $$0) {
-      iy.a($$0, "fixed", cyl.b);
-      iy.a($$0, "multi_noise", cyn.c);
-      iy.a($$0, "checkerboard", cyi.b);
-      return iy.a($$0, "the_end", cyr.b);
+   private final esa a;
+   private final esa b;
+   private final Predicate<doz> c;
+
+   public cyf(esa $$0, esa $$1, Predicate<doz> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public esa a() {
+      return this.b;
+   }
+
+   public esa b() {
+      return this.a;
+   }
+
+   public Predicate<doz> c() {
+      return this.c;
    }
 }

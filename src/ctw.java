@@ -1,120 +1,87 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public class ctw implements ctg {
-   final ctx a;
-   final cqm b;
-   final String c;
-   final ctf d;
-   final boolean e;
+public record ctw(int d, boolean e) implements cuj {
+   public static final Codec<ctw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(ctw::a), aws.a(Codec.BOOL, "show_in_tooltip", true).forGetter(ctw::b)).apply($$0, ctw::new)
+   );
+   public static final ye<ByteBuf, ctw> b = ye.a(yc.e, ctw::a, yc.b, ctw::b, ctw::new);
+   public static final int c = -6265536;
 
-   public ctw(String $$0, ctf $$1, ctx $$2, cqm $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public static int a(crj $$0, int $$1) {
+      ctw $$2 = $$0.a(jp.q);
+      return $$2 != null ? awu.b.e($$2.a()) : $$1;
    }
 
-   public ctw(String $$0, ctf $$1, ctx $$2, cqm $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public static crj a(crj $$0, List<cqd> $$1) {
+      if (!$$0.a(avk.ba)) {
+         return crj.i;
+      } else {
+         crj $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         ctw $$8 = $$2.a(jp.q);
+         if ($$8 != null) {
+            int $$9 = awu.b.b($$8.a());
+            int $$10 = awu.b.c($$8.a());
+            int $$11 = awu.b.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
+         }
+
+         for (cqd $$12 : $$1) {
+            float[] $$13 = $$12.c().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = awu.b.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(jp.q, new ctw($$22, $$23));
+         return $$2;
+      }
    }
 
    @Override
-   public ctt<?> ar_() {
-      return ctt.a;
+   public void a(Consumer<wg> $$0, csz $$1) {
+      if (this.e) {
+         if ($$1.a()) {
+            $$0.accept(wg.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$0.accept(wg.c("item.dyed").a(n.h, n.u));
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public ctf d() {
+   public int a() {
       return this.d;
    }
 
-   @Override
-   public cqm a(iz $$0) {
-      return this.b;
-   }
-
-   @Override
-   public iu<ctm> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
+   public boolean b() {
       return this.e;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cmg $$0, cxb $$1) {
-      return this.a.a($$0);
-   }
-
-   public cqm a(cmg $$0, iz $$1) {
-      return this.a($$1).q();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      iu<ctm> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements ctt<ctw> {
-      public static final Codec<ctw> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awe.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  ctf.e.fieldOf("category").orElse(ctf.d).forGetter($$0x -> $$0x.d),
-                  ctx.a.forGetter($$0x -> $$0x.a),
-                  cqm.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  awe.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, ctw::new)
-      );
-      public static final xs<vf, ctw> y = xs.a(ctw.a::a, ctw.a::a);
-
-      @Override
-      public Codec<ctw> a() {
-         return x;
-      }
-
-      @Override
-      public xs<vf, ctw> b() {
-         return y;
-      }
-
-      private static ctw a(vf $$0) {
-         String $$1 = $$0.p();
-         ctf $$2 = $$0.b(ctf.class);
-         ctx $$3 = ctx.b.decode($$0);
-         cqm $$4 = cqm.f.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new ctw($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(vf $$0, ctw $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         ctx.b.encode($$0, $$1.a);
-         cqm.f.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
    }
 }

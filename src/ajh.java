@@ -1,243 +1,188 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class ajh implements Comparable<ajh> {
-   public static final Codec<ajh> a = Codec.STRING.comapFlatMap(ajh::b, ajh::toString).stable();
-   public static final xs<ByteBuf, ajh> b = xq.i.a(ajh::new, ajh::toString);
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vu.c("argument.id.invalid"));
-   public static final char c = ':';
-   public static final String d = "minecraft";
-   public static final String e = "realms";
-   private final String g;
-   private final String h;
+public class ajh<C extends bnt> implements ajg<Integer> {
+   private static final Logger d = LogUtils.getLogger();
+   protected final cjx a = new cjx();
+   protected cjs b;
+   protected coc<C> c;
 
-   protected ajh(String $$0, String $$1, @Nullable ajh.a $$2) {
-      this.g = $$0;
-      this.h = $$1;
+   public ajh(coc<C> $$0) {
+      this.c = $$0;
    }
 
-   public ajh(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
-   }
+   public void a(apt $$0, @Nullable cvl<? extends cvj<C>> $$1, boolean $$2) {
+      if ($$1 != null && $$0.I().b($$1)) {
+         this.b = $$0.fZ();
+         if (this.b() || $$0.f()) {
+            this.a.a();
+            $$0.fZ().a(this.a);
+            this.c.a(this.a);
+            if (this.a.a((cvj<?>)$$1.b(), null)) {
+               this.a($$1, $$2);
+            } else {
+               this.a();
+               $$0.d.b(new acx($$0.bY.j, $$1));
+            }
 
-   private ajh(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
-
-   public ajh(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static ajh a(String $$0, char $$1) {
-      return new ajh(b($$0, $$1));
-   }
-
-   @Nullable
-   public static ajh a(String $$0) {
-      try {
-         return new ajh($$0);
-      } catch (z var2) {
-         return null;
+            $$0.fZ().e();
+         }
       }
    }
 
-   @Nullable
-   public static ajh a(String $$0, String $$1) {
-      try {
-         return new ajh($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
+   protected void a() {
+      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
+         if (this.c.e($$0)) {
+            crj $$1 = this.c.b($$0).g().r();
+            this.b.a($$1, false);
+            this.c.b($$0).f($$1);
          }
       }
 
-      return $$2;
+      this.c.l();
    }
 
-   public static DataResult<ajh> b(String $$0) {
-      try {
-         return DataResult.success(new ajh($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+   protected void a(cvl<? extends cvj<C>> $$0, boolean $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = this.a.a($$0, null);
+      if ($$2) {
+         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               crj $$5 = this.c.b($$4).g();
+               if (!$$5.d() && Math.min($$3, $$5.i()) < $$5.G() + 1) {
+                  return;
+               }
+            }
+         }
       }
-   }
 
-   public String a() {
-      return this.h;
-   }
+      int $$6 = this.a($$1, $$3, $$2);
+      IntList $$7 = new IntArrayList();
+      if (this.a.a((cvj<?>)$$0.b(), $$7, $$6)) {
+         int $$8 = $$6;
+         IntListIterator var8 = $$7.iterator();
 
-   public String b() {
-      return this.g;
-   }
+         while (var8.hasNext()) {
+            int $$9 = (Integer)var8.next();
+            int $$10 = cjx.a($$9).i();
+            if ($$10 < $$8) {
+               $$8 = $$10;
+            }
+         }
 
-   public ajh c(String $$0) {
-      return new ajh(this.g, d(this.g, $$0), null);
-   }
-
-   public ajh a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.h));
-   }
-
-   public ajh d(String $$0) {
-      return this.c($$0 + this.h);
-   }
-
-   public ajh e(String $$0) {
-      return this.c(this.h + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.g + ":" + this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ajh $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
+         if (this.a.a((cvj<?>)$$0.b(), $$7, $$8)) {
+            this.a();
+            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return 31 * this.g.hashCode() + this.h.hashCode();
-   }
-
-   public int a(ajh $$0) {
-      int $$1 = this.h.compareTo($$0.h);
-      if ($$1 == 0) {
-         $$1 = this.g.compareTo($$0.g);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.g + "." + this.h;
-   }
-
-   public String e() {
-      return this.g.equals("minecraft") ? this.h : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   public static ajh a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-
-      try {
-         return new ajh($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw f.createWithContext($$0);
+   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
+      cok $$5 = this.c.b($$1);
+      crj $$6 = cjx.a($$0.next());
+      if (!$$6.d()) {
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            this.a($$5, $$6);
+         }
       }
    }
 
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   protected int a(boolean $$0, int $$1, boolean $$2) {
+      int $$3 = 1;
+      if ($$0) {
+         $$3 = $$1;
+      } else if ($$2) {
+         $$3 = 64;
+
+         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               crj $$5 = this.c.b($$4).g();
+               if (!$$5.d() && $$3 > $$5.G()) {
+                  $$3 = $$5.G();
+               }
+            }
+         }
+
+         if ($$3 < 64) {
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
+   protected void a(cok $$0, crj $$1) {
+      int $$2 = this.b.c($$1);
+      if ($$2 != -1) {
+         crj $$3 = this.b.a($$2);
+         if (!$$3.d()) {
+            if ($$3.G() > 1) {
+               this.b.a($$2, 1);
+            } else {
+               this.b.b($$2);
+            }
+
+            if ($$0.g().d()) {
+               $$0.f($$3.c(1));
+            } else {
+               $$0.g().f(1);
+            }
+         }
+      }
+   }
+
+   private boolean b() {
+      List<crj> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
+         if ($$2 != this.c.m()) {
+            crj $$3 = this.c.b($$2).g().r();
+            if (!$$3.d()) {
+               int $$4 = this.b.d($$3);
+               if ($$4 == -1 && $$0.size() <= $$1) {
+                  for (crj $$5 : $$0) {
+                     if (crj.b($$5, $$3) && $$5.G() != $$5.i() && $$5.G() + $$3.G() <= $$5.i()) {
+                        $$5.f($$3.G());
+                        $$3.e(0);
+                        break;
+                     }
+                  }
+
+                  if (!$$3.d()) {
+                     if ($$0.size() >= $$1) {
+                        return false;
+                     }
+
+                     $$0.add($$3);
+                  }
+               } else if ($$4 == -1) {
+                  return false;
+               }
+            }
          }
       }
 
       return true;
    }
 
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
+   private int c() {
+      int $$0 = 0;
+
+      for (crj $$1 : this.b.i) {
+         if ($$1.d()) {
+            $$0++;
          }
       }
 
-      return true;
-   }
-
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<ajh>, JsonSerializer<ajh> {
-      public ajh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new ajh(awm.a($$0, "location"));
-      }
-
-      public JsonElement a(ajh $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+      return $$0;
    }
 }

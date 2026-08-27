@@ -1,390 +1,172 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
+
 public class fag {
-   public static final ezz a = ezz.a.a(3.0F)
-      .a(
-         "croaking_body",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.375F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4167F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4583F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a),
-            new faa(2.9583F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a),
-            new faa(3.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "croaking_body",
-         new ezy(
-            ezy.d.c,
-            new faa(0.0F, fab.a(0.0, 0.0, 0.0), ezy.b.a),
-            new faa(0.375F, fab.a(0.0, 0.0, 0.0), ezy.b.a),
-            new faa(0.4167F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.4583F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.5417F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(0.625F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(0.7083F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(2.25F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(2.3333F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(2.4167F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(2.5F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(2.5833F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(2.6667F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(2.875F, fab.a(1.3F, 2.1F, 1.6F), ezy.b.a),
-            new faa(2.9583F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(3.0F, fab.a(0.0, 0.0, 0.0), ezy.b.a)
-         )
-      )
-      .b();
-   public static final ezz b = ezz.a.a(1.25F)
-      .a()
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, -5.0F, 0.0F), ezy.b.a),
-            new faa(0.2917F, fab.b(7.5F, -2.67F, -7.5F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.7917F, fab.b(22.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.125F, fab.b(-45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.25F, fab.b(0.0F, -5.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.1F, -2.0F), ezy.b.a),
-            new faa(0.2917F, fab.a(-0.5F, -0.25F, -0.13F), ezy.b.a),
-            new faa(0.625F, fab.a(-0.5F, 0.1F, 2.0F), ezy.b.a),
-            new faa(0.9583F, fab.a(0.5F, 1.0F, -0.11F), ezy.b.a),
-            new faa(1.25F, fab.a(0.0F, 0.1F, -2.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.b(22.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4583F, fab.b(-45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, 5.0F, 0.0F), ezy.b.a),
-            new faa(0.9583F, fab.b(7.5F, 2.33F, 7.5F), ezy.b.a),
-            new faa(1.25F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.5F, 0.1F, 2.0F), ezy.b.a),
-            new faa(0.2917F, fab.a(-0.5F, 1.0F, 0.12F), ezy.b.a),
-            new faa(0.625F, fab.a(0.0F, 0.1F, -2.0F), ezy.b.a),
-            new faa(0.9583F, fab.a(0.5F, -0.25F, -0.13F), ezy.b.a),
-            new faa(1.25F, fab.a(0.5F, 0.1F, 2.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.1667F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.2917F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.625F, fab.b(-45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.7917F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.25F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.1F, 1.2F), ezy.b.a),
-            new faa(0.1667F, fab.a(0.0F, 0.1F, 2.0F), ezy.b.a),
-            new faa(0.4583F, fab.a(0.0F, 2.0F, 1.06F), ezy.b.a),
-            new faa(0.7917F, fab.a(0.0F, 0.1F, -1.0F), ezy.b.a),
-            new faa(1.25F, fab.a(0.0F, 0.1F, 1.2F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(-33.75F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.0417F, fab.b(-45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.1667F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.7917F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.9583F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(1.25F, fab.b(-33.75F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 1.14F, 0.11F), ezy.b.a),
-            new faa(0.1667F, fab.a(0.0F, 0.1F, -1.0F), ezy.b.a),
-            new faa(0.7917F, fab.a(0.0F, 0.1F, 2.0F), ezy.b.a),
-            new faa(1.125F, fab.a(0.0F, 2.0F, 0.95F), ezy.b.a),
-            new faa(1.25F, fab.a(0.0F, 1.14F, 0.11F), ezy.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 5.0F, 0.0F), ezy.b.a),
-            new faa(0.2917F, fab.b(-7.5F, 0.33F, 7.5F), ezy.b.a),
-            new faa(0.625F, fab.b(0.0F, -5.0F, 0.0F), ezy.b.a),
-            new faa(0.9583F, fab.b(-7.5F, 0.33F, -7.5F), ezy.b.a),
-            new faa(1.25F, fab.b(0.0F, 5.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .b();
-   public static final ezz c = ezz.a.a(0.5F)
-      .a("body", new ezy(ezy.d.b, new faa(0.0F, fab.b(-22.5F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.b(-22.5F, 0.0F, 0.0F), ezy.b.a)))
-      .a("body", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("left_arm", new ezy(ezy.d.b, new faa(0.0F, fab.b(-56.14F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.b(-56.14F, 0.0F, 0.0F), ezy.b.a)))
-      .a("left_arm", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a)))
-      .a("right_arm", new ezy(ezy.d.b, new faa(0.0F, fab.b(-56.14F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.b(-56.14F, 0.0F, 0.0F), ezy.b.a)))
-      .a("right_arm", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a)))
-      .a("left_leg", new ezy(ezy.d.b, new faa(0.0F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("left_leg", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("right_leg", new ezy(ezy.d.b, new faa(0.0F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.b(45.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("right_leg", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a), new faa(0.5F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .b();
-   public static final ezz d = ezz.a.a(0.5F)
-      .a(
-         "head",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.0833F, fab.b(-60.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4167F, fab.b(-60.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ezy(
-            ezy.d.c,
-            new faa(0.0F, fab.b(1.0F, 1.0F, 1.0F), ezy.b.a),
-            new faa(0.0833F, fab.b(0.998F, 1.0F, 1.0F), ezy.b.a),
-            new faa(0.4167F, fab.b(0.998F, 1.0F, 1.0F), ezy.b.a),
-            new faa(0.5F, fab.b(1.0F, 1.0F, 1.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.0833F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4167F, fab.b(-18.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "tongue",
-         new ezy(
-            ezy.d.c,
-            new faa(0.0833F, fab.a(1.0, 1.0, 1.0), ezy.b.a),
-            new faa(0.1667F, fab.a(0.5, 1.0, 5.0), ezy.b.a),
-            new faa(0.4167F, fab.a(1.0, 1.0, 1.0), ezy.b.a)
-         )
-      )
-      .b();
-   public static final ezz e = ezz.a.a(1.04167F)
-      .a()
-      .a(
-         "body",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.3333F, fab.b(10.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.6667F, fab.b(-10.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(1.0417F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(90.0F, 22.5F, 0.0F), ezy.b.b),
-            new faa(0.4583F, fab.b(45.0F, 22.5F, 0.0F), ezy.b.b),
-            new faa(0.6667F, fab.b(-22.5F, -22.5F, -22.5F), ezy.b.b),
-            new faa(0.875F, fab.b(-45.0F, -22.5F, 0.0F), ezy.b.b),
-            new faa(0.9583F, fab.b(22.5F, 0.0F, 22.5F), ezy.b.b),
-            new faa(1.0417F, fab.b(90.0F, 22.5F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, -0.64F, 2.0F), ezy.b.b),
-            new faa(0.4583F, fab.a(0.0F, -0.64F, 0.0F), ezy.b.b),
-            new faa(0.6667F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.875F, fab.a(0.0F, -0.27F, -1.14F), ezy.b.b),
-            new faa(0.9583F, fab.a(0.0F, -1.45F, 0.43F), ezy.b.b),
-            new faa(1.0417F, fab.a(0.0F, -0.64F, 2.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(90.0F, -22.5F, 0.0F), ezy.b.b),
-            new faa(0.4583F, fab.b(45.0F, -22.5F, 0.0F), ezy.b.b),
-            new faa(0.6667F, fab.b(-22.5F, 22.5F, 22.5F), ezy.b.b),
-            new faa(0.875F, fab.b(-45.0F, 22.5F, 0.0F), ezy.b.b),
-            new faa(0.9583F, fab.b(22.5F, 0.0F, -22.5F), ezy.b.b),
-            new faa(1.0417F, fab.b(90.0F, -22.5F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, -0.64F, 2.0F), ezy.b.b),
-            new faa(0.4583F, fab.a(0.0F, -0.64F, 0.0F), ezy.b.b),
-            new faa(0.6667F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.875F, fab.a(0.0F, -0.27F, -1.14F), ezy.b.b),
-            new faa(0.9583F, fab.a(0.0F, -1.45F, 0.43F), ezy.b.b),
-            new faa(1.0417F, fab.a(0.0F, -0.64F, 2.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.25F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.4583F, fab.b(67.5F, -45.0F, 0.0F), ezy.b.b),
-            new faa(0.7917F, fab.b(90.0F, 45.0F, 0.0F), ezy.b.b),
-            new faa(0.9583F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(1.0417F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(-2.5F, 0.0F, 1.0F), ezy.b.b),
-            new faa(0.25F, fab.a(-2.0F, 0.0F, 1.0F), ezy.b.b),
-            new faa(0.4583F, fab.a(1.0F, -2.0F, -1.0F), ezy.b.b),
-            new faa(0.7917F, fab.a(0.58F, 0.0F, -2.83F), ezy.b.b),
-            new faa(0.9583F, fab.a(-2.5F, 0.0F, 1.0F), ezy.b.b),
-            new faa(1.0417F, fab.a(-2.5F, 0.0F, 1.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.25F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(0.4583F, fab.b(67.5F, 45.0F, 0.0F), ezy.b.b),
-            new faa(0.7917F, fab.b(90.0F, -45.0F, 0.0F), ezy.b.b),
-            new faa(0.9583F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(1.0417F, fab.b(90.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(2.5F, 0.0F, 1.0F), ezy.b.b),
-            new faa(0.25F, fab.a(2.0F, 0.0F, 1.0F), ezy.b.b),
-            new faa(0.4583F, fab.a(-1.0F, -2.0F, -1.0F), ezy.b.b),
-            new faa(0.7917F, fab.a(-0.58F, 0.0F, -2.83F), ezy.b.b),
-            new faa(0.9583F, fab.a(2.5F, 0.0F, 1.0F), ezy.b.b),
-            new faa(1.0417F, fab.a(2.5F, 0.0F, 1.0F), ezy.b.b)
-         )
-      )
-      .b();
-   public static final ezz f = ezz.a.a(3.0F)
-      .a()
-      .a(
-         "body",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(1.625F, fab.b(-10.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(3.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, -22.5F), ezy.b.b),
-            new faa(2.2083F, fab.b(0.0F, 0.0F, -45.0F), ezy.b.b),
-            new faa(3.0F, fab.b(0.0F, 0.0F, -22.5F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(-1.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(2.2083F, fab.a(-1.0F, -0.5F, 0.0F), ezy.b.b),
-            new faa(3.0F, fab.a(-1.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 22.5F), ezy.b.b),
-            new faa(2.2083F, fab.b(0.0F, 0.0F, 45.0F), ezy.b.b),
-            new faa(3.0F, fab.b(0.0F, 0.0F, 22.5F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(1.0F, 0.0F, 0.0F), ezy.b.b),
-            new faa(2.2083F, fab.a(1.0F, -0.5F, 0.0F), ezy.b.b),
-            new faa(3.0F, fab.a(1.0F, 0.0F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(22.5F, -22.5F, 0.0F), ezy.b.b),
-            new faa(1.0F, fab.b(22.5F, -22.5F, -45.0F), ezy.b.b),
-            new faa(3.0F, fab.b(22.5F, -22.5F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "left_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.b),
-            new faa(1.0F, fab.a(0.0F, -1.0F, 1.0F), ezy.b.b),
-            new faa(3.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(22.5F, 22.5F, 0.0F), ezy.b.b),
-            new faa(1.0F, fab.b(22.5F, 22.5F, 45.0F), ezy.b.b),
-            new faa(3.0F, fab.b(22.5F, 22.5F, 0.0F), ezy.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.b),
-            new faa(1.0F, fab.a(0.0F, -1.0F, 1.0F), ezy.b.b),
-            new faa(3.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.b)
-         )
-      )
-      .b();
+   private fag() {
+   }
+
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
+   }
+
+   public static List<fag.a> a(String $$0, fag.b... $$1) {
+      return a($$0, Arrays.asList($$1));
+   }
+
+   private static List<fag.a> a(String $$0, List<fag.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
+   }
+
+   private static List<fag.a> a(List<String> $$0, List<fag.b> $$1) {
+      int $$2 = 0;
+      List<fag.a> $$3 = Lists.newArrayList();
+
+      for (String $$4 : $$0) {
+         List<fag.b> $$5 = Lists.newArrayList();
+
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
+            } else {
+               $$5.add(fag.b.a($$7));
+            }
+         }
+
+         $$3.add(new fag.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+      } else {
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
+
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
+            }
+
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
+         }
+
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
+         }
+
+         return $$2;
+      }
+   }
+
+   public static class a {
+      public final List<fag.b> a;
+
+      a(fag.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<fag.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fag.a $$1 = (fag.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
+   }
+
+   public static class b {
+      private final String a;
+      @Nullable
+      private final String b;
+      @Nullable
+      private final String c;
+
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
+
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fag.b $$1 = (fag.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      }
+
+      public String a() {
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static fag.b a(String $$0, String $$1) {
+         return new fag.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static fag.b a(String $$0) {
+         return new fag.b($$0);
+      }
+   }
 }

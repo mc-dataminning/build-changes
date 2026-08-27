@@ -1,77 +1,61 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class ekp {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = ekh.a();
-
-   public ekp(ekm.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(ekk.c).toFile();
-      this.c.mkdirs();
+public class ekp extends ekr {
+   @Override
+   public cre a() {
+      return crm.a;
    }
 
-   public void a(ciu $$0) {
-      try {
-         ta $$1 = $$0.f(new ta());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
-         tn.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cx() + ".dat");
-         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ad().getString());
-      }
+   @Override
+   public boolean a(eks $$0, cyd $$1, ib $$2, ekr $$3, ih $$4) {
+      return true;
    }
 
-   private void a(ciu $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cx() + $$1);
-      Path $$4 = $$2.resolve($$0.cx() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ad().getString(), var7);
-         }
-      }
+   @Override
+   public esa a(cyd $$0, ib $$1, eks $$2) {
+      return esa.b;
    }
 
-   private Optional<ta> b(ciu $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cx() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(tn.a($$2.toPath(), tj.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ad().getString());
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int a(cza $$0) {
+      return 0;
    }
 
-   public Optional<ta> b(ciu $$0) {
-      Optional<ta> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
+   @Override
+   protected boolean b() {
+      return true;
+   }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = tp.b($$1x, -1);
-         $$1x = ayc.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(eks $$0, cyd $$1, ib $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(eks $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected doz b(eks $$0) {
+      return dca.a.n();
+   }
+
+   @Override
+   public boolean c(eks $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(eks $$0) {
+      return 0;
+   }
+
+   @Override
+   public est b(eks $$0, cyd $$1, ib $$2) {
+      return esq.a();
    }
 }

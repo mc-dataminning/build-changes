@@ -1,39 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class amy {
-   public static void a(CommandDispatcher<du> $$0) {
+   public static <T extends dw<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), ib.a(((du)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.d())
-                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ib.a(((du)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("pos", fo.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), 0.0F)))
-                        .then(dv.a("angle", ea.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), ea.a($$0x, "angle"))))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new amy.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new amy.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new amy.b(), false))
       );
    }
 
-   private static int a(du $$0, Collection<apg> $$1, ib $$2, float $$3) {
-      ajg<cxb> $$4 = $$0.e().ad();
-
-      for (apg $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
+   static class a<T extends dw<T>> implements gp.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gn $$2, gt<T> $$3) {
+         $$0.p().onFailure();
+         gu $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
       }
+   }
 
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> vu.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> vu.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+   static class b<T extends dw<T>> implements gq.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gn $$3, gt<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(hc.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new gy.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
       }
+   }
 
-      return $$1.size();
+   static class c<T extends dw<T>> implements gp.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, gn $$2, gt<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         gu $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

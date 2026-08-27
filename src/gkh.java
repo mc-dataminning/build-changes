@@ -1,26 +1,24 @@
-import java.util.IllegalFormatException;
+public class gkh extends gje<cfr, ftc<cfr>> {
+   private static final ajt a = new ajt("textures/entity/wither/wither_armor.png");
+   private final ftc<cfr> b;
 
-public class gkh {
-   private static volatile sv a = sv.a();
-
-   private gkh() {
+   public gkh(ghd<cfr, ftc<cfr>> $$0, fti $$1) {
+      super($$0);
+      this.b = new ftc<>($$1.a(ftl.bW));
    }
 
-   static void a(sv $$0) {
-      a = $$0;
+   @Override
+   protected float a(float $$0) {
+      return axk.b($$0 * 0.02F) * 3.0F;
    }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
+   @Override
+   protected ajt a() {
+      return a;
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   @Override
+   protected fqm<cfr> b() {
+      return this.b;
    }
 }

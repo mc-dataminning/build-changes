@@ -1,12 +1,15 @@
-public class gff extends geh<ccc, fqf<ccc>> {
-   private static final ajh a = new ajh("textures/entity/snow_golem.png");
+public class gff extends ggo<cgq, fql<cgq>> {
+   private static final ajt a = new ajt("textures/entity/endermite.png");
 
-   public gff(gdb.a $$0) {
-      super($$0, new fqf<>($$0.a(fre.bv)), 0.5F);
-      this.a(new ghs(this, $$0.c(), $$0.b()));
+   public gff(gfi.a $$0) {
+      super($$0, new fql<>($$0.a(ftl.Y)), 0.3F);
    }
 
-   public ajh a(ccc $$0) {
+   protected float a(cgq $$0) {
+      return 180.0F;
+   }
+
+   public ajt b(cgq $$0) {
       return a;
    }
 }

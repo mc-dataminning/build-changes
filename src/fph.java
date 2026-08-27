@@ -1,16 +1,60 @@
-public class fph<T extends box> extends fpp<T> {
-   public fph(frf $$0) {
-      super($$0, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
+import java.util.function.Function;
+
+public abstract class fph<E extends bpv> extends fqm<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fph(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
    }
 
-   public static frl a(frj $$0) {
-      frn $$1 = fpp.a(6, $$0);
-      fro $$2 = $$1.a();
-      $$2.a(
-         "head",
-         frk.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
-         frh.a(0.0F, 12.0F, -6.0F)
-      );
-      return frl.a($$1, 64, 32);
+   protected fph(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(gah::e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
+
+   protected fph(Function<ajt, gah> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   protected fph() {
+      this(false, 5.0F, 2.0F);
+   }
+
+   @Override
+   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+      } else {
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+      }
+   }
+
+   protected abstract Iterable<ftm> a();
+
+   protected abstract Iterable<ftm> b();
 }

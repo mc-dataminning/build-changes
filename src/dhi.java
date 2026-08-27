@@ -1,49 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dhi extends cyx {
-   public static final MapCodec<dhi> c = b(dhi::new);
+public class dhi extends deb {
+   public static final MapCodec<dhi> b = b(dhi::new);
+   public static final dpq c = dpp.w;
 
    @Override
    public MapCodec<dhi> a() {
-      return c;
+      return b;
    }
 
-   protected dhi(dna.d $$0) {
+   public dhi(doy.d $$0) {
       super($$0);
+      this.k(this.E.b().a(a, ih.d).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dki a(ib $$0, dnb $$1) {
-      return new dlu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return a($$0, $$2, dkk.B);
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   protected void a(cxb $$0, ib $$1, ciu $$2) {
-      dki $$3 = $$0.c_($$1);
-      if ($$3 instanceof dlu) {
-         $$2.a((bnh)$$3);
-         $$2.a(aui.at);
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      } else {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
+      }
+
+      this.a($$1, $$2, $$0);
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(cyy $$0, ib $$1) {
+      if (!$$0.x_() && !$$0.O().a($$1, this)) {
+         $$0.a($$1, this, 2);
       }
    }
 
+   protected void a(cyx $$0, ib $$1, doz $$2) {
+      ih $$3 = $$2.c(a);
+      ib $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
+   }
+
    @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aty.xL, atz.e, 1.0F, 1.0F, false);
+   protected boolean f_(doz $$0) {
+      return true;
+   }
+
+   @Override
+   protected int b(doz $$0, cyd $$1, ib $$2, ih $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.x_() && $$0.c(c) && !$$1.O().a($$2, this)) {
+            doz $$5 = $$0.a(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
          }
-
-         $$1.a(kc.ac, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.O().a($$2, this)) {
+            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
+         }
+      }
+   }
+
+   @Override
+   public doz a(cuo $$0) {
+      return this.n().a(a, $$0.d().g().g());
    }
 }

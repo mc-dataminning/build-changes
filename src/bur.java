@@ -1,80 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bur extends bus {
-   private static final List<cqh> c = ImmutableList.of(cqp.pu, cqp.vj);
+public class bur {
+   private static final float a = 0.3F;
 
-   @Override
-   protected void a(apf $$0, cih $$1) {
-      Optional<ik> $$2 = $$1.dP().c(bys.c);
-      if (!$$2.isEmpty()) {
-         ik $$3 = $$2.get();
-         dnb $$4 = $$0.a_($$3.b());
-         if ($$4.a(dae.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
-         }
-      }
-   }
-
-   private void a(apf $$0, cih $$1, ik $$2, dnb $$3) {
-      ib $$4 = $$2.b();
-      if ($$3.c(dbn.e) == 8) {
-         $$3 = dbn.a($$1, $$3, (cxb)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bnm $$8 = $$1.y();
-      int $$9 = $$8.b();
-      dnb $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cqm $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.M();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dbn.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dbn.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(apf $$0, dnb $$1, ib $$2, dnb $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cih $$0) {
-      bnm $$1 = $$0.y();
-      if ($$1.a_(cqp.pw) <= 36) {
-         int $$2 = $$1.a_(cqp.pv);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cqp.pv, $$6);
-            cqm $$7 = $$1.a(new cqm(cqp.pw, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+   public static btr<bqo> a() {
+      return bvt.a(
+         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$0 -> $$0.group($$0.a(bzr.m), $$0.a(bzr.n), $$0.b(bzr.e), $$0.b(bzr.h), $$0.c(bzr.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     ik $$9 = $$0.b($$3);
+                     bzt $$10 = $$0.b($$4);
+                     if ($$6.E_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> bqb.bi.equals($$0xxx.ai()))) {
+                        $$10.a($$1xx -> bqb.bi.equals($$1xx.ai()) && $$1xx.g((bpv)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bsr($$3xx, true));
+                           $$1.a(new bzu(new bsr($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

@@ -1,43 +1,84 @@
-public class gdv extends gdu<cfy> {
-   private static final ajh a = new ajh("textures/entity/illager/illusioner.png");
+import org.joml.Matrix4f;
 
-   public gdv(gdb.a $$0) {
-      super($$0, new fot<>($$0.a(fre.au)), 0.5F);
-      this.a(new ghf<cfy, fot<cfy>>(this, $$0.d()) {
-         public void a(eub $$0, fxs $$1, int $$2, cfy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gx() || $$3.gf()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+public class gdv implements gdl.a {
+   private final fbp a;
+
+   public gdv(fbp $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      cyd $$6 = this.a.s.dM();
+      ib $$7 = ib.a($$2, $$3, $$4);
+
+      for (ib $$8 : ib.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         doz $$9 = $$6.a_($$8);
+         if (!$$9.a(dca.a)) {
+            est $$10 = $$9.j($$6, $$8);
+
+            for (erv $$11 : $$10.e()) {
+               erv $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, ih.e)) {
+                  ewm $$23 = $$1.getBuffer(gah.A());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ih.d)) {
+                  ewm $$24 = $$1.getBuffer(gah.A());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ih.f)) {
+                  ewm $$25 = $$1.getBuffer(gah.A());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ih.c)) {
+                  ewm $$26 = $$1.getBuffer(gah.A());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ih.a)) {
+                  ewm $$27 = $$1.getBuffer(gah.A());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ih.b)) {
+                  ewm $$28 = $$1.getBuffer(gah.A());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
             }
          }
-      });
-      this.f.c().k = true;
-   }
-
-   public ajh a(cfy $$0) {
-      return a;
-   }
-
-   public void a(cfy $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      if ($$0.ce()) {
-         ept[] $$6 = $$0.G($$2);
-         float $$7 = this.a($$0, $$2);
-
-         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
-            $$3.a();
-            $$3.a(
-               $$6[$$8].c + (double)aww.b((float)$$8 + $$7 * 0.5F) * 0.025,
-               $$6[$$8].d + (double)aww.b((float)$$8 + $$7 * 0.75F) * 0.0125,
-               $$6[$$8].e + (double)aww.b((float)$$8 + $$7 * 0.7F) * 0.025
-            );
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            $$3.b();
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   protected boolean b(cfy $$0) {
-      return true;
    }
 }

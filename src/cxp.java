@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-
-public class cxp {
-   private final List<cxp.a> a = Lists.newArrayList();
-
-   public void a(ib $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new cxp.a($$0, $$1));
-      }
+public class cxp extends cwq {
+   public cxp(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bb, $$1);
    }
 
-   public double b(ib $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (cxp.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   @Override
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
-   static class a {
-      private final ib a;
-      private final double b;
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
 
-      public a(ib $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public int a() {
+      return 3;
+   }
 
-      public double a(ib $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   @Override
+   public boolean a(cwq $$0) {
+      return super.a($$0) && $$0 != cwt.j;
    }
 }

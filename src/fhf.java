@@ -1,53 +1,143 @@
-import java.util.function.BooleanSupplier;
+public interface fhf {
+   fhf a(int var1);
 
-public class fhf extends fhh {
-   private static final vu a = vu.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier k;
+   fhf a(int var1, int var2);
 
-   public fhf(BooleanSupplier $$0) {
-      super(eza.a);
-      this.k = $$0;
-      this.c = System.currentTimeMillis();
+   fhf a(int var1, int var2, int var3, int var4);
+
+   fhf b(int var1);
+
+   fhf c(int var1);
+
+   fhf d(int var1);
+
+   fhf e(int var1);
+
+   fhf f(int var1);
+
+   fhf g(int var1);
+
+   fhf a(float var1, float var2);
+
+   fhf a(float var1);
+
+   fhf b(float var1);
+
+   default fhf a() {
+      return this.a(0.0F);
    }
 
-   @Override
-   public boolean aM_() {
-      return false;
+   default fhf b() {
+      return this.a(0.5F);
    }
 
-   @Override
-   protected boolean aN_() {
-      return false;
+   default fhf c() {
+      return this.a(1.0F);
    }
 
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   default fhf d() {
+      return this.b(0.0F);
    }
 
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   default fhf e() {
+      return this.b(0.5F);
    }
 
-   @Override
-   public void e() {
-      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
+   default fhf f() {
+      return this.b(1.0F);
+   }
+
+   fhf g();
+
+   fhf.a h();
+
+   static fhf i() {
+      return new fhf.a();
+   }
+
+   public static class a implements fhf {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   @Override
-   public void d() {
-      this.f.aY().c(vu.c("narrator.ready_to_play"));
-      super.d();
-   }
+      public a(fhf.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
 
-   @Override
-   public boolean m() {
-      return false;
+      public fhf.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fhf.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fhf.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fhf.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fhf.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fhf.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fhf.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fhf.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fhf.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fhf.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fhf.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fhf.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fhf.a j() {
+         return new fhf.a(this);
+      }
+
+      @Override
+      public fhf.a h() {
+         return this;
+      }
    }
 }

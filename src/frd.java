@@ -1,37 +1,28 @@
-public final class frd {
-   private final ajh a;
-   private final String b;
+public class frd<T extends bpv> extends fqv<T> {
+   private static final String a = "knot";
+   private final ftm b;
+   private final ftm f;
 
-   public frd(ajh $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public frd(ftm $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public ajh a() {
-      return this.a;
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("knot", ftr.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fto.a);
+      return fts.a($$0, 32, 32);
    }
 
-   public String b() {
+   @Override
+   public ftm a() {
       return this.b;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof frd $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,19 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class dyy<P extends dyx> {
-   public static final dyy<dza> a = a("two_layers_feature_size", dza.d);
-   public static final dyy<dyz> b = a("three_layers_feature_size", dyz.d);
-   private final Codec<P> c;
+public class dyy extends dxv<eah> {
+   private static final int a = 7;
 
-   private static <P extends dyx> dyy<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.aa, $$0, new dyy<>($$1));
+   dyy(Codec<eah> $$0) {
+      super($$0);
    }
 
-   private dyy(Codec<P> $$0) {
-      this.c = $$0;
+   @Override
+   public boolean a(dxx<eah> $$0) {
+      czs $$1 = $$0.b();
+      axr $$2 = $$0.d();
+      eah $$3 = $$0.f();
+      ib $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ib.a $$6 = new ib.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         doz $$8 = $$1.a_($$6);
+
+         for (eah.a $$9 : $$3.b) {
+            if (dyq.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public Codec<P> a() {
-      return this.c;
+   private void a(ib.a $$0, axr $$1, ib $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(axr $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

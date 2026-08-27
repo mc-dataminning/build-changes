@@ -1,124 +1,89 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
 
-public class dhk extends dac {
+public class dhk extends dch implements dcb {
    public static final MapCodec<dhk> a = b(dhk::new);
-   public static final int b = 8;
-   public static final dob c = dnr.aF;
-   protected static final eqm[] d = new eqm[]{
-      eqj.a(),
-      dac.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dpt d = dpp.R;
+   public static final dpz e = dpp.S;
+   private static final BiFunction<ih, Integer, est> f = ac.a(
+      ($$0, $$1) -> {
+         est[] $$2 = new est[]{
+            dby.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dby.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dby.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dby.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         est $$3 = esq.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = esq.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
    public MapCodec<dhk> a() {
       return a;
    }
 
-   protected dhk(dna.d $$0) {
+   protected dhk(doy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.k(this.E.b().a(d, ih.c).a(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   public doz a(doz $$0, dik $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return d[$$0.c(c)];
+   public doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected eqm b(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return d[$$0.c(c) - 1];
+   public boolean a(doz $$0, cuo $$1) {
+      return !$$1.h() && $$1.n().a(this.p()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected eqm b_(dnb $$0, cwh $$1, ib $$2) {
-      return d[$$0.c(c)];
+   public est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
    }
 
    @Override
-   protected eqm c(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return d[$$0.c(c)];
+   public doz a(cuo $$0) {
+      doz $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.n().a(d, $$0.g().g());
    }
 
    @Override
-   protected boolean g_(dnb $$0) {
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
       return true;
    }
 
    @Override
-   protected float d(dnb $$0, cwh $$1, ib $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      dnb $$3 = $$1.a_($$2.d());
-      if ($$3.a(aun.ci)) {
-         return false;
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
       } else {
-         return $$3.a(aun.cj) ? true : dac.a($$3.k($$1, $$2.d()), ih.b) || $$3.a(this) && $$3.c(c) == 8;
+         a($$0, $$2, new crj(this));
       }
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      return !$$0.a($$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$1.a(cxk.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dnb $$0, csu $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.l()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == ih.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      dnb $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(c);
    }
 }

@@ -1,245 +1,142 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dkw extends dlm implements cmg {
-   public static final int e = 3;
-   public static final int f = 3;
-   public static final int g = 9;
-   public static final int h = 1;
-   public static final int i = 0;
-   public static final int j = 9;
-   public static final int k = 10;
-   private iu<cqm> r = iu.a(9, cqm.h);
-   private int s = 0;
-   protected final cma l = new cma() {
-      private final int[] b = new int[9];
-      private int c = 0;
+public class dkw extends dix {
+   public static final MapCodec<dkw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqm.a.fieldOf("wood_type").forGetter(dix::d), u()).apply($$0, dkw::new));
+   public static final dpt b = dft.aE;
+   public static final est c = dby.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
+   public static final est d = dby.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
+   public static final est e = esq.a(c, dby.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
+   public static final est i = esq.a(d, dby.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
+   private static final Map<ih, est> j = Maps.newEnumMap(ImmutableMap.of(ih.c, e, ih.d, e, ih.f, i, ih.e, i));
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.c : this.b[$$0];
-      }
+   @Override
+   public MapCodec<dkw> a() {
+      return a;
+   }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.c = $$1;
-         } else {
-            this.b[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dkw(ib $$0, dnb $$1) {
-      super(dkk.P, $$0, $$1);
+   public dkw(dqm $$0, doy.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, ih.c).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected vu k() {
-      return vu.c("container.crafter");
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      if ($$2.c_($$3) instanceof dnp $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
+         return boc.e;
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private boolean a(doz $$0, cjt $$1, erw $$2, dnp $$3, crj $$4) {
+      return !$$3.a($$3.a($$1), $$1) && $$4.f() instanceof cqw && !this.a($$2, $$0);
+   }
+
+   private boolean a(erw $$0, doz $$1) {
+      return $$0.b().o() == $$1.c(b).o();
    }
 
    @Override
-   protected clq a(int $$0, cit $$1) {
-      return new cme($$0, $$1, this, this.l);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.l.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.l.a($$0) == 1 : false;
+   public String g() {
+      return this.p().a();
    }
 
    @Override
-   public boolean b(int $$0, cqm $$1) {
-      if (this.l.a($$0) == 1) {
-         return false;
-      } else {
-         cqm $$2 = this.r.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.g()) {
-            return false;
-         } else {
-            return $$2.b() ? true : !this.a($$3, $$2, $$0);
-         }
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return j.get($$0.c(b));
+   }
+
+   @Override
+   protected est b_(doz $$0, cyd $$1, ib $$2) {
+      return this.a($$0, $$1, $$2, esf.a());
+   }
+
+   @Override
+   protected est b(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      switch ((ih)$$0.c(b)) {
+         case f:
+         case e:
+            return d;
+         default:
+            return c;
       }
    }
 
-   private boolean a(int $$0, cqm $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cqm $$4 = this.a($$3);
-            if ($$4.b() || $$4.M() < $$0 && cqm.c($$4, $$1)) {
-               return true;
+   public boolean b(doz $$0, cza $$1, ib $$2) {
+      ih $$3 = $$0.c(b).h();
+      ih $$4 = $$0.c(b).i();
+      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   }
+
+   public boolean a(cza $$0, doz $$1, ib $$2, ih $$3) {
+      doz $$4 = $$0.a_($$2);
+      return $$4.a(avc.az) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, djy.a);
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      doz $$1 = this.n();
+      eks $$2 = $$0.q().b_($$0.a());
+      cza $$3 = $$0.q();
+      ib $$4 = $$0.a();
+
+      for (ih $$5 : $$0.f()) {
+         if ($$5.o().d() && !$$5.o().a($$0.k())) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
+               return $$1.a(f, Boolean.valueOf($$2.a() == ekt.c));
             }
          }
       }
 
+      return null;
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(doz $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b, f);
+   }
+
+   @Override
+   public dmf a(ib $$0, doz $$1) {
+      return new dnc($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(doz $$0, elh $$1) {
       return false;
    }
 
+   @Nullable
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.s = $$0.h("crafting_ticks_remaining");
-      this.r = iu.a(this.b(), cqm.h);
-      if (!this.c_($$0)) {
-         bmx.b($$0, this.r);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.l.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.l.a($$4, 1);
-         }
-      }
-
-      this.l.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.s);
-      if (!this.b($$0)) {
-         bmx.a($$0, this.r);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean ai_() {
-      for (cqm $$0 : this.r) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cqm a(int $$0) {
-      return this.r.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cqm $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(ciu $$0) {
-      return bmw.a(this, $$0);
-   }
-
-   @Override
-   public iu<cqm> j() {
-      return this.r;
-   }
-
-   @Override
-   protected void a(iu<cqm> $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(ciy $$0) {
-      for (cqm $$1 : this.r) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(ta $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(ta $$0) {
-      $$0.a("triggered", this.l.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.l.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.l.a(9) == 1;
-   }
-
-   public static void a(cxb $$0, ib $$1, dnb $$2, dkw $$3) {
-      int $$4 = $$3.s - 1;
-      if ($$4 >= 0) {
-         $$3.s = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dbv.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.s = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cqm $$2 = this.a($$1);
-         if (!$$2.b() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.r.get($$0).b();
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return a($$2, dmh.i, dnp::a);
    }
 }

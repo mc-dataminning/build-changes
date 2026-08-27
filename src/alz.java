@@ -1,38 +1,47 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class alz {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.op.failed"));
+   public static final int a = 2;
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
-            atb $$2 = ((du)$$0x.getSource()).l().ah();
-            return dz.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fY())).map($$0xx -> $$0xx.fY().getName()), $$1);
-         }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((du)$$0x.getSource()).h()), ei.a($$0x, "gamemode"))))
+                  .then(dv.a("target", eh.d()).executes($$0x -> a($$0x, eh.f($$0x, "target"), ei.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      atb $$2 = $$0.l().ah();
+   private static void a(du $$0, apt $$1, cyu $$2) {
+      wg $$3 = wg.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wg.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().aa().b(cyt.p)) {
+            $$1.a(wg.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> wg.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<du> $$0, Collection<apt> $$1, cyu $$2) {
       int $$3 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
+      for (apt $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((du)$$0.getSource(), $$4, $$2);
             $$3++;
-            $$0.a(() -> vu.a("commands.op.success", $$1.iterator().next().getName()), true);
          }
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+      return $$3;
    }
 }

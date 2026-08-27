@@ -1,307 +1,153 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.BitSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
 public class ciy {
-   private static final int b = 0;
-   public final Int2IntMap a = new Int2IntOpenHashMap();
-
-   public void a(cqm $$0) {
-      if (!$$0.k() && !$$0.F() && !$$0.B()) {
-         this.b($$0);
-      }
-   }
-
-   public void b(cqm $$0) {
-      this.a($$0, 64);
-   }
-
-   public void a(cqm $$0, int $$1) {
-      if (!$$0.b()) {
-         int $$2 = c($$0);
-         int $$3 = Math.min($$1, $$0.M());
-         this.b($$2, $$3);
-      }
-   }
-
-   public static int c(cqm $$0) {
-      return ki.h.a($$0.d());
-   }
-
-   boolean b(int $$0) {
-      return this.a.get($$0) > 0;
-   }
-
-   int a(int $$0, int $$1) {
-      int $$2 = this.a.get($$0);
-      if ($$2 >= $$1) {
-         this.a.put($$0, $$2 - $$1);
-         return $$0;
-      } else {
-         return 0;
-      }
-   }
-
-   void b(int $$0, int $$1) {
-      this.a.put($$0, this.a.get($$0) + $$1);
-   }
-
-   public boolean a(ctp<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, $$1, 1);
-   }
-
-   public boolean a(ctp<?> $$0, @Nullable IntList $$1, int $$2) {
-      return new ciy.a($$0).a($$2, $$1);
-   }
-
-   public int a(ctr<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int a(ctr<?> $$0, int $$1, @Nullable IntList $$2) {
-      return new ciy.a($$0.b()).b($$1, $$2);
-   }
-
-   public static cqm a(int $$0) {
-      return $$0 == 0 ? cqm.h : new cqm(cqh.b($$0));
-   }
-
-   public void a() {
-      this.a.clear();
-   }
-
-   class a {
-      private final ctp<?> b;
-      private final List<ctm> c = Lists.newArrayList();
-      private final int d;
-      private final int[] e;
-      private final int f;
-      private final BitSet g;
-      private final IntList h = new IntArrayList();
-
-      public a(ctp<?> $$0) {
-         this.b = $$0;
-         this.c.addAll($$0.a());
-         this.c.removeIf(ctm::c);
-         this.d = this.c.size();
-         this.e = this.a();
-         this.f = this.e.length;
-         this.g = new BitSet(this.d + this.f + this.d + this.d * this.f);
-
-         for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-            IntList $$2 = this.c.get($$1).b();
-
-            for (int $$3 = 0; $$3 < this.f; $$3++) {
-               if ($$2.contains(this.e[$$3])) {
-                  this.g.set(this.d(true, $$3, $$1));
-               }
-            }
-         }
-      }
-
-      public boolean a(int $$0, @Nullable IntList $$1) {
-         if ($$0 <= 0) {
-            return true;
-         } else {
-            int $$2;
-            for ($$2 = 0; this.a($$0); $$2++) {
-               ciy.this.a(this.e[this.h.getInt(0)], $$0);
-               int $$3 = this.h.size() - 1;
-               this.c(this.h.getInt($$3));
-
-               for (int $$4 = 0; $$4 < $$3; $$4++) {
-                  this.c(($$4 & 1) == 0, this.h.get($$4), this.h.get($$4 + 1));
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = axk.f(100.0F);
+   public static final int a = axk.f(133.59999F);
+   public static final int b = axk.f(84.0F);
+   private static final int i = axk.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cay<? extends cax<? super cix>>> k = List.of(cay.d, cay.x);
+   private static final List<bzr<?>> l = List.of(
+      bzr.g,
+      bzr.h,
+      bzr.k,
+      bzr.l,
+      bzr.M,
+      bzr.n,
+      bzr.m,
+      bzr.E,
+      bzr.t,
+      bzr.o,
+      bzr.p,
+      bzr.B,
+      bzr.ay,
+      bzr.az,
+      bzr.aA,
+      bzr.aB,
+      bzr.aC,
+      bzr.aD,
+      bzr.aE,
+      bzr.aF,
+      bzr.aG,
+      bzr.aH,
+      bzr.aI,
+      bzr.aJ,
+      bzr.aK,
+      bzr.aL
+   );
+   private static final bsh<cix> m = bvt.a(
+      (Function<bvt.b<cix>, ? extends App<bvt.c<cix>, bvw<cix>>>)($$0 -> $$0.group($$0.a(bzr.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(aym.a, 1200L);
                }
 
-               this.h.clear();
-               this.g.clear(0, this.d + this.f);
-            }
+               return true;
+            }))
+   );
 
-            boolean $$5 = $$2 == this.d;
-            boolean $$6 = $$5 && $$1 != null;
-            if ($$6) {
-               $$1.clear();
-            }
+   public static void a(cix $$0) {
+      $$0.dP().a(ImmutableList.of(cli.y, cli.z, cli.x, cli.k, cli.w, cli.v, cli.b));
+   }
 
-            this.g.clear(0, this.d + this.f + this.d);
-            int $$7 = 0;
+   protected static brp<?> a(cix $$0, Dynamic<?> $$1) {
+      brp.b<cix> $$2 = brp.a(l, k);
+      brp<cix> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cli.a));
+      $$3.b(cli.b);
+      $$3.f();
+      return $$3;
+   }
 
-            for (ctm $$9 : this.b.a()) {
-               if ($$6 && $$9.c()) {
-                  $$1.add(0);
-               } else {
-                  for (int $$10 = 0; $$10 < this.f; $$10++) {
-                     if (this.b(false, $$7, $$10)) {
-                        this.c(true, $$10, $$7);
-                        ciy.this.b(this.e[$$10], $$0);
-                        if ($$6) {
-                           $$1.add(this.e[$$10]);
-                        }
-                     }
-                  }
+   private static void a(brp<cix> $$0) {
+      $$0.a(cli.a, 0, ImmutableList.of(new bva(0.8F), bwe.a(), new btm(45, 90), new btq()));
+   }
 
-                  $$7++;
-               }
-            }
+   private static void b(brp<cix> $$0) {
+      $$0.a(cli.y, 5, ImmutableList.of(new bwa(a)), bzr.aC);
+   }
 
-            return $$5;
-         }
+   private static void c(brp<cix> $$0) {
+      $$0.a(cli.z, ImmutableList.of(Pair.of(0, new bwb()), Pair.of(1, new bvz(h))), ImmutableSet.of(Pair.of(bzr.ay, bzs.b), Pair.of(bzr.aE, bzs.b)));
+   }
+
+   private static void d(brp<cix> $$0) {
+      $$0.a(
+         cli.b,
+         10,
+         ImmutableList.of(
+            bwd.a(cix::gn), bwh.a(), new bud(ImmutableMap.of(bzr.aB, bzs.b), ImmutableList.of(Pair.of(bty.a(0.5F), 2), Pair.of(new bsq(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(brp<cix> $$0) {
+      $$0.a(cli.w, 5, ImmutableList.of(bwd.a(cix::gn), bsz.a(bzr.az, 2, 0.7F)), bzr.az);
+   }
+
+   private static void f(brp<cix> $$0) {
+      $$0.a(cli.v, 5, ImmutableList.of(bwd.a(cix::gn), new bwf(i)), bzr.aB);
+   }
+
+   private static void g(brp<cix> $$0) {
+      $$0.a(cli.x, 10, ImmutableList.of(new bwc()), bzr.ay);
+   }
+
+   private static void a(cix $$0, brp<cix> $$1) {
+      $$1.a(
+         cli.k,
+         10,
+         ImmutableList.of(
+            m, buv.a($$1x -> !$$0.y().d() || !$$0.b($$1x), ciy::b, false), buf.a($$1x -> a($$0, $$1x), (float)$$0.g(brv.k)), bul.a(1.2F), new bwg(), btn.a(18)
+         ),
+         bzr.o
+      );
+   }
+
+   private static boolean a(cix $$0, bqo $$1) {
+      return $$0.dP().c(bzr.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cix $$0, bqo $$1) {
+      if (!$$0.b($$1)) {
+         $$0.c($$1);
       }
 
-      private int[] a() {
-         IntCollection $$0 = new IntAVLTreeSet();
+      a((bqo)$$0);
+   }
 
-         for (ctm $$1 : this.c) {
-            $$0.addAll($$1.b());
-         }
-
-         IntIterator $$2 = $$0.iterator();
-
-         while ($$2.hasNext()) {
-            if (!ciy.this.b($$2.nextInt())) {
-               $$2.remove();
-            }
-         }
-
-         return $$0.toIntArray();
+   public static void a(bqo $$0) {
+      if ($$0.dP().a(bzr.aE)) {
+         $$0.dP().a(bzr.aE, aym.a, 1200L);
       }
+   }
 
-      private boolean a(int $$0) {
-         int $$1 = this.f;
-
-         for (int $$2 = 0; $$2 < $$1; $$2++) {
-            if (ciy.this.a.get(this.e[$$2]) >= $$0) {
-               this.a(false, $$2);
-
-               while (!this.h.isEmpty()) {
-                  int $$3 = this.h.size();
-                  boolean $$4 = ($$3 & 1) == 1;
-                  int $$5 = this.h.getInt($$3 - 1);
-                  if (!$$4 && !this.b($$5)) {
-                     break;
-                  }
-
-                  int $$6 = $$4 ? this.d : $$1;
-                  int $$7 = 0;
-
-                  while (true) {
-                     if ($$7 < $$6) {
-                        if (this.b($$4, $$7) || !this.a($$4, $$5, $$7) || !this.b($$4, $$5, $$7)) {
-                           $$7++;
-                           continue;
-                        }
-
-                        this.a($$4, $$7);
-                     }
-
-                     $$7 = this.h.size();
-                     if ($$7 == $$3) {
-                        this.h.removeInt($$7 - 1);
-                     }
-                     break;
-                  }
-               }
-
-               if (!this.h.isEmpty()) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-
-      private boolean b(int $$0) {
-         return this.g.get(this.d($$0));
-      }
-
-      private void c(int $$0) {
-         this.g.set(this.d($$0));
-      }
-
-      private int d(int $$0) {
-         return this.d + this.f + $$0;
-      }
-
-      private boolean a(boolean $$0, int $$1, int $$2) {
-         return this.g.get(this.d($$0, $$1, $$2));
-      }
-
-      private boolean b(boolean $$0, int $$1, int $$2) {
-         return $$0 != this.g.get(1 + this.d($$0, $$1, $$2));
-      }
-
-      private void c(boolean $$0, int $$1, int $$2) {
-         this.g.flip(1 + this.d($$0, $$1, $$2));
-      }
-
-      private int d(boolean $$0, int $$1, int $$2) {
-         int $$3 = $$0 ? $$1 * this.d + $$2 : $$2 * this.d + $$1;
-         return this.d + this.f + this.d + 2 * $$3;
-      }
-
-      private void a(boolean $$0, int $$1) {
-         this.g.set(this.c($$0, $$1));
-         this.h.add($$1);
-      }
-
-      private boolean b(boolean $$0, int $$1) {
-         return this.g.get(this.c($$0, $$1));
-      }
-
-      private int c(boolean $$0, int $$1) {
-         return ($$0 ? 0 : this.d) + $$1;
-      }
-
-      public int b(int $$0, @Nullable IntList $$1) {
-         int $$2 = 0;
-         int $$3 = Math.min($$0, this.b()) + 1;
-
-         while (true) {
-            int $$4 = ($$2 + $$3) / 2;
-            if (this.a($$4, null)) {
-               if ($$3 - $$2 <= 1) {
-                  if ($$4 > 0) {
-                     this.a($$4, $$1);
-                  }
-
-                  return $$4;
-               }
-
-               $$2 = $$4;
-            } else {
-               $$3 = $$4;
-            }
-         }
-      }
-
-      private int b() {
-         int $$0 = Integer.MAX_VALUE;
-
-         for (ctm $$1 : this.c) {
-            int $$2 = 0;
-            IntListIterator var5 = $$1.b().iterator();
-
-            while (var5.hasNext()) {
-               int $$3 = (Integer)var5.next();
-               $$2 = Math.max($$2, ciy.this.a.get($$3));
-            }
-
-            if ($$0 > 0) {
-               $$0 = Math.min($$0, $$2);
-            }
-         }
-
-         return $$0;
+   public static void a(cix $$0, ib $$1) {
+      if ($$0.dM().C_().a($$1) && !$$0.gn().isPresent() && !$$0.dP().c(bzr.o).isPresent()) {
+         a((bqo)$$0);
+         $$0.dP().a(bzr.aG, aym.a, 100L);
+         $$0.dP().a(bzr.n, new bsj($$1), 100L);
+         $$0.dP().a(bzr.az, $$1, 100L);
+         $$0.dP().b(bzr.m);
       }
    }
 }

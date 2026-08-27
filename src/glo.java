@@ -1,77 +1,75 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class glo implements glc {
-   private final int a;
-   private final List<blp.b<glc>> b;
-   private final glc c;
+public class glo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ajm b = new ajm("atlases", ".json");
+   private final List<gln> c;
 
-   public glo(List<blp.b<glc>> $$0) {
-      this.b = $$0;
-      this.a = blq.a($$0);
-      this.c = $$0.get(0).b();
+   private glo(List<gln> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public List<fyp> a(@Nullable dnb $$0, @Nullable ih $$1, axd $$2) {
-      return blq.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public gjc e() {
-      return this.c.e();
-   }
-
-   @Override
-   public fzb f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fyz g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<blp.b<glc>> a = Lists.newArrayList();
-
-      public glo.a a(@Nullable glc $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(blp.a($$0, $$1));
+   public List<Function<glm, gld>> a(atc $$0) {
+      final Map<ajt, gln.b> $$1 = new HashMap<>();
+      gln.a $$2 = new gln.a() {
+         @Override
+         public void a(ajt $$0, gln.b $$1x) {
+            gln.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
          }
 
-         return this;
-      }
+         @Override
+         public void a(Predicate<ajt> $$0) {
+            Iterator<Entry<ajt, gln.b>> $$1 = $$1.entrySet().iterator();
 
-      @Nullable
-      public glc a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (glc)(this.a.size() == 1 ? this.a.get(0).b() : new glo(this.a));
+            while ($$1.hasNext()) {
+               Entry<ajt, gln.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<glm, gld>> $$3 = ImmutableList.builder();
+      $$3.add((Function<glm, gld>)$$0x -> gkz.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static glo a(atc $$0, ajt $$1) {
+      ajt $$2 = b.a($$1);
+      List<gln> $$3 = new ArrayList<>();
+
+      for (ata $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gln>)glq.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
+
+      return new glo($$3);
    }
 }

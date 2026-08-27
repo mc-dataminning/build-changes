@@ -1,204 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
-import org.slf4j.Logger;
+public class frz extends fqv<che> {
+   private final ftm a;
+   private final ftm b;
+   private final ftm f;
+   private final ftm g;
+   private final ftm h;
+   private final ftm i;
+   private final ftm j;
+   private final ftm k;
 
-public class frz implements ahe {
-   private static final Logger a = LogUtils.getLogger();
-   private final ezi b;
-   @Nullable
-   private final fso c;
-   @Nullable
-   private final fhh d;
-   private final Consumer<vu> e;
-   private final us f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<ajh, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<frz.a> l = new AtomicReference<>(frz.a.a);
-
-   public frz(us $$0, ezi $$1, @Nullable fso $$2, @Nullable fhh $$3, boolean $$4, @Nullable Duration $$5, Consumer<vu> $$6, @Nullable fss $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
+   public frz(ftm $$0) {
+      this.a = $$0;
+      this.k = $$0.b("neck");
+      this.b = this.k.b("head");
+      this.f = this.b.b("mouth");
+      this.g = $$0.b("right_hind_leg");
+      this.h = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.j = $$0.b("left_front_leg");
    }
 
-   private void a(frz.a $$0) {
-      frz.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      int $$2 = 16;
+      ftv $$3 = $$1.a("neck", ftr.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), fto.a(0.0F, -7.0F, 5.5F));
+      ftv $$4 = $$3.a(
+         "head", ftr.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), fto.a(0.0F, 16.0F, -17.0F)
+      );
+      $$4.a("right_horn", ftr.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fto.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("left_horn", ftr.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fto.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("mouth", ftr.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), fto.a(0.0F, -2.0F, 2.0F));
+      $$1.a(
+         "body",
+         ftr.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
+         fto.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("right_hind_leg", ftr.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fto.a(-8.0F, -13.0F, 18.0F));
+      $$1.a("left_hind_leg", ftr.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fto.a(8.0F, -13.0F, 18.0F));
+      $$1.a("right_front_leg", ftr.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fto.a(-8.0F, -13.0F, -5.0F));
+      $$1.a("left_front_leg", ftr.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fto.a(8.0F, -13.0F, -5.0F));
+      return fts.a($$0, 128, 128);
+   }
+
+   @Override
+   public ftm a() {
+      return this.a;
+   }
+
+   public void a(che $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      float $$6 = 0.4F * $$2;
+      this.g.e = axk.b($$1 * 0.6662F) * $$6;
+      this.h.e = axk.b($$1 * 0.6662F + (float) Math.PI) * $$6;
+      this.i.e = axk.b($$1 * 0.6662F + (float) Math.PI) * $$6;
+      this.j.e = axk.b($$1 * 0.6662F) * $$6;
+   }
+
+   public void a(che $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = $$0.gn();
+      int $$5 = $$0.gx();
+      int $$6 = 20;
+      int $$7 = $$0.u();
+      int $$8 = 10;
+      if ($$7 > 0) {
+         float $$9 = axk.e((float)$$7 - $$3, 10.0F);
+         float $$10 = (1.0F + $$9) * 0.5F;
+         float $$11 = $$10 * $$10 * $$10 * 12.0F;
+         float $$12 = $$11 * axk.a(this.k.e);
+         this.k.d = -6.5F + $$11;
+         this.k.c = -7.0F - $$12;
+         float $$13 = axk.a(((float)$$7 - $$3) / 10.0F * (float) Math.PI * 0.25F);
+         this.f.e = (float) (Math.PI / 2) * $$13;
+         if ($$7 > 5) {
+            this.f.e = axk.a(((float)(-4 + $$7) - $$3) / 4.0F) * (float) Math.PI * 0.4F;
          } else {
-            return $$0;
+            this.f.e = (float) (Math.PI / 20) * axk.a((float) Math.PI * ((float)$$7 - $$3) / 10.0F);
          }
-      });
-      this.e.accept($$1.e);
-   }
-
-   @Override
-   public void a(ahh $$0) {
-      this.a(frz.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ahp $$7;
-      try {
-         SecretKey $$1 = avu.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(avu.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = avu.a(2, $$1);
-         $$5 = avu.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ahp($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      if ($$0.g()) {
-         ac.g().submit(() -> {
-            vu $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
       } else {
-         this.a($$7, $$4, $$5);
-      }
-   }
-
-   private void a(ahp $$0, Cipher $$1, Cipher $$2) {
-      this.a(frz.a.c);
-      this.f.a($$0, vb.a(() -> this.f.a($$1, $$2)));
-   }
-
-   @Nullable
-   private vu b(String $$0) {
-      try {
-         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return vu.a("disconnect.loginFailedInfo", var7.getMessage());
-      }
-   }
-
-   private MinecraftSessionService e() {
-      return this.b.am();
-   }
-
-   @Override
-   public void a(ahg $$0) {
-      this.a(frz.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f.a(aab.b, new fry(this.b, this.f, new fse($$1, this.b.u().a(this.g, this.h, this.i), fsc.a().a(), clj.h, null, this.c, this.d, this.j)));
-      this.f.a(ahq.a);
-      this.f.a(aab.a);
-      this.f.a(new yu(new za(ClientBrandRetriever.getClientModName())));
-      this.f.a(new yt(this.b.m.au()));
-   }
-
-   @Override
-   public void a(vu $$0) {
-      vu $$1 = this.k ? vt.q : vt.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gpa(this.d, $$1, $$0));
-      } else {
-         this.b.a(new fgi(this.d, $$1, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(ahj $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(ahi $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(ahf $$0) {
-      this.e.accept(vu.c("connect.negotiating"));
-      this.f.a(new ahn($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public void a(aah $$0) {
-      this.f.a(new aak($$0.b(), this.j.get($$0.b())));
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$0.a("Login phase", () -> this.l.get().toString());
-   }
-
-   static enum a {
-      a(vu.c("connect.connecting"), Set.of()),
-      b(vu.c("connect.authorizing"), Set.of(a)),
-      c(vu.c("connect.encrypting"), Set.of(b)),
-      d(vu.c("connect.joining"), Set.of(c, a));
-
-      final vu e;
-      final Set<frz.a> f;
-
-      private a(vu $$0, Set<frz.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+         float $$14 = -1.0F;
+         float $$15 = -1.0F * axk.a(this.k.e);
+         this.k.b = 0.0F;
+         this.k.c = -7.0F - $$15;
+         this.k.d = 5.5F;
+         boolean $$16 = $$4 > 0;
+         this.k.e = $$16 ? 0.21991149F : 0.0F;
+         this.f.e = (float) Math.PI * ($$16 ? 0.05F : 0.01F);
+         if ($$16) {
+            double $$17 = (double)$$4 / 40.0;
+            this.k.b = (float)Math.sin($$17 * 10.0) * 3.0F;
+         } else if ($$5 > 0) {
+            float $$18 = axk.a(((float)(20 - $$5) - $$3) / 20.0F * (float) Math.PI * 0.25F);
+            this.f.e = (float) (Math.PI / 2) * $$18;
+         }
       }
    }
 }

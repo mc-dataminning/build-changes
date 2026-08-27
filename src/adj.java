@@ -1,29 +1,23 @@
-public class adj implements yb<aam> {
-   public static final xs<uu, adj> a = yb.a(adj::a, adj::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public adj(dos $$0) {
-      this.b = $$0.r();
-   }
-
-   private adj(uu $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-   }
+public record adj(int b, il<bpf> c) implements yn<aay> {
+   public static final ye<vr, adj> a = ye.a(yc.f, $$0 -> $$0.b, yc.b(ks.Q), adj::e, adj::new);
 
    @Override
-   public yd<adj> a() {
-      return aex.av;
+   public yp<adj> a() {
+      return afj.ak;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bpv a(cyx $$0) {
+      return $$0.a(this.b);
+   }
+
+   public il<bpf> e() {
+      return this.c;
    }
 }

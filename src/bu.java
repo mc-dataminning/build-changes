@@ -6,18 +6,18 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class bu<V> {
-   private final Function<box, Optional<V>> a;
+   private final Function<bpv, Optional<V>> a;
    private final bs.a b;
 
-   public static <V> bu<V> a(iy<V> $$0, Function<box, Optional<V>> $$1) {
+   public static <V> bu<V> a(iy<V> $$0, Function<bpv, Optional<V>> $$1) {
       return new bu<>($$0.q(), $$1);
    }
 
-   public static <V> bu<V> a(Codec<V> $$0, Function<box, Optional<V>> $$1) {
+   public static <V> bu<V> a(Codec<V> $$0, Function<bpv, Optional<V>> $$1) {
       return new bu<>($$0, $$1);
    }
 
-   private bu(Codec<V> $$0, Function<box, Optional<V>> $$1) {
+   private bu(Codec<V> $$0, Function<bpv, Optional<V>> $$1) {
       this.a = $$1;
       MapCodec<bu.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(bu.a::c)).apply($$1x, this::a));
       this.b = new bs.a($$2);
@@ -31,9 +31,9 @@ public class bu<V> {
       return new bu.a<>(this.b, this.a, $$0);
    }
 
-   public static record a<V>(bs.a b, Function<box, Optional<V>> c, V d) implements bs {
+   public static record a<V>(bs.a b, Function<bpv, Optional<V>> c, V d) implements bs {
       @Override
-      public boolean a(box $$0, apf $$1, @Nullable ept $$2) {
+      public boolean a(bpv $$0, aps $$1, @Nullable esa $$2) {
          return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
       }
 
@@ -42,7 +42,7 @@ public class bu<V> {
          return this.b;
       }
 
-      public Function<box, Optional<V>> b() {
+      public Function<bpv, Optional<V>> b() {
          return this.c;
       }
 

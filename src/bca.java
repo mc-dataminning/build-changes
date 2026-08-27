@@ -1,25 +1,33 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.UUID;
 
-public class bca extends bdi {
-   private final String a;
-
-   public bca(Schema $$0, String $$1, String $$2) {
-      super($$0, true, "Horse armor fix for " + $$1, beh.y, $$1);
-      this.a = $$2;
+public class bca extends DataFix {
+   public bca(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Dynamic<T> $$3 = $$0.remove(this.a);
-         $$3 = $$3.set("body_armor_item", $$2);
-         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
-      } else {
-         return $$0;
-      }
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityStringUuidFix",
+         this.getInputSchema().getType(bfa.z),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> {
+                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
+                  if ($$1.isPresent()) {
+                     UUID $$2 = UUID.fromString($$1.get());
+                     return $$0x.remove("UUID")
+                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
+                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
+                  } else {
+                     return $$0x;
+                  }
+               }
+            )
+      );
    }
 }

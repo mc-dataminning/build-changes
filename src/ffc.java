@@ -1,17 +1,17 @@
-public interface ffc extends fcs, fff {
-   ffc.a s();
-
-   default boolean A() {
-      return true;
+public record ffc(ajt a, ajt b, ajt c, ajt d) {
+   public ffc(ajt $$0, ajt $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public ffc(ajt $$0, ajt $$1, ajt $$2) {
+      this($$0, $$1, $$2, $$1);
+   }
 
-      public boolean a() {
-         return this == c;
+   public ajt a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
    }
 }

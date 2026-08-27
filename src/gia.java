@@ -1,24 +1,17 @@
-public class gia extends ggx<ces, fqv<ces>> {
-   private static final ajh a = new ajh("textures/entity/wither/wither_armor.png");
-   private final fqv<ces> b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gia(gew<ces, fqv<ces>> $$0, frb $$1) {
-      super($$0);
-      this.b = new fqv<>($$1.a(fre.bW));
+public class gia extends gec<cef, fqx<cef>> {
+   private static final Map<bqb<?>, ajt> a = Maps.newHashMap(
+      ImmutableMap.of(bqb.bu, new ajt("textures/entity/horse/horse_zombie.png"), bqb.aN, new ajt("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gia(gfi.a $$0, ftk $$1) {
+      super($$0, new fqx<>($$0.a($$1)), 1.0F);
    }
 
-   @Override
-   protected float a(float $$0) {
-      return aww.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ajh a() {
-      return a;
-   }
-
-   @Override
-   protected foe<ces> b() {
-      return this.b;
+   public ajt a(cef $$0) {
+      return a.get($$0.ai());
    }
 }

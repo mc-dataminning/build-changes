@@ -1,23 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dyt(int b, int c, int d) implements dxw {
-   public static final Codec<dyt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awe.k.fieldOf("spread_width").forGetter(dyt::a), awe.k.fieldOf("spread_height").forGetter(dyt::b), awe.k.fieldOf("max_height").forGetter(dyt::c)
-            )
-            .apply($$0, dyt::new)
-   );
-
-   public int a() {
-      return this.b;
+public class dyt extends dxv<eam> {
+   public dyt(Codec<eam> $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dxx<eam> $$0) {
+      eam $$1 = $$0.f();
+      axr $$2 = $$0.d();
+      ib $$3 = $$0.e();
+      czs $$4 = $$0.b();
+      int $$5 = 0;
+      ib.a $$6 = new ib.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public int c() {
-      return this.d;
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
+
+      return $$5 > 0;
    }
 }

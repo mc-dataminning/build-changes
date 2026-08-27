@@ -1,16 +1,17 @@
-public class ges extends geh<cbw, fpl<cbw>> {
-   private static final ajh a = new ajh("textures/entity/bear/polarbear.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ges(gdb.a $$0) {
-      super($$0, new fpl<>($$0.a(fre.ba)), 0.9F);
+public class ges<T extends cee> extends gec<T, fqa<T>> {
+   private static final Map<bqb<?>, ajt> a = Maps.newHashMap(
+      ImmutableMap.of(bqb.z, new ajt("textures/entity/horse/donkey.png"), bqb.as, new ajt("textures/entity/horse/mule.png"))
+   );
+
+   public ges(gfi.a $$0, float $$1, ftk $$2) {
+      super($$0, new fqa<>($$0.a($$2)), $$1);
    }
 
-   public ajh a(cbw $$0) {
-      return a;
-   }
-
-   protected void a(cbw $$0, eub $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   public ajt a(T $$0) {
+      return a.get($$0.ai());
    }
 }

@@ -1,37 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ecg extends ecp {
-   public static final Codec<ecg> a = RecordCodecBuilder.create(
+public class ecg extends eca {
+   public static final Codec<ecg> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+               eca.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bnf.c.fieldOf("values").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, ecg::new)
    );
-   private final int c;
-   private final double d;
-   private final double e;
+   private final eca c;
+   private final String d;
+   @Nullable
+   private dpz e;
+   private final bnf f;
 
-   private ecg(int $$0, double $$1, double $$2) {
+   public ecg(eca $$0, dpz $$1, bnf $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
+
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
+   }
+
+   public ecg(eca $$0, String $$1, bnf $$2) {
       this.c = $$0;
       this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static ecg a(int $$0, double $$1, double $$2) {
-      return new ecg($$0, $$1, $$2);
+      this.f = $$2;
    }
 
    @Override
-   protected int a(axd $$0, ib $$1) {
-      double $$2 = cya.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   protected ecb<?> a() {
+      return ecb.g;
    }
 
    @Override
-   public ecm<?> b() {
-      return ecm.g;
+   public doz a(axr $$0, ib $$1) {
+      doz $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
+      }
+
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dpz a(doz $$0, String $$1) {
+      Collection<dqc<?>> $$2 = $$0.B();
+      Optional<dpz> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dpz).map($$0x -> (dpz)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

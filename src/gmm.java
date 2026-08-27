@@ -1,99 +1,69 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class gmm implements gnv<gmm> {
-   public static final aja a = new aja("sounds", ".ogg");
-   private final ajh b;
-   private final bml c;
-   private final bml d;
-   private final int e;
-   private final gmm.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+public class gmm extends th {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public gmm(String $$0, bml $$1, bml $$2, int $$3, gmm.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new ajh($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   private gmm(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public ajh a() {
-      return this.b;
+   public static gmm a(atc $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               ajt $$7 = new ajt($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
+      }
+
+      return new gmm(ImmutableMap.copyOf($$3), $$2);
    }
 
-   public ajh b() {
-      return a.a(this.b);
+   private static void a(String $$0, List<ata> $$1, Map<String, String> $$2) {
+      for (ata $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            th.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
-   public bml c() {
-      return this.c;
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
-   public bml d() {
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
       return this.d;
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gmm a(axd $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(gnq $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gmm.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gmm.a a(String $$0) {
-         for (gmm.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
+   public aww a(wl $$0) {
+      return gmn.a($$0, this.d);
    }
 }

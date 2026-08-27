@@ -1,32 +1,83 @@
-public class bqw {
-   public static final il<bqr> a = a("generic.armor", new bqy("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final il<bqr> b = a("generic.armor_toughness", new bqy("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final il<bqr> c = a("generic.attack_damage", new bqy("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final il<bqr> d = a("generic.attack_knockback", new bqy("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final il<bqr> e = a("generic.attack_speed", new bqy("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final il<bqr> f = a("player.block_break_speed", new bqy("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final il<bqr> g = a("player.block_interaction_range", new bqy("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final il<bqr> h = a("player.entity_interaction_range", new bqy("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final il<bqr> i = a("generic.fall_damage_multiplier", new bqy("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
-   public static final il<bqr> j = a("generic.flying_speed", new bqy("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final il<bqr> k = a("generic.follow_range", new bqy("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final il<bqr> l = a("generic.gravity", new bqy("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
-   public static final il<bqr> m = a("generic.jump_strength", new bqy("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final il<bqr> n = a("generic.knockback_resistance", new bqy("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final il<bqr> o = a("generic.luck", new bqy("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final il<bqr> p = a("generic.max_absorption", new bqy("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final il<bqr> q = a("generic.max_health", new bqy("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final il<bqr> r = a("generic.movement_speed", new bqy("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final il<bqr> s = a("generic.safe_fall_distance", new bqy("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final il<bqr> t = a("generic.scale", new bqy("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
-   public static final il<bqr> u = a("zombie.spawn_reinforcements", new bqy("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final il<bqr> v = a("generic.step_height", new bqy("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
+public abstract class bqw extends bqq {
+   protected static final float bW = 0.0F;
 
-   private static il<bqr> a(String $$0, bqr $$1) {
-      return iy.b(ki.u, new ajh($$0), $$1);
+   protected bqw(bqb<? extends bqw> $$0, cyx $$1) {
+      super($$0, $$1);
    }
 
-   public static il<bqr> a(iy<bqr> $$0) {
-      return q;
+   public float h(ib $$0) {
+      return this.a($$0, this.dM());
+   }
+
+   public float a(ib $$0, cza $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(cyy $$0, bqs $$1) {
+      return this.a(this.dm(), $$0) >= 0.0F;
+   }
+
+   public boolean gj() {
+      return !this.K().l();
+   }
+
+   public boolean gk() {
+      if (this.bC.a(bzr.Z)) {
+         return this.bC.c(bzr.Z).isPresent();
+      } else {
+         for (byz $$0 : this.bR.b()) {
+            if ($$0.h() && $$0.k() instanceof bye) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void ga() {
+      super.ga();
+      bpv $$0 = this.gc();
+      if ($$0 != null && $$0.dM() == this.dM()) {
+         this.a($$0.dm(), 5);
+         float $$1 = this.f($$0);
+         if (this instanceof brk && ((brk)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
+            }
+
+            return;
+         }
+
+         this.F($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bR.a(bxl.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.dr() - this.dr()) / (double)$$1;
+            double $$3 = ($$0.dt() - this.dt()) / (double)$$1;
+            double $$4 = ($$0.dx() - this.dx()) / (double)$$1;
+            this.g(this.dp().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cn();
+         } else if (this.gl() && !this.gk()) {
+            this.bR.b(bxl.a.a);
+            float $$5 = 2.0F;
+            esa $$6 = new esa($$0.dr() - this.dr(), $$0.dt() - this.dt(), $$0.dx() - this.dx()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.K().a(this.dr() + $$6.c, this.dt() + $$6.d, this.dx() + $$6.e, this.gm());
+         }
+      }
+   }
+
+   protected boolean gl() {
+      return true;
+   }
+
+   protected double gm() {
+      return 1.0;
+   }
+
+   protected void F(float $$0) {
    }
 }

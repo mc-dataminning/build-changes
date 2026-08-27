@@ -1,40 +1,73 @@
-public class fvp extends fwg {
-   private final fwb a;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   fvp(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+public final class fvp {
+   private static final int a = 1024;
+   private final fvg b;
+   private final fvm c;
+   private final fvb d;
+   @Nullable
+   private fvl e;
+
+   public fvp(fvg $$0, fvm $$1, fvb $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
+   public static fvp a(fvm $$0, UserApiService $$1) {
+      fvb $$2 = new fvb(1024);
+      fvg $$3 = fvg.a($$0, $$1);
+      return new fvp($$3, $$0, $$2);
    }
 
-   @Override
-   public fvk b() {
-      return fvk.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(fwb a) implements fvj<kd> {
-      public fvg a(kd $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fvp $$8 = new fvp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   public void a(fbp $$0, fjo $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fvl $$4 = this.e.b();
+         $$0.a(
+            new fig(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wg.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wg.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wg.c("gui.abuseReport.draft.edit"),
+               wg.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
+   }
+
+   public fvg a() {
+      return this.b;
+   }
+
+   public fvb b() {
+      return this.d;
+   }
+
+   public boolean a(fvm $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable fvl $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

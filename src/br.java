@@ -20,28 +20,28 @@ public record br(
    Optional<br> n,
    Optional<String> o
 ) {
-   public static final Codec<br> a = awe.a(
+   public static final Codec<br> a = aws.a(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     awe.a(bt.a, "type").forGetter(br::a),
-                     awe.a(bi.a, "distance").forGetter(br::b),
-                     awe.a(ck.a, "location").forGetter(br::c),
-                     awe.a(ck.a, "stepping_on").forGetter(br::d),
-                     awe.a(cn.a, "effects").forGetter(br::e),
-                     awe.a(co.a, "nbt").forGetter(br::f),
-                     awe.a(bp.a, "flags").forGetter(br::g),
-                     awe.a(bo.a, "equipment").forGetter(br::h),
-                     awe.a(bs.a, "type_specific").forGetter(br::i),
-                     awe.a($$0, "vehicle").forGetter(br::j),
-                     awe.a($$0, "passenger").forGetter(br::k),
-                     awe.a($$0, "targeted_entity").forGetter(br::l),
-                     awe.a(Codec.STRING, "team").forGetter(br::m)
+                     aws.a(bt.a, "type").forGetter(br::a),
+                     aws.a(bi.a, "distance").forGetter(br::b),
+                     aws.a(ck.a, "location").forGetter(br::c),
+                     aws.a(ck.a, "stepping_on").forGetter(br::d),
+                     aws.a(cn.a, "effects").forGetter(br::e),
+                     aws.a(co.a, "nbt").forGetter(br::f),
+                     aws.a(bp.a, "flags").forGetter(br::g),
+                     aws.a(bo.a, "equipment").forGetter(br::h),
+                     aws.a(bs.a, "type_specific").forGetter(br::i),
+                     aws.a($$0, "vehicle").forGetter(br::j),
+                     aws.a($$0, "passenger").forGetter(br::k),
+                     aws.a($$0, "targeted_entity").forGetter(br::l),
+                     aws.a(Codec.STRING, "team").forGetter(br::m)
                   )
                   .apply($$1, br::new)
          )
    );
-   public static final Codec<bc> b = awe.a(bc.a, a, br::a);
+   public static final Codec<bc> b = aws.a(bc.a, a, br::a);
 
    public static bc a(br.a $$0) {
       return a($$0.b());
@@ -56,15 +56,15 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      env $$1 = eny.a(ekw.b.a, $$0).build();
+      eqc $$1 = eqf.a(enb.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(apg $$0, @Nullable box $$1) {
+   public boolean a(apt $$0, @Nullable bpv $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(apf $$0, @Nullable ept $$1, @Nullable box $$2) {
+   public boolean a(aps $$0, @Nullable esa $$1, @Nullable bpv $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -82,7 +82,7 @@ public record br(
             return false;
          } else {
             if (this.f.isPresent()) {
-               ept $$3 = ept.b($$2.aJ());
+               esa $$3 = esa.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,11 +102,11 @@ public record br(
                return false;
             } else if (this.m.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bpr ? ((bpr)$$2).p() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bqq ? ((bqq)$$2).p() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  eqz $$4 = $$2.cg();
+                  etg $$4 = $$2.cg();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record br(
       }
    }
 
-   public static ekw b(apg $$0, box $$1) {
-      elc $$2 = new elc.a($$0.z()).a(enh.a, $$1).a(enh.f, $$0.dk()).a(eng.m);
-      return new ekw.a($$2).a(Optional.empty());
+   public static enb b(apt $$0, bpv $$1) {
+      enh $$2 = new enh.a($$0.z()).a(epo.a, $$1).a(epo.f, $$0.dk()).a(epn.m);
+      return new enb.a($$2).a(Optional.empty());
    }
 
    public Optional<bt> a() {
@@ -194,12 +194,12 @@ public record br(
          return new br.a();
       }
 
-      public br.a a(bpd<?> $$0) {
+      public br.a a(bqb<?> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }
 
-      public br.a a(avd<bpd<?>> $$0) {
+      public br.a a(avr<bqb<?>> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }

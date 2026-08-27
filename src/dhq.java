@@ -1,73 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhq extends dac {
+public class dhq extends ddt {
    public static final MapCodec<dhq> a = b(dhq::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final ih[] d = ih.values();
+   private static final est[] b = new est[]{
+      dby.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dby.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dhq> a() {
       return a;
    }
 
-   protected dhq(dna.d $$0) {
+   public dhq(doy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   protected cyw d() {
+      return crm.ue;
    }
 
    @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, dac $$3, ib $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cxb $$0, ib $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dae.aP.o(), 2);
-         $$0.a(null, $$1, aty.yx, atz.e, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean b(cxb $$0, ib $$1) {
-      return ib.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ih $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dnb $$3 = $$0.a_($$2);
-            eip $$4 = $$0.b_($$2);
-            if (!$$4.a(aus.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof daj $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof der) {
-                  $$0.a($$2, dae.a.o(), 3);
-               } else {
-                  if (!$$3.a(dae.mc) && !$$3.a(dae.md) && !$$3.a(dae.bw) && !$$3.a(dae.bx)) {
-                     return false;
-                  }
-
-                  dki $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dae.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b[this.g($$0)];
    }
 }

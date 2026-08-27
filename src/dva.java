@@ -1,66 +1,71 @@
-import com.mojang.serialization.Codec;
+public class dva {
+   public static final ajs<ejv.a> a = a("temperature");
+   public static final ajs<ejv.a> b = a("vegetation");
+   public static final ajs<ejv.a> c = a("continentalness");
+   public static final ajs<ejv.a> d = a("erosion");
+   public static final ajs<ejv.a> e = a("temperature_large");
+   public static final ajs<ejv.a> f = a("vegetation_large");
+   public static final ajs<ejv.a> g = a("continentalness_large");
+   public static final ajs<ejv.a> h = a("erosion_large");
+   public static final ajs<ejv.a> i = a("ridge");
+   public static final ajs<ejv.a> j = a("offset");
+   public static final ajs<ejv.a> k = a("aquifer_barrier");
+   public static final ajs<ejv.a> l = a("aquifer_fluid_level_floodedness");
+   public static final ajs<ejv.a> m = a("aquifer_lava");
+   public static final ajs<ejv.a> n = a("aquifer_fluid_level_spread");
+   public static final ajs<ejv.a> o = a("pillar");
+   public static final ajs<ejv.a> p = a("pillar_rareness");
+   public static final ajs<ejv.a> q = a("pillar_thickness");
+   public static final ajs<ejv.a> r = a("spaghetti_2d");
+   public static final ajs<ejv.a> s = a("spaghetti_2d_elevation");
+   public static final ajs<ejv.a> t = a("spaghetti_2d_modulator");
+   public static final ajs<ejv.a> u = a("spaghetti_2d_thickness");
+   public static final ajs<ejv.a> v = a("spaghetti_3d_1");
+   public static final ajs<ejv.a> w = a("spaghetti_3d_2");
+   public static final ajs<ejv.a> x = a("spaghetti_3d_rarity");
+   public static final ajs<ejv.a> y = a("spaghetti_3d_thickness");
+   public static final ajs<ejv.a> z = a("spaghetti_roughness");
+   public static final ajs<ejv.a> A = a("spaghetti_roughness_modulator");
+   public static final ajs<ejv.a> B = a("cave_entrance");
+   public static final ajs<ejv.a> C = a("cave_layer");
+   public static final ajs<ejv.a> D = a("cave_cheese");
+   public static final ajs<ejv.a> E = a("ore_veininess");
+   public static final ajs<ejv.a> F = a("ore_vein_a");
+   public static final ajs<ejv.a> G = a("ore_vein_b");
+   public static final ajs<ejv.a> H = a("ore_gap");
+   public static final ajs<ejv.a> I = a("noodle");
+   public static final ajs<ejv.a> J = a("noodle_thickness");
+   public static final ajs<ejv.a> K = a("noodle_ridge_a");
+   public static final ajs<ejv.a> L = a("noodle_ridge_b");
+   public static final ajs<ejv.a> M = a("jagged");
+   public static final ajs<ejv.a> N = a("surface");
+   public static final ajs<ejv.a> O = a("surface_secondary");
+   public static final ajs<ejv.a> P = a("clay_bands_offset");
+   public static final ajs<ejv.a> Q = a("badlands_pillar");
+   public static final ajs<ejv.a> R = a("badlands_pillar_roof");
+   public static final ajs<ejv.a> S = a("badlands_surface");
+   public static final ajs<ejv.a> T = a("iceberg_pillar");
+   public static final ajs<ejv.a> U = a("iceberg_pillar_roof");
+   public static final ajs<ejv.a> V = a("iceberg_surface");
+   public static final ajs<ejv.a> W = a("surface_swamp");
+   public static final ajs<ejv.a> X = a("calcite");
+   public static final ajs<ejv.a> Y = a("gravel");
+   public static final ajs<ejv.a> Z = a("powder_snow");
+   public static final ajs<ejv.a> aa = a("packed_ice");
+   public static final ajs<ejv.a> ab = a("ice");
+   public static final ajs<ejv.a> ac = a("soul_sand_layer");
+   public static final ajs<ejv.a> ad = a("gravel_layer");
+   public static final ajs<ejv.a> ae = a("patch");
+   public static final ajs<ejv.a> af = a("netherrack");
+   public static final ajs<ejv.a> ag = a("nether_wart");
+   public static final ajs<ejv.a> ah = a("nether_state_selector");
 
-public class dva extends dvs<dxn> {
-   public dva(Codec<dxn> $$0) {
-      super($$0);
+   private static ajs<ejv.a> a(String $$0) {
+      return ajs.a(ks.aD, new ajt($$0));
    }
 
-   @Override
-   public boolean a(dvu<dxn> $$0) {
-      cxw $$1 = $$0.b();
-      dxn $$2 = $$0.f();
-      axd $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         ib.a $$8 = $$0.e().j();
-         ib.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dxn.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+   public static ejv a(im<ejv.a> $$0, dve $$1, ajs<ejv.a> $$2) {
+      il<ejv.a> $$3 = $$0.b($$2);
+      return ejv.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

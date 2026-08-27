@@ -1,41 +1,33 @@
-public record ahf(int b, ahs c) implements yb<ahe> {
-   public static final xs<uu, ahf> a = yb.a(ahf::a, ahf::new);
-   private static final int d = 1048576;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private ahf(uu $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+public class ahf implements yn<afl> {
+   public static final ye<vg, ahf> a = yn.a(ahf::a, ahf::new);
+   private final UUID b;
+
+   public ahf(UUID $$0) {
+      this.b = $$0;
    }
 
-   private static ahs a(ajh $$0, uu $$1) {
-      return b($$0, $$1);
+   private ahf(vg $$0) {
+      this.b = $$0.n();
    }
 
-   private static ahu b(ajh $$0, uu $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new ahu($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+   private void a(vg $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yd<ahf> a() {
-      return ahk.a;
+   public yp<ahf> a() {
+      return afj.bZ;
    }
 
-   public void a(ahe $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public ahs e() {
-      return this.c;
+   @Nullable
+   public bpv a(aps $$0) {
+      return $$0.a(this.b);
    }
 }

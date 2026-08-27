@@ -1,10 +1,17 @@
-public class cuy extends blp.a {
-   public final cuw a;
-   public final int b;
+public enum cuy implements aye {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public cuy(cuw $$0, int $$1) {
-      super($$0.e().a());
-      this.a = $$0;
-      this.b = $$1;
+   public static final aye.a<cuy> d = aye.a(cuy::values);
+   private final String e;
+
+   private cuy(String $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

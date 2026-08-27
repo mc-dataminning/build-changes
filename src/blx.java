@@ -1,27 +1,6 @@
-public abstract class blx<R extends Runnable> extends blt<R> {
-   private int b;
+import java.util.Set;
+import java.util.function.Supplier;
 
-   public blx(String $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean ay() {
-      return this.bA() || super.ay();
-   }
-
-   protected boolean bA() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
-   }
+public interface blx {
+   Set<blv> a(Supplier<bkm> var1);
 }

@@ -1,241 +1,187 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class tt implements ub {
-   private static final Map<String, List<String>> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
-      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
-      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
-   });
-   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
-   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String d = String.valueOf(':');
-   private static final String e = String.valueOf(',');
-   private static final String f = "[";
-   private static final String g = "]";
-   private static final String h = ";";
-   private static final String i = " ";
-   private static final String j = "{";
-   private static final String k = "}";
-   private static final String l = "\n";
-   private final String m;
-   private final int n;
-   private final List<String> o;
-   private String p = "";
+public class tt extends tl<tu> {
+   private static final int b = 24;
+   public static final ul<tt> a = new ul.b<tt>() {
+      public tt a(DataInput $$0, tv $$1) throws IOException {
+         return new tt(d($$0, $$1));
+      }
 
-   public tt() {
-      this("    ", 0, Lists.newArrayList());
+      @Override
+      public ug.b a(DataInput $$0, ug $$1, tv $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long[] d(DataInput $$0, tv $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(8L, (long)$$2);
+         long[] $$3 = new long[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readLong();
+         }
+
+         return $$3;
+      }
+
+      @Override
+      public void b(DataInput $$0, tv $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 8);
+      }
+
+      @Override
+      public String a() {
+         return "LONG[]";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long_Array";
+      }
+   };
+   private long[] c;
+
+   public tt(long[] $$0) {
+      this.c = $$0;
    }
 
-   public tt(String $$0, int $$1, List<String> $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
+   public tt(LongSet $$0) {
+      this.c = $$0.toLongArray();
    }
 
-   public String a(tx $$0) {
+   public tt(List<Long> $$0) {
+      this(a($$0));
+   }
+
+   private static long[] a(List<Long> $$0) {
+      long[] $$1 = new long[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Long $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0L : $$3;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+
+      for (long $$1 : this.c) {
+         $$0.writeLong($$1);
+      }
+   }
+
+   @Override
+   public int a() {
+      return 24 + 8 * this.c.length;
+   }
+
+   @Override
+   public byte b() {
+      return 12;
+   }
+
+   @Override
+   public ul<tt> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
+   }
+
+   public tt e() {
+      long[] $$0 = new long[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new tt($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof tt && Arrays.equals(this.c, ((tt)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public void a(un $$0) {
       $$0.a(this);
-      return this.p;
+   }
+
+   public long[] g() {
+      return this.c;
    }
 
    @Override
-   public void a(tv $$0) {
-      this.p = tv.b($$0.s_());
+   public int size() {
+      return this.c.length;
+   }
+
+   public tu a(int $$0) {
+      return tu.a(this.c[$$0]);
+   }
+
+   public tu a(int $$0, tu $$1) {
+      long $$2 = this.c[$$0];
+      this.c[$$0] = $$1.f();
+      return tu.a($$2);
+   }
+
+   public void b(int $$0, tu $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
    }
 
    @Override
-   public void a(sy $$0) {
-      this.p = $$0.l() + "b";
-   }
-
-   @Override
-   public void a(ts $$0) {
-      this.p = $$0.l() + "s";
-   }
-
-   @Override
-   public void a(tf $$0) {
-      this.p = String.valueOf($$0.l());
-   }
-
-   @Override
-   public void a(ti $$0) {
-      this.p = $$0.l() + "L";
-   }
-
-   @Override
-   public void a(td $$0) {
-      this.p = $$0.k() + "f";
-   }
-
-   @Override
-   public void a(tb $$0) {
-      this.p = $$0.j() + "d";
-   }
-
-   @Override
-   public void a(sx $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
-      byte[] $$2 = $$0.e();
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]).append("B");
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
-      }
-
-      $$1.append("]");
-      this.p = $$1.toString();
-   }
-
-   @Override
-   public void a(te $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
-      int[] $$2 = $$0.g();
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]);
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
-      }
-
-      $$1.append("]");
-      this.p = $$1.toString();
-   }
-
-   @Override
-   public void a(th $$0) {
-      String $$1 = "L";
-      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
-      long[] $$3 = $$0.g();
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.append(" ").append($$3[$$4]).append("L");
-         if ($$4 != $$3.length - 1) {
-            $$2.append(e);
-         }
-      }
-
-      $$2.append("]");
-      this.p = $$2.toString();
-   }
-
-   @Override
-   public void a(tg $$0) {
-      if ($$0.isEmpty()) {
-         this.p = "[]";
+   public boolean a(int $$0, uj $$1) {
+      if ($$1 instanceof uc) {
+         this.c[$$0] = ((uc)$$1).f();
+         return true;
       } else {
-         StringBuilder $$1 = new StringBuilder("[");
-         this.b("[]");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            $$1.append(Strings.repeat($$2, this.n + 1));
-            $$1.append(new tt($$2, this.n + 1, this.o).a($$0.k($$3)));
-            if ($$3 != $$0.size() - 1) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
-            }
-         }
-
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("]");
-         this.p = $$1.toString();
-         this.b();
+         return false;
       }
    }
 
    @Override
-   public void a(ta $$0) {
-      if ($$0.g()) {
-         this.p = "{}";
+   public boolean b(int $$0, uj $$1) {
+      if ($$1 instanceof uc) {
+         this.c = ArrayUtils.add(this.c, $$0, ((uc)$$1).f());
+         return true;
       } else {
-         StringBuilder $$1 = new StringBuilder("{");
-         this.b("{}");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         Collection<String> $$3 = this.b($$0);
-         Iterator<String> $$4 = $$3.iterator();
-
-         while ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            tx $$6 = $$0.c($$5);
-            this.b($$5);
-            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new tt($$2, this.n + 1, this.o).a($$6));
-            this.b();
-            if ($$4.hasNext()) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
-            }
-         }
-
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("}");
-         this.p = $$1.toString();
-         this.b();
+         return false;
       }
    }
 
-   private void b() {
-      this.o.remove(this.o.size() - 1);
-   }
-
-   private void b(String $$0) {
-      this.o.add($$0);
-   }
-
-   protected List<String> b(ta $$0) {
-      Set<String> $$1 = Sets.newHashSet($$0.e());
-      List<String> $$2 = Lists.newArrayList();
-      List<String> $$3 = a.get(this.a());
-      if ($$3 != null) {
-         for (String $$4 : $$3) {
-            if ($$1.remove($$4)) {
-               $$2.add($$4);
-            }
-         }
-
-         if (!$$1.isEmpty()) {
-            $$1.stream().sorted().forEach($$2::add);
-         }
-      } else {
-         $$2.addAll($$1);
-         Collections.sort($$2);
-      }
-
-      return $$2;
-   }
-
-   public String a() {
-      return String.join(".", this.o);
-   }
-
-   protected static String a(String $$0) {
-      return c.matcher($$0).matches() ? $$0 : tv.b($$0);
+   public tu b(int $$0) {
+      long $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return tu.a($$1);
    }
 
    @Override
-   public void a(tc $$0) {
+   public byte f() {
+      return 4;
+   }
+
+   @Override
+   public void clear() {
+      this.c = new long[0];
+   }
+
+   @Override
+   public ug.b a(ug $$0) {
+      return $$0.a(this.c);
    }
 }

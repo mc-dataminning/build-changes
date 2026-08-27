@@ -1,40 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.spectate.not_spectator", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.save.alreadyOff"));
 
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), null, ((du)$$0x.getSource()).h())))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("target", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), ((du)$$0x.getSource()).h())))
-                  .then(dv.a("player", eh.c()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), eh.e($$0x, "player"))))
-            )
-      );
-   }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         du $$1 = (du)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static int a(du $$0, @Nullable box $$1, apg $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.f.b() != cwy.d) {
-         throw b.create($$2.O_());
-      } else {
-         $$2.d($$1);
-         if ($$1 != null) {
-            $$0.a(() -> vu.a("commands.spectate.success.started", $$1.O_()), false);
-         } else {
-            $$0.a(() -> vu.c("commands.spectate.success.stopped"), false);
+         for (aps $$3 : $$1.l().K()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
          }
 
-         return 1;
-      }
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wg.c("commands.save.disabled"), true);
+            return 1;
+         }
+      }));
    }
 }

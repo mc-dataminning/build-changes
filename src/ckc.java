@@ -1,124 +1,67 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class ckc extends cjb implements cjj {
-   public ckc(bpd<? extends ckc> $$0, cxb $$1) {
+public class ckc extends cka {
+   public static final float e = 4.0F;
+
+   public ckc(bqb<? extends ckc> $$0, cyx $$1) {
       super($$0, $$1);
    }
 
-   public ckc(bpd<? extends ckc> $$0, cxb $$1, box $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-   }
-
-   ckc(bpd<? extends ckc> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cxb $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public ckc(cyx $$0, bqo $$1, double $$2, double $$3, double $$4) {
+      super(bqb.A, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected epo aq() {
-      float $$0 = this.ai().n().a() / 2.0F;
-      float $$1 = this.ai().n().b();
-      float $$2 = 0.15F;
-      return new epo(
-         this.dk().c - (double)$$0,
-         this.dk().d - 0.15F,
-         this.dk().e - (double)$$0,
-         this.dk().c + (double)$$0,
-         this.dk().d - 0.15F + (double)$$1,
-         this.dk().e + (double)$$0
-      );
-   }
-
-   @Override
-   public boolean i(box $$0) {
-      return $$0 instanceof ckc ? false : super.i($$0);
-   }
-
-   @Override
-   protected boolean b(box $$0) {
-      return $$0 instanceof ckc ? false : super.b($$0);
-   }
-
-   @Override
-   protected void a(epq $$0) {
+   protected void a(ery $$0) {
       super.a($$0);
-      if (!this.dM().B) {
-         $$0.a().a(this.dN().c(this, this.af_() instanceof bpp $$1 ? $$1 : null), 1.0F);
-         this.y();
-      }
-   }
+      if ($$0.c() != ery.a.c || !this.e(((erx)$$0).a())) {
+         if (!this.dM().B) {
+            List<bqo> $$1 = this.dM().a(bqo.class, this.cH().c(4.0, 2.0, 4.0));
+            bpr $$2 = new bpr(this.dM(), this.dr(), this.dt(), this.dx());
+            bpv $$3 = this.u();
+            if ($$3 instanceof bqo) {
+               $$2.a((bqo)$$3);
+            }
 
-   protected abstract void y();
+            $$2.a(kl.i);
+            $$2.a(3.0F);
+            $$2.a(600);
+            $$2.c((7.0F - $$2.g()) / (float)$$2.k());
+            $$2.a(new bph(bpj.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bqo $$4 : $$1) {
+                  double $$5 = this.g($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.dr(), $$4.dt(), $$4.dx());
+                     break;
+                  }
+               }
+            }
 
-   @Override
-   protected void a(epp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.y();
-         this.am();
-      }
-   }
-
-   @Override
-   protected void a(epr $$0) {
-      cxb $$1 = this.dM();
-      if ($$0.c() == epr.a.b) {
-         ib $$2 = ((epp)$$0).a();
-         dnb $$3 = $$1.a_($$2);
-         if (!$$3.r($$1, $$2)) {
-            return;
+            this.dM().c(2006, this.dm(), this.aU() ? -1 : 1);
+            this.dM().b($$2);
+            this.am();
          }
       }
+   }
 
-      super.a($$0);
-      if (!this.dM().B && !this.f) {
-         this.am();
-      }
+   @Override
+   public boolean bw() {
+      return false;
+   }
 
-      this.f = false;
+   @Override
+   public boolean a(bot $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected kj v() {
+      return kl.i;
    }
 
    @Override
    protected boolean r() {
       return false;
-   }
-
-   @Override
-   public cqm p() {
-      return cqm.h;
-   }
-
-   @Override
-   protected float w() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float x() {
-      return this.w();
-   }
-
-   @Nullable
-   @Override
-   protected ka s() {
-      return null;
-   }
-
-   @Override
-   protected cwk.a ag_() {
-      return cwk.a.b;
-   }
-
-   public static class a extends cwu {
-      @Override
-      public boolean a(cwt $$0, box $$1) {
-         return false;
-      }
-
-      @Override
-      public Optional<Float> a(cwt $$0, cwh $$1, ib $$2, dnb $$3, eip $$4) {
-         return $$3.a(aun.cs) ? Optional.of(3600000.0F) : Optional.empty();
-      }
    }
 }

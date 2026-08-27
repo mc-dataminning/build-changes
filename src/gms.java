@@ -1,52 +1,22 @@
 public class gms {
-   public static class a extends gly {
-      private final fwu n;
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-      protected a(fwu $$0, atx $$1) {
-         super($$1, atz.i, gmp.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dH() || !this.n.bh()) {
-            this.n();
-         }
-      }
+   public gms(int $$0) {
+      this($$0, -1);
    }
 
-   public static class b extends gly {
-      public static final int n = 40;
-      private final fwu o;
-      private int p;
+   public gms(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      public b(fwu $$0) {
-         super(aty.z, atz.i, gmp.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dH() && this.p >= 0) {
-            if (this.o.bh()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   public int a() {
+      return this.b;
    }
 }

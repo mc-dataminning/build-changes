@@ -1,66 +1,90 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
 public class gba {
-   private static final int a = awg.b.a(255, 255, 100, 255);
-   private static final int b = awg.b.a(255, 100, 255, 255);
-   private static final int c = awg.b.a(255, 0, 255, 0);
-   private static final int d = awg.b.a(255, 255, 165, 0);
-   private static final int e = awg.b.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final ezi h;
-   private final Map<Integer, zb.a> i = new HashMap<>();
+   public float[] a;
+   public final int b;
 
-   public gba(ezi $$0) {
-      this.h = $$0;
+   public gba(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4) {
-      fwu $$5 = this.h.s;
-      $$5.dM().a(bpd.n, $$5.cH().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<zb.a> $$7 = Optional.ofNullable(this.i.get($$6.aj()));
-         $$7.map(zb.a::d).map($$1xx -> $$5.dM().a($$1xx)).map($$0xx -> $$0xx.l(this.h.au())).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dk(), $$6x, b);
-            ept $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fya.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fya.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fya.a(2.0)), $$7x, 20.0F, e);
-         });
-         $$7.map(zb.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dk(), $$6x.b(), a);
-            gbe.a($$0, $$1, epo.a(ept.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   private static void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4, ept $$5, ept $$6, int $$7) {
-      euf $$8 = $$1.getBuffer(fya.a(2.0));
-      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
-      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, euf $$4, ept $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gba> {
+      private static final int a = 0;
+
+      public gba a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gba($$4, $$5);
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+      protected int a(JsonObject $$0) {
+         int $$1 = axa.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, euf $$5, ept $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      ept $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
-   }
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = axa.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-   public void a() {
-      this.i.clear();
-   }
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = axa.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
 
-   public void a(zb.a $$0) {
-      this.i.put($$0.c(), $$0);
+               return $$2;
+            }
+         }
+      }
    }
 }

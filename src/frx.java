@@ -1,249 +1,103 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class frx implements yh {
-   private static final vu i = vu.c("disconnect.lost");
-   private static final Logger j = LogUtils.getLogger();
-   protected final ezi a;
-   protected final us b;
-   @Nullable
-   protected final fso c;
-   @Nullable
-   protected String d;
-   protected final gog e;
-   @Nullable
-   protected final fhh f;
-   protected boolean g;
-   private final List<frx.a> k = new ArrayList<>();
-   protected final Map<ajh, byte[]> h;
+public class frx<T extends ccx> extends fqm<T> {
+   private static final float a = 50.0F;
+   private static final float b = -40.0F;
+   private static final String f = "left_haunch";
+   private static final String g = "right_haunch";
+   private final ftm h;
+   private final ftm i;
+   private final ftm j;
+   private final ftm k;
+   private final ftm l;
+   private final ftm m;
+   private final ftm n;
+   private final ftm o;
+   private final ftm p;
+   private final ftm q;
+   private final ftm r;
+   private final ftm s;
+   private float t;
+   private static final float u = 0.6F;
 
-   protected frx(ezi $$0, us $$1, fse $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
+   public frx(ftm $$0) {
+      this.h = $$0.b("left_hind_foot");
+      this.i = $$0.b("right_hind_foot");
+      this.j = $$0.b("left_haunch");
+      this.k = $$0.b("right_haunch");
+      this.l = $$0.b("body");
+      this.m = $$0.b("left_front_leg");
+      this.n = $$0.b("right_front_leg");
+      this.o = $$0.b("head");
+      this.p = $$0.b("right_ear");
+      this.q = $$0.b("left_ear");
+      this.r = $$0.b("tail");
+      this.s = $$0.b("nose");
+   }
+
+   public static fts a() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      $$1.a("left_hind_foot", ftr.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), fto.a(3.0F, 17.5F, 3.7F));
+      $$1.a("right_hind_foot", ftr.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), fto.a(-3.0F, 17.5F, 3.7F));
+      $$1.a("left_haunch", ftr.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), fto.a(3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("right_haunch", ftr.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), fto.a(-3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("body", ftr.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), fto.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$1.a("left_front_leg", ftr.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), fto.a(3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$1.a("right_front_leg", ftr.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), fto.a(-3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$1.a("head", ftr.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), fto.a(0.0F, 16.0F, -1.0F));
+      $$1.a("right_ear", ftr.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), fto.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
+      $$1.a("left_ear", ftr.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), fto.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
+      $$1.a("tail", ftr.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), fto.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
+      $$1.a("nose", ftr.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), fto.a(0.0F, 16.0F, -1.0F));
+      return fts.a($$0, 64, 32);
    }
 
    @Override
-   public void a(yk $$0) {
-      this.a(new yv($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(yl $$0) {
-      ye.a($$0, this, this.a);
-      this.b(new yw($$0.b()));
-   }
-
-   @Override
-   public void a(yi $$0) {
-      zc $$1 = $$0.b();
-      if (!($$1 instanceof zd)) {
-         ye.a($$0, this, this.a);
-         if ($$1 instanceof za $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
-   }
-
-   protected abstract void a(zc var1);
-
-   @Override
-   public void a(yn $$0) {
-      ye.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new yx($$1, yx.a.f));
+   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         float $$8 = 1.5F;
+         $$0.a();
+         $$0.b(0.56666666F, 0.56666666F, 0.56666666F);
+         $$0.a(0.0F, 1.375F, 0.125F);
+         ImmutableList.of(this.o, this.q, this.p, this.s).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         $$0.b(0.4F, 0.4F, 0.4F);
+         $$0.a(0.0F, 2.25F, 0.0F);
+         ImmutableList.of(this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.r).forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
       } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         fso.a $$5 = this.c != null ? this.c.b() : fso.a.c;
-         if ($$5 != fso.a.c && (!$$4 || $$5 != fso.a.b)) {
-            this.a.ae().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
-         }
+         $$0.a();
+         $$0.b(0.6F, 0.6F, 0.6F);
+         $$0.a(0.0F, 1.0F, 0.0F);
+         ImmutableList.of(this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, this.q, this.r, this.s, new ftm[0])
+            .forEach($$8x -> $$8x.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
       }
    }
 
-   @Override
-   public void a(ym $$0) {
-      ye.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      this.s.e = $$5 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      this.p.e = $$5 * (float) (Math.PI / 180.0);
+      this.q.e = $$5 * (float) (Math.PI / 180.0);
+      this.s.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.p.f = this.s.f - (float) (Math.PI / 12);
+      this.q.f = this.s.f + (float) (Math.PI / 12);
+      this.t = axk.a($$0.G($$6) * (float) Math.PI);
+      this.j.e = (this.t * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.k.e = (this.t * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.h.e = this.t * 50.0F * (float) (Math.PI / 180.0);
+      this.i.e = this.t * 50.0F * (float) (Math.PI / 180.0);
+      this.m.e = (this.t * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
+      this.n.e = (this.t * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
    }
 
-   static vu a(vu $$0, @Nullable vu $$1) {
-      return (vu)($$1 == null ? $$0 : vu.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(aah $$0) {
-      ye.a($$0, this, this.a);
-      this.b.a(new aak($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(yo $$0) {
-      ye.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(yp $$0) {
-      ye.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.g = true;
-         this.b.a(vu.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         ftr $$1 = new ftr($$0.b(), $$0.e());
-         fga.a(Objects.requireNonNullElseGet(this.f, fhm::new), this.a, $$1, this.c, false, new fss(this.h));
-      }
-   }
-
-   @Override
-   public void a(yj $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void f() {
-      Iterator<frx.a> $$0 = this.k.iterator();
-
-      while ($$0.hasNext()) {
-         frx.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(yb<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(vu $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      j.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$0.a("Server brand", () -> this.d);
-   }
-
-   protected fhh b(vu $$0) {
-      fhh $$1 = Objects.requireNonNullElseGet(this.f, () -> new fkf(new fhm()));
-      return (fhh)(this.c != null && this.c.e() ? new gpa($$1, i, $$0) : new fgi($$1, i, $$0));
-   }
-
-   @Nullable
-   public String g() {
-      return this.d;
-   }
-
-   private void a(yb<? extends vg> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.k.add(new frx.a($$0, $$1, ac.b() + $$2.toMillis()));
-      }
-   }
-
-   private fhh a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vu $$4) {
-      fhh $$5 = this.a.y;
-      return $$5 instanceof frx.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new frx.b(this.a, $$5, List.of(new frx.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(yb<? extends vg> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends ffz {
-      private final List<frx.b.a> l;
-      @Nullable
-      private final fhh m;
-
-      b(ezi $$0, @Nullable fhh $$1, List<frx.b.a> $$2, boolean $$3, @Nullable vu $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               glr $$6 = $$0.ae();
-               if ($$5) {
-                  if (frx.this.c != null) {
-                     frx.this.c.a(fso.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     frx.this.b.a(vu.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (frx.this.c != null) {
-                     frx.this.c.a(fso.a.b);
-                  }
-               }
-
-               for (frx.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (frx.this.c != null) {
-                  fsp.b(frx.this.c);
-               }
-            },
-            $$3 ? vu.c("multiplayer.requiredTexturePrompt.line1") : vu.c("multiplayer.texturePrompt.line1"),
-            frx.a($$3 ? vu.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vu.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? vt.i : vt.f,
-            $$3 ? vt.p : vt.g
-         );
-         this.l = $$2;
-         this.m = $$1;
-      }
-
-      public frx.b a(ezi $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable vu $$5) {
-         List<frx.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.l.size() + 1).addAll(this.l).add(new frx.b.a($$1, $$2, $$3)).build();
-         return frx.this.new b($$0, this.m, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.t = axk.a($$0.G($$3) * (float) Math.PI);
    }
 }

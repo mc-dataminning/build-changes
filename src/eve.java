@@ -1,55 +1,36 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class eve extends evx implements evr {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class eve {
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
 
-   public String a() {
-      return this.a;
+   public static void a() {
+      RenderSystem.setupLevelDiffuseLighting(c, d);
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   public static void b() {
+      RenderSystem.setupLevelDiffuseLighting(a, b);
    }
 
-   public UUID b() {
-      return this.b;
+   public static void c() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   public static void d() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
    }
 
-   public boolean c() {
-      return this.c;
+   public static void e() {
+      RenderSystem.setShaderLights(e, f);
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   public static void a(Quaternionf $$0) {
+      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
    }
 }

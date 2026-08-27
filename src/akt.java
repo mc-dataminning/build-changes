@@ -1,66 +1,60 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.google.common.collect.Maps;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class akt {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("clear.failed.multiple", $$0));
+   private final Map<ajt, aks> a = Maps.newHashMap();
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), $$0xx -> true, -1)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), $$0xx -> true, -1)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("item", gd.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), -1)))
-                        .then(
-                           dv.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
-      );
+   @Nullable
+   public aks a(ajt $$0) {
+      return this.a.get($$0);
    }
 
-   private static int a(du $$0, Collection<apg> $$1, Predicate<cqm> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
+   public aks a(ajt $$0, wg $$1) {
+      aks $$2 = new aks($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
 
-      for (apg $$5 : $$1) {
-         $$4 += $$5.fZ().a($$2, $$3, $$5.bY.q());
-         $$5.bZ.d();
-         $$5.bY.a($$5.fZ());
+   public void a(aks $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<ajt> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<aks> b() {
+      return this.a.values();
+   }
+
+   public tm a(in.a $$0) {
+      tm $$1 = new tm();
+
+      for (aks $$2 : this.a.values()) {
+         $$1.a($$2.a().toString(), $$2.a($$0));
       }
 
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ad());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vu.a("commands.clear.test.single", $$6, $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> vu.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> vu.a("commands.clear.success.single", $$6, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> vu.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
+      return $$1;
+   }
 
-         return $$4;
+   public void a(tm $$0, in.a $$1) {
+      for (String $$2 : $$0.e()) {
+         ajt $$3 = new ajt($$2);
+         this.a.put($$3, aks.a($$0.p($$2), $$3, $$1));
+      }
+   }
+
+   public void a(apt $$0) {
+      for (aks $$1 : this.a.values()) {
+         $$1.c($$0);
+      }
+   }
+
+   public void b(apt $$0) {
+      for (aks $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

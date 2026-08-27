@@ -1,131 +1,49 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class td extends tq {
-   private static final int c = 12;
-   public static final td a = new td(0.0F);
-   public static final tz<td> b = new tz.a<td>() {
-      public td a(DataInput $$0, tj $$1) throws IOException {
-         return td.a(d($$0, $$1));
+public class td implements ArgumentType<tc> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public tc a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<tc> $$2 = sk.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = wg.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public tu.b a(DataInput $$0, tu $$1, tj $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static float d(DataInput $$0, tj $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
-      }
-
-      @Override
-      public int c() {
-         return 4;
-      }
-
-      @Override
-      public String a() {
-         return "FLOAT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Float";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final float w;
-
-   private td(float $$0) {
-      this.w = $$0;
    }
 
-   public static td a(float $$0) {
-      return $$0 == 0.0F ? a : new td($$0);
+   public static td a() {
+      return new td();
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+   public static tc a(CommandContext<du> $$0, String $$1) {
+      return (tc)$$0.getArgument($$1, tc.class);
    }
 
-   @Override
-   public int a() {
-      return 12;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return a($$0, $$1);
    }
 
-   @Override
-   public byte b() {
-      return 5;
+   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = sk.a().stream().map(tc::c);
+      return dz.b($$2, $$1);
    }
 
-   @Override
-   public tz<td> c() {
-      return b;
-   }
-
-   public td e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof td && this.w == ((td)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(ub $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return aww.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(aww.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(aww.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public tu.b a(tu $$0) {
-      return $$0.a(this.w);
+   public Collection<String> getExamples() {
+      return a;
    }
 }

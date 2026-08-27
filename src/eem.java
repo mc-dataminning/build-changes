@@ -1,15 +1,42 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface eem<P extends eel> {
-   eem<eek> a = a("single_pool_element", eek.b);
-   eem<eej> b = a("list_pool_element", eej.a);
-   eem<eef> c = a("feature_pool_element", eef.a);
-   eem<eee> d = a("empty_pool_element", eee.a);
-   eem<eei> e = a("legacy_single_pool_element", eei.a);
+public class eem extends dvo {
+   private final czs a;
+   private final dqw b;
+   private final Optional<eel> c;
 
-   Codec<P> codec();
+   public eem(czs $$0, dqw $$1, Optional<eel> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   static <P extends eel> eem<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.ai, $$0, () -> $$1);
+   public int a(dur.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public dqu a(cye $$0, dun.a $$1) {
+      return ((drp)this.a.a($$0.e, $$0.f)).b($$1);
+   }
+
+   public doz a(ib $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.I_();
+   }
+
+   public czs d() {
+      return this.a;
+   }
+
+   public Optional<eel> e() {
+      return this.c;
+   }
+
+   public dqw f() {
+      return this.b;
    }
 }

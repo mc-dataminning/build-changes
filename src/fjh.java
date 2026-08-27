@@ -1,50 +1,31 @@
-public abstract class fjh<T extends cms> extends fig<T> implements cmc {
-   private final ajh x;
+public class fjh extends fjo {
+   private static final wg a = wg.c("outOfMemory.title");
+   private static final wg b = wg.c("outOfMemory.message");
+   private static final int c = 300;
+   private final fhc d = new fhc(this);
 
-   public fjh(T $$0, cit $$1, vu $$2, ajh $$3) {
-      super($$0, $$1, $$2);
-      this.x = $$3;
-   }
-
-   protected void I() {
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.I();
-      this.p.a(this);
+   public fjh() {
+      super(a);
    }
 
    @Override
-   public void k() {
-      super.k();
-      this.p.b(this);
+   protected void aN_() {
+      this.d.a(a, this.m);
+      this.d.c(new fea(300, b, this.m));
+      fhg $$0 = this.d.b(fhg.e().a(8));
+      $$0.a(fdp.a(wf.l, $$0x -> this.j.a(new fjt())).a());
+      $$0.a(fdp.a(wg.c("menu.quit"), $$0x -> this.j.q()).a());
+      this.d.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fav $$0, int $$1, int $$2, float $$3) {
+   protected void c() {
+      this.d.a();
    }
 
    @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(fav var1, int var2, int var3);
-
-   @Override
-   public void a(clq $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(clq $$0, int $$1, cqm $$2) {
+   public boolean aE_() {
+      return false;
    }
 }

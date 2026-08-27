@@ -1,28 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+public class cab extends bzz {
+   private boolean p;
 
-public class cab extends bzy<bpp> {
-   @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.of(bys.i);
+   public cab(bqq $$0, cyx $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(apf $$0, bpp $$1) {
-      $$1.dP().a(bys.i, this.a($$1));
+   protected eli a(int $$0) {
+      this.p = this.a.ai() == bqb.y;
+      this.o = new elm(this.p);
+      return new eli(this.o, $$0);
    }
 
-   private List<bpp> a(bpp $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bg();
    }
 
-   private boolean b(bpp $$0) {
-      return $$0.ai() == bpd.bj && $$0.o_();
+   @Override
+   protected esa b() {
+      return new esa(this.a.dr(), this.a.e(0.5), this.a.dx());
    }
 
-   private byu c(bpp $$0) {
-      return $$0.dP().c(bys.h).orElse(byu.a());
+   @Override
+   protected double a(esa $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(esa $$0, esa $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ib $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

@@ -1,72 +1,141 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class dra<T extends dqw> {
-   private static final Logger a = LogUtils.getLogger();
-   private final avo<T> b;
-   private drj c;
+public class dra {
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
 
-   public dra(Class<T> $$0, drj $$1) {
-      this.c = $$1;
-      this.b = new avo<>($$0);
+   public dra() {
+      this(0);
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   public dra(int $$0) {
+      this.f = $$0;
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public avj.a a(epo $$0, avj<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
-            return avj.a.b;
-         }
+   public dra(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
       }
-
-      return avj.a.a;
    }
 
-   public <U extends T> avj.a a(drd<T, U> $$0, epo $$1, avj<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return avj.a.a;
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
+   }
+
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
+   }
+
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
-               return avj.a.b;
-            }
-         }
-
-         return avj.a.a;
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
+   private static int e(int $$0) {
+      return $$0 & 1;
    }
 
-   public drj c() {
-      return this.c;
+   private static int f(int $$0) {
+      return $$0 >> 1;
    }
 
-   public drj a(drj $$0) {
-      drj $$1 = this.c;
-      this.c = $$0;
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
+      }
+
       return $$1;
    }
 
-   @axz
-   public int d() {
-      return this.b.size();
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
+         }
+      }
+
+      return this.d;
+   }
+
+   public dra b() {
+      return this.d == null ? new dra(this.f) : new dra((byte[])this.d.clone());
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
+         }
+      }
+
+      return $$0.toString();
+   }
+
+   @ayn
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
+      }
+
+      return $$1.toString();
+   }
+
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

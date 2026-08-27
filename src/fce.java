@@ -1,57 +1,77 @@
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class fce<E extends fce.a<E>> extends fbd<E> {
-   private static final vu a = vu.c("narration.selection.usage");
+public class fce {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fce.a f;
 
-   public fce(ezi $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fce(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fce.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Nullable
-   @Override
-   public fas a(ffk $$0) {
-      if (this.n() == 0) {
-         return null;
-      } else if (this.aJ_() && $$0 instanceof ffk.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fas.a(this, fas.a($$2)) : null;
-      } else if (!this.aJ_()) {
-         E $$3 = this.i();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fas.a(this, fas.a($$3));
-      } else {
-         return null;
-      }
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
    }
 
-   @Override
-   public void a(ffe $$0) {
-      E $$1 = this.t();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.i();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aJ_()) {
-         $$0.a(ffd.d, a);
-      }
+   public UUID b() {
+      return this.b;
    }
 
-   public abstract static class a<E extends fce.a<E>> extends fbd.a<E> implements fff {
-      public abstract vu a();
+   public String c() {
+      return this.a;
+   }
 
-      @Override
-      public void b(ffe $$0) {
-         $$0.a(ffd.a, this.a());
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fce.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fce.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static fce.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
       }
    }
 }

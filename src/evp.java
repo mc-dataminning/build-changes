@@ -1,154 +1,119 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 
-public class evp extends evx {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final evi.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final evi.a A = evi.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public abstract class evp {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public evp(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, evi.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
+   public List<String> a(String $$0) {
+      evp.a $$1 = new evp.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   public static evp a() {
-      return new evp(true, true, true, true, 0, false, 2, 0, false, "", "", A);
+   private List<String> a(String $$0, evp.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
+
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
+            }
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!ayf.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!ayf.h($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = ayf.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
+         }
+      }
+
+      String $$17 = $$0.substring($$4);
+      if (!ayf.h($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
    }
 
-   public static evp b() {
-      evp $$0 = a();
-      $$0.a(true);
-      return $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public static evp a(JsonObject $$0) {
-      evp $$1 = new evp(
-         exu.a("pvp", $$0, true),
-         exu.a("spawnAnimals", $$0, true),
-         exu.a("spawnMonsters", $$0, true),
-         exu.a("spawnNPCs", $$0, true),
-         exu.a("spawnProtection", $$0, 0),
-         exu.a("commandBlocks", $$0, false),
-         exu.a("difficulty", $$0, 2),
-         exu.a("gameMode", $$0, 0),
-         exu.a("forceGameMode", $$0, false),
-         exu.a("slotName", $$0, ""),
-         exu.a("version", $$0, ""),
-         evi.d(exu.a("compatibility", $$0, evi.a.a.name()))
-      );
-      $$1.l = exu.a("worldTemplateId", $$0, -1L);
-      $$1.m = exu.b("worldTemplateImage", $$0, C);
-      return $$1;
-   }
-
-   public String a(int $$0) {
-      if (ac.b(this.o)) {
-         return this.n ? gkh.a("mco.configure.world.slot.empty") : this.b($$0);
+   private String a(String $$0, evp.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         return this.o;
+         return $$0;
       }
    }
 
-   public String b(int $$0) {
-      return gkh.a("mco.configure.world.slot", $$0);
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
-
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
-      }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
    }
 
-   public evp d() {
-      return new evp(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
+      } else {
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
+      }
+   }
+
+   @Nullable
+   public abstract String a(boolean var1, String var2);
+
+   static final class a {
+      int a;
+      int b;
    }
 }

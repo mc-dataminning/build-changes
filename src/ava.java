@@ -1,35 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class ava {
-   private final List<avb> a = new ArrayList<>();
+   public static final avr<dlv> a = a("no_item_required");
+   public static final avr<dlv> b = a("pattern_item/flower");
+   public static final avr<dlv> c = a("pattern_item/creeper");
+   public static final avr<dlv> d = a("pattern_item/skull");
+   public static final avr<dlv> e = a("pattern_item/mojang");
+   public static final avr<dlv> f = a("pattern_item/globe");
+   public static final avr<dlv> g = a("pattern_item/piglin");
 
-   public static ava a() {
-      return new ava();
+   private ava() {
    }
 
-   public List<avb> b() {
-      return List.copyOf(this.a);
-   }
-
-   public ava a(avb $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public ava a(ajh $$0) {
-      return this.a(avb.a($$0));
-   }
-
-   public ava b(ajh $$0) {
-      return this.a(avb.b($$0));
-   }
-
-   public ava c(ajh $$0) {
-      return this.a(avb.c($$0));
-   }
-
-   public ava d(ajh $$0) {
-      return this.a(avb.d($$0));
+   private static avr<dlv> a(String $$0) {
+      return avr.a(ks.d, new ajt($$0));
    }
 }

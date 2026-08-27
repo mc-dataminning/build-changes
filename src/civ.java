@@ -1,37 +1,44 @@
+import java.util.Arrays;
+
 public enum civ {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+   a(0, aum.Bk, aum.Bs),
+   b(40, aum.Bj, aum.Bt),
+   c(80, aum.Bl, aum.Bt);
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final vu k;
+   private static final civ[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final aul f;
+   private final aul g;
 
-   private civ(int $$0, String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = vu.c("options.modelPart." + $$1);
+   private civ(int $$0, aul $$1, aul $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    public int a() {
-      return this.i;
+      return this.e;
    }
 
-   public int b() {
-      return this.h;
+   public aul b() {
+      return this.f;
    }
 
-   public String c() {
-      return this.j;
+   public aul c() {
+      return this.g;
    }
 
-   public vu d() {
-      return this.k;
+   public static civ a(int $$0) {
+      for (civ $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
+         }
+      }
+
+      return a;
+   }
+
+   public boolean d() {
+      return this == c;
    }
 }

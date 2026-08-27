@@ -1,64 +1,37 @@
-public class age implements yb<aez> {
-   public static final xs<uu, age> a = yb.a(age::a, age::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class age implements yn<afl> {
+   public static final ye<vg, age> a = yn.a(age::a, age::new);
+   private final int b;
+   private final int c;
 
-   public age(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public age(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private age(uu $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   private age(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vg $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yd<age> a() {
-      return aex.bK;
+   public yp<age> a() {
+      return afj.bv;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 
-   public float e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public int e() {
+      return this.c;
    }
 }

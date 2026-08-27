@@ -1,24 +1,23 @@
-import java.util.Collection;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public class aet implements yb<aam> {
-   public static final xs<vf, aet> a = xs.a(ctr.a.a(xq.a()), $$0 -> $$0.b, aet::new);
-   private final List<ctr<?>> b;
+public class aet implements yn<aay> {
+   public static final aet a = new aet();
+   public static final ye<ByteBuf, aet> b = ye.a(a);
 
-   public aet(Collection<ctr<?>> $$0) {
-      this.b = List.copyOf($$0);
+   private aet() {
    }
 
    @Override
-   public yd<aet> a() {
-      return aex.bd;
+   public yp<aet> a() {
+      return afj.aT;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public List<ctr<?>> b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

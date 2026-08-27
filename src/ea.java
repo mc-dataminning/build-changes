@@ -8,8 +8,8 @@ import java.util.Collection;
 
 public class ea implements ArgumentType<ea.a> {
    private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("argument.angle.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("argument.angle.invalid"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("argument.angle.invalid"));
 
    public static ea a() {
       return new ea();
@@ -47,7 +47,7 @@ public class ea implements ArgumentType<ea.a> {
       }
 
       public float a(du $$0) {
-         return aww.g(this.b ? this.a + $$0.k().j : this.a);
+         return axk.g(this.b ? this.a + $$0.k().j : this.a);
       }
    }
 }

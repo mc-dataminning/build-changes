@@ -1,16 +1,29 @@
-public interface ahe extends aag, up {
-   @Override
-   default ut b() {
-      return ut.d;
+public class ahe implements yn<afl> {
+   public static final ye<vg, ahe> a = yn.a(ahe::a, ahe::new);
+   private final bnz b;
+
+   public ahe(bnz $$0) {
+      this.b = $$0;
    }
 
-   void a(ahh var1);
+   private ahe(vg $$0) {
+      this.b = $$0.b(bnz.class);
+   }
 
-   void a(ahg var1);
+   private void a(vg $$0) {
+      $$0.a(this.b);
+   }
 
-   void a(ahj var1);
+   @Override
+   public yp<ahe> a() {
+      return afj.bY;
+   }
 
-   void a(ahi var1);
+   public void a(afl $$0) {
+      $$0.a(this);
+   }
 
-   void a(ahf var1);
+   public bnz b() {
+      return this.b;
+   }
 }

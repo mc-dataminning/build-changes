@@ -1,104 +1,166 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class gbc implements gbe.a {
-   final ezi a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gbc.a d;
+public class gbc {
+   private final Map<String, gbj> a = Maps.newLinkedHashMap();
+   private gbo b;
 
-   public gbc(ezi $$0) {
-      this.a = $$0;
+   public static gbc a(gbc.a $$0, Reader $$1) {
+      return axa.a($$0.a, $$1, gbc.class);
+   }
+
+   public static gbc a(gbc.a $$0, JsonElement $$1) {
+      return (gbc)$$0.a.fromJson($$1, gbc.class);
+   }
+
+   public gbc(Map<String, gbj> $$0, gbo $$1) {
+      this.b = $$1;
+      this.a.putAll($$0);
+   }
+
+   public gbc(List<gbc> $$0) {
+      gbc $$1 = null;
+
+      for (gbc $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
+         }
+
+         this.a.putAll($$2.a);
+      }
+
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
+   }
+
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
+   }
+
+   @VisibleForTesting
+   public gbj b(String $$0) {
+      gbj $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new gbc.c();
+      } else {
+         return $$1;
+      }
    }
 
    @Override
-   public void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gng $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gbc.a($$6, $$2, $$4);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof gbc $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
+   }
+
+   public Map<String, gbj> a() {
+      return this.a;
+   }
+
+   @VisibleForTesting
+   public Set<gbj> b() {
+      Set<gbj> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b != null;
+   }
+
+   public gbo d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(gbc.class, new gbc.b())
+         .registerTypeAdapter(gbk.class, new gbk.a())
+         .registerTypeAdapter(gbj.class, new gbj.a())
+         .registerTypeAdapter(gbo.class, new gbo.a(this))
+         .registerTypeAdapter(gbq.class, new gbq.a())
+         .create();
+      private dpa<dby, doz> b;
+
+      public dpa<dby, doz> a() {
+         return this.b;
+      }
+
+      public void a(dpa<dby, doz> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<gbc> {
+      public gbc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Map<String, gbj> $$4 = this.a($$2, $$3);
+         gbo $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new gbc($$4, $$5);
          } else {
-            this.d = null;
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
       }
 
-      if (this.d != null) {
-         Map<cwi, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.m().b().d * 0.85;
+      protected Map<String, gbj> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, gbj> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = axa.u($$1, "variants");
 
-         for (Entry<cwi, String> $$9 : this.d.b.entrySet()) {
-            cwi $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (gbj)$$0.deserialize($$4.getValue(), gbj.class));
             }
+         }
 
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
+         return $$2;
+      }
 
-            for (String $$14 : $$12) {
-               gbe.a($$0, $$1, $$14, (double)je.a($$10.e, 8), $$8 + (double)$$13, (double)je.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
+      @Nullable
+      protected gbo b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = axa.v($$1, "multipart");
+            return (gbo)$$0.deserialize($$2, gbo.class);
          }
       }
    }
 
-   final class a {
-      final Map<cwi, String> b;
-      final CompletableFuture<Map<cwi, String>> c;
-
-      a(gng $$0, double $$1, double $$2) {
-         fsa $$3 = gbc.this.a.r;
-         ajg<cxb> $$4 = $$3.ad();
-         int $$5 = je.a($$1);
-         int $$6 = je.a($$2);
-         Builder<cwi, String> $$7 = ImmutableMap.builder();
-         frw $$8 = $$3.i();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               cwi $$11 = new cwi($$9, $$10);
-               String $$12 = "";
-               dpi $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            apf $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<cwi, String> $$5x = ImmutableMap.builder();
-               apd $$6x = $$4x.l();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     cwi $$9x = new cwi($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
-      }
+   protected class c extends RuntimeException {
    }
 }

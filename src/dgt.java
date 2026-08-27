@@ -1,55 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dgt extends czo {
+public class dgt extends dby implements diy {
    public static final MapCodec<dgt> a = b(dgt::new);
-   public static final dns b = dnr.E;
-   private final bmi c = bmf.a(5);
+   public static final dpq b = dpp.C;
 
    @Override
    public MapCodec<dgt> a() {
       return a;
    }
 
-   public dgt(dna.d $$0) {
+   protected dgt(doy.d $$0) {
       super($$0);
       this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b);
+   protected boolean a(doz $$0, doz $$1, ih $$2) {
+      return $$1.a(dca.ac) && $$2.o() == ih.a.b;
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      eks $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ekt.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
       if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$3.a($$4, ekt.c, ekt.c.a($$3));
       }
-   }
 
-   @Nullable
-   @Override
-   public dki a(ib $$0, dnb $$1) {
-      return new dln($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return $$0.B ? null : a($$2, dkk.K, dln::a);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.c;
+   protected eks c_(doz $$0) {
+      return $$0.c(b) ? ekt.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, cqm $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b);
    }
 }

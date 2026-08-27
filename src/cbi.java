@@ -1,39 +1,38 @@
-public record cbi(ajh l) {
-   public static final ajg<cbi> a = a("tabby");
-   public static final ajg<cbi> b = a("black");
-   public static final ajg<cbi> c = a("red");
-   public static final ajg<cbi> d = a("siamese");
-   public static final ajg<cbi> e = a("british_shorthair");
-   public static final ajg<cbi> f = a("calico");
-   public static final ajg<cbi> g = a("persian");
-   public static final ajg<cbi> h = a("ragdoll");
-   public static final ajg<cbi> i = a("white");
-   public static final ajg<cbi> j = a("jellie");
-   public static final ajg<cbi> k = a("all_black");
+import javax.annotation.Nullable;
 
-   private static ajg<cbi> a(String $$0) {
-      return ajg.a(kj.l, new ajh($$0));
+public class cbi {
+   @Nullable
+   public static esa a(bqw $$0, int $$1, int $$2) {
+      boolean $$3 = cbj.a($$0, $$1);
+      return cbm.a($$0, () -> {
+         ib $$4 = cbm.a($$0.ei(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   public static cbi a(iy<cbi> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   @Nullable
+   public static esa a(bqw $$0, int $$1, int $$2, esa $$3, double $$4) {
+      esa $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$6 = cbj.a($$0, $$1);
+      return cbm.a($$0, () -> {
+         ib $$6x = cbm.a($$0.ei(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   private static cbi a(iy<cbi> $$0, ajg<cbi> $$1, String $$2) {
-      return iy.a($$0, $$1, new cbi(new ajh($$2)));
+   @Nullable
+   public static esa a(bqw $$0, int $$1, int $$2, esa $$3) {
+      esa $$4 = $$0.dk().d($$3);
+      boolean $$5 = cbj.a($$0, $$1);
+      return cbm.a($$0, () -> {
+         ib $$5x = cbm.a($$0.ei(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   public ajh a() {
-      return this.l;
+   @Nullable
+   private static ib a(bqw $$0, int $$1, boolean $$2, ib $$3) {
+      ib $$4 = cbm.a($$0, $$1, $$0.ei(), $$3);
+      return !cbj.a($$4, $$0) && !cbj.a($$2, $$0, $$4) && !cbj.a($$0.K(), $$4) && !cbj.b($$0, $$4) ? $$4 : null;
    }
 }

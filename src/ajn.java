@@ -1,51 +1,81 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class ajn {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public class ajn<E> implements Codec<ip<E>> {
+   private final ajs<? extends iy<E>> a;
+   private final Codec<il<E>> b;
+   private final Codec<List<il<E>>> c;
+   private final Codec<Either<avr<E>, List<il<E>>>> d;
 
-   public ajn(Path $$0) {
-      this.b = $$0;
-      this.c = aa.aW || this.b();
+   private static <E> Codec<List<il<E>>> a(Codec<il<E>> $$0, boolean $$1) {
+      Codec<List<il<E>>> $$2 = aws.b($$0.listOf(), aws.b(il::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((il)$$0x.get(0)) : Either.left($$0x));
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
-      }
+   public static <E> Codec<ip<E>> a(ajs<? extends iy<E>> $$0, Codec<il<E>> $$1, boolean $$2) {
+      return new ajn<>($$0, $$1, $$2);
    }
 
-   public boolean a() {
-      return this.c;
+   private ajn(ajs<? extends iy<E>> $$0, Codec<il<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(avr.b($$0), this.c);
    }
 
-   private void c() {
-      if (!aa.aW) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
+   public <T> DataResult<Pair<ip<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof ajr<T> $$2) {
+         Optional<im<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            im<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (ip)$$1xx.map($$4::b, ip::a)));
          }
       }
+
+      return this.a($$0, $$1);
+   }
+
+   public <T> DataResult<T> a(ip<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof ajr<T> $$3) {
+         Optional<io<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<ip<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<il.a<E>> $$1x = new ArrayList<>();
+
+         for (il<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof il.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(ip.a($$1x), $$0x.getSecond()));
+      });
+   }
+
+   private <T> DataResult<T> b(ip<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

@@ -1,20 +1,24 @@
-public class gfy extends geh<chy, fqr<chy>> {
-   private static final ajh a = new ajh("textures/entity/warden/warden.png");
-   private static final ajh i = new ajh("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ajh j = new ajh("textures/entity/warden/warden_heart.png");
-   private static final ajh k = new ajh("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ajh l = new ajh("textures/entity/warden/warden_pulsating_spots_2.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gfy(gdb.a $$0) {
-      super($$0, new fqr<>($$0.a(fre.bR)), 0.9F);
-      this.a(new ghy<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fqr::e));
-      this.a(new ghy<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aww.b($$2 * 0.045F) * 0.25F), fqr::f));
-      this.a(new ghy<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aww.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fqr::f));
-      this.a(new ghy<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fqr::c));
-      this.a(new ghy<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fqr::d));
+public final class gfy extends gec<ceh, fqx<ceh>> {
+   private static final Map<ceo, ajt> a = ac.a(Maps.newEnumMap(ceo.class), $$0 -> {
+      $$0.put(ceo.a, new ajt("textures/entity/horse/horse_white.png"));
+      $$0.put(ceo.b, new ajt("textures/entity/horse/horse_creamy.png"));
+      $$0.put(ceo.c, new ajt("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(ceo.d, new ajt("textures/entity/horse/horse_brown.png"));
+      $$0.put(ceo.e, new ajt("textures/entity/horse/horse_black.png"));
+      $$0.put(ceo.f, new ajt("textures/entity/horse/horse_gray.png"));
+      $$0.put(ceo.g, new ajt("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gfy(gfi.a $$0) {
+      super($$0, new fqx<>($$0.a(ftl.ap)), 1.1F);
+      this.a(new gji(this));
+      this.a(new gjh(this, $$0.f()));
    }
 
-   public ajh a(chy $$0) {
-      return a;
+   public ajt a(ceh $$0) {
+      return a.get($$0.r());
    }
 }

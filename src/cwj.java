@@ -1,25 +1,20 @@
-import java.util.function.Predicate;
-
-public class cwj {
-   private final ept a;
-   private final ept b;
-   private final Predicate<dnb> c;
-
-   public cwj(ept $$0, ept $$1, Predicate<dnb> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class cwj extends cwq {
+   public cwj(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bn, $$1);
    }
 
-   public ept a() {
-      return this.b;
+   @Override
+   public int a(int $$0) {
+      return 20;
    }
 
-   public ept b() {
-      return this.a;
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 
-   public Predicate<dnb> c() {
-      return this.c;
+   @Override
+   public boolean a(cwq $$0) {
+      return $$0 instanceof cxa ? false : super.a($$0);
    }
 }

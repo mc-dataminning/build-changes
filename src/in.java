@@ -9,48 +9,48 @@ import java.util.stream.Stream;
 public interface in<T> extends im<T> {
    Stream<il.c<T>> b();
 
-   default Stream<ajg<T>> c() {
+   default Stream<ajs<T>> c() {
       return this.b().map(il.c::h);
    }
 
    Stream<ip.c<T>> d();
 
-   default Stream<avd<T>> e() {
+   default Stream<avr<T>> e() {
       return this.d().map(ip.c::f);
    }
 
    public interface a {
-      Stream<ajg<? extends iy<?>>> a();
+      Stream<ajs<? extends iy<?>>> a();
 
-      <T> Optional<in.b<T>> a(ajg<? extends iy<? extends T>> var1);
+      <T> Optional<in.b<T>> a(ajs<? extends iy<? extends T>> var1);
 
-      default <T> in.b<T> b(ajg<? extends iy<? extends T>> $$0) {
+      default <T> in.b<T> b(ajs<? extends iy<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      default <V> ajf<V> a(DynamicOps<V> $$0) {
-         return ajf.a((DynamicOps<T>)$$0, this);
+      default <V> ajr<V> a(DynamicOps<V> $$0) {
+         return ajr.a((DynamicOps<T>)$$0, this);
       }
 
       default im.a b() {
          return new im.a() {
             @Override
-            public <T> Optional<im<T>> a(ajg<? extends iy<? extends T>> $$0) {
+            public <T> Optional<im<T>> a(ajs<? extends iy<? extends T>> $$0) {
                return a.this.a($$0).map($$0x -> $$0x);
             }
          };
       }
 
       static in.a a(Stream<in.b<?>> $$0) {
-         final Map<ajg<? extends iy<?>>, in.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(in.b::f, $$0x -> $$0x));
+         final Map<ajs<? extends iy<?>>, in.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(in.b::f, $$0x -> $$0x));
          return new in.a() {
             @Override
-            public Stream<ajg<? extends iy<?>>> a() {
+            public Stream<ajs<? extends iy<?>>> a() {
                return $$1.keySet().stream();
             }
 
             @Override
-            public <T> Optional<in.b<T>> a(ajg<? extends iy<? extends T>> $$0) {
+            public <T> Optional<in.b<T>> a(ajs<? extends iy<? extends T>> $$0) {
                return Optional.ofNullable((in.b<T>)$$1.get($$0));
             }
          };
@@ -58,12 +58,12 @@ public interface in<T> extends im<T> {
    }
 
    public interface b<T> extends in<T>, io<T> {
-      ajg<? extends iy<? extends T>> f();
+      ajs<? extends iy<? extends T>> f();
 
       Lifecycle g();
 
-      default in.b<T> a(clh $$0) {
-         return cle.bA.contains(this.f()) ? this.a($$1 -> ((cle)$$1).a($$0)) : this;
+      default in.b<T> a(cmg $$0) {
+         return cmd.bz.contains(this.f()) ? this.a($$1 -> ((cmd)$$1).a($$0)) : this;
       }
 
       default in.b<T> a(final Predicate<T> $$0) {
@@ -74,7 +74,7 @@ public interface in<T> extends im<T> {
             }
 
             @Override
-            public Optional<il.c<T>> a(ajg<T> $$0x) {
+            public Optional<il.c<T>> a(ajs<T> $$0x) {
                return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
             }
 
@@ -89,7 +89,7 @@ public interface in<T> extends im<T> {
          in.b<T> a();
 
          @Override
-         default ajg<? extends iy<? extends T>> f() {
+         default ajs<? extends iy<? extends T>> f() {
             return this.a().f();
          }
 
@@ -99,7 +99,7 @@ public interface in<T> extends im<T> {
          }
 
          @Override
-         default Optional<il.c<T>> a(ajg<T> $$0) {
+         default Optional<il.c<T>> a(ajs<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -109,7 +109,7 @@ public interface in<T> extends im<T> {
          }
 
          @Override
-         default Optional<ip.c<T>> a(avd<T> $$0) {
+         default Optional<ip.c<T>> a(avr<T> $$0) {
             return this.a().a($$0);
          }
 

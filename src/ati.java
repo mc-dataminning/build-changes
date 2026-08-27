@@ -1,52 +1,88 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.Date;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ati extends asw<GameProfile> {
-   public ati(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
+public class ati<S> implements asy {
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final int e = 1;
+   protected final CompletableFuture<aym> a = new CompletableFuture<>();
+   protected CompletableFuture<List<S>> b;
+   final Set<asw> f;
+   private final int g;
+   private int h;
+   private int i;
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
+
+   public static ati<Void> a(atc $$0, List<asw> $$1, Executor $$2, Executor $$3, CompletableFuture<aym> $$4) {
+      return new ati<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bkl.a, bkl.a, $$2, $$5), $$4);
    }
 
-   public ati(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+   protected ati(Executor $$0, final Executor $$1, atc $$2, List<asw> $$3, ati.a<S> $$4, CompletableFuture<aym> $$5) {
+      this.g = $$3.size();
+      this.j.incrementAndGet();
+      $$5.thenRun(this.k::incrementAndGet);
+      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
+      CompletableFuture<?> $$7 = $$5;
+      this.f = Sets.newHashSet($$3);
 
-   public ati(JsonObject $$0) {
-      super(b($$0), $$0);
+      for (final asw $$8 : $$3) {
+         final CompletableFuture<?> $$9 = $$7;
+         CompletableFuture<S> $$10 = $$4.create(new asw.a() {
+            @Override
+            public <T> CompletableFuture<T> a(T $$0) {
+               $$1.execute(() -> {
+                  ati.this.f.remove($$8);
+                  if (ati.this.f.isEmpty()) {
+                     ati.this.a.complete(aym.a);
+                  }
+               });
+               return ati.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
+            }
+         }, $$2, $$8, $$1x -> {
+            this.j.incrementAndGet();
+            $$0.execute(() -> {
+               $$1x.run();
+               this.k.incrementAndGet();
+            });
+         }, $$1x -> {
+            this.h++;
+            $$1.execute(() -> {
+               $$1x.run();
+               this.i++;
+            });
+         });
+         $$6.add($$10);
+         $$7 = $$10;
+      }
+
+      this.b = ac.e($$6);
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         super.a($$0);
-      }
+   public CompletableFuture<?> a() {
+      return this.b;
    }
 
    @Override
-   public vu e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? vu.b($$0.getName()) : vu.c("commands.banlist.entry.unknown");
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
+      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      return $$1 / $$2;
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public static asy a(atc $$0, List<asw> $$1, Executor $$2, Executor $$3, CompletableFuture<aym> $$4, boolean $$5) {
+      return (asy)($$5 ? new asx($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   protected interface a<S> {
+      CompletableFuture<S> create(asw.a var1, atc var2, asw var3, Executor var4, Executor var5);
    }
 }

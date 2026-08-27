@@ -1,59 +1,33 @@
-public class bvk implements bvl {
-   private final bpr a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public bvk(bpr $$0) {
-      this.a = $$0;
+public class bvk {
+   private static final int a = 10;
+   private static final int b = 7;
+
+   public static btr<bqw> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aX = this.a.dC();
-         this.c();
-         this.f = this.a.aZ;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aZ;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
+   public static btr<bqw> a(float $$0, int $$1, int $$2) {
+      return bvt.a((Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$3 -> $$3.group($$3.c(bzr.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ib $$7 = $$5.dm();
+               esa $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cbl.a($$5, $$1, $$2);
+               } else {
+                  je $$9 = je.a($$7);
+                  je $$10 = bsi.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cbi.a($$5, $$1, $$2, esa.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cbl.a($$5, $$1, $$2);
+                  }
                }
-            }
-         }
-      }
-   }
 
-   private void b() {
-      this.a.aX = aww.c(this.a.aX, this.a.aZ, (float)this.a.aa());
-   }
-
-   private void c() {
-      this.a.aZ = aww.c(this.a.aZ, this.a.aX, (float)this.a.aa());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = aww.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.aa() * (1.0F - $$1);
-      this.a.aX = aww.c(this.a.aX, this.a.aZ, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cQ() instanceof bpr);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dr() - this.a.K;
-      double $$1 = this.a.dx() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bzu($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

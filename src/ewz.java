@@ -1,20 +1,18 @@
-public class ewz extends ewy {
-   private final eyi a;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-   public ewz(fhh $$0, eyi $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+public class ewz {
+   @Nullable
+   private static Proxy a;
+
+   @Nullable
+   public static Proxy a() {
+      return a;
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
-
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

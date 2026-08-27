@@ -8,20 +8,20 @@ public class ax extends cx<ax.a> {
       return ax.a.a;
    }
 
-   public void a(apg $$0, il<csj> $$1) {
+   public void a(apt $$0, il<ctf> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bc> b, Optional<il<csj>> c) implements cx.a {
+   public static record a(Optional<bc> b, Optional<il<ctf>> c) implements cx.a {
       public static final Codec<ax.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(ax.a::a), awe.a(ki.i.r(), "potion").forGetter(ax.a::c)).apply($$0, ax.a::new)
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(ax.a::a), aws.a(kr.i.r(), "potion").forGetter(ax.a::c)).apply($$0, ax.a::new)
       );
 
       public static an<ax.a> b() {
          return am.l.a(new ax.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(il<csj> $$0) {
+      public boolean a(il<ctf> $$0) {
          return !this.c.isPresent() || this.c.get().equals($$0);
       }
 

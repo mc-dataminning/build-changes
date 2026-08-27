@@ -1,82 +1,125 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fzj {
-   private final fzf a;
-   private final fzc b;
-
-   public fzj(fzf $$0, fzc $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public fzc a() {
-      return this.b;
-   }
-
-   public Predicate<dnb> a(dnc<dac, dnb> $$0) {
-      return this.a.getPredicate($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
-   }
-
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
-
-   public static class a implements JsonDeserializer<fzj> {
-      public fzj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new fzj(this.b($$3), (fzc)$$2.deserialize($$3.get("apply"), fzc.class));
+   private static final fzj a = new fzj("") {
+      @Override
+      public void a(fbp $$0) {
       }
 
-      private fzf b(JsonObject $$0) {
-         return $$0.has("when") ? a(awm.u($$0, "when")) : fzf.b;
+      @Override
+      public void a(fzj.c $$0, String $$1, String $$2) {
       }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private fzj.b e;
 
-      @VisibleForTesting
-      static fzf a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fzf> $$2 = Streams.stream(awm.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fzi($$2);
-            } else if ($$0.has("AND")) {
-               List<fzf> $$3 = Streams.stream(awm.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fze($$3);
-            } else {
-               return a($$1.iterator().next());
+   fzj(String $$0) {
+      this.d = fbp.Q().p.toPath().resolve($$0);
+   }
+
+   public static fzj a(@Nullable String $$0) {
+      return $$0 == null ? a : new fzj($$0);
+   }
+
+   public void a(fzj.c $$0, String $$1, String $$2) {
+      this.e = new fzj.b($$0, $$1, $$2);
+   }
+
+   public void a(fbp $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
             }
-         } else {
-            return new fze($$1.stream().map(fzj.a::a).collect(Collectors.toList()));
-         }
+
+            fzj.a $$2 = new fzj.a(this.e, Instant.now(), $$0.q.j());
+            Codec.list(fzj.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(fzj.b b, Instant c, cyu d) {
+      public static final Codec<fzj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fzj.b.a.forGetter(fzj.a::a), aws.m.fieldOf("lastPlayedTime").forGetter(fzj.a::b), cyu.f.fieldOf("gamemode").forGetter(fzj.a::c))
+               .apply($$0, fzj.a::new)
+      );
+
+      public fzj.b a() {
+         return this.b;
       }
 
-      private static fzf a(Entry<String, JsonElement> $$0) {
-         return new fzg($$0.getKey(), $$0.getValue().getAsString());
+      public Instant b() {
+         return this.c;
+      }
+
+      public cyu c() {
+         return this.d;
+      }
+   }
+
+   static record b(fzj.c b, String c, String d) {
+      public static final MapCodec<fzj.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fzj.c.d.fieldOf("type").forGetter(fzj.b::a), aws.o.fieldOf("id").forGetter(fzj.b::b), Codec.STRING.fieldOf("name").forGetter(fzj.b::c)
+               )
+               .apply($$0, fzj.b::new)
+      );
+
+      public fzj.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements aye {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<fzj.c> d = aye.a(fzj.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

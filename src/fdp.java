@@ -1,54 +1,100 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fdp implements fdr {
-   private static final ajh a = new ajh("toast/recipe");
-   private static final long d = 5000L;
-   private static final vu e = vu.c("recipe.toast.title");
-   private static final vu f = vu.c("recipe.toast.description");
-   private final List<ctr<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public class fdp extends fdg {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fdp.b q = $$0 -> $$0.get();
+   protected final fdp.c r;
+   protected final fdp.b s;
 
-   public fdp(ctr<?> $$0) {
-      this.g.add($$0);
+   public static fdp.a a(wg $$0, fdp.c $$1) {
+      return new fdp.a($$0, $$1);
+   }
+
+   protected fdp(int $$0, int $$1, int $$2, int $$3, wg $$4, fdp.c $$5, fdp.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.r = $$5;
+      this.s = $$6;
    }
 
    @Override
-   public fdr.a a(fav $$0, fds $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
+   public void b() {
+      this.r.onPress(this);
+   }
+
+   @Override
+   protected wu aL_() {
+      return this.s.createNarrationMessage(() -> super.aL_());
+   }
+
+   @Override
+   public void a(fhl $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final wg a;
+      private final fdp.c b;
+      @Nullable
+      private ffa c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fdp.b h = fdp.q;
+
+      public a(wg $$0, fdp.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.g.isEmpty()) {
-         return fdr.a.b;
-      } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         ctr<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         cqm $$4 = $$3.b().g();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? fdr.a.b : fdr.a.a;
+      public fdp.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fdp.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fdp.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public fdp.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fdp.a a(@Nullable ffa $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fdp.a a(fdp.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fdp a() {
+         fdp $$0 = new fdp(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   private void a(ctr<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
+   public interface b {
+      wu createNarrationMessage(Supplier<wu> var1);
    }
 
-   public static void a(fds $$0, ctr<?> $$1) {
-      fdp $$2 = $$0.a(fdp.class, b);
-      if ($$2 == null) {
-         $$0.a(new fdp($$1));
-      } else {
-         $$2.a($$1);
-      }
+   public interface c {
+      void onPress(fdp var1);
    }
 }

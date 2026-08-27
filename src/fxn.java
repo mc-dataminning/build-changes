@@ -1,383 +1,244 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
 
-public class fxn {
-   private static final Map<dac, fya> a = ac.a(Maps.newHashMap(), $$0 -> {
-      fya $$1 = fya.t();
-      $$0.put(dae.fI, $$1);
-      fya $$2 = fya.d();
-      $$0.put(dae.i, $$2);
-      $$0.put(dae.eW, $$2);
-      $$0.put(dae.eY, $$2);
-      $$0.put(dae.fH, $$2);
-      $$0.put(dae.hc, $$2);
-      $$0.put(dae.eX, $$2);
-      $$0.put(dae.aH, $$2);
-      $$0.put(dae.aE, $$2);
-      $$0.put(dae.aF, $$2);
-      $$0.put(dae.aI, $$2);
-      $$0.put(dae.aJ, $$2);
-      $$0.put(dae.aG, $$2);
-      $$0.put(dae.aK, $$2);
-      $$0.put(dae.aM, $$2);
-      $$0.put(dae.aN, $$2);
-      $$0.put(dae.ac, $$2);
-      $$0.put(dae.aL, $$2);
-      fya $$3 = fya.e();
-      $$0.put(dae.x, $$3);
-      $$0.put(dae.y, $$3);
-      $$0.put(dae.z, $$3);
-      $$0.put(dae.A, $$3);
-      $$0.put(dae.B, $$3);
-      $$0.put(dae.C, $$3);
-      $$0.put(dae.D, $$3);
-      $$0.put(dae.aQ, $$3);
-      $$0.put(dae.aZ, $$3);
-      $$0.put(dae.ba, $$3);
-      $$0.put(dae.bb, $$3);
-      $$0.put(dae.bc, $$3);
-      $$0.put(dae.bd, $$3);
-      $$0.put(dae.be, $$3);
-      $$0.put(dae.bf, $$3);
-      $$0.put(dae.bg, $$3);
-      $$0.put(dae.bh, $$3);
-      $$0.put(dae.bi, $$3);
-      $$0.put(dae.bj, $$3);
-      $$0.put(dae.bk, $$3);
-      $$0.put(dae.bl, $$3);
-      $$0.put(dae.bm, $$3);
-      $$0.put(dae.bn, $$3);
-      $$0.put(dae.bo, $$3);
-      $$0.put(dae.bp, $$3);
-      $$0.put(dae.bq, $$3);
-      $$0.put(dae.bs, $$3);
-      $$0.put(dae.bt, $$3);
-      $$0.put(dae.bu, $$3);
-      $$0.put(dae.bv, $$3);
-      $$0.put(dae.bw, $$3);
-      $$0.put(dae.bx, $$3);
-      $$0.put(dae.bR, $$3);
-      $$0.put(dae.bT, $$3);
-      $$0.put(dae.bU, $$3);
-      $$0.put(dae.bV, $$3);
-      $$0.put(dae.bW, $$3);
-      $$0.put(dae.bX, $$3);
-      $$0.put(dae.bY, $$3);
-      $$0.put(dae.bZ, $$3);
-      $$0.put(dae.ca, $$3);
-      $$0.put(dae.cb, $$3);
-      $$0.put(dae.cc, $$3);
-      $$0.put(dae.cd, $$3);
-      $$0.put(dae.ce, $$3);
-      $$0.put(dae.cf, $$3);
-      $$0.put(dae.cg, $$3);
-      $$0.put(dae.cp, $$3);
-      $$0.put(dae.cq, $$3);
-      $$0.put(dae.ea, $$3);
-      $$0.put(dae.eb, $$3);
-      $$0.put(dae.cr, $$3);
-      $$0.put(dae.cs, $$3);
-      $$0.put(dae.ct, $$3);
-      $$0.put(dae.tr, $$3);
-      $$0.put(dae.ts, $$3);
-      $$0.put(dae.cw, $$3);
-      $$0.put(dae.cB, $$3);
-      $$0.put(dae.cN, $$3);
-      $$0.put(dae.cO, $$3);
-      $$0.put(dae.cP, $$3);
-      $$0.put(dae.dy, $$3);
-      $$0.put(dae.dK, $$3);
-      $$0.put(dae.dL, $$3);
-      $$0.put(dae.dQ, $$3);
-      $$0.put(dae.dS, $$3);
-      $$0.put(dae.eh, $$3);
-      $$0.put(dae.ey, $$3);
-      $$0.put(dae.ez, $$3);
-      $$0.put(dae.eA, $$3);
-      $$0.put(dae.eB, $$3);
-      $$0.put(dae.eC, $$3);
-      $$0.put(dae.eD, $$3);
-      $$0.put(dae.eE, $$3);
-      $$0.put(dae.oM, $$3);
-      $$0.put(dae.oN, $$3);
-      $$0.put(dae.eF, $$3);
-      $$0.put(dae.eG, $$3);
-      $$0.put(dae.rU, $$3);
-      $$0.put(dae.rV, $$3);
-      $$0.put(dae.rX, $$3);
-      $$0.put(dae.rW, $$3);
-      $$0.put(dae.rY, $$3);
-      $$0.put(dae.rZ, $$3);
-      $$0.put(dae.sb, $$3);
-      $$0.put(dae.sa, $$3);
-      $$0.put(dae.fb, $$3);
-      $$0.put(dae.fc, $$3);
-      $$0.put(dae.fd, $$3);
-      $$0.put(dae.fe, $$3);
-      $$0.put(dae.ff, $$3);
-      $$0.put(dae.fg, $$3);
-      $$0.put(dae.fm, $$3);
-      $$0.put(dae.fq, $$3);
-      $$0.put(dae.fs, $$3);
-      $$0.put(dae.fC, $$3);
-      $$0.put(dae.fO, $$3);
-      $$0.put(dae.fR, $$3);
-      $$0.put(dae.fT, $$3);
-      $$0.put(dae.fU, $$3);
-      $$0.put(dae.fV, $$3);
-      $$0.put(dae.fW, $$3);
-      $$0.put(dae.fX, $$3);
-      $$0.put(dae.fY, $$3);
-      $$0.put(dae.fZ, $$3);
-      $$0.put(dae.ga, $$3);
-      $$0.put(dae.gb, $$3);
-      $$0.put(dae.gc, $$3);
-      $$0.put(dae.gd, $$3);
-      $$0.put(dae.ge, $$3);
-      $$0.put(dae.gf, $$3);
-      $$0.put(dae.gg, $$3);
-      $$0.put(dae.gh, $$3);
-      $$0.put(dae.gi, $$3);
-      $$0.put(dae.gj, $$3);
-      $$0.put(dae.gk, $$3);
-      $$0.put(dae.gl, $$3);
-      $$0.put(dae.gm, $$3);
-      $$0.put(dae.gn, $$3);
-      $$0.put(dae.go, $$3);
-      $$0.put(dae.gp, $$3);
-      $$0.put(dae.gq, $$3);
-      $$0.put(dae.gr, $$3);
-      $$0.put(dae.gs, $$3);
-      $$0.put(dae.ti, $$3);
-      $$0.put(dae.tj, $$3);
-      $$0.put(dae.fS, $$3);
-      $$0.put(dae.gt, $$3);
-      $$0.put(dae.gu, $$3);
-      $$0.put(dae.gY, $$3);
-      $$0.put(dae.hh, $$3);
-      $$0.put(dae.hY, $$3);
-      $$0.put(dae.iD, $$3);
-      $$0.put(dae.iE, $$3);
-      $$0.put(dae.iF, $$3);
-      $$0.put(dae.iG, $$3);
-      $$0.put(dae.iH, $$3);
-      $$0.put(dae.iI, $$3);
-      $$0.put(dae.kl, $$3);
-      $$0.put(dae.km, $$3);
-      $$0.put(dae.kn, $$3);
-      $$0.put(dae.ko, $$3);
-      $$0.put(dae.kp, $$3);
-      $$0.put(dae.kq, $$3);
-      $$0.put(dae.kr, $$3);
-      $$0.put(dae.ks, $$3);
-      $$0.put(dae.rM, $$3);
-      $$0.put(dae.rN, $$3);
-      $$0.put(dae.rP, $$3);
-      $$0.put(dae.rO, $$3);
-      $$0.put(dae.rQ, $$3);
-      $$0.put(dae.rR, $$3);
-      $$0.put(dae.rT, $$3);
-      $$0.put(dae.rS, $$3);
-      $$0.put(dae.kt, $$3);
-      $$0.put(dae.ku, $$3);
-      $$0.put(dae.kv, $$3);
-      $$0.put(dae.bS, $$3);
-      $$0.put(dae.kA, $$3);
-      $$0.put(dae.kC, $$3);
-      $$0.put(dae.kB, $$3);
-      $$0.put(dae.kD, $$3);
-      $$0.put(dae.mc, $$3);
-      $$0.put(dae.md, $$3);
-      $$0.put(dae.mf, $$3);
-      $$0.put(dae.mr, $$3);
-      $$0.put(dae.ms, $$3);
-      $$0.put(dae.mt, $$3);
-      $$0.put(dae.mu, $$3);
-      $$0.put(dae.mv, $$3);
-      $$0.put(dae.mw, $$3);
-      $$0.put(dae.mx, $$3);
-      $$0.put(dae.my, $$3);
-      $$0.put(dae.mz, $$3);
-      $$0.put(dae.mA, $$3);
-      $$0.put(dae.mB, $$3);
-      $$0.put(dae.mC, $$3);
-      $$0.put(dae.mD, $$3);
-      $$0.put(dae.mE, $$3);
-      $$0.put(dae.mF, $$3);
-      $$0.put(dae.mG, $$3);
-      $$0.put(dae.mH, $$3);
-      $$0.put(dae.mI, $$3);
-      $$0.put(dae.mJ, $$3);
-      $$0.put(dae.mK, $$3);
-      $$0.put(dae.mL, $$3);
-      $$0.put(dae.mM, $$3);
-      $$0.put(dae.mN, $$3);
-      $$0.put(dae.mO, $$3);
-      $$0.put(dae.mP, $$3);
-      $$0.put(dae.mQ, $$3);
-      $$0.put(dae.mR, $$3);
-      $$0.put(dae.mS, $$3);
-      $$0.put(dae.mT, $$3);
-      $$0.put(dae.mU, $$3);
-      $$0.put(dae.mV, $$3);
-      $$0.put(dae.mX, $$3);
-      $$0.put(dae.mY, $$3);
-      $$0.put(dae.mZ, $$3);
-      $$0.put(dae.na, $$3);
-      $$0.put(dae.nS, $$3);
-      $$0.put(dae.oc, $$3);
-      $$0.put(dae.oe, $$3);
-      $$0.put(dae.of, $$3);
-      $$0.put(dae.og, $$3);
-      $$0.put(dae.oh, $$3);
-      $$0.put(dae.oi, $$3);
-      $$0.put(dae.oz, $$3);
-      $$0.put(dae.oA, $$3);
-      $$0.put(dae.oB, $$3);
-      $$0.put(dae.oC, $$3);
-      $$0.put(dae.or, $$3);
-      $$0.put(dae.ox, $$3);
-      $$0.put(dae.oo, $$3);
-      $$0.put(dae.oD, $$3);
-      $$0.put(dae.oq, $$3);
-      $$0.put(dae.pm, $$3);
-      $$0.put(dae.pn, $$3);
-      $$0.put(dae.po, $$3);
-      $$0.put(dae.pp, $$3);
-      $$0.put(dae.oU, $$3);
-      $$0.put(dae.oV, $$3);
-      $$0.put(dae.st, $$3);
-      $$0.put(dae.qy, $$3);
-      $$0.put(dae.qx, $$3);
-      $$0.put(dae.qw, $$3);
-      $$0.put(dae.qv, $$3);
-      $$0.put(dae.ss, $$3);
-      $$0.put(dae.sv, $$3);
-      $$0.put(dae.sw, $$3);
-      $$0.put(dae.sx, $$3);
-      $$0.put(dae.sz, $$3);
-      $$0.put(dae.sy, $$3);
-      $$0.put(dae.sA, $$3);
-      $$0.put(dae.sB, $$3);
-      $$0.put(dae.sD, $$3);
-      $$0.put(dae.sE, $$3);
-      $$0.put(dae.sF, $$3);
-      $$0.put(dae.sG, $$3);
-      $$0.put(dae.qQ, $$3);
-      $$0.put(dae.qR, $$3);
-      $$0.put(dae.qT, $$3);
-      $$0.put(dae.qV, $$3);
-      $$0.put(dae.E, $$3);
-      $$0.put(dae.tn, $$3);
-      $$0.put(dae.sc, $$3);
-      $$0.put(dae.sd, $$3);
-      $$0.put(dae.se, $$3);
-      $$0.put(dae.sf, $$3);
-      $$0.put(dae.sg, $$3);
-      $$0.put(dae.sh, $$3);
-      $$0.put(dae.si, $$3);
-      $$0.put(dae.sj, $$3);
-      fya $$4 = fya.f();
-      $$0.put(dae.dO, $$4);
-      $$0.put(dae.ed, $$4);
-      $$0.put(dae.ei, $$4);
-      $$0.put(dae.ej, $$4);
-      $$0.put(dae.ek, $$4);
-      $$0.put(dae.el, $$4);
-      $$0.put(dae.em, $$4);
-      $$0.put(dae.en, $$4);
-      $$0.put(dae.eo, $$4);
-      $$0.put(dae.ep, $$4);
-      $$0.put(dae.eq, $$4);
-      $$0.put(dae.er, $$4);
-      $$0.put(dae.es, $$4);
-      $$0.put(dae.et, $$4);
-      $$0.put(dae.eu, $$4);
-      $$0.put(dae.ev, $$4);
-      $$0.put(dae.ew, $$4);
-      $$0.put(dae.ex, $$4);
-      $$0.put(dae.hz, $$4);
-      $$0.put(dae.hA, $$4);
-      $$0.put(dae.hB, $$4);
-      $$0.put(dae.hC, $$4);
-      $$0.put(dae.hD, $$4);
-      $$0.put(dae.hE, $$4);
-      $$0.put(dae.hF, $$4);
-      $$0.put(dae.hG, $$4);
-      $$0.put(dae.hH, $$4);
-      $$0.put(dae.hI, $$4);
-      $$0.put(dae.hJ, $$4);
-      $$0.put(dae.hK, $$4);
-      $$0.put(dae.hL, $$4);
-      $$0.put(dae.hM, $$4);
-      $$0.put(dae.hN, $$4);
-      $$0.put(dae.hO, $$4);
-      $$0.put(dae.hV, $$4);
-      $$0.put(dae.pg, $$4);
-      $$0.put(dae.kI, $$4);
-      $$0.put(dae.nd, $$4);
-      $$0.put(dae.qO, $$4);
-   });
-   private static final Map<eio, fya> b = ac.a(Maps.newHashMap(), $$0 -> {
-      fya $$1 = fya.f();
-      $$0.put(eiq.b, $$1);
-      $$0.put(eiq.c, $$1);
-   });
-   private static boolean c;
+public abstract class fxn {
+   private static final erv a = new erv(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final double b = axk.k(100.0);
+   protected final fuh c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected double i;
+   protected double j;
+   protected double k;
+   protected double l;
+   private erv D = a;
+   protected boolean m;
+   protected boolean n = true;
+   private boolean E;
+   protected boolean o;
+   protected float p = 0.6F;
+   protected float q = 1.8F;
+   protected final axr r = axr.a();
+   protected int s;
+   protected int t;
+   protected float u;
+   protected float v = 1.0F;
+   protected float w = 1.0F;
+   protected float x = 1.0F;
+   protected float y = 1.0F;
+   protected float z;
+   protected float A;
+   protected float B = 0.98F;
+   protected boolean C = false;
 
-   public static fya a(dnb $$0) {
-      dac $$1 = $$0.b();
-      if ($$1 instanceof del) {
-         return c ? fya.d() : fya.c();
-      } else {
-         fya $$2 = a.get($$1);
-         return $$2 != null ? $$2 : fya.c();
-      }
+   protected fxn(fuh $$0, double $$1, double $$2, double $$3) {
+      this.c = $$0;
+      this.b(0.2F, 0.2F);
+      this.c($$1, $$2, $$3);
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
    }
 
-   public static fya b(dnb $$0) {
-      dac $$1 = $$0.b();
-      if ($$1 instanceof del) {
-         return c ? fya.d() : fya.c();
+   public fxn(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3);
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
+      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
+      this.j = this.j / $$8 * $$7 * 0.4F;
+      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
+      this.l = this.l / $$8 * $$7 * 0.4F;
+   }
+
+   public fxn c(float $$0) {
+      this.j *= (double)$$0;
+      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
+      this.l *= (double)$$0;
+      return this;
+   }
+
+   public void b(double $$0, double $$1, double $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+   }
+
+   public fxn d(float $$0) {
+      this.b(0.2F * $$0, 0.2F * $$0);
+      return this;
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
+   }
+
+   protected void e(float $$0) {
+      this.y = $$0;
+   }
+
+   public void a(int $$0) {
+      this.t = $$0;
+   }
+
+   public int j() {
+      return this.t;
+   }
+
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         fya $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == fya.f() ? fya.g() : $$2;
-         } else {
-            return fya.c();
+         this.k = this.k - 0.04 * (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.C && this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.k = this.k * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.m) {
+            this.j *= 0.7F;
+            this.l *= 0.7F;
          }
       }
    }
 
-   public static fya a(dnb $$0, boolean $$1) {
-      fya $$2 = a($$0);
-      if ($$2 == fya.f()) {
-         if (!ezi.O()) {
-            return fyh.k();
-         } else {
-            return $$1 ? fyh.k() : fyh.j();
+   public abstract void a(ewm var1, fba var2, float var3);
+
+   public abstract fxr b();
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName()
+         + ", Pos ("
+         + this.g
+         + ","
+         + this.h
+         + ","
+         + this.i
+         + "), RGBA ("
+         + this.v
+         + ","
+         + this.w
+         + ","
+         + this.x
+         + ","
+         + this.y
+         + "), Age "
+         + this.s;
+   }
+
+   public void k() {
+      this.o = true;
+   }
+
+   protected void b(float $$0, float $$1) {
+      if ($$0 != this.p || $$1 != this.q) {
+         this.p = $$0;
+         this.q = $$1;
+         erv $$2 = this.n();
+         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
+         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
+         this.a(new erv($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
+      }
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      float $$3 = this.p / 2.0F;
+      float $$4 = this.q;
+      this.a(new erv($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      if (!this.E) {
+         double $$3 = $$0;
+         double $$4 = $$1;
+         double $$5 = $$2;
+         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
+            esa $$6 = bpv.a(null, new esa($$0, $$1, $$2), this.n(), this.c, List.of());
+            $$0 = $$6.c;
+            $$1 = $$6.d;
+            $$2 = $$6.e;
          }
-      } else {
-         return fyh.i();
+
+         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
+            this.a(this.n().d($$0, $$1, $$2));
+            this.l();
+         }
+
+         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
+            this.E = true;
+         }
+
+         this.m = $$4 != $$1 && $$4 < 0.0;
+         if ($$3 != $$0) {
+            this.j = 0.0;
+         }
+
+         if ($$5 != $$2) {
+            this.l = 0.0;
+         }
       }
    }
 
-   public static fya a(cqm $$0, boolean $$1) {
-      cqh $$2 = $$0.d();
-      if ($$2 instanceof coh) {
-         dac $$3 = ((coh)$$2).d();
-         return a($$3.o(), $$1);
-      } else {
-         return $$1 ? fyh.k() : fyh.j();
+   protected void l() {
+      erv $$0 = this.n();
+      this.g = ($$0.a + $$0.d) / 2.0;
+      this.h = $$0.b;
+      this.i = ($$0.c + $$0.f) / 2.0;
+   }
+
+   protected int a(float $$0) {
+      ib $$1 = ib.a(this.g, this.h, this.i);
+      return this.c.B($$1) ? fzx.a(this.c, $$1) : 0;
+   }
+
+   public boolean m() {
+      return !this.o;
+   }
+
+   public erv n() {
+      return this.D;
+   }
+
+   public void a(erv $$0) {
+      this.D = $$0;
+   }
+
+   public Optional<ki> o() {
+      return Optional.empty();
+   }
+
+   public static record a(float b, float c, float d, float e) {
+      public static final fxn.a a = new fxn.a(1.0F, 1.0F, 0.0F, 1.0F);
+
+      public boolean a() {
+         return this.b >= 1.0F && this.c >= 1.0F;
       }
-   }
 
-   public static fya a(eip $$0) {
-      fya $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : fya.c();
-   }
-
-   public static void a(boolean $$0) {
-      c = $$0;
+      public float a(int $$0, int $$1, float $$2) {
+         if (axk.a(this.b, this.c)) {
+            return this.b;
+         } else {
+            float $$3 = axk.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
+            return axk.b(this.b, this.c, $$3);
+         }
+      }
    }
 }

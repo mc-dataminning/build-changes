@@ -1,290 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
 public class ehf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "structures";
-   private static final String c = ".nbt";
-   private static final String d = ".snbt";
-   private final Map<ajh, Optional<ehe>> e = Maps.newConcurrentMap();
-   private final DataFixer f;
-   private aso g;
-   private final Path h;
-   private final List<ehf.b> i;
-   private final im<dac> j;
-   private static final aja k = new aja("structures", ".nbt");
+   public static final int a = 90;
+   static final ajt b = new ajt("igloo/top");
+   private static final ajt c = new ajt("igloo/middle");
+   private static final ajt d = new ajt("igloo/bottom");
+   static final Map<ajt, ib> e = ImmutableMap.of(b, new ib(3, 5, 5), c, new ib(1, 3, 1), d, new ib(3, 6, 7));
+   static final Map<ajt, ib> f = ImmutableMap.of(b, ib.c, c, new ib(2, -3, 4), d, new ib(0, -3, -2));
 
-   public ehf(aso $$0, ekm.c $$1, DataFixer $$2, im<dac> $$3) {
-      this.g = $$0;
-      this.f = $$2;
-      this.h = $$1.a(ekk.i).normalize();
-      this.j = $$3;
-      Builder<ehf.b> $$4 = ImmutableList.builder();
-      $$4.add(new ehf.b(this::h, this::d));
-      if (aa.aW) {
-         $$4.add(new ehf.b(this::g, this::c));
-      }
+   public static void a(eji $$0, ib $$1, dik $$2, efm $$3, axr $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new ehf.a($$0, d, $$1, $$2, $$5 * 3));
 
-      $$4.add(new ehf.b(this::f, this::b));
-      this.i = $$4.build();
-   }
-
-   public ehe a(ajh $$0) {
-      Optional<ehe> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         return $$1.get();
-      } else {
-         ehe $$2 = new ehe();
-         this.e.put($$0, Optional.of($$2));
-         return $$2;
-      }
-   }
-
-   public Optional<ehe> b(ajh $$0) {
-      return this.e.computeIfAbsent($$0, this::e);
-   }
-
-   public Stream<ajh> a() {
-      return this.i.stream().flatMap($$0 -> $$0.b().get()).distinct();
-   }
-
-   private Optional<ehe> e(ajh $$0) {
-      for (ehf.b $$1 : this.i) {
-         try {
-            Optional<ehe> $$2 = $$1.a().apply($$0);
-            if ($$2.isPresent()) {
-               return $$2;
-            }
-         } catch (Exception var5) {
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new ehf.a($$0, c, $$1, $$2, $$6 * 3));
          }
       }
 
-      return Optional.empty();
+      $$3.a(new ehf.a($$0, b, $$1, $$2, 0));
    }
 
-   public void a(aso $$0) {
-      this.g = $$0;
-      this.e.clear();
-   }
-
-   private Optional<ehe> f(ajh $$0) {
-      ajh $$1 = k.a($$0);
-      return this.a(() -> this.g.open($$1), $$1x -> a.error("Couldn't load structure {}", $$0, $$1x));
-   }
-
-   private Stream<ajh> b() {
-      return k.a(this.g).keySet().stream().map(k::b);
-   }
-
-   private Optional<ehe> g(ajh $$0) {
-      return this.a($$0, Paths.get(sm.b));
-   }
-
-   private Stream<ajh> c() {
-      return this.a(Paths.get(sm.b), "minecraft", ".snbt");
-   }
-
-   private Optional<ehe> h(ajh $$0) {
-      if (!Files.isDirectory(this.h)) {
-         return Optional.empty();
-      } else {
-         Path $$1 = b(this.h, $$0, ".nbt");
-         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> a.error("Couldn't load structure from {}", $$1, $$1x));
+   public static class a extends efr {
+      public a(eji $$0, ajt $$1, ib $$2, dik $$3, int $$4) {
+         super(efy.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
       }
-   }
 
-   private Stream<ajh> d() {
-      if (!Files.isDirectory(this.h)) {
-         return Stream.empty();
-      } else {
-         try {
-            return Files.list(this.h).filter($$0 -> Files.isDirectory($$0)).flatMap($$0 -> this.a($$0));
-         } catch (IOException var2) {
-            return Stream.empty();
-         }
+      public a(eji $$0, tm $$1) {
+         super(efy.I, $$1, $$0, $$1x -> a(dik.valueOf($$1.l("Rot")), $$1x));
       }
-   }
 
-   private Stream<ajh> a(Path $$0) {
-      Path $$1 = $$0.resolve("structures");
-      return this.a($$1, $$0.getFileName().toString(), ".nbt");
-   }
-
-   private Stream<ajh> a(Path $$0, String $$1, String $$2) {
-      if (!Files.isDirectory($$0)) {
-         return Stream.empty();
-      } else {
-         int $$3 = $$2.length();
-         Function<String, String> $$4 = $$1x -> $$1x.substring(0, $$1x.length() - $$3);
-
-         try {
-            return Files.walk($$0).filter($$1x -> $$1x.toString().endsWith($$2)).mapMulti(($$3x, $$4x) -> {
-               try {
-                  $$4x.accept(new ajh($$1, $$4.apply(this.a($$0, $$3x))));
-               } catch (z var7x) {
-                  a.error("Invalid location while listing pack contents", var7x);
-               }
-            });
-         } catch (IOException var7) {
-            a.error("Failed to list folder contents", var7);
-            return Stream.empty();
-         }
+      private static ejd a(dik $$0, ajt $$1) {
+         return new ejd().a($$0).a(dgu.a).a(ehf.e.get($$1)).a(eij.b);
       }
-   }
 
-   private String a(Path $$0, Path $$1) {
-      return $$0.relativize($$1).toString().replace(File.separator, "/");
-   }
-
-   private Optional<ehe> a(ajh $$0, Path $$1) {
-      if (!Files.isDirectory($$1)) {
-         return Optional.empty();
-      } else {
-         Path $$2 = v.b($$1, $$0.a(), ".snbt");
-
-         try {
-            Optional var6;
-            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
-               String $$4 = IOUtils.toString($$3);
-               var6 = Optional.of(this.a(tp.a($$4)));
-            }
-
-            return var6;
-         } catch (NoSuchFileException var9) {
-            return Optional.empty();
-         } catch (CommandSyntaxException | IOException var10) {
-            a.error("Couldn't load structure from {}", $$2, var10);
-            return Optional.empty();
-         }
+      private static ib a(ajt $$0, ib $$1, int $$2) {
+         return $$1.a(ehf.f.get($$0)).c($$2);
       }
-   }
 
-   private Optional<ehe> a(ehf.a $$0, Consumer<Throwable> $$1) {
-      try {
-         Optional var5;
-         try (
-            InputStream $$2 = $$0.open();
-            InputStream $$3 = new awf($$2);
-         ) {
-            var5 = Optional.of(this.a($$3));
-         }
-
-         return var5;
-      } catch (FileNotFoundException var11) {
-         return Optional.empty();
-      } catch (Throwable var12) {
-         $$1.accept(var12);
-         return Optional.empty();
+      @Override
+      protected void a(efx $$0, tm $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
       }
-   }
 
-   private ehe a(InputStream $$0) throws IOException {
-      ta $$1 = tn.a($$0, tj.a());
-      return this.a($$1);
-   }
-
-   public ehe a(ta $$0) {
-      ehe $$1 = new ehe();
-      int $$2 = tp.b($$0, 500);
-      $$1.a(this.j, ayc.f.a(this.f, $$0, $$2));
-      return $$1;
-   }
-
-   public boolean c(ajh $$0) {
-      Optional<ehe> $$1 = this.e.get($$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         ehe $$2 = $$1.get();
-         Path $$3 = b(this.h, $$0, ".nbt");
-         Path $$4 = $$3.getParent();
-         if ($$4 == null) {
-            return false;
-         } else {
-            try {
-               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
-            } catch (IOException var13) {
-               a.error("Failed to create parent directory: {}", $$4);
-               return false;
-            }
-
-            ta $$6 = $$2.a(new ta());
-
-            try {
-               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
-                  tn.a($$6, $$7);
-               }
-
-               return true;
-            } catch (Throwable var12) {
-               return false;
+      @Override
+      protected void a(String $$0, ib $$1, czm $$2, axr $$3, eez $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dca.a.n(), 3);
+            dmf $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dmm) {
+               ((dmm)$$5).a(emz.C, $$3.g());
             }
          }
       }
-   }
 
-   public Path a(ajh $$0, String $$1) {
-      return a(this.h, $$0, $$1);
-   }
-
-   public static Path a(Path $$0, ajh $$1, String $$2) {
-      try {
-         Path $$3 = $$0.resolve($$1.b());
-         Path $$4 = $$3.resolve("structures");
-         return v.b($$4, $$1.a(), $$2);
-      } catch (InvalidPathException var5) {
-         throw new z("Invalid resource path: " + $$1, var5);
-      }
-   }
-
-   private static Path b(Path $$0, ajh $$1, String $$2) {
-      if ($$1.a().contains("//")) {
-         throw new z("Invalid resource path: " + $$1);
-      } else {
-         Path $$3 = a($$0, $$1, $$2);
-         if ($$3.startsWith($$0) && v.a($$3) && v.b($$3)) {
-            return $$3;
-         } else {
-            throw new z("Invalid resource path: " + $$3);
+      @Override
+      public void a(czs $$0, czq $$1, dqw $$2, axr $$3, eez $$4, cye $$5, ib $$6) {
+         ajt $$7 = new ajt(this.a);
+         ejd $$8 = a(this.c.d(), $$7);
+         ib $$9 = ehf.f.get($$7);
+         ib $$10 = this.d.a((jg)ejh.a($$8, new ib(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dur.a.a, $$10.u(), $$10.w());
+         ib $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(ehf.b)) {
+            ib $$13 = this.d.a((jg)ejh.a($$8, new ib(3, 0, 5)));
+            doz $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(dca.cO)) {
+               $$0.a($$13, dca.dP.n(), 3);
+            }
          }
+
+         this.d = $$12;
       }
-   }
-
-   public void d(ajh $$0) {
-      this.e.remove($$0);
-   }
-
-   @FunctionalInterface
-   interface a {
-      InputStream open() throws IOException;
-   }
-
-   static record b(Function<ajh, Optional<ehe>> a, Supplier<Stream<ajh>> b) {
    }
 }

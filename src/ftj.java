@@ -1,75 +1,232 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class ftj extends fte {
-   final Supplier<gkb> f;
+public class ftj {
+   private static final ftq a = new ftq(0.008F);
+   private static final ftq b = new ftq(1.0F);
+   private static final ftq c = new ftq(0.5F);
 
-   ftj(UUID $$0, Instant $$1, UUID $$2, Supplier<gkb> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
-   }
+   public static Map<ftk, fts> a() {
+      Builder<ftk, fts> $$0 = ImmutableMap.builder();
+      fts $$1 = fts.a(fqz.a(ftq.a, 0.0F), 64, 64);
+      fts $$2 = fts.a(fqy.a(b), 64, 32);
+      fts $$3 = fts.a(fqy.a(new ftq(1.02F)), 64, 32);
+      fts $$4 = fts.a(fqy.a(c), 64, 32);
+      fts $$5 = frh.b();
+      fts $$6 = fsi.c();
+      fts $$7 = fts.a(fqx.a(ftq.a), 64, 64);
+      fts $$8 = fra.b();
+      fts $$9 = fqf.c();
+      fts $$10 = fts.a(frk.a(ftq.a), 64, 32);
+      fts $$11 = fts.a(frq.a(ftq.a), 64, 64);
+      fts $$12 = fts.a(frp.a(), 64, 64);
+      fts $$13 = fsi.b();
+      fts $$14 = frf.a(ftq.a);
+      fts $$15 = fsp.b();
+      fts $$16 = fqw.c();
+      fts $$17 = fsh.e();
+      fts $$18 = fts.a(fsx.b(), 64, 64);
+      fts $$19 = fsn.b();
+      $$0.put(ftl.a, fpi.b());
+      $$0.put(ftl.b, fpk.b());
+      $$0.put(ftl.c, fpn.c());
+      $$0.put(ftl.d, fpm.a(c));
+      $$0.put(ftl.e, fpm.a(b));
+      $$0.put(ftl.f, fpo.c());
+      $$0.put(ftl.g, gbu.a());
+      $$0.put(ftl.h, fpp.b());
+      $$0.put(ftl.i, gbw.c());
+      $$0.put(ftl.j, gbw.b());
+      $$0.put(ftl.k, fpq.c());
+      $$0.put(ftl.l, gbx.b());
+      $$0.put(ftl.m, fpr.b());
+      $$0.put(ftl.n, fpt.c());
+      $$0.put(ftl.o, $$4);
+      $$0.put(ftl.p, $$2);
+      $$0.put(ftl.q, fts.a(fqz.a(new ftq(0.2F), 0.0F), 64, 32));
+      $$0.put(ftl.r, fpu.a());
+      $$0.put(ftl.s, fpv.a(32, 32));
+      $$0.put(ftl.t, $$10);
+      $$0.put(ftl.u, fts.a(frk.a(new ftq(0.01F)), 64, 32));
+      $$0.put(ftl.v, fpw.b());
+      $$0.put(ftl.w, $$19);
+      $$0.put(ftl.x, gcf.b());
+      $$0.put(ftl.y, $$5);
+      $$0.put(ftl.z, fqb.c());
+      $$0.put(ftl.A, fqc.b());
+      $$0.put(ftl.B, $$5);
+      $$0.put(ftl.D, gcg.b());
+      $$0.put(ftl.F, gcg.c());
+      $$0.put(ftl.E, gcg.d());
+      $$0.put(ftl.C, gcg.e());
+      $$0.put(ftl.G, $$9);
+      $$0.put(ftl.H, fqg.a(ftq.a));
+      $$0.put(ftl.I, fqg.a(new ftq(2.0F)));
+      $$0.put(ftl.J, $$6);
+      $$0.put(ftl.K, gch.b());
+      $$0.put(ftl.L, gch.c());
+      $$0.put(ftl.M, fqh.b());
+      $$0.put(ftl.N, fqa.c());
+      $$0.put(ftl.O, gcf.d());
+      $$0.put(ftl.P, gcf.c());
+      $$0.put(ftl.Q, ftg.a());
+      $$0.put(ftl.R, fqi.a(ftq.a));
+      $$0.put(ftl.S, $$4);
+      $$0.put(ftl.T, $$4);
+      $$0.put(ftl.U, fqi.a(new ftq(0.25F)));
+      $$0.put(ftl.V, fqt.b());
+      $$0.put(ftl.W, fqj.c());
+      $$0.put(ftl.X, fqk.c());
+      $$0.put(ftl.Y, fql.b());
+      $$0.put(ftl.Z, gfd.a());
+      $$0.put(ftl.aa, gfc.a());
+      $$0.put(ftl.ab, $$8);
+      $$0.put(ftl.ac, fqn.b());
+      $$0.put(ftl.ad, fqo.c());
+      $$0.put(ftl.ae, fqp.b());
+      $$0.put(ftl.af, $$5);
+      $$0.put(ftl.ag, fqq.b());
+      $$0.put(ftl.ah, $$1);
+      $$0.put(ftl.ai, $$4);
+      $$0.put(ftl.aj, $$2);
+      $$0.put(ftl.ak, fso.b());
+      $$0.put(ftl.al, fqs.c());
+      $$0.put(ftl.am, fqt.b());
+      $$0.put(ftl.an, $$16);
+      $$0.put(ftl.ao, $$5);
+      $$0.put(ftl.ap, $$7);
+      $$0.put(ftl.aq, fts.a(fqx.a(new ftq(0.1F)), 64, 64));
+      $$0.put(ftl.ar, $$1);
+      $$0.put(ftl.as, $$4);
+      $$0.put(ftl.at, $$2);
+      $$0.put(ftl.au, $$8);
+      $$0.put(ftl.av, frb.b());
+      $$0.put(ftl.aw, frd.b());
+      $$0.put(ftl.ax, $$14);
+      $$0.put(ftl.ay, frf.a(new ftq(0.5F)));
+      $$0.put(ftl.az, frg.b());
+      $$0.put(ftl.aA, frc.b());
+      $$0.put(ftl.aB, $$5);
+      $$0.put(ftl.aC, $$9);
+      $$0.put(ftl.aD, fqa.c());
+      $$0.put(ftl.aE, $$10);
+      $$0.put(ftl.aF, frl.c());
+      $$0.put(ftl.aG, frm.b());
+      $$0.put(ftl.aH, frn.b());
+      $$0.put(ftl.aI, fro.a(ftq.a));
+      $$0.put(ftl.aQ, fro.a(new ftq(0.5F)));
+      $$0.put(ftl.aJ, $$11);
+      $$0.put(ftl.aO, $$4);
+      $$0.put(ftl.aP, $$3);
+      $$0.put(ftl.aK, $$11);
+      $$0.put(ftl.aL, $$4);
+      $$0.put(ftl.aM, $$3);
+      $$0.put(ftl.aN, $$12);
+      $$0.put(ftl.aR, $$8);
+      $$0.put(ftl.aS, fts.a(frr.a(ftq.a, false), 64, 64));
+      $$0.put(ftl.aT, $$13);
+      $$0.put(ftl.aU, $$4);
+      $$0.put(ftl.aV, $$2);
+      $$0.put(ftl.aW, fts.a(frr.a(ftq.a, true), 64, 64));
+      $$0.put(ftl.aX, $$4);
+      $$0.put(ftl.aY, $$2);
+      $$0.put(ftl.aZ, gkb.a());
+      $$0.put(ftl.ba, frs.c());
+      $$0.put(ftl.bb, frt.b());
+      $$0.put(ftl.bc, fru.b());
+      $$0.put(ftl.bd, frv.b());
+      $$0.put(ftl.be, frx.a());
+      $$0.put(ftl.bf, frz.b());
+      $$0.put(ftl.bg, fsa.b());
+      $$0.put(ftl.bh, fsc.c());
+      $$0.put(ftl.bi, fsb.c());
+      $$0.put(ftl.bj, fsd.a());
+      $$0.put(ftl.bk, fsf.a());
+      $$0.put(ftl.bl, fse.b());
+      $$0.put(ftl.bm, fsg.b());
+      $$0.put(ftl.bn, $$17);
+      $$0.put(ftl.bp, $$4);
+      $$0.put(ftl.bq, $$2);
+      $$0.put(ftl.bo, $$7);
+      $$0.put(ftl.br, $$6);
+      $$0.put(ftl.bs, fsk.c());
+      $$0.put(ftl.bt, fsk.b());
+      $$0.put(ftl.bu, fsl.b());
+      $$0.put(ftl.bv, fsm.b());
+      $$0.put(ftl.bw, $$5);
+      $$0.put(ftl.bx, $$19);
+      $$0.put(ftl.by, fso.b());
+      $$0.put(ftl.bz, $$17);
+      $$0.put(ftl.bA, $$4);
+      $$0.put(ftl.bB, $$2);
+      $$0.put(ftl.bC, fts.a(fqz.a(new ftq(0.25F), 0.0F), 64, 32));
+      $$0.put(ftl.bD, $$15);
+      $$0.put(ftl.bE, $$15);
+      $$0.put(ftl.bF, fsq.c());
+      $$0.put(ftl.bG, $$5);
+      $$0.put(ftl.bH, $$14);
+      $$0.put(ftl.bI, fsr.a());
+      $$0.put(ftl.bJ, fst.a(ftq.a));
+      $$0.put(ftl.bK, fst.a(a));
+      $$0.put(ftl.bL, fss.a(ftq.a));
+      $$0.put(ftl.bM, fss.a(a));
+      $$0.put(ftl.bN, fsu.c());
+      $$0.put(ftl.bO, fsv.b());
+      $$0.put(ftl.bP, $$18);
+      $$0.put(ftl.bQ, $$8);
+      $$0.put(ftl.bR, fsy.b());
+      $$0.put(ftl.bS, $$18);
+      $$0.put(ftl.bT, fta.b());
+      $$0.put(ftl.bU, ftb.c());
+      $$0.put(ftl.bV, ftc.a(ftq.a));
+      $$0.put(ftl.bW, ftc.a(c));
+      $$0.put(ftl.cb, gik.a());
+      $$0.put(ftl.bX, $$17);
+      $$0.put(ftl.bY, $$4);
+      $$0.put(ftl.bZ, $$2);
+      $$0.put(ftl.ca, $$6);
+      $$0.put(ftl.cc, fts.a(ftd.a(ftq.a), 64, 32));
+      $$0.put(ftl.cd, fts.a(ftd.a(new ftq(0.2F)), 64, 32));
+      $$0.put(ftl.ce, $$16);
+      $$0.put(ftl.cf, $$1);
+      $$0.put(ftl.ci, $$4);
+      $$0.put(ftl.cj, $$2);
+      $$0.put(ftl.cg, $$13);
+      $$0.put(ftl.ch, $$7);
+      $$0.put(ftl.ck, ftf.c());
+      $$0.put(ftl.cl, ftf.a(c));
+      $$0.put(ftl.cm, ftf.a(b));
+      $$0.put(ftl.cn, $$11);
+      $$0.put(ftl.co, $$4);
+      $$0.put(ftl.cp, $$3);
+      fts $$20 = fps.a();
+      fts $$21 = fpy.e();
+      fts $$22 = fry.b();
+      fts $$23 = fpz.a();
 
-   public Supplier<gkb> a() {
-      return this.f;
-   }
-
-   public ftj c() {
-      ftj $$0 = new ftj(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public fhh a(fhh $$0, fti $$1) {
-      return new flm($$0, $$1, this);
-   }
-
-   public static class a extends fte.a<ftj> {
-      public a(ftj $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, Supplier<gkb> $$1, AbuseReportLimits $$2) {
-         super(new ftj(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fte.b c() {
-         if (this.a.e == null) {
-            return fte.b.a;
+      for (clq.b $$24 : clq.b.values()) {
+         if ($$24 == clq.b.i) {
+            $$0.put(ftl.c($$24), $$22);
+            $$0.put(ftl.d($$24), $$23);
          } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fte.b.d : null;
+            $$0.put(ftl.c($$24), $$20);
+            $$0.put(ftl.d($$24), $$21);
          }
       }
 
-      @Override
-      public Either<fte.c, fte.b> a(fti $$0) {
-         fte.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gkb $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fte.c(this.a.a, fth.b, $$6));
-         }
+      fts $$25 = gcn.f();
+      dqm.a().forEach($$2x -> $$0.put(ftl.a($$2x), $$25));
+      fts $$26 = gcj.e();
+      dqm.a().forEach($$2x -> $$0.put(ftl.b($$2x), $$26));
+      ImmutableMap<ftk, fts> $$27 = $$0.build();
+      List<ftk> $$28 = ftl.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
       }
    }
 }

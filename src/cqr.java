@@ -1,50 +1,40 @@
-import java.util.List;
-
-public class cqr extends cqh {
-   public cqr(cqh.a $$0) {
+public class cqr extends cre {
+   public cqr(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnd a(csw $$0) {
-      cxb $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dnb $$3 = $$1.a_($$2);
-      if ($$3.a(aun.S)) {
-         ciu $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
+   public boa a(cuq $$0) {
+      cjt $$1 = $$0.o();
+      cyx $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      doz $$4 = $$2.a_($$3);
+      if (!dcm.h($$4) && !dcn.g($$4) && !dco.g($$4)) {
+         ib $$5 = $$3.a($$0.k());
+         if (dbl.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, aum.iU, aun.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            doz $$6 = dbl.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dts.i, $$3);
+            crj $$7 = $$0.n();
+            if ($$1 instanceof apt) {
+               am.z.a((apt)$$1, $$5, $$7);
+               $$7.a(1, $$1, bqo.d($$0.p()));
+            }
+
+            return boa.a($$2.x_());
+         } else {
+            return boa.e;
+         }
+      } else {
+         $$2.a($$1, $$3, aum.iU, aun.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dpp.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dts.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bqo.d($$0.p()));
          }
 
-         return bnd.a($$1.B);
-      } else {
-         return bnd.d;
-      }
-   }
-
-   public static bnd a(ciu $$0, cxb $$1, ib $$2) {
-      cey $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      epo $$8 = new epo((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<bpr> $$9 = $$1.a(bpr.class, $$8, $$1x -> $$1x.gc() == $$0);
-
-      for (bpr $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cey.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
-      }
-
-      if (!$$9.isEmpty()) {
-         $$1.a(drp.b, $$2, drp.a.a($$0));
-         return bnd.a;
-      } else {
-         return bnd.d;
+         return boa.a($$2.x_());
       }
    }
 }

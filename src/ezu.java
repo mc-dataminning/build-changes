@@ -1,450 +1,403 @@
 import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import org.slf4j.Logger;
 
-public class ezu {
-   final ezu.f a;
+public class ezu extends grl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int y = 80;
+   private static final int z = 95;
+   private static final int A = 1;
+   private static final String[] B = new String[]{"", ".", ". .", ". . ."};
+   private static final wg C = wg.c("mco.upload.verifying");
+   private final ezn D;
+   private final ems E;
+   @Nullable
+   private final far F;
+   private final long G;
+   private final int H;
+   private final exc I;
+   private final RateLimiter J;
+   @Nullable
+   private volatile wg[] K;
+   private volatile wg L = wg.c("mco.upload.preparing");
+   @Nullable
+   private volatile String M;
+   private volatile boolean N;
+   private volatile boolean O;
+   private volatile boolean P = true;
+   private volatile boolean Q;
+   @Nullable
+   private fdp R;
+   @Nullable
+   private fdp S;
+   private int T;
+   @Nullable
+   private Long U;
+   @Nullable
+   private Long V;
+   private long W;
+   private final fhc X = new fhc(this);
 
-   public ezu(ezu.f $$0) {
-      this.a = $$0;
+   public ezu(@Nullable far $$0, long $$1, int $$2, ezn $$3, ems $$4) {
+      super(fbh.a);
+      this.F = $$0;
+      this.G = $$1;
+      this.H = $$2;
+      this.D = $$3;
+      this.E = $$4;
+      this.I = new exc();
+      this.J = RateLimiter.create(0.1F);
    }
 
-   public float a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return 0.0F;
+   @Override
+   public void aN_() {
+      this.R = this.X.b(fdp.a(wf.k, $$0x -> this.C()).a());
+      this.R.k = false;
+      this.S = this.X.b(fdp.a(wf.e, $$0x -> this.D()).a());
+      if (!this.Q) {
+         if (this.D.b == -1) {
+            this.Q = true;
+            this.F();
+         } else {
+            List<fap> $$0 = new ArrayList<>();
+            if (this.F != null) {
+               $$0.add(this.F);
+            }
+
+            $$0.add(new fax(this.G, this.D.b, () -> {
+               if (!this.Q) {
+                  this.Q = true;
+                  this.j.execute(() -> {
+                     this.j.a(this);
+                     this.F();
+                  });
+               }
+            }));
+            this.j.a(new ezf(this.D, $$0.toArray(new fap[0])));
+         }
+      }
+
+      this.X.a($$1 -> {
+         fdn var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.X.a();
+   }
+
+   private void C() {
+      this.j.a(new eyy(new ewt(new fjt()), this.G));
+   }
+
+   private void D() {
+      this.N = true;
+      this.j.a(this.D);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         if (this.P) {
+            this.D();
+         } else {
+            this.C();
+         }
+
+         return true;
       } else {
-         MutableFloat $$1 = new MutableFloat();
-         axp.c($$0, wr.a, ($$1x, $$2, $$3) -> {
-            $$1.add(this.a.getWidth($$3, $$2));
-            return true;
-         });
-         return $$1.floatValue();
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public float a(vz $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      axp.a($$0, wr.a, ($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public float a(awi $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      $$0.accept(($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public int a(String $$0, int $$1, wr $$2) {
-      ezu.e $$3 = new ezu.e((float)$$1);
-      axp.a($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public String b(String $$0, int $$1, wr $$2) {
-      return $$0.substring(0, this.a($$0, $$1, $$2));
-   }
-
-   public String c(String $$0, int $$1, wr $$2) {
-      MutableFloat $$3 = new MutableFloat();
-      MutableInt $$4 = new MutableInt($$0.length());
-      axp.b($$0, $$2, ($$3x, $$4x, $$5) -> {
-         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
-         if ($$6 > (float)$$1) {
-            return false;
-         } else {
-            $$4.setValue($$3x);
-            return true;
-         }
-      });
-      return $$0.substring($$4.intValue());
-   }
-
-   public int d(String $$0, int $$1, wr $$2) {
-      ezu.e $$3 = new ezu.e((float)$$1);
-      axp.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   @Nullable
-   public wr a(vz $$0, int $$1) {
-      ezu.e $$2 = new ezu.e((float)$$1);
-      return $$0.<wr>a(($$1x, $$2x) -> axp.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), wr.a).orElse(null);
-   }
-
-   @Nullable
-   public wr a(awi $$0, int $$1) {
-      ezu.e $$2 = new ezu.e((float)$$1);
-      MutableObject<wr> $$3 = new MutableObject();
-      $$0.accept(($$2x, $$3x, $$4) -> {
-         if (!$$2.accept($$2x, $$3x, $$4)) {
-            $$3.setValue($$3x);
-            return false;
-         } else {
-            return true;
-         }
-      });
-      return (wr)$$3.getValue();
-   }
-
-   public String e(String $$0, int $$1, wr $$2) {
-      return $$0.substring(0, this.d($$0, $$1, $$2));
-   }
-
-   public vz a(vz $$0, int $$1, wr $$2) {
-      final ezu.e $$3 = new ezu.e((float)$$1);
-      return $$0.a(new vz.b<vz>() {
-         private final eyy c = new eyy();
-
-         @Override
-         public Optional<vz> accept(wr $$0, String $$1) {
-            $$3.b();
-            if (!axp.c($$1, $$0, $$3)) {
-               String $$2 = $$1.substring(0, $$3.a());
-               if (!$$2.isEmpty()) {
-                  this.c.a(vz.a($$2, $$0));
-               }
-
-               return Optional.of(this.c.b());
-            } else {
-               if (!$$1.isEmpty()) {
-                  this.c.a(vz.a($$1, $$0));
-               }
-
-               return Optional.empty();
-            }
-         }
-      }, $$2).orElse($$0);
-   }
-
-   public int f(String $$0, int $$1, wr $$2) {
-      ezu.b $$3 = new ezu.b((float)$$1);
-      axp.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$2;
-      boolean $$5 = $$1 < 0;
-      int $$6 = Math.abs($$1);
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         if ($$5) {
-            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
-               $$4--;
-            }
-
-            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
-               $$4--;
-            }
-         } else {
-            int $$8 = $$0.length();
-            int $$9 = $$0.indexOf(32, $$4);
-            int $$10 = $$0.indexOf(10, $$4);
-            if ($$9 == -1 && $$10 == -1) {
-               $$4 = -1;
-            } else if ($$9 != -1 && $$10 != -1) {
-               $$4 = Math.min($$9, $$10);
-            } else if ($$9 != -1) {
-               $$4 = $$9;
-            } else {
-               $$4 = $$10;
-            }
-
-            if ($$4 == -1) {
-               $$4 = $$8;
-            } else {
-               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
-                  $$4++;
-               }
-            }
-         }
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!this.O && this.I.a != 0L && this.I.a == this.I.b && this.S != null) {
+         this.L = C;
+         this.S.j = false;
       }
 
-      return $$4;
-   }
+      $$0.a(this.m, this.L, this.k / 2, 50, -1);
+      if (this.P) {
+         $$0.a(this.m, B[this.T / 10 % B.length], this.k / 2 + this.m.a(this.L) / 2 + 5, 50, -1, false);
+      }
 
-   public void a(String $$0, int $$1, wr $$2, boolean $$3, ezu.d $$4) {
-      int $$5 = 0;
-      int $$6 = $$0.length();
-      wr $$7 = $$2;
+      if (this.I.a != 0L && !this.N) {
+         this.c($$0);
+         this.d($$0);
+      }
 
-      while ($$5 < $$6) {
-         ezu.b $$8 = new ezu.b((float)$$1);
-         boolean $$9 = axp.a($$0, $$5, $$7, $$2, $$8);
-         if ($$9) {
-            $$4.accept($$7, $$5, $$6);
-            break;
+      wg[] $$4 = this.K;
+      if ($$4 != null) {
+         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+            $$0.a(this.m, $$4[$$5], this.k / 2, 110 + 12 * $$5, -65536);
          }
-
-         int $$10 = $$8.a();
-         char $$11 = $$0.charAt($$10);
-         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
-         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
-         $$5 = $$12;
-         $$7 = $$8.b();
       }
    }
 
-   public List<vz> g(String $$0, int $$1, wr $$2) {
-      List<vz> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(vz.a($$0.substring($$3x, $$4), $$2x)));
-      return $$3;
+   private void c(fdc $$0) {
+      double $$1 = Math.min((double)this.I.a / (double)this.I.b, 1.0);
+      this.M = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.k - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.m, wg.a("mco.upload.percent", this.M), this.k / 2, 84, -1);
    }
 
-   public List<vz> b(vz $$0, int $$1, wr $$2) {
-      List<vz> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
-      return $$3;
-   }
-
-   public List<vz> a(vz $$0, int $$1, wr $$2, vz $$3) {
-      List<vz> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? vz.a($$3, $$2x) : $$2x));
-      return $$4;
-   }
-
-   public void a(vz $$0, int $$1, wr $$2, BiConsumer<vz, Boolean> $$3) {
-      List<ezu.c> $$4 = Lists.newArrayList();
-      $$0.a(($$1x, $$2x) -> {
-         if (!$$2x.isEmpty()) {
-            $$4.add(new ezu.c($$2x, $$1x));
-         }
-
-         return Optional.empty();
-      }, $$2);
-      ezu.a $$5 = new ezu.a($$4);
-      boolean $$6 = true;
-      boolean $$7 = false;
-      boolean $$8 = false;
-
-      while ($$6) {
-         $$6 = false;
-         ezu.b $$9 = new ezu.b((float)$$1);
-
-         for (ezu.c $$10 : $$5.a) {
-            boolean $$11 = axp.a($$10.c, 0, $$10.d, $$2, $$9);
-            if (!$$11) {
-               int $$12 = $$9.a();
-               wr $$13 = $$9.b();
-               char $$14 = $$5.a($$12);
-               boolean $$15 = $$14 == '\n';
-               boolean $$16 = $$15 || $$14 == ' ';
-               $$7 = $$15;
-               vz $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
-               $$3.accept($$17, $$8);
-               $$8 = !$$15;
-               $$6 = true;
-               break;
+   private void d(fdc $$0) {
+      if (this.T % 20 == 0) {
+         if (this.U != null && this.V != null) {
+            long $$1 = ac.b() - this.V;
+            if ($$1 == 0L) {
+               $$1 = 1L;
             }
 
-            $$9.a($$10.c.length());
+            this.W = 1000L * (this.I.a - this.U) / $$1;
+            this.a($$0, this.W);
          }
-      }
 
-      vz $$18 = $$5.a();
-      if ($$18 != null) {
-         $$3.accept($$18, $$8);
-      } else if ($$7) {
-         $$3.accept(vz.b, false);
+         this.U = this.I.a;
+         this.V = ac.b();
+      } else {
+         this.a($$0, this.W);
       }
    }
 
-   static class a {
-      final List<ezu.c> a;
-      private String b;
+   private void a(fdc $$0, long $$1) {
+      String $$2 = this.M;
+      if ($$1 > 0L && $$2 != null) {
+         int $$3 = this.m.b($$2);
+         String $$4 = "(" + ewu.b($$1) + "/s)";
+         $$0.a(this.m, $$4, this.k / 2 + $$3 / 2 + 15, 84, -1, false);
+      }
+   }
 
-      public a(List<ezu.c> $$0) {
-         this.a = $$0;
-         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
+   @Override
+   public void e() {
+      super.e();
+      this.T++;
+      if (this.J.tryAcquire(1)) {
+         wg $$0 = this.E();
+         this.j.aY().c($$0);
+      }
+   }
+
+   private wg E() {
+      List<wg> $$0 = Lists.newArrayList();
+      $$0.add(this.L);
+      if (this.M != null) {
+         $$0.add(wg.a("mco.upload.percent", this.M));
       }
 
-      public char a(int $$0) {
-         return this.b.charAt($$0);
+      wg[] $$1 = this.K;
+      if ($$1 != null) {
+         $$0.addAll(Arrays.asList($$1));
       }
 
-      public vz a(int $$0, int $$1, wr $$2) {
-         eyy $$3 = new eyy();
-         ListIterator<ezu.c> $$4 = this.a.listIterator();
-         int $$5 = $$0;
-         boolean $$6 = false;
+      return wf.a($$0);
+   }
 
-         while ($$4.hasNext()) {
-            ezu.c $$7 = $$4.next();
-            String $$8 = $$7.c;
-            int $$9 = $$8.length();
-            if (!$$6) {
-               if ($$5 > $$9) {
-                  $$3.a($$7);
-                  $$4.remove();
-                  $$5 -= $$9;
-               } else {
-                  String $$10 = $$8.substring(0, $$5);
-                  if (!$$10.isEmpty()) {
-                     $$3.a(vz.a($$10, $$7.d));
-                  }
+   private void F() {
+      new Thread(
+            () -> {
+               File $$0 = null;
+               ewy $$1 = ewy.a();
 
-                  $$5 += $$1;
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               if ($$5 <= $$9) {
-                  String $$11 = $$8.substring($$5);
-                  if ($$11.isEmpty()) {
-                     $$4.remove();
+               try {
+                  if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                     this.L = wg.c("mco.upload.close.failure");
                   } else {
-                     $$4.set(new ezu.c($$11, $$2));
-                  }
-                  break;
-               }
+                     eyd $$2 = null;
 
-               $$4.remove();
-               $$5 -= $$9;
+                     for (int $$3 = 0; $$3 < 20; $$3++) {
+                        try {
+                           if (this.N) {
+                              this.I();
+                              return;
+                           }
+
+                           $$2 = $$1.e(this.G, fah.a(this.G));
+                           if ($$2 != null) {
+                              break;
+                           }
+                        } catch (eym var18) {
+                           Thread.sleep((long)(var18.c * 1000));
+                        }
+                     }
+
+                     if ($$2 == null) {
+                        this.L = wg.c("mco.upload.close.failure");
+                     } else {
+                        fah.a(this.G, $$2.a());
+                        if (!$$2.c()) {
+                           this.L = wg.c("mco.upload.close.failure");
+                        } else if (this.N) {
+                           this.I();
+                        } else {
+                           File $$5 = new File(this.j.p.getAbsolutePath(), "saves");
+                           $$0 = this.b(new File($$5, this.E.a()));
+                           if (this.N) {
+                              this.I();
+                           } else if (this.a($$0)) {
+                              this.L = wg.a("mco.upload.uploading", this.E.b());
+                              eww $$10 = new eww($$0, this.G, this.H, $$2, this.j.X(), aa.b().c(), this.E.l().c(), this.I);
+                              $$10.a($$0x -> {
+                                 if ($$0x.a >= 200 && $$0x.a < 300) {
+                                    this.O = true;
+                                    this.L = wg.c("mco.upload.done");
+                                    if (this.R != null) {
+                                       this.R.b(wf.d);
+                                    }
+
+                                    fah.b(this.G);
+                                 } else if ($$0x.a == 400 && $$0x.b != null) {
+                                    this.a(wg.a("mco.upload.failed", $$0x.b));
+                                 } else {
+                                    this.a(wg.a("mco.upload.failed", $$0x.a));
+                                 }
+                              });
+
+                              while (!$$10.b()) {
+                                 if (this.N) {
+                                    $$10.a();
+                                    this.I();
+                                    return;
+                                 }
+
+                                 try {
+                                    Thread.sleep(500L);
+                                 } catch (InterruptedException var17) {
+                                    a.error("Failed to check Realms file upload status");
+                                 }
+                              }
+                           } else {
+                              long $$6 = $$0.length();
+                              ewu $$7 = ewu.a($$6);
+                              ewu $$8 = ewu.a(5368709120L);
+                              if (ewu.b($$6, $$7).equals(ewu.b(5368709120L, $$8)) && $$7 != ewu.a) {
+                                 ewu $$9 = ewu.values()[$$7.ordinal() - 1];
+                                 this.a(
+                                    wg.a("mco.upload.size.failure.line1", this.E.b()),
+                                    wg.a("mco.upload.size.failure.line2", ewu.b($$6, $$9), ewu.b(5368709120L, $$9))
+                                 );
+                              } else {
+                                 this.a(
+                                    wg.a("mco.upload.size.failure.line1", this.E.b()),
+                                    wg.a("mco.upload.size.failure.line2", ewu.b($$6, $$7), ewu.b(5368709120L, $$8))
+                                 );
+                              }
+                           }
+                        }
+                     }
+                  }
+               } catch (IOException var19) {
+                  this.a(wg.a("mco.upload.failed", var19.getMessage()));
+               } catch (eyl var20) {
+                  this.a(wg.a("mco.upload.failed", var20.a.b()));
+               } catch (InterruptedException var21) {
+                  a.error("Could not acquire upload lock");
+               } finally {
+                  this.O = true;
+                  if (b.isHeldByCurrentThread()) {
+                     b.unlock();
+                     this.P = false;
+                     if (this.R != null) {
+                        this.R.k = true;
+                     }
+
+                     if (this.S != null) {
+                        this.S.k = false;
+                     }
+
+                     if ($$0 != null) {
+                        a.debug("Deleting file {}", $$0.getAbsolutePath());
+                        $$0.delete();
+                     }
+                  } else {
+                     return;
+                  }
+               }
+            }
+         )
+         .start();
+   }
+
+   private void a(wg... $$0) {
+      this.K = $$0;
+   }
+
+   private void I() {
+      this.L = wg.c("mco.upload.cancelled");
+      a.debug("Upload was cancelled");
+   }
+
+   private boolean a(File $$0) {
+      return $$0.length() < 5368709120L;
+   }
+
+   private File b(File $$0) throws IOException {
+      TarArchiveOutputStream $$1 = null;
+
+      File var4;
+      try {
+         File $$2 = File.createTempFile("realms-upload-file", ".tar.gz");
+         $$1 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$2)));
+         $$1.setLongFileMode(3);
+         this.a($$1, $$0.getAbsolutePath(), "world", true);
+         $$1.finish();
+         var4 = $$2;
+      } finally {
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
+
+      return var4;
+   }
+
+   private void a(TarArchiveOutputStream $$0, String $$1, String $$2, boolean $$3) throws IOException {
+      if (!this.N) {
+         File $$4 = new File($$1);
+         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
+         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
+         $$0.putArchiveEntry($$6);
+         if ($$4.isFile()) {
+            try (InputStream $$7 = new FileInputStream($$4)) {
+               $$7.transferTo($$0);
+            }
+
+            $$0.closeArchiveEntry();
+         } else {
+            $$0.closeArchiveEntry();
+            File[] $$8 = $$4.listFiles();
+            if ($$8 != null) {
+               for (File $$9 : $$8) {
+                  this.a($$0, $$9.getAbsolutePath(), $$5 + "/", false);
+               }
             }
          }
-
-         this.b = this.b.substring($$0 + $$1);
-         return $$3.b();
       }
-
-      @Nullable
-      public vz a() {
-         eyy $$0 = new eyy();
-         this.a.forEach($$0::a);
-         this.a.clear();
-         return $$0.a();
-      }
-   }
-
-   class b implements awj {
-      private final float b;
-      private int c = -1;
-      private wr d = wr.a;
-      private boolean e;
-      private float f;
-      private int g = -1;
-      private wr h = wr.a;
-      private int i;
-      private int j;
-
-      public b(float $$0) {
-         this.b = Math.max($$0, 1.0F);
-      }
-
-      @Override
-      public boolean accept(int $$0, wr $$1, int $$2) {
-         int $$3 = $$0 + this.j;
-         switch ($$2) {
-            case 10:
-               return this.a($$3, $$1);
-            case 32:
-               this.g = $$3;
-               this.h = $$1;
-            default:
-               float $$4 = ezu.this.a.getWidth($$2, $$1);
-               this.f += $$4;
-               if (!this.e || !(this.f > this.b)) {
-                  this.e |= $$4 != 0.0F;
-                  this.i = $$3 + Character.charCount($$2);
-                  return true;
-               } else {
-                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
-               }
-         }
-      }
-
-      private boolean a(int $$0, wr $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return false;
-      }
-
-      private boolean c() {
-         return this.c != -1;
-      }
-
-      public int a() {
-         return this.c() ? this.c : this.i;
-      }
-
-      public wr b() {
-         return this.d;
-      }
-
-      public void a(int $$0) {
-         this.j += $$0;
-      }
-   }
-
-   static class c implements vz {
-      final String c;
-      final wr d;
-
-      public c(String $$0, wr $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public <T> Optional<T> a(vz.a<T> $$0) {
-         return $$0.accept(this.c);
-      }
-
-      @Override
-      public <T> Optional<T> a(vz.b<T> $$0, wr $$1) {
-         return $$0.accept(this.d.a($$1), this.c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void accept(wr var1, int var2, int var3);
-   }
-
-   class e implements awj {
-      private float b;
-      private int c;
-
-      public e(float $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean accept(int $$0, wr $$1, int $$2) {
-         this.b = this.b - ezu.this.a.getWidth($$2, $$1);
-         if (this.b >= 0.0F) {
-            this.c = $$0 + Character.charCount($$2);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public void b() {
-         this.c = 0;
-      }
-   }
-
-   @FunctionalInterface
-   public interface f {
-      float getWidth(int var1, wr var2);
    }
 }

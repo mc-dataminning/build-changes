@@ -1,22 +1,19 @@
-public interface cuf extends ctp<bmw> {
-   @Override
-   default ctu<?> e() {
-      return ctu.g;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum cuf {
+   a(0),
+   b(1);
+
+   public static final IntFunction<cuf> c = awb.a(cuf::a, values(), awb.a.a);
+   public static final ye<ByteBuf, cuf> d = yc.a(c, cuf::a);
+   private final int e;
+
+   private cuf(int $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public int a() {
+      return this.e;
    }
-
-   @Override
-   default cqm g() {
-      return new cqm(dae.ob);
-   }
-
-   boolean a(cqm var1);
-
-   boolean b(cqm var1);
-
-   boolean c(cqm var1);
 }

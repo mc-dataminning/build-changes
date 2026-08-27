@@ -1,11 +1,21 @@
-import javax.annotation.Nullable;
+public enum dpl implements aye {
+   a("none"),
+   b("small"),
+   c("large");
 
-public interface dpl {
-   @Nullable
-   dpk c(int var1, int var2);
+   private final String d;
 
-   default void a(cxk $$0, je $$1) {
+   private dpl(String $$0) {
+      this.d = $$0;
    }
 
-   cwh q();
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

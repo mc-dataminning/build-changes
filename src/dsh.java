@@ -1,105 +1,37 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public interface dsh {
-   Codec<dsh> b = dsi.b;
-   Codec<il<dsh>> c = ajd.a(kj.ay, b);
-   Codec<dsh> d = c.xmap(dsi.j::new, $$0 -> (il)($$0 instanceof dsi.j $$1 ? $$1.j() : new il.a<>($$0)));
+public class dsh {
+   private final BitSet a = new BitSet();
 
-   double a(dsh.b var1);
-
-   void a(double[] var1, dsh.a var2);
-
-   dsh a(dsh.f var1);
-
-   double a();
-
-   double b();
-
-   awq<? extends dsh> c();
-
-   default dsh a(double $$0, double $$1) {
-      return new dsi.g(this, $$0, $$1);
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
    }
 
-   default dsh d() {
-      return dsi.a(this, dsi.k.a.a);
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
    }
 
-   default dsh e() {
-      return dsi.a(this, dsi.k.a.b);
-   }
+   public int a(int $$0) {
+      int $$1 = 0;
 
-   default dsh f() {
-      return dsi.a(this, dsi.k.a.c);
-   }
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
+         }
 
-   default dsh g() {
-      return dsi.a(this, dsi.k.a.d);
-   }
-
-   default dsh h() {
-      return dsi.a(this, dsi.k.a.e);
-   }
-
-   default dsh i() {
-      return dsi.a(this, dsi.k.a.f);
-   }
-
-   public interface a {
-      dsh.b a(int var1);
-
-      void a(double[] var1, dsh var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dtq d() {
-         return dtq.a();
+         $$1 = $$3;
       }
    }
 
-   public static record c(il<ehs.a> b, @Nullable ehs c) {
-      public static final Codec<dsh.c> a = ehs.a.b.xmap($$0 -> new dsh.c($$0, null), dsh.c::b);
-
-      public c(il<ehs.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends dsh {
-      @Override
-      default void a(double[] $$0, dsh.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dsh a(dsh.f $$0) {
-         return $$0.apply(this);
-      }
-   }
-
-   public static record e(int a, int b, int c) implements dsh.b {
-   }
-
-   public interface f {
-      dsh apply(dsh var1);
-
-      default dsh.c a(dsh.c $$0) {
-         return $$0;
-      }
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

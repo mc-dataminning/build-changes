@@ -1,52 +1,38 @@
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class css {
-   public static final ajg<csr> a = a("sentry");
-   public static final ajg<csr> b = a("dune");
-   public static final ajg<csr> c = a("coast");
-   public static final ajg<csr> d = a("wild");
-   public static final ajg<csr> e = a("ward");
-   public static final ajg<csr> f = a("eye");
-   public static final ajg<csr> g = a("vex");
-   public static final ajg<csr> h = a("tide");
-   public static final ajg<csr> i = a("snout");
-   public static final ajg<csr> j = a("rib");
-   public static final ajg<csr> k = a("spire");
-   public static final ajg<csr> l = a("wayfinder");
-   public static final ajg<csr> m = a("shaper");
-   public static final ajg<csr> n = a("silence");
-   public static final ajg<csr> o = a("raiser");
-   public static final ajg<csr> p = a("host");
+public class css extends cre {
+   public static final int a = 160;
 
-   public static void a(pl<csr> $$0) {
-      a($$0, cqp.xp, a);
-      a($$0, cqp.xq, b);
-      a($$0, cqp.xr, c);
-      a($$0, cqp.xs, d);
-      a($$0, cqp.xt, e);
-      a($$0, cqp.xu, f);
-      a($$0, cqp.xv, g);
-      a($$0, cqp.xw, h);
-      a($$0, cqp.xx, i);
-      a($$0, cqp.xy, j);
-      a($$0, cqp.xz, k);
-      a($$0, cqp.xA, l);
-      a($$0, cqp.xB, m);
-      a($$0, cqp.xC, n);
-      a($$0, cqp.xD, o);
-      a($$0, cqp.xE, p);
+   public css(cre.a $$0) {
+      super($$0);
    }
 
-   public static Optional<il.c<csr>> a(iz $$0, cqm $$1) {
-      return $$0.d(kj.aK).h().filter($$1x -> $$1.a(((csr)$$1x.a()).b())).findFirst();
+   @Override
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bph> $$4 = new ArrayList<>();
+         cui $$5 = $$0.a(jp.y, cui.a);
+
+         for (cui.a $$6 : $$5.a()) {
+            $$4.add($$6.a());
+         }
+
+         cth.a($$4, $$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
+      }
    }
 
-   private static void a(pl<csr> $$0, cqh $$1, ajg<csr> $$2) {
-      csr $$3 = new csr($$2.a(), ki.h.e($$1), vu.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
-   }
+   @Override
+   public crj a(crj $$0, cyx $$1, bqo $$2) {
+      crj $$3 = super.a($$0, $$1, $$2);
+      cui $$4 = $$0.a(jp.y, cui.a);
 
-   private static ajg<csr> a(String $$0) {
-      return ajg.a(kj.aK, new ajh($$0));
+      for (cui.a $$5 : $$4.a()) {
+         $$2.b($$5.a());
+      }
+
+      return $$2.fM() ? $$3 : new crj(crm.pp);
    }
 }

@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class eq implements ArgumentType<eq.a> {
    private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("arguments.operation.div0"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wg.c("arguments.operation.div0"));
 
    public static eq a() {
       return new eq();
@@ -62,14 +62,14 @@ public class eq implements ArgumentType<eq.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aww.a($$0x, $$1);
+            return axk.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aww.b($$0x, $$1);
+            return axk.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class eq implements ArgumentType<eq.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(eqv var1, eqv var2) throws CommandSyntaxException;
+      void apply(etc var1, etc var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class eq implements ArgumentType<eq.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(eqv $$0, eqv $$1) throws CommandSyntaxException {
+      default void apply(etc $$0, etc $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

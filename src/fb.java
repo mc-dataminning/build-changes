@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fb implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("container.5", "12", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("slot.unknown", $$0));
    private static final Map<String, Integer> c = ac.a(Maps.newHashMap(), $$0 -> {
       for (int $$1 = 0; $$1 < 54; $$1++) {
          $$0.put("container." + $$1, $$1);
@@ -39,14 +39,14 @@ public class fb implements ArgumentType<Integer> {
          $$0.put("horse." + $$6, 500 + $$6);
       }
 
-      $$0.put("weapon", bpe.a.a(98));
-      $$0.put("weapon.mainhand", bpe.a.a(98));
-      $$0.put("weapon.offhand", bpe.b.a(98));
-      $$0.put("armor.head", bpe.f.a(100));
-      $$0.put("armor.chest", bpe.e.a(100));
-      $$0.put("armor.legs", bpe.d.a(100));
-      $$0.put("armor.feet", bpe.c.a(100));
-      $$0.put("armor.body", bpe.g.a(105));
+      $$0.put("weapon", bqc.a.a(98));
+      $$0.put("weapon.mainhand", bqc.a.a(98));
+      $$0.put("weapon.offhand", bqc.b.a(98));
+      $$0.put("armor.head", bqc.f.a(100));
+      $$0.put("armor.chest", bqc.e.a(100));
+      $$0.put("armor.legs", bqc.d.a(100));
+      $$0.put("armor.feet", bqc.c.a(100));
+      $$0.put("armor.body", bqc.g.a(105));
       $$0.put("horse.saddle", 400);
       $$0.put("horse.chest", 499);
    });

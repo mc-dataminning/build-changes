@@ -1,7 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface xl<T extends xk> {
-   MapCodec<T> a();
+public class xl {
+   static Function<String, Supplier<wg>> a = $$0 -> () -> wg.b($$0);
 
-   xs<vf, T> b();
+   public static void a(Function<String, Supplier<wg>> $$0) {
+      a = $$0;
+   }
 }

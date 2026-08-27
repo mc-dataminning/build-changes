@@ -1,76 +1,98 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dhy extends dac {
+public class dhy extends dby {
    public static final MapCodec<dhy> a = b(dhy::new);
-   private static final vu d = vu.c("container.stonecutter");
-   public static final dnv b = ddx.aE;
-   protected static final eqm c = dac.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final dpq b = dib.d;
 
    @Override
    public MapCodec<dhy> a() {
       return a;
    }
 
-   public dhy(dna.d $$0) {
+   public dhy(doy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ih.c));
+      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dnb a(csu $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected void a(doz $$0, cyx $$1, ib $$2, cjt $$3) {
+      d($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
-      if ($$1.B) {
-         return bnd.a;
+   public void a(cyx $$0, ib $$1, doz $$2, bpv $$3) {
+      if (!$$3.bT()) {
+         d($$2, $$0, $$1);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      if ($$2.B) {
+         a($$2, $$3);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aui.ay);
-         return bnd.b;
+         d($$1, $$2, $$3);
+      }
+
+      return $$0.f() instanceof cph && new cuo($$4, $$5, $$0, $$6).b() ? boc.e : boc.a;
+   }
+
+   private static void d(doz $$0, cyx $$1, ib $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
       }
    }
 
-   @Nullable
    @Override
-   protected bnh b(dnb $$0, cxb $$1, ib $$2) {
-      return new bnn(($$2x, $$3, $$4) -> new cnp($$2x, $$3, cmb.a($$1, $$2)), d);
+   protected boolean e_(doz $$0) {
+      return $$0.c(b);
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return c;
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+      }
    }
 
    @Override
-   protected boolean g_(dnb $$0) {
-      return true;
+   protected void a(doz $$0, aps $$1, ib $$2, crj $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4 && cwr.a(cwt.v, $$3) == 0) {
+         int $$5 = 1 + $$1.z.a(5);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.c;
+   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(cyx $$0, ib $$1) {
+      double $$2 = 0.5625;
+      axr $$3 = $$0.z;
+
+      for (ih $$4 : ih.values()) {
+         ib $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            ih.a $$6 = $$4.o();
+            double $$7 = $$6 == ih.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == ih.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == ih.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(kf.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+         }
+      }
    }
 
    @Override
-   protected dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
+   protected void a(dpa.a<dby, doz> $$0) {
       $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      return false;
    }
 }

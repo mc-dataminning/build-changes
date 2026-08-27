@@ -1,60 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amv {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.recipe.take.failed"));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("serverpack").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("recipe").requires($$0x -> $$0x.c(2)))
                .then(
-                  dv.a("push")
+                  dv.a("give")
                      .then(
-                        ((RequiredArgumentBuilder)dv.a("url", StringArgumentType.string())
+                        ((RequiredArgumentBuilder)dv.a("targets", eh.d())
                               .then(
-                                 ((RequiredArgumentBuilder)dv.a("uuid", fi.a())
-                                       .then(
-                                          dv.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(fi.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fi.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
+                                 dv.a("recipe", ev.a())
+                                    .suggests(hr.b)
+                                    .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
                               ))
-                           .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                           .then(dv.a("*").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aJ().b())))
                      )
                ))
-            .then(dv.a("pop").then(dv.a("uuid", fi.a()).executes($$0x -> a((du)$$0x.getSource(), fi.a($$0x, "uuid")))))
+            .then(
+               dv.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                           .then(
+                              dv.a("recipe", ev.a())
+                                 .suggests(hr.b)
+                                 .executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
+                           ))
+                        .then(dv.a("*").executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aJ().b())))
+                  )
+            )
       );
    }
 
-   private static void a(du $$0, yb<?> $$1) {
-      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
+   private static int a(du $$0, Collection<apt> $$1, Collection<cvl<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (apt $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wg.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wg.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   private static int a(du $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      yn $$6 = new yn($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
-   }
+   private static int b(du $$0, Collection<apt> $$1, Collection<cvl<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   private static int a(du $$0, UUID $$1) {
-      ym $$2 = new ym(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+      for (apt $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wg.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wg.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 }

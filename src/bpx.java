@@ -1,83 +1,98 @@
-public abstract class bpx extends bpr {
-   protected static final float bW = 0.0F;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-   protected bpx(bpd<? extends bpx> $$0, cxb $$1) {
-      super($$0, $$1);
+public class bpx {
+   private final Map<bpw, List<esa>> a;
+
+   bpx(Map<bpw, List<esa>> $$0) {
+      this.a = $$0;
    }
 
-   public float h(ib $$0) {
-      return this.a($$0, this.dM());
+   public static bpx a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public float a(ib $$0, cxe $$1) {
-      return 0.0F;
+   public static bpx.a a() {
+      return new bpx.a();
    }
 
-   @Override
-   public boolean a(cxc $$0, bpt $$1) {
-      return this.a(this.dm(), $$0) >= 0.0F;
+   public bpx a(float $$0, float $$1, float $$2) {
+      Map<bpw, List<esa>> $$3 = new EnumMap<>(bpw.class);
+
+      for (Entry<bpw, List<esa>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bpx($$3);
    }
 
-   public boolean gj() {
-      return !this.K().l();
+   private static List<esa> a(List<esa> $$0, float $$1, float $$2, float $$3) {
+      List<esa> $$4 = new ArrayList<>($$0.size());
+
+      for (esa $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public boolean gk() {
-      if (this.bC.a(bys.Z)) {
-         return this.bC.c(bys.Z).isPresent();
+   @Nullable
+   public esa a(bpw $$0, int $$1, float $$2) {
+      List<esa> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
+
+   public esa b(bpw $$0, int $$1, float $$2) {
+      esa $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         for (bya $$0 : this.bR.b()) {
-            if ($$0.h() && $$0.k() instanceof bxf) {
-               return true;
-            }
-         }
-
-         return false;
+         return $$3;
       }
    }
 
-   @Override
-   protected void ga() {
-      super.ga();
-      box $$0 = this.gc();
-      if ($$0 != null && $$0.dM() == this.dM()) {
-         this.a($$0.dm(), 5);
-         float $$1 = this.f($$0);
-         if (this instanceof bql && ((bql)this).y()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
-
-            return;
-         }
-
-         this.F($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bR.a(bwm.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dr() - this.dr()) / (double)$$1;
-            double $$3 = ($$0.dt() - this.dt()) / (double)$$1;
-            double $$4 = ($$0.dx() - this.dx()) / (double)$$1;
-            this.g(this.dp().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cn();
-         } else if (this.gl() && !this.gk()) {
-            this.bR.b(bwm.a.a);
-            float $$5 = 2.0F;
-            ept $$6 = new ept($$0.dr() - this.dr(), $$0.dt() - this.dt(), $$0.dx() - this.dx()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.K().a(this.dr() + $$6.c, this.dt() + $$6.d, this.dx() + $$6.e, this.gm());
-         }
+   public esa c(bpw $$0, int $$1, float $$2) {
+      List<esa> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         esa $$4 = $$3.get(axk.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
       }
    }
 
-   protected boolean gl() {
-      return true;
+   private static esa a(esa $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   protected double gm() {
-      return 1.0;
-   }
+   public static class a {
+      private final Map<bpw, List<esa>> a = new EnumMap<>(bpw.class);
 
-   protected void F(float $$0) {
+      a() {
+      }
+
+      public bpx.a a(bpw $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new esa((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bpx.a a(bpw $$0, esa $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bpx a(float $$0, float $$1) {
+         Map<bpw, List<esa>> $$2 = new EnumMap<>(bpw.class);
+
+         for (bpw $$3 : bpw.values()) {
+            List<esa> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bpx($$2);
+      }
    }
 }

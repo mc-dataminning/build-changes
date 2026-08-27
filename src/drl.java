@@ -1,35 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class drl implements drt {
-   public static final Codec<drl> a = RecordCodecBuilder.create($$0 -> $$0.group(ib.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, drl::new));
-   public static final xs<vf, drl> b = xs.a(ib.b, $$0 -> $$0.e, drl::new);
-   private final ib e;
+public interface drl<T> {
+   int a(T var1);
 
-   public drl(ib $$0) {
-      this.e = $$0;
-   }
+   boolean a(Predicate<T> var1);
 
-   @Override
-   public Optional<ept> a(cxb $$0) {
-      return Optional.of(ept.b(this.e));
-   }
+   T a(int var1);
 
-   @Override
-   public dru<drl> a() {
-      return dru.a;
-   }
+   void a(vg var1);
 
-   public static class a implements dru<drl> {
-      @Override
-      public Codec<drl> a() {
-         return drl.a;
-      }
+   void b(vg var1);
 
-      @Override
-      public xs<vf, drl> b() {
-         return drl.b;
-      }
+   int a();
+
+   int b();
+
+   drl<T> c();
+
+   public interface a {
+      <A> drl<A> create(int var1, iq<A> var2, drm<A> var3, List<A> var4);
    }
 }

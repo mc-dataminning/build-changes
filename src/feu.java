@@ -1,218 +1,111 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class feu extends feq {
-   private final List<fex> c = new ArrayList<>();
-   private final List<feu.a> d = new ArrayList<>();
-   private final fey e = fey.i();
-   private int f = 0;
-   private int g = 0;
+public abstract class feu extends fdp {
+   protected final ajt a;
+   protected final int b;
+   protected final int c;
 
-   public feu() {
-      this(0, 0);
+   feu(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   public feu(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   public static feu.a a(wg $$0, fdp.c $$1, boolean $$2) {
+      return new feu.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+   public static class a {
+      private final wg b;
+      private final fdp.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private ajt g;
+      private int h;
+      private int i;
+      @Nullable
+      fdp.b a;
 
-      for (feu.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
-
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (feu.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (feu.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.B() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.C() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2, fey $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2, Consumer<fey> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fey $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new feu.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends fex> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fey> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public feu a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public feu b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public feu c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<fex> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public fey b() {
-      return this.e.g();
-   }
-
-   public fey c() {
-      return this.e;
-   }
-
-   public feu.b d(int $$0) {
-      return new feu.b($$0);
-   }
-
-   static class a extends feq.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(fex $$0, int $$1, int $$2, int $$3, int $$4, fey $$5) {
-         super($$0, $$5.h());
+      public a(wg $$0, fdp.c $$1, boolean $$2) {
+         this.b = $$0;
          this.c = $$1;
          this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
       }
 
-      public int c() {
-         return this.c + this.e - 1;
+      public feu.a a(int $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(int $$1) {
-         this.b = $$1;
+      public feu.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
       }
 
-      public <T extends fex> T a(T $$0) {
-         return this.a($$0, 1);
+      public feu.a a(ajt $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
       }
 
-      public <T extends fex> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends fex> T a(T $$0, fey $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends fex> T a(T $$0, int $$1, fey $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = aww.d(this.c, this.b);
-         }
-
-         this.c += $$1;
-         return feu.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      public feu.a a(fdp.b $$0) {
+         this.a = $$0;
+         return this;
       }
 
       public feu a() {
-         return feu.this;
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (feu)(this.d
+               ? new feu.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new feu.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
+      }
+   }
+
+   public static class b extends feu {
+      protected b(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
 
-      public fey b() {
-         return feu.this.b();
+      @Override
+      public void b(fdc $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() / 2 - this.b / 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
       }
 
-      public fey c() {
-         return feu.this.c();
+      @Override
+      public void a(fdc $$0, fda $$1, int $$2) {
+      }
+   }
+
+   public static class c extends feu {
+      protected c(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fdc $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() - this.b - 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fdc $$0, fda $$1, int $$2) {
+         int $$3 = this.C() + 2;
+         int $$4 = this.C() + this.x() - this.b - 4;
+         int $$5 = this.C() + this.x() / 2;
+         a($$0, $$1, this.y(), $$5, $$3, this.D(), $$4, this.D() + this.v(), $$2);
       }
    }
 }

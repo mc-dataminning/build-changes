@@ -1,94 +1,57 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bxl extends bwm {
-   private final bpr a;
-   private final cge b;
-   @Nullable
-   private bpp c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
+public abstract class bxl {
+   private final EnumSet<bxl.a> a = EnumSet.noneOf(bxl.a.class);
 
-   public bxl(cge $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
+   public abstract boolean a();
 
-   public bxl(cge $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof bpp)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-      } else {
-         this.b = $$0;
-         this.a = (bpr)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(bwm.a.a, bwm.a.b));
-      }
-   }
-
-   @Override
-   public boolean a() {
-      bpp $$0 = this.a.p();
-      if ($$0 != null && $$0.bA()) {
-         this.c = $$0;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
    public boolean b() {
-      return this.a() || this.c.bA() && !this.a.K().l();
+      return this.a();
    }
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean R_() {
+   public boolean Q_() {
       return true;
    }
 
-   @Override
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
    public void e() {
-      double $$0 = this.a.i(this.c.dr(), this.c.dt(), this.c.dx());
-      boolean $$1 = this.a.M().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
+   }
 
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.K().n();
-      } else {
-         this.a.K().a(this.c, this.e);
-      }
+   public void a(EnumSet<bxl.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
 
-      this.a.G().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
-         }
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
 
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = aww.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = aww.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = aww.a(aww.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
-      }
+   public EnumSet<bxl.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return axk.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

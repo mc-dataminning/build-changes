@@ -1,34 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public abstract class gpe extends fhh {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 3368635;
-   protected static final int r = 7107012;
-   protected static final int t = 8226750;
-   protected static final int u = 8;
-   private final List<gpc> a = Lists.newArrayList();
+public class gpe<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public gpe(vu $$0) {
-      super($$0);
+   public gpe(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
-   }
+   protected T computeNext() {
+      boolean $$0 = !this.a.hasNext();
+      boolean $$1 = !this.b.hasNext();
+      if ($$0 && $$1) {
+         return (T)this.endOfData();
+      } else if ($$0) {
+         return (T)this.b.next();
+      } else if ($$1) {
+         return (T)this.a.next();
+      } else {
+         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$2 == 0) {
+            this.b.next();
+         }
 
-   protected gpc a(gpc $$0) {
-      this.a.add($$0);
-      return this.a($$0);
-   }
-
-   public vu o() {
-      return vt.a(this.a.stream().map(gpc::a).collect(Collectors.toList()));
+         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+      }
    }
 }

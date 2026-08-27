@@ -1,24 +1,60 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eqk extends eqm {
-   private final eqm b;
-   private final ih.a c;
-   private static final DoubleList d = new epz(1);
+public record eqk(Optional<Long> b, ena c) implements eqc {
+   public static final Codec<eqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aws.a(Codec.LONG, "period").forGetter(eqk::c), ena.a.fieldOf("value").forGetter(eqk::d)).apply($$0, eqk::new)
+   );
 
-   public eqk(eqm $$0, ih.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private static eqc a(eqc $$0, ih.a $$1, int $$2) {
-      return new eql(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   @Override
+   public eqd b() {
+      return eqe.r;
    }
 
    @Override
-   protected DoubleList a(ih.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public Set<epl<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(enb $$0) {
+      aps $$1 = $$0.d();
+      long $$2 = $$1.Z();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static eqk.a a(ena $$0) {
+      return new eqk.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ena d() {
+      return this.c;
+   }
+
+   public static class a implements eqc.a {
+      private Optional<Long> a = Optional.empty();
+      private final ena b;
+
+      public a(ena $$0) {
+         this.b = $$0;
+      }
+
+      public eqk.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eqk a() {
+         return new eqk(this.a, this.b);
+      }
    }
 }

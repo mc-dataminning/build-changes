@@ -1,29 +1,25 @@
-import java.util.function.Function;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class erp<T> implements erg<T> {
-   private final Function<ib, ern<T>> a;
+public class erp extends Exception {
+   private final Path a;
+   private final List<err> b;
 
-   public erp(Function<ib, ern<T>> $$0) {
+   public erp(Path $$0, List<err> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean a(ib $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public String getMessage() {
+      return a(this.a, this.b);
    }
 
-   @Override
-   public void a(erk<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(ib $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public static String a(Path $$0, List<err> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

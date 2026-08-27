@@ -1,24 +1,111 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class ps {
-   public static final ajg<een> a = a("empty");
-
-   public static ajg<een> a(String $$0) {
-      return ajg.a(kj.aH, new ajh($$0));
-   }
-
-   public static void a(pl<een> $$0, String $$1, een $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(pl<een> $$0) {
-      im<een> $$1 = $$0.a(kj.aH);
-      il<een> $$2 = $$1.b(a);
-      $$0.a(a, new een($$2, ImmutableList.of(), een.a.b));
-      ph.a($$0);
-      pq.a($$0);
-      qh.a($$0);
-      pc.a($$0);
-      qb.a($$0);
+   public static void a(px<egq> $$0) {
+      im<ejf> $$1 = $$0.a(ks.aG);
+      il<ejf> $$2 = $$1.b(qf.t);
+      im<egq> $$3 = $$0.a(ks.aI);
+      il<egq> $$4 = $$3.b(qe.a);
+      qe.a(
+         $$0,
+         "bastion/units/center_pieces",
+         new egq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(ego.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(ego.b("bastion/units/center_pieces/center_2", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/units/pathways",
+         new egq(
+            $$4,
+            ImmutableList.of(Pair.of(ego.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(ego.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/units/walls/wall_bases",
+         new egq(
+            $$4,
+            ImmutableList.of(Pair.of(ego.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(ego.b("bastion/units/walls/connected_wall", $$2), 1)),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new egq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_0_3", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/units/stages/stage_1",
+         new egq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_1_3", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "bastion/units/stages/rot/stage_1", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "bastion/units/stages/stage_2",
+         new egq(
+            $$4, ImmutableList.of(Pair.of(ego.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(ego.b("bastion/units/stages/stage_2_1", $$2), 1)), egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new egq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(ego.b("bastion/units/stages/stage_3_3", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "bastion/units/fillers/stage_0", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/fillers/stage_0", $$2), 1)), egq.a.b));
+      qe.a($$0, "bastion/units/edges", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/edges/edge_0", $$2), 1)), egq.a.b));
+      qe.a($$0, "bastion/units/wall_units", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/wall_units/unit_0", $$2), 1)), egq.a.b));
+      qe.a($$0, "bastion/units/edge_wall_units", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/wall_units/edge_0_large", $$2), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "bastion/units/ramparts",
+         new egq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(ego.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(ego.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "bastion/units/large_ramparts", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/ramparts/ramparts_0", $$2), 1)), egq.a.b));
+      qe.a($$0, "bastion/units/rampart_plates", new egq($$4, ImmutableList.of(Pair.of(ego.b("bastion/units/rampart_plates/plate_0", $$2), 1)), egq.a.b));
    }
 }

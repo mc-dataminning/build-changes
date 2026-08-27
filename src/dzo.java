@@ -1,48 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzo extends dzi {
-   public static final Codec<dzo> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmi.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dzo::new)
-   );
-   private final bmi b;
+public class dzo extends dxv<eag> {
+   private static final ih[] a = ih.values();
 
-   public dzo(bmi $$0, bmi $$1, bmi $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dzo(Codec<eag> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dzj<?> a() {
-      return dzj.b;
-   }
-
-   @Override
-   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+   public boolean a(dxx<eag> $$0) {
+      czs $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axr $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         doz $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dca.dV) && !$$4.a(dca.kK)) {
+            return false;
          } else {
-            $$10++;
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
          }
       }
    }
 
-   @Override
-   public int a(axd $$0, int $$1, dys $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
+   private void a(cyy $$0, axr $$1, ib $$2) {
+      $$0.a($$2, dca.kK.n(), 2);
+      ib.a $$3 = new ib.a();
+      ib.a $$4 = new ib.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (ih $$7 : a) {
+               doz $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dca.dV) || $$8.a(dca.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dca.kK.n(), 2);
+            }
+         }
+      }
    }
 
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   private void b(cyy $$0, axr $$1, ib $$2) {
+      ib.a $$3 = new ib.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            doz $$5 = $$0.a_($$3.c());
+            if ($$5.a(dca.dV) || $$5.a(dca.kK)) {
+               int $$6 = axk.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(cyy $$0, axr $$1, ib.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dca.oz.n().a(dfn.e, Integer.valueOf(axk.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dca.oA.n(), 2);
+         }
+
+         $$2.c(ih.a);
+      }
    }
 }

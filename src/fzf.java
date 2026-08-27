@@ -1,9 +1,8 @@
-import java.util.function.Predicate;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface fzf {
-   fzf b = $$0 -> $$0x -> true;
-   fzf c = $$0 -> $$0x -> false;
-
-   Predicate<dnb> getPredicate(dnc<dac, dnb> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzf {
 }

@@ -1,44 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dwv extends dvs<dye> {
-   private static final int a = 7;
-
-   dwv(Codec<dye> $$0) {
+public class dwv extends dwt {
+   public dwv(Codec<dws> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(ekt.e, ekt.c);
    }
 
    @Override
-   public boolean a(dvu<dye> $$0) {
-      cxw $$1 = $$0.b();
-      axd $$2 = $$0.d();
-      dye $$3 = $$0.f();
-      ib $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      ib.a $$6 = new ib.a();
+   protected int a() {
+      return 10;
+   }
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dnb $$8 = $$1.a_($$6);
+   @Override
+   protected float a(axr $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-         for (dye.a $$9 : $$3.b) {
-            if (dwn.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(dwr $$0, dws $$1, dqv $$2, Function<ib, il<czw>> $$3, dqu $$4, ib.a $$5, ib.a $$6, dud $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         doz $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
+
+         $$2.a($$5, $$9, false);
+         return true;
+      } else {
+         return false;
       }
-
-      return true;
-   }
-
-   private void a(ib.a $$0, axd $$1, ib $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(axd $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

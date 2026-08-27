@@ -12,7 +12,7 @@ public class gs<T> implements AutoCloseable {
    private static final Logger b = LogUtils.getLogger();
    private final int c;
    private final int d;
-   private final bjr e;
+   private final bko e;
    @Nullable
    private gv f;
    private int g;
@@ -21,7 +21,7 @@ public class gs<T> implements AutoCloseable {
    private final List<go<T>> j = new ObjectArrayList();
    private int k;
 
-   public gs(int $$0, int $$1, bjr $$2) {
+   public gs(int $$0, int $$1, bko $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -115,7 +115,7 @@ public class gs<T> implements AutoCloseable {
       return this.f;
    }
 
-   public bjr c() {
+   public bko c() {
       return this.e;
    }
 

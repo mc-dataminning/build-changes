@@ -1,57 +1,83 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
+public abstract class fgx implements fhd {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fgx extends fhj {
-   @Nullable
-   private final ezl<Unit> l;
-
-   public static fgx a(ezi $$0, fhh $$1, ezm $$2) {
-      List<ezl<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.R());
-      $$3.add($$2.S());
-      ezl<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bna $$1x = $$0x.aj();
-            return new ezl<>(
-               "options.difficulty.online",
-               ezl.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ezl.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fgx($$1, $$2, $$3.toArray(new ezl[0]), $$4);
-   }
-
-   private fgx(fhh $$0, ezm $$1, ezl<?>[] $$2, @Nullable ezl<Unit> $$3) {
-      super($$0, $$1, vu.c("options.online.title"), $$2);
-      this.l = $$3;
+   public fgx(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      if (this.l != null) {
-         fbg $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.C() + ($$0 - this.C());
+         $$1.m($$2);
+      });
+      this.c = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.n($$2);
+      });
+      this.d = $$0;
+   }
+
+   @Override
+   public int C() {
+      return this.c;
+   }
+
+   @Override
+   public int D() {
+      return this.d;
+   }
+
+   @Override
+   public int x() {
+      return this.a;
+   }
+
+   @Override
+   public int v() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fhe a;
+      public final fhf.a b;
+
+      protected a(fhe $$0, fhf $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
 
-      fbg $$1 = this.k.b(this.b.ag());
-      if ($$1 != null) {
-         $$1.j = this.f.D();
+      public int a() {
+         return this.a.v() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.x() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.x() - this.b.c);
+         int $$4 = (int)axk.i(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.v() - this.b.d);
+         int $$4 = Math.round(axk.i(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
       }
    }
 }

@@ -5,16 +5,16 @@ import java.util.Optional;
 public record bp(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
    public static final Codec<bp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awe.a(Codec.BOOL, "is_on_fire").forGetter(bp::a),
-               awe.a(Codec.BOOL, "is_sneaking").forGetter(bp::b),
-               awe.a(Codec.BOOL, "is_sprinting").forGetter(bp::c),
-               awe.a(Codec.BOOL, "is_swimming").forGetter(bp::d),
-               awe.a(Codec.BOOL, "is_baby").forGetter(bp::e)
+               aws.a(Codec.BOOL, "is_on_fire").forGetter(bp::a),
+               aws.a(Codec.BOOL, "is_sneaking").forGetter(bp::b),
+               aws.a(Codec.BOOL, "is_sprinting").forGetter(bp::c),
+               aws.a(Codec.BOOL, "is_swimming").forGetter(bp::d),
+               aws.a(Codec.BOOL, "is_baby").forGetter(bp::e)
             )
             .apply($$0, bp::new)
    );
 
-   public boolean a(box $$0) {
+   public boolean a(bpv $$0) {
       if (this.b.isPresent() && $$0.bN() != this.b.get()) {
          return false;
       } else if (this.c.isPresent() && $$0.bX() != this.c.get()) {
@@ -24,7 +24,7 @@ public record bp(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, 
       } else if (this.e.isPresent() && $$0.bZ() != this.e.get()) {
          return false;
       } else {
-         if (this.f.isPresent() && $$0 instanceof bpp $$1 && $$1.o_() != this.f.get()) {
+         if (this.f.isPresent() && $$0 instanceof bqo $$1 && $$1.p_() != this.f.get()) {
             return false;
          }
 

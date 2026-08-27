@@ -1,177 +1,79 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class dgj extends dac {
-   public static final MapCodec<dgj> a = b(dgj::new);
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final dob d = dnr.aZ;
-   private static final ImmutableList<jg> e = ImmutableList.of(
-      new jg(0, 0, -1), new jg(-1, 0, 0), new jg(0, 0, 1), new jg(1, 0, 0), new jg(-1, 0, -1), new jg(1, 0, -1), new jg(-1, 0, 1), new jg(1, 0, 1)
-   );
-   private static final ImmutableList<jg> f = new Builder()
-      .addAll(e)
-      .addAll(e.stream().map(jg::o).iterator())
-      .addAll(e.stream().map(jg::p).iterator())
-      .add(new jg(0, 1, 0))
-      .build();
-
-   @Override
-   public MapCodec<dgj> a() {
-      return a;
-   }
-
-   public dgj(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
-      if (a($$0) && m($$1)) {
-         a($$4, $$2, $$3, $$1);
-         $$0.a(1, $$4);
-         return bnf.a($$2.B);
-      } else {
-         return $$5 == bnc.a && a($$4.b(bnc.b)) && m($$1) ? bnf.e : bnf.d;
-      }
-   }
-
-   @Override
-   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
-      if ($$0.c(d) == 0) {
-         return bnd.d;
-      } else if (!a($$1)) {
-         if (!$$1.B) {
-            this.d($$0, $$1, $$2);
-         }
-
-         return bnd.a($$1.B);
-      } else {
-         if (!$$1.B) {
-            apg $$5 = (apg)$$3;
-            if ($$5.T() != $$1.ad() || !$$2.equals($$5.R())) {
-               $$5.a($$1.ad(), $$2, 0.0F, false, true);
-               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aty.va, atz.e, 1.0F, 1.0F);
-               return bnd.a;
-            }
-         }
-
-         return bnd.b;
-      }
-   }
-
-   private static boolean a(cqm $$0) {
-      return $$0.a(cqp.ft);
-   }
-
-   private static boolean m(dnb $$0) {
-      return $$0.c(d) < 4;
-   }
-
-   private static boolean a(ib $$0, cxb $$1) {
-      eip $$2 = $$1.b_($$0);
-      if (!$$2.a(aus.a)) {
-         return false;
-      } else if ($$2.b()) {
-         return true;
-      } else {
-         float $$3 = (float)$$2.e();
-         if ($$3 < 2.0F) {
-            return false;
-         } else {
-            eip $$4 = $$1.b_($$0.d());
-            return !$$4.a(aus.a);
-         }
-      }
-   }
-
-   private void d(dnb $$0, cxb $$1, final ib $$2) {
-      $$1.a($$2, false);
-      boolean $$3 = ih.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
-      final boolean $$4 = $$3 || $$1.b_($$2.c()).a(aus.a);
-      cwu $$5 = new cwu() {
-         @Override
-         public Optional<Float> a(cwt $$0, cwh $$1, ib $$2x, dnb $$3, eip $$4x) {
-            return $$2.equals($$2) && $$4 ? Optional.of(dae.G.e()) : super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      };
-      ept $$6 = $$2.b();
-      $$1.a(null, $$1.ah().a($$6), $$5, $$6, 5.0F, true, cxb.a.b);
-   }
-
-   public static boolean a(cxb $$0) {
-      return $$0.D_().m();
-   }
-
-   public static void a(@Nullable box $$0, cxb $$1, ib $$2, dnb $$3) {
-      dnb $$4 = $$3.a(d, Integer.valueOf($$3.c(d) + 1));
-      $$1.a($$2, $$4, 3);
-      $$1.a(drp.c, $$2, drp.a.a($$0, $$4));
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aty.uY, atz.e, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
-      if ($$0.c(d) != 0) {
-         if ($$3.a(100) == 0) {
-            $$1.a($$2, aty.uX, atz.e, 1.0F, 1.0F, false);
-         }
-
-         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
-         double $$5 = (double)$$2.v() + 1.0;
-         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
-         double $$7 = (double)$$3.i() * 0.04;
-         $$1.a(kc.aF, $$4, $$5, $$6, 0.0, $$7, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   protected boolean d_(dnb $$0) {
-      return true;
-   }
-
-   public static int a(dnb $$0, int $$1) {
-      return aww.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
-   }
-
-   @Override
-   protected int a(dnb $$0, cxb $$1, ib $$2) {
-      return a($$0, 15);
-   }
-
-   public static Optional<ept> a(bpd<?> $$0, cwl $$1, ib $$2) {
-      Optional<ept> $$3 = a($$0, $$1, $$2, true);
-      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
-   }
-
-   private static Optional<ept> a(bpd<?> $$0, cwl $$1, ib $$2, boolean $$3) {
-      ib.a $$4 = new ib.a();
-      UnmodifiableIterator var5 = f.iterator();
-
-      while (var5.hasNext()) {
-         jg $$5 = (jg)var5.next();
-         $$4.g($$2).h($$5);
-         ept $$6 = cku.a($$0, $$1, $$4, $$3);
-         if ($$6 != null) {
-            return Optional.of($$6);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      return false;
-   }
+public class dgj {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1003;
+   public static final int e = 1004;
+   public static final int f = 1009;
+   public static final int g = 1010;
+   public static final int h = 1011;
+   public static final int i = 1015;
+   public static final int j = 1016;
+   public static final int k = 1017;
+   public static final int l = 1018;
+   public static final int m = 1019;
+   public static final int n = 1020;
+   public static final int o = 1021;
+   public static final int p = 1022;
+   public static final int q = 1023;
+   public static final int r = 1024;
+   public static final int s = 1025;
+   public static final int t = 1026;
+   public static final int u = 1027;
+   public static final int v = 1028;
+   public static final int w = 1029;
+   public static final int x = 1030;
+   public static final int y = 1031;
+   public static final int z = 1032;
+   public static final int A = 1033;
+   public static final int B = 1034;
+   public static final int C = 1035;
+   public static final int D = 1038;
+   public static final int E = 1039;
+   public static final int F = 1040;
+   public static final int G = 1041;
+   public static final int H = 1042;
+   public static final int I = 1043;
+   public static final int J = 1044;
+   public static final int K = 1045;
+   public static final int L = 1046;
+   public static final int M = 1047;
+   public static final int N = 1048;
+   public static final int O = 1049;
+   public static final int P = 1050;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 3000;
+   public static final int aj = 3001;
+   public static final int ak = 3002;
+   public static final int al = 3003;
+   public static final int am = 3004;
+   public static final int an = 3005;
+   public static final int ao = 3006;
+   public static final int ap = 3007;
+   public static final int aq = 3008;
+   public static final int ar = 3009;
+   public static final int as = 3011;
+   public static final int at = 3012;
+   public static final int au = 3013;
+   public static final int av = 3014;
+   public static final int aw = 3015;
+   public static final int ax = 3016;
+   public static final int ay = 3017;
 }

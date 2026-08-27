@@ -1,34 +1,16 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bsm extends brh<cih> {
-   private final float c;
+public class bsm extends bsg<bqo> {
+   private final bzr<Integer> c;
 
-   public bsm(float $$0) {
-      super(ImmutableMap.of(bys.m, byt.c, bys.n, byt.c), Integer.MAX_VALUE);
+   public bsm(bzr<Integer> $$0) {
+      super(ImmutableMap.of($$0, bzs.a));
       this.c = $$0;
    }
 
-   protected boolean a(apf $$0, cih $$1) {
-      ciu $$2 = $$1.gn();
-      return $$1.bA() && $$2 != null && !$$1.bc() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bZ != null;
-   }
-
-   protected boolean a(apf $$0, cih $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(apf $$0, cih $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(apf $$0, cih $$1, long $$2) {
-      bqq<?> $$3 = $$1.dP();
-      $$3.b(bys.m);
-      $$3.b(bys.n);
-   }
-
-   protected void d(apf $$0, cih $$1, long $$2) {
-      this.a($$1);
+   private Optional<Integer> b(bqo $$0) {
+      return $$0.dP().c(this.c);
    }
 
    @Override
@@ -36,9 +18,20 @@ public class bsm extends brh<cih> {
       return false;
    }
 
-   private void a(cih $$0) {
-      bqq<?> $$1 = $$0.dP();
-      $$1.a(bys.m, new byv(new brs($$0.gn(), false), this.c, 2));
-      $$1.a(bys.n, new brs($$0.gn(), true));
+   @Override
+   protected boolean a(aps $$0, bqo $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(aps $$0, bqo $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dP().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(aps $$0, bqo $$1, long $$2) {
+      $$1.dP().b(this.c);
    }
 }

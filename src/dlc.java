@@ -1,109 +1,96 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class dlc extends dki implements bni {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final axd k = axd.a();
-   private vu l;
+public interface dlc extends dcz<dlc.a> {
+   Supplier<BiMap<dby, dby>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dca.qW, dca.qX)
+            .put(dca.qX, dca.qY)
+            .put(dca.qY, dca.qZ)
+            .put(dca.rf, dca.re)
+            .put(dca.re, dca.rd)
+            .put(dca.rd, dca.rc)
+            .put(dca.rj, dca.ri)
+            .put(dca.ri, dca.rh)
+            .put(dca.rh, dca.rg)
+            .put(dca.rv, dca.ru)
+            .put(dca.ru, dca.rt)
+            .put(dca.rt, dca.rs)
+            .put(dca.rr, dca.rq)
+            .put(dca.rq, dca.rp)
+            .put(dca.rp, dca.ro)
+            .put(dca.rM, dca.rN)
+            .put(dca.rN, dca.rP)
+            .put(dca.rP, dca.rO)
+            .put(dca.rU, dca.rV)
+            .put(dca.rV, dca.rX)
+            .put(dca.rX, dca.rW)
+            .put(dca.sc, dca.sd)
+            .put(dca.sd, dca.se)
+            .put(dca.se, dca.sf)
+            .put(dca.sk, dca.sl)
+            .put(dca.sl, dca.sm)
+            .put(dca.sm, dca.sn)
+            .build()
+   );
+   Supplier<BiMap<dby, dby>> u_ = Suppliers.memoize(() -> t_.get().inverse());
 
-   public dlc(ib $$0, dnb $$1) {
-      super(dkk.m, $$0, $$1);
+   static Optional<dby> a(dby $$0) {
+      return Optional.ofNullable((dby)u_.get().get($$0));
+   }
+
+   static dby b(dby $$0) {
+      dby $$1 = $$0;
+
+      for (dby $$2 = (dby)u_.get().get($$0); $$2 != null; $$2 = (dby)u_.get().get($$2)) {
+         $$1 = $$2;
+      }
+
+      return $$1;
+   }
+
+   static Optional<doz> b(doz $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<dby> c(dby $$0) {
+      return Optional.ofNullable((dby)t_.get().get($$0));
+   }
+
+   static doz c(doz $$0) {
+      return b($$0.b()).l($$0);
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      if (this.ae()) {
-         $$0.a("CustomName", vu.a.a(this.l));
-      }
+   default Optional<doz> j_(doz $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
    }
 
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = vu.a.a($$0.l("CustomName"));
-      }
+   default float av_() {
+      return this.c() == dlc.a.a ? 0.75F : 1.0F;
    }
 
-   public static void a(cxb $$0, ib $$1, dnb $$2, dlc $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      ciu $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dr() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dx() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)aww.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
+   public static enum a implements aye {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
 
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
-         }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
+      public static final Codec<dlc.a> e = aye.a(dlc.a::values);
+      private final String f;
+
+      private a(String $$0) {
+         this.f = $$0;
       }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
+      @Override
+      public String c() {
+         return this.f;
       }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = aww.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = aww.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
-   }
-
-   @Override
-   public vu ad() {
-      return (vu)(this.l != null ? this.l : vu.c("container.enchant"));
-   }
-
-   public void a(@Nullable vu $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public vu af() {
-      return this.l;
    }
 }

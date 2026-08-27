@@ -1,48 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eac extends eaa {
-   public static final Codec<eac> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dnb.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dnb.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dnb.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+public class eac implements dzz {
+   public static final Codec<eac> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bnf.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               bnd.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               bnd.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               bnd.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               bnd.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, eac::new)
    );
-   private final float g;
-   private final float h;
-   private final dnb i;
-   private final List<dnb> j;
-   private final List<dnb> k;
+   public final int b;
+   public final bnf c;
+   public final bnd d;
+   public final float e;
+   public final bnd f;
+   public final bnd g;
+   public final bnd h;
+   public final int i;
+   public final float j;
 
-   public eac(long $$0, ehs.a $$1, float $$2, float $$3, float $$4, dnb $$5, List<dnb> $$6, List<dnb> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-   }
-
-   @Override
-   protected dzy<?> a() {
-      return dzy.c;
-   }
-
-   @Override
-   public dnb a(axd $$0, ib $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   public eac(int $$0, bnf $$1, bnd $$2, float $$3, bnd $$4, bnd $$5, bnd $$6, int $$7, float $$8) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 }

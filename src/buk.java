@@ -1,33 +1,48 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class buk {
-   private static final int a = 16;
-
-   public static bri<bpp> a(Predicate<il<cav>> $$0, bys<ik> $$1) {
-      return buu.a((Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               ik $$6 = $$2.b($$2x);
-               ib $$7 = $$6.b();
-               if ($$3.ad() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
-                  apf $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     aew.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bsh<bqw> a(bzr<ib> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, esa::c);
    }
 
-   private static boolean a(apf $$0, ib $$1, bpp $$2) {
-      dnb $$3 = $$0.a_($$1);
-      return $$3.a(aun.R) && $$3.c(czv.c) && !$$2.fI();
+   public static btr<bqw> b(bzr<? extends bpv> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bpv::dk);
+   }
+
+   private static <T> btr<bqw> a(bzr<T> $$0, float $$1, int $$2, boolean $$3, Function<T, esa> $$4) {
+      return bvt.a(
+         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$5 -> $$5.group($$5.a(bzr.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<bzu> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     esa $$11 = $$8.dk();
+                     esa $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((iv)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           esa $$13 = $$10.get().a().a().d($$11);
+                           esa $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           esa $$16 = cbl.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new bzu($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
+      );
    }
 }

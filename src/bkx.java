@@ -1,21 +1,4 @@
-public enum bkx {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
-
-   private final String j;
-
-   private bkx(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
-   }
+@FunctionalInterface
+public interface bkx {
+   void finish();
 }

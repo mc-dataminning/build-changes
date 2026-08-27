@@ -1,28 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dze extends dzd {
-   public static final Codec<dze> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dze::new));
-
-   public dze(bmi $$0, bmi $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class dze extends dxv<eag> {
+   public dze(Codec<eag> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dzj<?> a() {
-      return dzj.e;
-   }
+   public boolean a(dxx<eag> $$0) {
+      czs $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      ib.a $$3 = new ib.a();
+      ib.a $$4 = new ib.a();
 
-   @Override
-   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dur.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(ih.a, 1);
+            czw $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dca.dO.n(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dca.dN.n(), 2);
+               doz $$11 = $$1.a_($$4);
+               if ($$11.b(djh.c)) {
+                  $$1.a($$4, $$11.a(djh.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
       }
-   }
 
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+      return true;
    }
 }

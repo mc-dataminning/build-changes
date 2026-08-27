@@ -1,87 +1,67 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import java.util.Comparator;
 import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class gnm {
-   private final Set<gnm.a> a = Sets.newIdentityHashSet();
-   final erw b;
-   final Executor c;
+   public static final Comparator<gnm> a = Comparator.<gnm, ajt>comparing(gnm::a).thenComparing(gnm::b);
+   private final ajt b;
+   private final ajt c;
+   @Nullable
+   private gah d;
 
-   public gnm(erw $$0, Executor $$1) {
+   public gnm(ajt $$0, ajt $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public CompletableFuture<gnm.a> a(erw.c $$0) {
-      CompletableFuture<gnm.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         erv $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gnm.a $$3 = new gnm.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   public ajt a() {
+      return this.b;
    }
 
-   public void a(Consumer<Stream<erv>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   public ajt b() {
+      return this.c;
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gnm.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gnm.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   public glj c() {
+      return fbp.Q().a(this.a()).apply(this.b());
    }
 
-   public void b() {
-      this.a.forEach(gnm.a::b);
-      this.a.clear();
+   public gah a(Function<ajt, gah> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
    }
 
-   public class a {
-      @Nullable
-      erv b;
-      private boolean c;
+   public ewm a(fzz $$0, Function<ajt, gah> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
 
-      public boolean a() {
-         return this.c;
-      }
+   public ewm a(fzz $$0, Function<ajt, gah> $$1, boolean $$2) {
+      return this.c().a(ggg.c($$0, this.a($$1), true, $$2));
+   }
 
-      public a(erv $$1) {
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gnm $$1 = (gnm)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
       }
+   }
 
-      public void a(Consumer<erv> $$0) {
-         gnm.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
 
-      public void b() {
-         this.c = true;
-         gnm.this.b.a(this.b);
-         this.b = null;
-      }
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

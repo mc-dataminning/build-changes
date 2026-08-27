@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gkr {
+@Deprecated
+public interface gkr {
+   float call(crj var1, @Nullable fuh var2, @Nullable bqo var3, int var4);
 }

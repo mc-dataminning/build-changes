@@ -1,42 +1,25 @@
-public record aov(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-   public cwi a() {
-      return new cwi(je.a(this.a), je.a(this.b));
+public class aov extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
+
+   public aov(MinecraftServer $$0) {
+      this.a = $$0;
+      $$0.b(this::a);
    }
 
-   public long b() {
-      return a(this.a, this.b);
-   }
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
+         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
+            $$0.add(this.a.ah().t().get($$1).fY().getName());
+         }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return cwi.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+         this.setListData($$0);
+      }
    }
 }

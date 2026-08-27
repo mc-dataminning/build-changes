@@ -1,11 +1,66 @@
-public interface axc {
-   void a(vu var1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-   void b(vu var1);
+public record axc<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<axc<Integer>> a = a(Codec.INT);
 
-   void c(vu var1);
+   public axc(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
+      }
+   }
 
-   void a(int var1);
+   public axc(T $$0) {
+      this($$0, $$0);
+   }
 
-   void a();
+   public static <T extends Comparable<T>> Codec<axc<T>> a(Codec<T> $$0) {
+      return aws.a($$0, "min_inclusive", "max_inclusive", axc::a, axc::a, axc::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<axc<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return aws.b(
+         a($$0),
+         (Function<axc<T>, DataResult<axc<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
+   }
+
+   public static <T extends Comparable<T>> DataResult<axc<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new axc($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(axc<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
+   }
 }

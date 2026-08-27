@@ -1,106 +1,213 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ekv {
-   private static final Codec<ekv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(eor.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), awe.a(eor.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, ekv::new)
-   );
-   public static final Codec<ekv> a = Codec.either(Codec.INT, b).xmap($$0 -> (ekv)$$0.map(ekv::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final eoq c;
-   @Nullable
-   private final eoq d;
-   private final ekv.b e;
-   private final ekv.a f;
+public abstract class ekv extends ekq {
+   public static final float e = 0.44444445F;
 
-   public Set<ene<?>> a() {
-      Builder<ene<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   @Override
+   public ekr d() {
+      return ekt.d;
    }
 
-   private ekv(Optional<eoq> $$0, Optional<eoq> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   @Override
+   public ekr e() {
+      return ekt.e;
    }
 
-   private ekv(@Nullable eoq $$0, @Nullable eoq $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   @Override
+   public cre a() {
+      return crm.qz;
+   }
+
+   @Override
+   public void a(cyx $$0, ib $$1, eks $$2, axr $$3) {
+      ib $$4 = $$1.c();
+      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(kl.W, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, aum.nC, aun.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> aww.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), aum.nA, aun.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
    }
 
-   public static ekv a(int $$0) {
-      eoo $$1 = eoo.a((float)$$0);
-      return new ekv(Optional.of($$1), Optional.of($$1));
+   @Override
+   public void b(cyx $$0, ib $$1, eks $$2, axr $$3) {
+      if ($$0.aa().b(cyt.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            ib $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               doz $$7 = $$0.a_($$5);
+               if ($$7.i()) {
+                  if (this.a((cza)$$0, $$5)) {
+                     $$0.b($$5, dbl.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               ib $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
+                  $$0.b($$9.c(), dbl.a($$0, $$9));
+               }
+            }
+         }
+      }
    }
 
-   public static ekv a(int $$0, int $$1) {
-      return new ekv(Optional.of(eoo.a((float)$$0)), Optional.of(eoo.a((float)$$1)));
+   private boolean a(cza $$0, ib $$1) {
+      for (ih $$2 : ih.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public static ekv b(int $$0) {
-      return new ekv(Optional.of(eoo.a((float)$$0)), Optional.empty());
+   private boolean b(cza $$0, ib $$1) {
+      return $$1.v() >= $$0.I_() && $$1.v() < $$0.al() && !$$0.B($$1) ? false : $$0.a_($$1).j();
    }
 
-   public static ekv c(int $$0) {
-      return new ekv(Optional.empty(), Optional.of(eoo.a((float)$$0)));
+   @Nullable
+   @Override
+   public kj h() {
+      return kl.j;
    }
 
-   public int a(ekw $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   @Override
+   protected void a(cyy $$0, ib $$1, doz $$2) {
+      this.a($$0, $$1);
    }
 
-   public boolean b(ekw $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   @Override
+   public int b(cza $$0) {
+      return $$0.D_().i() ? 4 : 2;
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof eoo $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   @Override
+   public doz b(eks $$0) {
+      return dca.H.n().a(dgn.b, Integer.valueOf(e($$0)));
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(ekw var1, int var2);
+   @Override
+   public boolean a(ekr $$0) {
+      return $$0 == ekt.e || $$0 == ekt.d;
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(ekw var1, int var2);
+   @Override
+   public int c(cza $$0) {
+      return $$0.D_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(eks $$0, cyd $$1, ib $$2, ekr $$3, ih $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(avh.a);
+   }
+
+   @Override
+   public int a(cza $$0) {
+      return $$0.D_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(cyx $$0, ib $$1, eks $$2, eks $$3) {
+      int $$4 = this.a((cza)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cyd)$$0, $$1) > $$2.a((cyd)$$0, $$1) && $$0.E_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(cyy $$0, ib $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(cyx $$0) {
+      return $$0.aa().b(cyt.V);
+   }
+
+   @Override
+   protected void a(cyy $$0, ib $$1, doz $$2, ih $$3, eks $$4) {
+      if ($$3 == ih.a) {
+         eks $$5 = $$0.b_($$1);
+         if (this.a(avh.b) && $$5.a(avh.a)) {
+            if ($$2.b() instanceof dgn) {
+               $$0.a($$1, dca.b.n(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<aul> j() {
+      return Optional.of(aum.dl);
+   }
+
+   public static class a extends ekv {
+      @Override
+      protected void a(dpa.a<ekr, eks> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eks $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eks $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ekv {
+      @Override
+      public int d(eks $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eks $$0) {
+         return true;
+      }
    }
 }

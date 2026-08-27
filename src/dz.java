@@ -28,9 +28,9 @@ public interface dz {
 
    Collection<String> r();
 
-   Stream<ajh> s();
+   Stream<ajt> s();
 
-   Stream<ajh> t();
+   Stream<ajt> t();
 
    CompletableFuture<Suggestions> a(CommandContext<?> var1);
 
@@ -42,15 +42,15 @@ public interface dz {
       return Collections.singleton(dz.b.b);
    }
 
-   Set<ajg<cxb>> u();
+   Set<ajs<cyx>> u();
 
    iz v();
 
-   clh w();
+   cmg w();
 
    default void a(iy<?> $$0, dz.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {
-         a($$0.j().map(avd::b), $$2, "#");
+         a($$0.j().map(avr::b), $$2, "#");
       }
 
       if ($$1.b()) {
@@ -58,15 +58,15 @@ public interface dz {
       }
    }
 
-   CompletableFuture<Suggestions> a(ajg<? extends iy<?>> var1, dz.a var2, SuggestionsBuilder var3, CommandContext<?> var4);
+   CompletableFuture<Suggestions> a(ajs<? extends iy<?>> var1, dz.a var2, SuggestionsBuilder var3, CommandContext<?> var4);
 
    boolean c(int var1);
 
-   static <T> void a(Iterable<T> $$0, String $$1, Function<T, ajh> $$2, Consumer<T> $$3) {
+   static <T> void a(Iterable<T> $$0, String $$1, Function<T, ajt> $$2, Consumer<T> $$3) {
       boolean $$4 = $$1.indexOf(58) > -1;
 
       for (T $$5 : $$0) {
-         ajh $$6 = $$2.apply($$5);
+         ajt $$6 = $$2.apply($$5);
          if ($$4) {
             String $$7 = $$6.toString();
             if (a($$1, $$7)) {
@@ -78,7 +78,7 @@ public interface dz {
       }
    }
 
-   static <T> void a(Iterable<T> $$0, String $$1, String $$2, Function<T, ajh> $$3, Consumer<T> $$4) {
+   static <T> void a(Iterable<T> $$0, String $$1, String $$2, Function<T, ajt> $$3, Consumer<T> $$4) {
       if ($$1.isEmpty()) {
          $$0.forEach($$4);
       } else {
@@ -90,33 +90,33 @@ public interface dz {
       }
    }
 
-   static CompletableFuture<Suggestions> a(Iterable<ajh> $$0, SuggestionsBuilder $$1, String $$2) {
+   static CompletableFuture<Suggestions> a(Iterable<ajt> $$0, SuggestionsBuilder $$1, String $$2) {
       String $$3 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$3, $$2, $$0x -> $$0x, $$2x -> $$1.suggest($$2 + $$2x));
       return $$1.buildFuture();
    }
 
-   static CompletableFuture<Suggestions> a(Stream<ajh> $$0, SuggestionsBuilder $$1, String $$2) {
+   static CompletableFuture<Suggestions> a(Stream<ajt> $$0, SuggestionsBuilder $$1, String $$2) {
       return a($$0::iterator, $$1, $$2);
    }
 
-   static CompletableFuture<Suggestions> a(Iterable<ajh> $$0, SuggestionsBuilder $$1) {
+   static CompletableFuture<Suggestions> a(Iterable<ajt> $$0, SuggestionsBuilder $$1) {
       String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$2, $$0x -> $$0x, $$1x -> $$1.suggest($$1x.toString()));
       return $$1.buildFuture();
    }
 
-   static <T> CompletableFuture<Suggestions> a(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, ajh> $$2, Function<T, Message> $$3) {
+   static <T> CompletableFuture<Suggestions> a(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, ajt> $$2, Function<T, Message> $$3) {
       String $$4 = $$1.getRemaining().toLowerCase(Locale.ROOT);
       a($$0, $$4, $$2, $$3x -> $$1.suggest($$2.apply((T)$$3x).toString(), $$3.apply((T)$$3x)));
       return $$1.buildFuture();
    }
 
-   static CompletableFuture<Suggestions> a(Stream<ajh> $$0, SuggestionsBuilder $$1) {
+   static CompletableFuture<Suggestions> a(Stream<ajt> $$0, SuggestionsBuilder $$1) {
       return a($$0::iterator, $$1);
    }
 
-   static <T> CompletableFuture<Suggestions> a(Stream<T> $$0, SuggestionsBuilder $$1, Function<T, ajh> $$2, Function<T, Message> $$3) {
+   static <T> CompletableFuture<Suggestions> a(Stream<T> $$0, SuggestionsBuilder $$1, Function<T, ajt> $$2, Function<T, Message> $$3) {
       return a($$0::iterator, $$1, $$2, $$3);
    }
 
@@ -224,9 +224,16 @@ public interface dz {
 
    static boolean a(String $$0, String $$1) {
       for (int $$2 = 0; !$$1.startsWith($$0, $$2); $$2++) {
-         $$2 = $$1.indexOf(95, $$2);
-         if ($$2 < 0) {
+         int $$3 = $$1.indexOf(46, $$2);
+         int $$4 = $$1.indexOf(95, $$2);
+         if (Math.max($$3, $$4) < 0) {
             return false;
+         }
+
+         if ($$3 >= 0 && $$4 >= 0) {
+            $$2 = Math.min($$4, $$3);
+         } else {
+            $$2 = $$3 >= 0 ? $$3 : $$4;
          }
       }
 

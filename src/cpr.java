@@ -1,120 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public class cpr extends cqh {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final String b = "Fireworks";
-   public static final String c = "Explosion";
-   public static final String d = "Explosions";
-   public static final String e = "Flight";
-   public static final String f = "Type";
-   public static final String g = "Trail";
-   public static final String h = "Flicker";
-   public static final String i = "Colors";
-   public static final String j = "FadeColors";
-   public static final double k = 0.15;
-
-   public cpr(cqh.a $$0) {
+public class cpr extends cre {
+   public cpr(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnd a(csw $$0) {
-      cxb $$1 = $$0.q();
+   public crj a(crj $$0, cyx $$1, bqo $$2) {
+      crj $$3 = super.a($$0, $$1, $$2);
       if (!$$1.B) {
-         cqm $$2 = $$0.n();
-         ept $$3 = $$0.l();
-         ih $$4 = $$0.k();
-         cjh $$5 = new cjh($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.dr() + ($$2.ei().j() - 0.5) * 16.0;
+            double $$6 = axk.a($$2.dt() + (double)($$2.ei().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aps)$$1).k() - 1));
+            double $$7 = $$2.dx() + ($$2.ei().j() - 0.5) * 16.0;
+            if ($$2.bO()) {
+               $$2.ac();
+            }
 
-      return bnd.a($$1.B);
-   }
-
-   @Override
-   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
-      if ($$1.fB()) {
-         cqm $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cjh $$4 = new cjh($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(aui.c.b(this));
-         }
-
-         return bne.a($$1.b($$2), $$0.x_());
-      } else {
-         return bne.c($$1.b($$2));
-      }
-   }
-
-   @Override
-   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
-      ta $$4 = $$0.c("Fireworks");
-      if ($$4 != null) {
-         if ($$4.b("Flight", 99)) {
-            $$2.add(vu.c("item.minecraft.firework_rocket.flight").b(vt.v).f(String.valueOf($$4.f("Flight"))).a(n.h));
-         }
-
-         tg $$5 = $$4.c("Explosions", 10);
-         if (!$$5.isEmpty()) {
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               ta $$7 = $$5.a($$6);
-               List<vu> $$8 = Lists.newArrayList();
-               cps.a($$7, $$8);
-               if (!$$8.isEmpty()) {
-                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, vu.b("  ").b($$8.get($$9)).a(n.h));
-                  }
-
-                  $$2.addAll($$8);
+            esa $$8 = $$2.dk();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dts.R, $$8, dts.a.a($$2));
+               aun $$10;
+               aul $$9;
+               if ($$2 instanceof ccn) {
+                  $$9 = aum.jk;
+                  $$10 = aun.g;
+               } else {
+                  $$9 = aum.fh;
+                  $$10 = aun.h;
                }
+
+               $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), $$9, $$10);
+               $$2.n();
+               break;
             }
          }
-      }
-   }
 
-   public static void a(cqm $$0, byte $$1) {
-      $$0.b("Fireworks").a("Flight", $$1);
-   }
-
-   @Override
-   public cqm am_() {
-      cqm $$0 = new cqm(this);
-      a($$0, (byte)1);
-      return $$0;
-   }
-
-   public static enum a {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cpr.a> f = avn.a(cpr.a::a, values(), avn.a.a);
-      private final int g;
-      private final String h;
-
-      private a(int $$0, String $$1) {
-         this.g = $$0;
-         this.h = $$1;
+         if ($$2 instanceof cjt $$13) {
+            $$13.gu().a(this, 20);
+         }
       }
 
-      public int a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static cpr.a a(int $$0) {
-         return f.apply($$0);
-      }
+      return $$3;
    }
 }

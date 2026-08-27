@@ -1,49 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class epf<C> {
+public class epf extends eoo {
    private static final Logger b = LogUtils.getLogger();
-   public static final epf<MinecraftServer> a = new epf<MinecraftServer>().a(new epc.a()).a(new epd.a());
-   private final Map<ajh, epe.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, epe.a<C, ?>> d = Maps.newHashMap();
+   public static final Codec<epf> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and($$0.group(aws.a(wi.a, "name").forGetter($$0x -> $$0x.c), aws.a(enb.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, epf::new)
+   );
+   private final Optional<wg> c;
+   private final Optional<enb.b> d;
 
-   public epf<C> a(epe.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   private epf(List<eqc> $$0, Optional<wg> $$1, Optional<enb.b> $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private <T extends epe<C>> epe.a<C, T> a(Class<?> $$0) {
-      return (epe.a<C, T>)this.d.get($$0);
+   @Override
+   public eoq b() {
+      return eor.m;
    }
 
-   public <T extends epe<C>> ta a(T $$0) {
-      epe.a<C, T> $$1 = this.a($$0.getClass());
-      ta $$2 = new ta();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public Set<epl<?>> a() {
+      return this.d.<Set<epl<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
    }
 
-   @Nullable
-   public epe<C> a(ta $$0) {
-      ajh $$1 = ajh.a($$0.l("Type"));
-      epe.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
+   public static UnaryOperator<wg> a(enb $$0, @Nullable enb.b $$1) {
+      if ($$1 != null) {
+         bpv $$2 = $$0.c($$1.a());
+         if ($$2 != null) {
+            du $$3 = $$2.dd().a(2);
+            return $$2x -> {
+               try {
+                  return wj.a($$3, $$2x, $$2, 0);
+               } catch (CommandSyntaxException var4) {
+                  b.warn("Failed to resolve text component", var4);
+                  return $$2x;
+               }
+            };
          }
       }
+
+      return $$0x -> $$0x;
+   }
+
+   @Override
+   public crj a(crj $$0, enb $$1) {
+      this.c.ifPresent($$2 -> $$0.b(jp.d, a($$1, this.d.orElse(null)).apply($$2)));
+      return $$0;
+   }
+
+   public static eoo.a<?> a(wg $$0) {
+      return a($$1 -> new epf($$1, Optional.of($$0), Optional.empty()));
+   }
+
+   public static eoo.a<?> a(wg $$0, enb.b $$1) {
+      return a($$2 -> new epf($$2, Optional.of($$0), Optional.of($$1)));
    }
 }

@@ -1,48 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+public class bsj implements btu {
+   private final ib a;
+   private final esa b;
 
-public class bsj<E extends bpr> extends bsk<E> {
-   private final avd<dac> m;
-   private final float n;
-   private final List<bsk.a> o = new ArrayList<>();
-   private boolean p;
+   public bsj(ib $$0) {
+      this.a = $$0.i();
+      this.b = esa.b($$0);
+   }
 
-   public bsj(bmo $$0, int $$1, int $$2, float $$3, Function<E, atx> $$4, avd<dac> $$5, float $$6, BiPredicate<E, ib> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bsj(esa $$0) {
+      this.a = ib.a($$0);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(apf $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ei().i() < this.n;
+   public esa a() {
+      return this.b;
    }
 
    @Override
-   protected Optional<bsk.a> a(apf $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         ib.a $$1 = new ib.a();
+   public ib b() {
+      return this.a;
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<bsk.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bsk.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), ih.a)).a(this.m)) {
-                  return $$2;
-               }
+   @Override
+   public boolean a(bqo $$0) {
+      return true;
+   }
 
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

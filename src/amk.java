@@ -1,47 +1,39 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
 public class amk {
-   private static final Logger a = LogUtils.getLogger();
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eh.d()).then(dv.a("message", el.a()).executes($$0x -> {
+            Collection<apt> $$1x = eh.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               el.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(Collection<String> $$0, du $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(vu.c("commands.reload.failure"));
-         return null;
-      });
+            return $$1x.size();
+         })))
+      );
+      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static Collection<String> a(arz $$0, eks $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
+   private static void a(du $$0, Collection<apt> $$1, ww $$2) {
+      wc.a $$3 = wc.a(wc.e, $$0);
+      wv $$4 = wv.a($$2);
+      boolean $$5 = false;
 
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
+      for (apt $$6 : $$1) {
+         wc.a $$7 = wc.a(wc.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      return $$3;
-   }
-
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         du $$1 = (du)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         arz $$3 = $$2.aG();
-         eks $$4 = $$2.bc();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> vu.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+      if ($$5) {
+         $$0.a(atp.f);
+      }
    }
 }

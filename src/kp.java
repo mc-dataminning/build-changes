@@ -1,71 +1,55 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.ToIntFunction;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public interface kp {
-   ToIntFunction<String> a = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("type", 0);
-      $$0.put("parent", 1);
-      $$0.defaultReturnValue(2);
-   });
-   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
-   Logger c = LogUtils.getLogger();
+public class kp implements kj {
+   public static final Codec<kp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dtw.c.fieldOf("destination").forGetter(kp::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kp::c)).apply($$0, kp::new)
+   );
+   public static final ye<vr, kp> b = ye.a(dtw.d, kp::b, yc.f, kp::c, kp::new);
+   public static final kj.a<kp> c = new kj.a<kp>() {
+      public kp a(kk<kp> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
+         $$1.expect(' ');
+         float $$3 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         float $$4 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         float $$5 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         int $$6 = $$1.readInt();
+         ib $$7 = ib.a((double)$$3, (double)$$4, (double)$$5);
+         return new kp(new dto($$7), $$6);
+      }
+   };
+   private final dtw d;
+   private final int e;
 
-   CompletableFuture<?> a(kn var1);
-
-   String a();
-
-   static <T> CompletableFuture<?> a(kn $$0, in.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      ajf<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
-      JsonElement $$6 = ac.a($$2.encodeStart($$5, $$3), IllegalStateException::new);
-      return a($$0, $$6, $$4);
+   public kp(dtw $$0, int $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   static CompletableFuture<?> a(kn $$0, JsonElement $$1, Path $$2) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
-
-            try {
-               $$5.setSerializeNulls(false);
-               $$5.setIndent("  ");
-               awm.a($$5, $$1, b);
-            } catch (Throwable var9) {
-               try {
-                  $$5.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-
-               throw var9;
-            }
-
-            $$5.close();
-            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
-         } catch (IOException var10) {
-            c.error("Failed to save file to {}", $$2, var10);
-         }
-      }, ac.f());
+   @Override
+   public String a(in.a $$0) {
+      esa $$1 = this.d.a(null).get();
+      double $$2 = $$1.a();
+      double $$3 = $$1.b();
+      double $$4 = $$1.c();
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", kr.j.b(this.a()), $$2, $$3, $$4, this.e);
    }
 
-   @FunctionalInterface
-   public interface a<T extends kp> {
-      T create(kr var1);
+   @Override
+   public kk<kp> a() {
+      return kl.S;
+   }
+
+   public dtw b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
    }
 }

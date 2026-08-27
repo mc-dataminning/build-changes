@@ -1,37 +1,14 @@
-public class bne<T> {
-   private final bnd a;
-   private final T b;
+import com.mojang.serialization.Codec;
 
-   public bne(bnd $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface bne<P extends bnd> {
+   bne<bnb> a = a("constant", bnb.b);
+   bne<bnk> b = a("uniform", bnk.a);
+   bne<bmz> c = a("clamped_normal", bmz.a);
+   bne<bnj> d = a("trapezoid", bnj.a);
 
-   public bnd a() {
-      return this.a;
-   }
+   Codec<P> codec();
 
-   public T b() {
-      return this.b;
-   }
-
-   public static <T> bne<T> a(T $$0) {
-      return new bne<>(bnd.a, $$0);
-   }
-
-   public static <T> bne<T> b(T $$0) {
-      return new bne<>(bnd.b, $$0);
-   }
-
-   public static <T> bne<T> c(T $$0) {
-      return new bne<>(bnd.d, $$0);
-   }
-
-   public static <T> bne<T> d(T $$0) {
-      return new bne<>(bnd.e, $$0);
-   }
-
-   public static <T> bne<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   static <P extends bnd> bne<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.L, $$0, () -> $$1);
    }
 }

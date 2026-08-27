@@ -1,3 +1,8 @@
-public interface aag extends up {
-   void a(aah var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aag {
 }

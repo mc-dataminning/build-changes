@@ -1,19 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bsn extends brh<bpr> {
-   public bsn(int $$0, int $$1) {
-      super(ImmutableMap.of(bys.n, byt.a), $$0, $$1);
+public class bsn extends bsg<cdv> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bsn() {
+      super(ImmutableMap.of(bzr.m, bzs.b), 100);
    }
 
-   protected boolean a(apf $$0, bpr $$1, long $$2) {
-      return $$1.dP().c(bys.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   protected boolean a(aps $$0, cdv $$1) {
+      return $$1.ap() == bqz.a;
    }
 
-   protected void b(apf $$0, bpr $$1, long $$2) {
-      $$1.dP().b(bys.n);
+   protected boolean a(aps $$0, cdv $$1, long $$2) {
+      return this.e < 60;
    }
 
-   protected void c(apf $$0, bpr $$1, long $$2) {
-      $$1.dP().c(bys.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
+   protected void b(aps $$0, cdv $$1, long $$2) {
+      if (!$$1.bg()) {
+         $$1.b(bqz.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(aps $$0, cdv $$1, long $$2) {
+      $$1.b(bqz.a);
+   }
+
+   protected void d(aps $$0, cdv $$1, long $$2) {
+      this.e++;
    }
 }

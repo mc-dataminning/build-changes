@@ -1,46 +1,38 @@
-public class ghg extends ghm<cdj, foy<cdj>> {
-   private static final ajh[] a = new ajh[]{
-      new ajh("textures/entity/llama/decor/white.png"),
-      new ajh("textures/entity/llama/decor/orange.png"),
-      new ajh("textures/entity/llama/decor/magenta.png"),
-      new ajh("textures/entity/llama/decor/light_blue.png"),
-      new ajh("textures/entity/llama/decor/yellow.png"),
-      new ajh("textures/entity/llama/decor/lime.png"),
-      new ajh("textures/entity/llama/decor/pink.png"),
-      new ajh("textures/entity/llama/decor/gray.png"),
-      new ajh("textures/entity/llama/decor/light_gray.png"),
-      new ajh("textures/entity/llama/decor/cyan.png"),
-      new ajh("textures/entity/llama/decor/purple.png"),
-      new ajh("textures/entity/llama/decor/blue.png"),
-      new ajh("textures/entity/llama/decor/brown.png"),
-      new ajh("textures/entity/llama/decor/green.png"),
-      new ajh("textures/entity/llama/decor/red.png"),
-      new ajh("textures/entity/llama/decor/black.png")
-   };
-   private static final ajh b = new ajh("textures/entity/llama/decor/trader_llama.png");
-   private final foy<cdj> c;
+public class ghg extends gfh<cko> {
+   private static final ajt a = new ajt("textures/entity/shulker/spark.png");
+   private static final gah f = gah.i(a);
+   private final fse<cko> g;
 
-   public ghg(gew<cdj, foy<cdj>> $$0, frb $$1) {
+   public ghg(gfi.a $$0) {
       super($$0);
-      this.c = new foy<>($$1.a(fre.ay));
+      this.g = new fse<>($$0.a(ftl.bl));
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, cdj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cpd $$10 = $$3.gA();
-      ajh $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gw()) {
-            return;
-         }
+   protected int a(cko $$0, ib $$1) {
+      return 15;
+   }
 
-         $$11 = b;
-      }
+   public void a(cko $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      $$3.a();
+      float $$6 = axk.j($$2, $$0.N, $$0.dC());
+      float $$7 = axk.i($$2, $$0.O, $$0.dE());
+      float $$8 = (float)$$0.ah + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(axk.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(axk.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(axk.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      ewm $$9 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$9, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      ewm $$10 = $$4.getBuffer(f);
+      this.g.a($$3, $$10, $$5, gla.d, 1.0F, 1.0F, 1.0F, 0.15F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      euf $$14 = $$1.getBuffer(fya.e($$11));
-      this.c.a($$0, $$14, $$2, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public ajt a(cko $$0) {
+      return a;
    }
 }

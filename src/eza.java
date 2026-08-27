@@ -1,104 +1,79 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
+public class eza extends grl {
+   private static final wg a = wg.c("mco.selectServer.create");
+   private static final wg b = wg.c("mco.configure.world.name");
+   private static final wg c = wg.c("mco.configure.world.description");
+   private static final int y = 10;
+   private static final int z = 210;
+   private final ewt A;
+   private final fhc B = new fhc(this);
+   private fdy C;
+   private fdy D;
+   private final Runnable E;
 
-public class eza {
-   public static final vu a = vt.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final ezi c;
-   private final Narrator d = Narrator.getNarrator();
-
-   public eza(ezi $$0) {
-      this.c = $$0;
+   public eza(ewt $$0, exp $$1) {
+      super(a);
+      this.A = $$0;
+      this.E = () -> this.a($$1);
    }
 
-   public void a(vu $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
+   public eza(ewt $$0, long $$1) {
+      super(a);
+      this.A = $$0;
+      this.E = () -> this.a($$1);
    }
 
-   public void b(vu $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
+   @Override
+   public void aN_() {
+      this.B.a(this.i, this.m);
+      fhg $$0 = this.B.c(fhg.d()).a(10);
+      fdp $$1 = fdp.a(wf.j, $$0x -> this.E.run()).a();
+      $$1.j = false;
+      this.C = new fdy(this.m, 210, 20, b);
+      this.C.b($$1x -> $$1.j = !ayf.h($$1x));
+      this.D = new fdy(this.m, 210, 20, c);
+      $$0.a(fgy.a(this.m, this.C, b));
+      $$0.a(fgy.a(this.m, this.D, c));
+      fhg $$2 = this.B.b(fhg.e().a(10));
+      $$2.a($$1);
+      $$2.a(fdp.a(wf.k, $$0x -> this.d()).a());
+      this.B.a($$1x -> {
+         fdn var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public void c(vu $$0) {
-      this.a($$0.getString());
+   @Override
+   protected void aD_() {
+      this.b(this.C);
    }
 
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
-      }
+   @Override
+   protected void c() {
+      this.B.a();
    }
 
-   private ezk d() {
-      return this.c.m.aq().c();
+   private void a(exp $$0) {
+      far $$1 = new far($$0.a, this.C.a(), this.D.a());
+      ezn $$2 = ezn.a(this, $$0, $$1, () -> this.j.execute(() -> {
+            ewt.g();
+            this.j.a(this.A);
+         }));
+      this.j.a($$2);
    }
 
-   private void b(String $$0) {
-      if (aa.aW) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(ezk $$0) {
-      this.b();
-      this.d.say(vu.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      fds $$1 = ezi.Q().aA();
-      if (this.d.active()) {
-         if ($$0 == ezk.a) {
-            fdq.b($$1, fdq.a.a, vu.c("narrator.toast.disabled"), null);
+   private void a(long $$0) {
+      fjo $$1 = new ezm($$1x -> {
+         if ($$1x == null) {
+            this.j.a(this);
          } else {
-            fdq.b($$1, fdq.a.a, vu.c("narrator.toast.enabled"), $$0.b());
+            this.j.a(new ezf(this, new fam(this.A, $$0, $$1x, this.C.a(), this.D.a())));
          }
-      } else {
-         fdq.b($$1, fdq.a.a, vu.c("narrator.toast.disabled"), vu.c("options.narrator.notavailable"));
-      }
+      }, a);
+      this.j.a($$1);
    }
 
-   public boolean a() {
-      return this.d.active();
-   }
-
-   public void b() {
-      if (this.d() != ezk.a && this.d.active()) {
-         this.d.clear();
-      }
-   }
-
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new eza.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fmw {
-      public a(String $$0) {
-         super($$0);
-      }
+   @Override
+   public void d() {
+      this.j.a(this.A);
    }
 }

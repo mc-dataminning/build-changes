@@ -1,18 +1,18 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ux extends MessageToMessageEncoder<yb<?>> {
-   private final ya a;
+public class ux {
+   private final AtomicInteger a = new AtomicInteger();
+   private final bju b;
 
-   public ux(ya $$0) {
-      this.a = $$0;
+   public ux(bju $$0) {
+      this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, yb<?> $$1, List<Object> $$2) throws Exception {
-      this.a.a($$1, $$2::add);
-      if ($$1.d()) {
-         $$0.pipeline().remove($$0.name());
-      }
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
+
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

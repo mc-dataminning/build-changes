@@ -1,20 +1,16 @@
 import com.mojang.serialization.Codec;
 
-public enum edp implements axq {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box");
+public interface edp<P extends edo> {
+   edp<edn> a = a("constant", edn.b);
+   edp<edr> b = a("uniform", edr.a);
+   edp<edm> c = a("biased_to_bottom", edm.a);
+   edp<eds> d = a("very_biased_to_bottom", eds.a);
+   edp<edq> e = a("trapezoid", edq.a);
+   edp<edt> f = a("weighted_list", edt.a);
 
-   public static final Codec<edp> e = axq.a(edp::values);
-   private final String f;
+   Codec<P> codec();
 
-   private edp(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
+   private static <P extends edo> edp<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.N, $$0, () -> $$1);
    }
 }

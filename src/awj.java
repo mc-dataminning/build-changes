@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface awj {
-   boolean accept(int var1, wr var2, int var3);
+public class awj extends Exception {
+   public awj(Throwable $$0) {
+      super($$0);
+   }
 }

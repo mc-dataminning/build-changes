@@ -4,8 +4,8 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class fw {
    private static final char c = '~';
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("argument.pos.missing.double"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("argument.pos.missing.int"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("argument.pos.missing.double"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("argument.pos.missing.int"));
    private final boolean d;
    private final double e;
 

@@ -1,84 +1,72 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.function.Consumer;
 
-public class tc implements tx {
-   private static final int c = 8;
-   public static final tz<tc> a = new tz<tc>() {
-      public tc a(DataInput $$0, tj $$1) {
-         $$1.b(8L);
-         return tc.b;
-      }
-
-      @Override
-      public tu.b a(DataInput $$0, tu $$1, tj $$2) {
-         $$2.b(8L);
-         return $$1.a();
-      }
-
-      @Override
-      public void a(DataInput $$0, int $$1, tj $$2) {
-      }
-
-      @Override
-      public void b(DataInput $$0, tj $$1) {
-      }
-
-      @Override
-      public String a() {
-         return "END";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final tc b = new tc();
-
-   private tc() {
+public record tc(String a, String b, String c, dik d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sh> l) {
+   public tc(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sh> $$6) {
+      this($$0, $$1, $$2, dik.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
+   public tc(String $$0, String $$1, String $$2, dik $$3, int $$4, long $$5, boolean $$6, Consumer<sh> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
-   @Override
-   public int a() {
-      return 8;
-   }
-
-   @Override
-   public byte b() {
-      return 0;
-   }
-
-   @Override
-   public tz<tc> c() {
-      return a;
+   public void a(sh $$0) {
+      this.l.accept($$0);
    }
 
    @Override
    public String toString() {
-      return this.s_();
+      return this.b;
    }
 
-   public tc e() {
-      return this;
+   public boolean a() {
+      return this.i > 1;
    }
 
-   @Override
-   public void a(ub $$0) {
-      $$0.a(this);
+   public String b() {
+      return this.a;
    }
 
-   @Override
-   public tu.b a(tu $$0) {
-      return $$0.a();
+   public String c() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public dik e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public long g() {
+      return this.f;
+   }
+
+   public boolean h() {
+      return this.g;
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.j;
+   }
+
+   public boolean l() {
+      return this.k;
+   }
+
+   public Consumer<sh> m() {
+      return this.l;
    }
 }

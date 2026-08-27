@@ -1,48 +1,79 @@
-public class fio extends fig<clv> {
-   private static final ajh x = new ajh("container/brewing_stand/fuel_length");
-   private static final ajh y = new ajh("container/brewing_stand/brew_progress");
-   private static final ajh z = new ajh("container/brewing_stand/bubbles");
-   private static final ajh A = new ajh("textures/gui/container/brewing_stand.png");
-   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fio(clv $$0, cit $$1, vu $$2) {
-      super($$0, $$1, $$2);
+public class fio extends fjo {
+   private static final wg a = wg.c("addServer.enterIp");
+   private fdp b;
+   private final fuv c;
+   private fdy d;
+   private final BooleanConsumer o;
+   private final fjo p;
+
+   public fio(fjo $$0, BooleanConsumer $$1, fuv $$2) {
+      super(wg.c("selectServer.direct"));
+      this.p = $$0;
+      this.c = $$2;
+      this.o = $$1;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aI_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
+      }
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
+   protected void aN_() {
+      this.d = new fdy(this.m, this.k / 2 - 100, 116, 200, 20, wg.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.j.m.aa);
+      this.d.b($$0 -> this.C());
+      this.d(this.d);
+      this.b = this.c(fdp.a(wg.c("selectServer.select"), $$0 -> this.m()).a(this.k / 2 - 100, this.l / 4 + 96 + 12, 200, 20).a());
+      this.c(fdp.a(wf.e, $$0 -> this.o.accept(false)).a(this.k / 2 - 100, this.l / 4 + 120 + 12, 200, 20).a());
+      this.C();
+   }
+
+   @Override
+   protected void aD_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(fbp $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.o.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.j.a(this.p);
+   }
+
+   @Override
+   public void j() {
+      this.j.m.aa = this.d.a();
+      this.j.m.av();
+   }
+
+   private void C() {
+      this.b.j = fvy.b(this.d.a());
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
-      int $$6 = this.p.l();
-      int $$7 = aww.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.p.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
-
-         $$9 = B[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
-      }
+      $$0.a(this.m, this.i, this.k / 2, 20, 16777215);
+      $$0.b(this.m, a, this.k / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

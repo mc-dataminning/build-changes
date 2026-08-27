@@ -1,86 +1,111 @@
-public class bmv implements bmw {
-   private final bmw c;
-   private final bmw d;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-   public bmv(bmw $$0, bmw $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+public interface bmv<T, F> {
+   @Nullable
+   F a();
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
-   }
+   boolean a(T var1);
 
-   @Override
-   public boolean ai_() {
-      return this.c.ai_() && this.d.ai_();
-   }
+   boolean b();
 
-   public boolean a(bmw $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
+   int c();
 
-   @Override
-   public cqm a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
+   public static final class a implements bmv<bmv.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
 
-   @Override
-   public cqm a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
+      public a(int $$0) {
+         this.a = new Queue[$$0];
 
-   @Override
-   public cqm b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
+      }
 
-   @Override
-   public void a(int $$0, cqm $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bmv.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
       }
    }
 
-   @Override
-   public int ak_() {
-      return this.c.ak_();
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
+
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
    }
 
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
+   public static final class c<T> implements bmv<T, T> {
+      private final Queue<T> a;
 
-   @Override
-   public boolean a(ciu $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public void d_(ciu $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
 
-   @Override
-   public void c(ciu $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
 
-   @Override
-   public boolean b(int $$0, cqm $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
 
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 }

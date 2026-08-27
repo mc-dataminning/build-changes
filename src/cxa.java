@@ -1,3 +1,20 @@
-public interface cxa {
-   cqh l();
+public class cxa extends cwq {
+   public cxa(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bm, $$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      return $$0 * 25;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 50;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
 }

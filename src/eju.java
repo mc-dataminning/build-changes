@@ -1,44 +1,15 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public abstract class eju {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-
-   public abstract ta a(ta var1, in.a var2);
-
-   public void c() {
-      this.a(true);
+public class eju {
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
    }
 
-   public void a(boolean $$0) {
-      this.b = $$0;
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 
-   public boolean d() {
-      return this.b;
-   }
-
-   public void a(File $$0, in.a $$1) {
-      if (this.d()) {
-         ta $$2 = new ta();
-         $$2.a("data", this.a(new ta(), $$1));
-         tp.f($$2);
-
-         try {
-            tn.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
-         }
-
-         this.a(false);
-      }
-   }
-
-   public static record a<T extends eju>(Supplier<T> a, BiFunction<ta, in.a, T> b, ayc c) {
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 }

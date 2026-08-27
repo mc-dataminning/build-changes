@@ -1,8 +1,23 @@
-public class aiy {
-   public static final ajg<cqh> a = a("pumpkin_seeds");
-   public static final ajg<cqh> b = a("melon_seeds");
+public record aiy<T>(int a, aiz<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         aiy<?> $$1 = (aiy<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
 
-   private static ajg<cqh> a(String $$0) {
-      return ajg.a(kj.F, new ajh($$0));
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

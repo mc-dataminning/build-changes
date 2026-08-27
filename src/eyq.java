@@ -1,52 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class eyq extends eyi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+public class eyq implements Iterable<exp> {
+   private final fbp a;
+   private final Set<exp> b = new HashSet<>();
+   private List<exp> c = List.of();
 
-   public eyq(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eyq(fbp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void run() {
-      eur $$0 = eur.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (ewf var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
+   public void a(List<exp> $$0) {
+      List<exp> $$1 = new ArrayList<>($$0);
+      $$1.sort(new exp.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
       }
+
+      this.c = $$1;
+   }
+
+   public void a(exp $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   public vu a() {
-      return c;
+   public Iterator<exp> iterator() {
+      return this.c.iterator();
+   }
+
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

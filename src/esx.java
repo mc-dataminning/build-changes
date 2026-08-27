@@ -1,36 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class esx {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
-
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+public record esx(String a, int b, @Nullable wg c, @Nullable xw d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   public wg b() {
+      return (wg)(this.c != null ? this.c : wg.b(this.c()));
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public wu a(xw $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   public String c() {
+      return this.a;
    }
 
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
+   public int d() {
+      return this.b;
    }
 
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   @Nullable
+   public wg e() {
+      return this.c;
+   }
+
+   @Nullable
+   public xw f() {
+      return this.d;
    }
 }

@@ -1,137 +1,76 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
 
-public class dar extends cyu implements dhc {
-   public static final MapCodec<dar> c = b(dar::new);
-   public static final int d = 1;
-   public static final int e = 4;
-   public static final dob f = dnr.az;
-   public static final dns g = cyu.b;
-   public static final dns h = dnr.C;
-   public static final ToIntFunction<dnb> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
-   private static final Int2ObjectMap<List<ept>> j = ac.a(() -> {
-      Int2ObjectMap<List<ept>> $$0 = new Int2ObjectOpenHashMap();
-      $$0.defaultReturnValue(ImmutableList.of());
-      $$0.put(1, ImmutableList.of(new ept(0.5, 0.5, 0.5)));
-      $$0.put(2, ImmutableList.of(new ept(0.375, 0.44, 0.5), new ept(0.625, 0.5, 0.44)));
-      $$0.put(3, ImmutableList.of(new ept(0.5, 0.313, 0.625), new ept(0.375, 0.44, 0.5), new ept(0.56, 0.5, 0.44)));
-      $$0.put(4, ImmutableList.of(new ept(0.44, 0.313, 0.56), new ept(0.625, 0.44, 0.56), new ept(0.375, 0.44, 0.375), new ept(0.56, 0.5, 0.375)));
-      return Int2ObjectMaps.unmodifiable($$0);
-   });
-   private static final eqm k = dac.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
-   private static final eqm l = dac.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
-   private static final eqm m = dac.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
-   private static final eqm n = dac.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
+public abstract class dar extends dby {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final est h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final est b = esq.a(
+      esq.b(), esq.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ese.e
+   );
+   protected final ji.a c;
 
    @Override
-   public MapCodec<dar> a() {
-      return c;
-   }
+   protected abstract MapCodec<? extends dar> a();
 
-   public dar(dna.d $$0) {
+   public dar(doy.d $$0, ji.a $$1) {
       super($$0);
-      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
+      this.c = $$1;
+   }
+
+   protected double b(doz $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(doz $$0, ib $$1, bpv $$2) {
+      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
-      if ($$0.b() && $$4.ga().e && $$1.c(g)) {
-         a($$4, $$1, $$2, $$3);
-         return bnf.a($$2.B);
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      ji $$7 = this.c.b().get($$0.f());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected boolean a(dnb $$0, csu $$1) {
-      return !$$1.h() && $$1.n().d() == this.l() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
    }
 
    @Override
-   public dnb a(csu $$0) {
-      dnb $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(f);
-      } else {
-         eip $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == eiq.c;
-         return super.a($$0).a(h, Boolean.valueOf($$3));
-      }
+   protected est a(doz $$0, cyd $$1, ib $$2) {
+      return h;
    }
 
    @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, eiq.c, eiq.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d_(doz $$0) {
+      return true;
    }
 
    @Override
-   protected eip c_(dnb $$0) {
-      return $$0.c(h) ? eiq.c.a(false) : super.c_($$0);
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      switch ($$0.c(f)) {
-         case 1:
-         default:
-            return k;
-         case 2:
-            return l;
-         case 3:
-            return m;
-         case 4:
-            return n;
-      }
-   }
+   public abstract boolean d(doz var1);
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(f, g, h);
-   }
-
-   @Override
-   public boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
-      if (!$$2.c(h) && $$3.a() == eiq.c) {
-         dnb $$4 = $$2.a(h, Boolean.valueOf(true));
-         if ($$2.c(g)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      ib $$4 = dhp.a((cyx)$$1, $$2);
+      if ($$4 != null) {
+         ekr $$5 = dhp.a($$1, $$4);
+         if ($$5 != ekt.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
          }
-
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
-      } else {
-         return false;
       }
    }
 
-   public static boolean g(dnb $$0) {
-      return $$0.a(aun.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   protected boolean a(ekr $$0) {
+      return false;
    }
 
-   @Override
-   protected Iterable<ept> b(dnb $$0) {
-      return (Iterable<ept>)j.get($$0.c(f));
-   }
-
-   @Override
-   protected boolean d(dnb $$0) {
-      return !$$0.c(h) && super.d($$0);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      return dac.a($$1, $$2.d(), ih.b);
+   protected void a(doz $$0, cyx $$1, ib $$2, ekr $$3) {
    }
 }

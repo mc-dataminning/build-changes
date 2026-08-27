@@ -1,99 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.function.Function;
 
-public class dvl extends dvs<dyd> {
-   private static final dnk a = dnk.a(dae.I);
-   private final dnb b = dae.I.o();
-   private final dnb c = dae.jF.o();
-   private final dnb d = dae.aV.o();
-   private final dnb an = dae.G.o();
+public interface dvl {
+   Codec<dvl> a = aws.a(dvl.b.d, aws.a(dvl.a.d, dvl.c.d)).xmap(dvl::a, dvl::a);
+   dvl b = b(0);
+   dvl c = c(0);
 
-   public dvl(Codec<dyd> $$0) {
-      super($$0);
+   static dvl a(int $$0) {
+      return new dvl.b($$0);
    }
 
-   @Override
-   public boolean a(dvu<dyd> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      $$2 = $$2.c();
+   static dvl b(int $$0) {
+      return new dvl.a($$0);
+   }
 
-      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.d();
+   static dvl c(int $$0) {
+      return new dvl.c($$0);
+   }
+
+   static dvl a() {
+      return b;
+   }
+
+   static dvl b() {
+      return c;
+   }
+
+   private static dvl a(Either<dvl.b, Either<dvl.a, dvl.c>> $$0) {
+      return (dvl)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dvl.b, Either<dvl.a, dvl.c>> a(dvl $$0) {
+      return $$0 instanceof dvl.b ? Either.left((dvl.b)$$0) : Either.right($$0 instanceof dvl.a ? Either.left((dvl.a)$$0) : Either.right((dvl.c)$$0));
+   }
+
+   int a(dvo var1);
+
+   public static record a(int e) implements dvl {
+      public static final Codec<dvl.a> d = Codec.intRange(dsr.e, dsr.d).fieldOf("above_bottom").xmap(dvl.a::new, dvl.a::c).codec();
+
+      @Override
+      public int a(dvo $$0) {
+         return $$0.a() + this.e;
       }
 
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (ih $$8 : ih.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         ib $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (ih $$10 : ih.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<ib> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         axd $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
+      public int c() {
+         return this.e;
       }
    }
 
-   private static void b(cxw $$0, ib $$1) {
-      $$0.a($$1, dae.J.o(), 3);
-      $$0.a($$1, dkk.N).ifPresent($$1x -> $$1x.a(eku.aP, $$1.a()));
+   public static record b(int e) implements dvl {
+      public static final Codec<dvl.b> d = Codec.intRange(dsr.e, dsr.d).fieldOf("absolute").xmap(dvl.b::new, dvl.b::c).codec();
+
+      @Override
+      public int a(dvo $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dvl {
+      public static final Codec<dvl.c> d = Codec.intRange(dsr.e, dsr.d).fieldOf("below_top").xmap(dvl.c::new, dvl.c::c).codec();
+
+      @Override
+      public int a(dvo $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

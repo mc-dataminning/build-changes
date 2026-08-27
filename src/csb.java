@@ -1,56 +1,71 @@
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum csb implements crz {
-   a(0, 59, 2.0F, 0.0F, 15, () -> ctm.a(auv.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> ctm.a(auv.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> ctm.a(cqp.oD)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> ctm.a(cqp.ox)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> ctm.a(cqp.oH)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> ctm.a(cqp.oI));
+public class csb extends cre {
+   private static final Map<aul, csb> a = Maps.newHashMap();
+   private final int b;
+   private final aul c;
+   private final int j;
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final awr<ctm> l;
-
-   private csb(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<ctm> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new awr<>($$5);
+   protected csb(int $$0, aul $$1, cre.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.j = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public boa a(cuq $$0) {
+      cyx $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      doz $$3 = $$1.a_($$2);
+      if ($$3.a(dca.dT) && !$$3.c(dga.b)) {
+         crj $$4 = $$0.n();
+         if (!$$1.B) {
+            cjt $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dng $$6) {
+               $$6.a($$4.r());
+               $$1.a(dts.c, $$2, dts.a.a($$5, $$3));
+            }
+
+            $$4.g(1);
+            if ($$5 != null) {
+               $$5.a(auw.al);
+            }
+         }
+
+         return boa.a($$1.B);
+      } else {
+         return boa.d;
+      }
+   }
+
+   public int h() {
+      return this.b;
    }
 
    @Override
-   public float b() {
-      return this.i;
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      $$2.add(this.i().a(n.h));
    }
 
-   @Override
-   public float c() {
+   public wu i() {
+      return wg.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static csb a(aul $$0) {
+      return a.get($$0);
+   }
+
+   public aul j() {
+      return this.c;
+   }
+
+   public int k() {
       return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public ctm f() {
-      return this.l.a();
    }
 }

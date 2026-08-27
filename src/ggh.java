@@ -1,17 +1,23 @@
-public class ggh extends gds<cgu, fqy<cgu>> {
-   private static final ajh a = new ajh("textures/entity/zombie_villager/zombie_villager.png");
+public class ggh extends gfh<cfx> {
+   private static final ajt a = new ajt("textures/entity/lead_knot.png");
+   private final frd<cfx> f;
 
-   public ggh(gdb.a $$0) {
-      super($$0, new fqy<>($$0.a(fre.ck)), 0.5F);
-      this.a(new ghc<>(this, new fqy($$0.a(fre.cl)), new fqy($$0.a(fre.cm)), $$0.g()));
-      this.a(new ghx<>(this, $$0.e(), "zombie_villager"));
+   public ggh(gfi.a $$0) {
+      super($$0);
+      this.f = new frd<>($$0.a(ftl.aw));
    }
 
-   public ajh a(cgu $$0) {
+   public void a(cfx $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      ewm $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ajt a(cfx $$0) {
       return a;
-   }
-
-   protected boolean b(cgu $$0) {
-      return super.a($$0) || $$0.gx();
    }
 }

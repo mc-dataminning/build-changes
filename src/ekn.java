@@ -1,313 +1,213 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public class ekn implements Comparable<ekn> {
-   public static final vu a = vu.c("selectWorld.select");
-   private final cxf b;
-   private final eko c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
-   @Nullable
-   private vu i;
+public class ekn extends LongLinkedOpenHashSet {
+   private final ekn.a a;
 
-   public ekn(cxf $$0, eko $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$3;
+   public ekn(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new ekn.a($$0 / 64, $$1);
    }
 
-   public String a() {
-      return this.d;
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   public Path c() {
-      return this.h;
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public boolean d() {
-      return this.e;
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public boolean e() {
-      return this.g;
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   public long f() {
-      return this.c.b();
-   }
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = axk.f(60000000);
+      private static final int b = axk.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-   public int a(ekn $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
-      } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
-      }
-   }
-
-   public cxf g() {
-      return this.b;
-   }
-
-   public cwy h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public wi k() {
-      return axr.b(this.c.c()) ? vu.c("selectWorld.versionUnknown") : vu.b(this.c.c());
-   }
-
-   public eko l() {
-      return this.c;
-   }
-
-   public boolean m() {
-      return this.o().a();
-   }
-
-   public boolean n() {
-      return this.o() == ekn.a.b;
-   }
-
-   public ekn.a o() {
-      ad $$0 = aa.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return ekn.a.c;
-      } else {
-         return $$2 > $$1 ? ekn.a.b : ekn.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return aa.b().d().a(this.c.d());
-   }
-
-   public vu s() {
-      if (this.i == null) {
-         this.i = this.z();
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
       }
 
-      return this.i;
-   }
+      static long a(long $$0) {
+         return $$0 & ~h;
+      }
 
-   private vu z() {
-      if (this.p()) {
-         return vu.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return vu.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return vu.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         wi $$0 = this.i() ? vu.i().b(vu.c("gameMode.hardcore").b(-65536)) : vu.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(vu.c("selectWorld.commands"));
-         }
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
 
-         if (this.e()) {
-            $$0.f(", ").b(vu.c("selectWorld.experimental").a(n.o));
-         }
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
 
-         wi $$1 = this.k();
-         wi $$2 = vu.b(", ").b(vu.c("selectWorld.version")).b(vt.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
+
+            this.containsNullKey = true;
+            $$4 = this.n;
          } else {
-            $$2.b($$1);
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
+
+               $$4 = $$4 + 1 & this.mask;
+            }
          }
 
-         $$0.b($$2);
-         return $$0;
-      }
-   }
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
 
-   public vu t() {
-      return a;
-   }
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
 
-   public boolean u() {
-      return !this.q();
-   }
-
-   public boolean v() {
-      return !this.d() && !this.p();
-   }
-
-   public boolean w() {
-      return !this.q();
-   }
-
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(boolean $$0, boolean $$1, String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static class b extends ekn {
-      private static final vu b = vu.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final vu c = vu.c("recover_world.button");
-      private final long d;
-
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public vu s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
          return false;
       }
 
-      @Override
-      public vu t() {
-         return c;
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
       }
 
-      @Override
-      public boolean u() {
-         return true;
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
       }
 
-      @Override
-      public boolean v() {
-         return false;
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
       }
 
-      @Override
-      public boolean w() {
-         return false;
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
       }
 
-      @Override
-      public boolean x() {
-         return false;
-      }
-   }
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
 
-   public static class c extends ekn {
-      private static final vu b = vu.c("symlink_warning.more_info");
-      private static final vu c = vu.c("symlink_warning.title").b(-65536);
-
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
+            return a($$1, $$2);
+         }
       }
 
-      @Override
-      public vu s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public vu t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
       }
    }
 }

@@ -1,29 +1,23 @@
-public class aic implements yb<aib> {
-   public static final xs<uu, aic> a = yb.a(aic::a, aic::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public aic(long $$0) {
-      this.b = $$0;
-   }
+public class aic implements yn<ahy> {
+   public static final aic a = new aic();
+   public static final ye<ByteBuf, aic> b = ye.a(a);
 
-   private aic(uu $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(uu $$0) {
-      $$0.b(this.b);
+   private aic() {
    }
 
    @Override
-   public yd<aic> a() {
-      return aia.b;
+   public yp<aic> a() {
+      return ahw.i;
    }
 
-   public void a(aib $$0) {
+   public void a(ahy $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,46 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dxu extends dxv<eag> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final ib an = ib.c;
+   private final boolean ao;
 
-public class dxu implements dxw {
-   public static final Codec<dxu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bmi.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bmi.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bmi.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bmg.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bmg.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dxu::new)
-   );
-   public final int b;
-   public final bmi c;
-   public final bmi d;
-   public final int e;
-   public final int f;
-   public final bmi g;
-   public final bmg h;
-   public final bmg i;
-   public final float j;
-   public final int k;
-   public final int l;
+   public static ib a(ib $$0) {
+      return an.a((jg)$$0);
+   }
 
-   public dxu(int $$0, bmi $$1, bmi $$2, int $$3, int $$4, bmi $$5, bmg $$6, bmg $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   public dxu(boolean $$0) {
+      super(eag.a);
+      this.ao = $$0;
+   }
+
+   @Override
+   public boolean a(dxx<eag> $$0) {
+      ib $$1 = $$0.e();
+      czs $$2 = $$0.b();
+
+      for (ib $$3 : ib.a(new ib($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ib($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dca.F.n());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dca.fz.n());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dca.a.n());
+            } else if (!$$4) {
+               this.a($$2, $$3, dca.F.n());
+            } else if (this.ao) {
+               this.a($$2, new ib($$3), dca.fx.n());
+            } else {
+               this.a($$2, new ib($$3), dca.a.n());
+            }
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dca.F.n());
+      }
+
+      ib $$6 = $$1.b(2);
+
+      for (ih $$7 : ih.c.a) {
+         this.a($$2, $$6.a($$7), dca.cq.n().a(dkz.g, $$7));
+      }
+
+      return true;
    }
 }

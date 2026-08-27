@@ -1,21 +1,10 @@
-import java.util.function.IntConsumer;
+public class avl {
+   public static final avr<cfz> a = a("placeable");
 
-public interface avl {
-   int a(int var1, int var2);
+   private avl() {
+   }
 
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   avl d();
+   private static avr<cfz> a(String $$0) {
+      return avr.a(ks.R, new ajt($$0));
+   }
 }

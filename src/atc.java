@@ -1,29 +1,52 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class atc extends atg<GameProfile, atd> {
-   public atc(File $$0) {
-      super($$0);
-   }
+public interface atc extends atf {
+   Set<String> a();
 
-   @Override
-   protected atf<GameProfile> a(JsonObject $$0) {
-      return new atd($$0);
-   }
+   List<ata> a(ajt var1);
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(atf::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+   Map<ajt, ata> b(String var1, Predicate<ajt> var2);
 
-   public boolean a(GameProfile $$0) {
-      atd $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
+   Map<ajt, List<ata>> c(String var1, Predicate<ajt> var2);
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   Stream<aro> b();
+
+   public static enum a implements atc {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<ata> getResource(ajt $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<ata> a(ajt $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ajt, ata> b(String $$0, Predicate<ajt> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ajt, List<ata>> c(String $$0, Predicate<ajt> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aro> b() {
+         return Stream.of();
+      }
    }
 }

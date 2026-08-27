@@ -1,23 +1,26 @@
-import io.netty.buffer.ByteBuf;
+public record zw(long c, ib d) implements zo {
+   public static final ye<vg, zw> a = zo.a(zw::a, zw::new);
+   public static final zo.b<zw> b = zo.a("debug/neighbors_update");
 
-public class zw implements yb<zv> {
-   public static final zw a = new zw();
-   public static final xs<ByteBuf, zw> b = xs.a(a);
+   private zw(vg $$0) {
+      this($$0.m(), $$0.e());
+   }
 
-   private zw() {
+   private void a(vg $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<zw> a() {
-      return aaa.a;
+   public zo.b<zw> a() {
+      return b;
    }
 
-   public void a(zv $$0) {
-      $$0.a(this);
+   public long b() {
+      return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public ib c() {
+      return this.d;
    }
 }

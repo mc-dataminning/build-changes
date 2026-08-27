@@ -1,32 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eoc(Optional<cc> b) implements env {
-   public static final Codec<eoc> a = RecordCodecBuilder.create($$0 -> $$0.group(awe.a(cc.a, "predicate").forGetter(eoc::c)).apply($$0, eoc::new));
+public class eoc extends eoo {
+   public static final Codec<eoc> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eoc::new));
 
-   @Override
-   public enw b() {
-      return enx.k;
+   private eoc(List<eqc> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return ImmutableSet.of(enh.i);
+   public eoq b() {
+      return eor.u;
    }
 
-   public boolean a(ekw $$0) {
-      cqm $$1 = $$0.c(enh.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   @Override
+   public crj a(crj $$0, enb $$1) {
+      Float $$2 = $$1.c(epo.j);
+      if ($$2 != null) {
+         axr $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.G();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
+      }
+
+      return $$0;
    }
 
-   public static env.a a(cc.a $$0) {
-      return () -> new eoc(Optional.of($$0.b()));
-   }
-
-   public Optional<cc> c() {
-      return this.b;
+   public static eoo.a<?> c() {
+      return a(eoc::new);
    }
 }

@@ -1,36 +1,24 @@
-public class ggv<T extends bpp, M extends foe<T>> extends ghm<T, M> {
-   private static final ajh a = new ajh("textures/entity/elytra.png");
-   private final fob<T> b;
+public class ggv extends ggo<chb, frn<chb>> {
+   private static final ajt a = new ajt("textures/entity/phantom.png");
 
-   public ggv(gew<T, M> $$0, frb $$1) {
-      super($$0);
-      this.b = new fob<>($$1.a(fre.W));
+   public ggv(gfi.a $$0) {
+      super($$0, new frn<>($$0.a(ftl.aH)), 0.75F);
+      this.a(new gjr<>(this));
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cqm $$10 = $$3.d(bpe.e);
-      if ($$10.a(cqp.nS)) {
-         ajh $$13;
-         if ($$3 instanceof fwr $$11) {
-            gkb $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(civ.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
+   public ajt a(chb $$0) {
+      return a;
+   }
 
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         euf $$17 = gdz.a($$1, fya.a($$13), false, $$10.C());
-         this.b.a($$0, $$17, $$2, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
-      }
+   protected void a(chb $$0, ewi $$1, float $$2) {
+      int $$3 = $$0.r();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(chb $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

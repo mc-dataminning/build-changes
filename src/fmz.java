@@ -1,29 +1,86 @@
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class fmz<E extends box> extends fon<E> {
-   private final float a;
-   private final float b;
+public class fmz {
+   @Nullable
+   private cvl<?> a;
+   private final List<fmz.a> b = Lists.newArrayList();
+   float c;
 
-   public fmz(float $$0, float $$1) {
-      this($$0, $$1, fya::e);
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   public fmz(float $$0, float $$1, Function<ajh, fya> $$2) {
-      super($$2);
-      this.b = $$1;
+   public void a(cvg $$0, int $$1, int $$2) {
+      this.b.add(new fmz.a($$0, $$1, $$2));
+   }
+
+   public fmz.a a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int b() {
+      return this.b.size();
+   }
+
+   @Nullable
+   public cvl<?> c() {
+      return this.a;
+   }
+
+   public void a(cvl<?> $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public void a(eub $$0, euf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(fdc $$0, fbp $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!fjo.r()) {
+         this.c += $$5;
+      }
+
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         fmz.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+         }
+
+         crj $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(gah.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
+         }
+      }
+   }
+
+   public class a {
+      private final cvg b;
+      private final int c;
+      private final int d;
+
+      public a(cvg $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public crj c() {
+         crj[] $$0 = this.b.a();
+         return $$0.length == 0 ? crj.i : $$0[axk.d(fmz.this.c / 30.0F) % $$0.length];
       }
    }
 }

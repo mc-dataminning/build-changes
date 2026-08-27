@@ -1,21 +1,29 @@
-public record abp(vu b, vq.a c) implements yb<aam> {
-   public static final xs<vf, abp> a = xs.a(vw.b, abp::b, vq.a.a, abp::e, abp::new);
+public class abp implements yn<aay> {
+   public static final ye<vg, abp> a = yn.a(abp::a, abp::new);
+   private final boolean b;
 
-   @Override
-   public yd<abp> a() {
-      return aex.C;
+   public abp(boolean $$0) {
+      this.b = $$0;
    }
 
-   public void a(aam $$0) {
+   private abp(vg $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yp<abp> a() {
+      return afj.q;
+   }
+
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public vq.a e() {
-      return this.c;
+   public boolean b() {
+      return this.b;
    }
 }

@@ -1,87 +1,30 @@
-import com.mojang.authlib.GameProfile;
-
-public class fwv extends fwr {
-   private ept g = ept.b;
-   private int cu;
-
-   public fwv(fsa $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.af = true;
+public class fwv extends fxz {
+   fwv(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(bnw $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void m_() {
-      if (this.bq > 0) {
-         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
-         this.bq--;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      if (this.bx > 0) {
-         this.a(this.bx, this.bw);
-         this.bx--;
-      }
-
-      if (this.cu > 0) {
-         this.h(new ept((this.g.c - this.dp().c) / (double)this.cu, (this.g.d - this.dp().d) / (double)this.cu, (this.g.e - this.dp().e) / (double)this.cu));
-         this.cu--;
-      }
-
-      this.cc = this.cd;
-      this.eS();
-      float $$1;
-      if (this.aC() && !this.ey()) {
-         $$1 = (float)Math.min(0.1, this.dp().h());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.cd = this.cd + ($$1 - this.cd) * 0.4F;
-      this.dM().ae().a("push");
-      this.q();
-      this.dM().ae().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.g = new ept($$0, $$1, $$2);
-      this.cu = this.ai().p() + 1;
-   }
-
-   @Override
-   protected void fS() {
-   }
-
-   @Override
-   public void a(vu $$0) {
-      ezi $$1 = ezi.Q();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(aan $$0) {
-      super.a($$0);
-      this.bs();
    }
 }

@@ -1,5 +1,8 @@
-public interface cmc {
-   void a(clq var1, int var2, cqm var3);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(clq var1, int var2, int var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cmc {
 }

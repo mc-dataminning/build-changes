@@ -1,76 +1,140 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class emb extends emi {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<ip<cuw>> c = ki.f.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
-   public static final Codec<emb> a = RecordCodecBuilder.create($$0 -> a($$0).and(awe.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, emb::new));
-   private final Optional<ip<cuw>> d;
+public record emb(emb.a b, byte c, byte d, byte e, Optional<wg> f) {
+   public static final ye<vr, emb> a = ye.a(emb.a.K, emb::c, yc.c, emb::d, yc.c, emb::e, yc.c, emb::f, wi.c, emb::g, emb::new);
 
-   emb(List<env> $$0, Optional<ip<cuw>> $$1) {
-      super($$0);
-      this.d = $$1;
+   public emb(emb.a b, byte c, byte d, byte e, Optional<wg> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   @Override
-   public emk b() {
-      return eml.e;
+   public byte a() {
+      return this.b.b();
    }
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      axd $$2 = $$1.b();
-      Optional<il<cuw>> $$3 = this.d.<il<cuw>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(cqp.qO);
-         List<il.c<cuw>> $$3x = ki.f.h().filter($$0xx -> ((cuw)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cuw)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
+   public boolean b() {
+      return this.b.e();
+   }
+
+   public emb.a c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<wg> g() {
+      return this.f;
+   }
+
+   public static enum a implements aye {
+      a(0, "player", false, true),
+      b(1, "frame", true, true),
+      c(2, "red_marker", false, true),
+      d(3, "blue_marker", false, true),
+      e(4, "target_x", true, false),
+      f(5, "target_point", true, false),
+      g(6, "player_off_map", false, true),
+      h(7, "player_off_limits", false, true),
+      i(8, "mansion", true, 5393476, false, true),
+      j(9, "monument", true, 3830373, false, true),
+      k(10, "banner_white", true, true),
+      l(11, "banner_orange", true, true),
+      m(12, "banner_magenta", true, true),
+      n(13, "banner_light_blue", true, true),
+      o(14, "banner_yellow", true, true),
+      p(15, "banner_lime", true, true),
+      q(16, "banner_pink", true, true),
+      r(17, "banner_gray", true, true),
+      s(18, "banner_light_gray", true, true),
+      t(19, "banner_cyan", true, true),
+      u(20, "banner_purple", true, true),
+      v(21, "banner_blue", true, true),
+      w(22, "banner_brown", true, true),
+      x(23, "banner_green", true, true),
+      y(24, "banner_red", true, true),
+      z(25, "banner_black", true, true),
+      A(26, "red_x", true, false),
+      B(27, "village_desert", true, ekw.w.ak, false, true),
+      C(28, "village_plains", true, ekw.w.ak, false, true),
+      D(29, "village_savanna", true, ekw.w.ak, false, true),
+      E(30, "village_snowy", true, ekw.w.ak, false, true),
+      F(31, "village_taiga", true, ekw.w.ak, false, true),
+      G(32, "jungle_temple", true, ekw.w.ak, false, true),
+      H(33, "swamp_hut", true, ekw.w.ak, false, true);
+
+      public static final IntFunction<emb.a> I = awb.a(emb.a::a, values(), awb.a.a);
+      public static final Codec<emb.a> J = aye.a(emb.a::values);
+      public static final ye<ByteBuf, emb.a> K = yc.a(I, emb.a::a);
+      private final int L;
+      private final String M;
+      private final byte N;
+      private final boolean O;
+      private final int P;
+      private final boolean Q;
+      private final boolean R;
+
+      private a(int $$0, String $$1, boolean $$2, boolean $$3) {
+         this($$0, $$1, $$2, -1, $$3, false);
       }
-   }
 
-   private static cqm a(cqm $$0, cuw $$1, axd $$2) {
-      int $$3 = aww.a($$2, $$1.f(), $$1.a());
-      if ($$0.a(cqp.qO)) {
-         $$0 = new cqm(cqp.uu);
+      private a(int $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+         this.L = $$0;
+         this.M = $$1;
+         this.R = $$4;
+         this.N = (byte)this.ordinal();
+         this.O = $$2;
+         this.P = $$3;
+         this.Q = $$5;
       }
 
-      $$0.a($$1, $$3);
-      return $$0;
-   }
-
-   public static emb.a c() {
-      return new emb.a();
-   }
-
-   public static emi.a<?> d() {
-      return a($$0 -> new emb($$0, Optional.empty()));
-   }
-
-   public static class a extends emi.a<emb.a> {
-      private final List<il<cuw>> a = new ArrayList<>();
-
-      protected emb.a a() {
-         return this;
+      public int a() {
+         return this.L;
       }
 
-      public emb.a a(cuw $$0) {
-         this.a.add($$0.k());
-         return this;
+      public byte b() {
+         return this.N;
+      }
+
+      public boolean d() {
+         return this.Q;
+      }
+
+      public boolean e() {
+         return this.O;
+      }
+
+      public boolean f() {
+         return this.P >= 0;
+      }
+
+      public int g() {
+         return this.P;
+      }
+
+      public boolean h() {
+         return this.R;
       }
 
       @Override
-      public emj b() {
-         return new emb(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ip.a(this.a)));
+      public String c() {
+         return this.M;
       }
    }
 }

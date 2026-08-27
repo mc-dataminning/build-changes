@@ -1,36 +1,30 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class enr implements env {
-   private static final enr b = new enr();
-   public static final Codec<enr> a = Codec.unit(b);
+public class enr extends enw {
+   public static final Codec<enr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kr.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, enr::new)
+   );
+   private final il<cre> j;
 
-   private enr() {
+   private enr(il<cre> $$0, int $$1, int $$2, List<eqc> $$3, List<eop> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public enw b() {
-      return enx.m;
+   public env a() {
+      return ens.c;
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return ImmutableSet.of(enh.j);
+   public void a(Consumer<crj> $$0, enb $$1) {
+      $$0.accept(new crj(this.j));
    }
 
-   public boolean a(ekw $$0) {
-      Float $$1 = $$0.c(enh.j);
-      if ($$1 != null) {
-         axd $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
-   }
-
-   public static env.a c() {
-      return () -> b;
+   public static enw.a<?> a(cyw $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new enr($$0.p().n(), $$1, $$2, $$3, $$4));
    }
 }

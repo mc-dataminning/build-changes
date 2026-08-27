@@ -1,61 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dun {
-   public static final dun a = new dun(false, dae.gz.o(), dae.pL.o(), dae.ej.o(), dae.aQ.o());
-   public static final Codec<dun> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dun::a),
-               dnb.b.optionalFieldOf("air_state", a.b()).forGetter(dun::b),
-               dnb.b.optionalFieldOf("water_state", a.b()).forGetter(dun::c),
-               dnb.b.optionalFieldOf("lava_state", a.b()).forGetter(dun::d),
-               dnb.b.optionalFieldOf("barrier_state", a.b()).forGetter(dun::e)
-            )
-            .apply($$0, dun::new)
-   );
-   private final boolean c;
-   private final dnb d;
-   private final dnb e;
-   private final dnb f;
-   private final dnb g;
+   public static enum a implements aye {
+      a("air"),
+      b("liquid");
 
-   public static dun a(boolean $$0, dnb $$1, dnb $$2, dnb $$3, dnb $$4) {
-      return new dun($$0, $$1, $$2, $$3, $$4);
+      public static final Codec<dun.a> c = aye.a(dun.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 
-   public static dun a(dnb $$0, dnb $$1, dnb $$2, dnb $$3) {
-      return new dun(false, $$0, $$1, $$2, $$3);
-   }
+   public static enum b implements aye {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   public static dun a(boolean $$0, dnb $$1) {
-      return new dun($$0, $$1, a.c(), a.d(), a.e());
-   }
+      public static final Codec<dun.b> l = aye.a(dun.b::values);
+      private final String m;
 
-   private dun(boolean $$0, dnb $$1, dnb $$2, dnb $$3, dnb $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
+      private b(String $$0) {
+         this.m = $$0;
+      }
 
-   public boolean a() {
-      return this.c;
-   }
+      public String a() {
+         return this.m;
+      }
 
-   public dnb b() {
-      return this.d;
-   }
-
-   public dnb c() {
-      return this.e;
-   }
-
-   public dnb d() {
-      return this.f;
-   }
-
-   public dnb e() {
-      return this.g;
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

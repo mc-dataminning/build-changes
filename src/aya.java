@@ -1,63 +1,25 @@
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
+public class aya {
+   private double a;
+   private double b;
+   private double c;
 
-public class aya implements avl {
-   public static final long[] a = new long[0];
-   private final int b;
-
-   public aya(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-      return 0;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-   }
-
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      return 0;
-   }
-
-   @Override
-   public long[] a() {
-      return a;
-   }
-
-   @Override
-   public int b() {
-      return this.b;
-   }
-
-   @Override
-   public int c() {
-      return 0;
-   }
-
-   @Override
-   public void a(IntConsumer $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         $$0.accept(0);
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = axk.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
       }
+
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
    }
 
-   @Override
-   public void a(int[] $$0) {
-      Arrays.fill($$0, 0, this.b, 0);
-   }
-
-   @Override
-   public avl d() {
-      return this;
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

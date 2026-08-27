@@ -1,35 +1,24 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class om extends ol<cqh> {
-   private final CompletableFuture<oq.c<dac>> d;
-   private final Map<avd<dac>, avd<cqh>> g = new HashMap<>();
-
-   public om(kr $$0, CompletableFuture<in.a> $$1, CompletableFuture<oq.c<dac>> $$2) {
-      super($$0, kj.F, $$1, $$0x -> $$0x.k().h());
-      this.d = $$2;
-   }
-
-   public om(kr $$0, CompletableFuture<in.a> $$1, CompletableFuture<oq.c<cqh>> $$2, CompletableFuture<oq.c<dac>> $$3) {
-      super($$0, kj.F, $$1, $$2, $$0x -> $$0x.k().h());
-      this.d = $$3;
-   }
-
-   protected void a(avd<dac> $$0, avd<cqh> $$1) {
-      this.g.put($$0, $$1);
-   }
+public class om implements ol.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected CompletableFuture<in.a> b() {
-      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            ava $$3 = this.c((avd<cqh>)$$2);
-            Optional<ava> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (in.a)$$0;
-      });
+   public tm apply(String $$0, tm $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static tm a(String $$0, tm $$1) {
+      ejh $$2 = new ejh();
+      int $$3 = ub.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
+      }
+
+      tm $$5 = ayq.f.a(ayr.a(), $$1, $$3);
+      $$2.a(kr.e.p(), $$5);
+      return $$2.a(new tm());
    }
 }

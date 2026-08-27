@@ -1,19 +1,151 @@
-public class gdm extends geh<cfv, fos<cfv>> {
-   private static final ajh a = new ajh("textures/entity/zombie/zombie.png");
-   private final float i;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public gdm(gdb.a $$0, float $$1) {
-      super($$0, new foj($$0.a(fre.ah)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new ghf<>(this, $$0.d()));
-      this.a(new ghc<>(this, new foj($$0.a(fre.ai)), new foj($$0.a(fre.aj)), $$0.g()));
+public class gdm implements gdl.a {
+   private final fbp a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gdm.a> d = Lists.newArrayList();
+   private final List<gdm.b> e = Lists.newArrayList();
+
+   public gdm(fbp $$0) {
+      this.a = $$0;
    }
 
-   protected void a(cfv $$0, eub $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   @Override
+   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
+      cyx $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         esa $$6 = new esa($$2, 0.0, $$4);
+         this.d.removeIf(gdm.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         ewm $$7 = $$1.getBuffer(gah.y());
+
+         for (gdm.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               fzx.a($$0, $$7, esq.a(new erv($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
+
+         ewm $$9 = $$1.getBuffer(gah.A());
+
+         for (gdm.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> fzx.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gdm.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gdl.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gdl.a($$0, $$1, ib.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gdm.a $$12 : this.d) {
+            esa $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new erv($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gdl.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         }
+      }
    }
 
-   public ajh a(cfv $$0) {
-      return a;
+   private static void a(ewi $$0, fzz $$1, erv $$2, float $$3, float $$4, float $$5, float $$6) {
+      fba $$7 = fbp.Q().j.n();
+      if ($$7.h()) {
+         esa $$8 = $$7.b().e();
+         gdl.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(ajs<dts> $$0, esa $$1) {
+      this.d.add(new gdm.a(ac.b(), $$0, $$1));
+   }
+
+   public void a(dtw $$0, int $$1) {
+      this.e.add(new gdm.b($$0, $$1));
+   }
+
+   static record a(long a, ajs<dts> b, esa c) {
+
+      public boolean a() {
+         return ac.b() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public ajs<dts> c() {
+         return this.b;
+      }
+
+      public esa d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dtu {
+      public final dtw a;
+      public final int b;
+
+      public b(dtw $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(cyx $$0, esa $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<esa> a(cyx $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public dtw a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(aps $$0, il<dts> $$1, dts.a $$2, esa $$3) {
+         return false;
+      }
    }
 }

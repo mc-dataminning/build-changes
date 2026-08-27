@@ -1,14 +1,17 @@
-public class cpz extends crm {
-   public cpz(dac $$0, dac $$1, cqh.a $$2) {
-      super($$2, $$0, $$1, ih.b);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cpz extends cre {
+   public cpz(cre.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cxe $$0, dnb $$1, ib $$2) {
-      if ($$1.b() instanceof dja $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      $$2.add(this.c().a(n.h));
+   }
 
-      return super.a($$0, $$1, $$2);
+   public wu c() {
+      return wg.c(this.a() + ".desc");
    }
 }

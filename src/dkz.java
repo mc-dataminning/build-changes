@@ -1,110 +1,113 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dkz {
-   private static final String b = "decorated_pot_base";
-   public static final ajg<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final ajg<String> x = a("decorated_pot_side");
-   private static final ajg<String> y = a("angler_pottery_pattern");
-   private static final ajg<String> z = a("archer_pottery_pattern");
-   private static final ajg<String> A = a("arms_up_pottery_pattern");
-   private static final ajg<String> B = a("blade_pottery_pattern");
-   private static final ajg<String> C = a("brewer_pottery_pattern");
-   private static final ajg<String> D = a("burn_pottery_pattern");
-   private static final ajg<String> E = a("danger_pottery_pattern");
-   private static final ajg<String> F = a("explorer_pottery_pattern");
-   private static final ajg<String> G = a("friend_pottery_pattern");
-   private static final ajg<String> H = a("heart_pottery_pattern");
-   private static final ajg<String> I = a("heartbreak_pottery_pattern");
-   private static final ajg<String> J = a("howl_pottery_pattern");
-   private static final ajg<String> K = a("miner_pottery_pattern");
-   private static final ajg<String> L = a("mourner_pottery_pattern");
-   private static final ajg<String> M = a("plenty_pottery_pattern");
-   private static final ajg<String> N = a("prize_pottery_pattern");
-   private static final ajg<String> O = a("sheaf_pottery_pattern");
-   private static final ajg<String> P = a("shelter_pottery_pattern");
-   private static final ajg<String> Q = a("skull_pottery_pattern");
-   private static final ajg<String> R = a("snort_pottery_pattern");
-   private static final Map<cqh, ajg<String>> S = Map.ofEntries(
-      Map.entry(cqp.qK, x),
-      Map.entry(cqp.xF, y),
-      Map.entry(cqp.xG, z),
-      Map.entry(cqp.xH, A),
-      Map.entry(cqp.xI, B),
-      Map.entry(cqp.xJ, C),
-      Map.entry(cqp.xK, D),
-      Map.entry(cqp.xL, E),
-      Map.entry(cqp.xM, F),
-      Map.entry(cqp.xN, G),
-      Map.entry(cqp.xO, H),
-      Map.entry(cqp.xP, I),
-      Map.entry(cqp.xQ, J),
-      Map.entry(cqp.xR, K),
-      Map.entry(cqp.xS, L),
-      Map.entry(cqp.xT, M),
-      Map.entry(cqp.xU, N),
-      Map.entry(cqp.xV, O),
-      Map.entry(cqp.xW, P),
-      Map.entry(cqp.xX, Q),
-      Map.entry(cqp.xY, R)
+public class dkz extends dkh {
+   public static final MapCodec<dkz> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dkz::new));
+   public static final dpt g = dft.aE;
+   protected static final float h = 2.5F;
+   private static final Map<ih, est> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         ih.c,
+         dby.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         ih.d,
+         dby.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         ih.e,
+         dby.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         ih.f,
+         dby.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
 
-   private static ajg<String> a(String $$0) {
-      return ajg.a(kj.ar, new ajh($$0));
+   @Override
+   public MapCodec<dkz> a() {
+      return f;
    }
 
-   public static ajh a(ajg<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   protected dkz(ko $$0, doy.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, ih.c));
+   }
+
+   @Override
+   public String g() {
+      return this.p().a();
+   }
+
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return m($$0);
+   }
+
+   public static est m(doz $$0) {
+      return i.get($$0.c(g));
+   }
+
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      return b($$1, $$2, $$0.c(g));
+   }
+
+   public static boolean b(cza $$0, ib $$1, ih $$2) {
+      ib $$3 = $$1.a($$2.g());
+      doz $$4 = $$0.a_($$3);
+      return $$4.d($$0, $$3, $$2);
    }
 
    @Nullable
-   public static ajg<String> a(cqh $$0) {
-      return S.get($$0);
+   @Override
+   public doz a(cuo $$0) {
+      doz $$1 = this.n();
+      cza $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      ih[] $$4 = $$0.f();
+
+      for (ih $$5 : $$4) {
+         if ($$5.o().d()) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 
-   public static String a(iy<String> $$0) {
-      iy.a($$0, x, "decorated_pot_side");
-      iy.a($$0, y, "angler_pottery_pattern");
-      iy.a($$0, z, "archer_pottery_pattern");
-      iy.a($$0, A, "arms_up_pottery_pattern");
-      iy.a($$0, B, "blade_pottery_pattern");
-      iy.a($$0, C, "brewer_pottery_pattern");
-      iy.a($$0, D, "burn_pottery_pattern");
-      iy.a($$0, E, "danger_pottery_pattern");
-      iy.a($$0, F, "explorer_pottery_pattern");
-      iy.a($$0, G, "friend_pottery_pattern");
-      iy.a($$0, H, "heart_pottery_pattern");
-      iy.a($$0, I, "heartbreak_pottery_pattern");
-      iy.a($$0, J, "howl_pottery_pattern");
-      iy.a($$0, K, "miner_pottery_pattern");
-      iy.a($$0, L, "mourner_pottery_pattern");
-      iy.a($$0, M, "plenty_pottery_pattern");
-      iy.a($$0, N, "prize_pottery_pattern");
-      iy.a($$0, O, "sheaf_pottery_pattern");
-      iy.a($$0, P, "shelter_pottery_pattern");
-      iy.a($$0, Q, "skull_pottery_pattern");
-      iy.a($$0, R, "snort_pottery_pattern");
-      return iy.a($$0, a, "decorated_pot_base");
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dca.a.n() : $$0;
+   }
+
+   @Override
+   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
+      ih $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      ih $$10 = $$4.g();
+      $$1.a(kl.ac, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(g);
    }
 }

@@ -2,16 +2,16 @@ import com.mojang.serialization.Codec;
 import java.util.Optional;
 
 public class dp {
-   public static final Codec<dp> a = ajh.a.xmap(dp::new, dp::a);
-   private final ajh b;
+   public static final Codec<dp> a = ajt.a.xmap(dp::new, dp::a);
+   private final ajt b;
    private boolean c;
    private Optional<hf<du>> d = Optional.empty();
 
-   public dp(ajh $$0) {
+   public dp(ajt $$0) {
       this.b = $$0;
    }
 
-   public Optional<hf<du>> a(ajv $$0) {
+   public Optional<hf<du>> a(akh $$0) {
       if (!this.c) {
          this.d = $$0.a(this.b);
          this.c = true;
@@ -20,7 +20,7 @@ public class dp {
       return this.d;
    }
 
-   public ajh a() {
+   public ajt a() {
       return this.b;
    }
 

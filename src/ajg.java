@@ -1,60 +1,53 @@
-import com.google.common.collect.MapMaker;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Iterator;
 
-public class ajg<T> {
-   private static final ConcurrentMap<ajg.a, ajg<?>> a = new MapMaker().weakValues().makeMap();
-   private final ajh b;
-   private final ajh c;
+public interface ajg<T> {
+   default void a(int $$0, int $$1, int $$2, cvl<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cvq $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
 
-   public static <T> Codec<ajg<T>> a(ajg<? extends iy<T>> $$0) {
-      return ajh.a.xmap($$1 -> a($$0, $$1), ajg::a);
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = axk.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = axk.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
+         }
+      }
    }
 
-   public static <T> xs<ByteBuf, ajg<T>> b(ajg<? extends iy<T>> $$0) {
-      return ajh.b.a($$1 -> a($$0, $$1), ajg::a);
-   }
-
-   public static <T> ajg<T> a(ajg<? extends iy<T>> $$0, ajh $$1) {
-      return a($$0.c, $$1);
-   }
-
-   public static <T> ajg<iy<T>> a(ajh $$0) {
-      return a(kj.a, $$0);
-   }
-
-   private static <T> ajg<T> a(ajh $$0, ajh $$1) {
-      return (ajg<T>)a.computeIfAbsent(new ajg.a($$0, $$1), $$0x -> new ajg($$0x.a, $$0x.b));
-   }
-
-   private ajg(ajh $$0, ajh $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
-   }
-
-   public boolean c(ajg<? extends iy<?>> $$0) {
-      return this.b.equals($$0.a());
-   }
-
-   public <E> Optional<ajg<E>> d(ajg<? extends iy<E>> $$0) {
-      return this.c($$0) ? Optional.of((ajg<E>)this) : Optional.empty();
-   }
-
-   public ajh a() {
-      return this.c;
-   }
-
-   public ajh b() {
-      return this.b;
-   }
-
-   static record a(ajh a, ajh b) {
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

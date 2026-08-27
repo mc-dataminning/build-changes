@@ -1,30 +1,35 @@
-public abstract class ccb extends bql {
-   private static final int ca = 100;
-   private int cb;
+import javax.annotation.Nullable;
 
-   protected ccb(bpd<? extends ccb> $$0, cxb $$1) {
+public abstract class ccb extends bqw {
+   protected ccb(bqb<? extends ccb> $$0, cyx $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(apg $$0) {
-      ta $$1 = new ta();
-      $$1.a("id", this.bz());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.am();
-         return true;
-      } else {
-         return false;
-      }
+   @Nullable
+   @Override
+   protected aul v() {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aul d(bot $$0) {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aul o_() {
+      return null;
    }
 
    @Override
-   public void l() {
-      this.cb++;
-      super.l();
+   public int O() {
+      return 120;
    }
 
-   public boolean gw() {
-      return this.cb > 100;
+   @Override
+   public boolean h(double $$0) {
+      return false;
    }
 }

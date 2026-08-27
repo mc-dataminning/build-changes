@@ -1,23 +1,21 @@
-import java.util.HashSet;
-import java.util.Set;
+public record zz(ib c) implements zo {
+   public static final ye<vg, zz> a = zo.a(zz::a, zz::new);
+   public static final zo.b<zz> b = zo.a("debug/poi_removed");
 
-public record zz(Set<ajh> b) implements yb<zv> {
-   public static final xs<uu, zz> a = yb.a(zz::a, zz::new);
-
-   private zz(uu $$0) {
-      this($$0.a(HashSet::new, uu::q));
+   private zz(vg $$0) {
+      this($$0.e());
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b, uu::a);
+   private void a(vg $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public yd<zz> a() {
-      return aaa.c;
+   public zo.b<zz> a() {
+      return b;
    }
 
-   public void a(zv $$0) {
-      $$0.a(this);
+   public ib b() {
+      return this.c;
    }
 }

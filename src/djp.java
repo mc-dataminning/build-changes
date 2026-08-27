@@ -1,30 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djp extends ddr {
-   public static final MapCodec<djp> c = b(djp::new);
-   protected static final eqm g = dac.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class djp extends dkj implements dbp {
+   public static final MapCodec<djp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cqc.q.fieldOf("color").forGetter(djp::b), u()).apply($$0, djp::new));
+   private final cqc c;
 
    @Override
    public MapCodec<djp> a() {
-      return c;
+      return a;
    }
 
-   public djp(dna.d $$0) {
-      super($$0, ih.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(axd $$0) {
-      return dfh.a($$0);
+   public djp(cqc $$0, doy.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected dac b() {
-      return dae.oA;
-   }
-
-   @Override
-   protected boolean g(dnb $$0) {
-      return dfh.a($$0);
+   public cqc b() {
+      return this.c;
    }
 }

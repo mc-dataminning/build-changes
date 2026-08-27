@@ -1,56 +1,54 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class any implements anv {
-   static final SuggestionProvider<du> b = ($$0, $$1) -> dz.a(a($$0).a(), $$1);
-   public static final Function<String, anw.c> a = $$0 -> new anw.c() {
-         @Override
-         public anv a(CommandContext<du> $$0x) {
-            return new any(any.a($$0), ev.e($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("storage").then($$1.apply(dv.a($$0, ev.a()).suggests(any.b))));
-         }
-      };
-   private final ekd c;
-   private final ajh d;
-
-   static ekd a(CommandContext<du> $$0) {
-      return ((du)$$0.getSource()).l().aL();
+public class any {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
+                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
+                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
+                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
+                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
+                        .then(dv.a("time", fh.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dv.a("add").then(dv.a("time", fh.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
+                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).e())))))
+                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().Y() % 2147483647L)))))
+                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).e().Z() / 24000L % 2147483647L))))
+            )
+      );
    }
 
-   any(ekd $$0, ajh $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private static int a(aps $$0) {
+      return (int)($$0.Z() % 24000L);
    }
 
-   @Override
-   public void a(ta $$0) {
-      this.c.a(this.d, $$0);
+   private static int c(du $$0, int $$1) {
+      $$0.a(() -> wg.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   @Override
-   public ta a() {
-      return this.c.a(this.d);
+   public static int a(du $$0, int $$1) {
+      for (aps $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
+      }
+
+      $$0.a(() -> wg.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   @Override
-   public vu b() {
-      return vu.a("commands.data.storage.modified", vu.a(this.d));
-   }
+   public static int b(du $$0, int $$1) {
+      for (aps $$2 : $$0.l().K()) {
+         $$2.b($$2.Z() + (long)$$1);
+      }
 
-   @Override
-   public vu a(tx $$0) {
-      return vu.a("commands.data.storage.query", vu.a(this.d), tp.c($$0));
-   }
-
-   @Override
-   public vu a(em.g $$0, double $$1, int $$2) {
-      return vu.a("commands.data.storage.get", $$0.a(), vu.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      int $$3 = a($$0.e());
+      $$0.a(() -> wg.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

@@ -1,32 +1,12 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bfe extends bdh {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
-
-   public bfe(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", beh.y, "minecraft:villager");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bfe::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
-                  )
-            )
-      );
-   }
+public class bfe {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
+      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
+      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
+      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
+      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
+      .build();
 }

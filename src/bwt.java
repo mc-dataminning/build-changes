@@ -1,119 +1,68 @@
 import java.util.EnumSet;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class bwt extends bwm {
-   public final cdj a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class bwt extends bxl {
+   private final cdg a;
+   @Nullable
+   private cjt b;
+   private final cyx c;
+   private final float d;
+   private int e;
+   private final cbe f;
 
-   public bwt(cdj $$0, double $$1) {
+   public bwt(cdg $$0, float $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bwm.a.a));
+      this.c = $$0.dM();
+      this.d = $$1;
+      this.f = cbe.b().a((double)$$1);
+      this.a(EnumSet.of(bxl.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gb() && !this.a.gZ()) {
-         List<box> $$0 = this.a.dM().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
-            bpd<?> $$1x = $$0x.ai();
-            return $$1x == bpd.an || $$1x == bpd.be;
-         });
-         cdj $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (box $$3 : $$0) {
-            cdj $$4 = (cdj)$$3;
-            if ($$4.gZ() && !$$4.gY()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (box $$6 : $$0) {
-               cdj $$7 = (cdj)$$6;
-               if ($$7.gb() && !$$7.gY()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.gb() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean b() {
-      if (this.a.gZ() && this.a.ha().bA() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.ha());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
+      if (!this.b.bA()) {
          return false;
+      } else {
+         return this.a.g((bpv)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
+   }
+
+   @Override
+   public void c() {
+      this.a.z(true);
+      this.e = this.a(40 + this.a.ei().a(40));
    }
 
    @Override
    public void d() {
-      this.a.gX();
-      this.b = 2.1;
+      this.a.z(false);
+      this.b = null;
    }
 
    @Override
    public void e() {
-      if (this.a.gZ()) {
-         if (!(this.a.gc() instanceof cey)) {
-            cdj $$0 = this.a.ha();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            ept $$3 = new ept($$0.dr() - this.a.dr(), $$0.dt() - this.a.dt(), $$0.dx() - this.a.dx()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.K().a(this.a.dr() + $$3.c, this.a.dt() + $$3.d, this.a.dx() + $$3.e, this.b);
-         }
-      }
+      this.a.G().a(this.b.dr(), this.b.dv(), this.b.dx(), 10.0F, (float)this.a.Z());
+      this.e--;
    }
 
-   private boolean a(cdj $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gZ()) {
-         return $$0.ha().gb() ? true : this.a($$0.ha(), ++$$1);
-      } else {
-         return false;
+   private boolean a(cjt $$0) {
+      for (bnz $$1 : bnz.values()) {
+         crj $$2 = $$0.b($$1);
+         if (this.a.r() && $$2.a(crm.ry)) {
+            return true;
+         }
+
+         if (this.a.o($$2)) {
+            return true;
+         }
       }
+
+      return false;
    }
 }

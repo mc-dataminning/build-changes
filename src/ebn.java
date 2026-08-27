@@ -1,62 +1,39 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
 public class ebn extends ebl {
    public static final Codec<ebn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dti.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dti.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ebn::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ebn::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dti d;
-   private final dti e;
-   private final int f;
+   protected final int b;
 
-   private ebn(dti $$0, dti $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static ebn a(dti $$0, dti $$1, int $$2) {
-      return new ebn($$0, $$1, $$2);
-   }
-
-   public static ebn a(dti $$0, dti $$1) {
-      return a($$0, $$1, 0);
+   public ebn(bnf $$0, bnf $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public int a(axd $$0, dtl $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return aww.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + aww.b($$0, 0, $$6) + aww.b($$0, 0, $$5);
-         }
+   protected ebm<?> a() {
+      return ebm.g;
+   }
+
+   @Override
+   protected void a(czd $$0, ebl.b $$1, axr $$2, eav $$3, int $$4, ebl.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
    @Override
-   public ebm<?> a() {
-      return ebm.e;
+   public int a(axr $$0, int $$1, eav $$2) {
+      return this.b;
    }
 
    @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   protected boolean a(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

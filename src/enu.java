@@ -1,65 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Predicate;
 
-public record enu(il<dac> b, Optional<db> c) implements env {
-   public static final Codec<enu> a = awe.b(
-      RecordCodecBuilder.create($$0 -> $$0.group(ki.e.r().fieldOf("block").forGetter(enu::c), awe.a(db.a, "properties").forGetter(enu::d)).apply($$0, enu::new)),
-      enu::a
-   );
+public abstract class enu implements enm {
+   protected final List<eqc> e;
+   private final Predicate<enb> a;
 
-   private static DataResult<enu> a(enu $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().n()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   protected enu(List<eqc> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   @Override
-   public enw b() {
-      return enx.j;
+   protected static <T extends enu> P1<Mu<T>, List<eqc>> a(Instance<T> $$0) {
+      return $$0.group(aws.a(eqe.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<ene<?>> a() {
-      return Set.of(enh.g);
+   public void a(enk $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(ekw $$0) {
-      dnb $$1 = $$0.c(enh.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   protected final boolean a(enb $$0) {
+      return this.a.test($$0);
    }
 
-   public static enu.a a(dac $$0) {
-      return new enu.a($$0);
-   }
+   public abstract env a();
 
-   public il<dac> c() {
-      return this.b;
-   }
+   public abstract static class a<T extends enu.a<T>> implements epv<T> {
+      private final Builder<eqc> a = ImmutableList.builder();
 
-   public Optional<db> d() {
-      return this.c;
-   }
+      protected abstract T aC_();
 
-   public static class a implements env.a {
-      private final il<dac> a;
-      private Optional<db> b = Optional.empty();
-
-      public a(dac $$0) {
-         this.a = $$0.r();
+      public T a(eqc.a $$0) {
+         this.a.add($$0.build());
+         return this.aC_();
       }
 
-      public enu.a a(db.a $$0) {
-         this.b = $$0.b();
-         return this;
+      public final T e() {
+         return this.aC_();
       }
 
-      @Override
-      public env build() {
-         return new enu(this.a, this.b);
+      protected List<eqc> f() {
+         return this.a.build();
       }
+
+      public enl.a a(enu.a<?> $$0) {
+         return new enl.a(this, $$0);
+      }
+
+      public enq.a b(enu.a<?> $$0) {
+         return new enq.a(this, $$0);
+      }
+
+      public eny.a c(enu.a<?> $$0) {
+         return new eny.a(this, $$0);
+      }
+
+      public abstract enu b();
    }
 }

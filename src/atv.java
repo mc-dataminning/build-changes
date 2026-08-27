@@ -1,41 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class atv {
-   public static final Codec<atv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atx.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, atv::new)
-   );
-   private final il<atx> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-
-   public atv(il<atx> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class atv extends atu<GameProfile, atw> {
+   public atv(File $$0) {
+      super($$0);
    }
 
-   public il<atx> a() {
-      return this.b;
+   @Override
+   protected att<GameProfile> a(JsonObject $$0) {
+      return new atw($$0);
    }
 
-   public int b() {
-      return this.c;
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(att::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public boolean d() {
-      return this.e;
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

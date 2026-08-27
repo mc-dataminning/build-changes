@@ -1,40 +1,66 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum esv {
-   a("icons"),
-   b("icons", "snapshot");
+public enum esv implements aye {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   private final String[] c;
+   public static final aye.a<esv> t = aye.a(esv::values);
+   public static final IntFunction<esv> u = awb.a(esv::a, values(), awb.a.a);
+   private final int v;
+   private final String w;
 
-   private esv(String... $$0) {
-      this.c = $$0;
+   private esv(int $$0, String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   public List<asg<InputStream>> a(ara $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   public int a() {
+      return this.v;
    }
 
-   public asg<InputStream> b(ara $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
+   @Override
+   public String c() {
+      return this.w;
    }
 
-   private asg<InputStream> a(ara $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      asg<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
-      }
+   @Nullable
+   public static esv a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

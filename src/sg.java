@@ -1,20 +1,9 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class sg implements st {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public void a(rw $$0) {
-      String $$1 = $$0.c().x();
-      if ($$0.q()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
-      } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ac.c($$0.m())});
-      }
-   }
-
-   @Override
-   public void b(rw $$0) {
-   }
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sg {
 }

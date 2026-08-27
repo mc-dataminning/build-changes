@@ -1,132 +1,122 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public class tb extends tq {
-   private static final int c = 16;
-   public static final tb a = new tb(0.0);
-   public static final tz<tb> b = new tz.a<tb>() {
-      public tb a(DataInput $$0, tj $$1) throws IOException {
-         return tb.a(d($$0, $$1));
+public class tb<T> implements sw, te {
+   static final te a = Stream::empty;
+   static final sw b = Stream::empty;
+   private final te c;
+   private final sw d;
+   private final du e;
+   private final Function<tb<T>, T> f;
+
+   @Override
+   public Stream<ib> findStructureBlockPos() {
+      return this.d.findStructureBlockPos();
+   }
+
+   tb(du $$0, Function<tb<T>, T> $$1, te $$2, sw $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   T b() {
+      return this.f.apply(this);
+   }
+
+   public du a() {
+      return this.e;
+   }
+
+   @Override
+   public Stream<tc> findTestFunctions() {
+      return this.c.findTestFunctions();
+   }
+
+   public static class a<T> {
+      private final Function<tb<T>, T> a;
+      private final UnaryOperator<Supplier<Stream<tc>>> b;
+      private final UnaryOperator<Supplier<Stream<ib>>> c;
+
+      public a(Function<tb<T>, T> $$0) {
+         this.a = $$0;
+         this.b = $$0x -> $$0x;
+         this.c = $$0x -> $$0x;
       }
 
-      @Override
-      public tu.b a(DataInput $$0, tu $$1, tj $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      private a(Function<tb<T>, T> $$0, UnaryOperator<Supplier<Stream<tc>>> $$1, UnaryOperator<Supplier<Stream<ib>>> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      private static double d(DataInput $$0, tj $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
+      public tb.a<T> a(int $$0) {
+         return new tb.a<>(this.a, b($$0), b($$0));
       }
 
-      @Override
-      public int c() {
-         return 8;
+      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
+         return $$1 -> {
+            List<Q> $$2 = new LinkedList<>();
+            List<Q> $$3 = ((Stream)$$1.get()).toList();
+
+            for (int $$4 = 0; $$4 < $$0; $$4++) {
+               $$2.addAll($$3);
+            }
+
+            return $$2::stream;
+         };
       }
 
-      @Override
-      public String a() {
-         return "DOUBLE";
+      private T a(du $$0, te $$1, sw $$2) {
+         return new tb<>($$0, this.a, this.b.apply($$1::findTestFunctions)::get, this.c.apply($$2::findStructureBlockPos)::get).b();
       }
 
-      @Override
-      public String b() {
-         return "TAG_Double";
+      public T a(CommandContext<du> $$0, int $$1) {
+         du $$2 = (du)$$0.getSource();
+         return this.a($$2, tb.a, () -> sy.a($$1, $$2.d(), $$2.e()));
       }
 
-      @Override
-      public boolean d() {
-         return true;
+      public T a(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         ib $$2 = ib.a($$1.d());
+         return this.a($$1, tb.a, () -> sy.b($$2, 15, $$1.e()).stream());
       }
-   };
-   private final double w;
 
-   private tb(double $$0) {
-      this.w = $$0;
-   }
+      public T b(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         ib $$2 = ib.a($$1.d());
+         return this.a($$1, tb.a, () -> sy.c($$2, 200, $$1.e()));
+      }
 
-   public static tb a(double $$0) {
-      return $$0 == 0.0 ? a : new tb($$0);
-   }
+      public T c(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         return this.a($$1, tb.a, () -> sy.a(ib.a($$1.d()), $$1.i().K(), $$1.e()));
+      }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
-   }
+      public T d(CommandContext<du> $$0) {
+         return this.a((du)$$0.getSource(), () -> sk.a().stream().filter($$0x -> !$$0x.i()), tb.b);
+      }
 
-   @Override
-   public int a() {
-      return 16;
-   }
+      public T a(CommandContext<du> $$0, String $$1) {
+         return this.a((du)$$0.getSource(), () -> sk.a($$1).filter($$0xx -> !$$0xx.i()), tb.b);
+      }
 
-   @Override
-   public byte b() {
-      return 6;
-   }
+      public T a(CommandContext<du> $$0, boolean $$1) {
+         return this.a((du)$$0.getSource(), () -> sk.c().filter($$1x -> !$$1 || $$1x.h()), tb.b);
+      }
 
-   @Override
-   public tz<tb> c() {
-      return b;
-   }
+      public T b(CommandContext<du> $$0, String $$1) {
+         return this.a((du)$$0.getSource(), () -> Stream.of(td.a($$0, $$1)), tb.b);
+      }
 
-   public tb e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tb && this.w == ((tb)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
-   }
-
-   @Override
-   public void a(ub $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)Math.floor(this.w);
-   }
-
-   @Override
-   public int g() {
-      return aww.a(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(aww.a(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(aww.a(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return this.w;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public tu.b a(tu $$0) {
-      return $$0.a(this.w);
+      public T e(CommandContext<du> $$0) {
+         return this.a($$0, false);
+      }
    }
 }

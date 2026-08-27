@@ -1,12 +1,25 @@
-import java.util.Collection;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
 public interface gln {
-   Collection<ajh> f();
+   ajm a = new ajm("textures", ".png");
 
-   void a(Function<ajh, gln> var1);
+   void a(atc var1, gln.a var2);
 
-   @Nullable
-   glc a(glg var1, Function<glf, gjc> var2, glk var3, ajh var4);
+   glp a();
+
+   public interface a {
+      default void a(ajt $$0, ata $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(ajt var1, gln.b var2);
+
+      void a(Predicate<ajt> var1);
+   }
+
+   public interface b extends Function<glm, gld> {
+      default void a() {
+      }
+   }
 }

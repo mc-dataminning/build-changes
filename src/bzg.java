@@ -1,25 +1,37 @@
-public class bzg extends bzs {
-   public static final float a = 8.0F;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class bzg<T extends bqo> extends bze<T> {
+   private static final int i = 200;
+   private int j = 0;
+
+   public bzg(clf $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bqo> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
+   }
 
    @Override
-   protected boolean a(bpp $$0, bpp $$1) {
-      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && bzy.c($$0, $$1);
-   }
-
-   private boolean e(bpp $$0, bpp $$1) {
-      return !$$0.dP().a(bys.U) && $$1.ai().a(auq.j);
-   }
-
-   private boolean b(bpp $$0) {
-      return $$0.ai().a(auq.i);
-   }
-
-   private boolean f(bpp $$0, bpp $$1) {
-      return $$1.g((box)$$0) <= 64.0;
+   public boolean a() {
+      if (this.j > 0 || !this.e.ei().h()) {
+         return false;
+      } else if (!((clf)this.e).gC()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   protected bys<bpp> b() {
-      return bys.B;
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

@@ -1,99 +1,55 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bya extends bwm {
-   private final bwm a;
-   private final int b;
-   private boolean c;
+public class bya extends bxl {
+   private final bqw a;
+   @Nullable
+   private bqo b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public bya(int $$0, bwm $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(bya $$0) {
-      return this.Q_() && $$0.i() < this.i();
+   public bya(bqw $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(bxl.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
+      this.b = this.a.p();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         esa $$0 = cbi.a(this.a, 16, 7, this.b.dk(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      return !this.a.K().l() && this.b.bA() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
+      this.b = null;
    }
 
    @Override
-   public boolean R_() {
-      return this.a.R_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bwm.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bwm.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bwm k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bya)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public void c() {
+      this.a.K().a(this.c, this.d, this.e, this.f);
    }
 }

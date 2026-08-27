@@ -1,35 +1,17 @@
-public class fyb {
-   private final long[] a;
-   private int b;
-   private int c;
-
-   public fyb(int $$0) {
-      this.a = new long[$$0];
+public class fyb extends fwg {
+   protected fyb(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyi $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
-
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyb($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

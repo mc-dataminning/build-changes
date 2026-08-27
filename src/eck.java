@@ -1,10 +1,29 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public abstract class eck extends ecl {
-   @Override
-   public final Stream<ib> a_(ecj $$0, axd $$1, ib $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class eck extends eca {
+   public static final Codec<eck> b = bmk.b(doz.b).comapFlatMap(eck::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bmk<doz> c;
+
+   private static DataResult<eck> a(bmk<doz> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eck($$0));
    }
 
-   protected abstract boolean a(ecj var1, axd var2, ib var3);
+   public eck(bmk<doz> $$0) {
+      this.c = $$0;
+   }
+
+   public eck(bmk.a<doz> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected ecb<?> a() {
+      return ecb.b;
+   }
+
+   @Override
+   public doz a(axr $$0, ib $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   }
 }

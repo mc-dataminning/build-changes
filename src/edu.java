@@ -1,8 +1,8 @@
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record edu(aso a, iz b, ehf c) {
-   public static edu a(apf $$0) {
-      MinecraftServer $$1 = $$0.o();
-      return new edu($$1.bg(), $$1.bd(), $$1.bb());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface edu {
 }

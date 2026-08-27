@@ -1,29 +1,34 @@
-public class afv implements yb<aez> {
-   public static final xs<uu, afv> a = yb.a(afv::a, afv::new);
-   private final boolean b;
+public class afv implements yn<afl> {
+   public static final ye<vg, afv> a = yn.a(afv::a, afv::new);
+   private final afv.a b;
 
-   public afv(boolean $$0) {
+   public afv(afv.a $$0) {
       this.b = $$0;
    }
 
-   private afv(uu $$0) {
-      this.b = $$0.readBoolean();
+   private afv(vg $$0) {
+      this.b = $$0.b(afv.a.class);
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public yd<afv> a() {
-      return aex.by;
+   public yp<afv> a() {
+      return afj.bm;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public afv.a b() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

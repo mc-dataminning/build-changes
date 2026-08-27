@@ -1,108 +1,54 @@
-import javax.annotation.Nullable;
-
-public class fyj {
-   protected final fxq a;
-   protected final cxb b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public gas.b[] f;
-
-   public fyj(gas $$0, cxb $$1, int $$2, fxq $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+public class fyj extends fxz {
+   fyj(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fyi $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)awu.b.b($$7), (float)awu.b.c($$7), (float)awu.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   protected void a(gas $$0) {
-      if (!ezi.Q().bv()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new gas.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
-      }
-   }
-
+   @Override
    public void a() {
-      for (gas.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.al();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public cxd c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = aww.c($$0);
-      int $$3 = aww.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.I_() + $$12 * 16;
-               gas.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               ib $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
+         if (this.c.a_(ib.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
          }
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.am(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      gas.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyj($$1, $$2, $$3, $$4, $$5, $$6, $$7, awu.b.a(255, 204, 31, 102), this.a);
+      }
    }
 
-   @Nullable
-   protected gas.b a(ib $$0) {
-      int $$1 = aww.a($$0.v() - this.b.I_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = aww.b(aww.a($$0.u(), 16), this.d);
-         int $$3 = aww.b(aww.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
+   public static class b implements fxq<ko> {
+      private final fyi a;
+
+      public b(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyj($$1, $$2, $$3, $$4, $$5, $$6, $$7, awu.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

@@ -1,23 +1,88 @@
-public class gad implements fzs<dlk> {
-   private final fnm a;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-   public gad(fzt.a $$0) {
-      this.a = new fnm($$0.a(fre.r));
+public class gad implements AutoCloseable {
+   private final fzp c;
+   public final euu a;
+   public final euu b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
+
+   public gad(atf $$0, String $$1, euu $$2, euu $$3) throws IOException {
+      this.c = new fzp($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public void a(dlk $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      dnb $$6 = $$0.n();
-      if ($$6.c(dem.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dem.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         euf $$8 = gab.a.a($$3, fya::c);
-         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$2.b();
+   @Override
+   public void close() {
+      this.c.close();
+   }
+
+   public final String a() {
+      return this.c.h();
+   }
+
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
+
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
       }
+
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      fbp $$4 = fbp.Q();
+      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
+      this.c.g();
+      this.b.b(fbp.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      ewd $$5 = ewk.b().d();
+      $$5.a(ewn.b.h, ewg.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      ewe.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
+
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof euu) {
+            ((euu)$$6).d();
+         }
+      }
+   }
+
+   public fzp b() {
+      return this.c;
    }
 }

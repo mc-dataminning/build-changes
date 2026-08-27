@@ -1,18 +1,20 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.gson.JsonObject;
 
-public class eya {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class eya extends eye {
+   public String a;
+   public long b;
+   public long c;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
-   }
+   public static eya a(JsonObject $$0) {
+      eya $$1 = new eya();
 
-   public static void b(long $$0) {
-      a.remove($$0);
-   }
+      try {
+         $$1.a = fab.b("profileUuid", $$0, null);
+         $$1.b = fab.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fab.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
+      }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+      return $$1;
    }
 }

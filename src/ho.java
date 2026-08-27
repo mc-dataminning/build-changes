@@ -68,8 +68,8 @@ public class ho {
       a($$0, "template_rotation", fg.class, hq.a(fg::a));
       a($$0, "heightmap", ek.class, hq.a(ek::a));
       if (aa.aW) {
-         a($$0, "test_argument", sr.class, hq.a(sr::a));
-         a($$0, "test_class", sn.class, hq.a(sn::a));
+         a($$0, "test_argument", td.class, hq.a(td::a));
+         a($$0, "test_class", sz.class, hq.a(sz::a));
       }
 
       return a($$0, "uuid", fi.class, hq.a(fi::a));

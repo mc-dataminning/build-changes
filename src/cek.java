@@ -1,100 +1,49 @@
 import javax.annotation.Nullable;
 
-public class cek extends ceb {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class cek extends cee {
+   public cek(bqb<? extends cek> $$0, cyx $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected aul v() {
+      return aum.pf;
+   }
+
+   @Override
+   protected aul gL() {
+      return aum.pg;
+   }
+
+   @Override
+   protected aul o_() {
+      return aum.pi;
+   }
+
    @Nullable
-   private bou g;
-
-   public cek(cdy $$0) {
-      super($$0);
+   @Override
+   protected aul gu() {
+      return aum.pj;
    }
 
    @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         ept $$0 = this.a.F(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.dr();
-         double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dx();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.ei().k() / 2.0;
-            double $$6 = $$2 + this.a.ei().k() / 2.0;
-            double $$7 = $$3 + this.a.ei().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dM().a(kc.i, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
+   protected aul d(bot $$0) {
+      return aum.pk;
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gk().a(ceo.e);
-         } else {
-            this.a.gk().a(ceo.g);
-         }
-      } else if (this.e == 10) {
-         ept $$0 = new ept(this.a.e.dr() - this.a.dr(), 0.0, this.a.e.dx() - this.a.dx()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.e.dr() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dx() + $$0.e * 5.0 / 2.0;
-         double $$4 = this.a.e.e(0.5);
-         double $$5 = $$4;
-         ib.a $$6 = new ib.a($$2, $$4, $$3);
-
-         while (this.a.dM().u($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(aww.a($$5) + 1);
-         this.g = new bou(this.a.dM(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.b(200);
-         this.g.a(kc.i);
-         this.g.a(new bok(bom.g));
-         this.a.dM().b(this.g);
-      }
+   protected void gT() {
+      this.a(aum.pl, 0.4F, 1.0F);
    }
 
    @Override
-   public void d() {
-      this.e = 0;
-      this.f++;
+   protected void gn() {
+      this.a(aum.ph, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
    }
 
+   @Nullable
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.am();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public ceo<cek> i() {
-      return ceo.f;
-   }
-
-   public void j() {
-      this.f = 0;
+   public bpp a(aps $$0, bpp $$1) {
+      return bqb.as.a((cyx)$$0);
    }
 }

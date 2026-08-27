@@ -1,100 +1,74 @@
-public class fis extends fig<cme> {
-   private static final ajh x = new ajh("container/crafter/disabled_slot");
-   private static final ajh y = new ajh("container/crafter/powered_redstone");
-   private static final ajh z = new ajh("container/crafter/unpowered_redstone");
-   private static final ajh A = new ajh("textures/gui/container/crafter.png");
-   private static final vu B = vu.c("gui.togglable_slot");
-   private final ciu C;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-   public fis(cme $$0, cit $$1, vu $$2) {
-      super($$0, $$1, $$2);
-      this.C = $$1.m;
+public class fis implements AutoCloseable {
+   private static final ajt a = new ajt("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final glk d;
+   private final ajt e;
+   @Nullable
+   private gkw f;
+   private boolean g;
+
+   private fis(glk $$0, ajt $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public static fis a(glk $$0, String $$1) {
+      return new fis($$0, new ajt("minecraft", "worlds/" + ac.a($$1, ajt::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected void a(cnl $$0, int $$1, int $$2, clz $$3) {
-      if ($$0 instanceof cmf && !$$0.h() && !this.C.N_()) {
-         switch ($$3) {
-            case a:
-               if (this.p.e($$1)) {
-                  this.a($$1);
-               } else if (this.p.g().b()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cqm $$4 = this.C.fZ().a($$2);
-               if (this.p.e($$1) && !$$4.b()) {
-                  this.a($$1);
-               }
+   public static fis b(glk $$0, String $$1) {
+      return new fis($$0, new ajt("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(evj $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gkw($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
          }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.p.a($$0, $$1);
-      super.a($$0, this.p.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.C.a(aty.zS.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(fav $$0, cnl $$1) {
-      if ($$1 instanceof cmf $$2 && this.p.e($$1.e)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fav $$0, cmf $$1) {
-      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.r instanceof cmf && !this.p.e(this.r.e) && this.p.g().b() && !this.r.h() && !this.C.N_()) {
-         $$0.a(this.i, B, $$1, $$2);
-      }
-   }
-
-   private void c(fav $$0) {
-      int $$1 = this.g / 2 + 9;
-      int $$2 = this.h / 2 - 48;
-      ajh $$3;
-      if (this.p.l()) {
-         $$3 = y;
       } else {
-         $$3 = z;
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
+   }
 
-      $$0.a($$3, $$1, $$2, 16, 16);
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public ajt b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

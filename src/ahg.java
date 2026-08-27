@@ -1,36 +1,45 @@
-import com.mojang.authlib.GameProfile;
+public class ahg implements yn<afl> {
+   public static final ye<vg, ahg> a = yn.a(ahg::a, ahg::new);
+   private final erw b;
+   private final bnz c;
+   private final int d;
 
-public class ahg implements yb<ahe> {
-   public static final xs<uu, ahg> a = yb.a(ahg::a, ahg::new);
-   private final GameProfile b;
-
-   public ahg(GameProfile $$0) {
-      this.b = $$0;
+   public ahg(bnz $$0, erw $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private ahg(uu $$0) {
-      this.b = $$0.x();
+   private ahg(vg $$0) {
+      this.c = $$0.b(bnz.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
-   public yd<ahg> a() {
-      return ahk.b;
+   public yp<ahg> a() {
+      return afj.ca;
    }
 
-   public void a(ahe $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public GameProfile b() {
+   public bnz b() {
+      return this.c;
+   }
+
+   public erw e() {
       return this.b;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int f() {
+      return this.d;
    }
 }

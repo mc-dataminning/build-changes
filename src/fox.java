@@ -1,18 +1,21 @@
-import java.util.function.Function;
+import com.google.common.base.MoreObjects;
+import java.util.List;
 
-public abstract class fox<E extends box> extends foe<E> {
-   public fox() {
-      this(fya::e);
+public class fox {
+   public static final int a = -1;
+   private final List<fov> b;
+   private final int c;
+
+   public fox(List<fov> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fox(Function<ajh, fya> $$0) {
-      super($$0);
+   public fov a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fov)MoreObjects.firstNonNull(this.b.get($$0), fot.a) : fot.a;
    }
 
-   @Override
-   public void a(eub $$0, euf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public int a() {
+      return this.c;
    }
-
-   public abstract Iterable<frf> d();
 }

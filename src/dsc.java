@@ -1,97 +1,98 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public final class dsc {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dpc> e = ki.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dpc.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dsc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dsc::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dsc::new)
-   );
-   private static final Set<ajg<cya>> f = Set.of(cyh.aa, cyh.Z, cyh.ab);
-   public static final cxd b = new cxd() {
-      @Override
-      public int J_() {
-         return 64;
-      }
-
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dpc g;
-   private final BitSet h;
-
-   private dsc(dpc $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
-
+public class dsc implements AutoCloseable {
+   public static final int d = 1493;
+   private final dse a;
+   protected final DataFixer e;
    @Nullable
-   public static dsc a(ta $$0) {
-      dpc $$1 = dpc.a($$0.l("target_status"));
-      return $$1 == dpc.c ? null : new dsc($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   private volatile efc b;
+
+   public dsc(dsl $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dse($$0, $$1, $$3);
    }
 
-   public static void a(dps $$0) {
-      int $$1 = 4;
-      ib.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dae.F)) {
-            $$0.a($$1x, dae.sJ.o(), false);
+   public boolean b(cye $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public tm a(ajs<cyx> $$0, Supplier<eml> $$1, tm $$2, Optional<ajs<Codec<? extends dqw>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = ayq.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            efc $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
          }
-      });
+      }
+
+      a($$2, $$0, $$3);
+      $$2 = ayq.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         ub.f($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
    }
 
-   public void b(dps $$0) {
-      cxd $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.ak() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               ib.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dae.a.o(), false));
+   private efc a(ajs<cyx> $$0, Supplier<eml> $$1) {
+      efc $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = efc.a($$0, $$1.get());
             }
          }
       }
+
+      return $$2;
    }
 
-   public dpc a() {
-      return this.g;
+   public static void a(tm $$0, ajs<cyx> $$1, Optional<ajs<Codec<? extends dqw>>> $$2) {
+      tm $$3 = new tm();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
    }
 
-   public boolean b() {
-      return !this.h.isEmpty();
+   public static int a(tm $$0) {
+      return ub.b($$0, -1);
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   public CompletableFuture<Optional<tm>> e(cye $$0) {
+      return this.a.a($$0);
    }
 
-   public static cyd a(cyd $$0, dox $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<ajg<cya>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            il<cya> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+   public CompletableFuture<Void> a(cye $$0, tm $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void f(cye $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
+   }
+
+   public void o() {
+      this.a.a(true).join();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public dsa p() {
+      return this.a;
    }
 }

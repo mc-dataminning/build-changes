@@ -8,20 +8,20 @@ public class dj extends cx<dj.a> {
       return dj.a.a;
    }
 
-   public void a(apg $$0, cqm $$1) {
+   public void a(apt $$0, crj $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c) implements cx.a {
       public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(dj.a::a), awe.a(cc.a, "item").forGetter(dj.a::b)).apply($$0, dj.a::new)
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(dj.a::a), aws.a(cc.a, "item").forGetter(dj.a::b)).apply($$0, dj.a::new)
       );
 
       public static an<dj.a> a(br.a $$0, cc.a $$1) {
          return am.W.a(new dj.a(Optional.of(br.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cqm $$0) {
+      public boolean a(crj $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

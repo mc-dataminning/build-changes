@@ -1,459 +1,196 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class ddc extends czp {
-   public static final MapCodec<ddc> c = b(ddc::new);
-   public static final int d = 15;
-   public static final dob e = dnr.aw;
-   public static final dns f = dfp.b;
-   public static final dns g = dfp.c;
-   public static final dns h = dfp.d;
-   public static final dns i = dfp.e;
-   public static final dns j = dfp.f;
-   private static final Map<ih, dns> k = dfp.h.entrySet().stream().filter($$0 -> $$0.getKey() != ih.a).collect(ac.a());
-   private static final eqm l = dac.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eqm m = dac.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final eqm n = dac.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eqm o = dac.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final eqm F = dac.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private final Map<dnb, eqm> G;
-   private static final int H = 60;
-   private static final int I = 30;
-   private static final int J = 15;
-   private static final int K = 5;
-   private static final int L = 100;
-   private static final int M = 60;
-   private static final int N = 20;
-   private static final int O = 5;
-   private final Object2IntMap<dac> P = new Object2IntOpenHashMap();
-   private final Object2IntMap<dac> Q = new Object2IntOpenHashMap();
+public class ddc extends dbk {
+   public static final MapCodec<ddc> a = b(ddc::new);
+   private static final int d = 6;
+   public static final int b = 3;
+   public static final List<dpq> c = List.of(dpp.bp, dpp.bq, dpp.br, dpp.bs, dpp.bt, dpp.bu);
 
    @Override
    public MapCodec<ddc> a() {
-      return c;
+      return a;
    }
 
-   public ddc(dna.d $$0) {
-      super($$0, 1.0F);
-      this.k(
-         this.E
-            .b()
-            .a(e, Integer.valueOf(0))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-            .a(h, Boolean.valueOf(false))
-            .a(i, Boolean.valueOf(false))
-            .a(j, Boolean.valueOf(false))
-      );
-      this.G = ImmutableMap.copyOf(this.E.a().stream().filter($$0x -> $$0x.c(e) == 0).collect(Collectors.toMap(Function.identity(), ddc::m)));
-   }
+   public ddc(doy.d $$0) {
+      super($$0);
+      doz $$1 = this.E.b().a(dft.aE, ih.c);
 
-   private static eqm m(dnb $$0) {
-      eqm $$1 = eqj.a();
-      if ($$0.c(j)) {
-         $$1 = l;
+      for (dpq $$2 : c) {
+         $$1 = $$1.a($$2, Boolean.valueOf(false));
       }
 
-      if ($$0.c(f)) {
-         $$1 = eqj.a($$1, o);
-      }
-
-      if ($$0.c(h)) {
-         $$1 = eqj.a($$1, F);
-      }
-
-      if ($$0.c(g)) {
-         $$1 = eqj.a($$1, n);
-      }
-
-      if ($$0.c(i)) {
-         $$1 = eqj.a($$1, m);
-      }
-
-      return $$1.c() ? b : $$1;
+      this.k($$1);
    }
 
    @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      return this.a($$0, $$3, $$4) ? this.a($$3, $$4, $$0.c(e)) : dae.a.o();
+   protected did b_(doz $$0) {
+      return did.c;
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return this.G.get($$0.a(e, Integer.valueOf(0)));
-   }
-
-   @Override
-   public dnb a(csu $$0) {
-      return this.b($$0.q(), $$0.a());
-   }
-
-   protected dnb b(cwh $$0, ib $$1) {
-      ib $$2 = $$1.d();
-      dnb $$3 = $$0.a_($$2);
-      if (!this.f($$3) && !$$3.d($$0, $$2, ih.b)) {
-         dnb $$4 = this.o();
-
-         for (ih $$5 : ih.values()) {
-            dns $$6 = k.get($$5);
-            if ($$6 != null) {
-               $$4 = $$4.a($$6, Boolean.valueOf(this.f($$0.a_($$1.a($$5)))));
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      if ($$2.c_($$3) instanceof dmo $$7) {
+         if (!$$0.a(avk.av)) {
+            return boc.d;
+         } else {
+            OptionalInt $$9 = this.a($$6, $$1);
+            if ($$9.isEmpty()) {
+               return boc.e;
+            } else if ($$1.c(c.get($$9.getAsInt()))) {
+               return boc.d;
+            } else {
+               a($$2, $$3, $$4, $$7, $$0, $$9.getAsInt());
+               return boc.a($$2.B);
             }
          }
-
-         return $$4;
       } else {
-         return this.o();
+         return boc.e;
       }
    }
 
    @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ih.b) || this.d($$1, $$2);
-   }
-
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      $$1.a($$2, this, a($$1.z));
-      if ($$1.Z().b(cwx.b)) {
-         if (!$$0.a($$1, $$2)) {
-            $$1.a($$2, false);
-         }
-
-         dnb $$4 = $$1.a_($$2.d());
-         boolean $$5 = $$4.a($$1.D_().q());
-         int $$6 = $$0.c(e);
-         if (!$$5 && $$1.ab() && this.a((cxb)$$1, $$2) && $$3.i() < 0.2F + (float)$$6 * 0.03F) {
-            $$1.a($$2, false);
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      if ($$1.c_($$2) instanceof dmo $$5) {
+         OptionalInt $$7 = this.a($$4, $$0);
+         if ($$7.isEmpty()) {
+            return boa.d;
+         } else if (!$$0.c(c.get($$7.getAsInt()))) {
+            return boa.b;
          } else {
-            int $$7 = Math.min(15, $$6 + $$3.a(3) / 2);
-            if ($$6 != $$7) {
-               $$0 = $$0.a(e, Integer.valueOf($$7));
-               $$1.a($$2, $$0, 4);
-            }
-
-            if (!$$5) {
-               if (!this.d($$1, $$2)) {
-                  ib $$8 = $$2.d();
-                  if (!$$1.a_($$8).d($$1, $$8, ih.b) || $$6 > 3) {
-                     $$1.a($$2, false);
-                  }
-
-                  return;
-               }
-
-               if ($$6 == 15 && $$3.a(4) == 0 && !this.f($$1.a_($$2.d()))) {
-                  $$1.a($$2, false);
-                  return;
-               }
-            }
-
-            boolean $$9 = $$1.t($$2).a(aum.ad);
-            int $$10 = $$9 ? -50 : 0;
-            this.a($$1, $$2.h(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.g(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.d(), 250 + $$10, $$3, $$6);
-            this.a($$1, $$2.c(), 250 + $$10, $$3, $$6);
-            this.a($$1, $$2.e(), 300 + $$10, $$3, $$6);
-            this.a($$1, $$2.f(), 300 + $$10, $$3, $$6);
-            ib.a $$11 = new ib.a();
-
-            for (int $$12 = -1; $$12 <= 1; $$12++) {
-               for (int $$13 = -1; $$13 <= 1; $$13++) {
-                  for (int $$14 = -1; $$14 <= 4; $$14++) {
-                     if ($$12 != 0 || $$14 != 0 || $$13 != 0) {
-                        int $$15 = 100;
-                        if ($$14 > 1) {
-                           $$15 += ($$14 - 1) * 100;
-                        }
-
-                        $$11.a($$2, $$12, $$14, $$13);
-                        int $$16 = this.a((cxe)$$1, $$11);
-                        if ($$16 > 0) {
-                           int $$17 = ($$16 + 40 + $$1.aj().a() * 7) / ($$6 + 30);
-                           if ($$9) {
-                              $$17 /= 2;
-                           }
-
-                           if ($$17 > 0 && $$3.a($$15) <= $$17 && (!$$1.ab() || !this.a((cxb)$$1, $$11))) {
-                              int $$18 = Math.min(15, $$6 + $$3.a(5) / 4);
-                              $$1.a($$11, this.a($$1, $$11, $$18), 3);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+            a($$1, $$2, $$3, $$5, $$7.getAsInt());
+            return boa.a($$1.B);
          }
+      } else {
+         return boa.d;
       }
    }
 
-   protected boolean a(cxb $$0, ib $$1) {
-      return $$0.r($$1) || $$0.r($$1.g()) || $$0.r($$1.h()) || $$0.r($$1.e()) || $$0.r($$1.f());
+   private OptionalInt a(erw $$0, doz $$1) {
+      return a($$0, $$1.c(dft.aE)).map($$0x -> {
+         int $$1x = $$0x.j >= 0.5F ? 0 : 1;
+         int $$2 = a($$0x.i);
+         return OptionalInt.of($$2 + $$1x * 3);
+      }).orElseGet(OptionalInt::empty);
    }
 
-   private int n(dnb $$0) {
-      return $$0.b(dnr.C) && $$0.c(dnr.C) ? 0 : this.Q.getInt($$0.b());
-   }
+   private static Optional<erz> a(erw $$0, ih $$1) {
+      ih $$2 = $$0.b();
+      if ($$1 != $$2) {
+         return Optional.empty();
+      } else {
+         ib $$3 = $$0.a().a($$2);
+         esa $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+         double $$5 = $$4.a();
+         double $$6 = $$4.b();
+         double $$7 = $$4.c();
 
-   private int o(dnb $$0) {
-      return $$0.b(dnr.C) && $$0.c(dnr.C) ? 0 : this.P.getInt($$0.b());
-   }
-
-   private void a(cxb $$0, ib $$1, int $$2, axd $$3, int $$4) {
-      int $$5 = this.n($$0.a_($$1));
-      if ($$3.a($$2) < $$5) {
-         dnb $$6 = $$0.a_($$1);
-         if ($$3.a($$4 + 10) < 5 && !$$0.r($$1)) {
-            int $$7 = Math.min($$4 + $$3.a(5) / 4, 15);
-            $$0.a($$1, this.a($$0, $$1, $$7), 3);
-         } else {
-            $$0.a($$1, false);
-         }
-
-         dac $$8 = $$6.b();
-         if ($$8 instanceof dik) {
-            dik.a($$0, $$1);
-         }
+         return switch ($$2) {
+            case c -> Optional.of(new erz((float)(1.0 - $$5), (float)$$6));
+            case d -> Optional.of(new erz((float)$$5, (float)$$6));
+            case e -> Optional.of(new erz((float)$$7, (float)$$6));
+            case f -> Optional.of(new erz((float)(1.0 - $$7), (float)$$6));
+            case a, b -> Optional.empty();
+         };
       }
    }
 
-   private dnb a(cxc $$0, ib $$1, int $$2) {
-      dnb $$3 = a($$0, $$1);
-      return $$3.a(dae.cr) ? $$3.a(e, Integer.valueOf($$2)) : $$3;
-   }
-
-   private boolean d(cwh $$0, ib $$1) {
-      for (ih $$2 : ih.values()) {
-         if (this.f($$0.a_($$1.a($$2)))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private int a(cxe $$0, ib $$1) {
-      if (!$$0.u($$1)) {
+   private static int a(float $$0) {
+      float $$1 = 0.0625F;
+      float $$2 = 0.375F;
+      if ($$0 < 0.375F) {
          return 0;
       } else {
-         int $$2 = 0;
+         float $$3 = 0.6875F;
+         return $$0 < 0.6875F ? 1 : 2;
+      }
+   }
 
-         for (ih $$3 : ih.values()) {
-            dnb $$4 = $$0.a_($$1.a($$3));
-            $$2 = Math.max(this.o($$4), $$2);
+   private static void a(cyx $$0, ib $$1, cjt $$2, dmo $$3, crj $$4, int $$5) {
+      if (!$$0.B) {
+         $$2.b(auw.c.b($$4.f()));
+         aul $$6 = $$4.a(crm.uu) ? aum.fa : aum.eZ;
+         $$3.a($$5, $$4.a(1));
+         $$0.a(null, $$1, $$6, aun.e, 1.0F, 1.0F);
+         if ($$2.f()) {
+            $$4.f(1);
+         }
+      }
+   }
+
+   private static void a(cyx $$0, ib $$1, cjt $$2, dmo $$3, int $$4) {
+      if (!$$0.B) {
+         crj $$5 = $$3.a($$4, 1);
+         aul $$6 = $$5.a(crm.uu) ? aum.fd : aum.fc;
+         $$0.a(null, $$1, $$6, aun.e, 1.0F, 1.0F);
+         if (!$$2.fZ().e($$5)) {
+            $$2.a($$5, false);
          }
 
-         return $$2;
+         $$0.a($$2, dts.c, $$1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dmf a(ib $$0, doz $$1) {
+      return new dmo($$0, $$1);
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(dft.aE);
+      c.forEach($$1 -> $$0.a($$1));
+   }
+
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dmo $$6 && !$$6.ah_()) {
+            for (int $$7 = 0; $$7 < 6; $$7++) {
+               crj $$8 = $$6.a($$7);
+               if (!$$8.d()) {
+                  bnw.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
+               }
+            }
+
+            $$6.a();
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected boolean f(dnb $$0) {
-      return this.o($$0) > 0;
+   public doz a(cuo $$0) {
+      return this.n().a(dft.aE, $$0.g().g());
    }
 
    @Override
-   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      super.b($$0, $$1, $$2, $$3, $$4);
-      $$1.a($$2, this, a($$1.z));
-   }
-
-   private static int a(axd $$0) {
-      return 30 + $$0.a(10);
+   public doz a(doz $$0, dik $$1) {
+      return $$0.a(dft.aE, $$1.a($$0.c(dft.aE)));
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(e, f, g, h, i, j);
+   public doz a(doz $$0, dgu $$1) {
+      return $$0.a($$1.a($$0.c(dft.aE)));
    }
 
-   public void a(dac $$0, int $$1, int $$2) {
-      this.P.put($$0, $$1);
-      this.Q.put($$0, $$2);
+   @Override
+   protected boolean d_(doz $$0) {
+      return true;
    }
 
-   public static void b() {
-      ddc $$0 = (ddc)dae.cr;
-      $$0.a(dae.n, 5, 20);
-      $$0.a(dae.o, 5, 20);
-      $$0.a(dae.p, 5, 20);
-      $$0.a(dae.q, 5, 20);
-      $$0.a(dae.r, 5, 20);
-      $$0.a(dae.s, 5, 20);
-      $$0.a(dae.t, 5, 20);
-      $$0.a(dae.u, 5, 20);
-      $$0.a(dae.v, 5, 20);
-      $$0.a(dae.w, 5, 20);
-      $$0.a(dae.jt, 5, 20);
-      $$0.a(dae.ju, 5, 20);
-      $$0.a(dae.jv, 5, 20);
-      $$0.a(dae.jw, 5, 20);
-      $$0.a(dae.jx, 5, 20);
-      $$0.a(dae.jy, 5, 20);
-      $$0.a(dae.jz, 5, 20);
-      $$0.a(dae.jA, 5, 20);
-      $$0.a(dae.jB, 5, 20);
-      $$0.a(dae.jC, 5, 20);
-      $$0.a(dae.fh, 5, 20);
-      $$0.a(dae.jV, 5, 20);
-      $$0.a(dae.jW, 5, 20);
-      $$0.a(dae.jX, 5, 20);
-      $$0.a(dae.jY, 5, 20);
-      $$0.a(dae.jZ, 5, 20);
-      $$0.a(dae.ka, 5, 20);
-      $$0.a(dae.kb, 5, 20);
-      $$0.a(dae.kc, 5, 20);
-      $$0.a(dae.dU, 5, 20);
-      $$0.a(dae.kd, 5, 20);
-      $$0.a(dae.ke, 5, 20);
-      $$0.a(dae.kf, 5, 20);
-      $$0.a(dae.kg, 5, 20);
-      $$0.a(dae.kh, 5, 20);
-      $$0.a(dae.ki, 5, 20);
-      $$0.a(dae.kj, 5, 20);
-      $$0.a(dae.kk, 5, 20);
-      $$0.a(dae.cu, 5, 20);
-      $$0.a(dae.fL, 5, 20);
-      $$0.a(dae.fK, 5, 20);
-      $$0.a(dae.fM, 5, 20);
-      $$0.a(dae.hP, 5, 20);
-      $$0.a(dae.hQ, 5, 20);
-      $$0.a(dae.hR, 5, 20);
-      $$0.a(dae.hS, 5, 20);
-      $$0.a(dae.hT, 5, 20);
-      $$0.a(dae.hU, 5, 20);
-      $$0.a(dae.U, 5, 5);
-      $$0.a(dae.V, 5, 5);
-      $$0.a(dae.W, 5, 5);
-      $$0.a(dae.X, 5, 5);
-      $$0.a(dae.Y, 5, 5);
-      $$0.a(dae.Z, 5, 5);
-      $$0.a(dae.aa, 5, 5);
-      $$0.a(dae.ab, 5, 5);
-      $$0.a(dae.ae, 5, 5);
-      $$0.a(dae.al, 5, 5);
-      $$0.a(dae.af, 5, 5);
-      $$0.a(dae.ag, 5, 5);
-      $$0.a(dae.ah, 5, 5);
-      $$0.a(dae.ai, 5, 5);
-      $$0.a(dae.aj, 5, 5);
-      $$0.a(dae.ak, 5, 5);
-      $$0.a(dae.am, 5, 5);
-      $$0.a(dae.an, 5, 5);
-      $$0.a(dae.aw, 5, 5);
-      $$0.a(dae.ax, 5, 5);
-      $$0.a(dae.ay, 5, 5);
-      $$0.a(dae.az, 5, 5);
-      $$0.a(dae.aA, 5, 5);
-      $$0.a(dae.aB, 5, 5);
-      $$0.a(dae.aC, 5, 5);
-      $$0.a(dae.aD, 5, 5);
-      $$0.a(dae.ao, 5, 5);
-      $$0.a(dae.ap, 5, 5);
-      $$0.a(dae.aq, 5, 5);
-      $$0.a(dae.ar, 5, 5);
-      $$0.a(dae.as, 5, 5);
-      $$0.a(dae.at, 5, 5);
-      $$0.a(dae.au, 5, 5);
-      $$0.a(dae.av, 5, 5);
-      $$0.a(dae.ac, 5, 20);
-      $$0.a(dae.aE, 30, 60);
-      $$0.a(dae.aF, 30, 60);
-      $$0.a(dae.aG, 30, 60);
-      $$0.a(dae.aH, 30, 60);
-      $$0.a(dae.aI, 30, 60);
-      $$0.a(dae.aJ, 30, 60);
-      $$0.a(dae.aK, 30, 60);
-      $$0.a(dae.aL, 30, 60);
-      $$0.a(dae.cl, 30, 20);
-      $$0.a(dae.ck, 15, 100);
-      $$0.a(dae.bt, 60, 100);
-      $$0.a(dae.bu, 60, 100);
-      $$0.a(dae.bv, 60, 100);
-      $$0.a(dae.iD, 60, 100);
-      $$0.a(dae.iE, 60, 100);
-      $$0.a(dae.iF, 60, 100);
-      $$0.a(dae.iG, 60, 100);
-      $$0.a(dae.iH, 60, 100);
-      $$0.a(dae.iI, 60, 100);
-      $$0.a(dae.bR, 60, 100);
-      $$0.a(dae.bT, 60, 100);
-      $$0.a(dae.bU, 60, 100);
-      $$0.a(dae.bV, 60, 100);
-      $$0.a(dae.bW, 60, 100);
-      $$0.a(dae.bX, 60, 100);
-      $$0.a(dae.bY, 60, 100);
-      $$0.a(dae.bZ, 60, 100);
-      $$0.a(dae.ca, 60, 100);
-      $$0.a(dae.cb, 60, 100);
-      $$0.a(dae.cc, 60, 100);
-      $$0.a(dae.ce, 60, 100);
-      $$0.a(dae.bS, 60, 100);
-      $$0.a(dae.kC, 60, 100);
-      $$0.a(dae.cd, 60, 100);
-      $$0.a(dae.sB, 60, 100);
-      $$0.a(dae.bA, 30, 60);
-      $$0.a(dae.bB, 30, 60);
-      $$0.a(dae.bC, 30, 60);
-      $$0.a(dae.bD, 30, 60);
-      $$0.a(dae.bE, 30, 60);
-      $$0.a(dae.bF, 30, 60);
-      $$0.a(dae.bG, 30, 60);
-      $$0.a(dae.bH, 30, 60);
-      $$0.a(dae.bI, 30, 60);
-      $$0.a(dae.bJ, 30, 60);
-      $$0.a(dae.bK, 30, 60);
-      $$0.a(dae.bL, 30, 60);
-      $$0.a(dae.bM, 30, 60);
-      $$0.a(dae.bN, 30, 60);
-      $$0.a(dae.bO, 30, 60);
-      $$0.a(dae.bP, 30, 60);
-      $$0.a(dae.ff, 15, 100);
-      $$0.a(dae.iB, 5, 5);
-      $$0.a(dae.ij, 60, 20);
-      $$0.a(dae.pd, 15, 20);
-      $$0.a(dae.ik, 60, 20);
-      $$0.a(dae.il, 60, 20);
-      $$0.a(dae.im, 60, 20);
-      $$0.a(dae.in, 60, 20);
-      $$0.a(dae.io, 60, 20);
-      $$0.a(dae.ip, 60, 20);
-      $$0.a(dae.iq, 60, 20);
-      $$0.a(dae.ir, 60, 20);
-      $$0.a(dae.is, 60, 20);
-      $$0.a(dae.it, 60, 20);
-      $$0.a(dae.iu, 60, 20);
-      $$0.a(dae.iv, 60, 20);
-      $$0.a(dae.iw, 60, 20);
-      $$0.a(dae.ix, 60, 20);
-      $$0.a(dae.iy, 60, 20);
-      $$0.a(dae.iz, 60, 20);
-      $$0.a(dae.me, 30, 60);
-      $$0.a(dae.mZ, 60, 60);
-      $$0.a(dae.nS, 60, 60);
-      $$0.a(dae.oa, 30, 20);
-      $$0.a(dae.pc, 5, 20);
-      $$0.a(dae.oi, 60, 100);
-      $$0.a(dae.pf, 5, 20);
-      $$0.a(dae.pe, 30, 20);
-      $$0.a(dae.aM, 30, 60);
-      $$0.a(dae.aN, 30, 60);
-      $$0.a(dae.sv, 15, 60);
-      $$0.a(dae.sw, 15, 60);
-      $$0.a(dae.sx, 60, 100);
-      $$0.a(dae.sy, 30, 60);
-      $$0.a(dae.sz, 30, 60);
-      $$0.a(dae.sD, 60, 100);
-      $$0.a(dae.sE, 60, 100);
-      $$0.a(dae.sF, 60, 100);
-      $$0.a(dae.sG, 30, 60);
-      $$0.a(dae.fg, 15, 100);
+   @Override
+   protected int a(doz $$0, cyx $$1, ib $$2) {
+      if ($$1.x_()) {
+         return 0;
+      } else {
+         return $$1.c_($$2) instanceof dmo $$3 ? $$3.j() + 1 : 0;
+      }
    }
 }

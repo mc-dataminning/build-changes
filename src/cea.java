@@ -1,57 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class cea implements cei {
-   protected final cdy a;
-
-   public cea(cdy $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void a(cdx $$0, ib $$1, bnw $$2, @Nullable ciu $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public ept g() {
-      return null;
-   }
-
-   @Override
-   public float a(bnw $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dp().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cea {
 }

@@ -1,18 +1,22 @@
-public class fvz extends fup {
-   fvz(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.u = 0.5F;
-   }
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
-
-      public a(fwb $$0) {
-         this.a = $$0;
+@FunctionalInterface
+public interface fvz {
+   Logger a = LogUtils.getLogger();
+   fvz b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(fvx.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
+   };
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
+   Optional<fvx> resolve(fvy var1);
 }

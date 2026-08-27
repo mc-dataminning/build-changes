@@ -1,72 +1,88 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class wd {
-   private final int a;
-   private final ObjectList<we> b = new ObjectArrayList();
-   @Nullable
-   private wg c;
+public record wd(String b, List<wd.a> c, xd d) {
+   public static final Codec<wd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wd::a),
+               wd.a.d.listOf().fieldOf("parameters").forGetter(wd::b),
+               xd.b.b.optionalFieldOf("style", xd.a).forGetter(wd::c)
+            )
+            .apply($$0, wd::new)
+   );
 
-   public wd(int $$0) {
-      this.a = $$0;
+   public static wd a(String $$0) {
+      return new wd($$0, List.of(wd.a.a, wd.a.c), xd.a);
+   }
 
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
+   public static wd b(String $$0) {
+      xd $$1 = xd.a.a(n.h).b(true);
+      return new wd($$0, List.of(wd.a.a, wd.a.c), $$1);
+   }
+
+   public static wd c(String $$0) {
+      xd $$1 = xd.a.a(n.h).b(true);
+      return new wd($$0, List.of(wd.a.b, wd.a.c), $$1);
+   }
+
+   public static wd d(String $$0) {
+      return new wd($$0, List.of(wd.a.b, wd.a.a, wd.a.c), xd.a);
+   }
+
+   public wg a(wg $$0, wc.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return wg.a(this.b, $$2).c(this.d);
+   }
+
+   private wg[] b(wg $$0, wc.a $$1) {
+      wg[] $$2 = new wg[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wd.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
+
+      return $$2;
    }
 
-   public void a(wg $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new we($$0, true));
-         this.c = $$0;
+   public String a() {
+      return this.b;
+   }
+
+   public List<wd.a> b() {
+      return this.c;
+   }
+
+   public xd c() {
+      return this.d;
+   }
+
+   public static enum a implements aye {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c().orElse(wf.a)),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<wd.a> d = aye.a(wd.a::values);
+      private final String e;
+      private final wd.a.a f;
+
+      private a(String $$0, wd.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
-   }
 
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
+      public wg a(wg $$0, wc.a $$1) {
+         return this.f.select($$0, $$1);
       }
-   }
 
-   public Optional<wb> a(wb.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<wg> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               we $$4 = (we)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
+      @Override
+      public String c() {
+         return this.e;
+      }
 
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, null);
-               }
-            }
-
-            return Optional.of(new wb($$1));
-         }
+      public interface a {
+         wg select(wg var1, wc.a var2);
       }
    }
 }

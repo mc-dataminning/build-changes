@@ -1,23 +1,28 @@
-public class gfn extends gda<cjz> {
-   public static final ajh a = new ajh("textures/entity/trident.png");
-   private final fqk f;
+public class gfn extends gfh<cgc> {
+   private final gat a;
 
-   public gfn(gdb.a $$0) {
+   public gfn(gfi.a $$0) {
       super($$0);
-      this.f = new fqk($$0.a(fre.bI));
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(cjz $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(aww.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(aww.i($$2, $$0.O, $$0.dE()) + 90.0F));
-      euf $$6 = gdz.c($$4, this.f.a(this.a($$0)), false, $$0.G());
-      this.f.a($$3, $$6, $$5, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(cgc $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      doz $$6 = $$0.u();
+      if ($$6.l() == did.c) {
+         cyx $$7 = $$0.dM();
+         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != did.a) {
+            $$3.a();
+            ib $$8 = ib.a($$0.dr(), $$0.cH().e, $$0.dx());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fzu.b($$6)), false, axr.a(), $$6.a($$0.p()), gla.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   public ajh a(cjz $$0) {
-      return a;
+   public ajt a(cgc $$0) {
+      return gli.e;
    }
 }

@@ -1,35 +1,46 @@
-public class gcs extends gda<cjd> {
-   private static final ajh a = new ajh("textures/entity/enderdragon/dragon_fireball.png");
-   private static final fya f = fya.e(a);
+import org.joml.Matrix4f;
 
-   public gcs(gdb.a $$0) {
-      super($$0);
+public class gcs<T extends dnw> implements gbz<T> {
+   public static final ajt a = new ajt("textures/environment/end_sky.png");
+   public static final ajt b = new ajt("textures/entity/end_portal.png");
+
+   public gcs(gca.a $$0) {
    }
 
-   protected int a(cjd $$0, ib $$1) {
-      return 15;
+   public void a(T $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
    }
 
-   public void a(cjd $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      eub.a $$6 = $$3.c();
-      euf $$7 = $$4.getBuffer(f);
-      a($$7, $$6, $$5, 0.0F, 0, 0, 1);
-      a($$7, $$6, $$5, 1.0F, 0, 1, 1);
-      a($$7, $$6, $$5, 1.0F, 1, 1, 0);
-      a($$7, $$6, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(T $$0, Matrix4f $$1, ewm $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ih.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ih.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ih.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ih.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ih.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ih.b);
    }
 
-   private static void a(euf $$0, eub.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(git.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
+   private void a(T $$0, Matrix4f $$1, ewm $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ih $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
+      }
    }
 
-   public ajh a(cjd $$0) {
-      return a;
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gah d() {
+      return gah.u();
    }
 }

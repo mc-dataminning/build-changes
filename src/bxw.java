@@ -1,30 +1,27 @@
-public class bxw extends bwm {
-   private final bpx a;
+import javax.annotation.Nullable;
 
-   public bxw(bpx $$0) {
-      this.a = $$0;
+public class bxw extends byi {
+   private static final int i = 10;
+   private static final int j = 7;
+
+   public bxw(bqw $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(aus.a);
+      aps $$0 = (aps)this.b.dM();
+      ib $$1 = this.b.dm();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public void c() {
-      ib $$0 = null;
-
-      for (ib $$2 : ib.b(
-         aww.a(this.a.dr() - 2.0), aww.a(this.a.dt() - 2.0), aww.a(this.a.dx() - 2.0), aww.a(this.a.dr() + 2.0), this.a.ds(), aww.a(this.a.dx() + 2.0)
-      )) {
-         if (this.a.dM().b_($$2).a(aus.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   protected esa h() {
+      aps $$0 = (aps)this.b.dM();
+      ib $$1 = this.b.dm();
+      je $$2 = je.a($$1);
+      je $$3 = bsi.a($$0, $$2, 2);
+      return $$3 != $$2 ? cbi.a(this.b, 10, 7, esa.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

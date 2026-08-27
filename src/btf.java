@@ -1,65 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
+import javax.annotation.Nullable;
 
-public class btf {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
+public class btf extends bsg<bqq> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private ib h;
+   private int i;
+   private int j;
+   private int k;
 
-   public static bri<bpx> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return buu.a(
-         (Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$3 -> $$3.group($$3.c(bys.m), $$3.c(bys.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.X() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        cas $$7 = $$4x.y();
-                        Optional<ib> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(caw.n), $$5.dm(), 48, cas.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dm()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.X() + (long)$$4x.E_().a(20));
-                           Predicate<ib> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<il<cav>, ib>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(caw.n), $$10, $$5.dm(), 48, cas.b.c).collect(Collectors.toSet());
-                           ejd $$12 = bra.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              ib $$13 = $$12.l();
-                              Optional<il<cav>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new byv($$13, $$0, 1));
-                                 aew.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
+   public btf(float $$0) {
+      super(ImmutableMap.of(bzr.w, bzs.a, bzr.m, bzs.b));
+      this.g = $$0;
+   }
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   protected boolean a(aps $$0, bqq $$1) {
+      return $$1.p_() && this.b($$0, $$1);
+   }
+
+   protected void a(aps $$0, bqq $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(aps $$0, bqq $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(aps $$0, bqq $$1, long $$2) {
+      return $$1.p_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(aps $$0, bqq $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.I().a();
+            this.j--;
+            this.k = 5;
+         }
+      }
+   }
+
+   private void a(bqq $$0, ib $$1) {
+      $$0.dP().a(bzr.m, new bzu($$1, this.g, 0));
+   }
+
+   private boolean b(aps $$0, bqq $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(aps $$0, bqq $$1) {
+      ib $$2 = $$1.dm();
+      ib $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(aps $$0, bqq $$1) {
+      return this.a($$0, $$1.dm());
+   }
+
+   private boolean a(aps $$0, ib $$1) {
+      return $$0.a_($$1).a(avc.R);
+   }
+
+   private Optional<ib> a(bqq $$0) {
+      return $$0.dP().c(bzr.w);
+   }
+
+   private boolean e(aps $$0, bqq $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(aps $$0, bqq $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

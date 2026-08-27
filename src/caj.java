@@ -1,38 +1,41 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class caj {
-   @Nullable
-   public static ept a(bpx $$0, int $$1, int $$2) {
-      boolean $$3 = cak.a($$0, $$1);
-      return can.a($$0, () -> {
-         ib $$4 = can.a($$0.ei(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class caj extends cax<bqo> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public caj() {
+      this(200);
    }
 
-   @Nullable
-   public static ept a(bpx $$0, int $$1, int $$2, ept $$3, double $$4) {
-      ept $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$6 = cak.a($$0, $$1);
-      return can.a($$0, () -> {
-         ib $$6x = can.a($$0.ei(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public caj(int $$0) {
+      super($$0);
    }
 
-   @Nullable
-   public static ept a(bpx $$0, int $$1, int $$2, ept $$3) {
-      ept $$4 = $$0.dk().d($$3);
-      boolean $$5 = cak.a($$0, $$1);
-      return can.a($$0, () -> {
-         ib $$5x = can.a($$0.ei(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   @Override
+   protected void a(aps $$0, bqo $$1) {
+      a($$1);
    }
 
-   @Nullable
-   private static ib a(bpx $$0, int $$1, boolean $$2, ib $$3) {
-      ib $$4 = can.a($$0, $$1, $$0.ei(), $$3);
-      return !cak.a($$4, $$0) && !cak.a($$2, $$0, $$4) && !cak.a($$0.K(), $$4) && !cak.b($$0, $$4) ? $$4 : null;
+   @Override
+   public Set<bzr<?>> a() {
+      return ImmutableSet.of(bzr.g);
+   }
+
+   public static void a(bqo $$0) {
+      Optional<List<bqo>> $$1 = $$0.dP().c(bzr.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bqb.af));
+         if ($$2) {
+            b($$0);
+         }
+      }
+   }
+
+   public static void b(bqo $$0) {
+      $$0.dP().a(bzr.F, true, 599L);
    }
 }

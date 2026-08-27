@@ -1,34 +1,27 @@
-public class gfq extends gda<cff> {
-   private final fym a;
+public class gfq extends ggo<ccn, fqo<ccn>> {
+   private static final ajt a = new ajt("textures/entity/fox/fox.png");
+   private static final ajt i = new ajt("textures/entity/fox/fox_sleep.png");
+   private static final ajt j = new ajt("textures/entity/fox/snow_fox.png");
+   private static final ajt k = new ajt("textures/entity/fox/snow_fox_sleep.png");
 
-   public gfq(gdb.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gfq(gfi.a $$0) {
+      super($$0, new fqo<>($$0.a(ftl.ad)), 0.4F);
+      this.a(new gjg(this, $$0.d()));
    }
 
-   public void a(cff $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.r();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = aww.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gfp.a(this.a, $$0.s(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
+   protected void a(ccn $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gt() || $$0.gn()) {
+         float $$6 = -axk.i($$4, $$0.O, $$0.dE());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
    }
 
-   public ajh a(cff $$0) {
-      return gjb.e;
+   public ajt a(ccn $$0) {
+      if ($$0.u() == ccn.v.a) {
+         return $$0.fI() ? i : a;
+      } else {
+         return $$0.fI() ? k : j;
+      }
    }
 }

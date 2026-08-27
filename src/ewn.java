@@ -1,125 +1,162 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ewn extends gpe {
-   private static final vu a = vu.c("mco.backup.info.title");
-   private static final vu b = vu.c("mco.backup.unknown");
-   private final fhh c;
-   final eux v;
-   final fev w = new fev(this);
-   private ewn.a x;
+public class ewn {
+   private final ImmutableList<ewo> a;
+   private final ImmutableMap<String, ewo> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
+   @Nullable
+   private ewl e;
 
-   public ewn(fhh $$0, eux $$1) {
-      super(a);
-      this.c = $$0;
-      this.v = $$1;
+   public ewn(ImmutableMap<String, ewo> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
+
+      while (var3.hasNext()) {
+         ewo $$2 = (ewo)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
+      }
+
+      this.d = $$1;
    }
 
    @Override
-   public void aO_() {
-      this.w.a(new fcp(a, this.i));
-      this.x = this.w.c(new ewn.a(this.f));
-      this.w.b(fbi.a(vt.k, $$0 -> this.d()).a());
-      this.c();
-      this.w.a($$1 -> {
-         fbg var10000 = this.c($$1);
-      });
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   }
+
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<ewo> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
    }
 
    @Override
-   protected void c() {
-      this.x.b(this.g, this.h - this.w.b() - this.w.c());
-      this.w.a();
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.c);
-   }
-
-   vu a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (vu)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : vu.b($$1));
-      }
-   }
-
-   private vu a(String $$0) {
-      try {
-         return exk.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private vu b(String $$0) {
-      try {
-         return exk.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fce<ewn.b> {
-      public a(ezi $$0) {
-         super($$0, ewn.this.g, ewn.this.h - ewn.this.w.b() - ewn.this.w.c(), ewn.this.w.c(), 36);
-         if (ewn.this.v.e != null) {
-            ewn.this.v.e.forEach(($$0x, $$1) -> this.b(ewn.this.new b($$0x, $$1)));
-         }
-      }
-   }
-
-   class b extends fce.a<ewn.b> {
-      private static final vu b = vu.c("mco.backup.entry.templateName");
-      private static final vu c = vu.c("mco.backup.entry.gameDifficulty");
-      private static final vu d = vu.c("mco.backup.entry.name");
-      private static final vu e = vu.c("mco.backup.entry.gameServerVersion");
-      private static final vu f = vu.c("mco.backup.entry.uploaded");
-      private static final vu g = vu.c("mco.backup.entry.enabledPack");
-      private static final vu h = vu.c("mco.backup.entry.description");
-      private static final vu i = vu.c("mco.backup.entry.gameMode");
-      private static final vu j = vu.c("mco.backup.entry.seed");
-      private static final vu k = vu.c("mco.backup.entry.worldType");
-      private static final vu l = vu.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(String $$0, String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(fav $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(ewn.this.i, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(ewn.this.i, ewn.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private vu a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ewn $$1 = (ewn)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<ewo> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<ewo> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ewo $$2 = (ewo)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public ewl g() {
+      ewl $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new ewl(ewl.a.b);
       }
 
-      @Override
-      public vu a() {
-         return vu.a("narrator.select", this.m + " " + this.n);
+      return $$0;
+   }
+
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static ewn.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
       }
    }
 }

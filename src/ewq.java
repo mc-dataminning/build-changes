@@ -1,43 +1,36 @@
-public class ewq extends gpe {
-   private static final vu a = vu.c("mco.client.incompatible.title");
-   private static final vu[] b = new vu[]{
-      vu.c("mco.client.incompatible.msg.line1"), vu.c("mco.client.incompatible.msg.line2"), vu.c("mco.client.incompatible.msg.line3")
-   };
-   private static final vu[] c = new vu[]{vu.c("mco.client.incompatible.msg.line1"), vu.c("mco.client.incompatible.msg.line2")};
-   private final fhh v;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-   public ewq(fhh $$0) {
-      super(a);
-      this.v = $$0;
+public interface ewq {
+   ewq a = a(0.0F, 0.0F, 0.0F);
+   ewq b = a((ewq.a)($$0 -> -$$0.z()));
+
+   static ewq a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   @Override
-   public void aO_() {
-      this.c(fbi.a(vt.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
+   static ewq a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
-      vu[] $$4 = this.E();
+   static ewq a(ewq.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
-      }
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   private vu[] E() {
-      return aa.b().g() ? c : b;
-   }
+   int[] sort(Vector3f[] var1);
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.v);
-         return true;
-      }
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

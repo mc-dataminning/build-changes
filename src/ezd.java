@@ -1,74 +1,99 @@
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record ezd(int a, @Nullable ezd.a b, @Nullable vu c, @Nullable String d) {
-   private static final vu e = vu.c("chat.tag.system");
-   private static final vu f = vu.c("chat.tag.system_single_player");
-   private static final vu g = vu.c("chat.tag.not_secure");
-   private static final vu h = vu.c("chat.tag.modified");
-   private static final vu i = vu.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final ezd l = new ezd(13684944, null, e, "System");
-   private static final ezd m = new ezd(13684944, null, f, "System");
-   private static final ezd n = new ezd(13684944, null, g, "Not Secure");
-   private static final ezd o = new ezd(16733525, null, i, "Chat Error");
-
-   public static ezd a() {
-      return l;
-   }
-
-   public static ezd b() {
-      return m;
-   }
-
-   public static ezd c() {
-      return n;
-   }
-
-   public static ezd a(String $$0) {
-      vu $$1 = vu.b($$0).a(n.h);
-      vu $$2 = vu.i().b(h).b(vt.s).b($$1);
-      return new ezd(6316128, ezd.a.a, $$2, "Modified");
-   }
-
-   public static ezd d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
+public class ezd extends grl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wg b = wg.c("mco.configure.world.buttons.invite");
+   private static final wg c = wg.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final wg y = wg.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final wg z = wg.c("mco.configure.world.players.error").b(-65536);
+   private final fhc A = new fhc(this);
+   private fdy B;
+   private fdp C;
+   private final exp D;
+   private final eyy E;
+   private final fjo F;
    @Nullable
-   public ezd.a f() {
-      return this.b;
+   private wg G;
+
+   public ezd(eyy $$0, fjo $$1, exp $$2) {
+      super(b);
+      this.E = $$0;
+      this.F = $$1;
+      this.D = $$2;
    }
 
-   @Nullable
-   public vu g() {
-      return this.c;
+   @Override
+   public void aN_() {
+      this.A.a(b, this.m);
+      fhg $$0 = this.A.c(fhg.d().a(8));
+      this.B = new fdy(this.j.h, 200, 20, wg.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fgy.a(this.m, this.B, c));
+      this.C = $$0.a(fdp.a(b, $$0x -> this.C()).a(200).a());
+      this.A.b(fdp.a(wf.k, $$0x -> this.d()).a(200).a());
+      this.A.a($$1 -> {
+         fdn var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   @Nullable
-   public String h() {
-      return this.d;
+   @Override
+   protected void c() {
+      this.A.a();
    }
 
-   public static enum a {
-      a(new ajh("icon/chat_modified"), 9, 9);
+   @Override
+   protected void aD_() {
+      this.b(this.B);
+   }
 
-      public final ajh b;
-      public final int c;
-      public final int d;
+   private void C() {
+      if (ayf.h(this.B.a())) {
+         this.a(z);
+      } else {
+         long $$0 = this.D.a;
+         String $$1 = this.B.a().trim();
+         this.C.j = false;
+         this.B.e(false);
+         this.a(y);
+         CompletableFuture.<exp>supplyAsync(() -> {
+            try {
+               return ewy.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.D.h = $$0x.h;
+               this.j.a(new ezk(this.E, this.D));
+            } else {
+               this.a(z);
+            }
 
-      private a(ajh $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+            this.B.e(true);
+            this.C.j = true;
+         }, this.n);
       }
+   }
 
-      public void a(fav $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
+   private void a(wg $$0) {
+      this.G = $$0;
+      this.j.aY().c($$0);
+   }
+
+   @Override
+   public void d() {
+      this.j.a(this.F);
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.G != null) {
+         $$0.a(this.m, this.G, this.k / 2, this.C.D() + this.C.v() + 8, -1);
       }
    }
 }

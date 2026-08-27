@@ -1,61 +1,83 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record eos(eoy b, String c, float d) implements eoq {
-   public static final Codec<eos> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eoz.a.fieldOf("target").forGetter(eos::c),
-               Codec.STRING.fieldOf("score").forGetter(eos::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eos::e)
-            )
+public class eos extends eoo {
+   public static final int a = 0;
+   public static final Codec<eos> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(eqy.a.fieldOf("count").forGetter($$0x -> $$0x.c), aws.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
             .apply($$0, eos::new)
    );
+   private final eqx c;
+   private final int d;
 
-   @Override
-   public eop b() {
-      return eor.e;
+   eos(List<eqc> $$0, eqx $$1, int $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return this.b.b();
-   }
-
-   public static eos a(ekw.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eos a(ekw.b $$0, String $$1, float $$2) {
-      return new eos(eov.a($$0), $$1, $$2);
+   public eoq b() {
+      return eor.j;
    }
 
    @Override
-   public float b(ekw $$0) {
-      eqw $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         eqx $$2 = $$0.d().f();
-         eqp $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            eqt $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+   public Set<epl<?>> a() {
+      return Sets.union(ImmutableSet.of(epo.d), this.c.a());
+   }
+
+   private boolean c() {
+      return this.d > 0;
+   }
+
+   @Override
+   public crj a(crj $$0, enb $$1) {
+      bpv $$2 = $$1.c(epo.d);
+      if ($$2 instanceof bqo) {
+         int $$3 = cwr.h((bqo)$$2);
+         if ($$3 == 0) {
+            return $$0;
+         }
+
+         float $$4 = (float)$$3 * this.c.b($$1);
+         $$0.f(Math.round($$4));
+         if (this.c() && $$0.G() > this.d) {
+            $$0.e(this.d);
          }
       }
+
+      return $$0;
    }
 
-   public eoy c() {
-      return this.b;
+   public static eos.a a(eqx $$0) {
+      return new eos.a($$0);
    }
 
-   public String d() {
-      return this.c;
-   }
+   public static class a extends eoo.a<eos.a> {
+      private final eqx a;
+      private int b = 0;
 
-   public float e() {
-      return this.d;
+      public a(eqx $$0) {
+         this.a = $$0;
+      }
+
+      protected eos.a a() {
+         return this;
+      }
+
+      public eos.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      @Override
+      public eop b() {
+         return new eos(this.g(), this.a, this.b);
+      }
    }
 }

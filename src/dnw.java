@@ -1,14 +1,13 @@
-public enum dnw implements axq {
-   a,
-   b;
-
-   @Override
-   public String toString() {
-      return this.c();
+public class dnw extends dmf {
+   protected dnw(dmh<?> $$0, ib $$1, doz $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public String c() {
-      return this == a ? "left" : "right";
+   public dnw(ib $$0, doz $$1) {
+      this(dmh.n, $$0, $$1);
+   }
+
+   public boolean a(ih $$0) {
+      return $$0.o() == ih.a.b;
    }
 }

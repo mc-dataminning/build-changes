@@ -1,58 +1,157 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Arrays;
 
-public class anx implements anv {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.data.entity.invalid"));
-   public static final Function<String, anw.c> a = $$0 -> new anw.c() {
-         @Override
-         public anv a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            return new anx(eh.a($$0, $$0));
-         }
+public class anx {
+   private static final float a = 10000.0F;
+   private static final String b = String.valueOf(20);
 
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("entity").then($$1.apply(dv.a($$0, eh.a()))));
-         }
-      };
-   private final box c;
-
-   public anx(box $$0) {
-      this.c = $$0;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                 "tick"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(dv.a("query").executes($$0x -> a((du)$$0x.getSource()))))
+                        .then(
+                           dv.a("rate")
+                              .then(
+                                 dv.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
+                                    .suggests(($$0x, $$1) -> dz.a(new String[]{b}, $$1))
+                                    .executes($$0x -> a((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
+                              )
+                        ))
+                     .then(
+                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("step").executes($$0x -> b((du)$$0x.getSource(), 1)))
+                              .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
+                           .then(
+                              dv.a("time", fh.a(1))
+                                 .suggests(($$0x, $$1) -> dz.a(new String[]{"1t", "1s"}, $$1))
+                                 .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           )
+                     ))
+                  .then(
+                     ((LiteralArgumentBuilder)dv.a("sprint").then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
+                        .then(
+                           dv.a("time", fh.a(1))
+                              .suggests(($$0x, $$1) -> dz.a(new String[]{"60s", "1d", "3d"}, $$1))
+                              .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  ))
+               .then(dv.a("unfreeze").executes($$0x -> a((du)$$0x.getSource(), false))))
+            .then(dv.a("freeze").executes($$0x -> a((du)$$0x.getSource(), true)))
+      );
    }
 
-   @Override
-   public void a(ta $$0) throws CommandSyntaxException {
-      if (this.c instanceof ciu) {
-         throw b.create();
+   private static String a(long $$0) {
+      return String.format("%.1f", (float)$$0 / (float)ayj.b);
+   }
+
+   private static int a(du $$0, float $$1) {
+      akl $$2 = $$0.l().aR();
+      $$2.a($$1);
+      String $$3 = String.format("%.1f", $$1);
+      $$0.a(() -> wg.a("commands.tick.rate.success", $$3), true);
+      return (int)$$1;
+   }
+
+   private static int a(du $$0) {
+      akl $$1 = $$0.l().aR();
+      String $$2 = a($$0.l().aS());
+      float $$3 = $$1.f();
+      String $$4 = String.format("%.1f", $$3);
+      if ($$1.a()) {
+         $$0.a(() -> wg.c("commands.tick.status.sprinting"), false);
+         $$0.a(() -> wg.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
       } else {
-         UUID $$1 = this.c.cw();
-         this.c.g($$0);
-         this.c.a_($$1);
+         if ($$1.l()) {
+            $$0.a(() -> wg.c("commands.tick.status.frozen"), false);
+         } else if ($$1.h() < $$0.l().aS()) {
+            $$0.a(() -> wg.c("commands.tick.status.lagging"), false);
+         } else {
+            $$0.a(() -> wg.c("commands.tick.status.running"), false);
+         }
+
+         String $$5 = a($$1.h());
+         $$0.a(() -> wg.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+      }
+
+      long[] $$6 = Arrays.copyOf($$0.l().aT(), $$0.l().aT().length);
+      Arrays.sort($$6);
+      String $$7 = a($$6[$$6.length / 2]);
+      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
+      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
+      $$0.a(() -> wg.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
+      return (int)$$3;
+   }
+
+   private static int a(du $$0, int $$1) {
+      boolean $$2 = $$0.l().aR().b($$1);
+      if ($$2) {
+         $$0.a(() -> wg.c("commands.tick.sprint.stop.success"), true);
+      }
+
+      $$0.a(() -> wg.c("commands.tick.status.sprinting"), true);
+      return 1;
+   }
+
+   private static int a(du $$0, boolean $$1) {
+      akl $$2 = $$0.l().aR();
+      if ($$1) {
+         if ($$2.a()) {
+            $$2.c();
+         }
+
+         if ($$2.j()) {
+            $$2.b();
+         }
+      }
+
+      $$2.a($$1);
+      if ($$1) {
+         $$0.a(() -> wg.c("commands.tick.status.frozen"), true);
+      } else {
+         $$0.a(() -> wg.c("commands.tick.status.running"), true);
+      }
+
+      return $$1 ? 1 : 0;
+   }
+
+   private static int b(du $$0, int $$1) {
+      akl $$2 = $$0.l().aR();
+      boolean $$3 = $$2.a($$1);
+      if ($$3) {
+         $$0.a(() -> wg.a("commands.tick.step.success", $$1), true);
+      } else {
+         $$0.b(wg.c("commands.tick.step.fail"));
+      }
+
+      return 1;
+   }
+
+   private static int b(du $$0) {
+      akl $$1 = $$0.l().aR();
+      boolean $$2 = $$1.b();
+      if ($$2) {
+         $$0.a(() -> wg.c("commands.tick.step.stop.success"), true);
+         return 1;
+      } else {
+         $$0.b(wg.c("commands.tick.step.stop.fail"));
+         return 0;
       }
    }
 
-   @Override
-   public ta a() {
-      return co.b(this.c);
-   }
-
-   @Override
-   public vu b() {
-      return vu.a("commands.data.entity.modified", this.c.O_());
-   }
-
-   @Override
-   public vu a(tx $$0) {
-      return vu.a("commands.data.entity.query", this.c.O_(), tp.c($$0));
-   }
-
-   @Override
-   public vu a(em.g $$0, double $$1, int $$2) {
-      return vu.a("commands.data.entity.get", $$0.a(), this.c.O_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int c(du $$0) {
+      akl $$1 = $$0.l().aR();
+      boolean $$2 = $$1.c();
+      if ($$2) {
+         $$0.a(() -> wg.c("commands.tick.sprint.stop.success"), true);
+         return 1;
+      } else {
+         $$0.b(wg.c("commands.tick.sprint.stop.fail"));
+         return 0;
+      }
    }
 }

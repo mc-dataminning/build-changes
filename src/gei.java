@@ -1,18 +1,19 @@
 import com.google.common.collect.Maps;
+import java.util.Locale;
 import java.util.Map;
 
-public class gei extends geh<cbr, fnx<cbr>> {
-   private static final Map<cbr.a, ajh> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cbr.a.b, new ajh("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cbr.a.a, new ajh("textures/entity/cow/red_mooshroom.png"));
+public class gei extends ggo<cdn, fpo<cdn>> {
+   private static final Map<cdn.d, ajt> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cdn.d $$1 : cdn.d.values()) {
+         $$0.put($$1, new ajt(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
    });
 
-   public gei(gdb.a $$0) {
-      super($$0, new fnx<>($$0.a(fre.aC)), 0.7F);
-      this.a(new ghh<>(this, $$0.c()));
+   public gei(gfi.a $$0) {
+      super($$0, new fpo<>($$0.a(ftl.f)), 0.5F);
    }
 
-   public ajh a(cbr $$0) {
-      return a.get($$0.s());
+   public ajt a(cdn $$0) {
+      return a.get($$0.gn());
    }
 }

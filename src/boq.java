@@ -1,17 +1,142 @@
-class boq extends boi {
-   protected boq(boj $$0, int $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
+
+public class boq {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final xd c = xd.a.a(new we(we.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new wm(wm.a.a, wg.b("MCPE-28723")));
+   private final List<boo> d = Lists.newArrayList();
+   private final bqo e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
+
+   public boq(bqo $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean a(bpp $$0, int $$1) {
-      $$0.a($$0.dN().p(), 1.0F);
-      return true;
+   public void a(bot $$0, float $$1) {
+      this.c();
+      boy $$2 = boy.a(this.e);
+      boo $$3 = new boo($$0, $$1, $$2, this.e.ab);
+      this.d.add($$3);
+      this.f = this.e.ah;
+      this.j = true;
+      if (!this.i && this.e.bA() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ah;
+         this.h = this.g;
+         this.e.f_();
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   private static boolean a(bot $$0) {
+      return $$0.d() instanceof bqo;
+   }
+
+   private wg a(bpv $$0, wg $$1, String $$2, String $$3) {
+      crj $$5 = $$0 instanceof bqo $$4 ? $$4.eU() : crj.i;
+      return !$$5.d() && $$5.b(jp.d) ? wg.a($$2, this.e.O_(), $$1, $$5.E()) : wg.a($$3, this.e.O_(), $$1);
+   }
+
+   private wg a(boo $$0, @Nullable bpv $$1) {
+      bot $$2 = $$0.a();
+      if (!$$2.a(ave.n) && !$$2.a(ave.t)) {
+         wg $$4 = a($$1);
+         bpv $$5 = $$2.d();
+         wg $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (wg)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : wg.a("death.fell.killer", this.e.O_()));
+         }
+      } else {
+         boy $$3 = Objects.requireNonNullElse($$0.c(), boy.a);
+         return wg.a($$3.a(), this.e.O_());
+      }
+   }
+
+   @Nullable
+   private static wg a(@Nullable bpv $$0) {
+      return $$0 == null ? null : $$0.O_();
+   }
+
+   public wg a() {
+      if (this.d.isEmpty()) {
+         return wg.a("death.attack.generic", this.e.O_());
+      } else {
+         boo $$0 = this.d.get(this.d.size() - 1);
+         bot $$1 = $$0.a();
+         boo $$2 = this.d();
+         box $$3 = $$1.j().e();
+         if ($$3 == box.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == box.c) {
+            String $$4 = "death.attack." + $$1.e();
+            wg $$5 = wj.a((wg)wg.c($$4 + ".link")).c(c);
+            return wg.a($$4 + ".message", this.e.O_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
+   }
+
+   @Nullable
+   private boo d() {
+      boo $$0 = null;
+      boo $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         boo $$5 = this.d.get($$4);
+         boo $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bot $$7 = $$5.a();
+         boolean $$8 = $$7.a(ave.t);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(ave.n) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.ah - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bA() || this.e.ah - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ah;
+         if ($$1) {
+            this.e.g_();
+         }
+
+         this.d.clear();
+      }
    }
 }

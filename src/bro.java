@@ -1,34 +1,35 @@
-import com.google.common.collect.ImmutableMap;
+public class bro {
+   private float a;
+   private float b;
+   private float c;
 
-public class bro extends brh<ccw> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bro() {
-      super(ImmutableMap.of(bys.m, byt.b), 100);
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   protected boolean a(apf $$0, ccw $$1) {
-      return $$1.ap() == bqa.a;
+   public void a(float $$0, float $$1) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
    }
 
-   protected boolean a(apf $$0, ccw $$1, long $$2) {
-      return this.e < 60;
+   public float a() {
+      return this.b;
    }
 
-   protected void b(apf $$0, ccw $$1, long $$2) {
-      if (!$$1.bg()) {
-         $$1.b(bqa.i);
-         this.e = 0;
-      }
+   public float b(float $$0) {
+      return axk.i($$0, this.a, this.b);
    }
 
-   protected void c(apf $$0, ccw $$1, long $$2) {
-      $$1.b(bqa.a);
+   public float b() {
+      return this.c;
    }
 
-   protected void d(apf $$0, ccw $$1, long $$2) {
-      this.e++;
+   public float c(float $$0) {
+      return this.c - this.b * (1.0F - $$0);
+   }
+
+   public boolean c() {
+      return this.b > 1.0E-5F;
    }
 }

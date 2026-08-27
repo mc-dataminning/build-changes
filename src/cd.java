@@ -9,31 +9,31 @@ public class cd extends cx<cd.a> {
       return cd.a.a;
    }
 
-   public void a(apg $$0, ib $$1, cqm $$2) {
-      apf $$3 = $$0.z();
-      dnb $$4 = $$3.a_($$1);
-      elc $$5 = new elc.a($$3).a(enh.f, $$1.b()).a(enh.a, $$0).a(enh.g, $$4).a(enh.i, $$2).a(eng.n);
-      ekw $$6 = new ekw.a($$5).a(Optional.empty());
+   public void a(apt $$0, ib $$1, crj $$2) {
+      aps $$3 = $$0.z();
+      doz $$4 = $$3.a_($$1);
+      enh $$5 = new enh.a($$3).a(epo.f, $$1.b()).a(epo.a, $$0).a(epo.g, $$4).a(epo.i, $$2).a(epn.n);
+      enb $$6 = new enb.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c) implements cx.a {
       public static final Codec<cd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cd.a::a), awe.a(bc.a, "location").forGetter(cd.a::b)).apply($$0, cd.a::new)
+         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(cd.a::a), aws.a(bc.a, "location").forGetter(cd.a::b)).apply($$0, cd.a::new)
       );
 
-      public static an<cd.a> a(dac $$0) {
-         bc $$1 = bc.a(enu.a($$0).build());
+      public static an<cd.a> a(dby $$0) {
+         bc $$1 = bc.a(eqb.a($$0).build());
          return am.z.a(new cd.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static an<cd.a> a(env.a... $$0) {
-         bc $$1 = bc.a(Arrays.stream($$0).map(env.a::build).toArray(env[]::new));
+      public static an<cd.a> a(eqc.a... $$0) {
+         bc $$1 = bc.a(Arrays.stream($$0).map(eqc.a::build).toArray(eqc[]::new));
          return am.z.a(new cd.a(Optional.empty(), Optional.of($$1)));
       }
 
       private static cd.a c(ck.a $$0, cc.a $$1) {
-         bc $$2 = bc.a(ent.a($$0).build(), eoc.a($$1).build());
+         bc $$2 = bc.a(eqa.a($$0).build(), eqj.a($$1).build());
          return new cd.a(Optional.empty(), Optional.of($$2));
       }
 
@@ -45,14 +45,14 @@ public class cd extends cx<cd.a> {
          return am.aa.a(c($$0, $$1));
       }
 
-      public boolean a(ekw $$0) {
+      public boolean a(enb $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bd $$0) {
          cx.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, eng.n, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, epn.n, ".location"));
       }
 
       @Override

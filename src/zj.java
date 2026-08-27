@@ -1,35 +1,42 @@
-public record zj(zj.a c) implements zc {
-   public static final xs<uu, zj> a = zc.a(zj::a, zj::new);
-   public static final zc.b<zj> b = zc.a("debug/hive");
+import java.util.UUID;
 
-   private zj(uu $$0) {
-      this(new zj.a($$0));
+public record zj(UUID b, zj.a c) implements yn<ze> {
+   public static final ye<vg, zj> a = yn.a(zj::a, zj::new);
+
+   private zj(vg $$0) {
+      this($$0.n(), $$0.b(zj.a.class));
    }
 
-   private void a(uu $$0) {
-      this.c.a($$0);
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zc.b<zj> a() {
-      return b;
+   public yp<zj> a() {
+      return zd.n;
    }
 
-   public zj.a b() {
+   public void a(ze $$0) {
+      $$0.a(this);
+   }
+
+   public zj.a e() {
       return this.c;
    }
 
-   public static record a(ib a, String b, int c, int d, boolean e) {
-      public a(uu $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
 
-      public void a(uu $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
+      public boolean a() {
+         return this != d && this != e;
       }
    }
 }

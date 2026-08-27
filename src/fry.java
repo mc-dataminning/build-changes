@@ -1,98 +1,70 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class fry extends frx implements vi, zv {
-   private static final Logger i = LogUtils.getLogger();
-   private final GameProfile j;
-   private clh k;
-   private final iz.b l;
-   private final fsn m = new fsn();
-   @Nullable
-   private fsg n;
+public class fry extends fre<clq> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final ftm g;
+   private final ftm h;
+   private final ImmutableList<ftm> i;
 
-   public fry(ezi $$0, us $$1, fse $$2) {
-      super($$0, $$1, $$2);
-      this.j = $$2.a();
-      this.l = $$2.c();
-      this.k = $$2.d();
+   public fry(ftm $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   protected Builder<ftm> a(ftm $$0) {
+      Builder<ftm> $$1 = new Builder();
+      $$1.add(new ftm[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   @Override
-   protected void a(zc $$0) {
-      this.b($$0);
+   public static void a(ftv $$0) {
+      $$0.a(
+         "bottom",
+         ftr.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fto.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         ftr.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fto.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         ftr.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fto.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   private void b(zc $$0) {
-      i.warn("Unknown custom packet payload: {}", $$0.a().a());
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      a($$1);
+      return fts.a($$0, 128, 64);
    }
 
-   @Override
-   public void a(zx $$0) {
-      ye.a($$0, this, this.a);
-      this.m.a($$0.b(), $$0.e());
+   public void a(clq $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
    }
 
-   @Override
-   public void a(yq $$0) {
-      ye.a($$0, this, this.a);
-      this.m.a($$0.b());
+   public ImmutableList<ftm> c() {
+      return this.i;
    }
 
-   @Override
-   public void a(zz $$0) {
-      this.k = clj.e.a($$0.b());
-   }
-
-   @Override
-   public void a(zy $$0) {
-      ye.a($$0, this, this.a);
-      if (this.n == null) {
-         this.n = new fsg();
+   private static void a(clq $$0, int $$1, ftm $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = axk.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axk.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = axk.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axk.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      List<arv> $$1 = this.n.a($$0.b());
-      this.b(new aae($$1));
-   }
-
-   private <T> T a(Function<asr, T> $$0) {
-      if (this.n == null) {
-         return $$0.apply(asr.b);
-      } else {
-         Object var3;
-         try (ase $$1 = this.n.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(zw $$0) {
-      ye.a($$0, this, this.a);
-      iz.b $$1 = this.a($$0x -> this.m.a($$0x, this.l, this.b.e()));
-      this.b.a(aey.b.bind(vf.a($$1)), new fsb(this.a, this.b, new fse(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
-      this.b.a(aad.a);
-      this.b.a(aey.a.bind(vf.a($$1)));
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   @Override
-   public void a(vu $$0) {
-      super.a($$0);
-      this.a.B();
    }
 }

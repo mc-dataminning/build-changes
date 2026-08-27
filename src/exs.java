@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface exs {
+public class exs extends eye {
+   public volatile String a = "0";
+   public volatile String b = "";
 }

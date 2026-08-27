@@ -1,178 +1,72 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+public class fdz extends fdj {
+   private final fda a;
+   private final fej b;
 
-public class fdz implements AutoCloseable {
-   private static final axd a = axd.a();
-   private static final float b = 32.0F;
-   private final gjd c;
-   private final ajh d;
-   private fed e;
-   private fed f;
-   private List<ese.a> g = List.of();
-   private List<ese> h = List.of();
-   private final fdw<fed> i = new fdw<>(fed[]::new, fed[][]::new);
-   private final fdw<fdz.a> j = new fdw<>(fdz.a[]::new, fdz.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fea> l = Lists.newArrayList();
-
-   public fdz(gjd $$0, ajh $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fdz(int $$0, int $$1, int $$2, int $$3, wg $$4, fda $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fej($$4, $$5).d(this.x() - this.b());
    }
 
-   public void a(List<ese.a> $$0, Set<fdy> $$1) {
-      this.g = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fdy> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fef.b.bake(this::a);
-      this.f = fef.a.bake(this::a);
-   }
-
-   private List<ese> b(List<ese.a> $$0, Set<fdy> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<ese> $$3 = new ArrayList<>();
-
-      for (ese.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<ese> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (ese $$3x : $$3) {
-            esd $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fef.b) {
-                  ((IntList)this.k.computeIfAbsent(aww.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   public fdz a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   public void close() {
-      this.d();
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.x() - this.b());
    }
 
-   private void d() {
-      for (fea $$0 : this.l) {
-         $$0.close();
+   @Override
+   protected int h() {
+      return this.b.v();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fdc $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aJ_()) {
+         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
       }
-
-      this.l.clear();
    }
 
-   private static boolean b(esd $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private fdz.a b(int $$0) {
-      esd $$1 = null;
-
-      for (ese $$2 : this.h) {
-         esd $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fdz.a($$1, $$3);
-            }
+   @Override
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
          }
       }
-
-      return $$1 != null ? new fdz.a($$1, fef.b) : fdz.a.c;
    }
 
-   public esd a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
+   public boolean j() {
+      return super.e();
    }
 
-   private fed c(int $$0) {
-      for (ese $$1 : this.h) {
-         esd $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
-      }
-
-      return this.e;
+   @Override
+   protected void c(fdc $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
    }
 
-   public fed a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fed a(esf $$0) {
-      for (fea $$1 : this.l) {
-         fed $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      ajh $$3 = this.d.e("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      feb $$5 = $$4 ? feb.b($$3) : feb.a($$3);
-      fea $$6 = new fea($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fed $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fed a(esd $$0) {
-      IntList $$1 = (IntList)this.k.get(aww.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public ajh a() {
-      return this.d;
-   }
-
-   public fed b() {
-      return this.f;
-   }
-
-   static record a(esd a, esd b) {
-      static final fdz.a c = new fdz.a(fef.b, fef.b);
-
-      esd a(boolean $$0) {
-         return $$0 ? this.b : this.a;
-      }
+   @Override
+   protected void a(fhl $$0) {
+      $$0.a(fhk.a, this.y());
    }
 }

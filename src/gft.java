@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gft extends ggo<cgu, fqz<cgu>> {
+   private static final ajt a = new ajt("textures/entity/zombie/zombie.png");
+   private final float i;
 
-public class gft extends gbv<cdg, fop<cdg>> {
-   private static final Map<bpd<?>, ajh> a = Maps.newHashMap(
-      ImmutableMap.of(bpd.bv, new ajh("textures/entity/horse/horse_zombie.png"), bpd.aO, new ajh("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gft(gdb.a $$0, frd $$1) {
-      super($$0, new fop<>($$0.a($$1)), 1.0F);
+   public gft(gfi.a $$0, float $$1) {
+      super($$0, new fqr($$0.a(ftl.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gjm<>(this, $$0.d()));
+      this.a(new gjj<>(this, new fqr($$0.a(ftl.ai)), new fqr($$0.a(ftl.aj)), $$0.g()));
    }
 
-   public ajh a(cdg $$0) {
-      return a.get($$0.ai());
+   protected void a(cgu $$0, ewi $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ajt a(cgu $$0) {
+      return a;
    }
 }

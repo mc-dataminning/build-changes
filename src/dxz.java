@@ -1,40 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dxz implements dxw {
-   public static final Codec<dxz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bmi.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bmg.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bmg.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bmg.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bmg.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dxz::new)
-   );
-   public final int b;
-   public final bmi c;
-   public final bmg d;
-   public final float e;
-   public final bmg f;
-   public final bmg g;
-   public final bmg h;
-   public final int i;
-   public final float j;
+public class dxz extends dxv<dya> {
+   public dxz(Codec<dya> $$0) {
+      super($$0);
+   }
 
-   public dxz(int $$0, bmi $$1, bmg $$2, float $$3, bmg $$4, bmg $$5, bmg $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(dxx<dya> $$0) {
+      axr $$1 = $$0.d();
+      czs $$2 = $$0.b();
+      ib $$3 = $$0.e();
+      dik $$4 = dik.a($$1);
+      dya $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      eji $$7 = $$2.E().o().bb();
+      ejh $$8 = $$7.a($$5.b.get($$6));
+      ejh $$9 = $$7.a($$5.c.get($$6));
+      cye $$10 = new cye($$3);
+      eez $$11 = new eez($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.al(), $$10.g() + 16);
+      ejd $$12 = new ejd().a($$4).a($$11).a($$1);
+      jg $$13 = $$8.a($$4);
+      ib $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(dur.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
+      ib $$19 = $$8.a($$14.h($$18), dgu.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
+      }
+   }
+
+   private static int a(czs $$0, eez $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         doz $$3 = $$0.a_($$2x);
+         if ($$3.i() || $$3.a(dca.H) || $$3.a(dca.G)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

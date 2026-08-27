@@ -1,12 +1,12 @@
-public class gey extends geh<cca, fpv<cca>> {
-   private static final ajh a = new ajh("textures/entity/sheep/sheep.png");
+public class gey extends ggo<ccl, fqh<ccl>> {
+   private static final ajt a = new ajt("textures/entity/dolphin.png");
 
-   public gey(gdb.a $$0) {
-      super($$0, new fpv<>($$0.a(fre.bh)), 0.7F);
-      this.a(new gho(this, $$0.f()));
+   public gey(gfi.a $$0) {
+      super($$0, new fqh<>($$0.a(ftl.M)), 0.7F);
+      this.a(new gja(this, $$0.d()));
    }
 
-   public ajh a(cca $$0) {
+   public ajt a(ccl $$0) {
       return a;
    }
 }

@@ -1,46 +1,43 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.Locale;
 
-public class ffg<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final ffg<?> a = new ffg<>(axy.a, ($$0, $$1) -> {
-   });
+public class ffg extends ffe {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 30;
+   private static final double j = 33.333333333333336;
 
-   private ffg(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static ffg<?> a(String $$0) {
-      return new ffg<>($$0, Consumer::accept);
-   }
-
-   public static ffg<?> a(vu $$0) {
-      return new ffg<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static ffg<?> a(List<vu> $$0) {
-      return new ffg<>($$0, ($$1, $$2) -> $$0.stream().map(vu::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
+   public ffg(fda $$0, bjy $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ffg<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+   protected void d(fdc $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(gah.E(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = fbp.Q().m.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(gah.E(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
+
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

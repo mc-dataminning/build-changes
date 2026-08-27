@@ -1,74 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gkj extends gjt<cdg, ftd<cdg>> {
+   private static final ajt a = new ajt("textures/entity/wolf/wolf_collar.png");
 
-public class gkj implements asp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gki b = new gki("US", "English", false);
-   private Map<String, gki> c = ImmutableMap.of("en_us", b);
-   private String d;
-
-   public gkj(String $$0) {
-      this.d = $$0;
+   public gkj(ghd<cdg, ftd<cdg>> $$0) {
+      super($$0);
    }
 
-   private static Map<String, gki> a(Stream<ara> $$0) {
-      Map<String, gki> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gkv $$2 = $$1x.a(gkv.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aso $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gki $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+   public void a(ewi $$0, fzz $$1, int $$2, cdg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.r() && !$$3.ce()) {
+         float[] $$10 = $$3.gw().d();
+         ewm $$11 = $$1.getBuffer(gah.e(a));
+         this.c().a($$0, $$11, $$2, gla.d, $$10[0], $$10[1], $$10[2], 1.0F);
       }
-
-      gkf $$4 = gkf.a($$0, $$1, $$2);
-      gkh.a($$4);
-      sv.a($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gki> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gki b(String $$0) {
-      return this.c.get($$0);
    }
 }

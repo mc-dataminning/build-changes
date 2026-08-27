@@ -1,38 +1,28 @@
-public class gou implements gox {
-   private static final int a = 600;
-   private static final vu b = vu.c("tutorial.open_inventory.title");
-   private static final vu c = vu.a("tutorial.open_inventory.description", gow.a("inventory"));
-   private final gow d;
-   private fdt e;
-   private int f;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gou(gow $$0) {
-      this.d = $$0;
+public class gou {
+   private final List<got> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public gou(List<got> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(goy.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fdt(fdt.a.d, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
-      }
+   public List<got> a() {
+      return this.a;
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public boolean b() {
+      return this.b;
    }
 
-   @Override
-   public void c() {
-      this.d.a(goy.e);
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

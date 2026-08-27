@@ -1,70 +1,183 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+
 public class fnc {
-   public static void a(frf $$0, frf $$1, frf $$2, boolean $$3) {
-      frf $$4 = $$3 ? $$0 : $$1;
-      frf $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+   public static final int a = 20;
+   private static final ffc b = new ffc(new ajt("recipe_book/page_forward"), new ajt("recipe_book/page_forward_highlighted"));
+   private static final ffc c = new ffc(new ajt("recipe_book/page_backward"), new ajt("recipe_book/page_backward_highlighted"));
+   private final List<fne> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fne e;
+   private final fna f = new fna();
+   private fbp g;
+   private final List<fng> h = Lists.newArrayList();
+   private List<fnf> i = ImmutableList.of();
+   private fev j;
+   private fev k;
+   private int l;
+   private int m;
+   private aup n;
+   @Nullable
+   private cvl<?> o;
+   @Nullable
+   private fnf p;
+
+   public fnc() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fne());
+      }
    }
 
-   public static void a(frf $$0, frf $$1, bpp $$2, boolean $$3) {
-      frf $$4 = $$3 ? $$0 : $$1;
-      frf $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)cox.k($$2.fu());
-      float $$7 = aww.a((float)$$2.fw(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = aww.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = aww.i($$8, $$5.e, (float) (-Math.PI / 2));
-   }
+   public void a(fbp $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.s.m();
 
-   public static <T extends bpr> void a(frf $$0, frf $$1, T $$2, float $$3, float $$4) {
-      float $$5 = aww.a($$3 * (float) Math.PI);
-      float $$6 = aww.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fr() == bpj.b) {
-         $$0.e = -1.8849558F + aww.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + aww.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + aww.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + aww.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
       }
 
-      a($$0, $$1, $$4);
+      this.j = new fev($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fev($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   public static void a(frf $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (aww.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * aww.a($$1 * 0.067F) * 0.05F;
+   public void a(fnb $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
    }
 
-   public static void a(frf $$0, frf $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
+   public void a(List<fnf> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
    }
 
-   public static void a(frf $$0, frf $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = aww.a($$3 * (float) Math.PI);
-      float $$6 = aww.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fne $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fnf $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.k = true;
+         } else {
+            $$2.k = false;
+         }
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         wg $$6 = wg.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fne $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.A()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(fdc $$0, int $$1, int $$2) {
+      if (this.g.y != null && this.e != null && !this.f.c()) {
+         $$0.a(this.g.h, this.e.e(), $$1, $$2);
+      }
+   }
+
+   @Nullable
+   public cvl<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fnf b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fne $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.d();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.C(), $$7.D(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.x());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(List<cvl<?>> $$0) {
+      for (fng $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public fbp d() {
+      return this.g;
+   }
+
+   public aup e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<fdn> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

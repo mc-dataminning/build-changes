@@ -1,63 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class emc extends emi {
-   public static final Codec<emc> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(eor.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, emc::new)
-   );
-   private final eoq b;
-   private final boolean c;
+public class emc {
+   private final ib a;
+   private final int b;
+   private final int c;
 
-   emc(List<env> $$0, eoq $$1, boolean $$2) {
-      super($$0);
+   public emc(ib $$0, int $$1, int $$2) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   @Override
-   public emk b() {
-      return eml.d;
+   @Nullable
+   public static emc a(tm $$0) {
+      Optional<ib> $$1 = ub.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new emc($$1.get(), $$2, $$3);
+      }
    }
 
-   @Override
-   public Set<ene<?>> a() {
-      return this.b.a();
+   public tm a() {
+      tm $$0 = new tm();
+      $$0.a("pos", ub.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
    }
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      axd $$2 = $$1.b();
-      return cux.a($$2, $$0, this.b.a($$1), this.c);
+   public ib b() {
+      return this.a;
    }
 
-   public static emc.a a(eoq $$0) {
-      return new emc.a($$0);
+   public int c() {
+      return this.b;
    }
 
-   public static class a extends emi.a<emc.a> {
-      private final eoq a;
-      private boolean b;
+   public int d() {
+      return this.c;
+   }
 
-      public a(eoq $$0) {
-         this.a = $$0;
-      }
+   public String e() {
+      return a(this.a);
+   }
 
-      protected emc.a a() {
-         return this;
-      }
-
-      public emc.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public emj b() {
-         return new emc(this.g(), this.a, this.b);
-      }
+   public static String a(ib $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

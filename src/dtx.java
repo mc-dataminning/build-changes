@@ -1,16 +1,14 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
 
-abstract class dtx implements dtv {
-   protected final List<dtv> e;
+public interface dtx<T extends dtw> {
+   dtx<dto> a = a("block", new dto.a());
+   dtx<dtq> b = a("entity", new dtq.a());
 
-   protected dtx(List<dtv> $$0) {
-      this.e = $$0;
-   }
+   Codec<T> a();
 
-   public static <T extends dtx> Codec<T> a(Function<List<dtv>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(dtv.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   ye<vr, T> b();
+
+   static <S extends dtx<T>, T extends dtw> S a(String $$0, S $$1) {
+      return iy.a(kr.v, $$0, $$1);
    }
 }

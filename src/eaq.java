@@ -1,45 +1,33 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaq extends eao {
-   public static final Codec<eaq> a = Codec.unit(() -> eaq.b);
-   public static final eaq b = new eaq();
+public record eaq(int b, int c, int d, int e, int f, bnf g, float h) implements dzz {
+   public static final Codec<eaq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eaq::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eaq::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eaq::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eaq::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eaq::f),
+               bnf.c.fieldOf("extra_rare_growths").forGetter(eaq::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eaq::h)
+            )
+            .apply($$0, eaq::new)
+   );
 
-   @Override
-   protected eap<?> a() {
-      return eap.a;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public void a(eao.a $$0) {
-      axd $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ib $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dix.d);
-            }
-         }
+   public int b() {
+      return this.c;
+   }
 
-         if ($$1.a(3) > 0) {
-            ib $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dix.f);
-            }
-         }
+   public int c() {
+      return this.d;
+   }
 
-         if ($$1.a(3) > 0) {
-            ib $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dix.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ib $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dix.c);
-            }
-         }
-      });
+   public int d() {
+      return this.e;
    }
 }

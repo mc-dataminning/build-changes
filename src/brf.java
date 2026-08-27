@@ -1,21 +1,65 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class brf {
-   public static bss<bpr> a(int $$0, float $$1) {
-      return buu.a(
-         (Function<buu.b<bpr>, ? extends App<buu.c<bpr>, bux<bpr>>>)($$2 -> $$2.group($$2.c(bys.m), $$2.a(bys.n), $$2.b(bys.o), $$2.b(bys.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     bpp $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<byu>b($$6).a($$9)) {
-                        $$4.a(new brs($$9, true));
-                        $$7.H().a(-$$1, 0.0F);
-                        $$7.r(aww.c($$7.dC(), $$7.aZ, 0.0F));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public interface brf {
+   brf b = new brf() {
+      @Override
+      public crj a() {
+         return crj.i;
+      }
+
+      @Override
+      public boolean a(crj $$0) {
+         return false;
+      }
+   };
+
+   static brf a(final bnt $$0, final int $$1, final Predicate<crj> $$2) {
+      return new brf() {
+         @Override
+         public crj a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(crj $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
+
+   static brf a(bnt $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static brf a(final bqo $$0, final bqc $$1, final Predicate<crj> $$2) {
+      return new brf() {
+         @Override
+         public crj a() {
+            return $$0.d($$1);
+         }
+
+         @Override
+         public boolean a(crj $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static brf a(bqo $$0, bqc $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   crj a();
+
+   boolean a(crj var1);
 }

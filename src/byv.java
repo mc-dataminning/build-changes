@@ -1,35 +1,30 @@
-public class byv {
-   private final bsv a;
-   private final float b;
-   private final int c;
+public class byv extends bxl {
+   private final bqw a;
 
-   public byv(ib $$0, float $$1, int $$2) {
-      this(new brk($$0), $$1, $$2);
-   }
-
-   public byv(ept $$0, float $$1, int $$2) {
-      this(new brk(ib.a($$0)), $$1, $$2);
-   }
-
-   public byv(box $$0, float $$1, int $$2) {
-      this(new brs($$0, false), $$1, $$2);
-   }
-
-   public byv(bsv $$0, float $$1, int $$2) {
+   public byv(bqw $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public bsv a() {
-      return this.a;
+   @Override
+   public boolean a() {
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(avh.a);
    }
 
-   public float b() {
-      return this.b;
-   }
+   @Override
+   public void c() {
+      ib $$0 = null;
 
-   public int c() {
-      return this.c;
+      for (ib $$2 : ib.b(
+         axk.a(this.a.dr() - 2.0), axk.a(this.a.dt() - 2.0), axk.a(this.a.dx() - 2.0), axk.a(this.a.dr() + 2.0), this.a.ds(), axk.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(avh.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

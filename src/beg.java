@@ -1,45 +1,27 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class beg extends DataFix {
-   public beg(Schema $$0) {
-      super($$0, false);
+public class beg extends bea {
+   public beg(Schema $$0, boolean $$1) {
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bfa.s, "minecraft:banner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(beh.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
-      return !$$1
-         ? $$0
-         : $$0.update(
-            "Properties",
-            $$0x -> {
-               String $$1x = $$0x.get("east").asString("none");
-               String $$2 = $$0x.get("west").asString("none");
-               String $$3 = $$0x.get("north").asString("none");
-               String $$4 = $$0x.get("south").asString("none");
-               boolean $$5 = a($$1x) || a($$2);
-               boolean $$6 = a($$3) || a($$4);
-               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
-               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
-               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
-               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
-               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
-                  .update("west", $$1xx -> $$1xx.createString($$8))
-                  .update("north", $$1xx -> $$1xx.createString($$9))
-                  .update("south", $$1xx -> $$1xx.createString($$10));
-            }
-         );
-   }
-
-   private static boolean a(String $$0) {
-      return !"none".equals($$0);
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("CustomName").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get();
+         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+         return $$0.set("CustomName", $$0.createString($$2));
+      } else {
+         return $$0;
+      }
    }
 }

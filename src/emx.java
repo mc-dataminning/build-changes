@@ -1,68 +1,94 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class emx extends emi {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<emx> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(awe.a(vw.a, "name").forGetter($$0x -> $$0x.c), awe.a(ekw.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, emx::new)
-   );
-   private final Optional<vu> c;
-   private final Optional<ekw.b> d;
+public interface emx {
+   int d = 19133;
+   int e = 19132;
 
-   private emx(List<env> $$0, Optional<vu> $$1, Optional<ekw.b> $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   czr D();
+
+   void a(czr var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   @Override
-   public emk b() {
-      return eml.l;
-   }
-
-   @Override
-   public Set<ene<?>> a() {
-      return this.d.<Set<ene<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<vu> a(ekw $$0, @Nullable ekw.b $$1) {
-      if ($$1 != null) {
-         box $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            du $$3 = $$2.dd().a(2);
-            return $$2x -> {
-               try {
-                  return vx.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
-
-      return $$0x -> $$0x;
    }
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+   @Nullable
+   tm E();
 
-   public static emi.a<?> a(vu $$0) {
-      return a($$1 -> new emx($$1, Optional.of($$0), Optional.empty()));
-   }
+   void a(@Nullable tm var1);
 
-   public static emi.a<?> a(vu $$0, ekw.b $$1) {
-      return a($$2 -> new emx($$2, Optional.of($$0), Optional.of($$1)));
+   emw I();
+
+   czb J();
+
+   tm a(iz var1, @Nullable tm var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   cyu k();
+
+   void a(cyu var1);
+
+   boolean m();
+
+   bnx q();
+
+   void a(bnx var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   cyt o();
+
+   @Nullable
+   tm w();
+
+   dsu.a C();
+
+   void a(dsu.a var1);
+
+   dvp y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cmg K() {
+      return this.D().b();
    }
 }

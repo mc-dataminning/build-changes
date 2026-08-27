@@ -1,58 +1,38 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public interface fde extends fcs {
-   long s = 250L;
+public class fde {
+   public static final float a = 200.0F;
+   private final List<fde.a> b = new ArrayList<>();
 
-   default void f(double $$0, double $$1) {
+   public fde a(fde.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   public fde a(fde $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
+   public void a(fdc $$0, float $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
+   private void b(fdc $$0, float $$1) {
+      for (fde.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
    }
 
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
-   @Nullable
-   default fas a(ffk $$0) {
-      return null;
-   }
-
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aJ_();
-
-   @Nullable
-   default fas aK_() {
-      return this.aJ_() ? fas.a(this) : null;
-   }
-
-   default ffo F() {
-      return ffo.a();
+   public interface a {
+      void render(fdc var1, float var2);
    }
 }

@@ -1,48 +1,41 @@
+import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.slf4j.Logger;
 
-public class vl {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+public class vl<T extends vm> extends MessageToByteEncoder<yn<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final vo<T> b;
 
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
-            return $$1;
-         }
+   public vl(vo<T> $$0) {
+      this.b = $$0;
+   }
+
+   protected void a(ChannelHandlerContext $$0, yn<T> $$1, ByteBuf $$2) throws Exception {
+      yp<? extends yn<? super T>> $$3 = $$1.a();
+      if (a.isDebugEnabled()) {
+         a.debug(ve.d, "OUT: [{}:{}] {}", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName()});
       }
 
-      return 5;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
-   }
-
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
+      try {
+         int $$4 = $$2.writerIndex();
+         this.b.c().encode($$2, $$1);
+         int $$5 = $$2.writerIndex() - $$4;
+         if ($$5 > 8388608) {
+            throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
          }
-      } while (a($$3));
 
-      return $$1;
-   }
+         bku.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
+      } catch (Throwable var10) {
+         a.error("Error sending packet {}", $$3, var10);
+         if ($$1.c()) {
+            throw new vt(var10);
+         }
 
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
+         throw var10;
+      } finally {
+         vp.b($$0, $$1);
       }
-
-      $$0.writeByte($$1);
-      return $$0;
    }
 }

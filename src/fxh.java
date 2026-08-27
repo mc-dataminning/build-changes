@@ -1,136 +1,76 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+public class fxh extends fxn {
+   private static final int a = 3;
+   private final gaf b;
+   private final bpv D;
+   private final bpv E;
+   private int F;
+   private final gfg G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
 
-public abstract class fxh {
-   private static final Object2ObjectMap<ajh, fxh> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fxh.c $$1 = new fxh.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dqm.e, $$1);
-      $$0.put(dqm.f, new fxh.b());
-      $$0.put(dqm.g, new fxh.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fxh.d e;
-   private final boolean f;
-   private final boolean g;
-
-   public fxh(float $$0, boolean $$1, fxh.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public fxh(gfg $$0, gaf $$1, fuh $$2, bpv $$3, bpv $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
    }
 
-   public static fxh a(dqo $$0) {
-      return (fxh)a.get($$0.r());
+   private fxh(gfg $$0, gaf $$1, fuh $$2, bpv $$3, bpv $$4, esa $$5) {
+      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = aww.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - aww.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
-      } else {
-         return null;
-      }
+   private bpv a(bpv $$0) {
+      return (bpv)(!($$0 instanceof cgd) ? $$0 : ((cgd)$$0).C());
    }
 
-   public float a() {
-      return this.c;
+   @Override
+   public fxr b() {
+      return fxr.e;
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public void a(ewm $$0, fba $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = axk.d((double)$$2, this.K, this.H);
+      double $$5 = axk.d((double)$$2, this.L, this.I);
+      double $$6 = axk.d((double)$$2, this.M, this.J);
+      double $$7 = axk.d((double)$$3, this.D.dr(), $$4);
+      double $$8 = axk.d((double)$$3, this.D.dt(), $$5);
+      double $$9 = axk.d((double)$$3, this.D.dx(), $$6);
+      fzz.a $$10 = this.b.c();
+      esa $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new ewi(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
-   public abstract ept a(ept var1, float var2);
+   @Override
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
+      }
 
-   public abstract boolean a(int var1, int var2);
-
-   public fxh.d c() {
-      return this.e;
+      this.d();
+      this.c();
    }
 
-   public boolean d() {
-      return this.f;
+   private void c() {
+      this.H = this.E.dr();
+      this.I = (this.E.dt() + this.E.dv()) / 2.0;
+      this.J = this.E.dx();
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fxh {
-      public a() {
-         super(Float.NaN, false, fxh.d.c, true, false);
-      }
-
-      @Override
-      public ept a(ept $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fxh {
-      public b() {
-         super(Float.NaN, true, fxh.d.a, false, true);
-      }
-
-      @Override
-      public ept a(ept $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fxh {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fxh.d.b, false, false);
-      }
-
-      @Override
-      public ept a(ept $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

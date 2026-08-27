@@ -1,58 +1,40 @@
-public abstract class cmi {
-   private int a;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-   public static cmi a(final cma $$0, final int $$1) {
-      return new cmi() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
+public class cmi {
+   public static final cme a;
+   public static final cme b;
+   public static final cme c;
+   public static final cme d;
+   public static final cmf e;
+   public static final Codec<cmg> f;
+   public static final cmg g;
+   public static final cmg h;
 
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
+   public static String a(cmg $$0, cmg $$1) {
+      return a(e, $$0, $$1);
    }
 
-   public static cmi a(final int[] $$0, final int $$1) {
-      return new cmi() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
+   public static String a(cmf $$0, cmg $$1, cmg $$2) {
+      Set<ajt> $$3 = $$0.b($$2);
+      Set<ajt> $$4 = $$0.b($$1);
+      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(ajt::toString).collect(Collectors.joining(", "));
    }
 
-   public static cmi a() {
-      return new cmi() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
+   public static boolean a(cmg $$0) {
+      return !$$0.a(g);
    }
 
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+   static {
+      cmf.a $$0 = new cmf.a("main");
+      a = $$0.a("vanilla");
+      b = $$0.a("bundle");
+      d = $$0.a("trade_rebalance");
+      c = $$0.a("update_1_21");
+      e = $$0.a();
+      f = e.b();
+      g = cmg.a(a);
+      h = g;
    }
 }

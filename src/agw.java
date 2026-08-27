@@ -1,51 +1,18 @@
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class agw {
-   private static final double a = 4096.0;
-   private ept b;
+public record agw(Optional<il<bpf>> b, Optional<il<bpf>> c) implements yn<afl> {
+   public static final ye<vr, agw> a = ye.a(yc.b(ks.Q).a(yc::a), agw::b, yc.b(ks.Q).a(yc::a), agw::e, agw::new);
 
-   public agw() {
-      this.b = ept.b;
+   @Override
+   public yp<agw> a() {
+      return afj.bQ;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public void a(afl $$0) {
+      $$0.a(this);
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public ept a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new ept($$3, $$4, $$5);
-      }
-   }
-
-   public long a(ept $$0) {
-      return a($$0.c) - a(this.b.c);
-   }
-
-   public long b(ept $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long c(ept $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public ept d(ept $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ept $$0) {
-      this.b = $$0;
+   public Optional<il<bpf>> e() {
+      return this.c;
    }
 }

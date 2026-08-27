@@ -2,40 +2,59 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pq {
-   public static final ajg<een> a = ps.a("pillager_outpost/base_plates");
-
-   public static void a(pl<een> $$0) {
-      im<ehc> $$1 = $$0.a(kj.aF);
-      il<ehc> $$2 = $$1.b(pt.q);
-      im<een> $$3 = $$0.a(kj.aH);
-      il<een> $$4 = $$3.b(ps.a);
-      $$0.a(a, new een($$4, ImmutableList.of(Pair.of(eel.a("pillager_outpost/base_plate"), 1)), een.a.b));
-      ps.a(
+   public static void a(px<egq> $$0) {
+      im<ejf> $$1 = $$0.a(ks.aG);
+      il<ejf> $$2 = $$1.b(qf.y);
+      il<ejf> $$3 = $$1.b(qf.w);
+      il<ejf> $$4 = $$1.b(qf.z);
+      il<ejf> $$5 = $$1.b(qf.x);
+      im<egq> $$6 = $$0.a(ks.aI);
+      il<egq> $$7 = $$6.b(qe.a);
+      qe.a(
          $$0,
-         "pillager_outpost/towers",
-         new een(
-            $$4,
-            ImmutableList.of(Pair.of(eel.b(ImmutableList.of(eel.a("pillager_outpost/watchtower"), eel.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            een.a.b
+         "bastion/bridge/starting_pieces",
+         new egq(
+            $$7,
+            ImmutableList.of(
+               Pair.of(ego.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(ego.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
+            ),
+            egq.a.b
          )
       );
-      ps.a($$0, "pillager_outpost/feature_plates", new een($$4, ImmutableList.of(Pair.of(eel.a("pillager_outpost/feature_plate"), 1)), een.a.a));
-      ps.a(
+      qe.a($$0, "bastion/bridge/bridge_pieces", new egq($$7, ImmutableList.of(Pair.of(ego.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), egq.a.b));
+      qe.a(
          $$0,
-         "pillager_outpost/features",
-         new een(
-            $$4,
+         "bastion/bridge/legs",
+         new egq($$7, ImmutableList.of(Pair.of(ego.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(ego.b("bastion/bridge/legs/leg_1", $$3), 1)), egq.a.b)
+      );
+      qe.a(
+         $$0,
+         "bastion/bridge/walls",
+         new egq(
+            $$7,
+            ImmutableList.of(Pair.of(ego.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(ego.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "bastion/bridge/ramparts",
+         new egq(
+            $$7,
+            ImmutableList.of(Pair.of(ego.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(ego.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "bastion/bridge/rampart_plates", new egq($$7, ImmutableList.of(Pair.of(ego.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "bastion/bridge/connectors",
+         new egq(
+            $$7,
             ImmutableList.of(
-               Pair.of(eel.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(eel.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(eel.g(), 6)
+               Pair.of(ego.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(ego.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
             ),
-            een.a.b
+            egq.a.b
          )
       );
    }

@@ -1,85 +1,40 @@
-public class bwc extends bwq {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cbm b;
-   private final int c;
-   private boolean d;
+import com.google.common.collect.ImmutableMap;
 
-   public bwc(cbm $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class bwc extends bsg<cix> {
+   private static final int c = 25;
+   private static final int d = 20;
+
+   public bwc() {
+      super(ImmutableMap.of(bzr.ay, bzs.a, bzr.o, bzs.b, bzr.aF, bzs.c, bzr.aD, bzs.c), ciy.b);
    }
 
-   @Override
-   public boolean a() {
-      if (this.b.ei().a(this.c) != 0) {
-         return false;
-      } else {
-         ih $$0 = this.b.cF();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         ib $$3 = this.b.dm();
+   protected void a(aps $$0, cix $$1, long $$2) {
+      brp<cix> $$3 = $$1.dP();
+      $$3.a(bzr.aD, aym.a, 25L);
+      $$3.b(bzr.m);
+      bqo $$4 = $$1.dP().c(bzr.ay).get();
+      bsi.a($$1, $$4);
+      $$1.b(bqz.l);
+      $$1.a($$4, 20, false);
+   }
 
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
+   protected boolean b(aps $$0, cix $$1, long $$2) {
+      return true;
+   }
 
-         return true;
+   protected void c(aps $$0, cix $$1, long $$2) {
+      if (!$$1.dP().a(bzr.aD) && !$$1.dP().a(bzr.aF)) {
+         $$1.dP().a(bzr.aF, aym.a, (long)(ciy.b - 25));
+         $$1.a(aum.Bx, 3.0F, 1.0F);
       }
    }
 
-   private boolean a(ib $$0, int $$1, int $$2, int $$3) {
-      ib $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dM().b_($$4).a(aus.a) && !this.b.dM().a_($$4).d();
-   }
-
-   private boolean b(ib $$0, int $$1, int $$2, int $$3) {
-      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
-   @Override
-   public boolean b() {
-      double $$0 = this.b.dp().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.bc()) && !this.b.aC();
-   }
-
-   @Override
-   public boolean Q_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      ih $$0 = this.b.cF();
-      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.b.s(0.0F);
-   }
-
-   @Override
-   public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         eip $$1 = this.b.dM().b_(this.b.dm());
-         this.d = $$1.a(aus.a);
+   protected void d(aps $$0, cix $$1, long $$2) {
+      if ($$1.c(bqz.l)) {
+         $$1.b(bqz.a);
       }
 
-      if (this.d && !$$0) {
-         this.b.a(aty.gV, 1.0F, 1.0F);
-      }
-
-      ept $$2 = this.b.dp();
-      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
-         this.b.s(aww.j(0.2F, this.b.dE(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+      $$1.dP().c(bzr.ay).ifPresent($$1::j);
+      $$1.dP().b(bzr.ay);
    }
 }

@@ -1,27 +1,47 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import com.mojang.serialization.DynamicOps;
+import java.util.Locale;
 
-public class bbv extends DataFix {
-   public bbv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bbv extends DataFix {
+   protected final String a;
+
+   public bbv(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(beh.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(beh.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bbv::a));
-      }
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bfa.z);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bfa.z);
+      return this.fixTypeEverywhere(
+         this.a,
+         $$0,
+         $$1,
+         $$2 -> $$3 -> {
+               String $$4 = (String)$$3.getFirst();
+               Type<?> $$5 = (Type<?>)$$0.types().get($$4);
+               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2, $$5));
+               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
+               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
+                  throw new IllegalStateException(
+                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
+                  );
+               } else {
+                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
+               }
+            }
+      );
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
+      return new Typed($$2, $$1, $$0);
    }
+
+   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

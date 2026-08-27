@@ -1,26 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class btd {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+   public static <T extends bqo> bsh<bqo> a(bqb<? extends T> $$0, int $$1, bzr<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
 
-   public static bri<bpp> a() {
-      return buu.a((Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$0 -> $$0.group($$0.b(bys.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  ib $$5 = $$0.<ik>b($$1).b();
-                  if ($$5.a($$3.dm(), 3.0)) {
-                     dnb $$6 = $$2.a_($$5);
-                     if ($$6.a(dae.od)) {
-                        czy $$7 = (czy)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
+   public static <E extends bqo, T extends bqo> bsh<E> a(bqb<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bzr<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bqo> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
+      return bvt.a(
+         (Function<bvt.b<E>, ? extends App<bvt.c<E>, bvw<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bzr.n), $$6x.c(bzr.m), $$6x.b(bzr.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     bzt $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bqo> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bpv)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bsr($$5xxxx, true));
+                           $$8x.a(new bzu(new bsr($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
                      }
-                  }
-
-                  return true;
-               }
-            })));
+                  }))
+      );
    }
 }

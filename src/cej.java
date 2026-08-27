@@ -1,30 +1,24 @@
-public class cej extends ceb {
-   private static final int b = 40;
-   private int c;
+import java.util.function.IntFunction;
 
-   public cej(cdy $$0) {
-      super($$0);
+public enum cej {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<cej> f = awb.a(cej::a, values(), awb.a.b);
+   private final int g;
+
+   private cej(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), aty.hX, this.a.db(), 2.5F, 0.8F + this.a.ei().i() * 0.3F, false);
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gk().a(ceo.f);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public ceo<cej> i() {
-      return ceo.h;
+   public static cej a(int $$0) {
+      return f.apply($$0);
    }
 }

@@ -1,34 +1,14 @@
 public class dsq {
-   public final axd a;
-   private double b;
-   private boolean c;
-
-   public dsq(axd $$0) {
-      this.a = $$0;
-   }
-
-   public void a() {
-      this.c = false;
-   }
-
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = aww.k($$0) + aww.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
-      }
-   }
+   public static final int a = -64;
+   public static final int b = 384;
+   public static final int c = 384;
+   public static final int d = 384;
+   public static final int e = 0;
+   public static final int f = 256;
+   public static final int g = 128;
+   public static final int h = 128;
+   public static final int i = 0;
+   public static final int j = 256;
+   public static final int k = 128;
+   public static final int l = 256;
 }

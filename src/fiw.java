@@ -1,50 +1,64 @@
-import java.util.List;
+public class fiw extends fie {
+   private fdp c;
 
-public class fiw {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<ajh> e = List.of();
-   private int f;
-   private int g;
-
-   public fiw(int $$0) {
-      this.d = $$0;
+   public fiw() {
+      super("");
    }
 
-   public void a(List<ajh> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.c = fdp.a(wg.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.k / 2 - 100, this.l - 40, 200, 20).a();
+      this.c(this.c);
+   }
 
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      if (!this.j.J().a(this.j.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public void a(clq $$0, fav $$1, float $$2, int $$3, int $$4) {
-      cnl $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
+   @Override
+   public void d() {
+      this.C();
+   }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.j.J().a(this.j.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
+      }
+
+      if (!this.j.J().a(this.j.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.j.l.d().d();
+         return true;
       }
    }
 
-   private void a(cnl $$0, ajh $$1, float $$2, fav $$3, int $$4, int $$5) {
-      gjc $$6 = ezi.Q().a(gjb.e).apply($$1);
-      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   private void C() {
+      fui $$0 = this.j.s.ct;
+      $$0.b(new agp(this.j.s, agp.a.c));
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.j.a(null);
+      } else {
+         this.j.a(new fie(this.b.a()));
+      }
    }
 }

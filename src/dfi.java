@@ -1,57 +1,72 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dfi extends dal {
+public class dfi extends dgx implements dcb, diy {
    public static final MapCodec<dfi> a = b(dfi::new);
-   public static final int b = 3;
-   public static final dob c = dnr.as;
-   private static final eqm[] d = new eqm[]{
-      dac.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      dac.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
+   private static final dpq c = dpp.C;
+   private final dgy d = new dgy(this);
 
    @Override
    public MapCodec<dfi> a() {
       return a;
    }
 
-   protected dfi(dna.d $$0) {
+   public dfi(doy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+      this.k(this.n().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<doz> b(int $$0) {
+      return $$1 -> dgx.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean b(dnb $$0, cwh $$1, ib $$2) {
-      return $$0.a(dae.dW);
-   }
-
-   @Override
-   protected boolean e_(dnb $$0) {
-      return $$0.c(c) < 3;
-   }
-
-   @Override
-   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
-      }
-   }
-
-   @Override
-   public cqm a(cxe $$0, ib $$1, dnb $$2) {
-      return new cqm(cqp.si);
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
+   protected void a(dpa.a<dby, doz> $$0) {
+      super.a($$0);
       $$0.a(c);
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ekt.c, ekt.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(doz $$0, cuo $$1) {
+      return !$$1.n().a(crm.fV) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return ih.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected eks c_(doz $$0) {
+      return $$0.c(c) ? ekt.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a_(doz $$0, cyd $$1, ib $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dgy c() {
+      return this.d;
    }
 }

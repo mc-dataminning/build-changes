@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class egv extends egy {
-   public static final Codec<egv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ki.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, egv::new)
+record egv(ajs<egq> c, bmk<ajs<egq>> d) implements egs {
+   static Codec<egv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajs.a(ks.aI).fieldOf("alias").forGetter(egv::c), bmk.b(ajs.a(ks.aI)).fieldOf("targets").forGetter(egv::d)).apply($$0, egv::new)
    );
-   private final dac b;
-   private final float d;
 
-   public egv(dac $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Override
+   public void a(axr $$0, BiConsumer<ajs<egq>, ajs<egq>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ajs<egq>)$$1x.b()));
    }
 
    @Override
-   public boolean a(dnb $$0, axd $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
+   public Stream<ajs<egq>> a() {
+      return this.d.e().stream().map(bmm.b::b);
    }
 
    @Override
-   protected egz<?> a() {
-      return egz.e;
+   public Codec<egv> b() {
+      return a;
    }
 }

@@ -1,88 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Locale;
 
-public class ffh {
-   int a;
-   final Map<ffh.a, ffh.b> b = Maps.newTreeMap(Comparator.<ffh.a, ffd>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class ffh extends ffe {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 500;
 
-   public void a(Consumer<ffe> $$0) {
-      this.a++;
-      $$0.accept(new ffh.c(0));
+   public ffh(fda $$0, bjy $$1) {
+      super($$0, $$1);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
-
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   @Override
+   protected void d(fdc $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
-   static class a {
-      final ffd a;
-      final int b;
-
-      a(ffd $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
-   static class b {
-      ffg<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = ffg.a;
-         this.b = -1;
-      }
-
-      public ffh.b a(int $$0, ffg<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
    }
 
-   class c implements ffe {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(ffd $$0, ffg<?> $$1) {
-         ffh.this.b.computeIfAbsent(new ffh.a($$0, this.b), $$0x -> new ffh.b()).a(ffh.this.a, $$1);
-      }
-
-      @Override
-      public ffe a() {
-         return ffh.this.new c(this.b + 1);
-      }
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

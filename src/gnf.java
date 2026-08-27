@@ -1,34 +1,20 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class gnf {
+   public static final gng a = new gng();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public class gnf extends atb {
-   private ta a;
-
-   public gnf(gng $$0, is<ajq> $$1, ekp $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gnf(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void b(apg $$0) {
-      if (this.b().a($$0.fY())) {
-         this.a = $$0.f(new ta());
-      }
-
-      super.b($$0);
+   public boolean a() {
+      return this.d;
    }
 
-   @Override
-   public vu a(SocketAddress $$0, GameProfile $$1) {
-      return (vu)(this.b().a($$1) && this.a($$1.getName()) != null ? vu.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gng b() {
-      return (gng)super.c();
-   }
-
-   @Override
-   public ta r() {
-      return this.a;
+   public boolean b() {
+      return this.e;
    }
 }

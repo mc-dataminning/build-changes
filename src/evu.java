@@ -1,31 +1,40 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class evu extends evx {
-   public long a;
-   public List<evt> b = Lists.newArrayList();
-
-   public static evu a(String $$0) {
-      evu $$1 = new evu();
-      JsonParser $$2 = new JsonParser();
-
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = exu.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               evt $$8 = evt.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+public class evu extends evw {
+   private static final evp a = new evp() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
       }
+   };
+   private int b;
 
-      return $$1;
+   private evu(evw.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(evt $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
+   }
+
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
+      }
+   }
+
+   public static evu a(evw.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      evu $$5 = new evu($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

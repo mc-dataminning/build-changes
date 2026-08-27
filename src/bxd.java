@@ -1,27 +1,39 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class bxd extends bwm {
-   private static final caf b = caf.b().a(6.0);
-   public static final int a = 400;
-   private final cbq c;
-   private cih d;
+public class bxd extends bxl {
+   private static final int a = 40;
+   private static final Predicate<doz> b = dpi.a(dca.bt);
+   private final bqq c;
+   private final cyx d;
    private int e;
 
-   public bxd(cbq $$0) {
+   public bxd(bqq $$0) {
       this.c = $$0;
-      this.a(EnumSet.of(bwm.a.a, bwm.a.b));
+      this.d = $$0.dM();
+      this.a(EnumSet.of(bxl.a.a, bxl.a.b, bxl.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dM().P()) {
-         return false;
-      } else if (this.c.ei().a(8000) != 0) {
+      if (this.c.ei().a(this.c.p_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         this.d = this.c.dM().a(cih.class, b, this.c, this.c.dr(), this.c.dt(), this.c.dx(), this.c.cH().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         ib $$0 = this.c.dm();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dca.i);
       }
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.K().n();
+   }
+
+   @Override
+   public void d() {
+      this.e = 0;
    }
 
    @Override
@@ -29,21 +41,32 @@ public class bxd extends bwm {
       return this.e > 0;
    }
 
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         ib $$0 = this.c.dm();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.aa().b(cyt.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.N();
+         } else {
+            ib $$1 = $$0.d();
+            if (this.d.a_($$1).a(dca.i)) {
+               if (this.d.aa().b(cyt.c)) {
+                  this.d.c(2001, $$1, dby.i(dca.i.n()));
+                  this.d.a($$1, dca.j.n(), 2);
+               }
+
+               this.c.N();
+            }
+         }
+      }
    }
 }

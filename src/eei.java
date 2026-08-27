@@ -1,29 +1,23 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eei extends eek {
-   public static final Codec<eei> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eei::new));
+public class eei extends eeo {
+   private static final eei c = new eei();
+   public static final Codec<eei> a = Codec.unit(() -> c);
 
-   protected eei(Either<ajh, ehe> $$0, il<ehc> $$1, een.a $$2) {
-      super($$0, $$1, $$2);
+   public static eei a() {
+      return c;
    }
 
    @Override
-   protected eha a(dgo $$0, ecw $$1, boolean $$2) {
-      eha $$3 = super.a($$0, $$1, $$2);
-      $$3.b(egg.b);
-      $$3.a(egg.d);
-      return $$3;
+   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new ib($$3, $$2.v(), $$4));
    }
 
    @Override
-   public eem<?> a() {
-      return eem.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public eep<?> b() {
+      return eep.m;
    }
 }

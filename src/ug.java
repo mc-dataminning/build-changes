@@ -1,15 +1,48 @@
-import java.util.List;
+public interface ug {
+   ug.b a();
 
-public record ug(List<String> a, tz<?> b, String c) {
-   public ug(tz<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
+   ug.b a(String var1);
+
+   ug.b a(byte var1);
+
+   ug.b a(short var1);
+
+   ug.b a(int var1);
+
+   ug.b a(long var1);
+
+   ug.b a(float var1);
+
+   ug.b a(double var1);
+
+   ug.b a(byte[] var1);
+
+   ug.b a(int[] var1);
+
+   ug.b a(long[] var1);
+
+   ug.b a(ul<?> var1, int var2);
+
+   ug.a a(ul<?> var1);
+
+   ug.a a(ul<?> var1, String var2);
+
+   ug.a b(ul<?> var1, int var2);
+
+   ug.b b();
+
+   ug.b b(ul<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   public ug(String $$0, tz<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
-   }
-
-   public ug(String $$0, String $$1, tz<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

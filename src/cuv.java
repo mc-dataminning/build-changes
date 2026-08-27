@@ -1,20 +1,15 @@
-public class cuv extends cuw {
-   protected cuv(cuw.a $$0, bpe... $$1) {
-      super($$0, auv.bi, $$1);
+public class cuv extends cus {
+   public cuv(String $$0, cuy $$1, cvg $$2, crj $$3, float $$4, int $$5) {
+      super(cvo.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+   public crj g() {
+      return new crj(dca.nW);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public cvn<?> ap_() {
+      return cvn.q;
    }
 }

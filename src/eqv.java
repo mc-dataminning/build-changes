@@ -1,34 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eqv {
-   int a();
+public record eqv(float c) implements eqx {
+   public static final Codec<eqv> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eqv::c)).apply($$0, eqv::new));
+   public static final Codec<eqv> b = Codec.FLOAT.xmap(eqv::new, eqv::c);
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   @Override
+   public eqw b() {
+      return eqy.b;
    }
 
-   default int b() {
-      return this.b(1);
+   @Override
+   public float b(enb $$0) {
+      return this.c;
    }
 
-   default void c() {
-      this.a(0);
+   public static eqv a(float $$0) {
+      return new eqv($$0);
    }
 
-   boolean d();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eqv)$$0).c, this.c) == 0 : false;
+      }
+   }
 
-   void e();
-
-   void f();
-
-   @Nullable
-   vu g();
-
-   void a(@Nullable vu var1);
-
-   void a(@Nullable xk var1);
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   }
 }

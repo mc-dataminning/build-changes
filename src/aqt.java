@@ -1,80 +1,68 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class aqt implements ara {
-   private final ara c;
-   private final List<ara> d;
+public class aqt implements aho {
+   private static final wg a = wg.c("disconnect.ignoring_status_request");
+   private final MinecraftServer b;
+   private final ve c;
 
-   public aqt(ara $$0, List<ara> $$1) {
-      this.c = $$0;
-      List<ara> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+   public aqt(MinecraftServer $$0, ve $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Nullable
    @Override
-   public asg<InputStream> a(String... $$0) {
-      return this.c.a($$0);
+   public void a(ahl $$0) {
+      switch ($$0.g()) {
+         case b:
+            this.a($$0, false);
+            break;
+         case a:
+            ais $$1 = this.b.av();
+            this.c.a(aiw.b);
+            if (this.b.an() && $$1 != null) {
+               this.c.a(aiw.a, new aqw($$1, this.c));
+            } else {
+               this.c.a(a);
+            }
+            break;
+         case c:
+            if (!this.b.bo()) {
+               this.c.a(ahx.b);
+               wg $$2 = wg.c("multiplayer.disconnect.transfers_disabled");
+               this.c.a(new ahv($$2));
+               this.c.a($$2);
+            } else {
+               this.a($$0, true);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+      }
    }
 
-   @Nullable
-   @Override
-   public asg<InputStream> a(arc $$0, ajh $$1) {
-      for (ara $$2 : this.d) {
-         asg<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
+   private void a(ahl $$0, boolean $$1) {
+      this.c.a(ahx.b);
+      if ($$0.b() != aa.b().e()) {
+         wg $$2;
+         if ($$0.b() < 754) {
+            $$2 = wg.a("multiplayer.disconnect.outdated_client", aa.b().c());
+         } else {
+            $$2 = wg.a("multiplayer.disconnect.incompatible", aa.b().c());
          }
+
+         this.c.a(new ahv($$2));
+         this.c.a($$2);
+      } else {
+         this.c.a(ahx.a, new aqu(this.b, this.c, $$1));
       }
-
-      return null;
    }
 
    @Override
-   public void a(arc $$0, String $$1, String $$2, ara.a $$3) {
-      Map<ajh, asg<InputStream>> $$4 = new HashMap<>();
-
-      for (ara $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
+   public void a(wg $$0) {
    }
 
    @Override
-   public Set<String> a(arc $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (ara $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(arn<T> $$0) throws IOException {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public aqz a() {
-      return this.c.a();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(ara::close);
+   public boolean c() {
+      return this.c.i();
    }
 }

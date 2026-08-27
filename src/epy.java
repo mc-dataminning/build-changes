@@ -1,17 +1,36 @@
-public interface epy {
-   static epy a() {
-      return eqd.a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+
+public class epy implements eqc {
+   private static final epy b = new epy();
+   public static final Codec<epy> a = Codec.unit(b);
+
+   private epy() {
    }
 
-   static epy a(box $$0) {
-      return new eqd($$0);
+   @Override
+   public eqd b() {
+      return eqe.m;
    }
 
-   boolean b();
+   @Override
+   public Set<epl<?>> a() {
+      return ImmutableSet.of(epo.j);
+   }
 
-   boolean a(eqm var1, ib var2, boolean var3);
+   public boolean a(enb $$0) {
+      Float $$1 = $$0.c(epo.j);
+      if ($$1 != null) {
+         axr $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
+   }
 
-   boolean a(cqh var1);
-
-   boolean a(eip var1, eip var2);
+   public static eqc.a c() {
+      return () -> b;
+   }
 }

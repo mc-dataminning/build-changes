@@ -1,84 +1,67 @@
-public class fym implements asp {
-   private final fyl a;
-   private final fyo b;
-   private final fxf c;
-   private final fyn d;
-   private final axd e = axd.a();
-   private final fam f;
+public class fym extends fyn {
+   private final ib a;
+   private final float b;
+   private final float F;
 
-   public fym(fyl $$0, fxf $$1, fam $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new fyo(this.f);
-      this.d = new fyn();
+   public fym(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, doz $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ib.a($$1, $$2, $$3));
    }
 
-   public fyl a() {
-      return this.a;
-   }
-
-   public void a(dnb $$0, ib $$1, cwe $$2, eub $$3, euf $$4) {
-      if ($$0.l() == dgh.c) {
-         glc $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, git.d);
+   public fym(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, doz $$7, ib $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fbp.Q().ap().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dca.i)) {
+         int $$9 = fbp.Q().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
-   }
 
-   public void a(dnb $$0, ib $$1, cwe $$2, eub $$3, euf $$4, boolean $$5, axd $$6) {
-      try {
-         dgh $$7 = $$0.l();
-         if ($$7 == dgh.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), git.d);
-         }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
-
-   public void a(ib $$0, cwe $$1, euf $$2, dnb $$3, eip $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
-
-   public fyo b() {
-      return this.b;
-   }
-
-   public glc a(dnb $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(dnb $$0, eub $$1, fxs $$2, int $$3, int $$4) {
-      dgh $$5 = $$0.l();
-      if ($$5 != dgh.a) {
-         switch ($$5) {
-            case c:
-               glc $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(fxn.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cqm($$0.b()), cqj.a, $$1, $$2, $$3, $$4);
-         }
-      }
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a(aso $$0) {
-      this.d.a();
+   public fxr b() {
+      return fxr.a;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? fzx.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements fxq<kd> {
+      public fxn a(kd $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         doz $$8 = $$0.b();
+         return !$$8.i() && !$$8.a(dca.bQ) && $$8.z() ? new fym($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      }
    }
 }

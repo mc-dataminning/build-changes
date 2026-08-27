@@ -1,74 +1,102 @@
-public class foh<T extends ccw> extends fon<T> {
-   private static final float a = 1.5F;
-   private static final float b = 1.0F;
-   private static final float f = 2.5F;
-   private final frf g;
-   private final frf h;
-   private final frf i;
-   private final frf j;
-   private final frf k;
-   private final frf l;
-   private final frf m;
-   private final frf n;
-   private final frf o;
-   private final frf p;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public foh(frf $$0) {
-      this.g = $$0.b("root");
-      this.h = this.g.b("body");
-      this.i = this.h.b("head");
-      this.j = this.i.b("eyes");
-      this.k = this.h.b("tongue");
-      this.l = this.h.b("left_arm");
-      this.m = this.h.b("right_arm");
-      this.n = this.g.b("left_leg");
-      this.o = this.g.b("right_leg");
-      this.p = this.h.b("croaking_body");
-   }
+public class foh extends fjo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<ajs<cyx>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(cyx.h, -13408734);
+      $$0.put(cyx.i, -10075085);
+      $$0.put(cyx.j, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bno d;
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      fro $$2 = $$1.a("root", frk.c(), frh.a(0.0F, 24.0F, 0.0F));
-      fro $$3 = $$2.a(
-         "body", frk.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), frh.a(0.0F, -2.0F, 4.0F)
-      );
-      fro $$4 = $$3.a(
-         "head", frk.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), frh.a(0.0F, -2.0F, -1.0F)
-      );
-      fro $$5 = $$4.a("eyes", frk.c(), frh.a(-0.5F, 0.0F, 2.0F));
-      $$5.a("right_eye", frk.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), frh.a(-1.5F, -3.0F, -6.5F));
-      $$5.a("left_eye", frk.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), frh.a(2.5F, -3.0F, -6.5F));
-      $$3.a("croaking_body", frk.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new frj(-0.1F)), frh.a(0.0F, -1.0F, -5.0F));
-      fro $$6 = $$3.a("tongue", frk.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), frh.a(0.0F, -1.01F, 1.0F));
-      fro $$7 = $$3.a("left_arm", frk.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), frh.a(4.0F, -1.0F, -6.5F));
-      $$7.a("left_hand", frk.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), frh.a(0.0F, 3.0F, -1.0F));
-      fro $$8 = $$3.a("right_arm", frk.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), frh.a(-4.0F, -1.0F, -6.5F));
-      $$8.a("right_hand", frk.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), frh.a(0.0F, 3.0F, 0.0F));
-      fro $$9 = $$2.a("left_leg", frk.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), frh.a(3.5F, -3.0F, 4.0F));
-      $$9.a("left_foot", frk.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), frh.a(2.0F, 3.0F, 0.0F));
-      fro $$10 = $$2.a("right_leg", frk.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), frh.a(-3.5F, -3.0F, 4.0F));
-      $$10.a("right_foot", frk.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), frh.a(-2.0F, 3.0F, 0.0F));
-      return frl.a($$0, 48, 48);
-   }
+   @Nullable
+   public static foh a(fbp $$0, BooleanConsumer $$1, DataFixer $$2, emr.c $$3, boolean $$4) {
+      try {
+         fon $$5 = $$0.x();
+         asn $$6 = asq.a($$3);
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(frf::c);
-      this.a($$0.cc, fag.c, $$3);
-      this.a($$0.cd, fag.a, $$3);
-      this.a($$0.ce, fag.d, $$3);
-      if ($$0.bf()) {
-         this.a(fag.e, $$1, $$2, 1.0F, 2.5F);
-      } else {
-         this.a(fag.b, $$1, $$2, 1.5F, 2.5F);
+         foh var10;
+         try (akp $$7 = $$5.a($$3.h(), false, $$6)) {
+            emx $$8 = $$7.d();
+            iz.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new foh($$1, $$2, $$3, $$8.J(), $$4, $$9);
+         }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
       }
+   }
 
-      this.a($$0.cf, fag.f, $$3);
-      this.p.k = $$0.cd.c();
+   private foh(BooleanConsumer $$0, DataFixer $$1, emr.c $$2, czb $$3, boolean $$4, iz $$5) {
+      super(wg.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.d = new bno($$2, $$1, $$5, $$4, false);
    }
 
    @Override
-   public frf a() {
-      return this.g;
+   protected void aN_() {
+      super.aN_();
+      this.c(fdp.a(wf.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.k / 2 - 100, this.l / 4 + 150, 200, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c.accept(false);
+   }
+
+   @Override
+   public void j() {
+      this.d.a();
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 20, 16777215);
+      int $$4 = this.k / 2 - 150;
+      int $$5 = this.k / 2 + 150;
+      int $$6 = this.l / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.m, this.d.h(), this.k / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.m, wg.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.m, wg.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.m, wg.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
+
+         for (ajs<cyx> $$9 : this.d.c()) {
+            int $$10 = axk.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
+
+         int $$11 = this.d.f() + this.d.g();
+         wg $$12 = wg.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         wg $$13 = wg.a("optimizeWorld.progress.percentage", axk.d(this.d.d() * 100.0F));
+         $$0.a(this.m, $$12, this.k / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.m, $$13, this.k / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      }
    }
 }

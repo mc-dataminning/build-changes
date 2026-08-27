@@ -1,35 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record eoo(float c) implements eoq {
-   public static final Codec<eoo> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eoo::c)).apply($$0, eoo::new));
-   public static final Codec<eoo> b = Codec.FLOAT.xmap(eoo::new, eoo::c);
+public abstract class eoo implements eop {
+   protected final List<eqc> g;
+   private final Predicate<enb> a;
 
-   @Override
-   public eop b() {
-      return eor.b;
+   protected eoo(List<eqc> $$0) {
+      this.g = $$0;
+      this.a = ac.a($$0);
    }
 
-   @Override
-   public float b(ekw $$0) {
-      return this.c;
+   protected static <T extends eoo> P1<Mu<T>, List<eqc>> a(Instance<T> $$0) {
+      return $$0.group(aws.a(eqe.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
-   public static eoo a(float $$0) {
-      return new eoo($$0);
+   public final crj b(crj $$0, enb $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
    }
 
+   protected abstract crj a(crj var1, enb var2);
+
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eoo)$$0).c, this.c) == 0 : false;
+   public void a(enk $$0) {
+      eop.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   protected static eoo.a<?> a(Function<List<eqc>, eop> $$0) {
+      return new eoo.b($$0);
+   }
+
+   public abstract static class a<T extends eoo.a<T>> implements eop.a, epv<T> {
+      private final Builder<eqc> a = ImmutableList.builder();
+
+      public T a(eqc.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<eqc> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends eoo.a<eoo.b> {
+      private final Function<List<eqc>, eop> a;
+
+      public b(Function<List<eqc>, eop> $$0) {
+         this.a = $$0;
+      }
+
+      protected eoo.b a() {
+         return this;
+      }
+
+      @Override
+      public eop b() {
+         return this.a.apply(this.g());
+      }
    }
 }

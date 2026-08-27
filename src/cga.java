@@ -1,114 +1,69 @@
-import java.util.function.Predicate;
+public class cga {
+   public static final ajs<cfz> a = a("kebab");
+   public static final ajs<cfz> b = a("aztec");
+   public static final ajs<cfz> c = a("alban");
+   public static final ajs<cfz> d = a("aztec2");
+   public static final ajs<cfz> e = a("bomb");
+   public static final ajs<cfz> f = a("plant");
+   public static final ajs<cfz> g = a("wasteland");
+   public static final ajs<cfz> h = a("pool");
+   public static final ajs<cfz> i = a("courbet");
+   public static final ajs<cfz> j = a("sea");
+   public static final ajs<cfz> k = a("sunset");
+   public static final ajs<cfz> l = a("creebet");
+   public static final ajs<cfz> m = a("wanderer");
+   public static final ajs<cfz> n = a("graham");
+   public static final ajs<cfz> o = a("match");
+   public static final ajs<cfz> p = a("bust");
+   public static final ajs<cfz> q = a("stage");
+   public static final ajs<cfz> r = a("void");
+   public static final ajs<cfz> s = a("skull_and_roses");
+   public static final ajs<cfz> t = a("wither");
+   public static final ajs<cfz> u = a("fighters");
+   public static final ajs<cfz> v = a("pointer");
+   public static final ajs<cfz> w = a("pigscene");
+   public static final ajs<cfz> x = a("burning_skull");
+   public static final ajs<cfz> y = a("skeleton");
+   public static final ajs<cfz> z = a("donkey_kong");
+   public static final ajs<cfz> A = a("earth");
+   public static final ajs<cfz> B = a("wind");
+   public static final ajs<cfz> C = a("water");
+   public static final ajs<cfz> D = a("fire");
 
-public abstract class cga extends bpx implements cfs {
-   protected cga(bpd<? extends cga> $$0, cxb $$1) {
-      super($$0, $$1);
-      this.bM = 5;
+   public static cfz a(iy<cfz> $$0) {
+      iy.a($$0, a, new cfz(16, 16));
+      iy.a($$0, b, new cfz(16, 16));
+      iy.a($$0, c, new cfz(16, 16));
+      iy.a($$0, d, new cfz(16, 16));
+      iy.a($$0, e, new cfz(16, 16));
+      iy.a($$0, f, new cfz(16, 16));
+      iy.a($$0, g, new cfz(16, 16));
+      iy.a($$0, h, new cfz(32, 16));
+      iy.a($$0, i, new cfz(32, 16));
+      iy.a($$0, j, new cfz(32, 16));
+      iy.a($$0, k, new cfz(32, 16));
+      iy.a($$0, l, new cfz(32, 16));
+      iy.a($$0, m, new cfz(16, 32));
+      iy.a($$0, n, new cfz(16, 32));
+      iy.a($$0, o, new cfz(32, 32));
+      iy.a($$0, p, new cfz(32, 32));
+      iy.a($$0, q, new cfz(32, 32));
+      iy.a($$0, r, new cfz(32, 32));
+      iy.a($$0, s, new cfz(32, 32));
+      iy.a($$0, t, new cfz(32, 32));
+      iy.a($$0, u, new cfz(64, 32));
+      iy.a($$0, v, new cfz(64, 64));
+      iy.a($$0, w, new cfz(64, 64));
+      iy.a($$0, x, new cfz(64, 64));
+      iy.a($$0, y, new cfz(64, 48));
+      iy.a($$0, A, new cfz(32, 32));
+      iy.a($$0, B, new cfz(32, 32));
+      iy.a($$0, C, new cfz(32, 32));
+      iy.a($$0, D, new cfz(32, 32));
+      return iy.a($$0, z, new cfz(64, 48));
    }
 
-   @Override
-   public atz db() {
-      return atz.f;
-   }
-
-   @Override
-   public void m_() {
-      this.eS();
-      this.gs();
-      super.m_();
-   }
-
-   protected void gs() {
-      float $$0 = this.br();
-      if ($$0 > 0.5F) {
-         this.be += 2;
-      }
-   }
-
-   @Override
-   protected boolean W() {
-      return true;
-   }
-
-   @Override
-   protected atx aN() {
-      return aty.mH;
-   }
-
-   @Override
-   protected atx aO() {
-      return aty.mG;
-   }
-
-   @Override
-   protected atx d(bnw $$0) {
-      return aty.mE;
-   }
-
-   @Override
-   protected atx n_() {
-      return aty.mD;
-   }
-
-   @Override
-   public bpp.a eI() {
-      return new bpp.a(aty.mF, aty.mC);
-   }
-
-   @Override
-   public float a(ib $$0, cxe $$1) {
-      return -$$1.w($$0);
-   }
-
-   public static boolean a(cxq $$0, ib $$1, axd $$2) {
-      if ($$0.a(cxk.a, $$1) > $$2.a(32)) {
-         return false;
-      } else {
-         dqo $$3 = $$0.D_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(cxk.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.E().aa() ? $$0.c($$1, 10) : $$0.A($$1);
-            return $$5 <= $$3.d().a($$2);
-         }
-      }
-   }
-
-   public static boolean b(bpd<? extends cga> $$0, cxq $$1, bpt $$2, ib $$3, axd $$4) {
-      return $$1.aj() != bna.a && (bpt.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bpd<? extends cga> $$0, cxc $$1, bpt $$2, ib $$3, axd $$4) {
-      return $$1.aj() != bna.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bqv.a gt() {
-      return bpr.A().a(bqw.c);
-   }
-
-   @Override
-   public boolean ee() {
-      return true;
-   }
-
-   @Override
-   protected boolean ef() {
-      return true;
-   }
-
-   public boolean f(ciu $$0) {
-      return true;
-   }
-
-   @Override
-   public cqm g(cqm $$0) {
-      if ($$0.d() instanceof crc) {
-         Predicate<cqm> $$1 = ((crc)$$0.d()).d();
-         cqm $$2 = crc.a(this, $$1);
-         return $$2.b() ? new cqm(cqp.ou) : $$2;
-      } else {
-         return cqm.h;
-      }
+   private static ajs<cfz> a(String $$0) {
+      return ajs.a(ks.R, new ajt($$0));
    }
 }

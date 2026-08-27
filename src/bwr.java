@@ -1,36 +1,8 @@
-public class bwr extends bwm {
-   private final ccb a;
-   private apg b;
-   private boolean c;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public bwr(ccb $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      apg $$0 = (apg)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
-      return !this.a.gn() && $$1 && this.a.gw();
-   }
-
-   @Override
-   public boolean Q_() {
-      return !this.c;
-   }
-
-   @Override
-   public void c() {
-      this.b = (apg)this.a.P_();
-      this.c = false;
-   }
-
-   @Override
-   public void e() {
-      if (!this.c && !this.a.y() && !this.a.gb()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
-         }
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bwr {
 }

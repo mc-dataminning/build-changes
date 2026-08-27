@@ -1,244 +1,85 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public abstract class fvg {
-   private static final epo a = new epo(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double b = aww.k(100.0);
-   protected final fsa c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected double i;
-   protected double j;
-   protected double k;
-   protected double l;
-   private epo D = a;
-   protected boolean m;
-   protected boolean n = true;
-   private boolean E;
-   protected boolean o;
-   protected float p = 0.6F;
-   protected float q = 1.8F;
-   protected final axd r = axd.a();
-   protected int s;
-   protected int t;
-   protected float u;
-   protected float v = 1.0F;
-   protected float w = 1.0F;
-   protected float x = 1.0F;
-   protected float y = 1.0F;
-   protected float z;
-   protected float A;
-   protected float B = 0.98F;
-   protected boolean C = false;
-
-   protected fvg(fsa $$0, double $$1, double $$2, double $$3) {
-      this.c = $$0;
-      this.b(0.2F, 0.2F);
-      this.c($$1, $$2, $$3);
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
+public interface fvg {
+   static fvg a(fvm $$0, UserApiService $$1) {
+      return new fvg.b($$0, $$1);
    }
 
-   public fvg(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3);
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
+   CompletableFuture<Unit> a(UUID var1, fvo var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public fvg c(float $$0) {
-      this.j *= (double)$$0;
-      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
-      this.l *= (double)$$0;
-      return this;
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-   }
-
-   public fvg d(float $$0) {
-      this.b(0.2F * $$0, 0.2F * $$0);
-      return this;
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   protected void e(float $$0) {
-      this.y = $$0;
-   }
-
-   public void a(int $$0) {
-      this.t = $$0;
-   }
-
-   public int j() {
-      return this.t;
-   }
-
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - 0.04 * (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.C && this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.k = this.k * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.m) {
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
+   public static class a extends xg {
+      public a(wg $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   public abstract void a(euf var1, eyt var2, float var3);
+   public static record b(fvm a, UserApiService b) implements fvg {
+      private static final wg c = wg.c("gui.abuseReport.send.service_unavailable");
+      private static final wg d = wg.c("gui.abuseReport.send.http_error");
+      private static final wg e = wg.c("gui.abuseReport.send.json_error");
 
-   public abstract fvk b();
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fvo $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName()
-         + ", Pos ("
-         + this.g
-         + ","
-         + this.h
-         + ","
-         + this.i
-         + "), RGBA ("
-         + this.v
-         + ","
-         + this.w
-         + ","
-         + this.x
-         + ","
-         + this.y
-         + "), Age "
-         + this.s;
-   }
-
-   public void k() {
-      this.o = true;
-   }
-
-   protected void b(float $$0, float $$1) {
-      if ($$0 != this.p || $$1 != this.q) {
-         this.p = $$0;
-         this.q = $$1;
-         epo $$2 = this.n();
-         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
-         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
-         this.a(new epo($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wg $$5 = this.a(var7);
+               throw new CompletionException(new fvg.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wg $$7 = this.a(var8);
+               throw new CompletionException(new fvg.a($$7, var8));
+            }
+         }, ac.g());
       }
-   }
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      float $$3 = this.p / 2.0F;
-      float $$4 = this.q;
-      this.a(new epo($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      if (!this.E) {
-         double $$3 = $$0;
-         double $$4 = $$1;
-         double $$5 = $$2;
-         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
-            ept $$6 = box.a(null, new ept($$0, $$1, $$2), this.n(), this.c, List.of());
-            $$0 = $$6.c;
-            $$1 = $$6.d;
-            $$2 = $$6.e;
-         }
-
-         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
-            this.a(this.n().d($$0, $$1, $$2));
-            this.l();
-         }
-
-         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
-            this.E = true;
-         }
-
-         this.m = $$4 != $$1 && $$4 < 0.0;
-         if ($$3 != $$0) {
-            this.j = 0.0;
-         }
-
-         if ($$5 != $$2) {
-            this.l = 0.0;
-         }
-      }
-   }
-
-   protected void l() {
-      epo $$0 = this.n();
-      this.g = ($$0.a + $$0.d) / 2.0;
-      this.h = $$0.b;
-      this.i = ($$0.c + $$0.f) / 2.0;
-   }
-
-   protected int a(float $$0) {
-      ib $$1 = ib.a(this.g, this.h, this.i);
-      return this.c.B($$1) ? fxq.a(this.c, $$1) : 0;
-   }
-
-   public boolean m() {
-      return !this.o;
-   }
-
-   public epo n() {
-      return this.D;
-   }
-
-   public void a(epo $$0) {
-      this.D = $$0;
-   }
-
-   public Optional<jz> o() {
-      return Optional.empty();
-   }
-
-   public static record a(float b, float c, float d, float e) {
-      public static final fvg.a a = new fvg.a(1.0F, 1.0F, 0.0F, 1.0F);
-
+      @Override
       public boolean a() {
-         return this.b >= 1.0F && this.c >= 1.0F;
+         return this.b.canSendReports();
       }
 
-      public float a(int $$0, int $$1, float $$2) {
-         if (aww.a(this.b, this.c)) {
-            return this.b;
-         } else {
-            float $$3 = aww.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
-            return aww.b(this.b, this.c, $$3);
-         }
+      private wg a(MinecraftClientHttpException $$0) {
+         return wg.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wg a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fvm c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

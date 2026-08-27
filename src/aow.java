@@ -1,85 +1,63 @@
-public class aow extends aph {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JComponent;
+import javax.swing.Timer;
+import net.minecraft.server.MinecraftServer;
 
-   public aow(apg $$0) {
-      super($$0);
+public class aow extends JComponent {
+   private static final DecimalFormat a = ac.a(
+      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
+   );
+   private final int[] b = new int[256];
+   private int c;
+   private final String[] d = new String[11];
+   private final MinecraftServer e;
+   private final Timer f;
+
+   public aow(MinecraftServer $$0) {
+      this.e = $$0;
+      this.setPreferredSize(new Dimension(456, 246));
+      this.setMinimumSize(new Dimension(456, 246));
+      this.setMaximumSize(new Dimension(456, 246));
+      this.f = new Timer(500, $$0x -> this.b());
+      this.f.start();
+      this.setBackground(Color.BLACK);
+   }
+
+   private void b() {
+      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
+      this.d[1] = "Avg tick: " + a.format((double)this.e.aS() / (double)ayj.b) + " ms";
+      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
+      this.repaint();
    }
 
    @Override
+   public void paint(Graphics $$0) {
+      $$0.setColor(new Color(16777215));
+      $$0.fillRect(0, 0, 456, 246);
+
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         int $$2 = this.b[$$1 + this.c & 0xFF];
+         $$0.setColor(new Color($$2 + 28 << 16));
+         $$0.fillRect($$1, 100 - $$2, 1, $$2);
+      }
+
+      $$0.setColor(Color.BLACK);
+
+      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
+         String $$4 = this.d[$$3];
+         if ($$4 != null) {
+            $$0.drawString($$4, 32, 116 + $$3 * 16);
+         }
+      }
+   }
+
    public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.X();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.d.b(new abt(abt.g, 0.0F));
-      }
-
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
-
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.d.b(new abt(abt.g, 104.0F));
-            } else {
-               this.d.a(vu.c("demo.day." + $$1));
-            }
-         }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.d.b(new abt(abt.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.d.b(new abt(abt.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.d.b(new abt(abt.g, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(vu.c("demo.day.warning"));
-      }
-   }
-
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(vu.c("demo.reminder"));
-         this.g = 0;
-      }
-   }
-
-   @Override
-   public void a(ib $$0, agc.a $$1, ih $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public bnd a(apg $$0, cxb $$1, cqm $$2, bnc $$3) {
-      if (this.f) {
-         this.f();
-         return bnd.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public bnd a(apg $$0, cxb $$1, cqm $$2, bnc $$3, epp $$4) {
-      if (this.f) {
-         this.f();
-         return bnd.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+      this.f.stop();
    }
 }

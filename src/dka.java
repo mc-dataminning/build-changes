@@ -1,91 +1,108 @@
-public class dka {
-   public static final ajg<djz> a = a("base");
-   public static final ajg<djz> b = a("square_bottom_left");
-   public static final ajg<djz> c = a("square_bottom_right");
-   public static final ajg<djz> d = a("square_top_left");
-   public static final ajg<djz> e = a("square_top_right");
-   public static final ajg<djz> f = a("stripe_bottom");
-   public static final ajg<djz> g = a("stripe_top");
-   public static final ajg<djz> h = a("stripe_left");
-   public static final ajg<djz> i = a("stripe_right");
-   public static final ajg<djz> j = a("stripe_center");
-   public static final ajg<djz> k = a("stripe_middle");
-   public static final ajg<djz> l = a("stripe_downright");
-   public static final ajg<djz> m = a("stripe_downleft");
-   public static final ajg<djz> n = a("small_stripes");
-   public static final ajg<djz> o = a("cross");
-   public static final ajg<djz> p = a("straight_cross");
-   public static final ajg<djz> q = a("triangle_bottom");
-   public static final ajg<djz> r = a("triangle_top");
-   public static final ajg<djz> s = a("triangles_bottom");
-   public static final ajg<djz> t = a("triangles_top");
-   public static final ajg<djz> u = a("diagonal_left");
-   public static final ajg<djz> v = a("diagonal_up_right");
-   public static final ajg<djz> w = a("diagonal_up_left");
-   public static final ajg<djz> x = a("diagonal_right");
-   public static final ajg<djz> y = a("circle");
-   public static final ajg<djz> z = a("rhombus");
-   public static final ajg<djz> A = a("half_vertical");
-   public static final ajg<djz> B = a("half_horizontal");
-   public static final ajg<djz> C = a("half_vertical_right");
-   public static final ajg<djz> D = a("half_horizontal_bottom");
-   public static final ajg<djz> E = a("border");
-   public static final ajg<djz> F = a("curly_border");
-   public static final ajg<djz> G = a("gradient");
-   public static final ajg<djz> H = a("gradient_up");
-   public static final ajg<djz> I = a("bricks");
-   public static final ajg<djz> J = a("globe");
-   public static final ajg<djz> K = a("creeper");
-   public static final ajg<djz> L = a("skull");
-   public static final ajg<djz> M = a("flower");
-   public static final ajg<djz> N = a("mojang");
-   public static final ajg<djz> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static ajg<djz> a(String $$0) {
-      return ajg.a(kj.d, new ajh($$0));
+public class dka extends dch implements dcb {
+   public static final MapCodec<dka> a = b(dka::new);
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dpz c = dpp.as;
+   private static final est e = dby.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final est f = dby.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dka> a() {
+      return a;
    }
 
-   public static djz a(iy<djz> $$0) {
-      iy.a($$0, a, new djz("b"));
-      iy.a($$0, b, new djz("bl"));
-      iy.a($$0, c, new djz("br"));
-      iy.a($$0, d, new djz("tl"));
-      iy.a($$0, e, new djz("tr"));
-      iy.a($$0, f, new djz("bs"));
-      iy.a($$0, g, new djz("ts"));
-      iy.a($$0, h, new djz("ls"));
-      iy.a($$0, i, new djz("rs"));
-      iy.a($$0, j, new djz("cs"));
-      iy.a($$0, k, new djz("ms"));
-      iy.a($$0, l, new djz("drs"));
-      iy.a($$0, m, new djz("dls"));
-      iy.a($$0, n, new djz("ss"));
-      iy.a($$0, o, new djz("cr"));
-      iy.a($$0, p, new djz("sc"));
-      iy.a($$0, q, new djz("bt"));
-      iy.a($$0, r, new djz("tt"));
-      iy.a($$0, s, new djz("bts"));
-      iy.a($$0, t, new djz("tts"));
-      iy.a($$0, u, new djz("ld"));
-      iy.a($$0, v, new djz("rd"));
-      iy.a($$0, w, new djz("lud"));
-      iy.a($$0, x, new djz("rud"));
-      iy.a($$0, y, new djz("mc"));
-      iy.a($$0, z, new djz("mr"));
-      iy.a($$0, A, new djz("vh"));
-      iy.a($$0, B, new djz("hh"));
-      iy.a($$0, C, new djz("vhr"));
-      iy.a($$0, D, new djz("hhb"));
-      iy.a($$0, E, new djz("bo"));
-      iy.a($$0, F, new djz("cbo"));
-      iy.a($$0, G, new djz("gra"));
-      iy.a($$0, H, new djz("gru"));
-      iy.a($$0, I, new djz("bri"));
-      iy.a($$0, J, new djz("glb"));
-      iy.a($$0, K, new djz("cre"));
-      iy.a($$0, L, new djz("sku"));
-      iy.a($$0, M, new djz("flo"));
-      iy.a($$0, N, new djz("moj"));
-      return iy.a($$0, O, new djz("pig"));
+   public dka(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   }
+
+   @Override
+   public crj a(cza $$0, ib $$1, doz $$2) {
+      return new crj(crm.wn);
+   }
+
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
+      } else {
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected boolean e_(doz $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.c(), 0) >= 9) {
+         doz $$5 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(dts.c, $$2, dts.a.a($$5));
+      }
+   }
+
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, bpv $$3) {
+      if ($$3 instanceof bqo && $$3.ai() != bqb.Q && $$3.ai() != bqb.h) {
+         $$3.a($$0, new esa(0.8F, 0.75, 0.8F));
+         if (!$$1.B && $$0.c(c) > 0 && ($$3.ac != $$3.dr() || $$3.ae != $$3.dx())) {
+            double $$4 = Math.abs($$3.dr() - $$3.ac);
+            double $$5 = Math.abs($$3.dx() - $$3.ae);
+            if ($$4 >= 0.003F || $$5 >= 0.003F) {
+               $$3.a($$1.ai().s(), 1.0F);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return !$$8 && $$0.a(crm.rx) ? boc.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Override
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.z.a(2);
+         a($$1, $$2, new crj(crm.wn, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, aum.yW, aun.e, 1.0F, 0.8F + $$1.z.i() * 0.4F);
+         doz $$8 = $$0.a(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(dts.c, $$2, dts.a.a($$3, $$8));
+         return boa.a($$1.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public boolean b(cza $$0, ib $$1, doz $$2) {
+      return $$2.c(c) < 3;
+   }
+
+   @Override
+   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$4)), 2);
    }
 }

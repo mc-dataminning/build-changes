@@ -1,77 +1,145 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ue extends uf {
-   private int a;
-   private final Set<tz<?>> b;
-   private final Deque<uh> c = new ArrayDeque<>();
-
-   public ue(ug... $$0) {
-      this.a = $$0.length;
-      Builder<tz<?>> $$1 = ImmutableSet.builder();
-      uh $$2 = uh.a();
-
-      for (ug $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+public class ue extends uc {
+   private static final int b = 10;
+   public static final ul<ue> a = new ul.a<ue>() {
+      public ue a(DataInput $$0, tv $$1) throws IOException {
+         return ue.a(d($$0, $$1));
       }
 
-      this.c.push($$2);
-      $$1.add(ta.b);
-      this.b = $$1.build();
-   }
-
-   @Override
-   public tu.b b(tz<?> $$0) {
-      return $$0 != ta.b ? tu.b.c : super.b($$0);
-   }
-
-   @Override
-   public tu.a a(tz<?> $$0) {
-      uh $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return tu.a.d;
-      } else {
-         return !this.b.contains($$0) ? tu.a.b : super.a($$0);
+      @Override
+      public ug.b a(DataInput $$0, ug $$1, tv $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
+
+      private static short d(DataInput $$0, tv $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
+
+      @Override
+      public int c() {
+         return 2;
+      }
+
+      @Override
+      public String a() {
+         return "SHORT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
+
+   ue(short $$0) {
+      this.c = $$0;
+   }
+
+   public static ue a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ue.a.a[$$0 - -128] : new ue($$0);
    }
 
    @Override
-   public tu.a a(tz<?> $$0, String $$1) {
-      uh $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == ta.b) {
-            uh $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public ul<ue> c() {
+      return a;
+   }
+
+   public ue e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ue && this.c == ((ue)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(un $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.c;
+   }
+
+   @Override
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public ug.b a(ug $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ue[] a = new ue[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ue((short)(-128 + $$0));
          }
-
-         return tu.a.b;
       }
-   }
-
-   @Override
-   public tu.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
-
-      return super.b();
-   }
-
-   public int c() {
-      return this.a;
    }
 }

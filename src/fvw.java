@@ -1,20 +1,33 @@
-public class fvw extends fuy {
-   protected fvw(fsa $$0, double $$1, double $$2, double $$3, double $$4, fwb $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
-   }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
+public interface fvw {
+   boolean a(fvx var1);
 
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
+   boolean a(fvy var1);
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvw($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   static fvw a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new fvw() {
+         @Override
+         public boolean a(fvx $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
+
+         @Override
+         public boolean a(fvy $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

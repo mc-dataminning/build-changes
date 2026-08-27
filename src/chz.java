@@ -1,153 +1,79 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.function.Function;
 
-public class chz {
-   private static final float d = 0.5F;
-   private static final float e = 0.7F;
-   private static final float f = 1.2F;
-   private static final int g = 18;
-   private static final int h = aww.f(100.0F);
-   public static final int a = aww.f(133.59999F);
-   public static final int b = aww.f(84.0F);
-   private static final int i = aww.f(83.2F);
-   public static final int c = 1200;
-   private static final int j = 100;
-   private static final List<bzz<? extends bzy<? super chy>>> k = List.of(bzz.d, bzz.x);
-   private static final List<bys<?>> l = List.of(
-      bys.g,
-      bys.h,
-      bys.k,
-      bys.l,
-      bys.M,
-      bys.n,
-      bys.m,
-      bys.E,
-      bys.t,
-      bys.o,
-      bys.p,
-      bys.B,
-      bys.ay,
-      bys.az,
-      bys.aA,
-      bys.aB,
-      bys.aC,
-      bys.aD,
-      bys.aE,
-      bys.aF,
-      bys.aG,
-      bys.aH,
-      bys.aI,
-      bys.aJ,
-      bys.aK,
-      bys.aL
-   );
-   private static final bri<chy> m = buu.a(
-      (Function<buu.b<chy>, ? extends App<buu.c<chy>, bux<chy>>>)($$0 -> $$0.group($$0.a(bys.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$0.a($$1).isPresent()) {
-                  $$1.a(axy.a, 1200L);
-               }
+public class chz extends bsg<chv> {
+   private static final int c = 4;
+   private static final int d = 256;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final float g = 0.7F;
+   private static final int h = Math.round(15.0F);
+   private static final int i = Math.round(4.0F);
+   private static final int j = Math.round(10.0F);
 
-               return true;
-            }))
-   );
-
-   public static void a(chy $$0) {
-      $$0.dP().a(ImmutableList.of(ckj.y, ckj.z, ckj.x, ckj.k, ckj.w, ckj.v, ckj.b));
+   @VisibleForTesting
+   public chz() {
+      super(ImmutableMap.of(bzr.o, bzs.a, bzr.aY, bzs.b, bzr.aW, bzs.b, bzr.aX, bzs.b, bzr.aV, bzs.a, bzr.m, bzs.b, bzr.ba, bzs.b), h + 1 + i);
    }
 
-   protected static bqq<?> a(chy $$0, Dynamic<?> $$1) {
-      bqq.b<chy> $$2 = bqq.a(l, k);
-      bqq<chy> $$3 = $$2.a($$1);
-      a($$3);
-      b($$3);
-      c($$3);
-      d($$3);
-      g($$3);
-      a($$0, $$3);
-      e($$3);
-      f($$3);
-      $$3.a(ImmutableSet.of(ckj.a));
-      $$3.b(ckj.b);
-      $$3.f();
-      return $$3;
+   protected boolean a(aps $$0, chv $$1) {
+      return $$1.ap() != bqz.a ? false : $$1.dP().c(bzr.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
+         if (!$$1x) {
+            $$1.dP().b(bzr.aV);
+         }
+
+         return $$1x;
+      }).orElse(false);
    }
 
-   private static void a(bqq<chy> $$0) {
-      $$0.a(ckj.a, 0, ImmutableList.of(new bub(0.8F), bvf.a(), new bsn(45, 90), new bsr()));
+   protected boolean a(aps $$0, chv $$1, long $$2) {
+      return $$1.dP().a(bzr.o) && $$1.dP().a(bzr.aV);
    }
 
-   private static void b(bqq<chy> $$0) {
-      $$0.a(ckj.y, 5, ImmutableList.of(new bvb(a)), bys.aC);
+   protected void b(aps $$0, chv $$1, long $$2) {
+      $$1.dP().c(bzr.o).ifPresent($$1x -> $$1.b(bqz.q));
+      $$1.dP().a(bzr.aW, aym.a, (long)h);
+      $$1.a(aum.cG, 1.0F, 1.0F);
    }
 
-   private static void c(bqq<chy> $$0) {
-      $$0.a(ckj.z, ImmutableList.of(Pair.of(0, new bvc()), Pair.of(1, new bva(h))), ImmutableSet.of(Pair.of(bys.ay, byt.b), Pair.of(bys.aE, byt.b)));
-   }
-
-   private static void d(bqq<chy> $$0) {
-      $$0.a(
-         ckj.b,
-         10,
-         ImmutableList.of(
-            bve.a(chy::gn), bvi.a(), new bte(ImmutableMap.of(bys.aB, byt.b), ImmutableList.of(Pair.of(bsz.a(0.5F), 2), Pair.of(new brr(30, 60), 1)))
-         )
-      );
-   }
-
-   private static void e(bqq<chy> $$0) {
-      $$0.a(ckj.w, 5, ImmutableList.of(bve.a(chy::gn), bsa.a(bys.az, 2, 0.7F)), bys.az);
-   }
-
-   private static void f(bqq<chy> $$0) {
-      $$0.a(ckj.v, 5, ImmutableList.of(bve.a(chy::gn), new bvg(i)), bys.aB);
-   }
-
-   private static void g(bqq<chy> $$0) {
-      $$0.a(ckj.x, 10, ImmutableList.of(new bvd()), bys.ay);
-   }
-
-   private static void a(chy $$0, bqq<chy> $$1) {
-      $$1.a(
-         ckj.k,
-         10,
-         ImmutableList.of(
-            m, btw.a($$1x -> !$$0.y().d() || !$$0.b($$1x), chz::b, false), btg.a($$1x -> a($$0, $$1x), (float)$$0.g(bqw.k)), btm.a(1.2F), new bvh(), bso.a(18)
-         ),
-         bys.o
-      );
-   }
-
-   private static boolean a(chy $$0, bpp $$1) {
-      return $$0.dP().c(bys.o).filter($$1x -> $$1x == $$1).isPresent();
-   }
-
-   private static void b(chy $$0, bpp $$1) {
-      if (!$$0.b($$1)) {
-         $$0.c($$1);
+   protected void c(aps $$0, chv $$1, long $$2) {
+      if ($$1.ap() == bqz.q) {
+         $$1.b(bqz.a);
       }
 
-      a((bpp)$$0);
+      $$1.dP().a(bzr.aY, aym.a, (long)j);
+      $$1.dP().b(bzr.aV);
    }
 
-   public static void a(bpp $$0) {
-      if ($$0.dP().a(bys.aE)) {
-         $$0.dP().a(bys.aE, axy.a, 1200L);
+   protected void d(aps $$0, chv $$1, long $$2) {
+      brp<chv> $$3 = $$1.dP();
+      bqo $$4 = $$3.c(bzr.o).orElse(null);
+      if ($$4 != null) {
+         $$1.a(eg.a.b, $$4.dk());
+         if (!$$3.c(bzr.aW).isPresent() && !$$3.c(bzr.aX).isPresent()) {
+            $$3.a(bzr.aX, aym.a, (long)i);
+            if (a($$1, $$4)) {
+               double $$5 = $$4.dr() - $$1.dr();
+               double $$6 = $$4.e(0.3) - $$1.e(0.5);
+               double $$7 = $$4.dx() - $$1.dx();
+               clc $$8 = new clc($$1, $$0);
+               $$1.a(aum.cJ, 1.5F, 1.0F);
+               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.ak().a() * 4));
+               $$0.b($$8);
+            }
+         }
       }
    }
 
-   public static void a(chy $$0, ib $$1) {
-      if ($$0.dM().C_().a($$1) && !$$0.gn().isPresent() && !$$0.dP().c(bys.o).isPresent()) {
-         a((bpp)$$0);
-         $$0.dP().a(bys.aG, axy.a, 100L);
-         $$0.dP().a(bys.n, new brk($$1), 100L);
-         $$0.dP().a(bys.az, $$1, 100L);
-         $$0.dP().b(bys.m);
-      }
+   @VisibleForTesting
+   public static boolean a(chv $$0, bqo $$1) {
+      esa $$2 = $$0.f(1.0F);
+      esa $$3 = $$1.dk().d($$0.dk()).d();
+      return $$2.b($$3) > 0.5;
+   }
+
+   private static boolean b(chv $$0, bqo $$1) {
+      double $$2 = $$0.dk().g($$1.dk());
+      return $$2 > 4.0 && $$2 < 256.0;
    }
 }

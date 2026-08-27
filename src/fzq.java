@@ -1,41 +1,51 @@
-public class fzq implements fzs<dkg> {
-   public static final glf a = new glf(gjb.e, new ajh("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final frf c;
+public enum fzq {
+   a(new fzq.b(fzq.a.f, fzq.a.e, fzq.a.a), new fzq.b(fzq.a.f, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.a)),
+   b(new fzq.b(fzq.a.f, fzq.a.b, fzq.a.d), new fzq.b(fzq.a.f, fzq.a.b, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.b, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.b, fzq.a.d)),
+   c(new fzq.b(fzq.a.c, fzq.a.b, fzq.a.d), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.f, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.f, fzq.a.b, fzq.a.d)),
+   d(new fzq.b(fzq.a.f, fzq.a.b, fzq.a.a), new fzq.b(fzq.a.f, fzq.a.e, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.b, fzq.a.a)),
+   e(new fzq.b(fzq.a.f, fzq.a.b, fzq.a.d), new fzq.b(fzq.a.f, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.f, fzq.a.e, fzq.a.a), new fzq.b(fzq.a.f, fzq.a.b, fzq.a.a)),
+   f(new fzq.b(fzq.a.c, fzq.a.b, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.a), new fzq.b(fzq.a.c, fzq.a.e, fzq.a.d), new fzq.b(fzq.a.c, fzq.a.b, fzq.a.d));
 
-   public fzq(fzt.a $$0) {
-      frf $$1 = $$0.a(fre.l);
-      this.c = $$1.b("bell_body");
+   private static final fzq[] g = ac.a(new fzq[6], $$0 -> {
+      $$0[fzq.a.e] = a;
+      $$0[fzq.a.b] = b;
+      $$0[fzq.a.d] = c;
+      $$0[fzq.a.a] = d;
+      $$0[fzq.a.f] = e;
+      $$0[fzq.a.c] = f;
+   });
+   private final fzq.b[] h;
+
+   public static fzq a(ih $$0) {
+      return g[$$0.d()];
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      fro $$2 = $$1.a("bell_body", frk.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), frh.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", frk.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), frh.a(-8.0F, -12.0F, -8.0F));
-      return frl.a($$0, 32, 32);
+   private fzq(fzq.b... $$0) {
+      this.h = $$0;
    }
 
-   public void a(dkg $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = aww.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ih.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ih.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ih.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ih.e) {
-            $$8 = $$9;
-         }
+   public fzq.b a(int $$0) {
+      return this.h[$$0];
+   }
+
+   public static final class a {
+      public static final int a = ih.d.d();
+      public static final int b = ih.b.d();
+      public static final int c = ih.f.d();
+      public static final int d = ih.c.d();
+      public static final int e = ih.a.d();
+      public static final int f = ih.e.d();
+   }
+
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
-
-      this.c.e = $$7;
-      this.c.g = $$8;
-      euf $$10 = a.a($$3, fya::c);
-      this.c.a($$2, $$10, $$4, $$5);
    }
 }

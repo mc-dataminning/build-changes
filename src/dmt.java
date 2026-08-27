@@ -1,113 +1,245 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dmt extends czo {
-   public static final MapCodec<dmt> a = b(dmt::new);
-   public static final dnv b = dmv.a;
-   public static final dnz<dod> c = dmv.c;
+public class dmt extends dnk implements cnf {
+   public static final int e = 3;
+   public static final int f = 3;
+   public static final int g = 9;
+   public static final int h = 1;
+   public static final int i = 0;
+   public static final int j = 9;
+   public static final int k = 10;
+   private iu<crj> r = iu.a(9, crj.i);
+   private int s = 0;
+   protected final cmz l = new cmz() {
+      private final int[] b = new int[9];
+      private int c = 0;
+
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.c : this.b[$$0];
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.c = $$1;
+         } else {
+            this.b[$$0] = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
+
+   public dmt(ib $$0, doz $$1) {
+      super(dmh.P, $$0, $$1);
+   }
 
    @Override
-   public MapCodec<dmt> a() {
-      return a;
-   }
-
-   public dmt(dna.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ih.c).a(c, dod.a));
-   }
-
-   @Nullable
-   @Override
-   public dki a(ib $$0, dnb $$1) {
-      return null;
-   }
-
-   public static dki a(ib $$0, dnb $$1, dnb $$2, ih $$3, boolean $$4, boolean $$5) {
-      return new dmx($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return a($$2, dkk.k, dmx::a);
+   protected wg k() {
+      return wg.c("container.crafter");
    }
 
    @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dki $$5 = $$1.c_($$2);
-         if ($$5 instanceof dmx) {
-            ((dmx)$$5).k();
+   protected cmp a(int $$0, cjs $$1) {
+      return new cnd($$0, $$1, this, this.l);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.l.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.l.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, crj $$1) {
+      if (this.l.a($$0) == 1) {
+         return false;
+      } else {
+         crj $$2 = this.r.get($$0);
+         int $$3 = $$2.G();
+         if ($$3 >= $$2.i()) {
+            return false;
+         } else {
+            return $$2.d() ? true : !this.a($$3, $$2, $$0);
          }
       }
    }
 
-   @Override
-   public void a(cxc $$0, ib $$1, dnb $$2) {
-      ib $$3 = $$1.a($$2.c(b).g());
-      dnb $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dmu && $$4.c(dmu.c)) {
-         $$0.a($$3, false);
+   private boolean a(int $$0, crj $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            crj $$4 = this.a($$3);
+            if ($$4.d() || $$4.G() < $$0 && crj.c($$4, $$1)) {
+               return true;
+            }
+         }
       }
-   }
 
-   @Override
-   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bnd.b;
-      } else {
-         return bnd.d;
-      }
-   }
-
-   @Override
-   protected List<cqm> a(dnb $$0, elc.a $$1) {
-      dmx $$2 = this.a($$1.a(), ib.a($$1.a(enh.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
-   }
-
-   @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return eqj.a();
-   }
-
-   @Override
-   protected eqm b(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      dmx $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : eqj.a();
-   }
-
-   @Nullable
-   private dmx a(cwh $$0, ib $$1) {
-      dki $$2 = $$0.c_($$1);
-      return $$2 instanceof dmx ? (dmx)$$2 : null;
-   }
-
-   @Override
-   public cqm a(cxe $$0, ib $$1, dnb $$2) {
-      return cqm.h;
-   }
-
-   @Override
-   protected dnb a(dnb $$0, dgo $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dnb a(dnb $$0, dey $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
       return false;
+   }
+
+   @Override
+   public void a(tm $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.s = $$0.h("crafting_ticks_remaining");
+      this.r = iu.a(this.b(), crj.i);
+      if (!this.a_($$0)) {
+         bnu.b($$0, this.r, $$1);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.l.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.l.a($$4, 1);
+         }
+      }
+
+      this.l.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(tm $$0, in.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.s);
+      if (!this.b_($$0)) {
+         bnu.a($$0, this.r, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean ah_() {
+      for (crj $$0 : this.r) {
+         if (!$$0.d()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public crj a(int $$0) {
+      return this.r.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, crj $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(cjt $$0) {
+      return bnt.a(this, $$0);
+   }
+
+   @Override
+   public iu<crj> j() {
+      return this.r;
+   }
+
+   @Override
+   protected void a(iu<crj> $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int f() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void a(cjx $$0) {
+      for (crj $$1 : this.r) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(tm $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(tm $$0) {
+      $$0.a("triggered", this.l.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.l.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean l() {
+      return this.l.a(9) == 1;
+   }
+
+   public static void a(cyx $$0, ib $$1, doz $$2, dmt $$3) {
+      int $$4 = $$3.s - 1;
+      if ($$4 >= 0) {
+         $$3.s = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.a(ddr.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.s = $$0;
+   }
+
+   public int t() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         crj $$2 = this.a($$1);
+         if (!$$2.d() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.r.get($$0).d();
    }
 }

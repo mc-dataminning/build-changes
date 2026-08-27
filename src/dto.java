@@ -1,32 +1,35 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dto {
-   private long b;
-   private long c;
-   public static final Codec<dto> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dto($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public class dto implements dtw {
+   public static final Codec<dto> a = RecordCodecBuilder.create($$0 -> $$0.group(ib.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dto::new));
+   public static final ye<vr, dto> b = ye.a(ib.b, $$0 -> $$0.e, dto::new);
+   private final ib e;
 
-   public dto(dtd.a $$0) {
-      this($$0.b(), $$0.c());
+   public dto(ib $$0) {
+      this.e = $$0;
    }
 
-   public dto(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   @Override
+   public Optional<esa> a(cyx $$0) {
+      return Optional.of(esa.b(this.e));
+   }
+
+   @Override
+   public dtx<dto> a() {
+      return dtx.a;
+   }
+
+   public static class a implements dtx<dto> {
+      @Override
+      public Codec<dto> a() {
+         return dto.a;
       }
-   }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+      @Override
+      public ye<vr, dto> b() {
+         return dto.b;
+      }
    }
 }

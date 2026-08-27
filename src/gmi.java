@@ -1,49 +1,37 @@
-public class gmi extends gly {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final ckp s;
-   private float t = 0.0F;
+import javax.annotation.Nullable;
 
-   public gmi(ckp $$0) {
-      super(aty.ot, atz.g, gmp.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dr());
-      this.g = (double)((float)$$0.dt());
-      this.h = (double)((float)$$0.dx());
-   }
+public record gmi(ajt a, @Nullable String b, @Nullable ajt c, @Nullable ajt d, gmi.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   @Override
-   public boolean s() {
-      return !this.s.aU();
-   }
+      private final String c;
 
-   @Override
-   public boolean r() {
-      return true;
-   }
+      private a(String $$0) {
+         this.c = $$0;
+      }
 
-   @Override
-   public void q() {
-      if (this.s.dH()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dr());
-         this.g = (double)((float)this.s.dt());
-         this.h = (double)((float)this.s.dx());
-         float $$0 = (float)this.s.dp().h();
-         if ($$0 >= 0.01F && this.s.dM().s().i()) {
-            this.t = aww.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = aww.i(aww.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+      public static gmi.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
          } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
          }
+      }
+
+      public String a() {
+         return this.c;
       }
    }
 }

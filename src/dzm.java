@@ -1,48 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzm extends dzi {
-   public static final Codec<dzm> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmi.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dzm::new)
-   );
-   private final bmi b;
+public class dzm extends dxv<eag> {
+   private static final ib a = new ib(8, 3, 8);
+   private static final cye b = new cye(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dzm(bmi $$0, bmi $$1, bmi $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dzm(Codec<eag> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
    @Override
-   protected dzj<?> a() {
-      return dzj.c;
-   }
+   public boolean a(dxx<eag> $$0) {
+      czs $$1 = $$0.b();
+      cye $$2 = new cye($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         ib $$3 = a.h($$0.e().v() + a.v());
+         ib.a $$4 = new ib.a();
 
-   @Override
-   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dca.m.n(), 2);
+                  } else {
+                     $$1.a($$4, dca.b.n(), 2);
+                  }
+               }
+            }
          }
+
+         return true;
       }
-   }
-
-   @Override
-   public int a(axd $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(axd $$0, int $$1, dys $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,17 +1,9 @@
-public interface ajx extends ajw {
-   aod a();
+public class ajx {
+   public final String a;
+   public final du b;
 
-   String b();
-
-   int d();
-
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   public ajx(String $$0, du $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

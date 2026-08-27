@@ -1,61 +1,118 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class fyl {
-   private Map<dnb, glc> a = Map.of();
-   private final gli b;
-
-   public fyl(gli $$0) {
-      this.b = $$0;
+public class fyl extends fyn {
+   fyl(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public gjc a(dnb $$0) {
-      return this.b($$0).e();
+   @Override
+   public fxr b() {
+      return fxr.b;
    }
 
-   public glc b(dnb $$0) {
-      glc $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
+   }
+
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
       }
 
-      return $$1;
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyl $$8 = new fyl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
    }
 
-   public gli a() {
-      return this.b;
-   }
+   public static class b implements fxq<ko> {
+      private final fyi a;
 
-   public void a(Map<dnb, glc> $$0) {
-      this.a = $$0;
-   }
-
-   public static glj c(dnb $$0) {
-      return a(ki.e.b($$0.b()), $$0);
-   }
-
-   public static glj a(ajh $$0, dnb $$1) {
-      return new glj($$0, b($$1.C()));
-   }
-
-   public static String b(Map<doe<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<doe<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         doe<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+      public b(fyi $$0) {
+         this.a = $$0;
       }
 
-      return $$1.toString();
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyl $$8 = new fyl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
    }
 
-   private static <T extends Comparable<T>> String a(doe<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   public static class c implements fxq<ko> {
+      private final fyi a;
+
+      public c(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyl $$8 = new fyl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fxq<ko> {
+      private final fyi a;
+
+      public d(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyl $$8 = new fyl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements fxq<ko> {
+      private final fyi a;
+
+      public e(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyl $$8 = new fyl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

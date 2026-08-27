@@ -1,7 +1,16 @@
-import java.util.function.BiConsumer;
+public enum dpk implements aye {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-public interface dpk extends cwh {
-   void a(BiConsumer<ib, dnb> var1);
+   private final String d;
 
-   ehz B();
+   private dpk(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

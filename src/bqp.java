@@ -1,35 +1,57 @@
-public class bqp {
-   private float a;
-   private float b;
-   private float c;
+public class bqp extends bpv {
+   private static final String b = "data";
+   private tm c = new tm();
 
-   public void a(float $$0) {
-      this.b = $$0;
+   public bqp(bqb<?> $$0, cyx $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
-   public void a(float $$0, float $$1) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
+   @Override
+   public void l() {
    }
 
-   public float a() {
-      return this.b;
+   @Override
+   protected void a(ajc.a $$0) {
    }
 
-   public float b(float $$0) {
-      return aww.i($$0, this.a, this.b);
+   @Override
+   protected void a(tm $$0) {
+      this.c = $$0.p("data");
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   protected void b(tm $$0) {
+      $$0.a("data", this.c.h());
    }
 
-   public float c(float $$0) {
-      return this.c - this.b * (1.0F - $$0);
+   @Override
+   public yn<aay> di() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public boolean c() {
-      return this.b > 1.0E-5F;
+   @Override
+   protected boolean r(bpv $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bG() {
+      return false;
+   }
+
+   @Override
+   protected void p(bpv $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public ekx k_() {
+      return ekx.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
    }
 }

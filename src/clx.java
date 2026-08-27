@@ -1,110 +1,138 @@
-public class clx extends clq {
-   private static final int k = 9;
-   private final bmw l;
-   private final int m;
+public class clx extends clo {
+   private static final aiy<Boolean> e = ajc.a(clx.class, aja.k);
+   private int i;
+   public double c;
+   public double d;
+   private static final cvg j = cvg.a(crm.ov, crm.ow);
 
-   private clx(cmx<?> $$0, int $$1, cit $$2, int $$3) {
-      this($$0, $$1, $$2, new bnm(9 * $$3), $$3);
-   }
-
-   public static clx a(int $$0, cit $$1) {
-      return new clx(cmx.a, $$0, $$1, 1);
-   }
-
-   public static clx b(int $$0, cit $$1) {
-      return new clx(cmx.b, $$0, $$1, 2);
-   }
-
-   public static clx c(int $$0, cit $$1) {
-      return new clx(cmx.c, $$0, $$1, 3);
-   }
-
-   public static clx d(int $$0, cit $$1) {
-      return new clx(cmx.d, $$0, $$1, 4);
-   }
-
-   public static clx e(int $$0, cit $$1) {
-      return new clx(cmx.e, $$0, $$1, 5);
-   }
-
-   public static clx f(int $$0, cit $$1) {
-      return new clx(cmx.f, $$0, $$1, 6);
-   }
-
-   public static clx a(int $$0, cit $$1, bmw $$2) {
-      return new clx(cmx.c, $$0, $$1, $$2, 3);
-   }
-
-   public static clx b(int $$0, cit $$1, bmw $$2) {
-      return new clx(cmx.f, $$0, $$1, $$2, 6);
-   }
-
-   public clx(cmx<?> $$0, int $$1, cit $$2, bmw $$3, int $$4) {
+   public clx(bqb<? extends clx> $$0, cyx $$1) {
       super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.m);
-      int $$5 = (this.m - 4) * 18;
+   }
 
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cnl($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
+   public clx(cyx $$0, double $$1, double $$2, double $$3) {
+      super(bqb.S, $$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public clo.a v() {
+      return clo.a.c;
+   }
+
+   @Override
+   protected void a(ajc.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dM().x_()) {
+         if (this.i > 0) {
+            this.i--;
          }
+
+         if (this.i <= 0) {
+            this.c = 0.0;
+            this.d = 0.0;
+         }
+
+         this.p(this.i > 0);
       }
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cnl($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cnl($$2, $$10, 8 + $$10 * 18, 161 + $$5));
+      if (this.B() && this.ag.a(4) == 0) {
+         this.dM().a(kl.V, this.dr(), this.dt() + 0.8, this.dx(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   public boolean a(ciu $$0) {
-      return this.l.a($$0);
+   protected double p() {
+      return (this.bc() ? 3.0 : 4.0) / 20.0;
    }
 
    @Override
-   public cqm a(ciu $$0, int $$1) {
-      cqm $$2 = cqm.h;
-      cnl $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cqm $$4 = $$3.g();
-         $$2 = $$4.q();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cqm.h;
-            }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cqm.h;
+   protected cre ag_() {
+      return crm.nN;
+   }
+
+   @Override
+   protected void c(ib $$0, doz $$1) {
+      double $$2 = 1.0E-4;
+      double $$3 = 0.001;
+      super.c($$0, $$1);
+      esa $$4 = this.dp();
+      double $$5 = $$4.i();
+      double $$6 = this.c * this.c + this.d * this.d;
+      if ($$6 > 1.0E-4 && $$5 > 0.001) {
+         double $$7 = Math.sqrt($$5);
+         double $$8 = Math.sqrt($$6);
+         this.c = $$4.c / $$7 * $$8;
+         this.d = $$4.e / $$7 * $$8;
+      }
+   }
+
+   @Override
+   protected void u() {
+      double $$0 = this.c * this.c + this.d * this.d;
+      if ($$0 > 1.0E-7) {
+         $$0 = Math.sqrt($$0);
+         this.c /= $$0;
+         this.d /= $$0;
+         esa $$1 = this.dp().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         if (this.bc()) {
+            $$1 = $$1.a(0.1);
          }
 
-         if ($$4.b()) {
-            $$3.e(cqm.h);
-         } else {
-            $$3.b();
-         }
+         this.g($$1);
+      } else {
+         this.g(this.dp().d(0.98, 0.0, 0.98));
       }
 
-      return $$2;
+      super.u();
    }
 
    @Override
-   public void b(ciu $$0) {
+   public boa a(cjt $$0, bnz $$1) {
+      crj $$2 = $$0.b($$1);
+      if (j.a($$2) && this.i + 3600 <= 32000) {
+         $$2.a(1, $$0);
+         this.i += 3600;
+      }
+
+      if (this.i > 0) {
+         this.c = this.dr() - $$0.dr();
+         this.d = this.dx() - $$0.dx();
+      }
+
+      return boa.a(this.dM().B);
+   }
+
+   @Override
+   protected void b(tm $$0) {
       super.b($$0);
-      this.l.c($$0);
+      $$0.a("PushX", this.c);
+      $$0.a("PushZ", this.d);
+      $$0.a("Fuel", (short)this.i);
    }
 
-   public bmw l() {
-      return this.l;
+   @Override
+   protected void a(tm $$0) {
+      super.a($$0);
+      this.c = $$0.k("PushX");
+      this.d = $$0.k("PushZ");
+      this.i = $$0.g("Fuel");
    }
 
-   public int m() {
-      return this.m;
+   protected boolean B() {
+      return this.an.a(e);
+   }
+
+   protected void p(boolean $$0) {
+      this.an.a(e, $$0);
+   }
+
+   @Override
+   public doz x() {
+      return dca.cD.n().a(dff.a, ih.c).a(dff.b, Boolean.valueOf(this.B()));
    }
 }

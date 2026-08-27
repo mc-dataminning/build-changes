@@ -1,43 +1,37 @@
-public class fpt<T extends box> extends fon<T> {
-   private static final String a = "body_front";
-   private static final String b = "body_back";
-   private final frf f;
-   private final frf g;
+public class fpt extends fsh<cgj> {
+   private final ftm a;
 
-   public fpt(frf $$0) {
-      this.f = $$0;
-      this.g = $$0.b("body_back");
+   public fpt(ftm $$0) {
+      super($$0);
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      int $$2 = 20;
-      fro $$3 = $$1.a("body_front", frk.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), frh.a(0.0F, 20.0F, 0.0F));
-      fro $$4 = $$1.a("body_back", frk.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), frh.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", frk.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), frh.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", frk.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), frh.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", frk.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), frh.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", frk.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), frh.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", frk.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), frh.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", frk.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), frh.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return frl.a($$0, 32, 32);
+   public static fts c() {
+      ftu $$0 = fqz.a(ftq.a, 0.0F);
+      ftv $$1 = $$0.a();
+      fsh.a($$1);
+      ftv $$2 = $$1.a("head").a("mushrooms", ftr.c(), fto.a);
+      $$2.a("red_mushroom_1", ftr.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fto.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", ftr.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fto.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", ftr.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fto.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", ftr.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fto.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
+      );
+      $$2.a(
+         "brown_mushroom_3",
+         ftr.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fto.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
+      );
+      $$2.a(
+         "brown_mushroom_4",
+         ftr.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fto.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return fts.a($$0, 64, 32);
    }
 
-   @Override
-   public frf a() {
-      return this.f;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
-
-      this.g.f = -$$6 * 0.25F * aww.a($$7 * 0.6F * $$3);
+   public void a(cgj $$0, float $$1, float $$2, float $$3) {
+      this.a.k = !$$0.gr();
+      super.a($$0, $$1, $$2, $$3);
    }
 }

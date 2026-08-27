@@ -1,51 +1,134 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dnk implements Predicate<dnb> {
-   public static final Predicate<dnb> a = $$0 -> true;
-   private final dnc<dac, dnb> b;
-   private final Map<doe<?>, Predicate<Object>> c = Maps.newHashMap();
+public abstract class dnk extends dlz implements boi {
+   @Nullable
+   protected ajt m;
+   protected long n = 0L;
 
-   private dnk(dnc<dac, dnb> $$0) {
-      this.b = $$0;
+   protected dnk(dmh<?> $$0, ib $$1, doz $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static dnk a(dac $$0) {
-      return new dnk($$0.n());
+   @Nullable
+   @Override
+   public ajt ay_() {
+      return this.m;
    }
 
-   public boolean a(@Nullable dnb $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<doe<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
+   @Override
+   public void a(@Nullable ajt $$0) {
+      this.m = $$0;
+   }
 
-            return true;
+   @Override
+   public long az_() {
+      return this.n;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public boolean ah_() {
+      this.e_(null);
+
+      for (crj $$0 : this.j()) {
+         if (!$$0.d()) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   @Override
+   public crj a(int $$0) {
+      this.e_(null);
+      return this.j().get($$0);
+   }
+
+   @Override
+   public crj a(int $$0, int $$1) {
+      this.e_(null);
+      crj $$2 = bnu.a(this.j(), $$0, $$1);
+      if (!$$2.d()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public crj b(int $$0) {
+      this.e_(null);
+      return bnu.a(this.j(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, crj $$1) {
+      this.e_(null);
+      this.j().set($$0, $$1);
+      if ($$1.G() > this.aj_()) {
+         $$1.e(this.aj_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public boolean a(cjt $$0) {
+      return bnt.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.j().clear();
+   }
+
+   protected abstract iu<crj> j();
+
+   protected abstract void a(iu<crj> var1);
+
+   @Override
+   public boolean d(cjt $$0) {
+      return super.d($$0) && (this.m == null || !$$0.N_());
+   }
+
+   @Nullable
+   @Override
+   public cmp createMenu(int $$0, cjs $$1, cjt $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.m);
+         return this.a($$0, $$1);
       } else {
-         return false;
+         return null;
       }
    }
 
-   protected <T extends Comparable<T>> boolean a(dnb $$0, doe<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   @Override
+   public void a(jl $$0) {
+      super.a($$0);
+      cuh $$1 = $$0.a(jp.U);
+      if ($$1 != null) {
+         this.m = $$1.a();
+         this.n = $$1.b();
+      }
    }
 
-   public <V extends Comparable<V>> dnk a(doe<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   @Override
+   public void a(jl.a $$0) {
+      super.a($$0);
+      if (this.m != null) {
+         $$0.a(jp.U, new cuh(this.m, this.n));
       }
+   }
+
+   @Override
+   public void a(tm $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

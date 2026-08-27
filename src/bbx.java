@@ -1,26 +1,19 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bbx extends bco {
-   private static final String[] a = new String[]{
-      "minecraft:ponder_goat_horn",
-      "minecraft:sing_goat_horn",
-      "minecraft:seek_goat_horn",
-      "minecraft:feel_goat_horn",
-      "minecraft:admire_goat_horn",
-      "minecraft:call_goat_horn",
-      "minecraft:yearn_goat_horn",
-      "minecraft:dream_goat_horn"
-   };
+public class bbx extends bea {
+   public bbx(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityShulkerColorFix", bfa.z, "minecraft:shulker");
+   }
 
-   public bbx(Schema $$0) {
-      super($$0, "GoatHornIdFix", $$0x -> $$0x.equals("minecraft:goat_horn"));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      int $$1 = $$0.get("SoundVariant").asInt(0);
-      String $$2 = a[$$1 >= 0 && $$1 < a.length ? $$1 : 0];
-      return $$0.remove("SoundVariant").set("instrument", $$0.createString($$2));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

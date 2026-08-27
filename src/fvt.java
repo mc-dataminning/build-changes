@@ -1,80 +1,77 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public abstract class fvt extends fvg {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
+public class fvt implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fvt.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   protected fvt(fsa $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   public void a(ib $$0, doz $$1, fzb $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fvt.a(this.b, $$1, $$2.dk()));
    }
 
-   protected fvt(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   public boolean a(ib $$0, doz $$1) {
+      fvt.a $$2 = (fvt.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
    }
 
-   public fvt.a p() {
-      return fvt.a.a;
+   public void a(int $$0, fuh $$1) {
+      ObjectIterator<Entry<fvt.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<fvt.a> $$3 = (Entry<fvt.a>)$$2.next();
+         fvt.a $$4 = (fvt.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            ib $$5 = ib.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public fvt a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public void a(euf $$0, eyt $$1, float $$2) {
-      ept $$3 = $$1.b();
-      float $$4 = (float)(aww.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(aww.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(aww.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(aww.i($$2, this.A, this.z));
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final esa a;
+      int b;
+      doz c;
+
+      a(int $$0, doz $$1, esa $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      Vector3f[] $$7 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$8 = this.b($$2);
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
+      fvt.a a(int $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-   }
-
-   public float b(float $$0) {
-      return this.D;
-   }
-
-   @Override
-   public fvg d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
-   }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
-
-   public interface a {
-      fvt.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      fvt.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, eyt var2, float var3);
+      void a(doz $$0) {
+         this.c = $$0;
+      }
    }
 }

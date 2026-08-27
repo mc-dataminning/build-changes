@@ -1,116 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
+public class fkz extends fkm<cng> implements fnh {
+   private static final ajt A = new ajt("textures/gui/container/crafting_table.png");
+   private final fnb B = new fnb();
+   private boolean C;
 
-public class fkz {
-   private final iz a;
-   private final List<ctr<?>> b;
-   private final boolean c;
-   private final Set<ctr<?>> d = Sets.newHashSet();
-   private final Set<ctr<?>> e = Sets.newHashSet();
-   private final Set<ctr<?>> f = Sets.newHashSet();
+   public fkz(cng $$0, cjs $$1, wg $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public fkz(iz $$0, List<ctr<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.C = this.k < 379;
+      this.B.a(this.k, this.l, this.j, this.C, this.s);
+      this.w = this.B.a(this.k, this.c);
+      this.c(new feb(this.w + 5, this.l / 2 - 49, 20, 18, fnb.a, $$0 -> {
+         this.B.e();
+         this.w = this.B.a(this.k, this.c);
+         $$0.c(this.w + 5, this.l / 2 - 49);
+      }));
+      this.d(this.B);
+      this.o = 29;
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      this.B.h();
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      if (this.B.f() && this.C) {
+         this.b($$0, $$1, $$2, $$3);
+         this.B.a($$0, $$1, $$2, $$3);
       } else {
-         this.c = a($$0, $$1);
+         super.a($$0, $$1, $$2, $$3);
+         this.B.a($$0, $$1, $$2, $$3);
+         this.B.a($$0, this.w, this.x, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.B.a($$0, this.w, this.x, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fdc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.w;
+      int $$5 = (this.l - this.d) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.d);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.B.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.B.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.C || !this.B.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.B.a($$0, $$1, $$2)) {
+         this.a(this.B);
+         return true;
+      } else {
+         return this.C && this.B.f() ? true : super.a($$0, $$1, $$2);
       }
    }
 
-   private static boolean a(iz $$0, List<ctr<?>> $$1) {
-      int $$2 = $$1.size();
-      cqm $$3 = $$1.get(0).b().a($$0);
-
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cqm $$5 = $$1.get($$4).b().a($$0);
-         if (!cqm.c($$3, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.B.a($$0, $$1, this.w, this.x, this.c, this.d, $$4) && $$5;
    }
 
-   public iz a() {
-      return this.a;
+   @Override
+   protected void a(cok $$0, int $$1, int $$2, cmy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.B.a($$0);
    }
 
-   public boolean b() {
-      return !this.f.isEmpty();
+   @Override
+   public void E() {
+      this.B.i();
    }
 
-   public void a(aub $$0) {
-      for (ctr<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
-   }
-
-   public void a(ciy $$0, int $$1, int $$2, aub $$3) {
-      for (ctr<?> $$4 : this.b) {
-         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4.b(), null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(ctr<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<ctr<?>> e() {
-      return this.b;
-   }
-
-   public List<ctr<?>> a(boolean $$0) {
-      List<ctr<?>> $$1 = Lists.newArrayList();
-      Set<ctr<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (ctr<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
-      }
-
-      return $$1;
-   }
-
-   public List<ctr<?>> b(boolean $$0) {
-      List<ctr<?>> $$1 = Lists.newArrayList();
-
-      for (ctr<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean f() {
-      return this.c;
+   @Override
+   public fnb F() {
+      return this.B;
    }
 }

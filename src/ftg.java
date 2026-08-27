@@ -1,37 +1,46 @@
-import java.util.Locale;
+public class ftg extends fsj {
+   private final ftm a;
+   private final ftm b;
 
-public enum ftg {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
-
-   private final String k;
-   private final vu l;
-   private final vu m;
-
-   private ftg(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vu.c($$1);
-      this.m = vu.c($$1 + ".description");
+   public ftg(ftm $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public String a() {
-      return this.k;
+   public static fts a() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      float $$2 = -16.0F;
+      ftv $$3 = $$1.a(
+         "head",
+         ftr.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         fto.a
+      );
+      $$3.a("jaw", ftr.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fto.a(0.0F, 4.0F, -8.0F));
+      return fts.a($$0, 256, 256);
    }
 
-   public vu b() {
-      return this.l;
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 
-   public vu c() {
-      return this.m;
+   @Override
+   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$0.a();
+      $$0.a(0.0F, -0.374375F, 0.0F);
+      $$0.b(0.75F, 0.75F, 0.75F);
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      $$0.b();
    }
 }

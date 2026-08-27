@@ -1,96 +1,72 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbi extends dfp {
-   public static final MapCodec<dbi> a = b(dbi::new);
+public abstract class dbi extends dby implements diy {
+   public static final dpq d = dpp.C;
+   private static final est a = dby.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<dbi> a() {
-      return a;
-   }
-
-   protected dbi(dna.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-      );
+   protected dbi(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public dnb a(csu $$0) {
-      return a($$0.q(), $$0.a(), this.o());
+   protected abstract MapCodec<? extends dbi> a();
+
+   protected void a(doz $$0, cyy $$1, ib $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.E_().a(40));
+      }
    }
 
-   public static dnb a(cwh $$0, ib $$1, dnb $$2) {
-      dnb $$3 = $$0.a_($$1.d());
-      dnb $$4 = $$0.a_($$1.c());
-      dnb $$5 = $$0.a_($$1.e());
-      dnb $$6 = $$0.a_($$1.h());
-      dnb $$7 = $$0.a_($$1.f());
-      dnb $$8 = $$0.a_($$1.g());
-      dac $$9 = $$2.b();
-      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dae.kv) || $$3.a(dae.fz)))
-         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dae.kv)))
-         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dae.kv)))
-         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dae.kv)))
-         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dae.kv)))
-         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dae.kv)));
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected static boolean e(doz $$0, cyd $$1, ib $$2) {
+      if ($$0.c(d)) {
+         return true;
       } else {
-         boolean $$6 = $$2.a(this) || $$2.a(dae.kv) || $$1 == ih.a && $$2.a(dae.fz);
-         return $$0.a(h.get($$1), Boolean.valueOf($$6));
-      }
-   }
-
-   @Override
-   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
-      dnb $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
-
-      for (ih $$5 : ih.c.a) {
-         ib $$6 = $$2.a($$5);
-         dnb $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dnb $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(dae.fz)) {
+         for (ih $$3 : ih.values()) {
+            if ($$1.b_($$2.a($$3)).a(avh.a)) {
                return true;
             }
          }
+
+         return false;
+      }
+   }
+
+   @Nullable
+   @Override
+   public doz a(cuo $$0) {
+      eks $$1 = $$0.q().b_($$0.a());
+      return this.n().a(d, Boolean.valueOf($$1.a(avh.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return a;
+   }
+
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ekt.c, ekt.c.a($$3));
       }
 
-      return $$3.a(this) || $$3.a(dae.fz);
+      return $$1 == ih.a && !this.a($$0, (cza)$$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ih.b);
    }
 
    @Override
-   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
-      return false;
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected eks c_(doz $$0) {
+      return $$0.c(d) ? ekt.c.a(false) : super.c_($$0);
    }
 }

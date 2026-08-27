@@ -1,16 +1,46 @@
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
+public record aae(ib c, float d, float e, float f, float g, float h) implements zo {
+   public static final ye<vg, aae> a = zo.a(aae::a, aae::new);
+   public static final zo.b<aae> b = zo.a("debug/worldgen_attempt");
 
-public record aae(List<arv> b) implements yb<aac> {
-   public static final xs<ByteBuf, aae> a = xs.a(arv.a.a(xq.a(uu.a(ArrayList::new, 64))), aae::b, aae::new);
-
-   @Override
-   public yd<aae> a() {
-      return aaa.f;
+   private aae(vg $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   public void a(aac $$0) {
-      $$0.a(this);
+   private void a(vg $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
+
+   @Override
+   public zo.b<aae> a() {
+      return b;
+   }
+
+   public ib b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

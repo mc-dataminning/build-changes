@@ -1,193 +1,132 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ale {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.effect.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.effect.clear.everything.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("commands.effect.clear.specific.failed"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, ajs<cyx>> a = ImmutableBiMap.of("o", cyx.h, "n", cyx.i, "e", cyx.j);
+   @Nullable
+   private static akw g;
+   @Nullable
+   private static akv h;
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("effect").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).g()))))
-                     .then(
-                        ((RequiredArgumentBuilder)dv.a("targets", eh.b()).executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"))))
-                           .then(dv.a("effect", et.a($$1, kj.Q)).executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.f($$0x, "effect"))))
-                     )
-               ))
-            .then(
-               dv.a("give")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("chase")
                   .then(
-                     dv.a("targets", eh.b())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("effect", et.a($$1, kj.Q))
-                                    .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.f($$0x, "effect"), null, 0, true)))
+                     ((LiteralArgumentBuilder)dv.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)dv.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
                                  .then(
-                                    ((RequiredArgumentBuilder)dv.a("seconds", IntegerArgumentType.integer(1, 1000000))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(),
-                                                   eh.b($$0x, "targets"),
-                                                   et.f($$0x, "effect"),
-                                                   IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                   0,
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         eh.b($$0x, "targets"),
-                                                         et.f($$0x, "effect"),
-                                                         IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         true
-                                                      )
-                                                ))
-                                             .then(
-                                                dv.a("hideParticles", BoolArgumentType.bool())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            eh.b($$0x, "targets"),
-                                                            et.f($$0x, "effect"),
-                                                            IntegerArgumentType.getInteger($$0x, "seconds"),
-                                                            IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                            !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                         )
-                                                   )
+                                    dv.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
                                              )
                                        )
-                                 ))
+                                 )
+                           ))
+                        .executes($$0x -> b((du)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dv.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
                               .then(
-                                 ((LiteralArgumentBuilder)dv.a("infinite")
-                                       .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.f($$0x, "effect"), -1, 0, true)))
-                                    .then(
-                                       ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eh.b($$0x, "targets"),
-                                                      et.f($$0x, "effect"),
-                                                      -1,
-                                                      IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                      true
-                                                   )
-                                             ))
-                                          .then(
-                                             dv.a("hideParticles", BoolArgumentType.bool())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         eh.b($$0x, "targets"),
-                                                         et.f($$0x, "effect"),
-                                                         -1,
-                                                         IntegerArgumentType.getInteger($$0x, "amplifier"),
-                                                         !BoolArgumentType.getBool($$0x, "hideParticles")
-                                                      )
-                                                )
+                                 dv.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
                                           )
                                     )
                               )
-                        )
-                  )
-            )
+                        ))
+                     .executes($$0x -> a((du)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(dv.a("stop").executes($$0x -> a((du)$$0x.getSource())))
       );
    }
 
-   private static int a(du $$0, Collection<? extends box> $$1, il<boi> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      boi $$6 = $$2.a();
-      int $$7 = 0;
-      int $$8;
-      if ($$3 != null) {
-         if ($$6.a()) {
-            $$8 = $$3;
-         } else if ($$3 == -1) {
-            $$8 = -1;
-         } else {
-            $$8 = $$3 * 20;
-         }
-      } else if ($$6.a()) {
-         $$8 = 1;
-      } else {
-         $$8 = 600;
+   private static int a(du $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> wg.b("You have now stopped chasing"), false);
+         h = null;
       }
 
-      for (box $$13 : $$1) {
-         if ($$13 instanceof bpp) {
-            bok $$14 = new bok($$2, $$8, $$4, false, $$5);
-            if (((bpp)$$13).b($$14, $$0.f())) {
-               $$7++;
-            }
-         }
+      if (g != null) {
+         g.b();
+         $$0.a(() -> wg.b("You are no longer being chased"), false);
+         g = null;
       }
 
-      if ($$7 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vu.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().O_(), $$8 / 20), true);
-         } else {
-            $$0.a(() -> vu.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
-         }
+      return 0;
+   }
 
-         return $$7;
+   private static boolean b(du $$0) {
+      if (g != null) {
+         $$0.b(wg.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(wg.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private static int a(du $$0, Collection<? extends box> $$1) throws CommandSyntaxException {
-      int $$2 = 0;
-
-      for (box $$3 : $$1) {
-         if ($$3 instanceof bpp && ((bpp)$$3).et()) {
-            $$2++;
-         }
-      }
-
-      if ($$2 == 0) {
-         throw b.create();
+   private static int a(du $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vu.a("commands.effect.clear.everything.success.single", $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> vu.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
+         g = new akw($$1, $$2, $$0.l().ah(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> wg.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(wg.b("Failed to start chase server on port " + $$2));
+            g = null;
          }
 
-         return $$2;
+         return 0;
       }
    }
 
-   private static int a(du $$0, Collection<? extends box> $$1, il<boi> $$2) throws CommandSyntaxException {
-      boi $$3 = $$2.a();
-      int $$4 = 0;
-
-      for (box $$5 : $$1) {
-         if ($$5 instanceof bpp && ((bpp)$$5).e($$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw c.create();
+   private static int b(du $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vu.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> vu.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
-         }
-
-         return $$4;
+         h = new akv($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> wg.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

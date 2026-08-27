@@ -1,22 +1,18 @@
-public class gga extends geh<cgq, fqu<cgq>> {
-   private static final ajh a = new ajh("textures/entity/witch.png");
+public class gga extends gin {
+   private static final ajt a = new ajt("textures/entity/zombie/husk.png");
 
-   public gga(gdb.a $$0) {
-      super($$0, new fqu<>($$0.a(fre.bU)), 0.5F);
-      this.a(new ghz<>(this, $$0.d()));
+   public gga(gfi.a $$0) {
+      super($$0, ftl.ar, ftl.as, ftl.at);
    }
 
-   public void a(cgq $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
-      this.f.b(!$$0.eU().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(chs $$0, ewi $$1, float $$2) {
+      float $$3 = 1.0625F;
+      $$1.b(1.0625F, 1.0625F, 1.0625F);
+      super.a($$0, $$1, $$2);
    }
 
-   public ajh a(cgq $$0) {
+   @Override
+   public ajt a(chs $$0) {
       return a;
-   }
-
-   protected void a(cgq $$0, eub $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

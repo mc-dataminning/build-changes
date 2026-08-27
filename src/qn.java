@@ -1,21 +1,168 @@
-public class qn {
-   public static final ajg<dvf<?, ?>> a = qq.a("seagrass_short");
-   public static final ajg<dvf<?, ?>> b = qq.a("seagrass_slightly_less_short");
-   public static final ajg<dvf<?, ?>> c = qq.a("seagrass_mid");
-   public static final ajg<dvf<?, ?>> d = qq.a("seagrass_tall");
-   public static final ajg<dvf<?, ?>> e = qq.a("sea_pickle");
-   public static final ajg<dvf<?, ?>> f = qq.a("seagrass_simple");
-   public static final ajg<dvf<?, ?>> g = qq.a("kelp");
-   public static final ajg<dvf<?, ?>> h = qq.a("warm_ocean_vegetation");
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public static void a(pl<dvf<?, ?>> $$0) {
-      qq.a($$0, a, dvs.M, new dyg(0.3F));
-      qq.a($$0, b, dvs.M, new dyg(0.4F));
-      qq.a($$0, c, dvs.M, new dyg(0.6F));
-      qq.a($$0, d, dvs.M, new dyg(0.8F));
-      qq.a($$0, e, dvs.R, new dxr(20));
-      qq.a($$0, f, dvs.S, new dyo(dzx.a(dae.bw)));
-      qq.a($$0, g, dvs.N);
-      qq.a($$0, h, dvs.ag, new dyp(ip.a(rf.a(dvs.O, dxw.m), rf.a(dvs.Q, dxw.m), rf.a(dvs.P, dxw.m))));
+public class qn {
+   public static final ajs<egq> a = qe.a("trail_ruins/tower");
+
+   public static void a(px<egq> $$0) {
+      im<egq> $$1 = $$0.a(ks.aI);
+      il<egq> $$2 = $$1.b(qe.a);
+      im<ejf> $$3 = $$0.a(ks.aG);
+      il<ejf> $$4 = $$3.b(qf.J);
+      il<ejf> $$5 = $$3.b(qf.K);
+      il<ejf> $$6 = $$3.b(qf.L);
+      $$0.a(
+         a,
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/tower/tower_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_5", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/tower/tower_top",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/tower/tower_top_1", $$6), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_top_2", $$6), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_top_3", $$6), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_top_4", $$6), 1),
+               Pair.of(ego.b("trail_ruins/tower/tower_top_5", $$6), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/tower/additions",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/tower/hall_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/hall_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/hall_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/hall_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/hall_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/large_hall_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/large_hall_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/large_hall_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/large_hall_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/large_hall_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/one_room_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/one_room_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/one_room_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/one_room_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/one_room_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/platform_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/platform_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/platform_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/platform_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/platform_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/stable_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/stable_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/stable_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/stable_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/tower/stable_5", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/roads",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/roads/long_road_end", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_end_1", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_section_1", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_section_2", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_section_3", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_section_4", $$5), 1),
+               Pair.of(ego.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/buildings",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/buildings/group_hall_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_hall_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_hall_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_hall_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_hall_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/large_room_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/large_room_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/large_room_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/large_room_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/large_room_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/one_room_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/one_room_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/one_room_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/one_room_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/one_room_5", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/buildings/grouped",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/buildings/group_full_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_full_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_full_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_full_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_full_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_lower_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_lower_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_lower_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_lower_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_lower_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_upper_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_upper_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_upper_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_upper_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_upper_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_room_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_room_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_room_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_room_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/buildings/group_room_5", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trail_ruins/decor",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trail_ruins/decor/decor_1", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_2", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_3", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_4", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_5", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_6", $$4), 1),
+               Pair.of(ego.b("trail_ruins/decor/decor_7", $$4), 1)
+            ),
+            egq.a.b
+         )
+      );
    }
 }

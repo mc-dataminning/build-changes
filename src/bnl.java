@@ -1,76 +1,53 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public interface bnl extends bmw {
-   String c = "LootTable";
-   String d = "LootTableSeed";
+public class bnl extends bnf {
+   public static final Codec<bnl> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bnl::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
 
-   @Nullable
-   ajh aA_();
-
-   void a(@Nullable ajh var1);
-
-   default void a(ajh $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   private bnl(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   long aB_();
-
-   void a(long var1);
-
-   ib aC_();
-
-   @Nullable
-   cxb i();
-
-   static void a(cwh $$0, axd $$1, ib $$2, ajh $$3) {
-      if ($$0.c_($$2) instanceof bnl $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   public static bnl a(int $$0, int $$1) {
+      return new bnl($$0, $$1);
    }
 
-   default boolean c_(ta $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ajh($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int a(axr $$0) {
+      return axk.b($$0, this.b, this.f);
    }
 
-   default boolean b(ta $$0) {
-      ajh $$1 = this.aA_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", $$1.toString());
-         long $$2 = this.aB_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
+   @Override
+   public int a() {
+      return this.b;
    }
 
-   default void e_(@Nullable ciu $$0) {
-      cxb $$1 = this.i();
-      ib $$2 = this.aC_();
-      ajh $$3 = this.aA_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         ele $$4 = $$1.o().aM().getLootTable($$3);
-         if ($$0 instanceof apg) {
-            am.Q.a((apg)$$0, $$3);
-         }
+   @Override
+   public int b() {
+      return this.f;
+   }
 
-         this.a(null);
-         elc.a $$5 = new elc.a((apf)$$1).a(enh.f, ept.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gv()).a(enh.a, $$0);
-         }
+   @Override
+   public bng<?> c() {
+      return bng.b;
+   }
 
-         $$4.a(this, $$5.a(eng.c), this.aB_());
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

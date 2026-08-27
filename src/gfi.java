@@ -1,25 +1,60 @@
-public class gfi<T extends ccd> extends geh<T, fqh<T>> {
-   private static final ajh a = new ajh("textures/entity/squid/squid.png");
+@FunctionalInterface
+public interface gfi<T extends bpv> {
+   gfh<T> create(gfi.a var1);
 
-   public gfi(gdb.a $$0, fqh<T> $$1) {
-      super($$0, $$1, 0.7F);
-   }
+   public static class a {
+      private final gfg a;
+      private final ggg b;
+      private final gat c;
+      private final fzv d;
+      private final atc e;
+      private final fti f;
+      private final fda g;
 
-   public ajh a(T $$0) {
-      return a;
-   }
+      public a(gfg $$0, ggg $$1, gat $$2, fzv $$3, atc $$4, fti $$5, fda $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   protected void a(T $$0, eub $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = aww.i($$4, $$0.c, $$0.b);
-      float $$7 = aww.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$6));
-      $$1.a(a.d.rotationDegrees($$7));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
+      public gfg a() {
+         return this.a;
+      }
 
-   protected float a(T $$0, float $$1) {
-      return aww.i($$1, $$0.ca, $$0.bZ);
+      public ggg b() {
+         return this.b;
+      }
+
+      public gat c() {
+         return this.c;
+      }
+
+      public fzv d() {
+         return this.d;
+      }
+
+      public atc e() {
+         return this.e;
+      }
+
+      public fti f() {
+         return this.f;
+      }
+
+      public gnp g() {
+         return this.c.a().a();
+      }
+
+      public ftm a(ftk $$0) {
+         return this.f.a($$0);
+      }
+
+      public fda h() {
+         return this.g;
+      }
    }
 }

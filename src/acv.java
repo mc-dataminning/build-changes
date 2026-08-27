@@ -1,69 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public class acv implements yn<aay> {
+   public static final ye<vr, acv> a = ye.a(yc.f, acv::b, yc.a(ks.P), acv::e, wi.d, acv::f, acv::new);
+   private final int b;
+   private final cnw<?> c;
+   private final wg d;
 
-public class acv implements yb<aam> {
-   public static final xs<uu, acv> a = yb.a(acv::a, acv::new);
-   private final acv.a b;
-   private final List<ajh> c;
-   private final List<ajh> d;
-   private final auc e;
-
-   public acv(acv.a $$0, Collection<ajh> $$1, Collection<ajh> $$2, auc $$3) {
+   public acv(int $$0, cnw<?> $$1, wg $$2) {
       this.b = $$0;
-      this.c = ImmutableList.copyOf($$1);
-      this.d = ImmutableList.copyOf($$2);
-      this.e = $$3;
-   }
-
-   private acv(uu $$0) {
-      this.b = $$0.b(acv.a.class);
-      this.e = auc.a($$0);
-      this.c = $$0.a(uu::q);
-      if (this.b == acv.a.a) {
-         this.d = $$0.a(uu::q);
-      } else {
-         this.d = ImmutableList.of();
-      }
-   }
-
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      this.e.b($$0);
-      $$0.a(this.c, uu::a);
-      if (this.b == acv.a.a) {
-         $$0.a(this.d, uu::a);
-      }
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public yd<acv> a() {
-      return aex.ai;
+   public yp<acv> a() {
+      return afj.W;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public List<ajh> b() {
-      return this.c;
-   }
-
-   public List<ajh> e() {
-      return this.d;
-   }
-
-   public auc f() {
-      return this.e;
-   }
-
-   public acv.a g() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public cnw<?> e() {
+      return this.c;
+   }
+
+   public wg f() {
+      return this.d;
    }
 }

@@ -1,36 +1,21 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bzh extends bzr<cgw> {
-   public static final int a = 24;
+public class bzh<T extends bqo> extends bze<T> {
+   private final brk i;
 
-   @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bys.B)));
-   }
-
-   protected void a(apf $$0, cgw $$1) {
-      super.a($$0, $$1);
-      $$1.dP()
-         .c(bys.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bpc.e)
-         .filter($$1x -> bzy.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dP().a(bys.B, $$1x), () -> $$1.dP().b(bys.B));
+   public bzh(brk $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bqo> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
-   protected int b() {
-      return 24;
+   public boolean a() {
+      return !this.i.r() && super.a();
    }
 
    @Override
-   protected int c() {
-      return 24;
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
    }
 }

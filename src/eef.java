@@ -1,59 +1,65 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.stream.Stream;
 
-public class eef extends eel {
-   public static final Codec<eef> a = RecordCodecBuilder.create($$0 -> $$0.group(eci.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, eef::new));
-   private final il<eci> b;
-   private final ta c;
+public class eef extends eeo {
+   private final ih c;
+   private final dvy d;
+   private final dvy e;
+   private final int f;
+   public static final Codec<eef> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ih.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               dvy.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               dvy.b.optionalFieldOf("allowed_search_condition", dvy.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eef::new)
+   );
 
-   protected eef(il<eci> $$0, een.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   private eef(ih $$0, dvy $$1, dvy $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private ta b() {
-      ta $$0 = new ta();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dli.a.a.c());
-      return $$0;
+   public static eef a(ih $$0, dvy $$1, dvy $$2, int $$3) {
+      return new eef($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public jg a(ehf $$0, dgo $$1) {
-      return jg.g;
-   }
-
-   @Override
-   public List<ehe.c> a(ehf $$0, ib $$1, dgo $$2, axd $$3) {
-      List<ehe.c> $$4 = Lists.newArrayList();
-      $$4.add(new ehe.c($$1, dae.pb.o().a(ded.b, ij.a(ih.a, ih.d)), this.c));
-      return $$4;
+   public static eef a(ih $$0, dvy $$1, int $$2) {
+      return a($$0, $$1, dvy.e(), $$2);
    }
 
    @Override
-   public ecw a(ehf $$0, ib $$1, dgo $$2) {
-      jg $$3 = this.a($$0, $$2);
-      return new ecw($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
+      ib.a $$3 = $$2.j();
+      czs $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
    @Override
-   public boolean a(ehf $$0, cxw $$1, cxu $$2, doy $$3, ib $$4, ib $$5, dgo $$6, ecw $$7, axd $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public eem<?> a() {
-      return eem.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public eep<?> b() {
+      return eep.j;
    }
 }

@@ -1,36 +1,52 @@
-public class fql<T extends box> extends fnw<T> {
-   private final frf a;
-   private final frf b;
+public class fql<T extends bpv> extends fqv<T> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final ftm g;
+   private final ftm[] h;
 
-   public fql(frf $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fql(ftm $$0) {
+      this.g = $$0;
+      this.h = new ftm[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.h[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static frl a(frj $$0) {
-      frn $$1 = new frn();
-      fro $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", frk.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), frh.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", frk.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), frh.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", frk.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), frh.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", frk.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), frh.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", frk.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), frh.a(0.0F, 20.5F, -3.0F));
-      return frl.a($$1, 32, 32);
+   private static String a(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fts b() {
+      ftu $$0 = new ftu();
+      ftv $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            ftr.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            fto.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return fts.a($$0, 64, 32);
    }
 
    @Override
-   public frf a() {
-      return this.a;
+   public ftm a() {
+      return this.g;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.5F;
+      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
+         this.h[$$6].f = axk.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
+         this.h[$$6].b = axk.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
       }
-
-      this.b.f = -$$6 * 0.45F * aww.a(0.6F * $$3);
    }
 }

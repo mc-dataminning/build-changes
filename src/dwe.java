@@ -1,89 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwe extends dvs<dyd> {
-   public dwe(Codec<dyd> $$0) {
+class dwe extends dwj {
+   private final ip<dby> e;
+   public static final Codec<dwe> a = RecordCodecBuilder.create($$0 -> a($$0).and(ja.a(ks.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dwe::new));
+
+   public dwe(jg $$0, ip<dby> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(dvu<dyd> $$0) {
-      ib $$1 = $$0.e();
-      axd $$2 = $$0.d();
-      cxw $$3 = $$0.b();
+   protected boolean a(doz $$0) {
+      return $$0.a(this.e);
+   }
 
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(dae.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = aww.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)aww.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)aww.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dnb $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dae.dP) || $$13.a(dae.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dae.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dae.dP) || $$13.a(dae.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dae.iC.o());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               ib $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dnb $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dae.dP) && !$$19.a(dae.dO) && !$$19.a(dae.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dae.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public dvz<?> a() {
+      return dvz.a;
    }
 }

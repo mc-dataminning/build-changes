@@ -1,59 +1,44 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.serialization.Codec;
 
-@Immutable
-public class bnb {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bna d;
-   private final float e;
+public class bnb extends bnd {
+   public static final bnb a = new bnb(0.0F);
+   public static final Codec<bnb> b = aws.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bnb::new, bnb::d);
+   private final float d;
 
-   public bnb(bna $$0, long $$1, long $$2, float $$3) {
+   public static bnb a(float $$0) {
+      return $$0 == 0.0F ? a : new bnb($$0);
+   }
+
+   private bnb(float $$0) {
       this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
-   }
-
-   public bna a() {
-      return this.d;
-   }
-
-   public float b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.e >= (float)bna.d.ordinal();
-   }
-
-   public boolean a(float $$0) {
-      return this.e > $$0;
    }
 
    public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
+      return this.d;
    }
 
-   private float a(bna $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bna.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bna.d;
-         float $$5 = 0.75F;
-         float $$6 = aww.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += aww.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += aww.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bna.b) {
-            $$7 *= 0.5F;
-         }
+   @Override
+   public float a(axr $$0) {
+      return this.d;
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bne<?> c() {
+      return bne.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

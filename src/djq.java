@@ -1,20 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djq extends ddq {
-   public static final MapCodec<djq> c = b(djq::new);
-   public static final eqm e = dac.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class djq extends dfy implements dbp {
+   public static final MapCodec<djq> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cqc.q.fieldOf("color").forGetter(djq::b), u()).apply($$0, djq::new));
+   private final cqc k;
 
    @Override
    public MapCodec<djq> a() {
-      return c;
+      return j;
    }
 
-   public djq(dna.d $$0) {
-      super($$0, ih.a, e, false);
+   public djq(cqc $$0, doy.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected ddr c() {
-      return (ddr)dae.oz;
+   public cqc b() {
+      return this.k;
    }
 }

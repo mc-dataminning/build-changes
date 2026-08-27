@@ -1,110 +1,99 @@
-public class got implements gox {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final vu f = vu.a("tutorial.move.title", gow.a("forward"), gow.a("left"), gow.a("back"), gow.a("right"));
-   private static final vu g = vu.a("tutorial.move.description", gow.a("jump"));
-   private static final vu h = vu.c("tutorial.look.title");
-   private static final vu i = vu.c("tutorial.look.description");
-   private final gow j;
-   private fdt k;
-   private fdt l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import javax.annotation.Nullable;
 
-   public got(gow $$0) {
-      this.j = $$0;
+public class got implements gqc<got> {
+   public static final ajm a = new ajm("sounds", ".ogg");
+   private final ajt b;
+   private final bni c;
+   private final bni d;
+   private final int e;
+   private final got.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
+
+   public got(String $$0, bni $$1, bni $$2, int $$3, got.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new ajt($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public ajt a() {
+      return this.b;
+   }
+
+   public ajt b() {
+      return a.a(this.b);
+   }
+
+   public bni c() {
+      return this.c;
+   }
+
+   public bni d() {
+      return this.d;
    }
 
    @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+   public int e() {
+      return this.e;
+   }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(goy.b);
-         } else {
-            this.j.a(goy.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fdt(fdt.a.a, f, g, true);
-            this.j.e().aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fdt(fdt.a.b, h, i, true);
-            this.j.e().aA().a(this.l);
-         }
-      }
+   public got a(axr $$0) {
+      return this;
    }
 
    @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
+   public void a(gpx $$0) {
+      if (this.h) {
+         $$0.a(this);
       }
    }
 
-   @Override
-   public void a(fws $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public got.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static got.a a(String $$0) {
+         for (got.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
       }
    }
 }

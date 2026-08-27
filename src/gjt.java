@@ -1,75 +1,48 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public abstract class gjt<T extends bpv, M extends fqm<T>> {
+   private final ghd<T, M> a;
 
-public class gjt extends art {
-   private static final arp d = new arp(vu.c("resourcePack.vanilla.description"), aa.b().a(arc.a), Optional.empty());
-   private static final aqs e = aqs.a(arp.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, vu> f = Map.of(
-      "programmer_art", vu.c("resourcePack.programmer_art.name"), "high_contrast", vu.c("resourcePack.high_contrast.name")
-   );
-   private static final aqz g = new aqz("vanilla", vu.c("resourcePack.vanilla.name"), asa.c, Optional.of(b));
-   private static final arb h = new arb(true, arw.b.b, false);
-   private static final arb i = new arb(false, arw.b.a, false);
-   private static final ajh j = new ajh("minecraft", "resourcepacks");
-   @Nullable
-   private final Path k;
-
-   public gjt(Path $$0, epj $$1) {
-      super(arc.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   public gjt(ghd<T, M> $$0) {
+      this.a = $$0;
    }
 
-   private static aqz a(String $$0, vu $$1) {
-      return new aqz($$0, $$1, asa.c, Optional.of(arv.a($$0)));
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   private static are b(Path $$0) {
-      arf $$1 = new arf().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(arc.a, $$0).a(g);
-   }
-
-   @Override
-   protected vu a(String $$0) {
-      vu $$1 = f.get($$0);
-      return (vu)($$1 != null ? $$1 : vu.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected arw a(ara $$0) {
-      return arw.a(g, b($$0), arc.a, h);
-   }
-
-   @Nullable
-   @Override
-   protected arw a(String $$0, arw.c $$1, vu $$2) {
-      return arw.a(a($$0, $$2), $$1, arc.a, i);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, arw>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
+   protected static <T extends bqo> void a(
+      fqm<T> $$0,
+      fqm<T> $$1,
+      ajt $$2,
+      ewi $$3,
+      fzz $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ce()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
+
+   protected static <T extends bqo> void a(fqm<T> $$0, ajt $$1, ewi $$2, fzz $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      ewm $$9 = $$3.getBuffer(gah.e($$1));
+      $$0.a($$2, $$9, $$4, ggj.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected ajt a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(ewi var1, fzz var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

@@ -1,179 +1,238 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
+import com.google.common.math.DoubleMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
 
-public class est {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final Queue<est.a> c = EvictingQueue.create(10);
+public abstract class est {
+   protected final esj a;
    @Nullable
-   private static volatile est.a d;
-   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
-   private static boolean g;
+   private est[] b;
 
-   private static String d(int $$0) {
-      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
+   est(esj $$0) {
+      this.a = $$0;
    }
 
-   public static String a(int $$0) {
-      switch ($$0) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return d($$0);
+   public double b(ih.a $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
+   }
+
+   public double c(ih.a $$0) {
+      int $$1 = this.a.b($$0);
+      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
+   }
+
+   public erv a() {
+      if (this.c()) {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
+      } else {
+         return new erv(this.b(ih.a.a), this.b(ih.a.b), this.b(ih.a.c), this.c(ih.a.a), this.c(ih.a.b), this.c(ih.a.c));
       }
    }
 
-   public static String b(int $$0) {
-      switch ($$0) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return d($$0);
-      }
+   public est b() {
+      return this.c() ? esq.a() : esq.a(this.b(ih.a.a), this.b(ih.a.b), this.b(ih.a.c), this.c(ih.a.a), this.c(ih.a.b), this.c(ih.a.c));
    }
 
-   public static String c(int $$0) {
-      switch ($$0) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return d($$0);
-      }
+   protected double a(ih.a $$0, int $$1) {
+      return this.a($$0).getDouble($$1);
    }
 
-   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
-      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
-      est.a $$8;
-      synchronized (c) {
-         $$8 = d;
-         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
-            $$8.f++;
+   protected abstract DoubleList a(ih.a var1);
+
+   public boolean c() {
+      return this.a.a();
+   }
+
+   public est a(double $$0, double $$1, double $$2) {
+      return (est)(this.c() ? esq.a() : new esc(this.a, new esp(this.a(ih.a.a), $$0), new esp(this.a(ih.a.b), $$1), new esp(this.a(ih.a.c), $$2)));
+   }
+
+   public est d() {
+      est[] $$0 = new est[]{esq.a()};
+      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = esq.b($$0[0], esq.a($$1, $$2, $$3, $$4, $$5, $$6), ese.o));
+      return $$0[0];
+   }
+
+   public void a(esq.a $$0) {
+      this.a
+         .a(
+            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
+                  this.a(ih.a.a, $$1), this.a(ih.a.b, $$2), this.a(ih.a.c, $$3), this.a(ih.a.a, $$4), this.a(ih.a.b, $$5), this.a(ih.a.c, $$6)
+               ),
+            true
+         );
+   }
+
+   public void b(esq.a $$0) {
+      DoubleList $$1 = this.a(ih.a.a);
+      DoubleList $$2 = this.a(ih.a.b);
+      DoubleList $$3 = this.a(ih.a.c);
+      this.a
+         .b(
+            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
+                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
+               ),
+            true
+         );
+   }
+
+   public List<erv> e() {
+      List<erv> $$0 = Lists.newArrayList();
+      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new erv($$1, $$2, $$3, $$4, $$5, $$6)));
+      return $$0;
+   }
+
+   public double a(ih.a $$0, double $$1, double $$2) {
+      ih.a $$3 = hz.b.a($$0);
+      ih.a $$4 = hz.c.a($$0);
+      int $$5 = this.a($$3, $$1);
+      int $$6 = this.a($$4, $$2);
+      int $$7 = this.a.a($$0, $$5, $$6);
+      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
+   }
+
+   public double b(ih.a $$0, double $$1, double $$2) {
+      ih.a $$3 = hz.b.a($$0);
+      ih.a $$4 = hz.c.a($$0);
+      int $$5 = this.a($$3, $$1);
+      int $$6 = this.a($$4, $$2);
+      int $$7 = this.a.b($$0, $$5, $$6);
+      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
+   }
+
+   protected int a(ih.a $$0, double $$1) {
+      return axk.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
+   }
+
+   @Nullable
+   public erw a(esa $$0, esa $$1, ib $$2) {
+      if (this.c()) {
+         return null;
+      } else {
+         esa $$3 = $$1.d($$0);
+         if ($$3.g() < 1.0E-7) {
+            return null;
          } else {
-            $$8 = new est.a($$0, $$1, $$2, $$3, $$7);
-            c.add($$8);
-            d = $$8;
-         }
-      }
-
-      a.info("OpenGL debug message: {}", $$8);
-   }
-
-   public static List<String> a() {
-      synchronized (c) {
-         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
-
-         for (est.a $$1 : c) {
-            $$0.add($$1 + " x " + $$1.f);
-         }
-
-         return $$0;
-      }
-   }
-
-   public static boolean b() {
-      return g;
-   }
-
-   public static void a(int $$0, boolean $$1) {
-      RenderSystem.assertInInitPhase();
-      if ($$0 > 0) {
-         GLCapabilities $$2 = GL.getCapabilities();
-         if ($$2.GL_KHR_debug) {
-            g = true;
-            GL11.glEnable(37600);
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$3 = 0; $$3 < e.size(); $$3++) {
-               boolean $$4 = $$3 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
-            }
-
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(est::a), esr::a), 0L);
-         } else if ($$2.GL_ARB_debug_output) {
-            g = true;
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$5 = 0; $$5 < f.size(); $$5++) {
-               boolean $$6 = $$5 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(est::a), esr::a), 0L);
+            esa $$4 = $$0.e($$3.a(0.001));
+            return this.a.d(this.a(ih.a.a, $$4.c - (double)$$2.u()), this.a(ih.a.b, $$4.d - (double)$$2.v()), this.a(ih.a.c, $$4.e - (double)$$2.w()))
+               ? new erw($$4, ih.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
+               : erv.a(this.e(), $$0, $$1, $$2);
          }
       }
    }
 
-   static class a {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final String e;
-      int f = 1;
-
-      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         this.a = $$2;
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$3;
-         this.e = $$4;
+   public Optional<esa> a(esa $$0) {
+      if (this.c()) {
+         return Optional.empty();
+      } else {
+         esa[] $$1 = new esa[1];
+         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
+            double $$8 = axk.a($$0.a(), $$2, $$5);
+            double $$9 = axk.a($$0.b(), $$3, $$6);
+            double $$10 = axk.a($$0.c(), $$4, $$7);
+            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
+               $$1[0] = new esa($$8, $$9, $$10);
+            }
+         });
+         return Optional.of($$1[0]);
       }
+   }
 
-      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
-      }
+   public est a(ih $$0) {
+      if (!this.c() && this != esq.b()) {
+         if (this.b != null) {
+            est $$1 = this.b[$$0.ordinal()];
+            if ($$1 != null) {
+               return $$1;
+            }
+         } else {
+            this.b = new est[6];
+         }
 
-      @Override
-      public String toString() {
-         return "id=" + this.a + ", source=" + est.a(this.b) + ", type=" + est.b(this.c) + ", severity=" + est.c(this.d) + ", message='" + this.e + "'";
+         est $$2 = this.b($$0);
+         this.b[$$0.ordinal()] = $$2;
+         return $$2;
+      } else {
+         return this;
       }
+   }
+
+   private est b(ih $$0) {
+      ih.a $$1 = $$0.o();
+      DoubleList $$2 = this.a($$1);
+      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
+         return this;
+      } else {
+         ih.b $$3 = $$0.f();
+         int $$4 = this.a($$1, $$3 == ih.b.a ? 0.9999999 : 1.0E-7);
+         return new esr(this, $$1, $$4);
+      }
+   }
+
+   public double a(ih.a $$0, erv $$1, double $$2) {
+      return this.a(hz.a($$0, ih.a.a), $$1, $$2);
+   }
+
+   protected double a(hz $$0, erv $$1, double $$2) {
+      if (this.c()) {
+         return $$2;
+      } else if (Math.abs($$2) < 1.0E-7) {
+         return 0.0;
+      } else {
+         hz $$3 = $$0.a();
+         ih.a $$4 = $$3.a(ih.a.a);
+         ih.a $$5 = $$3.a(ih.a.b);
+         ih.a $$6 = $$3.a(ih.a.c);
+         double $$7 = $$1.b($$4);
+         double $$8 = $$1.a($$4);
+         int $$9 = this.a($$4, $$8 + 1.0E-7);
+         int $$10 = this.a($$4, $$7 - 1.0E-7);
+         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
+         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
+         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
+         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
+         int $$15 = this.a.c($$4);
+         if ($$2 > 0.0) {
+            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
+               for (int $$17 = $$11; $$17 < $$12; $$17++) {
+                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
+                     if (this.a.a($$3, $$16, $$17, $$18)) {
+                        double $$19 = this.a($$4, $$16) - $$7;
+                        if ($$19 >= -1.0E-7) {
+                           $$2 = Math.min($$2, $$19);
+                        }
+
+                        return $$2;
+                     }
+                  }
+               }
+            }
+         } else if ($$2 < 0.0) {
+            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
+               for (int $$21 = $$11; $$21 < $$12; $$21++) {
+                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
+                     if (this.a.a($$3, $$20, $$21, $$22)) {
+                        double $$23 = this.a($$4, $$20 + 1) - $$8;
+                        if ($$23 <= 1.0E-7) {
+                           $$2 = Math.max($$2, $$23);
+                        }
+
+                        return $$2;
+                     }
+                  }
+               }
+            }
+         }
+
+         return $$2;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
    }
 }

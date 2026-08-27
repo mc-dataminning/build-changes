@@ -1,60 +1,48 @@
-import java.util.UUID;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public record acn(UUID b, int c, @Nullable wg d, wn.a e, @Nullable vu f, vy g, vq.a h) implements yb<aam> {
-   public static final xs<vf, acn> a = yb.a(acn::a, acn::new);
+public class acn implements yn<aay> {
+   public static final ye<vg, acn> a = yn.a(acn::a, acn::new);
+   private final int b;
+   private final int c;
+   private final aco d;
 
-   private acn(vf $$0) {
-      this($$0.n(), $$0.l(), $$0.c(wg::a), new wn.a($$0), uu.a($$0, vw.b), vy.a($$0), vq.a.a.decode($$0));
+   public acn(cye $$0, ekh $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new aco($$0, $$1, $$2, $$3);
    }
 
-   private void a(vf $$0) {
-      $$0.a(this.b);
+   private acn(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new aco($$0, this.b, this.c);
+   }
+
+   private void a(vg $$0) {
+      $$0.c(this.b);
       $$0.c(this.c);
-      $$0.a(this.d, wg::a);
-      this.e.a($$0);
-      uu.a($$0, this.f, vw.b);
-      vy.a($$0, this.g);
-      vq.a.a.encode($$0, this.h);
+      this.d.a($$0);
    }
 
    @Override
-   public yd<acn> a() {
-      return aex.aa;
+   public yp<acn> a() {
+      return afj.N;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
       return this.c;
    }
 
-   @Nullable
-   public wg f() {
+   public aco f() {
       return this.d;
-   }
-
-   public wn.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public vu h() {
-      return this.f;
-   }
-
-   public vy i() {
-      return this.g;
-   }
-
-   public vq.a j() {
-      return this.h;
    }
 }

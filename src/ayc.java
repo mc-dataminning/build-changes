@@ -1,76 +1,69 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import java.util.Optional;
 
-public enum ayc {
-   a(beh.a),
-   b(beh.b),
-   c(beh.c),
-   d(beh.d),
-   e(beh.e),
-   f(beh.f),
-   g(beh.g),
-   h(beh.h),
-   i(beh.i),
-   j(beh.j),
-   k(beh.k),
-   l(beh.l),
-   m(beh.m),
-   n(beh.o),
-   o(beh.n),
-   p(beh.p),
-   q(beh.q),
-   r(beh.J),
-   s(beh.r);
+public class ayc {
+   public static <T extends bqq> Optional<T> a(bqb<T> $$0, bqs $$1, aps $$2, ib $$3, int $$4, int $$5, int $$6, ayc.a $$7) {
+      ib.a $$8 = $$3.j();
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = axk.b($$2.z, -$$5, $$5);
+         int $$11 = axk.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
+               }
 
-   private ayc(TypeReference $$0) {
-      this.u = $$0;
+               $$12.am();
+            }
+         }
+      }
+
+      return Optional.empty();
    }
 
-   static int a() {
-      return aa.b().d().c();
-   }
+   private static boolean a(aps $$0, int $$1, ib.a $$2, ayc.a $$3) {
+      ib.a $$4 = new ib.a().g($$2);
+      doz $$5 = $$0.a_($$4);
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(ayc.a())));
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(ih.a);
+         $$4.a($$2, ih.b);
+         doz $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(ih.b);
+            return true;
          }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = ayc.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+         $$5 = $$7;
+      }
+
+      return false;
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
+   public interface a {
+      @Deprecated
+      ayc.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dca.bs)
+               && !$$2.a(dca.dQ)
+               && !$$2.a(dca.eY)
+               && !($$2.b() instanceof djq)
+               && !($$2.b() instanceof djp)
+               && !($$2.b() instanceof dgh)
+               && !$$2.a(dca.mX)
+               && !$$2.a(dca.dO)
+               && !$$2.a(dca.ck)
+               && !$$2.a(dca.ec)
+               && !$$2.a(dca.fO)
+               && !$$2.a(dca.ii)
+               && !$$2.a(dca.kI)
+               && !$$2.a(dca.qO)
+               && !$$2.a(dca.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(dca.qP))
+            : false;
+      ayc.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dby.a($$2.k($$0, $$1), ih.b);
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public ta a(DataFixer $$0, ta $$1, int $$2, int $$3) {
-      return (ta)this.a($$0, new Dynamic(to.a, $$1), $$2, $$3).getValue();
-   }
-
-   public ta a(DataFixer $$0, ta $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+      boolean canSpawnOn(aps var1, ib var2, doz var3, ib var4, doz var5);
    }
 }

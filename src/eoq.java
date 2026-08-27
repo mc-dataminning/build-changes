@@ -1,9 +1,4 @@
-public interface eoq extends ekx {
-   float b(ekw var1);
+import com.mojang.serialization.Codec;
 
-   default int a(ekw $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   eop b();
+public record eoq(Codec<? extends eop> a) {
 }

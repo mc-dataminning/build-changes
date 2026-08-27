@@ -1,22 +1,31 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+public class gol implements gog {
+   private final fzb a;
+   private boolean b;
+   private boolean c = true;
 
-public class gol {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
-
-   public gol(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
+   public gol(fzb $$0) {
       this.a = $$0;
    }
 
-   public void a(gob $$0) {
-      if (this.b != null) {
-         $$0.send(goc.d, $$0x -> {
-            $$0x.a(goe.x, (int)this.b.toMillis());
-            $$0x.a(goe.y, this.a);
-         });
+   @Override
+   public void a() {
+      cyx $$0 = this.a.dM();
+      doz $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dca.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dca.nd) && !this.a.N_()) {
+            boolean $$2 = $$1.c(dce.b);
+            if ($$2) {
+               this.a.a(aum.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(aum.cZ, 1.0F, 1.0F);
+            }
+         }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

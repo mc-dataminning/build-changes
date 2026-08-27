@@ -1,77 +1,84 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class wc {
-   private final we[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private wg d;
+public record wc(wd j, wd k) {
+   public static final Codec<wc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wd.a.fieldOf("chat").forGetter(wc::a), wd.a.fieldOf("narration").forGetter(wc::b)).apply($$0, wc::new)
+   );
+   public static final wd b = wd.a("chat.type.text");
+   public static final ajs<wc> c = a("chat");
+   public static final ajs<wc> d = a("say_command");
+   public static final ajs<wc> e = a("msg_command_incoming");
+   public static final ajs<wc> f = a("msg_command_outgoing");
+   public static final ajs<wc> g = a("team_msg_command_incoming");
+   public static final ajs<wc> h = a("team_msg_command_outgoing");
+   public static final ajs<wc> i = a("emote_command");
 
-   public wc(int $$0) {
-      this.a = new we[$$0];
+   private static ajs<wc> a(String $$0) {
+      return ajs.a(ks.aw, new ajt($$0));
    }
 
-   public boolean a(wg $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new we($$0, true) : null);
-         return true;
-      }
+   public static void a(px<wc> $$0) {
+      $$0.a(c, new wc(b, wd.a("chat.type.text.narrate")));
+      $$0.a(d, new wc(wd.a("chat.type.announcement"), wd.a("chat.type.text.narrate")));
+      $$0.a(e, new wc(wd.b("commands.message.display.incoming"), wd.a("chat.type.text.narrate")));
+      $$0.a(f, new wc(wd.c("commands.message.display.outgoing"), wd.a("chat.type.text.narrate")));
+      $$0.a(g, new wc(wd.d("chat.type.team.text"), wd.a("chat.type.text.narrate")));
+      $$0.a(h, new wc(wd.d("chat.type.team.sent"), wd.a("chat.type.text.narrate")));
+      $$0.a(i, new wc(wd.a("chat.type.emote"), wd.a("chat.type.emote")));
    }
 
-   private void a(@Nullable we $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public static wc.a a(ajs<wc> $$0, bpv $$1) {
+      return a($$0, $$1.dM().H_(), $$1.O_());
    }
 
-   public void a(wg $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         we $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
+   public static wc.a a(ajs<wc> $$0, du $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
+   public static wc.a a(ajs<wc> $$0, iz $$1, wg $$2) {
+      iy<wc> $$3 = $$1.d(ks.aw);
+      return new wc.a($$3.g($$0), $$2);
    }
 
-   public wc.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<wg> $$2 = new ObjectArrayList(this.a.length);
+   public wd a() {
+      return this.j;
+   }
 
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         we $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public wd b() {
+      return this.k;
+   }
+
+   public static record a(il<wc> b, wg c, Optional<wg> d) {
+      public static final ye<vr, wc.a> a = ye.a(yc.b(ks.aw), wc.a::a, wi.d, wc.a::b, wi.e, wc.a::c, wc.a::new);
+
+      a(il<wc> $$0, wg $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      wb $$6 = new wb($$2);
-      wb.b $$7 = new wb.b($$0, $$1);
-      return new wc.a($$6, $$7);
-   }
+      public wg a(wg $$0) {
+         return this.b.a().a().a($$0, this);
+      }
 
-   public int c() {
-      return this.c;
-   }
+      public wg b(wg $$0) {
+         return this.b.a().b().a($$0, this);
+      }
 
-   public static record a(wb a, wb.b b) {
+      public wc.a c(wg $$0) {
+         return new wc.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public il<wc> a() {
+         return this.b;
+      }
+
+      public wg b() {
+         return this.c;
+      }
+
+      public Optional<wg> c() {
+         return this.d;
+      }
    }
 }

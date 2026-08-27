@@ -4,22 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bgx extends bfq {
+public class bgx extends bgk {
    public bgx(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   private static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(beh.t.in($$0)), "RecipesUsed", DSL.compoundList(beh.G.in($$0), DSL.constType(DSL.intType())))
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:furnace");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bfa.A, () -> DSL.constType(a()));
    }
 }

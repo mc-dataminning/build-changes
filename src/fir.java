@@ -1,27 +1,31 @@
-public class fir extends fig<clx> implements fjl<clx> {
-   private static final ajh x = new ajh("textures/gui/container/generic_54.png");
-   private final int y;
+public class fir extends fjo {
+   private final wg a;
 
-   public fir(clx $$0, cit $$1, vu $$2) {
-      super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.y = $$0.m();
-      this.k = 114 + this.y * 18;
-      this.o = this.k - 94;
+   public fir(wg $$0, wg $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
+   protected void aN_() {
+      super.aN_();
+      this.c(fdp.a(wf.e, $$0 -> this.j.a(null)).a(this.k / 2 - 100, 140, 200, 20).a());
+   }
+
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.m, this.i, this.k / 2, 90, 16777215);
+      $$0.a(this.m, this.a, this.k / 2, 110, 16777215);
    }
 
    @Override
-   protected void a(fav $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
-      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.k, this.l, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aE_() {
+      return false;
    }
 }

@@ -1,88 +1,98 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class dcj {
-   public static <S extends dki> dcj.c<S> a(
-      dkk<S> $$0, Function<dnb, dcj.a> $$1, Function<dnb, ih> $$2, dnv $$3, dnb $$4, cxc $$5, ib $$6, BiPredicate<cxc, ib> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return dcj.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return dcj.b::b;
-      } else {
-         dcj.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == dcj.a.a;
-         boolean $$11 = $$9 == dcj.a.b;
-         if ($$10) {
-            return new dcj.c.b<>($$8);
-         } else {
-            ib $$12 = $$6.a($$2.apply($$4));
-            dnb $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               dcj.a $$14 = $$1.apply($$13);
-               if ($$14 != dcj.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return dcj.b::b;
-                  }
+public class dcj extends dby {
+   public static final MapCodec<dcj> a = b(dcj::new);
+   public static final dpz b = dpp.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final est e = dby.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final est f = dby.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new dcj.c.a<>($$16, $$17);
-                  }
-               }
+   @Override
+   public MapCodec<dcj> a() {
+      return a;
+   }
+
+   protected dcj(doy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
+      ib $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               doz $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
             }
-
-            return new dcj.c.b<>($$8);
          }
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   protected est b(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return e;
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return f;
    }
 
-   public interface c<S> {
-      <T> T apply(dcj.b<? super S, T> var1);
+   @Override
+   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-      public static final class a<S> implements dcj.c<S> {
-         private final S a;
-         private final S b;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(dcj.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
+   @Override
+   protected boolean a(doz $$0, cza $$1, ib $$2) {
+      for (ih $$3 : ih.c.a) {
+         doz $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(avh.b)) {
+            return false;
          }
       }
 
-      public static final class b<S> implements dcj.c<S> {
-         private final S a;
+      doz $$5 = $$1.a_($$2.d());
+      return ($$5.a(dca.dQ) || $$5.a(avc.H)) && !$$1.a_($$2.c()).k();
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   @Override
+   protected void a(doz $$0, cyx $$1, ib $$2, bpv $$3) {
+      $$3.a($$1.ai().j(), 1.0F);
+   }
 
-         @Override
-         public <T> T apply(dcj.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   protected void a(dpa.a<dby, doz> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 }

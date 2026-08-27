@@ -1,66 +1,25 @@
-public class fub extends fwg {
-   private final float a;
-   private final float b;
+public class fub {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ac.c();
 
-   fub(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cqm $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+   public void a() {
+      this.e = ac.c();
    }
 
-   @Override
-   public fvk b() {
-      return fvk.a;
-   }
-
-   protected fub(fsa $$0, double $$1, double $$2, double $$3, cqm $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(ezi.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fvj<jy> {
-      public fvg a(jy $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fub($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ac.c() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = axk.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
       }
    }
 
-   public static class b implements fvj<kf> {
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fub($$1, $$2, $$3, $$4, new cqm(cqp.qP));
-      }
-   }
-
-   public static class c implements fvj<kf> {
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fub($$1, $$2, $$3, $$4, new cqm(cqp.qB));
-      }
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

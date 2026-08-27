@@ -1,61 +1,29 @@
-public class ach implements yb<aam> {
-   public static final xs<uu, ach> a = yb.a(ach::a, ach::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public record ach(int b, float c) implements yn<aay> {
+   public static final ye<vg, ach> a = yn.a(ach::a, ach::new);
 
-   public ach(box $$0) {
-      this.b = $$0.dr();
-      this.c = $$0.dt();
-      this.d = $$0.dx();
-      this.e = $$0.dC();
-      this.f = $$0.dE();
+   public ach(bqo $$0) {
+      this($$0.aj(), $$0.eG());
    }
 
-   private ach(uu $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private ach(vg $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
+   private void a(vg $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
    }
 
    @Override
-   public yd<ach> a() {
-      return aex.U;
+   public yp<ach> a() {
+      return afj.I;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public float e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

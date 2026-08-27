@@ -1,96 +1,77 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class wo {
-   private static final Logger a = LogUtils.getLogger();
+   private final wq[] a;
+   private int b;
+   private int c;
    @Nullable
-   private wp b;
-   private Instant c = Instant.EPOCH;
+   private ws d;
 
-   public wo(UUID $$0, UUID $$1) {
-      this.b = wp.a($$0, $$1);
+   public wo(int $$0) {
+      this.a = new wq[$$0];
    }
 
-   public wo.c a(axj $$0) {
-      return $$1 -> {
-         wp $$2 = this.a();
-         return $$2 == null ? null : new wg($$0.sign($$2x -> wk.a($$2x, $$2, $$1)));
-      };
-   }
-
-   public wo.b a(cix $$0) {
-      axi $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         wp $$4 = this.a();
-         if ($$4 == null) {
-            throw new wo.a(vu.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new wo.a(vu.c("chat.disabled.expiredProfileKey"), false);
-         } else if ($$3.b().isBefore(this.c)) {
-            throw new wo.a(vu.c("multiplayer.disconnect.out_of_order_chat"), true);
-         } else {
-            this.c = $$3.b();
-            wk $$5 = new wk($$4, $$2, $$3, null, vy.c);
-            if (!$$5.a($$1)) {
-               throw new wo.a(vu.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
-   }
-
-   @Nullable
-   private wp a() {
-      wp $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+   public boolean a(ws $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new wq($$0, true) : null);
+         return true;
       }
+   }
 
+   private void a(@Nullable wq $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(ws $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         wq $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
       return $$0;
    }
 
-   public static class a extends wu {
-      private final boolean a;
+   public wo.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<ws> $$2 = new ObjectArrayList(this.a.length);
 
-      public a(vu $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         wq $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
+         }
       }
 
-      public boolean a() {
-         return this.a;
-      }
+      wn $$6 = new wn($$2);
+      wn.b $$7 = new wn.b($$0, $$1);
+      return new wo.a($$6, $$7);
    }
 
-   @FunctionalInterface
-   public interface b {
-      static wo.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new wo.a(vu.c("chat.disabled.missingProfileKey"), false);
-            } else {
-               return wk.a($$0, $$3.a());
-            }
-         };
-      }
-
-      wk unpack(@Nullable wg var1, wn var2) throws wo.a;
+   public int c() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface c {
-      wo.c a = $$0 -> null;
-
-      @Nullable
-      wg pack(wn var1);
+   public static record a(wn a, wn.b b) {
    }
 }

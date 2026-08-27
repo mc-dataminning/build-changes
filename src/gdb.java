@@ -1,60 +1,57 @@
-@FunctionalInterface
-public interface gdb<T extends box> {
-   gda<T> create(gdb.a var1);
+import java.util.BitSet;
+import java.util.Set;
 
-   public static class a {
-      private final gcz a;
-      private final gdz b;
-      private final fym c;
-      private final fxo d;
-      private final aso e;
-      private final frb f;
-      private final fat g;
+public class gdb {
+   private static final int a = ih.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-      public a(gcz $$0, gdz $$1, fym $$2, fxo $$3, aso $$4, frb $$5, fat $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public void a(Set<ih> $$0) {
+      for (ih $$1 : $$0) {
+         for (ih $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(ih $$0, ih $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ih $$0, ih $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
+
+      for (ih $$1 : ih.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
 
-      public gcz a() {
-         return this.a;
+      $$0.append('\n');
+
+      for (ih $$2 : ih.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (ih $$3 : ih.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
       }
 
-      public gdz b() {
-         return this.b;
-      }
-
-      public fym c() {
-         return this.c;
-      }
-
-      public fxo d() {
-         return this.d;
-      }
-
-      public aso e() {
-         return this.e;
-      }
-
-      public frb f() {
-         return this.f;
-      }
-
-      public gli g() {
-         return this.c.a().a();
-      }
-
-      public frf a(frd $$0) {
-         return this.f.a($$0);
-      }
-
-      public fat h() {
-         return this.g;
-      }
+      return $$0.toString();
    }
 }

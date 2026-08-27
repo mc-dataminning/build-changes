@@ -1,45 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class emu extends emi {
-   public static final Codec<emu> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(eor.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, emu::new)
-   );
-   private final eoq b;
-   private final boolean c;
+public class emu {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = emm.a();
 
-   private emu(List<env> $$0, eoq $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   public emu(emr.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(emp.c).toFile();
+      this.c.mkdirs();
    }
 
-   @Override
-   public emk b() {
-      return eml.c;
+   public void a(cjt $$0) {
+      try {
+         tm $$1 = $$0.f(new tm());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
+         tz.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cx() + ".dat");
+         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
+         ac.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.ad().getString());
+      }
    }
 
-   @Override
-   public Set<ene<?>> a() {
-      return this.b.a();
+   private void a(cjt $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cx() + $$1);
+      Path $$4 = $$2.resolve($$0.cx() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.ad().getString(), var7);
+         }
+      }
    }
 
-   @Override
-   public cqm a(cqm $$0, ekw $$1) {
-      int $$2 = this.c ? $$0.M() : 0;
-      $$0.f(aww.a($$2 + this.b.a($$1), 0, $$0.g()));
-      return $$0;
+   private Optional<tm> b(cjt $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cx() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(tz.a($$2.toPath(), tv.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.ad().getString());
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public static emi.a<?> a(eoq $$0) {
-      return a($$1 -> new emu($$1, $$0, false));
-   }
+   public Optional<tm> b(cjt $$0) {
+      Optional<tm> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
 
-   public static emi.a<?> a(eoq $$0, boolean $$1) {
-      return a($$2 -> new emu($$2, $$0, $$1));
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = ub.b($$1x, -1);
+         $$1x = ayq.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

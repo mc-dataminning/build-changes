@@ -1,40 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bvd extends brh<chy> {
-   private static final int c = 25;
-   private static final int d = 20;
+public class bvd {
+   private static final int a = 60;
 
-   public bvd() {
-      super(ImmutableMap.of(bys.ay, byt.a, bys.o, byt.b, bys.aF, byt.c, bys.aD, byt.c), chz.b);
-   }
+   public static bsh<bqw> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bvt.a(
+         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$3 -> $$3.group($$3.c(bzr.o), $$3.c(bzr.m), $$3.a(bzr.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dm()).a(avh.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        ib $$8 = $$6.dm();
+                        ib.a $$9 = new ib.a();
+                        esf $$10 = esf.a($$6);
 
-   protected void a(apf $$0, chy $$1, long $$2) {
-      bqq<chy> $$3 = $$1.dP();
-      $$3.a(bys.aD, axy.a, 25L);
-      $$3.b(bys.m);
-      bpp $$4 = $$1.dP().c(bys.ay).get();
-      brj.a($$1, $$4);
-      $$1.b(bqa.l);
-      $$1.a($$4, 20, false);
-   }
+                        for (ib $$11 : ib.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              doz $$12 = $$5x.a_($$11);
+                              doz $$13 = $$5x.a_($$9.a($$11, ih.a));
+                              if (!$$12.a(dca.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ih.b)) {
+                                 ib $$14 = $$11.i();
+                                 $$5.a(new bsj($$14));
+                                 $$4.a(new bzu(new bsj($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-   protected boolean b(apf $$0, chy $$1, long $$2) {
-      return true;
-   }
-
-   protected void c(apf $$0, chy $$1, long $$2) {
-      if (!$$1.dP().a(bys.aD) && !$$1.dP().a(bys.aF)) {
-         $$1.dP().a(bys.aF, axy.a, (long)(chz.b - 25));
-         $$1.a(aty.Bu, 3.0F, 1.0F);
-      }
-   }
-
-   protected void d(apf $$0, chy $$1, long $$2) {
-      if ($$1.c(bqa.l)) {
-         $$1.b(bqa.a);
-      }
-
-      $$1.dP().c(bys.ay).ifPresent($$1::j);
-      $$1.dP().b(bys.ay);
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

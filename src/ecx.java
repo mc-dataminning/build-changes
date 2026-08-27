@@ -1,26 +1,72 @@
-public interface ecx {
-   ajg<edk> a = a("villages");
-   ajg<edk> b = a("desert_pyramids");
-   ajg<edk> c = a("igloos");
-   ajg<edk> d = a("jungle_temples");
-   ajg<edk> e = a("swamp_huts");
-   ajg<edk> f = a("pillager_outposts");
-   ajg<edk> g = a("ocean_monuments");
-   ajg<edk> h = a("woodland_mansions");
-   ajg<edk> i = a("buried_treasures");
-   ajg<edk> j = a("mineshafts");
-   ajg<edk> k = a("ruined_portals");
-   ajg<edk> l = a("shipwrecks");
-   ajg<edk> m = a("ocean_ruins");
-   ajg<edk> n = a("nether_complexes");
-   ajg<edk> o = a("nether_fossils");
-   ajg<edk> p = a("end_cities");
-   ajg<edk> q = a("ancient_cities");
-   ajg<edk> r = a("strongholds");
-   ajg<edk> s = a("trail_ruins");
-   ajg<edk> t = a("trial_chambers");
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-   private static ajg<edk> a(String $$0) {
-      return ajg.a(kj.aG, new ajh($$0));
+public class ecx extends edd {
+   public static final Codec<ecx> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecx::new));
+
+   public ecx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected ede<?> a() {
+      return ede.e;
+   }
+
+   @Override
+   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
+      List<ebl.a> $$6 = Lists.newArrayList();
+      ib $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      ih $$8 = ih.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
+
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
+         }
+
+         int $$18 = $$12 + $$17;
+         ib $$19 = new ib($$14, $$18, $$15);
+         if (dzh.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         }
+      }
+
+      $$6.add(new ebl.a(new ib($$14, $$16, $$15), 0, true));
+
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new ib($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new ebl.a(new ib($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
+      }
+
+      return $$6;
    }
 }

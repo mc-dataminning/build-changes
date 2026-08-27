@@ -1,7 +1,26 @@
-public record ery(ept b, ept c, ept d) {
-   public static final ery a = new ery(ept.b, new ept(0.0, 0.0, -1.0), new ept(0.0, 1.0, 0.0));
+public abstract class ery {
+   protected final esa a;
 
-   public ept a() {
-      return this.c.c(this.d);
+   protected ery(esa $$0) {
+      this.a = $$0;
+   }
+
+   public double a(bpv $$0) {
+      double $$1 = this.a.c - $$0.dr();
+      double $$2 = this.a.d - $$0.dt();
+      double $$3 = this.a.e - $$0.dx();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract ery.a c();
+
+   public esa e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

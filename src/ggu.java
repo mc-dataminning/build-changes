@@ -1,13 +1,31 @@
-public class ggu<T extends cfo> extends ghm<T, foa<T>> {
-   private static final ajh a = new ajh("textures/entity/zombie/drowned_outer_layer.png");
-   private final foa<T> b;
+public class ggu extends ggo<cct, frm> {
+   private static final ajt a = new ajt("textures/entity/parrot/parrot_red_blue.png");
+   private static final ajt i = new ajt("textures/entity/parrot/parrot_blue.png");
+   private static final ajt j = new ajt("textures/entity/parrot/parrot_green.png");
+   private static final ajt k = new ajt("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final ajt l = new ajt("textures/entity/parrot/parrot_grey.png");
 
-   public ggu(gew<T, foa<T>> $$0, frb $$1) {
-      super($$0);
-      this.b = new foa<>($$1.a(fre.U));
+   public ggu(gfi.a $$0) {
+      super($$0, new frm($$0.a(ftl.aG)), 0.3F);
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public ajt a(cct $$0) {
+      return a($$0.gv());
+   }
+
+   public static ajt a(cct.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
+
+   public float a(cct $$0, float $$1) {
+      float $$2 = axk.i($$1, $$0.cd, $$0.ca);
+      float $$3 = axk.i($$1, $$0.cc, $$0.cb);
+      return (axk.a($$2) + 1.0F) * $$3;
    }
 }

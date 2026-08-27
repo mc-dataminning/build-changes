@@ -1,33 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class bti {
-   private static final int a = 300;
+public class bti<E extends bqq> extends btj<E> {
+   private final avr<dby> m;
+   private final float n;
+   private final List<btj.a> o = new ArrayList<>();
+   private boolean p;
 
-   public static bri<bpp> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return buu.a(
-         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$3x -> $$3x.group($$3x.b(bys.C), $$3x.b(bys.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        ib $$11 = $$3x.<ik>b($$4).b();
-                        if ($$11.a($$7.dm(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public bti(bnl $$0, int $$1, int $$2, float $$3, Function<E, aul> $$4, avr<dby> $$5, float $$6, BiPredicate<E, ib> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dP().a($$6.Y(), $$6.X());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   protected void a(aps $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ei().i() < this.n;
+   }
+
+   @Override
+   protected Optional<btj.a> a(aps $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         ib.a $$1 = new ib.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<btj.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               btj.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ih.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

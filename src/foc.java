@@ -1,99 +1,125 @@
-public class foc<T extends bpp> extends fos<T> {
-   public boolean a;
-   public boolean b;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-   public foc(frf $$0) {
-      super($$0);
-   }
+public class foc extends fjo {
+   private static final wg a = wg.c("selectWorld.experimental.title");
+   private static final wg b = wg.c("selectWorld.experimental.message");
+   private static final wg c = wg.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int o = 100;
+   private final BooleanConsumer p;
+   final Collection<ask> q;
+   private final fhb r = new fhb().a(10).b(20);
 
-   public static frl c() {
-      float $$0 = -14.0F;
-      frn $$1 = fos.a(frj.a, -14.0F);
-      fro $$2 = $$1.a();
-      frh $$3 = frh.a(0.0F, -13.0F, 0.0F);
-      $$2.a("hat", frk.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new frj(-0.5F)), $$3);
-      $$2.a("head", frk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
-      $$2.a("body", frk.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), frh.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", frk.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), frh.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", frk.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), frh.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", frk.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), frh.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", frk.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), frh.a(2.0F, -5.0F, 0.0F));
-      return frl.a($$1, 64, 32);
+   public foc(Collection<ask> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.q = $$0;
+      this.p = $$1;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.k.k = true;
-      int $$6 = -14;
-      this.m.e = 0.0F;
-      this.m.c = -14.0F;
-      this.m.d = -0.0F;
-      this.p.e -= 0.0F;
-      this.q.e -= 0.0F;
-      this.n.e *= 0.5F;
-      this.o.e *= 0.5F;
-      this.p.e *= 0.5F;
-      this.q.e *= 0.5F;
-      float $$7 = 0.4F;
-      if (this.n.e > 0.4F) {
-         this.n.e = 0.4F;
+   public wg i() {
+      return wf.a(super.i(), b);
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      fhb.b $$0 = this.r.d(2);
+      fhf $$1 = $$0.b().b();
+      $$0.a(new few(this.i, this.m), 2, $$1);
+      fej $$2 = $$0.a(new fej(b, this.m).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fdp.a(c, $$0x -> this.j.a(new foc.a())).a(100).a(), 2, $$1);
+      $$0.a(fdp.a(wf.i, $$0x -> this.p.accept(true)).a());
+      $$0.a(fdp.a(wf.k, $$0x -> this.p.accept(false)).a());
+      this.r.a($$1x -> {
+         fdn var10000 = this.c($$1x);
+      });
+      this.r.a();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fha.a(this.r, 0, 0, this.k, this.l, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void d() {
+      this.p.accept(false);
+   }
+
+   class a extends fjo {
+      private static final wg b = wg.c("selectWorld.experimental.details.title");
+      final fhc c = new fhc(this);
+
+      a() {
+         super(b);
       }
 
-      if (this.o.e > 0.4F) {
-         this.o.e = 0.4F;
+      @Override
+      protected void aN_() {
+         this.c.a(b, this.m);
+         this.c.c(new foc.a.a(this.j, foc.this.q));
+         this.c.b(fdp.a(wf.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fdn var10000 = this.c($$1);
+         });
+         this.c();
       }
 
-      if (this.n.e < -0.4F) {
-         this.n.e = -0.4F;
+      @Override
+      protected void c() {
+         this.c.a();
       }
 
-      if (this.o.e < -0.4F) {
-         this.o.e = -0.4F;
+      @Override
+      public void d() {
+         this.j.a(foc.this);
       }
 
-      if (this.p.e > 0.4F) {
-         this.p.e = 0.4F;
+      class a extends fel<foc.a.b> {
+         public a(fbp $$0, Collection<ask> $$1) {
+            super($$0, a.this.k, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (ask $$2 : $$1) {
+               String $$3 = cmi.a(cmi.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  wg $$4 = wj.a($$2.b().f(), xd.a.a(true));
+                  wg $$5 = wg.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fei.a(a.this.m, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
       }
 
-      if (this.q.e > 0.4F) {
-         this.q.e = 0.4F;
-      }
+      class b extends fel.a<foc.a.b> {
+         private final wg b;
+         private final wg c;
+         private final fei d;
 
-      if (this.p.e < -0.4F) {
-         this.p.e = -0.4F;
-      }
+         b(wg $$0, wg $$1, fei $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
 
-      if (this.q.e < -0.4F) {
-         this.q.e = -0.4F;
-      }
+         @Override
+         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.j.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
 
-      if (this.a) {
-         this.n.e = -0.5F;
-         this.o.e = -0.5F;
-         this.n.g = 0.05F;
-         this.o.g = -0.05F;
+         @Override
+         public wg a() {
+            return wg.a("narrator.select", wf.a(this.b, this.c));
+         }
       }
-
-      this.p.d = 0.0F;
-      this.q.d = 0.0F;
-      this.p.c = -5.0F;
-      this.q.c = -5.0F;
-      this.k.d = -0.0F;
-      this.k.c = -13.0F;
-      this.l.b = this.k.b;
-      this.l.c = this.k.c;
-      this.l.d = this.k.d;
-      this.l.e = this.k.e;
-      this.l.f = this.k.f;
-      this.l.g = this.k.g;
-      if (this.b) {
-         float $$8 = 1.0F;
-         this.k.c -= 5.0F;
-      }
-
-      int $$9 = -14;
-      this.n.a(-5.0F, -12.0F, 0.0F);
-      this.o.a(5.0F, -12.0F, 0.0F);
    }
 }

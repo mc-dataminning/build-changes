@@ -1,69 +1,60 @@
-public class aef implements yb<aam> {
-   public static final xs<vf, aef> a = yb.a(aef::a, aef::new);
-   private final il<atx> b;
-   private final atz c;
-   private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public aef(il<atx> $$0, atz $$1, box $$2, float $$3, float $$4, long $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.aj();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class aef implements yn<aay> {
+   public static final ye<vr, aef> a = yn.a(aef::a, aef::new);
+   private static final byte b = -128;
+   private final int c;
+   private final List<Pair<bqc, crj>> d;
+
+   public aef(int $$0, List<Pair<bqc, crj>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private aef(vf $$0) {
-      this.b = atx.d.decode($$0);
-      this.c = $$0.b(atz.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
+   private aef(vr $$0) {
+      this.c = $$0.l();
+      bqc[] $$1 = bqc.values();
+      this.d = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bqc $$3 = $$1[$$2 & 127];
+         crj $$4 = crj.e.decode($$0);
+         this.d.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
-   private void a(vf $$0) {
-      atx.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
+   private void a(vr $$0) {
+      $$0.c(this.c);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bqc, crj> $$3 = this.d.get($$2);
+         bqc $$4 = (bqc)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         crj.e.encode($$0, (crj)$$3.getSecond());
+      }
    }
 
    @Override
-   public yd<aef> a() {
-      return aex.aR;
+   public yp<aef> a() {
+      return afj.aF;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public il<atx> b() {
-      return this.b;
-   }
-
-   public atz e() {
+   public int b() {
       return this.c;
    }
 
-   public int f() {
+   public List<Pair<bqc, crj>> e() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

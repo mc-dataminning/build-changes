@@ -1,49 +1,8 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.BiConsumer;
 
-public final class mn {
-   private static final mn a = new mn(ImmutableList.of());
-   private static final Comparator<doe.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<doe.a<?>> c;
-
-   public mn a(doe.a<?> $$0) {
-      return new mn(ImmutableList.builder().addAll(this.c).add($$0).build());
-   }
-
-   public mn a(mn $$0) {
-      return new mn(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
-   }
-
-   private mn(List<doe.a<?>> $$0) {
-      this.c = $$0;
-   }
-
-   public static mn a() {
-      return a;
-   }
-
-   public static mn a(doe.a<?>... $$0) {
-      return new mn(ImmutableList.copyOf($$0));
-   }
-
+public class mn implements lw {
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof mn && this.c.equals(((mn)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   public String b() {
-      return this.c.stream().sorted(b).map(doe.a::toString).collect(Collectors.joining(","));
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
+   public void generate(in.a $$0, BiConsumer<ajt, enj.a> $$1) {
+      $$1.accept(emz.aP, enj.b());
    }
 }

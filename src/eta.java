@@ -1,93 +1,19 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public final class eta {
-   private final long a;
-   private final List<ete> b;
-   private ete c;
-   private int d;
-   private int e;
+public interface eta {
+   int a();
 
-   public eta(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+   boolean b();
+
+   @Nullable
+   xw c();
+
+   default wu a(xw $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
-
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         ete $$2 = new ete($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
-      }
-
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new ete($$5);
-   }
-
-   public ete a(Optional<ete> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         ete $$1 = $$0.get();
-
-         for (ete $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
-         }
-      }
-
-      return this.b();
-   }
-
-   public int a(ete $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
-   }
-
-   public ete b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public ete a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   static wu a(@Nullable eta $$0, xw $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

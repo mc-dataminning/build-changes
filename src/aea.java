@@ -1,20 +1,37 @@
-public record aea(int b) implements yb<aam> {
-   public static final xs<uu, aea> a = yb.a(aea::a, aea::new);
+public class aea implements yn<aay> {
+   public static final ye<vg, aea> a = yn.a(aea::a, aea::new);
+   private final ib b;
+   private final float c;
 
-   private aea(uu $$0) {
-      this($$0.l());
+   public aea(ib $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(uu $$0) {
-      $$0.c(this.b);
+   private aea(vg $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
+   }
+
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yd<aea> a() {
-      return aex.aM;
+   public yp<aea> a() {
+      return afj.aA;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
+   }
+
+   public ib b() {
+      return this.b;
+   }
+
+   public float e() {
+      return this.c;
    }
 }

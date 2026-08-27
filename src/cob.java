@@ -1,42 +1,73 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cob extends cqh {
-   public cob(cqh.a $$0) {
-      super($$0);
+public class cob extends boj {
+   @Nullable
+   private dna c;
+
+   public cob() {
+      super(27);
+   }
+
+   public void a(dna $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(dna $$0) {
+      return this.c == $$0;
    }
 
    @Override
-   public bnd a(csw $$0) {
-      ih $$1 = $$0.k();
-      if ($$1 == ih.a) {
-         return bnd.e;
-      } else {
-         cxb $$2 = $$0.q();
-         csu $$3 = new csu($$0);
-         ib $$4 = $$3.a();
-         cqm $$5 = $$0.n();
-         ept $$6 = ept.c($$4);
-         epo $$7 = bpd.e.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof apf $$8) {
-               Consumer<ceu> $$9 = bpd.a($$8, $$5, $$0.o());
-               ceu $$10 = bpd.e.b($$8, $$9, $$4, bpt.m, true, true);
-               if ($$10 == null) {
-                  return bnd.e;
-               }
+   public void a(ts $$0, in.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, crj.i);
+      }
 
-               float $$11 = (float)aww.d((aww.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), aty.aD, atz.e, 0.75F, 0.8F);
-               $$10.a(drp.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bnd.a($$2.B);
-         } else {
-            return bnd.e;
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tm $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, crj.a($$1, (uj)$$4).orElse(crj.i));
          }
       }
+   }
+
+   @Override
+   public ts a(in.a $$0) {
+      ts $$1 = new ts();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         crj $$3 = this.a($$2);
+         if (!$$3.d()) {
+            tm $$4 = new tm();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(cjt $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cjt $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cjt $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

@@ -1,26 +1,36 @@
-public abstract class epr {
-   protected final ept a;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   protected epr(ept $$0) {
-      this.a = $$0;
+public class epr extends ept {
+   public static final Codec<epr> a = a(epr::new);
+
+   epr(List<eqc> $$0) {
+      super($$0, ac.b($$0));
    }
 
-   public double a(box $$0) {
-      double $$1 = this.a.c - $$0.dr();
-      double $$2 = this.a.d - $$0.dt();
-      double $$3 = this.a.e - $$0.dx();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public eqd b() {
+      return eqe.c;
    }
 
-   public abstract epr.a c();
-
-   public ept e() {
-      return this.a;
+   public static epr.a a(eqc.a... $$0) {
+      return new epr.a($$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public static class a extends ept.a {
+      public a(eqc.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public epr.a or(eqc.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eqc a(List<eqc> $$0) {
+         return new epr($$0);
+      }
    }
 }

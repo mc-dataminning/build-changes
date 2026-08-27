@@ -1,90 +1,235 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 
-public class xr<B extends ByteBuf, V, T> implements xs<B, V> {
-   private static final int a = -1;
-   private final Function<V, ? extends T> b;
-   private final List<xr.b<B, V, T>> c;
-   private final Object2IntMap<T> d;
+public class xr implements wh {
+   public static final Object[] a = new Object[0];
+   private static final Codec<Object> d = aws.b(aws.b, xr::b);
+   private static final Codec<Object> e = Codec.either(d, wi.a)
+      .xmap(
+         $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof wg $$1 ? Either.right($$1) : Either.left($$0)
+      );
+   public static final MapCodec<xr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
+               Codec.STRING.optionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
+               aws.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
+            )
+            .apply($$0, xr::a)
+   );
+   public static final wh.a<xr> c = new wh.a<>(b, "translatable");
+   private static final wl f = wl.e("%");
+   private static final wl g = wl.e("null");
+   private final String h;
+   @Nullable
+   private final String i;
+   private final Object[] j;
+   @Nullable
+   private th k;
+   private List<wl> l = ImmutableList.of();
+   private static final Pattern m = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
 
-   xr(Function<V, ? extends T> $$0, List<xr.b<B, V, T>> $$1, Object2IntMap<T> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static DataResult<Object> b(@Nullable Object $$0) {
+      return !a($$0) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success($$0);
    }
 
-   public V a(B $$0) {
-      int $$1 = vl.a($$0);
-      if ($$1 >= 0 && $$1 < this.c.size()) {
-         xr.b<B, V, T> $$2 = this.c.get($$1);
+   public static boolean a(@Nullable Object $$0) {
+      return $$0 instanceof Number || $$0 instanceof Boolean || $$0 instanceof String;
+   }
+
+   private static Optional<List<Object>> a(Object[] $$0) {
+      return $$0.length == 0 ? Optional.empty() : Optional.of(Arrays.asList($$0));
+   }
+
+   private static Object[] a(Optional<List<Object>> $$0) {
+      return $$0.<Object[]>map($$0x -> $$0x.isEmpty() ? a : $$0x.toArray()).orElse(a);
+   }
+
+   private static xr a(String $$0, Optional<String> $$1, Optional<List<Object>> $$2) {
+      return new xr($$0, $$1.orElse(null), a($$2));
+   }
+
+   public xr(String $$0, @Nullable String $$1, Object[] $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   @Override
+   public wh.a<?> a() {
+      return c;
+   }
+
+   private void e() {
+      th $$0 = th.a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         String $$1 = this.i != null ? $$0.a(this.h, this.i) : $$0.a(this.h);
 
          try {
-            return (V)$$2.a.decode($$0);
-         } catch (Exception var5) {
-            throw new DecoderException("Failed to decode packet '" + $$2.b + "'", var5);
-         }
-      } else {
-         throw new DecoderException("Received unknown packet id " + $$1);
-      }
-   }
-
-   public void a(B $$0, V $$1) {
-      T $$2 = (T)this.b.apply($$1);
-      int $$3 = this.d.getOrDefault($$2, -1);
-      if ($$3 == -1) {
-         throw new EncoderException("Sending unknown packet '" + $$2 + "'");
-      } else {
-         vl.a($$0, $$3);
-         xr.b<B, V, T> $$4 = this.c.get($$3);
-
-         try {
-            xs<? super B, V> $$5 = (xs<? super B, V>)$$4.a;
-            $$5.encode($$0, $$1);
-         } catch (Exception var7) {
-            throw new EncoderException("Failed to encode packet '" + $$2 + "'", var7);
+            Builder<wl> $$2 = ImmutableList.builder();
+            this.a($$1, $$2::add);
+            this.l = $$2.build();
+         } catch (xs var4) {
+            this.l = ImmutableList.of(wl.e($$1));
          }
       }
    }
 
-   public static <B extends ByteBuf, V, T> xr.a<B, V, T> a(Function<V, ? extends T> $$0) {
-      return new xr.a<>($$0);
-   }
+   private void a(String $$0, Consumer<wl> $$1) {
+      Matcher $$2 = m.matcher($$0);
 
-   public static class a<B extends ByteBuf, V, T> {
-      private final List<xr.b<B, V, T>> a = new ArrayList<>();
-      private final Function<V, ? extends T> b;
+      try {
+         int $$3 = 0;
+         int $$4 = 0;
 
-      a(Function<V, ? extends T> $$0) {
-         this.b = $$0;
-      }
+         while ($$2.find($$4)) {
+            int $$5 = $$2.start();
+            int $$6 = $$2.end();
+            if ($$5 > $$4) {
+               String $$7 = $$0.substring($$4, $$5);
+               if ($$7.indexOf(37) != -1) {
+                  throw new IllegalArgumentException();
+               }
 
-      public xr.a<B, V, T> a(T $$0, xs<? super B, ? extends V> $$1) {
-         this.a.add(new xr.b<>($$1, $$0));
-         return this;
-      }
-
-      public xr<B, V, T> a() {
-         Object2IntOpenHashMap<T> $$0 = new Object2IntOpenHashMap();
-         $$0.defaultReturnValue(-2);
-
-         for (xr.b<B, V, T> $$1 : this.a) {
-            int $$2 = $$0.size();
-            int $$3 = $$0.putIfAbsent($$1.b, $$2);
-            if ($$3 != -2) {
-               throw new IllegalStateException("Duplicate registration for type " + $$1.b);
+               $$1.accept(wl.e($$7));
             }
+
+            String $$8 = $$2.group(2);
+            String $$9 = $$0.substring($$5, $$6);
+            if ("%".equals($$8) && "%%".equals($$9)) {
+               $$1.accept(f);
+            } else {
+               if (!"s".equals($$8)) {
+                  throw new xs(this, "Unsupported format: '" + $$9 + "'");
+               }
+
+               String $$10 = $$2.group(1);
+               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
+               $$1.accept(this.a($$11));
+            }
+
+            $$4 = $$6;
          }
 
-         return new xr<>(this.b, List.copyOf(this.a), $$0);
+         if ($$4 < $$0.length()) {
+            String $$12 = $$0.substring($$4);
+            if ($$12.indexOf(37) != -1) {
+               throw new IllegalArgumentException();
+            }
+
+            $$1.accept(wl.e($$12));
+         }
+      } catch (IllegalArgumentException var12) {
+         throw new xs(this, var12);
       }
    }
 
-   static record b<B, V, T>(xs<? super B, ? extends V> a, T b) {
+   private wl a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.j.length) {
+         Object $$1 = this.j[$$0];
+         if ($$1 instanceof wg) {
+            return (wg)$$1;
+         } else {
+            return $$1 == null ? g : wl.e($$1.toString());
+         }
+      } else {
+         throw new xs(this, $$0);
+      }
+   }
+
+   @Override
+   public <T> Optional<T> a(wl.b<T> $$0, xd $$1) {
+      this.e();
+
+      for (wl $$2 : this.l) {
+         Optional<T> $$3 = $$2.a($$0, $$1);
+         if ($$3.isPresent()) {
+            return $$3;
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public <T> Optional<T> a(wl.a<T> $$0) {
+      this.e();
+
+      for (wl $$1 : this.l) {
+         Optional<T> $$2 = $$1.a($$0);
+         if ($$2.isPresent()) {
+            return $$2;
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public wu a(@Nullable du $$0, @Nullable bpv $$1, int $$2) throws CommandSyntaxException {
+      Object[] $$3 = new Object[this.j.length];
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         Object $$5 = this.j[$$4];
+         if ($$5 instanceof wg $$6) {
+            $$3[$$4] = wj.a($$0, $$6, $$1, $$2);
+         } else {
+            $$3[$$4] = $$5;
+         }
+      }
+
+      return wu.a(new xr(this.h, this.i, $$3));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xr $$1 && Objects.equals(this.h, $$1.h) && Objects.equals(this.i, $$1.i) && Arrays.equals(this.j, $$1.j)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = Objects.hashCode(this.h);
+      $$0 = 31 * $$0 + Objects.hashCode(this.i);
+      return 31 * $$0 + Arrays.hashCode(this.j);
+   }
+
+   @Override
+   public String toString() {
+      return "translation{key='" + this.h + "'" + (this.i != null ? ", fallback='" + this.i + "'" : "") + ", args=" + Arrays.toString(this.j) + "}";
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   @Nullable
+   public String c() {
+      return this.i;
+   }
+
+   public Object[] d() {
+      return this.j;
    }
 }

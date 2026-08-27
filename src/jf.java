@@ -34,13 +34,13 @@ public final class jf {
       }
    }, UndashedUuid::toString)).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::right);
    public static Codec<UUID> f = Codec.either(a, d).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::left);
-   public static xs<ByteBuf, UUID> g = new xs<ByteBuf, UUID>() {
+   public static ye<ByteBuf, UUID> g = new ye<ByteBuf, UUID>() {
       public UUID a(ByteBuf $$0) {
-         return uu.e($$0);
+         return vg.e($$0);
       }
 
       public void a(ByteBuf $$0, UUID $$1) {
-         uu.a($$0, $$1);
+         vg.a($$0, $$1);
       }
    };
    public static final int h = 16;

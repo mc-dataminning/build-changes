@@ -1,176 +1,541 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public class gag implements fzs<dlr> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = aww.h(16);
-   private static final float d = 0.6666667F;
-   private static final ept e = new ept(0.0, 0.33333334F, 0.046666667F);
-   private final Map<doo, gag.a> f;
-   private final fat g;
-
-   public gag(fzt.a $$0) {
-      this.f = doo.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gag.a($$0.a(fre.a($$1)))));
-      this.g = $$0.f();
-   }
-
-   public void a(dlr $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      dnb $$6 = $$0.n();
-      dhb $$7 = (dhb)$$6.b();
-      doo $$8 = dhb.a($$7);
-      gag.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof dhw;
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(dlr $$0, eub $$1, fxs $$2, int $$3, int $$4, dnb $$5, dhb $$6, doo $$7, fpb $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aC_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.aC_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(eub $$0, float $$1, dnb $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dhw)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+public abstract class gag {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final gag.p c = new gag.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final gag.p d = new gag.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gag.p e = new gag.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gag.p f = new gag.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-   }
-
-   void a(eub $$0, fxs $$1, int $$2, int $$3, doo $$4, fpb $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      glf $$7 = this.a($$4);
-      euf $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(eub $$0, int $$1, int $$2, fpb $$3, euf $$4) {
-      gag.a $$5 = (gag.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   glf a(doo $$0) {
-      return fyh.a($$0);
-   }
-
-   void a(ib $$0, dls $$1, eub $$2, fxs $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      awi[] $$10 = $$1.a(ezi.Q().aS(), $$1x -> {
-         List<awi> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? awi.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
+   );
+   protected static final gag.p g = new gag.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         awi $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fat.a.c, 0, $$13);
-         }
+   );
+   protected static final gag.p h = new gag.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      $$2.b();
-   }
-
-   private void a(eub $$0, boolean $$1, ept $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
+   );
+   protected static final gag.m i = new gag.m();
+   protected static final gag.m j = new gag.m(fzs::w);
+   protected static final gag.m k = new gag.m(fzs::q);
+   protected static final gag.m l = new gag.m(fzs::s);
+   protected static final gag.m m = new gag.m(fzs::t);
+   protected static final gag.m n = new gag.m(fzs::x);
+   protected static final gag.m o = new gag.m(fzs::r);
+   protected static final gag.m p = new gag.m(fzs::y);
+   protected static final gag.m q = new gag.m(fzs::z);
+   protected static final gag.m r = new gag.m(fzs::A);
+   protected static final gag.m s = new gag.m(fzs::B);
+   protected static final gag.m t = new gag.m(fzs::C);
+   protected static final gag.m u = new gag.m(fzs::D);
+   protected static final gag.m v = new gag.m(fzs::E);
+   protected static final gag.m w = new gag.m(fzs::F);
+   protected static final gag.m x = new gag.m(fzs::G);
+   protected static final gag.m y = new gag.m(fzs::H);
+   protected static final gag.m z = new gag.m(fzs::I);
+   protected static final gag.m A = new gag.m(fzs::J);
+   protected static final gag.m B = new gag.m(fzs::K);
+   protected static final gag.m C = new gag.m(fzs::L);
+   protected static final gag.m D = new gag.m(fzs::M);
+   protected static final gag.m E = new gag.m(fzs::N);
+   protected static final gag.m F = new gag.m(fzs::O);
+   protected static final gag.m G = new gag.m(fzs::P);
+   protected static final gag.m H = new gag.m(fzs::Q);
+   protected static final gag.m I = new gag.m(fzs::R);
+   protected static final gag.m J = new gag.m(fzs::S);
+   protected static final gag.m K = new gag.m(fzs::T);
+   protected static final gag.m L = new gag.m(fzs::V);
+   protected static final gag.m M = new gag.m(fzs::W);
+   protected static final gag.m N = new gag.m(fzs::X);
+   protected static final gag.m O = new gag.m(fzs::Y);
+   protected static final gag.m P = new gag.m(fzs::Z);
+   protected static final gag.m Q = new gag.m(fzs::aa);
+   protected static final gag.m R = new gag.m(fzs::ab);
+   protected static final gag.m S = new gag.m(fzs::ac);
+   protected static final gag.m T = new gag.m(fzs::ad);
+   protected static final gag.m U = new gag.m(fzs::ae);
+   protected static final gag.m V = new gag.m(fzs::ar);
+   protected static final gag.m W = new gag.m(fzs::af);
+   protected static final gag.m X = new gag.m(fzs::ag);
+   protected static final gag.m Y = new gag.m(fzs::ah);
+   protected static final gag.m Z = new gag.m(fzs::ai);
+   protected static final gag.m aa = new gag.m(fzs::aj);
+   protected static final gag.m ab = new gag.m(fzs::ak);
+   protected static final gag.m ac = new gag.m(fzs::al);
+   protected static final gag.m ad = new gag.m(fzs::am);
+   protected static final gag.m ae = new gag.m(fzs::an);
+   protected static final gag.m af = new gag.m(fzs::ao);
+   protected static final gag.m ag = new gag.m(fzs::ap);
+   protected static final gag.m ah = new gag.m(fzs::aq);
+   protected static final gag.m ai = new gag.m(fzs::as);
+   protected static final gag.m aj = new gag.m(fzs::at);
+   protected static final gag.m ak = new gag.m(fzs::au);
+   protected static final gag.m al = new gag.m(fzs::av);
+   protected static final gag.m am = new gag.m(fzs::U);
+   protected static final gag.n an = new gag.n(gli.e, false, true);
+   protected static final gag.n ao = new gag.n(gli.e, false, false);
+   protected static final gag.e ap = new gag.e();
+   protected static final gag.o aq = new gag.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gag.o ar = new gag.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gag.o as = new gag.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gag.g at = new gag.g(true);
+   protected static final gag.g au = new gag.g(false);
+   protected static final gag.l av = new gag.l(true);
+   protected static final gag.l aw = new gag.l(false);
+   protected static final gag.c ax = new gag.c(true);
+   protected static final gag.c ay = new gag.c(false);
+   protected static final gag.d az = new gag.d("always", 519);
+   protected static final gag.d aA = new gag.d("==", 514);
+   protected static final gag.d aB = new gag.d("<=", 515);
+   protected static final gag.d aC = new gag.d(">", 516);
+   protected static final gag.q aD = new gag.q(true, true);
+   protected static final gag.q aE = new gag.q(true, false);
+   protected static final gag.q aF = new gag.q(false, true);
+   protected static final gag.f aG = new gag.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gag.f aH = new gag.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gag.f aI = new gag.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gag.k aJ = new gag.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gag.k aK = new gag.k("outline_target", () -> fbp.Q().f.s().a(false), () -> fbp.Q().h().a(false));
+   protected static final gag.k aL = new gag.k("translucent_target", () -> {
+      if (fbp.O()) {
+         fbp.Q().f.t().a(false);
       }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
-   }
-
-   ept d() {
-      return e;
-   }
-
-   static boolean a(ib $$0, int $$1) {
-      if ($$1 == cpd.p.g()) {
-         return true;
-      } else {
-         ezi $$2 = ezi.Q();
-         fwu $$3 = $$2.s;
-         if ($$3 != null && $$2.m.ay().a() && $$3.gx()) {
-            return true;
-         } else {
-            box $$4 = $$2.ao();
-            return $$4 != null && $$4.f(ept.b($$0)) < (double)c;
-         }
+   }, () -> {
+      if (fbp.O()) {
+         fbp.Q().h().a(false);
       }
-   }
-
-   public static int a(dls $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cpd.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)awg.b.b($$1) * 0.4);
-         int $$4 = (int)((double)awg.b.c($$1) * 0.4);
-         int $$5 = (int)((double)awg.b.d($$1) * 0.4);
-         return awg.b.a(0, $$3, $$4, $$5);
+   });
+   protected static final gag.k aM = new gag.k("particles_target", () -> {
+      if (fbp.O()) {
+         fbp.Q().f.v().a(false);
       }
+   }, () -> {
+      if (fbp.O()) {
+         fbp.Q().h().a(false);
+      }
+   });
+   protected static final gag.k aN = new gag.k("weather_target", () -> {
+      if (fbp.O()) {
+         fbp.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (fbp.O()) {
+         fbp.Q().h().a(false);
+      }
+   });
+   protected static final gag.k aO = new gag.k("clouds_target", () -> {
+      if (fbp.O()) {
+         fbp.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (fbp.O()) {
+         fbp.Q().h().a(false);
+      }
+   });
+   protected static final gag.k aP = new gag.k("item_entity_target", () -> {
+      if (fbp.O()) {
+         fbp.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (fbp.O()) {
+         fbp.Q().h().a(false);
+      }
+   });
+   protected static final gag.h aQ = new gag.h(OptionalDouble.of(1.0));
+   protected static final gag.b aR = new gag.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gag.b aS = new gag.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gag(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
    }
 
-   public static gag.a a(frb $$0, doo $$1) {
-      return new gag.a($$0.a(fre.a($$1)));
+   public void a() {
+      this.aU.run();
    }
 
-   public static frl f() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      $$1.a("sign", frk.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), frh.a);
-      $$1.a("stick", frk.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), frh.a);
-      return frl.a($$0, 64, 32);
+   public void b() {
+      this.aV.run();
    }
 
-   public static final class a extends fpb {
-      public final frf a;
-      public final frf b;
+   @Override
+   public String toString() {
+      return this.b;
+   }
 
-      public a(frf $$0) {
-         super(fya::e);
-         this.a = $$0;
-         this.b = $$0.b("stick");
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.b() * fbp.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends gag {
+      private final boolean aT;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
       }
 
       @Override
-      public void a(eub $$0, euf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class b extends gag {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class c extends gag.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gag {
+      private final String aT;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aT = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class e extends gag {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
+
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<ajt> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gag {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gag.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fbp.Q().j.o().c();
+            }
+         }, () -> {
+            if ($$0) {
+               fbp.Q().j.o().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends gag {
+      private final OptionalDouble aT;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fbp.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gag.e {
+      private final Optional<ajt> aT;
+
+      i(ImmutableList<Triple<ajt, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<ajt, Boolean, Boolean> $$2 = (Triple<ajt, Boolean, Boolean>)var2.next();
+               glk $$3 = fbp.Q().aa();
+               $$3.b((ajt)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (ajt)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<ajt> c() {
+         return this.aT;
+      }
+
+      public static gag.i.a d() {
+         return new gag.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<ajt, Boolean, Boolean>> a = new Builder();
+
+         public gag.i.a a(ajt $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gag.i a() {
+            return new gag.i(this.a.build());
+         }
+      }
+   }
+
+   protected static final class j extends gag.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gag {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gag.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fbp.Q().j.p().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fbp.Q().j.p().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gag {
+      private final Optional<Supplier<gan>> aT;
+
+      public m(Supplier<gan> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class n extends gag.e {
+      private final Optional<ajt> aT;
+      private final boolean aU;
+      private final boolean aV;
+
+      public n(ajt $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            glk $$3 = fbp.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
+      }
+
+      @Override
+      protected Optional<ajt> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends gag {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gag {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gag {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
       }
    }
 }

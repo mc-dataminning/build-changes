@@ -1,18 +1,29 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eoz {
-   private static final Codec<eoy> d = ki.K.q().dispatch(eoy::a, eox::a);
-   public static final Codec<eoy> a = awe.a(
-      (Supplier<Codec<eoy>>)(() -> Codec.either(eov.b, d)
-            .xmap($$0 -> (eoy)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eov $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final eox b = a("fixed", eow.a);
-   public static final eox c = a("context", eov.a);
+public class eoz extends eoo {
+   public static final Codec<eoz> a = RecordCodecBuilder.create($$0 -> a($$0).and(uk.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eoz::new));
+   private final tm b;
 
-   private static eox a(String $$0, Codec<? extends eoy> $$1) {
-      return iy.a(ki.K, new ajh($$0), new eox($$1));
+   private eoz(List<eqc> $$0, tm $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public eoq b() {
+      return eor.g;
+   }
+
+   @Override
+   public crj a(crj $$0, enb $$1) {
+      ctt.a(jp.a, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
+   }
+
+   @Deprecated
+   public static eoo.a<?> a(tm $$0) {
+      return a($$1 -> new eoz($$1, $$0));
    }
 }

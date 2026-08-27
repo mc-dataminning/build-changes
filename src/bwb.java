@@ -1,34 +1,17 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class bwb extends bwm {
-   private final bpr a;
-   private final cxb b;
-
-   public bwb(bpr $$0, cxb $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bwm.a.c));
+public class bwb extends bsg<bqo> {
+   public bwb() {
+      super(ImmutableMap.of());
    }
 
    @Override
-   public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ai().a(auq.h)) {
-         ib $$1 = this.a.dm().c();
-         dnb $$2 = this.b.a_($$1);
-         return $$2.a(dae.qP) || $$2.k(this.b, $$1) == eqj.a();
-      } else {
-         return false;
-      }
+   protected boolean a(aps $$0, bqo $$1) {
+      return $$1.bO();
    }
 
    @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a();
+   protected void d(aps $$0, bqo $$1, long $$2) {
+      $$1.ag();
    }
 }

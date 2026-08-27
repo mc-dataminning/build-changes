@@ -1,28 +1,36 @@
-public class gcp extends geh<cfm, fny<cfm>> {
-   private static final ajh a = new ajh("textures/entity/creeper/creeper.png");
+public class gcp implements gbz<dnt> {
+   private final gfg a;
 
-   public gcp(gdb.a $$0) {
-      super($$0, new fny<>($$0.a(fre.H)), 0.5F);
-      this.a(new ggp(this, $$0.f()));
+   public gcp(gca.a $$0) {
+      this.a = $$0.c();
    }
 
-   protected void a(cfm $$0, eub $$1, float $$2) {
-      float $$3 = $$0.G($$2);
-      float $$4 = 1.0F + aww.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = aww.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
+   public void a(dnt $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
+      cyx $$6 = $$0.i();
+      if ($$6 != null) {
+         cxz $$7 = $$0.c();
+         bpv $$8 = $$7.b($$6, $$0.aA_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
    }
 
-   protected float a(cfm $$0, float $$1) {
-      float $$2 = $$0.G($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : aww.a($$2, 0.5F, 1.0F);
-   }
+   public static void a(float $$0, ewi $$1, fzz $$2, int $$3, bpv $$4, gfg $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
 
-   public ajh a(cfm $$0) {
-      return a;
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)axk.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

@@ -1,53 +1,23 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eqh extends AbstractDoubleList implements eqf {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
-
-   protected eqh(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public record eqh(float b) implements eqc {
+   public static final Codec<eqh> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eqh::c)).apply($$0, eqh::new));
 
    @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public eqd b() {
+      return eqe.e;
    }
 
-   @Override
-   public boolean a(eqf.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   public boolean a(enb $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   private boolean b(eqf.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   public static eqc.a a(float $$0) {
+      return () -> new eqh($$0);
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
+   public float c() {
+      return this.b;
    }
 }

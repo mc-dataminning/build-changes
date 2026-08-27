@@ -1,59 +1,95 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class ako {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.banip.failed"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), el.a($$0x, "reason"))))
-            )
-      );
-   }
-
-   private static int a(du $$0, String $$1, @Nullable vu $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         apg $$3 = $$0.l().ah().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
-         } else {
-            throw a.create();
-         }
+   public static <D, R> CompletableFuture<R> a(ako.c $$0, ako.f<D> $$1, ako.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<czr, ass> $$5 = $$0.a.a();
+         ass $$6 = (ass)$$5.getSecond();
+         is<akc> $$7 = akc.a();
+         is<akc> $$8 = b($$6, $$7, akc.b, ajo.a);
+         iz.b $$9 = $$8.b(akc.c);
+         iz.b $$10 = ajo.a($$6, $$9, ajo.b);
+         czr $$11 = (czr)$$5.getFirst();
+         ako.b<D> $$12 = $$1.get(new ako.a($$6, $$11, $$9, $$10));
+         is<akc> $$13 = $$8.a(akc.c, $$12.b);
+         iz.b $$14 = $$13.b(akc.d);
+         return akd.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$5x -> {
+            $$5x.a($$14);
+            return $$2.create($$6, $$5x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var15) {
+         return CompletableFuture.failedFuture(var15);
       }
    }
 
-   private static int b(du $$0, String $$1, @Nullable vu $$2) throws CommandSyntaxException {
-      asy $$3 = $$0.l().ah().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<apg> $$4 = $$0.l().ah().b($$1);
-         asz $$5 = new asz($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> vu.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> vu.a("commands.banip.info", $$4.size(), gi.a($$4)), true);
+   private static iz.b a(atc $$0, is<akc> $$1, akc $$2, List<ajo.c<?>> $$3) {
+      iz.b $$4 = $$1.b($$2);
+      return ajo.a($$0, $$4, $$3);
+   }
+
+   private static is<akc> b(atc $$0, is<akc> $$1, akc $$2, List<ajo.c<?>> $$3) {
+      iz.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(atc a, czr b, iz.b c, iz.b d) {
+   }
+
+   public static record b<D>(D a, iz.b b) {
+   }
+
+   public static record c(ako.d a, dv.a b, int c) {
+   }
+
+   public static record d(asn a, czr b, boolean c, boolean d) {
+      public Pair<czr, ass> a() {
+         cmg $$0 = this.d ? cmi.e.a() : this.b.b();
+         czr $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+         if (!this.d) {
+            $$1 = $$1.a(this.b.b());
          }
 
-         for (apg $$6 : $$4) {
-            $$6.d.b(vu.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+         List<aro> $$2 = this.a.g();
+         ass $$3 = new asv(arq.b, $$2);
+         return Pair.of($$1, $$3);
       }
+
+      public asn b() {
+         return this.a;
+      }
+
+      public czr c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(ass var1, akd var2, is<akc> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      ako.b<D> get(ako.a var1);
    }
 }

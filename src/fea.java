@@ -1,115 +1,50 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+public class fea extends fej {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fea extends gin implements gio {
-   private static final int e = 256;
-   private final feb f;
-   private final boolean g;
-   private final fea.a h;
+   public fea(int $$0, wg $$1, fda $$2) {
+      this($$0, $$1, $$2, 4);
+   }
 
-   public fea(feb $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fea.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? etc.b.a : etc.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fea(int $$0, wg $$1, fda $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public fea(int $$0, wg $$1, fda $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public void a(aso $$0) {
+   protected void a(fhl $$0) {
+      $$0.a(fhk.a, this.y());
    }
 
    @Override
-   public void close() {
-      this.b();
-   }
-
-   @Nullable
-   public fed a(esf $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         fea.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fed(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      if (this.aJ_() || this.b) {
+         int $$4 = this.C() - this.c;
+         int $$5 = this.D() - this.c;
+         int $$6 = this.x() + this.c * 2;
+         int $$7 = this.v() + this.c * 2;
+         int $$8 = this.b ? (this.aJ_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(ajh $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fea.a e;
-      @Nullable
-      private fea.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      fea.a a(esf $$0) {
-         if (this.e != null && this.f != null) {
-            fea.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fea.a(this.a, this.b, $$2, this.d);
-                  this.f = new fea.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fea.a(this.a, this.b, this.c, $$3);
-                  this.f = new fea.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   public void a(gqa $$0) {
    }
 }

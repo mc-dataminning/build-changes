@@ -1,47 +1,81 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
 
-public record enl(il<cuw> b, List<Float> c) implements env {
-   public static final Codec<enl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ki.f.r().fieldOf("enchantment").forGetter(enl::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(enl::d)).apply($$0, enl::new)
-   );
+public class enl extends enn {
+   public static final Codec<enl> a = a(enl::new);
 
-   @Override
-   public enw b() {
-      return enx.l;
+   enl(List<enu> $$0, List<eqc> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return ImmutableSet.of(enh.i);
+   public env a() {
+      return ens.g;
    }
 
-   public boolean a(ekw $$0) {
-      cqm $$1 = $$0.c(enh.i);
-      int $$2 = $$1 != null ? cux.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   protected enm a(List<? extends enm> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (enm)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (enm $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
-   public static env.a a(cuw $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
+   @Override
+   public void a(enk $$0) {
+      super.a($$0);
 
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static enl.a a(enu.a<?>... $$0) {
+      return new enl.a($$0);
+   }
+
+   public static <E> enl.a a(Collection<E> $$0, Function<E, enu.a<?>> $$1) {
+      return new enl.a($$0.stream().map($$1::apply).toArray(enu.a[]::new));
+   }
+
+   public static class a extends enu.a<enl.a> {
+      private final Builder<enu> a = ImmutableList.builder();
+
+      public a(enu.a<?>... $$0) {
+         for (enu.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return () -> new enl($$0.k(), $$2);
-   }
+      protected enl.a a() {
+         return this;
+      }
 
-   public il<cuw> c() {
-      return this.b;
-   }
+      @Override
+      public enl.a a(enu.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public List<Float> d() {
-      return this.c;
+      @Override
+      public enu b() {
+         return new enl(this.a.build(), this.f());
+      }
    }
 }

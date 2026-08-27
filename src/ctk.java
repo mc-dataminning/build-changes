@@ -1,68 +1,91 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public class ctk extends cth {
-   private static final ctm a = ctm.a(cqp.ut);
+public class ctk implements cuj {
+   public static final Codec<ctk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ctl.c.fieldOf("material").forGetter(ctk::b),
+               ctn.c.fieldOf("pattern").forGetter(ctk::a),
+               aws.a(Codec.BOOL, "show_in_tooltip", true).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ctk::new)
+   );
+   public static final ye<vr, ctk> b = ye.a(ctl.d, ctk::b, ctn.d, ctk::a, yc.b, $$0 -> $$0.f, ctk::new);
+   private static final wg c = wg.c(ac.a("item", new ajt("smithing_template.upgrade"))).a(n.h);
+   private final il<ctl> d;
+   private final il<ctn> e;
+   private final boolean f;
+   private final Function<il<coz>, ajt> g;
+   private final Function<il<coz>, ajt> h;
 
-   public ctk(ctf $$0) {
-      super($$0);
+   public ctk(il<ctl> $$0, il<ctn> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ac.b($$1x -> {
+         ajt $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         ajt $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
+      this.f = $$2;
    }
 
-   public boolean a(cmg $$0, cxb $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cpe) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$3 && $$2;
+   public ctk(il<ctl> $$0, il<ctn> $$1) {
+      this($$0, $$1, true);
    }
 
-   public cqm a(cmg $$0, iz $$1) {
-      List<Integer> $$2 = Lists.newArrayList();
-      cqm $$3 = null;
+   private String c(il<coz> $$0) {
+      Map<il<coz>, String> $$1 = this.d.a().d();
+      String $$2 = $$1.get($$0);
+      return $$2 != null ? $$2 : this.d.a().a();
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqm $$5 = $$0.a($$4);
-         cqh $$6 = $$5.d();
-         if ($$6 instanceof cpe) {
-            $$2.add(((cpe)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
+   public boolean a(il<ctn> $$0, il<ctl> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
+   }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.b("Explosion").b("FadeColors", $$2);
-         return $$3;
-      } else {
-         return cqm.h;
-      }
+   public il<ctn> a() {
+      return this.e;
+   }
+
+   public il<ctl> b() {
+      return this.d;
+   }
+
+   public ajt a(il<coz> $$0) {
+      return this.g.apply($$0);
+   }
+
+   public ajt b(il<coz> $$0) {
+      return this.h.apply($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof ctk $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
    }
 
    @Override
-   public ctt<?> ar_() {
-      return ctt.i;
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
+
+   @Override
+   public void a(Consumer<wg> $$0, csz $$1) {
+      if (this.f) {
+         $$0.accept(c);
+         $$0.accept(wf.a().b(this.e.a().a(this.d)));
+         $$0.accept(wf.a().b(this.d.a().e()));
+      }
    }
 }

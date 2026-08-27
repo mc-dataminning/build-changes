@@ -1,43 +1,29 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record aka(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, asx d) {
-   private static final String e = "usercache.json";
+public class aka extends PrintStream {
+   private static final Logger b = LogUtils.getLogger();
+   protected final String a;
 
-   public static aka a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      asx $$4 = new asx($$3, new File($$1, "usercache.json"));
-      return new aka($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public aka(String $$0, OutputStream $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   @Nullable
-   public axi a() {
-      return axi.a(this.b, ServicesKeyType.PROFILE_KEY);
+   @Override
+   public void println(@Nullable String $$0) {
+      this.a($$0);
    }
 
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+   @Override
+   public void println(Object $$0) {
+      this.a(String.valueOf($$0));
    }
 
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public asx f() {
-      return this.d;
+   protected void a(@Nullable String $$0) {
+      b.info("[{}]: {}", this.a, $$0);
    }
 }

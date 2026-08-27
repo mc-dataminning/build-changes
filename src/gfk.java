@@ -1,28 +1,35 @@
-public class gfk extends geh<cgn, fqi<cgn>> {
-   private static final ajh a = new ajh("textures/entity/strider/strider.png");
-   private static final ajh i = new ajh("textures/entity/strider/strider_cold.png");
-   private static final float j = 0.5F;
+public class gfk extends gfh<ckd> {
+   private static final ajt a = new ajt("textures/entity/illager/evoker_fangs.png");
+   private final fqn<ckd> f;
 
-   public gfk(gdb.a $$0) {
-      super($$0, new fqi<>($$0.a(fre.bD)), 0.5F);
-      this.a(new ghn<>(this, new fqi<>($$0.a(fre.bE)), new ajh("textures/entity/strider/strider_saddle.png")));
+   public gfk(gfi.a $$0) {
+      super($$0);
+      this.f = new fqn<>($$0.a(ftl.ac));
    }
 
-   public ajh a(cgn $$0) {
-      return $$0.r() ? i : a;
+   public void a(ckd $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dC()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dC(), $$0.dE());
+         ewm $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   protected float b(cgn $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
-   }
-
-   protected void a(cgn $$0, eub $$1, float $$2) {
-      float $$3 = $$0.ea();
-      $$1.b($$3, $$3, $$3);
-   }
-
-   protected boolean c(cgn $$0) {
-      return super.a($$0) || $$0.r();
+   public ajt a(ckd $$0) {
+      return a;
    }
 }

@@ -1,16 +1,136 @@
-public class enh {
-   public static final ene<box> a = a("this_entity");
-   public static final ene<ciu> b = a("last_damage_player");
-   public static final ene<bnw> c = a("damage_source");
-   public static final ene<box> d = a("killer_entity");
-   public static final ene<box> e = a("direct_killer_entity");
-   public static final ene<ept> f = a("origin");
-   public static final ene<dnb> g = a("block_state");
-   public static final ene<dki> h = a("block_entity");
-   public static final ene<cqm> i = a("tool");
-   public static final ene<Float> j = a("explosion_radius");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private static <T> ene<T> a(String $$0) {
-      return new ene<>(new ajh($$0));
+public class enh {
+   private final aps a;
+   private final Map<epl<?>, Object> b;
+   private final Map<ajt, enh.b> c;
+   private final float d;
+
+   public enh(aps $$0, Map<epl<?>, Object> $$1, Map<ajt, enh.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public aps a() {
+      return this.a;
+   }
+
+   public boolean a(epl<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(epl<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(epl<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(epl<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(ajt $$0, Consumer<crj> $$1) {
+      enh.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final aps a;
+      private final Map<epl<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<ajt, enh.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(aps $$0) {
+         this.a = $$0;
+      }
+
+      public aps a() {
+         return this.a;
+      }
+
+      public <T> enh.a a(epl<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> enh.a b(epl<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(epl<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(epl<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public enh.a a(ajt $$0, enh.b $$1) {
+         enh.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public enh.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public enh a(epm $$0) {
+         Set<epl<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<epl<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new enh(this.a, this.b, this.c, this.d);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<crj> var1);
    }
 }

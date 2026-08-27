@@ -1,49 +1,40 @@
-public class fuy extends fwg {
-   private final fwb a;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-   protected fuy(fsa $$0, double $$1, double $$2, double $$3, double $$4, fwb $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public class fuy {
+   private final Map<ajs<? extends iy<?>>, avu.a> a = new HashMap<>();
+
+   public void a(ajs<? extends iy<?>> $$0, avu.a $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   private static void a() {
+      cpv.e().n();
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   private static void b() {
+      dlt.f();
+      dca.a();
+   }
+
+   private void a(iz $$0, Predicate<ajs<? extends iy<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((ajs<? extends iy<?>>)$$2)) {
+            $$3.a($$0.d((ajs<? extends iy<?>>)$$2));
+         }
+      });
+   }
+
+   public void a(iz $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, jc.a::contains);
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public fvk b() {
-      return fvk.d;
-   }
-
-   public static class a implements fvj<kf> {
-      private final fwb a;
-
-      public a(fwb $$0) {
-         this.a = $$0;
+         $$0.c().filter($$0x -> !jc.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
+         this.a($$0, $$0x -> true);
+         b();
       }
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fuy($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+      a();
    }
 }

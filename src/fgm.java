@@ -1,9 +1,73 @@
-public class fgm extends fhj {
-   private static ezl<?>[] a(ezm $$0) {
-      return new ezl[]{$$0.N(), $$0.O()};
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+public enum fgm implements euk {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
+
+   final evj c;
+
+   private static evj a(int $$0, int $$1, fgm.a $$2) {
+      evj $$3 = new evj(evj.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
    }
 
-   public fgm(fhh $$0, ezm $$1) {
-      super($$0, $$1, vu.c("options.font.title"), a($$1));
+   private fgm(Supplier<evj> $$0) {
+      this.c = $$0.get();
+   }
+
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public fgk bake(Function<eum, fgk> $$0) {
+      return $$0.apply(new eum() {
+         @Override
+         public int a() {
+            return fgm.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fgm.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fgm.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

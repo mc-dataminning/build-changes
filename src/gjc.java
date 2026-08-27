@@ -1,121 +1,36 @@
-import javax.annotation.Nullable;
+public class gjc<T extends bqo, M extends fqm<T>> extends gjt<T, M> {
+   private static final ajt a = new ajt("textures/entity/elytra.png");
+   private final fqj<T> b;
 
-public class gjc {
-   private final ajh a;
-   private final giw b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-
-   protected gjc(ajh $$0, giw $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   public gjc(ghd<T, M> $$0, fti $$1) {
+      super($$0);
+      this.b = new fqj<>($$1.a(ftl.W));
    }
 
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public giw e() {
-      return this.b;
-   }
-
-   @Nullable
-   public gjc.a f() {
-      final giy $$0 = this.b.e();
-      return $$0 != null ? new gjc.a() {
-         @Override
-         public void a() {
-            $$0.a(gjc.this.c, gjc.this.d);
+   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      crj $$10 = $$3.d(bqc.e);
+      if ($$10.a(crm.nS)) {
+         ajt $$13;
+         if ($$3 instanceof fyy $$11) {
+            gmi $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(cju.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
+            }
+         } else {
+            $$13 = a;
          }
 
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public ajh i() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
-   }
-
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
-
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
-
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public euf a(euf $$0) {
-      return new fyi($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
-
-      @Override
-      void close();
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         ewm $$17 = ggg.a($$1, gah.a($$13), false, $$10.x());
+         this.b.a($$0, $$17, $$2, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
+      }
    }
 }

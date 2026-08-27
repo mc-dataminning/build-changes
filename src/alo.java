@@ -1,35 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.server.MinecraftServer;
 
 public class alo {
    public static void a(CommandDispatcher<du> $$0) {
-      final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
-      cwx.a(
-         new cwx.c() {
-            @Override
-            public <T extends cwx.g<T>> void a(cwx.e<T> $$0, cwx.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> alo.a((du)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> alo.a($$1xxx, $$0)))
-               );
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("gamemode", ei.a()).executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "gamemode"))))
+      );
+   }
+
+   private static int a(du $$0, cyu $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      $$3.a($$1);
+      cyu $$4 = $$3.bf();
+      if ($$4 != null) {
+         for (apt $$5 : $$3.ah().t()) {
+            if ($$5.a($$4)) {
+               $$2++;
             }
          }
-      );
-      $$0.register($$1);
-   }
+      }
 
-   static <T extends cwx.g<T>> int a(CommandContext<du> $$0, cwx.e<T> $$1) {
-      du $$2 = (du)$$0.getSource();
-      T $$3 = $$2.l().aN().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> vu.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
-
-   static <T extends cwx.g<T>> int a(du $$0, cwx.e<T> $$1) {
-      T $$2 = $$0.l().aN().a($$1);
-      $$0.a(() -> vu.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+      $$0.a(() -> wg.a("commands.defaultgamemode.success", $$1.d()), true);
+      return $$2;
    }
 }

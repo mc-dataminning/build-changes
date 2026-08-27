@@ -35,72 +35,72 @@ public class Main {
          boolean $$16 = $$13 || $$11.has($$5);
          boolean $$17 = $$13 || $$11.has($$6);
          boolean $$18 = $$13 || $$11.has($$7);
-         ko $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, aa.b(), true);
+         kx $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, aa.b(), true);
          $$19.a();
       } else {
          $$1.printHelpOn(System.out);
       }
    }
 
-   private static <T extends kp> kp.a<T> a(BiFunction<kr, CompletableFuture<in.a>, T> $$0, CompletableFuture<in.a> $$1) {
+   private static <T extends ky> ky.a<T> a(BiFunction<la, CompletableFuture<in.a>, T> $$0, CompletableFuture<in.a> $$1) {
       return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static ko a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
-      ko $$9 = new ko($$0, $$7, $$8);
-      ko.a $$10 = $$9.a($$2 || $$3);
-      $$10.a($$1x -> new nz($$1x, $$1).a(new oa()));
-      CompletableFuture<in.a> $$11 = CompletableFuture.supplyAsync(nv::a, ac.f());
-      ko.a $$12 = $$9.a($$2);
-      $$12.a(mh::new);
-      ko.a $$13 = $$9.a($$3);
-      $$13.a(a(ns::new, $$11));
-      $$13.a(a(kx::a, $$11));
-      $$13.a(a(ma::a, $$11));
-      $$13.a(a(nq::new, $$11));
-      oq<dac> $$14 = $$13.a(a(oy::new, $$11));
-      oq<cqh> $$15 = $$13.a($$2x -> new oz($$2x, $$11, $$14.c()));
-      oq<cya> $$16 = $$13.a(a(od::new, $$11));
-      $$13.a(a(oc::new, $$11));
+   public static kx a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, ad $$7, boolean $$8) {
+      kx $$9 = new kx($$0, $$7, $$8);
+      kx.a $$10 = $$9.a($$2 || $$3);
+      $$10.a($$1x -> new ol($$1x, $$1).a(new om()));
+      CompletableFuture<in.a> $$11 = CompletableFuture.supplyAsync(oh::a, ac.f());
+      kx.a $$12 = $$9.a($$2);
+      $$12.a(mt::new);
+      kx.a $$13 = $$9.a($$3);
       $$13.a(a(oe::new, $$11));
-      $$13.a(a(of::new, $$11));
-      $$13.a(a(og::new, $$11));
-      $$13.a(a(oh::new, $$11));
-      $$13.a(a(oi::new, $$11));
-      $$13.a(a(oj::new, $$11));
-      $$13.a(a(ok::new, $$11));
-      $$13.a(a(on::new, $$11));
+      $$13.a(a(lg::a, $$11));
+      $$13.a(a(ml::a, $$11));
+      $$13.a(a(oc::new, $$11));
+      pc<dby> $$14 = $$13.a(a(pk::new, $$11));
+      pc<cre> $$15 = $$13.a($$2x -> new pl($$2x, $$11, $$14.c()));
+      pc<czw> $$16 = $$13.a(a(op::new, $$11));
       $$13.a(a(oo::new, $$11));
-      $$13.a(a(op::new, $$11));
-      $$13.a(a(pa::new, $$11));
-      $$13 = $$9.a($$4);
-      $$13.a($$1x -> new nx($$1x, $$1));
-      $$13 = $$9.a($$5);
-      $$13.a(a(le::new, $$11));
-      $$13.a(lf::new);
-      $$13.a(a(lg::new, $$11));
-      $$13.a(lh::new);
-      $$13 = $$9.a($$3, "bundle");
-      $$13.a(a(no::new, $$11));
-      $$13.a($$0x -> md.a($$0x, vu.c("dataPack.bundle.description"), clh.a(clj.b)));
-      $$13 = $$9.a($$3, "trade_rebalance");
-      $$13.a($$0x -> md.a($$0x, vu.c("dataPack.trade_rebalance.description"), clh.a(clj.d)));
-      $$13.a(a(lp::a, $$11));
+      $$13.a(a(oq::new, $$11));
       $$13.a(a(or::new, $$11));
-      CompletableFuture<jb.g> $$21 = nu.a($$11);
+      $$13.a(a(os::new, $$11));
+      $$13.a(a(ot::new, $$11));
+      $$13.a(a(ou::new, $$11));
+      $$13.a(a(ov::new, $$11));
+      $$13.a(a(ow::new, $$11));
+      $$13.a(a(oz::new, $$11));
+      $$13.a(a(pa::new, $$11));
+      $$13.a(a(pb::new, $$11));
+      $$13.a(a(pm::new, $$11));
+      $$13 = $$9.a($$4);
+      $$13.a($$1x -> new oj($$1x, $$1));
+      $$13 = $$9.a($$5);
+      $$13.a(a(ln::new, $$11));
+      $$13.a(a(lq::new, $$11));
+      $$13.a(a(lo::new, $$11));
+      $$13.a(a(lp::new, $$11));
+      $$13.a(lr::new);
+      $$13 = $$9.a($$3, "bundle");
+      $$13.a(a(oa::new, $$11));
+      $$13.a($$0x -> mp.a($$0x, wg.c("dataPack.bundle.description"), cmg.a(cmi.b)));
+      $$13 = $$9.a($$3, "trade_rebalance");
+      $$13.a($$0x -> mp.a($$0x, wg.c("dataPack.trade_rebalance.description"), cmg.a(cmi.d)));
+      $$13.a(a(lz::a, $$11));
+      $$13.a(a(pd::new, $$11));
+      CompletableFuture<jb.g> $$21 = og.a($$11);
       CompletableFuture<in.a> $$22 = $$21.thenApply(jb.g::a);
-      CompletableFuture<in.a> $$23 = $$21.thenApply(jb.g::b);
-      ko.a $$24 = $$9.a($$3, "update_1_21");
-      $$24.a(a(np::new, $$23));
-      oq<dac> $$25 = $$24.a($$2x -> new ot($$2x, $$23, $$14.c()));
-      $$24.a($$3x -> new ox($$3x, $$23, $$15.c(), $$25.c()));
-      $$24.a($$2x -> new os($$2x, $$23, $$16.c()));
-      $$24.a(a(lt::a, $$23));
-      $$24.a(a(ns::new, $$23));
-      $$24.a($$0x -> md.a($$0x, vu.c("dataPack.update_1_21.description"), clh.a(clj.c)));
-      $$24.a(a(ow::new, $$22));
-      $$24.a(a(ou::new, $$22));
-      $$24.a(a(kv::a, $$22));
+      kx.a $$23 = $$9.a($$3, "update_1_21");
+      $$23.a(a(oe::new, $$21.thenApply(jb.g::b)));
+      $$23.a(a(ob::new, $$22));
+      pc<dby> $$24 = $$23.a($$2x -> new pf($$2x, $$22, $$14.c()));
+      $$23.a($$3x -> new pj($$3x, $$22, $$15.c(), $$24.c()));
+      $$23.a($$2x -> new pe($$2x, $$22, $$16.c()));
+      $$23.a(a(md::a, $$22));
+      $$23.a($$0x -> mp.a($$0x, wg.c("dataPack.update_1_21.description"), cmg.a(cmi.c)));
+      $$23.a(a(pi::new, $$22));
+      $$23.a(a(pg::new, $$22));
+      $$23.a(a(le::a, $$22));
       return $$9;
    }
 }

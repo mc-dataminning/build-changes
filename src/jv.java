@@ -1,55 +1,49 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import org.joml.Vector3f;
+public class jv extends jw {
+   private final jw c = new jw();
+   private final clq.b d;
+   private final boolean e;
 
-public class jv extends jx {
-   public static final Vector3f a = ept.a(3790560).j();
-   public static final jv b = new jv(a, jw.a, 1.0F);
-   public static final Codec<jv> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awe.d.fieldOf("fromColor").forGetter($$0x -> $$0x.h),
-               awe.d.fieldOf("toColor").forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, jv::new)
-   );
-   public static final xs<vf, jv> d = xs.a(xq.m, $$0 -> $$0.h, xq.m, $$0 -> $$0.j, xq.f, $$0 -> $$0.i, jv::new);
-   public static final ka.a<jv> e = new ka.a<jv>() {
-      public jv a(kb<jv> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = jx.a($$1);
-         $$1.expect(' ');
-         float $$4 = $$1.readFloat();
-         Vector3f $$5 = jx.a($$1);
-         return new jv($$3, $$5, $$4);
+   public jv(clq.b $$0) {
+      this($$0, false);
+   }
+
+   public jv(clq.b $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public crj a(ju $$0, crj $$1) {
+      ih $$2 = $$0.d().c(ded.b);
+      aps $$3 = $$0.b();
+      esa $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)bqb.k.k() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      ib $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(avh.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).i() || !$$3.b_($$9.d()).a(avh.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
       }
-   };
-   private final Vector3f j;
 
-   public jv(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-   }
-
-   public Vector3f b() {
-      return this.h;
-   }
-
-   public Vector3f c() {
-      return this.j;
+      clq $$13 = (clq)(this.e ? new clr($$3, $$6, $$7 + $$10, $$8) : new clq($$3, $$6, $$7 + $$10, $$8));
+      bqb.<clq>a($$3, $$1, null).accept($$13);
+      $$13.a(this.d);
+      $$13.r($$2.p());
+      $$3.b($$13);
+      $$1.g(1);
+      return $$1;
    }
 
    @Override
-   public String a(in.a $$0) {
-      return String.format(
-         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", ki.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i, this.j.x(), this.j.y(), this.j.z()
-      );
-   }
-
-   @Override
-   public kb<jv> a() {
-      return kc.p;
+   protected void a(ju $$0) {
+      $$0.b().c(1000, $$0.c(), 0);
    }
 }

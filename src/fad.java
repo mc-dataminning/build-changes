@@ -1,113 +1,58 @@
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
+
 public class fad {
-   public static final ezz a = ezz.a.a(0.5F)
-      .a()
-      .a("head", new ezy(ezy.d.b, new faa(0.0F, fab.b(180.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("head", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.5F, 0.0F), ezy.b.a)))
-      .a("body", new ezy(ezy.d.b, new faa(0.0F, fab.b(180.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("body", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.5F, 0.0F), ezy.b.a)))
-      .a("feet", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)))
-      .a("right_wing", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, -10.0F, 0.0F), ezy.b.a)))
-      .a("right_wing", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.a)))
-      .a("right_wing_tip", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, -120.0F, 0.0F), ezy.b.a)))
-      .a("left_wing", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 10.0F, 0.0F), ezy.b.a)))
-      .a("left_wing", new ezy(ezy.d.a, new faa(0.0F, fab.a(0.0F, 0.0F, 1.0F), ezy.b.a)))
-      .a("left_wing_tip", new ezy(ezy.d.b, new faa(0.0F, fab.b(0.0F, 120.0F, 0.0F), ezy.b.a)))
-      .b();
-   public static final ezz b = ezz.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.b(20.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.a(0.0F, 2.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a),
-            new faa(0.375F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4583F, fab.a(0.0F, -1.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(40.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(52.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(40.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ezy(
-            ezy.d.a,
-            new faa(0.0F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.a(0.0F, 2.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.a(0.0F, 1.0F, 0.0F), ezy.b.a),
-            new faa(0.375F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.4583F, fab.a(0.0F, -1.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.a(0.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(10.0F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.b(-21.25F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(-12.5F, 0.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(10.0F, 0.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 85.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.b(0.0F, -55.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(0.0F, 50.0F, 0.0F), ezy.b.a),
-            new faa(0.375F, fab.b(0.0F, 70.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, 85.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, 10.5F, 0.0F), ezy.b.a),
-            new faa(0.0417F, fab.b(0.0F, 65.5F, 0.0F), ezy.b.a),
-            new faa(0.2083F, fab.b(0.0F, -135.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, 10.5F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, -85.0F, 0.0F), ezy.b.a),
-            new faa(0.125F, fab.b(0.0F, 55.0F, 0.0F), ezy.b.a),
-            new faa(0.25F, fab.b(0.0F, -50.0F, 0.0F), ezy.b.a),
-            new faa(0.375F, fab.b(0.0F, -70.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, -85.0F, 0.0F), ezy.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new ezy(
-            ezy.d.b,
-            new faa(0.0F, fab.b(0.0F, -10.5F, 0.0F), ezy.b.a),
-            new faa(0.0417F, fab.b(0.0F, -65.5F, 0.0F), ezy.b.a),
-            new faa(0.2083F, fab.b(0.0F, 135.0F, 0.0F), ezy.b.a),
-            new faa(0.5F, fab.b(0.0F, -10.5F, 0.0F), ezy.b.a)
-         )
-      )
-      .b();
+   private static final String a = "realms_persistence.json";
+   private static final exg b = new exg();
+   private static final Logger c = LogUtils.getLogger();
+
+   public fad.a a() {
+      return b();
+   }
+
+   public void a(fad.a $$0) {
+      b($$0);
+   }
+
+   public static fad.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fad.a $$2 = b.a($$1, fad.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fad.a();
+   }
+
+   public static void b(fad.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return fbp.Q().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements exy {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
+   }
 }

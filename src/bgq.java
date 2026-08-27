@@ -4,22 +4,34 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bgq extends bfq {
+public class bgq extends bgk {
    public bgq(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:barrel");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      $$0.register($$1, "minecraft:lectern", $$1x -> DSL.optionalFields("Book", beh.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:bell");
+      $$0.registerSimple($$1, "minecraft:bed");
       return $$1;
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(beh.t.in($$0))));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bfa.p,
+         () -> DSL.optionalFields(
+               "minecraft:adventure/adventuring_time",
+               DSL.optionalFields("criteria", DSL.compoundList(bfa.I.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_a_mob",
+               DSL.optionalFields("criteria", DSL.compoundList(bfa.x.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_all_mobs",
+               DSL.optionalFields("criteria", DSL.compoundList(bfa.x.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:husbandry/bred_all_animals",
+               DSL.optionalFields("criteria", DSL.compoundList(bfa.x.in($$0), DSL.constType(DSL.string())))
+            )
+      );
+      $$0.registerType(false, bfa.I, () -> DSL.constType(a()));
+      $$0.registerType(false, bfa.x, () -> DSL.constType(a()));
    }
 }

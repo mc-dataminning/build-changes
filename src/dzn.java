@@ -1,49 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dzn extends dzi {
-   public static final Codec<dzn> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bmi.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, dzn::new)
-   );
-   private final bmi b;
-   private final int c;
-
-   public dzn(bmi $$0, bmi $$1, bmi $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+public class dzn extends dzk {
+   public dzn(Codec<eay> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dzj<?> a() {
-      return dzj.j;
-   }
+   protected Set<ib> a(czs $$0, eay $$1, axr $$2, ib $$3, Predicate<doz> $$4, int $$5, int $$6) {
+      Set<ib> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<ib> $$8 = new HashSet<>();
+      ib.a $$9 = new ib.a();
 
-   @Override
-   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a();
-      ib.a $$10 = $$9.j();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+      for (ib $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
       }
+
+      for (ib $$11 : $$8) {
+         $$0.a($$11, dca.G.n(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(czs $$0, Set<ib> $$1, ib $$2, ib.a $$3) {
+      return a($$0, $$2, $$3, ih.c) || a($$0, $$2, $$3, ih.f) || a($$0, $$2, $$3, ih.d) || a($$0, $$2, $$3, ih.e) || a($$0, $$2, $$3, ih.a);
+   }
+
+   private static boolean a(czs $$0, ib $$1, ib.a $$2, ih $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
    @Override
-   public int a(axd $$0, int $$1, dys $$2) {
-      return this.b.a($$0);
-   }
+   protected boolean a(czs $$0, eay $$1, dqw $$2, axr $$3, ib $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         doz $$5 = $$0.a_($$4);
+         if ($$5.b(dpp.C) && !$$5.c(dpp.C)) {
+            $$0.a($$4, $$5.a(dpp.C, Boolean.valueOf(true)), 2);
+         }
 
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

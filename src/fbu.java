@@ -1,22 +1,30 @@
-public class fbu extends fbi {
-   protected final fcv a;
+import java.util.function.IntFunction;
 
-   public fbu(int $$0, int $$1, int $$2, int $$3, fcv $$4, fbi.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, vt.a);
-   }
+public enum fbu implements axm {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-   public fbu(int $$0, int $$1, int $$2, int $$3, fcv $$4, fbi.c $$5, vu $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, p);
-      this.a = $$4;
-   }
+   private static final IntFunction<fbu> d = awb.a(fbu::a, values(), awb.a.b);
+   private final int e;
+   private final String f;
 
-   public fbu(int $$0, int $$1, fcv $$2, fbi.c $$3, vu $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   private fbu(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-      ajh $$4 = this.a.a(this.A(), this.z());
-      $$0.a($$4, this.B(), this.C(), this.g, this.h);
+   public String b() {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   public static fbu a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,42 +1,34 @@
 import java.util.EnumSet;
 
-public class bxa extends bwm {
-   private final bpx a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class bxa extends bxl {
+   private final bqq a;
+   private final cyx b;
 
-   public bxa(bpx $$0, double $$1) {
+   public bxa(bqq $$0, cyx $$1) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bwm.a.a));
+      this.b = $$1;
+      this.a(EnumSet.of(bxl.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.a.fV()) {
-         return false;
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(avf.h)) {
+         ib $$1 = this.a.dm().c();
+         doz $$2 = this.b.a_($$1);
+         return $$2.a(dca.qP) || $$2.k(this.b, $$1) == esq.a();
       } else {
-         ept $$0 = caj.a(this.a, 16, 7, ept.c(this.a.fW()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
+         return false;
       }
    }
 
    @Override
-   public boolean b() {
-      return !this.a.K().l();
+   public boolean R_() {
+      return true;
    }
 
    @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+   public void e() {
+      this.a.I().a();
    }
 }

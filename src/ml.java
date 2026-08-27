@@ -1,78 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
 
-public class ml implements mi {
-   private final dac a;
-   private final List<mo> b;
-   private final Set<doe<?>> c = Sets.newHashSet();
-   private final List<mm> d = Lists.newArrayList();
-
-   private ml(dac $$0, List<mo> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public ml a(mm $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.n().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
-         }
-      });
-      this.d.add($$0);
-      return this;
-   }
-
-   public JsonElement b() {
-      Stream<Pair<mn, List<mo>>> $$0 = Stream.of(Pair.of(mn.a(), this.b));
-
-      for (mm $$1 : this.d) {
-         Map<mn, List<mo>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               mn $$2x = ((mn)$$1.getFirst()).a((mn)$$1xx.getKey());
-               List<mo> $$3 = a((List<mo>)$$1.getSecond(), (List<mo>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
-      }
-
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((mn)$$1.getFirst()).b(), mo.a((List<mo>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", ac.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
-   }
-
-   private static List<mo> a(List<mo> $$0, List<mo> $$1) {
-      Builder<mo> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(mo.a($$2x, $$2xx))));
-      return $$2.build();
-   }
-
-   @Override
-   public dac a() {
-      return this.a;
-   }
-
-   public static ml a(dac $$0) {
-      return new ml($$0, ImmutableList.of(mo.a()));
-   }
-
-   public static ml a(dac $$0, mo $$1) {
-      return new ml($$0, ImmutableList.of($$1));
-   }
-
-   public static ml a(dac $$0, mo... $$1) {
-      return new ml($$0, ImmutableList.copyOf($$1));
+public class ml {
+   public static lv a(la $$0, CompletableFuture<in.a> $$1) {
+      return new lv(
+         $$0,
+         emz.a(),
+         List.of(
+            new lv.a(mj::new, epn.f),
+            new lv.a(mh::new, epn.c),
+            new lv.a(mi::new, epn.g),
+            new lv.a(mg::new, epn.q),
+            new lv.a(mm::new, epn.j),
+            new lv.a(mk::new, epn.i),
+            new lv.a(mf::new, epn.h),
+            new lv.a(mn::new, epn.r)
+         ),
+         $$1
+      );
    }
 }

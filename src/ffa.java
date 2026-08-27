@@ -1,61 +1,43 @@
-import java.util.function.Consumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ffa implements fex {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class ffa implements fhm {
+   private static final int a = 170;
+   private final wg b;
+   @Nullable
+   private List<aww> c;
+   @Nullable
+   private final wg d;
 
-   public ffa(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public ffa(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static ffa a(int $$0) {
-      return new ffa($$0, 0);
-   }
-
-   public static ffa b(int $$0) {
-      return new ffa(0, $$0);
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
+   private ffa(wg $$0, @Nullable wg $$1) {
       this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static ffa a(wg $$0, @Nullable wg $$1) {
+      return new ffa($$0, $$1);
+   }
+
+   public static ffa a(wg $$0) {
+      return new ffa($$0, $$0);
    }
 
    @Override
-   public int B() {
-      return this.a;
+   public void b(fhl $$0) {
+      if (this.d != null) {
+         $$0.a(fhk.c, this.d);
+      }
    }
 
-   @Override
-   public int C() {
-      return this.b;
-   }
+   public List<aww> a(fbp $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
+      }
 
-   @Override
-   public int w() {
       return this.c;
    }
 
-   @Override
-   public int u() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<fbg> $$0) {
+   public static List<aww> a(fbp $$0, wg $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

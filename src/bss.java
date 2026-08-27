@@ -1,37 +1,16 @@
-public abstract class bss<E extends bpp> implements bri<E>, bux<E> {
-   private brh.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bss() {
-      this.a = brh.a.a;
-   }
-
-   @Override
-   public final brh.a a() {
-      return this.a;
-   }
-
-   @Override
-   public final boolean e(apf $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = brh.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(apf $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(apf $$0, E $$1, long $$2) {
-      this.a = brh.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bss {
+   public static <E extends bqo> bsh<E> a(Predicate<E> $$0, bzr<?> $$1) {
+      return bvt.a((Function<bvt.b<E>, ? extends App<bvt.c<E>, bvw<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

@@ -9,22 +9,22 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class jc {
-   public static final Set<ajg<? extends iy<?>>> a = ajc.c.stream().map(ajc.c::a).collect(Collectors.toUnmodifiableSet());
+   public static final Set<ajs<? extends iy<?>>> a = ajo.c.stream().map(ajo.c::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<tx> $$0, iz $$1, Set<arv> $$2, BiConsumer<ajg<? extends iy<?>>, List<jc.a>> $$3) {
-      ajc.c.forEach($$4 -> a($$0, (ajc.c<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<uj> $$0, iz $$1, Set<asj> $$2, BiConsumer<ajs<? extends iy<?>>, List<jc.a>> $$3) {
+      ajo.c.forEach($$4 -> a($$0, (ajo.c<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<tx> $$0, ajc.c<T> $$1, iz $$2, Set<arv> $$3, BiConsumer<ajg<? extends iy<?>>, List<jc.a>> $$4) {
+   private static <T> void a(DynamicOps<uj> $$0, ajo.c<T> $$1, iz $$2, Set<asj> $$3, BiConsumer<ajs<? extends iy<?>>, List<jc.a>> $$4) {
       $$2.c($$1.a()).ifPresent($$4x -> {
          List<jc.a> $$5 = new ArrayList<>($$4x.b());
          $$4x.h().forEach($$5x -> {
             boolean $$6 = $$4x.c($$5x.h()).flatMap(ix::a).filter($$3::contains).isPresent();
-            Optional<tx> $$7;
+            Optional<uj> $$7;
             if ($$6) {
                $$7 = Optional.empty();
             } else {
-               tx $$8 = ac.a($$1.b().encodeStart($$0, $$5x.a()), $$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
+               uj $$8 = ac.a($$1.b().encodeStart($$0, $$5x.a()), $$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
                $$7 = Optional.of($$8);
             }
 
@@ -38,24 +38,24 @@ public class jc {
       return $$0.c().filter($$0x -> a.contains($$0x.a()));
    }
 
-   public static Stream<iz.d<?>> a(is<ajq> $$0) {
-      return a($$0.c(ajq.b));
+   public static Stream<iz.d<?>> a(is<akc> $$0) {
+      return a($$0.c(akc.b));
    }
 
-   public static Stream<iz.d<?>> b(is<ajq> $$0) {
-      Stream<iz.d<?>> $$1 = $$0.a(ajq.a).c();
+   public static Stream<iz.d<?>> b(is<akc> $$0) {
+      Stream<iz.d<?>> $$1 = $$0.a(akc.a).c();
       Stream<iz.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static record a(ajh b, Optional<tx> c) {
-      public static final xs<ByteBuf, jc.a> a = xs.a(ajh.b, jc.a::a, xq.j.a(xq::a), jc.a::b, jc.a::new);
+   public static record a(ajt b, Optional<uj> c) {
+      public static final ye<ByteBuf, jc.a> a = ye.a(ajt.b, jc.a::a, yc.l.a(yc::a), jc.a::b, jc.a::new);
 
-      public ajh a() {
+      public ajt a() {
          return this.b;
       }
 
-      public Optional<tx> b() {
+      public Optional<uj> b() {
          return this.c;
       }
    }

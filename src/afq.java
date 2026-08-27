@@ -1,20 +1,20 @@
-public record afq(biy b) implements yb<aez> {
-   public static final xs<uu, afq> a = yb.a(afq::a, afq::new);
+public record afq(int b) implements yn<afl> {
+   public static final ye<vg, afq> a = yn.a(afq::a, afq::new);
 
-   private afq(uu $$0) {
-      this($$0.b(biy.class));
+   private afq(vg $$0) {
+      this($$0.l());
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
+   private void a(vg $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yd<afq> a() {
-      return aex.bt;
+   public yp<afq> a() {
+      return afj.bh;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 }

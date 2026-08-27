@@ -1,174 +1,174 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dng {
-   private final Predicate<dnf>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dng extends dmf implements bnr, etl.a {
+   private static final int c = 20;
+   private crj d = crj.i;
+   private int e;
+   private long f;
+   private long g;
+   private boolean h;
 
-   public dng(Predicate<dnf>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
+   public dng(ib $$0, doz $$1) {
+      super(dmh.e, $$0, $$1);
+   }
+
+   @Override
+   public void a(tm $$0, in.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = crj.a($$1, (uj)$$0.p("RecordItem")).orElse(crj.i);
       } else {
-         this.c = 0;
-         this.d = 0;
+         this.d = crj.i;
+      }
+
+      this.h = $$0.q("IsPlaying");
+      this.g = $$0.i("RecordStartTick");
+      this.f = $$0.i("TickCount");
+   }
+
+   @Override
+   protected void b(tm $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().d()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      $$0.a("IsPlaying", this.h);
+      $$0.a("RecordStartTick", this.g);
+      $$0.a("TickCount", this.f);
+   }
+
+   public boolean j() {
+      return !this.f().d() && this.h;
+   }
+
+   private void a(@Nullable bpv $$0, boolean $$1) {
+      if (this.o.a_(this.aA_()) == this.n()) {
+         this.o.a(this.aA_(), this.n().a(dga.b, Boolean.valueOf($$1)), 2);
+         this.o.a(dts.c, this.aA_(), dts.a.a($$0, this.n()));
       }
    }
 
-   public int a() {
-      return this.b;
+   @VisibleForTesting
+   public void k() {
+      this.g = this.f;
+      this.h = true;
+      this.o.a(this.aA_(), this.n().b());
+      this.o.a(null, 1010, this.aA_(), cre.a(this.f().f()));
+      this.e();
    }
 
-   public int b() {
-      return this.c;
+   private void t() {
+      this.h = false;
+      this.o.a(dts.F, this.aA_(), dts.a.a(this.n()));
+      this.o.a(this.aA_(), this.n().b());
+      this.o.c(1011, this.aA_(), 0);
+      this.e();
    }
 
-   public int c() {
+   private void b(cyx $$0, ib $$1, doz $$2) {
+      this.e++;
+      if (this.j() && this.f().f() instanceof csb $$3) {
+         if (this.a($$3)) {
+            this.t();
+         } else if (this.v()) {
+            this.e = 0;
+            $$0.a(dts.E, $$1, dts.a.a($$2));
+            this.a($$0, $$1);
+         }
+      }
+
+      this.f++;
+   }
+
+   private boolean a(csb $$0) {
+      return this.f >= this.g + (long)$$0.k() + 20L;
+   }
+
+   private boolean v() {
+      return this.e >= 20;
+   }
+
+   @Override
+   public crj f() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public Predicate<dnf>[][][] d() {
-      return this.a;
+   @Override
+   public crj c(int $$0) {
+      crj $$1 = this.d;
+      this.d = crj.i;
+      if (!$$1.d()) {
+         this.a(null, false);
+         this.t();
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   @VisibleForTesting
-   public dng.b a(cxe $$0, ib $$1, ih $$2, ih $$3) {
-      LoadingCache<ib, dnf> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   @Override
+   public void a(crj $$0) {
+      if ($$0.a(avk.aq) && this.o != null) {
+         this.d = $$0;
+         this.a(null, true);
+         this.k();
+      } else if ($$0.d()) {
+         this.c(1);
+      }
    }
 
-   @Nullable
-   private dng.b a(ib $$0, ih $$1, ih $$2, LoadingCache<ib, dnf> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dnf)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+   @Override
+   public int aj_() {
+      return 1;
+   }
+
+   @Override
+   public dmf u() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, crj $$1) {
+      return $$1.a(avk.aq) && this.a($$0).d();
+   }
+
+   @Override
+   public boolean a(bnt $$0, int $$1, crj $$2) {
+      return $$0.a_(crj::d);
+   }
+
+   private void a(cyx $$0, ib $$1) {
+      if ($$0 instanceof aps $$2) {
+         esa $$3 = esa.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.E_().a(4) / 24.0F;
+         $$2.a(kl.Y, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   public void l() {
+      if (this.o != null && !this.o.B) {
+         ib $$0 = this.aA_();
+         crj $$1 = this.f();
+         if (!$$1.d()) {
+            this.h();
+            esa $$2 = esa.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
+            crj $$3 = $$1.r();
+            cgd $$4 = new cgd(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.v();
+            this.o.b($$4);
          }
       }
-
-      return new dng.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   @Nullable
-   public dng.b a(cxe $$0, ib $$1) {
-      LoadingCache<ib, dnf> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (ib $$4 : ib.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ih $$5 : ih.values()) {
-            for (ih $$6 : ih.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dng.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   public static void a(cyx $$0, ib $$1, doz $$2, dng $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   public static LoadingCache<ib, dnf> a(cxe $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dng.a($$0, $$1));
-   }
-
-   protected static ib a(ib $$0, ih $$1, ih $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         jg $$6 = new jg($$1.j(), $$1.k(), $$1.l());
-         jg $$7 = new jg($$2.j(), $$2.k(), $$2.l());
-         jg $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<ib, dnf> {
-      private final cxe a;
-      private final boolean b;
-
-      public a(cxe $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dnf a(ib $$0) {
-         return new dnf(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final ib a;
-      private final ih b;
-      private final ih c;
-      private final LoadingCache<ib, dnf> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(ib $$0, ih $$1, ih $$2, LoadingCache<ib, dnf> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public ib a() {
-         return this.a;
-      }
-
-      public ih b() {
-         return this.b;
-      }
-
-      public ih c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dnf a(int $$0, int $$1, int $$2) {
-         return (dnf)this.d.getUnchecked(dng.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   @VisibleForTesting
+   public void b(crj $$0) {
+      this.d = $$0;
+      this.o.a(this.aA_(), this.n().b());
+      this.e();
    }
 }

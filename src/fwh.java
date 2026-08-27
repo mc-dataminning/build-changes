@@ -1,29 +1,25 @@
-public class fwh extends fvs {
-   fwh(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
+public class fwh extends fyn {
+   fwh(fuh $$0, double $$1, double $$2, double $$3, doz $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fbp.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
-   public static class a implements fvj<kf> {
-      private final fwb a;
+   @Override
+   public fxr b() {
+      return fxr.a;
+   }
 
-      public a(fwb $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
 
-      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static class a implements fxq<kd> {
+      public fxn a(kd $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwh($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

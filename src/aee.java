@@ -1,33 +1,45 @@
-public class aee implements yb<aam> {
-   public static final xs<uu, aee> a = yb.a(aee::a, aee::new);
+public class aee implements yn<aay> {
+   public static final ye<vg, aee> a = yn.a(aee::a, aee::new);
    private final int b;
    private final int c;
    private final int d;
+   private final int e;
 
-   public aee(int $$0, int $$1, int $$2) {
+   public aee(bpv $$0) {
+      this($$0.aj(), $$0.dp());
+   }
+
+   public aee(int $$0, esa $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      double $$2 = 3.9;
+      double $$3 = axk.a($$1.c, -3.9, 3.9);
+      double $$4 = axk.a($$1.d, -3.9, 3.9);
+      double $$5 = axk.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private aee(uu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
+   private aee(vg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void a(uu $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
+   private void a(vg $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public yd<aee> a() {
-      return aex.aQ;
+   public yp<aee> a() {
+      return afj.aE;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
@@ -41,5 +53,9 @@ public class aee implements yb<aam> {
 
    public int f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

@@ -1,183 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fkw extends fkl {
+   private final dmp p;
+   private fdw<dmp.a> q;
+   private fdw<Boolean> r;
+   private fdw<Boolean> s;
+   private dmp.a u = dmp.a.c;
+   private boolean v;
+   private boolean w;
 
-public class fkw {
-   public static final int a = 20;
-   private static final fcv b = new fcv(new ajh("recipe_book/page_forward"), new ajh("recipe_book/page_forward_highlighted"));
-   private static final fcv c = new fcv(new ajh("recipe_book/page_backward"), new ajh("recipe_book/page_backward_highlighted"));
-   private final List<fky> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fky e;
-   private final fku f = new fku();
-   private ezi g;
-   private final List<fla> h = Lists.newArrayList();
-   private List<fkz> i = ImmutableList.of();
-   private fco j;
-   private fco k;
-   private int l;
-   private int m;
-   private aub n;
-   @Nullable
-   private ctr<?> o;
-   @Nullable
-   private fkz p;
-
-   public fkw() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new fky());
-      }
+   public fkw(dmp $$0) {
+      this.p = $$0;
    }
 
-   public void a(ezi $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fco($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fco($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
+   @Override
+   cxy m() {
+      return this.p.b();
    }
 
-   public void a(fkv $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
+   @Override
+   int C() {
+      return 135;
    }
 
-   public void a(List<fkz> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.q = this.c(fdw.<dmp.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> wg.c("advMode.mode.sequence");
+            case b -> wg.c("advMode.mode.auto");
+            case c -> wg.c("advMode.mode.redstone");
+         };
+      }).a(dmp.a.values()).a().a(this.u).a(this.k / 2 - 50 - 100 - 4, 165, 100, 20, wg.c("advMode.mode"), ($$0, $$1) -> this.u = $$1));
+      this.r = this.c(
+         fdw.a(wg.c("advMode.mode.conditional"), wg.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.v)
+            .a(this.k / 2 - 50, 165, 100, 20, wg.c("advMode.type"), ($$0, $$1) -> this.v = $$1)
+      );
+      this.s = this.c(
+         fdw.a(wg.c("advMode.mode.autoexec.bat"), wg.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.w)
+            .a(this.k / 2 + 50 + 4, 165, 100, 20, wg.c("advMode.triggering"), ($$0, $$1) -> this.w = $$1)
+      );
+      this.e(false);
    }
 
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fky $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fkz $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
-         } else {
-            $$2.k = false;
-         }
-      }
-
-      this.g();
+   private void e(boolean $$0) {
+      this.c.j = $$0;
+      this.o.j = $$0;
+      this.q.j = $$0;
+      this.r.j = $$0;
+      this.s.j = $$0;
    }
 
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
+   public void E() {
+      cxy $$0 = this.p.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.u = this.p.l();
+      this.v = this.p.t();
+      this.w = this.p.d();
+      this.o.a($$1);
+      this.q.a(this.u);
+      this.r.a(this.v);
+      this.s.a(this.w);
+      this.c($$1);
+      this.e(true);
    }
 
-   public void a(fav $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         vu $$6 = vu.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fky $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.z()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
+   @Override
+   public void a(fbp $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
    }
 
-   public void a(fav $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public ctr<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fkz b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
-         }
-
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
-      } else {
-         for (fky $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.d();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.B(), $$7.C(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.w());
-               }
-
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public void a(List<ctr<?>> $$0) {
-      for (fla $$1 : this.h) {
-         $$1.a($$0);
-      }
-   }
-
-   public ezi d() {
-      return this.g;
-   }
-
-   public aub e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<fbg> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   @Override
+   protected void a(cxy $$0) {
+      this.j.L().b(new agy(ib.a($$0.g()), this.a.a(), this.u, $$0.p(), this.v, this.w));
    }
 }

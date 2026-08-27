@@ -1,51 +1,30 @@
-public class cjr extends cjt {
-   public cjr(bpd<? extends cjr> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
+import java.util.function.IntFunction;
 
-   public cjr(cxb $$0, bpp $$1) {
-      super(bpd.aT, $$1, $$0);
-   }
+public enum cjr implements axm {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public cjr(cxb $$0, double $$1, double $$2, double $$3) {
-      super(bpd.aT, $$1, $$2, $$3, $$0);
-   }
+   private static final IntFunction<cjr> d = awb.a(cjr::a, values(), awb.a.b);
+   private final int e;
+   private final String f;
 
-   @Override
-   protected cqh r() {
-      return cqp.qB;
-   }
-
-   private ka s() {
-      cqm $$0 = this.p();
-      return (ka)(!$$0.b() && !$$0.a(this.r()) ? new jy(kc.R, $$0) : kc.U);
+   private cjr(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         ka $$1 = this.s();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
-         }
-      }
+   public int a() {
+      return this.e;
    }
 
    @Override
-   protected void a(epq $$0) {
-      super.a($$0);
-      box $$1 = $$0.a();
-      int $$2 = $$1 instanceof cfj ? 3 : 0;
-      $$1.a(this.dN().b(this, this.af_()), (float)$$2);
+   public String b() {
+      return this.f;
    }
 
-   @Override
-   protected void a(epr $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.dM().a(this, (byte)3);
-         this.am();
-      }
+   public static cjr a(int $$0) {
+      return d.apply($$0);
    }
 }

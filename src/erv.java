@@ -1,166 +1,386 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
 
 public class erv {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
+
+   public erv(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
+   }
+
+   public erv(ib $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
+   }
+
+   public erv(esa $$0, esa $$1) {
+      this($$0.c, $$0.d, $$0.e, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static erv a(eez $$0) {
+      return new erv((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   public static erv a(esa $$0) {
+      return new erv($$0.c, $$0.d, $$0.e, $$0.c + 1.0, $$0.d + 1.0, $$0.e + 1.0);
+   }
+
+   public static erv a(ib $$0, ib $$1) {
+      return new erv(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
+   }
+
+   public erv a(double $$0) {
+      return new erv($$0, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public erv b(double $$0) {
+      return new erv(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public erv c(double $$0) {
+      return new erv(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public erv d(double $$0) {
+      return new erv(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public erv e(double $$0) {
+      return new erv(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public erv f(double $$0) {
+      return new erv(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(ih.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public double b(ih.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof erv $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
+      } else {
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   }
+
+   public erv a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new erv($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public erv b(esa $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public erv b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new erv($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public erv c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new erv($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public erv g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public erv a(erv $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new erv($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public erv b(erv $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new erv($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public erv d(double $$0, double $$1, double $$2) {
+      return new erv(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public erv a(ib $$0) {
+      return new erv(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public erv c(esa $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean c(erv $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(esa $$0, esa $$1) {
+      return this.a(
+         Math.min($$0.c, $$1.c), Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.max($$0.c, $$1.c), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e)
+      );
+   }
+
+   public boolean d(esa $$0) {
+      return this.e($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public erv f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public erv h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<esa> b(esa $$0, esa $$1) {
+      double[] $$2 = new double[]{1.0};
+      double $$3 = $$1.c - $$0.c;
+      double $$4 = $$1.d - $$0.d;
+      double $$5 = $$1.e - $$0.e;
+      ih $$6 = a(this, $$0, $$2, null, $$3, $$4, $$5);
+      if ($$6 == null) {
+         return Optional.empty();
+      } else {
+         double $$7 = $$2[0];
+         return Optional.of($$0.b($$7 * $$3, $$7 * $$4, $$7 * $$5));
+      }
+   }
+
    @Nullable
-   private gnl g;
+   public static erw a(Iterable<erv> $$0, esa $$1, esa $$2, ib $$3) {
+      double[] $$4 = new double[]{1.0};
+      ih $$5 = null;
+      double $$6 = $$2.c - $$1.c;
+      double $$7 = $$2.d - $$1.d;
+      double $$8 = $$2.e - $$1.e;
+
+      for (erv $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new erw($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+      }
+   }
 
    @Nullable
-   static erv a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return esa.a("Allocate new source") ? null : new erv($$0[0]);
+   private static ih a(erv $$0, esa $$1, double[] $$2, @Nullable ih $$3, double $$4, double $$5, double $$6) {
+      if ($$4 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.a, $$0.b, $$0.e, $$0.c, $$0.f, ih.e, $$1.c, $$1.d, $$1.e);
+      } else if ($$4 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.d, $$0.b, $$0.e, $$0.c, $$0.f, ih.f, $$1.c, $$1.d, $$1.e);
+      }
+
+      if ($$5 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.b, $$0.c, $$0.f, $$0.a, $$0.d, ih.a, $$1.d, $$1.e, $$1.c);
+      } else if ($$5 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.e, $$0.c, $$0.f, $$0.a, $$0.d, ih.b, $$1.d, $$1.e, $$1.c);
+      }
+
+      if ($$6 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.c, $$0.a, $$0.d, $$0.b, $$0.e, ih.c, $$1.e, $$1.c, $$1.d);
+      } else if ($$6 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.f, $$0.a, $$0.d, $$0.b, $$0.e, ih.d, $$1.e, $$1.c, $$1.d);
+      }
+
+      return $$3;
    }
 
-   private erv(int $$0) {
-      this.d = $$0;
-   }
-
-   public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         esa.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
-
-            this.l();
-            this.g = null;
-         }
-
-         AL10.alDeleteSources(new int[]{this.d});
-         esa.a("Cleanup");
+   @Nullable
+   private static ih a(
+      double[] $$0,
+      @Nullable ih $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      ih $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
       }
    }
 
-   public void c() {
-      AL10.alSourcePlay(this.d);
+   public double e(esa $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.c, $$0.c - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.d, $$0.d - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.e, $$0.e - this.f), 0.0);
+      return axk.f($$1, $$2, $$3);
    }
 
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   @Override
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
    }
 
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
    }
 
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
+   public esa f() {
+      return new esa(axk.d(0.5, this.a, this.d), axk.d(0.5, this.b, this.e), axk.d(0.5, this.c, this.f));
    }
 
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         esa.a("Stop");
-      }
-   }
-
-   public boolean g() {
-      return this.k() == 4114;
-   }
-
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(ept $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(esb $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(gnl $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
-         try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new esb($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
-               }
-            }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
-         }
-      }
-   }
-
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
-      }
-   }
-
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         esa.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         esa.a("Remove processed buffers");
-      }
-
-      return $$0;
+   public static erv a(esa $$0, double $$1, double $$2, double $$3) {
+      return new erv($$0.c - $$1 / 2.0, $$0.d - $$2 / 2.0, $$0.e - $$3 / 2.0, $$0.c + $$1 / 2.0, $$0.d + $$2 / 2.0, $$0.e + $$3 / 2.0);
    }
 }

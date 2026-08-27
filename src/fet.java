@@ -1,111 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+public class fet {
+   public static final fet a = new fet("Merry X-mas!");
+   public static final fet b = new fet("Happy new year!");
+   public static final fet c = new fet("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class fet extends feq {
-   private final List<fet.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fey f = fey.i().a(0.5F, 0.5F);
-
-   public fet() {
-      this(0, 0, 0, 0);
+   public fet(String $$0) {
+      this.f = $$0;
    }
 
-   public fet(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fet(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fet a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fet a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fet b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fey b() {
-      return this.f.g();
-   }
-
-   public fey c() {
-      return this.f;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
-
-      for (fet.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
-
-      for (fet.a $$3 : this.c) {
-         $$3.a(this.B(), $$0);
-         $$3.b(this.C(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends fex> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fex> T a(T $$0, fey $$1) {
-      this.c.add(new fet.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fex> T a(T $$0, Consumer<fey> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fex> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(fex $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fex $$0, ffo $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fex $$0, ffo $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fex $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.w(), $$0::m, $$5);
-      a($$2, $$4, $$0.u(), $$0::n, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)aww.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends feq.a {
-      protected a(fex $$0, fey $$1) {
-         super($$0, $$1);
-      }
+   public void a(fdc $$0, int $$1, fda $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - axk.e(axk.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

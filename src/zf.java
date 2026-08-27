@@ -1,17 +1,20 @@
-public record zf(drt c, int d) implements zc {
-   public static final xs<vf, zf> a = xs.a(drt.d, zf::b, xq.d, zf::c, zf::new);
-   public static final zc.b<zf> b = zc.a("debug/game_event_listeners");
+public record zf(aph b) implements yn<ze> {
+   public static final ye<vg, zf> a = yn.a(zf::a, zf::new);
+
+   private zf(vg $$0) {
+      this(new aph($$0));
+   }
+
+   private void a(vg $$0) {
+      this.b.a($$0);
+   }
 
    @Override
-   public zc.b<zf> a() {
-      return b;
+   public yp<zf> a() {
+      return zd.j;
    }
 
-   public drt b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public void a(ze $$0) {
+      $$0.a(this);
    }
 }

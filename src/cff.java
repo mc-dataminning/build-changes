@@ -1,121 +1,80 @@
 import javax.annotation.Nullable;
 
-public class cff extends box implements bqn {
-   private static final aim<Integer> c = aiq.a(cff.class, aio.b);
-   private static final aim<dnb> d = aiq.a(cff.class, aio.i);
-   private static final int e = 80;
-   private static final String f = "block_state";
-   public static final String b = "fuse";
+public class cff extends cez {
+   private static final cbe b = cbe.a().d();
    @Nullable
-   private bpp g;
+   private elg c;
+   @Nullable
+   private esa d;
 
-   public cff(bpd<? extends cff> $$0, cxb $$1) {
-      super($$0, $$1);
-      this.I = true;
-   }
-
-   public cff(cxb $$0, double $$1, double $$2, double $$3, @Nullable bpp $$4) {
-      this(bpd.bc, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.g = $$4;
+   public cff(cex $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(aiq.a $$0) {
-      $$0.a(c, 80);
-      $$0.a(d, dae.ck.o());
+   public cfn<cff> i() {
+      return cfn.c;
    }
 
    @Override
-   protected box.b aZ() {
-      return box.b.a;
+   public void d() {
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public boolean bw() {
-      return !this.dH();
-   }
-
-   @Override
-   protected double aW() {
-      return 0.04;
-   }
-
-   @Override
-   public void l() {
-      this.aY();
-      this.a(bpu.a, this.dp());
-      this.g(this.dp().a(0.98));
-      if (this.aC()) {
-         this.g(this.dp().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.r() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.am();
-         if (!this.dM().B) {
-            this.w();
-         }
-      } else {
-         this.bj();
-         if (this.dM().B) {
-            this.dM().a(kc.ac, this.dr(), this.dt() + 0.5, this.dx(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   private void w() {
-      float $$0 = 4.0F;
-      this.dM().a(this, this.dr(), this.e(0.0625), this.dx(), 4.0F, cxb.a.d);
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      $$0.a("fuse", (short)this.r());
-      $$0.a("block_state", tp.a(this.s()));
-   }
-
-   @Override
-   protected void a(ta $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(tp.a(this.dM().a(kj.f), $$0.p("block_state")));
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
       }
    }
 
    @Nullable
-   public bpp p() {
-      return this.g;
+   @Override
+   public esa g() {
+      return this.d;
    }
 
-   @Override
-   public void w(box $$0) {
-      super.w($$0);
-      if ($$0 instanceof cff $$1) {
-         this.g = $$1.g;
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         ib $$1 = this.a.dM().a(dur.a.f, dxu.a(this.a.r()));
+         cjt $$2 = this.a.dM().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            esa $$3 = new esa($$2.dr(), 0.0, $$2.dx()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         ele $$6 = new ele($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gk().a(cfn.d);
       }
    }
 
-   public void b(int $$0) {
-      this.an.a(c, $$0);
-   }
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         jg $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
 
-   public int r() {
-      return this.an.a(c);
-   }
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
 
-   public void c(dnb $$0) {
-      this.an.a(d, $$0);
-   }
-
-   public dnb s() {
-      return this.an.a(d);
+         this.d = new esa($$1, $$3, $$2);
+      }
    }
 }

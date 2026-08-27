@@ -1,50 +1,26 @@
-public abstract class cfh extends ckg {
-   protected cfh(bpd<? extends cfh> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   protected void z() {
-      super.z();
-   }
+public interface cfh {
+   boolean a();
 
-   public cfh.a r() {
-      return cfh.a.a;
-   }
+   void b();
 
-   @Override
-   public boolean c(bpp $$0) {
-      return $$0 instanceof cic && $$0.o_() ? false : super.c($$0);
-   }
+   void c();
 
-   @Override
-   public boolean s(box $$0) {
-      if (super.s($$0)) {
-         return true;
-      } else {
-         return !$$0.ai().a(auq.z) ? false : this.cg() == null && $$0.cg() == null;
-      }
-   }
+   void a(cew var1, ib var2, bot var3, @Nullable cjt var4);
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-   }
+   void d();
 
-   protected class b extends bxe {
-      public b(ckg $$1) {
-         super($$1, false);
-      }
+   void e();
 
-      @Override
-      public boolean a() {
-         return super.a() && cfh.this.gC();
-      }
-   }
+   float f();
+
+   float h();
+
+   cfn<? extends cfh> i();
+
+   @Nullable
+   esa g();
+
+   float a(bot var1, float var2);
 }

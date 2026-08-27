@@ -1,15 +1,13 @@
-public class ctd extends csy {
-   public ctd(String $$0, cte $$1, ctm $$2, cqm $$3, float $$4, int $$5) {
-      super(ctu.e, $$0, $$1, $$2, $$3, $$4, $$5);
+public class ctd extends cre {
+   public ctd(cre.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cqm g() {
-      return new cqm(dae.og);
-   }
-
-   @Override
-   public ctt<?> ar_() {
-      return ctt.s;
+   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
+      crj $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(auw.c.b(this));
+      return bob.a($$3, $$0.x_());
    }
 }

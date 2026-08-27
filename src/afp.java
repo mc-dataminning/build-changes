@@ -1,30 +1,29 @@
-public record afp(int b, int c, boolean d) implements yb<aez> {
-   public static final xs<uu, afp> a = yb.a(afp::a, afp::new);
+public class afp implements yn<afl> {
+   public static final ye<vg, afp> a = yn.a(afp::a, afp::new);
+   private final bnx b;
 
-   private afp(uu $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public afp(bnx $$0) {
+      this.b = $$0;
    }
 
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private afp(vg $$0) {
+      this.b = bnx.a($$0.readUnsignedByte());
+   }
+
+   private void a(vg $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public yd<afp> a() {
-      return aex.bs;
+   public yp<afp> a() {
+      return afj.bg;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public bnx b() {
+      return this.b;
    }
 }

@@ -1,52 +1,45 @@
-import javax.annotation.Nullable;
-
 public class apa {
-   @Nullable
-   protected static ib a(apf $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.D_().h();
-      dpi $$4 = $$0.d(je.a($$1), je.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dso.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.I_()) {
-         return null;
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dru.b();
+
+   public static dru a(int $$0) {
+      return $$0 < 33 ? dru.n : dru.a($$0 - 33);
+   }
+
+   public static int a(dru $$0) {
+      return 33 + dru.a($$0);
+   }
+
+   public static apl b(int $$0) {
+      if ($$0 <= 31) {
+         return apl.d;
+      } else if ($$0 <= 32) {
+         return apl.c;
       } else {
-         int $$6 = $$4.a(dso.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dso.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            ib.a $$7 = new ib.a();
-
-            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dnb $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
-
-               if (dac.a($$9.k($$0, $$7), ih.b)) {
-                  return $$7.c().i();
-               }
-            }
-
-            return null;
-         }
+         return $$0 <= 33 ? apl.b : apl.a;
       }
    }
 
-   @Nullable
-   public static ib a(apf $$0, cwi $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               ib $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   public static int a(apl $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
+   }
 
-         return null;
-      }
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

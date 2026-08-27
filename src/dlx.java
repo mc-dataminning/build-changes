@@ -1,275 +1,95 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dlx {
+   public static final ajs<dlv> a = a("base");
+   public static final ajs<dlv> b = a("square_bottom_left");
+   public static final ajs<dlv> c = a("square_bottom_right");
+   public static final ajs<dlv> d = a("square_top_left");
+   public static final ajs<dlv> e = a("square_top_right");
+   public static final ajs<dlv> f = a("stripe_bottom");
+   public static final ajs<dlv> g = a("stripe_top");
+   public static final ajs<dlv> h = a("stripe_left");
+   public static final ajs<dlv> i = a("stripe_right");
+   public static final ajs<dlv> j = a("stripe_center");
+   public static final ajs<dlv> k = a("stripe_middle");
+   public static final ajs<dlv> l = a("stripe_downright");
+   public static final ajs<dlv> m = a("stripe_downleft");
+   public static final ajs<dlv> n = a("small_stripes");
+   public static final ajs<dlv> o = a("cross");
+   public static final ajs<dlv> p = a("straight_cross");
+   public static final ajs<dlv> q = a("triangle_bottom");
+   public static final ajs<dlv> r = a("triangle_top");
+   public static final ajs<dlv> s = a("triangles_bottom");
+   public static final ajs<dlv> t = a("triangles_top");
+   public static final ajs<dlv> u = a("diagonal_left");
+   public static final ajs<dlv> v = a("diagonal_up_right");
+   public static final ajs<dlv> w = a("diagonal_up_left");
+   public static final ajs<dlv> x = a("diagonal_right");
+   public static final ajs<dlv> y = a("circle");
+   public static final ajs<dlv> z = a("rhombus");
+   public static final ajs<dlv> A = a("half_vertical");
+   public static final ajs<dlv> B = a("half_horizontal");
+   public static final ajs<dlv> C = a("half_vertical_right");
+   public static final ajs<dlv> D = a("half_horizontal_bottom");
+   public static final ajs<dlv> E = a("border");
+   public static final ajs<dlv> F = a("curly_border");
+   public static final ajs<dlv> G = a("gradient");
+   public static final ajs<dlv> H = a("gradient_up");
+   public static final ajs<dlv> I = a("bricks");
+   public static final ajs<dlv> J = a("globe");
+   public static final ajs<dlv> K = a("creeper");
+   public static final ajs<dlv> L = a("skull");
+   public static final ajs<dlv> M = a("flower");
+   public static final ajs<dlv> N = a("mojang");
+   public static final ajs<dlv> O = a("piglin");
 
-public class dlx extends dly {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
-   @Nullable
-   private ib i;
-   private boolean j;
-
-   public dlx(ib $$0, dnb $$1) {
-      super(dkk.v, $$0, $$1);
+   private static ajs<dlv> a(String $$0) {
+      return ajs.a(ks.d, new ajt($$0));
    }
 
-   @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("exit_portal", tp.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
+   public static dlv a(iy<dlv> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      return a($$0, O);
    }
 
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.g = $$0.i("Age");
-      tp.a($$0, "exit_portal").filter(cxb::l).ifPresent($$0x -> this.i = $$0x);
-      this.j = $$0.q("ExactTeleport");
-   }
-
-   public static void a(cxb $$0, ib $$1, dnb $$2, dlx $$3) {
-      $$3.g++;
-      if ($$3.c()) {
-         $$3.h--;
-      }
-   }
-
-   public static void b(cxb $$0, ib $$1, dnb $$2, dlx $$3) {
-      boolean $$4 = $$3.b();
-      boolean $$5 = $$3.c();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
-      } else {
-         List<box> $$6 = $$0.a(box.class, new epo($$1), dlx::a);
-         if (!$$6.isEmpty()) {
-            a($$0, $$1, $$2, $$6.get($$0.z.a($$6.size())), $$3);
-         }
-
-         if ($$3.g % 2400L == 0L) {
-            c($$0, $$1, $$2, $$3);
-         }
-      }
-
-      if ($$4 != $$3.b() || $$5 != $$3.c()) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static boolean a(box $$0) {
-      return bpc.f.test($$0) && !$$0.cW().aw();
-   }
-
-   public boolean b() {
-      return this.g < 200L;
-   }
-
-   public boolean c() {
-      return this.h > 0;
-   }
-
-   public float a(float $$0) {
-      return aww.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float b(float $$0) {
-      return 1.0F - aww.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public aat d() {
-      return aat.a(this);
-   }
-
-   @Override
-   public ta a(in.a $$0) {
-      return this.d($$0);
-   }
-
-   private static void c(cxb $$0, ib $$1, dnb $$2, dlx $$3) {
-      if (!$$0.B) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static void a(cxb $$0, ib $$1, dnb $$2, box $$3, dlx $$4) {
-      if ($$0 instanceof apf && !$$4.c()) {
-         apf $$5 = (apf)$$0;
-         $$4.h = 100;
-         if ($$4.i == null && $$0.ad() == cxb.j) {
-            ib $$6 = a($$5, $$1);
-            $$6 = $$6.b(10);
-            a.debug("Creating portal at {}", $$6);
-            a($$5, $$6, dxv.a($$1, false));
-            $$4.i = $$6;
-         }
-
-         if ($$4.i != null) {
-            ib $$7 = $$4.j ? $$4.i : a($$0, $$4.i);
-            box $$9;
-            if ($$3 instanceof cjw) {
-               box $$8 = ((cjw)$$3).af_();
-               if ($$8 instanceof apg) {
-                  am.e.a((apg)$$8, $$2);
-               }
-
-               if ($$8 != null) {
-                  $$9 = $$8;
-                  $$3.am();
-               } else {
-                  $$9 = $$3;
-               }
-            } else {
-               $$9 = $$3.cW();
-            }
-
-            $$9.au();
-            $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
-         }
-
-         c($$0, $$1, $$2, $$4);
-      }
-   }
-
-   private static ib a(cxb $$0, ib $$1) {
-      ib $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.c();
-   }
-
-   private static ib a(apf $$0, ib $$1) {
-      ept $$2 = b($$0, $$1);
-      dpi $$3 = a((cxb)$$0, $$2);
-      ib $$4 = a($$3);
-      if ($$4 == null) {
-         ib $$5 = ib.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.H_().c(kj.ax).flatMap($$0x -> $$0x.b(qp.e)).ifPresent($$2x -> ((dvf)$$2x.a()).a($$0, $$0.l().g(), axd.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
-
-      return a($$0, $$4, 16, true);
-   }
-
-   private static ept b(apf $$0, ib $$1) {
-      ept $$2 = new ept((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      ept $$4 = $$2.a(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.a(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(apf $$0, ept $$1) {
-      return a((cxb)$$0, $$1).a() == -1;
-   }
-
-   private static ib a(cwh $$0, ib $$1, int $$2, boolean $$3) {
-      ib $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.ak() - 1; $$7 > ($$4 == null ? $$0.I_() : $$4.v()); $$7--) {
-                  ib $$8 = new ib($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  dnb $$9 = $$0.a_($$8);
-                  if ($$9.r($$0, $$8) && ($$3 || !$$9.a(dae.F))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$4 == null ? $$1 : $$4;
-   }
-
-   private static dpi a(cxb $$0, ept $$1) {
-      return $$0.d(aww.a($$1.c / 16.0), aww.a($$1.e / 16.0));
-   }
-
-   @Nullable
-   private static ib a(dpi $$0) {
-      cwi $$1 = $$0.f();
-      ib $$2 = new ib($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      ib $$4 = new ib($$1.f(), $$3, $$1.g());
-      ib $$5 = null;
-      double $$6 = 0.0;
-
-      for (ib $$7 : ib.a($$2, $$4)) {
-         dnb $$8 = $$0.a_($$7);
-         ib $$9 = $$7.c();
-         ib $$10 = $$7.b(2);
-         if ($$8.a(dae.fz) && !$$0.a_($$9).r($$0, $$9) && !$$0.a_($$10).r($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
-         }
-      }
-
-      return $$5;
-   }
-
-   private static void a(apf $$0, ib $$1, dxv $$2) {
-      dvs.L.a($$2, $$0, $$0.l().g(), axd.a(), $$1);
-   }
-
-   @Override
-   public boolean a(ih $$0) {
-      return dac.a(this.n(), this.o, this.aC_(), $$0, this.aC_().a($$0));
-   }
-
-   public int f() {
-      int $$0 = 0;
-
-      for (ih $$1 : ih.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
-      }
-
-      return $$0;
-   }
-
-   public void a(ib $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
+   private static dlv a(iy<dlv> $$0, ajs<dlv> $$1) {
+      return iy.a($$0, $$1, new dlv());
    }
 }

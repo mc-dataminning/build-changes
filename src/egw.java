@@ -1,26 +1,24 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class egw extends egy {
-   public static final Codec<egw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dnb.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, egw::new)
-   );
-   private final dnb b;
-   private final float d;
+record egw(bmk<List<egs>> c) implements egs {
+   static Codec<egw> a = RecordCodecBuilder.create($$0 -> $$0.group(bmk.b(Codec.list(egs.b)).fieldOf("groups").forGetter(egw::c)).apply($$0, egw::new));
 
-   public egw(dnb $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Override
+   public void a(axr $$0, BiConsumer<ajs<egq>, ajs<egq>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public boolean a(dnb $$0, axd $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public Stream<ajs<egq>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(egs::a);
    }
 
    @Override
-   protected egz<?> a() {
-      return egz.f;
+   public Codec<egw> b() {
+      return a;
    }
 }

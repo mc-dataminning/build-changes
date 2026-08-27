@@ -1,44 +1,92 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class ane {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().bc().I().s().a(), $$1);
+
    public static void a(CommandDispatcher<du> $$0) {
-      RequiredArgumentBuilder<du, gi> $$1 = (RequiredArgumentBuilder<du, gi>)((RequiredArgumentBuilder)dv.a("targets", eh.d())
-            .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, null)))
-         .then(dv.a("*").then(dv.a("sound", ev.a()).suggests(hr.c).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, ev.e($$0x, "sound")))));
-
-      for (atz $$2 : atz.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)dv.a($$2.a()).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, null)))
-               .then(dv.a("sound", ev.a()).suggests(hr.c).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, ev.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("function")
+                     .then(
+                        dv.a("function", fz.a())
+                           .suggests(aly.b)
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", fh.a())
+                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       dv.a("append")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("replace")
+                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               dv.a("clear")
+                  .then(
+                     dv.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
+            )
+      );
    }
 
-   private static int a(du $$0, Collection<apg> $$1, @Nullable atz $$2, @Nullable ajh $$3) {
-      aei $$4 = new aei($$3, $$2);
-
-      for (apg $$5 : $$1) {
-         $$5.d.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> vu.a("commands.stopsound.success.source.sound", vu.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> vu.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> vu.a("commands.stopsound.success.sourceless.sound", vu.a($$3)), true);
+   private static int a(du $$0, Pair<ajt, Either<hf<du>, Collection<hf<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
+         throw a.create();
       } else {
-         $$0.a(() -> vu.c("commands.stopsound.success.sourceless.any"), true);
-      }
+         long $$4 = $$0.e().Y() + (long)$$2;
+         ajt $$5 = (ajt)$$1.getFirst();
+         ern<MinecraftServer> $$6 = $$0.l().bc().I().s();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
 
-      return $$1.size();
+            $$6.a($$7, $$4, new erj($$5));
+            $$0.a(() -> wg.a("commands.schedule.created.function", wg.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new erk($$5));
+            $$0.a(() -> wg.a("commands.schedule.created.tag", wg.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
+      }
+   }
+
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().bc().I().s().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
+      } else {
+         $$0.a(() -> wg.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
+      }
    }
 }

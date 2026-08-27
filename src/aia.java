@@ -1,12 +1,27 @@
-public class aia {
-   public static final yd<ahz> a = a("pong_response");
-   public static final yd<aic> b = b("ping_request");
+import java.util.UUID;
 
-   private static <T extends yb<ahy>> yd<T> a(String $$0) {
-      return new yd<>(yc.b, new ajh($$0));
+public record aia(String b, UUID c) implements yn<ahy> {
+   public static final ye<vg, aia> a = yn.a(aia::a, aia::new);
+
+   private aia(vg $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   private static <T extends yb<aib>> yd<T> b(String $$0) {
-      return new yd<>(yc.a, new ajh($$0));
+   private void a(vg $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public yp<aia> a() {
+      return ahw.g;
+   }
+
+   public void a(ahy $$0) {
+      $$0.a(this);
+   }
+
+   public UUID e() {
+      return this.c;
    }
 }

@@ -1,42 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class btn {
-   public static bss<cih> a(bys<ik> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return buu.a(
-         (Function<buu.b<cih>, ? extends App<buu.c<cih>, bux<cih>>>)($$5 -> $$5.group($$5.a(bys.E), $$5.c(bys.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     ik $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ad() && (!$$13.isPresent() || $$9.X() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dm()) > $$3) {
-                           ept $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
-
-                           while ($$14 == null || ib.a($$14).k($$10.dm()) > $$3) {
-                              $$14 = caj.a($$10, 15, 7, ept.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new byv($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dm()) > $$2) {
-                           $$7.a(new byv($$12.b(), $$1, $$2));
-                        }
+   public static btr<bqq> a(int $$0) {
+      return bvt.a(
+         (Function<bvt.b<bqq>, ? extends App<bvt.c<bqq>, bvw<bqq>>>)($$1 -> $$1.group($$1.a(bzr.n), $$1.b(bzr.o), $$1.c(bzr.p), $$1.b(bzr.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bqo $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<bzt>b($$5).a($$9)) {
+                        $$2.a(new bsr($$9, true));
+                        $$7.a(bnz.a);
+                        $$7.C($$9);
+                        $$4.a(true, (long)$$0);
+                        return true;
                      } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
+                        return false;
                      }
-
-                     return true;
                   }))
       );
+   }
+
+   private static boolean a(bqq $$0) {
+      return $$0.b($$1 -> {
+         cre $$2 = $$1.f();
+         return $$2 instanceof crz && $$0.a((crz)$$2);
+      });
    }
 }

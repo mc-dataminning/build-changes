@@ -1,13 +1,40 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bzi extends bzy<bpp> {
-   @Override
-   protected void a(apf $$0, bpp $$1) {
+public class bzi extends bzl {
+   private final brk a;
+   private bqo b;
+   private int c;
+
+   public bzi(brk $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bxl.a.d));
    }
 
    @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.of();
+   public boolean a() {
+      if (this.a.r() && !this.a.gn()) {
+         bqo $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, cbe.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      bqo $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
+      }
+
+      super.c();
    }
 }

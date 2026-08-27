@@ -1,151 +1,95 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
-
-public abstract class cuw {
-   private final bpe[] b;
-   private final cuw.a c;
-   private final avd<cqh> d;
-   @Nullable
-   protected String a;
-   private final il.c<cuw> e = ki.f.f(this);
-
-   @Nullable
-   public static cuw c(int $$0) {
-      return ki.f.a($$0);
+public class cuw extends cvb {
+   public cuw(cuz $$0) {
+      super($$0);
    }
 
-   protected cuw(cuw.a $$0, avd<cqh> $$1, bpe[] $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.b = $$2;
+   public boolean a(cnf $$0, cyx $$1) {
+      int $$2 = 0;
+      crj $$3 = crj.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crj $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(crm.tZ)) {
+               if (!$$3.d()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(crm.tY)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.d() && $$2 > 0;
    }
 
-   public Map<bpe, cqm> a(bpp $$0) {
-      Map<bpe, cqm> $$1 = Maps.newEnumMap(bpe.class);
+   public crj a(cnf $$0, iz $$1) {
+      int $$2 = 0;
+      crj $$3 = crj.i;
 
-      for (bpe $$2 : this.b) {
-         cqm $$3 = $$0.d($$2);
-         if (!$$3.b()) {
-            $$1.put($$2, $$3);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crj $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(crm.tZ)) {
+               if (!$$3.d()) {
+                  return crj.i;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(crm.tY)) {
+                  return crj.i;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      cum $$6 = $$3.a(jp.A);
+      if (!$$3.d() && $$2 >= 1 && $$6 != null) {
+         cum $$7 = $$6.a();
+         if ($$7 == null) {
+            return crj.i;
+         } else {
+            crj $$8 = $$3.c($$2);
+            $$8.b(jp.A, $$7);
+            return $$8;
+         }
+      } else {
+         return crj.i;
+      }
+   }
+
+   public iu<crj> a(cnf $$0) {
+      iu<crj> $$1 = iu.a($$0.b(), crj.i);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         crj $$3 = $$0.a($$2);
+         if ($$3.f().w()) {
+            $$1.set($$2, new crj($$3.f().v()));
+         } else if ($$3.f() instanceof cte) {
+            $$1.set($$2, $$3.c(1));
+            break;
          }
       }
 
       return $$1;
    }
 
-   public avd<cqh> d() {
-      return this.d;
+   @Override
+   public cvn<?> ap_() {
+      return cvn.d;
    }
 
-   public cuw.a e() {
-      return this.c;
-   }
-
-   public int f() {
-      return 1;
-   }
-
-   public int a() {
-      return 1;
-   }
-
-   public int a(int $$0) {
-      return 1 + $$0 * 10;
-   }
-
-   public int b(int $$0) {
-      return this.a($$0) + 5;
-   }
-
-   public int a(int $$0, bnw $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, @Nullable bpd<?> $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(cuw $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(cuw $$0) {
-      return this != $$0;
-   }
-
-   protected String g() {
-      if (this.a == null) {
-         this.a = ac.a("enchantment", ki.f.b(this));
-      }
-
-      return this.a;
-   }
-
-   public String h() {
-      return this.g();
-   }
-
-   public vu d(int $$0) {
-      wi $$1 = vu.c(this.h());
-      if (this.c()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.a() != 1) {
-         $$1.b(vt.v).b(vu.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean a(cqm $$0) {
-      return $$0.d().k().a(this.d);
-   }
-
-   public void a(bpp $$0, box $$1, int $$2) {
-   }
-
-   public void b(bpp $$0, box $$1, int $$2) {
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean c() {
-      return false;
-   }
-
-   public boolean i() {
-      return true;
-   }
-
-   public boolean j() {
-      return true;
-   }
-
-   @Deprecated
-   public il.c<cuw> k() {
-      return this.e;
-   }
-
-   public static enum a {
-      a(10),
-      b(5),
-      c(2),
-      d(1);
-
-      private final int e;
-
-      private a(int $$0) {
-         this.e = $$0;
-      }
-
-      public int a() {
-         return this.e;
-      }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

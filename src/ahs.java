@@ -1,5 +1,20 @@
-public interface ahs {
-   ajh a();
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   void a(uu var1);
+public record ahs(GameProfile b) implements yn<ahq> {
+   public static final ye<ByteBuf, ahs> a = yc.t.a(ahs::new, ahs::b);
+
+   @Override
+   public yp<ahs> a() {
+      return ahw.b;
+   }
+
+   public void a(ahq $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

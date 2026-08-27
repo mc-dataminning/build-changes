@@ -1,332 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public class fin extends fhh {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fin.a k = new fin.a() {
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public vz a(int $$0) {
-         return vz.b;
-      }
-   };
-   public static final ajh l = new ajh("textures/gui/book.png");
-   protected static final int m = 114;
-   protected static final int n = 128;
-   protected static final int o = 192;
-   protected static final int p = 192;
-   private fin.a q;
-   private int r;
-   private List<awi> t = Collections.emptyList();
-   private int u = -1;
-   private vu v = vt.a;
-   private fjo w;
-   private fjo x;
-   private final boolean y;
-
-   public fin(fin.a $$0) {
-      this($$0, true);
-   }
+public class fin extends fjo {
+   private static final ajt a = new ajt("textures/gui/demo_background.png");
+   private fei b = fei.a;
+   private fei c = fei.a;
 
    public fin() {
-      this(k, false);
-   }
-
-   private fin(fin.a $$0, boolean $$1) {
-      super(eza.a);
-      this.q = $$0;
-      this.y = $$1;
-   }
-
-   public void a(fin.a $$0) {
-      this.q = $$0;
-      this.r = aww.a(this.r, 0, $$0.a());
-      this.L();
-      this.u = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = aww.a($$0, 0, this.q.a() - 1);
-      if ($$1 != this.r) {
-         this.r = $$1;
-         this.L();
-         this.u = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
+      super(wg.c("demo.help.title"));
    }
 
    @Override
-   protected void aO_() {
-      this.o();
-      this.E();
-   }
-
-   protected void o() {
-      this.c(fbi.a(vt.d, $$0 -> this.d()).a(this.g / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void E() {
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.w = this.c(new fjo($$0 + 116, 159, true, $$0x -> this.J(), this.y));
-      this.x = this.c(new fjo($$0 + 43, 159, false, $$0x -> this.I(), this.y));
-      this.L();
-   }
-
-   private int H() {
-      return this.q.a();
-   }
-
-   protected void I() {
-      if (this.r > 0) {
-         this.r--;
-      }
-
-      this.L();
-   }
-
-   protected void J() {
-      if (this.r < this.H() - 1) {
-         this.r++;
-      }
-
-      this.L();
-   }
-
-   private void L() {
-      this.w.k = this.r < this.H() - 1;
-      this.x.k = this.r > 0;
+   protected void aN_() {
+      int $$0 = -16;
+      this.c(fdp.a(wg.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.k / 2 - 116, this.l / 2 + 62 + -16, 114, 20).a());
+      this.c(fdp.a(wg.c("demo.help.later"), $$0x -> {
+         this.j.a(null);
+         this.j.n.i();
+      }).a(this.k / 2 + 2, this.l / 2 + 62 + -16, 114, 20).a());
+      fbt $$1 = this.j.m;
+      this.b = fei.a(
+         this.m,
+         wg.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         wg.c("demo.help.movementMouse"),
+         wg.a("demo.help.jump", $$1.B.k()),
+         wg.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = fei.a(this.m, wg.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.x.b();
-               return true;
-            case 267:
-               this.w.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.u != this.r) {
-         vz $$6 = this.q.b(this.r);
-         this.t = this.i.c($$6, 114);
-         this.v = vu.a("book.pageIndicator", this.r + 1, Math.max(this.H(), 1));
-      }
-
-      this.u = this.r;
-      int $$7 = this.i.a(this.v);
-      $$0.a(this.i, this.v, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.t.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         awi $$10 = this.t.get($$9);
-         $$0.a(this.i, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      wr $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.i, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
       super.b($$0, $$1, $$2, $$3);
-      $$0.a(l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
+      int $$4 = (this.k - 248) / 2;
+      int $$5 = (this.l - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         wr $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(wr $$0) {
-      vs $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == vs.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == vs.a.c) {
-            this.K();
-         }
-
-         return $$4;
-      }
-   }
-
-   protected void K() {
-      this.f.a(null);
-   }
-
-   @Nullable
-   public wr b(double $$0, double $$1) {
-      if (this.t.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = aww.a($$0 - (double)((this.g - 192) / 2) - 36.0);
-         int $$3 = aww.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.t.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.t.size()) {
-                  awi $$6 = this.t.get($$5);
-                  return this.f.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
-            } else {
-               return null;
-            }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   static List<String> a(ta $$0) {
-      Builder<String> $$1 = ImmutableList.builder();
-      a($$0, $$1::add);
-      return $$1.build();
-   }
-
-   public static void a(ta $$0, Consumer<String> $$1) {
-      tg $$2 = $$0.c("pages", 8).e();
-      IntFunction<String> $$4;
-      if (ezi.Q().aS() && $$0.b("filtered_pages", 10)) {
-         ta $$3 = $$0.p("filtered_pages");
-         $$4 = $$2x -> {
-            String $$3x = String.valueOf($$2x);
-            return $$3.e($$3x) ? $$3.l($$3x) : $$2.j($$2x);
-         };
-      } else {
-         $$4 = $$2::j;
-      }
-
-      for (int $$6 = 0; $$6 < $$2.size(); $$6++) {
-         $$1.accept($$4.apply($$6));
-      }
-   }
-
-   public interface a {
-      int a();
-
-      vz a(int var1);
-
-      default vz b(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a($$0) : vz.b;
-      }
-
-      static fin.a a(cqm $$0) {
-         if ($$0.a(cqp.tZ)) {
-            return new fin.c($$0);
-         } else {
-            return (fin.a)($$0.a(cqp.tY) ? new fin.b($$0) : fin.k);
-         }
-      }
-   }
-
-   public static class b implements fin.a {
-      private final List<String> a;
-
-      public b(cqm $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cqm $$0) {
-         ta $$1 = $$0.w();
-         return (List<String>)($$1 != null ? fin.a($$1) : ImmutableList.of());
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public vz a(int $$0) {
-         return vz.e(this.a.get($$0));
-      }
-   }
-
-   public static class c implements fin.a {
-      private final List<String> a;
-
-      public c(cqm $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cqm $$0) {
-         ta $$1 = $$0.w();
-         return (List<String>)($$1 != null && csi.a($$1) ? fin.a($$1) : ImmutableList.of(vu.a.a(vu.c("book.invalid.tag").a(n.e))));
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public vz a(int $$0) {
-         String $$1 = this.a.get($$0);
-
-         try {
-            vz $$2 = vu.a.a($$1);
-            if ($$2 != null) {
-               return $$2;
-            }
-         } catch (Exception var4) {
-         }
-
-         return vz.e($$1);
-      }
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.k - 248) / 2 + 10;
+      int $$5 = (this.l - 166) / 2 + 8;
+      $$0.a(this.m, this.i, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

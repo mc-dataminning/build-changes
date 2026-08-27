@@ -1,27 +1,45 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class cll {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+   private final clk a;
+   private final List<cll.a> b = Lists.newArrayList();
+
+   public cll(clk $$0) {
+      this.a = $$0;
+   }
+
+   public cll a(int $$0, cli $$1) {
+      this.b.add(new cll.a($$0, $$1));
+      return this;
+   }
+
+   public clk a() {
+      this.b.stream().map(cll.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cli $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
+   }
+
+   static class a {
+      private final int a;
+      private final cli b;
+
+      public a(int $$0, cli $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public cli b() {
+         return this.b;
+      }
+   }
 }

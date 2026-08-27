@@ -1,70 +1,35 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bwf extends bwm {
-   protected final bpx a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cxb f;
+public class bwf<E extends cix> extends bsg<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public bwf(bpx $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dM();
-      this.a(EnumSet.of(bwm.a.a));
+   public bwf(int $$0) {
+      super(ImmutableMap.of(bzr.aB, bzs.a, bzr.o, bzs.b, bzr.m, bzs.b, bzr.n, bzs.c, bzr.B, bzs.c, bzr.az, bzs.c, bzr.aG, bzs.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      if (this.a.p() != null) {
-         return false;
-      } else if (!this.f.P()) {
-         return false;
-      } else if (!this.a.bN()) {
-         return false;
-      } else if (!this.f.h(this.a.dm())) {
-         return false;
-      } else {
-         return !this.a.d(bpe.f).b() ? false : this.h();
+   protected boolean a(aps $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aps $$0, E $$1, long $$2) {
+      $$1.a(aum.By, 5.0F, 1.0F);
+   }
+
+   protected void c(aps $$0, E $$1, long $$2) {
+      if ($$1.c(bqz.m)) {
+         $$1.b(bqz.a);
       }
-   }
 
-   protected boolean h() {
-      ept $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.K().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
-   }
-
-   @Nullable
-   protected ept i() {
-      axd $$0 = this.a.ei();
-      ib $$1 = this.a.dm();
-
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ib $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
-            return ept.c($$3);
+      $$1.dP().b(bzr.aB);
+      $$1.dP().c(bzr.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
-      }
 
-      return null;
+         if (!$$1.dP().a(bzr.az)) {
+            ciy.a($$1, $$1x.dm());
+         }
+      });
    }
 }

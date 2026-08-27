@@ -1,78 +1,35 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public interface wv {
+   wg a();
 
-public record wv(String d, @Nullable fq e) implements ww {
-   public static final MapCodec<wv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(wv::b)).apply($$0, wv::new));
-   public static final ww.a<wv> b = new ww.a<>(a, "block");
+   void a(apt var1, boolean var2, wc.a var3);
 
-   public wv(String $$0) {
-      this($$0, a($$0));
+   static wv a(ww $$0) {
+      return (wv)($$0.h() ? new wv.a($$0.d()) : new wv.b($$0));
    }
 
-   @Nullable
-   private static fq a(String $$0) {
-      try {
-         return fo.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public static record a(wg a) implements wv {
+      @Override
+      public void a(apt $$0, boolean $$1, wc.a $$2) {
+         $$0.d.a(this.a, $$2);
       }
    }
 
-   @Override
-   public Stream<ta> a(du $$0) {
-      if (this.e != null) {
-         apf $$1 = $$0.e();
-         ib $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            dki $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.v()));
-            }
+   public static record b(ww a) implements wv {
+      @Override
+      public wg a() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(apt $$0, boolean $$1, wc.a $$2) {
+         ww $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.d.a($$3, $$2);
          }
       }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public ww.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wv $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+      public ww b() {
+         return this.a;
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public fq c() {
-      return this.e;
    }
 }

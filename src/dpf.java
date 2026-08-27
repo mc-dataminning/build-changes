@@ -1,58 +1,96 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public class dpf<T> implements dpo<T> {
-   private final iq<T> a;
+public class dpf {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dpd>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dpf(iq<T> $$0) {
-      this.a = $$0;
+   private dpf() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   public static <A> dpo<A> a(int $$0, iq<A> $$1, dpp<A> $$2, List<A> $$3) {
-      return new dpf<>($$1);
-   }
+   public dpf a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
 
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
-   }
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
-   }
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
 
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dpn($$0);
+            this.b.add($$0);
+            return this;
+         }
       } else {
-         return $$1;
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   @Override
-   public void a(uu $$0) {
+   public static dpf a() {
+      return new dpf();
    }
 
-   @Override
-   public void b(uu $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dpo<T> c() {
+   public dpf a(char $$0, Predicate<dpd> $$1) {
+      this.c.put($$0, $$1);
       return this;
+   }
+
+   public dpe b() {
+      return new dpe(this.c());
+   }
+
+   private Predicate<dpd>[][][] c() {
+      this.d();
+      Predicate<dpd>[][][] $$0 = (Predicate<dpd>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dpd>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

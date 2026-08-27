@@ -1,20 +1,29 @@
-public record abs(cwi b) implements yb<aam> {
-   public static final xs<uu, abs> a = yb.a(abs::a, abs::new);
+public class abs implements yn<aay> {
+   public static final ye<vg, abs> a = yn.a(abs::a, abs::new);
+   private final int b;
 
-   private abs(uu $$0) {
-      this($$0.f());
+   public abs(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
+   private abs(vg $$0) {
+      this.b = $$0.readUnsignedByte();
+   }
+
+   private void a(vg $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public yd<abs> a() {
-      return aex.F;
+   public yp<abs> a() {
+      return afj.t;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

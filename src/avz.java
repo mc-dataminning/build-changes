@@ -1,43 +1,21 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.IntConsumer;
 
-public class avz<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
+public interface avz {
+   int a(int var1, int var2);
 
-   public avz(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
-   }
+   void b(int var1, int var2);
 
-   public void a(T $$0) {
-      int $$1 = this.a.length();
+   int a(int var1);
 
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
+   long[] a();
 
-      this.a.set($$3, $$0);
-   }
+   int b();
 
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
+   int c();
 
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
-         }
-      }
+   void a(IntConsumer var1);
 
-      return $$1.build();
-   }
+   void a(int[] var1);
+
+   avz d();
 }

@@ -1,25 +1,18 @@
-public record abn(long[] b, biy c) implements yb<aam> {
-   public static final xs<uu, abn> a = yb.a(abn::a, abn::new);
+import io.netty.buffer.ByteBuf;
 
-   private abn(uu $$0) {
-      this($$0.d(), $$0.b(biy.class));
-   }
+public class abn implements yn<aay> {
+   public static final abn a = new abn();
+   public static final ye<ByteBuf, abn> b = ye.a(a);
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private abn() {
    }
 
    @Override
-   public yd<abn> a() {
-      return aex.A;
+   public yp<abn> a() {
+      return afj.o;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
-   }
-
-   public biy e() {
-      return this.c;
    }
 }

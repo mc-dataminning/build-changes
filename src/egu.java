@@ -1,22 +1,24 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class egu extends ehb {
-   public final avd<dac> a;
-   public static final Codec<egu> b = avd.b(kj.f).xmap(egu::new, $$0 -> $$0.a);
+@FunctionalInterface
+public interface egu {
+   egu a = $$0 -> $$0;
 
-   public egu(avd<dac> $$0) {
-      this.a = $$0;
-   }
+   ajs<egq> lookup(ajs<egq> var1);
 
-   @Nullable
-   @Override
-   public ehe.c a(cxe $$0, ib $$1, ib $$2, ehe.c $$3, ehe.c $$4, eha $$5) {
-      return dvs.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
-   }
-
-   @Override
-   protected ehd<?> a() {
-      return ehd.n;
+   static egu create(List<egs> $$0, ib $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         axr $$3 = axr.a($$2).e().a($$1);
+         Builder<ajs<egq>, ajs<egq>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<ajs<egq>, ajs<egq>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

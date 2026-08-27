@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface gmp {
-   ajh a();
+public record gmp(String b, String c, boolean d) {
+   public static final Codec<gmp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aws.w.fieldOf("region").forGetter(gmp::b),
+               aws.w.fieldOf("name").forGetter(gmp::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gmp::d)
+            )
+            .apply($$0, gmp::new)
+   );
 
-   @Nullable
-   gnu a(gnt var1);
-
-   gmm b();
-
-   atz c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gmp.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static axd t() {
-      return axd.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   public wg a() {
+      return wg.b(this.c + " (" + this.b + ")");
    }
 }

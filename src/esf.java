@@ -1,35 +1,17 @@
 public interface esf {
-   int a();
-
-   int b();
-
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   static esf a() {
+      return esk.a;
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   static esf a(bpv $$0) {
+      return new esk($$0);
    }
 
-   default float g() {
-      return 7.0F - this.j();
-   }
+   boolean b();
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
+   boolean a(est var1, ib var2, boolean var3);
 
-   default float i() {
-      return 0.0F;
-   }
+   boolean a(cre var1);
 
-   default float j() {
-      return 7.0F;
-   }
+   boolean a(eks var1, eks var2);
 }

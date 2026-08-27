@@ -1,77 +1,61 @@
-public class cjl extends cjm {
-   public cjl(bpd<? extends cjl> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public cjl(cxb $$0, cdj $$1) {
-      this(bpd.ao, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.dr() - (double)($$1.dg() + 1.0F) * 0.5 * (double)aww.a($$1.aX * (float) (Math.PI / 180.0)),
-         $$1.dv() - 0.1F,
-         $$1.dx() + (double)($$1.dg() + 1.0F) * 0.5 * (double)aww.b($$1.aX * (float) (Math.PI / 180.0))
-      );
-   }
+public final class cjl {
+   public static final cjl a = a("desert");
+   public static final cjl b = a("jungle");
+   public static final cjl c = a("plains");
+   public static final cjl d = a("savanna");
+   public static final cjl e = a("snow");
+   public static final cjl f = a("swamp");
+   public static final cjl g = a("taiga");
+   private final String h;
+   private static final Map<ajs<czw>, cjl> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dad.A, a);
+      $$0.put(dad.f, a);
+      $$0.put(dad.B, a);
+      $$0.put(dad.C, a);
+      $$0.put(dad.z, b);
+      $$0.put(dad.x, b);
+      $$0.put(dad.y, b);
+      $$0.put(dad.s, d);
+      $$0.put(dad.r, d);
+      $$0.put(dad.w, d);
+      $$0.put(dad.X, e);
+      $$0.put(dad.W, e);
+      $$0.put(dad.L, e);
+      $$0.put(dad.e, e);
+      $$0.put(dad.N, e);
+      $$0.put(dad.q, e);
+      $$0.put(dad.d, e);
+      $$0.put(dad.F, e);
+      $$0.put(dad.G, e);
+      $$0.put(dad.H, e);
+      $$0.put(dad.I, e);
+      $$0.put(dad.g, f);
+      $$0.put(dad.h, f);
+      $$0.put(dad.o, g);
+      $$0.put(dad.n, g);
+      $$0.put(dad.u, g);
+      $$0.put(dad.t, g);
+      $$0.put(dad.p, g);
+      $$0.put(dad.v, g);
+   });
 
-   @Override
-   protected double aW() {
-      return 0.06;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      ept $$0 = this.dp();
-      epr $$1 = cjo.a(this, this::b);
-      this.a($$1);
-      double $$2 = this.dr() + $$0.c;
-      double $$3 = this.dt() + $$0.d;
-      double $$4 = this.dx() + $$0.e;
-      this.I();
-      float $$5 = 0.99F;
-      if (this.dM().a(this.cH()).noneMatch(dna.a::i)) {
-         this.am();
-      } else if (this.bf()) {
-         this.am();
-      } else {
-         this.g($$0.a(0.99F));
-         this.aY();
-         this.a_($$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void a(epq $$0) {
-      super.a($$0);
-      if (this.af_() instanceof bpp $$1) {
-         $$0.a().a(this.dN().b(this, $$1), 1.0F);
-      }
-   }
-
-   @Override
-   protected void a(epp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.am();
-      }
+   private cjl(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   protected void a(aiq.a $$0) {
+   public String toString() {
+      return this.h;
    }
 
-   @Override
-   public void a(aan $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
+   private static cjl a(String $$0) {
+      return iy.a(kr.y, new ajt($$0), new cjl($$0));
+   }
 
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dM().a(kc.af, this.dr(), this.dt(), this.dx(), $$1 * $$5, $$2, $$3 * $$5);
-      }
-
-      this.o($$1, $$2, $$3);
+   public static cjl a(il<czw> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

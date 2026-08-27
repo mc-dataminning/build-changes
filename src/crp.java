@@ -1,21 +1,20 @@
-public class crp extends cqh {
-   public crp(cqh.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class crp extends csu {
+   public crp(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
-      cqm $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.yb, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cjr $$4 = new cjr($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      cth $$4 = $$0.a(jp.x, cth.a);
+      $$4.a($$2::add, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   }
 
-      $$1.b(aui.c.b(this));
-      $$3.a(1, $$1);
-      return bne.a($$3, $$0.x_());
+   @Override
+   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.nI, aun.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,39 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dig extends dal implements daf {
-   public static final MapCodec<dig> a = b(dig::new);
-   protected static final float b = 6.0F;
-   protected static final eqm c = dac.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public abstract class dig extends deb {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final est h = dby.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final est i = dby.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final est j = dby.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dig> a() {
-      return a;
-   }
-
-   protected dig(dna.d $$0) {
+   protected dig(doy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
-      return c;
-   }
+   protected abstract MapCodec<? extends dig> a();
 
    @Override
-   public boolean b(cxe $$0, ib $$1, dnb $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
-      dck $$4 = (dck)($$3.a(dae.bu) ? dae.iI : dae.iH);
-      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
-         dck.a($$0, $$4.o(), $$2, 2);
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
+   }
+
+   @Override
+   protected doz a(doz $$0, dik $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected doz a(doz $$0, dgu $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 }

@@ -1,31 +1,45 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
-
-public class jw extends jx {
-   public static final Vector3f a = ept.a(16711680).j();
-   public static final jw b = new jw(a, 1.0F);
-   public static final Codec<jw> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.d.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, jw::new)
-   );
-   public static final xs<vf, jw> d = xs.a(xq.m, $$0 -> $$0.h, xq.f, $$0 -> $$0.i, jw::new);
-   public static final ka.a<jw> e = new ka.a<jw>() {
-      public jw a(kb<jw> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = jx.a($$1);
-         $$1.expect(' ');
-         float $$4 = $$1.readFloat();
-         return new jw($$3, $$4);
-      }
-   };
-
-   public jw(Vector3f $$0, float $$1) {
-      super($$0, $$1);
+public class jw implements jx {
+   @Override
+   public final crj dispense(ju $$0, crj $$1) {
+      crj $$2 = this.a($$0, $$1);
+      this.a($$0);
+      this.a($$0, $$0.d().c(ded.b));
+      return $$2;
    }
 
-   @Override
-   public kb<jw> a() {
-      return kc.o;
+   protected crj a(ju $$0, crj $$1) {
+      ih $$2 = $$0.d().c(ded.b);
+      iv $$3 = ded.a($$0);
+      crj $$4 = $$1.a(1);
+      a($$0.b(), $$4, 6, $$2, $$3);
+      return $$1;
+   }
+
+   public static void a(cyx $$0, crj $$1, int $$2, ih $$3, iv $$4) {
+      double $$5 = $$4.a();
+      double $$6 = $$4.b();
+      double $$7 = $$4.c();
+      if ($$3.o() == ih.a.b) {
+         $$6 -= 0.125;
+      } else {
+         $$6 -= 0.15625;
+      }
+
+      cgd $$8 = new cgd($$0, $$5, $$6, $$7, $$1);
+      double $$9 = $$0.z.j() * 0.1 + 0.2;
+      $$8.o(
+         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
+         $$0.z.a(0.2, 0.0172275 * (double)$$2),
+         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
+      );
+      $$0.b($$8);
+   }
+
+   protected void a(ju $$0) {
+      $$0.b().c(1000, $$0.c(), 0);
+   }
+
+   protected void a(ju $$0, ih $$1) {
+      $$0.b().c(2000, $$0.c(), $$1.d());
    }
 }

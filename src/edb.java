@@ -1,7 +1,41 @@
-@FunctionalInterface
-public interface edb {
-   edb a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-   void afterPlace(cxw var1, cxu var2, doy var3, axd var4, ecw var5, cwi var6, edt var7);
+public class edb extends eda {
+   public static final Codec<edb> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edb::new));
+
+   public edb(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected ede<?> a() {
+      return ede.d;
+   }
+
+   @Override
+   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
+      List<ebl.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + axk.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + axk.a($$8) * (float)$$11);
+            ib $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new ebl.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
+   }
 }

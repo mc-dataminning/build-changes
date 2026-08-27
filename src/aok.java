@@ -1,63 +1,56 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Locale;
-import javax.swing.JComponent;
-import javax.swing.Timer;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Function;
 
-public class aok extends JComponent {
-   private static final DecimalFormat a = ac.a(
-      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
-   );
-   private final int[] b = new int[256];
-   private int c;
-   private final String[] d = new String[11];
-   private final MinecraftServer e;
-   private final Timer f;
+public class aok implements aoh {
+   static final SuggestionProvider<du> b = ($$0, $$1) -> dz.a(a($$0).a(), $$1);
+   public static final Function<String, aoi.c> a = $$0 -> new aoi.c() {
+         @Override
+         public aoh a(CommandContext<du> $$0x) {
+            return new aok(aok.a($$0), ev.e($$0, $$0));
+         }
 
-   public aok(MinecraftServer $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(456, 246));
-      this.setMinimumSize(new Dimension(456, 246));
-      this.setMaximumSize(new Dimension(456, 246));
-      this.f = new Timer(500, $$0x -> this.b());
-      this.f.start();
-      this.setBackground(Color.BLACK);
+         @Override
+         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
+            return $$0.then(dv.a("storage").then($$1.apply(dv.a($$0, ev.a()).suggests(aok.b))));
+         }
+      };
+   private final emi c;
+   private final ajt d;
+
+   static emi a(CommandContext<du> $$0) {
+      return ((du)$$0.getSource()).l().aL();
    }
 
-   private void b() {
-      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
-      this.d[1] = "Avg tick: " + a.format((double)this.e.aS() / (double)axv.b) + " ms";
-      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
-      this.repaint();
+   aok(emi $$0, ajt $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void paint(Graphics $$0) {
-      $$0.setColor(new Color(16777215));
-      $$0.fillRect(0, 0, 456, 246);
-
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         int $$2 = this.b[$$1 + this.c & 0xFF];
-         $$0.setColor(new Color($$2 + 28 << 16));
-         $$0.fillRect($$1, 100 - $$2, 1, $$2);
-      }
-
-      $$0.setColor(Color.BLACK);
-
-      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
-         String $$4 = this.d[$$3];
-         if ($$4 != null) {
-            $$0.drawString($$4, 32, 116 + $$3 * 16);
-         }
-      }
+   public void a(tm $$0) {
+      this.c.a(this.d, $$0);
    }
 
-   public void a() {
-      this.f.stop();
+   @Override
+   public tm a() {
+      return this.c.a(this.d);
+   }
+
+   @Override
+   public wg b() {
+      return wg.a("commands.data.storage.modified", wg.a(this.d));
+   }
+
+   @Override
+   public wg a(uj $$0) {
+      return wg.a("commands.data.storage.query", wg.a(this.d), ub.c($$0));
+   }
+
+   @Override
+   public wg a(em.g $$0, double $$1, int $$2) {
+      return wg.a("commands.data.storage.get", $$0.a(), wg.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

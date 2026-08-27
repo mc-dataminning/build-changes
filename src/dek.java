@@ -1,95 +1,94 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dek extends cyv {
-   public static final MapCodec<dek> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cya.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ji.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dek::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dob g = dnr.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final cya.c j;
+public class dek extends dbk {
+   public static final MapCodec<dek> a = b(dek::new);
+   protected static final est b = dby.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<ib> c = ib.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(ib::i).toList();
 
    @Override
    public MapCodec<dek> a() {
-      return d;
+      return a;
    }
 
-   public dek(cya.c $$0, ji.a $$1, dna.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   protected dek(doy.d $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean d(dnb $$0) {
-      return $$0.c(g) == 3;
+   public static boolean a(cyx $$0, ib $$1, ib $$2) {
+      return $$0.a_($$1.a((jg)$$2)).a(avc.cp) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(avc.cq);
    }
 
    @Override
-   protected boolean a(eio $$0) {
-      return $$0 == eiq.c && this.j == cya.c.b;
+   protected boolean g_(doz $$0) {
+      return true;
    }
 
    @Override
-   protected double b(dnb $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
+      super.a($$0, $$1, $$2, $$3);
+
+      for (ib $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               kl.t,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
       }
    }
 
-   private void e(dnb $$0, cxb $$1, ib $$2) {
-      if (this.j == cya.c.c) {
-         d(dae.fu.o().a(g, $$0.c(g)), $$1, $$2);
+   @Override
+   protected did b_(doz $$0) {
+      return did.c;
+   }
+
+   @Override
+   public dmf a(ib $$0, doz $$1) {
+      return new dmz($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
+      return $$0.B ? a($$2, dmh.m, dmz::a) : null;
+   }
+
+   @Override
+   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
+      if ($$1.B) {
+         return boa.a;
       } else {
-         d($$0, $$1, $$2);
+         $$3.a($$0.b($$1, $$2));
+         return boa.b;
       }
    }
 
-   public static void d(dnb $$0, cxb $$1, ib $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dnb $$4 = $$3 == 0 ? dae.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(drp.c, $$2, drp.a.a($$4));
-   }
-
+   @Nullable
    @Override
-   public void a(dnb $$0, cxb $$1, ib $$2, cya.c $$3) {
-      if (dax.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dnb $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(drp.c, $$2, drp.a.a($$4));
+   protected boe b(doz $$0, cyx $$1, ib $$2) {
+      dmf $$3 = $$1.c_($$2);
+      if ($$3 instanceof dmz) {
+         wg $$4 = ((bof)$$3).O_();
+         return new bok(($$2x, $$3x, $$4x) -> new cnj($$2x, $$3x, cna.a($$1, $$2)), $$4);
+      } else {
+         return null;
       }
    }
 
    @Override
-   protected int a(dnb $$0, cxb $$1, ib $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dnb $$0, cxb $$1, ib $$2, eio $$3) {
-      if (!this.d($$0)) {
-         dnb $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(drp.c, $$2, drp.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   protected boolean a(doz $$0, elh $$1) {
+      return false;
    }
 }

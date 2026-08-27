@@ -1,35 +1,24 @@
-import java.net.InetSocketAddress;
+public class ftq {
+   public static final ftq a = new ftq(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-public interface ftq {
-   String a();
+   public ftq(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   String b();
+   public ftq(float $$0) {
+      this($$0, $$0, $$0);
+   }
 
-   int c();
+   public ftq a(float $$0) {
+      return new ftq(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
 
-   InetSocketAddress d();
-
-   static ftq a(final InetSocketAddress $$0) {
-      return new ftq() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   public ftq a(float $$0, float $$1, float $$2) {
+      return new ftq(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

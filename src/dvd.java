@@ -1,48 +1,60 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
-
-public class dvd extends dvs<dyd> {
-   public dvd(Codec<dyd> $$0) {
-      super($$0);
-   }
+public class dvd implements cyk {
+   private int a;
 
    @Override
-   public boolean a(dvu<dyd> $$0) {
-      axd $$1 = $$0.d();
-      cxw $$2 = $$0.b();
-      cwi $$3 = new cwi($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ib.a $$6 = new ib.a();
-      IntListIterator var8 = $$4.iterator();
+   public int a(aps $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(cyt.C)) {
+         return 0;
+      } else {
+         axr $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+               for (apt $$5 : $$0.x()) {
+                  if (!$$5.N_()) {
+                     ib $$6 = $$5.dm();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
+                        bny $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           aus $$8 = $$5.H();
+                           int $$9 = axk.a($$8.a(auw.i.b(auw.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              ib $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              doz $$12 = $$0.a_($$11);
+                              eks $$13 = $$0.b_($$11);
+                              if (czi.a($$0, $$11, $$12, $$13, bqb.ax)) {
+                                 brg $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ib $$9 = $$2.a(dso.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dae.cv.o(), 2);
-               bnl.a($$2, $$1, $$9, eku.b);
-               dnb $$10 = dae.cp.o();
-
-               for (ih $$11 : ih.c.a) {
-                  ib $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    chb $$17 = bqb.ax.a((cyx)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bqs.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
                   }
                }
 
-               return true;
+               return $$4;
             }
          }
       }
-
-      return false;
    }
 }

@@ -1,94 +1,118 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface eks {
-   int d = 19133;
-   int e = 19132;
+public final class eks extends dpb<ekr, eks> {
+   public static final Codec<eks> a = a(kr.c.q(), ekr::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   cxv D();
-
-   void a(cxv var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public eks(ekr $$0, Reference2ObjectArrayMap<dqc<?>, Comparable<?>> $$1, MapCodec<eks> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public ekr a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.a().c(this);
+   }
+
+   public boolean a(ekr $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(cyd $$0, ib $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(cyd $$0, ib $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            ib $$4 = $$1.b($$2, 0, $$3);
+            eks $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
+         }
       }
+
+      return false;
+   }
+
+   public void a(cyx $$0, ib $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(cyx $$0, ib $$1, axr $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(cyx $$0, ib $$1, axr $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public esa c(cyd $$0, ib $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public doz g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   ta E();
+   public kj h() {
+      return this.a().h();
+   }
 
-   void a(@Nullable ta var1);
+   public boolean a(avr<ekr> $$0) {
+      return this.a().k().a($$0);
+   }
 
-   ekr I();
+   public boolean a(ip<ekr> $$0) {
+      return $$0.a(this.a().k());
+   }
 
-   cxf J();
+   public boolean b(ekr $$0) {
+      return this.a() == $$0;
+   }
 
-   ta a(iz var1, @Nullable ta var2);
+   public float i() {
+      return this.a().c();
+   }
 
-   boolean l();
+   public boolean a(cyd $$0, ib $$1, ekr $$2, ih $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
 
-   int x();
+   public est d(cyd $$0, ib $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
 
-   String e();
+   public il<ekr> j() {
+      return this.e.k();
+   }
 
-   cwy k();
-
-   void a(cwy var1);
-
-   boolean m();
-
-   bna q();
-
-   void a(bna var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   cwx o();
-
-   @Nullable
-   ta w();
-
-   dqr.a C();
-
-   void a(dqr.a var1);
-
-   dtm y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default clh K() {
-      return this.D().b();
+   public Stream<avr<ekr>> k() {
+      return this.e.k().c();
    }
 }

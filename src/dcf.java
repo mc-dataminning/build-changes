@@ -1,12 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dcf extends dac {
-   public static final dnv a = dnr.P;
+public interface dcf {
+   crj a(@Nullable cjt var1, cyy var2, ib var3, doz var4);
 
-   protected dcf(dna.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dcf> a();
+   Optional<aul> at_();
 }

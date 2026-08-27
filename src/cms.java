@@ -1,150 +1,115 @@
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class cms extends clq {
-   private static final int k = 9;
-   private static final int l = 3;
-   protected final cmb o;
-   protected final ciu p;
-   protected final bmw q;
-   private final List<Integer> m;
-   protected final cng r = new cng();
-   private final int n;
+public class cms extends cmp {
+   private static final int k = 0;
+   private static final int l = 1;
+   private static final int m = 3;
+   private static final int n = 1;
+   private static final int o = 28;
+   private static final int p = 28;
+   private static final int q = 37;
+   private static final int r = 0;
+   private final bnt s = new boj(1) {
+      @Override
+      public boolean b(int $$0, crj $$1) {
+         return $$1.a(avk.aw);
+      }
 
-   protected abstract boolean a(ciu var1, boolean var2);
+      @Override
+      public int aj_() {
+         return 1;
+      }
+   };
+   private final cms.a t;
+   private final cna u;
+   private final cmz v;
 
-   protected abstract void a(ciu var1, cqm var2);
+   public cms(int $$0, bnt $$1) {
+      this($$0, $$1, new coj(3), cna.a);
+   }
 
-   protected abstract boolean a(dnb var1);
-
-   public cms(@Nullable cmx<?> $$0, int $$1, cit $$2, cmb $$3) {
-      super($$0, $$1);
-      this.o = $$3;
-      this.p = $$2.m;
-      cmt $$4 = this.l();
-      this.q = this.e($$4.d());
-      this.m = $$4.f();
-      this.n = $$4.e();
-      this.a($$4);
-      this.b($$4);
+   public cms(int $$0, bnt $$1, cmz $$2, cna $$3) {
+      super(cnw.j, $$0);
+      a($$2, 3);
+      this.v = $$2;
+      this.u = $$3;
+      this.t = new cms.a(this.s, 0, 136, 110);
+      this.a(this.t);
       this.a($$2);
-   }
+      int $$4 = 36;
+      int $$5 = 137;
 
-   private void a(cmt $$0) {
-      for (final cmt.b $$1 : $$0.c()) {
-         this.a(new cnl(this.q, $$1.a(), $$1.b(), $$1.c()) {
-            @Override
-            public boolean a(cqm $$0) {
-               return $$1.d().test($$0);
-            }
-         });
-      }
-   }
-
-   private void b(cmt $$0) {
-      this.a(new cnl(this.r, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
-         @Override
-         public boolean a(cqm $$0) {
-            return false;
-         }
-
-         @Override
-         public boolean a(ciu $$0) {
-            return cms.this.a($$0, this.h());
-         }
-
-         @Override
-         public void a(ciu $$0, cqm $$1) {
-            cms.this.a($$0, $$1);
-         }
-      });
-   }
-
-   private void a(cit $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.a(new cnl($$0, $$2 + $$1 * 9 + 9, 8 + $$2 * 18, 84 + $$1 * 18));
+      for (int $$6 = 0; $$6 < 3; $$6++) {
+         for (int $$7 = 0; $$7 < 9; $$7++) {
+            this.a(new cok($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
          }
       }
 
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.a(new cnl($$0, $$3, 8 + $$3 * 18, 142));
-      }
-   }
-
-   public abstract void m();
-
-   protected abstract cmt l();
-
-   private bnm e(int $$0) {
-      return new bnm($$0) {
-         @Override
-         public void e() {
-            super.e();
-            cms.this.a(this);
-         }
-      };
-   }
-
-   @Override
-   public void a(bmw $$0) {
-      super.a($$0);
-      if ($$0 == this.q) {
-         this.m();
+      for (int $$8 = 0; $$8 < 9; $$8++) {
+         this.a(new cok($$1, $$8, 36 + $$8 * 18, 195));
       }
    }
 
    @Override
-   public void b(ciu $$0) {
+   public void b(cjt $$0) {
       super.b($$0);
-      this.o.a(($$1, $$2) -> this.a($$0, this.q));
+      if (!$$0.dM().B) {
+         crj $$1 = this.t.a(this.t.a());
+         if (!$$1.d()) {
+            $$0.a($$1, false);
+         }
+      }
    }
 
    @Override
-   public boolean a(ciu $$0) {
-      return this.o.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.i((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5) <= 64.0, true);
+   public boolean a(cjt $$0) {
+      return a(this.u, $$0, dca.fO);
    }
 
    @Override
-   public cqm a(ciu $$0, int $$1) {
-      cqm $$2 = cqm.h;
-      cnl $$3 = this.i.get($$1);
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public crj a(cjt $$0, int $$1) {
+      crj $$2 = crj.i;
+      cok $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         cqm $$4 = $$3.g();
-         $$2 = $$4.q();
-         int $$5 = this.n();
-         int $$6 = this.r();
-         if ($$1 == this.o()) {
-            if (!this.a($$4, $$5, $$6, true)) {
-               return cqm.h;
+         crj $$4 = $$3.g();
+         $$2 = $$4.r();
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return crj.i;
             }
 
             $$3.b($$4, $$2);
-         } else if (this.m.contains($$1)) {
-            if (!this.a($$4, $$5, $$6, false)) {
-               return cqm.h;
+         } else if (!this.t.h() && this.t.a($$4) && $$4.G() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return crj.i;
             }
-         } else if (this.c($$4) && $$1 >= this.n() && $$1 < this.r()) {
-            int $$7 = this.d($$2);
-            if (!this.a($$4, $$7, this.o(), false)) {
-               return cqm.h;
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return crj.i;
             }
-         } else if ($$1 >= this.n() && $$1 < this.p()) {
-            if (!this.a($$4, this.q(), this.r(), false)) {
-               return cqm.h;
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return crj.i;
             }
-         } else if ($$1 >= this.q() && $$1 < this.r() && !this.a($$4, this.n(), this.p(), false)) {
-            return cqm.h;
+         } else if (!this.a($$4, 1, 37, false)) {
+            return crj.i;
          }
 
-         if ($$4.b()) {
-            $$3.e(cqm.h);
+         if ($$4.d()) {
+            $$3.e(crj.i);
          } else {
             $$3.b();
          }
 
-         if ($$4.M() == $$2.M()) {
-            return cqm.h;
+         if ($$4.G() == $$2.G()) {
+            return crj.i;
          }
 
          $$3.a($$0, $$4);
@@ -153,31 +118,55 @@ public abstract class cms extends clq {
       return $$2;
    }
 
-   protected boolean c(cqm $$0) {
-      return true;
+   public int l() {
+      return this.v.a(0);
    }
 
-   public int d(cqm $$0) {
-      return this.q.ai_() ? 0 : this.m.get(0);
+   public static int a(@Nullable il<bpf> $$0) {
+      return $$0 == null ? 0 : kr.d.t().a($$0) + 1;
    }
 
-   public int o() {
-      return this.n;
+   @Nullable
+   public static il<bpf> e(int $$0) {
+      return $$0 == 0 ? null : kr.d.t().a($$0 - 1);
    }
 
-   private int n() {
-      return this.o() + 1;
+   @Nullable
+   public il<bpf> m() {
+      return e(this.v.a(1));
    }
 
-   private int p() {
-      return this.n() + 27;
+   @Nullable
+   public il<bpf> n() {
+      return e(this.v.a(2));
    }
 
-   private int q() {
-      return this.p();
+   public void a(Optional<il<bpf>> $$0, Optional<il<bpf>> $$1) {
+      if (this.t.h()) {
+         this.v.a(1, a($$0.orElse(null)));
+         this.v.a(2, a($$1.orElse(null)));
+         this.t.a(1);
+         this.u.a(cyx::q);
+      }
    }
 
-   private int r() {
-      return this.q() + 9;
+   public boolean o() {
+      return !this.s.a(0).d();
+   }
+
+   class a extends cok {
+      public a(bnt $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(crj $$0) {
+         return $$0.a(avk.aw);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

@@ -1,81 +1,85 @@
-public class cqv extends cqh {
-   private static final jo a = new jn() {
-      private final jn c = new jn();
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      public cqm a(jl $$0, cqm $$1) {
-         ih $$2 = $$0.d().c(dch.b);
-         apf $$3 = $$0.b();
-         ept $$4 = $$0.a();
-         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
-         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
-         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
-         ib $$8 = $$0.c().a($$2);
-         dnb $$9 = $$3.a_($$8);
-         dof $$10 = $$9.b() instanceof czr ? $$9.c(((czr)$$9.b()).c()) : dof.a;
-         double $$11;
-         if ($$9.a(aun.N)) {
-            if ($$10.b()) {
-               $$11 = 0.6;
-            } else {
-               $$11 = 0.1;
-            }
-         } else {
-            if (!$$9.i() || !$$3.a_($$8.d()).a(aun.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cqv extends cre {
+   private static final wg a = wg.c("painting.random").a(n.h);
+   private final bqb<? extends cfv> b;
 
-            dnb $$13 = $$3.a_($$8.d());
-            dof $$14 = $$13.b() instanceof czr ? $$13.c(((czr)$$13.b()).c()) : dof.a;
-            if ($$2 != ih.a && $$14.b()) {
-               $$11 = -0.4;
-            } else {
-               $$11 = -0.9;
-            }
-         }
-
-         ckp $$18 = ckp.a($$3, $$5, $$6 + $$11, $$7, ((cqv)$$1.d()).b, $$1, null);
-         $$3.b($$18);
-         $$1.h(1);
-         return $$1;
-      }
-
-      @Override
-      protected void a(jl $$0) {
-         $$0.b().c(1000, $$0.c(), 0);
-      }
-   };
-   final ckp.a b;
-
-   public cqv(ckp.a $$0, cqh.a $$1) {
+   public cqv(bqb<? extends cfv> $$0, cre.a $$1) {
       super($$1);
       this.b = $$0;
-      dch.a(this, a);
    }
 
    @Override
-   public bnd a(csw $$0) {
-      cxb $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dnb $$3 = $$1.a_($$2);
-      if (!$$3.a(aun.N)) {
-         return bnd.e;
+   public boa a(cuq $$0) {
+      ib $$1 = $$0.a();
+      ih $$2 = $$0.k();
+      ib $$3 = $$1.a($$2);
+      cjt $$4 = $$0.o();
+      crj $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return boa.e;
       } else {
-         cqm $$4 = $$0.n();
-         if ($$1 instanceof apf $$5) {
-            dof $$6 = $$3.b() instanceof czr ? $$3.c(((czr)$$3.b()).c()) : dof.a;
-            double $$7 = 0.0;
-            if ($$6.b()) {
-               $$7 = 0.5;
+         cyx $$6 = $$0.q();
+         cfv $$8;
+         if (this.b == bqb.au) {
+            Optional<cfy> $$7 = cfy.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return boa.b;
             }
 
-            ckp $$8 = ckp.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
-            $$5.b($$8);
-            $$5.a(drp.t, $$2, drp.a.a($$0.o(), $$5.a_($$2.d())));
+            $$8 = $$7.get();
+         } else if (this.b == bqb.ai) {
+            $$8 = new cfw($$6, $$3, $$2);
+         } else {
+            if (this.b != bqb.V) {
+               return boa.a($$6.B);
+            }
+
+            $$8 = new cfu($$6, $$3, $$2);
          }
 
-         $$4.h(1);
-         return bnd.a($$1.B);
+         ctt $$12 = $$5.a(jp.D, ctt.a);
+         if (!$$12.b()) {
+            bqb.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.z()) {
+            if (!$$6.B) {
+               $$8.C();
+               $$6.a($$4, dts.t, $$8.dk());
+               $$6.b($$8);
+            }
+
+            $$5.g(1);
+            return boa.a($$6.B);
+         } else {
+            return boa.b;
+         }
+      }
+   }
+
+   protected boolean a(cjt $$0, ih $$1, crj $$2, ib $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == bqb.au) {
+         ctt $$4 = $$0.a(jp.D, ctt.a);
+         if (!$$4.b()) {
+            $$4.a(cfy.e).result().ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(wg.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(wg.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(wg.a("painting.dimensions", axk.e(((cfz)$$1x.a()).a(), 16), axk.e(((cfz)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
       }
    }
 }

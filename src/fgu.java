@@ -1,82 +1,104 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fgu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cmx<?>, fgu.a<?, ?>> b = Maps.newHashMap();
+public record fgu(ajt c, float d, float e, fgu.a f, String g) implements fgr {
+   private static final Codec<String> h = aws.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fgu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ajt.a.fieldOf("file").forGetter(fgu::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fgu::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fgu::e),
+               fgu.a.b.optionalFieldOf("shift", fgu.a.a).forGetter(fgu::f),
+               h.optionalFieldOf("skip", "").forGetter(fgu::g)
+            )
+            .apply($$0, fgu::new)
+   );
 
-   public static <T extends clq> void a(cmx<T> $$0, ezi $$1, int $$2, vu $$3) {
-      fgu.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ki.r.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
+   @Override
+   public fgs a() {
+      return fgs.b;
    }
 
-   @Nullable
-   private static <T extends clq> fgu.a<T, ?> a(cmx<T> $$0) {
-      return (fgu.a<T, ?>)b.get($$0);
+   @Override
+   public Either<fgr.b, fgr.c> b() {
+      return Either.left(this::a);
    }
 
-   private static <M extends clq, U extends fhh & fjl<M>> void a(cmx<? extends M> $$0, fgu.a<M, U> $$1) {
-      fgu.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ki.r.b($$0));
-      }
-   }
+   private eul a(atc $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-   public static boolean a() {
-      boolean $$0 = false;
+      try {
+         euo var14;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            MemoryStack $$4 = MemoryStack.stackPush();
 
-      for (cmx<?> $$1 : ki.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ki.r.b($$1));
-            $$0 = true;
+            try {
+               PointerBuffer $$5 = $$4.mallocPointer(1);
+               fgq.a(FreeType.FT_New_Memory_Face(fgq.a(), $$2, 0L, $$5), "Initializing font face");
+               $$1 = FT_Face.create($$5.get());
+            } catch (Throwable var10) {
+               if ($$4 != null) {
+                  try {
+                     $$4.close();
+                  } catch (Throwable var9) {
+                     var10.addSuppressed(var9);
+                  }
+               }
+
+               throw var10;
+            }
+
+            if ($$4 != null) {
+               $$4.close();
+            }
+
+            String $$6 = FreeType.FT_Get_Font_Format($$1);
+            if (!"TrueType".equals($$6)) {
+               throw new IOException("Font is not in TTF format, was " + $$6);
+            }
+
+            fgq.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+            var14 = new euo($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
          }
-      }
 
-      return $$0;
+         return var14;
+      } catch (Exception var12) {
+         if ($$1 != null) {
+            FreeType.FT_Done_Face($$1);
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var12;
+      }
    }
 
-   static {
-      a(cmx.a, fir::new);
-      a(cmx.b, fir::new);
-      a(cmx.c, fir::new);
-      a(cmx.d, fir::new);
-      a(cmx.e, fir::new);
-      a(cmx.f, fir::new);
-      a(cmx.g, fix::new);
-      a(cmx.h, fis::new);
-      a(cmx.i, fij::new);
-      a(cmx.j, fik::new);
-      a(cmx.k, fil::new);
-      a(cmx.l, fio::new);
-      a(cmx.m, fit::new);
-      a(cmx.n, fja::new);
-      a(cmx.o, fjb::new);
-      a(cmx.p, fjc::new);
-      a(cmx.q, fje::new);
-      a(cmx.r, fjj::new);
-      a(cmx.s, fjk::new);
-      a(cmx.t, fjm::new);
-      a(cmx.u, fjp::new);
-      a(cmx.v, fjr::new);
-      a(cmx.w, fjs::new);
-      a(cmx.x, fip::new);
-      a(cmx.y, fjt::new);
-   }
+   public static record a(float c, float d) {
+      public static final fgu.a a = new fgu.a(0.0F, 0.0F);
+      public static final Codec<fgu.a> b = Codec.FLOAT
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fgu.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   interface a<T extends clq, U extends fhh & fjl<T>> {
-      default void a(vu $$0, cmx<T> $$1, ezi $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.fZ()), $$2.s.fZ(), $$0);
-         $$2.s.bZ = $$4.H();
-         $$2.a($$4);
+      public float a() {
+         return this.c;
       }
 
-      U create(T var1, cit var2, vu var3);
+      public float b() {
+         return this.d;
+      }
    }
 }

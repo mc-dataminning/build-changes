@@ -1,25 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public interface dtu {
+   dtw a();
 
-class dtu extends dtx {
-   public static final Codec<dtu> a = a(dtu::new);
+   int b();
 
-   public dtu(List<dtv> $$0) {
-      super($$0);
+   boolean a(aps var1, il<dts> var2, dts.a var3, esa var4);
+
+   default dtu.a c() {
+      return dtu.a.a;
    }
 
-   public boolean a(cxw $$0, ib $$1) {
-      for (dtv $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static enum a {
+      a,
+      b;
    }
 
-   @Override
-   public dtw<?> a() {
-      return dtw.i;
+   public interface b<T extends dtu> {
+      T c();
    }
 }

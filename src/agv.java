@@ -1,37 +1,29 @@
-public class agv implements yb<aez> {
-   public static final xs<uu, agv> a = yb.a(agv::a, agv::new);
-   private final bnc b;
-   private final int c;
+public class agv implements yn<afl> {
+   public static final ye<vg, agv> a = yn.a(agv::a, agv::new);
+   private final int b;
 
-   public agv(bnc $$0, int $$1) {
+   public agv(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private agv(uu $$0) {
-      this.b = $$0.b(bnc.class);
-      this.c = $$0.l();
+   private agv(vg $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vg $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yd<agv> a() {
-      return aex.cb;
+   public yp<agv> a() {
+      return afj.bP;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public bnc b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

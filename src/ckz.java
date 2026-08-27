@@ -1,111 +1,109 @@
-public class ckz extends ckq implements dlg {
-   private boolean d = true;
+public class ckz extends cka {
+   private static final aiy<Boolean> e = ajc.a(ckz.class, aja.k);
 
-   public ckz(bpd<? extends ckz> $$0, cxb $$1) {
+   public ckz(bqb<? extends ckz> $$0, cyx $$1) {
       super($$0, $$1);
    }
 
-   public ckz(cxb $$0, double $$1, double $$2, double $$3) {
-      super(bpd.ab, $$1, $$2, $$3, $$0);
+   public ckz(cyx $$0, bqo $$1, double $$2, double $$3, double $$4) {
+      super(bqb.bq, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public ckp.a v() {
-      return ckp.a.f;
+   protected float w() {
+      return this.y() ? 0.73F : super.w();
    }
 
    @Override
-   public dnb x() {
-      return dae.hc.o();
-   }
-
-   @Override
-   public int z() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.G()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean G() {
-      return this.d;
-   }
-
-   public void p(boolean $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public double H() {
-      return this.dr();
-   }
-
-   @Override
-   public double I() {
-      return this.dt() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dx();
-   }
-
-   @Override
-   public boolean K() {
+   public boolean bN() {
       return false;
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (!this.dM().B && this.bA() && this.G() && this.M()) {
-         this.e();
-      }
+   public float a(cyp $$0, cyd $$1, ib $$2, doz $$3, eks $$4, float $$5) {
+      return this.y() && cfr.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
-   public boolean M() {
-      if (dlh.a(this.dM(), this)) {
-         return true;
-      } else {
-         for (cfe $$1 : this.dM().a(cfe.class, this.cH().c(0.25, 0.0, 0.25), bpc.a)) {
-            if (dlh.a(this, $$1)) {
-               return true;
+   @Override
+   protected void a(erx $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bpv $$1 = $$0.a();
+         boolean $$4;
+         if (this.u() instanceof bqo $$3) {
+            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bA()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.c(5.0F);
+               }
             }
+         } else {
+            $$4 = $$1.a(this.dN().o(), 5.0F);
          }
 
-         return false;
+         if ($$4 && $$1 instanceof bqo $$6) {
+            int $$7 = 0;
+            if (this.dM().ak() == bnx.c) {
+               $$7 = 10;
+            } else if (this.dM().ak() == bnx.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bph(bpj.t, 20 * $$7, 1), this.I());
+            }
+         }
       }
    }
 
    @Override
-   protected cqh ah_() {
-      return cqp.nP;
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.d);
-   }
-
-   @Override
-   protected void a(ta $$0) {
+   protected void a(ery $$0) {
       super.a($$0);
-      this.d = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+      if (!this.dM().B) {
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, cyx.a.c);
+         this.am();
+      }
    }
 
    @Override
-   public clq a(int $$0, cit $$1) {
-      return new cmp($$0, $$1, this);
+   public boolean bw() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bot $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(ajc.a $$0) {
+      $$0.a(e, false);
+   }
+
+   public boolean y() {
+      return this.an.a(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.a(e, $$0);
+   }
+
+   @Override
+   protected boolean r() {
+      return false;
+   }
+
+   @Override
+   public void b(tm $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.y());
+   }
+
+   @Override
+   public void a(tm $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

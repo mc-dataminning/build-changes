@@ -1,20 +1,22 @@
-public class cvb extends cuw {
-   protected cvb(cuw.a $$0, avd<cqh> $$1, bpe... $$2) {
-      super($$0, $$1, $$2);
+public abstract class cvb implements cva {
+   private final cuz a;
+
+   public cvb(cuz $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public boolean ao_() {
+      return true;
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
+   public crj a(iz $$0) {
+      return crj.i;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public cuz d() {
+      return this.a;
    }
 }

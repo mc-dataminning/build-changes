@@ -1,73 +1,57 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+public class cnz extends cok {
+   private final cnx a;
+   private final cjt b;
+   private int c;
+   private final cxu h;
 
-public record cnz(Map<cny.a, Integer> b, int c, il<atx> d, Supplier<ctm> e, List<cnz.a> f, float g, float h) {
-   public static final Codec<il<cnz>> a = ki.as.r();
-
-   public int a(cny.a $$0) {
-      return this.b.getOrDefault($$0, 0);
+   public cnz(cjt $$0, cxu $$1, cnx $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
-   public Map<cny.a, Integer> a() {
-      return this.b;
+   @Override
+   public boolean a(crj $$0) {
+      return false;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public il<atx> c() {
-      return this.d;
-   }
-
-   public Supplier<ctm> d() {
-      return this.e;
-   }
-
-   public List<cnz.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final ajh a;
-      private final String b;
-      private final boolean c;
-      private final ajh d;
-      private final ajh e;
-
-      public a(ajh $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+   @Override
+   public crj a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().G());
       }
 
-      public a(ajh $$0) {
-         this($$0, "", false);
-      }
+      return super.a($$0);
+   }
 
-      private ajh b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
-      }
+   @Override
+   protected void a(crj $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
 
-      public ajh a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
+   @Override
+   protected void b_(crj $$0) {
+      $$0.a(this.b.dM(), this.b, this.c);
+      this.c = 0;
+   }
 
-      public boolean a() {
-         return this.c;
+   @Override
+   public void a(cjt $$0, crj $$1) {
+      this.b_($$1);
+      cxv $$2 = this.a.g();
+      if ($$2 != null) {
+         crj $$3 = this.a.a(0);
+         crj $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(auw.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
+
+         this.h.u(this.h.u() + $$2.q());
       }
    }
 }

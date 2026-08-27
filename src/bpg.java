@@ -1,46 +1,15 @@
-public abstract class bpg extends bpr {
-   protected bpg(bpd<? extends bpg> $$0, cxb $$1) {
-      super($$0, $$1);
+public enum bpg {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bpg(n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dnb $$2, ib $$3) {
-   }
-
-   @Override
-   public void a(ept $$0) {
-      if (this.cX()) {
-         if (this.bc()) {
-            this.a(0.02F, $$0);
-            this.a(bpu.a, this.dp());
-            this.g(this.dp().a(0.8F));
-         } else if (this.bq()) {
-            this.a(0.02F, $$0);
-            this.a(bpu.a, this.dp());
-            this.g(this.dp().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dM().a_(this.aI()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dM().a_(this.aI()).b().h() * 0.91F;
-            }
-
-            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bpu.a, this.dp());
-            this.g(this.dp().a((double)$$1));
-         }
-      }
-
-      this.q(false);
-   }
-
-   @Override
-   public boolean p_() {
-      return false;
+   public n a() {
+      return this.d;
    }
 }

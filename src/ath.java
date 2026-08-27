@@ -1,28 +1,13 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class ath extends atg<GameProfile, ati> {
-   public ath(File $$0) {
-      super($$0);
-   }
-
+public abstract class ath<T> implements asw {
    @Override
-   protected atf<GameProfile> a(JsonObject $$0) {
-      return new ati($$0);
+   public final CompletableFuture<Void> a(asw.a $$0, atc $$1, bko $$2, bko $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
-   }
+   protected abstract T b(atc var1, bko var2);
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(atf::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
-   }
+   protected abstract void a(T var1, atc var2, bko var3);
 }

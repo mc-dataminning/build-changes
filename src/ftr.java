@@ -1,85 +1,83 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public final class ftr {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final ftr c = new ftr(HostAndPort.fromParts("server.invalid", 25565));
+public class ftr {
+   private static final Set<ih> a = EnumSet.allOf(ih.class);
+   private final List<ftp> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public ftr(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public ftr a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   private ftr(HostAndPort $$0) {
-      this.b = $$0;
+   public ftr a() {
+      return this.a(true);
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
+   public ftr a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public int b() {
-      return this.b.getPort();
+   public ftr a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, ftq $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new ftp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public static ftr a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new ftr($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
+   public ftr a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new ftp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, ftq.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
+   public ftr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new ftp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftq.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
+   public ftr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ih> $$6) {
+      this.b.add(new ftp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftq.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   public ftr a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new ftp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, ftq.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof ftr ? this.b.equals(((ftr)$$0).b) : false;
-      }
+   public ftr a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, ftq $$7) {
+      this.b.add(new ftp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public ftr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new ftp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftq.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public ftr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftq $$6, float $$7, float $$8) {
+      this.b.add(new ftp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public ftr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftq $$6) {
+      this.b.add(new ftp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<ftp> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static ftr c() {
+      return new ftr();
    }
 }

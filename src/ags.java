@@ -1,29 +1,29 @@
-public class ags implements yb<aez> {
-   public static final xs<uu, ags> a = yb.a(ags::a, ags::new);
-   private final bnc b;
+public class ags implements yn<afl> {
+   public static final ye<vg, ags> a = yn.a(ags::a, ags::new);
+   private final ajt b;
 
-   public ags(bnc $$0) {
-      this.b = $$0;
+   public ags(cvl<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private ags(uu $$0) {
-      this.b = $$0.b(bnc.class);
+   private ags(vg $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public yd<ags> a() {
-      return aex.bY;
+   public yp<ags> a() {
+      return afj.bM;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public bnc b() {
+   public ajt b() {
       return this.b;
    }
 }

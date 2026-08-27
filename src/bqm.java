@@ -1,6 +1,6 @@
-import javax.annotation.Nullable;
+import java.util.Map;
+import org.joml.Vector3f;
 
 public interface bqm {
-   @Nullable
-   bpp p();
+   Map<String, Vector3f> a();
 }

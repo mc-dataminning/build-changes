@@ -1,26 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bxz extends bxj {
-   public static final float i = 0.001F;
-   protected final float j;
+public class bxz extends bxl {
+   private final bqw a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public bxz(bpx $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public bxz(bqw $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(bxl.a.a));
    }
 
-   public bxz(bpx $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ept h() {
-      if (this.b.bf()) {
-         ept $$0 = cam.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean a() {
+      if (this.a.fV()) {
+         return false;
       } else {
-         return this.b.ei().i() >= this.j ? cam.a(this.b, 10, 7) : super.h();
+         esa $$0 = cbi.a(this.a, 16, 7, esa.c(this.a.fW()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
       }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.K().l();
+   }
+
+   @Override
+   public void c() {
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 }

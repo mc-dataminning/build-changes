@@ -1,69 +1,69 @@
-public class acf implements yb<aam> {
-   public static final xs<vf, acf> a = yb.a(acf::a, acf::new);
-   private final int b;
-   private final cwa c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public acf(int $$0, cwa $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class acf implements yn<aay> {
+   public static final ye<vg, acf> a = yn.a(acf::a, acf::new);
+   public static final acf.a b = new acf.a(0);
+   public static final acf.a c = new acf.a(1);
+   public static final acf.a d = new acf.a(2);
+   public static final acf.a e = new acf.a(3);
+   public static final acf.a f = new acf.a(4);
+   public static final acf.a g = new acf.a(5);
+   public static final acf.a h = new acf.a(6);
+   public static final acf.a i = new acf.a(7);
+   public static final acf.a j = new acf.a(8);
+   public static final acf.a k = new acf.a(9);
+   public static final acf.a l = new acf.a(10);
+   public static final acf.a m = new acf.a(11);
+   public static final acf.a n = new acf.a(12);
+   public static final acf.a o = new acf.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final acf.a u;
+   private final float v;
+
+   public acf(acf.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
    }
 
-   private acf(vf $$0) {
-      this.b = $$0.l();
-      this.c = cwa.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   private acf(vg $$0) {
+      this.u = (acf.a)acf.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
    }
 
-   private void a(vf $$0) {
-      $$0.c(this.b);
-      cwa.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   private void a(vg $$0) {
+      $$0.k(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public yd<acf> a() {
-      return aex.Q;
+   public yp<acf> a() {
+      return afj.G;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public acf.a b() {
+      return this.u;
    }
 
-   public cwa e() {
-      return this.c;
+   public float e() {
+      return this.v;
    }
 
-   public int f() {
-      return this.d;
-   }
+   public static class a {
+      static final Int2ObjectMap<acf.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

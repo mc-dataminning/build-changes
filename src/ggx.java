@@ -1,24 +1,41 @@
-public abstract class ggx<T extends box & bqb, M extends foe<T>> extends ghm<T, M> {
-   public ggx(gew<T, M> $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
+public class ggx extends gfz<bqq, frq<bqq>> {
+   private static final Map<bqb<?>, ajt> a = ImmutableMap.of(
+      bqb.az,
+      new ajt("textures/entity/piglin/piglin.png"),
+      bqb.bw,
+      new ajt("textures/entity/piglin/zombified_piglin.png"),
+      bqb.aA,
+      new ajt("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
+
+   public ggx(gfi.a $$0, ftk $$1, ftk $$2, ftk $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gjj<>(this, new fqy($$0.a($$2)), new fqy($$0.a($$3)), $$0.g()));
    }
 
-   @Override
-   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         foe<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         euf $$12 = $$1.getBuffer(fya.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, git.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   private static frq<bqq> a(fti $$0, ftk $$1, boolean $$2) {
+      frq<bqq> $$3 = new frq<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
+   }
+
+   public ajt c(bqq $$0) {
+      ajt $$1 = a.get($$0.ai());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
+      } else {
+         return $$1;
       }
    }
 
-   protected abstract float a(float var1);
-
-   protected abstract ajh a();
-
-   protected abstract foe<T> b();
+   protected boolean d(bqq $$0) {
+      return super.a($$0) || $$0 instanceof cii && ((cii)$$0).gn();
+   }
 }

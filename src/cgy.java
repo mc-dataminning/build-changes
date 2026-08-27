@@ -1,16 +1,98 @@
-public class cgy {
-   private static final double a = 50.0;
-
-   public static ept a(bpp $$0, axd $$1) {
-      int $$2 = 90;
-      float $$3 = $$0.aZ + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
-      float $$4 = aww.i($$1.i(), 4.0F, 8.0F);
-      ept $$5 = ept.a(0.0F, $$3).a((double)$$4);
-      return $$0.dk().e($$5);
+public class cgy extends chi {
+   public cgy(bqb<? extends cgy> $$0, cyx $$1) {
+      super($$0, $$1);
    }
 
-   public static boolean a(cgw $$0, ept $$1) {
-      ept $$2 = new ept($$0.dr(), $$0.dt(), $$0.dx());
-      return $$1.f($$2) > 50.0 ? false : $$0.dM().a(new cwk($$2, $$1, cwk.a.a, cwk.b.a, $$0)).c() == epr.a.a;
+   public static bru.a r() {
+      return cgz.gt().a(brv.r, 0.2F);
+   }
+
+   public static boolean b(bqb<cgy> $$0, cyy $$1, bqs $$2, ib $$3, axr $$4) {
+      return $$1.ak() != bnx.a;
+   }
+
+   @Override
+   public boolean a(cza $$0) {
+      return $$0.f(this) && !$$0.d(this.cH());
+   }
+
+   @Override
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.f(brv.a).a((double)($$0 * 3));
+   }
+
+   @Override
+   public float br() {
+      return 1.0F;
+   }
+
+   @Override
+   protected kj u() {
+      return kl.F;
+   }
+
+   @Override
+   public boolean bN() {
+      return false;
+   }
+
+   @Override
+   protected int y() {
+      return super.y() * 4;
+   }
+
+   @Override
+   protected void gj() {
+      this.d *= 0.9F;
+   }
+
+   @Override
+   protected void fg() {
+      esa $$0 = this.dp();
+      float $$1 = (float)this.go() * 0.1F;
+      this.o($$0.c, (double)(this.fe() + $$1), $$0.e);
+      this.au = true;
+   }
+
+   @Override
+   protected void c(avr<ekr> $$0) {
+      if ($$0 == avh.b) {
+         esa $$1 = this.dp();
+         this.o($$1.c, (double)(0.22F + (float)this.go() * 0.05F), $$1.e);
+         this.au = true;
+      } else {
+         super.c($$0);
+      }
+   }
+
+   @Override
+   protected boolean gk() {
+      return this.cY();
+   }
+
+   @Override
+   protected float gl() {
+      return super.gl() + 2.0F;
+   }
+
+   @Override
+   protected aul d(bot $$0) {
+      return this.gp() ? aum.ob : aum.oa;
+   }
+
+   @Override
+   protected aul o_() {
+      return this.gp() ? aum.nS : aum.nZ;
+   }
+
+   @Override
+   protected aul gm() {
+      return this.gp() ? aum.oe : aum.od;
+   }
+
+   @Override
+   protected aul gn() {
+      return aum.oc;
    }
 }

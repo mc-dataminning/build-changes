@@ -1,91 +1,53 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
 
-public class ffv {
-   private static final vu b = vu.c("gui.banned.title.temporary").a(n.r);
-   private static final vu c = vu.c("gui.banned.title.permanent").a(n.r);
-   public static final vu a = vu.c("gui.banned.name.title").a(n.r);
-   private static final vu d = vu.c("gui.banned.skin.title").a(n.r);
-   private static final vu e = vu.a("gui.banned.skin.description", vu.b("https://aka.ms/mcjavamoderation"));
+public class ffv implements ffy {
+   private static final ajt d = new ajt("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public static ffy a(BooleanConsumer $$0, BanDetails $$1) {
-      return new ffy($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vt.m, true);
+   public ffv(af $$0) {
+      this.e = $$0;
    }
 
-   public static ffy a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new ffy($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", vt.m, true);
-   }
-
-   public static ffy a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new ffy($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, vu.a("gui.banned.name.description", vu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vt.m, true);
-   }
-
-   private static vu a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static vu b(BanDetails $$0) {
-      return vu.a("gui.banned.description", c($$0), d($$0), vu.b("https://aka.ms/mcjavamoderation"));
-   }
-
-   private static vu c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fta $$4 = fta.a($$3);
-         vu $$5;
-         if ($$4 != null) {
-            $$5 = vx.a($$4.a().f(), wr.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = vu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+   @Override
+   public ffy.a a(fdc $$0, ffz $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<aww> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
          } else {
-            $$5 = vu.a("gui.banned.description.reason_id", $$3).a(n.r);
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = axk.d(axk.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = axk.d(axk.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+
+               for (aww $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
          }
 
-         return vu.a("gui.banned.description.reason", $$5);
-      } else {
-         return vu.c("gui.banned.description.unknownreason");
-      }
-   }
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ak().a(gor.a(aum.Ab, 1.0F, 1.0F));
+            }
+         }
 
-   private static vu d(BanDetails $$0) {
-      if (f($$0)) {
-         vu $$1 = e($$0);
-         return vu.a("gui.banned.description.temporary", vu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? ffy.a.b : ffy.a.a;
       } else {
-         return vu.c("gui.banned.description.permanent").a(n.r);
+         return ffy.a.b;
       }
-   }
-
-   private static vu e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return vt.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? vt.c($$1.toMinutes()) : vt.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
    }
 }

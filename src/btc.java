@@ -1,21 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class btc {
-   public static bri<bpp> a() {
-      return buu.a((Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$0 -> $$0.a((bux<bpp>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bqq<?> $$3 = $$1.dP();
-               ckf $$4 = $$0x.d($$1.dm());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(ckj.b);
-                  $$3.a($$0x.Y(), $$0x.X());
-               }
-
-               return true;
-            }
-         }))));
+   public static bsh<bqw> a(float $$0) {
+      return bvt.a(
+         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$1 -> $$1.group($$1.c(bzr.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dm())) {
+                           return false;
+                        } else {
+                           ib $$5 = $$3.dm();
+                           List<ib> $$6 = ib.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ib::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bzu($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

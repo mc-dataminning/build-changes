@@ -1,21 +1,30 @@
-class bod extends boi {
-   protected bod(boj $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public record bod(String d) {
+   public static final bod a = new bod("");
+   public static final Codec<bod> b = Codec.STRING.xmap(bod::new, bod::a);
+   public static final String c = "Lock";
+
+   public boolean a(crj $$0) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         wg $$1 = $$0.a(jp.d);
+         return $$1 != null && this.d.equals($$1.getString());
+      }
    }
 
-   @Override
-   public boolean a(bpp $$0, int $$1) {
-      return $$0.fp() > 0.0F || $$0.dM().B;
+   public void a(tm $$0) {
+      if (!this.d.isEmpty()) {
+         $$0.a("Lock", this.d);
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public static bod b(tm $$0) {
+      return $$0.b("Lock", 8) ? new bod($$0.l("Lock")) : a;
    }
 
-   @Override
-   public void b(bpp $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.A(Math.max($$0.fp(), (float)(4 * (1 + $$1))));
+   public String a() {
+      return this.d;
    }
 }

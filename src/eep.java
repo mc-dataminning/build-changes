@@ -1,37 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface eep {
-   Codec<eep> b = ki.aj.q().dispatch(eep::b, Function.identity());
+public interface eep<P extends eeo> {
+   eep<eea> a = a("block_predicate_filter", eea.a);
+   eep<eer> b = a("rarity_filter", eer.a);
+   eep<eet> c = a("surface_relative_threshold_filter", eet.a);
+   eep<eeu> d = a("surface_water_depth_filter", eeu.a);
+   eep<edz> e = a("biome", edz.a);
+   eep<eee> f = a("count", eee.a);
+   eep<eej> g = a("noise_based_count", eej.a);
+   eep<eek> h = a("noise_threshold_count", eek.a);
+   eep<eed> i = a("count_on_every_layer", eed.a);
+   eep<eef> j = a("environment_scan", eef.a);
+   eep<eeh> k = a("heightmap", eeh.a);
+   eep<eeg> l = a("height_range", eeg.a);
+   eep<eei> m = a("in_square", eei.a);
+   eep<eeq> n = a("random_offset", eeq.a);
+   eep<eeb> o = a("carving_mask", eeb.a);
 
-   void a(axd var1, BiConsumer<ajg<een>, ajg<een>> var2);
+   Codec<P> codec();
 
-   Stream<ajg<een>> a();
-
-   static eeo a(String $$0, String $$1) {
-      return a(ps.a($$0), ps.a($$1));
+   private static <P extends eeo> eep<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.U, $$0, () -> $$1);
    }
-
-   static eeo a(ajg<een> $$0, ajg<een> $$1) {
-      return new eeo($$0, $$1);
-   }
-
-   static ees a(String $$0, bln<String> $$1) {
-      bln.a<ajg<een>> $$2 = bln.a();
-      $$1.e().forEach($$1x -> $$2.a(ps.a((String)$$1x.b()), $$1x.a().a()));
-      return a(ps.a($$0), $$2.a());
-   }
-
-   static ees a(ajg<een> $$0, bln<ajg<een>> $$1) {
-      return new ees($$0, $$1);
-   }
-
-   static eet a(bln<List<eep>> $$0) {
-      return new eet($$0);
-   }
-
-   Codec<? extends eep> b();
 }

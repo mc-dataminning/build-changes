@@ -1,45 +1,20 @@
-public class cgm extends cfi {
-   public cgm(bpd<? extends cgm> $$0, cxb $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public static boolean a(bpd<cgm> $$0, cxq $$1, bpt $$2, ib $$3, axd $$4) {
-      ib $$5 = $$3;
+public interface cgm extends chd {
+   void b(boolean var1);
 
-      do {
-         $$5 = $$5.c();
-      } while ($$1.a_($$5).a(dae.qP));
+   @Nullable
+   bqo p();
 
-      return b($$0, $$1, $$2, $$3, $$4) && (bpt.a($$2) || $$1.h($$5.d()));
-   }
+   void a();
 
-   @Override
-   protected atx v() {
-      return aty.yN;
-   }
-
-   @Override
-   protected atx d(bnw $$0) {
-      return aty.yP;
-   }
-
-   @Override
-   protected atx n_() {
-      return aty.yO;
-   }
-
-   @Override
-   atx s() {
-      return aty.yQ;
-   }
-
-   @Override
-   protected cja b(cqm $$0, float $$1) {
-      cja $$2 = super.b($$0, $$1);
-      if ($$2 instanceof cjc) {
-         ((cjc)$$2).a(new bok(bom.b, 600));
+   default void b(bqo $$0, float $$1) {
+      bnz $$2 = ckn.a($$0, crm.vR);
+      crj $$3 = $$0.b($$2);
+      if ($$3.f() instanceof cpw $$4) {
+         $$4.a($$0.dM(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dM().ak().a() * 4), this.p());
       }
 
-      return $$2;
+      this.a();
    }
 }

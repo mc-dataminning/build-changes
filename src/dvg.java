@@ -1,57 +1,63 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dvg extends dvh {
-   public dvg(Codec<dyd> $$0) {
-      super($$0);
+public final class dvg {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   @Override
-   protected boolean a(cxc $$0, axd $$1, ib $$2, dnb $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         ih $$4 = ih.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ih> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   public static dvg.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dvg.a($$1, $$2);
+   }
 
-         for (ih $$8 : $$6.subList(0, $$5)) {
-            ib.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ih $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ih.b);
-               ih[] $$13 = new ih[]{$$8, ih.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+   public static dvg.a c(long $$0) {
+      return b($$0).a();
+   }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+   public static dvg.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dvg.a($$2, $$3);
+   }
 
-            $$9.c($$11.g());
-            $$9.c(ih.b);
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
 
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
+   public static record a(long a, long b) {
+      public dvg.a a(long $$0, long $$1) {
+         return new dvg.a(this.a ^ $$0, this.b ^ $$1);
+      }
 
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ih.b);
-               }
-            }
-         }
+      public dvg.a a(dvg.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
 
-         return true;
+      public dvg.a a() {
+         return new dvg.a(dvg.a(this.a), dvg.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

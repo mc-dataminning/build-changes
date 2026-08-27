@@ -1,138 +1,233 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.charset.StandardCharsets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class akk {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final int c;
-   private final atb d;
-   private final int e;
-   private volatile boolean f;
-   @Nullable
-   private ServerSocket g;
-   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
+public class akk extends ete {
+   private final MinecraftServer b;
+   private final Set<esw> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public akk(String $$0, int $$1, atb $$2, int $$3) {
+   public akk(MinecraftServer $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   public void a() throws IOException {
-      if (this.g != null && !this.g.isClosed()) {
-         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
+   @Override
+   protected void a(etd $$0, esw $$1, etb $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ah().a(new ael($$0.cy(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+      }
+
+      this.a();
+   }
+
+   @Override
+   protected void a(etd $$0, esw $$1) {
+      super.a($$0, $$1);
+      this.a();
+   }
+
+   @Override
+   public void a(etd $$0) {
+      super.a($$0);
+      this.b.ah().a(new adk($$0.cy(), null));
+      this.a();
+   }
+
+   @Override
+   public void b(etd $$0, esw $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ah().a(new adk($$0.cy(), $$1.b()));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(esv $$0, @Nullable esw $$1) {
+      esw $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ah().a(new aeb($$0, $$1));
+         } else {
+            this.g($$2);
+         }
+      }
+
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ah().a(new aeb($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
+   }
+
+   @Override
+   public boolean a(String $$0, esz $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ah().a(aek.a($$1, $$0, aek.a.a));
+         this.a();
+         return true;
       } else {
-         this.f = true;
-         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
-         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
-         $$0.setDaemon(true);
-         $$0.start();
-         Thread $$1 = new Thread(this::c, "chase-server-sender");
-         $$1.setDaemon(true);
-         $$1.start();
+         return false;
       }
    }
 
-   private void c() {
-      akk.a $$0 = null;
+   @Override
+   public void b(String $$0, esz $$1) {
+      super.b($$0, $$1);
+      this.b.ah().a(aek.a($$1, $$0, aek.a.b));
+      this.a();
+   }
 
-      while (this.f) {
-         if (!this.h.isEmpty()) {
-            akk.a $$1 = this.e();
-            if ($$1 != null && !$$1.equals($$0)) {
-               $$0 = $$1;
-               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+   @Override
+   public void a(esw $$0) {
+      super.a($$0);
+      this.a();
+   }
 
-               for (Socket $$3 : this.h) {
-                  if (!$$3.isClosed()) {
-                     ac.g().submit(() -> {
-                        try {
-                           OutputStream $$2x = $$3.getOutputStream();
-                           $$2x.write($$2);
-                           $$2x.flush();
-                        } catch (IOException var3x) {
-                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
-                           IOUtils.closeQuietly($$3);
-                        }
-                     });
-                  }
-               }
-            }
+   @Override
+   public void b(esw $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ah().a(new aei($$0, 2));
+      }
 
-            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
-            this.h.removeAll($$4);
-         }
+      this.a();
+   }
 
-         if (this.f) {
-            try {
-               Thread.sleep((long)this.e);
-            } catch (InterruptedException var6) {
-            }
-         }
+   @Override
+   public void c(esw $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(esz $$0) {
+      super.a($$0);
+      this.b.ah().a(aek.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(esz $$0) {
+      super.b($$0);
+      this.b.ah().a(aek.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(esz $$0) {
+      super.c($$0);
+      this.b.ah().a(aek.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
       }
    }
 
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-   }
+   public List<yn<?>> d(esw $$0) {
+      List<yn<?>> $$1 = Lists.newArrayList();
+      $$1.add(new aei($$0, 0));
 
-   private void d() {
-      try {
-         while (this.f) {
-            if (this.g != null) {
-               a.info("Remote control server is listening for connections on port {}", this.c);
-               Socket $$0 = this.g.accept();
-               a.info("Remote control server received client connection on port {}", $$0.getPort());
-               this.h.add($$0);
-            }
+      for (esv $$2 : esv.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aeb($$2, $$0));
          }
-      } catch (ClosedByInterruptException var6) {
-         if (this.f) {
-            a.info("Remote control server closed by interrupt");
-         }
-      } catch (IOException var7) {
-         if (this.f) {
-            a.error("Remote control server closed because of an IO exception", var7);
-         }
-      } finally {
-         IOUtils.closeQuietly(this.g);
       }
 
-      a.info("Remote control server is now stopped");
-      this.f = false;
+      for (esx $$3 : this.i($$0)) {
+         $$1.add(new ael($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   private akk.a e() {
-      List<apg> $$0 = this.d.t();
-      if ($$0.isEmpty()) {
-         return null;
-      } else {
-         apg $$1 = $$0.get(0);
-         String $$2 = (String)aks.a.inverse().get($$1.dM().ad());
-         return $$2 == null ? null : new akk.a($$2, $$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
+   public void e(esw $$0) {
+      List<yn<?>> $$1 = this.d($$0);
+
+      for (apt $$2 : this.b.ah().t()) {
+         for (yn<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
       }
+
+      this.c.add($$0);
    }
 
-   static record a(String a, double b, double c, double d, float e, float f) {
-      String g() {
-         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
+   public List<yn<?>> f(esw $$0) {
+      List<yn<?>> $$1 = Lists.newArrayList();
+      $$1.add(new aei($$0, 1));
+
+      for (esv $$2 : esv.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aeb($$2, $$0));
+         }
       }
+
+      return $$1;
+   }
+
+   public void g(esw $$0) {
+      List<yn<?>> $$1 = this.f($$0);
+
+      for (apt $$2 : this.b.ah().t()) {
+         for (yn<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(esw $$0) {
+      int $$1 = 0;
+
+      for (esv $$2 : esv.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public elz.a<etf> b() {
+      return new elz.a<>(this::h, this::a, ayq.n);
+   }
+
+   private etf h() {
+      etf $$0 = new etf(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private etf a(tm $$0, in.a $$1) {
+      return this.h().b($$0, $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

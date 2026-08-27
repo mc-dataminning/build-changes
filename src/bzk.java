@@ -1,41 +1,39 @@
-import com.google.common.collect.ImmutableSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
-public class bzk extends bzy<bpp> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class bzk<T extends bqq & bqu> extends bxl {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public bzk() {
-      this(200);
-   }
-
-   public bzk(int $$0) {
-      super($$0);
+   public bzk(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void a(apf $$0, bpp $$1) {
-      a($$1);
+   public boolean a() {
+      return this.b.dM().aa().b(cyt.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ej() != null && this.b.ej().ai() == bqb.bx && this.b.ek() > this.d;
    }
 
    @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.of(bys.g);
-   }
-
-   public static void a(bpp $$0) {
-      Optional<List<bpp>> $$1 = $$0.dP().c(bys.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bpd.ag));
-         if ($$2) {
-            b($$0);
-         }
+   public void c() {
+      this.d = this.b.ek();
+      this.b.Z_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bqu)$$0).forEach(bqu::Z_);
       }
+
+      super.c();
    }
 
-   public static void b(bpp $$0) {
-      $$0.dP().a(bys.F, true, 599L);
+   private List<? extends bqq> i() {
+      double $$0 = this.b.g(brv.k);
+      erv $$1 = erv.a(this.b.dk()).c($$0, 10.0, $$0);
+      return this.b.dM().a((Class<? extends bqq>)this.b.getClass(), $$1, bqa.f);
    }
 }

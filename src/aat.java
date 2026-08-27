@@ -1,44 +1,20 @@
-import java.util.function.BiFunction;
+public record aat(ajt b) implements yn<aas> {
+   public static final ye<vg, aat> a = yn.a(aat::a, aat::new);
 
-public class aat implements yb<aam> {
-   public static final xs<vf, aat> a = xs.a(ib.b, aat::b, xq.a(kj.h), aat::e, xq.k, aat::f, aat::new);
-   private final ib b;
-   private final dkk<?> c;
-   private final ta d;
-
-   public static aat a(dki $$0, BiFunction<dki, iz, ta> $$1) {
-      iz $$2 = $$0.i().H_();
-      return new aat($$0.aC_(), $$0.r(), $$1.apply($$0, $$2));
+   private aat(vg $$0) {
+      this($$0.q());
    }
 
-   public static aat a(dki $$0) {
-      return a($$0, dki::a);
-   }
-
-   private aat(ib $$0, dkk<?> $$1, ta $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(vg $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yd<aat> a() {
-      return aex.i;
+   public yp<aat> a() {
+      return aau.a;
    }
 
-   public void a(aam $$0) {
+   public void a(aas $$0) {
       $$0.a(this);
-   }
-
-   public ib b() {
-      return this.b;
-   }
-
-   public dkk<?> e() {
-      return this.c;
-   }
-
-   public ta f() {
-      return this.d;
    }
 }

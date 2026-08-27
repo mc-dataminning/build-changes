@@ -1,42 +1,54 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class efk extends ede {
-   public static final blr<cym.c> d = blr.a(
-      new cym.c(bpd.j, 10, 2, 3), new cym.c(bpd.bx, 5, 4, 4), new cym.c(bpd.bq, 8, 5, 5), new cym.c(bpd.aN, 2, 5, 5), new cym.c(bpd.ap, 3, 4, 4)
-   );
-   public static final Codec<efk> e = a(efk::new);
+public class efk extends elz {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public efk(ede.c $$0) {
-      super($$0);
+   public static elz.a<efk> a() {
+      return new elz.a<>(efk::new, efk::b, ayq.o);
+   }
+
+   private efk(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public efk() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static efk b(tm $$0, in.a $$1) {
+      return new efk(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   public Optional<ede.b> a(ede.a $$0) {
-      cwi $$1 = $$0.h();
-      ib $$2 = new ib($$1.d(), 64, $$1.e());
-      return Optional.of(new ede.b($$2, (Consumer<edw>)($$1x -> a($$1x, $$0))));
+   public tm a(tm $$0, in.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   private static void a(edw $$0, ede.a $$1) {
-      efj.q $$2 = new efj.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<edi> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         edi $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   @Override
-   public edn<?> e() {
-      return edn.d;
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

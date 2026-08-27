@@ -1,25 +1,20 @@
-public final class cxn implements dou {
-   private final int a;
-   private final dnb[] b;
-
-   public cxn(int $$0, dnb[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cxn extends cwq {
+   protected cxn(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bj, $$1);
    }
 
    @Override
-   public dnb a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dae.a.o();
+   public int a(int $$0) {
+      return 15;
    }
 
    @Override
-   public void a(int $$0, dnb $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public boolean a(cwq $$0) {
+      return super.a($$0) && $$0 != cwt.x;
    }
 }

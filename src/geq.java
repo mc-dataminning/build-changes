@@ -1,41 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class geq extends gds<bpr, fpj<bpr>> {
-   private static final Map<bpd<?>, ajh> a = ImmutableMap.of(
-      bpd.aA,
-      new ajh("textures/entity/piglin/piglin.png"),
-      bpd.bx,
-      new ajh("textures/entity/piglin/zombified_piglin.png"),
-      bpd.aB,
-      new ajh("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
-
-   public geq(gdb.a $$0, frd $$1, frd $$2, frd $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new ghc<>(this, new foq($$0.a($$2)), new foq($$0.a($$3)), $$0.g()));
+public class geq extends ggo<ccg, fpx<ccg>> {
+   public geq(gfi.a $$0) {
+      super($$0, new fpx<>($$0.a(ftl.t)), 0.4F);
+      this.a(new giv(this, $$0.f()));
    }
 
-   private static fpj<bpr> a(frb $$0, frd $$1, boolean $$2) {
-      fpj<bpr> $$3 = new fpj<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
+   public ajt a(ccg $$0) {
+      return $$0.gt();
+   }
+
+   protected void a(ccg $$0, ewi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(ccg $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.G($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(axk.j($$6, 0.0F, 90.0F)));
+         ib $$7 = $$0.dm();
+
+         for (cjt $$9 : $$0.dM().a(cjt.class, new erv($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fI()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
       }
-
-      return $$3;
-   }
-
-   public ajh c(bpr $$0) {
-      ajh $$1 = a.get($$0.ai());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
-      } else {
-         return $$1;
-      }
-   }
-
-   protected boolean d(bpr $$0) {
-      return super.a($$0) || $$0 instanceof chj && ((chj)$$0).gn();
    }
 }

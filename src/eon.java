@@ -1,53 +1,35 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record eon(eoq b, eoq c) implements eoq {
-   public static final Codec<eon> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eor.a.fieldOf("n").forGetter(eon::c), eor.a.fieldOf("p").forGetter(eon::d)).apply($$0, eon::new)
-   );
+public class eon extends eoo {
+   public static final Codec<eon> a = RecordCodecBuilder.create($$0 -> a($$0).and(ena.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eon::new));
+   private final ena b;
 
-   @Override
-   public eop b() {
-      return eor.d;
+   private eon(List<eqc> $$0, ena $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public int a(ekw $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      axd $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public eoq b() {
+      return eor.r;
    }
 
    @Override
-   public float b(ekw $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static eon a(int $$0, float $$1) {
-      return new eon(eoo.a((float)$$0), eoo.a($$1));
+   public Set<epl<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public Set<ene<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public crj a(crj $$0, enb $$1) {
+      int $$2 = this.b.a($$1, $$0.G());
+      $$0.e($$2);
+      return $$0;
    }
 
-   public eoq c() {
-      return this.b;
-   }
-
-   public eoq d() {
-      return this.c;
+   public static eoo.a<?> a(ena $$0) {
+      return a($$1 -> new eon($$1, $$0));
    }
 }

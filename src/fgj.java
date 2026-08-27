@@ -1,80 +1,276 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class fgj extends fhh {
-   private static final vu a = vu.c("addServer.enterName");
-   private static final vu b = vu.c("addServer.enterIp");
-   private fbi c;
-   private final BooleanConsumer k;
-   private final fso l;
-   private fbr m;
-   private fbr n;
-   private final fhh o;
+public class fgj {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   public fgj(fhh $$0, BooleanConsumer $$1, fso $$2) {
-      super(vu.c("addServer.title"));
-      this.o = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public fgj(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   @Override
-   protected void aO_() {
-      this.n = new fbr(this.i, this.g / 2 - 100, 66, 200, 20, vu.c("addServer.enterName"));
-      this.n.a(this.l.a);
-      this.n.b($$0 -> this.E());
-      this.d(this.n);
-      this.m = new fbr(this.i, this.g / 2 - 100, 106, 200, 20, vu.c("addServer.enterIp"));
-      this.m.f(128);
-      this.m.a(this.l.b);
-      this.m.b($$0 -> this.E());
-      this.d(this.m);
-      this.c(
-         fbp.a(fso.a::a)
-            .a(fso.a.values())
-            .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vu.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
-      );
-      this.c = this.c(fbi.a(vu.c("addServer.add"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.c(fbi.a(vt.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
-      this.E();
+   public static Supplier<String> a(fbp $$0) {
+      return () -> b($$0);
    }
 
-   @Override
-   protected void aF_() {
-      this.b(this.n);
+   public static String b(fbp $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   @Override
-   public void a(ezi $$0, int $$1, int $$2) {
-      String $$3 = this.m.a();
-      String $$4 = this.n.a();
-      this.b($$0, $$1, $$2);
-      this.m.a($$3);
-      this.n.a($$4);
+   public static Consumer<String> c(fbp $$0) {
+      return $$1 -> a($$0, $$1);
    }
 
-   private void o() {
-      this.l.a = this.n.a();
-      this.l.b = this.m.a();
-      this.k.accept(true);
+   public static void a(fbp $$0, String $$1) {
+      $$0.o.a($$1);
    }
 
-   @Override
+   public boolean a(char $$0) {
+      if (ayf.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
+      }
+
+      return true;
+   }
+
+   public boolean a(int $$0) {
+      if (fjo.f($$0)) {
+         this.d();
+         return true;
+      } else if (fjo.e($$0)) {
+         this.c();
+         return true;
+      } else if (fjo.d($$0)) {
+         this.b();
+         return true;
+      } else if (fjo.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         fgj.a $$1 = fjo.r() ? fgj.a.b : fgj.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fjo.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 262) {
+                  this.a(1, fjo.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 268) {
+                  this.a(fjo.s());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(fjo.s());
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   private int h(int $$0) {
+      return axk.a($$0, 0, this.a.get().length());
+   }
+
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
+      }
+
+      this.f = axk.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
+   }
+
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
+
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
+   }
+
+   public void a(int $$0, boolean $$1, fgj.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = fcb.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, fgj.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = fcb.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
+
+         this.b.accept($$2);
+      }
+   }
+
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
+
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
+
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
    public void d() {
-      this.f.a(this.o);
+      this.g = 0;
+      this.f = this.a.get().length();
    }
 
-   private void E() {
-      this.c.j = ftr.b(this.m.a()) && !this.n.a().isEmpty();
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
    }
 
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
-      this.n.a($$0, $$1, $$2, $$3);
-      this.m.a($$0, $$1, $$2, $$3);
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
+      }
+   }
+
+   public void e() {
+      this.a(false);
+   }
+
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = axk.a($$0, 0, $$2);
+      this.g = axk.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

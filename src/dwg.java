@@ -1,44 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwg extends dvs<dyd> {
-   public dwg(Codec<dyd> $$0) {
-      super($$0);
+class dwg implements dvy {
+   public static final Codec<dwg> a = RecordCodecBuilder.create($$0 -> $$0.group(dvy.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dwg::new));
+   private final dvy e;
+
+   public dwg(dvy $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(czs $$0, ib $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public boolean a(dvu<dyd> $$0) {
-      int $$1 = 0;
-      cxw $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      axd $$4 = $$0.d();
-      int $$5 = $$2.a(dso.a.d, $$3.u(), $$3.w());
-      ib $$6 = new ib($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dae.G)) {
-         dnb $$7 = dae.mc.o();
-         dnb $$8 = dae.md.o();
-         int $$9 = 1 + $$4.a(10);
-
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dae.G) && $$2.a_($$6.c()).a(dae.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(def.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               ib $$11 = $$6.d();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(dae.mc)) {
-                  $$2.a($$11, $$7.a(def.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.c();
-         }
-      }
-
-      return $$1 > 0;
+   public dvz<?> a() {
+      return dvz.k;
    }
 }

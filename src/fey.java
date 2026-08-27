@@ -1,143 +1,66 @@
-public interface fey {
-   fey a(int var1);
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   fey a(int var1, int var2);
+public class fey extends fdn {
+   private static final ffc a = new ffc(
+      new ajt("widget/tab_selected"), new ajt("widget/tab"), new ajt("widget/tab_selected_highlighted"), new ajt("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final ffs m;
+   private final ffr n;
 
-   fey a(int var1, int var2, int var3, int var4);
-
-   fey b(int var1);
-
-   fey c(int var1);
-
-   fey d(int var1);
-
-   fey e(int var1);
-
-   fey f(int var1);
-
-   fey g(int var1);
-
-   fey a(float var1, float var2);
-
-   fey a(float var1);
-
-   fey b(float var1);
-
-   default fey a() {
-      return this.a(0.0F);
+   public fey(ffs $$0, ffr $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   default fey b() {
-      return this.a(0.5F);
+   @Override
+   public void b(fdc $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
+      RenderSystem.disableBlend();
+      fda $$4 = fbp.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.b($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
+         this.b($$0, $$4, $$5);
+      }
    }
 
-   default fey c() {
-      return this.a(1.0F);
+   public void a(fdc $$0, fda $$1, int $$2) {
+      int $$3 = this.C() + 1;
+      int $$4 = this.D() + (this.b() ? 0 : 3);
+      int $$5 = this.C() + this.x() - 1;
+      int $$6 = this.D() + this.v();
+      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
    }
 
-   default fey d() {
-      return this.b(0.0F);
+   private void b(fdc $$0, fda $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
+      int $$4 = this.C() + (this.x() - $$3) / 2;
+      int $$5 = this.D() + this.v() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
-   default fey e() {
-      return this.b(0.5F);
+   @Override
+   protected void a(fhl $$0) {
+      $$0.a(fhk.a, wg.a("gui.narrate.tab", this.n.a()));
    }
 
-   default fey f() {
-      return this.b(1.0F);
+   @Override
+   public void a(gqa $$0) {
    }
 
-   fey g();
-
-   fey.a h();
-
-   static fey i() {
-      return new fey.a();
+   public ffr a() {
+      return this.n;
    }
 
-   public static class a implements fey {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
-      }
-
-      public a(fey.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fey.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fey.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fey.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fey.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fey.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fey.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fey.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fey.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fey.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fey.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fey.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fey.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fey.a j() {
-         return new fey.a(this);
-      }
-
-      @Override
-      public fey.a h() {
-         return this;
-      }
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

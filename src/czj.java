@@ -1,67 +1,25 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public final class czj implements dqs {
+   private final int a;
+   private final doz[] b;
 
-public class czj extends dac implements dhc {
-   public static final MapCodec<czj> a = b(czj::new);
-   public static final dns b = dnr.C;
-
-   @Override
-   public MapCodec<czj> a() {
-      return a;
-   }
-
-   protected czj(dna.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+   public czj(int $$0, doz[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   protected boolean a_(dnb $$0, cwh $$1, ib $$2) {
-      return true;
+   public doz a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dca.a.n();
    }
 
    @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.a;
-   }
-
-   @Override
-   protected float d(dnb $$0, cwh $$1, ib $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eiq.c, eiq.c.a($$3));
+   public void a(int $$0, doz $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected eip c_(dnb $$0) {
-      return $$0.c(b) ? eiq.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dnb a(csu $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eiq.c));
-   }
-
-   @Override
-   protected void a(dnc.a<dac, dnb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cqm a(@Nullable ciu $$0, cxc $$1, ib $$2, dnb $$3) {
-      return $$0 != null && $$0.f() ? dhc.super.a($$0, $$1, $$2, $$3) : cqm.h;
-   }
-
-   @Override
-   public boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
-      return $$0 != null && $$0.f() ? dhc.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

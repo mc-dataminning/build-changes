@@ -1,10 +1,98 @@
 public class auw {
-   public static final avd<cfa> a = a("placeable");
+   public static final auv<dby> a = a("mined", kr.e);
+   public static final auv<cre> b = a("crafted", kr.h);
+   public static final auv<cre> c = a("used", kr.h);
+   public static final auv<cre> d = a("broken", kr.h);
+   public static final auv<cre> e = a("picked_up", kr.h);
+   public static final auv<cre> f = a("dropped", kr.h);
+   public static final auv<bqb<?>> g = a("killed", kr.g);
+   public static final auv<bqb<?>> h = a("killed_by", kr.g);
+   public static final auv<ajt> i = a("custom", kr.m);
+   public static final ajt j = a("leave_game", auu.b);
+   public static final ajt k = a("play_time", auu.e);
+   public static final ajt l = a("total_world_time", auu.e);
+   public static final ajt m = a("time_since_death", auu.e);
+   public static final ajt n = a("time_since_rest", auu.e);
+   public static final ajt o = a("sneak_time", auu.e);
+   public static final ajt p = a("walk_one_cm", auu.d);
+   public static final ajt q = a("crouch_one_cm", auu.d);
+   public static final ajt r = a("sprint_one_cm", auu.d);
+   public static final ajt s = a("walk_on_water_one_cm", auu.d);
+   public static final ajt t = a("fall_one_cm", auu.d);
+   public static final ajt u = a("climb_one_cm", auu.d);
+   public static final ajt v = a("fly_one_cm", auu.d);
+   public static final ajt w = a("walk_under_water_one_cm", auu.d);
+   public static final ajt x = a("minecart_one_cm", auu.d);
+   public static final ajt y = a("boat_one_cm", auu.d);
+   public static final ajt z = a("pig_one_cm", auu.d);
+   public static final ajt A = a("horse_one_cm", auu.d);
+   public static final ajt B = a("aviate_one_cm", auu.d);
+   public static final ajt C = a("swim_one_cm", auu.d);
+   public static final ajt D = a("strider_one_cm", auu.d);
+   public static final ajt E = a("jump", auu.b);
+   public static final ajt F = a("drop", auu.b);
+   public static final ajt G = a("damage_dealt", auu.c);
+   public static final ajt H = a("damage_dealt_absorbed", auu.c);
+   public static final ajt I = a("damage_dealt_resisted", auu.c);
+   public static final ajt J = a("damage_taken", auu.c);
+   public static final ajt K = a("damage_blocked_by_shield", auu.c);
+   public static final ajt L = a("damage_absorbed", auu.c);
+   public static final ajt M = a("damage_resisted", auu.c);
+   public static final ajt N = a("deaths", auu.b);
+   public static final ajt O = a("mob_kills", auu.b);
+   public static final ajt P = a("animals_bred", auu.b);
+   public static final ajt Q = a("player_kills", auu.b);
+   public static final ajt R = a("fish_caught", auu.b);
+   public static final ajt S = a("talked_to_villager", auu.b);
+   public static final ajt T = a("traded_with_villager", auu.b);
+   public static final ajt U = a("eat_cake_slice", auu.b);
+   public static final ajt V = a("fill_cauldron", auu.b);
+   public static final ajt W = a("use_cauldron", auu.b);
+   public static final ajt X = a("clean_armor", auu.b);
+   public static final ajt Y = a("clean_banner", auu.b);
+   public static final ajt Z = a("clean_shulker_box", auu.b);
+   public static final ajt aa = a("interact_with_brewingstand", auu.b);
+   public static final ajt ab = a("interact_with_beacon", auu.b);
+   public static final ajt ac = a("inspect_dropper", auu.b);
+   public static final ajt ad = a("inspect_hopper", auu.b);
+   public static final ajt ae = a("inspect_dispenser", auu.b);
+   public static final ajt af = a("play_noteblock", auu.b);
+   public static final ajt ag = a("tune_noteblock", auu.b);
+   public static final ajt ah = a("pot_flower", auu.b);
+   public static final ajt ai = a("trigger_trapped_chest", auu.b);
+   public static final ajt aj = a("open_enderchest", auu.b);
+   public static final ajt ak = a("enchant_item", auu.b);
+   public static final ajt al = a("play_record", auu.b);
+   public static final ajt am = a("interact_with_furnace", auu.b);
+   public static final ajt an = a("interact_with_crafting_table", auu.b);
+   public static final ajt ao = a("open_chest", auu.b);
+   public static final ajt ap = a("sleep_in_bed", auu.b);
+   public static final ajt aq = a("open_shulker_box", auu.b);
+   public static final ajt ar = a("open_barrel", auu.b);
+   public static final ajt as = a("interact_with_blast_furnace", auu.b);
+   public static final ajt at = a("interact_with_smoker", auu.b);
+   public static final ajt au = a("interact_with_lectern", auu.b);
+   public static final ajt av = a("interact_with_campfire", auu.b);
+   public static final ajt aw = a("interact_with_cartography_table", auu.b);
+   public static final ajt ax = a("interact_with_loom", auu.b);
+   public static final ajt ay = a("interact_with_stonecutter", auu.b);
+   public static final ajt az = a("bell_ring", auu.b);
+   public static final ajt aA = a("raid_trigger", auu.b);
+   public static final ajt aB = a("raid_win", auu.b);
+   public static final ajt aC = a("interact_with_anvil", auu.b);
+   public static final ajt aD = a("interact_with_grindstone", auu.b);
+   public static final ajt aE = a("target_hit", auu.b);
+   public static final ajt aF = a("interact_with_smithing_table", auu.b);
 
-   private auw() {
+   private static ajt a(String $$0, auu $$1) {
+      ajt $$2 = new ajt($$0);
+      iy.a(kr.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static avd<cfa> a(String $$0) {
-      return avd.a(kj.R, new ajh($$0));
+   private static <T> auv<T> a(String $$0, iy<T> $$1) {
+      wg $$2 = wg.c("stat_type.minecraft." + $$0);
+      return iy.a(kr.x, $$0, new auv<>($$1, $$2));
    }
 }

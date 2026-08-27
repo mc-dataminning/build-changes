@@ -1,62 +1,100 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fxy {
-   private final fyd a = new fyd();
-   private final fye b;
-   private final fxs.a c;
-   private final fxs.a d;
-   private final fxt e;
+public class fxy extends fyn {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
 
-   public fxy(int $$0) {
-      this.b = fye.a($$0);
-      SortedMap<fya, etw> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(fyh.h(), this.a.a(fya.c()));
-         $$0x.put(fyh.i(), this.a.a(fya.e()));
-         $$0x.put(fyh.a(), this.a.a(fya.d()));
-         $$0x.put(fyh.k(), this.a.a(fya.f()));
-         a($$0x, fyh.b());
-         a($$0x, fyh.c());
-         a($$0x, fyh.d());
-         a($$0x, fyh.e());
-         a($$0x, fyh.f());
-         $$0x.put(fyh.g(), new etw(786432));
-         a($$0x, fya.j());
-         a($$0x, fya.k());
-         a($$0x, fya.m());
-         a($$0x, fya.n());
-         a($$0x, fya.l());
-         a($$0x, fya.o());
-         a($$0x, fya.p());
-         a($$0x, fya.i());
-         glh.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fxs.a(new etw(1536));
-      this.c = fxs.a($$1, new etw(786432));
-      this.e = new fxt(this.c);
+   fxy(fuh $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fya, etw> $$0, fya $$1) {
-      $$0.put($$1, new etw($$1.I()));
+   @Override
+   public float b(float $$0) {
+      return this.D * axk.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
-   public fyd a() {
-      return this.a;
+   @Override
+   public void a(ewm $$0, fba $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - axk.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
    }
 
-   public fye b() {
-      return this.b;
+   private void a(ewm $$0, fba $$1, float $$2, Consumer<Quaternionf> $$3) {
+      esa $$4 = $$1.b();
+      float $$5 = (float)(axk.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(axk.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(axk.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
+      }
+
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
    }
 
-   public fxs.a c() {
-      return this.c;
+   private void a(ewm $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
    }
 
-   public fxs.a d() {
-      return this.d;
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public fxt e() {
-      return this.e;
+   @Override
+   public fxr b() {
+      return fxr.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements fxq<kn> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(kn $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxy $$8 = new fxy($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

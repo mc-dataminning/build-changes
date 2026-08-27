@@ -1,118 +1,91 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class ajr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<axy> b = CompletableFuture.completedFuture(axy.a);
-   private final ajr.a c;
-   private final dv d;
-   private final cts e;
-   private final avf f;
-   private final ekz g;
-   private final ajt h;
-   private final aju i;
+public class ajr<T> extends ajl<T> {
+   private final ajr.b b;
 
-   public ajr(iz.b $$0, clh $$1, dv.a $$2, int $$3) {
-      this.c = new ajr.a($$0);
-      this.c.a(ajr.b.a);
-      this.e = new cts(this.c);
-      this.f = new avf($$0);
-      this.d = new dv($$2, dq.a(this.c, $$1));
-      this.g = new ekz(this.c);
-      this.h = new ajt(this.c, this.g);
-      this.i = new aju($$3, this.d.a());
+   private static ajr.b a(final ajr.b $$0) {
+      return new ajr.b() {
+         private final Map<ajs<? extends iy<?>>, Optional<? extends ajr.a<?>>> b = new HashMap<>();
+
+         @Override
+         public <T> Optional<ajr.a<T>> a(ajs<? extends iy<? extends T>> $$0x) {
+            return (Optional<ajr.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+         }
+      };
    }
 
-   public aju a() {
-      return this.i;
+   public static <T> ajr<T> a(DynamicOps<T> $$0, final in.a $$1) {
+      return a($$0, a(new ajr.b() {
+         @Override
+         public <E> Optional<ajr.a<E>> a(ajs<? extends iy<? extends E>> $$0) {
+            return $$1.a($$0).map(ajr.a::a);
+         }
+      }));
    }
 
-   public ekz b() {
-      return this.g;
+   public static <T> ajr<T> a(DynamicOps<T> $$0, ajr.b $$1) {
+      return new ajr<>($$0, $$1);
    }
 
-   public cts c() {
-      return this.e;
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, in.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public dv d() {
-      return this.d;
+   private ajr(DynamicOps<T> $$0, ajr.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public ajt e() {
-      return this.h;
+   public <U> ajr<U> a(DynamicOps<U> $$0) {
+      return (ajr<U>)($$0 == this.a ? this : new ajr((DynamicOps<T>)$$0, this.b));
    }
 
-   public List<asi> f() {
-      return List.of(this.f, this.g, this.e, this.i, this.h);
+   public <E> Optional<io<E>> a(ajs<? extends iy<? extends E>> $$0) {
+      return this.b.a($$0).map(ajr.a::a);
    }
 
-   public static CompletableFuture<ajr> a(aso $$0, iz.b $$1, clh $$2, dv.a $$3, int $$4, Executor $$5, Executor $$6) {
-      ajr $$7 = new ajr($$1, $$2, $$3, $$4);
-      return asu.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(ajr.b.b)).thenApply($$1x -> $$7);
+   public <E> Optional<im<E>> b(ajs<? extends iy<? extends E>> $$0) {
+      return this.b.a($$0).map(ajr.a::b);
    }
 
-   public void a(iz $$0) {
-      this.f.a().forEach($$1 -> a($$0, (avf.a<?>)$$1));
-      djx.f();
-      dae.a();
+   public static <E, O> RecordCodecBuilder<O, im<E>> c(ajs<? extends iy<? extends E>> $$0) {
+      return aws.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ajr<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   private static <T> void a(iz $$0, avf.a<T> $$1) {
-      ajg<? extends iy<T>> $$2 = $$1.a();
-      Map<avd<T>, List<il<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> avd.a($$2, (ajh)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends il<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
+   public static <E, O> RecordCodecBuilder<O, il.c<E>> d(ajs<E> $$0) {
+      ajs<? extends iy<E>> $$1 = ajs.a($$0.b());
+      return aws.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ajr<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   static class a implements in.a {
-      private final iz a;
-      ajr.b b;
-
-      a(iz $$0) {
-         this.b = ajr.b.b;
-         this.a = $$0;
-      }
-
-      public void a(ajr.b $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public Stream<ajg<? extends iy<?>>> a() {
-         return this.a.a();
-      }
-
-      @Override
-      public <T> Optional<in.b<T>> a(ajg<? extends iy<? extends T>> $$0) {
-         return this.a.c($$0).map($$0x -> this.a($$0x.p(), $$0x.u()));
-      }
-
-      private <T> in.b<T> a(final in.b<T> $$0, final in.b<T> $$1) {
-         return new in.b.a<T>() {
-            @Override
-            public in.b<T> a() {
-               return switch (a.this.b) {
-                  case b -> $$0;
-                  case a -> $$1;
-               };
-            }
-         };
+   public static record a<T>(io<T> a, im<T> b, Lifecycle c) {
+      public static <T> ajr.a<T> a(in.b<T> $$0) {
+         return new ajr.a<>($$0, $$0, $$0.g());
       }
    }
 
-   static enum b {
-      a,
-      b;
+   public interface b {
+      <T> Optional<ajr.a<T>> a(ajs<? extends iy<? extends T>> var1);
    }
 }

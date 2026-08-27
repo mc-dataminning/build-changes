@@ -1,33 +1,40 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class evc extends evx {
-   private static final Logger b = LogUtils.getLogger();
-   public List<evb> a = Lists.newArrayList();
+public enum evc {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static evc a(String $$0) {
-      evc $$1 = new evc();
+   private final String[] c;
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+   private evc(String... $$0) {
+      this.c = $$0;
+   }
 
-            while ($$4.hasNext()) {
-               $$1.a.add(evb.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+   public List<asu<InputStream>> a(aro $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
+   }
+
+   public asu<InputStream> b(aro $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private asu<InputStream> a(aro $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      asu<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
       }
-
-      return $$1;
    }
 }

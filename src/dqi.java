@@ -1,5 +1,23 @@
-public record dqi(String a, ajg<cxb> b, String c) {
-   public dqi a(String $$0) {
-      return new dqi(this.a, this.b, this.c + $$0);
+public enum dqi implements aye {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
+
+   private final String f;
+
+   private dqi(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

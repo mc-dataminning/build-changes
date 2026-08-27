@@ -1,172 +1,296 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
 public class qo {
-   public static final ajg<dvf<?, ?>> a = qq.a("monster_room");
-   public static final ajg<dvf<?, ?>> b = qq.a("fossil_coal");
-   public static final ajg<dvf<?, ?>> c = qq.a("fossil_diamonds");
-   public static final ajg<dvf<?, ?>> d = qq.a("dripstone_cluster");
-   public static final ajg<dvf<?, ?>> e = qq.a("large_dripstone");
-   public static final ajg<dvf<?, ?>> f = qq.a("pointed_dripstone");
-   public static final ajg<dvf<?, ?>> g = qq.a("underwater_magma");
-   public static final ajg<dvf<?, ?>> h = qq.a("glow_lichen");
-   public static final ajg<dvf<?, ?>> i = qq.a("rooted_azalea_tree");
-   public static final ajg<dvf<?, ?>> j = qq.a("cave_vine");
-   public static final ajg<dvf<?, ?>> k = qq.a("cave_vine_in_moss");
-   public static final ajg<dvf<?, ?>> l = qq.a("moss_vegetation");
-   public static final ajg<dvf<?, ?>> m = qq.a("moss_patch");
-   public static final ajg<dvf<?, ?>> n = qq.a("moss_patch_bonemeal");
-   public static final ajg<dvf<?, ?>> o = qq.a("dripleaf");
-   public static final ajg<dvf<?, ?>> p = qq.a("clay_with_dripleaves");
-   public static final ajg<dvf<?, ?>> q = qq.a("clay_pool_with_dripleaves");
-   public static final ajg<dvf<?, ?>> r = qq.a("lush_caves_clay");
-   public static final ajg<dvf<?, ?>> s = qq.a("moss_patch_ceiling");
-   public static final ajg<dvf<?, ?>> t = qq.a("spore_blossom");
-   public static final ajg<dvf<?, ?>> u = qq.a("amethyst_geode");
-   public static final ajg<dvf<?, ?>> v = qq.a("sculk_patch_deep_dark");
-   public static final ajg<dvf<?, ?>> w = qq.a("sculk_patch_ancient_city");
-   public static final ajg<dvf<?, ?>> x = qq.a("sculk_vein");
+   public static final ajs<egq> a = qe.a("trial_chambers/chamber/end");
+   public static final ajs<egq> b = qe.a("trial_chambers/hallway/fallback");
+   public static final ajs<egq> c = qe.a("trial_chambers/chamber/entrance_cap");
+   public static final List<egs> d = ImmutableList.builder()
+      .add(
+         egs.a(
+            bmk.<List<egs>>a()
+               .a(List.of(egs.a(a("contents/ranged"), a("ranged/skeleton")), egs.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
+               .a(List.of(egs.a(a("contents/ranged"), a("ranged/stray")), egs.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
+               .a(List.of(egs.a(a("contents/ranged"), a("ranged/poison_skeleton")), egs.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
+               .a()
+         )
+      )
+      .add(egs.a(a("contents/melee"), bmk.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/slime")).a()))
+      .add(
+         egs.a(
+            a("contents/small_melee"),
+            bmk.<String>a().a(a("small_melee/spider")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
+         )
+      )
+      .build();
 
-   private static il<eci> a(ih $$0) {
-      return rf.a(
-         dvs.w,
-         new dxn(
+   public static String a(String $$0) {
+      return "trial_chambers/spawner/" + $$0;
+   }
+
+   public static void a(px<egq> $$0) {
+      im<egq> $$1 = $$0.a(ks.aI);
+      il<egq> $$2 = $$1.b(qe.a);
+      il<egq> $$3 = $$1.b(b);
+      il<egq> $$4 = $$1.b(c);
+      im<ejf> $$5 = $$0.a(ks.aG);
+      il<ejf> $$6 = $$5.b(qq.a);
+      $$0.a(a, new egq($$2, List.of(Pair.of(ego.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(ego.b("trial_chambers/corridor/end_2", $$6), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/chamber/entrance_cap", new egq($$4, List.of(Pair.of(ego.b("trial_chambers/chamber/entrance_cap", $$6), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "trial_chambers/chambers/end",
+         new egq(
+            $$3,
             List.of(
-               dxn.a(new bmp(bln.<bmi>a().a(bmo.a(0, 4), 2).a(bmf.a(0), 1).a()), dzx.a(dae.sE.o().a(dnr.R, $$0))),
-               dxn.a(bmf.a(1), dzx.a(dae.sD.o().a(dnr.R, $$0)))
+               Pair.of(ego.b("trial_chambers/chamber/chamber_1", $$6), 1),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_5", $$6), 1),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_6", $$6), 1),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_9", $$6), 1)
             ),
-            ih.b,
-            dtv.d,
-            true
+            egq.a.b
          )
       );
-   }
-
-   private static il<eci> a() {
-      return rf.a(
-         dvs.S,
-         new dyo(
-            new eah(
-               bln.<dnb>a().a(dae.sF.o().a(dhg.d, ih.f), 1).a(dae.sF.o().a(dhg.d, ih.e), 1).a(dae.sF.o().a(dhg.d, ih.c), 1).a(dae.sF.o().a(dhg.d, ih.d), 1)
-            )
-         )
-      );
-   }
-
-   public static void a(pl<dvf<?, ?>> $$0) {
-      im<dvf<?, ?>> $$1 = $$0.a(kj.ax);
-      im<ehc> $$2 = $$0.a(kj.aF);
-      qq.a($$0, a, dvs.C);
-      List<ajh> $$3 = List.of(
-         new ajh("fossil/spine_1"),
-         new ajh("fossil/spine_2"),
-         new ajh("fossil/spine_3"),
-         new ajh("fossil/spine_4"),
-         new ajh("fossil/skull_1"),
-         new ajh("fossil/skull_2"),
-         new ajh("fossil/skull_3"),
-         new ajh("fossil/skull_4")
-      );
-      List<ajh> $$4 = List.of(
-         new ajh("fossil/spine_1_coal"),
-         new ajh("fossil/spine_2_coal"),
-         new ajh("fossil/spine_3_coal"),
-         new ajh("fossil/spine_4_coal"),
-         new ajh("fossil/skull_1_coal"),
-         new ajh("fossil/skull_2_coal"),
-         new ajh("fossil/skull_3_coal"),
-         new ajh("fossil/skull_4_coal")
-      );
-      il<ehc> $$5 = $$2.b(pt.D);
-      qq.a($$0, b, dvs.p, new dvx($$3, $$4, $$5, $$2.b(pt.E), 4));
-      qq.a($$0, c, dvs.p, new dvx($$3, $$4, $$5, $$2.b(pt.F), 4));
-      qq.a($$0, d, dvs.aj, new dxu(12, bmo.a(3, 6), bmo.a(2, 8), 1, 3, bmo.a(2, 4), bmn.b(0.3F, 0.7F), bmc.a(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
-      qq.a($$0, e, dvs.ak, new dxz(30, bmo.a(3, 19), bmn.b(0.4F, 2.0F), 0.33F, bmn.b(0.3F, 0.9F), bmn.b(0.4F, 1.0F), bmn.b(0.0F, 0.3F), 4, 0.6F));
-      qq.a(
+      qe.a(
          $$0,
-         f,
-         dvs.ag,
-         new dyp(
-            ip.a(
-               rf.a(dvs.al, new dyf(0.2F, 0.7F, 0.5F, 0.5F), ecc.a(ih.a, dtv.c(), dtv.d, 12), ecn.a(bmf.a(1))),
-               rf.a(dvs.al, new dyf(0.2F, 0.7F, 0.5F, 0.5F), ecc.a(ih.b, dtv.c(), dtv.d, 12), ecn.a(bmf.a(-1)))
-            )
-         )
-      );
-      qq.a($$0, g, dvs.B, new dyu(5, 1, 0.5F));
-      dfb $$6 = (dfb)dae.fg;
-      qq.a($$0, h, dvs.A, new dyb($$6, 20, false, true, true, 0.5F, ip.a(dac::r, dae.b, dae.g, dae.e, dae.c, dae.su, dae.qN, dae.qz, dae.sJ)));
-      qq.a(
-         $$0,
-         i,
-         dvs.z,
-         new dym(
-            rf.a($$1.b(qv.w)),
-            3,
-            3,
-            aun.bw,
-            dzx.a(dae.sH),
-            20,
-            100,
-            3,
-            2,
-            dzx.a(dae.sG),
-            20,
-            2,
-            dtv.a(dtv.b(dtv.c(List.of(dae.a, dae.nc, dae.nb)), dtv.a(aun.ch)), dtv.a(ih.a.q(), aun.cb))
-         )
-      );
-      eah $$7 = new eah(bln.<dnb>a().a(dae.sw.o(), 4).a(dae.sw.o().a(day.r_, Boolean.valueOf(true)), 1));
-      ead $$8 = new ead(new eah(bln.<dnb>a().a(dae.sv.o(), 4).a(dae.sv.o().a(day.r_, Boolean.valueOf(true)), 1)), daz.e, bmo.a(23, 25));
-      qq.a(
-         $$0,
-         j,
-         dvs.w,
-         new dxn(
-            List.of(dxn.a(new bmp(bln.<bmi>a().a(bmo.a(0, 19), 2).a(bmo.a(0, 2), 3).a(bmo.a(0, 6), 10).a()), $$7), dxn.a(bmf.a(1), $$8)), ih.a, dtv.c, true
-         )
-      );
-      qq.a($$0, k, dvs.w, new dxn(List.of(dxn.a(new bmp(bln.<bmi>a().a(bmo.a(0, 3), 5).a(bmo.a(1, 7), 1).a()), $$7), dxn.a(bmf.a(1), $$8)), ih.a, dtv.c, true));
-      qq.a($$0, l, dvs.S, new dyo(new eah(bln.<dnb>a().a(dae.sz.o(), 4).a(dae.sy.o(), 7).a(dae.sA.o(), 25).a(dae.bt.o(), 50).a(dae.iH.o(), 10))));
-      qq.a($$0, m, dvs.x, new dyv(aun.bu, dzx.a(dae.sC), rf.a($$1.b(l)), ebz.b, bmf.a(1), 0.0F, 5, 0.8F, bmo.a(4, 7), 0.3F));
-      qq.a($$0, n, dvs.x, new dyv(aun.bu, dzx.a(dae.sC), rf.a($$1.b(l)), ebz.b, bmf.a(1), 0.0F, 5, 0.6F, bmo.a(1, 2), 0.75F));
-      qq.a($$0, o, dvs.ag, new dyp(ip.a(a(), a(ih.f), a(ih.e), a(ih.d), a(ih.c))));
-      qq.a($$0, p, dvs.x, new dyv(aun.bv, dzx.a(dae.dR), rf.a($$1.b(o)), ebz.b, bmf.a(3), 0.8F, 2, 0.05F, bmo.a(4, 7), 0.7F));
-      qq.a($$0, q, dvs.y, new dyv(aun.bv, dzx.a(dae.dR), rf.a($$1.b(o)), ebz.b, bmf.a(3), 0.8F, 5, 0.1F, bmo.a(4, 7), 0.7F));
-      qq.a($$0, r, dvs.ah, new dyh(rf.a($$1.b(p)), rf.a($$1.b(q))));
-      qq.a($$0, s, dvs.x, new dyv(aun.bu, dzx.a(dae.sC), rf.a($$1.b(k)), ebz.a, bmo.a(1, 2), 0.0F, 5, 0.08F, bmo.a(4, 7), 0.3F));
-      qq.a($$0, t, dvs.S, new dyo(dzx.a(dae.sx)));
-      qq.a(
-         $$0,
-         u,
-         dvs.ai,
-         new dxx(
-            new dsl(
-               dzx.a(dae.a),
-               dzx.a(dae.qt),
-               dzx.a(dae.qu),
-               dzx.a(dae.qN),
-               dzx.a(dae.te),
-               List.of(dae.qy.o(), dae.qx.o(), dae.qw.o(), dae.qv.o()),
-               aun.bI,
-               aun.bK
+         "trial_chambers/chamber/addon",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/full_corner_column"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/full_column_ranged_spawner", $$6), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/middle_column_ranged_spawner", $$6), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/grate_bridge"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/hanging_platform"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/short_platform"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/lower_walkway_platform"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/walkway_extension"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/side_walkway"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/closed_side_walkway"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/middle_walkway"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/10x15_rise"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/10x15_stacked_pathway"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/10x15_pathway_3"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/platform_with_space"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/stairs_with_space"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/stairs_with_space_2"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c3_side_walkway_1"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c3_side_walkway_2"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/corner_room_1"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_wide_platform"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c1_breeze"), 1)
             ),
-            new dsn(1.7, 2.2, 3.2, 4.2),
-            new dsm(0.95, 2.0, 2),
-            0.35,
-            0.083,
-            true,
-            bmo.a(4, 6),
-            bmo.a(3, 4),
-            bmo.a(1, 2),
-            -16,
-            16,
-            0.05,
-            1
+            egq.a.b
          )
       );
-      qq.a($$0, v, dvs.am, new dyn(10, 32, 64, 0, 1, bmf.a(0), 0.5F));
-      qq.a($$0, w, dvs.am, new dyn(10, 32, 64, 0, 1, bmo.a(1, 3), 0.5F));
-      dfb $$9 = (dfb)dae.qT;
-      qq.a($$0, x, dvs.A, new dyb($$9, 20, true, true, true, 1.0F, ip.a(dac::r, dae.b, dae.g, dae.e, dae.c, dae.su, dae.qN, dae.qz, dae.sJ)));
+      qe.a(
+         $$0,
+         "trial_chambers/chamber/addon/c6",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 3),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_small_1"), 2),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_small_2"), 2),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_small_3"), 2),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_column_full"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_column_tall"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_column_tall_wide"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_ranged_column_short"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_ranged_column_short_wide"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_chest"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_melee_spawner"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_long"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_short"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_cover_small"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/addon/c6_stairs"), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/corridor/second",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trial_chambers/corridor/second_plate"), 1),
+               Pair.of(ego.b("trial_chambers/intersection/intersection_1", $$6), 1),
+               Pair.of(ego.b("trial_chambers/intersection/intersection_2", $$6), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/corridor/first",
+         new egq($$2, List.of(Pair.of(ego.b("trial_chambers/corridor/first_plate"), 1), Pair.of(ego.b("trial_chambers/corridor/entrance_1", $$6), 2)), egq.a.b)
+      );
+      qe.a($$0, "trial_chambers/corridor/first/straight", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/corridor/first_plate"), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "trial_chambers/corridor",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trial_chambers/corridor/straight_1", $$6), 1),
+               Pair.of(ego.b("trial_chambers/corridor/straight_2", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_3", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_4", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_5", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_6", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_7", $$6), 2),
+               Pair.of(ego.b("trial_chambers/corridor/straight_8", $$6), 2)
+            ),
+            egq.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ego.b("trial_chambers/hallway/rubble_chamber"), 1),
+               Pair.of(ego.b("trial_chambers/hallway/rubble_thin"), 1),
+               Pair.of(ego.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/hallway",
+         new egq(
+            $$3,
+            List.of(
+               Pair.of(ego.b("trial_chambers/hallway/corridor_connector_1"), 1),
+               Pair.of(ego.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_1", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_2", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_3", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_4", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_5", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_6", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_8", $$6), 150),
+               Pair.of(ego.b("trial_chambers/chamber/chamber_9", $$6), 150),
+               Pair.of(ego.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
+               Pair.of(ego.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/cache_1", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/left_corner", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/right_corner", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/corner_staircase", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/straight", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/straight_staircase", $$6), 1),
+               Pair.of(ego.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/corridors/addon/lower",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 8),
+               Pair.of(ego.b("trial_chambers/corridor/addon/staircase"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/wall"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 8),
+               Pair.of(ego.b("trial_chambers/corridor/addon/open_walkway"), 2),
+               Pair.of(ego.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle_upper",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 6),
+               Pair.of(ego.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
+               Pair.of(ego.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/decoration_upper"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/head_upper"), 1),
+               Pair.of(ego.b("trial_chambers/corridor/addon/reward_upper"), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a(
+         $$0,
+         "trial_chambers/decor",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 22),
+               Pair.of(ego.b("trial_chambers/decor/empty_pot"), 2),
+               Pair.of(ego.b("trial_chambers/decor/dead_bush_pot"), 2),
+               Pair.of(ego.b("trial_chambers/decor/undecorated_pot"), 3),
+               Pair.of(ego.b("trial_chambers/decor/candle_1"), 1),
+               Pair.of(ego.b("trial_chambers/decor/candle_2"), 1),
+               Pair.of(ego.b("trial_chambers/decor/candle_3"), 1),
+               Pair.of(ego.b("trial_chambers/decor/candle_4"), 1),
+               Pair.of(ego.b("trial_chambers/decor/barrel"), 2)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "trial_chambers/decor_chamber", new egq($$2, List.of(Pair.of(ego.g(), 4), Pair.of(ego.b("trial_chambers/decor/undecorated_pot"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/reward/all", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/reward/connectors/default"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/reward/contents/default", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/reward/default"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/chests/supply", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/chests/connectors/supply"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/chests/contents/supply", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/chests/supply"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/spawner/ranged", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/connectors/ranged"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/spawner/slow_ranged", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/spawner/melee", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/connectors/melee"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/spawner/small_melee", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/connectors/small_melee"), 1)), egq.a.b));
+      qe.a($$0, "trial_chambers/spawner/breeze", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/connectors/breeze"), 1)), egq.a.b));
+      qe.a(
+         $$0,
+         "trial_chambers/spawner/all",
+         new egq(
+            $$2,
+            List.of(
+               Pair.of(ego.g(), 10),
+               Pair.of(ego.b("trial_chambers/spawner/connectors/ranged"), 1),
+               Pair.of(ego.b("trial_chambers/spawner/connectors/melee"), 1),
+               Pair.of(ego.b("trial_chambers/spawner/connectors/small_melee"), 1)
+            ),
+            egq.a.b
+         )
+      );
+      qe.a($$0, "trial_chambers/spawner/contents/breeze", new egq($$2, List.of(Pair.of(ego.b("trial_chambers/spawner/breeze/breeze"), 1)), egq.a.b));
+      qe.a(
+         $$0, "trial_chambers/dispensers/chamber", new egq($$2, List.of(Pair.of(ego.g(), 1), Pair.of(ego.b("trial_chambers/dispensers/chamber"), 1)), egq.a.b)
+      );
+      egt.a($$0, $$2, d);
    }
 }

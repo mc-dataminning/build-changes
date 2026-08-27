@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ett<T> {
+   void a(etr<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eru
-@ert
-interface ett {
+   boolean a(ib var1, T var2);
+
+   int a();
 }

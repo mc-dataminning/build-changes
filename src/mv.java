@@ -1,165 +1,115 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class mv {
-   public static final mu a = a("cube", mx.c, mx.j, mx.k, mx.l, mx.m, mx.n, mx.o);
-   public static final mu b = a("cube_directional", mx.c, mx.j, mx.k, mx.l, mx.m, mx.n, mx.o);
-   public static final mu c = a("cube_all", mx.a);
-   public static final mu d = a("cube_all_inner_faces", mx.a);
-   public static final mu e = a("cube_mirrored_all", "_mirrored", mx.a);
-   public static final mu f = a("cube_north_west_mirrored_all", "_north_west_mirrored", mx.a);
-   public static final mu g = a("cube_column_uv_locked_x", "_x", mx.d, mx.i);
-   public static final mu h = a("cube_column_uv_locked_y", "_y", mx.d, mx.i);
-   public static final mu i = a("cube_column_uv_locked_z", "_z", mx.d, mx.i);
-   public static final mu j = a("cube_column", mx.d, mx.i);
-   public static final mu k = a("cube_column_horizontal", "_horizontal", mx.d, mx.i);
-   public static final mu l = a("cube_column_mirrored", "_mirrored", mx.d, mx.i);
-   public static final mu m = a("cube_top", mx.f, mx.i);
-   public static final mu n = a("cube_bottom_top", mx.f, mx.e, mx.i);
-   public static final mu o = a("cube_bottom_top_inner_faces", mx.f, mx.e, mx.i);
-   public static final mu p = a("orientable", mx.f, mx.g, mx.i);
-   public static final mu q = a("orientable_with_bottom", mx.f, mx.e, mx.i, mx.g);
-   public static final mu r = a("orientable_vertical", "_vertical", mx.g, mx.i);
-   public static final mu s = a("button", mx.b);
-   public static final mu t = a("button_pressed", "_pressed", mx.b);
-   public static final mu u = a("button_inventory", "_inventory", mx.b);
-   public static final mu v = a("door_bottom_left", "_bottom_left", mx.f, mx.e);
-   public static final mu w = a("door_bottom_left_open", "_bottom_left_open", mx.f, mx.e);
-   public static final mu x = a("door_bottom_right", "_bottom_right", mx.f, mx.e);
-   public static final mu y = a("door_bottom_right_open", "_bottom_right_open", mx.f, mx.e);
-   public static final mu z = a("door_top_left", "_top_left", mx.f, mx.e);
-   public static final mu A = a("door_top_left_open", "_top_left_open", mx.f, mx.e);
-   public static final mu B = a("door_top_right", "_top_right", mx.f, mx.e);
-   public static final mu C = a("door_top_right_open", "_top_right_open", mx.f, mx.e);
-   public static final mu D = a("custom_fence_post", "_post", mx.b, mx.c);
-   public static final mu E = a("custom_fence_side_north", "_side_north", mx.b);
-   public static final mu F = a("custom_fence_side_east", "_side_east", mx.b);
-   public static final mu G = a("custom_fence_side_south", "_side_south", mx.b);
-   public static final mu H = a("custom_fence_side_west", "_side_west", mx.b);
-   public static final mu I = a("custom_fence_inventory", "_inventory", mx.b);
-   public static final mu J = a("fence_post", "_post", mx.b);
-   public static final mu K = a("fence_side", "_side", mx.b);
-   public static final mu L = a("fence_inventory", "_inventory", mx.b);
-   public static final mu M = a("template_wall_post", "_post", mx.r);
-   public static final mu N = a("template_wall_side", "_side", mx.r);
-   public static final mu O = a("template_wall_side_tall", "_side_tall", mx.r);
-   public static final mu P = a("wall_inventory", "_inventory", mx.r);
-   public static final mu Q = a("template_custom_fence_gate", mx.b, mx.c);
-   public static final mu R = a("template_custom_fence_gate_open", "_open", mx.b, mx.c);
-   public static final mu S = a("template_custom_fence_gate_wall", "_wall", mx.b, mx.c);
-   public static final mu T = a("template_custom_fence_gate_wall_open", "_wall_open", mx.b, mx.c);
-   public static final mu U = a("template_fence_gate", mx.b);
-   public static final mu V = a("template_fence_gate_open", "_open", mx.b);
-   public static final mu W = a("template_fence_gate_wall", "_wall", mx.b);
-   public static final mu X = a("template_fence_gate_wall_open", "_wall_open", mx.b);
-   public static final mu Y = a("pressure_plate_up", mx.b);
-   public static final mu Z = a("pressure_plate_down", "_down", mx.b);
-   public static final mu aa = a(mx.c);
-   public static final mu ab = a("slab", mx.e, mx.f, mx.i);
-   public static final mu ac = a("slab_top", "_top", mx.e, mx.f, mx.i);
-   public static final mu ad = a("leaves", mx.a);
-   public static final mu ae = a("stairs", mx.e, mx.f, mx.i);
-   public static final mu af = a("inner_stairs", "_inner", mx.e, mx.f, mx.i);
-   public static final mu ag = a("outer_stairs", "_outer", mx.e, mx.f, mx.i);
-   public static final mu ah = a("template_trapdoor_top", "_top", mx.b);
-   public static final mu ai = a("template_trapdoor_bottom", "_bottom", mx.b);
-   public static final mu aj = a("template_trapdoor_open", "_open", mx.b);
-   public static final mu ak = a("template_orientable_trapdoor_top", "_top", mx.b);
-   public static final mu al = a("template_orientable_trapdoor_bottom", "_bottom", mx.b);
-   public static final mu am = a("template_orientable_trapdoor_open", "_open", mx.b);
-   public static final mu an = a("pointed_dripstone", mx.p);
-   public static final mu ao = a("cross", mx.p);
-   public static final mu ap = a("tinted_cross", mx.p);
-   public static final mu aq = a("flower_pot_cross", mx.q);
-   public static final mu ar = a("tinted_flower_pot_cross", mx.q);
-   public static final mu as = a("rail_flat", mx.s);
-   public static final mu at = a("rail_curved", "_corner", mx.s);
-   public static final mu au = a("template_rail_raised_ne", "_raised_ne", mx.s);
-   public static final mu av = a("template_rail_raised_sw", "_raised_sw", mx.s);
-   public static final mu aw = a("carpet", mx.t);
-   public static final mu ax = a("flowerbed_1", "_1", mx.P, mx.y);
-   public static final mu ay = a("flowerbed_2", "_2", mx.P, mx.y);
-   public static final mu az = a("flowerbed_3", "_3", mx.P, mx.y);
-   public static final mu aA = a("flowerbed_4", "_4", mx.P, mx.y);
-   public static final mu aB = a("coral_fan", mx.x);
-   public static final mu aC = a("coral_wall_fan", mx.x);
-   public static final mu aD = a("template_glazed_terracotta", mx.u);
-   public static final mu aE = a("template_chorus_flower", mx.b);
-   public static final mu aF = a("template_daylight_detector", mx.f, mx.i);
-   public static final mu aG = a("template_glass_pane_noside", "_noside", mx.v);
-   public static final mu aH = a("template_glass_pane_noside_alt", "_noside_alt", mx.v);
-   public static final mu aI = a("template_glass_pane_post", "_post", mx.v, mx.w);
-   public static final mu aJ = a("template_glass_pane_side", "_side", mx.v, mx.w);
-   public static final mu aK = a("template_glass_pane_side_alt", "_side_alt", mx.v, mx.w);
-   public static final mu aL = a("template_command_block", mx.g, mx.h, mx.i);
-   public static final mu aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", mx.b);
-   public static final mu aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", mx.b);
-   public static final mu aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", mx.b);
-   public static final mu aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", mx.b);
-   public static final mu aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", mx.b);
-   public static final mu aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", mx.b);
-   public static final mu aS = a("template_anvil", mx.f);
-   public static final mu[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, mx.y)).toArray(mu[]::new);
-   public static final mu aU = a("stem_fruit", mx.y, mx.z);
-   public static final mu aV = a("crop", mx.A);
-   public static final mu aW = a("template_farmland", mx.B, mx.f);
-   public static final mu aX = a("template_fire_floor", mx.C);
-   public static final mu aY = a("template_fire_side", mx.C);
-   public static final mu aZ = a("template_fire_side_alt", mx.C);
-   public static final mu ba = a("template_fire_up", mx.C);
-   public static final mu bb = a("template_fire_up_alt", mx.C);
-   public static final mu bc = a("template_campfire", mx.C, mx.K);
-   public static final mu bd = a("template_lantern", mx.D);
-   public static final mu be = a("template_hanging_lantern", "_hanging", mx.D);
-   public static final mu bf = a("template_torch", mx.G);
-   public static final mu bg = a("template_torch_wall", mx.G);
-   public static final mu bh = a("template_piston", mx.E, mx.e, mx.i);
-   public static final mu bi = a("template_piston_head", mx.E, mx.i, mx.F);
-   public static final mu bj = a("template_piston_head_short", mx.E, mx.i, mx.F);
-   public static final mu bk = a("template_seagrass", mx.b);
-   public static final mu bl = a("template_turtle_egg", mx.a);
-   public static final mu bm = a("template_two_turtle_eggs", mx.a);
-   public static final mu bn = a("template_three_turtle_eggs", mx.a);
-   public static final mu bo = a("template_four_turtle_eggs", mx.a);
-   public static final mu bp = a("template_single_face", mx.b);
-   public static final mu bq = a("template_cauldron_level1", mx.N, mx.M, mx.c, mx.f, mx.e, mx.i);
-   public static final mu br = a("template_cauldron_level2", mx.N, mx.M, mx.c, mx.f, mx.e, mx.i);
-   public static final mu bs = a("template_cauldron_full", mx.N, mx.M, mx.c, mx.f, mx.e, mx.i);
-   public static final mu bt = a("template_azalea", mx.f, mx.i);
-   public static final mu bu = a("template_potted_azalea_bush", mx.q, mx.f, mx.i);
-   public static final mu bv = a("template_potted_azalea_bush", mx.q, mx.f, mx.i);
-   public static final mu bw = a("sniffer_egg", mx.f, mx.e, mx.j, mx.k, mx.l, mx.m);
-   public static final mu bx = b("generated", mx.H);
-   public static final mu by = b("template_music_disc", mx.H);
-   public static final mu bz = b("handheld", mx.H);
-   public static final mu bA = b("handheld_rod", mx.H);
-   public static final mu bB = b("generated", mx.H, mx.I);
-   public static final mu bC = b("generated", mx.H, mx.I, mx.J);
-   public static final mu bD = b("template_shulker_box", mx.c);
-   public static final mu bE = b("template_bed", mx.c);
-   public static final mu bF = b("template_banner");
-   public static final mu bG = b("template_skull");
-   public static final mu bH = a("template_candle", mx.a, mx.c);
-   public static final mu bI = a("template_two_candles", mx.a, mx.c);
-   public static final mu bJ = a("template_three_candles", mx.a, mx.c);
-   public static final mu bK = a("template_four_candles", mx.a, mx.c);
-   public static final mu bL = a("template_cake_with_candle", mx.L, mx.e, mx.i, mx.f, mx.c);
-   public static final mu bM = a("template_sculk_shrieker", mx.e, mx.i, mx.f, mx.c, mx.O);
-   public static final mu bN = a("template_vault", mx.f, mx.e, mx.i, mx.g);
+public interface mv extends Supplier<JsonElement> {
+   void a(dpa<?, ?> var1);
 
-   private static mu a(mx... $$0) {
-      return new mu(Optional.empty(), Optional.empty(), $$0);
+   static mv.c a() {
+      return new mv.c();
    }
 
-   private static mu a(String $$0, mx... $$1) {
-      return new mu(Optional.of(new ajh("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   static mv a(mv... $$0) {
+      return new mv.a(mv.b.a, Arrays.asList($$0));
    }
 
-   private static mu b(String $$0, mx... $$1) {
-      return new mu(Optional.of(new ajh("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   static mv b(mv... $$0) {
+      return new mv.a(mv.b.b, Arrays.asList($$0));
    }
 
-   private static mu a(String $$0, String $$1, mx... $$2) {
-      return new mu(Optional.of(new ajh("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public static class a implements mv {
+      private final mv.b a;
+      private final List<mv> b;
+
+      a(mv.b $$0, List<mv> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(dpa<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
+      }
+
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
+      }
+   }
+
+   public static enum b {
+      a("AND"),
+      b("OR");
+
+      final String c;
+
+      private b(String $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static class c implements mv {
+      private final Map<dqc<?>, String> a = Maps.newHashMap();
+
+      private static <T extends Comparable<T>> String a(dqc<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
+      }
+
+      private static <T extends Comparable<T>> String c(dqc<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
+      }
+
+      private <T extends Comparable<T>> void a(dqc<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
+      }
+
+      public final <T extends Comparable<T>> mv.c a(dqc<T> $$0, T $$1) {
+         this.a($$0, $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> mv.c a(dqc<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> mv.c b(dqc<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> mv.c b(dqc<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
+         return $$0;
+      }
+
+      @Override
+      public void a(dpa<?, ?> $$0) {
+         List<dqc<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
+      }
    }
 }

@@ -1,31 +1,36 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
+public enum dqd implements aye {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-public class dqd extends dqk {
-   private final dqb a;
-   private final Path b;
+   private final String k;
 
-   public dqd(dqi $$0, Path $$1, dqi $$2, Path $$3, DataFixer $$4, boolean $$5, ayc $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dqb($$2, $$3, $$5);
+   private dqd(String $$0) {
+      this.k = $$0;
+   }
+
+   public String a() {
+      return this.k;
    }
 
    @Override
-   public CompletableFuture<Void> a(cwi $$0, @Nullable ta $$1) {
-      return this.a.a($$0, $$1);
+   public String toString() {
+      return this.k;
+   }
+
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
    }
 
    @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   public String c() {
+      return this.k;
    }
 }

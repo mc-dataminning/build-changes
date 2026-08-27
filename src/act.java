@@ -1,83 +1,61 @@
-import javax.annotation.Nullable;
-
-public class act implements yb<aam> {
-   public static final xs<uu, act> a = yb.a(act::a, act::new);
+public class act implements yn<aay> {
+   public static final ye<vg, act> a = yn.a(act::a, act::new);
    private final double b;
    private final double c;
    private final double d;
-   private final int e;
-   private final eg.a f;
-   private final eg.a g;
-   private final boolean h;
+   private final float e;
+   private final float f;
 
-   public act(eg.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
+   public act(bpv $$0) {
+      this.b = $$0.dr();
+      this.c = $$0.dt();
+      this.d = $$0.dx();
+      this.e = $$0.dC();
+      this.f = $$0.dE();
    }
 
-   public act(eg.a $$0, box $$1, eg.a $$2) {
-      this.f = $$0;
-      this.e = $$1.aj();
-      this.g = $$2;
-      ept $$3 = $$2.a($$1);
-      this.b = $$3.c;
-      this.c = $$3.d;
-      this.d = $$3.e;
-      this.h = true;
-   }
-
-   private act(uu $$0) {
-      this.f = $$0.b(eg.a.class);
+   private act(vg $$0) {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(eg.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.f);
+   private void a(vg $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
-      }
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public yd<act> a() {
-      return aex.ag;
+   public yp<act> a() {
+      return afj.U;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public eg.a b() {
-      return this.f;
+   public double b() {
+      return this.b;
    }
 
-   @Nullable
-   public ept a(cxb $$0) {
-      if (this.h) {
-         box $$1 = $$0.a(this.e);
-         return $$1 == null ? new ept(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new ept(this.b, this.c, this.d);
-      }
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

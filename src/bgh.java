@@ -1,40 +1,23 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class bgh extends bfq {
-   public bgh(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bgh extends bea {
+   public bgh(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Zombie Villager XP rebuild", bfa.z, "minecraft:zombie_villager");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         beh.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(beh.x.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(beh.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", beh.z.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(beh.u.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(beh.D.in($$0)))
-               )
-            )
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
-      return $$1;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(bfz.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
    }
 }

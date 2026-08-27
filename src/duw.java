@@ -1,59 +1,117 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class duw extends dvs<dyg> {
-   private static final dnb a = dae.mZ.o().a(czg.h, Integer.valueOf(1)).a(czg.i, dnn.a).a(czg.j, Integer.valueOf(0));
-   private static final dnb b = a.a(czg.i, dnn.c).a(czg.j, Integer.valueOf(1));
-   private static final dnb c = a.a(czg.i, dnn.c);
-   private static final dnb d = a.a(czg.i, dnn.b);
+public record duw(duz j, doz k, doz l, dux m, dvi.o n, List<daf.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<duw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               duz.a.fieldOf("noise").forGetter(duw::f),
+               doz.b.fieldOf("default_block").forGetter(duw::g),
+               doz.b.fieldOf("default_fluid").forGetter(duw::h),
+               dux.a.fieldOf("noise_router").forGetter(duw::i),
+               dvi.o.b.fieldOf("surface_rule").forGetter(duw::j),
+               daf.d.a.listOf().fieldOf("spawn_target").forGetter(duw::k),
+               Codec.INT.fieldOf("sea_level").forGetter(duw::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(duw::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(duw::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(duw::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(duw::n)
+            )
+            .apply($$0, duw::new)
+   );
+   public static final Codec<il<duw>> b = ajp.a(ks.aC, a);
+   public static final ajs<duw> c = ajs.a(ks.aC, new ajt("overworld"));
+   public static final ajs<duw> d = ajs.a(ks.aC, new ajt("large_biomes"));
+   public static final ajs<duw> e = ajs.a(ks.aC, new ajt("amplified"));
+   public static final ajs<duw> f = ajs.a(ks.aC, new ajt("nether"));
+   public static final ajs<duw> g = ajs.a(ks.aC, new ajt("end"));
+   public static final ajs<duw> h = ajs.a(ks.aC, new ajt("caves"));
+   public static final ajs<duw> i = ajs.a(ks.aC, new ajt("floating_islands"));
 
-   public duw(Codec<dyg> $$0) {
-      super($$0);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   @Override
-   public boolean a(dvu<dyg> $$0) {
-      int $$1 = 0;
-      ib $$2 = $$0.e();
-      cxw $$3 = $$0.b();
-      axd $$4 = $$0.d();
-      dyg $$5 = $$0.f();
-      ib.a $$6 = $$2.j();
-      ib.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dae.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean b() {
+      return this.r;
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dso.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dae.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public boolean c() {
+      return this.s;
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ih.b, 1);
-            }
+   public dvq.a d() {
+      return this.t ? dvq.a.a : dvq.a.b;
+   }
 
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ih.a, 1), c, 2);
-               $$3.a($$6.c(ih.a, 1), d, 2);
-            }
-         }
+   public static void a(px<duw> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
 
-         $$1++;
-      }
+   private static duw b(px<?> $$0) {
+      return new duw(duz.d, dca.fz.n(), dca.a.n(), duy.a($$0.a(ks.az)), qk.c(), List.of(), 0, true, false, false, true);
+   }
 
-      return $$1 > 0;
+   private static duw c(px<?> $$0) {
+      return new duw(duz.c, dca.dV.n(), dca.H.n(), duy.a($$0.a(ks.az), $$0.a(ks.aD)), qk.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static duw a(px<?> $$0, boolean $$1, boolean $$2) {
+      return new duw(duz.b, dca.b.n(), dca.G.n(), duy.a($$0.a(ks.az), $$0.a(ks.aD), $$2, $$1), qk.a(), new dam().a(), 63, false, true, true, false);
+   }
+
+   private static duw d(px<?> $$0) {
+      return new duw(duz.e, dca.b.n(), dca.G.n(), duy.b($$0.a(ks.az), $$0.a(ks.aD)), qk.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static duw e(px<?> $$0) {
+      return new duw(duz.f, dca.b.n(), dca.G.n(), duy.c($$0.a(ks.az), $$0.a(ks.aD)), qk.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static duw e() {
+      return new duw(duz.b, dca.b.n(), dca.a.n(), duy.a(), qk.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public duz f() {
+      return this.j;
+   }
+
+   public doz g() {
+      return this.k;
+   }
+
+   public doz h() {
+      return this.l;
+   }
+
+   public dux i() {
+      return this.m;
+   }
+
+   public dvi.o j() {
+      return this.n;
+   }
+
+   public List<daf.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

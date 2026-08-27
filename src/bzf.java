@@ -1,19 +1,19 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bzf extends bzy<bos> {
+public class bzf<T extends bqo> extends bze<T> {
+   private boolean i = true;
+
+   public bzf(clf $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bqo> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
+   }
+
    @Override
-   public Set<bys<?>> a() {
-      return ImmutableSet.of(bys.K, bys.h);
-   }
-
-   protected void a(apf $$0, bos $$1) {
-      $$1.dP().c(bys.h).ifPresent($$1x -> this.a($$1, $$1x));
-   }
-
-   private void a(bos $$0, byu $$1) {
-      Optional<bos> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bos.class::cast);
-      $$0.dP().a(bys.K, $$2);
+   public boolean a() {
+      return this.i && super.a();
    }
 }

@@ -1,36 +1,37 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public class acw implements yn<aay> {
+   public static final ye<vg, acw> a = yn.a(acw::a, acw::new);
+   private final ib b;
+   private final boolean c;
 
-public class acw implements yb<aam> {
-   public static final xs<uu, acw> a = yb.a(acw::a, acw::new);
-   private final IntList b;
-
-   public acw(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public acw(ib $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public acw(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private acw(vg $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private acw(uu $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yd<acw> a() {
-      return aex.aj;
+   public yp<acw> a() {
+      return afj.X;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public ib b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

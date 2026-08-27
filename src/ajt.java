@@ -1,81 +1,243 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class ajt extends ass {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<ajh, af> c = Map.of();
-   private ak d = new ak();
-   private final in.a e;
-   private final ekz f;
+public class ajt implements Comparable<ajt> {
+   public static final Codec<ajt> a = Codec.STRING.comapFlatMap(ajt::b, ajt::toString).stable();
+   public static final ye<ByteBuf, ajt> b = yc.k.a(ajt::new, ajt::toString);
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wg.c("argument.id.invalid"));
+   public static final char c = ':';
+   public static final String d = "minecraft";
+   public static final String e = "realms";
+   private final String g;
+   private final String h;
 
-   public ajt(in.a $$0, ekz $$1) {
-      super(b, "advancements");
-      this.e = $$0;
-      this.f = $$1;
+   protected ajt(String $$0, String $$1, @Nullable ajt.a $$2) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   protected void a(Map<ajh, JsonElement> $$0, aso $$1, bjr $$2) {
-      ajf<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<ajh, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = ac.a(ae.a.parse($$3, $$3x), JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
-
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
-         }
-      }
-
-      this.d = $$5;
+   public ajt(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
    }
 
-   private void a(ajh $$0, ae $$1) {
-      axb.a $$2 = new axb.a();
-      $$1.a($$2, this.f);
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+   private ajt(String[] $$0) {
+      this($$0[0], $$0[1]);
+   }
+
+   public ajt(String $$0) {
+      this(b($$0, ':'));
+   }
+
+   public static ajt a(String $$0, char $$1) {
+      return new ajt(b($$0, $$1));
+   }
+
+   @Nullable
+   public static ajt a(String $$0) {
+      try {
+         return new ajt($$0);
+      } catch (z var2) {
+         return null;
       }
    }
 
    @Nullable
-   public af a(ajh $$0) {
-      return this.c.get($$0);
+   public static ajt a(String $$0, String $$1) {
+      try {
+         return new ajt($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
    }
 
-   public ak a() {
-      return this.d;
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
+         }
+      }
+
+      return $$2;
    }
 
-   public Collection<af> b() {
-      return this.c.values();
+   public static DataResult<ajt> b(String $$0) {
+      try {
+         return DataResult.success(new ajt($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.h;
+   }
+
+   public String b() {
+      return this.g;
+   }
+
+   public ajt c(String $$0) {
+      return new ajt(this.g, d(this.g, $$0), null);
+   }
+
+   public ajt a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.h));
+   }
+
+   public ajt d(String $$0) {
+      return this.c($$0 + this.h);
+   }
+
+   public ajt e(String $$0) {
+      return this.c(this.h + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.g + ":" + this.h;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ajt $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.g.hashCode() + this.h.hashCode();
+   }
+
+   public int a(ajt $$0) {
+      int $$1 = this.h.compareTo($$0.h);
+      if ($$1 == 0) {
+         $$1 = this.g.compareTo($$0.g);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.g + "." + this.h;
+   }
+
+   public String e() {
+      return this.g.equals("minecraft") ? this.h : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   public static ajt a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
+
+      try {
+         return new ajt($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw f.createWithContext($$0);
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<ajt>, JsonSerializer<ajt> {
+      public ajt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new ajt(axa.a($$0, "location"));
+      }
+
+      public JsonElement a(ajt $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
+      }
    }
 }

@@ -1,33 +1,37 @@
-import java.util.List;
+public class abl implements yn<aay> {
+   public static final ye<vg, abl> a = yn.a(abl::a, abl::new);
+   private final bnx b;
+   private final boolean c;
 
-public record abl(abl.a b, List<String> c) implements yb<aam> {
-   public static final xs<uu, abl> a = yb.a(abl::a, abl::new);
-
-   private abl(uu $$0) {
-      this($$0.b(abl.a.class), $$0.a(uu::p));
+   public abl(bnx $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, uu::a);
+   private abl(vg $$0) {
+      this.b = bnx.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vg $$0) {
+      $$0.k(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public yd<abl> a() {
-      return aex.y;
+   public yp<abl> a() {
+      return afj.m;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public boolean b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public bnx e() {
+      return this.b;
    }
 }

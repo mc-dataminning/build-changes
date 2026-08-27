@@ -1,29 +1,24 @@
-public class afb implements yb<aez> {
-   public static final xs<uu, afb> a = yb.a(afb::a, afb::new);
-   private final int b;
+public record afb(int b) implements yn<aay> {
+   public static final ye<vg, afb> a = yn.a(afb::a, afb::new);
 
-   public afb(int $$0) {
-      this.b = $$0;
+   private afb(vg $$0) {
+      this($$0.l());
    }
 
-   private afb(uu $$0) {
-      this.b = $$0.l();
+   public static afb a(bol $$0) {
+      return new afb($$0.k());
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public yd<afb> a() {
-      return aex.be;
+   public yp<afb> a() {
+      return afj.ce;
    }
 
-   public void a(aez $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

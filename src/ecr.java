@@ -1,29 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class ecr extends eck {
-   public static final Codec<ecr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ecr::new)
-   );
-   private final int c;
+public abstract class ecr {
+   public static final Codec<ecr> h = kr.Z.q().dispatch(ecr::a, ecs::a);
 
-   private ecr(int $$0) {
-      this.c = $$0;
-   }
+   protected abstract ecs<?> a();
 
-   public static ecr a(int $$0) {
-      return new ecr($$0);
-   }
+   public abstract void a(ecr.a var1);
 
-   @Override
-   protected boolean a(ecj $$0, axd $$1, ib $$2) {
-      int $$3 = $$0.a(dso.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dso.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
-   }
+   public static final class a {
+      private final czd a;
+      private final BiConsumer<ib, doz> b;
+      private final axr c;
+      private final ObjectArrayList<ib> d;
+      private final ObjectArrayList<ib> e;
+      private final ObjectArrayList<ib> f;
 
-   @Override
-   public ecm<?> b() {
-      return ecm.d;
+      public a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, Set<ib> $$3, Set<ib> $$4, Set<ib> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jg::v));
+         this.e.sort(Comparator.comparingInt(jg::v));
+         this.f.sort(Comparator.comparingInt(jg::v));
+      }
+
+      public void a(ib $$0, dpq $$1) {
+         this.a($$0, dca.ff.n().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(ib $$0, doz $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ib $$0) {
+         return this.a.a($$0, doy.a::i);
+      }
+
+      public czd a() {
+         return this.a;
+      }
+
+      public axr b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ib> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ib> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ib> e() {
+         return this.f;
+      }
    }
 }

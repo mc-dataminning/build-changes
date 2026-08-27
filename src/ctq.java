@@ -1,81 +1,52 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class ctq {
-   private final ctq.a[] a;
-   private WeakReference<cts> b = new WeakReference<>(null);
+public record ctq(Map<String, String> d) {
+   public static final ctq a = new ctq(Map.of());
+   public static final Codec<ctq> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(ctq::new, ctq::b);
+   private static final ye<ByteBuf, Map<String, String>> e = yc.a(Object2ObjectOpenHashMap::new, yc.k, yc.k);
+   public static final ye<ByteBuf, ctq> c = e.a(ctq::new, ctq::b);
 
-   public ctq(int $$0) {
-      this.a = new ctq.a[$$0];
+   public <T extends Comparable<T>> ctq a(dqc<T> $$0, T $$1) {
+      return new ctq(ac.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public Optional<ctg> a(cxb $$0, cmg $$1) {
-      if ($$1.ai_()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            ctq.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1.h())) {
-               this.a($$2);
-               return Optional.ofNullable($$3.b());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
+   public <T extends Comparable<T>> ctq a(dqc<T> $$0, doz $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   private void a(cxb $$0) {
-      cts $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
+   @Nullable
+   public <T extends Comparable<T>> T a(dqc<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   private Optional<ctg> a(cmg $$0, cxb $$1) {
-      Optional<ctr<ctg>> $$2 = $$1.r().a(ctu.a, $$0, $$1);
-      this.a($$0.h(), $$2.map(ctr::b).orElse(null));
-      return $$2.map(ctr::b);
-   }
+   public doz a(doz $$0) {
+      dpa<dby, doz> $$1 = $$0.b().l();
 
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         ctq.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(List<cqm> $$0, @Nullable ctg $$1) {
-      iu<cqm> $$2 = iu.a($$0.size(), cqm.h);
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         $$2.set($$3, $$0.get($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new ctq.a($$2, $$1);
-   }
-
-   static record a(iu<cqm> a, @Nullable ctg b) {
-      public boolean a(List<cqm> $$0) {
-         if (this.a.size() != $$0.size()) {
-            return false;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cqm.c(this.a.get($$1), $$0.get($$1))) {
-                  return false;
-               }
-            }
-
-            return true;
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dqc<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
       }
+
+      return $$0;
+   }
+
+   private static <T extends Comparable<T>> doz a(doz $$0, dqc<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   public Map<String, String> b() {
+      return this.d;
    }
 }

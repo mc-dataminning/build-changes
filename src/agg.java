@@ -1,29 +1,45 @@
-public class agg implements yb<aez> {
-   public static final xs<uu, agg> a = yb.a(agg::a, agg::new);
-   private final ajh b;
+public class agg implements yn<afl> {
+   public static final ye<vg, agg> a = yn.a(agg::a, agg::new);
+   private final ib b;
+   private final int c;
+   private final boolean d;
 
-   public agg(ctr<?> $$0) {
-      this.b = $$0.a();
+   public agg(ib $$0, int $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agg(uu $$0) {
-      this.b = $$0.q();
+   private agg(vg $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yd<agg> a() {
-      return aex.bM;
+   public yp<agg> a() {
+      return afj.bx;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
-   public ajh b() {
+   public ib b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

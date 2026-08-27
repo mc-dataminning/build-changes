@@ -1,19 +1,25 @@
-public class ggl extends ghm<cgw, fnn<cgw>> {
-   private static final ajh a = new ajh("textures/entity/breeze/breeze_wind.png");
-   private static final fnn<cgw> b = new fnn<>(fnn.a(128, 128).a());
+public class ggl extends gfh<ckk> {
+   private static final ajt a = new ajt("textures/entity/llama/spit.png");
+   private final frg<ckk> f;
 
-   public ggl(gew<cgw, fnn<cgw>> $$0) {
+   public ggl(gfi.a $$0) {
       super($$0);
+      this.f = new frg<>($$0.a(ftl.az));
    }
 
-   public void a(eub $$0, fxs $$1, int $$2, cgw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ah + $$6;
-      euf $$11 = $$1.getBuffer(fya.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gch.a(b, b.e()).a($$0, $$11, $$2, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(ckk $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(axk.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(axk.i($$2, $$0.O, $$0.dE())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      ewm $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public ajt a(ckk $$0) {
+      return a;
    }
 }

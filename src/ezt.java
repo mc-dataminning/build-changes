@@ -1,136 +1,76 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ezt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public class ezt extends grl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wg b = wg.c("mco.terms.title");
+   private static final wg c = wg.c("mco.terms.sentence.1");
+   private static final wg y = wf.a().b(wg.c("mco.terms.sentence.2").c(xd.a.c(true)));
+   private final fjo z;
+   private final exp A;
+   private boolean B;
 
-   public static void a(File $$0, esn $$1, Consumer<vu> $$2) {
-      a($$0, null, $$1, $$2);
+   public ezt(fjo $$0, exp $$1) {
+      super(b);
+      this.z = $$0;
+      this.A = $$1;
    }
 
-   public static void a(File $$0, @Nullable String $$1, esn $$2, Consumer<vu> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+   @Override
+   public void aN_() {
+      int $$0 = this.k / 4 - 2;
+      this.c(fdp.a(wg.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.k / 4, g(12), $$0, 20).a());
+      this.c(fdp.a(wg.c("mco.terms.buttons.disagree"), $$0x -> this.j.a(this.z)).a(this.k / 2 + 4, g(12), $$0, 20).a());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.j.a(this.z);
+         return true;
       } else {
-         b($$0, $$1, $$2, $$3);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private static void b(File $$0, @Nullable String $$1, esn $$2, Consumer<vu> $$3) {
-      etc $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
+   private void C() {
+      ewy $$0 = ewy.a();
+
+      try {
+         $$0.j();
+         this.j.a(new ezf(this.z, new fao(this.z, this.A)));
+      } catch (eyl var3) {
+         a.error("Couldn't agree to TOS", var3);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.B) {
+         this.j.o.a("https://aka.ms/MinecraftRealmsTerms");
+         ac.j().a("https://aka.ms/MinecraftRealmsTerms");
+         return true;
       } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            vu $$3x = vu.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new vs(vs.a.b, $$6.getAbsolutePath())));
-            $$3.accept(vu.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(vu.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
-         }
-      });
-   }
-
-   public static etc a(esn $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      etc $$3 = new etc($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
-
-         $$2++;
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public ezt(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
+   @Override
+   public wg i() {
+      return wf.a(super.i(), c).b(wf.v).b(y);
    }
 
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
-      }
-   }
-
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 17, -1);
+      $$0.a(this.m, c, this.k / 2 - 120, g(5), -1, false);
+      int $$4 = this.m.a(c);
+      int $$5 = this.k / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.m.a(y) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.B = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.m, y, this.k / 2 - 120 + $$4, g(5), this.B ? 7107012 : 3368635, false);
    }
 }

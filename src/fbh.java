@@ -1,165 +1,104 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
 public class fbh {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final ajh[] c = new ajh[]{
-      new ajh("boss_bar/pink_background"),
-      new ajh("boss_bar/blue_background"),
-      new ajh("boss_bar/red_background"),
-      new ajh("boss_bar/green_background"),
-      new ajh("boss_bar/yellow_background"),
-      new ajh("boss_bar/purple_background"),
-      new ajh("boss_bar/white_background")
-   };
-   private static final ajh[] d = new ajh[]{
-      new ajh("boss_bar/pink_progress"),
-      new ajh("boss_bar/blue_progress"),
-      new ajh("boss_bar/red_progress"),
-      new ajh("boss_bar/green_progress"),
-      new ajh("boss_bar/yellow_progress"),
-      new ajh("boss_bar/purple_progress"),
-      new ajh("boss_bar/white_progress")
-   };
-   private static final ajh[] e = new ajh[]{
-      new ajh("boss_bar/notched_6_background"),
-      new ajh("boss_bar/notched_10_background"),
-      new ajh("boss_bar/notched_12_background"),
-      new ajh("boss_bar/notched_20_background")
-   };
-   private static final ajh[] f = new ajh[]{
-      new ajh("boss_bar/notched_6_progress"),
-      new ajh("boss_bar/notched_10_progress"),
-      new ajh("boss_bar/notched_12_progress"),
-      new ajh("boss_bar/notched_20_progress")
-   };
-   private final ezi g;
-   final Map<UUID, fbw> h = Maps.newLinkedHashMap();
+   public static final wg a = wf.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final fbp c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public fbh(ezi $$0) {
-      this.g = $$0;
+   public fbh(fbp $$0) {
+      this.c = $$0;
    }
 
-   public void a(fav $$0) {
-      if (!this.h.isEmpty()) {
-         this.g.aI().a("bossHealth");
-         int $$1 = $$0.a();
-         int $$2 = 12;
-
-         for (fbw $$3 : this.h.values()) {
-            int $$4 = $$1 / 2 - 91;
-            this.a($$0, $$4, $$2, $$3);
-            vu $$6 = $$3.j();
-            int $$7 = this.g.h.a($$6);
-            int $$8 = $$1 / 2 - $$7 / 2;
-            int $$9 = $$2 - 9;
-            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
-            $$2 += 10 + 9;
-            if ($$2 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         this.g.aI().c();
+   public void a(wg $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
       }
    }
 
-   private void a(fav $$0, int $$1, int $$2, bmt $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = aww.b($$3.k(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+   public void b(wg $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
       }
    }
 
-   private void a(fav $$0, int $$1, int $$2, bmt $$3, int $$4, ajh[] $$5, ajh[] $$6) {
-      $$0.a($$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.m() != bmt.b.a) {
-         RenderSystem.enableBlend();
-         $$0.a($$6[$$3.m().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-         RenderSystem.disableBlend();
+   public void c(wg $$0) {
+      this.a($$0.getString());
+   }
+
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
+         }
       }
    }
 
-   public void a(aaw $$0) {
-      $$0.a(new aaw.b() {
-         @Override
-         public void a(UUID $$0, vu $$1, float $$2, bmt.a $$3, bmt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fbh.this.h.put($$0, new fbw($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fbh.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fbh.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, vu $$1) {
-            fbh.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bmt.a $$1, bmt.b $$2) {
-            fbw $$3 = fbh.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fbw $$4 = fbh.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
+   private fbr d() {
+      return this.c.m.as().c();
    }
 
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bmt $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
+   private void b(String $$0) {
+      if (aa.aW) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
       }
-
-      return false;
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bmt $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
+   public void a(fbr $$0) {
+      this.b();
+      this.d.say(wg.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      ffz $$1 = fbp.Q().aA();
+      if (this.d.active()) {
+         if ($$0 == fbr.a) {
+            ffx.b($$1, ffx.a.a, wg.c("narrator.toast.disabled"), null);
+         } else {
+            ffx.b($$1, ffx.a.a, wg.c("narrator.toast.enabled"), $$0.b());
          }
+      } else {
+         ffx.b($$1, ffx.a.a, wg.c("narrator.toast.disabled"), wg.c("options.narrator.notavailable"));
       }
-
-      return false;
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bmt $$0 : this.h.values()) {
-            if ($$0.p()) {
-               return true;
-            }
-         }
-      }
+   public boolean a() {
+      return this.d.active();
+   }
 
-      return false;
+   public void b() {
+      if (this.d() != fbr.a && this.d.active()) {
+         this.d.clear();
+      }
+   }
+
+   public void c() {
+      this.d.destroy();
+   }
+
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new fbh.a("Narrator library is not active");
+      }
+   }
+
+   public static class a extends fpd {
+      public a(String $$0) {
+         super($$0);
+      }
    }
 }

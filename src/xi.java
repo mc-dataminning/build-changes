@@ -1,29 +1,18 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class xi implements xk {
-   public static final xi a = new xi();
-   public static final xl<xi> b = new xl<xi>() {
-      private static final MapCodec<xi> a = MapCodec.unit(xi.a);
-      private static final xs<vf, xi> b = xs.a(xi.a);
+public interface xi {
+   MapCodec<xi> c = wi.a(new xi.a[]{xj.b, xh.b, xq.b}, xi.a::a, xi::a, "source");
 
+   Stream<tm> a(du var1) throws CommandSyntaxException;
+
+   xi.a<?> a();
+
+   public static record a<T extends xi>(MapCodec<T> a, String b) implements aye {
       @Override
-      public MapCodec<xi> a() {
-         return a;
+      public String c() {
+         return this.b;
       }
-
-      @Override
-      public xs<vf, xi> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public wi a(int $$0) {
-      return vu.i();
-   }
-
-   @Override
-   public xl<xi> a() {
-      return b;
    }
 }

@@ -1,47 +1,22 @@
 import com.mojang.serialization.Codec;
 
-public class dvz extends dvs<dyd> {
-   public dvz(Codec<dyd> $$0) {
-      super($$0);
-   }
+public interface dvz<P extends dvy> {
+   dvz<dwe> a = a("matching_blocks", dwe.a);
+   dvz<dwd> b = a("matching_block_tag", dwd.e);
+   dvz<dwf> c = a("matching_fluids", dwf.a);
+   dvz<dwb> d = a("has_sturdy_face", dwb.a);
+   dvz<dwi> e = a("solid", dwi.a);
+   dvz<dwh> f = a("replaceable", dwh.a);
+   dvz<dwl> g = a("would_survive", dwl.a);
+   dvz<dwc> h = a("inside_world_bounds", dwc.a);
+   dvz<dvx> i = a("any_of", dvx.a);
+   dvz<dvw> j = a("all_of", dvw.a);
+   dvz<dwg> k = a("not", dwg.a);
+   dvz<dwk> l = a("true", dwk.e);
 
-   @Override
-   public boolean a(dvu<dyd> $$0) {
-      cxw $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      axd $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dnb $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dae.dV) && !$$4.a(dae.dY) && !$$4.a(dae.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dae.ec.o(), 2);
+   Codec<P> codec();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               ib $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ih $$8 : ih.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dae.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dae.ec.o(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   private static <P extends dvy> dvz<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(kr.O, $$0, () -> $$1);
    }
 }

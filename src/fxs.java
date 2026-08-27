@@ -1,94 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class fxs extends fyn {
+   private final fyi a;
 
-public interface fxs {
-   static fxs.a a(etw $$0) {
-      return a(ImmutableMap.of(), $$0);
+   fxs(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
-   static fxs.a a(Map<fya, etw> $$0, etw $$1) {
-      return new fxs.a($$1, $$0);
+   @Override
+   public fxr b() {
+      return fxr.c;
    }
 
-   euf getBuffer(fya var1);
+   @Override
+   public float b(float $$0) {
+      return this.D * axk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-   public static class a implements fxs {
-      protected final etw a;
-      protected final Map<fya, etw> b;
-      protected Optional<fya> c = Optional.empty();
-      protected final Set<etw> d = Sets.newHashSet();
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         cjt $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.dt();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dp().d - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
+         }
+      }
+   }
 
-      protected a(etw $$0, Map<fya, etw> $$1) {
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      @Override
-      public euf getBuffer(fya $$0) {
-         Optional<fya> $$1 = $$0.P();
-         etw $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.O()) {
-            if (this.c.isPresent()) {
-               fya $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxs($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
 
-            if (this.d.add($$2)) {
-               $$2.a($$0.K(), $$0.J());
-            }
+   public static class b implements fxq<ko> {
+      private final fyi a;
 
-            this.c = $$1;
-         }
-
-         return $$2;
+      public b(fyi $$0) {
+         this.a = $$0;
       }
 
-      private etw b(fya $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fya $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            euf $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fya $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(fya $$0) {
-         etw $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.P());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxn $$8 = new fxs($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
+         return $$8;
       }
    }
 }

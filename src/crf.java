@@ -1,20 +1,65 @@
-public class crf extends cqh {
-   public crf(cqh.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+public class crf {
+   private final Map<cre, crf.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cre $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public bnd a(cqm $$0, ciu $$1, bpp $$2, bnc $$3) {
-      if ($$2 instanceof bqe $$4 && $$2.bA() && !$$4.i() && $$4.f()) {
-         if (!$$1.dM().B) {
-            $$4.a(atz.g);
-            $$2.dM().a($$2, drp.v, $$2.dk());
-            $$0.h(1);
-         }
-
-         return bnd.a($$1.dM().B);
+   public float a(cre $$0, float $$1) {
+      crf.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return axk.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
       }
+   }
 
-      return bnd.d;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cre, crf.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cre, crf.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cre $$0, int $$1) {
+      this.a.put($$0, new crf.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cre $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cre $$0, int $$1) {
+   }
+
+   protected void c(cre $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

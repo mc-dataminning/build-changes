@@ -1,24 +1,32 @@
-public class geo extends geh<cgc, fpg<cgc>> {
-   private static final ajh a = new ajh("textures/entity/phantom.png");
+public class geo extends ggo<chv, fpv<chv>> {
+   private static final ajt a = new ajt("textures/entity/breeze/breeze.png");
 
-   public geo(gdb.a $$0) {
-      super($$0, new fpg<>($$0.a(fre.aH)), 0.75F);
-      this.a(new ghk<>(this));
+   public geo(gfi.a $$0) {
+      super($$0, new fpv<>($$0.a(ftl.s)), 0.5F);
+      this.a(new gis(this));
+      this.a(new gir(this));
    }
 
-   public ajh a(cgc $$0) {
+   public void a(chv $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      fpv<chv> $$6 = this.a();
+      a($$6, $$6.b(), $$6.d());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ajt a(chv $$0) {
       return a;
    }
 
-   protected void a(cgc $$0, eub $$1, float $$2) {
-      int $$3 = $$0.r();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
+   public static fpv<chv> a(fpv<chv> $$0, ftm... $$1) {
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+      $$0.e().k = false;
 
-   protected void a(cgc $$0, eub $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dE()));
+      for (ftm $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

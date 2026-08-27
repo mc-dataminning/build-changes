@@ -1,37 +1,15 @@
-public class cqu extends cqh {
-   private static final int a = 32;
-
-   public cqu(cqh.a $$0) {
+public class cqu extends cre implements csi {
+   public cqu(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public cqm a(cqm $$0, cxb $$1, bpp $$2) {
-      if ($$2 instanceof apg $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(aui.c.b(this));
+   public boolean a(cyx $$0, dnp $$1, boolean $$2, cjt $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aA_(), aum.kv, aun.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
-
-      $$0.a(1, $$2);
-      if (!$$1.B) {
-         $$2.et();
-      }
-
-      return $$0.b() ? new cqm(cqp.qx) : $$0;
-   }
-
-   @Override
-   public int b(cqm $$0) {
-      return 32;
-   }
-
-   @Override
-   public csf c(cqm $$0) {
-      return csf.c;
-   }
-
-   @Override
-   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
-      return cqo.a($$0, $$1, $$2);
    }
 }

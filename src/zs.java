@@ -1,22 +1,20 @@
-public record zs(ib c, float d, float e, float f, float g, float h) implements zc {
-   public static final xs<uu, zs> a = zc.a(zs::a, zs::new);
-   public static final zc.b<zs> b = zc.a("debug/worldgen_attempt");
+public record zs(ib c, int d, String e, int f) implements zo {
+   public static final ye<vg, zs> a = zo.a(zs::a, zs::new);
+   public static final zo.b<zs> b = zo.a("debug/game_test_add_marker");
 
-   private zs(uu $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   private zs(vg $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.p(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+      $$0.p(this.f);
    }
 
    @Override
-   public zc.b<zs> a() {
+   public zo.b<zs> a() {
       return b;
    }
 
@@ -24,23 +22,15 @@ public record zs(ib c, float d, float e, float f, float g, float h) implements z
       return this.c;
    }
 
-   public float c() {
+   public int c() {
       return this.d;
    }
 
-   public float d() {
+   public String d() {
       return this.e;
    }
 
-   public float e() {
+   public int e() {
       return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

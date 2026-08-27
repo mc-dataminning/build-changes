@@ -1,15 +1,70 @@
-public class qu {
-   public static final ajg<dvf<?, ?>> a = qq.a("pile_hay");
-   public static final ajg<dvf<?, ?>> b = qq.a("pile_melon");
-   public static final ajg<dvf<?, ?>> c = qq.a("pile_snow");
-   public static final ajg<dvf<?, ?>> d = qq.a("pile_ice");
-   public static final ajg<dvf<?, ?>> e = qq.a("pile_pumpkin");
-
-   public static void a(pl<dvf<?, ?>> $$0) {
-      qq.a($$0, a, dvs.j, new dxo(new eae(dae.ij)));
-      qq.a($$0, b, dvs.j, new dxo(dzx.a(dae.fa)));
-      qq.a($$0, c, dvs.j, new dxo(dzx.a(dae.dN)));
-      qq.a($$0, d, dvs.j, new dxo(new eah(bln.<dnb>a().a(dae.mW.o(), 1).a(dae.iC.o(), 5))));
-      qq.a($$0, e, dvs.j, new dxo(new eah(bln.<dnb>a().a(dae.eZ.o(), 19).a(dae.ef.o(), 1))));
+public abstract class qu {
+   public static void a(px<czw> $$0) {
+      im<eel> $$1 = $$0.a(ks.aE);
+      im<dwu<?>> $$2 = $$0.a(ks.ax);
+      $$0.a(dad.a, qx.j($$1, $$2));
+      $$0.a(dad.b, qx.a($$1, $$2, false, false, false));
+      $$0.a(dad.c, qx.a($$1, $$2, true, false, false));
+      $$0.a(dad.d, qx.a($$1, $$2, false, true, false));
+      $$0.a(dad.e, qx.a($$1, $$2, false, true, true));
+      $$0.a(dad.f, qx.d($$1, $$2));
+      $$0.a(dad.g, qx.h($$1, $$2));
+      $$0.a(dad.h, qx.i($$1, $$2));
+      $$0.a(dad.i, qx.b($$1, $$2, false, false, false));
+      $$0.a(dad.j, qx.b($$1, $$2, false, false, true));
+      $$0.a(dad.k, qx.b($$1, $$2, true, false, false));
+      $$0.a(dad.l, qx.g($$1, $$2));
+      $$0.a(dad.m, qx.b($$1, $$2, true, true, false));
+      $$0.a(dad.n, qx.a($$1, $$2, false));
+      $$0.a(dad.o, qx.a($$1, $$2, true));
+      $$0.a(dad.p, qx.h($$1, $$2, false));
+      $$0.a(dad.q, qx.h($$1, $$2, true));
+      $$0.a(dad.r, qx.a($$1, $$2, false, false));
+      $$0.a(dad.s, qx.a($$1, $$2, false, true));
+      $$0.a(dad.t, qx.b($$1, $$2, false));
+      $$0.a(dad.u, qx.b($$1, $$2, false));
+      $$0.a(dad.v, qx.b($$1, $$2, true));
+      $$0.a(dad.w, qx.a($$1, $$2, true, false));
+      $$0.a(dad.x, qx.b($$1, $$2));
+      $$0.a(dad.y, qx.a($$1, $$2));
+      $$0.a(dad.z, qx.c($$1, $$2));
+      $$0.a(dad.A, qx.c($$1, $$2, false));
+      $$0.a(dad.B, qx.c($$1, $$2, false));
+      $$0.a(dad.C, qx.c($$1, $$2, true));
+      $$0.a(dad.D, qx.j($$1, $$2, false));
+      $$0.a(dad.E, qx.j($$1, $$2, true));
+      $$0.a(dad.F, qx.o($$1, $$2));
+      $$0.a(dad.G, qx.n($$1, $$2));
+      $$0.a(dad.H, qx.k($$1, $$2));
+      $$0.a(dad.I, qx.l($$1, $$2));
+      $$0.a(dad.J, qx.m($$1, $$2));
+      $$0.a(dad.K, qx.i($$1, $$2, false));
+      $$0.a(dad.L, qx.i($$1, $$2, true));
+      $$0.a(dad.M, qx.b($$1, $$2, false, false));
+      $$0.a(dad.N, qx.b($$1, $$2, true, false));
+      $$0.a(dad.O, qx.b($$1, $$2, false, true));
+      $$0.a(dad.P, qx.f($$1, $$2));
+      $$0.a(dad.Q, qx.f($$1, $$2, false));
+      $$0.a(dad.R, qx.f($$1, $$2, true));
+      $$0.a(dad.S, qx.e($$1, $$2, false));
+      $$0.a(dad.T, qx.e($$1, $$2, true));
+      $$0.a(dad.U, qx.d($$1, $$2, false));
+      $$0.a(dad.V, qx.d($$1, $$2, true));
+      $$0.a(dad.W, qx.g($$1, $$2, false));
+      $$0.a(dad.X, qx.g($$1, $$2, true));
+      $$0.a(dad.Y, qx.e($$1, $$2));
+      $$0.a(dad.Z, qx.q($$1, $$2));
+      $$0.a(dad.aa, qx.p($$1, $$2));
+      $$0.a(dad.ab, qx.r($$1, $$2));
+      $$0.a(dad.ac, qw.a($$1, $$2));
+      $$0.a(dad.ad, qw.e($$1, $$2));
+      $$0.a(dad.ae, qw.d($$1, $$2));
+      $$0.a(dad.af, qw.b($$1, $$2));
+      $$0.a(dad.ag, qw.c($$1, $$2));
+      $$0.a(dad.ah, qv.b($$1, $$2));
+      $$0.a(dad.ai, qv.d($$1, $$2));
+      $$0.a(dad.aj, qv.c($$1, $$2));
+      $$0.a(dad.ak, qv.e($$1, $$2));
+      $$0.a(dad.al, qv.a($$1, $$2));
    }
 }

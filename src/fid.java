@@ -1,214 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+public class fid extends fjq {
+   private static final wg a = wg.c("options.chat.title");
 
-public class fid extends fhh {
-   static final ajh a = new ajh("gamemode_switcher/slot");
-   static final ajh b = new ajh("gamemode_switcher/selection");
-   private static final ajh c = new ajh("textures/gui/container/gamemode_switcher.png");
-   private static final int k = 128;
-   private static final int l = 128;
-   private static final int m = 26;
-   private static final int n = 5;
-   private static final int o = 31;
-   private static final int p = 5;
-   private static final int q = fid.a.values().length * 31 - 5;
-   private static final vu r = vu.a("debug.gamemodes.select_next", vu.c("debug.gamemodes.press_f4").a(n.l));
-   private final fid.a t;
-   private fid.a u;
-   private int v;
-   private int w;
-   private boolean x;
-   private final List<fid.b> y = Lists.newArrayList();
-
-   public fid() {
-      super(eza.a);
-      this.t = fid.a.a(this.o());
-      this.u = this.t;
-   }
-
-   private cwy o() {
-      fsj $$0 = ezi.Q().q;
-      cwy $$1 = $$0.i();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.j() == cwy.b ? cwy.a : cwy.b;
-      }
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.u = this.t;
-
-      for (int $$0 = 0; $$0 < fid.a.e.length; $$0++) {
-         fid.a $$1 = fid.a.e[$$0];
-         this.y.add(new fid.b($$1, this.g / 2 - q / 2 + $$0 * 31, this.h / 2 - 31));
-      }
-   }
-
-   @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      if (!this.H()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.g / 2 - 62;
-         int $$5 = this.h / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.u.a(), this.g / 2, this.h / 2 - 31 - 20, -1);
-         $$0.a(this.i, r, this.g / 2, this.h / 2 + 5, 16777215);
-         if (!this.x) {
-            this.v = $$1;
-            this.w = $$2;
-            this.x = true;
+   public fid(fjo $$0, fbt $$1) {
+      super(
+         $$0,
+         $$1,
+         a,
+         new fbs[]{
+            $$1.m(),
+            $$1.K(),
+            $$1.L(),
+            $$1.M(),
+            $$1.n(),
+            $$1.r(),
+            $$1.w(),
+            $$1.o(),
+            $$1.A(),
+            $$1.x(),
+            $$1.z(),
+            $$1.y(),
+            $$1.as(),
+            $$1.J(),
+            $$1.ae(),
+            $$1.V(),
+            $$1.ag()
          }
-
-         boolean $$6 = this.v == $$1 && this.w == $$2;
-
-         for (fid.b $$7 : this.y) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.u == $$7.b);
-            if (!$$6 && $$7.z()) {
-               this.u = $$7.b;
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(fav $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void E() {
-      a(this.f, this.u);
-   }
-
-   private static void a(ezi $$0, fid.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         fid.a $$2 = fid.a.a($$0.q.j());
-         if ($$0.s.m(2) && $$1 != $$2) {
-            $$0.s.cu.d($$1.b());
-         }
-      }
-   }
-
-   private boolean H() {
-      if (!esw.a(this.f.aO().i(), 292)) {
-         this.E();
-         this.f.a(null);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.x = false;
-         this.u = this.u.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   static enum a {
-      a(vu.c("gameMode.creative"), "gamemode creative", new cqm(dae.i)),
-      b(vu.c("gameMode.survival"), "gamemode survival", new cqm(cqp.oZ)),
-      c(vu.c("gameMode.adventure"), "gamemode adventure", new cqm(cqp.uh)),
-      d(vu.c("gameMode.spectator"), "gamemode spectator", new cqm(cqp.sr));
-
-      protected static final fid.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final vu g;
-      final String h;
-      final cqm i;
-
-      private a(vu $$0, String $$1, cqm $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fav $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      vu a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fid.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fid.a a(cwy $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public class b extends fbg {
-      final fid.a b;
-      private boolean c;
-
-      public b(fid.a $$1, int $$2, int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.b = $$1;
-      }
-
-      @Override
-      public void b(fav $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.b.a($$0, this.B() + 5, this.C() + 5);
-         if (this.c) {
-            this.b($$0);
-         }
-      }
-
-      @Override
-      public void a(ffe $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public boolean z() {
-         return super.z() || this.c;
-      }
-
-      public void b(boolean $$0) {
-         this.c = $$0;
-      }
-
-      private void a(fav $$0) {
-         $$0.a(fid.a, this.B(), this.C(), 26, 26);
-      }
-
-      private void b(fav $$0) {
-         $$0.a(fid.b, this.B(), this.C(), 26, 26);
-      }
+      );
    }
 }

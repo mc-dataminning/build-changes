@@ -1,78 +1,72 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class dnz<T extends Enum<T> & axq> extends doe<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
+public class dnz extends dmf implements czp, doc.a {
+   private static final Logger a = LogUtils.getLogger();
+   private doc b;
 
-   protected dnz(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
+   public dnz(ib $$0, doz $$1) {
+      super(dmh.Q, $$0, $$1);
+      dob $$2 = dob.a;
+      dob.a $$3 = dob.a.a;
+      this.b = new doc(this, $$2, $$3);
+   }
 
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
-         }
-
-         this.b.put($$4, $$3);
+   @Override
+   public void a(tm $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.b.a().parse(ua.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.o != null) {
+         this.f();
       }
    }
 
    @Override
-   public Collection<T> a() {
-      return this.a;
+   protected void b(tm $$0, in.a $$1) {
+      super.b($$0, $$1);
+      this.b.a().encodeStart(ua.a, this.b).get().ifLeft($$1x -> $$0.a((tm)$$1x)).ifRight($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+   }
+
+   public abf b() {
+      return abf.a(this);
    }
 
    @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
+   public tm a(in.a $$0) {
+      return this.b.c().a(this.n().c(dkm.b));
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dnz<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a) && this.b.equals($$1.b);
-         }
+   public boolean q() {
+      return true;
+   }
 
-         return false;
+   @Override
+   public void a(bqb<?> $$0, axr $$1) {
+      this.b.c().a(this.b, $$1, $$0);
+      this.e();
+   }
+
+   public doc c() {
+      return this.b;
+   }
+
+   @Override
+   public dof d() {
+      return !this.n().b(dpp.by) ? dof.a : this.n().c(dpp.by);
+   }
+
+   @Override
+   public void a(cyx $$0, dof $$1) {
+      this.e();
+      $$0.b(this.p, this.n().a(dpp.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.o != null) {
+         this.o.a(this.p, this.n(), this.n(), 3);
       }
-   }
-
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   public static <T extends Enum<T> & axq> dnz<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   public static <T extends Enum<T> & axq> dnz<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
-
-   public static <T extends Enum<T> & axq> dnz<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
-   }
-
-   public static <T extends Enum<T> & axq> dnz<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dnz<>($$0, $$1, $$2);
    }
 }

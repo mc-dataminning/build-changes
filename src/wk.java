@@ -1,135 +1,159 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record wk(wp d, @Nullable wg e, wn f, @Nullable vu g, vy h) {
-   public static final MapCodec<wk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               wp.a.fieldOf("link").forGetter(wk::k),
-               wg.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               wn.a.forGetter(wk::m),
-               vw.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               vy.a.optionalFieldOf("filter_mask", vy.c).forGetter(wk::o)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new wk($$0x, (wg)$$1.orElse(null), $$2, (vu)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ac.d;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public class wk {
+   public static final Codec<wk> a = aye.a(wk.a::values).dispatch(wk::c, wk.a::a);
+   public static final wk b = new wk(new BitSet(0), wk.a.b);
+   public static final wk c = new wk(new BitSet(0), wk.a.a);
+   public static final xd d = xd.a.a(n.i).a(new wm(wm.a.a, wg.c("chat.filtered")));
+   static final Codec<wk> e = Codec.unit(c);
+   static final Codec<wk> f = Codec.unit(b);
+   static final Codec<wk> g = aws.s.xmap(wk::new, wk::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final wk.a j;
 
-   public static wk a(String $$0) {
-      return a(i, $$0);
+   private wk(BitSet $$0, wk.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public static wk a(UUID $$0, String $$1) {
-      wn $$2 = wn.a($$1);
-      wp $$3 = wp.a($$0);
-      return new wk($$3, null, $$2, null, vy.c);
+   private wk(BitSet $$0) {
+      this.i = $$0;
+      this.j = wk.a.c;
    }
 
-   public wk a(vu $$0) {
-      vu $$1 = !$$0.equals(vu.b(this.c())) ? $$0 : null;
-      return new wk(this.d, this.e, this.f, $$1, this.h);
+   public wk(int $$0) {
+      this(new BitSet($$0), wk.a.c);
    }
 
-   public wk a() {
-      return this.g != null ? new wk(this.d, this.e, this.f, null, this.h) : this;
+   private wk.a c() {
+      return this.j;
    }
 
-   public wk a(vy $$0) {
-      return this.h.equals($$0) ? this : new wk(this.d, this.e, this.f, this.g, $$0);
+   private BitSet d() {
+      return this.i;
    }
 
-   public wk a(boolean $$0) {
-      return this.a($$0 ? this.h : vy.c);
+   public static wk a(vg $$0) {
+      wk.a $$1 = $$0.b(wk.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new wk($$0.w(), wk.a.c);
+      };
    }
 
-   public wk b() {
-      wn $$0 = wn.a(this.c());
-      wp $$1 = wp.a(this.g());
-      return new wk($$1, null, $$0, this.g, this.h);
+   public static void a(vg $$0, wk $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == wk.a.c) {
+         $$0.a($$1.i);
+      }
    }
 
-   public static void a(axh.a $$0, wp $$1, wn $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(axi $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String c() {
-      return this.f.a();
-   }
-
-   public vu d() {
-      return Objects.requireNonNullElseGet(this.g, () -> vu.b(this.c()));
-   }
-
-   public Instant e() {
-      return this.f.b();
-   }
-
-   public long f() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.e().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.e().plus(c));
-   }
-
-   public UUID g() {
-      return this.d.c();
-   }
-
-   public boolean h() {
-      return this.g().equals(i);
-   }
-
-   public boolean i() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.i() && this.d.c().equals($$0);
-   }
-
-   public boolean j() {
-      return this.h.b();
-   }
-
-   public wp k() {
-      return this.d;
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
    @Nullable
-   public wg l() {
-      return this.e;
-   }
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
 
-   public wn m() {
-      return this.f;
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
    }
 
    @Nullable
-   public vu n() {
-      return this.g;
+   public wg b(String $$0) {
+      return switch (this.j) {
+         case a -> wg.b($$0);
+         case b -> null;
+         case c -> {
+            wu $$1 = wg.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(wg.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public vy o() {
-      return this.h;
+   public boolean a() {
+      return this.j == wk.a.a;
+   }
+
+   public boolean b() {
+      return this.j == wk.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         wk $$1 = (wk)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements aye {
+      a("pass_through", () -> wk.e),
+      b("fully_filtered", () -> wk.f),
+      c("partially_filtered", () -> wk.g);
+
+      private final String d;
+      private final Supplier<Codec<wk>> e;
+
+      private a(String $$0, Supplier<Codec<wk>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private Codec<wk> a() {
+         return this.e.get();
+      }
    }
 }

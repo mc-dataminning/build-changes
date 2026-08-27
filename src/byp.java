@@ -1,32 +1,67 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
 
-public enum byp implements axq {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class byp extends bxl {
+   private final cef a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<byp> n = axq.a(byp::values);
-
-   private byp(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public byp(cef $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bxl.a.a));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      if (!this.a.gC() && this.a.bP()) {
+         esa $$0 = cbi.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.K().a(this.c, this.d, this.e, this.b);
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.gC() && !this.a.K().l() && this.a.bP();
+   }
+
+   @Override
+   public void e() {
+      if (!this.a.gC() && this.a.ei().a(this.a(50)) == 0) {
+         bpv $$0 = this.a.cQ();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cjt $$1) {
+            int $$2 = this.a.gI();
+            int $$3 = this.a.gN();
+            if ($$3 > 0 && this.a.ei().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.w(5);
+         }
+
+         this.a.bE();
+         this.a.gS();
+         this.a.dM().a(this.a, (byte)6);
+      }
    }
 }

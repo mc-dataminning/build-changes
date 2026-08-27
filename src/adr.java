@@ -1,39 +1,37 @@
-import javax.annotation.Nullable;
+public class adr implements yn<aay> {
+   public static final ye<vg, adr> a = yn.a(adr::a, adr::new);
+   private final double b;
+   private final double c;
 
-public class adr implements yb<aam> {
-   public static final xs<uu, adr> a = yb.a(adr::a, adr::new);
-   private final int b;
-   private final int c;
-
-   public adr(box $$0, @Nullable box $$1) {
-      this.b = $$0.aj();
-      this.c = $$1 != null ? $$1.aj() : 0;
+   public adr(dqq $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private adr(uu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private adr(vg $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(uu $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+   private void a(vg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yd<adr> a() {
-      return aex.aD;
+   public yp<adr> a() {
+      return afj.ar;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public double b() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public double e() {
+      return this.b;
    }
 }

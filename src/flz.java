@@ -1,141 +1,172 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class flz extends fhh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vu b = vu.c("selectWorld.enterName").a(n.h);
-   private static final vu c = vu.c("selectWorld.edit.resetIcon");
-   private static final vu k = vu.c("selectWorld.edit.openFolder");
-   private static final vu l = vu.c("selectWorld.edit.backup");
-   private static final vu m = vu.c("selectWorld.edit.backupFolder");
-   private static final vu n = vu.c("selectWorld.edit.optimize");
-   private static final vu o = vu.c("optimizeWorld.confirm.title");
-   private static final vu p = vu.c("optimizeWorld.confirm.description");
-   private static final vu q = vu.c("selectWorld.edit.save");
-   private static final int r = 200;
-   private static final int t = 4;
-   private static final int u = 98;
-   private final fez v = fez.d().a(5);
-   private final BooleanConsumer w;
-   private final ekm.c x;
-   private final fbr y;
+public class flz extends fkm<cop> {
+   private static final ajt A = new ajt("container/stonecutter/scroller");
+   private static final ajt B = new ajt("container/stonecutter/scroller_disabled");
+   private static final ajt C = new ajt("container/stonecutter/recipe_selected");
+   private static final ajt D = new ajt("container/stonecutter/recipe_highlighted");
+   private static final ajt E = new ajt("container/stonecutter/recipe");
+   private static final ajt F = new ajt("textures/gui/container/stonecutter.png");
+   private static final int G = 12;
+   private static final int H = 15;
+   private static final int I = 4;
+   private static final int J = 3;
+   private static final int K = 16;
+   private static final int L = 18;
+   private static final int M = 54;
+   private static final int N = 52;
+   private static final int O = 14;
+   private float P;
+   private boolean Q;
+   private int R;
+   private boolean S;
 
-   public static flz a(ezi $$0, ekm.c $$1, BooleanConsumer $$2) throws IOException {
-      ekn $$3 = $$1.a($$1.f());
-      return new flz($$0, $$1, $$3.b(), $$2);
+   public flz(cop $$0, cjs $$1, wg $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::I);
+      this.p--;
    }
 
-   private flz(ezi $$0, ekm.c $$1, String $$2, BooleanConsumer $$3) {
-      super(vu.c("selectWorld.edit.title"));
-      this.w = $$3;
-      this.x = $$1;
-      fat $$4 = $$0.h;
-      this.v.a(new ffa(200, 20));
-      this.v.a(new fcp(b, $$4));
-      this.y = this.v.a(new fbr($$4, 200, 20, b));
-      this.y.a($$2);
-      fez $$5 = fez.e().a(4);
-      fbi $$6 = $$5.a(fbi.a(q, $$0x -> this.a(this.y.a())).a(98).a());
-      $$5.a(fbi.a(vt.e, $$0x -> this.d()).a(98).a());
-      this.y.b($$1x -> $$6.j = !ac.b($$1x));
-      this.v.a(fbi.a(c, $$1x -> {
-         $$1.h().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.h().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.v.a(fbi.a(k, $$1x -> ac.j().a($$1.a(ekk.l).toFile())).a(200).a());
-      this.v.a(fbi.a(l, $$1x -> {
-         boolean $$2x = a($$1);
-         this.w.accept(!$$2x);
-      }).a(200).a());
-      this.v.a(fbi.a(m, $$1x -> {
-         ekm $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   @Override
+   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   @Override
+   protected void a(fdc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.w;
+      int $$5 = this.x;
+      $$0.a(F, $$4, $$5, 0, 0, this.c, this.d);
+      int $$6 = (int)(41.0F * this.P);
+      ajt $$7 = this.F() ? A : B;
+      $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
+      int $$8 = this.w + 52;
+      int $$9 = this.x + 14;
+      int $$10 = this.R + 12;
+      this.a($$0, $$2, $$3, $$8, $$9, $$10);
+      this.b($$0, $$8, $$9, $$10);
+   }
+
+   @Override
+   protected void a(fdc $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.S) {
+         int $$3 = this.w + 52;
+         int $$4 = this.x + 14;
+         int $$5 = this.R + 12;
+         List<cvl<cwd>> $$6 = this.s.m();
+
+         for (int $$7 = this.R; $$7 < $$5 && $$7 < this.s.n(); $$7++) {
+            int $$8 = $$7 - this.R;
+            int $$9 = $$3 + $$8 % 4 * 16;
+            int $$10 = $$4 + $$8 / 4 * 18 + 2;
+            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
+               $$0.b(this.m, $$6.get($$7).b().a(this.j.r.H_()), $$1, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = this.R; $$6 < $$5 && $$6 < this.s.n(); $$6++) {
+         int $$7 = $$6 - this.R;
+         int $$8 = $$3 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$4 + $$9 * 18 + 2;
+         ajt $$11;
+         if ($$6 == this.s.l()) {
+            $$11 = C;
+         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
+            $$11 = D;
+         } else {
+            $$11 = E;
          }
 
-         ac.j().a($$3x.toFile());
-      }).a(200).a());
-      this.v.a(fbi.a(n, $$2x -> $$0.a(new ffu(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
+         $$0.a($$11, $$8, $$10 - 1, 16, 18);
+      }
+   }
+
+   private void b(fdc $$0, int $$1, int $$2, int $$3) {
+      List<cvl<cwd>> $$4 = this.s.m();
+
+      for (int $$5 = this.R; $$5 < $$3 && $$5 < this.s.n(); $$5++) {
+         int $$6 = $$5 - this.R;
+         int $$7 = $$1 + $$6 % 4 * 16;
+         int $$8 = $$6 / 4;
+         int $$9 = $$2 + $$8 * 18 + 2;
+         $$0.a($$4.get($$5).b().a(this.j.r.H_()), $$7, $$9);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.Q = false;
+      if (this.S) {
+         int $$3 = this.w + 52;
+         int $$4 = this.x + 14;
+         int $$5 = this.R + 12;
+
+         for (int $$6 = this.R; $$6 < $$5; $$6++) {
+            int $$7 = $$6 - this.R;
+            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
+            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
+            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.s.b(this.j.s, $$6)) {
+               fbp.Q().ak().a(gor.a(aum.Aa, 1.0F));
+               this.j.q.a(this.s.j, $$6);
+               return true;
             }
+         }
 
-            $$0.a(fmb.a($$0, this.w, $$0.at(), $$1, $$3x));
-         }, o, p, true))).a(200).a());
-      this.v.a(new ffa(200, 20));
-      this.v.a($$5);
-      this.v.a($$1x -> {
-         fbg var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aF_() {
-      this.b(this.y);
-   }
-
-   @Override
-   protected void aO_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.v.a();
-      fet.a(this.v, this.F());
-   }
-
-   @Override
-   public void d() {
-      this.w.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.x.a($$0);
-      } catch (tl | tr | IOException var3) {
-         a.error("Failed to access world '{}'", this.x.d(), var3);
-         fdq.a(this.f, this.x.d());
+         $$3 = this.w + 119;
+         $$4 = this.x + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
+            this.Q = true;
+         }
       }
 
-      this.w.accept(true);
+      return super.a($$0, $$1, $$2);
    }
 
-   public static boolean a(ekm.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.j();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         vu $$4 = vu.c("selectWorld.edit.backupFailed");
-         vu $$5 = vu.b($$2.getMessage());
-         ezi.Q().aA().a(new fdq(fdq.a.b, $$4, $$5));
-         return false;
-      } else {
-         vu $$6 = vu.a("selectWorld.edit.backupCreated", $$0.d());
-         vu $$7 = vu.a("selectWorld.edit.backupSize", aww.c((double)$$1 / 1048576.0));
-         ezi.Q().aA().a(new fdq(fdq.a.b, $$6, $$7));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.Q && this.F()) {
+         int $$5 = this.x + 14;
+         int $$6 = $$5 + 54;
+         this.P = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
+         this.P = axk.a(this.P, 0.0F, 1.0F);
+         this.R = (int)((double)(this.P * (float)this.E()) + 0.5) * 4;
          return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(fav $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.F()) {
+         int $$4 = this.E();
+         float $$5 = (float)$$3 / (float)$$4;
+         this.P = axk.a(this.P - $$5, 0.0F, 1.0F);
+         this.R = (int)((double)(this.P * (float)$$4) + 0.5) * 4;
+      }
+
+      return true;
+   }
+
+   private boolean F() {
+      return this.S && this.s.n() > 12;
+   }
+
+   protected int E() {
+      return (this.s.n() + 4 - 1) / 4 - 3;
+   }
+
+   private void I() {
+      this.S = this.s.o();
+      if (!this.S) {
+         this.P = 0.0F;
+         this.R = 0;
+      }
    }
 }

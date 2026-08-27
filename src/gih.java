@@ -1,11 +1,22 @@
-import javax.annotation.Nullable;
+public class gih extends ggo<chp, ftb<chp>> {
+   private static final ajt a = new ajt("textures/entity/witch.png");
 
-public interface gih extends gik {
-   @Deprecated
-   @Override
-   default float call(cqm $$0, @Nullable fsa $$1, @Nullable bpp $$2, int $$3) {
-      return aww.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gih(gfi.a $$0) {
+      super($$0, new ftb<>($$0.a(ftl.bU)), 0.5F);
+      this.a(new gkg<>(this, $$0.d()));
    }
 
-   float unclampedCall(cqm var1, @Nullable fsa var2, @Nullable bpp var3, int var4);
+   public void a(chp $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
+      this.f.b(!$$0.eU().d());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ajt a(chp $$0) {
+      return a;
+   }
+
+   protected void a(chp $$0, ewi $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   }
 }

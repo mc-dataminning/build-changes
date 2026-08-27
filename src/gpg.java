@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gpg {
+public interface gpg<T> extends gpj<T> {
+   static <T> gpg<T> b() {
+      return $$0 -> List.of();
+   }
+
+   default void a() {
+   }
 }

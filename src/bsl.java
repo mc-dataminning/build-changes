@@ -1,72 +1,18 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public final class bsl {
-   public static Optional<ept> a(bpr $$0, ept $$1, float $$2, int $$3, boolean $$4) {
-      ept $$5 = $$0.dk();
-      ept $$6 = new ept($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      ept $$7 = $$1.d($$6);
-      ept $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = $$0.aX();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = aww.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               ept $$27 = null;
-               bpa $$28 = $$0.a(bqa.g);
-
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  ept $$33 = new ept($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
+public class bsl {
+   public static <E extends bqo, T> bsh<E> a(Predicate<E> $$0, bzr<? extends T> $$1, bzr<T> $$2, bnl $$3) {
+      return bvt.a(
+         (Function<bvt.b<E>, ? extends App<bvt.c<E>, bvw<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
                   }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new ept($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
-         }
-      }
-   }
-
-   private static boolean a(bpr $$0, bpa $$1, ept $$2, ept $$3) {
-      ept $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = aww.c($$4.f() / $$5);
-      ept $$7 = $$4.d();
-      ept $$8 = $$2;
-
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dM().a($$0, $$1.a($$8))) {
-            return false;
-         }
-      }
-
-      return true;
+               }))
+      );
    }
 }

@@ -1,184 +1,49 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
-public class ekf implements ekr {
-   private final eks a;
-   private final ekr b;
+public interface ekf extends ekk {
+   @Nullable
+   dra a(je var1);
 
-   public ekf(eks $$0, ekr $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   int b(ib var1);
 
-   @Override
-   public ib a() {
-      return this.b.a();
-   }
+   public static enum a implements ekf {
+      a;
 
-   @Override
-   public float b() {
-      return this.b.b();
-   }
+      @Nullable
+      @Override
+      public dra a(je $$0) {
+         return null;
+      }
 
-   @Override
-   public long c() {
-      return this.b.c();
-   }
+      @Override
+      public int b(ib $$0) {
+         return 0;
+      }
 
-   @Override
-   public long d() {
-      return this.b.d();
-   }
+      @Override
+      public void a(ib $$0) {
+      }
 
-   @Override
-   public String e() {
-      return this.a.e();
-   }
+      @Override
+      public boolean K_() {
+         return false;
+      }
 
-   @Override
-   public int f() {
-      return this.b.f();
-   }
+      @Override
+      public int a() {
+         return 0;
+      }
 
-   @Override
-   public void a(int $$0) {
-   }
+      @Override
+      public void a(je $$0, boolean $$1) {
+      }
 
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
+      @Override
+      public void a(cye $$0, boolean $$1) {
+      }
 
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public cwy k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(ib $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(cwy $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public cwx o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dos.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dos.c $$0) {
-   }
-
-   @Override
-   public bna q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public epg<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, cxd $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      @Override
+      public void b(cye $$0) {
+      }
    }
 }

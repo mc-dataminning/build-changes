@@ -1,57 +1,69 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class aby implements yb<aam> {
-   public static final xs<vf, aby> a = yb.a(aby::a, aby::new);
-   private final int b;
-   private final int c;
-   private final abx d;
-   private final acc e;
+public record aby(int b, il<bov> c, int d, int e, Optional<esa> f) implements yn<aay> {
+   public static final ye<vr, aby> a = yn.a(aby::a, aby::new);
+   private static final ye<vr, il<bov>> g = yc.b(ks.r);
 
-   public aby(dpi $$0, eie $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cwi $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new abx($$0);
-      this.e = new acc($$4, $$1, $$2, $$3);
+   public aby(bpv $$0, bot $$1) {
+      this($$0.aj(), $$1.k(), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
-   private aby(vf $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new abx($$0, this.b, this.c);
-      this.e = new acc($$0, this.b, this.c);
+   private aby(vr $$0) {
+      this($$0.l(), g.decode($$0), a((vg)$$0), a((vg)$$0), $$0.b($$0x -> new esa($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
-   private void a(vf $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private static void a(vg $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(vg $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      g.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
    }
 
    @Override
-   public yd<aby> a() {
-      return aex.K;
+   public yp<aby> a() {
+      return afj.z;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public bot a(cyx $$0) {
+      if (this.f.isPresent()) {
+         return new bot(this.c, this.f.get());
+      } else {
+         bpv $$1 = $$0.a(this.d);
+         bpv $$2 = $$0.a(this.e);
+         return new bot(this.c, $$2, $$1);
+      }
    }
 
-   public int e() {
+   public il<bov> e() {
       return this.c;
    }
 
-   public abx f() {
+   public int f() {
       return this.d;
    }
 
-   public acc g() {
+   public int g() {
       return this.e;
+   }
+
+   public Optional<esa> h() {
+      return this.f;
    }
 }

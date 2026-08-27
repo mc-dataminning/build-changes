@@ -1,29 +1,9 @@
-public class yk implements yb<yh> {
-   public static final xs<uu, yk> a = yb.a(yk::a, yk::new);
-   private final long b;
-
-   public yk(long $$0) {
-      this.b = $$0;
-   }
-
-   private yk(uu $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(uu $$0) {
-      $$0.b(this.b);
+public abstract class yk<T extends vm> implements yn<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
    @Override
-   public yd<yk> a() {
-      return yr.c;
-   }
-
-   public void a(yh $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
+   public abstract yp<? extends yk<T>> a();
 }

@@ -1,61 +1,38 @@
-public class agd implements yb<aez> {
-   public static final xs<uu, agd> a = yb.a(agd::a, agd::new);
-   private final int b;
-   private final agd.a c;
-   private final int d;
+import java.util.List;
+import java.util.Optional;
 
-   public agd(box $$0, agd.a $$1) {
-      this($$0, $$1, 0);
-   }
+public record agd(int c, List<String> d, Optional<String> e) implements yn<afl> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final ye<vg, agd> b = ye.a(yc.f, agd::b, yc.b(8192).a(yc.c(200)), agd::e, yc.b(128).a(yc::a), agd::f, agd::new);
 
-   public agd(box $$0, agd.a $$1, int $$2) {
-      this.b = $$0.aj();
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private agd(uu $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(agd.a.class);
-      this.d = $$0.l();
-   }
-
-   private void a(uu $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   public agd(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public yd<agd> a() {
-      return aex.bJ;
+   public yp<agd> a() {
+      return afj.bu;
    }
 
-   public void a(aez $$0) {
+   public void a(afl $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
-   }
-
-   public agd.a e() {
       return this.c;
    }
 
-   public int f() {
+   public List<String> e() {
       return this.d;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
+   public Optional<String> f() {
+      return this.e;
    }
 }

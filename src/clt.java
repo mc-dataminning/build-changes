@@ -1,172 +1,89 @@
-import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class clt extends clq {
-   private static final int k = 0;
-   private static final int l = 1;
-   private static final int m = 3;
-   private static final int n = 1;
-   private static final int o = 28;
-   private static final int p = 28;
-   private static final int q = 37;
-   private static final int r = 0;
-   private final bmw s = new bnm(1) {
-      @Override
-      public boolean b(int $$0, cqm $$1) {
-         return $$1.a(auv.aw);
-      }
-
-      @Override
-      public int ak_() {
-         return 1;
-      }
-   };
-   private final clt.a t;
-   private final cmb u;
-   private final cma v;
-
-   public clt(int $$0, bmw $$1) {
-      this($$0, $$1, new cnk(3), cmb.a);
+public class clt {
+   public static int[][] a(ih $$0) {
+      ih $$1 = $$0.h();
+      ih $$2 = $$1.g();
+      ih $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public clt(int $$0, bmw $$1, cma $$2, cmb $$3) {
-      super(cmx.j, $$0);
-      a($$2, 3);
-      this.v = $$2;
-      this.u = $$3;
-      this.t = new clt.a(this.s, 0, 136, 110);
-      this.a(this.t);
-      this.a($$2);
-      int $$4 = 36;
-      int $$5 = 137;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
 
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cnl($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
+   public static boolean a(cyh $$0, bqo $$1, erv $$2) {
+      for (est $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
       }
 
-      for (int $$8 = 0; $$8 < 9; $$8++) {
-         this.a(new cnl($$1, $$8, 36 + $$8 * 18, 195));
-      }
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   public void b(ciu $$0) {
-      super.b($$0);
-      if (!$$0.dM().B) {
-         cqm $$1 = this.t.a(this.t.a());
-         if (!$$1.b()) {
-            $$0.a($$1, false);
-         }
-      }
+   public static boolean a(cyh $$0, esa $$1, bqo $$2, bqz $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   @Override
-   public boolean a(ciu $$0) {
-      return a(this.u, $$0, dae.fO);
+   public static est a(cyd $$0, ib $$1) {
+      doz $$2 = $$0.a_($$1);
+      return !$$2.a(avc.aP) && (!($$2.b() instanceof dkk) || !$$2.c(dkk.b)) ? $$2.k($$0, $$1) : esq.a();
    }
 
-   @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
-   }
+   public static double a(ib $$0, int $$1, Function<ib, est> $$2) {
+      ib.a $$3 = $$0.j();
+      int $$4 = 0;
 
-   @Override
-   public cqm a(ciu $$0, int $$1) {
-      cqm $$2 = cqm.h;
-      cnl $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cqm $$4 = $$3.g();
-         $$2 = $$4.q();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cqm.h;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.t.h() && this.t.a($$4) && $$4.M() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cqm.h;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cqm.h;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cqm.h;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cqm.h;
+      while ($$4 < $$1) {
+         est $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ih.a.b);
          }
 
-         if ($$4.b()) {
-            $$3.e(cqm.h);
+         $$4++;
+         $$3.c(ih.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static esa a(bqb<?> $$0, cyh $$1, ib $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((cyd)$$1, $$2), () -> a((cyd)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
          } else {
-            $$3.b();
+            esa $$5 = esa.a($$2, $$4);
+            erv $$6 = $$0.n().a($$5);
+
+            for (est $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bqb.bx || !$$1.a_($$2).a(avc.ck) && !$$1.a_($$2.c()).a(avc.ck)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
          }
-
-         if ($$4.M() == $$2.M()) {
-            return cqm.h;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.v.a(0);
-   }
-
-   public static int a(@Nullable il<boi> $$0) {
-      return $$0 == null ? 0 : ki.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static il<boi> e(int $$0) {
-      return $$0 == 0 ? null : ki.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public il<boi> m() {
-      return e(this.v.a(1));
-   }
-
-   @Nullable
-   public il<boi> n() {
-      return e(this.v.a(2));
-   }
-
-   public void a(Optional<il<boi>> $$0, Optional<il<boi>> $$1) {
-      if (this.t.h()) {
-         this.v.a(1, a($$0.orElse(null)));
-         this.v.a(2, a($$1.orElse(null)));
-         this.t.a(1);
-         this.u.a(cxb::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.s.a(0).b();
-   }
-
-   class a extends cnl {
-      public a(bmw $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cqm $$0) {
-         return $$0.a(auv.aw);
-      }
-
-      @Override
-      public int a() {
-         return 1;
       }
    }
 }

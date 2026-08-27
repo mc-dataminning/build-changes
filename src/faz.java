@@ -1,46 +1,30 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.IntFunction;
 
-public abstract class faz extends fbg {
-   protected static final int e = 2;
-   private static final fcv a = new fcv(new ajh("widget/button"), new ajh("widget/button_disabled"), new ajh("widget/button_highlighted"));
+public enum faz implements axm {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public faz(int $$0, int $$1, int $$2, int $$3, vu $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+   private static final IntFunction<faz> d = awb.a(faz::a, values(), awb.a.b);
+   private final int e;
+   private final String f;
 
-   public abstract void b();
-
-   @Override
-   protected void b(fav $$0, int $$1, int $$2, float $$3) {
-      ezi $$4 = ezi.Q();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | aww.f(this.l * 255.0F) << 24);
-   }
-
-   public void a(fav $$0, fat $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   private faz(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   public int a() {
+      return this.e;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (ffj.a($$0)) {
-         this.a(ezi.Q().ak());
-         this.b();
-         return true;
-      } else {
-         return false;
-      }
+   public String b() {
+      return this.f;
+   }
+
+   public static faz a(int $$0) {
+      return d.apply($$0);
    }
 }

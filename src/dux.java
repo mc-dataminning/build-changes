@@ -1,118 +1,110 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dux extends dvs<dxq> {
-   private static final ImmutableList<dac> a = ImmutableList.of(dae.H, dae.F, dae.kJ, dae.dW, dae.fn, dae.fo, dae.fp, dae.fq, dae.cv, dae.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
+public record dux(duk b, duk c, duk d, duk e, duk f, duk g, duk h, duk i, duk j, duk k, duk l, duk m, duk n, duk o, duk p) {
+   public static final Codec<dux> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dux::a),
+               a("fluid_level_floodedness", dux::b),
+               a("fluid_level_spread", dux::c),
+               a("lava", dux::d),
+               a("temperature", dux::e),
+               a("vegetation", dux::f),
+               a("continents", dux::g),
+               a("erosion", dux::h),
+               a("depth", dux::i),
+               a("ridges", dux::j),
+               a("initial_density_without_jaggedness", dux::k),
+               a("final_density", dux::l),
+               a("vein_toggle", dux::m),
+               a("vein_ridged", dux::n),
+               a("vein_gap", dux::o)
+            )
+            .apply($$0, dux::new)
+   );
 
-   public dux(Codec<dxq> $$0) {
-      super($$0);
+   private static RecordCodecBuilder<dux, duk> a(String $$0, Function<dux, duk> $$1) {
+      return duk.d.fieldOf($$0).forGetter($$1);
    }
 
-   @Override
-   public boolean a(dvu<dxq> $$0) {
-      int $$1 = $$0.c().e();
-      ib $$2 = $$0.e();
-      cxw $$3 = $$0.b();
-      axd $$4 = $$0.d();
-      dxq $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (ib $$11 : ib.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
-      }
+   public dux a(duk.f $$0) {
+      return new dux(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   private boolean a(cxc $$0, int $$1, ib $$2, int $$3, int $$4) {
-      boolean $$5 = false;
-
-      for (ib $$6 : ib.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         ib $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (ib.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (ib)$$10)) {
-                  this.a($$0, $$10, dae.dY.o());
-                  $$10.c(ih.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dae.dY)) {
-                     break;
-                  }
-
-                  $$10.c(ih.b);
-               }
-            }
-         }
-      }
-
-      return $$5;
+   public duk a() {
+      return this.b;
    }
 
-   @Nullable
-   private static ib a(cxc $$0, int $$1, ib.a $$2, int $$3) {
-      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(ih.a);
-      }
-
-      return null;
+   public duk b() {
+      return this.c;
    }
 
-   private static boolean a(cxc $$0, int $$1, ib.a $$2) {
-      if (!a($$0, $$1, (ib)$$2)) {
-         return false;
-      } else {
-         dnb $$3 = $$0.a_($$2.c(ih.a));
-         $$2.c(ih.b);
-         return !$$3.i() && !a.contains($$3.b());
-      }
+   public duk c() {
+      return this.d;
    }
 
-   @Nullable
-   private static ib a(cxc $$0, ib.a $$1, int $$2) {
-      while ($$1.v() < $$0.ak() && $$2 > 0) {
-         $$2--;
-         dnb $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(ih.b);
-      }
-
-      return null;
+   public duk d() {
+      return this.e;
    }
 
-   private static boolean a(cxc $$0, int $$1, ib $$2) {
-      dnb $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(dae.H) && $$2.v() <= $$1;
+   public duk e() {
+      return this.f;
+   }
+
+   public duk f() {
+      return this.g;
+   }
+
+   public duk g() {
+      return this.h;
+   }
+
+   public duk h() {
+      return this.i;
+   }
+
+   public duk i() {
+      return this.j;
+   }
+
+   public duk j() {
+      return this.k;
+   }
+
+   public duk k() {
+      return this.l;
+   }
+
+   public duk l() {
+      return this.m;
+   }
+
+   public duk m() {
+      return this.n;
+   }
+
+   public duk n() {
+      return this.o;
+   }
+
+   public duk o() {
+      return this.p;
    }
 }

@@ -1,11 +1,11 @@
 public interface dt {
    dt a = new dt() {
       @Override
-      public void a(vu $$0) {
+      public void a(wg $$0) {
       }
 
       @Override
-      public boolean k_() {
+      public boolean l_() {
          return false;
       }
 
@@ -20,15 +20,15 @@ public interface dt {
       }
    };
 
-   void a(vu var1);
+   void a(wg var1);
 
-   boolean k_();
+   boolean l_();
 
    boolean w_();
 
    boolean U_();
 
-   default boolean l_() {
+   default boolean m_() {
       return false;
    }
 }

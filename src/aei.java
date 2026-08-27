@@ -1,68 +1,74 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class aei implements yb<aam> {
-   public static final xs<uu, aei> a = yb.a(aei::a, aei::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final ajh d;
-   @Nullable
-   private final atz e;
+public class aei implements yn<aay> {
+   public static final ye<vr, aei> a = yn.a(aei::a, aei::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final wg f;
+   private final eth.a g;
+   private final Optional<xw> h;
+   private final int i;
 
-   public aei(@Nullable ajh $$0, @Nullable atz $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public aei(esw $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
    }
 
-   private aei(uu $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(atz.class);
+   private aei(vr $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = wf.a;
+         this.g = eth.a.a;
+         this.h = Optional.empty();
       } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
+         this.f = wi.d.decode($$0);
+         this.g = $$0.b(eth.a.class);
+         this.h = xy.d.decode($$0);
       }
    }
 
-   private void a(uu $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
+   private void a(vr $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         wi.d.encode($$0, this.f);
+         $$0.a(this.g);
+         xy.d.encode($$0, this.h);
       }
    }
 
    @Override
-   public yd<aei> a() {
-      return aex.aU;
+   public yp<aei> a() {
+      return afj.aI;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ajh b() {
-      return this.d;
+   public String b() {
+      return this.e;
    }
 
-   @Nullable
-   public atz e() {
-      return this.e;
+   public wg e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public eth.a g() {
+      return this.g;
+   }
+
+   public Optional<xw> h() {
+      return this.h;
    }
 }

@@ -1,20 +1,16 @@
-public class ged extends geh<cdj, foy<cdj>> {
-   private static final ajh a = new ajh("textures/entity/llama/creamy.png");
-   private static final ajh i = new ajh("textures/entity/llama/white.png");
-   private static final ajh j = new ajh("textures/entity/llama/brown.png");
-   private static final ajh k = new ajh("textures/entity/llama/gray.png");
+public abstract class ged<T extends chs, M extends fte<T>> extends gfz<T, M> {
+   private static final ajt a = new ajt("textures/entity/zombie/zombie.png");
 
-   public ged(gdb.a $$0, frd $$1) {
-      super($$0, new foy<>($$0.a($$1)), 0.7F);
-      this.a(new ghg(this, $$0.f()));
+   protected ged(gfi.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gjj<>(this, $$2, $$3, $$0.g()));
    }
 
-   public ajh a(cdj $$0) {
-      return switch ($$0.gz()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public ajt a(chs $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gu();
    }
 }

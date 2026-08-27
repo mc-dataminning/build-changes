@@ -1,42 +1,25 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dhc extends daj, des {
+public class dhc extends dch {
+   public static final MapCodec<dhc> a = b(dhc::new);
+   protected static final est b = dby.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
    @Override
-   default boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
-      return $$4 == eiq.c;
+   public MapCodec<dhc> a() {
+      return a;
+   }
+
+   public dhc(doy.d $$0) {
+      super($$0);
    }
 
    @Override
-   default boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
-      if (!$$2.c(dnr.C) && $$3.a() == eiq.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dnr.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+      return b;
    }
 
    @Override
-   default cqm a(@Nullable ciu $$0, cxc $$1, ib $$2, dnb $$3) {
-      if ($$3.c(dnr.C)) {
-         $$1.a($$2, $$3.a(dnr.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cqm(cqp.qy);
-      } else {
-         return cqm.h;
-      }
-   }
-
-   @Override
-   default Optional<atx> av_() {
-      return eiq.c.j();
+   protected boolean b(doz $$0, cyd $$1, ib $$2) {
+      return $$0.a(avc.aL) || $$0.a(dca.dX) || super.b($$0, $$1, $$2);
    }
 }

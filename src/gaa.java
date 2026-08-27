@@ -1,118 +1,125 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class gaa implements fzs<dky> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final frf h;
-   private final frf i;
-   private final frf j;
-   private final frf k;
-   private final frf l;
-   private final frf m;
-   private final frf n;
-   private final glf o = Objects.requireNonNull(fyh.c(dkz.a));
-   private static final float p = 0.125F;
+public class gaa implements fzz {
+   private final fzz.a a;
+   private final fzz.a b = fzz.a(new ewd(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public gaa(fzt.a $$0) {
-      frf $$1 = $$0.a(fre.K);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      frf $$2 = $$0.a(fre.L);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public gaa(fzz.a $$0) {
+      this.a = $$0;
    }
 
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      frj $$2 = new frj(0.2F);
-      frj $$3 = new frj(-0.1F);
-      $$1.a(
-         "neck",
-         frk.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         frh.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      frk $$4 = frk.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, frh.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, frh.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return frl.a($$0, 32, 32);
-   }
-
-   public static frl c() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      frk $$2 = frk.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ih.c));
-      $$1.a("back", $$2, frh.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, frh.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, frh.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, frh.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return frl.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static glf a(cqh $$0) {
-      glf $$1 = fyh.c(dkz.a($$0));
-      if ($$1 == null) {
-         $$1 = fyh.c(dkz.a(cqp.qK));
-      }
-
-      return $$1;
-   }
-
-   public void a(dky $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
-      $$2.a();
-      ih $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dky.b $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dky.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (aww.b($$10) + 0.5F) * aww.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = aww.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = aww.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
+   @Override
+   public ewm getBuffer(gah $$0) {
+      if ($$0.M()) {
+         ewm $$1 = this.b.getBuffer($$0);
+         return new gaa.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ewm $$2 = this.a.getBuffer($$0);
+         Optional<gah> $$3 = $$0.L();
+         if ($$3.isPresent()) {
+            ewm $$4 = this.b.getBuffer($$3.get());
+            gaa.a $$5 = new gaa.a($$4, this.c, this.d, this.e, this.f);
+            return ewp.a($$5, $$2);
+         } else {
+            return $$2;
          }
       }
-
-      euf $$15 = this.o.a($$3, fya::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dky.a $$16 = $$0.l();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
    }
 
-   private void a(frf $$0, eub $$1, fxs $$2, int $$3, int $$4, @Nullable glf $$5) {
-      if ($$5 == null) {
-         $$5 = a(cqp.qK);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends ewh {
+      private final ewm f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(ewm $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
       }
 
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, fya::c), $$3, $$4);
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public ewm a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public ewm a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public ewm a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public ewm a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ewm b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ewm a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

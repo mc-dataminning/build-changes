@@ -1,51 +1,16 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-
-public abstract class goh {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
-
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+public class goh extends goj {
+   public goh(cce $$0) {
+      super($$0, aum.bQ, aun.g);
+      this.j = 0;
    }
 
-   public void a(gob $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
+   @Override
+   protected gof o() {
+      return new goi(this.n);
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   @Override
+   protected boolean p() {
+      return !this.n.Y_();
    }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(gob var1);
 }

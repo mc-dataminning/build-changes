@@ -1,89 +1,138 @@
-public interface ui extends tu {
-   ui a = new ui() {
-   };
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-   @Override
-   default tu.b a() {
-      return tu.b.a;
+public class ui implements un {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
+
+   public String a(uj $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
    @Override
-   default tu.b a(String $$0) {
-      return tu.b.a;
+   public void a(uh $$0) {
+      this.b.append(uh.b($$0.s_()));
    }
 
    @Override
-   default tu.b a(byte $$0) {
-      return tu.b.a;
+   public void a(tk $$0) {
+      this.b.append($$0.l()).append('b');
    }
 
    @Override
-   default tu.b a(short $$0) {
-      return tu.b.a;
+   public void a(ue $$0) {
+      this.b.append($$0.l()).append('s');
    }
 
    @Override
-   default tu.b a(int $$0) {
-      return tu.b.a;
+   public void a(tr $$0) {
+      this.b.append($$0.l());
    }
 
    @Override
-   default tu.b a(long $$0) {
-      return tu.b.a;
+   public void a(tu $$0) {
+      this.b.append($$0.l()).append('L');
    }
 
    @Override
-   default tu.b a(float $$0) {
-      return tu.b.a;
+   public void a(tp $$0) {
+      this.b.append($$0.k()).append('f');
    }
 
    @Override
-   default tu.b a(double $$0) {
-      return tu.b.a;
+   public void a(tn $$0) {
+      this.b.append($$0.j()).append('d');
    }
 
    @Override
-   default tu.b a(byte[] $$0) {
-      return tu.b.a;
+   public void a(tj $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('B');
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default tu.b a(int[] $$0) {
-      return tu.b.a;
+   public void a(tq $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default tu.b a(long[] $$0) {
-      return tu.b.a;
+   public void a(tt $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default tu.b a(tz<?> $$0, int $$1) {
-      return tu.b.a;
+   public void a(ts $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new ui().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default tu.a b(tz<?> $$0, int $$1) {
-      return tu.a.b;
+   public void a(tm $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new ui().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : uh.b($$0);
    }
 
    @Override
-   default tu.a a(tz<?> $$0) {
-      return tu.a.b;
-   }
-
-   @Override
-   default tu.a a(tz<?> $$0, String $$1) {
-      return tu.a.b;
-   }
-
-   @Override
-   default tu.b b() {
-      return tu.b.a;
-   }
-
-   @Override
-   default tu.b b(tz<?> $$0) {
-      return tu.b.a;
+   public void a(to $$0) {
+      this.b.append("END");
    }
 }

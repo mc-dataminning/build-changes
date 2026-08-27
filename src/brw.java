@@ -1,122 +1,106 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.List;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class brw extends brh<cih> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<cik, ajh> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cik.c, eku.ax);
-      $$0.put(cik.d, eku.ay);
-      $$0.put(cik.e, eku.az);
-      $$0.put(cik.f, eku.aA);
-      $$0.put(cik.g, eku.aB);
-      $$0.put(cik.h, eku.aC);
-      $$0.put(cik.i, eku.aD);
-      $$0.put(cik.j, eku.aE);
-      $$0.put(cik.k, eku.aF);
-      $$0.put(cik.l, eku.aG);
-      $$0.put(cik.n, eku.aH);
-      $$0.put(cik.o, eku.aI);
-      $$0.put(cik.p, eku.aJ);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class brw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bqb<? extends bqo>, bru> b = ImmutableMap.builder()
+      .put(bqb.a, cdh.r().a())
+      .put(bqb.c, cdk.r().a())
+      .put(bqb.d, cft.r().a())
+      .put(bqb.f, cdn.gu().a())
+      .put(bqb.g, cby.r().a())
+      .put(bqb.h, cce.gz().a())
+      .put(bqb.i, cgi.r().a())
+      .put(bqb.l, cgj.gq().a())
+      .put(bqb.p, ccg.gz().a())
+      .put(bqb.o, cds.r().a())
+      .put(bqb.q, cgk.r().a())
+      .put(bqb.t, cci.r().a())
+      .put(bqb.u, cca.r().a())
+      .put(bqb.w, cck.r().a())
+      .put(bqb.x, cgl.r().a())
+      .put(bqb.y, ccl.gn().a())
+      .put(bqb.z, cee.r().a())
+      .put(bqb.B, cgn.r().a())
+      .put(bqb.D, cgo.r().a())
+      .put(bqb.H, cgp.r().a())
+      .put(bqb.I, cgq.r().a())
+      .put(bqb.F, cex.u().a())
+      .put(bqb.J, cgs.u().a())
+      .put(bqb.m, chv.r().a())
+      .put(bqb.Q, ccn.r().a())
+      .put(bqb.R, cdv.gn().a())
+      .put(bqb.T, cgt.y().a())
+      .put(bqb.U, cgu.r().a())
+      .put(bqb.W, bqg.gn().a())
+      .put(bqb.X, ceb.u().a())
+      .put(bqb.Y, cgv.gn().a())
+      .put(bqb.Z, cid.r().a())
+      .put(bqb.ab, cef.gM().a())
+      .put(bqb.ac, chs.gr().a())
+      .put(bqb.ad, cgx.u().a())
+      .put(bqb.af, ccp.r().a())
+      .put(bqb.am, cei.gy().a())
+      .put(bqb.ao, cgy.r().a())
+      .put(bqb.ar, cck.r().a())
+      .put(bqb.as, cee.r().a())
+      .put(bqb.at, ccr.r().a())
+      .put(bqb.av, ccs.gy().a())
+      .put(bqb.aw, cct.gt().a())
+      .put(bqb.ax, cgz.gt().a())
+      .put(bqb.ay, ccu.r().a())
+      .put(bqb.az, cij.gu().a())
+      .put(bqb.aA, cim.y().a())
+      .put(bqb.aB, chc.u().a())
+      .put(bqb.bx, cjt.fN().a())
+      .put(bqb.aC, ccv.r().a())
+      .put(bqb.aE, cca.r().a())
+      .put(bqb.aF, ccx.u().a())
+      .put(bqb.aG, che.r().a())
+      .put(bqb.aH, cca.r().a())
+      .put(bqb.aI, ccz.r().a())
+      .put(bqb.aJ, chf.r().a())
+      .put(bqb.aL, chg.r().a())
+      .put(bqb.aM, cgh.r().a())
+      .put(bqb.aN, cel.r().a())
+      .put(bqb.aO, cgz.gt().a())
+      .put(bqb.aQ, ces.r().a())
+      .put(bqb.aR, cdb.r().a())
+      .put(bqb.aV, chk.u().a())
+      .put(bqb.aW, cdc.gn().a())
+      .put(bqb.aX, cgh.r().a())
+      .put(bqb.aY, chm.u().a())
+      .put(bqb.aZ, cdy.gp().a())
+      .put(bqb.bd, cei.gy().a())
+      .put(bqb.bf, cca.r().a())
+      .put(bqb.bg, cde.y().a())
+      .put(bqb.bh, chn.r().a())
+      .put(bqb.bi, cjg.gw().a())
+      .put(bqb.bj, cho.u().a())
+      .put(bqb.bl, cix.r().a())
+      .put(bqb.bk, bqq.A().a())
+      .put(bqb.bn, chp.u().a())
+      .put(bqb.bo, cfr.u().a())
+      .put(bqb.bp, cgh.r().a())
+      .put(bqb.br, cdg.gt().a())
+      .put(bqb.bs, chr.r().a())
+      .put(bqb.bt, chs.gr().a())
+      .put(bqb.bu, cep.r().a())
+      .put(bqb.bv, chs.gr().a())
+      .put(bqb.bw, chu.gx().a())
+      .build();
 
-   public brw(int $$0) {
-      super(ImmutableMap.of(bys.m, byt.c, bys.n, byt.c, bys.q, byt.c, bys.k, byt.a), $$0);
+   public static bru a(bqb<? extends bqo> $$0) {
+      return b.get($$0);
    }
 
-   protected boolean a(apf $$0, cih $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
-         return true;
-      }
+   public static boolean b(bqb<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   protected void a(apf $$0, cih $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      ciu $$3 = this.c($$1).get();
-      $$1.dP().a(bys.q, $$3);
-      brj.a($$1, $$3);
-   }
-
-   protected boolean b(apf $$0, cih $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(apf $$0, cih $$1, long $$2) {
-      ciu $$3 = this.c($$1).get();
-      brj.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (bpp)$$3);
-            this.j = true;
-         }
-      } else {
-         brj.a($$1, $$3, 0.5F, 5);
-      }
-   }
-
-   protected void d(apf $$0, cih $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dP().b(bys.q);
-      $$1.dP().b(bys.m);
-      $$1.dP().b(bys.n);
-   }
-
-   private void a(cih $$0, bpp $$1) {
-      for (cqm $$3 : this.a($$0)) {
-         brj.a($$0, $$3, $$1.dk());
-      }
-   }
-
-   private List<cqm> a(cih $$0) {
-      if ($$0.o_()) {
-         return ImmutableList.of(new cqm(cqp.dk));
-      } else {
-         cik $$1 = $$0.gy().b();
-         if (g.containsKey($$1)) {
-            ele $$2 = $$0.dM().o().aM().getLootTable(g.get($$1));
-            elc $$3 = new elc.a((apf)$$0.dM()).a(enh.f, $$0.dk()).a(enh.a, $$0).a(eng.i);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new cqm(cqp.pu));
-         }
-      }
-   }
-
-   private boolean b(cih $$0) {
-      return this.c($$0).isPresent();
-   }
-
-   private Optional<ciu> c(cih $$0) {
-      return $$0.dP().c(bys.k).filter(this::a);
-   }
-
-   private boolean a(ciu $$0) {
-      return $$0.a(bom.F);
-   }
-
-   private boolean a(cih $$0, ciu $$1) {
-      ib $$2 = $$1.dm();
-      ib $$3 = $$0.dm();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(apf $$0) {
-      return 600 + $$0.z.a(6001);
+   public static void a() {
+      kr.g.s().filter($$0 -> $$0.f() != bqr.h).filter($$0 -> !b((bqb<?>)$$0)).map(kr.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

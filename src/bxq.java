@@ -1,67 +1,36 @@
-import java.util.EnumSet;
+public class bxq extends bxl {
+   private final cda a;
+   private apt b;
+   private boolean c;
 
-public class bxq extends bwm {
-   private final cdg a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
-
-   public bxq(cdg $$0, double $$1) {
+   public bxq(cda $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bwm.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gC() && this.a.bP()) {
-         ept $$0 = caj.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      } else {
-         return false;
-      }
+      apt $$0 = (apt)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
+      return !this.a.gn() && $$1 && this.a.gw();
+   }
+
+   @Override
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.c, this.d, this.e, this.b);
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.gC() && !this.a.K().l() && this.a.bP();
+      this.b = (apt)this.a.P_();
+      this.c = false;
    }
 
    @Override
    public void e() {
-      if (!this.a.gC() && this.a.ei().a(this.a(50)) == 0) {
-         box $$0 = this.a.cQ();
-         if ($$0 == null) {
-            return;
+      if (!this.c && !this.a.y() && !this.a.gb()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
          }
-
-         if ($$0 instanceof ciu $$1) {
-            int $$2 = this.a.gI();
-            int $$3 = this.a.gN();
-            if ($$3 > 0 && this.a.ei().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
-            }
-
-            this.a.w(5);
-         }
-
-         this.a.bE();
-         this.a.gS();
-         this.a.dM().a(this.a, (byte)6);
       }
    }
 }

@@ -3,31 +3,27 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bul {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 1;
 
-   public static bss<bpx> a(float $$0) {
-      return a($$0, 10, 7);
+   public static bsh<bqq> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   public static bss<bpx> a(float $$0, int $$1, int $$2) {
-      return buu.a((Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$3 -> $$3.group($$3.c(bys.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               ib $$7 = $$5.dm();
-               ept $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cam.a($$5, $$1, $$2);
-               } else {
-                  je $$9 = je.a($$7);
-                  je $$10 = brj.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = caj.a($$5, $$1, $$2, ept.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cam.a($$5, $$1, $$2);
-                  }
-               }
+   public static bsh<bqq> a(Function<bqo, Float> $$0) {
+      return bvt.a(
+         (Function<bvt.b<bqq>, ? extends App<bvt.c<bqq>, bvw<bqq>>>)($$1 -> $$1.group($$1.a(bzr.m), $$1.a(bzr.n), $$1.b(bzr.o), $$1.a(bzr.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bqo $$9 = $$1.b($$4);
+                     Optional<bzt> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bsi.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new bsr($$9, true));
+                        $$2.a(new bzu(new bsr($$9, false), $$0.apply($$7), 0));
+                     }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new byv($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                     return true;
+                  }))
+      );
    }
 }

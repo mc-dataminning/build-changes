@@ -1,61 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class czu extends czo implements czt {
-   public static final MapCodec<czu> a = b(czu::new);
+public class czu {
+   public static final Codec<czu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aul.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, czu::new)
+   );
+   public static final czu b = new czu(aum.h, 6000, 8, 2.0);
+   private final il<aul> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   @Override
-   public MapCodec<czu> a() {
-      return a;
+   public czu(il<aul> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public czu(dna.d $$0) {
-      super($$0);
+   public il<aul> a() {
+      return this.c;
    }
 
-   @Override
-   public cpd b() {
-      return cpd.a;
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public dki a(ib $$0, dnb $$1) {
-      return new dkd($$0, $$1);
+   public int c() {
+      return this.e;
    }
 
-   @Nullable
-   @Override
-   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
-      return a($$2, dkk.o, dkd::a);
-   }
-
-   @Override
-   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
-      if ($$1.B) {
-         return bnd.a;
-      } else {
-         dki $$5 = $$1.c_($$2);
-         if ($$5 instanceof dkd) {
-            $$3.a((dkd)$$5);
-            $$3.a(aui.ab);
-         }
-
-         return bnd.b;
-      }
-   }
-
-   @Override
-   protected dgh b_(dnb $$0) {
-      return dgh.c;
-   }
-
-   @Override
-   public void a(cxb $$0, ib $$1, dnb $$2, bpp $$3, cqm $$4) {
-      if ($$4.B()) {
-         dki $$5 = $$0.c_($$1);
-         if ($$5 instanceof dkd) {
-            ((dkd)$$5).a($$4.z());
-         }
-      }
+   public double d() {
+      return this.f;
    }
 }

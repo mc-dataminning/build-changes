@@ -1,37 +1,33 @@
-public class ado implements yb<aam> {
-   public static final xs<uu, ado> a = yb.a(ado::a, ado::new);
-   private final ib b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public ado(ib $$0, float $$1) {
+public class ado implements yn<aay> {
+   public static final ye<vg, ado> a = yn.a(ado::a, ado::new);
+   @Nullable
+   private final ajt b;
+
+   public ado(@Nullable ajt $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private ado(uu $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private ado(vg $$0) {
+      this.b = $$0.c(vg::q);
    }
 
-   private void a(uu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vg $$0) {
+      $$0.a(this.b, vg::a);
    }
 
    @Override
-   public yd<ado> a() {
-      return aex.aA;
+   public yp<ado> a() {
+      return afj.ao;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   @Nullable
+   public ajt b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

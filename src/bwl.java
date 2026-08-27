@@ -1,78 +1,51 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class bwl extends bwo {
+   private final int l;
+   private final boolean m;
 
-public class bwl extends bwm {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cbe d;
-   @Nullable
-   private cbe e;
-   private final double f;
-   private int g;
-
-   public bwl(cbe $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public bwl(bqq $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else {
-         List<? extends cbe> $$0 = this.d.dM().a((Class<? extends cbe>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
-         cbe $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cbe $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
+   public void a() {
+      if (this.k == bwo.a.b) {
+         this.k = bwo.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.D(0.0F);
+            this.d.C(0.0F);
+            return;
          }
 
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
+         float $$4 = (float)(axk.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dC(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aC()) {
+            $$5 = (float)(this.h * this.d.g(brv.r));
          } else {
-            this.e = $$1;
-            return true;
+            $$5 = (float)(this.h * this.d.g(brv.j));
          }
-      }
-   }
 
-   @Override
-   public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bA()) {
-         return false;
+         this.d.y($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(axk.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dE(), $$8, (float)this.l));
+            this.d.D($$1 > 0.0 ? $$5 : -$$5);
+         }
       } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
-   }
+         if (!this.m) {
+            this.d.e(false);
+         }
 
-   @Override
-   public void c() {
-      this.g = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e = null;
-   }
-
-   @Override
-   public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.K().a(this.e, this.f);
+         this.d.D(0.0F);
+         this.d.C(0.0F);
       }
    }
 }

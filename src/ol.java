@@ -1,47 +1,122 @@
+import com.google.common.collect.Lists;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public abstract class ol<T> extends oq<T> {
-   private final Function<T, ajg<T>> d;
+public class ol implements ky {
+   private static final Logger d = LogUtils.getLogger();
+   private final la e;
+   private final Iterable<Path> f;
+   private final List<ol.a> g = Lists.newArrayList();
 
-   public ol(kr $$0, ajg<? extends iy<T>> $$1, CompletableFuture<in.a> $$2, Function<T, ajg<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public ol(la $$0, Iterable<Path> $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public ol(kr $$0, ajg<? extends iy<T>> $$1, CompletableFuture<in.a> $$2, CompletableFuture<oq.c<T>> $$3, Function<T, ajg<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
+   public ol a(ol.a $$0) {
+      this.g.add($$0);
+      return this;
    }
 
-   protected ol.a<T> a(avd<T> $$0) {
-      ava $$1 = this.c($$0);
-      return new ol.a<>($$1, this.d);
+   private tm a(String $$0, tm $$1) {
+      tm $$2 = $$1;
+
+      for (ol.a $$3 : this.g) {
+         $$2 = $$3.apply($$0, $$2);
+      }
+
+      return $$2;
    }
 
-   protected static class a<T> extends oq.b<T> {
-      private final Function<T, ajg<T>> a;
+   @Override
+   public CompletableFuture<?> a(kw $$0) {
+      Path $$1 = this.e.a();
+      List<CompletableFuture<?>> $$2 = Lists.newArrayList();
 
-      a(ava $$0, Function<T, ajg<T>> $$1) {
-         super($$0);
-         this.a = $$1;
+      for (Path $$3 : this.f) {
+         $$2.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
+            try {
+               CompletableFuture var5x;
+               try (Stream<Path> $$3x = Files.walk($$3)) {
+                  var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
+                        ol.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
+                        this.a($$0, $$4, $$1);
+                     }, ac.f())).toArray(CompletableFuture[]::new));
+               }
+
+               return var5x;
+            } catch (Exception var9) {
+               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
+            }
+         }, ac.f()).thenCompose($$0x -> $$0x));
       }
 
-      public ol.a<T> a(avd<T> $$0) {
-         super.b($$0);
-         return this;
-      }
+      return ac.e($$2);
+   }
 
-      public final ol.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
+   @Override
+   public final String a() {
+      return "SNBT -> NBT";
+   }
 
-      @SafeVarargs
-      public final ol.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
+   private String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".snbt".length());
+   }
+
+   private ol.c a(Path $$0, String $$1) {
+      try {
+         ol.c var10;
+         try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
+            String $$3 = IOUtils.toString($$2);
+            tm $$4 = this.a($$1, ub.a($$3));
+            ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
+            HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
+            tz.a($$4, $$6);
+            byte[] $$7 = $$5.toByteArray();
+            HashCode $$8 = $$6.hash();
+            var10 = new ol.c($$1, $$7, $$8);
+         }
+
+         return var10;
+      } catch (Throwable var13) {
+         throw new ol.b($$0, var13);
       }
+   }
+
+   private void a(kw $$0, ol.c $$1, Path $$2) {
+      Path $$3 = $$2.resolve($$1.a + ".nbt");
+
+      try {
+         $$0.writeIfNeeded($$3, $$1.b, $$1.c);
+      } catch (IOException var6) {
+         d.error("Couldn't write structure {} at {}", new Object[]{$$1.a, $$3, var6});
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      tm apply(String var1, tm var2);
+   }
+
+   static class b extends RuntimeException {
+      public b(Path $$0, Throwable $$1) {
+         super($$0.toAbsolutePath().toString(), $$1);
+      }
+   }
+
+   static record c(String a, byte[] b, HashCode c) {
    }
 }

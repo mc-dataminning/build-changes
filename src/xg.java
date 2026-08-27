@@ -1,15 +1,17 @@
-import java.util.Locale;
+public class xg extends Exception {
+   private final wg a;
 
-public class xg extends IllegalArgumentException {
-   public xg(xf $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+   public xg(wg $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   public xg(xf $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   public xg(wg $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
    }
 
-   public xg(xf $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   public wg b() {
+      return this.a;
    }
 }

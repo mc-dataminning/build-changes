@@ -1,80 +1,135 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cen extends cea {
-   private boolean b;
-   @Nullable
-   private ejd c;
-   @Nullable
-   private ept d;
+public class cen extends cei {
+   private int bY = 47999;
 
-   public cen(cdy $$0) {
-      super($$0);
+   public cen(bqb<? extends cen> $$0, cyx $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         ib $$0 = this.a.dM().a(dso.a.f, dvr.a(this.a.r()));
-         if (!$$0.a(this.a.dk(), 10.0)) {
-            this.a.gk().a(ceo.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
-   }
-
-   private void j() {
-      int $$0 = this.a.y();
-      ept $$1 = this.a.F(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gl() != null && this.a.gl().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            jg $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ept((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
+   public boolean gw() {
+      return true;
    }
 
    @Nullable
    @Override
-   public ept g() {
-      return this.d;
+   protected cei gB() {
+      return bqb.bd.a(this.dM());
    }
 
    @Override
-   public ceo<cen> i() {
-      return ceo.e;
+   public void b(tm $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bY);
+   }
+
+   @Override
+   public void a(tm $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bY = $$0.h("DespawnDelay");
+      }
+   }
+
+   @Override
+   protected void z() {
+      super.z();
+      this.bR.a(1, new bye(this, 2.0));
+      this.bS.a(1, new cen.a(this));
+   }
+
+   @Override
+   public void x(int $$0) {
+      this.bY = $$0;
+   }
+
+   @Override
+   protected void f(cjt $$0) {
+      bpv $$1 = this.gc();
+      if (!($$1 instanceof cjm)) {
+         super.f($$0);
+      }
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (!this.dM().B) {
+         this.hc();
+      }
+   }
+
+   private void hc() {
+      if (this.hd()) {
+         this.bY = this.he() ? ((cjm)this.gc()).gw() - 1 : this.bY - 1;
+         if (this.bY <= 0) {
+            this.a(true, false);
+            this.am();
+         }
+      }
+   }
+
+   private boolean hd() {
+      return !this.gC() && !this.hf() && !this.cV();
+   }
+
+   private boolean he() {
+      return this.gc() instanceof cjm;
+   }
+
+   private boolean hf() {
+      return this.gb() && !this.he();
+   }
+
+   @Nullable
+   @Override
+   public brg a(czm $$0, bny $$1, bqs $$2, @Nullable brg $$3) {
+      if ($$2 == bqs.h) {
+         this.c_(0);
+      }
+
+      if ($$3 == null) {
+         $$3 = new bpp.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected static class a extends bzl {
+      private final cei a;
+      private bqo b;
+      private int c;
+
+      public a(cei $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(bxl.a.d));
+      }
+
+      @Override
+      public boolean a() {
+         if (!this.a.gb()) {
+            return false;
+         } else if (!(this.a.gc() instanceof cjm $$1)) {
+            return false;
+         } else {
+            this.b = $$1.ej();
+            int $$2 = $$1.ek();
+            return $$2 != this.c && this.a(this.b, cbe.a);
+         }
+      }
+
+      @Override
+      public void c() {
+         this.e.h(this.b);
+         bpv $$0 = this.a.gc();
+         if ($$0 instanceof cjm) {
+            this.c = ((cjm)$$0).ek();
+         }
+
+         super.c();
+      }
    }
 }

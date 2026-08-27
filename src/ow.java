@@ -1,17 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ow extends ol<bpd<?>> {
-   public ow(kr $$0, CompletableFuture<in.a> $$1) {
-      super($$0, kj.u, $$1, $$0x -> $$0x.r().h());
+public class ow extends pc<crb> {
+   public ow(la $$0, CompletableFuture<in.a> $$1) {
+      super($$0, ks.D, $$1);
    }
 
    @Override
    protected void a(in.a $$0) {
-      this.a(auq.o).a(bpd.n);
-      this.a(auq.r).a(bpd.n);
-      this.a(auq.s).a(bpd.n);
-      this.a(auq.g).a(bpd.bn, bpd.o);
-      this.a(auq.D).a(bpd.n, bpd.aN, bpd.m, bpd.aY, bpd.bu, bpd.ad, bpd.aW, bpd.r, bpd.aP);
-      this.a(auq.a).a(bpd.m);
+      this.b(avj.a).a(crd.c).a(crd.d).a(crd.e).a(crd.f);
+      this.b(avj.b).a(crd.g).a(crd.h).a(crd.i).a(crd.j);
+      this.b(avj.c).b(avj.a).b(avj.b);
    }
 }

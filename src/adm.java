@@ -1,37 +1,37 @@
-public class adm implements yb<aam> {
-   public static final xs<uu, adm> a = yb.a(adm::a, adm::new);
+public class adm implements yn<aay> {
+   public static final ye<vg, adm> a = yn.a(adm::a, adm::new);
    private final int b;
-   private final int c;
+   private final byte c;
 
-   public adm(int $$0, int $$1) {
-      this.b = $$0;
+   public adm(bpv $$0, byte $$1) {
+      this.b = $$0.aj();
       this.c = $$1;
    }
 
-   private adm(uu $$0) {
+   private adm(vg $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(uu $$0) {
+   private void a(vg $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.k(this.c);
    }
 
    @Override
-   public yd<adm> a() {
-      return aex.ay;
+   public yp<adm> a() {
+      return afj.am;
    }
 
-   public void a(aam $$0) {
+   public void a(aay $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public bpv a(cyx $$0) {
+      return $$0.a(this.b);
    }
 
-   public int e() {
+   public byte b() {
       return this.c;
    }
 }

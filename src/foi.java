@@ -1,44 +1,32 @@
-public class foi<T extends box> extends fon<T> {
-   private final frf a;
-   private final frf[] b = new frf[9];
+import java.util.Map;
+import java.util.Optional;
 
-   public foi(frf $$0) {
-      this.a = $$0;
+public interface foi {
+   Map<Optional<ajs<eew>>, foi> a = Map.of(Optional.of(eex.b), ($$0, $$1) -> {
+      dqw $$2 = $$1.d().a();
+      iz $$3 = $$1.a();
+      im<czw> $$4 = $$3.b(ks.av);
+      im<efn> $$5 = $$3.b(ks.aH);
+      im<eel> $$6 = $$3.b(ks.aE);
+      return new fij($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof dum ? ((dum)$$2).g() : edk.a($$4, $$5, $$6));
+   }, Optional.of(eex.e), ($$0, $$1) -> new fii($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
 
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+   fjo createEditScreen(fod var1, fol var2);
+
+   private static fol.a a(edk $$0) {
+      return ($$1, $$2) -> {
+         dqw $$3 = new dum($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static frl b() {
-      frn $$0 = new frn();
-      fro $$1 = $$0.a();
-      $$1.a("body", frk.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), frh.a(0.0F, 17.6F, 0.0F));
-      axd $$2 = axd.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), frk.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), frh.a($$4, 24.6F, $$5));
-      }
-
-      return frl.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * aww.a($$3 * 0.3F + (float)$$6) + 0.4F;
-      }
-   }
-
-   @Override
-   public frf a() {
-      return this.a;
+   private static fol.a a(il<czw> $$0) {
+      return ($$1, $$2) -> {
+         iy<duw> $$3 = $$1.d(ks.aC);
+         il<duw> $$4 = $$3.g(duw.c);
+         daa $$5 = new dah($$0);
+         dqw $$6 = new duu($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
 }

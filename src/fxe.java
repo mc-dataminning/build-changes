@@ -1,21 +1,53 @@
-public class fxe {
-   public static final cwm a = cya::a;
-   public static final cwm b = ($$0, $$1, $$2) -> $$0.f();
-   public static final cwm c = ($$0, $$1, $$2) -> $$0.i();
-
-   private static int a(cwe $$0, ib $$1, cwm $$2) {
-      return $$0.a($$1, $$2);
+public class fxe extends fyn {
+   fxe(fuh $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
-   public static int a(cwe $$0, ib $$1) {
-      return a($$0, $$1, a);
+   @Override
+   public fxr b() {
+      return fxr.b;
    }
 
-   public static int b(cwe $$0, ib $$1) {
-      return a($$0, $$1, b);
+   @Override
+   public float b(float $$0) {
+      return this.D * axk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static int c(cwe $$0, ib $$1) {
-      return a($$0, $$1, c);
+   public static class a implements fxq<ko> {
+      private final fyi a;
+
+      public a(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxe $$8 = new fxe($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements fxq<ko> {
+      private final fyi a;
+
+      public b(fyi $$0) {
+         this.a = $$0;
+      }
+
+      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxe $$8 = new fxe($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

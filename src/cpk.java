@@ -1,10 +1,15 @@
-public class cpk extends cqh {
-   public cpk(cqh.a $$0) {
+public class cpk extends cre {
+   public cpk(cre.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cqm $$0) {
-      return true;
+   public boolean a(crj $$0) {
+      return $$0.G() == 1;
+   }
+
+   @Override
+   public int g() {
+      return 1;
    }
 }

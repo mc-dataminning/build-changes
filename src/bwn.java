@@ -1,132 +1,108 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class bwn {
-   private static final bya a = new bya(Integer.MAX_VALUE, new bwm() {
-      @Override
-      public boolean a() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bwm.a, bya> b = new EnumMap<>(bwm.a.class);
-   private final Set<bya> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<bjr> d;
-   private final EnumSet<bwm.a> e = EnumSet.noneOf(bwm.a.class);
+public class bwn implements bwk {
+   protected final bqq a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bwn(Supplier<bjr> $$0) {
-      this.d = $$0;
+   public bwn(bqq $$0) {
+      this.a = $$0;
    }
 
-   public void a(int $$0, bwm $$1) {
-      this.c.add(new bya($$0, $$1));
+   public void a(esa $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
    }
 
-   @VisibleForTesting
-   public void a(Predicate<bwm> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   public void a(bpv $$0) {
+      this.a($$0.dr(), b($$0), $$0.dx());
    }
 
-   public void a(bwm $$0) {
-      for (bya $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.d();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
+   public void a(bpv $$0, float $$1, float $$2) {
+      this.a($$0.dr(), b($$0), $$0.dx(), $$1, $$2);
    }
 
-   private static boolean a(bya $$0, EnumSet<bwm.a> $$1) {
-      for (bwm.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fN(), (float)this.a.Z());
    }
 
-   private static boolean a(bya $$0, Map<bwm.a, bya> $$1) {
-      for (bwm.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
    }
 
    public void a() {
-      bjr $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (bya $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
-            $$1.d();
-         }
+      if (this.c()) {
+         this.a.s(0.0F);
       }
 
-      this.b.entrySet().removeIf($$0x -> !((bya)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (bya $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
-            for (bwm.a $$3 : $$2.j()) {
-               bya $$4 = this.b.getOrDefault($$3, a);
-               $$4.d();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bjr $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (bya $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<bya> b() {
-      return this.c;
-   }
-
-   public void a(bwm.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(bwm.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(bwm.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aZ = this.a(this.a.aZ, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dE(), $$0, this.c)));
       } else {
-         this.a($$0);
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, 10.0F);
       }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.K().l()) {
+         this.a.aZ = axk.c(this.a.aZ, this.a.aX, (float)this.a.aa());
+      }
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.f - this.a.dv();
+      double $$2 = this.g - this.a.dx();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(axk.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.g - this.a.dx();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(axk.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = axk.c($$0, $$1);
+      float $$4 = axk.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bpv $$0) {
+      return $$0 instanceof bqo ? $$0.dv() : ($$0.cH().b + $$0.cH().e) / 2.0;
    }
 }

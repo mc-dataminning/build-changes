@@ -1,60 +1,47 @@
-public class eps {
-   public static final eps a = new eps(0.0F, 0.0F);
-   public static final eps b = new eps(1.0F, 1.0F);
-   public static final eps c = new eps(1.0F, 0.0F);
-   public static final eps d = new eps(-1.0F, 0.0F);
-   public static final eps e = new eps(0.0F, 1.0F);
-   public static final eps f = new eps(0.0F, -1.0F);
-   public static final eps g = new eps(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final eps h = new eps(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-   public eps(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public record eps(il<cwq> b, List<Float> c) implements eqc {
+   public static final Codec<eps> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kr.f.r().fieldOf("enchantment").forGetter(eps::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eps::d)).apply($$0, eps::new)
+   );
+
+   @Override
+   public eqd b() {
+      return eqe.l;
    }
 
-   public eps a(float $$0) {
-      return new eps(this.i * $$0, this.j * $$0);
+   @Override
+   public Set<epl<?>> a() {
+      return ImmutableSet.of(epo.i);
    }
 
-   public float a(eps $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   public boolean a(enb $$0) {
+      crj $$1 = $$0.c(epo.i);
+      int $$2 = $$1 != null ? cwr.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public eps b(eps $$0) {
-      return new eps(this.i + $$0.i, this.j + $$0.j);
+   public static eqc.a a(cwq $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eps($$0.k(), $$2);
    }
 
-   public eps b(float $$0) {
-      return new eps(this.i + $$0, this.j + $$0);
+   public il<cwq> c() {
+      return this.b;
    }
 
-   public boolean c(eps $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public eps a() {
-      float $$0 = aww.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new eps(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return aww.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(eps $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public eps d() {
-      return new eps(-this.i, -this.j);
+   public List<Float> d() {
+      return this.c;
    }
 }

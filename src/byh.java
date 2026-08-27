@@ -1,37 +1,47 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class byh extends bxl {
+   private final cef a;
+   private int b;
 
-public class byh<T extends bpp> extends byf<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public byh(ckg $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bpp> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
-   }
-
-   @Override
-   public boolean a() {
-      if (this.j > 0 || !this.e.ei().h()) {
-         return false;
-      } else if (!((ckg)this.e).gC()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+   public byh(cef $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      this.j = b(200);
-      super.c();
+      this.a.gR();
+      this.h();
+   }
+
+   private void h() {
+      aul $$0 = this.a.gQ();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.ei().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fd() && this.a.ei().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cef $$0) {
+      this.b = -$$0.gV();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

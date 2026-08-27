@@ -1,12 +1,35 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public class cxh extends cwq {
+   public cxh(cwq.a $$0, bqc... $$1) {
+      super($$0, avk.bc, $$1);
+   }
 
-public interface cxh {
-   boolean a(ib var1, Predicate<dnb> var2);
+   @Override
+   public int a(int $$0) {
+      return $$0 * 25;
+   }
 
-   boolean b(ib var1, Predicate<eip> var2);
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 50;
+   }
 
-   <T extends dki> Optional<T> a(ib var1, dkk<T> var2);
+   @Override
+   public boolean b() {
+      return true;
+   }
 
-   ib a(dso.a var1, ib var2);
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
 }

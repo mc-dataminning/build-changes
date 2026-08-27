@@ -1,179 +1,95 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class edf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final dpx c;
-   private final iz d;
-   private final ehf e;
-   private final ajg<cxb> f;
-   private final doy g;
-   private final dtc h;
-   private final cxd i;
-   private final cye j;
-   private final long k;
-   private final DataFixer l;
-   private final Long2ObjectMap<Object2IntMap<ede>> m = new Long2ObjectOpenHashMap();
-   private final Map<ede, Long2BooleanMap> n = new HashMap<>();
+public class edf extends edd {
+   public static final Codec<edf> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bnf.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  bnf.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  ja.a(ks.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
+               )
+            )
+            .apply($$0, edf::new)
+   );
+   private final bnf b;
+   private final float h;
+   private final bnf i;
+   private final ip<dby> j;
 
-   public edf(dpx $$0, iz $$1, ehf $$2, ajg<cxb> $$3, doy $$4, dtc $$5, cxd $$6, cye $$7, long $$8, DataFixer $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+   public edf(int $$0, int $$1, int $$2, bnf $$3, float $$4, bnf $$5, ip<dby> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public edg a(cwi $$0, ede $$1, eeb $$2, boolean $$3) {
-      long $$4 = $$0.a();
-      Object2IntMap<ede> $$5 = (Object2IntMap<ede>)this.m.get($$4);
-      if ($$5 != null) {
-         return this.a($$5, $$1, $$3);
-      } else {
-         edg $$6 = this.a($$0, $$1, $$3, $$4);
-         if ($$6 != null) {
-            return $$6;
-         } else if (!$$2.a($$0.e, $$0.f, this.k)) {
-            return edg.b;
-         } else {
-            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
-            return !$$7 ? edg.b : edg.c;
+   @Override
+   protected ede<?> a() {
+      return ede.h;
+   }
+
+   @Override
+   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
+      List<ebl.a> $$6 = Lists.newArrayList();
+      ib.a $$7 = new ib.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            ih $$10 = ih.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+         }
+
+         if ($$8 == $$3 - 1) {
+            $$6.add(new ebl.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
          }
       }
+
+      return $$6;
    }
 
-   private boolean b(cwi $$0, ede $$1) {
-      return $$1.b(new ede.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
-   }
+   private void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, eav $$4, List<ebl.a> $$5, ib.a $$6, int $$7, ih $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
 
-   @Nullable
-   private edg a(cwi $$0, ede $$1, boolean $$2, long $$3) {
-      ue $$4 = new ue(new ug(tf.a, "DataVersion"), new ug("Level", "Structures", ta.b, "Starts"), new ug("structures", ta.b, "starts"));
-
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return edg.c;
-      }
-
-      if (!($$4.d() instanceof ta $$7)) {
-         return null;
-      } else {
-         int $$8 = dpz.a($$7);
-         if ($$8 <= 1493) {
-            return edg.c;
-         } else {
-            dpz.a($$7, this.f, this.g.b());
-
-            ta $$9;
-            try {
-               $$9 = ayc.c.a(this.l, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return edg.c;
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
             }
 
-            Object2IntMap<ede> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
+            $$5.add(new ebl.a($$6.i(), 0, false));
          }
+
+         $$14++;
+         $$10--;
+      }
+
+      if ($$11 - $$7 > 1) {
+         ib $$16 = new ib($$12, $$11, $$13);
+         $$5.add(new ebl.a($$16, 0, false));
+         $$5.add(new ebl.a($$16.c(2), 0, false));
       }
    }
 
-   @Nullable
-   private Object2IntMap<ede> a(ta $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         ta $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            ta $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<ede> $$3 = new Object2IntOpenHashMap();
-               iy<ede> $$4 = this.d.d(kj.aE);
-
-               for (String $$5 : $$2.e()) {
-                  ajh $$6 = ajh.a($$5);
-                  if ($$6 != null) {
-                     ede $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        ta $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
-      }
-   }
-
-   private static Object2IntMap<ede> a(Object2IntMap<ede> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
-   }
-
-   private edg a(Object2IntMap<ede> $$0, ede $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? edg.b : edg.a;
-   }
-
-   public void a(cwi $$0, Map<ede, edm> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<ede> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
-      });
-      this.a($$2, $$3);
-   }
-
-   private void a(long $$0, Object2IntMap<ede> $$1) {
-      this.m.put($$0, a($$1));
-      this.n.values().forEach($$1x -> $$1x.remove($$0));
-   }
-
-   public void a(cwi $$0, ede $$1) {
-      this.m.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
-
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
-         return $$2;
-      });
+   @Override
+   protected boolean a(czd $$0, ib $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }
