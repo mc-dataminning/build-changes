@@ -1,40 +1,48 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import com.google.common.base.Charsets;
+import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.system.MemoryUtil;
 
-public enum emq {
-   a("icons"),
-   b("icons", "snapshot");
+public class emq {
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   private final String[] c;
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? auj.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
+      }
 
-   private emq(String... $$0) {
-      this.c = $$0;
+      return $$3;
    }
 
-   public List<aoz<InputStream>> a(anv $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
    }
 
-   public aoz<InputStream> b(anv $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
-
-   private aoz<InputStream> a(anv $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      aoz<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
       } else {
-         return $$3;
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
+
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
+         }
       }
    }
 }

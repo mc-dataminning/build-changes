@@ -1,29 +1,39 @@
-import java.util.Optional;
+public interface dxg {
+   agl<dxm> a = a("pillager_outpost");
+   agl<dxm> b = a("mineshaft");
+   agl<dxm> c = a("mineshaft_mesa");
+   agl<dxm> d = a("mansion");
+   agl<dxm> e = a("jungle_pyramid");
+   agl<dxm> f = a("desert_pyramid");
+   agl<dxm> g = a("igloo");
+   agl<dxm> h = a("shipwreck");
+   agl<dxm> i = a("shipwreck_beached");
+   agl<dxm> j = a("swamp_hut");
+   agl<dxm> k = a("stronghold");
+   agl<dxm> l = a("monument");
+   agl<dxm> m = a("ocean_ruin_cold");
+   agl<dxm> n = a("ocean_ruin_warm");
+   agl<dxm> o = a("fortress");
+   agl<dxm> p = a("nether_fossil");
+   agl<dxm> q = a("end_city");
+   agl<dxm> r = a("buried_treasure");
+   agl<dxm> s = a("bastion_remnant");
+   agl<dxm> t = a("village_plains");
+   agl<dxm> u = a("village_desert");
+   agl<dxm> v = a("village_savanna");
+   agl<dxm> w = a("village_snowy");
+   agl<dxm> x = a("village_taiga");
+   agl<dxm> y = a("ruined_portal");
+   agl<dxm> z = a("ruined_portal_desert");
+   agl<dxm> A = a("ruined_portal_jungle");
+   agl<dxm> B = a("ruined_portal_swamp");
+   agl<dxm> C = a("ruined_portal_mountain");
+   agl<dxm> D = a("ruined_portal_ocean");
+   agl<dxm> E = a("ruined_portal_nether");
+   agl<dxm> F = a("ancient_city");
+   agl<dxm> G = a("trail_ruins");
 
-public abstract class dxg extends dxh {
-   private final dxg.a d;
-   private final int e;
-   private final int f;
-
-   protected dxg(dxg.a $$0, int $$1, int $$2, dxh.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public Optional<dxh.b> a(dxh.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dmr.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dxz $$0, dxh.a $$1) {
-      crh $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      dxl construct(dnq var1, int var2, int var3);
+   private static agl<dxm> a(String $$0) {
+      return agl.a(kd.aB, new agm($$0));
    }
 }

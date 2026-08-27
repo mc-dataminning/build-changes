@@ -1,48 +1,83 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class dpg extends dpv<dsg> {
-   public dpg(Codec<dsg> $$0) {
+public class dpg extends dqa<dsl> {
+   public dpg(Codec<dsl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsg> $$0) {
-      ats $$1 = $$0.d();
-      csu $$2 = $$0.b();
-      crh $$3 = new crh($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ht.a $$6 = new ht.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(dqc<dsl> $$0) {
+      hx $$1 = $$0.e();
+      csz $$2 = $$0.b();
+      atw $$3 = $$0.d();
+      if ($$2.t($$1) && !$$2.t($$1.c())) {
+         hx.a $$4 = $$1.j();
+         hx.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ht $$9 = $$2.a(dmr.a.f, $$6);
-            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cvc.cv.o(), 2);
-               dgh.a($$2, $$1, $$9, eev.b);
-               dhi $$10 = cvc.cp.o();
-
-               for (hx $$11 : hx.c.a) {
-                  ht $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
+         while ($$2.t($$4)) {
+            if ($$2.r($$4)) {
                return true;
             }
-         }
-      }
 
-      return false;
+            $$2.a($$4, cvh.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ib.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ib.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ib.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ib.f));
+            $$4.c(ib.a);
+         }
+
+         $$4.c(ib.b);
+         this.a($$2, $$3, $$5.a($$4, ib.c));
+         this.a($$2, $$3, $$5.a($$4, ib.d));
+         this.a($$2, $$3, $$5.a($$4, ib.e));
+         this.a($$2, $$3, $$5.a($$4, ib.f));
+         $$4.c(ib.a);
+         hx.a $$10 = new hx.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = atq.a($$11) * atq.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.t($$5.a($$10, ib.a))) {
+                     $$10.c(ib.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.t($$5.a($$10, ib.a))) {
+                     $$2.a($$10, cvh.dY.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(csg $$0, atw $$1, hx $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, cvh.dY.o(), 2);
+      }
+   }
+
+   private boolean b(csg $$0, atw $$1, hx $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, cvh.dY.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,485 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-
 public class pd {
-   private static final agh<ebf> M = a("empty");
-   public static final agh<ebf> a = a("zombie_plains");
-   public static final agh<ebf> b = a("zombie_savanna");
-   public static final agh<ebf> c = a("zombie_snowy");
-   public static final agh<ebf> d = a("zombie_taiga");
-   public static final agh<ebf> e = a("zombie_desert");
-   public static final agh<ebf> f = a("mossify_10_percent");
-   public static final agh<ebf> g = a("mossify_20_percent");
-   public static final agh<ebf> h = a("mossify_70_percent");
-   public static final agh<ebf> i = a("street_plains");
-   public static final agh<ebf> j = a("street_savanna");
-   public static final agh<ebf> k = a("street_snowy_or_taiga");
-   public static final agh<ebf> l = a("farm_plains");
-   public static final agh<ebf> m = a("farm_savanna");
-   public static final agh<ebf> n = a("farm_snowy");
-   public static final agh<ebf> o = a("farm_taiga");
-   public static final agh<ebf> p = a("farm_desert");
-   public static final agh<ebf> q = a("outpost_rot");
-   public static final agh<ebf> r = a("bottom_rampart");
-   public static final agh<ebf> s = a("treasure_rooms");
-   public static final agh<ebf> t = a("housing");
-   public static final agh<ebf> u = a("side_wall_degradation");
-   public static final agh<ebf> v = a("stable_degradation");
-   public static final agh<ebf> w = a("bastion_generic_degradation");
-   public static final agh<ebf> x = a("rampart_degradation");
-   public static final agh<ebf> y = a("entrance_replacement");
-   public static final agh<ebf> z = a("bridge");
-   public static final agh<ebf> A = a("roof");
-   public static final agh<ebf> B = a("high_wall");
-   public static final agh<ebf> C = a("high_rampart");
-   public static final agh<ebf> D = a("fossil_rot");
-   public static final agh<ebf> E = a("fossil_coal");
-   public static final agh<ebf> F = a("fossil_diamonds");
-   public static final agh<ebf> G = a("ancient_city_start_degradation");
-   public static final agh<ebf> H = a("ancient_city_generic_degradation");
-   public static final agh<ebf> I = a("ancient_city_walls_degradation");
-   public static final agh<ebf> J = a("trail_ruins_houses_archaeology");
-   public static final agh<ebf> K = a("trail_ruins_roads_archaeology");
-   public static final agh<ebf> L = a("trail_ruins_tower_top_archaeology");
+   @Deprecated
+   public static final eca.a a = new eca.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   private static agh<ebf> a(String $$0) {
-      return agh.a(jz.aC, new agi($$0));
+   public static void a(oz<eca.a> $$0) {
+      a($$0, 0, dnf.a, dnf.b, dnf.c, dnf.d);
+      a($$0, -2, dnf.e, dnf.f, dnf.g, dnf.h);
+      a($$0, dnf.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dnf.j, a);
+      a($$0, dnf.k, -3, 1.0);
+      a($$0, dnf.l, -7, 1.0);
+      a($$0, dnf.m, -1, 1.0);
+      a($$0, dnf.n, -5, 1.0);
+      a($$0, dnf.o, -7, 1.0, 1.0);
+      a($$0, dnf.p, -8, 1.0);
+      a($$0, dnf.q, -8, 1.0);
+      a($$0, dnf.r, -7, 1.0);
+      a($$0, dnf.s, -8, 1.0);
+      a($$0, dnf.t, -11, 1.0);
+      a($$0, dnf.u, -11, 1.0);
+      a($$0, dnf.v, -7, 1.0);
+      a($$0, dnf.w, -7, 1.0);
+      a($$0, dnf.x, -11, 1.0);
+      a($$0, dnf.y, -8, 1.0);
+      a($$0, dnf.z, -5, 1.0);
+      a($$0, dnf.A, -8, 1.0);
+      a($$0, dnf.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dnf.C, -8, 1.0);
+      a($$0, dnf.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dnf.E, -8, 1.0);
+      a($$0, dnf.F, -7, 1.0);
+      a($$0, dnf.G, -7, 1.0);
+      a($$0, dnf.H, -5, 1.0);
+      a($$0, dnf.I, -8, 1.0);
+      a($$0, dnf.J, -8, 1.0);
+      a($$0, dnf.K, -7, 1.0);
+      a($$0, dnf.L, -7, 1.0);
+      a($$0, dnf.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dnf.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dnf.P, -8, 1.0);
+      a($$0, dnf.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.R, -8, 1.0);
+      a($$0, dnf.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dnf.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.U, -3, 1.0);
+      a($$0, dnf.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dnf.W, -2, 1.0);
+      a($$0, dnf.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dnf.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dnf.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dnf.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dnf.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dnf.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dnf.ah, -4, 1.0);
    }
 
-   private static void a(ov<ebf> $$0, agh<ebf> $$1, List<ebe> $$2) {
-      $$0.a($$1, new ebf($$2));
+   private static void a(oz<eca.a> $$0, int $$1, agl<eca.a> $$2, agl<eca.a> $$3, agl<eca.a> $$4, agl<eca.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
    }
 
-   public static void a(ov<ebf> $$0) {
-      ic<cva> $$1 = $$0.a(jz.e);
-      eaw $$2 = new eaw(new eay(cvc.pr, 0.01F), eaf.b, cvc.pC.o());
-      eaw $$3 = new eaw(new eay(cvc.pC, 0.5F), eaf.b, cvc.pr.o());
-      a($$0, M, ImmutableList.of());
-      a(
-         $$0,
-         a,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.m, 0.8F), eaf.b, cvc.cn.o()),
-                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.m, 0.07F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.cn, 0.07F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.hj, 0.07F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.U, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.n, 0.1F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.cu, 0.1F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.al, 0.02F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
-                  new eaw[]{
-                     new eaw(
-                        new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
-                        eaf.b,
-                        cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
-                     ),
-                     new eaw(
-                        new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
-                        eaf.b,
-                        cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
-                     ),
-                     new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.gt.o()),
-                     new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
-                     new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.kD.o())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         b,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.r, 0.2F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.hP, 0.2F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.Y, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.as, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.hk, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.hn, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.hx, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
-                  new eaw(
-                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
-                     eaf.b,
-                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
-                  ),
-                  new eaw[]{
-                     new eaw(
-                        new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
-                        eaf.b,
-                        cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
-                     ),
-                     new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.oe), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.o, 0.2F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.ju, 0.4F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.af, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.ax, 0.05F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
-                  new eaw(
-                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
-                     eaf.b,
-                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
-                  ),
-                  new eaw(
-                     new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
-                     eaf.b,
-                     cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
-                  ),
-                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.gt.o()),
-                  new eaw[]{new eaw(new eay(cvc.cB, 0.8F), eaf.b, cvc.gu.o())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.m, 0.8F), eaf.b, cvc.cn.o()),
-                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.og), eaf.b, cvc.og.o().a(cvo.c, Boolean.valueOf(false))),
-                  new eaw(new eay(cvc.m, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.V, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.eY, 0.5F), eaf.b, cvc.bs.o()),
-                  new eaw(
-                     new eam(cvc.eY.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))),
-                     eaf.b,
-                     cvc.hL.o().a(cza.a, Boolean.valueOf(true)).a(cza.c, Boolean.valueOf(true))
-                  ),
-                  new eaw(
-                     new eam(cvc.eY.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))),
-                     eaf.b,
-                     cvc.hL.o().a(cza.b, Boolean.valueOf(true)).a(cza.d, Boolean.valueOf(true))
-                  ),
-                  new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.fd.o()),
-                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
-                  new eaw[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new ebj(arg.p), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cp), eaf.b, cvc.a.o()),
-                  new eaw(new eak(cvc.cq), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.jS, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.aX, 0.1F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.iA, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.nl, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.ny, 0.08F), eaf.b, cvc.bs.o()),
-                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.kD.o()),
-                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.1F), eaf.b, cvc.cn.o())))));
-      a($$0, g, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.2F), eaf.b, cvc.cn.o())))));
-      a($$0, h, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.m, 0.7F), eaf.b, cvc.cn.o())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.n.o()),
-                  new eaw(new eay(cvc.kE, 0.1F), eaf.b, cvc.i.o()),
-                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
-                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.r.o()),
-                  new eaw(new eay(cvc.kE, 0.2F), eaf.b, cvc.i.o()),
-                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
-                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eak(cvc.kE), new eak(cvc.G), cvc.o.o()),
-                  new eaw(new eak(cvc.kE), new eak(cvc.dO), cvc.o.o()),
-                  new eaw(new eay(cvc.kE, 0.2F), eaf.b, cvc.i.o()),
-                  new eaw(new eak(cvc.i), new eak(cvc.G), cvc.G.o()),
-                  new eaw(new eak(cvc.j), new eak(cvc.G), cvc.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.gt.o()),
-                  new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()),
-                  new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.kD.o())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.gt.o()), new eaw(new eay(cvc.cB, 0.8F), eaf.b, cvc.gu.o()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.3F), eaf.b, cvc.fd.o()), new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.gu.o()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.cB, 0.2F), eaf.b, cvc.kD.o()), new eaw(new eay(cvc.cB, 0.1F), eaf.b, cvc.fe.o()))))
-      );
-      a($$0, q, ImmutableList.of(new eal(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.kJ, 0.75F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.px, 0.15F), eaf.b, cvc.pw.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.35F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.py, 0.1F), eaf.b, cvc.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.py, 0.5F), eaf.b, cvc.a.o()), new eaw(new eay(cvc.ch, 0.1F), eaf.b, cvc.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.1F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()),
-                  new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.pw, 0.4F), eaf.b, cvc.px.o()),
-                  new eaw(new eay(cvc.pr, 0.01F), eaf.b, cvc.px.o()),
-                  new eaw(new eay(cvc.pw, 1.0E-4F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new eba(ImmutableList.of(new eaw(new eay(cvc.py, 0.5F), eaf.b, cvc.a.o()), new eaw(new eay(cvc.ch, 0.6F), eaf.b, cvc.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new eba(ImmutableList.of(new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()), new eaw(new eay(cvc.pr, 1.0E-4F), eaf.b, cvc.a.o()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.px.o()),
-                  new eaw(new eay(cvc.pw, 0.15F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.pr.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.pw, 0.01F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.pw, 0.5F), eaf.b, cvc.px.o()),
-                  new eaw(new eay(cvc.pw, 0.3F), eaf.b, cvc.pr.o()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(new eaw(new eay(cvc.ch, 0.3F), eaf.b, cvc.px.o()), new eaw(eaf.b, eaf.b, new eag(0.0F, 0.05F, 0, 100, hx.a.b), cvc.a.o()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new eal(0.9F), new eax(arg.bH)));
-      a($$0, E, ImmutableList.of(new eal(0.1F), new eax(arg.bH)));
-      a($$0, F, ImmutableList.of(new eal(0.1F), new eba(ImmutableList.of(new eaw(new eak(cvc.R), eaf.b, cvc.cy.o()))), new eax(arg.bH)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
-                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
-                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
-               )
-            ),
-            new eax(arg.bH)
-         )
-      );
-      a(
-         $$0,
-         H,
-         ImmutableList.of(
-            new eal($$1.b(arg.bN), 0.95F),
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
-                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
-                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
-               )
-            ),
-            new eax(arg.bH)
-         )
-      );
-      a(
-         $$0,
-         I,
-         ImmutableList.of(
-            new eal($$1.b(arg.bN), 0.95F),
-            new eba(
-               ImmutableList.of(
-                  new eaw(new eay(cvc.sW, 0.3F), eaf.b, cvc.tb.o()),
-                  new eaw(new eay(cvc.sS, 0.3F), eaf.b, cvc.tc.o()),
-                  new eaw(new eay(cvc.sU, 0.3F), eaf.b, cvc.a.o()),
-                  new eaw(new eay(cvc.of, 0.05F), eaf.b, cvc.a.o())
-               )
-            ),
-            new eax(arg.bH)
-         )
-      );
-      a(
-         $$0,
-         J,
-         List.of(
-            new eba(
-               List.of(
-                  new eaw(new eay(cvc.L, 0.2F), eaf.b, cvc.j.o()),
-                  new eaw(new eay(cvc.L, 0.1F), eaf.b, cvc.k.o()),
-                  new eaw(new eay(cvc.eM, 0.1F), eaf.b, cvc.eL.o())
-               )
-            ),
-            a(eev.aE, 6),
-            a(eev.aF, 3)
-         )
-      );
-      a(
-         $$0,
-         K,
-         List.of(
-            new eba(
-               List.of(
-                  new eaw(new eay(cvc.L, 0.2F), eaf.b, cvc.j.o()),
-                  new eaw(new eay(cvc.L, 0.1F), eaf.b, cvc.k.o()),
-                  new eaw(new eay(cvc.eM, 0.1F), eaf.b, cvc.eL.o())
-               )
-            ),
-            a(eev.aE, 2)
-         )
-      );
-      a($$0, L, List.of(a(eev.aE, 2)));
-   }
-
-   private static ean a(agi $$0, int $$1) {
-      return new ean(new eba(List.of(new eaw(new ebj(arg.cl), eaf.b, eat.b, cvc.M.o(), new ebl($$0)))), bhz.a($$1));
+   private static void a(oz<eca.a> $$0, agl<eca.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eca.a($$2, $$3, $$4));
    }
 }

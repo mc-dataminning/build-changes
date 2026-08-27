@@ -1,43 +1,37 @@
-public class foy extends fpj {
-   private final fpe a;
+public class foy extends fpo {
+   private final fpj a;
 
-   protected foy(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
+   foy(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpj $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.d(1.0F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public fom b() {
-      return fom.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fos b() {
+      return fos.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements fol<jv> {
-      private final fpe a;
-
-      public a(fpe $$0) {
-         this.a = $$0;
-      }
-
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(fpj a) implements foq<jz> {
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          foy $$8 = new foy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
          return $$8;
       }
    }

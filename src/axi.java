@@ -1,33 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.Set;
 
-public class axi extends azt {
+public class axi extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
    public axi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bat.x, "minecraft:item_frame");
+      super($$0, $$1);
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
-   }
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
+      } else {
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private static byte a(byte $$0) {
-      switch ($$0) {
-         case 0:
-            return 3;
-         case 1:
-            return 4;
-         case 2:
-         default:
-            return 2;
-         case 3:
-            return 5;
+         $$3 = $$2.get().floatValue();
       }
+
+      return $$0.set("Health", $$0.createFloat($$3));
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bax.x), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

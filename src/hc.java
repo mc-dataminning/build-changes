@@ -1,69 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public record hc(List<String> a, List<String> b) {
-   public static hc a(String $$0, int $$1) {
-      Builder<String> $$2 = ImmutableList.builder();
-      Builder<String> $$3 = ImmutableList.builder();
-      int $$4 = $$0.length();
-      int $$5 = 0;
-      int $$6 = $$0.indexOf(36);
+class hc<T extends dw<T>> {
+   @Nullable
+   private List<gs<T>> a = new ArrayList<>();
+   @Nullable
+   private List<he.a<T>> b;
+   private final List<String> c = new ArrayList<>();
 
-      while ($$6 != -1) {
-         if ($$6 != $$4 - 1 && $$0.charAt($$6 + 1) == '(') {
-            $$2.add($$0.substring($$5, $$6));
-            int $$7 = $$0.indexOf(41, $$6 + 1);
-            if ($$7 == -1) {
-               throw new IllegalArgumentException("Unterminated macro variable in macro '" + $$0 + "' on line " + $$1);
-            }
-
-            String $$8 = $$0.substring($$6 + 2, $$7);
-            if (!a($$8)) {
-               throw new IllegalArgumentException("Invalid macro variable name '" + $$8 + "' on line " + $$1);
-            }
-
-            $$3.add($$8);
-            $$5 = $$7 + 1;
-            $$6 = $$0.indexOf(36, $$5);
-         } else {
-            $$6 = $$0.indexOf(36, $$6 + 1);
-         }
-      }
-
-      if ($$5 == 0) {
-         throw new IllegalArgumentException("Macro without variables on line " + $$1);
+   public void a(gs<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new he.c<>($$0));
       } else {
-         if ($$5 != $$4) {
-            $$2.add($$0.substring($$5));
-         }
-
-         return new hc($$2.build(), $$3.build());
+         this.a.add($$0);
       }
    }
 
-   private static boolean a(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         char $$2 = $$0.charAt($$1);
-         if (!Character.isLetterOrDigit($$2) && $$2 != '_') {
-            return false;
-         }
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
       }
 
-      return true;
+      return $$1;
    }
 
-   public String a(List<String> $$0) {
-      StringBuilder $$1 = new StringBuilder();
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
 
-      for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
-         $$1.append(this.a.get($$2)).append($$0.get($$2));
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
       }
 
-      if (this.a.size() > this.b.size()) {
-         $$1.append(this.a.get(this.a.size() - 1));
+      return $$1;
+   }
+
+   public void a(String $$0, int $$1) {
+      hg $$2 = hg.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (gs<T> $$3 : this.a) {
+            this.b.add(new he.c<>($$3));
+         }
+
+         this.a = null;
       }
 
-      return $$1.toString();
+      this.b.add(new he.b<>($$2, this.a($$2.b())));
+   }
+
+   public hb<T> a(agm $$0) {
+      return (hb<T>)(this.b != null ? new he<>($$0, this.b, this.c) : new hf<>($$0, this.a));
    }
 }

@@ -1,46 +1,24 @@
-import java.util.Optional;
+public class afp implements wo<acr> {
+   private final long a;
 
-public interface afp<T> {
-   void a(tu var1, T var2);
-
-   T a(tu var1);
-
-   default afo<T> a(int $$0) {
-      return new afo<>($$0, this);
+   public afp(long $$0) {
+      this.a = $$0;
    }
 
-   T a(T var1);
-
-   static <T> afp<T> a(final tu.b<T> $$0, final tu.a<T> $$1) {
-      return new afp.a<T>() {
-         @Override
-         public void a(tu $$0x, T $$1x) {
-            $$0.accept($$0, $$1);
-         }
-
-         @Override
-         public T a(tu $$0x) {
-            return $$1.apply($$0);
-         }
-      };
+   public afp(ty $$0) {
+      this.a = $$0.readLong();
    }
 
-   static <T> afp<Optional<T>> b(tu.b<T> $$0, tu.a<T> $$1) {
-      return a($$0.asOptional(), $$1.asOptional());
+   @Override
+   public void a(ty $$0) {
+      $$0.b(this.a);
    }
 
-   static <T extends Enum<T>> afp<T> a(Class<T> $$0) {
-      return a(tu::a, $$1 -> $$1.b($$0));
+   public void a(acr $$0) {
+      $$0.a(this);
    }
 
-   static <T> afp<T> a(ih<T> $$0) {
-      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
-   }
-
-   public interface a<T> extends afp<T> {
-      @Override
-      default T a(T $$0) {
-         return $$0;
-      }
+   public long a() {
+      return this.a;
    }
 }

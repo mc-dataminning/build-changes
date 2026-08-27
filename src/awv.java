@@ -1,19 +1,18 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 
-public class awv extends azt {
-   public awv(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bat.x, "ArmorStand");
+public class awv extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
+   public awv(Schema $$0) {
+      super($$0, true);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bax.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bax.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

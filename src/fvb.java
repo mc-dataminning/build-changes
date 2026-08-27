@@ -1,18 +1,16 @@
-public class fvb extends fxd<bws, fgv<bws>> {
-   private static final agi a = new agi("textures/entity/bee/bee_angry.png");
-   private static final agi i = new agi("textures/entity/bee/bee_angry_nectar.png");
-   private static final agi j = new agi("textures/entity/bee/bee.png");
-   private static final agi k = new agi("textures/entity/bee/bee_nectar.png");
+public class fvb extends fxi<bya, fgt> {
+   private static final agm a = new agm("textures/entity/allay/allay.png");
 
-   public fvb(fvx.a $$0) {
-      super($$0, new fgv<>($$0.a(fkn.j)), 0.4F);
+   public fvb(fwc.a $$0) {
+      super($$0, new fgt($$0.a(fks.a)), 0.4F);
+      this.a(new gad<>(this, $$0.d()));
    }
 
-   public agi a(bws $$0) {
-      if ($$0.Z_()) {
-         return $$0.gp() ? i : a;
-      } else {
-         return $$0.gp() ? k : j;
-      }
+   public agm a(bya $$0) {
+      return a;
+   }
+
+   protected int a(bya $$0, hx $$1) {
+      return 15;
    }
 }

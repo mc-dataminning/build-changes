@@ -1,143 +1,111 @@
-public interface eym {
-   eym a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   eym a(int var1, int var2);
+public class eym extends eyj {
+   private final List<eym.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final eyr f = eyr.i().a(0.5F, 0.5F);
 
-   eym a(int var1, int var2, int var3, int var4);
-
-   eym b(int var1);
-
-   eym c(int var1);
-
-   eym d(int var1);
-
-   eym e(int var1);
-
-   eym f(int var1);
-
-   eym g(int var1);
-
-   eym a(float var1, float var2);
-
-   eym a(float var1);
-
-   eym b(float var1);
-
-   default eym a() {
-      return this.a(0.0F);
+   public eym() {
+      this(0, 0, 0, 0);
    }
 
-   default eym b() {
-      return this.a(0.5F);
+   public eym(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default eym c() {
-      return this.a(1.0F);
+   public eym(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   default eym d() {
-      return this.b(0.0F);
+   public eym a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   default eym e() {
-      return this.b(0.5F);
+   public eym a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   default eym f() {
-      return this.b(1.0F);
+   public eym b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   eym g();
-
-   eym.a h();
-
-   static eym i() {
-      return new eym.a();
+   public eyr b() {
+      return this.f.g();
    }
 
-   public static class a implements eym {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public eyr c() {
+      return this.f;
+   }
 
-      public a() {
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (eym.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      public a(eym.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      for (eym.a $$3 : this.c) {
+         $$3.a(this.p(), $$0);
+         $$3.b(this.r(), $$1);
       }
 
-      public eym.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      public eym.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+   public <T extends eyq> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
 
-      public eym.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public <T extends eyq> T a(T $$0, eyr $$1) {
+      this.c.add(new eym.a($$0, $$1));
+      return $$0;
+   }
 
-      public eym.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public <T extends eyq> T a(T $$0, Consumer<eyr> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
 
-      public eym.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void b(Consumer<eyq> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-      public eym.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static void a(eyq $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
 
-      public eym.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public static void a(eyq $$0, ezh $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
 
-      public eym.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
+   public static void a(eyq $$0, ezh $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
 
-      public eym.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public static void a(eyq $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.k(), $$0::f, $$5);
+      a($$2, $$4, $$0.i(), $$0::g, $$6);
+   }
 
-      public eym.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)atq.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      public eym.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eym.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eym.a j() {
-         return new eym.a(this);
-      }
-
-      @Override
-      public eym.a h() {
-         return this;
+   static class a extends eyj.a {
+      protected a(eyq $$0, eyr $$1) {
+         super($$0, $$1);
       }
    }
 }

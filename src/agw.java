@@ -1,90 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class agw {
-   private static final agi a = new agi("tick");
-   private static final agi b = new agi("load");
-   private final MinecraftServer c;
-   private List<gx<du>> d = ImmutableList.of();
-   private boolean e;
-   private agv f;
+   private static final Logger a = LogUtils.getLogger();
+   private static final CompletableFuture<aus> b = CompletableFuture.completedFuture(aus.a);
+   private final dp.a c;
+   private final dv d;
+   private final cow e = new cow();
+   private final asb f;
+   private final eff g = new eff();
+   private final agy h = new agy(this.g);
+   private final agz i;
 
-   public agw(MinecraftServer $$0, agv $$1) {
-      this.c = $$0;
-      this.f = $$1;
-      this.b($$1);
+   public agw(it.b $$0, cgi $$1, dv.a $$2, int $$3) {
+      this.f = new asb($$0);
+      this.c = dp.a((it)$$0, $$1);
+      this.d = new dv($$2, this.c);
+      this.c.a(dp.b.a);
+      this.i = new agz($$3, this.d.a());
    }
 
-   public CommandDispatcher<du> a() {
-      return this.c.aE().a();
+   public agz a() {
+      return this.i;
    }
 
-   public void b() {
-      if (this.c.aO().i()) {
-         if (this.e) {
-            this.e = false;
-            Collection<gx<du>> $$0 = this.f.b(b);
-            this.a($$0, b);
-         }
-
-         this.a(this.d, a);
-      }
+   public eff b() {
+      return this.g;
    }
 
-   private void a(Collection<gx<du>> $$0, agi $$1) {
-      this.c.aR().a($$1::toString);
-
-      for (gx<du> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.c.aR().c();
+   public cow c() {
+      return this.e;
    }
 
-   public void a(gx<du> $$0, du $$1) {
-      bfo $$2 = this.c.aR();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         gz<du> $$3 = $$0.a(null, this.a(), $$1);
-         dv.a($$1, $$2x -> $$2x.a($$3, $$1));
-      } catch (dx var8) {
-      } finally {
-         $$2.c();
-      }
+   public dv d() {
+      return this.d;
    }
 
-   public void a(agv $$0) {
-      this.f = $$0;
-      this.b($$0);
+   public agy e() {
+      return this.h;
    }
 
-   private void b(agv $$0) {
-      this.d = ImmutableList.copyOf($$0.b(a));
-      this.e = true;
+   public List<apf> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
    }
 
-   public du c() {
-      return this.c.aF().a(2).b();
+   public static CompletableFuture<agw> a(apl $$0, it.b $$1, cgi $$2, dv.a $$3, int $$4, Executor $$5, Executor $$6) {
+      agw $$7 = new agw($$1, $$2, $$3, $$4);
+      return apr.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dp.b.b)).thenApply($$1x -> $$7);
    }
 
-   public Optional<gx<du>> a(agi $$0) {
-      return this.f.a($$0);
+   public void a(it $$0) {
+      this.f.a().forEach($$1 -> a($$0, (asb.a<?>)$$1));
+      cvh.a();
    }
 
-   public Collection<gx<du>> b(agi $$0) {
-      return this.f.b($$0);
-   }
-
-   public Iterable<agi> d() {
-      return this.f.a().keySet();
-   }
-
-   public Iterable<agi> e() {
-      return this.f.b();
+   private static <T> void a(it $$0, asb.a<T> $$1) {
+      agl<? extends is<T>> $$2 = $$1.a();
+      Map<arz<T>, List<ig<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> arz.a($$2, (agm)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends ig<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
    }
 }

@@ -1,86 +1,70 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class mk {
-   public static final mk.a a = a(mi::a, mh.c);
-   public static final mk.a b = a(mi::a, mh.d);
-   public static final mk.a c = a(mi::k, mh.i);
-   public static final mk.a d = a(mi::k, mh.j);
-   public static final mk.a e = a(mi::q, mh.m);
-   public static final mk.a f = a(mi::l, mh.l);
-   public static final mk.a g = a(mi::B, mh.n);
-   public static final mk.a h = a(mi::A, mh.o);
-   public static final mk.a i = a(mi::f, mh.au);
-   public static final mk.a j = a(mi::g, mh.av);
-   public static final mk.a k = a(mi::g, mh.aw);
-   public static final mk.a l = a(mi::g, mh.ax);
-   public static final mk.a m = a(mi::g, mh.ay);
-   public static final mk.a n = a(mi::i, mh.aB);
-   public static final mk.a o = a(mi::j, mh.az);
-   public static final mk.a p = a(mi::u, mh.Y);
-   public static final mk.a q = a(mi::D, mh.aQ);
-   public static final mk.a r = a(mi::a, mh.ab);
-   public static final mk.a s = a(mi::x, mh.bb);
-   public static final mk.a t = a(mi::x, mh.bc);
-   public static final mk.a u = a(mi::b, mh.bi);
-   public static final mk.a v = a(mi::n, mh.i);
-   public static final mk.a w = a(mi::n, mh.j);
-   public static final mk.a x = a(mi::r, mh.m);
-   public static final mk.a y = a(mi::s, mh.i);
-   private final mi z;
-   private final mg A;
+   private final Optional<agm> a;
+   private final Set<mn> b;
+   private final Optional<String> c;
 
-   private mk(mi $$0, mg $$1) {
-      this.z = $$0;
-      this.A = $$1;
+   public mk(Optional<agm> $$0, Optional<String> $$1, mn... $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   public mg a() {
-      return this.A;
+   public agm a(cvf $$0) {
+      return mj.a($$0, this.c.orElse(""));
    }
 
-   public mi b() {
-      return this.z;
+   public agm a(cvf $$0, mm $$1, BiConsumer<agm, Supplier<JsonElement>> $$2) {
+      return this.a(mj.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public mk a(Consumer<mi> $$0) {
-      $$0.accept(this.z);
-      return this;
+   public agm a(cvf $$0, String $$1, mm $$2, BiConsumer<agm, Supplier<JsonElement>> $$3) {
+      return this.a(mj.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public agi a(cva $$0, BiConsumer<agi, Supplier<JsonElement>> $$1) {
-      return this.A.a($$0, this.z, $$1);
+   public agm b(cvf $$0, String $$1, mm $$2, BiConsumer<agm, Supplier<JsonElement>> $$3) {
+      return this.a(mj.a($$0, $$1), $$2, $$3);
    }
 
-   public agi a(cva $$0, String $$1, BiConsumer<agi, Supplier<JsonElement>> $$2) {
-      return this.A.a($$0, $$1, this.z, $$2);
+   public agm a(agm $$0, mm $$1, BiConsumer<agm, Supplier<JsonElement>> $$2) {
+      return this.a($$0, $$1, $$2, this::a);
    }
 
-   private static mk.a a(Function<cva, mi> $$0, mg $$1) {
-      return $$2 -> new mk($$0.apply($$2), $$1);
+   public agm a(agm $$0, mm $$1, BiConsumer<agm, Supplier<JsonElement>> $$2, mk.a $$3) {
+      Map<mn, agm> $$4 = this.a($$1);
+      $$2.accept($$0, () -> $$3.create($$0, $$4));
+      return $$0;
    }
 
-   public static mk a(agi $$0) {
-      return new mk(mi.b($$0), mh.c);
+   public JsonObject a(agm $$0, Map<mn, agm> $$1) {
+      JsonObject $$2 = new JsonObject();
+      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
+      if (!$$1.isEmpty()) {
+         JsonObject $$3 = new JsonObject();
+         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
+         $$2.add("textures", $$3);
+      }
+
+      return $$2;
    }
 
-   @FunctionalInterface
+   private Map<mn, agm> a(mm $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   }
+
    public interface a {
-      mk get(cva var1);
-
-      default agi create(cva $$0, BiConsumer<agi, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default agi createWithSuffix(cva $$0, String $$1, BiConsumer<agi, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default mk.a updateTexture(Consumer<mi> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+      JsonObject create(agm var1, Map<mn, agm> var2);
    }
 }

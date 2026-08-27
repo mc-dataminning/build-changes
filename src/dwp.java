@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dwp<P extends dwo> {
-   dwp<dwa> a = a("block_predicate_filter", dwa.a);
-   dwp<dwr> b = a("rarity_filter", dwr.a);
-   dwp<dwt> c = a("surface_relative_threshold_filter", dwt.a);
-   dwp<dwu> d = a("surface_water_depth_filter", dwu.a);
-   dwp<dvz> e = a("biome", dvz.a);
-   dwp<dwe> f = a("count", dwe.a);
-   dwp<dwj> g = a("noise_based_count", dwj.a);
-   dwp<dwk> h = a("noise_threshold_count", dwk.a);
-   dwp<dwd> i = a("count_on_every_layer", dwd.a);
-   dwp<dwf> j = a("environment_scan", dwf.a);
-   dwp<dwh> k = a("heightmap", dwh.a);
-   dwp<dwg> l = a("height_range", dwg.a);
-   dwp<dwi> m = a("in_square", dwi.a);
-   dwp<dwq> n = a("random_offset", dwq.a);
-   dwp<dwb> o = a("carving_mask", dwb.a);
+public class dwp extends dwx {
+   public static final Codec<dwp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dwp::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   Codec<P> codec();
+   private dwp(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends dwo> dwp<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.V, $$0, () -> $$1);
+   public static dwp a(double $$0, int $$1, int $$2) {
+      return new dwp($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(atw $$0, hx $$1) {
+      double $$2 = ctd.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public dwu<?> b() {
+      return dwu.h;
    }
 }

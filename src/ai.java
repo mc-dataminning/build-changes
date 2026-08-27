@@ -11,11 +11,11 @@ import java.util.function.Predicate;
 public record ai(String[][] b) {
    public static final ai a = new ai(new String[0][]);
 
-   public ai(tu $$0) {
+   public ai(ty $$0) {
       this(b($$0));
    }
 
-   private static String[][] b(tu $$0) {
+   private static String[][] b(ty $$0) {
       String[][] $$1 = new String[$$0.n()][];
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
@@ -29,7 +29,7 @@ public record ai(String[][] b) {
       return $$1;
    }
 
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.b.length);
 
       for (String[] $$1 : this.b) {
@@ -94,7 +94,7 @@ public record ai(String[][] b) {
       Set<String> $$3 = new ObjectOpenHashSet();
 
       for (int $$4 = 0; $$4 < $$0.size(); $$4++) {
-         JsonArray $$5 = atc.n($$0.get($$4), "requirements[" + $$4 + "]");
+         JsonArray $$5 = atg.n($$0.get($$4), "requirements[" + $$4 + "]");
          if ($$5.isEmpty() && $$1.isEmpty()) {
             throw new JsonSyntaxException("Requirement entry cannot be empty");
          }
@@ -102,7 +102,7 @@ public record ai(String[][] b) {
          $$2[$$4] = new String[$$5.size()];
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            String $$7 = atc.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
+            String $$7 = atg.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
             $$2[$$4][$$6] = $$7;
             $$3.add($$7);
          }

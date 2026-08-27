@@ -1,20 +1,20 @@
-public class cqe extends cpu {
-   public cqe(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.j, $$1);
+public class cqe extends cpz {
+   protected cqe(cpz.a $$0, bla... $$1) {
+      super($$0, cqa.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 10 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 2;
    }
 }

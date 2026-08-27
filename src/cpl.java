@@ -1,20 +1,15 @@
-public class cpl extends cpu {
-   public cpl(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.k, $$1);
+public class cpl extends coa {
+   public cpl(String $$0, cog $$1, coq $$2, clo $$3, float $$4, int $$5) {
+      super(coy.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public clo g() {
+      return new clo(cvh.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public cox<?> as_() {
+      return cox.r;
    }
 }

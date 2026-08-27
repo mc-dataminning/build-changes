@@ -1,18 +1,23 @@
-import javax.annotation.Nullable;
+public enum bjb {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-public interface bjb {
-   ur ad();
-
-   default boolean ae() {
-      return this.af() != null;
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   default ur P_() {
-      return this.ad();
+   public boolean b() {
+      return this == a;
    }
 
-   @Nullable
-   default ur af() {
-      return null;
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static bjb a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

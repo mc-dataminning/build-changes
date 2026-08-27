@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ebo implements ebp {
-   public static final ebo a = new ebo();
-   public static final Codec<ebo> b = Codec.unit(a);
+public class ebo extends ebg {
+   public static final Codec<ebo> a = arz.a(kd.e).fieldOf("tag").xmap(ebo::new, $$0 -> $$0.b).codec();
+   private final arz<cvf> b;
 
-   @Nullable
-   @Override
-   public rz a(ats $$0, @Nullable rz $$1) {
-      return $$1;
+   public ebo(arz<cvf> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public ebq<?> a() {
-      return ebq.b;
+   public boolean a(dhn $$0, atw $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected ebh<?> a() {
+      return ebh.d;
    }
 }

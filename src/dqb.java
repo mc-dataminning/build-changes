@@ -1,149 +1,80 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class dqb extends dpv<dsa> {
-   private static final hx[] a = hx.values();
+public class dqb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<ami, dqb.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<ami, dqb.b>() {
+         public dqb.b a(ami $$0) {
+            return new dqb.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+         }
+      });
 
-   public dqb(Codec<dsa> $$0) {
-      super($$0);
+   public static void a(ami $$0) {
+      try {
+         ((dqb.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
+      }
    }
 
-   @Override
-   public boolean a(dpx<dsa> $$0) {
-      dsa $$1 = $$0.f();
-      ats $$2 = $$0.d();
-      ht $$3 = $$0.e();
-      csu $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<ht, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      dnq $$9 = new dnq(new dms($$4.B()));
-      ebv $$10 = ebv.a($$9, -4, 1.0);
-      List<ht> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      dmq $$13 = $$1.d;
-      dmo $$14 = $$1.c;
-      dmp $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
-
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         ht $$27 = $$3.b($$24, $$25, $$26);
-         dhi $$28 = $$4.a_($$27);
-         if ($$28.i() || $$28.a(arg.bJ)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
-
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+   public static void a(ami $$0, dpn<?, ?> $$1, Optional<dwq> $$2) {
+      try {
+         ((dqb.b)b.get($$0)).a().computeInt(new dqb.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
-         }
-      }
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
 
-      List<ht> $$31 = Lists.newArrayList();
-      Predicate<dhi> $$32 = a($$1.c.g);
-
-      for (ht $$33 : ht.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
-
-         for (Pair<ht, Integer> $$37 : $$7) {
-            $$35 += atm.f($$33.j((iw)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
-         }
-
-         for (ht $$38 : $$11) {
-            $$36 += atm.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, cvc.a.o(), $$32);
-
-               for (hx $$39 : a) {
-                  ht $$40 = $$33.a($$39);
-                  ecs $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.i());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ad().a().toString();
+               boolean $$3 = $$0.n().v();
+               is<dwq> $$4 = $$0.I_().d(kd.aA);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::c).<agm>map(agl::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
             }
-         }
-      }
+         );
+   }
 
-      List<dhi> $$43 = $$14.f;
+   static record a(dpn<?, ?> a, Optional<dwq> b) {
+   }
 
-      for (ht $$44 : $$31) {
-         dhi $$45 = ac.a($$43, $$2);
-
-         for (hx $$46 : a) {
-            if ($$45.b(dhy.P)) {
-               $$45 = $$45.a(dhy.P, $$46);
-            }
-
-            ht $$47 = $$44.a($$46);
-            dhi $$48 = $$4.a_($$47);
-            if ($$45.b(dhy.C)) {
-               $$45 = $$45.a(dhy.C, Boolean.valueOf($$48.u().b()));
-            }
-
-            if (cvi.g($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
-      }
-
-      return true;
+   static record b(Object2IntMap<dqb.a> a, MutableInt b) {
    }
 }

@@ -1,72 +1,25 @@
-public class evj extends eut {
-   private final eum a;
-   private final evt b;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public evj(int $$0, int $$1, int $$2, int $$3, ur $$4, eum $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new evt($$4, $$5).j(this.k() - this.b());
+public class evj {
+   private static final atc a = atc.codepoint(32, vs.a);
+
+   private static String a(String $$0) {
+      return eti.N().m.I().c() ? $$0 : n.a($$0);
    }
 
-   public evj a(int $$0) {
-      this.b.i($$0);
-      return this;
-   }
-
-   @Override
-   public void d(int $$0) {
-      super.d($$0);
-      this.b.j(this.k() - this.b());
-   }
-
-   @Override
-   protected int g() {
-      return this.b.i();
-   }
-
-   @Override
-   protected double h() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(euo $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aJ_()) {
-         this.a($$0, this.p() - this.a(), this.r() - this.a(), this.k() + this.b(), this.i() + this.b());
-      }
-   }
-
-   @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
-      if (this.j) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.p(), (float)this.r(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   public boolean u() {
-      return super.e();
-   }
-
-   @Override
-   protected void c(euo $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.p() + this.a()), (float)(this.r() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(eys $$0) {
-      $$0.a(eyr.a, this.l());
+   public static List<atc> a(va $$0, int $$1, eur $$2) {
+      esy $$3 = new esy();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(va.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, vs.a);
+      List<atc> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, vs.a, ($$1x, $$2x) -> {
+         atc $$3x = ry.a().a($$1x);
+         $$4.add($$2x ? atc.composite(a, $$3x) : $$3x);
+      });
+      return (List<atc>)($$4.isEmpty() ? Lists.newArrayList(new atc[]{atc.a}) : $$4);
    }
 }

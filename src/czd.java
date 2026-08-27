@@ -1,59 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class czd extends cyp implements czq {
-   public static final MapCodec<czd> c = b(czd::new);
-   protected static final ekn g = cva.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
-
-   @Override
-   public MapCodec<czd> a() {
-      return c;
-   }
-
-   protected czd(dhh.d $$0) {
-      super($$0, hx.b, g, true, 0.14);
-   }
+public class czd extends cvf {
+   public static final MapCodec<czd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kc.f.q().fieldOf("host").forGetter(czd::b), u()).apply($$0, czd::new));
+   private final cvf b;
+   private static final Map<cvf, cvf> c = Maps.newIdentityHashMap();
+   private static final Map<dhn, dhn> d = Maps.newIdentityHashMap();
+   private static final Map<dhn, dhn> e = Maps.newIdentityHashMap();
 
    @Override
-   protected boolean g(dhi $$0) {
-      return $$0.a(cvc.G);
+   public MapCodec<? extends czd> a() {
+      return a;
    }
 
-   @Override
-   protected cva b() {
-      return cvc.md;
+   public czd(cvf $$0, dhm.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected boolean h(dhi $$0) {
-      return !$$0.a(cvc.kJ);
+   public cvf b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(@Nullable cdu $$0, crg $$1, ht $$2, dhi $$3, ecr $$4) {
-      return false;
+   public static boolean h(dhn $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   public boolean a(csb $$0, ht $$1, dhi $$2, ecs $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(ats $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dhi a(cnr $$0) {
-      ecs $$1 = $$0.q().b_($$0.a());
-      return $$1.a(arl.a) && $$1.e() == 8 ? super.a($$0) : null;
+   private void a(ami $$0, hx $$1) {
+      cbu $$2 = bkz.aI.a((csf)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
+      }
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return ect.c.a(false);
+   public void a(dhn $$0, ami $$1, hx $$2, clo $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.Y().b(csb.h) && cqb.a(cqd.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public static dhn n(dhn $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dhn o(dhn $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dhn a(Map<dhn, dhn> $$0, dhn $$1, Supplier<dhn> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dhn $$2x = $$2.get();
+
+         for (diq $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

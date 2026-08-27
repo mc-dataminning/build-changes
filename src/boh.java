@@ -1,37 +1,19 @@
-public abstract class boh<E extends blg> implements bmy<E>, bqm<E> {
-   private bmx.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public boh() {
-      this.a = bmx.a.a;
+public class boh extends bnc<bln> {
+   public boh(int $$0, int $$1) {
+      super(ImmutableMap.of(bum.n, bun.a), $$0, $$1);
    }
 
-   @Override
-   public final bmx.a a() {
-      return this.a;
+   protected boolean a(ami $$0, bln $$1, long $$2) {
+      return $$1.dP().c(bum.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(ame $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bmx.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(ami $$0, bln $$1, long $$2) {
+      $$1.dP().b(bum.n);
    }
 
-   @Override
-   public final void f(ame $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(ame $$0, E $$1, long $$2) {
-      this.a = bmx.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(ami $$0, bln $$1, long $$2) {
+      $$1.dP().c(bum.n).ifPresent($$1x -> $$1.I().a($$1x.a()));
    }
 }

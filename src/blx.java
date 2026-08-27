@@ -1,5 +1,17 @@
-public interface blx {
-   void a(aqs var1);
-
-   boolean a();
+public enum blx {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o;
 }

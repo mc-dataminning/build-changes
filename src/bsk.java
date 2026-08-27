@@ -1,18 +1,7 @@
-public class bsk extends bsj {
-   private final cdc h;
+import java.util.EnumSet;
 
-   public bsk(cdc $$0) {
-      super($$0, cdu.class, 8.0F);
-      this.h = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      if (this.h.gg()) {
-         this.c = this.h.gf();
-         return true;
-      } else {
-         return false;
-      }
+public abstract class bsk extends bsg {
+   public bsk() {
+      this.a(EnumSet.of(bsg.a.a, bsg.a.c));
    }
 }

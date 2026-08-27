@@ -1,69 +1,28 @@
-public class cie extends cgm {
-   private static final int k = 27;
-   private final biq l;
-
-   public cie(int $$0, cdt $$1) {
-      this($$0, $$1, new bje(27));
+public abstract class cie<C extends biu> extends cgr {
+   public cie(chy<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public cie(int $$0, cdt $$1, biq $$2) {
-      super(cht.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cif($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cih($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cih($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   public void a(boolean $$0, cov<?> $$1, amj $$2) {
+      new aga<>(this).a($$2, (cov<? extends cot<C>>)$$1, $$0);
    }
+
+   public abstract void a(ced var1);
 
    @Override
-   public boolean a(cdu $$0) {
-      return this.l.a($$0);
-   }
+   public abstract void l();
 
-   @Override
-   public clj a(cdu $$0, int $$1) {
-      clj $$2 = clj.b;
-      cih $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.g()) {
-         clj $$4 = $$3.f();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return clj.b;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return clj.b;
-         }
+   public abstract boolean a(cov<? extends cot<C>> var1);
 
-         if ($$4.b()) {
-            $$3.e(clj.b);
-         } else {
-            $$3.b();
-         }
-      }
+   public abstract int m();
 
-      return $$2;
-   }
+   public abstract int n();
 
-   @Override
-   public void b(cdu $$0) {
-      super.b($$0);
-      this.l.c($$0);
-   }
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cif t();
+
+   public abstract boolean e(int var1);
 }

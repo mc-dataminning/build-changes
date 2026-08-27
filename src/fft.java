@@ -1,274 +1,102 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.function.Consumer;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fft {
-   private static final ur a = ur.c("selectWorld.newWorld");
-   private final List<Consumer<fft>> b = new ArrayList<>();
-   private String c = a.getString();
-   private fft.a d = fft.a.a;
-   private biu e = biu.c;
+public class fft extends faz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<agl<csf>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(csf.h, -13408734);
+      $$0.put(csf.i, -10075085);
+      $$0.put(csf.j, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bip k;
+
    @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private ffs l;
-   private fft.b m;
-   private final List<fft.b> n = new ArrayList<>();
-   private final List<fft.b> o = new ArrayList<>();
-   private crw p = new crw();
-
-   public fft(Path $$0, ffs $$1, Optional<agh<dww>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new fft.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
-   }
-
-   public void a(Consumer<fft> $$0) {
-      this.b.add($$0);
-   }
-
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
-      }
-
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
-      }
-
-      for (Consumer<fft> $$2 : this.b) {
-         $$2.accept(this);
-      }
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
-
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
+   public static fft a(eti $$0, BooleanConsumer $$1, DataFixer $$2, ees.c $$3, boolean $$4) {
       try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+         ffz $$5 = $$0.w();
+         aow $$6 = aoz.a($$3);
+
+         fft var10;
+         try (ahi $$7 = $$5.a($$3.f(), false, $$6)) {
+            eey $$8 = $$7.d();
+            it.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new fft($$1, $$2, $$3, $$8.L(), $$4, $$9.d(kd.aK));
          }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
       }
    }
 
-   public String b() {
-      return this.c;
+   private fft(BooleanConsumer $$0, DataFixer $$1, ees.c $$2, csj $$3, boolean $$4, is<dkx> $$5) {
+      super(uv.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.k = new bip($$2, $$1, $$5, $$4);
    }
 
-   public String c() {
-      return this.k;
+   @Override
+   protected void aQ_() {
+      super.aQ_();
+      this.d(eve.a(uu.e, $$0 -> {
+         this.k.a();
+         this.c.accept(false);
+      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
    }
 
-   public void a(fft.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public fft.a d() {
-      return this.l() ? fft.a.d : this.d;
-   }
-
-   public void a(biu $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public biu e() {
-      return this.f() ? biu.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == fft.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == fft.a.c : this.f;
+   @Override
+   public void d() {
+      if (this.k.b()) {
+         this.c.accept(true);
       }
    }
 
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dnp.a(this.h())));
-      this.a();
+   @Override
+   public void aG_() {
+      this.c.accept(false);
    }
 
-   public String h() {
-      return this.g;
+   @Override
+   public void aH_() {
+      this.k.a();
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
+   @Override
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      int $$4 = this.g / 2 - 150;
+      int $$5 = this.g / 2 + 150;
+      int $$6 = this.h / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
+      if (this.k.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.i, uv.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
+         $$0.b(this.i, uv.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.i, uv.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
 
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
+         for (agl<csf> $$9 : this.k.c()) {
+            int $$10 = atq.d(this.k.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(ffs $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public ffs k() {
-      return this.l;
-   }
-
-   public void a(ffs.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(cst $$0) {
-      cst $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new ffs(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.d().c();
-   }
-
-   public void a(fft.b $$0) {
-      this.m = $$0;
-      ib<dww> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public fft.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public ffp n() {
-      ib<dww> $$0 = this.m().c();
-      return $$0 != null ? ffp.a.get($$0.e()) : null;
-   }
-
-   public List<fft.b> o() {
-      return this.n;
-   }
-
-   public List<fft.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      io<dww> $$0 = this.k().a().d(jz.aH);
-      this.n.clear();
-      this.n.addAll(a($$0, arz.a).orElseGet(() -> $$0.h().map(fft.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, arz.b).orElse(this.n));
-      ib<dww> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(fft.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<ib<dww>> a(ffs $$0, Optional<agh<dww>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(jz.aH).b($$1x));
-   }
-
-   private static Optional<List<fft.b>> a(io<dww> $$0, arv<dww> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(fft.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(crw $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public crw q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", crx.a),
-      b("hardcore", crx.a),
-      c("creative", crx.b),
-      d("spectator", crx.d);
-
-      public final crx e;
-      public final ur f;
-      private final ur g;
-
-      private a(String $$0, crx $$1) {
-         this.e = $$1;
-         this.f = ur.c("selectWorld.gameMode." + $$0);
-         this.g = ur.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public ur a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable ib<dww> a) {
-      private static final ur b = ur.c("generator.custom");
-
-      public ur a() {
-         return Optional.ofNullable(this.a).flatMap(ib::e).map($$0 -> ur.c($$0.a().f("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(ib::e).filter($$0 -> $$0.equals(dwx.d)).isPresent();
-      }
-
-      @Nullable
-      public ib<dww> c() {
-         return this.a;
+         int $$11 = this.k.f() + this.k.g();
+         uv $$12 = uv.a("optimizeWorld.progress.counter", $$11, this.k.e());
+         uv $$13 = uv.a("optimizeWorld.progress.percentage", atq.d(this.k.d() * 100.0F));
+         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }
    }
 }

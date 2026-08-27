@@ -1,136 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fqj {
-   private static final Object2ObjectMap<agi, fqj> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fqj.c $$1 = new fqj.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dkp.e, $$1);
-      $$0.put(dkp.f, new fqj.b());
-      $$0.put(dkp.g, new fqj.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fqj.d e;
-   private final boolean f;
-   private final boolean g;
+public class fqj {
+   private static final fqj a = new fqj("") {
+      @Override
+      public void a(eti $$0) {
+      }
 
-   public fqj(float $$0, boolean $$1, fqj.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public static fqj a(dkr $$0) {
-      return (fqj)a.get($$0.r());
-   }
-
+      @Override
+      public void a(fqj.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = atm.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - atm.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   private fqj.b e;
+
+   fqj(String $$0) {
+      this.d = eti.N().p.toPath().resolve($$0);
+   }
+
+   public static fqj a(@Nullable String $$0) {
+      return $$0 == null ? a : new fqj($$0);
+   }
+
+   public void a(fqj.c $$0, String $$1, String $$2) {
+      this.e = new fqj.b($$0, $$1, $$2);
+   }
+
+   public void a(eti $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fqj.a $$2 = new fqj.a(this.e, Instant.now(), $$0.q.l());
+            Codec.list(fqj.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         return null;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   public float a() {
-      return this.c;
+   static record a(fqj.b b, Instant c, csc d) {
+      public static final Codec<fqj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fqj.b.a.forGetter(fqj.a::a), asy.m.fieldOf("lastPlayedTime").forGetter(fqj.a::b), csc.f.fieldOf("gamemode").forGetter(fqj.a::c))
+               .apply($$0, fqj.a::new)
+      );
+
+      public fqj.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public csc c() {
+         return this.d;
+      }
    }
 
-   public boolean b() {
-      return this.d;
+   static record b(fqj.c b, String c, String d) {
+      public static final MapCodec<fqj.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fqj.c.d.fieldOf("type").forGetter(fqj.b::a), asy.o.fieldOf("id").forGetter(fqj.b::b), Codec.STRING.fieldOf("name").forGetter(fqj.b::c)
+               )
+               .apply($$0, fqj.b::new)
+      );
+
+      public fqj.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
    }
 
-   public abstract eju a(eju var1, float var2);
+   public static enum c implements auk {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
 
-   public abstract boolean a(int var1, int var2);
+      static final Codec<fqj.c> d = auk.a(fqj.c::values);
+      private final String e;
 
-   public fqj.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fqj {
-      public a() {
-         super(Float.NaN, false, fqj.d.c, true, false);
+      private c(String $$0) {
+         this.e = $$0;
       }
 
       @Override
-      public eju a(eju $$0, float $$1) {
-         return $$0.a(0.15F);
+      public String c() {
+         return this.e;
       }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fqj {
-      public b() {
-         super(Float.NaN, true, fqj.d.a, false, true);
-      }
-
-      @Override
-      public eju a(eju $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fqj {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fqj.d.b, false, false);
-      }
-
-      @Override
-      public eju a(eju $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

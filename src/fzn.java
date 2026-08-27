@@ -1,13 +1,24 @@
-public class fzn<T extends caw> extends gaf<T, fhl<T>> {
-   private static final agi a = new agi("textures/entity/zombie/drowned_outer_layer.png");
-   private final fhl<T> b;
+public class fzn extends fzv<caz, fho<caz>> {
+   private static final agm a = new agm("textures/entity/creeper/creeper_armor.png");
+   private final fho<caz> b;
 
-   public fzn(fxs<T, fhl<T>> $$0, fkk $$1) {
+   public fzn(fxx<caz, fho<caz>> $$0, fkp $$1) {
       super($$0);
-      this.b = new fhl<>($$1.a(fkn.O));
+      this.b = new fho<>($$1.a(fks.C));
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected agm a() {
+      return a;
+   }
+
+   @Override
+   protected fhu<caz> b() {
+      return this.b;
    }
 }

@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class ej extends fb<dmr.a> {
-   private static final Codec<dmr.a> a = aug.a(ej::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class ej extends fb<dmw.a> {
+   private static final Codec<dmw.a> a = auk.a(ej::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static dmr.a[] b() {
-      return Arrays.stream(dmr.a.values()).filter(dmr.a::d).toArray(dmr.a[]::new);
+   private static dmw.a[] b() {
+      return Arrays.stream(dmw.a.values()).filter(dmw.a::d).toArray(dmw.a[]::new);
    }
 
    private ej() {
@@ -18,8 +18,8 @@ public class ej extends fb<dmr.a> {
       return new ej();
    }
 
-   public static dmr.a a(CommandContext<du> $$0, String $$1) {
-      return (dmr.a)$$0.getArgument($$1, dmr.a.class);
+   public static dmw.a a(CommandContext<du> $$0, String $$1) {
+      return (dmw.a)$$0.getArgument($$1, dmw.a.class);
    }
 
    @Override

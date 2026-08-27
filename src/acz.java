@@ -1,32 +1,14 @@
-public class acz implements wk<acl> {
-   private final int a;
-   private final int b;
-
-   public acz(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(acl $$0) {
-      $$0.a(this);
-   }
-
-   public acz(tu $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+public record acz(float a) implements wo<acp> {
+   public acz(ty $$0) {
+      this($$0.readFloat());
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   public void a(acp $$0) {
+      $$0.a(this);
    }
 }

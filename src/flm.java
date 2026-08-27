@@ -1,162 +1,66 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class flm implements dy {
-   private final flk a;
-   private final etd b;
-   private int c = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
+public class flm extends fll implements uk, ya {
+   private static final Logger g = LogUtils.getLogger();
+   private final GameProfile h;
+   private it.b i;
+   private cgi j;
 
-   public flm(flk $$0, etd $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public flm(eti $$0, tw $$1, fls $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.i = $$2.c();
+      this.j = $$2.d();
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
+   public boolean c() {
+      return this.b.k();
+   }
 
-      for (fls $$1 : this.a.o()) {
-         $$0.add($$1.a().getName());
+   @Override
+   protected it.b f() {
+      return this.i;
+   }
+
+   @Override
+   protected void a(xh $$0) {
+      this.b($$0);
+   }
+
+   private void b(xh $$0) {
+      g.warn("Unknown custom packet payload: {}", $$0.a());
+   }
+
+   @Override
+   public void a(yc $$0) {
+      wq.a($$0, this, this.a);
+      it.b $$1 = flq.a().a(flq.b, $$0.a()).a();
+      if (!this.b.g()) {
+         $$1.b().forEach($$0x -> $$0x.b().m());
       }
 
-      return $$0;
+      this.i = $$1;
    }
 
    @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
-      } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
-      }
+   public void a(yd $$0) {
+      this.j = cgk.e.a($$0.a());
    }
 
    @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == ejs.a.c ? Collections.singleton(((ejr)this.b.v).a().cx()) : Collections.emptyList());
+   public void a(yb $$0) {
+      this.b.a();
+      wq.a($$0, this, this.a);
+      this.b.a(new flp(this.a, this.b, new fls(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
+      this.b.b();
+      this.b.a(new yf());
    }
 
    @Override
-   public Collection<String> r() {
-      return this.a.t().J().f();
-   }
-
-   @Override
-   public Stream<agi> s() {
-      return this.b.ah().b().stream();
-   }
-
-   @Override
-   public Stream<agi> t() {
-      return this.a.l().d();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      fpw $$1 = this.b.s;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(agh<? extends io<?>> $$0, dy.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new acx($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<dy.b> B() {
-      ejs $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == ejs.a.b) {
-         ht $$1 = ((ejq)$$0).a();
-         return Collections.singleton(new dy.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return dy.super.B();
-      }
-   }
-
-   @Override
-   public Collection<dy.b> C() {
-      ejs $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == ejs.a.b) {
-         eju $$1 = $$0.e();
-         return Collections.singleton(new dy.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return dy.super.C();
-      }
-   }
-
-   @Override
-   public Set<agh<csa>> u() {
-      return this.a.w();
-   }
-
-   @Override
-   public ip v() {
-      return this.a.f();
-   }
-
-   @Override
-   public cgd w() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(zb.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
-      }
+   public void e() {
+      this.g();
    }
 }

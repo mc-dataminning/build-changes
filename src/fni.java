@@ -1,45 +1,59 @@
-public class fni extends fpj {
-   private final fpe a;
+public class fni extends fpo {
+   private final fpj a;
 
-   fni(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+   protected fni(
+      flo $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      fpj $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
+   }
+
+   @Override
+   public fos b() {
+      return fos.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public fom b() {
-      return fom.b;
-   }
-
-   public static class a implements fol<jv> {
-      private final fpe a;
-
-      public a(fpe $$0) {
-         this.a = $$0;
-      }
-
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fni($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+      super.a();
+      this.b(this.a);
    }
 }

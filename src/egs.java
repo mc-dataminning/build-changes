@@ -1,69 +1,83 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class egs extends egj {
-   public static final Codec<egs> a = RecordCodecBuilder.create(
+public class egs extends ego {
+   public static final int a = 0;
+   public static final Codec<egs> b = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  agi.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  asu.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  jy.l.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(eix.a.fieldOf("count").forGetter($$0x -> $$0x.c), asy.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
             .apply($$0, egs::new)
    );
-   private final agi b;
-   private final long c;
-   private final ib<dff<?>> d;
+   private final eiw c;
+   private final int d;
 
-   private egs(List<ehw> $$0, agi $$1, long $$2, ib<dff<?>> $$3) {
+   egs(List<eib> $$0, eiw $$1, int $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public egl b() {
-      return egm.s;
+   public egq b() {
+      return egr.i;
    }
 
    @Override
-   public clj a(clj $$0, eex $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         rz $$2 = cjc.a($$0);
-         if ($$2 == null) {
-            $$2 = new rz();
+   public Set<ehk<?>> a() {
+      return Sets.union(ImmutableSet.of(ehn.d), this.c.a());
+   }
+
+   private boolean c() {
+      return this.d > 0;
+   }
+
+   @Override
+   public clo a(clo $$0, efc $$1) {
+      bkv $$2 = $$1.c(ehn.d);
+      if ($$2 instanceof bll) {
+         int $$3 = cqb.h((bll)$$2);
+         if ($$3 == 0) {
+            return $$0;
          }
 
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
+         float $$4 = (float)$$3 * this.c.b($$1);
+         $$0.g(Math.round($$4));
+         if (this.c() && $$0.L() > this.d) {
+            $$0.f(this.d);
          }
-
-         cjc.a($$0, this.d.a(), $$2);
-         return $$0;
       }
+
+      return $$0;
    }
 
-   @Override
-   public void a(efg $$0) {
-      super.a($$0);
-      eez<eff> $$1 = new eez<>(efc.c, this.b);
-      if ($$0.b().getElementOptional($$1).isEmpty()) {
-         $$0.a("Missing loot table used for container: " + this.b);
+   public static egs.a a(eiw $$0) {
+      return new egs.a($$0);
+   }
+
+   public static class a extends ego.a<egs.a> {
+      private final eiw a;
+      private int b = 0;
+
+      public a(eiw $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static egj.a<?> a(dff<?> $$0, agi $$1) {
-      return a($$2 -> new egs($$2, $$1, 0L, $$0.a()));
-   }
+      protected egs.a a() {
+         return this;
+      }
 
-   public static egj.a<?> a(dff<?> $$0, agi $$1, long $$2) {
-      return a($$3 -> new egs($$3, $$1, $$2, $$0.a()));
+      public egs.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      @Override
+      public egp b() {
+         return new egs(this.g(), this.a, this.b);
+      }
    }
 }

@@ -1,29 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dwh extends dwo {
-   public static final Codec<dwh> a = RecordCodecBuilder.create($$0 -> $$0.group(dmr.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dwh::new));
-   private final dmr.a c;
+public enum dwh implements auk {
+   a(ib.b, 1, "ceiling"),
+   b(ib.a, -1, "floor");
 
-   private dwh(dmr.a $$0) {
-      this.c = $$0;
+   public static final Codec<dwh> c = auk.a(dwh::values);
+   private final ib d;
+   private final int e;
+   private final String f;
+
+   private dwh(ib $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dwh a(dmr.a $$0) {
-      return new dwh($$0);
+   public ib a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new ht($$3, $$5, $$4)) : Stream.of();
-   }
-
-   @Override
-   public dwp<?> b() {
-      return dwp.k;
+   public String c() {
+      return this.f;
    }
 }

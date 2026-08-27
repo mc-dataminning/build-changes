@@ -1,69 +1,126 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record elg<T>(T d, ht e, long f, elk g, long h) {
-   public static final Comparator<elg<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public class elg<T> implements elm<T>, elo<T> {
+   private final Queue<ell<T>> a = new PriorityQueue<>(ell.a);
+   @Nullable
+   private List<elk<T>> b;
+   private final Set<ell<?>> c = new ObjectOpenCustomHashSet(ell.c);
+   @Nullable
+   private BiConsumer<elg<T>, ell<T>> d;
+
+   public elg() {
+   }
+
+   public elg(List<elk<T>> $$0) {
+      this.b = $$0;
+
+      for (elk<T> $$1 : $$0) {
+         this.c.add(ell.a($$1.a(), $$1.b()));
       }
-   };
-   public static final Comparator<elg<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<elg<?>> c = new Strategy<elg<?>>() {
-      public int a(elg<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   }
+
+   public void a(@Nullable BiConsumer<elg<T>, ell<T>> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public ell<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public ell<T> c() {
+      ell<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      public boolean a(@Nullable elg<?> $$0, @Nullable elg<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+      return $$0;
+   }
+
+   @Override
+   public void a(ell<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(ell<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(hx $$0, T $$1) {
+      return this.c.contains(ell.a($$1, $$0));
+   }
+
+   public void a(Predicate<ell<T>> $$0) {
+      Iterator<ell<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         ell<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
-   };
-
-   public elg(T $$0, ht $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, elk.d, $$3);
    }
 
-   public elg(T d, ht e, long f, elk g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public Stream<ell<T>> d() {
+      return this.a.stream();
    }
 
-   public static <T> elg<T> a(T $$0, ht $$1) {
-      return new elg<>($$0, $$1, 0L, elk.d, 0L);
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
    }
 
-   public T a() {
-      return this.d;
+   public sj a(long $$0, Function<T, String> $$1) {
+      sj $$2 = new sj();
+      if (this.b != null) {
+         for (elk<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
+      }
+
+      for (ell<T> $$4 : this.a) {
+         $$2.add(elk.a($$4, $$1, $$0));
+      }
+
+      return $$2;
    }
 
-   public ht b() {
-      return this.e;
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (elk<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
    }
 
-   public long c() {
-      return this.f;
-   }
-
-   public elk d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   public static <T> elg<T> a(sj $$0, Function<String, Optional<T>> $$1, crm $$2) {
+      Builder<elk<T>> $$3 = ImmutableList.builder();
+      elk.a($$0, $$1, $$2, $$3::add);
+      return new elg<>($$3.build());
    }
 }

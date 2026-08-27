@@ -1,76 +1,165 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class dvd {
-   public static final Codec<dvd> c = jy.Y.q().dispatch(dvd::a, dve::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends dvd> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
+public class dvd extends dvi {
+   public static final Codec<dvd> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dvd::new));
+   private static final double b = 0.618;
+   private static final double h = 1.382;
+   private static final double i = 0.381;
+   private static final double j = 0.328;
 
    public dvd(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      super($$0, $$1, $$2);
    }
 
-   protected abstract dve<?> a();
-
-   public abstract List<dtl.a> a(csg var1, BiConsumer<ht, dhi> var2, ats var3, int var4, ht var5, dsv var6);
-
-   public int a(ats $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   @Override
+   protected dvj<?> a() {
+      return dvj.f;
    }
 
-   private static boolean c(csg $$0, ht $$1) {
-      return $$0.a($$1, $$0x -> dpv.b($$0x) && !$$0x.a(cvc.i) && !$$0x.a(cvc.fl));
-   }
+   @Override
+   public List<dtq.a> a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, int $$3, hx $$4, dta $$5) {
+      int $$6 = 5;
+      int $$7 = $$3 + 2;
+      int $$8 = atq.a((double)$$7 * 0.618);
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      double $$9 = 1.0;
+      int $$10 = Math.min(1, atq.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
+      int $$11 = $$4.v() + $$8;
+      int $$12 = $$7 - 5;
+      List<dvd.a> $$13 = Lists.newArrayList();
+      $$13.add(new dvd.a($$4.b($$12), $$11));
 
-   protected static void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, dsv $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (; $$12 >= 0; $$12--) {
+         float $$14 = b($$7, $$12);
+         if (!($$14 < 0.0F)) {
+            for (int $$15 = 0; $$15 < $$10; $$15++) {
+               double $$16 = 1.0;
+               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
+               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
+               double $$19 = $$17 * Math.sin($$18) + 0.5;
+               double $$20 = $$17 * Math.cos($$18) + 0.5;
+               hx $$21 = $$4.b(atq.a($$19), $$12 - 1, atq.a($$20));
+               hx $$22 = $$21.b(5);
+               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
+                  int $$23 = $$4.u() - $$21.u();
+                  int $$24 = $$4.w() - $$21.w();
+                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
+                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
+                  hx $$27 = new hx($$4.u(), $$26, $$4.w());
+                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
+                     $$13.add(new dvd.a($$21, $$27.v()));
+                  }
+               }
+            }
+         }
       }
+
+      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
+      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
+      List<dtq.a> $$28 = Lists.newArrayList();
+
+      for (dvd.a $$29 : $$13) {
+         if (this.a($$7, $$29.a() - $$4.v())) {
+            $$28.add($$29.a);
+         }
+      }
+
+      return $$28;
    }
 
-   protected boolean b(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, dsv $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, dsv $$4, Function<dhi, dhi> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+   private boolean a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, hx $$3, hx $$4, boolean $$5, dta $$6) {
+      if (!$$5 && Objects.equals($$3, $$4)) {
          return true;
       } else {
-         return false;
+         hx $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
+         int $$8 = this.a($$7);
+         float $$9 = (float)$$7.u() / (float)$$8;
+         float $$10 = (float)$$7.v() / (float)$$8;
+         float $$11 = (float)$$7.w() / (float)$$8;
+
+         for (int $$12 = 0; $$12 <= $$8; $$12++) {
+            hx $$13 = $$3.b(atq.d(0.5F + (float)$$12 * $$9), atq.d(0.5F + (float)$$12 * $$10), atq.d(0.5F + (float)$$12 * $$11));
+            if ($$5) {
+               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(dbq.i, this.a($$3, $$13)));
+            } else if (!this.b($$0, $$13)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   protected void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht.a $$3, dsv $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+   private int a(hx $$0) {
+      int $$1 = atq.a($$0.u());
+      int $$2 = atq.a($$0.v());
+      int $$3 = atq.a($$0.w());
+      return Math.max($$1, Math.max($$2, $$3));
+   }
+
+   private ib.a a(hx $$0, hx $$1) {
+      ib.a $$2 = ib.a.b;
+      int $$3 = Math.abs($$1.u() - $$0.u());
+      int $$4 = Math.abs($$1.w() - $$0.w());
+      int $$5 = Math.max($$3, $$4);
+      if ($$5 > 0) {
+         if ($$3 == $$5) {
+            $$2 = ib.a.a;
+         } else {
+            $$2 = ib.a.c;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean a(int $$0, int $$1) {
+      return (double)$$1 >= (double)$$0 * 0.2;
+   }
+
+   private void a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, int $$3, hx $$4, List<dvd.a> $$5, dta $$6) {
+      for (dvd.a $$7 : $$5) {
+         int $$8 = $$7.a();
+         hx $$9 = new hx($$4.u(), $$8, $$4.w());
+         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
+            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
+         }
       }
    }
 
-   protected boolean a(csg $$0, ht $$1) {
-      return drh.c($$0, $$1);
+   private static float b(int $$0, int $$1) {
+      if ((float)$$1 < (float)$$0 * 0.3F) {
+         return -1.0F;
+      } else {
+         float $$2 = (float)$$0 / 2.0F;
+         float $$3 = $$2 - (float)$$1;
+         float $$4 = atq.c($$2 * $$2 - $$3 * $$3);
+         if ($$3 == 0.0F) {
+            $$4 = $$2;
+         } else if (Math.abs($$3) >= $$2) {
+            return 0.0F;
+         }
+
+         return $$4 * 0.5F;
+      }
    }
 
-   public boolean b(csg $$0, ht $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(arg.t));
+   static class a {
+      final dtq.a a;
+      private final int b;
+
+      public a(hx $$0, int $$1) {
+         this.a = new dtq.a($$0, 0, false);
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.b;
+      }
    }
 }

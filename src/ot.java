@@ -2,228 +2,170 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ot {
-   public static void a(ov<dyq> $$0) {
-      ic<ebf> $$1 = $$0.a(jz.aC);
-      ib<ebf> $$2 = $$1.b(pd.s);
-      ib<ebf> $$3 = $$1.b(pd.B);
-      ib<ebf> $$4 = $$1.b(pd.r);
-      ib<ebf> $$5 = $$1.b(pd.C);
-      ib<ebf> $$6 = $$1.b(pd.A);
-      ic<dyq> $$7 = $$0.a(jz.aE);
-      ib<dyq> $$8 = $$7.b(pc.a);
-      pc.a($$0, "bastion/treasure/bases", new dyq($$8, ImmutableList.of(Pair.of(dyo.b("bastion/treasure/bases/lava_basin", $$2), 1)), dyq.a.b));
-      pc.a($$0, "bastion/treasure/stairs", new dyq($$8, ImmutableList.of(Pair.of(dyo.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dyq.a.b));
-      pc.a(
+   public static void a(oz<dyv> $$0) {
+      ih<ebk> $$1 = $$0.a(kd.aC);
+      ig<ebk> $$2 = $$1.b(ph.v);
+      ig<ebk> $$3 = $$1.b(ph.u);
+      ih<dyv> $$4 = $$0.a(kd.aE);
+      ig<dyv> $$5 = $$4.b(pg.a);
+      pg.a(
          $$0,
-         "bastion/treasure/bases/centers",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/starting_pieces",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a($$0, "bastion/treasure/brains", new dyq($$8, ImmutableList.of(Pair.of(dyo.b("bastion/treasure/brains/center_brain", $$2), 1)), dyq.a.b));
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/walls",
-         new dyq(
-            $$8,
-            ImmutableList.of(Pair.of(dyo.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dyo.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "bastion/treasure/walls/outer",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/mirrored_starting_pieces",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a($$0, "bastion/hoglin_stable/wall_bases", new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), dyv.a.b));
+      pg.a(
          $$0,
-         "bastion/treasure/walls/bottom",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/walls",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(dyt.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/walls/mid",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/stairs",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
+               new Pair[]{
+                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
+                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
+                  Pair.of(dyt.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
+               }
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/walls/top",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/small_stables/inner",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/connectors",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/small_stables/outer",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a($$0, "bastion/treasure/entrances", new dyq($$8, ImmutableList.of(Pair.of(dyo.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dyq.a.b));
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/ramparts",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/large_stables/inner",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(dyo.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(dyo.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/corners/bottom",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/large_stables/outer",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dyo.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/corners/edges",
-         new dyq(
-            $$8,
+         "bastion/hoglin_stable/posts",
+         new dyv(
+            $$5,
+            ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(dyt.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/hoglin_stable/ramparts",
+         new dyv(
+            $$5,
             ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(dyo.b("bastion/treasure/corners/edges/top", $$3), 1)
+               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
+               Pair.of(dyt.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/corners/middle",
-         new dyq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dyo.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            dyq.a.b
-         )
+         "bastion/hoglin_stable/rampart_plates",
+         new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), dyv.a.b)
       );
-      pc.a(
+      pg.a(
          $$0,
-         "bastion/treasure/corners/top",
-         new dyq(
-            $$8,
-            ImmutableList.of(Pair.of(dyo.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dyo.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new dyq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new dyq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(dyo.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new dyq(
-            $$8,
-            ImmutableList.of(Pair.of(dyo.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dyo.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new dyq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dyo.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(dyo.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(dyo.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            dyq.a.b
-         )
+         "bastion/hoglin_stable/connectors",
+         new dyv($$5, ImmutableList.of(Pair.of(dyt.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), dyv.a.b)
       );
    }
 }

@@ -1,18 +1,19 @@
-import java.util.concurrent.CompletableFuture;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public interface apd {
-   CompletableFuture<?> a();
-
-   float b();
-
-   default boolean c() {
-      return this.a().isDone();
+@FunctionalInterface
+public interface apd<T> {
+   static apd<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   default void d() {
-      CompletableFuture<?> $$0 = this.a();
-      if ($$0.isCompletedExceptionally()) {
-         $$0.join();
-      }
+   static apd<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
+
+   T get() throws IOException;
 }

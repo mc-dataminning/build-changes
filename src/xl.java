@@ -1,18 +1,20 @@
-public record xl(long b, ht c) implements xd {
-   public static final agi a = new agi("debug/neighbors_update");
+public record xl(hx b, int c, String d, int e) implements xh {
+   public static final agm a = new agm("debug/game_test_add_marker");
 
-   public xl(tu $$0) {
-      this($$0.o(), $$0.e());
+   public xl(ty $$0) {
+      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public agi a() {
+   public agm a() {
       return a;
    }
 }

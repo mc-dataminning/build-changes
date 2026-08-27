@@ -1,43 +1,35 @@
-public class fjd<T extends bkq> extends fhy<T> {
-   private static final String a = "body_front";
-   private static final String b = "body_back";
-   private final fko f;
-   private final fko g;
+public class fjd<T extends bkv> extends fid<T> {
+   private final fkt a;
+   private final fkt b;
+   private final fkt f;
 
-   public fjd(fko $$0) {
-      this.f = $$0;
-      this.g = $$0.b("body_back");
+   public fjd(fkt $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      int $$2 = 20;
-      fkx $$3 = $$1.a("body_front", fkt.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fkq.a(0.0F, 20.0F, 0.0F));
-      fkx $$4 = $$1.a("body_back", fkt.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fkq.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", fkt.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fkq.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", fkt.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fkq.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", fkt.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fkq.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", fkt.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fkq.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", fkt.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fkt.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return fku.a($$0, 32, 32);
+   public static fkz b() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fky.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fkv.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fky.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fkv.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fky.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fkv.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fky.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fkv.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fky.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fkv.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fky.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fkv.a(1.5F, 22.0F, -1.5F));
+      return fkz.a($$0, 32, 32);
    }
 
    @Override
-   public fko a() {
-      return this.f;
+   public fkt a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.aZ()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
-
-      this.g.f = -$$6 * 0.25F * atm.a($$7 * 0.6F * $$3);
+      this.f.g = -0.2F + 0.4F * atq.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * atq.a($$3 * 0.2F);
    }
 }

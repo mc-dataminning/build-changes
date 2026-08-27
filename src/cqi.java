@@ -1,20 +1,25 @@
-public class cqi extends cpu {
-   public cqi(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.m, $$1);
+public class cqi extends cpz {
+   protected cqi(cpz.a $$0, cqa $$1, bla... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
       return 3;
+   }
+
+   @Override
+   public boolean a(cpz $$0) {
+      return super.a($$0) && $$0 != cqd.v;
    }
 }

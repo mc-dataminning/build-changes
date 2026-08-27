@@ -1,19 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+public class coe extends cok {
+   public coe(coh $$0) {
+      super($$0);
+   }
 
-public class coe {
-   private static final Codec<cle> c = asu.a(
-      jy.i.q(),
-      (Function<cle, DataResult<cle>>)($$0 -> $$0 == clm.a ? DataResult.error(() -> "Crafting result must not be minecraft:air") : DataResult.success($$0))
-   );
-   public static final Codec<clj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(c.fieldOf("item").forGetter(clj::d), asu.a(asu.j, "count", Integer.valueOf(1)).forGetter(clj::L)).apply($$0, clj::new)
-   );
-   static final Codec<clj> b = asu.<cle>a(
-         jy.i.q(),
-         (Function<cle, DataResult<cle>>)($$0 -> $$0 == clm.a ? DataResult.error(() -> "Empty ingredient not allowed here") : DataResult.success($$0))
-      )
-      .xmap(clj::new, clj::d);
+   public boolean a(chh $$0, csf $$1) {
+      int $$2 = 0;
+      clo $$3 = clo.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clo $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(clr.tT)) {
+               if (!$$3.b()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(clr.tS)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.b() && $$3.u() && $$2 > 0;
+   }
+
+   public clo a(chh $$0, it $$1) {
+      int $$2 = 0;
+      clo $$3 = clo.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clo $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(clr.tT)) {
+               if (!$$3.b()) {
+                  return clo.b;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(clr.tS)) {
+                  return clo.b;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      if (!$$3.b() && $$3.u() && $$2 >= 1 && cnk.d($$3) < 2) {
+         clo $$6 = new clo(clr.tT, $$2);
+         sd $$7 = $$3.v().h();
+         $$7.a("generation", cnk.d($$3) + 1);
+         $$6.c($$7);
+         return $$6;
+      } else {
+         return clo.b;
+      }
+   }
+
+   public ip<clo> a(chh $$0) {
+      ip<clo> $$1 = ip.a($$0.b(), clo.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         clo $$3 = $$0.a($$2);
+         if ($$3.d().t()) {
+            $$1.set($$2, new clo($$3.d().s()));
+         } else if ($$3.d() instanceof cnk) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cox<?> as_() {
+      return cox.d;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
+   }
 }

@@ -1,176 +1,273 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class amh extends ech implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger d = LogUtils.getLogger();
-   private final bhq<Runnable> e;
-   private final ObjectList<Pair<amh.a, Runnable>> f = new ObjectArrayList();
-   private final alo g;
-   private final bhp<alq.a<Runnable>> h;
-   private final int i = 1000;
-   private final AtomicBoolean j = new AtomicBoolean();
+public class amh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 1;
+   private static final double d = 7.6293945E-6F;
+   public static final int a = 60;
+   private static final int e = 400;
+   private final ami f;
+   private final bkv g;
+   private final int h;
+   private final boolean i;
+   private final Consumer<wo<?>> j;
+   private final aem k = new aem();
+   private int l;
+   private int m;
+   private int n;
+   private ejz o = ejz.b;
+   private int p;
+   private int q;
+   private List<bkv> r = Collections.emptyList();
+   private boolean s;
+   private boolean t;
+   @Nullable
+   private List<afv.b<?>> u;
 
-   public amh(djs $$0, alo $$1, boolean $$2, bhq<Runnable> $$3, bhp<alq.a<Runnable>> $$4) {
-      super($$0, true, $$2);
+   public amh(ami $$0, bkv $$1, int $$2, boolean $$3, Consumer<wo<?>> $$4) {
+      this.f = $$0;
+      this.j = $$4;
       this.g = $$1;
-      this.h = $$4;
-      this.e = $$3;
+      this.h = $$2;
+      this.i = $$3;
+      this.k.e($$1.dm());
+      this.l = atq.d($$1.dD() * 256.0F / 360.0F);
+      this.m = atq.d($$1.dF() * 256.0F / 360.0F);
+      this.n = atq.d($$1.cp() * 256.0F / 360.0F);
+      this.t = $$1.aC();
+      this.u = $$1.an().c();
    }
 
-   @Override
-   public void close() {
-   }
+   public void a() {
+      List<bkv> $$0 = this.g.cQ();
+      if (!$$0.equals(this.r)) {
+         this.j.accept(new abp(this.g));
+         a($$0, this.r).forEach($$0x -> {
+            if ($$0x instanceof amj $$1) {
+               $$1.c.a($$1.ds(), $$1.du(), $$1.dy(), $$1.dD(), $$1.dF());
+            }
+         });
+         this.r = $$0;
+      }
 
-   @Override
-   public int a() {
-      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
-   }
-
-   @Override
-   public void a(ht $$0) {
-      ht $$1 = $$0.i();
-      this.a(iu.a($$0.u()), iu.a($$0.w()), amh.a.a, ac.a(() -> super.a($$1), () -> "checkBlock " + $$1));
-   }
-
-   protected void a(crh $$0) {
-      this.a($$0.e, $$0.f, () -> 0, amh.a.a, ac.a(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(csj.b, iu.a($$0, $$1), null);
-            super.a(csj.a, iu.a($$0, $$1), null);
-         }
-
-         for (int $$2 = this.c.am(); $$2 < this.c.an(); $$2++) {
-            super.a(iu.a($$0, $$2), true);
-         }
-      }, () -> "updateChunkStatus " + $$0 + " true"));
-   }
-
-   @Override
-   public void a(iu $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, amh.a.a, ac.a(() -> super.a($$0, $$1), () -> "updateSectionStatus " + $$0 + " " + $$1));
-   }
-
-   @Override
-   public void b(crh $$0) {
-      this.a($$0.e, $$0.f, amh.a.a, ac.a(() -> super.b($$0), () -> "propagateLight " + $$0));
-   }
-
-   @Override
-   public void a(crh $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, amh.a.a, ac.a(() -> super.a($$0, $$1), () -> "enableLight " + $$0 + " " + $$1));
-   }
-
-   @Override
-   public void a(csj $$0, iu $$1, @Nullable djk $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, amh.a.a, ac.a(() -> super.a($$0, $$1, $$2), () -> "queueData " + $$1));
-   }
-
-   private void a(int $$0, int $$1, amh.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(crh.c($$0, $$1)), $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, IntSupplier $$2, amh.a $$3, Runnable $$4) {
-      this.h.a(alq.a(() -> {
-         this.f.add(Pair.of($$3, $$4));
-         if (this.f.size() >= 1000) {
-            this.f();
-         }
-      }, crh.c($$0, $$1), $$2));
-   }
-
-   @Override
-   public void b(crh $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, () -> 0, amh.a.a, ac.a(() -> super.b($$0, $$1), () -> "retainData " + $$0));
-   }
-
-   public CompletableFuture<dje> a(dje $$0, boolean $$1) {
-      crh $$2 = $$0.f();
-      this.a($$2.e, $$2.f, amh.a.a, ac.a(() -> {
-         djq[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.al(); $$3++) {
-            djq $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.c.g($$3);
-               super.a(iu.a($$2, $$5), false);
+      if (this.g instanceof cal $$1 && this.p % 10 == 0) {
+         clo $$2 = $$1.G();
+         if ($$2.d() instanceof clv) {
+            Integer $$3 = clv.d($$2);
+            eeh $$4 = clv.a($$3, this.f);
+            if ($$4 != null) {
+               for (amj $$5 : this.f.w()) {
+                  $$4.a($$5, $$2);
+                  wo<?> $$6 = $$4.a($$3, $$5);
+                  if ($$6 != null) {
+                     $$5.c.b($$6);
+                  }
+               }
             }
          }
-      }, () -> "initializeLight: " + $$2));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, amh.a.b, $$1x));
-   }
 
-   public CompletableFuture<dje> b(dje $$0, boolean $$1) {
-      crh $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.e, $$2.f, amh.a.a, ac.a(() -> {
-         if (!$$1) {
-            super.b($$2);
+         this.b();
+      }
+
+      if (this.p % this.h == 0 || this.g.au || this.g.an().a()) {
+         if (this.g.bO()) {
+            int $$7 = atq.d(this.g.dD() * 256.0F / 360.0F);
+            int $$8 = atq.d(this.g.dF() * 256.0F / 360.0F);
+            boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
+            if ($$9) {
+               this.j.accept(new zz.c(this.g.aj(), (byte)$$7, (byte)$$8, this.g.aC()));
+               this.l = $$7;
+               this.m = $$8;
+            }
+
+            this.k.e(this.g.dm());
+            this.b();
+            this.s = true;
+         } else {
+            this.q++;
+            int $$10 = atq.d(this.g.dD() * 256.0F / 360.0F);
+            int $$11 = atq.d(this.g.dF() * 256.0F / 360.0F);
+            ejz $$12 = this.g.dm();
+            boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
+            wo<?> $$14 = null;
+            boolean $$15 = $$13 || this.p % 60 == 0;
+            boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
+            boolean $$17 = false;
+            boolean $$18 = false;
+            if (this.p > 0 || this.g instanceof cef) {
+               long $$19 = this.k.a($$12);
+               long $$20 = this.k.b($$12);
+               long $$21 = this.k.c($$12);
+               boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
+               if ($$22 || this.q > 400 || this.s || this.t != this.g.aC()) {
+                  this.t = this.g.aC();
+                  this.q = 0;
+                  $$14 = new acf(this.g);
+                  $$17 = true;
+                  $$18 = true;
+               } else if ((!$$15 || !$$16) && !(this.g instanceof cef)) {
+                  if ($$15) {
+                     $$14 = new zz.a(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aC());
+                     $$17 = true;
+                  } else if ($$16) {
+                     $$14 = new zz.c(this.g.aj(), (byte)$$10, (byte)$$11, this.g.aC());
+                     $$18 = true;
+                  }
+               } else {
+                  $$14 = new zz.b(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aC());
+                  $$17 = true;
+                  $$18 = true;
+               }
+            }
+
+            if ((this.i || this.g.au || this.g instanceof bll && ((bll)this.g).fx()) && this.p > 0) {
+               ejz $$23 = this.g.dq();
+               double $$24 = $$23.g(this.o);
+               if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
+                  this.o = $$23;
+                  this.j.accept(new abk(this.g.aj(), this.o));
+               }
+            }
+
+            if ($$14 != null) {
+               this.j.accept($$14);
+            }
+
+            this.b();
+            if ($$17) {
+               this.k.e($$12);
+            }
+
+            if ($$18) {
+               this.l = $$10;
+               this.m = $$11;
+            }
+
+            this.s = false;
          }
-      }, () -> "lightChunk " + $$2 + " " + $$1));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         this.g.b($$2);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, amh.a.b, $$1x));
-   }
 
-   public void b() {
-      if ((!this.f.isEmpty() || super.K_()) && this.j.compareAndSet(false, true)) {
-         this.e.a(() -> {
-            this.f();
-            this.j.set(false);
-         });
+         int $$25 = atq.d(this.g.cp() * 256.0F / 360.0F);
+         if (Math.abs($$25 - this.n) >= 1) {
+            this.j.accept(new aas(this.g, (byte)$$25));
+            this.n = $$25;
+         }
+
+         this.g.au = false;
+      }
+
+      this.p++;
+      if (this.g.T) {
+         this.a(new abk(this.g));
+         this.g.T = false;
       }
    }
 
-   private void f() {
-      int $$0 = Math.min(this.f.size(), 1000);
-      ObjectListIterator<Pair<amh.a, Runnable>> $$1 = this.f.iterator();
+   private static Stream<bkv> a(List<bkv> $$0, List<bkv> $$1) {
+      return $$1.stream().filter($$1x -> !$$0.contains($$1x));
+   }
 
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<amh.a, Runnable> $$3 = (Pair<amh.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == amh.a.a) {
-            ((Runnable)$$3.getSecond()).run();
+   public void a(amj $$0) {
+      this.g.d($$0);
+      $$0.c.b(new aap(this.g.aj()));
+   }
+
+   public void b(amj $$0) {
+      List<wo<yh>> $$1 = new ArrayList<>();
+      this.a($$0, $$1::add);
+      $$0.c.b(new ys($$1));
+      this.g.c($$0);
+   }
+
+   public void a(amj $$0, Consumer<wo<yh>> $$1) {
+      if (this.g.dI()) {
+         b.warn("Fetching packet for removed entity {}", this.g);
+      }
+
+      wo<yh> $$2 = this.g.dk();
+      this.n = atq.d(this.g.cp() * 256.0F / 360.0F);
+      $$1.accept($$2);
+      if (this.u != null) {
+         $$1.accept(new abi(this.g.aj(), this.u));
+      }
+
+      boolean $$3 = this.i;
+      if (this.g instanceof bll) {
+         Collection<bmn> $$4 = ((bll)this.g).eS().b();
+         if (!$$4.isEmpty()) {
+            $$1.accept(new acj(this.g.aj(), $$4));
+         }
+
+         if (((bll)this.g).fx()) {
+            $$3 = true;
          }
       }
 
-      $$1.back($$2);
-      super.a();
+      this.o = this.g.dq();
+      if ($$3 && !(this.g instanceof bll)) {
+         $$1.accept(new abk(this.g.aj(), this.o));
+      }
 
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<amh.a, Runnable> $$4 = (Pair<amh.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == amh.a.b) {
-            ((Runnable)$$4.getSecond()).run();
+      if (this.g instanceof bll) {
+         List<Pair<bla, clo>> $$5 = Lists.newArrayList();
+
+         for (bla $$6 : bla.values()) {
+            clo $$7 = ((bll)this.g).c($$6);
+            if (!$$7.b()) {
+               $$5.add(Pair.of($$6, $$7.p()));
+            }
          }
 
-         $$1.remove();
+         if (!$$5.isEmpty()) {
+            $$1.accept(new abl(this.g.aj(), $$5));
+         }
+      }
+
+      if (!this.g.cQ().isEmpty()) {
+         $$1.accept(new abp(this.g));
+      }
+
+      if (this.g.bO()) {
+         $$1.accept(new abp(this.g.da()));
+      }
+
+      if (this.g instanceof bln $$8 && $$8.fT()) {
+         $$1.accept(new abj($$8, $$8.fU()));
       }
    }
 
-   public CompletableFuture<?> a(int $$0, int $$1) {
-      return CompletableFuture.runAsync(() -> {
-      }, $$2 -> this.a($$0, $$1, amh.a.b, $$2));
+   private void b() {
+      afv $$0 = this.g.an();
+      List<afv.b<?>> $$1 = $$0.b();
+      if ($$1 != null) {
+         this.u = $$0.c();
+         this.a(new abi(this.g.aj(), $$1));
+      }
+
+      if (this.g instanceof bll) {
+         Set<bmn> $$2 = ((bll)this.g).eS().a();
+         if (!$$2.isEmpty()) {
+            this.a(new acj(this.g.aj(), $$2));
+         }
+
+         $$2.clear();
+      }
    }
 
-   static enum a {
-      a,
-      b;
+   private void a(wo<?> $$0) {
+      this.j.accept($$0);
+      if (this.g instanceof amj) {
+         ((amj)this.g).c.b($$0);
+      }
    }
 }

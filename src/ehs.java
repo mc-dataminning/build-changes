@@ -1,36 +1,59 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ehs implements ehw {
-   private static final ehs b = new ehs();
-   public static final Codec<ehs> a = Codec.unit(b);
+public abstract class ehs implements eib {
+   protected final List<eib> c;
+   private final Predicate<efc> a;
 
-   private ehs() {
+   protected ehs(List<eib> $$0, Predicate<efc> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends ehs> Codec<T> a(Function<List<eib>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(eid.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends ehs> Codec<T> b(Function<List<eib>, T> $$0) {
+      return eid.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(efc $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public ehx b() {
-      return ehy.m;
-   }
+   public void a(efl $$0) {
+      eib.super.a($$0);
 
-   @Override
-   public Set<ehf<?>> a() {
-      return ImmutableSet.of(ehi.j);
-   }
-
-   public boolean a(eex $$0) {
-      Float $$1 = $$0.c(ehi.j);
-      if ($$1 != null) {
-         ats $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
       }
    }
 
-   public static ehw.a c() {
-      return () -> b;
+   public abstract static class a implements eib.a {
+      private final Builder<eib> a = ImmutableList.builder();
+
+      protected a(eib.a... $$0) {
+         for (eib.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
+
+      public void a(eib.a $$0) {
+         this.a.add($$0.build());
+      }
+
+      @Override
+      public eib build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract eib a(List<eib> var1);
    }
 }

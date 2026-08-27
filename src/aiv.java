@@ -1,28 +1,48 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class aiv {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.help.failed"));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).h()))))
-            .then(dv.a("targets", eg.b()).executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("help").executes($$1 -> {
+               Map<CommandNode<du>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (du)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((du)$$1.getSource()).a(() -> uv.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
+            .then(
+               dv.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<du> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (du)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<du>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (du)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((du)$$1.getSource()).a(() -> uv.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
+                  )
+            )
       );
-   }
-
-   private static int a(du $$0, Collection<? extends bkq> $$1) {
-      for (bkq $$2 : $$1) {
-         $$2.al();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> ur.a("commands.kill.success.single", $$1.iterator().next().P_()), true);
-      } else {
-         $$0.a(() -> ur.a("commands.kill.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
    }
 }

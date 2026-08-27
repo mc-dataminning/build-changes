@@ -1,81 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Collections;
+import java.util.Set;
 
-public class efa implements apb, efb {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final eez<eff> a = new eez<>(efc.c, eev.a);
-   private Map<eez<?>, ?> d = Map.of();
-   private Multimap<efc<?>, agi> e = ImmutableMultimap.of();
+public class efa {
+   private static final Set<agm> aI = Sets.newHashSet();
+   private static final Set<agm> aJ = Collections.unmodifiableSet(aI);
+   public static final agm a = new agm("empty");
+   public static final agm b = a("chests/spawn_bonus_chest");
+   public static final agm c = a("chests/end_city_treasure");
+   public static final agm d = a("chests/simple_dungeon");
+   public static final agm e = a("chests/village/village_weaponsmith");
+   public static final agm f = a("chests/village/village_toolsmith");
+   public static final agm g = a("chests/village/village_armorer");
+   public static final agm h = a("chests/village/village_cartographer");
+   public static final agm i = a("chests/village/village_mason");
+   public static final agm j = a("chests/village/village_shepherd");
+   public static final agm k = a("chests/village/village_butcher");
+   public static final agm l = a("chests/village/village_fletcher");
+   public static final agm m = a("chests/village/village_fisher");
+   public static final agm n = a("chests/village/village_tannery");
+   public static final agm o = a("chests/village/village_temple");
+   public static final agm p = a("chests/village/village_desert_house");
+   public static final agm q = a("chests/village/village_plains_house");
+   public static final agm r = a("chests/village/village_taiga_house");
+   public static final agm s = a("chests/village/village_snowy_house");
+   public static final agm t = a("chests/village/village_savanna_house");
+   public static final agm u = a("chests/abandoned_mineshaft");
+   public static final agm v = a("chests/nether_bridge");
+   public static final agm w = a("chests/stronghold_library");
+   public static final agm x = a("chests/stronghold_crossing");
+   public static final agm y = a("chests/stronghold_corridor");
+   public static final agm z = a("chests/desert_pyramid");
+   public static final agm A = a("chests/jungle_temple");
+   public static final agm B = a("chests/jungle_temple_dispenser");
+   public static final agm C = a("chests/igloo_chest");
+   public static final agm D = a("chests/woodland_mansion");
+   public static final agm E = a("chests/underwater_ruin_small");
+   public static final agm F = a("chests/underwater_ruin_big");
+   public static final agm G = a("chests/buried_treasure");
+   public static final agm H = a("chests/shipwreck_map");
+   public static final agm I = a("chests/shipwreck_supply");
+   public static final agm J = a("chests/shipwreck_treasure");
+   public static final agm K = a("chests/pillager_outpost");
+   public static final agm L = a("chests/bastion_treasure");
+   public static final agm M = a("chests/bastion_other");
+   public static final agm N = a("chests/bastion_bridge");
+   public static final agm O = a("chests/bastion_hoglin_stable");
+   public static final agm P = a("chests/ancient_city");
+   public static final agm Q = a("chests/ancient_city_ice_box");
+   public static final agm R = a("chests/ruined_portal");
+   public static final agm S = a("entities/sheep/white");
+   public static final agm T = a("entities/sheep/orange");
+   public static final agm U = a("entities/sheep/magenta");
+   public static final agm V = a("entities/sheep/light_blue");
+   public static final agm W = a("entities/sheep/yellow");
+   public static final agm X = a("entities/sheep/lime");
+   public static final agm Y = a("entities/sheep/pink");
+   public static final agm Z = a("entities/sheep/gray");
+   public static final agm aa = a("entities/sheep/light_gray");
+   public static final agm ab = a("entities/sheep/cyan");
+   public static final agm ac = a("entities/sheep/purple");
+   public static final agm ad = a("entities/sheep/blue");
+   public static final agm ae = a("entities/sheep/brown");
+   public static final agm af = a("entities/sheep/green");
+   public static final agm ag = a("entities/sheep/red");
+   public static final agm ah = a("entities/sheep/black");
+   public static final agm ai = a("gameplay/fishing");
+   public static final agm aj = a("gameplay/fishing/junk");
+   public static final agm ak = a("gameplay/fishing/treasure");
+   public static final agm al = a("gameplay/fishing/fish");
+   public static final agm am = a("gameplay/cat_morning_gift");
+   public static final agm an = a("gameplay/hero_of_the_village/armorer_gift");
+   public static final agm ao = a("gameplay/hero_of_the_village/butcher_gift");
+   public static final agm ap = a("gameplay/hero_of_the_village/cartographer_gift");
+   public static final agm aq = a("gameplay/hero_of_the_village/cleric_gift");
+   public static final agm ar = a("gameplay/hero_of_the_village/farmer_gift");
+   public static final agm as = a("gameplay/hero_of_the_village/fisherman_gift");
+   public static final agm at = a("gameplay/hero_of_the_village/fletcher_gift");
+   public static final agm au = a("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final agm av = a("gameplay/hero_of_the_village/librarian_gift");
+   public static final agm aw = a("gameplay/hero_of_the_village/mason_gift");
+   public static final agm ax = a("gameplay/hero_of_the_village/shepherd_gift");
+   public static final agm ay = a("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final agm az = a("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final agm aA = a("gameplay/sniffer_digging");
+   public static final agm aB = a("gameplay/piglin_bartering");
+   public static final agm aC = a("archaeology/desert_well");
+   public static final agm aD = a("archaeology/desert_pyramid");
+   public static final agm aE = a("archaeology/trail_ruins_common");
+   public static final agm aF = a("archaeology/trail_ruins_rare");
+   public static final agm aG = a("archaeology/ocean_ruin_warm");
+   public static final agm aH = a("archaeology/ocean_ruin_cold");
 
-   @Override
-   public final CompletableFuture<Void> a(apb.a $$0, aph $$1, bfo $$2, bfo $$3, Executor $$4, Executor $$5) {
-      Map<efc<?>, Map<agi, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = efc.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+   private static agm a(String $$0) {
+      return a(new agm($$0));
    }
 
-   private static <T> CompletableFuture<?> a(efc<T> $$0, aph $$1, Executor $$2, Map<efc<?>, Map<agi, ?>> $$3) {
-      Map<agi, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<agi, JsonElement> $$3x = new HashMap<>();
-         apl.a($$1, $$0.a(), c, $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
-   }
-
-   private void a(Map<efc<?>, Map<agi, ?>> $$0) {
-      Object $$1 = $$0.get(efc.c).remove(eev.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", eev.a);
+   private static agm a(agm $$0) {
+      if (aI.add($$0)) {
+         return $$0;
+      } else {
+         throw new IllegalArgumentException($$0 + " is already a registered built-in loot table");
       }
-
-      Builder<eez<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<efc<?>, agi> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new eez($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, eff.a);
-      final Map<eez<?>, ?> $$4 = $$2.build();
-      efg $$5 = new efg(ehh.n, new efb() {
-         @Nullable
-         @Override
-         public <T> T getElement(eez<T> $$0) {
-            return (T)$$4.get($$0);
-         }
-      });
-      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
-      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.d = $$4;
-      this.e = $$3.build();
    }
 
-   private static <T> void a(efg $$0, eez<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
-   }
-
-   @Nullable
-   @Override
-   public <T> T getElement(eez<T> $$0) {
-      return (T)this.d.get($$0);
-   }
-
-   public Collection<agi> a(efc<?> $$0) {
-      return this.e.get($$0);
+   public static Set<agm> a() {
+      return aJ;
    }
 }

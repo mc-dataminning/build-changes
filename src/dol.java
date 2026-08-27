@@ -1,25 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dol implements dny {
-   public static final Codec<dol> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.e), dhi.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dol::new)
-   );
-   private final iw e;
-   private final dhi f;
+class dol implements dod {
+   public static final Codec<dol> a = RecordCodecBuilder.create($$0 -> $$0.group(dod.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dol::new));
+   private final dod e;
 
-   protected dol(iw $$0, dhi $$1) {
+   public dol(dod $$0) {
       this.e = $$0;
-      this.f = $$1;
    }
 
-   public boolean a(csu $$0, ht $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public boolean a(csz $$0, hx $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public dnz<?> a() {
-      return dnz.g;
+   public doe<?> a() {
+      return doe.k;
    }
 }

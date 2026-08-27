@@ -2,217 +2,227 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ox {
-   public static final agh<dyq> a = pc.a("village/desert/town_centers");
-   private static final agh<dyq> b = pc.a("village/desert/terminators");
-   private static final agh<dyq> c = pc.a("village/desert/zombie/terminators");
-
-   public static void a(ov<dyq> $$0) {
-      ic<dwl> $$1 = $$0.a(jz.aA);
-      ib<dwl> $$2 = $$1.b(qn.j);
-      ib<dwl> $$3 = $$1.b(qn.a);
-      ic<ebf> $$4 = $$0.a(jz.aC);
-      ib<ebf> $$5 = $$4.b(pd.e);
-      ib<ebf> $$6 = $$4.b(pd.p);
-      ic<dyq> $$7 = $$0.a(jz.aE);
-      ib<dyq> $$8 = $$7.b(pc.a);
-      ib<dyq> $$9 = $$7.b(b);
-      ib<dyq> $$10 = $$7.b(c);
-      $$0.a(
-         a,
-         new dyq(
+   public static void a(oz<dyv> $$0) {
+      ih<ebk> $$1 = $$0.a(kd.aC);
+      ig<ebk> $$2 = $$1.b(ph.s);
+      ig<ebk> $$3 = $$1.b(ph.B);
+      ig<ebk> $$4 = $$1.b(ph.r);
+      ig<ebk> $$5 = $$1.b(ph.C);
+      ig<ebk> $$6 = $$1.b(ph.A);
+      ih<dyv> $$7 = $$0.a(kd.aE);
+      ig<dyv> $$8 = $$7.b(pg.a);
+      pg.a($$0, "bastion/treasure/bases", new dyv($$8, ImmutableList.of(Pair.of(dyt.b("bastion/treasure/bases/lava_basin", $$2), 1)), dyv.a.b));
+      pg.a($$0, "bastion/treasure/stairs", new dyv($$8, ImmutableList.of(Pair.of(dyt.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dyv.a.b));
+      pg.a(
+         $$0,
+         "bastion/treasure/bases/centers",
+         new dyv(
             $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/desert/town_centers/desert_meeting_point_1"), 98),
-               Pair.of(dyo.a("village/desert/town_centers/desert_meeting_point_2"), 98),
-               Pair.of(dyo.a("village/desert/town_centers/desert_meeting_point_3"), 49),
-               Pair.of(dyo.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+               Pair.of(dyt.b("bastion/treasure/bases/centers/center_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/bases/centers/center_1", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/bases/centers/center_2", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/bases/centers/center_3", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a($$0, "bastion/treasure/brains", new dyv($$8, ImmutableList.of(Pair.of(dyt.b("bastion/treasure/brains/center_brain", $$2), 1)), dyv.a.b));
+      pg.a(
          $$0,
-         "village/desert/streets",
-         new dyq(
-            $$9,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/desert/streets/corner_01"), 3),
-               Pair.of(dyo.a("village/desert/streets/corner_02"), 3),
-               Pair.of(dyo.a("village/desert/streets/straight_01"), 4),
-               Pair.of(dyo.a("village/desert/streets/straight_02"), 4),
-               Pair.of(dyo.a("village/desert/streets/straight_03"), 3),
-               Pair.of(dyo.a("village/desert/streets/crossroad_01"), 3),
-               Pair.of(dyo.a("village/desert/streets/crossroad_02"), 3),
-               Pair.of(dyo.a("village/desert/streets/crossroad_03"), 3),
-               Pair.of(dyo.a("village/desert/streets/square_01"), 3),
-               Pair.of(dyo.a("village/desert/streets/square_02"), 3),
-               Pair.of(dyo.a("village/desert/streets/turn_01"), 3)
-            ),
-            dyq.a.a
-         )
-      );
-      pc.a(
-         $$0,
-         "village/desert/zombie/streets",
-         new dyq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/desert/zombie/streets/corner_01"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/corner_02"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/straight_01"), 4),
-               Pair.of(dyo.a("village/desert/zombie/streets/straight_02"), 4),
-               Pair.of(dyo.a("village/desert/zombie/streets/straight_03"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/crossroad_01"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/crossroad_02"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/crossroad_03"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/square_01"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/square_02"), 3),
-               Pair.of(dyo.a("village/desert/zombie/streets/turn_01"), 3)
-            ),
-            dyq.a.a
-         )
-      );
-      pc.a(
-         $$0,
-         "village/desert/houses",
-         new dyq(
-            $$9,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_1"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_2"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_3"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_4"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_5"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_6"), 1),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_7"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_small_house_8"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_medium_house_1"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_medium_house_2"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_butcher_shop_1"), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_tool_smith_1"), 2),
-               new Pair[]{
-                  Pair.of(dyo.a("village/desert/houses/desert_fletcher_house_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_shepherd_house_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_armorer_1"), 1),
-                  Pair.of(dyo.a("village/desert/houses/desert_fisher_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_tannery_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_cartographer_house_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_library_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_mason_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_weaponsmith_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_temple_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_temple_2"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_large_farm_1", $$6), 11),
-                  Pair.of(dyo.a("village/desert/houses/desert_farm_1", $$6), 4),
-                  Pair.of(dyo.a("village/desert/houses/desert_farm_2", $$6), 4),
-                  Pair.of(dyo.a("village/desert/houses/desert_animal_pen_1"), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_animal_pen_2"), 2),
-                  Pair.of(dyo.g(), 5)
-               }
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/desert/zombie/houses",
-         new dyq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
-               Pair.of(dyo.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
-               Pair.of(dyo.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
-               new Pair[]{
-                  Pair.of(dyo.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_armorer_1", $$5), 1),
-                  Pair.of(dyo.a("village/desert/houses/desert_fisher_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_tannery_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_library_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_mason_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_temple_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_temple_2", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_large_farm_1", $$5), 7),
-                  Pair.of(dyo.a("village/desert/houses/desert_farm_1", $$5), 4),
-                  Pair.of(dyo.a("village/desert/houses/desert_farm_2", $$5), 4),
-                  Pair.of(dyo.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
-                  Pair.of(dyo.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
-                  Pair.of(dyo.g(), 5)
-               }
-            ),
-            dyq.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new dyq(
+         "bastion/treasure/walls",
+         new dyv(
             $$8,
-            ImmutableList.of(Pair.of(dyo.a("village/desert/terminators/terminator_01"), 1), Pair.of(dyo.a("village/desert/terminators/terminator_02"), 1)),
-            dyq.a.a
+            ImmutableList.of(Pair.of(dyt.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dyt.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
+            dyv.a.b
          )
       );
-      $$0.a(
-         c,
-         new dyq(
+      pg.a(
+         $$0,
+         "bastion/treasure/walls/outer",
+         new dyv(
             $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/desert/terminators/terminator_01"), 1), Pair.of(dyo.a("village/desert/zombie/terminators/terminator_02"), 1)
+               Pair.of(dyt.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
             ),
-            dyq.a.a
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "village/desert/decor",
-         new dyq(
-            $$8,
-            ImmutableList.of(Pair.of(dyo.a("village/desert/desert_lamp_1"), 10), Pair.of(dyo.a($$2), 4), Pair.of(dyo.a($$3), 4), Pair.of(dyo.g(), 10)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/desert/zombie/decor",
-         new dyq(
-            $$8,
-            ImmutableList.of(Pair.of(dyo.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(dyo.a($$2), 4), Pair.of(dyo.a($$3), 4), Pair.of(dyo.g(), 10)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/desert/villagers",
-         new dyq(
+         "bastion/treasure/walls/bottom",
+         new dyv(
             $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/desert/villagers/nitwit"), 1),
-               Pair.of(dyo.a("village/desert/villagers/baby"), 1),
-               Pair.of(dyo.a("village/desert/villagers/unemployed"), 10)
+               Pair.of(dyt.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a($$0, "village/desert/camel", new dyq($$8, ImmutableList.of(Pair.of(dyo.a("village/desert/camel_spawn"), 1)), dyq.a.b));
-      pc.a(
+      pg.a(
          $$0,
-         "village/desert/zombie/villagers",
-         new dyq(
+         "bastion/treasure/walls/mid",
+         new dyv(
             $$8,
-            ImmutableList.of(Pair.of(dyo.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(dyo.a("village/desert/zombie/villagers/unemployed"), 10)),
-            dyq.a.b
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/walls/top",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/top/wall_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/connectors",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a($$0, "bastion/treasure/entrances", new dyv($$8, ImmutableList.of(Pair.of(dyt.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dyv.a.b));
+      pg.a(
+         $$0,
+         "bastion/treasure/ramparts",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
+               Pair.of(dyt.b("bastion/treasure/ramparts/top_wall", $$5), 1),
+               Pair.of(dyt.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/corners/bottom",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dyt.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/corners/edges",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/corners/edges/bottom", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/corners/edges/middle", $$3), 1),
+               Pair.of(dyt.b("bastion/treasure/corners/edges/top", $$3), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/corners/middle",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dyt.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/corners/top",
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dyt.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/extensions/large_pool",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/empty", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/extensions/small_pool",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
+               Pair.of(dyt.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
+            ),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/extensions/houses",
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dyt.b("bastion/treasure/extensions/house_1", $$2), 1)),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "bastion/treasure/roofs",
+         new dyv(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/treasure/roofs/wall_roof", $$6), 1),
+               Pair.of(dyt.b("bastion/treasure/roofs/corner_roof", $$6), 1),
+               Pair.of(dyt.b("bastion/treasure/roofs/center_roof", $$6), 1)
+            ),
+            dyv.a.b
          )
       );
    }

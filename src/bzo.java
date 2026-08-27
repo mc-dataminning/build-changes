@@ -1,43 +1,57 @@
 import javax.annotation.Nullable;
 
-public class bzo extends bzj {
-   @Nullable
-   private eju b;
+public abstract class bzo implements bzw {
+   protected final bzm a;
 
-   public bzo(bzh $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = this.a.dl();
-      }
+   public bzo(bzm $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return true;
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(bzl $$0, hx $$1, bjt $$2, @Nullable cdz $$3) {
    }
 
    @Override
    public void d() {
-      this.b = null;
+   }
+
+   @Override
+   public void e() {
    }
 
    @Override
    public float f() {
-      return 1.0F;
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public eju g() {
-      return this.b;
+   public ejz g() {
+      return null;
    }
 
    @Override
-   public bzx<bzo> i() {
-      return bzx.k;
+   public float a(bjt $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dq().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

@@ -1,43 +1,72 @@
-import java.util.Locale;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ewp extends ewn {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
+public class ewp implements eyy {
+   private static final int a = 170;
+   private final uv b;
+   @Nullable
+   private List<atc> c;
+   @Nullable
+   private final uv d;
+   private int e;
+   private long f;
+   private boolean g;
 
-   public ewp(eum $$0, atu $$1) {
-      super($$0, $$1);
+   private ewp(uv $$0, @Nullable uv $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   public static ewp a(uv $$0, @Nullable uv $$1) {
+      return new ewp($$0, $$1);
+   }
+
+   public static ewp a(uv $$0) {
+      return new ewp($$0, $$0);
    }
 
    @Override
-   protected void a(euo $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(frc.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = etd.N().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(frc.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public void b(eyx $$0) {
+      if (this.d != null) {
+         $$0.a(eyw.c, this.d);
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public List<atc> a(eti $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
+      }
+
+      return this.c;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   public static List<atc> a(eti $$0, uv $$1) {
+      return $$0.h.c($$1, 170);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   public void a(boolean $$0, boolean $$1, ezh $$2) {
+      boolean $$3 = $$0 || $$1 && eti.N().aT().b();
+      if ($$3 != this.g) {
+         if ($$3) {
+            this.f = ac.b();
+         }
+
+         this.g = $$3;
+      }
+
+      if ($$3 && ac.b() - this.f > (long)this.e) {
+         faz $$4 = eti.N().y;
+         if ($$4 != null) {
+            $$4.a(this, this.b($$0, $$1, $$2), $$1);
+         }
+      }
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   protected fds b(boolean $$0, boolean $$1, ezh $$2) {
+      return (fds)(!$$0 && $$1 && eti.N().aT().b() ? new fdo($$2) : new fdu($$2));
    }
 }

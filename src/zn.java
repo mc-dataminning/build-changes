@@ -1,36 +1,28 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class zn implements wk<yd> {
+public class zn implements wo<yh> {
    private final int a;
    private final int b;
-   private final zm c;
-   private final zr d;
+   private final int c;
 
-   public zn(djp $$0, ech $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      crh $$4 = $$0.f();
-      this.a = $$4.e;
-      this.b = $$4.f;
-      this.c = new zm($$0);
-      this.d = new zr($$4, $$1, $$2, $$3);
+   public zn(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zn(tu $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = new zm($$0, this.a, this.b);
-      this.d = new zr($$0, this.a, this.b);
+   public zn(ty $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.n();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      this.c.a($$0);
-      this.d.a($$0);
+   public void a(ty $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
@@ -42,11 +34,7 @@ public class zn implements wk<yd> {
       return this.b;
    }
 
-   public zm e() {
+   public int e() {
       return this.c;
-   }
-
-   public zr f() {
-      return this.d;
    }
 }

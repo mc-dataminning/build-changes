@@ -1,32 +1,48 @@
-public class aeh implements wk<acl> {
-   private final biw a;
-   private final int b;
+public class aeh implements wo<acp> {
+   private static final int a = 384;
+   private final hx b;
+   private final String[] c;
+   private final boolean d;
 
-   public aeh(biw $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aeh(hx $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public aeh(tu $$0) {
-      this.a = $$0.b(biw.class);
-      this.b = $$0.n();
+   public aeh(ty $$0) {
+      this.b = $$0.e();
+      this.d = $$0.readBoolean();
+      this.c = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.c[$$1] = $$0.d(384);
+      }
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
+   public void a(ty $$0) {
+      $$0.a(this.b);
+      $$0.a(this.d);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.c[$$1]);
+      }
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public biw a() {
-      return this.a;
+   public hx a() {
+      return this.b;
    }
 
-   public int d() {
-      return this.b;
+   public boolean d() {
+      return this.d;
+   }
+
+   public String[] e() {
+      return this.c;
    }
 }

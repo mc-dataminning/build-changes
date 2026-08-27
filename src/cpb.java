@@ -1,98 +1,116 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cpb implements coo<biq> {
-   protected final cok a;
-   protected final clj b;
-   private final cot<?> d;
-   private final cos<?> e;
-   protected final String c;
+public class cpb implements coi {
+   final String a;
+   final coh b;
+   final clo c;
+   final ip<coq> d;
 
-   public cpb(cot<?> $$0, cos<?> $$1, String $$2, cok $$3, clj $$4) {
-      this.d = $$0;
-      this.e = $$1;
+   public cpb(String $$0, coh $$1, clo $$2, ip<coq> $$3) {
+      this.a = $$0;
+      this.b = $$1;
       this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+      this.d = $$3;
    }
 
    @Override
-   public cot<?> e() {
-      return this.d;
-   }
-
-   @Override
-   public cos<?> aq_() {
-      return this.e;
+   public cox<?> as_() {
+      return cox.b;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.a;
    }
 
    @Override
-   public clj a(ip $$0) {
+   public coh d() {
       return this.b;
    }
 
    @Override
-   public il<cok> a() {
-      il<cok> $$0 = il.a();
-      $$0.add(this.a);
-      return $$0;
+   public clo a(it $$0) {
+      return this.c;
+   }
+
+   @Override
+   public ip<coq> a() {
+      return this.d;
+   }
+
+   public boolean a(chh $$0, csf $$1) {
+      ced $$2 = new ced();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clo $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            $$3++;
+            $$2.a($$5, 1);
+         }
+      }
+
+      return $$3 == this.d.size() && $$2.a(this, null);
+   }
+
+   public clo a(chh $$0, it $$1) {
+      return this.c.p();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= this.d.size();
    }
 
-   @Override
-   public clj a(biq $$0, ip $$1) {
-      return this.b.p();
-   }
-
-   public static class a<T extends cpb> implements cos<T> {
-      private static final MapCodec<clj> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(jy.i.q().fieldOf("result").forGetter(clj::d), Codec.INT.fieldOf("count").forGetter(clj::L)).apply($$0, clj::new)
+   public static class a implements cox<cpb> {
+      private static final Codec<cpb> x = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  asy.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.a),
+                  coh.e.fieldOf("category").orElse(coh.d).forGetter($$0x -> $$0x.b),
+                  coj.a.fieldOf("result").forGetter($$0x -> $$0x.c),
+                  coq.c.listOf().fieldOf("ingredients").flatXmap($$0x -> {
+                     coq[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(coq[]::new);
+                     if ($$1.length == 0) {
+                        return DataResult.error(() -> "No ingredients for shapeless recipe");
+                     } else {
+                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(ip.a(coq.a, $$1));
+                     }
+                  }, DataResult::success).forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, cpb::new)
       );
-      final cpb.a.a<T> x;
-      private final Codec<T> z;
-
-      protected a(cpb.a.a<T> $$0) {
-         this.x = $$0;
-         this.z = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     asu.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     cok.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     y.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-      }
 
       @Override
-      public Codec<T> a() {
-         return this.z;
+      public Codec<cpb> a() {
+         return x;
       }
 
-      public T b(tu $$0) {
+      public cpb b(ty $$0) {
          String $$1 = $$0.s();
-         cok $$2 = cok.b($$0);
-         clj $$3 = $$0.r();
-         return this.x.create($$1, $$2, $$3);
+         coh $$2 = $$0.b(coh.class);
+         int $$3 = $$0.n();
+         ip<coq> $$4 = ip.a($$3, coq.a);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, coq.b($$0));
+         }
+
+         clo $$6 = $$0.r();
+         return new cpb($$1, $$2, $$6, $$4);
       }
 
-      public void a(tu $$0, T $$1) {
-         $$0.a($$1.c);
-         $$1.a.a($$0);
+      public void a(ty $$0, cpb $$1) {
+         $$0.a($$1.a);
          $$0.a($$1.b);
-      }
+         $$0.c($$1.d.size());
 
-      interface a<T extends cpb> {
-         T create(String var1, cok var2, clj var3);
+         for (coq $$2 : $$1.d) {
+            $$2.a($$0);
+         }
+
+         $$0.a($$1.c);
       }
    }
 }

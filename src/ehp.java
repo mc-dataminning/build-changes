@@ -1,17 +1,41 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface ehp<T extends ehp<T>> {
-   T b(ehw.a var1);
+public class ehp extends ehs {
+   public static final Codec<ehp> a = a(ehp::new);
+   public static final Codec<ehp> b = b(ehp::new);
 
-   default <E> T a_(Iterable<E> $$0, Function<E, ehw.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   ehp(List<eib> $$0) {
+      super($$0, eid.a($$0));
    }
 
-   T d();
+   public static ehp a(List<eib> $$0) {
+      return new ehp(List.copyOf($$0));
+   }
+
+   @Override
+   public eic b() {
+      return eid.d;
+   }
+
+   public static ehp.a a(eib.a... $$0) {
+      return new ehp.a($$0);
+   }
+
+   public static class a extends ehs.a {
+      public a(eib.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public ehp.a and(eib.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eib a(List<eib> $$0) {
+         return new ehp($$0);
+      }
+   }
 }

@@ -1,66 +1,133 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ii<T> implements ih<T> {
-   private int b;
-   private final Reference2IntMap<T> c;
-   private final List<T> d;
+public interface ii<T> extends ih<T> {
+   Stream<ig.c<T>> b();
 
-   public ii() {
-      this(512);
+   default Stream<agl<T>> c() {
+      return this.b().map(ig.c::g);
    }
 
-   public ii(int $$0) {
-      this.d = Lists.newArrayListWithExpectedSize($$0);
-      this.c = new Reference2IntOpenHashMap($$0);
-      this.c.defaultReturnValue(-1);
+   Stream<ik.c<T>> d();
+
+   default Stream<arz<T>> e() {
+      return this.d().map(ik.c::f);
    }
 
-   public void a(T $$0, int $$1) {
-      this.c.put($$0, $$1);
+   default ii<T> a(final Predicate<T> $$0) {
+      return new ii.a<T>(this) {
+         @Override
+         public Optional<ig.c<T>> a(agl<T> $$0x) {
+            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
+         }
 
-      while (this.d.size() <= $$1) {
-         this.d.add(null);
+         @Override
+         public Stream<ig.c<T>> b() {
+            return this.c.b().filter($$1 -> $$0.test($$1.a()));
+         }
+      };
+   }
+
+   public static class a<T> implements ii<T> {
+      protected final ii<T> c;
+
+      public a(ii<T> $$0) {
+         this.c = $$0;
       }
 
-      this.d.set($$1, $$0);
-      if (this.b <= $$1) {
-         this.b = $$1 + 1;
+      @Override
+      public Optional<ig.c<T>> a(agl<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<ig.c<T>> b() {
+         return this.c.b();
+      }
+
+      @Override
+      public Optional<ik.c<T>> a(arz<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<ik.c<T>> d() {
+         return this.c.d();
       }
    }
 
-   public void b(T $$0) {
-      this.a($$0, this.b);
+   public interface b {
+      <T> Optional<ii.c<T>> a(agl<? extends is<? extends T>> var1);
+
+      default <T> ii.c<T> b(agl<? extends is<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
+
+      default ih.a a() {
+         return new ih.a() {
+            @Override
+            public <T> Optional<ih<T>> a(agl<? extends is<? extends T>> $$0) {
+               return b.this.a($$0).map($$0x -> $$0x);
+            }
+         };
+      }
+
+      static ii.b a(Stream<ii.c<?>> $$0) {
+         final Map<agl<? extends is<?>>, ii.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ii.c::f, $$0x -> $$0x));
+         return new ii.b() {
+            @Override
+            public <T> Optional<ii.c<T>> a(agl<? extends is<? extends T>> $$0) {
+               return Optional.ofNullable((ii.c<T>)$$1.get($$0));
+            }
+         };
+      }
    }
 
-   @Override
-   public int a(T $$0) {
-      return this.c.getInt($$0);
-   }
+   public interface c<T> extends ii<T>, ij<T> {
+      agl<? extends is<? extends T>> f();
 
-   @Nullable
-   @Override
-   public final T a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : null;
-   }
+      Lifecycle g();
 
-   @Override
-   public Iterator<T> iterator() {
-      return Iterators.filter(this.d.iterator(), Objects::nonNull);
-   }
+      default ii<T> a(cgi $$0) {
+         return (ii<T>)(cgf.bv.contains(this.f()) ? this.a($$1 -> ((cgf)$$1).a($$0)) : this);
+      }
 
-   public boolean c(int $$0) {
-      return this.a($$0) != null;
-   }
+      public abstract static class a<T> implements ii.c<T> {
+         protected abstract ii.c<T> a();
 
-   @Override
-   public int b() {
-      return this.c.size();
+         @Override
+         public agl<? extends is<? extends T>> f() {
+            return this.a().f();
+         }
+
+         @Override
+         public Lifecycle g() {
+            return this.a().g();
+         }
+
+         @Override
+         public Optional<ig.c<T>> a(agl<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         public Stream<ig.c<T>> b() {
+            return this.a().b();
+         }
+
+         @Override
+         public Optional<ik.c<T>> a(arz<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         public Stream<ik.c<T>> d() {
+            return this.a().d();
+         }
+      }
    }
 }

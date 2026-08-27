@@ -1,17 +1,24 @@
-public record xc(String b) implements xd {
-   public static final agi a = new agi("brand");
+public class xc implements wo<wy> {
+   private final int a;
 
-   public xc(tu $$0) {
-      this($$0.s());
+   public xc(int $$0) {
+      this.a = $$0;
+   }
+
+   public xc(ty $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.b);
+   public void a(ty $$0) {
+      $$0.p(this.a);
    }
 
-   @Override
-   public agi a() {
-      return a;
+   public void a(wy $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

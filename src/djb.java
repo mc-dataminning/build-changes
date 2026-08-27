@@ -1,5 +1,8 @@
-public interface djb {
-   dhi a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dhi var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface djb {
 }

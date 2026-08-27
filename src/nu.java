@@ -1,28 +1,54 @@
 import java.util.concurrent.CompletableFuture;
 
-public class nu extends nz<bku<?>> {
-   public nu(kh $$0, CompletableFuture<id.b> $$1) {
-      super($$0, jz.t, $$1, $$0x -> $$0x.r().g());
+public class nu extends oi<dez> {
+   public nu(kl $$0, CompletableFuture<ii.b> $$1) {
+      super($$0, kd.c, $$1);
    }
 
    @Override
-   protected void a(id.b $$0) {
-      this.a(arj.a).a(bku.aJ, bku.aU, bku.bl, bku.aK);
-      this.a(arj.b).a(bku.bq, bku.bp, bku.br, bku.bs, bku.bo, bku.y, bku.Z);
-      this.a(arj.c).a(bku.G, bku.ay, bku.aD, bku.bg, bku.aa, bku.bj);
-      this.a(arj.d).a(arj.a).a(arj.b).a(bku.bk).a(bku.au);
-      this.a(arj.e).a(bku.h);
-      this.a(arj.f).a(bku.e, bku.aR);
-      this.a(arj.g).a(arj.f).a(bku.M).a(bku.aP, bku.ag, bku.aM, bku.z, bku.bb, bku.x, bku.bm);
-      this.a(arj.h).a(bku.aC, bku.F, bku.aI, bku.N);
-      this.a(arj.j).a(bku.bc, bku.aB, bku.aE, bku.r, bku.aT, bku.T, bku.aW);
-      this.a(arj.i).a(bku.y, bku.V, bku.A);
-      this.a(arj.k).a(bku.aU, bku.az, bku.aO, bku.bk);
-      this.a(arj.l).a(bku.aV, bku.i, bku.al);
-      this.a(arj.m).a(arj.d).a(bku.f, bku.O, bku.V, bku.A, bku.bd, bku.T, bku.r, bku.aB, bku.aE, bku.aT, bku.bc, bku.aW, bku.d);
-      this.a(arj.n).a(bku.aL, bku.al);
-      this.a(arj.o).a(bku.ac, bku.aO, bku.aG, bku.b, bku.g, bku.h, bku.i, bku.m, bku.q, bku.Q, bku.au, bku.al, bku.aq, bku.at, bku.bk);
-      this.a(arj.p).a(bku.l, bku.q, bku.w, bku.Y, bku.aj, bku.ap, bku.av, bku.aD, bku.aS, bku.aV, bku.ba, bku.bq);
-      this.a(arj.q).a(bku.aL, bku.al);
+   protected void a(ii.b $$0) {
+      this.b(ari.a)
+         .a(
+            dfa.b,
+            dfa.c,
+            dfa.d,
+            dfa.e,
+            dfa.f,
+            dfa.g,
+            dfa.h,
+            dfa.i,
+            dfa.j,
+            dfa.k,
+            dfa.l,
+            dfa.m,
+            dfa.n,
+            dfa.o,
+            dfa.p,
+            dfa.q,
+            dfa.r,
+            dfa.s,
+            dfa.t,
+            dfa.u,
+            dfa.v,
+            dfa.w,
+            dfa.x,
+            dfa.y,
+            dfa.z,
+            dfa.A,
+            dfa.B,
+            dfa.C,
+            dfa.D,
+            dfa.E,
+            dfa.F,
+            dfa.G,
+            dfa.H,
+            dfa.I
+         );
+      this.b(ari.b).a(dfa.M);
+      this.b(ari.c).a(dfa.K);
+      this.b(ari.d).a(dfa.L);
+      this.b(ari.e).a(dfa.N);
+      this.b(ari.f).a(dfa.J);
+      this.b(ari.g).a(dfa.O);
    }
 }

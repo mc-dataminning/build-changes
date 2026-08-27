@@ -1,118 +1,23 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-public class ftc implements fsu<dft> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fko h;
-   private final fko i;
-   private final fko j;
-   private final fko k;
-   private final fko l;
-   private final fko m;
-   private final fko n;
-   private final gdy o = Objects.requireNonNull(frj.c(dfu.a));
-   private static final float p = 0.125F;
-
-   public ftc(fsv.a $$0) {
-      fko $$1 = $$0.a(fkn.E);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fko $$2 = $$0.a(fkn.F);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+public class ftc<S extends dfi> implements cxm.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = fqx.a($$0.i(), $$0.aC_());
+         int $$4 = fqx.a($$1.i(), $$1.aC_());
+         int $$5 = fqy.a($$3);
+         int $$6 = fqy.a($$4);
+         int $$7 = fqy.b($$3);
+         int $$8 = fqy.b($$4);
+         return fqy.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      fks $$2 = new fks(0.2F);
-      fks $$3 = new fks(-0.1F);
-      $$1.a(
-         "neck",
-         fkt.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fkq.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fkt $$4 = fkt.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fkq.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fkq.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fku.a($$0, 32, 32);
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
    }
 
-   public static fku c() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      fkt $$2 = fkt.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(hx.c));
-      $$1.a("back", $$2, fkq.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fkq.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fkq.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fkq.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fku.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static gdy a(cle $$0) {
-      gdy $$1 = frj.c(dfu.a($$0));
-      if ($$1 == null) {
-         $$1 = frj.c(dfu.a(clm.qI));
-      }
-
-      return $$1;
-   }
-
-   public void a(dft $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      $$2.a();
-      hx $$6 = $$0.g();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dft.b $$7 = $$0.g;
-      if ($$7 != null && $$0.k() != null) {
-         float $$8 = ((float)($$0.k().W() - $$0.f) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dft.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (atm.b($$10) + 0.5F) * atm.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = atm.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = atm.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
-      }
-
-      eoa $$15 = this.o.a($$3, frc::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dft.a $$16 = $$0.i();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
-   }
-
-   private void a(fko $$0, enw $$1, fqu $$2, int $$3, int $$4, @Nullable gdy $$5) {
-      if ($$5 == null) {
-         $$5 = a(clm.qI);
-      }
-
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, frc::c), $$3, $$4);
-      }
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

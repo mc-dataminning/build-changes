@@ -10,8 +10,8 @@ public class az extends cw<az.a> {
       return new az.a($$1, $$3);
    }
 
-   public void a(amf $$0, Collection<? extends bkq> $$1) {
-      List<eex> $$2 = $$1.stream().map($$1x -> bq.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(amj $$0, Collection<? extends bkv> $$1) {
+      List<efc> $$2 = $$1.stream().map($$1x -> bq.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -27,11 +27,11 @@ public class az extends cw<az.a> {
          return al.E.a(new az.a(Optional.empty(), bq.a($$0)));
       }
 
-      public boolean a(Collection<? extends eex> $$0) {
+      public boolean a(Collection<? extends efc> $$0) {
          for (bc $$1 : this.a) {
             boolean $$2 = false;
 
-            for (eex $$3 : $$0) {
+            for (efc $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

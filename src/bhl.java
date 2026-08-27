@@ -1,48 +1,52 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 
-public class bhl<E extends bhj> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bhl(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bhk.a($$0);
+public class bhl<E> extends bhp<bhn.b<E>> {
+   public static <E> Codec<bhl<E>> a(Codec<E> $$0) {
+      return bhn.b.a($$0).listOf().xmap(bhl::new, bhp::e);
    }
 
-   public static <E extends bhj> bhl<E> c() {
-      return new bhl<>(ImmutableList.of());
+   public static <E> Codec<bhl<E>> b(Codec<E> $$0) {
+      return asy.a(bhn.b.a($$0).listOf()).xmap(bhl::new, bhp::e);
    }
 
-   @SafeVarargs
-   public static <E extends bhj> bhl<E> a(E... $$0) {
-      return new bhl<>(ImmutableList.copyOf($$0));
+   bhl(List<? extends bhn.b<E>> $$0) {
+      super($$0);
    }
 
-   public static <E extends bhj> bhl<E> a(List<E> $$0) {
-      return new bhl<>($$0);
+   public static <E> bhl.a<E> a() {
+      return new bhl.a<>();
    }
 
-   public boolean d() {
-      return this.b.isEmpty();
+   public static <E> bhl<E> b() {
+      return new bhl<>(List.of());
    }
 
-   public Optional<E> b(ats $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bhk.a(this.b, $$1);
+   public static <E> bhl<E> a(E $$0) {
+      return new bhl<>(List.of(bhn.a($$0, 1)));
+   }
+
+   public Optional<E> a(atw $$0) {
+      return this.b($$0).map(bhn.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bhn.b<E>> a = ImmutableList.builder();
+
+      public bhl.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public List<E> e() {
-      return this.b;
-   }
+      public bhl.a<E> a(E $$0, int $$1) {
+         this.a.add(bhn.a($$0, $$1));
+         return this;
+      }
 
-   public static <E extends bhj> Codec<bhl<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bhl::a, bhl::e);
+      public bhl<E> a() {
+         return new bhl<>(this.a.build());
+      }
    }
 }

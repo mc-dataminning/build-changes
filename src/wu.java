@@ -1,11 +1,24 @@
-public interface wu extends acm {
-   void a(wx var1);
+public class wu implements wo<wr> {
+   private final long a;
 
-   void a(wy var1);
+   public wu(long $$0) {
+      this.a = $$0;
+   }
 
-   void a(ww var1);
+   public wu(ty $$0) {
+      this.a = $$0.readLong();
+   }
 
-   void a(wz var1);
+   @Override
+   public void a(ty $$0) {
+      $$0.b(this.a);
+   }
 
-   void a(wv var1);
+   public void a(wr $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
+      return this.a;
+   }
 }

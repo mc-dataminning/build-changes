@@ -1,26 +1,24 @@
-public class fyw extends fxd<cab, fke<cab>> {
-   private static final agi a = new agi("textures/entity/wither/wither_invulnerable.png");
-   private static final agi i = new agi("textures/entity/wither/wither.png");
+public class fyw extends fxi<cdm, fkf<cdm>> {
+   private static final agm a = new agm("textures/entity/villager/villager.png");
 
-   public fyw(fvx.a $$0) {
-      super($$0, new fke<>($$0.a(fkn.bO)), 1.0F);
-      this.a(new gat(this, $$0.f()));
+   public fyw(fwc.a $$0) {
+      super($$0, new fkf<>($$0.a(fks.bJ)), 0.5F);
+      this.a(new fzp<>(this, $$0.f(), $$0.d()));
+      this.a(new gav<>(this, $$0.e(), "villager"));
+      this.a(new fzo<>(this, $$0.d()));
    }
 
-   protected int a(cab $$0, ht $$1) {
-      return 15;
+   public agm a(cdm $$0) {
+      return a;
    }
 
-   public agi a(cab $$0) {
-      int $$1 = $$0.A();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(cab $$0, enw $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.A();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+   protected void a(cdm $$0, eob $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.o_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
 
       $$1.b($$3, $$3, $$3);

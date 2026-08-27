@@ -1,30 +1,46 @@
-public class ckd extends cle implements ckk {
-   public ckd(cle.a $$0) {
-      super($$0);
-      cxf.a(this, cit.a);
-   }
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public static boolean d(clj $$0) {
-      return $$0.k() < $$0.l() - 1;
-   }
+public class ckd extends clj implements cmn {
+   private static final Map<ckc, ckd> a = Maps.newEnumMap(ckc.class);
+   private final ckc b;
 
-   @Override
-   public boolean a(clj $$0, clj $$1) {
-      return $$1.a(clm.vI);
-   }
-
-   @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public ckd(ckc $$0, clj.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public aqq ar_() {
-      return aqr.ae;
+   public bjb a(clo $$0, cdz $$1, bll $$2, bja $$3) {
+      if ($$2 instanceof bxs $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
+         $$4.dN().a($$1, $$4, aqv.gZ, aqw.h, 1.0F, 1.0F);
+         if (!$$1.dN().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bjb.a($$1.dN().B);
+      }
+
+      return bjb.d;
+   }
+
+   public ckc d() {
+      return this.b;
+   }
+
+   public static ckd a(ckc $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public bkv g() {
-      return bkv.e;
+   public boolean a(csf $$0, dgr $$1, boolean $$2, cdz $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.aC_(), aqv.gZ, aqw.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

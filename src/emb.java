@@ -1,47 +1,61 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
-public class emb implements elz {
-   private final Int2ObjectMap<ely.a> a;
-
-   public emb(Map<Integer, Float> $$0) {
-      this.a = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (ely.a)() -> $$1));
-   }
-
+public class emb {
    @Nullable
-   @Override
-   public ely a(int $$0) {
-      return (ely)this.a.get($$0);
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
+
+   public emb(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.a.keySet());
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ema.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ema.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ema.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
    }
 
-   public static record a(Map<Integer, Float> c) implements exy {
-      public static final MapCodec<emb.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(asu.w, Codec.FLOAT).fieldOf("advances").forGetter(emb.a::c)).apply($$0, emb.a::new)
-      );
-
-      @Override
-      public exz a() {
-         return exz.c;
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ema.a("Deleting stream buffers")) {
+            return;
+         }
       }
 
-      @Override
-      public Either<exy.a, exy.b> b() {
-         exy.a $$0 = $$0x -> new emb(this.c);
-         return Either.left($$0);
-      }
+      this.c = false;
+   }
+
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

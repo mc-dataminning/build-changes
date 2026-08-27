@@ -1,24 +1,37 @@
-public class fzd<T extends blg, M extends fiu<T>> extends gao<T, M> {
-   private final fvv a;
+public class fzd extends fwb<cfe> {
+   private static final agm a = new agm("textures/entity/wither/wither_invulnerable.png");
+   private static final agm f = new agm("textures/entity/wither/wither.png");
+   private final fjq g;
 
-   public fzd(fvx.a $$0, fwy<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public fzd(fwc.a $$0) {
+      super($$0);
+      this.g = new fjq($$0.a(fks.bU));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eP();
+   public static fkz a() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      $$1.a("head", fky.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkv.a);
+      return fkz.a($$0, 64, 64);
    }
 
-   @Override
-   protected void a(enw $$0, fqu $$1, int $$2, bkq $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = atm.c($$4 * $$4 + $$6 * $$6);
-      cec $$9 = new cec($$3.dN(), $$3.ds(), $$3.du(), $$3.dy(), clj.b);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dD();
-      $$9.O = $$9.dF();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected int a(cfe $$0, hx $$1) {
+      return 15;
+   }
+
+   public void a(cfe $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = atq.j($$2, $$0.N, $$0.dD());
+      float $$7 = atq.i($$2, $$0.O, $$0.dF());
+      eof $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public agm a(cfe $$0) {
+      return $$0.x() ? a : f;
    }
 }

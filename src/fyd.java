@@ -1,20 +1,20 @@
-public class fyd<T extends cbt> extends fxd<T, fjq<T>> {
-   private static final agi a = new agi("textures/entity/spider/spider.png");
+public class fyd extends fwt<caw, fjp<caw>> {
+   private static final agm a = new agm("textures/entity/skeleton/skeleton.png");
 
-   public fyd(fvx.a $$0) {
-      this($$0, fkn.br);
+   public fyd(fwc.a $$0) {
+      this($$0, fks.bh, fks.bj, fks.bk);
    }
 
-   public fyd(fvx.a $$0, fkm $$1) {
-      super($$0, new fjq<>($$0.a($$1)), 0.8F);
-      this.a(new gal<>(this));
+   public fyd(fwc.a $$0, fkr $$1, fkr $$2, fkr $$3) {
+      super($$0, new fjp<>($$0.a($$1)), 0.5F);
+      this.a(new gaa<>(this, new fjp($$0.a($$2)), new fjp($$0.a($$3)), $$0.g()));
    }
 
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public agi a(T $$0) {
+   public agm a(caw $$0) {
       return a;
+   }
+
+   protected boolean b(caw $$0) {
+      return $$0.gf();
    }
 }

@@ -1,34 +1,181 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dfi extends dgj {
-   public dfi(ht $$0, dhi $$1) {
-      super(dff.J, $$0, $$1);
+public abstract class dfi {
+   private static final Logger e = LogUtils.getLogger();
+   private final dfk<?> f;
+   @Nullable
+   protected csf o;
+   protected final hx p;
+   protected boolean q;
+   private dhn g;
+
+   public dfi(dfk<?> $$0, hx $$1, dhn $$2) {
+      this.f = $$0;
+      this.p = $$1.i();
+      this.g = $$2;
    }
 
-   @Override
-   public dmb.d c() {
-      return new dfi.a(this.p());
+   public static hx c(sd $$0) {
+      return new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
-   protected class a extends dgj.a {
-      public a(ht $$1) {
-         super($$1);
-      }
+   @Nullable
+   public csf i() {
+      return this.o;
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+   public void a(csf $$0) {
+      this.o = $$0;
+   }
 
-      @Override
-      public boolean a(ame $$0, ht $$1, dls $$2, @Nullable dls.a $$3) {
-         int $$4 = this.a($$0, this.c, dfi.this.q());
-         return $$4 != 0 && dmb.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
+   public boolean n() {
+      return this.o != null;
+   }
 
-      private int a(csa $$0, ht $$1, dhi $$2) {
-         hx $$3 = $$2.c(cvn.b).g();
-         return $$0.c($$1.a($$3), $$3);
+   public void a(sd $$0) {
+   }
+
+   protected void b(sd $$0) {
+   }
+
+   public final sd o() {
+      sd $$0 = this.q();
+      this.e($$0);
+      return $$0;
+   }
+
+   public final sd p() {
+      sd $$0 = this.q();
+      this.d($$0);
+      return $$0;
+   }
+
+   public final sd q() {
+      sd $$0 = new sd();
+      this.b($$0);
+      return $$0;
+   }
+
+   private void d(sd $$0) {
+      agm $$1 = dfk.a(this.v());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
       }
+   }
+
+   public static void a(sd $$0, dfk<?> $$1) {
+      $$0.a("id", dfk.a($$1).toString());
+   }
+
+   public void e(clo $$0) {
+      cjh.a($$0, this.v(), this.q());
+   }
+
+   private void e(sd $$0) {
+      this.d($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
+   }
+
+   @Nullable
+   public static dfi a(hx $$0, dhn $$1, sd $$2) {
+      String $$3 = $$2.l("id");
+      agm $$4 = agm.a($$3);
+      if ($$4 == null) {
+         e.error("Block entity has invalid type: {}", $$3);
+         return null;
+      } else {
+         return kc.l.b($$4).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5) {
+               e.error("Failed to create block entity {}", $$3, var5);
+               return null;
+            }
+         }).map($$2x -> {
+            try {
+               $$2x.a($$2);
+               return $$2x;
+            } catch (Throwable var4x) {
+               e.error("Failed to load data for block entity {}", $$3, var4x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            e.warn("Skipping BlockEntity with id {}", $$3);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.g);
+      }
+   }
+
+   protected static void a(csf $$0, hx $$1, dhn $$2) {
+      $$0.p($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public hx aC_() {
+      return this.p;
+   }
+
+   public dhn r() {
+      return this.g;
+   }
+
+   @Nullable
+   public wo<yh> j() {
+      return null;
+   }
+
+   public sd ay_() {
+      return new sd();
+   }
+
+   public boolean s() {
+      return this.q;
+   }
+
+   public void az_() {
+      this.q = true;
+   }
+
+   public void t() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> kc.l.b(this.v()) + " // " + this.getClass().getCanonicalName());
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.r());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   public boolean u() {
+      return false;
+   }
+
+   public dfk<?> v() {
+      return this.f;
+   }
+
+   @Deprecated
+   public void b(dhn $$0) {
+      this.g = $$0;
    }
 }

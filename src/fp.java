@@ -15,27 +15,27 @@ public class fp implements fo {
    }
 
    @Override
-   public eju a(du $$0) {
-      ejt $$1 = $$0.l();
-      eju $$2 = $$0.n().a($$0);
-      float $$3 = atm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = atm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = atm.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = atm.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = atm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = atm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      eju $$9 = new eju((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      eju $$10 = new eju((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      eju $$11 = $$9.c($$10).a(-1.0);
+   public ejz a(du $$0) {
+      ejy $$1 = $$0.k();
+      ejz $$2 = $$0.m().a($$0);
+      float $$3 = atq.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = atq.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = atq.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = atq.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = atq.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = atq.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      ejz $$9 = new ejz((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ejz $$10 = new ejz((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ejz $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new eju($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new ejz($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ejt b(du $$0) {
-      return ejt.a;
+   public ejy b(du $$0) {
+      return ejy.a;
    }
 
    @Override

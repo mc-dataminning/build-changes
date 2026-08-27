@@ -1,62 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import java.util.Optional;
 
-public class fra {
-   private final frf a = new frf();
-   private final frg b;
-   private final fqu.a c;
-   private final fqu.a d;
-   private final fqv e;
+public class fra implements fqz {
+   private final fqz.a a;
+   private final fqz.a b = fqz.a(new enw(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fra(int $$0) {
-      this.b = frg.a($$0);
-      SortedMap<frc, enr> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(frj.h(), this.a.a(frc.c()));
-         $$0x.put(frj.i(), this.a.a(frc.e()));
-         $$0x.put(frj.a(), this.a.a(frc.d()));
-         $$0x.put(frj.k(), this.a.a(frc.f()));
-         a($$0x, frj.b());
-         a($$0x, frj.c());
-         a($$0x, frj.d());
-         a($$0x, frj.e());
-         a($$0x, frj.f());
-         $$0x.put(frj.g(), new enr(786432));
-         a($$0x, frc.j());
-         a($$0x, frc.k());
-         a($$0x, frc.m());
-         a($$0x, frc.n());
-         a($$0x, frc.l());
-         a($$0x, frc.o());
-         a($$0x, frc.p());
-         a($$0x, frc.i());
-         gea.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fqu.a(new enr(1536));
-      this.c = fqu.a($$1, new enr(786432));
-      this.e = new fqv(this.c);
+   public fra(fqz.a $$0) {
+      this.a = $$0;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<frc, enr> $$0, frc $$1) {
-      $$0.put($$1, new enr($$1.G()));
+   @Override
+   public eof getBuffer(frh $$0) {
+      if ($$0.K()) {
+         eof $$1 = this.b.getBuffer($$0);
+         return new fra.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         eof $$2 = this.a.getBuffer($$0);
+         Optional<frh> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            eof $$4 = this.b.getBuffer($$3.get());
+            fra.a $$5 = new fra.a($$4, this.c, this.d, this.e, this.f);
+            return eoi.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   public frf a() {
-      return this.a;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public frg b() {
-      return this.b;
+   public void a() {
+      this.b.b();
    }
 
-   public fqu.a c() {
-      return this.c;
-   }
+   static class a extends eoa {
+      private final eof f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
 
-   public fqu.a d() {
-      return this.d;
-   }
+      a(eof $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
 
-   public fqv e() {
-      return this.e;
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public eof a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public eof a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eof a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eof a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eof b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eof a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

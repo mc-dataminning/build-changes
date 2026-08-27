@@ -1,16 +1,8 @@
-public class gen extends gep {
-   public gen(bws $$0) {
-      super($$0, aqr.bB, aqs.g);
-      this.j = 0;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected gel o() {
-      return new geo(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.Z_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gen {
 }

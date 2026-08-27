@@ -1,111 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class fte implements fsz<dfo> {
+   private static final float a = 0.375F;
+   private final fxa b;
 
-public class fte extends fti {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final eju k = new eju(0.0, -0.32F, 0.073F);
-   private final Map<div, fte.a> l;
-
-   public fte(fsv.a $$0) {
-      super($$0);
-      this.l = div.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fte.a($$0.a(fkn.b($$1)))));
+   public fte(fta.a $$0) {
+      this.b = $$0.d();
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
-   }
+   public void a(dfo $$0, float $$1, eob $$2, fqz $$3, int $$4, int $$5) {
+      ib $$6 = $$0.r().c(cvt.f);
+      ip<clo> $$7 = $$0.c();
+      int $$8 = (int)$$0.aC_().a();
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
-
-   @Override
-   public void a(dgm $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      dhi $$6 = $$0.q();
-      dbz $$7 = (dbz)$$6.b();
-      div $$8 = dbz.a($$7);
-      fte.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(enw $$0, float $$1, dhi $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   void a(enw $$0, int $$1, int $$2, fil $$3, eoa $$4) {
-      fte.a $$5 = (fte.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   gdy a(div $$0) {
-      return frj.b($$0);
-   }
-
-   @Override
-   eju d() {
-      return k;
-   }
-
-   public static fku e() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      $$1.a("board", fkt.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fkq.a);
-      $$1.a("plank", fkt.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fkq.a);
-      fkx $$2 = $$1.a("normalChains", fkt.c(), fkq.a);
-      $$2.a("chainL1", fkt.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fkt.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fkt.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fkt.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fkq.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fkt.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fkq.a);
-      return fku.a($$0, 64, 32);
-   }
-
-   public static final class a extends fil {
-      public final fko a;
-      public final fko b;
-      public final fko c;
-      public final fko d;
-
-      public a(fko $$0) {
-         super(frc::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
-      }
-
-      public void a(dhi $$0) {
-         boolean $$1 = !($$0.b() instanceof cvz);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dhy.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         clo $$10 = $$7.get($$9);
+         if ($$10 != clo.b) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ib $$11 = ib.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cll.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
          }
-      }
-
-      @Override
-      public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

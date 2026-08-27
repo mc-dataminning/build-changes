@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gr extends AutoCloseable {
+   void a(int var1, String var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gr {
+   void a(int var1, String var2, int var3);
+
+   void a(String var1);
+
+   void a(int var1, agm var2, int var3);
+
+   @Override
+   void close();
 }

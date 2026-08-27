@@ -1,36 +1,44 @@
-public class ckp extends cle implements cnd {
-   public ckp(cle.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface ckp extends cni {
+   bla g();
+
+   default aqu at_() {
+      return aqv.af;
    }
 
-   @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
+   default bjc<clo> a(clj $$0, csf $$1, cdz $$2, bja $$3) {
+      clo $$4 = $$2.b($$3);
+      bla $$5 = bln.h($$4);
+      clo $$6 = $$2.c($$5);
+      if ((!cqb.d($$6) || $$2.f()) && !clo.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(arf.c.b($$0));
          }
 
-         $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.ij, aqs.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         $$1.a(dls.C);
+         clo $$7 = $$6.b() ? $$4 : $$6.c();
+         clo $$8 = $$4.c();
+         $$2.a($$5, $$8);
+         return bjc.a($$7, $$1.y_());
       } else {
-         $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.il, aqs.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cpw.c($$3);
-            int $$6 = cpw.b($$3);
-            $$0.b(new cei($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(arb.c.b(this));
-         $$1.a(dls.D);
+         return bjc.d($$4);
       }
-
-      return biy.a($$3, $$0.x_());
    }
 
-   @Override
-   public int c() {
-      return 1;
+   @Nullable
+   static ckp c_(clo $$0) {
+      clj $$3 = $$0.d();
+      if ($$3 instanceof ckp) {
+         return (ckp)$$3;
+      } else {
+         if ($$0.d() instanceof cjh $$2) {
+            cvf var6 = $$2.e();
+            if (var6 instanceof ckp) {
+               return (ckp)var6;
+            }
+         }
+
+         return null;
+      }
    }
 }

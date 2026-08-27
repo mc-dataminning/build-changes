@@ -1,111 +1,156 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cye extends cva {
-   public static final MapCodec<cye> a = b(cye::new);
-   private static final int c = 2;
-   private static final int d = 5;
-   private static final int e = 3600;
-   private static final int f = 12000;
-   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
-   private static int g = 3600;
-   private static int h = 12000;
+public class cye extends cza {
+   public static final MapCodec<cye> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dja.a.fieldOf("wood_type").forGetter($$0x -> $$0x.G), u()).apply($$0, cye::new)
+   );
+   public static final die b = did.u;
+   public static final die c = did.w;
+   public static final die d = did.q;
+   protected static final eks e = cvf.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final eks f = cvf.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+   protected static final eks g = cvf.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
+   protected static final eks h = cvf.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
+   protected static final eks i = cvf.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final eks j = cvf.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final eks k = cvf.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final eks l = cvf.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final eks m = ekp.a(cvf.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), cvf.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
+   protected static final eks n = ekp.a(cvf.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), cvf.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
+   protected static final eks o = ekp.a(cvf.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), cvf.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
+   protected static final eks F = ekp.a(cvf.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), cvf.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
+   private final dja G;
 
    @Override
    public MapCodec<cye> a() {
       return a;
    }
 
-   public cye(dhh.d $$0) {
-      super($$0);
+   public cye(dja $$0, dhm.d $$1) {
+      super($$1.a($$0.d()));
+      this.G = $$0;
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return b;
-   }
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return a($$1, $$2.d());
-   }
-
-   @Override
-   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      $$1.a($$2, this, a($$1.E_()));
-   }
-
-   private static int a(ats $$0) {
-      return $$0.b(g, h);
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return !this.a($$0, $$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if (!this.a($$0, $$1, $$2)) {
-         this.a((csa)$$1, $$2);
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ib.a.a ? h : g;
       } else {
-         this.a($$1, $$2, $$3);
+         return $$0.c(aE).o() == ib.a.a ? f : e;
       }
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, bkq $$3) {
-      if ($$3.ai().equals(bku.L)) {
-         this.a($$1, $$2);
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      ib.a $$6 = $$1.o();
+      if ($$0.c(aE).h().o() != $$6) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         boolean $$7 = this.h($$2) || this.h($$3.a_($$4.a($$1.g())));
+         return $$0.a(d, Boolean.valueOf($$7));
       }
    }
 
-   private static boolean a(crg $$0, ht $$1) {
-      ecs $$2 = $$0.b_($$1);
-      ecs $$3 = $$0.b_($$1.c());
-      return $$2.a() == ect.c && $$3.a() == ect.a;
+   @Override
+   public eks b_(dhn $$0, crl $$1, hx $$2) {
+      if ($$0.c(b)) {
+         return ekp.a();
+      } else {
+         return $$0.c(aE).o() == ib.a.c ? k : l;
+      }
    }
 
-   private void a(ame $$0, ht $$1, ats $$2) {
-      this.a((csa)$$0, $$1);
-      $$0.a(null, $$1, aqr.iV, aqs.e, 1.0F, 1.0F);
-      this.b($$0, $$1, $$2);
+   @Override
+   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      if ($$0.c(b)) {
+         return ekp.a();
+      } else {
+         return $$0.c(aE).o() == ib.a.c ? i : j;
+      }
    }
 
-   private void a(csa $$0, ht $$1) {
-      $$0.b($$1, false);
+   @Override
+   public eks f(dhn $$0, crl $$1, hx $$2) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ib.a.a ? F : o;
+      } else {
+         return $$0.c(aE).o() == ib.a.a ? n : m;
+      }
    }
 
-   private void b(ame $$0, ht $$1, ats $$2) {
-      int $$3 = $$2.b(2, 6);
+   @Override
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return false;
+         case c:
+            return $$0.c(b);
+         default:
+            return false;
+      }
+   }
 
-      for (int $$4 = 1; $$4 <= $$3; $$4++) {
-         byj $$5 = bku.aW.a((csa)$$0);
-         if ($$5 != null) {
-            double $$6 = (double)$$1.u() + this.b($$2);
-            double $$7 = (double)$$1.w() + this.b($$2);
-            int $$8 = $$2.b(1, 361);
-            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
-            $$5.fK();
-            $$0.b($$5);
+   @Override
+   public dhn a(cnw $$0) {
+      csf $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      boolean $$3 = $$1.B($$2);
+      ib $$4 = $$0.g();
+      ib.a $$5 = $$4.o();
+      boolean $$6 = $$5 == ib.a.c && (this.h($$1.a_($$2.g())) || this.h($$1.a_($$2.h())))
+         || $$5 == ib.a.a && (this.h($$1.a_($$2.e())) || this.h($$1.a_($$2.f())));
+      return this.o().a(aE, $$4).a(b, Boolean.valueOf($$3)).a(c, Boolean.valueOf($$3)).a(d, Boolean.valueOf($$6));
+   }
+
+   private boolean h(dhn $$0) {
+      return $$0.a(ark.L);
+   }
+
+   @Override
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if ($$0.c(b)) {
+         $$0 = $$0.a(b, Boolean.valueOf(false));
+         $$1.a($$2, $$0, 10);
+      } else {
+         ib $$6 = $$3.cE();
+         if ($$0.c(aE) == $$6.g()) {
+            $$0 = $$0.a(aE, $$6);
+         }
+
+         $$0 = $$0.a(b, Boolean.valueOf(true));
+         $$1.a($$2, $$0, 10);
+      }
+
+      boolean $$7 = $$0.c(b);
+      $$1.a($$3, $$2, $$7 ? this.G.g() : this.G.f(), aqw.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+      $$1.a($$3, $$7 ? dlx.h : dlx.d, $$2);
+      return bjb.a($$1.B);
+   }
+
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.B($$2);
+         if ($$0.c(c) != $$6) {
+            $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)).a(b, Boolean.valueOf($$6)), 2);
+            if ($$0.c(b) != $$6) {
+               $$1.a(null, $$2, $$6 ? this.G.g() : this.G.f(), aqw.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+               $$1.a(null, $$6 ? dlx.h : dlx.d, $$2);
+            }
          }
       }
    }
 
-   private double b(ats $$0) {
-      double $$1 = (double)(byj.c / 2.0F);
-      return atm.a($$0.j(), $$1, 1.0 - $$1);
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(aE, b, c, d);
    }
 
-   @VisibleForTesting
-   public static void a(int $$0, int $$1) {
-      g = $$0;
-      h = $$1;
-   }
-
-   @VisibleForTesting
-   public static void b() {
-      g = 3600;
-      h = 12000;
+   public static boolean a(dhn $$0, ib $$1) {
+      return $$0.c(aE).o() == $$1.h().o();
    }
 }

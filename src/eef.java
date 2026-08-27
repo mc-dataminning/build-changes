@@ -1,84 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
-
 public class eef {
-   private static final String a = "command_storage_";
-   private final Map<String, eef.a> b = Maps.newHashMap();
-   private final eei c;
+   private final hx a;
+   private final int b;
+   private final int c;
 
-   public eef(eei $$0) {
-      this.c = $$0;
+   public eef(hx $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private eef.a a(String $$0) {
-      eef.a $$1 = new eef.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public static eef a(sd $$0) {
+      hx $$1 = ss.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new eef($$1, $$2, $$3);
    }
 
-   private edx.a<eef.a> b(String $$0) {
-      return new edx.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), aus.h);
+   public sd a() {
+      sd $$0 = new sd();
+      $$0.a("Pos", ss.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
+      return $$0;
    }
 
-   public rz a(agi $$0) {
-      String $$1 = $$0.b();
-      eef.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new rz();
+   public hx b() {
+      return this.a;
    }
 
-   public void a(agi $$0, rz $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   public int c() {
+      return this.b;
    }
 
-   public Stream<agi> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   public int d() {
+      return this.c;
    }
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
+   public String e() {
+      return a(this.a);
    }
 
-   static class a extends edx {
-      private static final String a = "contents";
-      private final Map<String, rz> b = Maps.newHashMap();
-
-      eef.a b(rz $$0) {
-         rz $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
-      }
-
-      @Override
-      public rz a(rz $$0) {
-         rz $$1 = new rz();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
-
-      public rz a(String $$0) {
-         rz $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new rz();
-      }
-
-      public void a(String $$0, rz $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<agi> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new agi($$0, $$1));
-      }
+   public static String a(hx $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

@@ -1,23 +1,29 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
 
-public class bby extends azt {
-   public bby(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bat.x, "minecraft:zombie_villager");
+public class bby extends DataFix {
+   public bby(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bbq.a($$2)));
-         } else {
-            return $$0x;
-         }
-      });
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bax.I);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new IllegalStateException("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
+      );
    }
 }

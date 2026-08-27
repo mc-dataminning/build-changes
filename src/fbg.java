@@ -1,186 +1,176 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class fbg {
-   private final etd a;
-   private final fbk b;
-   private final fbh c;
-   private final int d;
-   private final ag e;
-   private final aq f;
-   private final clj g;
-   private final ur h;
-   private final fbi i;
-   private final Map<af, fbi> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+public class fbg extends far {
+   private static final uv c = uv.c("options.graphics.fabulous").a(n.u);
+   private static final uv k = uv.a("options.graphics.warning.message", c, c);
+   private static final uv l = uv.c("options.graphics.warning.title").a(n.m);
+   private static final uv m = uv.c("options.graphics.warning.accept");
+   private static final uv n = uv.c("options.graphics.warning.cancel");
+   private ewb o;
+   private final fqt p;
+   private final int q;
 
-   public fbg(etd $$0, fbk $$1, fbh $$2, int $$3, ag $$4, aq $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fbi(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   private static etl<?>[] a(etm $$0) {
+      return new etl[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
+      };
    }
 
-   public fbh a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public ur d() {
-      return this.h;
-   }
-
-   public aq e() {
-      return this.f;
-   }
-
-   public void a(euo $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(euo $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(euo $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
+   public fbg(faz $$0, etm $$1) {
+      super($$0, $$1, uv.c("options.videoTitle"));
+      this.p = $$0.f.ag();
+      this.p.i();
+      if ($$1.j().c() == etb.c) {
+         this.p.e();
       }
 
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      agi $$3 = Objects.requireNonNullElse(this.f.d(), gbv.a);
-      int $$4 = atm.a(this.k);
-      int $$5 = atm.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
+      this.q = $$1.A().c();
    }
 
-   public void a(euo $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, atm.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = atm.a(this.k);
-      int $$7 = atm.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fbi $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = atm.a(this.q + 0.02F, 0.0F, 0.3F);
+   @Override
+   protected void aQ_() {
+      this.o = new ewb(this.f, this.g, this.h, 32, this.h - 32, 25);
+      int $$0 = -1;
+      enf $$1 = this.f.aL();
+      ena $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         this.q = atm.a(this.q - 0.04F, 0.0F, 1.0F);
+         Optional<ene> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
+
+      etl<Integer> $$6 = new etl<>("options.fullscreen.resolution", etl.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return uv.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return etm.a($$1x, uv.c("options.fullscreen.current"));
+         } else {
+            ene $$3x = $$2.a($$2x);
+            return etm.a($$1x, uv.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
+         }
+      }, new etl.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.e(this.o);
+      this.d(eve.a(uu.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   @Override
+   public void aH_() {
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.O();
+      }
+
+      super.aH_();
    }
 
-   @Nullable
-   public static fbg a(etd $$0, fbk $$1, int $$2, ag $$3) {
-      Optional<aq> $$4 = $$3.a().d();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (fbh $$5 : fbh.values()) {
-            if ($$2 < $$5.a()) {
-               return new fbg($$0, $$1, $$5, $$2, $$3, $$4.get());
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
+         }
+
+         if (this.p.g()) {
+            List<uv> $$4 = Lists.newArrayList(new uv[]{k, uu.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(uu.r);
+               $$4.add(uv.a("options.graphics.warning.renderer", $$5).a(n.h));
             }
 
-            $$2 -= $$5.a();
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(uu.r);
+               $$4.add(uv.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(uu.r);
+               $$4.add(uv.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new fbf(l, $$4, ImmutableList.of(new fbf.a(m, $$0x -> {
+               this.b.j().a(etb.c);
+               eti.N().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new fbf.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
          }
 
-         return null;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = atm.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (faz.p()) {
+         etl<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
 
-      if (this.p - this.n > 113) {
-         this.l = atm.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ag $$0) {
-      Optional<aq> $$1 = $$0.a().d();
-      if (!$$1.isEmpty()) {
-         fbi $$2 = new fbi(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(fbi $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fbi $$6 : this.j.values()) {
-         $$6.b();
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   @Nullable
-   public fbi a(af $$0) {
-      return this.j.get($$0);
+   @Override
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.o, $$1, $$2, $$3);
    }
 
-   public fbk f() {
-      return this.b;
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

@@ -1,35 +1,10 @@
-import javax.annotation.Nullable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class qu extends qt {
-   private final ht a;
-   private final ht b;
-   private final long c;
-
-   public qu(String $$0, ht $$1, ht $$2, long $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public String getMessage() {
-      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
-      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
-   }
-
-   @Nullable
-   public String a() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public ht b() {
-      return this.b;
-   }
-
-   @Nullable
-   public ht c() {
-      return this.a;
-   }
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface qu {
+   String a();
 }

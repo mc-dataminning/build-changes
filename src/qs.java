@@ -1,24 +1,8 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface qs {
-   int a() default 100;
-
-   String b() default "defaultBatch";
-
-   int c() default 0;
-
-   boolean d() default true;
-
-   String e() default "";
-
-   long f() default 0L;
-
-   int g() default 1;
-
-   int h() default 1;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface qs {
 }

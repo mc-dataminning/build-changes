@@ -1,22 +1,25 @@
-public class ghp implements ewc {
-   private final ur a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public ghp(ur $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface ghp {
+   default void b() {
    }
 
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      $$0.a(etd.N().h, this.a, this.b, this.c, this.d);
+   default void a() {
    }
 
-   public ur a() {
-      return this.a;
+   default void a(fpz $$0) {
+   }
+
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(flo $$0, ejx $$1) {
+   }
+
+   default void a(flo $$0, hx $$1, dhn $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(clo $$0) {
    }
 }

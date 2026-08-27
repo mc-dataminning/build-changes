@@ -1,107 +1,485 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ph {
-   private static dxh.c a(ig<csy> $$0, Map<blj, dxo> $$1, dmn.b $$2, dxs $$3) {
-      return new dxh.c($$0, $$1, $$2, $$3);
+   private static final agl<ebk> M = a("empty");
+   public static final agl<ebk> a = a("zombie_plains");
+   public static final agl<ebk> b = a("zombie_savanna");
+   public static final agl<ebk> c = a("zombie_snowy");
+   public static final agl<ebk> d = a("zombie_taiga");
+   public static final agl<ebk> e = a("zombie_desert");
+   public static final agl<ebk> f = a("mossify_10_percent");
+   public static final agl<ebk> g = a("mossify_20_percent");
+   public static final agl<ebk> h = a("mossify_70_percent");
+   public static final agl<ebk> i = a("street_plains");
+   public static final agl<ebk> j = a("street_savanna");
+   public static final agl<ebk> k = a("street_snowy_or_taiga");
+   public static final agl<ebk> l = a("farm_plains");
+   public static final agl<ebk> m = a("farm_savanna");
+   public static final agl<ebk> n = a("farm_snowy");
+   public static final agl<ebk> o = a("farm_taiga");
+   public static final agl<ebk> p = a("farm_desert");
+   public static final agl<ebk> q = a("outpost_rot");
+   public static final agl<ebk> r = a("bottom_rampart");
+   public static final agl<ebk> s = a("treasure_rooms");
+   public static final agl<ebk> t = a("housing");
+   public static final agl<ebk> u = a("side_wall_degradation");
+   public static final agl<ebk> v = a("stable_degradation");
+   public static final agl<ebk> w = a("bastion_generic_degradation");
+   public static final agl<ebk> x = a("rampart_degradation");
+   public static final agl<ebk> y = a("entrance_replacement");
+   public static final agl<ebk> z = a("bridge");
+   public static final agl<ebk> A = a("roof");
+   public static final agl<ebk> B = a("high_wall");
+   public static final agl<ebk> C = a("high_rampart");
+   public static final agl<ebk> D = a("fossil_rot");
+   public static final agl<ebk> E = a("fossil_coal");
+   public static final agl<ebk> F = a("fossil_diamonds");
+   public static final agl<ebk> G = a("ancient_city_start_degradation");
+   public static final agl<ebk> H = a("ancient_city_generic_degradation");
+   public static final agl<ebk> I = a("ancient_city_walls_degradation");
+   public static final agl<ebk> J = a("trail_ruins_houses_archaeology");
+   public static final agl<ebk> K = a("trail_ruins_roads_archaeology");
+   public static final agl<ebk> L = a("trail_ruins_tower_top_archaeology");
+
+   private static agl<ebk> a(String $$0) {
+      return agl.a(kd.aC, new agm($$0));
    }
 
-   private static dxh.c a(ig<csy> $$0, dmn.b $$1, dxs $$2) {
-      return a($$0, Map.of(), $$1, $$2);
+   private static void a(oz<ebk> $$0, agl<ebk> $$1, List<ebj> $$2) {
+      $$0.a($$1, new ebk($$2));
    }
 
-   private static dxh.c a(ig<csy> $$0, dxs $$1) {
-      return a($$0, Map.of(), dmn.b.e, $$1);
-   }
-
-   public static void a(ov<dxh> $$0) {
-      ic<csy> $$1 = $$0.a(jz.ar);
-      ic<dyq> $$2 = $$0.a(jz.aE);
-      $$0.a(
-         dxb.a,
-         new dzh(
-            a($$1.b(arf.y), Map.of(blj.a, new dxo(dxo.a.b, bhl.a(new ctk.c(bku.ay, 1, 1, 1)))), dmn.b.e, dxs.c), $$2.b(pa.a), 7, dvn.a(dnl.a(0)), true, dmr.a.a
-         )
-      );
-      $$0.a(dxb.b, new dzl(a($$1.b(arf.t), dmn.b.d, dxs.a), dzl.a.a));
-      $$0.a(dxb.c, new dzl(a($$1.b(arf.u), dmn.b.d, dxs.a), dzl.a.b));
-      $$0.a(dxb.d, new ead(a($$1.b(arf.P), dxs.a)));
-      $$0.a(dxb.e, new dzj(a($$1.b(arf.s), dxs.a)));
-      $$0.a(dxb.f, new dzc(a($$1.b(arf.q), dxs.a)));
-      $$0.a(dxb.g, new dzg(a($$1.b(arf.r), dxs.a)));
-      $$0.a(dxb.h, new dzx(a($$1.b(arf.G), dxs.a), false));
-      $$0.a(dxb.i, new dzx(a($$1.b(arf.F), dxs.a), true));
-      $$0.a(
-         dxb.j,
-         new eab(
-            a(
-               $$1.b(arf.I),
-               Map.of(blj.a, new dxo(dxo.a.a, bhl.a(new ctk.c(bku.bj, 1, 1, 1))), blj.b, new dxo(dxo.a.a, bhl.a(new ctk.c(bku.m, 1, 1, 1)))),
-               dmn.b.e,
-               dxs.a
+   public static void a(oz<ebk> $$0) {
+      ih<cvf> $$1 = $$0.a(kd.e);
+      ebb $$2 = new ebb(new ebd(cvh.pr, 0.01F), eak.b, cvh.pC.o());
+      ebb $$3 = new ebb(new ebd(cvh.pC, 0.5F), eak.b, cvh.pr.o());
+      a($$0, M, ImmutableList.of());
+      a(
+         $$0,
+         a,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.m, 0.8F), eak.b, cvh.cn.o()),
+                  new ebb(new ebo(ark.p), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cp), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cq), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.m, 0.07F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.cn, 0.07F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.hj, 0.07F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.U, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.n, 0.1F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.cu, 0.1F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.al, 0.02F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.eY, 0.5F), eak.b, cvh.bs.o()),
+                  new ebb[]{
+                     new ebb(
+                        new ear(cvh.eY.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))),
+                        eak.b,
+                        cvh.hL.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))
+                     ),
+                     new ebb(
+                        new ear(cvh.eY.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))),
+                        eak.b,
+                        cvh.hL.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))
+                     ),
+                     new ebb(new ebd(cvh.cB, 0.3F), eak.b, cvh.gt.o()),
+                     new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.gu.o()),
+                     new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.kD.o())
+                  }
+               )
             )
          )
       );
-      $$0.a(dxb.k, new dzz(a($$1.b(arf.H), dxs.b)));
-      $$0.a(
-         dxb.l,
-         new dzr(
-            a(
-               $$1.b(arf.v),
-               Map.of(blj.a, new dxo(dxo.a.b, bhl.a(new ctk.c(bku.V, 1, 2, 4))), blj.e, new dxo(dxo.a.b, ctk.a), blj.d, new dxo(dxo.a.b, ctk.a)),
-               dmn.b.e,
-               dxs.a
+      a(
+         $$0,
+         b,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebo(ark.p), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cp), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cq), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.r, 0.2F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.hP, 0.2F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.Y, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.as, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.hk, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.hn, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.hx, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.eY, 0.5F), eak.b, cvh.bs.o()),
+                  new ebb(
+                     new ear(cvh.eY.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))),
+                     eak.b,
+                     cvh.hL.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))
+                  ),
+                  new ebb[]{
+                     new ebb(
+                        new ear(cvh.eY.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))),
+                        eak.b,
+                        cvh.hL.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))
+                     ),
+                     new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.fe.o())
+                  }
+               )
             )
          )
       );
-      $$0.a(dxb.m, new dzt(a($$1.b(arf.w), dxs.a), dzt.a.b, 0.3F, 0.9F));
-      $$0.a(dxb.n, new dzt(a($$1.b(arf.x), dxs.a), dzt.a.a, 0.3F, 0.9F));
-      $$0.a(dxb.o, new dzn(a($$1.b(arf.Q), Map.of(blj.a, new dxo(dxo.a.a, dzn.d)), dmn.b.h, dxs.a)));
-      $$0.a(dxb.p, new dzp(a($$1.b(arf.R), dmn.b.h, dxs.c), dvr.a(dnl.a(32), dnl.c(2))));
-      $$0.a(dxb.q, new dze(a($$1.b(arf.V), dxs.a)));
-      $$0.a(dxb.r, new dza(a($$1.b(arf.p), dmn.b.d, dxs.a)));
-      $$0.a(dxb.s, new dzh(a($$1.b(arf.S), dxs.a), $$2.b(or.a), 6, dvn.a(dnl.a(33)), false));
-      $$0.a(dxb.t, new dzh(a($$1.b(arf.K), dxs.c), $$2.b(pb.a), 6, dvn.a(dnl.a(0)), true, dmr.a.a));
-      $$0.a(dxb.u, new dzh(a($$1.b(arf.J), dxs.c), $$2.b(ox.a), 6, dvn.a(dnl.a(0)), true, dmr.a.a));
-      $$0.a(dxb.v, new dzh(a($$1.b(arf.L), dxs.c), $$2.b(pe.a), 6, dvn.a(dnl.a(0)), true, dmr.a.a));
-      $$0.a(dxb.w, new dzh(a($$1.b(arf.M), dxs.c), $$2.b(pf.a), 6, dvn.a(dnl.a(0)), true, dmr.a.a));
-      $$0.a(dxb.x, new dzh(a($$1.b(arf.N), dxs.c), $$2.b(pj.a), 6, dvn.a(dnl.a(0)), true, dmr.a.a));
-      $$0.a(
-         dxb.y,
-         new dzv(
-            a($$1.b(arf.E), dxs.a),
-            List.of(new dzv.a(dzu.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new dzv.a(dzu.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      a(
+         $$0,
+         c,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebo(ark.p), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cp), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cq), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.oe), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.o, 0.2F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.ju, 0.4F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.af, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.ax, 0.05F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.eY, 0.5F), eak.b, cvh.bs.o()),
+                  new ebb(
+                     new ear(cvh.eY.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))),
+                     eak.b,
+                     cvh.hL.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))
+                  ),
+                  new ebb(
+                     new ear(cvh.eY.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))),
+                     eak.b,
+                     cvh.hL.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))
+                  ),
+                  new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.gt.o()),
+                  new ebb[]{new ebb(new ebd(cvh.cB, 0.8F), eak.b, cvh.gu.o())}
+               )
+            )
          )
       );
-      $$0.a(dxb.z, new dzv(a($$1.b(arf.z), dxs.a), new dzv.a(dzu.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(dxb.A, new dzv(a($$1.b(arf.A), dxs.a), new dzv.a(dzu.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(dxb.B, new dzv(a($$1.b(arf.C), dxs.a), new dzv.a(dzu.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         dxb.C,
-         new dzv(
-            a($$1.b(arf.D), dxs.a),
-            List.of(new dzv.a(dzu.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new dzv.a(dzu.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      a(
+         $$0,
+         d,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.m, 0.8F), eak.b, cvh.cn.o()),
+                  new ebb(new ebo(ark.p), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cp), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cq), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.og), eak.b, cvh.og.o().a(cvt.c, Boolean.valueOf(false))),
+                  new ebb(new ebd(cvh.m, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.V, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.eY, 0.5F), eak.b, cvh.bs.o()),
+                  new ebb(
+                     new ear(cvh.eY.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))),
+                     eak.b,
+                     cvh.hL.o().a(czf.a, Boolean.valueOf(true)).a(czf.c, Boolean.valueOf(true))
+                  ),
+                  new ebb(
+                     new ear(cvh.eY.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))),
+                     eak.b,
+                     cvh.hL.o().a(czf.b, Boolean.valueOf(true)).a(czf.d, Boolean.valueOf(true))
+                  ),
+                  new ebb(new ebd(cvh.cB, 0.3F), eak.b, cvh.fd.o()),
+                  new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.gu.o()),
+                  new ebb[0]
+               )
+            )
          )
       );
-      $$0.a(dxb.D, new dzv(a($$1.b(arf.B), dxs.a), new dzv.a(dzu.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(dxb.E, new dzv(a($$1.b(arf.U), dxs.a), new dzv.a(dzu.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
-      $$0.a(
-         dxb.F,
-         new dzh(
-            a($$1.b(arf.T), Arrays.stream(blj.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dxo(dxo.a.b, bhl.c()))), dmn.b.h, dxs.d),
-            $$2.b(om.a),
-            Optional.of(new agi("city_anchor")),
-            7,
-            dvn.a(dnl.a(-27)),
-            false,
-            Optional.empty(),
-            116,
-            List.of()
+      a(
+         $$0,
+         e,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebo(ark.p), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cp), eak.b, cvh.a.o()),
+                  new ebb(new eap(cvh.cq), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.jS, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.aX, 0.1F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.iA, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.nl, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.ny, 0.08F), eak.b, cvh.bs.o()),
+                  new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.kD.o()),
+                  new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.fe.o())
+               )
+            )
          )
       );
-      $$0.a(dxb.G, new dzh(a($$1.b(arf.O), Map.of(), dmn.b.d, dxs.b), $$2.b(pl.a), 7, dvn.a(dnl.a(-15)), false, dmr.a.a));
+      a($$0, f, ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.m, 0.1F), eak.b, cvh.cn.o())))));
+      a($$0, g, ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.m, 0.2F), eak.b, cvh.cn.o())))));
+      a($$0, h, ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.m, 0.7F), eak.b, cvh.cn.o())))));
+      a(
+         $$0,
+         i,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new eap(cvh.kE), new eap(cvh.G), cvh.n.o()),
+                  new ebb(new ebd(cvh.kE, 0.1F), eak.b, cvh.i.o()),
+                  new ebb(new eap(cvh.i), new eap(cvh.G), cvh.G.o()),
+                  new ebb(new eap(cvh.j), new eap(cvh.G), cvh.G.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         j,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new eap(cvh.kE), new eap(cvh.G), cvh.r.o()),
+                  new ebb(new ebd(cvh.kE, 0.2F), eak.b, cvh.i.o()),
+                  new ebb(new eap(cvh.i), new eap(cvh.G), cvh.G.o()),
+                  new ebb(new eap(cvh.j), new eap(cvh.G), cvh.G.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         k,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new eap(cvh.kE), new eap(cvh.G), cvh.o.o()),
+                  new ebb(new eap(cvh.kE), new eap(cvh.dO), cvh.o.o()),
+                  new ebb(new ebd(cvh.kE, 0.2F), eak.b, cvh.i.o()),
+                  new ebb(new eap(cvh.i), new eap(cvh.G), cvh.G.o()),
+                  new ebb(new eap(cvh.j), new eap(cvh.G), cvh.G.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         l,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.cB, 0.3F), eak.b, cvh.gt.o()),
+                  new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.gu.o()),
+                  new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.kD.o())
+               )
+            )
+         )
+      );
+      a($$0, m, ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.fe.o())))));
+      a(
+         $$0,
+         n,
+         ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.gt.o()), new ebb(new ebd(cvh.cB, 0.8F), eak.b, cvh.gu.o()))))
+      );
+      a(
+         $$0,
+         o,
+         ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.cB, 0.3F), eak.b, cvh.fd.o()), new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.gu.o()))))
+      );
+      a(
+         $$0,
+         p,
+         ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.cB, 0.2F), eak.b, cvh.kD.o()), new ebb(new ebd(cvh.cB, 0.1F), eak.b, cvh.fe.o()))))
+      );
+      a($$0, q, ImmutableList.of(new eaq(0.05F)));
+      a(
+         $$0,
+         r,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.kJ, 0.75F), eak.b, cvh.px.o()), new ebb(new ebd(cvh.px, 0.15F), eak.b, cvh.pw.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         s,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.pw, 0.35F), eak.b, cvh.px.o()), new ebb(new ebd(cvh.py, 0.1F), eak.b, cvh.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         t,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.px.o()), new ebb(new ebd(cvh.pr, 1.0E-4F), eak.b, cvh.a.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         u,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.py, 0.5F), eak.b, cvh.a.o()), new ebb(new ebd(cvh.ch, 0.1F), eak.b, cvh.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         v,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.pw, 0.1F), eak.b, cvh.px.o()), new ebb(new ebd(cvh.pr, 1.0E-4F), eak.b, cvh.a.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         w,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.px.o()),
+                  new ebb(new ebd(cvh.pr, 1.0E-4F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.ch, 0.3F), eak.b, cvh.px.o()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         x,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.pw, 0.4F), eak.b, cvh.px.o()),
+                  new ebb(new ebd(cvh.pr, 0.01F), eak.b, cvh.px.o()),
+                  new ebb(new ebd(cvh.pw, 1.0E-4F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.pr, 1.0E-4F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.ch, 0.3F), eak.b, cvh.px.o()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         y,
+         ImmutableList.of(
+            new ebf(ImmutableList.of(new ebb(new ebd(cvh.py, 0.5F), eak.b, cvh.a.o()), new ebb(new ebd(cvh.ch, 0.6F), eak.b, cvh.px.o()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         z,
+         ImmutableList.of(new ebf(ImmutableList.of(new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.px.o()), new ebb(new ebd(cvh.pr, 1.0E-4F), eak.b, cvh.a.o()))))
+      );
+      a(
+         $$0,
+         A,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.px.o()),
+                  new ebb(new ebd(cvh.pw, 0.15F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.pr.o())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         B,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.pw, 0.01F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.pw, 0.5F), eak.b, cvh.px.o()),
+                  new ebb(new ebd(cvh.pw, 0.3F), eak.b, cvh.pr.o()),
+                  $$3
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         C,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(new ebb(new ebd(cvh.ch, 0.3F), eak.b, cvh.px.o()), new ebb(eak.b, eak.b, new eal(0.0F, 0.05F, 0, 100, ib.a.b), cvh.a.o()), $$3)
+            )
+         )
+      );
+      a($$0, D, ImmutableList.of(new eaq(0.9F), new ebc(ark.bH)));
+      a($$0, E, ImmutableList.of(new eaq(0.1F), new ebc(ark.bH)));
+      a($$0, F, ImmutableList.of(new eaq(0.1F), new ebf(ImmutableList.of(new ebb(new eap(cvh.R), eak.b, cvh.cy.o()))), new ebc(ark.bH)));
+      a(
+         $$0,
+         G,
+         ImmutableList.of(
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.sW, 0.3F), eak.b, cvh.tb.o()),
+                  new ebb(new ebd(cvh.sS, 0.3F), eak.b, cvh.tc.o()),
+                  new ebb(new ebd(cvh.of, 0.05F), eak.b, cvh.a.o())
+               )
+            ),
+            new ebc(ark.bH)
+         )
+      );
+      a(
+         $$0,
+         H,
+         ImmutableList.of(
+            new eaq($$1.b(ark.bN), 0.95F),
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.sW, 0.3F), eak.b, cvh.tb.o()),
+                  new ebb(new ebd(cvh.sS, 0.3F), eak.b, cvh.tc.o()),
+                  new ebb(new ebd(cvh.of, 0.05F), eak.b, cvh.a.o())
+               )
+            ),
+            new ebc(ark.bH)
+         )
+      );
+      a(
+         $$0,
+         I,
+         ImmutableList.of(
+            new eaq($$1.b(ark.bN), 0.95F),
+            new ebf(
+               ImmutableList.of(
+                  new ebb(new ebd(cvh.sW, 0.3F), eak.b, cvh.tb.o()),
+                  new ebb(new ebd(cvh.sS, 0.3F), eak.b, cvh.tc.o()),
+                  new ebb(new ebd(cvh.sU, 0.3F), eak.b, cvh.a.o()),
+                  new ebb(new ebd(cvh.of, 0.05F), eak.b, cvh.a.o())
+               )
+            ),
+            new ebc(ark.bH)
+         )
+      );
+      a(
+         $$0,
+         J,
+         List.of(
+            new ebf(
+               List.of(
+                  new ebb(new ebd(cvh.L, 0.2F), eak.b, cvh.j.o()),
+                  new ebb(new ebd(cvh.L, 0.1F), eak.b, cvh.k.o()),
+                  new ebb(new ebd(cvh.eM, 0.1F), eak.b, cvh.eL.o())
+               )
+            ),
+            a(efa.aE, 6),
+            a(efa.aF, 3)
+         )
+      );
+      a(
+         $$0,
+         K,
+         List.of(
+            new ebf(
+               List.of(
+                  new ebb(new ebd(cvh.L, 0.2F), eak.b, cvh.j.o()),
+                  new ebb(new ebd(cvh.L, 0.1F), eak.b, cvh.k.o()),
+                  new ebb(new ebd(cvh.eM, 0.1F), eak.b, cvh.eL.o())
+               )
+            ),
+            a(efa.aE, 2)
+         )
+      );
+      a($$0, L, List.of(a(efa.aE, 2)));
+   }
+
+   private static eas a(agm $$0, int $$1) {
+      return new eas(new ebf(List.of(new ebb(new ebo(ark.cl), eak.b, eay.b, cvh.M.o(), new ebq($$0)))), bid.a($$1));
    }
 }

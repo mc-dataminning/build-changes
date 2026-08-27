@@ -1,88 +1,17 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+public interface eyv extends ewo, eyy {
+   eyv.a q();
 
-public class eyv {
-   int a;
-   final Map<eyv.a, eyv.b> b = Maps.newTreeMap(Comparator.<eyv.a, eyr>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
-
-   public void a(Consumer<eys> $$0) {
-      this.a++;
-      $$0.accept(new eyv.c(0));
+   default boolean aM_() {
+      return true;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
+   public static enum a {
+      a,
+      b,
+      c;
 
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
-
-   static class a {
-      final eyr a;
-      final int b;
-
-      a(eyr $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   static class b {
-      eyu<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = eyu.a;
-         this.b = -1;
-      }
-
-      public eyv.b a(int $$0, eyu<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements eys {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(eyr $$0, eyu<?> $$1) {
-         eyv.this.b.computeIfAbsent(new eyv.a($$0, this.b), $$0x -> new eyv.b()).a(eyv.this.a, $$1);
-      }
-
-      @Override
-      public eys a() {
-         return eyv.this.new c(this.b + 1);
+      public boolean a() {
+         return this == c;
       }
    }
 }

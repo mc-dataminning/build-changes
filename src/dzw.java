@@ -1,105 +1,60 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import java.util.Objects;
+import java.util.Optional;
 
-public class dzw {
-   static final ht a = new ht(4, 0, 15);
-   private static final agi[] b = new agi[]{
-      new agi("shipwreck/with_mast"),
-      new agi("shipwreck/sideways_full"),
-      new agi("shipwreck/sideways_fronthalf"),
-      new agi("shipwreck/sideways_backhalf"),
-      new agi("shipwreck/rightsideup_full"),
-      new agi("shipwreck/rightsideup_fronthalf"),
-      new agi("shipwreck/rightsideup_backhalf"),
-      new agi("shipwreck/with_mast_degraded"),
-      new agi("shipwreck/rightsideup_full_degraded"),
-      new agi("shipwreck/rightsideup_fronthalf_degraded"),
-      new agi("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final agi[] c = new agi[]{
-      new agi("shipwreck/with_mast"),
-      new agi("shipwreck/upsidedown_full"),
-      new agi("shipwreck/upsidedown_fronthalf"),
-      new agi("shipwreck/upsidedown_backhalf"),
-      new agi("shipwreck/sideways_full"),
-      new agi("shipwreck/sideways_fronthalf"),
-      new agi("shipwreck/sideways_backhalf"),
-      new agi("shipwreck/rightsideup_full"),
-      new agi("shipwreck/rightsideup_fronthalf"),
-      new agi("shipwreck/rightsideup_backhalf"),
-      new agi("shipwreck/with_mast_degraded"),
-      new agi("shipwreck/upsidedown_full_degraded"),
-      new agi("shipwreck/upsidedown_fronthalf_degraded"),
-      new agi("shipwreck/upsidedown_backhalf_degraded"),
-      new agi("shipwreck/sideways_full_degraded"),
-      new agi("shipwreck/sideways_fronthalf_degraded"),
-      new agi("shipwreck/sideways_backhalf_degraded"),
-      new agi("shipwreck/rightsideup_full_degraded"),
-      new agi("shipwreck/rightsideup_fronthalf_degraded"),
-      new agi("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, agi> d = Map.of("map_chest", eev.H, "treasure_chest", eev.J, "supply_chest", eev.I);
+public class dzw extends dxm {
+   public static final Codec<dzw> d = a(dzw::new);
 
-   public static void a(ebi $$0, ht $$1, dbm $$2, dxm $$3, ats $$4, boolean $$5) {
-      agi $$6 = ac.a($$5 ? b : c, $$4);
-      $$3.a(new dzw.a($$0, $$6, $$1, $$2, $$5));
+   public dzw(dxm.c $$0) {
+      super($$0);
    }
 
-   public static class a extends dxr {
-      private final boolean h;
+   @Override
+   public Optional<dxm.b> a(dxm.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
 
-      public a(ebi $$0, agi $$1, ht $$2, dbm $$3, boolean $$4) {
-         super(dxy.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
-
-      public a(ebi $$0, rz $$1) {
-         super(dxy.ab, $$1, $$0, $$1x -> a(dbm.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
-      }
-
-      @Override
-      protected void a(dxx $$0, rz $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static ebd a(dbm $$0) {
-         return new ebd().a($$0).a(czw.a).a(dzw.a).a(eaj.d);
-      }
-
-      @Override
-      protected void a(String $$0, ht $$1, csp $$2, ats $$3, dwz $$4) {
-         agi $$5 = dzw.d.get($$0);
-         if ($$5 != null) {
-            dgh.a($$2, $$3, $$1.d(), $$5);
+      for (ig<ctd> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(arj.W)) {
+            return Optional.empty();
          }
       }
 
-      @Override
-      public void a(csu $$0, css $$1, djf $$2, ats $$3, dwz $$4, crh $$5, ht $$6) {
-         int $$7 = $$0.ak();
-         int $$8 = 0;
-         iw $$9 = this.b.a();
-         dmr.a $$10 = this.h ? dmr.a.a : dmr.a.c;
-         int $$11 = $$9.u() * $$9.w();
-         if ($$11 == 0) {
-            $$8 = $$0.a($$10, this.d.u(), this.d.w());
-         } else {
-            ht $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+      return a($$0, dmw.a.c, $$1x -> a($$1x, $$0));
+   }
 
-            for (ht $$13 : ht.a(this.d, $$12)) {
-               int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-               $$8 += $$14;
-               $$7 = Math.min($$7, $$14);
-            }
+   private static dxq a(crm $$0, dnv $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ib $$4 = ib.c.a.a($$1);
+      return new dzv.h($$1, $$2, $$3, $$4);
+   }
 
-            $$8 /= $$11;
-         }
+   private static void a(dye $$0, dxm.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
 
-         int $$15 = this.h ? $$7 - $$9.v() / 2 - $$3.a(3) : $$8;
-         this.d = new ht(this.d.u(), $$15, this.d.w());
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public static dyb a(crm $$0, long $$1, dyb $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dnv $$3 = new dnv(new dmx(dnl.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         dxq $$4 = $$2.c().get(0);
+         dxe $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ib $$8 = ib.c.a.a($$3);
+         ib $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         dxq $$10 = new dzv.h($$3, $$6, $$7, $$9);
+         dye $$11 = new dye();
+         $$11.a($$10);
+         return $$11.a();
       }
+   }
+
+   @Override
+   public dxv<?> e() {
+      return dxv.j;
    }
 }

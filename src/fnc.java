@@ -1,49 +1,30 @@
-public class fnc extends fpj {
-   private final fpe a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   fnc(flj $$0, double $$1, double $$2, double $$3, double $$4, fpe $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class fnc {
+   public static final fnc a = new fnc(fnb.b, fnd.createDnsSrvRedirectHandler(), fmy.a());
+   private final fnb b;
+   private final fnd c;
+   private final fmy d;
+
+   @VisibleForTesting
+   fnc(fnb $$0, fnd $$1, fmy $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public Optional<fmz> a(fna $$0) {
+      Optional<fmz> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fna> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+         return $$1;
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public fom b() {
-      return fom.d;
-   }
-
-   public static class a implements fol<jv> {
-      private final fpe a;
-
-      public a(fpe $$0) {
-         this.a = $$0;
-      }
-
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnc($$1, $$2, $$3, $$4, $$5, this.a);
+         return Optional.empty();
       }
    }
 }

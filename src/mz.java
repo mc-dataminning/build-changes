@@ -1,73 +1,140 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class mz {
-   private final mr a;
-   private final cok b;
-   private final cok c;
-   private final cok d;
-   private final Map<String, am<?>> e = new LinkedHashMap<>();
-   private final cos<?> f;
+public class mz extends ms implements mu {
+   private final mv b;
+   private final clj c;
+   private final int d;
+   private final List<coq> e = Lists.newArrayList();
+   private final Map<String, am<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
 
-   public mz(cos<?> $$0, mr $$1, cok $$2, cok $$3, cok $$4) {
-      this.a = $$1;
-      this.f = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+   public mz(mv $$0, cse $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1.k();
+      this.d = $$2;
    }
 
-   public static mz a(cok $$0, cok $$1, cok $$2, mr $$3) {
-      return new mz(cos.v, $$3, $$0, $$1, $$2);
+   public static mz a(mv $$0, cse $$1) {
+      return new mz($$0, $$1, 1);
    }
 
-   public mz a(String $$0, am<?> $$1) {
-      this.e.put($$0, $$1);
+   public static mz a(mv $$0, cse $$1, int $$2) {
+      return new mz($$0, $$1, $$2);
+   }
+
+   public mz a(arz<clj> $$0) {
+      return this.a(coq.a($$0));
+   }
+
+   public mz b(cse $$0) {
+      return this.a($$0, 1);
+   }
+
+   public mz a(cse $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(coq.a($$0));
+      }
+
       return this;
    }
 
-   public void a(ms $$0, agi $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.e.forEach($$2::a);
-      $$0.a(new mz.a($$1, this.f, this.b, this.c, this.d, $$2.b($$1.d("recipes/" + this.a.a() + "/"))));
+   public mz a(coq $$0) {
+      return this.a($$0, 1);
    }
 
-   private void a(agi $$0) {
-      if (this.e.isEmpty()) {
+   public mz a(coq $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public mz b(String $$0, am<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
+   }
+
+   public mz b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   @Override
+   public clj a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(mw $$0, agm $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      $$0.a(new mz.a($$1, this.c, this.d, this.g == null ? "" : this.g, a(this.b), this.e, $$2.b($$1.d("recipes/" + this.b.a() + "/"))));
+   }
+
+   private void a(agm $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(agi a, cos<?> b, cok c, cok d, cok e, af f) implements mp {
+   public static class a extends ms.a {
+      private final agm a;
+      private final clj b;
+      private final int c;
+      private final String d;
+      private final List<coq> e;
+      private final af f;
+
+      public a(agm $$0, clj $$1, int $$2, String $$3, coh $$4, List<coq> $$5, af $$6) {
+         super($$4);
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$5;
+         this.f = $$6;
+      }
+
       @Override
       public void a(JsonObject $$0) {
-         $$0.add("template", this.c.a(true));
-         $$0.add("base", this.d.a(true));
-         $$0.add("addition", this.e.a(true));
+         super.a($$0);
+         if (!this.d.isEmpty()) {
+            $$0.addProperty("group", this.d);
+         }
+
+         JsonArray $$1 = new JsonArray();
+
+         for (coq $$2 : this.e) {
+            $$1.add($$2.a(false));
+         }
+
+         $$0.add("ingredients", $$1);
+         JsonObject $$3 = new JsonObject();
+         $$3.addProperty("item", kc.i.b(this.b).toString());
+         if (this.c > 1) {
+            $$3.addProperty("count", this.c);
+         }
+
+         $$0.add("result", $$3);
       }
 
       @Override
-      public agi b() {
+      public cox<?> c() {
+         return cox.b;
+      }
+
+      @Override
+      public agm b() {
          return this.a;
-      }
-
-      @Override
-      public cos<?> c() {
-         return this.b;
-      }
-
-      public cok e() {
-         return this.c;
-      }
-
-      public cok f() {
-         return this.d;
-      }
-
-      public cok g() {
-         return this.e;
       }
 
       @Override

@@ -1,9 +1,30 @@
-public class fdf extends fbu<cij> {
-   private static final agi y = new agi("container/smoker/lit_progress");
-   private static final agi z = new agi("container/smoker/burn_progress");
-   private static final agi A = new agi("textures/gui/container/smoker.png");
+public class fdf extends fbx {
+   private final crg m;
 
-   public fdf(cij $$0, cdt $$1, ur $$2) {
-      super($$0, new feq(), $$1, $$2, A, y, z);
+   public fdf(crg $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public crg l() {
+      return this.m;
+   }
+
+   @Override
+   int C() {
+      return 150;
+   }
+
+   @Override
+   protected void aQ_() {
+      super.aQ_();
+      this.a.a(this.l().m());
+   }
+
+   @Override
+   protected void a(crg $$0) {
+      if ($$0 instanceof cfy.a $$1) {
+         this.f.I().b(new aed($$1.h().aj(), this.a.a(), $$0.o()));
+      }
    }
 }

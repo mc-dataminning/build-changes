@@ -1,381 +1,398 @@
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.Reader;
+import java.util.List;
 import java.util.Map;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fqp {
-   private static final Map<cva, frc> a = ac.a(Maps.newHashMap(), $$0 -> {
-      frc $$1 = frc.t();
-      $$0.put(cvc.fI, $$1);
-      frc $$2 = frc.d();
-      $$0.put(cvc.i, $$2);
-      $$0.put(cvc.eW, $$2);
-      $$0.put(cvc.eY, $$2);
-      $$0.put(cvc.fH, $$2);
-      $$0.put(cvc.hc, $$2);
-      $$0.put(cvc.eX, $$2);
-      $$0.put(cvc.aH, $$2);
-      $$0.put(cvc.aE, $$2);
-      $$0.put(cvc.aF, $$2);
-      $$0.put(cvc.aI, $$2);
-      $$0.put(cvc.aJ, $$2);
-      $$0.put(cvc.aG, $$2);
-      $$0.put(cvc.aK, $$2);
-      $$0.put(cvc.aM, $$2);
-      $$0.put(cvc.aN, $$2);
-      $$0.put(cvc.ac, $$2);
-      $$0.put(cvc.aL, $$2);
-      frc $$3 = frc.e();
-      $$0.put(cvc.x, $$3);
-      $$0.put(cvc.y, $$3);
-      $$0.put(cvc.z, $$3);
-      $$0.put(cvc.A, $$3);
-      $$0.put(cvc.B, $$3);
-      $$0.put(cvc.C, $$3);
-      $$0.put(cvc.D, $$3);
-      $$0.put(cvc.aQ, $$3);
-      $$0.put(cvc.aZ, $$3);
-      $$0.put(cvc.ba, $$3);
-      $$0.put(cvc.bb, $$3);
-      $$0.put(cvc.bc, $$3);
-      $$0.put(cvc.bd, $$3);
-      $$0.put(cvc.be, $$3);
-      $$0.put(cvc.bf, $$3);
-      $$0.put(cvc.bg, $$3);
-      $$0.put(cvc.bh, $$3);
-      $$0.put(cvc.bi, $$3);
-      $$0.put(cvc.bj, $$3);
-      $$0.put(cvc.bk, $$3);
-      $$0.put(cvc.bl, $$3);
-      $$0.put(cvc.bm, $$3);
-      $$0.put(cvc.bn, $$3);
-      $$0.put(cvc.bo, $$3);
-      $$0.put(cvc.bp, $$3);
-      $$0.put(cvc.bq, $$3);
-      $$0.put(cvc.bs, $$3);
-      $$0.put(cvc.bt, $$3);
-      $$0.put(cvc.bu, $$3);
-      $$0.put(cvc.bv, $$3);
-      $$0.put(cvc.bw, $$3);
-      $$0.put(cvc.bx, $$3);
-      $$0.put(cvc.bR, $$3);
-      $$0.put(cvc.bT, $$3);
-      $$0.put(cvc.bU, $$3);
-      $$0.put(cvc.bV, $$3);
-      $$0.put(cvc.bW, $$3);
-      $$0.put(cvc.bX, $$3);
-      $$0.put(cvc.bY, $$3);
-      $$0.put(cvc.bZ, $$3);
-      $$0.put(cvc.ca, $$3);
-      $$0.put(cvc.cb, $$3);
-      $$0.put(cvc.cc, $$3);
-      $$0.put(cvc.cd, $$3);
-      $$0.put(cvc.ce, $$3);
-      $$0.put(cvc.cf, $$3);
-      $$0.put(cvc.cg, $$3);
-      $$0.put(cvc.cp, $$3);
-      $$0.put(cvc.cq, $$3);
-      $$0.put(cvc.ea, $$3);
-      $$0.put(cvc.eb, $$3);
-      $$0.put(cvc.cr, $$3);
-      $$0.put(cvc.cs, $$3);
-      $$0.put(cvc.ct, $$3);
-      $$0.put(cvc.cw, $$3);
-      $$0.put(cvc.cB, $$3);
-      $$0.put(cvc.cN, $$3);
-      $$0.put(cvc.cO, $$3);
-      $$0.put(cvc.cP, $$3);
-      $$0.put(cvc.dy, $$3);
-      $$0.put(cvc.dK, $$3);
-      $$0.put(cvc.dL, $$3);
-      $$0.put(cvc.dQ, $$3);
-      $$0.put(cvc.dS, $$3);
-      $$0.put(cvc.eh, $$3);
-      $$0.put(cvc.ey, $$3);
-      $$0.put(cvc.ez, $$3);
-      $$0.put(cvc.eA, $$3);
-      $$0.put(cvc.eB, $$3);
-      $$0.put(cvc.eC, $$3);
-      $$0.put(cvc.eD, $$3);
-      $$0.put(cvc.eE, $$3);
-      $$0.put(cvc.oM, $$3);
-      $$0.put(cvc.oN, $$3);
-      $$0.put(cvc.eF, $$3);
-      $$0.put(cvc.eG, $$3);
-      $$0.put(cvc.rU, $$3);
-      $$0.put(cvc.rV, $$3);
-      $$0.put(cvc.rX, $$3);
-      $$0.put(cvc.rW, $$3);
-      $$0.put(cvc.rY, $$3);
-      $$0.put(cvc.rZ, $$3);
-      $$0.put(cvc.sb, $$3);
-      $$0.put(cvc.sa, $$3);
-      $$0.put(cvc.fb, $$3);
-      $$0.put(cvc.fc, $$3);
-      $$0.put(cvc.fd, $$3);
-      $$0.put(cvc.fe, $$3);
-      $$0.put(cvc.ff, $$3);
-      $$0.put(cvc.fg, $$3);
-      $$0.put(cvc.fm, $$3);
-      $$0.put(cvc.fq, $$3);
-      $$0.put(cvc.fs, $$3);
-      $$0.put(cvc.fC, $$3);
-      $$0.put(cvc.fO, $$3);
-      $$0.put(cvc.fR, $$3);
-      $$0.put(cvc.fT, $$3);
-      $$0.put(cvc.fU, $$3);
-      $$0.put(cvc.fV, $$3);
-      $$0.put(cvc.fW, $$3);
-      $$0.put(cvc.fX, $$3);
-      $$0.put(cvc.fY, $$3);
-      $$0.put(cvc.fZ, $$3);
-      $$0.put(cvc.ga, $$3);
-      $$0.put(cvc.gb, $$3);
-      $$0.put(cvc.gc, $$3);
-      $$0.put(cvc.gd, $$3);
-      $$0.put(cvc.ge, $$3);
-      $$0.put(cvc.gf, $$3);
-      $$0.put(cvc.gg, $$3);
-      $$0.put(cvc.gh, $$3);
-      $$0.put(cvc.gi, $$3);
-      $$0.put(cvc.gj, $$3);
-      $$0.put(cvc.gk, $$3);
-      $$0.put(cvc.gl, $$3);
-      $$0.put(cvc.gm, $$3);
-      $$0.put(cvc.gn, $$3);
-      $$0.put(cvc.go, $$3);
-      $$0.put(cvc.gp, $$3);
-      $$0.put(cvc.gq, $$3);
-      $$0.put(cvc.gr, $$3);
-      $$0.put(cvc.gs, $$3);
-      $$0.put(cvc.ti, $$3);
-      $$0.put(cvc.tj, $$3);
-      $$0.put(cvc.fS, $$3);
-      $$0.put(cvc.gt, $$3);
-      $$0.put(cvc.gu, $$3);
-      $$0.put(cvc.gY, $$3);
-      $$0.put(cvc.hh, $$3);
-      $$0.put(cvc.hY, $$3);
-      $$0.put(cvc.iD, $$3);
-      $$0.put(cvc.iE, $$3);
-      $$0.put(cvc.iF, $$3);
-      $$0.put(cvc.iG, $$3);
-      $$0.put(cvc.iH, $$3);
-      $$0.put(cvc.iI, $$3);
-      $$0.put(cvc.kl, $$3);
-      $$0.put(cvc.km, $$3);
-      $$0.put(cvc.kn, $$3);
-      $$0.put(cvc.ko, $$3);
-      $$0.put(cvc.kp, $$3);
-      $$0.put(cvc.kq, $$3);
-      $$0.put(cvc.kr, $$3);
-      $$0.put(cvc.ks, $$3);
-      $$0.put(cvc.rM, $$3);
-      $$0.put(cvc.rN, $$3);
-      $$0.put(cvc.rP, $$3);
-      $$0.put(cvc.rO, $$3);
-      $$0.put(cvc.rQ, $$3);
-      $$0.put(cvc.rR, $$3);
-      $$0.put(cvc.rT, $$3);
-      $$0.put(cvc.rS, $$3);
-      $$0.put(cvc.kt, $$3);
-      $$0.put(cvc.ku, $$3);
-      $$0.put(cvc.kv, $$3);
-      $$0.put(cvc.bS, $$3);
-      $$0.put(cvc.kA, $$3);
-      $$0.put(cvc.kC, $$3);
-      $$0.put(cvc.kB, $$3);
-      $$0.put(cvc.kD, $$3);
-      $$0.put(cvc.mc, $$3);
-      $$0.put(cvc.md, $$3);
-      $$0.put(cvc.mf, $$3);
-      $$0.put(cvc.mr, $$3);
-      $$0.put(cvc.ms, $$3);
-      $$0.put(cvc.mt, $$3);
-      $$0.put(cvc.mu, $$3);
-      $$0.put(cvc.mv, $$3);
-      $$0.put(cvc.mw, $$3);
-      $$0.put(cvc.mx, $$3);
-      $$0.put(cvc.my, $$3);
-      $$0.put(cvc.mz, $$3);
-      $$0.put(cvc.mA, $$3);
-      $$0.put(cvc.mB, $$3);
-      $$0.put(cvc.mC, $$3);
-      $$0.put(cvc.mD, $$3);
-      $$0.put(cvc.mE, $$3);
-      $$0.put(cvc.mF, $$3);
-      $$0.put(cvc.mG, $$3);
-      $$0.put(cvc.mH, $$3);
-      $$0.put(cvc.mI, $$3);
-      $$0.put(cvc.mJ, $$3);
-      $$0.put(cvc.mK, $$3);
-      $$0.put(cvc.mL, $$3);
-      $$0.put(cvc.mM, $$3);
-      $$0.put(cvc.mN, $$3);
-      $$0.put(cvc.mO, $$3);
-      $$0.put(cvc.mP, $$3);
-      $$0.put(cvc.mQ, $$3);
-      $$0.put(cvc.mR, $$3);
-      $$0.put(cvc.mS, $$3);
-      $$0.put(cvc.mT, $$3);
-      $$0.put(cvc.mU, $$3);
-      $$0.put(cvc.mV, $$3);
-      $$0.put(cvc.mX, $$3);
-      $$0.put(cvc.mY, $$3);
-      $$0.put(cvc.mZ, $$3);
-      $$0.put(cvc.na, $$3);
-      $$0.put(cvc.nS, $$3);
-      $$0.put(cvc.oc, $$3);
-      $$0.put(cvc.oe, $$3);
-      $$0.put(cvc.of, $$3);
-      $$0.put(cvc.og, $$3);
-      $$0.put(cvc.oh, $$3);
-      $$0.put(cvc.oi, $$3);
-      $$0.put(cvc.oz, $$3);
-      $$0.put(cvc.oA, $$3);
-      $$0.put(cvc.oB, $$3);
-      $$0.put(cvc.oC, $$3);
-      $$0.put(cvc.or, $$3);
-      $$0.put(cvc.ox, $$3);
-      $$0.put(cvc.oo, $$3);
-      $$0.put(cvc.oD, $$3);
-      $$0.put(cvc.oq, $$3);
-      $$0.put(cvc.pm, $$3);
-      $$0.put(cvc.pn, $$3);
-      $$0.put(cvc.po, $$3);
-      $$0.put(cvc.pp, $$3);
-      $$0.put(cvc.oU, $$3);
-      $$0.put(cvc.oV, $$3);
-      $$0.put(cvc.st, $$3);
-      $$0.put(cvc.qy, $$3);
-      $$0.put(cvc.qx, $$3);
-      $$0.put(cvc.qw, $$3);
-      $$0.put(cvc.qv, $$3);
-      $$0.put(cvc.ss, $$3);
-      $$0.put(cvc.sv, $$3);
-      $$0.put(cvc.sw, $$3);
-      $$0.put(cvc.sx, $$3);
-      $$0.put(cvc.sz, $$3);
-      $$0.put(cvc.sy, $$3);
-      $$0.put(cvc.sA, $$3);
-      $$0.put(cvc.sB, $$3);
-      $$0.put(cvc.sD, $$3);
-      $$0.put(cvc.sE, $$3);
-      $$0.put(cvc.sF, $$3);
-      $$0.put(cvc.sG, $$3);
-      $$0.put(cvc.qQ, $$3);
-      $$0.put(cvc.qR, $$3);
-      $$0.put(cvc.qT, $$3);
-      $$0.put(cvc.qV, $$3);
-      $$0.put(cvc.E, $$3);
-      $$0.put(cvc.tn, $$3);
-      $$0.put(cvc.sc, $$3);
-      $$0.put(cvc.sd, $$3);
-      $$0.put(cvc.se, $$3);
-      $$0.put(cvc.sf, $$3);
-      $$0.put(cvc.sg, $$3);
-      $$0.put(cvc.sh, $$3);
-      $$0.put(cvc.si, $$3);
-      $$0.put(cvc.sj, $$3);
-      frc $$4 = frc.f();
-      $$0.put(cvc.dO, $$4);
-      $$0.put(cvc.ed, $$4);
-      $$0.put(cvc.ei, $$4);
-      $$0.put(cvc.ej, $$4);
-      $$0.put(cvc.ek, $$4);
-      $$0.put(cvc.el, $$4);
-      $$0.put(cvc.em, $$4);
-      $$0.put(cvc.en, $$4);
-      $$0.put(cvc.eo, $$4);
-      $$0.put(cvc.ep, $$4);
-      $$0.put(cvc.eq, $$4);
-      $$0.put(cvc.er, $$4);
-      $$0.put(cvc.es, $$4);
-      $$0.put(cvc.et, $$4);
-      $$0.put(cvc.eu, $$4);
-      $$0.put(cvc.ev, $$4);
-      $$0.put(cvc.ew, $$4);
-      $$0.put(cvc.ex, $$4);
-      $$0.put(cvc.hz, $$4);
-      $$0.put(cvc.hA, $$4);
-      $$0.put(cvc.hB, $$4);
-      $$0.put(cvc.hC, $$4);
-      $$0.put(cvc.hD, $$4);
-      $$0.put(cvc.hE, $$4);
-      $$0.put(cvc.hF, $$4);
-      $$0.put(cvc.hG, $$4);
-      $$0.put(cvc.hH, $$4);
-      $$0.put(cvc.hI, $$4);
-      $$0.put(cvc.hJ, $$4);
-      $$0.put(cvc.hK, $$4);
-      $$0.put(cvc.hL, $$4);
-      $$0.put(cvc.hM, $$4);
-      $$0.put(cvc.hN, $$4);
-      $$0.put(cvc.hO, $$4);
-      $$0.put(cvc.hV, $$4);
-      $$0.put(cvc.pg, $$4);
-      $$0.put(cvc.kI, $$4);
-      $$0.put(cvc.nd, $$4);
-      $$0.put(cvc.qO, $$4);
-   });
-   private static final Map<ecr, frc> b = ac.a(Maps.newHashMap(), $$0 -> {
-      frc $$1 = frc.f();
-      $$0.put(ect.b, $$1);
-      $$0.put(ect.c, $$1);
-   });
-   private static boolean c;
+public class fqp implements enm, AutoCloseable {
+   private static final String a = "shaders/program/";
+   private static final Logger b = LogUtils.getLogger();
+   private static final enk c = new enk();
+   private static final boolean d = true;
+   private static fqp e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<ens> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, ens> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final enl p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final enn s;
+   private final enn t;
 
-   public static frc a(dhi $$0) {
-      cva $$1 = $$0.b();
-      if ($$1 instanceof czj) {
-         return c ? frc.d() : frc.c();
+   public fqp(apl $$0, String $$1) throws IOException {
+      agm $$2 = new agm("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      apj $$3 = $$0.getResourceOrThrow($$2);
+
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = atg.a($$4);
+         String $$6 = atg.i($$5, "vertex");
+         String $$7 = atg.i($$5, "fragment");
+         JsonArray $$8 = atg.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  agp $$12 = agp.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = atg.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(atg.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  agp $$17 = agp.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = atg.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  agp $$22 = agp.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(atg.a($$5, "blend", null));
+         this.s = a($$0, enp.a.a, $$6);
+         this.t = a($$0, enp.a.b, $$7);
+         this.m = enq.a();
+         enq.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = ens.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         agp $$26 = agp.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
+      }
+
+      this.b();
+   }
+
+   public static enn a(apl $$0, enp.a $$1, String $$2) throws IOException {
+      enp $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof enn)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
       } else {
-         frc $$2 = a.get($$1);
-         return $$2 != null ? $$2 : frc.c();
+         enn $$7;
+         if ($$3 == null) {
+            agm $$4 = new agm("shaders/program/" + $$2 + $$1.b());
+            apj $$5 = $$0.getResourceOrThrow($$4);
+
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = enn.a($$1, $$2, $$6, $$5.b());
+            }
+         } else {
+            $$7 = (enn)$$3;
+         }
+
+         return $$7;
       }
    }
 
-   public static frc b(dhi $$0) {
-      cva $$1 = $$0.b();
-      if ($$1 instanceof czj) {
-         return c ? frc.d() : frc.c();
+   public static enl a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new enl();
       } else {
-         frc $$2 = a.get($$1);
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (atg.a($$0, "func")) {
+            $$1 = enl.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (atg.a($$0, "srcrgb")) {
+            $$2 = enl.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (atg.a($$0, "dstrgb")) {
+            $$3 = enl.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (atg.a($$0, "srcalpha")) {
+            $$4 = enl.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (atg.a($$0, "dstalpha")) {
+            $$5 = enl.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new enl();
+         } else {
+            return $$7 ? new enl($$2, $$3, $$4, $$5, $$1) : new enl($$2, $$3, $$1);
+         }
+      }
+   }
+
+   @Override
+   public void close() {
+      for (ens $$0 : this.j) {
+         $$0.close();
+      }
+
+      enq.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      enq.a(0);
+      f = -1;
+      e = null;
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
+         }
+      }
+   }
+
+   public void g() {
+      RenderSystem.assertOnGameThread();
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         enq.a(this.m);
+         f = this.m;
+      }
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
          if ($$2 != null) {
-            return $$2 == frc.f() ? frc.g() : $$2;
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               ens.b(this.i.get($$0), $$0);
+            }
+         }
+      }
+
+      for (ens $$4 : this.j) {
+         $$4.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.o = true;
+   }
+
+   @Nullable
+   public ens a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public enk b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      ens $$1 = this.a($$0);
+      return (enk)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = ens.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
          } else {
-            return frc.c();
+            this.i.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
+      }
+
+      for (ens $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = ens.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
          }
       }
    }
 
-   public static frc a(dhi $$0, boolean $$1) {
-      frc $$2 = a($$0);
-      if ($$2 == frc.f()) {
-         if (!etd.L()) {
-            return frj.k();
-         } else {
-            return $$1 ? frj.k() : frj.j();
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = atg.m($$0, "sampler");
+      String $$2 = atg.i($$1, "name");
+      if (!atg.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
+      }
+   }
+
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws agp {
+      JsonObject $$1 = atg.m($$0, "uniform");
+      String $$2 = atg.i($$1, "name");
+      int $$3 = ens.a(atg.i($$1, "type"));
+      int $$4 = atg.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = atg.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new agp("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = atg.e($$8, "value");
+            } catch (Exception var13) {
+               agp $$10 = agp.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
          }
-      } else {
-         return frj.i();
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         ens $$12 = new ens($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
       }
    }
 
-   public static frc a(clj $$0, boolean $$1) {
-      cle $$2 = $$0.d();
-      if ($$2 instanceof cjc) {
-         cva $$3 = ((cjc)$$2).e();
-         return a($$3.o(), $$1);
-      } else {
-         return $$1 ? frj.k() : frj.j();
-      }
+   @Override
+   public enp c() {
+      return this.s;
    }
 
-   public static frc a(ecs $$0) {
-      frc $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : frc.c();
+   @Override
+   public enp d() {
+      return this.t;
    }
 
-   public static void a(boolean $$0) {
-      c = $$0;
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
+
+   public String h() {
+      return this.n;
+   }
+
+   @Override
+   public int a() {
+      return this.m;
    }
 }

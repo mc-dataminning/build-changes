@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddd extends cxi implements cvd {
-   public static final MapCodec<ddd> c = b(ddd::new);
+public class ddd extends cvf {
+   public static final MapCodec<ddd> a = b(ddd::new);
+   private static final double b = 5.0;
+   private static final eks c = cvf.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<ddd> a() {
-      return c;
+      return a;
    }
 
-   public ddd(dhh.d $$0) {
+   protected ddd(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
-      return true;
+   public dbk b_(dhn $$0) {
+      return dbk.a;
    }
 
    @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
-      return true;
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return c;
    }
 
    @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      a($$0, $$2, new clj(this));
+   public float d(dhn $$0, crl $$1, hx $$2) {
+      return 1.0F;
    }
 }

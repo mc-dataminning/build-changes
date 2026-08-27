@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class fg implements ArgumentType<UUID> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("argument.uuid.invalid"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("argument.uuid.invalid"));
    private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
    private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
 

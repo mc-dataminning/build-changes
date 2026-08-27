@@ -1,32 +1,9 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
 
 public class nm {
-   public static void a(String[] $$0) throws IOException {
-      aa.a(t.a);
-      agk.a();
+   private static final iv a = new iv();
 
-      for (String $$1 : $$0) {
-         a($$1);
-      }
-   }
-
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               rz $$2 = so.a($$1x);
-               rz $$3 = no.a($$0x.toString(), $$2);
-               nl.a(kd.a, $$0x, so.c($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
-      }
+   public static CompletableFuture<ii.b> a(CompletableFuture<ii.b> $$0) {
+      return nl.a($$0, a);
    }
 }

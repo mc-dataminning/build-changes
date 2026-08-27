@@ -1,9 +1,13 @@
-public interface agx {
-   String ac();
+public final class agx extends RuntimeException {
+   public static final agx a = new agx();
 
-   String I();
+   private agx() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
 
-   int J();
-
-   int K();
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
+   }
 }

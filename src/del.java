@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class del extends cyo {
-   public static final MapCodec<del> c = b(del::new);
-   public static final ekn e = cva.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class del extends dch implements deg {
+   public static final MapCodec<del> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(deg.a.e.fieldOf("weathering_state").forGetter(cwg::c), u()).apply($$0, del::new)
+   );
+   private final deg.a g;
 
    @Override
    public MapCodec<del> a() {
-      return c;
+      return f;
    }
 
-   public del(dhh.d $$0) {
-      super($$0, hx.a, e, false);
+   public del(deg.a $$0, dhm.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected cyp c() {
-      return (cyp)cvc.oz;
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dhn $$0) {
+      return deg.c($$0.b()).isPresent();
+   }
+
+   public deg.a g() {
+      return this.g;
    }
 }

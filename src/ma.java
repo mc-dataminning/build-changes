@@ -1,47 +1,97 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
-public class ma implements Supplier<JsonElement> {
-   private final Map<mc<?>, mc<?>.a> a = Maps.newLinkedHashMap();
+public class ma implements ly {
+   private final cvf a;
+   private final List<ma.b> b = Lists.newArrayList();
 
-   public <T> ma a(mc<T> $$0, T $$1) {
-      mc<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   private ma(cvf $$0) {
+      this.a = $$0;
    }
 
-   public static ma a() {
-      return new ma();
+   @Override
+   public cvf a() {
+      return this.a;
    }
 
-   public static ma a(ma $$0, ma $$1) {
-      ma $$2 = new ma();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
+   public static ma a(cvf $$0) {
+      return new ma($$0);
+   }
+
+   public ma a(List<me> $$0) {
+      this.b.add(new ma.b($$0));
+      return this;
+   }
+
+   public ma a(me $$0) {
+      return this.a(ImmutableList.of($$0));
+   }
+
+   public ma a(lz $$0, List<me> $$1) {
+      this.b.add(new ma.a($$0, $$1));
+      return this;
+   }
+
+   public ma a(lz $$0, me... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public ma a(lz $$0, me $$1) {
+      return this.a($$0, ImmutableList.of($$1));
    }
 
    public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
+      dho<cvf, dhn> $$0 = this.a.n();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(ma.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
    }
 
-   public static JsonElement a(List<ma> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
+   static class a extends ma.b {
+      private final lz a;
+
+      a(lz $$0, List<me> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dho<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<me> a;
+
+      b(List<me> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dho<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", me.a(this.a));
+         return $$0;
       }
    }
 }

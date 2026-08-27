@@ -1,31 +1,37 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class gcz {
-   public static asy a(uw $$0, boolean $$1) {
-      vp $$2 = vp.a($$0, UCharacter::getMirror, gcz::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<asy> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public record gcz(agm a, @Nullable String b, @Nullable agm c, @Nullable agm d, gcz.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      return asy.composite($$4);
-   }
+      public static gcz.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
+      public String a() {
+         return this.c;
       }
    }
 }

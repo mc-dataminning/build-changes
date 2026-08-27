@@ -1,65 +1,42 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class ow {
-   public static final agh<dou<?>> a = a("cave");
-   public static final agh<dou<?>> b = a("cave_extra_underground");
-   public static final agh<dou<?>> c = a("canyon");
-   public static final agh<dou<?>> d = a("nether_cave");
-
-   private static agh<dou<?>> a(String $$0) {
-      return agh.a(jz.at, new agi($$0));
-   }
-
-   public static void a(ov<dou<?>> $$0) {
-      ic<cva> $$1 = $$0.a(jz.e);
-      $$0.a(
-         a,
-         dow.a
-            .a(
-               new dos(
-                  0.15F,
-                  dvr.a(dnl.b(8), dnl.a(180)),
-                  bih.b(0.1F, 0.9F),
-                  dnl.b(8),
-                  doq.a(false, cvc.oS.o()),
-                  $$1.b(arg.bh),
-                  bih.b(0.7F, 1.4F),
-                  bih.b(0.8F, 1.3F),
-                  bih.b(-1.0F, -0.4F)
-               )
-            )
+   public static void a(oz<dyv> $$0) {
+      ih<dyv> $$1 = $$0.a(kd.aE);
+      ig<dyv> $$2 = $$1.b(pg.a);
+      pg.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new dyv(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(dyt.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(dyt.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(dyt.b("bastion/mobs/empty"), 1)
+            ),
+            dyv.a.b
+         )
       );
-      $$0.a(
-         b,
-         dow.a
-            .a(
-               new dos(
-                  0.07F,
-                  dvr.a(dnl.b(8), dnl.a(47)),
-                  bih.b(0.1F, 0.9F),
-                  dnl.b(8),
-                  doq.a(false, cvc.gv.o()),
-                  $$1.b(arg.bh),
-                  bih.b(0.7F, 1.4F),
-                  bih.b(0.8F, 1.3F),
-                  bih.b(-1.0F, -0.4F)
-               )
-            )
+      pg.a(
+         $$0, "bastion/mobs/hoglin", new dyv($$2, ImmutableList.of(Pair.of(dyt.b("bastion/mobs/hoglin"), 2), Pair.of(dyt.b("bastion/mobs/empty"), 1)), dyv.a.b)
       );
-      $$0.a(
-         c,
-         dow.c
-            .a(
-               new don(
-                  0.01F,
-                  dvr.a(dnl.a(10), dnl.a(67)),
-                  bhy.a(3.0F),
-                  dnl.b(8),
-                  doq.a(false, cvc.oT.o()),
-                  $$1.b(arg.bh),
-                  bih.b(-0.125F, 0.125F),
-                  new don.a(bih.b(0.75F, 1.0F), big.a(0.0F, 6.0F, 2.0F), 3, bih.b(0.75F, 1.0F), 1.0F, 0.0F)
-               )
-            )
+      pg.a(
+         $$0, "bastion/blocks/gold", new dyv($$2, ImmutableList.of(Pair.of(dyt.b("bastion/blocks/air"), 3), Pair.of(dyt.b("bastion/blocks/gold"), 1)), dyv.a.b)
       );
-      $$0.a(d, dow.b.a(new dos(0.2F, dvr.a(dnl.a(0), dnl.c(1)), bhy.a(0.5F), dnl.b(10), $$1.b(arg.bi), bhy.a(1.0F), bhy.a(1.0F), bhy.a(-0.7F))));
+      pg.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new dyv(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dyt.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(dyt.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(dyt.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            dyv.a.b
+         )
+      );
    }
 }

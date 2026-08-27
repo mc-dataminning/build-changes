@@ -1,44 +1,62 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface ckk extends cnd {
-   bkv g();
+public class ckk extends clj {
+   public static final String a = "StoredEnchantments";
 
-   default aqq ar_() {
-      return aqr.af;
+   public ckk(clj.a $$0) {
+      super($$0);
    }
 
-   default biy<clj> a(cle $$0, csa $$1, cdu $$2, biw $$3) {
-      clj $$4 = $$2.b($$3);
-      bkv $$5 = bli.h($$4);
-      clj $$6 = $$2.c($$5);
-      if ((!cpw.d($$6) || $$2.f()) && !clj.a($$4, $$6)) {
-         if (!$$1.x_()) {
-            $$2.b(arb.c.b($$0));
-         }
-
-         clj $$7 = $$6.b() ? $$4 : $$6.c();
-         clj $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return biy.a($$7, $$1.x_());
-      } else {
-         return biy.d($$4);
-      }
+   @Override
+   public boolean i(clo $$0) {
+      return true;
    }
 
-   @Nullable
-   static ckk c_(clj $$0) {
-      cle $$3 = $$0.d();
-      if ($$3 instanceof ckk) {
-         return (ckk)$$3;
-      } else {
-         if ($$0.d() instanceof cjc $$2) {
-            cva var6 = $$2.e();
-            if (var6 instanceof ckk) {
-               return (ckk)var6;
+   @Override
+   public boolean d_(clo $$0) {
+      return false;
+   }
+
+   public static sj d(clo $$0) {
+      sd $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new sj();
+   }
+
+   @Override
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      clo.a($$2, d($$0));
+   }
+
+   public static void a(clo $$0, cqc $$1) {
+      sj $$2 = d($$0);
+      boolean $$3 = true;
+      agm $$4 = cqb.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         sd $$6 = $$2.a($$5);
+         agm $$7 = cqb.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cqb.a($$6) < $$1.b) {
+               cqb.a($$6, $$1.b);
             }
-         }
 
-         return null;
+            $$3 = false;
+            break;
+         }
       }
+
+      if ($$3) {
+         $$2.add(cqb.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
+   }
+
+   public static clo a(cqc $$0) {
+      clo $$1 = new clo(clr.uo);
+      a($$1, $$0);
+      return $$1;
    }
 }

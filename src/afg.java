@@ -1,8 +1,5 @@
-public interface afg extends to, tp {
+public record afg(agm a) implements afe {
    @Override
-   default tt b() {
-      return tt.c;
+   public void a(ty $$0) {
    }
-
-   void a(afi var1);
 }

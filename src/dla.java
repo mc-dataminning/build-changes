@@ -1,15 +1,8 @@
-public interface dla {
-   dla a = new dla() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bkq.c $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bkq.c var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dla {
 }

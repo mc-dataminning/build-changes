@@ -1,87 +1,103 @@
-public class fxc<T extends cfl> extends fvw<T> {
-   private static final agi f = new agi("textures/entity/minecart.png");
-   protected final fhp<T> a;
-   private final fro g;
+import org.joml.Matrix4f;
 
-   public fxc(fvx.a $$0, fkm $$1) {
+public class fxc extends fwb<blk> {
+   public fxc(fwc.a $$0) {
       super($$0);
-      this.d = 0.7F;
-      this.a = new fik<>($$0.a($$1));
-      this.g = $$0.c();
    }
 
-   public void a(T $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$3.a();
-      long $$6 = (long)$$0.aj() * 493286711L;
-      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
-      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      $$3.a($$7, $$8, $$9);
-      double $$10 = atm.d((double)$$2, $$0.ac, $$0.ds());
-      double $$11 = atm.d((double)$$2, $$0.ad, $$0.du());
-      double $$12 = atm.d((double)$$2, $$0.ae, $$0.dy());
-      double $$13 = 0.3F;
-      eju $$14 = $$0.q($$10, $$11, $$12);
-      float $$15 = atm.i($$2, $$0.O, $$0.dF());
-      if ($$14 != null) {
-         eju $$16 = $$0.a($$10, $$11, $$12, 0.3F);
-         eju $$17 = $$0.a($$10, $$11, $$12, -0.3F);
-         if ($$16 == null) {
-            $$16 = $$14;
+   public void a(blk $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      atw $$10 = atw.a($$0.b);
+
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
+      }
+
+      eof $$12 = $$4.getBuffer(frh.s());
+      Matrix4f $$13 = $$3.c().a();
+
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         atw $$15 = atw.a($$0.b);
+
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+            }
          }
-
-         if ($$17 == null) {
-            $$17 = $$14;
-         }
-
-         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
-         eju $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
-         if ($$18.f() != 0.0) {
-            $$18 = $$18.d();
-            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
-            $$15 = (float)(Math.atan($$18.d) * 73.0);
-         }
       }
-
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      $$3.a(a.f.rotationDegrees(-$$15));
-      float $$19 = (float)$$0.O() - $$2;
-      float $$20 = $$0.N() - $$2;
-      if ($$20 < 0.0F) {
-         $$20 = 0.0F;
-      }
-
-      if ($$19 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(atm.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
-      }
-
-      int $$21 = $$0.z();
-      dhi $$22 = $$0.x();
-      if ($$22.l() != dbf.a) {
-         $$3.a();
-         float $$23 = 0.75F;
-         $$3.b(0.75F, 0.75F, 0.75F);
-         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
-         $$3.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$2, $$22, $$3, $$4, $$5);
-         $$3.b();
-      }
-
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      eoa $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
-      this.a.a($$3, $$24, $$5, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
    }
 
-   public agi a(T $$0) {
-      return f;
+   private static void a(
+      Matrix4f $$0,
+      eof $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
    }
 
-   protected void a(T $$0, float $$1, dhi $$2, enw $$3, fqu $$4, int $$5) {
-      this.g.a($$2, $$3, $$4, $$5, gbl.d);
+   public agm a(blk $$0) {
+      return gby.e;
    }
 }

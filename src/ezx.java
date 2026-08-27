@@ -1,76 +1,31 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class ezx extends faz {
+   private evx a;
+   private final Runnable b;
+   private final Runnable c;
 
-public class ezx extends fau {
-   private static final ur a = ur.c("addServer.enterName");
-   private static final ur b = ur.c("addServer.enterIp");
-   private euz c;
-   private final BooleanConsumer k;
-   private final flu l;
-   private evi m;
-   private evi n;
-   private final fau o;
-
-   public ezx(fau $$0, BooleanConsumer $$1, flu $$2) {
-      super(ur.c("addServer.title"));
-      this.o = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public ezx(Runnable $$0, Runnable $$1) {
+      super(uv.c("datapackFailure.title"));
+      this.a = evx.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aP_() {
-      this.n = new evi(this.i, this.g / 2 - 100, 66, 200, 20, ur.c("addServer.enterName"));
-      this.n.a(this.l.a);
-      this.n.b($$0 -> this.C());
-      this.e(this.n);
-      this.m = new evi(this.i, this.g / 2 - 100, 106, 200, 20, ur.c("addServer.enterIp"));
-      this.m.l(128);
-      this.m.a(this.l.b);
-      this.m.b($$0 -> this.C());
-      this.e(this.m);
-      this.d(
-         evg.a(flu.a::a)
-            .a(flu.a.values())
-            .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, ur.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
-      );
-      this.c = this.d(euz.a(ur.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.d(euz.a(uq.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
-      this.c(this.n);
-      this.C();
+   protected void aQ_() {
+      super.aQ_();
+      this.a = evx.a(this.i, this.m(), this.g - 50);
+      this.d(eve.a(uv.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
+      this.d(eve.a(uu.k, $$0 -> this.b.run()).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void a(etd $$0, int $$1, int $$2) {
-      String $$3 = this.m.a();
-      String $$4 = this.n.a();
-      this.b($$0, $$1, $$2);
-      this.m.a($$3);
-      this.n.a($$4);
-   }
-
-   private void l() {
-      this.l.a = this.n.a();
-      this.l.b = this.m.a();
-      this.k.accept(true);
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.o);
-   }
-
-   private void C() {
-      this.c.i = fmv.b(this.m.a()) && !this.n.a().isEmpty();
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
-      this.n.a($$0, $$1, $$2, $$3);
-      this.m.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.g / 2, 70);
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
    }
 }

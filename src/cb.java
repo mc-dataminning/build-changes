@@ -10,23 +10,23 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List<bl> f, List<bl> g, Optional<ib<cng>> h, Optional<cn> i) {
-   private static final Codec<ig<cle>> j = jy.i.r().listOf().xmap(ig::a, $$0 -> $$0.a().toList());
+public record cb(Optional<arz<clj>> b, Optional<ik<clj>> c, cl.d d, cl.d e, List<bl> f, List<bl> g, Optional<ig<cnl>> h, Optional<cn> i) {
+   private static final Codec<ik<clj>> j = kc.i.r().listOf().xmap(ik::a, $$0 -> $$0.a().toList());
    public static final Codec<cb> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asu.a(arv.a(jz.E), "tag").forGetter(cb::b),
-               asu.a(j, "items").forGetter(cb::c),
-               asu.a(cl.d.d, "count", cl.d.c).forGetter(cb::d),
-               asu.a(cl.d.d, "durability", cl.d.c).forGetter(cb::e),
-               asu.a(bl.a.listOf(), "enchantments", List.of()).forGetter(cb::f),
-               asu.a(bl.a.listOf(), "stored_enchantments", List.of()).forGetter(cb::g),
-               asu.a(jy.j.r(), "potion").forGetter(cb::h),
-               asu.a(cn.a, "nbt").forGetter(cb::i)
+               asy.a(arz.a(kd.E), "tag").forGetter(cb::b),
+               asy.a(j, "items").forGetter(cb::c),
+               asy.a(cl.d.d, "count", cl.d.c).forGetter(cb::d),
+               asy.a(cl.d.d, "durability", cl.d.c).forGetter(cb::e),
+               asy.a(bl.a.listOf(), "enchantments", List.of()).forGetter(cb::f),
+               asy.a(bl.a.listOf(), "stored_enchantments", List.of()).forGetter(cb::g),
+               asy.a(kc.j.r(), "potion").forGetter(cb::h),
+               asy.a(cn.a, "nbt").forGetter(cb::i)
             )
             .apply($$0, cb::new)
    );
 
-   public boolean a(clj $$0) {
+   public boolean a(clo $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
@@ -41,7 +41,7 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
          return false;
       } else {
          if (!this.f.isEmpty()) {
-            Map<cpu, Integer> $$1 = cpw.a($$0.x());
+            Map<cpz, Integer> $$1 = cqb.a($$0.x());
 
             for (bl $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -51,7 +51,7 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
          }
 
          if (!this.g.isEmpty()) {
-            Map<cpu, Integer> $$3 = cpw.a(ckf.d($$0));
+            Map<cpz, Integer> $$3 = cqb.a(ckk.d($$0));
 
             for (bl $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -60,7 +60,7 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
             }
          }
 
-         return !this.h.isPresent() || this.h.get().a() == cni.d($$0);
+         return !this.h.isPresent() || this.h.get().a() == cnn.d($$0);
       }
    }
 
@@ -83,11 +83,11 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
    public static class a {
       private final Builder<bl> a = ImmutableList.builder();
       private final Builder<bl> b = ImmutableList.builder();
-      private Optional<ig<cle>> c = Optional.empty();
-      private Optional<arv<cle>> d = Optional.empty();
+      private Optional<ik<clj>> c = Optional.empty();
+      private Optional<arz<clj>> d = Optional.empty();
       private cl.d e = cl.d.c;
       private cl.d f = cl.d.c;
-      private Optional<ib<cng>> g = Optional.empty();
+      private Optional<ig<cnl>> g = Optional.empty();
       private Optional<cn> h = Optional.empty();
 
       private a() {
@@ -97,12 +97,12 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
          return new cb.a();
       }
 
-      public cb.a a(crz... $$0) {
-         this.c = Optional.of(ig.a($$0x -> $$0x.k().j(), $$0));
+      public cb.a a(cse... $$0) {
+         this.c = Optional.of(ik.a($$0x -> $$0x.k().j(), $$0));
          return this;
       }
 
-      public cb.a a(arv<cle> $$0) {
+      public cb.a a(arz<clj> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
@@ -117,12 +117,12 @@ public record cb(Optional<arv<cle>> b, Optional<ig<cle>> c, cl.d d, cl.d e, List
          return this;
       }
 
-      public cb.a a(cng $$0) {
+      public cb.a a(cnl $$0) {
          this.g = Optional.of($$0.c());
          return this;
       }
 
-      public cb.a a(rz $$0) {
+      public cb.a a(sd $$0) {
          this.h = Optional.of(new cn($$0));
          return this;
       }

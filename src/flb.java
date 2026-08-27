@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.ImmutableList;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface flb {
+public class flb {
+   private final flc a = new flc(ImmutableList.of(), fkv.a);
+
+   public flc a() {
+      return this.a;
+   }
 }

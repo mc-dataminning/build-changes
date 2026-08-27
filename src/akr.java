@@ -1,120 +1,126 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.function.Function;
 
 public class akr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ur.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ur.c("commands.whitelist.remove.failed"));
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                 "whitelist"
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                    "targets", eg.d()
+                                 )
+                                 .then(dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets")))))
+                              .then(dv.a("reset").executes($$0x -> b((du)$$0x.getSource(), eg.f($$0x, "targets")))))
+                           .then(
+                              dv.a("title")
+                                 .then(
+                                    dv.a("title", ec.a())
+                                       .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "title", abv::new))
+                                 )
+                           ))
+                        .then(
+                           dv.a("subtitle")
+                              .then(
+                                 dv.a("title", ec.a())
+                                    .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "subtitle", abt::new))
                               )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dv.a("on").executes($$0x -> b((du)$$0x.getSource()))))
-                        .then(dv.a("off").executes($$0x -> c((du)$$0x.getSource()))))
-                     .then(dv.a("list").executes($$0x -> d((du)$$0x.getSource()))))
-                  .then(dv.a("add").then(dv.a("targets", ei.a()).suggests(($$0x, $$1) -> {
-                     apu $$2 = ((du)$$0x.getSource()).m().ae();
-                     return dy.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
-                  }).executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets"))))))
-               .then(
-                  dv.a("remove")
+                        ))
                      .then(
-                        dv.a("targets", ei.a())
-                           .suggests(($$0x, $$1) -> dy.a(((du)$$0x.getSource()).m().ae().j(), $$1))
-                           .executes($$0x -> b((du)$$0x.getSource(), ei.a($$0x, "targets")))
-                     )
-               ))
-            .then(dv.a("reload").executes($$0x -> a((du)$$0x.getSource())))
+                        dv.a("actionbar")
+                           .then(
+                              dv.a("title", ec.a())
+                                 .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ec.a($$0x, "title"), "actionbar", aaw::new))
+                           )
+                     ))
+                  .then(
+                     dv.a("times")
+                        .then(
+                           dv.a("fadeIn", ff.a())
+                              .then(
+                                 dv.a("stay", ff.a())
+                                    .then(
+                                       dv.a("fadeOut", ff.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eg.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) {
-      $$0.m().ae().a();
-      $$0.a(() -> ur.c("commands.whitelist.reloaded"), true);
-      $$0.m().a($$0);
-      return 1;
+   private static int a(du $$0, Collection<amj> $$1) {
+      yx $$2 = new yx(false);
+
+      for (amj $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> uv.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> uv.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqc $$2 = $$0.m().ae().i();
-      int $$3 = 0;
+   private static int b(du $$0, Collection<amj> $$1) {
+      yx $$2 = new yx(true);
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            aqd $$5 = new aqd($$4);
-            $$2.a($$5);
-            $$0.a(() -> ur.a("commands.whitelist.add.success", ur.b($$4.getName())), true);
-            $$3++;
-         }
+      for (amj $$3 : $$1) {
+         $$3.c.b($$2);
       }
 
-      if ($$3 == 0) {
-         throw c.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> uv.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
       } else {
-         return $$3;
+         $$0.a(() -> uv.a("commands.title.reset.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private static int b(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqc $$2 = $$0.m().ae().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            aqd $$5 = new aqd($$4);
-            $$2.b($$5);
-            $$0.a(() -> ur.a("commands.whitelist.remove.success", ur.b($$4.getName())), true);
-            $$3++;
-         }
+   private static int a(du $$0, Collection<amj> $$1, uv $$2, String $$3, Function<uv, wo<?>> $$4) throws CommandSyntaxException {
+      for (amj $$5 : $$1) {
+         $$5.c.b($$4.apply(uy.a($$0, $$2, $$5, 0)));
       }
 
-      if ($$3 == 0) {
-         throw d.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> uv.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
       } else {
-         $$0.m().a($$0);
-         return $$3;
+         $$0.a(() -> uv.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      apu $$1 = $$0.m().ae();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> ur.c("commands.whitelist.enabled"), true);
-         $$0.m().a($$0);
-         return 1;
-      }
-   }
+   private static int a(du $$0, Collection<amj> $$1, int $$2, int $$3, int $$4) {
+      abw $$5 = new abw($$2, $$3, $$4);
 
-   private static int c(du $$0) throws CommandSyntaxException {
-      apu $$1 = $$0.m().ae();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> ur.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
-
-   private static int d(du $$0) {
-      String[] $$1 = $$0.m().ae().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> ur.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> ur.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      for (amj $$6 : $$1) {
+         $$6.c.b($$5);
       }
 
-      return $$1.length;
+      if ($$1.size() == 1) {
+         $$0.a(() -> uv.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> uv.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

@@ -1,15 +1,23 @@
-public enum diy {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum diy implements auk {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-   private final int d;
+   private final String e;
+   private final boolean f;
 
-   private diy(int $$0) {
-      this.d = $$0;
+   private diy(String $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
    }
 }

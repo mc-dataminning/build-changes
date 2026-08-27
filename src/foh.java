@@ -1,40 +1,53 @@
-public class foh extends fpj {
-   foh(flj $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, atm.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, atm.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, atm.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class foh extends fon {
+   private static final int a = 3;
+   private final frf b;
+   private final bkv D;
+   private final bkv E;
+   private int F;
+   private final fwa G;
+
+   public foh(fwa $$0, frf $$1, flo $$2, bkv $$3, bkv $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dq());
+   }
+
+   private foh(fwa $$0, frf $$1, flo $$2, bkv $$3, bkv $$4, ejz $$5) {
+      super($$2, $$3.ds(), $$3.du(), $$3.dy(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+   }
+
+   private bkv a(bkv $$0) {
+      return (bkv)(!($$0 instanceof cas) ? $$0 : ((cas)$$0).D());
    }
 
    @Override
-   public fom b() {
-      return fom.b;
+   public fos b() {
+      return fos.e;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * atm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(eof $$0, est $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = atq.d((double)$$2, this.E.ac, this.E.ds());
+      double $$5 = atq.d((double)$$2, this.E.ad, (this.E.du() + this.E.dw()) / 2.0);
+      double $$6 = atq.d((double)$$2, this.E.ae, this.E.dy());
+      double $$7 = atq.d((double)$$3, this.D.ds(), $$4);
+      double $$8 = atq.d((double)$$3, this.D.du(), $$5);
+      double $$9 = atq.d((double)$$3, this.D.dy(), $$6);
+      fqz.a $$10 = this.b.c();
+      ejz $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dD(), $$2, new eob(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
-   public static class a implements fol<jv> {
-      private final fpe a;
-
-      public a(fpe $$0) {
-         this.a = $$0;
-      }
-
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         foh $$8 = new foh($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+   @Override
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
    }
 }

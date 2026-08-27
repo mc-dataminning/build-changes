@@ -1,5 +1,3 @@
-import java.util.function.Function;
-
-public interface elh<T> {
-   sw b(long var1, Function<T, String> var3);
+public interface elh<T> extends eln<T> {
+   boolean b(hx var1, T var2);
 }

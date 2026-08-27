@@ -1,154 +1,338 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class dhj<O, S extends dhk<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dil<?>> c;
-   private final ImmutableList<S> d;
+public class dhj extends dfi {
+   private static final int b = 2;
+   private static final double c = 0.01;
+   public static final double a = 0.51;
+   private dhn d = cvh.a.o();
+   private ib e;
+   private boolean f;
+   private boolean g;
+   private static final ThreadLocal<ib> h = ThreadLocal.withInitial(() -> null);
+   private float i;
+   private float j;
+   private long k;
+   private int l;
 
-   protected dhj(Function<O, S> $$0, O $$1, dhj.b<O, S> $$2, Map<String, dil<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dil<?>> $$6 = (Entry<String, dil<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dil<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dil<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dil<?> $$11 = (dil<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dil<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dil<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   public dhj(hx $$0, dhn $$1) {
+      super(dfk.k, $$0, $$1);
    }
 
-   private static <S extends dhk<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dil<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dhk)((dhk)$$1x.getFirst()).a($$3, ((dil.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dil<?>> d() {
-      return this.c.values();
+   public dhj(hx $$0, dhn $$1, dhn $$2, ib $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dil::f).collect(Collectors.toList()))
-         .toString();
+   public sd ay_() {
+      return this.q();
    }
 
-   @Nullable
-   public dil<?> a(String $$0) {
-      return (dil<?>)this.c.get($$0);
+   public boolean c() {
+      return this.f;
    }
 
-   public static class a<O, S extends dhk<O, S>> {
-      private final O a;
-      private final Map<String, dil<?>> b = Maps.newHashMap();
+   public ib d() {
+      return this.e;
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
+   public boolean f() {
+      return this.g;
+   }
+
+   public float a(float $$0) {
+      if ($$0 > 1.0F) {
+         $$0 = 1.0F;
       }
 
-      public dhj.a<O, S> a(dil<?>... $$0) {
-         for (dil<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
+      return atq.i($$0, this.j, this.i);
+   }
 
-         return this;
-      }
+   public float b(float $$0) {
+      return (float)this.e.j() * this.e(this.a($$0));
+   }
 
-      private <T extends Comparable<T>> void a(dil<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dhj.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dhj.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+   public float c(float $$0) {
+      return (float)this.e.k() * this.e(this.a($$0));
+   }
+
+   public float d(float $$0) {
+      return (float)this.e.l() * this.e(this.a($$0));
+   }
+
+   private float e(float $$0) {
+      return this.f ? $$0 - 1.0F : 1.0F - $$0;
+   }
+
+   private dhn w() {
+      return !this.c() && this.f() && this.d.b() instanceof dhg
+         ? cvh.bz.o().a(dhh.d, Boolean.valueOf(this.i > 0.25F)).a(dhh.c, this.d.a(cvh.br) ? dip.b : dip.a).a(dhh.a, this.d.c(dhg.a))
+         : this.d;
+   }
+
+   private static void a(csf $$0, hx $$1, float $$2, dhj $$3) {
+      ib $$4 = $$3.g();
+      double $$5 = (double)($$2 - $$3.i);
+      eks $$6 = $$3.w().k($$0, $$1);
+      if (!$$6.c()) {
+         eju $$7 = a($$1, $$6.a(), $$3);
+         List<bkv> $$8 = $$0.a_(null, dhi.a($$7, $$4, $$5).b($$7));
+         if (!$$8.isEmpty()) {
+            List<eju> $$9 = $$6.e();
+            boolean $$10 = $$3.d.a(cvh.hV);
+            Iterator var12 = $$8.iterator();
+
+            while (true) {
+               bkv $$11;
+               while (true) {
+                  if (!var12.hasNext()) {
+                     return;
+                  }
+
+                  $$11 = (bkv)var12.next();
+                  if ($$11.s_() != edc.d) {
+                     if (!$$10) {
+                        break;
+                     }
+
+                     if (!($$11 instanceof amj)) {
+                        ejz $$12 = $$11.dq();
+                        double $$13 = $$12.c;
+                        double $$14 = $$12.d;
+                        double $$15 = $$12.e;
+                        switch ($$4.o()) {
+                           case a:
+                              $$13 = (double)$$4.j();
+                              break;
+                           case b:
+                              $$14 = (double)$$4.k();
+                              break;
+                           case c:
+                              $$15 = (double)$$4.l();
+                        }
+
+                        $$11.o($$13, $$14, $$15);
+                        break;
+                     }
                   }
                }
 
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               double $$16 = 0.0;
+
+               for (eju $$17 : $$9) {
+                  eju $$18 = dhi.a(a($$1, $$17, $$3), $$4, $$5);
+                  eju $$19 = $$11.cH();
+                  if ($$18.c($$19)) {
+                     $$16 = Math.max($$16, a($$18, $$4, $$19));
+                     if ($$16 >= $$5) {
+                        break;
+                     }
+                  }
+               }
+
+               if (!($$16 <= 0.0)) {
+                  $$16 = Math.min($$16, $$5) + 0.01;
+                  a($$4, $$11, $$16, $$4);
+                  if (!$$3.f && $$3.g) {
+                     a($$1, $$11, $$4, $$5);
+                  }
                }
             }
          }
       }
+   }
 
-      public dhj<O, S> a(Function<O, S> $$0, dhj.b<O, S> $$1) {
-         return new dhj<>($$0, this.a, $$1, this.b);
+   private static void a(ib $$0, bkv $$1, double $$2, ib $$3) {
+      h.set($$0);
+      $$1.a(blr.c, new ejz($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      h.set(null);
+   }
+
+   private static void b(csf $$0, hx $$1, float $$2, dhj $$3) {
+      if ($$3.x()) {
+         ib $$4 = $$3.g();
+         if ($$4.o().d()) {
+            double $$5 = $$3.d.k($$0, $$1).c(ib.a.b);
+            eju $$6 = a($$1, new eju(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            double $$7 = (double)($$2 - $$3.i);
+
+            for (bkv $$9 : $$0.a((bkv)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
+               a($$4, $$9, $$7, $$4);
+            }
+         }
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dil<?>, Comparable<?>> var2, MapCodec<S> var3);
+   private static boolean a(eju $$0, bkv $$1, hx $$2) {
+      return $$1.s_() == edc.a && $$1.aC() && ($$1.d($$2) || $$1.ds() >= $$0.a && $$1.ds() <= $$0.d && $$1.dy() >= $$0.c && $$1.dy() <= $$0.f);
+   }
+
+   private boolean x() {
+      return this.d.a(cvh.pg);
+   }
+
+   public ib g() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   private static double a(eju $$0, ib $$1, eju $$2) {
+      switch ($$1) {
+         case f:
+            return $$0.d - $$2.a;
+         case e:
+            return $$2.d - $$0.a;
+         case b:
+         default:
+            return $$0.e - $$2.b;
+         case a:
+            return $$2.e - $$0.b;
+         case d:
+            return $$0.f - $$2.c;
+         case c:
+            return $$2.f - $$0.c;
+      }
+   }
+
+   private static eju a(hx $$0, eju $$1, dhj $$2) {
+      double $$3 = (double)$$2.e($$2.i);
+      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
+   }
+
+   private static void a(hx $$0, bkv $$1, ib $$2, double $$3) {
+      eju $$4 = $$1.cH();
+      eju $$5 = ekp.b().a().a($$0);
+      if ($$4.c($$5)) {
+         ib $$6 = $$2.g();
+         double $$7 = a($$5, $$6, $$4) + 0.01;
+         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
+         if (Math.abs($$7 - $$8) < 0.01) {
+            $$7 = Math.min($$7, $$3) + 0.01;
+            a($$2, $$1, $$7, $$6);
+         }
+      }
+   }
+
+   public dhn k() {
+      return this.d;
+   }
+
+   public void l() {
+      if (this.o != null && (this.j < 1.0F || this.o.B)) {
+         this.i = 1.0F;
+         this.j = this.i;
+         this.o.n(this.p);
+         this.az_();
+         if (this.o.a_(this.p).a(cvh.bQ)) {
+            dhn $$0;
+            if (this.g) {
+               $$0 = cvh.a.o();
+            } else {
+               $$0 = cvf.b(this.d, this.o, this.p);
+            }
+
+            this.o.a(this.p, $$0, 3);
+            this.o.a(this.p, $$0.b(), this.p);
+         }
+      }
+   }
+
+   public static void a(csf $$0, hx $$1, dhn $$2, dhj $$3) {
+      $$3.k = $$0.W();
+      $$3.j = $$3.i;
+      if ($$3.j >= 1.0F) {
+         if ($$0.B && $$3.l < 5) {
+            $$3.l++;
+         } else {
+            $$0.n($$1);
+            $$3.az_();
+            if ($$0.a_($$1).a(cvh.bQ)) {
+               dhn $$4 = cvf.b($$3.d, $$0, $$1);
+               if ($$4.i()) {
+                  $$0.a($$1, $$3.d, 84);
+                  cvf.a($$3.d, $$4, $$0, $$1, 3);
+               } else {
+                  if ($$4.b(did.C) && $$4.c(did.C)) {
+                     $$4 = $$4.a(did.C, Boolean.valueOf(false));
+                  }
+
+                  $$0.a($$1, $$4, 67);
+                  $$0.a($$1, $$4.b(), $$1);
+               }
+            }
+         }
+      } else {
+         float $$5 = $$3.i + 0.5F;
+         a($$0, $$1, $$5, $$3);
+         b($$0, $$1, $$5, $$3);
+         $$3.i = $$5;
+         if ($$3.i >= 1.0F) {
+            $$3.i = 1.0F;
+         }
+      }
+   }
+
+   @Override
+   public void a(sd $$0) {
+      super.a($$0);
+      ih<cvf> $$1 = (ih<cvf>)(this.o != null ? this.o.a(kd.e) : kc.f.p());
+      this.d = ss.a($$1, $$0.p("blockState"));
+      this.e = ib.a($$0.h("facing"));
+      this.i = $$0.j("progress");
+      this.j = this.i;
+      this.f = $$0.q("extending");
+      this.g = $$0.q("source");
+   }
+
+   @Override
+   protected void b(sd $$0) {
+      super.b($$0);
+      $$0.a("blockState", ss.a(this.d));
+      $$0.a("facing", this.e.d());
+      $$0.a("progress", this.j);
+      $$0.a("extending", this.f);
+      $$0.a("source", this.g);
+   }
+
+   public eks a(crl $$0, hx $$1) {
+      eks $$2;
+      if (!this.f && this.g && this.d.b() instanceof dhg) {
+         $$2 = this.d.a(dhg.c, Boolean.valueOf(true)).k($$0, $$1);
+      } else {
+         $$2 = ekp.a();
+      }
+
+      ib $$4 = h.get();
+      if ((double)this.i < 1.0 && $$4 == this.g()) {
+         return $$2;
+      } else {
+         dhn $$5;
+         if (this.f()) {
+            $$5 = cvh.bz.o().a(dhh.a, this.e).a(dhh.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
+         } else {
+            $$5 = this.d;
+         }
+
+         float $$7 = this.e(this.i);
+         double $$8 = (double)((float)this.e.j() * $$7);
+         double $$9 = (double)((float)this.e.k() * $$7);
+         double $$10 = (double)((float)this.e.l() * $$7);
+         return ekp.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
+      }
+   }
+
+   public long m() {
+      return this.k;
+   }
+
+   @Override
+   public void a(csf $$0) {
+      super.a($$0);
+      if ($$0.a(kd.e).a(this.d.b().r().g()).isEmpty()) {
+         this.d = cvh.a.o();
+      }
    }
 }

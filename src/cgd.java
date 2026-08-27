@@ -1,93 +1,87 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public abstract class cgd extends bkv {
+   protected static final afs<Integer> f = afv.a(cgd.class, afu.b);
+   protected static final afs<Integer> g = afv.a(cgd.class, afu.b);
+   protected static final afs<Float> h = afv.a(cgd.class, afu.d);
 
-public final class cgd {
-   private static final cgd b = new cgd(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cge c;
-   private final long d;
-
-   private cgd(@Nullable cge $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static cgd a(cge $$0, Collection<cgb> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cgd($$0, $$2);
-      }
-   }
-
-   public static cgd a() {
-      return b;
-   }
-
-   public static cgd a(cgb $$0) {
-      return new cgd($$0.a, $$0.b);
-   }
-
-   public static cgd a(cgb $$0, cgb... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cgd($$0.a, $$2);
-   }
-
-   private static long a(cge $$0, long $$1, Iterable<cgb> $$2) {
-      for (cgb $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cgb $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cgd $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cgd b(cgd $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cgd(this.c, this.d | $$0.d);
-      }
+   public cgd(bkz<?> $$0, csf $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(bjt $$0, float $$1) {
+      if (this.dN().B || this.dI()) {
          return true;
-      } else {
-         if ($$0 instanceof cgd $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
+      } else if (this.b($$0)) {
          return false;
+      } else {
+         this.m(-this.P());
+         this.d(10);
+         this.bq();
+         this.b(this.N() + $$1 * 10.0F);
+         this.a(dlx.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cdz && ((cdz)$$0.d()).fU().d;
+         if (($$2 || !(this.N() > 40.0F)) && (!$$2 || !this.ai_())) {
+            if ($$2) {
+               this.am();
+            }
+         } else {
+            this.a($$0);
+         }
+
+         return true;
+      }
+   }
+
+   boolean ai_() {
+      return false;
+   }
+
+   public void b(clj $$0) {
+      this.al();
+      if (this.dN().Y().b(csb.i)) {
+         clo $$1 = new clo($$0);
+         if (this.ae()) {
+            $$1.a(this.af());
+         }
+
+         this.b($$1);
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected void c_() {
+      this.an.a(f, 0);
+      this.an.a(g, 1);
+      this.an.a(h, 0.0F);
    }
+
+   public void d(int $$0) {
+      this.an.b(f, $$0);
+   }
+
+   public void m(int $$0) {
+      this.an.b(g, $$0);
+   }
+
+   public void b(float $$0) {
+      this.an.b(h, $$0);
+   }
+
+   public float N() {
+      return this.an.b(h);
+   }
+
+   public int O() {
+      return this.an.b(f);
+   }
+
+   public int P() {
+      return this.an.b(g);
+   }
+
+   protected void a(bjt $$0) {
+      this.b(this.ah_());
+   }
+
+   abstract clj ah_();
 }

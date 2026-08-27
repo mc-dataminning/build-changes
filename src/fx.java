@@ -11,8 +11,8 @@ import java.util.Collections;
 
 public class fx implements ArgumentType<fx.a> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("arguments.function.tag.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("arguments.function.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> uv.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> uv.b("arguments.function.unknown", $$0));
 
    public static fx a() {
       return new fx();
@@ -21,40 +21,40 @@ public class fx implements ArgumentType<fx.a> {
    public fx.a a(StringReader $$0) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '#') {
          $$0.skip();
-         final agi $$1 = agi.a($$0);
+         final agm $$1 = agm.a($$0);
          return new fx.a() {
             @Override
-            public Collection<gx<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
+            public Collection<hb<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
                return fx.b($$0, $$1);
             }
 
             @Override
-            public Pair<agi, Either<gx<du>, Collection<gx<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
+            public Pair<agm, Either<hb<du>, Collection<hb<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
                return Pair.of($$1, Either.right(fx.b($$0, $$1)));
             }
          };
       } else {
-         final agi $$2 = agi.a($$0);
+         final agm $$2 = agm.a($$0);
          return new fx.a() {
             @Override
-            public Collection<gx<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
+            public Collection<hb<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
                return Collections.singleton(fx.a($$0, $$2));
             }
 
             @Override
-            public Pair<agi, Either<gx<du>, Collection<gx<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
+            public Pair<agm, Either<hb<du>, Collection<hb<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
                return Pair.of($$2, Either.left(fx.a($$0, $$2)));
             }
          };
       }
    }
 
-   static gx<du> a(CommandContext<du> $$0, agi $$1) throws CommandSyntaxException {
-      return ((du)$$0.getSource()).m().aC().a($$1).orElseThrow(() -> c.create($$1.toString()));
+   static hb<du> a(CommandContext<du> $$0, agm $$1) throws CommandSyntaxException {
+      return ((du)$$0.getSource()).l().aC().a($$1).orElseThrow(() -> c.create($$1.toString()));
    }
 
-   static Collection<gx<du>> b(CommandContext<du> $$0, agi $$1) throws CommandSyntaxException {
-      Collection<gx<du>> $$2 = ((du)$$0.getSource()).m().aC().b($$1);
+   static Collection<hb<du>> b(CommandContext<du> $$0, agm $$1) throws CommandSyntaxException {
+      Collection<hb<du>> $$2 = ((du)$$0.getSource()).l().aC().b($$1);
       if ($$2 == null) {
          throw b.create($$1.toString());
       } else {
@@ -62,11 +62,11 @@ public class fx implements ArgumentType<fx.a> {
       }
    }
 
-   public static Collection<gx<du>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<hb<du>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((fx.a)$$0.getArgument($$1, fx.a.class)).a($$0);
    }
 
-   public static Pair<agi, Either<gx<du>, Collection<gx<du>>>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Pair<agm, Either<hb<du>, Collection<hb<du>>>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((fx.a)$$0.getArgument($$1, fx.a.class)).b($$0);
    }
 
@@ -75,8 +75,8 @@ public class fx implements ArgumentType<fx.a> {
    }
 
    public interface a {
-      Collection<gx<du>> a(CommandContext<du> var1) throws CommandSyntaxException;
+      Collection<hb<du>> a(CommandContext<du> var1) throws CommandSyntaxException;
 
-      Pair<agi, Either<gx<du>, Collection<gx<du>>>> b(CommandContext<du> var1) throws CommandSyntaxException;
+      Pair<agm, Either<hb<du>, Collection<hb<du>>>> b(CommandContext<du> var1) throws CommandSyntaxException;
    }
 }

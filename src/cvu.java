@@ -1,130 +1,137 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class cvu extends cyv {
-   public static final MapCodec<cvu> a = b(cvu::new);
-   public static final dic b = cyv.aE;
-   @Nullable
-   private dhn c;
-   @Nullable
-   private dhn d;
-   @Nullable
-   private dhn e;
-   @Nullable
-   private dhn f;
-   private static final Predicate<dhi> g = $$0 -> $$0 != null && ($$0.a(cvc.ee) || $$0.a(cvc.ef));
+public class cvu extends ctx implements dcf {
+   public static final MapCodec<cvu> c = b(cvu::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final din f = did.az;
+   public static final die g = ctx.b;
+   public static final die h = did.C;
+   public static final ToIntFunction<dhn> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<ejz>> j = ac.a(() -> {
+      Int2ObjectMap<List<ejz>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new ejz(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new ejz(0.375, 0.44, 0.5), new ejz(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new ejz(0.5, 0.313, 0.625), new ejz(0.375, 0.44, 0.5), new ejz(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new ejz(0.44, 0.313, 0.56), new ejz(0.625, 0.44, 0.56), new ejz(0.375, 0.44, 0.375), new ejz(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final eks k = cvf.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final eks l = cvf.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final eks m = cvf.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final eks n = cvf.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
-   public MapCodec<? extends cvu> a() {
-      return a;
+   public MapCodec<cvu> a() {
+      return c;
    }
 
-   protected cvu(dhh.d $$0) {
+   public cvu(dhm.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, hx.c));
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public boolean a(csd $$0, ht $$1) {
-      return this.b().a($$0, $$1) != null || this.s().a($$0, $$1) != null;
-   }
-
-   private void a(csa $$0, ht $$1) {
-      dhn.b $$2 = this.g().a($$0, $$1);
-      if ($$2 != null) {
-         bxp $$3 = bku.aO.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if ($$3.fU().e && $$3.b($$4).b() && $$0.c(g)) {
+         a($$3, $$0, $$1, $$2);
+         return bjb.a($$1.B);
       } else {
-         dhn.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            bxd $$5 = bku.ac.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(csa $$0, dhn.b $$1, bkq $$2, ht $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (amf $$4 : $$0.a(amf.class, $$2.cH().g(5.0))) {
-         al.n.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(csa $$0, dhn.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dhm $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), cvc.a.o(), 2);
-            $$0.c(2001, $$4.d(), cva.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(csa $$0, dhn.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dhm $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), cvc.a);
-         }
+         return bjb.d;
       }
    }
 
    @Override
-   public dhi a(cnr $$0) {
-      return this.o().a(b, $$0.g().g());
+   public boolean a(dhn $$0, cnw $$1) {
+      return !$$1.h() && $$1.n().d() == this.k() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b);
+   public dhn a(cnw $$0) {
+      dhn $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         ecx $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == ecy.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
+      }
    }
 
-   private dhn b() {
-      if (this.c == null) {
-         this.c = dho.a().a(" ", "#", "#").a('#', dhm.a(dhr.a(cvc.dP))).b();
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
       }
 
-      return this.c;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private dhn g() {
-      if (this.d == null) {
-         this.d = dho.a().a("^", "#", "#").a('^', dhm.a(g)).a('#', dhm.a(dhr.a(cvc.dP))).b();
-      }
-
-      return this.d;
+   @Override
+   public ecx c_(dhn $$0) {
+      return $$0.c(h) ? ecy.c.a(false) : super.c_($$0);
    }
 
-   private dhn s() {
-      if (this.e == null) {
-         this.e = dho.a().a("~ ~", "###", "~#~").a('#', dhm.a(dhr.a(cvc.ci))).a('~', $$0 -> $$0.a().i()).b();
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
       }
-
-      return this.e;
    }
 
-   private dhn y() {
-      if (this.f == null) {
-         this.f = dho.a().a("~^~", "###", "~#~").a('^', dhm.a(g)).a('#', dhm.a(dhr.a(cvc.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(f, g, h);
+   }
 
-      return this.f;
+   @Override
+   public boolean a(csg $$0, hx $$1, dhn $$2, ecx $$3) {
+      if (!$$2.c(h) && $$3.a() == ecy.c) {
+         dhn $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean g(dhn $$0) {
+      return $$0.a(ark.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   }
+
+   @Override
+   protected Iterable<ejz> b(dhn $$0) {
+      return (Iterable<ejz>)j.get($$0.c(f));
+   }
+
+   @Override
+   protected boolean d(dhn $$0) {
+      return !$$0.c(h) && super.d($$0);
+   }
+
+   @Override
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return cvf.a($$1, $$2.d(), ib.b);
    }
 }

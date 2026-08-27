@@ -1,32 +1,27 @@
-public class abc implements wk<yd> {
-   private final ht a;
-   private final float b;
+import javax.annotation.Nullable;
 
-   public abc(ht $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class abc implements wo<yh> {
+   private final int a;
+
+   public abc(bkv $$0) {
+      this.a = $$0.aj();
    }
 
-   public abc(tu $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public abc(ty $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ty $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.a;
-   }
-
-   public float d() {
-      return this.b;
+   @Nullable
+   public bkv a(csf $$0) {
+      return $$0.a(this.a);
    }
 }

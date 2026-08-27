@@ -1,44 +1,53 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bhy extends bia {
-   public static final bhy a = new bhy(0.0F);
-   public static final Codec<bhy> b = asu.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bhy::new, bhy::d);
-   private final float d;
+public class bhy extends big {
+   public static final Codec<bhy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bhy::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
 
-   public static bhy a(float $$0) {
-      return $$0 == 0.0F ? a : new bhy($$0);
+   private bhy(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private bhy(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(ats $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d + 1.0F;
+   public static bhy a(int $$0, int $$1) {
+      return new bhy($$0, $$1);
    }
 
    @Override
-   public bib<?> c() {
-      return bib.a;
+   public int a(atw $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   }
+
+   @Override
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bih<?> c() {
+      return bih.c;
    }
 
    @Override
    public String toString() {
-      return Float.toString(this.d);
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

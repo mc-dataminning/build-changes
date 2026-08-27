@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dru implements drz {
-   public static final Codec<dru> a = bic.b(0, 256).fieldOf("count").xmap(dru::new, dru::a).codec();
-   private final bic b;
+public class dru {
+   public static final Codec<dru> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwq.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dru::new)
+   );
+   public final ig<dwq> b;
+   public final float c;
 
-   public dru(int $$0) {
-      this.b = bhz.a($$0);
-   }
-
-   public dru(bic $$0) {
+   public dru(ig<dwq> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public bic a() {
-      return this.b;
+   public boolean a(csz $$0, djk $$1, atw $$2, hx $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

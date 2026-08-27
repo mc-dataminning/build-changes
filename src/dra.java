@@ -1,30 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dra extends dpv<dru> {
-   public dra(Codec<dru> $$0) {
+public class dra extends dqa<dst> {
+   public dra(Codec<dst> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dru> $$0) {
-      int $$1 = 0;
-      ats $$2 = $$0.d();
-      csu $$3 = $$0.b();
-      ht $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dqc<dst> $$0) {
+      dst $$1 = $$0.f();
+      csz $$2 = $$0.b();
+      atw $$3 = $$0.d();
+      cvf $$4 = $$1.b.b();
+      hx $$5 = a($$2, $$0.e().j().a(ib.a.b, $$2.J_() + 1, $$2.ak() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dmr.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ht $$10 = new ht($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dhi $$11 = cvc.mV.o().a(dbw.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(cvc.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+         for (hx $$11 : hx.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dhn $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static hx a(csg $$0, hx.a $$1, cvf $$2) {
+      while ($$1.v() > $$0.J_() + 1) {
+         dhn $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ib.a);
       }
 
-      return $$1 > 0;
+      return null;
    }
 }

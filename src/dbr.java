@@ -1,55 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dbr extends cum {
-   public static final MapCodec<dbr> a = b(dbr::new);
-   public static final dhz b = dhy.E;
-   private final bic c = bhz.a(5);
+public enum dbr implements auk {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dbr> a() {
-      return a;
+   public static final Codec<dbr> e = auk.a(dbr::values);
+   private final String f;
+   private final h g;
+
+   private dbr(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dbr(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+   public dbr a(dbr $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Nullable
-   @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dgi($$0, $$1);
+   public h a() {
+      return this.g;
    }
 
-   @Nullable
-   @Override
-   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
-      return $$0.B ? null : a($$2, dff.K, dgi::a);
-   }
-
-   @Override
-   public dbf b_(dhi $$0) {
-      return dbf.c;
-   }
-
-   @Override
-   public void a(dhi $$0, ame $$1, ht $$2, clj $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   public ib a(ib $$0) {
+      if ($$0.o() == ib.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dbr a(atw $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dbr> b(atw $$0) {
+      return ac.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

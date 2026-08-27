@@ -1,95 +1,69 @@
-import java.util.List;
-
 public class ql {
-   public static final agh<dwl> a = qk.a("crimson_fungi");
-   public static final agh<dwl> b = qk.a("warped_fungi");
-   public static final agh<dwl> c = qk.a("oak_checked");
-   public static final agh<dwl> d = qk.a("dark_oak_checked");
-   public static final agh<dwl> e = qk.a("birch_checked");
-   public static final agh<dwl> f = qk.a("acacia_checked");
-   public static final agh<dwl> g = qk.a("spruce_checked");
-   public static final agh<dwl> h = qk.a("mangrove_checked");
-   public static final agh<dwl> i = qk.a("cherry_checked");
-   public static final agh<dwl> j = qk.a("pine_on_snow");
-   public static final agh<dwl> k = qk.a("spruce_on_snow");
-   public static final agh<dwl> l = qk.a("pine_checked");
-   public static final agh<dwl> m = qk.a("jungle_tree");
-   public static final agh<dwl> n = qk.a("fancy_oak_checked");
-   public static final agh<dwl> o = qk.a("mega_jungle_tree_checked");
-   public static final agh<dwl> p = qk.a("mega_spruce_checked");
-   public static final agh<dwl> q = qk.a("mega_pine_checked");
-   public static final agh<dwl> r = qk.a("tall_mangrove_checked");
-   public static final agh<dwl> s = qk.a("jungle_bush");
-   public static final agh<dwl> t = qk.a("super_birch_bees_0002");
-   public static final agh<dwl> u = qk.a("super_birch_bees");
-   public static final agh<dwl> v = qk.a("oak_bees_0002");
-   public static final agh<dwl> w = qk.a("oak_bees_002");
-   public static final agh<dwl> x = qk.a("birch_bees_0002");
-   public static final agh<dwl> y = qk.a("birch_bees_002");
-   public static final agh<dwl> z = qk.a("fancy_oak_bees_0002");
-   public static final agh<dwl> A = qk.a("fancy_oak_bees_002");
-   public static final agh<dwl> B = qk.a("fancy_oak_bees");
-   public static final agh<dwl> C = qk.a("cherry_bees_005");
+   public static final agl<dwq> a = qo.a("ice_spike");
+   public static final agl<dwq> b = qo.a("ice_patch");
+   public static final agl<dwq> c = qo.a("forest_rock");
+   public static final agl<dwq> d = qo.a("iceberg_packed");
+   public static final agl<dwq> e = qo.a("iceberg_blue");
+   public static final agl<dwq> f = qo.a("blue_ice");
+   public static final agl<dwq> g = qo.a("lake_lava_underground");
+   public static final agl<dwq> h = qo.a("lake_lava_surface");
+   public static final agl<dwq> i = qo.a("disk_clay");
+   public static final agl<dwq> j = qo.a("disk_gravel");
+   public static final agl<dwq> k = qo.a("disk_sand");
+   public static final agl<dwq> l = qo.a("disk_grass");
+   public static final agl<dwq> m = qo.a("freeze_top_layer");
+   public static final agl<dwq> n = qo.a("void_start_platform");
+   public static final agl<dwq> o = qo.a("desert_well");
+   public static final agl<dwq> p = qo.a("spring_lava");
+   public static final agl<dwq> q = qo.a("spring_lava_frozen");
+   public static final agl<dwq> r = qo.a("spring_water");
 
-   public static void a(ov<dwl> $$0) {
-      ic<dpi<?, ?>> $$1 = $$0.a(jz.au);
-      ib<dpi<?, ?>> $$2 = $$1.b(qa.a);
-      ib<dpi<?, ?>> $$3 = $$1.b(qa.c);
-      ib<dpi<?, ?>> $$4 = $$1.b(qa.g);
-      ib<dpi<?, ?>> $$5 = $$1.b(qa.h);
-      ib<dpi<?, ?>> $$6 = $$1.b(qa.i);
-      ib<dpi<?, ?>> $$7 = $$1.b(qa.j);
-      ib<dpi<?, ?>> $$8 = $$1.b(qa.k);
-      ib<dpi<?, ?>> $$9 = $$1.b(qa.x);
-      ib<dpi<?, ?>> $$10 = $$1.b(qa.z);
-      ib<dpi<?, ?>> $$11 = $$1.b(qa.l);
-      ib<dpi<?, ?>> $$12 = $$1.b(qa.m);
-      ib<dpi<?, ?>> $$13 = $$1.b(qa.n);
-      ib<dpi<?, ?>> $$14 = $$1.b(qa.p);
-      ib<dpi<?, ?>> $$15 = $$1.b(qa.q);
-      ib<dpi<?, ?>> $$16 = $$1.b(qa.r);
-      ib<dpi<?, ?>> $$17 = $$1.b(qa.y);
-      ib<dpi<?, ?>> $$18 = $$1.b(qa.v);
-      ib<dpi<?, ?>> $$19 = $$1.b(qa.s);
-      ib<dpi<?, ?>> $$20 = $$1.b(qa.t);
-      ib<dpi<?, ?>> $$21 = $$1.b(qa.A);
-      ib<dpi<?, ?>> $$22 = $$1.b(qa.B);
-      ib<dpi<?, ?>> $$23 = $$1.b(qa.D);
-      ib<dpi<?, ?>> $$24 = $$1.b(qa.E);
-      ib<dpi<?, ?>> $$25 = $$1.b(qa.G);
-      ib<dpi<?, ?>> $$26 = $$1.b(qa.H);
-      ib<dpi<?, ?>> $$27 = $$1.b(qa.J);
-      ib<dpi<?, ?>> $$28 = $$1.b(qa.K);
-      qk.a($$0, a, $$2, dwd.a(8), dvz.a());
-      qk.a($$0, b, $$3, dwd.a(8), dvz.a());
-      qk.a($$0, c, $$4, qk.a(cvc.x));
-      qk.a($$0, d, $$5, qk.a(cvc.D));
-      qk.a($$0, e, $$6, qk.a(cvc.z));
-      qk.a($$0, f, $$7, qk.a(cvc.B));
-      qk.a($$0, g, $$8, qk.a(cvc.y));
-      qk.a($$0, h, $$9, qk.a(cvc.E));
-      qk.a($$0, i, $$10, qk.a(cvc.C));
-      dny $$29 = dny.a(hx.a.q(), cvc.dP, cvc.qP);
-      List<dwo> $$30 = List.of(dwf.a(hx.b, dny.a(dny.a(cvc.qP)), 8), dwa.a($$29));
-      qk.a($$0, j, $$11, $$30);
-      qk.a($$0, k, $$8, $$30);
-      qk.a($$0, l, $$11, qk.a(cvc.y));
-      qk.a($$0, m, $$12, qk.a(cvc.A));
-      qk.a($$0, n, $$13, qk.a(cvc.x));
-      qk.a($$0, o, $$14, qk.a(cvc.A));
-      qk.a($$0, p, $$15, qk.a(cvc.y));
-      qk.a($$0, q, $$16, qk.a(cvc.y));
-      qk.a($$0, r, $$17, qk.a(cvc.E));
-      qk.a($$0, s, $$18, qk.a(cvc.x));
-      qk.a($$0, t, $$19, qk.a(cvc.z));
-      qk.a($$0, u, $$20, qk.a(cvc.z));
-      qk.a($$0, v, $$21, qk.a(cvc.x));
-      qk.a($$0, w, $$22, qk.a(cvc.x));
-      qk.a($$0, x, $$23, qk.a(cvc.z));
-      qk.a($$0, y, $$24, qk.a(cvc.z));
-      qk.a($$0, z, $$25, qk.a(cvc.x));
-      qk.a($$0, A, $$26, qk.a(cvc.x));
-      qk.a($$0, B, $$27, qk.a(cvc.x));
-      qk.a($$0, C, $$28, qk.a(cvc.C));
+   public static void a(oz<dwq> $$0) {
+      ih<dpn<?, ?>> $$1 = $$0.a(kd.au);
+      ig<dpn<?, ?>> $$2 = $$1.b(qa.a);
+      ig<dpn<?, ?>> $$3 = $$1.b(qa.b);
+      ig<dpn<?, ?>> $$4 = $$1.b(qa.c);
+      ig<dpn<?, ?>> $$5 = $$1.b(qa.d);
+      ig<dpn<?, ?>> $$6 = $$1.b(qa.e);
+      ig<dpn<?, ?>> $$7 = $$1.b(qa.f);
+      ig<dpn<?, ?>> $$8 = $$1.b(qa.g);
+      ig<dpn<?, ?>> $$9 = $$1.b(qa.h);
+      ig<dpn<?, ?>> $$10 = $$1.b(qa.i);
+      ig<dpn<?, ?>> $$11 = $$1.b(qa.j);
+      ig<dpn<?, ?>> $$12 = $$1.b(qa.l);
+      ig<dpn<?, ?>> $$13 = $$1.b(qa.k);
+      ig<dpn<?, ?>> $$14 = $$1.b(qa.n);
+      ig<dpn<?, ?>> $$15 = $$1.b(qa.o);
+      ig<dpn<?, ?>> $$16 = $$1.b(qa.p);
+      ig<dpn<?, ?>> $$17 = $$1.b(qa.q);
+      ig<dpn<?, ?>> $$18 = $$1.b(qa.r);
+      qo.a($$0, a, $$2, dwj.a(3), dwn.a(), qo.a, dwe.a());
+      qo.a($$0, b, $$3, dwj.a(2), dwn.a(), qo.a, dwv.a(bid.a(-1)), dwf.a(dod.a(cvh.dP)), dwe.a());
+      qo.a($$0, c, $$4, dwj.a(2), dwn.a(), qo.a, dwe.a());
+      qo.a($$0, e, $$6, dww.a(200), dwn.a(), dwe.a());
+      qo.a($$0, d, $$5, dww.a(16), dwn.a(), dwe.a());
+      qo.a($$0, f, $$7, dwj.a(bim.a(0, 19)), dwn.a(), dwl.a(dnq.a(30), dnq.a(61)), dwe.a());
+      qo.a(
+         $$0,
+         g,
+         $$8,
+         dww.a(9),
+         dwn.a(),
+         dwl.a(dvw.a(dnq.a(0), dnq.b())),
+         dwk.a(ib.a, dod.a(dod.a(dod.c), dod.d(new hx(0, -5, 0))), 32),
+         dwy.a(dmw.a.c, Integer.MIN_VALUE, -5),
+         dwe.a()
+      );
+      qo.a($$0, h, $$8, dww.a(200), dwn.a(), qo.c, dwe.a());
+      qo.a($$0, i, $$9, dwn.a(), qo.b, dwf.a(dod.a(ecy.c)), dwe.a());
+      qo.a($$0, j, $$10, dwn.a(), qo.b, dwf.a(dod.a(ecy.c)), dwe.a());
+      qo.a($$0, k, $$11, dwj.a(3), dwn.a(), qo.b, dwf.a(dod.a(ecy.c)), dwe.a());
+      qo.a($$0, l, $$12, dwj.a(1), dwn.a(), qo.b, dwv.a(bid.a(-1)), dwf.a(dod.a(cvh.sI)), dwe.a());
+      qo.a($$0, m, $$13, dwe.a());
+      qo.a($$0, n, $$14, dwe.a());
+      qo.a($$0, o, $$15, dww.a(1000), dwn.a(), qo.a, dwe.a());
+      qo.a($$0, p, $$16, dwj.a(20), dwn.a(), dwl.a(dvx.a(dnq.a(), dnq.c(8), 8)), dwe.a());
+      qo.a($$0, q, $$17, dwj.a(20), dwn.a(), dwl.a(dvx.a(dnq.a(), dnq.c(8), 8)), dwe.a());
+      qo.a($$0, r, $$18, dwj.a(25), dwn.a(), dwl.a(dnq.a(), dnq.a(192)), dwe.a());
    }
 }

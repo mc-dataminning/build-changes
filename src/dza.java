@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class dza extends dxh {
-   public static final Codec<dza> d = a(dza::new);
+record dza(agl<dyv> c, bhl<agl<dyv>> d) implements dyx {
+   static Codec<dza> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agl.a(kd.aE).fieldOf("alias").forGetter(dza::c), bhl.b(agl.a(kd.aE)).fieldOf("targets").forGetter(dza::d)).apply($$0, dza::new)
+   );
 
-   public dza(dxh.c $$0) {
-      super($$0);
+   @Override
+   public void a(atw $$0, BiConsumer<agl<dyv>, agl<dyv>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (agl<dyv>)$$1x.b()));
    }
 
    @Override
-   public Optional<dxh.b> a(dxh.a $$0) {
-      return a($$0, dmr.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(dxz $$0, dxh.a $$1) {
-      ht $$2 = new ht($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new dyz.a($$2));
+   public Stream<agl<dyv>> a() {
+      return this.d.e().stream().map(bhn.b::b);
    }
 
    @Override
-   public dxq<?> e() {
-      return dxq.a;
+   public Codec<dza> b() {
+      return a;
    }
 }

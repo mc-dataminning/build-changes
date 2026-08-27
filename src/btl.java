@@ -1,30 +1,44 @@
-public class btl extends bsb {
-   private final blp a;
+import java.util.EnumSet;
 
-   public btl(blp $$0) {
+public class btl extends bsg {
+   private final bmg a;
+
+   public btl(bmg $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bsg.a.c, bsg.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.gf();
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dN().b_(this.a.dn()).a(arl.a);
+      if (!this.a.u()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else {
+         bll $$0 = this.a.R_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.f($$0) < 144.0 && $$0.ei() != null ? false : this.a.gf();
+         }
+      }
    }
 
    @Override
    public void c() {
-      ht $$0 = null;
+      this.a.N().n();
+      this.a.y(true);
+   }
 
-      for (ht $$2 : ht.b(
-         atm.a(this.a.ds() - 2.0), atm.a(this.a.du() - 2.0), atm.a(this.a.dy() - 2.0), atm.a(this.a.ds() + 2.0), this.a.dt(), atm.a(this.a.dy() + 2.0)
-      )) {
-         if (this.a.dN().b_($$2).a(arl.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void d() {
+      this.a.y(false);
    }
 }

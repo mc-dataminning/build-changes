@@ -1,110 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class fsf implements ged {
-   private final agi a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fsf {
+   private final agm a;
+   private final List<fsf.b> b;
 
-   public fsf(agi $$0, j $$1, boolean $$2, int $$3) {
+   public fsf(agm $$0, List<fsf.b> $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public agi a() {
+   public agm a() {
       return this.a;
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   public Stream<fsf.b> b() {
+      return this.b.stream();
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fsf $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<fsf> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
+   protected static class a implements JsonDeserializer<fsf> {
       public fsf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         agi $$4 = this.b($$3);
-         gdw $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fsf($$4, $$5.b(), $$6, $$7);
+         agm $$4 = new agm(atg.i($$3, "model"));
+         List<fsf.b> $$5 = this.a($$3);
+         return new fsf($$4, $$5);
       }
 
-      private boolean d(JsonObject $$0) {
-         return atc.a($$0, "uvlock", false);
-      }
+      protected List<fsf.b> a(JsonObject $$0) {
+         Map<agm, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = atg.u($$0, "predicate");
 
-      protected gdw a(JsonObject $$0) {
-         int $$1 = atc.a($$0, "x", 0);
-         int $$2 = atc.a($$0, "y", 0);
-         gdw $$3 = gdw.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(new agm($$3.getKey()), atg.e($$3.getValue(), $$3.getKey()));
          }
+
+         return $$1.entrySet().stream().map($$0x -> new fsf.b((agm)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+      }
+   }
+
+   public static class b {
+      private final agm a;
+      private final float b;
+
+      public b(agm $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      protected agi b(JsonObject $$0) {
-         return new agi(atc.i($$0, "model"));
+      public agm a() {
+         return this.a;
       }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = atc.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+      public float b() {
+         return this.b;
       }
    }
 }

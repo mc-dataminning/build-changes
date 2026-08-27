@@ -7,7 +7,7 @@ public class di extends cw<di.a> {
       return new di.a($$1, $$3);
    }
 
-   public void a(amf $$0, clj $$1) {
+   public void a(amj $$0, clo $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -23,7 +23,7 @@ public class di extends cw<di.a> {
          return al.T.a(new di.a(Optional.of(bq.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(clj $$0) {
+      public boolean a(clo $$0) {
          return !this.a.isPresent() || this.a.get().a($$0);
       }
 

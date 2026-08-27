@@ -1,173 +1,136 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-class ffr {
-   private static final int a = 44;
-   private final List<ffr.c> b;
+public class ffr extends faz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final uv b = uv.c("selectWorld.enterName").a(n.h);
+   private static final uv c = uv.c("selectWorld.edit.resetIcon");
+   private static final uv k = uv.c("selectWorld.edit.openFolder");
+   private static final uv l = uv.c("selectWorld.edit.backup");
+   private static final uv m = uv.c("selectWorld.edit.backupFolder");
+   private static final uv n = uv.c("selectWorld.edit.optimize");
+   private static final uv o = uv.c("optimizeWorld.confirm.title");
+   private static final uv p = uv.c("optimizeWorld.confirm.description");
+   private static final uv q = uv.c("selectWorld.edit.save");
+   private static final int r = 200;
+   private static final int t = 4;
+   private static final int u = 98;
+   private final eys v = eys.d().a(5);
+   private final BooleanConsumer w;
+   private final ees.c x;
 
-   ffr(List<ffr.c> $$0) {
-      this.b = $$0;
+   public static ffr a(eti $$0, ees.c $$1, BooleanConsumer $$2) throws IOException {
+      eet $$3 = $$1.a($$1.f());
+      return new ffr($$0, $$1, $$3.b(), $$2);
    }
 
-   public void a() {
-      this.b.forEach(ffr.c::a);
+   private ffr(eti $$0, ees.c $$1, String $$2, BooleanConsumer $$3) {
+      super(uv.c("selectWorld.edit.title"));
+      this.w = $$3;
+      this.x = $$1;
+      eur $$4 = $$0.h;
+      this.v.a(new eyt(200, 20));
+      this.v.a(new ewl(b, $$4));
+      evn $$5 = this.v.a(new evn($$4, 200, 20, b));
+      $$5.a($$2);
+      eys $$6 = eys.e().a(4);
+      eve $$7 = $$6.a(eve.a(q, $$1x -> this.a($$5.a())).a(98).a());
+      $$6.a(eve.a(uu.e, $$0x -> this.aG_()).a(98).a());
+      $$5.b($$1x -> $$7.i = !ac.b($$1x));
+      this.v.a(eve.a(c, $$1x -> {
+         $$1.h().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.i = false;
+      }).a(200).a()).i = $$1.h().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.v.a(eve.a(k, $$1x -> ac.i().a($$1.a(eeq.l).toFile())).a(200).a());
+      this.v.a(eve.a(l, $$1x -> {
+         boolean $$2x = a($$1);
+         this.w.accept(!$$2x);
+      }).a(200).a());
+      this.v.a(eve.a(m, $$1x -> {
+         ees $$2x = $$0.l();
+         Path $$3x = $$2x.d();
+
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
+         }
+
+         ac.i().a($$3x.toFile());
+      }).a(200).a());
+      this.v.a(eve.a(n, $$2x -> $$0.a(new ezn(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
+
+            $$0.a(fft.a($$0, this.w, $$0.aq(), $$1, $$3x));
+         }, o, p, true))).a(200).a());
+      this.v.a(new eyt(200, 20));
+      this.v.a($$6);
+      this.c($$5);
+      this.v.a($$1x -> {
+         evc var10000 = this.d($$1x);
+      });
    }
 
-   public static ffr.a a(int $$0) {
-      return new ffr.a($$0);
+   @Override
+   protected void aQ_() {
+      this.c();
    }
 
-   public static class a {
-      final int a;
-      private final List<ffr.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<ffr.b> f = Optional.empty();
+   @Override
+   protected void c() {
+      this.v.a();
+      eym.a(this.v, this.s());
+   }
 
-      public a(int $$0) {
-         this.a = $$0;
+   @Override
+   public void aG_() {
+      this.w.accept(false);
+   }
+
+   private void a(String $$0) {
+      try {
+         this.x.a($$0);
+      } catch (so | su | IOException var3) {
+         a.error("Failed to access world '{}'", this.x.d(), var3);
+         exl.a(this.f, this.x.d());
       }
 
-      void a() {
-         this.e++;
+      this.w.accept(true);
+   }
+
+   public static boolean a(ees.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.j();
+      } catch (IOException var6) {
+         $$2 = var6;
       }
 
-      public ffr.d a(ur $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         ffr.d $$3 = new ffr.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public ffr.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ffr.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ffr a(Consumer<eyl> $$0) {
-         eyi $$1 = new eyi().b(this.d);
-         $$1.a(eyo.a(this.a - 44), 0, 0);
-         $$1.a(eyo.a(44), 0, 1);
-         List<ffr.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (ffr.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         ffr $$4 = new ffr($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public ffr.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new ffr.b($$0, $$1));
-         return this;
+      if ($$2 != null) {
+         uv $$4 = uv.c("selectWorld.edit.backupFailed");
+         uv $$5 = uv.b($$2.getMessage());
+         eti.N().ax().a(new exl(exl.a.c, $$4, $$5));
+         return false;
+      } else {
+         uv $$6 = uv.a("selectWorld.edit.backupCreated", $$0.d());
+         uv $$7 = uv.a("selectWorld.edit.backupSize", atq.c((double)$$1 / 1048576.0));
+         eti.N().ax().a(new exl(exl.a.c, $$6, $$7));
+         return true;
       }
    }
 
-   static record b(int a, boolean b) {
-   }
-
-   static record c(evg<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.i = this.c.getAsBoolean();
-         }
-      }
-
-      public evg<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final ur a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private ur d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(ur $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public ffr.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ffr.d a(ur $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      ffr.c a(ffr.a $$0, eyi $$1, int $$2) {
-         $$0.a();
-         ewg $$3 = new ewg(this.a, etd.N().h).e();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<ffr.b> $$4 = $$0.f;
-         evg.a<Boolean> $$5 = evg.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            ewk $$7 = ewk.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> uq.a(this.a, $$0x.e(), this.d));
-         } else {
-            $$5.a($$0x -> uq.a(this.a, $$0x.e()));
-         }
-
-         evg<Boolean> $$8 = $$5.a(0, 0, this.f, 20, ur.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.i = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               ur $$4x = this.d.f().a(n.h);
-               eum $$5x = etd.N().h;
-               evt $$6x = new evt($$4x, $$5x);
-               $$6x.j($$0.a - $$0.c - this.f);
-               $$6x.k($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new ffr.c($$8, this.b, this.e);
-      }
+   @Override
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

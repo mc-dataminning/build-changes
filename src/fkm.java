@@ -1,37 +1,44 @@
-public final class fkm {
-   private final agi a;
-   private final String b;
+public class fkm<T extends ccg> extends fih<T> implements fke {
+   private final fkt a = this.l.b("hat_rim");
 
-   public fkm(agi $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fkm(fkt $$0) {
+      super($$0);
    }
 
-   public agi a() {
-      return this.a;
+   public static fkz c() {
+      flb $$0 = fih.a(fkx.a, 0.0F);
+      flc $$1 = $$0.a();
+      $$1.a("head", new fky().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fkv.a);
+      flc $$2 = $$1.a("hat", fky.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fkx(0.5F)), fkv.a);
+      $$2.a("hat_rim", fky.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fkv.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", fky.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fkx(0.05F)), fkv.a);
+      $$1.a("right_arm", fky.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fkv.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fky.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fkv.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fky.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fkv.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fky.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fkv.a(2.0F, 12.0F, 0.0F));
+      return fkz.a($$0, 64, 64);
    }
 
-   public String b() {
-      return this.b;
+   public static fkz a(fkx $$0) {
+      flb $$1 = fih.a($$0, 0.0F);
+      flc $$2 = $$1.a();
+      $$2.a("head", fky.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fkv.a);
+      $$2.a("body", fky.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fkv.a);
+      $$2.a("right_leg", fky.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fkv.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", fky.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fkv.a(2.0F, 12.0F, 0.0F));
+      $$2.a("hat").a("hat_rim", fky.c(), fkv.a);
+      return fkz.a($$1, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fgu.a(this.o, this.n, $$0.fX(), this.c, $$3);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fkm $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+   public void a(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.a.k = $$0;
    }
 }

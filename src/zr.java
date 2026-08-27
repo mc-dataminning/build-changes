@@ -1,86 +1,52 @@
-import com.google.common.collect.Lists;
 import java.util.BitSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class zr {
-   private final BitSet a;
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final List<byte[]> e;
-   private final List<byte[]> f;
+public class zr implements wo<yh> {
+   private final int a;
+   private final int b;
+   private final zq c;
+   private final zv d;
 
-   public zr(crh $$0, ech $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = new BitSet();
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = Lists.newArrayList();
-      this.f = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, csj.a, $$4, this.a, this.c, this.e);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, csj.b, $$4, this.b, this.d, this.f);
-         }
-      }
+   public zr(dju $$0, ecm $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      crm $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new zq($$0);
+      this.d = new zv($$4, $$1, $$2, $$3);
    }
 
-   public zr(tu $$0, int $$1, int $$2) {
-      this.a = $$0.z();
-      this.b = $$0.z();
-      this.c = $$0.z();
-      this.d = $$0.z();
-      this.e = $$0.a((tu.a<byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((tu.a<byte[]>)($$0x -> $$0x.a(2048)));
+   public zr(ty $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new zq($$0, this.a, this.b);
+      this.d = new zv($$0, this.a, this.b);
    }
 
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, tu::a);
-      $$0.a(this.f, tu::a);
+   @Override
+   public void a(ty $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   private void a(crh $$0, ech $$1, csj $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      djk $$7 = $$1.a($$2).a(iu.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   public void a(yh $$0) {
+      $$0.a(this);
    }
 
-   public BitSet a() {
+   public int a() {
       return this.a;
    }
 
-   public BitSet b() {
-      return this.c;
-   }
-
-   public List<byte[]> c() {
-      return this.e;
-   }
-
-   public BitSet d() {
+   public int d() {
       return this.b;
    }
 
-   public BitSet e() {
-      return this.d;
+   public zq e() {
+      return this.c;
    }
 
-   public List<byte[]> f() {
-      return this.f;
+   public zv f() {
+      return this.d;
    }
 }

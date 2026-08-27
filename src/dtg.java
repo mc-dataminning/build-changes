@@ -1,42 +1,19 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dtg extends dtl {
-   public static final Codec<dtg> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtg::new));
-   protected final int b;
+public class dtg<P extends dtf> {
+   public static final dtg<dti> a = a("two_layers_feature_size", dti.d);
+   public static final dtg<dth> b = a("three_layers_feature_size", dth.d);
+   private final Codec<P> c;
 
-   protected static <P extends dtg> P3<Mu<P>, bic, bic, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   private static <P extends dtf> dtg<P> a(String $$0, Codec<P> $$1) {
+      return is.a(kc.ab, $$0, new dtg<>($$1));
    }
 
-   public dtg(bic $$0, bic $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private dtg(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected dtm<?> a() {
-      return dtm.a;
-   }
-
-   @Override
-   protected void a(csg $$0, dtl.b $$1, ats $$2, dsv $$3, int $$4, dtl.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ats $$0, int $$1, dsv $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(ats $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public Codec<P> a() {
+      return this.c;
    }
 }

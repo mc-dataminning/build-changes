@@ -1,12 +1,21 @@
-public interface xw extends wn {
-   @Override
-   default tt b() {
-      return tt.e;
+import java.util.HashSet;
+import java.util.Set;
+
+public record xw(Set<iy> b, Set<iy> c) implements xh {
+   public static final agm a = new agm("debug/village_sections");
+
+   public xw(ty $$0) {
+      this($$0.a(HashSet::new, ty::g), $$0.a(HashSet::new, ty::g));
    }
 
-   void a(xx var1);
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.b, ty::a);
+      $$0.a(this.c, ty::a);
+   }
 
-   void a(xy var1);
-
-   void a(xz var1);
+   @Override
+   public agm a() {
+      return a;
+   }
 }

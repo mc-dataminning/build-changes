@@ -1,16 +1,39 @@
-public class are {
-   public static final arv<deu> a = a("no_item_required");
-   public static final arv<deu> b = a("pattern_item/flower");
-   public static final arv<deu> c = a("pattern_item/creeper");
-   public static final arv<deu> d = a("pattern_item/skull");
-   public static final arv<deu> e = a("pattern_item/mojang");
-   public static final arv<deu> f = a("pattern_item/globe");
-   public static final arv<deu> g = a("pattern_item/piglin");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private are() {
+public class are<T> implements Iterable<arc<T>> {
+   private final is<T> a;
+   private final Map<T, arc<T>> b = new IdentityHashMap<>();
+   private final uv c;
+
+   public are(is<T> $$0, uv $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static arv<deu> a(String $$0) {
-      return arv.a(jz.c, new agi($$0));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public arc<T> a(T $$0, ard $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new arc<>(this, (T)$$1x, $$1));
+   }
+
+   public is<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<arc<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public arc<T> b(T $$0) {
+      return this.a($$0, ard.b);
+   }
+
+   public uv b() {
+      return this.c;
    }
 }

@@ -1,23 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvt extends dvo {
-   public static final Codec<dvt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bhh.b(dvo.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dvt::new)
+public abstract class dvt {
+   private static final Codec<Either<dnq, dvt>> a = Codec.either(dnq.a, kc.O.q().dispatch(dvt::a, dvu::codec));
+   public static final Codec<dvt> c = a.xmap(
+      $$0 -> (dvt)$$0.map(dvs::a, $$0x -> $$0x), $$0 -> $$0.a() == dvu.a ? Either.left(((dvs)$$0).b()) : Either.right($$0)
    );
-   private final bhh<dvo> b;
 
-   public dvt(bhh<dvo> $$0) {
-      this.b = $$0;
-   }
+   public abstract int a(atw var1, dnt var2);
 
-   @Override
-   public int a(ats $$0, dno $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public dvp<?> a() {
-      return dvp.f;
-   }
+   public abstract dvu<?> a();
 }

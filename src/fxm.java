@@ -1,41 +1,112 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class fxm extends fwo<bli, fit<bli>> {
-   private static final Map<bku<?>, agi> a = ImmutableMap.of(
-      bku.aw,
-      new agi("textures/entity/piglin/piglin.png"),
-      bku.bs,
-      new agi("textures/entity/piglin/zombified_piglin.png"),
-      bku.ax,
-      new agi("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
-
-   public fxm(fvx.a $$0, fkm $$1, fkm $$2, fkm $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new fzv<>(this, new fib($$0.a($$2)), new fib($$0.a($$3)), $$0.g()));
+public class fxm extends fwb<can> {
+   public fxm(fwc.a $$0) {
+      super($$0);
    }
 
-   private static fit<bli> a(fkk $$0, fkm $$1, boolean $$2) {
-      fit<bli> $$3 = new fit<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
+   public void a(can $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      cao $$6 = $$0.q().a();
+      float $$7 = 0.0625F;
+      $$3.b(0.0625F, 0.0625F, 0.0625F);
+      eof $$8 = $$4.getBuffer(frh.c(this.a($$0)));
+      gcy $$9 = eti.N().aC();
+      this.a($$3, $$8, $$0, $$6.a(), $$6.b(), $$9.a($$6), $$9.a());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public agm a(can $$0) {
+      return eti.N().aC().a().i();
+   }
+
+   private void a(eob $$0, eof $$1, can $$2, int $$3, int $$4, gbz $$5, gbz $$6) {
+      eob.a $$7 = $$0.c();
+      Matrix4f $$8 = $$7.a();
+      Matrix3f $$9 = $$7.b();
+      float $$10 = (float)(-$$3) / 2.0F;
+      float $$11 = (float)(-$$4) / 2.0F;
+      float $$12 = 0.5F;
+      float $$13 = $$6.c();
+      float $$14 = $$6.d();
+      float $$15 = $$6.g();
+      float $$16 = $$6.h();
+      float $$17 = $$6.c();
+      float $$18 = $$6.d();
+      float $$19 = $$6.g();
+      float $$20 = $$6.c(0.0625F);
+      float $$21 = $$6.c();
+      float $$22 = $$6.a(0.0625F);
+      float $$23 = $$6.g();
+      float $$24 = $$6.h();
+      int $$25 = $$3 / 16;
+      int $$26 = $$4 / 16;
+      double $$27 = 1.0 / (double)$$25;
+      double $$28 = 1.0 / (double)$$26;
+
+      for (int $$29 = 0; $$29 < $$25; $$29++) {
+         for (int $$30 = 0; $$30 < $$26; $$30++) {
+            float $$31 = $$10 + (float)(($$29 + 1) * 16);
+            float $$32 = $$10 + (float)($$29 * 16);
+            float $$33 = $$11 + (float)(($$30 + 1) * 16);
+            float $$34 = $$11 + (float)($$30 * 16);
+            int $$35 = $$2.dr();
+            int $$36 = atq.a($$2.du() + (double)(($$33 + $$34) / 2.0F / 16.0F));
+            int $$37 = $$2.dx();
+            ib $$38 = $$2.cE();
+            if ($$38 == ib.c) {
+               $$35 = atq.a($$2.ds() + (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ib.e) {
+               $$37 = atq.a($$2.dy() - (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ib.d) {
+               $$35 = atq.a($$2.ds() - (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ib.f) {
+               $$37 = atq.a($$2.dy() + (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            int $$39 = fqx.a($$2.dN(), new hx($$35, $$36, $$37));
+            float $$40 = $$5.a((float)($$27 * (double)($$25 - $$29)));
+            float $$41 = $$5.a((float)($$27 * (double)($$25 - ($$29 + 1))));
+            float $$42 = $$5.c((float)($$28 * (double)($$26 - $$30)));
+            float $$43 = $$5.c((float)($$28 * (double)($$26 - ($$30 + 1))));
+            this.a($$8, $$9, $$1, $$31, $$34, $$41, $$42, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$40, $$42, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$40, $$43, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$41, $$43, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$14, $$15, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$13, $$15, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$13, $$16, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$14, $$16, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$19, -0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$19, -0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$20, 0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$20, 0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$19, 0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$19, 0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$20, -0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$20, -0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$22, $$23, 0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$22, $$24, 0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$21, $$24, -0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$21, $$23, -0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$22, $$23, -0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$22, $$24, -0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$21, $$24, 0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$21, $$23, 0.5F, 1, 0, 0, $$39);
+         }
       }
-
-      return $$3;
    }
 
-   public agi b(bli $$0) {
-      agi $$1 = a.get($$0.ai());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
-      } else {
-         return $$1;
-      }
-   }
-
-   protected boolean c(bli $$0) {
-      return super.a($$0) || $$0 instanceof ccj && ((ccj)$$0).gf();
+   private void a(Matrix4f $$0, Matrix3f $$1, eof $$2, float $$3, float $$4, float $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
+      $$2.a($$0, $$3, $$4, $$7).a(255, 255, 255, 255).a($$5, $$6).c(gbq.d).b($$11).a($$1, (float)$$8, (float)$$9, (float)$$10).e();
    }
 }

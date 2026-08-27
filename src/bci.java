@@ -11,13 +11,27 @@ public class bci extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bax.F, () -> DSL.constType(bcf.a()));
       $$0.registerType(
          false,
-         bat.b,
+         bax.b,
          () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", bat.w.in($$0)), "Inventory", DSL.list(bat.t.in($$0)), "EnderItems", DSL.list(bat.t.in($$0))
+               "RootVehicle",
+               DSL.optionalFields("Entity", bax.w.in($$0)),
+               "Inventory",
+               DSL.list(bax.t.in($$0)),
+               "EnderItems",
+               DSL.list(bax.t.in($$0)),
+               DSL.optionalFields(
+                  "ShoulderEntityLeft",
+                  bax.w.in($$0),
+                  "ShoulderEntityRight",
+                  bax.w.in($$0),
+                  "recipeBook",
+                  DSL.optionalFields("recipes", DSL.list(bax.F.in($$0)), "toBeDisplayed", DSL.list(bax.F.in($$0)))
+               )
             )
       );
-      $$0.registerType(true, bat.w, () -> DSL.optionalFields("Passengers", DSL.list(bat.w.in($$0)), bat.x.in($$0)));
+      $$0.registerType(false, bax.d, () -> DSL.compoundList(DSL.list(bax.t.in($$0))));
    }
 }

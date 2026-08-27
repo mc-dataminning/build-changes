@@ -1,36 +1,29 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eif(eir b, eew c) implements ehw {
-   public static final Codec<eif> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eis.a.fieldOf("value").forGetter(eif::c), eew.a.fieldOf("range").forGetter(eif::d)).apply($$0, eif::new)
-   );
+public class eif implements eib {
+   private static final eif b = new eif();
+   public static final Codec<eif> a = Codec.unit(b);
 
-   @Override
-   public ehx b() {
-      return ehy.s;
+   private eif() {
    }
 
    @Override
-   public Set<ehf<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public eic b() {
+      return eid.h;
    }
 
-   public boolean a(eex $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.b);
    }
 
-   public static ehw.a a(eir $$0, eew $$1) {
-      return () -> new eif($$0, $$1);
+   public boolean a(efc $$0) {
+      return $$0.a(ehn.b);
    }
 
-   public eir c() {
-      return this.b;
-   }
-
-   public eew d() {
-      return this.c;
+   public static eib.a c() {
+      return () -> b;
    }
 }

@@ -1,50 +1,27 @@
-import java.util.List;
+public class fcj extends fby<cgy> implements fdd<cgy> {
+   private static final agm x = new agm("textures/gui/container/generic_54.png");
+   private final int y;
 
-public class fcj {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<agi> e = List.of();
-   private int f;
-   private int g;
-
-   public fcj(int $$0) {
-      this.d = $$0;
+   public fcj(cgy $$0, cdy $$1, uv $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.y = $$0.m();
+      this.k = 114 + this.y * 18;
+      this.o = this.k - 94;
    }
 
-   public void a(List<agi> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   @Override
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public void a(cgm $$0, euo $$1, float $$2, int $$3, int $$4) {
-      cih $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.g()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
-   }
-
-   private void a(cih $$0, agi $$1, float $$2, euo $$3, int $$4, int $$5) {
-      gbu $$6 = etd.N().a(gbt.e).apply($$1);
-      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
-   }
-
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   protected void a(eut $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
+      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
    }
 }

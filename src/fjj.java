@@ -1,67 +1,31 @@
-import java.util.Arrays;
+public class fjj<T extends bxs> extends fje<T> {
+   private float j;
 
-public class fjj<T extends bkq> extends fhy<T> {
-   private static final int a = 7;
-   private final fko b;
-   private final fko[] f = new fko[7];
-   private final fko[] g = new fko[3];
-   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public fjj(fko $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
+   public fjj(fkt $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static fkz c() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      $$1.a("head", fky.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fkx(0.6F)), fkv.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fky.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fkx(1.75F)), fkv.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fky $$2 = fky.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fkx(0.5F));
+      $$1.a("right_hind_leg", $$2, fkv.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fkv.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fkv.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fkv.a(3.0F, 12.0F, -5.0F));
+      return fkz.a($$0, 64, 32);
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
+      this.j = $$0.F($$3);
    }
 
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            fkt.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
-            fkq.a(0.0F, (float)(24 - h[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), fkt.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fkq.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), fkt.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fkq.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), fkt.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fkq.a(0.0F, 19.0F, $$2[1]));
-      return fku.a($$0, 64, 32);
-   }
-
-   @Override
-   public fko a() {
-      return this.b;
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         this.f[$$6].f = atm.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
-         this.f[$$6].b = atm.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
-      }
-
-      this.g[0].f = this.f[2].f;
-      this.g[1].f = this.f[4].f;
-      this.g[1].b = this.f[4].b;
-      this.g[2].f = this.f[1].f;
-      this.g[2].b = this.f[1].b;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

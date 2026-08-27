@@ -1,28 +1,84 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
-public class aym extends azt {
-   public aym(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bat.x, $$1);
+public class aym extends DataFix {
+   private static final String a = "minecraft:empty";
+
+   public aym(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)auy.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bax.x);
+      Type<?> $$1 = this.getOutputSchema().getType(bax.x);
+      return this.fixTypeEverywhereTyped(
+         "Fix AbstractArrow item type",
+         $$0,
+         $$1,
+         this.a(this.a("minecraft:trident", aym::c), this.a("minecraft:arrow", aym::a), this.a("minecraft:spectral_arrow", aym::b))
       );
+   }
+
+   @SafeVarargs
+   private <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
+      return $$1 -> {
+         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
+            $$1 = $$2.apply($$1);
+         }
+
+         return $$1;
+      };
+   }
+
+   private Function<Typed<?>, Typed<?>> a(String $$0, aym.a<?> $$1) {
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bax.x, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bax.x, $$0);
+      return a($$0, $$1, $$2, $$3);
+   }
+
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, aym.a<?> $$1, Type<?> $$2, Type<T> $$3) {
+      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
+      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
+   }
+
+   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
+      return (Typed<T>)ac.<Pair, IllegalStateException>a(
+            $$0.write().map($$0x -> $$0x.set("item", a($$0x, a($$0x)))).flatMap($$1::readTyped),
+            $$0x -> new IllegalStateException("Could not parse the value " + $$0x)
+         )
+         .getFirst();
+   }
+
+   private static String a(Dynamic<?> $$0) {
+      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
+   }
+
+   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
+      return (Typed<T>)ac.<Pair, IllegalStateException>a(
+            $$0.write().map($$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow"))).flatMap($$1::readTyped),
+            $$0x -> new IllegalStateException("Could not parse the value " + $$0x)
+         )
+         .getFirst();
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
+   }
+
+   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
+      return new Typed($$1, $$0.getOps(), $$0.getValue());
+   }
+
+   interface a<F> {
+      Typed<F> fix(Typed<?> var1, Type<F> var2);
    }
 }

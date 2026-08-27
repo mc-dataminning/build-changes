@@ -1,30 +1,23 @@
-public class ftk implements fsu<dgq> {
-   private final fvv a;
+public class ftk implements fsz<dgk> {
+   private final fhd a;
 
-   public ftk(fsv.a $$0) {
-      this.a = $$0.c();
+   public ftk(fta.a $$0) {
+      this.a = new fhd($$0.a(fks.m));
    }
 
-   public void a(dgq $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      crc $$6 = $$0.d();
-      bkq $$7 = $$6.a($$0.k(), $$0.k().E_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.dh(), $$7.di());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
-         }
-
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)atm.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
+   public void a(dgk $$0, float $$1, eob $$2, fqz $$3, int $$4, int $$5) {
+      dhn $$6 = $$0.r();
+      if ($$6.c(czp.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(czp.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         eof $$8 = fti.a.a($$3, frh::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
       }
-
-      $$2.b();
    }
 }

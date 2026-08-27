@@ -1,73 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 
-@FunctionalInterface
-public interface vn {
-   Logger a = LogUtils.getLogger();
-   vn b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   vn c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public record vn<S>(List<vn.a<S>> a) {
+   public static <S> vn<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<vn.a<S>> $$4 = a($$1, $$2);
 
-   boolean updateAndValidate(vh var1);
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
+         }
 
-   public static class a implements vn {
-      private final aty d;
-      private final BooleanSupplier e;
-      @Nullable
-      private vh f;
-      private boolean g = true;
-
-      public a(aty $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
 
-      private boolean a(vh $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
+      return new vn<>($$4);
+   }
+
+   private static <S> List<vn.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<vn.a<S>> $$2 = new ArrayList<>();
+
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof ez) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new vn.a<>($$4, $$6));
+               }
+            }
          }
       }
 
-      private boolean b(vh $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
+      return $$2;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
       }
 
-      @Override
-      public boolean updateAndValidate(vh $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
       }
    }
 }

@@ -1,59 +1,37 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dlt {
-   private final ame a;
+public class dlt implements dmb {
+   public static final Codec<dlt> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dlt::new));
+   final hx c;
 
-   public dlt(ame $$0) {
-      this.a = $$0;
+   public dlt(hx $$0) {
+      this.c = $$0;
    }
 
-   public void a(dls $$0, eju $$1, dls.a $$2) {
-      int $$3 = $$0.a();
-      ht $$4 = ht.a($$1);
-      int $$5 = iu.a($$4.u() - $$3);
-      int $$6 = iu.a($$4.v() - $$3);
-      int $$7 = iu.a($$4.w() - $$3);
-      int $$8 = iu.a($$4.u() + $$3);
-      int $$9 = iu.a($$4.v() + $$3);
-      int $$10 = iu.a($$4.w() + $$3);
-      List<dls.b> $$11 = new ArrayList<>();
-      dlv.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dlu.a.b) {
-            $$11.add(new dls.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dje $$16 = this.a.k().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         ack.a(this.a, $$0, $$1);
-      }
+   @Override
+   public Optional<ejz> a(csf $$0) {
+      return Optional.of(ejz.b(this.c));
    }
 
-   private void a(List<dls.b> $$0) {
-      Collections.sort($$0);
+   @Override
+   public dmc<?> a() {
+      return dmc.a;
+   }
 
-      for (dls.b $$1 : $$0) {
-         dlu $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   public static class a implements dmc<dlt> {
+      public dlt a(ty $$0) {
+         return new dlt($$0.e());
+      }
+
+      public void a(ty $$0, dlt $$1) {
+         $$0.a($$1.c);
+      }
+
+      @Override
+      public Codec<dlt> a() {
+         return dlt.a;
       }
    }
 }

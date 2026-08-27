@@ -1,13 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ajv {
-   public static void a(CommandDispatcher<du> $$0, boolean $$1) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
-         long $$1x = ((du)$$0x.getSource()).f().B();
-         ur $$2 = uu.a(String.valueOf($$1x));
-         ((du)$$0x.getSource()).a(() -> ur.a("commands.seed.success", $$2), false);
-         return (int)$$1x;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.save.alreadyOn"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         du $$1 = (du)$$0x.getSource();
+         boolean $$2 = false;
+
+         for (ami $$3 : $$1.l().H()) {
+            if ($$3 != null && $$3.e) {
+               $$3.e = false;
+               $$2 = true;
+            }
+         }
+
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> uv.c("commands.save.enabled"), true);
+            return 1;
+         }
       }));
    }
 }

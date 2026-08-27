@@ -1,21 +1,19 @@
-import javax.annotation.Nullable;
+public class cmj extends clk {
+   private final amj a;
 
-public class cmj extends cms {
-   public cmj(cle.a $$0, cva $$1, cva $$2) {
-      super($$1, $$2, $$0, hx.a);
-   }
-
-   public cmj(cle.a $$0, cva $$1, cva $$2, hx $$3) {
-      super($$1, $$2, $$0, $$3);
+   public cmj(amj $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected boolean a(ht $$0, csa $$1, @Nullable cdu $$2, clj $$3, dhi $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dgm $$6 && $$1.a_($$0).b() instanceof dbz $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   protected void b(clj $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new ze($$0, $$1));
+   }
 
-      return $$5;
+   @Override
+   protected void c(clj $$0) {
+      super.c($$0);
+      this.a.c.b(new ze($$0, 0));
    }
 }

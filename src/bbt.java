@@ -1,22 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bbt extends azt {
-   public bbt(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", bat.s, "minecraft:chest");
+public class bbt extends azx {
+   private static final double a = 16.0;
+   private static final double b = 48.0;
+
+   public bbt(Schema $$0) {
+      super($$0, false, "Villager Follow Range Fix", bax.x, "minecraft:villager");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bbt::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
       return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
       );
    }
 }

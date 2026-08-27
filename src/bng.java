@@ -1,28 +1,66 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bng {
-   public static <E extends blg> bmy<E> a(int $$0, BiPredicate<E, bkq> $$1) {
-      return bqj.a((Function<bqj.b<E>, ? extends App<bqj.c<E>, bqm<E>>>)($$2 -> $$2.group($$2.a(buh.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bkq $$7 = $$5.da();
-               bkq $$8 = $$2.<bkq>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bkq $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.ac();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bng extends bnc<cdm> {
+   @Nullable
+   private cfg c;
+
+   public bng(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   private static boolean a(blg $$0, bkq $$1, int $$2) {
-      return $$1.bx() && $$1.a($$0, (double)$$2) && $$1.dN() == $$0.dN();
+   protected boolean a(ami $$0, cdm $$1) {
+      hx $$2 = $$1.dn();
+      this.c = $$0.c($$2);
+      return this.c != null && this.c.e() && bok.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(ami $$0, cdm $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(ami $$0, cdm $$1, long $$2) {
+      this.c = null;
+      $$1.dP().a($$0.X(), $$0.W());
+   }
+
+   protected void c(ami $$0, cdm $$1, long $$2) {
+      atw $$3 = $$1.eh();
+      if ($$3.a(100) == 0) {
+         $$1.gk();
+      }
+
+      if ($$3.a(200) == 0 && bok.a($$0, $$1, $$1.dn())) {
+         ckc $$4 = ac.a(ckc.values(), $$3);
+         int $$5 = $$3.a(3);
+         clo $$6 = this.a($$4, $$5);
+         cem $$7 = new cem($$1.dN(), $$1, $$1.ds(), $$1.dw(), $$1.dy(), $$6);
+         $$1.dN().b($$7);
+      }
+   }
+
+   private clo a(ckc $$0, int $$1) {
+      clo $$2 = new clo(clr.um, 1);
+      clo $$3 = new clo(clr.un);
+      sd $$4 = $$3.a("Explosion");
+      List<Integer> $$5 = Lists.newArrayList();
+      $$5.add($$0.f());
+      $$4.b("Colors", $$5);
+      $$4.a("Type", (byte)cks.a.e.a());
+      sd $$6 = $$2.a("Fireworks");
+      sj $$7 = new sj();
+      sd $$8 = $$3.b("Explosion");
+      if ($$8 != null) {
+         $$7.add($$8);
+      }
+
+      $$6.a("Flight", (byte)$$1);
+      if (!$$7.isEmpty()) {
+         $$6.a("Explosions", $$7);
+      }
+
+      return $$2;
    }
 }

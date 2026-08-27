@@ -1,83 +1,28 @@
-public abstract class eye implements eyk {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public eye(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public enum eye implements auk {
+   a("bitmap", eyc.a.a),
+   b("ttf", eyg.a),
+   c("space", emg.a.a),
+   d("unihex", eyh.b.a),
+   e("reference", eyf.a);
+
+   public static final Codec<eye> f = auk.a(eye::values);
+   private final String g;
+   private final MapCodec<? extends eyd> h;
+
+   private eye(String $$0, MapCodec<? extends eyd> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public void f(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.p() + ($$0 - this.p());
-         $$1.f($$2);
-      });
-      this.c = $$0;
+   public String c() {
+      return this.g;
    }
 
-   @Override
-   public void g(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.r() + ($$0 - this.r());
-         $$1.g($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int p() {
-      return this.c;
-   }
-
-   @Override
-   public int r() {
-      return this.d;
-   }
-
-   @Override
-   public int k() {
-      return this.a;
-   }
-
-   @Override
-   public int i() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final eyl a;
-      public final eym.a b;
-
-      protected a(eyl $$0, eym $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
-
-      public int a() {
-         return this.a.i() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.k() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.k() - this.b.c);
-         int $$4 = (int)atm.i(this.b.e, $$2, $$3);
-         this.a.f($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.i() - this.b.d);
-         int $$4 = Math.round(atm.i(this.b.f, $$2, $$3));
-         this.a.g($$4 + $$0);
-      }
+   public MapCodec<? extends eyd> a() {
+      return this.h;
    }
 }

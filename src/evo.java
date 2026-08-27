@@ -1,39 +1,72 @@
-import javax.annotation.Nullable;
+public class evo extends euy {
+   private final eur a;
+   private final evy b;
 
-public class evo extends eux {
-   private final eum a;
+   public evo(int $$0, int $$1, int $$2, int $$3, uv $$4, eur $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new evy($$4, $$5).j(this.k() - this.b());
+   }
 
-   public evo(eum $$0, ur $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public evo a(int $$0) {
+      this.b.i($$0);
+      return this;
    }
 
    @Override
-   protected void b(euo $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.p() + this.k() / 2;
-      int $$5 = this.r() + this.i() / 2;
-      ur $$6 = this.l();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = faf.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public void d(int $$0) {
+      super.d($$0);
+      this.b.j(this.k() - this.b());
    }
 
    @Override
-   protected void a(eys $$0) {
+   protected int g() {
+      return this.b.i();
    }
 
    @Override
-   public void a(ggg $$0) {
+   protected double h() {
+      return 9.0;
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   protected void b(eut $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aK_()) {
+         this.a($$0, this.p() - this.a(), this.r() - this.a(), this.k() + this.b(), this.i() + this.b());
+      }
    }
 
-   @Nullable
    @Override
-   public eul a(eyy $$0) {
-      return null;
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.p(), (float)this.r(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean u() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(eut $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.p() + this.a()), (float)(this.r() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(eyx $$0) {
+      $$0.a(eyw.a, this.l());
    }
 }

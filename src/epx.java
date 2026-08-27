@@ -1,15 +1,32 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-public class epx implements UncaughtExceptionHandler {
-   private final Logger a;
+public abstract class epx {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public epx(Logger $$0) {
-      this.a = $$0;
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
+      }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
+   }
+
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

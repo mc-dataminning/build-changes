@@ -1,53 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcu extends dbz {
-   public static final MapCodec<dcu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(div.a.fieldOf("wood_type").forGetter(dbz::d), u()).apply($$0, dcu::new));
-   public static final dii b = dhy.ba;
+public class dcu extends cvf {
+   public static final MapCodec<dcu> a = b(dcu::new);
+   private static final eks b = cvf.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<dcu> a() {
       return a;
    }
 
-   public dcu(div $$0, dhh.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   public dcu(dhm.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return $$1.a_($$2.d()).e();
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return cvf.a($$1, $$2.c(), ib.a) && !$$1.y($$2);
    }
 
    @Override
-   public dhi a(cnr $$0) {
-      ecs $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dio.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == ect.c));
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return $$1 == ib.b && !this.a($$0, $$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return $$1 == hx.a && !this.a($$0, $$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dhn $$0, csf $$1, hx $$2, atw $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(jw.au, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      hx.a $$10 = new hx.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + atq.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + atq.a($$3, -10, 10));
+         dhn $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(jw.ay, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 
    @Override
-   public float g(dhi $$0) {
-      return dio.b($$0.c(b));
-   }
-
-   @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, f);
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
    }
 }

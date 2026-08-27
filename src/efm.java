@@ -1,53 +1,64 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
-public class efm extends efj {
+public class efm extends efo {
    public static final Codec<efm> a = a(efm::new);
 
-   efm(List<efq> $$0, List<ehw> $$1) {
+   efm(List<efv> $$0, List<eib> $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public efr a() {
-      return efo.i;
+   public efw a() {
+      return eft.g;
    }
 
    @Override
-   protected efi a(List<? extends efi> $$0) {
+   protected efn a(List<? extends efn> $$0) {
       return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (efi)$$0.get(0);
-         case 2 -> {
-            efi $$1 = $$0.get(0);
-            efi $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
+         case 0 -> b;
+         case 1 -> (efn)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (efn $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
                return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (efi $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
+            }
          }
 
-         return true;
+         return false;
       };
       };
    }
 
-   public static efm.a a(efq.a<?>... $$0) {
+   @Override
+   public void a(efl $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.a("Unreachable entry!");
+         }
+      }
+   }
+
+   public static efm.a a(efv.a<?>... $$0) {
       return new efm.a($$0);
    }
 
-   public static class a extends efq.a<efm.a> {
-      private final Builder<efq> a = ImmutableList.builder();
+   public static <E> efm.a a(Collection<E> $$0, Function<E, efv.a<?>> $$1) {
+      return new efm.a($$0.stream().map($$1::apply).toArray(efv.a[]::new));
+   }
 
-      public a(efq.a<?>... $$0) {
-         for (efq.a<?> $$1 : $$0) {
+   public static class a extends efv.a<efm.a> {
+      private final Builder<efv> a = ImmutableList.builder();
+
+      public a(efv.a<?>... $$0) {
+         for (efv.a<?> $$1 : $$0) {
             this.a.add($$1.b());
          }
       }
@@ -57,13 +68,13 @@ public class efm extends efj {
       }
 
       @Override
-      public efm.a b(efq.a<?> $$0) {
+      public efm.a a(efv.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public efq b() {
+      public efv b() {
          return new efm(this.a.build(), this.f());
       }
    }

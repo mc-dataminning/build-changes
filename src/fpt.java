@@ -1,85 +1,56 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class fpt extends fpo {
+   private float a;
 
-public abstract class fpt extends cdu {
-   @Nullable
-   private fls cm;
-   protected eju b;
-   public float c;
-   public float d;
-   public float e;
-   public final flj f;
-
-   public fpt(flj $$0, GameProfile $$1) {
-      super($$0, $$0.S(), $$0.T(), $$1);
-      this.b = eju.b;
-      this.f = $$0;
+   fpt(flo $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public boolean O_() {
-      fls $$0 = this.a();
-      return $$0 != null && $$0.e() == crx.d;
+   public fos b() {
+      return fos.b;
    }
 
    @Override
-   public boolean f() {
-      fls $$0 = this.a();
-      return $$0 != null && $$0.e() == crx.b;
-   }
-
-   @Nullable
-   protected fls a() {
-      if (this.cm == null) {
-         this.cm = etd.N().I().a(this.cw());
-      }
-
-      return this.cm;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dq();
-      super.l();
-   }
-
-   public eju C(float $$0) {
-      return this.b.a(this.dq(), (double)$$0);
-   }
-
-   public gcu b() {
-      fls $$0 = this.a();
-      return $$0 == null ? gcm.a(this.cw()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fU().b) {
-         $$0 *= 1.1F;
-      }
-
-      $$0 *= ((float)this.b(bmm.m) / this.fU().b() + 1.0F) / 2.0F;
-      if (this.fU().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      clj $$1 = this.fq();
-      if (this.fo()) {
-         if ($$1.a(clm.or)) {
-            int $$2 = this.fs();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (etd.N().m.ax().a() && this.gr()) {
-            return 0.1F;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * atq.b(this.a));
+         this.l = this.l + (double)(0.6F * atq.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(arp.a) || this.m) {
+            this.k();
          }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements foq<jz> {
+      private final fpj a;
+
+      public a(fpj $$0) {
+         this.a = $$0;
       }
 
-      return atm.i(etd.N().m.ah().c().floatValue(), 1.0F, $$0);
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpt $$8 = new fpt($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

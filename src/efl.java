@@ -1,25 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Multimap;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class efl extends efs {
-   public static final Codec<efl> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, efl::new));
+public class efl {
+   private final Multimap<String, String> a;
+   private final Supplier<String> b;
+   private final ehl c;
+   private final efg d;
+   private final Set<efe<?>> e;
+   @Nullable
+   private String f;
 
-   private efl(int $$0, int $$1, List<ehw> $$2, List<egk> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public efl(ehl $$0, efg $$1) {
+      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
    }
 
-   @Override
-   public efr a() {
-      return efo.b;
+   public efl(Multimap<String, String> $$0, Supplier<String> $$1, ehl $$2, efg $$3, Set<efe<?>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public void a(Consumer<clj> $$0, eex $$1) {
+   private String c() {
+      if (this.f == null) {
+         this.f = this.b.get();
+      }
+
+      return this.f;
    }
 
-   public static efs.a<?> b() {
-      return a(efl::new);
+   public void a(String $$0) {
+      this.a.put(this.c(), $$0);
+   }
+
+   public efl b(String $$0) {
+      return new efl(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
+   }
+
+   public efl a(String $$0, efe<?> $$1) {
+      ImmutableSet<efe<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
+      return new efl(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
+   }
+
+   public boolean a(efe<?> $$0) {
+      return this.e.contains($$0);
+   }
+
+   public Multimap<String, String> a() {
+      return ImmutableMultimap.copyOf(this.a);
+   }
+
+   public void a(efd $$0) {
+      this.c.a(this, $$0);
+   }
+
+   public efg b() {
+      return this.d;
+   }
+
+   public efl a(ehl $$0) {
+      return new efl(this.a, this.b, $$0, this.d, this.e);
    }
 }

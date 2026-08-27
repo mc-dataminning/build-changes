@@ -1,35 +1,12 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
+public class jt {
+   private final int b;
+   public static final jt a = new jt(1000);
 
-public record jt(float c) implements jq {
-   public static final Codec<jt> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, jt::new));
-   public static final jq.a<jt> b = new jq.a<jt>() {
-      public jt a(jr<jt> $$0, StringReader $$1) throws CommandSyntaxException {
-         $$1.expect(' ');
-         float $$2 = $$1.readFloat();
-         return new jt($$2);
-      }
-
-      public jt a(jr<jt> $$0, tu $$1) {
-         return new jt($$1.readFloat());
-      }
-   };
-
-   @Override
-   public jr<jt> b() {
-      return js.F;
+   public jt(int $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(tu $$0) {
-      $$0.a(this.c);
-   }
-
-   @Override
-   public String a() {
-      return String.format(Locale.ROOT, "%s %.2f", jy.k.b(this.b()), this.c);
+   public int a() {
+      return this.b;
    }
 }

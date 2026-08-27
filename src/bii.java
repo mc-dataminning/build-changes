@@ -1,53 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Arrays;
 
-public class bii extends bic {
-   public static final Codec<bii> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bii::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
+public class bii implements bij {
+   private final bij[] a;
 
-   private bii(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
-   }
-
-   public static bii a(int $$0, int $$1) {
-      return new bii($$0, $$1);
+   public bii(bij... $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public int a(ats $$0) {
-      return atm.b($$0, this.b, this.f);
-   }
+   public float a(atw $$0) {
+      float $$1 = 1.0F;
 
-   @Override
-   public int a() {
-      return this.b;
-   }
+      for (bij $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bid<?> c() {
-      return bid.b;
+      return $$1;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

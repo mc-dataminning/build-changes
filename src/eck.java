@@ -1,17 +1,49 @@
-public interface eck {
-   void a(ht var1);
+import javax.annotation.Nullable;
 
-   boolean K_();
+public interface eck extends ecp {
+   @Nullable
+   djp a(iy var1);
 
-   int a();
+   int b(hx var1);
 
-   default void a(ht $$0, boolean $$1) {
-      this.a(iu.a($$0), $$1);
+   public static enum a implements eck {
+      a;
+
+      @Nullable
+      @Override
+      public djp a(iy $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(hx $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(hx $$0) {
+      }
+
+      @Override
+      public boolean L_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(iy $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(crm $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(crm $$0) {
+      }
    }
-
-   void a(iu var1, boolean var2);
-
-   void a(crh var1, boolean var2);
-
-   void b(crh var1);
 }

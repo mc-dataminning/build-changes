@@ -1,80 +1,55 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class agl extends IOException {
-   private final List<agl.a> a = Lists.newArrayList();
-   private final String b;
+public class agl<T> {
+   private static final ConcurrentMap<agl.a, agl<?>> a = new MapMaker().weakValues().makeMap();
+   private final agm b;
+   private final agm c;
 
-   public agl(String $$0) {
-      this.a.add(new agl.a());
+   public static <T> Codec<agl<T>> a(agl<? extends is<T>> $$0) {
+      return agm.a.xmap($$1 -> a($$0, $$1), agl::a);
+   }
+
+   public static <T> agl<T> a(agl<? extends is<T>> $$0, agm $$1) {
+      return a($$0.c, $$1);
+   }
+
+   public static <T> agl<is<T>> a(agm $$0) {
+      return a(kc.a, $$0);
+   }
+
+   private static <T> agl<T> a(agm $$0, agm $$1) {
+      return (agl<T>)a.computeIfAbsent(new agl.a($$0, $$1), $$0x -> new agl($$0x.a, $$0x.b));
+   }
+
+   private agl(agm $$0, agm $$1) {
       this.b = $$0;
-   }
-
-   public agl(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new agl.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new agl.a());
+      this.c = $$1;
    }
 
    @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   public static agl a(Exception $$0) {
-      if ($$0 instanceof agl) {
-         return (agl)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new agl($$1, $$0);
-      }
+   public boolean b(agl<? extends is<?>> $$0) {
+      return this.b.equals($$0.a());
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   public <E> Optional<agl<E>> c(agl<? extends is<E>> $$0) {
+      return this.b($$0) ? Optional.of((agl<E>)this) : Optional.empty();
+   }
 
-      a() {
-      }
+   public agm a() {
+      return this.c;
+   }
 
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
+   public agm b() {
+      return this.b;
+   }
 
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   static record a(agm a, agm b) {
    }
 }

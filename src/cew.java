@@ -1,34 +1,45 @@
-public class cew extends ces {
-   public cew(bku<? extends cew> $$0, csa $$1) {
-      super($$0, $$1);
+public class cew extends cef {
+   private static final clo f = new clo(clr.vh);
+   private int g = 200;
+
+   public cew(bkz<? extends cew> $$0, csf $$1) {
+      super($$0, $$1, f);
    }
 
-   public cew(csa $$0, blg $$1) {
-      super(bku.I, $$1, $$0);
+   public cew(csf $$0, bll $$1, clo $$2) {
+      super(bkz.aR, $$1, $$0, $$2);
    }
 
-   public cew(csa $$0, double $$1, double $$2, double $$3) {
-      super(bku.I, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cle s() {
-      return clm.tQ;
-   }
-
-   @Override
-   protected float x() {
-      return 0.07F;
+   public cew(csf $$0, double $$1, double $$2, double $$3, clo $$4) {
+      super(bkz.aR, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected void a(ejs $$0) {
-      super.a($$0);
-      if (this.dN() instanceof ame) {
-         this.dN().c(2002, this.dn(), cni.a(cnj.c));
-         int $$1 = 3 + this.dN().z.a(5) + this.dN().z.a(5);
-         bkw.a((ame)this.dN(), this.dl(), $$1);
-         this.am();
+   public void l() {
+      super.l();
+      if (this.dN().B && !this.b) {
+         this.dN().a(jw.N, this.ds(), this.du(), this.dy(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(bll $$0) {
+      super.a($$0);
+      bki $$1 = new bki(bkk.x, this.g, 0);
+      $$0.b($$1, this.I());
+   }
+
+   @Override
+   public void a(sd $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.g = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(sd $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.g);
    }
 }

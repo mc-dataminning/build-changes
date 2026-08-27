@@ -1,28 +1,36 @@
 import javax.annotation.Nullable;
 
-public class aaq implements wk<yd> {
-   @Nullable
-   private final agi a;
+public class aaq implements wo<yh> {
+   private final int a;
+   private final bkg b;
 
-   public aaq(@Nullable agi $$0) {
+   public aaq(int $$0, bkg $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(yd $$0) {
-      $$0.a(this);
-   }
-
-   public aaq(tu $$0) {
-      this.a = $$0.c(tu::t);
+   public aaq(ty $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(kc.e);
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a, tu::a);
+   public void a(ty $$0) {
+      $$0.c(this.a);
+      $$0.a(kc.e, this.b);
+   }
+
+   public void a(yh $$0) {
+      $$0.a(this);
    }
 
    @Nullable
-   public agi a() {
-      return this.a;
+   public bkv a(csf $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Nullable
+   public bkg a() {
+      return this.b;
    }
 }

@@ -1,26 +1,18 @@
-@FunctionalInterface
-public interface ejf<T> {
-   void handle(T var1, ejh<T> var2, long var3);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-   public abstract static class a<T, C extends ejf<T>> {
-      private final agi a;
-      private final Class<?> b;
+public class ejf {
+   private static final Codec<eje> d = kc.L.q().dispatch(eje::a, ejd::a);
+   public static final Codec<eje> a = asy.a(
+      (Supplier<Codec<eje>>)(() -> Codec.either(ejb.b, d)
+            .xmap($$0 -> (eje)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ejb $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final ejd b = a("fixed", ejc.a);
+   public static final ejd c = a("context", ejb.a);
 
-      public a(agi $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public agi a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(rz var1, C var2);
-
-      public abstract C b(rz var1);
+   private static ejd a(String $$0, Codec<? extends eje> $$1) {
+      return is.a(kc.L, new agm($$0), new ejd($$1));
    }
 }

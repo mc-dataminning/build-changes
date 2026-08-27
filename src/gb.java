@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 
 public class gb implements ArgumentType<gb.a> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final id<cle> b;
+   private final ii<clj> b;
 
    public gb(dp $$0) {
-      this.b = $$0.a(jz.E);
+      this.b = $$0.a(kd.E);
    }
 
    public static gb a(dp $$0) {
@@ -28,8 +28,8 @@ public class gb implements ArgumentType<gb.a> {
       return (gb.a)$$1.map($$0x -> a($$1x -> $$1x == $$0x.a(), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
    }
 
-   public static Predicate<clj> a(CommandContext<du> $$0, String $$1) {
-      return (Predicate<clj>)$$0.getArgument($$1, gb.a.class);
+   public static Predicate<clo> a(CommandContext<du> $$0, String $$1) {
+      return (Predicate<clo>)$$0.getArgument($$1, gb.a.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -40,10 +40,10 @@ public class gb implements ArgumentType<gb.a> {
       return a;
    }
 
-   private static gb.a a(Predicate<ib<cle>> $$0, @Nullable rz $$1) {
-      return $$1 != null ? $$2 -> $$2.a($$0) && so.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
+   private static gb.a a(Predicate<ig<clj>> $$0, @Nullable sd $$1) {
+      return $$1 != null ? $$2 -> $$2.a($$0) && ss.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
    }
 
-   public interface a extends Predicate<clj> {
+   public interface a extends Predicate<clo> {
    }
 }

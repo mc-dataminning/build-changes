@@ -1,112 +1,77 @@
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
 public class etx {
-   public static final etu a = etu.a.a(0.5F)
-      .a()
-      .a("head", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, -2.5F, 0.0F), ett.b.a)))
-      .a("body", new ett(ett.d.b, new etv(0.0F, etw.b(180.0F, 0.0F, 0.0F), ett.b.a)))
-      .a("body", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, -2.5F, 0.0F), ett.b.a)))
-      .a("feet", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)))
-      .a("right_wing", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, -10.0F, 0.0F), ett.b.a)))
-      .a("right_wing", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, 0.0F, 1.0F), ett.b.a)))
-      .a("right_wing_tip", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, -120.0F, 0.0F), ett.b.a)))
-      .a("left_wing", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, 10.0F, 0.0F), ett.b.a)))
-      .a("left_wing", new ett(ett.d.a, new etv(0.0F, etw.a(0.0F, 0.0F, 1.0F), ett.b.a)))
-      .a("left_wing_tip", new ett(ett.d.b, new etv(0.0F, etw.b(0.0F, 120.0F, 0.0F), ett.b.a)))
-      .b();
-   public static final etu b = etu.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.b(20.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(0.0F, 0.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ett(
-            ett.d.a,
-            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.a(0.0F, 2.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
-            new etv(0.375F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.4583F, etw.a(0.0F, -1.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(40.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.b(52.5F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(40.0F, 0.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ett(
-            ett.d.a,
-            new etv(0.0F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.a(0.0F, 2.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.a(0.0F, 1.0F, 0.0F), ett.b.a),
-            new etv(0.375F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.4583F, etw.a(0.0F, -1.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.a(0.0F, 0.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(10.0F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.b(-21.25F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.b(-12.5F, 0.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(10.0F, 0.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(0.0F, 85.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.b(0.0F, -55.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.b(0.0F, 50.0F, 0.0F), ett.b.a),
-            new etv(0.375F, etw.b(0.0F, 70.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(0.0F, 85.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(0.0F, 10.5F, 0.0F), ett.b.a),
-            new etv(0.0417F, etw.b(0.0F, 65.5F, 0.0F), ett.b.a),
-            new etv(0.2083F, etw.b(0.0F, -135.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(0.0F, 10.5F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(0.0F, -85.0F, 0.0F), ett.b.a),
-            new etv(0.125F, etw.b(0.0F, 55.0F, 0.0F), ett.b.a),
-            new etv(0.25F, etw.b(0.0F, -50.0F, 0.0F), ett.b.a),
-            new etv(0.375F, etw.b(0.0F, -70.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(0.0F, -85.0F, 0.0F), ett.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new ett(
-            ett.d.b,
-            new etv(0.0F, etw.b(0.0F, -10.5F, 0.0F), ett.b.a),
-            new etv(0.0417F, etw.b(0.0F, -65.5F, 0.0F), ett.b.a),
-            new etv(0.2083F, etw.b(0.0F, 135.0F, 0.0F), ett.b.a),
-            new etv(0.5F, etw.b(0.0F, -10.5F, 0.0F), ett.b.a)
-         )
-      )
-      .b();
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final etx.a f;
+
+   public etx(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, etx.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public etx.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, etx.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static etx.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
+   }
 }

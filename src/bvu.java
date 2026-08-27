@@ -1,25 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bvu {
-   @Nullable
-   public static eju a(blp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bvx.a($$0, $$1);
-      return bwa.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bvu extends bvk {
+   private static final ImmutableMap<bkz<?>, Float> a = ImmutableMap.builder()
+      .put(bkz.y, 8.0F)
+      .put(bkz.G, 12.0F)
+      .put(bkz.Z, 8.0F)
+      .put(bkz.aa, 12.0F)
+      .put(bkz.ay, 15.0F)
+      .put(bkz.aD, 12.0F)
+      .put(bkz.be, 8.0F)
+      .put(bkz.bg, 10.0F)
+      .put(bkz.bo, 10.0F)
+      .put(bkz.bp, 8.0F)
+      .put(bkz.br, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(bll $$0, bll $$1) {
+      return this.b($$1) && this.e($$0, $$1);
    }
 
-   @Nullable
-   public static ht a(blp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      ht $$8 = bwa.a($$0.eh(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         ht $$9 = bwa.a($$0, $$1, $$0.eh(), $$8);
-         if (!bvx.a($$9, $$0) && !bvx.a($$7, $$0, $$9)) {
-            $$9 = bwa.a($$9, $$0.dN().ak(), $$1x -> bvx.c($$0, $$1x));
-            return bvx.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   private boolean e(bll $$0, bll $$1) {
+      float $$2 = (Float)a.get($$1.ai());
+      return $$1.f((bkv)$$0) <= (double)($$2 * $$2);
+   }
+
+   @Override
+   protected bum<bll> b() {
+      return bum.A;
+   }
+
+   private boolean b(bll $$0) {
+      return a.containsKey($$0.ai());
    }
 }

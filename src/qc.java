@@ -1,8 +1,82 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface qc {
+public class qc {
+   public static final agl<dpn<?, ?>> a = pz.a("ore_magma");
+   public static final agl<dpn<?, ?>> b = pz.a("ore_soul_sand");
+   public static final agl<dpn<?, ?>> c = pz.a("ore_nether_gold");
+   public static final agl<dpn<?, ?>> d = pz.a("ore_quartz");
+   public static final agl<dpn<?, ?>> e = pz.a("ore_gravel_nether");
+   public static final agl<dpn<?, ?>> f = pz.a("ore_blackstone");
+   public static final agl<dpn<?, ?>> g = pz.a("ore_dirt");
+   public static final agl<dpn<?, ?>> h = pz.a("ore_gravel");
+   public static final agl<dpn<?, ?>> i = pz.a("ore_granite");
+   public static final agl<dpn<?, ?>> j = pz.a("ore_diorite");
+   public static final agl<dpn<?, ?>> k = pz.a("ore_andesite");
+   public static final agl<dpn<?, ?>> l = pz.a("ore_tuff");
+   public static final agl<dpn<?, ?>> m = pz.a("ore_coal");
+   public static final agl<dpn<?, ?>> n = pz.a("ore_coal_buried");
+   public static final agl<dpn<?, ?>> o = pz.a("ore_iron");
+   public static final agl<dpn<?, ?>> p = pz.a("ore_iron_small");
+   public static final agl<dpn<?, ?>> q = pz.a("ore_gold");
+   public static final agl<dpn<?, ?>> r = pz.a("ore_gold_buried");
+   public static final agl<dpn<?, ?>> s = pz.a("ore_redstone");
+   public static final agl<dpn<?, ?>> t = pz.a("ore_diamond_small");
+   public static final agl<dpn<?, ?>> u = pz.a("ore_diamond_medium");
+   public static final agl<dpn<?, ?>> v = pz.a("ore_diamond_large");
+   public static final agl<dpn<?, ?>> w = pz.a("ore_diamond_buried");
+   public static final agl<dpn<?, ?>> x = pz.a("ore_lapis");
+   public static final agl<dpn<?, ?>> y = pz.a("ore_lapis_buried");
+   public static final agl<dpn<?, ?>> z = pz.a("ore_infested");
+   public static final agl<dpn<?, ?>> A = pz.a("ore_emerald");
+   public static final agl<dpn<?, ?>> B = pz.a("ore_ancient_debris_large");
+   public static final agl<dpn<?, ?>> C = pz.a("ore_ancient_debris_small");
+   public static final agl<dpn<?, ?>> D = pz.a("ore_copper_small");
+   public static final agl<dpn<?, ?>> E = pz.a("ore_copper_large");
+   public static final agl<dpn<?, ?>> F = pz.a("ore_clay");
+
+   public static void a(oz<dpn<?, ?>> $$0) {
+      ebg $$1 = new ebo(ark.bd);
+      ebg $$2 = new ebo(ark.be);
+      ebg $$3 = new ebo(ark.bf);
+      ebg $$4 = new eap(cvh.dV);
+      ebg $$5 = new ebo(ark.bg);
+      List<dsm.a> $$6 = List.of(dsm.a($$2, cvh.P.o()), dsm.a($$3, cvh.Q.o()));
+      List<dsm.a> $$7 = List.of(dsm.a($$2, cvh.N.o()), dsm.a($$3, cvh.O.o()));
+      List<dsm.a> $$8 = List.of(dsm.a($$2, cvh.cx.o()), dsm.a($$3, cvh.cy.o()));
+      List<dsm.a> $$9 = List.of(dsm.a($$2, cvh.aR.o()), dsm.a($$3, cvh.aS.o()));
+      List<dsm.a> $$10 = List.of(dsm.a($$2, cvh.ra.o()), dsm.a($$3, cvh.rb.o()));
+      List<dsm.a> $$11 = List.of(dsm.a($$2, cvh.R.o()), dsm.a($$3, cvh.S.o()));
+      pz.a($$0, a, dqa.I, new dsm($$4, cvh.kJ.o(), 33));
+      pz.a($$0, b, dqa.I, new dsm($$4, cvh.dW.o(), 12));
+      pz.a($$0, c, dqa.I, new dsm($$4, cvh.T.o(), 10));
+      pz.a($$0, d, dqa.I, new dsm($$4, cvh.hb.o(), 14));
+      pz.a($$0, e, dqa.I, new dsm($$4, cvh.L.o(), 33));
+      pz.a($$0, f, dqa.I, new dsm($$4, cvh.pr.o(), 33));
+      pz.a($$0, g, dqa.I, new dsm($$1, cvh.j.o(), 33));
+      pz.a($$0, h, dqa.I, new dsm($$1, cvh.L.o(), 33));
+      pz.a($$0, i, dqa.I, new dsm($$1, cvh.c.o(), 64));
+      pz.a($$0, j, dqa.I, new dsm($$1, cvh.e.o(), 64));
+      pz.a($$0, k, dqa.I, new dsm($$1, cvh.g.o(), 64));
+      pz.a($$0, l, dqa.I, new dsm($$1, cvh.qz.o(), 64));
+      pz.a($$0, m, dqa.I, new dsm($$11, 17));
+      pz.a($$0, n, dqa.I, new dsm($$11, 17, 0.5F));
+      pz.a($$0, o, dqa.I, new dsm($$6, 9));
+      pz.a($$0, p, dqa.I, new dsm($$6, 4));
+      pz.a($$0, q, dqa.I, new dsm($$7, 9));
+      pz.a($$0, r, dqa.I, new dsm($$7, 9, 0.5F));
+      pz.a($$0, s, dqa.I, new dsm(List.of(dsm.a($$2, cvh.dI.o()), dsm.a($$3, cvh.dJ.o())), 8));
+      pz.a($$0, t, dqa.I, new dsm($$8, 4, 0.5F));
+      pz.a($$0, v, dqa.I, new dsm($$8, 12, 0.7F));
+      pz.a($$0, w, dqa.I, new dsm($$8, 8, 1.0F));
+      pz.a($$0, u, dqa.I, new dsm($$8, 8, 0.5F));
+      pz.a($$0, x, dqa.I, new dsm($$9, 7));
+      pz.a($$0, y, dqa.I, new dsm($$9, 7, 1.0F));
+      pz.a($$0, z, dqa.I, new dsm(List.of(dsm.a($$2, cvh.eN.o()), dsm.a($$3, cvh.td.o())), 9));
+      pz.a($$0, A, dqa.I, new dsm(List.of(dsm.a($$2, cvh.fE.o()), dsm.a($$3, cvh.fF.o())), 3));
+      pz.a($$0, B, dqa.ae, new dsm($$5, cvh.pj.o(), 3, 1.0F));
+      pz.a($$0, C, dqa.ae, new dsm($$5, cvh.pj.o(), 2, 1.0F));
+      pz.a($$0, D, dqa.I, new dsm($$10, 10));
+      pz.a($$0, E, dqa.I, new dsm($$10, 20));
+      pz.a($$0, F, dqa.I, new dsm($$1, cvh.dR.o(), 33));
+   }
 }

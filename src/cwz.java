@@ -1,26 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class cwz extends cvj {
+public class cwz extends cvf {
    public static final MapCodec<cwz> a = b(cwz::new);
-   protected static final float b = 6.0F;
-   protected static final ekn c = cva.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   private static final uv b = uv.c("container.crafting");
 
    @Override
-   public MapCodec<cwz> a() {
+   public MapCodec<? extends cwz> a() {
       return a;
    }
 
-   protected cwz(dhh.d $$0) {
+   protected cwz(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return c;
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if ($$1.B) {
+         return bjb.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(arf.an);
+         return bjb.b;
+      }
    }
 
    @Override
-   protected boolean b(dhi $$0, crg $$1, ht $$2) {
-      return $$0.a(arg.cd);
+   public bje b(dhn $$0, csf $$1, hx $$2) {
+      return new bjk(($$2x, $$3, $$4) -> new chi($$2x, $$3, chc.a($$1, $$2)), b);
    }
 }

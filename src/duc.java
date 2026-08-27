@@ -1,50 +1,61 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class duc extends due {
-   public static final Codec<duc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ate.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ebv.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               asu.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, duc::new)
-   );
-   private final ate<Integer> i;
-   private final ebv.a j;
-   private final float k;
-   private final ebv l;
+public abstract class duc {
+   public static final Codec<duc> d = kc.Z.q().dispatch(duc::a, dud::a);
+   protected final big e;
+   protected final duf f;
+   protected final Optional<dtz> g;
 
-   public duc(ate<Integer> $$0, ebv.a $$1, float $$2, long $$3, ebv.a $$4, float $$5, List<dhi> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ebv.b(new dnq(new dms($$3)), $$1);
+   protected static <P extends duc> P3<Mu<P>, big, duf, Optional<dtz>> a(Instance<P> $$0) {
+      return $$0.group(
+         big.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         duf.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         dtz.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected dub<?> a() {
-      return dub.e;
+   public duc(big $$0, duf $$1, Optional<dtz> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public dhi a(ats $$0, ht $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)atm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dhi> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected abstract dud<?> a();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+   public abstract boolean a(csl var1, BiConsumer<hx, dhn> var2, atw var3, hx var4, hx var5, dta var6);
+
+   protected boolean a(csl $$0, hx $$1) {
+      return drm.c($$0, $$1);
+   }
+
+   protected void a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, hx $$3, dta $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            dtz $$5 = this.g.get();
+            hx $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dhm.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(ht $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   protected dhn a(csl $$0, hx $$1, dhn $$2) {
+      if ($$2.b(did.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(arp.a));
+         return $$2.a(did.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
+   }
+
+   public hx a(hx $$0, atw $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

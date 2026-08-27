@@ -1,59 +1,40 @@
-public class adq implements wk<acl> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private final float c;
-   private final float d;
-   private final boolean e;
-   private final boolean f;
+public class adq implements wo<acp> {
+   private final int a;
+   private final agm b;
+   private final boolean c;
 
-   public adq(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public adq(int $$0, cov<?> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.a();
+      this.c = $$2;
    }
 
-   public adq(tu $$0) {
-      this.c = $$0.readFloat();
-      this.d = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) > 0;
-      this.f = ($$1 & 2) > 0;
+   public adq(ty $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.t();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
+      $$0.k(this.a);
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.c;
+   public int a() {
+      return this.a;
    }
 
-   public float d() {
-      return this.d;
+   public agm d() {
+      return this.b;
    }
 
    public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+      return this.c;
    }
 }

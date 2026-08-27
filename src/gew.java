@@ -1,44 +1,31 @@
-public class gew extends gel {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cdu p;
-   private final cfl q;
-   private final boolean r;
+public class gew implements ger {
+   private final fqb a;
+   private boolean b;
+   private boolean c = true;
 
-   public gew(cdu $$0, cfl $$1, boolean $$2) {
-      super($$2 ? aqr.nA : aqr.nB, aqs.g, gfc.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gfc.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public gew(fqb $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.aU();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dI() || !this.p.bO() || this.p.da() != this.q) {
-         this.n();
-      } else if (this.r != this.p.be()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dq().h();
-         if ($$0 >= 0.01F) {
-            this.d = atm.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      csf $$0 = this.a.dN();
+      dhn $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(cvh.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(cvh.nd) && !this.a.P_()) {
+            boolean $$2 = $$1.c(cvl.b);
+            if ($$2) {
+               this.a.a(aqv.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(aqv.cs, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

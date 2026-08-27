@@ -1,118 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
 
-public class agk {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public class agk<T> extends age<T> {
+   private final agk.b b;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (jy.ar.e().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         } else {
-            cya.b();
-            cwl.b();
-            if (bku.a(bku.bt) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               cnh.a();
-               gg.a();
-               je.c();
-               iy.a();
-               jy.a();
-               cjq.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
-            }
-         }
-      }
-   }
+   private static agk.b a(final agk.b $$0) {
+      return new agk.b() {
+         private final Map<agl<? extends is<?>>, Optional<? extends agk.a<?>>> b = new HashMap<>();
 
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      ru $$3 = ru.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
-   }
-
-   private static void a(final Set<String> $$0) {
-      final ru $$1 = ru.a();
-      crw.a(new crw.c() {
          @Override
-         public <T extends crw.g<T>> void a(crw.e<T> $$0x, crw.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
+         public <T> Optional<agk.a<T>> a(agl<? extends is<? extends T>> $$0x) {
+            return (Optional<agk.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
          }
-      });
+      };
    }
 
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(jy.v, bmh::c, $$0);
-      a(jy.h, bku::g, $$0);
-      a(jy.e, bkb::d, $$0);
-      a(jy.i, cle::a, $$0);
-      a(jy.g, cpu::g, $$0);
-      a(jy.f, cva::h, $$0);
-      a(jy.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
+   public static <T> agk<T> a(DynamicOps<T> $$0, final ii.b $$1) {
+      return a($$0, a(new agk.b() {
+         @Override
+         public <E> Optional<agk.a<E>> a(agl<? extends is<? extends E>> $$0) {
+            return $$1.a($$0).map($$0x -> (agk.a<E>)(new agk.a<>($$0x, $$0x, $$0x.g())));
+         }
+      }));
    }
 
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
+   public static <T> agk<T> a(DynamicOps<T> $$0, agk.b $$1) {
+      return new agk<>($$0, $$1);
    }
 
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
+   private agk(DynamicOps<T> $$0, agk.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aT) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         dv.b();
-      }
-
-      bmn.a();
+   public <E> Optional<ij<E>> a(agl<? extends is<? extends E>> $$0) {
+      return this.b.a($$0).map(agk.a::a);
    }
 
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new agn("STDERR", System.err));
-         System.setOut(new agn("STDOUT", a));
-      } else {
-         System.setErr(new agp("STDERR", System.err));
-         System.setOut(new agp("STDOUT", a));
-      }
+   public <E> Optional<ih<E>> b(agl<? extends is<? extends E>> $$0) {
+      return this.b.a($$0).map(agk.a::b);
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   public static <E, O> RecordCodecBuilder<O, ih<E>> c(agl<? extends is<? extends E>> $$0) {
+      return asy.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof agk<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, ig.c<E>> d(agl<E> $$0) {
+      agl<? extends is<E>> $$1 = agl.a($$0.b());
+      return asy.b(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof agk<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static record a<T>(ij<T> a, ih<T> b, Lifecycle c) {
+   }
+
+   public interface b {
+      <T> Optional<agk.a<T>> a(agl<? extends is<? extends T>> var1);
    }
 }

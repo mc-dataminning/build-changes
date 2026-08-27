@@ -1,44 +1,69 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class dva extends dvd {
-   public static final Codec<dva> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dva::new));
+public class dva extends dvi {
+   public static final Codec<dva> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  asy.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), big.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, dva::new)
+   );
+   private final int b;
+   private final big h;
 
-   public dva(int $$0, int $$1, int $$2) {
+   public dva(int $$0, int $$1, int $$2, int $$3, big $$4) {
       super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected dve<?> a() {
-      return dve.c;
+   protected dvj<?> a() {
+      return dvj.g;
    }
 
    @Override
-   public List<dtl.a> a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, int $$3, ht $$4, dsv $$5) {
-      ht $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      ht.a $$7 = new ht.a();
+   public List<dtq.a> a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, int $$3, hx $$4, dta $$5) {
+      ib $$6 = ib.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      hx.a $$8 = $$4.j();
+      hx $$9 = $$8.d();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<dtq.a> $$10 = Lists.newArrayList();
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
+
+         if (drm.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new dtq.a($$8.i(), 0, false));
+         }
+
+         $$8.c(ib.b);
       }
 
-      return ImmutableList.of(new dtl.a($$4.b($$3), 0, true));
-   }
+      int $$12 = this.h.a($$2);
 
-   private void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht.a $$3, dsv $$4, ht $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (drm.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new dtq.a($$8.i(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

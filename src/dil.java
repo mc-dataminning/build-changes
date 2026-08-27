@@ -1,68 +1,43 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public abstract class dil<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dil.a<T>> e = this.d.xmap(this::b, dil.a::b);
+public class dil<T extends Enum<T> & auk> extends diq<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   protected dil(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   protected dil(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
+
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+         }
+
+         this.b.put($$4, $$3);
+      }
    }
 
-   public dil.a<T> b(T $$0) {
-      return new dil.a<>(this, $$0);
-   }
-
-   public dil.a<T> a(dhk<?, ?> $$0) {
-      return new dil.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dil.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dil.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
+   @Override
+   public Collection<T> a() {
       return this.a;
    }
 
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
    }
 
    @Override
@@ -70,41 +45,34 @@ public abstract class dil<T extends Comparable<T>> {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof dil<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+         if ($$0 instanceof dil<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
+         }
+
+         return false;
       }
    }
 
    @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
    public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   public <U, S extends dhk<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   public static <T extends Enum<T> & auk> dil<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static record a<T extends Comparable<T>>(dil<T> a, T b) {
-      public a(dil<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public static <T extends Enum<T> & auk> dil<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
-      }
+   public static <T extends Enum<T> & auk> dil<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & auk> dil<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dil<>($$0, $$1, $$2);
    }
 }

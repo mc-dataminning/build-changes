@@ -1,69 +1,114 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class cyy extends cva {
-   public static final MapCodec<cyy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jy.f.q().fieldOf("host").forGetter(cyy::b), u()).apply($$0, cyy::new));
-   private final cva b;
-   private static final Map<cva, cva> c = Maps.newIdentityHashMap();
-   private static final Map<dhi, dhi> d = Maps.newIdentityHashMap();
-   private static final Map<dhi, dhi> e = Maps.newIdentityHashMap();
+public class cyy extends cyv {
+   public static final MapCodec<cyy> a = b(cyy::new);
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final eks b = cvf.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
-   public MapCodec<? extends cyy> a() {
+   public MapCodec<cyy> a() {
       return a;
    }
 
-   public cyy(cva $$0, dhh.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public cyy(dhm.d $$0) {
+      super($$0);
    }
 
-   public cva b() {
-      return this.b;
+   private static boolean c(bkv $$0) {
+      return $$0 instanceof bll || $$0 instanceof cfq || $$0 instanceof cat || $$0 instanceof cfs;
    }
 
-   public static boolean h(dhi $$0) {
-      return c.containsKey($$0.b());
+   @Override
+   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
    }
 
-   private void a(ame $$0, ht $$1) {
-      cbp $$2 = bku.aI.a((csa)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.S();
+   @Override
+   public void a(csf $$0, dhn $$1, hx $$2, bkv $$3, float $$4) {
+      $$3.a(aqv.ls, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.ah().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
       }
    }
 
    @Override
-   public void a(dhi $$0, ame $$1, ht $$2, clj $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.Y().b(crw.h) && cpw.a(cpy.v, $$3) == 0) {
-         this.a($$1, $$2);
+   public void a(dhn $$0, csf $$1, hx $$2, bkv $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean a(hx $$0, bkv $$1) {
+      if ($$1.aC()) {
+         return false;
+      } else if ($$1.du() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dq().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.ds());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dy());
+         double $$4 = 0.4375 + (double)($$1.dh() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
       }
    }
 
-   public static dhi n(dhi $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).o());
+   private void a(bkv $$0, hx $$1) {
+      if ($$0 instanceof amj && $$0.dN().W() % 20L == 0L) {
+         al.J.a((amj)$$0, $$0.dN().a_($$1));
+      }
    }
 
-   public dhi o(dhi $$0) {
-      return a(e, $$0, () -> this.b().o());
+   private void d(bkv $$0) {
+      ejz $$1 = $$0.dq();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new ejz($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new ejz($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
    }
 
-   private static dhi a(Map<dhi, dhi> $$0, dhi $$1, Supplier<dhi> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dhi $$2x = $$2.get();
-
-         for (dil $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+   private void a(csf $$0, bkv $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(aqv.ls, 1.0F, 1.0F);
          }
 
-         return $$2x;
-      });
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(bkv $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(bkv $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(bkv $$0, int $$1) {
+      if ($$0.dN().B) {
+         dhn $$2 = cvh.pg.o();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dN().a(new jo(jw.c, $$2), $$0.ds(), $$0.du(), $$0.dy(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

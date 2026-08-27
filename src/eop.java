@@ -1,288 +1,207 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.Args;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
 
-public abstract class eop<T extends eop<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class eop {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private static final String c = "/upload";
+   private final File d;
+   private final long e;
+   private final int f;
+   private final epw g;
+   private final String h;
+   private final String i;
+   private final String j;
+   private final eov k;
+   private final AtomicBoolean l = new AtomicBoolean(false);
+   @Nullable
+   private CompletableFuture<ero> m;
+   private final RequestConfig n = RequestConfig.custom()
+      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
+      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
+      .build();
 
-   public eop(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = eon.a();
+   public eop(File $$0, long $$1, int $$2, epw $$3, etx $$4, String $$5, eov $$6) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4.a();
+      this.i = $$4.c();
+      this.j = $$5;
+      this.k = $$6;
+   }
+
+   public void a(Consumer<ero> $$0) {
+      if (this.m == null) {
+         this.m = CompletableFuture.supplyAsync(() -> this.a(0));
+         this.m.thenAccept($$0);
+      }
+   }
+
+   public void a() {
+      this.l.set(true);
+      if (this.m != null) {
+         this.m.cancel(false);
+         this.m = null;
+      }
+   }
+
+   private ero a(int $$0) {
+      ero.a $$1 = new ero.a();
+      if (this.l.get()) {
+         return $$1.a();
+      } else {
+         this.k.b = this.d.length();
+         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
+         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.n).build();
+
+         ero var8;
+         try {
+            this.a($$2);
+            HttpResponse $$4 = $$3.execute($$2);
+            long $$5 = this.a($$4);
+            if (!this.a($$5, $$0)) {
+               this.a($$4, $$1);
+               return $$1.a();
+            }
+
+            var8 = this.b($$5, $$0);
+         } catch (Exception var12) {
+            if (!this.l.get()) {
+               a.error("Caught exception while uploading: ", var12);
+            }
+
+            return $$1.a();
+         } finally {
+            this.a($$2, $$3);
+         }
+
+         return var8;
+      }
+   }
+
+   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
+      $$0.releaseConnection();
+      if ($$1 != null) {
+         try {
+            $$1.close();
+         } catch (IOException var4) {
+            a.error("Failed to close Realms upload client");
+         }
+      }
+   }
+
+   private void a(HttpPost $$0) throws FileNotFoundException {
+      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j);
+      eop.a $$1 = new eop.a(new FileInputStream(this.d), this.d.length(), this.k);
+      $$1.setContentType("application/octet-stream");
+      $$0.setEntity($$1);
+   }
+
+   private void a(HttpResponse $$0, ero.a $$1) throws IOException {
+      int $$2 = $$0.getStatusLine().getStatusCode();
+      if ($$2 == 401) {
+         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
+      }
+
+      $$1.a($$2);
+      if ($$0.getEntity() != null) {
+         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
          if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
+            try {
+               JsonParser $$4 = new JsonParser();
+               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
+               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
+               $$1.a($$6.orElse(null));
+            } catch (Exception var8) {
+            }
          }
-
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new epy(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new epy(var6.getMessage(), var6);
       }
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
+   private boolean a(long $$0, int $$1) {
+      return $$0 > 0L && $$1 + 1 < 5;
    }
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+   private ero b(long $$0, int $$1) throws InterruptedException {
+      Thread.sleep(Duration.ofSeconds($$0).toMillis());
+      return this.a($$1 + 1);
+   }
+
+   private long a(HttpResponse $$0) {
+      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
+   }
+
+   public boolean b() {
+      return this.m.isDone() || this.m.isCancelled();
+   }
+
+   static class a extends InputStreamEntity {
+      private final long a;
+      private final InputStream b;
+      private final eov c;
+
+      public a(InputStream $$0, long $$1, eov $$2) {
+         super($$0);
+         this.b = $$0;
+         this.a = $$1;
+         this.c = $$2;
       }
-   }
 
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
+      public void writeTo(OutputStream $$0) throws IOException {
+         Args.notNull($$0, "Output stream");
+         InputStream $$1 = this.b;
 
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new epy(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new epy(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
          try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
+            byte[] $$2 = new byte[4096];
+            int $$3;
+            if (this.a < 0L) {
+               while (($$3 = $$1.read($$2)) != -1) {
+                  $$0.write($$2, 0, $$3);
+                  this.c.a += (long)$$3;
                }
+            } else {
+               long $$4 = this.a;
 
-               $$3.close();
-               return;
+               while ($$4 > 0L) {
+                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
+                  if ($$3 == -1) {
+                     break;
+                  }
+
+                  $$0.write($$2, 0, $$3);
+                  this.c.a += (long)$$3;
+                  $$4 -= (long)$$3;
+                  $$0.flush();
+               }
             }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
-      }
-   }
-
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static eop<?> a(String $$0) {
-      return new eop.b($$0, 5000, 60000);
-   }
-
-   public static eop<?> a(String $$0, int $$1, int $$2) {
-      return new eop.b($$0, $$1, $$2);
-   }
-
-   public static eop<?> b(String $$0, String $$1) {
-      return new eop.c($$0, $$1, 5000, 60000);
-   }
-
-   public static eop<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new eop.c($$0, $$1, $$2, $$3);
-   }
-
-   public static eop<?> b(String $$0) {
-      return new eop.a($$0, 5000, 60000);
-   }
-
-   public static eop<?> c(String $$0, String $$1) {
-      return new eop.d($$0, $$1, 5000, 60000);
-   }
-
-   public static eop<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new eop.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends eop<eop.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public eop.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new epy(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends eop<eop.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public eop.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new epy(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends eop<eop.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public eop.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
+         } finally {
             $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new epy(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends eop<eop.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public eop.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new epy(var3.getMessage(), var3);
          }
       }
    }

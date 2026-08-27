@@ -1,78 +1,59 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+public class ffc extends faz {
+   private static final uv a = uv.c("gui.abuseReport.title");
+   private static final uv b = uv.c("gui.abuseReport.message");
+   private static final uv c = uv.c("gui.abuseReport.type.chat");
+   private static final uv k = uv.c("gui.abuseReport.type.skin");
+   private static final uv l = uv.c("gui.abuseReport.type.name");
+   private static final int m = 6;
+   private final faz n;
+   private final fmr o;
+   private final ffg p;
+   private final eys q = eys.d().a(6);
 
-public class ffc {
-   private final etd a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
-
-   public ffc(etd $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   public ffc(faz $$0, fmr $$1, ffg $$2) {
+      super(a);
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   @Override
+   public uv h() {
+      return uu.a(super.h(), b);
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
-   }
-
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
-   }
-
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
-      } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+   @Override
+   protected void aQ_() {
+      this.q.c().b();
+      this.q.a(new ewl(this.e, this.i), this.q.b().e(6));
+      this.q.a(new evy(b, this.i).b(true), this.q.b().e(6));
+      eve $$0 = this.q.a(eve.a(c, $$0x -> this.f.a(new fey(this.n, this.o, this.p.e()))).a());
+      if (!this.p.j()) {
+         $$0.i = false;
+         $$0.a(ewp.a(uv.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.p.h()) {
+         $$0.i = false;
+         $$0.a(ewp.a(uv.a("gui.socialInteractions.tooltip.report.no_messages", this.p.c())));
       }
+
+      this.q.a(eve.a(k, $$0x -> this.f.a(new ffe(this.n, this.o, this.p.e(), this.p.f()))).a());
+      this.q.a(eve.a(l, $$0x -> this.f.a(new ffb(this.n, this.o, this.p.e(), this.p.c()))).a());
+      this.q.a(eyt.b(20));
+      this.q.a(eve.a(uu.e, $$0x -> this.aG_()).a());
+      this.q.a($$1 -> {
+         evc var10000 = this.d($$1);
+      });
+      this.c();
    }
 
-   public Set<UUID> c() {
-      return this.b;
+   @Override
+   protected void c() {
+      this.q.a();
+      eym.a(this.q, this.s());
    }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.d);
-   }
-
-   public void a(fls $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof ffe $$2) {
-         $$2.a($$0);
-      }
-   }
-
-   public void f(UUID $$0) {
-      if (this.a.y instanceof ffe $$1) {
-         $$1.a($$0);
-      }
+   @Override
+   public void aG_() {
+      this.f.a(this.n);
    }
 }

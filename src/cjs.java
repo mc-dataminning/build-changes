@@ -1,87 +1,111 @@
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cjs extends cle {
-   public cjs(cle.a $$0) {
+public class cjs extends clj implements cni {
+   private static final Logger d = LogUtils.getLogger();
+   public static final String a = "LodestonePos";
+   public static final String b = "LodestoneDimension";
+   public static final String c = "LodestoneTracked";
+
+   public cjs(clj.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean i(clj $$0) {
-      return true;
+   public static boolean d(clo $$0) {
+      sd $$1 = $$0.v();
+      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
    }
 
-   @Override
-   public boolean a(dhi $$0, csa $$1, ht $$2, cdu $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(biw.a));
-      }
-
-      return false;
+   private static Optional<agl<csf>> c(sd $$0) {
+      return csf.g.parse(sr.a, $$0.c("LodestoneDimension")).result();
    }
 
-   @Override
-   public bix a(cnt $$0) {
-      cdu $$1 = $$0.o();
-      csa $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         ht $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bix.e;
+   @Nullable
+   public static ie a(sd $$0) {
+      boolean $$1 = $$0.e("LodestonePos");
+      boolean $$2 = $$0.e("LodestoneDimension");
+      if ($$1 && $$2) {
+         Optional<agl<csf>> $$3 = c($$0);
+         if ($$3.isPresent()) {
+            hx $$4 = ss.b($$0.p("LodestonePos"));
+            return ie.a($$3.get(), $$4);
          }
       }
 
-      return bix.a($$2.B);
+      return null;
    }
 
-   private boolean a(cdu $$0, dhi $$1, csb $$2, ht $$3, boolean $$4, clj $$5) {
-      if (!$$0.gq()) {
-         return false;
-      } else {
-         cva $$6 = $$1.b();
-         dhj<cva, dhi> $$7 = $$6.n();
-         Collection<dil<?>> $$8 = $$7.d();
-         String $$9 = jy.f.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, ur.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            rz $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dil<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
+   @Nullable
+   public static ie a(csf $$0) {
+      return $$0.E_().j() ? ie.a($$0.ad(), $$0.S()) : null;
+   }
 
-               dhi $$13 = a($$1, $$12, $$0.fJ());
-               $$2.a($$3, $$13, 18);
-               a($$0, ur.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fJ());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, ur.a(this.a() + ".select", $$14, a($$1, $$12)));
+   @Override
+   public boolean i(clo $$0) {
+      return d($$0) || super.i($$0);
+   }
+
+   @Override
+   public void a(clo $$0, csf $$1, bkv $$2, int $$3, boolean $$4) {
+      if (!$$1.B) {
+         if (d($$0)) {
+            sd $$5 = $$0.w();
+            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
+               return;
             }
 
-            return true;
+            Optional<agl<csf>> $$6 = c($$5);
+            if ($$6.isPresent() && $$6.get() == $$1.ad() && $$5.e("LodestonePos")) {
+               hx $$7 = ss.b($$5.p("LodestonePos"));
+               if (!$$1.j($$7) || !((ami)$$1).x().a(bwo.s, $$7)) {
+                  $$5.r("LodestonePos");
+               }
+            }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dhi a(dhi $$0, dil<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   public bjb a(cny $$0) {
+      hx $$1 = $$0.a();
+      csf $$2 = $$0.q();
+      if (!$$2.a_($$1).a(cvh.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, aqv.nf, aqw.h, 1.0F, 1.0F);
+         cdz $$3 = $$0.o();
+         clo $$4 = $$0.n();
+         boolean $$5 = !$$3.fU().d && $$4.L() == 1;
+         if ($$5) {
+            this.a($$2.ad(), $$1, $$4.w());
+         } else {
+            clo $$6 = new clo(clr.qP, 1);
+            sd $$7 = $$4.u() ? $$4.v().h() : new sd();
+            $$6.c($$7);
+            if (!$$3.fU().d) {
+               $$4.h(1);
+            }
+
+            this.a($$2.ad(), $$1, $$7);
+            if (!$$3.fT().e($$6)) {
+               $$3.a($$6, false);
+            }
+         }
+
+         return bjb.a($$2.B);
+      }
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   private void a(agl<csf> $$0, hx $$1, sd $$2) {
+      $$2.a("LodestonePos", ss.a($$1));
+      csf.g.encodeStart(sr.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
+      $$2.a("LodestoneTracked", true);
    }
 
-   private static void a(cdu $$0, ur $$1) {
-      ((amf)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dhi $$0, dil<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public String j(clo $$0) {
+      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
    }
 }

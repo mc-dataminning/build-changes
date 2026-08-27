@@ -1,18 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dok implements dny {
-   public static dok a = new dok();
-   public static final Codec<dok> e = Codec.unit(() -> a);
+class dok extends doo {
+   private final ik<ecw> e;
+   public static final Codec<dok> a = RecordCodecBuilder.create($$0 -> a($$0).and(iu.a(kd.x).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dok::new));
 
-   private dok() {
-   }
-
-   public boolean a(csu $$0, ht $$1) {
-      return true;
+   public dok(ja $$0, ik<ecw> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dnz<?> a() {
-      return dnz.l;
+   protected boolean a(dhn $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public doe<?> a() {
+      return doe.c;
    }
 }

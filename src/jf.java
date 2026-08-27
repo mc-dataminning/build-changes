@@ -1,16 +1,21 @@
-public abstract class jf extends jd {
-   private boolean c = true;
+public record jf(ami a, hx b, dhn c, dga d) {
+   public ejz a() {
+      return this.b.b();
+   }
 
-   public boolean a() {
+   public ami b() {
+      return this.a;
+   }
+
+   public hx c() {
+      return this.b;
+   }
+
+   public dhn d() {
       return this.c;
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected void a(jb $$0) {
-      $$0.b().c(this.a() ? 1000 : 1001, $$0.c(), 0);
+   public dga e() {
+      return this.d;
    }
 }

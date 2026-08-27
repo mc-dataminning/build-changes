@@ -1,117 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fom extends fpo {
+   fom(flo $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, atq.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, atq.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, atq.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
+   }
 
-public interface fom {
-   fom a = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gbt.e);
-         $$0.a(eob.b.h, enu.l);
-      }
+   @Override
+   public fos b() {
+      return fos.b;
+   }
 
-      @Override
-      public void a(eny $$0) {
-         $$0.c();
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   fom b = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(fqn::u);
-         RenderSystem.setShaderTexture(0, gbt.f);
-         $$0.a(eob.b.h, enu.l);
-      }
+   public static class a implements foq<jz> {
+      private final fpj a;
 
-      @Override
-      public void a(eny $$0) {
-         $$0.c();
+      public a(fpj $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fom $$8 = new fom($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
-   };
-   fom c = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gbt.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(eob.b.h, enu.l);
-      }
-
-      @Override
-      public void a(eny $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   fom d = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gbt.f);
-         $$0.a(eob.b.h, enu.l);
-      }
-
-      @Override
-      public void a(eny $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   fom e = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(eny $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   fom f = new fom() {
-      @Override
-      public void a(enr $$0, gbv $$1) {
-      }
-
-      @Override
-      public void a(eny $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(enr var1, gbv var2);
-
-   void a(eny var1);
+   }
 }

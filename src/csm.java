@@ -1,25 +1,15 @@
-public final class csm implements djb {
-   private final int a;
-   private final dhi[] b;
+public interface csm extends csi {
+   long ai();
 
-   public csm(int $$0, dhi[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default float ao() {
+      return dkw.i[this.E_().b(this.ai())];
    }
 
-   @Override
-   public dhi a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cvc.a.o();
+   default float f(float $$0) {
+      return this.E_().a(this.ai());
    }
 
-   @Override
-   public void a(int $$0, dhi $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default int ap() {
+      return this.E_().b(this.ai());
    }
 }

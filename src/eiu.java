@@ -1,42 +1,35 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record eiu(eir b, eir c) implements eir {
-   public static final Codec<eiu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eis.a.fieldOf("min").forGetter(eiu::c), eis.a.fieldOf("max").forGetter(eiu::d)).apply($$0, eiu::new)
-   );
+public record eiu(float c) implements eiw {
+   public static final Codec<eiu> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eiu::c)).apply($$0, eiu::new));
+   public static final Codec<eiu> b = Codec.FLOAT.xmap(eiu::new, eiu::c);
 
    @Override
-   public eiq b() {
-      return eis.c;
-   }
-
-   public static eiu a(float $$0, float $$1) {
-      return new eiu(eip.a($$0), eip.a($$1));
+   public eiv b() {
+      return eix.b;
    }
 
    @Override
-   public int a(eex $$0) {
-      return atm.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(eex $$0) {
-      return atm.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<ehf<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eir c() {
-      return this.b;
-   }
-
-   public eir d() {
+   public float b(efc $$0) {
       return this.c;
+   }
+
+   public static eiu a(float $$0) {
+      return new eiu($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eiu)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

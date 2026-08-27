@@ -1,12 +1,12 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
-public record gdo(Map<String, gdb> d) {
-   public static final Codec<String> a = asu.b(1, 16);
-   public static final Codec<gdo> b = Codec.unboundedMap(a, gdb.a).xmap(gdo::new, gdo::a);
-   public static final aoi<gdo> c = aoi.a("language", b);
+public class gdo implements aol<gdn> {
+   public gdn b(JsonObject $$0) {
+      return new gdn(gdn.a.a(atg.a($$0, "hat", "none")));
+   }
 
-   public Map<String, gdb> a() {
-      return this.d;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

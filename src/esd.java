@@ -1,56 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class esd implements Runnable {
-   protected static final int a = 25;
+public class esd extends esi {
    private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+   private static final uv c = uv.c("mco.configure.world.closing");
+   private final epi d;
+   private final eqr e;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+   public esd(epi $$0, eqr $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public void run() {
+      eor $$0 = eor.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = epi.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (eqf var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   public static void a(fau $$0) {
-      etd $$1 = etd.N();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(ur $$0) {
-      this.b();
-      etd $$1 = etd.N();
-      $$1.execute(() -> $$1.a(new eqq($$0, new eoh(new faz()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof epz $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(ur.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(epz $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract ur a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public uv a() {
+      return c;
    }
 }

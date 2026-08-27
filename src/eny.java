@@ -1,43 +1,104 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public interface eny extends eof {
+   eoh j();
 
-public class eny {
-   private static final int a = 786432;
-   private final enr b;
-   @Nullable
-   private static eny c;
+   void f();
 
-   public static void a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
+   void a(int var1, byte var2);
+
+   void a(int var1, short var2);
+
+   void a(int var1, float var2);
+
+   @Override
+   default eof a(double $$0, double $$1, double $$2) {
+      if (this.j().b() != eoh.b.a) {
+         return this;
+      } else if (this.j().a() == eoh.a.a && this.j().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
       } else {
-         c = new eny();
+         throw new IllegalStateException();
       }
    }
 
-   public static eny b() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
+   @Override
+   default eof a(int $$0, int $$1, int $$2, int $$3) {
+      eoh $$4 = this.j();
+      if ($$4.b() != eoh.b.c) {
+         return this;
+      } else if ($$4.a() == eoh.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
       } else {
-         return c;
+         throw new IllegalStateException();
       }
    }
 
-   public eny(int $$0) {
-      this.b = new enr($$0);
+   @Override
+   default eof a(float $$0, float $$1) {
+      eoh $$2 = this.j();
+      if ($$2.b() == eoh.b.d && $$2.d() == 0) {
+         if ($$2.a() == eoh.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
+         }
+      } else {
+         return this;
+      }
    }
 
-   public eny() {
-      this(786432);
+   @Override
+   default eof a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
    }
 
-   public void c() {
-      ens.a(this.b.d());
+   @Override
+   default eof b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
    }
 
-   public enr d() {
-      return this.b;
+   default eof a(short $$0, short $$1, int $$2) {
+      eoh $$3 = this.j();
+      if ($$3.b() != eoh.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == eoh.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default eof a(float $$0, float $$1, float $$2) {
+      eoh $$3 = this.j();
+      if ($$3.b() != eoh.b.b) {
+         return this;
+      } else if ($$3.a() == eoh.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   static byte a(float $$0) {
+      return (byte)((int)(atq.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

@@ -1,20 +1,10 @@
-public class cqc extends cpu {
-   protected cqc(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.f, $$1);
-   }
+public class cqc extends bhn.a {
+   public final cpz a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 5 + 20 * ($$0 - 1);
-   }
-
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cqc(cpz $$0, int $$1) {
+      super($$0.d().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

@@ -1,145 +1,86 @@
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class zv implements wk<yd> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public class zv {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
 
-   protected zv(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public zv(crm $$0, ecm $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cso.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cso.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   public void a(yd $$0) {
-      $$0.a(this);
+   public zv(ty $$0, int $$1, int $$2) {
+      this.a = $$0.z();
+      this.b = $$0.z();
+      this.c = $$0.z();
+      this.d = $$0.z();
+      this.e = $$0.a((ty.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((ty.a<byte[]>)($$0x -> $$0x.a(2048)));
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ty::a);
+      $$0.a(this.f, ty::a);
    }
 
-   @Nullable
-   public bkq a(csa $$0) {
-      return $$0.a(this.a);
+   private void a(crm $$0, ecm $$1, cso $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      djp $$7 = $$1.a($$2).a(iy.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public short a() {
-      return this.b;
+   public BitSet a() {
+      return this.a;
    }
 
-   public short d() {
+   public BitSet b() {
       return this.c;
    }
 
-   public short e() {
-      return this.d;
-   }
-
-   public byte f() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public byte g() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public boolean i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.g;
-   }
-
-   public static class a extends zv {
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      public static zv.a b(tu $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new zv.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      public void a(tu $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
-      }
-   }
-
-   public static class b extends zv {
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      public static zv.b b(tu $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new zv.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void a(tu $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-   }
-
-   public static class c extends zv {
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
-
-      public static zv.c b(tu $$0) {
-         int $$1 = $$0.n();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new zv.c($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void a(tu $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
    }
 }

@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
+public interface cri extends crl {
+   float a(ib var1, boolean var2);
 
-public class cri {
-   private final eju a;
-   private final eju b;
-   private final Predicate<dhi> c;
+   ecm z_();
 
-   public cri(eju $$0, eju $$1, Predicate<dhi> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   int a(hx var1, crq var2);
+
+   default int a(cso $$0, hx $$1) {
+      return this.z_().a($$0).b($$1);
    }
 
-   public eju a() {
-      return this.b;
+   default int b(hx $$0, int $$1) {
+      return this.z_().a($$0, $$1);
    }
 
-   public eju b() {
-      return this.a;
-   }
-
-   public Predicate<dhi> c() {
-      return this.c;
+   default boolean g(hx $$0) {
+      return this.a(cso.a, $$0) >= this.N();
    }
 }

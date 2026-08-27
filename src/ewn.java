@@ -1,71 +1,61 @@
-public abstract class ewn {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final eum d;
-   protected final atu e;
+public class ewn extends evc {
+   private static final ewr a = new ewr(
+      new agm("widget/tab_selected"), new agm("widget/tab"), new agm("widget/tab_selected_highlighted"), new agm("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int l = 2;
+   private final exg m;
+   private final exf n;
 
-   protected ewn(eum $$0, atu $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ewn(exg $$0, exf $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
-   }
-
-   public void a(euo $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(frc.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(frc.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      $$0.a(a.a(this.b(), this.m()), this.p(), this.r(), this.f, this.g);
+      eur $$4 = eti.N().h;
+      int $$5 = this.i ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.b($$0, $$4, $$5);
       }
-
-      $$0.a(frc.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(frc.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(frc.C(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(frc.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
-      }
-
-      this.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(euo $$0, int $$1, int $$2, int $$3) {
+   public void a(eut $$0, eur $$1, int $$2) {
+      int $$3 = this.p() + 1;
+      int $$4 = this.r() + (this.b() ? 0 : 3);
+      int $$5 = this.p() + this.k() - 1;
+      int $$6 = this.r() + this.i();
+      a($$0, $$1, this.l(), $$3, $$4, $$5, $$6, $$2);
    }
 
-   protected void a(euo $$0, String $$1, int $$2, int $$3) {
-      $$0.a(frc.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   private void b(eut $$0, eur $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.l()), this.k() - 4);
+      int $$4 = this.p() + (this.k() - $$3) / 2;
+      int $$5 = this.r() + this.i() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
-   protected abstract String a(double var1);
+   @Override
+   protected void a(eyx $$0) {
+      $$0.a(eyw.a, uv.a("gui.narrate.tab", this.n.a()));
+   }
 
-   protected abstract int b(double var1);
+   @Override
+   public void a(ggl $$0) {
+   }
 
-   protected abstract int a(long var1);
+   public exf a() {
+      return this.n;
+   }
 
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = atm.a($$0, $$1, $$5);
-      return $$0 < $$3 ? asw.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : asw.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

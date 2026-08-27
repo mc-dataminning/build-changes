@@ -1,19 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dej extends cva {
-   public static final MapCodec<dej> a = b(dej::new);
+public class dej extends cvf implements deg {
+   public static final MapCodec<dej> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(deg.a.e.fieldOf("weathering_state").forGetter(cwg::c), u()).apply($$0, dej::new)
+   );
+   private final deg.a e;
 
    @Override
    public MapCodec<dej> a() {
-      return a;
+      return d;
    }
 
-   public dej(dhh.d $$0) {
-      super($$0);
+   public dej(deg.a $$0, dhm.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, bkq $$3) {
-      $$3.a($$0, new eju(0.25, 0.05F, 0.25));
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dhn $$0) {
+      return deg.c($$0.b()).isPresent();
+   }
+
+   public deg.a g() {
+      return this.e;
    }
 }

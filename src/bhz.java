@@ -1,44 +1,54 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bhz extends bic {
-   public static final bhz a = new bhz(0);
-   public static final Codec<bhz> b = asu.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bhz::new, bhz::d);
+public class bhz extends big {
+   public static final Codec<bhz> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  big.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bhz::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final big b;
    private final int f;
+   private final int g;
 
-   public static bhz a(int $$0) {
-      return $$0 == 0 ? a : new bhz($$0);
+   public static bhz a(big $$0, int $$1, int $$2) {
+      return new bhz($$0, $$1, $$2);
    }
 
-   private bhz(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
+   public bhz(big $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public int a(ats $$0) {
-      return this.f;
+   public int a(atw $$0) {
+      return atq.a(this.b.a($$0), this.f, this.g);
    }
 
    @Override
    public int a() {
-      return this.f;
+      return Math.max(this.f, this.b.a());
    }
 
    @Override
    public int b() {
-      return this.f;
+      return Math.min(this.g, this.b.b());
    }
 
    @Override
-   public bid<?> c() {
-      return bid.a;
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+   public bih<?> c() {
+      return bih.d;
    }
 }

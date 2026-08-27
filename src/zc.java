@@ -1,48 +1,33 @@
-import java.util.Optional;
+public class zc implements wo<yh> {
+   private final int a;
+   private final int b;
+   private final int c;
 
-public record zc(int a, int b, int c, int d, Optional<eju> e) implements wk<yd> {
-   public zc(bkq $$0, bjo $$1) {
-      this($$0.aj(), $$0.dN().H_().d(jz.q).a($$1.j()), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
+   public zc(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zc(tu $$0) {
-      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((tu.a<eju>)($$0x -> new eju($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
-   }
-
-   private static void a(tu $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int b(tu $$0) {
-      return $$0.n() - 1;
+   public zc(ty $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      a($$0, this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   public void a(ty $$0) {
+      $$0.k(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public bjo a(csa $$0) {
-      ib<bjq> $$1 = $$0.H_().d(jz.q).c(this.b).get();
-      if (this.e.isPresent()) {
-         return new bjo($$1, this.e.get());
-      } else {
-         bkq $$2 = $$0.a(this.c);
-         bkq $$3 = $$0.a(this.d);
-         return new bjo($$1, $$3, $$2);
-      }
+   public int a() {
+      return this.a;
    }
 
    public int d() {
@@ -51,13 +36,5 @@ public record zc(int a, int b, int c, int d, Optional<eju> e) implements wk<yd> 
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<eju> g() {
-      return this.e;
    }
 }

@@ -1,61 +1,80 @@
-public class bzu extends bzk {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final bvs f = bvs.a().a(150.0);
-   private final bvs g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public bzu(bzh $$0) {
+public class bzu extends bzo {
+   private static final bvx b = bvx.a().d();
+   @Nullable
+   private edm c;
+   @Nullable
+   private ejz d;
+
+   public bzu(bzm $$0) {
       super($$0);
-      this.g = bvs.a().a(20.0).a($$1 -> Math.abs($$1.du() - $$0.du()) <= 10.0);
    }
 
    @Override
-   public void c() {
-      this.h++;
-      blg $$0 = this.a.dN().a(this.g, this.a, this.a.ds(), this.a.du(), this.a.dy());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gc().a(bzx.h);
-         } else {
-            eju $$1 = new eju($$0.ds() - this.a.ds(), 0.0, $$0.dy() - this.a.dy()).d();
-            eju $$2 = new eju((double)atm.a(this.a.dD() * (float) (Math.PI / 180.0)), 0.0, (double)(-atm.b(this.a.dD() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.ds() - this.a.e.ds();
-               double $$6 = $$0.dy() - this.a.e.dy();
-               double $$7 = atm.a(atm.d(180.0 - atm.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dD()), -100.0, 100.0);
-               this.a.bW *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
-
-               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dD() + this.a.bW);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dN().a(f, this.a, this.a.ds(), this.a.du(), this.a.dy());
-         this.a.gc().a(bzx.e);
-         if ($$0 != null) {
-            this.a.gc().a(bzx.i);
-            this.a.gc().b(bzx.i).a(new eju($$0.ds(), $$0.du(), $$0.dy()));
-         }
-      }
+   public cac<bzu> i() {
+      return cac.c;
    }
 
    @Override
    public void d() {
-      this.h = 0;
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public bzx<bzu> i() {
-      return bzx.g;
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.ds(), this.a.du(), this.a.dy());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
+      }
+   }
+
+   @Nullable
+   @Override
+   public ejz g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.A();
+         hx $$1 = this.a.dN().a(dmw.a.f, dpz.a(this.a.u()));
+         cdz $$2 = this.a.dN().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            ejz $$3 = new ejz($$2.ds(), 0.0, $$2.dy()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         edk $$6 = new edk($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gc().a(cac.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ja $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.eh().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ejz($$1, $$3, $$2);
+      }
    }
 }

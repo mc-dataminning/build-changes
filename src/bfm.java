@@ -1,12 +1,33 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface bfm extends bfo {
-   bfn d();
+public class bfm {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bfq c = bfp.a;
 
-   @Nullable
-   bfh.a c(String var1);
+   public bfm(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Set<Pair<String, bgr>> e();
+   public boolean a() {
+      return this.c != bfp.a;
+   }
+
+   public void b() {
+      this.c = bfp.a;
+   }
+
+   public void c() {
+      this.c = new bfl(this.a, this.b, true);
+   }
+
+   public bfs d() {
+      return this.c;
+   }
+
+   public bfr e() {
+      return this.c.d();
+   }
 }

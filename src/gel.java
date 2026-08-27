@@ -1,17 +1,12 @@
-public abstract class gel extends gek implements gfd {
-   private boolean n;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   protected gel(aqq $$0, aqs $$1, ats $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface gel {
+   Collection<agm> f();
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   void a(Function<agm, gel> var1);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+   @Nullable
+   gea a(gee var1, Function<ged, gbz> var2, gei var3, agm var4);
 }

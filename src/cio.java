@@ -1,17 +1,9 @@
-public class cio implements cip {
-   private final il<clj> a;
-   private final int b;
-
-   public cio(il<clj> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cio extends cgs {
+   public cio(int $$0, cdy $$1) {
+      super(chy.w, coy.d, cif.d, $$0, $$1);
    }
 
-   public il<clj> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
+   public cio(int $$0, cdy $$1, biu $$2, chb $$3) {
+      super(chy.w, coy.d, cif.d, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,22 +1,54 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public record aci(agh<dkr> a, agh<csa> b, long c, crx d, @Nullable crx e, boolean f, boolean g, Optional<ia> h, int i) {
-   public aci(tu $$0) {
-      this(
-         $$0.a(jz.aw), $$0.a(jz.aJ), $$0.readLong(), crx.a($$0.readByte()), crx.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(tu::h), $$0.n()
-      );
+public class aci implements wo<yh> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<agm> c;
+   private final Map<agm, ah> d;
+
+   public aci(boolean $$0, Collection<af> $$1, Set<agm> $$2, Map<agm, ah> $$3) {
+      this.a = $$0;
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public void a(tu $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(crx.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, tu::a);
-      $$0.c(this.i);
+   public aci(ty $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, ty::t);
+      this.d = $$0.a(ty::t, ah::b);
+   }
+
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, ty::a);
+      $$0.a(this.d, ty::a, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public void a(yh $$0) {
+      $$0.a(this);
+   }
+
+   public List<af> a() {
+      return this.b;
+   }
+
+   public Set<agm> d() {
+      return this.c;
+   }
+
+   public Map<agm, ah> e() {
+      return this.d;
+   }
+
+   public boolean f() {
+      return this.a;
    }
 }

@@ -1,10 +1,10 @@
 public interface fo {
-   eju a(du var1);
+   ejz a(du var1);
 
-   ejt b(du var1);
+   ejy b(du var1);
 
-   default ht c(du $$0) {
-      return ht.a(this.a($$0));
+   default hx c(du $$0) {
+      return hx.a(this.a($$0));
    }
 
    boolean a();

@@ -1,58 +1,56 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class dpz extends dqa<dsl> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final hx an = hx.b;
+   private final boolean ao;
 
-public class dpz extends dpv<dqa> {
-   public dpz(Codec<dqa> $$0) {
-      super($$0);
+   public static hx a(hx $$0) {
+      return an.a((ja)$$0);
+   }
+
+   public dpz(boolean $$0) {
+      super(dsl.a);
+      this.ao = $$0;
    }
 
    @Override
-   public boolean a(dpx<dqa> $$0) {
-      ats $$1 = $$0.d();
-      csu $$2 = $$0.b();
-      ht $$3 = $$0.e();
-      dbm $$4 = dbm.a($$1);
-      dqa $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      ebi $$7 = $$2.D().n().aX();
-      ebh $$8 = $$7.a($$5.b.get($$6));
-      ebh $$9 = $$7.a($$5.c.get($$6));
-      crh $$10 = new crh($$3);
-      dwz $$11 = new dwz($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
-      ebd $$12 = new ebd().a($$4).a($$11).a($$1);
-      iw $$13 = $$8.a($$4);
-      ht $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(dqc<dsl> $$0) {
+      hx $$1 = $$0.e();
+      csz $$2 = $$0.b();
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dmr.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (hx $$3 : hx.a(new hx($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hx($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, cvh.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, cvh.fz.o());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, cvh.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, cvh.F.o());
+            } else if (this.ao) {
+               this.a($$2, new hx($$3), cvh.fx.o());
+            } else {
+               this.a($$2, new hx($$3), cvh.a.o());
+            }
          }
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
-      ht $$19 = $$8.a($$14.h($$18), czw.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), cvh.F.o());
       }
-   }
 
-   private static int a(csu $$0, dwz $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dhi $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(cvc.H) || $$3.a(cvc.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+      hx $$6 = $$1.b(2);
+
+      for (ib $$7 : ib.c.a) {
+         this.a($$2, $$6.a($$7), cvh.cq.o().a(dee.g, $$7));
+      }
+
+      return true;
    }
 }

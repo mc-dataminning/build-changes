@@ -1,46 +1,86 @@
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
+import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
 
-public class ki implements kf {
-   private final kh.a d;
-   private final List<kj> e;
-   private final CompletableFuture<id.b> f;
+public class ki {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final kl c;
+   final Set<String> d = new HashSet<>();
+   final Map<String, kj> e = new LinkedHashMap<>();
+   private final ad f;
+   private final boolean g;
 
-   public ki(kh $$0, CompletableFuture<id.b> $$1, List<kj> $$2) {
-      this.d = $$0.a(kh.b.a, "advancements");
-      this.e = $$2;
+   public ki(Path $$0, ad $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = new kl(this.b);
       this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public CompletableFuture<?> a(kd $$0) {
-      return this.f.thenCompose($$1 -> {
-         Set<agi> $$2 = new HashSet<>();
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         Consumer<af> $$4 = $$3x -> {
-            if (!$$2.add($$3x.a())) {
-               throw new IllegalStateException("Duplicate advancement " + $$3x.a());
-            } else {
-               Path $$4x = this.d.a($$3x.a());
-               $$3.add(kf.a($$0, $$3x.b().a(), $$4x));
-            }
-         };
-
-         for (kj $$5 : this.e) {
-            $$5.a($$1, $$4);
+   public void a() throws IOException {
+      kk $$0 = new kk(this.b, this.d, this.f);
+      Stopwatch $$1 = Stopwatch.createStarted();
+      Stopwatch $$2 = Stopwatch.createUnstarted();
+      this.e.forEach(($$2x, $$3) -> {
+         if (!this.g && !$$0.a($$2x)) {
+            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
+         } else {
+            a.info("Starting provider: {}", $$2x);
+            $$2.start();
+            $$0.a($$0.a($$2x, $$3::a).join());
+            $$2.stop();
+            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
+            $$2.reset();
          }
-
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
+      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
+      $$0.a();
    }
 
-   @Override
-   public final String a() {
-      return "Advancements";
+   public ki.a a(boolean $$0) {
+      return new ki.a($$0, "vanilla", this.c);
+   }
+
+   public ki.a a(boolean $$0, String $$1) {
+      Path $$2 = this.c.a(kl.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
+      return new ki.a($$0, $$1, new kl($$2));
+   }
+
+   static {
+      ago.a();
+   }
+
+   public class a {
+      private final boolean b;
+      private final String c;
+      private final kl d;
+
+      a(boolean $$1, String $$2, kl $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public <T extends kj> T a(kj.a<T> $$0) {
+         T $$1 = $$0.create(this.d);
+         String $$2 = this.c + "/" + $$1.a();
+         if (!ki.this.d.add($$2)) {
+            throw new IllegalStateException("Duplicate provider: " + $$2);
+         } else {
+            if (this.b) {
+               ki.this.e.put($$2, $$1);
+            }
+
+            return $$1;
+         }
+      }
    }
 }

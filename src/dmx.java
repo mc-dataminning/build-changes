@@ -1,110 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record dmx(dmk b, dmk c, dmk d, dmk e, dmk f, dmk g, dmk h, dmk i, dmk j, dmk k, dmk l, dmk m, dmk n, dmk o, dmk p) {
-   public static final Codec<dmx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dmx::a),
-               a("fluid_level_floodedness", dmx::b),
-               a("fluid_level_spread", dmx::c),
-               a("lava", dmx::d),
-               a("temperature", dmx::e),
-               a("vegetation", dmx::f),
-               a("continents", dmx::g),
-               a("erosion", dmx::h),
-               a("depth", dmx::i),
-               a("ridges", dmx::j),
-               a("initial_density_without_jaggedness", dmx::k),
-               a("final_density", dmx::l),
-               a("vein_toggle", dmx::m),
-               a("vein_ridged", dmx::n),
-               a("vein_gap", dmx::o)
-            )
-            .apply($$0, dmx::new)
-   );
+public class dmx implements dml {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dmy i = new dmy(this);
 
-   private static RecordCodecBuilder<dmx, dmk> a(String $$0, Function<dmx, dmk> $$1) {
-      return dmk.d.fieldOf($$0).forGetter($$1);
+   public dmx(long $$0) {
+      this.b($$0);
    }
 
-   public dmx a(dmk.f $$0) {
-      return new dmx(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public atw d() {
+      return new dmx(this.g());
    }
 
-   public dmk a() {
-      return this.b;
+   @Override
+   public dnj e() {
+      return new dmx.a(this.g());
    }
 
-   public dmk b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw aun.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
-   public dmk c() {
-      return this.d;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw aun.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
-   public dmk d() {
-      return this.e;
+   @Override
+   public double k() {
+      return this.i.b();
    }
 
-   public dmk e() {
-      return this.f;
-   }
+   public static class a implements dnj {
+      private final long a;
 
-   public dmk f() {
-      return this.g;
-   }
+      public a(long $$0) {
+         this.a = $$0;
+      }
 
-   public dmk g() {
-      return this.h;
-   }
+      @Override
+      public atw a(int $$0, int $$1, int $$2) {
+         long $$3 = atq.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dmx($$4);
+      }
 
-   public dmk h() {
-      return this.i;
-   }
+      @Override
+      public atw a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dmx((long)$$1 ^ this.a);
+      }
 
-   public dmk i() {
-      return this.j;
-   }
-
-   public dmk j() {
-      return this.k;
-   }
-
-   public dmk k() {
-      return this.l;
-   }
-
-   public dmk l() {
-      return this.m;
-   }
-
-   public dmk m() {
-      return this.n;
-   }
-
-   public dmk n() {
-      return this.o;
-   }
-
-   public dmk o() {
-      return this.p;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

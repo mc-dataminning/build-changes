@@ -1,20 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bqu {
-   public static bmy<blg> a() {
-      return bqj.a(
-         (Function<bqj.b<blg>, ? extends App<bqj.c<blg>, bqm<blg>>>)($$0 -> $$0.group($$0.a(buh.n), $$0.a(buh.ay), $$0.a(buh.ax), $$0.c(buh.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<ht> $$7 = $$0.<blg>a($$3).map(bkq::dn).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bna($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class bqu<E extends cdd> extends bnc<E> {
+   public bqu(int $$0) {
+      super(ImmutableMap.of(bum.o, bun.b, bum.m, bun.b), $$0);
+   }
+
+   protected boolean a(ami $$0, E $$1, long $$2) {
+      return $$1.dJ() == null;
+   }
+
+   protected boolean a(ami $$0, E $$1) {
+      return $$1.aC() || $$1.aZ() || $$1.bn();
+   }
+
+   protected void b(ami $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(blx.o);
+         $$1.a(aqv.Af, 5.0F, 1.0F);
+      } else {
+         $$1.a(aqv.Aa, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(ami $$0, E $$1, long $$2) {
+      if ($$1.dJ() == null) {
+         $$1.a(bkv.c.b);
+      }
    }
 }

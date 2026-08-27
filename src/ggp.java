@@ -1,129 +1,92 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.google.common.base.Suppliers;
 import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ggp {
-   static final Map<String, ggp> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<ggp> a = Codec.STRING.comapFlatMap($$0 -> {
-      ggp $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, ggp::a);
-   private static final List<ggr<?>> i = List.of(ggr.a, ggr.b, ggr.c, ggr.d, ggr.e, ggr.f, ggr.g, ggr.h, ggr.m, ggr.l);
-   private static final List<ggr<?>> j = Stream.concat(i.stream(), Stream.of(ggr.i, ggr.j, ggr.k)).toList();
-   public static final ggp b = a("world_loaded", "WorldLoaded").a(j).a(ggr.n).a(ggr.o).b();
-   public static final ggp c = a("performance_metrics", "PerformanceMetrics").a(j).a(ggr.r).a(ggr.s).a(ggr.t).a(ggr.u).a(ggr.v).a(ggr.w).a().b();
-   public static final ggp d = a("world_load_times", "WorldLoadTimes").a(j).a(ggr.x).a(ggr.y).a().b();
-   public static final ggp e = a("world_unloaded", "WorldUnloaded").a(j).a(ggr.p).a(ggr.q).b();
-   public static final ggp f = a("advancement_made", "AdvancementMade").a(j).a(ggr.D).a(ggr.E).a().b();
-   public static final ggp g = a("game_load_times", "GameLoadTimes").a(i).a(ggr.z).a(ggr.A).a(ggr.B).a(ggr.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<ggr<?>> m;
-   private final boolean n;
-   private final Codec<ggl> o;
+public class ggp implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final UserApiService c;
+   private final ggx d;
+   private final Path e;
+   private final CompletableFuture<Optional<ggv>> f;
+   private final Supplier<ggt> g = Suppliers.memoize(this::c);
 
-   ggp(String $$0, String $$1, List<ggr<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = ggs.a($$2).xmap($$0x -> new ggl(this, $$0x), ggl::b);
+   public ggp(eti $$0, UserApiService $$1, etx $$2) {
+      this.c = $$1;
+      ggx.a $$3 = ggx.a();
+      $$2.f().ifPresent($$1x -> $$3.a(ggw.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(ggw.b, $$1x));
+      $$3.a(ggw.c, UUID.randomUUID());
+      $$3.a(ggw.d, aa.b().b());
+      $$3.a(ggw.e, ac.i().a());
+      $$3.a(ggw.f, System.getProperty("os.name"));
+      $$3.a(ggw.g, eti.e().a());
+      $$3.b(ggw.h, eti.bb());
+      this.d = $$3.a();
+      this.e = $$0.p.toPath().resolve("logs/telemetry");
+      this.f = ggv.a(this.e);
    }
 
-   public static ggp.a a(String $$0, String $$1) {
-      return new ggp.a($$0, $$1);
+   public ggy a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new ggy(this.c(), $$0, $$1, $$2);
    }
 
-   public String a() {
-      return this.k;
+   public ggt a() {
+      return this.g.get();
    }
 
-   public List<ggr<?>> b() {
-      return this.m;
-   }
-
-   public Codec<ggl> c() {
-      return this.o;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0, ggs $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
-
-      for (ggr<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
+   private ggt c() {
+      if (aa.aT) {
+         return ggt.a;
+      } else {
+         TelemetrySession $$0 = this.c.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return ggt.a;
+         } else {
+            CompletableFuture<Optional<ggs>> $$1 = this.f
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<ggs>>>map(ggv::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || eti.N().z()) {
+                  ggx.a $$4 = ggx.a();
+                  $$4.a(this.d);
+                  $$4.a(ggw.m, Instant.now());
+                  $$4.a(ggw.l, $$2.d());
+                  $$3.accept($$4);
+                  ggq $$5 = new ggq($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((ggs)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
+               }
+            };
+         }
       }
-
-      return $$2;
    }
 
-   public <T> boolean a(ggr<T> $$0) {
-      return this.m.contains($$0);
+   public Path b() {
+      return this.e;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
-   }
-
-   public vf e() {
-      return this.a("title");
-   }
-
-   public vf f() {
-      return this.a("description");
-   }
-
-   private vf a(String $$0) {
-      return ur.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<ggp> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<ggr<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ggp.a a(List<ggr<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
-
-      public <T> ggp.a a(ggr<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public ggp.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public ggp b() {
-         ggp $$0 = new ggp(this.a, this.b, List.copyOf(this.c), this.d);
-         if (ggp.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
-         }
-      }
+   public void close() {
+      this.f.thenAccept($$0 -> $$0.ifPresent(ggv::close));
    }
 }

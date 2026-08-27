@@ -1,21 +1,20 @@
-public enum dip implements aug {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dip implements auk {
+   a("normal"),
+   b("sticky");
 
-   private final String d;
+   private final String c;
 
    private dip(String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

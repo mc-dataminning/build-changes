@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ei implements ArgumentType<ei.a> {
    private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("argument.player.unknown"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("argument.player.unknown"));
 
    public static Collection<GameProfile> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((ei.a)$$0.getArgument($$1, ei.a.class)).getNames((du)$$0.getSource());
@@ -44,7 +44,7 @@ public class ei implements ArgumentType<ei.a> {
 
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.m().ar().a($$4);
+            Optional<GameProfile> $$2 = $$1.l().ar().a($$4);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -85,13 +85,13 @@ public class ei implements ArgumentType<ei.a> {
 
       @Override
       public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
-         List<amf> $$1 = this.a.d($$0);
+         List<amj> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw eg.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (amf $$3 : $$1) {
+            for (amj $$3 : $$1) {
                $$2.add($$3.fS());
             }
 

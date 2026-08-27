@@ -1,7 +1,8 @@
-import jdk.jfr.consumer.RecordedEvent;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record bgi(double a, double b, double c) {
-   public static bgi a(RecordedEvent $$0) {
-      return new bgi((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgi {
 }

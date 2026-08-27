@@ -1,59 +1,16 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class ehn {
+   public static final ehk<bkv> a = a("this_entity");
+   public static final ehk<cdz> b = a("last_damage_player");
+   public static final ehk<bjt> c = a("damage_source");
+   public static final ehk<bkv> d = a("killer_entity");
+   public static final ehk<bkv> e = a("direct_killer_entity");
+   public static final ehk<ejz> f = a("origin");
+   public static final ehk<dhn> g = a("block_state");
+   public static final ehk<dfi> h = a("block_entity");
+   public static final ehk<clo> i = a("tool");
+   public static final ehk<Float> j = a("explosion_radius");
 
-public abstract class ehn implements ehw {
-   protected final List<ehw> c;
-   private final Predicate<eex> a;
-
-   protected ehn(List<ehw> $$0, Predicate<eex> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ehn> Codec<T> a(Function<List<ehw>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(ehy.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ehn> Codec<T> b(Function<List<ehw>, T> $$0) {
-      return ehy.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eex $$0) {
-      return this.a.test($$0);
-   }
-
-   @Override
-   public void a(efg $$0) {
-      ehw.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
-      }
-   }
-
-   public abstract static class a implements ehw.a {
-      private final Builder<ehw> a = ImmutableList.builder();
-
-      protected a(ehw.a... $$0) {
-         for (ehw.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(ehw.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public ehw build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract ehw a(List<ehw> var1);
+   private static <T> ehk<T> a(String $$0) {
+      return new ehk<>(new agm($$0));
    }
 }

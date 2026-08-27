@@ -1,166 +1,95 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ahh extends amb {
-   private final agi h;
-   private final Set<UUID> i = Sets.newHashSet();
-   private int j;
-   private int k = 100;
+public class ahh {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ahh(agi $$0, ur $$1) {
-      super($$1, bin.a.g, bin.b.a);
-      this.h = $$0;
-      this.a(0.0F);
-   }
-
-   public agi a() {
-      return this.h;
-   }
-
-   @Override
-   public void a(amf $$0) {
-      super.a($$0);
-      this.i.add($$0.cw());
-   }
-
-   public void a(UUID $$0) {
-      this.i.add($$0);
-   }
-
-   @Override
-   public void b(amf $$0) {
-      super.b($$0);
-      this.i.remove($$0.cw());
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      this.i.clear();
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public void a(int $$0) {
-      this.j = $$0;
-      this.a(atm.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
-   }
-
-   public void b(int $$0) {
-      this.k = $$0;
-      this.a(atm.a((float)this.j / (float)$$0, 0.0F, 1.0F));
-   }
-
-   public final ur e() {
-      return uu.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new ux(ux.a.a, ur.b(this.a().toString()))).a(this.a().toString()));
-   }
-
-   public boolean a(Collection<amf> $$0) {
-      Set<UUID> $$1 = Sets.newHashSet();
-      Set<amf> $$2 = Sets.newHashSet();
-
-      for (UUID $$3 : this.i) {
-         boolean $$4 = false;
-
-         for (amf $$5 : $$0) {
-            if ($$5.cw().equals($$3)) {
-               $$4 = true;
-               break;
+   public static <D, R> CompletableFuture<R> a(ahh.c $$0, ahh.f<D> $$1, ahh.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<csy, apb> $$5 = $$0.a.a();
+         apb $$6 = (apb)$$5.getSecond();
+         in<agv> $$7 = agv.a();
+         in<agv> $$8 = b($$6, $$7, agv.b, agh.a);
+         it.b $$9 = $$8.b(agv.c);
+         it.b $$10 = agh.a($$6, $$9, agh.b);
+         csy $$11 = (csy)$$5.getFirst();
+         ahh.b<D> $$12 = $$1.get(new ahh.a($$6, $$11, $$9, $$10));
+         in<agv> $$13 = $$8.a(agv.c, $$12.b);
+         it.b $$14 = $$13.b(agv.d);
+         return agw.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
             }
-         }
-
-         if (!$$4) {
-            $$1.add($$3);
-         }
-      }
-
-      for (amf $$6 : $$0) {
-         boolean $$7 = false;
-
-         for (UUID $$8 : this.i) {
-            if ($$6.cw().equals($$8)) {
-               $$7 = true;
-               break;
-            }
-         }
-
-         if (!$$7) {
-            $$2.add($$6);
-         }
-      }
-
-      for (UUID $$9 : $$1) {
-         for (amf $$10 : this.h()) {
-            if ($$10.cw().equals($$9)) {
-               this.b($$10);
-               break;
-            }
-         }
-
-         this.i.remove($$9);
-      }
-
-      for (amf $$11 : $$2) {
-         this.a($$11);
-      }
-
-      return !$$1.isEmpty() || !$$2.isEmpty();
-   }
-
-   public rz f() {
-      rz $$0 = new rz();
-      $$0.a("Name", ur.a.a(this.a));
-      $$0.a("Visible", this.g());
-      $$0.a("Value", this.j);
-      $$0.a("Max", this.k);
-      $$0.a("Color", this.l().b());
-      $$0.a("Overlay", this.m().a());
-      $$0.a("DarkenScreen", this.n());
-      $$0.a("PlayBossMusic", this.o());
-      $$0.a("CreateWorldFog", this.p());
-      sf $$1 = new sf();
-
-      for (UUID $$2 : this.i) {
-         $$1.add(so.a($$2));
-      }
-
-      $$0.a("Players", $$1);
-      return $$0;
-   }
-
-   public static ahh a(rz $$0, agi $$1) {
-      ahh $$2 = new ahh($$1, ur.a.a($$0.l("Name")));
-      $$2.d($$0.q("Visible"));
-      $$2.a($$0.h("Value"));
-      $$2.b($$0.h("Max"));
-      $$2.a(bin.a.a($$0.l("Color")));
-      $$2.a(bin.b.a($$0.l("Overlay")));
-      $$2.a($$0.q("DarkenScreen"));
-      $$2.b($$0.q("PlayBossMusic"));
-      $$2.c($$0.q("CreateWorldFog"));
-
-      for (sw $$4 : $$0.c("Players", 11)) {
-         $$2.a(so.a($$4));
-      }
-
-      return $$2;
-   }
-
-   public void c(amf $$0) {
-      if (this.i.contains($$0.cw())) {
-         this.a($$0);
+         }).thenApplyAsync($$5x -> {
+            $$5x.a($$14);
+            return $$2.create($$6, $$5x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var15) {
+         return CompletableFuture.failedFuture(var15);
       }
    }
 
-   public void d(amf $$0) {
-      super.b($$0);
+   private static it.b a(apl $$0, in<agv> $$1, agv $$2, List<agh.b<?>> $$3) {
+      it.b $$4 = $$1.b($$2);
+      return agh.a($$0, $$4, $$3);
+   }
+
+   private static in<agv> b(apl $$0, in<agv> $$1, agv $$2, List<agh.b<?>> $$3) {
+      it.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(apl a, csy b, it.b c, it.b d) {
+   }
+
+   public static record b<D>(D a, it.b b) {
+   }
+
+   public static record c(ahh.d a, dv.a b, int c) {
+   }
+
+   public static record d(aow a, csy b, boolean c, boolean d) {
+      public Pair<csy, apb> a() {
+         cgi $$0 = this.d ? cgk.e.a() : this.b.b();
+         csy $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+         if (!this.d) {
+            $$1 = $$1.a(this.b.b());
+         }
+
+         List<anz> $$2 = this.a.g();
+         apb $$3 = new ape(aoa.b, $$2);
+         return Pair.of($$1, $$3);
+      }
+
+      public aow b() {
+         return this.a;
+      }
+
+      public csy c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(apb var1, agw var2, in<agv> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      ahh.b<D> get(ahh.a var1);
    }
 }

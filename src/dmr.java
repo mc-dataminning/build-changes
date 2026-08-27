@@ -1,171 +1,111 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 
-public class dmr {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dhi> b = $$0 -> !$$0.i();
-   static final Predicate<dhi> c = dhh.a::d;
-   private final asd d;
-   private final Predicate<dhi> e;
-   private final dje f;
+public class dmr extends djk {
+   public static final Codec<dmr> c = RecordCodecBuilder.create($$0 -> $$0.group(dvp.a.fieldOf("settings").forGetter(dmr::g)).apply($$0, $$0.stable(dmr::new)));
+   private final dvp d;
 
-   public dmr(dje $$0, dmr.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = atm.e($$0.J_() + 1);
-      this.d = new aua($$2, 256);
+   public dmr(dvp $$0) {
+      super(new cto($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
-   public static void a(dje $$0, Set<dmr.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dmr> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dmr> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      ht.a $$6 = new ht.a();
+   @Override
+   public djl a(ii<dxs> $$0, dnk $$1, long $$2) {
+      Stream<ig<dxs>> $$3 = this.d.c().map(ik::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return djl.a($$1, $$2, this.b, $$3);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dmr.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
+   @Override
+   protected Codec<? extends djk> a() {
+      return c;
+   }
 
-            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dhi $$11 = $$0.a_($$6);
-               if (!$$11.a(cvc.a)) {
-                  while ($$4.hasNext()) {
-                     dmr $$12 = (dmr)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
+   public dvp g() {
+      return this.d;
+   }
 
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
+   @Override
+   public void a(amp $$0, csx $$1, dnk $$2, djj $$3) {
+   }
 
-                  $$4.back($$2);
+   @Override
+   public int a(csh $$0) {
+      return $$0.J_() + Math.min($$0.K_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<djj> a(Executor $$0, dny $$1, dnk $$2, csx $$3, djj $$4) {
+      List<dhn> $$5 = this.d.f();
+      hx.a $$6 = new hx.a();
+      dmw $$7 = $$4.a(dmw.a.c);
+      dmw $$8 = $$4.a(dmw.a.a);
+
+      for (int $$9 = 0; $$9 < Math.min($$4.K_(), $$5.size()); $$9++) {
+         dhn $$10 = $$5.get($$9);
+         if ($$10 != null) {
+            int $$11 = $$4.J_() + $$9;
+
+            for (int $$12 = 0; $$12 < 16; $$12++) {
+               for (int $$13 = 0; $$13 < 16; $$13++) {
+                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
+                  $$7.a($$12, $$11, $$13, $$10);
+                  $$8.a($$12, $$11, $$13, $$10);
                }
             }
          }
       }
+
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, dhi $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            ht.a $$5 = new ht.a();
+   @Override
+   public int a(int $$0, int $$1, dmw.a $$2, csh $$3, dnk $$4) {
+      List<dhn> $$5 = this.d.f();
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.I_());
-            return true;
+      for (int $$6 = Math.min($$5.size(), $$3.ak()) - 1; $$6 >= 0; $$6--) {
+         dhn $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.J_() + $$6 + 1;
          }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.I_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.I_());
-   }
-
-   public void a(dje $$0, dmr.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements aug {
-      a("WORLD_SURFACE_WG", dmr.b.a, dmr.b),
-      b("WORLD_SURFACE", dmr.b.c, dmr.b),
-      c("OCEAN_FLOOR_WG", dmr.b.a, dmr.c),
-      d("OCEAN_FLOOR", dmr.b.b, dmr.c),
-      e("MOTION_BLOCKING", dmr.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dmr.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof czj));
-
-      public static final Codec<dmr.a> g = aug.a(dmr.a::values);
-      private final String h;
-      private final dmr.b i;
-      private final Predicate<dhi> j;
-
-      private a(String $$0, dmr.b $$1, Predicate<dhi> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
       }
 
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dmr.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dmr.b.a;
-      }
-
-      public Predicate<dhi> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+      return $$3.J_();
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public csr a(int $$0, int $$1, csh $$2, dnk $$3) {
+      return new csr($$2.J_(), this.d.f().stream().limit((long)$$2.K_()).map($$0x -> $$0x == null ? cvh.a.o() : $$0x).toArray(dhn[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, dnk $$1, hx $$2) {
+   }
+
+   @Override
+   public void a(amp $$0, long $$1, dnk $$2, ctf $$3, csx $$4, djj $$5, dms.a $$6) {
+   }
+
+   @Override
+   public void a(amp $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return -63;
    }
 }

@@ -1,32 +1,45 @@
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 
-public interface bfn {
-   char d = '\u001e';
+public class bfn implements bfr {
+   public static final bfn a = new bfn();
 
-   List<bfq> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   private bfn() {
    }
 
-   default int f() {
-      return this.d() - this.b();
+   @Override
+   public List<bfu> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   String e();
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

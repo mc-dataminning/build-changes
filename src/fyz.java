@@ -1,34 +1,20 @@
-public class fyz extends fxd<bxu, fkf<bxu>> {
-   private static final agi a = new agi("textures/entity/wolf/wolf.png");
-   private static final agi i = new agi("textures/entity/wolf/wolf_tame.png");
-   private static final agi j = new agi("textures/entity/wolf/wolf_angry.png");
+public class fyz extends fxi<cdd, fkg<cdd>> {
+   private static final agm a = new agm("textures/entity/warden/warden.png");
+   private static final agm i = new agm("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final agm j = new agm("textures/entity/warden/warden_heart.png");
+   private static final agm k = new agm("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final agm l = new agm("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public fyz(fvx.a $$0) {
-      super($$0, new fkf<>($$0.a(fkn.bV)), 0.5F);
-      this.a(new gau(this));
+   public fyz(fwc.a $$0) {
+      super($$0, new fkg<>($$0.a(fks.bL)), 0.9F);
+      this.a(new gaw<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fkg::e));
+      this.a(new gaw<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, atq.b($$2 * 0.045F) * 0.25F), fkg::f));
+      this.a(new gaw<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, atq.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fkg::f));
+      this.a(new gaw<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fkg::c));
+      this.a(new gaw<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fkg::d));
    }
 
-   protected float a(bxu $$0, float $$1) {
-      return $$0.gn();
-   }
-
-   public void a(bxu $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
-      if ($$0.gm()) {
-         float $$6 = $$0.E($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gm()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public agi a(bxu $$0) {
-      if ($$0.u()) {
-         return i;
-      } else {
-         return $$0.Z_() ? j : a;
-      }
+   public agm a(cdd $$0) {
+      return a;
    }
 }

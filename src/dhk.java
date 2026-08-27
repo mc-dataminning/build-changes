@@ -1,170 +1,185 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public abstract class dhk<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dil<?>, Comparable<?>>, String> a = new Function<Entry<dil<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dil<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
+public class dhk {
+   public static final int a = 12;
+   private final csf b;
+   private final hx c;
+   private final boolean d;
+   private final hx e;
+   private final ib f;
+   private final List<hx> g = Lists.newArrayList();
+   private final List<hx> h = Lists.newArrayList();
+   private final ib i;
+
+   public dhk(csf $$0, hx $$1, ib $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.i = $$2;
+      this.d = $$3;
+      if ($$3) {
+         this.f = $$2;
+         this.e = $$1.a($$2);
+      } else {
+         this.f = $$2.g();
+         this.e = $$1.a($$2, 2);
+      }
+   }
+
+   public boolean a() {
+      this.g.clear();
+      this.h.clear();
+      dhn $$0 = this.b.a_(this.e);
+      if (!dhg.a($$0, this.b, this.e, this.f, false, this.i)) {
+         if (this.d && $$0.o() == edc.b) {
+            this.h.add(this.e);
+            return true;
          } else {
-            dil<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+            return false;
          }
-      }
-
-      private <T extends Comparable<T>> String a(dil<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O e;
-   private final ImmutableMap<dil<?>, Comparable<?>> b;
-   private Table<dil<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
-
-   protected dhk(O $$0, ImmutableMap<dil<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(dil<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
+      } else if (!this.a(this.e, this.f)) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            hx $$2 = this.g.get($$1);
+            if (a(this.b.a_($$2)) && !this.a($$2)) {
+               return false;
             }
-
-            return $$0.iterator().next();
          }
+
+         return true;
       }
-
-      return $$2.next();
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   private static boolean a(dhn $$0) {
+      return $$0.a(cvh.hV) || $$0.a(cvh.pg);
    }
 
-   public Collection<dil<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dil<T> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dil<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
+   private static boolean a(dhn $$0, dhn $$1) {
+      if ($$0.a(cvh.pg) && $$1.a(cvh.hV)) {
+         return false;
       } else {
-         return $$0.g().cast($$1);
+         return $$0.a(cvh.hV) && $$1.a(cvh.pg) ? false : a($$0) || a($$1);
       }
    }
 
-   public <T extends Comparable<T>> Optional<T> d(dil<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
-   }
-
-   public <T extends Comparable<T>, V extends T> S a(dil<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
+   private boolean a(hx $$0, ib $$1) {
+      dhn $$2 = this.b.a_($$0);
+      if ($$2.i()) {
+         return true;
+      } else if (!dhg.a($$2, this.b, $$0, this.f, false, $$1)) {
+         return true;
+      } else if ($$0.equals(this.c)) {
+         return true;
+      } else if (this.g.contains($$0)) {
+         return true;
       } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         int $$3 = 1;
+         if ($$3 + this.g.size() > 12) {
+            return false;
          } else {
-            return $$3;
-         }
-      }
-   }
+            while (a($$2)) {
+               hx $$4 = $$0.a(this.f.g(), $$3);
+               dhn $$5 = $$2;
+               $$2 = this.b.a_($$4);
+               if ($$2.i() || !a($$5, $$2) || !dhg.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
+                  break;
+               }
 
-   public <T extends Comparable<T>, V extends T> S b(dil<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
-   }
-
-   public void a(Map<Map<dil<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dil<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         UnmodifiableIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dil<?>, Comparable<?>> $$2 = (Entry<dil<?>, Comparable<?>>)var3.next();
-            dil<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
+               if (++$$3 + this.g.size() > 12) {
+                  return false;
                }
             }
-         }
 
-         this.g = (Table<dil<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+            int $$6 = 0;
+
+            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
+               this.g.add($$0.a(this.f.g(), $$7));
+               $$6++;
+            }
+
+            int $$8 = 1;
+
+            while (true) {
+               hx $$9 = $$0.a(this.f, $$8);
+               int $$10 = this.g.indexOf($$9);
+               if ($$10 > -1) {
+                  this.a($$6, $$10);
+
+                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
+                     hx $$12 = this.g.get($$11);
+                     if (a(this.b.a_($$12)) && !this.a($$12)) {
+                        return false;
+                     }
+                  }
+
+                  return true;
+               }
+
+               $$2 = this.b.a_($$9);
+               if ($$2.i()) {
+                  return true;
+               }
+
+               if (!dhg.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
+                  return false;
+               }
+
+               if ($$2.o() == edc.b) {
+                  this.h.add($$9);
+                  return true;
+               }
+
+               if (this.g.size() >= 12) {
+                  return false;
+               }
+
+               this.g.add($$9);
+               $$6++;
+               $$8++;
+            }
+         }
       }
    }
 
-   private Map<dil<?>, Comparable<?>> c(dil<?> $$0, Comparable<?> $$1) {
-      Map<dil<?>, Comparable<?>> $$2 = Maps.newHashMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
+   private void a(int $$0, int $$1) {
+      List<hx> $$2 = Lists.newArrayList();
+      List<hx> $$3 = Lists.newArrayList();
+      List<hx> $$4 = Lists.newArrayList();
+      $$2.addAll(this.g.subList(0, $$1));
+      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
+      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
+      this.g.clear();
+      this.g.addAll($$2);
+      this.g.addAll($$3);
+      this.g.addAll($$4);
    }
 
-   public ImmutableMap<dil<?>, Comparable<?>> C() {
-      return this.b;
+   private boolean a(hx $$0) {
+      dhn $$1 = this.b.a_($$0);
+
+      for (ib $$2 : ib.values()) {
+         if ($$2.o() != this.f.o()) {
+            hx $$3 = $$0.a($$2);
+            dhn $$4 = this.b.a_($$3);
+            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   protected static <O, S extends dhk<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? Codec.unit($$2) : $$2.f.codec().optionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of).codec();
-      });
+   public ib b() {
+      return this.f;
+   }
+
+   public List<hx> c() {
+      return this.g;
+   }
+
+   public List<hx> d() {
+      return this.h;
    }
 }

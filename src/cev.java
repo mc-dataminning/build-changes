@@ -1,82 +1,51 @@
-import javax.annotation.Nullable;
-
-public class cev extends ces {
-   public cev(bku<? extends cev> $$0, csa $$1) {
+public class cev extends cex {
+   public cev(bkz<? extends cev> $$0, csf $$1) {
       super($$0, $$1);
    }
 
-   public cev(csa $$0, blg $$1) {
-      super(bku.D, $$1, $$0);
+   public cev(csf $$0, bll $$1) {
+      super(bkz.aP, $$1, $$0);
+   }
+
+   public cev(csf $$0, double $$1, double $$2, double $$3) {
+      super(bkz.aP, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cle s() {
-      return clm.sc;
+   protected clj s() {
+      return clr.qz;
+   }
+
+   private ju y() {
+      clo $$0 = this.u();
+      return (ju)($$0.b() ? jw.R : new js(jw.O, $$0));
    }
 
    @Override
-   protected void a(ejr $$0) {
-      super.a($$0);
-      $$0.a().a(this.dO().b(this, this.w()), 0.0F);
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         ju $$1 = this.y();
 
-   @Override
-   protected void a(ejs $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dN().a(js.X, this.ds(), this.du() + this.ag.j() * 2.0, this.dy(), this.ag.k(), 0.0, this.ag.k());
-      }
-
-      if (!this.dN().B && !this.dI()) {
-         bkq $$2 = this.w();
-         if ($$2 instanceof amf $$3) {
-            if ($$3.c.c() && $$3.dN() == this.dN() && !$$3.fE()) {
-               if (this.ag.i() < 0.05F && this.dN().Y().b(crw.e)) {
-                  caz $$4 = bku.F.a(this.dN());
-                  if ($$4 != null) {
-                     $$4.b($$2.ds(), $$2.du(), $$2.dy(), $$2.dD(), $$2.dF());
-                     this.dN().b($$4);
-                  }
-               }
-
-               if ($$2.bO()) {
-                  $$3.a(this.ds(), this.du(), this.dy());
-               } else {
-                  $$2.c(this.ds(), this.du(), this.dy());
-               }
-
-               $$2.n();
-               $$2.a(this.dO().k(), 5.0F);
-               this.dN().a(null, this.ds(), this.du(), this.dy(), aqr.td, aqs.h);
-            }
-         } else if ($$2 != null) {
-            $$2.c(this.ds(), this.du(), this.dy());
-            $$2.n();
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dN().a($$1, this.ds(), this.du(), this.dy(), 0.0, 0.0, 0.0);
          }
-
-         this.am();
       }
    }
 
    @Override
-   public void l() {
-      bkq $$0 = this.w();
-      if ($$0 instanceof amf && !$$0.bx() && this.dN().Y().b(crw.Y)) {
-         this.am();
-      } else {
-         super.l();
-      }
+   protected void a(ejw $$0) {
+      super.a($$0);
+      bkv $$1 = $$0.a();
+      int $$2 = $$1 instanceof cax ? 3 : 0;
+      $$1.a(this.dO().b(this, this.w()), (float)$$2);
    }
 
-   @Nullable
    @Override
-   public bkq b(ame $$0) {
-      bkq $$1 = this.w();
-      if ($$1 != null && $$1.dN().ad() != $$0.ad()) {
-         this.b(null);
+   protected void a(ejx $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         this.dN().a(this, (byte)3);
+         this.am();
       }
-
-      return super.b($$0);
    }
 }

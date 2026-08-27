@@ -1,2 +1,8 @@
-public interface enh extends enm {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@elv
+@elu
+interface enh {
 }

@@ -1,69 +1,45 @@
-public abstract class alr extends ece {
-   protected alr(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class alr {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + djo.b();
+
+   public static djo a(int $$0) {
+      return $$0 < 33 ? djo.n : djo.a($$0 - 33);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == crh.a;
+   public static int a(djo $$0) {
+      return 33 + djo.a($$0);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         crh $$3 = new crh($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = crh.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
+   public static amb b(int $$0) {
+      if ($$0 <= 31) {
+         return amb.d;
+      } else if ($$0 <= 32) {
+         return amb.c;
+      } else {
+         return $$0 <= 33 ? amb.b : amb.a;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      crh $$4 = new crh($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = crh.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = crh.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
-      }
-
-      return $$3;
+   public static int a(amb $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == crh.a ? this.b($$1) : $$2 + 1;
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
    }
 
-   protected abstract int b(long var1);
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(crh.a, $$0, $$1, $$2);
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

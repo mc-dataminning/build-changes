@@ -1,36 +1,59 @@
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class ffx implements fgb {
-   private final GameProfile a;
-   private final Supplier<gcu> b;
-   private final ur c;
-
-   public ffx(GameProfile $$0) {
-      this.a = $$0;
-      this.b = etd.N().ak().a($$0);
-      this.c = ur.b($$0.getName());
+public record ffx(dnu a, is<dkx> b, dnr c, in<agv> d, agw e, csy f) {
+   public ffx(dns $$0, in<agv> $$1, agw $$2, csy $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public void a(ffz $$0) {
-      etd.N().I().b(new aef(this.a.getId()));
+   public ffx(dnu $$0, dnr $$1, in<agv> $$2, agw $$3, csy $$4) {
+      this($$0, $$2.a(agv.c).d(kd.aK), $$1, $$2.a(agv.c), $$3, $$4);
    }
 
-   @Override
-   public ur aQ_() {
+   public ffx a(dnu $$0, dnr $$1) {
+      return new ffx($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public ffx a(ffx.b $$0) {
+      return new ffx($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public ffx a(ffx.a $$0) {
+      return new ffx(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public it.b a() {
+      return this.d.a();
+   }
+
+   public dnu b() {
+      return this.a;
+   }
+
+   public is<dkx> c() {
+      return this.b;
+   }
+
+   public dnr d() {
       return this.c;
    }
 
-   @Override
-   public void a(euo $$0, float $$1, int $$2) {
-      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
-      evy.a($$0, this.b.get(), 2, 2, 12);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public in<agv> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean aR_() {
-      return true;
+   public agw f() {
+      return this.e;
+   }
+
+   public csy g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<it.b, dnr, dnr> {
+   }
+
+   public interface b extends UnaryOperator<dnu> {
    }
 }

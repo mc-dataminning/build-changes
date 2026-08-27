@@ -1,24 +1,13 @@
-public class wr implements wk<wn> {
-   private final int a;
+public interface wr extends tt {
+   void a(wu var1);
 
-   public wr(int $$0) {
-      this.a = $$0;
-   }
+   void a(wv var1);
 
-   public wr(tu $$0) {
-      this.a = $$0.readInt();
-   }
+   void a(ws var1);
 
-   @Override
-   public void a(tu $$0) {
-      $$0.p(this.a);
-   }
+   void a(wt var1);
 
-   public void a(wn $$0) {
-      $$0.a(this);
-   }
+   void a(ww var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(wx var1);
 }

@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
 
-public record bl(Optional<ib<cpu>> b, cl.d c) {
+public record bl(Optional<ig<cpz>> b, cl.d c) {
    public static final Codec<bl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asu.a(jy.g.r(), "enchantment").forGetter(bl::a), asu.a(cl.d.d, "levels", cl.d.c).forGetter(bl::b)).apply($$0, bl::new)
+      $$0 -> $$0.group(asy.a(kc.g.r(), "enchantment").forGetter(bl::a), asy.a(cl.d.d, "levels", cl.d.c).forGetter(bl::b)).apply($$0, bl::new)
    );
 
-   public bl(cpu $$0, cl.d $$1) {
+   public bl(cpz $$0, cl.d $$1) {
       this(Optional.of($$0.j()), $$1);
    }
 
-   public boolean a(Map<cpu, Integer> $$0) {
+   public boolean a(Map<cpz, Integer> $$0) {
       if (this.b.isPresent()) {
-         cpu $$1 = this.b.get().a();
+         cpz $$1 = this.b.get().a();
          if (!$$0.containsKey($$1)) {
             return false;
          }
@@ -36,7 +36,7 @@ public record bl(Optional<ib<cpu>> b, cl.d c) {
       return true;
    }
 
-   public Optional<ib<cpu>> a() {
+   public Optional<ig<cpz>> a() {
       return this.b;
    }
 

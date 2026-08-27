@@ -1,78 +1,181 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class egc extends egj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<ig<cpu>> c = jy.g.r().listOf().xmap(ig::a, $$0 -> $$0.a().toList());
-   public static final Codec<egc> a = RecordCodecBuilder.create($$0 -> a($$0).and(asu.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, egc::new));
-   private final Optional<ig<cpu>> d;
+public class egc extends ego {
+   private static final Map<agm, egc.c> b = Stream.of(egc.a.a, egc.d.b, egc.e.b).collect(Collectors.toMap(egc.c::a, Function.identity()));
+   static final Codec<egc.c> c = agm.a.comapFlatMap($$0 -> {
+      egc.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, egc.c::a);
+   private static final MapCodec<egc.b> d = new MapCodec<egc.b>() {
+      private static final String a = "formula";
+      private static final String b = "parameters";
 
-   egc(List<ehw> $$0, Optional<ig<cpu>> $$1) {
-      super($$0);
-      this.d = $$1;
-   }
-
-   @Override
-   public egl b() {
-      return egm.e;
-   }
-
-   @Override
-   public clj a(clj $$0, eex $$1) {
-      ats $$2 = $$1.b();
-      Optional<ib<cpu>> $$3 = this.d.<ib<cpu>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(clm.qM);
-         List<ib.c<cpu>> $$3x = jy.g.h().filter($$0xx -> ((cpu)$$0xx.a()).i()).filter($$2xx -> $$2x || ((cpu)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
+      public <T> Stream<T> keys(DynamicOps<T> $$0) {
+         return Stream.of((T[])(new Object[]{$$0.createString("formula"), $$0.createString("parameters")}));
       }
+
+      public <T> DataResult<egc.b> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
+         T $$2 = (T)$$1.get("formula");
+         return $$2 == null ? DataResult.error(() -> "Missing type for formula in: " + $$1) : egc.c.decode($$0, $$2).flatMap($$2x -> {
+            T $$3 = Objects.requireNonNullElseGet((T)$$1.get("parameters"), $$0::emptyMap);
+            return ((egc.c)$$2x.getFirst()).b().decode($$0, $$3).map(Pair::getFirst);
+         });
+      }
+
+      public <T> RecordBuilder<T> a(egc.b $$0, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+         egc.c $$3 = $$0.a();
+         $$2.add("formula", egc.c.encodeStart($$1, $$3));
+         DataResult<T> $$4 = this.a($$3.b(), $$0, $$1);
+         if ($$4.result().isEmpty() || !Objects.equals($$4.result().get(), $$1.emptyMap())) {
+            $$2.add("parameters", $$4);
+         }
+
+         return $$2;
+      }
+
+      private <T, F extends egc.b> DataResult<T> a(Codec<F> $$0, egc.b $$1, DynamicOps<T> $$2) {
+         return $$0.encodeStart($$2, $$1);
+      }
+   };
+   public static final Codec<egc> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and($$0.group(kc.g.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, egc::new)
+   );
+   private final ig<cpz> e;
+   private final egc.b f;
+
+   private egc(List<eib> $$0, ig<cpz> $$1, egc.b $$2) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   private static clj a(clj $$0, cpu $$1, ats $$2) {
-      int $$3 = atm.a($$2, $$1.e(), $$1.a());
-      if ($$0.a(clm.qM)) {
-         $$0 = new clj(clm.uo);
-         ckf.a($$0, new cpx($$1, $$3));
-      } else {
-         $$0.a($$1, $$3);
+   @Override
+   public egq b() {
+      return egr.r;
+   }
+
+   @Override
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.i);
+   }
+
+   @Override
+   public clo a(clo $$0, efc $$1) {
+      clo $$2 = $$1.c(ehn.i);
+      if ($$2 != null) {
+         int $$3 = cqb.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
+         $$0.f($$4);
       }
 
       return $$0;
    }
 
-   public static egc.a c() {
-      return new egc.a();
+   public static ego.a<?> a(cpz $$0, float $$1, int $$2) {
+      return a($$3 -> new egc($$3, $$0.j(), new egc.a($$2, $$1)));
    }
 
-   public static egj.a<?> d() {
-      return a($$0 -> new egc($$0, Optional.empty()));
+   public static ego.a<?> a(cpz $$0) {
+      return a($$1 -> new egc($$1, $$0.j(), new egc.d()));
    }
 
-   public static class a extends egj.a<egc.a> {
-      private final List<ib<cpu>> a = new ArrayList<>();
+   public static ego.a<?> b(cpz $$0) {
+      return a($$1 -> new egc($$1, $$0.j(), new egc.e(1)));
+   }
 
-      protected egc.a a() {
-         return this;
-      }
+   public static ego.a<?> a(cpz $$0, int $$1) {
+      return a($$2 -> new egc($$2, $$0.j(), new egc.e($$1)));
+   }
 
-      public egc.a a(cpu $$0) {
-         this.a.add($$0.j());
-         return this;
+   static record a(int b, float c) implements egc.b {
+      private static final Codec<egc.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(egc.a::b), Codec.FLOAT.fieldOf("probability").forGetter(egc.a::c)).apply($$0, egc.a::new)
+      );
+      public static final egc.c a = new egc.c(new agm("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(atw $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
+
+         return $$1;
       }
 
       @Override
-      public egk b() {
-         return new egc(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ig.a(this.a)));
+      public egc.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(atw var1, int var2, int var3);
+
+      egc.c a();
+   }
+
+   static record c(agm a, Codec<? extends egc.b> b) {
+   }
+
+   static record d() implements egc.b {
+      public static final Codec<egc.d> a = Codec.unit(egc.d::new);
+      public static final egc.c b = new egc.c(new agm("ore_drops"), a);
+
+      @Override
+      public int a(atw $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public egc.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements egc.b {
+      public static final Codec<egc.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(egc.e::b)).apply($$0, egc.e::new)
+      );
+      public static final egc.c b = new egc.c(new agm("uniform_bonus_count"), a);
+
+      @Override
+      public int a(atw $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public egc.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

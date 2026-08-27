@@ -1,32 +1,40 @@
-public class adk implements wk<acl> {
-   private final boolean a;
-   private final boolean b;
+public class adk implements wo<acp> {
+   private final hx a;
+   private final int b;
+   private final boolean c;
 
-   public adk(boolean $$0, boolean $$1) {
+   public adk(hx $$0, int $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public adk(tu $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.readBoolean();
+   public adk(ty $$0) {
+      this.a = $$0.e();
+      this.b = $$0.n();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public hx a() {
       return this.a;
    }
 
-   public boolean d() {
+   public int d() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

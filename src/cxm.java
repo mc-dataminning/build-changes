@@ -1,104 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class cxm extends cum {
-   public static final MapCodec<cxm> a = b(cxm::new);
-   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<ht> c = ht.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(ht::i).toList();
+public class cxm {
+   public static <S extends dfi> cxm.c<S> a(
+      dfk<S> $$0, Function<dhn, cxm.a> $$1, Function<dhn, ib> $$2, dih $$3, dhn $$4, csg $$5, hx $$6, BiPredicate<csg, hx> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return cxm.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return cxm.b::b;
+      } else {
+         cxm.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == cxm.a.a;
+         boolean $$11 = $$9 == cxm.a.b;
+         if ($$10) {
+            return new cxm.c.b<>($$8);
+         } else {
+            hx $$12 = $$6.a($$2.apply($$4));
+            dhn $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               cxm.a $$14 = $$1.apply($$13);
+               if ($$14 != cxm.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return cxm.b::b;
+                  }
 
-   @Override
-   public MapCodec<cxm> a() {
-      return a;
-   }
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new cxm.c.a<>($$16, $$17);
+                  }
+               }
+            }
 
-   protected cxm(dhh.d $$0) {
-      super($$0);
-   }
-
-   public static boolean a(csa $$0, ht $$1, ht $$2) {
-      return $$0.a_($$1.a((iw)$$2)).a(arg.cn) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(arg.co);
-   }
-
-   @Override
-   public boolean g_(dhi $$0) {
-      return true;
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (ht $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               js.t,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+            return new cxm.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   public dbf b_(dhi $$0) {
-      return dbf.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dfx($$0, $$1);
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Nullable
-   @Override
-   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
-      return $$0.B ? a($$2, dff.m, dfx::a) : null;
-   }
+   public interface c<S> {
+      <T> T apply(cxm.b<? super S, T> var1);
 
-   @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      if ($$1.B) {
-         return bix.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         return bix.b;
-      }
-   }
+      public static final class a<S> implements cxm.c<S> {
+         private final S a;
+         private final S b;
 
-   @Nullable
-   @Override
-   public bja b(dhi $$0, csa $$1, ht $$2) {
-      dfd $$3 = $$1.c_($$2);
-      if ($$3 instanceof dfx) {
-         ur $$4 = ((bjb)$$3).P_();
-         return new bjf(($$2x, $$3x, $$4x) -> new chg($$2x, $$3x, cgx.a($$1, $$2)), $$4);
-      } else {
-         return null;
-      }
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   public void a(csa $$0, ht $$1, dhi $$2, blg $$3, clj $$4) {
-      if ($$4.A()) {
-         dfd $$5 = $$0.c_($$1);
-         if ($$5 instanceof dfx) {
-            ((dfx)$$5).a($$4.y());
+         @Override
+         public <T> T apply(cxm.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
          }
       }
-   }
 
-   @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
-      return false;
+      public static final class b<S> implements cxm.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(cxm.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

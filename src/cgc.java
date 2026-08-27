@@ -1,107 +1,159 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class cgc {
-   private static final Logger a = LogUtils.getLogger();
-   private final cge b;
-   private final Map<agi, cgb> c;
-   private final cgd d;
+public class cgc extends cfq {
+   private static final byte c = 10;
+   private int d = -1;
 
-   cgc(cge $$0, cgd $$1, Map<agi, cgb> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public cgc(bkz<? extends cgc> $$0, csf $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(cgd $$0) {
-      return $$0.a(this.d);
+   public cgc(csf $$0, double $$1, double $$2, double $$3) {
+      super(bkz.aZ, $$0, $$1, $$2, $$3);
    }
 
-   public cgd a() {
+   @Override
+   public cfq.a w() {
+      return cfq.a.d;
+   }
+
+   @Override
+   public dhn y() {
+      return cvh.ck.o();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.d > 0) {
+         this.d--;
+         this.dN().a(jw.Z, this.ds(), this.du() + 0.5, this.dy(), 0.0, 0.0, 0.0);
+      } else if (this.d == 0) {
+         this.h(this.dq().i());
+      }
+
+      if (this.P) {
+         double $$0 = this.dq().i();
+         if ($$0 >= 0.01F) {
+            this.h($$0);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(bjt $$0, float $$1) {
+      if ($$0.c() instanceof cef $$3 && $$3.bN()) {
+         bjt $$4 = this.dO().d(this, $$0.d());
+         this.a($$4, $$3.dq().g());
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(bjt $$0) {
+      double $$1 = this.dq().i();
+      if (!$$0.a(arm.i) && !$$0.a(arm.l) && !($$1 >= 0.01F)) {
+         this.b(this.ah_());
+      } else {
+         if (this.d < 0) {
+            this.C();
+            this.d = this.ag.a(20) + this.ag.a(20);
+         }
+      }
+   }
+
+   @Override
+   protected clj ah_() {
+      return clr.nO;
+   }
+
+   protected void h(double $$0) {
+      this.a(null, $$0);
+   }
+
+   protected void a(@Nullable bjt $$0, double $$1) {
+      if (!this.dN().B) {
+         double $$2 = Math.sqrt($$1);
+         if ($$2 > 5.0) {
+            $$2 = 5.0;
+         }
+
+         this.dN().a(this, $$0, null, this.ds(), this.du(), this.dy(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, csf.a.d);
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean a(float $$0, float $$1, bjt $$2) {
+      if ($$0 >= 3.0F) {
+         float $$3 = $$0 / 10.0F;
+         this.h((double)($$3 * $$3));
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.d < 0) {
+         this.C();
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.C();
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void C() {
+      this.d = 80;
+      if (!this.dN().B) {
+         this.dN().a(this, (byte)10);
+         if (!this.aU()) {
+            this.dN().a(null, this.ds(), this.du(), this.dy(), aqv.yg, aqw.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public int D() {
       return this.d;
    }
 
-   public cgd a(Iterable<agi> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   public boolean E() {
+      return this.d > -1;
    }
 
-   public cgd a(cgb... $$0) {
-      return cgd.a(this.b, Arrays.asList($$0));
+   @Override
+   public float a(crx $$0, crl $$1, hx $$2, dhn $$3, ecx $$4, float $$5) {
+      return !this.E() || !$$3.a(ark.N) && !$$1.a_($$2.c()).a(ark.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
    }
 
-   public cgd a(Iterable<agi> $$0, Consumer<agi> $$1) {
-      Set<cgb> $$2 = Sets.newIdentityHashSet();
-
-      for (agi $$3 : $$0) {
-         cgb $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
-         }
-      }
-
-      return cgd.a(this.b, $$2);
+   @Override
+   public boolean a(crx $$0, crl $$1, hx $$2, dhn $$3, float $$4) {
+      return !this.E() || !$$3.a(ark.N) && !$$1.a_($$2.c()).a(ark.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
-   public Set<agi> b(cgd $$0) {
-      Set<agi> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
-      return $$1;
+   @Override
+   protected void a(sd $$0) {
+      super.a($$0);
+      if ($$0.b("TNTFuse", 99)) {
+         this.d = $$0.h("TNTFuse");
+      }
    }
 
-   public Codec<cgd> b() {
-      return agi.a.listOf().comapFlatMap($$0 -> {
-         Set<agi> $$1 = new HashSet<>();
-         cgd $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
+   @Override
+   protected void b(sd $$0) {
+      super.b($$0);
+      $$0.a("TNTFuse", this.d);
    }
 
-   public static class a {
-      private final cge a;
-      private int b;
-      private final Map<agi, cgb> c = new LinkedHashMap<>();
-
-      public a(String $$0) {
-         this.a = new cge($$0);
-      }
-
-      public cgb a(String $$0) {
-         return this.a(new agi("minecraft", $$0));
-      }
-
-      public cgb a(agi $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            cgb $$1 = new cgb(this.a, this.b++);
-            cgb $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
-         }
-      }
-
-      public cgc a() {
-         cgd $$0 = cgd.a(this.a, this.c.values());
-         return new cgc(this.a, $$0, Map.copyOf(this.c));
-      }
+   @Override
+   boolean ai_() {
+      return true;
    }
 }

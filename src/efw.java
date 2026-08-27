@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface efw {
+public record efw(Codec<? extends efv> a) {
 }

@@ -1,15 +1,20 @@
-public class cqn extends cpu {
-   public cqn(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.i, $$1);
+public class cqn extends cpz {
+   public cqn(cpz.a $$0, bla... $$1) {
+      super($$0, cqa.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
       return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

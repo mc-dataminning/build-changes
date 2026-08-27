@@ -1,4 +1,23 @@
-public class epg extends eps {
-   public volatile String a = "0";
-   public volatile String b = "";
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class epg extends epx {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
+
+   public static epg a(String $$0) {
+      epg $$1 = new epg();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = eru.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+      }
+
+      return $$1;
+   }
 }

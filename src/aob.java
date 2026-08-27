@@ -1,65 +1,148 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.NotDirectoryException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class aob extends FileStore {
-   private final String a;
+public class aob extends ant {
+   private static final Logger c = LogUtils.getLogger();
+   private static final Joiner d = Joiner.on("/");
+   private final Path e;
 
-   public aob(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
+   public aob(String $$0, Path $$1, boolean $$2) {
+      super($$0, $$2);
+      this.e = $$1;
    }
 
    @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
+   public apd<InputStream> a(String... $$0) {
+      v.a($$0);
+      Path $$1 = v.a(this.e, List.of($$0));
+      return Files.exists($$1) ? apd.create($$1) : null;
+   }
+
+   public static boolean a(Path $$0) {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public apd<InputStream> a(aoa $$0, agm $$1) {
+      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
+      return a($$1, $$2);
+   }
+
+   public static apd<InputStream> a(agm $$0, Path $$1) {
+      return (apd<InputStream>)v.c($$0.a()).get().map($$1x -> {
+         Path $$2 = v.a($$1, $$1x);
+         return b($$2);
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$0, $$1x.message());
+         return null;
+      });
+   }
+
+   @Nullable
+   private static apd<InputStream> b(Path $$0) {
+      return Files.exists($$0) && a($$0) ? apd.create($$0) : null;
    }
 
    @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   public void a(aoa $$0, String $$1, String $$2, anz.a $$3) {
+      v.c($$2).get().ifLeft($$3x -> {
+         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
+         a($$1, $$4, $$3x, $$3);
+      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   public static void a(String $$0, Path $$1, List<String> $$2, anz.a $$3) {
+      Path $$4 = v.a($$1, $$2);
+
+      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+         $$5.forEach($$3x -> {
+            String $$4x = d.join($$1.relativize($$3x));
+            agm $$5x = agm.a($$0, $$4x);
+            if ($$5x == null) {
+               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
+            } else {
+               $$3.accept($$5x, apd.create($$3x));
+            }
+         });
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$4, var11);
+      }
+   }
+
+   @Override
+   public Set<String> a(aoa $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+      Path $$2 = this.e.resolve($$0.a());
+
+      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
+         for (Path $$4 : $$3) {
+            String $$5 = $$4.getFileName().toString();
+            if (agm.h($$5)) {
+               $$1.add($$5);
+            } else {
+               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
+            }
+         }
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$2, var11);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() {
+   }
+
+   public static class a implements aot.c {
+      private final Path a;
+      private final boolean b;
+
+      public a(Path $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public anz a(String $$0) {
+         return new aob($$0, this.a, this.b);
+      }
+
+      @Override
+      public anz a(String $$0, aot.a $$1) {
+         anz $$2 = this.a($$0);
+         List<String> $$3 = $$1.d();
+         if ($$3.isEmpty()) {
+            return $$2;
+         } else {
+            List<anz> $$4 = new ArrayList<>($$3.size());
+
+            for (String $$5 : $$3) {
+               Path $$6 = this.a.resolve($$5);
+               $$4.add(new aob($$0, $$6, this.b));
+            }
+
+            return new anv($$2, $$4);
+         }
+      }
    }
 }

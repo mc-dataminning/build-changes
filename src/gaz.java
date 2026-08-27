@@ -1,11 +1,14 @@
-import javax.annotation.Nullable;
+public class gaz extends gak<bxz, fkk<bxz>> {
+   private static final agm a = new agm("textures/entity/wolf/wolf_collar.png");
 
-public interface gaz extends gbc {
-   @Deprecated
-   @Override
-   default float call(clj $$0, @Nullable flj $$1, @Nullable blg $$2, int $$3) {
-      return atm.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gaz(fxx<bxz, fkk<bxz>> $$0) {
+      super($$0);
    }
 
-   float unclampedCall(clj var1, @Nullable flj var2, @Nullable blg var3, int var4);
+   public void a(eob $$0, fqz $$1, int $$2, bxz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u() && !$$3.ce()) {
+         float[] $$10 = $$3.go().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
+      }
+   }
 }

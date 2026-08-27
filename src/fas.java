@@ -1,53 +1,27 @@
-import java.util.function.BooleanSupplier;
+public class fas extends faz {
+   private evx a;
 
-public class fas extends fau {
-   private static final ur a = ur.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier k;
-
-   public fas(BooleanSupplier $$0) {
-      super(esv.a);
-      this.k = $$0;
-      this.c = System.currentTimeMillis();
+   public fas() {
+      super(uv.c("outOfMemory.title"));
+      this.a = evx.a;
    }
 
    @Override
-   public boolean aE_() {
+   protected void aQ_() {
+      this.d(eve.a(uu.l, $$0 -> this.f.a(new fbe())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
+      this.d(eve.a(uv.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
+      this.a = evx.a(this.i, uv.c("outOfMemory.message"), 295);
+   }
+
+   @Override
+   public boolean aF_() {
       return false;
    }
 
    @Override
-   protected boolean aO_() {
-      return false;
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void d() {
-      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.aF_();
-      }
-   }
-
-   @Override
-   public void aF_() {
-      this.f.aU().c(ur.c("narrator.ready_to_play"));
-      super.aF_();
-   }
-
-   @Override
-   public boolean j() {
-      return false;
+      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
+      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
    }
 }

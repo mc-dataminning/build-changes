@@ -1,37 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class dqo extends dpv<dsf> {
-   public dqo(Codec<dsf> $$0) {
+public class dqo extends dqa<dsl> {
+   public dqo(Codec<dsl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsf> $$0) {
-      csu $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      dhi $$3 = $$1.a_($$2.d());
-      dsf $$4 = $$0.f();
-      ats $$5 = $$0.d();
-      if (!$$3.a(arg.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.ak()) {
-            int $$7 = 0;
+   public boolean a(dqc<dsl> $$0) {
+      int $$1 = 0;
+      csz $$2 = $$0.b();
+      hx $$3 = $$0.e();
+      atw $$4 = $$0.d();
+      int $$5 = $$2.a(dmw.a.d, $$3.u(), $$3.w());
+      hx $$6 = new hx($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(cvh.G)) {
+         dhn $$7 = cvh.mc.o();
+         dhn $$8 = cvh.md.o();
+         int $$9 = 1 + $$4.a(10);
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               ht $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dhi $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(cvh.G) && $$2.a_($$6.c()).a(cvh.G) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.a(czi.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
                }
+            } else if ($$10 > 0) {
+               hx $$11 = $$6.d();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(cvh.mc)) {
+                  $$2.a($$11, $$7.a(czi.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
 
-            return $$7 > 0;
-         } else {
-            return false;
+            $$6 = $$6.c();
          }
       }
+
+      return $$1 > 0;
    }
 }

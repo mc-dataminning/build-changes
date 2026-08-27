@@ -1,13 +1,13 @@
 import java.util.concurrent.CompletableFuture;
 
-public class nw extends nz<ecr> {
-   public nw(kh $$0, CompletableFuture<id.b> $$1) {
-      super($$0, jz.x, $$1, $$0x -> $$0x.k().g());
+public class nw extends oi<bxa> {
+   public nw(kl $$0, CompletableFuture<ii.b> $$1) {
+      super($$0, kd.k, $$1);
    }
 
    @Override
-   protected void a(id.b $$0) {
-      this.a(arl.a).a(ect.c, ect.b);
-      this.a(arl.b).a(ect.e, ect.d);
+   protected void a(ii.b $$0) {
+      this.b(arl.a).a(bxa.a, bxa.b, bxa.c, bxa.d, bxa.e, bxa.f, bxa.g, bxa.h, bxa.i, bxa.j);
+      this.b(arl.b).b(arl.a).a(bxa.k);
    }
 }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fgg {
+   void a(fge var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgg {
+   uv aR_();
+
+   void a(eut var1, float var2, int var3);
+
+   boolean aS_();
 }

@@ -1,84 +1,108 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class bri<T extends blg> extends bsb {
-   protected final blp a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected edh d;
-   protected final bup e;
-   protected final Class<T> f;
-   protected final Predicate<blg> g;
-   protected final Predicate<blg> h;
-   private final bvs k;
+public class bri implements brf {
+   protected final bln a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bri(blp $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bkt.e::test);
+   public bri(bln $$0) {
+      this.a = $$0;
    }
 
-   public bri(blp $$0, Class<T> $$1, Predicate<blg> $$2, float $$3, double $$4, double $$5, Predicate<blg> $$6) {
-      this.a = $$0;
+   public void a(ejz $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public void a(bkv $$0) {
+      this.a($$0.ds(), b($$0), $$0.dy());
+   }
+
+   public void a(bkv $$0, float $$1, float $$2) {
+      this.a($$0.ds(), b($$0), $$0.dy(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fI(), (float)this.a.aa());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
       this.f = $$1;
       this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.N();
-      this.a(EnumSet.of(bsb.a.a));
-      this.k = bvs.a().a((double)$$3).a($$6.and($$2));
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
    }
 
-   public bri(blp $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<blg> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
 
-   @Override
-   public boolean a() {
-      this.b = this.a
-         .dN()
-         .a(this.a.dN().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.ds(), this.a.du(), this.a.dy());
-      if (this.b == null) {
-         return false;
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aW = this.a(this.a.aW, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dF(), $$0, this.c)));
       } else {
-         eju $$0 = bvw.a(this.a, 16, 7, this.b.dl());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
-         }
+         this.a.aW = this.a(this.a.aW, this.a.aU, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.N().l()) {
+         this.a.aW = atq.c(this.a.aW, this.a.aU, (float)this.a.ab());
       }
    }
 
-   @Override
-   public boolean b() {
-      return !this.e.l();
+   protected boolean c() {
+      return true;
    }
 
-   @Override
-   public void c() {
-      this.e.a(this.d, this.i);
+   public boolean d() {
+      return this.d > 0;
    }
 
-   @Override
-   public void d() {
-      this.b = null;
+   public double e() {
+      return this.e;
    }
 
-   @Override
-   public void e() {
-      if (this.a.f((bkq)this.b) < 49.0) {
-         this.a.N().a(this.j);
-      } else {
-         this.a.N().a(this.i);
-      }
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.ds();
+      double $$1 = this.f - this.a.dw();
+      double $$2 = this.g - this.a.dy();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(atq.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.ds();
+      double $$1 = this.g - this.a.dy();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(atq.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = atq.c($$0, $$1);
+      float $$4 = atq.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bkv $$0) {
+      return $$0 instanceof bll ? $$0.dw() : ($$0.cH().b + $$0.cH().e) / 2.0;
    }
 }

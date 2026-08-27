@@ -1,55 +1,61 @@
-public class cdr {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public void a(rz $$0) {
-      rz $$1 = new rz();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
+public final class cdr {
+   public static final cdr a = a("desert");
+   public static final cdr b = a("jungle");
+   public static final cdr c = a("plains");
+   public static final cdr d = a("savanna");
+   public static final cdr e = a("snow");
+   public static final cdr f = a("swamp");
+   public static final cdr g = a("taiga");
+   private final String h;
+   private static final Map<agl<ctd>, cdr> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(ctk.A, a);
+      $$0.put(ctk.f, a);
+      $$0.put(ctk.B, a);
+      $$0.put(ctk.C, a);
+      $$0.put(ctk.z, b);
+      $$0.put(ctk.x, b);
+      $$0.put(ctk.y, b);
+      $$0.put(ctk.s, d);
+      $$0.put(ctk.r, d);
+      $$0.put(ctk.w, d);
+      $$0.put(ctk.X, e);
+      $$0.put(ctk.W, e);
+      $$0.put(ctk.L, e);
+      $$0.put(ctk.e, e);
+      $$0.put(ctk.N, e);
+      $$0.put(ctk.q, e);
+      $$0.put(ctk.d, e);
+      $$0.put(ctk.F, e);
+      $$0.put(ctk.G, e);
+      $$0.put(ctk.H, e);
+      $$0.put(ctk.I, e);
+      $$0.put(ctk.g, f);
+      $$0.put(ctk.h, f);
+      $$0.put(ctk.o, g);
+      $$0.put(ctk.n, g);
+      $$0.put(ctk.u, g);
+      $$0.put(ctk.t, g);
+      $$0.put(ctk.p, g);
+      $$0.put(ctk.v, g);
+   });
+
+   private cdr(String $$0) {
+      this.h = $$0;
    }
 
-   public void b(rz $$0) {
-      if ($$0.b("abilities", 10)) {
-         rz $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
-         }
-      }
+   @Override
+   public String toString() {
+      return this.h;
    }
 
-   public float a() {
-      return this.f;
+   private static cdr a(String $$0) {
+      return is.a(kc.z, new agm($$0), new cdr($$0));
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
-   }
-
-   public float b() {
-      return this.g;
-   }
-
-   public void b(float $$0) {
-      this.g = $$0;
+   public static cdr a(ig<ctd> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

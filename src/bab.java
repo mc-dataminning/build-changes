@@ -2,17 +2,17 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
 public class bab extends DataFix {
-   public bab(Schema $$0) {
-      super($$0, false);
+   public bab(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bax.D);
       return this.fixTypeEverywhereTyped(
-         "OptionsAccessibilityOnboardFix",
-         this.getInputSchema().getType(bat.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", auv::a))
       );
    }
 }

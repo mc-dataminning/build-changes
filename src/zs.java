@@ -1,73 +1,48 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class zs implements wo<yh> {
+   private final int a;
+   private final hx b;
+   private final int c;
+   private final boolean d;
 
-public record zs(int a, boolean b, Set<agh<csa>> c, int d, int e, int f, boolean g, boolean h, boolean i, aci j) implements wk<yd> {
-   public zs(tu $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(jz.aJ)),
-         $$0.n(),
-         $$0.n(),
-         $$0.n(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new aci($$0)
-      );
+   public zs(int $$0, hx $$1, int $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public zs(ty $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.e();
+      this.c = $$0.readInt();
+      this.d = $$0.readBoolean();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.p(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, tu::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.p(this.c);
+      $$0.a(this.d);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
-      return this.b;
-   }
-
-   public Set<agh<csa>> e() {
-      return this.c;
-   }
-
-   public int f() {
+   public boolean a() {
       return this.d;
    }
 
-   public int g() {
-      return this.e;
+   public int d() {
+      return this.a;
    }
 
-   public int h() {
-      return this.f;
+   public int e() {
+      return this.c;
    }
 
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public aci l() {
-      return this.j;
+   public hx f() {
+      return this.b;
    }
 }

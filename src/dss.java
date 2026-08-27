@@ -1,16 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dss implements drz {
-   public static final Codec<dss> a = asu.b(dwl.c).fieldOf("features").xmap(dss::new, $$0 -> $$0.b).codec();
-   public final ig<dwl> b;
+public class dss implements dse {
+   public static final Codec<dss> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(dsm.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dss::new)
+   );
+   public final List<dsm.a> b;
 
-   public dss(ig<dwl> $$0) {
-      this.b = $$0;
+   public dss(dhn $$0, dhn $$1) {
+      this(ImmutableList.of(dsm.a(new ear($$0), $$1)));
    }
 
-   @Override
-   public Stream<dpi<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public dss(List<dsm.a> $$0) {
+      this.b = $$0;
    }
 }

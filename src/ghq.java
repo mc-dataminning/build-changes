@@ -1,63 +1,36 @@
-import java.util.Collection;
+import java.util.function.Function;
 
-public abstract class ghq<E extends evv.a<E>> extends evv<E> {
-   protected ghq(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      super(etd.N(), $$0, $$1, $$2, $$3, $$4);
+public enum ghq {
+   a("movement", ghl::new),
+   b("find_tree", ghk::new),
+   c("punch_tree", ghn::new),
+   d("open_inventory", ghm::new),
+   e("craft_planks", ghj::new),
+   f("none", ghi::new);
+
+   private final String g;
+   private final Function<gho, ? extends ghp> h;
+
+   private <T extends ghp> ghq(String $$0, Function<gho, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void k(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.k() != 0) {
-         this.a(this.d($$0));
+   public ghp a(gho $$0) {
+      return this.h.apply($$0);
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public static ghq a(String $$0) {
+      for (ghq $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
       }
-   }
 
-   @Override
-   public void a(int $$0) {
-      this.k($$0);
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int c() {
-      return this.o() + this.b();
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.e * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int k() {
-      return super.k();
-   }
-
-   @Override
-   public int h(int $$0) {
-      return super.h($$0);
-   }
-
-   @Override
-   public int o() {
-      return super.o();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void v() {
-      this.j();
+      return f;
    }
 }

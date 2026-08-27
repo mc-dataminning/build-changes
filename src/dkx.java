@@ -1,24 +1,19 @@
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkx<T> {
-   private final crh a;
-   private final List<T> b;
+public record dkx(ig<dkw> e, djk f) {
+   public static final Codec<dkx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dkw.j.fieldOf("type").forGetter(dkx::a), djk.a.fieldOf("generator").forGetter(dkx::b)).apply($$0, $$0.stable(dkx::new))
+   );
+   public static final agl<dkx> b = agl.a(kd.aK, new agm("overworld"));
+   public static final agl<dkx> c = agl.a(kd.aK, new agm("the_nether"));
+   public static final agl<dkx> d = agl.a(kd.aK, new agm("the_end"));
 
-   public dkx(crh $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ig<dkw> a() {
+      return this.e;
    }
 
-   public crh a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+   public djk b() {
+      return this.f;
    }
 }

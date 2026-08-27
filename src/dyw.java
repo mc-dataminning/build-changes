@@ -1,20 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record dyw(bhh<List<dys>> c) implements dys {
-   static Codec<dyw> a = RecordCodecBuilder.create($$0 -> $$0.group(bhh.b(Codec.list(dys.b)).fieldOf("groups").forGetter(dyw::c)).apply($$0, dyw::new));
+record dyw(agl<dyv> c, agl<dyv> d) implements dyx {
+   static Codec<dyw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agl.a(kd.aE).fieldOf("alias").forGetter(dyw::c), agl.a(kd.aE).fieldOf("target").forGetter(dyw::d)).apply($$0, dyw::new)
+   );
 
    @Override
-   public void a(ats $$0, BiConsumer<agh<dyq>, agh<dyq>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   public void a(atw $$0, BiConsumer<agl<dyv>, agl<dyv>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Stream<agh<dyq>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(dys::a);
+   public Stream<agl<dyv>> a() {
+      return Stream.of(this.d);
    }
 
    @Override

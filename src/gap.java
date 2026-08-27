@@ -1,48 +1,36 @@
-public class gap extends gaf<bxr, fhh<bxr>> {
-   private static final agi a = new agi("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final agi b = new agi("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final agi c = new agi("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final agi d = new agi("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final agi e = new agi("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final agi f = new agi("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final agi g = new agi("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final agi h = new agi("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final agi i = new agi("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final agi j = new agi("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final agi k = new agi("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final agi l = new agi("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fjv<bxr> m;
-   private final fjw<bxr> n;
+public class gap extends gak<bxu, fju<bxu>> {
+   private final frt a;
+   private final fxa b;
 
-   public gap(fxs<bxr, fhh<bxr>> $$0, fkk $$1) {
+   public gap(fxx<bxu, fju<bxu>> $$0, frt $$1, fxa $$2) {
       super($$0);
-      this.m = new fjv<>($$1.a(fkn.bG));
-      this.n = new fjw<>($$1.a(fkn.bE));
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bxr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      bxr.b $$10 = $$3.gq();
+   public void a(eob $$0, fqz $$1, int $$2, bxu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.w()) {
+         boolean $$10 = eti.N().b($$3) && $$3.ce();
+         if (!$$3.ce() || $$10) {
+            $$0.a();
+            this.c().c().a($$0);
+            float $$11 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            clo $$12 = new clo(cvh.ee);
+            if ($$10) {
+               dhn $$13 = cvh.ee.o();
+               gea $$14 = this.a.a($$13);
+               int $$15 = fxd.c($$3, 0.0F);
+               $$0.a(-0.5F, -0.5F, -0.5F);
+               this.a.b().a($$0.c(), $$1.getBuffer(frh.q(gby.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+            } else {
+               this.b.a($$3, $$12, cll.f, false, $$0, $$1, $$3.dN(), $$2, fxd.c($$3, 0.0F), $$3.aj());
+            }
 
-      fhp<bxr> $$11 = (fhp<bxr>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
-
-      agi $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gp().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+            $$0.b();
+         }
+      }
    }
 }

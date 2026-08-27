@@ -1,133 +1,54 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public interface id<T> extends ic<T> {
-   Stream<ib.c<T>> b();
+public enum id implements auk {
+   a("down_east", ib.a, ib.f),
+   b("down_north", ib.a, ib.c),
+   c("down_south", ib.a, ib.d),
+   d("down_west", ib.a, ib.e),
+   e("up_east", ib.b, ib.f),
+   f("up_north", ib.b, ib.c),
+   g("up_south", ib.b, ib.d),
+   h("up_west", ib.b, ib.e),
+   i("west_up", ib.e, ib.b),
+   j("east_up", ib.f, ib.b),
+   k("north_up", ib.c, ib.b),
+   l("south_up", ib.d, ib.b);
 
-   default Stream<agh<T>> c() {
-      return this.b().map(ib.c::g);
+   private static final Int2ObjectMap<id> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (id $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final ib o;
+   private final ib p;
+
+   private static int b(ib $$0, ib $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   Stream<ig.c<T>> d();
-
-   default Stream<arv<T>> e() {
-      return this.d().map(ig.c::f);
+   private id(String $$0, ib $$1, ib $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
-   default id<T> a(final Predicate<T> $$0) {
-      return new id.a<T>(this) {
-         @Override
-         public Optional<ib.c<T>> a(agh<T> $$0x) {
-            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
-         }
-
-         @Override
-         public Stream<ib.c<T>> b() {
-            return this.c.b().filter($$1 -> $$0.test($$1.a()));
-         }
-      };
+   @Override
+   public String c() {
+      return this.n;
    }
 
-   public static class a<T> implements id<T> {
-      protected final id<T> c;
-
-      public a(id<T> $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public Optional<ib.c<T>> a(agh<T> $$0) {
-         return this.c.a($$0);
-      }
-
-      @Override
-      public Stream<ib.c<T>> b() {
-         return this.c.b();
-      }
-
-      @Override
-      public Optional<ig.c<T>> a(arv<T> $$0) {
-         return this.c.a($$0);
-      }
-
-      @Override
-      public Stream<ig.c<T>> d() {
-         return this.c.d();
-      }
+   public static id a(ib $$0, ib $$1) {
+      int $$2 = b($$0, $$1);
+      return (id)m.get($$2);
    }
 
-   public interface b {
-      <T> Optional<id.c<T>> a(agh<? extends io<? extends T>> var1);
-
-      default <T> id.c<T> b(agh<? extends io<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
-
-      default ic.a a() {
-         return new ic.a() {
-            @Override
-            public <T> Optional<ic<T>> a(agh<? extends io<? extends T>> $$0) {
-               return b.this.a($$0).map($$0x -> $$0x);
-            }
-         };
-      }
-
-      static id.b a(Stream<id.c<?>> $$0) {
-         final Map<agh<? extends io<?>>, id.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(id.c::f, $$0x -> $$0x));
-         return new id.b() {
-            @Override
-            public <T> Optional<id.c<T>> a(agh<? extends io<? extends T>> $$0) {
-               return Optional.ofNullable((id.c<T>)$$1.get($$0));
-            }
-         };
-      }
+   public ib a() {
+      return this.p;
    }
 
-   public interface c<T> extends id<T>, ie<T> {
-      agh<? extends io<? extends T>> f();
-
-      Lifecycle g();
-
-      default id<T> a(cgd $$0) {
-         return (id<T>)(cga.bv.contains(this.f()) ? this.a($$1 -> ((cga)$$1).a($$0)) : this);
-      }
-
-      public abstract static class a<T> implements id.c<T> {
-         protected abstract id.c<T> a();
-
-         @Override
-         public agh<? extends io<? extends T>> f() {
-            return this.a().f();
-         }
-
-         @Override
-         public Lifecycle g() {
-            return this.a().g();
-         }
-
-         @Override
-         public Optional<ib.c<T>> a(agh<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         public Stream<ib.c<T>> b() {
-            return this.a().b();
-         }
-
-         @Override
-         public Optional<ig.c<T>> a(arv<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         public Stream<ig.c<T>> d() {
-            return this.a().d();
-         }
-      }
+   public ib b() {
+      return this.o;
    }
 }

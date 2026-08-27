@@ -1,93 +1,59 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
 public class aqu {
-   protected final Set<agi> a = Sets.newHashSet();
-   protected final Set<agi> b = Sets.newHashSet();
-   private final aqv c = new aqv();
+   public static final Codec<aqu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agm.a.fieldOf("sound_id").forGetter(aqu::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aqu::b)).apply($$0, aqu::a)
+   );
+   public static final Codec<ig<aqu>> b = agi.a(kd.ae, a);
+   private static final float c = 16.0F;
+   private final agm d;
+   private final float e;
+   private final boolean f;
 
-   public void a(aqu $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private static aqu a(agm $$0, Optional<Float> $$1) {
+      return $$1.<aqu>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public void a(coq<?> $$0) {
-      if (!$$0.b().ap_()) {
-         this.a($$0.a());
+   public static aqu a(agm $$0) {
+      return new aqu($$0, 16.0F, false);
+   }
+
+   public static aqu a(agm $$0, float $$1) {
+      return new aqu($$0, $$1, true);
+   }
+
+   private aqu(agm $$0, float $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public agm a() {
+      return this.d;
+   }
+
+   public float a(float $$0) {
+      if (this.f) {
+         return this.e;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
       }
    }
 
-   protected void a(agi $$0) {
-      this.a.add($$0);
+   private Optional<Float> b() {
+      return this.f ? Optional.of(this.e) : Optional.empty();
    }
 
-   public boolean b(@Nullable coq<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
+   public void a(ty $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b(), ty::a);
    }
 
-   public boolean b(agi $$0) {
-      return this.a.contains($$0);
-   }
-
-   public void c(coq<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(agi $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(coq<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(coq<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(coq<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(agi $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(cia $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(cia $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean a(chz<?> $$0) {
-      return this.b($$0.t());
-   }
-
-   public boolean b(cia $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(cia $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(aqv $$0) {
-      this.c.a($$0);
-   }
-
-   public aqv a() {
-      return this.c.a();
-   }
-
-   public void a(cia $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   public static aqu b(ty $$0) {
+      agm $$1 = $$0.t();
+      Optional<Float> $$2 = $$0.b(ty::readFloat);
+      return a($$1, $$2);
    }
 }

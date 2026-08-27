@@ -1,75 +1,65 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cyw extends cva {
+public class cyw extends cvf implements dcf {
    public static final MapCodec<cyw> a = b(cyw::new);
-   public static final dhz b = dan.b;
-   public static final dhz c = dan.c;
-   public static final dhz d = dan.d;
-   public static final dhz e = dan.e;
-   public static final dhz f = dan.f;
-   public static final dhz g = dan.g;
-   private static final Map<hx, dhz> h = dan.h;
+   private static final die c = did.C;
+   protected static final eks b = cvf.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<cyw> a() {
       return a;
    }
 
-   public cyw(dhh.d $$0) {
+   protected cyw(dhm.d $$0) {
       super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dhi a(cnr $$0) {
-      crg $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      return this.o()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ecx c_(dhn $$0) {
+      return $$0.c(c) ? ecy.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dhn a(cnw $$0) {
+      dhn $$1 = super.a($$0);
+      if ($$1 != null) {
+         ecx $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == ecy.c));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(h.get($$1.a(hx.c)), $$0.c(b))
-         .a(h.get($$1.a(hx.d)), $$0.c(d))
-         .a(h.get($$1.a(hx.f)), $$0.c(c))
-         .a(h.get($$1.a(hx.e)), $$0.c(e))
-         .a(h.get($$1.a(hx.b)), $$0.c(f))
-         .a(h.get($$1.a(hx.a)), $$0.c(g));
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      dhn $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ib.a);
    }
 
    @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a(h.get($$1.b(hx.c)), $$0.c(b))
-         .a(h.get($$1.b(hx.d)), $$0.c(d))
-         .a(h.get($$1.b(hx.f)), $$0.c(c))
-         .a(h.get($$1.b(hx.e)), $$0.c(e))
-         .a(h.get($$1.b(hx.b)), $$0.c(f))
-         .a(h.get($$1.b(hx.a)), $$0.c(g));
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$1 == ib.b && !this.a($$0, $$3, $$4)) {
+         return cvh.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, ecy.c, ecy.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

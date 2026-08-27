@@ -1,5 +1,12 @@
-public interface fxs<T extends bkq, M extends fhp<T>> {
-   M a();
+public class fxs extends fwv<cbq> {
+   private static final agm a = new agm("textures/entity/illager/pillager.png");
 
-   agi a(T var1);
+   public fxs(fwc.a $$0) {
+      super($$0, new fii<>($$0.a(fks.aL)), 0.5F);
+      this.a(new gad<>(this, $$0.d()));
+   }
+
+   public agm a(cbq $$0) {
+      return a;
+   }
 }

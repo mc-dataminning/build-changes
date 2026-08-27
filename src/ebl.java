@@ -1,28 +1,25 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebl implements ebp {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ebl> a = RecordCodecBuilder.create($$0 -> $$0.group(agi.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ebl::new));
-   private final agi d;
+public interface ebl<P extends ebj> {
+   Codec<ebj> a = kc.ai.q().dispatch("processor_type", ebj::a, ebl::codec);
+   Codec<ebk> b = a.listOf().xmap(ebk::new, ebk::a);
+   Codec<ebk> c = asy.e(b.fieldOf("processors").codec(), b);
+   Codec<ig<ebk>> d = agi.a(kd.aC, c);
+   ebl<eao> e = a("block_ignore", eao.a);
+   ebl<eaq> f = a("block_rot", eaq.a);
+   ebl<eat> g = a("gravity", eat.a);
+   ebl<eau> h = a("jigsaw_replacement", eau.a);
+   ebl<ebf> i = a("rule", ebf.a);
+   ebl<eax> j = a("nop", eax.a);
+   ebl<ean> k = a("block_age", ean.a);
+   ebl<eam> l = a("blackstone_replace", eam.a);
+   ebl<eav> m = a("lava_submerged_block", eav.a);
+   ebl<ebc> n = a("protected_blocks", ebc.b);
+   ebl<eas> o = a("capped", eas.a);
 
-   public ebl(agi $$0) {
-      this.d = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public rz a(ats $$0, @Nullable rz $$1) {
-      rz $$2 = $$1 == null ? new rz() : $$1.h();
-      agi.a.encodeStart(sn.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public ebq<?> a() {
-      return ebq.d;
+   static <P extends ebj> ebl<P> a(String $$0, Codec<P> $$1) {
+      return is.a(kc.ai, $$0, () -> $$1);
    }
 }

@@ -1,8 +1,53 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dvx {
+public class dvx extends dvt {
+   public static final Codec<dvx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dnq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dnq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvx::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dnq d;
+   private final dnq e;
+   private final int f;
+
+   private dvx(dnq $$0, dnq $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static dvx a(dnq $$0, dnq $$1, int $$2) {
+      return new dvx($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(atw $$0, dnt $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = atq.a($$0, $$2 + this.f, $$3);
+         int $$5 = atq.a($$0, $$2, $$4 - 1);
+         return atq.a($$0, $$2, $$5 - 1 + this.f);
+      }
+   }
+
+   @Override
+   public dvu<?> a() {
+      return dvu.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   }
 }

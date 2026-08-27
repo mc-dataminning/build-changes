@@ -1,26 +1,75 @@
 import com.mojang.serialization.Codec;
 
-public class drl extends dpv<dsg> {
-   public drl(Codec<dsg> $$0) {
+public class drl extends dqa<dsz> {
+   public drl(Codec<dsz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsg> $$0) {
-      csu $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.t($$2)) {
+   public boolean a(dqc<dsz> $$0) {
+      dsz $$1 = $$0.f();
+      csz $$2 = $$0.b();
+      hx $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
          return false;
       } else {
-         for (hx $$3 : hx.values()) {
-            if ($$3 != hx.a && ddt.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, cvc.ff.o().a(ddt.a($$3), Boolean.valueOf(true)), 2);
-               return true;
+         dhn $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
             }
-         }
 
-         return false;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.t($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
       }
    }
 }

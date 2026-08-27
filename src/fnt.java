@@ -1,30 +1,43 @@
-public class fnt extends fov {
-   fnt(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+import org.joml.Vector3f;
+
+public class fnt extends fnv<jp> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fnt(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jp $$7, fpj $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a(eof $$0, est $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements fol<jv> {
-      private final fpe a;
+   public static class a implements foq<jp> {
+      private final fpj a;
 
-      public a(fpe $$0) {
+      public a(fpj $$0) {
          this.a = $$0;
       }
 
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fon a(jp $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fnt($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

@@ -1,136 +1,82 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class fsq implements fsu<dey> {
-   public static final agi a = new agi("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class fsq {
+   private final fsm a;
+   private final fsj b;
 
-   public fsq(fsv.a $$0) {
-   }
-
-   public void a(dey $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      long $$6 = $$0.k().W();
-      List<dey.a> $$7 = $$0.c();
-      int $$8 = 0;
-
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dey.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public fsq(fsm $$0, fsj $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   private static void a(enw $$0, fqu $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   public fsj a() {
+      return this.b;
    }
 
-   public static void a(enw $$0, fqu $$1, agi $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = atm.h($$13 * 0.2F - (float)atm.d($$13 * 0.1F));
-      float $$15 = $$8[0];
-      float $$16 = $$8[1];
-      float $$17 = $$8[2];
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$18 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 0.0F;
-      float $$25 = -$$9;
-      float $$26 = 0.0F;
-      float $$27 = 1.0F;
-      float $$28 = -1.0F + $$14;
-      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
-      a($$0, $$1.getBuffer(frc.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-      $$18 = -$$10;
-      float $$31 = -$$10;
-      $$21 = -$$10;
-      $$22 = -$$10;
-      $$26 = 0.0F;
-      $$27 = 1.0F;
-      $$28 = -1.0F + $$14;
-      $$29 = (float)$$7 * $$4 + $$28;
-      a($$0, $$1.getBuffer(frc.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-   }
-
-   private static void a(
-      enw $$0,
-      eoa $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16,
-      float $$17,
-      float $$18,
-      float $$19
-   ) {
-      enw.a $$20 = $$0.c();
-      Matrix4f $$21 = $$20.a();
-      Matrix3f $$22 = $$20.b();
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
-      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
-   }
-
-   private static void a(
-      Matrix4f $$0,
-      Matrix3f $$1,
-      eoa $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$10, $$14, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$9, $$10, $$14, $$16);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$11, $$12, $$13, $$16);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$11, $$12, $$13, $$15);
-   }
-
-   private static void a(Matrix4f $$0, Matrix3f $$1, eoa $$2, float $$3, float $$4, float $$5, float $$6, int $$7, float $$8, float $$9, float $$10, float $$11) {
-      $$2.a($$0, $$8, (float)$$7, $$9).a($$3, $$4, $$5, $$6).a($$10, $$11).c(gbl.d).b(15728880).a($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public boolean a(dey $$0) {
-      return true;
+   public Predicate<dhn> a(dho<cvf, dhn> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public int aS_() {
-      return 256;
+   public boolean equals(Object $$0) {
+      return this == $$0;
    }
 
-   public boolean a(dey $$0, eju $$1) {
-      return eju.b($$0.p()).d(1.0, 0.0, 1.0).a((im)$$1.d(1.0, 0.0, 1.0), (double)this.aS_());
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fsq> {
+      public fsq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fsq(this.b($$3), (fsj)$$2.deserialize($$3.get("apply"), fsj.class));
+      }
+
+      private fsm b(JsonObject $$0) {
+         return $$0.has("when") ? a(atg.u($$0, "when")) : fsm.b;
+      }
+
+      @VisibleForTesting
+      static fsm a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fsm> $$2 = Streams.stream(atg.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fsp($$2);
+            } else if ($$0.has("AND")) {
+               List<fsm> $$3 = Streams.stream(atg.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fsl($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new fsl($$1.stream().map(fsq.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static fsm a(Entry<String, JsonElement> $$0) {
+         return new fsn($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

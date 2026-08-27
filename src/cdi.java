@@ -1,61 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cdi {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] d = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cdi> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jy.z.q().fieldOf("type").orElseGet(() -> cdm.c).forGetter($$0x -> $$0x.e),
-               jy.A.q().fieldOf("profession").orElseGet(() -> cdk.b).forGetter($$0x -> $$0x.f),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, cdi::new)
-   );
-   private final cdm e;
-   private final cdk f;
-   private final int g;
+public class cdi implements crs {
+   private static final int a = 1200;
+   private int b;
 
-   public cdi(cdm $$0, cdk $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = Math.max(1, $$2);
+   @Override
+   public int a(ami $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.Y().b(csb.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            cdz $$3 = $$0.i();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               atw $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               hx $$7 = $$3.dn().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (csq.a(bmf.c.a, $$0, $$7, bkz.m)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, arv.m).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   public cdm a() {
-      return this.e;
+   private int a(ami $$0, hx $$1) {
+      int $$2 = 48;
+      if ($$0.x().a($$0x -> $$0x.a(bwo.n), $$1, 48, bwk.b.b) > 4L) {
+         List<bwz> $$3 = $$0.a(bwz.class, new eju($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   public cdk b() {
-      return this.f;
+   private int b(ami $$0, hx $$1) {
+      int $$2 = 16;
+      List<bwz> $$3 = $$0.a(bwz.class, new eju($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   public int c() {
-      return this.g;
-   }
-
-   public cdi a(cdm $$0) {
-      return new cdi($$0, this.f, this.g);
-   }
-
-   public cdi a(cdk $$0) {
-      return new cdi(this.e, $$0, this.g);
-   }
-
-   public cdi a(int $$0) {
-      return new cdi(this.e, this.f, $$0);
-   }
-
-   public static int b(int $$0) {
-      return d($$0) ? d[$$0 - 1] : 0;
-   }
-
-   public static int c(int $$0) {
-      return d($$0) ? d[$$0] : 0;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   private int a(hx $$0, ami $$1) {
+      bwz $$2 = bkz.m.a((csf)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), blp.a, null, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

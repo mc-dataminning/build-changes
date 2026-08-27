@@ -1,37 +1,41 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bch extends bcb {
+public class bch extends Schema {
    public bch(int $$0, Schema $$1) {
       super($$0, $$1);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:bed");
-      return $$1;
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
-         false,
-         bat.p,
-         () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bat.G.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bat.v.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bat.v.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bat.v.in($$0), DSL.constType(DSL.string())))
+         true,
+         bax.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  bax.z.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     "EntityTag",
+                     bax.w.in($$0),
+                     "BlockEntityTag",
+                     bax.s.in($$0),
+                     "CanDestroy",
+                     DSL.list(bax.y.in($$0)),
+                     "CanPlaceOn",
+                     DSL.list(bax.y.in($$0)),
+                     "Items",
+                     DSL.list(bax.t.in($$0))
+                  )
+               ),
+               bfc.a,
+               HookFunction.IDENTITY
             )
       );
-      $$0.registerType(false, bat.G, () -> DSL.constType(a()));
-      $$0.registerType(false, bat.v, () -> DSL.constType(a()));
    }
 }

@@ -1,11 +1,19 @@
-public class fve extends fxd<byd, fgz<byd>> {
-   private static final agi a = new agi("textures/entity/camel/camel.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public fve(fvx.a $$0, fkm $$1) {
-      super($$0, new fgz<>($$0.a($$1)), 0.7F);
+public class fve extends fxi<byd, fgy<byd>> {
+   private static final Map<byd.d, agm> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (byd.d $$1 : byd.d.values()) {
+         $$0.put($$1, new agm(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fve(fwc.a $$0) {
+      super($$0, new fgy<>($$0.a(fks.e)), 0.5F);
    }
 
-   public agi a(byd $$0) {
-      return a;
+   public agm a(byd $$0) {
+      return a.get($$0.gf());
    }
 }

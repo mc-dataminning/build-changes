@@ -1,55 +1,103 @@
-public interface csc {
-   int J_();
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-   int I_();
+public enum csc implements auk {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   default int ak() {
-      return this.I_() + this.J_();
+   public static final csc e = a;
+   public static final auk.a<csc> f = auk.a(csc::values);
+   private static final IntFunction<csc> g = asj.a(csc::a, values(), asj.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final uv k;
+   private final uv l;
+
+   private csc(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = uv.c("selectWorld.gameMode." + $$1);
+      this.l = uv.c("gameMode." + $$1);
    }
 
-   default int al() {
-      return this.an() - this.am();
+   public int a() {
+      return this.i;
    }
 
-   default int am() {
-      return iu.a(this.I_());
+   public String b() {
+      return this.j;
    }
 
-   default int an() {
-      return iu.a(this.ak() - 1) + 1;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   default boolean r(ht $$0) {
-      return this.d($$0.v());
+   public uv d() {
+      return this.l;
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.I_() || $$0 >= this.ak();
+   public uv e() {
+      return this.k;
    }
 
-   default int e(int $$0) {
-      return this.f(iu.a($$0));
+   public void a(cdw $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   default int f(int $$0) {
-      return $$0 - this.am();
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   default int g(int $$0) {
-      return $$0 + this.am();
+   public boolean g() {
+      return this == b;
    }
 
-   static csc e(final int $$0, final int $$1) {
-      return new csc() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
+   public boolean h() {
+      return this == a || this == c;
+   }
 
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public static csc a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static csc a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static csc a(String $$0, @Nullable csc $$1) {
+      csc $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable csc $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static csc b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

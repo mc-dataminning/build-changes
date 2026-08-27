@@ -1,38 +1,50 @@
-public class ghh implements ghk {
-   private static final int a = 600;
-   private static final ur b = ur.c("tutorial.open_inventory.title");
-   private static final ur c = ur.a("tutorial.open_inventory.description", ghj.a("inventory"));
-   private final ghj d;
-   private exj e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public ghh(ghj $$0) {
-      this.d = $$0;
+public class ghh {
+   private final gho a;
+   private final etm b;
+   @Nullable
+   private exo c;
+
+   public ghh(gho $$0, etm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(ghl.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new exj(exj.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      uv $$0 = uv.c("tutorial.bundleInsert.title");
+      uv $$1 = uv.c("tutorial.bundleInsert.description");
+      this.c = new exo(exo.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.as();
+      }
+   }
+
+   public void a(clo $$0, clo $$1, cgz $$2) {
+      if (!this.b.t) {
+         if (!$$0.b() && $$1.a(clr.qR)) {
+            if ($$2 == cgz.a) {
+               this.a();
+            } else if ($$2 == cgz.b) {
+               this.b();
+            }
+         } else if ($$0.a(clr.qR) && !$$1.b() && $$2 == cgz.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(ghl.e);
    }
 }

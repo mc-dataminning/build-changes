@@ -1,42 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dps extends dpv<dry> {
-   public dps(Codec<dry> $$0) {
+public class dps extends dqa<dsa> {
+   private static final ImmutableList<cvf> a = ImmutableList.of(cvh.F, cvh.fn, cvh.fo, cvh.fp, cvh.fq, cvh.cv, cvh.ct);
+   private static final ib[] b = ib.values();
+   private static final double c = 0.9;
+
+   public dps(Codec<dsa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dry> $$0) {
-      ht $$1 = $$0.e();
-      csu $$2 = $$0.b();
-      dry $$3 = $$0.f();
+   public boolean a(dqc<dsa> $$0) {
+      boolean $$1 = false;
+      atw $$2 = $$0.d();
+      csz $$3 = $$0.b();
+      dsa $$4 = $$0.f();
+      hx $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (ht $$4 : ht.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            ht $$9 = $$4.i();
-            this.a($$2, $$9, cvc.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dfd $$4x = $$2.c_($$9);
-               if ($$4x instanceof dgs $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, cvc.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, cvc.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, cvc.F.o());
-         } else {
-            this.a($$2, $$4, cvc.a.o());
+      for (hx $$13 : hx.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            hx $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
          }
       }
 
-      return true;
+      return $$1;
+   }
+
+   private static boolean a(csg $$0, hx $$1, dsa $$2) {
+      dhn $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (ib $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != ib.b || !$$5 && $$4 == ib.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

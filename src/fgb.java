@@ -1,9 +1,8 @@
-public interface fgb {
-   void a(ffz var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   ur aQ_();
-
-   void a(euo var1, float var2, int var3);
-
-   boolean aR_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fgb {
 }

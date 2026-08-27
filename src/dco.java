@@ -1,73 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dco extends cva {
-   public static final MapCodec<dco> a = b(dco::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final hx[] d = hx.values();
+public class dco extends cvf {
+   public static final MapCodec<dco> b = b(dco::new);
+   public static final die c = did.z;
 
    @Override
-   public MapCodec<dco> a() {
-      return a;
+   protected MapCodec<? extends dco> a() {
+      return b;
    }
 
-   protected dco(dhh.d $$0) {
+   protected dco(dhm.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return $$1 == ib.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dhn a(cnw $$0) {
+      dhn $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(h($$1)));
    }
 
-   protected void a(csa $$0, ht $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cvc.aP.o(), 2);
-         $$0.a(null, $$1, aqr.xE, aqs.e, 1.0F, 1.0F);
-      }
+   private static boolean h(dhn $$0) {
+      return $$0.a(ark.by);
    }
 
-   private boolean b(csa $$0, ht $$1) {
-      return ht.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (hx $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dhi $$3 = $$0.a_($$2);
-            ecs $$4 = $$0.b_($$2);
-            if (!$$4.a(arl.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof cvh $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof czp) {
-                  $$0.a($$2, cvc.a.o(), 3);
-               } else {
-                  if (!$$3.a(cvc.mc) && !$$3.a(cvc.md) && !$$3.a(cvc.bw) && !$$3.a(cvc.bx)) {
-                     return false;
-                  }
-
-                  dfd $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cvc.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(c);
    }
 }

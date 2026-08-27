@@ -1,58 +1,109 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
-import javax.annotation.Nullable;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class dkm {
-   private static final Int2ObjectMap<dkm> d = new Int2ObjectOpenHashMap();
-   public static final dkm a = a(new dkm(1, $$0 -> new asv(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dkm b = a(new dkm(2, $$0 -> new asv(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
-   public static final dkm c = a(new dkm(3, $$0 -> $$0, $$0 -> $$0));
-   private final int e;
-   private final dkm.a<InputStream> f;
-   private final dkm.a<OutputStream> g;
+public class dkm implements dlh<bkv> {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Entities";
+   private static final String d = "Position";
+   private final ami e;
+   private final dkn f;
+   private final LongSet g = new LongOpenHashSet();
+   private final bhu<Runnable> h;
+   protected final DataFixer a;
 
-   private dkm(int $$0, dkm.a<InputStream> $$1, dkm.a<OutputStream> $$2) {
+   public dkm(ami $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
       this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      this.a = $$2;
+      this.h = bhu.a($$4, "entity-deserializer");
+      this.f = new dkn($$1, $$3, "entities");
    }
 
-   private static dkm a(dkm $$0) {
-      d.put($$0.e, $$0);
-      return $$0;
+   @Override
+   public CompletableFuture<dlc<bkv>> a(crm $$0) {
+      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.g.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               crm $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               b.warn("Failed to parse chunk {} position info", $$0, var6);
+            }
+
+            sd $$4 = this.b($$1.get());
+            sj $$5 = $$4.c("Entities", 10);
+            List<bkv> $$6 = bkz.a($$5, this.e).collect(ImmutableList.toImmutableList());
+            return new dlc<>($$0, $$6);
+         }
+      }, this.h::a);
    }
 
-   @Nullable
-   public static dkm a(int $$0) {
-      return (dkm)d.get($$0);
+   private static crm a(sd $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new crm($$1[0], $$1[1]);
    }
 
-   public static boolean b(int $$0) {
-      return d.containsKey($$0);
+   private static void a(sd $$0, crm $$1) {
+      $$0.a("Position", new sh(new int[]{$$1.e, $$1.f}));
    }
 
-   public int a() {
-      return this.e;
+   private static dlc<bkv> b(crm $$0) {
+      return new dlc<>($$0, ImmutableList.of());
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.g.wrap($$0);
+   @Override
+   public void a(dlc<bkv> $$0) {
+      crm $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.g.add($$1.a())) {
+            this.f.a($$1, null);
+         }
+      } else {
+         sj $$2 = new sj();
+         $$0.b().forEach($$1x -> {
+            sd $$2x = new sd();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         sd $$3 = ss.g(new sd());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.f.a($$1, $$3).exceptionally($$1x -> {
+            b.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.g.remove($$1.a());
+      }
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.f.wrap($$0);
+   @Override
+   public void a(boolean $$0) {
+      this.f.a($$0).join();
+      this.h.a();
    }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   private sd b(sd $$0) {
+      int $$1 = ss.b($$0, -1);
+      return auw.s.a(this.a, $$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.f.close();
    }
 }

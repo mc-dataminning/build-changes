@@ -1,181 +1,106 @@
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public class dxi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final dke c;
-   private final ip d;
-   private final io<csy> e;
-   private final io<dxh> f;
-   private final ebi g;
-   private final agh<csa> h;
-   private final djf i;
-   private final dnf j;
-   private final csc k;
-   private final ctc l;
-   private final long m;
-   private final DataFixer n;
-   private final Long2ObjectMap<Object2IntMap<dxh>> o = new Long2ObjectOpenHashMap();
-   private final Map<dxh, Long2BooleanMap> p = new HashMap<>();
+public class dxi extends dxq {
+   private static final Logger d = LogUtils.getLogger();
+   protected final dyt a;
+   protected hx b;
+   private final int h;
+   protected final dbr c;
+   private final List<dyo> i = Lists.newArrayList();
+   private final ebn j;
 
-   public dxi(dke $$0, ip $$1, ebi $$2, agh<csa> $$3, djf $$4, dnf $$5, csc $$6, ctc $$7, long $$8, DataFixer $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.g = $$2;
+   public dxi(ebn $$0, dyt $$1, hx $$2, int $$3, dbr $$4, dxe $$5) {
+      super(dyd.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
       this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.e = $$1.d(jz.ar);
-      this.f = $$1.d(jz.aB);
+      this.c = $$4;
    }
 
-   public dxj a(crh $$0, dxh $$1, boolean $$2) {
-      long $$3 = $$0.a();
-      Object2IntMap<dxh> $$4 = (Object2IntMap<dxh>)this.o.get($$3);
-      if ($$4 != null) {
-         return this.a($$4, $$1, $$2);
-      } else {
-         dxj $$5 = this.a($$0, $$1, $$2, $$3);
-         if ($$5 != null) {
-            return $$5;
-         } else {
-            boolean $$6 = this.p.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$3, $$2x -> this.b($$0, $$1));
-            return !$$6 ? dxj.b : dxj.c;
-         }
-      }
+   public dxi(dyc $$0, sd $$1) {
+      super(dyd.ad, $$1);
+      this.j = $$0.c();
+      this.b = new hx($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<ta> $$2 = agk.a(sr.a, $$0.b());
+      this.a = (dyt)dyt.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dbr.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      sj $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(dyo.a(new Dynamic($$2, $$1x))));
    }
 
-   private boolean b(crh $$0, dxh $$1) {
-      return $$1.b(new dxh.a(this.d, this.i, this.l, this.j, this.g, this.m, $$0, this.k, $$1.a()::a)).isPresent();
-   }
+   @Override
+   protected void a(dyc $$0, sd $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<ta> $$2 = agk.a(sr.a, $$0.b());
+      dyt.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      sj $$3 = new sj();
 
-   @Nullable
-   private dxj a(crh $$0, dxh $$1, boolean $$2, long $$3) {
-      td $$4 = new td(new tf(se.a, "DataVersion"), new tf("Level", "Structures", rz.b, "Starts"), new tf("structures", rz.b, "starts"));
-
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return dxj.c;
+      for (dyo $$4 : this.i) {
+         $$3.add((ta)$$4.a($$2).getValue());
       }
 
-      if (!($$4.d() instanceof rz $$7)) {
-         return null;
-      } else {
-         int $$8 = dkg.a($$7);
-         if ($$8 <= 1493) {
-            return dxj.c;
-         } else {
-            dkg.a($$7, this.h, this.i.b());
-
-            rz $$9;
-            try {
-               $$9 = aus.c.a(this.n, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return dxj.c;
-            }
-
-            Object2IntMap<dxh> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
-         }
-      }
+      $$1.a("junctions", $$3);
    }
 
-   @Nullable
-   private Object2IntMap<dxh> a(rz $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         rz $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            rz $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<dxh> $$3 = new Object2IntOpenHashMap();
-               io<dxh> $$4 = this.d.d(jz.aB);
-
-               for (String $$5 : $$2.e()) {
-                  agi $$6 = agi.a($$5);
-                  if ($$6 != null) {
-                     dxh $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        rz $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
-      }
+   @Override
+   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, hx $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   private static Object2IntMap<dxh> a(Object2IntMap<dxh> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
+   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, hx $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
    }
 
-   private dxj a(Object2IntMap<dxh> $$0, dxh $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? dxj.b : dxj.a;
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
    }
 
-   public void a(crh $$0, Map<dxh, dxp> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<dxh> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
-      });
-      this.a($$2, $$3);
+   @Override
+   public dbr a() {
+      return this.c;
    }
 
-   private void a(long $$0, Object2IntMap<dxh> $$1) {
-      this.o.put($$0, a($$1));
-      this.p.values().forEach($$1x -> $$1x.remove($$0));
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
    }
 
-   public void a(crh $$0, dxh $$1) {
-      this.o.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
+   public dyt b() {
+      return this.a;
+   }
 
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
-         return $$2;
-      });
+   public hx c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(dyo $$0) {
+      this.i.add($$0);
+   }
+
+   public List<dyo> e() {
+      return this.i;
    }
 }

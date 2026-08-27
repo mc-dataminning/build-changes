@@ -1,4 +1,3 @@
-public enum biw {
-   a,
-   b;
+public interface biw {
+   void a(biu var1);
 }

@@ -1,162 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 public class eob {
-   private final ImmutableList<eoc> a;
-   private final ImmutableMap<String, eoc> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private enz e;
+   private final Deque<eob.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new eob.a($$1, $$2));
+   });
 
-   public eob(ImmutableMap<String, eoc> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
+   }
 
-      while (var3.hasNext()) {
-         eoc $$2 = (eoc)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
+   public void a(float $$0, float $$1, float $$2) {
+      eob.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      eob.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if ($$0 == $$1 && $$1 == $$2) {
+         if ($$0 > 0.0F) {
+            return;
+         }
+
+         $$3.b.scale(-1.0F);
       }
 
-      this.d = $$1;
+      float $$4 = 1.0F / $$0;
+      float $$5 = 1.0F / $$1;
+      float $$6 = 1.0F / $$2;
+      float $$7 = atq.j($$4 * $$5 * $$6);
+      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   public void a(Quaternionf $$0) {
+      eob.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
    }
 
-   public int a() {
-      return this.b() / 4;
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      eob.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
-   public int b() {
-      return this.d;
+   public void a() {
+      eob.a $$0 = this.a.getLast();
+      this.a.addLast(new eob.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
    }
 
-   public ImmutableList<eoc> c() {
-      return this.a;
+   public void b() {
+      this.a.removeLast();
    }
 
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
+   public eob.a c() {
+      return this.a.getLast();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         eob $$1 = (eob)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean d() {
+      return this.a.size() == 1;
    }
 
    public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
+      eob.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<eoc> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
+   public void a(Matrix4f $$0) {
+      this.a.getLast().a.mul($$0);
    }
 
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
 
-   private void i() {
-      ImmutableList<eoc> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         eoc $$2 = (eoc)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public enz g() {
-      enz $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new enz(enz.a.b);
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$0;
-   }
-
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
+      public Matrix4f a() {
+         return this.a;
       }
 
-      public static eob.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
+      public Matrix3f b() {
+         return this.b;
       }
    }
 }

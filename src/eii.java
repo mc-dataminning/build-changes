@@ -1,92 +1,32 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class eii implements eik {
-   private static final String d = "block_entity";
-   private static final eii.a e = new eii.a() {
-      @Override
-      public sw a(eex $$0) {
-         dfd $$1 = $$0.c(ehi.h);
-         return $$1 != null ? $$1.m() : null;
-      }
+public record eii(Optional<cb> b) implements eib {
+   public static final Codec<eii> a = RecordCodecBuilder.create($$0 -> $$0.group(asy.a(cb.a, "predicate").forGetter(eii::c)).apply($$0, eii::new));
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<ehf<?>> b() {
-         return ImmutableSet.of(ehi.h);
-      }
-   };
-   public static final eii a = new eii(e);
-   private static final Codec<eii.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         eex.b $$1 = eex.b.a($$0);
-         return b($$1);
-      }
-   }, eii.a::a);
-   public static final Codec<eii> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eii::new));
-   public static final Codec<eii> c = f.xmap(eii::new, $$0 -> $$0.g);
-   private final eii.a g;
-
-   private static eii.a b(final eex.b $$0) {
-      return new eii.a() {
-         @Nullable
-         @Override
-         public sw a(eex $$0x) {
-            bkq $$1 = $$0.c($$0.a());
-            return $$1 != null ? cn.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<ehf<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private eii(eii.a $$0) {
-      this.g = $$0;
+   @Override
+   public eic b() {
+      return eid.k;
    }
 
    @Override
-   public eij a() {
-      return eil.c;
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.i);
    }
 
-   @Nullable
-   @Override
-   public sw a(eex $$0) {
-      return this.g.a($$0);
+   public boolean a(efc $$0) {
+      clo $$1 = $$0.c(ehn.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   @Override
-   public Set<ehf<?>> b() {
-      return this.g.b();
+   public static eib.a a(cb.a $$0) {
+      return () -> new eii(Optional.of($$0.b()));
    }
 
-   public static eik a(eex.b $$0) {
-      return new eii(b($$0));
-   }
-
-   interface a {
-      @Nullable
-      sw a(eex var1);
-
-      String a();
-
-      Set<ehf<?>> b();
+   public Optional<cb> c() {
+      return this.b;
    }
 }

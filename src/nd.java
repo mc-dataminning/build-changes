@@ -1,68 +1,78 @@
-public class nd extends mt {
-   public nd(kh $$0) {
-      super($$0);
+import com.google.gson.JsonObject;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class nd {
+   private final mv a;
+   private final coq b;
+   private final coq c;
+   private final coq d;
+   private final Map<String, am<?>> e = new LinkedHashMap<>();
+   private final cox<?> f;
+
+   public nd(cox<?> $$0, mv $$1, coq $$2, coq $$3, coq $$4) {
+      this.a = $$1;
+      this.f = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
-   @Override
-   protected void a(ms $$0) {
-      a($$0, cgd.a(cgf.c));
-      mu.a(mr.c, cvc.tq).a('#', clm.oB).a('C', clm.eN).a('R', clm.lG).a('D', clm.lS).b("###").b("#C#").b("RDR").b("has_dropper", a(clm.lS)).a($$0);
-      a($$0, mr.a, cvc.qA, cvc.qz, 2);
-      i($$0, mr.a, cvc.qB, cvc.qz);
-      i($$0, mr.b, cvc.qC, cvc.qz);
-      i($$0, mr.a, cvc.qH, cvc.qz);
-      i($$0, mr.a, cvc.qD, cvc.qz);
-      a($$0, mr.a, cvc.qE, cvc.qz, 2);
-      i($$0, mr.a, cvc.qF, cvc.qz);
-      i($$0, mr.b, cvc.qG, cvc.qz);
-      i($$0, mr.a, cvc.qI, cvc.qz);
-      a($$0, mr.a, cvc.qJ, cvc.qz, 2);
-      i($$0, mr.a, cvc.qK, cvc.qz);
-      i($$0, mr.b, cvc.qL, cvc.qz);
-      i($$0, mr.a, cvc.qM, cvc.qz);
-      a($$0, mr.a, cvc.qE, cvc.qD, 2);
-      i($$0, mr.a, cvc.qF, cvc.qD);
-      i($$0, mr.b, cvc.qG, cvc.qD);
-      i($$0, mr.a, cvc.qI, cvc.qD);
-      a($$0, mr.a, cvc.qJ, cvc.qD, 2);
-      i($$0, mr.a, cvc.qK, cvc.qD);
-      i($$0, mr.b, cvc.qL, cvc.qD);
-      i($$0, mr.a, cvc.qM, cvc.qD);
-      a($$0, mr.a, cvc.qJ, cvc.qI, 2);
-      i($$0, mr.a, cvc.qK, cvc.qI);
-      i($$0, mr.b, cvc.qL, cvc.qI);
-      i($$0, mr.a, cvc.qM, cvc.qI);
-      a($$0, mr.a, cvc.rj, cvc.qZ, 4);
-      a($$0, mr.a, cvc.ri, cvc.qY, 4);
-      a($$0, mr.a, cvc.rh, cvc.qX, 4);
-      a($$0, mr.a, cvc.rg, cvc.qW, 4);
-      a($$0, mr.a, cvc.rn, cvc.rw, 4);
-      a($$0, mr.a, cvc.rm, cvc.ry, 4);
-      a($$0, mr.a, cvc.rl, cvc.rx, 4);
-      a($$0, mr.a, cvc.rk, cvc.rz, 4);
-      a($$0, cvc.sc, cvc.qZ);
-      a($$0, cvc.sd, cvc.qY);
-      a($$0, cvc.se, cvc.qX);
-      a($$0, cvc.sf, cvc.qW);
-      a($$0, cvc.sg, cvc.rw);
-      a($$0, cvc.sh, cvc.ry);
-      a($$0, cvc.si, cvc.rx);
-      a($$0, cvc.sj, cvc.rz);
-      b($$0, cvc.sk, cvc.qZ);
-      b($$0, cvc.sl, cvc.qY);
-      b($$0, cvc.sm, cvc.qX);
-      b($$0, cvc.sn, cvc.qW);
-      b($$0, cvc.so, cvc.rw);
-      b($$0, cvc.sp, cvc.ry);
-      b($$0, cvc.sq, cvc.rx);
-      b($$0, cvc.sr, cvc.rz);
-      a($$0, mr.a, cvc.sc, cvc.qZ, 4);
-      a($$0, mr.a, cvc.sd, cvc.qY, 4);
-      a($$0, mr.a, cvc.se, cvc.qX, 4);
-      a($$0, mr.a, cvc.sf, cvc.qW, 4);
-      a($$0, mr.a, cvc.sg, cvc.rw, 4);
-      a($$0, mr.a, cvc.sh, cvc.ry, 4);
-      a($$0, mr.a, cvc.si, cvc.rx, 4);
-      a($$0, mr.a, cvc.sj, cvc.rz, 4);
+   public static nd a(coq $$0, coq $$1, coq $$2, mv $$3) {
+      return new nd(cox.v, $$3, $$0, $$1, $$2);
+   }
+
+   public nd a(String $$0, am<?> $$1) {
+      this.e.put($$0, $$1);
+      return this;
+   }
+
+   public void a(mw $$0, agm $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.e.forEach($$2::a);
+      $$0.a(new nd.a($$1, this.f, this.b, this.c, this.d, $$2.b($$1.d("recipes/" + this.a.a() + "/"))));
+   }
+
+   private void a(agm $$0) {
+      if (this.e.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      }
+   }
+
+   public static record a(agm a, cox<?> b, coq c, coq d, coq e, af f) implements mt {
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("template", this.c.a(true));
+         $$0.add("base", this.d.a(true));
+         $$0.add("addition", this.e.a(true));
+      }
+
+      @Override
+      public agm b() {
+         return this.a;
+      }
+
+      @Override
+      public cox<?> c() {
+         return this.b;
+      }
+
+      public coq e() {
+         return this.c;
+      }
+
+      public coq f() {
+         return this.d;
+      }
+
+      public coq g() {
+         return this.e;
+      }
+
+      @Override
+      public af d() {
+         return this.f;
+      }
    }
 }

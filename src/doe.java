@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class doe extends doj {
-   private final ig<cva> e;
-   public static final Codec<doe> a = RecordCodecBuilder.create($$0 -> a($$0).and(iq.a(jz.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, doe::new));
+public interface doe<P extends dod> {
+   doe<doj> a = a("matching_blocks", doj.a);
+   doe<doi> b = a("matching_block_tag", doi.e);
+   doe<dok> c = a("matching_fluids", dok.a);
+   doe<dog> d = a("has_sturdy_face", dog.a);
+   doe<don> e = a("solid", don.a);
+   doe<dom> f = a("replaceable", dom.a);
+   doe<doq> g = a("would_survive", doq.a);
+   doe<doh> h = a("inside_world_bounds", doh.a);
+   doe<doc> i = a("any_of", doc.a);
+   doe<dob> j = a("all_of", dob.a);
+   doe<dol> k = a("not", dol.a);
+   doe<dop> l = a("true", dop.e);
 
-   public doe(iw $$0, ig<cva> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   Codec<P> codec();
 
-   @Override
-   protected boolean a(dhi $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public dnz<?> a() {
-      return dnz.a;
+   private static <P extends dod> doe<P> a(String $$0, Codec<P> $$1) {
+      return is.a(kc.P, $$0, () -> $$1);
    }
 }

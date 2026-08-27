@@ -1,18 +1,13 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
+import org.joml.Matrix4f;
 
-public interface exy {
-   Codec<exy> b = exz.f.dispatch(exy::a, $$0 -> $$0.a().codec());
+public class exy extends exx {
+   public static final exy a = new exy();
 
-   exz a();
-
-   Either<exy.a, exy.b> b();
-
-   public interface a {
-      elz load(aph var1) throws IOException;
+   public exy() {
+      super(exv.b(new agm("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   public static record b(agi a) {
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eof $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

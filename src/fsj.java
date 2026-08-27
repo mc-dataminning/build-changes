@@ -1,5 +1,4 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -8,33 +7,19 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fsj implements geg {
-   private final dhj<cva, dhi> a;
-   private final List<fsl> b;
+public class fsj implements gel {
+   private final List<fsk> a;
 
-   public fsj(dhj<cva, dhi> $$0, List<fsl> $$1) {
+   public fsj(List<fsk> $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public List<fsl> a() {
-      return this.b;
-   }
-
-   public Set<fse> b() {
-      Set<fse> $$0 = Sets.newHashSet();
-
-      for (fsl $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   public List<fsk> a() {
+      return this.a;
    }
 
    @Override
@@ -42,59 +27,59 @@ public class fsj implements geg {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof fsj $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+         return $$0 instanceof fsj $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.a, this.b);
+      return this.a.hashCode();
    }
 
    @Override
-   public Collection<agi> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   public Collection<agm> f() {
+      return this.a().stream().map(fsk::a).collect(Collectors.toSet());
    }
 
    @Override
-   public void a(Function<agi, geg> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
+   public void a(Function<agm, gel> $$0) {
+      this.a().stream().map(fsk::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
    }
 
    @Nullable
    @Override
-   public gdv a(gdz $$0, Function<gdy, gbu> $$1, ged $$2, agi $$3) {
-      gee.a $$4 = new gee.a();
+   public gea a(gee $$0, Function<ged, gbz> $$1, gei $$2, agm $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         gem.a $$4 = new gem.a();
 
-      for (fsl $$5 : this.a()) {
-         gdv $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
+         for (fsk $$5 : this.a()) {
+            gea $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
          }
-      }
 
-      return $$4.a();
+         return $$4.a();
+      }
    }
 
    public static class a implements JsonDeserializer<fsj> {
-      private final frx.a a;
-
-      public a(frx.a $$0) {
-         this.a = $$0;
-      }
-
       public fsj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fsj(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
+         List<fsk> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
 
-      private List<fsl> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fsl> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fsl)$$0.deserialize($$3, fsl.class));
+            for (JsonElement $$5 : $$4) {
+               $$3.add((fsk)$$2.deserialize($$5, fsk.class));
+            }
+         } else {
+            $$3.add((fsk)$$2.deserialize($$0, fsk.class));
          }
 
-         return $$2;
+         return new fsj($$3);
       }
    }
 }

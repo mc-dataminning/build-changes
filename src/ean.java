@@ -1,64 +1,92 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class ean extends ebe {
-   public static final Codec<ean> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ebg.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bic.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ean::new)
-   );
-   private final ebe b;
-   private final bic c;
+public class ean extends ebj {
+   public static final Codec<ean> a = Codec.FLOAT.fieldOf("mossiness").xmap(ean::new, $$0 -> $$0.f).codec();
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dhn[] e = new dhn[]{cvh.jD.o(), cvh.jK.o()};
+   private final float f;
 
-   public ean(ebe $$0, bic $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ean(float $$0) {
+      this.f = $$0;
    }
 
+   @Nullable
    @Override
-   protected ebg<?> a() {
-      return ebg.o;
-   }
-
-   @Override
-   public final List<ebh.c> a(csp $$0, ht $$1, ht $$2, List<ebh.c> $$3, List<ebh.c> $$4, ebd $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            ats $$6 = ats.a($$0.D().B()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ebh.c $$12 = $$3.get($$11);
-                  ebh.c $$13 = $$4.get($$11);
-                  ebh.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
+   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
+      atw $$6 = $$5.b($$4.a());
+      dhn $$7 = $$4.b();
+      hx $$8 = $$4.a();
+      dhn $$9 = null;
+      if ($$7.a(cvh.eH) || $$7.a(cvh.b) || $$7.a(cvh.eK)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(ark.J)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(ark.K)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(ark.L)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(cvh.co)) {
+         $$9 = this.d($$6);
       }
+
+      return $$9 != null ? new ebm.c($$8, $$9, $$4.c()) : $$4;
+   }
+
+   @Nullable
+   private dhn a(atw $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dhn[] $$1 = new dhn[]{cvh.eJ.o(), a($$0, cvh.fj)};
+         dhn[] $$2 = new dhn[]{cvh.eI.o(), a($$0, cvh.ng)};
+         return this.a($$0, $$1, $$2);
+      }
+   }
+
+   @Nullable
+   private dhn a(atw $$0, dhn $$1) {
+      ib $$2 = $$1.c(dcy.b);
+      dim $$3 = $$1.c(dcy.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dhn[] $$4 = new dhn[]{cvh.ng.o().a(dcy.b, $$2).a(dcy.c, $$3), cvh.nu.o()};
+         return this.a($$0, e, $$4);
+      }
+   }
+
+   @Nullable
+   private dhn b(atw $$0) {
+      return $$0.i() < this.f ? cvh.nu.o() : null;
+   }
+
+   @Nullable
+   private dhn c(atw $$0) {
+      return $$0.i() < this.f ? cvh.nI.o() : null;
+   }
+
+   @Nullable
+   private dhn d(atw $$0) {
+      return $$0.i() < 0.15F ? cvh.pk.o() : null;
+   }
+
+   private static dhn a(atw $$0, cvf $$1) {
+      return $$1.o().a(dcy.b, ib.c.a.a($$0)).a(dcy.c, ac.a(dim.values(), $$0));
+   }
+
+   private dhn a(atw $$0, dhn[] $$1, dhn[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dhn a(atw $$0, dhn[] $$1) {
+      return $$1[$$0.a($$1.length)];
+   }
+
+   @Override
+   protected ebl<?> a() {
+      return ebl.k;
    }
 }

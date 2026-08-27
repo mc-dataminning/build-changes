@@ -1,15 +1,11 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ebu {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
-   }
+public interface ebu {
+   Codec<ebu> c = kc.q.q().dispatch(ebu::a, ebv::codec);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   @Nullable
+   sd a(atw var1, @Nullable sd var2);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   ebv<?> a();
 }

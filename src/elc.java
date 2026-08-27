@@ -1,3 +1,8 @@
-public interface elc<T> extends eli<T> {
-   boolean b(ht var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface elc {
 }

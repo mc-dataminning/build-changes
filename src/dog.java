@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dog implements dny {
-   public static final Codec<dog> a = RecordCodecBuilder.create($$0 -> $$0.group(dny.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dog::new));
-   private final dny e;
+public class dog implements dod {
+   private final ja e;
+   private final ib f;
+   public static final Codec<dog> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ja.v(16).optionalFieldOf("offset", ja.g).forGetter($$0x -> $$0x.e), ib.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dog::new)
+   );
 
-   public dog(dny $$0) {
+   public dog(ja $$0, ib $$1) {
       this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(csu $$0, ht $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(csz $$0, hx $$1) {
+      hx $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
    }
 
    @Override
-   public dnz<?> a() {
-      return dnz.k;
+   public doe<?> a() {
+      return doe.d;
    }
 }

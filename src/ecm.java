@@ -1,140 +1,154 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class ecm extends ecg<ecm.a> {
-   protected ecm(djs $$0) {
-      super(csj.a, $$0, new ecm.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class ecm implements ecp {
+   public static final int b = 1;
+   protected final csh c;
+   @Nullable
+   private final eco<?, ?> a;
+   @Nullable
+   private final eco<?, ?> d;
+
+   public ecm(djx $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new ecf($$0) : null;
+      this.d = $$2 ? new ecq($$0) : null;
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public void a(hx $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = iu.e($$0);
-      int $$3 = iu.c($$2);
-      ecm.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(iu.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         djk $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = ht.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   @Override
+   public boolean L_() {
+      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
+   }
 
-               $$2 = iu.a($$2, hx.b);
-            }
-         }
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
 
-         return $$6.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(iy $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(crm $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(crm $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public eck a(cso $$0) {
+      if ($$0 == cso.b) {
+         return (eck)(this.a == null ? eck.a.a : this.a);
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
+         return (eck)(this.d == null ? eck.a.a : this.d);
       }
    }
 
-   @Override
-   protected void h(long $$0) {
-      int $$1 = iu.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = iu.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = iu.f($$0);
-      int $$2 = iu.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iu.a($$3, hx.a)) {
-            $$2--;
+   public String a(cso $$0, iy $$1) {
+      if ($$0 == cso.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
 
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
+      return "n/a";
+   }
+
+   public ecl.b b(cso $$0, iy $$1) {
+      if ($$0 == cso.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
+
+      return ecl.b.a;
    }
 
-   @Override
-   protected djk g(long $$0) {
-      djk $$1 = (djk)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(iu.f($$0));
-         if ($$2 != this.d.b && iu.c($$0) < $$2) {
-            long $$3 = iu.a($$0, hx.b);
-
-            djk $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = iu.a($$3, hx.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new djk(15) : new djk();
+   public void a(cso $$0, iy $$1, @Nullable djp $$2) {
+      if ($$0 == cso.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
          }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
       }
    }
 
-   private static djk a(djk $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
+   public void b(crm $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
 
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new djk($$2);
+      if (this.d != null) {
+         this.d.b($$0, $$1);
       }
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   public int a(hx $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
    }
 
-   protected boolean l(long $$0) {
-      long $$1 = iu.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || iu.c($$0) >= $$2;
+   public boolean a(iy $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
    }
 
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
+   public int c() {
+      return this.c.al() + 2;
    }
 
-   protected int c() {
-      return this.d.b;
+   public int d() {
+      return this.c.am() - 1;
    }
 
-   protected static final class a extends ecd<ecm.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<djk> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public ecm.a a() {
-         return new ecm.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   public int e() {
+      return this.d() + this.c();
    }
 }

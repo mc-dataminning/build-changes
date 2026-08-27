@@ -1,53 +1,37 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class yk implements wo<yh> {
+   public static final int a = 0;
+   public static final int b = 2;
+   public static final int c = 3;
+   public static final int d = 4;
+   public static final int e = 5;
+   private final int f;
+   private final int g;
 
-public class yk implements wk<yd> {
-   private final ht a;
-   private final dff<?> b;
-   @Nullable
-   private final rz c;
-
-   public static yk a(dfd $$0, Function<dfd, rz> $$1) {
-      return new yk($$0.p(), $$0.u(), $$1.apply($$0));
+   public yk(bkv $$0, int $$1) {
+      this.f = $$0.aj();
+      this.g = $$1;
    }
 
-   public static yk a(dfd $$0) {
-      return a($$0, dfd::aw_);
-   }
-
-   private yk(ht $$0, dff<?> $$1, rz $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
-   }
-
-   public yk(tu $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(jy.l);
-      this.c = $$0.q();
+   public yk(ty $$0) {
+      this.f = $$0.n();
+      this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(jy.l, this.b);
-      $$0.a((sw)this.c);
+   public void a(ty $$0) {
+      $$0.c(this.f);
+      $$0.k(this.g);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.a;
+   public int a() {
+      return this.f;
    }
 
-   public dff<?> d() {
-      return this.b;
-   }
-
-   @Nullable
-   public rz e() {
-      return this.c;
+   public int d() {
+      return this.g;
    }
 }

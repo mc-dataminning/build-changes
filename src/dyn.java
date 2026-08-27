@@ -1,128 +1,59 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
-public class dyn extends dyo {
-   private static final Codec<Either<agi, ebh>> a = Codec.of(dyn::a, agi.a.map(Either::left));
-   public static final Codec<dyn> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dyn::new));
-   protected final Either<agi, ebh> c;
-   protected final ib<ebf> d;
+public class dyn extends dyt {
+   public static final Codec<dyn> a = RecordCodecBuilder.create($$0 -> $$0.group(dwq.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dyn::new));
+   private final ig<dwq> b;
+   private final sd c;
 
-   private static <T> DataResult<T> a(Either<agi, ebh> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<agi> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : agi.a.encode($$3.get(), $$1, $$2);
+   protected dyn(ig<dwq> $$0, dyv.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   protected static <E extends dyn> RecordCodecBuilder<E, ib<ebf>> b() {
-      return ebg.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
-
-   protected static <E extends dyn> RecordCodecBuilder<E, Either<agi, ebh>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected dyn(Either<agi, ebh> $$0, ib<ebf> $$1, dyq.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   private sd b() {
+      sd $$0 = new sd();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dgi.a.a.c());
+      return $$0;
    }
 
    @Override
-   public iw a(ebi $$0, dbm $$1) {
-      ebh $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
-
-   private ebh a(ebi $$0) {
-      return (ebh)this.c.map($$0::a, Function.identity());
-   }
-
-   public List<ebh.c> a(ebi $$0, ht $$1, dbm $$2, boolean $$3) {
-      ebh $$4 = this.a($$0);
-      List<ebh.c> $$5 = $$4.a($$1, new ebd().a($$2), cvc.pa, $$3);
-      List<ebh.c> $$6 = Lists.newArrayList();
-
-      for (ebh.c $$7 : $$5) {
-         rz $$8 = $$7.c();
-         if ($$8 != null) {
-            dis $$9 = dis.valueOf($$8.l("mode"));
-            if ($$9 == dis.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
+   public ja a(ebn $$0, dbr $$1) {
+      return ja.g;
    }
 
    @Override
-   public List<ebh.c> a(ebi $$0, ht $$1, dbm $$2, ats $$3) {
-      ebh $$4 = this.a($$0);
-      ObjectArrayList<ebh.c> $$5 = $$4.a($$1, new ebd().a($$2), cvc.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
-   }
-
-   @VisibleForTesting
-   static void a(List<ebh.c> $$0) {
-      $$0.sort(Comparator.<ebh.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   public List<ebm.c> a(ebn $$0, hx $$1, dbr $$2, atw $$3) {
+      List<ebm.c> $$4 = Lists.newArrayList();
+      $$4.add(new ebm.c($$1, cvh.pb.o().a(czg.b, id.a(ib.a, ib.d)), this.c));
+      return $$4;
    }
 
    @Override
-   public dwz a(ebi $$0, ht $$1, dbm $$2) {
-      ebh $$3 = this.a($$0);
-      return $$3.b(new ebd().a($$2), $$1);
+   public dxe a(ebn $$0, hx $$1, dbr $$2) {
+      ja $$3 = this.a($$0, $$2);
+      return new dxe($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
    @Override
-   public boolean a(ebi $$0, csu $$1, css $$2, djf $$3, ht $$4, ht $$5, dbm $$6, dwz $$7, ats $$8, boolean $$9) {
-      ebh $$10 = this.a($$0);
-      ebd $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (ebh.c $$13 : ebh.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected ebd a(dbm $$0, dwz $$1, boolean $$2) {
-      ebd $$3 = new ebd();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(eaj.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(eap.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
+   public boolean a(ebn $$0, csz $$1, csx $$2, djk $$3, hx $$4, hx $$5, dbr $$6, dxe $$7, atw $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
    @Override
-   public dyp<?> a() {
-      return dyp.a;
+   public dyu<?> a() {
+      return dyu.c;
    }
 
    @Override
    public String toString() {
-      return "Single[" + this.c + "]";
+      return "Feature[" + this.b + "]";
    }
 }

@@ -1,29 +1,15 @@
-public enum dlm {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+public interface dlm<T> {
+   void g(T var1);
 
-   private final boolean d;
-   private final boolean e;
+   void f(T var1);
 
-   private dlm(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   void e(T var1);
 
-   public boolean a() {
-      return this.e;
-   }
+   void d(T var1);
 
-   public boolean b() {
-      return this.d;
-   }
+   void c(T var1);
 
-   public static dlm a(alx $$0) {
-      if ($$0.a(alx.d)) {
-         return c;
-      } else {
-         return $$0.a(alx.b) ? b : a;
-      }
-   }
+   void b(T var1);
+
+   void a(T var1);
 }

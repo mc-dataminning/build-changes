@@ -1,32 +1,30 @@
-public class btq extends bsl {
-   private final ccb b;
-   private int c;
+public class btq extends bsg {
+   private final blu a;
 
-   public btq(ccb $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public btq(blu $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.aC() && !this.a.dN().b_(this.a.dn()).a(arp.a);
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
-   }
+      hx $$0 = null;
 
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
+      for (hx $$2 : hx.b(
+         atq.a(this.a.ds() - 2.0), atq.a(this.a.du() - 2.0), atq.a(this.a.dy() - 2.0), atq.a(this.a.ds() + 2.0), this.a.dt(), atq.a(this.a.dy() + 2.0)
+      )) {
+         if (this.a.dN().b_($$2).a(arp.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

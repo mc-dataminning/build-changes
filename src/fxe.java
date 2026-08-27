@@ -1,18 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fxe extends fxi<byy, fin<byy>> {
+   private static final agm a = new agm("textures/entity/llama/creamy.png");
+   private static final agm i = new agm("textures/entity/llama/white.png");
+   private static final agm j = new agm("textures/entity/llama/brown.png");
+   private static final agm k = new agm("textures/entity/llama/gray.png");
 
-public class fxe extends fxd<bxe, fhi<bxe>> {
-   private static final Map<bxe.a, agi> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(bxe.a.b, new agi("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(bxe.a.a, new agi("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public fxe(fvx.a $$0) {
-      super($$0, new fhi<>($$0.a(fkn.aw)), 0.7F);
-      this.a(new gaa<>(this, $$0.c()));
+   public fxe(fwc.a $$0, fkr $$1) {
+      super($$0, new fin<>($$0.a($$1)), 0.7F);
+      this.a(new gae(this, $$0.f()));
    }
 
-   public agi a(bxe $$0) {
-      return a.get($$0.w());
+   public agm a(byy $$0) {
+      return switch ($$0.gr()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

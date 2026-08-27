@@ -1,40 +1,31 @@
-public class adr implements wk<acl> {
-   private final cia a;
+public class adr implements wo<acp> {
+   private static final int a = 2;
    private final boolean b;
-   private final boolean c;
 
-   public adr(cia $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public adr(cdw $$0) {
+      this.b = $$0.b;
    }
 
-   public adr(tu $$0) {
-      this.a = $$0.b(cia.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public adr(ty $$0) {
+      byte $$1 = $$0.readByte();
+      this.b = ($$1 & 2) != 0;
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(ty $$0) {
+      byte $$1 = 0;
+      if (this.b) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public cia a() {
-      return this.a;
-   }
-
-   public boolean d() {
+   public boolean a() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

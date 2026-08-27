@@ -26,7 +26,7 @@ public class ex implements ArgumentType<ex.b> {
       return $$3.a($$1, $$1x -> dy.b(((du)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ur.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public ex(boolean $$0) {
@@ -42,7 +42,7 @@ public class ex implements ArgumentType<ex.b> {
    }
 
    public static Collection<String> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((du)$$0.getSource()).m().aH()::e);
+      return a($$0, $$1, ((du)$$0.getSource()).l().aH()::e);
    }
 
    public static Collection<String> a(CommandContext<du> $$0, String $$1, Supplier<Collection<String>> $$2) throws CommandSyntaxException {
@@ -99,10 +99,10 @@ public class ex implements ArgumentType<ex.b> {
       return b;
    }
 
-   public static class a implements hf<ex, ex.a.a> {
+   public static class a implements hj<ex, ex.a.a> {
       private static final byte a = 1;
 
-      public void a(ex.a.a $$0, tu $$1) {
+      public void a(ex.a.a $$0, ty $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -111,7 +111,7 @@ public class ex implements ArgumentType<ex.b> {
          $$1.k($$2);
       }
 
-      public ex.a.a a(tu $$0) {
+      public ex.a.a a(ty $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new ex.a.a($$2);
@@ -125,7 +125,7 @@ public class ex implements ArgumentType<ex.b> {
          return new ex.a.a($$0.d);
       }
 
-      public final class a implements hf.a<ex> {
+      public final class a implements hj.a<ex> {
          final boolean b;
 
          a(boolean $$1) {
@@ -137,7 +137,7 @@ public class ex implements ArgumentType<ex.b> {
          }
 
          @Override
-         public hf<ex, ?> a() {
+         public hj<ex, ?> a() {
             return a.this;
          }
       }
@@ -157,13 +157,13 @@ public class ex implements ArgumentType<ex.b> {
 
       @Override
       public Collection<String> getNames(du $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
-         List<? extends bkq> $$2 = this.a.b($$0);
+         List<? extends bkv> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eg.d.create();
          } else {
             List<String> $$3 = Lists.newArrayList();
 
-            for (bkq $$4 : $$2) {
+            for (bkv $$4 : $$2) {
                $$3.add($$4.cy());
             }
 

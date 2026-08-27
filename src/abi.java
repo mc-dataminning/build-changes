@@ -1,40 +1,47 @@
-public class abi implements wk<yd> {
-   private final float a;
-   private final int b;
-   private final int c;
+import java.util.ArrayList;
+import java.util.List;
 
-   public abi(float $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record abi(int b, List<afv.b<?>> c) implements wo<yh> {
+   public static final int a = 255;
+
+   public abi(ty $$0) {
+      this($$0.n(), b($$0));
    }
 
-   public abi(tu $$0) {
-      this.a = $$0.readFloat();
-      this.c = $$0.n();
-      this.b = $$0.n();
+   private static void a(List<afv.b<?>> $$0, ty $$1) {
+      for (afv.b<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
+   }
+
+   private static List<afv.b<?>> b(ty $$0) {
+      List<afv.b<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(afv.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.c(this.c);
+   public void a(ty $$0) {
       $$0.c(this.b);
+      a(this.c, $$0);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.a;
-   }
-
-   public int d() {
+   public int a() {
       return this.b;
    }
 
-   public int e() {
+   public List<afv.b<?>> d() {
       return this.c;
    }
 }

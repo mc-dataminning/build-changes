@@ -1,52 +1,106 @@
-public class it {
-   protected final float a;
-   protected final float b;
-   protected final float c;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-   public it(float $$0, float $$1, float $$2) {
-      this.a = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
-      this.b = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
-      this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
-   }
+public interface it extends ii.b {
+   Logger a = LogUtils.getLogger();
+   it.b b = new it.c(Map.of()).c();
 
-   public it(sf $$0) {
-      this($$0.i(0), $$0.i(1), $$0.i(2));
-   }
-
-   public sf a() {
-      sf $$0 = new sf();
-      $$0.add(sc.a(this.a));
-      $$0.add(sc.a(this.b));
-      $$0.add(sc.a(this.c));
-      return $$0;
-   }
+   <E> Optional<is<E>> c(agl<? extends is<? extends E>> var1);
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof it $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   default <T> Optional<ii.c<T>> a(agl<? extends is<? extends T>> $$0) {
+      return this.c($$0).map(is::p);
    }
 
-   public float b() {
-      return this.a;
+   default <E> is<E> d(agl<? extends is<? extends E>> $$0) {
+      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
-   public float c() {
-      return this.b;
+   Stream<it.d<?>> b();
+
+   static it.b a(final is<? extends is<?>> $$0) {
+      return new it.b() {
+         @Override
+         public <T> Optional<is<T>> c(agl<? extends is<? extends T>> $$0x) {
+            is<is<T>> $$1 = (is<is<T>>)$$0;
+            return $$1.d((agl<is<T>>)$$0);
+         }
+
+         @Override
+         public Stream<it.d<?>> b() {
+            return $$0.g().stream().map(it.d::a);
+         }
+
+         @Override
+         public it.b c() {
+            return this;
+         }
+      };
    }
 
-   public float d() {
-      return this.c;
+   default it.b c() {
+      class a extends it.c implements it.b {
+         protected a(Stream<it.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.b().map(it.d::c));
    }
 
-   public float e() {
-      return atm.g(this.a);
+   default Lifecycle d() {
+      return this.b().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
    }
 
-   public float f() {
-      return atm.g(this.b);
+   public interface b extends it {
    }
 
-   public float g() {
-      return atm.g(this.c);
+   public static class c implements it {
+      private final Map<? extends agl<? extends is<?>>, ? extends is<?>> c;
+
+      public c(List<? extends is<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(is::c, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends agl<? extends is<?>>, ? extends is<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<it.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(it.d::a, it.d::b));
+      }
+
+      @Override
+      public <E> Optional<is<E>> c(agl<? extends is<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
+      }
+
+      @Override
+      public Stream<it.d<?>> b() {
+         return this.c.entrySet().stream().map(it.d::a);
+      }
+   }
+
+   public static record d<T>(agl<? extends is<T>> a, is<T> b) {
+
+      private static <T, R extends is<? extends T>> it.d<T> a(Entry<? extends agl<? extends is<?>>, R> $$0) {
+         return a((agl<? extends is<?>>)$$0.getKey(), $$0.getValue());
+      }
+
+      private static <T> it.d<T> a(agl<? extends is<?>> $$0, is<?> $$1) {
+         return new it.d<>((agl<? extends is<T>>)$$0, (is<T>)$$1);
+      }
+
+      private it.d<T> c() {
+         return new it.d<>(this.a, this.b.l());
+      }
    }
 }

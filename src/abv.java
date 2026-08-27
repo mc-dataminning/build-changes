@@ -1,18 +1,24 @@
-public record abv() implements wk<yd> {
-   public abv(tu $$0) {
-      this();
+public class abv implements wo<yh> {
+   private final uv a;
+
+   public abv(uv $$0) {
+      this.a = $$0;
+   }
+
+   public abv(ty $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public tt c() {
-      return tt.e;
+   public uv a() {
+      return this.a;
    }
 }

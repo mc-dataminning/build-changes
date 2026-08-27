@@ -1,224 +1,164 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eqk extends ghr {
-   private static final agi a = new agi("widget/slot_frame");
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 80;
-   private final fau v;
+public class eqk extends eve {
+   private static final agm t = new agm("widget/slot_frame");
+   private static final agm u = new agm("icon/checkmark");
+   public static final agm a = new agm("textures/gui/realms/empty_frame.png");
+   public static final agm b = new agm("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final agm c = new agm("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final agm d = new agm("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final uv v = uv.c("mco.configure.world.slot.tooltip.active");
+   private static final uv w = uv.c("mco.configure.world.slot.tooltip.minigame");
+   private static final uv x = uv.c("mco.configure.world.slot.tooltip");
+   static final uv y = uv.c("mco.worldSlot.minigame");
+   private final int z;
    @Nullable
-   private epd w;
-   private final long x;
-   private final ur[] y = new ur[]{ur.c("mco.brokenworld.message.line1"), ur.c("mco.brokenworld.message.line2")};
-   private int z;
-   private final List<Integer> A = Lists.newArrayList();
-   private int B;
+   private eqk.b A;
+   @Nullable
+   private ewp B;
 
-   public eqk(fau $$0, long $$1, boolean $$2) {
-      super($$2 ? ur.c("mco.brokenworld.minigame.title") : ur.c("mco.brokenworld.title"));
-      this.v = $$0;
-      this.x = $$1;
+   public eqk(int $$0, int $$1, int $$2, int $$3, int $$4, eve.c $$5) {
+      super($$0, $$1, $$2, $$3, uu.a, $$5, p);
+      this.z = $$4;
    }
 
-   @Override
-   public void aP_() {
-      this.z = this.g / 2 - 150;
-      this.d(euz.a(uq.k, $$0 -> this.aF_()).a((this.g - 150) / 2, h(13) - 5, 150, 20).a());
-      if (this.w == null) {
-         this.a(this.x);
+   @Nullable
+   public eqk.b a() {
+      return this.A;
+   }
+
+   public void a(epi $$0) {
+      this.A = new eqk.b($$0, this.z);
+      this.a(this.A, $$0.o);
+   }
+
+   private void a(eqk.b $$0, String $$1) {
+      uv $$2 = switch ($$0.c) {
+         case c -> v;
+         case b -> $$0.b ? w : x;
+         default -> null;
+      };
+      if ($$2 == null) {
+         this.b(uv.b($$0.e));
       } else {
-         this.C();
-      }
-   }
-
-   @Override
-   public ur h() {
-      return uu.a(Stream.concat(Stream.of(this.e), Stream.of(this.y)).collect(Collectors.toList()), uq.u);
-   }
-
-   private void C() {
-      for (Entry<Integer, epk> $$0 : this.w.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.w.n || this.w.m == epd.d.b;
-         euz $$3;
-         if ($$2) {
-            $$3 = euz.a(ur.c("mco.brokenworld.play"), $$1x -> this.f.a(new eqt(this.v, new esk(this.w.a, $$1, this::e)))).a(this.a($$1), h(8), 80, 20).a();
-            $$3.i = !this.w.i.get($$1).n;
+         this.B = ewp.a($$2);
+         if ($$0.a) {
+            this.b($$2);
          } else {
-            $$3 = euz.a(ur.c("mco.brokenworld.download"), $$1x -> {
-               ur $$2x = ur.c("mco.configure.world.restore.download.question.line1");
-               ur $$3x = ur.c("mco.configure.world.restore.download.question.line2");
-               this.f.a(new eqs($$1xx -> {
-                  if ($$1xx) {
-                     this.b($$1);
-                  } else {
-                     this.f.a(this);
-                  }
-               }, eqs.a.b, $$2x, $$3x, true));
-            }).a(this.a($$1), h(8), 80, 20).a();
-         }
-
-         if (this.A.contains($$1)) {
-            $$3.i = false;
-            $$3.b(ur.c("mco.brokenworld.downloaded"));
-         }
-
-         this.d($$3);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.B++;
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-
-      for (int $$4 = 0; $$4 < this.y.length; $$4++) {
-         $$0.a(this.i, this.y[$$4], this.g / 2, h(-1) + 3 + $$4 * 12, -6250336);
-      }
-
-      if (this.w != null) {
-         for (Entry<Integer, epk> $$5 : this.w.i.entrySet()) {
-            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  h(1) + 5,
-                  $$1,
-                  $$2,
-                  this.w.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().l,
-                  $$5.getValue().m,
-                  $$5.getValue().n
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  h(1) + 5,
-                  $$1,
-                  $$2,
-                  this.w.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().n
-               );
+            vj $$3 = $$2.f().b(uu.a()).b(uv.b($$0.e));
+            if ($$0.b) {
+               $$3 = $$3.b(uu.u).f($$1);
             }
+
+            this.b($$3);
          }
       }
    }
 
-   private int a(int $$0) {
-      return this.z + ($$0 - 1) * 110;
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         eom $$1 = eom.a();
-
-         try {
-            this.w = $$1.a($$0);
-            this.C();
-         } catch (epz var5) {
-            b.error("Couldn't get own world", var5);
-            this.f.a(new eqq(var5, this.v));
-         }
-      }).start();
-   }
-
-   public void e() {
-      new Thread(() -> {
-         eom $$0 = eom.a();
-         if (this.w.e == epd.c.a) {
-            this.f.execute(() -> this.f.a(new eqt(this, new ese(this.w, this, true, this.f))));
-         } else {
-            try {
-               epd $$1 = $$0.a(this.x);
-               this.f.execute(() -> eoh.a($$1, this));
-            } catch (epz var3) {
-               b.error("Couldn't get own world", var3);
-               this.f.execute(() -> this.f.a(this.v));
-            }
-         }
-      }).start();
-   }
-
-   private void b(int $$0) {
-      eom $$1 = eom.a();
-
-      try {
-         ept $$2 = $$1.b(this.w.a, $$0);
-         eqp $$3 = new eqp(this, $$2, this.w.a($$0), $$1x -> {
-            if ($$1x) {
-               this.A.add($$0);
-               this.n();
-               this.C();
-            } else {
-               this.f.a(this);
-            }
-         });
-         this.f.a($$3);
-      } catch (epz var5) {
-         b.error("Couldn't download world data", var5);
-         this.f.a(new eqq(var5, this));
-      }
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.v);
-   }
-
-   private boolean D() {
-      return this.w != null && this.w.m == epd.d.b;
-   }
-
-   private void a(euo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      agi $$11;
-      if ($$10) {
-         $$11 = eqf.a;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = ers.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = eqf.b;
-      } else if ($$7 == 2) {
-         $$11 = eqf.c;
-      } else if ($$7 == 3) {
-         $$11 = eqf.d;
+   static eqk.a a(epi $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != epi.c.c) {
+         return eqk.a.c;
       } else {
-         $$11 = ers.a(String.valueOf(this.w.p), this.w.q);
+         return $$1 || $$2 && $$0.j ? eqk.a.a : eqk.a.b;
       }
+   }
 
-      if (!$$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      } else if ($$5) {
-         float $$17 = 0.9F + 0.1F * atm.b((float)this.B * 0.2F);
-         $$0.a($$17, $$17, $$17, 1.0F);
-      }
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      if (this.A != null) {
+         int $$4 = this.p();
+         int $$5 = this.r();
+         boolean $$6 = this.n();
+         if (this.B != null) {
+            this.B.a(this.m(), this.aK_(), this.s());
+         }
 
-      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-      if ($$5) {
+         agm $$7;
+         if (this.A.b) {
+            $$7 = erx.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.A.a) {
+            $$7 = a;
+         } else if (this.A.i != null && this.A.h != -1L) {
+            $$7 = erx.a(String.valueOf(this.A.h), this.A.i);
+         } else if (this.z == 1) {
+            $$7 = b;
+         } else if (this.z == 2) {
+            $$7 = c;
+         } else if (this.z == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         if (this.A.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.A.c != eqk.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.A.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(t, $$4, $$5, 80, 80);
          $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      }
+         if (this.A.d) {
+            RenderSystem.enableBlend();
+            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
 
-      $$0.a(a, $$1, $$2, 80, 80);
-      $$0.a(this.i, $$6, $$1 + 40, $$2 + 66, -1);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         eur $$15 = eti.N().h;
+         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, eom.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final epi.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final eqk.a c;
+
+      public b(epi $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == epi.d.b;
+            this.e = eqk.y.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = epi.a.a;
+         } else {
+            epp $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != epi.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = eqk.a($$0, this.d, this.b);
+      }
    }
 }

@@ -1,19 +1,19 @@
-import java.util.List;
+public record xq(int b, edm c, float d) implements xh {
+   public static final agm a = new agm("debug/path");
 
-public record xq(List<ht> b) implements xd {
-   public static final agi a = new agi("debug/raids");
-
-   public xq(tu $$0) {
-      this($$0.a(tu::e));
+   public xq(ty $$0) {
+      this($$0.readInt(), edm.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.b, tu::a);
+   public void a(ty $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public agi a() {
+   public agm a() {
       return a;
    }
 }

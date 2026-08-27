@@ -1,46 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class cjy extends cle implements cmi {
-   private static final Map<cjx, cjy> a = Maps.newEnumMap(cjx.class);
-   private final cjx b;
+public class cjy extends cnc implements cni {
+   private final arz<cvf> a;
+   protected final float b;
+   private final float c;
+   private final Multimap<bmm, bmp> d;
 
-   public cjy(cjx $$0, cle.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   protected cjy(float $$0, float $$1, cnb $$2, arz<cvf> $$3, clj.a $$4) {
+      super($$2, $$4);
+      this.a = $$3;
+      this.b = $$2.b();
+      this.c = $$0 + $$2.c();
+      Builder<bmm, bmp> $$5 = ImmutableMultimap.builder();
+      $$5.put(bmr.c, new bmp(m, "Tool modifier", (double)this.c, bmp.a.a));
+      $$5.put(bmr.e, new bmp(n, "Tool modifier", (double)$$1, bmp.a.a));
+      this.d = $$5.build();
    }
 
    @Override
-   public bix a(clj $$0, cdu $$1, blg $$2, biw $$3) {
-      if ($$2 instanceof bxn $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
-         $$4.dN().a($$1, $$4, aqr.gZ, aqs.h, 1.0F, 1.0F);
-         if (!$$1.dN().B) {
-            $$4.b(this.b);
-            $$0.h(1);
-         }
+   public float a(clo $$0, dhn $$1) {
+      return $$1.a(this.a) ? this.b : 1.0F;
+   }
 
-         return bix.a($$1.dN().B);
+   @Override
+   public boolean a(clo $$0, bll $$1, bll $$2) {
+      $$0.a(2, $$2, $$0x -> $$0x.d(bla.a));
+      return true;
+   }
+
+   @Override
+   public boolean a(clo $$0, csf $$1, dhn $$2, hx $$3, bll $$4) {
+      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bla.a));
       }
 
-      return bix.d;
-   }
-
-   public cjx d() {
-      return this.b;
-   }
-
-   public static cjy a(cjx $$0) {
-      return a.get($$0);
+      return true;
    }
 
    @Override
-   public boolean a(csa $$0, dgm $$1, boolean $$2, cdu $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
-         $$0.a(null, $$1.p(), aqr.gZ, aqs.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   public Multimap<bmm, bmp> a(bla $$0) {
+      return $$0 == bla.a ? this.d : super.a($$0);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a_(dhn $$0) {
+      int $$1 = this.i().d();
+      if ($$1 < 3 && $$0.a(ark.bE)) {
          return false;
+      } else if ($$1 < 2 && $$0.a(ark.bF)) {
+         return false;
+      } else {
+         return $$1 < 1 && $$0.a(ark.bG) ? false : $$0.a(this.a);
       }
    }
 }

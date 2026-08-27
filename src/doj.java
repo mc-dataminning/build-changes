@@ -1,21 +1,22 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class doj implements dny {
-   protected final iw f;
+class doj extends doo {
+   private final ik<cvf> e;
+   public static final Codec<doj> a = RecordCodecBuilder.create($$0 -> a($$0).and(iu.a(kd.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, doj::new));
 
-   protected static <P extends doj> P1<Mu<P>, iw> a(Instance<P> $$0) {
-      return $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.f));
+   public doj(ja $$0, ik<cvf> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   protected doj(iw $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dhn $$0) {
+      return $$0.a(this.e);
    }
 
-   public final boolean a(csu $$0, ht $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public doe<?> a() {
+      return doe.a;
    }
-
-   protected abstract boolean a(dhi var1);
 }

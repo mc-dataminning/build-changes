@@ -1,24 +1,16 @@
-public class aes implements wk<aeo> {
-   private final int a;
-
-   public aes(int $$0) {
-      this.a = $$0;
-   }
-
-   public aes(tu $$0) {
-      this.a = $$0.n();
-   }
-
+public interface aes extends tt {
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
+   default tx b() {
+      return tx.d;
    }
 
-   public void a(aeo $$0) {
-      $$0.a(this);
-   }
+   void a(aev var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(aeu var1);
+
+   void a(aex var1);
+
+   void a(aew var1);
+
+   void a(aet var1);
 }

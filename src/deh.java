@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class deh extends dct implements deb {
-   public static final MapCodec<deh> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(deb.a.e.fieldOf("weathering_state").forGetter(cwb::c), dhi.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, deh::new)
+public class deh extends cwt implements deg {
+   public static final MapCodec<deh> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(deg.a.e.fieldOf("weathering_state").forGetter(deh::g), u()).apply($$0, deh::new)
    );
-   private final deb.a J;
+   private final deg.a e;
 
    @Override
-   public MapCodec<deh> a() {
-      return I;
+   protected MapCodec<deh> a() {
+      return d;
    }
 
-   public deh(deb.a $$0, dhi $$1, dhh.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   public deh(deg.a $$0, dhm.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean e_(dhi $$0) {
-      return deb.c($$0.b()).isPresent();
+   public boolean e_(dhn $$0) {
+      return deg.c($$0.b()).isPresent();
    }
 
-   public deb.a g() {
-      return this.J;
+   public deg.a g() {
+      return this.e;
    }
 }

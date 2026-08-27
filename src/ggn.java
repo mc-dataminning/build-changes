@@ -1,3 +1,7 @@
-public interface ggn {
-   void log(ggl var1);
+public interface ggn<T> {
+   int e();
+
+   T b(atw var1);
+
+   void a(ggi var1);
 }

@@ -1,147 +1,54 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class euq implements AutoCloseable {
-   private static final agi a = new agi("textures/map/map_icons.png");
-   static final frc b = frc.s(a);
-   private static final int c = 128;
-   private static final int d = 128;
-   final gbv e;
-   private final Int2ObjectMap<euq.a> f = new Int2ObjectOpenHashMap();
-
-   public euq(gbv $$0) {
-      this.e = $$0;
+public interface euq {
+   static euq a(ewz $$0) {
+      return new euq.a($$0);
    }
 
-   public void a(int $$0, eec $$1) {
-      this.b($$0, $$1).a();
+   @Nullable
+   static euq a(ewy $$0, @Nullable euq $$1) {
+      return $$1 == null ? null : new euq.b($$0, $$1);
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, eec $$3, boolean $$4, int $$5) {
-      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
+   static euq a(ewz $$0, ewy... $$1) {
+      euq $$2 = a($$0);
+
+      for (ewy $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   private euq.a b(int $$0, eec $$1) {
-      return (euq.a)this.f.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new euq.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
-         }
-      });
-   }
+   ewz a();
 
-   public void a() {
-      ObjectIterator var1 = this.f.values().iterator();
+   void a(boolean var1);
 
-      while (var1.hasNext()) {
-         euq.a $$0 = (euq.a)var1.next();
-         $$0.close();
-      }
-
-      this.f.clear();
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   class a implements AutoCloseable {
-      private eec b;
-      private final gbh c;
-      private final frc d;
-      private boolean e = true;
-
-      a(int $$0, eec $$1) {
-         this.b = $$1;
-         this.c = new gbh(128, 128, true);
-         agi $$2 = euq.this.e.a("map/" + $$0, this.c);
-         this.d = frc.s($$2);
-      }
-
-      void a(eec $$0) {
-         boolean $$1 = this.b != $$0;
-         this.b = $$0;
-         this.e |= $$1;
-      }
-
-      public void a() {
-         this.e = true;
-      }
-
-      private void b() {
-         for (int $$0 = 0; $$0 < 128; $$0++) {
-            for (int $$1 = 0; $$1 < 128; $$1++) {
-               int $$2 = $$1 + $$0 * 128;
-               this.c.e().a($$1, $$0, ecw.b(this.b.g[$$2]));
-            }
-         }
-
-         this.c.d();
-      }
-
-      void a(enw $$0, fqu $$1, boolean $$2, int $$3) {
-         if (this.e) {
-            this.b();
-            this.e = false;
-         }
-
-         int $$4 = 0;
-         int $$5 = 0;
-         float $$6 = 0.0F;
-         Matrix4f $$7 = $$0.c().a();
-         eoa $$8 = $$1.getBuffer(this.d);
-         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
-         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
-         int $$9 = 0;
-
-         for (edz $$10 : this.b.g()) {
-            if (!$$2 || $$10.b()) {
-               $$0.a();
-               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
-               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
-               $$0.b(4.0F, 4.0F, 3.0F);
-               $$0.a(-0.125F, 0.125F, 0.0F);
-               byte $$11 = $$10.a();
-               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
-               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
-               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
-               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
-               Matrix4f $$16 = $$0.c().a();
-               float $$17 = -0.001F;
-               eoa $$18 = $$1.getBuffer(euq.b);
-               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
-               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
-               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
-               $$0.b();
-               if ($$10.g() != null) {
-                  eum $$19 = etd.N().h;
-                  ur $$20 = $$10.g();
-                  float $$21 = (float)$$19.a($$20);
-                  float $$22 = atm.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
-                  $$0.a();
-                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
-                  $$0.b($$22, $$22, 1.0F);
-                  $$0.a(0.0F, 0.0F, -0.1F);
-                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, eum.a.a, Integer.MIN_VALUE, $$3);
-                  $$0.b();
-               }
-
-               $$9++;
-            }
-         }
-      }
-
+   public static record a(ewz a) implements euq {
       @Override
-      public void close() {
-         this.c.close();
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(ewy a, euq b) implements euq {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public ewy b() {
+         return this.a;
+      }
+
+      public euq c() {
+         return this.b;
       }
    }
 }

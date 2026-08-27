@@ -1,12 +1,13 @@
-public class fyk extends fuy<cec> {
-   public static final agi a = new agi("textures/entity/projectiles/arrow.png");
-   public static final agi f = new agi("textures/entity/projectiles/tipped_arrow.png");
+public class fyk extends fyd {
+   private static final agm a = new agm("textures/entity/skeleton/stray.png");
 
-   public fyk(fvx.a $$0) {
-      super($$0);
+   public fyk(fwc.a $$0) {
+      super($$0, fks.bt, fks.bu, fks.bv);
+      this.a(new gas<>(this, $$0.f()));
    }
 
-   public agi a(cec $$0) {
-      return $$0.H() > 0 ? f : a;
+   @Override
+   public agm a(caw $$0) {
+      return a;
    }
 }

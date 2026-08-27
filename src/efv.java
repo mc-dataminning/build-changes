@@ -1,60 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class efv extends efs {
-   public static final Codec<efv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arv.a(jz.E).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, efv::new)
-   );
-   private final arv<cle> j;
-   private final boolean k;
+public abstract class efv implements efn {
+   protected final List<eib> e;
+   private final Predicate<efc> a;
 
-   private efv(arv<cle> $$0, boolean $$1, int $$2, int $$3, List<ehw> $$4, List<egk> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   protected efv(List<eib> $$0) {
+      this.e = $$0;
+      this.a = eid.a($$0);
    }
 
-   @Override
-   public efr a() {
-      return efo.f;
+   protected static <T extends efv> P1<Mu<T>, List<eib>> a(Instance<T> $$0) {
+      return $$0.group(asy.a(eid.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(Consumer<clj> $$0, eex $$1) {
-      jy.i.c(this.j).forEach($$1x -> $$0.accept(new clj($$1x)));
-   }
-
-   private boolean a(eex $$0, Consumer<efp> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ib<cle> $$2 : jy.i.c(this.j)) {
-            $$1.accept(new efs.c() {
-               @Override
-               public void a(Consumer<clj> $$0, eex $$1) {
-                  $$0.accept(new clj($$2));
-               }
-            });
-         }
-
-         return true;
+   public void a(efl $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public boolean expand(eex $$0, Consumer<efp> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   protected final boolean a(efc $$0) {
+      return this.a.test($$0);
    }
 
-   public static efs.a<?> a(arv<cle> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efv($$0, false, $$1, $$2, $$3, $$4));
-   }
+   public abstract efw a();
 
-   public static efs.a<?> b(arv<cle> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new efv($$0, true, $$1, $$2, $$3, $$4));
+   public abstract static class a<T extends efv.a<T>> implements ehu<T> {
+      private final Builder<eib> a = ImmutableList.builder();
+
+      protected abstract T aE_();
+
+      public T a(eib.a $$0) {
+         this.a.add($$0.build());
+         return this.aE_();
+      }
+
+      public final T e() {
+         return this.aE_();
+      }
+
+      protected List<eib> f() {
+         return this.a.build();
+      }
+
+      public efm.a a(efv.a<?> $$0) {
+         return new efm.a(this, $$0);
+      }
+
+      public efr.a b(efv.a<?> $$0) {
+         return new efr.a(this, $$0);
+      }
+
+      public efz.a c(efv.a<?> $$0) {
+         return new efz.a(this, $$0);
+      }
+
+      public abstract efv b();
    }
 }

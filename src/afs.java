@@ -1,8 +1,39 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class afs<T> {
+   private final int a;
+   private final aft<T> b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afs {
+   public afs(int $$0, aft<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public aft<T> b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         afs<?> $$1 = (afs<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
+   }
 }

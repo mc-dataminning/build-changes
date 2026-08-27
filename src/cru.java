@@ -1,31 +1,31 @@
-public class cru {
-   private static int[] a = new int[65536];
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public enum cru implements crl {
+   a;
+
+   @Nullable
+   @Override
+   public dfi c_(hx $$0) {
+      return null;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   @Override
+   public dhn a_(hx $$0) {
+      return cvh.a.o();
    }
 
-   public static int a() {
-      return 6396257;
+   @Override
+   public ecx b_(hx $$0) {
+      return ecy.a.g();
    }
 
-   public static int b() {
-      return 8431445;
+   @Override
+   public int J_() {
+      return 0;
    }
 
-   public static int c() {
-      return 4764952;
-   }
-
-   public static int d() {
-      return 9619016;
+   @Override
+   public int K_() {
+      return 0;
    }
 }

@@ -9,7 +9,7 @@ public class ca extends cw<ca.a> {
       return new ca.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(amf $$0, clj $$1, int $$2) {
+   public void a(amj $$0, clo $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -33,7 +33,7 @@ public class ca extends cw<ca.a> {
          return al.t.a(new ca.a($$0, $$1, $$2, cl.d.c));
       }
 
-      public boolean a(clj $$0, int $$1) {
+      public boolean a(clo $$0, int $$1) {
          if (this.a.isPresent() && !this.a.get().a($$0)) {
             return false;
          } else {

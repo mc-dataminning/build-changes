@@ -1,55 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvy extends cyo implements cvd, cvw {
-   public static final MapCodec<cvy> c = b(cvy::new);
+public class cvy extends cvf {
+   public static final MapCodec<cvy> a = b(cvy::new);
+   private static final uv b = uv.c("container.cartography_table");
 
    @Override
    public MapCodec<cvy> a() {
-      return c;
+      return a;
    }
 
-   public cvy(dhh.d $$0) {
-      super($$0, hx.a, r_, false);
-      this.k(this.E.b().a(s_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected cyp c() {
-      return (cyp)cvc.sv;
+   protected cvy(dhm.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dhi a(dhi $$0, dhi $$1) {
-      return $$1.a(s_, $$0.c(s_));
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if ($$1.B) {
+         return bjb.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(arf.aw);
+         return bjb.b;
+      }
    }
 
+   @Nullable
    @Override
-   public clj a(csd $$0, ht $$1, dhi $$2) {
-      return new clj(clm.wi);
-   }
-
-   @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      return cvw.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(s_);
-   }
-
-   @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
-      return !$$2.c(s_);
-   }
-
-   @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   public bje b(dhn $$0, csf $$1, hx $$2) {
+      return new bjk(($$2x, $$3, $$4) -> new cgx($$2x, $$3, chc.a($$1, $$2)), b);
    }
 }

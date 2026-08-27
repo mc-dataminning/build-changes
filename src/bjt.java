@@ -1,46 +1,120 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bjt(String i) {
-   public static final bjt a = new bjt("generic");
-   public static final bjt b = new bjt("ladder");
-   public static final bjt c = new bjt("vines");
-   public static final bjt d = new bjt("weeping_vines");
-   public static final bjt e = new bjt("twisting_vines");
-   public static final bjt f = new bjt("scaffolding");
-   public static final bjt g = new bjt("other_climbable");
-   public static final bjt h = new bjt("water");
+public class bjt {
+   private final ig<bjv> a;
+   @Nullable
+   private final bkv b;
+   @Nullable
+   private final bkv c;
+   @Nullable
+   private final ejz d;
 
-   public static bjt a(dhi $$0) {
-      if ($$0.a(cvc.cO) || $$0.a(arg.P)) {
-         return b;
-      } else if ($$0.a(cvc.ff)) {
-         return c;
-      } else if ($$0.a(cvc.oz) || $$0.a(cvc.oA)) {
-         return d;
-      } else if ($$0.a(cvc.oB) || $$0.a(cvc.oC)) {
-         return e;
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
+
+   public float a() {
+      return this.j().c();
+   }
+
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bjt(ig<bjv> $$0, @Nullable bkv $$1, @Nullable bkv $$2, @Nullable ejz $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bjt(ig<bjv> $$0, @Nullable bkv $$1, @Nullable bkv $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bjt(ig<bjv> $$0, ejz $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bjt(ig<bjv> $$0, @Nullable bkv $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bjt(ig<bjv> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bkv c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bkv d() {
+      return this.b;
+   }
+
+   public uv a(bll $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         bll $$5 = $$0.eM();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? uv.a($$6, $$0.Q_(), $$5.Q_()) : uv.a($$1, $$0.Q_());
       } else {
-         return $$0.a(cvc.nS) ? f : g;
+         uv $$2 = this.b == null ? this.c.Q_() : this.b.Q_();
+         clo $$4 = this.b instanceof bll $$3 ? $$3.eU() : clo.b;
+         return !$$4.b() && $$4.A() ? uv.a($$1 + ".item", $$0.Q_(), $$2, $$4.J()) : uv.a($$1, $$0.Q_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof bll && !(this.b instanceof cdz);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cdz $$0 && $$0.fU().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ejz h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dl() : null;
       }
    }
 
    @Nullable
-   public static bjt a(blg $$0) {
-      Optional<ht> $$1 = $$0.eI();
-      if ($$1.isPresent()) {
-         dhi $$2 = $$0.dN().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aZ() ? h : null;
-      }
+   public ejz i() {
+      return this.d;
    }
 
-   public String a() {
-      return "death.fell.accident." + this.i;
+   public boolean a(arz<bjv> $$0) {
+      return this.a.a($$0);
    }
 
-   public String b() {
-      return this.i;
+   public boolean a(agl<bjv> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bjv j() {
+      return this.a.a();
+   }
+
+   public ig<bjv> k() {
+      return this.a;
    }
 }

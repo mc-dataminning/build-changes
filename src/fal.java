@@ -1,105 +1,169 @@
-import java.util.function.Supplier;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fal extends fau {
-   private static final ur a = ur.c("options.skinCustomisation");
-   private static final ur b = ur.c("options.sounds");
-   private static final ur c = ur.c("options.video");
-   private static final ur k = ur.c("options.controls");
-   private static final ur l = ur.c("options.language");
-   private static final ur m = ur.c("options.chat");
-   private static final ur n = ur.c("options.resourcepack");
-   private static final ur o = ur.c("options.accessibility");
-   private static final ur p = ur.c("options.telemetry");
-   private static final ur q = ur.c("options.credits_and_attribution");
-   private static final int r = 2;
-   private final fau t;
-   private final eth u;
-   private evg<biu> v;
-   private evp w;
+public class fal extends fat {
+   static final agm c = new agm("textures/gui/title/mojangstudios.png");
+   private static final int d = ata.b.a(255, 239, 50, 61);
+   private static final int e = ata.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> eti.N().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final eti m;
+   private final aph n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fal(fau $$0, eth $$1) {
-      super(ur.c("options.title"));
-      this.t = $$0;
-      this.u = $$1;
+   public fal(eti $$0, aph $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+   }
+
+   public static void a(eti $$0) {
+      $$0.X().a(c, new fal.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aP_() {
-      eyi $$0 = new eyi();
-      $$0.c().f(5).e(4).b();
-      eyi.b $$1 = $$0.d(2);
-      $$1.a(this.u.ae().a(this.f.m, 0, 0, 150));
-      $$1.a(this.l());
-      $$1.a(eyo.b(26), 2);
-      $$1.a(this.a(a, () -> new fax(this, this.u)));
-      $$1.a(this.a(b, () -> new fay(this, this.u)));
-      $$1.a(this.a(c, () -> new fbb(this, this.u)));
-      $$1.a(this.a(k, () -> new fbm(this, this.u)));
-      $$1.a(this.a(l, () -> new fad(this, this.u, this.f.ad())));
-      $$1.a(this.a(m, () -> new ezk(this, this.u)));
-      $$1.a(this.a(n, () -> new feb(this.f.Z(), this::a, this.f.ac(), ur.c("resourcePack.title"))));
-      $$1.a(this.a(o, () -> new ezg(this, this.u)));
-      $$1.a(this.a(p, () -> new ffh(this, this.u)));
-      $$1.a(this.a(q, () -> new ezr(this)));
-      $$1.a(euz.a(uq.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
-      $$0.a();
-      eyh.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
-      $$0.a(this::d);
-   }
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
 
-   private void a(aos $$0) {
-      this.u.a($$0);
-      this.f.a(this);
-   }
-
-   private eyl l() {
-      if (this.f.r != null && this.f.R()) {
-         this.v = a(0, 0, "options.difficulty", this.f);
-         if (!this.f.r.k().n()) {
-            this.w = new evp(0, 0, $$0x -> this.f.a(new ezn(this::c, ur.c("difficulty.lock.title"), ur.a("difficulty.lock.question", this.f.r.k().s().b()))));
-            this.v.d(this.v.k() - this.w.k());
-            this.w.b(this.f.r.k().t());
-            this.w.i = !this.w.a();
-            this.v.i = !this.w.a();
-            eyg $$0 = new eyg(150, 0, eyg.b.a);
-            $$0.a(this.v);
-            $$0.a(this.w);
-            return $$0;
-         } else {
-            this.v.i = false;
-            return this.v;
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
          }
+
+         int $$9 = atq.f((1.0F - atq.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(frh.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - atq.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = atq.c(atq.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(frh.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = atq.a($$8, 0.0F, 1.0F);
       } else {
-         return euz.a(ur.c("options.online"), $$0x -> this.f.a(fak.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, eti.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = atq.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - atq.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
       }
    }
 
-   public static evg<biu> a(int $$0, int $$1, String $$2, etd $$3) {
-      return evg.a(biu::b).a(biu.values()).a($$3.r.aj()).a($$0, $$1, 150, 20, ur.c($$2), ($$1x, $$2x) -> $$3.I().b(new acq($$2x)));
+   private void a(eut $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = atq.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = ata.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
-   private void c(boolean $$0) {
-      this.f.a(this);
-      if ($$0 && this.f.r != null) {
-         this.f.I().b(new adh(true));
-         this.w.b(true);
-         this.w.i = false;
-         this.v.i = false;
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gbs {
+      public a() {
+         super(fal.c);
       }
-   }
 
-   @Override
-   public void aG_() {
-      this.u.as();
-   }
+      @Override
+      protected gbs.a b(apl $$0) {
+         aoc $$1 = eti.N().aa();
+         apd<InputStream> $$2 = $$1.a(aoa.a, fal.c);
+         if ($$2 == null) {
+            return new gbs.a(new FileNotFoundException(fal.c.toString()));
+         } else {
+            try {
+               gbs.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gbs.a(new gdw(true, true), enc.a($$3));
+               }
 
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
-   }
-
-   private euz a(ur $$0, Supplier<fau> $$1) {
-      return euz.a($$0, $$1x -> this.f.a($$1.get())).a();
+               return var5;
+            } catch (IOException var9) {
+               return new gbs.a(var9);
+            }
+         }
+      }
    }
 }

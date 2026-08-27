@@ -1,46 +1,45 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-
-public class acf implements wk<yd> {
+public class acf implements wo<yh> {
    private final int a;
-   private final List<acf.a> b;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
 
-   public acf(int $$0, Collection<bmi> $$1) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bmi $$2 : $$1) {
-         this.b.add(new acf.a($$2.a(), $$2.b(), $$2.c()));
-      }
+   public acf(bkv $$0) {
+      this.a = $$0.aj();
+      ejz $$1 = $$0.dm();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = $$0.aC();
    }
 
-   public acf(tu $$0) {
+   public acf(ty $$0) {
       this.a = $$0.n();
-      this.b = $$0.a((tu.a<acf.a>)($$0x -> {
-         agi $$1 = $$0x.t();
-         bmh $$2 = jy.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bmk> $$4 = $$0x.a((tu.a<bmk>)($$0xx -> new bmk($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bmk.a.a($$0xx.readByte()))));
-         return new acf.a($$2, $$3, $$4);
-      }));
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jy.v.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.b().a());
-         });
-      });
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
@@ -48,31 +47,27 @@ public class acf implements wk<yd> {
       return this.a;
    }
 
-   public List<acf.a> d() {
+   public double d() {
       return this.b;
    }
 
-   public static class a {
-      private final bmh a;
-      private final double b;
-      private final Collection<bmk> c;
+   public double e() {
+      return this.c;
+   }
 
-      public a(bmh $$0, double $$1, Collection<bmk> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public double f() {
+      return this.d;
+   }
 
-      public bmh a() {
-         return this.a;
-      }
+   public byte g() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.b;
-      }
+   public byte h() {
+      return this.f;
+   }
 
-      public Collection<bmk> c() {
-         return this.c;
-      }
+   public boolean i() {
+      return this.g;
    }
 }

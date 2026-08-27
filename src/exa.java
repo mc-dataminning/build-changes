@@ -1,9 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface exa {
-   ur a();
-
-   void a(Consumer<eux> var1);
-
-   void a(ezc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface exa {
 }

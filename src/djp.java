@@ -1,684 +1,141 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.ShortListIterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.Arrays;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class djp extends dje {
-   static final Logger n = LogUtils.getLogger();
-   private static final dgu o = new dgu() {
-      @Override
-      public void a() {
-      }
-
-      @Override
-      public boolean b() {
-         return true;
-      }
-
-      @Override
-      public ht c() {
-         return ht.b;
-      }
-
-      @Override
-      public String d() {
-         return "<null>";
-      }
-   };
-   private final Map<ht, djp.d> p = Maps.newHashMap();
-   private boolean q;
-   final csa r;
+public class djp {
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
    @Nullable
-   private Supplier<alx> s;
-   @Nullable
-   private djp.c t;
-   private final Int2ObjectMap<dlv> u;
-   private final elb<cva> v;
-   private final elb<ecr> w;
+   protected byte[] d;
+   private int f;
 
-   public djp(csa $$0, crh $$1) {
-      this($$0, $$1, dkc.a, new elb<>(), new elb<>(), 0L, null, null, null);
+   public djp() {
+      this(0);
    }
 
-   public djp(csa $$0, crh $$1, dkc $$2, elb<cva> $$3, elb<ecr> $$4, long $$5, @Nullable djq[] $$6, @Nullable djp.c $$7, @Nullable dnu $$8) {
-      super($$1, $$2, $$0, $$0.H_().d(jz.ar), $$5, $$6, $$8);
-      this.r = $$0;
-      this.u = new Int2ObjectOpenHashMap();
+   public djp(int $$0) {
+      this.f = $$0;
+   }
 
-      for (dmr.a $$9 : dmr.a.values()) {
-         if (djj.n.h().contains($$9)) {
-            this.h.put($$9, new dmr(this, $$9));
-         }
+   public djp(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
       }
-
-      this.t = $$7;
-      this.v = $$3;
-      this.w = $$4;
    }
 
-   public djp(ame $$0, djz $$1, @Nullable djp.c $$2) {
-      this($$0, $$1.f(), $$1.r(), $$1.G(), $$1.H(), $$1.u(), $$1.d(), $$2, $$1.t());
-
-      for (dfd $$3 : $$1.D().values()) {
-         this.a($$3);
-      }
-
-      this.j.putAll($$1.F());
-
-      for (int $$4 = 0; $$4 < $$1.n().length; $$4++) {
-         this.b[$$4] = $$1.n()[$$4];
-      }
-
-      this.a($$1.g());
-      this.b($$1.h());
-
-      for (Entry<dmr.a, dmr> $$5 : $$1.e()) {
-         if (djj.n.h().contains($$5.getKey())) {
-            this.a($$5.getKey(), $$5.getValue().a());
-         }
-      }
-
-      this.i = $$1.i;
-      this.b($$1.v());
-      this.c = true;
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   @Override
-   public elj<cva> o() {
-      return this.v;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   @Override
-   public elj<ecr> p() {
-      return this.w;
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   @Override
-   public dje.a q() {
-      return new dje.a(this.v, this.w);
-   }
-
-   @Override
-   public dlv a(int $$0) {
-      return this.r instanceof ame $$1 ? (dlv)this.u.computeIfAbsent($$0, $$2 -> new dlr($$1, $$0, this::c)) : super.a($$0);
-   }
-
-   @Override
-   public dhi a_(ht $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.r.ag()) {
-         dhi $$4 = null;
-         if ($$2 == 60) {
-            $$4 = cvc.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dmi.a($$1, $$3);
-         }
-
-         return $$4 == null ? cvc.a.o() : $$4;
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         try {
-            int $$5 = this.e($$2);
-            if ($$5 >= 0 && $$5 < this.m.length) {
-               djq $$6 = this.m[$$5];
-               if (!$$6.c()) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
+      }
+   }
 
-            return cvc.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this, $$1, $$2, $$3));
-            throw new y($$8);
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   }
+
+   private static int e(int $$0) {
+      return $$0 & 1;
+   }
+
+   private static int f(int $$0) {
+      return $$0 >> 1;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
+      }
+
+      return $$1;
+   }
+
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
          }
       }
+
+      return this.d;
+   }
+
+   public djp b() {
+      return this.d == null ? new djp(this.f) : new djp((byte[])this.d.clone());
    }
 
    @Override
-   public ecs b_(ht $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
 
-   public ecs a(int $$0, int $$1, int $$2) {
-      try {
-         int $$3 = this.e($$1);
-         if ($$3 >= 0 && $$3 < this.m.length) {
-            djq $$4 = this.m[$$3];
-            if (!$$4.c()) {
-               return $$4.b($$0 & 15, $$1 & 15, $$2 & 15);
-            }
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
          }
 
-         return ect.a.g();
-      } catch (Throwable var7) {
-         o $$6 = o.a(var7, "Getting fluid state");
-         p $$7 = $$6.a("Block being got");
-         $$7.a("Location", () -> p.a(this, $$0, $$1, $$2));
-         throw new y($$6);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dhi a(ht $$0, dhi $$1, boolean $$2) {
-      int $$3 = $$0.v();
-      djq $$4 = this.b(this.e($$3));
-      boolean $$5 = $$4.c();
-      if ($$5 && $$1.i()) {
-         return null;
-      } else {
-         int $$6 = $$0.u() & 15;
-         int $$7 = $$3 & 15;
-         int $$8 = $$0.w() & 15;
-         dhi $$9 = $$4.a($$6, $$7, $$8, $$1);
-         if ($$9 == $$1) {
-            return null;
-         } else {
-            cva $$10 = $$1.b();
-            this.h.get(dmr.a.e).a($$6, $$3, $$8, $$1);
-            this.h.get(dmr.a.f).a($$6, $$3, $$8, $$1);
-            this.h.get(dmr.a.d).a($$6, $$3, $$8, $$1);
-            this.h.get(dmr.a.b).a($$6, $$3, $$8, $$1);
-            boolean $$11 = $$4.c();
-            if ($$5 != $$11) {
-               this.r.K().p().a($$0, $$11);
-            }
-
-            if (ecj.a(this, $$0, $$9, $$1)) {
-               bfo $$12 = this.r.ae();
-               $$12.a("updateSkyLightSources");
-               this.i.a(this, $$6, $$3, $$8);
-               $$12.b("queueCheckLight");
-               this.r.K().p().a($$0);
-               $$12.c();
-            }
-
-            boolean $$13 = $$9.t();
-            if (!this.r.B) {
-               $$9.b(this.r, $$0, $$1, $$2);
-            } else if (!$$9.a($$10) && $$13) {
-               this.d($$0);
-            }
-
-            if (!$$4.a($$6, $$7, $$8).a($$10)) {
-               return null;
-            } else {
-               if (!this.r.B) {
-                  $$1.a(this.r, $$0, $$9, $$2);
-               }
-
-               if ($$1.t()) {
-                  dfd $$14 = this.a($$0, djp.b.c);
-                  if ($$14 == null) {
-                     $$14 = ((cxs)$$10).a($$0, $$1);
-                     if ($$14 != null) {
-                        this.b($$14);
-                     }
-                  } else {
-                     $$14.b($$1);
-                     this.c($$14);
-                  }
-               }
-
-               this.c = true;
-               return $$9;
-            }
-         }
-      }
-   }
-
-   @Deprecated
-   @Override
-   public void a(bkq $$0) {
-   }
-
-   @Nullable
-   private dfd j(ht $$0) {
-      dhi $$1 = this.a_($$0);
-      return !$$1.t() ? null : ((cxs)$$1.b()).a($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public dfd c_(ht $$0) {
-      return this.a($$0, djp.b.c);
-   }
-
-   @Nullable
-   public dfd a(ht $$0, djp.b $$1) {
-      dfd $$2 = this.k.get($$0);
-      if ($$2 == null) {
-         rz $$3 = this.j.remove($$0);
-         if ($$3 != null) {
-            dfd $$4 = this.a($$0, $$3);
-            if ($$4 != null) {
-               return $$4;
-            }
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
          }
       }
 
-      if ($$2 == null) {
-         if ($$1 == djp.b.a) {
-            $$2 = this.j($$0);
-            if ($$2 != null) {
-               this.b($$2);
-            }
-         }
-      } else if ($$2.r()) {
-         this.k.remove($$0);
-         return null;
-      }
-
-      return $$2;
+      return $$0.toString();
    }
 
-   public void b(dfd $$0) {
-      this.a($$0);
-      if (this.K()) {
-         if (this.r instanceof ame $$1) {
-            this.b($$0, $$1);
-         }
+   @aut
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
 
-         this.c($$0);
-      }
-   }
-
-   private boolean K() {
-      return this.q || this.r.x_();
-   }
-
-   boolean k(ht $$0) {
-      if (!this.r.C_().a($$0)) {
-         return false;
-      } else {
-         return !(this.r instanceof ame $$1) ? true : this.D().a(alx.c) && $$1.c(crh.a($$0));
-      }
-   }
-
-   @Override
-   public void a(dfd $$0) {
-      ht $$1 = $$0.p();
-      if (this.a_($$1).t()) {
-         $$0.a(this.r);
-         $$0.s();
-         dfd $$2 = this.k.put($$1.i(), $$0);
-         if ($$2 != null && $$2 != $$0) {
-            $$2.ax_();
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public rz g(ht $$0) {
-      dfd $$1 = this.c_($$0);
-      if ($$1 != null && !$$1.r()) {
-         rz $$2 = $$1.m();
-         $$2.a("keepPacked", false);
-         return $$2;
-      } else {
-         rz $$3 = this.j.get($$0);
-         if ($$3 != null) {
-            $$3 = $$3.h();
-            $$3.a("keepPacked", true);
-         }
-
-         return $$3;
-      }
-   }
-
-   @Override
-   public void d(ht $$0) {
-      if (this.K()) {
-         dfd $$1 = this.k.remove($$0);
-         if ($$1 != null) {
-            if (this.r instanceof ame $$2) {
-               this.a($$1, $$2);
-            }
-
-            $$1.ax_();
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
          }
       }
 
-      this.l($$0);
+      return $$1.toString();
    }
 
-   private <T extends dfd> void a(T $$0, ame $$1) {
-      cva $$2 = $$0.q().b();
-      if ($$2 instanceof cxs) {
-         dlu $$3 = ((cxs)$$2).a($$1, $$0);
-         if ($$3 != null) {
-            int $$4 = iu.a($$0.p().v());
-            dlv $$5 = this.a($$4);
-            $$5.b($$3);
-         }
-      }
+   public boolean c() {
+      return this.d == null;
    }
 
-   private void c(int $$0) {
-      this.u.remove($$0);
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
    }
 
-   private void l(ht $$0) {
-      djp.d $$1 = this.p.remove($$0);
-      if ($$1 != null) {
-         $$1.a(o);
-      }
-   }
-
-   public void E() {
-      if (this.t != null) {
-         this.t.run(this);
-         this.t = null;
-      }
-   }
-
-   public boolean C() {
-      return false;
-   }
-
-   public void a(tu $$0, rz $$1, Consumer<zm.b> $$2) {
-      this.I();
-
-      for (djq $$3 : this.m) {
-         $$3.a($$0);
-      }
-
-      for (dmr.a $$4 : dmr.a.values()) {
-         String $$5 = $$4.a();
-         if ($$1.b($$5, 12)) {
-            this.a($$4, $$1.o($$5));
-         }
-      }
-
-      this.A();
-      $$2.accept(($$0x, $$1x, $$2x) -> {
-         dfd $$3 = this.a($$0x, djp.b.a);
-         if ($$3 != null && $$2x != null && $$3.u() == $$1x) {
-            $$3.a($$2x);
-         }
-      });
-   }
-
-   public void a(tu $$0) {
-      for (djq $$1 : this.m) {
-         $$1.b($$0);
-      }
-   }
-
-   public void c(boolean $$0) {
-      this.q = $$0;
-   }
-
-   public csa F() {
-      return this.r;
-   }
-
-   public Map<ht, dfd> G() {
-      return this.k;
-   }
-
-   public void H() {
-      crh $$0 = this.f();
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         if (this.b[$$1] != null) {
-            ShortListIterator $$7 = this.b[$$1].iterator();
-
-            while ($$7.hasNext()) {
-               Short $$2 = (Short)$$7.next();
-               ht $$3 = djz.a($$2, this.g($$1), $$0);
-               dhi $$4 = this.a_($$3);
-               ecs $$5 = $$4.u();
-               if (!$$5.c()) {
-                  $$5.a(this.r, $$3);
-               }
-
-               if (!($$4.b() instanceof czp)) {
-                  dhi $$6 = cva.b($$4, this.r, $$3);
-                  this.r.a($$3, $$6, 20);
-               }
-            }
-
-            this.b[$$1].clear();
-         }
-      }
-
-      UnmodifiableIterator var9 = ImmutableList.copyOf(this.j.keySet()).iterator();
-
-      while (var9.hasNext()) {
-         ht $$7 = (ht)var9.next();
-         this.c_($$7);
-      }
-
-      this.j.clear();
-      this.f.a(this);
-   }
-
-   @Nullable
-   private dfd a(ht $$0, rz $$1) {
-      dhi $$2 = this.a_($$0);
-      dfd $$3;
-      if ("DUMMY".equals($$1.l("id"))) {
-         if ($$2.t()) {
-            $$3 = ((cxs)$$2.b()).a($$0, $$2);
-         } else {
-            $$3 = null;
-            n.warn("Tried to load a DUMMY block entity @ {} but found not block entity block {} at location", $$0, $$2);
-         }
-      } else {
-         $$3 = dfd.a($$0, $$2, $$1);
-      }
-
-      if ($$3 != null) {
-         $$3.a(this.r);
-         this.b($$3);
-      } else {
-         n.warn("Tried to load a block entity for block {} but failed at location {}", $$2, $$0);
-      }
-
-      return $$3;
-   }
-
-   public void c(long $$0) {
-      this.v.a($$0);
-      this.w.a($$0);
-   }
-
-   public void a(ame $$0) {
-      $$0.l().a(this.d, this.v);
-      $$0.m().a(this.d, this.w);
-   }
-
-   public void b(ame $$0) {
-      $$0.l().a(this.d);
-      $$0.m().a(this.d);
-   }
-
-   @Override
-   public djj j() {
-      return djj.n;
-   }
-
-   public alx D() {
-      return this.s == null ? alx.b : this.s.get();
-   }
-
-   public void b(Supplier<alx> $$0) {
-      this.s = $$0;
-   }
-
-   public void I() {
-      this.k.values().forEach(dfd::ax_);
-      this.k.clear();
-      this.p.values().forEach($$0 -> $$0.a(o));
-      this.p.clear();
-   }
-
-   public void J() {
-      this.k.values().forEach($$0 -> {
-         if (this.r instanceof ame $$2) {
-            this.b($$0, $$2);
-         }
-
-         this.c($$0);
-      });
-   }
-
-   private <T extends dfd> void b(T $$0, ame $$1) {
-      cva $$2 = $$0.q().b();
-      if ($$2 instanceof cxs) {
-         dlu $$3 = ((cxs)$$2).a($$1, $$0);
-         if ($$3 != null) {
-            this.a(iu.a($$0.p().v())).a($$3);
-         }
-      }
-   }
-
-   private <T extends dfd> void c(T $$0) {
-      dhi $$1 = $$0.q();
-      dfe<T> $$2 = $$1.a(this.r, (dff<T>)$$0.u());
-      if ($$2 == null) {
-         this.l($$0.p());
-      } else {
-         this.p.compute($$0.p(), ($$2x, $$3) -> {
-            dgu $$4 = this.a($$0, $$2);
-            if ($$3 != null) {
-               $$3.a($$4);
-               return (djp.d)$$3;
-            } else if (this.K()) {
-               djp.d $$5 = new djp.d($$4);
-               this.r.a($$5);
-               return $$5;
-            } else {
-               return null;
-            }
-         });
-      }
-   }
-
-   private <T extends dfd> dgu a(T $$0, dfe<T> $$1) {
-      return new djp.a<>($$0, $$1);
-   }
-
-   class a<T extends dfd> implements dgu {
-      private final T b;
-      private final dfe<T> c;
-      private boolean d;
-
-      a(T $$0, dfe<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      @Override
-      public void a() {
-         if (!this.b.r() && this.b.l()) {
-            ht $$0 = this.b.p();
-            if (djp.this.k($$0)) {
-               try {
-                  bfo $$1 = djp.this.r.ae();
-                  $$1.a(this::d);
-                  dhi $$2 = djp.this.a_($$0);
-                  if (this.b.u().a($$2)) {
-                     this.c.tick(djp.this.r, this.b.p(), $$2, this.b);
-                     this.d = false;
-                  } else if (!this.d) {
-                     this.d = true;
-                     djp.n.warn("Block entity {} @ {} state {} invalid for ticking:", new Object[]{LogUtils.defer(this::d), LogUtils.defer(this::c), $$2});
-                  }
-
-                  $$1.c();
-               } catch (Throwable var5) {
-                  o $$4 = o.a(var5, "Ticking block entity");
-                  p $$5 = $$4.a("Block entity being ticked");
-                  this.b.a($$5);
-                  throw new y($$4);
-               }
-            }
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.r();
-      }
-
-      @Override
-      public ht c() {
-         return this.b.p();
-      }
-
-      @Override
-      public String d() {
-         return dff.a(this.b.u()).toString();
-      }
-
-      @Override
-      public String toString() {
-         return "Level ticker for " + this.d() + "@" + this.c();
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      void run(djp var1);
-   }
-
-   class d implements dgu {
-      private dgu b;
-
-      d(dgu $$0) {
-         this.b = $$0;
-      }
-
-      void a(dgu $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a() {
-         this.b.a();
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.b();
-      }
-
-      @Override
-      public ht c() {
-         return this.b.c();
-      }
-
-      @Override
-      public String d() {
-         return this.b.d();
-      }
-
-      @Override
-      public String toString() {
-         return this.b + " <wrapped>";
-      }
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

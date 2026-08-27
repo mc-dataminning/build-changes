@@ -1,45 +1,84 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class fus implements fud.a {
-   private final List<ht> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class fus implements fui.a {
+   private final eti a;
 
-   public void a(ht $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public fus(eti $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(enw $$0, fqu $$1, double $$2, double $$3, double $$4) {
-      eoa $$5 = $$1.getBuffer(frc.y());
+   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      crl $$6 = this.a.s.dN();
+      hx $$7 = hx.a($$2, $$3, $$4);
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         ht $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         fqs.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (hx $$8 : hx.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dhn $$9 = $$6.a_($$8);
+         if (!$$9.a(cvh.a)) {
+            eks $$10 = $$9.j($$6, $$8);
+
+            for (eju $$11 : $$10.e()) {
+               eju $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, ib.e)) {
+                  eof $$23 = $$1.getBuffer(frh.y());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ib.d)) {
+                  eof $$24 = $$1.getBuffer(frh.y());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ib.f)) {
+                  eof $$25 = $$1.getBuffer(frh.y());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ib.c)) {
+                  eof $$26 = $$1.getBuffer(frh.y());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ib.a)) {
+                  eof $$27 = $$1.getBuffer(frh.y());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ib.b)) {
+                  eof $$28 = $$1.getBuffer(frh.y());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+            }
+         }
       }
    }
 }

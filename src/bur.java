@@ -1,40 +1,38 @@
-public class bur extends bup {
-   private boolean p;
-
-   public bur(bli $$0, csa $$1) {
+public class bur extends buu {
+   public bur(bln $$0, csf $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected edj a(int $$0) {
-      this.p = this.a.ai() == bku.v;
-      this.o = new edk(this.p);
-      return new edj(this.o, $$0);
+   protected edo a(int $$0) {
+      this.o = new edg(false);
+      this.o.a(true);
+      return new edo(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bd();
+      return true;
    }
 
    @Override
-   protected eju b() {
-      return new eju(this.a.ds(), this.a.e(0.5), this.a.dy());
+   protected ejz b() {
+      return new ejz(this.a.ds(), this.a.e(0.5), this.a.dy());
    }
 
    @Override
-   protected double a(eju $$0) {
+   protected double a(ejz $$0) {
       return $$0.d;
    }
 
    @Override
-   protected boolean a(eju $$0, eju $$1) {
-      return a(this.a, $$0, $$1, false);
+   protected boolean a(ejz $$0, ejz $$1) {
+      return this.a.bd() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
-   public boolean a(ht $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
+   public boolean a(hx $$0) {
+      return !this.b.a_($$0.d()).i();
    }
 
    @Override

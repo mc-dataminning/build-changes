@@ -1,56 +1,73 @@
-public class zw implements wk<yd> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public zw(bkq $$0) {
-      this.a = $$0.ds();
-      this.b = $$0.du();
-      this.c = $$0.dy();
-      this.d = $$0.dD();
-      this.e = $$0.dF();
-   }
-
-   public zw(tu $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+public record zw(int a, boolean b, Set<agl<csf>> c, int d, int e, int f, boolean g, boolean h, boolean i, acm j) implements wo<yh> {
+   public zw(ty $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(kd.aJ)),
+         $$0.n(),
+         $$0.n(),
+         $$0.n(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new acm($$0)
+      );
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
+   public void a(ty $$0) {
+      $$0.p(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.a(this.c, ty::b);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      this.j.a($$0);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
+   public boolean d() {
       return this.b;
    }
 
-   public double e() {
+   public Set<agl<csf>> e() {
       return this.c;
    }
 
-   public float f() {
+   public int f() {
       return this.d;
    }
 
-   public float g() {
+   public int g() {
       return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public acm l() {
+      return this.j;
    }
 }

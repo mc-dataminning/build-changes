@@ -1,33 +1,50 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class eox extends eps {
-   private static final Logger b = LogUtils.getLogger();
-   public List<eow> a = Lists.newArrayList();
+public class eox extends epx {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static eox a(String $$0) {
-      eox $$1 = new eox();
+   public static eox a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      eox $$2 = new eox();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+         $$2.a = eru.b("backupId", $$1, "");
+         $$2.b = eru.b("lastModifiedDate", $$1);
+         $$2.c = eru.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
 
-            while ($$4.hasNext()) {
-               $$1.a.add(eow.a($$4.next().getAsJsonObject()));
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
             }
          }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

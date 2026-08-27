@@ -1,154 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class aji {
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("commands.perf.alreadyRunning"));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 dv.a("start")
-                                    .then(
-                                       dv.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
-                        .then(dv.a("check").executes($$0x -> d((du)$$0x.getSource()))))
-                     .then(dv.a("sound").then(dv.a("type", ec.a()).executes($$0x -> a((du)$$0x.getSource(), ec.a($$0x, "type"))))))
-                  .then(dv.a("spawnleader").executes($$0x -> b((du)$$0x.getSource()))))
-               .then(
-                  dv.a("setomen")
-                     .then(
-                        dv.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
-                     )
-               ))
-            .then(dv.a("glow").executes($$0x -> a((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
+            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
       );
    }
 
    private static int a(du $$0) throws CommandSyntaxException {
-      cfb $$1 = a($$0.i());
-      if ($$1 != null) {
-         for (cfc $$3 : $$1.h()) {
-            $$3.b(new bkd(bkf.x, 1000, 1));
-         }
-      }
-
-      return 1;
-   }
-
-   private static int a(du $$0, int $$1) throws CommandSyntaxException {
-      cfb $$2 = a($$0.i());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(ur.b("Sorry, the max bad omen level you can set is " + $$3));
-         } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> ur.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
-         }
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aS()) {
+         throw c.create();
       } else {
-         $$0.b(ur.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0) {
-      $$0.a(() -> ur.b("Spawned a raid captain"), false);
-      cfc $$1 = bku.ay.a((csa)$$0.f());
-      if ($$1 == null) {
-         $$0.b(ur.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(bkv.f, cfb.s());
-         $$1.a_($$0.e().c, $$0.e().d, $$0.e().e);
-         $$1.a($$0.f(), $$0.f().d_(ht.a($$0.e())), blk.n, null, null);
-         $$0.f().a_($$1);
-         return 1;
-      }
-   }
-
-   private static int a(du $$0, @Nullable ur $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         ame $$2 = $$0.f();
-         eju $$3 = $$0.e().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, aqr.tK, aqs.g, 2.0F, 1.0F, $$2.z.g());
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0, int $$1) throws CommandSyntaxException {
-      amf $$2 = $$0.i();
-      ht $$3 = $$2.dn();
-      if ($$2.z().d($$3)) {
-         $$0.b(ur.b("Raid already started close by"));
-         return -1;
-      } else {
-         cfd $$4 = $$2.z().y();
-         cfb $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> ur.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(ur.b("Failed to create a raid in your local village"));
-         }
-
-         return 1;
-      }
-   }
-
-   private static int c(du $$0) throws CommandSyntaxException {
-      amf $$1 = $$0.i();
-      ht $$2 = $$1.dn();
-      cfb $$3 = $$1.z().c($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> ur.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(ur.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(du $$0) throws CommandSyntaxException {
-      cfb $$1 = a($$0.i());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> ur.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> ur.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(ur.b("Found no started raids"));
+         Consumer<bfr> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> uv.c("commands.perf.started"), false);
          return 0;
       }
    }
 
-   @Nullable
-   private static cfb a(amf $$0) {
-      return $$0.z().c($$0.dn());
+   private static int b(du $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aS()) {
+         throw b.create();
+      } else {
+         $$1.aU();
+         return 0;
+      }
+   }
+
+   private static void a(du $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aY().g(), aa.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bhh.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(uv.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (atb $$7 = new atb(bhh.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> uv.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(du $$0, bfr $$1) {
+      if ($$1 != bfn.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)aup.a;
+         $$0.a(() -> uv.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

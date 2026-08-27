@@ -1,88 +1,127 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class dan extends cva {
-   private static final hx[] a = hx.values();
-   public static final dhz b = dhy.L;
-   public static final dhz c = dhy.M;
-   public static final dhz d = dhy.N;
-   public static final dhz e = dhy.O;
-   public static final dhz f = dhy.J;
-   public static final dhz g = dhy.K;
-   public static final Map<hx, dhz> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(hx.class), $$0 -> {
-      $$0.put(hx.c, b);
-      $$0.put(hx.f, c);
-      $$0.put(hx.d, d);
-      $$0.put(hx.e, e);
-      $$0.put(hx.b, f);
-      $$0.put(hx.a, g);
-   }));
-   protected final ekn[] i;
+public class dan extends cvf {
+   public static final MapCodec<dan> a = b(dan::new);
+   public static final dil<dio> b = did.bf;
+   public static final die c = did.w;
+   public static final din d = did.aR;
+   public static final int e = 3;
 
-   protected dan(float $$0, dhh.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dan> a() {
+      return a;
+   }
+
+   public dan(dhm.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, dio.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+   }
+
+   private dhn b(csg $$0, hx $$1, dhn $$2) {
+      dio $$3 = $$0.a_($$1.c()).A();
+      if ($$3.e()) {
+         return $$2.a(b, $$3);
+      } else {
+         dio $$4 = $$0.a_($$1.d()).A();
+         dio $$5 = $$4.e() ? dio.a : $$4;
+         return $$2.a(b, $$5);
+      }
    }
 
    @Override
-   protected abstract MapCodec<? extends dan> a();
+   public dhn a(cnw $$0) {
+      return this.b($$0.q(), $$0.a(), this.o());
+   }
 
-   private ekn[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ekn $$3 = cva.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ekn[] $$4 = new ekn[a.length];
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      boolean $$6 = $$1.o() == ib.a.b;
+      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         hx $$6 = a[$$5];
-         $$4[$$5] = ekk.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      ekn[] $$7 = new ekn[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ekn $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ekk.a($$9, $$4[$$10]);
-            }
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      boolean $$6 = $$1.B($$2);
+      if ($$6 != $$0.c(c)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
          }
 
-         $$7[$$8] = $$9;
+         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable bkv $$0, dhn $$1, csf $$2, hx $$3) {
+      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, dlx.H, $$3);
+      }
+   }
+
+   @Override
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      clo $$6 = $$3.b($$4);
+      if ($$6.a(ars.aG) && $$5.b() == ib.b) {
+         return bjb.d;
+      } else if ($$1.B) {
+         return bjb.a;
+      } else {
+         $$0 = $$0.a(d);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(arf.ag);
+         return bjb.b;
+      }
+   }
+
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, cdz $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(arf.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
+   }
+
+   @Override
+   public boolean a(dhn $$0, csf $$1, hx $$2, int $$3, int $$4) {
+      dio $$5 = $$0.c(b);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(d);
+         $$7 = b($$6);
+         $$1.a(jw.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
       }
 
-      return $$7;
-   }
-
-   @Override
-   public boolean a_(dhi $$0, crg $$1, ht $$2) {
-      return false;
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return this.i[this.h($$0)];
-   }
-
-   protected int h(dhi $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+      ig<aqu> $$10;
+      if ($$5.d()) {
+         agm $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
          }
+
+         $$10 = ig.a(aqu.a($$9));
+      } else {
+         $$10 = $$5.a();
       }
 
-      return $$1;
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, aqw.c, 3.0F, $$7, $$1.z.g());
+      return true;
+   }
+
+   @Nullable
+   private agm a(csf $$0, hx $$1) {
+      return $$0.c_($$1.c()) instanceof dgt $$2 ? $$2.f() : null;
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b, c, d);
    }
 }

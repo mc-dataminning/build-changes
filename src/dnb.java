@@ -1,68 +1,117 @@
-public final class dnb {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private dnb() {
+public record dnb(dne j, dhn k, dhn l, dnc m, dnn.o n, List<ctm.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dnb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dne.a.fieldOf("noise").forGetter(dnb::f),
+               dhn.b.fieldOf("default_block").forGetter(dnb::g),
+               dhn.b.fieldOf("default_fluid").forGetter(dnb::h),
+               dnc.a.fieldOf("noise_router").forGetter(dnb::i),
+               dnn.o.b.fieldOf("surface_rule").forGetter(dnb::j),
+               ctm.d.a.listOf().fieldOf("spawn_target").forGetter(dnb::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dnb::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dnb::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dnb::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dnb::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dnb::n)
+            )
+            .apply($$0, dnb::new)
+   );
+   public static final Codec<ig<dnb>> b = agi.a(kd.ay, a);
+   public static final agl<dnb> c = agl.a(kd.ay, new agm("overworld"));
+   public static final agl<dnb> d = agl.a(kd.ay, new agm("large_biomes"));
+   public static final agl<dnb> e = agl.a(kd.ay, new agm("amplified"));
+   public static final agl<dnb> f = agl.a(kd.ay, new agm("nether"));
+   public static final agl<dnb> g = agl.a(kd.ay, new agm("end"));
+   public static final agl<dnb> h = agl.a(kd.ay, new agm("caves"));
+   public static final agl<dnb> i = agl.a(kd.ay, new agm("floating_islands"));
+
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   protected static dmv.c a(dmk $$0, dmk $$1, dmk $$2, dne $$3) {
-      dhi $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dnb.a $$8 = $$6 > 0.0 ? dnb.a.a : dnb.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = atm.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               ats $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = atm.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public boolean b() {
+      return this.r;
    }
 
-   protected static enum a {
-      a(cvc.ra.o(), cvc.tg.o(), cvc.c.o(), 0, 50),
-      b(cvc.Q.o(), cvc.tf.o(), cvc.qz.o(), -60, -8);
+   public boolean c() {
+      return this.s;
+   }
 
-      final dhi e;
-      final dhi f;
-      final dhi g;
-      protected final int c;
-      protected final int d;
+   public dnv.a d() {
+      return this.t ? dnv.a.a : dnv.a.b;
+   }
 
-      private a(dhi $$0, dhi $$1, dhi $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static void a(oz<dnb> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static dnb b(oz<?> $$0) {
+      return new dnb(dne.d, cvh.fz.o(), cvh.a.o(), dnd.a($$0.a(kd.av)), pm.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static dnb c(oz<?> $$0) {
+      return new dnb(dne.c, cvh.dV.o(), cvh.H.o(), dnd.a($$0.a(kd.av), $$0.a(kd.az)), pm.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static dnb a(oz<?> $$0, boolean $$1, boolean $$2) {
+      return new dnb(dne.b, cvh.b.o(), cvh.G.o(), dnd.a($$0.a(kd.av), $$0.a(kd.az), $$2, $$1), pm.a(), new ctt().a(), 63, false, true, true, false);
+   }
+
+   private static dnb d(oz<?> $$0) {
+      return new dnb(dne.e, cvh.b.o(), cvh.G.o(), dnd.b($$0.a(kd.av), $$0.a(kd.az)), pm.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dnb e(oz<?> $$0) {
+      return new dnb(dne.f, cvh.b.o(), cvh.G.o(), dnd.c($$0.a(kd.av), $$0.a(kd.az)), pm.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dnb e() {
+      return new dnb(dne.b, cvh.b.o(), cvh.a.o(), dnd.a(), pm.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dne f() {
+      return this.j;
+   }
+
+   public dhn g() {
+      return this.k;
+   }
+
+   public dhn h() {
+      return this.l;
+   }
+
+   public dnc i() {
+      return this.m;
+   }
+
+   public dnn.o j() {
+      return this.n;
+   }
+
+   public List<ctm.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

@@ -1,71 +1,76 @@
-public class czl {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2005;
-   public static final int ac = 2006;
-   public static final int ad = 2007;
-   public static final int ae = 2008;
-   public static final int af = 2009;
-   public static final int ag = 2010;
-   public static final int ah = 3000;
-   public static final int ai = 3001;
-   public static final int aj = 3002;
-   public static final int ak = 3003;
-   public static final int al = 3004;
-   public static final int am = 3005;
-   public static final int an = 3006;
-   public static final int ao = 3007;
-   public static final int ap = 3008;
-   public static final int aq = 3009;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class czl extends cvf implements dcf {
+   public static final MapCodec<czl> a = b(czl::new);
+   public static final die b = did.j;
+   public static final die c = did.C;
+   protected static final eks d = ekp.a(cvf.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cvf.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final eks e = ekp.a(cvf.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cvf.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+
+   @Override
+   public MapCodec<czl> a() {
+      return a;
+   }
+
+   public czl(dhm.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dhn a(cnw $$0) {
+      ecx $$1 = $$0.q().b_($$0.a());
+
+      for (ib $$2 : $$0.f()) {
+         if ($$2.o() == ib.a.b) {
+            dhn $$3 = this.o().a(b, Boolean.valueOf($$2 == ib.b));
+            if ($$3.a((csi)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == ecy.c));
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return $$0.c(b) ? e : d;
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      ib $$3 = h($$0).g();
+      return cvf.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static ib h(dhn $$0) {
+      return $$0.c(b) ? ib.a : ib.b;
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
+      }
+
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecx c_(dhn $$0) {
+      return $$0.c(c) ? ecy.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      return false;
+   }
 }

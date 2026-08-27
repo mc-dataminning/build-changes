@@ -1,42 +1,65 @@
 import java.util.EnumSet;
 
-public class bsw extends bsb {
-   private final bli a;
-   private double b;
-   private double c;
-   private int d;
+public class bsw extends bsg {
+   private final bln a;
+   private bll b;
+   private int c;
 
-   public bsw(bli $$0) {
+   public bsw(bln $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bsb.a.a, bsb.a.b));
+      this.a(EnumSet.of(bsg.a.a, bsg.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.eh().i() < 0.02F;
+      bll $$0 = this.a.q();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
-   public void c() {
-      double $$0 = (Math.PI * 2) * this.a.eh().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.eh().a(20);
+   public void d() {
+      this.b = null;
+      this.a.N().n();
    }
 
    @Override
-   public boolean S_() {
+   public boolean T_() {
       return true;
    }
 
    @Override
    public void e() {
-      this.d--;
-      this.a.I().a(this.a.ds() + this.b, this.a.dw(), this.a.dy() + this.c);
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dh() * 2.0F * this.a.dh() * 2.0F);
+      double $$1 = this.a.i(this.b.ds(), this.b.du(), this.b.dy());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

@@ -1,62 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class dzt {
+   private static final agm[] a = new agm[]{
+      new agm("nether_fossils/fossil_1"),
+      new agm("nether_fossils/fossil_2"),
+      new agm("nether_fossils/fossil_3"),
+      new agm("nether_fossils/fossil_4"),
+      new agm("nether_fossils/fossil_5"),
+      new agm("nether_fossils/fossil_6"),
+      new agm("nether_fossils/fossil_7"),
+      new agm("nether_fossils/fossil_8"),
+      new agm("nether_fossils/fossil_9"),
+      new agm("nether_fossils/fossil_10"),
+      new agm("nether_fossils/fossil_11"),
+      new agm("nether_fossils/fossil_12"),
+      new agm("nether_fossils/fossil_13"),
+      new agm("nether_fossils/fossil_14")
+   };
 
-public class dzt extends dxh {
-   public static final Codec<dzt> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a($$0),
-               dzt.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzt::new)
-   );
-   public final dzt.a e;
-   public final float f;
-   public final float g;
-
-   public dzt(dxh.c $$0, dzt.a $$1, float $$2, float $$3) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public static void a(ebn $$0, dxr $$1, atw $$2, hx $$3) {
+      dbr $$4 = dbr.a($$2);
+      $$1.a(new dzt.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<dxh.b> a(dxh.a $$0) {
-      return a($$0, dmr.a.c, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dxz $$0, dxh.a $$1) {
-      ht $$2 = new ht($$1.h().d(), 90, $$1.h().e());
-      dbm $$3 = dbm.a($$1.f());
-      dzs.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
-   }
-
-   @Override
-   public dxq<?> e() {
-      return dxq.k;
-   }
-
-   public static enum a implements aug {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<dzt.a> c = aug.a(dzt.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
+   public static class a extends dxw {
+      public a(ebn $$0, agm $$1, hx $$2, dbr $$3) {
+         super(dyd.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      public String a() {
-         return this.d;
+      public a(ebn $$0, sd $$1) {
+         super(dyd.ac, $$1, $$0, $$1x -> a(dbr.valueOf($$1.l("Rot"))));
+      }
+
+      private static ebi a(dbr $$0) {
+         return new ebi().a($$0).a(dab.a).a(eao.d);
       }
 
       @Override
-      public String c() {
-         return this.d;
+      protected void a(dyc $$0, sd $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, hx $$1, csu $$2, atw $$3, dxe $$4) {
+      }
+
+      @Override
+      public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, hx $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 }

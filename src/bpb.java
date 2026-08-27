@@ -1,29 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bpb {
-   private static final int a = 1;
-
-   public static bmy<bli> a(float $$0) {
-      return a($$1 -> $$0);
+   public static bnd<bll> a(float $$0, bim $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static bmy<bli> a(Function<blg, Float> $$0) {
-      return bqj.a(
-         (Function<bqj.b<bli>, ? extends App<bqj.c<bli>, bqm<bli>>>)($$1 -> $$1.group($$1.a(buh.m), $$1.a(buh.n), $$1.b(buh.o), $$1.a(buh.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     blg $$9 = $$1.b($$4);
-                     Optional<buj> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bmz.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bni($$9, true));
-                        $$2.a(new buk(new bni($$9, false), $$0.apply($$7), 0));
-                     }
+   public static bnd<bll> a(bkz<?> $$0, float $$1, bim $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   }
 
-                     return true;
+   private static bnd<bll> a(float $$0, bim $$1, Predicate<bll> $$2) {
+      float $$3 = $$0 * $$0;
+      bpb.a $$4 = new bpb.a($$1);
+      return bqo.a(
+         (Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$3x -> $$3x.group($$3x.c(bum.n), $$3x.b(bum.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bll> $$9 = $$3x.<buo>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((bkv)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bnn($$9.get(), true));
+                        return true;
+                     }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bim a;
+      private int b;
+
+      public a(bim $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(atw $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

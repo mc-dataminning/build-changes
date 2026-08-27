@@ -1,93 +1,63 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface dnl {
-   Codec<dnl> a = asu.a(dnl.b.d, asu.a(dnl.a.d, dnl.c.d)).xmap(dnl::a, dnl::a);
-   dnl b = b(0);
-   dnl c = c(0);
+public final class dnl {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   static dnl a(int $$0) {
-      return new dnl.b($$0);
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   static dnl b(int $$0) {
-      return new dnl.a($$0);
+   public static dnl.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dnl.a($$1, $$2);
    }
 
-   static dnl c(int $$0) {
-      return new dnl.c($$0);
+   public static dnl.a c(long $$0) {
+      return b($$0).a();
    }
 
-   static dnl a() {
-      return b;
+   public static dnl.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dnl.a($$2, $$3);
    }
 
-   static dnl b() {
-      return c;
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
    }
 
-   private static dnl a(Either<dnl.b, Either<dnl.a, dnl.c>> $$0) {
-      return (dnl)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
-   }
-
-   private static Either<dnl.b, Either<dnl.a, dnl.c>> a(dnl $$0) {
-      return $$0 instanceof dnl.b ? Either.left((dnl.b)$$0) : Either.right($$0 instanceof dnl.a ? Either.left((dnl.a)$$0) : Either.right((dnl.c)$$0));
-   }
-
-   int a(dno var1);
-
-   public static record a(int e) implements dnl {
-      public static final Codec<dnl.a> d = Codec.intRange(dkr.e, dkr.d).fieldOf("above_bottom").xmap(dnl.a::new, dnl.a::c).codec();
-
-      @Override
-      public int a(dno $$0) {
-         return $$0.a() + this.e;
+   public static record a(long a, long b) {
+      public dnl.a a(long $$0, long $$1) {
+         return new dnl.a(this.a ^ $$0, this.b ^ $$1);
       }
 
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
+      public dnl.a a(dnl.a $$0) {
+         return this.a($$0.a, $$0.b);
       }
 
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements dnl {
-      public static final Codec<dnl.b> d = Codec.intRange(dkr.e, dkr.d).fieldOf("absolute").xmap(dnl.b::new, dnl.b::c).codec();
-
-      @Override
-      public int a(dno $$0) {
-         return this.e;
+      public dnl.a a() {
+         return new dnl.a(dnl.a(this.a), dnl.a(this.b));
       }
 
-      @Override
-      public String toString() {
-         return this.e + " absolute";
+      public long b() {
+         return this.a;
       }
 
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements dnl {
-      public static final Codec<dnl.c> d = Codec.intRange(dkr.e, dkr.d).fieldOf("below_top").xmap(dnl.c::new, dnl.c::c).codec();
-
-      @Override
-      public int a(dno $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+      public long c() {
+         return this.b;
       }
    }
 }

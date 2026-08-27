@@ -1,24 +1,42 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dwr extends dwn {
-   public static final Codec<dwr> a = asu.j.fieldOf("chance").xmap(dwr::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class dwr extends dnt {
+   private final csz a;
+   private final djk b;
+   private final Optional<dwq> c;
 
-   private dwr(int $$0) {
-      this.c = $$0;
+   public dwr(csz $$0, djk $$1, Optional<dwq> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static dwr a(int $$0) {
-      return new dwr($$0);
+   public int a(dmw.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(dwm $$0, ats $$1, ht $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public dji a(crm $$0, dms.a $$1) {
+      return ((dke)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @Override
-   public dwp<?> b() {
-      return dwp.b;
+   public dhn a(hx $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.J_();
+   }
+
+   public csz d() {
+      return this.a;
+   }
+
+   public Optional<dwq> e() {
+      return this.c;
+   }
+
+   public djk f() {
+      return this.b;
    }
 }

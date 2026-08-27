@@ -1,35 +1,37 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
 import java.util.Objects;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class ayz extends DataFix {
-   public ayz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class ayz extends DataFix {
+   private final String a;
+
+   public ayz(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bat.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bat.z.typeName(), bcb.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
-            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
-            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-         } else {
-            return $$2x;
+      Type<Pair<String, String>> $$0 = DSL.named(bax.z.typeName(), bcf.a());
+      if (!Objects.equals(this.getInputSchema().getType(bax.z), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new ayz($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
          }
-      });
+      };
    }
 }

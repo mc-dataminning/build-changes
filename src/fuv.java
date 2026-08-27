@@ -1,16 +1,37 @@
-public abstract class fuv<T extends ccb, M extends fkg<T>> extends fwo<T, M> {
-   private static final agi a = new agi("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   protected fuv(fvx.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new fzv<>(this, $$2, $$3, $$0.g()));
+public class fuv implements fui.a {
+   private static final int a = 60;
+   private final Set<iy> b = Sets.newHashSet();
+
+   fuv() {
    }
 
-   public agi a(ccb $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gm();
+   public void a(iy $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(iy $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
+      hx $$5 = hx.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(eob $$0, fqz $$1, iy $$2) {
+      fui.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

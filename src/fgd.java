@@ -1,21 +1,22 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fgd {
-   public static final int a = -1;
-   private final List<fgb> b;
-   private final int c;
+public class fgd implements fgf {
+   private static final uv a = uv.c("spectatorMenu.root.prompt");
+   private final List<fgg> b = Lists.newArrayList();
 
-   public fgd(List<fgb> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fgd() {
+      this.b.add(new fgj());
+      this.b.add(new fgk());
    }
 
-   public fgb a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fgb)MoreObjects.firstNonNull(this.b.get($$0), ffz.a) : ffz.a;
+   @Override
+   public List<fgg> a() {
+      return this.b;
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   public uv b() {
+      return a;
    }
 }

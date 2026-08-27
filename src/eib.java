@@ -1,23 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
 
-public record eib(float b) implements ehw {
-   public static final Codec<eib> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eib::c)).apply($$0, eib::new));
+public interface eib extends efd, Predicate<efc> {
+   eic b();
 
-   @Override
-   public ehx b() {
-      return ehy.e;
-   }
+   @FunctionalInterface
+   public interface a {
+      eib build();
 
-   public boolean a(eex $$0) {
-      return $$0.b().i() < this.b;
-   }
+      default eib.a invert() {
+         return ehy.a(this);
+      }
 
-   public static ehw.a a(float $$0) {
-      return () -> new eib($$0);
-   }
+      default ehq.a or(eib.a $$0) {
+         return ehq.a(this, $$0);
+      }
 
-   public float c() {
-      return this.b;
+      default ehp.a and(eib.a $$0) {
+         return ehp.a(this, $$0);
+      }
    }
 }

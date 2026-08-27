@@ -1,34 +1,11 @@
-public class fym extends fvw<cao> {
-   private final fro a;
+public class fym extends fxi<byo, fjy<byo>> {
+   private static final agm a = new agm("textures/entity/tadpole/tadpole.png");
 
-   public fym(fvx.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fym(fwc.a $$0) {
+      super($$0, new fjy<>($$0.a(fks.bz)), 0.14F);
    }
 
-   public void a(cao $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = atm.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fyl.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public agi a(cao $$0) {
-      return gbt.e;
+   public agm a(byo $$0) {
+      return a;
    }
 }

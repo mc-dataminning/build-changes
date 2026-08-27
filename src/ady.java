@@ -1,79 +1,55 @@
-public class ady implements wk<acl> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final ht d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final dfn.a i;
+import javax.annotation.Nullable;
 
-   public ady(ht $$0, String $$1, dfn.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+public class ady implements wo<acp> {
+   private final ady.a a;
+   @Nullable
+   private final agm b;
+
+   public ady(ady.a $$0, @Nullable agm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ady(tu $$0) {
-      this.d = $$0.e();
-      this.e = $$0.s();
-      this.i = $$0.b(dfn.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+   public static ady a(af $$0) {
+      return new ady(ady.a.a, $$0.a());
+   }
+
+   public static ady a() {
+      return new ady(ady.a.b, null);
+   }
+
+   public ady(ty $$0) {
+      this.a = $$0.b(ady.a.class);
+      if (this.a == ady.a.a) {
+         this.b = $$0.t();
+      } else {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      if (this.a == ady.a.a) {
+         $$0.a(this.b);
       }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.d;
+   public ady.a d() {
+      return this.a;
    }
 
-   public String d() {
-      return this.e;
+   @Nullable
+   public agm e() {
+      return this.b;
    }
 
-   public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public dfn.a h() {
-      return this.i;
+   public static enum a {
+      a,
+      b;
    }
 }

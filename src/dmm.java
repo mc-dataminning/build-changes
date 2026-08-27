@@ -1,111 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dmm extends djf {
-   public static final Codec<dmm> c = RecordCodecBuilder.create($$0 -> $$0.group(dvk.a.fieldOf("settings").forGetter(dmm::g)).apply($$0, $$0.stable(dmm::new)));
-   private final dvk d;
-
-   public dmm(dvk $$0) {
-      super(new ctj($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+public abstract class dmm {
+   public static dmm.b a(int $$0, int $$1) {
+      return new dmm.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public djg a(id<dxn> $$0, dnf $$1, long $$2) {
-      Stream<ib<dxn>> $$3 = this.d.c().map(ig::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return djg.a($$1, $$2, this.b, $$3);
+   public static dmm.b b(int $$0, int $$1) {
+      return new dmm.b($$0, $$1);
    }
 
-   @Override
-   protected Codec<? extends djf> a() {
-      return c;
+   public static dmm a(int $$0) {
+      return new dmm.c($$0, false);
    }
 
-   public dvk g() {
-      return this.d;
+   public static dmm b(int $$0) {
+      return new dmm.c($$0 + 1, false);
    }
 
-   @Override
-   public void a(aml $$0, css $$1, dnf $$2, dje $$3) {
+   public static dmm c(int $$0) {
+      return new dmm.c($$0, true);
    }
 
-   @Override
-   public int a(csc $$0) {
-      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
+   public static dmm d(int $$0) {
+      return new dmm.c($$0 - 1, true);
    }
 
-   @Override
-   public CompletableFuture<dje> a(Executor $$0, dnt $$1, dnf $$2, css $$3, dje $$4) {
-      List<dhi> $$5 = this.d.f();
-      ht.a $$6 = new ht.a();
-      dmr $$7 = $$4.a(dmr.a.c);
-      dmr $$8 = $$4.a(dmr.a.a);
+   public static dmm a() {
+      return dmm.a.a;
+   }
 
-      for (int $$9 = 0; $$9 < Math.min($$4.J_(), $$5.size()); $$9++) {
-         dhi $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.I_() + $$9;
+   public static dmm a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
 
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
-            }
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dmm a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dmm b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dmm> a(csl $$0, hx $$1, int $$2, Predicate<dhn> $$3, Predicate<dhn> $$4) {
+      hx.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ib.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ib.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(csl $$0, int $$1, Predicate<dhn> $$2, Predicate<dhn> $$3, hx.a $$4, int $$5, ib $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dmm {
+      static final dmm.a a = new dmm.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dmm {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dmr.a $$2, csc $$3, dnf $$4) {
-      List<dhi> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size(), $$3.ak()) - 1; $$6 >= 0; $$6--) {
-         dhi $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.I_() + $$6 + 1;
-         }
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
-      return $$3.I_();
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   @Override
-   public csm a(int $$0, int $$1, csc $$2, dnf $$3) {
-      return new csm($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? cvc.a.o() : $$0x).toArray(dhi[]::new));
-   }
+   public static final class c extends dmm {
+      private final int a;
+      private final boolean b;
 
-   @Override
-   public void a(List<String> $$0, dnf $$1, ht $$2) {
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public void a(aml $$0, long $$1, dnf $$2, cta $$3, css $$4, dje $$5, dmn.a $$6) {
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   @Override
-   public void a(aml $$0) {
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   @Override
-   public int f() {
-      return 0;
-   }
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
 
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return -63;
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

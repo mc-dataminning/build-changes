@@ -1,49 +1,113 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public interface ecf extends eck {
-   @Nullable
-   djk a(iu var1);
+public final class ecf extends eco<ecg.a, ecg> {
+   private final hx.a g = new hx.a();
 
-   int b(ht var1);
+   public ecf(djx $$0) {
+      this($$0, new ecg($$0));
+   }
 
-   public static enum a implements ecf {
-      a;
+   @VisibleForTesting
+   public ecf(djx $$0, ecg $$1) {
+      super($$0, $$1);
+   }
 
-      @Nullable
-      @Override
-      public djk a(iu $$0) {
-         return null;
+   @Override
+   protected void a(long $$0) {
+      long $$1 = iy.e($$0);
+      if (this.f.b($$1)) {
+         dhn $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, eco.a.a($$4));
+         } else {
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, eco.a.a($$3, a($$2)));
+         }
       }
+   }
 
-      @Override
-      public int b(ht $$0) {
-         return 0;
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dhn $$3 = null;
+
+      for (ib $$4 : d) {
+         if (eco.a.a($$1, $$4)) {
+            long $$5 = hx.a($$0, $$4);
+            if (this.f.b(iy.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dhn $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = eco.a.b($$1) ? cvh.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, eco.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
+   }
 
-      @Override
-      public void a(ht $$0) {
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = eco.a.a($$1);
+
+      for (ib $$3 : d) {
+         if (eco.a.a($$1, $$3)) {
+            long $$4 = hx.a($$0, $$3);
+            if (this.f.b(iy.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dhn $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, eco.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, eco.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, eco.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
       }
+   }
 
-      @Override
-      public boolean K_() {
-         return false;
-      }
+   private int a(long $$0, dhn $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(iy.e($$0)) ? $$2 : 0;
+   }
 
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(iu $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(crh $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(crh $$0) {
+   @Override
+   public void b(crm $$0) {
+      this.a($$0, true);
+      djw $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), eco.a.a($$2, a($$1x)));
+         });
       }
    }
 }

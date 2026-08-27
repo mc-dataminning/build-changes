@@ -1,132 +1,59 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class aht {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, agh<csa>> a = ImmutableBiMap.of("o", csa.h, "n", csa.i, "e", csa.j);
-   @Nullable
-   private static ahl g;
-   @Nullable
-   private static ahk h;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.banip.failed"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)dv.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)dv.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    dv.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((du)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)dv.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 dv.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((du)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(dv.a("stop").executes($$0x -> a((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(dv.a("reason", ek.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ek.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(du $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> ur.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> ur.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(du $$0) {
-      if (g != null) {
-         $$0.b(ur.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(ur.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static int a(du $$0, String $$1, @Nullable uv $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
       } else {
-         return false;
+         amj $$3 = $$0.l().ae().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.A(), $$2);
+         } else {
+            throw a.create();
+         }
       }
    }
 
-   private static int a(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+   private static int b(du $$0, String $$1, @Nullable uv $$2) throws CommandSyntaxException {
+      apv $$3 = $$0.l().ae().g();
+      if ($$3.a($$1)) {
+         throw b.create();
       } else {
-         g = new ahl($$1, $$2, $$0.m().ae(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> ur.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(ur.b("Failed to start chase server on port " + $$2));
-            g = null;
+         List<amj> $$4 = $$0.l().ae().b($$1);
+         apw $$5 = new apw($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> uv.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> uv.a("commands.banip.info", $$4.size(), ge.a($$4)), true);
          }
 
-         return 0;
-      }
-   }
+         for (amj $$6 : $$4) {
+            $$6.c.b(uv.c("multiplayer.disconnect.ip_banned"));
+         }
 
-   private static int b(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new ahk($$1, $$2, $$0.m());
-         h.a();
-         $$0.a(
-            () -> ur.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+         return $$4.size();
       }
    }
 }

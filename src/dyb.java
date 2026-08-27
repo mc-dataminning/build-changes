@@ -1,67 +1,78 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dyb extends dye {
-   public static final Codec<dyb> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dyb::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final ig<csy> f;
+public record dyb(List<dxq> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final agm c = new agm("jigsaw");
+   private static final Map<agm, agm> d = ImmutableMap.builder()
+      .put(new agm("nvi"), c)
+      .put(new agm("pcp"), c)
+      .put(new agm("bastionremnant"), c)
+      .put(new agm("runtime"), c)
+      .build();
 
-   private static P9<Mu<dyb>, iw, dye.c, Float, Integer, Optional<dye.a>, Integer, Integer, Integer, ig<csy>> b(Instance<dyb> $$0) {
-      P5<Mu<dyb>, iw, dye.c, Float, Integer, Optional<dye.a>> $$1 = a($$0);
-      P4<Mu<dyb>, Integer, Integer, Integer, ig<csy>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(dyb::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(dyb::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(dyb::c),
-         iq.a(jz.ar).fieldOf("preferred_biomes").forGetter(dyb::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   public dyb(List<dxq> a) {
+      this.a = List.copyOf(a);
    }
 
-   public dyb(iw $$0, dye.c $$1, float $$2, int $$3, Optional<dye.a> $$4, int $$5, int $$6, int $$7, ig<csy> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public dyb(int $$0, int $$1, int $$2, ig<csy> $$3) {
-      this(iw.g, dye.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   public boolean a(hx $$0) {
+      for (dxq $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public ta a(dyc $$0) {
+      sj $$1 = new sj();
+
+      for (dxq $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static dyb a(sj $$0, dyc $$1) {
+      List<dxq> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         sd $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         agm $$6 = new agm($$5);
+         agm $$7 = d.getOrDefault($$6, $$6);
+         dyd $$8 = kc.T.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dxq $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dyb($$2);
    }
 
-   public int c() {
-      return this.e;
+   public dxe b() {
+      return dxq.a(this.a.stream());
    }
 
-   public ig<csy> d() {
-      return this.f;
-   }
-
-   @Override
-   protected boolean a(djg $$0, int $$1, int $$2) {
-      List<crh> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new crh($$1, $$2));
-   }
-
-   @Override
-   public dyf<?> e() {
-      return dyf.b;
+   public List<dxq> c() {
+      return this.a;
    }
 }

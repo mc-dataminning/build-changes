@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface eav<P extends eau> {
-   eav<eat> a = a("always_true", eat.a);
-   eav<ear> b = a("linear_pos", ear.a);
-   eav<eag> c = a("axis_aligned_linear_pos", eag.a);
+public class eav extends ebj {
+   public static final Codec<eav> a = Codec.unit(() -> eav.b);
+   public static final eav b = new eav();
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
+      hx $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(cvh.H);
+      return $$7 && !cvf.a($$4.b().j($$0, $$6)) ? new ebm.c($$6, cvh.H.o(), $$4.c()) : $$4;
+   }
 
-   static <P extends eau> eav<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.r, $$0, () -> $$1);
+   @Override
+   protected ebl<?> a() {
+      return ebl.m;
    }
 }

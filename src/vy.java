@@ -1,53 +1,74 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface vy extends us {
-   MapCodec<vy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(vy::b)).apply($$0, vy::a));
-   us.a<vy> b = new us.a<>(a, "text");
-   vy c = new vy() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public record vy(String d, @Nullable ge e) implements vx {
+   public static final MapCodec<vy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(vy::b)).apply($$0, vy::new));
+   public static final vx.a<vy> b = new vx.a<>(a, "entity");
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static vy a(String $$0) {
-      return (vy)($$0.isEmpty() ? c : new vy.a($$0));
+   public vy(String $$0) {
+      this($$0, a($$0));
    }
 
-   String b();
+   @Nullable
+   private static ge a(String $$0) {
+      try {
+         gf $$1 = new gf(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
 
    @Override
-   default us.a<?> a() {
+   public Stream<sd> a(du $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bkv> $$1 = this.e.b($$0);
+         return $$1.stream().map(cn::b);
+      } else {
+         return Stream.empty();
+      }
+   }
+
+   @Override
+   public vx.a<?> a() {
       return b;
    }
 
-   public static record a(String d) implements vy {
-      @Override
-      public <T> Optional<T> a(uw.a<T> $$0) {
-         return $$0.accept(this.d);
-      }
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
+   }
 
-      @Override
-      public <T> Optional<T> a(uw.b<T> $$0, vo $$1) {
-         return $$0.accept($$1, this.d);
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vy $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
+         return false;
       }
+   }
 
-      @Override
-      public String b() {
-         return this.d;
-      }
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public ge c() {
+      return this.e;
    }
 }

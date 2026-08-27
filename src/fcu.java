@@ -1,50 +1,24 @@
-public abstract class fcu<T extends cho> extends fbt<T> implements cgy {
-   private final agi x;
+public class fcu extends fby<chp> {
+   private static final agm x = new agm("container/grindstone/error");
+   private static final agm y = new agm("textures/gui/container/grindstone.png");
 
-   public fcu(T $$0, cdt $$1, ur $$2, agi $$3) {
+   public fcu(chp $$0, cdy $$1, uv $$2) {
       super($$0, $$1, $$2);
-      this.x = $$3;
-   }
-
-   protected void E() {
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.E();
-      this.p.a(this);
-   }
-
-   @Override
-   public void aG_() {
-      super.aG_();
-      this.p.b(this);
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
-   protected void d(euo $$0, int $$1, int $$2, float $$3) {
-   }
-
    @Override
-   protected void a(euo $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(euo var1, int var2, int var3);
-
-   @Override
-   public void a(cgm $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cgm $$0, int $$1, clj $$2) {
+   protected void a(eut $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
+      if ((this.p.b(0).g() || this.p.b(1).g()) && !this.p.b(2).g()) {
+         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

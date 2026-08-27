@@ -1,16 +1,22 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface ebc<P extends ebb> {
-   ebc<eaf> a = a("always_true", eaf.a);
-   ebc<eak> b = a("block_match", eak.a);
-   ebc<eam> c = a("blockstate_match", eam.a);
-   ebc<ebj> d = a("tag_match", ebj.a);
-   ebc<eay> e = a("random_block_match", eay.a);
-   ebc<eaz> f = a("random_blockstate_match", eaz.a);
+public class ebc extends ebj {
+   public final arz<cvf> a;
+   public static final Codec<ebc> b = arz.b(kd.e).xmap(ebc::new, $$0 -> $$0.a);
 
-   Codec<P> codec();
+   public ebc(arz<cvf> $$0) {
+      this.a = $$0;
+   }
 
-   static <P extends ebb> ebc<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.p, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
+      return dqa.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected ebl<?> a() {
+      return ebl.n;
    }
 }

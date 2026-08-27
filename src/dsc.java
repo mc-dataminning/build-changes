@@ -1,32 +1,36 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsc implements drz {
+public class dsc implements dse {
    public static final Codec<dsc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bic.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bia.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bia.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bia.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bia.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               big.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               big.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               big.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bie.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bie.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
             )
             .apply($$0, dsc::new)
    );
    public final int b;
-   public final bic c;
-   public final bia d;
-   public final float e;
-   public final bia f;
-   public final bia g;
-   public final bia h;
-   public final int i;
+   public final big c;
+   public final big d;
+   public final int e;
+   public final int f;
+   public final big g;
+   public final bie h;
+   public final bie i;
    public final float j;
+   public final int k;
+   public final int l;
 
-   public dsc(int $$0, bic $$1, bia $$2, float $$3, bia $$4, bia $$5, bia $$6, int $$7, float $$8) {
+   public dsc(int $$0, big $$1, big $$2, int $$3, int $$4, big $$5, bie $$6, bie $$7, float $$8, int $$9, int $$10) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -36,5 +40,7 @@ public class dsc implements drz {
       this.h = $$6;
       this.i = $$7;
       this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

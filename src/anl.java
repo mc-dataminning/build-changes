@@ -1,21 +1,36 @@
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+public class anl implements afo {
+   private static final uv a = uv.c("multiplayer.status.request_handled");
+   private final afn b;
+   private final tw c;
+   private boolean d;
 
-public class anl implements amu {
-   public static final amu.a a = new amu.a("server_resource_pack");
-   private final MinecraftServer.b b;
-
-   public anl(MinecraftServer.b $$0) {
+   public anl(afn $$0, tw $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(Consumer<wk<?>> $$0) {
-      $$0.accept(new ws(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
+   public void a(uv $$0) {
    }
 
    @Override
-   public amu.a a() {
-      return a;
+   public boolean c() {
+      return this.c.k();
+   }
+
+   @Override
+   public void a(afq $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new afm(this.b));
+      }
+   }
+
+   @Override
+   public void a(afp $$0) {
+      this.c.a(new afl($$0.a()));
+      this.c.a(a);
    }
 }

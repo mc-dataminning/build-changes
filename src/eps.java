@@ -1,32 +1,23 @@
 import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import java.util.Locale;
 
-public abstract class eps {
+public class eps extends epx implements epr {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
+
+   public eps(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
-
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
-         }
-      }
-
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
-   }
-
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

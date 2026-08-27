@@ -1,66 +1,44 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class gfb extends geq {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cdz p;
+   private final cfq q;
+   private final boolean r;
 
-public class gfb implements JsonDeserializer<gfa> {
-   private static final bia a = bhy.a(1.0F);
-
-   public gfa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = atc.m($$0, "entry");
-      boolean $$4 = atc.a($$3, "replace", false);
-      String $$5 = atc.a($$3, "subtitle", null);
-      List<gez> $$6 = this.a($$3);
-      return new gfa($$6, $$4, $$5);
+   public gfb(cdz $$0, cfq $$1, boolean $$2) {
+      super($$2 ? aqv.nA : aqv.nB, aqw.g, gfh.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gfh.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   private List<gez> a(JsonObject $$0) {
-      List<gez> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = atc.v($$0, "sounds");
+   @Override
+   public boolean s() {
+      return !this.q.aU();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (atc.a($$4)) {
-               String $$5 = atc.a($$4, "sound");
-               $$1.add(new gez($$5, a, a, 1, gez.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(atc.m($$4, "sound")));
-            }
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dI() || !this.p.bO() || this.p.da() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dq().h();
+         if ($$0 >= 0.01F) {
+            this.d = atq.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
       }
-
-      return $$1;
-   }
-
-   private gez b(JsonObject $$0) {
-      String $$1 = atc.i($$0, "name");
-      gez.a $$2 = this.a($$0, gez.a.a);
-      float $$3 = atc.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = atc.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = atc.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = atc.a($$0, "preload", false);
-      boolean $$7 = atc.a($$0, "stream", false);
-      int $$8 = atc.a($$0, "attenuation_distance", 16);
-      return new gez($$1, bhy.a($$3), bhy.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gez.a a(JsonObject $$0, gez.a $$1) {
-      gez.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gez.a.a(atc.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

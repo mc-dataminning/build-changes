@@ -1,31 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cwu extends cva {
-   public static final MapCodec<cwu> a = b(cwu::new);
-   private static final ur b = ur.c("container.crafting");
+public class cwu extends cvf {
+   public static final MapCodec<cvf> a = kc.f.q().fieldOf("dead");
+   public static final MapCodec<cwu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, cwu::new));
+   private final cvf c;
 
-   @Override
-   public MapCodec<? extends cwu> a() {
-      return a;
+   public cwu(cvf $$0, dhm.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   protected cwu(dhh.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<cwu> a() {
+      return b;
    }
 
    @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      if ($$1.B) {
-         return bix.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arb.an);
-         return bix.b;
+   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.o(), 2);
       }
    }
 
    @Override
-   public bja b(dhi $$0, csa $$1, ht $$2) {
-      return new bjf(($$2x, $$3, $$4) -> new chd($$2x, $$3, cgx.a($$1, $$2)), b);
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.F_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(crl $$0, hx $$1) {
+      for (ib $$2 : ib.values()) {
+         ecx $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(arp.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public dhn a(cnw $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().F_().a(40));
+      }
+
+      return this.o();
    }
 }

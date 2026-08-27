@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record aff() implements afd {
+   public static final aff a = new aff();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aff {
+   @Override
+   public void a(ty $$0) {
+   }
 }

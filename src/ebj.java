@@ -1,20 +1,15 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ebj extends ebb {
-   public static final Codec<ebj> a = arv.a(jz.e).fieldOf("tag").xmap(ebj::new, $$0 -> $$0.b).codec();
-   private final arv<cva> b;
-
-   public ebj(arv<cva> $$0) {
-      this.b = $$0;
+public abstract class ebj {
+   @Nullable
+   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
+      return $$4;
    }
 
-   @Override
-   public boolean a(dhi $$0, ats $$1) {
-      return $$0.a(this.b);
-   }
+   protected abstract ebl<?> a();
 
-   @Override
-   protected ebc<?> a() {
-      return ebc.d;
+   public List<ebm.c> a(csu $$0, hx $$1, hx $$2, List<ebm.c> $$3, List<ebm.c> $$4, ebi $$5) {
+      return $$4;
    }
 }

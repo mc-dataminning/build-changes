@@ -1,58 +1,43 @@
-import com.google.common.collect.ImmutableList;
+public class fji<T extends bkv> extends fid<T> {
+   private static final String a = "body_front";
+   private static final String b = "body_back";
+   private final fkt f;
+   private final fkt g;
 
-public class fji<T extends cbo> extends fih<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fko f;
-   private final fko g;
-   private final fko h;
-
-   public fji(fko $$0) {
-      super(frc::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fji(fkt $$0) {
+      this.f = $$0;
+      this.g = $$0.b("body_back");
    }
 
-   public static fku a() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      $$1.a("lid", fkt.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fkq.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fkt.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fkq.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fkt.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fkq.a(0.0F, 12.0F, 0.0F));
-      return fku.a($$0, 64, 64);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + atm.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = atm.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + atm.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
+   public static fkz b() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      int $$2 = 20;
+      flc $$3 = $$1.a("body_front", fky.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fkv.a(0.0F, 20.0F, 0.0F));
+      flc $$4 = $$1.a("body_back", fky.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fkv.a(0.0F, 20.0F, 8.0F));
+      $$1.a("head", fky.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fkv.a(0.0F, 20.0F, 0.0F));
+      $$4.a("back_fin", fky.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fkv.a(0.0F, 0.0F, 8.0F));
+      $$3.a("top_front_fin", fky.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fkv.a(0.0F, -4.5F, 5.0F));
+      $$4.a("top_back_fin", fky.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fkv.a(0.0F, -4.5F, -1.0F));
+      $$1.a("right_fin", fky.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkv.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fky.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkv.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      return fkz.a($$0, 32, 32);
    }
 
    @Override
-   public Iterable<fko> d() {
-      return ImmutableList.of(this.f, this.g);
+   public fkt a() {
+      return this.f;
    }
 
-   public fko b() {
-      return this.g;
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
 
-   public fko c() {
-      return this.h;
+      this.g.f = -$$6 * 0.25F * atq.a($$7 * 0.6F * $$3);
    }
 }

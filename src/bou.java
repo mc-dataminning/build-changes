@@ -1,65 +1,15 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bou {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
+   public static bnd<bll> a() {
+      return bqo.a((Function<bqo.b<bll>, ? extends App<bqo.c<bll>, bqr<bll>>>)($$0 -> $$0.group($$0.b(bum.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cfg $$3 = $$0xx.c($$1.dn());
+               if ($$3 == null) {
+                  $$1.dP().a(cfk.j);
+               }
 
-   public static bmy<blp> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return bqj.a(
-         (Function<bqj.b<blp>, ? extends App<bqj.c<blp>, bqm<blp>>>)($$3 -> $$3.group($$3.c(buh.m), $$3.c(buh.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.W() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        bwf $$7 = $$4x.x();
-                        Optional<ht> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(bwj.n), $$5.dn(), 48, bwf.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dn()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.W() + (long)$$4x.E_().a(20));
-                           Predicate<ht> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<ib<bwi>, ht>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(bwj.n), $$10, $$5.dn(), 48, bwf.b.c).collect(Collectors.toSet());
-                           edh $$12 = bmq.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              ht $$13 = $$12.l();
-                              Optional<ib<bwi>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new buk($$13, $$0, 1));
-                                 ack.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+               return true;
+            })));
    }
 }

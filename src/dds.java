@@ -1,20 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dds extends cyo {
-   public static final MapCodec<dds> c = b(dds::new);
-   public static final ekn e = cva.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dds extends cwi {
+   public static final MapCodec<dds> n = b(dds::new);
 
    @Override
    public MapCodec<dds> a() {
-      return c;
+      return n;
    }
 
-   public dds(dhh.d $$0) {
-      super($$0, hx.b, e, false);
+   public dds(dhm.d $$0) {
+      super($$0, () -> dfk.c);
    }
 
    @Override
-   protected cyp c() {
-      return (cyp)cvc.oB;
+   public dfi a(hx $$0, dhn $$1) {
+      return new dha($$0, $$1);
+   }
+
+   @Override
+   protected arc<agm> c() {
+      return arf.i.b(arf.ai);
+   }
+
+   @Override
+   public boolean f_(dhn $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dhn $$0, crl $$1, hx $$2, ib $$3) {
+      return atq.a(dfp.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   public int b(dhn $$0, crl $$1, hx $$2, ib $$3) {
+      return $$3 == ib.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

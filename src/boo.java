@@ -1,71 +1,54 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class boo {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
-
-   public static boh<blp> a(float $$0) {
-      return a($$0, true);
+   public static bnd<cdm> a() {
+      return bqo.a(
+         (Function<bqo.b<cdm>, ? extends App<bqo.c<cdm>, bqr<cdm>>>)($$0 -> $$0.group($$0.b(bum.c), $$0.b(bum.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ie $$6 = $$0.b($$1);
+                        $$3.x()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bll>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cdm && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cdm)$$0xxxx)
+                                    .filter(bll::bx)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, boo::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   public static boh<blp> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> bvz.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bc());
-   }
-
-   public static bmy<blp> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> bvz.a($$2x, $$1, $$2), $$0x -> true);
-   }
-
-   public static bmy<blp> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
-   }
-
-   public static bmy<blp> c(float $$0) {
-      return a($$0, boo::a, bkq::bc);
-   }
-
-   private static boh<blp> a(float $$0, Function<blp, eju> $$1, Predicate<blp> $$2) {
-      return bqj.a((Function<bqj.b<blp>, ? extends App<bqj.c<blp>, bqm<blp>>>)($$3 -> $$3.group($$3.c(buh.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<eju> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new buk($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static eju a(blp $$0) {
-      eju $$1 = null;
-      eju $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bmz.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dl().e($$0.dl().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
-         }
-
-         if ($$2 == null || $$0.dN().b_(ht.a($$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
+   private static cdm a(cdm $$0, cdm $$1) {
+      cdm $$2;
+      cdm $$3;
+      if ($$0.w() > $$1.w()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
       }
 
+      $$3.dP().b(bum.c);
       return $$2;
    }
 
-   @Nullable
-   private static eju a(blp $$0, int $$1, int $$2) {
-      eju $$3 = $$0.f(0.0F);
-      return bvu.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+   private static boolean a(ie $$0, ig<bwn> $$1, cdm $$2) {
+      Optional<ie> $$3 = $$2.dP().c(bum.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gq().b());
+   }
+
+   private static boolean a(ig<bwn> $$0, cdp $$1) {
+      return $$1.b().test($$0);
    }
 }

@@ -1,91 +1,20 @@
-public class dev {
-   public static final agh<deu> a = a("base");
-   public static final agh<deu> b = a("square_bottom_left");
-   public static final agh<deu> c = a("square_bottom_right");
-   public static final agh<deu> d = a("square_top_left");
-   public static final agh<deu> e = a("square_top_right");
-   public static final agh<deu> f = a("stripe_bottom");
-   public static final agh<deu> g = a("stripe_top");
-   public static final agh<deu> h = a("stripe_left");
-   public static final agh<deu> i = a("stripe_right");
-   public static final agh<deu> j = a("stripe_center");
-   public static final agh<deu> k = a("stripe_middle");
-   public static final agh<deu> l = a("stripe_downright");
-   public static final agh<deu> m = a("stripe_downleft");
-   public static final agh<deu> n = a("small_stripes");
-   public static final agh<deu> o = a("cross");
-   public static final agh<deu> p = a("straight_cross");
-   public static final agh<deu> q = a("triangle_bottom");
-   public static final agh<deu> r = a("triangle_top");
-   public static final agh<deu> s = a("triangles_bottom");
-   public static final agh<deu> t = a("triangles_top");
-   public static final agh<deu> u = a("diagonal_left");
-   public static final agh<deu> v = a("diagonal_up_right");
-   public static final agh<deu> w = a("diagonal_up_left");
-   public static final agh<deu> x = a("diagonal_right");
-   public static final agh<deu> y = a("circle");
-   public static final agh<deu> z = a("rhombus");
-   public static final agh<deu> A = a("half_vertical");
-   public static final agh<deu> B = a("half_horizontal");
-   public static final agh<deu> C = a("half_vertical_right");
-   public static final agh<deu> D = a("half_horizontal_bottom");
-   public static final agh<deu> E = a("border");
-   public static final agh<deu> F = a("curly_border");
-   public static final agh<deu> G = a("gradient");
-   public static final agh<deu> H = a("gradient_up");
-   public static final agh<deu> I = a("bricks");
-   public static final agh<deu> J = a("globe");
-   public static final agh<deu> K = a("creeper");
-   public static final agh<deu> L = a("skull");
-   public static final agh<deu> M = a("flower");
-   public static final agh<deu> N = a("mojang");
-   public static final agh<deu> O = a("piglin");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static agh<deu> a(String $$0) {
-      return agh.a(jz.c, new agi($$0));
+public class dev extends ded {
+   public static final MapCodec<dev> b = b(dev::new);
+
+   @Override
+   public MapCodec<dev> a() {
+      return b;
    }
 
-   public static deu a(io<deu> $$0) {
-      io.a($$0, a, new deu("b"));
-      io.a($$0, b, new deu("bl"));
-      io.a($$0, c, new deu("br"));
-      io.a($$0, d, new deu("tl"));
-      io.a($$0, e, new deu("tr"));
-      io.a($$0, f, new deu("bs"));
-      io.a($$0, g, new deu("ts"));
-      io.a($$0, h, new deu("ls"));
-      io.a($$0, i, new deu("rs"));
-      io.a($$0, j, new deu("cs"));
-      io.a($$0, k, new deu("ms"));
-      io.a($$0, l, new deu("drs"));
-      io.a($$0, m, new deu("dls"));
-      io.a($$0, n, new deu("ss"));
-      io.a($$0, o, new deu("cr"));
-      io.a($$0, p, new deu("sc"));
-      io.a($$0, q, new deu("bt"));
-      io.a($$0, r, new deu("tt"));
-      io.a($$0, s, new deu("bts"));
-      io.a($$0, t, new deu("tts"));
-      io.a($$0, u, new deu("ld"));
-      io.a($$0, v, new deu("rd"));
-      io.a($$0, w, new deu("lud"));
-      io.a($$0, x, new deu("rud"));
-      io.a($$0, y, new deu("mc"));
-      io.a($$0, z, new deu("mr"));
-      io.a($$0, A, new deu("vh"));
-      io.a($$0, B, new deu("hh"));
-      io.a($$0, C, new deu("vhr"));
-      io.a($$0, D, new deu("hhb"));
-      io.a($$0, E, new deu("bo"));
-      io.a($$0, F, new deu("cbo"));
-      io.a($$0, G, new deu("gra"));
-      io.a($$0, H, new deu("gru"));
-      io.a($$0, I, new deu("bri"));
-      io.a($$0, J, new deu("glb"));
-      io.a($$0, K, new deu("cre"));
-      io.a($$0, L, new deu("sku"));
-      io.a($$0, M, new deu("flo"));
-      io.a($$0, N, new deu("moj"));
-      return io.a($$0, O, new deu("pig"));
+   protected dev(dhm.d $$0) {
+      super(dcg.b.d, $$0);
+   }
+
+   @Override
+   public void a(csf $$0, hx $$1, dhn $$2, @Nullable bll $$3, clo $$4) {
+      cvh.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

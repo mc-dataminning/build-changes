@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class brh implements brf {
+   private final bln b;
+   protected boolean a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface brh {
+   public brh(bln $$0) {
+      this.b = $$0;
+   }
+
+   public void a() {
+      this.a = true;
+   }
+
+   public void b() {
+      this.b.r(this.a);
+      this.a = false;
+   }
 }

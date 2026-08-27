@@ -1,32 +1,98 @@
-public class acp implements wk<acl> {
-   private final int a;
-   private final ht b;
-
-   public acp(int $$0, ht $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public acp(tu $$0) {
-      this.a = $$0.n();
-      this.b = $$0.e();
-   }
-
+public interface acp extends acr, wy {
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   default tx b() {
+      return tx.b;
    }
 
-   public void a(acl $$0) {
-      $$0.a(this);
-   }
+   void a(aei var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(acx var1);
 
-   public ht d() {
-      return this.b;
-   }
+   void a(acw var1);
+
+   void a(acv var1);
+
+   void a(ada var1);
+
+   void a(add var1);
+
+   void a(ade var1);
+
+   void a(adq var1);
+
+   void a(adf var1);
+
+   void a(adj var1);
+
+   void a(adm var1);
+
+   void a(adr var1);
+
+   void a(ads var1);
+
+   void a(adt var1);
+
+   void a(adu var1);
+
+   void a(aeb var1);
+
+   void a(aee var1);
+
+   void a(aeh var1);
+
+   void a(aek var1);
+
+   void a(ael var1);
+
+   void a(aej var1);
+
+   void a(ado var1);
+
+   void a(adn var1);
+
+   void a(acs var1);
+
+   void a(adw var1);
+
+   void a(adv var1);
+
+   void a(ady var1);
+
+   void a(adb var1);
+
+   void a(aec var1);
+
+   void a(aed var1);
+
+   void a(adp var1);
+
+   void a(adx var1);
+
+   void a(aea var1);
+
+   void a(aeg var1);
+
+   void a(adz var1);
+
+   void a(adh var1);
+
+   void a(adi var1);
+
+   void a(adg var1);
+
+   void a(act var1);
+
+   void a(aef var1);
+
+   void a(adk var1);
+
+   void a(acu var1);
+
+   void a(adl var1);
+
+   void a(acy var1);
+
+   void a(adc var1);
+
+   void a(acz var1);
 }

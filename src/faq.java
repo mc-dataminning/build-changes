@@ -1,276 +1,105 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class faq extends fau {
-   static final agi b = new agi("container/slot");
-   static final Logger c = LogUtils.getLogger();
-   private static final int k = 18;
-   private static final int l = 20;
-   private static final int m = 1;
-   private static final int n = 1;
-   private static final int o = 2;
-   private static final int p = 2;
-   private static final agh<csy> q = ctf.b;
-   public static final ur a = ur.c("flat_world_preset.unknown");
-   private final ezq r;
-   private ur t;
-   private ur u;
-   private faq.a v;
-   private euz w;
-   evi x;
-   dvk y;
+public class faq extends faz {
+   private static final uv a = uv.c("options.skinCustomisation");
+   private static final uv b = uv.c("options.sounds");
+   private static final uv c = uv.c("options.video");
+   private static final uv k = uv.c("options.controls");
+   private static final uv l = uv.c("options.language");
+   private static final uv m = uv.c("options.chat");
+   private static final uv n = uv.c("options.resourcepack");
+   private static final uv o = uv.c("options.accessibility");
+   private static final uv p = uv.c("options.telemetry");
+   private static final uv q = uv.c("options.credits_and_attribution");
+   private static final int r = 2;
+   private final faz t;
+   private final etm u;
+   private evl<biy> v;
+   private evu w;
 
-   public faq(ezq $$0) {
-      super(ur.c("createWorld.customize.presets.title"));
-      this.r = $$0;
+   public faq(faz $$0, etm $$1) {
+      super(uv.c("options.title"));
+      this.t = $$0;
+      this.u = $$1;
    }
 
-   @Nullable
-   private static dvh a(ic<cva> $$0, String $$1, int $$2) {
-      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
-      int $$5;
-      String $$4;
-      if ($$3.size() == 2) {
-         $$4 = $$3.get(1);
-
-         try {
-            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
-         } catch (NumberFormatException var11) {
-            c.error("Error while parsing flat world string", var11);
-            return null;
-         }
-      } else {
-         $$4 = $$3.get(0);
-         $$5 = 1;
-      }
-
-      int $$9 = Math.min($$2 + $$5, dkr.c);
-      int $$10 = $$9 - $$2;
-
-      Optional<ib.c<cva>> $$11;
-      try {
-         $$11 = $$0.a(agh.a(jz.e, new agi($$4)));
-      } catch (Exception var10) {
-         c.error("Error while parsing flat world string", var10);
-         return null;
-      }
-
-      if ($$11.isEmpty()) {
-         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
-         return null;
-      } else {
-         return new dvh($$10, $$11.get().a());
-      }
+   @Override
+   protected void aQ_() {
+      eyn $$0 = new eyn();
+      $$0.c().f(5).e(4).b();
+      eyn.b $$1 = $$0.d(2);
+      $$1.a(this.u.ae().a(this.f.m, 0, 0, 150));
+      $$1.a(this.l());
+      $$1.a(eyt.b(26), 2);
+      $$1.a(this.a(a, () -> new fbc(this, this.u)));
+      $$1.a(this.a(b, () -> new fbd(this, this.u)));
+      $$1.a(this.a(c, () -> new fbg(this, this.u)));
+      $$1.a(this.a(k, () -> new fbr(this, this.u)));
+      $$1.a(this.a(l, () -> new fai(this, this.u, this.f.ad())));
+      $$1.a(this.a(m, () -> new ezp(this, this.u)));
+      $$1.a(this.a(n, () -> new feg(this.f.Z(), this::a, this.f.ac(), uv.c("resourcePack.title"))));
+      $$1.a(this.a(o, () -> new ezl(this, this.u)));
+      $$1.a(this.a(p, () -> new ffm(this, this.u)));
+      $$1.a(this.a(q, () -> new ezw(this)));
+      $$1.a(eve.a(uu.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
+      $$0.a();
+      eym.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
+      $$0.a(this::d);
    }
 
-   private static List<dvh> a(ic<cva> $$0, String $$1) {
-      List<dvh> $$2 = Lists.newArrayList();
-      String[] $$3 = $$1.split(",");
-      int $$4 = 0;
-
-      for (String $$5 : $$3) {
-         dvh $$6 = a($$0, $$5, $$4);
-         if ($$6 == null) {
-            return Collections.emptyList();
-         }
-
-         $$2.add($$6);
-         $$4 += $$6.a();
-      }
-
-      return $$2;
+   private void a(aow $$0) {
+      this.u.a($$0);
+      this.f.a(this);
    }
 
-   public static dvk a(ic<cva> $$0, ic<csy> $$1, ic<dxn> $$2, ic<dwl> $$3, String $$4, dvk $$5) {
-      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
-      if (!$$6.hasNext()) {
-         return dvk.a($$1, $$2, $$3);
-      } else {
-         List<dvh> $$7 = a($$0, $$6.next());
-         if ($$7.isEmpty()) {
-            return dvk.a($$1, $$2, $$3);
+   private eyq l() {
+      if (this.f.r != null && this.f.R()) {
+         this.v = a(0, 0, "options.difficulty", this.f);
+         if (!this.f.r.k().n()) {
+            this.w = new evu(0, 0, $$0x -> this.f.a(new ezs(this::c, uv.c("difficulty.lock.title"), uv.a("difficulty.lock.question", this.f.r.k().s().b()))));
+            this.v.d(this.v.k() - this.w.k());
+            this.w.b(this.f.r.k().t());
+            this.w.i = !this.w.a();
+            this.v.i = !this.w.a();
+            eyl $$0 = new eyl(150, 0, eyl.b.a);
+            $$0.a(this.v);
+            $$0.a(this.w);
+            return $$0;
          } else {
-            ib.c<csy> $$8 = $$1.b(q);
-            ib<csy> $$9 = $$8;
-            if ($$6.hasNext()) {
-               String $$10 = $$6.next();
-               $$9 = Optional.ofNullable(agi.a($$10)).map($$0x -> agh.a(jz.ar, $$0x)).flatMap($$1::a).orElseGet(() -> {
-                  c.warn("Invalid biome: {}", $$10);
-                  return $$8;
-               });
-            }
-
-            return $$5.a($$7, $$5.c(), $$9);
+            this.v.i = false;
+            return this.v;
          }
+      } else {
+         return eve.a(uv.c("options.online"), $$0x -> this.f.a(fap.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
       }
    }
 
-   static String a(dvk $$0) {
-      StringBuilder $$1 = new StringBuilder();
+   public static evl<biy> a(int $$0, int $$1, String $$2, eti $$3) {
+      return evl.a(biy::b).a(biy.values()).a($$3.r.aj()).a($$0, $$1, 150, 20, uv.c($$2), ($$1x, $$2x) -> $$3.I().b(new acu($$2x)));
+   }
 
-      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
-         if ($$2 > 0) {
-            $$1.append(",");
-         }
-
-         $$1.append($$0.e().get($$2));
+   private void c(boolean $$0) {
+      this.f.a(this);
+      if ($$0 && this.f.r != null) {
+         this.f.I().b(new adl(true));
+         this.w.b(true);
+         this.w.i = false;
+         this.v.i = false;
       }
-
-      $$1.append(";");
-      $$1.append($$0.d().e().map(agh::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-      return $$1.toString();
    }
 
    @Override
-   protected void aP_() {
-      this.t = ur.c("createWorld.customize.presets.share");
-      this.u = ur.c("createWorld.customize.presets.list");
-      this.x = new evi(this.i, 50, 40, this.g - 100, 20, this.t);
-      this.x.l(1230);
-      ffs $$0 = this.r.a.l().k();
-      ip $$1 = $$0.a();
-      cgd $$2 = $$0.g().b();
-      ic<csy> $$3 = $$1.b(jz.ar);
-      ic<dxn> $$4 = $$1.b(jz.aD);
-      ic<dwl> $$5 = $$1.b(jz.aA);
-      ic<cva> $$6 = $$1.b(jz.e).a($$2);
-      this.x.a(a(this.r.k()));
-      this.y = this.r.k();
-      this.e(this.x);
-      this.v = new faq.a($$1, $$2);
-      this.e(this.v);
-      this.w = this.d(euz.a(ur.c("createWorld.customize.presets.select"), $$4x -> {
-         dvk $$5x = a($$6, $$3, $$4, $$5, this.x.a(), this.y);
-         this.r.a($$5x);
-         this.f.a(this.r);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(euz.a(uq.e, $$0x -> this.f.a(this.r)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.c(this.v.f() != null);
+   public void aH_() {
+      this.u.as();
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.v.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(etd $$0, int $$1, int $$2) {
-      String $$3 = this.x.a();
-      this.b($$0, $$1, $$2);
-      this.x.a($$3);
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.r);
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.v.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 400.0F);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.b(this.i, this.t, 51, 30, 10526880);
-      $$0.b(this.i, this.u, 51, 70, 10526880);
-      $$0.c().b();
-      this.x.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 
-   @Override
-   public void c(boolean $$0) {
-      this.w.i = $$0 || this.x.a().length() > 1;
-   }
-
-   class a extends evv<faq.a.a> {
-      public a(ip $$0, cgd $$1) {
-         super(faq.this.f, faq.this.g, faq.this.h, 80, faq.this.h - 37, 24);
-
-         for (ib<dvi> $$2 : $$0.d(jz.ax).c(ark.a)) {
-            Set<cva> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
-            if (!$$3.isEmpty()) {
-               faq.c
-                  .info(
-                     "Discarding flat world preset {} since it contains experimental blocks {}",
-                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
-                     $$3
-                  );
-            } else {
-               this.b(new faq.a.a($$2));
-            }
-         }
-      }
-
-      public void a(@Nullable faq.a.a $$0) {
-         super.a($$0);
-         faq.this.c($$0 != null);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (super.a($$0, $$1, $$2)) {
-            return true;
-         } else {
-            if (eyx.a($$0) && this.f() != null) {
-               this.f().b();
-            }
-
-            return false;
-         }
-      }
-
-      public class a extends evv.a<faq.a.a> {
-         private static final agi b = new agi("textures/gui/container/stats_icons.png");
-         private final dvi c;
-         private final ur d;
-
-         public a(ib<dvi> $$1) {
-            this.c = $$1.a();
-            this.d = $$1.e().map($$0x -> ur.c($$0x.a().f("flat_world_preset"))).orElse(faq.a);
-         }
-
-         @Override
-         public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            this.a($$0, $$3, $$2, this.c.a().a());
-            $$0.a(faq.this.i, this.d, $$3 + 18 + 5, $$2 + 6, 16777215, false);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            return true;
-         }
-
-         void b() {
-            a.this.a(this);
-            faq.this.y = this.c.b();
-            faq.this.x.a(faq.a(faq.this.y));
-            faq.this.x.b(false);
-         }
-
-         private void a(euo $$0, int $$1, int $$2, cle $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            $$0.b(new clj($$3), $$1 + 2, $$2 + 2);
-         }
-
-         private void a(euo $$0, int $$1, int $$2) {
-            $$0.a(faq.b, $$1, $$2, 0, 18, 18);
-         }
-
-         @Override
-         public ur a() {
-            return ur.a("narrator.select", this.d);
-         }
-      }
+   private eve a(uv $$0, Supplier<faz> $$1) {
+      return eve.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

@@ -1,58 +1,95 @@
-public class fsy implements fsu<dfh> {
-   private final fwv a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fsy(fsv.a $$0) {
-      this.a = $$0.d();
+public class fsy implements apm {
+   private Map<dfk<?>, fsz<?>> d = ImmutableMap.of();
+   private final eur e;
+   private final fkp f;
+   public csf a;
+   public est b;
+   public ejx c;
+   private final Supplier<frt> g;
+   private final Supplier<fxa> h;
+   private final Supplier<fwa> i;
+
+   public fsy(eur $$0, fkp $$1, Supplier<frt> $$2, Supplier<fxa> $$3, Supplier<fwa> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(dfh $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      if ($$0.k() != null) {
-         int $$6 = $$0.q().c(dhy.bv);
-         if ($$6 > 0) {
-            hx $$7 = $$0.f();
-            if ($$7 != null) {
-               clj $$8 = $$0.g();
-               if (!$$8.b()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == hx.f || $$7 == hx.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = fqs.a($$0.k(), $$0.q(), $$0.p().a($$7));
-                  this.a.a($$8, clg.i, $$11, gbl.d, $$2, $$3, $$0.k(), 0);
-                  $$2.b();
-               }
+   @Nullable
+   public <E extends dfi> fsz<E> a(E $$0) {
+      return (fsz<E>)this.d.get($$0.v());
+   }
+
+   public void a(csf $$0, est $$1, ejx $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dfi> void a(E $$0, float $$1, eob $$2, fqz $$3) {
+      fsz<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.n() && $$0.v().a($$0.r())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
          }
       }
    }
 
-   private float[] a(hx $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+   private static <T extends dfi> void a(fsz<T> $$0, T $$1, float $$2, eob $$3, fqz $$4) {
+      csf $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fqx.a($$5, $$1.aC_());
+      } else {
+         $$6 = 15728880;
       }
 
-      return $$2;
+      $$0.a($$1, $$2, $$3, $$4, $$6, gbq.d);
+   }
+
+   public <E extends dfi> boolean a(E $$0, eob $$1, fqz $$2, int $$3, int $$4) {
+      fsz<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dfi $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable csf $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(apl $$0) {
+      fta.a $$1 = new fta.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = ftb.a($$1);
    }
 }

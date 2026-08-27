@@ -1,25 +1,27 @@
-public class gab extends gaf<bxg, fio<bxg>> {
-   private final fqq a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gab(fxs<bxg, fio<bxg>> $$0, fqq $$1) {
+public class gab extends gak<bxi, fij<bxi>> {
+   private static final Map<bxi.a, agm> a = ImmutableMap.of(
+      bxi.a.b,
+      new agm("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bxi.a.c,
+      new agm("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bxi.a.d,
+      new agm("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gab(fxx<bxi, fij<bxi>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bxg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      clj $$10 = $$3.c(bkv.a);
-      if ($$3.A() && !$$3.gx()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gl()) {
-            $$11 -= 0.2F * atm.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * atm.a($$7 * 0.6F);
+   public void a(eob $$0, fqz $$1, int $$2, bxi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         bxi.a $$10 = $$3.w();
+         if ($$10 != bxi.a.a) {
+            agm $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, clg.h, false, $$0, $$1, $$2);
-         $$0.b();
       }
    }
 }

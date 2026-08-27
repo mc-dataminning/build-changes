@@ -1,505 +1,548 @@
-import com.google.common.collect.Iterators;
+import com.google.common.collect.AbstractIterator;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayDeque;
+import java.util.Optional;
+import java.util.Queue;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import java.util.stream.StreamSupport;
+import javax.annotation.concurrent.Immutable;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public enum hx implements aug {
-   a(0, 1, -1, "down", hx.b.b, hx.a.b, new iw(0, -1, 0)),
-   b(1, 0, -1, "up", hx.b.a, hx.a.b, new iw(0, 1, 0)),
-   c(2, 3, 2, "north", hx.b.b, hx.a.c, new iw(0, 0, -1)),
-   d(3, 2, 0, "south", hx.b.a, hx.a.c, new iw(0, 0, 1)),
-   e(4, 5, 1, "west", hx.b.b, hx.a.a, new iw(-1, 0, 0)),
-   f(5, 4, 3, "east", hx.b.a, hx.a.a, new iw(1, 0, 0));
+@Immutable
+public class hx extends ja {
+   public static final Codec<hx> a = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new hx($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
+      .stable();
+   private static final Logger d = LogUtils.getLogger();
+   public static final hx b = new hx(0, 0, 0);
+   private static final int e = 1 + atq.f(atq.c(30000000));
+   private static final int h = e;
+   public static final int c = 64 - e - h;
+   private static final long i = (1L << e) - 1L;
+   private static final long j = (1L << c) - 1L;
+   private static final long k = (1L << h) - 1L;
+   private static final int l = 0;
+   private static final int m = c;
+   private static final int n = c + h;
 
-   public static final aug.a<hx> g = aug.a(hx::values);
-   public static final Codec<hx> h = asu.a(g, hx::a);
-   private final int i;
-   private final int j;
-   private final int k;
-   private final String l;
-   private final hx.a m;
-   private final hx.b n;
-   private final iw o;
-   private static final hx[] p = values();
-   private static final hx[] q = Arrays.stream(p).sorted(Comparator.comparingInt($$0 -> $$0.i)).toArray(hx[]::new);
-   private static final hx[] r = Arrays.stream(p).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(hx[]::new);
-
-   private hx(int $$0, int $$1, int $$2, String $$3, hx.b $$4, hx.a $$5, iw $$6) {
-      this.i = $$0;
-      this.k = $$2;
-      this.j = $$1;
-      this.l = $$3;
-      this.m = $$5;
-      this.n = $$4;
-      this.o = $$6;
+   public hx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static hx[] a(bkq $$0) {
-      float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
-      float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = atm.a($$1);
-      float $$4 = atm.b($$1);
-      float $$5 = atm.a($$2);
-      float $$6 = atm.b($$2);
-      boolean $$7 = $$5 > 0.0F;
-      boolean $$8 = $$3 < 0.0F;
-      boolean $$9 = $$6 > 0.0F;
-      float $$10 = $$7 ? $$5 : -$$5;
-      float $$11 = $$8 ? -$$3 : $$3;
-      float $$12 = $$9 ? $$6 : -$$6;
-      float $$13 = $$10 * $$4;
-      float $$14 = $$12 * $$4;
-      hx $$15 = $$7 ? f : e;
-      hx $$16 = $$8 ? b : a;
-      hx $$17 = $$9 ? d : c;
-      if ($$10 > $$12) {
-         if ($$11 > $$13) {
-            return a($$16, $$15, $$17);
-         } else {
-            return $$14 > $$11 ? a($$15, $$17, $$16) : a($$15, $$16, $$17);
-         }
-      } else if ($$11 > $$14) {
-         return a($$16, $$17, $$15);
-      } else {
-         return $$13 > $$11 ? a($$17, $$15, $$16) : a($$17, $$16, $$15);
-      }
+   public hx(ja $$0) {
+      this($$0.u(), $$0.v(), $$0.w());
    }
 
-   private static hx[] a(hx $$0, hx $$1, hx $$2) {
-      return new hx[]{$$0, $$1, $$2, $$2.g(), $$1.g(), $$0.g()};
+   public static long a(long $$0, ib $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
    }
 
-   public static hx a(Matrix4f $$0, hx $$1) {
-      iw $$2 = $$1.q();
-      Vector4f $$3 = $$0.transform(new Vector4f((float)$$2.u(), (float)$$2.v(), (float)$$2.w(), 0.0F));
-      return a($$3.x(), $$3.y(), $$3.z());
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return a(a($$0) + $$1, b($$0) + $$2, c($$0) + $$3);
    }
 
-   public static Collection<hx> a(ats $$0) {
-      return ac.b(values(), $$0);
+   public static int a(long $$0) {
+      return (int)($$0 << 64 - n - e >> 64 - e);
    }
 
-   public static Stream<hx> a() {
-      return Stream.of(p);
+   public static int b(long $$0) {
+      return (int)($$0 << 64 - c >> 64 - c);
    }
 
-   public Quaternionf b() {
-      return switch (this) {
-         case a -> new Quaternionf().rotationX((float) Math.PI);
-         case b -> new Quaternionf();
-         case c -> new Quaternionf().rotationXYZ((float) (Math.PI / 2), 0.0F, (float) Math.PI);
-         case d -> new Quaternionf().rotationX((float) (Math.PI / 2));
-         case e -> new Quaternionf().rotationXYZ((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2));
-         case f -> new Quaternionf().rotationXYZ((float) (Math.PI / 2), 0.0F, (float) (-Math.PI / 2));
-      };
+   public static int c(long $$0) {
+      return (int)($$0 << 64 - m - h >> 64 - h);
    }
 
-   public int d() {
-      return this.i;
-   }
-
-   public int e() {
-      return this.k;
-   }
-
-   public hx.b f() {
-      return this.n;
-   }
-
-   public static hx a(bkq $$0, hx.a $$1) {
-      return switch ($$1) {
-         case a -> f.a($$0.h(1.0F)) ? f : e;
-         case c -> d.a($$0.h(1.0F)) ? d : c;
-         case b -> $$0.g(1.0F) < 0.0F ? b : a;
-      };
-   }
-
-   public hx g() {
-      return a(this.j);
-   }
-
-   public hx a(hx.a $$0) {
-      return switch ($$0) {
-         case a -> this != e && this != f ? this.r() : this;
-         case c -> this != c && this != d ? this.t() : this;
-         case b -> this != b && this != a ? this.h() : this;
-      };
-   }
-
-   public hx b(hx.a $$0) {
-      return switch ($$0) {
-         case a -> this != e && this != f ? this.s() : this;
-         case c -> this != c && this != d ? this.u() : this;
-         case b -> this != b && this != a ? this.i() : this;
-      };
-   }
-
-   public hx h() {
-      return switch (this) {
-         case c -> f;
-         case d -> e;
-         case e -> c;
-         case f -> d;
-         default -> throw new IllegalStateException("Unable to get Y-rotated facing of " + this);
-      };
-   }
-
-   private hx r() {
-      return switch (this) {
-         case a -> d;
-         case b -> c;
-         case c -> a;
-         case d -> b;
-         default -> throw new IllegalStateException("Unable to get X-rotated facing of " + this);
-      };
-   }
-
-   private hx s() {
-      return switch (this) {
-         case a -> c;
-         case b -> d;
-         case c -> b;
-         case d -> a;
-         default -> throw new IllegalStateException("Unable to get X-rotated facing of " + this);
-      };
-   }
-
-   private hx t() {
-      return switch (this) {
-         case a -> e;
-         case b -> f;
-         default -> throw new IllegalStateException("Unable to get Z-rotated facing of " + this);
-         case e -> b;
-         case f -> a;
-      };
-   }
-
-   private hx u() {
-      return switch (this) {
-         case a -> f;
-         case b -> e;
-         default -> throw new IllegalStateException("Unable to get Z-rotated facing of " + this);
-         case e -> a;
-         case f -> b;
-      };
-   }
-
-   public hx i() {
-      return switch (this) {
-         case c -> e;
-         case d -> f;
-         case e -> d;
-         case f -> c;
-         default -> throw new IllegalStateException("Unable to get CCW facing of " + this);
-      };
-   }
-
-   public int j() {
-      return this.o.u();
-   }
-
-   public int k() {
-      return this.o.v();
-   }
-
-   public int l() {
-      return this.o.w();
-   }
-
-   public Vector3f m() {
-      return new Vector3f((float)this.j(), (float)this.k(), (float)this.l());
-   }
-
-   public String n() {
-      return this.l;
-   }
-
-   public hx.a o() {
-      return this.m;
-   }
-
-   @Nullable
-   public static hx a(@Nullable String $$0) {
-      return g.a($$0);
-   }
-
-   public static hx a(int $$0) {
-      return q[atm.a($$0 % q.length)];
-   }
-
-   public static hx b(int $$0) {
-      return r[atm.a($$0 % r.length)];
-   }
-
-   @Nullable
-   public static hx a(int $$0, int $$1, int $$2) {
-      if ($$0 == 0) {
-         if ($$1 == 0) {
-            if ($$2 > 0) {
-               return d;
-            }
-
-            if ($$2 < 0) {
-               return c;
-            }
-         } else if ($$2 == 0) {
-            if ($$1 > 0) {
-               return b;
-            }
-
-            return a;
-         }
-      } else if ($$1 == 0 && $$2 == 0) {
-         if ($$0 > 0) {
-            return f;
-         }
-
-         return e;
-      }
-
-      return null;
-   }
-
-   public static hx a(double $$0) {
-      return b(atm.a($$0 / 90.0 + 0.5) & 3);
-   }
-
-   public static hx a(hx.a $$0, hx.b $$1) {
-      return switch ($$0) {
-         case a -> $$1 == hx.b.a ? f : e;
-         case c -> $$1 == hx.b.a ? d : c;
-         case b -> $$1 == hx.b.a ? b : a;
-      };
-   }
-
-   public float p() {
-      return (float)((this.k & 3) * 90);
-   }
-
-   public static hx b(ats $$0) {
-      return ac.a(p, $$0);
+   public static hx d(long $$0) {
+      return new hx(a($$0), b($$0), c($$0));
    }
 
    public static hx a(double $$0, double $$1, double $$2) {
-      return a((float)$$0, (float)$$1, (float)$$2);
+      return new hx(atq.a($$0), atq.a($$1), atq.a($$2));
    }
 
-   public static hx a(float $$0, float $$1, float $$2) {
-      hx $$3 = c;
-      float $$4 = Float.MIN_VALUE;
-
-      for (hx $$5 : p) {
-         float $$6 = $$0 * (float)$$5.o.u() + $$1 * (float)$$5.o.v() + $$2 * (float)$$5.o.w();
-         if ($$6 > $$4) {
-            $$4 = $$6;
-            $$3 = $$5;
-         }
-      }
-
-      return $$3;
+   public static hx a(iq $$0) {
+      return a($$0.a(), $$0.b(), $$0.c());
    }
 
-   @Override
-   public String toString() {
-      return this.l;
+   public long a() {
+      return a(this.u(), this.v(), this.w());
    }
 
-   @Override
-   public String c() {
-      return this.l;
+   public static long a(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & i) << n;
+      $$3 |= ((long)$$1 & j) << 0;
+      return $$3 | ((long)$$2 & k) << m;
    }
 
-   private static DataResult<hx> a(hx $$0) {
-      return $$0.o().b() ? DataResult.success($$0) : DataResult.error(() -> "Expected a vertical direction");
+   public static long e(long $$0) {
+      return $$0 & -16L;
    }
 
-   public static hx a(hx.b $$0, hx.a $$1) {
-      for (hx $$2 : p) {
-         if ($$2.f() == $$0 && $$2.o() == $$1) {
-            return $$2;
-         }
-      }
-
-      throw new IllegalArgumentException("No such direction: " + $$0 + " " + $$1);
+   public hx b(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new hx(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public iw q() {
-      return this.o;
+   public ejz b() {
+      return ejz.b(this);
    }
 
-   public boolean a(float $$0) {
-      float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -atm.a($$1);
-      float $$3 = atm.b($$1);
-      return (float)this.o.u() * $$2 + (float)this.o.w() * $$3 > 0.0F;
+   public hx a(ja $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   public static enum a implements aug, Predicate<hx> {
-      a("x") {
-         @Override
-         public int a(int $$0, int $$1, int $$2) {
-            return $$0;
-         }
+   public hx b(ja $$0) {
+      return this.b(-$$0.u(), -$$0.v(), -$$0.w());
+   }
 
-         @Override
-         public double a(double $$0, double $$1, double $$2) {
-            return $$0;
-         }
-      },
-      b("y") {
-         @Override
-         public int a(int $$0, int $$1, int $$2) {
-            return $$1;
-         }
-
-         @Override
-         public double a(double $$0, double $$1, double $$2) {
-            return $$1;
-         }
-      },
-      c("z") {
-         @Override
-         public int a(int $$0, int $$1, int $$2) {
-            return $$2;
-         }
-
-         @Override
-         public double a(double $$0, double $$1, double $$2) {
-            return $$2;
-         }
-      };
-
-      public static final hx.a[] d = values();
-      public static final aug.a<hx.a> e = aug.a(hx.a::values);
-      private final String f;
-
-      a(String $$0) {
-         this.f = $$0;
+   public hx a(int $$0) {
+      if ($$0 == 1) {
+         return this;
+      } else {
+         return $$0 == 0 ? b : new hx(this.u() * $$0, this.v() * $$0, this.w() * $$0);
       }
+   }
 
-      @Nullable
-      public static hx.a a(String $$0) {
-         return e.a($$0);
+   public hx c() {
+      return this.a(ib.b);
+   }
+
+   public hx b(int $$0) {
+      return this.a(ib.b, $$0);
+   }
+
+   public hx d() {
+      return this.a(ib.a);
+   }
+
+   public hx c(int $$0) {
+      return this.a(ib.a, $$0);
+   }
+
+   public hx e() {
+      return this.a(ib.c);
+   }
+
+   public hx d(int $$0) {
+      return this.a(ib.c, $$0);
+   }
+
+   public hx f() {
+      return this.a(ib.d);
+   }
+
+   public hx e(int $$0) {
+      return this.a(ib.d, $$0);
+   }
+
+   public hx g() {
+      return this.a(ib.e);
+   }
+
+   public hx f(int $$0) {
+      return this.a(ib.e, $$0);
+   }
+
+   public hx h() {
+      return this.a(ib.f);
+   }
+
+   public hx g(int $$0) {
+      return this.a(ib.f, $$0);
+   }
+
+   public hx a(ib $$0) {
+      return new hx(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
+   }
+
+   public hx a(ib $$0, int $$1) {
+      return $$1 == 0 ? this : new hx(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public hx a(ib.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         int $$2 = $$0 == ib.a.a ? $$1 : 0;
+         int $$3 = $$0 == ib.a.b ? $$1 : 0;
+         int $$4 = $$0 == ib.a.c ? $$1 : 0;
+         return new hx(this.u() + $$2, this.v() + $$3, this.w() + $$4);
       }
+   }
 
-      public String a() {
-         return this.f;
+   public hx a(dbr $$0) {
+      switch ($$0) {
+         case a:
+         default:
+            return this;
+         case b:
+            return new hx(-this.w(), this.v(), this.u());
+         case c:
+            return new hx(-this.u(), this.v(), -this.w());
+         case d:
+            return new hx(this.w(), this.v(), -this.u());
       }
+   }
 
-      public boolean b() {
-         return this == b;
-      }
+   public hx c(ja $$0) {
+      return new hx(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
+   }
 
-      public boolean d() {
-         return this == a || this == c;
-      }
+   public hx h(int $$0) {
+      return new hx(this.u(), $$0, this.w());
+   }
 
-      @Override
-      public String toString() {
-         return this.f;
-      }
+   public hx i() {
+      return this;
+   }
 
-      public static hx.a a(ats $$0) {
-         return ac.a(d, $$0);
-      }
+   public hx.a j() {
+      return new hx.a(this.u(), this.v(), this.w());
+   }
 
-      public boolean a(@Nullable hx $$0) {
-         return $$0 != null && $$0.o() == this;
-      }
+   public static Iterable<hx> a(atw $$0, int $$1, hx $$2, int $$3) {
+      return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
+   }
 
-      public hx.c e() {
-         return switch (this) {
-            case a, c -> hx.c.a;
-            case b -> hx.c.b;
+   @Deprecated
+   public static Stream<hx> a(hx $$0) {
+      return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
+   }
+
+   public static Iterable<hx> a(atw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 - $$3 + 1;
+      int $$10 = $$7 - $$4 + 1;
+      return () -> new AbstractIterator<hx>() {
+            final hx.a a = new hx.a();
+            int b = $$1;
+
+            protected hx a() {
+               if (this.b <= 0) {
+                  return (hx)this.endOfData();
+               } else {
+                  hx $$0 = this.a.d($$2 + $$0.a($$8), $$3 + $$0.a($$9), $$4 + $$0.a($$10));
+                  this.b--;
+                  return $$0;
+               }
+            }
          };
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-
-      public abstract int a(int var1, int var2, int var3);
-
-      public abstract double a(double var1, double var3, double var5);
    }
 
-   public static enum b {
-      a(1, "Towards positive"),
-      b(-1, "Towards negative");
+   public static Iterable<hx> a(hx $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 + $$2 + $$3;
+      int $$5 = $$0.u();
+      int $$6 = $$0.v();
+      int $$7 = $$0.w();
+      return () -> new AbstractIterator<hx>() {
+            private final hx.a h = new hx.a();
+            private int i;
+            private int j;
+            private int k;
+            private int l;
+            private int m;
+            private boolean n;
 
-      private final int c;
-      private final String d;
+            protected hx a() {
+               if (this.n) {
+                  this.n = false;
+                  this.h.r($$7 - (this.h.w() - $$7));
+                  return this.h;
+               } else {
+                  hx $$0;
+                  for ($$0 = null; $$0 == null; this.m++) {
+                     if (this.m > this.k) {
+                        this.l++;
+                        if (this.l > this.j) {
+                           this.i++;
+                           if (this.i > $$4) {
+                              return (hx)this.endOfData();
+                           }
 
-      private b(int $$0, String $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
+                           this.j = Math.min($$1, this.i);
+                           this.l = -this.j;
+                        }
 
-      public int a() {
-         return this.c;
-      }
+                        this.k = Math.min($$2, this.i - Math.abs(this.l));
+                        this.m = -this.k;
+                     }
 
-      public String b() {
-         return this.d;
-      }
+                     int $$1 = this.l;
+                     int $$2 = this.m;
+                     int $$3 = this.i - Math.abs($$1) - Math.abs($$2);
+                     if ($$3 <= $$3) {
+                        this.n = $$3 != 0;
+                        $$0 = this.h.d($$5 + $$1, $$6 + $$2, $$7 + $$3);
+                     }
+                  }
 
-      @Override
-      public String toString() {
-         return this.d;
-      }
-
-      public hx.b c() {
-         return this == a ? b : a;
-      }
+                  return $$0;
+               }
+            }
+         };
    }
 
-   public static enum c implements Iterable<hx>, Predicate<hx> {
-      a(new hx[]{hx.c, hx.f, hx.d, hx.e}, new hx.a[]{hx.a.a, hx.a.c}),
-      b(new hx[]{hx.b, hx.a}, new hx.a[]{hx.a.b});
-
-      private final hx[] c;
-      private final hx.a[] d;
-
-      private c(hx[] $$0, hx.a[] $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   public static Optional<hx> a(hx $$0, int $$1, int $$2, Predicate<hx> $$3) {
+      for (hx $$4 : a($$0, $$1, $$2, $$1)) {
+         if ($$3.test($$4)) {
+            return Optional.of($$4);
+         }
       }
 
-      public hx a(ats $$0) {
-         return ac.a(this.c, $$0);
+      return Optional.empty();
+   }
+
+   public static Stream<hx> b(hx $$0, int $$1, int $$2, int $$3) {
+      return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
+   }
+
+   public static Iterable<hx> a(hx $$0, hx $$1) {
+      return b(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static Stream<hx> b(hx $$0, hx $$1) {
+      return StreamSupport.stream(a($$0, $$1).spliterator(), false);
+   }
+
+   public static Stream<hx> a(dxe $$0) {
+      return a(
+         Math.min($$0.h(), $$0.k()),
+         Math.min($$0.i(), $$0.l()),
+         Math.min($$0.j(), $$0.m()),
+         Math.max($$0.h(), $$0.k()),
+         Math.max($$0.i(), $$0.l()),
+         Math.max($$0.j(), $$0.m())
+      );
+   }
+
+   public static Stream<hx> a(eju $$0) {
+      return a(atq.a($$0.a), atq.a($$0.b), atq.a($$0.c), atq.a($$0.d), atq.a($$0.e), atq.a($$0.f));
+   }
+
+   public static Stream<hx> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return StreamSupport.stream(b($$0, $$1, $$2, $$3, $$4, $$5).spliterator(), false);
+   }
+
+   public static Iterable<hx> b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$3 - $$0 + 1;
+      int $$7 = $$4 - $$1 + 1;
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 * $$7 * $$8;
+      return () -> new AbstractIterator<hx>() {
+            private final hx.a g = new hx.a();
+            private int h;
+
+            protected hx a() {
+               if (this.h == $$9) {
+                  return (hx)this.endOfData();
+               } else {
+                  int $$0 = this.h % $$6;
+                  int $$1 = this.h / $$6;
+                  int $$2 = $$1 % $$7;
+                  int $$3 = $$1 / $$7;
+                  this.h++;
+                  return this.g.d($$0 + $$0, $$1 + $$2, $$2 + $$3);
+               }
+            }
+         };
+   }
+
+   public static Iterable<hx.a> a(hx $$0, int $$1, ib $$2, ib $$3) {
+      Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
+      return () -> new AbstractIterator<hx.a>() {
+            private final ib[] e = new ib[]{$$2, $$3, $$2.g(), $$3.g()};
+            private final hx.a f = $$0.j().c($$3);
+            private final int g = 4 * $$1;
+            private int h = -1;
+            private int i;
+            private int j;
+            private int k = this.f.u();
+            private int l = this.f.v();
+            private int m = this.f.w();
+
+            protected hx.a a() {
+               this.f.d(this.k, this.l, this.m).c(this.e[(this.h + 4) % 4]);
+               this.k = this.f.u();
+               this.l = this.f.v();
+               this.m = this.f.w();
+               if (this.j >= this.i) {
+                  if (this.h >= this.g) {
+                     return (hx.a)this.endOfData();
+                  }
+
+                  this.h++;
+                  this.j = 0;
+                  this.i = this.h / 2 + 1;
+               }
+
+               this.j++;
+               return this.f;
+            }
+         };
+   }
+
+   public static int a(hx $$0, int $$1, int $$2, BiConsumer<hx, Consumer<hx>> $$3, Predicate<hx> $$4) {
+      Queue<Pair<hx, Integer>> $$5 = new ArrayDeque<>();
+      LongSet $$6 = new LongOpenHashSet();
+      $$5.add(Pair.of($$0, 0));
+      int $$7 = 0;
+
+      while (!$$5.isEmpty()) {
+         Pair<hx, Integer> $$8 = $$5.poll();
+         hx $$9 = (hx)$$8.getLeft();
+         int $$10 = (Integer)$$8.getRight();
+         long $$11 = $$9.a();
+         if ($$6.add($$11) && $$4.test($$9)) {
+            if (++$$7 >= $$2) {
+               return $$7;
+            }
+
+            if ($$10 < $$1) {
+               $$3.accept($$9, $$2x -> $$5.add(Pair.of($$2x, $$10 + 1)));
+            }
+         }
       }
 
-      public hx.a b(ats $$0) {
-         return ac.a(this.d, $$0);
+      return $$7;
+   }
+
+   public static class a extends hx {
+      public a() {
+         this(0, 0, 0);
       }
 
-      public boolean a(@Nullable hx $$0) {
-         return $$0 != null && $$0.o().e() == this;
+      public a(int $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public a(double $$0, double $$1, double $$2) {
+         this(atq.a($$0), atq.a($$1), atq.a($$2));
       }
 
       @Override
-      public Iterator<hx> iterator() {
-         return Iterators.forArray(this.c);
+      public hx b(int $$0, int $$1, int $$2) {
+         return super.b($$0, $$1, $$2).i();
       }
 
-      public Stream<hx> a() {
-         return Arrays.stream(this.c);
+      @Override
+      public hx a(int $$0) {
+         return super.a($$0).i();
       }
 
-      public List<hx> c(ats $$0) {
-         return ac.b(this.c, $$0);
+      @Override
+      public hx a(ib $$0, int $$1) {
+         return super.a($$0, $$1).i();
+      }
+
+      @Override
+      public hx a(ib.a $$0, int $$1) {
+         return super.a($$0, $$1).i();
+      }
+
+      @Override
+      public hx a(dbr $$0) {
+         return super.a($$0).i();
+      }
+
+      public hx.a d(int $$0, int $$1, int $$2) {
+         this.p($$0);
+         this.q($$1);
+         this.r($$2);
+         return this;
+      }
+
+      public hx.a b(double $$0, double $$1, double $$2) {
+         return this.d(atq.a($$0), atq.a($$1), atq.a($$2));
+      }
+
+      public hx.a g(ja $$0) {
+         return this.d($$0.u(), $$0.v(), $$0.w());
+      }
+
+      public hx.a f(long $$0) {
+         return this.d(a($$0), b($$0), c($$0));
+      }
+
+      public hx.a a(hv $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.a($$1, $$2, $$3, ib.a.a), $$0.a($$1, $$2, $$3, ib.a.b), $$0.a($$1, $$2, $$3, ib.a.c));
+      }
+
+      public hx.a a(ja $$0, ib $$1) {
+         return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
+      }
+
+      public hx.a a(ja $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
+      }
+
+      public hx.a a(ja $$0, ja $$1) {
+         return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
+      }
+
+      public hx.a c(ib $$0) {
+         return this.c($$0, 1);
+      }
+
+      public hx.a c(ib $$0, int $$1) {
+         return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+      }
+
+      public hx.a e(int $$0, int $$1, int $$2) {
+         return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+      }
+
+      public hx.a h(ja $$0) {
+         return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
+      }
+
+      public hx.a a(ib.a $$0, int $$1, int $$2) {
+         switch ($$0) {
+            case a:
+               return this.d(atq.a(this.u(), $$1, $$2), this.v(), this.w());
+            case b:
+               return this.d(this.u(), atq.a(this.v(), $$1, $$2), this.w());
+            case c:
+               return this.d(this.u(), this.v(), atq.a(this.w(), $$1, $$2));
+            default:
+               throw new IllegalStateException("Unable to clamp axis " + $$0);
+         }
+      }
+
+      public hx.a p(int $$0) {
+         super.u($$0);
+         return this;
+      }
+
+      public hx.a q(int $$0) {
+         super.t($$0);
+         return this;
+      }
+
+      public hx.a r(int $$0) {
+         super.s($$0);
+         return this;
+      }
+
+      @Override
+      public hx i() {
+         return new hx(this);
       }
    }
 }

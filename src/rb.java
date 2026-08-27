@@ -1,7 +1,20 @@
-public interface rb {
-   void a(ra var1);
+import javax.annotation.Nullable;
 
-   void b(ra var1);
+class rb {
+   @Nullable
+   public final Long a;
+   public final Runnable b;
 
-   void c(ra var1);
+   private rb(@Nullable Long $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   static rb a(Runnable $$0) {
+      return new rb(null, $$0);
+   }
+
+   static rb a(long $$0, Runnable $$1) {
+      return new rb($$0, $$1);
+   }
 }

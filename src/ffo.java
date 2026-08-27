@@ -1,102 +1,123 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Collection;
 
-public class ffo extends fau {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<agh<csa>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(csa.h, -13408734);
-      $$0.put(csa.i, -10075085);
-      $$0.put(csa.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bil k;
+public class ffo extends faz {
+   private static final uv a = uv.c("selectWorld.experimental.title");
+   private static final uv b = uv.c("selectWorld.experimental.message");
+   private static final uv c = uv.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<aot> n;
+   private final eyn o = new eyn().a(10).b(20);
 
-   @Nullable
-   public static ffo a(etd $$0, BooleanConsumer $$1, DataFixer $$2, een.c $$3, boolean $$4) {
-      try {
-         ffu $$5 = $$0.w();
-         aos $$6 = aov.a($$3);
-
-         ffo var10;
-         try (ahe $$7 = $$5.a($$3.f(), false, $$6)) {
-            eet $$8 = $$7.d();
-            ip.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new ffo($$1, $$2, $$3, $$8.L(), $$4, $$9.d(jz.aK));
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
-   }
-
-   private ffo(BooleanConsumer $$0, DataFixer $$1, een.c $$2, cse $$3, boolean $$4, io<dks> $$5) {
-      super(ur.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bil($$2, $$1, $$5, $$4);
+   public ffo(Collection<aot> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.d(euz.a(uq.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
+   public uv h() {
+      return uu.a(super.h(), b);
    }
 
    @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
-      }
+   protected void aQ_() {
+      super.aQ_();
+      eyn.b $$0 = this.o.d(2);
+      eyr $$1 = $$0.b().b();
+      $$0.a(new ewl(this.e, this.i), 2, $$1);
+      evy $$2 = $$0.a(new evy(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(eve.a(c, $$0x -> this.f.a(new ffo.a())).a(100).a(), 2, $$1);
+      $$0.a(eve.a(uu.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(eve.a(uu.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         evc var10000 = this.d($$1x);
+      });
+      this.o.a();
+      this.c();
    }
 
    @Override
-   public void aF_() {
-      this.c.accept(false);
+   protected void c() {
+      eym.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
    }
 
    @Override
    public void aG_() {
-      this.k.a();
+      this.m.accept(false);
    }
 
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, ur.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, ur.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, ur.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   class a extends faz {
+      private ffo.a.a b;
 
-         for (agh<csa> $$9 : this.k.c()) {
-            int $$10 = atm.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+      a() {
+         super(uv.c("selectWorld.experimental.details.title"));
+      }
+
+      @Override
+      public void aG_() {
+         this.f.a(ffo.this);
+      }
+
+      @Override
+      protected void aQ_() {
+         super.aQ_();
+         this.d(eve.a(uu.k, $$0 -> this.aG_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new ffo.a.a(this.f, ffo.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(eut $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends ewa<ffo.a.b> {
+         public a(eti $$0, Collection<aot> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (aot $$2 : $$1) {
+               String $$3 = cgk.a(cgk.g, $$2.d());
+               if (!$$3.isEmpty()) {
+                  uv $$4 = uy.a($$2.a().f(), vs.a.a(true));
+                  uv $$5 = uv.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, evx.a(a.this.i, $$5, this.b())));
+               }
+            }
          }
 
-         int $$11 = this.k.f() + this.k.g();
-         ur $$12 = ur.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         ur $$13 = ur.a("optimizeWorld.progress.percentage", atm.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
+         }
+      }
+
+      class b extends ewa.a<ffo.a.b> {
+         private final uv b;
+         private final uv c;
+         private final evx d;
+
+         b(uv $$0, uv $$1, evx $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public uv a() {
+            return uv.a("narrator.select", uu.a(this.b, this.c));
+         }
       }
    }
 }

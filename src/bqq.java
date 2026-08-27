@@ -1,22 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bqq<E extends ccy> extends bmx<E> {
-   public bqq(int $$0) {
-      super(ImmutableMap.of(buh.aB, bui.a, buh.m, bui.b, buh.n, bui.c), $$0);
+public interface bqq<F extends K1, Value> {
+   bum<Value> a();
+
+   bun b();
+
+   @Nullable
+   bqp<F, Value> a(bml<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(bum<Value> a) implements bqq<Mu<Unit>, Value> {
+      @Override
+      public bun b() {
+         return bun.b;
+      }
+
+      @Override
+      public bqp<Mu<Unit>, Value> a(bml<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new bqp<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   protected boolean a(ame $$0, E $$1, long $$2) {
-      return true;
+   public static record b<Value>(bum<Value> a) implements bqq<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public bun b() {
+         return bun.a;
+      }
+
+      @Override
+      public bqp<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bml<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new bqp<>($$0, this.a, IdF.create($$1.get()));
+      }
    }
 
-   protected void b(ame $$0, E $$1, long $$2) {
-      $$1.b(bls.n);
-      $$1.a(aqr.Ag, 5.0F, 1.0F);
-   }
+   public static record c<Value>(bum<Value> a) implements bqq<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public bun b() {
+         return bun.c;
+      }
 
-   protected void c(ame $$0, E $$1, long $$2) {
-      if ($$1.c(bls.n)) {
-         $$1.b(bls.a);
+      @Override
+      public bqp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bml<?> $$0, Optional<Value> $$1) {
+         return new bqp<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

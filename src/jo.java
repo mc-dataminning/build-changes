@@ -2,47 +2,45 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 
-public class jo implements jq {
-   public static final jq.a<jo> a = new jq.a<jo>() {
-      public jo a(jr<jo> $$0, StringReader $$1) throws CommandSyntaxException {
+public class jo implements ju {
+   public static final ju.a<jo> a = new ju.a<jo>() {
+      public jo a(jv<jo> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
-         ga.a $$2 = ga.a(jy.i.p(), $$1);
-         clj $$3 = new fz($$2.a(), $$2.b()).a(1, false);
-         return new jo($$0, $$3);
+         return new jo($$0, fk.a(kc.f.p(), $$1, false).a());
       }
 
-      public jo a(jr<jo> $$0, tu $$1) {
-         return new jo($$0, $$1.r());
+      public jo a(jv<jo> $$0, ty $$1) {
+         return new jo($$0, $$1.a(cvf.q));
       }
    };
-   private final jr<jo> b;
-   private final clj c;
+   private final jv<jo> b;
+   private final dhn c;
 
-   public static Codec<jo> a(jr<jo> $$0) {
-      return clj.a.xmap($$1 -> new jo($$0, $$1), $$0x -> $$0x.c);
+   public static Codec<jo> a(jv<jo> $$0) {
+      return dhn.b.xmap($$1 -> new jo($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jo(jr<jo> $$0, clj $$1) {
+   public jo(jv<jo> $$0, dhn $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.c);
+   public void a(ty $$0) {
+      $$0.a(cvf.q, this.c);
    }
 
    @Override
    public String a() {
-      return jy.k.b(this.b()) + " " + new fz(this.c.e(), this.c.v()).b();
+      return kc.k.b(this.b()) + " " + fk.a(this.c);
    }
 
    @Override
-   public jr<jo> b() {
+   public jv<jo> b() {
       return this.b;
    }
 
-   public clj c() {
+   public dhn c() {
       return this.c;
    }
 }

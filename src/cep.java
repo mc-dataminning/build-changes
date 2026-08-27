@@ -1,61 +1,49 @@
-public class cep extends ceg {
-   public cep(bku<? extends cep> $$0, csa $$1) {
+public class cep extends cel {
+   private int e = 1;
+
+   public cep(bkz<? extends cep> $$0, csf $$1) {
       super($$0, $$1);
    }
 
-   public cep(csa $$0, blg $$1, double $$2, double $$3, double $$4) {
-      super(bku.aM, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   public cep(csa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super(bku.aM, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
+   public cep(csf $$0, bll $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(bkz.ag, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   protected void a(ejr $$0) {
+   protected void a(ejx $$0) {
       super.a($$0);
       if (!this.dN().B) {
-         bkq $$1 = $$0.a();
-         bkq $$2 = this.w();
-         int $$3 = $$1.az();
-         $$1.g(5);
-         if (!$$1.a(this.dO().a((ceg)this, $$2), 5.0F)) {
-            $$1.h($$3);
-         } else if ($$2 instanceof blg) {
-            this.a((blg)$$2, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected void a(ejq $$0) {
-      super.a($$0);
-      if (!this.dN().B) {
-         bkq $$1 = this.w();
-         if (!($$1 instanceof bli) || this.dN().Y().b(crw.c)) {
-            ht $$2 = $$0.a().a($$0.b());
-            if (this.dN().t($$2)) {
-               this.dN().b($$2, cun.a(this.dN(), $$2));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(ejs $$0) {
-      super.a($$0);
-      if (!this.dN().B) {
+         boolean $$1 = this.dN().Y().b(csb.c);
+         this.dN().a(this, this.ds(), this.du(), this.dy(), (float)this.e, $$1, csf.a.c);
          this.am();
       }
    }
 
    @Override
-   public boolean bt() {
-      return false;
+   protected void a(ejw $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         bkv $$1 = $$0.a();
+         bkv $$2 = this.w();
+         $$1.a(this.dO().a((cel)this, $$2), 6.0F);
+         if ($$2 instanceof bll) {
+            this.a((bll)$$2, $$1);
+         }
+      }
    }
 
    @Override
-   public boolean a(bjo $$0, float $$1) {
-      return false;
+   public void b(sd $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(sd $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

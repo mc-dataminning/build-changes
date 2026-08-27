@@ -1,40 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dtv(ig<cva> b, ig<cva> c, dua d, int e, int f, float g) {
+public class dtv extends dtq {
    public static final Codec<dtv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iq.a(jz.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               iq.a(jz.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               dua.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  big.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, dtv::new)
    );
+   private final big b;
+   private final int c;
 
-   public ig<cva> a() {
-      return this.b;
+   public dtv(big $$0, big $$1, big $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public ig<cva> b() {
-      return this.c;
+   @Override
+   protected dtr<?> a() {
+      return dtr.j;
    }
 
-   public dua c() {
-      return this.d;
+   @Override
+   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
+      hx $$9 = $$5.a();
+      hx.a $$10 = $$9.j();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   public int a(atw $$0, int $$1, dta $$2) {
+      return this.b.a($$0);
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

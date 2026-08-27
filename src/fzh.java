@@ -1,16 +1,17 @@
-public class fzh extends gaf<bwu, fha<bwu>> {
-   private static final agi a = new agi("textures/entity/cat/cat_collar.png");
-   private final fha<bwu> b;
+public class fzh extends fwt<cch, fkm<cch>> {
+   private static final agm a = new agm("textures/entity/zombie_villager/zombie_villager.png");
 
-   public fzh(fxs<bwu, fha<bwu>> $$0, fkk $$1) {
-      super($$0);
-      this.b = new fha<>($$1.a(fkn.o));
+   public fzh(fwc.a $$0) {
+      super($$0, new fkm<>($$0.a(fks.cc)), 0.5F);
+      this.a(new gaa<>(this, new fkm($$0.a(fks.cd)), new fkm($$0.a(fks.ce)), $$0.g()));
+      this.a(new gav<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bwu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         float[] $$10 = $$3.gp().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public agm a(cch $$0) {
+      return a;
+   }
+
+   protected boolean b(cch $$0) {
+      return super.a($$0) || $$0.gp();
    }
 }

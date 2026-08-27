@@ -1,21 +1,23 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface ih<T> extends Iterable<T> {
-   int a = -1;
+public interface ih<T> {
+   Optional<ig.c<T>> a(agl<T> var1);
 
-   int a(T var1);
-
-   @Nullable
-   T a(int var1);
-
-   default T b(int $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No value with id " + $$0);
-      } else {
-         return $$1;
-      }
+   default ig.c<T> b(agl<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   int b();
+   Optional<ik.c<T>> a(arz<T> var1);
+
+   default ik.c<T> b(arz<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   }
+
+   public interface a {
+      <T> Optional<ih<T>> a(agl<? extends is<? extends T>> var1);
+
+      default <T> ih<T> b(agl<? extends is<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
+   }
 }

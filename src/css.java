@@ -1,151 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Suppliers;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class css {
-   private final csb a;
-   private final dnp b;
-   private final dxi c;
+public class css implements crl, crp {
+   protected final int a;
+   protected final int b;
+   protected final djj[][] c;
+   protected boolean d;
+   protected final csf e;
+   private final Supplier<ig<ctd>> f;
 
-   public css(csb $$0, dnp $$1, dxi $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public css(csf $$0, hx $$1, hx $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.I_().d(kd.ar).f(ctk.b));
+      this.a = iy.a($$1.u());
+      this.b = iy.a($$1.w());
+      int $$3 = iy.a($$2.u());
+      int $$4 = iy.a($$2.w());
+      this.c = new djj[$$3 - this.a + 1][$$4 - this.b + 1];
+      djn $$5 = $$0.K();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = iy.a($$1.u()); $$8 <= iy.a($$2.u()); $$8++) {
+         for (int $$9 = iy.a($$1.w()); $$9 <= iy.a($$2.w()); $$9++) {
+            djj $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public css a(aml $$0) {
-      if ($$0.D() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.D() + ", region: " + $$0);
+   private djj d(hx $$0) {
+      return this.a(iy.a($$0.u()), iy.a($$0.w()));
+   }
+
+   private djj a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         djj $$4 = this.c[$$2][$$3];
+         return (djj)($$4 != null ? $$4 : new djq(this.e, new crm($$0, $$1), this.f.get()));
       } else {
-         return new css($$0, this.b, this.c);
+         return new djq(this.e, new crm($$0, $$1), this.f.get());
       }
    }
 
-   public List<dxp> a(crh $$0, Predicate<dxh> $$1) {
-      Map<dxh, LongSet> $$2 = this.a.a($$0.e, $$0.f, djj.e).h();
-      Builder<dxp> $$3 = ImmutableList.builder();
-
-      for (Entry<dxh, LongSet> $$4 : $$2.entrySet()) {
-         dxh $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
-         }
-      }
-
-      return $$3.build();
+   @Override
+   public dje D_() {
+      return this.e.D_();
    }
 
-   public List<dxp> a(iu $$0, dxh $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), djj.e).b($$1);
-      Builder<dxp> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
+   @Override
+   public crl c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   public void a(dxh $$0, LongSet $$1, Consumer<dxp> $$2) {
-      LongIterator var4 = $$1.iterator();
-
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         iu $$4 = iu.a(new crh($$3), this.a.am());
-         dxp $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), djj.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
-         }
-      }
+   @Override
+   public List<eks> c(@Nullable bkv $$0, eju $$1) {
+      return List.of();
    }
 
    @Nullable
-   public dxp a(iu $$0, dxh $$1, dkb $$2) {
-      return $$2.a($$1);
+   @Override
+   public dfi c_(hx $$0) {
+      djj $$1 = this.d($$0);
+      return $$1.c_($$0);
    }
 
-   public void a(iu $$0, dxh $$1, dxp $$2, dkb $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public void a(iu $$0, dxh $$1, long $$2, dkb $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public boolean a() {
-      return this.b.c();
-   }
-
-   public dxp a(ht $$0, dxh $$1) {
-      for (dxp $$2 : this.a(iu.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
-         }
+   @Override
+   public dhn a_(hx $$0) {
+      if (this.r($$0)) {
+         return cvh.a.o();
+      } else {
+         djj $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
-
-      return dxp.b;
    }
 
-   public dxp a(ht $$0, agh<dxh> $$1) {
-      dxh $$2 = this.b().d(jz.aB).a($$1);
-      return $$2 == null ? dxp.b : this.b($$0, $$2);
-   }
-
-   public dxp a(ht $$0, arv<dxh> $$1) {
-      io<dxh> $$2 = this.b().d(jz.aB);
-
-      for (dxp $$3 : this.a(new crh($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
-         }
+   @Override
+   public ecx b_(hx $$0) {
+      if (this.r($$0)) {
+         return ecy.a.g();
+      } else {
+         djj $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
-
-      return dxp.b;
    }
 
-   public dxp b(ht $$0, dxh $$1) {
-      for (dxp $$2 : this.a(iu.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return dxp.b;
+   @Override
+   public int J_() {
+      return this.e.J_();
    }
 
-   public boolean a(ht $$0, dxp $$1) {
-      for (dxl $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int K_() {
+      return this.e.K_();
    }
 
-   public boolean a(ht $$0) {
-      iu $$1 = iu.a($$0);
-      return this.a.a($$1.a(), $$1.c(), djj.e).w();
-   }
-
-   public Map<dxh, LongSet> b(ht $$0) {
-      iu $$1 = iu.a($$0);
-      return this.a.a($$1.a(), $$1.c(), djj.e).h();
-   }
-
-   public dxj a(crh $$0, dxh $$1, boolean $$2) {
-      return this.c.a($$0, $$1, $$2);
-   }
-
-   public void a(dxp $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public ip b() {
-      return this.a.H_();
+   public bfs a() {
+      return this.e.ae();
    }
 }

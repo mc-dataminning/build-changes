@@ -1,42 +1,58 @@
-import java.util.function.Consumer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ciw extends cle {
-   public ciw(cle.a $$0) {
-      super($$0);
+public class ciw {
+   private final String a;
+   @Nullable
+   private dhr b;
+   private boolean c;
+   private boolean d;
+
+   public ciw(String $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public bix a(cnt $$0) {
-      hx $$1 = $$0.k();
-      if ($$1 == hx.a) {
-         return bix.e;
+   private static boolean a(dhr $$0, @Nullable dhr $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
       } else {
-         csa $$2 = $$0.q();
-         cnr $$3 = new cnr($$0);
-         ht $$4 = $$3.a();
-         clj $$5 = $$0.n();
-         eju $$6 = eju.c($$4);
-         ejp $$7 = bku.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof ame $$8) {
-               Consumer<cad> $$9 = bku.a($$8, $$5, $$0.o());
-               cad $$10 = bku.d.b($$8, $$5.v(), $$9, $$4, blk.m, true, true);
-               if ($$10 == null) {
-                  return bix.e;
+         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().p(), $$1.b().p()) : false;
+      }
+   }
+
+   public boolean a(clo $$0, is<cvf> $$1, dhr $$2) {
+      if (a($$2, this.b, this.d)) {
+         return this.c;
+      } else {
+         this.b = $$2;
+         this.d = false;
+         sd $$3 = $$0.v();
+         if ($$3 != null && $$3.b(this.a, 9)) {
+            sj $$4 = $$3.c(this.a, 8);
+
+            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+               String $$6 = $$4.j($$5);
+
+               try {
+                  fi.b $$7 = fi.a($$1.p(), new StringReader($$6));
+                  this.d = this.d | $$7.a();
+                  if ($$7.test($$2)) {
+                     this.c = true;
+                     return true;
+                  }
+               } catch (CommandSyntaxException var9) {
                }
-
-               float $$11 = (float)atm.d((atm.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.ds(), $$10.du(), $$10.dy(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.ds(), $$10.du(), $$10.dy(), aqr.ao, aqs.e, 0.75F, 0.8F);
-               $$10.a(dls.t, $$0.o());
             }
-
-            $$5.h(1);
-            return bix.a($$2.B);
-         } else {
-            return bix.e;
          }
+
+         this.c = false;
+         return false;
       }
    }
 }

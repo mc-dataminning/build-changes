@@ -1,109 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czf extends cva implements dca {
-   public static final MapCodec<czf> a = b(czf::new);
-   public static final dic b = cyv.aE;
-   public static final dhz c = dhy.C;
-   protected static final float d = 3.0F;
-   protected static final ekn e = cva.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ekn f = cva.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ekn g = cva.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ekn h = cva.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+public class czf extends cxb {
+   public static final MapCodec<czf> i = b(czf::new);
 
    @Override
-   public MapCodec<czf> a() {
-      return a;
+   public MapCodec<? extends czf> a() {
+      return i;
    }
 
-   protected czf(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
+   protected czf(dhm.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      switch ((hx)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
+   public dhn a(cnw $$0) {
+      crl $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      ecx $$3 = $$0.q().b_($$0.a());
+      hx $$4 = $$2.e();
+      hx $$5 = $$2.f();
+      hx $$6 = $$2.g();
+      hx $$7 = $$2.h();
+      dhn $$8 = $$1.a_($$4);
+      dhn $$9 = $$1.a_($$5);
+      dhn $$10 = $$1.a_($$6);
+      dhn $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ib.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ib.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ib.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ib.e))))
+         .a(e, Boolean.valueOf($$3.a() == ecy.c));
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
       }
-   }
 
-   private boolean a(crg $$0, ht $$1, hx $$2) {
-      dhi $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      hx $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   public eks c(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return ekp.a();
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return cvc.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, ect.c, ect.c.a($$3));
+   public boolean a(dhn $$0, dhn $$1, ib $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dhi a(cnr $$0) {
-      if (!$$0.c()) {
-         dhi $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
 
-      dhi $$2 = this.o();
-      csd $$3 = $$0.q();
-      ht $$4 = $$0.a();
-      ecs $$5 = $$0.q().b_($$0.a());
+      return super.a($$0, $$1, $$2);
+   }
 
-      for (hx $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == ect.c));
-            }
-         }
-      }
-
-      return null;
+   public final boolean a(dhn $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof czf || $$0.a(ark.L);
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

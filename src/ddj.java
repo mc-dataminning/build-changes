@@ -1,31 +1,39 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddj extends cuq {
-   protected static final MapCodec<jv> c = jy.k
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof jv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<ddj> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, ddj::new));
-   protected final jv e;
+public class ddj extends cvo implements cvi {
+   public static final MapCodec<ddj> a = b(ddj::new);
+   protected static final float b = 6.0F;
+   protected static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends ddj> a() {
-      return d;
+   public MapCodec<ddj> a() {
+      return a;
    }
 
-   protected ddj(jv $$0, dhh.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected ddj(dhm.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return c;
+   }
+
+   @Override
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      cxn $$4 = (cxn)($$3.a(cvh.bu) ? cvh.iI : cvh.iH);
+      if ($$4.o().a($$0, $$2) && $$0.t($$2.c())) {
+         cxn.a($$0, $$4.o(), $$2, 2);
+      }
    }
 }

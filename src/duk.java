@@ -1,29 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class duk extends dua {
-   public static final Codec<duk> b = bhh.b(dhi.b).comapFlatMap(duk::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bhh<dhi> c;
+public class duk extends dui {
+   public static final Codec<duk> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dhn.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dhn.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dhn.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, duk::new)
+   );
+   private final float g;
+   private final float h;
+   private final dhn i;
+   private final List<dhn> j;
+   private final List<dhn> k;
 
-   private static DataResult<duk> a(bhh<dhi> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new duk($$0));
-   }
-
-   public duk(bhh<dhi> $$0) {
-      this.c = $$0;
-   }
-
-   public duk(bhh.a<dhi> $$0) {
-      this($$0.a());
+   public duk(long $$0, eca.a $$1, float $$2, float $$3, float $$4, dhn $$5, List<dhn> $$6, List<dhn> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected dub<?> a() {
-      return dub.b;
+   protected dug<?> a() {
+      return dug.c;
    }
 
    @Override
-   public dhi a(ats $$0, ht $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public dhn a(atw $$0, hx $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+      }
    }
 }

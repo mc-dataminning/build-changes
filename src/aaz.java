@@ -1,24 +1,24 @@
-public class aaz implements wk<yd> {
-   private final int a;
+public class aaz implements wo<yh> {
+   private final double a;
 
-   public aaz(int $$0) {
-      this.a = $$0;
+   public aaz(dje $$0) {
+      this.a = $$0.k();
    }
 
-   public aaz(tu $$0) {
-      this.a = $$0.readByte();
+   public aaz(ty $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.k(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 }

@@ -1,39 +1,37 @@
-public class fjl extends fjm {
-   private final fko b;
-   protected final fko a;
+public class fjl extends fiq {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fkt e;
+   private final fkt f;
+   private final fkt g;
 
-   public fjl(fko $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fjl(fkt $$0) {
+      super(frh::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fkw a() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      $$1.a("head", fkt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkq.a);
-      return $$0;
+   public static fkz a() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      $$1.a("plate", fky.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fkv.a);
+      $$1.a("handle", fky.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fkv.a);
+      return fkz.a($$0, 64, 64);
    }
 
-   public static fku b() {
-      fkw $$0 = a();
-      fkx $$1 = $$0.a();
-      $$1.a("head").a("hat", fkt.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fks(0.25F)), fkq.a);
-      return fku.a($$0, 64, 64);
+   public fkt b() {
+      return this.f;
    }
 
-   public static fku c() {
-      fkw $$0 = a();
-      return fku.a($$0, 64, 32);
+   public fkt c() {
+      return this.g;
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

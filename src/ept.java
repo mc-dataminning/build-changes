@@ -1,27 +1,20 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
 
-public class ept extends eps {
-   private static final Logger d = LogUtils.getLogger();
+public class ept extends epx {
    public String a;
-   public String b;
-   public String c;
+   public long b;
+   public long c;
 
-   public static ept a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      ept $$3 = new ept();
+   public static ept a(JsonObject $$0) {
+      ept $$1 = new ept();
 
       try {
-         $$3.a = erp.b("downloadLink", $$2, "");
-         $$3.b = erp.b("resourcePackUrl", $$2, "");
-         $$3.c = erp.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         $$1.a = eru.b("profileUuid", $$0, null);
+         $$1.b = eru.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = eru.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
-      return $$3;
+      return $$1;
    }
 }

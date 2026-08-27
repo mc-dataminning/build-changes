@@ -1,11 +1,16 @@
-public class fva extends fxd<bwm, fgu> {
-   private static final agi a = new agi("textures/entity/bat.png");
+public abstract class fva<T extends ccg, M extends fkl<T>> extends fwt<T, M> {
+   private static final agm a = new agm("textures/entity/zombie/zombie.png");
 
-   public fva(fvx.a $$0) {
-      super($$0, new fgu($$0.a(fkn.g)), 0.25F);
+   protected fva(fwc.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gaa<>(this, $$2, $$3, $$0.g()));
    }
 
-   public agi a(bwm $$0) {
+   public agm a(ccg $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gm();
    }
 }

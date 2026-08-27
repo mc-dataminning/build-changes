@@ -1,23 +1,38 @@
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public interface ic<T> {
-   Optional<ib.c<T>> a(agh<T> var1);
+public enum ic {
+   a(ib.c),
+   b(ib.c, ib.f),
+   c(ib.f),
+   d(ib.d, ib.f),
+   e(ib.d),
+   f(ib.d, ib.e),
+   g(ib.e),
+   h(ib.c, ib.e);
 
-   default ib.c<T> b(agh<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
-   }
+   private final Set<ib> i;
+   private final ja j;
 
-   Optional<ig.c<T>> a(arv<T> var1);
+   private ic(ib... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new ja(0, 0, 0);
 
-   default ig.c<T> b(arv<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
-   }
-
-   public interface a {
-      <T> Optional<ic<T>> a(agh<? extends io<? extends T>> var1);
-
-      default <T> ic<T> b(agh<? extends io<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      for (ib $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
+   }
+
+   public Set<ib> a() {
+      return this.i;
+   }
+
+   public int b() {
+      return this.j.u();
+   }
+
+   public int c() {
+      return this.j.w();
    }
 }

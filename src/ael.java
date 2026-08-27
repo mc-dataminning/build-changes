@@ -1,44 +1,32 @@
-public record ael(int a, String b, int c, aek d) implements wk<aem> {
-   private static final int e = 255;
+public class ael implements wo<acp> {
+   private final bja a;
+   private final int b;
 
-   @Deprecated
-   public ael(int a, String b, int c, aek d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public ael(bja $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ael(tu $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), aek.a($$0.n()));
+   public ael(ty $$0) {
+      this.a = $$0.b(bja.class);
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(aem $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public tt c() {
-      return this.d.b();
+   public bja a() {
+      return this.a;
    }
 
-   public String d() {
+   public int d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public aek f() {
-      return this.d;
    }
 }

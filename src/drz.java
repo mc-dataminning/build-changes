@@ -1,9 +1,18 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface drz {
-   dsg m = dsg.b;
+public class drz implements dse {
+   public static final Codec<drz> a = big.b(0, 256).fieldOf("count").xmap(drz::new, drz::a).codec();
+   private final big b;
 
-   default Stream<dpi<?, ?>> e() {
-      return Stream.empty();
+   public drz(int $$0) {
+      this.b = bid.a($$0);
+   }
+
+   public drz(big $$0) {
+      this.b = $$0;
+   }
+
+   public big a() {
+      return this.b;
    }
 }

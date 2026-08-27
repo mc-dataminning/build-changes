@@ -1,35 +1,27 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class zf implements wk<yd> {
-   private final int a;
-   private final byte b;
-
-   public zf(bkq $$0, byte $$1) {
-      this.a = $$0.aj();
-      this.b = $$1;
-   }
-
-   public zf(tu $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readByte();
+public record zf(zf.a a, List<String> b) implements wo<yh> {
+   public zf(ty $$0) {
+      this($$0.b(zf.a.class), $$0.a(ty::s));
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.p(this.a);
-      $$0.k(this.b);
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ty::a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bkq a(csa $$0) {
-      return $$0.a(this.a);
+   public List<String> d() {
+      return this.b;
    }
 
-   public byte a() {
-      return this.b;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

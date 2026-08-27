@@ -1,16 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bid<P extends bic> {
-   bid<bhz> a = a("constant", bhz.b);
-   bid<bii> b = a("uniform", bii.a);
-   bid<bhu> c = a("biased_to_bottom", bhu.a);
-   bid<bhv> d = a("clamped", bhv.a);
-   bid<bij> e = a("weighted_list", bij.a);
-   bid<bhx> f = a("clamped_normal", bhx.a);
+public class bid extends big {
+   public static final bid a = new bid(0);
+   public static final Codec<bid> b = asy.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bid::new, bid::d);
+   private final int f;
 
-   Codec<P> codec();
+   public static bid a(int $$0) {
+      return $$0 == 0 ? a : new bid($$0);
+   }
 
-   static <P extends bic> bid<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.N, $$0, () -> $$1);
+   private bid(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(atw $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bih<?> c() {
+      return bih.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

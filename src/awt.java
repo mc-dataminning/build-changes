@@ -1,10 +1,14 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
 
-public class awt {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:cactus_green", "minecraft:green_dye")
-      .put("minecraft:rose_red", "minecraft:red_dye")
-      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
-      .build();
+public class awt extends azx {
+   public awt(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Colorless shulker entity fix", bax.x, "minecraft:shulker");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
+   }
 }

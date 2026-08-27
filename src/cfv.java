@@ -1,106 +1,89 @@
-public class cfv extends cfm implements dgb {
-   private boolean i = true;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cfv(bku<? extends cfv> $$0, csa $$1) {
-      super($$0, $$1);
+public class cfv {
+   public static int[][] a(ib $$0) {
+      ib $$1 = $$0.h();
+      ib $$2 = $$1.g();
+      ib $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cfv(csa $$0, double $$1, double $$2, double $$3) {
-      super(bku.X, $$1, $$2, $$3, $$0);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public cfl.a w() {
-      return cfl.a.f;
-   }
-
-   @Override
-   public dhi y() {
-      return cvc.hc.o();
-   }
-
-   @Override
-   public int A() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.H()) {
-         this.p($$4);
+   public static boolean a(crp $$0, bll $$1, eju $$2) {
+      for (eks $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
+
+      return $$0.D_().a($$2);
    }
 
-   public boolean H() {
-      return this.i;
+   public static boolean a(crp $$0, ejz $$1, bll $$2, blx $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
    }
 
-   public void p(boolean $$0) {
-      this.i = $$0;
+   public static eks a(crl $$0, hx $$1) {
+      dhn $$2 = $$0.a_($$1);
+      return !$$2.a(ark.aO) && (!($$2.b() instanceof ddr) || !$$2.c(ddr.b)) ? $$2.k($$0, $$1) : ekp.a();
    }
 
-   @Override
-   public double I() {
-      return this.ds();
-   }
+   public static double a(hx $$0, int $$1, Function<hx, eks> $$2) {
+      hx.a $$3 = $$0.j();
+      int $$4 = 0;
 
-   @Override
-   public double J() {
-      return this.du() + 0.5;
-   }
-
-   @Override
-   public double K() {
-      return this.dy();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dN().B && this.bx() && this.H() && this.M()) {
-         this.e();
-      }
-   }
-
-   public boolean M() {
-      if (dgc.a(this.dN(), this)) {
-         return true;
-      } else {
-         for (can $$1 : this.dN().a(can.class, this.cH().c(0.25, 0.0, 0.25), bkt.a)) {
-            if (dgc.a(this, $$1)) {
-               return true;
-            }
+      while ($$4 < $$1) {
+         eks $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ib.a.b);
          }
 
-         return false;
+         $$4++;
+         $$3.c(ib.b);
       }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   protected cle ag_() {
-      return clm.nP;
-   }
+   @Nullable
+   public static ejz a(bkz<?> $$0, crp $$1, hx $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((crl)$$1, $$2), () -> a((crl)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ejz $$5 = ejz.a($$2, $$4);
+            eju $$6 = $$0.n().a($$5);
 
-   @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.i);
-   }
+            for (eks $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   protected void a(rz $$0) {
-      super.a($$0);
-      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public cgm a(int $$0, cdt $$1) {
-      return new chl($$0, $$1, this);
+            if ($$0 != bkz.bt || !$$1.a_($$2).a(ark.ci) && !$$1.a_($$2.c()).a(ark.ci)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

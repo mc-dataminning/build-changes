@@ -1,77 +1,159 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.mojang.serialization.Codec;
 import java.util.BitSet;
-import java.util.Objects;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class uz {
-   private final vb[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private vd d;
+   public static final Codec<uz> a = auk.a(uz.a::values).dispatch(uz::c, uz.a::a);
+   public static final uz b = new uz(new BitSet(0), uz.a.b);
+   public static final uz c = new uz(new BitSet(0), uz.a.a);
+   public static final vs d = vs.a.a(n.i).a(new vb(vb.a.a, uv.c("chat.filtered")));
+   static final Codec<uz> e = Codec.unit(c);
+   static final Codec<uz> f = Codec.unit(b);
+   static final Codec<uz> g = asy.s.xmap(uz::new, uz::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final uz.a j;
+
+   private uz(BitSet $$0, uz.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   private uz(BitSet $$0) {
+      this.i = $$0;
+      this.j = uz.a.c;
+   }
 
    public uz(int $$0) {
-      this.a = new vb[$$0];
+      this(new BitSet($$0), uz.a.c);
    }
 
-   public boolean a(vd $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new vb($$0, true) : null);
+   private uz.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static uz a(ty $$0) {
+      uz.a $$1 = $$0.b(uz.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new uz($$0.z(), uz.a.c);
+      };
+   }
+
+   public static void a(ty $$0, uz $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == uz.a.c) {
+         $$0.a($$1.i);
+      }
+   }
+
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public uv b(String $$0) {
+      return switch (this.j) {
+         case a -> uv.b($$0);
+         case b -> null;
+         case c -> {
+            vj $$1 = uv.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(uv.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == uz.a.a;
+   }
+
+   public boolean b() {
+      return this.j == uz.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         uz $$1 = (uz)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
       }
    }
 
-   private void a(@Nullable vb $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
    }
 
-   public void a(vd $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         vb $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
+   static enum a implements auk {
+      a("pass_through", () -> uz.e),
+      b("fully_filtered", () -> uz.f),
+      c("partially_filtered", () -> uz.g);
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
+      private final String d;
+      private final Supplier<Codec<uz>> e;
 
-   public uz.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<vd> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         vb $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+      private a(String $$0, Supplier<Codec<uz>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      uy $$6 = new uy($$2);
-      uy.b $$7 = new uy.b($$0, $$1);
-      return new uz.a($$6, $$7);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(uy a, uy.b b) {
+      private Codec<uz> a() {
+         return this.e.get();
+      }
    }
 }

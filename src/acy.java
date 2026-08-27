@@ -1,18 +1,14 @@
-public record acy() implements wk<acl> {
-   public acy(tu $$0) {
-      this();
+public record acy(vm.a a) implements wo<acp> {
+   public acy(ty $$0) {
+      this(vm.a.a($$0));
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
+      vm.a.a($$0, this.a);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public tt c() {
-      return tt.e;
    }
 }

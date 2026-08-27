@@ -1,29 +1,6 @@
-public class bgy implements bgz {
-   public static final bgz a = new bgy();
+import java.util.Set;
+import java.util.function.Supplier;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bfo f() {
-      return bfl.a;
-   }
-
-   @Override
-   public void d() {
-   }
+public interface bgy {
+   Set<bgw> a(Supplier<bfq> var1);
 }

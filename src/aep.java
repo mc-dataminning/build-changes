@@ -1,36 +1,44 @@
-public record aep(int a, afa b) implements wk<aeo> {
-   private static final int c = 1048576;
+public record aep(int a, String b, int c, aeo d) implements wo<aeq> {
+   private static final int e = 255;
 
-   public aep(tu $$0) {
-      this($$0.n(), a($$0.t(), $$0));
+   @Deprecated
+   public aep(int a, String b, int c, aeo d) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   private static afa a(agi $$0, tu $$1) {
-      return b($$0, $$1);
-   }
-
-   private static afc b(agi $$0, tu $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new afc($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public aep(ty $$0) {
+      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), aeo.a($$0.n()));
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.a);
-      $$0.a(this.b.a());
-      this.b.a($$0);
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.c(this.d.a());
    }
 
-   public void a(aeo $$0) {
+   public void a(aeq $$0) {
       $$0.a(this);
    }
 
-   public afa d() {
+   @Override
+   public tx c() {
+      return this.d.b();
+   }
+
+   public String d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public aeo f() {
+      return this.d;
    }
 }

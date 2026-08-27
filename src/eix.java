@@ -1,33 +1,23 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record eix(String b) implements eiz {
-   public static final Codec<eix> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eix::c)).apply($$0, eix::new));
+public class eix {
+   private static final Codec<eiw> f = kc.J.q().dispatch(eiw::b, eiv::a);
+   public static final Codec<eiw> a = asy.a(
+      (Supplier<Codec<eiw>>)(() -> {
+         Codec<eiw> $$0 = asy.e(f, eiz.a);
+         return Codec.either(eiu.b, $$0)
+            .xmap($$0x -> (eiw)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof eiu $$1 ? Either.left($$1) : Either.right($$0x));
+      })
+   );
+   public static final eiv b = a("constant", eiu.a);
+   public static final eiv c = a("uniform", eiz.a);
+   public static final eiv d = a("binomial", eit.a);
+   public static final eiv e = a("score", eiy.a);
 
-   public static eiz a(String $$0) {
-      return new eix($$0);
-   }
-
-   @Override
-   public eiy a() {
-      return eja.b;
-   }
-
-   @Nullable
-   @Override
-   public String a(eex $$0) {
-      return this.b;
-   }
-
-   @Override
-   public Set<ehf<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   private static eiv a(String $$0, Codec<? extends eiw> $$1) {
+      return is.a(kc.J, new agm($$0), new eiv($$1));
    }
 }

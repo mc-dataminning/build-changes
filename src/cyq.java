@@ -1,19 +1,70 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class cyq extends cva {
-   public static final MapCodec<cyq> d = b(cyq::new);
+public class cyq extends dcv implements cvi {
+   public static final MapCodec<cyq> a = b(cyq::new);
 
    @Override
-   protected MapCodec<? extends cyq> a() {
-      return d;
+   public MapCodec<cyq> a() {
+      return a;
    }
 
-   protected cyq(dhh.d $$0) {
+   public cyq(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dhi $$0, dhi $$1, hx $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      hx $$4 = $$2.c();
+      dhn $$5 = cvh.bt.o();
+      Optional<ig.c<dwq>> $$6 = $$0.I_().d(kd.aA).b(qq.n);
+
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         hx $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
+         }
+
+         dhn $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cvi)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ig<dwq> $$12;
+            if ($$1.a(8) == 0) {
+               List<dpn<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dsr)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
+      }
    }
 }

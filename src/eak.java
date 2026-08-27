@@ -1,20 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class eak extends ebb {
-   public static final Codec<eak> a = jy.f.q().fieldOf("block").xmap(eak::new, $$0 -> $$0.b).codec();
-   private final cva b;
+public class eak extends ebg {
+   public static final Codec<eak> a = Codec.unit(() -> eak.b);
+   public static final eak b = new eak();
 
-   public eak(cva $$0) {
-      this.b = $$0;
+   private eak() {
    }
 
    @Override
-   public boolean a(dhi $$0, ats $$1) {
-      return $$0.a(this.b);
+   public boolean a(dhn $$0, atw $$1) {
+      return true;
    }
 
    @Override
-   protected ebc<?> a() {
-      return ebc.b;
+   protected ebh<?> a() {
+      return ebh.a;
    }
 }

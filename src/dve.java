@@ -1,26 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class dve<P extends dvd> {
-   public static final dve<dvc> a = a("straight_trunk_placer", dvc.a);
-   public static final dve<duz> b = a("forking_trunk_placer", duz.a);
-   public static final dve<dva> c = a("giant_trunk_placer", dva.a);
-   public static final dve<dvb> d = a("mega_jungle_trunk_placer", dvb.b);
-   public static final dve<dux> e = a("dark_oak_trunk_placer", dux.a);
-   public static final dve<duy> f = a("fancy_trunk_placer", duy.a);
-   public static final dve<duv> g = a("bending_trunk_placer", duv.a);
-   public static final dve<dvf> h = a("upwards_branching_trunk_placer", dvf.a);
-   public static final dve<duw> i = a("cherry_trunk_placer", duw.a);
-   private final Codec<P> j;
+public class dve extends dvi {
+   public static final Codec<dve> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dve::new));
 
-   private static <P extends dvd> dve<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.Y, $$0, new dve<>($$1));
+   public dve(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private dve(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dvj<?> a() {
+      return dvj.b;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public List<dtq.a> a(csl $$0, BiConsumer<hx, dhn> $$1, atw $$2, int $$3, hx $$4, dta $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<dtq.a> $$6 = Lists.newArrayList();
+      ib $$7 = ib.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      hx.a $$10 = new hx.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new dtq.a(new hx($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      ib $$16 = ib.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new dtq.a(new hx($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

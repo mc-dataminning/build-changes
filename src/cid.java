@@ -1,75 +1,74 @@
-public class cid extends cih {
-   private final chc a;
-   private final cdu b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cid(cdu $$0, chc $$1, biq $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+public class cid extends bjj {
+   @Nullable
+   private dgd c;
+
+   public cid() {
+      super(27);
+   }
+
+   public void a(dgd $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(dgd $$0) {
+      return this.c == $$0;
    }
 
    @Override
-   public boolean a(clj $$0) {
-      return false;
-   }
-
-   @Override
-   public clj a(int $$0) {
-      if (this.g()) {
-         this.c = this.c + Math.min($$0, this.f().L());
+   public void a(sj $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, clo.b);
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(clj $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(clj $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dN(), this.b, this.c);
-      }
-
-      if (this.d instanceof cib $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cdu $$0, clj $$1) {
-      this.b_($$1);
-      il<clj> $$2 = $$0.dN().q().c(cot.a, this.a, $$0.dN());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         clj $$4 = this.a.a($$3);
-         clj $$5 = $$2.get($$3);
-         if (!$$4.b()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
-         }
-
-         if (!$$5.b()) {
-            if ($$4.b()) {
-               this.a.a($$3, $$5);
-            } else if (clj.c($$4, $$5)) {
-               $$5.g($$4.L());
-               this.a.a($$3, $$5);
-            } else if (!this.b.fT().e($$5)) {
-               this.b.a($$5, false);
-            }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         sd $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, clo.a($$3));
          }
       }
+   }
+
+   @Override
+   public sj g() {
+      sj $$0 = new sj();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         clo $$2 = this.a($$1);
+         if (!$$2.b()) {
+            sd $$3 = new sd();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cdz $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cdz $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cdz $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

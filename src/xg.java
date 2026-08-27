@@ -1,18 +1,17 @@
-public record xg(dlw b, int c) implements xd {
-   public static final agi a = new agi("debug/game_event_listeners");
+public record xg(String b) implements xh {
+   public static final agm a = new agm("brand");
 
-   public xg(tu $$0) {
-      this(dlx.c($$0), $$0.n());
+   public xg(ty $$0) {
+      this($$0.s());
    }
 
    @Override
-   public void a(tu $$0) {
-      dlx.a(this.b, $$0);
-      $$0.c(this.c);
+   public void a(ty $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public agi a() {
+   public agm a() {
       return a;
    }
 }

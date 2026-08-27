@@ -1,56 +1,51 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class hm implements hf<IntegerArgumentType, hm.a> {
-   public void a(hm.a $$0, tu $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.k(hh.a($$2, $$3));
-      if ($$2) {
-         $$1.p($$0.b);
-      }
+public class hm<A extends ArgumentType<?>> implements hj<A, hm<A>.a> {
+   private final hm<A>.a a;
 
-      if ($$3) {
-         $$1.p($$0.c);
-      }
+   private hm(Function<dp, A> $$0) {
+      this.a = new hm.a($$0);
    }
 
-   public hm.a a(tu $$0) {
-      byte $$1 = $$0.readByte();
-      int $$2 = hh.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = hh.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
-      return new hm.a($$2, $$3);
+   public static <T extends ArgumentType<?>> hm<T> a(Supplier<T> $$0) {
+      return new hm<>($$1 -> $$0.get());
    }
 
-   public void a(hm.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Integer.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+   public static <T extends ArgumentType<?>> hm<T> a(Function<dp, T> $$0) {
+      return new hm<>($$0);
    }
 
-   public hm.a a(IntegerArgumentType $$0) {
-      return new hm.a($$0.getMinimum(), $$0.getMaximum());
+   public void a(hm<A>.a $$0, ty $$1) {
    }
 
-   public final class a implements hf.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public void a(hm<A>.a $$0, JsonObject $$1) {
+   }
 
-      a(int $$1, int $$2) {
+   public hm<A>.a a(ty $$0) {
+      return this.a;
+   }
+
+   public hm<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements hj.a<A> {
+      private final Function<dp, A> b;
+
+      public a(Function<dp, A> $$1) {
          this.b = $$1;
-         this.c = $$2;
-      }
-
-      public IntegerArgumentType a(dp $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
       }
 
       @Override
-      public hf<IntegerArgumentType, ?> a() {
+      public A b(dp $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public hj<A, ?> a() {
          return hm.this;
       }
    }

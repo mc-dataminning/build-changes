@@ -1,565 +1,939 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Spliterator;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import org.slf4j.Logger;
 
-public class bku<T extends bkq> implements cga, dlg<bkq, T> {
-   private static final Logger bw = LogUtils.getLogger();
-   public static final String a = "EntityTag";
-   private final ib.c<bku<?>> bx = jy.h.f(this);
-   private static final float by = 1.3964844F;
-   private static final int bz = 10;
-   public static final bku<bxv> b = a("allay", bku.a.a(bxv::new, blj.b).a(0.35F, 0.6F).a(8).b(2));
-   public static final bku<bkn> c = a("area_effect_cloud", bku.a.<bkn>a(bkn::new, blj.h).c().a(6.0F, 0.5F).a(10).b(Integer.MAX_VALUE));
-   public static final bku<cad> d = a("armor_stand", bku.a.<cad>a(cad::new, blj.h).a(0.5F, 1.975F).a(10));
-   public static final bku<cec> e = a("arrow", bku.a.<cec>a(cec::new, blj.h).a(0.5F, 0.5F).a(4).b(20));
-   public static final bku<bxy> f = a("axolotl", bku.a.a(bxy::new, blj.d).a(0.75F, 0.42F).a(10));
-   public static final bku<bwm> g = a("bat", bku.a.a(bwm::new, blj.c).a(0.5F, 0.9F).a(5));
-   public static final bku<bws> h = a("bee", bku.a.a(bws::new, blj.b).a(0.7F, 0.6F).a(8));
-   public static final bku<cas> i = a("blaze", bku.a.a(cas::new, blj.a).c().a(0.6F, 1.8F).a(8));
-   public static final bku<bkp.b> j = a("block_display", bku.a.a(bkp.b::new, blj.h).a(0.0F, 0.0F).a(10).b(1));
-   public static final bku<cfn> k = a("boat", bku.a.<cfn>a(cfn::new, blj.h).a(1.375F, 0.5625F).a(10));
-   public static final bku<byd> l = a("camel", bku.a.a(byd::new, blj.b).a(1.7F, 2.375F).a(10));
-   public static final bku<bwu> m = a("cat", bku.a.a(bwu::new, blj.b).a(0.6F, 0.7F).a(8));
-   public static final bku<cat> n = a("cave_spider", bku.a.a(cat::new, blj.a).a(0.7F, 0.5F).a(8));
-   public static final bku<cfo> o = a("chest_boat", bku.a.<cfo>a(cfo::new, blj.h).a(1.375F, 0.5625F).a(10));
-   public static final bku<cfs> p = a("chest_minecart", bku.a.<cfs>a(cfs::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<bww> q = a("chicken", bku.a.a(bww::new, blj.b).a(0.4F, 0.7F).a(10));
-   public static final bku<bwx> r = a("cod", bku.a.a(bwx::new, blj.g).a(0.5F, 0.3F).a(4));
-   public static final bku<cft> s = a("command_block_minecart", bku.a.<cft>a(cft::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<bwy> t = a("cow", bku.a.a(bwy::new, blj.b).a(0.9F, 1.4F).a(10));
-   public static final bku<cau> u = a("creeper", bku.a.a(cau::new, blj.a).a(0.6F, 1.7F).a(8));
-   public static final bku<bwz> v = a("dolphin", bku.a.a(bwz::new, blj.f).a(0.9F, 0.6F));
-   public static final bku<byr> w = a("donkey", bku.a.a(byr::new, blj.b).a(1.3964844F, 1.5F).a(10));
-   public static final bku<ced> x = a("dragon_fireball", bku.a.<ced>a(ced::new, blj.h).a(1.0F, 1.0F).a(4).b(10));
-   public static final bku<caw> y = a("drowned", bku.a.a(caw::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<ceu> z = a("egg", bku.a.<ceu>a(ceu::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<cax> A = a("elder_guardian", bku.a.a(cax::new, blj.a).a(1.9975F, 1.9975F).a(10));
-   public static final bku<bzg> B = a("end_crystal", bku.a.<bzg>a(bzg::new, blj.h).a(2.0F, 2.0F).a(16).b(Integer.MAX_VALUE));
-   public static final bku<bzh> C = a("ender_dragon", bku.a.a(bzh::new, blj.a).c().a(16.0F, 8.0F).a(10));
-   public static final bku<cev> D = a("ender_pearl", bku.a.<cev>a(cev::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<cay> E = a("enderman", bku.a.a(cay::new, blj.a).a(0.6F, 2.9F).a(8));
-   public static final bku<caz> F = a("endermite", bku.a.a(caz::new, blj.a).a(0.4F, 0.3F).a(8));
-   public static final bku<cbb> G = a("evoker", bku.a.a(cbb::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<cee> H = a("evoker_fangs", bku.a.<cee>a(cee::new, blj.h).a(0.5F, 0.8F).a(6).b(2));
-   public static final bku<cew> I = a("experience_bottle", bku.a.<cew>a(cew::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<bkw> J = a("experience_orb", bku.a.<bkw>a(bkw::new, blj.h).a(0.5F, 0.5F).a(6).b(20));
-   public static final bku<cef> K = a("eye_of_ender", bku.a.<cef>a(cef::new, blj.h).a(0.25F, 0.25F).a(4).b(4));
-   public static final bku<cam> L = a("falling_block", bku.a.<cam>a(cam::new, blj.h).a(0.98F, 0.98F).a(10).b(20));
-   public static final bku<ceh> M = a("firework_rocket", bku.a.<ceh>a(ceh::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<bxb> N = a("fox", bku.a.a(bxb::new, blj.b).a(0.6F, 0.7F).a(8).a(cvc.oi));
-   public static final bku<byg> O = a("frog", bku.a.a(byg::new, blj.b).a(0.5F, 0.5F).a(10));
-   public static final bku<cfu> P = a("furnace_minecart", bku.a.<cfu>a(cfu::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<cbc> Q = a("ghast", bku.a.a(cbc::new, blj.a).c().a(4.0F, 4.0F).a(10));
-   public static final bku<cbd> R = a("giant", bku.a.a(cbd::new, blj.a).a(3.6F, 12.0F).a(10));
-   public static final bku<cae> S = a("glow_item_frame", bku.a.<cae>a(cae::new, blj.h).a(0.5F, 0.5F).a(10).b(Integer.MAX_VALUE));
-   public static final bku<bky> T = a("glow_squid", bku.a.a(bky::new, blj.e).a(0.8F, 0.8F).a(10));
-   public static final bku<bym> U = a("goat", bku.a.a(bym::new, blj.b).a(0.9F, 1.3F).a(10));
-   public static final bku<cbe> V = a("guardian", bku.a.a(cbe::new, blj.a).a(0.85F, 0.85F).a(8));
-   public static final bku<cce> W = a("hoglin", bku.a.a(cce::new, blj.a).a(1.3964844F, 1.4F).a(8));
-   public static final bku<cfv> X = a("hopper_minecart", bku.a.<cfv>a(cfv::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<bys> Y = a("horse", bku.a.a(bys::new, blj.b).a(1.3964844F, 1.6F).a(10));
-   public static final bku<cbf> Z = a("husk", bku.a.a(cbf::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<cbg> aa = a("illusioner", bku.a.a(cbg::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<blb> ab = a("interaction", bku.a.a(blb::new, blj.h).a(0.0F, 0.0F).a(10));
-   public static final bku<bxd> ac = a("iron_golem", bku.a.a(bxd::new, blj.h).a(1.4F, 2.7F).a(10));
-   public static final bku<can> ad = a("item", bku.a.<can>a(can::new, blj.h).a(0.25F, 0.25F).a(6).b(20));
-   public static final bku<bkp.g> ae = a("item_display", bku.a.a(bkp.g::new, blj.h).a(0.0F, 0.0F).a(10).b(1));
-   public static final bku<cag> af = a("item_frame", bku.a.<cag>a(cag::new, blj.h).a(0.5F, 0.5F).a(10).b(Integer.MAX_VALUE));
-   public static final bku<cek> ag = a("fireball", bku.a.<cek>a(cek::new, blj.h).a(1.0F, 1.0F).a(4).b(10));
-   public static final bku<cah> ah = a("leash_knot", bku.a.<cah>a(cah::new, blj.h).b().a(0.375F, 0.5F).a(10).b(Integer.MAX_VALUE));
-   public static final bku<blf> ai = a("lightning_bolt", bku.a.a(blf::new, blj.h).b().a(0.0F, 0.0F).a(16).b(Integer.MAX_VALUE));
-   public static final bku<byt> aj = a("llama", bku.a.a(byt::new, blj.b).a(0.9F, 1.87F).a(10));
-   public static final bku<cel> ak = a("llama_spit", bku.a.<cel>a(cel::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<cbh> al = a("magma_cube", bku.a.a(cbh::new, blj.a).c().a(2.04F, 2.04F).a(8));
-   public static final bku<blh> am = a("marker", bku.a.a(blh::new, blj.h).a(0.0F, 0.0F).a(0));
-   public static final bku<cfr> an = a("minecart", bku.a.<cfr>a(cfr::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<bxe> ao = a("mooshroom", bku.a.a(bxe::new, blj.b).a(0.9F, 1.4F).a(10));
-   public static final bku<byv> ap = a("mule", bku.a.a(byv::new, blj.b).a(1.3964844F, 1.6F).a(8));
-   public static final bku<bxf> aq = a("ocelot", bku.a.a(bxf::new, blj.b).a(0.6F, 0.7F).a(10));
-   public static final bku<cai> ar = a("painting", bku.a.<cai>a(cai::new, blj.h).a(0.5F, 0.5F).a(10).b(Integer.MAX_VALUE));
-   public static final bku<bxg> as = a("panda", bku.a.a(bxg::new, blj.b).a(1.3F, 1.25F).a(10));
-   public static final bku<bxh> at = a("parrot", bku.a.a(bxh::new, blj.b).a(0.5F, 0.9F).a(8));
-   public static final bku<cbk> au = a("phantom", bku.a.a(cbk::new, blj.a).a(0.9F, 0.5F).a(8));
-   public static final bku<bxi> av = a("pig", bku.a.a(bxi::new, blj.b).a(0.9F, 0.9F).a(10));
-   public static final bku<cck> aw = a("piglin", bku.a.a(cck::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<ccn> ax = a("piglin_brute", bku.a.a(ccn::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<cbl> ay = a("pillager", bku.a.a(cbl::new, blj.a).d().a(0.6F, 1.95F).a(8));
-   public static final bku<bxj> az = a("polar_bear", bku.a.a(bxj::new, blj.b).a(cvc.qP).a(1.4F, 1.4F).a(10));
-   public static final bku<cex> aA = a("potion", bku.a.<cex>a(cex::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<bxk> aB = a("pufferfish", bku.a.a(bxk::new, blj.g).a(0.7F, 0.7F).a(4));
-   public static final bku<bxl> aC = a("rabbit", bku.a.a(bxl::new, blj.b).a(0.4F, 0.5F).a(8));
-   public static final bku<cbn> aD = a("ravager", bku.a.a(cbn::new, blj.a).a(1.95F, 2.2F).a(10));
-   public static final bku<bxm> aE = a("salmon", bku.a.a(bxm::new, blj.g).a(0.7F, 0.4F).a(4));
-   public static final bku<bxn> aF = a("sheep", bku.a.a(bxn::new, blj.b).a(0.9F, 1.3F).a(10));
-   public static final bku<cbo> aG = a("shulker", bku.a.a(cbo::new, blj.a).c().d().a(1.0F, 1.0F).a(10));
-   public static final bku<ceo> aH = a("shulker_bullet", bku.a.<ceo>a(ceo::new, blj.h).a(0.3125F, 0.3125F).a(8));
-   public static final bku<cbp> aI = a("silverfish", bku.a.a(cbp::new, blj.a).a(0.4F, 0.3F).a(8));
-   public static final bku<cbq> aJ = a("skeleton", bku.a.a(cbq::new, blj.a).a(0.6F, 1.99F).a(8));
-   public static final bku<byw> aK = a("skeleton_horse", bku.a.a(byw::new, blj.b).a(1.3964844F, 1.6F).a(10));
-   public static final bku<cbr> aL = a("slime", bku.a.a(cbr::new, blj.a).a(2.04F, 2.04F).a(10));
-   public static final bku<cep> aM = a("small_fireball", bku.a.<cep>a(cep::new, blj.h).a(0.3125F, 0.3125F).a(4).b(10));
-   public static final bku<bzd> aN = a("sniffer", bku.a.a(bzd::new, blj.b).a(1.9F, 1.75F).a(10));
-   public static final bku<bxp> aO = a("snow_golem", bku.a.a(bxp::new, blj.h).a(cvc.qP).a(0.7F, 1.9F).a(8));
-   public static final bku<ceq> aP = a("snowball", bku.a.<ceq>a(ceq::new, blj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bku<cfw> aQ = a("spawner_minecart", bku.a.<cfw>a(cfw::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<cer> aR = a("spectral_arrow", bku.a.<cer>a(cer::new, blj.h).a(0.5F, 0.5F).a(4).b(20));
-   public static final bku<cbt> aS = a("spider", bku.a.a(cbt::new, blj.a).a(1.4F, 0.9F).a(8));
-   public static final bku<bxq> aT = a("squid", bku.a.a(bxq::new, blj.f).a(0.8F, 0.8F).a(8));
-   public static final bku<cbu> aU = a("stray", bku.a.a(cbu::new, blj.a).a(0.6F, 1.99F).a(cvc.qP).a(8));
-   public static final bku<cbv> aV = a("strider", bku.a.a(cbv::new, blj.b).c().a(0.9F, 1.7F).a(10));
-   public static final bku<byj> aW = a("tadpole", bku.a.a(byj::new, blj.b).a(byj.c, byj.d).a(10));
-   public static final bku<bkp.l> aX = a("text_display", bku.a.a(bkp.l::new, blj.h).a(0.0F, 0.0F).a(10).b(1));
-   public static final bku<cao> aY = a("tnt", bku.a.<cao>a(cao::new, blj.h).c().a(0.98F, 0.98F).a(10).b(10));
-   public static final bku<cfx> aZ = a("tnt_minecart", bku.a.<cfx>a(cfx::new, blj.h).a(0.98F, 0.7F).a(8));
-   public static final bku<byy> ba = a("trader_llama", bku.a.a(byy::new, blj.b).a(0.9F, 1.87F).a(10));
-   public static final bku<cey> bb = a("trident", bku.a.<cey>a(cey::new, blj.h).a(0.5F, 0.5F).a(4).b(20));
-   public static final bku<bxr> bc = a("tropical_fish", bku.a.a(bxr::new, blj.g).a(0.5F, 0.4F).a(4));
-   public static final bku<bxs> bd = a("turtle", bku.a.a(bxs::new, blj.b).a(1.2F, 0.4F).a(10));
-   public static final bku<cbw> be = a("vex", bku.a.a(cbw::new, blj.a).c().a(0.4F, 0.8F).a(8));
-   public static final bku<cdh> bf = a("villager", bku.a.<cdh>a(cdh::new, blj.h).a(0.6F, 1.95F).a(10));
-   public static final bku<cbx> bg = a("vindicator", bku.a.a(cbx::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<cdn> bh = a("wandering_trader", bku.a.a(cdn::new, blj.b).a(0.6F, 1.95F).a(10));
-   public static final bku<ccy> bi = a("warden", bku.a.a(ccy::new, blj.a).a(0.9F, 2.9F).a(16).c());
-   public static final bku<cby> bj = a("witch", bku.a.a(cby::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<cab> bk = a("wither", bku.a.a(cab::new, blj.a).c().a(cvc.cd).a(0.9F, 3.5F).a(10));
-   public static final bku<cbz> bl = a("wither_skeleton", bku.a.a(cbz::new, blj.a).c().a(cvc.cd).a(0.7F, 2.4F).a(8));
-   public static final bku<cez> bm = a("wither_skull", bku.a.<cez>a(cez::new, blj.h).a(0.3125F, 0.3125F).a(4).b(10));
-   public static final bku<bxu> bn = a("wolf", bku.a.a(bxu::new, blj.b).a(0.6F, 0.85F).a(10));
-   public static final bku<cca> bo = a("zoglin", bku.a.a(cca::new, blj.a).c().a(1.3964844F, 1.4F).a(8));
-   public static final bku<ccb> bp = a("zombie", bku.a.<ccb>a(ccb::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<bza> bq = a("zombie_horse", bku.a.a(bza::new, blj.b).a(1.3964844F, 1.6F).a(10));
-   public static final bku<ccc> br = a("zombie_villager", bku.a.a(ccc::new, blj.a).a(0.6F, 1.95F).a(8));
-   public static final bku<ccd> bs = a("zombified_piglin", bku.a.a(ccd::new, blj.a).c().a(0.6F, 1.95F).a(8));
-   public static final bku<cdu> bt = a("player", bku.a.<cdu>a(blj.h).b().a().a(0.6F, 1.8F).a(32).b(2));
-   public static final bku<cei> bu = a("fishing_bobber", bku.a.<cei>a(cei::new, blj.h).b().a().a(0.25F, 0.25F).a(4).b(5));
-   private final bku.b<T> bA;
-   private final blj bB;
-   private final ImmutableSet<cva> bC;
-   private final boolean bD;
-   private final boolean bE;
-   private final boolean bF;
-   private final boolean bG;
-   private final int bH;
-   private final int bI;
+public abstract class bku extends bkv {
+   static final Logger p = LogUtils.getLogger();
+   public static final int b = -1;
+   private static final afs<Integer> q = afv.a(bku.class, afu.b);
+   private static final afs<Integer> r = afv.a(bku.class, afu.b);
+   private static final afs<Integer> s = afv.a(bku.class, afu.b);
+   private static final afs<Vector3f> t = afv.a(bku.class, afu.A);
+   private static final afs<Vector3f> u = afv.a(bku.class, afu.A);
+   private static final afs<Quaternionf> v = afv.a(bku.class, afu.B);
+   private static final afs<Quaternionf> aE = afv.a(bku.class, afu.B);
+   private static final afs<Byte> aF = afv.a(bku.class, afu.a);
+   private static final afs<Integer> aG = afv.a(bku.class, afu.b);
+   private static final afs<Float> aH = afv.a(bku.class, afu.d);
+   private static final afs<Float> aI = afv.a(bku.class, afu.d);
+   private static final afs<Float> aJ = afv.a(bku.class, afu.d);
+   private static final afs<Float> aK = afv.a(bku.class, afu.d);
+   private static final afs<Float> aL = afv.a(bku.class, afu.d);
+   private static final afs<Integer> aM = afv.a(bku.class, afu.b);
+   private static final IntSet aN = IntSet.of(new int[]{t.a(), u.a(), v.a(), aE.a(), aF.a(), aG.a(), aI.a(), aJ.a()});
+   private static final float aO = 0.0F;
+   private static final float aP = 1.0F;
+   private static final int aQ = -1;
+   public static final String c = "teleport_duration";
+   public static final String d = "interpolation_duration";
+   public static final String e = "start_interpolation";
+   public static final String f = "transformation";
+   public static final String g = "billboard";
+   public static final String h = "brightness";
+   public static final String i = "view_range";
+   public static final String j = "shadow_radius";
+   public static final String k = "shadow_strength";
+   public static final String l = "width";
+   public static final String m = "height";
+   public static final String n = "glow_color_override";
+   private long aR = -2147483648L;
+   private int aS;
+   private float aT;
+   private eju aU;
+   protected boolean o;
+   private boolean aV;
+   private boolean aW;
    @Nullable
-   private String bJ;
+   private bku.k aX;
    @Nullable
-   private ur bK;
-   @Nullable
-   private agi bL;
-   private final bkr bM;
-   private final cgd bN;
+   private bku.j aY;
 
-   private static <T extends bkq> bku<T> a(String $$0, bku.a<T> $$1) {
-      return io.a(jy.h, $$0, $$1.a($$0));
+   public bku(bkz<?> $$0, csf $$1) {
+      super($$0, $$1);
+      this.af = true;
+      this.at = true;
+      this.aU = this.cH();
    }
 
-   public static agi a(bku<?> $$0) {
-      return jy.h.b($$0);
-   }
-
-   public static Optional<bku<?>> a(String $$0) {
-      return jy.h.b(agi.a($$0));
-   }
-
-   public bku(bku.b<T> $$0, blj $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, ImmutableSet<cva> $$6, bkr $$7, int $$8, int $$9, cgd $$10) {
-      this.bA = $$0;
-      this.bB = $$1;
-      this.bG = $$5;
-      this.bD = $$2;
-      this.bE = $$3;
-      this.bF = $$4;
-      this.bC = $$6;
-      this.bM = $$7;
-      this.bH = $$8;
-      this.bI = $$9;
-      this.bN = $$10;
-   }
-
-   @Nullable
-   public T a(ame $$0, @Nullable clj $$1, @Nullable cdu $$2, ht $$3, blk $$4, boolean $$5, boolean $$6) {
-      Consumer<T> $$8;
-      rz $$7;
-      if ($$1 != null) {
-         $$7 = $$1.v();
-         $$8 = a($$0, $$1, $$2);
-      } else {
-         $$8 = $$0x -> {
-         };
-         $$7 = null;
+   @Override
+   public void a(afs<?> $$0) {
+      super.a($$0);
+      if (aL.equals($$0) || aK.equals($$0)) {
+         this.H();
       }
 
-      return this.a($$0, $$7, $$8, $$3, $$4, $$5, $$6);
-   }
-
-   public static <T extends bkq> Consumer<T> a(ame $$0, clj $$1, @Nullable cdu $$2) {
-      return a($$0x -> {
-      }, $$0, $$1, $$2);
-   }
-
-   public static <T extends bkq> Consumer<T> a(Consumer<T> $$0, ame $$1, clj $$2, @Nullable cdu $$3) {
-      return b(a($$0, $$2), $$1, $$2, $$3);
-   }
-
-   public static <T extends bkq> Consumer<T> a(Consumer<T> $$0, clj $$1) {
-      return $$1.A() ? $$0.andThen($$1x -> $$1x.b($$1.y())) : $$0;
-   }
-
-   public static <T extends bkq> Consumer<T> b(Consumer<T> $$0, ame $$1, clj $$2, @Nullable cdu $$3) {
-      rz $$4 = $$2.v();
-      return $$4 != null ? $$0.andThen($$3x -> a($$1, $$3, $$3x, $$4)) : $$0;
-   }
-
-   @Nullable
-   public T a(ame $$0, ht $$1, blk $$2) {
-      return this.a($$0, (rz)null, null, $$1, $$2, false, false);
-   }
-
-   @Nullable
-   public T a(ame $$0, @Nullable rz $$1, @Nullable Consumer<T> $$2, ht $$3, blk $$4, boolean $$5, boolean $$6) {
-      T $$7 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$7 != null) {
-         $$0.a_($$7);
+      if (q.equals($$0)) {
+         this.aV = true;
       }
 
-      return $$7;
+      if (r.equals($$0)) {
+         this.aW = true;
+      }
+
+      if (aN.contains($$0.a())) {
+         this.o = true;
+      }
    }
 
-   @Nullable
-   public T b(ame $$0, @Nullable rz $$1, @Nullable Consumer<T> $$2, ht $$3, blk $$4, boolean $$5, boolean $$6) {
-      T $$7 = this.a((csa)$$0);
-      if ($$7 == null) {
-         return null;
-      } else {
-         double $$8;
-         if ($$5) {
-            $$7.a_((double)$$3.u() + 0.5, (double)($$3.v() + 1), (double)$$3.w() + 0.5);
-            $$8 = a($$0, $$3, $$6, $$7.cH());
-         } else {
-            $$8 = 0.0;
+   private static j a(afv $$0) {
+      Vector3f $$1 = $$0.b(t);
+      Quaternionf $$2 = $$0.b(v);
+      Vector3f $$3 = $$0.b(u);
+      Quaternionf $$4 = $$0.b(aE);
+      return new j($$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void l() {
+      bkv $$0 = this.da();
+      if ($$0 != null && $$0.dI()) {
+         this.ac();
+      }
+
+      if (this.dN().B) {
+         if (this.aV) {
+            this.aV = false;
+            int $$1 = this.u();
+            this.aR = (long)(this.ah + $$1);
          }
 
-         $$7.b((double)$$3.u() + 0.5, (double)$$3.v() + $$8, (double)$$3.w() + 0.5, atm.g($$0.z.i() * 360.0F), 0.0F);
-         if ($$7 instanceof bli $$10) {
-            $$10.aW = $$10.dD();
-            $$10.aU = $$10.dD();
-            $$10.a($$0, $$0.d_($$10.dn()), $$4, null, $$1);
-            $$10.R();
+         if (this.aW) {
+            this.aW = false;
+            this.aS = this.s();
          }
 
-         if ($$2 != null) {
-            $$2.accept($$7);
-         }
-
-         return $$7;
-      }
-   }
-
-   protected static double a(csd $$0, ht $$1, boolean $$2, ejp $$3) {
-      ejp $$4 = new ejp($$1);
-      if ($$2) {
-         $$4 = $$4.b(0.0, -1.0, 0.0);
-      }
-
-      Iterable<ekn> $$5 = $$0.d(null, $$4);
-      return 1.0 + ekk.a(hx.a.b, $$3, $$5, $$2 ? -2.0 : -1.0);
-   }
-
-   public static void a(csa $$0, @Nullable cdu $$1, @Nullable bkq $$2, @Nullable rz $$3) {
-      if ($$3 != null && $$3.b("EntityTag", 10)) {
-         MinecraftServer $$4 = $$0.n();
-         if ($$4 != null && $$2 != null) {
-            if ($$0.B || !$$2.cN() || $$1 != null && $$4.ae().f($$1.fS())) {
-               rz $$5 = $$2.f(new rz());
-               UUID $$6 = $$2.cw();
-               $$5.a($$3.p("EntityTag"));
-               $$2.a_($$6);
-               $$2.g($$5);
+         if (this.o) {
+            this.o = false;
+            boolean $$2 = this.aS != 0;
+            if ($$2 && this.aX != null) {
+               this.aX = this.a(this.aX, this.aT);
+            } else {
+               this.aX = this.I();
             }
+
+            this.a($$2, this.aT);
          }
-      }
-   }
 
-   public boolean b() {
-      return this.bD;
-   }
-
-   public boolean c() {
-      return this.bE;
-   }
-
-   public boolean d() {
-      return this.bF;
-   }
-
-   public boolean e() {
-      return this.bG;
-   }
-
-   public blj f() {
-      return this.bB;
-   }
-
-   public String g() {
-      if (this.bJ == null) {
-         this.bJ = ac.a("entity", jy.h.b(this));
-      }
-
-      return this.bJ;
-   }
-
-   public ur h() {
-      if (this.bK == null) {
-         this.bK = ur.c(this.g());
-      }
-
-      return this.bK;
-   }
-
-   @Override
-   public String toString() {
-      return this.g();
-   }
-
-   public String i() {
-      int $$0 = this.g().lastIndexOf(46);
-      return $$0 == -1 ? this.g() : this.g().substring($$0 + 1);
-   }
-
-   public agi j() {
-      if (this.bL == null) {
-         agi $$0 = jy.h.b(this);
-         this.bL = $$0.d("entities/");
-      }
-
-      return this.bL;
-   }
-
-   public float k() {
-      return this.bM.a;
-   }
-
-   public float l() {
-      return this.bM.b;
-   }
-
-   @Override
-   public cgd m() {
-      return this.bN;
-   }
-
-   @Nullable
-   public T a(csa $$0) {
-      return !this.a($$0.H()) ? null : this.bA.create(this, $$0);
-   }
-
-   public static Optional<bkq> a(rz $$0, csa $$1) {
-      return ac.a(a($$0).map($$1x -> $$1x.a($$1)), $$1x -> $$1x.g($$0), () -> bw.warn("Skipping Entity with id {}", $$0.l("id")));
-   }
-
-   public ejp a(double $$0, double $$1, double $$2) {
-      float $$3 = this.k() / 2.0F;
-      return new ejp($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)this.l(), $$2 + (double)$$3);
-   }
-
-   public boolean a(dhi $$0) {
-      if (this.bC.contains($$0.b())) {
-         return false;
-      } else {
-         return !this.bF && edm.a($$0) ? true : $$0.a(cvc.cd) || $$0.a(cvc.oi) || $$0.a(cvc.dQ) || $$0.a(cvc.qP);
-      }
-   }
-
-   public bkr n() {
-      return this.bM;
-   }
-
-   public static Optional<bku<?>> a(rz $$0) {
-      return jy.h.b(new agi($$0.l("id")));
-   }
-
-   @Nullable
-   public static bkq a(rz $$0, csa $$1, Function<bkq, bkq> $$2) {
-      return b($$0, $$1).map($$2).map($$3 -> {
-         if ($$0.b("Passengers", 9)) {
-            sf $$4 = $$0.c("Passengers", 10);
-
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               bkq $$6 = a($$4.a($$5), $$1, $$2);
-               if ($$6 != null) {
-                  $$6.a($$3, true);
+         if (this.aY != null) {
+            if (this.aY.a == 0) {
+               this.aY.a(this);
+               this.bp();
+               this.aY = null;
+            } else {
+               this.aY.b(this);
+               this.aY.a--;
+               if (this.aY.a == 0) {
+                  this.aY = null;
                }
             }
          }
-
-         return (bkq)$$3;
-      }).orElse(null);
-   }
-
-   public static Stream<bkq> a(final List<? extends sw> $$0, final csa $$1) {
-      final Spliterator<? extends sw> $$2 = $$0.spliterator();
-      return StreamSupport.stream(new Spliterator<bkq>() {
-         @Override
-         public boolean tryAdvance(Consumer<? super bkq> $$0x) {
-            return $$2.tryAdvance($$2xx -> bku.a((rz)$$2xx, $$1, $$1xxxx -> {
-                  $$0.accept($$1xxxx);
-                  return $$1xxxx;
-               }));
-         }
-
-         @Override
-         public Spliterator<bkq> trySplit() {
-            return null;
-         }
-
-         @Override
-         public long estimateSize() {
-            return (long)$$0.size();
-         }
-
-         @Override
-         public int characteristics() {
-            return 1297;
-         }
-      }, false);
-   }
-
-   private static Optional<bkq> b(rz $$0, csa $$1) {
-      try {
-         return a($$0, $$1);
-      } catch (RuntimeException var3) {
-         bw.warn("Exception loading entity: ", var3);
-         return Optional.empty();
       }
    }
 
-   public int o() {
-      return this.bH;
-   }
+   protected abstract void a(boolean var1, float var2);
 
-   public int p() {
-      return this.bI;
-   }
-
-   public boolean q() {
-      return this != bt && this != ak && this != bk && this != g && this != af && this != S && this != ah && this != ar && this != B && this != H;
-   }
-
-   public boolean a(arv<bku<?>> $$0) {
-      return this.bx.a($$0);
-   }
-
-   public boolean a(ig<bku<?>> $$0) {
-      return $$0.a(this.bx);
-   }
-
-   @Nullable
-   public T a(bkq $$0) {
-      return (T)($$0.ai() == this ? $$0 : null);
+   @Override
+   protected void c_() {
+      this.an.a(s, 0);
+      this.an.a(q, 0);
+      this.an.a(r, 0);
+      this.an.a(t, new Vector3f());
+      this.an.a(u, new Vector3f(1.0F, 1.0F, 1.0F));
+      this.an.a(aE, new Quaternionf());
+      this.an.a(v, new Quaternionf());
+      this.an.a(aF, bku.a.a.a());
+      this.an.a(aG, -1);
+      this.an.a(aH, 1.0F);
+      this.an.a(aI, 0.0F);
+      this.an.a(aJ, 1.0F);
+      this.an.a(aK, 0.0F);
+      this.an.a(aL, 0.0F);
+      this.an.a(aM, -1);
    }
 
    @Override
-   public Class<? extends bkq> a() {
-      return bkq.class;
+   protected void a(sd $$0) {
+      if ($$0.e("transformation")) {
+         j.b.decode(sr.a, $$0.c("transformation")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((j)$$0x.getFirst()));
+      }
+
+      if ($$0.b("interpolation_duration", 99)) {
+         int $$1 = $$0.h("interpolation_duration");
+         this.b($$1);
+      }
+
+      if ($$0.b("start_interpolation", 99)) {
+         int $$2 = $$0.h("start_interpolation");
+         this.c($$2);
+      }
+
+      if ($$0.b("teleport_duration", 99)) {
+         int $$3 = $$0.h("teleport_duration");
+         this.d(atq.a($$3, 0, 59));
+      }
+
+      if ($$0.b("billboard", 8)) {
+         bku.a.e.decode(sr.a, $$0.c("billboard")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((bku.a)$$0x.getFirst()));
+      }
+
+      if ($$0.b("view_range", 99)) {
+         this.b($$0.j("view_range"));
+      }
+
+      if ($$0.b("shadow_radius", 99)) {
+         this.c($$0.j("shadow_radius"));
+      }
+
+      if ($$0.b("shadow_strength", 99)) {
+         this.u($$0.j("shadow_strength"));
+      }
+
+      if ($$0.b("width", 99)) {
+         this.v($$0.j("width"));
+      }
+
+      if ($$0.b("height", 99)) {
+         this.w($$0.j("height"));
+      }
+
+      if ($$0.b("glow_color_override", 99)) {
+         this.m($$0.h("glow_color_override"));
+      }
+
+      if ($$0.b("brightness", 10)) {
+         asi.b.decode(sr.a, $$0.c("brightness")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((asi)$$0x.getFirst()));
+      } else {
+         this.a(null);
+      }
    }
 
-   @Deprecated
-   public ib.c<bku<?>> r() {
-      return this.bx;
+   private void a(j $$0) {
+      this.an.b(t, $$0.d());
+      this.an.b(v, $$0.e());
+      this.an.b(u, $$0.f());
+      this.an.b(aE, $$0.g());
    }
 
-   public static class a<T extends bkq> {
-      private final bku.b<T> a;
-      private final blj b;
-      private ImmutableSet<cva> c = ImmutableSet.of();
-      private boolean d = true;
-      private boolean e = true;
-      private boolean f;
-      private boolean g;
-      private int h = 5;
-      private int i = 3;
-      private bkr j = bkr.b(0.6F, 1.8F);
-      private cgd k = cgf.g;
+   @Override
+   protected void b(sd $$0) {
+      j.b.encodeStart(sr.a, a(this.an)).result().ifPresent($$1x -> $$0.a("transformation", $$1x));
+      bku.a.e.encodeStart(sr.a, this.x()).result().ifPresent($$1x -> $$0.a("billboard", $$1x));
+      $$0.a("interpolation_duration", this.s());
+      $$0.a("teleport_duration", this.w());
+      $$0.a("view_range", this.A());
+      $$0.a("shadow_radius", this.B());
+      $$0.a("shadow_strength", this.C());
+      $$0.a("width", this.D());
+      $$0.a("height", this.G());
+      $$0.a("glow_color_override", this.E());
+      asi $$1 = this.y();
+      if ($$1 != null) {
+         asi.b.encodeStart(sr.a, $$1).result().ifPresent($$1x -> $$0.a("brightness", $$1x));
+      }
+   }
 
-      private a(bku.b<T> $$0, blj $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         this.g = $$1 == blj.b || $$1 == blj.h;
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      int $$6 = this.w();
+      this.aY = new bku.j($$6, $$0, $$1, $$2, (double)$$3, (double)$$4);
+   }
+
+   @Override
+   public double p_() {
+      return this.aY != null ? this.aY.b : this.ds();
+   }
+
+   @Override
+   public double N_() {
+      return this.aY != null ? this.aY.c : this.du();
+   }
+
+   @Override
+   public double O_() {
+      return this.aY != null ? this.aY.d : this.dy();
+   }
+
+   @Override
+   public float f_() {
+      return this.aY != null ? (float)this.aY.f : this.dF();
+   }
+
+   @Override
+   public float q_() {
+      return this.aY != null ? (float)this.aY.e : this.dD();
+   }
+
+   @Override
+   public eju i_() {
+      return this.aU;
+   }
+
+   @Override
+   public edc s_() {
+      return edc.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
+   }
+
+   @Nullable
+   public bku.k q() {
+      return this.aX;
+   }
+
+   private void b(int $$0) {
+      this.an.b(r, $$0);
+   }
+
+   private int s() {
+      return this.an.b(r);
+   }
+
+   private void c(int $$0) {
+      this.an.a(q, $$0, true);
+   }
+
+   private int u() {
+      return this.an.b(q);
+   }
+
+   private void d(int $$0) {
+      this.an.b(s, $$0);
+   }
+
+   private int w() {
+      return this.an.b(s);
+   }
+
+   private void a(bku.a $$0) {
+      this.an.b(aF, $$0.a());
+   }
+
+   private bku.a x() {
+      return bku.a.f.apply(this.an.b(aF));
+   }
+
+   private void a(@Nullable asi $$0) {
+      this.an.b(aG, $$0 != null ? $$0.a() : -1);
+   }
+
+   @Nullable
+   private asi y() {
+      int $$0 = this.an.b(aG);
+      return $$0 != -1 ? asi.a($$0) : null;
+   }
+
+   private int z() {
+      return this.an.b(aG);
+   }
+
+   private void b(float $$0) {
+      this.an.b(aH, $$0);
+   }
+
+   private float A() {
+      return this.an.b(aH);
+   }
+
+   private void c(float $$0) {
+      this.an.b(aI, $$0);
+   }
+
+   private float B() {
+      return this.an.b(aI);
+   }
+
+   private void u(float $$0) {
+      this.an.b(aJ, $$0);
+   }
+
+   private float C() {
+      return this.an.b(aJ);
+   }
+
+   private void v(float $$0) {
+      this.an.b(aK, $$0);
+   }
+
+   private float D() {
+      return this.an.b(aK);
+   }
+
+   private void w(float $$0) {
+      this.an.b(aL, $$0);
+   }
+
+   private int E() {
+      return this.an.b(aM);
+   }
+
+   private void m(int $$0) {
+      this.an.b(aM, $$0);
+   }
+
+   public float a(float $$0) {
+      int $$1 = this.aS;
+      if ($$1 <= 0) {
+         return 1.0F;
+      } else {
+         float $$2 = (float)((long)this.ah - this.aR);
+         float $$3 = $$2 + $$0;
+         float $$4 = atq.a(atq.g($$3, 0.0F, (float)$$1), 0.0F, 1.0F);
+         this.aT = $$4;
+         return $$4;
+      }
+   }
+
+   private float G() {
+      return this.an.b(aL);
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      super.a_($$0, $$1, $$2);
+      this.H();
+   }
+
+   private void H() {
+      float $$0 = this.D();
+      float $$1 = this.G();
+      if ($$0 != 0.0F && $$1 != 0.0F) {
+         this.at = false;
+         float $$2 = $$0 / 2.0F;
+         double $$3 = this.ds();
+         double $$4 = this.du();
+         double $$5 = this.dy();
+         this.aU = new eju($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
+      } else {
+         this.at = true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < atq.k((double)this.A() * 64.0 * cA());
+   }
+
+   @Override
+   public int j_() {
+      int $$0 = this.E();
+      return $$0 != -1 ? $$0 : super.j_();
+   }
+
+   private bku.k I() {
+      return new bku.k(bku.e.constant(a(this.an)), this.x(), this.z(), bku.d.constant(this.B()), bku.d.constant(this.C()), this.E());
+   }
+
+   private bku.k a(bku.k $$0, float $$1) {
+      j $$2 = $$0.a.get($$1);
+      float $$3 = $$0.d.get($$1);
+      float $$4 = $$0.e.get($$1);
+      return new bku.k(new bku.m($$2, a(this.an)), this.x(), this.z(), new bku.h($$3, this.B()), new bku.h($$4, this.C()), this.E());
+   }
+
+   public static enum a implements auk {
+      a((byte)0, "fixed"),
+      b((byte)1, "vertical"),
+      c((byte)2, "horizontal"),
+      d((byte)3, "center");
+
+      public static final Codec<bku.a> e = auk.a(bku.a::values);
+      public static final IntFunction<bku.a> f = asj.a(bku.a::a, values(), asj.a.a);
+      private final byte g;
+      private final String h;
+
+      private a(byte $$0, String $$1) {
+         this.h = $$1;
+         this.g = $$0;
       }
 
-      public static <T extends bkq> bku.a<T> a(bku.b<T> $$0, blj $$1) {
-         return new bku.a<>($$0, $$1);
+      @Override
+      public String c() {
+         return this.h;
       }
 
-      public static <T extends bkq> bku.a<T> a(blj $$0) {
-         return new bku.a<>(($$0x, $$1) -> null, $$0);
+      byte a() {
+         return this.g;
+      }
+   }
+
+   public static class b extends bku {
+      public static final String p = "block_state";
+      private static final afs<dhn> q = afv.a(bku.b.class, afu.i);
+      @Nullable
+      private bku.b.a r;
+
+      public b(bkz<?> $$0, csf $$1) {
+         super($$0, $$1);
       }
 
-      public bku.a<T> a(float $$0, float $$1) {
-         this.j = bkr.b($$0, $$1);
-         return this;
+      @Override
+      protected void c_() {
+         super.c_();
+         this.an.a(q, cvh.a.o());
       }
 
-      public bku.a<T> a() {
-         this.e = false;
-         return this;
+      @Override
+      public void a(afs<?> $$0) {
+         super.a($$0);
+         if ($$0.equals(q)) {
+            this.o = true;
+         }
       }
 
-      public bku.a<T> b() {
-         this.d = false;
-         return this;
+      private dhn u() {
+         return this.an.b(q);
       }
 
-      public bku.a<T> c() {
-         this.f = true;
-         return this;
+      private void c(dhn $$0) {
+         this.an.b(q, $$0);
       }
 
-      public bku.a<T> a(cva... $$0) {
-         this.c = ImmutableSet.copyOf($$0);
-         return this;
+      @Override
+      protected void a(sd $$0) {
+         super.a($$0);
+         this.c(ss.a(this.dN().a(kd.e), $$0.p("block_state")));
       }
 
-      public bku.a<T> d() {
-         this.g = true;
-         return this;
+      @Override
+      protected void b(sd $$0) {
+         super.b($$0);
+         $$0.a("block_state", ss.a(this.u()));
       }
 
-      public bku.a<T> a(int $$0) {
-         this.h = $$0;
-         return this;
+      @Nullable
+      public bku.b.a s() {
+         return this.r;
       }
 
-      public bku.a<T> b(int $$0) {
-         this.i = $$0;
-         return this;
+      @Override
+      protected void a(boolean $$0, float $$1) {
+         this.r = new bku.b.a(this.u());
       }
 
-      public bku.a<T> a(cgb... $$0) {
-         this.k = cgf.e.a($$0);
-         return this;
+      public static record a(dhn a) {
+      }
+   }
+
+   static record c(int a, int b) implements bku.f {
+      @Override
+      public int get(float $$0) {
+         return ata.b.a($$0, this.a, this.b);
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      static bku.d constant(float $$0) {
+         return $$1 -> $$0;
       }
 
-      public bku<T> a(String $$0) {
-         if (this.d) {
-            ac.a(bat.w, $$0);
+      float get(float var1);
+   }
+
+   @FunctionalInterface
+   public interface e<T> {
+      static <T> bku.e<T> constant(T $$0) {
+         return $$1 -> $$0;
+      }
+
+      T get(float var1);
+   }
+
+   @FunctionalInterface
+   public interface f {
+      static bku.f constant(int $$0) {
+         return $$1 -> $$0;
+      }
+
+      int get(float var1);
+   }
+
+   public static class g extends bku {
+      private static final String p = "item";
+      private static final String q = "item_display";
+      private static final afs<clo> r = afv.a(bku.g.class, afu.h);
+      private static final afs<Byte> s = afv.a(bku.g.class, afu.a);
+      private final bmd t = new bmd() {
+         @Override
+         public clo a() {
+            return g.this.u();
          }
 
-         return new bku<>(this.a, this.b, this.d, this.e, this.f, this.g, this.c, this.j, this.h, this.i, this.k);
+         @Override
+         public boolean a(clo $$0) {
+            g.this.a($$0);
+            return true;
+         }
+      };
+      @Nullable
+      private bku.g.a u;
+
+      public g(bkz<?> $$0, csf $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void c_() {
+         super.c_();
+         this.an.a(r, clo.b);
+         this.an.a(s, cll.a.a());
+      }
+
+      @Override
+      public void a(afs<?> $$0) {
+         super.a($$0);
+         if (r.equals($$0) || s.equals($$0)) {
+            this.o = true;
+         }
+      }
+
+      clo u() {
+         return this.an.b(r);
+      }
+
+      void a(clo $$0) {
+         this.an.b(r, $$0);
+      }
+
+      private void a(cll $$0) {
+         this.an.b(s, $$0.a());
+      }
+
+      private cll w() {
+         return cll.k.apply(this.an.b(s));
+      }
+
+      @Override
+      protected void a(sd $$0) {
+         super.a($$0);
+         this.a(clo.a($$0.p("item")));
+         if ($$0.b("item_display", 8)) {
+            cll.j.decode(sr.a, $$0.c("item_display")).resultOrPartial(ac.a("Display entity", bku.p::error)).ifPresent($$0x -> this.a((cll)$$0x.getFirst()));
+         }
+      }
+
+      @Override
+      protected void b(sd $$0) {
+         super.b($$0);
+         $$0.a("item", this.u().b(new sd()));
+         cll.j.encodeStart(sr.a, this.w()).result().ifPresent($$1 -> $$0.a("item_display", $$1));
+      }
+
+      @Override
+      public bmd a_(int $$0) {
+         return $$0 == 0 ? this.t : bmd.b;
+      }
+
+      @Nullable
+      public bku.g.a s() {
+         return this.u;
+      }
+
+      @Override
+      protected void a(boolean $$0, float $$1) {
+         clo $$2 = this.u();
+         $$2.a(this);
+         this.u = new bku.g.a($$2, this.w());
+      }
+
+      public static record a(clo a, cll b) {
       }
    }
 
-   public interface b<T extends bkq> {
-      T create(bku<T> var1, csa var2);
+   static record h(float a, float b) implements bku.d {
+      @Override
+      public float get(float $$0) {
+         return atq.i($$0, this.a, this.b);
+      }
+   }
+
+   static record i(int a, int b) implements bku.f {
+      @Override
+      public int get(float $$0) {
+         return atq.a($$0, this.a, this.b);
+      }
+   }
+
+   static class j {
+      int a;
+      final double b;
+      final double c;
+      final double d;
+      final double e;
+      final double f;
+
+      j(int $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+
+      void a(bkv $$0) {
+         $$0.a_(this.b, this.c, this.d);
+         $$0.a((float)this.e, (float)this.f);
+      }
+
+      void b(bkv $$0) {
+         $$0.a(this.a, this.b, this.c, this.d, this.e, this.f);
+      }
+   }
+
+   public static record k(bku.e<j> a, bku.a b, int c, bku.d d, bku.d e, int f) {
+   }
+
+   public static class l extends bku {
+      public static final String p = "text";
+      private static final String aE = "line_width";
+      private static final String aF = "text_opacity";
+      private static final String aG = "background";
+      private static final String aH = "shadow";
+      private static final String aI = "see_through";
+      private static final String aJ = "default_background";
+      private static final String aK = "alignment";
+      public static final byte q = 1;
+      public static final byte r = 2;
+      public static final byte s = 4;
+      public static final byte t = 8;
+      public static final byte u = 16;
+      private static final byte aL = -1;
+      public static final int v = 1073741824;
+      private static final afs<uv> aM = afv.a(bku.l.class, afu.f);
+      private static final afs<Integer> aN = afv.a(bku.l.class, afu.b);
+      private static final afs<Integer> aO = afv.a(bku.l.class, afu.b);
+      private static final afs<Byte> aP = afv.a(bku.l.class, afu.a);
+      private static final afs<Byte> aQ = afv.a(bku.l.class, afu.a);
+      private static final IntSet aR = IntSet.of(new int[]{aM.a(), aN.a(), aO.a(), aP.a(), aQ.a()});
+      @Nullable
+      private bku.l.b aS;
+      @Nullable
+      private bku.l.e aT;
+
+      public l(bkz<?> $$0, csf $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void c_() {
+         super.c_();
+         this.an.a(aM, uv.i());
+         this.an.a(aN, 200);
+         this.an.a(aO, 1073741824);
+         this.an.a(aP, (byte)-1);
+         this.an.a(aQ, (byte)0);
+      }
+
+      @Override
+      public void a(afs<?> $$0) {
+         super.a($$0);
+         if (aR.contains($$0.a())) {
+            this.o = true;
+         }
+      }
+
+      private uv u() {
+         return this.an.b(aM);
+      }
+
+      private void c(uv $$0) {
+         this.an.b(aM, $$0);
+      }
+
+      private int w() {
+         return this.an.b(aN);
+      }
+
+      private void b(int $$0) {
+         this.an.b(aN, $$0);
+      }
+
+      private byte x() {
+         return this.an.b(aP);
+      }
+
+      private void c(byte $$0) {
+         this.an.b(aP, $$0);
+      }
+
+      private int y() {
+         return this.an.b(aO);
+      }
+
+      private void c(int $$0) {
+         this.an.b(aO, $$0);
+      }
+
+      private byte z() {
+         return this.an.b(aQ);
+      }
+
+      private void d(byte $$0) {
+         this.an.b(aQ, $$0);
+      }
+
+      private static byte a(byte $$0, sd $$1, String $$2, byte $$3) {
+         return $$1.q($$2) ? (byte)($$0 | $$3) : $$0;
+      }
+
+      @Override
+      protected void a(sd $$0) {
+         super.a($$0);
+         if ($$0.b("line_width", 99)) {
+            this.b($$0.h("line_width"));
+         }
+
+         if ($$0.b("text_opacity", 99)) {
+            this.c($$0.f("text_opacity"));
+         }
+
+         if ($$0.b("background", 99)) {
+            this.c($$0.h("background"));
+         }
+
+         byte $$1 = a((byte)0, $$0, "shadow", (byte)1);
+         $$1 = a($$1, $$0, "see_through", (byte)2);
+         $$1 = a($$1, $$0, "default_background", (byte)4);
+         Optional<bku.l.a> $$2 = bku.l.a.d.decode(sr.a, $$0.c("alignment")).resultOrPartial(ac.a("Display entity", bku.p::error)).map(Pair::getFirst);
+         if ($$2.isPresent()) {
+            $$1 = switch ((bku.l.a)$$2.get()) {
+               case a -> $$1;
+               case b -> (byte)($$1 | 8);
+               case c -> (byte)($$1 | 16);
+            };
+         }
+
+         this.d($$1);
+         if ($$0.b("text", 8)) {
+            String $$3 = $$0.l("text");
+
+            try {
+               uv $$4 = uv.a.a($$3);
+               if ($$4 != null) {
+                  du $$5 = this.de().a(2);
+                  uv $$6 = uy.a($$5, $$4, this, 0);
+                  this.c($$6);
+               } else {
+                  this.c(uv.i());
+               }
+            } catch (Exception var8) {
+               bku.p.warn("Failed to parse display entity text {}", $$3, var8);
+            }
+         }
+      }
+
+      private static void b(byte $$0, sd $$1, String $$2, byte $$3) {
+         $$1.a($$2, ($$0 & $$3) != 0);
+      }
+
+      @Override
+      protected void b(sd $$0) {
+         super.b($$0);
+         $$0.a("text", uv.a.a(this.u()));
+         $$0.a("line_width", this.w());
+         $$0.a("background", this.y());
+         $$0.a("text_opacity", this.x());
+         byte $$1 = this.z();
+         b($$1, $$0, "shadow", (byte)1);
+         b($$1, $$0, "see_through", (byte)2);
+         b($$1, $$0, "default_background", (byte)4);
+         bku.l.a.d.encodeStart(sr.a, a($$1)).result().ifPresent($$1x -> $$0.a("alignment", $$1x));
+      }
+
+      @Override
+      protected void a(boolean $$0, float $$1) {
+         if ($$0 && this.aT != null) {
+            this.aT = this.a(this.aT, $$1);
+         } else {
+            this.aT = this.A();
+         }
+
+         this.aS = null;
+      }
+
+      @Nullable
+      public bku.l.e s() {
+         return this.aT;
+      }
+
+      private bku.l.e A() {
+         return new bku.l.e(this.u(), this.w(), bku.f.constant(this.x()), bku.f.constant(this.y()), this.z());
+      }
+
+      private bku.l.e a(bku.l.e $$0, float $$1) {
+         int $$2 = $$0.d.get($$1);
+         int $$3 = $$0.c.get($$1);
+         return new bku.l.e(this.u(), this.w(), new bku.i($$3, this.x()), new bku.c($$2, this.y()), this.z());
+      }
+
+      public bku.l.b a(bku.l.d $$0) {
+         if (this.aS == null) {
+            if (this.aT != null) {
+               this.aS = $$0.split(this.aT.a(), this.aT.b());
+            } else {
+               this.aS = new bku.l.b(List.of(), 0);
+            }
+         }
+
+         return this.aS;
+      }
+
+      public static bku.l.a a(byte $$0) {
+         if (($$0 & 8) != 0) {
+            return bku.l.a.b;
+         } else {
+            return ($$0 & 16) != 0 ? bku.l.a.c : bku.l.a.a;
+         }
+      }
+
+      public static enum a implements auk {
+         a("center"),
+         b("left"),
+         c("right");
+
+         public static final Codec<bku.l.a> d = auk.a(bku.l.a::values);
+         private final String e;
+
+         private a(String $$0) {
+            this.e = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.e;
+         }
+      }
+
+      public static record b(List<bku.l.c> a, int b) {
+      }
+
+      public static record c(atc a, int b) {
+      }
+
+      @FunctionalInterface
+      public interface d {
+         bku.l.b split(uv var1, int var2);
+      }
+
+      public static record e(uv a, int b, bku.f c, bku.f d, byte e) {
+      }
+   }
+
+   static record m(j a, j b) implements bku.e<j> {
+      public j a(float $$0) {
+         return (double)$$0 >= 1.0 ? this.b : this.a.a(this.b, $$0);
+      }
    }
 }

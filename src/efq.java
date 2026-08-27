@@ -1,66 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class efq implements efi {
-   protected final List<ehw> e;
-   private final Predicate<eex> a;
+public class efq extends efx {
+   public static final Codec<efq> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, efq::new));
 
-   protected efq(List<ehw> $$0) {
-      this.e = $$0;
-      this.a = ehy.a($$0);
+   private efq(int $$0, int $$1, List<eib> $$2, List<egp> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   protected static <T extends efq> P1<Mu<T>, List<ehw>> a(Instance<T> $$0) {
-      return $$0.group(asu.a(ehy.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public efw a() {
+      return eft.b;
    }
 
-   public void a(efg $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
-      }
+   @Override
+   public void a(Consumer<clo> $$0, efc $$1) {
    }
 
-   protected final boolean a(eex $$0) {
-      return this.a.test($$0);
-   }
-
-   public abstract efr a();
-
-   public abstract static class a<T extends efq.a<T>> implements ehp<T> {
-      private final Builder<ehw> a = ImmutableList.builder();
-
-      protected abstract T aD_();
-
-      public T a(ehw.a $$0) {
-         this.a.add($$0.build());
-         return this.aD_();
-      }
-
-      public final T e() {
-         return this.aD_();
-      }
-
-      protected List<ehw> f() {
-         return this.a.build();
-      }
-
-      public efh.a a(efq.a<?> $$0) {
-         return new efh.a(this, $$0);
-      }
-
-      public efm.a b(efq.a<?> $$0) {
-         return new efm.a(this, $$0);
-      }
-
-      public efu.a c(efq.a<?> $$0) {
-         return new efu.a(this, $$0);
-      }
-
-      public abstract efq b();
+   public static efx.a<?> b() {
+      return a(efq::new);
    }
 }

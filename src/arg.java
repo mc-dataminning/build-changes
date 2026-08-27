@@ -1,181 +1,28 @@
-public final class arg {
-   public static final arv<cva> a = a("wool");
-   public static final arv<cva> b = a("planks");
-   public static final arv<cva> c = a("stone_bricks");
-   public static final arv<cva> d = a("wooden_buttons");
-   public static final arv<cva> e = a("stone_buttons");
-   public static final arv<cva> f = a("buttons");
-   public static final arv<cva> g = a("wool_carpets");
-   public static final arv<cva> h = a("wooden_doors");
-   public static final arv<cva> i = a("wooden_stairs");
-   public static final arv<cva> j = a("wooden_slabs");
-   public static final arv<cva> k = a("wooden_fences");
-   public static final arv<cva> l = a("pressure_plates");
-   public static final arv<cva> m = a("wooden_pressure_plates");
-   public static final arv<cva> n = a("stone_pressure_plates");
-   public static final arv<cva> o = a("wooden_trapdoors");
-   public static final arv<cva> p = a("doors");
-   public static final arv<cva> q = a("saplings");
-   public static final arv<cva> r = a("logs_that_burn");
-   public static final arv<cva> s = a("overworld_natural_logs");
-   public static final arv<cva> t = a("logs");
-   public static final arv<cva> u = a("dark_oak_logs");
-   public static final arv<cva> v = a("oak_logs");
-   public static final arv<cva> w = a("birch_logs");
-   public static final arv<cva> x = a("acacia_logs");
-   public static final arv<cva> y = a("cherry_logs");
-   public static final arv<cva> z = a("jungle_logs");
-   public static final arv<cva> A = a("spruce_logs");
-   public static final arv<cva> B = a("mangrove_logs");
-   public static final arv<cva> C = a("crimson_stems");
-   public static final arv<cva> D = a("warped_stems");
-   public static final arv<cva> E = a("bamboo_blocks");
-   public static final arv<cva> F = a("wart_blocks");
-   public static final arv<cva> G = a("banners");
-   public static final arv<cva> H = a("sand");
-   public static final arv<cva> I = a("smelts_to_glass");
-   public static final arv<cva> J = a("stairs");
-   public static final arv<cva> K = a("slabs");
-   public static final arv<cva> L = a("walls");
-   public static final arv<cva> M = a("anvil");
-   public static final arv<cva> N = a("rails");
-   public static final arv<cva> O = a("leaves");
-   public static final arv<cva> P = a("trapdoors");
-   public static final arv<cva> Q = a("small_flowers");
-   public static final arv<cva> R = a("beds");
-   public static final arv<cva> S = a("fences");
-   public static final arv<cva> T = a("tall_flowers");
-   public static final arv<cva> U = a("flowers");
-   public static final arv<cva> V = a("piglin_repellents");
-   public static final arv<cva> W = a("gold_ores");
-   public static final arv<cva> X = a("iron_ores");
-   public static final arv<cva> Y = a("diamond_ores");
-   public static final arv<cva> Z = a("redstone_ores");
-   public static final arv<cva> aa = a("lapis_ores");
-   public static final arv<cva> ab = a("coal_ores");
-   public static final arv<cva> ac = a("emerald_ores");
-   public static final arv<cva> ad = a("copper_ores");
-   public static final arv<cva> ae = a("candles");
-   public static final arv<cva> af = a("dirt");
-   public static final arv<cva> ag = a("terracotta");
-   public static final arv<cva> ah = a("concrete_powder");
-   public static final arv<cva> ai = a("completes_find_tree_tutorial");
-   public static final arv<cva> aj = a("flower_pots");
-   public static final arv<cva> ak = a("enderman_holdable");
-   public static final arv<cva> al = a("ice");
-   public static final arv<cva> am = a("valid_spawn");
-   public static final arv<cva> an = a("impermeable");
-   public static final arv<cva> ao = a("underwater_bonemeals");
-   public static final arv<cva> ap = a("coral_blocks");
-   public static final arv<cva> aq = a("wall_corals");
-   public static final arv<cva> ar = a("coral_plants");
-   public static final arv<cva> as = a("corals");
-   public static final arv<cva> at = a("bamboo_plantable_on");
-   public static final arv<cva> au = a("standing_signs");
-   public static final arv<cva> av = a("wall_signs");
-   public static final arv<cva> aw = a("signs");
-   public static final arv<cva> ax = a("ceiling_hanging_signs");
-   public static final arv<cva> ay = a("wall_hanging_signs");
-   public static final arv<cva> az = a("all_hanging_signs");
-   public static final arv<cva> aA = a("all_signs");
-   public static final arv<cva> aB = a("dragon_immune");
-   public static final arv<cva> aC = a("dragon_transparent");
-   public static final arv<cva> aD = a("wither_immune");
-   public static final arv<cva> aE = a("wither_summon_base_blocks");
-   public static final arv<cva> aF = a("beehives");
-   public static final arv<cva> aG = a("crops");
-   public static final arv<cva> aH = a("bee_growables");
-   public static final arv<cva> aI = a("portals");
-   public static final arv<cva> aJ = a("fire");
-   public static final arv<cva> aK = a("nylium");
-   public static final arv<cva> aL = a("beacon_base_blocks");
-   public static final arv<cva> aM = a("soul_speed_blocks");
-   public static final arv<cva> aN = a("wall_post_override");
-   public static final arv<cva> aO = a("climbable");
-   public static final arv<cva> aP = a("fall_damage_resetting");
-   public static final arv<cva> aQ = a("shulker_boxes");
-   public static final arv<cva> aR = a("hoglin_repellents");
-   public static final arv<cva> aS = a("soul_fire_base_blocks");
-   public static final arv<cva> aT = a("strider_warm_blocks");
-   public static final arv<cva> aU = a("campfires");
-   public static final arv<cva> aV = a("guarded_by_piglins");
-   public static final arv<cva> aW = a("prevent_mob_spawning_inside");
-   public static final arv<cva> aX = a("fence_gates");
-   public static final arv<cva> aY = a("unstable_bottom_center");
-   public static final arv<cva> aZ = a("mushroom_grow_block");
-   public static final arv<cva> ba = a("infiniburn_overworld");
-   public static final arv<cva> bb = a("infiniburn_nether");
-   public static final arv<cva> bc = a("infiniburn_end");
-   public static final arv<cva> bd = a("base_stone_overworld");
-   public static final arv<cva> be = a("stone_ore_replaceables");
-   public static final arv<cva> bf = a("deepslate_ore_replaceables");
-   public static final arv<cva> bg = a("base_stone_nether");
-   public static final arv<cva> bh = a("overworld_carver_replaceables");
-   public static final arv<cva> bi = a("nether_carver_replaceables");
-   public static final arv<cva> bj = a("candle_cakes");
-   public static final arv<cva> bk = a("cauldrons");
-   public static final arv<cva> bl = a("crystal_sound_blocks");
-   public static final arv<cva> bm = a("inside_step_sound_blocks");
-   public static final arv<cva> bn = a("combination_step_sound_blocks");
-   public static final arv<cva> bo = a("camel_sand_step_sound_blocks");
-   public static final arv<cva> bp = a("occludes_vibration_signals");
-   public static final arv<cva> bq = a("dampens_vibrations");
-   public static final arv<cva> br = a("dripstone_replaceable_blocks");
-   public static final arv<cva> bs = a("cave_vines");
-   public static final arv<cva> bt = a("moss_replaceable");
-   public static final arv<cva> bu = a("lush_ground_replaceable");
-   public static final arv<cva> bv = a("azalea_root_replaceable");
-   public static final arv<cva> bw = a("small_dripleaf_placeable");
-   public static final arv<cva> bx = a("big_dripleaf_placeable");
-   public static final arv<cva> by = a("snow");
-   public static final arv<cva> bz = a("mineable/axe");
-   public static final arv<cva> bA = a("mineable/hoe");
-   public static final arv<cva> bB = a("mineable/pickaxe");
-   public static final arv<cva> bC = a("mineable/shovel");
-   public static final arv<cva> bD = a("sword_efficient");
-   public static final arv<cva> bE = a("needs_diamond_tool");
-   public static final arv<cva> bF = a("needs_iron_tool");
-   public static final arv<cva> bG = a("needs_stone_tool");
-   public static final arv<cva> bH = a("features_cannot_replace");
-   public static final arv<cva> bI = a("lava_pool_stone_cannot_replace");
-   public static final arv<cva> bJ = a("geode_invalid_blocks");
-   public static final arv<cva> bK = a("frog_prefer_jump_to");
-   public static final arv<cva> bL = a("sculk_replaceable");
-   public static final arv<cva> bM = a("sculk_replaceable_world_gen");
-   public static final arv<cva> bN = a("ancient_city_replaceable");
-   public static final arv<cva> bO = a("vibration_resonators");
-   public static final arv<cva> bP = a("animals_spawnable_on");
-   public static final arv<cva> bQ = a("axolotls_spawnable_on");
-   public static final arv<cva> bR = a("goats_spawnable_on");
-   public static final arv<cva> bS = a("mooshrooms_spawnable_on");
-   public static final arv<cva> bT = a("parrots_spawnable_on");
-   public static final arv<cva> bU = a("polar_bears_spawnable_on_alternate");
-   public static final arv<cva> bV = a("rabbits_spawnable_on");
-   public static final arv<cva> bW = a("foxes_spawnable_on");
-   public static final arv<cva> bX = a("wolves_spawnable_on");
-   public static final arv<cva> bY = a("frogs_spawnable_on");
-   public static final arv<cva> bZ = a("azalea_grows_on");
-   public static final arv<cva> ca = a("convertable_to_mud");
-   public static final arv<cva> cb = a("mangrove_logs_can_grow_through");
-   public static final arv<cva> cc = a("mangrove_roots_can_grow_through");
-   public static final arv<cva> cd = a("dead_bush_may_place_on");
-   public static final arv<cva> ce = a("snaps_goat_horn");
-   public static final arv<cva> cf = a("replaceable_by_trees");
-   public static final arv<cva> cg = a("snow_layer_cannot_survive_on");
-   public static final arv<cva> ch = a("snow_layer_can_survive_on");
-   public static final arv<cva> ci = a("invalid_spawn_inside");
-   public static final arv<cva> cj = a("sniffer_diggable_block");
-   public static final arv<cva> ck = a("sniffer_egg_hatch_boost");
-   public static final arv<cva> cl = a("trail_ruins_replaceable");
-   public static final arv<cva> cm = a("replaceable");
-   public static final arv<cva> cn = a("enchantment_power_provider");
-   public static final arv<cva> co = a("enchantment_power_transmitter");
-   public static final arv<cva> cp = a("maintains_farmland");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private arg() {
+public class arg {
+   protected final Object2IntMap<arc<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public arg() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static arv<cva> a(String $$0) {
-      return arv.a(jz.e, new agi($$0));
+   public void b(cdz $$0, arc<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cdz $$0, arc<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(are<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(arc<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

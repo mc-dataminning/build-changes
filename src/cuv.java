@@ -1,59 +1,28 @@
 import com.mojang.serialization.MapCodec;
 
-public class cuv extends cwv {
-   public static final MapCodec<cuv> a = b(cuv::new);
-   public static final int b = 3;
-   public static final dii c = dhy.as;
-   private static final ekn[] g = new ekn[]{
-      cva.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cva.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cva.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cva.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+public abstract class cuv extends cvf {
+   protected static final int a = 2;
+   protected static final eks b = cvf.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<cuv> a() {
-      return a;
-   }
-
-   public cuv(dhh.d $$0) {
+   protected cuv(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dii b() {
-      return c;
+   protected abstract MapCodec<? extends cuv> a();
+
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
    }
 
    @Override
-   public int c() {
-      return 3;
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return $$1 == ib.a && !this.a($$0, $$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected crz d() {
-      return clm.vd;
-   }
-
-   @Override
-   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(csa $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return g[this.g($$0)];
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return a($$1, $$2.d(), ib.b);
    }
 }

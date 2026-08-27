@@ -1,15 +1,8 @@
-public class geo extends gep {
-   public geo(bws $$0) {
-      super($$0, aqr.bC, aqs.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected gel o() {
-      return new gen(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.Z_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface geo {
 }

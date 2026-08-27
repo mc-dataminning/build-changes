@@ -1,68 +1,97 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class egy extends egj {
-   private static final Logger b = LogUtils.getLogger();
+public class egy extends ego {
    public static final Codec<egy> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(asu.a(ut.a, "name").forGetter($$0x -> $$0x.c), asu.a(eex.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, egy::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  asy.a(Codec.unboundedMap(kc.g.r(), eix.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, egy::new)
    );
-   private final Optional<ur> c;
-   private final Optional<eex.b> d;
+   private final Map<ig<cpz>, eiw> b;
+   private final boolean c;
 
-   private egy(List<ehw> $$0, Optional<ur> $$1, Optional<eex.b> $$2) {
+   egy(List<eib> $$0, Map<ig<cpz>, eiw> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public egl b() {
-      return egm.l;
+   public egq b() {
+      return egr.f;
    }
 
    @Override
-   public Set<ehf<?>> a() {
-      return this.d.<Set<ehf<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   public Set<ehk<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static UnaryOperator<ur> a(eex $$0, @Nullable eex.b $$1) {
-      if ($$1 != null) {
-         bkq $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            du $$3 = $$2.de().a(2);
-            return $$2x -> {
-               try {
-                  return uu.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
+   @Override
+   public clo a(clo $$0, efc $$1) {
+      Object2IntMap<cpz> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((cpz)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == clr.qM) {
+         clo $$3 = new clo(clr.uo);
+         $$2.forEach(($$1x, $$2x) -> ckk.a($$3, new cqc($$1x, $$2x)));
+         return $$3;
+      } else {
+         Map<cpz, Integer> $$4 = cqb.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
+
+         cqb.a($$4, $$0);
+         return $$0;
+      }
+   }
+
+   private static void a(Map<cpz, Integer> $$0, cpz $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
+      } else {
+         $$0.put($$1, $$2);
+      }
+   }
+
+   public static class a extends ego.a<egy.a> {
+      private final Builder<ig<cpz>, eiw> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
       }
 
-      return $$0x -> $$0x;
-   }
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
 
-   @Override
-   public clj a(clj $$0, eex $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+      protected egy.a a() {
+         return this;
+      }
 
-   public static egj.a<?> a(ur $$0) {
-      return a($$1 -> new egy($$1, Optional.of($$0), Optional.empty()));
-   }
+      public egy.a a(cpz $$0, eiw $$1) {
+         this.a.put($$0.j(), $$1);
+         return this;
+      }
 
-   public static egj.a<?> a(ur $$0, eex.b $$1) {
-      return a($$2 -> new egy($$2, Optional.of($$0), Optional.of($$1)));
+      @Override
+      public egp b() {
+         return new egy(this.g(), this.a.build(), this.b);
+      }
    }
 }

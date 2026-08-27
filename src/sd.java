@@ -1,182 +1,564 @@
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class sd extends ry<se> {
-   private static final int b = 24;
-   public static final sy<sd> a = new sy.b<sd>() {
-      public sd a(DataInput $$0, si $$1) throws IOException {
-         return new sd(d($$0, $$1));
-      }
+public class sd implements ta {
+   public static final Codec<sd> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
+      ta $$1 = (ta)$$0.convert(sr.a).getValue();
+      return $$1 instanceof sd $$2 ? DataResult.success($$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
+   }, $$0 -> new Dynamic(sr.a, $$0));
+   private static final int c = 48;
+   private static final int w = 32;
+   public static final tc<sd> b = new tc.b<sd>() {
+      public sd a(DataInput $$0, sm $$1) throws IOException {
+         $$1.b();
 
-      @Override
-      public st.b a(DataInput $$0, st $$1, si $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static int[] d(DataInput $$0, si $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(4L, (long)$$2);
-         int[] $$3 = new int[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readInt();
+         sd var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
          }
 
-         return $$3;
+         return var3;
+      }
+
+      private static sd d(DataInput $$0, sm $$1) throws IOException {
+         $$1.b(48L);
+         Map<String, ta> $$2 = Maps.newHashMap();
+
+         byte $$3;
+         while (($$3 = $$0.readByte()) != 0) {
+            String $$4 = e($$0, $$1);
+            ta $$5 = sd.a(td.a($$3), $$4, $$0, $$1);
+            if ($$2.put($$4, $$5) == null) {
+               $$1.b(36L);
+            }
+         }
+
+         return new sd($$2);
       }
 
       @Override
-      public void b(DataInput $$0, si $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 4);
+      public sx.b a(DataInput $$0, sx $$1, sm $$2) throws IOException {
+         $$2.b();
+
+         sx.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
+      }
+
+      private static sx.b c(DataInput $$0, sx $$1, sm $$2) throws IOException {
+         $$2.b(48L);
+
+         byte $$3;
+         label35:
+         while (($$3 = $$0.readByte()) != 0) {
+            tc<?> $$4 = td.a($$3);
+            switch ($$1.a($$4)) {
+               case d:
+                  return sx.b.c;
+               case c:
+                  sy.a($$0);
+                  $$4.b($$0, $$2);
+                  break label35;
+               case b:
+                  sy.a($$0);
+                  $$4.b($$0, $$2);
+                  break;
+               default:
+                  String $$5 = e($$0, $$2);
+                  switch ($$1.a($$4, $$5)) {
+                     case d:
+                        return sx.b.c;
+                     case c:
+                        $$4.b($$0, $$2);
+                        break label35;
+                     case b:
+                        $$4.b($$0, $$2);
+                        break;
+                     default:
+                        $$2.b(36L);
+                        switch ($$4.a($$0, $$1, $$2)) {
+                           case c:
+                              return sx.b.c;
+                           case b:
+                        }
+                  }
+            }
+         }
+
+         if ($$3 != 0) {
+            while (($$3 = $$0.readByte()) != 0) {
+               sy.a($$0);
+               td.a($$3).b($$0, $$2);
+            }
+         }
+
+         return $$1.b();
+      }
+
+      private static String e(DataInput $$0, sm $$1) throws IOException {
+         String $$2 = $$0.readUTF();
+         $$1.b(28L);
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
+      }
+
+      @Override
+      public void b(DataInput $$0, sm $$1) throws IOException {
+         $$1.b();
+
+         byte $$2;
+         try {
+            while (($$2 = $$0.readByte()) != 0) {
+               sy.a($$0);
+               td.a($$2).b($$0, $$1);
+            }
+         } finally {
+            $$1.c();
+         }
       }
 
       @Override
       public String a() {
-         return "INT[]";
+         return "COMPOUND";
       }
 
       @Override
       public String b() {
-         return "TAG_Int_Array";
+         return "TAG_Compound";
       }
    };
-   private int[] c;
+   private final Map<String, ta> x;
 
-   public sd(int[] $$0) {
-      this.c = $$0;
+   protected sd(Map<String, ta> $$0) {
+      this.x = $$0;
    }
 
-   public sd(List<Integer> $$0) {
-      this(a($$0));
-   }
-
-   private static int[] a(List<Integer> $$0) {
-      int[] $$1 = new int[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Integer $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
+   public sd() {
+      this(Maps.newHashMap());
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (int $$1 : this.c) {
-         $$0.writeInt($$1);
+      for (String $$1 : this.x.keySet()) {
+         ta $$2 = this.x.get($$1);
+         a($$1, $$2, $$0);
       }
+
+      $$0.writeByte(0);
    }
 
    @Override
    public int a() {
-      return 24 + 4 * this.c.length;
+      int $$0 = 48;
+
+      for (Entry<String, ta> $$1 : this.x.entrySet()) {
+         $$0 += 28 + 2 * $$1.getKey().length();
+         $$0 += 36;
+         $$0 += $$1.getValue().a();
+      }
+
+      return $$0;
+   }
+
+   public Set<String> e() {
+      return this.x.keySet();
    }
 
    @Override
    public byte b() {
-      return 11;
+      return 10;
    }
 
    @Override
-   public sy<sd> c() {
-      return a;
+   public tc<sd> c() {
+      return b;
+   }
+
+   public int f() {
+      return this.x.size();
+   }
+
+   @Nullable
+   public ta a(String $$0, ta $$1) {
+      return this.x.put($$0, $$1);
+   }
+
+   public void a(String $$0, byte $$1) {
+      this.x.put($$0, sb.a($$1));
+   }
+
+   public void a(String $$0, short $$1) {
+      this.x.put($$0, sv.a($$1));
+   }
+
+   public void a(String $$0, int $$1) {
+      this.x.put($$0, si.a($$1));
+   }
+
+   public void a(String $$0, long $$1) {
+      this.x.put($$0, sl.a($$1));
+   }
+
+   public void a(String $$0, UUID $$1) {
+      this.x.put($$0, ss.a($$1));
+   }
+
+   public UUID a(String $$0) {
+      return ss.a(this.c($$0));
+   }
+
+   public boolean b(String $$0) {
+      ta $$1 = this.c($$0);
+      return $$1 != null && $$1.c() == sh.a && ((sh)$$1).g().length == 4;
+   }
+
+   public void a(String $$0, float $$1) {
+      this.x.put($$0, sg.a($$1));
+   }
+
+   public void a(String $$0, double $$1) {
+      this.x.put($$0, se.a($$1));
+   }
+
+   public void a(String $$0, String $$1) {
+      this.x.put($$0, sy.a($$1));
+   }
+
+   public void a(String $$0, byte[] $$1) {
+      this.x.put($$0, new sa($$1));
+   }
+
+   public void a(String $$0, List<Byte> $$1) {
+      this.x.put($$0, new sa($$1));
+   }
+
+   public void a(String $$0, int[] $$1) {
+      this.x.put($$0, new sh($$1));
+   }
+
+   public void b(String $$0, List<Integer> $$1) {
+      this.x.put($$0, new sh($$1));
+   }
+
+   public void a(String $$0, long[] $$1) {
+      this.x.put($$0, new sk($$1));
+   }
+
+   public void c(String $$0, List<Long> $$1) {
+      this.x.put($$0, new sk($$1));
+   }
+
+   public void a(String $$0, boolean $$1) {
+      this.x.put($$0, sb.a($$1));
+   }
+
+   @Nullable
+   public ta c(String $$0) {
+      return this.x.get($$0);
+   }
+
+   public byte d(String $$0) {
+      ta $$1 = this.x.get($$0);
+      return $$1 == null ? 0 : $$1.b();
+   }
+
+   public boolean e(String $$0) {
+      return this.x.containsKey($$0);
+   }
+
+   public boolean b(String $$0, int $$1) {
+      int $$2 = this.d($$0);
+      if ($$2 == $$1) {
+         return true;
+      } else {
+         return $$1 != 99 ? false : $$2 == 1 || $$2 == 2 || $$2 == 3 || $$2 == 4 || $$2 == 5 || $$2 == 6;
+      }
+   }
+
+   public byte f(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).i();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public short g(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).h();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public int h(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public long i(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).f();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0L;
+   }
+
+   public float j(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).k();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0.0F;
+   }
+
+   public double k(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((st)this.x.get($$0)).j();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0.0;
+   }
+
+   public String l(String $$0) {
+      try {
+         if (this.b($$0, 8)) {
+            return this.x.get($$0).t_();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return "";
+   }
+
+   public byte[] m(String $$0) {
+      try {
+         if (this.b($$0, 7)) {
+            return ((sa)this.x.get($$0)).e();
+         }
+      } catch (ClassCastException var3) {
+         throw new y(this.a($$0, sa.a, var3));
+      }
+
+      return new byte[0];
+   }
+
+   public int[] n(String $$0) {
+      try {
+         if (this.b($$0, 11)) {
+            return ((sh)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new y(this.a($$0, sh.a, var3));
+      }
+
+      return new int[0];
+   }
+
+   public long[] o(String $$0) {
+      try {
+         if (this.b($$0, 12)) {
+            return ((sk)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new y(this.a($$0, sk.a, var3));
+      }
+
+      return new long[0];
+   }
+
+   public sd p(String $$0) {
+      try {
+         if (this.b($$0, 10)) {
+            return (sd)this.x.get($$0);
+         }
+      } catch (ClassCastException var3) {
+         throw new y(this.a($$0, b, var3));
+      }
+
+      return new sd();
+   }
+
+   public sj c(String $$0, int $$1) {
+      try {
+         if (this.d($$0) == 9) {
+            sj $$2 = (sj)this.x.get($$0);
+            if (!$$2.isEmpty() && $$2.f() != $$1) {
+               return new sj();
+            }
+
+            return $$2;
+         }
+      } catch (ClassCastException var4) {
+         throw new y(this.a($$0, sj.a, var4));
+      }
+
+      return new sj();
+   }
+
+   public boolean q(String $$0) {
+      return this.f($$0) != 0;
+   }
+
+   public void r(String $$0) {
+      this.x.remove($$0);
    }
 
    @Override
    public String toString() {
-      return this.s_();
+      return this.t_();
    }
 
-   public sd e() {
-      int[] $$0 = new int[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+   public boolean g() {
+      return this.x.isEmpty();
+   }
+
+   private o a(String $$0, tc<?> $$1, ClassCastException $$2) {
+      o $$3 = o.a($$2, "Reading NBT data");
+      p $$4 = $$3.a("Corrupt NBT tag", 1);
+      $$4.a("Tag type found", () -> this.x.get($$0).c().a());
+      $$4.a("Tag type expected", $$1::a);
+      $$4.a("Tag name", $$0);
+      return $$3;
+   }
+
+   public sd h() {
+      Map<String, ta> $$0 = Maps.newHashMap(Maps.transformValues(this.x, ta::d));
       return new sd($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof sd && Arrays.equals(this.c, ((sd)$$0).c);
+      return this == $$0 ? true : $$0 instanceof sd && Objects.equals(this.x, ((sd)$$0).x);
    }
 
    @Override
    public int hashCode() {
-      return Arrays.hashCode(this.c);
+      return this.x.hashCode();
    }
 
-   public int[] g() {
-      return this.c;
+   private static void a(String $$0, ta $$1, DataOutput $$2) throws IOException {
+      $$2.writeByte($$1.b());
+      if ($$1.b() != 0) {
+         $$2.writeUTF($$0);
+         $$1.a($$2);
+      }
+   }
+
+   static ta a(tc<?> $$0, String $$1, DataInput $$2, sm $$3) {
+      try {
+         return $$0.c($$2, $$3);
+      } catch (IOException var7) {
+         o $$5 = o.a(var7, "Loading NBT data");
+         p $$6 = $$5.a("NBT Tag");
+         $$6.a("Tag name", $$1);
+         $$6.a("Tag type", $$0.a());
+         throw new su($$5);
+      }
+   }
+
+   public sd a(sd $$0) {
+      for (String $$1 : $$0.x.keySet()) {
+         ta $$2 = $$0.x.get($$1);
+         if ($$2.b() == 10) {
+            if (this.b($$1, 10)) {
+               sd $$3 = this.p($$1);
+               $$3.a((sd)$$2);
+            } else {
+               this.a($$1, $$2.d());
+            }
+         } else {
+            this.a($$1, $$2.d());
+         }
+      }
+
+      return this;
    }
 
    @Override
-   public void a(ta $$0) {
+   public void a(te $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public se a(int $$0) {
-      return se.a(this.c[$$0]);
-   }
-
-   public se a(int $$0, se $$1) {
-      int $$2 = this.c[$$0];
-      this.c[$$0] = $$1.g();
-      return se.a($$2);
-   }
-
-   public void b(int $$0, se $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
+   protected Map<String, ta> i() {
+      return Collections.unmodifiableMap(this.x);
    }
 
    @Override
-   public boolean a(int $$0, sw $$1) {
-      if ($$1 instanceof sp) {
-         this.c[$$0] = ((sp)$$1).g();
-         return true;
-      } else {
-         return false;
+   public sx.b a(sx $$0) {
+      for (Entry<String, ta> $$1 : this.x.entrySet()) {
+         ta $$2 = $$1.getValue();
+         tc<?> $$3 = $$2.c();
+         sx.a $$4 = $$0.a($$3);
+         switch ($$4) {
+            case d:
+               return sx.b.c;
+            case c:
+               return $$0.b();
+            case b:
+               break;
+            default:
+               $$4 = $$0.a($$3, $$1.getKey());
+               switch ($$4) {
+                  case d:
+                     return sx.b.c;
+                  case c:
+                     return $$0.b();
+                  case b:
+                     break;
+                  default:
+                     sx.b $$5 = $$2.a($$0);
+                     switch ($$5) {
+                        case c:
+                           return sx.b.c;
+                        case b:
+                           return $$0.b();
+                     }
+               }
+         }
       }
-   }
 
-   @Override
-   public boolean b(int $$0, sw $$1) {
-      if ($$1 instanceof sp) {
-         this.c = ArrayUtils.add(this.c, $$0, ((sp)$$1).g());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public se b(int $$0) {
-      int $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return se.a($$1);
-   }
-
-   @Override
-   public byte f() {
-      return 3;
-   }
-
-   @Override
-   public void clear() {
-      this.c = new int[0];
-   }
-
-   @Override
-   public st.b a(st $$0) {
-      return $$0.a(this.c);
+      return $$0.b();
    }
 }

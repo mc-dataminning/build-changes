@@ -1,45 +1,58 @@
-public class chj extends cih {
-   private final cdu a;
-   private int b;
+public abstract class chj {
+   private int a;
 
-   public chj(cdu $$0, biq $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+   public static chj a(final chb $$0, final int $$1) {
+      return new chj() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
+   }
+
+   public static chj a(final int[] $$0, final int $$1) {
+      return new chj() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static chj a() {
+      return new chj() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
       this.a = $$0;
-   }
-
-   @Override
-   public boolean a(clj $$0) {
-      return false;
-   }
-
-   @Override
-   public clj a(int $$0) {
-      if (this.g()) {
-         this.b = this.b + Math.min($$0, this.f().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(cdu $$0, clj $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(clj $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(clj $$0) {
-      $$0.a(this.a.dN(), this.a, this.b);
-      if (this.a instanceof amf $$1 && this.d instanceof des $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+      return $$1;
    }
 }

@@ -1,46 +1,44 @@
-public class fki extends fjm {
-   private final fko a;
-   private final fko b;
+public class fki<T extends bkv> extends fkf<T> {
+   private boolean b;
 
-   public fki(fko $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("jaw");
+   public fki(fkt $$0) {
+      super($$0);
    }
 
-   public static fku a() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      float $$2 = -16.0F;
-      fkx $$3 = $$1.a(
-         "head",
-         fkt.c()
-            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a(true)
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a(false)
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         fkq.a
+   public static fkz c() {
+      flb $$0 = fkf.b();
+      flc $$1 = $$0.a();
+      flc $$2 = $$1.a("head", fky.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fkv.a);
+      flc $$3 = $$2.a("hat", fky.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fkv.a(-5.0F, -10.03125F, -5.0F));
+      flc $$4 = $$3.a("hat2", fky.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fkv.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      flc $$5 = $$4.a("hat3", fky.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fkv.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fky.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fkx(0.25F)), fkv.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
       );
-      $$3.a("jaw", fkt.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fkq.a(0.0F, 4.0F, -8.0F));
-      return fku.a($$0, 256, 256);
+      flc $$6 = $$2.a("nose");
+      $$6.a("mole", fky.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fkx(-0.25F)), fkv.a(0.0F, -2.0F, 0.0F));
+      return fkz.a($$0, 64, 128);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.aj() % 10);
+      this.a.e = atq.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = atq.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
    }
 
-   @Override
-   public void a(enw $$0, eoa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$0.a();
-      $$0.a(0.0F, -0.374375F, 0.0F);
-      $$0.b(0.75F, 0.75F, 0.75F);
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      $$0.b();
+   public fkt e() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

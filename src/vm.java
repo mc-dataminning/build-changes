@@ -1,36 +1,44 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public record vm(int b, UUID c, UUID d) {
-   public static final Codec<vm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asu.i.fieldOf("index").forGetter(vm::b), iv.a.fieldOf("sender").forGetter(vm::c), iv.a.fieldOf("session_id").forGetter(vm::d))
-            .apply($$0, vm::new)
-   );
-
-   public static vm a(UUID $$0) {
-      return a($$0, ac.d);
+public record vm(UUID a, cec b) {
+   public vr a(Duration $$0) {
+      return new vr.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static vm a(UUID $$0, UUID $$1) {
-      return new vm(0, $$0, $$1);
+   public vp.b a(UUID $$0) {
+      return new vp($$0, this.a).a(this.b);
    }
 
-   public void a(atx.a $$0) throws SignatureException {
-      $$0.update(iv.b(this.c));
-      $$0.update(iv.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public vm.a a() {
+      return new vm.a(this.a, this.b.b());
    }
 
-   public boolean a(vm $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   @Nullable
-   public vm a() {
-      return this.b == Integer.MAX_VALUE ? null : new vm(this.b + 1, this.c, this.d);
+   public UUID c() {
+      return this.a;
+   }
+
+   public cec d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cec.a b) {
+      public static vm.a a(ty $$0) {
+         return new vm.a($$0.p(), new cec.a($$0));
+      }
+
+      public static void a(ty $$0, vm.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
+      }
+
+      public vm a(GameProfile $$0, auc $$1) throws cec.b {
+         return new vm(this.a, cec.a($$1, $$0.getId(), this.b));
+      }
    }
 }

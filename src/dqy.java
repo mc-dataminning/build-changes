@@ -1,44 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dqy extends dpv<dsh> {
-   private static final int a = 7;
-
-   dqy(Codec<dsh> $$0) {
+public class dqy extends dqa<dsr> {
+   public dqy(Codec<dsr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsh> $$0) {
-      csu $$1 = $$0.b();
-      ats $$2 = $$0.d();
-      dsh $$3 = $$0.f();
-      ht $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      ht.a $$6 = new ht.a();
+   public boolean a(dqc<dsr> $$0) {
+      dsr $$1 = $$0.f();
+      atw $$2 = $$0.d();
+      hx $$3 = $$0.e();
+      csz $$4 = $$0.b();
+      int $$5 = 0;
+      hx.a $$6 = new hx.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dhi $$8 = $$1.a_($$6);
-
-         for (dsh.a $$9 : $$3.b) {
-            if (dqq.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return true;
-   }
-
-   private void a(ht.a $$0, ats $$1, ht $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ats $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$5 > 0;
    }
 }

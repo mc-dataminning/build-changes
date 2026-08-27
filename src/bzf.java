@@ -1,63 +1,56 @@
 import javax.annotation.Nullable;
 
-public class bzf extends bkq {
-   public final bzh b;
-   public final String c;
-   private final bkr d;
+public class bzf extends byv {
+   public bzf(bkz<? extends bzf> $$0, csf $$1) {
+      super($$0, $$1);
+   }
 
-   public bzf(bzh $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dN());
-      this.d = bkr.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+   public static bmq.a u() {
+      return gF().a(bmr.l, 15.0).a(bmr.m, 0.2F);
    }
 
    @Override
-   protected void b_() {
+   protected void a(atw $$0) {
+      this.a(bmr.h).a(a($$0::j));
    }
 
    @Override
-   protected void a(rz $$0) {
+   public blq eT() {
+      return blq.b;
    }
 
    @Override
-   protected void b(rz $$0) {
+   protected aqu y() {
+      return aqv.BN;
    }
 
    @Override
-   public boolean bt() {
-      return true;
+   protected aqu n_() {
+      return aqv.BO;
+   }
+
+   @Override
+   protected aqu d(bjt $$0) {
+      return aqv.BP;
    }
 
    @Nullable
    @Override
-   public clj dA() {
-      return this.b.dA();
+   public bkq a(ami $$0, bkq $$1) {
+      return bkz.bq.a((csf)$$0);
    }
 
    @Override
-   public boolean a(bjo $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   public bjb b(cdz $$0, bja $$1) {
+      return !this.gu() ? bjb.d : super.b($$0, $$1);
    }
 
    @Override
-   public boolean t(bkq $$0) {
-      return this == $$0 || this.b == $$0;
+   protected void gv() {
    }
 
    @Override
-   public wk<yd> dk() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bkr a(bls $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dL() {
-      return false;
+   protected float a(bkw $$0, float $$1) {
+      return $$0.b - (this.o_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

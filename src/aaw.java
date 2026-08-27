@@ -1,24 +1,24 @@
-public class aaw implements wk<yd> {
-   private final int a;
+public class aaw implements wo<yh> {
+   private final uv a;
 
-   public aaw(diz $$0) {
-      this.a = $$0.q();
+   public aaw(uv $$0) {
+      this.a = $$0;
    }
 
-   public aaw(tu $$0) {
-      this.a = $$0.n();
+   public aaw(ty $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public uv a() {
       return this.a;
    }
 }

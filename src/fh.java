@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fh implements Predicate<dhm> {
-   private final dhi a;
-   private final Set<dil<?>> b;
+public class fh implements Predicate<dhr> {
+   private final dhn a;
+   private final Set<diq<?>> b;
    @Nullable
-   private final rz c;
+   private final sd c;
 
-   public fh(dhi $$0, Set<dil<?>> $$1, @Nullable rz $$2) {
+   public fh(dhn $$0, Set<diq<?>> $$1, @Nullable sd $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dhi a() {
+   public dhn a() {
       return this.a;
    }
 
-   public Set<dil<?>> b() {
+   public Set<diq<?>> b() {
       return this.b;
    }
 
-   public boolean a(dhm $$0) {
-      dhi $$1 = $$0.a();
+   public boolean a(dhr $$0) {
+      dhn $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dil<?> $$2 : this.b) {
+         for (diq<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class fh implements Predicate<dhm> {
          if (this.c == null) {
             return true;
          } else {
-            dfd $$3 = $$0.b();
-            return $$3 != null && so.a(this.c, $$3.m(), true);
+            dfi $$3 = $$0.b();
+            return $$3 != null && ss.a(this.c, $$3.o(), true);
          }
       }
    }
 
-   public boolean a(ame $$0, ht $$1) {
-      return this.a(new dhm($$0, $$1, false));
+   public boolean a(ami $$0, hx $$1) {
+      return this.a(new dhr($$0, $$1, false));
    }
 
-   public boolean a(ame $$0, ht $$1, int $$2) {
-      dhi $$3 = cva.b(this.a, $$0, $$1);
+   public boolean a(ami $$0, hx $$1, int $$2) {
+      dhn $$3 = cvf.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class fh implements Predicate<dhm> {
          return false;
       } else {
          if (this.c != null) {
-            dfd $$4 = $$0.c_($$1);
+            dfi $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.a(this.c);
             }

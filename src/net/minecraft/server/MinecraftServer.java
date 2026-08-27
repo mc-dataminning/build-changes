@@ -49,17 +49,17 @@ import javax.imageio.ImageIO;
 import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
-public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoCloseable {
+public abstract class MinecraftServer extends bhv<ahg> implements ahb, dt, AutoCloseable {
    private static final Logger l = LogUtils.getLogger();
    public static final String b = "vanilla";
    private static final float m = 0.8F;
    private static final int n = 100;
-   private static final long o = 20L * aul.a / 20L;
+   private static final long o = 20L * aup.a / 20L;
    private static final int p = 20;
-   private static final long q = 10L * aul.a;
+   private static final long q = 10L * aup.a;
    private static final int r = 100;
-   private static final long s = 5L * aul.a;
-   private static final long t = 10L * aul.b;
+   private static final long s = 5L * aup.a;
+   private static final long t = 10L * aup.b;
    private static final int u = 12;
    public static final int c = 11;
    private static final int v = 441;
@@ -67,33 +67,33 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    private static final int x = 100;
    private static final int y = 3;
    public static final int d = 29999984;
-   public static final cse e = new cse("Demo World", crx.a, false, biu.c, false, new crw(), cst.c);
+   public static final csj e = new csj("Demo World", csc.a, false, biy.c, false, new csb(), csy.c);
    public static final GameProfile f = new GameProfile(ac.d, "Anonymous Player");
-   protected final een.c g;
-   protected final eeq h;
+   protected final ees.c g;
+   protected final eev h;
    private final List<Runnable> z = Lists.newArrayList();
-   private bgz A = bgy.a;
-   private bfo B = this.A.f();
-   private Consumer<bfn> C = $$0x -> this.aT();
+   private bhd A = bhc.a;
+   private bfs B = this.A.f();
+   private Consumer<bfr> C = $$0x -> this.aT();
    private Consumer<Path> D = $$0x -> {
    };
    private boolean E;
    @Nullable
    private MinecraftServer.c F;
    private boolean G;
-   private final anc H;
-   private final amo I;
+   private final ang H;
+   private final ams I;
    @Nullable
-   private afj J;
+   private afn J;
    @Nullable
-   private afj.a K;
-   private final ats L = ats.a();
+   private afn.a K;
+   private final atw L = atw.a();
    private final DataFixer M;
    private String N;
    private int O = -1;
-   private final ij<agr> P;
-   private final Map<agh<csa>, ame> Q = Maps.newLinkedHashMap();
-   private apu R;
+   private final in<agv> P;
+   private final Map<agl<csf>, ami> Q = Maps.newLinkedHashMap();
+   private apy R;
    private volatile boolean S = true;
    private boolean T;
    private int U;
@@ -115,27 +115,27 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    private boolean ag;
    private volatile boolean ah;
    private long ai;
-   protected final ahb j;
+   protected final ahf j;
    private long aj;
    private final Thread ak;
    private long al = ac.c();
    private long am;
    private boolean an;
-   private final aos ao;
-   private final agz ap = new agz(this);
+   private final aow ao;
+   private final ahd ap = new ahd(this);
    @Nullable
-   private eef aq;
-   private final ahi ar = new ahi();
-   private final agw as;
+   private eek aq;
+   private final ahm ar = new ahm();
+   private final aha as;
    private boolean at;
    private float au;
    private final Executor av;
    @Nullable
    private String aw;
    private MinecraftServer.a ax;
-   private final ebi ay;
-   private final aha az;
-   protected final eet k;
+   private final ebn ay;
+   private final ahe az;
+   protected final eey k;
    private volatile boolean aA;
 
    public static <S extends MinecraftServer> S a(Function<Thread, S> $$0) {
@@ -152,11 +152,11 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, een.c $$1, aos $$2, ahe $$3, Proxy $$4, DataFixer $$5, ahb $$6, amo $$7) {
+   public MinecraftServer(Thread $$0, ees.c $$1, aow $$2, ahi $$3, Proxy $$4, DataFixer $$5, ahf $$6, ams $$7) {
       super("Server");
       this.P = $$3.c();
       this.k = $$3.d();
-      if (!this.P.a().d(jz.aK).c(dks.b)) {
+      if (!this.P.a().d(kd.aK).c(dkx.b)) {
          throw new IllegalStateException("Missing Overworld dimension data");
       } else {
          this.i = $$4;
@@ -167,34 +167,34 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             $$6.e().a(this);
          }
 
-         this.H = new anc(this);
-         this.az = new aha(this);
+         this.H = new ang(this);
+         this.az = new ahe(this);
          this.I = $$7;
          this.g = $$1;
          this.h = $$1.e();
          this.M = $$5;
-         this.as = new agw(this, this.ax.b.a());
-         ic<cva> $$8 = this.P.a().d(jz.e).p().a(this.k.M());
-         this.ay = new ebi($$3.a(), $$1, $$5, $$8);
+         this.as = new aha(this, this.ax.b.a());
+         ih<cvf> $$8 = this.P.a().d(kd.e).p().a(this.k.M());
+         this.ay = new ebn($$3.a(), $$1, $$5, $$8);
          this.ak = $$0;
          this.av = ac.f();
       }
    }
 
-   private void a(eei $$0) {
+   private void a(een $$0) {
       $$0.a(this.aH().b(), "scoreboard");
    }
 
    protected abstract boolean e() throws IOException;
 
-   protected void t_() {
-      if (!bfu.e.c()) {
+   protected void u_() {
+      if (!bfy.e.c()) {
       }
 
       boolean $$0 = false;
-      bfx $$1 = bfu.e.e();
+      bgb $$1 = bfy.e.e();
       this.k.a(this.getServerModName(), this.M().a());
-      amn $$2 = this.I.create(11);
+      amr $$2 = this.I.create(11);
       this.a($$2);
       this.r();
       this.b($$2);
@@ -204,7 +204,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
       if ($$0) {
          try {
-            bfu.e.b();
+            bfy.e.b();
          } catch (Throwable var5) {
             l.warn("Failed to stop JFR profiling", var5);
          }
@@ -214,21 +214,21 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    protected void r() {
    }
 
-   protected void a(amn $$0) {
-      ees $$1 = this.k.K();
+   protected void a(amr $$0) {
+      eex $$1 = this.k.K();
       boolean $$2 = this.k.C();
-      io<dks> $$3 = this.P.a().d(jz.aK);
-      dnp $$4 = this.k.A();
+      is<dkx> $$3 = this.P.a().d(kd.aK);
+      dnu $$4 = this.k.A();
       long $$5 = $$4.b();
-      long $$6 = cta.a($$5);
-      List<crn> $$7 = ImmutableList.of(new dnd(), new dnc(), new cdd(), new bwd(), new cdo($$1));
-      dks $$8 = $$3.a(dks.b);
-      ame $$9 = new ame(this, this.av, this.g, $$1, csa.h, $$8, $$0, $$2, $$6, $$7, true, null);
-      this.Q.put(csa.h, $$9);
-      eei $$10 = $$9.t();
+      long $$6 = ctf.a($$5);
+      List<crs> $$7 = ImmutableList.of(new dni(), new dnh(), new cdi(), new bwi(), new cdt($$1));
+      dkx $$8 = $$3.a(dkx.b);
+      ami $$9 = new ami(this, this.av, this.g, $$1, csf.h, $$8, $$0, $$2, $$6, $$7, true, null);
+      this.Q.put(csf.h, $$9);
+      een $$10 = $$9.t();
       this.a($$10);
-      this.aq = new eef($$10);
-      diz $$11 = $$9.C_();
+      this.aq = new eek($$10);
+      dje $$11 = $$9.D_();
       if (!$$1.p()) {
          try {
             a($$9, $$1, $$4.d(), $$2);
@@ -255,15 +255,15 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          this.aL().a(this.k.G());
       }
 
-      bjd $$14 = $$9.I();
+      bjh $$14 = $$9.I();
 
-      for (Entry<agh<dks>, dks> $$15 : $$3.g()) {
-         agh<dks> $$16 = $$15.getKey();
-         if ($$16 != dks.b) {
-            agh<csa> $$17 = agh.a(jz.aJ, $$16.a());
-            eeh $$18 = new eeh(this.k, $$1);
-            ame $$19 = new ame(this, this.av, this.g, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
-            $$11.a(new dix.a($$19.C_()));
+      for (Entry<agl<dkx>, dkx> $$15 : $$3.g()) {
+         agl<dkx> $$16 = $$15.getKey();
+         if ($$16 != dkx.b) {
+            agl<csf> $$17 = agl.a(kd.aJ, $$16.a());
+            eem $$18 = new eem(this.k, $$1);
+            ami $$19 = new ami(this, this.av, this.g, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
+            $$11.a(new djc.a($$19.D_()));
             this.Q.put($$17, $$19);
          }
       }
@@ -271,16 +271,16 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       $$11.a($$1.r());
    }
 
-   private static void a(ame $$0, ees $$1, boolean $$2, boolean $$3) {
+   private static void a(ami $$0, eex $$1, boolean $$2, boolean $$3) {
       if ($$3) {
-         $$1.a(ht.b.b(80), 0.0F);
+         $$1.a(hx.b.b(80), 0.0F);
       } else {
-         amc $$4 = $$0.k();
-         crh $$5 = new crh($$4.i().b().a());
+         amg $$4 = $$0.k();
+         crm $$5 = new crm($$4.i().b().a());
          int $$6 = $$4.g().a($$0);
-         if ($$6 < $$0.I_()) {
-            ht $$7 = $$5.l();
-            $$6 = $$0.a(dmr.a.b, $$7.u() + 8, $$7.w() + 8);
+         if ($$6 < $$0.J_()) {
+            hx $$7 = $$5.l();
+            $$6 = $$0.a(dmw.a.b, $$7.u() + 8, $$7.w() + 8);
          }
 
          $$1.a($$5.l().b(8, $$6, 8), 0.0F);
@@ -290,9 +290,9 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          int $$11 = -1;
          int $$12 = 5;
 
-         for (int $$13 = 0; $$13 < atm.h(11); $$13++) {
+         for (int $$13 = 0; $$13 < atq.h(11); $$13++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               ht $$14 = alz.a($$0, new crh($$5.e + $$8, $$5.f + $$9));
+               hx $$14 = amd.a($$0, new crm($$5.e + $$8, $$5.f + $$9));
                if ($$14 != null) {
                   $$1.a($$14, 0.0F);
                   break;
@@ -310,59 +310,59 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          }
 
          if ($$2) {
-            $$0.H_().c(jz.au).flatMap($$0x -> $$0x.b(pw.m)).ifPresent($$3x -> ((dpi)$$3x.a()).a($$0, $$4.g(), $$0.z, new ht($$1.a(), $$1.b(), $$1.c())));
+            $$0.I_().c(kd.au).flatMap($$0x -> $$0x.b(qa.m)).ifPresent($$3x -> ((dpn)$$3x.a()).a($$0, $$4.g(), $$0.z, new hx($$1.a(), $$1.b(), $$1.c())));
          }
       }
    }
 
-   private void a(eet $$0) {
-      $$0.a(biu.a);
+   private void a(eey $$0) {
+      $$0.a(biy.a);
       $$0.d(true);
-      ees $$1 = $$0.K();
+      eex $$1 = $$0.K();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
       $$1.b(6000L);
-      $$1.a(crx.d);
+      $$1.a(csc.d);
    }
 
-   private void b(amn $$0) {
-      ame $$1 = this.F();
+   private void b(amr $$0) {
+      ami $$1 = this.F();
       l.info("Preparing start region for dimension {}", $$1.ad().a());
-      ht $$2 = $$1.S();
-      $$0.a(new crh($$2));
-      amc $$3 = $$1.k();
+      hx $$2 = $$1.S();
+      $$0.a(new crm($$2));
+      amg $$3 = $$1.k();
       this.al = ac.c();
-      $$3.a(amj.a, new crh($$2), 11, auo.a);
+      $$3.a(amn.a, new crm($$2), 11, aus.a);
 
       while ($$3.b() != 441) {
          this.al = ac.c() + t;
-         this.v_();
+         this.w_();
       }
 
       this.al = ac.c() + t;
-      this.v_();
+      this.w_();
 
-      for (ame $$4 : this.Q.values()) {
-         crv $$5 = $$4.t().b(crv.a(), "chunks");
+      for (ami $$4 : this.Q.values()) {
+         csa $$5 = $$4.t().b(csa.a(), "chunks");
          if ($$5 != null) {
             LongIterator $$6 = $$5.b().iterator();
 
             while ($$6.hasNext()) {
                long $$7 = $$6.nextLong();
-               crh $$8 = new crh($$7);
+               crm $$8 = new crm($$7);
                $$4.k().a($$8, true);
             }
          }
       }
 
       this.al = ac.c() + t;
-      this.v_();
+      this.w_();
       $$0.b();
       this.by();
    }
 
-   public crx u_() {
+   public csc v_() {
       return this.k.m();
    }
 
@@ -379,7 +379,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    public boolean a(boolean $$0, boolean $$1, boolean $$2) {
       boolean $$3 = false;
 
-      for (ame $$4 : this.H()) {
+      for (ami $$4 : this.H()) {
          if (!$$0) {
             l.info("Saving chunks for level '{}'/{}", $$4, $$4.ad().a());
          }
@@ -388,13 +388,13 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          $$3 = true;
       }
 
-      ame $$5 = this.F();
-      ees $$6 = this.k.K();
-      $$6.a($$5.C_().t());
+      ami $$5 = this.F();
+      eex $$6 = this.k.K();
+      $$6.a($$5.D_().t());
       this.k.a(this.aL().c());
       this.g.a(this.aZ(), this.k, this.ae().r());
       if ($$1) {
-         for (ame $$7 : this.H()) {
+         for (ami $$7 : this.H()) {
             l.info("ThreadedAnvilChunkStorage ({}): All chunks are saved", $$7.k().a.n());
          }
 
@@ -438,26 +438,26 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
       l.info("Saving worlds");
 
-      for (ame $$0 : this.H()) {
+      for (ami $$0 : this.H()) {
          if ($$0 != null) {
             $$0.e = false;
          }
       }
 
       while (this.Q.values().stream().anyMatch($$0x -> $$0x.k().a.f())) {
-         this.al = ac.c() + aul.b;
+         this.al = ac.c() + aup.b;
 
-         for (ame $$1 : this.H()) {
+         for (ami $$1 : this.H()) {
             $$1.k().o();
             $$1.k().a(() -> true, false);
          }
 
-         this.v_();
+         this.w_();
       }
 
       this.a(false, true, false);
 
-      for (ame $$2 : this.H()) {
+      for (ami $$2 : this.H()) {
          if ($$2 != null) {
             try {
                $$2.close();
@@ -521,7 +521,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
                long $$2 = ac.c() - this.al;
                if ($$2 > o + 20L * $$0 && this.al - this.ai >= q + 100L * $$0) {
                   long $$3 = $$2 / $$0;
-                  l.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", $$2 / aul.b, $$3);
+                  l.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", $$2 / aup.b, $$3);
                   this.al += $$3 * $$0;
                   this.ai = this.al;
                }
@@ -540,7 +540,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             this.B.b("nextTickWait");
             this.an = true;
             this.am = Math.max(ac.c() + $$0, this.al);
-            this.v_();
+            this.w_();
             if ($$4) {
                this.az.e();
             }
@@ -548,7 +548,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             this.B.c();
             this.bA();
             this.ah = true;
-            bfu.e.a(this.au);
+            bfy.e.a(this.au);
          }
       } catch (Throwable var46) {
          l.error("Encountered an unexpected exception", var46);
@@ -604,16 +604,16 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return this.bw() || ac.c() < (this.an ? this.am : this.al);
    }
 
-   protected void v_() {
+   protected void w_() {
       this.bu();
       this.c(() -> !this.bk());
    }
 
-   protected ahc a(Runnable $$0) {
-      return new ahc(this.U, $$0);
+   protected ahg a(Runnable $$0) {
+      return new ahg(this.U, $$0);
    }
 
-   protected boolean a(ahc $$0) {
+   protected boolean a(ahg $$0) {
       return $$0.a() + 3 < this.U || this.bk();
    }
 
@@ -629,7 +629,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          return true;
       } else {
          if (this.az.a() || this.bk()) {
-            for (ame $$0 : this.H()) {
+            for (ami $$0 : this.H()) {
                if ($$0.k().d()) {
                   return true;
                }
@@ -640,12 +640,12 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
    }
 
-   protected void b(ahc $$0) {
+   protected void b(ahg $$0) {
       this.aR().d("runTask");
       super.d($$0);
    }
 
-   private Optional<afj.a> bm() {
+   private Optional<afn.a> bm() {
       Optional<Path> $$0 = Optional.of(this.c("server-icon.png").toPath())
          .filter($$0x -> Files.isRegularFile($$0x))
          .or(() -> this.g.h().filter($$0x -> Files.isRegularFile($$0x)));
@@ -656,7 +656,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             Preconditions.checkState($$1.getHeight() == 64, "Must be 64 pixels high");
             ByteArrayOutputStream $$2 = new ByteArrayOutputStream();
             ImageIO.write($$1, "PNG", $$2);
-            return Optional.of(new afj.a($$2.toByteArray()));
+            return Optional.of(new afn.a($$2.toByteArray()));
          } catch (Exception var3) {
             l.error("Couldn't load server icon", var3);
             return Optional.empty();
@@ -708,7 +708,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.ad = this.ad - this.ac[$$3];
       this.ad += $$2;
       this.ac[$$3] = $$2;
-      this.au = this.au * 0.8F + (float)$$2 / (float)aul.b * 0.19999999F;
+      this.au = this.au * 0.8F + (float)$$2 / (float)aup.b * 0.19999999F;
       long $$4 = ac.c();
       this.a($$4 - $$1);
       this.B.c();
@@ -718,7 +718,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       float $$1;
       if (this.az.a()) {
          long $$0 = this.aP() + 1L;
-         $$1 = (float)aul.a / (float)$$0;
+         $$1 = (float)aup.a / (float)$$0;
       } else {
          $$1 = this.az.f();
       }
@@ -737,28 +737,28 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    protected void a(long $$0) {
    }
 
-   private afj bo() {
-      afj.b $$0 = this.bx();
-      return new afj(ur.a(this.aa), Optional.of($$0), Optional.of(afj.c.a()), Optional.ofNullable(this.K), this.ay());
+   private afn bo() {
+      afn.b $$0 = this.bx();
+      return new afn(uv.a(this.aa), Optional.of($$0), Optional.of(afn.c.a()), Optional.ofNullable(this.K), this.ay());
    }
 
-   private afj.b bx() {
-      List<amf> $$0 = this.R.t();
+   private afn.b bx() {
+      List<amj> $$0 = this.R.t();
       int $$1 = this.K();
       if (this.al()) {
-         return new afj.b($$1, $$0.size(), List.of());
+         return new afn.b($$1, $$0.size(), List.of());
       } else {
          int $$2 = Math.min($$0.size(), 12);
          ObjectArrayList<GameProfile> $$3 = new ObjectArrayList($$2);
-         int $$4 = atm.a(this.L, 0, $$0.size() - $$2);
+         int $$4 = atq.a(this.L, 0, $$0.size() - $$2);
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
-            amf $$6 = $$0.get($$4 + $$5);
+            amj $$6 = $$0.get($$4 + $$5);
             $$3.add($$6.Z() ? $$6.fS() : f);
          }
 
          ac.c($$3, this.L);
-         return new afj.b($$1, $$0.size(), $$3);
+         return new afn.b($$1, $$0.size(), $$3);
       }
    }
 
@@ -768,7 +768,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.aC().b();
       this.B.b("levels");
 
-      for (ame $$1 : this.H()) {
+      for (ami $$1 : this.H()) {
          this.B.a(() -> $$1 + " " + $$1.ad().a());
          if (this.U % 20 == 0) {
             this.B.a("timeSync");
@@ -795,7 +795,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.B.b("players");
       this.R.d();
       if (aa.aT) {
-         rg.a.b();
+         rk.a.b();
       }
 
       this.B.b("server gui refresh");
@@ -806,7 +806,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
       this.B.b("send chunks");
 
-      for (amf $$5 : this.R.t()) {
+      for (amj $$5 : this.R.t()) {
          $$5.c.f.a($$5);
          $$5.c.h();
       }
@@ -814,14 +814,14 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.B.c();
    }
 
-   private void b(ame $$0) {
-      this.R.a(new abq($$0.W(), $$0.X(), $$0.Y().b(crw.l)), $$0.ad());
+   private void b(ami $$0) {
+      this.R.a(new abu($$0.W(), $$0.X(), $$0.Y().b(csb.l)), $$0.ad());
    }
 
    public void C() {
       this.B.a("timeSync");
 
-      for (ame $$0 : this.H()) {
+      for (ami $$0 : this.H()) {
          this.b($$0);
       }
 
@@ -848,20 +848,20 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return new File(this.z(), $$0);
    }
 
-   public final ame F() {
-      return this.Q.get(csa.h);
+   public final ami F() {
+      return this.Q.get(csf.h);
    }
 
    @Nullable
-   public ame a(agh<csa> $$0) {
+   public ami a(agl<csf> $$0) {
       return this.Q.get($$0);
    }
 
-   public Set<agh<csa>> G() {
+   public Set<agl<csf>> G() {
       return this.Q.keySet();
    }
 
-   public Iterable<ame> H() {
+   public Iterable<ami> H() {
       return this.Q.values();
    }
 
@@ -896,7 +896,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
 
       $$0.a("Data Packs", () -> this.ao.f().stream().map($$0x -> $$0x.f() + ($$0x.c().a() ? "" : " (incompatible)")).collect(Collectors.joining(", ")));
-      $$0.a("Enabled Feature Flags", () -> cgf.e.b(this.k.M()).stream().map(agi::toString).collect(Collectors.joining(", ")));
+      $$0.a("Enabled Feature Flags", () -> cgk.e.b(this.k.M()).stream().map(agm::toString).collect(Collectors.joining(", ")));
       $$0.a("World Generation", () -> this.k.D().toString());
       if (this.aw != null) {
          $$0.a("Server Id", () -> this.aw);
@@ -907,12 +907,12 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
    public abstract ab a(ab var1);
 
-   public atl M() {
-      return atl.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
+   public atp M() {
+      return atp.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
    }
 
    @Override
-   public void a(ur $$0) {
+   public void a(uv $$0) {
       l.info($$0.getString());
    }
 
@@ -945,15 +945,15 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       l.info("Generating keypair");
 
       try {
-         this.ae = asl.b();
-      } catch (asm var2) {
+         this.ae = asp.b();
+      } catch (asq var2) {
          throw new IllegalStateException("Failed to generate key pair", var2);
       }
    }
 
-   public void a(biu $$0, boolean $$1) {
+   public void a(biy $$0, boolean $$1) {
       if ($$1 || !this.k.t()) {
-         this.k.a(this.k.n() ? biu.d : $$0);
+         this.k.a(this.k.n() ? biy.d : $$0);
          this.by();
          this.ae().t().forEach(this::c);
       }
@@ -964,7 +964,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    }
 
    private void by() {
-      for (ame $$0 : this.H()) {
+      for (ami $$0 : this.H()) {
          $$0.b(this.S(), this.Y());
       }
    }
@@ -974,13 +974,13 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.ae().t().forEach(this::c);
    }
 
-   private void c(amf $$0) {
-      eej $$1 = $$0.dN().A_();
-      $$0.c.b(new yp($$1.s(), $$1.t()));
+   private void c(amj $$0) {
+      eeo $$1 = $$0.dN().B_();
+      $$0.c.b(new yt($$1.s(), $$1.t()));
    }
 
    public boolean S() {
-      return this.k.s() != biu.a;
+      return this.k.s() != biy.a;
    }
 
    public boolean T() {
@@ -1060,21 +1060,21 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return this.T;
    }
 
-   public apu ae() {
+   public apy ae() {
       return this.R;
    }
 
-   public void a(apu $$0) {
+   public void a(apy $$0) {
       this.R = $$0;
    }
 
    public abstract boolean p();
 
-   public void a(crx $$0) {
+   public void a(csc $$0) {
       this.k.a($$0);
    }
 
-   public anc af() {
+   public ang af() {
       return this.H;
    }
 
@@ -1086,7 +1086,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return false;
    }
 
-   public boolean a(@Nullable crx $$0, boolean $$1, int $$2) {
+   public boolean a(@Nullable csc $$0, boolean $$1, int $$2) {
       return false;
    }
 
@@ -1098,7 +1098,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return 16;
    }
 
-   public boolean a(ame $$0, ht $$1, cdu $$2) {
+   public boolean a(ami $$0, hx $$1, cdz $$2) {
       return false;
    }
 
@@ -1127,7 +1127,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    }
 
    @Nullable
-   public aty ap() {
+   public auc ap() {
       return this.j.a();
    }
 
@@ -1136,12 +1136,12 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    }
 
    @Nullable
-   public apq ar() {
+   public apu ar() {
       return this.j.e();
    }
 
    @Nullable
-   public afj as() {
+   public afn as() {
       return this.J;
    }
 
@@ -1188,26 +1188,26 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return this.M;
    }
 
-   public int a(@Nullable ame $$0) {
-      return $$0 != null ? $$0.Y().c(crw.s) : 10;
+   public int a(@Nullable ami $$0) {
+      return $$0 != null ? $$0.Y().c(csb.s) : 10;
    }
 
-   public agu aB() {
+   public agy aB() {
       return this.ax.b.e();
    }
 
-   public agw aC() {
+   public aha aC() {
       return this.as;
    }
 
    public CompletableFuture<Void> a(Collection<String> $$0) {
-      ip.b $$1 = this.P.b(agr.d);
+      it.b $$1 = this.P.b(agv.d);
       CompletableFuture<Void> $$2 = CompletableFuture.<ImmutableList>supplyAsync(
-            () -> $$0.stream().map(this.ao::c).filter(Objects::nonNull).map(aop::e).collect(ImmutableList.toImmutableList()), this
+            () -> $$0.stream().map(this.ao::c).filter(Objects::nonNull).map(aot::e).collect(ImmutableList.toImmutableList()), this
          )
          .thenCompose($$1x -> {
-            aox $$2x = new apa(anw.b, $$1x);
-            return ags.a($$2x, $$1, this.k.M(), this.l() ? dv.a.b : dv.a.c, this.j(), this.av, this).whenComplete(($$1xx, $$2xx) -> {
+            apb $$2x = new ape(aoa.b, $$1x);
+            return agw.a($$2x, $$1, this.k.M(), this.l() ? dv.a.b : dv.a.c, this.j(), this.av, this).whenComplete(($$1xx, $$2xx) -> {
                if ($$2xx != null) {
                   $$2x.close();
                }
@@ -1217,7 +1217,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             this.ax.close();
             this.ax = $$1x;
             this.ao.a($$0);
-            cst $$2x = new cst(a(this.ao), this.k.M());
+            csy $$2x = new csy(a(this.ao), this.k.M());
             this.k.a($$2x);
             this.ax.b.a(this.aZ());
             this.ae().h();
@@ -1232,11 +1232,11 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return $$2;
    }
 
-   public static cst a(aos $$0, cro $$1, boolean $$2, cgd $$3) {
+   public static csy a(aow $$0, crt $$1, boolean $$2, cgi $$3) {
       $$0.a();
       if ($$2) {
          $$0.a(Collections.singleton("vanilla"));
-         return cst.c;
+         return csy.c;
       } else {
          Set<String> $$4 = Sets.newLinkedHashSet();
 
@@ -1248,22 +1248,22 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
             }
          }
 
-         for (aop $$6 : $$0.c()) {
+         for (aot $$6 : $$0.c()) {
             String $$7 = $$6.f();
             if (!$$1.b().contains($$7)) {
-               cgd $$8 = $$6.d();
+               cgi $$8 = $$6.d();
                boolean $$9 = $$4.contains($$7);
                if (!$$9 && $$6.j().a()) {
                   if ($$8.a($$3)) {
                      l.info("Found new data pack {}, loading it automatically", $$7);
                      $$4.add($$7);
                   } else {
-                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cgf.a($$3, $$8));
+                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cgk.a($$3, $$8));
                   }
                }
 
                if ($$9 && !$$8.a($$3)) {
-                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cgf.a($$3, $$8));
+                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cgk.a($$3, $$8));
                   $$4.remove($$7);
                }
             }
@@ -1275,33 +1275,33 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          }
 
          $$0.a($$4);
-         cro $$10 = a($$0);
-         cgd $$11 = $$0.e();
-         return new cst($$10, $$11);
+         crt $$10 = a($$0);
+         cgi $$11 = $$0.e();
+         return new csy($$10, $$11);
       }
    }
 
-   private static cro a(aos $$0) {
+   private static crt a(aow $$0) {
       Collection<String> $$1 = $$0.d();
       List<String> $$2 = ImmutableList.copyOf($$1);
       List<String> $$3 = $$0.b().stream().filter($$1x -> !$$1.contains($$1x)).collect(ImmutableList.toImmutableList());
-      return new cro($$2, $$3);
+      return new crt($$2, $$3);
    }
 
    public void a(du $$0) {
       if (this.aM()) {
-         apu $$1 = $$0.m().ae();
-         aqc $$2 = $$1.i();
+         apy $$1 = $$0.l().ae();
+         aqg $$2 = $$1.i();
 
-         for (amf $$4 : Lists.newArrayList($$1.t())) {
+         for (amj $$4 : Lists.newArrayList($$1.t())) {
             if (!$$2.a($$4.fS())) {
-               $$4.c.b(ur.c("multiplayer.disconnect.not_whitelisted"));
+               $$4.c.b(uv.c("multiplayer.disconnect.not_whitelisted"));
             }
          }
       }
    }
 
-   public aos aD() {
+   public aow aD() {
       return this.ao;
    }
 
@@ -1310,32 +1310,32 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    }
 
    public du aF() {
-      ame $$0 = this.F();
-      return new du(this, $$0 == null ? eju.b : eju.a($$0.S()), ejt.a, $$0, 4, "Server", ur.b("Server"), this, null);
+      ami $$0 = this.F();
+      return new du(this, $$0 == null ? ejz.b : ejz.a($$0.S()), ejy.a, $$0, 4, "Server", uv.b("Server"), this, null);
    }
 
    @Override
-   public boolean k_() {
+   public boolean l_() {
       return true;
    }
 
    @Override
-   public boolean w_() {
+   public boolean x_() {
       return true;
    }
 
    @Override
-   public abstract boolean V_();
+   public abstract boolean W_();
 
-   public cor aG() {
+   public cow aG() {
       return this.ax.b.c();
    }
 
-   public agz aH() {
+   public ahd aH() {
       return this.ap;
    }
 
-   public eef aI() {
+   public eek aI() {
       if (this.aq == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1343,15 +1343,15 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
    }
 
-   public efa aJ() {
+   public eff aJ() {
       return this.ax.b.b();
    }
 
-   public crw aK() {
+   public csb aK() {
       return this.F().Y();
    }
 
-   public ahi aL() {
+   public ahm aL() {
       return this.ar;
    }
 
@@ -1367,7 +1367,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return this.au;
    }
 
-   public aha aO() {
+   public ahe aO() {
       return this.az;
    }
 
@@ -1381,7 +1381,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
    public int c(GameProfile $$0) {
       if (this.ae().f($$0)) {
-         apw $$1 = this.ae().k().b($$0);
+         aqa $$1 = this.ae().k().b($$0);
          if ($$1 != null) {
             return $$1.a();
          } else if (this.a($$0)) {
@@ -1396,7 +1396,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
    }
 
-   public bfo aR() {
+   public bfs aR() {
       return this.B;
    }
 
@@ -1409,8 +1409,8 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       Path $$1 = $$0.resolve("levels");
 
       try {
-         for (Entry<agh<csa>, ame> $$2 : this.Q.entrySet()) {
-            agi $$3 = $$2.getKey().a();
+         for (Entry<agl<csf>, ami> $$2 : this.Q.entrySet()) {
+            agm $$3 = $$2.getKey().a();
             Path $$4 = $$1.resolve($$3.b()).resolve($$3.a());
             Files.createDirectories($$4);
             $$2.getValue().a($$4);
@@ -1439,10 +1439,10 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    private void d(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
          final List<String> $$2 = Lists.newArrayList();
-         final crw $$3 = this.aK();
-         crw.a(new crw.c() {
+         final csb $$3 = this.aK();
+         csb.a(new csb.c() {
             @Override
-            public <T extends crw.g<T>> void a(crw.e<T> $$0, crw.f<T> $$1) {
+            public <T extends csb.g<T>> void a(csb.e<T> $$0, csb.f<T> $$1) {
                $$2.add(String.format(Locale.ROOT, "%s=%s\n", $$0.a(), $$3.a($$0)));
             }
          });
@@ -1480,9 +1480,9 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
    private void g(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
-         List<atn.a> $$2;
+         List<atr.a> $$2;
          try {
-            $$2 = Lists.newArrayList(atn.a());
+            $$2 = Lists.newArrayList(atr.a());
          } catch (Throwable var7) {
             l.warn("Failed to list native modules", var7);
             return;
@@ -1490,7 +1490,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
          $$2.sort(Comparator.comparing($$0x -> $$0x.a));
 
-         for (atn.a $$5 : $$2) {
+         for (atr.a $$5 : $$2) {
             $$1.write($$5.toString());
             $$1.write(10);
          }
@@ -1499,14 +1499,14 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
 
    private void bz() {
       if (this.E) {
-         this.A = bgx.a(new bhb(ac.b, this.l()), ac.b, ac.g(), new bhd("server"), this.C, $$0 -> {
+         this.A = bhb.a(new bhf(ac.b, this.l()), ac.b, ac.g(), new bhh("server"), this.C, $$0 -> {
             this.h(() -> this.b($$0.resolve("server")));
             this.D.accept($$0);
          });
          this.E = false;
       }
 
-      this.B = bfr.a(this.A.f(), bfr.a("Server"));
+      this.B = bfv.a(this.A.f(), bfv.a("Server"));
       this.A.c();
       this.B.a();
    }
@@ -1520,7 +1520,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return this.A.e();
    }
 
-   public void a(Consumer<bfn> $$0, Consumer<Path> $$1) {
+   public void a(Consumer<bfr> $$0, Consumer<Path> $$1) {
       this.C = $$1x -> {
          this.aT();
          $$0.accept($$1x);
@@ -1530,7 +1530,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
    }
 
    public void aT() {
-      this.A = bgy.a;
+      this.A = bhc.a;
    }
 
    public void aU() {
@@ -1542,7 +1542,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.B = this.A.f();
    }
 
-   public Path a(eel $$0) {
+   public Path a(eeq $$0) {
       return this.g.a($$0);
    }
 
@@ -1550,36 +1550,36 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return true;
    }
 
-   public ebi aX() {
+   public ebn aX() {
       return this.ay;
    }
 
-   public eet aY() {
+   public eey aY() {
       return this.k;
    }
 
-   public ip.b aZ() {
+   public it.b aZ() {
       return this.P.a();
    }
 
-   public ij<agr> ba() {
+   public in<agv> ba() {
       return this.P;
    }
 
-   public ani a(amf $$0) {
-      return ani.a;
+   public anm a(amj $$0) {
+      return anm.a;
    }
 
-   public amg b(amf $$0) {
-      return (amg)(this.T() ? new alv($$0) : new amg($$0));
+   public amk b(amj $$0) {
+      return (amk)(this.T() ? new alz($$0) : new amk($$0));
    }
 
    @Nullable
-   public crx bb() {
+   public csc bb() {
       return null;
    }
 
-   public aph bc() {
+   public apl bc() {
       return this.ax.a;
    }
 
@@ -1595,11 +1595,11 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       this.G = true;
    }
 
-   public bfn bg() {
+   public bfr bg() {
       if (this.F == null) {
-         return bfj.a;
+         return bfn.a;
       } else {
-         bfn $$0 = this.F.a(ac.c(), this.U);
+         bfr $$0 = this.F.a(ac.c(), this.U);
          this.F = null;
          return $$0;
       }
@@ -1609,7 +1609,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       return 1000000;
    }
 
-   public void a(ur $$0, un.a $$1, @Nullable String $$2) {
+   public void a(uv $$0, ur.a $$1, @Nullable String $$2) {
       String $$3 = $$1.a($$0).getString();
       if ($$2 != null) {
          l.info("[{}] {}", $$2, $$3);
@@ -1618,15 +1618,15 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
    }
 
-   public um bi() {
-      return um.a;
+   public uq bi() {
+      return uq.a;
    }
 
    public boolean bj() {
       return true;
    }
 
-   static record a(aox a, ags b) implements AutoCloseable {
+   static record a(apb a, agw b) implements AutoCloseable {
 
       @Override
       public void close() {
@@ -1634,7 +1634,7 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
       }
    }
 
-   public static record b(String a, String b, boolean c, @Nullable ur d) {
+   public static record b(String a, String b, boolean c, @Nullable uv d) {
    }
 
    static class c {
@@ -1646,10 +1646,10 @@ public abstract class MinecraftServer extends bhr<ahc> implements agx, dt, AutoC
          this.b = $$1;
       }
 
-      bfn a(final long $$0, final int $$1) {
-         return new bfn() {
+      bfr a(final long $$0, final int $$1) {
+         return new bfr() {
             @Override
-            public List<bfq> a(String $$0x) {
+            public List<bfu> a(String $$0x) {
                return Collections.emptyList();
             }
 

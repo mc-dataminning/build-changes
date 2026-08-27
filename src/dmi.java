@@ -1,108 +1,420 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
 
-public class dmi extends djf {
-   public static final Codec<dmi> c = RecordCodecBuilder.create($$0 -> $$0.group(agg.d(ctf.b)).apply($$0, $$0.stable(dmi::new)));
-   private static final int h = 2;
-   private static final List<dhi> i = StreamSupport.stream(jy.f.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
-   private static final int j = atm.f(atm.c((float)i.size()));
-   private static final int k = atm.f((float)i.size() / (float)j);
-   protected static final dhi d = cvc.a.o();
-   protected static final dhi e = cvc.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
-
-   public dmi(ib.c<csy> $$0) {
-      super(new ctj($$0));
+public interface dmi {
+   static dmi a(dna $$0, crm $$1, dnc $$2, dnj $$3, int $$4, int $$5, dmi.a $$6) {
+      return new dmi.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   protected Codec<? extends djf> a() {
-      return c;
-   }
-
-   @Override
-   public void a(aml $$0, css $$1, dnf $$2, dje $$3) {
-   }
-
-   @Override
-   public void a(csu $$0, dje $$1, css $$2) {
-      ht.a $$3 = new ht.a();
-      crh $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = iu.a($$5, $$7);
-            int $$10 = iu.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            dhi $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+   static dmi a(final dmi.a $$0) {
+      return new dmi() {
+         @Nullable
+         @Override
+         public dhn a(dmp.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
          }
+
+         @Override
+         public boolean a() {
+            return false;
+         }
+      };
+   }
+
+   @Nullable
+   dhn a(dmp.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dmi.b computeFluid(int var1, int var2, int var3);
+   }
+
+   public static final class b {
+      final int a;
+      final dhn b;
+
+      public b(int $$0, dhn $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dhn a(int $$0) {
+         return $$0 < this.a ? this.b : cvh.a.o();
       }
    }
 
-   @Override
-   public CompletableFuture<dje> a(Executor $$0, dnt $$1, dnf $$2, css $$3, dje $$4) {
-      return CompletableFuture.completedFuture($$4);
-   }
+   public static class c implements dmi {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(atq.h(10), atq.h(12));
+      private final dna l;
+      private final dmp m;
+      private final dmp n;
+      private final dmp o;
+      private final dmp p;
+      private final dnj q;
+      private final dmi.b[] r;
+      private final long[] s;
+      private final dmi.a t;
+      private final dmp u;
+      private final dmp v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
 
-   @Override
-   public int a(int $$0, int $$1, dmr.a $$2, csc $$3, dnf $$4) {
-      return 0;
-   }
+      c(dna $$0, crm $$1, dnc $$2, dnj $$3, int $$4, int $$5, dmi.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dmi.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
 
-   @Override
-   public csm a(int $$0, int $$1, csc $$2, dnf $$3) {
-      return new csm(0, new dhi[0]);
-   }
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
 
-   @Override
-   public void a(List<String> $$0, dnf $$1, ht $$2) {
-   }
+      @Nullable
+      @Override
+      public dhn a(dmp.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dmi.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(cvh.H)) {
+               this.w = false;
+               return cvh.H.o();
+            } else {
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               long $$12 = 0L;
+               long $$13 = 0L;
+               long $$14 = 0L;
 
-   public static dhi a(int $$0, int $$1) {
-      dhi $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = atm.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
+               for (int $$15 = 0; $$15 <= 1; $$15++) {
+                  for (int $$16 = -1; $$16 <= 1; $$16++) {
+                     for (int $$17 = 0; $$17 <= 1; $$17++) {
+                        int $$18 = $$6 + $$15;
+                        int $$19 = $$7 + $$16;
+                        int $$20 = $$8 + $$17;
+                        int $$21 = this.a($$18, $$19, $$20);
+                        long $$22 = this.s[$$21];
+                        long $$23;
+                        if ($$22 != Long.MAX_VALUE) {
+                           $$23 = $$22;
+                        } else {
+                           atw $$24 = this.q.a($$18, $$19, $$20);
+                           $$23 = hx.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
+                           this.s[$$21] = $$23;
+                        }
+
+                        int $$26 = hx.a($$23) - $$2;
+                        int $$27 = hx.b($$23) - $$3;
+                        int $$28 = hx.c($$23) - $$4;
+                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
+                        if ($$9 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$12;
+                           $$12 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$29;
+                        } else if ($$10 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$29;
+                        } else if ($$11 >= $$29) {
+                           $$14 = $$23;
+                           $$11 = $$29;
+                        }
+                     }
+                  }
+               }
+
+               dmi.b $$30 = this.a($$12);
+               double $$31 = a($$9, $$10);
+               dhn $$32 = $$30.a($$3);
+               if ($$31 <= 0.0) {
+                  this.w = $$31 >= k;
+                  return $$32;
+               } else if ($$32.a(cvh.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(cvh.H)) {
+                  this.w = true;
+                  return $$32;
+               } else {
+                  MutableDouble $$34 = new MutableDouble(Double.NaN);
+                  dmi.b $$35 = this.a($$13);
+                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
+                  if ($$1 + $$36 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dmi.b $$37 = this.a($$14);
+                     double $$38 = a($$9, $$11);
+                     if ($$38 > 0.0) {
+                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
+                        if ($$1 + $$39 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     double $$40 = a($$10, $$11);
+                     if ($$40 > 0.0) {
+                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
+                        if ($$1 + $$41 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     this.w = true;
+                     return $$32;
+                  }
+               }
             }
          }
       }
 
-      return $$2;
-   }
+      @Override
+      public boolean a() {
+         return this.w;
+      }
 
-   @Override
-   public void a(aml $$0, long $$1, dnf $$2, cta $$3, css $$4, dje $$5, dmn.a $$6) {
-   }
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      }
 
-   @Override
-   public void a(aml $$0) {
-   }
+      private double a(dmp.b $$0, MutableDouble $$1, dmi.b $$2, dmi.b $$3) {
+         int $$4 = $$0.b();
+         dhn $$5 = $$2.a($$4);
+         dhn $$6 = $$3.a($$4);
+         if ((!$$5.a(cvh.H) || !$$6.a(cvh.G)) && (!$$5.a(cvh.G) || !$$6.a(cvh.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
+            } else {
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
 
-   @Override
-   public int f() {
-      return 0;
-   }
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
 
-   @Override
-   public int d() {
-      return 384;
-   }
+               return 2.0 * ($$28 + $$19);
+            }
+         } else {
+            return 2.0;
+         }
+      }
 
-   @Override
-   public int e() {
-      return 63;
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
+
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dmi.b a(long $$0) {
+         int $$1 = hx.a($$0);
+         int $$2 = hx.b($$0);
+         int $$3 = hx.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dmi.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dmi.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dmi.b b(int $$0, int $$1, int $$2) {
+         dmi.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + iy.c($$8[0]);
+            int $$10 = $$2 + iy.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dmi.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).i()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
+               }
+            }
+
+            $$4 = Math.min($$4, $$11);
+         }
+
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dmi.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
+      }
+
+      private int a(int $$0, int $$1, int $$2, dmi.b $$3, int $$4, boolean $$5) {
+         dmp.e $$6 = new dmp.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (ctt.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? atq.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = atq.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = atq.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = atq.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = dkw.g;
+         }
+
+         return $$17;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new dmp.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = atq.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
+      }
+
+      private dhn a(int $$0, int $$1, int $$2, dmi.b $$3, int $$4) {
+         dhn $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != dkw.g && $$3.b != cvh.H.o()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new dmp.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = cvh.H.o();
+            }
+         }
+
+         return $$5;
+      }
    }
 }

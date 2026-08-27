@@ -1,12 +1,11 @@
-public class afm implements wk<afk> {
-   public afm() {
-   }
-
-   public afm(tu $$0) {
+public record afm(afn a) implements wo<afk> {
+   public afm(ty $$0) {
+      this($$0.a(afn.a));
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
+      $$0.a(afn.a, this.a);
    }
 
    public void a(afk $$0) {

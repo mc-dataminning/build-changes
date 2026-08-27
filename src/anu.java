@@ -1,34 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Map;
 
-public record anu(List<anu.a> b) {
-   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
-   private static final Codec<anu> d = RecordCodecBuilder.create($$0 -> $$0.group(anu.a.c.listOf().fieldOf("entries").forGetter(anu::a)).apply($$0, anu::new));
-   public static final aoi<anu> a = aoi.a("overlays", d);
+public class anu {
+   private static final anu a = new anu(Map.of());
+   private final Map<aol<?>, ?> b;
 
-   private static DataResult<String> a(String $$0) {
-      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
+   private anu(Map<aol<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   public List<String> a(int $$0) {
-      return this.b.stream().filter($$1 -> $$1.a($$0)).map(anu.a::b).toList();
+   public <T> T a(aol<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public List<anu.a> a() {
-      return this.b;
+   public static anu a() {
+      return a;
    }
 
-   public static record a(ate<Integer> a, String b) {
-      static final Codec<anu.a> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ate.a(Codec.INT).fieldOf("formats").forGetter(anu.a::a), asu.<String>a(Codec.STRING, anu::a).fieldOf("directory").forGetter(anu.a::b))
-               .apply($$0, anu.a::new)
-      );
+   public static <T> anu a(aol<T> $$0, T $$1) {
+      return new anu(Map.of($$0, $$1));
+   }
 
-      public boolean a(int $$0) {
-         return this.a.a($$0);
-      }
+   public static <T1, T2> anu a(aol<T1> $$0, T1 $$1, aol<T2> $$2, T2 $$3) {
+      return new anu(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

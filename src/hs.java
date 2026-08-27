@@ -1,51 +1,49 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.function.Supplier;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-public class hs {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<hx, j> a = ac.a(Maps.newEnumMap(hx.class), $$0 -> {
-      $$0.put(hx.d, j.a());
-      $$0.put(hx.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(hx.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(hx.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(hx.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(hx.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<hx, j> b = ac.a(Maps.newEnumMap(hx.class), $$0 -> {
-      for (hx $$1 : hx.values()) {
-         $$0.put($$1, a.get($$1).b());
+public class hs implements hj<StringArgumentType, hs.a> {
+   public void a(hs.a $$0, ty $$1) {
+      $$1.a((Enum<?>)$$0.b);
+   }
+
+   public hs.a a(ty $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new hs.a($$1);
+   }
+
+   public void a(hs.a $$0, JsonObject $$1) {
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new IncompatibleClassChangeError();
+      });
+   }
+
+   public hs.a a(StringArgumentType $$0) {
+      return new hs.a($$0.getType());
+   }
+
+   public final class a implements hj.a<StringArgumentType> {
+      final StringType b;
+
+      public a(StringType $$1) {
+         this.b = $$1;
       }
-   });
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
-   }
+      public StringArgumentType a(dp $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
-   }
-
-   public static j a(j $$0, hx $$1, Supplier<String> $$2) {
-      hx $$3 = hx.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
-      } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+      @Override
+      public hj<StringArgumentType, ?> a() {
+         return hs.this;
       }
    }
 }

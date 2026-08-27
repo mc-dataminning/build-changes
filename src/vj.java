@@ -1,64 +1,130 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record vj<S>(List<vj.a<S>> a) {
-   public static <S> vj<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<vj.a<S>> $$4 = a($$1, $$2);
+public class vj implements uv {
+   private final uw c;
+   private final List<uv> d;
+   private vs e;
+   private atc f = atc.a;
+   @Nullable
+   private ry g;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new vj<>($$4);
+   vj(uw $$0, List<uv> $$1, vs $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static <S> List<vj.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<vj.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ez) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new vj.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public static vj a(uw $$0) {
+      return new vj($$0, Lists.newArrayList(), vs.a);
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   @Override
+   public uw b() {
+      return this.c;
+   }
+
+   @Override
+   public List<uv> c() {
+      return this.d;
+   }
+
+   public vj b(vs $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public vs a() {
+      return this.e;
+   }
+
+   public vj f(String $$0) {
+      return this.b(uv.b($$0));
+   }
+
+   public vj b(uv $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public vj a(UnaryOperator<vs> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public vj c(vs $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public vj a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public vj a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public vj b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public atc g() {
+      ry $$0 = ry.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof vj $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      public String c() {
-         return this.b;
-      }
+      return $$0.toString();
    }
 }

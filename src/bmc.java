@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bmc {
-   @Nullable
-   blg q();
+   void a(aqw var1);
+
+   boolean a();
 }

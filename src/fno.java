@@ -1,43 +1,70 @@
-import org.joml.Vector3f;
+public class fno extends fpo {
+   fno(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-public class fno extends fnq<jl> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fno(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jl $$7, fpe $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
-   public void a(eoa $$0, eso $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
    }
 
-   public static class a implements fol<jl> {
-      private final fpe a;
+   @Override
+   public fos b() {
+      return fos.c;
+   }
 
-      public a(fpe $$0) {
+   public static class a implements foq<jz> {
+      private final fpj a;
+
+      public a(fpj $$0) {
          this.a = $$0;
       }
 
-      public foi a(jl $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements foq<jz> {
+      private final fpj a;
+
+      public b(fpj $$0) {
+         this.a = $$0;
+      }
+
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

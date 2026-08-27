@@ -1,20 +1,100 @@
-public class foz extends foa {
-   protected foz(flj $$0, double $$1, double $$2, double $$3, double $$4, fpe $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public class foz extends fpo {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
+
+   foz(flo $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   public static class a implements fol<jv> {
-      private final fpe a;
+   @Override
+   public float b(float $$0) {
+      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
 
-      public a(fpe $$0) {
+   @Override
+   public void a(eof $$0, est $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - atq.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
+   }
+
+   private void a(eof $$0, est $$1, float $$2, Consumer<Quaternionf> $$3) {
+      ejz $$4 = $$1.b();
+      float $$5 = (float)(atq.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(atq.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(atq.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
+      }
+
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+   }
+
+   private void a(eof $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fos b() {
+      return fos.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements foq<jy> {
+      private final fpj a;
+
+      public a(fpj $$0) {
          this.a = $$0;
       }
 
-      public foi a(jv $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new foz($$1, $$2, $$3, $$4, $$5, this.a);
+      public fon a(jy $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foz $$8 = new foz($$1, $$2, $$3, $$4, $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

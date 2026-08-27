@@ -1,60 +1,143 @@
 import java.util.function.BiConsumer;
 
-public class lk implements la {
-   public static final ehw.a a = ehu.a(cj.a.a().d(ctf.x));
-   public static final ehw.a b = ehu.a(cj.a.a().d(ctf.y));
-   public static final ehw.a c = ehu.a(cj.a.a().d(ctf.z));
-
+public class lk implements le {
    @Override
-   public void generate(BiConsumer<agi, eff.a> $$0) {
+   public void generate(BiConsumer<agm, efk.a> $$0) {
       $$0.accept(
-         eev.ai,
-         eff.b()
+         efa.aC,
+         efk.b()
             .a(
-               efe.a()
-                  .a(eip.a(1.0F))
-                  .a(eft.a(eev.aj).a(10).b(-2))
-                  .a(eft.a(eev.ak).a(5).b(2).a(ehz.a(eex.b.a, bq.a.a().a(bv.a(true)))))
-                  .a(eft.a(eev.al).a(85).b(-1))
-            )
-      );
-      $$0.accept(eev.al, a());
-      $$0.accept(
-         eev.aj,
-         eff.b()
-            .a(
-               efe.a()
-                  .a(efn.a(cvc.fm).a(17))
-                  .a(efn.a(clm.py).a(10).a(egw.a(eiu.a(0.0F, 0.9F))))
-                  .a(efn.a(clm.qA).a(10))
-                  .a(efn.a(clm.rw).a(10))
-                  .a(efn.a(clm.sh).a(10).a(eha.a(cnj.c)))
-                  .a(efn.a(clm.pp).a(5))
-                  .a(efn.a(clm.qS).a(2).a(egw.a(eiu.a(0.0F, 0.9F))))
-                  .a(efn.a(clm.pn).a(10))
-                  .a(efn.a(clm.pm).a(5))
-                  .a(efn.a(clm.rc).a(1).a(egv.a(eip.a(10.0F))))
-                  .a(efn.a(cvc.fH).a(10))
-                  .a(efn.a(clm.sb).a(10))
-                  .a(efn.a(cvc.mZ).a(a.or(b).or(c)).a(10))
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.xB).a(2))
+                  .a(efs.a(clr.xD).a(2))
+                  .a(efs.a(clr.qI))
+                  .a(efs.a(clr.ow))
+                  .a(efs.a(clr.pm))
+                  .a(
+                     efs.a(clr.vM)
+                        .a(
+                           ehg.c()
+                              .a(bkk.p, eiz.a(7.0F, 10.0F))
+                              .a(bkk.h, eiz.a(7.0F, 10.0F))
+                              .a(bkk.r, eiz.a(6.0F, 8.0F))
+                              .a(bkk.o, eiz.a(5.0F, 7.0F))
+                              .a(bkk.s, eiz.a(10.0F, 20.0F))
+                              .a(bkk.w, eiz.a(7.0F, 10.0F))
+                        )
+                  )
             )
       );
       $$0.accept(
-         eev.ak,
-         eff.b()
+         efa.aD,
+         efk.b()
             .a(
-               efe.a()
-                  .a(efn.a(clm.uD))
-                  .a(efn.a(clm.nK))
-                  .a(efn.a(clm.or).a(egw.a(eiu.a(0.0F, 0.25F))).a(egd.a(eip.a(30.0F)).e()))
-                  .a(efn.a(clm.qS).a(egw.a(eiu.a(0.0F, 0.25F))).a(egd.a(eip.a(30.0F)).e()))
-                  .a(efn.a(clm.qM).a(egd.a(eip.a(30.0F)).e()))
-                  .a(efn.a(clm.vJ))
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.xA))
+                  .a(efs.a(clr.xL))
+                  .a(efs.a(clr.xO))
+                  .a(efs.a(clr.xR))
+                  .a(efs.a(clr.ov))
+                  .a(efs.a(clr.mc))
+                  .a(efs.a(clr.pr))
+                  .a(efs.a(clr.ow))
             )
       );
-   }
-
-   public static eff.a a() {
-      return eff.b().a(efe.a().a(efn.a(clm.qW).a(60)).a(efn.a(clm.qX).a(25)).a(efn.a(clm.qY).a(2)).a(efn.a(clm.qZ).a(13)));
+      $$0.accept(
+         efa.aE,
+         efk.b()
+            .a(
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.ow).a(2))
+                  .a(efs.a(clr.pt).a(2))
+                  .a(efs.a(clr.oM).a(2))
+                  .a(efs.a(clr.eW).a(2))
+                  .a(efs.a(clr.qI).a(2))
+                  .a(efs.a(clr.rj).a(2))
+                  .a(efs.a(clr.rq).a(2))
+                  .a(efs.a(clr.ri).a(2))
+                  .a(efs.a(clr.rf).a(2))
+                  .a(efs.a(clr.rg).a(2))
+                  .a(efs.a(clr.wV).a(2))
+                  .a(efs.a(clr.wU).a(2))
+                  .a(efs.a(clr.wR).a(2))
+                  .a(efs.a(clr.wT).a(2))
+                  .a(efs.a(clr.iu))
+                  .a(efs.a(clr.iy))
+                  .a(efs.a(clr.iD))
+                  .a(efs.a(clr.iv))
+                  .a(efs.a(clr.iG))
+                  .a(efs.a(clr.iw))
+                  .a(efs.a(clr.iC))
+                  .a(efs.a(clr.ql))
+                  .a(efs.a(clr.qk))
+                  .a(efs.a(clr.sf))
+                  .a(efs.a(clr.ot))
+                  .a(efs.a(clr.ps))
+                  .a(efs.a(clr.vd))
+                  .a(efs.a(clr.cQ))
+                  .a(efs.a(clr.tW))
+                  .a(efs.a(clr.pp))
+                  .a(efs.a(clr.uC))
+            )
+      );
+      $$0.accept(
+         efa.aF,
+         efk.b()
+            .a(
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.xE))
+                  .a(efs.a(clr.xF))
+                  .a(efs.a(clr.xH))
+                  .a(efs.a(clr.xI))
+                  .a(efs.a(clr.xJ))
+                  .a(efs.a(clr.xK))
+                  .a(efs.a(clr.xP))
+                  .a(efs.a(clr.xu))
+                  .a(efs.a(clr.xx))
+                  .a(efs.a(clr.xv))
+                  .a(efs.a(clr.xy))
+                  .a(efs.a(clr.vD))
+            )
+      );
+      $$0.accept(
+         efa.aG,
+         efk.b()
+            .a(
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.xz))
+                  .a(efs.a(clr.xQ))
+                  .a(efs.a(clr.xS))
+                  .a(efs.a(clr.kp))
+                  .a(efs.a(clr.pa))
+                  .a(efs.a(clr.ow).a(2))
+                  .a(efs.a(clr.pt).a(2))
+                  .a(efs.a(clr.oM).a(2))
+                  .a(efs.a(clr.ot).a(2))
+                  .a(efs.a(clr.sf).a(2))
+            )
+      );
+      $$0.accept(
+         efa.aH,
+         efk.b()
+            .a(
+               efj.a()
+                  .a(eiu.a(1.0F))
+                  .a(efs.a(clr.xC))
+                  .a(efs.a(clr.xG))
+                  .a(efs.a(clr.xM))
+                  .a(efs.a(clr.xN))
+                  .a(efs.a(clr.pa))
+                  .a(efs.a(clr.ow).a(2))
+                  .a(efs.a(clr.pt).a(2))
+                  .a(efs.a(clr.oM).a(2))
+                  .a(efs.a(clr.ot).a(2))
+                  .a(efs.a(clr.sf).a(2))
+            )
+      );
    }
 }

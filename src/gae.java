@@ -1,33 +1,46 @@
-public class gae<T extends cdu, M extends fhp<T> & fgq & fhx> extends fzy<T, M> {
-   private final fqq a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class gae extends gak<byy, fin<byy>> {
+   private static final agm[] a = new agm[]{
+      new agm("textures/entity/llama/decor/white.png"),
+      new agm("textures/entity/llama/decor/orange.png"),
+      new agm("textures/entity/llama/decor/magenta.png"),
+      new agm("textures/entity/llama/decor/light_blue.png"),
+      new agm("textures/entity/llama/decor/yellow.png"),
+      new agm("textures/entity/llama/decor/lime.png"),
+      new agm("textures/entity/llama/decor/pink.png"),
+      new agm("textures/entity/llama/decor/gray.png"),
+      new agm("textures/entity/llama/decor/light_gray.png"),
+      new agm("textures/entity/llama/decor/cyan.png"),
+      new agm("textures/entity/llama/decor/purple.png"),
+      new agm("textures/entity/llama/decor/blue.png"),
+      new agm("textures/entity/llama/decor/brown.png"),
+      new agm("textures/entity/llama/decor/green.png"),
+      new agm("textures/entity/llama/decor/red.png"),
+      new agm("textures/entity/llama/decor/black.png")
+   };
+   private static final agm b = new agm("textures/entity/llama/decor/trader_llama.png");
+   private final fin<byy> c;
 
-   public gae(fxs<T, M> $$0, fqq $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gae(fxx<byy, fin<byy>> $$0, fkp $$1) {
+      super($$0);
+      this.c = new fin<>($$1.a(fks.as));
    }
 
-   @Override
-   protected void a(blg $$0, clj $$1, clg $$2, bla $$3, enw $$4, fqu $$5, int $$6) {
-      if ($$1.a(clm.qU) && $$0.fq() == $$1 && $$0.aH == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+   public void a(eob $$0, fqz $$1, int $$2, byy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ckc $$10 = $$3.gs();
+      agm $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
+         if (!$$3.go()) {
+            return;
+         }
 
-   private void a(blg $$0, clj $$1, bla $$2, enw $$3, fqu $$4, int $$5) {
-      $$3.a();
-      fko $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = atm.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      fzk.a($$3, false);
-      boolean $$8 = $$2 == bla.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, clg.f, false, $$3, $$4, $$5);
-      $$3.b();
+         $$11 = b;
+      }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      eof $$14 = $$1.getBuffer(frh.e($$11));
+      this.c.a($$0, $$14, $$2, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

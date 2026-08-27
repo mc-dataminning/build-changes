@@ -1,59 +1,127 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bug<T> {
-   private final T a;
-   private long b;
+public abstract class bug extends bsg {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bln e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected bll g;
+   protected int h = 60;
 
-   public bug(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bug(bln $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bug<T> a(T $$0) {
-      return new bug<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bug<T> a(T $$0, long $$1) {
-      return new bug<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public bug(bln $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      bll $$0 = this.e.q();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         ela $$1 = this.e.cg();
+         ela $$2 = $$0.cg();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.f($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.O().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
+      }
    }
 
-   @aup
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   protected double l() {
+      return this.e.b(bmr.g);
    }
 
-   public static <T> Codec<bug<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bug<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable bll $$0, bvx $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dn())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(bll $$0) {
+      this.j = b(10 + this.e.eh().a(5));
+      edm $$1 = this.e.N().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         edk $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dr();
+            int $$4 = $$2.c - $$0.dx();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public bug c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

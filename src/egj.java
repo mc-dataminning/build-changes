@@ -1,77 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class egj implements egk {
-   protected final List<ehw> g;
-   private final Predicate<eex> a;
+public class egj extends ego {
+   public static final arz<dxm> a = arv.l;
+   public static final eee.a b = eee.a.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final Codec<egj> f = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  asy.a(arz.a(kd.aB), "destination", a).forGetter($$0x -> $$0x.h),
+                  eee.a.I.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  asy.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
+                  asy.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
+                  asy.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, egj::new)
+   );
+   private final arz<dxm> h;
+   private final eee.a i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   protected egj(List<ehw> $$0) {
-      this.g = $$0;
-      this.a = ehy.a($$0);
+   egj(List<eib> $$0, arz<dxm> $$1, eee.a $$2, byte $$3, int $$4, boolean $$5) {
+      super($$0);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
-
-   protected static <T extends egj> P1<Mu<T>, List<ehw>> a(Instance<T> $$0) {
-      return $$0.group(asu.a(ehy.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final clj b(clj $$0, eex $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract clj a(clj var1, eex var2);
 
    @Override
-   public void a(efg $$0) {
-      egk.super.a($$0);
+   public egq b() {
+      return egr.m;
+   }
 
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.b(".conditions[" + $$1 + "]"));
+   @Override
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.f);
+   }
+
+   @Override
+   public clo a(clo $$0, efc $$1) {
+      if (!$$0.a(clr.ub)) {
+         return $$0;
+      } else {
+         ejz $$2 = $$1.c(ehn.f);
+         if ($$2 != null) {
+            ami $$3 = $$1.d();
+            hx $$4 = $$3.a(this.h, hx.a($$2), this.k, this.l);
+            if ($$4 != null) {
+               clo $$5 = clv.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               clv.a($$3, $$5);
+               eeh.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
+
+         return $$0;
       }
    }
 
-   protected static egj.a<?> a(Function<List<ehw>, egk> $$0) {
-      return new egj.b($$0);
+   public static egj.a c() {
+      return new egj.a();
    }
 
-   public abstract static class a<T extends egj.a<T>> implements egk.a, ehp<T> {
-      private final Builder<ehw> a = ImmutableList.builder();
+   public static class a extends ego.a<egj.a> {
+      private arz<dxm> a;
+      private eee.a b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-      public T a(ehw.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+      public a() {
+         this.a = egj.a;
+         this.b = egj.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
-      public final T f() {
-         return this.c();
+      protected egj.a a() {
+         return this;
       }
 
-      protected abstract T c();
-
-      protected List<ehw> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends egj.a<egj.b> {
-      private final Function<List<ehw>, egk> a;
-
-      public b(Function<List<ehw>, egk> $$0) {
+      public egj.a a(arz<dxm> $$0) {
          this.a = $$0;
+         return this;
       }
 
-      protected egj.b a() {
+      public egj.a a(eee.a $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public egj.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public egj.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public egj.a a(boolean $$0) {
+         this.e = $$0;
          return this;
       }
 
       @Override
-      public egk b() {
-         return this.a.apply(this.g());
+      public egp b() {
+         return new egj(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

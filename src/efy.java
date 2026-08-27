@@ -1,41 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class efy extends egj {
-   public static final Codec<efy> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, efy::new));
+public class efy extends efx {
+   public static final Codec<efy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agm.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, efy::new)
+   );
+   private final agm j;
 
-   private efy(List<ehw> $$0) {
-      super($$0);
+   private efy(agm $$0, int $$1, int $$2, List<eib> $$3, List<egp> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public egl b() {
-      return egm.t;
+   public efw a() {
+      return eft.d;
    }
 
    @Override
-   public clj a(clj $$0, eex $$1) {
-      Float $$2 = $$1.c(ehi.j);
-      if ($$2 != null) {
-         ats $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.L();
-         int $$6 = 0;
+   public void a(Consumer<clo> $$0, efc $$1) {
+      efk $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.f($$6);
+   @Override
+   public void a(efl $$0) {
+      efe<efk> $$1 = new efe<>(efh.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.a("Table " + this.j + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
       }
-
-      return $$0;
    }
 
-   public static egj.a<?> c() {
-      return a(efy::new);
+   public static efx.a<?> a(agm $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new efy($$0, $$1, $$2, $$3, $$4));
    }
 }

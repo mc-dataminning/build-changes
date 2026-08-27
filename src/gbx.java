@@ -1,44 +1,15 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface gbx {
-   Logger a = LogUtils.getLogger();
+public class gbx extends RuntimeException {
+   private final Collection<gbw.a> a;
 
-   static gbx create(Collection<aoh<?>> $$0) {
-      return ($$1, $$2) -> {
-         apj $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         emx $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = emx.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         gdf $$11 = $$3.a(gdf.a).orElse(gdf.e);
-         gdh $$12 = $$11.a($$7.a(), $$7.b());
-         if (atm.c($$7.a(), $$12.a()) && atm.c($$7.b(), $$12.b())) {
-            return new gbo($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public gbx(gbw.a $$0, Collection<gbw.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Nullable
-   gbo loadSprite(agi var1, apf var2);
+   public Collection<gbw.a> a() {
+      return this.a;
+   }
 }

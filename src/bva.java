@@ -1,30 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+public class bva extends bvk {
+   public static final float a = 8.0F;
 
-public class bva extends bvl<blg> {
    @Override
-   public Set<buh<?>> a() {
-      return ImmutableSet.of(buh.x, buh.y);
+   protected boolean a(bll $$0, bll $$1) {
+      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && bvq.c($$0, $$1);
+   }
+
+   private boolean e(bll $$0, bll $$1) {
+      return !$$0.dP().a(bum.T) && $$1.ai().a(arn.j);
+   }
+
+   private boolean b(bll $$0) {
+      return $$0.ai().a(arn.i);
+   }
+
+   private boolean f(bll $$0, bll $$1) {
+      return $$1.f((bkv)$$0) <= 64.0;
    }
 
    @Override
-   protected void a(ame $$0, blg $$1) {
-      bmg<?> $$2 = $$1.dP();
-      bjo $$3 = $$1.ey();
-      if ($$3 != null) {
-         $$2.a(buh.x, $$1.ey());
-         bkq $$4 = $$3.d();
-         if ($$4 instanceof blg) {
-            $$2.a(buh.y, (blg)$$4);
-         }
-      } else {
-         $$2.b(buh.x);
-      }
-
-      $$2.c(buh.y).ifPresent($$2x -> {
-         if (!$$2x.bx() || $$2x.dN() != $$0) {
-            $$2.b(buh.y);
-         }
-      });
+   protected bum<bll> b() {
+      return bum.B;
    }
 }

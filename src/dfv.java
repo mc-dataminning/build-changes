@@ -1,79 +1,80 @@
-public class dfv extends dgh {
-   public static final int c = 9;
-   private il<clj> d = il.a(9, clj.b);
+public abstract class dfv {
+   private static final int a = 5;
+   private int b;
 
-   protected dfv(dff<?> $$0, ht $$1, dhi $$2) {
-      super($$0, $$1, $$2);
+   protected abstract void a(csf var1, hx var2, dhn var3);
+
+   protected abstract void b(csf var1, hx var2, dhn var3);
+
+   protected abstract void a(csf var1, hx var2, dhn var3, int var4, int var5);
+
+   protected abstract boolean a(cdz var1);
+
+   public void a(cdz $$0, csf $$1, hx $$2, dhn $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dlx.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   public dfv(ht $$0, dhi $$1) {
-      this(dff.f, $$0, $$1);
+   public void b(cdz $$0, csf $$1, hx $$2, dhn $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dlx.j, $$2);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public int b() {
-      return 9;
+   private int a(csf $$0, hx $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+      float $$5 = 5.0F;
+      eju $$6 = new eju(
+         (double)((float)$$2 - 5.0F),
+         (double)((float)$$3 - 5.0F),
+         (double)((float)$$4 - 5.0F),
+         (double)((float)($$2 + 1) + 5.0F),
+         (double)((float)($$3 + 1) + 5.0F),
+         (double)((float)($$4 + 1) + 5.0F)
+      );
+      return $$0.a(dll.a(cdz.class), $$6, this::a).size();
    }
 
-   public int a(ats $$0) {
-      this.e(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         if (!this.d.get($$3).b() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
+   public void c(csf $$0, hx $$1, dhn $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b;
+      if ($$4 != $$3) {
+         boolean $$5 = $$3 != 0;
+         boolean $$6 = $$4 != 0;
+         if ($$5 && !$$6) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dlx.k, $$1);
+         } else if (!$$5) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dlx.j, $$1);
          }
+
+         this.b = $$3;
       }
 
-      return $$1;
-   }
-
-   public int a(clj $$0) {
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         if (this.d.get($$1).b()) {
-            this.a($$1, $$0);
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   @Override
-   protected ur g() {
-      return ur.c("container.dispenser");
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      this.d = il.a(this.b(), clj.b);
-      if (!this.d($$0)) {
-         bir.b($$0, this.d);
+      this.a($$0, $$1, $$2, $$4, $$3);
+      if ($$3 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bir.a($$0, this.d);
-      }
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected il<clj> f() {
-      return this.d;
-   }
-
-   @Override
-   protected void a(il<clj> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected cgm a(int $$0, cdt $$1) {
-      return new chf($$0, $$1, this);
+   private static void d(csf $$0, hx $$1, dhn $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

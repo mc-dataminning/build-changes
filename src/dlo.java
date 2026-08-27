@@ -1,37 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dlo implements dlw {
-   public static final Codec<dlo> a = RecordCodecBuilder.create($$0 -> $$0.group(ht.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dlo::new));
-   final ht c;
+public class dlo<T extends dle> implements dln<T> {
+   private final dlg<T> a;
+   private final dlj<T> b;
 
-   public dlo(ht $$0) {
-      this.c = $$0;
+   public dlo(dlg<T> $$0, dlj<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public Optional<eju> a(csa $$0) {
-      return Optional.of(eju.b(this.c));
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
    @Override
-   public dlx<?> a() {
-      return dlx.a;
+   public <U extends T> void a(dll<T, U> $$0, asf<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public static class a implements dlx<dlo> {
-      public dlo a(tu $$0) {
-         return new dlo($$0.e());
-      }
+   @Override
+   public void a(eju $$0, Consumer<T> $$1) {
+      this.b.b($$0, asf.forConsumer($$1));
+   }
 
-      public void a(tu $$0, dlo $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<dlo> a() {
-         return dlo.a;
-      }
+   @Override
+   public <U extends T> void a(dll<T, U> $$0, eju $$1, asf<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

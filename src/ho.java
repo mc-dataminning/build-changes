@@ -1,48 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class ho implements hf<StringArgumentType, ho.a> {
-   public void a(ho.a $$0, tu $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public class ho implements hj<DoubleArgumentType, ho.a> {
+   public void a(ho.a $$0, ty $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(hl.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
+      }
+
+      if ($$3) {
+         $$1.a($$0.c);
+      }
    }
 
-   public ho.a a(tu $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new ho.a($$1);
+   public ho.a a(ty $$0) {
+      byte $$1 = $$0.readByte();
+      double $$2 = hl.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = hl.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      return new ho.a($$2, $$3);
    }
 
    public void a(ho.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new IncompatibleClassChangeError();
-      });
-   }
-
-   public ho.a a(StringArgumentType $$0) {
-      return new ho.a($$0.getType());
-   }
-
-   public final class a implements hf.a<StringArgumentType> {
-      final StringType b;
-
-      public a(StringType $$1) {
-         this.b = $$1;
+      if ($$0.b != -Double.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      public StringArgumentType a(dp $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new IncompatibleClassChangeError();
-         };
+      if ($$0.c != Double.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public ho.a a(DoubleArgumentType $$0) {
+      return new ho.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements hj.a<DoubleArgumentType> {
+      final double b;
+      final double c;
+
+      a(double $$1, double $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public DoubleArgumentType a(dp $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public hf<StringArgumentType, ?> a() {
+      public hj<DoubleArgumentType, ?> a() {
          return ho.this;
       }
    }

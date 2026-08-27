@@ -1,56 +1,47 @@
-public class dpu extends dpv<dsg> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final ht an = ht.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static ht a(ht $$0) {
-      return an.a((iw)$$0);
-   }
-
-   public dpu(boolean $$0) {
-      super(dsg.a);
-      this.ao = $$0;
+public class dpu extends dqa<dsb> {
+   public dpu(Codec<dsb> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsg> $$0) {
-      ht $$1 = $$0.e();
-      csu $$2 = $$0.b();
+   public boolean a(dqc<dsb> $$0) {
+      dsb $$1 = $$0.f();
+      hx $$2 = $$0.e();
+      csz $$3 = $$0.b();
+      atw $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      hx.a $$10 = new hx.a();
 
-      for (ht $$3 : ht.a(new ht($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ht($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cvc.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cvc.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cvc.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cvc.F.o());
-            } else if (this.ao) {
-               this.a($$2, new ht($$3), cvc.fx.o());
-            } else {
-               this.a($$2, new ht($$3), cvc.a.o());
-            }
+      for (hx $$11 : hx.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cvc.F.o());
+      return $$5;
+   }
+
+   protected boolean a(dsb $$0, csz $$1, atw $$2, int $$3, int $$4, hx.a $$5) {
+      boolean $$6 = false;
+
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            dhn $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
       }
 
-      ht $$6 = $$1.b(2);
-
-      for (hx $$7 : hx.c.a) {
-         this.a($$2, $$6.a($$7), cvc.cq.o().a(ddz.g, $$7));
-      }
-
-      return true;
+      return $$6;
    }
 }

@@ -1,14 +1,11 @@
-public enum anw {
-   a("assets"),
-   b("data");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final String c;
+public record anw(cgi b) {
+   private static final Codec<anw> c = RecordCodecBuilder.create($$0 -> $$0.group(cgk.f.fieldOf("enabled").forGetter(anw::a)).apply($$0, anw::new));
+   public static final aom<anw> a = aom.a("features", c);
 
-   private anw(String $$0) {
-      this.c = $$0;
-   }
-
-   public String a() {
-      return this.c;
+   public cgi a() {
+      return this.b;
    }
 }

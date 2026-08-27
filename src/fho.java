@@ -1,52 +1,46 @@
-public class fho<T extends bkq> extends fhy<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fko g;
-   private final fko[] h;
+public class fho<T extends bkv> extends fid<T> {
+   private final fkt a;
+   private final fkt b;
+   private final fkt f;
+   private final fkt g;
+   private final fkt h;
+   private final fkt i;
+   private static final int j = 6;
 
-   public fho(fko $$0) {
-      this.g = $$0;
-      this.h = new fko[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
+   public fho(fkt $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fkt.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fkq.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fku.a($$0, 64, 32);
+   public static fkz a(fkx $$0) {
+      flb $$1 = new flb();
+      flc $$2 = $$1.a();
+      $$2.a("head", fky.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fkv.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fky.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fkv.a(0.0F, 6.0F, 0.0F));
+      fky $$3 = fky.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fkv.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fkv.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fkv.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fkv.a(2.0F, 18.0F, -4.0F));
+      return fkz.a($$1, 64, 32);
    }
 
    @Override
-   public fko a() {
-      return this.g;
+   public fkt a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = atm.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = atm.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
-      }
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = atq.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = atq.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

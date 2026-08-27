@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ano {
+public class ano implements amy {
+   public static final amy.a a = new amy.a("join_world");
+
+   @Override
+   public void a(Consumer<wo<?>> $$0) {
+      $$0.accept(new yb());
+   }
+
+   @Override
+   public amy.a a() {
+      return a;
+   }
 }

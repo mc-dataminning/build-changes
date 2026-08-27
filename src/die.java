@@ -1,28 +1,47 @@
-public enum die implements aug {
-   a(hx.a),
-   b(hx.b);
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
 
-   private final hx c;
+public class die extends diq<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   private die(hx $$0) {
-      this.c = $$0;
-   }
-
-   public hx a() {
-      return this.c;
+   protected die(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String toString() {
-      return this.c();
+   public Collection<Boolean> a() {
+      return this.a;
+   }
+
+   public static die a(String $$0) {
+      return new die($$0);
    }
 
    @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
    }
 
-   public die b() {
-      return this == a ? b : a;
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof die $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

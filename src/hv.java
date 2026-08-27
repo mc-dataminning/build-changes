@@ -1,66 +1,80 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-public class hv<T> extends ik<T> implements hw<T> {
-   private final agi b;
-   private ib.c<T> c;
-
-   public hv(String $$0, agh<? extends io<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new agi($$0);
-   }
-
-   @Override
-   public ib.c<T> a(int $$0, agh<T> $$1, T $$2, Lifecycle $$3) {
-      ib.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
-      if (this.b.equals($$1.a())) {
-         this.c = $$4;
+public enum hv {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ib.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      return $$4;
-   }
+      @Override
+      public double a(double $$0, double $$1, double $$2, ib.a $$3) {
+         return $$3.a($$0, $$1, $$2);
+      }
 
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
-   }
+      @Override
+      public ib.a a(ib.a $$0) {
+         return $$0;
+      }
 
-   @Nonnull
-   @Override
-   public agi b(T $$0) {
-      agi $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
-   }
+      @Override
+      public hv a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ib.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
 
-   @Nonnull
-   @Override
-   public T a(@Nullable agi $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
+      @Override
+      public double a(double $$0, double $$1, double $$2, ib.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
 
-   @Override
-   public Optional<T> b(@Nullable agi $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
+      @Override
+      public ib.a a(ib.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
 
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
+      @Override
+      public hv a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ib.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
 
-   @Override
-   public Optional<ib.c<T>> a(ats $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
+      @Override
+      public double a(double $$0, double $$1, double $$2, ib.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
 
-   @Override
-   public agi a() {
-      return this.b;
+      @Override
+      public ib.a a(ib.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public hv a() {
+         return b;
+      }
+   };
+
+   public static final ib.a[] d = ib.a.values();
+   public static final hv[] e = values();
+
+   public abstract int a(int var1, int var2, int var3, ib.a var4);
+
+   public abstract double a(double var1, double var3, double var5, ib.a var7);
+
+   public abstract ib.a a(ib.a var1);
+
+   public abstract hv a();
+
+   public static hv a(ib.a $$0, ib.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

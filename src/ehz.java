@@ -1,47 +1,45 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record ehz(Optional<bq> b, eex.b c) implements ehw {
+public record ehz(Optional<cj> b, hx c) implements eib {
+   private static final MapCodec<hx> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               asy.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(ja::u),
+               asy.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(ja::v),
+               asy.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(ja::w)
+            )
+            .apply($$0, hx::new)
+   );
    public static final Codec<ehz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asu.a(bq.a, "predicate").forGetter(ehz::c), eex.b.e.fieldOf("entity").forGetter(ehz::d)).apply($$0, ehz::new)
+      $$0 -> $$0.group(asy.a(cj.a, "predicate").forGetter(ehz::c), d.forGetter(ehz::d)).apply($$0, ehz::new)
    );
 
    @Override
-   public ehx b() {
-      return ehy.g;
+   public eic b() {
+      return eid.o;
    }
 
-   @Override
-   public Set<ehf<?>> a() {
-      return ImmutableSet.of(ehi.f, this.c.a());
+   public boolean a(efc $$0) {
+      ejz $$1 = $$0.c(ehn.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(eex $$0) {
-      bkq $$1 = $$0.c(this.c.a());
-      eju $$2 = $$0.c(ehi.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static eib.a a(cj.a $$0) {
+      return () -> new ehz(Optional.of($$0.b()), hx.b);
    }
 
-   public static ehw.a a(eex.b $$0) {
-      return a($$0, bq.a.a());
+   public static eib.a a(cj.a $$0, hx $$1) {
+      return () -> new ehz(Optional.of($$0.b()), $$1);
    }
 
-   public static ehw.a a(eex.b $$0, bq.a $$1) {
-      return () -> new ehz(Optional.of($$1.b()), $$0);
-   }
-
-   public static ehw.a a(eex.b $$0, bq $$1) {
-      return () -> new ehz(Optional.of($$1), $$0);
-   }
-
-   public Optional<bq> c() {
+   public Optional<cj> c() {
       return this.b;
    }
 
-   public eex.b d() {
+   public hx d() {
       return this.c;
    }
 }

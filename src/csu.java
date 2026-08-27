@@ -1,13 +1,7 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface csu extends csg {
+   ami D();
 
-public interface csu extends csp {
-   long B();
-
-   default boolean f_(ht $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
+   default void a_(bkv $$0) {
+      $$0.cS().forEach(this::b);
    }
 }

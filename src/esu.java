@@ -1,38 +1,26 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public enum esu {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class esu {
-   private final flk a;
-   private int b = -1;
-   @Nullable
-   private Consumer<rz> c;
+   private static final esu[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public esu(flk $$0) {
-      this.a = $$0;
+   private esu(boolean $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(int $$0, @Nullable rz $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   private int a(Consumer<rz> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   public boolean b() {
+      return this.f;
    }
 
-   public void a(int $$0, Consumer<rz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ade($$2, $$0));
-   }
-
-   public void a(ht $$0, Consumer<rz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new acp($$2, $$0));
+   public esu c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

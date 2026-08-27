@@ -1,46 +1,43 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-
-public class jk implements jq {
-   public static final jq.a<jk> a = new jq.a<jk>() {
-      public jk a(jr<jk> $$0, StringReader $$1) throws CommandSyntaxException {
-         $$1.expect(' ');
-         return new jk($$0, fk.a(jy.f.p(), $$1, false).a());
+public class jk extends jj {
+   @Override
+   protected clo a(jf $$0, clo $$1) {
+      ami $$2 = $$0.b();
+      if (!$$2.y_()) {
+         hx $$3 = $$0.c().a($$0.d().c(cxk.b));
+         this.a(a($$2, $$3) || b($$2, $$3));
+         if (this.a() && $$1.a(1, $$2.F_(), null)) {
+            $$1.f(0);
+         }
       }
 
-      public jk a(jr<jk> $$0, tu $$1) {
-         return new jk($$0, $$1.a(cva.q));
+      return $$1;
+   }
+
+   private static boolean a(ami $$0, hx $$1) {
+      dhn $$2 = $$0.a_($$1);
+      if ($$2.a(ark.aF, $$0x -> $$0x.b(cuz.c) && $$0x.b() instanceof cuz)) {
+         int $$3 = $$2.c(cuz.c);
+         if ($$3 >= 5) {
+            $$0.a(null, $$1, aqv.bI, aqw.e, 1.0F, 1.0F);
+            cuz.a($$0, $$1);
+            ((cuz)$$2.b()).a($$0, $$2, $$1, null, dff.b.b);
+            $$0.a(null, dlx.M, $$1);
+            return true;
+         }
       }
-   };
-   private final jr<jk> b;
-   private final dhi c;
 
-   public static Codec<jk> a(jr<jk> $$0) {
-      return dhi.b.xmap($$1 -> new jk($$0, $$1), $$0x -> $$0x.c);
+      return false;
    }
 
-   public jk(jr<jk> $$0, dhi $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   private static boolean b(ami $$0, hx $$1) {
+      for (bll $$3 : $$0.a(bll.class, new eju($$1), bky.f)) {
+         if ($$3 instanceof bmc $$4 && $$4.a()) {
+            $$4.a(aqw.e);
+            $$0.a(null, dlx.M, $$1);
+            return true;
+         }
+      }
 
-   @Override
-   public void a(tu $$0) {
-      $$0.a(cva.q, this.c);
-   }
-
-   @Override
-   public String a() {
-      return jy.k.b(this.b()) + " " + fk.a(this.c);
-   }
-
-   @Override
-   public jr<jk> b() {
-      return this.b;
-   }
-
-   public dhi c() {
-      return this.c;
+      return false;
    }
 }

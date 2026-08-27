@@ -1,25 +1,25 @@
-public class cqt extends cpu {
-   public cqt(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.b, $$1);
+public class cqt extends cpz {
+   public cqt(cpz.a $$0, bla... $$1) {
+      super($$0, cqa.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 1 + ($$0 - 1) * 8;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return this.a($$0) + 20;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public boolean a(cpu $$0) {
-      return super.a($$0) && $$0 != cpy.j;
+   public float a(int $$0, blq $$1) {
+      return $$1 == blq.e ? (float)$$0 * 2.5F : 0.0F;
    }
 }

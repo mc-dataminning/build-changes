@@ -1,42 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dwq extends dwo {
+public record dwq(ig<dpn<?, ?>> e, List<dwt> f) {
    public static final Codec<dwq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bic.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bic.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, dwq::new)
+      $$0 -> $$0.group(dpn.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dwt.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dwq::new)
    );
-   private final bic c;
-   private final bic d;
+   public static final Codec<ig<dwq>> b = agi.a(kd.aA, a);
+   public static final Codec<ik<dwq>> c = iu.a(kd.aA, a);
+   public static final Codec<List<ik<dwq>>> d = iu.a(kd.aA, a, true).listOf();
 
-   public static dwq a(bic $$0, bic $$1) {
-      return new dwq($$0, $$1);
+   public boolean a(csz $$0, djk $$1, atw $$2, hx $$3) {
+      return this.a(new dwr($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static dwq a(bic $$0) {
-      return new dwq(bhz.a(0), $$0);
+   public boolean b(csz $$0, djk $$1, atw $$2, hx $$3) {
+      return this.a(new dwr($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public static dwq b(bic $$0) {
-      return new dwq($$0, bhz.a(0));
+   private boolean a(dwr $$0, atw $$1, hx $$2) {
+      Stream<hx> $$3 = Stream.of($$2);
+
+      for (dwt $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dpn<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
    }
 
-   private dwq(bic $$0, bic $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public Stream<dpn<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   public Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new ht($$3, $$4, $$5));
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public dwp<?> b() {
-      return dwp.n;
+   public ig<dpn<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<dwt> c() {
+      return this.f;
    }
 }

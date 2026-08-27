@@ -1,120 +1,221 @@
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Objects;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dfm extends dfd implements biq {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final il<clj> e = il.a(6, clj.b);
-   private int f = -1;
+public class dfm extends dfi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private clo l = clo.b;
+   @Nullable
+   private ib m;
+   @Nullable
+   private agm n;
+   private long r;
 
-   public dfm(ht $$0, dhi $$1) {
-      super(dff.M, $$0, $$1);
+   public dfm(hx $$0, dhn $$1) {
+      super(dfk.N, $$0, $$1);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         dhi $$1 = this.q();
+   public boolean a(long $$0, cdz $$1, ib $$2) {
+      if (this.m == null) {
+         this.m = $$2;
+      }
 
-         for (int $$2 = 0; $$2 < cwe.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).b();
-            dhz $$4 = cwe.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+      this.j = $$0 + 40L;
+      if ($$0 >= this.k && this.o instanceof ami) {
+         this.k = $$0 + 10L;
+         this.a($$1);
+         int $$3 = this.k();
+         if (++this.i >= 10) {
+            this.b($$1);
+            return true;
+         } else {
+            this.o.a(this.aC_(), this.r().b(), 2);
+            int $$4 = this.k();
+            if ($$3 != $$4) {
+               dhn $$5 = this.r();
+               dhn $$6 = $$5.a(did.bv, Integer.valueOf($$4));
+               this.o.a(this.aC_(), $$6, 3);
+            }
+
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public void a(cdz $$0) {
+      if (this.n != null && this.o != null && !this.o.y_() && this.o.n() != null) {
+         efk $$1 = this.o.n().aJ().getLootTable(this.n);
+         if ($$0 instanceof amj $$2) {
+            al.N.a($$2, this.n);
          }
 
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dls.c, this.p, dls.a.a($$1));
+         efi $$3 = new efi.a((ami)this.o).a(ehn.f, ejz.b(this.p)).a($$0.gp()).a(ehn.a, $$0).a(ehm.c);
+         ObjectArrayList<clo> $$4 = $$1.a($$3, this.r);
+
+         this.l = switch ($$4.size()) {
+            case 0 -> clo.b;
+            case 1 -> (clo)$$4.get(0);
+            default -> {
+               a.warn("Expected max 1 loot from loot table " + this.n + " got " + $$4.size());
+               yield (clo)$$4.get(0);
+            }
+         };
+         this.n = null;
+         this.e();
+      }
+   }
+
+   private void b(cdz $$0) {
+      if (this.o != null && this.o.n() != null) {
+         this.c($$0);
+         dhn $$1 = this.r();
+         this.o.c(3008, this.aC_(), cvf.i($$1));
+         cvf $$4;
+         if (this.r().b() instanceof cvk $$3) {
+            $$4 = $$3.b();
+         } else {
+            $$4 = cvh.a;
+         }
+
+         this.o.a(this.p, $$4.o(), 3);
+      }
+   }
+
+   private void c(cdz $$0) {
+      if (this.o != null && this.o.n() != null) {
+         this.a($$0);
+         if (!this.l.b()) {
+            double $$1 = (double)bkz.ad.k();
+            double $$2 = 1.0 - $$1;
+            double $$3 = $$1 / 2.0;
+            ib $$4 = Objects.requireNonNullElse(this.m, ib.b);
+            hx $$5 = this.p.a($$4, 1);
+            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
+            double $$7 = (double)$$5.v() + 0.5 + (double)(bkz.ad.l() / 2.0F);
+            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
+            cas $$9 = new cas(this.o, $$6, $$7, $$8, this.l.a(this.o.z.a(21) + 10));
+            $$9.g(ejz.b);
+            this.o.b($$9);
+            this.l = clo.b;
+         }
+      }
+   }
+
+   public void c() {
+      if (this.o != null) {
+         if (this.i != 0 && this.o.W() >= this.j) {
+            int $$0 = this.k();
+            this.i = Math.max(0, this.i - 2);
+            int $$1 = this.k();
+            if ($$0 != $$1) {
+               this.o.a(this.aC_(), this.r().a(did.bv, Integer.valueOf($$1)), 3);
+            }
+
+            int $$2 = 4;
+            this.j = this.o.W() + 4L;
+         }
+
+         if (this.i == 0) {
+            this.m = null;
+            this.j = 0L;
+            this.k = 0L;
+         } else {
+            this.o.a(this.aC_(), this.r().b(), 2);
+         }
+      }
+   }
+
+   private boolean d(sd $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.n = new agm($$0.l("LootTable"));
+         this.r = $$0.i("LootTableSeed");
+         return true;
       } else {
-         d.error("Expected slot 0-5, got {}", $$0);
+         return false;
+      }
+   }
+
+   private boolean e(sd $$0) {
+      if (this.n == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.n.toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
       }
    }
 
    @Override
-   public void a(rz $$0) {
-      this.e.clear();
-      bir.b($$0, this.e);
-      this.f = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(rz $$0) {
-      bir.a($$0, this.e, true);
-      $$0.a("last_interacted_slot", this.f);
-   }
-
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(clj::b)).count();
-   }
-
-   @Override
-   public void a() {
-      this.e.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean ai_() {
-      return this.e.stream().allMatch(clj::b);
-   }
-
-   @Override
-   public clj a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Override
-   public clj a(int $$0, int $$1) {
-      clj $$2 = Objects.requireNonNullElse(this.e.get($$0), clj.b);
-      this.e.set($$0, clj.b);
-      if (!$$2.b()) {
-         this.c($$0);
+   public sd ay_() {
+      sd $$0 = super.ay_();
+      if (this.m != null) {
+         $$0.a("hit_direction", this.m.ordinal());
       }
 
-      return $$2;
+      $$0.a("item", this.l.b(new sd()));
+      return $$0;
+   }
+
+   public yo d() {
+      return yo.a(this);
    }
 
    @Override
-   public clj b(int $$0) {
-      return this.a($$0, 1);
-   }
+   public void a(sd $$0) {
+      if (!this.d($$0) && $$0.e("item")) {
+         this.l = clo.a($$0.p("item"));
+      }
 
-   @Override
-   public void a(int $$0, clj $$1) {
-      if ($$1.a(aro.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.b()) {
-         this.a($$0, 1);
+      if ($$0.e("hit_direction")) {
+         this.m = ib.values()[$$0.h("hit_direction")];
       }
    }
 
    @Override
-   public boolean a(biq $$0, int $$1, clj $$2) {
-      return $$0.a_($$2x -> $$2x.b() ? true : clj.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.aj_()));
+   protected void b(sd $$0) {
+      if (!this.e($$0)) {
+         $$0.a("item", this.l.b(new sd()));
+      }
    }
 
-   @Override
-   public int aj_() {
-      return 1;
+   public void a(agm $$0, long $$1) {
+      this.n = $$0;
+      this.r = $$1;
    }
 
-   @Override
-   public boolean a(cdu $$0) {
-      return biq.a(this, $$0);
+   private int k() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
+      }
    }
 
-   @Override
-   public boolean b(int $$0, clj $$1) {
-      return $$1.a(aro.av) && this.a($$0).b();
+   @Nullable
+   public ib f() {
+      return this.m;
    }
 
-   public int g() {
-      return this.f;
+   public clo g() {
+      return this.l;
    }
 }

@@ -1,90 +1,261 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class fsd {
-   public static final fsd a = new fsd();
-   public final fsc b;
-   public final fsc c;
-   public final fsc d;
-   public final fsc e;
-   public final fsc f;
-   public final fsc g;
-   public final fsc h;
-   public final fsc i;
+   public static final int a = 8;
+   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
+   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
+   public static final int b = 4;
+   private static final int f = 3;
+   public static final int c = 4;
 
-   private fsd() {
-      this(fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a, fsc.a);
-   }
-
-   public fsd(fsd $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
-   }
-
-   public fsd(fsc $$0, fsc $$1, fsc $$2, fsc $$3, fsc $$4, fsc $$5, fsc $$6, fsc $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public fsc a(clg $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fsc.a;
-      };
-   }
-
-   public boolean b(clg $$0) {
-      return this.a($$0) != fsc.a;
-   }
-
-   protected static class a implements JsonDeserializer<fsd> {
-      public fsd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         fsc $$4 = this.a($$2, $$3, clg.c);
-         fsc $$5 = this.a($$2, $$3, clg.b);
-         if ($$5 == fsc.a) {
-            $$5 = $$4;
-         }
-
-         fsc $$6 = this.a($$2, $$3, clg.e);
-         fsc $$7 = this.a($$2, $$3, clg.d);
-         if ($$7 == fsc.a) {
-            $$7 = $$6;
-         }
-
-         fsc $$8 = this.a($$2, $$3, clg.f);
-         fsc $$9 = this.a($$2, $$3, clg.g);
-         fsc $$10 = this.a($$2, $$3, clg.h);
-         fsc $$11 = this.a($$2, $$3, clg.i);
-         return new fsd($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+   public frw a(Vector3f $$0, Vector3f $$1, fry $$2, gbz $$3, ib $$4, gei $$5, @Nullable frz $$6, boolean $$7, agm $$8) {
+      fsa $$9 = $$2.e;
+      if ($$5.c()) {
+         $$9 = a($$2.e, $$4, $$5.b(), $$8);
       }
 
-      private fsc a(JsonDeserializationContext $$0, JsonObject $$1, clg $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fsc)$$0.deserialize($$1.get($$3), fsc.class) : fsc.a;
+      float[] $$10 = new float[$$9.a.length];
+      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
+      float $$11 = $$3.k();
+      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
+      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
+      $$9.a[0] = atq.i($$11, $$9.a[0], $$12);
+      $$9.a[2] = atq.i($$11, $$9.a[2], $$12);
+      $$9.a[1] = atq.i($$11, $$9.a[1], $$13);
+      $$9.a[3] = atq.i($$11, $$9.a[3], $$13);
+      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
+      ib $$15 = a($$14);
+      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
+      if ($$6 == null) {
+         this.a($$14, $$15);
+      }
+
+      return new frw($$14, $$2.c, $$15, $$3, $$7);
+   }
+
+   public static fsa a(fsa $$0, ib $$1, j $$2, agm $$3) {
+      Matrix4f $$4 = hw.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
+      float $$5 = $$0.a($$0.c(0));
+      float $$6 = $$0.b($$0.c(0));
+      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
+      float $$8 = 16.0F * $$7.x();
+      float $$9 = 16.0F * $$7.y();
+      float $$10 = $$0.a($$0.c(2));
+      float $$11 = $$0.b($$0.c(2));
+      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
+      float $$13 = 16.0F * $$12.x();
+      float $$14 = 16.0F * $$12.y();
+      float $$15;
+      float $$16;
+      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
+         $$15 = $$8;
+         $$16 = $$13;
+      } else {
+         $$15 = $$13;
+         $$16 = $$8;
+      }
+
+      float $$19;
+      float $$20;
+      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
+         $$19 = $$9;
+         $$20 = $$14;
+      } else {
+         $$19 = $$14;
+         $$20 = $$9;
+      }
+
+      float $$23 = (float)Math.toRadians((double)$$0.b);
+      Matrix3f $$24 = new Matrix3f($$4);
+      Vector3f $$25 = $$24.transform(new Vector3f(atq.b($$23), atq.a($$23), 0.0F));
+      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
+      return new fsa(new float[]{$$15, $$19, $$16, $$20}, $$26);
+   }
+
+   private int[] a(fsa $$0, gbz $$1, ib $$2, float[] $$3, j $$4, @Nullable frz $$5, boolean $$6) {
+      int[] $$7 = new int[32];
+
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
+      }
+
+      return $$7;
+   }
+
+   private float[] a(Vector3f $$0, Vector3f $$1) {
+      float[] $$2 = new float[ib.values().length];
+      $$2[fqq.a.f] = $$0.x() / 16.0F;
+      $$2[fqq.a.e] = $$0.y() / 16.0F;
+      $$2[fqq.a.d] = $$0.z() / 16.0F;
+      $$2[fqq.a.c] = $$1.x() / 16.0F;
+      $$2[fqq.a.b] = $$1.y() / 16.0F;
+      $$2[fqq.a.a] = $$1.z() / 16.0F;
+      return $$2;
+   }
+
+   private void a(int[] $$0, int $$1, ib $$2, fsa $$3, float[] $$4, gbz $$5, j $$6, @Nullable frz $$7, boolean $$8) {
+      fqq.b $$9 = fqq.a($$2).a($$1);
+      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
+      this.a($$10, $$7);
+      this.a($$10, $$6);
+      this.a($$0, $$1, $$10, $$5, $$3);
+   }
+
+   private void a(int[] $$0, int $$1, Vector3f $$2, gbz $$3, fsa $$4) {
+      int $$5 = $$1 * 8;
+      $$0[$$5] = Float.floatToRawIntBits($$2.x());
+      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
+      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
+      $$0[$$5 + 3] = -1;
+      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
+      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
+   }
+
+   private void a(Vector3f $$0, @Nullable frz $$1) {
+      if ($$1 != null) {
+         Vector3f $$2;
+         Vector3f $$3;
+         switch ($$1.b()) {
+            case a:
+               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
+               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
+               break;
+            case b:
+               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
+               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
+               break;
+            case c:
+               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
+               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
+               break;
+            default:
+               throw new IllegalArgumentException("There are only 3 axes");
+         }
+
+         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
+         if ($$1.d()) {
+            if (Math.abs($$1.c()) == 22.5F) {
+               $$3.mul(d);
+            } else {
+               $$3.mul(e);
+            }
+
+            $$3.add(1.0F, 1.0F, 1.0F);
+         } else {
+            $$3.set(1.0F, 1.0F, 1.0F);
+         }
+
+         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
+      }
+   }
+
+   public void a(Vector3f $$0, j $$1) {
+      if ($$1 != j.a()) {
+         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+      }
+   }
+
+   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
+      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
+      $$4.mul(new Vector4f($$3, 1.0F));
+      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
+   }
+
+   public static ib a(int[] $$0) {
+      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
+      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
+      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
+      Vector3f $$4 = new Vector3f($$1).sub($$2);
+      Vector3f $$5 = new Vector3f($$3).sub($$2);
+      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
+      if (!$$6.isFinite()) {
+         return ib.b;
+      } else {
+         ib $$7 = null;
+         float $$8 = 0.0F;
+
+         for (ib $$9 : ib.values()) {
+            ja $$10 = $$9.q();
+            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
+            float $$12 = $$6.dot($$11);
+            if ($$12 >= 0.0F && $$12 > $$8) {
+               $$8 = $$12;
+               $$7 = $$9;
+            }
+         }
+
+         return $$7 == null ? ib.b : $$7;
+      }
+   }
+
+   private void a(int[] $$0, ib $$1) {
+      int[] $$2 = new int[$$0.length];
+      System.arraycopy($$0, 0, $$2, 0, $$0.length);
+      float[] $$3 = new float[ib.values().length];
+      $$3[fqq.a.f] = 999.0F;
+      $$3[fqq.a.e] = 999.0F;
+      $$3[fqq.a.d] = 999.0F;
+      $$3[fqq.a.c] = -999.0F;
+      $$3[fqq.a.b] = -999.0F;
+      $$3[fqq.a.a] = -999.0F;
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         int $$5 = 8 * $$4;
+         float $$6 = Float.intBitsToFloat($$2[$$5]);
+         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
+         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
+         if ($$6 < $$3[fqq.a.f]) {
+            $$3[fqq.a.f] = $$6;
+         }
+
+         if ($$7 < $$3[fqq.a.e]) {
+            $$3[fqq.a.e] = $$7;
+         }
+
+         if ($$8 < $$3[fqq.a.d]) {
+            $$3[fqq.a.d] = $$8;
+         }
+
+         if ($$6 > $$3[fqq.a.c]) {
+            $$3[fqq.a.c] = $$6;
+         }
+
+         if ($$7 > $$3[fqq.a.b]) {
+            $$3[fqq.a.b] = $$7;
+         }
+
+         if ($$8 > $$3[fqq.a.a]) {
+            $$3[fqq.a.a] = $$8;
+         }
+      }
+
+      fqq $$9 = fqq.a($$1);
+
+      for (int $$10 = 0; $$10 < 4; $$10++) {
+         int $$11 = 8 * $$10;
+         fqq.b $$12 = $$9.a($$10);
+         float $$13 = $$3[$$12.a];
+         float $$14 = $$3[$$12.b];
+         float $$15 = $$3[$$12.c];
+         $$0[$$11] = Float.floatToRawIntBits($$13);
+         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
+         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+
+         for (int $$16 = 0; $$16 < 4; $$16++) {
+            int $$17 = 8 * $$16;
+            float $$18 = Float.intBitsToFloat($$2[$$17]);
+            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
+            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
+            if (atq.a($$13, $$18) && atq.a($$14, $$19) && atq.a($$15, $$20)) {
+               $$0[$$11 + 4] = $$2[$$17 + 4];
+               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+            }
+         }
       }
    }
 }

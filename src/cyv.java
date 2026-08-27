@@ -1,22 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class cyv extends cva {
-   public static final dic aE = dhy.R;
+public class cyv extends cvf {
+   public static final MapCodec<cyv> d = b(cyv::new);
 
-   protected cyv(dhh.d $$0) {
+   @Override
+   protected MapCodec<? extends cyv> a() {
+      return d;
+   }
+
+   protected cyv(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends cyv> a();
-
-   @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
+   public boolean a(dhn $$0, dhn $$1, ib $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 }

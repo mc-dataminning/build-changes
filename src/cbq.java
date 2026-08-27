@@ -1,114 +1,210 @@
-public class cbq extends car {
-   private static final int c = 300;
-   private static final afo<Boolean> d = afr.a(cbq.class, afq.k);
-   public static final String b = "StrayConversionTime";
-   private int e;
-   private int bT;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public cbq(bku<? extends cbq> $$0, csa $$1) {
+public class cbq extends cav implements cba, cdk {
+   private static final afs<Boolean> b = afv.a(cbq.class, afu.k);
+   private static final int e = 5;
+   private static final int bT = 300;
+   private static final float bU = 1.6F;
+   private final bjj bV = new bjj(5);
+
+   public cbq(bkz<? extends cbq> $$0, csf $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void b_() {
-      super.b_();
-      this.an().a(d, false);
+   protected void B() {
+      super.B();
+      this.bO.a(0, new bsa(this));
+      this.bO.a(2, new cfh.a(this, 10.0F));
+      this.bO.a(3, new bth<>(this, 1.0, 8.0F));
+      this.bO.a(8, new btd(this, 0.6));
+      this.bO.a(9, new bso(this, cdz.class, 15.0F, 1.0F));
+      this.bO.a(10, new bso(this, bln.class, 15.0F));
+      this.bP.a(1, new bty(this, cfh.class).a());
+      this.bP.a(2, new btz<>(this, cdz.class, true));
+      this.bP.a(3, new btz<>(this, cdh.class, false));
+      this.bP.a(3, new btz<>(this, bxi.class, true));
    }
 
-   public boolean gg() {
-      return this.an().b(d);
-   }
-
-   public void w(boolean $$0) {
-      this.an.b(d, $$0);
+   public static bmq.a w() {
+      return cbn.gl().a(bmr.m, 0.35F).a(bmr.l, 24.0).a(bmr.c, 5.0).a(bmr.g, 32.0);
    }
 
    @Override
+   protected void c_() {
+      super.c_();
+      this.an.a(b, false);
+   }
+
+   @Override
+   public boolean a(cme $$0) {
+      return $$0 == clr.vL;
+   }
+
    public boolean gf() {
-      return this.gg();
+      return this.an.b(b);
    }
 
    @Override
-   public void l() {
-      if (!this.dN().B && this.bx() && !this.fV()) {
-         if (this.aA) {
-            if (this.gg()) {
-               this.bT--;
-               if (this.bT < 0) {
-                  this.gh();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.e = -1;
-            this.w(false);
+   public void b(boolean $$0) {
+      this.an.b(b, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.bb = 0;
+   }
+
+   @Override
+   public void b(sd $$0) {
+      super.b($$0);
+      this.a_($$0);
+   }
+
+   @Override
+   public cav.a u() {
+      if (this.gf()) {
+         return cav.a.f;
+      } else if (this.b(clr.vL)) {
+         return cav.a.e;
+      } else {
+         return this.fX() ? cav.a.b : cav.a.h;
+      }
+   }
+
+   @Override
+   public void a(sd $$0) {
+      super.a($$0);
+      this.c($$0);
+      this.s(true);
+   }
+
+   @Override
+   public float a(hx $$0, csi $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public int fJ() {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public bme a(csu $$0, biz $$1, blp $$2, @Nullable bme $$3, @Nullable sd $$4) {
+      atw $$5 = $$0.F_();
+      this.a($$5, $$1);
+      this.b($$5, $$1);
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(atw $$0, biz $$1) {
+      this.a(bla.a, new clo(clr.vL));
+   }
+
+   @Override
+   protected void a(atw $$0, float $$1) {
+      super.a($$0, $$1);
+      if ($$0.a(300) == 0) {
+         clo $$2 = this.eU();
+         if ($$2.a(clr.vL)) {
+            Map<cpz, Integer> $$3 = cqb.a($$2);
+            $$3.putIfAbsent(cqd.K, 1);
+            cqb.a($$3, $$2);
+            this.a(bla.a, $$2);
          }
       }
-
-      super.l();
    }
 
    @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gg() ? this.bT : -1);
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
-      }
-   }
-
-   private void b(int $$0) {
-      this.bT = $$0;
-      this.w(true);
-   }
-
-   protected void gh() {
-      this.a(bku.aU, true);
-      if (!this.aU()) {
-         this.dN().a(null, 1048, this.dn(), 0);
+   public boolean s(bkv $$0) {
+      if (super.s($$0)) {
+         return true;
+      } else {
+         return $$0 instanceof bll && ((bll)$$0).eT() == blq.d ? this.cg() == null && $$0.cg() == null : false;
       }
    }
 
    @Override
-   public boolean dB() {
-      return false;
+   protected aqu y() {
+      return aqv.sD;
    }
 
    @Override
-   protected aqq y() {
-      return aqr.vJ;
+   protected aqu n_() {
+      return aqv.sF;
    }
 
    @Override
-   protected aqq d(bjo $$0) {
-      return aqr.vU;
+   protected aqu d(bjt $$0) {
+      return aqv.sG;
    }
 
    @Override
-   protected aqq m_() {
-      return aqr.vL;
+   public void a(bll $$0, float $$1) {
+      this.b(this, 1.6F);
    }
 
    @Override
-   aqq w() {
-      return aqr.vW;
+   public void a(bll $$0, clo $$1, cer $$2, float $$3) {
+      this.a(this, $$0, $$2, $$3, 1.6F);
    }
 
    @Override
-   protected void a(bjo $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cau $$4 && $$4.gg()) {
-         $$4.gh();
-         this.a(clm.ud);
+   public bjj A() {
+      return this.bV;
+   }
+
+   @Override
+   protected void b(cas $$0) {
+      clo $$1 = $$0.q();
+      if ($$1.d() instanceof cje) {
+         super.b($$0);
+      } else if (this.l($$1)) {
+         this.a($$0);
+         clo $$2 = this.bV.a($$1);
+         if ($$2.b()) {
+            $$0.am();
+         } else {
+            $$1.f($$2.L());
+         }
       }
+   }
+
+   private boolean l(clo $$0) {
+      return this.gu() && $$0.a(clr.uH);
+   }
+
+   @Override
+   public bmd a_(int $$0) {
+      int $$1 = $$0 - 300;
+      return $$1 >= 0 && $$1 < this.bV.b() ? bmd.a(this.bV, $$1) : super.a_($$0);
+   }
+
+   @Override
+   public void a(int $$0, boolean $$1) {
+      cfg $$2 = this.gt();
+      boolean $$3 = this.ag.i() <= $$2.w();
+      if ($$3) {
+         clo $$4 = new clo(clr.vL);
+         Map<cpz, Integer> $$5 = Maps.newHashMap();
+         if ($$0 > $$2.a(biy.c)) {
+            $$5.put(cqd.J, 2);
+         } else if ($$0 > $$2.a(biy.b)) {
+            $$5.put(cqd.J, 1);
+         }
+
+         $$5.put(cqd.I, 1);
+         cqb.a($$5, $$4);
+         this.a(bla.a, $$4);
+      }
+   }
+
+   @Override
+   public aqu af_() {
+      return aqv.sE;
    }
 }

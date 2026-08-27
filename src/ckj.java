@@ -1,25 +1,30 @@
-public class ckj extends cle {
-   public ckj(cle.a $$0) {
+public class ckj extends cjt {
+   public ckj(clj.a $$0) {
       super($$0);
    }
 
    @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), aqr.hG, aqs.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      $$1.go().a(this, 20);
-      if (!$$0.B) {
-         cev $$4 = new cev($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
+      clo $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bjc.a($$3);
+      } else {
+         if (!$$1.fU().d) {
+            $$3.h(1);
+         }
 
-      $$1.b(arb.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
+         $$1.b(arf.c.b(this));
+         $$1.dN().a(null, $$1, aqv.zc, $$1.dc(), 1.0F, 1.0F);
+         clo $$4 = clv.a($$0, $$1.dr(), $$1.dx(), (byte)0, true, false);
+         if ($$3.b()) {
+            return bjc.b($$4);
+         } else {
+            if (!$$1.fT().e($$4.p())) {
+               $$1.a($$4, false);
+            }
 
-      return biy.a($$3, $$0.x_());
+            return bjc.b($$3);
+         }
+      }
    }
 }

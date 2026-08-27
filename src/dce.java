@@ -1,113 +1,132 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class dce extends cxi implements cvd, dca {
-   public static final MapCodec<dce> c = b(dce::new);
-   private static final dhz g = dhy.C;
-   public static final dic d = dhy.R;
-   protected static final float e = 6.0F;
-   protected static final ekn f = cva.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public abstract class dce extends cur implements dcf {
+   public static final die f = did.C;
+   protected static final float g = 4.0F;
+   protected static final eks h = cvf.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private final dja a;
 
-   @Override
-   public MapCodec<dce> a() {
-      return c;
-   }
-
-   public dce(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, die.b).a(g, Boolean.valueOf(false)).a(d, hx.c));
+   protected dce(dja $$0, dhm.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return f;
-   }
+   protected abstract MapCodec<? extends dce> a();
 
    @Override
-   protected boolean b(dhi $$0, crg $$1, ht $$2) {
-      return $$0.a(arg.bw) || $$1.b_($$2.c()).a(ect.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dhi a(cnr $$0) {
-      dhi $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(csa $$0, ht $$1, dhi $$2, blg $$3, clj $$4) {
-      if (!$$0.x_()) {
-         ht $$5 = $$1.c();
-         dhi $$6 = cxi.c($$0, $$5, this.o().a(b, die.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(g) ? ect.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      if ($$0.c(b) == die.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         ht $$3 = $$2.d();
-         dhi $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
-      }
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, g, d);
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return h;
    }
 
    @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
+   public boolean a(dhn $$0) {
       return true;
    }
 
    @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
-      return true;
+   public dfi a(hx $$0, dhn $$1) {
+      return new dgr($$0, $$1);
    }
 
    @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      if ($$3.c(cxi.b) == die.b) {
-         ht $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         cux.a($$0, $$1, $$2, $$3.c(d));
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      clo $$6 = $$3.b($$4);
+      clj $$7 = $$6.d();
+      cmn $$9 = $$6.d() instanceof cmn $$8 ? $$8 : null;
+      boolean $$10 = $$9 != null && $$3.gf();
+      if ($$1.c_($$2) instanceof dgr $$11) {
+         if (!$$1.B) {
+            boolean $$12 = $$11.a($$3);
+            dgs $$13 = $$11.a($$12);
+            boolean $$14 = $$11.a($$3, $$1, $$2, $$12);
+            if ($$11.x()) {
+               $$1.a(null, $$11.aC_(), $$11.f(), aqw.e);
+               return this.a($$10);
+            } else if ($$10 && !this.a($$3, $$11) && $$9.a($$13, $$3) && $$9.a($$1, $$11, $$12, $$3)) {
+               if (!$$3.f()) {
+                  $$6.h(1);
+               }
+
+               $$1.a(dlx.c, $$11.aC_(), dlx.a.a($$3, $$11.r()));
+               $$3.b(arf.c.b($$7));
+               return bjb.a;
+            } else if ($$14) {
+               return bjb.a;
+            } else if (!this.a($$3, $$11) && $$3.gf() && this.b($$3, $$11, $$12)) {
+               this.a($$3, $$11, $$12);
+               return this.a($$10);
+            } else {
+               return bjb.d;
+            }
+         } else {
+            return !$$10 && !$$11.x() ? bjb.b : bjb.a;
+         }
       } else {
-         ht $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+         return bjb.d;
       }
    }
 
-   @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   private bjb a(boolean $$0) {
+      return $$0 ? bjb.d : bjb.a;
+   }
+
+   private boolean b(cdz $$0, dgr $$1, boolean $$2) {
+      dgs $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.Y())).allMatch($$0x -> $$0x.equals(uu.a) || $$0x.b() instanceof wc);
+   }
+
+   public abstract float g(dhn var1);
+
+   public ejz h(dhn $$0) {
+      return new ejz(0.5, 0.5, 0.5);
    }
 
    @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public ecx c_(dhn $$0) {
+      return $$0.c(f) ? ecy.c.a(false) : super.c_($$0);
    }
 
+   public dja d() {
+      return this.a;
+   }
+
+   public static dja a(cvf $$0) {
+      dja $$1;
+      if ($$0 instanceof dce) {
+         $$1 = ((dce)$$0).d();
+      } else {
+         $$1 = dja.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(cdz $$0, dgr $$1, boolean $$2) {
+      $$1.a($$0.cw());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(cdz $$0, dgr $$1) {
+      UUID $$2 = $$1.w();
+      return $$2 != null && !$$2.equals($$0.cw());
+   }
+
+   @Nullable
    @Override
-   public float au_() {
-      return 0.1F;
+   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
+      return a($$2, dfk.h, dgr::a);
    }
 }

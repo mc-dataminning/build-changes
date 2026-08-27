@@ -1,28 +1,49 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gfa extends geq {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cfq s;
+   private float t = 0.0F;
 
-public class gfa {
-   private final List<gez> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gfa(List<gez> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gfa(cfq $$0) {
+      super(aqv.nC, aqw.g, gfh.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.ds());
+      this.g = (double)((float)$$0.du());
+      this.h = (double)((float)$$0.dy());
    }
 
-   public List<gez> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.s.aU();
    }
 
-   public boolean b() {
-      return this.b;
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (this.s.dI()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.ds());
+         this.g = (double)((float)this.s.du());
+         this.h = (double)((float)this.s.dy());
+         float $$0 = (float)this.s.dq().h();
+         if ($$0 >= 0.01F && this.s.dN().r().i()) {
+            this.t = atq.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = atq.i(atq.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

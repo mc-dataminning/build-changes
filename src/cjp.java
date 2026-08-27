@@ -1,285 +1,135 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cjp {
-   private final ur a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final cjp.f f;
-   private final int g;
-   private final cjp.h h;
-   @Nullable
-   private clj i;
-   private Collection<clj> j = clk.a();
-   private Set<clj> k = clk.a();
-   @Nullable
-   private Consumer<List<clj>> l;
-   private final Supplier<clj> m;
-   private final cjp.b n;
+public class cjp extends clj implements cka {
+   private final ecw a;
 
-   cjp(cjp.f $$0, int $$1, cjp.h $$2, ur $$3, Supplier<clj> $$4, cjp.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
+   public cjp(ecw $$0, clj.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public static cjp.a a(cjp.f $$0, int $$1) {
-      return new cjp.a($$0, $$1);
-   }
-
-   public ur a() {
-      return this.a;
-   }
-
-   public clj b() {
-      if (this.i == null) {
-         this.i = this.m.get();
-      }
-
-      return this.i;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public cjp.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != cjp.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public cjp.h k() {
-      return this.h;
-   }
-
-   public void a(cjp.d $$0) {
-      cjp.c $$1 = new cjp.c(this, $$0.a);
-      agh<cjp> $$2 = jy.aq.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<clj> l() {
-      return this.j;
-   }
-
-   public Collection<clj> m() {
-      return this.k;
-   }
-
-   public boolean a(clj $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<clj>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final cjp.b a = ($$0, $$1) -> {
-      };
-      private final cjp.f b;
-      private final int c;
-      private ur d = ur.i();
-      private Supplier<clj> e = () -> clj.b;
-      private cjp.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cjp.h j = cjp.h.a;
-      private String k = "items.png";
-
-      public a(cjp.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cjp.a a(ur $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cjp.a a(Supplier<clj> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cjp.a a(cjp.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cjp.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cjp.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cjp.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cjp.a a(cjp.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cjp.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cjp d() {
-         if ((this.j == cjp.h.c || this.j == cjp.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cjp $$0 = new cjp(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(cjp.d var1, cjp.e var2);
-   }
-
-   static class c implements cjp.e {
-      public final Collection<clj> a = clk.a();
-      public final Set<clj> b = clk.a();
-      private final cjp c;
-      private final cgd d;
-
-      public c(cjp $$0, cgd $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(clj $$0, cjp.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cjp.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+   @Override
+   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
+      clo $$3 = $$1.b($$2);
+      ejv $$4 = a($$0, $$1, this.a == ecy.a ? cro.b.b : cro.b.a);
+      if ($$4.c() == ejx.a.a) {
+         return bjc.c($$3);
+      } else if ($$4.c() != ejx.a.b) {
+         return bjc.c($$3);
+      } else {
+         hx $$5 = $$4.a();
+         ib $$6 = $$4.b();
+         hx $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bjc.d($$3);
+         } else if (this.a == ecy.a) {
+            dhn $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof cvm $$9) {
+               clo $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.b()) {
+                  $$1.b(arf.c.b(this));
+                  $$9.av_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, dlx.y, $$5);
+                  clo $$11 = clq.a($$3, $$1, $$10);
+                  if (!$$0.B) {
+                     al.j.a((amj)$$1, $$10);
                   }
+
+                  return bjc.a($$11, $$0.y_());
                }
+            }
+
+            return bjc.d($$3);
+         } else {
+            dhn $$12 = $$0.a_($$5);
+            hx $$13 = $$12.b() instanceof czv && this.a == ecy.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof amj) {
+                  al.y.a((amj)$$1, $$13, $$3);
+               }
+
+               $$1.b(arf.c.b(this));
+               return bjc.a(a($$3, $$1), $$0.y_());
+            } else {
+               return bjc.d($$3);
             }
          }
       }
    }
 
-   public static record d(cgd a, boolean b, id.b c) {
+   public static clo a(clo $$0, cdz $$1) {
+      return !$$1.fU().d ? new clo(clr.qv) : $$0;
+   }
 
-      public boolean a(cgd $$0, boolean $$1, id.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   @Override
+   public void a(@Nullable cdz $$0, csf $$1, clo $$2, hx $$3) {
+   }
+
+   @Override
+   public boolean a(@Nullable cdz $$0, csf $$1, hx $$2, @Nullable ejv $$3) {
+      if (!(this.a instanceof ecv $$4)) {
+         return false;
+      } else {
+         cvf $$7;
+         boolean $$8;
+         dhn $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.i() && !$$8) {
+               if ($$7 instanceof czv $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
+
+               var10000 = false;
+               break label82;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
+         } else if ($$1.E_().i() && this.a.a(arp.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, aqv.ih, aqw.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(jw.S, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
+            return true;
+         } else {
+            if ($$7 instanceof czv $$15 && this.a == ecy.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.B && $$8 && !$$6.k()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+         }
       }
    }
 
-   public interface e {
-      void a(clj var1, cjp.g var2);
-
-      default void a(clj $$0) {
-         this.a($$0, cjp.g.a);
-      }
-
-      default void a(crz $$0, cjp.g $$1) {
-         this.a(new clj($$0), $$1);
-      }
-
-      default void a(crz $$0) {
-         this.a(new clj($$0), cjp.g.a);
-      }
-
-      default void a(Collection<clj> $$0, cjp.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<clj> $$0) {
-         this.a($$0, cjp.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   protected void a(@Nullable cdz $$0, csg $$1, hx $$2) {
+      aqu $$3 = this.a.a(arp.b) ? aqv.cy : aqv.cv;
+      $$1.a($$0, $$2, $$3, aqw.e, 1.0F, 1.0F);
+      $$1.a($$0, dlx.z, $$2);
    }
 }

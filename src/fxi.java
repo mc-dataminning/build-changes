@@ -1,86 +1,100 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.Matrix4f;
 
-public class fxi extends fxd<bxg, fio<bxg>> {
-   private static final Map<bxg.a, agi> a = ac.a(Maps.newEnumMap(bxg.a.class), $$0 -> {
-      $$0.put(bxg.a.a, new agi("textures/entity/panda/panda.png"));
-      $$0.put(bxg.a.b, new agi("textures/entity/panda/lazy_panda.png"));
-      $$0.put(bxg.a.c, new agi("textures/entity/panda/worried_panda.png"));
-      $$0.put(bxg.a.d, new agi("textures/entity/panda/playful_panda.png"));
-      $$0.put(bxg.a.e, new agi("textures/entity/panda/brown_panda.png"));
-      $$0.put(bxg.a.f, new agi("textures/entity/panda/weak_panda.png"));
-      $$0.put(bxg.a.g, new agi("textures/entity/panda/aggressive_panda.png"));
-   });
+public abstract class fxi<T extends bln, M extends fhu<T>> extends fxd<T, M> {
+   public static final int h = 24;
 
-   public fxi(fvx.a $$0) {
-      super($$0, new fio<>($$0.a(fkn.az)), 0.9F);
-      this.a(new gab(this, $$0.d()));
+   public fxi(fwc.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public agi a(bxg $$0) {
-      return a.getOrDefault($$0.gr(), a.get(bxg.a.a));
+   protected boolean a(T $$0) {
+      return super.b($$0) && ($$0.cC() || $$0.ae() && $$0 == this.c.c);
    }
 
-   protected void a(bxg $$0, enw $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.bU > 0) {
-         int $$5 = $$0.bU;
-         int $$6 = $$5 + 1;
-         float $$7 = 7.0F;
-         float $$8 = $$0.n_() ? 0.3F : 0.8F;
-         if ($$5 < 8) {
-            float $$9 = (float)(90 * $$5) / 7.0F;
-            float $$10 = (float)(90 * $$6) / 7.0F;
-            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
-            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$11));
-         } else if ($$5 < 16) {
-            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
-            float $$13 = 90.0F + 90.0F * $$12;
-            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
-            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
-            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$15));
-         } else if ((float)$$5 < 24.0F) {
-            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
-            float $$17 = 180.0F + 90.0F * $$16;
-            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
-            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
-            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$19));
-         } else if ($$5 < 32) {
-            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
-            float $$21 = 270.0F + 90.0F * $$20;
-            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
-            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
-            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$23));
-         }
-      }
-
-      float $$24 = $$0.E($$4);
-      if ($$24 > 0.0F) {
-         $$1.a(0.0F, 0.8F * $$24, 0.0F);
-         $$1.a(a.b.rotationDegrees(atm.i($$24, $$0.dF(), $$0.dF() + 90.0F)));
-         $$1.a(0.0F, -1.0F * $$24, 0.0F);
-         if ($$0.gx()) {
-            float $$25 = (float)(Math.cos((double)$$0.ah * 1.25) * Math.PI * 0.05F);
-            $$1.a(a.d.rotationDegrees($$25));
-            if ($$0.n_()) {
-               $$1.a(0.0F, 0.8F, 0.55F);
-            }
-         }
-      }
-
-      float $$26 = $$0.F($$4);
-      if ($$26 > 0.0F) {
-         float $$27 = $$0.n_() ? 0.5F : 1.3F;
-         $$1.a(0.0F, $$27 * $$26, 0.0F);
-         $$1.a(a.b.rotationDegrees(atm.i($$26, $$0.dF(), $$0.dF() + 180.0F)));
+   public boolean a(T $$0, fub $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         bkv $$5 = $$0.fU();
+         return $$5 != null ? $$1.a($$5.i_()) : false;
       }
    }
 
-   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
-      return (float)$$2 < $$4 ? atm.i($$3, $$0, $$1) : $$0;
+   public void a(T $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      bkv $$6 = $$0.fU();
+      if ($$6 != null) {
+         this.a($$0, $$2, $$3, $$4, $$6);
+      }
+   }
+
+   private <E extends bkv> void a(T $$0, float $$1, eob $$2, fqz $$3, E $$4) {
+      $$2.a();
+      ejz $$5 = $$4.q($$1);
+      double $$6 = (double)(atq.i($$1, $$0.aV, $$0.aU) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
+      ejz $$7 = $$0.p($$1);
+      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
+      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
+      double $$10 = atq.d((double)$$1, $$0.K, $$0.ds()) + $$8;
+      double $$11 = atq.d((double)$$1, $$0.L, $$0.du()) + $$7.d;
+      double $$12 = atq.d((double)$$1, $$0.M, $$0.dy()) + $$9;
+      $$2.a($$8, $$7.d, $$9);
+      float $$13 = (float)($$5.c - $$10);
+      float $$14 = (float)($$5.d - $$11);
+      float $$15 = (float)($$5.e - $$12);
+      float $$16 = 0.025F;
+      eof $$17 = $$3.getBuffer(frh.h());
+      Matrix4f $$18 = $$2.c().a();
+      float $$19 = atq.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
+      float $$20 = $$15 * $$19;
+      float $$21 = $$13 * $$19;
+      hx $$22 = hx.a($$0.j($$1));
+      hx $$23 = hx.a($$4.j($$1));
+      int $$24 = this.a($$0, $$22);
+      int $$25 = this.c.a($$4).a($$4, $$23);
+      int $$26 = $$0.dN().a(cso.a, $$22);
+      int $$27 = $$0.dN().a(cso.a, $$23);
+
+      for (int $$28 = 0; $$28 <= 24; $$28++) {
+         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
+      }
+
+      for (int $$29 = 24; $$29 >= 0; $$29--) {
+         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
+      }
+
+      $$2.b();
+   }
+
+   private static void a(
+      eof $$0,
+      Matrix4f $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      int $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      int $$13,
+      boolean $$14
+   ) {
+      float $$15 = (float)$$13 / 24.0F;
+      int $$16 = (int)atq.i($$15, (float)$$5, (float)$$6);
+      int $$17 = (int)atq.i($$15, (float)$$7, (float)$$8);
+      int $$18 = fqy.a($$16, $$17);
+      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
+      float $$20 = 0.5F * $$19;
+      float $$21 = 0.4F * $$19;
+      float $$22 = 0.3F * $$19;
+      float $$23 = $$2 * $$15;
+      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
+      float $$25 = $$4 * $$15;
+      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
    }
 }

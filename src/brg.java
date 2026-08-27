@@ -1,68 +1,51 @@
-public class brg extends bre {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+public class brg extends brj {
+   private final int l;
+   private final boolean m;
 
-   public brg(bli $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+   public brg(bln $$0, int $$1, boolean $$2) {
       super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
    public void a() {
-      if (this.r && this.d.aZ()) {
-         this.d.g(this.d.dq().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == bre.a.b && !this.d.N().l()) {
+      if (this.k == brj.a.b) {
+         this.k = brj.a.a;
+         this.d.e(true);
          double $$0 = this.e - this.d.ds();
          double $$1 = this.f - this.d.du();
          double $$2 = this.g - this.d.dy();
          double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
          if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
             this.d.A(0.0F);
-         } else {
-            float $$4 = (float)(atm.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dD(), $$4, (float)this.o));
-            this.d.aU = this.d.dD();
-            this.d.aW = this.d.dD();
-            float $$5 = (float)(this.h * this.d.b(bmm.m));
-            if (this.d.aZ()) {
-               this.d.w($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(atm.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = atm.a(atm.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dF(), $$7, 5.0F));
-               }
+            return;
+         }
 
-               float $$8 = atm.b(this.d.dF() * (float) (Math.PI / 180.0));
-               float $$9 = atm.a(this.d.dF() * (float) (Math.PI / 180.0));
-               this.d.bm = $$8 * $$5;
-               this.d.bl = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(atm.g(this.d.dD() - $$4));
-               float $$11 = a($$10);
-               this.d.w($$5 * this.q * $$11);
-            }
+         float $$4 = (float)(atq.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dD(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aC()) {
+            $$5 = (float)(this.h * this.d.b(bmr.m));
+         } else {
+            $$5 = (float)(this.h * this.d.b(bmr.f));
+         }
+
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(atq.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dF(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
          }
       } else {
-         this.d.w(0.0F);
-         this.d.C(0.0F);
+         if (!this.m) {
+            this.d.e(false);
+         }
+
          this.d.B(0.0F);
          this.d.A(0.0F);
       }
-   }
-
-   private static float a(float $$0) {
-      return 1.0F - atm.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

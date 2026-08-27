@@ -1,55 +1,83 @@
-public interface ela extends biq {
-   clj v();
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   clj c(int var1);
-
-   void b(clj var1);
-
-   dfd w();
-
-   default clj aB_() {
-      return this.c(this.aj_());
+public abstract class ela {
+   public boolean a(@Nullable ela $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   @Override
-   default int b() {
-      return 1;
-   }
+   public abstract String b();
 
-   @Override
-   default boolean ai_() {
-      return this.v().b();
-   }
+   public abstract vj d(uv var1);
 
-   @Override
-   default void a() {
-      this.aB_();
-   }
+   public abstract boolean i();
 
-   @Override
-   default clj b(int $$0) {
-      return this.a($$0, this.aj_());
-   }
+   public abstract boolean h();
 
-   @Override
-   default clj a(int $$0) {
-      return $$0 == 0 ? this.v() : clj.b;
-   }
+   public abstract ela.b j();
 
-   @Override
-   default clj a(int $$0, int $$1) {
-      return $$0 != 0 ? clj.b : this.c($$1);
-   }
+   public abstract n n();
 
-   @Override
-   default void a(int $$0, clj $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+   public abstract Collection<String> g();
+
+   public abstract ela.b k();
+
+   public abstract ela.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, ela.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ela.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static ela.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public uv a() {
+         return uv.c("team.collision." + this.e);
       }
    }
 
-   @Override
-   default boolean a(cdu $$0) {
-      return biq.a(this.w(), $$0);
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
+
+      private static final Map<String, ela.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ela.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static ela.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public uv b() {
+         return uv.c("team.visibility." + this.e);
+      }
    }
 }

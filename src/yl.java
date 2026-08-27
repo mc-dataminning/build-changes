@@ -1,48 +1,40 @@
-public class yl implements wk<yd> {
-   private final ht a;
-   private final int b;
-   private final int c;
-   private final cva d;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-   public yl(ht $$0, cva $$1, int $$2, int $$3) {
+public class yl implements wo<yh> {
+   private final Object2IntMap<arc<?>> a;
+
+   public yl(Object2IntMap<arc<?>> $$0) {
       this.a = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public yl(tu $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.a(jy.f);
+   public yl(ty $$0) {
+      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
+         are<?> $$2 = $$1.a(kc.y);
+         return a($$0, $$2);
+      }, ty::n);
    }
 
-   @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.k(this.b);
-      $$0.k(this.c);
-      $$0.a(jy.f, this.d);
+   private static <T> arc<T> a(ty $$0, are<T> $$1) {
+      return $$1.b($$0.a($$1.a()));
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.a, yl::a, ty::c);
+   }
+
+   private static <T> void a(ty $$0, arc<T> $$1) {
+      $$0.a(kc.y, $$1.a());
+      $$0.a($$1.a().a(), $$1.b());
+   }
+
+   public Map<arc<?>, Integer> a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public cva f() {
-      return this.d;
    }
 }

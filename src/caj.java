@@ -1,17 +1,39 @@
-public class caj {
-   private final int a;
-   private final int b;
-
-   public caj(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class caj extends cal {
+   public caj(bkz<? extends cal> $$0, csf $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public caj(csf $$0, hx $$1, ib $$2) {
+      super(bkz.S, $$0, $$1, $$2);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public aqu q() {
+      return aqv.jR;
+   }
+
+   @Override
+   public aqu s() {
+      return aqv.jP;
+   }
+
+   @Override
+   public aqu u() {
+      return aqv.jQ;
+   }
+
+   @Override
+   public aqu w() {
+      return aqv.jO;
+   }
+
+   @Override
+   public aqu x() {
+      return aqv.jS;
+   }
+
+   @Override
+   protected clo y() {
+      return new clo(clr.tV);
    }
 }

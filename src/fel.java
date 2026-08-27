@@ -1,136 +1,86 @@
 import com.google.common.collect.Lists;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class fel extends eux {
-   private static final agi b = new agi("recipe_book/slot_many_craftable");
-   private static final agi c = new agi("recipe_book/slot_craftable");
-   private static final agi d = new agi("recipe_book/slot_many_uncraftable");
-   private static final agi e = new agi("recipe_book/slot_uncraftable");
-   private static final float l = 15.0F;
-   private static final int m = 25;
-   public static final int a = 30;
-   private static final ur n = ur.c("gui.recipebook.moreRecipes");
-   private chz<?> o;
-   private aqu p;
-   private fem q;
-   private float r;
-   private float t;
-   private int u;
+public class fel {
+   @Nullable
+   private cov<?> a;
+   private final List<fel.a> b = Lists.newArrayList();
+   float c;
 
-   public fel() {
-      super(0, 0, 25, 25, uq.a);
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   public void a(fem $$0, fej $$1) {
-      this.q = $$0;
-      this.o = (chz<?>)$$1.d().s.bS;
-      this.p = $$1.e();
-      List<coq<?>> $$2 = $$0.a(this.p.a(this.o));
-
-      for (coq<?> $$3 : $$2) {
-         if (this.p.d($$3)) {
-            $$1.a($$2);
-            this.t = 15.0F;
-            break;
-         }
-      }
+   public void a(coq $$0, int $$1, int $$2) {
+      this.b.add(new fel.a($$0, $$1, $$2));
    }
 
-   public fem a() {
-      return this.q;
+   public fel.a a(int $$0) {
+      return this.b.get($$0);
    }
 
-   @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
-      if (!fau.p()) {
-         this.r += $$3;
+   public int b() {
+      return this.b.size();
+   }
+
+   @Nullable
+   public cov<?> c() {
+      return this.a;
+   }
+
+   public void a(cov<?> $$0) {
+      this.a = $$0;
+   }
+
+   public void a(eut $$0, eti $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!faz.p()) {
+         this.c += $$5;
       }
 
-      agi $$4;
-      if (this.q.c()) {
-         if (this.q.a(this.p.a(this.o)).size() > 1) {
-            $$4 = b;
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         fel.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
          } else {
-            $$4 = c;
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
          }
-      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$4 = d;
-      } else {
-         $$4 = e;
-      }
 
-      boolean $$8 = this.t > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
-         this.t -= $$3;
-      }
-
-      $$0.a($$4, this.p(), this.r(), this.f, this.g);
-      List<coq<?>> $$10 = this.g();
-      this.u = atm.d(this.r / 30.0F) % $$10.size();
-      clj $$11 = $$10.get(this.u).b().a(this.q.a());
-      int $$12 = 4;
-      if (this.q.f() && this.g().size() > 1) {
-         $$0.a($$11, this.p() + $$12 + 1, this.r() + $$12 + 1, 0, 10);
-         $$12--;
-      }
-
-      $$0.b($$11, this.p() + $$12, this.r() + $$12);
-      if ($$8) {
-         $$0.c().b();
+         clo $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(frh.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
+         }
       }
    }
 
-   private List<coq<?>> g() {
-      List<coq<?>> $$0 = this.q.b(true);
-      if (!this.p.a(this.o)) {
-         $$0.addAll(this.q.b(false));
+   public class a {
+      private final coq b;
+      private final int c;
+      private final int d;
+
+      public a(coq $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return $$0;
-   }
-
-   public boolean b() {
-      return this.g().size() == 1;
-   }
-
-   public coq<?> e() {
-      List<coq<?>> $$0 = this.g();
-      return $$0.get(this.u);
-   }
-
-   public List<ur> f() {
-      clj $$0 = this.g().get(this.u).b().a(this.q.a());
-      List<ur> $$1 = Lists.newArrayList(fau.a(etd.N(), $$0));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$1.add(n);
+      public int a() {
+         return this.c;
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void a(eys $$0) {
-      clj $$1 = this.g().get(this.u).b().a(this.q.a());
-      $$0.a(eyr.a, ur.a("narration.recipe", $$1.y()));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(eyr.d, ur.c("narration.button.usage.hovered"), ur.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(eyr.d, ur.c("narration.button.usage.hovered"));
+      public int b() {
+         return this.d;
       }
-   }
 
-   @Override
-   public int k() {
-      return 25;
-   }
-
-   @Override
-   protected boolean c(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+      public clo c() {
+         clo[] $$0 = this.b.a();
+         return $$0.length == 0 ? clo.b : $$0[atq.d(fel.this.c / 30.0F) % $$0.length];
+      }
    }
 }

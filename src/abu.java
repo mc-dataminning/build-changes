@@ -1,81 +1,40 @@
-public class abu implements wk<yd> {
-   public static final float a = 8.0F;
-   private final ib<aqq> b;
-   private final aqs c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final float h;
-   private final long i;
+public class abu implements wo<yh> {
+   private final long a;
+   private final long b;
 
-   public abu(ib<aqq> $$0, aqs $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = (int)($$2 * 8.0);
-      this.e = (int)($$3 * 8.0);
-      this.f = (int)($$4 * 8.0);
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public abu(long $$0, long $$1, boolean $$2) {
+      this.a = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
    }
 
-   public abu(tu $$0) {
-      this.b = $$0.a(jy.c.t(), aqq::b);
-      this.c = $$0.b(aqs.class);
-      this.d = $$0.readInt();
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readLong();
+   public abu(ty $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(jy.c.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.b(this.i);
+   public void a(ty $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public ib<aqq> a() {
-      return this.b;
-   }
-
-   public aqs d() {
-      return this.c;
-   }
-
-   public double e() {
-      return (double)((float)this.d / 8.0F);
-   }
-
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
-
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public float h() {
-      return this.g;
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public long j() {
-      return this.i;
-   }
-
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
+   }
+
+   public long a() {
+      return this.a;
+   }
+
+   public long d() {
+      return this.b;
    }
 }

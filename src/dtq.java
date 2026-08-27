@@ -1,49 +1,146 @@
+import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dtq extends dtl {
-   public static final Codec<dtq> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bic.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, dtq::new)
-   );
-   private final bic b;
-   private final int c;
+public abstract class dtq {
+   public static final Codec<dtq> d = kc.X.q().dispatch(dtq::a, dtr::a);
+   protected final big e;
+   protected final big f;
 
-   public dtq(bic $$0, bic $$1, bic $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   protected static <P extends dtq> P2<Mu<P>, big, big> b(Instance<P> $$0) {
+      return $$0.group(big.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), big.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   protected dtm<?> a() {
-      return dtm.j;
+   public dtq(big $$0, big $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected void a(csg $$0, dtl.b $$1, ats $$2, dsv $$3, int $$4, dtl.a $$5, int $$6, int $$7, int $$8) {
-      ht $$9 = $$5.a();
-      ht.a $$10 = $$9.j();
+   protected abstract dtr<?> a();
 
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+   public void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(csl var1, dtq.b var2, atw var3, dta var4, int var5, dtq.a var6, int var7, int var8, int var9);
+
+   public abstract int a(atw var1, int var2, dta var3);
+
+   public int a(atw $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(atw $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(atw var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, hx $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      hx.a $$9 = new hx.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
+         }
       }
    }
 
-   @Override
-   public int a(ats $$0, int $$1, dsv $$2) {
-      return this.b.a($$0);
+   protected final void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, hx $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      hx $$11 = $$4.d();
+      hx.a $$12 = new hx.a();
+
+      for (ib $$13 : ib.c.a) {
+         ib $$14 = $$13.h();
+         int $$15 = $$14.f() == ib.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(ib.b));
+            $$12.c(ib.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(ib.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(ib.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
+      }
    }
 
-   @Override
-   protected boolean a(ats $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   private static boolean a(csl $$0, dtq.b $$1, atw $$2, dta $$3, float $$4, hx $$5, hx.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
+   }
+
+   protected static boolean a(csl $$0, dtq.b $$1, atw $$2, dta $$3, hx $$4) {
+      if (!drm.c($$0, $$4)) {
+         return false;
+      } else {
+         dhn $$5 = $$3.e.a($$2, $$4);
+         if ($$5.b(did.C)) {
+            $$5 = $$5.a(did.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(ecy.c))));
+         }
+
+         $$1.a($$4, $$5);
+         return true;
+      }
+   }
+
+   public static final class a {
+      private final hx a;
+      private final int b;
+      private final boolean c;
+
+      public a(hx $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public hx a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
+   }
+
+   public interface b {
+      void a(hx var1, dhn var2);
+
+      boolean a(hx var1);
    }
 }

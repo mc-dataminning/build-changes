@@ -1,225 +1,277 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public interface iy {
-   Map<String, iy.a> a = new Object2ObjectArrayMap();
-   Codec<iy.a> b = asu.a(iy.a::a, a::get);
-   iy.a c = a("empty");
-   iy.a d = a("water");
-   iy.a e = a("lava");
-   iy.a f = a("powder_snow");
-   iy g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fu.o().a(czi.g, Integer.valueOf(3)), aqr.cv);
-   iy h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fv.o(), aqr.cy);
-   iy i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cvc.fw.o().a(czi.g, Integer.valueOf(3)), aqr.cz);
-   iy j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      cva $$6 = cva.a($$5.d());
-      if (!($$6 instanceof dby)) {
-         return bix.d;
-      } else {
-         if (!$$1.B) {
-            clj $$7 = new clj(cvc.kP);
-            if ($$5.u()) {
-               $$7.c($$5.v().h());
-            }
+public class iy extends ja {
+   public static final int a = 4;
+   public static final int b = 16;
+   public static final int c = 15;
+   public static final int d = 8;
+   public static final int e = 15;
+   private static final int h = 22;
+   private static final int i = 20;
+   private static final int j = 22;
+   private static final long k = 4194303L;
+   private static final long l = 1048575L;
+   private static final long m = 4194303L;
+   private static final int n = 0;
+   private static final int o = 20;
+   private static final int p = 42;
+   private static final int q = 8;
+   private static final int r = 0;
+   private static final int s = 4;
 
-            $$3.a($$4, $$7);
-            $$3.a(arb.Z);
-            czi.d($$0, $$1, $$2);
-         }
+   iy(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-         return bix.a($$1.B);
-      }
-   };
-   iy k = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (det.c($$5) <= 0) {
-         return bix.d;
-      } else {
-         if (!$$1.B) {
-            clj $$6 = $$5.c(1);
-            det.d($$6);
-            if (!$$3.fU().d) {
-               $$5.h(1);
-            }
+   public static iy a(int $$0, int $$1, int $$2) {
+      return new iy($$0, $$1, $$2);
+   }
 
-            if ($$5.b()) {
-               $$3.a($$4, $$6);
-            } else if ($$3.fT().e($$6)) {
-               $$3.bR.b();
+   public static iy a(hx $$0) {
+      return new iy(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static iy a(crm $$0, int $$1) {
+      return new iy($$0.e, $$1, $$0.f);
+   }
+
+   public static iy a(dle $$0) {
+      return a($$0.dn());
+   }
+
+   public static iy a(iq $$0) {
+      return new iy(b($$0.a()), b($$0.b()), b($$0.c()));
+   }
+
+   public static iy a(long $$0) {
+      return new iy(b($$0), c($$0), d($$0));
+   }
+
+   public static iy a(djj $$0) {
+      return a($$0.f(), $$0.am());
+   }
+
+   public static long a(long $$0, ib $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
+   }
+
+   public static int a(double $$0) {
+      return a(atq.a($$0));
+   }
+
+   public static int a(int $$0) {
+      return $$0 >> 4;
+   }
+
+   public static int b(double $$0) {
+      return atq.a($$0) >> 4;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   public static short b(hx $$0) {
+      int $$1 = b($$0.u());
+      int $$2 = b($$0.v());
+      int $$3 = b($$0.w());
+      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
+   }
+
+   public static int a(short $$0) {
+      return $$0 >>> 8 & 15;
+   }
+
+   public static int b(short $$0) {
+      return $$0 >>> 0 & 15;
+   }
+
+   public static int c(short $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public int d(short $$0) {
+      return this.d() + a($$0);
+   }
+
+   public int e(short $$0) {
+      return this.e() + b($$0);
+   }
+
+   public int f(short $$0) {
+      return this.f() + c($$0);
+   }
+
+   public hx g(short $$0) {
+      return new hx(this.d($$0), this.e($$0), this.f($$0));
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 4;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return c($$0) + $$1;
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 0 >> 42);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 44 >> 44);
+   }
+
+   public static int d(long $$0) {
+      return (int)($$0 << 22 >> 42);
+   }
+
+   public int a() {
+      return this.u();
+   }
+
+   public int b() {
+      return this.v();
+   }
+
+   public int c() {
+      return this.w();
+   }
+
+   public int d() {
+      return c(this.a());
+   }
+
+   public int e() {
+      return c(this.b());
+   }
+
+   public int f() {
+      return c(this.c());
+   }
+
+   public int g() {
+      return a(this.a(), 15);
+   }
+
+   public int h() {
+      return a(this.b(), 15);
+   }
+
+   public int i() {
+      return a(this.c(), 15);
+   }
+
+   public static long e(long $$0) {
+      return b(a(hx.a($$0)), a(hx.b($$0)), a(hx.c($$0)));
+   }
+
+   public static long b(int $$0, int $$1) {
+      return f(b($$0, 0, $$1));
+   }
+
+   public static long f(long $$0) {
+      return $$0 & -1048576L;
+   }
+
+   public hx j() {
+      return new hx(c(this.a()), c(this.b()), c(this.c()));
+   }
+
+   public hx q() {
+      int $$0 = 8;
+      return this.j().b(8, 8, 8);
+   }
+
+   public crm r() {
+      return new crm(this.a(), this.c());
+   }
+
+   public static long c(hx $$0) {
+      return b(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & 4194303L) << 42;
+      $$3 |= ((long)$$1 & 1048575L) << 0;
+      return $$3 | ((long)$$2 & 4194303L) << 20;
+   }
+
+   public long s() {
+      return b(this.a(), this.b(), this.c());
+   }
+
+   public iy d(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iy(this.a() + $$0, this.b() + $$1, this.c() + $$2);
+   }
+
+   public Stream<hx> t() {
+      return hx.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
+   }
+
+   public static Stream<iy> a(iy $$0, int $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      int $$4 = $$0.c();
+      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
+   }
+
+   public static Stream<iy> a(crm $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0.e;
+      int $$5 = $$0.f;
+      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
+   }
+
+   public static Stream<iy> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
+      return StreamSupport.stream(new AbstractSpliterator<iy>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
+         final hy a = new hy($$0, $$1, $$2, $$3, $$4, $$5);
+
+         @Override
+         public boolean tryAdvance(Consumer<? super iy> $$0x) {
+            if (this.a.a()) {
+               $$0.accept(new iy(this.a.b(), this.a.c(), this.a.d()));
+               return true;
             } else {
-               $$3.a($$6, false);
+               return false;
             }
-
-            $$3.a(arb.Y);
-            czi.d($$0, $$1, $$2);
          }
+      }, false);
+   }
 
-         return bix.a($$1.B);
-      }
-   };
-   iy l = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!($$5.d() instanceof ckb $$7)) {
-         return bix.d;
-      } else if (!$$7.a($$5)) {
-         return bix.d;
+   public static void a(hx $$0, LongConsumer $$1) {
+      a($$0.u(), $$0.v(), $$0.w(), $$1);
+   }
+
+   public static void a(long $$0, LongConsumer $$1) {
+      a(hx.a($$0), hx.b($$0), hx.c($$0), $$1);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
+      int $$4 = a($$0 - 1);
+      int $$5 = a($$0 + 1);
+      int $$6 = a($$1 - 1);
+      int $$7 = a($$1 + 1);
+      int $$8 = a($$2 - 1);
+      int $$9 = a($$2 + 1);
+      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
+         $$3.accept(b($$4, $$6, $$8));
       } else {
-         if (!$$1.B) {
-            $$7.f_($$5);
-            $$3.a(arb.X);
-            czi.d($$0, $$1, $$2);
-         }
-
-         return bix.a($$1.B);
-      }
-   };
-
-   static iy.a a(String $$0) {
-      Object2ObjectOpenHashMap<cle, iy> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((iy)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bix.d);
-      iy.a $$2 = new iy.a($$0, $$1);
-      a.put($$0, $$2);
-      return $$2;
-   }
-
-   bix interact(dhi var1, csa var2, ht var3, cdu var4, biw var5, clj var6);
-
-   static void a() {
-      Map<cle, iy> $$0 = c.b();
-      a($$0);
-      $$0.put(clm.sh, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (cni.d($$5) != cnj.c) {
-            return bix.d;
-         } else {
-            if (!$$1x.B) {
-               cle $$6 = $$5.d();
-               $$3x.a($$4, cll.a($$5, $$3x, new clj(clm.si)));
-               $$3x.a(arb.W);
-               $$3x.b(arb.c.b($$6));
-               $$1x.b($$2x, cvc.fu.o());
-               $$1x.a(null, $$2x, aqr.ch, aqs.e, 1.0F, 1.0F);
-               $$1x.a(null, dls.z, $$2x);
+         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
+            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
+               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
+                  $$3.accept(b($$10, $$11, $$12));
+               }
             }
-
-            return bix.a($$1x.B);
          }
-      });
-      Map<cle, iy> $$1 = d.b();
-      a($$1);
-      $$1.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qw), $$0xx -> $$0xx.c(czi.g) == 3, aqr.cB));
-      $$1.put(clm.si, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (!$$1x.B) {
-            cle $$6 = $$5.d();
-            $$3x.a($$4, cll.a($$5, $$3x, cni.a(new clj(clm.sh), cnj.c)));
-            $$3x.a(arb.W);
-            $$3x.b(arb.c.b($$6));
-            czi.d($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, aqr.ci, aqs.e, 1.0F, 1.0F);
-            $$1x.a(null, dls.y, $$2x);
-         }
-
-         return bix.a($$1x.B);
-      });
-      $$1.put(clm.sh, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(czi.g) != 3 && cni.d($$5) == cnj.c) {
-            if (!$$1x.B) {
-               $$3x.a($$4, cll.a($$5, $$3x, new clj(clm.si)));
-               $$3x.a(arb.W);
-               $$3x.b(arb.c.b($$5.d()));
-               $$1x.b($$2x, $$0x.a(czi.g));
-               $$1x.a(null, $$2x, aqr.ch, aqs.e, 1.0F, 1.0F);
-               $$1x.a(null, dls.z, $$2x);
-            }
-
-            return bix.a($$1x.B);
-         } else {
-            return bix.d;
-         }
-      });
-      $$1.put(clm.py, l);
-      $$1.put(clm.px, l);
-      $$1.put(clm.pw, l);
-      $$1.put(clm.pv, l);
-      $$1.put(clm.uB, l);
-      $$1.put(clm.uH, k);
-      $$1.put(clm.uO, k);
-      $$1.put(clm.uW, k);
-      $$1.put(clm.uS, k);
-      $$1.put(clm.uT, k);
-      $$1.put(clm.uQ, k);
-      $$1.put(clm.uU, k);
-      $$1.put(clm.uK, k);
-      $$1.put(clm.uP, k);
-      $$1.put(clm.uM, k);
-      $$1.put(clm.uJ, k);
-      $$1.put(clm.uI, k);
-      $$1.put(clm.uN, k);
-      $$1.put(clm.uR, k);
-      $$1.put(clm.uV, k);
-      $$1.put(clm.uL, k);
-      $$1.put(clm.jc, j);
-      $$1.put(clm.jj, j);
-      $$1.put(clm.jr, j);
-      $$1.put(clm.jn, j);
-      $$1.put(clm.jo, j);
-      $$1.put(clm.jl, j);
-      $$1.put(clm.jp, j);
-      $$1.put(clm.jf, j);
-      $$1.put(clm.jk, j);
-      $$1.put(clm.jh, j);
-      $$1.put(clm.je, j);
-      $$1.put(clm.jd, j);
-      $$1.put(clm.ji, j);
-      $$1.put(clm.jm, j);
-      $$1.put(clm.jq, j);
-      $$1.put(clm.jg, j);
-      Map<cle, iy> $$2 = e.b();
-      $$2.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qx), $$0xx -> true, aqr.cE));
-      a($$2);
-      Map<cle, iy> $$3 = f.b();
-      $$3.put(clm.qv, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new clj(clm.qy), $$0xx -> $$0xx.c(czi.g) == 3, aqr.cF));
-      a($$3);
-   }
-
-   static void a(Map<cle, iy> $$0) {
-      $$0.put(clm.qx, h);
-      $$0.put(clm.qw, g);
-      $$0.put(clm.qy, i);
-   }
-
-   static bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, clj $$5, clj $$6, Predicate<dhi> $$7, aqq $$8) {
-      if (!$$7.test($$0)) {
-         return bix.d;
-      } else {
-         if (!$$1.B) {
-            cle $$9 = $$5.d();
-            $$3.a($$4, cll.a($$5, $$3, $$6));
-            $$3.a(arb.W);
-            $$3.b(arb.c.b($$9));
-            $$1.b($$2, cvc.ft.o());
-            $$1.a(null, $$2, $$8, aqs.e, 1.0F, 1.0F);
-            $$1.a(null, dls.y, $$2);
-         }
-
-         return bix.a($$1.B);
       }
-   }
-
-   static bix a(csa $$0, ht $$1, cdu $$2, biw $$3, clj $$4, dhi $$5, aqq $$6) {
-      if (!$$0.B) {
-         cle $$7 = $$4.d();
-         $$2.a($$3, cll.a($$4, $$2, new clj(clm.qv)));
-         $$2.a(arb.V);
-         $$2.b(arb.c.b($$7));
-         $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, aqs.e, 1.0F, 1.0F);
-         $$0.a(null, dls.z, $$1);
-      }
-
-      return bix.a($$0.B);
-   }
-
-   public static record a(String a, Map<cle, iy> b) {
    }
 }

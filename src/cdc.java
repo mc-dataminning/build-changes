@@ -1,214 +1,192 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class cdc extends bkl implements cdf, cdg, cqx {
-   private static final afo<Integer> bV = afr.a(cdc.class, afq.b);
-   public static final int bT = 300;
-   private static final int bW = 8;
-   @Nullable
-   private cdu bX;
-   @Nullable
-   protected cqz bU;
-   private final bje bY = new bje(8);
+public class cdc {
+   @VisibleForTesting
+   protected static final int a = 2;
+   @VisibleForTesting
+   protected static final int b = 150;
+   private static final int f = 1;
+   private int g = atq.b(atw.a(), 0, 2);
+   int h;
+   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iz.a.fieldOf("uuid").forGetter(Pair::getFirst), asy.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+   );
+   private final Predicate<bkv> j;
+   @VisibleForTesting
+   protected final ArrayList<bkv> c;
+   private final cdc.a k;
+   @VisibleForTesting
+   protected final Object2IntMap<bkv> d;
+   @VisibleForTesting
+   protected final Object2IntMap<UUID> e;
 
-   public cdc(bku<? extends cdc> $$0, csa $$1) {
-      super($$0, $$1);
-      this.a(edd.n, 16.0F);
-      this.a(edd.o, -1.0F);
+   public static Codec<cdc> a(Predicate<bkv> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(cdc::b)).apply($$1, $$1x -> new cdc($$0, $$1x))
+      );
    }
 
-   @Override
-   public blz a(csp $$0, biv $$1, blk $$2, @Nullable blz $$3, @Nullable rz $$4) {
-      if ($$3 == null) {
-         $$3 = new bkl.a(false);
+   public cdc(Predicate<bkv> $$0, List<Pair<UUID, Integer>> $$1) {
+      this.j = $$0;
+      this.c = new ArrayList<>();
+      this.k = new cdc.a(this);
+      this.d = new Object2IntOpenHashMap();
+      this.e = new Object2IntOpenHashMap($$1.size());
+      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   }
+
+   private List<Pair<UUID, Integer>> b() {
+      return Streams.concat(
+            new Stream[]{
+               this.c.stream().map($$0 -> Pair.of($$0.cw(), this.d.getInt($$0))),
+               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
+            }
+         )
+         .collect(Collectors.toList());
+   }
+
+   public void a(ami $$0, Predicate<bkv> $$1) {
+      this.g--;
+      if (this.g <= 0) {
+         this.a($$0);
+         this.g = 2;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
+      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
 
-   public int u() {
-      return this.an.b(bV);
-   }
-
-   public void s(int $$0) {
-      this.an.b(bV, $$0);
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   protected float b(bls $$0, bkr $$1) {
-      return this.n_() ? 0.81F : 1.62F;
-   }
-
-   @Override
-   protected void b_() {
-      super.b_();
-      this.an.a(bV, 0);
-   }
-
-   @Override
-   public void f(@Nullable cdu $$0) {
-      this.bX = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cdu gf() {
-      return this.bX;
-   }
-
-   public boolean gg() {
-      return this.bX != null;
-   }
-
-   @Override
-   public cqz gh() {
-      if (this.bU == null) {
-         this.bU = new cqz();
-         this.gm();
+      while ($$2.hasNext()) {
+         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
+         int $$4 = $$3.getIntValue();
+         if ($$4 <= 1) {
+            $$2.remove();
+         } else {
+            $$3.setValue($$4 - 1);
+         }
       }
 
-      return this.bU;
-   }
+      ObjectIterator<Entry<bkv>> $$5 = this.d.object2IntEntrySet().iterator();
 
-   @Override
-   public void a(@Nullable cqz $$0) {
-   }
-
-   @Override
-   public void t(int $$0) {
-   }
-
-   @Override
-   public void a(cqy $$0) {
-      $$0.j();
-      this.bI = -this.Q();
-      this.b($$0);
-      if (this.bX instanceof amf) {
-         al.s.a((amf)this.bX, this, $$0.d());
+      while ($$5.hasNext()) {
+         Entry<bkv> $$6 = (Entry<bkv>)$$5.next();
+         int $$7 = $$6.getIntValue();
+         bkv $$8 = (bkv)$$6.getKey();
+         bkv.c $$9 = $$8.dJ();
+         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
+            $$6.setValue($$7 - 1);
+         } else {
+            this.c.remove($$8);
+            $$5.remove();
+            if ($$7 > 1 && $$9 != null) {
+               switch ($$9) {
+                  case e:
+                  case c:
+                  case d:
+                     this.e.put($$8.cw(), $$7 - 1);
+               }
+            }
+         }
       }
+
+      this.c();
    }
 
-   protected abstract void b(cqy var1);
-
-   @Override
-   public boolean gi() {
-      return true;
-   }
-
-   @Override
-   public void l(clj $$0) {
-      if (!this.dN().B && this.bI > -this.Q() + 20) {
-         this.bI = -this.Q();
-         this.a(this.w(!$$0.b()), this.eX(), this.eY());
+   private void c() {
+      this.h = 0;
+      this.c.sort(this.k);
+      if (this.c.size() == 1) {
+         this.h = this.d.getInt(this.c.get(0));
       }
    }
 
-   @Override
-   public aqq gj() {
-      return aqr.zs;
-   }
+   private void a(ami $$0) {
+      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
 
-   protected aqq w(boolean $$0) {
-      return $$0 ? aqr.zs : aqr.zq;
-   }
-
-   public void gk() {
-      this.a(aqr.zn, this.eX(), this.eY());
-   }
-
-   @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      cqz $$1 = this.gh();
-      if (!$$1.isEmpty()) {
-         $$0.a("Offers", $$1.a());
-      }
-
-      this.a_($$0);
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("Offers", 10)) {
-         this.bU = new cqz($$0.p("Offers"));
-      }
-
-      this.c($$0);
-   }
-
-   @Nullable
-   @Override
-   public bkq b(ame $$0) {
-      this.gl();
-      return super.b($$0);
-   }
-
-   protected void gl() {
-      this.f(null);
-   }
-
-   @Override
-   public void a(bjo $$0) {
-      super.a($$0);
-      this.gl();
-   }
-
-   protected void a(jq $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.ag.k() * 0.02;
-         double $$3 = this.ag.k() * 0.02;
-         double $$4 = this.ag.k() * 0.02;
-         this.dN().a($$0, this.d(1.0), this.dv() + 1.0, this.g(1.0), $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(cdu $$0) {
-      return false;
-   }
-
-   @Override
-   public bje A() {
-      return this.bY;
-   }
-
-   @Override
-   public bly a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bY.b() ? bly.a(this.bY, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gm();
-
-   protected void a(cqz $$0, cdl.g[] $$1, int $$2) {
-      ArrayList<cdl.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         cqy $$5 = $$3.remove(this.ag.a($$3.size())).a(this, this.ag);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+      while ($$1.hasNext()) {
+         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
+         int $$3 = $$2.getIntValue();
+         bkv $$4 = $$0.a((UUID)$$2.getKey());
+         if ($$4 != null) {
+            this.d.put($$4, $$3);
+            this.c.add($$4);
+            $$1.remove();
          }
       }
    }
 
-   @Override
-   public eju q(float $$0) {
-      float $$1 = atm.i($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
-      eju $$2 = new eju(0.0, this.cH().c() - 1.0, 0.2);
-      return this.l($$0).e($$2.b(-$$1));
+   public int a(bkv $$0, int $$1) {
+      boolean $$2 = !this.d.containsKey($$0);
+      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
+      if ($$2) {
+         int $$4 = this.e.removeInt($$0.cw());
+         $$3 += $$4;
+         this.d.put($$0, $$3);
+         this.c.add($$0);
+      }
+
+      this.c();
+      return $$3;
    }
 
-   @Override
-   public boolean gn() {
-      return this.dN().B;
+   public void a(bkv $$0) {
+      this.d.removeInt($$0);
+      this.c.remove($$0);
+      this.c();
+   }
+
+   @Nullable
+   private bkv d() {
+      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   }
+
+   public int b(@Nullable bkv $$0) {
+      return $$0 == null ? this.h : this.d.getInt($$0);
+   }
+
+   public Optional<bll> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bll).map($$0 -> (bll)$$0);
+   }
+
+   @VisibleForTesting
+   protected static record a(cdc a) implements Comparator<bkv> {
+      public int a(bkv $$0, bkv $$1) {
+         if ($$0.equals($$1)) {
+            return 0;
+         } else {
+            int $$2 = this.a.d.getOrDefault($$0, 0);
+            int $$3 = this.a.d.getOrDefault($$1, 0);
+            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
+            boolean $$4 = cdb.a($$2).d();
+            boolean $$5 = cdb.a($$3).d();
+            if ($$4 != $$5) {
+               return $$4 ? -1 : 1;
+            } else {
+               boolean $$6 = $$0 instanceof cdz;
+               boolean $$7 = $$1 instanceof cdz;
+               if ($$6 != $$7) {
+                  return $$6 ? -1 : 1;
+               } else {
+                  return Integer.compare($$3, $$2);
+               }
+            }
+         }
+      }
    }
 }

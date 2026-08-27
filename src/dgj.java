@@ -1,117 +1,172 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dgj extends dfd implements dlu.b<dmb.b>, dmb {
-   private static final Logger b = LogUtils.getLogger();
-   private dmb.a c;
-   private final dmb.b d;
-   private final dmb.d e = this.c();
-   private int g;
+public class dgj extends dfi implements bis, elf {
+   private static final int c = 20;
+   private clo d = clo.b;
+   private int e;
+   private long f;
+   private long g;
+   private boolean h;
 
-   protected dgj(dff<?> $$0, ht $$1, dhi $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dmb.a();
-      this.d = new dmb.b(this);
-   }
-
-   public dgj(ht $$0, dhi $$1) {
-      this(dff.I, $$0, $$1);
-   }
-
-   public dmb.d c() {
-      return new dgj.a(this.p());
+   public dgj(hx $$0, dhn $$1) {
+      super(dfk.e, $$0, $$1);
    }
 
    @Override
-   public void a(rz $$0) {
+   public void a(sd $$0) {
       super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dmb.a.a.parse(new Dynamic(sn.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = clo.a($$0.p("RecordItem"));
       }
+
+      this.h = $$0.q("IsPlaying");
+      this.g = $$0.i("RecordStartTick");
+      this.f = $$0.i("TickCount");
    }
 
    @Override
-   protected void b(rz $$0) {
+   protected void b(sd $$0) {
       super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      dmb.a.a.encodeStart(sn.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
-   }
-
-   @Override
-   public dmb.a gh() {
-      return this.c;
-   }
-
-   @Override
-   public dmb.d gi() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public dmb.b g() {
-      return this.d;
-   }
-
-   protected class a implements dmb.d {
-      public static final int b = 8;
-      protected final ht c;
-      private final dlw a;
-
-      public a(ht $$1) {
-         this.c = $$1;
-         this.a = new dlo($$1);
+      if (!this.x().b()) {
+         $$0.a("RecordItem", this.x().b(new sd()));
       }
 
-      @Override
-      public int a() {
-         return 8;
-      }
+      $$0.a("IsPlaying", this.h);
+      $$0.a("RecordStartTick", this.g);
+      $$0.a("TickCount", this.f);
+   }
 
-      @Override
-      public dlw b() {
-         return this.a;
-      }
+   public boolean f() {
+      return !this.x().b() && this.h;
+   }
 
-      @Override
-      public boolean d() {
-         return true;
+   private void a(@Nullable bkv $$0, boolean $$1) {
+      if (this.o.a_(this.aC_()) == this.r()) {
+         this.o.a(this.aC_(), this.r().a(czh.b, Boolean.valueOf($$1)), 2);
+         this.o.a(dlx.c, this.aC_(), dlx.a.a($$0, this.r()));
       }
+   }
 
-      @Override
-      public boolean a(ame $$0, ht $$1, dls $$2, @Nullable dls.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dls.f && $$2 != dls.i ? dbs.n(dgj.this.q()) : false;
-      }
+   @VisibleForTesting
+   public void g() {
+      this.g = this.f;
+      this.h = true;
+      this.o.a(this.aC_(), this.r().b());
+      this.o.a(null, 1010, this.aC_(), clj.a(this.x().d()));
+      this.e();
+   }
 
-      @Override
-      public void a(ame $$0, ht $$1, dls $$2, @Nullable bkq $$3, @Nullable bkq $$4, float $$5) {
-         dhi $$6 = dgj.this.q();
-         if (dbs.n($$6)) {
-            dgj.this.a(dmb.a_($$2));
-            int $$7 = dmb.a_($$5, this.a());
-            if ($$6.b() instanceof dbs $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dgj.this.f());
-            }
+   private void l() {
+      this.h = false;
+      this.o.a(dlx.F, this.aC_(), dlx.a.a(this.r()));
+      this.o.a(this.aC_(), this.r().b());
+      this.o.c(1011, this.aC_(), 0);
+      this.e();
+   }
+
+   private void b(csf $$0, hx $$1, dhn $$2) {
+      this.e++;
+      if (this.f() && this.x().d() instanceof cmg $$3) {
+         if (this.a($$3)) {
+            this.l();
+         } else if (this.m()) {
+            this.e = 0;
+            $$0.a(dlx.E, $$1, dlx.a.a($$2));
+            this.a($$0, $$1);
          }
       }
 
-      @Override
-      public void e() {
-         dgj.this.e();
+      this.f++;
+   }
+
+   private boolean a(cmg $$0) {
+      return this.f >= this.g + (long)$$0.y() + 20L;
+   }
+
+   private boolean m() {
+      return this.e >= 20;
+   }
+
+   @Override
+   public clo x() {
+      return this.d;
+   }
+
+   @Override
+   public clo c(int $$0) {
+      clo $$1 = this.d;
+      this.d = clo.b;
+      if (!$$1.b()) {
+         this.a(null, false);
+         this.l();
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      return $$1;
+   }
+
+   @Override
+   public void b(clo $$0) {
+      if ($$0.a(ars.aq) && this.o != null) {
+         this.d = $$0;
+         this.a(null, true);
+         this.g();
+      } else if ($$0.b()) {
+         this.c(1);
       }
+   }
+
+   @Override
+   public int al_() {
+      return 1;
+   }
+
+   @Override
+   public dfi y() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, clo $$1) {
+      return $$1.a(ars.aq) && this.a($$0).b();
+   }
+
+   @Override
+   public boolean a(biu $$0, int $$1, clo $$2) {
+      return $$0.a_(clo::b);
+   }
+
+   private void a(csf $$0, hx $$1) {
+      if ($$0 instanceof ami $$2) {
+         ejz $$3 = ejz.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.F_().a(4) / 24.0F;
+         $$2.a(jw.V, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   public void k() {
+      if (this.o != null && !this.o.B) {
+         hx $$0 = this.aC_();
+         clo $$1 = this.x();
+         if (!$$1.b()) {
+            this.h();
+            ejz $$2 = ejz.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
+            clo $$3 = $$1.p();
+            cas $$4 = new cas(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.u();
+            this.o.b($$4);
+         }
+      }
+   }
+
+   public static void a(csf $$0, hx $$1, dhn $$2, dgj $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   @VisibleForTesting
+   public void a(clo $$0) {
+      this.d = $$0;
+      this.o.a(this.aC_(), this.r().b());
+      this.e();
    }
 }

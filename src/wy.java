@@ -1,24 +1,11 @@
-public class wy implements wk<wu> {
-   private final int a;
+public interface wy extends acq {
+   void a(xb var1);
 
-   public wy(int $$0) {
-      this.a = $$0;
-   }
+   void a(xc var1);
 
-   public wy(tu $$0) {
-      this.a = $$0.readInt();
-   }
+   void a(xa var1);
 
-   @Override
-   public void a(tu $$0) {
-      $$0.p(this.a);
-   }
+   void a(xd var1);
 
-   public void a(wu $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
+   void a(wz var1);
 }

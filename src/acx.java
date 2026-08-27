@@ -1,32 +1,38 @@
-public class acx implements wk<acl> {
-   private final int a;
-   private final String b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public acx(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public acx(tu $$0) {
-      this.a = $$0.n();
-      this.b = $$0.d(32500);
+public record acx(String a, Instant b, long c, @Nullable vh d, vc.b e) implements wo<acp> {
+   public acx(ty $$0) {
+      this($$0.d(256), $$0.w(), $$0.readLong(), $$0.c(vh::a), new vc.b($$0));
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(ty $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      $$0.a(this.d, vh::a);
+      this.e.a($$0);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public Instant d() {
+      return this.b;
    }
 
-   public String d() {
-      return this.b;
+   public long e() {
+      return this.c;
+   }
+
+   @Nullable
+   public vh f() {
+      return this.d;
+   }
+
+   public vc.b g() {
+      return this.e;
    }
 }

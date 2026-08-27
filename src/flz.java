@@ -1,60 +1,159 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum flz implements aug {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class flz {
+   private static final Logger k = LogUtils.getLogger();
+   private static final int l = 1024;
+   public String a;
+   public String b;
+   public uv c;
+   public uv d;
+   @Nullable
+   public afn.b e;
+   public long f;
+   public int g = aa.b().e();
+   public uv h = uv.b(aa.b().c());
+   public boolean i;
+   public List<uv> j = Collections.emptyList();
+   private flz.a m = flz.a.c;
+   @Nullable
+   private byte[] n;
+   private flz.b o;
+   private boolean p;
 
-   public static final Codec<flz> d = aug.a(flz::values);
-   private final String e;
-
-   private flz(String $$0) {
-      this.e = $$0;
+   public flz(String $$0, String $$1, flz.b $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.o = $$2;
    }
 
-   public static flz a(vh $$0, ur $$1, Instant $$2) {
-      if (!$$0.h() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public sd a() {
+      sd $$0 = new sd();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.n != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.n));
       }
-   }
 
-   private static boolean a(vh $$0, ur $$1) {
-      if (!$$1.getString().contains($$0.b())) {
-         return true;
-      } else {
-         ur $$2 = $$0.m();
-         return $$2 == null ? false : a($$2);
+      if (this.m == flz.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.m == flz.a.b) {
+         $$0.a("acceptTextures", false);
       }
+
+      return $$0;
    }
 
-   private static boolean a(ur $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), vo.a).orElse(false);
+   public flz.a b() {
+      return this.m;
    }
 
-   private static boolean a(vo $$0) {
-      return !$$0.k().equals(vo.b);
+   public void a(flz.a $$0) {
+      this.m = $$0;
    }
 
-   public boolean a() {
-      return this == c;
+   public static flz a(sd $$0) {
+      flz $$1 = new flz($$0.l("name"), $$0.l("ip"), flz.b.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            k.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(flz.a.a);
+         } else {
+            $$1.a(flz.a.b);
+         }
+      } else {
+         $$1.a(flz.a.c);
+      }
+
+      return $$1;
    }
 
    @Nullable
-   public esy a(vh $$0) {
-      return switch (this) {
-         case b -> esy.a($$0.b());
-         case c -> esy.c();
-         default -> null;
-      };
+   public byte[] c() {
+      return this.n;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public void a(@Nullable byte[] $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.o == flz.b.a;
+   }
+
+   public boolean e() {
+      return this.o == flz.b.b;
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public boolean f() {
+      return this.p;
+   }
+
+   public void a(flz $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.n = $$0.n;
+   }
+
+   public void b(flz $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.o = $$0.o;
+      this.p = $$0.p;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            atu $$1 = atu.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            k.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final uv d;
+
+      private a(String $$0) {
+         this.d = uv.c("addServer.resourcePack." + $$0);
+      }
+
+      public uv a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

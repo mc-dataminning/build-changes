@@ -1,186 +1,117 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dgo extends dfd {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
-   @Nullable
-   private static Executor c;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> d;
-   private static final Executor e = $$0 -> {
-      Executor $$1 = c;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile f;
-   @Nullable
-   private agi g;
-   private int h;
-   private boolean i;
+public class dgo extends dfi implements dlz.b<dmg.b>, dmg {
+   private static final Logger b = LogUtils.getLogger();
+   private dmg.a c;
+   private final dmg.b d;
+   private final dmg.d e = this.c();
+   private int g;
 
-   public dgo(ht $$0, dhi $$1) {
-      super(dff.p, $$0, $$1);
+   protected dgo(dfk<?> $$0, hx $$1, dhn $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dmg.a();
+      this.d = new dmg.b(this);
    }
 
-   public static void a(final ahb $$0, Executor $$1) {
-      c = $$1;
-      final BooleanSupplier $$2 = () -> d == null;
-      d = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : dgo.a($$0, $$0, $$2);
-            }
-         });
+   public dgo(hx $$0, dhn $$1) {
+      this(dfk.I, $$0, $$1);
    }
 
-   public static void c() {
-      c = null;
-      d = null;
-   }
-
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, ahb $$1, BooleanSupplier $$2) {
-      return $$1.e().b($$0).thenApplyAsync($$2x -> {
-         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
-            UUID $$3 = ((GameProfile)$$2x.get()).getId();
-            ProfileResult $$4 = $$1.b().fetchProfile($$3, true);
-            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
+   public dmg.d c() {
+      return new dgo.a(this.aC_());
    }
 
    @Override
-   protected void b(rz $$0) {
-      super.b($$0);
-      if (this.f != null) {
-         rz $$1 = new rz();
-         so.a($$1, this.f);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.g != null) {
-         $$0.a("note_block_sound", this.g.toString());
-      }
-   }
-
-   @Override
-   public void a(rz $$0) {
+   public void a(sd $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(so.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!auh.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.g = agi.a($$0.l("note_block_sound"));
+      this.g = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dmg.a.a.parse(new Dynamic(sr.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
    }
 
-   public static void a(csa $$0, ht $$1, dhi $$2, dgo $$3) {
-      if ($$2.b(dcb.a) && $$2.c(dcb.a)) {
-         $$3.i = true;
-         $$3.h++;
-      } else {
-         $$3.i = false;
-      }
+   @Override
+   protected void b(sd $$0) {
+      super.b($$0);
+      $$0.a("last_vibration_frequency", this.g);
+      dmg.a.a.encodeStart(sr.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   public float a(float $$0) {
-      return this.i ? (float)this.h + $$0 : (float)this.h;
+   @Override
+   public dmg.a gh() {
+      return this.c;
    }
 
-   @Nullable
-   public GameProfile d() {
-      return this.f;
+   @Override
+   public dmg.d gi() {
+      return this.e;
    }
 
-   @Nullable
-   public agi f() {
+   public int f() {
       return this.g;
    }
 
-   public yk g() {
-      return yk.a(this);
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public rz aw_() {
-      return this.o();
+   public dmg.b g() {
+      return this.d;
    }
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.f = $$0;
+   protected class a implements dmg.d {
+      public static final int b = 8;
+      protected final hx c;
+      private final dmb a;
+
+      public a(hx $$1) {
+         this.c = $$1;
+         this.a = new dlt($$1);
       }
 
-      this.i();
-   }
-
-   private void i() {
-      if (this.f != null && !ac.b(this.f.getName()) && !b(this.f)) {
-         a(this.f.getName()).thenAcceptAsync($$0 -> {
-            this.f = $$0.orElse(this.f);
-            this.e();
-         }, e);
-      } else {
-         this.e();
+      @Override
+      public int a() {
+         return 8;
       }
-   }
 
-   @Nullable
-   public static GameProfile d(rz $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return so.a($$0.p("SkullOwner"));
-      } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
+      @Override
+      public dmb b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(ami $$0, hx $$1, dlx $$2, @Nullable dlx.a $$3) {
+         return !$$1.equals(this.c) || $$2 != dlx.f && $$2 != dlx.i ? dbx.n(dgo.this.r()) : false;
+      }
+
+      @Override
+      public void a(ami $$0, hx $$1, dlx $$2, @Nullable bkv $$3, @Nullable bkv $$4, float $$5) {
+         dhn $$6 = dgo.this.r();
+         if (dbx.n($$6)) {
+            dgo.this.a(dmg.a_($$2));
+            int $$7 = dmg.a_($$5, this.a());
+            if ($$6.b() instanceof dbx $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dgo.this.f());
             }
          }
-
-         return null;
       }
-   }
 
-   public static void e(rz $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+      @Override
+      public void e() {
+         dgo.this.e();
       }
-   }
 
-   private static void a(rz $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", so.a(new rz(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = d;
-      return $$1 != null && cdu.c($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   private static boolean b(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

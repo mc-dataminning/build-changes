@@ -1,229 +1,77 @@
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class ffe extends fau {
-   private static final agi c = new agi("social_interactions/background");
-   private static final agi k = new agi("icon/search");
-   private static final ur l = ur.c("gui.socialInteractions.tab_all");
-   private static final ur m = ur.c("gui.socialInteractions.tab_hidden");
-   private static final ur n = ur.c("gui.socialInteractions.tab_blocked");
-   private static final ur o = l.e().a(n.t);
-   private static final ur p = m.e().a(n.t);
-   private static final ur q = n.e().a(n.t);
-   private static final ur r = ur.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final ur t = ur.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final ur u = ur.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final ur v = ur.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final ur w = ur.c("gui.socialInteractions.blocking_hint");
-   private static final int x = 8;
-   private static final int y = 236;
-   private static final int z = 16;
-   private static final int A = 64;
-   public static final int a = 72;
-   public static final int b = 88;
-   private static final int B = 238;
-   private static final int C = 20;
-   private static final int D = 36;
-   ffd E;
-   evi F;
-   private String G = "";
-   private ffe.a H = ffe.a.a;
-   private euz I;
-   private euz J;
-   private euz K;
-   private euz L;
-   @Nullable
-   private ur M;
-   private int N;
-   private boolean O;
+public class ffe extends fex<fms.a> {
+   private static final int r = 120;
+   private static final int t = 85;
+   private static final int u = 178;
+   private static final uv v = uv.c("gui.abuseReport.skin.title");
+   private final eys w = eys.d().a(8);
+   private evw x;
+   private eve y;
+   private eve z;
 
-   public ffe() {
-      super(ur.c("gui.socialInteractions.title"));
-      this.a(etd.N());
+   private ffe(faz $$0, fmr $$1, fms.a $$2) {
+      super(v, $$0, $$1, $$2);
    }
 
-   private int l() {
-      return Math.max(52, this.h - 128 - 16);
+   public ffe(faz $$0, fmr $$1, UUID $$2, Supplier<gcz> $$3) {
+      this($$0, $$1, new fms.a($$2, $$3, $$1.a().b()));
    }
 
-   private int C() {
-      return 80 + this.l() - 8;
-   }
-
-   private int D() {
-      return (this.g - 238) / 2;
+   public ffe(faz $$0, fmr $$1, fms $$2) {
+      this($$0, $$1, new fms.a($$2, $$1.a().b()));
    }
 
    @Override
-   public ur h() {
-      return (ur)(this.M != null ? uq.a(super.h(), this.M) : super.h());
+   protected void aQ_() {
+      this.w.c().b();
+      this.w.a(new ewl(this.e, this.i));
+      eys $$0 = this.w.a(eys.e().a(8));
+      $$0.c().e();
+      $$0.a(new ewe(85, 120, this.f.aO(), this.q.e().a()));
+      eys $$1 = $$0.a(eys.d().a(8));
+      this.z = eve.a(c, $$0x -> this.f.a(new ffd(this, this.q.h(), $$0xx -> {
+            this.q.a($$0xx);
+            this.C();
+         }))).a(178).a();
+      $$1.a(eyk.a(this.i, this.z, b));
+      this.x = this.a(178, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      $$1.a(eyk.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
+      eys $$2 = this.w.a(eys.e().a(8));
+      $$2.a(eve.a(uu.k, $$0x -> this.aG_()).a(120).a());
+      this.y = $$2.a(eve.a(a, $$0x -> this.l()).a(120).a());
+      this.w.a($$1x -> {
+         evc var10000 = this.d($$1x);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   protected void aP_() {
-      if (this.O) {
-         this.E.a(this.g, this.h, 88, this.C());
+   protected void c() {
+      this.w.a();
+      eym.a(this.w, this.s());
+   }
+
+   private void C() {
+      fmp $$0 = this.q.h();
+      if ($$0 != null) {
+         this.z.b($$0.b());
       } else {
-         this.E = new ffd(this, this.f, this.g, this.h, 88, this.C(), 36);
+         this.z.b(c);
       }
 
-      int $$0 = this.E.b() / 3;
-      int $$1 = this.E.o();
-      int $$2 = this.E.p();
-      int $$3 = this.i.a(w) + 40;
-      int $$4 = 64 + this.l();
-      int $$5 = (this.g - $$3) / 2 + 3;
-      this.I = this.d(euz.a(l, $$0x -> this.a(ffe.a.a)).a($$1, 45, $$0, 20).a());
-      this.J = this.d(euz.a(m, $$0x -> this.a(ffe.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
-      this.K = this.d(euz.a(n, $$0x -> this.a(ffe.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
-      String $$6 = this.F != null ? this.F.a() : "";
-      this.F = new evi(this.i, this.D() + 28, 74, 200, 15, r) {
-         @Override
-         protected vf aM_() {
-            return !ffe.this.F.a().isEmpty() && ffe.this.E.e() ? super.aM_().f(", ").b(ffe.t) : super.aM_();
-         }
-      };
-      this.F.l(16);
-      this.F.g(true);
-      this.F.m(16777215);
-      this.F.a($$6);
-      this.F.c(r);
-      this.F.b(this::a);
-      this.e(this.F);
-      this.e(this.E);
-      this.L = this.d(euz.a(w, ezm.b(this, "https://aka.ms/javablocking")).a($$5, $$4, $$3, 20).a());
-      this.O = true;
-      this.a(this.H);
-   }
-
-   private void a(ffe.a $$0) {
-      this.H = $$0;
-      this.I.b(l);
-      this.J.b(m);
-      this.K.b(n);
-      boolean $$1 = false;
-      switch ($$0) {
-         case a:
-            this.I.b(o);
-            Collection<UUID> $$2 = this.f.s.cn.p();
-            this.E.a($$2, this.E.l(), true);
-            break;
-         case b:
-            this.J.b(p);
-            Set<UUID> $$3 = this.f.aJ().c();
-            $$1 = $$3.isEmpty();
-            this.E.a($$3, this.E.l(), false);
-            break;
-         case c:
-            this.K.b(q);
-            ffc $$4 = this.f.aJ();
-            Set<UUID> $$5 = this.f.s.cn.p().stream().filter($$4::e).collect(Collectors.toSet());
-            $$1 = $$5.isEmpty();
-            this.E.a($$5, this.E.l(), false);
-      }
-
-      esv $$6 = this.f.aU();
-      if (!this.F.a().isEmpty() && this.E.e() && !this.F.aJ_()) {
-         $$6.c(t);
-      } else if ($$1) {
-         if ($$0 == ffe.a.b) {
-            $$6.c(u);
-         } else if ($$0 == ffe.a.c) {
-            $$6.c(v);
-         }
-      }
+      fmn.b $$1 = this.q.c();
+      this.y.i = $$1 == null;
+      this.y.a(x.a($$1, fmn.b::a));
    }
 
    @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + 3;
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(c, $$4, 64, 236, this.l() + 16);
-      $$0.a(k, $$4 + 10, 76, 12, 12);
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a(this.f);
-      if (this.M != null) {
-         $$0.b(this.f.h, this.M, this.D() + 8, 35, -1);
-      }
-
-      if (!this.E.e()) {
-         this.E.a($$0, $$1, $$2, $$3);
-      } else if (!this.F.a().isEmpty()) {
-         $$0.a(this.f.h, t, this.g / 2, (72 + this.C()) / 2, -1);
-      } else if (this.H == ffe.a.b) {
-         $$0.a(this.f.h, u, this.g / 2, (72 + this.C()) / 2, -1);
-      } else if (this.H == ffe.a.c) {
-         $$0.a(this.f.h, v, this.g / 2, (72 + this.C()) / 2, -1);
-      }
-
-      this.F.a($$0, $$1, $$2, $$3);
-      this.L.j = this.H == ffe.a.c;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.F.aJ_() && this.f.m.N.a($$0, $$1)) {
-         this.f.a(null);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   private void a(String $$0) {
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-      if (!$$0.equals(this.G)) {
-         this.E.a($$0);
-         this.G = $$0;
-         this.a(this.H);
-      }
-   }
-
-   private void a(etd $$0) {
-      int $$1 = $$0.I().o().size();
-      if (this.N != $$1) {
-         String $$2 = "";
-         flu $$3 = $$0.P();
-         if ($$0.Q()) {
-            $$2 = $$0.S().ac();
-         } else if ($$3 != null) {
-            $$2 = $$3.a;
-         }
-
-         if ($$1 > 1) {
-            this.M = ur.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
-         } else {
-            this.M = ur.a("gui.socialInteractions.server_label.single", $$2, $$1);
-         }
-
-         this.N = $$1;
-      }
-   }
-
-   public void a(fls $$0) {
-      this.E.a($$0, this.H);
-   }
-
-   public void a(UUID $$0) {
-      this.E.a($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
    }
 }

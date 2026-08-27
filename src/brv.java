@@ -1,28 +1,34 @@
 import java.util.EnumSet;
 
-public class brv extends bsb {
-   private final bli a;
+public class brv extends bsg {
+   private final bln a;
+   private final csf b;
 
-   public brv(bli $$0) {
+   public brv(bln $$0, csf $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bsb.a.c));
-      $$0.N().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(bsg.a.c));
    }
 
    @Override
    public boolean a() {
-      return this.a.aZ() && this.a.b(arl.a) > this.a.dg() || this.a.bn();
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(arn.h)) {
+         hx $$1 = this.a.dn().c();
+         dhn $$2 = this.b.a_($$1);
+         return $$2.a(cvh.qP) || $$2.k(this.b, $$1) == ekp.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean S_() {
+   public boolean T_() {
       return true;
    }
 
    @Override
    public void e() {
-      if (this.a.eh().i() < 0.8F) {
-         this.a.M().a();
-      }
+      this.a.M().a();
    }
 }

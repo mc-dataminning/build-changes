@@ -1,12 +1,17 @@
-public class fvn extends fxd<bwz, fhk<bwz>> {
-   private static final agi a = new agi("textures/entity/dolphin.png");
+public class fvn extends fxi<bxb, fhj<bxb>> {
+   private static final agm a = new agm("textures/entity/chicken.png");
 
-   public fvn(fvx.a $$0) {
-      super($$0, new fhk<>($$0.a(fkn.G)), 0.7F);
-      this.a(new fzm(this, $$0.d()));
+   public fvn(fwc.a $$0) {
+      super($$0, new fhj<>($$0.a(fks.t)), 0.3F);
    }
 
-   public agi a(bwz $$0) {
+   public agm a(bxb $$0) {
       return a;
+   }
+
+   protected float a(bxb $$0, float $$1) {
+      float $$2 = atq.i($$1, $$0.bX, $$0.bT);
+      float $$3 = atq.i($$1, $$0.bW, $$0.bU);
+      return (atq.a($$2) + 1.0F) * $$3;
    }
 }

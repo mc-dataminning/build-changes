@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class dof extends doj {
-   private final ig<ecr> e;
-   public static final Codec<dof> a = RecordCodecBuilder.create($$0 -> a($$0).and(iq.a(jz.x).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dof::new));
+abstract class dof implements dod {
+   protected final List<dod> e;
 
-   public dof(iw $$0, ig<ecr> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected dof(List<dod> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dhi $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dnz<?> a() {
-      return dnz.c;
+   public static <T extends dof> Codec<T> a(Function<List<dod>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dod.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

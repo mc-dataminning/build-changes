@@ -1,39 +1,110 @@
-public record bwv(agi l) {
-   public static final agh<bwv> a = a("tabby");
-   public static final agh<bwv> b = a("black");
-   public static final agh<bwv> c = a("red");
-   public static final agh<bwv> d = a("siamese");
-   public static final agh<bwv> e = a("british_shorthair");
-   public static final agh<bwv> f = a("calico");
-   public static final agh<bwv> g = a("persian");
-   public static final agh<bwv> h = a("ragdoll");
-   public static final agh<bwv> i = a("white");
-   public static final agh<bwv> j = a("jellie");
-   public static final agh<bwv> k = a("all_black");
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private static agh<bwv> a(String $$0) {
-      return agh.a(jz.k, new agi($$0));
+public abstract class bwv extends bwt {
+   @Nullable
+   private bwv b;
+   private int c = 1;
+
+   public bwv(bkz<? extends bwv> $$0, csf $$1) {
+      super($$0, $$1);
    }
 
-   public static bwv a(io<bwv> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   @Override
+   protected void B() {
+      super.B();
+      this.bO.a(5, new bsc(this));
    }
 
-   private static bwv a(io<bwv> $$0, agh<bwv> $$1, String $$2) {
-      return io.a($$0, $$1, new bwv(new agi($$2)));
+   @Override
+   public int fJ() {
+      return this.gh();
    }
 
-   public agi a() {
-      return this.l;
+   public int gh() {
+      return super.fJ();
+   }
+
+   @Override
+   protected boolean gf() {
+      return !this.gi();
+   }
+
+   public boolean gi() {
+      return this.b != null && this.b.bx();
+   }
+
+   public bwv a(bwv $$0) {
+      this.b = $$0;
+      $$0.go();
+      return $$0;
+   }
+
+   public void gj() {
+      this.b.gp();
+      this.b = null;
+   }
+
+   private void go() {
+      this.c++;
+   }
+
+   private void gp() {
+      this.c--;
+   }
+
+   public boolean gk() {
+      return this.gl() && this.c < this.gh();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.gl() && this.dN().z.a(200) == 1) {
+         List<? extends bwt> $$0 = this.dN().a((Class<? extends bwt>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
+      }
+   }
+
+   public boolean gl() {
+      return this.c > 1;
+   }
+
+   public boolean gm() {
+      return this.f(this.b) <= 121.0;
+   }
+
+   public void gn() {
+      if (this.gi()) {
+         this.N().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends bwv> $$0) {
+      $$0.limit((long)(this.gh() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public bme a(csu $$0, biz $$1, blp $$2, @Nullable bme $$3, @Nullable sd $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 == null) {
+         $$3 = new bwv.a(this);
+      } else {
+         this.a(((bwv.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bme {
+      public final bwv a;
+
+      public a(bwv $$0) {
+         this.a = $$0;
+      }
    }
 }

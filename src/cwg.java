@@ -1,96 +1,51 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class cwg extends dan {
-   public static final MapCodec<cwg> a = b(cwg::new);
+public interface cwg<T extends Enum<T>> {
+   int w_ = 4;
 
-   @Override
-   public MapCodec<cwg> a() {
-      return a;
-   }
+   Optional<dhn> i_(dhn var1);
 
-   protected cwg(dhh.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-      );
-   }
+   float ax_();
 
-   @Override
-   public dhi a(cnr $$0) {
-      return a($$0.q(), $$0.a(), this.o());
-   }
-
-   public static dhi a(crg $$0, ht $$1, dhi $$2) {
-      dhi $$3 = $$0.a_($$1.d());
-      dhi $$4 = $$0.a_($$1.c());
-      dhi $$5 = $$0.a_($$1.e());
-      dhi $$6 = $$0.a_($$1.h());
-      dhi $$7 = $$0.a_($$1.f());
-      dhi $$8 = $$0.a_($$1.g());
-      cva $$9 = $$2.b();
-      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(cvc.kv) || $$3.a(cvc.fz)))
-         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(cvc.kv)))
-         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(cvc.kv)))
-         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(cvc.kv)))
-         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(cvc.kv)))
-         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(cvc.kv)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(cvc.kv) || $$1 == hx.a && $$2.a(cvc.fz);
-         return $$0.a(h.get($$1), Boolean.valueOf($$6));
+   default void a_(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
+   T c();
 
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      dhi $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+   default Optional<dhn> c(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-      for (hx $$5 : hx.c.a) {
-         ht $$6 = $$2.a($$5);
-         dhi $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
+      for (hx $$7 : hx.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
 
-            dhi $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(cvc.fz)) {
-               return true;
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof cwg<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
             }
          }
       }
 
-      return $$3.a(this) || $$3.a(cvc.fz);
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, c, d, e, f, g);
-   }
-
-   @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
-      return false;
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.ax_();
+      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
    }
 }

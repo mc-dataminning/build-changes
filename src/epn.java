@@ -1,23 +1,36 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class epn extends eps implements epm {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class epn extends epx {
+   private static final Logger b = LogUtils.getLogger();
+   public List<epm> a;
 
-   public epn(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static epn a(String $$0) {
+      epn $$1 = new epn();
+      $$1.a = Lists.newArrayList();
 
-   public int a() {
-      return this.b;
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+            while ($$5.hasNext()) {
+               $$1.a.add(epm.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+      }
+
+      return $$1;
    }
 }

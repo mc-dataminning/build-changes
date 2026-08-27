@@ -1,84 +1,95 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class czn extends cva implements dca {
-   public static final MapCodec<czn> a = b(czn::new);
-   public static final int b = 15;
-   public static final dii c = dhy.aP;
-   public static final dhz d = dhy.C;
-   public static final ToIntFunction<dhi> e = $$0 -> $$0.c(c);
+public class czn extends cty {
+   public static final MapCodec<czn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ctd.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jc.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
+            .apply($$0, czn::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final din g = did.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final ctd.c j;
 
    @Override
    public MapCodec<czn> a() {
-      return a;
+      return d;
    }
 
-   public czn(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(c, d);
+   public czn(ctd.c $$0, jc.a $$1, dhm.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.k(this.E.b().a(g, Integer.valueOf(1)));
    }
 
    @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      if (!$$1.B && $$3.gq()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bix.a;
+   public boolean d(dhn $$0) {
+      return $$0.c(g) == 3;
+   }
+
+   @Override
+   protected boolean a(ecw $$0) {
+      return $$0 == ecy.c && this.j == ctd.c.b;
+   }
+
+   @Override
+   protected double b(dhn $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, bkv $$3) {
+      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
+         $$3.aA();
+         if ($$3.a($$1, $$2)) {
+            this.e($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private void e(dhn $$0, csf $$1, hx $$2) {
+      if (this.j == ctd.c.c) {
+         d(cvh.fu.o().a(g, $$0.c(g)), $$1, $$2);
       } else {
-         return bix.b;
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(dhn $$0, csf $$1, hx $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dhn $$4 = $$3 == 0 ? cvh.ft.o() : $$0.a(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(dlx.c, $$2, dlx.a.a($$4));
+   }
+
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, ctd.c $$3) {
+      if (cwa.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dhn $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(dlx.c, $$2, dlx.a.a($$4));
       }
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return $$3.a(clm.hB) ? ekk.b() : ekk.a();
+   public int a(dhn $$0, csf $$1, hx $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   public boolean a_(dhi $$0, crg $$1, ht $$2) {
-      return true;
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(g);
    }
 
    @Override
-   public dbf b_(dhi $$0) {
-      return dbf.a;
-   }
-
-   @Override
-   public float d(dhi $$0, crg $$1, ht $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   protected void a(dhn $$0, csf $$1, hx $$2, ecw $$3) {
+      if (!this.d($$0)) {
+         dhn $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(dlx.c, $$2, dlx.a.a($$4));
+         $$1.c(1047, $$2, 0);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(d) ? ect.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public clj a(csd $$0, ht $$1, dhi $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static clj a(clj $$0, int $$1) {
-      if ($$1 != 15) {
-         rz $$2 = new rz();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
-      }
-
-      return $$0;
    }
 }

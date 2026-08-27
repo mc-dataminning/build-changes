@@ -1,59 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class doz extends dpv<dsj> {
-   private static final dhi a = cvc.mZ.o().a(cue.h, Integer.valueOf(1)).a(cue.i, dhu.a).a(cue.j, Integer.valueOf(0));
-   private static final dhi b = a.a(cue.i, dhu.c).a(cue.j, Integer.valueOf(1));
-   private static final dhi c = a.a(cue.i, dhu.c);
-   private static final dhi d = a.a(cue.i, dhu.b);
+public record doz<WC extends dou>(dpb<WC> d, WC e) {
+   public static final Codec<doz<?>> a = kc.Q.q().dispatch($$0 -> $$0.d, dpb::c);
+   public static final Codec<ig<doz<?>>> b = agi.a(kd.at, a);
+   public static final Codec<ik<doz<?>>> c = iu.a(kd.at, a);
 
-   public doz(Codec<dsj> $$0) {
-      super($$0);
+   public boolean a(atw $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dpx<dsj> $$0) {
-      int $$1 = 0;
-      ht $$2 = $$0.e();
-      csu $$3 = $$0.b();
-      ats $$4 = $$0.d();
-      dsj $$5 = $$0.f();
-      ht.a $$6 = $$2.j();
-      ht.a $$7 = $$2.j();
-      if ($$3.t($$6)) {
-         if (cvc.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean a(dow $$0, djj $$1, Function<hx, ig<ctd>> $$2, atw $$3, dmi $$4, crm $$5, dji $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dmr.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, cvc.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public dpb<WC> a() {
+      return this.d;
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(hx.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(hx.a, 1), c, 2);
-               $$3.a($$6.c(hx.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public WC b() {
+      return this.e;
    }
 }

@@ -1,28 +1,50 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class arc {
-   protected final Object2IntMap<aqy<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+public class arc<T> extends elb {
+   private final ard n;
+   private final T o;
+   private final are<T> p;
 
-   public arc() {
-      this.a.defaultReturnValue(0);
+   protected arc(are<T> $$0, T $$1, ard $$2) {
+      super(a($$0, $$1));
+      this.p = $$0;
+      this.n = $$2;
+      this.o = $$1;
    }
 
-   public void b(cdu $$0, aqy<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
+   public static <T> String a(are<T> $$0, T $$1) {
+      return a(kc.y.b($$0)) + ":" + a($$0.a().b($$1));
    }
 
-   public void a(cdu $$0, aqy<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
+   private static <T> String a(@Nullable agm $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public <T> int a(ara<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   public are<T> a() {
+      return this.p;
    }
 
-   public int a(aqy<?> $$0) {
-      return this.a.getInt($$0);
+   public T b() {
+      return this.o;
+   }
+
+   public String a(int $$0) {
+      return this.n.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof arc && Objects.equals(this.d(), ((arc)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
    }
 }

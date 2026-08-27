@@ -1,22 +1,47 @@
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+
 public class fqw {
-   private final etd a;
-   private final fqi b;
-   private float c;
-   private float d;
+   public final Int2ObjectMap<geh> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<gea> b = new Int2ObjectOpenHashMap(256);
+   private final geg c;
 
-   public fqw(fqi $$0) {
-      this.b = $$0;
-      this.a = etd.N();
+   public fqw(geg $$0) {
+      this.c = $$0;
    }
 
-   public void a(float $$0, float $$1) {
-      float $$2 = (float)((double)$$0 * this.a.m.q().c());
-      this.c = b(this.c + $$2 * 0.1F, 360.0F);
-      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
-      this.b.a(this.a, 10.0F, -this.c, $$1);
+   public gea a(clo $$0) {
+      gea $$1 = this.a($$0.d());
+      return $$1 == null ? this.c.a() : $$1;
    }
 
-   private static float b(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Nullable
+   public gea a(clj $$0) {
+      return (gea)this.b.get(b($$0));
+   }
+
+   private static int b(clj $$0) {
+      return clj.a($$0);
+   }
+
+   public void a(clj $$0, geh $$1) {
+      this.a.put(b($$0), $$1);
+   }
+
+   public geg a() {
+      return this.c;
+   }
+
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
+
+      while (var1.hasNext()) {
+         Entry<Integer, geh> $$0 = (Entry<Integer, geh>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      }
    }
 }

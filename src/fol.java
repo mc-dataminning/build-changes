@@ -1,11 +1,18 @@
-import javax.annotation.Nullable;
+public class fol extends fon {
+   protected fol(flo $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-public interface fol<T extends jq> {
-   @Nullable
-   foi createParticle(T var1, flj var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   protected fol(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-   public interface a<T extends jq> {
-      @Nullable
-      fpj createParticle(T var1, flj var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public final void a(eof $$0, est $$1, float $$2) {
+   }
+
+   @Override
+   public fos b() {
+      return fos.f;
    }
 }

@@ -3,33 +3,31 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class ddz extends ddj {
-   public static final MapCodec<ddz> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, ddz::new));
-   public static final dic g = cyv.aE;
-   protected static final float h = 2.5F;
-   private static final Map<hx, ekn> i = Maps.newEnumMap(
+public class ddz extends ctw {
+   public static final MapCodec<ddz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckc.q.fieldOf("color").forGetter(ctw::b), u()).apply($$0, ddz::new));
+   public static final dih b = cza.aE;
+   private static final Map<ib, eks> c = Maps.newEnumMap(
       ImmutableMap.of(
-         hx.c,
-         cva.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
-         hx.d,
-         cva.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         hx.e,
-         cva.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
-         hx.f,
-         cva.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+         ib.c,
+         cvf.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         ib.d,
+         cvf.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         ib.e,
+         cvf.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         ib.f,
+         cvf.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
       )
    );
 
    @Override
    public MapCodec<ddz> a() {
-      return f;
+      return a;
    }
 
-   protected ddz(jv $$0, dhh.d $$1) {
+   public ddz(ckc $$0, dhm.d $$1) {
       super($$0, $$1);
-      this.k(this.E.b().a(g, hx.c));
+      this.k(this.E.b().a(b, ib.c));
    }
 
    @Override
@@ -38,34 +36,31 @@ public class ddz extends ddj {
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return h($$0);
-   }
-
-   public static ekn h(dhi $$0) {
-      return i.get($$0.c(g));
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
    }
 
    @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      hx $$3 = $$0.c(g);
-      ht $$4 = $$2.a($$3.g());
-      dhi $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      dhi $$1 = this.o();
-      csd $$2 = $$0.q();
-      ht $$3 = $$0.a();
-      hx[] $$4 = $$0.f();
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return c.get($$0.c(b));
+   }
 
-      for (hx $$5 : $$4) {
+   @Override
+   public dhn a(cnw $$0) {
+      dhn $$1 = this.o();
+      csi $$2 = $$0.q();
+      hx $$3 = $$0.a();
+      ib[] $$4 = $$0.f();
+
+      for (ib $$5 : $$4) {
          if ($$5.o().d()) {
-            hx $$6 = $$5.g();
-            $$1 = $$1.a(g, $$6);
+            ib $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
             if ($$1.a($$2, $$3)) {
                return $$1;
             }
@@ -76,35 +71,17 @@ public class ddz extends ddj {
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? cvc.a.o() : $$0;
+   public dhn a(dhn $$0, dbr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      hx $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      hx $$10 = $$4.g();
-      $$1.a(js.Z, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   public dhn a(dhn $$0, dab $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(g, $$1.a($$0.c(g)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(g);
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b);
    }
 }

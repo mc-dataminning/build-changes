@@ -1,32 +1,23 @@
-public interface cna {
-   cna.a a = new cna.a(false, false);
-   cna.a b = new cna.a(true, false);
+public class cna extends cmd {
+   public cna(clj.a $$0) {
+      super($$0);
+   }
 
-   boolean a();
-
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements cna {
-      @Override
-      public boolean a() {
-         return this.c;
+   @Override
+   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
+      clo $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         cfc $$4 = new cfc($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dF(), $$1.dD(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      @Override
-      public boolean b() {
-         return this.d;
+      $$1.b(arf.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
       }
 
-      public cna.a c() {
-         return new cna.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+      return bjc.a($$3, $$0.y_());
    }
 }

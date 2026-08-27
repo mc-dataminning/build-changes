@@ -1,42 +1,69 @@
-public class ezr extends fau {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final ur c = ur.c("credits_and_attribution.screen.title");
-   private static final ur k = ur.c("credits_and_attribution.button.credits");
-   private static final ur l = ur.c("credits_and_attribution.button.attribution");
-   private static final ur m = ur.c("credits_and_attribution.button.licenses");
-   private final fau n;
-   private final eyj o = new eyj(this);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public ezr(fau $$0) {
-      super(c);
-      this.n = $$0;
+public class ezr extends ezs {
+   private static final uv k = uv.c("chat.copy");
+   private static final uv l = uv.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
+
+   public ezr(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), uv.b($$1), $$1, $$2 ? uu.e : uu.g, $$2);
+   }
+
+   public ezr(BooleanConsumer $$0, uv $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? uu.e : uu.g, $$3);
+   }
+
+   public ezr(BooleanConsumer $$0, uv $$1, uv $$2, String $$3, uv $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (uv)($$5 ? uv.c("chat.link.open") : uu.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
+   }
+
+   protected static vj a(boolean $$0, String $$1) {
+      return c($$0).b(uu.u).b(uv.b($$1));
+   }
+
+   protected static vj c(boolean $$0) {
+      return uv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aP_() {
-      this.o.a(new ewg(this.m(), this.i));
-      eyn $$0 = this.o.c(eyn.d()).a(8);
-      $$0.c().b();
-      $$0.a(euz.a(k, $$0x -> this.l()).a(210).a());
-      $$0.a(euz.a(l, ezm.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(euz.a(m, ezm.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.o.b(euz.a(uq.d, $$0x -> this.aF_()).a());
-      this.o.a();
-      this.o.a(this::d);
+   protected void a(int $$0) {
+      this.d(eve.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(eve.a(k, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(eve.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void k() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   protected void c() {
-      this.o.a();
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      }
    }
 
-   private void l() {
-      this.f.a(new fbc(false, () -> this.f.a(this)));
+   public static void a(faz $$0, String $$1) {
+      eti $$2 = eti.N();
+      $$2.a(new ezr($$3 -> {
+         if ($$3) {
+            ac.i().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
    }
 
-   @Override
-   public void aF_() {
-      this.f.a(this.n);
+   public static eve.c b(faz $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

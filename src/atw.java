@@ -1,28 +1,65 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public final class atw<T> extends AbstractIterator<T> {
-   private final Int2ObjectMap<Deque<T>> a = new Int2ObjectOpenHashMap();
+public interface atw {
+   @Deprecated
+   double a = 2.297;
 
-   public void a(T $$0, int $$1) {
-      ((Deque)this.a.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque())).addLast($$0);
+   static atw a() {
+      return a(dnl.a());
    }
 
-   @Nullable
-   protected T computeNext() {
-      Optional<Deque<T>> $$0 = this.a
-         .int2ObjectEntrySet()
-         .stream()
-         .filter($$0x -> !((Deque)$$0x.getValue()).isEmpty())
-         .max(Comparator.comparingInt(Entry::getKey))
-         .map(Entry::getValue);
-      return $$0.map(Deque::removeFirst).orElseGet(() -> (T)this.endOfData());
+   @Deprecated
+   static atw b() {
+      return new dnp(dnl.a());
+   }
+
+   static atw a(long $$0) {
+      return new dmx($$0);
+   }
+
+   static atw c() {
+      return new dnm(ThreadLocalRandom.current().nextLong());
+   }
+
+   atw d();
+
+   dnj e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
+      }
+   }
+
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

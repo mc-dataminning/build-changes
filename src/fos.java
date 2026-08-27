@@ -1,40 +1,117 @@
-public class fos extends fpj {
-   private final fpe a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   fos(flj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fpe $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fom b() {
-      return fom.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(fpe a) implements fol<jt> {
-      public foi a(jt $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fos $$8 = new fos($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+public interface fos {
+   fos a = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gby.e);
+         $$0.a(eog.b.h, enz.l);
       }
-   }
+
+      @Override
+      public void a(eod $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fos b = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fqs::u);
+         RenderSystem.setShaderTexture(0, gby.f);
+         $$0.a(eog.b.h, enz.l);
+      }
+
+      @Override
+      public void a(eod $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fos c = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gby.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(eog.b.h, enz.l);
+      }
+
+      @Override
+      public void a(eod $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fos d = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gby.f);
+         $$0.a(eog.b.h, enz.l);
+      }
+
+      @Override
+      public void a(eod $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fos e = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(eod $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fos f = new fos() {
+      @Override
+      public void a(enw $$0, gca $$1) {
+      }
+
+      @Override
+      public void a(eod $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(enw var1, gca var2);
+
+   void a(eod var1);
 }

@@ -1,45 +1,69 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gcq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class gcq extends aor {
+   private static final aon c = new aon(uv.c("resourcePack.vanilla.description"), aa.b().a(aoa.a), Optional.empty());
+   private static final anu d = anu.a(aon.b, c);
+   private static final uv e = uv.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, uv> f = Map.of(
+      "programmer_art", uv.c("resourcePack.programmer_art.name"), "high_contrast", uv.c("resourcePack.high_contrast.name")
+   );
+   private static final agm g = new agm("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      aoe.a $$3 = aoe.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public gcq(Path $$0, ejp $$1) {
+      super(aoa.a, b($$0), g, $$1);
+      this.h = this.a($$0);
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = atc.a($$5);
-         JsonObject $$7 = atc.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = atc.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aT && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      return null;
+   }
+
+   private static aoc b(Path $$0) {
+      aod $$1 = new aod().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(aoa.a, $$0).c();
+   }
+
+   @Override
+   protected uv a(String $$0) {
+      uv $$1 = f.get($$0);
+      return (uv)($$1 != null ? $$1 : uv.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected aot a(anz $$0) {
+      return aot.a("vanilla", e, true, b($$0), aoa.a, aot.b.b, aox.c);
+   }
+
+   @Nullable
+   @Override
+   protected aot a(String $$0, aot.c $$1, uv $$2) {
+      return aot.a($$0, $$2, false, $$1, aoa.a, aot.b.a, aox.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, aot>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
+      }
    }
 }

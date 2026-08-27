@@ -1,39 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class dre extends dpv<dsg> {
-   public dre(Codec<dsg> $$0) {
+public class dre extends dqa<dsv> {
+   public dre(Codec<dsv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsg> $$0) {
-      csu $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      ht.a $$3 = new ht.a();
-      ht.a $$4 = new ht.a();
+   public boolean a(dqc<dsv> $$0) {
+      csz $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dsv $$3 = $$0.f();
+         atw $$4 = $$0.d();
+         dbz $$5 = dbz.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dmr.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(hx.a, 1);
-            csy $$10 = $$1.s($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, cvc.dO.o(), 2);
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, cvc.dN.o(), 2);
-               dhi $$11 = $$1.a_($$4);
-               if ($$11.b(dcj.c)) {
-                  $$1.a($$4, $$11.a(dcj.c, Boolean.valueOf(true)), 2);
-               }
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         hx $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, cvh.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            hx $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ib.b)) {
+               $$1.a($$14, cvh.qV.o().a(dby.d, Boolean.valueOf(true)), 3);
             }
          }
-      }
 
-      return true;
+         return true;
+      }
+   }
+
+   private boolean a(csg $$0, hx $$1) {
+      dhn $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dbu) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(cvh.G) || !$$2.u().b()) ? false : ib.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

@@ -1,11 +1,27 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class crt {
-   public Optional<Float> a(crs $$0, crg $$1, ht $$2, dhi $$3, ecs $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+   public static final crt a = new crt(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<crt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, crt::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
+
+   public crt(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   public boolean a(crs $$0, crg $$1, ht $$2, dhi $$3, float $$4) {
-      return true;
+   public List<String> a() {
+      return this.c;
+   }
+
+   public List<String> b() {
+      return this.d;
    }
 }

@@ -1,49 +1,161 @@
-import java.util.Collection;
-import java.util.Comparator;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fge implements fga, fgb {
-   private static final agi a = new agi("spectator/teleport_to_player");
-   private static final Comparator<fls> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final ur c = ur.c("spectatorMenu.teleport");
-   private static final ur d = ur.c("spectatorMenu.teleport.prompt");
-   private final List<fgb> e;
+public class fge {
+   static final agm b = new agm("spectator/close");
+   static final agm c = new agm("spectator/scroll_left");
+   static final agm d = new agm("spectator/scroll_right");
+   private static final fgg e = new fge.a();
+   private static final fgg f = new fge.b(-1, true);
+   private static final fgg g = new fge.b(1, true);
+   private static final fgg h = new fge.b(1, false);
+   private static final int i = 8;
+   static final uv j = uv.c("spectatorMenu.close");
+   static final uv k = uv.c("spectatorMenu.previous_page");
+   static final uv l = uv.c("spectatorMenu.next_page");
+   public static final fgg a = new fgg() {
+      @Override
+      public void a(fge $$0) {
+      }
 
-   public fge() {
-      this(etd.N().I().n());
+      @Override
+      public uv aR_() {
+         return uu.a;
+      }
+
+      @Override
+      public void a(eut $$0, float $$1, int $$2) {
+      }
+
+      @Override
+      public boolean aS_() {
+         return false;
+      }
+   };
+   private final fgh m;
+   private fgf n;
+   private int o = -1;
+   int p;
+
+   public fge(fgh $$0) {
+      this.n = new fgd();
+      this.m = $$0;
    }
 
-   public fge(Collection<fls> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != crx.d).sorted(b).map($$0x -> new ffx($$0x.a())).toList();
+   public fgg a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (fgg)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
    }
 
-   @Override
-   public List<fgb> a() {
-      return this.e;
+   public List<fgg> a() {
+      List<fgg> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
    }
 
-   @Override
-   public ur b() {
-      return d;
+   public fgg b() {
+      return this.a(this.o);
    }
 
-   @Override
-   public void a(ffz $$0) {
-      $$0.a(this);
+   public fgf c() {
+      return this.n;
    }
 
-   @Override
-   public ur aQ_() {
-      return c;
+   public void b(int $$0) {
+      fgg $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aS_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
    }
 
-   @Override
-   public void a(euo $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public void d() {
+      this.m.a(this);
    }
 
-   @Override
-   public boolean aR_() {
-      return !this.e.isEmpty();
+   public int e() {
+      return this.o;
+   }
+
+   public void a(fgf $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public fgi f() {
+      return new fgi(this.a(), this.o);
+   }
+
+   static class a implements fgg {
+      @Override
+      public void a(fge $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public uv aR_() {
+         return fge.j;
+      }
+
+      @Override
+      public void a(eut $$0, float $$1, int $$2) {
+         $$0.a(fge.b, 0, 0, 16, 16);
+      }
+
+      @Override
+      public boolean aS_() {
+         return true;
+      }
+   }
+
+   static class b implements fgg {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fge $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public uv aR_() {
+         return this.a < 0 ? fge.k : fge.l;
+      }
+
+      @Override
+      public void a(eut $$0, float $$1, int $$2) {
+         if (this.a < 0) {
+            $$0.a(fge.c, 0, 0, 16, 16);
+         } else {
+            $$0.a(fge.d, 0, 0, 16, 16);
+         }
+      }
+
+      @Override
+      public boolean aS_() {
+         return this.b;
+      }
    }
 }

@@ -1,136 +1,154 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
 public class ajm {
-   private static final Logger a = LogUtils.getLogger();
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), 0, true)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
-                  .then(
-                     dv.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                    "raid"
+                                 )
+                                 .requires($$0x -> $$0x.c(3)))
+                              .then(
+                                 dv.a("start")
+                                    .then(
+                                       dv.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+                                    )
+                              ))
+                           .then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
+                        .then(dv.a("check").executes($$0x -> d((du)$$0x.getSource()))))
+                     .then(dv.a("sound").then(dv.a("type", ec.a()).executes($$0x -> a((du)$$0x.getSource(), ec.a($$0x, "type"))))))
+                  .then(dv.a("spawnleader").executes($$0x -> b((du)$$0x.getSource()))))
+               .then(
+                  dv.a("setomen")
+                     .then(
+                        dv.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                     )
+               ))
+            .then(dv.a("glow").executes($$0x -> a((du)$$0x.getSource())))
       );
    }
 
-   private static int a(du $$0, int $$1, boolean $$2) {
-      ame $$3 = $$0.f();
-      amc $$4 = $$3.k();
-      $$4.a.d();
-      eju $$5 = $$0.e();
-      crh $$6 = new crh(ht.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
-
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            crh $$13 = new crh($$12, $$11);
-            djp $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (ht $$15 : ht.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.ak() - 1, $$13.g())) {
-                  $$3.a($$15, cvc.a.o(), 16);
-               }
-            }
+   private static int a(du $$0) throws CommandSyntaxException {
+      cfg $$1 = a($$0.h());
+      if ($$1 != null) {
+         for (cfh $$3 : $$1.h()) {
+            $$3.b(new bki(bkk.x, 1000, 1));
          }
       }
 
-      bhq<Runnable> $$16 = bhq.a(ac.f(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(djj.f, djj.g, djj.h, djj.i, djj.j, djj.k).iterator();
-
-      while (var33.hasNext()) {
-         djj $$19 = (djj)var33.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-
-         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
-            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               crh $$24 = new crh($$23, $$22);
-               djp $$25 = $$4.a($$23, $$22, false);
-               if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<dje> $$26 = Lists.newArrayList();
-                  int $$27 = Math.max(1, $$19.e());
-
-                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
-                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        dje $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        dje $$31;
-                        if ($$30 instanceof djo) {
-                           $$31 = new djo(((djo)$$30).C(), true);
-                        } else if ($$30 instanceof djp) {
-                           $$31 = new djo((djp)$$30, true);
-                        } else {
-                           $$31 = $$30;
-                        }
-
-                        $$26.add($$31);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$26).thenApply($$1xx -> {
-                        if ($$19 == djj.g) {
-                           $$1xx.left().ifPresent($$0xxx -> dmr.a($$0xxx, djj.b));
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
-         }
-
-         $$0.m().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
-
-      long $$34 = System.currentTimeMillis();
-
-      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
-         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            crh $$37 = new crh($$36, $$35);
-            djp $$38 = $$4.a($$36, $$35, false);
-            if ($$38 != null && (!$$2 || !$$38.s())) {
-               for (ht $$39 : ht.b($$37.d(), $$3.I_(), $$37.e(), $$37.f(), $$3.ak() - 1, $$37.g())) {
-                  $$4.a($$39);
-               }
-            }
-         }
-      }
-
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
-      long $$40 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> ur.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
-               )
-            ),
-         true
-      );
       return 1;
+   }
+
+   private static int a(du $$0, int $$1) throws CommandSyntaxException {
+      cfg $$2 = a($$0.h());
+      if ($$2 != null) {
+         int $$3 = $$2.l();
+         if ($$1 > $$3) {
+            $$0.b(uv.b("Sorry, the max bad omen level you can set is " + $$3));
+         } else {
+            int $$4 = $$2.m();
+            $$2.a($$1);
+            $$0.a(() -> uv.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+         }
+      } else {
+         $$0.b(uv.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(du $$0) {
+      $$0.a(() -> uv.b("Spawned a raid captain"), false);
+      cfh $$1 = bkz.ay.a((csf)$$0.e());
+      if ($$1 == null) {
+         $$0.b(uv.b("Pillager failed to spawn"));
+         return 0;
+      } else {
+         $$1.w(true);
+         $$1.a(bla.f, cfg.s());
+         $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
+         $$1.a($$0.e(), $$0.e().d_(hx.a($$0.d())), blp.n, null, null);
+         $$0.e().a_($$1);
+         return 1;
+      }
+   }
+
+   private static int a(du $$0, @Nullable uv $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         ami $$2 = $$0.e();
+         ejz $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.c, $$3.d, $$3.e, aqv.tK, aqw.g, 2.0F, 1.0F, $$2.z.g());
+      }
+
+      return 1;
+   }
+
+   private static int b(du $$0, int $$1) throws CommandSyntaxException {
+      amj $$2 = $$0.h();
+      hx $$3 = $$2.dn();
+      if ($$2.z().d($$3)) {
+         $$0.b(uv.b("Raid already started close by"));
+         return -1;
+      } else {
+         cfi $$4 = $$2.z().y();
+         cfg $$5 = $$4.a($$2);
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.c();
+            $$0.a(() -> uv.b("Created a raid in your local village"), false);
+         } else {
+            $$0.b(uv.b("Failed to create a raid in your local village"));
+         }
+
+         return 1;
+      }
+   }
+
+   private static int c(du $$0) throws CommandSyntaxException {
+      amj $$1 = $$0.h();
+      hx $$2 = $$1.dn();
+      cfg $$3 = $$1.z().c($$2);
+      if ($$3 != null) {
+         $$3.n();
+         $$0.a(() -> uv.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(uv.b("No raid here"));
+         return -1;
+      }
+   }
+
+   private static int d(du $$0) throws CommandSyntaxException {
+      cfg $$1 = a($$0.h());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> uv.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.k());
+         $$3.append(" Bad omen level: ");
+         $$3.append($$1.m());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.r());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.q());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> uv.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(uv.b("Found no started raids"));
+         return 0;
+      }
+   }
+
+   @Nullable
+   private static cfg a(amj $$0) {
+      return $$0.z().c($$0.dn());
    }
 }

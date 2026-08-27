@@ -1,14 +1,24 @@
-public record wv(alt a) implements wk<wu> {
-   public wv(tu $$0) {
-      this(new alt($$0));
+public class wv implements wo<wr> {
+   private final int a;
+
+   public wv(int $$0) {
+      this.a = $$0;
+   }
+
+   public wv(ty $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(tu $$0) {
-      this.a.a($$0);
+   public void a(ty $$0) {
+      $$0.p(this.a);
    }
 
-   public void a(wu $$0) {
+   public void a(wr $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

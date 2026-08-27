@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum bjs implements aug {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum bjs implements auk {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   public static final Codec<bjs> d = aug.a(bjs::values);
+   public static final Codec<bjs> d = auk.a(bjs::values);
    private final String e;
 
    private bjs(String $$0) {

@@ -1,87 +1,118 @@
-public abstract class cfy extends bkq {
-   protected static final afo<Integer> f = afr.a(cfy.class, afq.b);
-   protected static final afo<Integer> g = afr.a(cfy.class, afq.b);
-   protected static final afo<Float> h = afr.a(cfy.class, afq.d);
+public class cfy extends cfq {
+   static final afs<String> c = afv.a(cfy.class, afu.e);
+   static final afs<uv> d = afv.a(cfy.class, afu.f);
+   private final crg e = new cfy.a();
+   private static final int i = 4;
+   private int j;
 
-   public cfy(bku<?> $$0, csa $$1) {
+   public cfy(bkz<? extends cfy> $$0, csf $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean a(bjo $$0, float $$1) {
-      if (this.dN().B || this.dI()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dls.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cdu && ((cdu)$$0.d()).fU().d;
-         if (($$2 || !(this.N() > 40.0F)) && (!$$2 || !this.ah_())) {
-            if ($$2) {
-               this.am();
-            }
-         } else {
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   boolean ah_() {
-      return false;
-   }
-
-   public void b(cle $$0) {
-      this.al();
-      if (this.dN().Y().b(crw.i)) {
-         clj $$1 = new clj($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
-      }
+   public cfy(csf $$0, double $$1, double $$2, double $$3) {
+      super(bkz.s, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void b_() {
-      this.an.a(f, 0);
-      this.an.a(g, 1);
-      this.an.a(h, 0.0F);
+   protected clj ah_() {
+      return clr.nL;
    }
 
-   public void d(int $$0) {
-      this.an.b(f, $$0);
+   @Override
+   protected void c_() {
+      super.c_();
+      this.an().a(c, "");
+      this.an().a(d, uu.a);
    }
 
-   public void m(int $$0) {
-      this.an.b(g, $$0);
+   @Override
+   protected void a(sd $$0) {
+      super.a($$0);
+      this.e.b($$0);
+      this.an().b(c, this.C().m());
+      this.an().b(d, this.C().l());
    }
 
-   public void b(float $$0) {
-      this.an.b(h, $$0);
+   @Override
+   protected void b(sd $$0) {
+      super.b($$0);
+      this.e.a($$0);
    }
 
-   public float N() {
-      return this.an.b(h);
+   @Override
+   public cfq.a w() {
+      return cfq.a.g;
    }
 
-   public int O() {
-      return this.an.b(f);
+   @Override
+   public dhn y() {
+      return cvh.fN.o();
    }
 
-   public int P() {
-      return this.an.b(g);
+   public crg C() {
+      return this.e;
    }
 
-   protected void a(bjo $$0) {
-      this.b(this.ag_());
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ah - this.j >= 4) {
+         this.C().a(this.dN());
+         this.j = this.ah;
+      }
    }
 
-   abstract cle ag_();
+   @Override
+   public bjb a(cdz $$0, bja $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(afs<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.an().b(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.an().b(c));
+      }
+   }
+
+   @Override
+   public boolean cN() {
+      return true;
+   }
+
+   public class a extends crg {
+      @Override
+      public ami e() {
+         return (ami)cfy.this.dN();
+      }
+
+      @Override
+      public void f() {
+         cfy.this.an().b(cfy.c, this.m());
+         cfy.this.an().b(cfy.d, this.l());
+      }
+
+      @Override
+      public ejz g() {
+         return cfy.this.dl();
+      }
+
+      public cfy h() {
+         return cfy.this;
+      }
+
+      @Override
+      public du i() {
+         return new du(this, cfy.this.dl(), cfy.this.bG(), this.e(), 2, this.n().getString(), cfy.this.Q_(), this.e().n(), cfy.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cfy.this.dI();
+      }
+   }
 }

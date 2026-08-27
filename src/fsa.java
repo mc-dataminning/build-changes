@@ -1,68 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class fsa {
-   private final agi a;
-   private final List<fsa.b> b;
+   public float[] a;
+   public final int b;
 
-   public fsa(agi $$0, List<fsa.b> $$1) {
+   public fsa(@Nullable float[] $$0, int $$1) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+      this.b = $$1;
    }
 
-   public agi a() {
-      return this.a;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   public Stream<fsa.b> b() {
-      return this.b.stream();
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
    }
 
    protected static class a implements JsonDeserializer<fsa> {
+      private static final int a = 0;
+
       public fsa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         agi $$4 = new agi(atc.i($$3, "model"));
-         List<fsa.b> $$5 = this.a($$3);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
          return new fsa($$4, $$5);
       }
 
-      protected List<fsa.b> a(JsonObject $$0) {
-         Map<agi, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = atc.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new agi($$3.getKey()), atc.e($$3.getValue(), $$3.getKey()));
+      protected int a(JsonObject $$0) {
+         int $$1 = atg.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
-
-         return $$1.entrySet().stream().map($$0x -> new fsa.b((agi)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
-   }
-
-   public static class b {
-      private final agi a;
-      private final float b;
-
-      public b(agi $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
 
-      public agi a() {
-         return this.a;
-      }
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = atg.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-      public float b() {
-         return this.b;
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = atg.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
    }
 }

@@ -1,33 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import net.minecraft.server.MinecraftServer;
 
-public interface ani {
-   ani a = new ani() {
-      @Override
-      public void a() {
+public class ani implements aeq {
+   private static final uv a = uv.c("disconnect.ignoring_status_request");
+   private final MinecraftServer b;
+   private final tw c;
+
+   public ani(MinecraftServer $$0, tw $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public void a(aep $$0) {
+      switch ($$0.f()) {
+         case b:
+            this.c.a(aeo.b);
+            if ($$0.a() != aa.b().e()) {
+               uv $$1;
+               if ($$0.a() < 754) {
+                  $$1 = uv.a("multiplayer.disconnect.outdated_client", aa.b().c());
+               } else {
+                  $$1 = uv.a("multiplayer.disconnect.incompatible", aa.b().c());
+               }
+
+               this.c.a(new aex($$1));
+               this.c.a($$1);
+            } else {
+               this.c.a(new anj(this.b, this.c));
+            }
+            break;
+         case a:
+            afn $$3 = this.b.as();
+            if (this.b.ak() && $$3 != null) {
+               this.c.a(aeo.a);
+               this.c.a(new anl($$3, this.c));
+            } else {
+               this.c.a(a);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.f());
       }
+   }
 
-      @Override
-      public void b() {
-      }
+   @Override
+   public void a(uv $$0) {
+   }
 
-      @Override
-      public CompletableFuture<amv> a(String $$0) {
-         return CompletableFuture.completedFuture(amv.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<amv>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(amv::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<amv> a(String var1);
-
-   CompletableFuture<List<amv>> a(List<String> var1);
+   @Override
+   public boolean c() {
+      return this.c.k();
+   }
 }

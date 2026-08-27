@@ -1,68 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class ctw extends cum implements ckk {
-   public static final dhz a = dhy.w;
-   private final dcb.a b;
+public abstract class ctw extends cur {
+   private final ckc a;
 
-   public ctw(dcb.a $$0, dhh.d $$1) {
+   protected ctw(ckc $$0, dhm.d $$1) {
       super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+      this.a = $$0;
    }
 
    @Override
    protected abstract MapCodec<? extends ctw> a();
 
    @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dgo($$0, $$1);
+   public boolean a(dhn $$0) {
+      return true;
    }
 
-   @Nullable
    @Override
-   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
+   public dfi a(hx $$0, dhn $$1) {
+      return new dey($$0, $$1, this.a);
+   }
+
+   @Override
+   public void a(csf $$0, hx $$1, dhn $$2, @Nullable bll $$3, clo $$4) {
       if ($$0.B) {
-         boolean $$3 = $$1.a(cvc.gO) || $$1.a(cvc.gP) || $$1.a(cvc.gQ) || $$1.a(cvc.gR);
-         if ($$3) {
-            return a($$2, dff.p, dgo::a);
-         }
+         $$0.a($$1, dfk.t).ifPresent($$1x -> $$1x.b($$4));
+      } else if ($$4.A()) {
+         $$0.a($$1, dfk.t).ifPresent($$1x -> $$1x.a($$4.y()));
       }
-
-      return null;
-   }
-
-   public dcb.a b() {
-      return this.b;
    }
 
    @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
-      return false;
+   public clo a(csi $$0, hx $$1, dhn $$2) {
+      dfi $$3 = $$0.c_($$1);
+      return $$3 instanceof dey ? ((dey)$$3).f() : super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public bkv g() {
-      return bkv.f;
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dhi a(cnr $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().B($$0.a())));
-   }
-
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.B($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   public ckc b() {
+      return this.a;
    }
 }

@@ -1,50 +1,93 @@
-import java.util.Objects;
+import com.google.common.collect.Sets;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class aqy<T> extends ekw {
-   private final aqz n;
-   private final T o;
-   private final ara<T> p;
+public class aqy {
+   protected final Set<agm> a = Sets.newHashSet();
+   protected final Set<agm> b = Sets.newHashSet();
+   private final aqz c = new aqz();
 
-   protected aqy(ara<T> $$0, T $$1, aqz $$2) {
-      super(a($$0, $$1));
-      this.p = $$0;
-      this.n = $$2;
-      this.o = $$1;
+   public void a(aqy $$0) {
+      this.a.clear();
+      this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
    }
 
-   public static <T> String a(ara<T> $$0, T $$1) {
-      return a(jy.y.b($$0)) + ":" + a($$0.a().b($$1));
+   public void a(cov<?> $$0) {
+      if (!$$0.b().ar_()) {
+         this.a($$0.a());
+      }
    }
 
-   private static <T> String a(@Nullable agi $$0) {
-      return $$0.toString().replace(':', '.');
+   protected void a(agm $$0) {
+      this.a.add($$0);
    }
 
-   public ara<T> a() {
-      return this.p;
+   public boolean b(@Nullable cov<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
    }
 
-   public T b() {
-      return this.o;
+   public boolean b(agm $$0) {
+      return this.a.contains($$0);
    }
 
-   public String a(int $$0) {
-      return this.n.format($$0);
+   public void c(cov<?> $$0) {
+      this.c($$0.a());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof aqy && Objects.equals(this.d(), ((aqy)$$0).d());
+   protected void c(agm $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
+   public boolean d(cov<?> $$0) {
+      return this.b.contains($$0.a());
    }
 
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
+   public void e(cov<?> $$0) {
+      this.b.remove($$0.a());
+   }
+
+   public void f(cov<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(agm $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(cif $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(cif $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(cie<?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(cif $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(cif $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(aqz $$0) {
+      this.c.a($$0);
+   }
+
+   public aqz a() {
+      return this.c.a();
+   }
+
+   public void a(cif $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
    }
 }

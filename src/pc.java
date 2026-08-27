@@ -1,24 +1,24 @@
-import com.google.common.collect.ImmutableList;
+import java.util.OptionalLong;
 
 public class pc {
-   public static final agh<dyq> a = a("empty");
-
-   public static agh<dyq> a(String $$0) {
-      return agh.a(jz.aE, new agi($$0));
-   }
-
-   public static void a(ov<dyq> $$0, String $$1, dyq $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(ov<dyq> $$0) {
-      ic<dyq> $$1 = $$0.a(jz.aE);
-      ib<dyq> $$2 = $$1.b(a);
-      $$0.a(a, new dyq($$2, ImmutableList.of(), dyq.a.b));
-      or.a($$0);
-      pa.a($$0);
-      pm.a($$0);
-      om.a($$0);
-      pl.a($$0);
+   public static void a(oz<dkw> $$0) {
+      $$0.a(
+         dku.a,
+         new dkw(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, ark.ba, dku.e, 0.0F, new dkw.a(false, true, bim.a(0, 7), 0))
+      );
+      $$0.a(
+         dku.b,
+         new dkw(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, ark.bb, dku.f, 0.1F, new dkw.a(true, false, bid.a(7), 15))
+      );
+      $$0.a(
+         dku.c,
+         new dkw(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, ark.bc, dku.g, 0.0F, new dkw.a(false, true, bim.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dku.d,
+         new dkw(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, ark.ba, dku.e, 0.0F, new dkw.a(false, true, bim.a(0, 7), 0))
+      );
    }
 }

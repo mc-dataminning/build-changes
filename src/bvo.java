@@ -1,28 +1,42 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
 
-public class bvo extends bvl<blg> {
-   @Override
-   public Set<buh<?>> a() {
-      return ImmutableSet.of(buh.i);
+public class bvo extends bvq<cdm> {
+   private static final int a = 40;
+
+   public bvo() {
+      super(40);
+   }
+
+   protected void a(ami $$0, cdm $$1) {
+      agl<csf> $$2 = $$0.ad();
+      hx $$3 = $$1.dn();
+      List<ie> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               hx $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gq().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(ie.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bml<?> $$10 = $$1.dP();
+      if (!$$4.isEmpty()) {
+         $$10.a(bum.f, $$4);
+      } else {
+         $$10.b(bum.f);
+      }
    }
 
    @Override
-   protected void a(ame $$0, blg $$1) {
-      $$1.dP().a(buh.i, this.a($$1));
-   }
-
-   private List<blg> a(blg $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(blg $$0) {
-      return $$0.ai() == bku.bf && $$0.n_();
-   }
-
-   private buj c(blg $$0) {
-      return $$0.dP().c(buh.h).orElse(buj.a());
+   public Set<bum<?>> a() {
+      return ImmutableSet.of(bum.f);
    }
 }

@@ -1,38 +1,55 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import java.io.IOException;
+import java.util.List;
+import org.slf4j.Logger;
 
-public interface ub {
-   static ub a(final Runnable $$0) {
-      return new ub() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class ub extends ByteToMessageDecoder implements ug {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<tx.a<?>> b;
 
-         @Nullable
-         @Override
-         public wk<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public ub(AttributeKey<tx.a<?>> $$0) {
+      this.b = $$0;
    }
 
-   static ub a(final Supplier<wk<?>> $$0) {
-      return new ub() {
-         @Nullable
-         @Override
-         public wk<?> b() {
-            return $$0.get();
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         Attribute<tx.a<?>> $$4 = $$0.channel().attr(this.b);
+         tx.a<?> $$5 = (tx.a<?>)$$4.get();
+         ty $$6 = new ty($$1);
+         int $$7 = $$6.n();
+         wo<?> $$8 = $$5.a($$7, $$6);
+         if ($$8 == null) {
+            throw new IOException("Bad packet id " + $$7);
+         } else {
+            bfy.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            if ($$6.readableBytes() > 0) {
+               throw new IOException(
+                  "Packet "
+                     + $$5.a().a()
+                     + "/"
+                     + $$7
+                     + " ("
+                     + $$8.getClass().getSimpleName()
+                     + ") was larger than I expected, found "
+                     + $$6.readableBytes()
+                     + " bytes extra whilst reading packet "
+                     + $$7
+               );
+            } else {
+               $$2.add($$8);
+               if (a.isDebugEnabled()) {
+                  a.debug(tw.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
+               }
+
+               ug.a($$4, $$8);
+            }
          }
-      };
-   }
-
-   default void a() {
-   }
-
-   @Nullable
-   default wk<?> b() {
-      return null;
+      }
    }
 }

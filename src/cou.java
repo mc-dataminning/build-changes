@@ -1,90 +1,81 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cou extends cof {
-   public cou(coc $$0) {
-      super($$0);
+public class cou {
+   private final cou.a[] a;
+   private WeakReference<cow> b = new WeakReference<>(null);
+
+   public cou(int $$0) {
+      this.a = new cou.a[$$0];
    }
 
-   public boolean a(chc $$0, csa $$1) {
-      List<clj> $$2 = Lists.newArrayList();
+   public Optional<coi> a(csf $$0, chh $$1) {
+      if ($$1.aj_()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         clj $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               clj $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cou.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
+   }
+
+   private void a(csf $$0) {
+      cow $$1 = $$0.q();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<coi> a(chh $$0, csf $$1) {
+      Optional<cov<coi>> $$2 = $$1.q().a(coy.a, $$0, $$1);
+      this.a($$0.h(), $$2.map(cov::b).orElse(null));
+      return $$2.map(cov::b);
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cou.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<clo> $$0, @Nullable coi $$1) {
+      ip<clo> $$2 = ip.a($$0.size(), clo.b);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cou.a($$2, $$1);
+   }
+
+   static record a(ip<clo> a, @Nullable coi b) {
+      public boolean a(List<clo> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!clo.c(this.a.get($$1), $$0.get($$1))) {
                   return false;
                }
             }
+
+            return true;
          }
       }
-
-      return $$2.size() == 2;
-   }
-
-   public clj a(chc $$0, ip $$1) {
-      List<clj> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         clj $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               clj $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return clj.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         clj $$6 = $$2.get(0);
-         clj $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cle $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            clj $$13 = new clj($$6.d());
-            $$13.b($$12);
-            Map<cpu, Integer> $$14 = Maps.newHashMap();
-            Map<cpu, Integer> $$15 = cpw.a($$6);
-            Map<cpu, Integer> $$16 = cpw.a($$7);
-            jy.g.s().filter(cpu::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cpw.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return clj.b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cos<?> aq_() {
-      return cos.o;
    }
 }

@@ -1,29 +1,30 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface cvw {
-   ekn r_ = cva.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dhz s_ = dhy.D;
+public class cvw extends cvf {
+   public static final MapCodec<cvw> a = b(cvw::new);
+   protected static final eks b = cvf.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-   static bix a(@Nullable bkq $$0, dhi $$1, csa $$2, ht $$3) {
-      if ($$1.c(s_)) {
-         cva.a($$2, $$3, new clj(clm.wi, 1));
-         float $$4 = atm.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, aqr.dx, aqs.e, 1.0F, $$4);
-         dhi $$5 = $$1.a(s_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dls.c, $$3, dls.a.a($$0, $$5));
-         return bix.a($$2.B);
-      } else {
-         return bix.d;
-      }
+   @Override
+   public MapCodec<? extends cvw> a() {
+      return a;
    }
 
-   static boolean h_(dhi $$0) {
-      return $$0.b(s_) && $$0.c(s_);
+   public cvw(dhm.d $$0) {
+      super($$0);
    }
 
-   static ToIntFunction<dhi> h_(int $$0) {
-      return $$1 -> $$1.c(dhy.D) ? $$0 : 0;
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return !$$1.t($$2.d());
    }
 }

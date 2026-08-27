@@ -3,13 +3,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public record bs(ig<bku<?>> b) {
-   public static final Codec<bs> a = Codec.either(arv.b(jz.t), jy.h.r())
+public record bs(ik<bkz<?>> b) {
+   public static final Codec<bs> a = Codec.either(arz.b(kd.t), kc.h.r())
       .flatComapMap(
-         $$0 -> (bs)$$0.map($$0x -> new bs(jy.h.a($$0x)), $$0x -> new bs(ig.a($$0x))),
+         $$0 -> (bs)$$0.map($$0x -> new bs(kc.h.a($$0x)), $$0x -> new bs(ik.a($$0x))),
          $$0 -> {
-            ig<bku<?>> $$1 = $$0.a();
-            Optional<arv<bku<?>>> $$2 = $$1.d();
+            ik<bkz<?>> $$1 = $$0.a();
+            Optional<arz<bkz<?>>> $$2 = $$1.d();
             if ($$2.isPresent()) {
                return DataResult.success(Either.left($$2.get()));
             } else {
@@ -20,19 +20,19 @@ public record bs(ig<bku<?>> b) {
          }
       );
 
-   public static bs a(bku<?> $$0) {
-      return new bs(ig.a($$0.r()));
+   public static bs a(bkz<?> $$0) {
+      return new bs(ik.a($$0.r()));
    }
 
-   public static bs a(arv<bku<?>> $$0) {
-      return new bs(jy.h.a($$0));
+   public static bs a(arz<bkz<?>> $$0) {
+      return new bs(kc.h.a($$0));
    }
 
-   public boolean b(bku<?> $$0) {
+   public boolean b(bkz<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public ig<bku<?>> a() {
+   public ik<bkz<?>> a() {
       return this.b;
    }
 }

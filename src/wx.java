@@ -1,24 +1,26 @@
-public class wx implements wk<wu> {
-   private final long a;
+import java.util.Map;
 
-   public wx(long $$0) {
+public class wx implements wo<wr> {
+   private final Map<agl<? extends is<?>>, asc.a> a;
+
+   public wx(Map<agl<? extends is<?>>, asc.a> $$0) {
       this.a = $$0;
    }
 
-   public void a(wu $$0) {
-      $$0.a(this);
-   }
-
-   public wx(tu $$0) {
-      this.a = $$0.readLong();
+   public wx(ty $$0) {
+      this.a = $$0.a(ty::u, asc.a::b);
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.b(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a, ty::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public long a() {
+   public void a(wr $$0) {
+      $$0.a(this);
+   }
+
+   public Map<agl<? extends is<?>>, asc.a> a() {
       return this.a;
    }
 }

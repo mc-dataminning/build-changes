@@ -1,15 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ebe {
-   @Nullable
-   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
-      return $$4;
+public class ebe extends ebg {
+   public static final Codec<ebe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhn.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, ebe::new)
+   );
+   private final dhn b;
+   private final float d;
+
+   public ebe(dhn $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   protected abstract ebg<?> a();
+   @Override
+   public boolean a(dhn $$0, atw $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
 
-   public List<ebh.c> a(csp $$0, ht $$1, ht $$2, List<ebh.c> $$3, List<ebh.c> $$4, ebd $$5) {
-      return $$4;
+   @Override
+   protected ebh<?> a() {
+      return ebh.f;
    }
 }

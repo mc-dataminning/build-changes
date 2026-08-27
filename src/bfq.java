@@ -1,25 +1,12 @@
-public final class bfq implements Comparable<bfq> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-   public bfq(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
+public interface bfq extends bfs {
+   bfr d();
 
-   public int a(bfq $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
-   }
+   @Nullable
+   bfl.a c(String var1);
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
-   }
+   Set<Pair<String, bgv>> e();
 }

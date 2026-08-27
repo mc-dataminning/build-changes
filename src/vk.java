@@ -1,71 +1,35 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
+public interface vk {
+   uv a();
 
-public record vk(String b, Instant c, long d, uy e) {
-   public static final MapCodec<vk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(vk::a),
-               asu.m.fieldOf("time_stamp").forGetter(vk::b),
-               Codec.LONG.fieldOf("salt").forGetter(vk::c),
-               uy.a.optionalFieldOf("last_seen", uy.b).forGetter(vk::d)
-            )
-            .apply($$0, vk::new)
-   );
+   void a(amj var1, boolean var2, ur.a var3);
 
-   public static vk a(String $$0) {
-      return new vk($$0, Instant.now(), 0L, uy.b);
+   static vk a(vl $$0) {
+      return (vk)($$0.g() ? new vk.a($$0.c()) : new vk.b($$0));
    }
 
-   public void a(atx.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public static record a(uv a) implements vk {
+      @Override
+      public void a(amj $$0, boolean $$1, ur.a $$2) {
+         $$0.c.a(this.a, $$2);
+      }
    }
 
-   public vk.a a(ve $$0) {
-      return new vk.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public uy d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, uy.a d) {
-      public a(tu $$0) {
-         this($$0.d(256), $$0.w(), $$0.readLong(), new uy.a($$0));
+   public static record b(vl a) implements vk {
+      @Override
+      public uv a() {
+         return this.a.c();
       }
 
-      public void a(tu $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+      @Override
+      public void a(amj $$0, boolean $$1, ur.a $$2) {
+         vl $$3 = this.a.a($$1);
+         if (!$$3.i()) {
+            $$0.c.a($$3, $$2);
+         }
       }
 
-      public Optional<vk> a(ve $$0) {
-         return this.d.a($$0).map($$0x -> new vk(this.a, this.b, this.c, $$0x));
+      public vl b() {
+         return this.a;
       }
    }
 }

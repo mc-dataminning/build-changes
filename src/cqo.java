@@ -1,25 +1,35 @@
-public class cqo extends cpu {
-   public cqo(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.i, $$1);
+public class cqo extends cpz {
+   public cqo(cpz.a $$0, bla... $$1) {
+      super($$0, cqa.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + ($$0 - 1) * 8;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 20;
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
    }
 
    @Override
    public int a() {
-      return 5;
-   }
-
-   @Override
-   public float a(int $$0, bll $$1) {
-      return $$1 == bll.e ? (float)$$0 * 2.5F : 0.0F;
+      return 3;
    }
 }

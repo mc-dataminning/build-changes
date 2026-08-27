@@ -1,57 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class dpj extends dpk {
-   public dpj(Codec<dsg> $$0) {
+public class dpj extends dqa<drw> {
+   public dpj(Codec<drw> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(csb $$0, ats $$1, ht $$2, dhi $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(dqc<drw> $$0) {
+      hx $$1 = $$0.e();
+      csz $$2 = $$0.b();
+      atw $$3 = $$0.d();
+      drw $$4 = $$0.f();
+      if ($$1.v() < $$2.J_() + 5) {
          return false;
       } else {
-         hx $$4 = hx.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<hx> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (hx $$8 : $$6.subList(0, $$5)) {
-            ht.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            hx $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(hx.b);
-               hx[] $$13 = new hx[]{$$8, hx.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(hx.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(hx.b);
-               }
+         for (hx $$7 : hx.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
          return true;
+      }
+   }
+
+   private boolean a(csg $$0, hx $$1, atw $$2) {
+      hx $$3 = $$1.d();
+      dhn $$4 = $$0.a_($$3);
+      return $$4.a(cvh.kE) ? $$2.h() : $$4.d($$0, $$3, ib.b);
+   }
+
+   private void a(csg $$0, hx $$1, atw $$2, drw $$3) {
+      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

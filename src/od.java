@@ -1,23 +1,47 @@
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class od extends oe<dxh> {
-   public od(kh $$0, CompletableFuture<id.b> $$1) {
-      super($$0, jz.aB, $$1);
+public abstract class od<T> extends oi<T> {
+   private final Function<T, agl<T>> d;
+
+   public od(kl $$0, agl<? extends is<T>> $$1, CompletableFuture<ii.b> $$2, Function<T, agl<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(id.b $$0) {
-      this.b(arr.o).a(dxb.t).a(dxb.u).a(dxb.v).a(dxb.w).a(dxb.x);
-      this.b(arr.p).a(dxb.b).a(dxb.c);
-      this.b(arr.s).a(dxb.m).a(dxb.n);
-      this.b(arr.q).a(dxb.h).a(dxb.i);
-      this.b(arr.r).a(dxb.z).a(dxb.A).a(dxb.C).a(dxb.E).a(dxb.D).a(dxb.y).a(dxb.B);
-      this.b(arr.m).a(dxb.j);
-      this.b(arr.n).a(dxb.j);
-      this.b(arr.a).a(dxb.k);
-      this.b(arr.b).b(arr.s).b(arr.q);
-      this.b(arr.c).a(dxb.d);
-      this.b(arr.d).a(dxb.l);
-      this.b(arr.l).a(dxb.r);
+   public od(kl $$0, agl<? extends is<T>> $$1, CompletableFuture<ii.b> $$2, CompletableFuture<oi.c<T>> $$3, Function<T, agl<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected od.a<T> a(arz<T> $$0) {
+      arw $$1 = this.c($$0);
+      return new od.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends oi.b<T> {
+      private final Function<T, agl<T>> a;
+
+      a(arw $$0, Function<T, agl<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public od.a<T> a(arz<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final od.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final od.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

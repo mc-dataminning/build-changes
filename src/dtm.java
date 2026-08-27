@@ -1,28 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtm<P extends dtl> {
-   public static final dtm<dtg> a = a("blob_foliage_placer", dtg.a);
-   public static final dtm<dtr> b = a("spruce_foliage_placer", dtr.a);
-   public static final dtm<dtp> c = a("pine_foliage_placer", dtp.a);
-   public static final dtm<dtf> d = a("acacia_foliage_placer", dtf.a);
-   public static final dtm<dth> e = a("bush_foliage_placer", dth.c);
-   public static final dtm<dtk> f = a("fancy_foliage_placer", dtk.c);
-   public static final dtm<dtn> g = a("jungle_foliage_placer", dtn.a);
-   public static final dtm<dto> h = a("mega_pine_foliage_placer", dto.a);
-   public static final dtm<dtj> i = a("dark_oak_foliage_placer", dtj.a);
-   public static final dtm<dtq> j = a("random_spread_foliage_placer", dtq.a);
-   public static final dtm<dti> k = a("cherry_foliage_placer", dti.a);
-   private final Codec<P> l;
+public class dtm extends dtl {
+   public static final Codec<dtm> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtm::new));
 
-   private static <P extends dtl> dtm<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.X, $$0, new dtm<>($$1));
+   public dtm(big $$0, big $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private dtm(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected dtr<?> a() {
+      return dtr.e;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected void a(csl $$0, dtq.b $$1, atw $$2, dta $$3, int $$4, dtq.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(atw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

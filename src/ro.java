@@ -1,41 +1,20 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ro implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+public class ro implements rw {
+   private static final Logger a = LogUtils.getLogger();
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      if (rc.b($$1)) {
-         return $$1;
+   @Override
+   public void a(re $$0) {
+      String $$1 = $$0.d().x();
+      if ($$0.s()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
       } else {
-         Message $$2 = ur.b("No such test class: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
       }
    }
 
-   public static ro a() {
-      return new ro();
-   }
-
-   public static String a(CommandContext<du> $$0, String $$1) {
-      return (String)$$0.getArgument($$1, String.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.b(rc.b().stream(), $$1);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   @Override
+   public void b(re $$0) {
    }
 }

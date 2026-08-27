@@ -1,84 +1,93 @@
-import java.util.function.LongFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dnq extends dms {
-   private final ats d;
-   private int e;
+public interface dnq {
+   Codec<dnq> a = asy.a(dnq.b.d, asy.a(dnq.a.d, dnq.c.d)).xmap(dnq::a, dnq::a);
+   dnq b = b(0);
+   dnq c = c(0);
 
-   public dnq(ats $$0) {
-      super(0L);
-      this.d = $$0;
+   static dnq a(int $$0) {
+      return new dnq.b($$0);
    }
 
-   public int l() {
-      return this.e;
+   static dnq b(int $$0) {
+      return new dnq.a($$0);
    }
 
-   @Override
-   public ats d() {
-      return this.d.d();
+   static dnq c(int $$0) {
+      return new dnq.c($$0);
    }
 
-   @Override
-   public dne e() {
-      return this.d.e();
+   static dnq a() {
+      return b;
    }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dms $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   static dnq b() {
+      return c;
    }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+   private static dnq a(Either<dnq.b, Either<dnq.a, dnq.c>> $$0) {
+      return (dnq)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dnq.b, Either<dnq.a, dnq.c>> a(dnq $$0) {
+      return $$0 instanceof dnq.b ? Either.left((dnq.b)$$0) : Either.right($$0 instanceof dnq.a ? Either.left((dnq.a)$$0) : Either.right((dnq.c)$$0));
+   }
+
+   int a(dnt var1);
+
+   public static record a(int e) implements dnq {
+      public static final Codec<dnq.a> d = Codec.intRange(dkw.e, dkw.d).fieldOf("above_bottom").xmap(dnq.a::new, dnq.a::c).codec();
+
+      @Override
+      public int a(dnt $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
+   public static record b(int e) implements dnq {
+      public static final Codec<dnq.b> d = Codec.intRange(dkw.e, dkw.d).fieldOf("absolute").xmap(dnq.b::new, dnq.b::c).codec();
 
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ats a(int $$0, int $$1, long $$2, long $$3) {
-      return ats.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dms::new),
-      b(dns::new);
-
-      private final LongFunction<ats> c;
-
-      private a(LongFunction<ats> $$0) {
-         this.c = $$0;
+      @Override
+      public int a(dnt $$0) {
+         return this.e;
       }
 
-      public ats a(long $$0) {
-         return this.c.apply($$0);
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dnq {
+      public static final Codec<dnq.c> d = Codec.intRange(dkw.e, dkw.d).fieldOf("below_top").xmap(dnq.c::new, dnq.c::c).codec();
+
+      @Override
+      public int a(dnt $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

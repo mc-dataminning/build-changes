@@ -1,11 +1,22 @@
-public class cix extends cle {
-   public cix(cle.a $$0) {
-      super($$0);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cix extends clj {
+   private final cvf a;
+
+   public cix(cvf $$0, clj.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public cea a(csa $$0, clj $$1, blg $$2) {
-      cec $$3 = new cec($$0, $$2, $$1.c(1));
-      $$3.a($$1);
-      return $$3;
+   @Override
+   public String a() {
+      return this.a.h();
+   }
+
+   @Override
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,15 +1,17 @@
-public class gct extends gcx {
-   private static final agi a = new agi("back");
+import java.io.IOException;
 
-   public gct(gbv $$0) {
-      super($$0, new agi("textures/atlas/paintings.png"), new agi("paintings"));
+public class gct extends apq<int[]> {
+   private static final agm a = new agm("textures/colormap/foliage.png");
+
+   protected int[] a(apl $$0, bfs $$1) {
+      try {
+         return gcw.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public gbu a(caj $$0) {
-      return this.a(jy.m.b($$0));
-   }
-
-   public gbu a() {
-      return this.a(a);
+   protected void a(int[] $$0, apl $$1, bfs $$2) {
+      crz.a($$0);
    }
 }

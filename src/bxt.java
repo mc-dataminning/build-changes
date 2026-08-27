@@ -1,61 +1,30 @@
-public abstract class bxt extends blp {
-   protected bxt(bku<? extends bxt> $$0, csa $$1) {
+public abstract class bxt extends bmg {
+   private static final int bW = 100;
+   private int bX;
+
+   protected bxt(bkz<? extends bxt> $$0, csf $$1) {
       super($$0, $$1);
-      this.a(edd.j, 0.0F);
    }
 
-   @Override
-   public bll eT() {
-      return bll.e;
-   }
-
-   @Override
-   public boolean a(csd $$0) {
-      return $$0.f(this);
-   }
-
-   @Override
-   public int Q() {
-      return 120;
-   }
-
-   @Override
-   public int ef() {
-      return 1 + this.dN().z.a(3);
-   }
-
-   protected void b(int $$0) {
-      if (this.bx() && !this.bc()) {
-         this.j($$0 - 1);
-         if (this.ci() == -20) {
-            this.j(0);
-            this.a(this.dO().h(), 2.0F);
-         }
+   public boolean b(amj $$0) {
+      sd $$1 = new sd();
+      $$1.a("id", this.bw());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.am();
+         return true;
       } else {
-         this.j(300);
+         return false;
       }
    }
 
    @Override
-   public void as() {
-      int $$0 = this.ci();
-      super.as();
-      this.b($$0);
+   public void l() {
+      this.bX++;
+      super.l();
    }
 
-   @Override
-   public boolean cz() {
-      return false;
-   }
-
-   @Override
-   public boolean a(cdu $$0) {
-      return false;
-   }
-
-   public static boolean c(bku<? extends bxt> $$0, csb $$1, blk $$2, ht $$3, ats $$4) {
-      int $$5 = $$1.z_();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(arl.a) && $$1.a_($$3.c()).a(cvc.G);
+   public boolean go() {
+      return this.bX > 100;
    }
 }

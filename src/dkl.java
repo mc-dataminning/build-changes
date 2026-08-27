@@ -1,104 +1,94 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public final class dkl implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dkk> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
-
-   dkl(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   private dkk b(crh $$0) throws IOException {
-      long $$1 = crh.c($$0.h(), $$0.i());
-      dkk $$2 = (dkk)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((dkk)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dkk $$4 = new dkk($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
-   }
-
+public class dkl implements AutoCloseable {
+   public static final int d = 1493;
+   private final dkn a;
+   protected final DataFixer e;
    @Nullable
-   public rz a(crh $$0) throws IOException {
-      dkk $$1 = this.b($$0);
+   private volatile dxh b;
 
-      rz var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = sm.a($$2);
-      }
-
-      return var4;
+   public dkl(Path $$0, DataFixer $$1, boolean $$2) {
+      this.e = $$1;
+      this.a = new dkn($$0, $$2, "chunk");
    }
 
-   public void a(crh $$0, st $$1) throws IOException {
-      dkk $$2 = this.b($$0);
+   public boolean b(crm $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            sm.a((DataInput)$$3, $$1, si.a());
+   public sd a(agl<csf> $$0, Supplier<een> $$1, sd $$2, Optional<agl<Codec<? extends djk>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = auw.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dxh $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
          }
+      }
+
+      a($$2, $$0, $$3);
+      $$2 = auw.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         ss.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private dxh a(agl<csf> $$0, Supplier<een> $$1) {
+      dxh $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dxh.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(sd $$0, agl<csf> $$1, Optional<agl<Codec<? extends djk>>> $$2) {
+      sd $$3 = new sd();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(sd $$0) {
+      return ss.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<sd>> e(crm $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(crm $$0, sd $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   protected void a(crh $$0, @Nullable rz $$1) throws IOException {
-      dkk $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            sm.a($$1, (DataOutput)$$3);
-         }
-      }
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      ast<IOException> $$0 = new ast<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dkk $$1 = (dkk)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+      this.a.close();
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
-
-      while (var1.hasNext()) {
-         dkk $$0 = (dkk)var1.next();
-         $$0.a();
-      }
+   public dkj p() {
+      return this.a;
    }
 }

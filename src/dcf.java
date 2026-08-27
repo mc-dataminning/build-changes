@@ -1,31 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcf extends cwu {
-   public static final MapCodec<dcf> b = b(dcf::new);
-   private static final ur c = ur.c("container.upgrade");
-
+public interface dcf extends cvm, czv {
    @Override
-   public MapCodec<dcf> a() {
-      return b;
-   }
-
-   protected dcf(dhh.d $$0) {
-      super($$0);
+   default boolean a(@Nullable cdz $$0, crl $$1, hx $$2, dhn $$3, ecw $$4) {
+      return $$4 == ecy.c;
    }
 
    @Override
-   public bja b(dhi $$0, csa $$1, ht $$2) {
-      return new bjf(($$2x, $$3, $$4) -> new cii($$2x, $$3, cgx.a($$1, $$2)), c);
-   }
+   default boolean a(csg $$0, hx $$1, dhn $$2, ecx $$3) {
+      if (!$$2.c(did.C) && $$3.a() == ecy.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.a(did.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      if ($$1.B) {
-         return bix.a;
+         return true;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arb.aF);
-         return bix.b;
+         return false;
       }
+   }
+
+   @Override
+   default clo a(@Nullable cdz $$0, csg $$1, hx $$2, dhn $$3) {
+      if ($$3.c(did.C)) {
+         $$1.a($$2, $$3.a(did.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new clo(clr.qw);
+      } else {
+         return clo.b;
+      }
+   }
+
+   @Override
+   default Optional<aqu> av_() {
+      return ecy.c.j();
    }
 }

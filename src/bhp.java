@@ -1,50 +1,48 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 
-public interface bhp<Msg> extends AutoCloseable {
-   String bs();
+public class bhp<E extends bhn> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   void a(Msg var1);
-
-   @Override
-   default void close() {
+   bhp(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bho.a($$0);
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bhp<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   public static <E extends bhn> bhp<E> c() {
+      return new bhp<>(ImmutableList.of());
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super bhp<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
+   @SafeVarargs
+   public static <E extends bhn> bhp<E> a(E... $$0) {
+      return new bhp<>(ImmutableList.copyOf($$0));
    }
 
-   static <Msg> bhp<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bhp<Msg>() {
-         @Override
-         public String bs() {
-            return $$0;
-         }
+   public static <E extends bhn> bhp<E> a(List<E> $$0) {
+      return new bhp<>($$0);
+   }
 
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
+   public boolean d() {
+      return this.b.isEmpty();
+   }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public Optional<E> b(atw $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bho.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bhn> Codec<bhp<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bhp::a, bhp::e);
    }
 }

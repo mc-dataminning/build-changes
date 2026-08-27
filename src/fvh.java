@@ -1,17 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fvh extends fxi<cax, fhb<cax>> {
+   private static final agm a = new agm("textures/entity/blaze.png");
 
-public class fvh<T extends byp> extends fuu<T, fhd<T>> {
-   private static final Map<bku<?>, agi> a = Maps.newHashMap(
-      ImmutableMap.of(bku.w, new agi("textures/entity/horse/donkey.png"), bku.ap, new agi("textures/entity/horse/mule.png"))
-   );
-
-   public fvh(fvx.a $$0, float $$1, fkm $$2) {
-      super($$0, new fhd<>($$0.a($$2)), $$1);
+   public fvh(fwc.a $$0) {
+      super($$0, new fhb<>($$0.a(fks.l)), 0.5F);
    }
 
-   public agi a(T $$0) {
-      return a.get($$0.ai());
+   protected int a(cax $$0, hx $$1) {
+      return 15;
+   }
+
+   public agm a(cax $$0) {
+      return a;
    }
 }

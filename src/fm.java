@@ -12,21 +12,21 @@ import java.util.concurrent.CompletableFuture;
 
 public class fm implements ArgumentType<fo> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ur.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(uv.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("argument.pos.outofbounds"));
 
    public static fm a() {
       return new fm();
    }
 
-   public static ht a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ame $$2 = ((du)$$0.getSource()).f();
+   public static hx a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      ami $$2 = ((du)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static ht a(CommandContext<du> $$0, ame $$1, String $$2) throws CommandSyntaxException {
-      ht $$3 = b($$0, $$2);
+   public static hx a(CommandContext<du> $$0, ami $$1, String $$2) throws CommandSyntaxException {
+      hx $$3 = b($$0, $$2);
       if (!$$1.A($$3)) {
          throw a.create();
       } else if (!$$1.j($$3)) {
@@ -36,13 +36,13 @@ public class fm implements ArgumentType<fo> {
       }
    }
 
-   public static ht b(CommandContext<du> $$0, String $$1) {
+   public static hx b(CommandContext<du> $$0, String $$1) {
       return ((fo)$$0.getArgument($$1, fo.class)).c((du)$$0.getSource());
    }
 
-   public static ht c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ht $$2 = b($$0, $$1);
-      if (!csa.k($$2)) {
+   public static hx c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      hx $$2 = b($$0, $$1);
+      if (!csf.k($$2)) {
          throw c.create();
       } else {
          return $$2;

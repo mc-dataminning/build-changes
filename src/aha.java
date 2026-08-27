@@ -1,113 +1,90 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public class aha extends bjg {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
+public class aha {
+   private static final agm a = new agm("tick");
+   private static final agm b = new agm("load");
+   private final MinecraftServer c;
+   private List<hb<du>> d = ImmutableList.of();
+   private boolean e;
+   private agz f;
 
-   public aha(MinecraftServer $$0) {
-      this.l = $$0;
+   public aha(MinecraftServer $$0, agz $$1) {
+      this.c = $$0;
+      this.f = $$1;
+      this.b($$1);
    }
 
-   public boolean a() {
-      return this.j > 0L;
+   public CommandDispatcher<du> a() {
+      return this.c.aE().a();
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
-   }
+   public void b() {
+      if (this.c.aO().i()) {
+         if (this.e) {
+            this.e = false;
+            Collection<hb<du>> $$0 = this.f.b(b);
+            this.a($$0, b);
+         }
 
-   private void n() {
-      this.l.ae().a(acc.a(this));
-   }
-
-   private void o() {
-      this.l.ae().a(acd.a(this));
-   }
-
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
+         this.a(this.d, a);
       }
    }
 
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
-      } else {
-         return false;
+   private void a(Collection<hb<du>> $$0, agm $$1) {
+      this.c.aR().a($$1::toString);
+
+      for (hb<du> $$2 : $$0) {
+         this.a($$2, this.c());
+      }
+
+      this.c.aR().c();
+   }
+
+   public void a(hb<du> $$0, du $$1) {
+      bfs $$2 = this.c.aR();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         hd<du> $$3 = $$0.a(null, this.a(), $$1);
+         dv.a($$1, $$2x -> go.a($$2x, $$3, $$1, dq.a));
+      } catch (dx var8) {
+      } finally {
+         $$2.c();
       }
    }
 
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
-      }
+   public void a(agz $$0) {
+      this.f = $$0;
+      this.b($$0);
    }
 
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
+   private void b(agz $$0) {
+      this.d = ImmutableList.copyOf($$0.b(a));
+      this.e = true;
    }
 
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)aul.b;
-      int $$2 = (int)((double)(aul.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aF().a(() -> ur.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.B();
+   public du c() {
+      return this.c.aF().a(2).a();
    }
 
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
-      }
+   public Optional<hb<du>> a(agm $$0) {
+      return this.f.a($$0);
    }
 
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
+   public Collection<hb<du>> b(agm $$0) {
+      return this.f.b($$0);
    }
 
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.B();
-      this.n();
+   public Iterable<agm> d() {
+      return this.f.a().keySet();
    }
 
-   public void a(amf $$0) {
-      $$0.c.b(acc.a(this));
-      $$0.c.b(acd.a(this));
+   public Iterable<agm> e() {
+      return this.f.b();
    }
 }

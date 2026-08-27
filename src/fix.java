@@ -1,40 +1,31 @@
-public class fix<T extends bkq> extends fhy<T> {
-   private final fko a;
-   private final fko b;
-   private final fko f;
+public class fix extends fjr {
+   private final fkt a;
+   private final fkt b;
+   private final fkt c;
 
-   public fix(fko $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+   public fix(fkt $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fkt.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fkq.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fkt.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fkt.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fkq.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fkt.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fkt.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fkt.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fkt.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fkt.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fkt.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fkq.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fkt.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fkq.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fkt.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fkq.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fku.a($$0, 32, 32);
+   public static flb a() {
+      flb $$0 = new flb();
+      fiy.a(fkx.a, $$0);
+      return $$0;
    }
 
    @Override
-   public fko a() {
-      return this.a;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * atm.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * atm.a($$3 * 0.2F);
+   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

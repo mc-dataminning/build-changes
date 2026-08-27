@@ -1,138 +1,145 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class sv implements ta {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+public class sv extends st {
+   private static final int b = 10;
+   public static final tc<sv> a = new tc.a<sv>() {
+      public sv a(DataInput $$0, sm $$1) throws IOException {
+         return sv.a(d($$0, $$1));
+      }
 
-   public String a(sw $$0) {
+      @Override
+      public sx.b a(DataInput $$0, sx $$1, sm $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static short d(DataInput $$0, sm $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
+
+      @Override
+      public int c() {
+         return 2;
+      }
+
+      @Override
+      public String a() {
+         return "SHORT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
+
+   sv(short $$0) {
+      this.c = $$0;
+   }
+
+   public static sv a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? sv.a.a[$$0 - -128] : new sv($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public tc<sv> c() {
+      return a;
+   }
+
+   public sv e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof sv && this.c == ((sv)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(te $$0) {
       $$0.a(this);
-      return this.b.toString();
    }
 
    @Override
-   public void a(su $$0) {
-      this.b.append(su.b($$0.s_()));
+   public long f() {
+      return (long)this.c;
    }
 
    @Override
-   public void a(rx $$0) {
-      this.b.append($$0.l()).append('b');
+   public int g() {
+      return this.c;
    }
 
    @Override
-   public void a(sr $$0) {
-      this.b.append($$0.l()).append('s');
+   public short h() {
+      return this.c;
    }
 
    @Override
-   public void a(se $$0) {
-      this.b.append($$0.l());
+   public byte i() {
+      return (byte)(this.c & 255);
    }
 
    @Override
-   public void a(sh $$0) {
-      this.b.append($$0.l()).append('L');
+   public double j() {
+      return (double)this.c;
    }
 
    @Override
-   public void a(sc $$0) {
-      this.b.append($$0.k()).append('f');
+   public float k() {
+      return (float)this.c;
    }
 
    @Override
-   public void a(sa $$0) {
-      this.b.append($$0.j()).append('d');
+   public Number l() {
+      return this.c;
    }
 
    @Override
-   public void a(rw $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
+   public sx.b a(sx $$0) {
+      return $$0.a(this.c);
+   }
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final sv[] a = new sv[1153];
 
-         this.b.append($$1[$$2]).append('B');
+      private a() {
       }
 
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(sd $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new sv((short)(-128 + $$0));
          }
-
-         this.b.append($$1[$$2]);
       }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(sg $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(sf $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append(new sv().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(rz $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
-         }
-
-         this.b.append(a($$2)).append(':').append(new sv().a($$0.c($$2)));
-      }
-
-      this.b.append('}');
-   }
-
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : su.b($$0);
-   }
-
-   @Override
-   public void a(sb $$0) {
-      this.b.append("END");
    }
 }

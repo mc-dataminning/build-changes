@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cgg {
+   final cgj a;
+   final long b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cgg {
+   cgg(cgj $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

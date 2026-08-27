@@ -1,12 +1,8 @@
-public class cge {
-   private final String a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public cge(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cge {
 }

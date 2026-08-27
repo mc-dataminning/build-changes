@@ -1,81 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public class up {
-   public static final Codec<up> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(up.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, up::new)
-   );
-   private final up.a b;
-   private final String c;
+@Sharable
+public class up extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   public up(up.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public up.a a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         up $$1 = (up)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = um.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("unable to fit " + $$3 + " into 3");
       } else {
-         return false;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
-
-   public static enum a implements aug {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
-
-      public static final MapCodec<up.a> g = aug.a(up.a::values).fieldOf("action");
-      public static final MapCodec<up.a> h = asu.a(g, up.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
-      }
-
-      public boolean a() {
-         return this.i;
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
-
-      public static DataResult<up.a> a(up.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+         $$2.ensureWritable($$4 + $$3);
+         um.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
       }
    }
 }

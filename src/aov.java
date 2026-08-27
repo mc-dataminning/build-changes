@@ -1,50 +1,55 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class aov extends aon {
-   private static final aoj b = new aoj(ur.c("dataPack.vanilla.description"), aa.b().a(anw.b), Optional.empty());
-   private static final ans c = new ans(cgf.h);
-   private static final anq d = anq.a(aoj.b, b, ans.a, c);
-   private static final ur e = ur.c("dataPack.vanilla.name");
-   private static final agi f = new agi("minecraft", "datapacks");
+public abstract class aov<T> {
+   private final ejp a;
 
-   public aov(ejk $$0) {
-      super(anw.b, b(), f, $$0);
-   }
-
-   @VisibleForTesting
-   public static any b() {
-      return new anz().a(d).a("minecraft").b().a().c();
-   }
-
-   @Override
-   protected ur a(String $$0) {
-      return ur.b($$0);
+   protected aov(ejp $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   @Override
-   protected aop a(anv $$0) {
-      return aop.a("vanilla", e, false, b($$0), anw.b, aop.b.b, aot.c);
+   public T a(Path $$0, List<ejq> $$1) throws IOException {
+      Path $$2 = $$0;
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
+      }
+
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
+
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      }
+
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
    }
 
    @Nullable
-   @Override
-   protected aop a(String $$0, aop.c $$1, ur $$2) {
-      return aop.a($$0, $$2, false, $$1, anw.b, aop.b.a, aot.d);
-   }
+   protected abstract T d(Path var1) throws IOException;
 
-   public static aos a(Path $$0, ejk $$1) {
-      return new aos(new aov($$1), new aoo($$0, anw.b, aot.e, $$1));
-   }
-
-   public static aos c() {
-      return new aos(new aov(new ejk($$0 -> true)));
-   }
-
-   public static aos a(een.c $$0) {
-      return a($$0.a(eel.j), $$0.b().e());
-   }
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

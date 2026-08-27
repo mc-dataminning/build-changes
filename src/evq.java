@@ -1,35 +1,22 @@
-public class evq {
-   public static final agi a = new agi("textures/gui/title/minecraft.png");
-   public static final agi b = new agi("textures/gui/title/minceraft.png");
-   public static final agi c = new agi("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)ats.a().i() < 1.0E-4;
-   private final boolean o;
+public class evq extends eve {
+   protected final ewr a;
 
-   public evq(boolean $$0) {
-      this.o = $$0;
+   public evq(int $$0, int $$1, int $$2, int $$3, ewr $$4, eve.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, uu.a);
    }
 
-   public void a(euo $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public evq(int $$0, int $$1, int $$2, int $$3, ewr $$4, eve.c $$5, uv $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, p);
+      this.a = $$4;
    }
 
-   public void a(euo $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public evq(int $$0, int $$1, ewr $$2, eve.c $$3, uv $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      agm $$4 = this.a.a(this.aM_(), this.n());
+      $$0.a($$4, this.p(), this.r(), this.f, this.g);
    }
 }

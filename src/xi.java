@@ -1,16 +1,5 @@
-public record xi() implements xd {
-   public static final agi a = new agi("debug/game_test_clear");
-
-   public xi(tu $$0) {
-      this();
-   }
-
+public record xi(agm a) implements xh {
    @Override
-   public void a(tu $$0) {
-   }
-
-   @Override
-   public agi a() {
-      return a;
+   public void a(ty $$0) {
    }
 }

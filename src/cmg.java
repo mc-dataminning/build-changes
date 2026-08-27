@@ -1,55 +1,71 @@
+import com.google.common.collect.Maps;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cmg extends cle implements ckk {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
+public class cmg extends clj {
+   private static final Map<aqu, cmg> a = Maps.newHashMap();
+   private final int b;
+   private final aqu c;
+   private final int d;
 
-   public cmg(cle.a $$0) {
-      super($$0);
-      cxf.a(this, cit.a);
+   protected cmg(int $$0, aqu $$1, clj.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public String j(clj $$0) {
-      return cjc.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   public bjb a(cny $$0) {
+      csf $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      dhn $$3 = $$1.a_($$2);
+      if ($$3.a(cvh.dT) && !$$3.c(czh.b)) {
+         clo $$4 = $$0.n();
+         if (!$$1.B) {
+            cdz $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dgj $$6) {
+               $$6.b($$4.p());
+               $$1.a(dlx.c, $$2, dlx.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(arf.al);
+            }
+         }
+
+         return bjb.a($$1.B);
+      } else {
+         return bjb.d;
+      }
+   }
+
+   public int h() {
+      return this.b;
    }
 
    @Override
-   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
-      ciz.a($$0, $$2);
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      $$2.add(this.i().a(n.h));
    }
 
-   @Override
-   public cnc c(clj $$0) {
-      return cnc.d;
+   public vj i() {
+      return uv.c(this.a() + ".desc");
    }
 
-   @Override
-   public int b(clj $$0) {
-      return 72000;
+   @Nullable
+   public static cmg a(aqu $$0) {
+      return a.get($$0);
    }
 
-   @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return biy.b($$3);
+   public aqu x() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(clj $$0, clj $$1) {
-      return $$1.a(aro.b) || super.a($$0, $$1);
-   }
-
-   public static cjx d(clj $$0) {
-      rz $$1 = cjc.a($$0);
-      return $$1 != null ? cjx.a($$1.h("Base")) : cjx.a;
-   }
-
-   @Override
-   public bkv g() {
-      return bkv.b;
+   public int y() {
+      return this.d;
    }
 }

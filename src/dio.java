@@ -1,37 +1,62 @@
-import java.util.Optional;
+public enum dio implements auk {
+   a("harp", aqv.qJ, dio.a.a),
+   b("basedrum", aqv.qD, dio.a.a),
+   c("snare", aqv.qM, dio.a.a),
+   d("hat", aqv.qK, dio.a.a),
+   e("bass", aqv.qE, dio.a.a),
+   f("flute", aqv.qH, dio.a.a),
+   g("bell", aqv.qF, dio.a.a),
+   h("guitar", aqv.qI, dio.a.a),
+   i("chime", aqv.qG, dio.a.a),
+   j("xylophone", aqv.qN, dio.a.a),
+   k("iron_xylophone", aqv.qO, dio.a.a),
+   l("cow_bell", aqv.qP, dio.a.a),
+   m("didgeridoo", aqv.qQ, dio.a.a),
+   n("bit", aqv.qR, dio.a.a),
+   o("banjo", aqv.qS, dio.a.a),
+   p("pling", aqv.qL, dio.a.a),
+   q("zombie", aqv.qT, dio.a.b),
+   r("skeleton", aqv.qU, dio.a.b),
+   s("creeper", aqv.qV, dio.a.b),
+   t("dragon", aqv.qW, dio.a.b),
+   u("wither_skeleton", aqv.qX, dio.a.b),
+   v("piglin", aqv.qY, dio.a.b),
+   w("custom_head", aqv.yZ, dio.a.c);
 
-public class dio {
-   private static final atv a = new atv(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final String x;
+   private final ig<aqu> y;
+   private final dio.a z;
 
-   public static int a() {
-      return b;
+   private dio(String $$0, ig<aqu> $$1, dio.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   public static int a(hx $$0) {
-      return a.a($$0);
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   public ig<aqu> a() {
+      return this.y;
    }
 
-   public static Optional<hx> a(int $$0) {
-      hx $$1 = switch ($$0) {
-         case 0 -> hx.c;
-         case 4 -> hx.f;
-         case 8 -> hx.d;
-         case 12 -> hx.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public boolean b() {
+      return this.z == dio.a.a;
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public boolean d() {
+      return this.z == dio.a.c;
+   }
+
+   public boolean e() {
+      return this.z != dio.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

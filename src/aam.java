@@ -1,36 +1,78 @@
 import javax.annotation.Nullable;
 
-public class aam implements wk<yd> {
-   private final int a;
-   private final bkb b;
+public class aam implements wo<yh> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final int d;
+   private final ef.a e;
+   private final ef.a f;
+   private final boolean g;
 
-   public aam(int $$0, bkb $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aam(ef.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
    }
 
-   public aam(tu $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(jy.e);
+   public aam(ef.a $$0, bkv $$1, ef.a $$2) {
+      this.e = $$0;
+      this.d = $$1.aj();
+      this.f = $$2;
+      ejz $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
+   }
+
+   public aam(ty $$0) {
+      this.e = $$0.b(ef.a.class);
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.n();
+         this.f = $$0.b(ef.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
+      }
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
-      $$0.a(jy.e, this.b);
+   public void a(ty $$0) {
+      $$0.a(this.e);
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
+      }
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bkq a(csa $$0) {
-      return $$0.a(this.a);
+   public ef.a a() {
+      return this.e;
    }
 
    @Nullable
-   public bkb a() {
-      return this.b;
+   public ejz a(csf $$0) {
+      if (this.g) {
+         bkv $$1 = $$0.a(this.d);
+         return $$1 == null ? new ejz(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new ejz(this.a, this.b, this.c);
+      }
    }
 }

@@ -1,23 +1,39 @@
-public class ewd {
-   public static final ewd a = new ewd("Merry X-mas!");
-   public static final ewd b = new ewd("Happy new year!");
-   public static final ewd c = new ewd("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public ewd(String $$0) {
-      this.f = $$0;
+public class ewd {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
+
+   public static void a(eut $$0, gcz $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   public void a(euo $$0, int $$1, eum $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - atm.e(atm.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public static void a(eut $$0, agm $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
+   }
+
+   public static void a(eut $$0, agm $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
+      }
+   }
+
+   private static void a(eut $$0, agm $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

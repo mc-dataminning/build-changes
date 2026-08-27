@@ -1,256 +1,144 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class ffl extends fau {
-   private final Consumer<Optional<crw>> a;
-   private ffl.g b;
-   private final Set<ffl.f> c = Sets.newHashSet();
-   private euz k;
+public class ffl extends euy {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final uv e = uv.c("telemetry_info.property_title").a(n.t);
+   private final eur l;
+   private ffl.a m;
    @Nullable
-   private List<asy> l;
-   private final crw m;
+   private DoubleConsumer n;
 
-   public ffl(crw $$0, Consumer<Optional<crw>> $$1) {
-      super(ur.c("editGamerule.title"));
-      this.m = $$0;
-      this.a = $$1;
+   public ffl(int $$0, int $$1, int $$2, int $$3, eur $$4) {
+      super($$0, $$1, $$2, $$3, uv.i());
+      this.l = $$4;
+      this.m = this.c(eti.N().z());
    }
 
-   @Override
-   protected void aP_() {
-      this.b = new ffl.g(this.m);
-      this.e(this.b);
-      eyi.b $$0 = new eyi().a(10).d(2);
-      this.k = $$0.a(euz.a(uq.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(euz.a(uq.e, $$0x -> this.a.accept(Optional.empty())).a());
-      $$0.a().a($$1 -> {
-         eux var10000 = this.d($$1);
-      });
-      $$0.a().b(this.g / 2 - 155, this.h - 28);
-      $$0.a().a();
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
    }
 
-   @Override
-   public void aF_() {
-      this.a.accept(Optional.empty());
-   }
+   private ffl.a c(boolean $$0) {
+      ffl.b $$1 = new ffl.b(this.v());
+      List<ggu> $$2 = new ArrayList<>(ggu.g());
+      $$2.sort(Comparator.comparing(ggu::d));
 
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l = null;
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
-
-   private void l() {
-      this.k.i = this.c.isEmpty();
-   }
-
-   void a(ffl.f $$0) {
-      this.c.add($$0);
-      this.l();
-   }
-
-   void b(ffl.f $$0) {
-      this.c.remove($$0);
-      this.l();
-   }
-
-   public class a extends ffl.d {
-      private final evg<Boolean> d;
-
-      public a(ur $$1, List<asy> $$2, String $$3, crw.a $$4) {
-         super($$2, $$1);
-         this.d = evg.b($$4.a()).a().a($$1x -> $$1x.e().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public class b extends ffl.f {
-      final ur b;
-
-      public b(ur $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(ffl.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
-      }
-
-      @Override
-      public List<? extends ewu> i() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends eyq> b() {
-         return ImmutableList.of(new eyq() {
-            @Override
-            public eyq.a q() {
-               return eyq.a.b;
-            }
-
-            @Override
-            public void b(eys $$0) {
-               $$0.a(eyr.a, b.this.b);
-            }
-         });
-      }
-   }
-
-   @FunctionalInterface
-   interface c<T extends crw.g<T>> {
-      ffl.f create(ur var1, List<asy> var2, String var3, T var4);
-   }
-
-   public abstract class d extends ffl.f {
-      private final List<asy> a;
-      protected final List<eux> b = Lists.newArrayList();
-
-      public d(@Nullable List<asy> $$1, ur $$2) {
-         super($$1);
-         this.a = ffl.this.f.h.c($$2, 175);
-      }
-
-      @Override
-      public List<? extends ewu> i() {
-         return this.b;
-      }
-
-      @Override
-      public List<? extends eyq> b() {
-         return this.b;
-      }
-
-      protected void a(euo $$0, int $$1, int $$2) {
-         if (this.a.size() == 1) {
-            $$0.a(ffl.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
-         } else if (this.a.size() >= 2) {
-            $$0.a(ffl.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
-            $$0.a(ffl.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         ggu $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
       }
+
+      return $$1.a();
    }
 
-   public class e extends ffl.d {
-      private final evi d;
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
 
-      public e(ur $$1, List<asy> $$2, String $$3, crw.d $$4) {
-         super($$2, $$1);
-         this.d = new evi(ffl.this.f.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.m(14737632);
-               ffl.this.b(this);
-            } else {
-               this.d.m(16711680);
-               ffl.this.a(this);
-            }
-         });
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
-   public abstract static class f extends evf.a<ffl.f> {
-      @Nullable
-      final List<asy> a;
+   @Override
+   protected int g() {
+      return this.m.a().i();
+   }
 
-      public f(@Nullable List<asy> $$0) {
+   @Override
+   protected double h() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(eut $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.r() + this.a();
+      int $$5 = this.p() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(eyx $$0) {
+      $$0.a(eyw.a, this.m.b());
+   }
+
+   private uv a(uv $$0, boolean $$1) {
+      return (uv)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(ffl.b $$0, ggu $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.l, this.a(uv.a($$3, $$1.e()), $$2));
+      $$0.b(this.l, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.l, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(ggu $$0, ffl.b $$1, boolean $$2) {
+      for (ggw<?> $$3 : $$0.b()) {
+         $$1.a(this.l, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int v() {
+      return this.f - this.b();
+   }
+
+   static record a(eyp a, uv b) {
+   }
+
+   static class b {
+      private final int a;
+      private final eys b;
+      private final vj c = uv.i();
+
+      public b(int $$0) {
          this.a = $$0;
-      }
-   }
-
-   public class g extends evf<ffl.f> {
-      public g(final crw $$1) {
-         super(ffl.this.f, ffl.this.g, ffl.this.h, 43, ffl.this.h - 32, 24);
-         final Map<crw.b, Map<crw.e<?>, ffl.f>> $$2 = Maps.newHashMap();
-         crw.a(new crw.c() {
-            @Override
-            public void b(crw.e<crw.a> $$0, crw.f<crw.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> ffl.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(crw.e<crw.d> $$0, crw.f<crw.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> ffl.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends crw.g<T>> void a(crw.e<T> $$0, ffl.c<T> $$1x) {
-               ur $$2 = ur.c($$0.b());
-               ur $$3 = ur.b($$0.a()).a(n.o);
-               T $$4 = $$1.a($$0);
-               String $$5 = $$4.b();
-               ur $$6 = ur.a("editGamerule.default", ur.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<asy> $$10;
-               String $$11;
-               if (gda.a($$7)) {
-                  Builder<asy> $$8 = ImmutableList.builder().add($$3.g());
-                  ur $$9 = ur.c($$7);
-                  ffl.this.i.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
-               }
-
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(ffl.this.new b(ur.c(((crw.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(crw.e::a)))
-                     .forEach($$0xx -> this.b((ffl.f)$$0xx.getValue()));
-               }
-            );
+         this.b = eys.d();
+         this.b.c().a();
+         this.b.a(eyt.a($$0));
       }
 
-      @Override
-      public void a(euo $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         ffl.f $$4 = this.r();
-         if ($$4 != null && $$4.a != null) {
-            ffl.this.b($$4.a);
-         }
+      public void a(eur $$0, uv $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(eur $$0, uv $$1, int $$2) {
+         this.b.a(new evy($$1, $$0).j(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(eur $$0, uv $$1) {
+         this.b.a(new evy($$1, $$0).j(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(eyt.b($$0));
+      }
+
+      public ffl.a a() {
+         this.b.a();
+         return new ffl.a(this.b, this.c);
       }
    }
 }

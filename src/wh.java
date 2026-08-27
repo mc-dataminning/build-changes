@@ -1,10 +1,15 @@
-public class wh<T extends ua> implements wk<T> {
-   @Override
-   public final void a(tu $$0) {
+import java.util.Locale;
+
+public class wh extends IllegalArgumentException {
+   public wh(wg $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
+   public wh(wg $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public wh(wg $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

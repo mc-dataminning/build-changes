@@ -1,81 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class efh extends efj {
-   public static final Codec<efh> a = a(efh::new);
+public class efh<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final efh<eib> a = new efh<>(eid.a, "predicates", c());
+   public static final efh<egp> b = new efh<>(egr.b, "item_modifiers", c());
+   public static final efh<efk> c = new efh<>(efk.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final efh.a<T> g;
 
-   efh(List<efq> $$0, List<ehw> $$1) {
-      super($$0, $$1);
+   private efh(Codec<T> $$0, String $$1, efh.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public efr a() {
-      return efo.g;
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   protected efi a(List<? extends efi> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (efi)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (efi $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
+   public void a(efl $$0, efe<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(efg $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.a("Unreachable entry!");
-         }
-      }
+   public Optional<T> a(agm $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   public static efh.a a(efq.a<?>... $$0) {
-      return new efh.a($$0);
+   public static Stream<efh<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   public static <E> efh.a a(Collection<E> $$0, Function<E, efq.a<?>> $$1) {
-      return new efh.a($$0.stream().map($$1::apply).toArray(efq.a[]::new));
+   private static <T extends efd> efh.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
    }
 
-   public static class a extends efq.a<efh.a> {
-      private final Builder<efq> a = ImmutableList.builder();
+   private static efh.a<efk> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public a(efq.a<?>... $$0) {
-         for (efq.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected efh.a a() {
-         return this;
-      }
-
-      @Override
-      public efh.a a(efq.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public efq b() {
-         return new efh(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(efl var1, efe<T> var2, T var3);
    }
 }

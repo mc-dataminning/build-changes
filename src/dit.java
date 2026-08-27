@@ -1,23 +1,37 @@
-public enum dit implements aug {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+import java.util.Optional;
 
-   private final String e;
-   private final boolean f;
+public class dit {
+   private static final atz a = new atz(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private dit(String $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static int a(ib $$0) {
+      return a.a($$0);
    }
 
-   public boolean a() {
-      return this.f;
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<ib> a(int $$0) {
+      ib $$1 = switch ($$0) {
+         case 0 -> ib.c;
+         case 4 -> ib.f;
+         case 8 -> ib.d;
+         case 12 -> ib.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

@@ -1,43 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class ctr extends cum {
-   private final cjx a;
+public class ctr {
+   public static final Codec<ctr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ctr.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), agk.c(kd.ar)).apply($$0, ctr::new)
+   );
+   public static final Codec<ig<ctr>> b = agi.a(kd.aI, a);
+   private final ctr.a c;
+   private final ctm.c<ig<ctd>> d;
 
-   protected ctr(cjx $$0, dhh.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public ctr(ctr.a $$0, ih<ctd> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   protected abstract MapCodec<? extends ctr> a();
-
-   @Override
-   public boolean a(dhi $$0) {
-      return true;
+   public ctm.c<ig<ctd>> a() {
+      return this.d;
    }
 
-   @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new det($$0, $$1, this.a);
+   public static Map<ctr.a, ctm.c<agl<ctd>>> b() {
+      return ctr.a.f.values().stream().collect(Collectors.toMap($$0 -> (ctr.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dff.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.A()) {
-         $$0.a($$1, dff.t).ifPresent($$1x -> $$1x.a($$4.y()));
+   public static record a(agm d, ctr.a.a e) {
+      public static final ctr.a a = new ctr.a(
+         new agm("nether"),
+         new ctr.a.a() {
+            @Override
+            public <T> ctm.c<T> apply(Function<agl<ctd>, T> $$0) {
+               return new ctm.c<>(
+                  List.of(
+                     Pair.of(ctm.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ctk.ac)),
+                     Pair.of(ctm.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ctk.af)),
+                     Pair.of(ctm.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(ctk.ae)),
+                     Pair.of(ctm.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(ctk.ad)),
+                     Pair.of(ctm.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(ctk.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final ctr.a b = new ctr.a(new agm("overworld"), new ctr.a.a() {
+         @Override
+         public <T> ctm.c<T> apply(Function<agl<ctd>, T> $$0) {
+            return ctr.a.a($$0);
+         }
+      });
+      static final Map<agm, ctr.a> f = Stream.of(a, b).collect(Collectors.toMap(ctr.a::b, $$0 -> (ctr.a)$$0));
+      public static final Codec<ctr.a> c = agm.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> ctm.c<T> a(Function<agl<ctd>, T> $$0) {
+         Builder<Pair<ctm.d, T>> $$1 = ImmutableList.builder();
+         new ctt().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new ctm.c<>($$1.build());
       }
-   }
 
-   @Override
-   public clj a(csd $$0, ht $$1, dhi $$2) {
-      dfd $$3 = $$0.c_($$1);
-      return $$3 instanceof det ? ((det)$$3).f() : super.a($$0, $$1, $$2);
-   }
+      public Stream<agl<ctd>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<agl<ctd>>map(Pair::getSecond).distinct();
+      }
 
-   public cjx b() {
-      return this.a;
+      public agm b() {
+         return this.d;
+      }
+
+      public ctr.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> ctm.c<T> apply(Function<agl<ctd>, T> var1);
+      }
    }
 }

@@ -9,8 +9,8 @@ public class co extends cw<co.a> {
       return new co.a($$1, $$3, $$4);
    }
 
-   public void a(amf $$0, clj $$1, @Nullable bkq $$2) {
-      eex $$3 = bq.b($$0, $$2);
+   public void a(amj $$0, clo $$1, @Nullable bkv $$2) {
+      efc $$3 = bq.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class co extends cw<co.a> {
          return al.P.a(new co.a($$0, $$1, $$2));
       }
 
-      public boolean a(amf $$0, clj $$1, eex $$2) {
+      public boolean a(amj $$0, clo $$1, efc $$2) {
          return this.a.isPresent() && !this.a.get().a($$1) ? false : !this.b.isPresent() || this.b.get().a($$2);
       }
 

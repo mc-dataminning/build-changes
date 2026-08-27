@@ -1,72 +1,39 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class ewk implements eyt {
-   private static final int a = 170;
-   private final ur b;
+public class ewk extends evc {
    @Nullable
-   private List<asy> c;
-   @Nullable
-   private final ur d;
-   private int e;
-   private long f;
-   private boolean g;
+   protected ewr a;
+   protected boolean b;
 
-   private ewk(ur $$0, @Nullable ur $$1) {
+   public ewk(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, uu.a);
+      this.b = $$4;
+   }
+
+   public void a(ewr $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
-      this.d = $$1;
    }
 
-   public void a(int $$0) {
-      this.e = $$0;
-   }
-
-   public static ewk a(ur $$0, @Nullable ur $$1) {
-      return new ewk($$0, $$1);
-   }
-
-   public static ewk a(ur $$0) {
-      return new ewk($$0, $$0);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(eys $$0) {
-      if (this.d != null) {
-         $$0.a(eyr.c, this.d);
-      }
+   public void a(eyx $$0) {
+      this.c($$0);
    }
 
-   public List<asy> a(etd $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.n()), this.p(), this.r(), this.f, this.g);
+         RenderSystem.enableDepthTest();
       }
-
-      return this.c;
-   }
-
-   public static List<asy> a(etd $$0, ur $$1) {
-      return $$0.h.c($$1, 170);
-   }
-
-   public void a(boolean $$0, boolean $$1, ezc $$2) {
-      boolean $$3 = $$0 || $$1 && etd.N().aT().b();
-      if ($$3 != this.g) {
-         if ($$3) {
-            this.f = ac.b();
-         }
-
-         this.g = $$3;
-      }
-
-      if ($$3 && ac.b() - this.f > (long)this.e) {
-         fau $$4 = etd.N().y;
-         if ($$4 != null) {
-            $$4.a(this, this.b($$0, $$1, $$2), $$1);
-         }
-      }
-   }
-
-   protected fdn b(boolean $$0, boolean $$1, ezc $$2) {
-      return (fdn)(!$$0 && $$1 && etd.N().aT().b() ? new fdj($$2) : new fdp($$2));
    }
 }

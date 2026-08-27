@@ -1,37 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class bjc<T> {
+   private final bjb a;
+   private final T b;
 
-public class bjc {
-   public static final Codec<bjc> a = RecordCodecBuilder.create($$0 -> $$0.group(dns.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bjc::new));
-   private final dns b;
-
-   public bjc(dns $$0) {
-      this.b = $$0;
+   public bjc(bjb $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public bjc(long $$0, agi $$1) {
-      this(a($$0, Optional.of($$1)));
+   public bjb a() {
+      return this.a;
    }
 
-   public bjc(long $$0, Optional<agi> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static dns a(long $$0, Optional<agi> $$1) {
-      dng.a $$2 = dng.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
-      }
-
-      return new dns($$2.a());
-   }
-
-   public static dng.a a(agi $$0) {
-      return dng.a($$0.toString());
-   }
-
-   public ats a() {
+   public T b() {
       return this.b;
+   }
+
+   public static <T> bjc<T> a(T $$0) {
+      return new bjc<>(bjb.a, $$0);
+   }
+
+   public static <T> bjc<T> b(T $$0) {
+      return new bjc<>(bjb.b, $$0);
+   }
+
+   public static <T> bjc<T> c(T $$0) {
+      return new bjc<>(bjb.d, $$0);
+   }
+
+   public static <T> bjc<T> d(T $$0) {
+      return new bjc<>(bjb.e, $$0);
+   }
+
+   public static <T> bjc<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

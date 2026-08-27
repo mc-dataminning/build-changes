@@ -1,24 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
 
-@FunctionalInterface
-public interface dyu {
-   dyu a = $$0 -> $$0;
+public interface dyu<P extends dyt> {
+   dyu<dys> a = a("single_pool_element", dys.b);
+   dyu<dyr> b = a("list_pool_element", dyr.a);
+   dyu<dyn> c = a("feature_pool_element", dyn.a);
+   dyu<dym> d = a("empty_pool_element", dym.a);
+   dyu<dyq> e = a("legacy_single_pool_element", dyq.a);
 
-   agh<dyq> lookup(agh<dyq> var1);
+   Codec<P> codec();
 
-   static dyu create(List<dys> $$0, ht $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         ats $$3 = ats.a($$2).e().a($$1);
-         Builder<agh<dyq>, agh<dyq>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<agh<dyq>, agh<dyq>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   static <P extends dyt> dyu<P> a(String $$0, Codec<P> $$1) {
+      return is.a(kc.aj, $$0, () -> $$1);
    }
 }

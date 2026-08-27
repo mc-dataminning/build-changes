@@ -1,94 +1,36 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public record xa(xa.a b) implements xd {
-   public static final agi a = new agi("debug/bee");
+public record xa(xh a) implements wo<wy> {
+   private static final int b = 32767;
+   private static final Map<agm, ty.a<? extends xh>> c = ImmutableMap.builder().put(xg.a, xg::new).build();
 
-   public xa(tu $$0) {
-      this(new xa.a($$0));
+   public xa(ty $$0) {
+      this(a($$0.t(), $$0));
+   }
+
+   private static xh a(agm $$0, ty $$1) {
+      ty.a<? extends xh> $$2 = c.get($$0);
+      return (xh)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
+   }
+
+   private static xi b(agm $$0, ty $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 32767) {
+         $$1.j($$2);
+         return new xi($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 32767 bytes");
+      }
    }
 
    @Override
-   public void a(tu $$0) {
-      this.b.a($$0);
+   public void a(ty $$0) {
+      $$0.a(this.a.a());
+      this.a.a($$0);
    }
 
-   @Override
-   public agi a() {
-      return a;
-   }
-
-   public static record a(UUID a, int b, eju c, @Nullable edh d, @Nullable ht e, @Nullable ht f, int g, Set<String> h, List<ht> i) {
-      public a(tu $$0) {
-         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(edh::b), $$0.c(tu::e), $$0.c(tu::e), $$0.readInt(), $$0.a(HashSet::new, tu::s), $$0.a(tu::e));
-      }
-
-      public void a(tu $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.e, tu::a);
-         $$0.a(this.f, tu::a);
-         $$0.p(this.g);
-         $$0.a(this.h, tu::a);
-         $$0.a(this.i, tu::a);
-      }
-
-      public boolean a(ht $$0) {
-         return Objects.equals($$0, this.e);
-      }
-
-      public String a() {
-         return acj.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public eju d() {
-         return this.c;
-      }
-
-      @Nullable
-      public edh e() {
-         return this.d;
-      }
-
-      @Nullable
-      public ht f() {
-         return this.e;
-      }
-
-      @Nullable
-      public ht g() {
-         return this.f;
-      }
-
-      public int h() {
-         return this.g;
-      }
-
-      public Set<String> i() {
-         return this.h;
-      }
-
-      public List<ht> j() {
-         return this.i;
-      }
+   public void a(wy $$0) {
+      $$0.a(this);
    }
 }

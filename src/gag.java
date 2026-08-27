@@ -1,21 +1,25 @@
-public class gag<T extends bkq & blw, M extends fhp<T>> extends gaf<T, M> {
-   private final agi a;
-   private final M b;
+public class gag extends gak<bxl, fit<bxl>> {
+   private final fqv a;
 
-   public gag(fxs<T, M> $$0, M $$1, agi $$2) {
+   public gag(fxx<bxl, fit<bxl>> $$0, fqv $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eoa $$10 = $$1.getBuffer(frc.e(this.a));
-         this.b.a($$0, $$10, $$2, gbl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(eob $$0, fqz $$1, int $$2, bxl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      clo $$10 = $$3.c(bla.a);
+      if ($$3.A() && !$$3.gx()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gl()) {
+            $$11 -= 0.2F * atq.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * atq.a($$7 * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cll.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

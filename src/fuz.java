@@ -1,19 +1,13 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public abstract class fuz<T extends byv, M extends fif<T>> extends fxi<T, M> {
+   private final float a;
 
-public class fuz extends fxd<bxy, fgt<bxy>> {
-   private static final Map<bxy.d, agi> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (bxy.d $$1 : bxy.d.values()) {
-         $$0.put($$1, new agi(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public fuz(fvx.a $$0) {
-      super($$0, new fgt<>($$0.a(fkn.e)), 0.5F);
+   public fuz(fwc.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public agi a(bxy $$0) {
-      return a.get($$0.gf());
+   protected void a(T $$0, eob $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

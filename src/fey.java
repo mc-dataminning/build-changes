@@ -1,157 +1,84 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class fey extends fau {
-   private static final ur a = ur.c("gui.abuseReport.reason.title");
-   private static final ur b = ur.c("gui.abuseReport.reason.description");
-   private static final ur c = ur.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final fau p;
-   @Nullable
-   private fey.a q;
-   @Nullable
-   fmk r;
-   private final Consumer<fmk> t;
+public class fey extends fex<fmk.a> {
+   private static final int r = 120;
+   private static final uv t = uv.c("gui.chatReport.title");
+   private static final uv u = uv.c("gui.chatReport.select_chat");
+   private final eys v = eys.d().a(8);
+   private evw w;
+   private eve x;
+   private eve y;
+   private eve z;
 
-   public fey(@Nullable fau $$0, @Nullable fmk $$1, Consumer<fmk> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
+   private fey(faz $$0, fmr $$1, fmk.a $$2) {
+      super(t, $$0, $$1, $$2);
+   }
+
+   public fey(faz $$0, fmr $$1, UUID $$2) {
+      this($$0, $$1, new fmk.a($$2, $$1.a().b()));
+   }
+
+   public fey(faz $$0, fmr $$1, fmk $$2) {
+      this($$0, $$1, new fmk.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aP_() {
-      this.q = new fey.a(this.f);
-      this.e(this.q);
-      fey.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.d(euz.a(c, ezm.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.l(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.d(euz.a(uq.d, $$0x -> {
-         fey.a.a $$1x = this.q.f();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.l(), 150, 20).a());
-      super.aP_();
+   protected void aQ_() {
+      this.v.c().b();
+      this.v.a(new ewl(this.e, this.i));
+      this.y = this.v.a(eve.a(u, $$0x -> this.f.a(new ffa(this, this.p, this.q, $$0xx -> {
+            this.q = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.z = eve.a(c, $$0x -> this.f.a(new ffd(this, this.q.h(), $$0xx -> {
+            this.q.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.v.a(eyk.a(this.i, this.z, b));
+      this.w = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      this.v.a(eyk.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
+      eys $$0 = this.v.a(eys.e().a(8));
+      $$0.a(eve.a(uu.k, $$0x -> this.aG_()).a(120).a());
+      this.x = $$0.a(eve.a(a, $$0x -> this.l()).a(120).a());
+      this.v.a($$1 -> {
+         evc var10000 = this.d($$1);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.q.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
-      fey.a.a $$4 = this.q.f();
-      if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+   protected void c() {
+      this.v.a();
+      eym.a(this.v, this.s());
+   }
+
+   private void C() {
+      IntSet $$0 = this.q.a();
+      if ($$0.isEmpty()) {
+         this.y.b(u);
+      } else {
+         this.y.b(uv.a("gui.chatReport.selected_chat", $$0.size()));
       }
+
+      fmp $$1 = this.q.h();
+      if ($$1 != null) {
+         this.z.b($$1.b());
+      } else {
+         this.z.b(c);
+      }
+
+      fmn.b $$2 = this.q.c();
+      this.x.i = $$2 == null;
+      this.x.a(x.a($$2, fmn.b::a));
    }
 
    @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private int l() {
-      return this.h - 20 - 4;
-   }
-
-   private int C() {
-      return (this.g - 320) / 2;
-   }
-
-   private int D() {
-      return (this.g + 320) / 2;
-   }
-
-   private int E() {
-      return this.h - 95 + 4;
-   }
-
-   private int F() {
-      return this.l() - 4;
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.p);
-   }
-
-   public class a extends evv<fey.a.a> {
-      public a(etd $$1) {
-         super($$1, fey.this.g, fey.this.h, 40, fey.this.h - 95, 18);
-
-         for (fmk $$2 : fmk.values()) {
-            this.b(new fey.a.a($$2));
-         }
-      }
-
-      @Nullable
-      public fey.a.a a(fmk $$0) {
-         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
-      }
-
-      @Override
-      public int b() {
-         return 320;
-      }
-
-      @Override
-      protected int c() {
-         return this.p() - 2;
-      }
-
-      public void a(@Nullable fey.a.a $$0) {
-         super.a($$0);
-         fey.this.r = $$0 != null ? $$0.b() : null;
-      }
-
-      public class a extends evv.a<fey.a.a> {
-         final fmk b;
-
-         public a(fmk $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fey.this.i, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public ur a() {
-            return ur.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fmk b() {
-            return this.b;
-         }
-      }
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
    }
 }

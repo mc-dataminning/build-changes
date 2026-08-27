@@ -1,205 +1,83 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public class cec extends cea {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final afo<Integer> h = afr.a(cec.class, afq.b);
-   private static final byte i = 0;
-   private static final clj j = new clj(clm.os);
-   private cng k = cnj.b;
-   private final Set<bkd> l = Sets.newHashSet();
-   private boolean m;
+public record cec(cec.a d) {
+   public static final uv a = uv.c("multiplayer.disconnect.expired_public_key");
+   private static final uv e = uv.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cec> c = cec.a.a.xmap(cec::new, cec::b);
 
-   public cec(bku<? extends cec> $$0, csa $$1) {
-      super($$0, $$1, j);
-   }
-
-   public cec(csa $$0, double $$1, double $$2, double $$3, clj $$4) {
-      super(bku.e, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   public cec(csa $$0, blg $$1, clj $$2) {
-      super(bku.e, $$1, $$0, $$2);
-   }
-
-   public void a(clj $$0) {
-      if ($$0.a(clm.vi)) {
-         this.k = cni.d($$0);
-         Collection<bkd> $$1 = cni.b($$0);
-         if (!$$1.isEmpty()) {
-            for (bkd $$2 : $$1) {
-               this.l.add(new bkd($$2));
-            }
-         }
-
-         int $$3 = c($$0);
-         if ($$3 == -1) {
-            this.K();
-         } else {
-            this.d($$3);
-         }
-      } else if ($$0.a(clm.os)) {
-         this.k = cnj.b;
-         this.l.clear();
-         this.an.b(h, -1);
-      }
-   }
-
-   public static int c(clj $$0) {
-      rz $$1 = $$0.v();
-      return $$1 != null && $$1.b("CustomPotionColor", 99) ? $$1.h("CustomPotionColor") : -1;
-   }
-
-   private void K() {
-      this.m = false;
-      if (this.k == cnj.b && this.l.isEmpty()) {
-         this.an.b(h, -1);
+   public static cec a(auc $$0, UUID $$1, cec.a $$2) throws cec.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cec.b(e);
       } else {
-         this.an.b(h, cni.a(cni.a(this.k, this.l)));
+         return new cec($$2);
       }
    }
 
-   public void a(bkd $$0) {
-      this.l.add($$0);
-      this.an().b(h, cni.a(cni.a(this.k, this.l)));
+   public auc a() {
+      return auc.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   protected void b_() {
-      super.b_();
-      this.an.a(h, -1);
+   public cec.a b() {
+      return this.d;
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dN().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.c(1);
-            }
-         } else {
-            this.c(2);
-         }
-      } else if (this.b && this.c != 0 && !this.l.isEmpty() && this.c >= 600) {
-         this.dN().a(this, (byte)0);
-         this.k = cnj.b;
-         this.l.clear();
-         this.an.b(h, -1);
-      }
-   }
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cec.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  asy.m.fieldOf("expires_at").forGetter(cec.a::b), asp.f.fieldOf("key").forGetter(cec.a::c), asy.n.fieldOf("signature_v2").forGetter(cec.a::d)
+               )
+               .apply($$0, cec.a::new)
+      );
 
-   private void c(int $$0) {
-      int $$1 = this.H();
-      if ($$1 != -1 && $$0 > 0) {
-         double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
-         double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
-         double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
-
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            this.dN().a(js.v, this.d(0.5), this.dv(), this.g(0.5), $$2, $$3, $$4);
-         }
-      }
-   }
-
-   public int H() {
-      return this.an.b(h);
-   }
-
-   private void d(int $$0) {
-      this.m = true;
-      this.an.b(h, $$0);
-   }
-
-   @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      if (this.k != cnj.b) {
-         $$0.a("Potion", jy.j.b(this.k).toString());
+      public a(ty $$0) {
+         this($$0.w(), $$0.x(), $$0.a(4096));
       }
 
-      if (this.m) {
-         $$0.a("Color", this.H());
+      public void a(ty $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
       }
 
-      if (!this.l.isEmpty()) {
-         sf $$1 = new sf();
+      boolean a(auc $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
 
-         for (bkd $$2 : this.l) {
-            $$1.add($$2.a(new rz()));
-         }
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
 
-         $$0.a("custom_potion_effects", $$1);
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cec.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      if ($$0.b("Potion", 8)) {
-         this.k = cni.c($$0);
-      }
-
-      for (bkd $$1 : cni.b($$0)) {
-         this.a($$1);
-      }
-
-      if ($$0.b("Color", 99)) {
-         this.d($$0.h("Color"));
-      } else {
-         this.K();
-      }
-   }
-
-   @Override
-   protected void a(blg $$0) {
-      super.a($$0);
-      bkq $$1 = this.I();
-
-      for (bkd $$2 : this.k.a()) {
-         $$0.b(new bkd($$2.c(), Math.max($$2.a($$0x -> $$0x / 8), 1), $$2.e(), $$2.f(), $$2.g()), $$1);
-      }
-
-      if (!this.l.isEmpty()) {
-         for (bkd $$3 : this.l) {
-            $$0.b($$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected clj x() {
-      clj $$0 = super.x();
-      if (this.l.isEmpty() && this.k == cnj.b) {
-         return $$0;
-      } else {
-         cni.a($$0, this.k);
-         cni.a($$0, this.l);
-         if (this.m) {
-            $$0.w().a("CustomPotionColor", this.H());
-         }
-
-         return $$0;
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.H();
-         if ($$1 != -1) {
-            double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
-            double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
-            double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dN().a(js.v, this.d(0.5), this.dv(), this.g(0.5), $$2, $$3, $$4);
-            }
-         }
-      } else {
-         super.b($$0);
+   public static class b extends vv {
+      public b(uv $$0) {
+         super($$0);
       }
    }
 }

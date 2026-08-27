@@ -1,56 +1,50 @@
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum cmy implements cmw {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cok.a(aro.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cok.a(aro.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cok.a(clm.oB)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cok.a(clm.ov)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cok.a(clm.oF)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cok.a(clm.oG));
+public class cmy extends clj {
+   public static final String a = "effects";
+   public static final int b = 160;
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final ath<cok> l;
+   public cmy(clj.a $$0) {
+      super($$0);
+   }
 
-   private cmy(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cok> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new ath<>($$5);
+   public static void a(clo $$0, List<ddg.a> $$1) {
+      sd $$2 = $$0.w();
+      ddg.a.b.encodeStart(sr.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   }
+
+   public static void b(clo $$0, List<ddg.a> $$1) {
+      sd $$2 = $$0.w();
+      List<ddg.a> $$3 = new ArrayList<>();
+      a($$0, $$3::add);
+      $$3.addAll($$1);
+      ddg.a.b.encodeStart(sr.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   }
+
+   private static void a(clo $$0, Consumer<ddg.a> $$1) {
+      sd $$2 = $$0.v();
+      if ($$2 != null && $$2.b("effects", 9)) {
+         ddg.a.b.parse(sr.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+      }
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bki> $$4 = new ArrayList<>();
+         a($$0, $$1x -> $$4.add($$1x.a()));
+         cnn.a($$4, $$2, 1.0F);
+      }
    }
 
    @Override
-   public float b() {
-      return this.i;
-   }
-
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cok f() {
-      return this.l.a();
+   public clo a(clo $$0, csf $$1, bll $$2) {
+      clo $$3 = super.a($$0, $$1, $$2);
+      a($$3, $$1x -> $$2.b($$1x.a()));
+      return $$2 instanceof cdz && ((cdz)$$2).fU().d ? $$3 : new clo(clr.pn);
    }
 }

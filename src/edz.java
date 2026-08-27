@@ -1,124 +1,44 @@
-import com.mojang.serialization.Codec;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public record edz(edz.a a, byte b, byte c, byte d, @Nullable ur e) {
-   public byte a() {
-      return this.a.a();
+public interface edz {
+   ib[] a = new ib[]{ib.e, ib.f, ib.a, ib.b, ib.c, ib.d};
+
+   void a(ib var1, dhn var2, hx var3, hx var4, int var5, int var6);
+
+   void a(hx var1, cvf var2, hx var3);
+
+   void a(dhn var1, hx var2, cvf var3, hx var4, boolean var5);
+
+   default void a(hx $$0, cvf $$1, @Nullable ib $$2) {
+      for (ib $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
+         }
+      }
    }
 
-   public boolean b() {
-      return this.a.d();
+   static void a(csg $$0, ib $$1, dhn $$2, hx $$3, hx $$4, int $$5, int $$6) {
+      dhn $$7 = $$0.a_($$3);
+      dhn $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cvf.a($$7, $$8, $$0, $$3, $$5, $$6);
    }
 
-   public edz.a c() {
-      return this.a;
-   }
-
-   public byte d() {
-      return this.b;
-   }
-
-   public byte e() {
-      return this.c;
-   }
-
-   public byte f() {
-      return this.d;
-   }
-
-   @Nullable
-   public ur g() {
-      return this.e;
-   }
-
-   public static enum a implements aug {
-      a("player", false, true),
-      b("frame", true, true),
-      c("red_marker", false, true),
-      d("blue_marker", false, true),
-      e("target_x", true, false),
-      f("target_point", true, false),
-      g("player_off_map", false, true),
-      h("player_off_limits", false, true),
-      i("mansion", true, 5393476, false, true),
-      j("monument", true, 3830373, false, true),
-      k("banner_white", true, true),
-      l("banner_orange", true, true),
-      m("banner_magenta", true, true),
-      n("banner_light_blue", true, true),
-      o("banner_yellow", true, true),
-      p("banner_lime", true, true),
-      q("banner_pink", true, true),
-      r("banner_gray", true, true),
-      s("banner_light_gray", true, true),
-      t("banner_cyan", true, true),
-      u("banner_purple", true, true),
-      v("banner_blue", true, true),
-      w("banner_brown", true, true),
-      x("banner_green", true, true),
-      y("banner_red", true, true),
-      z("banner_black", true, true),
-      A("red_x", true, false),
-      B("village_desert", true, ecw.w.ak, false, true),
-      C("village_plains", true, ecw.w.ak, false, true),
-      D("village_savanna", true, ecw.w.ak, false, true),
-      E("village_snowy", true, ecw.w.ak, false, true),
-      F("village_taiga", true, ecw.w.ak, false, true),
-      G("jungle_temple", true, ecw.w.ak, false, true),
-      H("swamp_hut", true, ecw.w.ak, false, true);
-
-      public static final Codec<edz.a> I = aug.a(edz.a::values);
-      private final String J;
-      private final byte K;
-      private final boolean L;
-      private final int M;
-      private final boolean N;
-      private final boolean O;
-
-      private a(String $$0, boolean $$1, boolean $$2) {
-         this($$0, $$1, -1, $$2, false);
-      }
-
-      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
-         this.J = $$0;
-         this.O = $$3;
-         this.K = (byte)this.ordinal();
-         this.L = $$1;
-         this.M = $$2;
-         this.N = $$4;
-      }
-
-      public byte a() {
-         return this.K;
-      }
-
-      public boolean b() {
-         return this.N;
-      }
-
-      public boolean d() {
-         return this.L;
-      }
-
-      public boolean e() {
-         return this.M >= 0;
-      }
-
-      public int f() {
-         return this.M;
-      }
-
-      public static edz.a a(byte $$0) {
-         return values()[atm.a($$0, 0, values().length - 1)];
-      }
-
-      public boolean g() {
-         return this.O;
-      }
-
-      @Override
-      public String c() {
-         return this.J;
+   static void a(csf $$0, dhn $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kc.f.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + kc.f.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
       }
    }
 }

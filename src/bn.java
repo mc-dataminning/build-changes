@@ -6,29 +6,29 @@ import javax.annotation.Nullable;
 public record bn(Optional<cb> c, Optional<cb> d, Optional<cb> e, Optional<cb> f, Optional<cb> g, Optional<cb> h) {
    public static final Codec<bn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asu.a(cb.a, "head").forGetter(bn::a),
-               asu.a(cb.a, "chest").forGetter(bn::b),
-               asu.a(cb.a, "legs").forGetter(bn::c),
-               asu.a(cb.a, "feet").forGetter(bn::d),
-               asu.a(cb.a, "mainhand").forGetter(bn::e),
-               asu.a(cb.a, "offhand").forGetter(bn::f)
+               asy.a(cb.a, "head").forGetter(bn::a),
+               asy.a(cb.a, "chest").forGetter(bn::b),
+               asy.a(cb.a, "legs").forGetter(bn::c),
+               asy.a(cb.a, "feet").forGetter(bn::d),
+               asy.a(cb.a, "mainhand").forGetter(bn::e),
+               asy.a(cb.a, "offhand").forGetter(bn::f)
             )
             .apply($$0, bn::new)
    );
-   public static final bn b = bn.a.a().a(cb.a.a().a(clm.uH).a(cfb.s().v())).b();
+   public static final bn b = bn.a.a().a(cb.a.a().a(clr.uH).a(cfg.s().v())).b();
 
-   public boolean a(@Nullable bkq $$0) {
-      if ($$0 instanceof blg $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$1.c(bkv.f))) {
+   public boolean a(@Nullable bkv $$0) {
+      if ($$0 instanceof bll $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$1.c(bla.f))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c(bkv.e))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c(bla.e))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.c(bkv.d))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.c(bla.d))) {
             return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.c(bkv.c))) {
+         } else if (this.f.isPresent() && !this.f.get().a($$1.c(bla.c))) {
             return false;
          } else {
-            return this.g.isPresent() && !this.g.get().a($$1.c(bkv.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.c(bkv.b));
+            return this.g.isPresent() && !this.g.get().a($$1.c(bla.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.c(bla.b));
          }
       } else {
          return false;

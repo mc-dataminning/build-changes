@@ -1,95 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class cpe implements cpd {
-   final cok a;
-   final cok b;
-   final cok c;
-   final clj d;
+public class cpe<T extends coa> implements cox<T> {
+   private final cpe.a<T> x;
+   private final Codec<T> y;
 
-   public cpe(cok $$0, cok $$1, cok $$2, clj $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public boolean a(biq $$0, csa $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
-
-   @Override
-   public clj a(biq $$0, ip $$1) {
-      clj $$2 = this.d.p();
-      rz $$3 = $$0.a(1).v();
-      if ($$3 != null) {
-         $$2.c($$3.h());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public clj a(ip $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(clj $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(clj $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(clj $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cos<?> aq_() {
-      return cos.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cok::c);
-   }
-
-   public static class a implements cos<cpe> {
-      private static final Codec<cpe> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cok.b.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cok.b.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cok.b.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  coe.a.fieldOf("result").forGetter($$0x -> $$0x.d)
+   public cpe(cpe.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  asy.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cog.d.fieldOf("category").orElse(cog.c).forGetter($$0xx -> $$0xx.b),
+                  coq.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  kc.i.q().xmap(clo::new, clo::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
                )
-               .apply($$0, cpe::new)
+               .apply($$2, $$0::create)
       );
+   }
 
-      @Override
-      public Codec<cpe> a() {
-         return x;
-      }
+   @Override
+   public Codec<T> a() {
+      return this.y;
+   }
 
-      public cpe b(tu $$0) {
-         cok $$1 = cok.b($$0);
-         cok $$2 = cok.b($$0);
-         cok $$3 = cok.b($$0);
-         clj $$4 = $$0.r();
-         return new cpe($$1, $$2, $$3, $$4);
-      }
+   public T b(ty $$0) {
+      String $$1 = $$0.s();
+      cog $$2 = $$0.b(cog.class);
+      coq $$3 = coq.b($$0);
+      clo $$4 = $$0.r();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.n();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public void a(tu $$0, cpe $$1) {
-         $$1.a.a($$0);
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-         $$0.a($$1.d);
-      }
+   public void a(ty $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   interface a<T extends coa> {
+      T create(String var1, cog var2, coq var3, clo var4, float var5, int var6);
    }
 }

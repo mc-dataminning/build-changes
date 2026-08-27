@@ -1,60 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class dqz extends dpv<dsq> {
+public class dqz extends dqa<dsq> {
    public dqz(Codec<dsq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsq> $$0) {
-      csu $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         dsq $$3 = $$0.f();
-         ats $$4 = $$0.d();
-         dbu $$5 = dbu.b();
-         int $$6 = $$3.f() + $$3.d();
+   public boolean a(dqc<dsq> $$0) {
+      dsq $$1 = $$0.f();
+      atw $$2 = $$0.d();
+      csz $$3 = $$0.b();
+      djk $$4 = $$0.c();
+      hx $$5 = $$0.e();
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+      for (dru $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
-
-         ht $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, cvc.qU.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ht $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), hx.b)) {
-               $$1.a($$14, cvc.qV.o().a(dbt.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
       }
-   }
 
-   private boolean a(csb $$0, ht $$1) {
-      dhi $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dbp) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(cvc.G) || !$$2.u().b()) ? false : hx.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
-      }
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

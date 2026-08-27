@@ -1,79 +1,81 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class agg<T> extends aga<T> {
-   private final agg.b b;
+public class agg<E> implements Codec<ik<E>> {
+   private final agl<? extends is<E>> a;
+   private final Codec<ig<E>> b;
+   private final Codec<List<ig<E>>> c;
+   private final Codec<Either<arz<E>, List<ig<E>>>> d;
 
-   private static agg.b a(final agg.b $$0) {
-      return new agg.b() {
-         private final Map<agh<? extends io<?>>, Optional<? extends agg.a<?>>> b = new HashMap<>();
-
-         @Override
-         public <T> Optional<agg.a<T>> a(agh<? extends io<? extends T>> $$0x) {
-            return (Optional<agg.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
-         }
-      };
+   private static <E> Codec<List<ig<E>>> a(Codec<ig<E>> $$0, boolean $$1) {
+      Codec<List<ig<E>>> $$2 = asy.a($$0.listOf(), asy.c(ig::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ig)$$0x.get(0)) : Either.left($$0x));
    }
 
-   public static <T> agg<T> a(DynamicOps<T> $$0, final id.b $$1) {
-      return a($$0, a(new agg.b() {
-         @Override
-         public <E> Optional<agg.a<E>> a(agh<? extends io<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (agg.a<E>)(new agg.a<>($$0x, $$0x, $$0x.g())));
-         }
-      }));
+   public static <E> Codec<ik<E>> a(agl<? extends is<E>> $$0, Codec<ig<E>> $$1, boolean $$2) {
+      return new agg<>($$0, $$1, $$2);
    }
 
-   public static <T> agg<T> a(DynamicOps<T> $$0, agg.b $$1) {
-      return new agg<>($$0, $$1);
-   }
-
-   private agg(DynamicOps<T> $$0, agg.b $$1) {
-      super($$0);
+   private agg(agl<? extends is<E>> $$0, Codec<ig<E>> $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(arz.b($$0), this.c);
    }
 
-   public <E> Optional<ie<E>> a(agh<? extends io<? extends E>> $$0) {
-      return this.b.a($$0).map(agg.a::a);
+   public <T> DataResult<Pair<ik<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof agk<T> $$2) {
+         Optional<ih<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            ih<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (ik)$$1xx.map($$4::b, ik::a)));
+         }
+      }
+
+      return this.a($$0, $$1);
    }
 
-   public <E> Optional<ic<E>> b(agh<? extends io<? extends E>> $$0) {
-      return this.b.a($$0).map(agg.a::b);
+   public <T> DataResult<T> a(ik<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof agk<T> $$3) {
+         Optional<ij<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
    }
 
-   public static <E, O> RecordCodecBuilder<O, ic<E>> c(agh<? extends io<? extends E>> $$0) {
-      return asu.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof agg<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   private <T> DataResult<Pair<ik<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<ig.a<E>> $$1x = new ArrayList<>();
+
+         for (ig<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof ig.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(ik.a($$1x), $$0x.getSecond()));
+      });
    }
 
-   public static <E, O> RecordCodecBuilder<O, ib.c<E>> d(agh<E> $$0) {
-      agh<? extends io<E>> $$1 = agh.a($$0.b());
-      return asu.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof agg<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(ie<T> a, ic<T> b, Lifecycle c) {
-   }
-
-   public interface b {
-      <T> Optional<agg.a<T>> a(agh<? extends io<? extends T>> var1);
+   private <T> DataResult<T> b(ik<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

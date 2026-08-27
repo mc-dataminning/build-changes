@@ -1,13 +1,11 @@
-public class fyf extends fxy {
-   private static final agi a = new agi("textures/entity/skeleton/stray.png");
+public class fyf extends fxi<bzi, fjt<bzi>> {
+   private static final agm a = new agm("textures/entity/sniffer/sniffer.png");
 
-   public fyf(fvx.a $$0) {
-      super($$0, fkn.bt, fkn.bu, fkn.bv);
-      this.a(new gan<>(this, $$0.f()));
+   public fyf(fwc.a $$0) {
+      super($$0, new fjt<>($$0.a(fks.bo)), 1.1F);
    }
 
-   @Override
-   public agi a(car $$0) {
+   public agm a(bzi $$0) {
       return a;
    }
 }

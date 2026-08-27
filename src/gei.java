@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gei {
+   default j b() {
+      return j.a();
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gei {
+   default boolean c() {
+      return false;
+   }
 }

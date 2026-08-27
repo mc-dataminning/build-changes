@@ -1,31 +1,56 @@
-public class adn implements wk<acl> {
-   private static final int a = 2;
-   private final boolean b;
+public class adn implements wo<acp> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public adn(cdr $$0) {
-      this.b = $$0.b;
+   public adn(bkv $$0) {
+      this.a = $$0.ds();
+      this.b = $$0.du();
+      this.c = $$0.dy();
+      this.d = $$0.dD();
+      this.e = $$0.dF();
    }
 
-   public adn(tu $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public adn(ty $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(tu $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public double a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

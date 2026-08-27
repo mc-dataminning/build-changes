@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dei extends ddm implements deb {
-   public static final MapCodec<dei> m = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dhx.a.fieldOf("block_set_type").forGetter(ddm::g), deb.a.e.fieldOf("weathering_state").forGetter(dei::s), u()).apply($$0, dei::new)
+public class dei extends cxl implements deg {
+   public static final MapCodec<dei> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dic.a.fieldOf("block_set_type").forGetter(cxl::b), deg.a.e.fieldOf("weathering_state").forGetter(dei::g), u()).apply($$0, dei::new)
    );
-   private final deb.a n;
+   private final deg.a m;
 
    @Override
    public MapCodec<dei> a() {
-      return m;
+      return l;
    }
 
-   protected dei(dhx $$0, deb.a $$1, dhh.d $$2) {
+   protected dei(dic $$0, deg.a $$1, dhm.d $$2) {
       super($$0, $$2);
-      this.n = $$1;
+      this.m = $$1;
    }
 
    @Override
-   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      if ($$0.c(cxl.f) == dij.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public boolean e_(dhi $$0) {
-      return deb.c($$0.b()).isPresent();
+   public boolean e_(dhn $$0) {
+      return deg.c($$0.b()).isPresent();
    }
 
-   public deb.a s() {
-      return this.n;
+   public deg.a g() {
+      return this.m;
    }
 }

@@ -1,91 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cub extends cvj {
-   public static final MapCodec<cub> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               agh.a(jz.e).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               agh.a(jz.e).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               agh.a(jz.E).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
-            .apply($$0, cub::new)
-   );
-   public static final dic b = cyv.aE;
-   protected static final float c = 2.0F;
-   private static final Map<hx, ekn> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         hx.d,
-         cva.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         hx.e,
-         cva.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         hx.c,
-         cva.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         hx.f,
-         cva.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final agh<cva> e;
-   private final agh<cva> f;
-   private final agh<cle> g;
+public abstract class cub extends cur implements ckp {
+   public static final die a = did.w;
+   private final dcg.a b;
 
-   @Override
-   public MapCodec<cub> a() {
-      return a;
-   }
-
-   protected cub(agh<cva> $$0, agh<cva> $$1, agh<cle> $$2, dhh.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, hx.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   public cub(dcg.a $$0, dhm.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.E.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return d.get($$0.c(b));
-   }
+   protected abstract MapCodec<? extends cub> a();
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<cva> $$6 = $$3.H_().d(jz.e).d(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().o().b(dcv.c, Integer.valueOf(7));
+   public dfi a(hx $$0, dhn $$1) {
+      return new dgt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(cvh.gO) || $$1.a(cvh.gP) || $$1.a(cvh.gQ) || $$1.a(cvh.gR);
+         if ($$3) {
+            return a($$2, dfk.p, dgt::a);
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
+   }
+
+   public dcg.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean b(dhi $$0, crg $$1, ht $$2) {
-      return $$0.a(cvc.cC);
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      return false;
    }
 
    @Override
-   public clj a(csd $$0, ht $$1, dhi $$2) {
-      return new clj((crz)DataFixUtils.orElse($$0.H_().d(jz.E).d(this.g), this));
+   public bla g() {
+      return bla.f;
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dhn a(cnw $$0) {
+      return this.o().a(a, Boolean.valueOf($$0.q().B($$0.a())));
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b);
+   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.B($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

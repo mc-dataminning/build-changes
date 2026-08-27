@@ -1,98 +1,41 @@
-public interface acl extends acn, wu {
-   @Override
-   default tt b() {
-      return tt.b;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+
+public class acl implements wo<yh> {
+   private final List<cov<?>> a;
+
+   public acl(Collection<cov<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   void a(aee var1);
+   public acl(ty $$0) {
+      this.a = $$0.a(acl::b);
+   }
 
-   void a(act var1);
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.a, acl::a);
+   }
 
-   void a(acs var1);
+   public void a(yh $$0) {
+      $$0.a(this);
+   }
 
-   void a(acr var1);
+   public List<cov<?>> a() {
+      return this.a;
+   }
 
-   void a(acw var1);
+   private static cov<?> b(ty $$0) {
+      agm $$1 = $$0.t();
+      agm $$2 = $$0.t();
+      cot<?> $$3 = kc.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
+      return new cov<>($$2, $$3);
+   }
 
-   void a(acz var1);
-
-   void a(ada var1);
-
-   void a(adm var1);
-
-   void a(adb var1);
-
-   void a(adf var1);
-
-   void a(adi var1);
-
-   void a(adn var1);
-
-   void a(ado var1);
-
-   void a(adp var1);
-
-   void a(adq var1);
-
-   void a(adx var1);
-
-   void a(aea var1);
-
-   void a(aed var1);
-
-   void a(aeg var1);
-
-   void a(aeh var1);
-
-   void a(aef var1);
-
-   void a(adk var1);
-
-   void a(adj var1);
-
-   void a(aco var1);
-
-   void a(ads var1);
-
-   void a(adr var1);
-
-   void a(adu var1);
-
-   void a(acx var1);
-
-   void a(ady var1);
-
-   void a(adz var1);
-
-   void a(adl var1);
-
-   void a(adt var1);
-
-   void a(adw var1);
-
-   void a(aec var1);
-
-   void a(adv var1);
-
-   void a(add var1);
-
-   void a(ade var1);
-
-   void a(adc var1);
-
-   void a(acp var1);
-
-   void a(aeb var1);
-
-   void a(adg var1);
-
-   void a(acq var1);
-
-   void a(adh var1);
-
-   void a(acu var1);
-
-   void a(acy var1);
-
-   void a(acv var1);
+   public static <T extends cot<?>> void a(ty $$0, cov<?> $$1) {
+      $$0.a(kc.u.b($$1.b().as_()));
+      $$0.a($$1.a());
+      ((cox<cot<?>>)$$1.b().as_()).a($$0, $$1.b());
+   }
 }

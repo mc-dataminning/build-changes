@@ -1,70 +1,101 @@
-public abstract class ctf {
-   public static final agh<csy> a = a("the_void");
-   public static final agh<csy> b = a("plains");
-   public static final agh<csy> c = a("sunflower_plains");
-   public static final agh<csy> d = a("snowy_plains");
-   public static final agh<csy> e = a("ice_spikes");
-   public static final agh<csy> f = a("desert");
-   public static final agh<csy> g = a("swamp");
-   public static final agh<csy> h = a("mangrove_swamp");
-   public static final agh<csy> i = a("forest");
-   public static final agh<csy> j = a("flower_forest");
-   public static final agh<csy> k = a("birch_forest");
-   public static final agh<csy> l = a("dark_forest");
-   public static final agh<csy> m = a("old_growth_birch_forest");
-   public static final agh<csy> n = a("old_growth_pine_taiga");
-   public static final agh<csy> o = a("old_growth_spruce_taiga");
-   public static final agh<csy> p = a("taiga");
-   public static final agh<csy> q = a("snowy_taiga");
-   public static final agh<csy> r = a("savanna");
-   public static final agh<csy> s = a("savanna_plateau");
-   public static final agh<csy> t = a("windswept_hills");
-   public static final agh<csy> u = a("windswept_gravelly_hills");
-   public static final agh<csy> v = a("windswept_forest");
-   public static final agh<csy> w = a("windswept_savanna");
-   public static final agh<csy> x = a("jungle");
-   public static final agh<csy> y = a("sparse_jungle");
-   public static final agh<csy> z = a("bamboo_jungle");
-   public static final agh<csy> A = a("badlands");
-   public static final agh<csy> B = a("eroded_badlands");
-   public static final agh<csy> C = a("wooded_badlands");
-   public static final agh<csy> D = a("meadow");
-   public static final agh<csy> E = a("cherry_grove");
-   public static final agh<csy> F = a("grove");
-   public static final agh<csy> G = a("snowy_slopes");
-   public static final agh<csy> H = a("frozen_peaks");
-   public static final agh<csy> I = a("jagged_peaks");
-   public static final agh<csy> J = a("stony_peaks");
-   public static final agh<csy> K = a("river");
-   public static final agh<csy> L = a("frozen_river");
-   public static final agh<csy> M = a("beach");
-   public static final agh<csy> N = a("snowy_beach");
-   public static final agh<csy> O = a("stony_shore");
-   public static final agh<csy> P = a("warm_ocean");
-   public static final agh<csy> Q = a("lukewarm_ocean");
-   public static final agh<csy> R = a("deep_lukewarm_ocean");
-   public static final agh<csy> S = a("ocean");
-   public static final agh<csy> T = a("deep_ocean");
-   public static final agh<csy> U = a("cold_ocean");
-   public static final agh<csy> V = a("deep_cold_ocean");
-   public static final agh<csy> W = a("frozen_ocean");
-   public static final agh<csy> X = a("deep_frozen_ocean");
-   public static final agh<csy> Y = a("mushroom_fields");
-   public static final agh<csy> Z = a("dripstone_caves");
-   public static final agh<csy> aa = a("lush_caves");
-   public static final agh<csy> ab = a("deep_dark");
-   public static final agh<csy> ac = a("nether_wastes");
-   public static final agh<csy> ad = a("warped_forest");
-   public static final agh<csy> ae = a("crimson_forest");
-   public static final agh<csy> af = a("soul_sand_valley");
-   public static final agh<csy> ag = a("basalt_deltas");
-   public static final agh<csy> ah = a("the_end");
-   public static final agh<csy> ai = a("end_highlands");
-   public static final agh<csy> aj = a("end_midlands");
-   public static final agh<csy> ak = a("small_end_islands");
-   public static final agh<csy> al = a("end_barrens");
+import com.google.common.hash.Hashing;
 
-   private static agh<csy> a(String $$0) {
-      return agh.a(jz.ar, new agi($$0));
+public class ctf {
+   public static final int a = ir.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final ctf.a e;
+   private final long f;
+
+   public ctf(ctf.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public ctf a(ctf.a $$0) {
+      return new ctf($$0, this.f);
+   }
+
+   public ig<ctd> a(hx $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public ig<ctd> a(double $$0, double $$1, double $$2) {
+      int $$3 = ir.a(atq.a($$0));
+      int $$4 = ir.a(atq.a($$1));
+      int $$5 = ir.a(atq.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public ig<ctd> b(hx $$0) {
+      int $$1 = ir.a($$0.u());
+      int $$2 = ir.a($$0.v());
+      int $$3 = ir.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public ig<ctd> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = atm.a($$0, (long)$$1);
+      $$7 = atm.a($$7, (long)$$2);
+      $$7 = atm.a($$7, (long)$$3);
+      $$7 = atm.a($$7, (long)$$1);
+      $$7 = atm.a($$7, (long)$$2);
+      $$7 = atm.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = atm.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = atm.a($$7, $$0);
+      double $$10 = b($$7);
+      return atq.k($$6 + $$10) + atq.k($$5 + $$9) + atq.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      ig<ctd> getNoiseBiome(int var1, int var2, int var3);
    }
 }

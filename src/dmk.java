@@ -1,105 +1,97 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public interface dmk {
-   Codec<dmk> b = dml.b;
-   Codec<ib<dmk>> c = age.a(jz.av, b);
-   Codec<dmk> d = c.xmap(dml.j::new, $$0 -> (ib)($$0 instanceof dml.j $$1 ? $$1.j() : new ib.a<>($$0)));
-
-   double a(dmk.b var1);
-
-   void a(double[] var1, dmk.a var2);
-
-   dmk a(dmk.f var1);
-
-   double a();
-
-   double b();
-
-   atg<? extends dmk> c();
-
-   default dmk a(double $$0, double $$1) {
-      return new dml.g(this, $$0, $$1);
-   }
-
-   default dmk d() {
-      return dml.a(this, dml.k.a.a);
-   }
-
-   default dmk e() {
-      return dml.a(this, dml.k.a.b);
-   }
-
-   default dmk f() {
-      return dml.a(this, dml.k.a.c);
-   }
-
-   default dmk g() {
-      return dml.a(this, dml.k.a.d);
-   }
-
-   default dmk h() {
-      return dml.a(this, dml.k.a.e);
-   }
-
-   default dmk i() {
-      return dml.a(this, dml.k.a.f);
-   }
-
-   public interface a {
-      dmk.b a(int var1);
-
-      void a(double[] var1, dmk var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dnt d() {
-         return dnt.a();
-      }
-   }
-
-   public static record c(ib<ebv.a> b, @Nullable ebv c) {
-      public static final Codec<dmk.c> a = ebv.a.b.xmap($$0 -> new dmk.c($$0, null), dmk.c::b);
-
-      public c(ib<ebv.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends dmk {
+public final class dmk {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<djo> e = kc.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == djo.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dmk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dmk::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dmk::new)
+   );
+   private static final Set<agl<ctd>> f = Set.of(ctk.aa, ctk.Z, ctk.ab);
+   public static final csh b = new csh() {
       @Override
-      default void a(double[] $$0, dmk.a $$1) {
-         $$1.a($$0, this);
+      public int K_() {
+         return 64;
       }
 
       @Override
-      default dmk a(dmk.f $$0) {
-         return $$0.apply(this);
+      public int J_() {
+         return -64;
+      }
+   };
+   private final djo g;
+   private final BitSet h;
+
+   private dmk(djo $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
+
+   @Nullable
+   public static dmk a(sd $$0) {
+      djo $$1 = djo.a($$0.l("target_status"));
+      return $$1 == djo.c ? null : new dmk($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dke $$0) {
+      int $$1 = 4;
+      hx.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(cvh.F)) {
+            $$0.a($$1x, cvh.sJ.o(), false);
+         }
+      });
+   }
+
+   public void b(dke $$0) {
+      csh $$1 = $$0.z();
+      int $$2 = $$1.J_();
+      int $$3 = $$1.ak() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               hx.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cvh.a.o(), false));
+            }
+         }
       }
    }
 
-   public static record e(int a, int b, int c) implements dmk.b {
+   public djo a() {
+      return this.g;
    }
 
-   public interface f {
-      dmk apply(dmk var1);
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
 
-      default dmk.c a(dmk.c $$0) {
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static ctg a(ctg $$0, djj $$1) {
+      if (!$$1.y()) {
          return $$0;
+      } else {
+         Predicate<agl<ctd>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ig<ctd> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

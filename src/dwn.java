@@ -1,10 +1,23 @@
+import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class dwn extends dwo {
-   @Override
-   public final Stream<ht> a_(dwm $$0, ats $$1, ht $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class dwn extends dwt {
+   private static final dwn c = new dwn();
+   public static final Codec<dwn> a = Codec.unit(() -> c);
+
+   public static dwn a() {
+      return c;
    }
 
-   protected abstract boolean a(dwm var1, ats var2, ht var3);
+   @Override
+   public Stream<hx> a_(dwr $$0, atw $$1, hx $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new hx($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public dwu<?> b() {
+      return dwu.m;
+   }
 }

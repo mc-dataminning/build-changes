@@ -1,36 +1,13 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class esl extends esm {
+   private final epz b;
 
-public class esl extends esd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ur c = ur.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-
-   public esl(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public esl(epz $$0, long $$1, uv $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public void run() {
-      eom $$0 = eom.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (epz var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
-   }
-
-   @Override
-   public ur a() {
-      return c;
+   protected void a(eor $$0, long $$1) throws eqe {
+      $$0.d($$1, this.b.a);
    }
 }

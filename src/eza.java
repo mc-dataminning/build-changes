@@ -1,45 +1,88 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public enum eza {
-   a,
-   b,
-   c,
-   d;
+public class eza {
+   int a;
+   final Map<eza.a, eza.b> b = Maps.newTreeMap(Comparator.<eza.a, eyw>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+   public void a(Consumer<eyx> $$0) {
+      this.a++;
+      $$0.accept(new eza.c(0));
+   }
 
-   public eyz a() {
-      return switch (this) {
-         case a, b -> eyz.b;
-         case c, d -> eyz.a;
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
       };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   public eza b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   static class a {
+      final eyw a;
+      final int b;
+
+      a(eyw $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   static class b {
+      eyz<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = eyz.a;
+         this.b = -1;
+      }
+
+      public eza.b a(int $$0, eyz<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
+   class c implements eyx {
+      private final int b;
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
+      c(int $$0) {
+         this.b = $$0;
+      }
 
-   public IntComparator d() {
-      return this.e;
+      @Override
+      public void a(eyw $$0, eyz<?> $$1) {
+         eza.this.b.computeIfAbsent(new eza.a($$0, this.b), $$0x -> new eza.b()).a(eza.this.a, $$1);
+      }
+
+      @Override
+      public eyx a() {
+         return eza.this.new c(this.b + 1);
+      }
    }
 }

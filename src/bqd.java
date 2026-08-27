@@ -1,99 +1,104 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bqd extends bmx<cdh> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
+public class bqd extends bnc<cdm> {
+   private static final int c = 80;
+   private long d;
    private long e;
+   private int f;
+   private Optional<hx> g = Optional.empty();
 
    public bqd() {
-      super(ImmutableMap.of(buh.r, bui.a, buh.h, bui.a), 350, 350);
+      super(ImmutableMap.of(bum.n, bun.b, bum.m, bun.b));
    }
 
-   protected boolean a(ame $$0, cdh $$1) {
-      return this.a($$1);
-   }
-
-   protected boolean a(ame $$0, cdh $$1, long $$2) {
-      return $$2 <= this.e && this.a($$1);
-   }
-
-   protected void b(ame $$0, cdh $$1, long $$2) {
-      bkl $$3 = $$1.dP().c(buh.r).get();
-      bmz.a($$1, $$3, 0.5F);
-      $$0.a($$3, (byte)18);
-      $$0.a($$1, (byte)18);
-      int $$4 = 275 + $$1.eh().a(50);
-      this.e = $$2 + (long)$$4;
-   }
-
-   protected void c(ame $$0, cdh $$1, long $$2) {
-      cdh $$3 = (cdh)$$1.dP().c(buh.r).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bmz.a($$1, $$3, 0.5F);
-         if ($$2 >= this.e) {
-            $$1.gw();
-            $$3.gw();
-            this.a($$0, $$1, $$3);
-         } else if ($$1.eh().a(35) == 0) {
-            $$0.a($$3, (byte)12);
-            $$0.a($$1, (byte)12);
-         }
-      }
-   }
-
-   private void a(ame $$0, cdh $$1, cdh $$2) {
-      Optional<ht> $$3 = this.b($$0, $$1);
-      if ($$3.isEmpty()) {
-         $$0.a($$2, (byte)13);
-         $$0.a($$1, (byte)13);
-      } else {
-         Optional<cdh> $$4 = this.b($$0, $$1, $$2);
-         if ($$4.isPresent()) {
-            this.a($$0, $$4.get(), $$3.get());
+   protected boolean a(ami $$0, cdm $$1) {
+      if ($$1.ah % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ah)) {
+         if ($$1.A().a_(clr.rv) <= 0) {
+            return false;
          } else {
-            $$0.x().b($$3.get());
-            ack.c($$0, $$3.get());
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(ami $$0, cdm $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
+
+   private Optional<hx> b(ami $$0, cdm $$1) {
+      hx.a $$2 = new hx.a();
+      Optional<hx> $$3 = Optional.empty();
+      int $$4 = 0;
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.dn(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.z.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.i());
+                  }
+               }
+            }
          }
       }
+
+      return $$3;
    }
 
-   protected void d(ame $$0, cdh $$1, long $$2) {
-      $$1.dP().b(buh.r);
+   private boolean a(hx $$0, ami $$1) {
+      dhn $$2 = $$1.a_($$0);
+      cvf $$3 = $$2.b();
+      return $$3 instanceof cxa && !((cxa)$$3).h($$2);
    }
 
-   private boolean a(cdh $$0) {
-      bmg<cdh> $$1 = $$0.dP();
-      Optional<bkl> $$2 = $$1.c(buh.r).filter($$0x -> $$0x.ai() == bku.bf);
-      return $$2.isEmpty() ? false : bmz.a($$1, buh.r, bku.bf) && $$0.X_() && $$2.get().X_();
+   protected void b(ami $$0, cdm $$1, long $$2) {
+      this.a($$1);
+      $$1.a(bla.a, new clo(clr.rv));
+      this.d = $$2;
+      this.f = 0;
    }
 
-   private Optional<ht> b(ame $$0, cdh $$1) {
-      return $$0.x().a($$0x -> $$0x.a(bwj.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dn(), 48);
+   private void a(cdm $$0) {
+      this.g.ifPresent($$1 -> {
+         bnf $$2 = new bnf($$1);
+         $$0.dP().a(bum.n, $$2);
+         $$0.dP().a(bum.m, new bup($$2, 0.5F, 1));
+      });
    }
 
-   private boolean a(cdh $$0, ht $$1, ib<bwi> $$2) {
-      edh $$3 = $$0.N().a($$1, $$2.a().c());
-      return $$3 != null && $$3.j();
+   protected void c(ami $$0, cdm $$1, long $$2) {
+      $$1.a(bla.a, clo.b);
+      this.e = (long)$$1.ah;
    }
 
-   private Optional<cdh> b(ame $$0, cdh $$1, cdh $$2) {
-      cdh $$3 = $$1.b($$0, $$2);
-      if ($$3 == null) {
-         return Optional.empty();
-      } else {
-         $$1.c_(6000);
-         $$2.c_(6000);
-         $$3.c_(-24000);
-         $$3.b($$1.ds(), $$1.du(), $$1.dy(), 0.0F, 0.0F);
-         $$0.a_($$3);
-         $$0.a($$3, (byte)12);
-         return Optional.of($$3);
+   protected void d(ami $$0, cdm $$1, long $$2) {
+      hx $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dl(), 1.0)) {
+         clo $$4 = clo.b;
+         bjj $$5 = $$1.A();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            clo $$8 = $$5.a($$7);
+            if ($$8.a(clr.rv)) {
+               $$4 = $$8;
+               break;
+            }
+         }
+
+         if (!$$4.b() && cjj.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 0);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
       }
-   }
-
-   private void a(ame $$0, cdh $$1, ht $$2) {
-      ia $$3 = ia.a($$0.ad(), $$2);
-      $$1.dP().a(buh.b, $$3);
    }
 }

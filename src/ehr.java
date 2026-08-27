@@ -1,84 +1,47 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record ehr(Map<String, eew> b, eex.b c) implements ehw {
+public record ehr(ig<cpz> b, List<Float> c) implements eib {
    public static final Codec<ehr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eew.a).fieldOf("scores").forGetter(ehr::c), eex.b.e.fieldOf("entity").forGetter(ehr::d))
-            .apply($$0, ehr::new)
+      $$0 -> $$0.group(kc.g.r().fieldOf("enchantment").forGetter(ehr::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(ehr::d)).apply($$0, ehr::new)
    );
 
    @Override
-   public ehx b() {
-      return ehy.i;
+   public eic b() {
+      return eid.l;
    }
 
    @Override
-   public Set<ehf<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.i);
    }
 
-   public boolean a(eex $$0) {
-      bkq $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         ekt $$2 = $$1.dN().J();
+   public boolean a(efc $$0) {
+      clo $$1 = $$0.c(ehn.i);
+      int $$2 = $$1 != null ? cqb.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
 
-         for (Entry<String, eew> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
+   public static eib.a a(cpz $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
 
-         return true;
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
+
+      return () -> new ehr($$0.j(), $$2);
    }
 
-   protected boolean a(eex $$0, bkq $$1, ekt $$2, String $$3, eew $$4) {
-      ekq $$5 = $$2.b($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         String $$6 = $$1.cy();
-         return !$$2.b($$6, $$5) ? false : $$4.b($$0, $$2.c($$6, $$5).b());
-      }
-   }
-
-   public static ehr.a a(eex.b $$0) {
-      return new ehr.a($$0);
-   }
-
-   public Map<String, eew> c() {
+   public ig<cpz> c() {
       return this.b;
    }
 
-   public eex.b d() {
+   public List<Float> d() {
       return this.c;
-   }
-
-   public static class a implements ehw.a {
-      private final Builder<String, eew> a = ImmutableMap.builder();
-      private final eex.b b;
-
-      public a(eex.b $$0) {
-         this.b = $$0;
-      }
-
-      public ehr.a a(String $$0, eew $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ehw build() {
-         return new ehr(this.a.build(), this.b);
-      }
    }
 }

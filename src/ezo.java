@@ -1,165 +1,91 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class ezo extends fau {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger k = LogUtils.getLogger();
-   private static final long l = 2000L;
-   public static final ur a = ur.c("connect.aborted");
-   public static final ur b = ur.a("disconnect.genericReason", ur.c("disconnect.unknownHost"));
-   @Nullable
-   volatile ts m;
-   @Nullable
-   ChannelFuture n;
-   volatile boolean o;
-   final fau p;
-   private ur q = ur.c("connect.connecting");
-   private long r = -1L;
-   final ur t;
+public class ezo {
+   private static final uv b = uv.c("gui.banned.title.temporary").a(n.r);
+   private static final uv c = uv.c("gui.banned.title.permanent").a(n.r);
+   public static final uv a = uv.c("gui.banned.name.title").a(n.r);
+   private static final uv d = uv.c("gui.banned.skin.title").a(n.r);
+   private static final uv e = uv.a("gui.banned.skin.description", uv.b("https://aka.ms/mcjavamoderation"));
 
-   private ezo(fau $$0, ur $$1) {
-      super(esv.a);
-      this.p = $$0;
-      this.t = $$1;
+   public static ezr a(BooleanConsumer $$0, BanDetails $$1) {
+      return new ezr($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", uu.m, true);
    }
 
-   public static void a(fau $$0, etd $$1, fmv $$2, flu $$3, boolean $$4) {
-      if ($$1.y instanceof ezo) {
-         k.error("Attempt to connect while already connecting");
-      } else {
-         ezo $$5 = new ezo($$0, $$4 ? fqd.a : uq.q);
-         $$1.y();
-         $$1.aQ();
-         $$1.a(fmj.a($$3 != null ? $$3.b : $$2.a()));
-         $$1.aY().a(fqe.c.b, $$3.b, $$3.a);
-         $$1.a($$5);
-         $$5.a($$1, $$2, $$3);
-      }
-   }
-
-   private void a(final etd $$0, final fmv $$1, @Nullable final flu $$2) {
-      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (ezo.this.o) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fmx.a.a($$1).map(fmu::d);
-               if (ezo.this.o) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new ezw(ezo.this.p, ezo.this.t, ezo.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               ts $$2;
-               synchronized (ezo.this) {
-                  if (ezo.this.o) {
-                     return;
-                  }
-
-                  $$2 = new ts(wl.b);
-                  $$2.a($$0.aM().l());
-                  ezo.this.n = ts.a($$0, $$0.m.aw(), $$2);
-               }
-
-               ezo.this.n.syncUninterruptibly();
-               synchronized (ezo.this) {
-                  if (ezo.this.o) {
-                     $$2.a(ezo.a);
-                     return;
-                  }
-
-                  ezo.this.m = $$2;
-               }
-
-               ezo.this.m.a($$0.getHostName(), $$0.getPort(), new fli(ezo.this.m, $$0, $$2, ezo.this.p, false, null, ezo.this::a));
-               ezo.this.m.a(new aew($$0.U().c(), $$0.U().b()));
-            } catch (Exception var9) {
-               if (ezo.this.o) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               ezo.k.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new ezw(ezo.this.p, ezo.this.t, ur.a("disconnect.genericReason", $$8))));
-            }
+   public static ezr a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new ezr($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
          }
-      };
-      $$3.setUncaughtExceptionHandler(new r(k));
-      $$3.start();
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", uu.m, true);
    }
 
-   private void a(ur $$0) {
-      this.q = $$0;
+   public static ezr a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new ezr($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, uv.a("gui.banned.name.description", uv.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", uu.m, true);
    }
 
-   @Override
-   public void d() {
-      if (this.m != null) {
-         if (this.m.k()) {
-            this.m.d();
+   private static uv a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static uv b(BanDetails $$0) {
+      return uv.a("gui.banned.description", c($$0), d($$0), uv.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static uv c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fmj $$4 = fmj.a($$3);
+         uv $$5;
+         if ($$4 != null) {
+            $$5 = uy.a($$4.a().f(), vs.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = uv.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
          } else {
-            this.m.p();
+            $$5 = uv.a("gui.banned.description.reason_id", $$3).a(n.r);
          }
+
+         return uv.a("gui.banned.description.reason", $$5);
+      } else {
+         return uv.c("gui.banned.description.unknownreason");
       }
    }
 
-   @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   protected void aP_() {
-      this.d(euz.a(uq.e, $$0 -> {
-         synchronized (this) {
-            this.o = true;
-            if (this.n != null) {
-               this.n.cancel(true);
-               this.n = null;
-            }
-
-            if (this.m != null) {
-               this.m.a(a);
-            }
-         }
-
-         this.f.a(this.p);
-      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.r > 2000L) {
-         this.r = $$4;
-         this.f.aU().c(ur.c("narrator.joining"));
+   private static uv d(BanDetails $$0) {
+      if (f($$0)) {
+         uv $$1 = e($$0);
+         return uv.a("gui.banned.description.temporary", uv.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return uv.c("gui.banned.description.permanent").a(n.r);
       }
+   }
 
-      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
+   private static uv e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return uu.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? uu.c($$1.toMinutes()) : uu.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

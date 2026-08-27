@@ -1,107 +1,121 @@
-public abstract class gek implements gfc {
-   protected gez a;
-   protected final aqs b;
-   protected final agi c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gfc.a k = gfc.a.b;
-   protected boolean l;
-   protected ats m;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   protected gek(aqq $$0, aqs $$1, ats $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class gek implements gea {
+   protected final List<frw> a;
+   protected final Map<ib, List<frw>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final gbz f;
+   protected final fsi g;
+   protected final fsg h;
 
-   protected gek(agi $$0, aqs $$1, ats $$2) {
-      this.c = $$0;
+   public gek(List<frw> $$0, Map<ib, List<frw>> $$1, boolean $$2, boolean $$3, boolean $$4, gbz $$5, fsi $$6, fsg $$7) {
+      this.a = $$0;
       this.b = $$1;
-      this.m = $$2;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public agi a() {
+   public List<frw> a(@Nullable dhn $$0, @Nullable ib $$1, atw $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
       return this.c;
    }
 
    @Override
-   public ggh a(ggg $$0) {
-      if (this.c.equals(ggg.b)) {
-         this.a = ggg.d;
-         return ggg.c;
-      } else {
-         ggh $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = ggg.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
-
-         return $$1;
-      }
+   public boolean b() {
+      return this.d;
    }
 
    @Override
-   public gez b() {
-      return this.a;
-   }
-
-   @Override
-   public aqs c() {
-      return this.b;
+   public boolean c() {
+      return this.e;
    }
 
    @Override
    public boolean d() {
-      return this.i;
+      return false;
    }
 
    @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
+   public gbz e() {
       return this.f;
    }
 
    @Override
-   public double i() {
+   public fsi f() {
       return this.g;
    }
 
    @Override
-   public double j() {
+   public fsg g() {
       return this.h;
    }
 
-   @Override
-   public gfc.a k() {
-      return this.k;
-   }
+   public static class a {
+      private final List<frw> a = Lists.newArrayList();
+      private final Map<ib, List<frw>> b = Maps.newEnumMap(ib.class);
+      private final fsg c;
+      private final boolean d;
+      private gbz e;
+      private final boolean f;
+      private final boolean g;
+      private final fsi h;
 
-   @Override
-   public boolean l() {
-      return this.l;
-   }
+      public a(fsb $$0, fsg $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
 
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      private a(boolean $$0, boolean $$1, boolean $$2, fsi $$3, fsg $$4) {
+         for (ib $$5 : ib.values()) {
+            this.b.put($$5, Lists.newArrayList());
+         }
+
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public gek.a a(ib $$0, frw $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public gek.a a(frw $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gek.a a(gbz $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gek.a a() {
+         return this;
+      }
+
+      public gea b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new gek(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
+      }
    }
 }

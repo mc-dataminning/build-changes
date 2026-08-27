@@ -1,101 +1,79 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class bmx<E extends blg> implements bmy<E> {
-   public static final int a = 60;
-   protected final Map<buh<?>, bui> b;
-   private bmx.a c = bmx.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bmx extends bnc<blu> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<blu> g = $$0 -> $$0.ei() != null || $$0.dC() || $$0.bN();
+   private final float h;
+   private final Predicate<blu> i;
 
-   public bmx(Map<buh<?>, bui> $$0) {
-      this($$0, 60);
+   public bmx(float $$0) {
+      this($$0, g);
    }
 
-   public bmx(Map<buh<?>, bui> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public bmx(float $$0, Predicate<blu> $$1) {
+      super(ImmutableMap.of(bum.Y, bun.c, bum.x, bun.a), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public bmx(Map<buh<?>, bui> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   protected boolean a(ami $$0, blu $$1) {
+      return this.i.test($$1);
    }
 
-   @Override
-   public bmx.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(ame $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bmx.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(ame $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(ame $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(ame $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(ame $$0, E $$1, long $$2) {
-      this.c = bmx.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(ame $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(ame $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(ame $$0, E $$1) {
+   protected boolean a(ami $$0, blu $$1, long $$2) {
       return true;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(ami $$0, blu $$1, long $$2) {
+      $$1.dP().a(bum.Y, true);
+      $$1.dP().b(bum.m);
    }
 
-   protected boolean a(E $$0) {
-      for (Entry<buh<?>, bui> $$1 : this.b.entrySet()) {
-         buh<?> $$2 = $$1.getKey();
-         bui $$3 = $$1.getValue();
-         if (!$$0.dP().a($$2, $$3)) {
-            return false;
+   protected void c(ami $$0, blu $$1, long $$2) {
+      bml<?> $$3 = $$1.dP();
+      $$3.b(bum.Y);
+   }
+
+   protected void d(ami $$0, blu $$1, long $$2) {
+      if ($$1.N().l()) {
+         ejz $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dP().a(bum.m, new bup($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private ejz a(blu $$0, ami $$1) {
+      if ($$0.bN()) {
+         Optional<ejz> $$2 = this.a((crl)$$1, (bkv)$$0).map(ejz::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
          }
       }
 
-      return true;
+      return bwe.a($$0, 5, 4);
    }
 
-   public static enum a {
-      a,
-      b;
+   private Optional<hx> a(crl $$0, bkv $$1) {
+      hx $$2 = $$1.dn();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<hx> $$3;
+         if (atq.f($$1.dh()) == 2) {
+            $$3 = $$1x -> hx.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(arp.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(arp.a);
+         }
+
+         return hx.a($$2, 5, 1, $$3);
+      }
    }
 }

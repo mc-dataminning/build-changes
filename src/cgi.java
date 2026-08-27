@@ -1,117 +1,93 @@
-public class cgi {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public cgi() {
-      this.b = 5.0F;
-   }
+public final class cgi {
+   private static final cgi b = new cgi(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cgj c;
+   private final long d;
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
-   }
-
-   public void a(cle $$0, clj $$1) {
-      if ($$0.u()) {
-         cgj $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
-   }
-
-   public void a(cdu $$0) {
-      biu $$1 = $$0.dN().aj();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != biu.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dN().Y().b(crw.k);
-      if ($$2 && this.b > 0.0F && $$0.ge() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.ge()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ew() > 10.0F || $$1 == biu.d || $$0.ew() > 1.0F && $$1 == biu.c) {
-               $$0.a($$0.dO().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(rz $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(rz $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
+   private cgi(@Nullable cgj $$0, long $$1) {
       this.c = $$0;
+      this.d = $$1;
+   }
+
+   static cgi a(cgj $$0, Collection<cgg> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cgi($$0, $$2);
+      }
+   }
+
+   public static cgi a() {
+      return b;
+   }
+
+   public static cgi a(cgg $$0) {
+      return new cgi($$0.a, $$0.b);
+   }
+
+   public static cgi a(cgg $$0, cgg... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cgi($$0.a, $$2);
+   }
+
+   private static long a(cgj $$0, long $$1, Iterable<cgg> $$2) {
+      for (cgg $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(cgg $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean a(cgi $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public cgi b(cgi $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cgi(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cgi $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

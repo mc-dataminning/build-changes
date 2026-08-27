@@ -1,11 +1,11 @@
-public class fyh extends fxd<byj, fjt<byj>> {
-   private static final agi a = new agi("textures/entity/tadpole/tadpole.png");
+public class fyh extends fvd<cew> {
+   public static final agm a = new agm("textures/entity/projectiles/spectral_arrow.png");
 
-   public fyh(fvx.a $$0) {
-      super($$0, new fjt<>($$0.a(fkn.bz)), 0.14F);
+   public fyh(fwc.a $$0) {
+      super($$0);
    }
 
-   public agi a(byj $$0) {
+   public agm a(cew $$0) {
       return a;
    }
 }

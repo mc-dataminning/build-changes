@@ -1,20 +1,20 @@
-public class abb implements wk<yd> {
+public class abb implements wo<yh> {
    private final int a;
 
-   public abb(int $$0) {
-      this.a = $$0;
+   public abb(dje $$0) {
+      this.a = $$0.r();
    }
 
-   public abb(tu $$0) {
+   public abb(ty $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 

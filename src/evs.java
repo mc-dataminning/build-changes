@@ -1,146 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.UUID;
 
-public interface evs {
-   evs a = new evs() {
-      @Override
-      public int a(euo $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class evs extends bir {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-      @Override
-      public int a(euo $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(euo $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(euo $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static evs a(eum $$0, uw $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new evs.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public evs(UUID $$0, uv $$1, float $$2, bir.a $$3, bir.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   static evs a(eum $$0, uw $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new evs.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   @Override
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
-   static evs a(eum $$0, ur... $$1) {
-      return b($$0, Arrays.stream($$1).map(ur::g).map($$1x -> new evs.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static evs a(eum $$0, List<ur> $$1) {
-      return b($$0, $$1.stream().map(ur::g).map($$1x -> new evs.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static evs b(final eum $$0, final List<evs.a> $$1) {
-      return $$1.isEmpty() ? a : new evs() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(euo $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(euo $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (evs.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(euo $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (evs.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(euo $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (evs.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(euo $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
-   }
-
-   int a(euo var1, int var2, int var3);
-
-   int a(euo var1, int var2, int var3, int var4, int var5);
-
-   int b(euo var1, int var2, int var3, int var4, int var5);
-
-   int c(euo var1, int var2, int var3, int var4, int var5);
-
-   void a(euo var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final asy a;
-      final int b;
-
-      a(asy $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = atq.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return atq.i($$1, this.b, this.h);
    }
 }

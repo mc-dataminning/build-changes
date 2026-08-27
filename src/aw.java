@@ -10,10 +10,10 @@ public class aw extends cw<aw.a> {
       return new aw.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(amf $$0, bwr $$1, bwr $$2, @Nullable bkl $$3) {
-      eex $$4 = bq.b($$0, $$1);
-      eex $$5 = bq.b($$0, $$2);
-      eex $$6 = $$3 != null ? bq.b($$0, $$3) : null;
+   public void a(amj $$0, bww $$1, bww $$2, @Nullable bkq $$3) {
+      efc $$4 = bq.b($$0, $$1);
+      efc $$5 = bq.b($$0, $$2);
+      efc $$6 = $$3 != null ? bq.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -41,11 +41,11 @@ public class aw extends cw<aw.a> {
          return al.o.a(new aw.a(Optional.empty(), bq.a($$0), bq.a($$1), bq.a($$2)));
       }
 
-      public boolean a(eex $$0, eex $$1, @Nullable eex $$2) {
+      public boolean a(efc $$0, efc $$1, @Nullable efc $$2) {
          return !this.c.isPresent() || $$2 != null && this.c.get().a($$2) ? a(this.a, $$0) && a(this.b, $$1) || a(this.a, $$1) && a(this.b, $$0) : false;
       }
 
-      private static boolean a(Optional<bc> $$0, eex $$1) {
+      private static boolean a(Optional<bc> $$0, efc $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

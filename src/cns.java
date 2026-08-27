@@ -1,62 +1,45 @@
-public class cns extends cnr {
-   private final hx b;
+import java.util.Map;
+import java.util.Optional;
 
-   public cns(csa $$0, ht $$1, hx $$2, clj $$3, hx $$4) {
-      super($$0, null, biw.a, $$3, new ejq(eju.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class cns {
+   public static final agl<cnr> a = a("quartz");
+   public static final agl<cnr> b = a("iron");
+   public static final agl<cnr> c = a("netherite");
+   public static final agl<cnr> d = a("redstone");
+   public static final agl<cnr> e = a("copper");
+   public static final agl<cnr> f = a("gold");
+   public static final agl<cnr> g = a("emerald");
+   public static final agl<cnr> h = a("diamond");
+   public static final agl<cnr> i = a("lapis");
+   public static final agl<cnr> j = a("amethyst");
+
+   public static void a(oz<cnr> $$0) {
+      a($$0, a, clr.oy, vs.a.a(14931140), 0.1F);
+      a($$0, b, clr.oB, vs.a.a(15527148), 0.2F, Map.of(cja.c, "iron_darker"));
+      a($$0, c, clr.oG, vs.a.a(6445145), 0.3F, Map.of(cja.g, "netherite_darker"));
+      a($$0, d, clr.lG, vs.a.a(9901575), 0.4F);
+      a($$0, e, clr.oD, vs.a.a(11823181), 0.5F);
+      a($$0, f, clr.oF, vs.a.a(14594349), 0.6F, Map.of(cja.d, "gold_darker"));
+      a($$0, g, clr.ow, vs.a.a(1155126), 0.7F);
+      a($$0, h, clr.ov, vs.a.a(7269586), 0.8F, Map.of(cja.e, "diamond_darker"));
+      a($$0, i, clr.ox, vs.a.a(4288151), 0.9F);
+      a($$0, j, clr.oz, vs.a.a(10116294), 1.0F);
    }
 
-   @Override
-   public ht a() {
-      return this.j().a();
+   public static Optional<ig.c<cnr>> a(it $$0, clo $$1) {
+      return $$0.d(kd.aF).h().filter($$1x -> $$1.a(((cnr)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   private static void a(oz<cnr> $$0, agl<cnr> $$1, clj $$2, vs $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   private static void a(oz<cnr> $$0, agl<cnr> $$1, clj $$2, vs $$3, float $$4, Map<cja, String> $$5) {
+      cnr $$6 = cnr.a($$1.a().a(), $$2, $$4, uv.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   @Override
-   public hx d() {
-      return hx.a;
-   }
-
-   @Override
-   public hx[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new hx[]{hx.a, hx.c, hx.f, hx.d, hx.e, hx.b};
-         case b:
-            return new hx[]{hx.a, hx.b, hx.c, hx.f, hx.d, hx.e};
-         case c:
-            return new hx[]{hx.a, hx.c, hx.f, hx.e, hx.b, hx.d};
-         case d:
-            return new hx[]{hx.a, hx.d, hx.f, hx.e, hx.b, hx.c};
-         case e:
-            return new hx[]{hx.a, hx.e, hx.d, hx.b, hx.c, hx.f};
-         case f:
-            return new hx[]{hx.a, hx.f, hx.d, hx.b, hx.c, hx.e};
-      }
-   }
-
-   @Override
-   public hx g() {
-      return this.b.o() == hx.a.b ? hx.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   private static agl<cnr> a(String $$0) {
+      return agl.a(kd.aF, new agm($$0));
    }
 }

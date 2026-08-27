@@ -1,79 +1,103 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class bms extends bmx<blp> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<blp> g = $$0 -> $$0.ei() != null || $$0.dC() || $$0.bN();
-   private final float h;
-   private final Predicate<blp> i;
+public class bms {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bkz<? extends bll>, bmq> b = ImmutableMap.builder()
+      .put(bkz.b, bya.u().a())
+      .put(bkz.d, bll.dR().a())
+      .put(bkz.f, byd.gm().a())
+      .put(bkz.g, bwr.u().a())
+      .put(bkz.h, bwx.gr().a())
+      .put(bkz.i, cax.u().a())
+      .put(bkz.m, bwz.gr().a())
+      .put(bkz.l, byi.u().a())
+      .put(bkz.n, cay.u().a())
+      .put(bkz.q, bxb.u().a())
+      .put(bkz.r, bwt.u().a())
+      .put(bkz.t, bxd.u().a())
+      .put(bkz.u, caz.u().a())
+      .put(bkz.v, bxe.gf().a())
+      .put(bkz.w, byu.u().a())
+      .put(bkz.y, ccg.gj().a())
+      .put(bkz.A, cbc.u().a())
+      .put(bkz.E, cbd.u().a())
+      .put(bkz.F, cbe.u().a())
+      .put(bkz.C, bzm.w().a())
+      .put(bkz.G, cbg.w().a())
+      .put(bkz.N, bxg.u().a())
+      .put(bkz.O, byl.gf().a())
+      .put(bkz.Q, cbh.A().a())
+      .put(bkz.R, cbi.u().a())
+      .put(bkz.T, bld.gf().a())
+      .put(bkz.U, byr.w().a())
+      .put(bkz.V, cbj.gf().a())
+      .put(bkz.W, ccj.u().a())
+      .put(bkz.Y, byv.gF().a())
+      .put(bkz.Z, ccg.gj().a())
+      .put(bkz.aa, cbl.w().a())
+      .put(bkz.ac, bxi.u().a())
+      .put(bkz.aj, byy.gq().a())
+      .put(bkz.al, cbm.u().a())
+      .put(bkz.ao, bxd.u().a())
+      .put(bkz.ap, byu.u().a())
+      .put(bkz.aq, bxk.u().a())
+      .put(bkz.as, bxl.gq().a())
+      .put(bkz.at, bxm.gl().a())
+      .put(bkz.au, cbn.gl().a())
+      .put(bkz.av, bxn.u().a())
+      .put(bkz.aw, ccp.gm().a())
+      .put(bkz.ax, ccs.A().a())
+      .put(bkz.ay, cbq.w().a())
+      .put(bkz.bt, cdz.fI().a())
+      .put(bkz.az, bxo.u().a())
+      .put(bkz.aB, bwt.u().a())
+      .put(bkz.aC, bxq.w().a())
+      .put(bkz.aD, cbs.u().a())
+      .put(bkz.aE, bwt.u().a())
+      .put(bkz.aF, bxs.u().a())
+      .put(bkz.aG, cbt.u().a())
+      .put(bkz.aI, cbu.u().a())
+      .put(bkz.aJ, caw.u().a())
+      .put(bkz.aK, bzb.u().a())
+      .put(bkz.aL, cbn.gl().a())
+      .put(bkz.aN, bzi.u().a())
+      .put(bkz.aO, bxu.u().a())
+      .put(bkz.aS, cby.w().a())
+      .put(bkz.aT, bxv.gf().a())
+      .put(bkz.aU, caw.u().a())
+      .put(bkz.aV, cca.w().a())
+      .put(bkz.aW, byo.gh().a())
+      .put(bkz.ba, byy.gq().a())
+      .put(bkz.bc, bwt.u().a())
+      .put(bkz.bd, bxx.A().a())
+      .put(bkz.be, ccb.u().a())
+      .put(bkz.bf, cdm.go().a())
+      .put(bkz.bg, ccc.w().a())
+      .put(bkz.bi, cdd.u().a())
+      .put(bkz.bh, bln.C().a())
+      .put(bkz.bj, ccd.w().a())
+      .put(bkz.bk, cag.w().a())
+      .put(bkz.bl, caw.u().a())
+      .put(bkz.bn, bxz.gl().a())
+      .put(bkz.bo, ccf.u().a())
+      .put(bkz.bp, ccg.gj().a())
+      .put(bkz.bq, bzf.u().a())
+      .put(bkz.br, ccg.gj().a())
+      .put(bkz.bs, cci.gp().a())
+      .build();
 
-   public bms(float $$0) {
-      this($$0, g);
+   public static bmq a(bkz<? extends bll> $$0) {
+      return b.get($$0);
    }
 
-   public bms(float $$0, Predicate<blp> $$1) {
-      super(ImmutableMap.of(buh.Y, bui.c, buh.x, bui.a), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public static boolean b(bkz<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   protected boolean a(ame $$0, blp $$1) {
-      return this.i.test($$1);
-   }
-
-   protected boolean a(ame $$0, blp $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(ame $$0, blp $$1, long $$2) {
-      $$1.dP().a(buh.Y, true);
-      $$1.dP().b(buh.m);
-   }
-
-   protected void c(ame $$0, blp $$1, long $$2) {
-      bmg<?> $$3 = $$1.dP();
-      $$3.b(buh.Y);
-   }
-
-   protected void d(ame $$0, blp $$1, long $$2) {
-      if ($$1.N().l()) {
-         eju $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dP().a(buh.m, new buk($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private eju a(blp $$0, ame $$1) {
-      if ($$0.bN()) {
-         Optional<eju> $$2 = this.a((crg)$$1, (bkq)$$0).map(eju::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return bvz.a($$0, 5, 4);
-   }
-
-   private Optional<ht> a(crg $$0, bkq $$1) {
-      ht $$2 = $$1.dn();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<ht> $$3;
-         if (atm.f($$1.dh()) == 2) {
-            $$3 = $$1x -> ht.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(arl.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(arl.a);
-         }
-
-         return ht.a($$2, 5, 1, $$3);
-      }
+   public static void a() {
+      kc.h.s().filter($$0 -> $$0.f() != blo.h).filter($$0 -> !b((bkz<?>)$$0)).map(kc.h::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

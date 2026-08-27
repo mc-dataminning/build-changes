@@ -1,12 +1,39 @@
-public class gad<T extends cbk> extends fzr<T, fiq<T>> {
-   private static final frc a = frc.p(new agi("textures/entity/phantom_eyes.png"));
+public class gad<T extends bll, M extends fhu<T> & fgv> extends gak<T, M> {
+   private final fqv a;
 
-   public gad(fxs<T, fiq<T>> $$0) {
+   public gad(fxx<T, M> $$0, fqv $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public frc a() {
-      return a;
+   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fn() == blf.b;
+      clo $$11 = $$10 ? $$3.eV() : $$3.eU();
+      clo $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
+
+         this.a($$3, $$12, cll.c, blf.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cll.b, blf.a, $$0, $$1, $$2);
+         $$0.b();
+      }
+   }
+
+   protected void a(bll $$0, clo $$1, cll $$2, blf $$3, eob $$4, fqz $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == blf.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
 }

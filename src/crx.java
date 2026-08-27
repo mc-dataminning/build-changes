@@ -1,103 +1,329 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum crx implements aug {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class crx {
+   private static final cry a = new cry();
+   private static final int b = 16;
+   private final boolean c;
+   private final crx.a d;
+   private final atw e = atw.a();
+   private final csf f;
+   private final double g;
+   private final double h;
+   private final double i;
+   @Nullable
+   private final bkv j;
+   private final float k;
+   private final bjt l;
+   private final cry m;
+   private final ObjectArrayList<hx> n = new ObjectArrayList();
+   private final Map<cdz, ejz> o = Maps.newHashMap();
 
-   public static final crx e = a;
-   public static final aug.a<crx> f = aug.a(crx::values);
-   private static final IntFunction<crx> g = asf.a(crx::a, values(), asf.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final ur k;
-   private final ur l;
+   public crx(csf $$0, @Nullable bkv $$1, double $$2, double $$3, double $$4, float $$5, List<hx> $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, false, crx.a.c, $$6);
+   }
 
-   private crx(int $$0, String $$1) {
-      this.i = $$0;
+   public crx(csf $$0, @Nullable bkv $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, crx.a $$7, List<hx> $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.n.addAll($$8);
+   }
+
+   public crx(csf $$0, @Nullable bkv $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, crx.a $$7) {
+      this($$0, $$1, null, null, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public crx(csf $$0, @Nullable bkv $$1, @Nullable bjt $$2, @Nullable cry $$3, double $$4, double $$5, double $$6, float $$7, boolean $$8, crx.a $$9) {
+      this.f = $$0;
       this.j = $$1;
-      this.k = ur.c("selectWorld.gameMode." + $$1);
-      this.l = ur.c("gameMode." + $$1);
+      this.k = $$7;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.c = $$8;
+      this.d = $$9;
+      this.l = $$2 == null ? $$0.ah().a(this) : $$2;
+      this.m = $$3 == null ? this.a($$1) : $$3;
    }
 
-   public int a() {
-      return this.i;
+   private cry a(@Nullable bkv $$0) {
+      return (cry)($$0 == null ? a : new crv($$0));
    }
 
-   public String b() {
-      return this.j;
+   public static float a(ejz $$0, bkv $$1) {
+      eju $$2 = $$1.cH();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
+
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = atq.d($$10, $$2.a, $$2.d);
+                  double $$14 = atq.d($$11, $$2.b, $$2.e);
+                  double $$15 = atq.d($$12, $$2.c, $$2.f);
+                  ejz $$16 = new ejz($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dN().a(new cro($$16, $$0, cro.a.a, cro.b.a, $$1)).c() == ejx.a.a) {
+                     $$8++;
+                  }
+
+                  $$9++;
+               }
+            }
+         }
+
+         return (float)$$8 / (float)$$9;
+      } else {
+         return 0.0F;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.j;
+   public void a() {
+      this.f.a(this.j, dlx.w, new ejz(this.g, this.h, this.i));
+      Set<hx> $$0 = Sets.newHashSet();
+      int $$1 = 16;
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
+                  double $$10 = this.g;
+                  double $$11 = this.h;
+                  double $$12 = this.i;
+
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     hx $$14 = hx.a($$10, $$11, $$12);
+                     dhn $$15 = this.f.a_($$14);
+                     ecx $$16 = this.f.b_($$14);
+                     if (!this.f.j($$14)) {
+                        break;
+                     }
+
+                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
+
+                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
+
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
+         }
+      }
+
+      this.n.addAll($$0);
+      float $$18 = this.k * 2.0F;
+      int $$19 = atq.a(this.g - (double)$$18 - 1.0);
+      int $$20 = atq.a(this.g + (double)$$18 + 1.0);
+      int $$21 = atq.a(this.h - (double)$$18 - 1.0);
+      int $$22 = atq.a(this.h + (double)$$18 + 1.0);
+      int $$23 = atq.a(this.i - (double)$$18 - 1.0);
+      int $$24 = atq.a(this.i + (double)$$18 + 1.0);
+      List<bkv> $$25 = this.f.a_(this.j, new eju((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
+      ejz $$26 = new ejz(this.g, this.h, this.i);
+
+      for (bkv $$27 : $$25) {
+         if (!$$27.cM()) {
+            double $$28 = Math.sqrt($$27.f($$26)) / (double)$$18;
+            if ($$28 <= 1.0) {
+               double $$29 = $$27.ds() - this.g;
+               double $$30 = ($$27 instanceof cat ? $$27.du() : $$27.dw()) - this.h;
+               double $$31 = $$27.dy() - this.i;
+               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
+               if ($$32 != 0.0) {
+                  $$29 /= $$32;
+                  $$30 /= $$32;
+                  $$31 /= $$32;
+                  double $$33 = (double)a($$26, $$27);
+                  double $$34 = (1.0 - $$28) * $$33;
+                  $$27.a(this.c(), (float)((int)(($$34 * $$34 + $$34) / 2.0 * 7.0 * (double)$$18 + 1.0)));
+                  double $$36;
+                  if ($$27 instanceof bll $$35) {
+                     $$36 = cqm.a($$35, $$34);
+                  } else {
+                     $$36 = $$34;
+                  }
+
+                  $$29 *= $$36;
+                  $$30 *= $$36;
+                  $$31 *= $$36;
+                  ejz $$38 = new ejz($$29, $$30, $$31);
+                  $$27.g($$27.dq().e($$38));
+                  if ($$27 instanceof cdz) {
+                     cdz $$39 = (cdz)$$27;
+                     if (!$$39.P_() && (!$$39.f() || !$$39.fU().b)) {
+                        this.o.put($$39, $$38);
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public ur d() {
+   public void a(boolean $$0) {
+      if (this.f.B) {
+         this.f.a(this.g, this.h, this.i, aqv.jr, aqw.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
+      }
+
+      boolean $$1 = this.b();
+      if ($$0) {
+         if (!(this.k < 2.0F) && $$1) {
+            this.f.a(jw.w, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+         } else {
+            this.f.a(jw.x, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+         }
+      }
+
+      if ($$1) {
+         ObjectArrayList<Pair<clo, hx>> $$2 = new ObjectArrayList();
+         boolean $$3 = this.e() instanceof cdz;
+         ac.c(this.n, this.f.z);
+         ObjectListIterator var5 = this.n.iterator();
+
+         while (var5.hasNext()) {
+            hx $$4 = (hx)var5.next();
+            dhn $$5 = this.f.a_($$4);
+            cvf $$6 = $$5.b();
+            if (!$$5.i()) {
+               hx $$7 = $$4.i();
+               this.f.ae().a("explosion_blocks");
+               if ($$6.a(this)) {
+                  csf $$9 = this.f;
+                  if ($$9 instanceof ami) {
+                     ami $$8 = (ami)$$9;
+                     dfi $$9x = $$5.t() ? this.f.c_($$4) : null;
+                     efi.a $$10 = new efi.a($$8).a(ehn.f, ejz.b($$4)).a(ehn.i, clo.b).b(ehn.h, $$9x).b(ehn.a, this.j);
+                     if (this.d == crx.a.c) {
+                        $$10.a(ehn.j, this.k);
+                     }
+
+                     $$5.a($$8, $$4, clo.b, $$3);
+                     $$5.a($$10).forEach($$2x -> a($$2, $$2x, $$7));
+                  }
+               }
+
+               this.f.a($$4, cvh.a.o(), 3);
+               $$6.a(this.f, $$4, this);
+               this.f.ae().c();
+            }
+         }
+
+         var5 = $$2.iterator();
+
+         while (var5.hasNext()) {
+            Pair<clo, hx> $$11 = (Pair<clo, hx>)var5.next();
+            cvf.a(this.f, (hx)$$11.getSecond(), (clo)$$11.getFirst());
+         }
+      }
+
+      if (this.c) {
+         ObjectListIterator var13 = this.n.iterator();
+
+         while (var13.hasNext()) {
+            hx $$12 = (hx)var13.next();
+            if (this.e.a(3) == 0 && this.f.a_($$12).i() && this.f.a_($$12.d()).i(this.f, $$12.d())) {
+               this.f.b($$12, cus.a(this.f, $$12));
+            }
+         }
+      }
+   }
+
+   public boolean b() {
+      return this.d != crx.a.a;
+   }
+
+   private static void a(ObjectArrayList<Pair<clo, hx>> $$0, clo $$1, hx $$2) {
+      int $$3 = $$0.size();
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         Pair<clo, hx> $$5 = (Pair<clo, hx>)$$0.get($$4);
+         clo $$6 = (clo)$$5.getFirst();
+         if (cas.a($$6, $$1)) {
+            clo $$7 = cas.a($$6, $$1, 16);
+            $$0.set($$4, Pair.of($$7, (hx)$$5.getSecond()));
+            if ($$1.b()) {
+               return;
+            }
+         }
+      }
+
+      $$0.add(Pair.of($$1, $$2));
+   }
+
+   public bjt c() {
       return this.l;
    }
 
-   public ur e() {
-      return this.k;
+   public Map<cdz, ejz> d() {
+      return this.o;
    }
 
-   public void a(cdr $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   @Nullable
+   public bll e() {
+      if (this.j == null) {
+         return null;
+      } else if (this.j instanceof cat $$0) {
+         return $$0.q();
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         bkv $$3 = this.j;
+         if ($$3 instanceof bll) {
+            return (bll)$$3;
+         } else {
+            if (this.j instanceof cer $$2) {
+               $$3 = $$2.w();
+               if ($$3 instanceof bll) {
+                  return (bll)$$3;
+               }
+            }
+
+            return null;
+         }
       }
-
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static crx a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static crx a(String $$0) {
-      return a($$0, a);
    }
 
    @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static crx a(String $$0, @Nullable crx $$1) {
-      crx $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   public bkv f() {
+      return this.j;
    }
 
-   public static int a(@Nullable crx $$0) {
-      return $$0 != null ? $$0.i : -1;
+   public void g() {
+      this.n.clear();
    }
 
-   @Nullable
-   public static crx b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+   public List<hx> h() {
+      return this.n;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

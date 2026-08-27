@@ -1,7 +1,7 @@
-public enum diu implements aug {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum diu implements auk {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum diu implements aug {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

@@ -1,70 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cyl extends dcq implements cvd {
-   public static final MapCodec<cyl> a = b(cyl::new);
+public class cyl extends cvo implements cvi {
+   public static final MapCodec<cyl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(agl.a(kd.au).fieldOf("feature").forGetter($$0x -> $$0x.e), kc.f.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, cyl::new)
+   );
+   protected static final eks b = cvf.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cvf d;
+   private final agl<dpn<?, ?>> e;
 
    @Override
    public MapCodec<cyl> a() {
       return a;
    }
 
-   public cyl(dhh.d $$0) {
-      super($$0);
+   protected cyl(agl<dpn<?, ?>> $$0, cvf $$1, dhm.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
-      return $$0.a_($$1.c()).i();
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
-      return true;
+   protected boolean b(dhn $$0, crl $$1, hx $$2) {
+      return $$0.a(ark.aK) || $$0.a(cvh.fl) || $$0.a(cvh.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends ig<dpn<?, ?>>> a(csi $$0) {
+      return $$0.I_().d(kd.au).b(this.e);
    }
 
    @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      ht $$4 = $$2.c();
-      dhi $$5 = cvc.bt.o();
-      Optional<ib.c<dwl>> $$6 = $$0.H_().d(jz.aA).b(qm.n);
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      dhn $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ht $$8 = $$4;
+   @Override
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return (double)$$1.i() < 0.4;
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
-
-         dhi $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((cvd)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            ib<dwl> $$12;
-            if ($$1.a(8) == 0) {
-               List<dpi<?, ?>> $$11 = $$0.s($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((dsm)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
-         }
-      }
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      this.a($$0).ifPresent($$3x -> ((dpn)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
    }
 }

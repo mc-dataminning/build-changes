@@ -1,31 +1,23 @@
-import java.util.function.Predicate;
-
-public abstract class clz extends cle {
-   public static final Predicate<clj> c = $$0 -> $$0.a(aro.at);
-   public static final Predicate<clj> d = c.or($$0 -> $$0.a(clm.um));
-
-   public clz(cle.a $$0) {
+public class clz extends clj {
+   public clz(clj.a $$0) {
       super($$0);
    }
 
-   public Predicate<clj> e() {
-      return this.b();
-   }
+   @Override
+   public bjb a(clo $$0, cdz $$1, bll $$2, bja $$3) {
+      if ($$0.A() && !($$2 instanceof cdz)) {
+         if (!$$1.dN().B && $$2.bx()) {
+            $$2.b($$0.y());
+            if ($$2 instanceof bln) {
+               ((bln)$$2).fK();
+            }
 
-   public abstract Predicate<clj> b();
+            $$0.h(1);
+         }
 
-   public static clj a(blg $$0, Predicate<clj> $$1) {
-      if ($$1.test($$0.b(biw.b))) {
-         return $$0.b(biw.b);
+         return bjb.a($$1.dN().B);
       } else {
-         return $$1.test($$0.b(biw.a)) ? $$0.b(biw.a) : clj.b;
+         return bjb.d;
       }
    }
-
-   @Override
-   public int c() {
-      return 1;
-   }
-
-   public abstract int d();
 }

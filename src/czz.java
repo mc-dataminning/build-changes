@@ -1,253 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public abstract class czz extends cva {
-   private static final float a = 1.0F;
-   private static final ekn c = cva.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ekn d = cva.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final ekn e = cva.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ekn f = cva.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ekn g = cva.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ekn h = cva.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<hx, dhz> i = dan.h;
-   private static final Map<hx, ekn> j = ac.a(Maps.newEnumMap(hx.class), $$0 -> {
-      $$0.put(hx.c, g);
-      $$0.put(hx.f, f);
-      $$0.put(hx.d, h);
-      $$0.put(hx.e, e);
-      $$0.put(hx.b, c);
-      $$0.put(hx.a, d);
-   });
-   protected static final hx[] b = hx.values();
-   private final ImmutableMap<dhi, ekn> k;
-   private final boolean l;
-   private final boolean m;
-   private final boolean n;
+public class czz extends dbs implements dcf {
+   public static final MapCodec<czz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhc.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, czz::new)
+   );
+   public static final din b = did.at;
+   public static final int c = 4;
+   private static final eks[] j = new eks[]{
+      cvf.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      cvf.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      cvf.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      cvf.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      cvf.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final die k = did.C;
+   public static final die d = did.j;
 
-   public czz(dhh.d $$0) {
-      super($$0);
-      this.k(a(this.E));
-      this.k = this.a(czz::o);
-      this.l = hx.c.a.a().allMatch(this::a);
-      this.m = hx.c.a.a().filter(hx.a.a).filter(this::a).count() % 2L == 0L;
-      this.n = hx.c.a.a().filter(hx.a.c).filter(this::a).count() % 2L == 0L;
+   @Override
+   public MapCodec<czz> a() {
+      return a;
+   }
+
+   public czz(dhc $$0, dhm.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends czz> a();
-
-   public static Set<hx> h(dhi $$0) {
-      if (!($$0.b() instanceof czz)) {
-         return Set.of();
-      } else {
-         Set<hx> $$1 = EnumSet.noneOf(hx.class);
-
-         for (hx $$2 : hx.values()) {
-            if (a($$0, $$2)) {
-               $$1.add($$2);
-            }
-         }
-
-         return $$1;
-      }
-   }
-
-   public static Set<hx> a(byte $$0) {
-      Set<hx> $$1 = EnumSet.noneOf(hx.class);
-
-      for (hx $$2 : hx.values()) {
-         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static byte a(Collection<hx> $$0) {
-      byte $$1 = 0;
-
-      for (hx $$2 : $$0) {
-         $$1 = (byte)($$1 | 1 << $$2.ordinal());
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(hx $$0) {
-      return true;
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      for (hx $$1 : b) {
-         if (this.a($$1)) {
-            $$0.a(b($$1));
-         }
-      }
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if (!n($$0)) {
-         return cvc.a.o();
-      } else {
-         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
-      }
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return (ekn)this.k.get($$0);
-   }
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      boolean $$3 = false;
-
-      for (hx $$4 : b) {
-         if (a($$0, $$4)) {
-            ht $$5 = $$2.a($$4);
-            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
-               return false;
-            }
-
-            $$3 = true;
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   public boolean a(dhi $$0, cnr $$1) {
-      return p($$0);
+   protected boolean b(dhn $$0, crl $$1, hx $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(cvh.dR);
    }
 
    @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      csa $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      dhi $$3 = $$1.a_($$2);
-      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   public dhn a(cnw $$0) {
+      ecx $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ecy.c;
+      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
    }
 
-   public boolean a(crg $$0, dhi $$1, ht $$2, hx $$3) {
-      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
-         ht $$4 = $$2.a($$3);
-         return a($$0, $$3, $$4, $$0.a_($$4));
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      ejz $$4 = $$0.n($$1, $$2);
+      eks $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
       } else {
-         return false;
+         $$5 = j[$$0.c(b)];
       }
+
+      return $$5.a($$4.c, $$4.d, $$4.e);
    }
 
-   @Nullable
-   public dhi c(dhi $$0, crg $$1, ht $$2, hx $$3) {
-      if (!this.a($$1, $$0, $$2, $$3)) {
-         return null;
-      } else {
-         dhi $$4;
-         if ($$0.a(this)) {
-            $$4 = $$0;
-         } else if (this.g() && $$0.u().a(ect.c)) {
-            $$4 = this.o().a(dhy.C, Boolean.valueOf(true));
-         } else {
-            $$4 = this.o();
-         }
+   @Override
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      return h($$0) ? $$1.a_($$2.c()).a(cvh.aL) : super.a($$0, $$1, $$2);
+   }
 
-         return $$4.a(b($$3), Boolean.valueOf(true));
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
+      }
+
+      return $$1 == ib.b && !$$0.a($$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecx c_(dhn $$0) {
+      return $$0.c(k) ? ecy.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      if (!h($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!n($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
+         }
       }
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return !this.l ? $$0 : this.a($$0, $$1::a);
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      return !h($$2) || !n($$2);
    }
 
    @Override
-   public dhi a(dhi $$0, czw $$1) {
-      if ($$1 == czw.c && !this.m) {
-         return $$0;
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      if (h($$3) && !n($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
       } else {
-         return $$1 == czw.b && !this.n ? $$0 : this.a($$0, $$1::b);
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   private dhi a(dhi $$0, Function<hx, hx> $$1) {
-      dhi $$2 = $$0;
-
-      for (hx $$3 : b) {
-         if (this.a($$3)) {
-            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
-         }
-      }
-
-      return $$2;
+   private static boolean h(dhn $$0) {
+      return $$0.c(d);
    }
 
-   public static boolean a(dhi $$0, hx $$1) {
-      dhz $$2 = b($$1);
-      return $$0.b($$2) && $$0.c($$2);
+   private static boolean n(dhn $$0) {
+      return $$0.c(b) == 4;
    }
 
-   public static boolean a(crg $$0, hx $$1, ht $$2, dhi $$3) {
-      return cva.a($$3.l($$0, $$2), $$1.g()) || cva.a($$3.k($$0, $$2), $$1.g());
+   public static dhn c() {
+      return b(0);
    }
 
-   private boolean g() {
-      return this.E.d().contains(dhy.C);
+   public static dhn b(int $$0) {
+      return cvh.E.o().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
    }
-
-   private static dhi a(dhi $$0, dhz $$1) {
-      dhi $$2 = $$0.a($$1, Boolean.valueOf(false));
-      return n($$2) ? $$2 : cvc.a.o();
-   }
-
-   public static dhz b(hx $$0) {
-      return i.get($$0);
-   }
-
-   private static dhi a(dhj<cva, dhi> $$0) {
-      dhi $$1 = $$0.b();
-
-      for (dhz $$2 : i.values()) {
-         if ($$1.b($$2)) {
-            $$1 = $$1.a($$2, Boolean.valueOf(false));
-         }
-      }
-
-      return $$1;
-   }
-
-   private static ekn o(dhi $$0) {
-      ekn $$1 = ekk.a();
-
-      for (hx $$2 : b) {
-         if (a($$0, $$2)) {
-            $$1 = ekk.a($$1, j.get($$2));
-         }
-      }
-
-      return $$1.c() ? ekk.b() : $$1;
-   }
-
-   protected static boolean n(dhi $$0) {
-      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
-   }
-
-   private static boolean p(dhi $$0) {
-      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
-   }
-
-   public abstract daa c();
 }

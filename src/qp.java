@@ -1,10 +1,95 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.List;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface qp {
-   String a();
+public class qp {
+   public static final agl<dwq> a = qo.a("crimson_fungi");
+   public static final agl<dwq> b = qo.a("warped_fungi");
+   public static final agl<dwq> c = qo.a("oak_checked");
+   public static final agl<dwq> d = qo.a("dark_oak_checked");
+   public static final agl<dwq> e = qo.a("birch_checked");
+   public static final agl<dwq> f = qo.a("acacia_checked");
+   public static final agl<dwq> g = qo.a("spruce_checked");
+   public static final agl<dwq> h = qo.a("mangrove_checked");
+   public static final agl<dwq> i = qo.a("cherry_checked");
+   public static final agl<dwq> j = qo.a("pine_on_snow");
+   public static final agl<dwq> k = qo.a("spruce_on_snow");
+   public static final agl<dwq> l = qo.a("pine_checked");
+   public static final agl<dwq> m = qo.a("jungle_tree");
+   public static final agl<dwq> n = qo.a("fancy_oak_checked");
+   public static final agl<dwq> o = qo.a("mega_jungle_tree_checked");
+   public static final agl<dwq> p = qo.a("mega_spruce_checked");
+   public static final agl<dwq> q = qo.a("mega_pine_checked");
+   public static final agl<dwq> r = qo.a("tall_mangrove_checked");
+   public static final agl<dwq> s = qo.a("jungle_bush");
+   public static final agl<dwq> t = qo.a("super_birch_bees_0002");
+   public static final agl<dwq> u = qo.a("super_birch_bees");
+   public static final agl<dwq> v = qo.a("oak_bees_0002");
+   public static final agl<dwq> w = qo.a("oak_bees_002");
+   public static final agl<dwq> x = qo.a("birch_bees_0002");
+   public static final agl<dwq> y = qo.a("birch_bees_002");
+   public static final agl<dwq> z = qo.a("fancy_oak_bees_0002");
+   public static final agl<dwq> A = qo.a("fancy_oak_bees_002");
+   public static final agl<dwq> B = qo.a("fancy_oak_bees");
+   public static final agl<dwq> C = qo.a("cherry_bees_005");
+
+   public static void a(oz<dwq> $$0) {
+      ih<dpn<?, ?>> $$1 = $$0.a(kd.au);
+      ig<dpn<?, ?>> $$2 = $$1.b(qe.a);
+      ig<dpn<?, ?>> $$3 = $$1.b(qe.c);
+      ig<dpn<?, ?>> $$4 = $$1.b(qe.g);
+      ig<dpn<?, ?>> $$5 = $$1.b(qe.h);
+      ig<dpn<?, ?>> $$6 = $$1.b(qe.i);
+      ig<dpn<?, ?>> $$7 = $$1.b(qe.j);
+      ig<dpn<?, ?>> $$8 = $$1.b(qe.k);
+      ig<dpn<?, ?>> $$9 = $$1.b(qe.x);
+      ig<dpn<?, ?>> $$10 = $$1.b(qe.z);
+      ig<dpn<?, ?>> $$11 = $$1.b(qe.l);
+      ig<dpn<?, ?>> $$12 = $$1.b(qe.m);
+      ig<dpn<?, ?>> $$13 = $$1.b(qe.n);
+      ig<dpn<?, ?>> $$14 = $$1.b(qe.p);
+      ig<dpn<?, ?>> $$15 = $$1.b(qe.q);
+      ig<dpn<?, ?>> $$16 = $$1.b(qe.r);
+      ig<dpn<?, ?>> $$17 = $$1.b(qe.y);
+      ig<dpn<?, ?>> $$18 = $$1.b(qe.v);
+      ig<dpn<?, ?>> $$19 = $$1.b(qe.s);
+      ig<dpn<?, ?>> $$20 = $$1.b(qe.t);
+      ig<dpn<?, ?>> $$21 = $$1.b(qe.A);
+      ig<dpn<?, ?>> $$22 = $$1.b(qe.B);
+      ig<dpn<?, ?>> $$23 = $$1.b(qe.D);
+      ig<dpn<?, ?>> $$24 = $$1.b(qe.E);
+      ig<dpn<?, ?>> $$25 = $$1.b(qe.G);
+      ig<dpn<?, ?>> $$26 = $$1.b(qe.H);
+      ig<dpn<?, ?>> $$27 = $$1.b(qe.J);
+      ig<dpn<?, ?>> $$28 = $$1.b(qe.K);
+      qo.a($$0, a, $$2, dwi.a(8), dwe.a());
+      qo.a($$0, b, $$3, dwi.a(8), dwe.a());
+      qo.a($$0, c, $$4, qo.a(cvh.x));
+      qo.a($$0, d, $$5, qo.a(cvh.D));
+      qo.a($$0, e, $$6, qo.a(cvh.z));
+      qo.a($$0, f, $$7, qo.a(cvh.B));
+      qo.a($$0, g, $$8, qo.a(cvh.y));
+      qo.a($$0, h, $$9, qo.a(cvh.E));
+      qo.a($$0, i, $$10, qo.a(cvh.C));
+      dod $$29 = dod.a(ib.a.q(), cvh.dP, cvh.qP);
+      List<dwt> $$30 = List.of(dwk.a(ib.b, dod.a(dod.a(cvh.qP)), 8), dwf.a($$29));
+      qo.a($$0, j, $$11, $$30);
+      qo.a($$0, k, $$8, $$30);
+      qo.a($$0, l, $$11, qo.a(cvh.y));
+      qo.a($$0, m, $$12, qo.a(cvh.A));
+      qo.a($$0, n, $$13, qo.a(cvh.x));
+      qo.a($$0, o, $$14, qo.a(cvh.A));
+      qo.a($$0, p, $$15, qo.a(cvh.y));
+      qo.a($$0, q, $$16, qo.a(cvh.y));
+      qo.a($$0, r, $$17, qo.a(cvh.E));
+      qo.a($$0, s, $$18, qo.a(cvh.x));
+      qo.a($$0, t, $$19, qo.a(cvh.z));
+      qo.a($$0, u, $$20, qo.a(cvh.z));
+      qo.a($$0, v, $$21, qo.a(cvh.x));
+      qo.a($$0, w, $$22, qo.a(cvh.x));
+      qo.a($$0, x, $$23, qo.a(cvh.z));
+      qo.a($$0, y, $$24, qo.a(cvh.z));
+      qo.a($$0, z, $$25, qo.a(cvh.x));
+      qo.a($$0, A, $$26, qo.a(cvh.x));
+      qo.a($$0, B, $$27, qo.a(cvh.x));
+      qo.a($$0, C, $$28, qo.a(cvh.C));
+   }
 }

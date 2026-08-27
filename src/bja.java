@@ -1,3 +1,4 @@
-public interface bja extends chs {
-   ur P_();
+public enum bja {
+   a,
+   b;
 }

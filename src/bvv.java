@@ -1,13 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bvv {
-   @Nullable
-   public static eju a(blp $$0, int $$1, int $$2, int $$3, eju $$4, double $$5) {
-      eju $$6 = $$4.a($$0.ds(), $$0.du(), $$0.dy());
-      boolean $$7 = bvx.a($$0, $$1);
-      return bwa.a($$0, () -> {
-         ht $$7x = bvu.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bvx.a($$0, $$7x) ? $$7x : null;
-      });
+public class bvv extends bvj<cdd> {
+   @Override
+   public Set<bum<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bum.B)));
+   }
+
+   protected void a(ami $$0, cdd $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bkz.bt)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bkz.bt))
+         .ifPresentOrElse($$1x -> $$1.dP().a(bum.B, $$1x), () -> $$1.dP().b(bum.B));
+   }
+
+   private static Optional<bll> a(cdd $$0, Predicate<bll> $$1) {
+      return $$0.dP().c(bum.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

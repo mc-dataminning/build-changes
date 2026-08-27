@@ -1,42 +1,31 @@
-import java.util.Optional;
+public record aar(acm d, byte e) implements wo<yh> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-public class aar implements wk<yd> {
-   private final ur a;
-   private final Optional<byte[]> b;
-   private final boolean c;
-
-   public aar(ur $$0, Optional<byte[]> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public aar(tu $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(tu::b);
-      this.c = $$0.readBoolean();
+   public aar(ty $$0) {
+      this(new acm($$0), $$0.readByte());
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, tu::a);
-      $$0.a(this.c);
+   public void a(ty $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public ur a() {
-      return this.a;
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public Optional<byte[]> d() {
-      return this.b;
+   public acm a() {
+      return this.d;
    }
 
-   public boolean e() {
-      return this.c;
+   public byte d() {
+      return this.e;
    }
 }

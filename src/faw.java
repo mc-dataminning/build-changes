@@ -1,45 +1,71 @@
 import javax.annotation.Nullable;
 
-public abstract class faw extends fam {
-   protected final etg<?>[] c;
+public class faw extends faz implements atv {
    @Nullable
-   private eux l;
-   protected evw k;
+   private uv a;
+   @Nullable
+   private uv b;
+   private int c;
+   private boolean k;
+   private final boolean l;
 
-   public faw(fau $$0, eth $$1, ur $$2, etg<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.c = $$3;
+   public faw(boolean $$0) {
+      super(eta.a);
+      this.l = $$0;
    }
 
    @Override
-   protected void aP_() {
-      this.k = new evw(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.k.a(this.c);
-      this.e(this.k);
-      this.f();
-      this.l = this.k.b(this.b.ap());
-      if (this.l != null) {
-         this.l.i = this.f.aU().a();
-      }
-   }
-
-   protected void f() {
-      this.d(euz.a(uq.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   public boolean aF_() {
+      return false;
    }
 
    @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.k, $$1, $$2, $$3);
+   protected boolean aP_() {
+      return false;
    }
 
    @Override
-   public void b(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(uv $$0) {
       this.b($$0);
    }
 
-   public void l() {
-      if (this.l instanceof evg) {
-         ((evg)this.l).a(this.b.ap().c());
+   @Override
+   public void b(uv $$0) {
+      this.a = $$0;
+      this.c(uv.c("menu.working"));
+   }
+
+   @Override
+   public void c(uv $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, uv.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
       }
    }
 }

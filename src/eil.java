@@ -1,18 +1,50 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eil {
-   private static final Codec<eik> d = jy.K.q().dispatch(eik::a, eij::a);
-   public static final Codec<eik> a = asu.a(
-      (Supplier<Codec<eik>>)(() -> Codec.either(eii.c, d)
-            .xmap($$0 -> (eik)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eii $$1 ? Either.left($$1) : Either.right($$0)))
+public record eil(Optional<Boolean> b, Optional<Boolean> c) implements eib {
+   public static final Codec<eil> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asy.a(Codec.BOOL, "raining").forGetter(eil::d), asy.a(Codec.BOOL, "thundering").forGetter(eil::e)).apply($$0, eil::new)
    );
-   public static final eij b = a("storage", eim.a);
-   public static final eij c = a("context", eii.b);
 
-   private static eij a(String $$0, Codec<? extends eik> $$1) {
-      return io.a(jy.K, new agi($$0), new eij($$1));
+   @Override
+   public eic b() {
+      return eid.p;
+   }
+
+   public boolean a(efc $$0) {
+      ami $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.aa() ? false : !this.c.isPresent() || this.c.get() == $$1.Z();
+   }
+
+   public static eil.a c() {
+      return new eil.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements eib.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public eil.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eil.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public eil a() {
+         return new eil(this.a, this.b);
+      }
    }
 }

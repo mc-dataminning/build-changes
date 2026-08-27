@@ -1,12 +1,11 @@
-public class fxl extends fxd<bxi, fir<bxi>> {
-   private static final agi a = new agi("textures/entity/pig/pig.png");
+public class fxl extends fxi<bxk, fis<bxk>> {
+   private static final agm a = new agm("textures/entity/cat/ocelot.png");
 
-   public fxl(fvx.a $$0) {
-      super($$0, new fir<>($$0.a(fkn.aC)), 0.7F);
-      this.a(new gag<>(this, new fir<>($$0.a(fkn.aK)), new agi("textures/entity/pig/pig_saddle.png")));
+   public fxl(fwc.a $$0) {
+      super($$0, new fis<>($$0.a(fks.ay)), 0.4F);
    }
 
-   public agi a(bxi $$0) {
+   public agm a(bxk $$0) {
       return a;
    }
 }

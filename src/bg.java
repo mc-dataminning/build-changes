@@ -7,19 +7,19 @@ import org.slf4j.Logger;
 
 public class bg {
    private static final Logger a = LogUtils.getLogger();
-   private final agi b;
-   private final efa c;
+   private final agm b;
+   private final eff c;
 
-   public bg(agi $$0, efa $$1) {
+   public bg(agm $$0, eff $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public final List<ehw> a(JsonArray $$0, String $$1, ehg $$2) {
-      List<ehw> $$3 = ac.a(ehy.a.listOf().parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-      efg $$4 = new efg($$2, this.c);
+   public final List<eib> a(JsonArray $$0, String $$1, ehl $$2) {
+      List<eib> $$3 = ac.a(eid.a.listOf().parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+      efl $$4 = new efl($$2, this.c);
 
-      for (ehw $$5 : $$3) {
+      for (eib $$5 : $$3) {
          $$5.a($$4);
          $$4.a().forEach(($$1x, $$2x) -> a.warn("Found validation problem in advancement trigger {}/{}: {}", new Object[]{$$1, $$1x, $$2x}));
       }
@@ -27,7 +27,7 @@ public class bg {
       return $$3;
    }
 
-   public agi a() {
+   public agm a() {
       return this.b;
    }
 }

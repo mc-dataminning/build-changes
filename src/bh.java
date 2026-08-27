@@ -9,11 +9,11 @@ import javax.annotation.Nullable;
 public record bh(cl.c b, cl.c c, cl.c d, cl.c e, cl.c f) {
    public static final Codec<bh> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asu.a(cl.c.d, "x", cl.c.c).forGetter(bh::b),
-               asu.a(cl.c.d, "y", cl.c.c).forGetter(bh::c),
-               asu.a(cl.c.d, "z", cl.c.c).forGetter(bh::d),
-               asu.a(cl.c.d, "horizontal", cl.c.c).forGetter(bh::e),
-               asu.a(cl.c.d, "absolute", cl.c.c).forGetter(bh::f)
+               asy.a(cl.c.d, "x", cl.c.c).forGetter(bh::b),
+               asy.a(cl.c.d, "y", cl.c.c).forGetter(bh::c),
+               asy.a(cl.c.d, "z", cl.c.c).forGetter(bh::d),
+               asy.a(cl.c.d, "horizontal", cl.c.c).forGetter(bh::e),
+               asy.a(cl.c.d, "absolute", cl.c.c).forGetter(bh::f)
             )
             .apply($$0, bh::new)
    );
@@ -34,7 +34,7 @@ public record bh(cl.c b, cl.c c, cl.c d, cl.c e, cl.c f) {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)atm.e($$6)) || !this.c.d((double)atm.e($$7)) || !this.d.d((double)atm.e($$8))) {
+      if (!this.b.d((double)atq.e($$6)) || !this.c.d((double)atq.e($$7)) || !this.d.d((double)atq.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));

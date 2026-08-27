@@ -1,53 +1,80 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface bql<F extends K1, Value> {
-   buh<Value> a();
+public class bql extends bqm {
+   private static final List<clj> c = ImmutableList.of(clr.ps, clr.vd);
 
-   bui b();
-
-   @Nullable
-   bqk<F, Value> a(bmg<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(buh<Value> a) implements bql<Mu<Unit>, Value> {
-      @Override
-      public bui b() {
-         return bui.b;
-      }
-
-      @Override
-      public bqk<Mu<Unit>, Value> a(bmg<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bqk<>($$0, this.a, Const.create(Unit.INSTANCE));
+   @Override
+   protected void a(ami $$0, cdm $$1) {
+      Optional<ie> $$2 = $$1.dP().c(bum.c);
+      if (!$$2.isEmpty()) {
+         ie $$3 = $$2.get();
+         dhn $$4 = $$0.a_($$3.b());
+         if ($$4.a(cvh.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   public static record b<Value>(buh<Value> a) implements bql<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public bui b() {
-         return bui.a;
+   private void a(ami $$0, cdm $$1, ie $$2, dhn $$3) {
+      hx $$4 = $$2.b();
+      if ($$3.c(cwq.e) == 8) {
+         $$3 = cwq.a($$1, $$3, (csf)$$0, $$4);
       }
 
-      @Override
-      public bqk<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bmg<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bqk<>($$0, this.a, IdF.create($$1.get()));
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bjj $$8 = $$1.A();
+      int $$9 = $$8.b();
+      dhn $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         clo $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = cwq.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(cwq.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
       }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public static record c<Value>(buh<Value> a) implements bql<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public bui b() {
-         return bui.c;
-      }
+   private void a(ami $$0, dhn $$1, hx $$2, dhn $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
 
-      @Override
-      public bqk<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bmg<?> $$0, Optional<Value> $$1) {
-         return new bqk<>($$0, this.a, OptionalBox.create($$1));
+   private void a(cdm $$0) {
+      bjj $$1 = $$0.A();
+      if ($$1.a_(clr.pu) <= 36) {
+         int $$2 = $$1.a_(clr.pt);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(clr.pt, $$6);
+            clo $$7 = $$1.a(new clo(clr.pu, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
       }
    }
 }

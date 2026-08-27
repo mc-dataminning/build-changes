@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface elm {
+public interface elm<T> {
+   ta b(long var1, Function<T, String> var3);
 }

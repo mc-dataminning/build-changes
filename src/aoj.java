@@ -1,27 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.nio.file.Path;
+import java.util.Map;
 
-public record aoj(ur c, int d, Optional<ate<Integer>> e) {
-   public static final Codec<aoj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ut.a.fieldOf("description").forGetter(aoj::a),
-               Codec.INT.fieldOf("pack_format").forGetter(aoj::b),
-               ate.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(aoj::c)
-            )
-            .apply($$0, aoj::new)
-   );
-   public static final aoi<aoj> b = aoi.a("pack", a);
+interface aoj {
+   aoj a = new aoj() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   aoj b = new aoj() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   public ur a() {
-      return this.c;
+   public static record a(Map<String, aog> c) implements aoj {
+      public Map<String, aog> a() {
+         return this.c;
+      }
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public Optional<ate<Integer>> c() {
-      return this.e;
+   public static record b(Path c) implements aoj {
+      public Path a() {
+         return this.c;
+      }
    }
 }

@@ -1,28 +1,30 @@
 public class eel {
-   public static final eel a = new eel("advancements");
-   public static final eel b = new eel("stats");
-   public static final eel c = new eel("playerdata");
-   public static final eel d = new eel("players");
-   public static final eel e = new eel("level.dat");
-   public static final eel f = new eel("level.dat_old");
-   public static final eel g = new eel("icon.png");
-   public static final eel h = new eel("session.lock");
-   public static final eel i = new eel("generated");
-   public static final eel j = new eel("datapacks");
-   public static final eel k = new eel("resources.zip");
-   public static final eel l = new eel(".");
-   private final String m;
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-   private eel(String $$0) {
-      this.m = $$0;
+   public eel(int $$0) {
+      this($$0, a);
    }
 
-   public String a() {
-      return this.m;
+   public eel(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(eel $$0) {
+      return this.b().equals($$0.b());
    }
 }

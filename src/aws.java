@@ -1,56 +1,86 @@
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.shorts.ShortArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public class aws extends azt {
-   private static final String[] a = new String[]{
-      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
-   };
+public class aws extends DataFix {
+   private static final int a = 16;
 
-   public aws(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bat.s, $$2);
+   public aws(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.writeFixAndRead(
+         "ChunkToProtoChunkFix", this.getInputSchema().getType(bax.c), this.getOutputSchema().getType(bax.c), $$0 -> $$0.update("Level", aws::a)
+      );
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = $$0.update("front_text", aws::b);
-      $$0 = $$0.update("back_text", aws::b);
-
-      for (String $$1 : a) {
-         $$0 = $$0.remove($$1);
+      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
+      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
+      String $$3;
+      if ($$1) {
+         if ($$2) {
+            $$3 = "mobs_spawned";
+         } else {
+            $$3 = "decorated";
+         }
+      } else {
+         $$3 = "carved";
       }
 
-      return $$0;
+      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
    }
 
    private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
-      if ($$1) {
-         return $$0.remove("_filtered_correct");
-      } else {
-         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
-         if ($$2.isEmpty()) {
-            return $$0;
-         } else {
-            Dynamic<T> $$3 = aur.a($$0.getOps());
-            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
-               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
-               return $$2x.equals($$3) ? $$4x : $$2x;
-            }).toList();
-            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
-               ? $$0.remove("filtered_messages")
-               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
-         }
-      }
+      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
+            int[] $$2 = new int[256];
+
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               if ($$3 < $$1x.capacity()) {
+                  $$2[$$3] = $$1x.get($$3) & 255;
+               }
+            }
+
+            return $$0.createIntList(Arrays.stream($$2));
+         }), $$1));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), aws::a);
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse(
+         $$0.get("TileTicks")
+            .asStreamOpt()
+            .result()
+            .map(
+               $$1 -> {
+                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
+                  $$1.forEach($$1x -> {
+                     int $$2x = $$1x.get("x").asInt(0);
+                     int $$3 = $$1x.get("y").asInt(0);
+                     int $$4 = $$1x.get("z").asInt(0);
+                     short $$5 = a($$2x, $$3, $$4);
+                     $$2.get($$3 >> 4).add($$5);
+                  });
+                  return $$0.remove("TileTicks")
+                     .set(
+                        "ToBeTicked",
+                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
+                     );
+               }
+            ),
+         $$0
+      );
+   }
+
+   private static short a(int $$0, int $$1, int $$2) {
+      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
    }
 }

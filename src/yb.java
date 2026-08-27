@@ -1,10 +1,10 @@
-public record yb() implements wk<ya> {
-   public yb(tu $$0) {
+public record yb() implements wo<ya> {
+   public yb(ty $$0) {
       this();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
    }
 
    public void a(ya $$0) {
@@ -12,7 +12,7 @@ public record yb() implements wk<ya> {
    }
 
    @Override
-   public tt c() {
-      return tt.b;
+   public tx c() {
+      return tx.b;
    }
 }

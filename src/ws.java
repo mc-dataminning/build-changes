@@ -1,57 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class ws implements wk<wn> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final ur e;
+public record ws(xh a) implements wo<wr> {
+   private static final int b = 1048576;
+   private static final Map<agm, ty.a<? extends xh>> c = ImmutableMap.builder()
+      .put(xg.a, xg::new)
+      .put(xe.a, xe::new)
+      .put(xf.a, xf::new)
+      .put(xj.a, xj::new)
+      .put(xk.a, xk::new)
+      .put(xl.a, xl::new)
+      .put(xm.a, xm::new)
+      .put(xn.a, xn::new)
+      .put(xo.a, xo::new)
+      .put(xp.a, xp::new)
+      .put(xq.a, xq::new)
+      .put(xr.a, xr::new)
+      .put(xs.a, xs::new)
+      .put(xt.a, xt::new)
+      .put(xu.a, xu::new)
+      .put(xv.a, xv::new)
+      .put(xw.a, xw::new)
+      .put(xx.a, xx::new)
+      .build();
 
-   public ws(String $$0, String $$1, boolean $$2, @Nullable ur $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
+   public ws(ty $$0) {
+      this(a($$0.t(), $$0));
+   }
+
+   private static xh a(agm $$0, ty $$1) {
+      ty.a<? extends xh> $$2 = c.get($$0);
+      return (xh)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
+   }
+
+   private static xi b(agm $$0, ty $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new xi($$0);
       } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
       }
    }
 
-   public ws(tu $$0) {
-      this.b = $$0.s();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(tu::m);
-   }
-
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, tu::a);
+   public void a(ty $$0) {
+      $$0.a(this.a.a());
+      this.a.a($$0);
    }
 
-   public void a(wn $$0) {
+   public void a(wr $$0) {
       $$0.a(this);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   @Nullable
-   public ur f() {
-      return this.e;
    }
 }

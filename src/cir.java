@@ -1,58 +1,97 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cir {
-   private final String a;
-   @Nullable
-   private dhm b;
-   private boolean c;
-   private boolean d;
+public class cir implements chh {
+   private final ip<clo> c;
+   private final int d;
+   private final int e;
+   private final cgr f;
 
-   public cir(String $$0) {
-      this.a = $$0;
+   public cir(cgr $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, ip.a($$1 * $$2, clo.b));
    }
 
-   private static boolean a(dhm $$0, @Nullable dhm $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else {
-         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().n(), $$1.b().n()) : false;
-      }
+   public cir(cgr $$0, int $$1, int $$2, ip<clo> $$3) {
+      this.c = $$3;
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a(clj $$0, io<cva> $$1, dhm $$2) {
-      if (a($$2, this.b, this.d)) {
-         return this.c;
-      } else {
-         this.b = $$2;
-         this.d = false;
-         rz $$3 = $$0.v();
-         if ($$3 != null && $$3.b(this.a, 9)) {
-            sf $$4 = $$3.c(this.a, 8);
+   @Override
+   public int b() {
+      return this.c.size();
+   }
 
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               String $$6 = $$4.j($$5);
-
-               try {
-                  fi.b $$7 = fi.a($$1.p(), new StringReader($$6));
-                  this.d = this.d | $$7.a();
-                  if ($$7.test($$2)) {
-                     this.c = true;
-                     return true;
-                  }
-               } catch (CommandSyntaxException var9) {
-               }
-            }
+   @Override
+   public boolean aj_() {
+      for (clo $$0 : this.c) {
+         if (!$$0.b()) {
+            return false;
          }
+      }
 
-         this.c = false;
-         return false;
+      return true;
+   }
+
+   @Override
+   public clo a(int $$0) {
+      return $$0 >= this.b() ? clo.b : this.c.get($$0);
+   }
+
+   @Override
+   public clo b(int $$0) {
+      return biv.a(this.c, $$0);
+   }
+
+   @Override
+   public clo a(int $$0, int $$1) {
+      clo $$2 = biv.a(this.c, $$0, $$1);
+      if (!$$2.b()) {
+         this.f.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, clo $$1) {
+      this.c.set($$0, $$1);
+      this.f.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cdz $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.e;
+   }
+
+   @Override
+   public int f() {
+      return this.d;
+   }
+
+   @Override
+   public List<clo> h() {
+      return List.copyOf(this.c);
+   }
+
+   @Override
+   public void a(ced $$0) {
+      for (clo $$1 : this.c) {
+         $$0.a($$1);
       }
    }
 }

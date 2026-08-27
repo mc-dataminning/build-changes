@@ -1,92 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eai extends ebe {
-   public static final Codec<eai> a = Codec.FLOAT.fieldOf("mossiness").xmap(eai::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dhi[] e = new dhi[]{cvc.jD.o(), cvc.jK.o()};
-   private final float f;
+public class eai extends dxm {
+   public static final Codec<eai> d = a(eai::new);
 
-   public eai(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
-      ats $$6 = $$5.b($$4.a());
-      dhi $$7 = $$4.b();
-      ht $$8 = $$4.a();
-      dhi $$9 = null;
-      if ($$7.a(cvc.eH) || $$7.a(cvc.b) || $$7.a(cvc.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(arg.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(arg.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(arg.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(cvc.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new ebh.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dhi a(ats $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dhi[] $$1 = new dhi[]{cvc.eJ.o(), a($$0, cvc.fj)};
-         dhi[] $$2 = new dhi[]{cvc.eI.o(), a($$0, cvc.ng)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dhi a(ats $$0, dhi $$1) {
-      hx $$2 = $$1.c(dct.b);
-      dih $$3 = $$1.c(dct.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dhi[] $$4 = new dhi[]{cvc.ng.o().a(dct.b, $$2).a(dct.c, $$3), cvc.nu.o()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dhi b(ats $$0) {
-      return $$0.i() < this.f ? cvc.nu.o() : null;
-   }
-
-   @Nullable
-   private dhi c(ats $$0) {
-      return $$0.i() < this.f ? cvc.nI.o() : null;
-   }
-
-   @Nullable
-   private dhi d(ats $$0) {
-      return $$0.i() < 0.15F ? cvc.pk.o() : null;
-   }
-
-   private static dhi a(ats $$0, cva $$1) {
-      return $$1.o().a(dct.b, hx.c.a.a($$0)).a(dct.c, ac.a(dih.values(), $$0));
-   }
-
-   private dhi a(ats $$0, dhi[] $$1, dhi[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dhi a(ats $$0, dhi[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   public eai(dxm.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected ebg<?> a() {
-      return ebg.k;
+   public Optional<dxm.b> a(dxm.a $$0) {
+      dbr $$1 = dbr.a($$0.f());
+      hx $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dxm.b($$2, (Consumer<dye>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(dye $$0, dxm.a $$1, hx $$2, dbr $$3) {
+      List<eah.i> $$4 = Lists.newLinkedList();
+      eah.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, dyb $$6) {
+      hx.a $$7 = new hx.a();
+      int $$8 = $$0.J_();
+      dxe $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.t($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.t($$7) && !$$0.a_($$7).k()) {
+                     break;
+                  }
+
+                  $$0.a($$7, cvh.m.o(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public dxv<?> e() {
+      return dxv.p;
    }
 }

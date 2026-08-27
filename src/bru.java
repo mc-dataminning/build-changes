@@ -1,70 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bru extends bst {
+   private final bwz g;
 
-public class bru extends bsb {
-   protected final blp a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final csa f;
-
-   public bru(blp $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dN();
-      this.a(EnumSet.of(bsb.a.a));
+   public bru(bwz $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.O()) {
-         return false;
-      } else if (!this.a.bN()) {
-         return false;
-      } else if (!this.f.g(this.a.dn())) {
-         return false;
-      } else {
-         return !this.a.c(bkv.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      eju $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.N().l();
+      return this.g.u() && !this.g.gf() && super.a();
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.b, this.c, this.d, this.e);
+      super.c();
+      this.g.y(false);
    }
 
-   @Nullable
-   protected eju i() {
-      ats $$0 = this.a.eh();
-      ht $$1 = this.a.dn();
+   @Override
+   public void d() {
+      super.d();
+      this.g.y(false);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ht $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
-            return eju.c($$3);
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(csi $$0, hx $$1) {
+      if (!$$0.t($$1.c())) {
+         return false;
+      } else {
+         dhn $$2 = $$0.a_($$1);
+         if ($$2.a(cvh.cv)) {
+            return dfp.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(cvh.cD) && $$2.c(cym.b) ? true : $$2.a(ark.R, $$0x -> $$0x.d(cuy.b).map($$0xx -> $$0xx != dia.a).orElse(true));
          }
       }
-
-      return null;
    }
 }

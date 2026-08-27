@@ -1,18 +1,22 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+public enum erv {
+   a(0, dxc.a),
+   b(1, dxc.b),
+   c(2, dxc.c),
+   d(3, dxc.d);
 
-public class erv {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+   private final int e;
+   private final uv f;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   private erv(int $$0, agl<dxb> $$1) {
+      this.e = $$0;
+      this.f = uv.c($$1.a().f("generator"));
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   public uv a() {
+      return this.f;
    }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   public int b() {
+      return this.e;
    }
 }

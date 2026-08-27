@@ -1,77 +1,92 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.Optional;
 
-public class bwy extends bwr {
-   public bwy(bku<? extends bwy> $$0, csa $$1) {
-      super($$0, $$1);
+public interface bwy {
+   boolean w();
+
+   void w(boolean var1);
+
+   void l(clo var1);
+
+   void c(sd var1);
+
+   clo b();
+
+   aqu A();
+
+   @Deprecated
+   static void a(bln $$0, clo $$1) {
+      sd $$2 = $$1.w();
+      if ($$0.ae()) {
+         $$1.a($$0.af());
+      }
+
+      if ($$0.fV()) {
+         $$2.a("NoAI", $$0.fV());
+      }
+
+      if ($$0.aU()) {
+         $$2.a("Silent", $$0.aU());
+      }
+
+      if ($$0.aV()) {
+         $$2.a("NoGravity", $$0.aV());
+      }
+
+      if ($$0.cc()) {
+         $$2.a("Glowing", $$0.cc());
+      }
+
+      if ($$0.cr()) {
+         $$2.a("Invulnerable", $$0.cr());
+      }
+
+      $$2.a("Health", $$0.ew());
    }
 
-   @Override
-   protected void B() {
-      this.bO.a(0, new brv(this));
-      this.bO.a(1, new bsu(this, 2.0));
-      this.bO.a(2, new brn(this, 1.0));
-      this.bO.a(3, new btj(this, 1.25, cok.a(clm.pt), false));
-      this.bO.a(4, new bsa(this, 1.25));
-      this.bO.a(5, new bto(this, 1.0));
-      this.bO.a(6, new bsj(this, cdu.class, 6.0F));
-      this.bO.a(7, new bsw(this));
-   }
+   @Deprecated
+   static void a(bln $$0, sd $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
 
-   public static bml.a u() {
-      return bli.C().a(bmm.l, 10.0).a(bmm.m, 0.2F);
-   }
+      if ($$1.e("Silent")) {
+         $$0.d($$1.q("Silent"));
+      }
 
-   @Override
-   protected aqq y() {
-      return aqr.fp;
-   }
+      if ($$1.e("NoGravity")) {
+         $$0.e($$1.q("NoGravity"));
+      }
 
-   @Override
-   protected aqq d(bjo $$0) {
-      return aqr.fr;
-   }
+      if ($$1.e("Glowing")) {
+         $$0.i($$1.q("Glowing"));
+      }
 
-   @Override
-   protected aqq m_() {
-      return aqr.fq;
-   }
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
 
-   @Override
-   protected void b(ht $$0, dhi $$1) {
-      this.a(aqr.ft, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eX() {
-      return 0.4F;
-   }
-
-   @Override
-   public bix b(cdu $$0, biw $$1) {
-      clj $$2 = $$0.b($$1);
-      if ($$2.a(clm.qv) && !this.n_()) {
-         $$0.a(aqr.fs, 1.0F, 1.0F);
-         clj $$3 = cll.a($$2, $$0, clm.qB.al_());
-         $$0.a($$1, $$3);
-         return bix.a(this.dN().B);
-      } else {
-         return super.b($$0, $$1);
+      if ($$1.b("Health", 99)) {
+         $$0.c($$1.j("Health"));
       }
    }
 
-   @Nullable
-   public bwy b(ame $$0, bkl $$1) {
-      return bku.t.a((csa)$$0);
-   }
+   static <T extends bll & bwy> Optional<bjb> a(cdz $$0, bja $$1, T $$2) {
+      clo $$3 = $$0.b($$1);
+      if ($$3.d() == clr.qw && $$2.bx()) {
+         $$2.a($$2.A(), 1.0F, 1.0F);
+         clo $$4 = $$2.b();
+         $$2.l($$4);
+         clo $$5 = clq.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         csf $$6 = $$2.dN();
+         if (!$$6.B) {
+            al.j.a((amj)$$0, $$4);
+         }
 
-   @Override
-   protected float b(bls $$0, bkr $$1) {
-      return this.n_() ? $$1.b * 0.95F : 1.3F;
-   }
-
-   @Override
-   protected Vector3f a(bkq $$0, bkr $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
+         $$2.am();
+         return Optional.of(bjb.a($$6.B));
+      } else {
+         return Optional.empty();
+      }
    }
 }

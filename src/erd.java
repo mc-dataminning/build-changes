@@ -1,344 +1,278 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class erd extends ghr {
-   static final Logger a = LogUtils.getLogger();
-   static final agi b = new agi("widget/slot_frame");
-   private static final ur c = ur.c("mco.template.button.select");
-   private static final ur v = ur.c("mco.template.button.trailer");
-   private static final ur w = ur.c("mco.template.button.publisher");
-   private static final int x = 100;
-   private static final int y = 10;
-   private final eyj z = new eyj(this);
-   final Consumer<epu> A;
+public class erd extends ghw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agm b = new agm("minecraft", "textures/gui/options_background.png");
+   private static final uv c = uv.c("mco.question");
+   static final uv v = uv.c("mco.configure.world.invites.normal.tooltip");
+   static final uv w = uv.c("mco.configure.world.invites.ops.tooltip");
+   static final uv x = uv.c("mco.configure.world.invites.remove.tooltip");
+   private static final int y = -1;
+   private final eqr z;
+   final epi A;
    erd.b B;
-   private final epd.d C;
-   private euz D;
-   private euz E;
-   private euz F;
-   @Nullable
-   epu G = null;
-   @Nullable
-   String H;
-   @Nullable
-   private ur[] I;
-   @Nullable
-   List<eru.a> J;
+   int C;
+   int D;
+   private eve E;
+   private eve F;
+   int G = -1;
+   private boolean H;
 
-   public erd(ur $$0, Consumer<epu> $$1, epd.d $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public erd(ur $$0, Consumer<epu> $$1, epd.d $$2, @Nullable epv $$3) {
-      super($$0);
+   public erd(eqr $$0, epi $$1) {
+      super(uv.c("mco.configure.world.players.title"));
+      this.z = $$0;
       this.A = $$1;
-      this.C = $$2;
-      if ($$3 == null) {
-         this.B = new erd.b();
-         this.a(new epv(10));
-      } else {
-         this.B = new erd.b(Lists.newArrayList($$3.a));
-         this.a($$3);
-      }
-   }
-
-   public void a(ur... $$0) {
-      this.I = $$0;
    }
 
    @Override
-   public void aP_() {
-      this.z.a(new ewg(this.e, this.i));
-      this.B = new erd.b(this.B.e());
-      this.d(this.B);
-      eyn $$0 = this.z.b(eyn.e().a(10));
-      $$0.c().b();
-      this.E = $$0.a(euz.a(v, $$0x -> this.E()).a(100).a());
-      this.D = $$0.a(euz.a(c, $$0x -> this.D()).a(100).a());
-      $$0.a(euz.a(uq.e, $$0x -> this.aF_()).a(100).a());
-      this.F = $$0.a(euz.a(w, $$0x -> this.F()).a(100).a());
+   public void aQ_() {
+      this.C = this.g / 2 - 160;
+      this.D = 150;
+      int $$0 = this.g / 2 + 12;
+      this.B = new erd.b();
+      this.B.f(this.C);
+      this.e(this.B);
+
+      for (epe $$1 : this.A.h) {
+         this.B.a($$1);
+      }
+
+      this.G = -1;
+      this.d(eve.a(uv.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new eqw(this.z, this, this.A))).a($$0, h(1), this.D + 10, 20).a());
+      this.E = this.d(eve.a(uv.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.G)).a($$0, h(7), this.D + 10, 20).a());
+      this.F = this.d(eve.a(uv.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
+         if (this.A.h.get(this.G).c()) {
+            this.k(this.G);
+         } else {
+            this.j(this.G);
+         }
+      }).a($$0, h(9), this.D + 10, 20).a());
+      this.d(eve.a(uu.k, $$0x -> this.D()).a($$0 + this.D / 2 + 2, h(12), this.D / 2 + 10 - 2, 20).a());
       this.C();
-      this.z.a($$1 -> {
-         eux var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.B.a(this.g, this.h, this.G(), this.h - this.z.b());
-      this.z.a();
-   }
-
-   @Override
-   public ur h() {
-      List<ur> $$0 = Lists.newArrayListWithCapacity(2);
-      $$0.add(this.e);
-      if (this.I != null) {
-         $$0.addAll(Arrays.asList(this.I));
-      }
-
-      return uq.a($$0);
    }
 
    @Override
    void C() {
-      this.F.j = this.G != null && !this.G.e.isEmpty();
-      this.E.j = this.G != null && !this.G.g.isEmpty();
-      this.D.i = this.G != null;
+      this.E.j = this.i(this.G);
+      this.F.j = this.i(this.G);
+      this.B.d();
+   }
+
+   private boolean i(int $$0) {
+      return $$0 != -1;
    }
 
    @Override
-   public void aF_() {
-      this.A.accept(null);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.D();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    private void D() {
-      if (this.G != null) {
-         this.A.accept(this.G);
+      if (this.H) {
+         this.f.a(this.z.f());
+      } else {
+         this.f.a(this.z);
       }
    }
 
-   private void E() {
-      if (this.G != null && !this.G.g.isBlank()) {
-         ezm.a(this, this.G.g);
-      }
-   }
+   void j(int $$0) {
+      eor $$1 = eor.a();
+      UUID $$2 = this.A.h.get($$0).b();
 
-   private void F() {
-      if (this.G != null && !this.G.e.isBlank()) {
-         ezm.a(this, this.G.e);
-      }
-   }
-
-   private void a(final epv $$0) {
-      (new Thread("realms-template-fetcher") {
-         @Override
-         public void run() {
-            epv $$0 = $$0;
-            eom $$1 = eom.a();
-
-            while ($$0 != null) {
-               Either<epv, Exception> $$2 = erd.this.a($$0, $$1);
-               $$0 = erd.this.f.a(() -> {
-                  if ($$2.right().isPresent()) {
-                     erd.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
-                     if (erd.this.B.d()) {
-                        erd.this.J = eru.a(gda.a("mco.template.select.failure"));
-                     }
-
-                     return null;
-                  } else {
-                     epv $$1x = (epv)$$2.left().get();
-
-                     for (epu $$2x : $$1x.a) {
-                        erd.this.B.a($$2x);
-                     }
-
-                     if ($$1x.a.isEmpty()) {
-                        if (erd.this.B.d()) {
-                           String $$3 = gda.a("mco.template.select.none", "%link");
-                           eru.b $$4 = eru.b.a(gda.a("mco.template.select.none.linkTitle"), "https://aka.ms/MinecraftRealmsContentCreator");
-                           erd.this.J = eru.a($$3, $$4);
-                        }
-
-                        return null;
-                     } else {
-                        return $$1x;
-                     }
-                  }
-               }).join();
-            }
-         }
-      }).start();
-   }
-
-   Either<epv, Exception> a(epv $$0, eom $$1) {
       try {
-         return Either.left($$1.a($$0.b + 1, $$0.c, this.C));
-      } catch (epz var4) {
-         return Either.right(var4);
+         this.a($$1.b(this.A.a, $$2));
+      } catch (eqe var5) {
+         a.error("Couldn't op the user", var5);
+      }
+
+      this.C();
+   }
+
+   void k(int $$0) {
+      eor $$1 = eor.a();
+      UUID $$2 = this.A.h.get($$0).b();
+
+      try {
+         this.a($$1.c(this.A.a, $$2));
+      } catch (eqe var5) {
+         a.error("Couldn't deop the user", var5);
+      }
+
+      this.C();
+   }
+
+   private void a(epa $$0) {
+      for (epe $$1 : this.A.h) {
+         $$1.a($$0.a.contains($$1.a()));
+      }
+   }
+
+   void l(int $$0) {
+      this.C();
+      if ($$0 >= 0 && $$0 < this.A.h.size()) {
+         epe $$1 = this.A.h.get($$0);
+         eqs $$2 = new eqs($$1x -> {
+            if ($$1x) {
+               eor $$2x = eor.a();
+
+               try {
+                  $$2x.a(this.A.a, $$1.b());
+               } catch (eqe var5) {
+                  a.error("Couldn't uninvite user", var5);
+               }
+
+               this.A.h.remove(this.G);
+               this.G = -1;
+               this.C();
+            }
+
+            this.H = true;
+            this.f.a(this);
+         }, c, uv.a("mco.configure.world.uninvite.player", $$1.a()));
+         this.f.a($$2);
       }
    }
 
    @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
+   public void a(eut $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.H = null;
-      if (this.J != null) {
-         this.a($$0, $$1, $$2, this.J);
-      }
-
-      if (this.I != null) {
-         for (int $$4 = 0; $$4 < this.I.length; $$4++) {
-            ur $$5 = this.I[$$4];
-            $$0.a(this.i, $$5, this.g / 2, h(-1 + $$4), -6250336);
-         }
-      }
+      this.B.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      int $$4 = h(12) + 20;
+      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
+      $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      String $$5 = this.A.h != null ? Integer.toString(this.A.h.size()) : "0";
+      $$0.a(this.i, uv.a("mco.configure.world.invited.number", $$5), this.C, h(0), -1, false);
    }
 
-   private void a(euo $$0, int $$1, int $$2, List<eru.a> $$3) {
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         eru.a $$5 = $$3.get($$4);
-         int $$6 = h(4 + $$4);
-         int $$7 = $$5.a.stream().mapToInt($$0x -> this.i.b($$0x.a())).sum();
-         int $$8 = this.g / 2 - $$7 / 2;
+   class a extends ewa.a<erd.a> {
+      private static final int b = 3;
+      private static final int c = 1;
+      private static final int d = 8;
+      private static final int e = 7;
+      private static final ewr f = new ewr(new agm("player_list/remove_player"), new agm("player_list/remove_player_highlighted"));
+      private static final ewr g = new ewr(new agm("player_list/make_operator"), new agm("player_list/make_operator_highlighted"));
+      private static final ewr h = new ewr(new agm("player_list/remove_operator"), new agm("player_list/remove_operator_highlighted"));
+      private final epe i;
+      private final List<evc> j = new ArrayList<>();
+      private final evq k;
+      private final evq l;
+      private final evq m;
 
-         for (eru.b $$9 : $$5.a) {
-            int $$10 = $$9.b() ? 3368635 : -1;
-            int $$11 = $$0.b(this.i, $$9.a(), $$8, $$6, $$10);
-            if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
-               this.d(ur.b($$9.c()));
-               this.H = $$9.c();
-            }
-
-            $$8 = $$11;
-         }
+      public a(epe $$0) {
+         this.i = $$0;
+         int $$1 = erd.this.A.h.indexOf(this.i);
+         int $$2 = erd.this.B.p() - 16 - 9;
+         int $$3 = erd.this.B.h($$1) + 1;
+         this.k = new evq($$2, $$3, 8, 7, f, $$1x -> erd.this.l($$1), uu.a);
+         this.k.a(ewp.a(erd.x));
+         this.j.add(this.k);
+         $$2 += 11;
+         this.l = new evq($$2, $$3, 8, 7, g, $$1x -> erd.this.j($$1), uu.a);
+         this.l.a(ewp.a(erd.v));
+         this.j.add(this.l);
+         this.m = new evq($$2, $$3, 8, 7, h, $$1x -> erd.this.k($$1), uu.a);
+         this.m.a(ewp.a(erd.w));
+         this.j.add(this.m);
+         this.b();
       }
-   }
 
-   int G() {
-      return this.I != null ? h(1) : 36;
-   }
-
-   class a extends evv.a<erd.a> {
-      private static final ewm c = new ewm(new agi("icon/link"), new agi("icon/link_highlighted"));
-      private static final ewm d = new ewm(new agi("icon/video_link"), new agi("icon/video_link_highlighted"));
-      private static final ur e = ur.c("mco.template.info.tooltip");
-      private static final ur f = ur.c("mco.template.trailer.tooltip");
-      public final epu a;
-      private long g;
-      @Nullable
-      private evl h;
-      @Nullable
-      private evl i;
-
-      public a(epu $$0) {
-         this.a = $$0;
-         if (!$$0.e.isBlank()) {
-            this.h = new evl(15, 15, c, ezm.b(erd.this, $$0.e), e);
-            this.h.a(ewk.a(e));
-         }
-
-         if (!$$0.g.isBlank()) {
-            this.i = new evl(15, 15, d, ezm.b(erd.this, $$0.g), f);
-            this.i.a(ewk.a(f));
-         }
+      public void b() {
+         this.l.j = !this.i.c();
+         this.m.j = !this.l.j;
       }
 
       @Override
       public boolean a(double $$0, double $$1, int $$2) {
-         if ($$2 == 0) {
-            erd.this.G = this.a;
-            erd.this.C();
-            if (ac.b() - this.g < 250L && this.aJ_()) {
-               erd.this.A.accept(this.a);
-            }
+         if (!this.l.a($$0, $$1, $$2)) {
+            this.m.a($$0, $$1, $$2);
+         }
 
-            this.g = ac.b();
-            if (this.h != null) {
-               this.h.a($$0, $$1, $$2);
-            }
+         this.k.a($$0, $$1, $$2);
+         return true;
+      }
 
-            if (this.i != null) {
-               this.i.a($$0, $$1, $$2);
-            }
-
-            return true;
+      @Override
+      public void a(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.i.d()) {
+            $$10 = -6250336;
+         } else if (this.i.e()) {
+            $$10 = 8388479;
          } else {
-            return super.a($$0, $$1, $$2);
+            $$10 = -1;
          }
+
+         ery.a($$0, erd.this.C + 2 + 2, $$2 + 1, 8, this.i.b());
+         $$0.a(erd.this.i, this.i.a(), erd.this.C + 3 + 12, $$2 + 1, $$10, false);
+         this.j.forEach($$5x -> {
+            $$5x.g($$2 + 1);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
       }
 
       @Override
-      public void a(euo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(ers.a(this.a.a, this.a.f), $$3 + 1, $$2 + 1 + 1, 0.0F, 0.0F, 38, 38, 38, 38);
-         $$0.a(erd.b, $$3, $$2 + 1, 40, 40);
-         int $$10 = 5;
-         int $$11 = erd.this.i.b(this.a.c);
-         if (this.h != null) {
-            this.h.b($$3 + $$4 - $$11 - this.h.k() - 10, $$2);
-            this.h.a($$0, $$6, $$7, $$9);
-         }
-
-         if (this.i != null) {
-            this.i.b($$3 + $$4 - $$11 - this.i.k() * 2 - 15, $$2);
-            this.i.a($$0, $$6, $$7, $$9);
-         }
-
-         int $$12 = $$3 + 45 + 20;
-         int $$13 = $$2 + 5;
-         $$0.a(erd.this.i, this.a.b, $$12, $$13, -1, false);
-         $$0.a(erd.this.i, this.a.c, $$3 + $$4 - $$11 - 5, $$13, 7105644, false);
-         $$0.a(erd.this.i, this.a.d, $$12, $$13 + 9 + 5, -6250336, false);
-         if (!this.a.h.isBlank()) {
-            $$0.a(erd.this.i, this.a.h, $$12, $$2 + $$5 - 9 / 2 - 5, 5000268, false);
-         }
-      }
-
-      @Override
-      public ur a() {
-         ur $$0 = uq.b(
-            ur.b(this.a.b), ur.a("mco.template.select.narrate.authors", this.a.d), ur.b(this.a.h), ur.a("mco.template.select.narrate.version", this.a.c)
-         );
-         return ur.a("narrator.select", $$0);
+      public uv a() {
+         return uv.a("narrator.select", this.i.a());
       }
    }
 
-   class b extends ghq<erd.a> {
+   class b extends ghv<erd.a> {
       public b() {
-         this(Collections.emptyList());
+         super(erd.this.D + 10, erd.h(12) + 20, erd.h(1), erd.h(12) + 20, 13);
       }
 
-      public b(Iterable<epu> $$0) {
-         super(erd.this.g, erd.this.h, erd.this.G(), erd.this.h - 36, 46);
-         $$0.forEach(this::a);
+      public void d() {
+         if (erd.this.G != -1) {
+            this.d(erd.this.G).b();
+         }
       }
 
-      public void a(epu $$0) {
+      public void a(epe $$0) {
          this.a((erd.a)(erd.this.new a($$0)));
       }
 
       @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (erd.this.H != null) {
-            ezm.a(erd.this, erd.this.H);
-            return true;
-         } else {
-            return super.a($$0, $$1, $$2);
-         }
+      public int b() {
+         return (int)((double)this.e * 1.0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         erd.this.G = $$0;
+         erd.this.C();
       }
 
       public void a(@Nullable erd.a $$0) {
          super.a($$0);
-         erd.this.G = $$0 == null ? null : $$0.a;
+         erd.this.G = this.i().indexOf($$0);
          erd.this.C();
       }
 
       @Override
-      public int a() {
-         return this.k() * 46;
+      public int c() {
+         return erd.this.C + this.e;
       }
 
       @Override
-      public int b() {
-         return 300;
-      }
-
-      public boolean d() {
-         return this.k() == 0;
-      }
-
-      public List<epu> e() {
-         return this.i().stream().map($$0 -> $$0.a).collect(Collectors.toList());
+      public int a() {
+         return this.k() * 13;
       }
    }
 }

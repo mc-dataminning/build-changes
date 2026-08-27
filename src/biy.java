@@ -1,37 +1,49 @@
-public class biy<T> {
-   private final bix a;
-   private final T b;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   public biy(bix $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public enum biy implements auk {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
+
+   public static final auk.a<biy> e = auk.a(biy::values);
+   private static final IntFunction<biy> f = asj.a(biy::a, values(), asj.a.b);
+   private final int g;
+   private final String h;
+
+   private biy(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public bix a() {
-      return this.a;
+   public int a() {
+      return this.g;
    }
 
-   public T b() {
-      return this.b;
+   public uv b() {
+      return uv.c("options.difficulty." + this.h);
    }
 
-   public static <T> biy<T> a(T $$0) {
-      return new biy<>(bix.a, $$0);
+   public uv d() {
+      return uv.c("options.difficulty." + this.h + ".info");
    }
 
-   public static <T> biy<T> b(T $$0) {
-      return new biy<>(bix.b, $$0);
+   public static biy a(int $$0) {
+      return f.apply($$0);
    }
 
-   public static <T> biy<T> c(T $$0) {
-      return new biy<>(bix.d, $$0);
+   @Nullable
+   public static biy a(String $$0) {
+      return e.a($$0);
    }
 
-   public static <T> biy<T> d(T $$0) {
-      return new biy<>(bix.e, $$0);
+   public String e() {
+      return this.h;
    }
 
-   public static <T> biy<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   @Override
+   public String c() {
+      return this.h;
    }
 }

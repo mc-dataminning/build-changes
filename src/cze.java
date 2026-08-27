@@ -1,40 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cze extends cyo implements czq {
-   public static final MapCodec<cze> c = b(cze::new);
+public class cze extends czd {
+   public static final MapCodec<cze> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kc.f.q().fieldOf("host").forGetter(czd::b), u()).apply($$0, cze::new));
 
    @Override
    public MapCodec<cze> a() {
-      return c;
+      return b;
    }
 
-   protected cze(dhh.d $$0) {
-      super($$0, hx.b, ekk.b(), true);
-   }
-
-   @Override
-   protected cyp c() {
-      return (cyp)cvc.mc;
+   public cze(cvf $$0, dhm.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dbq.i, ib.a.b));
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return ect.c.a(false);
+   public dhn a(dhn $$0, dbr $$1) {
+      return dbq.b($$0, $$1);
    }
 
    @Override
-   protected boolean h(dhi $$0) {
-      return this.c().h($$0);
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(dbq.i);
    }
 
    @Override
-   public boolean a(@Nullable cdu $$0, crg $$1, ht $$2, dhi $$3, ecr $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(csb $$0, ht $$1, dhi $$2, ecs $$3) {
-      return false;
+   public dhn a(cnw $$0) {
+      return this.o().a(dbq.i, $$0.k().o());
    }
 }

@@ -1,21 +1,17 @@
-import java.util.HashSet;
-import java.util.Set;
+public record xs(hx b) implements xh {
+   public static final agm a = new agm("debug/poi_removed");
 
-public record xs(Set<iu> b, Set<iu> c) implements xd {
-   public static final agi a = new agi("debug/village_sections");
-
-   public xs(tu $$0) {
-      this($$0.a(HashSet::new, tu::g), $$0.a(HashSet::new, tu::g));
+   public xs(ty $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.b, tu::a);
-      $$0.a(this.c, tu::a);
+   public void a(ty $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public agi a() {
+   public agm a() {
       return a;
    }
 }

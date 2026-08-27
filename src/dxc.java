@@ -1,224 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class dxc {
-   private static final Map<String, String> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Village", "Village");
-      $$0.put("Mineshaft", "Mineshaft");
-      $$0.put("Mansion", "Mansion");
-      $$0.put("Igloo", "Temple");
-      $$0.put("Desert_Pyramid", "Temple");
-      $$0.put("Jungle_Pyramid", "Temple");
-      $$0.put("Swamp_Hut", "Temple");
-      $$0.put("Stronghold", "Stronghold");
-      $$0.put("Monument", "Monument");
-      $$0.put("Fortress", "Fortress");
-      $$0.put("EndCity", "EndCity");
-   });
-   private static final Map<String, String> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Iglu", "Igloo");
-      $$0.put("TeDP", "Desert_Pyramid");
-      $$0.put("TeJP", "Jungle_Pyramid");
-      $$0.put("TeSH", "Swamp_Hut");
-   });
-   private static final Set<String> c = Set.of(
-      "pillager_outpost",
-      "mineshaft",
-      "mansion",
-      "jungle_pyramid",
-      "desert_pyramid",
-      "igloo",
-      "ruined_portal",
-      "shipwreck",
-      "swamp_hut",
-      "stronghold",
-      "monument",
-      "ocean_ruin",
-      "fortress",
-      "endcity",
-      "buried_treasure",
-      "village",
-      "nether_fossil",
-      "bastion_remnant"
-   );
-   private final boolean d;
-   private final Map<String, Long2ObjectMap<rz>> e = Maps.newHashMap();
-   private final Map<String, dxk> f = Maps.newHashMap();
-   private final List<String> g;
-   private final List<String> h;
+   public static final agl<dxb> a = a("normal");
+   public static final agl<dxb> b = a("flat");
+   public static final agl<dxb> c = a("large_biomes");
+   public static final agl<dxb> d = a("amplified");
+   public static final agl<dxb> e = a("single_biome_surface");
+   public static final agl<dxb> f = a("debug_all_block_states");
 
-   public dxc(@Nullable eei $$0, List<String> $$1, List<String> $$2) {
-      this.g = $$1;
-      this.h = $$2;
-      this.a($$0);
-      boolean $$3 = false;
-
-      for (String $$4 : this.h) {
-         $$3 |= this.e.get($$4) != null;
-      }
-
-      this.d = $$3;
+   public static void a(oz<dxb> $$0) {
+      new dxc.a($$0).a();
    }
 
-   public void a(long $$0) {
-      for (String $$1 : this.g) {
-         dxk $$2 = this.f.get($$1);
-         if ($$2 != null && $$2.c($$0)) {
-            $$2.d($$0);
-            $$2.c();
+   private static agl<dxb> a(String $$0) {
+      return agl.a(kd.aH, new agm($$0));
+   }
+
+   public static Optional<agl<dxb>> a(is<dkx> $$0) {
+      return $$0.d(dkx.b).flatMap($$0x -> {
+         djk $$1 = $$0x.b();
+         if ($$1 instanceof dmr) {
+            return Optional.of(b);
+         } else {
+            return $$1 instanceof dmn ? Optional.of(f) : Optional.empty();
          }
-      }
+      });
    }
 
-   public rz a(rz $$0) {
-      rz $$1 = $$0.p("Level");
-      crh $$2 = new crh($$1.h("xPos"), $$1.h("zPos"));
-      if (this.a($$2.e, $$2.f)) {
-         $$0 = this.a($$0, $$2);
-      }
-
-      rz $$3 = $$1.p("Structures");
-      rz $$4 = $$3.p("References");
-
-      for (String $$5 : this.h) {
-         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
-         if (!$$4.b($$5, 12) && $$6) {
-            int $$7 = 8;
-            LongList $$8 = new LongArrayList();
-
-            for (int $$9 = $$2.e - 8; $$9 <= $$2.e + 8; $$9++) {
-               for (int $$10 = $$2.f - 8; $$10 <= $$2.f + 8; $$10++) {
-                  if (this.a($$9, $$10, $$5)) {
-                     $$8.add(crh.c($$9, $$10));
-                  }
-               }
-            }
-
-            $$4.c($$5, $$8);
-         }
-      }
-
-      $$3.a("References", $$4);
-      $$1.a("Structures", $$3);
-      $$0.a("Level", $$1);
-      return $$0;
+   public static dnr a(it $$0) {
+      return $$0.d(kd.aH).f(a).a().a();
    }
 
-   private boolean a(int $$0, int $$1, String $$2) {
-      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(crh.c($$0, $$1));
+   public static dkx b(it $$0) {
+      return $$0.d(kd.aH).f(a).a().b().orElseThrow();
    }
 
-   private boolean a(int $$0, int $$1) {
-      if (!this.d) {
-         return false;
-      } else {
-         for (String $$2 : this.h) {
-            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(crh.c($$0, $$1))) {
-               return true;
-            }
-         }
+   static class a {
+      private final oz<dxb> a;
+      private final ih<dnb> b;
+      private final ih<ctd> c;
+      private final ih<dwq> d;
+      private final ih<dxs> e;
+      private final ih<ctr> f;
+      private final ig<dkw> g;
+      private final dkx h;
+      private final dkx i;
 
-         return false;
-      }
-   }
-
-   private rz a(rz $$0, crh $$1) {
-      rz $$2 = $$0.p("Level");
-      rz $$3 = $$2.p("Structures");
-      rz $$4 = $$3.p("Starts");
-
-      for (String $$5 : this.h) {
-         Long2ObjectMap<rz> $$6 = this.e.get($$5);
-         if ($$6 != null) {
-            long $$7 = $$1.a();
-            if (this.f.get(a.get($$5)).c($$7)) {
-               rz $$8 = (rz)$$6.get($$7);
-               if ($$8 != null) {
-                  $$4.a($$5, $$8);
-               }
-            }
-         }
+      a(oz<dxb> $$0) {
+         this.a = $$0;
+         ih<dkw> $$1 = $$0.a(kd.aw);
+         this.b = $$0.a(kd.ay);
+         this.c = $$0.a(kd.ar);
+         this.d = $$0.a(kd.aA);
+         this.e = $$0.a(kd.aD);
+         this.f = $$0.a(kd.aI);
+         this.g = $$1.b(dku.a);
+         ig<dkw> $$2 = $$1.b(dku.b);
+         ig<dnb> $$3 = this.b.b(dnb.f);
+         ig.c<ctr> $$4 = this.f.b(cts.a);
+         this.h = new dkx($$2, new dmz(ctq.a($$4), $$3));
+         ig<dkw> $$5 = $$1.b(dku.c);
+         ig<dnb> $$6 = this.b.b(dnb.g);
+         this.i = new dkx($$5, new dmz(ctu.a(this.c), $$6));
       }
 
-      $$3.a("Starts", $$4);
-      $$2.a("Structures", $$3);
-      $$0.a("Level", $$2);
-      return $$0;
-   }
-
-   private void a(@Nullable eei $$0) {
-      if ($$0 != null) {
-         for (String $$1 : this.g) {
-            rz $$2 = new rz();
-
-            try {
-               $$2 = $$0.a($$1, aus.o, 1493).p("data").p("Features");
-               if ($$2.g()) {
-                  continue;
-               }
-            } catch (IOException var13) {
-            }
-
-            for (String $$3 : $$2.e()) {
-               rz $$4 = $$2.p($$3);
-               long $$5 = crh.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
-               sf $$6 = $$4.c("Children", 10);
-               if (!$$6.isEmpty()) {
-                  String $$7 = $$6.a(0).l("id");
-                  String $$8 = b.get($$7);
-                  if ($$8 != null) {
-                     $$4.a("id", $$8);
-                  }
-               }
-
-               String $$9 = $$4.l("id");
-               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
-            }
-
-            String $$10 = $$1 + "_index";
-            dxk $$11 = $$0.a(dxk.a(), $$10);
-            if (!$$11.b().isEmpty()) {
-               this.f.put($$1, $$11);
-            } else {
-               dxk $$12 = new dxk();
-               this.f.put($$1, $$12);
-
-               for (String $$13 : $$2.e()) {
-                  rz $$14 = $$2.p($$13);
-                  $$12.a(crh.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
-               }
-
-               $$12.c();
-            }
-         }
+      private dkx a(djk $$0) {
+         return new dkx(this.g, $$0);
       }
-   }
 
-   public static dxc a(agh<csa> $$0, @Nullable eei $$1) {
-      if ($$0 == csa.h) {
-         return new dxc(
-            $$1,
-            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
-            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
-         );
-      } else if ($$0 == csa.i) {
-         List<String> $$2 = ImmutableList.of("Fortress");
-         return new dxc($$1, $$2, $$2);
-      } else if ($$0 == csa.j) {
-         List<String> $$3 = ImmutableList.of("EndCity");
-         return new dxc($$1, $$3, $$3);
-      } else {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
+      private dkx a(cth $$0, ig<dnb> $$1) {
+         return this.a(new dmz($$0, $$1));
+      }
+
+      private dxb a(dkx $$0) {
+         return new dxb(Map.of(dkx.b, $$0, dkx.c, this.h, dkx.d, this.i));
+      }
+
+      private void a(agl<dxb> $$0, dkx $$1) {
+         this.a.a($$0, this.a($$1));
+      }
+
+      private void a(cth $$0) {
+         ig<dnb> $$1 = this.b.b(dnb.c);
+         this.a(dxc.a, this.a($$0, $$1));
+         ig<dnb> $$2 = this.b.b(dnb.d);
+         this.a(dxc.c, this.a($$0, $$2));
+         ig<dnb> $$3 = this.b.b(dnb.e);
+         this.a(dxc.d, this.a($$0, $$3));
+      }
+
+      public void a() {
+         ig.c<ctr> $$0 = this.f.b(cts.b);
+         this.a(ctq.a($$0));
+         ig<dnb> $$1 = this.b.b(dnb.c);
+         ig.c<ctd> $$2 = this.c.b(ctk.b);
+         this.a(dxc.e, this.a(new cto($$2), $$1));
+         this.a(dxc.b, this.a(new dmr(dvp.a(this.c, this.e, this.d))));
+         this.a(dxc.f, this.a(new dmn($$2)));
       }
    }
 }

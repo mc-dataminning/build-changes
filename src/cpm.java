@@ -1,15 +1,15 @@
-public class cpm extends cpu {
-   public cpm(cpu.a $$0, bkv... $$1) {
-      super($$0, cpv.k, $$1);
+public class cpm extends cpg {
+   public cpm(String $$0, coq $$1, clo $$2) {
+      super(coy.f, cox.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public boolean a(biu $$0, csf $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public clo g() {
+      return new clo(cvh.oc);
    }
 }

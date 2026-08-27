@@ -1,173 +1,69 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bzv extends bzj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 5;
-   private int d;
+public class bzv extends bzo {
    @Nullable
-   private edh e;
-   @Nullable
-   private eju f;
-   @Nullable
-   private blg g;
-   private boolean h;
+   private ejz b;
 
-   public bzv(bzh $$0) {
+   public bzv(bzm $$0) {
       super($$0);
    }
 
    @Override
+   public void b() {
+      ejz $$0 = this.a.D(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.ds();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dy();
+
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         atw $$5 = this.a.eh();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         ejz $$9 = this.a.dq();
+         this.a.dN().a(jw.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
+      }
+   }
+
+   @Override
    public void c() {
-      if (this.g == null) {
-         b.warn("Skipping player strafe phase because no player was found");
-         this.a.gc().a(bzx.a);
-      } else {
-         if (this.e != null && this.e.c()) {
-            double $$0 = this.g.ds();
-            double $$1 = this.g.dy();
-            double $$2 = $$0 - this.a.ds();
-            double $$3 = $$1 - this.a.dy();
-            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
-            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
-            this.f = new eju($$0, this.g.du() + $$5, $$1);
-         }
+      if (this.b == null) {
+         this.b = ejz.c(this.a.dN().a(dmw.a.f, dpz.a(this.a.u())));
+      }
 
-         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.ds(), this.a.du(), this.a.dy());
-         if ($$6 < 100.0 || $$6 > 22500.0) {
-            this.j();
-         }
-
-         double $$7 = 64.0;
-         if (this.g.f(this.a) < 4096.0) {
-            if (this.a.E(this.g)) {
-               this.d++;
-               eju $$8 = new eju(this.g.ds() - this.a.ds(), 0.0, this.g.dy() - this.a.dy()).d();
-               eju $$9 = new eju((double)atm.a(this.a.dD() * (float) (Math.PI / 180.0)), 0.0, (double)(-atm.b(this.a.dD() * (float) (Math.PI / 180.0)))).d();
-               float $$10 = (float)$$9.b($$8);
-               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
-               $$11 += 0.5F;
-               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
-                  double $$12 = 1.0;
-                  eju $$13 = this.a.f(1.0F);
-                  double $$14 = this.a.e.ds() - $$13.c * 1.0;
-                  double $$15 = this.a.e.e(0.5) + 0.5;
-                  double $$16 = this.a.e.dy() - $$13.e * 1.0;
-                  double $$17 = this.g.ds() - $$14;
-                  double $$18 = this.g.e(0.5) - $$15;
-                  double $$19 = this.g.dy() - $$16;
-                  if (!this.a.aU()) {
-                     this.a.dN().a(null, 1017, this.a.dn(), 0);
-                  }
-
-                  ced $$20 = new ced(this.a.dN(), this.a, $$17, $$18, $$19);
-                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
-                  this.a.dN().b($$20);
-                  this.d = 0;
-                  if (this.e != null) {
-                     while (!this.e.c()) {
-                        this.e.a();
-                     }
-                  }
-
-                  this.a.gc().a(bzx.a);
-               }
-            } else if (this.d > 0) {
-               this.d--;
-            }
-         } else if (this.d > 0) {
-            this.d--;
-         }
+      if (this.b.c(this.a.ds(), this.a.du(), this.a.dy()) < 1.0) {
+         this.a.gc().b(cac.f).j();
+         this.a.gc().a(cac.g);
       }
    }
 
-   private void j() {
-      if (this.e == null || this.e.c()) {
-         int $$0 = this.a.A();
-         int $$1 = $$0;
-         if (this.a.eh().a(8) == 0) {
-            this.h = !this.h;
-            $$1 = $$0 + 6;
-         }
-
-         if (this.h) {
-            $$1++;
-         } else {
-            $$1--;
-         }
-
-         if (this.a.gd() != null && this.a.gd().e() > 0) {
-            $$1 %= 12;
-            if ($$1 < 0) {
-               $$1 += 12;
-            }
-         } else {
-            $$1 -= 12;
-            $$1 &= 7;
-            $$1 += 12;
-         }
-
-         this.e = this.a.a($$0, $$1, null);
-         if (this.e != null) {
-            this.e.a();
-         }
-      }
-
-      this.k();
+   @Override
+   public float f() {
+      return 1.5F;
    }
 
-   private void k() {
-      if (this.e != null && !this.e.c()) {
-         iw $$0 = this.e.g();
-         this.e.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.eh().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.f = new eju($$1, $$3, $$2);
-      }
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dq().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
    @Override
    public void d() {
-      this.d = 0;
-      this.f = null;
-      this.e = null;
-      this.g = null;
-   }
-
-   public void a(blg $$0) {
-      this.g = $$0;
-      int $$1 = this.a.A();
-      int $$2 = this.a.r(this.g.ds(), this.g.du(), this.g.dy());
-      int $$3 = this.g.dr();
-      int $$4 = this.g.dx();
-      double $$5 = (double)$$3 - this.a.ds();
-      double $$6 = (double)$$4 - this.a.dy();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
-      int $$9 = atm.a(this.g.du() + $$8);
-      edf $$10 = new edf($$3, $$9, $$4);
-      this.e = this.a.a($$1, $$2, $$10);
-      if (this.e != null) {
-         this.e.a();
-         this.k();
-      }
+      this.b = null;
    }
 
    @Nullable
    @Override
-   public eju g() {
-      return this.f;
+   public ejz g() {
+      return this.b;
    }
 
    @Override
-   public bzx<bzv> i() {
-      return bzx.b;
+   public cac<bzv> i() {
+      return cac.d;
    }
 }

@@ -1,25 +1,24 @@
-public class gac<T extends cdu> extends gaf<T, fiu<T>> {
-   private final fip a;
+public class gac extends gak<bxi, fij<bxi>> {
+   private final frt a;
 
-   public gac(fxs<T, fiu<T>> $$0, fkk $$1) {
+   public gac(fxx<bxi, fij<bxi>> $$0, frt $$1) {
       super($$0);
-      this.a = new fip($$1.a(fkn.aA));
+      this.a = $$1;
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      rz $$9 = $$8 ? $$3.gk() : $$3.gl();
-      bku.a($$9.l("id")).filter($$0x -> $$0x == bku.at).ifPresent($$10 -> {
+   public void a(eob $$0, fqz $$1, int $$2, bxi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gf() != 0) {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         bxh.b $$11 = bxh.b.a($$9.h("Variant"));
-         eoa $$12 = $$1.getBuffer(this.a.a(fxj.a($$11)));
-         this.a.a($$0, $$12, $$2, gbl.d, $$4, $$5, $$6, $$7, $$3.ah);
+         fkt $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(cvh.bT.o(), $$0, $$1, $$2, gbq.d);
          $$0.b();
-      });
+      }
    }
 }

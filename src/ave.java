@@ -1,30 +1,37 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Locale;
 
 public class ave extends DataFix {
-   public ave(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private final String a;
+   private final TypeReference b;
+
+   public ave(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bat.z.typeName(), bcb.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bat.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
-         }
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a(this.a, $$0, $$1);
+   }
 
-         return $$1;
-      });
+   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
+      if ($$1.getKeyType() != $$2.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
+      } else {
+         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
+               if (!$$2.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
+               } else {
+                  return $$1xx;
+               }
+            });
+      }
    }
 }

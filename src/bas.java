@@ -1,45 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
-public class bas extends DataFix {
+public class bas extends azy {
    public bas(Schema $$0) {
-      super($$0, false);
+      super($$0, true, "PrimedTnt BlockState fixer", bax.x, "minecraft:tnt");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bat.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
+      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
-      return !$$1
-         ? $$0
-         : $$0.update(
-            "Properties",
-            $$0x -> {
-               String $$1x = $$0x.get("east").asString("none");
-               String $$2 = $$0x.get("west").asString("none");
-               String $$3 = $$0x.get("north").asString("none");
-               String $$4 = $$0x.get("south").asString("none");
-               boolean $$5 = a($$1x) || a($$2);
-               boolean $$6 = a($$3) || a($$4);
-               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
-               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
-               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
-               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
-               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
-                  .update("west", $$1xx -> $$1xx.createString($$8))
-                  .update("north", $$1xx -> $$1xx.createString($$9))
-                  .update("south", $$1xx -> $$1xx.createString($$10));
-            }
-         );
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
    }
 
-   private static boolean a(String $$0) {
-      return !"none".equals($$0);
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b(c($$0));
    }
 }

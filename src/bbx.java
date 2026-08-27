@@ -1,19 +1,22 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bbx extends DataFix {
-   private final String a;
-   private final TypeReference b;
-
-   public bbx(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+public class bbx extends azx {
+   public bbx(Schema $$0, boolean $$1) {
+      super($$0, $$1, "WeaponSmithChestLootTableFix", bax.s, "minecraft:chest");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.writeAndRead(this.a, this.getInputSchema().getType(this.b), this.getOutputSchema().getType(this.b));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
+         }
+      );
    }
 }

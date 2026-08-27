@@ -1,168 +1,99 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
-public class lc implements la {
+public abstract class lc implements le {
+   protected static final bq.a a = bq.a.a().a(bo.a.a().a(true));
+   private static final Set<bkz<?>> b = ImmutableSet.of(bkz.bt, bkz.d, bkz.ac, bkz.aO, bkz.bf);
+   private final cgi c;
+   private final cgi d;
+   private final Map<bkz<?>, Map<agm, efk.a>> e = Maps.newHashMap();
+
+   protected lc(cgi $$0) {
+      this($$0, $$0);
+   }
+
+   protected lc(cgi $$0, cgi $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   protected static efk.a a(cse $$0) {
+      return efk.b().a(efj.a().a(eiu.a(1.0F)).a(efs.a($$0))).a(efj.a().a(eiu.a(1.0F)).a(efy.a(bkz.aF.j())));
+   }
+
+   public abstract void a();
+
    @Override
-   public void generate(BiConsumer<agi, eff.a> $$0) {
-      $$0.accept(
-         eev.u,
-         eff.b()
-            .a(
-               efe.a()
-                  .a(eip.a(1.0F))
-                  .a(efn.a(clm.pX).a(20))
-                  .a(efn.a(clm.pY))
-                  .a(efn.a(clm.uD).a(30))
-                  .a(efn.a(clm.qM).a(10).a(egc.d()))
-                  .a(efn.a(clm.oZ).a(5))
-                  .a(efl.b().a(5))
-            )
-            .a(
-               efe.a()
-                  .a(eiu.a(2.0F, 4.0F))
-                  .a(efn.a(clm.oB).a(10).a(egv.a(eiu.a(1.0F, 5.0F))))
-                  .a(efn.a(clm.oF).a(5).a(egv.a(eiu.a(1.0F, 3.0F))))
-                  .a(efn.a(clm.lG).a(5).a(egv.a(eiu.a(4.0F, 9.0F))))
-                  .a(efn.a(clm.ox).a(5).a(egv.a(eiu.a(4.0F, 9.0F))))
-                  .a(efn.a(clm.ov).a(3).a(egv.a(eiu.a(1.0F, 2.0F))))
-                  .a(efn.a(clm.ot).a(10).a(egv.a(eiu.a(3.0F, 8.0F))))
-                  .a(efn.a(clm.pu).a(15).a(egv.a(eiu.a(1.0F, 3.0F))))
-                  .a(efn.a(clm.wi).a(15).a(egv.a(eiu.a(3.0F, 6.0F))))
-                  .a(efn.a(clm.rW).a(10).a(egv.a(eiu.a(2.0F, 4.0F))))
-                  .a(efn.a(clm.rV).a(10).a(egv.a(eiu.a(2.0F, 4.0F))))
-                  .a(efn.a(clm.vd).a(10).a(egv.a(eiu.a(2.0F, 4.0F))))
-            )
-            .a(
-               efe.a()
-                  .a(eip.a(3.0F))
-                  .a(efn.a(cvc.cP).a(20).a(egv.a(eiu.a(4.0F, 8.0F))))
-                  .a(efn.a(cvc.bp).a(5).a(egv.a(eiu.a(1.0F, 4.0F))))
-                  .a(efn.a(cvc.bq).a(5).a(egv.a(eiu.a(1.0F, 4.0F))))
-                  .a(efn.a(cvc.hh).a(5).a(egv.a(eiu.a(1.0F, 4.0F))))
-                  .a(efn.a(cvc.cp).a(15).a(egv.a(eiu.a(1.0F, 16.0F))))
-            )
-            .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(4)).a(efn.a(clm.qM).a(1).a(new egc.a().a(cpy.u))))
-      );
-      $$0.accept(eev.P, c());
-      $$0.accept(eev.z, b());
-      $$0.accept(eev.A, d());
-      $$0.accept(eev.K, a());
+   public void generate(BiConsumer<agm, efk.a> $$0) {
+      this.a();
+      Set<agm> $$1 = Sets.newHashSet();
+      kc.h
+         .h()
+         .forEach(
+            $$2 -> {
+               bkz<?> $$3 = $$2.a();
+               if ($$3.a(this.c)) {
+                  if (a($$3)) {
+                     Map<agm, efk.a> $$4 = this.e.remove($$3);
+                     agm $$5 = $$3.j();
+                     if (!$$5.equals(efa.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.g().a()));
+                     }
+
+                     if ($$4 != null) {
+                        $$4.forEach(($$3x, $$4x) -> {
+                           if (!$$1.add($$3x)) {
+                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2.g().a()));
+                           } else {
+                              $$0.accept($$3x, $$4x);
+                           }
+                        });
+                     }
+                  } else {
+                     Map<agm, efk.a> $$6 = this.e.remove($$3);
+                     if ($$6 != null) {
+                        throw new IllegalStateException(
+                           String.format(
+                              Locale.ROOT,
+                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
+                              $$6.keySet().stream().map(agm::toString).collect(Collectors.joining(",")),
+                              $$2.g().a()
+                           )
+                        );
+                     }
+                  }
+               }
+            }
+         );
+      if (!this.e.isEmpty()) {
+         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
+      }
    }
 
-   public static eff.a a() {
-      return eff.b()
-         .a(efe.a().a(eiu.a(0.0F, 1.0F)).a(efn.a(clm.vL)))
-         .a(
-            efe.a()
-               .a(eiu.a(2.0F, 3.0F))
-               .a(efn.a(clm.pt).a(7).a(egv.a(eiu.a(3.0F, 5.0F))))
-               .a(efn.a(clm.tY).a(5).a(egv.a(eiu.a(2.0F, 5.0F))))
-               .a(efn.a(clm.tX).a(5).a(egv.a(eiu.a(3.0F, 5.0F))))
-         )
-         .a(efe.a().a(eiu.a(1.0F, 3.0F)).a(efn.a(cvc.aa).a(egv.a(eiu.a(2.0F, 3.0F)))))
-         .a(
-            efe.a()
-               .a(eiu.a(2.0F, 3.0F))
-               .a(efn.a(clm.tQ).a(7))
-               .a(efn.a(clm.pp).a(4).a(egv.a(eiu.a(1.0F, 6.0F))))
-               .a(efn.a(clm.os).a(4).a(egv.a(eiu.a(2.0F, 7.0F))))
-               .a(efn.a(clm.ma).a(3).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.oB).a(3).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.qM).a(1).a(egc.d()))
-         )
-         .a(efe.a().a(eiu.a(0.0F, 1.0F)).a(efn.a(clm.vU)).a(egu.a(arn.a)))
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(3)).a(efn.a(clm.xj).a(1).a(egv.a(eip.a(2.0F)))))
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(1)).a(efn.a(clm.qM).a(2).a(new egc.a().a(cpy.J))));
+   private static boolean a(bkz<?> $$0) {
+      return b.contains($$0) || $$0.f() != blo.h;
    }
 
-   public static eff.a b() {
-      return eff.b()
-         .a(
-            efe.a()
-               .a(eiu.a(2.0F, 4.0F))
-               .a(efn.a(clm.ov).a(5).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.oB).a(15).a(egv.a(eiu.a(1.0F, 5.0F))))
-               .a(efn.a(clm.oF).a(15).a(egv.a(eiu.a(2.0F, 7.0F))))
-               .a(efn.a(clm.ow).a(15).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.rw).a(25).a(egv.a(eiu.a(4.0F, 6.0F))))
-               .a(efn.a(clm.sj).a(25).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.sb).a(25).a(egv.a(eiu.a(3.0F, 7.0F))))
-               .a(efn.a(clm.nK).a(20))
-               .a(efn.a(clm.uy).a(15))
-               .a(efn.a(clm.uz).a(10))
-               .a(efn.a(clm.uA).a(5))
-               .a(efn.a(clm.qM).a(10).a(egc.d()))
-               .a(efn.a(clm.pX).a(20))
-               .a(efn.a(clm.pY).a(2))
-               .a(efl.b().a(15))
-         )
-         .a(
-            efe.a()
-               .a(eip.a(4.0F))
-               .a(efn.a(clm.rw).a(10).a(egv.a(eiu.a(1.0F, 8.0F))))
-               .a(efn.a(clm.pr).a(10).a(egv.a(eiu.a(1.0F, 8.0F))))
-               .a(efn.a(clm.sb).a(10).a(egv.a(eiu.a(1.0F, 8.0F))))
-               .a(efn.a(clm.pp).a(10).a(egv.a(eiu.a(1.0F, 8.0F))))
-               .a(efn.a(cvc.I).a(10).a(egv.a(eiu.a(1.0F, 8.0F))))
-         )
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(4)).a(efn.a(clm.xk).a(1).a(egv.a(eip.a(2.0F)))).a(efn.a(clm.qM).a(2).a(new egc.a().a(cpy.w))));
+   protected eib.a b() {
+      return ehv.a(bf.a.a().b(bq.a.a().a(bkz.O)));
    }
 
-   public static eff.a c() {
-      return eff.b()
-         .a(
-            efe.a()
-               .a(eiu.a(5.0F, 10.0F))
-               .a(efn.a(clm.pY).a(1).a(egv.a(eiu.a(1.0F, 2.0F))))
-               .a(efn.a(clm.vC).a(1))
-               .a(efn.a(clm.qP).a(2).a(egv.a(eip.a(1.0F))))
-               .a(efn.a(clm.gi).a(2).a(egv.a(eiu.a(1.0F, 2.0F))))
-               .a(efn.a(clm.uD).a(2))
-               .a(efn.a(clm.pg).a(2).a(egv.a(eip.a(1.0F))).a(egw.a(eiu.a(0.8F, 1.0F))).a(egd.a(eiu.a(30.0F, 50.0F)).e()))
-               .a(efn.a(clm.uC).a(2).a(egv.a(eip.a(1.0F))))
-               .a(efn.a(clm.uA).a(2).a(egv.a(eip.a(1.0F))))
-               .a(efn.a(clm.nK).a(2).a(egv.a(eip.a(1.0F))))
-               .a(efn.a(clm.vq).a(2))
-               .a(efn.a(clm.vr).a(2))
-               .a(efn.a(clm.pJ).a(2).a(egd.a(eiu.a(30.0F, 50.0F)).e()))
-               .a(efn.a(clm.qM).a(3).a(new egc.a().a(cpy.m)))
-               .a(efn.a(clm.gg).a(3).a(egv.a(eiu.a(4.0F, 10.0F))))
-               .a(efn.a(clm.lY).a(3).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.wG).a(3).a(egv.a(eiu.a(1.0F, 4.0F))))
-               .a(efn.a(clm.oz).a(3).a(egv.a(eiu.a(1.0F, 15.0F))))
-               .a(efn.a(clm.tQ).a(3).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.wi).a(3).a(egv.a(eiu.a(1.0F, 15.0F))))
-               .a(efn.a(clm.pF).a(3).a(egd.a(eiu.a(20.0F, 39.0F)).e()))
-               .a(efn.a(clm.xg).a(4).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.vG).a(4).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.sh).a(5).a(egv.a(eiu.a(1.0F, 3.0F))).a(eha.a(cnj.J)))
-               .a(efn.a(clm.qM).a(5).a(egc.d()))
-               .a(efn.a(clm.qM).a(5).a(egv.a(eiu.a(3.0F, 10.0F))))
-               .a(efn.a(clm.rw).a(5).a(egv.a(eiu.a(1.0F, 15.0F))))
-               .a(efn.a(clm.fs).a(5).a(egv.a(eiu.a(1.0F, 15.0F))))
-               .a(efn.a(clm.ot).a(7).a(egv.a(eiu.a(6.0F, 15.0F))))
-         )
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(71)).a(efn.a(clm.qM).a(4).a(new egc.a().a(cpy.L))).a(efn.a(clm.xn).a(4)).a(efn.a(clm.xw).a(1)));
+   protected eib.a a(bxh $$0) {
+      return ehv.a(bf.a.a().b(bq.a.a().a(bkz.O).a(br.a($$0))));
    }
 
-   public static eff.a d() {
-      return eff.b()
-         .a(
-            efe.a()
-               .a(eiu.a(2.0F, 6.0F))
-               .a(efn.a(clm.ov).a(3).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.oB).a(10).a(egv.a(eiu.a(1.0F, 5.0F))))
-               .a(efn.a(clm.oF).a(15).a(egv.a(eiu.a(2.0F, 7.0F))))
-               .a(efn.a(cvc.mZ).a(15).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.ow).a(2).a(egv.a(eiu.a(1.0F, 3.0F))))
-               .a(efn.a(clm.rw).a(20).a(egv.a(eiu.a(4.0F, 6.0F))))
-               .a(efn.a(clm.sb).a(16).a(egv.a(eiu.a(3.0F, 7.0F))))
-               .a(efn.a(clm.nK).a(3))
-               .a(efn.a(clm.uy))
-               .a(efn.a(clm.uz))
-               .a(efn.a(clm.uA))
-               .a(efn.a(clm.qM).a(egd.a(eip.a(30.0F)).e()))
-         )
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(2)).a(efn.a(clm.xm).a(1).a(egv.a(eip.a(2.0F)))))
-         .a(efe.a().a(eip.a(1.0F)).a(efl.b().a(1)).a(efn.a(clm.qM).a(new egc.a().a(cpy.w))));
+   protected void a(bkz<?> $$0, efk.a $$1) {
+      this.a($$0, $$0.j(), $$1);
+   }
+
+   protected void a(bkz<?> $$0, agm $$1, efk.a $$2) {
+      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

@@ -1,29 +1,69 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
 
-public class ell<T> implements elc<T> {
-   private final Function<ht, elj<T>> a;
+public record ell<T>(T d, hx e, long f, elp g, long h) {
+   public static final Comparator<ell<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<ell<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<ell<?>> c = new Strategy<ell<?>>() {
+      public int a(ell<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-   public ell(Function<ht, elj<T>> $$0) {
-      this.a = $$0;
+      public boolean a(@Nullable ell<?> $$0, @Nullable ell<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
+
+   public ell(T $$0, hx $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, elp.d, $$3);
    }
 
-   @Override
-   public boolean a(ht $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public ell(T d, hx e, long f, elp g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   @Override
-   public void a(elg<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
+   public static <T> ell<T> a(T $$0, hx $$1) {
+      return new ell<>($$0, $$1, 0L, elp.d, 0L);
    }
 
-   @Override
-   public boolean b(ht $$0, T $$1) {
-      return false;
+   public T a() {
+      return this.d;
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public hx b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public elp d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

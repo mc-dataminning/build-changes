@@ -1,14 +1,24 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface dlc<T> extends AutoCloseable {
-   CompletableFuture<dkx<T>> a(crh var1);
+public class dlc<T> {
+   private final crm a;
+   private final List<T> b;
 
-   void a(dkx<T> var1);
+   public dlc(crm $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(boolean var1);
+   public crm a() {
+      return this.a;
+   }
 
-   @Override
-   default void close() throws IOException {
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

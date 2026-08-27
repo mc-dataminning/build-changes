@@ -1,17 +1,42 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class tm extends MessageToMessageDecoder<ByteBuf> {
-   private final tl a;
+public class tm extends ti {
+   private final Deque<tk> a = new ArrayDeque<>();
 
-   public tm(Cipher $$0) {
-      this.a = new tl($$0);
+   public tm(tj... $$0) {
+      tk $$1 = tk.a();
+
+      for (tj $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   @Override
+   public sx.a a(tc<?> $$0, String $$1) {
+      tk $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return sx.a.b;
+      } else {
+         if ($$0 == sd.b) {
+            tk $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public sx.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
+
+      return super.b();
    }
 }

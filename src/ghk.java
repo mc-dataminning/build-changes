@@ -1,25 +1,73 @@
-public interface ghk {
-   default void b() {
+public class ghk implements ghp {
+   private static final int a = 6000;
+   private static final uv b = uv.c("tutorial.find_tree.title");
+   private static final uv c = uv.c("tutorial.find_tree.description");
+   private final gho d;
+   private exo e;
+   private int f;
+
+   public ghk(gho $$0) {
+      this.d = $$0;
    }
 
-   default void a() {
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(ghq.f);
+      } else {
+         if (this.f == 1) {
+            fqb $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(ghq.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new exo(exo.a.c, b, c, false);
+            this.d.e().ax().a(this.e);
+         }
+      }
    }
 
-   default void a(fpu $$0) {
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
-   default void a(double $$0, double $$1) {
+   @Override
+   public void a(flo $$0, ejx $$1) {
+      if ($$1.c() == ejx.a.b) {
+         dhn $$2 = $$0.a_(((ejv)$$1).a());
+         if ($$2.a(ark.ai)) {
+            this.d.a(ghq.c);
+         }
+      }
    }
 
-   default void a(flj $$0, ejs $$1) {
+   @Override
+   public void a(clo $$0) {
+      if ($$0.a(ars.al)) {
+         this.d.a(ghq.e);
+      }
    }
 
-   default void a(flj $$0, ht $$1, dhi $$2, float $$3) {
+   private static boolean b(fqb $$0) {
+      return $$0.fT().a_($$0x -> $$0x.a(ars.al));
    }
 
-   default void c() {
-   }
+   public static boolean a(fqb $$0) {
+      for (ig<cvf> $$1 : kc.f.c(ark.ai)) {
+         cvf $$2 = $$1.a();
+         if ($$0.j().a(arf.a.b($$2)) > 0) {
+            return true;
+         }
+      }
 
-   default void a(clj $$0) {
+      return false;
    }
 }

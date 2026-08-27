@@ -1,14 +1,31 @@
-public interface aeu extends acm {
-   @Override
-   default tt b() {
-      return tt.d;
+import com.mojang.authlib.GameProfile;
+
+public class aeu implements wo<aes> {
+   private final GameProfile a;
+
+   public aeu(GameProfile $$0) {
+      this.a = $$0;
    }
 
-   void a(aew var1);
+   public aeu(ty $$0) {
+      this.a = $$0.A();
+   }
 
-   void a(aex var1);
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(aev var1);
+   public void a(aes $$0) {
+      $$0.a(this);
+   }
 
-   void a(aey var1);
+   public GameProfile a() {
+      return this.a;
+   }
+
+   @Override
+   public tx c() {
+      return tx.e;
+   }
 }

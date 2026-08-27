@@ -1,145 +1,151 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dhc extends cxd {
-   public static final MapCodec<dhc> b = b(dhc::new);
-   public static final dig<dik> c = dhy.bg;
-   public static final dhz d = dhy.x;
-   public static final float e = 4.0F;
-   protected static final ekn f = cva.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ekn g = cva.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
-   protected static final ekn h = cva.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
-   protected static final ekn i = cva.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
-   protected static final ekn j = cva.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ekn k = cva.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
-   protected static final float l = 2.0F;
-   protected static final float m = 6.0F;
-   protected static final float n = 10.0F;
-   protected static final ekn o = cva.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final ekn F = cva.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
-   protected static final ekn G = cva.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
-   protected static final ekn H = cva.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
-   protected static final ekn I = cva.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final ekn J = cva.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
-   protected static final ekn K = cva.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final ekn L = cva.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final ekn M = cva.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
-   protected static final ekn N = cva.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
-   protected static final ekn O = cva.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final ekn P = cva.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
-   private static final ekn[] Q = a(true);
-   private static final ekn[] R = a(false);
+public final class dhc {
+   private static final Map<String, dhc> k = new Object2ObjectArrayMap();
+   public static final Codec<dhc> a = asy.a((Function<dhc, String>)($$0 -> $$0.l), k::get);
+   public static final dhc b = new dhc(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(qe.g), Optional.of(qe.n), Optional.of(qe.C), Optional.of(qe.I)
+   );
+   public static final dhc c = new dhc(
+      "spruce", 0.5F, Optional.of(qe.q), Optional.of(qe.r), Optional.of(qe.k), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dhc d = new dhc(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(qe.x), Optional.of(qe.y), Optional.empty(), Optional.empty()
+   );
+   public static final dhc e = new dhc("azalea", Optional.empty(), Optional.of(qe.w), Optional.empty());
+   public static final dhc f = new dhc("birch", Optional.empty(), Optional.of(qe.i), Optional.of(qe.F));
+   public static final dhc g = new dhc("jungle", Optional.of(qe.p), Optional.of(qe.o), Optional.empty());
+   public static final dhc h = new dhc("acacia", Optional.empty(), Optional.of(qe.j), Optional.empty());
+   public static final dhc i = new dhc("cherry", Optional.empty(), Optional.of(qe.z), Optional.of(qe.K));
+   public static final dhc j = new dhc("dark_oak", Optional.of(qe.h), Optional.empty(), Optional.empty());
+   private final String l;
+   private final float m;
+   private final Optional<agl<dpn<?, ?>>> n;
+   private final Optional<agl<dpn<?, ?>>> o;
+   private final Optional<agl<dpn<?, ?>>> p;
+   private final Optional<agl<dpn<?, ?>>> q;
+   private final Optional<agl<dpn<?, ?>>> r;
+   private final Optional<agl<dpn<?, ?>>> s;
 
-   @Override
-   protected MapCodec<dhc> a() {
-      return b;
+   public dhc(String $$0, Optional<agl<dpn<?, ?>>> $$1, Optional<agl<dpn<?, ?>>> $$2, Optional<agl<dpn<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   private static ekn[] a(boolean $$0) {
-      return Arrays.stream(hx.values()).map($$1 -> a($$1, $$0)).toArray(ekn[]::new);
+   public dhc(
+      String $$0,
+      float $$1,
+      Optional<agl<dpn<?, ?>>> $$2,
+      Optional<agl<dpn<?, ?>>> $$3,
+      Optional<agl<dpn<?, ?>>> $$4,
+      Optional<agl<dpn<?, ?>>> $$5,
+      Optional<agl<dpn<?, ?>>> $$6,
+      Optional<agl<dpn<?, ?>>> $$7
+   ) {
+      this.l = $$0;
+      this.m = $$1;
+      this.n = $$2;
+      this.o = $$3;
+      this.p = $$4;
+      this.q = $$5;
+      this.r = $$6;
+      this.s = $$7;
+      k.put($$0, this);
    }
 
-   private static ekn a(hx $$0, boolean $$1) {
-      switch ($$0) {
-         case a:
-         default:
-            return ekk.a(k, $$1 ? L : F);
-         case b:
-            return ekk.a(j, $$1 ? K : o);
-         case c:
-            return ekk.a(i, $$1 ? N : H);
-         case d:
-            return ekk.a(h, $$1 ? M : G);
-         case e:
-            return ekk.a(g, $$1 ? P : J);
-         case f:
-            return ekk.a(f, $$1 ? O : I);
-      }
-   }
+   @Nullable
+   private agl<dpn<?, ?>> a(atw $$0, boolean $$1) {
+      if ($$0.i() < this.m) {
+         if ($$1 && this.s.isPresent()) {
+            return this.s.get();
+         }
 
-   public dhc(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, hx.c).a(c, dik.a).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public boolean g_(dhi $$0) {
-      return true;
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
-   }
-
-   private boolean a(dhi $$0, dhi $$1) {
-      cva $$2 = $$0.c(c) == dik.a ? cvc.by : cvc.br;
-      return $$1.a($$2) && $$1.c(dhb.c) && $$1.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public dhi a(csa $$0, ht $$1, dhi $$2, cdu $$3) {
-      if (!$$0.B && $$3.fU().d) {
-         ht $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+         if (this.q.isPresent()) {
+            return this.q.get();
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
    }
 
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         ht $$5 = $$2.a($$0.c(a).g());
-         if (this.a($$0, $$1.a_($$5))) {
-            $$1.b($$5, true);
+   @Nullable
+   private agl<dpn<?, ?>> a(atw $$0) {
+      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   }
+
+   public boolean a(ami $$0, djk $$1, hx $$2, dhn $$3, atw $$4) {
+      agl<dpn<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         ig<dpn<?, ?>> $$6 = $$0.I_().d(kd.au).b($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     dpn<?, ?> $$9 = $$6.a();
+                     dhn $$10 = cvh.a.o();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
+               }
+            }
+         }
+      }
+
+      agl<dpn<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         ig<dpn<?, ?>> $$12 = $$0.I_().d(kd.au).b($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            dpn<?, ?> $$13 = $$12.a();
+            dhn $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
          }
       }
    }
 
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static boolean a(dhn $$0, crl $$1, hx $$2, int $$3, int $$4) {
+      cvf $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      dhi $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(cvc.bQ) && $$3.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
-      if ($$0.a((csd)$$1, $$2)) {
-         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+   private boolean a(csg $$0, hx $$1) {
+      for (hx $$2 : hx.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
+         if ($$0.a_($$2).a(ark.U)) {
+            return true;
+         }
       }
-   }
 
-   @Override
-   public clj a(csd $$0, ht $$1, dhi $$2) {
-      return new clj($$2.c(c) == dik.b ? cvc.br : cvc.by);
-   }
-
-   @Override
-   public dhi a(dhi $$0, dbm $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dhi a(dhi $$0, czw $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
       return false;
    }
 }

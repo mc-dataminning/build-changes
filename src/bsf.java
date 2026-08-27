@@ -1,7 +1,78 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class bsf extends bsb {
-   public bsf() {
-      this.a(EnumSet.of(bsb.a.a, bsb.a.c));
+public class bsf extends bsg {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final bww d;
+   @Nullable
+   private bww e;
+   private final double f;
+   private int g;
+
+   public bsf(bww $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public boolean a() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else {
+         List<? extends bww> $$0 = this.d.dN().a((Class<? extends bww>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
+         bww $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bww $$3 : $$0) {
+            if ($$3.h() >= 0) {
+               double $$4 = this.d.f($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      if (this.d.h() >= 0) {
+         return false;
+      } else if (!this.e.bx()) {
+         return false;
+      } else {
+         double $$0 = this.d.f(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e = null;
+   }
+
+   @Override
+   public void e() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.N().a(this.e, this.f);
+      }
    }
 }

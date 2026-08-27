@@ -1,25 +1,32 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
 
-public class ejj extends Exception {
-   private final Path a;
-   private final List<ejl> b;
+public class ejj implements ejk<MinecraftServer> {
+   final agm a;
 
-   public ejj(Path $$0, List<ejl> $$1) {
+   public ejj(agm $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public void a(MinecraftServer $$0, ejm<MinecraftServer> $$1, long $$2) {
+      aha $$3 = $$0.aC();
+
+      for (hb<du> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   public static String a(Path $$0, List<ejl> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static class a extends ejk.a<MinecraftServer, ejj> {
+      public a() {
+         super(new agm("function_tag"), ejj.class);
+      }
+
+      public void a(sd $$0, ejj $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public ejj a(sd $$0) {
+         agm $$1 = new agm($$0.l("Name"));
+         return new ejj($$1);
+      }
    }
 }

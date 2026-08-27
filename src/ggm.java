@@ -1,33 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ggm implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bfb<ggl> b;
-   private final bhq<Runnable> c;
+public class ggm implements ggn<gfe> {
+   private final List<ggn<gfe>> a = Lists.newArrayList();
+   @Nullable
+   private final uv b;
 
-   public ggm(FileChannel $$0, Executor $$1) {
-      this.b = new bfb<>(ggl.a, $$0);
-      this.c = bhq.a($$1, "telemetry-event-log");
-   }
-
-   public ggn a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public ggm(agm $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : uv.c($$1);
    }
 
    @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public int e() {
+      int $$0 = 0;
+
+      for (ggn<gfe> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public gfe a(atw $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (ggn<gfe> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return ggl.a;
+      } else {
+         return ggl.a;
+      }
+   }
+
+   public void a(ggn<gfe> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public uv a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(ggi $$0) {
+      for (ggn<gfe> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

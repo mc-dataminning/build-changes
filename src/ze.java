@@ -1,24 +1,32 @@
-public record ze(ur a, un.b b) implements wk<yd> {
-   public ze(tu $$0) {
-      this($$0.m(), new un.b($$0));
+public class ze implements wo<yh> {
+   private final clj a;
+   private final int b;
+
+   public ze(clj $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public ze(ty $$0) {
+      this.a = $$0.a(kc.i);
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
+   public void a(ty $$0) {
+      $$0.a(kc.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public clj a() {
+      return this.a;
    }
 
-   public un.b d() {
+   public int d() {
       return this.b;
    }
 }

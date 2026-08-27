@@ -1,204 +1,432 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public interface io<T> extends Keyable, ih<T> {
-   agh<? extends io<T>> c();
-
-   default Codec<T> q() {
-      Codec<T> $$0 = agi.a
-         .flatXmap(
-            $$0x -> Optional.ofNullable(this.a($$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> this.c((T)$$0x)
-                  .map(agh::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      Codec<T> $$1 = asu.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return asu.a(asu.b($$0, $$1), this::e, this::e);
-   }
-
-   default Codec<ib<T>> r() {
-      Codec<ib<T>> $$0 = agi.a
-         .flatXmap(
-            $$0x -> this.b(agh.a(this.c(), $$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> $$0x.e()
-                  .map(agh::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      return asu.a($$0, (Function<ib<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
-   }
-
-   default <U> Stream<U> keys(DynamicOps<U> $$0) {
-      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
-   }
-
+public class io<T> implements jb<T> {
+   private static final Logger b = LogUtils.getLogger();
+   final agl<? extends is<T>> c;
+   private final ObjectList<ig.c<T>> d = new ObjectArrayList(256);
+   private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
+   private final Map<agm, ig.c<T>> f = new HashMap<>();
+   private final Map<agl<T>, ig.c<T>> g = new HashMap<>();
+   private final Map<T, ig.c<T>> h = new IdentityHashMap<>();
+   private final Map<T, Lifecycle> i = new IdentityHashMap<>();
+   private Lifecycle j;
+   private volatile Map<arz<T>, ik.c<T>> k = new IdentityHashMap<>();
+   private boolean l;
    @Nullable
-   agi b(T var1);
-
-   Optional<agh<T>> c(T var1);
-
-   @Override
-   int a(@Nullable T var1);
-
+   private Map<T, ig.c<T>> m;
    @Nullable
-   T a(@Nullable agh<T> var1);
+   private List<ig.c<T>> n;
+   private int o;
+   private final ii.c<T> p = new ii.c<T>() {
+      @Override
+      public agl<? extends is<? extends T>> f() {
+         return io.this.c;
+      }
 
-   @Nullable
-   T a(@Nullable agi var1);
+      @Override
+      public Lifecycle g() {
+         return io.this.d();
+      }
 
-   Lifecycle e(T var1);
+      @Override
+      public Optional<ig.c<T>> a(agl<T> $$0) {
+         return io.this.b($$0);
+      }
 
-   Lifecycle d();
+      @Override
+      public Stream<ig.c<T>> b() {
+         return io.this.h();
+      }
 
-   default Optional<T> b(@Nullable agi $$0) {
-      return Optional.ofNullable(this.a($$0));
+      @Override
+      public Optional<ik.c<T>> a(arz<T> $$0) {
+         return io.this.b($$0);
+      }
+
+      @Override
+      public Stream<ik.c<T>> d() {
+         return io.this.i().map(Pair::getSecond);
+      }
+   };
+
+   public io(agl<? extends is<T>> $$0, Lifecycle $$1) {
+      this($$0, $$1, false);
    }
 
-   default Optional<T> d(@Nullable agh<T> $$0) {
-      return Optional.ofNullable(this.a($$0));
-   }
-
-   default T e(agh<T> $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
-      } else {
-         return $$1;
+   public io(agl<? extends is<T>> $$0, Lifecycle $$1, boolean $$2) {
+      ago.a(() -> "registry " + $$0);
+      this.c = $$0;
+      this.j = $$1;
+      if ($$2) {
+         this.m = new IdentityHashMap<>();
       }
    }
 
-   Set<agi> e();
-
-   Set<Entry<agh<T>, T>> g();
-
-   Set<agh<T>> f();
-
-   Optional<ib.c<T>> a(ats var1);
-
-   default Stream<T> s() {
-      return StreamSupport.stream(this.spliterator(), false);
+   @Override
+   public agl<? extends is<T>> c() {
+      return this.c;
    }
 
-   boolean c(agi var1);
-
-   boolean c(agh<T> var1);
-
-   static <T> T a(io<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new agi($$1), $$2);
+   @Override
+   public String toString() {
+      return "Registry[" + this.c + " (" + this.j + ")]";
    }
 
-   static <V, T extends V> T a(io<V> $$0, agi $$1, T $$2) {
-      return a($$0, agh.a($$0.c(), $$1), $$2);
+   private List<ig.c<T>> a() {
+      if (this.n == null) {
+         this.n = this.d.stream().filter(Objects::nonNull).toList();
+      }
+
+      return this.n;
    }
 
-   static <V, T extends V> T a(io<V> $$0, agh<V> $$1, T $$2) {
-      ((ix)$$0).a($$1, (V)$$2, Lifecycle.stable());
-      return $$2;
+   private void v() {
+      if (this.l) {
+         throw new IllegalStateException("Registry is already frozen");
+      }
    }
 
-   static <T> ib.c<T> b(io<T> $$0, agh<T> $$1, T $$2) {
-      return ((ix)$$0).a($$1, $$2, Lifecycle.stable());
+   private void g(agl<T> $$0) {
+      if (this.l) {
+         throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
+      }
    }
 
-   static <T> ib.c<T> b(io<T> $$0, agi $$1, T $$2) {
-      return b($$0, agh.a($$0.c(), $$1), $$2);
-   }
+   public ig.c<T> a(int $$0, agl<T> $$1, T $$2, Lifecycle $$3) {
+      this.g($$1);
+      Validate.notNull($$1);
+      Validate.notNull($$2);
+      if (this.f.containsKey($$1.a())) {
+         ac.b(new IllegalStateException("Adding duplicate key '" + $$1 + "' to registry"));
+      }
 
-   io<T> l();
+      if (this.h.containsKey($$2)) {
+         ac.b(new IllegalStateException("Adding duplicate value '" + $$2 + "' to registry"));
+      }
 
-   ib.c<T> f(T var1);
-
-   Optional<ib.c<T>> c(int var1);
-
-   Optional<ib.c<T>> b(agh<T> var1);
-
-   ib<T> d(T var1);
-
-   default ib.c<T> f(agh<T> $$0) {
-      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
-   }
-
-   Stream<ib.c<T>> h();
-
-   Optional<ig.c<T>> b(arv<T> var1);
-
-   default Iterable<ib<T>> c(arv<T> $$0) {
-      return (Iterable<ib<T>>)DataFixUtils.orElse(this.b($$0), List.of());
-   }
-
-   ig.c<T> a(arv<T> var1);
-
-   Stream<Pair<arv<T>, ig.c<T>>> i();
-
-   Stream<arv<T>> j();
-
-   void m();
-
-   void a(Map<arv<T>, List<ib<T>>> var1);
-
-   default ih<ib<T>> t() {
-      return new ih<ib<T>>() {
-         public int a(ib<T> $$0) {
-            return io.this.a($$0.a());
+      ig.c<T> $$4;
+      if (this.m != null) {
+         $$4 = this.m.remove($$2);
+         if ($$4 == null) {
+            throw new AssertionError("Missing intrusive holder for " + $$1 + ":" + $$2);
          }
 
-         @Nullable
-         public ib<T> c(int $$0) {
-            return (ib<T>)io.this.c($$0).orElse(null);
-         }
+         $$4.b($$1);
+      } else {
+         $$4 = this.g.computeIfAbsent($$1, $$0x -> ig.c.a(this.o(), $$0x));
+      }
 
+      this.g.put($$1, $$4);
+      this.f.put($$1.a(), $$4);
+      this.h.put($$2, $$4);
+      this.d.size(Math.max(this.d.size(), $$0 + 1));
+      this.d.set($$0, $$4);
+      this.e.put($$2, $$0);
+      if (this.o <= $$0) {
+         this.o = $$0 + 1;
+      }
+
+      this.i.put($$2, $$3);
+      this.j = this.j.add($$3);
+      this.n = null;
+      return $$4;
+   }
+
+   @Override
+   public ig.c<T> a(agl<T> $$0, T $$1, Lifecycle $$2) {
+      return this.a(this.o, $$0, $$1, $$2);
+   }
+
+   @Nullable
+   @Override
+   public agm b(T $$0) {
+      ig.c<T> $$1 = this.h.get($$0);
+      return $$1 != null ? $$1.g().a() : null;
+   }
+
+   @Override
+   public Optional<agl<T>> c(T $$0) {
+      return Optional.ofNullable(this.h.get($$0)).map(ig.c::g);
+   }
+
+   @Override
+   public int a(@Nullable T $$0) {
+      return this.e.getInt($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(@Nullable agl<T> $$0) {
+      return a(this.g.get($$0));
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? a((ig.c<T>)this.d.get($$0)) : null;
+   }
+
+   @Override
+   public Optional<ig.c<T>> c(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? Optional.ofNullable((ig.c<T>)this.d.get($$0)) : Optional.empty();
+   }
+
+   @Override
+   public Optional<ig.c<T>> b(agl<T> $$0) {
+      return Optional.ofNullable(this.g.get($$0));
+   }
+
+   @Override
+   public ig<T> d(T $$0) {
+      ig.c<T> $$1 = this.h.get($$0);
+      return (ig<T>)($$1 != null ? $$1 : ig.a($$0));
+   }
+
+   ig.c<T> h(agl<T> $$0) {
+      return this.g.computeIfAbsent($$0, $$0x -> {
+         if (this.m != null) {
+            throw new IllegalStateException("This registry can't create new holders without value");
+         } else {
+            this.g($$0x);
+            return ig.c.a(this.o(), $$0x);
+         }
+      });
+   }
+
+   @Override
+   public int b() {
+      return this.g.size();
+   }
+
+   @Override
+   public Lifecycle e(T $$0) {
+      return this.i.get($$0);
+   }
+
+   @Override
+   public Lifecycle d() {
+      return this.j;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return Iterators.transform(this.a().iterator(), ig::a);
+   }
+
+   @Nullable
+   @Override
+   public T a(@Nullable agm $$0) {
+      ig.c<T> $$1 = this.f.get($$0);
+      return a($$1);
+   }
+
+   @Nullable
+   private static <T> T a(@Nullable ig.c<T> $$0) {
+      return $$0 != null ? $$0.a() : null;
+   }
+
+   @Override
+   public Set<agm> e() {
+      return Collections.unmodifiableSet(this.f.keySet());
+   }
+
+   @Override
+   public Set<agl<T>> f() {
+      return Collections.unmodifiableSet(this.g.keySet());
+   }
+
+   @Override
+   public Set<Entry<agl<T>, T>> g() {
+      return Collections.unmodifiableSet(Maps.transformValues(this.g, ig::a).entrySet());
+   }
+
+   @Override
+   public Stream<ig.c<T>> h() {
+      return this.a().stream();
+   }
+
+   @Override
+   public Stream<Pair<arz<T>, ik.c<T>>> i() {
+      return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
+   }
+
+   @Override
+   public ik.c<T> a(arz<T> $$0) {
+      ik.c<T> $$1 = this.k.get($$0);
+      if ($$1 == null) {
+         $$1 = this.d($$0);
+         Map<arz<T>, ik.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         $$2.put($$0, $$1);
+         this.k = $$2;
+      }
+
+      return $$1;
+   }
+
+   private ik.c<T> d(arz<T> $$0) {
+      return new ik.c<>(this.o(), $$0);
+   }
+
+   @Override
+   public Stream<arz<T>> j() {
+      return this.k.keySet().stream();
+   }
+
+   @Override
+   public boolean k() {
+      return this.g.isEmpty();
+   }
+
+   @Override
+   public Optional<ig.c<T>> a(atw $$0) {
+      return ac.b(this.a(), $$0);
+   }
+
+   @Override
+   public boolean c(agm $$0) {
+      return this.f.containsKey($$0);
+   }
+
+   @Override
+   public boolean c(agl<T> $$0) {
+      return this.g.containsKey($$0);
+   }
+
+   @Override
+   public is<T> l() {
+      if (this.l) {
+         return this;
+      } else {
+         this.l = true;
+         this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
+         List<agm> $$0 = this.g.entrySet().stream().filter($$0x -> !((ig.c)$$0x.getValue()).b()).map($$0x -> ((agl)$$0x.getKey()).a()).sorted().toList();
+         if (!$$0.isEmpty()) {
+            throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
+         } else {
+            if (this.m != null) {
+               if (!this.m.isEmpty()) {
+                  throw new IllegalStateException("Some intrusive holders were not registered: " + this.m.values());
+               }
+
+               this.m = null;
+            }
+
+            return this;
+         }
+      }
+   }
+
+   @Override
+   public ig.c<T> f(T $$0) {
+      if (this.m == null) {
+         throw new IllegalStateException("This registry can't create intrusive holders");
+      } else {
+         this.v();
+         return this.m.computeIfAbsent($$0, $$0x -> ig.c.a(this.p(), (T)$$0x));
+      }
+   }
+
+   @Override
+   public Optional<ik.c<T>> b(arz<T> $$0) {
+      return Optional.ofNullable(this.k.get($$0));
+   }
+
+   @Override
+   public void a(Map<arz<T>, List<ig<T>>> $$0) {
+      Map<ig.c<T>, List<arz<T>>> $$1 = new IdentityHashMap<>();
+      this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
+      $$0.forEach(($$1x, $$2x) -> {
+         for (ig<T> $$3x : $$2x) {
+            if (!$$3x.a(this.p())) {
+               throw new IllegalStateException("Can't create named set " + $$1x + " containing value " + $$3x + " from outside registry " + this);
+            }
+
+            if (!($$3x instanceof ig.c<T> $$4)) {
+               throw new IllegalStateException("Found direct holder " + $$3x + " value in tag " + $$1x);
+            }
+
+            $$1.get($$4).add($$1x);
+         }
+      });
+      Set<arz<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      if (!$$2.isEmpty()) {
+         b.warn(
+            "Not all defined tags for registry {} are present in data pack: {}",
+            this.c(),
+            $$2.stream().map($$0x -> $$0x.b().toString()).sorted().collect(Collectors.joining(", "))
+         );
+      }
+
+      Map<arz<T>, ik.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
+      $$1.forEach(ig.c::a);
+      this.k = $$3;
+   }
+
+   @Override
+   public void m() {
+      this.k.values().forEach($$0 -> $$0.b(List.of()));
+      this.g.values().forEach($$0 -> $$0.a(Set.of()));
+   }
+
+   @Override
+   public ih<T> n() {
+      this.v();
+      return new ih<T>() {
          @Override
-         public int b() {
-            return io.this.b();
-         }
-
-         @Override
-         public Iterator<ib<T>> iterator() {
-            return io.this.h().map($$0 -> (ib<T>)$$0).iterator();
-         }
-      };
-   }
-
-   ie<T> o();
-
-   id.c<T> p();
-
-   default id.c<T> u() {
-      return new id.c.a<T>() {
-         @Override
-         protected id.c<T> a() {
-            return io.this.p();
-         }
-
-         @Override
-         public Optional<ig.c<T>> a(arv<T> $$0) {
+         public Optional<ig.c<T>> a(agl<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public ig.c<T> b(arv<T> $$0) {
+         public ig.c<T> b(agl<T> $$0) {
+            return io.this.h($$0);
+         }
+
+         @Override
+         public Optional<ik.c<T>> a(arz<T> $$0) {
+            return Optional.of(this.b($$0));
+         }
+
+         @Override
+         public ik.c<T> b(arz<T> $$0) {
             return io.this.a($$0);
          }
       };
+   }
+
+   @Override
+   public ij<T> o() {
+      return this.p;
+   }
+
+   @Override
+   public ii.c<T> p() {
+      return this.p;
    }
 }

@@ -1,18 +1,14 @@
-public record aey() implements wk<aeu> {
-   public aey(tu $$0) {
-      this();
-   }
-
+public interface aey extends acq {
    @Override
-   public void a(tu $$0) {
+   default tx b() {
+      return tx.d;
    }
 
-   public void a(aeu $$0) {
-      $$0.a(this);
-   }
+   void a(afa var1);
 
-   @Override
-   public tt c() {
-      return tt.e;
-   }
+   void a(afb var1);
+
+   void a(aez var1);
+
+   void a(afc var1);
 }

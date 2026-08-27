@@ -17,43 +17,43 @@ public class ek implements ez<ek.a> {
       return new ek();
    }
 
-   public static ur a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static uv a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ek.a $$2 = (ek.a)$$0.getArgument($$1, ek.a.class);
       return $$2.a((du)$$0.getSource());
    }
 
-   public static void a(CommandContext<du> $$0, String $$1, Consumer<vh> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<du> $$0, String $$1, Consumer<vl> $$2) throws CommandSyntaxException {
       ek.a $$3 = (ek.a)$$0.getArgument($$1, ek.a.class);
       du $$4 = (du)$$0.getSource();
-      ur $$5 = $$3.a($$4);
-      ds $$6 = $$4.o();
-      vh $$7 = $$6.a($$1);
+      uv $$5 = $$3.a($$4);
+      ds $$6 = $$4.n();
+      vl $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, vh.a($$3.a).a($$5));
+         b($$2, $$4, vl.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<vh> $$0, du $$1, vh $$2) {
-      MinecraftServer $$3 = $$1.m();
-      CompletableFuture<amv> $$4 = a($$1, $$2);
-      ur $$5 = $$3.bi().decorate($$1.j(), $$2.c());
-      $$1.p().append($$4, $$3x -> {
-         vh $$4x = $$2.a($$5).a($$3x.e());
+   private static void a(Consumer<vl> $$0, du $$1, vl $$2) {
+      MinecraftServer $$3 = $$1.l();
+      CompletableFuture<amz> $$4 = a($$1, $$2);
+      uv $$5 = $$3.bi().decorate($$1.i(), $$2.c());
+      $$1.o().append($$4, $$3x -> {
+         vl $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<vh> $$0, du $$1, vh $$2) {
-      um $$3 = $$1.m().bi();
-      ur $$4 = $$3.decorate($$1.j(), $$2.c());
+   private static void b(Consumer<vl> $$0, du $$1, vl $$2) {
+      uq $$3 = $$1.l().bi();
+      uv $$4 = $$3.decorate($$1.i(), $$2.c());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<amv> a(du $$0, vh $$1) {
-      amf $$2 = $$0.j();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.b()) : CompletableFuture.completedFuture(amv.a($$1.b()));
+   private static CompletableFuture<amz> a(du $$0, vl $$1) {
+      amj $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.b()) : CompletableFuture.completedFuture(amz.a($$1.b()));
    }
 
    public ek.a a(StringReader $$0) throws CommandSyntaxException {
@@ -81,17 +81,17 @@ public class ek implements ez<ek.a> {
          return this.b;
       }
 
-      ur a(du $$0) throws CommandSyntaxException {
+      uv a(du $$0) throws CommandSyntaxException {
          return this.a($$0, $$0.c(2));
       }
 
-      public ur a(du $$0, boolean $$1) throws CommandSyntaxException {
+      public uv a(du $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            vf $$2 = ur.b(this.a.substring(0, this.b[0].a()));
+            vj $$2 = uv.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (ek.b $$4 : this.b) {
-               ur $$5 = $$4.a($$0);
+               uv $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -109,7 +109,7 @@ public class ek implements ez<ek.a> {
 
             return $$2;
          } else {
-            return ur.b(this.a);
+            return uv.b(this.a);
          }
       }
 
@@ -179,7 +179,7 @@ public class ek implements ez<ek.a> {
       }
 
       @Nullable
-      public ur a(du $$0) throws CommandSyntaxException {
+      public uv a(du $$0) throws CommandSyntaxException {
          return ge.a(this.c.b($$0));
       }
    }

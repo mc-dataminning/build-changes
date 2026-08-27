@@ -1,24 +1,24 @@
-public class adx implements wk<acl> {
-   private final int a;
+public class adx implements wo<acp> {
+   private final String a;
 
-   public adx(int $$0) {
+   public adx(String $$0) {
       this.a = $$0;
    }
 
-   public adx(tu $$0) {
-      this.a = $$0.readShort();
+   public adx(ty $$0) {
+      this.a = $$0.s();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.l(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public String a() {
       return this.a;
    }
 }

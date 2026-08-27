@@ -1,110 +1,213 @@
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cjh extends clz implements cnd {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cjh extends clj {
+   public static final String a = "BlockEntityTag";
+   public static final String b = "BlockStateTag";
+   @Deprecated
+   private final cvf c;
 
-   public cjh(cle.a $$0) {
-      super($$0);
+   public cjh(cvf $$0, clj.a $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public void a(clj $$0, csa $$1, blg $$2, int $$3) {
-      if ($$2 instanceof cdu $$4) {
-         boolean $$5 = $$4.fU().d || cpw.a(cpy.B, $$0) > 0;
-         clj $$6 = $$4.g($$0);
-         if (!$$6.b() || $$5) {
-            if ($$6.b()) {
-               $$6 = new clj(clm.os);
-            }
+   public bjb a(cny $$0) {
+      bjb $$1 = this.a(new cnw($$0));
+      if (!$$1.a() && this.u()) {
+         bjb $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
+         return $$2 == bjb.b ? bjb.c : $$2;
+      } else {
+         return $$1;
+      }
+   }
 
-            int $$7 = this.b($$0) - $$3;
-            float $$8 = a($$7);
-            if (!((double)$$8 < 0.1)) {
-               boolean $$9 = $$5 && $$6.a(clm.os);
-               if (!$$1.B) {
-                  cix $$10 = (cix)($$6.d() instanceof cix ? $$6.d() : clm.os);
-                  cea $$11 = $$10.a($$1, $$6, $$4);
-                  $$11.a($$4, $$4.dF(), $$4.dD(), 0.0F, $$8 * 3.0F, 1.0F);
-                  if ($$8 == 1.0F) {
-                     $$11.a(true);
+   public bjb a(cnw $$0) {
+      if (!this.e().a($$0.q().H())) {
+         return bjb.e;
+      } else if (!$$0.b()) {
+         return bjb.e;
+      } else {
+         cnw $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bjb.e;
+         } else {
+            dhn $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bjb.e;
+            } else if (!this.a($$1, $$2)) {
+               return bjb.e;
+            } else {
+               hx $$3 = $$1.a();
+               csf $$4 = $$1.q();
+               cdz $$5 = $$1.o();
+               clo $$6 = $$1.n();
+               dhn $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof amj) {
+                     al.y.a((amj)$$5, $$3, $$6);
                   }
-
-                  int $$12 = cpw.a(cpy.y, $$0);
-                  if ($$12 > 0) {
-                     $$11.h($$11.z() + (double)$$12 * 0.5 + 0.5);
-                  }
-
-                  int $$13 = cpw.a(cpy.z, $$0);
-                  if ($$13 > 0) {
-                     $$11.b($$13);
-                  }
-
-                  if (cpw.a(cpy.A, $$0) > 0) {
-                     $$11.g(100);
-                  }
-
-                  $$0.a(1, $$4, $$1x -> $$1x.d($$4.fp()));
-                  if ($$9 || $$4.fU().d && ($$6.a(clm.vh) || $$6.a(clm.vi))) {
-                     $$11.d = cea.a.c;
-                  }
-
-                  $$1.b($$11);
                }
 
-               $$1.a(null, $$4.ds(), $$4.du(), $$4.dy(), aqr.ar, aqs.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
-               if (!$$9 && !$$4.fU().d) {
+               dcr $$8 = $$7.w();
+               $$4.a($$5, $$3, this.a($$7), aqw.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(dlx.i, $$3, dlx.a.a($$5, $$7));
+               if ($$5 == null || !$$5.fU().d) {
                   $$6.h(1);
-                  if ($$6.b()) {
-                     $$4.fT().g($$6);
-                  }
                }
 
-               $$4.b(arb.c.b(this));
+               return bjb.a($$4.B);
             }
          }
       }
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   protected aqu a(dhn $$0) {
+      return $$0.w().e();
+   }
+
+   @Nullable
+   public cnw b(cnw $$0) {
+      return $$0;
+   }
+
+   protected boolean a(hx $$0, csf $$1, @Nullable cdz $$2, clo $$3, dhn $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected dhn c(cnw $$0) {
+      dhn $$1 = this.e().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dhn a(hx $$0, csf $$1, clo $$2, dhn $$3) {
+      dhn $$4 = $$3;
+      sd $$5 = $$2.v();
+      if ($$5 != null) {
+         sd $$6 = $$5.p("BlockStateTag");
+         dho<cvf, dhn> $$7 = $$3.b().n();
+
+         for (String $$8 : $$6.e()) {
+            diq<?> $$9 = $$7.a($$8);
+            if ($$9 != null) {
+               String $$10 = $$6.c($$8).t_();
+               $$4 = a($$4, $$9, $$10);
+            }
+         }
       }
 
-      return $$1;
+      if ($$4 != $$3) {
+         $$1.a($$0, $$4, 2);
+      }
+
+      return $$4;
    }
 
-   @Override
-   public int b(clj $$0) {
-      return 72000;
+   private static <T extends Comparable<T>> dhn a(dhn $$0, diq<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
    }
 
-   @Override
-   public cnc c(clj $$0) {
-      return cnc.e;
+   protected boolean b(cnw $$0, dhn $$1) {
+      cdz $$2 = $$0.o();
+      eke $$3 = $$2 == null ? eke.a() : eke.a($$2);
+      return (!this.d() || $$1.a((csi)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
    }
 
-   @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).b();
-      if (!$$1.fU().d && !$$4) {
-         return biy.d($$3);
+   protected boolean d() {
+      return true;
+   }
+
+   protected boolean a(cnw $$0, dhn $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(csf $$0, @Nullable cdz $$1, hx $$2, clo $$3) {
+      MinecraftServer $$4 = $$0.n();
+      if ($$4 == null) {
+         return false;
       } else {
-         $$1.c($$2);
-         return biy.b($$3);
+         sd $$5 = a($$3);
+         if ($$5 != null) {
+            dfi $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if (!$$0.B && $$6.u() && ($$1 == null || !$$1.gq())) {
+                  return false;
+               }
+
+               sd $$7 = $$6.q();
+               sd $$8 = $$7.h();
+               $$7.a($$5);
+               if (!$$7.equals($$8)) {
+                  $$6.a($$7);
+                  $$6.e();
+                  return true;
+               }
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public Predicate<clj> b() {
-      return c;
+   public String a() {
+      return this.e().h();
    }
 
    @Override
-   public int d() {
-      return 15;
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.e().a($$0, $$1, $$2, $$3);
+   }
+
+   public cvf e() {
+      return this.c;
+   }
+
+   public void a(Map<cvf, clj> $$0, clj $$1) {
+      $$0.put(this.e(), $$1);
+   }
+
+   @Override
+   public boolean aq_() {
+      return !(this.c instanceof dcd);
+   }
+
+   @Override
+   public void a(cas $$0) {
+      if (this.c instanceof dcd) {
+         clo $$1 = $$0.q();
+         sd $$2 = a($$1);
+         if ($$2 != null && $$2.b("Items", 9)) {
+            sj $$3 = $$2.c("Items", 10);
+            clq.a($$0, $$3.stream().map(sd.class::cast).map(clo::a));
+         }
+      }
+   }
+
+   @Nullable
+   public static sd a(clo $$0) {
+      return $$0.b("BlockEntityTag");
+   }
+
+   public static void a(clo $$0, dfk<?> $$1, sd $$2) {
+      if ($$2.g()) {
+         $$0.c("BlockEntityTag");
+      } else {
+         dfi.a($$2, $$1);
+         $$0.a("BlockEntityTag", $$2);
+      }
+   }
+
+   @Override
+   public cgi m() {
+      return this.e().m();
    }
 }

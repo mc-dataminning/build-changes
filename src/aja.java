@@ -1,38 +1,29 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class aja {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.op.failed"));
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ei.a()).suggests(($$0x, $$1) -> {
-            apu $$2 = ((du)$$0x.getSource()).m().ae();
-            return dy.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
-         }).executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
+            .then(dv.a("uuids").executes($$0x -> b((du)$$0x.getSource())))
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      apu $$2 = $$0.m().ae();
-      int $$3 = 0;
+   private static int a(du $$0) {
+      return a($$0, cdz::Q_);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> ur.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
+   private static int b(du $$0) {
+      return a($$0, $$0x -> uv.a("commands.list.nameAndId", $$0x.ad(), uv.a($$0x.fS().getId())));
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   private static int a(du $$0, Function<amj, uv> $$1) {
+      apy $$2 = $$0.l().ae();
+      List<amj> $$3 = $$2.t();
+      uv $$4 = uy.b($$3, $$1);
+      $$0.a(() -> uv.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

@@ -1,8 +1,20 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
 
-public record dxx(aph a, ip b, ebi c) {
-   public static dxx a(ame $$0) {
-      MinecraftServer $$1 = $$0.n();
-      return new dxx($$1.bc(), $$1.aZ(), $$1.aX());
+public enum dxx implements auk {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<dxx> e = auk.a(dxx::values);
+   private final String f;
+
+   private dxx(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

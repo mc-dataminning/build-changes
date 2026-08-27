@@ -1,19 +1,16 @@
-public record xm(int b, edh c, float d) implements xd {
-   public static final agi a = new agi("debug/path");
+public record xm() implements xh {
+   public static final agm a = new agm("debug/game_test_clear");
 
-   public xm(tu $$0) {
-      this($$0.readInt(), edh.b($$0), $$0.readFloat());
+   public xm(ty $$0) {
+      this();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(ty $$0) {
    }
 
    @Override
-   public agi a() {
+   public agm a() {
       return a;
    }
 }

@@ -1,20 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eaq extends ebe {
-   public static final Codec<eaq> a = Codec.unit(() -> eaq.b);
-   public static final eaq b = new eaq();
+public class eaq extends ebj {
+   public static final Codec<eaq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iu.a(kd.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eaq::new)
+   );
+   private final Optional<ik<cvf>> b;
+   private final float c;
+
+   public eaq(ik<cvf> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public eaq(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private eaq(Optional<ik<cvf>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
 
    @Nullable
    @Override
-   public ebh.c a(csd $$0, ht $$1, ht $$2, ebh.c $$3, ebh.c $$4, ebd $$5) {
-      ht $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(cvc.H);
-      return $$7 && !cva.a($$4.b().j($$0, $$6)) ? new ebh.c($$6, cvc.H.o(), $$4.c()) : $$4;
+   public ebm.c a(csi $$0, hx $$1, hx $$2, ebm.c $$3, ebm.c $$4, ebi $$5) {
+      atw $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected ebg<?> a() {
-      return ebg.m;
+   protected ebl<?> a() {
+      return ebl.f;
    }
 }

@@ -1,37 +1,33 @@
-public class fhi<T extends bkq> extends fiz<T> {
-   public fhi(fko $$0) {
-      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
+public class fhi<T extends byu> extends fif<T> {
+   private final fkt g = this.b.b("left_chest");
+   private final fkt h = this.b.b("right_chest");
+
+   public fhi(fkt $$0) {
+      super($$0);
    }
 
-   public static fku c() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      int $$2 = 12;
-      $$1.a(
-         "head",
-         fkt.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         fkq.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         fkt.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         fkq.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      fkt $$3 = fkt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, fkq.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$3, fkq.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, fkq.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$3, fkq.a(4.0F, 12.0F, -6.0F));
-      return fku.a($$0, 64, 32);
+   public static fkz c() {
+      flb $$0 = fif.a(fkx.a);
+      flc $$1 = $$0.a();
+      flc $$2 = $$1.a("body");
+      fky $$3 = fky.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$2.a("left_chest", $$3, fkv.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$2.a("right_chest", $$3, fkv.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      flc $$4 = $$1.a("head_parts").a("head");
+      fky $$5 = fky.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$4.a("left_ear", $$5, fkv.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$4.a("right_ear", $$5, fkv.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+      return fkz.a($$0, 64, 64);
    }
 
-   public fko d() {
-      return this.a;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.w()) {
+         this.g.k = true;
+         this.h.k = true;
+      } else {
+         this.g.k = false;
+         this.h.k = false;
+      }
    }
 }

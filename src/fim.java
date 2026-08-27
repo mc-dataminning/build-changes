@@ -1,15 +1,18 @@
-public class fim {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+import java.util.function.Function;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
-
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
-
-      return $$0 + $$2 * $$3;
+public abstract class fim<E extends bkv> extends fhu<E> {
+   public fim() {
+      this(frh::e);
    }
+
+   public fim(Function<agm, frh> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(eob $$0, eof $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   public abstract Iterable<fkt> d();
 }

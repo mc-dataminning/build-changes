@@ -1,44 +1,86 @@
-public class bit {
-   public static void a(csa $$0, ht $$1, biq $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+public class bit implements biu {
+   private final biu c;
+   private final biu d;
+
+   public bit(biu $$0, biu $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static void a(csa $$0, bkq $$1, biq $$2) {
-      a($$0, $$1.ds(), $$1.du(), $$1.dy(), $$2);
+   @Override
+   public int b() {
+      return this.c.b() + this.d.b();
    }
 
-   private static void a(csa $$0, double $$1, double $$2, double $$3, biq $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   @Override
+   public boolean aj_() {
+      return this.c.aj_() && this.d.aj_();
+   }
+
+   public boolean a(biu $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public clo a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public clo a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public clo b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, clo $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
+      } else {
+         this.c.a($$0, $$1);
       }
    }
 
-   public static void a(csa $$0, ht $$1, il<clj> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   public int al_() {
+      return this.c.al_();
    }
 
-   public static void a(csa $$0, double $$1, double $$2, double $$3, clj $$4) {
-      double $$5 = (double)bku.ad.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.b()) {
-         can $$11 = new can($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
    }
 
-   public static void a(dhi $$0, dhi $$1, csa $$2, ht $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof biq $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public boolean a(cdz $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(cdz $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(cdz $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, clo $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

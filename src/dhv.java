@@ -1,20 +1,18 @@
-public enum dhv implements aug {
-   a("head"),
-   b("foot");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dhv implements Predicate<dhn> {
+   private final cvf a;
 
-   private dhv(String $$0) {
-      this.c = $$0;
+   public dhv(cvf $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dhv a(cvf $$0) {
+      return new dhv($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dhn $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

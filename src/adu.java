@@ -1,55 +1,59 @@
-import javax.annotation.Nullable;
+public class adu implements wo<acp> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private final float c;
+   private final float d;
+   private final boolean e;
+   private final boolean f;
 
-public class adu implements wk<acl> {
-   private final adu.a a;
-   @Nullable
-   private final agi b;
-
-   public adu(adu.a $$0, @Nullable agi $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public adu(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static adu a(af $$0) {
-      return new adu(adu.a.a, $$0.a());
-   }
-
-   public static adu a() {
-      return new adu(adu.a.b, null);
-   }
-
-   public adu(tu $$0) {
-      this.a = $$0.b(adu.a.class);
-      if (this.a == adu.a.a) {
-         this.b = $$0.t();
-      } else {
-         this.b = null;
-      }
+   public adu(ty $$0) {
+      this.c = $$0.readFloat();
+      this.d = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) > 0;
+      this.f = ($$1 & 2) > 0;
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      if (this.a == adu.a.a) {
-         $$0.a(this.b);
+   public void a(ty $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
       }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public adu.a d() {
-      return this.a;
+   public float a() {
+      return this.c;
    }
 
-   @Nullable
-   public agi e() {
-      return this.b;
+   public float d() {
+      return this.d;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

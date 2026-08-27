@@ -1,143 +1,64 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class zm {
-   private static final int a = 2097152;
-   private final rz b;
-   private final byte[] c;
-   private final List<zm.a> d;
+public class zm implements wo<yh> {
+   public static final zm.a a = new zm.a(0);
+   public static final zm.a b = new zm.a(1);
+   public static final zm.a c = new zm.a(2);
+   public static final zm.a d = new zm.a(3);
+   public static final zm.a e = new zm.a(4);
+   public static final zm.a f = new zm.a(5);
+   public static final zm.a g = new zm.a(6);
+   public static final zm.a h = new zm.a(7);
+   public static final zm.a i = new zm.a(8);
+   public static final zm.a j = new zm.a(9);
+   public static final zm.a k = new zm.a(10);
+   public static final zm.a l = new zm.a(11);
+   public static final zm.a m = new zm.a(12);
+   public static final zm.a n = new zm.a(13);
+   public static final int o = 0;
+   public static final int p = 101;
+   public static final int q = 102;
+   public static final int r = 103;
+   public static final int s = 104;
+   private final zm.a t;
+   private final float u;
 
-   public zm(djp $$0) {
-      this.b = new rz();
-
-      for (Entry<dmr.a, dmr> $$1 : $$0.e()) {
-         if ($$1.getKey().b()) {
-            this.b.a($$1.getKey().a(), new sg($$1.getValue().a()));
-         }
-      }
-
-      this.c = new byte[a($$0)];
-      a(new tu(this.c()), $$0);
-      this.d = Lists.newArrayList();
-
-      for (Entry<ht, dfd> $$2 : $$0.G().entrySet()) {
-         this.d.add(zm.a.a($$2.getValue()));
-      }
+   public zm(zm.a $$0, float $$1) {
+      this.t = $$0;
+      this.u = $$1;
    }
 
-   public zm(tu $$0, int $$1, int $$2) {
-      this.b = $$0.q();
-      if (this.b == null) {
-         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
-      } else {
-         int $$3 = $$0.n();
-         if ($$3 > 2097152) {
-            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
-         } else {
-            this.c = new byte[$$3];
-            $$0.b(this.c);
-            this.d = $$0.a(zm.a::new);
-         }
-      }
+   public zm(ty $$0) {
+      this.t = (zm.a)zm.a.a.get($$0.readUnsignedByte());
+      this.u = $$0.readFloat();
    }
 
-   public void a(tu $$0) {
-      $$0.a((sw)this.b);
-      $$0.c(this.c.length);
-      $$0.c(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+   @Override
+   public void a(ty $$0) {
+      $$0.k(this.t.b);
+      $$0.a(this.u);
    }
 
-   private static int a(djp $$0) {
-      int $$1 = 0;
-
-      for (djq $$2 : $$0.d()) {
-         $$1 += $$2.j();
-      }
-
-      return $$1;
+   public void a(yh $$0) {
+      $$0.a(this);
    }
 
-   private ByteBuf c() {
-      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
-      $$0.writerIndex(0);
-      return $$0;
+   public zm.a a() {
+      return this.t;
    }
 
-   public static void a(tu $$0, djp $$1) {
-      for (djq $$2 : $$1.d()) {
-         $$2.c($$0);
-      }
+   public float d() {
+      return this.u;
    }
 
-   public Consumer<zm.b> a(int $$0, int $$1) {
-      return $$2 -> this.a($$2, $$0, $$1);
-   }
-
-   private void a(zm.b $$0, int $$1, int $$2) {
-      int $$3 = 16 * $$1;
-      int $$4 = 16 * $$2;
-      ht.a $$5 = new ht.a();
-
-      for (zm.a $$6 : this.d) {
-         int $$7 = $$3 + iu.b($$6.a >> 4);
-         int $$8 = $$4 + iu.b($$6.a);
-         $$5.d($$7, $$6.b, $$8);
-         $$0.accept($$5, $$6.c, $$6.d);
-      }
-   }
-
-   public tu a() {
-      return new tu(Unpooled.wrappedBuffer(this.c));
-   }
-
-   public rz b() {
-      return this.b;
-   }
-
-   static class a {
-      final int a;
+   public static class a {
+      static final Int2ObjectMap<zm.a> a = new Int2ObjectOpenHashMap();
       final int b;
-      final dff<?> c;
-      @Nullable
-      final rz d;
 
-      private a(int $$0, int $$1, dff<?> $$2, @Nullable rz $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
       }
-
-      private a(tu $$0) {
-         this.a = $$0.readByte();
-         this.b = $$0.readShort();
-         this.c = $$0.a(jy.l);
-         this.d = $$0.q();
-      }
-
-      void a(tu $$0) {
-         $$0.k(this.a);
-         $$0.l(this.b);
-         $$0.a(jy.l, this.c);
-         $$0.a((sw)this.d);
-      }
-
-      static zm.a a(dfd $$0) {
-         rz $$1 = $$0.aw_();
-         ht $$2 = $$0.p();
-         int $$3 = iu.b($$2.u()) << 4 | iu.b($$2.w());
-         return new zm.a($$3, $$2.v(), $$0.u(), $$1.g() ? null : $$1);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(ht var1, dff<?> var2, @Nullable rz var3);
    }
 }

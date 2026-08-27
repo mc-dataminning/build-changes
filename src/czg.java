@@ -1,76 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czg extends cva implements dca {
+public class czg extends cvf implements cxx, cyn {
    public static final MapCodec<czg> a = b(czg::new);
-   public static final dhz b = dhy.j;
-   public static final dhz c = dhy.C;
-   protected static final ekn d = ekk.a(cva.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cva.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final ekn e = ekk.a(cva.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cva.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   public static final dil<id> b = did.T;
 
    @Override
    public MapCodec<czg> a() {
       return a;
    }
 
-   public czg(dhh.d $$0) {
+   protected czg(dhm.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, id.k));
    }
 
-   @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      ecs $$1 = $$0.q().b_($$0.a());
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b);
+   }
 
-      for (hx $$2 : $$0.f()) {
-         if ($$2.o() == hx.a.b) {
-            dhi $$3 = this.o().a(b, Boolean.valueOf($$2 == hx.b));
-            if ($$3.a((csd)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == ect.c));
-            }
-         }
+   @Override
+   public dhn a(dhn $$0, dbr $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dhn a(dhn $$0, dab $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dhn a(cnw $$0) {
+      ib $$1 = $$0.k();
+      ib $$2;
+      if ($$1.o() == ib.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = ib.b;
       }
 
-      return null;
+      return this.o().a(b, id.a($$1, $$2));
    }
 
    @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      return $$0.c(b) ? e : d;
+   public dfi a(hx $$0, dhn $$1) {
+      return new dgi($$0, $$1);
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      hx $$3 = h($$0).g();
-      return cva.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static hx h(dhi $$0) {
-      return $$0.c(b) ? hx.a : hx.b;
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      dfi $$6 = $$1.c_($$2);
+      if ($$6 instanceof dgi && $$3.gq()) {
+         $$3.a((dgi)$$6);
+         return bjb.a($$1.B);
+      } else {
+         return bjb.d;
       }
-
-      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
+   public static boolean a(ebm.c $$0, ebm.c $$1) {
+      ib $$2 = h($$0.b());
+      ib $$3 = h($$1.b());
+      ib $$4 = n($$0.b());
+      ib $$5 = n($$1.b());
+      dgi.a $$6 = dgi.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dgi.a.b : dgi.a.a);
+      boolean $$7 = $$6 == dgi.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
-      return false;
+   public static ib h(dhn $$0) {
+      return $$0.c(b).a();
+   }
+
+   public static ib n(dhn $$0) {
+      return $$0.c(b).b();
    }
 }

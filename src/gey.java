@@ -1,31 +1,29 @@
-public class gey extends gel {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final bzd p;
+public class gey extends geq {
+   private final bkv n;
 
-   public gey(bzd $$0) {
-      super(aqr.xc, aqs.g, gfc.t());
-      this.p = $$0;
-      this.k = gfc.a.b;
-      this.i = false;
-      this.j = 0;
+   public gey(aqu $$0, aqw $$1, float $$2, float $$3, bkv $$4, long $$5) {
+      super($$0, $$1, atw.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.ds());
+      this.g = (double)((float)this.n.du());
+      this.h = (double)((float)this.n.dy());
    }
 
    @Override
    public boolean s() {
-      return !this.p.aU();
+      return !this.n.aU();
    }
 
    @Override
    public void q() {
-      if (!this.p.dI() && this.p.q() == null && this.p.gl()) {
-         this.f = (double)((float)this.p.ds());
-         this.g = (double)((float)this.p.du());
-         this.h = (double)((float)this.p.dy());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dI()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.ds());
+         this.g = (double)((float)this.n.du());
+         this.h = (double)((float)this.n.dy());
       }
    }
 }

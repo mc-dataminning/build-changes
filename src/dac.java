@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dac extends dcq {
+public class dac extends cvf implements cvi {
    public static final MapCodec<dac> a = b(dac::new);
 
    @Override
@@ -8,15 +8,22 @@ public class dac extends dcq {
       return a;
    }
 
-   public dac(dhh.d $$0) {
+   public dac(dhm.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(js.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      $$0.I_().c(kd.au).flatMap($$0x -> $$0x.b(px.n)).ifPresent($$3x -> ((dpn)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
    }
 }

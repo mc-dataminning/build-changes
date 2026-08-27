@@ -1,5 +1,8 @@
-public class cka extends ckz implements ckb {
-   public cka(int $$0, String $$1, cle.a $$2) {
-      super($$0, $$1, $$2);
+import javax.annotation.Nullable;
+
+public interface cka {
+   default void a(@Nullable cdz $$0, csf $$1, clo $$2, hx $$3) {
    }
+
+   boolean a(@Nullable cdz var1, csf var2, hx var3, @Nullable ejv var4);
 }

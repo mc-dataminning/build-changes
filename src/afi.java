@@ -1,14 +1,8 @@
-public record afi(afj a) implements wk<afg> {
-   public afi(tu $$0) {
-      this($$0.a(afj.a));
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a(tu $$0) {
-      $$0.a(afj.a, this.a);
-   }
-
-   public void a(afg $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afi {
 }

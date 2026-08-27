@@ -1,13 +1,13 @@
-import javax.annotation.Nullable;
+public interface blw extends blv {
+   void b(int var1);
 
-public interface blw {
-   boolean g();
+   boolean a();
 
-   void a(@Nullable aqs var1);
+   void c(int var1);
 
-   default aqq Y_() {
-      return aqr.lI;
+   void b();
+
+   default int ad_() {
+      return 0;
    }
-
-   boolean i();
 }

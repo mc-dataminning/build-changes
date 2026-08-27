@@ -1,55 +1,20 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class eoz extends eps implements epm {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class eoz {
+   private final Gson a = new Gson();
 
-   public String a() {
-      return this.a;
+   public String a(epr $$0) {
+      return this.a.toJson($$0);
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
    }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   @Nullable
+   public <T extends epr> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

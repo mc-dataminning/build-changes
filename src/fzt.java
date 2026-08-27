@@ -1,34 +1,36 @@
-public class fzt extends gaf<bys, fia<bys>> {
-   private final fia<bys> a;
+public class fzt<T extends bll, M extends fhu<T>> extends gak<T, M> {
+   private static final agm a = new agm("textures/entity/elytra.png");
+   private final fhr<T> b;
 
-   public fzt(fxs<bys, fia<bys>> $$0, fkk $$1) {
+   public fzt(fxx<T, M> $$0, fkp $$1) {
       super($$0);
-      this.a = new fia<>($$1.a(fkn.ak));
+      this.b = new fhr<>($$1.a(fks.Q));
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bys $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      clj $$10 = $$3.u();
-      if ($$10.d() instanceof ckz) {
-         ckz $$11 = (ckz)$$10.d();
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$13;
-         float $$14;
-         float $$15;
-         if ($$11 instanceof cka) {
-            int $$12 = ((cka)$$11).e_($$10);
-            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
-            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
-            $$15 = (float)($$12 & 0xFF) / 255.0F;
+   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      clo $$10 = $$3.c(bla.e);
+      if ($$10.a(clr.nS)) {
+         agm $$13;
+         if ($$3 instanceof fpy $$11) {
+            gcz $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(cea.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
+            }
          } else {
-            $$13 = 1.0F;
-            $$14 = 1.0F;
-            $$15 = 1.0F;
+            $$13 = a;
          }
 
-         eoa $$19 = $$1.getBuffer(frc.e($$11.h()));
-         this.a.a($$0, $$19, $$2, gbl.d, $$13, $$14, $$15, 1.0F);
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         eof $$17 = fxa.a($$1, frh.a($$13), false, $$10.B());
+         this.b.a($$0, $$17, $$2, gbq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
    }
 }

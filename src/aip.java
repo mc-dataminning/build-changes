@@ -1,35 +1,162 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class aip {
-   public static void a(CommandDispatcher<du> $$0) {
-      final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
-      crw.a(
-         new crw.c() {
-            @Override
-            public <T extends crw.g<T>> void a(crw.e<T> $$0, crw.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> aip.a((du)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> aip.a($$1xxx, $$0)))
-               );
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> uv.b("commands.fill.toobig", $$0, $$1));
+   static final fh b = new fh(cvh.a.o(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(uv.c("commands.fill.failed"));
+
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("fill").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("from", fm.a())
+                  .then(
+                     dv.a("to", fm.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                                "block", fj.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), aip.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)dv.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                            fj.a($$0x, "block"),
+                                                            aip.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dv.a("filter", fi.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                               fj.a($$0x, "block"),
+                                                               aip.a.a,
+                                                               fi.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                      fj.a($$0x, "block"),
+                                                      aip.a.a,
+                                                      $$0xx -> $$0xx.c().t($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("outline")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), aip.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("hollow")
+                                       .executes(
+                                          $$0x -> a((du)$$0x.getSource(), dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), aip.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("destroy")
+                                    .executes($$0x -> a((du)$$0x.getSource(), dxe.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), aip.a.d, null))
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(du $$0, dxe $$1, fh $$2, aip.a $$3, @Nullable Predicate<dhr> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().Y().c(csb.z);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
+      } else {
+         List<hx> $$7 = Lists.newArrayList();
+         ami $$8 = $$0.e();
+         int $$9 = 0;
+
+         for (hx $$10 : hx.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new dhr($$8, $$10, true))) {
+               fh $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dfi $$12 = $$8.c_($$10);
+                  bis.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
             }
          }
-      );
-      $$0.register($$1);
+
+         for (hx $$13 : $$7) {
+            cvf $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> uv.a("commands.fill.success", $$15), true);
+            return $$9;
+         }
+      }
    }
 
-   static <T extends crw.g<T>> int a(CommandContext<du> $$0, crw.e<T> $$1) {
-      du $$2 = (du)$$0.getSource();
-      T $$3 = $$2.m().aK().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> ur.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? aip.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
 
-   static <T extends crw.g<T>> int a(du $$0, crw.e<T> $$1) {
-      T $$2 = $$0.m().aK().a($$1);
-      $$0.a(() -> ur.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+      public final aka.a e;
+
+      private a(aka.a $$0) {
+         this.e = $$0;
+      }
    }
 }

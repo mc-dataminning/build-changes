@@ -1,52 +1,42 @@
-public class ezw extends fau {
-   private static final ur a = ur.c("gui.toMenu");
-   private static final ur b = ur.c("gui.toTitle");
-   private final fau c;
-   private final ur k;
-   private final ur l;
-   private final eyn m = eyn.d();
+public class ezw extends faz {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final uv c = uv.c("credits_and_attribution.screen.title");
+   private static final uv k = uv.c("credits_and_attribution.button.credits");
+   private static final uv l = uv.c("credits_and_attribution.button.attribution");
+   private static final uv m = uv.c("credits_and_attribution.button.licenses");
+   private final faz n;
+   private final eyo o = new eyo(this);
 
-   public ezw(fau $$0, ur $$1, ur $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public ezw(fau $$0, ur $$1, ur $$2, ur $$3) {
-      super($$1);
-      this.c = $$0;
-      this.k = $$2;
-      this.l = $$3;
+   public ezw(faz $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void aP_() {
-      this.m.c().b().a(10);
-      this.m.a(new ewg(this.e, this.i));
-      this.m.a(new evt(this.k, this.i).j(this.g - 50).b(true));
-      euz $$0;
-      if (this.f.C()) {
-         $$0 = euz.a(this.l, $$0x -> this.f.a(this.c)).a();
-      } else {
-         $$0 = euz.a(b, $$0x -> this.f.a(new faz())).a();
-      }
-
-      this.m.a($$0);
-      this.m.a();
-      this.m.a(this::d);
-      this.c();
+   protected void aQ_() {
+      this.o.a(new ewl(this.m(), this.i));
+      eys $$0 = this.o.c(eys.d()).a(8);
+      $$0.c().b();
+      $$0.a(eve.a(k, $$0x -> this.l()).a(210).a());
+      $$0.a(eve.a(l, ezr.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(eve.a(m, ezr.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(eve.a(uu.d, $$0x -> this.aG_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
    protected void c() {
-      eyh.a(this.m, this.s());
+      this.o.a();
+   }
+
+   private void l() {
+      this.f.a(new fbh(false, () -> this.f.a(this)));
    }
 
    @Override
-   public ur h() {
-      return uq.a(this.e, this.k);
-   }
-
-   @Override
-   public boolean aE_() {
-      return false;
+   public void aG_() {
+      this.f.a(this.n);
    }
 }

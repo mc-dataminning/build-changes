@@ -1,31 +1,53 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class dze {
+   public static class a extends dxq {
+      public a(hx $$0) {
+         super(dyd.aa, 0, new dxe($$0));
+      }
 
-public class dze extends dxh {
-   public static final Codec<dze> d = a(dze::new);
+      public a(sd $$0) {
+         super(dyd.aa, $$0);
+      }
 
-   public dze(dxh.c $$0) {
-      super($$0);
-   }
+      @Override
+      protected void a(dyc $$0, sd $$1) {
+      }
 
-   @Override
-   public Optional<dxh.b> a(dxh.a $$0) {
-      dbm $$1 = dbm.a($$0.f());
-      ht $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dxh.b($$2, (Consumer<dxz>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
+      @Override
+      public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, hx $$6) {
+         int $$7 = $$0.a(dmw.a.c, this.f.h(), this.f.j());
+         hx.a $$8 = new hx.a(this.f.h(), $$7, this.f.j());
 
-   private void a(dxz $$0, ht $$1, dbm $$2, dxh.a $$3) {
-      List<dxl> $$4 = Lists.newArrayList();
-      dzd.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
+         while ($$8.v() > $$0.J_()) {
+            dhn $$9 = $$0.a_($$8);
+            dhn $$10 = $$0.a_($$8.d());
+            if ($$10 == cvh.aV.o() || $$10 == cvh.b.o() || $$10 == cvh.g.o() || $$10 == cvh.c.o() || $$10 == cvh.e.o()) {
+               dhn $$11 = !$$9.i() && !this.b($$9) ? $$9 : cvh.I.o();
 
-   @Override
-   public dxq<?> e() {
-      return dxq.c;
+               for (ib $$12 : ib.values()) {
+                  hx $$13 = $$8.a($$12);
+                  dhn $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     hx $$15 = $$13.d();
+                     dhn $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ib.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new dxe($$8);
+               this.a($$0, $$4, $$3, $$8, efa.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
+      }
+
+      private boolean b(dhn $$0) {
+         return $$0 == cvh.G.o() || $$0 == cvh.H.o();
+      }
    }
 }

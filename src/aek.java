@@ -1,29 +1,40 @@
-public enum aek {
-   a,
-   b;
+public class aek implements wo<acp> {
+   private final ejv a;
+   private final bja b;
+   private final int c;
 
-   private static final int c = 1;
-   private static final int d = 2;
-
-   public static aek a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public aek(bja $$0, ejv $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+   public aek(ty $$0) {
+      this.b = $$0.b(bja.class);
+      this.a = $$0.y();
+      this.c = $$0.n();
    }
 
-   public tt b() {
-      return switch (this) {
-         case a -> tt.c;
-         case b -> tt.d;
-      };
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.b);
+      $$0.a(this.a);
+      $$0.c(this.c);
+   }
+
+   public void a(acp $$0) {
+      $$0.a(this);
+   }
+
+   public bja a() {
+      return this.b;
+   }
+
+   public ejv d() {
+      return this.a;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

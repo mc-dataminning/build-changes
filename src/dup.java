@@ -1,36 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.DataResult;
 
-public class dup extends dur {
-   public static final Codec<dup> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dup::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class dup extends duf {
+   public static final Codec<dup> b = bhl.b(dhn.b).comapFlatMap(dup::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bhl<dhn> c;
 
-   public dup(float $$0) {
-      this.b = $$0;
+   private static DataResult<dup> a(bhl<dhn> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dup($$0));
+   }
+
+   public dup(bhl<dhn> $$0) {
+      this.c = $$0;
+   }
+
+   public dup(bhl.a<dhn> $$0) {
+      this($$0.a());
    }
 
    @Override
-   protected dus<?> a() {
-      return dus.c;
+   protected dug<?> a() {
+      return dug.b;
    }
 
    @Override
-   public void a(dur.a $$0) {
-      ats $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<ht> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (hx $$3x : hx.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  hx $$4 = $$3x.g();
-                  ht $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, cvc.fC.o().a(cwh.c, Integer.valueOf($$1.a(3))).a(cwh.aE, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public dhn a(atw $$0, hx $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

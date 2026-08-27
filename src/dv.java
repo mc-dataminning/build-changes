@@ -24,7 +24,7 @@ import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class dv {
-   private static final ThreadLocal<gn<du>> f = new ThreadLocal<>();
+   private static final ThreadLocal<go<du>> f = new ThreadLocal<>();
    private static final Logger g = LogUtils.getLogger();
    public static final int a = 0;
    public static final int b = 1;
@@ -34,106 +34,106 @@ public class dv {
    private final CommandDispatcher<du> h = new CommandDispatcher();
 
    public dv(dv.a $$0, dp $$1) {
-      ahn.a(this.h);
-      aho.a(this.h, $$1);
-      aii.a(this.h, $$1);
-      ahs.a(this.h);
-      ahu.a(this.h, $$1);
-      ahv.a(this.h, $$1);
-      ahw.a(this.h, $$1);
-      akv.a(this.h);
-      ahx.a(this.h);
-      ahz.a(this.h);
+      ahr.a(this.h);
+      ahs.a(this.h, $$1);
+      aim.a(this.h, $$1);
+      ahw.a(this.h);
+      ahy.a(this.h, $$1);
+      ahz.a(this.h, $$1);
+      aia.a(this.h, $$1);
+      akz.a(this.h);
+      aib.a(this.h);
       aid.a(this.h);
-      aie.a(this.h);
-      aif.a(this.h, $$1);
-      aig.a(this.h);
-      aih.a(this.h, $$1);
-      aij.a(this.h);
+      aih.a(this.h);
+      aii.a(this.h);
+      aij.a(this.h, $$1);
+      aik.a(this.h);
       ail.a(this.h, $$1);
-      aik.a(this.h, $$1);
-      aim.a(this.h);
       ain.a(this.h);
-      aio.a(this.h);
-      aip.a(this.h);
-      aiq.a(this.h, $$1);
+      aip.a(this.h, $$1);
+      aio.a(this.h, $$1);
+      aiq.a(this.h);
       air.a(this.h);
-      ais.a(this.h, $$1);
-      aiu.a(this.h);
+      ais.a(this.h);
+      ait.a(this.h);
+      aiu.a(this.h, $$1);
       aiv.a(this.h);
-      aiw.a(this.h);
-      aix.a(this.h, $$1);
-      aiy.a(this.h, $$1);
+      aiw.a(this.h, $$1);
+      aiy.a(this.h);
       aiz.a(this.h);
-      ajd.a(this.h, $$1);
-      ajf.a(this.h);
-      ajg.a(this.h);
+      aja.a(this.h);
+      ajb.a(this.h, $$1);
+      ajc.a(this.h, $$1);
+      ajd.a(this.h);
+      ajh.a(this.h, $$1);
       ajj.a(this.h);
-      ajl.a(this.h);
       ajk.a(this.h);
       ajn.a(this.h);
+      ajp.a(this.h);
       ajo.a(this.h);
+      ajr.a(this.h);
       ajs.a(this.h);
-      ajt.a(this.h);
-      aju.a(this.h);
-      ajv.a(this.h, $$0 != dv.a.c);
-      ajw.a(this.h, $$1);
+      ajw.a(this.h);
+      ajx.a(this.h);
       ajy.a(this.h);
-      ajz.a(this.h);
-      akb.a(this.h);
+      ajz.a(this.h, $$0 != dv.a.c);
+      aka.a(this.h, $$1);
       akc.a(this.h);
-      ake.a(this.h);
-      akf.a(this.h, $$1);
+      akd.a(this.h);
+      akf.a(this.h);
       akg.a(this.h);
-      akh.a(this.h);
       aki.a(this.h);
-      akj.a(this.h);
+      akj.a(this.h, $$1);
       akk.a(this.h);
       akl.a(this.h);
       akm.a(this.h);
       akn.a(this.h);
       ako.a(this.h);
+      akp.a(this.h);
       akq.a(this.h);
+      akr.a(this.h);
       aks.a(this.h);
-      if (bfu.e.d()) {
-         ait.a(this.h);
+      aku.a(this.h);
+      akw.a(this.h);
+      if (bfy.e.d()) {
+         aix.a(this.h);
       }
 
       if (aa.aT) {
-         rp.a(this.h);
+         rt.a(this.h);
+         ajq.a(this.h);
          ajm.a(this.h);
-         aji.a(this.h);
-         aic.a(this.h);
-         aib.a(this.h);
-         akp.a(this.h);
-         aka.a(this.h);
+         aig.a(this.h);
+         aif.a(this.h);
+         akt.a(this.h);
+         ake.a(this.h);
          if ($$0.e) {
-            aia.a(this.h);
+            aie.a(this.h);
          }
       }
 
       if ($$0.e) {
-         ahp.a(this.h);
-         ahq.a(this.h);
-         ahr.a(this.h);
-         ahy.a(this.h);
-         aja.a(this.h);
-         ajb.a(this.h);
-         ajc.a(this.h);
+         aht.a(this.h);
+         ahu.a(this.h);
+         ahv.a(this.h);
+         aic.a(this.h);
          aje.a(this.h);
-         ajp.a(this.h);
-         ajq.a(this.h);
-         ajr.a(this.h);
-         ajx.a(this.h);
-         akd.a(this.h);
-         akr.a(this.h);
+         ajf.a(this.h);
+         ajg.a(this.h);
+         aji.a(this.h);
+         ajt.a(this.h);
+         aju.a(this.h);
+         ajv.a(this.h);
+         akb.a(this.h);
+         akh.a(this.h);
+         akv.a(this.h);
       }
 
       if ($$0.d) {
-         ajh.a(this.h);
+         ajl.a(this.h);
       }
 
-      this.h.setConsumer(dw.a_());
+      this.h.setConsumer(dw.b_());
    }
 
    public static <S> ParseResults<S> a(ParseResults<S> $$0, UnaryOperator<S> $$1) {
@@ -149,17 +149,17 @@ public class dv {
 
    public void a(ParseResults<du> $$0, String $$1) {
       du $$2 = (du)$$0.getContext().getSource();
-      $$2.m().aR().a(() -> "/" + $$1);
+      $$2.l().aR().a(() -> "/" + $$1);
       ContextChain<du> $$3 = a($$0, $$1, $$2);
 
       try {
          if ($$3 != null) {
-            a($$2, $$3x -> gn.a($$3x, $$1, $$3, $$2));
+            a($$2, $$3x -> go.a($$3x, $$1, $$3, $$2, dq.a));
          }
       } catch (dr var13) {
          $$2.b(var13.a());
       } catch (Exception var14) {
-         vf $$6 = ur.b(var14.getMessage() == null ? var14.getClass().getName() : var14.getMessage());
+         vj $$6 = uv.b(var14.getMessage() == null ? var14.getClass().getName() : var14.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var14);
             StackTraceElement[] $$7 = var14.getStackTrace();
@@ -169,13 +169,13 @@ public class dv {
             }
          }
 
-         $$2.b(ur.c("command.failed").a($$1x -> $$1x.a(new ux(ux.a.a, $$6))));
+         $$2.b(uv.c("command.failed").a($$1x -> $$1x.a(new vb(vb.a.a, $$6))));
          if (aa.aT) {
-            $$2.b(ur.b(ac.c(var14)));
+            $$2.b(uv.b(ac.c(var14)));
             g.error("'/{}' threw an exception", $$1, var14);
          }
       } finally {
-         $$2.m().aR().c();
+         $$2.l().aR().c();
       }
    }
 
@@ -186,21 +186,21 @@ public class dv {
          return (ContextChain<du>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(uu.a(var7.getRawMessage()));
+         $$2.b(uy.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            vf $$5 = ur.i().a(n.h).a($$1x -> $$1x.a(new up(up.a.d, "/" + $$1)));
+            vj $$5 = uv.i().a(n.h).a($$1x -> $$1x.a(new ut(ut.a.d, "/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(uq.t);
+               $$5.b(uu.t);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               ur $$6 = ur.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               uv $$6 = uv.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(ur.c("command.context.here").a(n.m, n.u));
+            $$5.b(uv.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -208,15 +208,15 @@ public class dv {
       }
    }
 
-   public static void a(du $$0, Consumer<gn<du>> $$1) {
-      MinecraftServer $$2 = $$0.m();
-      gn<du> $$3 = f.get();
+   public static void a(du $$0, Consumer<go<du>> $$1) {
+      MinecraftServer $$2 = $$0.l();
+      go<du> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aK().c(crw.x));
-         int $$6 = $$2.aK().c(crw.y);
+         int $$5 = Math.max(1, $$2.aK().c(csb.x));
+         int $$6 = $$2.aK().c(csb.y);
 
-         try (gn<du> $$7 = new gn<>($$5, $$6, $$2.aR())) {
+         try (go<du> $$7 = new go<>($$5, $$6, $$2.aR())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -228,12 +228,12 @@ public class dv {
       }
    }
 
-   public void a(amf $$0) {
+   public void a(amj $$0) {
       Map<CommandNode<du>, CommandNode<dy>> $$1 = Maps.newHashMap();
       RootCommandNode<dy> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.de(), $$1);
-      $$0.c.b(new yv($$2));
+      $$0.c.b(new yz($$2));
    }
 
    private void a(CommandNode<du> $$0, CommandNode<dy> $$1, du $$2, Map<CommandNode<du>, CommandNode<dy>> $$3) {
@@ -248,7 +248,7 @@ public class dv {
             if ($$5 instanceof RequiredArgumentBuilder) {
                RequiredArgumentBuilder<dy, ?> $$6 = (RequiredArgumentBuilder<dy, ?>)$$5;
                if ($$6.getSuggestionsProvider() != null) {
-                  $$6.suggests(hj.b($$6.getSuggestionsProvider()));
+                  $$6.suggests(hn.b($$6.getSuggestionsProvider()));
                }
             }
 
@@ -309,21 +309,21 @@ public class dv {
       }
    }
 
-   public static dp a(final id.b $$0) {
+   public static dp a(final ii.b $$0) {
       return new dp() {
          @Override
-         public <T> id<T> a(agh<? extends io<T>> $$0x) {
-            final id.c<T> $$1 = $$0.b($$0);
-            return new id.a<T>($$1) {
+         public <T> ii<T> a(agl<? extends is<T>> $$0x) {
+            final ii.c<T> $$1 = $$0.b($$0);
+            return new ii.a<T>($$1) {
                @Override
-               public Optional<ig.c<T>> a(arv<T> $$0x) {
+               public Optional<ik.c<T>> a(arz<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public ig.c<T> b(arv<T> $$0x) {
-                  Optional<ig.c<T>> $$1 = $$1.a($$0);
-                  return $$1.orElseGet(() -> ig.a($$1, $$0));
+               public ik.c<T> b(arz<T> $$0x) {
+                  Optional<ik.c<T>> $$1 = $$1.a($$0);
+                  return $$1.orElseGet(() -> ik.a($$1, $$0));
                }
             };
          }
@@ -331,14 +331,14 @@ public class dv {
    }
 
    public static void b() {
-      dp $$0 = a(nj.a());
+      dp $$0 = a(nn.a());
       CommandDispatcher<du> $$1 = new dv(dv.a.a, $$0).a();
       RootCommandNode<du> $$2 = $$1.getRoot();
       $$1.findAmbiguities(
          ($$1x, $$2x, $$3x, $$4x) -> g.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
       );
-      Set<ArgumentType<?>> $$3 = hh.a($$2);
-      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !hg.a($$0x.getClass())).collect(Collectors.toSet());
+      Set<ArgumentType<?>> $$3 = hl.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !hk.a($$0x.getClass())).collect(Collectors.toSet());
       if (!$$4.isEmpty()) {
          g.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
          throw new IllegalStateException("Unregistered argument types");

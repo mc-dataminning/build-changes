@@ -1,53 +1,66 @@
-public class foc extends foi {
-   private static final int a = 3;
-   private final fra b;
-   private final bkq D;
-   private final bkq E;
-   private int F;
-   private final fvv G;
-
-   public foc(fvv $$0, fra $$1, flj $$2, bkq $$3, bkq $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dq());
-   }
-
-   private foc(fvv $$0, fra $$1, flj $$2, bkq $$3, bkq $$4, eju $$5) {
-      super($$2, $$3.ds(), $$3.du(), $$3.dy(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-   }
-
-   private bkq a(bkq $$0) {
-      return (bkq)(!($$0 instanceof can) ? $$0 : ((can)$$0).D());
+public class foc extends fow {
+   foc(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public fom b() {
-      return fom.e;
+   public fos b() {
+      return fos.b;
    }
 
    @Override
-   public void a(eoa $$0, eso $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = atm.d((double)$$2, this.E.ac, this.E.ds());
-      double $$5 = atm.d((double)$$2, this.E.ad, (this.E.du() + this.E.dw()) / 2.0);
-      double $$6 = atm.d((double)$$2, this.E.ae, this.E.dy());
-      double $$7 = atm.d((double)$$3, this.D.ds(), $$4);
-      double $$8 = atm.d((double)$$3, this.D.du(), $$5);
-      double $$9 = atm.d((double)$$3, this.D.dy(), $$6);
-      fqu.a $$10 = this.b.c();
-      eju $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dD(), $$2, new enw(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = atq.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements foq<jz> {
+      private final fpj a;
+
+      public a(fpj $$0) {
+         this.a = $$0;
+      }
+
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foc $$8 = new foc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements foq<jz> {
+      private final fpj a;
+
+      public b(fpj $$0) {
+         this.a = $$0;
+      }
+
+      public fon a(jz $$0, flo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foc $$8 = new foc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

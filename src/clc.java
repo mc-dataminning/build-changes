@@ -1,87 +1,58 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class clc extends clj {
+   private static final int a = 40;
 
-public class clc extends cle {
-   private static final String a = "instrument";
-   private final arv<clb> b;
-
-   public clc(cle.a $$0, arv<clb> $$1) {
+   public clc(clj.a $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public void a(clj $$0, @Nullable csa $$1, List<ur> $$2, cna $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<agh<clb>> $$4 = this.d($$0).flatMap(ib::e);
-      if ($$4.isPresent()) {
-         vf $$5 = ur.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
+   public clo a(clo $$0, csf $$1, bll $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof amj $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(arf.c.b(this));
       }
-   }
 
-   public static clj a(cle $$0, ib<clb> $$1) {
-      clj $$2 = new clj($$0);
-      a($$2, $$1);
-      return $$2;
-   }
+      if (!$$1.B) {
+         $$2.d(bkk.s);
+      }
 
-   public static void a(clj $$0, arv<clb> $$1, ats $$2) {
-      Optional<ib<clb>> $$3 = jy.ao.b($$1).flatMap($$1x -> $$1x.a($$2));
-      $$3.ifPresent($$1x -> a($$0, $$1x));
-   }
-
-   private static void a(clj $$0, ib<clb> $$1) {
-      rz $$2 = $$0.w();
-      $$2.a("instrument", $$1.e().orElseThrow(() -> new IllegalStateException("Invalid instrument")).a().toString());
-   }
-
-   @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      Optional<? extends ib<clb>> $$4 = this.d($$3);
-      if ($$4.isPresent()) {
-         clb $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.go().a(this, $$5.b());
-         $$1.b(arb.c.b(this));
-         return biy.b($$3);
+      if ($$0.b()) {
+         return new clo(clr.si);
       } else {
-         return biy.d($$3);
-      }
-   }
-
-   @Override
-   public int b(clj $$0) {
-      Optional<? extends ib<clb>> $$1 = this.d($$0);
-      return $$1.<Integer>map($$0x -> ((clb)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<? extends ib<clb>> d(clj $$0) {
-      rz $$1 = $$0.v();
-      if ($$1 != null && $$1.b("instrument", 8)) {
-         agi $$2 = agi.a($$1.l("instrument"));
-         if ($$2 != null) {
-            return jy.ao.b(agh.a(jz.C, $$2));
+         if ($$2 instanceof cdz $$4 && !$$4.fU().d) {
+            clo $$5 = new clo(clr.si);
+            if (!$$4.fT().e($$5)) {
+               $$4.a($$5, false);
+            }
          }
-      }
 
-      Iterator<ib<clb>> $$3 = jy.ao.c(this.b).iterator();
-      return $$3.hasNext() ? Optional.of($$3.next()) : Optional.empty();
+         return $$0;
+      }
    }
 
    @Override
-   public cnc c(clj $$0) {
-      return cnc.i;
+   public int b(clo $$0) {
+      return 40;
    }
 
-   private static void a(csa $$0, cdu $$1, clb $$2) {
-      aqq $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, aqs.c, $$4, 1.0F);
-      $$0.a(dls.B, $$1.dl(), dls.a.a($$1));
+   @Override
+   public cnh c(clo $$0) {
+      return cnh.c;
+   }
+
+   @Override
+   public aqu ao_() {
+      return aqv.lv;
+   }
+
+   @Override
+   public aqu ap_() {
+      return aqv.lv;
+   }
+
+   @Override
+   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
+      return clq.a($$0, $$1, $$2);
    }
 }

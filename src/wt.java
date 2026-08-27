@@ -1,26 +1,24 @@
-import java.util.Map;
+public class wt implements wo<wr> {
+   private final uv a;
 
-public class wt implements wk<wn> {
-   private final Map<agh<? extends io<?>>, ary.a> a;
-
-   public wt(Map<agh<? extends io<?>>, ary.a> $$0) {
+   public wt(uv $$0) {
       this.a = $$0;
    }
 
-   public wt(tu $$0) {
-      this.a = $$0.a(tu::u, ary.a::b);
+   public wt(ty $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a, tu::b, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(ty $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wn $$0) {
+   public void a(wr $$0) {
       $$0.a(this);
    }
 
-   public Map<agh<? extends io<?>>, ary.a> a() {
+   public uv a() {
       return this.a;
    }
 }

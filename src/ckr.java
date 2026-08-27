@@ -1,33 +1,39 @@
-public class ckr<T extends bkq & bld> extends cle {
-   private final bku<T> a;
-   private final int b;
-
-   public ckr(cle.a $$0, bku<T> $$1, int $$2) {
+public class ckr extends clj {
+   public ckr(clj.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      clj $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return biy.c($$3);
-      } else {
-         bkq $$4 = $$1.db();
-         if ($$1.bO() && $$4 instanceof bld $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               clj $$6 = new clj(clm.qS);
-               $$6.c($$3.v());
-               return biy.a($$6);
-            }
-
-            return biy.a($$3);
+   public bjb a(cny $$0) {
+      csf $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      dhn $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!cvt.h($$3) && !cvu.g($$3) && !cvv.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (cus.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, cus.a($$1, $$2));
+            $$1.a($$0.o(), dlx.i, $$2);
+            $$4 = true;
          }
-
-         $$1.b(arb.c.b(this));
-         return biy.c($$3);
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(did.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dlx.c, $$2);
+         $$4 = true;
       }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bjb.a($$1.B);
+      } else {
+         return bjb.e;
+      }
+   }
+
+   private void a(csf $$0, hx $$1) {
+      atw $$2 = $$0.F_();
+      $$0.a(null, $$1, aqv.hX, aqw.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

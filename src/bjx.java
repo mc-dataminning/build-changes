@@ -1,25 +1,19 @@
-class bjx extends bkb {
-   protected bjx(bkc $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bjx implements auk {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bjx> d = auk.a(bjx::values);
+   private final String e;
+
+   private bjx(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(blg $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof amf $$2 && !$$0.O_()) {
-         ame $$3 = $$2.z();
-         if ($$3.aj() == biu.a) {
-            return;
-         }
-
-         if ($$3.b($$0.dn())) {
-            $$3.y().a($$2);
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

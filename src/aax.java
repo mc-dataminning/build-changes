@@ -1,24 +1,32 @@
-public class aax implements wk<yd> {
-   private final int a;
+public class aax implements wo<yh> {
+   private final double a;
+   private final double b;
 
-   public aax(diz $$0) {
-      this.a = $$0.r();
+   public aax(dje $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public aax(tu $$0) {
-      this.a = $$0.n();
+   public aax(ty $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
+      return this.b;
+   }
+
+   public double d() {
       return this.a;
    }
 }

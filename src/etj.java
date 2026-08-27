@@ -1,158 +1,315 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.lwjgl.glfw.GLFWDropCallback;
 
-public class etj extends apm<Map<String, List<etj.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<etj.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(etj.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(etj.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(etj.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(etj.a::d)
-                  )
-                  .apply($$0, etj.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final agi c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private etj.b f;
+public class etj {
+   private final eti a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final aug l = new aug();
+   private final aug m = new aug();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public etj(agi $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public etj(eti $$0) {
+      this.a = $$0;
    }
 
-   protected Map<String, List<etj.a>> a(aph $$0, bfo $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aL().i()) {
+         if (this.a.y != null) {
+            this.a.a(etf.b);
          }
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
-   }
-
-   protected void a(Map<String, List<etj.a>> $$0, aph $$1, bfo $$2) {
-      List<etj.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
+         boolean $$4 = $$2 == 1;
+         if (eti.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
+            }
          }
 
-         if (this.f == null) {
-            this.f = new etj.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.W().c() && this.j++ > 0) {
+               return;
+            }
+
+            this.h = $$5;
+            this.k = els.b();
+         } else if (this.h != -1) {
+            if (this.a.m.W().c() && --this.j > 0) {
+               return;
+            }
+
+            this.h = -1;
          }
 
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aI() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.e * (double)this.a.aL().o() / (double)this.a.aL().m();
+               double $$8 = this.f * (double)this.a.aL().p() / (double)this.a.aL().n();
+               faz $$9 = this.a.y;
+               if ($$4) {
+                  $$9.w();
+                  faz.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  faz.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
 
-   @Override
-   public void close() {
-      this.a();
-   }
+         if (!$$6[0] && this.a.y == null && this.a.aI() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
 
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<etj.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<etj.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final etd a = etd.N();
-      private final List<etj.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<etj.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public etj.b a(List<etj.a> $$0, long $$1) {
-         this.cancel();
-         return new etj.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (etj.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> exg.a(etd.N().ax(), exg.a.g, ur.a($$2.c, $$3), ur.a($$2.d, $$3)));
-                  return;
+            etg.a(emw.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.P_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  etg.a(emw.b.c.a($$5));
                }
             }
          }
       }
+   }
+
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == eti.N().aL().i()) {
+         boolean $$3 = this.a.m.P().c();
+         double $$4 = this.a.m.D().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aI() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aL().o() / (double)this.a.aL().m();
+               double $$8 = this.f * (double)this.a.aL().p() / (double)this.a.aL().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.w();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
+
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.P_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = atq.a(this.a.s.fU().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.fU().a($$12);
+                  }
+               } else {
+                  this.a.s.fT().a((double)$$11);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
+      }
+   }
+
+   public void a(long $$0) {
+      emw.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
+      );
+   }
+
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == eti.N().aL().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
+         }
+
+         faz $$3 = this.a.y;
+         if ($$3 != null && this.a.aI() == null) {
+            double $$4 = $$1 * (double)this.a.aL().o() / (double)this.a.aL().m();
+            double $$5 = $$2 * (double)this.a.aL().p() / (double)this.a.aL().n();
+            faz.a(() -> $$3.e($$4, $$5), "mouseMoved event handler", $$3.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$6 = ($$1 - this.e) * (double)this.a.aL().o() / (double)this.a.aL().m();
+               double $$7 = ($$2 - this.f) * (double)this.a.aL().p() / (double)this.a.aL().n();
+               faz.a(() -> $$3.a($$4, $$5, this.h, $$6, $$7), "mouseDragged event handler", $$3.getClass().getCanonicalName());
+            }
+
+            $$3.v();
+         }
+
+         this.a.aF().a("mouse");
+         if (this.h() && this.a.az()) {
+            this.n = this.n + ($$1 - this.e);
+            this.o = this.o + ($$2 - this.f);
+         }
+
+         this.a();
+         this.e = $$1;
+         this.f = $$2;
+         this.a.aF().c();
+      }
+   }
+
+   public void a() {
+      double $$0 = els.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.h() && this.a.az()) {
+         double $$2 = this.a.m.d().c() * 0.6F + 0.2F;
+         double $$3 = $$2 * $$2 * $$2;
+         double $$4 = $$3 * 8.0;
+         double $$7;
+         double $$8;
+         if (this.a.m.ab) {
+            double $$5 = this.l.a(this.n * $$4, $$1 * $$4);
+            double $$6 = this.m.a(this.o * $$4, $$1 * $$4);
+            $$7 = $$5;
+            $$8 = $$6;
+         } else if (this.a.m.ax().a() && this.a.s.gr()) {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$3;
+            $$8 = this.o * $$3;
+         } else {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$4;
+            $$8 = this.o * $$4;
+         }
+
+         this.n = 0.0;
+         this.o = 0.0;
+         int $$13 = 1;
+         if (this.a.m.O().c()) {
+            $$13 = -1;
+         }
+
+         this.a.ay().a($$7, $$8);
+         if (this.a.s != null) {
+            this.a.s.b($$7, $$8 * (double)$$13);
+         }
+      } else {
+         this.n = 0.0;
+         this.o = 0.0;
+      }
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.az()) {
+         if (!this.s) {
+            if (!eti.a) {
+               etg.a();
+            }
+
+            this.s = true;
+            this.e = (double)(this.a.aL().m() / 2);
+            this.f = (double)(this.a.aL().n() / 2);
+            emw.a(this.a.aL().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
+         }
+      }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aL().m() / 2);
+         this.f = (double)(this.a.aL().n() / 2);
+         emw.a(this.a.aL().i(), 212993, this.e, this.f);
+      }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

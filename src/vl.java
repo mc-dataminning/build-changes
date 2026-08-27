@@ -1,89 +1,129 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class vl {
-   private static final Logger a = LogUtils.getLogger();
+public record vl(vq d, @Nullable vh e, vo f, @Nullable uv g, uz h) {
+   public static final MapCodec<vl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               vq.a.fieldOf("link").forGetter(vl::j),
+               vh.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               vo.a.forGetter(vl::l),
+               ux.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               uz.a.optionalFieldOf("filter_mask", uz.c).forGetter(vl::n)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new vl($$0x, (vh)$$1.orElse(null), $$2, (uv)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = ac.d;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+
+   public static vl a(String $$0) {
+      return a(i, $$0);
+   }
+
+   public static vl a(UUID $$0, String $$1) {
+      vo $$2 = vo.a($$1);
+      vq $$3 = vq.a($$0);
+      return new vl($$3, null, $$2, null, uz.c);
+   }
+
+   public vl a(uv $$0) {
+      uv $$1 = !$$0.equals(uv.b(this.b())) ? $$0 : null;
+      return new vl(this.d, this.e, this.f, $$1, this.h);
+   }
+
+   public vl a() {
+      return this.g != null ? new vl(this.d, this.e, this.f, null, this.h) : this;
+   }
+
+   public vl a(uz $$0) {
+      return this.h.equals($$0) ? this : new vl(this.d, this.e, this.f, this.g, $$0);
+   }
+
+   public vl a(boolean $$0) {
+      return this.a($$0 ? this.h : uz.c);
+   }
+
+   public static void a(aub.a $$0, vq $$1, vo $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(auc $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String b() {
+      return this.f.a();
+   }
+
+   public uv c() {
+      return Objects.requireNonNullElseGet(this.g, () -> uv.b(this.b()));
+   }
+
+   public Instant d() {
+      return this.f.b();
+   }
+
+   public long e() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.d().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.d().plus(c));
+   }
+
+   public UUID f() {
+      return this.d.c();
+   }
+
+   public boolean g() {
+      return this.f().equals(i);
+   }
+
+   public boolean h() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.h() && this.d.c().equals($$0);
+   }
+
+   public boolean i() {
+      return this.h.b();
+   }
+
+   public vq j() {
+      return this.d;
+   }
+
    @Nullable
-   private vm b;
-
-   public vl(UUID $$0, UUID $$1) {
-      this.b = vm.a($$0, $$1);
+   public vh k() {
+      return this.e;
    }
 
-   public vl.c a(atz $$0) {
-      return $$1 -> {
-         vm $$2 = this.a();
-         return $$2 == null ? null : new vd($$0.sign($$2x -> vh.a($$2x, $$2, $$1)));
-      };
-   }
-
-   public vl.b a(cdx $$0) {
-      aty $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         vm $$4 = this.a();
-         if ($$4 == null) {
-            throw new vl.a(ur.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new vl.a(ur.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            vh $$5 = new vh($$4, $$2, $$3, null, uv.c);
-            if (!$$5.a($$1)) {
-               throw new vl.a(ur.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
+   public vo l() {
+      return this.f;
    }
 
    @Nullable
-   private vm a() {
-      vm $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
-      }
-
-      return $$0;
+   public uv m() {
+      return this.g;
    }
 
-   public static class a extends vr {
-      private final boolean a;
-
-      public a(ur $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public boolean a() {
-         return this.a;
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      vl.b a = ($$0, $$1) -> {
-         throw new vl.a(ur.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static vl.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> vh.a($$0, $$2.a());
-      }
-
-      vh unpack(@Nullable vd var1, vk var2) throws vl.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      vl.c a = $$0 -> null;
-
-      @Nullable
-      vd pack(vk var1);
+   public uz n() {
+      return this.h;
    }
 }

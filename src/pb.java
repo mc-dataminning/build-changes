@@ -2,317 +2,218 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pb {
-   public static final agh<dyq> a = pc.a("village/plains/town_centers");
-   private static final agh<dyq> b = pc.a("village/plains/terminators");
+   public static final agl<dyv> a = pg.a("village/desert/town_centers");
+   private static final agl<dyv> b = pg.a("village/desert/terminators");
+   private static final agl<dyv> c = pg.a("village/desert/zombie/terminators");
 
-   public static void a(ov<dyq> $$0) {
-      ic<dwl> $$1 = $$0.a(jz.aA);
-      ib<dwl> $$2 = $$1.b(qn.f);
-      ib<dwl> $$3 = $$1.b(qn.k);
-      ib<dwl> $$4 = $$1.b(qn.a);
-      ic<ebf> $$5 = $$0.a(jz.aC);
-      ib<ebf> $$6 = $$5.b(pd.f);
-      ib<ebf> $$7 = $$5.b(pd.g);
-      ib<ebf> $$8 = $$5.b(pd.h);
-      ib<ebf> $$9 = $$5.b(pd.a);
-      ib<ebf> $$10 = $$5.b(pd.i);
-      ib<ebf> $$11 = $$5.b(pd.l);
-      ic<dyq> $$12 = $$0.a(jz.aE);
-      ib<dyq> $$13 = $$12.b(pc.a);
-      ib<dyq> $$14 = $$12.b(b);
+   public static void a(oz<dyv> $$0) {
+      ih<dwq> $$1 = $$0.a(kd.aA);
+      ig<dwq> $$2 = $$1.b(qr.j);
+      ig<dwq> $$3 = $$1.b(qr.a);
+      ih<ebk> $$4 = $$0.a(kd.aC);
+      ig<ebk> $$5 = $$4.b(ph.e);
+      ig<ebk> $$6 = $$4.b(ph.p);
+      ih<dyv> $$7 = $$0.a(kd.aE);
+      ig<dyv> $$8 = $$7.b(pg.a);
+      ig<dyv> $$9 = $$7.b(b);
+      ig<dyv> $$10 = $$7.b(c);
       $$0.a(
          a,
-         new dyq(
-            $$13,
+         new dyv(
+            $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
-               Pair.of(dyo.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
-               Pair.of(dyo.a("village/plains/town_centers/plains_meeting_point_2"), 50),
-               Pair.of(dyo.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
-               Pair.of(dyo.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
-               Pair.of(dyo.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
-               Pair.of(dyo.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
-               Pair.of(dyo.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+               Pair.of(dyt.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(dyt.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(dyt.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(dyt.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "village/plains/streets",
-         new dyq(
-            $$14,
+         "village/desert/streets",
+         new dyv(
+            $$9,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/streets/corner_01", $$10), 2),
-               Pair.of(dyo.a("village/plains/streets/corner_02", $$10), 2),
-               Pair.of(dyo.a("village/plains/streets/corner_03", $$10), 2),
-               Pair.of(dyo.a("village/plains/streets/straight_01", $$10), 4),
-               Pair.of(dyo.a("village/plains/streets/straight_02", $$10), 4),
-               Pair.of(dyo.a("village/plains/streets/straight_03", $$10), 7),
-               Pair.of(dyo.a("village/plains/streets/straight_04", $$10), 7),
-               Pair.of(dyo.a("village/plains/streets/straight_05", $$10), 3),
-               Pair.of(dyo.a("village/plains/streets/straight_06", $$10), 4),
-               Pair.of(dyo.a("village/plains/streets/crossroad_01", $$10), 2),
-               Pair.of(dyo.a("village/plains/streets/crossroad_02", $$10), 1),
-               Pair.of(dyo.a("village/plains/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dyo.a("village/plains/streets/crossroad_04", $$10), 2),
-                  Pair.of(dyo.a("village/plains/streets/crossroad_05", $$10), 2),
-                  Pair.of(dyo.a("village/plains/streets/crossroad_06", $$10), 2),
-                  Pair.of(dyo.a("village/plains/streets/turn_01", $$10), 3)
-               }
+               Pair.of(dyt.a("village/desert/streets/corner_01"), 3),
+               Pair.of(dyt.a("village/desert/streets/corner_02"), 3),
+               Pair.of(dyt.a("village/desert/streets/straight_01"), 4),
+               Pair.of(dyt.a("village/desert/streets/straight_02"), 4),
+               Pair.of(dyt.a("village/desert/streets/straight_03"), 3),
+               Pair.of(dyt.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(dyt.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(dyt.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(dyt.a("village/desert/streets/square_01"), 3),
+               Pair.of(dyt.a("village/desert/streets/square_02"), 3),
+               Pair.of(dyt.a("village/desert/streets/turn_01"), 3)
             ),
-            dyq.a.a
+            dyv.a.a
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "village/plains/zombie/streets",
-         new dyq(
-            $$14,
+         "village/desert/zombie/streets",
+         new dyv(
+            $$10,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/zombie/streets/corner_01", $$10), 2),
-               Pair.of(dyo.a("village/plains/zombie/streets/corner_02", $$10), 2),
-               Pair.of(dyo.a("village/plains/zombie/streets/corner_03", $$10), 2),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_01", $$10), 4),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_02", $$10), 4),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_03", $$10), 7),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_04", $$10), 7),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_05", $$10), 3),
-               Pair.of(dyo.a("village/plains/zombie/streets/straight_06", $$10), 4),
-               Pair.of(dyo.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
-               Pair.of(dyo.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(dyo.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dyo.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(dyo.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(dyo.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(dyo.a("village/plains/zombie/streets/turn_01", $$10), 3)
-               }
+               Pair.of(dyt.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(dyt.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(dyt.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(dyt.a("village/desert/zombie/streets/turn_01"), 3)
             ),
-            dyq.a.a
+            dyv.a.a
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "village/plains/houses",
-         new dyq(
-            $$14,
+         "village/desert/houses",
+         new dyv(
+            $$9,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_1", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_2", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_3", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_4", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_5", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_6", $$6), 1),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_7", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_small_house_8", $$6), 3),
-               Pair.of(dyo.a("village/plains/houses/plains_medium_house_1", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_medium_house_2", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_big_house_1", $$6), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_tool_smith_1"), 2),
                new Pair[]{
-                  Pair.of(dyo.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_shepherds_house_1"), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_tannery_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_cartographer_1", $$6), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_library_1", $$6), 5),
-                  Pair.of(dyo.a("village/plains/houses/plains_library_2", $$6), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_masons_house_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_temple_3", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_temple_4", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_stable_1", $$6), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_stable_2"), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_large_farm_1", $$11), 4),
-                  Pair.of(dyo.a("village/plains/houses/plains_small_farm_1", $$11), 4),
-                  Pair.of(dyo.a("village/plains/houses/plains_animal_pen_1"), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_animal_pen_2"), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_animal_pen_3"), 5),
-                  Pair.of(dyo.a("village/plains/houses/plains_accessory_1"), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
-                  Pair.of(dyo.a("village/plains/houses/plains_meeting_point_5"), 1),
-                  Pair.of(dyo.g(), 10)
+                  Pair.of(dyt.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(dyt.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(dyt.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(dyt.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(dyt.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(dyt.g(), 5)
                }
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a(
          $$0,
-         "village/plains/zombie/houses",
-         new dyq(
-            $$14,
+         "village/desert/zombie/houses",
+         new dyv(
+            $$10,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
-               Pair.of(dyo.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
-               Pair.of(dyo.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(dyt.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(dyt.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
                new Pair[]{
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_tannery_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_cartographer_1", $$9), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_library_1", $$9), 3),
-                  Pair.of(dyo.a("village/plains/houses/plains_library_2", $$9), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_masons_house_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_temple_3", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_temple_4", $$9), 2),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_stable_2", $$9), 2),
-                  Pair.of(dyo.a("village/plains/houses/plains_large_farm_1", $$9), 4),
-                  Pair.of(dyo.a("village/plains/houses/plains_small_farm_1", $$9), 4),
-                  Pair.of(dyo.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
-                  Pair.of(dyo.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
-                  Pair.of(dyo.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
-                  Pair.of(dyo.g(), 10)
+                  Pair.of(dyt.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(dyt.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(dyt.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(dyt.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(dyt.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(dyt.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(dyt.g(), 5)
                }
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
       $$0.a(
          b,
-         new dyq(
-            $$13,
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.a("village/desert/terminators/terminator_01"), 1), Pair.of(dyt.a("village/desert/terminators/terminator_02"), 1)),
+            dyv.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new dyv(
+            $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(dyo.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(dyo.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(dyo.a("village/plains/terminators/terminator_04", $$10), 1)
+               Pair.of(dyt.a("village/desert/terminators/terminator_01"), 1), Pair.of(dyt.a("village/desert/zombie/terminators/terminator_02"), 1)
             ),
-            dyq.a.a
+            dyv.a.a
          )
       );
-      pc.a($$0, "village/plains/trees", new dyq($$13, ImmutableList.of(Pair.of(dyo.a($$2), 1)), dyq.a.b));
-      pc.a(
+      pg.a(
          $$0,
-         "village/plains/decor",
-         new dyq(
-            $$13,
+         "village/desert/decor",
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.a("village/desert/desert_lamp_1"), 10), Pair.of(dyt.a($$2), 4), Pair.of(dyt.a($$3), 4), Pair.of(dyt.g(), 10)),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(dyt.a($$2), 4), Pair.of(dyt.a($$3), 4), Pair.of(dyt.g(), 10)),
+            dyv.a.b
+         )
+      );
+      pg.a(
+         $$0,
+         "village/desert/villagers",
+         new dyv(
+            $$8,
             ImmutableList.of(
-               Pair.of(dyo.a("village/plains/plains_lamp_1"), 2), Pair.of(dyo.a($$2), 1), Pair.of(dyo.a($$3), 1), Pair.of(dyo.a($$4), 1), Pair.of(dyo.g(), 2)
+               Pair.of(dyt.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(dyt.a("village/desert/villagers/baby"), 1),
+               Pair.of(dyt.a("village/desert/villagers/unemployed"), 10)
             ),
-            dyq.a.b
+            dyv.a.b
          )
       );
-      pc.a(
+      pg.a($$0, "village/desert/camel", new dyv($$8, ImmutableList.of(Pair.of(dyt.a("village/desert/camel_spawn"), 1)), dyv.a.b));
+      pg.a(
          $$0,
-         "village/plains/zombie/decor",
-         new dyq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/plains/plains_lamp_1", $$9), 1),
-               Pair.of(dyo.a($$2), 1),
-               Pair.of(dyo.a($$3), 1),
-               Pair.of(dyo.a($$4), 1),
-               Pair.of(dyo.g(), 2)
-            ),
-            dyq.a.b
+         "village/desert/zombie/villagers",
+         new dyv(
+            $$8,
+            ImmutableList.of(Pair.of(dyt.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(dyt.a("village/desert/zombie/villagers/unemployed"), 10)),
+            dyv.a.b
          )
       );
-      pc.a(
-         $$0,
-         "village/plains/villagers",
-         new dyq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/plains/villagers/nitwit"), 1),
-               Pair.of(dyo.a("village/plains/villagers/baby"), 1),
-               Pair.of(dyo.a("village/plains/villagers/unemployed"), 10)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/plains/zombie/villagers",
-         new dyq(
-            $$13,
-            ImmutableList.of(Pair.of(dyo.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(dyo.a("village/plains/zombie/villagers/unemployed"), 10)),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/common/animals",
-         new dyq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/common/animals/cows_1"), 7),
-               Pair.of(dyo.a("village/common/animals/pigs_1"), 7),
-               Pair.of(dyo.a("village/common/animals/horses_1"), 1),
-               Pair.of(dyo.a("village/common/animals/horses_2"), 1),
-               Pair.of(dyo.a("village/common/animals/horses_3"), 1),
-               Pair.of(dyo.a("village/common/animals/horses_4"), 1),
-               Pair.of(dyo.a("village/common/animals/horses_5"), 1),
-               Pair.of(dyo.a("village/common/animals/sheep_1"), 1),
-               Pair.of(dyo.a("village/common/animals/sheep_2"), 1),
-               Pair.of(dyo.g(), 5)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/common/sheep",
-         new dyq($$13, ImmutableList.of(Pair.of(dyo.a("village/common/animals/sheep_1"), 1), Pair.of(dyo.a("village/common/animals/sheep_2"), 1)), dyq.a.b)
-      );
-      pc.a(
-         $$0,
-         "village/common/cats",
-         new dyq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/common/animals/cat_black"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_british"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_calico"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_persian"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_ragdoll"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_red"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_siamese"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_tabby"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_white"), 1),
-               Pair.of(dyo.a("village/common/animals/cat_jellie"), 1),
-               Pair.of(dyo.g(), 3)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a(
-         $$0,
-         "village/common/butcher_animals",
-         new dyq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dyo.a("village/common/animals/cows_1"), 3),
-               Pair.of(dyo.a("village/common/animals/pigs_1"), 3),
-               Pair.of(dyo.a("village/common/animals/sheep_1"), 1),
-               Pair.of(dyo.a("village/common/animals/sheep_2"), 1)
-            ),
-            dyq.a.b
-         )
-      );
-      pc.a($$0, "village/common/iron_golem", new dyq($$13, ImmutableList.of(Pair.of(dyo.a("village/common/iron_golem"), 1)), dyq.a.b));
-      pc.a($$0, "village/common/well_bottoms", new dyq($$13, ImmutableList.of(Pair.of(dyo.a("village/common/well_bottom"), 1)), dyq.a.b));
    }
 }

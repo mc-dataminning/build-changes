@@ -1,44 +1,37 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cll {
-   public static biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      $$1.c($$2);
-      return biy.b($$1.b($$2));
+public enum cll implements auk {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<cll> j = auk.a(cll::values);
+   public static final IntFunction<cll> k = asj.a(cll::a, values(), asj.a.a);
+   private final byte l;
+   private final String m;
+
+   private cll(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
-   public static clj a(clj $$0, cdu $$1, clj $$2, boolean $$3) {
-      boolean $$4 = $$1.fU().d;
-      if ($$3 && $$4) {
-         if (!$$1.fT().h($$2)) {
-            $$1.fT().e($$2);
-         }
-
-         return $$0;
-      } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
-
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fT().e($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   public static clj a(clj $$0, cdu $$1, clj $$2) {
-      return a($$0, $$1, $$2, true);
+   public byte a() {
+      return this.l;
    }
 
-   public static void a(can $$0, Stream<clj> $$1) {
-      csa $$2 = $$0.dN();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new can($$2, $$0.ds(), $$0.du(), $$0.dy(), $$2x)));
-      }
+   public boolean b() {
+      return this == d || this == e;
    }
 }

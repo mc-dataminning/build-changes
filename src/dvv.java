@@ -1,17 +1,62 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public record dvv(List<dmv.c> a) implements dmv.c {
-   @Nullable
+public class dvv extends dvt {
+   public static final Codec<dvv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dnq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dnq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvv::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dnq d;
+   private final dnq e;
+   private final int f;
+
+   private dvv(dnq $$0, dnq $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static dvv a(dnq $$0, dnq $$1, int $$2) {
+      return new dvv($$0, $$1, $$2);
+   }
+
+   public static dvv a(dnq $$0, dnq $$1) {
+      return a($$0, $$1, 0);
+   }
+
    @Override
-   public dhi calculate(dmk.b $$0) {
-      for (dmv.c $$1 : this.a) {
-         dhi $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
+   public int a(atw $$0, dnt $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return atq.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + atq.b($$0, 0, $$6) + atq.b($$0, 0, $$5);
          }
       }
+   }
 
-      return null;
+   @Override
+   public dvu<?> a() {
+      return dvu.e;
+   }
+
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

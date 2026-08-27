@@ -1,51 +1,29 @@
-import java.util.Optional;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public interface cwb<T extends Enum<T>> {
-   int w_ = 4;
+public interface cwb {
+   eks r_ = cvf.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   die s_ = did.D;
 
-   Optional<dhi> i_(dhi var1);
-
-   float av_();
-
-   default void a_(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   static bjb a(@Nullable bkv $$0, dhn $$1, csf $$2, hx $$3) {
+      if ($$1.c(s_)) {
+         cvf.a($$2, $$3, new clo(clr.wi, 1));
+         float $$4 = atq.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, aqv.dx, aqw.e, 1.0F, $$4);
+         dhn $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dlx.c, $$3, dlx.a.a($$0, $$5));
+         return bjb.a($$2.B);
+      } else {
+         return bjb.d;
       }
    }
 
-   T c();
+   static boolean h_(dhn $$0) {
+      return $$0.b(s_) && $$0.c(s_);
+   }
 
-   default Optional<dhi> c(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (ht $$7 : ht.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof cwb<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
-
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.av_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+   static ToIntFunction<dhn> h_(int $$0) {
+      return $$1 -> $$1.c(did.D) ? $$0 : 0;
    }
 }

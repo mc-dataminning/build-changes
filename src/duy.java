@@ -1,165 +1,45 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
 
-public class duy extends dvd {
-   public static final Codec<duy> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, duy::new));
-   private static final double b = 0.618;
-   private static final double h = 1.382;
-   private static final double i = 0.381;
-   private static final double j = 0.328;
+public class duy extends duw {
+   public static final Codec<duy> a = Codec.unit(() -> duy.b);
+   public static final duy b = new duy();
 
-   public duy(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected dux<?> a() {
+      return dux.a;
    }
 
    @Override
-   protected dve<?> a() {
-      return dve.f;
-   }
-
-   @Override
-   public List<dtl.a> a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, int $$3, ht $$4, dsv $$5) {
-      int $$6 = 5;
-      int $$7 = $$3 + 2;
-      int $$8 = atm.a((double)$$7 * 0.618);
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      double $$9 = 1.0;
-      int $$10 = Math.min(1, atm.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
-      int $$11 = $$4.v() + $$8;
-      int $$12 = $$7 - 5;
-      List<duy.a> $$13 = Lists.newArrayList();
-      $$13.add(new duy.a($$4.b($$12), $$11));
-
-      for (; $$12 >= 0; $$12--) {
-         float $$14 = b($$7, $$12);
-         if (!($$14 < 0.0F)) {
-            for (int $$15 = 0; $$15 < $$10; $$15++) {
-               double $$16 = 1.0;
-               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
-               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
-               double $$19 = $$17 * Math.sin($$18) + 0.5;
-               double $$20 = $$17 * Math.cos($$18) + 0.5;
-               ht $$21 = $$4.b(atm.a($$19), $$12 - 1, atm.a($$20));
-               ht $$22 = $$21.b(5);
-               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
-                  int $$23 = $$4.u() - $$21.u();
-                  int $$24 = $$4.w() - $$21.w();
-                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
-                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
-                  ht $$27 = new ht($$4.u(), $$26, $$4.w());
-                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
-                     $$13.add(new duy.a($$21, $$27.v()));
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
-      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
-      List<dtl.a> $$28 = Lists.newArrayList();
-
-      for (duy.a $$29 : $$13) {
-         if (this.a($$7, $$29.a() - $$4.v())) {
-            $$28.add($$29.a);
-         }
-      }
-
-      return $$28;
-   }
-
-   private boolean a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, ht $$3, ht $$4, boolean $$5, dsv $$6) {
-      if (!$$5 && Objects.equals($$3, $$4)) {
-         return true;
-      } else {
-         ht $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
-         int $$8 = this.a($$7);
-         float $$9 = (float)$$7.u() / (float)$$8;
-         float $$10 = (float)$$7.v() / (float)$$8;
-         float $$11 = (float)$$7.w() / (float)$$8;
-
-         for (int $$12 = 0; $$12 <= $$8; $$12++) {
-            ht $$13 = $$3.b(atm.d(0.5F + (float)$$12 * $$9), atm.d(0.5F + (float)$$12 * $$10), atm.d(0.5F + (float)$$12 * $$11));
-            if ($$5) {
-               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(dbl.i, this.a($$3, $$13)));
-            } else if (!this.b($$0, $$13)) {
-               return false;
+   public void a(duw.a $$0) {
+      atw $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            hx $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, ddy.d);
             }
          }
 
-         return true;
-      }
-   }
-
-   private int a(ht $$0) {
-      int $$1 = atm.a($$0.u());
-      int $$2 = atm.a($$0.v());
-      int $$3 = atm.a($$0.w());
-      return Math.max($$1, Math.max($$2, $$3));
-   }
-
-   private hx.a a(ht $$0, ht $$1) {
-      hx.a $$2 = hx.a.b;
-      int $$3 = Math.abs($$1.u() - $$0.u());
-      int $$4 = Math.abs($$1.w() - $$0.w());
-      int $$5 = Math.max($$3, $$4);
-      if ($$5 > 0) {
-         if ($$3 == $$5) {
-            $$2 = hx.a.a;
-         } else {
-            $$2 = hx.a.c;
-         }
-      }
-
-      return $$2;
-   }
-
-   private boolean a(int $$0, int $$1) {
-      return (double)$$1 >= (double)$$0 * 0.2;
-   }
-
-   private void a(csg $$0, BiConsumer<ht, dhi> $$1, ats $$2, int $$3, ht $$4, List<duy.a> $$5, dsv $$6) {
-      for (duy.a $$7 : $$5) {
-         int $$8 = $$7.a();
-         ht $$9 = new ht($$4.u(), $$8, $$4.w());
-         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
-            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
-         }
-      }
-   }
-
-   private static float b(int $$0, int $$1) {
-      if ((float)$$1 < (float)$$0 * 0.3F) {
-         return -1.0F;
-      } else {
-         float $$2 = (float)$$0 / 2.0F;
-         float $$3 = $$2 - (float)$$1;
-         float $$4 = atm.c($$2 * $$2 - $$3 * $$3);
-         if ($$3 == 0.0F) {
-            $$4 = $$2;
-         } else if (Math.abs($$3) >= $$2) {
-            return 0.0F;
+         if ($$1.a(3) > 0) {
+            hx $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, ddy.f);
+            }
          }
 
-         return $$4 * 0.5F;
-      }
-   }
+         if ($$1.a(3) > 0) {
+            hx $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, ddy.e);
+            }
+         }
 
-   static class a {
-      final dtl.a a;
-      private final int b;
-
-      public a(ht $$0, int $$1) {
-         this.a = new dtl.a($$0, 0, false);
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.b;
-      }
+         if ($$1.a(3) > 0) {
+            hx $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, ddy.c);
+            }
+         }
+      });
    }
 }

@@ -3,33 +3,61 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class egi extends egj {
-   public static final Codec<egi> a = RecordCodecBuilder.create($$0 -> a($$0).and(eew.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, egi::new));
-   private final eew b;
+public class egi extends ego {
+   public static final Codec<egi> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(eix.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, egi::new)
+   );
+   private final eiw b;
+   private final boolean c;
 
-   private egi(List<ehw> $$0, eew $$1) {
+   egi(List<eib> $$0, eiw $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public egl b() {
-      return egm.q;
+   public egq b() {
+      return egr.d;
    }
 
    @Override
-   public Set<ehf<?>> a() {
+   public Set<ehk<?>> a() {
       return this.b.a();
    }
 
    @Override
-   public clj a(clj $$0, eex $$1) {
-      int $$2 = this.b.a($$1, $$0.L());
-      $$0.f($$2);
-      return $$0;
+   public clo a(clo $$0, efc $$1) {
+      atw $$2 = $$1.b();
+      return cqb.a($$2, $$0, this.b.a($$1), this.c);
    }
 
-   public static egj.a<?> a(eew $$0) {
-      return a($$1 -> new egi($$1, $$0));
+   public static egi.a a(eiw $$0) {
+      return new egi.a($$0);
+   }
+
+   public static class a extends ego.a<egi.a> {
+      private final eiw a;
+      private boolean b;
+
+      public a(eiw $$0) {
+         this.a = $$0;
+      }
+
+      protected egi.a a() {
+         return this;
+      }
+
+      public egi.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public egp b() {
+         return new egi(this.g(), this.a, this.b);
+      }
    }
 }

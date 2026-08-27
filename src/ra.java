@@ -1,277 +1,108 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArraySet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nullable;
+import java.util.Map;
+import org.slf4j.Logger;
 
 public class ra {
-   private final rq a;
-   @Nullable
-   private ht b;
-   private final ame c;
-   private final Collection<rb> d = Lists.newArrayList();
+   private static final Logger a = LogUtils.getLogger();
+   private final hx b;
+   final ami c;
+   private final rk d;
    private final int e;
-   private final Collection<re> f = Lists.newCopyOnWriteArrayList();
-   private final Object2LongMap<Runnable> g = new Object2LongOpenHashMap();
-   private long h;
-   private long i;
-   private boolean j;
-   private boolean k;
-   private final Stopwatch l = Stopwatch.createUnstarted();
-   private boolean m;
-   private final dbm n;
-   @Nullable
-   private Throwable o;
-   @Nullable
-   private dgr p;
+   private final List<re> f;
+   private final List<Pair<qz, Collection<re>>> g;
+   private int h;
+   private eju i;
+   private final hx.a j;
 
-   public ra(rq $$0, dbm $$1, ame $$2) {
-      this.a = $$0;
-      this.c = $$2;
-      this.e = $$0.c();
-      this.n = $$0.g().a($$1);
+   public ra(Collection<qz> $$0, hx $$1, dbr $$2, ami $$3, rk $$4, int $$5) {
+      this.j = $$1.j();
+      this.i = new eju(this.j);
+      this.b = $$1;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.g = $$0.stream().map($$2x -> {
+         Collection<re> $$3x = $$2x.b().stream().map($$2xx -> new re($$2xx, $$2, $$3)).collect(ImmutableList.toImmutableList());
+         return Pair.of($$2x, $$3x);
+      }).collect(ImmutableList.toImmutableList());
+      this.f = this.g.stream().flatMap($$0x -> ((Collection)$$0x.getSecond()).stream()).collect(ImmutableList.toImmutableList());
    }
 
-   void a(ht $$0) {
-      this.b = $$0;
-   }
-
-   void a() {
-      this.h = this.c.W() + 1L + this.a.f();
-      this.l.start();
+   public List<re> a() {
+      return this.f;
    }
 
    public void b() {
-      if (!this.l()) {
-         this.C();
-         if (this.l()) {
-            if (this.o != null) {
-               this.d.forEach($$0 -> $$0.c(this));
-            } else {
-               this.d.forEach($$0 -> $$0.b(this));
-            }
-         }
-      }
+      this.a(0);
    }
 
-   private void C() {
-      this.i = this.c.W() - this.h;
-      if (this.i >= 0L) {
-         if (this.i == 0L) {
-            this.D();
-         }
-
-         ObjectIterator<Entry<Runnable>> $$0 = this.g.object2LongEntrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
-            if ($$1.getLongValue() <= this.i) {
-               try {
-                  ((Runnable)$$1.getKey()).run();
-               } catch (Exception var4) {
-                  this.a(var4);
-               }
-
-               $$0.remove();
-            }
-         }
-
-         if (this.i > (long)this.e) {
-            if (this.f.isEmpty()) {
-               this.a(new rh("Didn't succeed or fail within " + this.a.c() + " ticks"));
-            } else {
-               this.f.forEach($$0x -> $$0x.b(this.i));
-               if (this.o == null) {
-                  this.a(new rh("No sequences finished"));
+   void a(final int $$0) {
+      if ($$0 < this.g.size()) {
+         Pair<qz, Collection<re>> $$1 = this.g.get($$0);
+         final qz $$2 = (qz)$$1.getFirst();
+         Collection<re> $$3 = (Collection<re>)$$1.getSecond();
+         Map<re, hx> $$4 = this.a($$3);
+         String $$5 = $$2.a();
+         a.info("Running test batch '{}' ({} tests)...", $$5, $$3.size());
+         $$2.a(this.c);
+         final rp $$6 = new rp();
+         $$3.forEach($$6::a);
+         $$6.a(new rf() {
+            private void a() {
+               if ($$6.i()) {
+                  $$2.b(ra.this.c);
+                  LongSet $$0 = new LongArraySet(ra.this.c.v());
+                  $$0.forEach($$0xxx -> ra.this.c.a(crm.a($$0xxx), crm.b($$0xxx), false));
+                  ra.this.a($$0 + 1);
                }
             }
-         } else {
-            this.f.forEach($$0x -> $$0x.a(this.i));
+
+            @Override
+            public void a(re $$0x) {
+            }
+
+            @Override
+            public void b(re $$0x) {
+               this.a();
+            }
+
+            @Override
+            public void c(re $$0x) {
+               this.a();
+            }
+         });
+         $$3.forEach($$1x -> {
+            hx $$2x = $$4.get($$1x);
+            rh.a($$1x, $$2x, this.d);
+         });
+      }
+   }
+
+   private Map<re, hx> a(Collection<re> $$0) {
+      Map<re, hx> $$1 = Maps.newHashMap();
+
+      for (re $$2 : $$0) {
+         hx $$3 = new hx(this.j);
+         dgw $$4 = rr.a($$2.u(), $$3, $$2.v(), this.c);
+         eju $$5 = rr.a($$4);
+         $$2.a($$4.aC_());
+         $$1.put($$2, new hx(this.j));
+         this.i = this.i.b($$5);
+         this.j.e((int)$$5.b() + 5, 0, 0);
+         if (this.h++ % this.e == this.e - 1) {
+            this.j.e(0, 0, (int)this.i.d() + 6);
+            this.j.p(this.b.u());
+            this.i = new eju(this.j);
          }
       }
-   }
 
-   private void D() {
-      if (this.j) {
-         throw new IllegalStateException("Test already started");
-      } else {
-         this.j = true;
-
-         try {
-            this.a.a(new qz(this));
-         } catch (Exception var2) {
-            this.a(var2);
-         }
-      }
-   }
-
-   public void a(long $$0, Runnable $$1) {
-      this.g.put($$1, $$0);
-   }
-
-   public String c() {
-      return this.a.a();
-   }
-
-   public ht d() {
-      return this.b;
-   }
-
-   @Nullable
-   public ht e() {
-      dgr $$0 = this.E();
-      return $$0 == null ? null : rn.c($$0);
-   }
-
-   @Nullable
-   public iw f() {
-      dgr $$0 = this.E();
-      return $$0 == null ? null : $$0.j();
-   }
-
-   @Nullable
-   public ejp g() {
-      dgr $$0 = this.E();
-      return $$0 == null ? null : rn.a($$0);
-   }
-
-   @Nullable
-   private dgr E() {
-      return (dgr)this.c.c_(this.b);
-   }
-
-   public ame h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.m && this.o == null;
-   }
-
-   public boolean j() {
-      return this.o != null;
-   }
-
-   public boolean k() {
-      return this.j;
-   }
-
-   public boolean l() {
-      return this.m;
-   }
-
-   public long m() {
-      return this.l.elapsed(TimeUnit.MILLISECONDS);
-   }
-
-   private void F() {
-      if (!this.m) {
-         this.m = true;
-         this.l.stop();
-      }
-   }
-
-   public void n() {
-      if (this.o == null) {
-         this.F();
-         ejp $$0 = this.g();
-         List<bkq> $$1 = this.h().a(bkq.class, $$0.g(1.0), $$0x -> !($$0x instanceof cdu));
-         $$1.forEach($$0x -> $$0x.a(bkq.c.b));
-      }
-   }
-
-   public void a(Throwable $$0) {
-      this.o = $$0;
-      this.F();
-   }
-
-   @Nullable
-   public Throwable o() {
-      return this.o;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   public void a(rb $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(ht $$0) {
-      this.p = rn.a(this.u(), $$0, this.v(), this.c, false);
-      this.b = this.p.p();
-      this.p.a(this.c());
-      rn.a(this.b, new ht(1, 0, -1), this.v(), this.c);
-      this.d.forEach($$0x -> $$0x.a(this));
-   }
-
-   public void p() {
-      if (this.p == null) {
-         throw new IllegalStateException("Expected structure to be initialized, but it was null");
-      } else {
-         dwz $$0 = rn.b(this.p);
-         rn.a($$0, this.c);
-      }
-   }
-
-   long q() {
-      return this.i;
-   }
-
-   re r() {
-      re $$0 = new re(this);
-      this.f.add($$0);
-      return $$0;
-   }
-
-   public boolean s() {
-      return this.a.d();
-   }
-
-   public boolean t() {
-      return !this.a.d();
-   }
-
-   public String u() {
-      return this.a.b();
-   }
-
-   public dbm v() {
-      return this.n;
-   }
-
-   public rq w() {
-      return this.a;
-   }
-
-   public int x() {
-      return this.e;
-   }
-
-   public boolean y() {
-      return this.a.h();
-   }
-
-   public int z() {
-      return this.a.i();
-   }
-
-   public int A() {
-      return this.a.j();
-   }
-
-   public void a(boolean $$0) {
-      this.k = $$0;
-   }
-
-   public boolean B() {
-      return this.k;
+      return $$1;
    }
 }

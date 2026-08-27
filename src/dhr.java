@@ -1,51 +1,49 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dhr implements Predicate<dhi> {
-   public static final Predicate<dhi> a = $$0 -> true;
-   private final dhj<cva, dhi> b;
-   private final Map<dil<?>, Predicate<Object>> c = Maps.newHashMap();
+public class dhr {
+   private final csi a;
+   private final hx b;
+   private final boolean c;
+   @Nullable
+   private dhn d;
+   @Nullable
+   private dfi e;
+   private boolean f;
 
-   private dhr(dhj<cva, dhi> $$0) {
-      this.b = $$0;
+   public dhr(csi $$0, hx $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
    }
 
-   public static dhr a(cva $$0) {
-      return new dhr($$0.n());
-   }
-
-   public boolean a(@Nullable dhi $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dil<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
+   public dhn a() {
+      if (this.d == null && (this.c || this.a.A(this.b))) {
+         this.d = this.a.a_(this.b);
       }
+
+      return this.d;
    }
 
-   protected <T extends Comparable<T>> boolean a(dhi $$0, dil<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> dhr a(dil<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   @Nullable
+   public dfi b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
       }
+
+      return this.e;
+   }
+
+   public csi c() {
+      return this.a;
+   }
+
+   public hx d() {
+      return this.b;
+   }
+
+   public static Predicate<dhr> a(Predicate<dhn> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

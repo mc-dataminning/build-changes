@@ -1,45 +1,13 @@
-public class fzs extends gaf<bxb, fhr<bxb>> {
-   private final fqq a;
+public class fzs<T extends cbb> extends gak<T, fhq<T>> {
+   private static final agm a = new agm("textures/entity/zombie/drowned_outer_layer.png");
+   private final fhq<T> b;
 
-   public fzs(fxs<bxb, fhr<bxb>> $$0, fqq $$1) {
+   public fzs(fxx<T, fhq<T>> $$0, fkp $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fhq<>($$1.a(fks.O));
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bxb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fE();
-      boolean $$11 = $$3.n_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
-
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.n_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
-
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      clj $$14 = $$3.c(bkv.a);
-      this.a.a($$3, $$14, clg.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

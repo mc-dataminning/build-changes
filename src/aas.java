@@ -1,24 +1,32 @@
-public class aas implements wk<yd> {
-   private final ur a;
+public class aas implements wo<yh> {
+   private final int a;
+   private final byte b;
 
-   public aas(ur $$0) {
-      this.a = $$0;
+   public aas(bkv $$0, byte $$1) {
+      this.a = $$0.aj();
+      this.b = $$1;
    }
 
-   public aas(tu $$0) {
-      this.a = $$0.m();
+   public aas(ty $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
+   public void a(ty $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public ur a() {
-      return this.a;
+   public bkv a(csf $$0) {
+      return $$0.a(this.a);
+   }
+
+   public byte a() {
+      return this.b;
    }
 }

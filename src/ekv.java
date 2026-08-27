@@ -1,83 +1,56 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class ekv {
+   private final eky a;
+   private final String b;
+   private final elb c;
+   private uv d;
+   private uv e;
+   private elb.a f;
 
-public abstract class ekv {
-   public boolean a(@Nullable ekv $$0) {
-      return $$0 == null ? false : this == $$0;
+   public ekv(eky $$0, String $$1, elb $$2, uv $$3, elb.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.g();
+      this.f = $$4;
    }
 
-   public abstract String b();
-
-   public abstract vf d(ur var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract ekv.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract ekv.b k();
-
-   public abstract ekv.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, ekv.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ekv.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static ekv.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public ur a() {
-         return ur.c("team.collision." + this.e);
-      }
+   public eky a() {
+      return this.a;
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public String b() {
+      return this.b;
+   }
 
-      private static final Map<String, ekv.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ekv.b)$$0));
-      public final String e;
-      public final int f;
+   public elb c() {
+      return this.c;
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
+   public uv d() {
+      return this.d;
+   }
 
-      @Nullable
-      public static ekv.b a(String $$0) {
-         return g.get($$0);
-      }
+   private uv g() {
+      return uy.a((uv)this.d.f().a($$0 -> $$0.a(new vb(vb.a.a, uv.b(this.b)))));
+   }
 
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   public uv e() {
+      return this.e;
+   }
 
-      public ur b() {
-         return ur.c("team.visibility." + this.e);
-      }
+   public void a(uv $$0) {
+      this.d = $$0;
+      this.e = this.g();
+      this.a.b(this);
+   }
+
+   public elb.a f() {
+      return this.f;
+   }
+
+   public void a(elb.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
    }
 }

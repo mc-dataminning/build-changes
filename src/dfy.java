@@ -1,69 +1,189 @@
-public class dfy extends dfd implements dgg {
-   private final dfl a = new dfl();
-   private final dfq b = new dfq() {
-      @Override
-      protected void a(csa $$0, ht $$1, dhi $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqr.hm, aqs.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(csa $$0, ht $$1, dhi $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aqr.hl, aqs.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public class dfy extends dfi implements bji, elf {
+   public static final String e = "sherds";
+   public static final String f = "item";
+   public static final int g = 1;
+   public long h;
+   @Nullable
+   public dfy.b i;
+   private dfy.a l;
+   private clo m = clo.b;
+   @Nullable
+   protected agm j;
+   protected long k;
 
-      @Override
-      protected void a(csa $$0, ht $$1, dhi $$2, int $$3, int $$4) {
-         $$0.a(dfy.this.p, cvc.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cdu $$0) {
-         return $$0.gg().b(dfy.this);
-      }
-   };
-
-   public dfy(ht $$0, dhi $$1) {
-      super(dff.d, $$0, $$1);
+   public dfy(hx $$0, dhn $$1) {
+      super(dfk.O, $$0, $$1);
+      this.l = dfy.a.a;
    }
 
-   public static void a(csa $$0, ht $$1, dhi $$2, dfy $$3) {
-      $$3.a.a();
+   @Override
+   protected void b(sd $$0) {
+      super.b($$0);
+      this.l.a($$0);
+      if (!this.d_($$0) && !this.m.b()) {
+         $$0.a("item", this.m.b(new sd()));
+      }
+   }
+
+   @Override
+   public void a(sd $$0) {
+      super.a($$0);
+      this.l = dfy.a.b($$0);
+      if (!this.c_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.m = clo.a($$0.p("item"));
+         } else {
+            this.m = clo.b;
+         }
+      }
+   }
+
+   public yo k() {
+      return yo.a(this);
+   }
+
+   @Override
+   public sd ay_() {
+      return this.q();
+   }
+
+   public ib l() {
+      return this.r().c(did.R);
+   }
+
+   public dfy.a m() {
+      return this.l;
+   }
+
+   public void a(clo $$0) {
+      this.l = dfy.a.b(cjh.a($$0));
+   }
+
+   public clo w() {
+      return a(this.l);
+   }
+
+   public static clo a(dfy.a $$0) {
+      clo $$1 = clr.eB.an_();
+      sd $$2 = $$0.a(new sd());
+      cjh.a($$1, dfk.O, $$2);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public agm aA_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(@Nullable agm $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public long aB_() {
+      return this.k;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public clo x() {
+      this.e_(null);
+      return this.m;
+   }
+
+   @Override
+   public clo c(int $$0) {
+      this.e_(null);
+      clo $$1 = this.m.a($$0);
+      if (this.m.b()) {
+         this.m = clo.b;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(clo $$0) {
+      this.e_(null);
+      this.m = $$0;
+   }
+
+   @Override
+   public dfi y() {
+      return this;
+   }
+
+   public void a(dfy.b $$0) {
+      if (this.o != null && !this.o.y_()) {
+         this.o.a(this.aC_(), this.r().b(), 1, $$0.ordinal());
+      }
    }
 
    @Override
    public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dfy.b.values().length) {
+         this.h = this.o.W();
+         this.i = dfy.b.values()[$$1];
          return true;
       } else {
          return super.a_($$0, $$1);
       }
    }
 
-   public void a(cdu $$0) {
-      if (!this.q && !$$0.O_()) {
-         this.b.a($$0, this.k(), this.p(), this.q());
+   public static record a(clj b, clj c, clj d, clj e) {
+      public static final dfy.a a = new dfy.a(clr.qI, clr.qI, clr.qI, clr.qI);
+
+      public sd a(sd $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            sj $$1 = new sj();
+            this.a().forEach($$1x -> $$1.add(sy.a(kc.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
+         }
+      }
+
+      public Stream<clj> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static dfy.a b(@Nullable sd $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            sj $$1 = $$0.c("sherds", 8);
+            return new dfy.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static clj a(sj $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return clr.qI;
+         } else {
+            ta $$2 = $$0.k($$1);
+            return kc.i.a(agm.a($$2.t_()));
+         }
       }
    }
 
-   public void b(cdu $$0) {
-      if (!this.q && !$$0.O_()) {
-         this.b.b($$0, this.k(), this.p(), this.q());
+   public static enum b {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private b(int $$0) {
+         this.c = $$0;
       }
-   }
-
-   public boolean c(cdu $$0) {
-      return biq.a(this, $$0);
-   }
-
-   public void c() {
-      if (!this.q) {
-         this.b.c(this.k(), this.p(), this.q());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
    }
 }

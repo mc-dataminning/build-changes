@@ -1,71 +1,77 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cnw extends cof {
-   public cnw(coc $$0) {
-      super($$0);
+public class cnw extends cny {
+   private final hx b;
+   protected boolean a = true;
+
+   public cnw(cdz $$0, bja $$1, clo $$2, ejv $$3) {
+      this($$0.dN(), $$0, $$1, $$2, $$3);
    }
 
-   public boolean a(chc $$0, csa $$1) {
-      clj $$2 = clj.b;
-      List<clj> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ckb) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof cjy)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.isEmpty();
+   public cnw(cny $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   public clj a(chc $$0, ip $$1) {
-      List<cjy> $$2 = Lists.newArrayList();
-      clj $$3 = clj.b;
+   protected cnw(csf $$0, @Nullable cdz $$1, bja $$2, clo $$3, ejv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         clj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cle $$6 = $$5.d();
-            if ($$6 instanceof ckb) {
-               if (!$$3.b()) {
-                  return clj.b;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof cjy)) {
-                  return clj.b;
-               }
-
-               $$2.add((cjy)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? ckb.a($$3, $$2) : clj.b;
+   public static cnw a(cnw $$0, hx $$1, ib $$2) {
+      return new cnw(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ejv(
+            new ejz((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public hx a() {
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
-   public cos<?> aq_() {
-      return cos.c;
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public ib d() {
+      return ib.a(this.o())[0];
+   }
+
+   public ib e() {
+      return ib.a(this.o(), ib.a.b);
+   }
+
+   public ib[] f() {
+      ib[] $$0 = ib.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         ib $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

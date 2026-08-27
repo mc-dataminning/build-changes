@@ -1,125 +1,102 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class ege extends egj {
-   public static final arv<dxh> a = arr.l;
-   public static final edz.a b = edz.a.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final Codec<ege> f = RecordCodecBuilder.create(
+public class ege extends ego {
+   public static final Codec<ege> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  asu.a(arv.a(jz.aB), "destination", a).forGetter($$0x -> $$0x.h),
-                  edz.a.I.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  asu.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
-                  asu.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
-                  asu.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  kc.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(diq::f).toList())
                )
             )
             .apply($$0, ege::new)
    );
-   private final arv<dxh> h;
-   private final edz.a i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final ig<cvf> b;
+   private final Set<diq<?>> c;
 
-   ege(List<ehw> $$0, arv<dxh> $$1, edz.a $$2, byte $$3, int $$4, boolean $$5) {
+   ege(List<eib> $$0, ig<cvf> $$1, Set<diq<?>> $$2) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private ege(List<eib> $$0, ig<cvf> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public egl b() {
-      return egm.m;
+   public egq b() {
+      return egr.x;
    }
 
    @Override
-   public Set<ehf<?>> a() {
-      return ImmutableSet.of(ehi.f);
+   public Set<ehk<?>> a() {
+      return ImmutableSet.of(ehn.g);
    }
 
    @Override
-   public clj a(clj $$0, eex $$1) {
-      if (!$$0.a(clm.ub)) {
-         return $$0;
-      } else {
-         eju $$2 = $$1.c(ehi.f);
-         if ($$2 != null) {
-            ame $$3 = $$1.d();
-            ht $$4 = $$3.a(this.h, ht.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               clj $$5 = clq.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               clq.a($$3, $$5);
-               eec.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   protected clo a(clo $$0, efc $$1) {
+      dhn $$2 = $$1.c(ehn.g);
+      if ($$2 != null) {
+         sd $$3 = $$0.w();
+         sd $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new sd();
+            $$3.a("BlockStateTag", $$4);
          }
 
-         return $$0;
+         for (diq<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
       }
+
+      return $$0;
    }
 
-   public static ege.a c() {
-      return new ege.a();
+   public static ege.a a(cvf $$0) {
+      return new ege.a($$0);
    }
 
-   public static class a extends egj.a<ege.a> {
-      private arv<dxh> a;
-      private edz.a b;
-      private byte c;
-      private int d;
-      private boolean e;
+   private static <T extends Comparable<T>> String a(dhn $$0, diq<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
+   }
 
-      public a() {
-         this.a = ege.a;
-         this.b = ege.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+   public static class a extends ego.a<ege.a> {
+      private final ig<cvf> a;
+      private final Builder<diq<?>> b = ImmutableSet.builder();
+
+      a(cvf $$0) {
+         this.a = $$0.r();
+      }
+
+      public ege.a a(diq<?> $$0) {
+         if (!this.a.a().n().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected ege.a a() {
          return this;
       }
 
-      public ege.a a(arv<dxh> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public ege.a a(edz.a $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ege.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ege.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ege.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public egk b() {
-         return new ege(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public egp b() {
+         return new ege(this.g(), this.a, this.b.build());
       }
    }
 }

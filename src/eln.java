@@ -1,21 +1,7 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+public interface eln<T> {
+   void a(ell<T> var1);
 
-public class eln {
-   public static void a(emh $$0, float $$1) {
-      ConcurrentLinkedQueue<emg> $$2 = $$0.i();
-   }
+   boolean a(hx var1, T var2);
 
-   public static void b(emh $$0, float $$1) {
-      ConcurrentLinkedQueue<emg> $$2 = $$0.j();
-   }
-
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
+   int a();
 }

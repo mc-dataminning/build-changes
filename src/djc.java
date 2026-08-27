@@ -1,59 +1,58 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+public interface djc {
+   void a(dje var1, double var2);
 
-public class djc implements AutoCloseable {
-   private final csb a;
-   private final Long2ObjectMap<djq> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private djq c;
-   private long d;
+   void a(dje var1, double var2, double var4, long var6);
 
-   public djc(csb $$0) {
-      this.a = $$0;
-   }
+   void a(dje var1, double var2, double var4);
 
-   @Nullable
-   public djq a(ht $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.al()) {
-         long $$2 = iu.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (djq)this.b.computeIfAbsent($$2, $$2x -> {
-               dje $$3 = this.a.a(iu.a($$0.u()), iu.a($$0.w()));
-               djq $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
+   void a(dje var1, int var2);
 
-         return this.c;
-      } else {
-         return null;
+   void b(dje var1, int var2);
+
+   void b(dje var1, double var2);
+
+   void c(dje var1, double var2);
+
+   public static class a implements djc {
+      private final dje a;
+
+      public a(dje $$0) {
+         this.a = $$0;
       }
-   }
 
-   public dhi b(ht $$0) {
-      djq $$1 = this.a($$0);
-      if ($$1 == null) {
-         return cvc.a.o();
-      } else {
-         int $$2 = iu.b($$0.u());
-         int $$3 = iu.b($$0.v());
-         int $$4 = iu.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
+      @Override
+      public void a(dje $$0, double $$1) {
+         this.a.a($$1);
       }
-   }
 
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+      @Override
+      public void a(dje $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-      while (var1.hasNext()) {
-         djq $$0 = (djq)var1.next();
-         $$0.b();
+      @Override
+      public void a(dje $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dje $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dje $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dje $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dje $$0, double $$1) {
+         this.a.b($$1);
       }
    }
 }

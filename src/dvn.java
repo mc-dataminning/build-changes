@@ -1,34 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvn extends dvo {
-   public static final dvn a = new dvn(dnl.a(0));
-   public static final Codec<dvn> b = asu.e(dnl.a, dnl.a.fieldOf("value").codec()).xmap(dvn::new, dvn::b);
-   private final dnl d;
+public record dvn(ig<clj> c, dvp d) {
+   public static final Codec<dvn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agj.a(kd.E).fieldOf("display").forGetter($$0x -> $$0x.c), dvp.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dvn::new)
+   );
+   public static final Codec<ig<dvn>> b = agi.a(kd.ax, a);
 
-   public static dvn a(dnl $$0) {
-      return new dvn($$0);
+   public ig<clj> a() {
+      return this.c;
    }
 
-   private dvn(dnl $$0) {
-      this.d = $$0;
-   }
-
-   public dnl b() {
+   public dvp b() {
       return this.d;
-   }
-
-   @Override
-   public int a(ats $$0, dno $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dvp<?> a() {
-      return dvp.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
    }
 }

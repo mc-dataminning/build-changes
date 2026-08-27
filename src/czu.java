@@ -1,128 +1,166 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class czu extends dbn implements dca {
-   public static final MapCodec<czu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgx.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, czu::new)
-   );
-   public static final dii b = dhy.at;
-   public static final int c = 4;
-   private static final ekn[] j = new ekn[]{
-      cva.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      cva.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      cva.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      cva.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      cva.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dhz k = dhy.C;
-   public static final dhz d = dhy.j;
+public class czu extends cvf implements cvm {
+   private static final Codec<ecv> f = kc.d
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof ecv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
+   public static final MapCodec<czu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, czu::new));
+   public static final din b = did.aP;
+   protected final ecv c;
+   private final List<ecx> g;
+   public static final eks d = cvf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final ImmutableList<ib> e = ImmutableList.of(ib.a, ib.d, ib.c, ib.f, ib.e);
 
    @Override
    public MapCodec<czu> a() {
       return a;
    }
 
-   public czu(dgx $$0, dhh.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
-   }
+   protected czu(ecv $$0, dhm.d $$1) {
+      super($$1);
+      this.c = $$0;
+      this.g = Lists.newArrayList();
+      this.g.add($$0.a(false));
 
-   @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(f).a(b).a(k).a(d);
-   }
-
-   @Override
-   protected boolean b(dhi $$0, crg $$1, ht $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(cvc.dR);
-   }
-
-   @Nullable
-   @Override
-   public dhi a(cnr $$0) {
-      ecs $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ect.c;
-      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      eju $$4 = $$0.n($$1, $$2);
-      ekn $$5;
-      if (!$$0.c(d)) {
-         $$5 = j[4];
-      } else {
-         $$5 = j[$$0.c(b)];
+      for (int $$2 = 1; $$2 < 8; $$2++) {
+         this.g.add($$0.a(8 - $$2, false));
       }
 
-      return $$5.a($$4.c, $$4.d, $$4.e);
+      this.g.add($$0.a(8, true));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return h($$0) ? $$1.a_($$2.c()).a(cvc.aL) : super.a($$0, $$1, $$2);
+   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.c()), $$0.u()) ? d : ekp.a();
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(k)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   public boolean e_(dhn $$0) {
+      return $$0.u().f();
+   }
+
+   @Override
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      $$0.u().b($$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a_(dhn $$0, crl $$1, hx $$2) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      return !this.c.a(arp.b);
+   }
+
+   @Override
+   public ecx c_(dhn $$0) {
+      int $$1 = $$0.c(b);
+      return this.g.get(Math.min($$1, 8));
+   }
+
+   @Override
+   public boolean a(dhn $$0, dhn $$1, ib $$2) {
+      return $$1.u().a().a(this.c);
+   }
+
+   @Override
+   public dbk b_(dhn $$0) {
+      return dbk.a;
+   }
+
+   @Override
+   public List<clo> a(dhn $$0, efi.a $$1) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return ekp.a();
+   }
+
+   @Override
+   public void b(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
+      if (this.a($$1, $$2, $$0)) {
+         $$1.a($$2, $$0.u().a(), this.c.a((csi)$$1));
+      }
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.u().b() || $$2.u().b()) {
+         $$3.a($$4, $$0.u().a(), this.c.a($$3));
       }
 
-      return $$1 == hx.b && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(k) ? ect.c.a(false) : super.c_($$0);
+   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      if (this.a($$1, $$2, $$0)) {
+         $$1.a($$2, $$0.u().a(), this.c.a((csi)$$1));
+      }
    }
 
-   @Override
-   public void b(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if (!h($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
+   private boolean a(csf $$0, hx $$1, dhn $$2) {
+      if (this.c.a(arp.b)) {
+         boolean $$3 = $$0.a_($$1.d()).a(cvh.dX);
+         UnmodifiableIterator var5 = e.iterator();
+
+         while (var5.hasNext()) {
+            ib $$4 = (ib)var5.next();
+            hx $$5 = $$1.a($$4.g());
+            if ($$0.b_($$5).a(arp.a)) {
+               cvf $$6 = $$0.b_($$1).b() ? cvh.co : cvh.m;
+               $$0.b($$1, $$6.o());
+               this.a($$0, $$1);
+               return false;
+            }
+
+            if ($$3 && $$0.a_($$5).a(cvh.mW)) {
+               $$0.b($$1, cvh.dY.o());
+               this.a($$0, $$1);
+               return false;
+            }
          }
+      }
+
+      return true;
+   }
+
+   private void a(csg $$0, hx $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public clo a(@Nullable cdz $$0, csg $$1, hx $$2, dhn $$3) {
+      if ($$3.c(b) == 0) {
+         $$1.a($$2, cvh.a.o(), 11);
+         return new clo(this.c.a());
       } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
-         }
+         return clo.b;
       }
    }
 
    @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
-      return !h($$2) || !n($$2);
-   }
-
-   @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
-      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      if (h($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static boolean h(dhi $$0) {
-      return $$0.c(d);
-   }
-
-   private static boolean n(dhi $$0) {
-      return $$0.c(b) == 4;
-   }
-
-   public static dhi c() {
-      return b(0);
-   }
-
-   public static dhi b(int $$0) {
-      return cvc.E.o().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
+   public Optional<aqu> av_() {
+      return this.c.j();
    }
 }

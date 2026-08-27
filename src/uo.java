@@ -1,92 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
 import java.util.List;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record uo(String b, List<uo.a> c, vo d) {
-   public static final Codec<uo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(uo::a),
-               uo.a.d.listOf().fieldOf("parameters").forGetter(uo::b),
-               vo.b.b.optionalFieldOf("style", vo.a).forGetter(uo::c)
-            )
-            .apply($$0, uo::new)
-   );
+public class uo extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final to c;
 
-   public static uo a(String $$0) {
-      return new uo($$0, List.of(uo.a.a, uo.a.c), vo.a);
+   public uo(@Nullable to $$0) {
+      this.c = $$0;
    }
 
-   public static uo b(String $$0) {
-      vo $$1 = vo.a.a(n.h).b(true);
-      return new uo($$0, List.of(uo.a.a, uo.a.c), $$1);
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
    }
 
-   public static uo c(String $$0) {
-      vo $$1 = vo.a.a(n.h).b(true);
-      return new uo($$0, List.of(uo.a.b, uo.a.c), $$1);
-   }
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
 
-   public static uo d(String $$0) {
-      return new uo($$0, List.of(uo.a.b, uo.a.a, uo.a.c), vo.a);
-   }
-
-   public ur a(ur $$0, un.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return ur.a(this.b, $$2).c(this.d);
-   }
-
-   private ur[] b(ur $$0, un.a $$1) {
-      ur[] $$2 = new ur[this.c.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         uo.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!um.a($$3)) {
+            return true;
+         }
       }
 
-      return $$2;
+      throw new CorruptedFrameException("length wider than 21-bit");
    }
 
-   public String a() {
-      return this.b;
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = um.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + um.a($$3));
+            }
 
-   public List<uo.a> b() {
-      return this.c;
-   }
-
-   public vo c() {
-      return this.d;
-   }
-
-   public static enum a implements aug {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c()),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<uo.a> d = aug.a(uo.a::values);
-      private final String e;
-      private final uo.a.a f;
-
-      private a(String $$0, uo.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public ur a(ur $$0, un.a $$1) {
-         ur $$2 = this.f.select($$0, $$1);
-         return Objects.requireNonNullElse($$2, uq.a);
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         @Nullable
-         ur select(ur var1, un.a var2);
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

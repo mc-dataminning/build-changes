@@ -1,226 +1,97 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class agz extends ekt {
-   private final MinecraftServer a;
-   private final Set<ekq> b = Sets.newHashSet();
-   private final List<Runnable> c = Lists.newArrayList();
+public class agz implements apf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agf b = new agf("functions", ".mcfunction");
+   private volatile Map<agm, hb<du>> c = ImmutableMap.of();
+   private final asa<hb<du>> d = new asa<>(this::a, "tags/functions");
+   private volatile Map<agm, Collection<hb<du>>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<du> g;
 
-   public agz(MinecraftServer $$0) {
-      this.a = $$0;
+   public Optional<hb<du>> a(agm $$0) {
+      return Optional.ofNullable(this.c.get($$0));
+   }
+
+   public Map<agm, hb<du>> a() {
+      return this.c;
+   }
+
+   public Collection<hb<du>> b(agm $$0) {
+      return this.e.getOrDefault($$0, List.of());
+   }
+
+   public Iterable<agm> b() {
+      return this.e.keySet();
+   }
+
+   public agz(int $$0, CommandDispatcher<du> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
    @Override
-   public void a(eks $$0) {
-      super.a($$0);
-      if (this.b.contains($$0.d())) {
-         this.a.ae().a(new abn(agz.a.a, $$0.d().b(), $$0.e(), $$0.b()));
-      }
+   public CompletableFuture<Void> a(apf.a $$0, apl $$1, bfs $$2, bfs $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<agm, List<asa.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<agm, CompletableFuture<hb<du>>>> $$7 = CompletableFuture.<Map<agm, apj>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<agm, CompletableFuture<hb<du>>> $$2x = Maps.newHashMap();
+         du $$3x = new du(dt.a, ejz.b, ejy.a, null, this.f, "", uu.a, null, null);
 
-      this.a();
-   }
-
-   @Override
-   public void a(String $$0) {
-      super.a($$0);
-      this.a.ae().a(new abn(agz.a.b, null, $$0, 0));
-      this.a();
-   }
-
-   @Override
-   public void a(String $$0, ekq $$1) {
-      super.a($$0, $$1);
-      if (this.b.contains($$1)) {
-         this.a.ae().a(new abn(agz.a.b, $$1.b(), $$0, 0));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(ekp $$0, @Nullable ekq $$1) {
-      ekq $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.a.ae().a(new abd($$0, $$1));
-         } else {
-            this.g($$2);
+         for (Entry<agm, apj> $$4x : $$1x.entrySet()) {
+            agm $$5x = $$4x.getKey();
+            agm $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return hb.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
          }
-      }
 
-      if ($$1 != null) {
-         if (this.b.contains($$1)) {
-            this.a.ae().a(new abd($$0, $$1));
-         } else {
-            this.e($$1);
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<agm, CompletableFuture<hb<du>>> $$1x = (Map<agm, CompletableFuture<hb<du>>>)$$0x.getSecond();
+         Builder<agm, hb<du>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<agm, List<asa.a>>)$$0x.getFirst());
+      }, $$5);
+   }
+
+   private static List<String> a(apj $$0) {
+      try {
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
          }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, ekr $$1) {
-      if (super.a($$0, $$1)) {
-         this.a.ae().a(abm.a($$1, $$0, abm.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void b(String $$0, ekr $$1) {
-      super.b($$0, $$1);
-      this.a.ae().a(abm.a($$1, $$0, abm.a.b));
-      this.a();
-   }
-
-   @Override
-   public void a(ekq $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(ekq $$0) {
-      super.b($$0);
-      if (this.b.contains($$0)) {
-         this.a.ae().a(new abk($$0, 2));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void c(ekq $$0) {
-      super.c($$0);
-      if (this.b.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(ekr $$0) {
-      super.a($$0);
-      this.a.ae().a(abm.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(ekr $$0) {
-      super.b($$0);
-      this.a.ae().a(abm.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(ekr $$0) {
-      super.c($$0);
-      this.a.ae().a(abm.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.c.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.c) {
-         $$0.run();
-      }
-   }
-
-   public List<wk<?>> d(ekq $$0) {
-      List<wk<?>> $$1 = Lists.newArrayList();
-      $$1.add(new abk($$0, 0));
-
-      for (ekp $$2 : ekp.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new abd($$2, $$0));
-         }
-      }
-
-      for (eks $$3 : this.i($$0)) {
-         $$1.add(new abn(agz.a.a, $$3.d().b(), $$3.e(), $$3.b()));
-      }
-
-      return $$1;
-   }
-
-   public void e(ekq $$0) {
-      List<wk<?>> $$1 = this.d($$0);
-
-      for (amf $$2 : this.a.ae().t()) {
-         for (wk<?> $$3 : $$1) {
-            $$2.c.b($$3);
-         }
-      }
-
-      this.b.add($$0);
-   }
-
-   public List<wk<?>> f(ekq $$0) {
-      List<wk<?>> $$1 = Lists.newArrayList();
-      $$1.add(new abk($$0, 1));
-
-      for (ekp $$2 : ekp.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new abd($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(ekq $$0) {
-      List<wk<?>> $$1 = this.f($$0);
-
-      for (amf $$2 : this.a.ae().t()) {
-         for (wk<?> $$3 : $$1) {
-            $$2.c.b($$3);
-         }
-      }
-
-      this.b.remove($$0);
-   }
-
-   public int h(ekq $$0) {
-      int $$1 = 0;
-
-      for (ekp $$2 : ekp.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public edx.a<eku> b() {
-      return new edx.a<>(this::i, this::a, aus.n);
-   }
-
-   private eku i() {
-      eku $$0 = new eku(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private eku a(rz $$0) {
-      return this.i().b($$0);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

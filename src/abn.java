@@ -1,64 +1,40 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class abn implements wo<yh> {
+   private final float a;
+   private final int b;
+   private final float c;
 
-public class abn implements wk<yd> {
-   private final String a;
-   @Nullable
-   private final String b;
-   private final int c;
-   private final agz.a d;
-
-   public abn(agz.a $$0, @Nullable String $$1, String $$2, int $$3) {
-      if ($$0 != agz.a.b && $$1 == null) {
-         throw new IllegalArgumentException("Need an objective name");
-      } else {
-         this.a = $$2;
-         this.b = $$1;
-         this.c = $$3;
-         this.d = $$0;
-      }
+   public abn(float $$0, int $$1, float $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abn(tu $$0) {
-      this.a = $$0.s();
-      this.d = $$0.b(agz.a.class);
-      String $$1 = $$0.s();
-      this.b = Objects.equals($$1, "") ? null : $$1;
-      if (this.d != agz.a.b) {
-         this.c = $$0.n();
-      } else {
-         this.c = 0;
-      }
+   public abn(ty $$0) {
+      this.a = $$0.readFloat();
+      this.b = $$0.n();
+      this.c = $$0.readFloat();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.a(this.a);
-      $$0.a(this.d);
-      $$0.a(this.b == null ? "" : this.b);
-      if (this.d != agz.a.b) {
-         $$0.c(this.c);
-      }
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public float a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
+   public int d() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public agz.a f() {
-      return this.d;
    }
 }

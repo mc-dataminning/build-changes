@@ -1,20 +1,29 @@
-public class fxy extends fwo<car, fjk<car>> {
-   private static final agi a = new agi("textures/entity/skeleton/skeleton.png");
+public class fxy extends fxi<bxr, fji<bxr>> {
+   private static final agm a = new agm("textures/entity/fish/salmon.png");
 
-   public fxy(fvx.a $$0) {
-      this($$0, fkn.bh, fkn.bj, fkn.bk);
+   public fxy(fwc.a $$0) {
+      super($$0, new fji<>($$0.a(fks.ba)), 0.4F);
    }
 
-   public fxy(fvx.a $$0, fkm $$1, fkm $$2, fkm $$3) {
-      super($$0, new fjk<>($$0.a($$1)), 0.5F);
-      this.a(new fzv<>(this, new fjk($$0.a($$2)), new fjk($$0.a($$3)), $$0.g()));
-   }
-
-   public agi a(car $$0) {
+   public agm a(bxr $$0) {
       return a;
    }
 
-   protected boolean b(car $$0) {
-      return $$0.gf();
+   protected void a(bxr $$0, eob $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
+      }
+
+      float $$7 = $$5 * 4.3F * atq.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

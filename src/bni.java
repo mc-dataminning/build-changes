@@ -1,44 +1,37 @@
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bni implements bok {
-   private final bkq a;
-   private final boolean b;
+public class bni extends bnc<bll> {
+   private final bum<Integer> c;
 
-   public bni(bkq $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bni(bum<Integer> $$0) {
+      super(ImmutableMap.of($$0, bun.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bll $$0) {
+      return $$0.dP().c(this.c);
    }
 
    @Override
-   public eju a() {
-      return this.b ? this.a.dl().b(0.0, (double)this.a.cI(), 0.0) : this.a.dl();
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   public ht b() {
-      return this.a.dn();
+   protected boolean a(ami $$0, bll $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
    @Override
-   public boolean a(blg $$0) {
-      if (this.a instanceof blg $$1) {
-         if (!$$1.bx()) {
-            return false;
-         } else {
-            Optional<buj> $$3 = $$0.dP().c(buh.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public bkq c() {
-      return this.a;
+   protected void c(ami $$0, bll $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dP().a(this.c, $$3.get() - 1);
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   protected void b(ami $$0, bll $$1, long $$2) {
+      $$1.dP().b(this.c);
    }
 }

@@ -1,71 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class dun extends dur {
+public record dun(duf b, List<dun.a> c) {
    public static final Codec<dun> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               dua.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               asu.a(hx.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dun::new)
+      $$0 -> $$0.group(duf.a.fieldOf("fallback").forGetter(dun::a), dun.a.a.listOf().fieldOf("rules").forGetter(dun::b)).apply($$0, dun::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final dua e;
-   protected final int f;
-   protected final List<hx> g;
 
-   public dun(float $$0, int $$1, int $$2, dua $$3, int $$4, List<hx> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public static dun a(duf $$0) {
+      return new dun($$0, List.of());
    }
 
-   @Override
-   public void a(dur.a $$0) {
-      Set<ht> $$1 = new HashSet<>();
-      ats $$2 = $$0.b();
-
-      for (ht $$3 : ac.a($$0.d(), $$2)) {
-         hx $$4 = ac.a(this.g, $$2);
-         ht $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            ht $$6 = $$5.b(-this.c, -this.d, -this.c);
-            ht $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (ht $$8 : ht.a($$6, $$7)) {
-               $$1.add($$8.i());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
+   public static dun a(cvf $$0) {
+      return a(duf.a($$0));
    }
 
-   private boolean a(dur.a $$0, ht $$1, hx $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         ht $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
+   public dhn a(csz $$0, atw $$1, hx $$2) {
+      for (dun.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
       }
 
-      return true;
+      return this.b.a($$1, $$2);
    }
 
-   @Override
-   protected dus<?> a() {
-      return dus.f;
+   public duf a() {
+      return this.b;
+   }
+
+   public List<dun.a> b() {
+      return this.c;
+   }
+
+   public static record a(dod b, duf c) {
+      public static final Codec<dun.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dod.b.fieldOf("if_true").forGetter(dun.a::a), duf.a.fieldOf("then").forGetter(dun.a::b)).apply($$0, dun.a::new)
+      );
+
+      public dod a() {
+         return this.b;
+      }
+
+      public duf b() {
+         return this.c;
+      }
    }
 }

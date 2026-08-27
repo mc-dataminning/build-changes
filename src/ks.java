@@ -1,50 +1,235 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class ks implements kf {
-   private static final Logger d = LogUtils.getLogger();
-   private final Path e;
-   private final CompletableFuture<id.b> f;
-   private static final MapCodec<agh<csy>> g = agh.a(jz.ar).fieldOf("biome");
-   private static final Codec<cth.c<agh<csy>>> h = cth.c.a(g).fieldOf("biomes").codec();
-
-   public ks(kh $$0, CompletableFuture<id.b> $$1) {
-      this.e = $$0.a(kh.b.c).resolve("biome_parameters");
-      this.f = $$1;
-   }
+public class ks implements kn {
+   private static final bc a = bc.a(
+      eie.a(efc.b.a, bq.a.a().a(bn.a.a().a(cb.a.a().a(clr.pL)))).invert().build(),
+      eie.a(efc.b.a, bq.a.a().a(bn.a.a().b(cb.a.a().a(clr.pM)))).invert().build(),
+      eie.a(efc.b.a, bq.a.a().a(bn.a.a().c(cb.a.a().a(clr.pN)))).invert().build(),
+      eie.a(efc.b.a, bq.a.a().a(bn.a.a().d(cb.a.a().a(clr.pO)))).invert().build()
+   );
 
    @Override
-   public CompletableFuture<?> a(kd $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = agg.a(JsonOps.INSTANCE, $$1);
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ctm.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private static <E> CompletableFuture<?> a(Path $$0, kd $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? kf.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
-
-   private Path a(agi $$0) {
-      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
-   }
-
-   @Override
-   public final String a() {
-      return "Biome Parameters";
+   public void a(ii.b $$0, Consumer<af> $$1) {
+      af $$2 = ae.a.a()
+         .a(
+            cvh.kL,
+            uv.c("advancements.nether.root.title"),
+            uv.c("advancements.nether.root.description"),
+            new agm("textures/gui/advancements/backgrounds/nether.png"),
+            ar.a,
+            false,
+            false,
+            false
+         )
+         .a("entered_nether", ay.a.a(csf.i))
+         .a($$1, "nether/root");
+      af $$3 = ae.a.a()
+         .a($$2)
+         .a(clr.tR, uv.c("advancements.nether.return_to_sender.title"), uv.c("advancements.nether.return_to_sender.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(50))
+         .a("killed_ghast", ce.a.a(bq.a.a().a(bkz.Q), bf.a.a().a(dc.a(arm.j)).a(bq.a.a().a(bkz.ag))))
+         .a($$1, "nether/return_to_sender");
+      af $$4 = ae.a.a()
+         .a($$2)
+         .a(cvh.fn, uv.c("advancements.nether.find_fortress.title"), uv.c("advancements.nether.find_fortress.description"), null, ar.a, true, true, false)
+         .a("fortress", cs.a.a(cj.a.c(dxg.o)))
+         .a($$1, "nether/find_fortress");
+      ae.a.a()
+         .a($$2)
+         .a(clr.ub, uv.c("advancements.nether.fast_travel.title"), uv.c("advancements.nether.fast_travel.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(100))
+         .a("travelled", bi.a.a(bh.a(cl.c.b(7000.0))))
+         .a($$1, "nether/fast_travel");
+      ae.a.a()
+         .a($$3)
+         .a(clr.se, uv.c("advancements.nether.uneasy_alliance.title"), uv.c("advancements.nether.uneasy_alliance.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(100))
+         .a("killed_ghast", ce.a.a(bq.a.a().a(bkz.Q).a(cj.a.b(csf.h))))
+         .a($$1, "nether/uneasy_alliance");
+      af $$5 = ae.a.a()
+         .a($$4)
+         .a(cvh.gG, uv.c("advancements.nether.get_wither_skull.title"), uv.c("advancements.nether.get_wither_skull.description"), null, ar.a, true, true, false)
+         .a("wither_skull", bz.a.a(cvh.gG))
+         .a($$1, "nether/get_wither_skull");
+      af $$6 = ae.a.a()
+         .a($$5)
+         .a(clr.uk, uv.c("advancements.nether.summon_wither.title"), uv.c("advancements.nether.summon_wither.description"), null, ar.a, true, true, false)
+         .a("summoned", db.a.a(bq.a.a().a(bkz.bk)))
+         .a($$1, "nether/summon_wither");
+      af $$7 = ae.a.a()
+         .a($$4)
+         .a(clr.sd, uv.c("advancements.nether.obtain_blaze_rod.title"), uv.c("advancements.nether.obtain_blaze_rod.description"), null, ar.a, true, true, false)
+         .a("blaze_rod", bz.a.a(clr.sd))
+         .a($$1, "nether/obtain_blaze_rod");
+      af $$8 = ae.a.a()
+         .a($$6)
+         .a(cvh.fO, uv.c("advancements.nether.create_beacon.title"), uv.c("advancements.nether.create_beacon.description"), null, ar.a, true, true, false)
+         .a("beacon", ba.a.a(cl.d.b(1)))
+         .a($$1, "nether/create_beacon");
+      ae.a.a()
+         .a($$8)
+         .a(
+            cvh.fO,
+            uv.c("advancements.nether.create_full_beacon.title"),
+            uv.c("advancements.nether.create_full_beacon.description"),
+            null,
+            ar.c,
+            true,
+            true,
+            false
+         )
+         .a("beacon", ba.a.a(cl.d.a(4)))
+         .a($$1, "nether/create_full_beacon");
+      af $$9 = ae.a.a()
+         .a($$7)
+         .a(clr.sh, uv.c("advancements.nether.brew_potion.title"), uv.c("advancements.nether.brew_potion.description"), null, ar.a, true, true, false)
+         .a("potion", ax.a.c())
+         .a($$1, "nether/brew_potion");
+      af $$10 = ae.a.a()
+         .a($$9)
+         .a(clr.qB, uv.c("advancements.nether.all_potions.title"), uv.c("advancements.nether.all_potions.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(100))
+         .a(
+            "all_effects",
+            bj.a.a(cm.a.a().a(bkk.a).a(bkk.b).a(bkk.e).a(bkk.h).a(bkk.j).a(bkk.l).a(bkk.m).a(bkk.n).a(bkk.p).a(bkk.r).a(bkk.s).a(bkk.B).a(bkk.k))
+         )
+         .a($$1, "nether/all_potions");
+      ae.a.a()
+         .a($$10)
+         .a(clr.qv, uv.c("advancements.nether.all_effects.title"), uv.c("advancements.nether.all_effects.description"), null, ar.b, true, true, true)
+         .a(aj.a.a(1000))
+         .a(
+            "all_effects",
+            bj.a.a(
+               cm.a.a()
+                  .a(bkk.a)
+                  .a(bkk.b)
+                  .a(bkk.e)
+                  .a(bkk.h)
+                  .a(bkk.j)
+                  .a(bkk.l)
+                  .a(bkk.m)
+                  .a(bkk.n)
+                  .a(bkk.p)
+                  .a(bkk.r)
+                  .a(bkk.s)
+                  .a(bkk.t)
+                  .a(bkk.c)
+                  .a(bkk.d)
+                  .a(bkk.y)
+                  .a(bkk.x)
+                  .a(bkk.v)
+                  .a(bkk.q)
+                  .a(bkk.i)
+                  .a(bkk.k)
+                  .a(bkk.B)
+                  .a(bkk.C)
+                  .a(bkk.D)
+                  .a(bkk.o)
+                  .a(bkk.E)
+                  .a(bkk.F)
+                  .a(bkk.G)
+            )
+         )
+         .a($$1, "nether/all_effects");
+      af $$11 = ae.a.a()
+         .a($$2)
+         .a(
+            clr.aC,
+            uv.c("advancements.nether.obtain_ancient_debris.title"),
+            uv.c("advancements.nether.obtain_ancient_debris.description"),
+            null,
+            ar.a,
+            true,
+            true,
+            false
+         )
+         .a("ancient_debris", bz.a.a(clr.aC))
+         .a($$1, "nether/obtain_ancient_debris");
+      ae.a.a()
+         .a($$11)
+         .a(clr.pQ, uv.c("advancements.nether.netherite_armor.title"), uv.c("advancements.nether.netherite_armor.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(100))
+         .a("netherite_armor", bz.a.a(clr.pP, clr.pQ, clr.pR, clr.pS))
+         .a($$1, "nether/netherite_armor");
+      ae.a.a()
+         .a($$11)
+         .a(clr.wr, uv.c("advancements.nether.use_lodestone.title"), uv.c("advancements.nether.use_lodestone.description"), null, ar.a, true, true, false)
+         .a("use_lodestone", cc.a.a(cj.a.a().a(av.a.a().a(cvh.pq)), cb.a.a().a(clr.qP)))
+         .a($$1, "nether/use_lodestone");
+      af $$12 = ae.a.a()
+         .a($$2)
+         .a(
+            clr.ws,
+            uv.c("advancements.nether.obtain_crying_obsidian.title"),
+            uv.c("advancements.nether.obtain_crying_obsidian.description"),
+            null,
+            ar.a,
+            true,
+            true,
+            false
+         )
+         .a("crying_obsidian", bz.a.a(clr.ws))
+         .a($$1, "nether/obtain_crying_obsidian");
+      ae.a.a()
+         .a($$12)
+         .a(
+            clr.wF,
+            uv.c("advancements.nether.charge_respawn_anchor.title"),
+            uv.c("advancements.nether.charge_respawn_anchor.description"),
+            null,
+            ar.a,
+            true,
+            true,
+            false
+         )
+         .a("charge_respawn_anchor", cc.a.a(cj.a.a().a(av.a.a().a(cvh.pl).a(da.a.a().a(dbm.d, 4))), cb.a.a().a(cvh.ec)))
+         .a($$1, "nether/charge_respawn_anchor");
+      af $$13 = ae.a.a()
+         .a($$2)
+         .a(clr.nR, uv.c("advancements.nether.ride_strider.title"), uv.c("advancements.nether.ride_strider.description"), null, ar.a, true, true, false)
+         .a("used_warped_fungus_on_a_stick", ca.a.a(Optional.of(bq.a(bq.a.a().a(bq.a.a().a(bkz.aV)))), Optional.of(cb.a.a().a(clr.nR).b()), cl.d.c))
+         .a($$1, "nether/ride_strider");
+      ae.a.a()
+         .a($$13)
+         .a(
+            clr.nR,
+            uv.c("advancements.nether.ride_strider_in_overworld_lava.title"),
+            uv.c("advancements.nether.ride_strider_in_overworld_lava.description"),
+            null,
+            ar.a,
+            true,
+            true,
+            false
+         )
+         .a("ride_entity_distance", bi.a.a(bq.a.a().a(cj.a.b(csf.h)).a(bq.a.a().a(bkz.aV)), bh.a(cl.c.b(50.0))))
+         .a($$1, "nether/ride_strider_in_overworld_lava");
+      kq.a(ae.a.a(), ctr.a.a.a().toList())
+         .a($$13)
+         .a(clr.pS, uv.c("advancements.nether.explore_nether.title"), uv.c("advancements.nether.explore_nether.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(500))
+         .a($$1, "nether/explore_nether");
+      af $$14 = ae.a.a()
+         .a($$2)
+         .a(clr.wB, uv.c("advancements.nether.find_bastion.title"), uv.c("advancements.nether.find_bastion.description"), null, ar.a, true, true, false)
+         .a("bastion", cs.a.a(cj.a.c(dxg.s)))
+         .a($$1, "nether/find_bastion");
+      ae.a.a()
+         .a($$14)
+         .a(cvh.cv, uv.c("advancements.nether.loot_bastion.title"), uv.c("advancements.nether.loot_bastion.description"), null, ar.a, true, true, false)
+         .a(ai.a.b)
+         .a("loot_bastion_other", ck.a.a(new agm("minecraft:chests/bastion_other")))
+         .a("loot_bastion_treasure", ck.a.a(new agm("minecraft:chests/bastion_treasure")))
+         .a("loot_bastion_hoglin_stable", ck.a.a(new agm("minecraft:chests/bastion_hoglin_stable")))
+         .a("loot_bastion_bridge", ck.a.a(new agm("minecraft:chests/bastion_bridge")))
+         .a($$1, "nether/loot_bastion");
+      ae.a.a()
+         .a($$2)
+         .a(ai.a.b)
+         .a(clr.oF, uv.c("advancements.nether.distract_piglin.title"), uv.c("advancements.nether.distract_piglin.description"), null, ar.a, true, true, false)
+         .a("distract_piglin", co.a.a(a, Optional.of(cb.a.a().a(ars.U).b()), Optional.of(bq.a(bq.a.a().a(bkz.aw).a(bo.a.a().e(false))))))
+         .a("distract_piglin_directly", cq.a.a(Optional.of(a), cb.a.a().a(ccq.c), Optional.of(bq.a(bq.a.a().a(bkz.aw).a(bo.a.a().e(false))))))
+         .a($$1, "nether/distract_piglin");
    }
 }

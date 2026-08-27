@@ -1,40 +1,28 @@
-public class aau implements wk<yd> {
-   private final double a;
-   private final double b;
-   private final long c;
+import javax.annotation.Nullable;
 
-   public aau(diz $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
+public class aau implements wo<yh> {
+   @Nullable
+   private final agm a;
+
+   public aau(@Nullable agm $$0) {
+      this.a = $$0;
    }
 
-   public aau(tu $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.o();
-   }
-
-   @Override
-   public void a(tu $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public aau(ty $$0) {
+      this.a = $$0.c(ty::t);
+   }
+
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.a, ty::a);
+   }
+
+   @Nullable
+   public agm a() {
       return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
    }
 }

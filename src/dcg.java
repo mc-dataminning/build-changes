@@ -1,49 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dcg extends ctv {
-   public static final MapCodec<dcg> c = b(dcg::new);
+public class dcg extends cub {
+   public static final MapCodec<dcg> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dcg.a.b.fieldOf("kind").forGetter(cub::b), u()).apply($$0, dcg::new));
+   public static final int d = dit.a();
+   private static final int b = d + 1;
+   public static final din e = did.ba;
+   protected static final eks f = cvf.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final eks g = cvf.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dcg> a() {
+   public MapCodec<? extends dcg> a() {
       return c;
    }
 
-   protected dcg(dhh.d $$0) {
-      super($$0);
+   protected dcg(dcg.a $$0, dhm.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dgp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
-      return a($$0, $$2, dff.B);
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return this.b() == dcg.b.h ? g : f;
    }
 
    @Override
-   protected void a(csa $$0, ht $$1, cdu $$2) {
-      dfd $$3 = $$0.c_($$1);
-      if ($$3 instanceof dgp) {
-         $$2.a((bja)$$3);
-         $$2.a(arb.at);
+   public eks f(dhn $$0, crl $$1, hx $$2) {
+      return ekp.a();
+   }
+
+   @Override
+   public dhn a(cnw $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dit.a($$0.i())));
+   }
+
+   @Override
+   public dhn a(dhn $$0, dbr $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   public dhn a(dhn $$0, dab $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends auk {
+      Map<String, dcg.a> a = new Object2ObjectArrayMap();
+      Codec<dcg.a> b = asy.a(auk::c, a::get);
+   }
+
+   public static enum b implements dcg.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aqr.wS, aqs.e, 1.0F, 1.0F, false);
-         }
-
-         $$1.a(js.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

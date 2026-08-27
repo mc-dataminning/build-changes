@@ -1,16 +1,28 @@
-public class fvq extends fwl {
-   public static final agi a = new agi("textures/entity/guardian_elder.png");
+public class fvq extends fxi<caz, fho<caz>> {
+   private static final agm a = new agm("textures/entity/creeper/creeper.png");
 
-   public fvq(fvx.a $$0) {
-      super($$0, 1.2F, fkn.P);
+   public fvq(fwc.a $$0) {
+      super($$0, new fho<>($$0.a(fks.B)), 0.5F);
+      this.a(new fzn(this, $$0.f()));
    }
 
-   protected void a(cbe $$0, enw $$1, float $$2) {
-      $$1.b(cax.b, cax.b, cax.b);
+   protected void a(caz $$0, eob $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + atq.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = atq.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   @Override
-   public agi a(cbe $$0) {
+   protected float a(caz $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : atq.a($$2, 0.5F, 1.0F);
+   }
+
+   public agm a(caz $$0) {
       return a;
    }
 }

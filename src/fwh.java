@@ -1,19 +1,28 @@
-public class fwh extends fxd<cbc, fht<cbc>> {
-   private static final agi a = new agi("textures/entity/ghast/ghast.png");
-   private static final agi i = new agi("textures/entity/ghast/ghast_shooting.png");
+public class fwh extends fwb<car> {
+   private final frt a;
 
-   public fwh(fvx.a $$0) {
-      super($$0, new fht<>($$0.a(fkn.aa)), 1.5F);
+   public fwh(fwc.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public agi a(cbc $$0) {
-      return $$0.u() ? i : a;
+   public void a(car $$0, float $$1, float $$2, eob $$3, fqz $$4, int $$5) {
+      dhn $$6 = $$0.u();
+      if ($$6.l() == dbk.c) {
+         csf $$7 = $$0.dN();
+         if ($$6 != $$7.a_($$0.dn()) && $$6.l() != dbk.a) {
+            $$3.a();
+            hx $$8 = hx.a($$0.ds(), $$0.cH().e, $$0.dy());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fqu.b($$6)), false, atw.a(), $$6.a($$0.q()), gbq.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   protected void a(cbc $$0, enw $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public agm a(car $$0) {
+      return gby.e;
    }
 }

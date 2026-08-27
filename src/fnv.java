@@ -1,79 +1,41 @@
-import javax.annotation.Nullable;
+public class fnv<T extends jr> extends fpo {
+   private final fpj a;
 
-public class fnv extends fpj {
-   private final float a;
-   private final fpe b;
+   protected fnv(flo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fpj $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.e().x(), $$9);
+      this.w = this.a($$7.e().y(), $$9);
+      this.x = this.a($$7.e().z(), $$9);
+      this.D = this.D * 0.75F * $$7.f();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
+      this.b($$8);
+   }
 
-   fnv(flj $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fpe $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public fom b() {
-      return fom.b;
+   public fos b() {
+      return fos.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * atm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * atq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements fol<jk> {
-      private final fpe a;
-
-      public a(fpe $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      public foi a(jk $$0, flj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dhi $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == dbf.a) {
-            return null;
-         } else {
-            ht $$9 = ht.a($$2, $$3, $$4);
-            int $$10 = etd.N().at().a($$8, $$1, $$9);
-            if ($$8.b() instanceof cxw) {
-               $$10 = ((cxw)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fnv($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
-      }
+      super.a();
+      this.b(this.a);
    }
 }

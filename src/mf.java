@@ -1,32 +1,22 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonPrimitive;
 
 public class mf {
-   @Deprecated
-   public static agi a(String $$0) {
-      return new agi("minecraft", "block/" + $$0);
-   }
+   public static final mg<mf.a> a = new mg<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final mg<mf.a> b = new mg<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final mg<agm> c = new mg<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final mg<Boolean> d = new mg<>("uvlock", JsonPrimitive::new);
+   public static final mg<Integer> e = new mg<>("weight", JsonPrimitive::new);
 
-   public static agi b(String $$0) {
-      return new agi("minecraft", "item/" + $$0);
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public static agi a(cva $$0, String $$1) {
-      agi $$2 = jy.f.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
+      final int e;
 
-   public static agi a(cva $$0) {
-      agi $$1 = jy.f.b($$0);
-      return $$1.d("block/");
-   }
-
-   public static agi a(cle $$0) {
-      agi $$1 = jy.i.b($$0);
-      return $$1.d("item/");
-   }
-
-   public static agi a(cle $$0, String $$1) {
-      agi $$2 = jy.i.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+      private a(int $$0) {
+         this.e = $$0;
+      }
    }
 }

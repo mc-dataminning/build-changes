@@ -1,75 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Objects;
 
 public class axn extends DataFix {
-   public axn(Schema $$0) {
-      super($$0, false);
+   private static final List<String> a = Lists.newArrayList(new String[]{"MinecartRideable", "MinecartChest", "MinecartFurnace"});
+
+   public axn(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bat.x), this::a);
-   }
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bax.x);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bax.x);
+      return this.fixTypeEverywhere(
+         "EntityMinecartIdentifiersFix",
+         $$0,
+         $$1,
+         $$2 -> $$3 -> {
+               if (!Objects.equals($$3.getFirst(), "Minecart")) {
+                  return $$3;
+               } else {
+                  Typed<? extends Pair<String, ?>> $$4 = (Typed<? extends Pair<String, ?>>)$$0.point($$2, "Minecart", $$3.getSecond())
+                     .orElseThrow(IllegalStateException::new);
+                  Dynamic<?> $$5 = (Dynamic<?>)$$4.getOrCreate(DSL.remainderFinder());
+                  int $$6 = $$5.get("Type").asInt(0);
+                  String $$7;
+                  if ($$6 > 0 && $$6 < a.size()) {
+                     $$7 = a.get($$6);
+                  } else {
+                     $$7 = "MinecartRideable";
+                  }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:egg", this::d);
-      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
-      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
-      $$0 = this.a($$0, "minecraft:snowball", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::c);
-      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
-      $$0 = this.a($$0, "minecraft:arrow", this::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
-      return this.a($$0, "minecraft:trident", this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
-      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Owner");
-      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
-      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$2, $$3).remove("Owner");
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Potion");
-      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      String $$1 = "owner";
-      OptionalDynamic<?> $$2 = $$0.get("owner");
-      long $$3 = $$2.get("M").asLong(0L);
-      long $$4 = $$2.get("L").asLong(0L);
-      return this.a($$0, $$3, $$4).remove("owner");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
-      String $$3 = "OwnerUUID";
-      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
-   }
-
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
-   }
-
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bat.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bat.x, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+                  return Pair.of(
+                     $$7,
+                     (DataResult)$$4.write()
+                        .map($$2xx -> ((Type)$$1.types().get($$7)).read($$2xx))
+                        .result()
+                        .orElseThrow(() -> new IllegalStateException("Could not read the new minecart."))
+                  );
+               }
+            }
+      );
    }
 }

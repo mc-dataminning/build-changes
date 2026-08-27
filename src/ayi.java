@@ -1,84 +1,17 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Objects;
 
-public class ayi extends DataFix {
-   private static final String a = "minecraft:empty";
+public class ayi extends bbh {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
 
    public ayi(Schema $$0) {
-      super($$0, true);
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bat.x);
-      Type<?> $$1 = this.getOutputSchema().getType(bat.x);
-      return this.fixTypeEverywhereTyped(
-         "Fix AbstractArrow item type",
-         $$0,
-         $$1,
-         this.a(this.a("minecraft:trident", ayi::c), this.a("minecraft:arrow", ayi::a), this.a("minecraft:spectral_arrow", ayi::b))
-      );
-   }
-
-   @SafeVarargs
-   private <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
-         }
-
-         return $$1;
-      };
-   }
-
-   private Function<Typed<?>, Typed<?>> a(String $$0, ayi.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bat.x, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(bat.x, $$0);
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, ayi.a<?> $$1, Type<?> $$2, Type<T> $$3) {
-      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
-      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
-   }
-
-   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
-      return (Typed<T>)ac.<Pair, IllegalStateException>a(
-            $$0.write().map($$0x -> $$0x.set("item", a($$0x, a($$0x)))).flatMap($$1::readTyped),
-            $$0x -> new IllegalStateException("Could not parse the value " + $$0x)
-         )
-         .getFirst();
-   }
-
-   private static String a(Dynamic<?> $$0) {
-      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-   }
-
-   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
-      return (Typed<T>)ac.<Pair, IllegalStateException>a(
-            $$0.write().map($$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow"))).flatMap($$1::readTyped),
-            $$0x -> new IllegalStateException("Could not parse the value " + $$0x)
-         )
-         .getFirst();
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
-   }
-
-   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
-      return new Typed($$1, $$0.getOps(), $$0.getValue());
-   }
-
-   interface a<F> {
-      Typed<F> fix(Typed<?> var1, Type<F> var2);
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

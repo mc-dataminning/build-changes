@@ -1,140 +1,72 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class cup extends cva implements dca {
-   protected static final ekn a = cva.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final ekn b = cva.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dhz c = dhy.C;
-   private final boolean d;
+public abstract class cup extends cvf implements dcf {
+   public static final die d = did.C;
+   private static final eks a = cvf.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   public static boolean a(csa $$0, ht $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(dhi $$0) {
-      return $$0.a(arg.N) && $$0.b() instanceof cup;
-   }
-
-   protected cup(boolean $$0, dhh.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected cup(dhm.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
    protected abstract MapCodec<? extends cup> a();
 
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      dim $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
-   }
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return c($$1, $$2.d());
-   }
-
-   @Override
-   public void b(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   protected void a(dhn $$0, csg $$1, hx $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.F_().a(40));
       }
    }
 
-   protected dhi a(dhi $$0, csa $$1, ht $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, cva $$3, ht $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dim $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(ht $$0, csa $$1, dim $$2) {
-      if (!c($$1, $$0.d())) {
+   protected static boolean e(dhn $$0, crl $$1, hx $$2) {
+      if ($$0.c(d)) {
          return true;
       } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
-      }
-   }
-
-   protected void a(dhi $$0, csa $$1, ht $$2, cva $$3) {
-   }
-
-   protected dhi a(csa $$0, ht $$1, dhi $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dim $$4 = $$2.c(this.c());
-         return new daz($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
-      }
-   }
-
-   @Override
-   public void a(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
+         for (ib $$3 : ib.values()) {
+            if ($$1.b_($$2.a($$3)).a(arp.a)) {
+               return true;
+            }
          }
 
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
+         return false;
       }
    }
 
+   @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      ecs $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ect.c;
-      dhi $$3 = super.o();
-      hx $$4 = $$0.g();
-      boolean $$5 = $$4 == hx.f || $$4 == hx.e;
-      return $$3.a(this.c(), $$5 ? dim.b : dim.a).a(c, Boolean.valueOf($$2));
+   public dhn a(cnw $$0) {
+      ecx $$1 = $$0.q().b_($$0.a());
+      return this.o().a(d, Boolean.valueOf($$1.a(arp.a) && $$1.e() == 8));
    }
 
-   public abstract dil<dim> c();
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return a;
+   }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$1 == ib.a && !this.a($$0, (csi)$$3, $$4) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
+   public boolean a(dhn $$0, csi $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ib.b);
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public ecx c_(dhn $$0) {
+      return $$0.c(d) ? ecy.c.a(false) : super.c_($$0);
    }
 }

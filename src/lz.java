@@ -1,49 +1,115 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public final class lz {
-   private static final lz a = new lz(ImmutableList.of());
-   private static final Comparator<dil.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<dil.a<?>> c;
+public interface lz extends Supplier<JsonElement> {
+   void a(dho<?, ?> var1);
 
-   public lz a(dil.a<?> $$0) {
-      return new lz(ImmutableList.builder().addAll(this.c).add($$0).build());
+   static lz.c a() {
+      return new lz.c();
    }
 
-   public lz a(lz $$0) {
-      return new lz(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   static lz a(lz... $$0) {
+      return new lz.a(lz.b.a, Arrays.asList($$0));
    }
 
-   private lz(List<dil.a<?>> $$0) {
-      this.c = $$0;
+   static lz b(lz... $$0) {
+      return new lz.a(lz.b.b, Arrays.asList($$0));
    }
 
-   public static lz a() {
-      return a;
+   public static class a implements lz {
+      private final lz.b a;
+      private final List<lz> b;
+
+      a(lz.b $$0, List<lz> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(dho<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
+      }
+
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
+      }
    }
 
-   public static lz a(dil.a<?>... $$0) {
-      return new lz(ImmutableList.copyOf($$0));
+   public static enum b {
+      a("AND"),
+      b("OR");
+
+      final String c;
+
+      private b(String $$0) {
+         this.c = $$0;
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof lz && this.c.equals(((lz)$$0).c);
-   }
+   public static class c implements lz {
+      private final Map<diq<?>, String> a = Maps.newHashMap();
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
+      private static <T extends Comparable<T>> String a(diq<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
+      }
 
-   public String b() {
-      return this.c.stream().sorted(b).map(dil.a::toString).collect(Collectors.joining(","));
-   }
+      private static <T extends Comparable<T>> String c(diq<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
+      }
 
-   @Override
-   public String toString() {
-      return this.b();
+      private <T extends Comparable<T>> void a(diq<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
+      }
+
+      public final <T extends Comparable<T>> lz.c a(diq<T> $$0, T $$1) {
+         this.a($$0, $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> lz.c a(diq<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> lz.c b(diq<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> lz.c b(diq<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
+         return $$0;
+      }
+
+      @Override
+      public void a(dho<?, ?> $$0) {
+         List<diq<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
+      }
    }
 }

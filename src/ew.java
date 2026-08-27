@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class ew<T> implements ArgumentType<ew.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final agh<? extends io<T>> b;
+   final agl<? extends is<T>> b;
 
-   public ew(agh<? extends io<T>> $$0) {
+   public ew(agl<? extends is<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> ew<T> a(agh<? extends io<T>> $$0) {
+   public static <T> ew<T> a(agl<? extends is<T>> $$0) {
       return new ew<>($$0);
    }
 
-   public static <T> ew.c<T> a(CommandContext<du> $$0, String $$1, agh<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> ew.c<T> a(CommandContext<du> $$0, String $$1, agl<is<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       ew.c<?> $$4 = (ew.c<?>)$$0.getArgument($$1, ew.c.class);
       Optional<ew.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
 
          try {
             $$0.skip();
-            agi $$2 = agi.a($$0);
-            return new ew.d<>(arv.a(this.b, $$2));
+            agm $$2 = agm.a($$0);
+            return new ew.d<>(arz.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         agi $$4 = agi.a($$0);
-         return new ew.b<>(agh.a(this.b, $$4));
+         agm $$4 = agm.a($$0);
+         return new ew.b<>(agl.a(this.b, $$4));
       }
    }
 
@@ -57,12 +57,12 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
       return a;
    }
 
-   public static class a<T> implements hf<ew<T>, ew.a<T>.a> {
-      public void a(ew.a<T>.a $$0, tu $$1) {
+   public static class a<T> implements hj<ew<T>, ew.a<T>.a> {
+      public void a(ew.a<T>.a $$0, ty $$1) {
          $$1.b($$0.b);
       }
 
-      public ew.a<T>.a a(tu $$0) {
+      public ew.a<T>.a a(ty $$0) {
          return new ew.a.a($$0.u());
       }
 
@@ -74,10 +74,10 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          return new ew.a.a($$0.b);
       }
 
-      public final class a implements hf.a<ew<T>> {
-         final agh<? extends io<T>> b;
+      public final class a implements hj.a<ew<T>> {
+         final agl<? extends is<T>> b;
 
-         a(agh<? extends io<T>> $$1) {
+         a(agl<? extends is<T>> $$1) {
             this.b = $$1;
          }
 
@@ -86,24 +86,24 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          }
 
          @Override
-         public hf<ew<T>, ?> a() {
+         public hj<ew<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   static record b<T>(agh<T> a) implements ew.c<T> {
+   static record b<T>(agl<T> a) implements ew.c<T> {
       @Override
-      public Either<agh<T>, arv<T>> a() {
+      public Either<agl<T>, arz<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<ew.c<E>> a(agh<? extends io<E>> $$0) {
+      public <E> Optional<ew.c<E>> a(agl<? extends is<E>> $$0) {
          return this.a.c($$0).map(ew.b::new);
       }
 
-      public boolean a(ib<T> $$0) {
+      public boolean a(ig<T> $$0) {
          return $$0.a(this.a);
       }
 
@@ -112,31 +112,31 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          return this.a.a().toString();
       }
 
-      public agh<T> c() {
+      public agl<T> c() {
          return this.a;
       }
    }
 
-   public interface c<T> extends Predicate<ib<T>> {
-      Either<agh<T>, arv<T>> a();
+   public interface c<T> extends Predicate<ig<T>> {
+      Either<agl<T>, arz<T>> a();
 
-      <E> Optional<ew.c<E>> a(agh<? extends io<E>> var1);
+      <E> Optional<ew.c<E>> a(agl<? extends is<E>> var1);
 
       String b();
    }
 
-   static record d<T>(arv<T> a) implements ew.c<T> {
+   static record d<T>(arz<T> a) implements ew.c<T> {
       @Override
-      public Either<agh<T>, arv<T>> a() {
+      public Either<agl<T>, arz<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<ew.c<E>> a(agh<? extends io<E>> $$0) {
+      public <E> Optional<ew.c<E>> a(agl<? extends is<E>> $$0) {
          return this.a.d($$0).map(ew.d::new);
       }
 
-      public boolean a(ib<T> $$0) {
+      public boolean a(ig<T> $$0) {
          return $$0.a(this.a);
       }
 
@@ -145,7 +145,7 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          return "#" + this.a.b();
       }
 
-      public arv<T> c() {
+      public arz<T> c() {
          return this.a;
       }
    }

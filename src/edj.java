@@ -1,133 +1,301 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class edj {
-   private static final float a = 1.5F;
-   private final edf[] b = new edf[32];
-   private final int c;
-   private final edg d;
-   private static final boolean e = false;
-   private final edc f = new edc();
+public class edj extends edr {
+   private final Long2ObjectMap<edi> l = new Long2ObjectOpenHashMap();
+   private static final float m = 1.5F;
+   private static final int n = 10;
 
-   public edj(edg $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   @Override
+   public void a(css $$0, bln $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
+      $$1.E();
    }
 
-   @Nullable
-   public edh a(csn $$0, bli $$1, Set<ht> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      edf $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   @Override
+   public void b() {
+      this.b.G();
+      this.l.clear();
+      super.b();
+   }
+
+   @Override
+   public edk a() {
+      int $$0;
+      if (this.f() && this.b.aZ()) {
+         $$0 = this.b.dt();
+         hx.a $$1 = new hx.a(this.b.ds(), (double)$$0, this.b.dy());
+
+         for (dhn $$2 = this.a.a_($$1); $$2.a(cvh.G); $$2 = this.a.a_($$1)) {
+            $$1.b(this.b.ds(), (double)(++$$0), this.b.dy());
+         }
       } else {
-         Map<edl, ht> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         edh $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         $$0 = atq.a(this.b.du() + 0.5);
       }
-   }
 
-   @Nullable
-   private edh a(bfo $$0, edf $$1, Map<edl, ht> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bgr.a);
-      Set<edl> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<edf> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<edl> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         edf $$11 = this.f.c();
-         $$11.i = true;
-
-         for (edl $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               edf $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
+      hx $$4 = hx.a(this.b.ds(), (double)$$0, this.b.dy());
+      if (!this.a($$4)) {
+         for (hx $$5 : this.a(this.b)) {
+            if (this.a($$5)) {
+               return super.c($$5);
             }
          }
       }
 
-      Optional<edh> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(edh::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(edh::m).thenComparingInt(edh::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+      return super.c($$4);
    }
 
-   protected float a(edf $$0, edf $$1) {
-      return $$0.a($$1);
+   @Override
+   protected boolean a(hx $$0) {
+      edi $$1 = this.a(this.b, $$0);
+      return this.b.a($$1) >= 0.0F;
    }
 
-   private float a(edf $$0, Set<edl> $$1) {
-      float $$2 = Float.MAX_VALUE;
+   @Override
+   public edq a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(atq.a($$0), atq.a($$1), atq.a($$2)));
+   }
 
-      for (edl $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
+   @Override
+   public int a(edk[] $$0, edk $$1) {
+      int $$2 = 0;
+      edk $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
+      }
+
+      edk $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      edk $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      edk $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      edk $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      edk $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      edk $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      edk $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      edk $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      edk $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      edk $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      edk $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      edk $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      edk $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      edk $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      edk $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      edk $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      edk $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      edk $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      edk $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      edk $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      edk $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      edk $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      edk $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      edk $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      edk $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
       }
 
       return $$2;
    }
 
-   private edh a(edf $$0, ht $$1, boolean $$2) {
-      List<edf> $$3 = Lists.newArrayList();
-      edf $$4 = $$0;
-      $$3.add(0, $$0);
+   private boolean b(@Nullable edk $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   private boolean c(@Nullable edk $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   @Nullable
+   @Override
+   protected edk a(int $$0, int $$1, int $$2) {
+      edk $$3 = null;
+      edi $$4 = this.c($$0, $$1, $$2);
+      float $$5 = this.b.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.b($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == edi.c) {
+            $$3.k++;
+         }
       }
 
-      return new edh($$3, $$1, $$2);
+      return $$3;
+   }
+
+   private edi c(int $$0, int $$1, int $$2) {
+      return (edi)this.l.computeIfAbsent(hx.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2, this.b));
+   }
+
+   @Override
+   public edi a(crl $$0, int $$1, int $$2, int $$3, bln $$4) {
+      EnumSet<edi> $$5 = EnumSet.noneOf(edi.class);
+      edi $$6 = edi.a;
+      hx $$7 = $$4.dn();
+      $$6 = super.a($$0, $$1, $$2, $$3, $$5, $$6, $$7);
+      if ($$5.contains(edi.h)) {
+         return edi.h;
+      } else {
+         edi $$8 = edi.a;
+
+         for (edi $$9 : $$5) {
+            if ($$4.a($$9) < 0.0F) {
+               return $$9;
+            }
+
+            if ($$4.a($$9) >= $$4.a($$8)) {
+               $$8 = $$9;
+            }
+         }
+
+         return $$6 == edi.b && $$4.a($$8) == 0.0F ? edi.b : $$8;
+      }
+   }
+
+   @Override
+   public edi a(crl $$0, int $$1, int $$2, int $$3) {
+      hx.a $$4 = new hx.a();
+      edi $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == edi.b && $$2 >= $$0.J_() + 1) {
+         edi $$6 = b($$0, $$4.d($$1, $$2 - 1, $$3));
+         if ($$6 == edi.o || $$6 == edi.i) {
+            $$5 = edi.o;
+         } else if ($$6 == edi.q) {
+            $$5 = edi.q;
+         } else if ($$6 == edi.x) {
+            $$5 = edi.x;
+         } else if ($$6 == edi.h) {
+            if (!$$4.equals(this.b.dn())) {
+               $$5 = edi.h;
+            }
+         } else {
+            $$5 = $$6 != edi.c && $$6 != edi.b && $$6 != edi.j ? edi.c : edi.b;
+         }
+      }
+
+      if ($$5 == edi.c || $$5 == edi.b) {
+         $$5 = a($$0, $$4.d($$1, $$2, $$3), $$5);
+      }
+
+      return $$5;
+   }
+
+   private Iterable<hx> a(bln $$0) {
+      float $$1 = 1.0F;
+      eju $$2 = $$0.cH();
+      boolean $$3 = $$2.a() < 1.0;
+      if (!$$3) {
+         return List.of(
+            hx.a($$2.a, (double)$$0.dt(), $$2.c),
+            hx.a($$2.a, (double)$$0.dt(), $$2.f),
+            hx.a($$2.d, (double)$$0.dt(), $$2.c),
+            hx.a($$2.d, (double)$$0.dt(), $$2.f)
+         );
+      } else {
+         double $$4 = Math.max(0.0, (1.5 - $$2.d()) / 2.0);
+         double $$5 = Math.max(0.0, (1.5 - $$2.b()) / 2.0);
+         double $$6 = Math.max(0.0, (1.5 - $$2.c()) / 2.0);
+         eju $$7 = $$2.c($$5, $$6, $$4);
+         return hx.a($$0.eh(), 10, atq.a($$7.a), atq.a($$7.b), atq.a($$7.c), atq.a($$7.d), atq.a($$7.e), atq.a($$7.f));
+      }
    }
 }

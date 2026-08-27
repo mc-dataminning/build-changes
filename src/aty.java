@@ -1,54 +1,41 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class aty {
+   public static final int a = 240;
+   private final long[] b = new long[240];
+   private int c;
+   private int d;
 
-public interface aty {
-   aty a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
-
-   boolean validate(atx var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   public void a(long $$0) {
+      int $$1 = this.b(this.c + this.d);
+      this.b[$$1] = $$0;
+      if (this.d < 240) {
+         this.d++;
+      } else {
+         this.c = this.b(this.c + 1);
+      }
    }
 
-   private static boolean a(atx $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   public int a() {
+      return this.b.length;
    }
 
-   static aty a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
+   public int b() {
+      return this.d;
    }
 
-   @Nullable
-   static aty a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+   public long a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.d) {
+         return this.b[this.b(this.c + $$0)];
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
+      }
+   }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   public void c() {
+      this.c = 0;
+      this.d = 0;
    }
 }

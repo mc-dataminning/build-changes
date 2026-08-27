@@ -1,185 +1,113 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class dhf {
-   public static final int a = 12;
-   private final csa b;
-   private final ht c;
-   private final boolean d;
-   private final ht e;
-   private final hx f;
-   private final List<ht> g = Lists.newArrayList();
-   private final List<ht> h = Lists.newArrayList();
-   private final hx i;
+public class dhf extends cur {
+   public static final MapCodec<dhf> a = b(dhf::new);
+   public static final dih b = dhh.a;
+   public static final dil<dip> c = dhh.c;
 
-   public dhf(csa $$0, ht $$1, hx $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
-      }
+   @Override
+   public MapCodec<dhf> a() {
+      return a;
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dhi $$0 = this.b.a_(this.e);
-      if (!dhb.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == ecx.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            ht $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public dhf(dhm.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ib.c).a(c, dip.a));
    }
 
-   private static boolean a(dhi $$0) {
-      return $$0.a(cvc.hV) || $$0.a(cvc.pg);
+   @Nullable
+   @Override
+   public dfi a(hx $$0, dhn $$1) {
+      return null;
    }
 
-   private static boolean a(dhi $$0, dhi $$1) {
-      if ($$0.a(cvc.pg) && $$1.a(cvc.hV)) {
-         return false;
-      } else {
-         return $$0.a(cvc.hV) && $$1.a(cvc.pg) ? false : a($$0) || a($$1);
-      }
+   public static dfi a(hx $$0, dhn $$1, dhn $$2, ib $$3, boolean $$4, boolean $$5) {
+      return new dhj($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(ht $$0, hx $$1) {
-      dhi $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!dhb.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               ht $$4 = $$0.a(this.f.g(), $$3);
-               dhi $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !dhb.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
+   @Nullable
+   @Override
+   public <T extends dfi> dfj<T> a(csf $$0, dhn $$1, dfk<T> $$2) {
+      return a($$2, dfk.k, dhj::a);
+   }
 
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               ht $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     ht $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!dhb.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == ecx.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
-            }
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, dhn $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dfi $$5 = $$1.c_($$2);
+         if ($$5 instanceof dhj) {
+            ((dhj)$$5).l();
          }
       }
    }
 
-   private void a(int $$0, int $$1) {
-      List<ht> $$2 = Lists.newArrayList();
-      List<ht> $$3 = Lists.newArrayList();
-      List<ht> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(ht $$0) {
-      dhi $$1 = this.b.a_($$0);
-
-      for (hx $$2 : hx.values()) {
-         if ($$2.o() != this.f.o()) {
-            ht $$3 = $$0.a($$2);
-            dhi $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
+   @Override
+   public void a(csg $$0, hx $$1, dhn $$2) {
+      hx $$3 = $$1.a($$2.c(b).g());
+      dhn $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dhg && $$4.c(dhg.c)) {
+         $$0.a($$3, false);
       }
-
-      return true;
    }
 
-   public hx b() {
-      return this.f;
+   @Override
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bjb.b;
+      } else {
+         return bjb.d;
+      }
    }
 
-   public List<ht> c() {
-      return this.g;
+   @Override
+   public List<clo> a(dhn $$0, efi.a $$1) {
+      dhj $$2 = this.a($$1.a(), hx.a($$1.a(ehn.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.k().a($$1);
    }
 
-   public List<ht> d() {
-      return this.h;
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return ekp.a();
+   }
+
+   @Override
+   public eks b(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      dhj $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : ekp.a();
+   }
+
+   @Nullable
+   private dhj a(crl $$0, hx $$1) {
+      dfi $$2 = $$0.c_($$1);
+      return $$2 instanceof dhj ? (dhj)$$2 : null;
+   }
+
+   @Override
+   public clo a(csi $$0, hx $$1, dhn $$2) {
+      return clo.b;
+   }
+
+   @Override
+   public dhn a(dhn $$0, dbr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dhn a(dhn $$0, dab $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      return false;
    }
 }

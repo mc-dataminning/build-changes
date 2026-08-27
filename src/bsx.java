@@ -1,47 +1,49 @@
-public class bsx extends bsb {
-   private final byq a;
-   private int b;
+import java.util.EnumSet;
 
-   public bsx(byq $$0) {
-      this.a = $$0;
-      this.a($$0);
+public class bsx extends bsg {
+   private static final bvx b = bvx.b().a(6.0);
+   public static final int a = 400;
+   private final bxi c;
+   private cdm d;
+   private int e;
+
+   public bsx(bxi $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bsg.a.a, bsg.a.b));
    }
 
    @Override
-   public void c() {
-      this.a.gK();
-      this.h();
-   }
-
-   private void h() {
-      aqq $$0 = this.a.gJ();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean a() {
+      if (!this.c.dN().O()) {
+         return false;
+      } else if (this.c.eh().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dN().a(cdm.class, b, this.c, this.c.ds(), this.c.du(), this.c.dy(), this.c.cH().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
    }
 
    @Override
    public boolean b() {
-      return false;
+      return this.e > 0;
    }
 
    @Override
-   public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.eh().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.eZ() && this.a.eh().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(byq $$0) {
-      this.b = -$$0.gQ();
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
    @Override
-   public boolean S_() {
-      return true;
+   public void d() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void e() {
+      this.c.I().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

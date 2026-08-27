@@ -1,28 +1,22 @@
 import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class aqc extends apz<GameProfile, aqd> {
-   public aqc(File $$0) {
-      super($$0);
+public abstract class aqc<T> {
+   @Nullable
+   private final T a;
+
+   public aqc(@Nullable T $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected apy<GameProfile> a(JsonObject $$0) {
-      return new aqd($$0);
+   @Nullable
+   T g() {
+      return this.a;
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   boolean f() {
+      return false;
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(apy::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
-   }
+   protected abstract void a(JsonObject var1);
 }

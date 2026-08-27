@@ -1,72 +1,99 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class va {
-   private final int a;
-   private final ObjectList<vb> b = new ObjectArrayList();
-   @Nullable
-   private vd c;
-
-   public va(int $$0) {
-      this.a = $$0;
-
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
-      }
-   }
-
-   public void a(vd $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new vb($$0, true));
-         this.c = $$0;
-      }
-   }
-
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<uy> a(uy.b $$0) {
-      if (!this.a($$0.a())) {
+public interface va {
+   Optional<aus> a = Optional.of(aus.a);
+   va b = new va() {
+      @Override
+      public <T> Optional<T> a(va.a<T> $$0) {
          return Optional.empty();
-      } else {
-         ObjectList<vd> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               vb $$4 = (vb)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
+      }
 
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
+      @Override
+      public <T> Optional<T> a(va.b<T> $$0, vs $$1) {
+         return Optional.empty();
+      }
+   };
 
-                  this.b.set($$2, null);
+   <T> Optional<T> a(va.a<T> var1);
+
+   <T> Optional<T> a(va.b<T> var1, vs var2);
+
+   static va e(final String $$0) {
+      return new va() {
+         @Override
+         public <T> Optional<T> a(va.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(va.b<T> $$0x, vs $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static va a(final String $$0, final vs $$1) {
+      return new va() {
+         @Override
+         public <T> Optional<T> a(va.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(va.b<T> $$0x, vs $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static va a(va... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static va a(final List<? extends va> $$0) {
+      return new va() {
+         @Override
+         public <T> Optional<T> a(va.a<T> $$0x) {
+            for (va $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
                }
             }
 
-            return Optional.of(new uy($$1));
+            return Optional.empty();
          }
-      }
+
+         @Override
+         public <T> Optional<T> a(va.b<T> $$0x, vs $$1) {
+            for (va $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(vs var1, String var2);
    }
 }

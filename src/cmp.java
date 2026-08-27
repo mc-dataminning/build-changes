@@ -1,10 +1,10 @@
-public class cmp extends cix {
-   public cmp(cle.a $$0) {
+public class cmp extends clj {
+   public cmp(clj.a $$0) {
       super($$0);
    }
 
    @Override
-   public cea a(csa $$0, clj $$1, blg $$2) {
-      return new cer($$0, $$2, $$1.c(1));
+   public boolean i(clo $$0) {
+      return true;
    }
 }

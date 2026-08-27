@@ -1,28 +1,42 @@
-public class yy implements wk<yd> {
-   private final int a;
-   private final int b;
-   private final int c;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
 
-   public yy(int $$0, int $$1, int $$2) {
+public class yy implements wo<yh> {
+   private final int a;
+   private final Suggestions b;
+
+   public yy(int $$0, Suggestions $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public yy(tu $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
+   public yy(ty $$0) {
+      this.a = $$0.n();
+      int $$1 = $$0.n();
+      int $$2 = $$0.n();
+      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
+      List<Suggestion> $$4 = $$0.a((ty.a<Suggestion>)($$1x -> {
+         String $$2x = $$1x.s();
+         uv $$3x = $$1x.c(ty::m);
+         return new Suggestion($$3, $$2x, $$3x);
+      }));
+      this.b = new Suggestions($$3, $$4);
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.k(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
+   public void a(ty $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b.getRange().getStart());
+      $$0.c(this.b.getRange().getLength());
+      $$0.a(this.b.getList(), ($$0x, $$1) -> {
+         $$0x.a($$1.getText());
+         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(uy.a($$1x)));
+      });
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +44,7 @@ public class yy implements wk<yd> {
       return this.a;
    }
 
-   public int d() {
+   public Suggestions d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

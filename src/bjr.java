@@ -1,93 +1,28 @@
-public interface bjr {
-   agh<bjq> a = agh.a(jz.q, new agi("in_fire"));
-   agh<bjq> b = agh.a(jz.q, new agi("lightning_bolt"));
-   agh<bjq> c = agh.a(jz.q, new agi("on_fire"));
-   agh<bjq> d = agh.a(jz.q, new agi("lava"));
-   agh<bjq> e = agh.a(jz.q, new agi("hot_floor"));
-   agh<bjq> f = agh.a(jz.q, new agi("in_wall"));
-   agh<bjq> g = agh.a(jz.q, new agi("cramming"));
-   agh<bjq> h = agh.a(jz.q, new agi("drown"));
-   agh<bjq> i = agh.a(jz.q, new agi("starve"));
-   agh<bjq> j = agh.a(jz.q, new agi("cactus"));
-   agh<bjq> k = agh.a(jz.q, new agi("fall"));
-   agh<bjq> l = agh.a(jz.q, new agi("fly_into_wall"));
-   agh<bjq> m = agh.a(jz.q, new agi("out_of_world"));
-   agh<bjq> n = agh.a(jz.q, new agi("generic"));
-   agh<bjq> o = agh.a(jz.q, new agi("magic"));
-   agh<bjq> p = agh.a(jz.q, new agi("wither"));
-   agh<bjq> q = agh.a(jz.q, new agi("dragon_breath"));
-   agh<bjq> r = agh.a(jz.q, new agi("dry_out"));
-   agh<bjq> s = agh.a(jz.q, new agi("sweet_berry_bush"));
-   agh<bjq> t = agh.a(jz.q, new agi("freeze"));
-   agh<bjq> u = agh.a(jz.q, new agi("stalagmite"));
-   agh<bjq> v = agh.a(jz.q, new agi("falling_block"));
-   agh<bjq> w = agh.a(jz.q, new agi("falling_anvil"));
-   agh<bjq> x = agh.a(jz.q, new agi("falling_stalactite"));
-   agh<bjq> y = agh.a(jz.q, new agi("sting"));
-   agh<bjq> z = agh.a(jz.q, new agi("mob_attack"));
-   agh<bjq> A = agh.a(jz.q, new agi("mob_attack_no_aggro"));
-   agh<bjq> B = agh.a(jz.q, new agi("player_attack"));
-   agh<bjq> C = agh.a(jz.q, new agi("arrow"));
-   agh<bjq> D = agh.a(jz.q, new agi("trident"));
-   agh<bjq> E = agh.a(jz.q, new agi("mob_projectile"));
-   agh<bjq> F = agh.a(jz.q, new agi("fireworks"));
-   agh<bjq> G = agh.a(jz.q, new agi("fireball"));
-   agh<bjq> H = agh.a(jz.q, new agi("unattributed_fireball"));
-   agh<bjq> I = agh.a(jz.q, new agi("wither_skull"));
-   agh<bjq> J = agh.a(jz.q, new agi("thrown"));
-   agh<bjq> K = agh.a(jz.q, new agi("indirect_magic"));
-   agh<bjq> L = agh.a(jz.q, new agi("thorns"));
-   agh<bjq> M = agh.a(jz.q, new agi("explosion"));
-   agh<bjq> N = agh.a(jz.q, new agi("player_explosion"));
-   agh<bjq> O = agh.a(jz.q, new agi("sonic_boom"));
-   agh<bjq> P = agh.a(jz.q, new agi("bad_respawn_point"));
-   agh<bjq> Q = agh.a(jz.q, new agi("outside_border"));
-   agh<bjq> R = agh.a(jz.q, new agi("generic_kill"));
+import com.mojang.serialization.Codec;
 
-   static void a(ov<bjq> $$0) {
-      $$0.a(a, new bjq("inFire", 0.1F, bjm.d));
-      $$0.a(b, new bjq("lightningBolt", 0.1F));
-      $$0.a(c, new bjq("onFire", 0.0F, bjm.d));
-      $$0.a(d, new bjq("lava", 0.1F, bjm.d));
-      $$0.a(e, new bjq("hotFloor", 0.1F, bjm.d));
-      $$0.a(f, new bjq("inWall", 0.0F));
-      $$0.a(g, new bjq("cramming", 0.0F));
-      $$0.a(h, new bjq("drown", 0.0F, bjm.c));
-      $$0.a(i, new bjq("starve", 0.0F));
-      $$0.a(j, new bjq("cactus", 0.1F));
-      $$0.a(k, new bjq("fall", bjn.b, 0.0F, bjm.a, bjs.b));
-      $$0.a(l, new bjq("flyIntoWall", 0.0F));
-      $$0.a(m, new bjq("outOfWorld", 0.0F));
-      $$0.a(n, new bjq("generic", 0.0F));
-      $$0.a(o, new bjq("magic", 0.0F));
-      $$0.a(p, new bjq("wither", 0.0F));
-      $$0.a(q, new bjq("dragonBreath", 0.0F));
-      $$0.a(r, new bjq("dryout", 0.1F));
-      $$0.a(s, new bjq("sweetBerryBush", 0.1F, bjm.e));
-      $$0.a(t, new bjq("freeze", 0.0F, bjm.f));
-      $$0.a(u, new bjq("stalagmite", 0.0F));
-      $$0.a(v, new bjq("fallingBlock", 0.1F));
-      $$0.a(w, new bjq("anvil", 0.1F));
-      $$0.a(x, new bjq("fallingStalactite", 0.1F));
-      $$0.a(y, new bjq("sting", 0.1F));
-      $$0.a(z, new bjq("mob", 0.1F));
-      $$0.a(A, new bjq("mob", 0.1F));
-      $$0.a(B, new bjq("player", 0.1F));
-      $$0.a(C, new bjq("arrow", 0.1F));
-      $$0.a(D, new bjq("trident", 0.1F));
-      $$0.a(E, new bjq("mob", 0.1F));
-      $$0.a(F, new bjq("fireworks", 0.1F));
-      $$0.a(H, new bjq("onFire", 0.1F, bjm.d));
-      $$0.a(G, new bjq("fireball", 0.1F, bjm.d));
-      $$0.a(I, new bjq("witherSkull", 0.1F));
-      $$0.a(J, new bjq("thrown", 0.1F));
-      $$0.a(K, new bjq("indirectMagic", 0.0F));
-      $$0.a(L, new bjq("thorns", 0.1F, bjm.b));
-      $$0.a(M, new bjq("explosion", bjn.c, 0.1F));
-      $$0.a(N, new bjq("explosion.player", bjn.c, 0.1F));
-      $$0.a(O, new bjq("sonic_boom", bjn.c, 0.0F));
-      $$0.a(P, new bjq("badRespawnPoint", bjn.c, 0.1F, bjm.a, bjs.c));
-      $$0.a(Q, new bjq("outsideBorder", 0.0F));
-      $$0.a(R, new bjq("genericKill", 0.0F));
+public enum bjr implements auk {
+   a("hurt", aqv.sT),
+   b("thorns", aqv.yf),
+   c("drowning", aqv.sU),
+   d("burning", aqv.sW),
+   e("poking", aqv.sX),
+   f("freezing", aqv.sV);
+
+   public static final Codec<bjr> g = auk.a(bjr::values);
+   private final String h;
+   private final aqu i;
+
+   private bjr(String $$0, aqu $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
+   }
+
+   public aqu a() {
+      return this.i;
    }
 }

@@ -1,59 +1,83 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record ffs(dnp a, io<dks> b, dnm c, ij<agr> d, ags e, cst f) {
-   public ffs(dnn $$0, ij<agr> $$1, ags $$2, cst $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class ffs extends faz {
+   private static final int a = 310;
+   private final eyo b = new eyo(this);
+   private final faz c;
+   private final aow k;
+   private final Consumer<aow> l;
+   private final Object2BooleanMap<aot> m = new Object2BooleanLinkedOpenHashMap();
+
+   public ffs(faz $$0, aow $$1, Consumer<aow> $$2) {
+      super(uv.c("experiments_screen.title"));
+      this.c = $$0;
+      this.k = $$1;
+      this.l = $$2;
+
+      for (aot $$3 : $$1.c()) {
+         if ($$3.j() == aox.d) {
+            this.m.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
-   public ffs(dnp $$0, dnm $$1, ij<agr> $$2, ags $$3, cst $$4) {
-      this($$0, $$2.a(agr.c).d(jz.aK), $$1, $$2.a(agr.c), $$3, $$4);
+   @Override
+   protected void aQ_() {
+      this.b.a(new ewl(uv.c("selectWorld.experiments"), this.i));
+      eys $$0 = this.b.c(eys.d());
+      $$0.a(new evy(uv.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
+      ffw.a $$1 = ffw.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
+      $$1.a($$0::a);
+      eyn.b $$2 = this.b.b(new eyn().a(10)).d(2);
+      $$2.a(eve.a(uu.d, $$0x -> this.l()).a());
+      $$2.a(eve.a(uu.e, $$0x -> this.aG_()).a());
+      this.b.a($$1x -> {
+         evc var10000 = this.d($$1x);
+      });
+      this.c();
    }
 
-   public ffs a(dnp $$0, dnm $$1) {
-      return new ffs($$0, this.b, $$1, this.d, this.e, this.f);
+   private static uv a(aot $$0) {
+      String $$1 = "dataPack." + $$0.f() + ".name";
+      return (uv)(gdf.a($$1) ? uv.c($$1) : $$0.a());
    }
 
-   public ffs a(ffs.b $$0) {
-      return new ffs($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   public void aG_() {
+      this.f.a(this.c);
    }
 
-   public ffs a(ffs.a $$0) {
-      return new ffs(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   private void l() {
+      List<aot> $$0 = new ArrayList<>(this.k.f());
+      List<aot> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(aot::f).toList());
+      this.l.accept(this.k);
    }
 
-   public ip.b a() {
-      return this.d.a();
+   @Override
+   protected void c() {
+      this.b.a();
    }
 
-   public dnp b() {
-      return this.a;
-   }
-
-   public io<dks> c() {
-      return this.b;
-   }
-
-   public dnm d() {
-      return this.c;
-   }
-
-   public ij<agr> e() {
-      return this.d;
-   }
-
-   public ags f() {
-      return this.e;
-   }
-
-   public cst g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<ip.b, dnm, dnm> {
-   }
-
-   public interface b extends UnaryOperator<dnp> {
+   @Override
+   public void b(eut $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

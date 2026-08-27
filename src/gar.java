@@ -1,41 +1,35 @@
-import java.util.List;
+public class gar<T extends bll> extends gak<T, fiz<T>> {
+   public static final agm a = new agm("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fkt c;
 
-public class gar<T extends ccy, M extends fkb<T>> extends gaf<T, M> {
-   private final agi a;
-   private final gar.a<T> b;
-   private final gar.b<T, M> c;
-
-   public gar(fxs<T, M> $$0, agi $$1, gar.a<T> $$2, gar.b<T, M> $$3) {
+   public gar(fxx<T, fiz<T>> $$0, fkp $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      fkt $$2 = $$1.a(fks.aT);
+      this.c = $$2.b("box");
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         this.a();
-         eoa $$10 = $$1.getBuffer(frc.j(this.a));
-         this.c().a($$0, $$10, $$2, fwy.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public static fkz a() {
+      flb $$0 = new flb();
+      flc $$1 = $$0.a();
+      $$1.a("box", fky.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fkv.a);
+      return fkz.a($$0, 64, 64);
+   }
+
+   public void a(eob $$0, fqz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fk()) {
+         eof $$10 = $$1.getBuffer(frh.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gbq.d);
+            $$0.b();
+         }
       }
-   }
-
-   private void a() {
-      List<fko> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends ccy> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends ccy, M extends fhp<T>> {
-      List<fko> getPartsToDraw(M var1);
    }
 }

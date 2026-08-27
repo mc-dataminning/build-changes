@@ -1,40 +1,33 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.serialization.DynamicOps;
 
-public class auv extends DataFix {
-   public auv(Schema $$0) {
-      super($$0, false);
+public class auv {
+   private static final String a = a("");
+
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = a($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bat.x), this::a);
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", auv::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", auv::a);
-      return this.a($$0, "minecraft:trident", auv::a);
+   private static String a(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return atg.e($$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
-      } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
-      }
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(atg.e($$2)));
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bat.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bat.x, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
 }

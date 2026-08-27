@@ -1,25 +1,16 @@
-public class fzm extends gaf<bwz, fhk<bwz>> {
-   private final fqq a;
+public class fzm extends gak<bwz, fhf<bwz>> {
+   private static final agm a = new agm("textures/entity/cat/cat_collar.png");
+   private final fhf<bwz> b;
 
-   public fzm(fxs<bwz, fhk<bwz>> $$0, fqq $$1) {
+   public fzm(fxx<bwz, fhf<bwz>> $$0, fkp $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fhf<>($$1.a(fks.o));
    }
 
-   public void a(enw $$0, fqu $$1, int $$2, bwz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fn() == bla.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = atm.e($$3.dF()) / 60.0F;
-      if ($$3.dF() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   public void a(eob $$0, fqz $$1, int $$2, bwz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u()) {
+         float[] $$10 = $$3.gp().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
-
-      clj $$14 = $$10 ? $$3.eU() : $$3.eV();
-      this.a.a($$3, $$14, clg.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

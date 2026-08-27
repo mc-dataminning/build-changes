@@ -1,122 +1,83 @@
-import java.util.function.Consumer;
+public abstract class eyj implements eyp {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class eyj implements eyk {
-   public static final int a = 36;
-   private static final int b = 30;
-   private final eyh c = new eyh();
-   private final eyh d = new eyh();
-   private final eyh e = new eyh();
-   private final fau f;
-   private int g;
-   private int h;
-
-   public eyj(fau $$0) {
-      this($$0, 36);
-   }
-
-   public eyj(fau $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public eyj(fau $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   public eyj(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
    public void f(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.p() + ($$0 - this.p());
+         $$1.f($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
    public void g(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.r() + ($$0 - this.r());
+         $$1.g($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
    public int p() {
-      return 0;
+      return this.c;
    }
 
    @Override
    public int r() {
-      return 0;
+      return this.d;
    }
 
    @Override
    public int k() {
-      return this.f.g;
+      return this.a;
    }
 
    @Override
    public int i() {
-      return this.f.h;
+      return this.b;
    }
 
-   public int b() {
-      return this.h;
-   }
+   protected abstract static class a {
+      public final eyq a;
+      public final eyr.a b;
 
-   public void a(int $$0) {
-      this.h = $$0;
-   }
+      protected a(eyq $$0, eyr $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
 
-   public void b(int $$0) {
-      this.g = $$0;
-   }
+      public int a() {
+         return this.a.i() + this.b.b + this.b.d;
+      }
 
-   public int c() {
-      return this.g;
-   }
+      public int b() {
+         return this.a.k() + this.b.a + this.b.c;
+      }
 
-   @Override
-   public void b(Consumer<eyl> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.k() - this.b.c);
+         int $$4 = (int)atq.i(this.b.e, $$2, $$3);
+         this.a.f($$4 + $$0);
+      }
 
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.g);
-      this.c.a($$0);
-      this.c.b(0, 0);
-      this.c.a();
-      this.d.b(this.f.g);
-      this.d.a($$1);
-      this.d.a();
-      this.d.g(this.f.h - $$1);
-      this.e.b(this.f.g);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.h - $$1 - this.e.i();
-      this.e.b(0, Math.min($$2, $$3));
-   }
-
-   public <T extends eyl> T a(T $$0) {
-      return this.c.a($$0);
-   }
-
-   public <T extends eyl> T a(T $$0, Consumer<eym> $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   public <T extends eyl> T b(T $$0) {
-      return this.d.a($$0);
-   }
-
-   public <T extends eyl> T b(T $$0, Consumer<eym> $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   public <T extends eyl> T c(T $$0) {
-      return this.e.a($$0);
-   }
-
-   public <T extends eyl> T c(T $$0, Consumer<eym> $$1) {
-      return this.e.a($$0, $$1);
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.i() - this.b.d);
+         int $$4 = Math.round(atq.i(this.b.f, $$2, $$3));
+         this.a.g($$4 + $$0);
+      }
    }
 }

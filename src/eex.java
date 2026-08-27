@@ -1,142 +1,66 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class eex {
-   private final efd a;
-   private final ats b;
-   private final efb c;
-   private final Set<eex.c<?>> d = Sets.newLinkedHashSet();
+public interface eex extends eez {
+   @Override
+   String g();
 
-   eex(efd $$0, ats $$1, efb $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
+
+   @Override
+   default void a(p $$0, csh $$1) {
+      eez.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   public boolean a(ehf<?> $$0) {
-      return this.a.a($$0);
-   }
+   int h();
 
-   public <T> T b(ehf<T> $$0) {
-      return this.a.b($$0);
-   }
+   void a(int var1);
 
-   public void a(agi $$0, Consumer<clj> $$1) {
-      this.a.a($$0, $$1);
-   }
+   int v();
+
+   void g(int var1);
+
+   int w();
+
+   void h(int var1);
 
    @Nullable
-   public <T> T c(ehf<T> $$0) {
-      return this.a.d($$0);
-   }
+   UUID x();
 
-   public boolean a(eex.c<?> $$0) {
-      return this.d.contains($$0);
-   }
+   void a(UUID var1);
 
-   public boolean b(eex.c<?> $$0) {
-      return this.d.add($$0);
-   }
+   csc m();
 
-   public void c(eex.c<?> $$0) {
-      this.d.remove($$0);
-   }
+   void a(dje.c var1);
 
-   public efb a() {
-      return this.c;
-   }
+   dje.c r();
 
-   public ats b() {
-      return this.b;
-   }
+   boolean p();
 
-   public float c() {
-      return this.a.b();
-   }
+   void c(boolean var1);
 
-   public ame d() {
-      return this.a.a();
-   }
+   boolean o();
 
-   public static eex.c<eff> a(eff $$0) {
-      return new eex.c<>(efc.c, $$0);
-   }
+   void a(csc var1);
 
-   public static eex.c<ehw> a(ehw $$0) {
-      return new eex.c<>(efc.a, $$0);
-   }
+   ejm<MinecraftServer> u();
 
-   public static eex.c<egk> a(egk $$0) {
-      return new eex.c<>(efc.b, $$0);
-   }
+   void a(long var1);
 
-   public static class a {
-      private final efd a;
-      @Nullable
-      private ats b;
-
-      public a(efd $$0) {
-         this.a = $$0;
-      }
-
-      public eex.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = ats.a($$0);
-         }
-
-         return this;
-      }
-
-      public ame a() {
-         return this.a.a();
-      }
-
-      public eex a(Optional<agi> $$0) {
-         ame $$1 = this.a();
-         MinecraftServer $$2 = $$1.n();
-         ats $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new eex(this.a, $$3, $$2.aJ());
-      }
-   }
-
-   public static enum b implements aug {
-      a("this", ehi.a),
-      b("killer", ehi.d),
-      c("direct_killer", ehi.e),
-      d("killer_player", ehi.b);
-
-      public static final aug.a<eex.b> e = aug.a(eex.b::values);
-      private final String f;
-      private final ehf<? extends bkq> g;
-
-      private b(String $$0, ehf<? extends bkq> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public ehf<? extends bkq> a() {
-         return this.g;
-      }
-
-      public static eex.b a(String $$0) {
-         eex.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static record c<T>(efc<T> a, T b) {
-   }
+   void b(long var1);
 }

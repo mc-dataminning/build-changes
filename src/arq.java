@@ -1,12 +1,11 @@
 public class arq {
-   public static final arv<bwi> a = a("acquirable_job_site");
-   public static final arv<bwi> b = a("village");
-   public static final arv<bwi> c = a("bee_home");
+   public static final arz<dlx> a = a("vibrations");
+   public static final arz<dlx> b = a("warden_can_listen");
+   public static final arz<dlx> c = a("shrieker_can_listen");
+   public static final arz<dlx> d = a("ignore_vibrations_sneaking");
+   public static final arz<dlx> e = a("allay_can_listen");
 
-   private arq() {
-   }
-
-   private static arv<bwi> a(String $$0) {
-      return arv.a(jz.T, new agi($$0));
+   private static arz<dlx> a(String $$0) {
+      return arz.a(kd.A, new agm($$0));
    }
 }

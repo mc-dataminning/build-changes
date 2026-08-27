@@ -1,34 +1,34 @@
 public interface dt {
    dt a = new dt() {
       @Override
-      public void a(ur $$0) {
+      public void a(uv $$0) {
       }
 
       @Override
-      public boolean k_() {
+      public boolean l_() {
          return false;
       }
 
       @Override
-      public boolean w_() {
+      public boolean x_() {
          return false;
       }
 
       @Override
-      public boolean V_() {
+      public boolean W_() {
          return false;
       }
    };
 
-   void a(ur var1);
+   void a(uv var1);
 
-   boolean k_();
+   boolean l_();
 
-   boolean w_();
+   boolean x_();
 
-   boolean V_();
+   boolean W_();
 
-   default boolean l_() {
+   default boolean m_() {
       return false;
    }
 }

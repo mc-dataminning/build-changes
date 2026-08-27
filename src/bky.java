@@ -1,83 +1,71 @@
-public class bky extends bxq {
-   private static final afo<Integer> bX = afr.a(bky.class, afq.b);
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bky(bku<? extends bky> $$0, csa $$1) {
-      super($$0, $$1);
+public final class bky {
+   public static final Predicate<bkv> a = bkv::bx;
+   public static final Predicate<bkv> b = $$0 -> $$0.bx() && $$0 instanceof bll;
+   public static final Predicate<bkv> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<bkv> d = $$0 -> $$0 instanceof biu && $$0.bx();
+   public static final Predicate<bkv> e = $$0 -> !($$0 instanceof cdz) || !$$0.P_() && !((cdz)$$0).f();
+   public static final Predicate<bkv> f = $$0 -> !$$0.P_();
+   public static final Predicate<bkv> g = f.and(bkv::bz);
+
+   private bky() {
    }
 
-   @Override
-   protected jq u() {
-      return js.aK;
+   public static Predicate<bkv> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   protected void b_() {
-      super.b_();
-      this.an.a(bX, 0);
+   public static Predicate<bkv> a(bkv $$0) {
+      ela $$1 = $$0.cg();
+      ela.a $$2 = $$1 == null ? ela.a.a : $$1.l();
+      return (Predicate<bkv>)($$2 == ela.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bu()) {
+            return false;
+         } else if (!$$0.dN().B || $$3 instanceof cdz && ((cdz)$$3).g()) {
+            ela $$4 = $$3.cg();
+            ela.a $$5 = $$4 == null ? ela.a.a : $$4.l();
+            if ($$5 == ela.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == ela.a.d || $$5 == ela.a.d) && $$6 ? false : $$2 != ela.a.c && $$5 != ela.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   @Override
-   protected aqq w() {
-      return aqr.jW;
+   public static Predicate<bkv> b(bkv $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.da();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   @Override
-   protected aqq y() {
-      return aqr.jT;
-   }
+   public static class a implements Predicate<bkv> {
+      private final clo a;
 
-   @Override
-   protected aqq d(bjo $$0) {
-      return aqr.jV;
-   }
-
-   @Override
-   protected aqq m_() {
-      return aqr.jU;
-   }
-
-   @Override
-   public void b(rz $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.A());
-   }
-
-   @Override
-   public void a(rz $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void c_() {
-      super.c_();
-      int $$0 = this.A();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+      public a(clo $$0) {
+         this.a = $$0;
       }
 
-      this.dN().a(js.aL, this.d(0.6), this.dv(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bjo $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
+      public boolean a(@Nullable bkv $$0) {
+         if (!$$0.bx()) {
+            return false;
+         } else {
+            return !($$0 instanceof bll $$1) ? false : $$1.f(this.a);
+         }
       }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int A() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(bku<? extends blg> $$0, csp $$1, blk $$2, ht $$3, ats $$4) {
-      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(cvc.G);
    }
 }

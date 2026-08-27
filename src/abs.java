@@ -1,40 +1,14 @@
-public class abs implements wk<yd> {
-   private final int a;
-   private final int b;
-   private final int c;
-
-   public abs(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public abs(tu $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+public record abs(int a) implements wo<yh> {
+   public abs(ty $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
+   public void a(ty $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

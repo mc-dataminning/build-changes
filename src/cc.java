@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class cc extends cw<cc.a> {
    public cc.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      Optional<Optional<bc>> $$3 = bc.a("location", $$2, $$0.get("location"), ehh.m);
+      Optional<Optional<bc>> $$3 = bc.a("location", $$2, $$0.get("location"), ehm.m);
       if ($$3.isEmpty()) {
          throw new JsonParseException("Failed to parse 'location' field");
       } else {
@@ -13,11 +13,11 @@ public class cc extends cw<cc.a> {
       }
    }
 
-   public void a(amf $$0, ht $$1, clj $$2) {
-      ame $$3 = $$0.z();
-      dhi $$4 = $$3.a_($$1);
-      efd $$5 = new efd.a($$3).a(ehi.f, $$1.b()).a(ehi.a, $$0).a(ehi.g, $$4).a(ehi.i, $$2).a(ehh.m);
-      eex $$6 = new eex.a($$5).a(Optional.empty());
+   public void a(amj $$0, hx $$1, clo $$2) {
+      ami $$3 = $$0.z();
+      dhn $$4 = $$3.a_($$1);
+      efi $$5 = new efi.a($$3).a(ehn.f, $$1.b()).a(ehn.a, $$0).a(ehn.g, $$4).a(ehn.i, $$2).a(ehm.m);
+      efc $$6 = new efc.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -29,18 +29,18 @@ public class cc extends cw<cc.a> {
          this.a = $$1;
       }
 
-      public static am<cc.a> a(cva $$0) {
-         bc $$1 = bc.a(ehv.a($$0).build());
+      public static am<cc.a> a(cvf $$0) {
+         bc $$1 = bc.a(eia.a($$0).build());
          return al.y.a(new cc.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static am<cc.a> a(ehw.a... $$0) {
-         bc $$1 = bc.a(Arrays.stream($$0).map(ehw.a::build).toArray(ehw[]::new));
+      public static am<cc.a> a(eib.a... $$0) {
+         bc $$1 = bc.a(Arrays.stream($$0).map(eib.a::build).toArray(eib[]::new));
          return al.y.a(new cc.a(Optional.empty(), Optional.of($$1)));
       }
 
       private static cc.a c(cj.a $$0, cb.a $$1) {
-         bc $$2 = bc.a(ehu.a($$0).build(), eid.a($$1).build());
+         bc $$2 = bc.a(ehz.a($$0).build(), eii.a($$1).build());
          return new cc.a(Optional.empty(), Optional.of($$2));
       }
 
@@ -52,7 +52,7 @@ public class cc extends cw<cc.a> {
          return al.X.a(c($$0, $$1));
       }
 
-      public boolean a(eex $$0) {
+      public boolean a(efc $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

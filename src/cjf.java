@@ -1,15 +1,24 @@
-public class cjf extends cle {
-   public cjf(cle.a $$0) {
-      super($$0);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cjf extends clj {
+   private final arz<dez> a;
+
+   public cjf(arz<dez> $$0, clj.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public arz<dez> b() {
+      return this.a;
    }
 
    @Override
-   public boolean d_(clj $$0) {
-      return $$0.L() == 1;
+   public void a(clo $$0, @Nullable csf $$1, List<uv> $$2, cnf $$3) {
+      $$2.add(this.d().a(n.h));
    }
 
-   @Override
-   public int c() {
-      return 1;
+   public vj d() {
+      return uv.c(this.a() + ".desc");
    }
 }

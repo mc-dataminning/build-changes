@@ -1,24 +1,40 @@
-public class adv implements wk<acl> {
-   private final int a;
+public class adv implements wo<acp> {
+   private final cif a;
+   private final boolean b;
+   private final boolean c;
 
-   public adv(int $$0) {
+   public adv(cif $$0, boolean $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public adv(tu $$0) {
-      this.a = $$0.n();
+   public adv(ty $$0) {
+      this.a = $$0.b(cif.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(tu $$0) {
-      $$0.c(this.a);
+   public void a(ty $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acl $$0) {
+   public void a(acp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public cif a() {
       return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

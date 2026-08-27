@@ -1,80 +1,57 @@
-public enum hr {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hx.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.LongArgumentType;
+
+public class hr implements hj<LongArgumentType, hr.a> {
+   public void a(hr.a $$0, ty $$1) {
+      boolean $$2 = $$0.b != Long.MIN_VALUE;
+      boolean $$3 = $$0.c != Long.MAX_VALUE;
+      $$1.k(hl.a($$2, $$3));
+      if ($$2) {
+         $$1.b($$0.b);
+      }
+
+      if ($$3) {
+         $$1.b($$0.c);
+      }
+   }
+
+   public hr.a a(ty $$0) {
+      byte $$1 = $$0.readByte();
+      long $$2 = hl.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
+      long $$3 = hl.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      return new hr.a($$2, $$3);
+   }
+
+   public void a(hr.a $$0, JsonObject $$1) {
+      if ($$0.b != Long.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Long.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public hr.a a(LongArgumentType $$0) {
+      return new hr.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements hj.a<LongArgumentType> {
+      final long b;
+      final long c;
+
+      a(long $$1, long $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public LongArgumentType a(dp $$0) {
+         return LongArgumentType.longArg(this.b, this.c);
       }
 
       @Override
-      public double a(double $$0, double $$1, double $$2, hx.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+      public hj<LongArgumentType, ?> a() {
+         return hr.this;
       }
-
-      @Override
-      public hx.a a(hx.a $$0) {
-         return $$0;
-      }
-
-      @Override
-      public hr a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hx.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, hx.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public hx.a a(hx.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
-      }
-
-      @Override
-      public hr a() {
-         return c;
-      }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, hx.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, hx.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public hx.a a(hx.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
-      }
-
-      @Override
-      public hr a() {
-         return b;
-      }
-   };
-
-   public static final hx.a[] d = hx.a.values();
-   public static final hr[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, hx.a var4);
-
-   public abstract double a(double var1, double var3, double var5, hx.a var7);
-
-   public abstract hx.a a(hx.a var1);
-
-   public abstract hr a();
-
-   public static hr a(hx.a $$0, hx.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

@@ -1,28 +1,36 @@
-public class yj implements wk<yd> {
+public class yj implements wo<yh> {
    private final int a;
-   private final ht b;
-   private final int c;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
 
-   public yj(int $$0, ht $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public yj(blb $$0) {
+      this.a = $$0.aj();
+      this.b = $$0.ds();
+      this.c = $$0.du();
+      this.d = $$0.dy();
+      this.e = $$0.q();
    }
 
-   public yj(tu $$0) {
+   public yj(ty $$0) {
       this.a = $$0.n();
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
-      $$0.k(this.c);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.l(this.e);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +38,19 @@ public class yj implements wk<yd> {
       return this.a;
    }
 
-   public ht d() {
+   public double d() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

@@ -1,111 +1,80 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dcc extends cva implements dca {
+public class dcc extends cvo implements cvi, czv {
    public static final MapCodec<dcc> a = b(dcc::new);
-   public static final dig<diq> b = dhy.bh;
-   public static final dhz c = dhy.C;
-   protected static final ekn d = cva.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final ekn e = cva.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final float b = 6.0F;
+   protected static final eks c = cvf.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
-   public MapCodec<? extends dcc> a() {
+   public MapCodec<dcc> a() {
       return a;
    }
 
-   public dcc(dhh.d $$0) {
+   protected dcc(dhm.d $$0) {
       super($$0);
-      this.k(this.o().a(b, diq.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(dhi $$0) {
-      return $$0.c(b) != diq.c;
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public ekn a(dhi $$0, crg $$1, ht $$2, ejz $$3) {
-      diq $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return ekk.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
+   protected boolean b(dhn $$0, crl $$1, hx $$2) {
+      return $$0.d($$1, $$2, ib.b) && !$$0.a(cvh.kJ);
    }
 
    @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      ht $$1 = $$0.a();
-      dhi $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(b, diq.c).a(c, Boolean.valueOf(false));
-      } else {
-         ecs $$3 = $$0.q().b_($$1);
-         dhi $$4 = this.o().a(b, diq.b).a(c, Boolean.valueOf($$3.a() == ect.c));
-         hx $$5 = $$0.k();
-         return $$5 != hx.a && ($$5 == hx.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, diq.a);
+   public dhn a(cnw $$0) {
+      ecx $$1 = $$0.q().b_($$0.a());
+      return $$1.a(arp.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      dhn $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, ecy.c, ecy.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(csi $$0, hx $$1, dhn $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(csf $$0, atw $$1, hx $$2, dhn $$3) {
+      return true;
+   }
+
+   @Override
+   public ecx c_(dhn $$0) {
+      return ecy.c.a(false);
+   }
+
+   @Override
+   public void a(ami $$0, atw $$1, hx $$2, dhn $$3) {
+      dhn $$4 = cvh.bx.o();
+      dhn $$5 = $$4.a(ddk.d, dij.a);
+      hx $$6 = $$2.c();
+      if ($$0.a_($$6).a(cvh.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   public boolean a(dhi $$0, cnr $$1) {
-      clj $$2 = $$1.n();
-      diq $$3 = $$0.c(b);
-      if ($$3 == diq.c || !$$2.a(this.k())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         hx $$5 = $$1.k();
-         return $$3 == diq.b ? $$5 == hx.b || $$4 && $$5.o().d() : $$5 == hx.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public boolean a(@Nullable cdz $$0, crl $$1, hx $$2, dhn $$3, ecw $$4) {
+      return false;
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(csb $$0, ht $$1, dhi $$2, ecs $$3) {
-      return $$2.c(b) != diq.c ? dca.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cdu $$0, crg $$1, ht $$2, dhi $$3, ecr $$4) {
-      return $$3.c(b) != diq.c ? dca.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dhi $$0, crg $$1, ht $$2, edi $$3) {
-      switch ($$3) {
-         case a:
-            return false;
-         case b:
-            return $$1.b_($$2).a(arl.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   public boolean a(csg $$0, hx $$1, dhn $$2, ecx $$3) {
+      return false;
    }
 }

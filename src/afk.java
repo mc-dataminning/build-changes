@@ -1,7 +1,7 @@
-public interface afk extends acm, acn {
+public interface afk extends ts, tt {
    @Override
-   default tt b() {
-      return tt.c;
+   default tx b() {
+      return tx.c;
    }
 
    void a(afm var1);

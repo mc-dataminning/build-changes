@@ -1,56 +1,62 @@
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
 import java.util.function.Function;
 
-public class akx implements aku {
-   static final SuggestionProvider<du> b = ($$0, $$1) -> dy.a(a($$0).a(), $$1);
-   public static final Function<String, akv.c> a = $$0 -> new akv.c() {
+public class akx implements aky {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("commands.data.block.invalid"));
+   public static final Function<String, akz.c> a = $$0 -> new akz.c() {
          @Override
-         public aku a(CommandContext<du> $$0x) {
-            return new akx(akx.a($$0), eu.e($$0, $$0));
+         public aky a(CommandContext<du> $$0x) throws CommandSyntaxException {
+            hx $$1 = fm.a($$0, $$0 + "Pos");
+            dfi $$2 = ((du)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw akx.b.create();
+            } else {
+               return new akx($$2, $$1);
+            }
          }
 
          @Override
          public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("storage").then($$1.apply(dv.a($$0, eu.a()).suggests(akx.b))));
+            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fm.a()))));
          }
       };
-   private final eef c;
-   private final agi d;
+   private final dfi c;
+   private final hx d;
 
-   static eef a(CommandContext<du> $$0) {
-      return ((du)$$0.getSource()).m().aI();
-   }
-
-   akx(eef $$0, agi $$1) {
+   public akx(dfi $$0, hx $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
-   public void a(rz $$0) {
-      this.c.a(this.d, $$0);
+   public void a(sd $$0) {
+      dhn $$1 = this.c.i().a_(this.d);
+      this.c.a($$0);
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
    @Override
-   public rz a() {
-      return this.c.a(this.d);
+   public sd a() {
+      return this.c.o();
    }
 
    @Override
-   public ur b() {
-      return ur.a("commands.data.storage.modified", ur.a(this.d));
+   public uv b() {
+      return uv.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
    @Override
-   public ur a(sw $$0) {
-      return ur.a("commands.data.storage.query", ur.a(this.d), so.c($$0));
+   public uv a(ta $$0) {
+      return uv.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), ss.c($$0));
    }
 
    @Override
-   public ur a(el.g $$0, double $$1, int $$2) {
-      return ur.a("commands.data.storage.get", $$0.a(), ur.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public uv a(el.g $$0, double $$1, int $$2) {
+      return uv.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

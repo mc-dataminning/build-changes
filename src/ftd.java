@@ -1,36 +1,58 @@
-public class ftd implements fsu<dfx> {
-   public static final gdy a = new gdy(gbt.e, new agi("entity/enchanting_table_book"));
-   private final fgy b;
+public class ftd implements fsz<dfm> {
+   private final fxa a;
 
-   public ftd(fsv.a $$0) {
-      this.b = new fgy($$0.a(fkn.m));
+   public ftd(fta.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(dfx $$0, float $$1, enw $$2, fqu $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + atm.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public void a(dfm $$0, float $$1, eob $$2, fqz $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.r().c(did.bv);
+         if ($$6 > 0) {
+            ib $$7 = $$0.f();
+            if ($$7 != null) {
+               clo $$8 = $$0.g();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ib.f || $$7 == ib.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = fqx.a($$0.i(), $$0.r(), $$0.aC_().a($$7));
+                  this.a.a($$8, cll.i, $$11, gbq.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
+         }
+      }
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   private float[] a(ib $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = atm.i($$1, $$0.c, $$0.b);
-      float $$10 = atm.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = atm.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = atm.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, atm.a($$10, 0.0F, 1.0F), atm.a($$11, 0.0F, 1.0F), $$12);
-      eoa $$13 = a.a($$3, frc::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      return $$2;
    }
 }

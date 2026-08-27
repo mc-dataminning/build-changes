@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 
 public class dwe extends dws {
-   public static final Codec<dwe> a = bic.b(0, 256).fieldOf("count").xmap(dwe::new, $$0 -> $$0.c).codec();
-   private final bic c;
+   private static final dwe c = new dwe();
+   public static Codec<dwe> a = Codec.unit(() -> c);
 
-   private dwe(bic $$0) {
-      this.c = $$0;
+   private dwe() {
    }
 
-   public static dwe a(bic $$0) {
-      return new dwe($$0);
-   }
-
-   public static dwe a(int $$0) {
-      return a(bhz.a($$0));
+   public static dwe a() {
+      return c;
    }
 
    @Override
-   protected int a(ats $$0, ht $$1) {
-      return this.c.a($$0);
+   protected boolean a(dwr $$0, atw $$1, hx $$2) {
+      dwq $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ig<ctd> $$4 = $$0.d().s($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dwp<?> b() {
-      return dwp.f;
+   public dwu<?> b() {
+      return dwu.e;
    }
 }

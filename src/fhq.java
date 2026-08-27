@@ -1,47 +1,51 @@
-public class fhq<T extends bkq> extends fhy<T> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String f = "lower_jaw";
-   private final fko g;
-   private final fko h;
-   private final fko i;
-   private final fko j;
-
-   public fhq(fko $$0) {
-      this.g = $$0;
-      this.h = $$0.b("base");
-      this.i = $$0.b("upper_jaw");
-      this.j = $$0.b("lower_jaw");
+public class fhq<T extends ccg> extends fkl<T> {
+   public fhq(fkt $$0) {
+      super($$0);
    }
 
-   public static fku b() {
-      fkw $$0 = new fkw();
-      fkx $$1 = $$0.a();
-      $$1.a("base", fkt.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fkq.a(-5.0F, 24.0F, -5.0F));
-      fkt $$2 = fkt.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$1.a("upper_jaw", $$2, fkq.a(1.5F, 24.0F, -4.0F));
-      $$1.a("lower_jaw", $$2, fkq.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
-      return fku.a($$0, 64, 32);
+   public static fkz a(fkx $$0) {
+      flb $$1 = fih.a($$0, 0.0F);
+      flc $$2 = $$1.a();
+      $$2.a("left_arm", fky.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkv.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fky.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkv.a(1.9F, 12.0F, 0.0F));
+      return fkz.a($$1, 64, 64);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$1 * 2.0F;
-      if ($$6 > 1.0F) {
-         $$6 = 1.0F;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fih.a.a;
+      this.r = fih.a.a;
+      clo $$4 = $$0.b(bja.a);
+      if ($$4.a(clr.vH) && $$0.fX()) {
+         if ($$0.fn() == blf.b) {
+            this.s = fih.a.e;
+         } else {
+            this.r = fih.a.e;
+         }
       }
 
-      $$6 = 1.0F - $$6 * $$6 * $$6;
-      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
-      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
-      float $$7 = ($$1 + atm.a($$1 * 2.7F)) * 0.6F * 12.0F;
-      this.i.c = 24.0F - $$7;
-      this.j.c = this.i.c;
-      this.h.c = this.i.c;
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public fko a() {
-      return this.g;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.r == fih.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
+      }
+
+      if (this.s == fih.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
+
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * atq.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * atq.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * atq.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * atq.a(0.1F * $$3);
+         this.k.e = 0.0F;
+      }
    }
 }

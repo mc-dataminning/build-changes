@@ -1,78 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public record dxw(List<dxl> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final agi c = new agi("jigsaw");
-   private static final Map<agi, agi> d = ImmutableMap.builder()
-      .put(new agi("nvi"), c)
-      .put(new agi("pcp"), c)
-      .put(new agi("bastionremnant"), c)
-      .put(new agi("runtime"), c)
-      .build();
+public abstract class dxw extends dxq {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected ebm b;
+   protected ebi c;
+   protected hx d;
 
-   public dxw(List<dxl> a) {
-      this.a = List.copyOf(a);
+   public dxw(dyd $$0, int $$1, ebn $$2, agm $$3, String $$4, ebi $$5, hx $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(ib.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   public dxw(dyd $$0, sd $$1, ebn $$2, Function<agm, ebi> $$3) {
+      super($$0, $$1);
+      this.a(ib.c);
+      this.a = $$1.l("Template");
+      this.d = new hx($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      agm $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   public boolean a(ht $$0) {
-      for (dxl $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
+   protected agm b() {
+      return new agm(this.a);
+   }
+
+   @Override
+   protected void a(dyc $$0, sd $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(csz $$0, csx $$1, djk $$2, atw $$3, dxe $$4, crm $$5, hx $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (ebm.c $$8 : this.b.a(this.d, this.c, cvh.pa)) {
+            if ($$8.c() != null) {
+               dix $$9 = dix.valueOf($$8.c().l("mode"));
+               if ($$9 == dix.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
          }
-      }
 
-      return false;
-   }
+         for (ebm.c $$11 : this.b.a(this.d, this.c, cvh.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dhn $$13 = cvh.a.o();
 
-   public sw a(dxx $$0) {
-      sf $$1 = new sf();
+               try {
+                  $$13 = fk.a($$0.a(kd.e), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
 
-      for (dxl $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static dxw a(sf $$0, dxx $$1) {
-      List<dxl> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         rz $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         agi $$6 = new agi($$5);
-         agi $$7 = d.getOrDefault($$6, $$6);
-         dxy $$8 = jy.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dxl $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
-
-      return new dxw($$2);
    }
 
-   public dwz b() {
-      return dxl.a(this.a.stream());
+   protected abstract void a(String var1, hx var2, csu var3, atw var4, dxe var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
-   public List<dxl> c() {
-      return this.a;
+   @Override
+   public dbr a() {
+      return this.c.d();
+   }
+
+   public ebm c() {
+      return this.b;
+   }
+
+   public hx d() {
+      return this.d;
+   }
+
+   public ebi e() {
+      return this.c;
    }
 }

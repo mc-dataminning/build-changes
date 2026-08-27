@@ -1,52 +1,45 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.Date;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class aqb extends app<GameProfile> {
-   public aqb(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
+public class aqb {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   public aqb(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public boolean a(int $$0, List<amj> $$1) {
+      int $$2 = (int)$$1.stream().filter(cdz::fW).count();
+      return $$2 >= this.b($$0);
    }
 
-   public aqb(JsonObject $$0) {
-      super(b($$0), $$0);
+   public int b(int $$0) {
+      return Math.max(1, atq.f((float)(this.a * $$0) / 100.0F));
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         super.a($$0);
-      }
+   public void a() {
+      this.b = 0;
    }
 
-   @Override
-   public ur e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? ur.b($$0.getName()) : ur.c("commands.banlist.entry.unknown");
+   public int b() {
+      return this.b;
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public boolean a(List<amj> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
+      for (amj $$3 : $$0) {
+         if (!$$3.P_()) {
+            this.a++;
+            if ($$3.fE()) {
+               this.b++;
+            }
          }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
       }
+
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

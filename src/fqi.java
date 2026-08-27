@@ -1,115 +1,72 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
-
 public class fqi {
-   private static final int a = 6;
-   private final agi[] b = new agi[6];
+   public static final uv a = uv.c("quickplay.error.title");
+   private static final uv b = uv.c("quickplay.error.invalid_identifier");
+   private static final uv c = uv.c("quickplay.error.realm_connect");
+   private static final uv d = uv.c("quickplay.error.realm_permission");
+   private static final uv e = uv.c("gui.toTitle");
+   private static final uv f = uv.c("gui.toWorld");
+   private static final uv g = uv.c("gui.toRealms");
 
-   public fqi(agi $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
+   public static void a(eti $$0, fgn.c $$1, eor $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ac.b($$3)) {
+         a($$0, $$3);
+      } else if (!ac.b($$4)) {
+         b($$0, $$4);
+      } else if (!ac.b($$5)) {
+         a($$0, $$2, $$5);
       }
    }
 
-   public void a(etd $$0, float $$1, float $$2, float $$3) {
-      eny $$4 = eny.b();
-      enr $$5 = $$4.d();
-      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aL().k() / (float)$$0.aL().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$6, eoe.a);
-      enw $$7 = RenderSystem.getModelViewStack();
-      $$7.a();
-      $$7.e();
-      $$7.a(a.b.rotationDegrees(180.0F));
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.setShader(fqn::t);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$8 = 2;
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         $$7.a();
-         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$12 = 0.0F;
-         $$7.a($$10, $$11, 0.0F);
-         $$7.a(a.b.rotationDegrees($$1));
-         $$7.a(a.d.rotationDegrees($$2));
-         RenderSystem.applyModelViewMatrix();
-
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            RenderSystem.setShaderTexture(0, this.b[$$13]);
-            $$5.a(eob.b.h, enu.s);
-            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
-            if ($$13 == 0) {
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 1) {
-               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 2) {
-               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 3) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 4) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 5) {
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            $$4.c();
-         }
-
-         $$7.b();
-         RenderSystem.applyModelViewMatrix();
-         RenderSystem.colorMask(true, true, true, false);
+   private static void a(eti $$0, String $$1) {
+      if (!$$0.l().b($$1)) {
+         faz $$2 = new ffv(new fbe());
+         $$0.a(new fab($$2, a, b, f));
+      } else {
+         $$0.w().a($$1, () -> $$0.a(new fbe()));
       }
-
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$7.b();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
    }
 
-   public CompletableFuture<Void> a(gbv $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+   private static void b(eti $$0, String $$1) {
+      fma $$2 = new fma($$0);
+      $$2.a();
+      flz $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new flz(gdf.a("selectServer.defaultName"), $$1, flz.b.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      return CompletableFuture.allOf($$2);
+      fna $$4 = fna.a($$1);
+      ezt.a(new fdx(new fbe()), $$0, $$4, $$3, true);
+   }
+
+   private static void a(eti $$0, eor $$1, String $$2) {
+      long $$3;
+      epk $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         faz $$6 = new eom(new fbe());
+         $$0.a(new fab($$6, a, b, g));
+         return;
+      } catch (eqe var10) {
+         faz $$8 = new fbe();
+         $$0.a(new fab($$8, a, c, e));
+         return;
+      }
+
+      epi $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         faz $$12 = new eom(new fbe());
+         $$0.a(new fab($$12, a, d, g));
+      } else {
+         fbe $$13 = new fbe();
+         esh $$14 = new esh($$13, $$11);
+         $$0.a(new eqy($$13, $$14));
+      }
    }
 }

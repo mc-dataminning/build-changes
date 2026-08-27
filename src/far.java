@@ -1,71 +1,26 @@
-import javax.annotation.Nullable;
+public class far extends faz {
+   protected final faz a;
+   protected final etm b;
 
-public class far extends fau implements atr {
-   @Nullable
-   private ur a;
-   @Nullable
-   private ur b;
-   private int c;
-   private boolean k;
-   private final boolean l;
-
-   public far(boolean $$0) {
-      super(esv.a);
-      this.l = $$0;
-   }
-
-   @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aO_() {
-      return false;
-   }
-
-   @Override
-   public void a(ur $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(ur $$0) {
+   public far(faz $$0, etm $$1, uv $$2) {
+      super($$2);
       this.a = $$0;
-      this.c(ur.c("menu.working"));
+      this.b = $$1;
    }
 
    @Override
-   public void c(ur $$0) {
-      this.b = $$0;
-      this.a(0);
+   public void aH_() {
+      this.f.m.as();
    }
 
    @Override
-   public void a(int $$0) {
-      this.c = $$0;
+   public void aG_() {
+      this.f.a(this.a);
    }
 
-   @Override
-   public void a() {
-      this.k = true;
-   }
-
-   @Override
-   public void a(euo $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, ur.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
-         }
-      }
+   protected void a(eut $$0, ewb $$1, int $$2, int $$3, float $$4) {
+      super.a($$0, $$2, $$3, $$4);
+      $$1.a($$0, $$2, $$3, $$4);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 }

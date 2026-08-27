@@ -1,18 +1,41 @@
-public record acd(int a) implements wk<yd> {
-   public acd(tu $$0) {
-      this($$0.n());
+import javax.annotation.Nullable;
+
+public class acd implements wo<yh> {
+   private final int a;
+   @Nullable
+   private final sd b;
+
+   public acd(int $$0, @Nullable sd $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static acd a(bjg $$0) {
-      return new acd($$0.k());
+   public acd(ty $$0) {
+      this.a = $$0.n();
+      this.b = $$0.q();
    }
 
    @Override
-   public void a(tu $$0) {
+   public void a(ty $$0) {
       $$0.c(this.a);
+      $$0.a((ta)this.b);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   @Nullable
+   public sd d() {
+      return this.b;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
    }
 }

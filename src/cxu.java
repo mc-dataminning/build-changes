@@ -1,58 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class cxu extends cyv {
-   public static final dig<dht> K = dhy.U;
+public class cxu extends cvf {
+   public static final MapCodec<cxu> a = b(cxu::new);
+   public static final dih b = cza.aE;
+   public static final die c = did.h;
+   protected static final eks d = cvf.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final eks e = cvf.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final eks f = ekp.a(d, e);
+   private static dhs g;
 
-   protected cxu(dhh.d $$0) {
+   @Override
+   public MapCodec<cxu> a() {
+      return a;
+   }
+
+   public cxu(dhm.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, ib.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends cxu> a();
-
-   @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return b($$1, $$2, h($$0).g());
+   public boolean g_(dhn $$0) {
+      return true;
    }
 
-   public static boolean b(csd $$0, ht $$1, hx $$2) {
-      ht $$3 = $$1.a($$2);
-      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   @Override
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return $$0.c(c) ? f : d;
    }
 
-   @Nullable
    @Override
-   public dhi a(cnr $$0) {
-      for (hx $$1 : $$0.f()) {
-         dhi $$2;
-         if ($$1.o() == hx.a.b) {
-            $$2 = this.o().a(K, $$1 == hx.b ? dht.c : dht.a).a(aE, $$0.g());
-         } else {
-            $$2 = this.o().a(K, dht.b).a(aE, $$1.g());
-         }
+   public dhn a(cnw $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
 
-         if ($$2.a((csd)$$0.q(), $$0.a())) {
-            return $$2;
-         }
+   @Override
+   public boolean d_(dhn $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dhn $$0, csf $$1, hx $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   public dhn a(dhn $$0, dbr $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dhn a(dhn $$0, dab $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dhs b() {
+      if (g == null) {
+         g = dht.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dhr.a(dhw.a))
+            .a('^', dhr.a(dhw.a(cvh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ib.d))))
+            .a('>', dhr.a(dhw.a(cvh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ib.e))))
+            .a('v', dhr.a(dhw.a(cvh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ib.c))))
+            .a('<', dhr.a(dhw.a(cvh.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ib.f))))
+            .b();
       }
 
-      return null;
+      return g;
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cvc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected static hx h(dhi $$0) {
-      switch ((dht)$$0.c(K)) {
-         case c:
-            return hx.a;
-         case a:
-            return hx.b;
-         default:
-            return $$0.c(aE);
-      }
+   public boolean a(dhn $$0, crl $$1, hx $$2, edn $$3) {
+      return false;
    }
 }

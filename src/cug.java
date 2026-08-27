@@ -1,99 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class cug extends cum {
-   public static final MapCodec<cug> a = b(cug::new);
-   public static final dic b = dhy.P;
-   public static final dhz c = dhy.u;
+public class cug extends cvo {
+   public static final MapCodec<cug> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               agl.a(kd.e).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               agl.a(kd.e).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               agl.a(kd.E).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, cug::new)
+   );
+   public static final dih b = cza.aE;
+   protected static final float c = 2.0F;
+   private static final Map<ib, eks> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         ib.d,
+         cvf.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         ib.e,
+         cvf.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         ib.c,
+         cvf.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         ib.f,
+         cvf.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final agl<cvf> e;
+   private final agl<cvf> f;
+   private final agl<clj> g;
 
    @Override
    public MapCodec<cug> a() {
       return a;
    }
 
-   public cug(dhh.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
+   protected cug(agl<cvf> $$0, agl<cvf> $$1, agl<clj> $$2, dhm.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, ib.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public bix a(dhi $$0, csa $$1, ht $$2, cdu $$3, biw $$4, ejq $$5) {
-      if ($$1.B) {
-         return bix.a;
-      } else {
-         dfd $$6 = $$1.c_($$2);
-         if ($$6 instanceof dew) {
-            $$3.a((dew)$$6);
-            $$3.a(arb.ar);
-            ccl.a($$3, true);
-         }
-
-         return bix.b;
-      }
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, dhi $$3, boolean $$4) {
-      bit.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      dfd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dew) {
-         ((dew)$$4).i();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dew($$0, $$1);
-   }
-
-   @Override
-   public dbf b_(dhi $$0) {
-      return dbf.c;
-   }
-
-   @Override
-   public void a(csa $$0, ht $$1, dhi $$2, @Nullable blg $$3, clj $$4) {
-      if ($$4.A()) {
-         dfd $$5 = $$0.c_($$1);
-         if ($$5 instanceof dew) {
-            ((dew)$$5).a($$4.y());
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<cvf> $$6 = $$3.I_().d(kd.e).d(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().o().b(dda.c, Integer.valueOf(7));
          }
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean d_(dhi $$0) {
-      return true;
+   protected boolean b(dhn $$0, crl $$1, hx $$2) {
+      return $$0.a(cvh.cC);
    }
 
    @Override
-   public int a(dhi $$0, csa $$1, ht $$2) {
-      return cgm.a($$1.c_($$2));
+   public clo a(csi $$0, hx $$1, dhn $$2) {
+      return new clo((cse)DataFixUtils.orElse($$0.I_().d(kd.E).d(this.g), this));
    }
 
    @Override
-   public dhi a(dhi $$0, dbm $$1) {
+   public dhn a(dhn $$0, dbr $$1) {
       return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dhi a(dhi $$0, czw $$1) {
+   public dhn a(dhn $$0, dab $$1) {
       return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dhi a(cnr $$0) {
-      return this.o().a(b, $$0.d().g());
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(b);
    }
 }

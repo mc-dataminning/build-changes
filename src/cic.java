@@ -1,68 +1,60 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cic implements biq, cib {
-   private final il<clj> c = il.a(1, clj.b);
-   @Nullable
-   private coq<?> d;
-
-   @Override
-   public int b() {
-      return 1;
+public class cic extends cim {
+   public cic(biu $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean ai_() {
-      for (clj $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
+   public void b(clo $$0, clo $$1) {
    }
 
    @Override
-   public clj a(int $$0) {
-      return this.c.get(0);
+   public boolean a(cdz $$0) {
+      return false;
    }
 
    @Override
-   public clj a(int $$0, int $$1) {
-      return bir.a(this.c, 0);
+   public Optional<clo> a(int $$0, int $$1, cdz $$2) {
+      return Optional.empty();
    }
 
    @Override
-   public clj b(int $$0) {
-      return bir.a(this.c, 0);
+   public clo b(int $$0, int $$1, cdz $$2) {
+      return clo.b;
    }
 
    @Override
-   public void a(int $$0, clj $$1) {
-      this.c.set(0, $$1);
+   public clo d(clo $$0) {
+      return $$0;
    }
 
    @Override
-   public void e() {
+   public clo b(clo $$0, int $$1) {
+      return this.d($$0);
    }
 
    @Override
-   public boolean a(cdu $$0) {
-      return true;
+   public boolean b(cdz $$0) {
+      return false;
    }
 
    @Override
-   public void a() {
-      this.c.clear();
+   public boolean a(clo $$0) {
+      return false;
    }
 
    @Override
-   public void a(@Nullable coq<?> $$0) {
-      this.d = $$0;
+   public clo a(int $$0) {
+      return clo.b;
    }
 
-   @Nullable
    @Override
-   public coq<?> d() {
-      return this.d;
+   public void a(cdz $$0, clo $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
    }
 }

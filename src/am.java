@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 public record am<T extends ap>(ao<T> a, T b) {
    public static am<?> a(JsonObject $$0, bg $$1) {
-      agi $$2 = new agi(atc.i($$0, "trigger"));
+      agm $$2 = new agm(atg.i($$0, "trigger"));
       ao<?> $$3 = al.a($$2);
       if ($$3 == null) {
          throw new JsonSyntaxException("Invalid criterion trigger: " + $$2);
@@ -18,7 +18,7 @@ public record am<T extends ap>(ao<T> a, T b) {
    }
 
    private static <T extends ap> am<T> a(JsonObject $$0, bg $$1, ao<T> $$2) {
-      T $$3 = $$2.a(atc.a($$0, "conditions", new JsonObject()), $$1);
+      T $$3 = $$2.a(atg.a($$0, "conditions", new JsonObject()), $$1);
       return new am<>($$2, $$3);
    }
 
@@ -26,7 +26,7 @@ public record am<T extends ap>(ao<T> a, T b) {
       Map<String, am<?>> $$2 = Maps.newHashMap();
 
       for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         $$2.put($$3.getKey(), a(atc.m($$3.getValue(), "criterion"), $$1));
+         $$2.put($$3.getKey(), a(atg.m($$3.getValue(), "criterion"), $$1));
       }
 
       return $$2;

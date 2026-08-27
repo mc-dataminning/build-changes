@@ -1,18 +1,17 @@
-public class ahc implements Runnable {
-   private final int a;
-   private final Runnable b;
+public interface ahc extends ahb {
+   alg a();
 
-   public ahc(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   String b();
 
-   public int a() {
-      return this.a;
-   }
+   int d();
 
-   @Override
-   public void run() {
-      this.b.run();
-   }
+   String f();
+
+   String[] L();
+
+   String q();
+
+   String s();
+
+   String a(String var1);
 }

@@ -1,16 +1,29 @@
-public interface aeo extends tp {
-   @Override
-   default tt b() {
-      return tt.d;
+public enum aeo {
+   a,
+   b;
+
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static aeo a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   void a(aer var1);
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
+   }
 
-   void a(aeq var1);
-
-   void a(aet var1);
-
-   void a(aes var1);
-
-   void a(aep var1);
+   public tx b() {
+      return switch (this) {
+         case a -> tx.c;
+         case b -> tx.d;
+      };
+   }
 }

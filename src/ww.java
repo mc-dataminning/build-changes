@@ -1,36 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public record ww(xd a) implements wk<wu> {
-   private static final int b = 32767;
-   private static final Map<agi, tu.a<? extends xd>> c = ImmutableMap.builder().put(xc.a, xc::new).build();
+public class ww implements wo<wr> {
+   public static final int a = 40;
+   private final String b;
+   private final String c;
+   private final boolean d;
+   @Nullable
+   private final uv e;
 
-   public ww(tu $$0) {
-      this(a($$0.t(), $$0));
-   }
-
-   private static xd a(agi $$0, tu $$1) {
-      tu.a<? extends xd> $$2 = c.get($$0);
-      return (xd)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
-   }
-
-   private static xe b(agi $$0, tu $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 32767) {
-         $$1.j($$2);
-         return new xe($$0);
+   public ww(String $$0, String $$1, boolean $$2, @Nullable uv $$3) {
+      if ($$1.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
       } else {
-         throw new IllegalArgumentException("Payload may not be larger than 32767 bytes");
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
       }
    }
 
-   @Override
-   public void a(tu $$0) {
-      $$0.a(this.a.a());
-      this.a.a($$0);
+   public ww(ty $$0) {
+      this.b = $$0.s();
+      this.c = $$0.d(40);
+      this.d = $$0.readBoolean();
+      this.e = $$0.c(ty::m);
    }
 
-   public void a(wu $$0) {
+   @Override
+   public void a(ty $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ty::a);
+   }
+
+   public void a(wr $$0) {
       $$0.a(this);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   @Nullable
+   public uv f() {
+      return this.e;
    }
 }

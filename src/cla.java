@@ -1,15 +1,14 @@
-public class cla extends cle implements cmi {
-   public cla(cle.a $$0) {
-      super($$0);
+public class cla extends cmo {
+   public cla(cvf $$0, cvf $$1, clj.a $$2) {
+      super($$2, $$0, $$1, ib.b);
    }
 
    @Override
-   public boolean a(csa $$0, dgm $$1, boolean $$2, cdu $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.p(), aqr.md, aqs.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   protected boolean a(csi $$0, dhn $$1, hx $$2) {
+      if ($$1.b() instanceof deb $$3 && !$$3.b($$1, $$0, $$2)) {
          return false;
       }
+
+      return super.a($$0, $$1, $$2);
    }
 }

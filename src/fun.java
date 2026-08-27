@@ -1,83 +1,40 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class fun implements fud.a {
-   private final etd a;
+public class fun implements fui.a {
+   private final eti a;
+   private static final int b = 10;
 
-   public fun(etd $$0) {
+   public fun(eti $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(enw $$0, fqu $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      crg $$6 = this.a.s.dN();
-      ht $$7 = ht.a($$2, $$3, $$4);
+   public void a(eob $$0, fqz $$1, double $$2, double $$3, double $$4) {
+      csf $$5 = this.a.r;
+      hx $$6 = hx.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (ht $$8 : ht.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dhi $$9 = $$6.a_($$8);
-         if (!$$9.a(cvc.a)) {
-            ekn $$10 = $$9.j($$6, $$8);
+      for (hx $$8 : hx.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cso.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = atq.h($$10, 0.9F, 0.9F);
+         long $$12 = iy.e($$8.a());
+         if ($$7.add($$12)) {
+            fui.a(
+               $$0,
+               $$1,
+               $$5.K().p().a(cso.a, iy.a($$12)),
+               (double)iy.a(iy.b($$12), 8),
+               (double)iy.a(iy.c($$12), 8),
+               (double)iy.a(iy.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-            for (ejp $$11 : $$10.e()) {
-               ejp $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, hx.e)) {
-                  eoa $$23 = $$1.getBuffer(frc.y());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, hx.d)) {
-                  eoa $$24 = $$1.getBuffer(frc.y());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, hx.f)) {
-                  eoa $$25 = $$1.getBuffer(frc.y());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, hx.c)) {
-                  eoa $$26 = $$1.getBuffer(frc.y());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, hx.a)) {
-                  eoa $$27 = $$1.getBuffer(frc.y());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, hx.b)) {
-                  eoa $$28 = $$1.getBuffer(frc.y());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
+         if ($$9 != 15) {
+            fui.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
    }

@@ -1,41 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class drv implements drz {
+public record drv(List<drv.a> b, ib c, dod d, boolean e) implements dse {
    public static final Codec<drv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dhi.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dhi.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bic.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bic.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+               drv.a.a.listOf().fieldOf("layers").forGetter(drv::a),
+               ib.g.fieldOf("direction").forGetter(drv::b),
+               dod.b.fieldOf("allowed_placement").forGetter(drv::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(drv::d)
             )
             .apply($$0, drv::new)
    );
-   private final dhi b;
-   private final dhi c;
-   private final bic d;
-   private final bic e;
 
-   public drv(dhi $$0, dhi $$1, bic $$2, bic $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public static drv.a a(big $$0, duf $$1) {
+      return new drv.a($$0, $$1);
    }
 
-   public dhi a() {
+   public static drv b(big $$0, duf $$1) {
+      return new drv(List.of(a($$0, $$1)), ib.b, dod.c, false);
+   }
+
+   public List<drv.a> a() {
       return this.b;
    }
 
-   public dhi b() {
+   public ib b() {
       return this.c;
    }
 
-   public bic c() {
+   public dod c() {
       return this.d;
    }
 
-   public bic d() {
+   public boolean d() {
       return this.e;
+   }
+
+   public static record a(big b, duf c) {
+      public static final Codec<drv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(big.d.fieldOf("height").forGetter(drv.a::a), duf.a.fieldOf("provider").forGetter(drv.a::b)).apply($$0, drv.a::new)
+      );
+
+      public big a() {
+         return this.b;
+      }
+
+      public duf b() {
+         return this.c;
+      }
    }
 }

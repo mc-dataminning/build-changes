@@ -1,39 +1,20 @@
-public class frr {
-   protected final int[] a;
-   protected final int b;
-   protected final hx c;
-   protected final gbu d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public frr(int[] $$0, int $$1, hx $$2, gbu $$3, boolean $$4) {
+public final class frr implements AutoCloseable {
+   private final eti a;
+   private final end b;
+
+   public frr(eti $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.b = new end(ena::new);
    }
 
-   public gbu a() {
-      return this.d;
+   public enf a(ems $$0, @Nullable String $$1, String $$2) {
+      return new enf(this.a, this.b, $$0, $$1, $$2);
    }
 
-   public int[] b() {
-      return this.a;
-   }
-
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public hx e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+   @Override
+   public void close() {
+      this.b.a();
    }
 }

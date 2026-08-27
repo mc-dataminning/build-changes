@@ -1,134 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class ctk {
+   public static final agl<ctd> a = a("the_void");
+   public static final agl<ctd> b = a("plains");
+   public static final agl<ctd> c = a("sunflower_plains");
+   public static final agl<ctd> d = a("snowy_plains");
+   public static final agl<ctd> e = a("ice_spikes");
+   public static final agl<ctd> f = a("desert");
+   public static final agl<ctd> g = a("swamp");
+   public static final agl<ctd> h = a("mangrove_swamp");
+   public static final agl<ctd> i = a("forest");
+   public static final agl<ctd> j = a("flower_forest");
+   public static final agl<ctd> k = a("birch_forest");
+   public static final agl<ctd> l = a("dark_forest");
+   public static final agl<ctd> m = a("old_growth_birch_forest");
+   public static final agl<ctd> n = a("old_growth_pine_taiga");
+   public static final agl<ctd> o = a("old_growth_spruce_taiga");
+   public static final agl<ctd> p = a("taiga");
+   public static final agl<ctd> q = a("snowy_taiga");
+   public static final agl<ctd> r = a("savanna");
+   public static final agl<ctd> s = a("savanna_plateau");
+   public static final agl<ctd> t = a("windswept_hills");
+   public static final agl<ctd> u = a("windswept_gravelly_hills");
+   public static final agl<ctd> v = a("windswept_forest");
+   public static final agl<ctd> w = a("windswept_savanna");
+   public static final agl<ctd> x = a("jungle");
+   public static final agl<ctd> y = a("sparse_jungle");
+   public static final agl<ctd> z = a("bamboo_jungle");
+   public static final agl<ctd> A = a("badlands");
+   public static final agl<ctd> B = a("eroded_badlands");
+   public static final agl<ctd> C = a("wooded_badlands");
+   public static final agl<ctd> D = a("meadow");
+   public static final agl<ctd> E = a("cherry_grove");
+   public static final agl<ctd> F = a("grove");
+   public static final agl<ctd> G = a("snowy_slopes");
+   public static final agl<ctd> H = a("frozen_peaks");
+   public static final agl<ctd> I = a("jagged_peaks");
+   public static final agl<ctd> J = a("stony_peaks");
+   public static final agl<ctd> K = a("river");
+   public static final agl<ctd> L = a("frozen_river");
+   public static final agl<ctd> M = a("beach");
+   public static final agl<ctd> N = a("snowy_beach");
+   public static final agl<ctd> O = a("stony_shore");
+   public static final agl<ctd> P = a("warm_ocean");
+   public static final agl<ctd> Q = a("lukewarm_ocean");
+   public static final agl<ctd> R = a("deep_lukewarm_ocean");
+   public static final agl<ctd> S = a("ocean");
+   public static final agl<ctd> T = a("deep_ocean");
+   public static final agl<ctd> U = a("cold_ocean");
+   public static final agl<ctd> V = a("deep_cold_ocean");
+   public static final agl<ctd> W = a("frozen_ocean");
+   public static final agl<ctd> X = a("deep_frozen_ocean");
+   public static final agl<ctd> Y = a("mushroom_fields");
+   public static final agl<ctd> Z = a("dripstone_caves");
+   public static final agl<ctd> aa = a("lush_caves");
+   public static final agl<ctd> ab = a("deep_dark");
+   public static final agl<ctd> ac = a("nether_wastes");
+   public static final agl<ctd> ad = a("warped_forest");
+   public static final agl<ctd> ae = a("crimson_forest");
+   public static final agl<ctd> af = a("soul_sand_valley");
+   public static final agl<ctd> ag = a("basalt_deltas");
+   public static final agl<ctd> ah = a("the_end");
+   public static final agl<ctd> ai = a("end_highlands");
+   public static final agl<ctd> aj = a("end_midlands");
+   public static final agl<ctd> ak = a("small_end_islands");
+   public static final agl<ctd> al = a("end_barrens");
 
-public class ctk {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bhl<ctk.c> a = bhl.c();
-   public static final ctk b = new ctk.a().a();
-   public static final MapCodec<ctk> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(blj.i, bhl.c(ctk.c.a).promotePartial(ac.a("Spawn data: ", d::error)), aug.a(blj.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(jy.h.q(), ctk.b.a, jy.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ctk::new)
-   );
-   private final float f;
-   private final Map<blj, bhl<ctk.c>> g;
-   private final Map<bku<?>, ctk.b> h;
-
-   ctk(float $$0, Map<blj, bhl<ctk.c>> $$1, Map<bku<?>, ctk.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
-   }
-
-   public bhl<ctk.c> a(blj $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public ctk.b a(bku<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<blj, List<ctk.c>> a = Stream.of(blj.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bku<?>, ctk.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public ctk.a a(blj $$0, ctk.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public ctk.a a(bku<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new ctk.b($$2, $$1));
-         return this;
-      }
-
-      public ctk.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ctk a() {
-         return new ctk(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bhl.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<ctk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, ctk.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bhj.a {
-      public static final Codec<ctk.c> a = asu.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     jy.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bhi.a.fieldOf("weight").forGetter(bhj.a::a),
-                     asu.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     asu.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, ctk.c::new)
-         ),
-         (Function<ctk.c, DataResult<ctk.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final bku<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bku<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bhi.a($$1), $$2, $$3);
-      }
-
-      public c(bku<?> $$0, bhi $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == blj.h ? bku.av : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bku.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+   private static agl<ctd> a(String $$0) {
+      return agl.a(kd.ar, new agm($$0));
    }
 }

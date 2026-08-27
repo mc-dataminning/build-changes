@@ -1,72 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class cyk extends czz implements cvd, dca {
+public class cyk extends czc {
    public static final MapCodec<cyk> a = b(cyk::new);
-   private static final dhz c = dhy.C;
-   private final daa d = new daa(this);
+   public static final int b = 3;
+   public static final din c = did.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<cyk> a() {
       return a;
    }
 
-   public cyk(dhh.d $$0) {
+   public cyk(dhm.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dhi> b(int $$0) {
-      return $$1 -> czz.n($$1) ? $$0 : 0;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dhj.a<cva, dhi> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   public void b(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ect.c, ect.c.a($$3));
+   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         hx.a $$4 = new hx.a();
+
+         for (ib $$5 : ib.values()) {
+            $$4.a($$2, $$5);
+            dhn $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, atq.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, atq.a($$3, 20, 40));
+      }
+   }
+
+   private boolean e(dhn $$0, csf $$1, hx $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   public void a(dhn $$0, csf $$1, hx $$2, cvf $$3, hx $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean a(dhi $$0, cnr $$1) {
-      return !$$1.n().a(clm.fV) || super.a($$0, $$1);
-   }
+   private boolean a(crl $$0, hx $$1, int $$2) {
+      int $$3 = 0;
+      hx.a $$4 = new hx.a();
 
-   @Override
-   public boolean b(csd $$0, ht $$1, dhi $$2) {
-      return hx.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
-   }
+      for (ib $$5 : ib.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
 
-   @Override
-   public boolean a(csa $$0, ats $$1, ht $$2, dhi $$3) {
       return true;
    }
 
    @Override
-   public void a(ame $$0, ats $$1, ht $$2, dhi $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public ecs c_(dhi $$0) {
-      return $$0.c(c) ? ect.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a_(dhi $$0, crg $$1, ht $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public daa c() {
-      return this.d;
+   public clo a(csi $$0, hx $$1, dhn $$2) {
+      return clo.b;
    }
 }

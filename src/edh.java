@@ -1,201 +1,145 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class edh {
-   private final List<edf> a;
-   @Nullable
-   private edh.a b;
-   private int c;
-   private final ht d;
-   private final float e;
-   private final boolean f;
+   private edk[] a = new edk[128];
+   private int b;
 
-   public edh(List<edf> $$0, ht $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
+   public edk a(edk $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            edk[] $$1 = new edk[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
    public void a() {
-      this.c++;
+      this.b = 0;
    }
 
-   public boolean b() {
-      return this.c <= 0;
+   public edk b() {
+      return this.a[0];
    }
 
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public edf d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public edf a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, edf $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public eju a(bkq $$0, int $$1) {
-      edf $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dh() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dh() + 1.0F)) * 0.5;
-      return new eju($$3, $$4, $$5);
-   }
-
-   public ht d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public eju a(bkq $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public ht g() {
-      return this.a.get(this.c).a();
-   }
-
-   public edf h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public edf i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable edh $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            edf $$2 = this.a.get($$1);
-            edf $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @aup
-   void a(edf[] $$0, edf[] $$1, Set<edl> $$2) {
-      this.b = new edh.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public edh.a k() {
-      return this.b;
-   }
-
-   public void a(tu $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static edh b(tu $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      ht $$3 = $$0.e();
-      List<edf> $$4 = $$0.a(edf::b);
-      edh.a $$5 = edh.a.b($$0);
-      edh $$6 = new edh($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public ht l() {
-      return this.d;
-   }
-
-   public float m() {
-      return this.e;
-   }
-
-   static edf[] c(tu $$0) {
-      edf[] $$1 = new edf[$$0.n()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = edf.b($$0);
+   public edk c() {
+      edk $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
       }
 
-      return $$1;
-   }
-
-   static void a(tu $$0, edf[] $$1) {
-      $$0.c($$1.length);
-
-      for (edf $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public edh n() {
-      edh $$0 = new edh(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
+      $$0.d = -1;
       return $$0;
    }
 
-   public static record a(edf[] a, edf[] b, Set<edl> c) {
-
-      public void a(tu $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         edh.a($$0, this.a);
-         edh.a($$0, this.b);
+   public void b(edk $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
       }
 
-      public static edh.a b(tu $$0) {
-         HashSet<edl> $$1 = $$0.a(HashSet::new, edl::c);
-         edf[] $$2 = edh.c($$0);
-         edf[] $$3 = edh.c($$0);
-         return new edh.a($$2, $$3, $$1);
+      $$0.d = -1;
+   }
+
+   public void a(edk $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
       }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      edk $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         edk $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      edk $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         edk $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         edk $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public edk[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

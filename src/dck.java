@@ -1,33 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class dck extends cun {
-   public static final MapCodec<dck> c = b(dck::new);
+public class dck extends cwz {
+   public static final MapCodec<dck> b = b(dck::new);
+   private static final uv c = uv.c("container.upgrade");
 
    @Override
    public MapCodec<dck> a() {
-      return c;
+      return b;
    }
 
-   public dck(dhh.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : cvc.a.o();
+   protected dck(dhm.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dhi $$0, csd $$1, ht $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(dhi $$0) {
-      return $$0.a(arg.aS);
+   public bje b(dhn $$0, csf $$1, hx $$2) {
+      return new bjk(($$2x, $$3, $$4) -> new cin($$2x, $$3, chc.a($$1, $$2)), c);
    }
 
    @Override
-   protected boolean f(dhi $$0) {
-      return true;
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if ($$1.B) {
+         return bjb.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(arf.aF);
+         return bjb.b;
+      }
    }
 }

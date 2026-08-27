@@ -1,56 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class drj extends dpv<dsx> {
-   public drj(Codec<dsx> $$0) {
+public class drj extends dqa<dsl> {
+   public drj(Codec<dsl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<dsx> $$0) {
-      csu $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      dsx $$3 = $$0.f();
-      ats $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         ht $$6 = $$2.h($$5.getAsInt());
-         iw $$7 = new iw($$3.c, $$3.c, $$3.c);
-         dwz $$8 = dwz.a($$6.b($$7), $$6.a($$7));
-         return ht.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, cvc.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(dqc<dsl> $$0) {
+      csz $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      hx.a $$3 = new hx.a();
+      hx.a $$4 = new hx.a();
 
-   private static OptionalInt a(csu $$0, ht $$1, dsx $$2) {
-      Predicate<dhi> $$3 = $$0x -> $$0x.a(cvc.G);
-      Predicate<dhi> $$4 = $$0x -> !$$0x.a(cvc.G);
-      Optional<dmh> $$5 = dmh.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dmh::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dmw.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(ib.a, 1);
+            ctd $$10 = $$1.s($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, cvh.dO.o(), 2);
+            }
 
-   private boolean b(csu $$0, ht $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (hx $$2 : hx.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, cvh.dN.o(), 2);
+               dhn $$11 = $$1.a_($$4);
+               if ($$11.b(dco.c)) {
+                  $$1.a($$4, $$11.a(dco.c, Boolean.valueOf(true)), 2);
+               }
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(csb $$0, ht $$1) {
-      dhi $$2 = $$0.a_($$1);
-      return $$2.a(cvc.G) || $$2.i();
+      return true;
    }
 }

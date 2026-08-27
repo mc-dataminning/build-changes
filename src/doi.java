@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class doi extends doj {
-   public static final Codec<doi> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, doi::new));
+public class doi extends doo {
+   final arz<cvf> a;
+   public static final Codec<doi> e = RecordCodecBuilder.create($$0 -> a($$0).and(arz.a(kd.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, doi::new));
 
-   public doi(iw $$0) {
+   protected doi(ja $$0, arz<cvf> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dhi $$0) {
-      return $$0.e();
+   protected boolean a(dhn $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dnz<?> a() {
-      return dnz.e;
+   public doe<?> a() {
+      return doe.b;
    }
 }

@@ -1,56 +1,161 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cwp extends cva {
-   public static final MapCodec<cva> a = jy.f.q().fieldOf("dead");
-   public static final MapCodec<cwp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, cwp::new));
-   private final cva c;
-
-   public cwp(cva $$0, dhh.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class cwp extends cxh implements cxx {
+   public static final MapCodec<cwp> a = b(cwp::new);
+   public static final dil<dig> b = did.bd;
 
    @Override
    public MapCodec<cwp> a() {
-      return b;
+      return a;
+   }
+
+   public cwp(dhm.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, ib.c).a(d, Boolean.valueOf(false)).a(b, dig.a));
    }
 
    @Override
-   public void a(dhi $$0, ame $$1, ht $$2, ats $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
+   protected int g(dhn $$0) {
+      return 2;
+   }
+
+   @Override
+   public dhn a(dhn $$0, ib $$1, dhn $$2, csg $$3, hx $$4, hx $$5) {
+      return $$1 == ib.a && !this.b($$3, $$5, $$2) ? cvh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected int a(crl $$0, hx $$1, dhn $$2) {
+      dfi $$3 = $$0.c_($$1);
+      return $$3 instanceof dft ? ((dft)$$3).c() : 0;
+   }
+
+   private int e(csf $$0, hx $$1, dhn $$2) {
+      int $$3 = this.b($$0, $$1, $$2);
+      if ($$3 == 0) {
+         return 0;
+      } else {
+         int $$4 = this.a((csv)$$0, $$1, $$2);
+         if ($$4 > $$3) {
+            return 0;
+         } else {
+            return $$2.c(b) == dig.b ? $$3 - $$4 : $$3;
+         }
       }
    }
 
    @Override
-   public dhi a(dhi $$0, hx $$1, dhi $$2, csb $$3, ht $$4, ht $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
+   protected boolean a(csf $$0, hx $$1, dhn $$2) {
+      int $$3 = this.b($$0, $$1, $$2);
+      if ($$3 == 0) {
+         return false;
+      } else {
+         int $$4 = this.a((csv)$$0, $$1, $$2);
+         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(b) == dig.a;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean a(crg $$0, ht $$1) {
-      for (hx $$2 : hx.values()) {
-         ecs $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(arl.a)) {
-            return true;
+   @Override
+   protected int b(csf $$0, hx $$1, dhn $$2) {
+      int $$3 = super.b($$0, $$1, $$2);
+      ib $$4 = $$2.c(aE);
+      hx $$5 = $$1.a($$4);
+      dhn $$6 = $$0.a_($$5);
+      if ($$6.n()) {
+         $$3 = $$6.a($$0, $$5);
+      } else if ($$3 < 15 && $$6.g($$0, $$5)) {
+         $$5 = $$5.a($$4);
+         $$6 = $$0.a_($$5);
+         cal $$7 = this.a($$0, $$4, $$5);
+         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.K(), $$6.n() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
+         if ($$8 != Integer.MIN_VALUE) {
+            $$3 = $$8;
          }
       }
 
-      return false;
+      return $$3;
    }
 
    @Nullable
+   private cal a(csf $$0, ib $$1, hx $$2) {
+      List<cal> $$3 = $$0.a(
+         cal.class,
+         new eju((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
+         $$1x -> $$1x != null && $$1x.cE() == $$1
+      );
+      return $$3.size() == 1 ? $$3.get(0) : null;
+   }
+
    @Override
-   public dhi a(cnr $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+   public bjb a(dhn $$0, csf $$1, hx $$2, cdz $$3, bja $$4, ejv $$5) {
+      if (!$$3.fU().e) {
+         return bjb.d;
+      } else {
+         $$0 = $$0.a(b);
+         float $$6 = $$0.c(b) == dig.b ? 0.55F : 0.5F;
+         $$1.a($$3, $$2, aqv.eF, aqw.e, 0.3F, $$6);
+         $$1.a($$2, $$0, 2);
+         this.f($$1, $$2, $$0);
+         return bjb.a($$1.B);
+      }
+   }
+
+   @Override
+   protected void c(csf $$0, hx $$1, dhn $$2) {
+      if (!$$0.M().b($$1, this)) {
+         int $$3 = this.e($$0, $$1, $$2);
+         dfi $$4 = $$0.c_($$1);
+         int $$5 = $$4 instanceof dft ? ((dft)$$4).c() : 0;
+         if ($$3 != $$5 || $$2.c(d) != this.a($$0, $$1, $$2)) {
+            elp $$6 = this.b($$0, $$1, $$2) ? elp.c : elp.d;
+            $$0.a($$1, this, 2, $$6);
+         }
+      }
+   }
+
+   private void f(csf $$0, hx $$1, dhn $$2) {
+      int $$3 = this.e($$0, $$1, $$2);
+      dfi $$4 = $$0.c_($$1);
+      int $$5 = 0;
+      if ($$4 instanceof dft $$6) {
+         $$5 = $$6.c();
+         $$6.a($$3);
       }
 
-      return this.o();
+      if ($$5 != $$3 || $$2.c(b) == dig.a) {
+         boolean $$7 = this.a($$0, $$1, $$2);
+         boolean $$8 = $$2.c(d);
+         if ($$8 && !$$7) {
+            $$0.a($$1, $$2.a(d, Boolean.valueOf(false)), 2);
+         } else if (!$$8 && $$7) {
+            $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 2);
+         }
+
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(dhn $$0, ami $$1, hx $$2, atw $$3) {
+      this.f($$1, $$2, $$0);
+   }
+
+   @Override
+   public boolean a(dhn $$0, csf $$1, hx $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dfi $$5 = $$1.c_($$2);
+      return $$5 != null && $$5.a_($$3, $$4);
+   }
+
+   @Override
+   public dfi a(hx $$0, dhn $$1) {
+      return new dft($$0, $$1);
+   }
+
+   @Override
+   protected void a(dho.a<cvf, dhn> $$0) {
+      $$0.a(aE, b, d);
    }
 }

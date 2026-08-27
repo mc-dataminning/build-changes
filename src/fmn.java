@@ -1,75 +1,89 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fmn extends fmi {
-   final Supplier<gcu> f;
+public abstract class fmn {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected fmp e;
 
-   fmn(UUID $$0, Instant $$1, UUID $$2, Supplier<gcu> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fmn(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Supplier<gcu> a() {
-      return this.f;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public fmn c() {
-      fmn $$0 = new fmn(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
+   public abstract fmn b();
 
-   @Override
-   public fau a(fau $$0, fmm $$1) {
-      return new fez($$0, $$1, this);
-   }
+   public abstract faz a(faz var1, fmr var2);
 
-   public static class a extends fmi.a<fmn> {
-      public a(fmn $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public abstract static class a<R extends fmn> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public a(UUID $$0, Supplier<gcu> $$1, AbuseReportLimits $$2) {
-         super(new fmn(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public R e() {
+         return this.a;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      @Override
-      public fmi.b c() {
-         if (this.a.e == null) {
-            return fmi.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fmi.b.d : null;
-         }
+      public fmp h() {
+         return this.a.e;
       }
 
-      @Override
-      public Either<fmi.c, fmi.b> a(fmm $$0) {
-         fmi.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gcu $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fmi.c(this.a.a, fml.b, $$6));
-         }
+      public void a(fmp $$0) {
+         this.a.e = $$0;
       }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract fmn.b c();
+
+      public abstract Either<fmn.c, fmn.b> a(fmr var1);
+   }
+
+   public static record b(uv e) {
+      public static final fmn.b a = new fmn.b(uv.c("gui.abuseReport.send.no_reason"));
+      public static final fmn.b b = new fmn.b(uv.c("gui.chatReport.send.no_reported_messages"));
+      public static final fmn.b c = new fmn.b(uv.c("gui.chatReport.send.too_many_messages"));
+      public static final fmn.b d = new fmn.b(uv.c("gui.abuseReport.send.comment_too_long"));
+
+      public ewp a() {
+         return ewp.a(this.e);
+      }
+
+      public uv b() {
+         return this.e;
+      }
+   }
+
+   public static record c(UUID a, fmq b, AbuseReport c) {
    }
 }

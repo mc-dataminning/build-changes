@@ -1,99 +1,87 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import java.util.Collection;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cjx implements aug {
-   a(0, "white", 16383998, ecw.i, 15790320, 16777215),
-   b(1, "orange", 16351261, ecw.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, ecw.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, ecw.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, ecw.s, 14602026, 16776960),
-   f(5, "lime", 8439583, ecw.t, 4312372, 12582656),
-   g(6, "pink", 15961002, ecw.u, 14188952, 16738740),
-   h(7, "gray", 4673362, ecw.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, ecw.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, ecw.x, 2651799, 65535),
-   k(10, "purple", 8991416, ecw.y, 8073150, 10494192),
-   l(11, "blue", 3949738, ecw.z, 2437522, 255),
-   m(12, "brown", 8606770, ecw.A, 5320730, 9127187),
-   n(13, "green", 6192150, ecw.B, 3887386, 65280),
-   o(14, "red", 11546150, ecw.C, 11743532, 16711680),
-   p(15, "black", 1908001, ecw.D, 1973019, 0);
-
-   private static final IntFunction<cjx> r = asf.a(cjx::a, values(), asf.a.a);
-   private static final Int2ObjectOpenHashMap<cjx> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cjx)$$0))
-   );
-   public static final aug.a<cjx> q = aug.a(cjx::values);
-   private final int t;
-   private final String u;
-   private final ecw v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cjx(int $$0, String $$1, int $$2, ecw $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public ecw e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static cjx a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cjx a(String $$0, @Nullable cjx $$1) {
-      cjx $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cjx b(int $$0) {
-      return (cjx)s.get($$0);
+public class cjx extends clj {
+   public cjx(clj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public boolean i(clo $$0) {
+      return true;
    }
 
    @Override
-   public String c() {
-      return this.u;
+   public boolean a(dhn $$0, csf $$1, hx $$2, cdz $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bja.a));
+      }
+
+      return false;
+   }
+
+   @Override
+   public bjb a(cny $$0) {
+      cdz $$1 = $$0.o();
+      csf $$2 = $$0.q();
+      if (!$$2.B && $$1 != null) {
+         hx $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bjb.e;
+         }
+      }
+
+      return bjb.a($$2.B);
+   }
+
+   private boolean a(cdz $$0, dhn $$1, csg $$2, hx $$3, boolean $$4, clo $$5) {
+      if (!$$0.gq()) {
+         return false;
+      } else {
+         cvf $$6 = $$1.b();
+         dho<cvf, dhn> $$7 = $$6.n();
+         Collection<diq<?>> $$8 = $$7.d();
+         String $$9 = kc.f.b($$6).toString();
+         if ($$8.isEmpty()) {
+            a($$0, uv.a(this.a() + ".empty", $$9));
+            return false;
+         } else {
+            sd $$10 = $$5.a("DebugProperty");
+            String $$11 = $$10.l($$9);
+            diq<?> $$12 = $$7.a($$11);
+            if ($$4) {
+               if ($$12 == null) {
+                  $$12 = $$8.iterator().next();
+               }
+
+               dhn $$13 = a($$1, $$12, $$0.fJ());
+               $$2.a($$3, $$13, 18);
+               a($$0, uv.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            } else {
+               $$12 = a($$8, $$12, $$0.fJ());
+               String $$14 = $$12.f();
+               $$10.a($$9, $$14);
+               a($$0, uv.a(this.a() + ".select", $$14, a($$1, $$12)));
+            }
+
+            return true;
+         }
+      }
+   }
+
+   private static <T extends Comparable<T>> dhn a(dhn $$0, diq<T> $$1, boolean $$2) {
+      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   }
+
+   private static void a(cdz $$0, uv $$1) {
+      ((amj)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dhn $$0, diq<T> $$1) {
+      return $$1.a($$0.c($$1));
    }
 }

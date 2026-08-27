@@ -1,14 +1,50 @@
-public record zd(vd.a a) implements wk<yd> {
-   public zd(tu $$0) {
-      this(vd.a.a($$0));
+public class zd implements wo<yh> {
+   public static final int a = -1;
+   public static final int b = -2;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final clo f;
+
+   public zd(int $$0, int $$1, int $$2, clo $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3.p();
+   }
+
+   public zd(ty $$0) {
+      this.c = $$0.readByte();
+      this.d = $$0.n();
+      this.e = $$0.readShort();
+      this.f = $$0.r();
    }
 
    @Override
-   public void a(tu $$0) {
-      vd.a.a($$0, this.a);
+   public void a(ty $$0) {
+      $$0.k(this.c);
+      $$0.c(this.d);
+      $$0.l(this.e);
+      $$0.a(this.f);
    }
 
-   public void a(yd $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public clo e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

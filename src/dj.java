@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public record dj(@Nullable Float c, @Nullable Float d) {
    public static final dj a = new dj(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("argument.range.ints"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(uv.c("argument.range.ints"));
 
    public static dj a(float $$0) {
       return new dj($$0, $$0);
@@ -66,13 +66,13 @@ public record dj(@Nullable Float c, @Nullable Float d) {
    public static dj a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (atc.b($$0)) {
-         float $$1 = atc.e($$0, "value");
+      } else if (atg.b($$0)) {
+         float $$1 = atg.e($$0, "value");
          return new dj($$1, $$1);
       } else {
-         JsonObject $$2 = atc.m($$0, "value");
-         Float $$3 = $$2.has("min") ? atc.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? atc.m($$2, "max") : null;
+         JsonObject $$2 = atg.m($$0, "value");
+         Float $$3 = $$2.has("min") ? atg.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? atg.m($$2, "max") : null;
          return new dj($$3, $$4);
       }
    }

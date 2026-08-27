@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class ge {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<eju, List<? extends bkq>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ejz, List<? extends bkv>> b = ($$0, $$1) -> {
    };
-   private static final dlg<bkq, ?> c = new dlg<bkq, bkq>() {
-      public bkq a(bkq $$0) {
+   private static final dll<bkv, ?> c = new dll<bkv, bkv>() {
+      public bkv a(bkv $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bkq> a() {
-         return bkq.class;
+      public Class<? extends bkv> a() {
+         return bkv.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<bkq> g;
+   private final Predicate<bkv> g;
    private final cl.c h;
-   private final Function<eju, eju> i;
+   private final Function<ejz, ejz> i;
    @Nullable
-   private final ejp j;
-   private final BiConsumer<eju, List<? extends bkq>> k;
+   private final eju j;
+   private final BiConsumer<ejz, List<? extends bkv>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dlg<bkq, ?> o;
+   private final dll<bkv, ?> o;
    private final boolean p;
 
    public ge(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<bkq> $$3,
+      Predicate<bkv> $$3,
       cl.c $$4,
-      Function<eju, eju> $$5,
-      @Nullable ejp $$6,
-      BiConsumer<eju, List<? extends bkq>> $$7,
+      Function<ejz, ejz> $$5,
+      @Nullable eju $$6,
+      BiConsumer<ejz, List<? extends bkv>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bku<?> $$11,
+      @Nullable bkz<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class ge {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dlg<bkq, ?>)($$11 == null ? c : $$11);
+      this.o = (dll<bkv, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class ge {
       }
    }
 
-   public bkq a(du $$0) throws CommandSyntaxException {
+   public bkv a(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bkq> $$1 = this.b($$0);
+      List<? extends bkv> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw eg.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class ge {
       }
    }
 
-   public List<? extends bkq> b(du $$0) throws CommandSyntaxException {
+   public List<? extends bkv> b(du $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
    }
 
-   private List<? extends bkq> f(du $$0) throws CommandSyntaxException {
+   private List<? extends bkv> f(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         amf $$1 = $$0.m().ae().a(this.m);
-         return (List<? extends bkq>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amf[]{$$1}));
+         amj $$1 = $$0.l().ae().a(this.m);
+         return (List<? extends bkv>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amj[]{$$1}));
       } else if (this.n != null) {
-         for (ame $$2 : $$0.m().H()) {
-            bkq $$3 = $$2.a(this.n);
+         for (ami $$2 : $$0.l().H()) {
+            bkv $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new bkq[]{$$3});
+               return Lists.newArrayList(new bkv[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         eju $$4 = this.i.apply($$0.e());
-         Predicate<bkq> $$5 = this.a($$4);
+         ejz $$4 = this.i.apply($$0.d());
+         Predicate<bkv> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends bkq>)($$0.g() != null && $$5.test($$0.g()) ? Lists.newArrayList(new bkq[]{$$0.g()}) : Collections.emptyList());
+            return (List<? extends bkv>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bkv[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<bkq> $$6 = Lists.newArrayList();
+            List<bkv> $$6 = Lists.newArrayList();
             if (this.d()) {
-               this.a($$6, $$0.f(), $$4, $$5);
+               this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (ame $$7 : $$0.m().H()) {
+               for (ami $$7 : $$0.l().H()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class ge {
       }
    }
 
-   private void a(List<bkq> $$0, ame $$1, eju $$2, Predicate<bkq> $$3) {
+   private void a(List<bkv> $$0, ami $$1, ejz $$2, Predicate<bkv> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class ge {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public amf c(du $$0) throws CommandSyntaxException {
+   public amj c(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<amf> $$1 = this.d($$0);
+      List<amj> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw eg.e.create();
       } else {
@@ -172,32 +172,32 @@ public class ge {
       }
    }
 
-   public List<amf> d(du $$0) throws CommandSyntaxException {
+   public List<amj> d(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         amf $$1 = $$0.m().ae().a(this.m);
-         return (List<amf>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amf[]{$$1}));
+         amj $$1 = $$0.l().ae().a(this.m);
+         return (List<amj>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new amj[]{$$1}));
       } else if (this.n != null) {
-         amf $$2 = $$0.m().ae().a(this.n);
-         return (List<amf>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new amf[]{$$2}));
+         amj $$2 = $$0.l().ae().a(this.n);
+         return (List<amj>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new amj[]{$$2}));
       } else {
-         eju $$3 = this.i.apply($$0.e());
-         Predicate<bkq> $$4 = this.a($$3);
+         ejz $$3 = this.i.apply($$0.d());
+         Predicate<bkv> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.g() instanceof amf $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new amf[]{$$5});
+            if ($$0.f() instanceof amj $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new amj[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<amf> $$7;
+            List<amj> $$7;
             if (this.d()) {
-               $$7 = $$0.f().a($$4, $$6);
+               $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (amf $$9 : $$0.m().ae().t()) {
+               for (amj $$9 : $$0.l().ae().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,10 +212,10 @@ public class ge {
       }
    }
 
-   private Predicate<bkq> a(eju $$0) {
-      Predicate<bkq> $$1 = this.g;
+   private Predicate<bkv> a(ejz $$0) {
+      Predicate<bkv> $$1 = this.g;
       if (this.j != null) {
-         ejp $$2 = this.j.c($$0);
+         eju $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
       }
 
@@ -226,7 +226,7 @@ public class ge {
       return $$1;
    }
 
-   private <T extends bkq> List<T> a(eju $$0, List<T> $$1) {
+   private <T extends bkv> List<T> a(ejz $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class ge {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static ur a(List<? extends bkq> $$0) {
-      return uu.b($$0, bkq::P_);
+   public static uv a(List<? extends bkv> $$0) {
+      return uy.b($$0, bkv::Q_);
    }
 }

@@ -1,47 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dpp extends dpv<drw> {
-   public dpp(Codec<drw> $$0) {
+public abstract class dpp extends dqa<dsl> {
+   public dpp(Codec<dsl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpx<drw> $$0) {
-      drw $$1 = $$0.f();
-      ht $$2 = $$0.e();
-      csu $$3 = $$0.b();
-      ats $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      ht.a $$10 = new ht.a();
-
-      for (ht $$11 : ht.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public boolean a(dqc<dsl> $$0) {
+      atw $$1 = $$0.d();
+      csz $$2 = $$0.b();
+      hx $$3 = $$0.e();
+      Optional<cvf> $$4 = kc.f.b(ark.ap).flatMap($$1x -> $$1x.a($$1)).map(ig::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
    }
 
-   protected boolean a(drw $$0, csu $$1, ats $$2, int $$3, int $$4, ht.a $$5) {
-      boolean $$6 = false;
+   protected abstract boolean a(csg var1, atw var2, hx var3, dhn var4);
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dhi $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
+   protected boolean b(csg $$0, atw $$1, hx $$2, dhn $$3) {
+      hx $$4 = $$2.c();
+      dhn $$5 = $$0.a_($$2);
+      if (($$5.a(cvh.G) || $$5.a(ark.as)) && $$0.a_($$4).a(cvh.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            kc.f.b(ark.as).flatMap($$1x -> $$1x.a($$1)).map(ig::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, cvh.mV.o().a(dcb.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      return $$6;
+         for (ib $$6 : ib.c.a) {
+            if ($$1.i() < 0.2F) {
+               hx $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(cvh.G)) {
+                  kc.f.b(ark.aq).flatMap($$1x -> $$1x.a($$1)).map(ig::a).ifPresent($$3x -> {
+                     dhn $$4x = $$3x.o();
+                     if ($$4x.b(cuq.c)) {
+                        $$4x = $$4x.a(cuq.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

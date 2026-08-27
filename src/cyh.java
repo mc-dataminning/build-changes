@@ -1,57 +1,47 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cyh extends ctv {
-   public static final MapCodec<cyh> c = b(cyh::new);
-
-   @Override
-   public MapCodec<cyh> a() {
-      return c;
-   }
-
-   protected cyh(dhh.d $$0) {
-      super($$0);
-   }
+public class cyh extends cvo implements ddg {
+   protected static final MapCodec<List<ddg.a>> a = ddg.a.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<cyh> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(cyh::b), u()).apply($$0, cyh::new));
+   protected static final float c = 3.0F;
+   protected static final eks d = cvf.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<ddg.a> e;
 
    @Override
-   public dfd a(ht $$0, dhi $$1) {
-      return new dfz($$0, $$1);
+   public MapCodec<? extends cyh> a() {
+      return b;
    }
 
-   @Nullable
-   @Override
-   public <T extends dfd> dfe<T> a(csa $$0, dhi $$1, dff<T> $$2) {
-      return a($$0, $$2, dff.a);
+   public cyh(bkg $$0, int $$1, dhm.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   @Override
-   protected void a(csa $$0, ht $$1, cdu $$2) {
-      dfd $$3 = $$0.c_($$1);
-      if ($$3 instanceof dfz) {
-         $$2.a((bja)$$3);
-         $$2.a(arb.am);
+   public cyh(List<ddg.a> $$0, dhm.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static List<ddg.a> a(bkg $$0, int $$1) {
+      int $$2;
+      if ($$0.a()) {
+         $$2 = $$1;
+      } else {
+         $$2 = $$1 * 20;
       }
+
+      return List.of(new ddg.a($$0, $$2));
    }
 
    @Override
-   public void a(dhi $$0, csa $$1, ht $$2, ats $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aqr.jl, aqs.e, 1.0F, 1.0F, false);
-         }
+   public eks a(dhn $$0, crl $$1, hx $$2, eke $$3) {
+      ejz $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
+   }
 
-         hx $$7 = $$0.c(a);
-         hx.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == hx.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == hx.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(js.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(js.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public List<ddg.a> b() {
+      return this.e;
    }
 }

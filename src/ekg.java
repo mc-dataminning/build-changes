@@ -1,13 +1,18 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-interface ekg {
-   DoubleList a();
+public final class ekg extends eks {
+   protected ekg(eki $$0) {
+      super($$0);
+   }
 
-   boolean a(ekg.a var1);
+   @Override
+   protected DoubleList a(ib.a $$0) {
+      return new ekf(this.a.c($$0));
+   }
 
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   @Override
+   protected int a(ib.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return atq.a(atq.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

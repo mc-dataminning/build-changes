@@ -1,176 +1,78 @@
-import com.google.common.base.Predicates;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class ask<K> implements ih<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
+public class ask<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   private ask(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
-   }
-
-   private ask(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   public static <A> ask<A> c(int $$0) {
-      return new ask((int)((float)$$0 / 0.8F));
+   public ask(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
    }
 
    @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.d($$0)));
-   }
+   public boolean add(T $$0) {
+      boolean $$1 = false;
 
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
-   }
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
+         }
+      }
 
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int c(K $$0) {
-      int $$1 = this.d();
-      this.a($$0, $$1);
       return $$1;
    }
 
-   private int d() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
 
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      ask<K> $$3 = new ask<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
          }
       }
 
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
-   }
-
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
-         }
-
-         this.f($$3);
-      }
-
-      int $$4 = this.g(this.d($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
-      }
-   }
-
-   private int d(@Nullable K $$0) {
-      return (atm.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
-   }
-
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
-         }
-
-         if (this.e[$$2] == c) {
-            return -1;
-         }
-      }
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
-         }
-
-         if (this.e[$$3] == c) {
-            return -1;
-         }
-      }
-
-      return -1;
-   }
-
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
-         }
-      }
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
-         }
-      }
-
-      throw new RuntimeException("Overflowed :(");
+      return $$1;
    }
 
    @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
    }
 
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(Collectors.toList()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
+      }
    }
 
    @Override
-   public int b() {
-      return this.i;
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
    }
 
-   public ask<K> c() {
-      return new ask<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

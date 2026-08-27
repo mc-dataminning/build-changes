@@ -1,33 +1,89 @@
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class bvx {
-   public static boolean a(bli $$0) {
-      return $$0.N() instanceof buo;
+   public static final bvx a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
+   @Nullable
+   private Predicate<bll> g;
+
+   private bvx(boolean $$0) {
+      this.c = $$0;
    }
 
-   public static boolean a(blp $$0, int $$1) {
-      return $$0.fR() && $$0.fO().a($$0.dl(), (double)($$0.fP() + (float)$$1) + 1.0);
+   public static bvx a() {
+      return new bvx(true);
    }
 
-   public static boolean a(ht $$0, blp $$1) {
-      return $$0.v() < $$1.dN().I_() || $$0.v() > $$1.dN().ak();
+   public static bvx b() {
+      return new bvx(false);
    }
 
-   public static boolean a(boolean $$0, blp $$1, ht $$2) {
-      return $$0 && !$$1.a($$2);
+   public bvx c() {
+      bvx $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
    }
 
-   public static boolean a(bup $$0, ht $$1) {
-      return !$$0.a($$1);
+   public bvx a(double $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public static boolean a(blp $$0, ht $$1) {
-      return $$0.dN().b_($$1).a(arl.a);
+   public bvx d() {
+      this.e = false;
+      return this;
    }
 
-   public static boolean b(blp $$0, ht $$1) {
-      return $$0.a(edm.a($$0.dN(), $$1.j())) != 0.0F;
+   public bvx e() {
+      this.f = false;
+      return this;
    }
 
-   public static boolean c(blp $$0, ht $$1) {
-      return $$0.dN().a_($$1).e();
+   public bvx a(@Nullable Predicate<bll> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable bll $$0, bll $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.eq()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
+      } else {
+         if ($$0 == null) {
+            if (this.c && (!$$1.ep() || $$1.dN().aj() == biy.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.s($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.B($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.ds(), $$1.du(), $$1.dy());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof bln $$5 && !$$5.O().a($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

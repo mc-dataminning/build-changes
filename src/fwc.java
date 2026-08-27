@@ -1,28 +1,60 @@
-public class fwc extends fvw<cam> {
-   private final fro a;
+@FunctionalInterface
+public interface fwc<T extends bkv> {
+   fwb<T> create(fwc.a var1);
 
-   public fwc(fvx.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
-   }
+   public static class a {
+      private final fwa a;
+      private final fxa b;
+      private final frt c;
+      private final fqv d;
+      private final apl e;
+      private final fkp f;
+      private final eur g;
 
-   public void a(cam $$0, float $$1, float $$2, enw $$3, fqu $$4, int $$5) {
-      dhi $$6 = $$0.u();
-      if ($$6.l() == dbf.c) {
-         csa $$7 = $$0.dN();
-         if ($$6 != $$7.a_($$0.dn()) && $$6.l() != dbf.a) {
-            $$3.a();
-            ht $$8 = ht.a($$0.ds(), $$0.cH().e, $$0.dy());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fqp.b($$6)), false, ats.a(), $$6.a($$0.q()), gbl.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+      public a(fwa $$0, fxa $$1, frt $$2, fqv $$3, apl $$4, fkp $$5, eur $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public agi a(cam $$0) {
-      return gbt.e;
+      public fwa a() {
+         return this.a;
+      }
+
+      public fxa b() {
+         return this.b;
+      }
+
+      public frt c() {
+         return this.c;
+      }
+
+      public fqv d() {
+         return this.d;
+      }
+
+      public apl e() {
+         return this.e;
+      }
+
+      public fkp f() {
+         return this.f;
+      }
+
+      public geg g() {
+         return this.c.a().a();
+      }
+
+      public fkt a(fkr $$0) {
+         return this.f.a($$0);
+      }
+
+      public eur h() {
+         return this.g;
+      }
    }
 }

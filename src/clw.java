@@ -1,18 +1,40 @@
-public class clw extends cjc {
-   public clw(cva $$0, cle.a $$1) {
-      super($$0, $$1);
+public class clw extends clj {
+   private static final int a = 32;
+
+   public clw(clj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bix a(cnt $$0) {
-      return bix.d;
+   public clo a(clo $$0, csf $$1, bll $$2) {
+      if ($$2 instanceof amj $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(arf.c.b(this));
+      }
+
+      if ($$2 instanceof cdz && !((cdz)$$2).fU().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.es();
+      }
+
+      return $$0.b() ? new clo(clr.qv) : $$0;
    }
 
    @Override
-   public biy<clj> a(csa $$0, cdu $$1, biw $$2) {
-      ejq $$3 = a($$0, $$1, crj.b.b);
-      ejq $$4 = $$3.a($$3.a().c());
-      bix $$5 = super.a(new cnt($$1, $$2, $$4));
-      return new biy<>($$5, $$1.b($$2));
+   public int b(clo $$0) {
+      return 32;
+   }
+
+   @Override
+   public cnh c(clo $$0) {
+      return cnh.c;
+   }
+
+   @Override
+   public bjc<clo> a(csf $$0, cdz $$1, bja $$2) {
+      return clq.a($$0, $$1, $$2);
    }
 }
