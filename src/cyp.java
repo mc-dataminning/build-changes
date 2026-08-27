@@ -38,37 +38,41 @@ public class cyp extends cwb implements ddp {
 
    @Override
    public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
-      if (!($$1.c_($$2) instanceof dhk $$6)) {
-         return bka.d;
-      } else {
-         cmx var13 = $$3.b($$4);
-         cmx $$9 = $$6.x();
-         if (!var13.b() && ($$9.b() || cmx.c($$9, var13) && $$9.L() < $$9.g())) {
-            $$6.a(dhk.b.a);
-            $$3.b(asb.c.b(var13.d()));
-            cmx $$10 = $$3.f() ? var13.c(1) : var13.a(1);
-            float $$11;
-            if ($$6.ai_()) {
-               $$6.b($$10);
-               $$11 = (float)$$10.L() / (float)$$10.g();
-            } else {
-               $$9.g(1);
-               $$11 = (float)$$9.L() / (float)$$9.g();
-            }
-
-            $$1.a(null, $$2, arr.fV, ars.e, 1.0F, 0.7F + 0.5F * $$11);
-            if ($$1 instanceof and $$13) {
-               $$13.a(jx.aU, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.c($$2, this);
+      if ($$1.c_($$2) instanceof dhk $$6) {
+         if ($$1.B) {
+            return bka.b;
          } else {
-            $$1.a(null, $$2, arr.fW, ars.e, 1.0F, 1.0F);
-            $$6.a(dhk.b.b);
-         }
+            cmx $$8 = $$3.b($$4);
+            cmx $$9 = $$6.x();
+            if (!$$8.b() && ($$9.b() || cmx.c($$9, $$8) && $$9.L() < $$9.g())) {
+               $$6.a(dhk.b.a);
+               $$3.b(asb.c.b($$8.d()));
+               cmx $$10 = $$3.f() ? $$8.c(1) : $$8.a(1);
+               float $$11;
+               if ($$6.ai_()) {
+                  $$6.b($$10);
+                  $$11 = (float)$$10.L() / (float)$$10.g();
+               } else {
+                  $$9.g(1);
+                  $$11 = (float)$$9.L() / (float)$$9.g();
+               }
 
-         $$1.a($$3, dnq.c, $$2);
-         return bka.a;
+               $$1.a(null, $$2, arr.fV, ars.e, 1.0F, 0.7F + 0.5F * $$11);
+               if ($$1 instanceof and $$13) {
+                  $$13.a(jx.aU, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
+               }
+
+               $$1.c($$2, this);
+            } else {
+               $$1.a(null, $$2, arr.fW, ars.e, 1.0F, 1.0F);
+               $$6.a(dhk.b.b);
+            }
+
+            $$1.a($$3, dnq.c, $$2);
+            return bka.a;
+         }
+      } else {
+         return bka.d;
       }
    }
 

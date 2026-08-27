@@ -1,27 +1,82 @@
-public class fej extends fdy<cih> implements ffd<cih> {
-   private static final ahg x = new ahg("textures/gui/container/generic_54.png");
-   private final int y;
+public class fej extends fdy {
+   private final dhe m;
+   private exm<dhe.a> n;
+   private exm<Boolean> o;
+   private exm<Boolean> p;
+   private dhe.a q = dhe.a.c;
+   private boolean r;
+   private boolean t;
 
-   public fej(cih $$0, cfg $$1, vf $$2) {
-      super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.y = $$0.m();
-      this.k = 114 + this.y * 18;
-      this.o = this.k - 94;
+   public fej(dhe $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   csp n() {
+      return this.m.c();
    }
 
    @Override
-   protected void a(ews $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
-      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
+   int D() {
+      return 135;
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.n = this.d(exm.<dhe.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> vf.c("advMode.mode.sequence");
+            case b -> vf.c("advMode.mode.auto");
+            case c -> vf.c("advMode.mode.redstone");
+         };
+      }).a(dhe.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, vf.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      this.o = this.d(
+         exm.a(vf.c("advMode.mode.conditional"), vf.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.r)
+            .a(this.g / 2 - 50, 165, 100, 20, vf.c("advMode.type"), ($$0, $$1) -> this.r = $$1)
+      );
+      this.p = this.d(
+         exm.a(vf.c("advMode.mode.autoexec.bat"), vf.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.t)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, vf.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+      );
+      this.e(false);
+   }
+
+   private void e(boolean $$0) {
+      this.c.j = $$0;
+      this.l.j = $$0;
+      this.n.j = $$0;
+      this.o.j = $$0;
+      this.p.j = $$0;
+   }
+
+   public void H() {
+      csp $$0 = this.m.c();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.o();
+      this.q = this.m.m();
+      this.r = this.m.w();
+      this.t = this.m.f();
+      this.l.a($$1);
+      this.n.a(this.q);
+      this.o.a(this.r);
+      this.p.a(this.t);
+      this.c($$1);
+      this.e(true);
+   }
+
+   @Override
+   public void a(evh $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(csp $$0) {
+      this.f.J().b(new aew(hx.a($$0.g()), this.a.a(), this.q, $$0.o(), this.r, this.t));
    }
 }

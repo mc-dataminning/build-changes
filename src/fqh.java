@@ -1,66 +1,146 @@
-import org.joml.Vector3f;
+public class fqh extends fru {
+   static final auu a = auu.a();
+   private final frp b;
 
-public class fqh extends frt {
-   private final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F);
-   private final Vector3f b = new Vector3f(1.0F, 1.0F, 1.0F);
-
-   fqh(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
+   fqh(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, frp $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
       this.n = false;
-      this.j = $$4 + (double)aun.b(this.r, -0.4F, 0.4F);
-      this.l = $$6 + (double)aun.b(this.r, -0.4F, 0.4F);
-      double $$7 = Math.random() * 2.0;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
-      this.D *= 2.5F;
-      this.j *= 0.08F;
-      this.l *= 0.08F;
-      this.t = 18 + this.r.a(4);
+      this.b($$7);
    }
 
    @Override
-   public void a(eqd $$0, eur $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)(this.t + 1);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   public fqy b() {
+      return fqy.c;
    }
 
    @Override
-   public fqx b() {
-      return fqx.c;
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = aun.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.d = this.g;
-         this.f = this.i;
-         this.a(this.j, 0.0, this.l);
-         this.j *= 0.99;
-         this.l *= 0.99;
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fqx<ka> {
+      private final double a = 0.25;
+      private final frp b;
+
+      public a(frp $$0) {
+         this.b = $$0;
+      }
+
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.z.a(2) + 2);
+         return $$8;
       }
    }
 
-   public static class a implements fqw<ka> {
-      private final fro a;
+   public static class b implements fqx<ka> {
+      private final frp a;
 
-      public a(fro $$0) {
+      public b(frp $$0) {
          this.a = $$0;
       }
 
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqh $$8 = new fqh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, 0.5 - fqh.a.j(), $$6, 0.5 - fqh.a.j(), this.a);
+         if ($$1.z.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements fqx<ka> {
+      private final double a = 0.01;
+      private final frp b;
+
+      public c(frp $$0) {
+         this.b = $$0;
+      }
+
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.z.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements fqx<ka> {
+      private final double a = 0.01;
+      private final frp b;
+
+      public d(frp $$0) {
+         this.b = $$0;
+      }
+
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements fqx<ka> {
+      private final double a = 0.01;
+      private final frp b;
+
+      public e(frp $$0) {
+         this.b = $$0;
+      }
+
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
          return $$8;
       }
    }

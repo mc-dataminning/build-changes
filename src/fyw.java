@@ -1,19 +1,19 @@
-public class fyw extends fzr<ccj, fki<ccj>> {
-   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
-   private final float i;
+public class fyw extends fzs<cci, fka<cci>> {
+   private static final ahg a = new ahg("textures/entity/ghast/ghast.png");
+   private static final ahg i = new ahg("textures/entity/ghast/ghast_shooting.png");
 
-   public fyw(fyl.a $$0, float $$1) {
-      super($$0, new fka($$0.a(fmu.ae)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gcp<>(this, $$0.d()));
-      this.a(new gcm<>(this, new fka($$0.a(fmu.af)), new fka($$0.a(fmu.ag)), $$0.g()));
+   public fyw(fym.a $$0) {
+      super($$0, new fka<>($$0.a(fmv.ad)), 1.5F);
    }
 
-   protected void a(ccj $$0, epz $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public ahg a(cci $$0) {
+      return $$0.u() ? i : a;
    }
 
-   public ahg a(ccj $$0) {
-      return a;
+   protected void a(cci $$0, eqa $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

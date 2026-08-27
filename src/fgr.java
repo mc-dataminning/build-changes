@@ -1,116 +1,136 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.Set;
 
-public class fgr {
-   private final iu a;
-   private final List<cqd<?>> b;
-   private final boolean c;
-   private final Set<cqd<?>> d = Sets.newHashSet();
-   private final Set<cqd<?>> e = Sets.newHashSet();
-   private final Set<cqd<?>> f = Sets.newHashSet();
+public class fgr extends exd {
+   private static final ahg b = new ahg("recipe_book/slot_many_craftable");
+   private static final ahg c = new ahg("recipe_book/slot_craftable");
+   private static final ahg d = new ahg("recipe_book/slot_many_uncraftable");
+   private static final ahg e = new ahg("recipe_book/slot_uncraftable");
+   private static final float f = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final vf n = vf.c("gui.recipebook.moreRecipes");
+   private cjn<?> o;
+   private aru p;
+   private fgs q;
+   private float r;
+   private float t;
+   private int u;
 
-   public fgr(iu $$0, List<cqd<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
-      } else {
-         this.c = a($$0, $$1);
-      }
+   public fgr() {
+      super(0, 0, 25, 25, ve.a);
    }
 
-   private static boolean a(iu $$0, List<cqd<?>> $$1) {
-      int $$2 = $$1.size();
-      cmx $$3 = $$1.get(0).b().a($$0);
+   public void a(fgs $$0, fgp $$1) {
+      this.q = $$0;
+      this.o = (cjn<?>)$$1.d().s.bS;
+      this.p = $$1.e();
+      List<cqd<?>> $$2 = $$0.a(this.p.a(this.o));
 
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cmx $$5 = $$1.get($$4).b().a($$0);
-         if (!cmx.c($$3, $$5)) {
-            return false;
+      for (cqd<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.t = 15.0F;
+            break;
          }
       }
-
-      return true;
    }
 
-   public iu a() {
-      return this.a;
+   public fgs a() {
+      return this.q;
+   }
+
+   @Override
+   public void b(ewt $$0, int $$1, int $$2, float $$3) {
+      if (!fda.s()) {
+         this.r += $$3;
+      }
+
+      ahg $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
+      }
+
+      boolean $$8 = this.t > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
+         this.t -= $$3;
+      }
+
+      $$0.a($$4, this.B(), this.C(), this.g, this.h);
+      List<cqd<?>> $$10 = this.f();
+      this.u = aun.d(this.r / 30.0F) % $$10.size();
+      cmx $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.f().size() > 1) {
+         $$0.a($$11, this.B() + $$12 + 1, this.C() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.B() + $$12, this.C() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<cqd<?>> f() {
+      List<cqd<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
    }
 
    public boolean b() {
-      return !this.f.isEmpty();
+      return this.f().size() == 1;
    }
 
-   public void a(aru $$0) {
-      for (cqd<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
+   public cqd<?> d() {
+      List<cqd<?>> $$0 = this.f();
+      return $$0.get(this.u);
    }
 
-   public void a(cfl $$0, int $$1, int $$2, aru $$3) {
-      for (cqd<?> $$4 : this.b) {
-         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4.b(), null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(cqd<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<cqd<?>> e() {
-      return this.b;
-   }
-
-   public List<cqd<?>> a(boolean $$0) {
-      List<cqd<?>> $$1 = Lists.newArrayList();
-      Set<cqd<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (cqd<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
+   public List<vf> e() {
+      cmx $$0 = this.f().get(this.u).b().a(this.q.a());
+      List<vf> $$1 = Lists.newArrayList(fda.a(evh.O(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
       }
 
       return $$1;
    }
 
-   public List<cqd<?>> b(boolean $$0) {
-      List<cqd<?>> $$1 = Lists.newArrayList();
-
-      for (cqd<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
+   @Override
+   public void a(fay $$0) {
+      cmx $$1 = this.f().get(this.u).b().a(this.q.a());
+      $$0.a(fax.a, vf.a("narration.recipe", $$1.y()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(fax.d, vf.c("narration.button.usage.hovered"), vf.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fax.d, vf.c("narration.button.usage.hovered"));
       }
-
-      return $$1;
    }
 
-   public boolean f() {
-      return this.c;
+   @Override
+   public int w() {
+      return 25;
+   }
+
+   @Override
+   protected boolean k(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

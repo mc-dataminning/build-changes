@@ -1,26 +1,74 @@
-public class fcf extends fcz {
-   public fcf(vf $$0) {
-      super($$0);
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
+
+public class fcf implements AutoCloseable {
+   private static final ahg a = new ahg("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gen d;
+   private final ahg e;
+   @Nullable
+   private gdz f;
+   private boolean g;
+
+   private fcf(gen $$0, ahg $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static fcf a(gen $$0, String $$1) {
+      return new fcf($$0, new ahg("minecraft", "worlds/" + ac.a($$1, ahg::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fcf b(gen $$0, String $$1) {
+      return new fcf($$0, new ahg("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(epb $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gdz($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public ahg b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-   }
-
-   @Override
-   public void b(ews $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

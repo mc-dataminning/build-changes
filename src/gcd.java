@@ -1,25 +1,28 @@
-public class gcd extends gcw<byf, fjq<byf>> {
-   private final ftb a;
-
-   public gcd(gag<byf, fjq<byf>> $$0, ftb $$1) {
+public class gcd extends gcx<fsf, flb<fsf>> {
+   public gcd(gah<fsf, flb<fsf>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, byf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == bme.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = aun.e($$3.dE()) / 60.0F;
-      if ($$3.dE() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   public void a(eqa $$0, ftg $$1, int $$2, fsf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
+         eqe $$10 = $$1.getBuffer(fto.c($$3.b().a()));
+         int $$11 = fzn.c($$3, 0.0F);
 
-      cmx $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cmu.h, false, $$0, $$1, $$2);
-      $$0.b();
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = aun.i($$6, $$3.N, $$3.dC()) - aun.i($$6, $$3.aV, $$3.aU);
+            float $$14 = aun.i($$6, $$3.O, $$3.dE());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
+      }
    }
 }

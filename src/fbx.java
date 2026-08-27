@@ -1,31 +1,42 @@
-public class fbx extends fcz {
-   private exx a;
-   private final Runnable b;
-   private final Runnable c;
+public class fbx extends fda {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final vf c = vf.c("credits_and_attribution.screen.title");
+   private static final vf k = vf.c("credits_and_attribution.button.credits");
+   private static final vf l = vf.c("credits_and_attribution.button.attribution");
+   private static final vf m = vf.c("credits_and_attribution.button.licenses");
+   private final fda n;
+   private final fap o = new fap(this);
 
-   public fbx(Runnable $$0, Runnable $$1) {
-      super(vf.c("datapackFailure.title"));
-      this.a = exx.a;
-      this.b = $$0;
-      this.c = $$1;
+   public fbx(fda $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.a = exx.a(this.i, this.o(), this.g - 50);
-      this.d(exe.a(vf.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
-      this.d(exe.a(ve.k, $$0 -> this.b.run()).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+      this.o.a(new eym(this.o(), this.i));
+      fat $$0 = this.o.c(fat.d()).a(8);
+      $$0.c().b();
+      $$0.a(exf.a(k, $$0x -> this.n()).a(210).a());
+      $$0.a(exf.a(l, fbs.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(exf.a(m, fbs.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(exf.a(ve.d, $$0x -> this.aE_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.g / 2, 70);
+   protected void c() {
+      this.o.a();
+   }
+
+   private void n() {
+      this.f.a(new fdi(false, () -> this.f.a(this)));
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   public void aE_() {
+      this.f.a(this.n);
    }
 }

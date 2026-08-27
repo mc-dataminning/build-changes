@@ -1,17 +1,28 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record faf(ahg c) implements fad {
-   public static final MapCodec<faf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ahg.a.fieldOf("id").forGetter(faf::c)).apply($$0, faf::new));
+public enum faf implements avj {
+   a("bitmap", fad.a.a),
+   b("ttf", fah.a),
+   c("space", eof.a.a),
+   d("unihex", fai.b.a),
+   e("reference", fag.a);
 
-   @Override
-   public fae a() {
-      return fae.e;
+   public static final Codec<faf> f = avj.a(faf::values);
+   private final String g;
+   private final MapCodec<? extends fae> h;
+
+   private faf(String $$0, MapCodec<? extends fae> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public Either<fad.a, fad.b> b() {
-      return Either.right(new fad.b(this.c));
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends fae> a() {
+      return this.h;
    }
 }

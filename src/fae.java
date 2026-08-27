@@ -1,28 +1,18 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.io.IOException;
 
-public enum fae implements avj {
-   a("bitmap", fac.a.a),
-   b("ttf", fag.a),
-   c("space", eoe.a.a),
-   d("unihex", fah.b.a),
-   e("reference", faf.a);
+public interface fae {
+   Codec<fae> b = faf.f.dispatch(fae::a, $$0 -> $$0.a().codec());
 
-   public static final Codec<fae> f = avj.a(fae::values);
-   private final String g;
-   private final MapCodec<? extends fad> h;
+   faf a();
 
-   private fae(String $$0, MapCodec<? extends fad> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<fae.a, fae.b> b();
+
+   public interface a {
+      eod load(aqh var1) throws IOException;
    }
 
-   @Override
-   public String c() {
-      return this.g;
-   }
-
-   public MapCodec<? extends fad> a() {
-      return this.h;
+   public static record b(ahg a) {
    }
 }

@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eum extends eug {
+public class eum extends euh {
    private static final Logger b = LogUtils.getLogger();
-   private static final vf c = vf.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final erx e;
-   private final esp f;
+   private static final vf c = vf.c("mco.backup.restoring");
+   private final eqw d;
+   private final long e;
+   private final esq f;
 
-   public eum(long $$0, erx $$1, esp $$2) {
+   public eum(eqw $$0, long $$1, esq $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,31 +16,46 @@ public class eum extends eug {
 
    @Override
    public void run() {
-      eqp $$0 = eqp.a();
+      eqq $$0 = eqq.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (esd var4) {
+
+            a(this.f.f());
+            return;
+         } catch (ese var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (esd var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new esu(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }

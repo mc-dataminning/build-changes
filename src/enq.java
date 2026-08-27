@@ -3,12 +3,12 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.system.MemoryUtil;
 
 public class enq {
-   public static void a(eok $$0, float $$1) {
-      ConcurrentLinkedQueue<eoj> $$2 = $$0.i();
+   public static void a(eol $$0, float $$1) {
+      ConcurrentLinkedQueue<eok> $$2 = $$0.i();
    }
 
-   public static void b(eok $$0, float $$1) {
-      ConcurrentLinkedQueue<eoj> $$2 = $$0.j();
+   public static void b(eol $$0, float $$1) {
+      ConcurrentLinkedQueue<eok> $$2 = $$0.j();
    }
 
    public static void a() {

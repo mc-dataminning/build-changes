@@ -1,41 +1,72 @@
-public class exp extends exy {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+public class exp extends ewz {
+   private final ewr a;
+   private final exz b;
 
-   public exp(int $$0, vf $$1, ewq $$2) {
-      this($$0, $$1, $$2, true);
+   public exp(int $$0, int $$1, int $$2, int $$3, vf $$4, ewr $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new exz($$4, $$5).c(this.w() - this.b());
    }
 
-   public exp(int $$0, vf $$1, ewq $$2, boolean $$3) {
-      super($$1, $$2);
-      this.c($$0);
-      this.b(true);
-      this.j = true;
-      this.c = $$3;
-   }
-
-   @Override
-   protected void a(fax $$0) {
-      $$0.a(faw.a, this.x());
+   public exp a(int $$0) {
+      this.b.b($$0);
+      return this;
    }
 
    @Override
-   public void b(ews $$0, int $$1, int $$2, float $$3) {
-      if (this.aI_() || this.c) {
-         int $$4 = this.B() - 4;
-         int $$5 = this.C() - 4;
-         int $$6 = this.w() + 8;
-         int $$7 = this.u() + 8;
-         int $$8 = this.c ? (this.aI_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   public void l(int $$0) {
+      super.l($$0);
+      this.b.c(this.w() - this.b());
+   }
+
+   @Override
+   protected int g() {
+      return this.b.u();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(ewt $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aI_()) {
+         this.a($$0, this.B() - this.a(), this.C() - this.a(), this.w() + this.b(), this.u() + this.b());
       }
-
-      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(gjc $$0) {
+   public void b(ewt $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.B(), (float)this.C(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(ewt $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.B() + this.a()), (float)(this.C() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fay $$0) {
+      $$0.a(fax.a, this.x());
    }
 }

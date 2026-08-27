@@ -1,50 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface fvh<T extends dgu> {
+   fvg<T> create(fvh.a var1);
 
-public class fvh {
-   private static final Map<dgw<?>, fvg<?>> a = Maps.newHashMap();
+   public static class a {
+      private final fvf a;
+      private final fua b;
+      private final fzk c;
+      private final fyk d;
+      private final fms e;
+      private final ewr f;
 
-   private static <T extends dgu> void a(dgw<? extends T> $$0, fvg<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(fvf $$0, fua $$1, fzk $$2, fyk $$3, fms $$4, ewr $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public static Map<dgw<?>, fvf<?>> a(fvg.a $$0) {
-      Builder<dgw<?>, fvf<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + kd.k.b((dgw<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public fvf a() {
+         return this.a;
+      }
 
-   static {
-      a(dgw.h, fvt::new);
-      a(dgw.i, fvp::new);
-      a(dgw.j, fvv::new);
-      a(dgw.k, fvr::new);
-      a(dgw.b, fvl::new);
-      a(dgw.d, fvl::new);
-      a(dgw.c, fvl::new);
-      a(dgw.m, fvo::new);
-      a(dgw.D, fvq::new);
-      a(dgw.n, fvy::new);
-      a(dgw.v, fvx::new);
-      a(dgw.o, fvb::new);
-      a(dgw.p, fvu::new);
-      a(dgw.t, fva::new);
-      a(dgw.u, fvw::new);
-      a(dgw.x, fvs::new);
-      a(dgw.y, fvc::new);
-      a(dgw.z, fvm::new);
-      a(dgw.E, fvd::new);
-      a(dgw.G, fvk::new);
-      a(dgw.N, fvj::new);
-      a(dgw.O, fvn::new);
-      a(dgw.Q, fvz::new);
+      public fua b() {
+         return this.b;
+      }
+
+      public fyk c() {
+         return this.d;
+      }
+
+      public fzk d() {
+         return this.c;
+      }
+
+      public fms e() {
+         return this.e;
+      }
+
+      public fmw a(fmu $$0) {
+         return this.e.a($$0);
+      }
+
+      public ewr f() {
+         return this.f;
+      }
    }
 }

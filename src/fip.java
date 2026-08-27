@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fip extends RuntimeException {
+   public fip(String $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fip {
+   public fip(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

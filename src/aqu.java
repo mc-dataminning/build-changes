@@ -511,9 +511,12 @@ public abstract class aqu {
 
    @Nullable
    public ane a(String $$0) {
-      for (ane $$1 : this.l) {
-         if ($$1.fR().getName().equalsIgnoreCase($$0)) {
-            return $$1;
+      int $$1 = this.l.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         ane $$3 = this.l.get($$2);
+         if ($$3.fR().getName().equalsIgnoreCase($$0)) {
+            return $$3;
          }
       }
 

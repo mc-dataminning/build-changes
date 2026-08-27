@@ -1,18 +1,28 @@
-import java.util.function.Function;
+public class fkn<T extends blu> extends fkf<T> {
+   private static final String a = "knot";
+   private final fmw b;
+   private final fmw f;
 
-public abstract class fkn<E extends blu> extends fjv<E> {
-   public fkn() {
-      this(ftn::e);
+   public fkn(fmw $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public fkn(Function<ahg, ftn> $$0) {
-      super($$0);
+   public static fnc b() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      $$1.a("knot", fnb.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fmy.a);
+      return fnc.a($$0, 32, 32);
    }
 
    @Override
-   public void a(epz $$0, eqd $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public fmw a() {
+      return this.b;
    }
 
-   public abstract Iterable<fmv> d();
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   }
 }

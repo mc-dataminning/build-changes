@@ -1,50 +1,25 @@
-public class fga extends fcz {
-   private static final int a = 600;
-   private final ug b;
-   private exe c;
-   private int k;
-   private final fas l = fas.d();
+public class fga extends fgd {
+   private static final vf b = vf.c("multiplayerWarning.header").a(n.r);
+   private static final vf c = vf.c("multiplayerWarning.message");
+   private static final vf k = vf.c("multiplayerWarning.check");
+   private static final vf l = b.f().f("\n").b(c);
+   private final fda m;
 
-   public fga(vf $$0, ug $$1) {
-      super($$0);
-      this.b = $$1;
+   public fga(fda $$0) {
+      super(b, c, k, l);
+      this.m = $$0;
    }
 
    @Override
-   public boolean aL_() {
-      return false;
-   }
+   protected void a(int $$0) {
+      this.d(exf.a(ve.i, $$0x -> {
+         if (this.a.a()) {
+            this.f.m.v = true;
+            this.f.m.as();
+         }
 
-   @Override
-   protected void aN_() {
-      this.l.c().b().a(10);
-      this.l.a(new eyl(this.e, this.i));
-      this.c = this.l.a(exe.a(ve.p, $$0 -> this.b.a(fbt.a)).a());
-      this.c.j = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         exc var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fam.a(this.l, this.F());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.k++;
-      if (this.k == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.k()) {
-         this.b.d();
-      } else {
-         this.b.p();
-      }
+         this.f.a(new ffy(this.m));
+      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(exf.a(ve.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
    }
 }

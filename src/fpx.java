@@ -1,16 +1,42 @@
-public class fpx extends fpy<jr> {
-   protected fpx(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jr $$7, fro $$8) {
+import org.joml.Vector3f;
+
+public class fpx extends fpz<jq> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fpx(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jq $$7, frp $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
    }
 
-   public static class a implements fqw<jr> {
-      private final fro a;
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
 
-      public a(fro $$0) {
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
+   }
+
+   @Override
+   public void a(eqe $$0, eus $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
+   }
+
+   public static class a implements fqx<jq> {
+      private final frp a;
+
+      public a(frp $$0) {
          this.a = $$0;
       }
 
-      public fqt a(jr $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fqu a(jq $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fpx($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }

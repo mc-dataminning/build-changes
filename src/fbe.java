@@ -1,29 +1,32 @@
-public enum fbe {
-   a,
-   b;
+public interface fbe {
+   fbg a();
 
-   public fbe a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   public static record a(fbg a) implements fbe {
+      @Override
+      public fbg a() {
+         return this.a.a() == fbf.b ? this.a : fbg.b;
+      }
+
+      public fbg b() {
+         return this.a;
+      }
    }
 
-   public fbf b() {
-      return switch (this) {
-         case a -> fbf.d;
-         case b -> fbf.b;
-      };
+   public static class b implements fbe {
+      @Override
+      public fbg a() {
+         return fbg.b;
+      }
    }
 
-   public fbf c() {
-      return switch (this) {
-         case a -> fbf.c;
-         case b -> fbf.a;
-      };
-   }
+   public static record c(boolean a) implements fbe {
+      @Override
+      public fbg a() {
+         return this.a ? fbg.b : fbg.a;
+      }
 
-   public fbf a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean b() {
+         return this.a;
+      }
    }
 }

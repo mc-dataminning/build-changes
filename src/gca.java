@@ -1,17 +1,24 @@
-public class gca<T extends bmk, M extends fjv<T>> extends gcw<T, M> {
-   private final ftb a;
+public class gca extends gci<cca, fjq<cca>> {
+   private static final ahg a = new ahg("textures/entity/creeper/creeper_armor.png");
+   private final fjq<cca> b;
 
-   public gca(gag<T, M> $$0, ftb $$1) {
+   public gca(gah<cca, fjq<cca>> $$0, fms $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fjq<>($$1.a(fmv.F));
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cmx $$10 = $$3.c(blz.a);
-      this.a.a($$3, $$10, cmu.h, false, $$0, $$1, $$2);
-      $$0.b();
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected ahg a() {
+      return a;
+   }
+
+   @Override
+   protected fjw<cca> b() {
+      return this.b;
    }
 }

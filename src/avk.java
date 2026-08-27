@@ -9,13 +9,13 @@ public class avk {
    private static final Pattern b = Pattern.compile("\\r\\n|\\v");
    private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
-   public static String a(int $$0) {
-      int $$1 = $$0 / 20;
-      int $$2 = $$1 / 60;
-      $$1 %= 60;
+   public static String a(int $$0, float $$1) {
+      int $$2 = aun.d((float)$$0 / $$1);
       int $$3 = $$2 / 60;
       $$2 %= 60;
-      return $$3 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$3, $$2, $$1) : String.format(Locale.ROOT, "%02d:%02d", $$2, $$1);
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
    public static String a(String $$0) {

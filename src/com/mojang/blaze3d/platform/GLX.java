@@ -33,7 +33,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(epd $$0) {
+   public static int _getRefreshRate(epe $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
       if ($$1 == 0L) {
@@ -52,7 +52,7 @@ public class GLX {
    public static LongSupplier _initGlfw() {
       RenderSystem.assertInInitPhase();
       GLFWNativeGLX.setPath(GL.getFunctionProvider());
-      epd.a(($$0x, $$1x) -> {
+      epe.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -82,7 +82,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(epd $$0) {
+   public static boolean _shouldClose(epe $$0) {
       return GLFW.glfwWindowShouldClose($$0.i());
    }
 
@@ -95,7 +95,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      eor.a($$0, $$1);
+      eos.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -106,11 +106,11 @@ public class GLX {
       RenderSystem.assertOnRenderThread();
       GlStateManager._depthMask(false);
       GlStateManager._disableCull();
-      RenderSystem.setShader(fsy::aq);
-      eqb $$4 = RenderSystem.renderThreadTesselator();
-      epu $$5 = $$4.d();
+      RenderSystem.setShader(fsz::aq);
+      eqc $$4 = RenderSystem.renderThreadTesselator();
+      epv $$5 = $$4.d();
       RenderSystem.lineWidth(4.0F);
-      $$5.a(eqe.b.a, epx.o);
+      $$5.a(eqf.b.a, epy.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
@@ -128,7 +128,7 @@ public class GLX {
 
       $$4.c();
       RenderSystem.lineWidth(2.0F);
-      $$5.a(eqe.b.a, epx.o);
+      $$5.a(eqf.b.a, epy.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();

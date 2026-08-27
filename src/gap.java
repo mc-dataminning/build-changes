@@ -1,12 +1,11 @@
-public class gap extends fzr<byv, flv<byv>> {
-   private static final ahg a = new ahg("textures/entity/snow_golem.png");
+public class gap extends fzs<caj, flv<caj>> {
+   private static final ahg a = new ahg("textures/entity/sniffer/sniffer.png");
 
-   public gap(fyl.a $$0) {
-      super($$0, new flv<>($$0.a(fmu.bs)), 0.5F);
-      this.a(new gdb(this, $$0.c(), $$0.b()));
+   public gap(fym.a $$0) {
+      super($$0, new flv<>($$0.a(fmv.br)), 1.1F);
    }
 
-   public ahg a(byv $$0) {
+   public ahg a(caj $$0) {
       return a;
    }
 }

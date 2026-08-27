@@ -8,7 +8,7 @@ public class cnd extends coj {
 
    @Override
    public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      cox.a($$0, $$2, 0.25F);
+      cox.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
    }
 
    @Override

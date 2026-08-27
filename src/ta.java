@@ -1,5 +1,4 @@
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutput;
@@ -57,26 +56,6 @@ public class ta {
       try (DataInputStream $$3 = a($$0)) {
          a((DataInput)$$3, $$1, $$2);
       }
-   }
-
-   public static byte[] a(sn $$0) throws IOException {
-      ByteArrayOutputStream $$1 = new ByteArrayOutputStream();
-
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-
-      return $$1.toByteArray();
-   }
-
-   public static byte[] b(sn $$0) throws IOException {
-      ByteArrayOutputStream $$1 = new ByteArrayOutputStream();
-
-      try (DataOutputStream $$2 = new DataOutputStream($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-
-      return $$1.toByteArray();
    }
 
    public static void a(sn $$0, Path $$1) throws IOException {

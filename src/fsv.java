@@ -1,398 +1,136 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidClassException;
-import java.io.Reader;
-import java.util.List;
-import java.util.Map;
-import java.util.function.IntSupplier;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fsv implements epk, AutoCloseable {
-   private static final String a = "shaders/program/";
-   private static final Logger b = LogUtils.getLogger();
-   private static final epi c = new epi();
-   private static final boolean d = true;
-   private static fsv e;
-   private static int f = -1;
-   private final Map<String, IntSupplier> g = Maps.newHashMap();
-   private final List<String> h = Lists.newArrayList();
-   private final List<Integer> i = Lists.newArrayList();
-   private final List<epq> j = Lists.newArrayList();
-   private final List<Integer> k = Lists.newArrayList();
-   private final Map<String, epq> l = Maps.newHashMap();
-   private final int m;
-   private final String n;
-   private boolean o;
-   private final epj p;
-   private final List<Integer> q;
-   private final List<String> r;
-   private final epl s;
-   private final epl t;
+public abstract class fsv {
+   private static final Object2ObjectMap<ahg, fsv> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fsv.c $$1 = new fsv.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dmn.e, $$1);
+      $$0.put(dmn.f, new fsv.b());
+      $$0.put(dmn.g, new fsv.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fsv.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public fsv(aqh $$0, String $$1) throws IOException {
-      ahg $$2 = new ahg("shaders/program/" + $$1 + ".json");
-      this.n = $$1;
-      aqf $$3 = $$0.getResourceOrThrow($$2);
-
-      try (Reader $$4 = $$3.e()) {
-         JsonObject $$5 = aud.a($$4);
-         String $$6 = aud.i($$5, "vertex");
-         String $$7 = aud.i($$5, "fragment");
-         JsonArray $$8 = aud.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var20) {
-                  ahj $$12 = ahj.a(var20);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = aud.a($$5, "attributes", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-            this.q = Lists.newArrayListWithCapacity($$13.size());
-            this.r = Lists.newArrayListWithCapacity($$13.size());
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.r.add(aud.a($$15, "attribute"));
-               } catch (Exception var19) {
-                  ahj $$17 = ahj.a(var19);
-                  $$17.a("attributes[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         } else {
-            this.q = null;
-            this.r = null;
-         }
-
-         JsonArray $$18 = aud.a($$5, "uniforms", null);
-         if ($$18 != null) {
-            int $$19 = 0;
-
-            for (JsonElement $$20 : $$18) {
-               try {
-                  this.b($$20);
-               } catch (Exception var18) {
-                  ahj $$22 = ahj.a(var18);
-                  $$22.a("uniforms[" + $$19 + "]");
-                  throw $$22;
-               }
-
-               $$19++;
-            }
-         }
-
-         this.p = a(aud.a($$5, "blend", null));
-         this.s = a($$0, epn.a.a, $$6);
-         this.t = a($$0, epn.a.b, $$7);
-         this.m = epo.a();
-         epo.b(this);
-         this.i();
-         if (this.r != null) {
-            for (String $$23 : this.r) {
-               int $$24 = epq.b(this.m, $$23);
-               this.q.add($$24);
-            }
-         }
-      } catch (Exception var22) {
-         ahj $$26 = ahj.a(var22);
-         $$26.b($$2.a() + " (" + $$3.b() + ")");
-         throw $$26;
-      }
-
-      this.b();
+   public fsv(float $$0, boolean $$1, fsv.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public static epl a(aqh $$0, epn.a $$1, String $$2) throws IOException {
-      epn $$3 = $$1.c().get($$2);
-      if ($$3 != null && !($$3 instanceof epl)) {
-         throw new InvalidClassException("Program is not of type EffectProgram");
-      } else {
-         epl $$7;
-         if ($$3 == null) {
-            ahg $$4 = new ahg("shaders/program/" + $$2 + $$1.b());
-            aqf $$5 = $$0.getResourceOrThrow($$4);
-
-            try (InputStream $$6 = $$5.d()) {
-               $$7 = epl.a($$1, $$2, $$6, $$5.b());
-            }
-         } else {
-            $$7 = (epl)$$3;
-         }
-
-         return $$7;
-      }
-   }
-
-   public static epj a(@Nullable JsonObject $$0) {
-      if ($$0 == null) {
-         return new epj();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (aud.a($$0, "func")) {
-            $$1 = epj.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
-         }
-
-         if (aud.a($$0, "srcrgb")) {
-            $$2 = epj.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (aud.a($$0, "dstrgb")) {
-            $$3 = epj.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (aud.a($$0, "srcalpha")) {
-            $$4 = epj.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (aud.a($$0, "dstalpha")) {
-            $$5 = epj.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new epj();
-         } else {
-            return $$7 ? new epj($$2, $$3, $$4, $$5, $$1) : new epj($$2, $$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (epq $$0 : this.j) {
-         $$0.close();
-      }
-
-      epo.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      epo.a(0);
-      f = -1;
-      e = null;
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         if (this.g.get(this.h.get($$0)) != null) {
-            GlStateManager._activeTexture(33984 + $$0);
-            GlStateManager._bindTexture(0);
-         }
-      }
-   }
-
-   public void g() {
-      RenderSystem.assertOnGameThread();
-      this.o = false;
-      e = this;
-      this.p.a();
-      if (this.m != f) {
-         epo.a(this.m);
-         f = this.m;
-      }
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         String $$1 = this.h.get($$0);
-         IntSupplier $$2 = this.g.get($$1);
-         if ($$2 != null) {
-            RenderSystem.activeTexture(33984 + $$0);
-            int $$3 = $$2.getAsInt();
-            if ($$3 != -1) {
-               RenderSystem.bindTexture($$3);
-               epq.b(this.i.get($$0), $$0);
-            }
-         }
-      }
-
-      for (epq $$4 : this.j) {
-         $$4.b();
-      }
-   }
-
-   @Override
-   public void b() {
-      this.o = true;
+   public static fsv a(dmp $$0) {
+      return (fsv)a.get($$0.r());
    }
 
    @Nullable
-   public epq a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.l.get($$0);
-   }
-
-   public epi b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      epq $$1 = this.a($$0);
-      return (epi)($$1 == null ? c : $$1);
-   }
-
-   private void i() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         String $$2 = this.h.get($$1);
-         int $$3 = epq.a(this.m, $$2);
-         if ($$3 == -1) {
-            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
-            this.g.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.i.add($$3);
-         }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         this.h.remove($$0.getInt($$4));
-      }
-
-      for (epq $$5 : this.j) {
-         String $$6 = $$5.a();
-         int $$7 = epq.a(this.m, $$6);
-         if ($$7 == -1) {
-            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
-         } else {
-            this.k.add($$7);
-            $$5.b($$7);
-            this.l.put($$6, $$5);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = aud.m($$0, "sampler");
-      String $$2 = aud.i($$1, "name");
-      if (!aud.a($$1, "file")) {
-         this.g.put($$2, null);
-         this.h.add($$2);
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = aun.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - aun.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
       } else {
-         this.h.add($$2);
+         return null;
       }
    }
 
-   public void a(String $$0, IntSupplier $$1) {
-      if (this.g.containsKey($$0)) {
-         this.g.remove($$0);
-      }
-
-      this.g.put($$0, $$1);
-      this.b();
+   public float a() {
+      return this.c;
    }
 
-   private void b(JsonElement $$0) throws ahj {
-      JsonObject $$1 = aud.m($$0, "uniform");
-      String $$2 = aud.i($$1, "name");
-      int $$3 = epq.a(aud.i($$1, "type"));
-      int $$4 = aud.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = aud.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new ahj("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+   public boolean b() {
+      return this.d;
+   }
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = aud.e($$8, "value");
-            } catch (Exception var13) {
-               ahj $$10 = ahj.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
+   public abstract els a(els var1, float var2);
 
-            $$7++;
-         }
+   public abstract boolean a(int var1, int var2);
 
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
+   public fsv.d c() {
+      return this.e;
+   }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         epq $$12 = new epq($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a($$5);
-         }
+   public boolean d() {
+      return this.f;
+   }
 
-         this.j.add($$12);
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends fsv {
+      public a() {
+         super(Float.NaN, false, fsv.d.c, true, false);
+      }
+
+      @Override
+      public els a(els $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
       }
    }
 
-   @Override
-   public epn c() {
-      return this.s;
+   public static class b extends fsv {
+      public b() {
+         super(Float.NaN, true, fsv.d.a, false, true);
+      }
+
+      @Override
+      public els a(els $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
    }
 
-   @Override
-   public epn d() {
-      return this.t;
+   public static class c extends fsv {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fsv.d.b, false, false);
+      }
+
+      @Override
+      public els a(els $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
    }
 
-   @Override
-   public void e() {
-      this.t.a(this);
-      this.s.a(this);
-   }
-
-   public String h() {
-      return this.n;
-   }
-
-   @Override
-   public int a() {
-      return this.m;
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

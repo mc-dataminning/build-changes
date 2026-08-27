@@ -1,27 +1,28 @@
-public class fyr extends fyk<cfu> {
-   private final fzj a;
+public class fyr extends fyl<cbs> {
+   private final fua a;
 
-   public fyr(fyl.a $$0) {
+   public fyr(fym.a $$0) {
       super($$0);
-      this.a = $$0.b();
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(cfu $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.s()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
+   public void a(cbs $$0, float $$1, float $$2, eqa $$3, ftg $$4, int $$5) {
+      djg $$6 = $$0.u();
+      if ($$6.l() == dcu.c) {
+         cto $$7 = $$0.dM();
+         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != dcu.a) {
+            $$3.a();
+            hx $$8 = hx.a($$0.dr(), $$0.cH().e, $$0.dx());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(ftb.b($$6)), false, auu.a(), $$6.a($$0.q()), ged.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
-
-      this.a.a($$0.q(), cmu.h, $$5, gec.d, $$3, $$4, $$0.dM(), $$0.aj());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahg a(cfu $$0) {
-      return gek.e;
+   public ahg a(cbs $$0) {
+      return gel.e;
    }
 }

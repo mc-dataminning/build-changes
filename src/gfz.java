@@ -1,12 +1,38 @@
-import com.google.gson.JsonObject;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class gfz implements aph<gfy> {
-   public gfy b(JsonObject $$0) {
-      return new gfy(gfy.a.a(aud.a($$0, "hat", "none")));
+public class gfz {
+   public static final gga a = new gga();
+   public static final String b = "villager";
+   private final gfz.a c;
+
+   public gfz(gfz.a $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   public gfz.a a() {
+      return this.c;
+   }
+
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, gfz.a> d = Arrays.stream(values()).collect(Collectors.toMap(gfz.a::a, $$0 -> (gfz.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static gfz.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

@@ -1,52 +1,46 @@
-public class gcr<T extends byk> extends gcw<T, fjo<T>> {
-   private final ftz a;
+public class gcr extends gcx<bzz, fkp<bzz>> {
+   private static final ahg[] a = new ahg[]{
+      new ahg("textures/entity/llama/decor/white.png"),
+      new ahg("textures/entity/llama/decor/orange.png"),
+      new ahg("textures/entity/llama/decor/magenta.png"),
+      new ahg("textures/entity/llama/decor/light_blue.png"),
+      new ahg("textures/entity/llama/decor/yellow.png"),
+      new ahg("textures/entity/llama/decor/lime.png"),
+      new ahg("textures/entity/llama/decor/pink.png"),
+      new ahg("textures/entity/llama/decor/gray.png"),
+      new ahg("textures/entity/llama/decor/light_gray.png"),
+      new ahg("textures/entity/llama/decor/cyan.png"),
+      new ahg("textures/entity/llama/decor/purple.png"),
+      new ahg("textures/entity/llama/decor/blue.png"),
+      new ahg("textures/entity/llama/decor/brown.png"),
+      new ahg("textures/entity/llama/decor/green.png"),
+      new ahg("textures/entity/llama/decor/red.png"),
+      new ahg("textures/entity/llama/decor/black.png")
+   };
+   private static final ahg b = new ahg("textures/entity/llama/decor/trader_llama.png");
+   private final fkp<bzz> c;
 
-   public gcr(gag<T, fjo<T>> $$0, ftz $$1) {
+   public gcr(gah<bzz, fkp<bzz>> $$0, fms $$1) {
       super($$0);
-      this.a = $$1;
+      this.c = new fkp<>($$1.a(fmv.av));
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         evg $$10 = evg.O();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
-            djg $$12 = $$3.w().a();
-            int $$13 = fzm.c($$3, 0.0F);
-            ggl $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, boolean $$3, djg $$4, int $$5, ggl $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(ftn.r(gek.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+   public void a(eqa $$0, ftg $$1, int $$2, bzz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cll $$10 = $$3.gr();
+      ahg $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
       } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+         if (!$$3.gn()) {
+            return;
+         }
+
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      eqe $$14 = $$1.getBuffer(fto.e($$11));
+      this.c.a($$0, $$14, $$2, ged.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

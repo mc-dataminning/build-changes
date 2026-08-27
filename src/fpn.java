@@ -1,66 +1,25 @@
-public class fpn extends frt {
-   private final float a;
-   private final float b;
-
-   fpn(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cmx $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fpn extends fru {
+   fpn(fnr $$0, double $$1, double $$2, double $$3, djg $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(evh.O().an().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public fqx b() {
-      return fqx.a;
-   }
-
-   protected fpn(fnq $$0, double $$1, double $$2, double $$3, cmx $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(evg.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public fqy b() {
+      return fqy.a;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fqw<jt> {
-      public fqt a(jt $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpn($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
-      }
-   }
-
-   public static class b implements fqw<ka> {
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpn($$1, $$2, $$3, $$4, new cmx(cna.qN));
-      }
-   }
-
-   public static class c implements fqw<ka> {
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpn($$1, $$2, $$3, $$4, new cmx(cna.qz));
+   public static class a implements fqx<jp> {
+      public fqu a(jp $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpn($$1, $$2, $$3, $$4, $$0.c());
       }
    }
 }

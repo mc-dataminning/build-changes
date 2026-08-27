@@ -1,7 +1,7 @@
-import com.google.common.collect.Lists;
 import com.google.common.collect.Queues;
 import com.mojang.brigadier.context.ContextChain;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Deque;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -18,7 +18,7 @@ public class go<T> implements AutoCloseable {
    private int g;
    private boolean h;
    private final Deque<gk<T>> i = Queues.newArrayDeque();
-   private final List<gk<T>> j = Lists.newArrayList();
+   private final List<gk<T>> j = new ObjectArrayList();
 
    public go(int $$0, int $$1, bgr $$2) {
       this.c = $$0;
@@ -66,25 +66,35 @@ public class go<T> implements AutoCloseable {
    }
 
    public void a() {
-      Lists.reverse(this.j).forEach(this.i::addFirst);
-      this.j.clear();
+      this.g();
 
-      while (!this.i.isEmpty()) {
-         if (this.g == 0) {
+      while (true) {
+         if (this.g <= 0) {
             b.info("Command execution stopped due to limit (executed {} commands)", this.c);
             break;
          }
 
-         gk<T> $$0 = this.i.removeFirst();
+         gk<T> $$0 = this.i.pollFirst();
+         if ($$0 == null) {
+            return;
+         }
+
          $$0.a(this);
          if (this.h) {
             b.error("Command execution stopped due to command queue overflow (max {})", 10000000);
             break;
          }
 
-         Lists.reverse(this.j).forEach(this.i::addFirst);
-         this.j.clear();
+         this.g();
       }
+   }
+
+   private void g() {
+      for (int $$0 = this.j.size() - 1; $$0 >= 0; $$0--) {
+         this.i.addFirst(this.j.get($$0));
+      }
+
+      this.j.clear();
    }
 
    public void a(@Nullable gr $$0) {

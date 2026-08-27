@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gjr.a.a(gjn.z, $$1);
-      gjr.a.a(gjn.A, $$2);
+      gjs.a.a(gjo.z, $$1);
+      gjs.a.a(gjo.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(evv.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(evw.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -132,38 +132,38 @@ public class Main {
 
       try {
          ahi.a();
-         gjr.a.a(ahi.b.get());
+         gjs.a.a(ahi.b.get());
          ahi.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
          p $$64 = $$63.a("Initialization");
          auo.a($$64);
-         evg.a(null, null, $$46, null, $$63);
-         evg.a(null, $$51, $$63);
+         evh.a(null, null, $$46, null, $$63);
+         evh.a(null, $$51, $$63);
          return;
       }
 
       String $$65 = (String)$$29.value($$32);
-      evv.a $$66 = evv.a.a($$65);
+      evw.a $$66 = evw.a.a($$65);
       if ($$66 == null) {
          a.warn("Unrecognized user type: {}", $$65);
       }
 
-      evv $$67 = new evv((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
-      fin $$68 = new fin(
-         new fin.d($$67, $$48, $$49, $$35),
-         new eoq($$38, $$39, $$40, $$41, $$42),
-         new fin.a($$51, $$53, $$52, $$55),
-         new fin.b($$43, $$46, $$50, $$44, $$45),
-         new fin.c($$58, $$59, $$60, $$61)
+      evw $$67 = new evw((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      fio $$68 = new fio(
+         new fio.d($$67, $$48, $$49, $$35),
+         new eor($$38, $$39, $$40, $$41, $$42),
+         new fio.a($$51, $$53, $$52, $$55),
+         new fio.b($$43, $$46, $$50, $$44, $$45),
+         new fio.c($$58, $$59, $$60, $$61)
       );
       ac.l();
       Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            evg $$0 = evg.O();
+            evh $$0 = evh.O();
             if ($$0 != null) {
-               gip $$1 = $$0.T();
+               giq $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -172,15 +172,15 @@ public class Main {
       };
       $$69.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$69);
-      final evg $$70 = null;
+      final evh $$70 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$70 = new evg($$68);
+         $$70 = new evh($$68);
          RenderSystem.finishInitialization();
-      } catch (fio var82) {
+      } catch (fip var82) {
          ac.i();
          a.warn("Failed to create window: ", var82);
          return;
@@ -188,12 +188,12 @@ public class Main {
          o $$73 = o.a(var83, "Initializing game");
          p $$74 = $$73.a("Initialization");
          auo.a($$74);
-         evg.a($$70, null, $$68.d.b, null, $$73);
-         evg.a($$70, $$68.c.a, $$73);
+         evh.a($$70, null, $$68.d.b, null, $$73);
+         evh.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      evg $$75 = $$70;
+      evh $$75 = $$70;
       Thread $$76;
       if ($$70.aL()) {
          $$76 = new Thread("Game thread") {
@@ -222,7 +222,7 @@ public class Main {
          }
       }
 
-      epv.a();
+      epw.a();
 
       try {
          $$75.p();

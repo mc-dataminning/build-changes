@@ -1,26 +1,50 @@
-public class fep extends fdy<cit> {
-   private static final ahg x = new ahg("textures/gui/container/dispenser.png");
+import java.util.List;
 
-   public fep(cit $$0, cfg $$1, vf $$2) {
-      super($$0, $$1, $$2);
+public class fep {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<ahg> e = List.of();
+   private int f;
+   private int g;
+
+   public fep(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public void a(List<ahg> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(cia $$0, ewt $$1, float $$2, int $$3, int $$4) {
+      cjv $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   protected void a(ews $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   private void a(cjv $$0, ahg $$1, float $$2, ewt $$3, int $$4, int $$5) {
+      gem $$6 = evh.O().a(gel.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

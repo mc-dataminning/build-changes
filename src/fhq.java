@@ -1,254 +1,556 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.OptionalLong;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class fhq extends fcz {
-   private final Consumer<Optional<ctk>> a;
-   private fhq.g b;
-   private final Set<fhq.f> c = Sets.newHashSet();
-   private exe k;
+public class fhq extends fda {
+   private static final int k = 1;
+   private static final int l = 210;
+   private static final int m = 36;
+   private static final Logger n = LogUtils.getLogger();
+   private static final String o = "mcworld-";
+   static final vf p = vf.c("selectWorld.gameMode");
+   static final vf q = vf.c("selectWorld.enterName");
+   static final vf r = vf.c("selectWorld.experiments");
+   static final vf t = vf.c("selectWorld.allowCommands.info");
+   private static final vf u = vf.c("createWorld.preparing");
+   private static final int v = 10;
+   private static final int w = 8;
+   public static final ahg a = new ahg("textures/gui/header_separator.png");
+   public static final ahg b = new ahg("textures/gui/footer_separator.png");
+   public static final ahg c = new ahg("textures/gui/light_dirt_background.png");
+   final fhz x;
+   private final ezh y = new ezh(this::d, $$1x -> this.f($$1x));
+   private boolean z;
+   private final eli A;
    @Nullable
-   private List<atz> l;
-   private final ctk m;
+   private final fda B;
+   @Nullable
+   private Path C;
+   @Nullable
+   private aps D;
+   @Nullable
+   private fao E;
+   @Nullable
+   private ezi F;
 
-   public fhq(ctk $$0, Consumer<Optional<ctk>> $$1) {
-      super(vf.c("editGamerule.title"));
-      this.m = $$0;
-      this.a = $$1;
+   public static void a(evh $$0, @Nullable fda $$1) {
+      a($$0, u);
+      aps $$2 = new aps(new apv($$0.bb()));
+      aib.c $$3 = a($$2, cui.c);
+      CompletableFuture<fhy> $$4 = aib.a(
+         $$3, $$0x -> new aib.b<>(new fhq.a(new dpl(dpn.a(), dyv.a($$0x.c())), $$0x.b()), $$0x.d()), ($$0x, $$1x, $$2x, $$3x) -> {
+            $$0x.close();
+            return new fhy($$3x.a(), $$2x, $$1x, $$3x.b());
+         }, ac.f(), $$0
+      );
+      $$0.c($$4::isDone);
+      $$0.a(new fhq($$0, $$1, $$4.join(), Optional.of(dyv.a), OptionalLong.empty()));
+   }
+
+   public static fhq a(evh $$0, @Nullable fda $$1, cts $$2, fhy $$3, @Nullable Path $$4) {
+      fhq $$5 = new fhq($$0, $$1, $$3, dyv.a($$3.d().d()), OptionalLong.of($$3.b().b()));
+      $$5.z = true;
+      $$5.x.a($$2.a());
+      $$5.x.a($$2.e());
+      $$5.x.a($$2.d());
+      $$5.x.q().a($$2.f(), null);
+      if ($$2.c()) {
+         $$5.x.a(fhz.a.b);
+      } else if ($$2.b().h()) {
+         $$5.x.a(fhz.a.a);
+      } else if ($$2.b().g()) {
+         $$5.x.a(fhz.a.c);
+      }
+
+      $$5.C = $$4;
+      return $$5;
+   }
+
+   private fhq(evh $$0, @Nullable fda $$1, fhy $$2, Optional<ahf<dyu>> $$3, OptionalLong $$4) {
+      super(vf.c("selectWorld.create"));
+      this.B = $$1;
+      this.A = $$0.bb();
+      this.x = new fhz($$0.l().c(), $$2, $$3, $$4);
+   }
+
+   public fhz n() {
+      return this.x;
    }
 
    @Override
    protected void aN_() {
-      this.b = this.d(new fhq.g(this.m));
-      fan.b $$0 = new fan().a(10).d(2);
-      this.k = $$0.a(exe.a(ve.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(exe.a(ve.e, $$0x -> this.a.accept(Optional.empty())).a());
-      $$0.a().a($$1 -> {
-         exc var10000 = this.d($$1);
+      this.F = ezi.a(this.y, this.g).a(new fhq.b(), new fhq.d(), new fhq.c()).a();
+      this.d(this.F);
+      this.E = new fao().a(10);
+      fao.b $$0 = this.E.d(2);
+      $$0.a(exf.a(vf.c("selectWorld.create"), $$0x -> this.E()).a());
+      $$0.a(exf.a(ve.e, $$0x -> this.D()).a());
+      this.E.a($$0x -> {
+         $$0x.p(1);
+         this.d($$0x);
       });
-      $$0.a().c(this.g / 2 - 155, this.h - 28);
-      $$0.a().a();
+      this.F.a(0, false);
+      this.x.a();
+      this.c();
+   }
+
+   @Override
+   public void c() {
+      if (this.F != null && this.E != null) {
+         this.F.a(this.g);
+         this.F.a();
+         this.E.a();
+         fan.a(this.E, 0, this.h - 36, this.g, 36);
+         int $$0 = this.F.F().c();
+         fbi $$1 = new fbi(0, $$0, this.g, this.E.C() - $$0);
+         this.y.a($$1);
+      }
+   }
+
+   private static void a(evh $$0, vf $$1) {
+      $$0.d(new fcg($$1));
+   }
+
+   private void E() {
+      fhy $$0 = this.x.k();
+      dpk.b $$1 = $$0.d().a($$0.c());
+      io<ahp> $$2 = $$0.e().a(ahp.c, $$1.b());
+      Lifecycle $$3 = cht.a($$0.g().b()) ? Lifecycle.experimental() : Lifecycle.stable();
+      Lifecycle $$4 = $$2.a().e();
+      Lifecycle $$5 = $$4.add($$3);
+      boolean $$6 = !this.z && $$4 == Lifecycle.stable();
+      fia.a(this.f, this, $$5, () -> this.a($$1.d(), $$2, $$5), $$6);
+   }
+
+   private void a(egp.a $$0, io<ahp> $$1, Lifecycle $$2) {
+      a(this.f, u);
+      Optional<egl.c> $$3 = this.J();
+      if (!$$3.isEmpty()) {
+         this.I();
+         boolean $$4 = $$0 == egp.a.c;
+         fhy $$5 = this.x.k();
+         cts $$6 = this.c($$4);
+         egr $$7 = new egp($$6, $$5.b(), $$0, $$2);
+         this.f.w().a($$3.get(), $$5.f(), $$1, $$7);
+      }
+   }
+
+   private cts c(boolean $$0) {
+      String $$1 = this.x.b().trim();
+      if ($$0) {
+         ctk $$2 = new ctk();
+         $$2.a(ctk.l).a(false, null);
+         return new cts($$1, ctl.d, false, bjx.a, true, $$2, cui.c);
+      } else {
+         return new cts($$1, this.x.d().e, this.x.f(), this.x.e(), this.x.g(), this.x.q(), this.x.k().g());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.F.b($$0)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.E();
+         return true;
+      }
    }
 
    @Override
    public void aE_() {
-      this.a.accept(Optional.empty());
+      this.D();
+   }
+
+   public void D() {
+      this.f.a(this.B);
+      this.I();
    }
 
    @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
+   public void a(ewt $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.l = null;
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.a(b, 0, aun.d(this.h - 36 - 2, 2), 0.0F, 0.0F, this.g, 2, 32, 2);
    }
 
-   private void n() {
-      this.k.j = this.c.isEmpty();
+   @Override
+   public void b(ewt $$0) {
+      int $$1 = 32;
+      $$0.a(c, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, 32, 32);
    }
 
-   void a(fhq.f $$0) {
-      this.c.add($$0);
-      this.n();
+   @Override
+   protected <T extends eza & faw> T e(T $$0) {
+      return super.e($$0);
    }
 
-   void b(fhq.f $$0) {
-      this.c.remove($$0);
-      this.n();
+   @Override
+   protected <T extends eza & eyi & faw> T d(T $$0) {
+      return super.d($$0);
    }
 
-   public class a extends fhq.d {
-      private final exl<Boolean> d;
-
-      public a(vf $$1, List<atz> $$2, String $$3, ctk.a $$4) {
-         super($$2, $$1);
-         this.d = exl.b($$4.a()).a().a($$1x -> $$1x.d().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.n($$3 + $$4 - 45);
-         this.d.o($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public class b extends fhq.f {
-      final vf b;
-
-      public b(vf $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fhq.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
-      }
-
-      @Override
-      public List<? extends eyz> l() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends fav> a() {
-         return ImmutableList.of(new fav() {
-            @Override
-            public fav.a s() {
-               return fav.a.b;
-            }
-
-            @Override
-            public void b(fax $$0) {
-               $$0.a(faw.a, b.this.b);
-            }
-         });
-      }
-   }
-
-   @FunctionalInterface
-   interface c<T extends ctk.g<T>> {
-      fhq.f create(vf var1, List<atz> var2, String var3, T var4);
-   }
-
-   public abstract class d extends fhq.f {
-      private final List<atz> a;
-      protected final List<exc> b = Lists.newArrayList();
-
-      public d(@Nullable List<atz> $$1, vf $$2) {
-         super($$1);
-         this.a = fhq.this.f.h.c($$2, 175);
-      }
-
-      @Override
-      public List<? extends eyz> l() {
-         return this.b;
-      }
-
-      @Override
-      public List<? extends fav> a() {
-         return this.b;
-      }
-
-      protected void a(ews $$0, int $$1, int $$2) {
-         if (this.a.size() == 1) {
-            $$0.a(fhq.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
-         } else if (this.a.size() >= 2) {
-            $$0.a(fhq.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
-            $$0.a(fhq.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+   @Nullable
+   private Path H() {
+      if (this.C == null) {
+         try {
+            this.C = Files.createTempDirectory("mcworld-");
+         } catch (IOException var2) {
+            n.warn("Failed to create temporary dir", var2);
+            ezm.c(this.f, this.x.c());
+            this.D();
          }
       }
+
+      return this.C;
    }
 
-   public class e extends fhq.d {
-      private final exn d;
-
-      public e(vf $$1, List<atz> $$2, String $$3, ctk.d $$4) {
-         super($$2, $$1);
-         this.d = new exn(fhq.this.f.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.g(14737632);
-               fhq.this.b(this);
-            } else {
-               this.d.g(16711680);
-               fhq.this.a(this);
-            }
-         });
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.n($$3 + $$4 - 45);
-         this.d.o($$2);
-         this.d.a($$0, $$6, $$7, $$9);
+   void a(cui $$0) {
+      Pair<Path, aps> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.f.a(new fht(this, (aps)$$1.getSecond(), $$0x -> this.a($$0x, false, this::a)));
       }
    }
 
-   public abstract static class f extends exk.a<fhq.f> {
-      @Nullable
-      final List<atz> a;
-
-      public f(@Nullable List<atz> $$0) {
-         this.a = $$0;
+   void b(cui $$0) {
+      Pair<Path, aps> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.f.a(new fgh((aps)$$1.getSecond(), $$0x -> this.a($$0x, true, this::b), (Path)$$1.getFirst(), vf.c("dataPack.title")));
       }
    }
 
-   public class g extends exk<fhq.f> {
-      public g(final ctk $$1) {
-         super(fhq.this.f, fhq.this.g, fhq.this.h - 75, 43, 24);
-         final Map<ctk.b, Map<ctk.e<?>, fhq.f>> $$2 = Maps.newHashMap();
-         ctk.a(new ctk.c() {
-            @Override
-            public void b(ctk.e<ctk.a> $$0, ctk.f<ctk.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fhq.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(ctk.e<ctk.d> $$0, ctk.f<ctk.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fhq.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends ctk.g<T>> void a(ctk.e<T> $$0, fhq.c<T> $$1x) {
-               vf $$2 = vf.c($$0.b());
-               vf $$3 = vf.b($$0.a()).a(n.o);
-               T $$4 = $$1.a($$0);
-               String $$5 = $$4.b();
-               vf $$6 = vf.a("editGamerule.default", vf.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<atz> $$10;
-               String $$11;
-               if (gfq.a($$7)) {
-                  Builder<atz> $$8 = ImmutableList.builder().add($$3.g());
-                  vf $$9 = vf.c($$7);
-                  fhq.this.i.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
+   private void a(aps $$0, boolean $$1, Consumer<cui> $$2) {
+      List<String> $$3 = ImmutableList.copyOf($$0.d());
+      List<String> $$4 = $$0.b().stream().filter($$1x -> !$$3.contains($$1x)).collect(ImmutableList.toImmutableList());
+      cui $$5 = new cui(new ctc($$3, $$4), this.x.k().g().b());
+      if (this.x.a($$5)) {
+         this.f.a(this);
+      } else {
+         chr $$6 = $$0.e();
+         if (cht.a($$6) && $$1) {
+            this.f.a(new fhp($$0.f(), $$3x -> {
+               if ($$3x) {
+                  this.a($$0, $$5, $$2);
                } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
+                  $$2.accept(this.x.k().g());
                }
+            }));
+         } else {
+            this.a($$0, $$5, $$2);
+         }
+      }
+   }
 
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(fhq.this.new b(vf.c(((ctk.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(ctk.e::a)))
-                     .forEach($$0xx -> this.b((fhq.f)$$0xx.getValue()));
+   private void a(aps $$0, cui $$1, Consumer<cui> $$2) {
+      this.f.d(new fcg(vf.c("dataPack.validation.working")));
+      aib.c $$3 = a($$0, $$1);
+      aib.<fhq.a, fhy>a(
+            $$3,
+            $$0x -> {
+               if ($$0x.c().d(ke.aK).b() == 0) {
+                  throw new IllegalStateException("Needs at least one world preset to continue");
+               } else if ($$0x.c().d(ke.at).b() == 0) {
+                  throw new IllegalStateException("Needs at least one biome continue");
+               } else {
+                  fhy $$1x = this.x.k();
+                  DynamicOps<JsonElement> $$2x = ahe.a(JsonOps.INSTANCE, $$1x.a());
+                  DataResult<JsonElement> $$3x = dpl.a($$2x, $$1x.b(), $$1x.d()).setLifecycle(Lifecycle.stable());
+                  DynamicOps<JsonElement> $$4 = ahe.a(JsonOps.INSTANCE, $$0x.c());
+                  dpl $$5 = (dpl)$$3x.flatMap($$1xx -> dpl.a.parse($$4, $$1xx))
+                     .getOrThrow(false, ac.a("Error parsing worldgen settings after loading data packs: ", n::error));
+                  return new aib.b<>(new fhq.a($$5, $$0x.b()), $$0x.d());
                }
-            );
+            },
+            ($$0x, $$1x, $$2x, $$3x) -> {
+               $$0x.close();
+               return new fhy($$3x.a(), $$2x, $$1x, $$3x.b());
+            },
+            ac.f(),
+            this.f
+         )
+         .thenAcceptAsync(this.x::a, this.f)
+         .handle(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               n.warn("Failed to validate datapack", $$2x);
+               this.f.a(new fbt($$1xx -> {
+                  if ($$1xx) {
+                     $$2.accept(this.x.k().g());
+                  } else {
+                     $$2.accept(cui.c);
+                  }
+               }, vf.c("dataPack.validation.failed"), ve.a, vf.c("dataPack.validation.back"), vf.c("dataPack.validation.reset")));
+            } else {
+               this.f.a(this);
+            }
+
+            return null;
+         });
+   }
+
+   private static aib.c a(aps $$0, cui $$1) {
+      aib.d $$2 = new aib.d($$0, $$1, false, true);
+      return new aib.c($$2, dt.a.c, 2);
+   }
+
+   private void I() {
+      if (this.C != null) {
+         try (Stream<Path> $$0 = Files.walk(this.C)) {
+            $$0.sorted(Comparator.reverseOrder()).forEach($$0x -> {
+               try {
+                  Files.delete($$0x);
+               } catch (IOException var2) {
+                  n.warn("Failed to remove temporary file {}", $$0x, var2);
+               }
+            });
+         } catch (IOException var6) {
+            n.warn("Failed to list temporary dir {}", this.C);
+         }
+
+         this.C = null;
+      }
+   }
+
+   private static void a(Path $$0, Path $$1, Path $$2) {
+      try {
+         ac.b($$0, $$1, $$2);
+      } catch (IOException var4) {
+         n.warn("Failed to copy datapack file from {} to {}", $$2, $$1);
+         throw new UncheckedIOException(var4);
+      }
+   }
+
+   private Optional<egl.c> J() {
+      String $$0 = this.x.c();
+
+      try {
+         egl.c $$1 = this.f.l().e($$0);
+         if (this.C == null) {
+            return Optional.of($$1);
+         }
+
+         try {
+            Optional var5;
+            try (Stream<Path> $$2 = Files.walk(this.C)) {
+               Path $$3 = $$1.a(egj.j);
+               v.c($$3);
+               $$2.filter($$0x -> !$$0x.equals(this.C)).forEach($$1x -> a(this.C, $$3, $$1x));
+               var5 = Optional.of($$1);
+            }
+
+            return var5;
+         } catch (UncheckedIOException | IOException var8) {
+            n.warn("Failed to copy datapacks to world {}", $$0, var8);
+            $$1.close();
+         }
+      } catch (UncheckedIOException | IOException var9) {
+         n.warn("Failed to create access for {}", $$0, var9);
       }
 
-      @Override
-      public void b(ews $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         fhq.f $$4 = this.t();
-         if ($$4 != null && $$4.a != null) {
-            fhq.this.b($$4.a);
+      ezm.c(this.f, $$0);
+      this.D();
+      return Optional.empty();
+   }
+
+   @Nullable
+   public static Path a(Path $$0, evh $$1) {
+      MutableObject<Path> $$2 = new MutableObject();
+
+      try (Stream<Path> $$3 = Files.walk($$0)) {
+         $$3.filter($$1x -> !$$1x.equals($$0)).forEach($$2x -> {
+            Path $$3x = (Path)$$2.getValue();
+            if ($$3x == null) {
+               try {
+                  $$3x = Files.createTempDirectory("mcworld-");
+               } catch (IOException var5) {
+                  n.warn("Failed to create temporary dir");
+                  throw new UncheckedIOException(var5);
+               }
+
+               $$2.setValue($$3x);
+            }
+
+            a($$0, $$3x, $$2x);
+         });
+      } catch (UncheckedIOException | IOException var8) {
+         n.warn("Failed to copy datapacks from world {}", $$0, var8);
+         ezm.c($$1, $$0.toString());
+         return null;
+      }
+
+      return (Path)$$2.getValue();
+   }
+
+   @Nullable
+   private Pair<Path, aps> c(cui $$0) {
+      Path $$1 = this.H();
+      if ($$1 != null) {
+         if (this.D == null) {
+            this.D = apv.a($$1, this.A);
+            this.D.a();
          }
+
+         this.D.a($$0.a().a());
+         return Pair.of($$1, this.D);
+      } else {
+         return null;
+      }
+   }
+
+   static record a(dpl a, cui b) {
+   }
+
+   class b extends ezf {
+      private static final vf c = vf.c("createWorld.tab.game.title");
+      private static final vf d = vf.c("selectWorld.allowCommands");
+      private final exo e;
+
+      b() {
+         super(c);
+         fao.b $$0 = this.a.b(8).d(1);
+         fas $$1 = $$0.b();
+         this.e = new exo(fhq.this.i, 208, 20, vf.c("selectWorld.enterName"));
+         this.e.a(fhq.this.x.b());
+         this.e.b(fhq.this.x::a);
+         fhq.this.x.a($$0x -> this.e.a(eyq.a(vf.a("selectWorld.targetFolder", vf.b($$0x.c()).a(n.u)))));
+         fhq.this.c(this.e);
+         $$0.a(fal.a(fhq.this.i, this.e, fhq.q), $$0.b().b());
+         exm<fhz.a> $$2 = $$0.a(exm.<fhz.a>a($$0x -> $$0x.f).a(fhz.a.a, fhz.a.b, fhz.a.c).a(0, 0, 210, 20, fhq.p, ($$0x, $$1x) -> fhq.this.x.a($$1x)), $$1);
+         fhq.this.x.a($$1x -> {
+            $$2.a($$1x.d());
+            $$2.j = !$$1x.l();
+            $$2.a(eyq.a($$1x.d().a()));
+         });
+         exm<bjx> $$3 = $$0.a(exm.a(bjx::b).a(bjx.values()).a(0, 0, 210, 20, vf.c("options.difficulty"), ($$0x, $$1x) -> fhq.this.x.a($$1x)), $$1);
+         fhq.this.x.a($$1x -> {
+            $$3.a(fhq.this.x.e());
+            $$3.j = !fhq.this.x.f();
+            $$3.a(eyq.a(fhq.this.x.e().d()));
+         });
+         exm<Boolean> $$4 = $$0.a(exm.e().a($$0x -> eyq.a(fhq.t)).a(0, 0, 210, 20, d, ($$0x, $$1x) -> fhq.this.x.a($$1x)));
+         fhq.this.x.a($$1x -> {
+            $$4.a(fhq.this.x.g());
+            $$4.j = !fhq.this.x.l() && !fhq.this.x.f();
+         });
+         if (!aa.b().g()) {
+            $$0.a(exf.a(fhq.r, $$0x -> fhq.this.a(fhq.this.x.k().g())).a(210).a());
+         }
+      }
+   }
+
+   class c extends ezf {
+      private static final vf c = vf.c("createWorld.tab.more.title");
+      private static final vf d = vf.c("selectWorld.gameRules");
+      private static final vf e = vf.c("selectWorld.dataPacks");
+
+      c() {
+         super(c);
+         fao.b $$0 = this.a.b(8).d(1);
+         $$0.a(exf.a(d, $$0x -> this.b()).a(210).a());
+         $$0.a(exf.a(fhq.r, $$0x -> fhq.this.a(fhq.this.x.k().g())).a(210).a());
+         $$0.a(exf.a(e, $$0x -> fhq.this.b(fhq.this.x.k().g())).a(210).a());
+      }
+
+      private void b() {
+         fhq.this.f.a(new fhr(fhq.this.x.q().b(), $$0 -> {
+            fhq.this.f.a(fhq.this);
+            $$0.ifPresent(fhq.this.x::a);
+         }));
+      }
+   }
+
+   class d extends ezf {
+      private static final vf c = vf.c("createWorld.tab.world.title");
+      private static final vf d = vf.c("generator.minecraft.amplified.info");
+      private static final vf e = vf.c("selectWorld.mapFeatures");
+      private static final vf f = vf.c("selectWorld.mapFeatures.info");
+      private static final vf g = vf.c("selectWorld.bonusItems");
+      private static final vf h = vf.c("selectWorld.enterSeed");
+      static final vf i = vf.c("selectWorld.seedInfo").a(n.i);
+      private static final int j = 310;
+      private final exo k;
+      private final exf l;
+
+      d() {
+         super(c);
+         fao.b $$0 = this.a.a(10).b(8).d(2);
+         exm<fhz.b> $$1 = $$0.a(
+            exm.<fhz.b>a(fhz.b::a).a(this.c()).a(fhq.d::a).a(0, 0, 150, 20, vf.c("selectWorld.mapType"), ($$0x, $$1x) -> fhq.this.x.a($$1x))
+         );
+         $$1.a(fhq.this.x.m());
+         fhq.this.x.a($$1x -> {
+            fhz.b $$2x = $$1x.m();
+            $$1.a($$2x);
+            if ($$2x.b()) {
+               $$1.a(eyq.a(d));
+            } else {
+               $$1.a(null);
+            }
+
+            $$1.j = fhq.this.x.m().c() != null;
+         });
+         this.l = $$0.a(exf.a(vf.c("selectWorld.customizeType"), $$0x -> this.b()).a());
+         fhq.this.x.a($$0x -> this.l.j = !$$0x.l() && $$0x.n() != null);
+         this.k = new exo(fhq.this.i, 308, 20, vf.c("selectWorld.enterSeed")) {
+            @Override
+            protected vt aK_() {
+               return super.aK_().b(ve.s).b(fhq.d.i);
+            }
+         };
+         this.k.c(i);
+         this.k.a(fhq.this.x.h());
+         this.k.b($$0x -> fhq.this.x.b(this.k.a()));
+         $$0.a(fal.a(fhq.this.i, this.k, h), 2);
+         fhx.a $$2 = fhx.a(310);
+         $$2.a(e, fhq.this.x::i, fhq.this.x::b).a(() -> !fhq.this.x.l()).a(f);
+         $$2.a(g, fhq.this.x::j, fhq.this.x::c).a(() -> !fhq.this.x.f() && !fhq.this.x.l());
+         fhx $$3 = $$2.a($$1x -> $$0.a($$1x, 2));
+         fhq.this.x.a($$1x -> $$3.a());
+      }
+
+      private void b() {
+         fhv $$0 = fhq.this.x.n();
+         if ($$0 != null) {
+            fhq.this.f.a($$0.createEditScreen(fhq.this, fhq.this.x.k()));
+         }
+      }
+
+      private exm.c<fhz.b> c() {
+         return new exm.c<fhz.b>() {
+            @Override
+            public List<fhz.b> a() {
+               return exm.a.getAsBoolean() ? fhq.this.x.p() : fhq.this.x.o();
+            }
+
+            @Override
+            public List<fhz.b> b() {
+               return fhq.this.x.o();
+            }
+         };
+      }
+
+      private static vt a(exm<fhz.b> $$0) {
+         return $$0.a().b() ? ve.a($$0.d(), d) : $$0.d();
       }
    }
 }

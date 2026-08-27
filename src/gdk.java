@@ -1,24 +1,23 @@
-public class gdk extends gch<cbh, fml<cbh>> {
-   private static final ahg a = new ahg("textures/entity/wither/wither_armor.png");
-   private final fml<cbh> b;
-
-   public gdk(gag<cbh, fml<cbh>> $$0, fmr $$1) {
-      super($$0);
-      this.b = new fml<>($$1.a(fmu.bT));
+public class gdk<T extends bmk> extends gcb<T, fml<T>> {
+   public gdk(gah<T, fml<T>> $$0, ftc $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected float a(float $$0) {
-      return aun.b($$0 * 0.02F) * 3.0F;
-   }
+   public void a(eqa $$0, ftg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmx $$10 = $$3.eT();
+      $$0.a();
+      if ($$10.a(cna.sh)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
 
-   @Override
-   protected ahg a() {
-      return a;
-   }
-
-   @Override
-   protected fjv<cbh> b() {
-      return this.b;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

@@ -1,11 +1,10 @@
-public class fzu extends fzr<byl, fkt<byl>> {
-   private static final ahg a = new ahg("textures/entity/cat/ocelot.png");
-
-   public fzu(fyl.a $$0) {
-      super($$0, new fkt<>($$0.a(fmu.aB)), 0.4F);
+public class fzu<T extends blu> extends fyl<T> {
+   public fzu(fym.a $$0) {
+      super($$0);
    }
 
-   public ahg a(byl $$0) {
-      return a;
+   @Override
+   public ahg a(T $$0) {
+      return gel.e;
    }
 }

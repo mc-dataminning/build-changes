@@ -1,13 +1,12 @@
-public class gke implements gkg {
+public class gke implements gkh {
    private static final int a = 600;
-   private static final vf b = vf.c("tutorial.punch_tree.title");
-   private static final vf c = vf.a("tutorial.punch_tree.description", gkf.a("attack"));
-   private final gkf d;
-   private ezo e;
+   private static final vf b = vf.c("tutorial.open_inventory.title");
+   private static final vf c = vf.a("tutorial.open_inventory.description", gkg.a("inventory"));
+   private final gkg d;
+   private ezp e;
    private int f;
-   private int g;
 
-   public gke(gkf $$0) {
+   public gke(gkg $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,10 @@ public class gke implements gkg {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gkh.f);
+         this.d.a(gki.f);
       } else {
-         if (this.f == 1) {
-            fsh $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fS().a(aso.r)) {
-                  this.d.a(gkh.e);
-                  return;
-               }
-
-               if (gkb.a($$0)) {
-                  this.d.a(gkh.e);
-                  return;
-               }
-            }
-         }
-
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new ezo(ezo.a.c, b, c, true);
+         if (this.f >= 600 && this.e == null) {
+            this.e = new ezp(ezp.a.d, b, c, false);
             this.d.e().ay().a(this.e);
          }
       }
@@ -48,27 +32,7 @@ public class gke implements gkg {
    }
 
    @Override
-   public void a(fnq $$0, hx $$1, djg $$2, float $$3) {
-      boolean $$4 = $$2.a(asg.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gkh.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
-   }
-
-   @Override
-   public void a(cmx $$0) {
-      if ($$0.a(aso.r)) {
-         this.d.a(gkh.e);
-      }
+   public void c() {
+      this.d.a(gki.e);
    }
 }

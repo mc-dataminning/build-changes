@@ -1,57 +1,67 @@
-public class flq<T extends bmm & ccs> extends fki<T> {
-   public flq(fmv $$0) {
-      super($$0);
+import java.util.Arrays;
+
+public class flq<T extends blu> extends fkf<T> {
+   private static final int a = 7;
+   private final fmw b;
+   private final fmw[] f = new fmw[7];
+   private final fmw[] g = new fmw[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public flq(fmw $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fnb c() {
-      fnd $$0 = fki.a(fmz.a, 0.0F);
-      fne $$1 = $$0.a();
-      $$1.a("right_arm", fna.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fna.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fna.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fna.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(2.0F, 12.0F, 0.0F));
-      return fnb.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "layer" + $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fki.a.a;
-      this.r = fki.a.a;
-      cmx $$4 = $$0.b(bjz.a);
-      if ($$4.a(cna.or) && $$0.fW()) {
-         if ($$0.fm() == bme.b) {
-            this.s = fki.a.d;
-         } else {
-            this.r = fki.a.d;
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fnc b() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fnb.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            fmy.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
          }
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cmx $$6 = $$0.eT();
-      if ($$0.fW() && ($$6.b() || !$$6.a(cna.or))) {
-         float $$7 = aun.a(this.c * (float) Math.PI);
-         float $$8 = aun.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fiu.a(this.n, this.o, $$3);
-      }
+      $$1.a(a(0), fnb.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fmy.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fnb.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fmy.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fnb.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fmy.a(0.0F, 19.0F, $$2[1]));
+      return fnc.a($$0, 64, 32);
    }
 
    @Override
-   public void a(bme $$0, epz $$1) {
-      float $$2 = $$0 == bme.b ? 1.0F : -1.0F;
-      fmv $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fmw a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = aun.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = aun.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+      }
+
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

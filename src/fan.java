@@ -2,217 +2,110 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class fan extends faj {
-   private final List<faq> c = new ArrayList<>();
-   private final List<fan.a> d = new ArrayList<>();
-   private final far e = far.i();
-   private int f = 0;
-   private int g = 0;
+public class fan extends fak {
+   private final List<fan.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fas f = fas.i().a(0.5F, 0.5F);
 
    public fan() {
-      this(0, 0);
+      this(0, 0, 0, 0);
    }
 
    public fan(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+      this(0, 0, $$0, $$1);
+   }
+
+   public fan(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public fan a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
+   }
+
+   public fan a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fan b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public fas b() {
+      return this.f.g();
+   }
+
+   public fas c() {
+      return this.f;
    }
 
    @Override
    public void a() {
       super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+      int $$0 = this.d;
+      int $$1 = this.e;
 
-      for (fan.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
+      for (fan.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (fan.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
+      for (fan.a $$3 : this.c) {
+         $$3.a(this.B(), $$0);
+         $$3.b(this.C(), $$1);
       }
 
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fan.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.B() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.C() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public <T extends faq> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
+   public <T extends far> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public <T extends faq> T a(T $$0, int $$1, int $$2, far $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   public <T extends far> T a(T $$0, fas $$1) {
+      this.c.add(new fan.a($$0, $$1));
+      return $$0;
    }
 
-   public <T extends faq> T a(T $$0, int $$1, int $$2, Consumer<far> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends faq> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends faq> T a(T $$0, int $$1, int $$2, int $$3, int $$4, far $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new fan.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends faq> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<far> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public fan a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public fan b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public fan c(int $$0) {
-      return this.a($$0).b($$0);
+   public <T extends far> T a(T $$0, Consumer<fas> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   public void b(Consumer<faq> $$0) {
-      this.c.forEach($$0);
+   public void b(Consumer<far> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public far b() {
-      return this.e.g();
+   public static void a(far $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public far c() {
-      return this.e;
+   public static void a(far $$0, fbi $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   public fan.b d(int $$0) {
-      return new fan.b($$0);
+   public static void a(far $$0, fbi $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
    }
 
-   static class a extends faj.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(faq $$0, int $$1, int $$2, int $$3, int $$4, far $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
+   public static void a(far $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.w(), $$0::n, $$5);
+      a($$2, $$4, $$0.u(), $$0::o, $$6);
    }
 
-   public final class b {
-      private final int b;
-      private int c;
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)aun.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      b(int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends faq> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends faq> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends faq> T a(T $$0, far $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends faq> T a(T $$0, int $$1, far $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = aun.d(this.c, this.b);
-         }
-
-         this.c += $$1;
-         return fan.this.a($$0, $$3, $$4, 1, $$1, $$2);
-      }
-
-      public fan a() {
-         return fan.this;
-      }
-
-      public far b() {
-         return fan.this.b();
-      }
-
-      public far c() {
-         return fan.this.c();
+   static class a extends fak.a {
+      protected a(far $$0, fas $$1) {
+         super($$0, $$1);
       }
    }
 }

@@ -1,17 +1,17 @@
-public class gbe extends fzr<cdc, fme> {
-   private static final ahg a = new ahg("textures/entity/illager/vex.png");
-   private static final ahg i = new ahg("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gbe(fyl.a $$0) {
-      super($$0, new fme($$0.a(fmu.bL)), 0.3F);
-      this.a(new gcp<>(this, $$0.d()));
+public class gbe extends fxi<bzw, fkh<bzw>> {
+   private static final Map<bly<?>, ahg> a = Maps.newHashMap(
+      ImmutableMap.of(bly.bs, new ahg("textures/entity/horse/horse_zombie.png"), bly.aL, new ahg("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gbe(fym.a $$0, fmu $$1) {
+      super($$0, new fkh<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(cdc $$0, hx $$1) {
-      return 15;
-   }
-
-   public ahg a(cdc $$0) {
-      return $$0.gf() ? i : a;
+   public ahg a(bzw $$0) {
+      return a.get($$0.ai());
    }
 }

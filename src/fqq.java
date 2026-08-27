@@ -1,37 +1,57 @@
-public class fqq extends fqt {
-   private final fkr a;
-   private final ftn b = ftn.i(fye.a);
-
-   fqq(fnq $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fkc(evg.O().aP().a(fmu.S));
-      this.u = 0.0F;
-      this.t = 30;
+public class fqq extends fru {
+   fqq(fnr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public fqx b() {
-      return fqx.e;
+   public fqy b() {
+      return fqy.b;
    }
 
    @Override
-   public void a(eqd $$0, eur $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * aun.a($$3 * (float) Math.PI);
-      epz $$5 = new epz();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      ftf.a $$6 = evg.O().aO().c();
-      eqd $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gec.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
-   public static class a implements fqw<ka> {
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqq($$1, $$2, $$3, $$4);
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(jx.ab, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements fqx<ka> {
+      private final frp a;
+
+      public a(frp $$0) {
+         this.a = $$0;
+      }
+
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqq $$8 = new fqq($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

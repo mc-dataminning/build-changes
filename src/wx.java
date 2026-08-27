@@ -7,7 +7,7 @@ public class wx {
 
    public static ww<?> a(it<ww<?>> $$0) {
       ww<?> $$1 = it.a($$0, "blank", wt.b);
-      it.a($$0, "result", wy.a);
+      it.a($$0, "styled", wy.a);
       it.a($$0, "fixed", wu.a);
       return $$1;
    }

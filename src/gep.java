@@ -1,25 +1,44 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
+@FunctionalInterface
 public interface gep {
-   agz a = new agz("textures", ".png");
+   Logger a = LogUtils.getLogger();
 
-   void a(aqh var1, gep.a var2);
+   static gep create(Collection<aph<?>> $$0) {
+      return ($$1, $$2) -> {
+         aqj $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
 
-   ger a();
+         epb $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = epb.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
 
-   public interface a {
-      default void a(ahg $$0, aqf $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(ahg var1, gep.b var2);
-
-      void a(Predicate<ahg> var1);
+         gfw $$11 = $$3.a(gfw.a).orElse(gfw.e);
+         gfy $$12 = $$11.a($$7.a(), $$7.b());
+         if (aun.c($$7.a(), $$12.a()) && aun.c($$7.b(), $$12.b())) {
+            return new geg($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   public interface b extends Function<geo, gef> {
-      default void a() {
-      }
-   }
+   @Nullable
+   geg loadSprite(ahg var1, aqf var2);
 }

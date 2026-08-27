@@ -1,24 +1,45 @@
-public record fbg(int a, int b) {
-   public static fbg a(fbe $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fbg($$1, $$2);
-         case b -> new fbg($$2, $$1);
+import it.unimi.dsi.fastutil.ints.IntComparator;
+
+public enum fbg {
+   a,
+   b,
+   c,
+   d;
+
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public fbf a() {
+      return switch (this) {
+         case a, b -> fbf.b;
+         case c, d -> fbf.a;
       };
    }
 
-   public fbg a(fbf $$0) {
-      return switch ($$0) {
-         case b -> new fbg(this.a, this.b + 1);
-         case a -> new fbg(this.a, this.b - 1);
-         case c -> new fbg(this.a - 1, this.b);
-         case d -> new fbg(this.a + 1, this.b);
+   public fbg b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
       };
    }
 
-   public int a(fbe $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
       };
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   }
+
+   public IntComparator d() {
+      return this.e;
    }
 }

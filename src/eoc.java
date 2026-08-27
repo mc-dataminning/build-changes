@@ -1,15 +1,26 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface eoc extends AutoCloseable {
-   @Override
-   default void close() {
+public interface eoc {
+   float getAdvance();
+
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
    }
 
-   @Nullable
-   default eob a(int $$0) {
-      return null;
+   default float a() {
+      return 1.0F;
    }
 
-   IntSet a();
+   default float b() {
+      return 1.0F;
+   }
+
+   ezy bake(Function<eoe, ezy> var1);
+
+   public interface a extends eoc {
+      @Override
+      default ezy bake(Function<eoe, ezy> $$0) {
+         return ezz.a;
+      }
+   }
 }

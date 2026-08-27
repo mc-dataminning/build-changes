@@ -1,24 +1,34 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gcl extends gcx<bzy, fkh<bzy>> {
+   private final fkh<bzy> a;
 
-public class gcl extends gcw<bzy, fkg<bzy>> {
-   private static final Map<caa, ahg> a = ac.a(Maps.newEnumMap(caa.class), $$0 -> {
-      $$0.put(caa.a, null);
-      $$0.put(caa.b, new ahg("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(caa.c, new ahg("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(caa.d, new ahg("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(caa.e, new ahg("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gcl(gag<bzy, fkg<bzy>> $$0) {
+   public gcl(gah<bzy, fkh<bzy>> $$0, fms $$1) {
       super($$0);
+      this.a = new fkh<>($$1.a(fmv.an));
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, bzy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ahg $$10 = a.get($$3.ge());
-      if ($$10 != null && !$$3.ce()) {
-         eqd $$11 = $$1.getBuffer(ftn.i($$10));
-         this.c().a($$0, $$11, $$2, fzm.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(eqa $$0, ftg $$1, int $$2, bzy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmx $$10 = $$3.u();
+      if ($$10.d() instanceof cmn) {
+         cmn $$11 = (cmn)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof clo) {
+            int $$12 = ((clo)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+         }
+
+         eqe $$19 = $$1.getBuffer(fto.e($$11.h()));
+         this.a.a($$0, $$19, $$2, ged.d, $$13, $$14, $$15, 1.0F);
       }
    }
 }

@@ -1,527 +1,382 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
 public class ftb {
-   private static final ftn a = ftn.t(new ahg("textures/map/map_background.png"));
-   private static final ftn b = ftn.t(new ahg("textures/map/map_background_checkerboard.png"));
-   private static final float c = -0.4F;
-   private static final float d = 0.2F;
-   private static final float e = -0.2F;
-   private static final float f = -0.6F;
-   private static final float g = 0.56F;
-   private static final float h = -0.52F;
-   private static final float i = -0.72F;
-   private static final float j = 45.0F;
-   private static final float k = -80.0F;
-   private static final float l = -20.0F;
-   private static final float m = -20.0F;
-   private static final float n = 10.0F;
-   private static final float o = 90.0F;
-   private static final float p = 30.0F;
-   private static final float q = 0.6F;
-   private static final float r = -0.5F;
-   private static final float s = 0.0F;
-   private static final double t = 27.0;
-   private static final float u = 0.8F;
-   private static final float v = 0.1F;
-   private static final float w = -0.3F;
-   private static final float x = 0.4F;
-   private static final float y = -0.4F;
-   private static final float z = 70.0F;
-   private static final float A = -20.0F;
-   private static final float B = -0.6F;
-   private static final float C = 0.8F;
-   private static final float D = 0.8F;
-   private static final float E = -0.75F;
-   private static final float F = -0.9F;
-   private static final float G = 45.0F;
-   private static final float H = -1.0F;
-   private static final float I = 3.6F;
-   private static final float J = 3.5F;
-   private static final float K = 5.6F;
-   private static final int L = 200;
-   private static final int M = -135;
-   private static final int N = 120;
-   private static final float O = -0.4F;
-   private static final float P = -0.2F;
-   private static final float Q = 0.0F;
-   private static final float R = 0.04F;
-   private static final float S = -0.72F;
-   private static final float T = -1.2F;
-   private static final float U = -0.5F;
-   private static final float V = 45.0F;
-   private static final float W = -85.0F;
-   private static final float X = 45.0F;
-   private static final float Y = 92.0F;
-   private static final float Z = -41.0F;
-   private static final float aa = 0.3F;
-   private static final float ab = -1.1F;
-   private static final float ac = 0.45F;
-   private static final float ad = 20.0F;
-   private static final float ae = 0.38F;
-   private static final float af = -0.5F;
-   private static final float ag = -0.5F;
-   private static final float ah = 0.0F;
-   private static final float ai = 0.0078125F;
-   private static final int aj = 7;
-   private static final int ak = 128;
-   private static final int al = 128;
-   private static final float am = 0.0F;
-   private static final float an = 0.0F;
-   private static final float ao = 0.04F;
-   private static final float ap = 0.0F;
-   private static final float aq = 0.004F;
-   private static final float ar = 0.0F;
-   private static final float as = 0.2F;
-   private static final float at = 0.1F;
-   private final evg au;
-   private cmx av = cmx.f;
-   private cmx aw = cmx.f;
-   private float ax;
-   private float ay;
-   private float az;
-   private float aA;
-   private final fyj aB;
-   private final fzj aC;
+   private static final Map<cwp, fto> a = ac.a(Maps.newHashMap(), $$0 -> {
+      fto $$1 = fto.t();
+      $$0.put(cwr.fI, $$1);
+      fto $$2 = fto.d();
+      $$0.put(cwr.i, $$2);
+      $$0.put(cwr.eW, $$2);
+      $$0.put(cwr.eY, $$2);
+      $$0.put(cwr.fH, $$2);
+      $$0.put(cwr.hc, $$2);
+      $$0.put(cwr.eX, $$2);
+      $$0.put(cwr.aH, $$2);
+      $$0.put(cwr.aE, $$2);
+      $$0.put(cwr.aF, $$2);
+      $$0.put(cwr.aI, $$2);
+      $$0.put(cwr.aJ, $$2);
+      $$0.put(cwr.aG, $$2);
+      $$0.put(cwr.aK, $$2);
+      $$0.put(cwr.aM, $$2);
+      $$0.put(cwr.aN, $$2);
+      $$0.put(cwr.ac, $$2);
+      $$0.put(cwr.aL, $$2);
+      fto $$3 = fto.e();
+      $$0.put(cwr.x, $$3);
+      $$0.put(cwr.y, $$3);
+      $$0.put(cwr.z, $$3);
+      $$0.put(cwr.A, $$3);
+      $$0.put(cwr.B, $$3);
+      $$0.put(cwr.C, $$3);
+      $$0.put(cwr.D, $$3);
+      $$0.put(cwr.aQ, $$3);
+      $$0.put(cwr.aZ, $$3);
+      $$0.put(cwr.ba, $$3);
+      $$0.put(cwr.bb, $$3);
+      $$0.put(cwr.bc, $$3);
+      $$0.put(cwr.bd, $$3);
+      $$0.put(cwr.be, $$3);
+      $$0.put(cwr.bf, $$3);
+      $$0.put(cwr.bg, $$3);
+      $$0.put(cwr.bh, $$3);
+      $$0.put(cwr.bi, $$3);
+      $$0.put(cwr.bj, $$3);
+      $$0.put(cwr.bk, $$3);
+      $$0.put(cwr.bl, $$3);
+      $$0.put(cwr.bm, $$3);
+      $$0.put(cwr.bn, $$3);
+      $$0.put(cwr.bo, $$3);
+      $$0.put(cwr.bp, $$3);
+      $$0.put(cwr.bq, $$3);
+      $$0.put(cwr.bs, $$3);
+      $$0.put(cwr.bt, $$3);
+      $$0.put(cwr.bu, $$3);
+      $$0.put(cwr.bv, $$3);
+      $$0.put(cwr.bw, $$3);
+      $$0.put(cwr.bx, $$3);
+      $$0.put(cwr.bR, $$3);
+      $$0.put(cwr.bT, $$3);
+      $$0.put(cwr.bU, $$3);
+      $$0.put(cwr.bV, $$3);
+      $$0.put(cwr.bW, $$3);
+      $$0.put(cwr.bX, $$3);
+      $$0.put(cwr.bY, $$3);
+      $$0.put(cwr.bZ, $$3);
+      $$0.put(cwr.ca, $$3);
+      $$0.put(cwr.cb, $$3);
+      $$0.put(cwr.cc, $$3);
+      $$0.put(cwr.cd, $$3);
+      $$0.put(cwr.ce, $$3);
+      $$0.put(cwr.cf, $$3);
+      $$0.put(cwr.cg, $$3);
+      $$0.put(cwr.cp, $$3);
+      $$0.put(cwr.cq, $$3);
+      $$0.put(cwr.ea, $$3);
+      $$0.put(cwr.eb, $$3);
+      $$0.put(cwr.cr, $$3);
+      $$0.put(cwr.cs, $$3);
+      $$0.put(cwr.ct, $$3);
+      $$0.put(cwr.tr, $$3);
+      $$0.put(cwr.cw, $$3);
+      $$0.put(cwr.cB, $$3);
+      $$0.put(cwr.cN, $$3);
+      $$0.put(cwr.cO, $$3);
+      $$0.put(cwr.cP, $$3);
+      $$0.put(cwr.dy, $$3);
+      $$0.put(cwr.dK, $$3);
+      $$0.put(cwr.dL, $$3);
+      $$0.put(cwr.dQ, $$3);
+      $$0.put(cwr.dS, $$3);
+      $$0.put(cwr.eh, $$3);
+      $$0.put(cwr.ey, $$3);
+      $$0.put(cwr.ez, $$3);
+      $$0.put(cwr.eA, $$3);
+      $$0.put(cwr.eB, $$3);
+      $$0.put(cwr.eC, $$3);
+      $$0.put(cwr.eD, $$3);
+      $$0.put(cwr.eE, $$3);
+      $$0.put(cwr.oM, $$3);
+      $$0.put(cwr.oN, $$3);
+      $$0.put(cwr.eF, $$3);
+      $$0.put(cwr.eG, $$3);
+      $$0.put(cwr.rU, $$3);
+      $$0.put(cwr.rV, $$3);
+      $$0.put(cwr.rX, $$3);
+      $$0.put(cwr.rW, $$3);
+      $$0.put(cwr.rY, $$3);
+      $$0.put(cwr.rZ, $$3);
+      $$0.put(cwr.sb, $$3);
+      $$0.put(cwr.sa, $$3);
+      $$0.put(cwr.fb, $$3);
+      $$0.put(cwr.fc, $$3);
+      $$0.put(cwr.fd, $$3);
+      $$0.put(cwr.fe, $$3);
+      $$0.put(cwr.ff, $$3);
+      $$0.put(cwr.fg, $$3);
+      $$0.put(cwr.fm, $$3);
+      $$0.put(cwr.fq, $$3);
+      $$0.put(cwr.fs, $$3);
+      $$0.put(cwr.fC, $$3);
+      $$0.put(cwr.fO, $$3);
+      $$0.put(cwr.fR, $$3);
+      $$0.put(cwr.fT, $$3);
+      $$0.put(cwr.fU, $$3);
+      $$0.put(cwr.fV, $$3);
+      $$0.put(cwr.fW, $$3);
+      $$0.put(cwr.fX, $$3);
+      $$0.put(cwr.fY, $$3);
+      $$0.put(cwr.fZ, $$3);
+      $$0.put(cwr.ga, $$3);
+      $$0.put(cwr.gb, $$3);
+      $$0.put(cwr.gc, $$3);
+      $$0.put(cwr.gd, $$3);
+      $$0.put(cwr.ge, $$3);
+      $$0.put(cwr.gf, $$3);
+      $$0.put(cwr.gg, $$3);
+      $$0.put(cwr.gh, $$3);
+      $$0.put(cwr.gi, $$3);
+      $$0.put(cwr.gj, $$3);
+      $$0.put(cwr.gk, $$3);
+      $$0.put(cwr.gl, $$3);
+      $$0.put(cwr.gm, $$3);
+      $$0.put(cwr.gn, $$3);
+      $$0.put(cwr.go, $$3);
+      $$0.put(cwr.gp, $$3);
+      $$0.put(cwr.gq, $$3);
+      $$0.put(cwr.gr, $$3);
+      $$0.put(cwr.gs, $$3);
+      $$0.put(cwr.ti, $$3);
+      $$0.put(cwr.tj, $$3);
+      $$0.put(cwr.fS, $$3);
+      $$0.put(cwr.gt, $$3);
+      $$0.put(cwr.gu, $$3);
+      $$0.put(cwr.gY, $$3);
+      $$0.put(cwr.hh, $$3);
+      $$0.put(cwr.hY, $$3);
+      $$0.put(cwr.iD, $$3);
+      $$0.put(cwr.iE, $$3);
+      $$0.put(cwr.iF, $$3);
+      $$0.put(cwr.iG, $$3);
+      $$0.put(cwr.iH, $$3);
+      $$0.put(cwr.iI, $$3);
+      $$0.put(cwr.kl, $$3);
+      $$0.put(cwr.km, $$3);
+      $$0.put(cwr.kn, $$3);
+      $$0.put(cwr.ko, $$3);
+      $$0.put(cwr.kp, $$3);
+      $$0.put(cwr.kq, $$3);
+      $$0.put(cwr.kr, $$3);
+      $$0.put(cwr.ks, $$3);
+      $$0.put(cwr.rM, $$3);
+      $$0.put(cwr.rN, $$3);
+      $$0.put(cwr.rP, $$3);
+      $$0.put(cwr.rO, $$3);
+      $$0.put(cwr.rQ, $$3);
+      $$0.put(cwr.rR, $$3);
+      $$0.put(cwr.rT, $$3);
+      $$0.put(cwr.rS, $$3);
+      $$0.put(cwr.kt, $$3);
+      $$0.put(cwr.ku, $$3);
+      $$0.put(cwr.kv, $$3);
+      $$0.put(cwr.bS, $$3);
+      $$0.put(cwr.kA, $$3);
+      $$0.put(cwr.kC, $$3);
+      $$0.put(cwr.kB, $$3);
+      $$0.put(cwr.kD, $$3);
+      $$0.put(cwr.mc, $$3);
+      $$0.put(cwr.md, $$3);
+      $$0.put(cwr.mf, $$3);
+      $$0.put(cwr.mr, $$3);
+      $$0.put(cwr.ms, $$3);
+      $$0.put(cwr.mt, $$3);
+      $$0.put(cwr.mu, $$3);
+      $$0.put(cwr.mv, $$3);
+      $$0.put(cwr.mw, $$3);
+      $$0.put(cwr.mx, $$3);
+      $$0.put(cwr.my, $$3);
+      $$0.put(cwr.mz, $$3);
+      $$0.put(cwr.mA, $$3);
+      $$0.put(cwr.mB, $$3);
+      $$0.put(cwr.mC, $$3);
+      $$0.put(cwr.mD, $$3);
+      $$0.put(cwr.mE, $$3);
+      $$0.put(cwr.mF, $$3);
+      $$0.put(cwr.mG, $$3);
+      $$0.put(cwr.mH, $$3);
+      $$0.put(cwr.mI, $$3);
+      $$0.put(cwr.mJ, $$3);
+      $$0.put(cwr.mK, $$3);
+      $$0.put(cwr.mL, $$3);
+      $$0.put(cwr.mM, $$3);
+      $$0.put(cwr.mN, $$3);
+      $$0.put(cwr.mO, $$3);
+      $$0.put(cwr.mP, $$3);
+      $$0.put(cwr.mQ, $$3);
+      $$0.put(cwr.mR, $$3);
+      $$0.put(cwr.mS, $$3);
+      $$0.put(cwr.mT, $$3);
+      $$0.put(cwr.mU, $$3);
+      $$0.put(cwr.mV, $$3);
+      $$0.put(cwr.mX, $$3);
+      $$0.put(cwr.mY, $$3);
+      $$0.put(cwr.mZ, $$3);
+      $$0.put(cwr.na, $$3);
+      $$0.put(cwr.nS, $$3);
+      $$0.put(cwr.oc, $$3);
+      $$0.put(cwr.oe, $$3);
+      $$0.put(cwr.of, $$3);
+      $$0.put(cwr.og, $$3);
+      $$0.put(cwr.oh, $$3);
+      $$0.put(cwr.oi, $$3);
+      $$0.put(cwr.oz, $$3);
+      $$0.put(cwr.oA, $$3);
+      $$0.put(cwr.oB, $$3);
+      $$0.put(cwr.oC, $$3);
+      $$0.put(cwr.or, $$3);
+      $$0.put(cwr.ox, $$3);
+      $$0.put(cwr.oo, $$3);
+      $$0.put(cwr.oD, $$3);
+      $$0.put(cwr.oq, $$3);
+      $$0.put(cwr.pm, $$3);
+      $$0.put(cwr.pn, $$3);
+      $$0.put(cwr.po, $$3);
+      $$0.put(cwr.pp, $$3);
+      $$0.put(cwr.oU, $$3);
+      $$0.put(cwr.oV, $$3);
+      $$0.put(cwr.st, $$3);
+      $$0.put(cwr.qy, $$3);
+      $$0.put(cwr.qx, $$3);
+      $$0.put(cwr.qw, $$3);
+      $$0.put(cwr.qv, $$3);
+      $$0.put(cwr.ss, $$3);
+      $$0.put(cwr.sv, $$3);
+      $$0.put(cwr.sw, $$3);
+      $$0.put(cwr.sx, $$3);
+      $$0.put(cwr.sz, $$3);
+      $$0.put(cwr.sy, $$3);
+      $$0.put(cwr.sA, $$3);
+      $$0.put(cwr.sB, $$3);
+      $$0.put(cwr.sD, $$3);
+      $$0.put(cwr.sE, $$3);
+      $$0.put(cwr.sF, $$3);
+      $$0.put(cwr.sG, $$3);
+      $$0.put(cwr.qQ, $$3);
+      $$0.put(cwr.qR, $$3);
+      $$0.put(cwr.qT, $$3);
+      $$0.put(cwr.qV, $$3);
+      $$0.put(cwr.E, $$3);
+      $$0.put(cwr.tn, $$3);
+      $$0.put(cwr.sc, $$3);
+      $$0.put(cwr.sd, $$3);
+      $$0.put(cwr.se, $$3);
+      $$0.put(cwr.sf, $$3);
+      $$0.put(cwr.sg, $$3);
+      $$0.put(cwr.sh, $$3);
+      $$0.put(cwr.si, $$3);
+      $$0.put(cwr.sj, $$3);
+      fto $$4 = fto.f();
+      $$0.put(cwr.dO, $$4);
+      $$0.put(cwr.ed, $$4);
+      $$0.put(cwr.ei, $$4);
+      $$0.put(cwr.ej, $$4);
+      $$0.put(cwr.ek, $$4);
+      $$0.put(cwr.el, $$4);
+      $$0.put(cwr.em, $$4);
+      $$0.put(cwr.en, $$4);
+      $$0.put(cwr.eo, $$4);
+      $$0.put(cwr.ep, $$4);
+      $$0.put(cwr.eq, $$4);
+      $$0.put(cwr.er, $$4);
+      $$0.put(cwr.es, $$4);
+      $$0.put(cwr.et, $$4);
+      $$0.put(cwr.eu, $$4);
+      $$0.put(cwr.ev, $$4);
+      $$0.put(cwr.ew, $$4);
+      $$0.put(cwr.ex, $$4);
+      $$0.put(cwr.hz, $$4);
+      $$0.put(cwr.hA, $$4);
+      $$0.put(cwr.hB, $$4);
+      $$0.put(cwr.hC, $$4);
+      $$0.put(cwr.hD, $$4);
+      $$0.put(cwr.hE, $$4);
+      $$0.put(cwr.hF, $$4);
+      $$0.put(cwr.hG, $$4);
+      $$0.put(cwr.hH, $$4);
+      $$0.put(cwr.hI, $$4);
+      $$0.put(cwr.hJ, $$4);
+      $$0.put(cwr.hK, $$4);
+      $$0.put(cwr.hL, $$4);
+      $$0.put(cwr.hM, $$4);
+      $$0.put(cwr.hN, $$4);
+      $$0.put(cwr.hO, $$4);
+      $$0.put(cwr.hV, $$4);
+      $$0.put(cwr.pg, $$4);
+      $$0.put(cwr.kI, $$4);
+      $$0.put(cwr.nd, $$4);
+      $$0.put(cwr.qO, $$4);
+   });
+   private static final Map<eep, fto> b = ac.a(Maps.newHashMap(), $$0 -> {
+      fto $$1 = fto.f();
+      $$0.put(eer.b, $$1);
+      $$0.put(eer.c, $$1);
+   });
+   private static boolean c;
 
-   public ftb(evg $$0, fyj $$1, fzj $$2) {
-      this.au = $$0;
-      this.aB = $$1;
-      this.aC = $$2;
-   }
-
-   public void a(bmk $$0, cmx $$1, cmu $$2, boolean $$3, epz $$4, ftf $$5, int $$6) {
-      if (!$$1.b()) {
-         this.aC.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dM(), $$6, gec.d, $$0.aj() + $$2.ordinal());
-      }
-   }
-
-   private float a(float $$0) {
-      float $$1 = 1.0F - $$0 / 45.0F + 0.1F;
-      $$1 = aun.a($$1, 0.0F, 1.0F);
-      return -aun.b($$1 * (float) Math.PI) * 0.5F + 0.5F;
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, bme $$3) {
-      gdo $$4 = (gdo)this.aB.<fse>a(this.au.s);
-      $$0.a();
-      float $$5 = $$3 == bme.b ? 1.0F : -1.0F;
-      $$0.a(a.d.rotationDegrees(92.0F));
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.a(a.f.rotationDegrees($$5 * -41.0F));
-      $$0.a($$5 * 0.3F, -1.1F, 0.45F);
-      if ($$3 == bme.b) {
-         $$4.a($$0, $$1, $$2, this.au.s);
+   public static fto a(djg $$0) {
+      cwp $$1 = $$0.b();
+      if ($$1 instanceof day) {
+         return c ? fto.d() : fto.c();
       } else {
-         $$4.b($$0, $$1, $$2, this.au.s);
-      }
-
-      $$0.b();
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, float $$3, bme $$4, float $$5, cmx $$6) {
-      float $$7 = $$4 == bme.b ? 1.0F : -1.0F;
-      $$0.a($$7 * 0.125F, -0.125F, 0.0F);
-      if (!this.au.s.ce()) {
-         $$0.a();
-         $$0.a(a.f.rotationDegrees($$7 * 10.0F));
-         this.a($$0, $$1, $$2, $$3, $$5, $$4);
-         $$0.b();
-      }
-
-      $$0.a();
-      $$0.a($$7 * 0.51F, -0.08F + $$3 * -1.2F, -0.75F);
-      float $$8 = aun.c($$5);
-      float $$9 = aun.a($$8 * (float) Math.PI);
-      float $$10 = -0.5F * $$9;
-      float $$11 = 0.4F * aun.a($$8 * (float) (Math.PI * 2));
-      float $$12 = -0.3F * aun.a($$5 * (float) Math.PI);
-      $$0.a($$7 * $$10, $$11 - 0.3F * $$9, $$12);
-      $$0.a(a.b.rotationDegrees($$9 * -45.0F));
-      $$0.a(a.d.rotationDegrees($$7 * $$9 * -30.0F));
-      this.a($$0, $$1, $$2, $$6);
-      $$0.b();
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, float $$3, float $$4, float $$5) {
-      float $$6 = aun.c($$5);
-      float $$7 = -0.2F * aun.a($$5 * (float) Math.PI);
-      float $$8 = -0.4F * aun.a($$6 * (float) Math.PI);
-      $$0.a(0.0F, -$$7 / 2.0F, $$8);
-      float $$9 = this.a($$3);
-      $$0.a(0.0F, 0.04F + $$4 * -1.2F + $$9 * -0.5F, -0.72F);
-      $$0.a(a.b.rotationDegrees($$9 * -85.0F));
-      if (!this.au.s.ce()) {
-         $$0.a();
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$1, $$2, bme.b);
-         this.a($$0, $$1, $$2, bme.a);
-         $$0.b();
-      }
-
-      float $$10 = aun.a($$6 * (float) Math.PI);
-      $$0.a(a.b.rotationDegrees($$10 * 20.0F));
-      $$0.b(2.0F, 2.0F, 2.0F);
-      this.a($$0, $$1, $$2, this.av);
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, cmx $$3) {
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.a(a.f.rotationDegrees(180.0F));
-      $$0.b(0.38F, 0.38F, 0.38F);
-      $$0.a(-0.5F, -0.5F, 0.0F);
-      $$0.b(0.0078125F, 0.0078125F, 0.0078125F);
-      Integer $$4 = cne.d($$3);
-      ega $$5 = cne.a($$4, this.au.r);
-      eqd $$6 = $$1.getBuffer($$5 == null ? a : b);
-      Matrix4f $$7 = $$0.c().a();
-      $$6.a($$7, -7.0F, 135.0F, 0.0F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$2).e();
-      $$6.a($$7, 135.0F, 135.0F, 0.0F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$2).e();
-      $$6.a($$7, 135.0F, -7.0F, 0.0F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$2).e();
-      $$6.a($$7, -7.0F, -7.0F, 0.0F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$2).e();
-      if ($$5 != null) {
-         this.au.j.j().a($$0, $$1, $$4, $$5, false, $$2);
+         fto $$2 = a.get($$1);
+         return $$2 != null ? $$2 : fto.c();
       }
    }
 
-   private void a(epz $$0, ftf $$1, int $$2, float $$3, float $$4, bme $$5) {
-      boolean $$6 = $$5 != bme.a;
-      float $$7 = $$6 ? 1.0F : -1.0F;
-      float $$8 = aun.c($$4);
-      float $$9 = -0.3F * aun.a($$8 * (float) Math.PI);
-      float $$10 = 0.4F * aun.a($$8 * (float) (Math.PI * 2));
-      float $$11 = -0.4F * aun.a($$4 * (float) Math.PI);
-      $$0.a($$7 * ($$9 + 0.64000005F), $$10 + -0.6F + $$3 * -0.6F, $$11 + -0.71999997F);
-      $$0.a(a.d.rotationDegrees($$7 * 45.0F));
-      float $$12 = aun.a($$4 * $$4 * (float) Math.PI);
-      float $$13 = aun.a($$8 * (float) Math.PI);
-      $$0.a(a.d.rotationDegrees($$7 * $$13 * 70.0F));
-      $$0.a(a.f.rotationDegrees($$7 * $$12 * -20.0F));
-      fse $$14 = this.au.s;
-      $$0.a($$7 * -1.0F, 3.6F, 3.5F);
-      $$0.a(a.f.rotationDegrees($$7 * 120.0F));
-      $$0.a(a.b.rotationDegrees(200.0F));
-      $$0.a(a.d.rotationDegrees($$7 * -135.0F));
-      $$0.a($$7 * 5.6F, 0.0F, 0.0F);
-      gdo $$15 = (gdo)this.aB.<fse>a($$14);
-      if ($$6) {
-         $$15.a($$0, $$1, $$2, $$14);
+   public static fto b(djg $$0) {
+      cwp $$1 = $$0.b();
+      if ($$1 instanceof day) {
+         return c ? fto.d() : fto.c();
       } else {
-         $$15.b($$0, $$1, $$2, $$14);
-      }
-   }
-
-   private void a(epz $$0, float $$1, bme $$2, cmx $$3) {
-      float $$4 = (float)this.au.s.fq() - $$1 + 1.0F;
-      float $$5 = $$4 / (float)$$3.r();
-      if ($$5 < 0.8F) {
-         float $$6 = aun.e(aun.b($$4 / 4.0F * (float) Math.PI) * 0.1F);
-         $$0.a(0.0F, $$6, 0.0F);
-      }
-
-      float $$7 = 1.0F - (float)Math.pow((double)$$5, 27.0);
-      int $$8 = $$2 == bme.b ? 1 : -1;
-      $$0.a($$7 * 0.6F * (float)$$8, $$7 * -0.5F, $$7 * 0.0F);
-      $$0.a(a.d.rotationDegrees((float)$$8 * $$7 * 90.0F));
-      $$0.a(a.b.rotationDegrees($$7 * 10.0F));
-      $$0.a(a.f.rotationDegrees((float)$$8 * $$7 * 30.0F));
-   }
-
-   private void a(epz $$0, float $$1, bme $$2, cmx $$3, float $$4) {
-      this.b($$0, $$2, $$4);
-      float $$5 = (float)(this.au.s.fq() % 10);
-      float $$6 = $$5 - $$1 + 1.0F;
-      float $$7 = 1.0F - $$6 / 10.0F;
-      float $$8 = -90.0F;
-      float $$9 = 60.0F;
-      float $$10 = 150.0F;
-      float $$11 = -15.0F;
-      int $$12 = 2;
-      float $$13 = -15.0F + 75.0F * aun.b($$7 * 2.0F * (float) Math.PI);
-      if ($$2 != bme.b) {
-         $$0.a(0.1, 0.83, 0.35);
-         $$0.a(a.b.rotationDegrees(-80.0F));
-         $$0.a(a.d.rotationDegrees(-90.0F));
-         $$0.a(a.b.rotationDegrees($$13));
-         $$0.a(-0.3, 0.22, 0.35);
-      } else {
-         $$0.a(-0.25, 0.22, 0.35);
-         $$0.a(a.b.rotationDegrees(-80.0F));
-         $$0.a(a.d.rotationDegrees(90.0F));
-         $$0.a(a.f.rotationDegrees(0.0F));
-         $$0.a(a.b.rotationDegrees($$13));
-      }
-   }
-
-   private void a(epz $$0, bme $$1, float $$2) {
-      int $$3 = $$1 == bme.b ? 1 : -1;
-      float $$4 = aun.a($$2 * $$2 * (float) Math.PI);
-      $$0.a(a.d.rotationDegrees((float)$$3 * (45.0F + $$4 * -20.0F)));
-      float $$5 = aun.a(aun.c($$2) * (float) Math.PI);
-      $$0.a(a.f.rotationDegrees((float)$$3 * $$5 * -20.0F));
-      $$0.a(a.b.rotationDegrees($$5 * -80.0F));
-      $$0.a(a.d.rotationDegrees((float)$$3 * -45.0F));
-   }
-
-   private void b(epz $$0, bme $$1, float $$2) {
-      int $$3 = $$1 == bme.b ? 1 : -1;
-      $$0.a((float)$$3 * 0.56F, -0.52F + $$2 * -0.6F, -0.72F);
-   }
-
-   public void a(float $$0, epz $$1, ftf.a $$2, fsh $$3, int $$4) {
-      float $$5 = $$3.x($$0);
-      bjz $$6 = (bjz)MoreObjects.firstNonNull($$3.aG, bjz.a);
-      float $$7 = aun.i($$0, $$3.O, $$3.dE());
-      ftb.a $$8 = a($$3);
-      float $$9 = aun.i($$0, $$3.cu, $$3.cs);
-      float $$10 = aun.i($$0, $$3.ct, $$3.cr);
-      $$1.a(a.b.rotationDegrees(($$3.g($$0) - $$9) * 0.1F));
-      $$1.a(a.d.rotationDegrees(($$3.h($$0) - $$10) * 0.1F));
-      if ($$8.d) {
-         float $$11 = $$6 == bjz.a ? $$5 : 0.0F;
-         float $$12 = 1.0F - aun.i($$0, this.ay, this.ax);
-         this.a($$3, $$0, $$7, bjz.a, $$11, this.av, $$12, $$1, $$2, $$4);
-      }
-
-      if ($$8.e) {
-         float $$13 = $$6 == bjz.b ? $$5 : 0.0F;
-         float $$14 = 1.0F - aun.i($$0, this.aA, this.az);
-         this.a($$3, $$0, $$7, bjz.b, $$13, this.aw, $$14, $$1, $$2, $$4);
-      }
-
-      $$2.b();
-   }
-
-   @VisibleForTesting
-   static ftb.a a(fsh $$0) {
-      cmx $$1 = $$0.eT();
-      cmx $$2 = $$0.eU();
-      boolean $$3 = $$1.a(cna.or) || $$2.a(cna.or);
-      boolean $$4 = $$1.a(cna.vM) || $$2.a(cna.vM);
-      if (!$$3 && !$$4) {
-         return ftb.a.a;
-      } else if ($$0.fn()) {
-         return b($$0);
-      } else {
-         return a($$1) ? ftb.a.b : ftb.a.a;
-      }
-   }
-
-   private static ftb.a b(fsh $$0) {
-      cmx $$1 = $$0.fp();
-      bjz $$2 = $$0.fo();
-      if (!$$1.a(cna.or) && !$$1.a(cna.vM)) {
-         return $$2 == bjz.a && a($$0.eU()) ? ftb.a.b : ftb.a.a;
-      } else {
-         return ftb.a.a($$2);
-      }
-   }
-
-   private static boolean a(cmx $$0) {
-      return $$0.a(cna.vM) && clf.d($$0);
-   }
-
-   private void a(fse $$0, float $$1, float $$2, bjz $$3, float $$4, cmx $$5, float $$6, epz $$7, ftf $$8, int $$9) {
-      if (!$$0.gq()) {
-         boolean $$10 = $$3 == bjz.a;
-         bme $$11 = $$10 ? $$0.fm() : $$0.fm().e();
-         $$7.a();
-         if ($$5.b()) {
-            if ($$10 && !$$0.ce()) {
-               this.a($$7, $$8, $$9, $$6, $$4, $$11);
-            }
-         } else if ($$5.a(cna.rR)) {
-            if ($$10 && this.aw.b()) {
-               this.a($$7, $$8, $$9, $$2, $$6, $$4);
-            } else {
-               this.a($$7, $$8, $$9, $$6, $$11, $$4, $$5);
-            }
-         } else if ($$5.a(cna.vM)) {
-            boolean $$12 = clf.d($$5);
-            boolean $$13 = $$11 == bme.b;
-            int $$14 = $$13 ? 1 : -1;
-            if ($$0.fn() && $$0.fq() > 0 && $$0.fo() == $$3) {
-               this.b($$7, $$11, $$6);
-               $$7.a((float)$$14 * -0.4785682F, -0.094387F, 0.05731531F);
-               $$7.a(a.b.rotationDegrees(-11.935F));
-               $$7.a(a.d.rotationDegrees((float)$$14 * 65.3F));
-               $$7.a(a.f.rotationDegrees((float)$$14 * -9.785F));
-               float $$15 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
-               float $$16 = $$15 / (float)clf.k($$5);
-               if ($$16 > 1.0F) {
-                  $$16 = 1.0F;
-               }
-
-               if ($$16 > 0.1F) {
-                  float $$17 = aun.a(($$15 - 0.1F) * 1.3F);
-                  float $$18 = $$16 - 0.1F;
-                  float $$19 = $$17 * $$18;
-                  $$7.a($$19 * 0.0F, $$19 * 0.004F, $$19 * 0.0F);
-               }
-
-               $$7.a($$16 * 0.0F, $$16 * 0.0F, $$16 * 0.04F);
-               $$7.b(1.0F, 1.0F, 1.0F + $$16 * 0.2F);
-               $$7.a(a.c.rotationDegrees((float)$$14 * 45.0F));
-            } else {
-               float $$20 = -0.4F * aun.a(aun.c($$4) * (float) Math.PI);
-               float $$21 = 0.2F * aun.a(aun.c($$4) * (float) (Math.PI * 2));
-               float $$22 = -0.2F * aun.a($$4 * (float) Math.PI);
-               $$7.a((float)$$14 * $$20, $$21, $$22);
-               this.b($$7, $$11, $$6);
-               this.a($$7, $$11, $$4);
-               if ($$12 && $$4 < 0.001F && $$10) {
-                  $$7.a((float)$$14 * -0.641864F, 0.0F, 0.0F);
-                  $$7.a(a.d.rotationDegrees((float)$$14 * 10.0F));
-               }
-            }
-
-            this.a($$0, $$5, $$13 ? cmu.e : cmu.d, !$$13, $$7, $$8, $$9);
+         fto $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == fto.f() ? fto.g() : $$2;
          } else {
-            boolean $$23 = $$11 == bme.b;
-            if ($$0.fn() && $$0.fq() > 0 && $$0.fo() == $$3) {
-               int $$24 = $$23 ? 1 : -1;
-               switch ($$5.s()) {
-                  case a:
-                     this.b($$7, $$11, $$6);
-                     break;
-                  case b:
-                  case c:
-                     this.a($$7, $$1, $$11, $$5);
-                     this.b($$7, $$11, $$6);
-                     break;
-                  case d:
-                     this.b($$7, $$11, $$6);
-                     break;
-                  case e:
-                     this.b($$7, $$11, $$6);
-                     $$7.a((float)$$24 * -0.2785682F, 0.18344387F, 0.15731531F);
-                     $$7.a(a.b.rotationDegrees(-13.935F));
-                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
-                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
-                     float $$25 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
-                     float $$26 = $$25 / 20.0F;
-                     $$26 = ($$26 * $$26 + $$26 * 2.0F) / 3.0F;
-                     if ($$26 > 1.0F) {
-                        $$26 = 1.0F;
-                     }
-
-                     if ($$26 > 0.1F) {
-                        float $$27 = aun.a(($$25 - 0.1F) * 1.3F);
-                        float $$28 = $$26 - 0.1F;
-                        float $$29 = $$27 * $$28;
-                        $$7.a($$29 * 0.0F, $$29 * 0.004F, $$29 * 0.0F);
-                     }
-
-                     $$7.a($$26 * 0.0F, $$26 * 0.0F, $$26 * 0.04F);
-                     $$7.b(1.0F, 1.0F, 1.0F + $$26 * 0.2F);
-                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
-                     break;
-                  case f:
-                     this.b($$7, $$11, $$6);
-                     $$7.a((float)$$24 * -0.5F, 0.7F, 0.1F);
-                     $$7.a(a.b.rotationDegrees(-55.0F));
-                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
-                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
-                     float $$30 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
-                     float $$31 = $$30 / 10.0F;
-                     if ($$31 > 1.0F) {
-                        $$31 = 1.0F;
-                     }
-
-                     if ($$31 > 0.1F) {
-                        float $$32 = aun.a(($$30 - 0.1F) * 1.3F);
-                        float $$33 = $$31 - 0.1F;
-                        float $$34 = $$32 * $$33;
-                        $$7.a($$34 * 0.0F, $$34 * 0.004F, $$34 * 0.0F);
-                     }
-
-                     $$7.a(0.0F, 0.0F, $$31 * 0.2F);
-                     $$7.b(1.0F, 1.0F, 1.0F + $$31 * 0.2F);
-                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
-                     break;
-                  case j:
-                     this.a($$7, $$1, $$11, $$5, $$6);
-               }
-            } else if ($$0.fj()) {
-               this.b($$7, $$11, $$6);
-               int $$35 = $$23 ? 1 : -1;
-               $$7.a((float)$$35 * -0.4F, 0.8F, 0.3F);
-               $$7.a(a.d.rotationDegrees((float)$$35 * 65.0F));
-               $$7.a(a.f.rotationDegrees((float)$$35 * -85.0F));
-            } else {
-               float $$36 = -0.4F * aun.a(aun.c($$4) * (float) Math.PI);
-               float $$37 = 0.2F * aun.a(aun.c($$4) * (float) (Math.PI * 2));
-               float $$38 = -0.2F * aun.a($$4 * (float) Math.PI);
-               int $$39 = $$23 ? 1 : -1;
-               $$7.a((float)$$39 * $$36, $$37, $$38);
-               this.b($$7, $$11, $$6);
-               this.a($$7, $$11, $$4);
-            }
-
-            this.a($$0, $$5, $$23 ? cmu.e : cmu.d, !$$23, $$7, $$8, $$9);
+            return fto.c();
          }
-
-         $$7.b();
       }
    }
 
-   public void a() {
-      this.ay = this.ax;
-      this.aA = this.az;
-      fsh $$0 = this.au.s;
-      cmx $$1 = $$0.eT();
-      cmx $$2 = $$0.eU();
-      if (cmx.a(this.av, $$1)) {
-         this.av = $$1;
-      }
-
-      if (cmx.a(this.aw, $$2)) {
-         this.aw = $$2;
-      }
-
-      if ($$0.A()) {
-         this.ax = aun.a(this.ax - 0.4F, 0.0F, 1.0F);
-         this.az = aun.a(this.az - 0.4F, 0.0F, 1.0F);
+   public static fto a(djg $$0, boolean $$1) {
+      fto $$2 = a($$0);
+      if ($$2 == fto.f()) {
+         if (!evh.M()) {
+            return ftv.k();
+         } else {
+            return $$1 ? ftv.k() : ftv.j();
+         }
       } else {
-         float $$3 = $$0.B(1.0F);
-         this.ax = this.ax + aun.a((this.av == $$1 ? $$3 * $$3 * $$3 : 0.0F) - this.ax, -0.4F, 0.4F);
-         this.az = this.az + aun.a((float)(this.aw == $$2 ? 1 : 0) - this.az, -0.4F, 0.4F);
-      }
-
-      if (this.ax < 0.1F) {
-         this.av = $$1;
-      }
-
-      if (this.az < 0.1F) {
-         this.aw = $$2;
+         return ftv.i();
       }
    }
 
-   public void a(bjz $$0) {
-      if ($$0 == bjz.a) {
-         this.ax = 0.0F;
+   public static fto a(cmx $$0, boolean $$1) {
+      cms $$2 = $$0.d();
+      if ($$2 instanceof ckq) {
+         cwp $$3 = ((ckq)$$2).e();
+         return a($$3.o(), $$1);
       } else {
-         this.az = 0.0F;
+         return $$1 ? ftv.k() : ftv.j();
       }
    }
 
-   @VisibleForTesting
-   static enum a {
-      a(true, true),
-      b(true, false),
-      c(false, true);
+   public static fto a(eeq $$0) {
+      fto $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : fto.c();
+   }
 
-      final boolean d;
-      final boolean e;
-
-      private a(boolean $$0, boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public static ftb.a a(bjz $$0) {
-         return $$0 == bjz.a ? b : c;
-      }
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

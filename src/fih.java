@@ -1,3 +1,9 @@
 public interface fih {
-   void a(fie var1);
+   void a(fif var1);
+
+   vf aO_();
+
+   void a(ewt var1, float var2, int var3);
+
+   boolean aP_();
 }

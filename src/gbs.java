@@ -1,24 +1,17 @@
-public class gbs<T extends bmk, M extends fla<T>> extends gdf<T, M> {
-   private final fyj a;
+public class gbs extends fzd<cdi, fmp<cdi>> {
+   private static final ahg a = new ahg("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gbs(fyl.a $$0, fzm<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gbs(fym.a $$0) {
+      super($$0, new fmp<>($$0.a(fmv.cg)), 0.5F);
+      this.a(new gcn<>(this, new fmp($$0.a(fmv.ch)), new fmp($$0.a(fmv.ci)), $$0.g()));
+      this.a(new gdi<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eO();
+   public ahg a(cdi $$0) {
+      return a;
    }
 
-   @Override
-   protected void a(epz $$0, ftf $$1, int $$2, blu $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = aun.c($$4 * $$4 + $$6 * $$6);
-      cfp $$9 = new cfp($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cmx.f);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dC();
-      $$9.O = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected boolean b(cdi $$0) {
+      return super.a($$0) || $$0.go();
    }
 }

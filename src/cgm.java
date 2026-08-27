@@ -47,18 +47,18 @@ public class cgm extends cfo implements cfw {
       super.a($$0);
       if (!this.dM().B) {
          $$0.a().a(this.dN().a(this, this.w() instanceof bmk $$1 ? $$1 : null), 1.0F);
-         this.y();
+         this.z();
       }
    }
 
-   private void y() {
+   private void z() {
       this.dM().a(this, null, e, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.ag.j()), false, cto.a.e, jx.y, jx.z, arr.Be);
    }
 
    @Override
    protected void a(elo $$0) {
       super.a($$0);
-      this.y();
+      this.z();
       this.am();
    }
 
@@ -83,6 +83,11 @@ public class cgm extends cfo implements cfw {
    @Override
    protected float x() {
       return 1.0F;
+   }
+
+   @Override
+   protected float y() {
+      return this.x();
    }
 
    @Nullable

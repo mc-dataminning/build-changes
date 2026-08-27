@@ -1,75 +1,49 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fca extends fda {
+   private static final ahg a = new ahg("textures/gui/demo_background.png");
+   private exy b = exy.a;
+   private exy c = exy.a;
 
-public class fca extends fcz {
-   private static final vf a = vf.c("addServer.enterIp");
-   private exe b;
-   private final fob c;
-   private exn k;
-   private final BooleanConsumer l;
-   private final fcz m;
-
-   public fca(fcz $$0, BooleanConsumer $$1, fob $$2) {
-      super(vf.c("selectServer.direct"));
-      this.m = $$0;
-      this.c = $$2;
-      this.l = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aH_() != this.k || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.n();
-         return true;
-      }
+   public fca() {
+      super(vf.c("demo.help.title"));
    }
 
    @Override
    protected void aN_() {
-      this.k = new exn(this.i, this.g / 2 - 100, 116, 200, 20, vf.c("addServer.enterIp"));
-      this.k.f(128);
-      this.k.a(this.f.m.aa);
-      this.k.b($$0 -> this.C());
-      this.e(this.k);
-      this.b = this.d(exe.a(vf.c("selectServer.select"), $$0 -> this.n()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
-      this.d(exe.a(ve.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-      this.c(this.k);
-      this.C();
+      int $$0 = -16;
+      this.d(exf.a(vf.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(exf.a(vf.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      evl $$1 = this.f.m;
+      this.b = exy.a(
+         this.i,
+         vf.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         vf.c("demo.help.movementMouse"),
+         vf.a("demo.help.jump", $$1.B.k()),
+         vf.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = exy.a(this.i, vf.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(evg $$0, int $$1, int $$2) {
-      String $$3 = this.k.a();
-      this.b($$0, $$1, $$2);
-      this.k.a($$3);
-   }
-
-   private void n() {
-      this.c.b = this.k.a();
-      this.l.accept(true);
+   public void b(ewt $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.m);
-   }
-
-   @Override
-   public void j() {
-      this.f.m.aa = this.k.a();
-      this.f.m.as();
-   }
-
-   private void C() {
-      this.b.j = fpd.b(this.k.a());
-   }
-
-   @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
+   public void a(ewt $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
-      this.k.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

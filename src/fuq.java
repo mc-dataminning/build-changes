@@ -1,46 +1,25 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fuq implements ggt {
-   private final ahg a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fuq implements ggx {
+   private final List<fur> a;
 
-   public fuq(ahg $$0, j $$1, boolean $$2, int $$3) {
+   public fuq(List<fur> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public ahg a() {
+   public List<fur> a() {
       return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
    }
 
    @Override
@@ -48,63 +27,59 @@ public class fuq implements ggt {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof fuq $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         return $$0 instanceof fuq $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<ahg> f() {
+      return this.a().stream().map(fur::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<ahg, ggx> $$0) {
+      this.a().stream().map(fur::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public ggm a(ggq $$0, Function<ggp, gem> $$1, ggu $$2, ahg $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         ggy.a $$4 = new ggy.a();
+
+         for (fur $$5 : this.a()) {
+            ggm $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
    }
 
    public static class a implements JsonDeserializer<fuq> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
       public fuq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ahg $$4 = this.b($$3);
-         ggm $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fuq($$4, $$5.b(), $$6, $$7);
-      }
+         List<fur> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
 
-      private boolean d(JsonObject $$0) {
-         return aud.a($$0, "uvlock", false);
-      }
-
-      protected ggm a(JsonObject $$0) {
-         int $$1 = aud.a($$0, "x", 0);
-         int $$2 = aud.a($$0, "y", 0);
-         ggm $$3 = ggm.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+            for (JsonElement $$5 : $$4) {
+               $$3.add((fur)$$2.deserialize($$5, fur.class));
+            }
          } else {
-            return $$3;
+            $$3.add((fur)$$2.deserialize($$0, fur.class));
          }
-      }
 
-      protected ahg b(JsonObject $$0) {
-         return new ahg(aud.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = aud.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+         return new fuq($$3);
       }
    }
 }

@@ -1,14 +1,7 @@
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface ghc {
-   void sendResponse(UUID var1, ghc.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f;
-   }
+   void a(Map<UUID, aor.c> var1, Consumer<aor.b> var2);
 }

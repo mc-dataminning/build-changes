@@ -1,55 +1,42 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class esw extends gkn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gko b = new gko(Duration.ofSeconds(5L));
-   private final List<eug> c;
-   private final fcz v;
-   private final fas w = fas.d();
-   private volatile vf x;
-   @Nullable
-   private ext y;
+public class esw extends gko {
+   static final vf b = vf.c("mco.warning");
+   static final vf c = vf.c("mco.info");
+   private final esw.a v;
+   private final vf w;
+   private final vf x;
+   protected final BooleanConsumer a;
+   private final boolean y;
 
-   public esw(fcz $$0, eug... $$1) {
-      super(euy.a);
-      this.v = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
+   public esw(BooleanConsumer $$0, esw.a $$1, vf $$2, vf $$3, boolean $$4) {
+      super(euz.a);
+      this.a = $$0;
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
+      this.y = $$4;
+   }
+
+   @Override
+   public void aN_() {
+      if (this.y) {
+         this.d(exf.a(ve.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(8), 100, 20).a());
+         this.d(exf.a(ve.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(8), 100, 20).a());
       } else {
-         this.x = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (eug $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
-
-               $$1x.run();
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new esa(a));
-         $$3.start();
+         this.d(exf.a(ve.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, g(8), 100, 20).a());
       }
    }
 
    @Override
-   public void d() {
-      super.d();
-      if (this.y != null) {
-         b.a(this.f.aV(), this.y.x());
-      }
+   public vf h() {
+      return ve.b(this.v.d, this.w, this.x);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.e();
+         this.a.accept(false);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -57,36 +44,23 @@ public class esw extends gkn {
    }
 
    @Override
-   public void aN_() {
-      this.w.c().b();
-      this.y = new ext(this.i, this.x);
-      this.w.a(this.y, $$0 -> $$0.e(30));
-      this.w.a(exe.a(ve.e, $$0 -> this.e()).a());
-      this.w.a($$1 -> {
-         exc var10000 = this.d($$1);
-      });
-      this.c();
+   public void a(ewt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.v.d, this.g / 2, g(2), this.v.c);
+      $$0.a(this.i, this.w, this.g / 2, g(4), -1);
+      $$0.a(this.i, this.x, this.g / 2, g(6), -1);
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      fam.a(this.w, this.F());
-   }
+   public static enum a {
+      a(esw.b, -65536),
+      b(esw.c, 8226750);
 
-   protected void e() {
-      for (eug $$0 : this.c) {
-         $$0.b();
+      public final int c;
+      public final vf d;
+
+      private a(vf $$0, int $$1) {
+         this.d = $$0;
+         this.c = $$1;
       }
-
-      this.f.a(this.v);
-   }
-
-   public void a(vf $$0) {
-      if (this.y != null) {
-         this.y.b($$0);
-      }
-
-      this.x = $$0;
    }
 }

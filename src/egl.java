@@ -22,7 +22,6 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.SignStyle;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +60,6 @@ public class egl {
    private final Path h;
    final DataFixer i;
    private final eli j;
-   boolean k;
 
    public egl(Path $$0, Path $$1, eli $$2, DataFixer $$3) {
       this.i = $$3;
@@ -471,49 +469,15 @@ public class egl {
 
       private void a(sn $$0) {
          Path $$1 = this.c.f();
-         Exception $$2 = null;
 
          try {
-            Path $$3 = Files.createTempFile($$1, "level", ".dat");
-            ta.a($$0, $$3);
-            Path $$4 = this.c.c();
-            Path $$5 = this.c.b();
-            ac.a($$5, $$3, $$4);
-         } catch (Exception var9) {
-            egl.b.error("Failed to save level {}", $$1, var9);
-            $$2 = var9;
-         }
-
-         Path $$7 = this.c.b();
-         if (Files.exists($$7)) {
-            try {
-               ta.a($$7, sw.a(104857600L));
-            } catch (Exception var10) {
-               if (egl.this.k) {
-                  egl.b.error("Failed to save level {}. Skipping further handling, reported errors earlier already.", $$1, var10);
-               } else {
-                  egl.this.k = true;
-                  o $$9 = new o("Won the zlib-lottery?", new IllegalStateException("Failed to read back written world data", $$2));
-                  p $$10 = $$9.a("level.dat");
-                  $$10.a("World folder", this.c.a());
-                  $$10.a("Reading Exception", (var10 instanceof y $$11 ? $$11.getCause() : var10).toString());
-                  $$10.a("Uncompressed", () -> Base64.getEncoder().encodeToString(ta.b($$0)));
-                  $$10.a("Compressed saved", () -> Base64.getEncoder().encodeToString(Files.readAllBytes($$7)));
-                  $$10.a("Compressed array", () -> Base64.getEncoder().encodeToString(ta.a($$0)));
-                  LocalDateTime $$12 = LocalDateTime.now();
-                  $$10.a("Corrupted file", () -> {
-                     Path $$2x = this.c.a($$12);
-                     Files.move($$7, $$2x);
-                     return $$2x.getFileName().toString();
-                  });
-                  $$10.a("Raw file", () -> {
-                     Path $$2x = this.c.b($$12);
-                     Files.write($$2x, ta.b($$0));
-                     return $$2x.getFileName().toString();
-                  });
-                  throw new y($$9);
-               }
-            }
+            Path $$2 = Files.createTempFile($$1, "level", ".dat");
+            ta.a($$0, $$2);
+            Path $$3 = this.c.c();
+            Path $$4 = this.c.b();
+            ac.a($$4, $$2, $$3);
+         } catch (Exception var6) {
+            egl.b.error("Failed to save level {}", $$1, var6);
          }
       }
 

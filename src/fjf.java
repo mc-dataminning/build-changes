@@ -1,142 +1,123 @@
-public class fjf<T extends bzj> extends fke<T> {
-   private static final float a = 2.0F;
-   private static final float b = 2.5F;
-   private static final float f = 0.45F;
-   private static final float g = 29.35F;
-   private static final String h = "saddle";
-   private static final String i = "bridle";
-   private static final String j = "reins";
-   private final fmv k;
-   private final fmv l;
-   private final fmv[] m;
-   private final fmv[] n;
+public class fjf<T extends cdk> extends fkf<T> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float f = 1.0F;
+   private final fmw g;
+   private final fmw h;
+   private final fmw i;
+   private final fmw j;
+   private final fmw k;
+   private final fmw l;
+   private final fmw m;
 
-   public fjf(fmv $$0) {
-      this.k = $$0;
-      fmv $$1 = $$0.b("body");
-      this.l = $$1.b("head");
-      this.m = new fmv[]{$$1.b("saddle"), this.l.b("bridle")};
-      this.n = new fmv[]{this.l.b("reins")};
+   public fjf(fmw $$0) {
+      super(fto::i);
+      this.g = $$0;
+      this.i = $$0.b("wind_body");
+      this.l = this.i.b("wind_bottom");
+      this.k = this.l.b("wind_mid");
+      this.j = this.k.b("wind_top");
+      this.h = $$0.b("body").b("head");
+      this.m = $$0.b("body").b("rods");
    }
 
-   public static fnb b() {
-      fnd $$0 = new fnd();
-      fne $$1 = $$0.a();
-      fmz $$2 = new fmz(0.05F);
-      fne $$3 = $$1.a("body", fna.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fmx.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", fna.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fmx.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", fna.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fmx.a(0.0F, -9.0F, 3.5F));
-      fne $$4 = $$3.a(
-         "head",
-         fna.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         fmx.a(0.0F, -3.0F, -19.5F)
-      );
-      $$4.a("left_ear", fna.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fmx.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", fna.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fmx.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", fna.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fmx.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", fna.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fmx.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", fna.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fmx.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", fna.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fmx.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         fna.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         fmx.a(0.0F, 0.0F, 0.0F)
-      );
+   public static fnc b() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      fnf $$2 = $$1.a("body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$3 = $$2.a("rods", fnb.c(), fmy.a(0.0F, 8.0F, 0.0F));
+      $$3.a("rod_1", fnb.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fna(0.0F)), fmy.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$3.a("rod_2", fnb.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fna(0.0F)), fmy.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$3.a("rod_3", fnb.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fna(0.0F)), fmy.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      fnf $$4 = $$2.a("head", fnb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fna(0.0F)), fmy.a(0.0F, 4.0F, 0.0F));
+      fnf $$5 = $$1.a("wind_body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$6 = $$5.a("wind_bottom", fnb.c(), fmy.a(0.0F, 24.0F, 0.0F));
+      fnf $$7 = $$6.a("wind_mid", fnb.c(), fmy.a(0.0F, -7.0F, 0.0F));
+      $$7.a("wind_top", fnb.c(), fmy.a(0.0F, -6.0F, 0.0F));
+      return fnc.a($$0, 32, 32);
+   }
+
+   public static fnc c() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      fnf $$2 = $$1.a("body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$3 = $$2.a("rods", fnb.c(), fmy.a(0.0F, 8.0F, 0.0F));
+      fnf $$4 = $$2.a("head", fnb.c(), fmy.a(0.0F, 4.0F, 0.0F));
       $$4.a(
-         "reins",
-         fna.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         fmx.a(0.0F, 0.0F, 0.0F)
+         "eyes",
+         fnb.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fna(0.0F)).a(7, 16).a(-4.0F, -2.0F, -4.0F, 8.0F, 1.0F, 1.0F, new fna(0.0F)),
+         fmy.a(0.0F, 0.0F, 0.0F)
       );
-      $$4.a(
-         "bridle",
-         fna.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         fmx.a(0.0F, 0.0F, 0.0F)
+      fnf $$5 = $$1.a("wind_body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$6 = $$5.a("wind_bottom", fnb.c(), fmy.a(0.0F, 24.0F, 0.0F));
+      fnf $$7 = $$6.a("wind_mid", fnb.c(), fmy.a(0.0F, -7.0F, 0.0F));
+      $$7.a("wind_top", fnb.c(), fmy.a(0.0F, -6.0F, 0.0F));
+      return fnc.a($$0, 32, 32);
+   }
+
+   public static fnc d() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      fnf $$2 = $$1.a("body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$3 = $$2.a("rods", fnb.c(), fmy.a(0.0F, 8.0F, 0.0F));
+      $$2.a("head", fnb.c(), fmy.a(0.0F, 4.0F, 0.0F));
+      fnf $$4 = $$1.a("wind_body", fnb.c(), fmy.a(0.0F, 0.0F, 0.0F));
+      fnf $$5 = $$4.a("wind_bottom", fnb.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fna(0.0F)), fmy.a(0.0F, 24.0F, 0.0F));
+      fnf $$6 = $$5.a(
+         "wind_mid",
+         fnb.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fna(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fna(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fna(0.0F)),
+         fmy.a(0.0F, -7.0F, 0.0F)
       );
-      return fnb.a($$0, 128, 128);
+      $$6.a(
+         "wind_top",
+         fnb.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fna(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fna(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fna(0.0F)),
+         fmy.a(0.0F, -6.0F, 0.0F)
+      );
+      return fnc.a($$0, 128, 128);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fmv::c);
-      this.a($$0, $$4, $$5, $$3);
-      this.a($$0);
-      this.a(ewc.a, $$1, $$2, 2.0F, 2.5F);
-      this.a($$0.ca, ewc.b, $$3, 1.0F);
-      this.a($$0.cb, ewc.c, $$3, 1.0F);
-      this.a($$0.cc, ewc.d, $$3, 1.0F);
-      this.a($$0.cd, ewc.f, $$3, 1.0F);
-      this.a($$0.ce, ewc.e, $$3, 1.0F);
-   }
-
-   private void a(T $$0, float $$1, float $$2, float $$3) {
-      $$1 = aun.a($$1, -30.0F, 30.0F);
-      $$2 = aun.a($$2, -25.0F, 45.0F);
-      if ($$0.ad_() > 0) {
-         float $$4 = $$3 - (float)$$0.ah;
-         float $$5 = 45.0F * ((float)$$0.ad_() - $$4) / 55.0F;
-         $$2 = aun.a($$2 + $$5, -25.0F, 70.0F);
-      }
-
-      this.l.f = $$1 * (float) (Math.PI / 180.0);
-      this.l.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(T $$0) {
-      boolean $$1 = $$0.i();
-      boolean $$2 = $$0.bP();
-
-      for (fmv $$3 : this.m) {
-         $$3.k = $$1;
-      }
-
-      for (fmv $$4 : this.n) {
-         $$4.k = $$2 && $$1;
-      }
+      this.a().e().forEach(fmw::c);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+      this.j.b = aun.b($$6) * 1.0F * 0.6F;
+      this.j.d = aun.a($$6) * 1.0F * 0.6F;
+      this.k.b = aun.a($$6) * 0.5F * 0.8F;
+      this.k.d = aun.b($$6) * 0.8F;
+      this.l.b = aun.b($$6) * -0.25F * 1.0F;
+      this.l.d = aun.a($$6) * -0.25F * 1.0F;
+      this.h.c = 4.0F + aun.b($$6) / 4.0F;
+      this.m.f = $$3 * (float) Math.PI * 0.1F;
+      this.a($$0.e, ewc.a, $$3);
+      this.a($$0.c, ewc.c, $$3);
+      this.a($$0.d, ewc.b, $$3);
    }
 
    @Override
-   public void a(epz $$0, eqd $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(0.45F, 0.45F, 0.45F);
-         $$0.a(0.0F, 1.834375F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public fmw a() {
+      return this.g;
    }
 
-   @Override
-   public fmv a() {
+   public fmw e() {
+      return this.j;
+   }
+
+   public fmw f() {
       return this.k;
+   }
+
+   public fmw g() {
+      return this.l;
    }
 }

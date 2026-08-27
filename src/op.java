@@ -11,5 +11,6 @@ public class op extends of<bly<?>> {
       this.a(asj.r).a(bly.l);
       this.a(asj.s).a(bly.l);
       this.a(asj.t).a(bly.l);
+      this.a(asj.g).a(bly.bk);
    }
 }

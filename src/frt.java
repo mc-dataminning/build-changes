@@ -1,45 +1,67 @@
-public abstract class frt extends frg {
-   protected gel E;
+public class frt extends fru {
+   private final hx a;
+   private final float b;
+   private final float F;
 
-   protected frt(fnq $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+   public frt(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djg $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hx.a($$1, $$2, $$3));
    }
 
-   protected frt(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   public frt(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, djg $$7, hx $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(evh.O().an().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cwr.i)) {
+         int $$9 = evh.O().au().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   protected void a(gel $$0) {
-      this.E = $$0;
+   @Override
+   public fqy b() {
+      return fqy.a;
    }
 
    @Override
    protected float c() {
-      return this.E.c();
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
    @Override
    protected float d() {
-      return this.E.d();
+      return this.E.a(this.b / 4.0F);
    }
 
    @Override
    protected float e() {
-      return this.E.g();
+      return this.E.c(this.F / 4.0F);
    }
 
    @Override
    protected float f() {
-      return this.E.h();
+      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
-   public void a(fro $$0) {
-      this.a($$0.a(this.r));
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? fte.a(this.c, this.a) : $$1;
    }
 
-   public void b(fro $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   public static class a implements fqx<jp> {
+      public fqu a(jp $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         djg $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cwr.bQ) && $$8.z() ? new frt($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

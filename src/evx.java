@@ -1,34 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import org.joml.Vector3f;
 
-public record evx(float a, boolean b, Map<String, List<evw>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<evw>> b = Maps.newHashMap();
-      private boolean c;
+public record evx(evx.c a, evz... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, evz[] var3, int var4, int var5, float var6);
+   }
 
-      public static evx.a a(float $$0) {
-         return new evx.a($$0);
-      }
+   public static class b {
+      public static final evx.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final evx.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            aun.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            aun.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            aun.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   public interface c {
+      void apply(fmw var1, Vector3f var2);
+   }
 
-      public evx.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public evx.a a(String $$0, evw $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      public evx b() {
-         return new evx(this.a, this.c, this.b);
-      }
+   public static class d {
+      public static final evx.c a = fmw::a;
+      public static final evx.c b = fmw::b;
+      public static final evx.c c = fmw::c;
    }
 }

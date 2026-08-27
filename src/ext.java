@@ -1,39 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class ext extends exc {
-   private final ewq a;
+public class ext extends bjq {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public ext(ewq $$0, vf $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public ext(UUID $$0, vf $$1, float $$2, bjq.a $$3, bjq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected void b(ews $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.B() + this.w() / 2;
-      int $$5 = this.C() + this.u() / 2;
-      vf $$6 = this.x();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fck.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
    @Override
-   protected void a(fax $$0) {
-   }
-
-   @Override
-   public void a(gjc $$0) {
-   }
-
-   @Override
-   public boolean A() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public ewp a(fbd $$0) {
-      return null;
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = aun.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return aun.i($$1, this.b, this.h);
    }
 }

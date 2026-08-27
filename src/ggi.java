@@ -1,14 +1,20 @@
-import com.google.gson.JsonObject;
+public class ggi {
+   public static final ggj a = new ggj();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public class ggi implements aph<ggh> {
-   public ggh b(JsonObject $$0) {
-      boolean $$1 = aud.a($$0, "blur", false);
-      boolean $$2 = aud.a($$0, "clamp", false);
-      return new ggh($$1, $$2);
+   public ggi(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
    }
 }

@@ -1,23 +1,40 @@
-public class gax extends fyk<cgl> {
-   public static final ahg a = new ahg("textures/entity/trident.png");
-   private final fma f;
+public class gax<T extends blu & cfw> extends fyl<T> {
+   private static final float a = 12.25F;
+   private final fzk f;
+   private final float g;
+   private final boolean h;
 
-   public gax(fyl.a $$0) {
+   public gax(fym.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.f = new fma($$0.a(fmu.bF));
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(cgl $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(aun.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(aun.i($$2, $$0.O, $$0.dE()) + 90.0F));
-      eqd $$6 = fzj.c($$4, this.f.a(this.a($$0)), false, $$0.I());
-      this.f.a($$3, $$6, $$5, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public gax(fym.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public ahg a(cgl $$0) {
-      return a;
+   @Override
+   protected int a(T $$0, hx $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, eqa $$3, ftg $$4, int $$5) {
+      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.q(), cmu.h, $$5, ged.d, $$3, $$4, $$0.dM(), $$0.aj());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public ahg a(blu $$0) {
+      return gel.e;
    }
 }

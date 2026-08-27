@@ -1,13 +1,12 @@
-public class esd extends esc {
-   public static final int b = 5;
-   public final int c;
+public class esd extends Exception {
+   public final eqs a;
 
-   public esd(int $$0, int $$1) {
-      super(eqr.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
+   public esd(eqs $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

@@ -1,53 +1,27 @@
-public class fqn extends fqt {
-   private static final int a = 3;
-   private final ftl b;
-   private final blu D;
-   private final blu E;
-   private int F;
-   private final fyj G;
-
-   public fqn(fyj $$0, ftl $$1, fnq $$2, blu $$3, blu $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
-   }
-
-   private fqn(fyj $$0, ftl $$1, fnq $$2, blu $$3, blu $$4, els $$5) {
-      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-   }
-
-   private blu a(blu $$0) {
-      return (blu)(!($$0 instanceof cbt) ? $$0 : ((cbt)$$0).D());
-   }
-
-   @Override
-   public fqx b() {
-      return fqx.e;
-   }
-
-   @Override
-   public void a(eqd $$0, eur $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = aun.d((double)$$2, this.E.ac, this.E.dr());
-      double $$5 = aun.d((double)$$2, this.E.ad, (this.E.dt() + this.E.dv()) / 2.0);
-      double $$6 = aun.d((double)$$2, this.E.ae, this.E.dx());
-      double $$7 = aun.d((double)$$3, this.D.dr(), $$4);
-      double $$8 = aun.d((double)$$3, this.D.dt(), $$5);
-      double $$9 = aun.d((double)$$3, this.D.dx(), $$6);
-      ftf.a $$10 = this.b.c();
-      els $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new epz(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+public class fqn extends fqs {
+   fqn(fnr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(jx.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
          this.k();
+      }
+   }
+
+   public static class a implements fqx<ka> {
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqn($$1, $$2, $$3, $$4);
       }
    }
 }

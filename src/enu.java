@@ -15,13 +15,13 @@ public class enu {
    private final AtomicBoolean e = new AtomicBoolean(true);
    private int f = 16384;
    @Nullable
-   private giu g;
+   private giv g;
 
    @Nullable
    static enu a() {
       int[] $$0 = new int[1];
       AL10.alGenSources($$0);
-      return eny.a("Allocate new source") ? null : new enu($$0[0]);
+      return enz.a("Allocate new source") ? null : new enu($$0[0]);
    }
 
    private enu(int $$0) {
@@ -31,7 +31,7 @@ public class enu {
    public void b() {
       if (this.e.compareAndSet(true, false)) {
          AL10.alSourceStop(this.d);
-         eny.a("Stop");
+         enz.a("Stop");
          if (this.g != null) {
             try {
                this.g.close();
@@ -44,7 +44,7 @@ public class enu {
          }
 
          AL10.alDeleteSources(new int[]{this.d});
-         eny.a("Cleanup");
+         enz.a("Cleanup");
       }
    }
 
@@ -71,7 +71,7 @@ public class enu {
    public void f() {
       if (this.e.get()) {
          AL10.alSourceStop(this.d);
-         eny.a("Stop");
+         enz.a("Stop");
       }
    }
 
@@ -114,11 +114,11 @@ public class enu {
       AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
    }
 
-   public void a(enz $$0) {
+   public void a(eoa $$0) {
       $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
    }
 
-   public void a(giu $$0) {
+   public void a(giv $$0) {
       this.g = $$0;
       AudioFormat $$1 = $$0.a();
       this.f = a($$1, 1);
@@ -135,7 +135,7 @@ public class enu {
             for (int $$1 = 0; $$1 < $$0; $$1++) {
                ByteBuffer $$2 = this.g.a(this.f);
                if ($$2 != null) {
-                  new enz($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+                  new eoa($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
                }
             }
          } catch (IOException var4) {
@@ -156,9 +156,9 @@ public class enu {
       if ($$0 > 0) {
          int[] $$1 = new int[$$0];
          AL10.alSourceUnqueueBuffers(this.d, $$1);
-         eny.a("Unqueue buffers");
+         enz.a("Unqueue buffers");
          AL10.alDeleteBuffers($$1);
-         eny.a("Remove processed buffers");
+         enz.a("Remove processed buffers");
       }
 
       return $$0;

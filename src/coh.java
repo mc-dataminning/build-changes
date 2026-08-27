@@ -37,7 +37,7 @@ public class coh extends cms {
       if ($$3.b()) {
          List<blh> $$4 = new ArrayList<>();
          a($$0, $$1x -> $$4.add($$1x.a()));
-         cox.a($$4, $$2, 1.0F);
+         cox.a($$4, $$2, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
       }
    }
 

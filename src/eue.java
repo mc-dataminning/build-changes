@@ -1,70 +1,69 @@
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eue extends eug {
+public class eue extends euh {
    private static final Logger b = LogUtils.getLogger();
-   private static final vf c = vf.c("mco.download.preparing");
+   private static final vf c = vf.c("mco.snapshot.creating");
    private final long d;
-   private final int e;
-   private final fcz f;
+   private final eua e;
+   private final String f;
    private final String g;
+   private final eql h;
+   @Nullable
+   private eup i;
+   @Nullable
+   private euj j;
 
-   public eue(long $$0, int $$1, String $$2, fcz $$3) {
-      this.d = $$0;
-      this.e = $$1;
+   public eue(eql $$0, long $$1, eua $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
       this.f = $$3;
-      this.g = $$2;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
    public void run() {
-      eqp $$0 = eqp.a();
-      int $$1 = 0;
+      eqq $$0 = eqq.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            erw $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new ess(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (esd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (esc var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new est(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
+      try {
+         erh $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new eup($$1.a, this.f, this.g);
+         this.j = new euj(this.e, $$1.a, etf.a, () -> evh.O().execute(() -> eql.a($$1, this.h, true)));
+         if (this.d()) {
             return;
          }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (esd var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
    @Override
    public vf a() {
       return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

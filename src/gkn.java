@@ -1,34 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collection;
 
-public abstract class gkn extends fcz {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 3368635;
-   protected static final int r = 7107012;
-   protected static final int t = 8226750;
-   protected static final int u = 8;
-   private final List<gkl> a = Lists.newArrayList();
-
-   public gkn(vf $$0) {
-      super($$0);
+public abstract class gkn<E extends eyb.a<E>> extends eyb<E> {
+   protected gkn(int $$0, int $$1, int $$2, int $$3) {
+      super(evh.O(), $$0, $$1, $$2, $$3);
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void q(int $$0) {
+      if ($$0 == -1) {
+         this.a(null);
+      } else if (super.n() != 0) {
+         this.a(this.d($$0));
+      }
    }
 
-   protected gkl a(gkl $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public void a(int $$0) {
+      this.q($$0);
    }
 
-   public vf n() {
-      return ve.a(this.a.stream().map(gkl::a).collect(Collectors.toList()));
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int c() {
+      return this.q() + this.b();
+   }
+
+   @Override
+   public int b() {
+      return (int)((double)this.g * 0.6);
+   }
+
+   @Override
+   public void a(Collection<E> $$0) {
+      super.a($$0);
+   }
+
+   @Override
+   public int n() {
+      return super.n();
+   }
+
+   @Override
+   public int g(int $$0) {
+      return super.g($$0);
+   }
+
+   @Override
+   public int q() {
+      return super.q();
+   }
+
+   public int a(E $$0) {
+      return super.b($$0);
+   }
+
+   public void H() {
+      this.m();
    }
 }

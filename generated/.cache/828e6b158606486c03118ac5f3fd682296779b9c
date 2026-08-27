@@ -1,4 +1,4 @@
-// 1.20.3 Pre-Release 1	2026-08-28T01:02:25.7948838	vanilla/Loot Tables
+// 1.20.3 Pre-Release 2	2026-08-28T01:05:06.958011	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -811,8 +811,8 @@ b308b3258a8e1fcbb0724a0e680e43780bb877ef data\minecraft\loot_tables\blocks\dead_
 a26ebbb8ff24e73c4bc7a98de20186e3c2b3b305 data\minecraft\loot_tables\blocks\polished_granite_slab.json
 69b9f1639063c2c51a19f5244c78e759605e0248 data\minecraft\loot_tables\entities\sheep\white.json
 b4e977718f68a9c592e1a21041451a9d94d54ac6 data\minecraft\loot_tables\blocks\blue_banner.json
-e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 60eab0dbcfc13370159e0edde267bd6830a5e980 data\minecraft\loot_tables\entities\chicken.json
+e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 1d6a5c5c1285cc95c7c55fc9d85f266bc686d26e data\minecraft\loot_tables\blocks\white_candle.json
 2a0670a0f9d88a471067c9e09071c441d544e6e8 data\minecraft\loot_tables\blocks\orange_tulip.json
 fff7828b72f8a4eba6d739ad85d8f9f12cbc90e1 data\minecraft\loot_tables\blocks\stripped_crimson_stem.json

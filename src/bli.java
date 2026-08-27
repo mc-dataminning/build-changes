@@ -2,12 +2,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public final class bli {
-   public static vf a(blh $$0, float $$1) {
+   public static vf a(blh $$0, float $$1, float $$2) {
       if ($$0.b()) {
          return vf.c("effect.duration.infinite");
       } else {
-         int $$2 = aun.d((float)$$0.d() * $$1);
-         return vf.b(avk.a($$2));
+         int $$3 = aun.d((float)$$0.d() * $$1);
+         return vf.b(avk.a($$3, $$2));
       }
    }
 

@@ -1,175 +1,187 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class etf extends gkn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final vf a = vf.c("mco.upload.select.world.title");
-   private static final vf c = vf.c("selectWorld.unable_to_load");
-   static final vf v = vf.c("selectWorld.world");
-   static final vf w = vf.c("mco.upload.hardcore").b(-65536);
-   static final vf x = vf.c("selectWorld.cheats");
-   private static final DateFormat y = new SimpleDateFormat();
-   private final ete z;
-   private final long A;
-   private final int B;
-   exe C;
-   List<egm> D = Lists.newArrayList();
-   int E = -1;
-   etf.b F;
+public class etf extends gko {
+   static final Logger c = LogUtils.getLogger();
+   static final ahg v = new ahg("widget/slot_frame");
+   private static final vf w = vf.c("mco.selectServer.create");
+   private static final vf x = vf.c("mco.selectServer.create.subtitle");
+   private static final vf y = vf.c("mco.configure.world.switch.slot");
+   private static final vf z = vf.c("mco.configure.world.switch.slot.subtitle");
+   private static final vf A = vf.c("mco.reset.world.title");
+   private static final vf B = vf.c("mco.reset.world.warning");
+   public static final vf a = vf.c("mco.create.world.reset.title");
+   private static final vf C = vf.c("mco.reset.world.resetting.screen.title");
+   private static final vf D = vf.c("mco.reset.world.template");
+   private static final vf E = vf.c("mco.reset.world.adventure");
+   private static final vf F = vf.c("mco.reset.world.experience");
+   private static final vf G = vf.c("mco.reset.world.inspiration");
+   private final fda H;
+   private final erh I;
+   private final vf J;
+   private final int K;
+   private final vf L;
+   private static final ahg M = new ahg("textures/gui/realms/upload.png");
+   private static final ahg N = new ahg("textures/gui/realms/adventure.png");
+   private static final ahg O = new ahg("textures/gui/realms/survival_spawn.png");
+   private static final ahg P = new ahg("textures/gui/realms/new_world.png");
+   private static final ahg Q = new ahg("textures/gui/realms/experience.png");
+   private static final ahg R = new ahg("textures/gui/realms/inspiration.png");
+   erz S;
+   erz T;
+   erz U;
+   erz V;
+   public final int b;
+   @Nullable
+   private final eup W;
+   private final Runnable X;
+   private final fap Y = new fap(this);
 
-   public etf(long $$0, int $$1, ete $$2) {
-      super(a);
-      this.z = $$2;
-      this.A = $$0;
-      this.B = $$1;
+   private etf(fda $$0, erh $$1, int $$2, vf $$3, vf $$4, int $$5, vf $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
    }
 
-   private void C() throws Exception {
-      egl.a $$0 = this.f.l().b();
-      this.D = this.f.l().a($$0).join().stream().filter($$0x -> !$$0x.d() && !$$0x.p()).collect(Collectors.toList());
+   public etf(fda $$0, erh $$1, int $$2, vf $$3, vf $$4, int $$5, vf $$6, @Nullable eup $$7, Runnable $$8) {
+      super($$3);
+      this.H = $$0;
+      this.I = $$1;
+      this.b = $$2;
+      this.J = $$4;
+      this.K = $$5;
+      this.L = $$6;
+      this.W = $$7;
+      this.X = $$8;
+   }
 
-      for (egm $$1 : this.D) {
-         this.F.a($$1);
-      }
+   public static etf a(fda $$0, erh $$1, eup $$2, Runnable $$3) {
+      return new etf($$0, $$1, $$1.n, w, x, -6250336, a, $$2, $$3);
+   }
+
+   public static etf a(fda $$0, int $$1, erh $$2, Runnable $$3) {
+      return new etf($$0, $$2, $$1, y, z, -6250336, a, $$3);
+   }
+
+   public static etf a(fda $$0, erh $$1, Runnable $$2) {
+      return new etf($$0, $$1, $$1.n, A, B, -65536, C, $$2);
    }
 
    @Override
    public void aN_() {
-      this.F = this.d(new etf.b());
+      fat $$0 = fat.d();
+      $$0.a(new eym(this.e, this.i), fas::b);
+      $$0.a(fau.b(3));
+      $$0.a(new eym(this.J, this.i).b(this.K), fas::b);
+      this.Y.a($$0);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            eqq $$0 = eqq.a();
 
-      try {
-         this.C();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.f.a(new est(c, vf.a(var2.getMessage()), this.z));
-         return;
-      }
-
-      this.C = this.d(exe.a(vf.c("mco.upload.button.name"), $$0 -> this.D()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
-      this.C.j = this.E >= 0 && this.E < this.D.size();
-      this.d(exe.a(ve.k, $$0 -> this.f.a(this.z)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
-      this.a(new gkl(vf.c("mco.upload.select.world.subtitle"), this.g / 2, g(-1), -6250336));
-      if (this.D.isEmpty()) {
-         this.a(new gkl(vf.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
-      }
+            try {
+               erz $$1 = $$0.a(1, 10, erh.d.a);
+               erz $$2 = $$0.a(1, 10, erh.d.c);
+               erz $$3 = $$0.a(1, 10, erh.d.d);
+               erz $$4 = $$0.a(1, 10, erh.d.e);
+               etf.this.f.execute(() -> {
+                  etf.this.S = $$1;
+                  etf.this.T = $$2;
+                  etf.this.U = $$3;
+                  etf.this.V = $$4;
+               });
+            } catch (esd var6) {
+               etf.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      this.d(new etf.a(this.a(1), g(0) + 10, ete.a, P, $$0x -> this.f.a(new ete(this::a, this.e))));
+      this.d(new etf.a(this.a(2), g(0) + 10, etg.a, M, $$0x -> this.f.a(new etg(this.I.a, this.b, this))));
+      this.d(new etf.a(this.a(3), g(0) + 10, D, O, $$0x -> this.f.a(new eth(D, this::a, erh.d.a, this.S))));
+      this.d(new etf.a(this.a(1), g(6) + 20, E, N, $$0x -> this.f.a(new eth(E, this::a, erh.d.c, this.T))));
+      this.d(new etf.a(this.a(2), g(6) + 20, F, Q, $$0x -> this.f.a(new eth(F, this::a, erh.d.d, this.U))));
+      this.d(new etf.a(this.a(3), g(6) + 20, G, R, $$0x -> this.f.a(new eth(G, this::a, erh.d.e, this.V))));
+      this.Y.b(exf.a(ve.k, $$0x -> this.aE_()).a());
+      this.Y.a($$1 -> {
+         exd var10000 = this.d($$1);
+      });
+      this.Y.a();
    }
 
    @Override
    public vf h() {
-      return ve.a(this.o(), this.n());
-   }
-
-   private void D() {
-      if (this.E != -1 && !this.D.get(this.E).i()) {
-         egm $$0 = this.D.get(this.E);
-         this.f.a(new etl(this.A, this.B, this.z, $$0));
-      }
+      return ve.a(this.o(), this.J);
    }
 
    @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 13, -1);
+   public void aE_() {
+      this.f.a(this.H);
+   }
+
+   private int a(int $$0) {
+      return this.g / 2 - 130 + ($$0 - 1) * 100;
+   }
+
+   private void a(@Nullable ery $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.a((euh)(new euk($$0, this.I.a, this.L, this.X)));
+      }
+   }
+
+   private void a(@Nullable eua $$0) {
+      this.f.a(this);
+      if ($$0 != null) {
+         this.a((euh)(new euj($$0, this.I.a, this.L, this.X)));
+      }
+   }
+
+   private void a(euh $$0) {
+      List<euh> $$1 = new ArrayList<>();
+      if (this.W != null) {
+         $$1.add(this.W);
+      }
+
+      if (this.b != this.I.n) {
+         $$1.add(new euo(this.I.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.f.a(new esx(this.H, $$1.toArray(new euh[0])));
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.z);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void a(Runnable $$0) {
+      this.f.a(new esx(this.H, new euo(this.I.a, this.b, () -> this.f.execute($$0))));
+   }
+
+   class a extends exf {
+      private static final int b = 60;
+      private static final int c = 72;
+      private static final int d = 56;
+      private final ahg t;
+
+      a(int $$0, int $$1, vf $$2, ahg $$3, exf.c $$4) {
+         super($$0, $$1, 60, 72, $$2, $$4, p);
+         this.t = $$3;
       }
-   }
 
-   static vf a(egm $$0) {
-      return $$0.h().d();
-   }
-
-   static String b(egm $$0) {
-      return y.format(new Date($$0.f()));
-   }
-
-   class a extends eya.a<etf.a> {
-      private final egm b;
-      private final String c;
-      private final vf d;
-      private final vf e;
-
-      public a(egm $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = vf.a("mco.upload.entry.id", $$0.a(), etf.b($$0));
-         vf $$1;
-         if ($$0.i()) {
-            $$1 = etf.w;
-         } else {
-            $$1 = etf.a($$0);
+      @Override
+      public void b(ewt $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.z();
+         if ($$4) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
          }
 
-         if ($$0.j()) {
-            $$1 = vf.a("mco.upload.entry.cheats", $$1.getString(), etf.x);
-         }
-
-         this.e = $$1;
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         etf.this.F.a(etf.this.D.indexOf(this.b));
-         return true;
-      }
-
-      protected void a(ews $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = etf.v + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
-         }
-
-         $$0.a(etf.this.i, $$4, $$2 + 2, $$3 + 1, 16777215, false);
-         $$0.a(etf.this.i, this.d, $$2 + 2, $$3 + 12, -8355712, false);
-         $$0.a(etf.this.i, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
-      }
-
-      @Override
-      public vf a() {
-         vf $$0 = ve.b(vf.b(this.b.b()), vf.b(etf.b(this.b)), etf.a(this.b));
-         return vf.a("narrator.select", $$0);
-      }
-   }
-
-   class b extends gkm<etf.a> {
-      public b() {
-         super(etf.this.g, etf.this.h - 40 - etf.g(0), etf.g(0), 36);
-      }
-
-      public void a(egm $$0) {
-         this.a((etf.a)(etf.this.new a($$0)));
-      }
-
-      @Override
-      public int a() {
-         return etf.this.D.size() * 36;
-      }
-
-      public void a(@Nullable etf.a $$0) {
-         super.a($$0);
-         etf.this.E = this.l().indexOf($$0);
-         etf.this.C.j = etf.this.E >= 0 && etf.this.E < this.n() && !etf.this.D.get(etf.this.E).i();
+         int $$5 = this.B();
+         int $$6 = this.C();
+         $$0.a(this.t, $$5 + 2, $$6 + 14, 0.0F, 0.0F, 56, 56, 56, 56);
+         $$0.a(etf.v, $$5, $$6 + 12, 60, 60);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         int $$7 = $$4 ? -6250336 : -1;
+         $$0.a(etf.this.i, this.x(), $$5 + 30, $$6, $$7);
       }
    }
 }

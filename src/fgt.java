@@ -1,5 +1,5 @@
-public interface fgt {
-   void E();
+import java.util.List;
 
-   fgn H();
+public interface fgt {
+   void a(List<cqd<?>> var1);
 }

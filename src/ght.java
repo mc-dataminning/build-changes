@@ -1,58 +1,44 @@
-public class ght extends ghg {
-   public ght(arq $$0, ars $$1, float $$2, float $$3, auu $$4, hx $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public class ght extends ghi {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cfh p;
+   private final cgz q;
+   private final boolean r;
+
+   public ght(cfh $$0, cgz $$1, boolean $$2) {
+      super($$2 ? arr.nU : arr.nV, ars.g, ghz.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = ghz.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public static ght a(arq $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public boolean s() {
+      return !this.q.aU();
    }
 
-   public static ght a(ih<arq> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public static ght a(arq $$0, float $$1, float $$2) {
-      return new ght($$0.a(), ars.a, $$2, $$1, ghy.t(), false, 0, ghy.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static ght a(arq $$0) {
-      return new ght($$0.a(), ars.b, 1.0F, 1.0F, ghy.t(), false, 0, ghy.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static ght a(arq $$0, els $$1) {
-      return new ght($$0, ars.c, 4.0F, 1.0F, ghy.t(), false, 0, ghy.a.b, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static ght b(arq $$0, float $$1, float $$2) {
-      return new ght($$0.a(), ars.i, $$2, $$1, ghy.t(), false, 0, ghy.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static ght b(arq $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static ght a(arq $$0, auu $$1, double $$2, double $$3, double $$4) {
-      return new ght($$0, ars.i, 1.0F, 1.0F, $$1, false, 0, ghy.a.b, $$2, $$3, $$4);
-   }
-
-   public ght(arq $$0, ars $$1, float $$2, float $$3, auu $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, ghy.a.b, $$5, $$6, $$7);
-   }
-
-   private ght(arq $$0, ars $$1, float $$2, float $$3, auu $$4, boolean $$5, int $$6, ghy.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public ght(ahg $$0, ars $$1, float $$2, float $$3, auu $$4, boolean $$5, int $$6, ghy.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = aun.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
    }
 }

@@ -1,45 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class fxf implements fwr.a {
+   private final evh a;
 
-public class fxf implements fwq.a {
-   private final List<hx> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
-
-   public void a(hx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public fxf(evh $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4) {
-      eqd $$5 = $$1.getBuffer(ftn.y());
+   public void a(eqa $$0, ftg $$1, double $$2, double $$3, double $$4) {
+      hx $$5 = this.a.s.dm();
+      ctr $$6 = this.a.s.dM();
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         hx $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         ftd.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (hx $$7 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eeq $$8 = $$6.b_($$7);
+         if ($$8.a(asl.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            fwr.a(
+               $$0,
+               $$1,
+               new eln(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (hx $$10 : hx.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eeq $$11 = $$6.b_($$10);
+         if ($$11.a(asl.a)) {
+            fwr.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
       }
    }
 }

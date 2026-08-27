@@ -1,21 +1,21 @@
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 class emq {
-   private final Map<emo, emt> a = new HashMap<>();
+   private final Reference2ObjectOpenHashMap<emo, emt> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
    public emt a(emo $$0) {
-      return this.a.get($$0);
+      return (emt)this.a.get($$0);
    }
 
    public emt a(emo $$0, Consumer<emt> $$1) {
-      return this.a.computeIfAbsent($$0, $$1x -> {
+      return (emt)this.a.computeIfAbsent($$0, $$1x -> {
          emt $$2 = new emt();
          $$1.accept($$2);
          return $$2;

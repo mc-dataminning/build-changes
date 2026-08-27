@@ -16,21 +16,20 @@ public class gig<T> extends AbstractIterator<T> {
    }
 
    protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
             this.b.next();
+            return (T)this.a.next();
          }
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
+
+      return (T)this.endOfData();
    }
 }

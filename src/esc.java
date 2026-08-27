@@ -1,12 +1,5 @@
-public class esc extends Exception {
-   public final eqr a;
-
-   public esc(eqr $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+public class esc extends RuntimeException {
+   public esc(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

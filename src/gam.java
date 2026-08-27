@@ -1,20 +1,15 @@
-public class gam extends fzc<cbx, flq<cbx>> {
-   private static final ahg a = new ahg("textures/entity/skeleton/skeleton.png");
+public class gam extends fzs<ccv, flq<ccv>> {
+   private static final ahg a = new ahg("textures/entity/silverfish.png");
 
-   public gam(fyl.a $$0) {
-      this($$0, fmu.bk, fmu.bm, fmu.bn);
+   public gam(fym.a $$0) {
+      super($$0, new flq<>($$0.a(fmv.bj)), 0.3F);
    }
 
-   public gam(fyl.a $$0, fmt $$1, fmt $$2, fmt $$3) {
-      super($$0, new flq<>($$0.a($$1)), 0.5F);
-      this.a(new gcm<>(this, new flq($$0.a($$2)), new flq($$0.a($$3)), $$0.g()));
+   protected float a(ccv $$0) {
+      return 180.0F;
    }
 
-   public ahg a(cbx $$0) {
+   public ahg b(ccv $$0) {
       return a;
-   }
-
-   protected boolean b(cbx $$0) {
-      return $$0.ge();
    }
 }

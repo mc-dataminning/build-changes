@@ -1,151 +1,177 @@
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fwr implements fwq.a {
-   private final evg a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<fwr.a> d = Lists.newArrayList();
-   private final List<fwr.b> e = Lists.newArrayList();
+public class fwr {
+   public final fwz a = new fwz();
+   public final fwr.a b;
+   public final fwr.a c;
+   public final fwr.a d;
+   public final fwr.a e;
+   public final fwr.a f;
+   public final fwr.a g;
+   public final fxc h;
+   public final fwr.a i;
+   public final fwr.a j;
+   public final fwr.a k;
+   public final fwr.a l;
+   public final fwm m;
+   public final fxe n;
+   public final fwl o;
+   public final fxa p;
+   public final fwu q;
+   public final fwt r;
+   public final fws s;
+   public final fwx t;
+   public final fwn u;
+   private boolean v;
 
-   public fwr(evg $$0) {
-      this.a = $$0;
+   public fwr(evh $$0) {
+      this.b = new fxf($$0);
+      this.c = new fwo($$0);
+      this.d = new fwv($$0);
+      this.e = new fwq($$0);
+      this.f = new fxd($$0);
+      this.g = new fwy($$0);
+      this.h = new fxc($$0);
+      this.i = new fww($$0);
+      this.j = new fxg();
+      this.k = new fxb($$0);
+      this.l = new fwp($$0);
+      this.m = new fwm($$0);
+      this.n = new fxe();
+      this.o = new fwl($$0);
+      this.p = new fxa($$0);
+      this.q = new fwu($$0);
+      this.r = new fwt();
+      this.s = new fws($$0);
+      this.t = new fwx($$0, ctx.a);
+      this.u = new fwn($$0);
    }
 
-   @Override
-   public void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4) {
-      cto $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   public void a() {
+      this.a.a();
+      this.b.a();
+      this.c.a();
+      this.d.a();
+      this.e.a();
+      this.f.a();
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      this.j.a();
+      this.k.a();
+      this.l.a();
+      this.m.a();
+      this.n.a();
+      this.o.a();
+      this.p.a();
+      this.q.a();
+      this.r.a();
+      this.s.a();
+      this.t.a();
+      this.u.a();
+   }
+
+   public boolean b() {
+      this.v = !this.v;
+      return this.v;
+   }
+
+   public void a(eqa $$0, ftg.a $$1, double $$2, double $$3, double $$4) {
+      if (this.v && !evh.O().ax()) {
+         this.c.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      this.r.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static Optional<blu> a(@Nullable blu $$0, int $$1) {
+      if ($$0 == null) {
+         return Optional.empty();
       } else {
-         els $$6 = new els($$2, 0.0, $$4);
-         this.d.removeIf(fwr.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eqd $$7 = $$1.getBuffer(ftn.w());
-
-         for (fwr.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               ftd.a($$0, $$7, emi.a(new eln($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         eqd $$9 = $$1.getBuffer(ftn.y());
-
-         for (fwr.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> ftd.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (fwr.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               fwq.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               fwq.a($$0, $$1, hx.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (fwr.a $$12 : this.d) {
-            els $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new eln($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            fwq.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         els $$2 = $$0.br();
+         els $$3 = $$0.f(1.0F).a((double)$$1);
+         els $$4 = $$2.e($$3);
+         eln $$5 = $$0.cH().b($$3).g(1.0);
+         int $$6 = $$1 * $$1;
+         Predicate<blu> $$7 = $$0x -> !$$0x.P_() && $$0x.bt();
+         elp $$8 = cga.a($$0, $$2, $$4, $$5, $$7, (double)$$6);
+         if ($$8 == null) {
+            return Optional.empty();
+         } else {
+            return $$2.g($$8.e()) > (double)$$6 ? Optional.empty() : Optional.of($$8.a());
          }
       }
    }
 
-   private static void a(epz $$0, ftf $$1, eln $$2, float $$3, float $$4, float $$5, float $$6) {
-      eur $$7 = evg.O().j.m();
-      if ($$7.h()) {
-         els $$8 = $$7.b().e();
-         fwq.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+   public static void a(eqa $$0, ftg $$1, hx $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2, $$2.b(1, 1, 1), $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(eqa $$0, ftg $$1, hx $$2, hx $$3, float $$4, float $$5, float $$6, float $$7) {
+      eus $$8 = evh.O().j.m();
+      if ($$8.h()) {
+         els $$9 = $$8.b().e();
+         eln $$10 = eln.a($$2, $$3).c($$9);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
       }
    }
 
-   public void a(ahf<dnq> $$0, els $$1) {
-      this.d.add(new fwr.a(ac.b(), $$0, $$1));
-   }
-
-   public void a(dnu $$0, int $$1) {
-      this.e.add(new fwr.b($$0, $$1));
-   }
-
-   static record a(long a, ahf<dnq> b, els c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public ahf<dnq> c() {
-         return this.b;
-      }
-
-      public els d() {
-         return this.c;
+   public static void a(eqa $$0, ftg $$1, hx $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      eus $$8 = evh.O().j.m();
+      if ($$8.h()) {
+         els $$9 = $$8.b().e();
+         eln $$10 = new eln($$2).c($$9).g((double)$$3);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
       }
    }
 
-   static class b implements dns {
-      public final dnu a;
-      public final int b;
+   public static void a(eqa $$0, ftg $$1, eln $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6);
+   }
 
-      public b(dnu $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static void a(eqa $$0, ftg $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      eqe $$12 = $$1.getBuffer(fto.y());
+      fte.b($$0, $$12, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public static void a(eqa $$0, ftg $$1, String $$2, int $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, $$2, (double)$$3 + 0.5, (double)$$4 + 0.5, (double)$$5 + 0.5, $$6);
+   }
+
+   public static void a(eqa $$0, ftg $$1, String $$2, double $$3, double $$4, double $$5, int $$6) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0.02F);
+   }
+
+   public static void a(eqa $$0, ftg $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, true, 0.0F, false);
+   }
+
+   public static void a(eqa $$0, ftg $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7, boolean $$8, float $$9, boolean $$10) {
+      evh $$11 = evh.O();
+      eus $$12 = $$11.j.m();
+      if ($$12.h() && $$11.ao().d != null) {
+         ewr $$13 = $$11.h;
+         double $$14 = $$12.b().c;
+         double $$15 = $$12.b().d;
+         double $$16 = $$12.b().e;
+         $$0.a();
+         $$0.a((float)($$3 - $$14), (float)($$4 - $$15) + 0.07F, (float)($$5 - $$16));
+         $$0.a(new Matrix4f().rotation($$12.f()));
+         $$0.b(-$$7, -$$7, $$7);
+         float $$17 = $$8 ? (float)(-$$13.b($$2)) / 2.0F : 0.0F;
+         $$17 -= $$9 / $$7;
+         $$13.a($$2, $$17, 0.0F, $$6, false, $$0.c().a(), $$1, $$10 ? ewr.a.b : ewr.a.a, 0, 15728880);
+         $$0.b();
       }
+   }
 
-      public boolean a(cto $$0, els $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
+   public interface a {
+      void a(eqa var1, ftg var2, double var3, double var5, double var7);
 
-      public Optional<els> a(cto $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dnu a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(and $$0, dnq $$1, dnq.a $$2, els $$3) {
-         return false;
+      default void a() {
       }
    }
 }

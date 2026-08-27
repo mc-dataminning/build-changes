@@ -32,6 +32,11 @@ public class fx implements ArgumentType<fx.a> {
             public Pair<ahg, Either<hb<ds>, Collection<hb<ds>>>> b(CommandContext<ds> $$0) throws CommandSyntaxException {
                return Pair.of($$1, Either.right(fx.b($$0, $$1)));
             }
+
+            @Override
+            public Pair<ahg, Collection<hb<ds>>> c(CommandContext<ds> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, fx.b($$0, $$1));
+            }
          };
       } else {
          final ahg $$2 = ahg.a($$0);
@@ -44,6 +49,11 @@ public class fx implements ArgumentType<fx.a> {
             @Override
             public Pair<ahg, Either<hb<ds>, Collection<hb<ds>>>> b(CommandContext<ds> $$0) throws CommandSyntaxException {
                return Pair.of($$2, Either.left(fx.a($$0, $$2)));
+            }
+
+            @Override
+            public Pair<ahg, Collection<hb<ds>>> c(CommandContext<ds> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Collections.singleton(fx.a($$0, $$2)));
             }
          };
       }
@@ -70,6 +80,10 @@ public class fx implements ArgumentType<fx.a> {
       return ((fx.a)$$0.getArgument($$1, fx.a.class)).b($$0);
    }
 
+   public static Pair<ahg, Collection<hb<ds>>> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return ((fx.a)$$0.getArgument($$1, fx.a.class)).c($$0);
+   }
+
    public Collection<String> getExamples() {
       return a;
    }
@@ -78,5 +92,7 @@ public class fx implements ArgumentType<fx.a> {
       Collection<hb<ds>> a(CommandContext<ds> var1) throws CommandSyntaxException;
 
       Pair<ahg, Either<hb<ds>, Collection<hb<ds>>>> b(CommandContext<ds> var1) throws CommandSyntaxException;
+
+      Pair<ahg, Collection<hb<ds>>> c(CommandContext<ds> var1) throws CommandSyntaxException;
    }
 }

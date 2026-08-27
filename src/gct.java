@@ -1,25 +1,25 @@
-public class gct<T extends cfh> extends gcw<T, fla<T>> {
-   private final fkv a;
+public class gct extends gcx<bym, fkv<bym>> {
+   private final ftc a;
 
-   public gct(gag<T, fla<T>> $$0, fmr $$1) {
+   public gct(gah<bym, fkv<bym>> $$0, ftc $$1) {
       super($$0);
-      this.a = new fkv($$1.a(fmu.aD));
+      this.a = $$1;
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
+   public void a(eqa $$0, ftg $$1, int $$2, bym $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmx $$10 = $$3.c(blz.a);
+      if ($$3.A() && !$$3.gw()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gk()) {
+            $$11 -= 0.2F * aun.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * aun.a($$7 * 0.6F);
+         }
 
-   private void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      sn $$9 = $$8 ? $$3.gj() : $$3.gk();
-      bly.a($$9.l("id")).filter($$0x -> $$0x == bly.au).ifPresent($$10 -> {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         byn.b $$11 = byn.b.a($$9.h("Variant"));
-         eqd $$12 = $$1.getBuffer(this.a.a(fzx.a($$11)));
-         this.a.a($$0, $$12, $$2, gec.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cmu.h, false, $$0, $$1, $$2);
          $$0.b();
-      });
+      }
    }
 }

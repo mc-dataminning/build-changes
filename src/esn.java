@@ -1,224 +1,291 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class esn extends gkn {
-   private static final ahg a = new ahg("widget/slot_frame");
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 80;
-   private final fcz v;
-   @Nullable
-   private erg w;
-   private final long x;
-   private final vf[] y = new vf[]{vf.c("mco.brokenworld.message.line1"), vf.c("mco.brokenworld.message.line2")};
-   private int z;
-   private final List<Integer> A = Lists.newArrayList();
-   private int B;
+public class esn extends gko {
+   static final Logger a = LogUtils.getLogger();
+   static final vf b = vf.c("mco.backup.button.restore");
+   static final vf c = vf.c("mco.backup.changes.tooltip");
+   private static final vf v = vf.c("mco.configure.world.backup");
+   private static final vf w = vf.c("mco.backup.nobackups");
+   private final esq x;
+   List<eqw> y = Collections.emptyList();
+   esn.a z;
+   int A = -1;
+   private final int B;
+   private exf C;
+   private exf D;
+   private exf E;
+   Boolean F = false;
+   final erh G;
+   private static final String H = "uploaded";
 
-   public esn(fcz $$0, long $$1, boolean $$2) {
-      super($$2 ? vf.c("mco.brokenworld.minigame.title") : vf.c("mco.brokenworld.title"));
-      this.v = $$0;
-      this.x = $$1;
+   public esn(esq $$0, erh $$1, int $$2) {
+      super(v);
+      this.x = $$0;
+      this.G = $$1;
+      this.B = $$2;
    }
 
    @Override
    public void aN_() {
-      this.z = this.g / 2 - 150;
-      this.d(exe.a(ve.k, $$0 -> this.aE_()).a((this.g - 150) / 2, g(13) - 5, 150, 20).a());
-      if (this.w == null) {
-         this.a(this.x);
-      } else {
-         this.C();
-      }
-   }
+      (new Thread("Realms-fetch-backups") {
+         @Override
+         public void run() {
+            eqq $$0 = eqq.a();
 
-   @Override
-   public vf h() {
-      return vi.a(Stream.concat(Stream.of(this.e), Stream.of(this.y)).collect(Collectors.toList()), ve.u);
-   }
-
-   private void C() {
-      for (Entry<Integer, ern> $$0 : this.w.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.w.n || this.w.m == erg.d.b;
-         exe $$3;
-         if ($$2) {
-            $$3 = exe.a(vf.c("mco.brokenworld.play"), $$1x -> this.f.a(new esw(this.v, new eun(this.w.a, $$1, this::e)))).a(this.a($$1), g(8), 80, 20).a();
-            $$3.j = !this.w.i.get($$1).n;
-         } else {
-            $$3 = exe.a(vf.c("mco.brokenworld.download"), $$1x -> {
-               vf $$2x = vf.c("mco.configure.world.restore.download.question.line1");
-               vf $$3x = vf.c("mco.configure.world.restore.download.question.line2");
-               this.f.a(new esv($$1xx -> {
-                  if ($$1xx) {
-                     this.b($$1);
-                  } else {
-                     this.f.a(this);
-                  }
-               }, esv.a.b, $$2x, $$3x, true));
-            }).a(this.a($$1), g(8), 80, 20).a();
-         }
-
-         if (this.A.contains($$1)) {
-            $$3.j = false;
-            $$3.b(vf.c("mco.brokenworld.downloaded"));
-         }
-
-         this.d($$3);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.B++;
-   }
-
-   @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-
-      for (int $$4 = 0; $$4 < this.y.length; $$4++) {
-         $$0.a(this.i, this.y[$$4], this.g / 2, g(-1) + 3 + $$4 * 12, -6250336);
-      }
-
-      if (this.w != null) {
-         for (Entry<Integer, ern> $$5 : this.w.i.entrySet()) {
-            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.w.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().l,
-                  $$5.getValue().m,
-                  $$5.getValue().n
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.w.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().n
-               );
-            }
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      return this.z + ($$0 - 1) * 110;
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         eqp $$1 = eqp.a();
-
-         try {
-            this.w = $$1.a($$0);
-            this.C();
-         } catch (esc var5) {
-            b.error("Couldn't get own world", var5);
-            this.f.a(new est(var5, this.v));
-         }
-      }).start();
-   }
-
-   public void e() {
-      new Thread(() -> {
-         eqp $$0 = eqp.a();
-         if (this.w.e == erg.c.a) {
-            this.f.execute(() -> this.f.a(new esw(this, new euh(this.w, this, true, this.f))));
-         } else {
             try {
-               erg $$1 = $$0.a(this.x);
-               this.f.execute(() -> eqk.a($$1, this));
-            } catch (esc var3) {
-               b.error("Couldn't get own world", var3);
-               this.f.execute(() -> this.f.a(this.v));
+               List<eqw> $$1 = $$0.e(esn.this.G.a).a;
+               esn.this.f.execute(() -> {
+                  esn.this.y = $$1;
+                  esn.this.F = esn.this.y.isEmpty();
+                  esn.this.z.H();
+
+                  for (eqw $$1x : esn.this.y) {
+                     esn.this.z.a($$1x);
+                  }
+               });
+            } catch (esd var3) {
+               esn.a.error("Couldn't request backups", var3);
             }
          }
       }).start();
+      this.C = this.d((exf)exf.a(vf.c("mco.backup.button.download"), $$0 -> this.I()).a(this.g - 135, g(1), 120, 20).a());
+      this.D = this.d((exf)exf.a(vf.c("mco.backup.button.restore"), $$0 -> this.a(this.A)).a(this.g - 135, g(3), 120, 20).a());
+      this.E = this.d((exf)exf.a(vf.c("mco.backup.changes.tooltip"), $$0 -> {
+         this.f.a(new esm(this, this.y.get(this.A)));
+         this.A = -1;
+      }).a(this.g - 135, g(5), 120, 20).a());
+      this.d((exf)exf.a(ve.k, $$0 -> this.f.a(this.x)).a(this.g - 100, this.h - 35, 85, 20).a());
+      this.z = this.d(new esn.a());
+      this.b(this.z);
+      this.D();
    }
 
-   private void b(int $$0) {
-      eqp $$1 = eqp.a();
+   void D() {
+      this.D.k = this.H();
+      this.E.k = this.E();
+   }
 
-      try {
-         erw $$2 = $$1.b(this.w.a, $$0);
-         ess $$3 = new ess(this, $$2, this.w.a($$0), $$1x -> {
-            if ($$1x) {
-               this.A.add($$0);
-               this.p();
-               this.C();
+   private boolean E() {
+      return this.A == -1 ? false : !this.y.get(this.A).e.isEmpty();
+   }
+
+   private boolean H() {
+      return this.A == -1 ? false : !this.G.j;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.x);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   void a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.y.size() && !this.G.j) {
+         this.A = $$0;
+         Date $$1 = this.y.get($$0).b;
+         String $$2 = DateFormat.getDateTimeInstance(3, 3).format($$1);
+         vf $$3 = etx.a($$1);
+         vf $$4 = vf.a("mco.configure.world.restore.question.line1", $$2, $$3);
+         vf $$5 = vf.c("mco.configure.world.restore.question.line2");
+         this.f.a(new esw($$0x -> {
+            if ($$0x) {
+               this.K();
             } else {
+               this.A = -1;
                this.f.a(this);
             }
-         });
-         this.f.a($$3);
-      } catch (esc var5) {
-         b.error("Couldn't download world data", var5);
-         this.f.a(new est(var5, this));
+         }, esw.a.a, $$4, $$5, true));
       }
+   }
+
+   private void I() {
+      vf $$0 = vf.c("mco.configure.world.restore.download.question.line1");
+      vf $$1 = vf.c("mco.configure.world.restore.download.question.line2");
+      this.f.a(new esw($$0x -> {
+         if ($$0x) {
+            this.J();
+         } else {
+            this.f.a(this);
+         }
+      }, esw.a.b, $$0, $$1, true));
+   }
+
+   private void J() {
+      this.f.a(new esx(this.x.f(), new euf(this.G.a, this.B, this.G.c + " (" + this.G.i.get(this.G.n).a(this.G.n) + ")", this)));
+   }
+
+   private void K() {
+      eqw $$0 = this.y.get(this.A);
+      this.A = -1;
+      this.f.a(new esx(this.x.f(), new eum($$0, this.G.a, this.x)));
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.v);
+   public void a(ewt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 12, -1);
+      if (this.F) {
+         $$0.a(this.i, w, 20, this.h / 2 - 10, -1, false);
+      }
+
+      this.C.j = !this.F;
    }
 
-   private boolean D() {
-      return this.w != null && this.w.m == erg.d.b;
+   class a extends gkn<esn.b> {
+      public a() {
+         super(esn.this.g - 150, esn.this.h - 47, 32, 36);
+      }
+
+      public void a(eqw $$0) {
+         this.a((esn.b)(esn.this.new b($$0)));
+      }
+
+      @Override
+      public int b() {
+         return (int)((double)this.g * 0.93);
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 36;
+      }
+
+      @Override
+      public int c() {
+         return this.g - 5;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         esn.this.A = $$0;
+         esn.this.D();
+      }
+
+      public void a(@Nullable esn.b $$0) {
+         super.a($$0);
+         esn.this.A = this.l().indexOf($$0);
+         esn.this.D();
+      }
    }
 
-   private void a(ews $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      ahg $$11;
-      if ($$10) {
-         $$11 = esi.a;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = etv.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = esi.b;
-      } else if ($$7 == 2) {
-         $$11 = esi.c;
-      } else if ($$7 == 3) {
-         $$11 = esi.d;
-      } else {
-         $$11 = etv.a(String.valueOf(this.w.p), this.w.q);
+   class b extends eyb.a<esn.b> {
+      private static final int b = 2;
+      private static final int c = 7;
+      private static final eys d = new eys(new ahg("backup/changes"), new ahg("backup/changes_highlighted"));
+      private static final eys e = new eys(new ahg("backup/restore"), new ahg("backup/restore_highlighted"));
+      private final eqw f;
+      private final List<exd> g = new ArrayList<>();
+      @Nullable
+      private exr h;
+      @Nullable
+      private exr i;
+
+      public b(eqw $$0) {
+         this.f = $$0;
+         this.a($$0);
+         if (!$$0.e.isEmpty()) {
+            this.b();
+         }
+
+         if (!esn.this.G.j) {
+            this.c();
+         }
       }
 
-      if (!$$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      } else if ($$5) {
-         float $$17 = 0.9F + 0.1F * aun.b((float)this.B * 0.2F);
-         $$0.a($$17, $$17, $$17, 1.0F);
+      private void a(eqw $$0) {
+         int $$1 = esn.this.y.indexOf($$0);
+         if ($$1 != esn.this.y.size() - 1) {
+            eqw $$2 = esn.this.y.get($$1 + 1);
+
+            for (String $$3 : $$0.d.keySet()) {
+               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
+                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
+                     this.a($$3);
+                  }
+               } else {
+                  this.a($$3);
+               }
+            }
+         }
       }
 
-      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-      if ($$5) {
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      private void a(String $$0) {
+         if ($$0.contains("uploaded")) {
+            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.f.b);
+            this.f.e.put($$0, $$1);
+            this.f.a(true);
+         } else {
+            this.f.e.put($$0, this.f.d.get($$0));
+         }
       }
 
-      $$0.a(a, $$1, $$2, 80, 80);
-      $$0.a(this.i, $$6, $$1 + 40, $$2 + 66, -1);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      private void b() {
+         int $$0 = 9;
+         int $$1 = 9;
+         int $$2 = esn.this.z.r() - 9 - 28;
+         int $$3 = esn.this.z.g(esn.this.y.indexOf(this.f)) + 2;
+         this.i = new exr($$2, $$3, 9, 9, d, $$0x -> esn.this.f.a(new esm(esn.this, this.f)), ve.a);
+         this.i.a(eyq.a(esn.c));
+         this.g.add(this.i);
+      }
+
+      private void c() {
+         int $$0 = 17;
+         int $$1 = 10;
+         int $$2 = esn.this.z.r() - 17 - 7;
+         int $$3 = esn.this.z.g(esn.this.y.indexOf(this.f)) + 2;
+         this.h = new exr($$2, $$3, 17, 10, e, $$0x -> esn.this.a(esn.this.y.indexOf(this.f)), ve.a);
+         this.h.a(eyq.a(esn.b));
+         this.g.add(this.h);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (this.h != null) {
+            this.h.a($$0, $$1, $$2);
+         }
+
+         if (this.i != null) {
+            this.i.a($$0, $$1, $$2);
+         }
+
+         return true;
+      }
+
+      @Override
+      public void a(ewt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = this.f.a() ? -8388737 : 16777215;
+         $$0.a(esn.this.i, vf.a("mco.backup.entry", etx.a(this.f.b)), $$3, $$2 + 1, $$10, false);
+         $$0.a(esn.this.i, this.a(this.f.b), $$3, $$2 + 12, 5000268, false);
+         this.g.forEach($$5x -> {
+            $$5x.o($$2 + 2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      private String a(Date $$0) {
+         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      }
+
+      @Override
+      public vf a() {
+         return vf.a("narrator.select", this.f.b.toString());
+      }
    }
 }

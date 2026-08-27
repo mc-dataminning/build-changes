@@ -1,90 +1,96 @@
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fuo {
-   public static final fuo a = new fuo();
-   public final fun b;
-   public final fun c;
-   public final fun d;
-   public final fun e;
-   public final fun f;
-   public final fun g;
-   public final fun h;
-   public final fun i;
+   public static final fuo a = new fuo(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   private fuo() {
-      this(fun.a, fun.a, fun.a, fun.a, fun.a, fun.a, fun.a, fun.a);
+   public fuo(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public fuo(fuo $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public void a(boolean $$0, eqa $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
+         }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   public fuo(fun $$0, fun $$1, fun $$2, fun $$3, fun $$4, fun $$5, fun $$6, fun $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         fuo $$1 = (fuo)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
    }
 
-   public fun a(cmu $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fun.a;
-      };
-   }
-
-   public boolean b(cmu $$0) {
-      return this.a($$0) != fun.a;
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
    }
 
    protected static class a implements JsonDeserializer<fuo> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
       public fuo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         fun $$4 = this.a($$2, $$3, cmu.c);
-         fun $$5 = this.a($$2, $$3, cmu.b);
-         if ($$5 == fun.a) {
-            $$5 = $$4;
-         }
-
-         fun $$6 = this.a($$2, $$3, cmu.e);
-         fun $$7 = this.a($$2, $$3, cmu.d);
-         if ($$7 == fun.a) {
-            $$7 = $$6;
-         }
-
-         fun $$8 = this.a($$2, $$3, cmu.f);
-         fun $$9 = this.a($$2, $$3, cmu.g);
-         fun $$10 = this.a($$2, $$3, cmu.h);
-         fun $$11 = this.a($$2, $$3, cmu.i);
-         return new fuo($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(aun.a($$5.x, -5.0F, 5.0F), aun.a($$5.y, -5.0F, 5.0F), aun.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(aun.a($$6.x, -4.0F, 4.0F), aun.a($$6.y, -4.0F, 4.0F), aun.a($$6.z, -4.0F, 4.0F));
+         return new fuo($$4, $$5, $$6);
       }
 
-      private fun a(JsonDeserializationContext $$0, JsonObject $$1, cmu $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fun)$$0.deserialize($$1.get($$3), fun.class) : fun.a;
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = aud.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = aud.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
       }
    }
 }

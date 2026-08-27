@@ -1,67 +1,57 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ggo {
-   public static final Comparator<ggo> a = Comparator.<ggo, ahg>comparing(ggo::a).thenComparing(ggo::b);
-   private final ahg b;
-   private final ahg c;
-   @Nullable
-   private ftn d;
+public class ggo implements ggm {
+   private final fup a;
+   private final fun b;
+   private final gem c;
+   private final boolean d;
 
-   public ggo(ahg $$0, ahg $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ggo(fup $$0, fun $$1, gem $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public ahg a() {
-      return this.b;
+   @Override
+   public List<fud> a(@Nullable djg $$0, @Nullable ic $$1, auu $$2) {
+      return Collections.emptyList();
    }
 
-   public ahg b() {
-      return this.c;
+   @Override
+   public boolean a() {
+      return false;
    }
 
-   public gel c() {
-      return evg.O().a(this.a()).apply(this.b());
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public ftn a(Function<ahg, ftn> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
+   @Override
+   public boolean c() {
       return this.d;
    }
 
-   public eqd a(ftf $$0, Function<ahg, ftn> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public eqd a(ftf $$0, Function<ahg, ftn> $$1, boolean $$2) {
-      return this.c().a(fzj.c($$0, this.a($$1), true, $$2));
+   @Override
+   public boolean d() {
+      return true;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ggo $$1 = (ggo)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public gem e() {
+      return this.c;
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public fup f() {
+      return this.a;
    }
 
    @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public fun g() {
+      return this.b;
    }
 }

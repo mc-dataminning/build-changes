@@ -1,115 +1,164 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Set;
 
-public class ezu extends gdw implements gdx {
-   private static final int e = 256;
-   private final ezv f;
-   private final boolean g;
-   private final ezu.a h;
+public class ezu implements AutoCloseable {
+   private static final auu a = auu.a();
+   private static final float b = 32.0F;
+   private final gen c;
+   private final ahg d;
+   private ezy e;
+   private ezy f;
+   private final List<eod> g = Lists.newArrayList();
+   private final ezs<ezy> h = new ezs<>(ezy[]::new, ezy[][]::new);
+   private final ezs<ezu.a> i = new ezs<>(ezu.a[]::new, ezu.a[][]::new);
+   private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
+   private final List<ezv> k = Lists.newArrayList();
 
-   public ezu(ezv $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new ezu.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? epa.b.a : epa.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public ezu(gen $$0, ahg $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public void a(aqh $$0) {
+   public void a(List<eod> $$0) {
+      this.b();
+      this.c();
+      this.h.a();
+      this.i.a();
+      this.j.clear();
+      this.e = faa.b.bake(this::a);
+      this.f = faa.a.bake(this::a);
+      IntSet $$1 = new IntOpenHashSet();
+
+      for (eod $$2 : $$0) {
+         $$1.addAll($$2.a());
+      }
+
+      Set<eod> $$3 = Sets.newHashSet();
+      $$1.forEach($$2x -> {
+         for (eod $$3x : $$0) {
+            eoc $$4 = $$3x.a($$2x);
+            if ($$4 != null) {
+               $$3.add($$3x);
+               if ($$4 != faa.b) {
+                  ((IntList)this.j.computeIfAbsent(aun.f($$4.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      $$0.stream().filter($$3::contains).forEach(this.g::add);
    }
 
    @Override
    public void close() {
       this.b();
+      this.c();
    }
 
-   @Nullable
-   public ezx a(eod $$0) {
-      if ($$0.c() != this.g) {
-         return null;
+   private void b() {
+      for (eod $$0 : this.g) {
+         $$0.close();
+      }
+
+      this.g.clear();
+   }
+
+   private void c() {
+      for (ezv $$0 : this.k) {
+         $$0.close();
+      }
+
+      this.k.clear();
+   }
+
+   private static boolean b(eoc $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
       } else {
-         ezu.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new ezx(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+         return true;
       }
    }
 
-   @Override
-   public void a(ahg $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
+   private ezu.a b(int $$0) {
+      eoc $$1 = null;
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private ezu.a e;
-      @Nullable
-      private ezu.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      ezu.a a(eod $$0) {
-         if (this.e != null && this.f != null) {
-            ezu.a $$1 = this.e.a($$0);
+      for (eod $$2 : this.g) {
+         eoc $$3 = $$2.a($$0);
+         if ($$3 != null) {
             if ($$1 == null) {
-               $$1 = this.f.a($$0);
+               $$1 = $$3;
             }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new ezu.a(this.a, this.b, $$2, this.d);
-                  this.f = new ezu.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new ezu.a(this.a, this.b, this.c, $$3);
-                  this.f = new ezu.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
+            if (!b($$3)) {
+               return new ezu.a($$1, $$3);
             }
          }
+      }
+
+      return $$1 != null ? new ezu.a($$1, faa.b) : ezu.a.c;
+   }
+
+   public eoc a(int $$0, boolean $$1) {
+      return this.i.a($$0, this::b).a($$1);
+   }
+
+   private ezy c(int $$0) {
+      for (eod $$1 : this.g) {
+         eoc $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
+      return this.e;
+   }
+
+   public ezy a(int $$0) {
+      return this.h.a($$0, this::c);
+   }
+
+   private ezy a(eoe $$0) {
+      for (ezv $$1 : this.k) {
+         ezy $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      ahg $$3 = this.d.e("/" + this.k.size());
+      boolean $$4 = $$0.c();
+      ezw $$5 = $$4 ? ezw.b($$3) : ezw.a($$3);
+      ezv $$6 = new ezv($$5, $$4);
+      this.k.add($$6);
+      this.c.a($$3, $$6);
+      ezy $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public ezy a(eoc $$0) {
+      IntList $$1 = (IntList)this.j.get(aun.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public ezy a() {
+      return this.f;
+   }
+
+   static record a(eoc a, eoc b) {
+      static final ezu.a c = new ezu.a(faa.b, faa.b);
+
+      eoc a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

@@ -1,25 +1,24 @@
 import org.joml.Matrix4f;
 
-public interface ffr {
-   static ffr a(atz $$0) {
-      return new ffq($$0);
+public class ffr implements ffs {
+   private final atz a;
+
+   public ffr(atz $$0) {
+      this.a = $$0;
    }
 
-   static ffr a(ckd $$0) {
-      if ($$0 instanceof ckc) {
-         return new ffp((ckc)$$0);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   public int a(ewr $$0) {
+      return $$0.a(this.a);
    }
 
-   int a();
-
-   int a(ewq var1);
-
-   default void a(ewq $$0, int $$1, int $$2, Matrix4f $$3, ftf.a $$4) {
+   @Override
+   public int a() {
+      return 10;
    }
 
-   default void a(ewq $$0, int $$1, int $$2, ews $$3) {
+   @Override
+   public void a(ewr $$0, int $$1, int $$2, Matrix4f $$3, ftg.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, ewr.a.a, 0, 15728880);
    }
 }

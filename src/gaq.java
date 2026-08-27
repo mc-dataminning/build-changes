@@ -1,11 +1,12 @@
-public class gaq extends fxl<cge> {
-   public static final ahg a = new ahg("textures/entity/projectiles/spectral_arrow.png");
+public class gaq extends fzs<byv, flw<byv>> {
+   private static final ahg a = new ahg("textures/entity/snow_golem.png");
 
-   public gaq(fyl.a $$0) {
-      super($$0);
+   public gaq(fym.a $$0) {
+      super($$0, new flw<>($$0.a(fmv.bs)), 0.5F);
+      this.a(new gdc(this, $$0.c(), $$0.b()));
    }
 
-   public ahg a(cge $$0) {
+   public ahg a(byv $$0) {
       return a;
    }
 }

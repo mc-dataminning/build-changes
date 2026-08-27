@@ -1,537 +1,279 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.CancellationException;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class fia extends eya<fia.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final ahg m = new ahg("world_list/error_highlighted");
-   static final ahg n = new ahg("world_list/error");
-   static final ahg o = new ahg("world_list/marked_join_highlighted");
-   static final ahg p = new ahg("world_list/marked_join");
-   static final ahg q = new ahg("world_list/warning_highlighted");
-   static final ahg r = new ahg("world_list/warning");
-   static final ahg t = new ahg("world_list/join_highlighted");
-   static final ahg u = new ahg("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   private static final ahg w = new ahg("textures/misc/unknown_server.png");
-   static final vf x = vf.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final vf y = vf.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final vf z = vf.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final vf A = vf.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final vf B = vf.c("selectWorld.locked").a(n.m);
-   static final vf C = vf.c("selectWorld.conversion.tooltip").a(n.m);
-   static final vf D = vf.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final vf E = vf.c("selectWorld.experimental");
-   private final fhv F;
-   private CompletableFuture<List<egm>> G;
-   @Nullable
-   private List<egm> H;
-   private String I;
-   private final fia.b J;
+public class fia {
+   private static final Logger a = LogUtils.getLogger();
+   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
+   private final evh c;
+   private final egl d;
 
-   public fia(fhv $$0, evg $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fia $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.F = $$0;
-      this.J = new fia.b($$1);
-      this.I = $$6;
-      if ($$7 != null) {
-         this.G = $$7.G;
-      } else {
-         this.G = this.J();
+   public fia(evh $$0, egl $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public void a(String $$0, cts $$1, dpn $$2, Function<iu, dpk> $$3, fda $$4) {
+      this.c.d(new fcg(vf.c("selectWorld.data_read")));
+      egl.c $$5 = this.a($$0);
+      if ($$5 != null) {
+         aps $$6 = apv.a($$5);
+         cui $$7 = $$1.g();
+
+         try {
+            aib.d $$8 = new aib.d($$6, $$7, false, false);
+            aic $$9 = this.a($$8, $$3x -> {
+               dpk.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(ke.aN));
+               return new aib.b<>(new egp($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
+            }, aic::new);
+            this.c.a($$5, $$6, $$9, true);
+         } catch (Exception var11) {
+            a.warn("Failed to load datapacks, can't proceed with server load", var11);
+            $$5.a();
+            this.c.a($$4);
+         }
       }
-
-      this.a(this.H());
-   }
-
-   @Override
-   protected void m() {
-      this.l().forEach(fia.a::close);
-      super.m();
    }
 
    @Nullable
-   private List<egm> H() {
+   private egl.c a(String $$0) {
       try {
-         return this.G.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
+         return this.d.d($$0);
+      } catch (IOException var3) {
+         a.warn("Failed to read level {} data", $$0, var3);
+         ezm.a(this.c, $$0);
+         this.c.a(null);
+         return null;
+      } catch (elh var4) {
+         a.warn("{}", var4.getMessage());
+         this.c.a(fcp.a(() -> this.c.a(null)));
          return null;
       }
    }
 
-   void I() {
-      this.G = this.J();
+   public void a(egl.c $$0, ahq $$1, io<ahp> $$2, egr $$3) {
+      aps $$4 = apv.a($$0);
+      apx $$5 = (apx)new aib.d($$4, $$3.F(), false, false).a().getSecond();
+      this.c.a($$0, $$4, new aic($$5, $$1, $$2, $$3), true);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fbc.a($$0)) {
-         Optional<fia.c> $$3 = this.d();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ai().a(ght.a(arr.zu, 1.0F));
-               $$3.get().c();
-            }
+   public aic a(Dynamic<?> $$0, boolean $$1, aps $$2) throws Exception {
+      aib.d $$3 = egl.a($$0, $$2, $$1);
+      return this.a($$3, $$1x -> {
+         it<dmq> $$2x = $$1x.d().d(ke.aN);
+         egi $$3x = egl.a($$0, $$1x.b(), $$2x, $$1x.c());
+         return new aib.b<>($$3x.a(), $$3x.b().b());
+      }, aic::new);
+   }
 
-            return true;
-         }
+   public Pair<cts, fhy> a(egl.c $$0) throws Exception {
+      aps $$1 = apv.a($$0);
+      Dynamic<?> $$2 = $$0.f();
+      aib.d $$3 = egl.a($$2, $$1, false);
+
+      record a(cts a, dpn b, it<dmq> c) {
       }
 
-      return super.a($$0, $$1, $$2);
+      return this.a($$3, $$1x -> {
+         it<dmq> $$2x = new ip<>(ke.aN, Lifecycle.stable()).l();
+         egi $$3x = egl.a($$2, $$1x.b(), $$2x, $$1x.c());
+         return new aib.b<>(new a($$3x.a().L(), $$3x.a().A(), $$3x.b().c()), $$1x.d());
+      }, ($$0x, $$1x, $$2x, $$3x) -> {
+         $$0x.close();
+         return Pair.of($$3x.a, new fhy($$3x.b, new dpk($$3x.c), $$2x, $$1x, $$3x.a.g()));
+      });
    }
 
-   @Override
-   public void b(ews $$0, int $$1, int $$2, float $$3) {
-      List<egm> $$4 = this.H();
-      if ($$4 != this.H) {
-         this.a($$4);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
+   private <D, R> R a(aib.d $$0, aib.f<D> $$1, aib.e<D, R> $$2) throws Exception {
+      aib.c $$3 = new aib.c($$0, dt.a.c, 2);
+      CompletableFuture<R> $$4 = aib.a($$3, $$1, $$2, ac.f(), this.c);
+      this.c.c($$4::isDone);
+      return $$4.get();
    }
 
-   private void a(@Nullable List<egm> $$0) {
-      if ($$0 == null) {
-         this.K();
+   private void a(egl.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
+      vf $$4;
+      vf $$5;
+      if ($$1) {
+         $$4 = vf.c("selectWorld.backupQuestion.customized");
+         $$5 = vf.c("selectWorld.backupWarning.customized");
       } else {
-         this.a(this.I, $$0);
+         $$4 = vf.c("selectWorld.backupQuestion.experimental");
+         $$5 = vf.c("selectWorld.backupWarning.experimental");
       }
 
-      this.H = $$0;
+      this.c.a(new fbo($$3, ($$2x, $$3x) -> {
+         if ($$2x) {
+            fhs.a($$0);
+         }
+
+         $$2.run();
+      }, $$4, $$5, false));
    }
 
-   public void a(String $$0) {
-      if (this.H != null && !$$0.equals(this.I)) {
-         this.a($$0, this.H);
+   public static void a(evh $$0, fhq $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
+      BooleanConsumer $$5 = $$3x -> {
+         if ($$3x) {
+            $$3.run();
+         } else {
+            $$0.a($$1);
+         }
+      };
+      if ($$4 || $$2 == Lifecycle.stable()) {
+         $$3.run();
+      } else if ($$2 == Lifecycle.experimental()) {
+         $$0.a(new fbt($$5, vf.c("selectWorld.warning.experimental.title"), vf.c("selectWorld.warning.experimental.question")));
+      } else {
+         $$0.a(new fbt($$5, vf.c("selectWorld.warning.deprecated.title"), vf.c("selectWorld.warning.deprecated.question")));
       }
-
-      this.I = $$0;
    }
 
-   private CompletableFuture<List<egm>> J() {
-      egl.a $$0;
+   public void a(String $$0, Runnable $$1) {
+      this.c.d(new fcg(vf.c("selectWorld.data_read")));
+      egl.c $$2 = this.a($$0);
+      if ($$2 != null) {
+         this.a($$2, $$1);
+      }
+   }
+
+   private void a(egl.c $$0, Runnable $$1) {
+      this.c.d(new fcg(vf.c("selectWorld.data_read")));
+
+      Dynamic<?> $$2;
+      egm $$3;
       try {
-         $$0 = this.c.l().b();
-      } catch (egk var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
+         $$2 = $$0.f();
+         $$3 = $$0.a($$2);
+      } catch (sy | te | IOException var10) {
+         this.c.a(new fcz(this.c, $$2x -> {
+            if ($$2x) {
+               this.a($$0, $$1);
+            } else {
+               $$0.a();
+               $$1.run();
+            }
+         }, $$0));
+         return;
+      } catch (OutOfMemoryError var11) {
+         aul.b();
+         System.gc();
+         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.d() + "\"";
+         a.error(LogUtils.FATAL_MARKER, $$6);
+         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
+         $$7.initCause(var11);
+         o $$8 = o.a($$7, $$6);
+         p $$9 = $$8.a("World details");
+         $$9.a("World folder", $$0.d());
+         throw new y($$8);
       }
 
-      if ($$0.a()) {
-         fhp.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
+      if (!$$3.r()) {
+         $$0.a();
+         this.c.a(new fbn($$1, vf.c("selectWorld.incompatible.title").b(-65536), vf.a("selectWorld.incompatible.description", $$3.k())));
       } else {
-         return this.c.l().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
+         egm.a $$12 = $$3.o();
+         if ($$12.a()) {
+            String $$13 = "selectWorld.backupQuestion." + $$12.c();
+            String $$14 = "selectWorld.backupWarning." + $$12.c();
+            vt $$15 = vf.c($$13);
+            if ($$12.b()) {
+               $$15.b(-2142128);
+            }
+
+            vf $$16 = vf.a($$14, $$3.k(), aa.b().c());
+            this.c.a(new fbo(() -> {
+               $$0.a();
+               $$1.run();
+            }, ($$3x, $$4) -> {
+               if ($$3x) {
+                  fhs.a($$0);
+               }
+
+               this.a($$0, $$2, false, true, $$1);
+            }, $$15, $$16, false));
+         } else {
+            this.a($$0, $$2, false, true, $$1);
+         }
+      }
+   }
+
+   public CompletableFuture<Void> a(ghb $$0, egl.c $$1) {
+      Path $$2 = $$1.a(egj.k);
+      if (Files.exists($$2) && !Files.isDirectory($$2)) {
+         $$0.f();
+         CompletableFuture<Void> $$3 = $$0.b(b);
+         $$0.a(b, $$2);
+         return $$3;
+      } else {
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   private void a(egl.c $$0, Dynamic<?> $$1, boolean $$2, boolean $$3, Runnable $$4) {
+      this.c.d(new fcg(vf.c("selectWorld.resource_load")));
+      aps $$5 = apv.a($$0);
+
+      aic $$6;
+      try {
+         $$6 = this.a($$1, $$2, $$5);
+      } catch (Exception var12) {
+         a.warn("Failed to load level data or datapacks, can't proceed with server load", var12);
+         if (!$$2) {
+            this.c.a(new fby(() -> {
+               $$0.a();
+               $$4.run();
+            }, () -> this.a($$0, $$1, true, $$3, $$4)));
+         } else {
+            $$0.a();
+            this.c.a(new fbn($$4, vf.c("datapackFailure.safeMode.failed.title"), vf.c("datapackFailure.safeMode.failed.description"), ve.k, true));
+         }
+
+         return;
+      }
+
+      egr $$9 = $$6.d();
+      boolean $$10 = $$9.A().e();
+      boolean $$11 = $$9.D() != Lifecycle.stable();
+      if (!$$3 || !$$10 && !$$11) {
+         ghb $$12 = this.c.ac();
+         this.a($$12, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
+            a.warn("Failed to load pack: ", $$0x);
+            return this.a();
+         }, this.c).thenAcceptAsync($$5x -> {
+            if ($$5x) {
+               this.c.a($$0, $$5, $$6, false);
+            } else {
+               $$6.close();
+               $$0.a();
+               $$12.e();
+               $$4.run();
+            }
+         }, this.c).exceptionally($$0x -> {
+            this.c.a(o.a($$0x, "Load world"));
+            return null;
          });
-      }
-   }
-
-   private void a(String $$0, List<egm> $$1) {
-      this.m();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-
-      for (egm $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new fia.c(this, $$2));
-         }
-      }
-
-      this.L();
-   }
-
-   private boolean a(String $$0, egm $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
-
-   private void K() {
-      this.m();
-      this.b(this.J);
-      this.L();
-   }
-
-   private void L() {
-      this.a(this.o());
-      this.F.d(true);
-   }
-
-   private void c(vf $$0) {
-      this.c.a(new fcd(vf.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   protected int c() {
-      return super.c() + 20;
-   }
-
-   @Override
-   public int b() {
-      return super.b() + 50;
-   }
-
-   public void a(@Nullable fia.a $$0) {
-      super.a($$0);
-      this.F.a($$0 instanceof fia.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<fia.c> d() {
-      fia.a $$0 = this.i();
-      return $$0 instanceof fia.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public fhv e() {
-      return this.F;
-   }
-
-   @Override
-   public void a(fax $$0) {
-      if (this.l().contains(this.J)) {
-         this.J.b($$0);
       } else {
-         super.a($$0);
+         this.a($$0, $$10, () -> this.a($$0, $$1, $$2, false, $$4), () -> {
+            $$0.a();
+            $$4.run();
+         });
+         $$6.close();
       }
    }
 
-   public abstract static class a extends eya.a<fia.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends fia.a {
-      private static final vf a = vf.c("selectWorld.loading_list");
-      private final evg b;
-
-      public b(evg $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.y.g - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
-         String $$12 = fck.a(ac.b());
-         int $$13 = (this.b.y.g - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
-      }
-
-      @Override
-      public vf a() {
-         return a;
-      }
-   }
-
-   public final class c extends fia.a implements AutoCloseable {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final evg d;
-      private final fhv e;
-      final egm f;
-      private final fce g;
-      @Nullable
-      private Path h;
-      private long i;
-
-      public c(fia $$1, egm $$2) {
-         this.d = $$1.c;
-         this.e = $$1.e();
-         this.f = $$2;
-         this.g = fce.a(this.d.Y(), $$2.a());
-         this.h = $$2.c();
-         this.j();
-         this.l();
-      }
-
-      private void j() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<elj> $$1 = this.d.bb().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     fia.v.warn("{}", elh.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
-
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               fia.v.error("could not validate symlink", var4);
-               this.h = null;
-            }
-         }
-      }
-
-      @Override
-      public vf a() {
-         vf $$0 = vf.a("narrator.select.world_info", this.f.b(), vf.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = ve.a($$0, fia.B);
-         }
-
-         if (this.f.e()) {
-            $$0 = ve.a($$0, fia.E);
-         }
-
-         return vf.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + fia.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = gfq.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         vf $$13 = this.f.s();
-         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
-         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
-         RenderSystem.enableBlend();
-         $$0.a(this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         RenderSystem.disableBlend();
-         if (this.d.m.W().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            ahg $$16 = $$15 ? fia.t : fia.u;
-            ahg $$17 = $$15 ? fia.q : fia.r;
-            ahg $$18 = $$15 ? fia.m : fia.n;
-            ahg $$19 = $$15 ? fia.o : fia.p;
-            if (this.f instanceof egm.c || this.f instanceof egm.b) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               $$0.a($$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fia.B, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fia.C, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a($$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fia.D, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a($$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a($$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fia.x.g(), fia.y.g()));
-                  }
-               } else if (!aa.b().g()) {
-                  $$0.a($$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fia.z.g(), fia.A.g()));
-                  }
-               }
-            } else {
-               $$0.a($$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            fia.this.a((fia.a)this);
-            if (!($$0 - (double)fia.this.q() <= 32.0) && ac.b() - this.i >= 250L) {
-               this.i = ac.b();
-               return true;
-            } else {
-               if (this.b()) {
-                  this.d.ai().a(ght.a(arr.zu, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof egm.c) {
-               this.d.a(fco.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.w().a(this.f.a(), () -> {
-                  fia.this.I();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fbs($$0 -> {
-            if ($$0) {
-               this.d.a(new fcw(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, vf.c("selectWorld.deleteQuestion"), vf.a("selectWorld.deleteWarning", this.f.b()), vf.c("selectWorld.deleteButton"), ve.e));
-      }
-
-      public void e() {
-         egl $$0 = this.d.l();
-         String $$1 = this.f.a();
-
-         try (egl.c $$2 = $$0.e($$1)) {
-            $$2.i();
-         } catch (IOException var8) {
-            ezl.b(this.d, $$1);
-            fia.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         fia.this.I();
-      }
-
-      public void f() {
-         this.k();
-         String $$0 = this.f.a();
-
-         egl.c $$1;
-         try {
-            $$1 = this.d.l().d($$0);
-         } catch (IOException var6) {
-            ezl.a(this.d, $$0);
-            fia.v.error("Failed to access level {}", $$0, var6);
-            fia.this.I();
-            return;
-         } catch (elh var7) {
-            fia.v.warn("{}", var7.getMessage());
-            this.d.a(fco.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         fhr $$5;
-         try {
-            $$5 = fhr.a(this.d, $$1, $$1x -> {
-               $$1.a();
-               if ($$1x) {
-                  fia.this.I();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (sy | te | IOException var5) {
-            $$1.a();
-            ezl.a(this.d, $$0);
-            fia.v.error("Failed to load world data {}", $$0, var5);
-            fia.this.I();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void g() {
-         this.k();
-
-         try (egl.c $$0 = this.d.l().d(this.f.a())) {
-            Pair<cts, fhx> $$1 = this.d.w().a($$0);
-            cts $$2 = (cts)$$1.getFirst();
-            fhx $$3 = (fhx)$$1.getSecond();
-            Path $$4 = fhp.a($$0.a(egj.j), this.d);
-            if ($$3.b().e()) {
-               this.d
-                  .a(
-                     new fbs(
-                        $$3x -> this.d.a((fcz)($$3x ? fhp.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        vf.c("selectWorld.recreate.customized.title"),
-                        vf.c("selectWorld.recreate.customized.text"),
-                        ve.i,
-                        ve.e
-                     )
-                  );
-            } else {
-               this.d.a(fhp.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (elh var8) {
-            fia.v.warn("{}", var8.getMessage());
-            this.d.a(fco.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            fia.v.error("Unable to recreate world", var9);
-            this.d.a(new fbm(() -> this.d.a(this.e), vf.c("selectWorld.recreate.error.title"), vf.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void k() {
-         this.d.d(new fcf(vf.c("selectWorld.data_read")));
-      }
-
-      private void l() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(epa.a($$1));
-            } catch (Throwable var7) {
-               fia.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
-      }
+   private CompletableFuture<Boolean> a() {
+      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
+      this.c.a(new fbt($$0::complete, vf.c("multiplayer.texturePrompt.failure.line1"), vf.c("multiplayer.texturePrompt.failure.line2"), ve.i, ve.e));
+      return $$0;
    }
 }

@@ -1,41 +1,53 @@
-public class fvd implements fvf<dgs> {
-   public static final ggo a = new ggo(gek.e, new ahg("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fmv c;
+public class fvd implements fvg<dgq> {
+   private final fmw a;
+   private final fmw b;
 
-   public fvd(fvg.a $$0) {
-      fmv $$1 = $$0.a(fmu.k);
-      this.c = $$1.b("bell_body");
+   public fvd(fvh.a $$0) {
+      this.a = $$0.a(fmv.i);
+      this.b = $$0.a(fmv.h);
    }
 
-   public static fnb b() {
-      fnd $$0 = new fnd();
-      fne $$1 = $$0.a();
-      fne $$2 = $$1.a("bell_body", fna.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fmx.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fna.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fmx.a(-8.0F, -12.0F, -8.0F));
-      return fnb.a($$0, 32, 32);
+   public static fnc b() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      $$1.a("main", fnb.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fmy.a);
+      $$1.a("left_leg", fnb.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fmy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fnb.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fmy.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fnc.a($$0, 64, 64);
    }
 
-   public void a(dgs $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = aun.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ic.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ic.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ic.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ic.e) {
-            $$8 = $$9;
-         }
+   public static fnc c() {
+      fne $$0 = new fne();
+      fnf $$1 = $$0.a();
+      $$1.a("main", fnb.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fmy.a);
+      $$1.a("left_leg", fnb.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fmy.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fnb.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fmy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fnc.a($$0, 64, 64);
+   }
+
+   public void a(dgq $$0, float $$1, eqa $$2, ftg $$3, int $$4, int $$5) {
+      ggp $$6 = ftv.p[$$0.d().a()];
+      cto $$7 = $$0.i();
+      if ($$7 != null) {
+         djg $$8 = $$0.r();
+         cyw.c<? extends dgq> $$9 = cyw.a(dgw.y, cwi::h, cwi::g, cxs.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fvj<>()).get($$4);
+         this.a($$2, $$3, $$8.c(cwi.b) == djt.a ? this.a : this.b, $$8.c(cwi.aE), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, ic.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ic.d, $$6, $$4, $$5, true);
       }
+   }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      eqd $$10 = a.a($$3, ftn::c);
-      this.c.a($$2, $$10, $$4, $$5);
+   private void a(eqa $$0, ftg $$1, fmw $$2, ic $$3, ggp $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      eqe $$8 = $$4.a($$1, fto::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

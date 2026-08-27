@@ -1,14 +1,24 @@
-public class gdl extends gcw<bza, fmm<bza>> {
-   private static final ahg a = new ahg("textures/entity/wolf/wolf_collar.png");
+public class gdl extends gci<cbh, fmm<cbh>> {
+   private static final ahg a = new ahg("textures/entity/wither/wither_armor.png");
+   private final fmm<cbh> b;
 
-   public gdl(gag<bza, fmm<bza>> $$0) {
+   public gdl(gah<cbh, fmm<cbh>> $$0, fms $$1) {
       super($$0);
+      this.b = new fmm<>($$1.a(fmv.bT));
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, bza $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u() && !$$3.ce()) {
-         float[] $$10 = $$3.gn().d();
-         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
-      }
+   @Override
+   protected float a(float $$0) {
+      return aun.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected ahg a() {
+      return a;
+   }
+
+   @Override
+   protected fjw<cbh> b() {
+      return this.b;
    }
 }

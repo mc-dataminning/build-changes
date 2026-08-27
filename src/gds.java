@@ -1,159 +1,100 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gds {
-   private static final Map<ahg, gdt> a = Maps.newHashMap();
-   private static final String b = "CustomModelData";
-   private static final ahg c = new ahg("damaged");
-   private static final ahg d = new ahg("damage");
-   private static final gdq e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
-   private static final gdq f = ($$0x, $$1, $$2, $$3) -> aun.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
-   private static final Map<cms, Map<ahg, gdt>> g = Maps.newHashMap();
+public class gds implements gdr {
+   public static final int a = 0;
+   private final gds.b c = new gds.b();
+   private final gds.b d = new gds.b();
+   public final gds.a b;
 
-   private static gdq a(ahg $$0, gdq $$1) {
-      a.put($$0, $$1);
-      return $$1;
+   public gds(gds.a $$0) {
+      this.b = $$0;
    }
 
-   private static void a(gdt $$0) {
-      a.put(new ahg("custom_model_data"), $$0);
+   @Override
+   public float unclampedCall(cmx $$0, @Nullable fnr $$1, @Nullable bmk $$2, int $$3) {
+      blu $$4 = (blu)($$2 != null ? $$2 : $$0.H());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   private static void a(cms $$0, ahg $$1, gdq $$2) {
-      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   private float a(cmx $$0, fnr $$1, int $$2, blu $$3) {
+      ig $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.X();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return aun.b((float)$$2, 1.0F);
+   }
+
+   private float a(blu $$0, long $$1, hx $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cfh $$5 && $$5.g()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return aun.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return aun.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   public static gdt a(cms $$0, ahg $$1) {
-      if ($$0.n() > 0) {
-         if (d.equals($$1)) {
-            return f;
-         }
-
-         if (c.equals($$1)) {
-            return e;
-         }
-      }
-
-      gdt $$2 = a.get($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         Map<ahg, gdt> $$3 = g.get($$0);
-         return $$3 == null ? null : $$3.get($$1);
-      }
+   private fnr a(blu $$0, @Nullable fnr $$1) {
+      return $$1 == null && $$0.dM() instanceof fnr ? (fnr)$$0.dM() : $$1;
    }
 
-   static {
-      a(new ahg("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != bme.b ? 1.0F : 0.0F);
-      a(new ahg("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cfh ? ((cfh)$$2).gn().a($$0x.d(), 0.0F) : 0.0F);
-      gdq $$0 = ($$0x, $$1, $$2, $$3) -> {
-         if (!$$0x.a(aso.aH)) {
-            return Float.NEGATIVE_INFINITY;
-         } else {
-            return $$1 == null ? 0.0F : cpa.a($$1.I_(), $$0x, true).map(cpa::b).map(ih::a).map(cpb::c).orElse(0.0F);
-         }
-      };
-      a(ma.a, $$0);
-      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
-      a(cna.or, new ahg("pull"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fq()) / 20.0F;
-         }
-      });
-      a(cna.xi, new ahg("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
-      a(cna.or, new ahg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
-      a(cna.qR, new ahg("filled"), ($$0x, $$1, $$2, $$3) -> ckz.d($$0x));
-      a(cna.qT, new ahg("time"), new gdq() {
-         private double a;
-         private double b;
-         private long c;
+   private boolean a(blu $$0, @Nullable ig $$1) {
+      return $$1 != null && $$1.a() == $$0.dM().ae() && !($$1.b().b($$0.dk()) < 1.0E-5F);
+   }
 
-         @Override
-         public float unclampedCall(cmx $$0, @Nullable fnq $$1, @Nullable bmk $$2, int $$3) {
-            blu $$4 = (blu)($$2 != null ? $$2 : $$0.H());
-            if ($$4 == null) {
-               return 0.0F;
-            } else {
-               if ($$1 == null && $$4.dM() instanceof fnq) {
-                  $$1 = (fnq)$$4.dM();
-               }
+   private double a(blu $$0, hx $$1) {
+      els $$2 = els.b($$1);
+      return Math.atan2($$2.c() - $$0.dx(), $$2.a() - $$0.dr()) / (float) (Math.PI * 2);
+   }
 
-               if ($$1 == null) {
-                  return 0.0F;
-               } else {
-                  double $$5;
-                  if ($$1.E_().j()) {
-                     $$5 = (double)$$1.f(1.0F);
-                  } else {
-                     $$5 = Math.random();
-                  }
+   private double a(blu $$0) {
+      return aun.c((double)($$0.dD() / 360.0F), 1.0);
+   }
 
-                  $$5 = this.a($$1, $$5);
-                  return (float)$$5;
-               }
-            }
-         }
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
 
-         private double a(cto $$0, double $$1) {
-            if ($$0.X() != this.c) {
-               this.c = $$0.X();
-               double $$2 = $$1 - this.a;
-               $$2 = aun.c($$2 + 0.5, 1.0) - 0.5;
-               this.b += $$2 * 0.1;
-               this.b *= 0.9;
-               this.a = aun.c(this.a + this.b, 1.0);
-            }
+   public interface a {
+      @Nullable
+      ig getPos(fnr var1, cmx var2, blu var3);
+   }
 
-            return this.a;
-         }
-      });
-      a(cna.qP, new ahg("angle"), new gdr(($$0x, $$1, $$2) -> clb.d($$1) ? clb.a($$1.w()) : clb.a($$0x)));
-      a(cna.qQ, new ahg("angle"), new gdr(($$0x, $$1, $$2) -> $$2 instanceof cfh $$3 ? $$3.gr().orElse(null) : null));
-      a(cna.vM, new ahg("pull"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return clf.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fq()) / (float)clf.k($$0x);
-         }
-      });
-      a(cna.vM, new ahg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !clf.d($$0x) ? 1.0F : 0.0F);
-      a(cna.vM, new ahg("charged"), ($$0x, $$1, $$2, $$3) -> clf.d($$0x) ? 1.0F : 0.0F);
-      a(cna.vM, new ahg("firework"), ($$0x, $$1, $$2, $$3) -> clf.d($$0x) && clf.a($$0x, cna.un) ? 1.0F : 0.0F);
-      a(cna.nS, new ahg("broken"), ($$0x, $$1, $$2, $$3) -> clr.d($$0x) ? 0.0F : 1.0F);
-      a(cna.qS, new ahg("cast"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            boolean $$4 = $$2.eT() == $$0x;
-            boolean $$5 = $$2.eU() == $$0x;
-            if ($$2.eT().d() instanceof cmd) {
-               $$5 = false;
-            }
+   static class b {
+      double a;
+      private double b;
+      private long c;
 
-            return ($$4 || $$5) && $$2 instanceof cfh && ((cfh)$$2).ck != null ? 1.0F : 0.0F;
-         }
-      });
-      a(cna.vl, new ahg("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
-      a(cna.vI, new ahg("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
-      a(cna.hB, new ahg("level"), ($$0x, $$1, $$2, $$3) -> {
-         sn $$4 = $$0x.b("BlockStateTag");
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
 
-         try {
-            if ($$4 != null) {
-               tk $$5 = $$4.c(dbc.c.f());
-               if ($$5 != null) {
-                  return (float)Integer.parseInt($$5.t_()) / 16.0F;
-               }
-            }
-         } catch (NumberFormatException var6) {
-         }
-
-         return 1.0F;
-      });
-      a(cna.vV, new ahg("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = aun.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = aun.c(this.a + this.b, 1.0);
+      }
    }
 }

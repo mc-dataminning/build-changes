@@ -1,85 +1,90 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class fup implements ggw {
-   private final List<fuq> a;
+public class fup {
+   public static final fup a = new fup();
+   public final fuo b;
+   public final fuo c;
+   public final fuo d;
+   public final fuo e;
+   public final fuo f;
+   public final fuo g;
+   public final fuo h;
+   public final fuo i;
 
-   public fup(List<fuq> $$0) {
-      this.a = $$0;
+   private fup() {
+      this(fuo.a, fuo.a, fuo.a, fuo.a, fuo.a, fuo.a, fuo.a, fuo.a);
    }
 
-   public List<fuq> a() {
-      return this.a;
+   public fup(fup $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fup $$1 ? this.a.equals($$1.a) : false;
-      }
+   public fup(fuo $$0, fuo $$1, fuo $$2, fuo $$3, fuo $$4, fuo $$5, fuo $$6, fuo $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public fuo a(cmu $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fuo.a;
+      };
    }
 
-   @Override
-   public Collection<ahg> f() {
-      return this.a().stream().map(fuq::a).collect(Collectors.toSet());
+   public boolean b(cmu $$0) {
+      return this.a($$0) != fuo.a;
    }
 
-   @Override
-   public void a(Function<ahg, ggw> $$0) {
-      this.a().stream().map(fuq::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public ggl a(ggp $$0, Function<ggo, gel> $$1, ggt $$2, ahg $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         ggx.a $$4 = new ggx.a();
-
-         for (fuq $$5 : this.a()) {
-            ggl $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<fup> {
+   protected static class a implements JsonDeserializer<fup> {
       public fup a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<fuq> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((fuq)$$2.deserialize($$5, fuq.class));
-            }
-         } else {
-            $$3.add((fuq)$$2.deserialize($$0, fuq.class));
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fuo $$4 = this.a($$2, $$3, cmu.c);
+         fuo $$5 = this.a($$2, $$3, cmu.b);
+         if ($$5 == fuo.a) {
+            $$5 = $$4;
          }
 
-         return new fup($$3);
+         fuo $$6 = this.a($$2, $$3, cmu.e);
+         fuo $$7 = this.a($$2, $$3, cmu.d);
+         if ($$7 == fuo.a) {
+            $$7 = $$6;
+         }
+
+         fuo $$8 = this.a($$2, $$3, cmu.f);
+         fuo $$9 = this.a($$2, $$3, cmu.g);
+         fuo $$10 = this.a($$2, $$3, cmu.h);
+         fuo $$11 = this.a($$2, $$3, cmu.i);
+         return new fup($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private fuo a(JsonDeserializationContext $$0, JsonObject $$1, cmu $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fuo)$$0.deserialize($$1.get($$3), fuo.class) : fuo.a;
       }
    }
 }

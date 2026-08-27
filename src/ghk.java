@@ -1,15 +1,16 @@
-public class ghk extends ghl {
+public class ghk extends ghm {
    public ghk(bxy $$0) {
-      super($$0, arr.bC, ars.g);
+      super($$0, arr.bB, ars.g);
+      this.j = 0;
    }
 
    @Override
-   protected ghh o() {
-      return new ghj(this.n);
+   protected ghi o() {
+      return new ghl(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.aa_();
+      return !this.n.aa_();
    }
 }

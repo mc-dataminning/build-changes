@@ -1,50 +1,15 @@
-@FunctionalInterface
 public interface fvg<T extends dgu> {
-   fvf<T> create(fvg.a var1);
+   void a(T var1, float var2, eqa var3, ftg var4, int var5, int var6);
 
-   public static class a {
-      private final fve a;
-      private final ftz b;
-      private final fzj c;
-      private final fyj d;
-      private final fmr e;
-      private final ewq f;
+   default boolean a(T $$0) {
+      return false;
+   }
 
-      public a(fve $$0, ftz $$1, fzj $$2, fyj $$3, fmr $$4, ewq $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   default int aQ_() {
+      return 64;
+   }
 
-      public fve a() {
-         return this.a;
-      }
-
-      public ftz b() {
-         return this.b;
-      }
-
-      public fyj c() {
-         return this.d;
-      }
-
-      public fzj d() {
-         return this.c;
-      }
-
-      public fmr e() {
-         return this.e;
-      }
-
-      public fmv a(fmt $$0) {
-         return this.e.a($$0);
-      }
-
-      public ewq f() {
-         return this.f;
-      }
+   default boolean a(T $$0, els $$1) {
+      return els.b($$0.aB_()).a((ir)$$1, (double)this.aQ_());
    }
 }

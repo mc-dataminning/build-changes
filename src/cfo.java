@@ -71,20 +71,22 @@ public abstract class cfo extends cfz {
          double $$4 = this.dt() + $$2.d;
          double $$5 = this.dx() + $$2.e;
          cga.a(this, 0.2F);
-         float $$6 = this.x();
+         float $$8;
          if (this.aZ()) {
-            for (int $$7 = 0; $$7 < 4; $$7++) {
-               float $$8 = 0.25F;
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               float $$7 = 0.25F;
                this.dM().a(jx.e, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
             }
 
-            $$6 = 0.8F;
+            $$8 = this.y();
+         } else {
+            $$8 = this.x();
          }
 
-         this.g($$2.b(this.b, this.c, this.d).a((double)$$6));
-         jv $$9 = this.u();
-         if ($$9 != null) {
-            this.dM().a($$9, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
+         this.g($$2.b(this.b, this.c, this.d).a((double)$$8));
+         jv $$10 = this.u();
+         if ($$10 != null) {
+            this.dM().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
          }
 
          this.a_($$3, $$4, $$5);
@@ -110,6 +112,10 @@ public abstract class cfo extends cfz {
 
    protected float x() {
       return 0.95F;
+   }
+
+   protected float y() {
+      return 0.8F;
    }
 
    @Override

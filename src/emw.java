@@ -1,8 +1,11 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -18,16 +21,16 @@ import org.slf4j.Logger;
 public class emw {
    public static final String a = "#";
    private static final Logger b = LogUtils.getLogger();
-   private final Map<String, emo> c = Maps.newHashMap();
-   private final Map<emz, List<emo>> d = Maps.newHashMap();
-   private final Map<String, emq> e = Maps.newHashMap();
+   private final Object2ObjectMap<String, emo> c = new Object2ObjectOpenHashMap(16, 0.5F);
+   private final Reference2ObjectMap<emz, List<emo>> d = new Reference2ObjectOpenHashMap();
+   private final Map<String, emq> e = new Object2ObjectOpenHashMap(16, 0.5F);
    private final Map<emn, emo> f = new EnumMap<>(emn.class);
-   private final Map<String, emr> g = Maps.newHashMap();
-   private final Map<String, emr> h = Maps.newHashMap();
+   private final Object2ObjectMap<String, emr> g = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<String, emr> h = new Object2ObjectOpenHashMap();
 
    @Nullable
    public emo a(@Nullable String $$0) {
-      return this.c.get($$0);
+      return (emo)this.c.get($$0);
    }
 
    public emo a(String $$0, emz $$1, vf $$2, emz.a $$3, boolean $$4, @Nullable wv $$5) {
@@ -35,7 +38,7 @@ public class emw {
          throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
       } else {
          emo $$6 = new emo(this, $$0, $$1, $$2, $$3, $$4, $$5);
-         this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList()).add($$6);
+         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
          this.c.put($$0, $$6);
          this.a($$6);
          return $$6;
@@ -43,7 +46,7 @@ public class emw {
    }
 
    public final void a(emz $$0, emv $$1, Consumer<emu> $$2) {
-      this.d.getOrDefault($$0, Collections.emptyList()).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
+      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
    }
 
    private emq f(String $$0) {
@@ -206,7 +209,7 @@ public class emw {
          }
       }
 
-      List<emo> $$2 = this.d.get($$0.c());
+      List<emo> $$2 = (List<emo>)this.d.get($$0.c());
       if ($$2 != null) {
          $$2.remove($$0);
       }
@@ -229,7 +232,7 @@ public class emw {
 
    @Nullable
    public emr b(String $$0) {
-      return this.g.get($$0);
+      return (emr)this.g.get($$0);
    }
 
    public emr c(String $$0) {
@@ -293,7 +296,7 @@ public class emw {
 
    @Nullable
    public emr e(String $$0) {
-      return this.h.get($$0);
+      return (emr)this.h.get($$0);
    }
 
    public void a(emo $$0) {

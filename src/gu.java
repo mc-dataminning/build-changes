@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.context.ContextChain.Stage;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class gu<T extends du<T>> {
                if ($$10 != null) {
                   $$2.e();
                   boolean $$12 = $$6.a();
-                  List<T> $$13 = new ArrayList<>();
+                  List<T> $$13 = new ObjectArrayList();
 
                   for (T $$14 : $$7) {
                      try {

@@ -1,12 +1,24 @@
-public abstract class fzc<T extends bmm, M extends fki<T>> extends fzr<T, M> {
-   public fzc(fyl.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public final class fzc extends fxi<bzy, fkh<bzy>> {
+   private static final Map<caf, ahg> a = ac.a(Maps.newEnumMap(caf.class), $$0 -> {
+      $$0.put(caf.a, new ahg("textures/entity/horse/horse_white.png"));
+      $$0.put(caf.b, new ahg("textures/entity/horse/horse_creamy.png"));
+      $$0.put(caf.c, new ahg("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(caf.d, new ahg("textures/entity/horse/horse_brown.png"));
+      $$0.put(caf.e, new ahg("textures/entity/horse/horse_black.png"));
+      $$0.put(caf.f, new ahg("textures/entity/horse/horse_gray.png"));
+      $$0.put(caf.g, new ahg("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public fzc(fym.a $$0) {
+      super($$0, new fkh<>($$0.a(fmv.am)), 1.1F);
+      this.a(new gcm(this));
+      this.a(new gcl(this, $$0.f()));
    }
 
-   public fzc(fyl.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gcb<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gcf<>(this, $$0.f()));
-      this.a(new gcp<>(this, $$0.d()));
+   public ahg a(bzy $$0) {
+      return a.get($$0.w());
    }
 }

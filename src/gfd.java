@@ -1,41 +1,69 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gfd {
-   private static final gfk[] a = new gfk[]{
-      a("textures/entity/player/slim/alex.png", gfk.a.a),
-      a("textures/entity/player/slim/ari.png", gfk.a.a),
-      a("textures/entity/player/slim/efe.png", gfk.a.a),
-      a("textures/entity/player/slim/kai.png", gfk.a.a),
-      a("textures/entity/player/slim/makena.png", gfk.a.a),
-      a("textures/entity/player/slim/noor.png", gfk.a.a),
-      a("textures/entity/player/slim/steve.png", gfk.a.a),
-      a("textures/entity/player/slim/sunny.png", gfk.a.a),
-      a("textures/entity/player/slim/zuri.png", gfk.a.a),
-      a("textures/entity/player/wide/alex.png", gfk.a.b),
-      a("textures/entity/player/wide/ari.png", gfk.a.b),
-      a("textures/entity/player/wide/efe.png", gfk.a.b),
-      a("textures/entity/player/wide/kai.png", gfk.a.b),
-      a("textures/entity/player/wide/makena.png", gfk.a.b),
-      a("textures/entity/player/wide/noor.png", gfk.a.b),
-      a("textures/entity/player/wide/steve.png", gfk.a.b),
-      a("textures/entity/player/wide/sunny.png", gfk.a.b),
-      a("textures/entity/player/wide/zuri.png", gfk.a.b)
-   };
+public class gfd extends apn {
+   private static final apj c = new apj(vf.c("resourcePack.vanilla.description"), aa.b().a(aow.a), Optional.empty());
+   private static final aop d = aop.a(apj.b, c);
+   private static final vf e = vf.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, vf> f = Map.of(
+      "programmer_art", vf.c("resourcePack.programmer_art.name"), "high_contrast", vf.c("resourcePack.high_contrast.name")
+   );
+   private static final ahg g = new ahg("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   public static ahg a() {
-      return a[6].a();
+   public gfd(Path $$0, eli $$1) {
+      super(aow.a, b($$0), g, $$1);
+      this.h = this.a($$0);
    }
 
-   public static gfk a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   public static gfk a(GameProfile $$0) {
-      return a($$0.getId());
+   private static aoy b(Path $$0) {
+      aoz $$1 = new aoz().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(aow.a, $$0).c();
    }
 
-   private static gfk a(String $$0, gfk.a $$1) {
-      return new gfk(new ahg($$0), null, null, null, $$1, true);
+   @Override
+   protected vf a(String $$0) {
+      vf $$1 = f.get($$0);
+      return (vf)($$1 != null ? $$1 : vf.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected app a(aov $$0) {
+      return app.a("vanilla", e, true, b($$0), aow.a, app.b.b, apt.c);
+   }
+
+   @Nullable
+   @Override
+   protected app a(String $$0, app.c $$1, vf $$2) {
+      return app.a($$0, $$2, false, $$1, aow.a, app.b.a, apt.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, app>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
+      }
    }
 }

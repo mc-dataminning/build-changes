@@ -1,23 +1,43 @@
-public class fzg extends fzr<byj, fkk<byj>> {
-   private static final ahg a = new ahg("textures/entity/iron_golem/iron_golem.png");
+public class fzg extends fzf<ccm> {
+   private static final ahg a = new ahg("textures/entity/illager/illusioner.png");
 
-   public fzg(fyl.a $$0) {
-      super($$0, new fkk<>($$0.a(fmu.as)), 0.7F);
-      this.a(new gcn(this));
-      this.a(new gco(this, $$0.c()));
+   public fzg(fym.a $$0) {
+      super($$0, new fkk<>($$0.a(fmv.ar)), 0.5F);
+      this.a(new gcq<ccm, fkk<ccm>>(this, $$0.d()) {
+         public void a(eqa $$0, ftg $$1, int $$2, ccm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.go() || $$3.fW()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
+      this.f.c().k = true;
    }
 
-   public ahg a(byj $$0) {
+   public ahg a(ccm $$0) {
       return a;
    }
 
-   protected void a(byj $$0, epz $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
+   public void a(ccm $$0, float $$1, float $$2, eqa $$3, ftg $$4, int $$5) {
+      if ($$0.ce()) {
+         els[] $$6 = $$0.E($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)aun.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)aun.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)aun.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   protected boolean b(ccm $$0) {
+      return true;
    }
 }

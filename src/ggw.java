@@ -1,12 +1,121 @@
-import java.util.Collection;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public interface ggw {
-   Collection<ahg> f();
+public class ggw implements ggm {
+   protected final List<fud> a;
+   protected final Map<ic, List<fud>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final gem f;
+   protected final fup g;
+   protected final fun h;
 
-   void a(Function<ahg, ggw> var1);
+   public ggw(List<fud> $$0, Map<ic, List<fud>> $$1, boolean $$2, boolean $$3, boolean $$4, gem $$5, fup $$6, fun $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+   }
 
-   @Nullable
-   ggl a(ggp var1, Function<ggo, gel> var2, ggt var3, ahg var4);
+   @Override
+   public List<fud> a(@Nullable djg $$0, @Nullable ic $$1, auu $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
+   }
+
+   @Override
+   public boolean a() {
+      return this.c;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gem e() {
+      return this.f;
+   }
+
+   @Override
+   public fup f() {
+      return this.g;
+   }
+
+   @Override
+   public fun g() {
+      return this.h;
+   }
+
+   public static class a {
+      private final List<fud> a = Lists.newArrayList();
+      private final Map<ic, List<fud>> b = Maps.newEnumMap(ic.class);
+      private final fun c;
+      private final boolean d;
+      private gem e;
+      private final boolean f;
+      private final boolean g;
+      private final fup h;
+
+      public a(fui $$0, fun $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
+
+      private a(boolean $$0, boolean $$1, boolean $$2, fup $$3, fun $$4) {
+         for (ic $$5 : ic.values()) {
+            this.b.put($$5, Lists.newArrayList());
+         }
+
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public ggw.a a(ic $$0, fud $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public ggw.a a(fud $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public ggw.a a(gem $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ggw.a a() {
+         return this;
+      }
+
+      public ggm b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new ggw(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
+      }
+   }
 }

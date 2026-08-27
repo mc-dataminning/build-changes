@@ -1,17 +1,53 @@
-public class fqo extends frh {
-   protected fqo(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fro $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public class fqo extends fqu {
+   private static final int a = 3;
+   private final ftm b;
+   private final blu D;
+   private final blu E;
+   private int F;
+   private final fyk G;
+
+   public fqo(fyk $$0, ftm $$1, fnr $$2, blu $$3, blu $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
    }
 
-   public static class a implements fqw<ka> {
-      private final fro a;
+   private fqo(fyk $$0, ftm $$1, fnr $$2, blu $$3, blu $$4, els $$5) {
+      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+   }
 
-      public a(fro $$0) {
-         this.a = $$0;
-      }
+   private blu a(blu $$0) {
+      return (blu)(!($$0 instanceof cbt) ? $$0 : ((cbt)$$0).D());
+   }
 
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   @Override
+   public fqy b() {
+      return fqy.e;
+   }
+
+   @Override
+   public void a(eqe $$0, eus $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = aun.d((double)$$2, this.E.ac, this.E.dr());
+      double $$5 = aun.d((double)$$2, this.E.ad, (this.E.dt() + this.E.dv()) / 2.0);
+      double $$6 = aun.d((double)$$2, this.E.ae, this.E.dx());
+      double $$7 = aun.d((double)$$3, this.D.dr(), $$4);
+      double $$8 = aun.d((double)$$3, this.D.dt(), $$5);
+      double $$9 = aun.d((double)$$3, this.D.dx(), $$6);
+      ftg.a $$10 = this.b.c();
+      els $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new eqa(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
+   }
+
+   @Override
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
    }
 }

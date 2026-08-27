@@ -1,79 +1,43 @@
-import javax.annotation.Nullable;
+public class fqd extends fru {
+   private final frp a;
 
-public class fqd extends frt {
-   private final float a;
-   private final fro b;
-
-   fqd(fnq $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fro $$7) {
+   protected fqd(fnr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, frp $$7) {
       super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public fqx b() {
-      return fqx.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aun.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public fqy b() {
+      return fqy.b;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements fqw<jp> {
-      private final fro a;
+   public static class a implements fqx<ka> {
+      private final frp a;
 
-      public a(fro $$0) {
+      public a(frp $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public fqt a(jp $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         djg $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == dcu.a) {
-            return null;
-         } else {
-            hx $$9 = hx.a($$2, $$3, $$4);
-            int $$10 = evg.O().au().a($$8, $$1, $$9);
-            if ($$8.b() instanceof czl) {
-               $$10 = ((czl)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fqd($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

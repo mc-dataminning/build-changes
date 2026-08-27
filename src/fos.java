@@ -1,37 +1,67 @@
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
 import java.util.Locale;
+import javax.annotation.Nullable;
 
-public enum fos {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
-
-   private final String k;
-   private final vf l;
-   private final vf m;
-
-   private fos(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vf.c($$1);
-      this.m = vf.c($$1 + ".description");
+public record fos(String a, @Nullable fos.a b) {
+   public static fos a() {
+      return a(null);
    }
 
-   public String a() {
-      return this.k;
+   public static fos a(String $$0) {
+      return a(new fos.a.b($$0));
    }
 
-   public vf b() {
-      return this.l;
+   public static fos a(erh $$0) {
+      return a(new fos.a.a($$0));
    }
 
-   public vf c() {
-      return this.m;
+   public static fos a(@Nullable fos.a $$0) {
+      return new fos(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fos.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fos.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.20.3-pre2");
+      if (evh.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fos.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fos.a {
+         public a(erh $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
+
+      public static record b(String a) implements fos.a {
+      }
    }
 }

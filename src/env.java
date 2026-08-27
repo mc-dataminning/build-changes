@@ -67,7 +67,7 @@ public class env {
       this.d = a($$0);
       this.f = false;
       ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (eny.a(this.d, "Get capabilities")) {
+      if (enz.a(this.d, "Get capabilities")) {
          throw new IllegalStateException("Failed to get OpenAL capabilities");
       } else if (!$$2.OpenALC11) {
          throw new IllegalStateException("OpenAL 1.1 not supported");
@@ -94,7 +94,7 @@ public class env {
             $$3.close();
          }
 
-         if (eny.a(this.d, "Create context")) {
+         if (enz.a(this.d, "Create context")) {
             throw new IllegalStateException("Unable to create OpenAL context");
          } else {
             ALC10.alcMakeContextCurrent(this.e);
@@ -104,7 +104,7 @@ public class env {
             this.i = new env.b($$7);
             this.j = new env.b($$6);
             ALCapabilities $$8 = AL.createCapabilities($$2);
-            eny.a("Initialization");
+            enz.a("Initialization");
             if (!$$8.AL_EXT_source_distance_model) {
                throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
             } else {
@@ -112,7 +112,7 @@ public class env {
                if (!$$8.AL_EXT_LINEAR_DISTANCE) {
                   throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
                } else {
-                  eny.a("Enable per-source distance models");
+                  enz.a("Enable per-source distance models");
                   a.info("OpenAL initialized on device {}", this.b());
                   this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
                }
@@ -156,13 +156,13 @@ public class env {
       label58: {
          try {
             int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (eny.a(this.d, "Get attributes size")) {
+            if (enz.a(this.d, "Get attributes size")) {
                throw new IllegalStateException("Failed to get OpenAL attributes");
             }
 
             IntBuffer $$2 = $$0.mallocInt($$1);
             ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (eny.a(this.d, "Get attributes")) {
+            if (enz.a(this.d, "Get attributes")) {
                throw new IllegalStateException("Failed to get OpenAL attributes");
             }
 
@@ -262,7 +262,7 @@ public class env {
 
    private static OptionalLong b(@Nullable String $$0) {
       long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !eny.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
+      return $$1 != 0L && !enz.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
    }
 
    public void d() {

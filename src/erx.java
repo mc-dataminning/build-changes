@@ -1,46 +1,27 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class erx extends erv {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public erx.a i = erx.a.a;
+public class erx extends erw {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public static erx a(JsonObject $$0) {
-      erx $$1 = new erx();
+   public static erx a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      erx $$3 = new erx();
 
       try {
-         $$1.a = ets.b("id", $$0, "");
-         $$1.b = ets.b("name", $$0, "");
-         $$1.c = ets.b("version", $$0, "");
-         $$1.d = ets.b("author", $$0, "");
-         $$1.e = ets.b("link", $$0, "");
-         $$1.f = ets.b("image", $$0, null);
-         $$1.g = ets.b("trailer", $$0, "");
-         $$1.h = ets.b("recommendedPlayers", $$0, "");
-         $$1.i = erx.a.valueOf(ets.b("type", $$0, erx.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         $$3.a = ett.b("downloadLink", $$2, "");
+         $$3.b = ett.b("resourcePackUrl", $$2, "");
+         $$3.c = ett.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
 
-      return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+      return $$3;
    }
 }

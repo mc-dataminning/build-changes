@@ -1,67 +1,89 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record foq(String a, @Nullable foq.a b) {
-   public static foq a() {
-      return a(null);
-   }
-
-   public static foq a(String $$0) {
-      return a(new foq.a.b($$0));
-   }
-
-   public static foq a(erg $$0) {
-      return a(new foq.a.a($$0));
-   }
-
-   public static foq a(@Nullable foq.a $$0) {
-      return new foq(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
+public abstract class foq {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
    @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof foq.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   protected fot e;
+
+   public foq(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof foq.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.20.3-pre1");
-      if (evg.e().a()) {
-         $$0.append(" (modded)");
+   public abstract foq b();
+
+   public abstract fda a(fda var1, fov var2);
+
+   public abstract static class a<R extends foq> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public foq.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements foq.a {
-         public a(erg $$0) {
-            this($$0.a, $$0.n);
-         }
+      public R e() {
+         return this.a;
       }
 
-      public static record b(String a) implements foq.a {
+      public UUID f() {
+         return this.a.c;
       }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public fot h() {
+         return this.a.e;
+      }
+
+      public void a(fot $$0) {
+         this.a.e = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract foq.b c();
+
+      public abstract Either<foq.c, foq.b> a(fov var1);
+   }
+
+   public static record b(vf e) {
+      public static final foq.b a = new foq.b(vf.c("gui.abuseReport.send.no_reason"));
+      public static final foq.b b = new foq.b(vf.c("gui.chatReport.send.no_reported_messages"));
+      public static final foq.b c = new foq.b(vf.c("gui.chatReport.send.too_many_messages"));
+      public static final foq.b d = new foq.b(vf.c("gui.abuseReport.send.comment_too_long"));
+
+      public eyq a() {
+         return eyq.a(this.e);
+      }
+
+      public vf b() {
+         return this.e;
+      }
+   }
+
+   public static record c(UUID a, fou b, AbuseReport c) {
    }
 }

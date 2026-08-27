@@ -1,16 +1,19 @@
-public class fyx extends gas<bmc> {
-   private static final ahg a = new ahg("textures/entity/squid/glow_squid.png");
+public class fyx extends fzs<ccj, fkj<ccj>> {
+   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public fyx(fyl.a $$0, flx<bmc> $$1) {
-      super($$0, $$1);
+   public fyx(fym.a $$0, float $$1) {
+      super($$0, new fkb($$0.a(fmv.ae)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gcq<>(this, $$0.d()));
+      this.a(new gcn<>(this, new fkb($$0.a(fmv.af)), new fkb($$0.a(fmv.ag)), $$0.g()));
    }
 
-   public ahg a(bmc $$0) {
+   protected void a(ccj $$0, eqa $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ahg a(ccj $$0) {
       return a;
-   }
-
-   protected int a(bmc $$0, hx $$1) {
-      int $$2 = (int)aun.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

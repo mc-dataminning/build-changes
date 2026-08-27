@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgw {
+public class fgw extends fgk {
+   private static final vf i = vf.c("gui.recipebook.toggleRecipes.smokable");
+
+   @Override
+   protected vf c() {
+      return i;
+   }
+
+   @Override
+   protected Set<cms> b() {
+      return dgj.f().keySet();
+   }
 }

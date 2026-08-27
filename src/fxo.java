@@ -1,18 +1,11 @@
-public class fxo extends fzr<bxy, fja<bxy>> {
-   private static final ahg a = new ahg("textures/entity/bee/bee_angry.png");
-   private static final ahg i = new ahg("textures/entity/bee/bee_angry_nectar.png");
-   private static final ahg j = new ahg("textures/entity/bee/bee.png");
-   private static final ahg k = new ahg("textures/entity/bee/bee_nectar.png");
+public class fxo extends fzs<bxs, fja> {
+   private static final ahg a = new ahg("textures/entity/bat.png");
 
-   public fxo(fyl.a $$0) {
-      super($$0, new fja<>($$0.a(fmu.j)), 0.4F);
+   public fxo(fym.a $$0) {
+      super($$0, new fja($$0.a(fmv.g)), 0.25F);
    }
 
-   public ahg a(bxy $$0) {
-      if ($$0.aa_()) {
-         return $$0.go() ? i : a;
-      } else {
-         return $$0.go() ? k : j;
-      }
+   public ahg a(bxs $$0) {
+      return a;
    }
 }

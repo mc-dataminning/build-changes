@@ -1,99 +1,162 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.UUID;
 
-public class exe extends ewv {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   public static final int o = 8;
-   protected static final exe.b p = $$0 -> $$0.get();
-   protected final exe.c q;
-   protected final exe.b r;
+public class exe {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final ahg[] c = new ahg[]{
+      new ahg("boss_bar/pink_background"),
+      new ahg("boss_bar/blue_background"),
+      new ahg("boss_bar/red_background"),
+      new ahg("boss_bar/green_background"),
+      new ahg("boss_bar/yellow_background"),
+      new ahg("boss_bar/purple_background"),
+      new ahg("boss_bar/white_background")
+   };
+   private static final ahg[] d = new ahg[]{
+      new ahg("boss_bar/pink_progress"),
+      new ahg("boss_bar/blue_progress"),
+      new ahg("boss_bar/red_progress"),
+      new ahg("boss_bar/green_progress"),
+      new ahg("boss_bar/yellow_progress"),
+      new ahg("boss_bar/purple_progress"),
+      new ahg("boss_bar/white_progress")
+   };
+   private static final ahg[] e = new ahg[]{
+      new ahg("boss_bar/notched_6_background"),
+      new ahg("boss_bar/notched_10_background"),
+      new ahg("boss_bar/notched_12_background"),
+      new ahg("boss_bar/notched_20_background")
+   };
+   private static final ahg[] f = new ahg[]{
+      new ahg("boss_bar/notched_6_progress"),
+      new ahg("boss_bar/notched_10_progress"),
+      new ahg("boss_bar/notched_12_progress"),
+      new ahg("boss_bar/notched_20_progress")
+   };
+   private final evh g;
+   final Map<UUID, ext> h = Maps.newLinkedHashMap();
 
-   public static exe.a a(vf $$0, exe.c $$1) {
-      return new exe.a($$0, $$1);
+   public exe(evh $$0) {
+      this.g = $$0;
    }
 
-   protected exe(int $$0, int $$1, int $$2, int $$3, vf $$4, exe.c $$5, exe.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.q = $$5;
-      this.r = $$6;
-   }
+   public void a(ewt $$0) {
+      if (!this.h.isEmpty()) {
+         int $$1 = $$0.a();
+         int $$2 = 12;
 
-   @Override
-   public void b() {
-      this.q.onPress(this);
-   }
-
-   @Override
-   protected vt aK_() {
-      return this.r.createNarrationMessage(() -> super.aK_());
-   }
-
-   @Override
-   public void a(fax $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final vf a;
-      private final exe.c b;
-      @Nullable
-      private eyp c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private exe.b h = exe.p;
-
-      public a(vf $$0, exe.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public exe.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public exe.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public exe.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public exe.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public exe.a a(@Nullable eyp $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public exe.a a(exe.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public exe a() {
-         exe $$0 = new exe(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+         for (ext $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            vf $$6 = $$3.j();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
+         }
       }
    }
 
-   public interface b {
-      vt createNarrationMessage(Supplier<vt> var1);
+   private void a(ewt $$0, int $$1, int $$2, bjq $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = aun.b($$3.k(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
    }
 
-   public interface c {
-      void onPress(exe var1);
+   private void a(ewt $$0, int $$1, int $$2, bjq $$3, int $$4, ahg[] $$5, ahg[] $$6) {
+      $$0.a($$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.m() != bjq.b.a) {
+         RenderSystem.enableBlend();
+         $$0.a($$6[$$3.m().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+         RenderSystem.disableBlend();
+      }
+   }
+
+   public void a(zk $$0) {
+      $$0.a(new zk.b() {
+         @Override
+         public void a(UUID $$0, vf $$1, float $$2, bjq.a $$3, bjq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            exe.this.h.put($$0, new ext($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            exe.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            exe.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, vf $$1) {
+            exe.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bjq.a $$1, bjq.b $$2) {
+            ext $$3 = exe.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            ext $$4 = exe.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bjq $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bjq $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bjq $$0 : this.h.values()) {
+            if ($$0.p()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

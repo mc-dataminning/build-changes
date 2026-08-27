@@ -1,138 +1,226 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class etj extends gkn {
-   static final Logger a = LogUtils.getLogger();
-   private static final vf b = vf.c("mco.configure.world.subscription.title");
-   private static final vf c = vf.c("mco.configure.world.subscription.start");
-   private static final vf v = vf.c("mco.configure.world.subscription.timeleft");
-   private static final vf w = vf.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final vf x = vf.c("mco.configure.world.subscription.expired");
-   private static final vf y = vf.c("mco.configure.world.subscription.less_than_a_day");
-   private static final vf z = vf.c("mco.configure.world.subscription.unknown");
-   private static final vf A = vf.c("mco.configure.world.subscription.recurring.info");
-   private final fcz B;
-   final erg C;
-   final fcz D;
-   private vf E = z;
-   private vf F = z;
-   @Nullable
-   private ert.a G;
+public class etj extends gko {
+   private static final int v = 2;
+   public static final List<bjx> a = ImmutableList.of(bjx.a, bjx.b, bjx.c, bjx.d);
+   private static final int w = 0;
+   public static final List<ctl> b = ImmutableList.of(ctl.a, ctl.b, ctl.c);
+   private static final vf x = vf.c("mco.configure.world.edit.slot.name");
+   static final vf y = vf.c("mco.configure.world.spawnProtection");
+   private static final vf z = vf.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
+   private exo A;
+   protected final esq c;
+   private int B;
+   private int C;
+   private final ero D;
+   private final erh.d E;
+   private bjx F;
+   private ctl G;
+   private final String H;
+   private String I;
+   private boolean J;
+   private boolean K;
+   private boolean L;
+   private boolean M;
+   int N;
+   private boolean O;
+   private boolean P;
+   etj.a Q;
 
-   public etj(fcz $$0, erg $$1, fcz $$2) {
-      super(euy.a);
-      this.B = $$0;
-      this.C = $$1;
-      this.D = $$2;
+   public etj(esq $$0, ero $$1, erh.d $$2, int $$3) {
+      super(vf.c("mco.configure.world.buttons.options"));
+      this.c = $$0;
+      this.D = $$1;
+      this.E = $$2;
+      this.F = a(a, $$1.h, 2);
+      this.G = a(b, $$1.i, 0);
+      this.H = $$1.b($$3);
+      this.a($$1.a($$3));
+      if ($$2 == erh.d.a) {
+         this.J = $$1.a;
+         this.N = $$1.e;
+         this.P = $$1.g;
+         this.L = $$1.b;
+         this.M = $$1.c;
+         this.K = $$1.d;
+         this.O = $$1.f;
+      } else {
+         this.J = true;
+         this.N = 0;
+         this.P = false;
+         this.L = true;
+         this.M = true;
+         this.K = true;
+         this.O = true;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.c);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   private static <T> T a(List<T> $$0, int $$1, int $$2) {
+      try {
+         return $$0.get($$1);
+      } catch (IndexOutOfBoundsException var4) {
+         return $$0.get($$2);
+      }
+   }
+
+   private static <T> int a(List<T> $$0, T $$1, int $$2) {
+      int $$3 = $$0.indexOf($$1);
+      return $$3 == -1 ? $$2 : $$3;
    }
 
    @Override
    public void aN_() {
-      this.a(this.C.a);
-      this.d(exe.a(vf.c("mco.configure.world.subscription.extend"), $$0 -> fbr.a(this, atj.a(this.C.b, this.f.V().b()))).a(this.g / 2 - 100, g(6), 200, 20).a());
-      if (this.C.j) {
-         this.d(exe.a(vf.c("mco.configure.world.delete.button"), $$0 -> {
-            vf $$1 = vf.c("mco.configure.world.delete.question.line1");
-            vf $$2 = vf.c("mco.configure.world.delete.question.line2");
-            this.f.a(new esv(this::c, esv.a.a, $$1, $$2, true));
-         }).a(this.g / 2 - 100, g(10), 200, 20).a());
-      } else if (eqk.b() && this.C.s != null) {
-         this.d(new exo(this.g / 2 - 100, g(8), 200, 46, vf.a("mco.snapshot.subscription.info", this.C.s), this.i).a(-6250336));
-      } else {
-         this.d(new exo(this.g / 2 - 100, g(8), 200, 46, A, this.i).a(-6250336));
+      this.C = 170;
+      this.B = this.g / 2 - this.C;
+      int $$0 = this.g / 2 + 10;
+      if (this.E != erh.d.a) {
+         vf $$1;
+         if (this.E == erh.d.c) {
+            $$1 = vf.c("mco.configure.world.edit.subscreen.adventuremap");
+         } else if (this.E == erh.d.e) {
+            $$1 = vf.c("mco.configure.world.edit.subscreen.inspiration");
+         } else {
+            $$1 = vf.c("mco.configure.world.edit.subscreen.experience");
+         }
+
+         this.a(new gkm($$1, this.g / 2, 26, 16711680));
       }
 
-      this.d(exe.a(ve.k, $$0 -> this.aE_()).a(this.g / 2 - 100, g(12), 200, 20).a());
+      this.A = new exo(this.f.h, this.B, g(1), this.C, 20, null, vf.c("mco.configure.world.edit.slot.name"));
+      this.A.f(10);
+      this.A.a(this.I);
+      this.A.b(this::a);
+      this.b(this.A);
+      exm<Boolean> $$4 = this.d(exm.b(this.J).a($$0, g(1), this.C, 20, vf.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.J = $$1));
+      this.d(exm.a(ctl::e).a(b).a(this.G).a(this.B, g(3), this.C, 20, vf.c("selectWorld.gameMode"), ($$0x, $$1) -> this.G = $$1));
+      vf $$5 = vf.c("mco.configure.world.spawn_toggle.message");
+      exm<Boolean> $$6 = this.d(exm.b(this.L).a($$0, g(3), this.C, 20, vf.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.L = $$0x)));
+      exm<Boolean> $$7 = exm.b(this.F != bjx.a && this.M)
+         .a($$0, g(5), this.C, 20, vf.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.M = $$0x));
+      this.d(exm.a(bjx::b).a(a).a(this.F).a(this.B, g(5), this.C, 20, vf.c("options.difficulty"), ($$1, $$2) -> {
+         this.F = $$2;
+         if (this.E == erh.d.a) {
+            boolean $$3 = this.F != bjx.a;
+            $$7.j = $$3;
+            $$7.a($$3 && this.M);
+         }
+      }));
+      this.d($$7);
+      this.Q = this.d(new etj.a(this.B, g(7), this.C, this.N, 0.0F, 16.0F));
+      exm<Boolean> $$8 = this.d(
+         exm.b(this.K)
+            .a(
+               $$0,
+               g(7),
+               this.C,
+               20,
+               vf.c("mco.configure.world.spawnNPCs"),
+               this.a(vf.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.K = $$0x)
+            )
+      );
+      exm<Boolean> $$9 = this.d(exm.b(this.P).a(this.B, g(9), this.C, 20, vf.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.P = $$1));
+      exm<Boolean> $$10 = this.d(exm.b(this.O).a($$0, g(9), this.C, 20, vf.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.O = $$1));
+      if (this.E != erh.d.a) {
+         $$4.j = false;
+         $$6.j = false;
+         $$8.j = false;
+         $$7.j = false;
+         this.Q.j = false;
+         $$10.j = false;
+         $$9.j = false;
+      }
+
+      if (this.F == bjx.a) {
+         $$7.j = false;
+      }
+
+      this.d(exf.a(vf.c("mco.configure.world.buttons.done"), $$0x -> this.D()).a(this.B, g(13), this.C, 20).a());
+      this.d(exf.a(ve.e, $$0x -> this.f.a(this.c)).a($$0, g(13), this.C, 20).a());
+      this.e(this.A);
+   }
+
+   private exm.b<Boolean> a(vf $$0, Consumer<Boolean> $$1) {
+      return ($$2, $$3) -> {
+         if ($$3) {
+            $$1.accept(true);
+         } else {
+            this.f.a(new fbt($$1xx -> {
+               if ($$1xx) {
+                  $$1.accept(false);
+               }
+
+               this.f.a(this);
+            }, z, $$0, ve.i, ve.e));
+         }
+      };
    }
 
    @Override
    public vf h() {
-      return ve.b(b, c, this.F, v, this.E);
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  eqp $$0 = eqp.a();
-                  $$0.i(etj.this.C.a);
-               } catch (esc var2) {
-                  etj.a.error("Couldn't delete world", var2);
-               }
-
-               etj.this.f.execute(() -> etj.this.f.a(etj.this.D));
-            }
-         }).start();
-      }
-
-      this.f.a(this);
-   }
-
-   private void a(long $$0) {
-      eqp $$1 = eqp.a();
-
-      try {
-         ert $$2 = $$1.h($$0);
-         this.E = this.a($$2.b);
-         this.F = b($$2.a);
-         this.G = $$2.c;
-      } catch (esc var5) {
-         a.error("Couldn't get subscription", var5);
-         this.f.a(new est(var5, this.B));
-      }
-   }
-
-   private static vf b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return vf.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+      return ve.a(this.o(), this.n());
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.B);
-   }
-
-   @Override
-   public void a(ews $$0, int $$1, int $$2, float $$3) {
+   public void a(ewt $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 100;
-      $$0.a(this.i, b, this.g / 2, 17, -1);
-      $$0.a(this.i, c, $$4, g(0), -6250336, false);
-      $$0.a(this.i, this.F, $$4, g(1), -1, false);
-      if (this.G == ert.a.a) {
-         $$0.a(this.i, v, $$4, g(3), -6250336, false);
-      } else if (this.G == ert.a.b) {
-         $$0.a(this.i, w, $$4, g(3), -6250336, false);
-      }
-
-      $$0.a(this.i, this.E, $$4, g(4), -1, false);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      $$0.a(this.i, x, this.B + this.C / 2 - this.i.a(x) / 2, g(0) - 5, -1, false);
+      this.A.a($$0, $$1, $$2, $$3);
    }
 
-   private vf a(int $$0) {
-      if ($$0 < 0 && this.C.j) {
-         return x;
-      } else if ($$0 <= 1) {
-         return y;
+   private void a(String $$0) {
+      if ($$0.equals(this.H)) {
+         this.I = "";
       } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return vf.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return vf.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? vf.a("mco.configure.world.subscription.remaining.days", $$2) : vf.i();
+         this.I = $$0;
+      }
+   }
+
+   private void D() {
+      int $$0 = a(a, this.F, 2);
+      int $$1 = a(b, this.G, 0);
+      if (this.E != erh.d.c && this.E != erh.d.d && this.E != erh.d.e) {
+         boolean $$2 = this.E == erh.d.a && this.F != bjx.a && this.M;
+         this.c.a(new ero(this.J, this.L, $$2, this.K, this.N, this.O, $$0, $$1, this.P, this.I, this.D.j, this.D.k));
+      } else {
+         this.c.a(new ero(this.D.a, this.D.b, this.D.c, this.D.d, this.D.e, this.D.f, $$0, $$1, this.D.g, this.I, this.D.j, this.D.k));
+      }
+   }
+
+   class a extends exb {
+      private final double d;
+      private final double e;
+
+      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
+         super($$0, $$1, $$2, 20, ve.a, 0.0);
+         this.d = (double)$$4;
+         this.e = (double)$$5;
+         this.c = (double)((aun.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
+         this.b();
+      }
+
+      @Override
+      public void a() {
+         if (etj.this.Q.j) {
+            etj.this.N = (int)aun.d(aun.a(this.c, 0.0, 1.0), this.d, this.e);
          }
+      }
+
+      @Override
+      protected void b() {
+         this.b(ve.a(etj.y, (vf)(etj.this.N == 0 ? ve.c : vf.b(String.valueOf(etj.this.N)))));
       }
    }
 }

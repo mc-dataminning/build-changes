@@ -10,8 +10,6 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class ajl {
@@ -172,7 +170,7 @@ public class ajl {
 
       public void a(ds $$0, ContextChain<ds> $$1, gj $$2, gp<ds> $$3) throws CommandSyntaxException {
          CommandContext<ds> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<ahg, Collection<hb<ds>>> $$5 = fx.b($$4, "name").mapSecond($$0x -> (Collection)$$0x.map(Collections::singleton, Function.identity()));
+         Pair<ahg, Collection<hb<ds>>> $$5 = fx.c($$4, "name");
          Collection<hb<ds>> $$6 = (Collection<hb<ds>>)$$5.getSecond();
          if ($$6.isEmpty()) {
             throw ajl.d.create(vf.a((ahg)$$5.getFirst()));

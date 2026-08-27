@@ -1,72 +1,533 @@
-public class exo extends ewy {
-   private final ewq a;
-   private final exy b;
+import java.util.Objects;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public exo(int $$0, int $$1, int $$2, int $$3, vf $$4, ewq $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new exy($$4, $$5).c(this.w() - this.b());
+public class exo extends exd implements eyi {
+   private static final eys d = new eys(new ahg("widget/text_field"), new ahg("widget/text_field_highlighted"));
+   public static final int a = -1;
+   public static final int b = 1;
+   private static final int e = 1;
+   private static final int f = -3092272;
+   private static final String m = "_";
+   public static final int c = 14737632;
+   private static final int n = 300;
+   private final ewr o;
+   private String p = "";
+   private int q = 32;
+   private boolean r = true;
+   private boolean t = true;
+   private boolean u = true;
+   private int v;
+   private int w;
+   private int x;
+   private int y = 14737632;
+   private int z = 7368816;
+   @Nullable
+   private String A;
+   @Nullable
+   private Consumer<String> B;
+   private Predicate<String> C = Objects::nonNull;
+   private BiFunction<String, Integer, atz> D = ($$0x, $$1x) -> atz.forward($$0x, wc.a);
+   @Nullable
+   private vf E;
+   private long F = ac.b();
+
+   public exo(ewr $$0, int $$1, int $$2, vf $$3) {
+      this($$0, 0, 0, $$1, $$2, $$3);
    }
 
-   public exo a(int $$0) {
-      this.b.b($$0);
-      return this;
+   public exo(ewr $$0, int $$1, int $$2, int $$3, int $$4, vf $$5) {
+      this($$0, $$1, $$2, $$3, $$4, null, $$5);
    }
 
-   @Override
-   public void l(int $$0) {
-      super.l($$0);
-      this.b.c(this.w() - this.b());
-   }
-
-   @Override
-   protected int g() {
-      return this.b.u();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(ews $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aI_()) {
-         this.a($$0, this.B() - this.a(), this.C() - this.a(), this.w() + this.b(), this.u() + this.b());
+   public exo(ewr $$0, int $$1, int $$2, int $$3, int $$4, @Nullable exo $$5, vf $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.o = $$0;
+      if ($$5 != null) {
+         this.a($$5.a());
       }
    }
 
+   public void b(Consumer<String> $$0) {
+      this.B = $$0;
+   }
+
+   public void a(BiFunction<String, Integer, atz> $$0) {
+      this.D = $$0;
+   }
+
    @Override
-   public void b(ews $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.B(), (float)this.C(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
+   protected vt aK_() {
+      vf $$0 = this.x();
+      return vf.a("gui.narrate.editBox", $$0, this.p);
+   }
+
+   public void a(String $$0) {
+      if (this.C.test($$0)) {
+         if ($$0.length() > this.q) {
+            this.p = $$0.substring(0, this.q);
          } else {
-            super.b($$0, $$1, $$2, $$3);
+            this.p = $$0;
+         }
+
+         this.c(false);
+         this.i(this.w);
+         this.d($$0);
+      }
+   }
+
+   public String a() {
+      return this.p;
+   }
+
+   public String b() {
+      int $$0 = Math.min(this.w, this.x);
+      int $$1 = Math.max(this.w, this.x);
+      return this.p.substring($$0, $$1);
+   }
+
+   public void a(Predicate<String> $$0) {
+      this.C = $$0;
+   }
+
+   public void b(String $$0) {
+      int $$1 = Math.min(this.w, this.x);
+      int $$2 = Math.max(this.w, this.x);
+      int $$3 = this.q - this.p.length() - ($$1 - $$2);
+      if ($$3 > 0) {
+         String $$4 = aa.a($$0);
+         int $$5 = $$4.length();
+         if ($$3 < $$5) {
+            if (Character.isHighSurrogate($$4.charAt($$3 - 1))) {
+               $$3--;
+            }
+
+            $$4 = $$4.substring(0, $$3);
+            $$5 = $$3;
+         }
+
+         String $$6 = new StringBuilder(this.p).replace($$1, $$2, $$4).toString();
+         if (this.C.test($$6)) {
+            this.p = $$6;
+            this.e($$1 + $$5);
+            this.i(this.w);
+            this.d(this.p);
          }
       }
    }
 
-   public boolean j() {
-      return super.e();
+   private void d(String $$0) {
+      if (this.B != null) {
+         this.B.accept($$0);
+      }
+   }
+
+   private void r(int $$0) {
+      if (fda.s()) {
+         this.a($$0);
+      } else {
+         this.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      if (!this.p.isEmpty()) {
+         if (this.x != this.w) {
+            this.b("");
+         } else {
+            this.c(this.d($$0));
+         }
+      }
+   }
+
+   public void b(int $$0) {
+      this.c(this.s($$0));
+   }
+
+   public void c(int $$0) {
+      if (!this.p.isEmpty()) {
+         if (this.x != this.w) {
+            this.b("");
+         } else {
+            int $$1 = Math.min($$0, this.w);
+            int $$2 = Math.max($$0, this.w);
+            if ($$1 != $$2) {
+               String $$3 = new StringBuilder(this.p).delete($$1, $$2).toString();
+               if (this.C.test($$3)) {
+                  this.p = $$3;
+                  this.b($$1, false);
+               }
+            }
+         }
+      }
+   }
+
+   public int d(int $$0) {
+      return this.a($$0, this.e());
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   private int a(int $$0, int $$1, boolean $$2) {
+      int $$3 = $$1;
+      boolean $$4 = $$0 < 0;
+      int $$5 = Math.abs($$0);
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!$$4) {
+            int $$7 = this.p.length();
+            $$3 = this.p.indexOf(32, $$3);
+            if ($$3 == -1) {
+               $$3 = $$7;
+            } else {
+               while ($$2 && $$3 < $$7 && this.p.charAt($$3) == ' ') {
+                  $$3++;
+               }
+            }
+         } else {
+            while ($$2 && $$3 > 0 && this.p.charAt($$3 - 1) == ' ') {
+               $$3--;
+            }
+
+            while ($$3 > 0 && this.p.charAt($$3 - 1) != ' ') {
+               $$3--;
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.b(this.s($$0), $$1);
+   }
+
+   private int s(int $$0) {
+      return ac.a(this.p, this.w, $$0);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.e($$0);
+      if (!$$1) {
+         this.i(this.w);
+      }
+
+      this.d(this.p);
+   }
+
+   public void e(int $$0) {
+      this.w = aun.a($$0, 0, this.p.length());
+      this.t(this.w);
+   }
+
+   public void b(boolean $$0) {
+      this.b(0, $$0);
+   }
+
+   public void c(boolean $$0) {
+      this.b(this.p.length(), $$0);
    }
 
    @Override
-   protected void c(ews $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.B() + this.a()), (float)(this.C() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.A() && this.aI_()) {
+         switch ($$0) {
+            case 259:
+               if (this.u) {
+                  this.r(-1);
+               }
+
+               return true;
+            case 260:
+            case 264:
+            case 265:
+            case 266:
+            case 267:
+            default:
+               if (fda.f($$0)) {
+                  this.c(false);
+                  this.i(0);
+                  return true;
+               } else if (fda.e($$0)) {
+                  evh.O().o.a(this.b());
+                  return true;
+               } else if (fda.d($$0)) {
+                  if (this.k()) {
+                     this.b(evh.O().o.a());
+                  }
+
+                  return true;
+               } else {
+                  if (fda.c($$0)) {
+                     evh.O().o.a(this.b());
+                     if (this.k()) {
+                        this.b("");
+                     }
+
+                     return true;
+                  }
+
+                  return false;
+               }
+            case 261:
+               if (this.u) {
+                  this.r(1);
+               }
+
+               return true;
+            case 262:
+               if (fda.s()) {
+                  this.b(this.d(1), fda.t());
+               } else {
+                  this.a(1, fda.t());
+               }
+
+               return true;
+            case 263:
+               if (fda.s()) {
+                  this.b(this.d(-1), fda.t());
+               } else {
+                  this.a(-1, fda.t());
+               }
+
+               return true;
+            case 268:
+               this.b(fda.t());
+               return true;
+            case 269:
+               this.c(fda.t());
+               return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public boolean d() {
+      return this.A() && this.aI_() && this.k();
    }
 
    @Override
-   protected void a(fax $$0) {
-      $$0.a(faw.a, this.x());
+   public boolean a(char $$0, int $$1) {
+      if (!this.d()) {
+         return false;
+      } else if (aa.a($$0)) {
+         if (this.u) {
+            this.b(Character.toString($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      int $$2 = aun.a($$0) - this.B();
+      if (this.r) {
+         $$2 -= 4;
+      }
+
+      String $$3 = this.o.a(this.p.substring(this.v), this.g());
+      this.b(this.o.a($$3, $$2).length() + this.v, fda.t());
+   }
+
+   @Override
+   public void a(gjd $$0) {
+   }
+
+   @Override
+   public void b(ewt $$0, int $$1, int $$2, float $$3) {
+      if (this.i()) {
+         if (this.f()) {
+            ahg $$4 = d.a(this.A(), this.aI_());
+            $$0.a($$4, this.B(), this.C(), this.w(), this.u());
+         }
+
+         int $$5 = this.u ? this.y : this.z;
+         int $$6 = this.w - this.v;
+         String $$7 = this.o.a(this.p.substring(this.v), this.g());
+         boolean $$8 = $$6 >= 0 && $$6 <= $$7.length();
+         boolean $$9 = this.aI_() && (ac.b() - this.F) / 300L % 2L == 0L && $$8;
+         int $$10 = this.r ? this.B() + 4 : this.B();
+         int $$11 = this.r ? this.C() + (this.h - 8) / 2 : this.C();
+         int $$12 = $$10;
+         int $$13 = aun.a(this.x - this.v, 0, $$7.length());
+         if (!$$7.isEmpty()) {
+            String $$14 = $$8 ? $$7.substring(0, $$6) : $$7;
+            $$12 = $$0.b(this.o, this.D.apply($$14, this.v), $$10, $$11, $$5);
+         }
+
+         boolean $$15 = this.w < this.p.length() || this.p.length() >= this.j();
+         int $$16 = $$12;
+         if (!$$8) {
+            $$16 = $$6 > 0 ? $$10 + this.g : $$10;
+         } else if ($$15) {
+            $$16 = $$12 - 1;
+            $$12--;
+         }
+
+         if (!$$7.isEmpty() && $$8 && $$6 < $$7.length()) {
+            $$0.b(this.o, this.D.apply($$7.substring($$6), this.w), $$12, $$11, $$5);
+         }
+
+         if (this.E != null && $$7.isEmpty() && !this.aI_()) {
+            $$0.b(this.o, this.E, $$12, $$11, $$5);
+         }
+
+         if (!$$15 && this.A != null) {
+            $$0.b(this.o, this.A, $$16 - 1, $$11, -8355712);
+         }
+
+         if ($$9) {
+            if ($$15) {
+               $$0.a(fto.C(), $$16, $$11 - 1, $$16 + 1, $$11 + 1 + 9, -3092272);
+            } else {
+               $$0.b(this.o, "_", $$16, $$11, $$5);
+            }
+         }
+
+         if ($$13 != $$6) {
+            int $$17 = $$10 + this.o.b($$7.substring(0, $$13));
+            this.a($$0, $$16, $$11 - 1, $$17 - 1, $$11 + 1 + 9);
+         }
+      }
+   }
+
+   private void a(ewt $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$1 < $$3) {
+         int $$5 = $$1;
+         $$1 = $$3;
+         $$3 = $$5;
+      }
+
+      if ($$2 < $$4) {
+         int $$6 = $$2;
+         $$2 = $$4;
+         $$4 = $$6;
+      }
+
+      if ($$3 > this.B() + this.g) {
+         $$3 = this.B() + this.g;
+      }
+
+      if ($$1 > this.B() + this.g) {
+         $$1 = this.B() + this.g;
+      }
+
+      $$0.a(fto.D(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   public void f(int $$0) {
+      this.q = $$0;
+      if (this.p.length() > $$0) {
+         this.p = this.p.substring(0, $$0);
+         this.d(this.p);
+      }
+   }
+
+   private int j() {
+      return this.q;
+   }
+
+   public int e() {
+      return this.w;
+   }
+
+   public boolean f() {
+      return this.r;
+   }
+
+   public void d(boolean $$0) {
+      this.r = $$0;
+   }
+
+   public void g(int $$0) {
+      this.y = $$0;
+   }
+
+   public void h(int $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      if (this.t || $$0) {
+         super.a($$0);
+         if ($$0) {
+            this.F = ac.b();
+         }
+      }
+   }
+
+   private boolean k() {
+      return this.u;
+   }
+
+   public void e(boolean $$0) {
+      this.u = $$0;
+   }
+
+   public int g() {
+      return this.f() ? this.g - 8 : this.g;
+   }
+
+   public void i(int $$0) {
+      this.x = aun.a($$0, 0, this.p.length());
+      this.t(this.x);
+   }
+
+   private void t(int $$0) {
+      if (this.o != null) {
+         this.v = Math.min(this.v, this.p.length());
+         int $$1 = this.g();
+         String $$2 = this.o.a(this.p.substring(this.v), $$1);
+         int $$3 = $$2.length() + this.v;
+         if ($$0 == this.v) {
+            this.v = this.v - this.o.a(this.p, $$1, true).length();
+         }
+
+         if ($$0 > $$3) {
+            this.v += $$0 - $$3;
+         } else if ($$0 <= this.v) {
+            this.v = this.v - (this.v - $$0);
+         }
+
+         this.v = aun.a(this.v, 0, this.p.length());
+      }
+   }
+
+   public void f(boolean $$0) {
+      this.t = $$0;
+   }
+
+   public boolean i() {
+      return this.k;
+   }
+
+   public void g(boolean $$0) {
+      this.k = $$0;
+   }
+
+   public void c(@Nullable String $$0) {
+      this.A = $$0;
+   }
+
+   public int q(int $$0) {
+      return $$0 > this.p.length() ? this.B() : this.B() + this.o.b(this.p.substring(0, $$0));
+   }
+
+   @Override
+   public void a(fay $$0) {
+      $$0.a(fax.a, this.aK_());
+   }
+
+   public void c(vf $$0) {
+      this.E = $$0;
    }
 }

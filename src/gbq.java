@@ -1,9 +1,11 @@
-public class gbq extends fxi<cdh, fmn<cdh>> {
-   public gbq(fyl.a $$0) {
-      this($$0, fmu.cb, fmu.ce, fmu.cf);
+public class gbq extends fzs<cdg, fkg<cdg>> {
+   private static final ahg a = new ahg("textures/entity/hoglin/zoglin.png");
+
+   public gbq(fym.a $$0) {
+      super($$0, new fkg<>($$0.a(fmv.ca)), 0.7F);
    }
 
-   public gbq(fyl.a $$0, fmt $$1, fmt $$2, fmt $$3) {
-      super($$0, new fmn<>($$0.a($$1)), new fmn<>($$0.a($$2)), new fmn<>($$0.a($$3)));
+   public ahg a(cdg $$0) {
+      return a;
    }
 }

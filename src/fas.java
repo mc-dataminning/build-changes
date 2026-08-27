@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface fas {
+   fas a(int var1);
 
-public class fas implements fap {
-   private final fan a;
-   private final fas.a b;
-   private int c = 0;
+   fas a(int var1, int var2);
 
-   private fas(fas.a $$0) {
-      this(0, 0, $$0);
+   fas a(int var1, int var2, int var3, int var4);
+
+   fas b(int var1);
+
+   fas c(int var1);
+
+   fas d(int var1);
+
+   fas e(int var1);
+
+   fas f(int var1);
+
+   fas g(int var1);
+
+   fas a(float var1, float var2);
+
+   fas a(float var1);
+
+   fas b(float var1);
+
+   default fas a() {
+      return this.a(0.0F);
    }
 
-   public fas(int $$0, int $$1, fas.a $$2) {
-      this.a = new fan($$0, $$1);
-      this.b = $$2;
+   default fas b() {
+      return this.a(0.5F);
    }
 
-   public fas a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default fas c() {
+      return this.a(1.0F);
    }
 
-   public far b() {
-      return this.a.b();
+   default fas d() {
+      return this.b(0.0F);
    }
 
-   public far c() {
-      return this.a.c();
+   default fas e() {
+      return this.b(0.5F);
    }
 
-   public <T extends faq> T a(T $$0, far $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default fas f() {
+      return this.b(1.0F);
    }
 
-   public <T extends faq> T a(T $$0) {
-      return this.a($$0, this.b());
+   fas g();
+
+   fas.a h();
+
+   static fas i() {
+      return new fas.a();
    }
 
-   public <T extends faq> T a(T $$0, Consumer<far> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
+   public static class a implements fas {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<faq> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public int u() {
-      return this.a.u();
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.a.n($$0);
-   }
-
-   @Override
-   public void o(int $$0) {
-      this.a.o($$0);
-   }
-
-   @Override
-   public int B() {
-      return this.a.B();
-   }
-
-   @Override
-   public int C() {
-      return this.a.C();
-   }
-
-   public static fas d() {
-      return new fas(fas.a.b);
-   }
-
-   public static fas e() {
-      return new fas(fas.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fan $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends faq> T a(fan $$0, T $$1, int $$2, far $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      public a(fas.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public fas.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fas.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fas.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fas.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fas.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fas.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fas.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fas.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fas.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fas.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fas.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fas.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fas.a j() {
+         return new fas.a(this);
+      }
+
+      @Override
+      public fas.a h() {
+         return this;
       }
    }
 }

@@ -1,78 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+public class fmd<T extends blu> extends fjo<T> {
+   private final fmw a;
+   private final fmw b;
 
-public class fmd<T extends byy> extends flf<T> {
-   private static final String j = "egg_belly";
-   private final fmv k;
-
-   public fmd(fmv $$0) {
-      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
-      this.k = $$0.b("egg_belly");
+   public fmd(fmw $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fnb c() {
-      fnd $$0 = new fnd();
-      fne $$1 = $$0.a();
-      $$1.a("head", fna.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fmx.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         fna.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         fmx.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("egg_belly", fna.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fmx.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", fna.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fmx.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", fna.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fmx.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", fna.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fmx.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fna.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fmx.a(5.0F, 21.0F, -4.0F));
-      return fnb.a($$0, 128, 64);
+   public static fnc a(fna $$0) {
+      fne $$1 = new fne();
+      fnf $$2 = $$1.a();
+      int $$3 = 19;
+      $$2.a("body", fnb.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fmy.a(0.0F, 19.0F, 0.0F));
+      $$2.a("tail", fnb.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fmy.a(0.0F, 19.0F, 3.0F));
+      $$2.a("right_fin", fnb.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fmy.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fnb.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fmy.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fnb.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fmy.a(0.0F, 16.0F, -3.0F));
+      $$2.a("bottom_fin", fnb.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fmy.a(0.0F, 22.0F, -3.0F));
+      return fnc.a($$1, 32, 32);
    }
 
    @Override
-   protected Iterable<fmv> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   public fmw a() {
+      return this.a;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.f.e = aun.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.g.e = aun.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.h.g = aun.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.i.g = aun.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.h.e = 0.0F;
-      this.i.e = 0.0F;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-      this.f.f = 0.0F;
-      this.g.f = 0.0F;
-      if (!$$0.aZ() && $$0.aC()) {
-         float $$6 = $$0.w() ? 4.0F : 1.0F;
-         float $$7 = $$0.w() ? 2.0F : 1.0F;
-         float $$8 = 5.0F;
-         this.h.f = aun.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
-         this.h.g = 0.0F;
-         this.i.f = aun.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
-         this.i.g = 0.0F;
-         this.f.f = aun.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
-         this.f.e = 0.0F;
-         this.g.f = aun.b($$1 * 5.0F) * 3.0F * $$2;
-         this.g.e = 0.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.5F;
       }
 
-      this.k.k = !this.e && $$0.u();
-   }
-
-   @Override
-   public void a(epz $$0, eqd $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      boolean $$8 = this.k.k;
-      if ($$8) {
-         $$0.a();
-         $$0.a(0.0F, -0.08F, 0.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$8) {
-         $$0.b();
-      }
+      this.b.f = -$$6 * 0.45F * aun.a(0.6F * $$3);
    }
 }

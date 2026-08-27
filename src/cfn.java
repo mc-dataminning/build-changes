@@ -30,6 +30,9 @@ public abstract class cfn extends cfz {
    protected cfn(bly<? extends cfn> $$0, cto $$1, cmx $$2) {
       super($$0, $$1);
       this.s = $$2.p();
+      if ($$2.A()) {
+         this.b($$2.y());
+      }
    }
 
    protected cfn(bly<? extends cfn> $$0, double $$1, double $$2, double $$3, cto $$4, cmx $$5) {
@@ -296,7 +299,8 @@ public abstract class cfn extends cfz {
 
       boolean $$8 = $$1.ai() == bly.F;
       int $$9 = $$1.az();
-      if (this.bN() && !$$8) {
+      boolean $$10 = $$1.ai().a(asj.r);
+      if (this.bN() && !$$8 && !$$10) {
          $$1.g(5);
       }
 
@@ -305,38 +309,38 @@ public abstract class cfn extends cfz {
             return;
          }
 
-         if ($$1 instanceof bmk $$10) {
+         if ($$1 instanceof bmk $$11) {
             if (!this.dM().B && this.E() <= 0) {
-               $$10.p($$10.eO() + 1);
+               $$11.p($$11.eO() + 1);
             }
 
             if (this.o > 0) {
-               double $$11 = Math.max(0.0, 1.0 - $$10.b(bnq.i));
-               els $$12 = this.dp().d(1.0, 0.0, 1.0).d().a((double)this.o * 0.6 * $$11);
-               if ($$12.g() > 0.0) {
-                  $$10.j($$12.c, 0.1, $$12.e);
+               double $$12 = Math.max(0.0, 1.0 - $$11.b(bnq.i));
+               els $$13 = this.dp().d(1.0, 0.0, 1.0).d().a((double)this.o * 0.6 * $$12);
+               if ($$13.g() > 0.0) {
+                  $$11.j($$13.c, 0.1, $$13.e);
                }
             }
 
             if (!this.dM().B && $$5 instanceof bmk) {
-               crk.a($$10, $$5);
-               crk.b((bmk)$$5, $$10);
+               crk.a($$11, $$5);
+               crk.b((bmk)$$5, $$11);
             }
 
-            this.a($$10);
-            if ($$5 != null && $$10 != $$5 && $$10 instanceof cfh && $$5 instanceof ane && !this.aU()) {
+            this.a($$11);
+            if ($$5 != null && $$11 != $$5 && $$11 instanceof cfh && $$5 instanceof ane && !this.aU()) {
                ((ane)$$5).c.b(new aaf(aaf.g, 0.0F));
             }
 
             if (!$$1.bx() && this.r != null) {
-               this.r.add($$10);
+               this.r.add($$11);
             }
 
-            if (!this.dM().B && $$5 instanceof ane $$13) {
+            if (!this.dM().B && $$5 instanceof ane $$14) {
                if (this.r != null && this.D()) {
-                  am.H.a($$13, this.r);
+                  am.H.a($$14, this.r);
                } else if (!$$1.bx() && this.D()) {
-                  am.H.a($$13, Arrays.asList($$1));
+                  am.H.a($$14, Arrays.asList($$1));
                }
             }
          }
@@ -345,7 +349,7 @@ public abstract class cfn extends cfz {
          if (this.E() <= 0) {
             this.am();
          }
-      } else if ($$1.ai().a(asj.r)) {
+      } else if ($$10) {
          this.s();
       } else {
          $$1.h($$9);

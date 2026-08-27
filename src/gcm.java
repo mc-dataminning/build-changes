@@ -1,101 +1,24 @@
 import com.google.common.collect.Maps;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class gcm<T extends bmk, M extends fki<T>, A extends fki<T>> extends gcw<T, M> {
-   private static final Map<String, ahg> a = Maps.newHashMap();
-   private final A b;
-   private final A c;
-   private final gek d;
+public class gcm extends gcx<bzy, fkh<bzy>> {
+   private static final Map<caa, ahg> a = ac.a(Maps.newEnumMap(caa.class), $$0 -> {
+      $$0.put(caa.a, null);
+      $$0.put(caa.b, new ahg("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(caa.c, new ahg("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(caa.d, new ahg("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(caa.e, new ahg("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public gcm(gag<T, M> $$0, A $$1, A $$2, ggr $$3) {
+   public gcm(gah<bzy, fkh<bzy>> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3.a(ftu.g);
    }
 
-   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$3, blz.e, $$2, this.a(blz.e));
-      this.a($$0, $$1, $$3, blz.d, $$2, this.a(blz.d));
-      this.a($$0, $$1, $$3, blz.c, $$2, this.a(blz.c));
-      this.a($$0, $$1, $$3, blz.f, $$2, this.a(blz.f));
-   }
-
-   private void a(epz $$0, ftf $$1, T $$2, blz $$3, int $$4, A $$5) {
-      cmx $$6 = $$2.c($$3);
-      if ($$6.d() instanceof ckh $$7) {
-         if ($$7.g() == $$3) {
-            this.c().a($$5);
-            this.a($$5, $$3);
-            boolean $$9 = this.b($$3);
-            if ($$7 instanceof cln $$10) {
-               int $$11 = $$10.e_($$6);
-               float $$12 = (float)($$11 >> 16 & 0xFF) / 255.0F;
-               float $$13 = (float)($$11 >> 8 & 0xFF) / 255.0F;
-               float $$14 = (float)($$11 & 0xFF) / 255.0F;
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, $$12, $$13, $$14, null);
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, "overlay");
-            } else {
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, null);
-            }
-
-            cpa.a($$2.dM().I_(), $$6, true).ifPresent($$6x -> this.a($$7.d(), $$0, $$1, $$4, $$6x, $$5, $$9));
-            if ($$6.B()) {
-               this.a($$0, $$1, $$4, $$5);
-            }
-         }
+   public void a(eqa $$0, ftg $$1, int $$2, bzy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ahg $$10 = a.get($$3.ge());
+      if ($$10 != null && !$$3.ce()) {
+         eqe $$11 = $$1.getBuffer(fto.i($$10));
+         this.c().a($$0, $$11, $$2, fzn.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-   }
-
-   protected void a(A $$0, blz $$1) {
-      $$0.b_(false);
-      switch ($$1) {
-         case f:
-            $$0.k.k = true;
-            $$0.l.k = true;
-            break;
-         case e:
-            $$0.m.k = true;
-            $$0.n.k = true;
-            $$0.o.k = true;
-            break;
-         case d:
-            $$0.m.k = true;
-            $$0.p.k = true;
-            $$0.q.k = true;
-            break;
-         case c:
-            $$0.p.k = true;
-            $$0.q.k = true;
-      }
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, ckh $$3, A $$4, boolean $$5, float $$6, float $$7, float $$8, @Nullable String $$9) {
-      eqd $$10 = $$1.getBuffer(ftn.a(this.a($$3, $$5, $$9)));
-      $$4.a($$0, $$10, $$2, gec.d, $$6, $$7, $$8, 1.0F);
-   }
-
-   private void a(cki $$0, epz $$1, ftf $$2, int $$3, cpa $$4, A $$5, boolean $$6) {
-      gel $$7 = this.d.a($$6 ? $$4.a($$0) : $$4.b($$0));
-      eqd $$8 = $$7.a($$2.getBuffer(ftu.a($$4.a().a().d())));
-      $$5.a($$1, $$8, $$3, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void a(epz $$0, ftf $$1, int $$2, A $$3) {
-      $$3.a($$0, $$1.getBuffer(ftn.k()), $$2, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private A a(blz $$0) {
-      return this.b($$0) ? this.b : this.c;
-   }
-
-   private boolean b(blz $$0) {
-      return $$0 == blz.d;
-   }
-
-   private ahg a(ckh $$0, boolean $$1, @Nullable String $$2) {
-      String $$3 = "textures/models/armor/" + $$0.d().e() + "_layer_" + ($$1 ? 2 : 1) + ($$2 == null ? "" : "_" + $$2) + ".png";
-      return a.computeIfAbsent($$3, ahg::new);
    }
 }

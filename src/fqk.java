@@ -1,53 +1,26 @@
-public class fqk extends frt {
-   fqk(fnq $$0, double $$1, double $$2, double $$3) {
+public class fqk extends fqs {
+   fqk(fnr $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.t = 7;
    }
 
    @Override
-   public fqx b() {
-      return fqx.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aun.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements fqw<ka> {
-      private final fro a;
-
-      public a(fro $$0) {
-         this.a = $$0;
+   public void a() {
+      for (int $$0 = 0; $$0 < 3; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(jx.y, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
       }
 
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqk $$8 = new fqk($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+      if (this.s++ == this.t) {
+         this.k();
       }
    }
 
-   public static class b implements fqw<ka> {
-      private final fro a;
-
-      public b(fro $$0) {
-         this.a = $$0;
-      }
-
-      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqk $$8 = new fqk($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements fqx<ka> {
+      public fqu a(ka $$0, fnr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqk($$1, $$2, $$3, $$4);
       }
    }
 }

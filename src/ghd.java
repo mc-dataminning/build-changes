@@ -1,18 +1,14 @@
-import java.nio.file.Path;
-import java.util.List;
 import java.util.UUID;
 
 public interface ghd {
-   void scheduleReload(ghd.a var1);
+   void sendResponse(UUID var1, ghd.a var2);
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<ghd.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f;
    }
 }

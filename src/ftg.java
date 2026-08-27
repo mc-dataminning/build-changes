@@ -1,125 +1,94 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
-public class ftg implements ftf {
-   private final ftf.a a;
-   private final ftf.a b = ftf.a(new epu(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public ftg(ftf.a $$0) {
-      this.a = $$0;
+public interface ftg {
+   static ftg.a a(epv $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   @Override
-   public eqd getBuffer(ftn $$0) {
-      if ($$0.K()) {
-         eqd $$1 = this.b.getBuffer($$0);
-         return new ftg.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         eqd $$2 = this.a.getBuffer($$0);
-         Optional<ftn> $$3 = $$0.J();
-         if ($$3.isPresent()) {
-            eqd $$4 = this.b.getBuffer($$3.get());
-            ftg.a $$5 = new ftg.a($$4, this.c, this.d, this.e, this.f);
-            return eqg.a($$5, $$2);
-         } else {
-            return $$2;
+   static ftg.a a(Map<fto, epv> $$0, epv $$1) {
+      return new ftg.a($$1, $$0);
+   }
+
+   eqe getBuffer(fto var1);
+
+   public static class a implements ftg {
+      protected final epv a;
+      protected final Map<fto, epv> b;
+      protected Optional<fto> c = Optional.empty();
+      protected final Set<epv> d = Sets.newHashSet();
+
+      protected a(epv $$0, Map<fto, epv> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public eqe getBuffer(fto $$0) {
+         Optional<fto> $$1 = $$0.N();
+         epv $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               fto $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private epv b(fto $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fto $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
          }
       }
-   }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eqe $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends epy {
-      private final eqd f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(eqd $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+         for (fto $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public eqd a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public eqd a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public eqd a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public eqd a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eqd b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eqd a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public void a(fto $$0) {
+         epv $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

@@ -1,45 +1,29 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
-
 public enum fbf {
    a,
-   b,
-   c,
-   d;
+   b;
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fbe a() {
-      return switch (this) {
-         case a, b -> fbe.b;
-         case c, d -> fbe.a;
-      };
-   }
-
-   public fbf b() {
+   public fbf a() {
       return switch (this) {
          case a -> b;
          case b -> a;
-         case c -> d;
-         case d -> c;
       };
    }
 
-   public boolean c() {
+   public fbg b() {
       return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
+         case a -> fbg.d;
+         case b -> fbg.b;
       };
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   public fbg c() {
+      return switch (this) {
+         case a -> fbg.c;
+         case b -> fbg.a;
+      };
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+   public fbg a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

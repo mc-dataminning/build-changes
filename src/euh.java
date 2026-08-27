@@ -1,66 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class euh extends eug {
+public abstract class euh implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final vf c = vf.c("mco.configure.world.opening");
-   private final erg d;
-   private final fcz e;
-   private final boolean f;
-   private final evg g;
+   private boolean c = false;
 
-   public euh(erg $$0, fcz $$1, boolean $$2, evg $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void run() {
-      eqp $$0 = eqp.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof esp) {
-                     ((esp)this.e).e();
-                  }
-
-                  this.d.e = erg.c.b;
-                  if (this.f) {
-                     eqk.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (esd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public vf a() {
-      return c;
+   public static void a(fda $$0) {
+      evh $$1 = evh.O();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(vf $$0) {
+      this.b();
+      evh $$1 = evh.O();
+      $$1.execute(() -> $$1.a(new esu($$0, new eql(new fdf()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof esd $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vf.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(esd $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vf a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

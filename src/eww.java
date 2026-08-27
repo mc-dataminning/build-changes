@@ -1,71 +1,46 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public abstract class eww extends exc implements eyy {
-   @Nullable
-   private eyz a;
-   private boolean b;
+public abstract class eww extends exd {
+   protected static final int e = 2;
+   private static final eys a = new eys(new ahg("widget/button"), new ahg("widget/button_disabled"), new ahg("widget/button_highlighted"));
 
    public eww(int $$0, int $$1, int $$2, int $$3, vf $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 
+   public abstract void b();
+
    @Override
-   public final boolean aG_() {
-      return this.b;
+   protected void b(ewt $$0, int $$1, int $$2, float $$3) {
+      evh $$4 = evh.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | aun.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(ewt $$0, ewr $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eyz aH_() {
-      return this.a;
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
    @Override
-   public void a(@Nullable eyz $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fbd.a($$0)) {
+         this.a(evh.O().ai());
+         this.b();
+         return true;
+      } else {
+         return false;
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ewp a(fbd $$0) {
-      return eyy.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return eyy.super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return eyy.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return eyy.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aI_() {
-      return eyy.super.aI_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      eyy.super.a($$0);
    }
 }

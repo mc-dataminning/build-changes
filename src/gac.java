@@ -1,16 +1,12 @@
-public class gac extends fzr<byp, flb<byp>> {
-   private static final ahg a = new ahg("textures/entity/bear/polarbear.png");
+public class gac extends fzf<ccr> {
+   private static final ahg a = new ahg("textures/entity/illager/pillager.png");
 
-   public gac(fyl.a $$0) {
-      super($$0, new flb<>($$0.a(fmu.aX)), 0.9F);
+   public gac(fym.a $$0) {
+      super($$0, new fkk<>($$0.a(fmv.aO)), 0.5F);
+      this.a(new gcq<>(this, $$0.d()));
    }
 
-   public ahg a(byp $$0) {
+   public ahg a(ccr $$0) {
       return a;
-   }
-
-   protected void a(byp $$0, epz $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
    }
 }

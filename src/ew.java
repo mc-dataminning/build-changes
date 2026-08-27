@@ -90,36 +90,48 @@ public class ew implements ArgumentType<ew.b> {
                   return $$2;
                }
             };
-         } else if ($$4.startsWith("#")) {
-            List<emv> $$5 = List.of(emv.d($$4));
-            return ($$1, $$2) -> $$5;
          } else {
-            return ($$1, $$2) -> {
-               MinecraftServer $$3x = $$1.l();
-               ane $$4x = $$3x.ae().a($$4);
-               if ($$4x != null) {
-                  return List.of($$4x);
-               } else {
-                  try {
-                     UUID $$5x = UUID.fromString($$4);
-                     List<emv> $$6 = new ArrayList<>();
+            List<emv> $$5 = List.of(emv.d($$4));
+            if ($$4.startsWith("#")) {
+               return ($$1, $$2) -> $$5;
+            } else {
+               try {
+                  UUID $$6 = UUID.fromString($$4);
+                  return ($$2, $$3x) -> {
+                     MinecraftServer $$4x = $$2.l();
+                     emv $$5x = null;
+                     List<emv> $$6x = null;
 
-                     for (and $$7 : $$3x.H()) {
-                        blu $$8 = $$7.a($$5x);
+                     for (and $$7 : $$4x.H()) {
+                        blu $$8 = $$7.a($$6);
                         if ($$8 != null) {
-                           $$6.add($$8);
+                           if ($$5x == null) {
+                              $$5x = $$8;
+                           } else {
+                              if ($$6x == null) {
+                                 $$6x = new ArrayList<>();
+                                 $$6x.add($$5x);
+                              }
+
+                              $$6x.add($$8);
+                           }
                         }
                      }
 
-                     if (!$$6.isEmpty()) {
-                        return $$6;
+                     if ($$6x != null) {
+                        return $$6x;
+                     } else {
+                        return $$5x != null ? List.of($$5x) : $$5;
                      }
-                  } catch (IllegalArgumentException var10) {
-                  }
-
-                  return List.of(emv.d($$4));
+                  };
+               } catch (IllegalArgumentException var6) {
+                  return ($$2, $$3x) -> {
+                     MinecraftServer $$4x = $$2.l();
+                     ane $$5x = $$4x.ae().a($$4);
+                     return $$5x != null ? List.of($$5x) : $$5;
+                  };
                }
-            };
+            }
          }
       }
    }

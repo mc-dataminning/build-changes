@@ -101,6 +101,6 @@ public class cnm extends cms {
 
    @Override
    public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
-      cox.a($$0, $$2, 1.0F);
+      cox.a($$0, $$2, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
    }
 }

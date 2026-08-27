@@ -1,15 +1,9 @@
-public class gfj extends gfn {
-   private static final ahg a = new ahg("back");
-
-   public gfj(gem $$0) {
-      super($$0, new ahg("textures/atlas/paintings.png"), new ahg("paintings"));
+public class gfj extends gfo {
+   public gfj(gen $$0) {
+      super($$0, new ahg("textures/atlas/mob_effects.png"), new ahg("mob_effects"));
    }
 
-   public gel a(cbp $$0) {
-      return this.a(kd.l.b($$0));
-   }
-
-   public gel a() {
-      return this.a(a);
+   public gem a(blf $$0) {
+      return this.a(kd.d.b($$0));
    }
 }

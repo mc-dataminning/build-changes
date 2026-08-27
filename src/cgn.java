@@ -11,7 +11,7 @@ public class cgn extends cfo {
 
    @Override
    protected float x() {
-      return this.y() ? 0.73F : super.x();
+      return this.z() ? 0.73F : super.x();
    }
 
    @Override
@@ -21,7 +21,7 @@ public class cgn extends cfo {
 
    @Override
    public float a(ctg $$0, csu $$1, hx $$2, djg $$3, eeq $$4, float $$5) {
-      return this.y() && cbh.d($$3) ? Math.min(0.8F, $$5) : $$5;
+      return this.z() && cbh.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
@@ -82,7 +82,7 @@ public class cgn extends cfo {
       this.an.a(e, false);
    }
 
-   public boolean y() {
+   public boolean z() {
       return this.an.b(e);
    }
 
@@ -98,7 +98,7 @@ public class cgn extends cfo {
    @Override
    public void b(sn $$0) {
       super.b($$0);
-      $$0.a("dangerous", this.y());
+      $$0.a("dangerous", this.z());
    }
 
    @Override

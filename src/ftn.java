@@ -1,464 +1,245 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
 
-public abstract class ftn extends ftm {
-   private static final int aX = 1048576;
-   public static final int aS = 4194304;
-   public static final int aT = 786432;
-   public static final int aU = 1536;
-   private static final ftn aY = a("solid", epx.j, eqe.b.h, 4194304, true, false, ftn.b.a().a(as).a(p).a(am).a(true));
-   private static final ftn aZ = a("cutout_mipped", epx.j, eqe.b.h, 4194304, true, false, ftn.b.a().a(as).a(q).a(am).a(true));
-   private static final ftn ba = a("cutout", epx.j, eqe.b.h, 786432, true, false, ftn.b.a().a(as).a(r).a(an).a(true));
-   private static final ftn bb = a("translucent", epx.j, eqe.b.h, 786432, true, true, a(s));
-   private static final ftn bc = a("translucent_moving_block", epx.j, eqe.b.h, 786432, false, true, O());
-   private static final Function<ahg, ftn> bd = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<ahg, ftn> be = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(v).a(new ftm.n($$0, false, false)).a(c).a(as).a(au).a(true);
-      return a("entity_solid", epx.k, eqe.b.h, 1536, true, false, $$1);
+public abstract class ftn {
+   private static final float aS = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aT;
+   private final Runnable aU;
+   protected static final ftn.p c = new ftn.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
    });
-   private static final Function<ahg, ftn> bf = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(w).a(new ftm.n($$0, false, false)).a(c).a(as).a(au).a(true);
-      return a("entity_cutout", epx.k, eqe.b.h, 1536, true, false, $$1);
+   protected static final ftn.p d = new ftn.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<ahg, Boolean, ftn> bg = ac.a(($$0, $$1) -> {
-      ftn.b $$2 = ftn.b.a().a(x).a(new ftm.n($$0, false, false)).a(c).a(ax).a(as).a(au).a($$1);
-      return a("entity_cutout_no_cull", epx.k, eqe.b.h, 1536, true, false, $$2);
+   protected static final ftn.p e = new ftn.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<ahg, Boolean, ftn> bh = ac.a(($$0, $$1) -> {
-      ftn.b $$2 = ftn.b.a().a(y).a(new ftm.n($$0, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$1);
-      return a("entity_cutout_no_cull_z_offset", epx.k, eqe.b.h, 1536, true, false, $$2);
-   });
-   private static final Function<ahg, ftn> bi = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(z).a(new ftm.n($$0, false, false)).a(h).a(aO).a(as).a(au).a(ftm.aC).a(true);
-      return a("item_entity_translucent_cull", epx.k, eqe.b.h, 1536, true, true, $$1);
-   });
-   private static final Function<ahg, ftn> bj = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(A).a(new ftm.n($$0, false, false)).a(h).a(as).a(au).a(true);
-      return a("entity_translucent_cull", epx.k, eqe.b.h, 1536, true, true, $$1);
-   });
-   private static final BiFunction<ahg, Boolean, ftn> bk = ac.a(($$0, $$1) -> {
-      ftn.b $$2 = ftn.b.a().a(B).a(new ftm.n($$0, false, false)).a(h).a(ax).a(as).a(au).a($$1);
-      return a("entity_translucent", epx.k, eqe.b.h, 1536, true, true, $$2);
-   });
-   private static final BiFunction<ahg, Boolean, ftn> bl = ac.a(($$0, $$1) -> {
-      ftn.b $$2 = ftn.b.a().a(C).a(new ftm.n($$0, false, false)).a(h).a(ax).a(aD).a(au).a($$1);
-      return a("entity_translucent_emissive", epx.k, eqe.b.h, 1536, true, true, $$2);
-   });
-   private static final Function<ahg, ftn> bm = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(D).a(new ftm.n($$0, false, false)).a(ax).a(as).a(true);
-      return a("entity_smooth_cutout", epx.k, eqe.b.h, 1536, $$1);
-   });
-   private static final BiFunction<ahg, Boolean, ftn> bn = ac.a(($$0, $$1) -> {
-      ftn.b $$2 = ftn.b.a().a(E).a(new ftm.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aD : aC).a(false);
-      return a("beacon_beam", epx.j, eqe.b.h, 1536, false, true, $$2);
-   });
-   private static final Function<ahg, ftn> bo = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(F).a(new ftm.n($$0, false, false)).a(az).a(ax).a(as).a(au).a(false);
-      return a("entity_decal", epx.k, eqe.b.h, 1536, $$1);
-   });
-   private static final Function<ahg, ftn> bp = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(G).a(new ftm.n($$0, false, false)).a(h).a(ax).a(as).a(au).a(aD).a(false);
-      return a("entity_no_outline", epx.k, eqe.b.h, 1536, false, true, $$1);
-   });
-   private static final Function<ahg, ftn> bq = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(H).a(new ftm.n($$0, false, false)).a(h).a(aw).a(as).a(au).a(aD).a(aA).a(aH).a(false);
-      return a("entity_shadow", epx.k, eqe.b.h, 1536, false, false, $$1);
-   });
-   private static final Function<ahg, ftn> br = ac.b($$0 -> {
-      ftn.b $$1 = ftn.b.a().a(I).a(new ftm.n($$0, false, false)).a(ax).a(true);
-      return a("entity_alpha", epx.k, eqe.b.h, 1536, $$1);
-   });
-   private static final BiFunction<ahg, ftm.p, ftn> bs = ac.a(($$0, $$1) -> {
-      ftm.n $$2 = new ftm.n($$0, false, false);
-      return a("eyes", epx.k, eqe.b.h, 1536, false, true, ftn.b.a().a(J).a($$2).a($$1).a(aD).a(false));
-   });
-   private static final ftn bt = a("leash", epx.p, eqe.b.f, 1536, ftn.b.a().a(L).a(ao).a(ax).a(as).a(false));
-   private static final ftn bu = a("water_mask", epx.m, eqe.b.h, 1536, ftn.b.a().a(M).a(ao).a(aE).a(false));
-   private static final ftn bv = a(
-      "armor_glint", epx.q, eqe.b.h, 1536, ftn.b.a().a(O).a(new ftm.n(fzj.a, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aH).a(false)
-   );
-   private static final ftn bw = a(
-      "armor_entity_glint", epx.q, eqe.b.h, 1536, ftn.b.a().a(P).a(new ftm.n(fzj.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(aH).a(false)
-   );
-   private static final ftn bx = a(
-      "glint_translucent", epx.q, eqe.b.h, 1536, ftn.b.a().a(Q).a(new ftm.n(fzj.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aO).a(false)
-   );
-   private static final ftn by = a("glint", epx.q, eqe.b.h, 1536, ftn.b.a().a(R).a(new ftm.n(fzj.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
-   private static final ftn bz = a("glint_direct", epx.q, eqe.b.h, 1536, ftn.b.a().a(S).a(new ftm.n(fzj.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
-   private static final ftn bA = a(
-      "entity_glint", epx.q, eqe.b.h, 1536, ftn.b.a().a(T).a(new ftm.n(fzj.a, true, false)).a(aD).a(ax).a(az).a(f).a(aO).a(ar).a(false)
-   );
-   private static final ftn bB = a(
-      "entity_glint_direct", epx.q, eqe.b.h, 1536, ftn.b.a().a(U).a(new ftm.n(fzj.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(false)
-   );
-   private static final Function<ahg, ftn> bC = ac.b($$0 -> {
-      ftm.n $$1 = new ftm.n($$0, false, false);
-      return a("crumbling", epx.j, eqe.b.h, 1536, false, true, ftn.b.a().a(V).a($$1).a(g).a(aD).a(aG).a(false));
-   });
-   private static final Function<ahg, ftn> bD = ac.b(
-      $$0 -> a("text", epx.t, eqe.b.h, 786432, false, true, ftn.b.a().a(W).a(new ftm.n($$0, false, false)).a(h).a(as).a(false))
-   );
-   private static final ftn bE = a("text_background", epx.p, eqe.b.h, 1536, false, true, ftn.b.a().a(X).a(ao).a(h).a(as).a(false));
-   private static final Function<ahg, ftn> bF = ac.b(
-      $$0 -> a("text_intensity", epx.t, eqe.b.h, 786432, false, true, ftn.b.a().a(Y).a(new ftm.n($$0, false, false)).a(h).a(as).a(false))
-   );
-   private static final Function<ahg, ftn> bG = ac.b(
-      $$0 -> a("text_polygon_offset", epx.t, eqe.b.h, 1536, false, true, ftn.b.a().a(W).a(new ftm.n($$0, false, false)).a(h).a(as).a(aG).a(false))
-   );
-   private static final Function<ahg, ftn> bH = ac.b(
-      $$0 -> a("text_intensity_polygon_offset", epx.t, eqe.b.h, 1536, false, true, ftn.b.a().a(Y).a(new ftm.n($$0, false, false)).a(h).a(as).a(aG).a(false))
-   );
-   private static final Function<ahg, ftn> bI = ac.b(
-      $$0 -> a("text_see_through", epx.t, eqe.b.h, 1536, false, true, ftn.b.a().a(Z).a(new ftm.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
-   );
-   private static final ftn bJ = a("text_background_see_through", epx.p, eqe.b.h, 1536, false, true, ftn.b.a().a(aa).a(ao).a(h).a(as).a(ay).a(aD).a(false));
-   private static final Function<ahg, ftn> bK = ac.b(
-      $$0 -> a("text_intensity_see_through", epx.t, eqe.b.h, 1536, false, true, ftn.b.a().a(ab).a(new ftm.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
-   );
-   private static final ftn bL = a("lightning", epx.n, eqe.b.h, 1536, false, true, ftn.b.a().a(ac).a(aC).a(e).a(aM).a(false));
-   private static final ftn bM = a("tripwire", epx.j, eqe.b.h, 1536, true, true, P());
-   private static final ftn bN = a(
-      "end_portal", epx.m, eqe.b.h, 1536, false, false, ftn.b.a().a(ae).a(ftm.i.d().a(fvy.a, false, false).a(fvy.b, false, false).a()).a(false)
-   );
-   private static final ftn bO = a(
-      "end_gateway", epx.m, eqe.b.h, 1536, false, false, ftn.b.a().a(af).a(ftm.i.d().a(fvy.a, false, false).a(fvy.b, false, false).a()).a(false)
-   );
-   public static final ftn.a aV = a("lines", epx.o, eqe.b.a, 1536, ftn.b.a().a(ag).a(new ftm.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false));
-   public static final ftn.a aW = a(
-      "line_strip", epx.o, eqe.b.b, 1536, ftn.b.a().a(ag).a(new ftm.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false)
-   );
-   private static final Function<Double, ftn.a> bP = ac.b(
-      $$0 -> a("debug_line_strip", epx.n, eqe.b.d, 1536, ftn.b.a().a(o).a(new ftm.h(OptionalDouble.of($$0))).a(c).a(ax).a(false))
-   );
-   private static final ftn.a bQ = a("debug_filled_box", epx.n, eqe.b.f, 1536, false, true, ftn.b.a().a(o).a(aH).a(h).a(false));
-   private static final ftn.a bR = a("debug_quads", epx.n, eqe.b.h, 1536, false, true, ftn.b.a().a(o).a(h).a(ax).a(false));
-   private static final ftn.a bS = a("debug_section_quads", epx.n, eqe.b.h, 1536, false, true, ftn.b.a().a(o).a(aH).a(h).a(aw).a(false));
-   private static final ftn.a bT = a("gui", epx.n, eqe.b.h, 786432, ftn.b.a().a(ah).a(h).a(aA).a(false));
-   private static final ftn.a bU = a("gui_overlay", epx.n, eqe.b.h, 1536, ftn.b.a().a(ai).a(h).a(ay).a(aD).a(false));
-   private static final ftn.a bV = a("gui_text_highlight", epx.n, eqe.b.h, 1536, ftn.b.a().a(aj).a(h).a(ay).a(aR).a(false));
-   private static final ftn.a bW = a("gui_ghost_recipe_overlay", epx.n, eqe.b.h, 1536, ftn.b.a().a(ak).a(h).a(aB).a(aD).a(false));
-   private static final ImmutableList<ftn> bX = ImmutableList.of(c(), d(), e(), f(), t());
-   private final eqe bY;
-   private final eqe.b bZ;
-   private final int ca;
-   private final boolean cb;
-   private final boolean cc;
-   private final Optional<ftn> cd;
-
-   public static ftn c() {
-      return aY;
-   }
-
-   public static ftn d() {
-      return aZ;
-   }
-
-   public static ftn e() {
-      return ba;
-   }
-
-   private static ftn.b a(ftm.m $$0) {
-      return ftn.b.a().a(as).a($$0).a(am).a(h).a(aK).a(true);
-   }
-
-   public static ftn f() {
-      return bb;
-   }
-
-   private static ftn.b O() {
-      return ftn.b.a().a(as).a(t).a(am).a(h).a(aO).a(true);
-   }
-
-   public static ftn g() {
-      return bc;
-   }
-
-   private static ftn.a a(String $$0, ahg $$1, boolean $$2) {
-      ftn.b $$3 = ftn.b.a().a(u).a(new ftm.n($$1, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$2 ? az : aA).a(true);
-      return a($$0, epx.k, eqe.b.h, 1536, true, false, $$3);
-   }
-
-   public static ftn a(ahg $$0) {
-      return bd.apply($$0);
-   }
-
-   public static ftn b(ahg $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static ftn c(ahg $$0) {
-      return be.apply($$0);
-   }
-
-   public static ftn d(ahg $$0) {
-      return bf.apply($$0);
-   }
-
-   public static ftn a(ahg $$0, boolean $$1) {
-      return bg.apply($$0, $$1);
-   }
-
-   public static ftn e(ahg $$0) {
-      return a($$0, true);
-   }
-
-   public static ftn b(ahg $$0, boolean $$1) {
-      return bh.apply($$0, $$1);
-   }
-
-   public static ftn f(ahg $$0) {
-      return b($$0, true);
-   }
-
-   public static ftn g(ahg $$0) {
-      return bi.apply($$0);
-   }
-
-   public static ftn h(ahg $$0) {
-      return bj.apply($$0);
-   }
-
-   public static ftn c(ahg $$0, boolean $$1) {
-      return bk.apply($$0, $$1);
-   }
-
-   public static ftn i(ahg $$0) {
-      return c($$0, true);
-   }
-
-   public static ftn d(ahg $$0, boolean $$1) {
-      return bl.apply($$0, $$1);
-   }
-
-   public static ftn j(ahg $$0) {
-      return d($$0, true);
-   }
-
-   public static ftn k(ahg $$0) {
-      return bm.apply($$0);
-   }
-
-   public static ftn e(ahg $$0, boolean $$1) {
-      return bn.apply($$0, $$1);
-   }
-
-   public static ftn l(ahg $$0) {
-      return bo.apply($$0);
-   }
-
-   public static ftn m(ahg $$0) {
-      return bp.apply($$0);
-   }
-
-   public static ftn n(ahg $$0) {
-      return bq.apply($$0);
-   }
-
-   public static ftn o(ahg $$0) {
-      return br.apply($$0);
-   }
-
-   public static ftn p(ahg $$0) {
-      return bs.apply($$0, d);
-   }
-
-   public static ftn q(ahg $$0) {
-      return bl.apply($$0, false);
-   }
-
-   public static ftn a(ahg $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         epx.k,
-         eqe.b.h,
-         1536,
-         false,
-         true,
-         ftn.b.a().a(al).a(new ftm.n($$0, false, false)).a(new ftm.j($$1, $$2)).a(h).a(ax).a(as).a(av).a(false)
-      );
-   }
-
-   public static ftn b(ahg $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         epx.k,
-         eqe.b.h,
-         1536,
-         false,
-         true,
-         ftn.b.a().a(K).a(new ftm.n($$0, false, false)).a(new ftm.j($$1, $$2)).a(d).a(ax).a(as).a(au).a(false)
-      );
-   }
-
-   public static ftn h() {
-      return bt;
-   }
-
-   public static ftn i() {
-      return bu;
-   }
-
-   public static ftn r(ahg $$0) {
-      return ftn.a.aX.apply($$0, ax);
-   }
-
-   public static ftn j() {
-      return bv;
-   }
-
-   public static ftn k() {
-      return bw;
-   }
-
-   public static ftn l() {
-      return bx;
-   }
-
-   public static ftn m() {
-      return by;
-   }
-
-   public static ftn n() {
-      return bz;
-   }
-
-   public static ftn o() {
-      return bA;
-   }
-
-   public static ftn p() {
-      return bB;
-   }
-
-   public static ftn s(ahg $$0) {
-      return bC.apply($$0);
-   }
-
-   public static ftn t(ahg $$0) {
-      return bD.apply($$0);
-   }
-
-   public static ftn q() {
-      return bE;
-   }
-
-   public static ftn u(ahg $$0) {
-      return bF.apply($$0);
-   }
-
-   public static ftn v(ahg $$0) {
-      return bG.apply($$0);
-   }
-
-   public static ftn w(ahg $$0) {
-      return bH.apply($$0);
-   }
-
-   public static ftn x(ahg $$0) {
-      return bI.apply($$0);
-   }
-
-   public static ftn r() {
-      return bJ;
-   }
-
-   public static ftn y(ahg $$0) {
-      return bK.apply($$0);
-   }
-
-   public static ftn s() {
-      return bL;
-   }
-
-   private static ftn.b P() {
-      return ftn.b.a().a(as).a(ad).a(am).a(h).a(aM).a(true);
-   }
-
-   public static ftn t() {
-      return bM;
-   }
-
-   public static ftn u() {
-      return bN;
-   }
-
-   public static ftn v() {
-      return bO;
-   }
-
-   public static ftn w() {
-      return aV;
-   }
-
-   public static ftn x() {
-      return aW;
-   }
-
-   public static ftn a(double $$0) {
-      return bP.apply($$0);
-   }
-
-   public static ftn y() {
-      return bQ;
-   }
-
-   public static ftn z() {
-      return bR;
-   }
-
-   public static ftn A() {
-      return bS;
-   }
-
-   public static ftn B() {
-      return bT;
-   }
-
-   public static ftn C() {
-      return bU;
-   }
-
-   public static ftn D() {
-      return bV;
-   }
-
-   public static ftn E() {
-      return bW;
-   }
-
-   public ftn(String $$0, eqe $$1, eqe.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.bY = $$1;
-      this.bZ = $$2;
-      this.ca = $$3;
-      this.cb = $$4;
-      this.cc = $$5;
-      this.cd = Optional.of(this);
-   }
-
-   static ftn.a a(String $$0, eqe $$1, eqe.b $$2, int $$3, ftn.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static ftn.a a(String $$0, eqe $$1, eqe.b $$2, int $$3, boolean $$4, boolean $$5, ftn.b $$6) {
-      return new ftn.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(epu $$0, eqh $$1) {
-      if ($$0.k()) {
-         if (this.cc) {
-            $$0.a($$1);
-         }
-
-         epu.b $$2 = $$0.d();
-         this.a();
-         epv.a($$2);
-         this.b();
+   protected static final ftn.p f = new ftn.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final ftn.p g = new ftn.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final ftn.p h = new ftn.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final ftn.m i = new ftn.m();
+   protected static final ftn.m j = new ftn.m(fsz::v);
+   protected static final ftn.m k = new ftn.m(fsz::p);
+   protected static final ftn.m l = new ftn.m(fsz::r);
+   protected static final ftn.m m = new ftn.m(fsz::s);
+   protected static final ftn.m n = new ftn.m(fsz::w);
+   protected static final ftn.m o = new ftn.m(fsz::q);
+   protected static final ftn.m p = new ftn.m(fsz::z);
+   protected static final ftn.m q = new ftn.m(fsz::A);
+   protected static final ftn.m r = new ftn.m(fsz::B);
+   protected static final ftn.m s = new ftn.m(fsz::C);
+   protected static final ftn.m t = new ftn.m(fsz::D);
+   protected static final ftn.m u = new ftn.m(fsz::E);
+   protected static final ftn.m v = new ftn.m(fsz::F);
+   protected static final ftn.m w = new ftn.m(fsz::G);
+   protected static final ftn.m x = new ftn.m(fsz::H);
+   protected static final ftn.m y = new ftn.m(fsz::I);
+   protected static final ftn.m z = new ftn.m(fsz::J);
+   protected static final ftn.m A = new ftn.m(fsz::K);
+   protected static final ftn.m B = new ftn.m(fsz::L);
+   protected static final ftn.m C = new ftn.m(fsz::M);
+   protected static final ftn.m D = new ftn.m(fsz::N);
+   protected static final ftn.m E = new ftn.m(fsz::O);
+   protected static final ftn.m F = new ftn.m(fsz::P);
+   protected static final ftn.m G = new ftn.m(fsz::Q);
+   protected static final ftn.m H = new ftn.m(fsz::R);
+   protected static final ftn.m I = new ftn.m(fsz::S);
+   protected static final ftn.m J = new ftn.m(fsz::T);
+   protected static final ftn.m K = new ftn.m(fsz::U);
+   protected static final ftn.m L = new ftn.m(fsz::W);
+   protected static final ftn.m M = new ftn.m(fsz::X);
+   protected static final ftn.m N = new ftn.m(fsz::Y);
+   protected static final ftn.m O = new ftn.m(fsz::Z);
+   protected static final ftn.m P = new ftn.m(fsz::aa);
+   protected static final ftn.m Q = new ftn.m(fsz::ab);
+   protected static final ftn.m R = new ftn.m(fsz::ac);
+   protected static final ftn.m S = new ftn.m(fsz::ad);
+   protected static final ftn.m T = new ftn.m(fsz::ae);
+   protected static final ftn.m U = new ftn.m(fsz::af);
+   protected static final ftn.m V = new ftn.m(fsz::ar);
+   protected static final ftn.m W = new ftn.m(fsz::ag);
+   protected static final ftn.m X = new ftn.m(fsz::ah);
+   protected static final ftn.m Y = new ftn.m(fsz::ai);
+   protected static final ftn.m Z = new ftn.m(fsz::aj);
+   protected static final ftn.m aa = new ftn.m(fsz::ak);
+   protected static final ftn.m ab = new ftn.m(fsz::al);
+   protected static final ftn.m ac = new ftn.m(fsz::am);
+   protected static final ftn.m ad = new ftn.m(fsz::an);
+   protected static final ftn.m ae = new ftn.m(fsz::ao);
+   protected static final ftn.m af = new ftn.m(fsz::ap);
+   protected static final ftn.m ag = new ftn.m(fsz::aq);
+   protected static final ftn.m ah = new ftn.m(fsz::as);
+   protected static final ftn.m ai = new ftn.m(fsz::at);
+   protected static final ftn.m aj = new ftn.m(fsz::au);
+   protected static final ftn.m ak = new ftn.m(fsz::av);
+   protected static final ftn.m al = new ftn.m(fsz::V);
+   protected static final ftn.n am = new ftn.n(gel.e, false, true);
+   protected static final ftn.n an = new ftn.n(gel.e, false, false);
+   protected static final ftn.e ao = new ftn.e();
+   protected static final ftn.o ap = new ftn.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final ftn.o aq = new ftn.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final ftn.o ar = new ftn.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final ftn.g as = new ftn.g(true);
+   protected static final ftn.g at = new ftn.g(false);
+   protected static final ftn.l au = new ftn.l(true);
+   protected static final ftn.l av = new ftn.l(false);
+   protected static final ftn.c aw = new ftn.c(true);
+   protected static final ftn.c ax = new ftn.c(false);
+   protected static final ftn.d ay = new ftn.d("always", 519);
+   protected static final ftn.d az = new ftn.d("==", 514);
+   protected static final ftn.d aA = new ftn.d("<=", 515);
+   protected static final ftn.d aB = new ftn.d(">", 516);
+   protected static final ftn.q aC = new ftn.q(true, true);
+   protected static final ftn.q aD = new ftn.q(true, false);
+   protected static final ftn.q aE = new ftn.q(false, true);
+   protected static final ftn.f aF = new ftn.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final ftn.f aG = new ftn.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final ftn.f aH = new ftn.f("view_offset_z_layering", () -> {
+      eqa $$0 = RenderSystem.getModelViewStack();
+      $$0.a();
+      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      eqa $$0 = RenderSystem.getModelViewStack();
+      $$0.b();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final ftn.k aI = new ftn.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final ftn.k aJ = new ftn.k("outline_target", () -> evh.O().f.s().a(false), () -> evh.O().g().a(false));
+   protected static final ftn.k aK = new ftn.k("translucent_target", () -> {
+      if (evh.M()) {
+         evh.O().f.t().a(false);
+      }
+   }, () -> {
+      if (evh.M()) {
+         evh.O().g().a(false);
+      }
+   });
+   protected static final ftn.k aL = new ftn.k("particles_target", () -> {
+      if (evh.M()) {
+         evh.O().f.v().a(false);
+      }
+   }, () -> {
+      if (evh.M()) {
+         evh.O().g().a(false);
+      }
+   });
+   protected static final ftn.k aM = new ftn.k("weather_target", () -> {
+      if (evh.M()) {
+         evh.O().f.w().a(false);
+      }
+   }, () -> {
+      if (evh.M()) {
+         evh.O().g().a(false);
+      }
+   });
+   protected static final ftn.k aN = new ftn.k("clouds_target", () -> {
+      if (evh.M()) {
+         evh.O().f.x().a(false);
+      }
+   }, () -> {
+      if (evh.M()) {
+         evh.O().g().a(false);
+      }
+   });
+   protected static final ftn.k aO = new ftn.k("item_entity_target", () -> {
+      if (evh.M()) {
+         evh.O().f.u().a(false);
+      }
+   }, () -> {
+      if (evh.M()) {
+         evh.O().g().a(false);
+      }
+   });
+   protected static final ftn.h aP = new ftn.h(OptionalDouble.of(1.0));
+   protected static final ftn.b aQ = new ftn.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final ftn.b aR = new ftn.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public ftn(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aT = $$1;
+      this.aU = $$2;
+   }
+
+   public void a() {
+      this.aT.run();
+   }
+
+   public void b() {
+      this.aU.run();
    }
 
    @Override
@@ -466,254 +247,293 @@ public abstract class ftn extends ftm {
       return this.b;
    }
 
-   public static List<ftn> F() {
-      return bX;
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.b() * evh.O().m.aj().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
    }
 
-   public int G() {
-      return this.ca;
-   }
+   static class a extends ftn {
+      private final boolean aS;
 
-   public eqe H() {
-      return this.bY;
-   }
-
-   public eqe.b I() {
-      return this.bZ;
-   }
-
-   public Optional<ftn> J() {
-      return Optional.empty();
-   }
-
-   public boolean K() {
-      return false;
-   }
-
-   public boolean L() {
-      return this.cb;
-   }
-
-   public boolean M() {
-      return !this.bZ.l;
-   }
-
-   public Optional<ftn> N() {
-      return this.cd;
-   }
-
-   static final class a extends ftn {
-      static final BiFunction<ahg, ftm.c, ftn> aX = ac.a(
-         ($$0, $$1) -> ftn.a("outline", epx.r, eqe.b.h, 1536, ftn.b.a().a(N).a(new ftm.n($$0, false, false)).a($$1).a(ay).a(aJ).a(ftn.c.b))
-      );
-      private final ftn.b aY;
-      private final Optional<ftn> aZ;
-      private final boolean ba;
-
-      a(String $$0, eqe $$1, eqe.b $$2, int $$3, boolean $$4, boolean $$5, ftn.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(ftm::a), () -> $$6.o.forEach(ftm::b));
-         this.aY = $$6;
-         this.aZ = $$6.n == ftn.c.c ? $$6.a.c().map($$1x -> aX.apply($$1x, $$6.e)) : Optional.empty();
-         this.ba = $$6.n == ftn.c.b;
-      }
-
-      @Override
-      public Optional<ftn> J() {
-         return this.aZ;
-      }
-
-      @Override
-      public boolean K() {
-         return this.ba;
-      }
-
-      protected final ftn.b O() {
-         return this.aY;
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aS = $$3;
       }
 
       @Override
       public String toString() {
-         return "RenderType[" + this.b + ":" + this.aY + "]";
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   protected static final class b {
-      final ftm.e a;
-      private final ftm.m b;
-      private final ftm.p c;
-      private final ftm.d d;
-      final ftm.c e;
-      private final ftm.g f;
-      private final ftm.l g;
-      private final ftm.f h;
-      private final ftm.k i;
-      private final ftm.o j;
-      private final ftm.q k;
-      private final ftm.h l;
-      private final ftm.b m;
-      final ftn.c n;
-      final ImmutableList<ftm> o;
+   protected static class b extends ftn {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      b(
-         ftm.e $$0,
-         ftm.m $$1,
-         ftm.p $$2,
-         ftm.d $$3,
-         ftm.c $$4,
-         ftm.g $$5,
-         ftm.l $$6,
-         ftm.f $$7,
-         ftm.k $$8,
-         ftm.o $$9,
-         ftm.q $$10,
-         ftm.h $$11,
-         ftm.b $$12,
-         ftn.c $$13
-      ) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new ftm[]{this.l});
+   protected static class c extends ftn.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends ftn {
+      private final String aS;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aS = $$0;
       }
 
       @Override
       public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
-      }
-
-      public static ftn.b.a a() {
-         return new ftn.b.a();
-      }
-
-      public static class a {
-         private ftm.e a = ftm.ao;
-         private ftm.m b = ftm.i;
-         private ftm.p c;
-         private ftm.d d;
-         private ftm.c e;
-         private ftm.g f;
-         private ftm.l g;
-         private ftm.f h;
-         private ftm.k i;
-         private ftm.o j;
-         private ftm.q k;
-         private ftm.h l;
-         private ftm.b m;
-
-         a() {
-            this.c = ftm.c;
-            this.d = ftm.aA;
-            this.e = ftm.aw;
-            this.f = ftm.at;
-            this.g = ftm.av;
-            this.h = ftm.aF;
-            this.i = ftm.aI;
-            this.j = ftm.ap;
-            this.k = ftm.aC;
-            this.l = ftm.aP;
-            this.m = ftm.aQ;
-         }
-
-         public ftn.b.a a(ftm.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public ftn.b.a a(ftm.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public ftn.b a(boolean $$0) {
-            return this.a($$0 ? ftn.c.c : ftn.c.a);
-         }
-
-         public ftn.b a(ftn.c $$0) {
-            return new ftn.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
-         }
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   protected static class e extends ftn {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
 
-      private final String d;
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
 
-      private c(String $$0) {
-         this.d = $$0;
+      protected Optional<ahg> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends ftn {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends ftn.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               evh.O().j.n().c();
+            }
+         }, () -> {
+            if ($$0) {
+               evh.O().j.n().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends ftn {
+      private final OptionalDouble aS;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)evh.O().aM().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aS = $$0;
       }
 
       @Override
       public String toString() {
-         return this.d;
+         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends ftn.e {
+      private final Optional<ahg> aS;
+
+      i(ImmutableList<Triple<ahg, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<ahg, Boolean, Boolean> $$2 = (Triple<ahg, Boolean, Boolean>)var2.next();
+               gen $$3 = evh.O().Y();
+               $$3.b((ahg)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (ahg)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<ahg> c() {
+         return this.aS;
+      }
+
+      public static ftn.i.a d() {
+         return new ftn.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<ahg, Boolean, Boolean>> a = new Builder();
+
+         public ftn.i.a a(ahg $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public ftn.i a() {
+            return new ftn.i(this.a.build());
+         }
+      }
+   }
+
+   protected static final class j extends ftn.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends ftn {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends ftn.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               evh.O().j.o().a();
+            }
+         }, () -> {
+            if ($$0) {
+               evh.O().j.o().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends ftn {
+      private final Optional<Supplier<ftu>> aS;
+
+      public m(Supplier<ftu> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aS = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aS = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
+      }
+   }
+
+   protected static class n extends ftn.e {
+      private final Optional<ahg> aS;
+      private final boolean aT;
+      private final boolean aU;
+
+      public n(ahg $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gen $$3 = evh.O().Y();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aS = Optional.of($$0);
+         this.aT = $$1;
+         this.aU = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
+      }
+
+      @Override
+      protected Optional<ahg> c() {
+         return this.aS;
+      }
+   }
+
+   protected static class o extends ftn {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends ftn {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends ftn {
+      private final boolean aS;
+      private final boolean aT;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aS = $$0;
+         this.aT = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
       }
    }
 }

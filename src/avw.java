@@ -865,7 +865,9 @@ public class avw {
       $$0.addFixer(new awc($$203, "Added Breeze", bbv.x));
       $$0.addFixer(new awc($$203, "Added Trial Spawner", bbv.s));
       Schema $$204 = $$0.addSchema(3692, c);
-      $$0.addFixer(awx.a($$204, "Rename grass to short_grass", a(Map.of("minecraft:grass", "minecraft:short_grass"))));
+      UnaryOperator<String> $$205 = a(Map.of("minecraft:grass", "minecraft:short_grass"));
+      $$0.addFixer(awy.b($$204, "Rename grass block to short_grass", $$205));
+      $$0.addFixer(azx.a($$204, "Rename grass item to short_grass", $$205));
    }
 
    private static UnaryOperator<String> a(Map<String, String> $$0) {

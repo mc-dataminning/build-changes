@@ -1,18 +1,15 @@
-public class gba extends fyk<cbu> {
-   private final ftz a;
+public class gba extends fzr<chl> {
+   private final fua f;
 
-   public gba(fyl.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gba(fym.a $$0) {
+      super($$0, fmv.bD);
+      this.f = $$0.c();
    }
 
-   public void a(cbu $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+   protected void a(chl $$0, float $$1, djg $$2, eqa $$3, ftg $$4, int $$5) {
+      int $$6 = $$0.D();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
          $$7 = aun.a($$7, 0.0F, 1.0F);
          $$7 *= $$7;
          $$7 *= $$7;
@@ -20,15 +17,17 @@ public class gba extends fyk<cbu> {
          $$3.b($$8, $$8, $$8);
       }
 
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gaz.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   public ahg a(cbu $$0) {
-      return gek.e;
+   public static void a(fua $$0, djg $$1, eqa $$2, ftg $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = ged.a(ged.a(1.0F), 10);
+      } else {
+         $$6 = ged.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

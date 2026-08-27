@@ -135,56 +135,56 @@ public class cox {
       }
    }
 
-   public static void a(cmx $$0, List<vf> $$1, float $$2) {
-      a(a($$0), $$1, $$2);
+   public static void a(cmx $$0, List<vf> $$1, float $$2, float $$3) {
+      a(a($$0), $$1, $$2, $$3);
    }
 
-   public static void a(List<blh> $$0, List<vf> $$1, float $$2) {
-      List<Pair<bnl, bno>> $$3 = Lists.newArrayList();
+   public static void a(List<blh> $$0, List<vf> $$1, float $$2, float $$3) {
+      List<Pair<bnl, bno>> $$4 = Lists.newArrayList();
       if ($$0.isEmpty()) {
          $$1.add(e);
       } else {
-         for (blh $$4 : $$0) {
-            vt $$5 = vf.c($$4.i());
-            blf $$6 = $$4.c();
-            Map<bnl, bla> $$7 = $$6.h();
-            if (!$$7.isEmpty()) {
-               for (Entry<bnl, bla> $$8 : $$7.entrySet()) {
-                  $$3.add(new Pair($$8.getKey(), $$8.getValue().a($$4.e())));
+         for (blh $$5 : $$0) {
+            vt $$6 = vf.c($$5.i());
+            blf $$7 = $$5.c();
+            Map<bnl, bla> $$8 = $$7.h();
+            if (!$$8.isEmpty()) {
+               for (Entry<bnl, bla> $$9 : $$8.entrySet()) {
+                  $$4.add(new Pair($$9.getKey(), $$9.getValue().a($$5.e())));
                }
             }
 
-            if ($$4.e() > 0) {
-               $$5 = vf.a("potion.withAmplifier", $$5, vf.c("potion.potency." + $$4.e()));
+            if ($$5.e() > 0) {
+               $$6 = vf.a("potion.withAmplifier", $$6, vf.c("potion.potency." + $$5.e()));
             }
 
-            if (!$$4.a(20)) {
-               $$5 = vf.a("potion.withDuration", $$5, bli.a($$4, $$2));
+            if (!$$5.a(20)) {
+               $$6 = vf.a("potion.withDuration", $$6, bli.a($$5, $$2, $$3));
             }
 
-            $$1.add($$5.a($$6.f().a()));
+            $$1.add($$6.a($$7.f().a()));
          }
       }
 
-      if (!$$3.isEmpty()) {
+      if (!$$4.isEmpty()) {
          $$1.add(ve.a);
          $$1.add(vf.c("potion.whenDrank").a(n.f));
 
-         for (Pair<bnl, bno> $$9 : $$3) {
-            bno $$10 = (bno)$$9.getSecond();
-            double $$11 = $$10.c();
-            double $$13;
-            if ($$10.b() != bno.a.b && $$10.b() != bno.a.c) {
-               $$13 = $$10.c();
+         for (Pair<bnl, bno> $$10 : $$4) {
+            bno $$11 = (bno)$$10.getSecond();
+            double $$12 = $$11.c();
+            double $$14;
+            if ($$11.b() != bno.a.b && $$11.b() != bno.a.c) {
+               $$14 = $$11.c();
             } else {
-               $$13 = $$10.c() * 100.0;
+               $$14 = $$11.c() * 100.0;
             }
 
-            if ($$11 > 0.0) {
-               $$1.add(vf.a("attribute.modifier.plus." + $$10.b().a(), cmx.g.format($$13), vf.c(((bnl)$$9.getFirst()).c())).a(n.j));
-            } else if ($$11 < 0.0) {
-               $$13 *= -1.0;
-               $$1.add(vf.a("attribute.modifier.take." + $$10.b().a(), cmx.g.format($$13), vf.c(((bnl)$$9.getFirst()).c())).a(n.m));
+            if ($$12 > 0.0) {
+               $$1.add(vf.a("attribute.modifier.plus." + $$11.b().a(), cmx.g.format($$14), vf.c(((bnl)$$10.getFirst()).c())).a(n.j));
+            } else if ($$12 < 0.0) {
+               $$14 *= -1.0;
+               $$1.add(vf.a("attribute.modifier.take." + $$11.b().a(), cmx.g.format($$14), vf.c(((bnl)$$10.getFirst()).c())).a(n.m));
             }
          }
       }

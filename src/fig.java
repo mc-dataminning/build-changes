@@ -1,9 +1,7 @@
+import java.util.List;
+
 public interface fig {
-   void a(fie var1);
+   List<fih> a();
 
-   vf aO_();
-
-   void a(ews var1, float var2, int var3);
-
-   boolean aP_();
+   vf b();
 }

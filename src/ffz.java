@@ -1,25 +1,24 @@
-public class ffz extends fgc {
-   private static final vf b = vf.c("multiplayerWarning.header").a(n.r);
-   private static final vf c = vf.c("multiplayerWarning.message");
-   private static final vf k = vf.c("multiplayerWarning.check");
+public class ffz extends fgd {
+   private static final vf b = vf.c("title.32bit.deprecation.realms.header").a(n.r);
+   private static final vf c = vf.c("title.32bit.deprecation.realms");
+   private static final vf k = vf.c("title.32bit.deprecation.realms.check");
    private static final vf l = b.f().f("\n").b(c);
-   private final fcz m;
+   private final fda m;
 
-   public ffz(fcz $$0) {
+   public ffz(fda $$0) {
       super(b, c, k, l);
       this.m = $$0;
    }
 
    @Override
    protected void a(int $$0) {
-      this.d(exe.a(ve.i, $$0x -> {
+      this.d(exf.a(ve.d, $$0x -> {
          if (this.a.a()) {
-            this.f.m.v = true;
+            this.f.m.w = true;
             this.f.m.as();
          }
 
-         this.f.a(new ffx(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(exe.a(ve.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+         this.f.a(this.m);
+      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
    }
 }

@@ -23,15 +23,18 @@ public class gw<T, P> implements gn<T> {
 
    public static <T, P> void a(go<T> $$0, gq $$1, List<P> $$2, gw.a<T, P> $$3) {
       int $$4 = $$2.size();
-      if ($$4 != 0) {
-         if ($$4 == 1) {
+      switch ($$4) {
+         case 0:
+            break;
+         case 1:
             $$0.a($$3.create($$1, $$2.get(0)));
-         } else if ($$4 == 2) {
+            break;
+         case 2:
             $$0.a($$3.create($$1, $$2.get(0)));
             $$0.a($$3.create($$1, $$2.get(1)));
-         } else {
+            break;
+         default:
             $$0.a((new gw<>($$3, $$2, $$1)).c);
-         }
       }
    }
 

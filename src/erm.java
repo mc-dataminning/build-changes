@@ -1,54 +1,36 @@
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class erm {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
+public class erm extends erw {
+   private static final Logger b = LogUtils.getLogger();
+   public List<erl> a;
 
-   private erm(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public static erm a(String $$0) {
+      erm $$1 = new erm();
+      $$1.a = Lists.newArrayList();
 
-   public vf a(vf $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-   @Nullable
-   public vf a() {
-      if (!gfq.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? vf.c(this.c) : vf.a(this.c, this.d);
-      }
-   }
-
-   public static erm a(JsonObject $$0) {
-      String $$1 = ets.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+            while ($$5.hasNext()) {
+               $$1.a.add(erl.a($$5.next().getAsJsonObject()));
+            }
          }
-      } else {
-         $$5 = null;
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
 
-      return new erm($$1, $$5);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      return $$1;
    }
 }

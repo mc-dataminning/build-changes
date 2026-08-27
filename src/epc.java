@@ -1,130 +1,105 @@
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
-public final class epc {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
+public class epc {
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<eoz> b = new Long2ObjectOpenHashMap();
+   private final epa c;
 
-   public epc(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public epc(Buffer $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
-   public epc(GLFWVidMode $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         epc $$1 = (epc)$$0;
-         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
-      } else {
-         return false;
+   public epc(epa $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+      }
    }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
+   @Nullable
+   public eoz a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (eoz)this.b.get($$0);
    }
 
-   public static Optional<epc> a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return Optional.empty();
+   @Nullable
+   public eoz a(epe $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
       } else {
-         try {
-            Matcher $$1 = g.matcher($$0);
-            if ($$1.matches()) {
-               int $$2 = Integer.parseInt($$1.group(1));
-               int $$3 = Integer.parseInt($$1.group(2));
-               String $$4 = $$1.group(3);
-               int $$5;
-               if ($$4 == null) {
-                  $$5 = 60;
-               } else {
-                  $$5 = Integer.parseInt($$4);
-               }
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         eoz $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
 
-               String $$7 = $$1.group(4);
-               int $$8;
-               if ($$7 == null) {
-                  $$8 = 24;
-               } else {
-                  $$8 = Integer.parseInt($$7);
-               }
-
-               int $$10 = $$8 / 3;
-               return Optional.of(new epc($$2, $$3, $$10, $$10, $$10, $$5));
+         while (var12.hasNext()) {
+            eoz $$9 = (eoz)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
             }
-         } catch (Exception var9) {
          }
 
-         return Optional.empty();
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
       }
    }
 
-   public String g() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
+      }
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
+      }
    }
 }

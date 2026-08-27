@@ -1,59 +1,59 @@
-public class fhc extends fcz {
-   private static final vf a = vf.c("gui.abuseReport.title");
-   private static final vf b = vf.c("gui.abuseReport.message");
-   private static final vf c = vf.c("gui.abuseReport.type.chat");
-   private static final vf k = vf.c("gui.abuseReport.type.skin");
-   private static final vf l = vf.c("gui.abuseReport.type.name");
-   private static final int m = 6;
-   private final fcz n;
-   private final fou o;
-   private final fhg p;
-   private final fas q = fas.d().a(6);
+import java.util.UUID;
 
-   public fhc(fcz $$0, fou $$1, fhg $$2) {
-      super(a);
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+public class fhc extends fgy<fop.a> {
+   private static final int r = 120;
+   private static final vf t = vf.c("gui.abuseReport.name.title");
+   private final fat u = fat.d().a(8);
+   private exx v;
+   private exf w;
+
+   private fhc(fda $$0, fov $$1, fop.a $$2) {
+      super(t, $$0, $$1, $$2);
    }
 
-   @Override
-   public vf h() {
-      return ve.a(super.h(), b);
+   public fhc(fda $$0, fov $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fop.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fhc(fda $$0, fov $$1, fop $$2) {
+      this($$0, $$1, new fop.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aN_() {
-      this.q.c().b();
-      this.q.a(new eyl(this.e, this.i), this.q.b().e(6));
-      this.q.a(new exy(b, this.i).b(true), this.q.b().e(6));
-      exe $$0 = this.q.a(exe.a(c, $$0x -> this.f.a(new fgy(this.n, this.o, this.p.c()))).a());
-      if (!this.p.j()) {
-         $$0.j = false;
-         $$0.a(eyp.a(vf.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.p.i()) {
-         $$0.j = false;
-         $$0.a(eyp.a(vf.a("gui.socialInteractions.tooltip.report.no_messages", this.p.b())));
-      }
-
-      this.q.a(exe.a(k, $$0x -> this.f.a(new fhe(this.n, this.o, this.p.c(), this.p.d()))).a());
-      this.q.a(exe.a(l, $$0x -> this.f.a(new fhb(this.n, this.o, this.p.c(), this.p.b()))).a());
-      this.q.a(fat.b(20));
-      this.q.a(exe.a(ve.e, $$0x -> this.aE_()).a());
-      this.q.a($$1 -> {
-         exc var10000 = this.d($$1);
+      this.u.c().b();
+      this.u.a(new eym(this.e, this.i));
+      vf $$0 = vf.b(this.q.e().a()).a(n.o);
+      this.u.a(new eym(vf.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.D();
+      });
+      this.u.a(fal.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      fat $$1 = this.u.a(fat.e().a(8));
+      $$1.a(exf.a(ve.k, $$0x -> this.aE_()).a(120).a());
+      this.w = $$1.a(exf.a(a, $$0x -> this.n()).a(120).a());
+      this.D();
+      this.u.a($$1x -> {
+         exd var10000 = this.d($$1x);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.q.a();
-      fam.a(this.q, this.F());
+      this.u.a();
+      fan.a(this.u, this.F());
+   }
+
+   private void D() {
+      foq.b $$0 = this.q.c();
+      this.w.j = $$0 == null;
+      this.w.a(x.a($$0, foq.b::a));
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.n);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

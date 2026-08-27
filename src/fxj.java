@@ -1,16 +1,16 @@
-public class fxj extends fzr<bzb, fit> {
-   private static final ahg a = new ahg("textures/entity/allay/allay.png");
+public abstract class fxj<T extends cdh, M extends fmo<T>> extends fzd<T, M> {
+   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
 
-   public fxj(fyl.a $$0) {
-      super($$0, new fit($$0.a(fmu.a)), 0.4F);
-      this.a(new gcp<>(this, $$0.d()));
+   protected fxj(fym.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gcn<>(this, $$2, $$3, $$0.g()));
    }
 
-   public ahg a(bzb $$0) {
+   public ahg a(cdh $$0) {
       return a;
    }
 
-   protected int a(bzb $$0, hx $$1) {
-      return 15;
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gl();
    }
 }

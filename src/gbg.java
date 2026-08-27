@@ -1,18 +1,26 @@
-public class gbg extends fze<cdd> {
-   private static final ahg a = new ahg("textures/entity/illager/vindicator.png");
+public class gbg extends fzs<ceu, fmh<ceu>> {
+   private static final ahg a = new ahg("textures/entity/villager/villager.png");
 
-   public gbg(fyl.a $$0) {
-      super($$0, new fkj<>($$0.a(fmu.bN)), 0.5F);
-      this.a(new gcp<cdd, fkj<cdd>>(this, $$0.d()) {
-         public void a(epz $$0, ftf $$1, int $$2, cdd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fW()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gbg(fym.a $$0) {
+      super($$0, new fmh<>($$0.a(fmv.bM)), 0.5F);
+      this.a(new gcc<>(this, $$0.f(), $$0.d()));
+      this.a(new gdi<>(this, $$0.e(), "villager"));
+      this.a(new gcb<>(this, $$0.d()));
    }
 
-   public ahg a(cdd $$0) {
+   public ahg a(ceu $$0) {
       return a;
+   }
+
+   protected void a(ceu $$0, eqa $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.o_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

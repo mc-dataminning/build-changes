@@ -1,29 +1,18 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
 
-public class ers extends erv {
-   public long a;
-   public List<err> b = Lists.newArrayList();
+public class ers extends erw {
+   public String a;
+   public long b;
+   public long c;
 
-   public static ers a(String $$0) {
+   public static ers a(JsonObject $$0) {
       ers $$1 = new ers();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = ets.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               err $$8 = err.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+         $$1.a = ett.b("profileUuid", $$0, null);
+         $$1.b = ett.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = ett.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
       return $$1;
