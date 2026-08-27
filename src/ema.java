@@ -54,69 +54,71 @@ public class ema extends gfb {
    private static final int ah = 5;
    private static final int ai = 44;
    private static final int aj = 10;
-   private final CompletableFuture<elz.a> ak = elz.a();
+   private static final int ak = 216;
+   private static final int al = 36;
+   private final CompletableFuture<elz.a> am = elz.a();
    @Nullable
-   private epe.c al;
-   private final Set<UUID> am = new HashSet<>();
-   private static boolean an;
-   private final RateLimiter ao;
-   private final eyk ap;
-   private esq aq;
-   private esq ar;
+   private epe.c an;
+   private final Set<UUID> ao = new HashSet<>();
+   private static boolean ap;
+   private final RateLimiter aq;
+   private final eyk ar;
    private esq as;
    private esq at;
    private esq au;
-   private ema.g av;
-   private enx aw;
-   private volatile boolean ax;
+   private esq av;
+   private esq aw;
+   private ema.h ax;
+   private enx ay;
+   private volatile boolean az;
    @Nullable
-   private volatile String ay;
-   long az;
-   private final List<emv> aA = new ArrayList<>();
-   private esq aB;
-   private ema.e aC;
-   private ema.e aD;
-   private ema.d aE;
+   private volatile String aA;
+   long aB;
+   private final List<emv> aC = new ArrayList<>();
+   private esq aD;
+   private ema.f aE;
+   private ema.f aF;
+   private ema.e aG;
    @Nullable
-   private evz aF;
+   private evz aH;
 
    public ema(eyk $$0) {
       super(G);
-      this.ap = $$0;
-      this.ao = RateLimiter.create(0.016666668F);
+      this.ar = $$0;
+      this.aq = RateLimiter.create(0.016666668F);
    }
 
    @Override
    public void aH_() {
-      this.aw = new enx(this.f);
-      this.av = this.d(new ema.g());
+      this.ay = new enx(this.f);
+      this.ax = this.d(new ema.h());
       tl $$0 = tl.c("mco.invites.title");
-      this.aC = new ema.e($$0, B, $$1x -> this.f.a(new eoq(this, $$0)));
+      this.aE = new ema.f($$0, B, $$1x -> this.f.a(new eoq(this, $$0)));
       tl $$1 = tl.c("mco.news");
-      this.aD = new ema.e($$1, C, $$0x -> {
-         if (this.ay != null) {
-            exc.a(this.ay, this, true);
-            if (this.aD.a() != 0) {
+      this.aF = new ema.f($$1, C, $$0x -> {
+         if (this.aA != null) {
+            exc.a(this.aA, this, true);
+            if (this.aF.a() != 0) {
                epk.a $$1x = epk.b();
                $$1x.b = false;
                epk.b($$1x);
-               this.aD.a(0);
+               this.aF.a(0);
             }
          }
       });
-      this.aD.a(eua.a($$1));
-      this.aq = esq.a(N, $$0x -> a(this.J(), this)).a(100).a();
-      this.at = esq.a(P, $$0x -> this.f(this.J())).a(100).a();
-      this.as = esq.a(K, $$0x -> this.e(this.J())).a(100).a();
-      this.au = esq.a(O, $$0x -> this.g(this.J())).a(100).a();
-      this.aB = esq.a(tl.c("mco.selectServer.purchase"), $$0x -> this.K()).b(100, 20).a();
-      this.ar = esq.a(tk.k, $$0x -> this.f.a(this.ap)).a(100).a();
-      this.a(ema.d.a);
+      this.aF.a(eua.a($$1));
+      this.as = esq.a(N, $$0x -> a(this.J(), this)).a(100).a();
+      this.av = esq.a(P, $$0x -> this.f(this.J())).a(100).a();
+      this.au = esq.a(K, $$0x -> this.e(this.J())).a(100).a();
+      this.aw = esq.a(O, $$0x -> this.g(this.J())).a(100).a();
+      this.aD = esq.a(tl.c("mco.selectServer.purchase"), $$0x -> this.K()).b(100, 20).a();
+      this.at = esq.a(tk.k, $$0x -> this.f.a(this.ar)).a(100).a();
+      this.a(ema.e.a);
       this.F();
-      this.ak.thenAcceptAsync($$0x -> {
-         eyk $$1x = $$0x.a(this.ap);
+      this.am.thenAcceptAsync($$0x -> {
+         eyk $$1x = $$0x.a(this.ar);
          if ($$1x == null) {
-            this.al = this.a(this.f.aY());
+            this.an = this.a(this.f.aY());
          } else {
             this.f.a($$1x);
          }
@@ -125,28 +127,28 @@ public class ema extends gfb {
 
    @Override
    protected void b() {
-      if (this.aF != null) {
-         this.av.a(this.g, this.h, this.aF.c(), this.h - this.aF.b());
-         this.aF.a();
+      if (this.aH != null) {
+         this.ax.a(this.g, this.h, this.aH.c(), this.h - this.aH.b());
+         this.aH.a();
       }
    }
 
-   private void a(ema.d $$0) {
-      if (this.aE != $$0) {
-         if (this.aF != null) {
-            this.aF.a($$1 -> this.f($$1));
+   private void a(ema.e $$0) {
+      if (this.aG != $$0) {
+         if (this.aH != null) {
+            this.aH.a($$1 -> this.f($$1));
          }
 
-         this.aF = this.b($$0);
-         this.aE = $$0;
-         this.aF.a($$1 -> {
+         this.aH = this.b($$0);
+         this.aG = $$0;
+         this.aH.a($$1 -> {
             eso var10000 = this.d($$1);
          });
          this.b();
       }
    }
 
-   private evz b(ema.d $$0) {
+   private evz b(ema.e $$0) {
       evz $$1 = new evz(this);
       $$1.b(44);
       $$1.a(this.D());
@@ -169,8 +171,8 @@ public class ema extends gfb {
       int $$0 = 90;
       ewd $$1 = ewd.e().a(4);
       $$1.c().e();
-      $$1.a(this.aC);
-      $$1.a(this.aD);
+      $$1.a(this.aE);
+      $$1.a(this.aF);
       ewd $$2 = ewd.e();
       $$2.c().e();
       $$2.a(ewe.a(90));
@@ -179,18 +181,18 @@ public class ema extends gfb {
       return $$2;
    }
 
-   private ewa c(ema.d $$0) {
+   private ewa c(ema.e $$0) {
       evy $$1 = new evy().c(4);
       evy.b $$2 = $$1.d(3);
-      if ($$0 == ema.d.c) {
-         $$2.a(this.aq);
-         $$2.a(this.at);
+      if ($$0 == ema.e.c) {
          $$2.a(this.as);
+         $$2.a(this.av);
          $$2.a(this.au);
+         $$2.a(this.aw);
       }
 
-      $$2.a(this.aB);
-      $$2.a(this.ar);
+      $$2.a(this.aD);
+      $$2.a(this.at);
       return $$1;
    }
 
@@ -205,11 +207,11 @@ public class ema extends gfb {
 
    void F() {
       emw $$0 = this.J();
-      this.aB.i = this.aE != ema.d.a;
-      this.aq.i = this.a($$0);
-      this.as.i = this.b($$0);
-      this.au.i = this.d($$0);
-      this.at.i = this.c($$0);
+      this.aD.i = this.aG != ema.e.a;
+      this.as.i = this.a($$0);
+      this.au.i = this.b($$0);
+      this.aw.i = this.d($$0);
+      this.av.i = this.c($$0);
    }
 
    boolean a(@Nullable emw $$0) {
@@ -231,8 +233,8 @@ public class ema extends gfb {
    @Override
    public void c() {
       super.c();
-      if (this.al != null) {
-         this.al.b();
+      if (this.an != null) {
+         this.an.b();
       }
    }
 
@@ -247,47 +249,47 @@ public class ema extends gfb {
    private epe.c a(env $$0) {
       epe.c $$1 = $$0.a.a();
       $$1.a($$0.c, $$0x -> {
-         this.aw.a($$0x);
-         this.a(this.aw.a() && this.aA.isEmpty() ? ema.d.b : ema.d.c);
+         this.ay.a($$0x);
+         this.a(this.ay.a() && this.aC.isEmpty() ? ema.e.b : ema.e.c);
          this.G();
          boolean $$1x = false;
 
-         for (emw $$2 : this.aw) {
+         for (emw $$2 : this.ay) {
             if (this.j($$2)) {
                $$1x = true;
             }
          }
 
-         if (!an && $$1x) {
-            an = true;
+         if (!ap && $$1x) {
+            ap = true;
             this.H();
          }
       });
       a(emf::c, $$0x -> {
-         this.aA.clear();
-         this.aA.addAll($$0x);
-         if (!this.aA.isEmpty() && this.aE != ema.d.a) {
-            this.a(ema.d.c);
+         this.aC.clear();
+         this.aC.addAll($$0x);
+         if (!this.aC.isEmpty() && this.aG != ema.e.a) {
+            this.a(ema.e.c);
             this.G();
          }
       });
       $$1.a($$0.d, $$0x -> {
-         this.aC.a($$0x);
-         this.aC.a($$0x == 0 ? X : Y);
-         if ($$0x > 0 && this.ao.tryAcquire(1)) {
+         this.aE.a($$0x);
+         this.aE.a($$0x == 0 ? X : Y);
+         if ($$0x > 0 && this.aq.tryAcquire(1)) {
             this.f.aV().c(tl.a("mco.configure.world.invite.narration", $$0x));
          }
       });
-      $$1.a($$0.e, $$0x -> this.ax = $$0x);
+      $$1.a($$0.e, $$0x -> this.az = $$0x);
       $$1.a($$0.f, $$1x -> {
          $$0.g.a($$1x);
-         this.ay = $$0.g.b();
-         this.aD.a($$0.g.a() ? Integer.MAX_VALUE : 0);
+         this.aA = $$0.g.b();
+         this.aF.a($$0.g.a() ? Integer.MAX_VALUE : 0);
       });
       return $$1;
    }
 
-   private static <T> void a(ema.h<T> $$0, Consumer<T> $$1) {
+   private static <T> void a(ema.i<T> $$0, Consumer<T> $$1) {
       eqv $$2 = eqv.O();
       CompletableFuture.<T>supplyAsync(() -> {
          try {
@@ -303,12 +305,12 @@ public class ema extends gfb {
 
    private void G() {
       emw $$0 = this.J();
-      this.av.w();
+      this.ax.w();
       List<UUID> $$1 = new ArrayList<>();
 
-      for (emv $$2 : this.aA) {
-         this.a(this.av, $$2);
-         if (!$$2.a() && !this.am.contains($$2.c())) {
+      for (emv $$2 : this.aC) {
+         this.a(this.ax, $$2);
+         if (!$$2.a() && !this.ao.contains($$2.c())) {
             $$1.add($$2.c());
          }
       }
@@ -317,23 +319,31 @@ public class ema extends gfb {
          a($$1x -> {
             $$1x.a($$1);
             return null;
-         }, $$1x -> this.am.addAll($$1));
+         }, $$1x -> this.ao.addAll($$1));
       }
 
-      for (emw $$3 : this.aw) {
-         ema.i $$4 = new ema.i($$3);
-         this.av.a($$4);
+      for (emw $$3 : this.ay) {
+         ema.j $$4 = new ema.j($$3);
+         this.ax.a($$4);
          if ($$0 != null && $$0.a == $$3.a) {
-            this.av.a((ema.c)$$4);
+            this.ax.a((ema.d)$$4);
          }
       }
 
       this.F();
    }
 
-   private void a(ema.g $$0, emv $$1) {
+   private void a(ema.h $$0, emv $$1) {
       if ($$1 instanceof emv.a $$2) {
-         $$0.a(new ema.f($$2.d(), $$2));
+         tl $$3 = $$2.d();
+         int $$4 = this.i.b($$3, 216);
+         int $$5 = arw.e($$4 + 7, 36) - 1;
+         $$0.a(new ema.g($$3, $$5 + 2, $$2));
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            $$0.a(new ema.c());
+         }
+
          $$0.a(new ema.a($$2.a(this)));
       }
    }
@@ -357,7 +367,7 @@ public class ema extends gfb {
    private List<Long> I() {
       List<Long> $$0 = Lists.newArrayList();
 
-      for (emw $$1 : this.aw) {
+      for (emw $$1 : this.ay) {
          if (this.j($$1)) {
             $$0.add($$1.a);
          }
@@ -390,7 +400,7 @@ public class ema extends gfb {
 
    @Nullable
    private emw J() {
-      ema.c $$0 = this.av.f();
+      ema.d $$0 = this.ax.f();
       return $$0 != null ? $$0.b() : null;
    }
 
@@ -415,12 +425,12 @@ public class ema extends gfb {
    }
 
    void h(emw $$0) {
-      this.aw.a($$0);
-      this.av.i().removeIf($$1 -> {
+      this.ay.a($$0);
+      this.ax.i().removeIf($$1 -> {
          emw $$2 = $$1.b();
          return $$2 != null && $$2.a == $$0.a;
       });
-      this.av.a(null);
+      this.ax.a(null);
       this.F();
    }
 
@@ -429,18 +439,18 @@ public class ema extends gfb {
          $$1.b(List.of($$0));
          return null;
       }, $$1 -> {
-         this.aA.removeIf($$1x -> $$1x.b() && $$0.equals($$1x.c()));
+         this.aC.removeIf($$1x -> $$1x.b() && $$0.equals($$1x.c()));
          this.G();
       });
    }
 
    public void f() {
-      this.av.a(null);
+      this.ax.a(null);
    }
 
    @Override
    public tl g() {
-      return (tl)(switch (this.aE) {
+      return (tl)(switch (this.aG) {
          case a -> tk.a(super.g(), H);
          case b -> tk.a(super.g(), W);
          case c -> super.g();
@@ -450,8 +460,8 @@ public class ema extends gfb {
    @Override
    public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.ax && this.aB.i) {
-         eos.a($$0, this.aB);
+      if (this.az && this.aD.i) {
+         eos.a($$0, this.aD);
       }
 
       switch (emf.a) {
@@ -464,7 +474,7 @@ public class ema extends gfb {
    }
 
    private void K() {
-      this.f.a(new eos(this, this.ax));
+      this.f.a(new eos(this, this.az));
    }
 
    public static void a(@Nullable emw $$0, eyk $$1) {
@@ -490,7 +500,7 @@ public class ema extends gfb {
       $$0.c().b();
    }
 
-   class a extends ema.c {
+   class a extends ema.d {
       private final esq c;
 
       public a(esq $$0) {
@@ -529,20 +539,31 @@ public class ema extends gfb {
       }
    }
 
-   abstract class c extends etm.a<ema.c> {
+   class c extends ema.d {
+      @Override
+      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      }
+
+      @Override
+      public tl a() {
+         return tl.h();
+      }
+   }
+
+   abstract class d extends etm.a<ema.d> {
       @Nullable
       public emw b() {
          return null;
       }
    }
 
-   static enum d {
+   static enum e {
       a,
       b,
       c;
    }
 
-   static class e extends etu.b {
+   static class f extends etu.b {
       private static final aew[] d = new aew[]{
          new aew("notification/1"),
          new aew("notification/2"),
@@ -556,7 +577,7 @@ public class ema extends gfb {
       private static final int u = 14;
       private int v;
 
-      public e(tl $$0, aew $$1, esq.c $$2) {
+      public f(tl $$0, aew $$1, esq.c $$2) {
          super(20, 20, $$0, 14, 14, $$1, $$2);
       }
 
@@ -581,11 +602,11 @@ public class ema extends gfb {
       }
    }
 
-   class f extends ema.c {
+   class g extends ema.d {
       private static final int c = 40;
-      private static final int d = 36;
-      private static final int e = -12303292;
-      private final tl f;
+      private static final int d = -12303292;
+      private final tl e;
+      private final int f;
       private final List<eso> g = new ArrayList<>();
       @Nullable
       private final ema.b h;
@@ -594,17 +615,18 @@ public class ema extends gfb {
       private final evx k;
       private int l = -1;
 
-      public f(tl $$0, emv $$1) {
-         this.f = $$0;
+      public g(tl $$0, int $$1, emv $$2) {
+         this.e = $$0;
+         this.f = $$1;
          this.j = new evy();
-         int $$2 = 7;
+         int $$3 = 7;
          this.j.a(etd.a(20, 20, ema.a), 0, 0, this.j.b().a(7, 7, 0, 0));
          this.j.a(ewe.a(40), 0, 0);
-         this.k = this.j.a(new evx(0, 9 * 3), 0, 1, this.j.b().c(7));
-         this.i = this.k.a(new etk($$0, ema.this.i).b(true).k(3), this.k.b().b().d());
+         this.k = this.j.a(new evx(0, 9 * 3 * ($$1 - 1)), 0, 1, this.j.b().c(7));
+         this.i = this.k.a(new etk($$0, ema.this.i).b(true), this.k.b().b().d());
          this.j.a(ewe.a(40), 0, 2);
-         if ($$1.b()) {
-            this.h = this.j.a(new ema.b($$1x -> ema.this.a($$1.c()), tl.c("mco.notification.dismiss")), 0, 2, this.j.b().c().a(0, 7, 7, 0));
+         if ($$2.b()) {
+            this.h = this.j.a(new ema.b($$1x -> ema.this.a($$2.c()), tl.c("mco.notification.dismiss")), 0, 2, this.j.b().c().a(0, 7, 7, 0));
          } else {
             this.h = null;
          }
@@ -634,7 +656,7 @@ public class ema extends gfb {
       @Override
       public void b(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
          super.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-         $$0.b($$3 - 2, $$2 - 2, $$4, 70, -12303292);
+         $$0.b($$3 - 2, $$2 - 2, $$4, 36 * this.f - 2, -12303292);
       }
 
       @Override
@@ -655,16 +677,16 @@ public class ema extends gfb {
 
       @Override
       public tl a() {
-         return this.f;
+         return this.e;
       }
    }
 
-   class g extends gfa<ema.c> {
-      public g() {
+   class h extends gfa<ema.d> {
+      public h() {
          super(ema.this.g, ema.this.h, 0, ema.this.h, 36);
       }
 
-      public void a(@Nullable ema.c $$0) {
+      public void a(@Nullable ema.d $$0) {
          super.a($$0);
          ema.this.F();
       }
@@ -680,15 +702,15 @@ public class ema extends gfb {
       }
    }
 
-   interface h<T> {
+   interface i<T> {
       T request(emf var1) throws ens;
    }
 
-   class i extends ema.c {
+   class j extends ema.d {
       private static final int c = 36;
       private final emw d;
 
-      public i(emw $$0) {
+      public j(emw $$0) {
          this.d = $$0;
       }
 
@@ -742,11 +764,11 @@ public class ema extends gfb {
          if (this.d.e == emw.b.c) {
             this.e();
          } else if (ema.this.a(this.d)) {
-            if (ac.b() - ema.this.az < 250L && this.aC_()) {
+            if (ac.b() - ema.this.aB < 250L && this.aC_()) {
                this.d();
             }
 
-            ema.this.az = ac.b();
+            ema.this.aB = ac.b();
          }
 
          return true;

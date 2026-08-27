@@ -37,14 +37,18 @@ public class csp extends csi {
    }
 
    private void b(cpv $$0, gw $$1) {
-      List<bus> $$2 = $$0.a(bus.class, new ehi($$1).c(8.0, 6.0, 8.0));
-      if (!$$2.isEmpty()) {
-         List<cbu> $$3 = $$0.a(cbu.class, new ehi($$1).c(8.0, 6.0, 8.0));
-         int $$4 = $$3.size();
+      ehi $$2 = new ehi($$1).c(8.0, 6.0, 8.0);
+      List<bus> $$3 = $$0.a(bus.class, $$2);
+      if (!$$3.isEmpty()) {
+         List<cbu> $$4 = $$0.a(cbu.class, $$2);
+         if ($$4.isEmpty()) {
+            return;
+         }
 
-         for (bus $$5 : $$2) {
+         for (bus $$5 : $$3) {
             if ($$5.q() == null) {
-               $$5.h($$3.get($$0.z.a($$4)));
+               cbu $$6 = ac.a($$4, $$0.z);
+               $$5.h($$6);
             }
          }
       }

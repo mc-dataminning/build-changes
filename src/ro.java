@@ -19,7 +19,7 @@ public class ro implements rq {
       private static String d(DataInput $$0, rf $$1) throws IOException {
          $$1.b(36L);
          String $$2 = $$0.readUTF();
-         $$1.b(2L * (long)$$2.length());
+         $$1.a(2L, (long)$$2.length());
          return $$2;
       }
 

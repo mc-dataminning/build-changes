@@ -135,7 +135,6 @@ public abstract class bfo<R extends Runnable> implements bew, bfq<R>, Executor {
          $$0.run();
       } catch (Exception var3) {
          c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bn(), var3);
-         throw var3;
       }
    }
 

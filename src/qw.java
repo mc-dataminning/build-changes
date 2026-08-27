@@ -41,8 +41,7 @@ public class qw implements rq {
 
          byte $$3;
          while (($$3 = $$0.readByte()) != 0) {
-            String $$4 = $$0.readUTF();
-            $$1.b(28L + 2L * (long)$$4.length());
+            String $$4 = e($$0, $$1);
             rq $$5 = qw.a(rt.a($$3), $$4, $$0, $$1);
             if ($$2.put($$4, $$5) == null) {
                $$1.b(36L);
@@ -85,8 +84,7 @@ public class qw implements rq {
                   $$4.b($$0, $$2);
                   break;
                default:
-                  String $$5 = $$0.readUTF();
-                  $$2.b(28L + 2L * (long)$$5.length());
+                  String $$5 = e($$0, $$2);
                   switch ($$1.a($$4, $$5)) {
                      case d:
                         return rn.b.c;
@@ -117,15 +115,11 @@ public class qw implements rq {
          return $$1.b();
       }
 
-      @Override
-      public void a(DataInput $$0, int $$1, rf $$2) throws IOException {
-         $$2.b();
-
-         try {
-            rs.b.super.a($$0, $$1, $$2);
-         } finally {
-            $$2.c();
-         }
+      private static String e(DataInput $$0, rf $$1) throws IOException {
+         String $$2 = $$0.readUTF();
+         $$1.b(28L);
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
       }
 
       @Override

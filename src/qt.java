@@ -20,7 +20,7 @@ public class qt extends qv<qu> {
       private static byte[] d(DataInput $$0, rf $$1) throws IOException {
          $$1.b(24L);
          int $$2 = $$0.readInt();
-         $$1.b(1L * (long)$$2);
+         $$1.a(1L, (long)$$2);
          byte[] $$3 = new byte[$$2];
          $$0.readFully($$3);
          return $$3;

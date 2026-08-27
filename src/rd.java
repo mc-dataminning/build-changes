@@ -21,7 +21,7 @@ public class rd extends qv<re> {
       private static long[] d(DataInput $$0, rf $$1) throws IOException {
          $$1.b(24L);
          int $$2 = $$0.readInt();
-         $$1.b(8L * (long)$$2);
+         $$1.a(8L, (long)$$2);
          long[] $$3 = new long[$$2];
 
          for (int $$4 = 0; $$4 < $$2; $$4++) {

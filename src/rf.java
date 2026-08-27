@@ -20,24 +20,31 @@ public class rf {
       return new rf(Long.MAX_VALUE, 512);
    }
 
+   public void a(long $$0, long $$1) {
+      this.b($$0 * $$1);
+   }
+
    public void b(long $$0) {
-      this.c += $$0;
-      if (this.c > this.b) {
-         throw new rg("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " bytes where max allowed: " + this.b);
+      if (this.c + $$0 > this.b) {
+         throw new rg("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+      } else {
+         this.c += $$0;
       }
    }
 
    public void b() {
-      this.e++;
-      if (this.e > this.d) {
+      if (this.e >= this.d) {
          throw new rg("Tried to read NBT tag with too high complexity, depth > " + this.d);
+      } else {
+         this.e++;
       }
    }
 
    public void c() {
-      this.e--;
-      if (this.e < 0) {
+      if (this.e <= 0) {
          throw new rg("NBT-Accounter tried to pop stack-depth at top-level");
+      } else {
+         this.e--;
       }
    }
 

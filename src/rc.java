@@ -30,7 +30,7 @@ public class rc extends qv<rq> {
          if ($$2 == 0 && $$3 > 0) {
             throw new RuntimeException("Missing type on ListTag");
          } else {
-            $$1.b(4L * (long)$$3);
+            $$1.a(4L, (long)$$3);
             rs<?> $$4 = rt.a($$2);
             List<rq> $$5 = Lists.newArrayListWithCapacity($$3);
 
@@ -67,7 +67,7 @@ public class rc extends qv<rq> {
                $$3.a($$0, $$4, $$2);
                return $$1.b();
             default:
-               $$2.b(4L * (long)$$4);
+               $$2.a(4L, (long)$$4);
                int $$5 = 0;
 
                while (true) {
@@ -104,17 +104,6 @@ public class rc extends qv<rq> {
 
                   $$5++;
                }
-         }
-      }
-
-      @Override
-      public void a(DataInput $$0, int $$1, rf $$2) throws IOException {
-         $$2.b();
-
-         try {
-            rs.b.super.a($$0, $$1, $$2);
-         } finally {
-            $$2.c();
          }
       }
 

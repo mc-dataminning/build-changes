@@ -20,7 +20,7 @@ public class ra extends qv<rb> {
       private static int[] d(DataInput $$0, rf $$1) throws IOException {
          $$1.b(24L);
          int $$2 = $$0.readInt();
-         $$1.b(4L * (long)$$2);
+         $$1.a(4L, (long)$$2);
          int[] $$3 = new int[$$2];
 
          for (int $$4 = 0; $$4 < $$2; $$4++) {

@@ -4,7 +4,6 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import javax.annotation.Nullable;
@@ -23,18 +22,17 @@ public class fdi {
    public void a(eyk $$0, String $$1) {
       try {
          this.a($$0, $$1, false, true);
-      } catch (OutOfMemoryError var9) {
+      } catch (OutOfMemoryError var8) {
          aru.b();
          System.gc();
-         Path $$3 = this.c.c($$1);
-         String $$4 = "Ran out of memory trying to read level data of world folder \"" + $$3 + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$4);
-         OutOfMemoryError $$5 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$5.initCause(var9);
-         o $$6 = o.a($$5, $$4);
-         p $$7 = $$6.a("World details");
-         $$7.a("World folder", $$3);
-         throw new y($$6);
+         String $$3 = "Ran out of memory trying to read level data of world folder \"" + $$1 + "\"";
+         a.error(LogUtils.FATAL_MARKER, $$3);
+         OutOfMemoryError $$4 = new OutOfMemoryError("Ran out of memory reading level data");
+         $$4.initCause(var8);
+         o $$5 = o.a($$4, $$3);
+         p $$6 = $$5.a("World details");
+         $$6.a("World folder", $$1);
+         throw new y($$5);
       }
    }
 

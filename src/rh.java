@@ -104,7 +104,6 @@ public class rh {
    }
 
    public static void a(DataInput $$0, rn $$1, rf $$2) throws IOException {
-      $$2.b(8L);
       rs<?> $$3 = rt.a($$0.readByte());
       if ($$3 == qy.a) {
          if ($$1.b(qy.a) == rn.b.a) {
